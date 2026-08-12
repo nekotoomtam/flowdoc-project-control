@@ -93,17 +93,105 @@ function isProjectReadModel(value: unknown): value is ProjectReadModel {
     return false;
   }
 
-  const nodeIds = new Set<string>();
-  for (const node of value.nodes) {
-    if (!isRecord(node) || typeof node.id !== "string" || nodeIds.has(node.id)) {
-      return false;
-    }
-    nodeIds.add(node.id);
-  }
+  return isUniqueStringArray(value.rootNodeIds)
+    && isProjectRecords(value.nodes, isIndexNode)
+    && isProjectRecords(value.work, isWorkRecord)
+    && isProjectRecords(value.documents, isIndexDocument)
+    && isProjectRecords(value.repositories, isRepositoryRecord)
+    && isProjectRecords(value.evidence, isEvidenceRecord)
+    && hasValidReadModelReferences(value as unknown as ProjectReadModel);
+}
 
-  return value.rootNodeIds.every((rootNodeId) => (
-    typeof rootNodeId === "string" && nodeIds.has(rootNodeId)
-  ));
+function isProjectRecords<T extends { id: string }>(values: unknown[], predicate: (value: unknown) => value is T): values is T[] {
+  return values.every(predicate) && new Set(values.map((value) => value.id)).size === values.length;
+}
+
+function hasValidReadModelReferences(model: ProjectReadModel): boolean {
+  const nodeIds = new Set(model.nodes.map((node) => node.id));
+  const workIds = new Set(model.work.map((work) => work.id));
+  const documentIds = new Set(model.documents.map((document) => document.id));
+  const repositoryIds = new Set(model.repositories.map((repository) => repository.id));
+  const evidenceIds = new Set(model.evidence.map((evidence) => evidence.id));
+  return model.rootNodeIds.every((id) => nodeIds.has(id))
+    && model.nodes.every((node) => (node.parentId === null || nodeIds.has(node.parentId))
+      && node.childIds.every((id) => nodeIds.has(id))
+      && node.workIds.every((id) => workIds.has(id))
+      && node.documentIds.every((id) => documentIds.has(id))
+      && node.repositoryIds.every((id) => repositoryIds.has(id))
+      && node.evidenceIds.every((id) => evidenceIds.has(id)))
+    && model.work.every((work) => nodeIds.has(work.nodeId) && work.repositoryIds.every((id) => repositoryIds.has(id)))
+    && model.documents.every((document) => document.nodeIds.every((id) => nodeIds.has(id))
+      && document.repositoryRefs.every((reference) => repositoryIds.has(reference.repositoryId)))
+    && model.evidence.every((evidence) => nodeIds.has(evidence.nodeIds[0] ?? "")
+      && evidence.nodeIds.every((id) => nodeIds.has(id))
+      && repositoryIds.has(evidence.repositoryId));
+}
+
+function isIndexNode(value: unknown): value is ProjectReadModel["nodes"][number] {
+  return isRecord(value) && value.kind === "node" && isNonEmptyString(value.id)
+    && isNonEmptyString(value.title) && (value.parentId === null || isNonEmptyString(value.parentId))
+    && typeof value.summary === "string" && isTruthState(value.truthState) && typeof value.order === "number"
+    && isUniqueStringArray(value.documentIds) && isUniqueStringArray(value.evidenceIds)
+    && isUniqueStringArray(value.repositoryIds) && isUniqueStringArray(value.childIds)
+    && isUniqueStringArray(value.workIds);
+}
+
+function isWorkRecord(value: unknown): value is ProjectReadModel["work"][number] {
+  return isRecord(value) && value.kind === "work" && isNonEmptyString(value.id) && isNonEmptyString(value.title)
+    && isNonEmptyString(value.nodeId) && isUniqueStringArray(value.repositoryIds) && isWorkState(value.workState)
+    && typeof value.summary === "string" && isUniqueStringArray(value.requiredEvidence)
+    && isNonEmptyString(value.createdAt) && isNonEmptyString(value.updatedAt)
+    && (value.blockedBy === undefined || isNonEmptyString(value.blockedBy))
+    && (value.unblockOwner === undefined || isNonEmptyString(value.unblockOwner));
+}
+
+function isIndexDocument(value: unknown): value is ProjectReadModel["documents"][number] {
+  return isRecord(value) && value.kind === "document" && isNonEmptyString(value.id) && isNonEmptyString(value.title)
+    && isNonEmptyString(value.path) && isUniqueStringArray(value.nodeIds) && isDocumentRole(value.role)
+    && isNonEmptyString(value.authority) && isDocumentLifecycle(value.lifecycle) && typeof value.content === "string"
+    && Array.isArray(value.repositoryRefs) && value.repositoryRefs.every(isRepositoryReference);
+}
+
+function isRepositoryRecord(value: unknown): value is ProjectReadModel["repositories"][number] {
+  return isRecord(value) && value.kind === "repository" && isNonEmptyString(value.id) && isNonEmptyString(value.name)
+    && isNonEmptyString(value.remote) && isNonEmptyString(value.checkoutAlias) && isNonEmptyString(value.defaultBranch)
+    && isNonEmptyString(value.ownershipSummary);
+}
+
+function isEvidenceRecord(value: unknown): value is ProjectReadModel["evidence"][number] {
+  return isRecord(value) && value.kind === "evidence" && isNonEmptyString(value.id) && isUniqueStringArray(value.nodeIds)
+    && isNonEmptyString(value.repositoryId) && isNonEmptyString(value.commit) && isNonEmptyString(value.pathOrContractId)
+    && isNonEmptyString(value.verificationSummary) && isNonEmptyString(value.verifiedAt);
+}
+
+function isRepositoryReference(value: unknown): boolean {
+  return isRecord(value) && isNonEmptyString(value.repositoryId) && isNonEmptyString(value.commit)
+    && isNonEmptyString(value.pathOrContractId);
+}
+
+function isUniqueStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every(isNonEmptyString) && new Set(value).size === value.length;
+}
+
+function isNonEmptyString(value: unknown): value is string {
+  return typeof value === "string" && value.length > 0;
+}
+
+function isTruthState(value: unknown): boolean {
+  return value === "current" || value === "planned" || value === "risk" || value === "unknown";
+}
+
+function isWorkState(value: unknown): boolean {
+  return value === "queued" || value === "in-progress" || value === "blocked" || value === "in-review";
+}
+
+function isDocumentRole(value: unknown): boolean {
+  return value === "current-state" || value === "contract" || value === "verification" || value === "risk"
+    || value === "unknown" || value === "decision" || value === "historical-note" || value === "glossary" || value === "version";
+}
+
+function isDocumentLifecycle(value: unknown): boolean {
+  return value === "active" || value === "superseded" || value === "retired";
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

@@ -142,6 +142,21 @@ describe("App", () => {
     });
   });
 
+  it("rejects an index with an incomplete node instead of rendering a partial map", async () => {
+    const incompleteNodeModel = {
+      ...model,
+      nodes: [{ id: "flowdoc" }],
+    };
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => incompleteNodeModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
   it("renders the shell from a valid injected read model", () => {
     render(<App initialModel={model} />);
 

@@ -30,7 +30,7 @@ Project Control owns cross-repository hierarchy, shared definitions, work coordi
 
 ## Local checkout configuration
 
-Copy `.flowdoc.local.example.json` to `.flowdoc.local.json` and adapt its relative paths for your machine. The four keys match the repository registry's checkout aliases. The local file is ignored and must not be committed; absolute checkout paths do not belong in tracked data.
+`.flowdoc.local.example.json` documents the portable mapping reserved for future cross-checkout tooling. Copy it to `.flowdoc.local.json` only when that mapping is needed by a future approved workflow; V1 commands do not read it. The four keys match the repository registry's checkout aliases. The local file is ignored and must not be committed; absolute checkout paths do not belong in tracked data.
 
 ```json
 {

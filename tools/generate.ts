@@ -23,6 +23,8 @@ export async function generateProjectIndex(rootDir: string, outputPath?: string)
   } catch (error: unknown) {
     if (error instanceof ProjectValidationError) {
       await writeFileAtomically(diagnosticsPath, serializeDiagnostics(error));
+    } else {
+      await writeFileAtomically(diagnosticsPath, serializeUnexpectedFailureDiagnostics());
     }
     throw error;
   }
@@ -32,6 +34,19 @@ function serializeDiagnostics(error: ProjectValidationError): string {
   const diagnostics: ProjectDiagnosticsFile = {
     schemaVersion: 1,
     diagnostics: error.diagnostics,
+  };
+  return `${JSON.stringify(diagnostics, null, 2)}\n`;
+}
+
+function serializeUnexpectedFailureDiagnostics(): string {
+  const diagnostics: ProjectDiagnosticsFile = {
+    schemaVersion: 1,
+    diagnostics: [{
+      code: "PROJECT_GENERATION_FAILED",
+      message: "Project data could not be published safely.",
+      file: "generated/project-index.json",
+      hint: "Check the local filesystem, then run npm run generate again.",
+    }],
   };
   return `${JSON.stringify(diagnostics, null, 2)}\n`;
 }

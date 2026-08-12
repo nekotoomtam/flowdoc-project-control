@@ -9,12 +9,10 @@ Project Control owns the shared hierarchy, work queue, repository registry, docu
 ## Initial local setup
 
 1. Run `npm install`.
-2. Copy `.flowdoc.local.example.json` to `.flowdoc.local.json` if a local checkout map is needed.
-3. Adjust only the relative paths in `.flowdoc.local.json`; it is ignored and must not be committed.
-4. Run `npm run generate`.
-5. Start the local GUI with `npm run dev` and open `http://127.0.0.1:5173`.
+2. Run `npm run generate`.
+3. Start the local GUI with `npm run dev` and open `http://127.0.0.1:5173`.
 
-The checkout aliases in the local file must match `data/repositories/`. Never add absolute machine paths to tracked JSON, Markdown, or generated output.
+`.flowdoc.local.example.json` describes a portable checkout map reserved for future approved cross-checkout tooling. Current V1 commands do not read the map. If a later approved workflow needs it, copy the example to ignored `.flowdoc.local.json`, use only relative paths, and keep its aliases aligned with `data/repositories/`. Never add absolute machine paths to tracked JSON, Markdown, or generated output.
 
 ## Canonical editing and recovery
 

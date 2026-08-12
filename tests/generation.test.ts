@@ -1,4 +1,4 @@
-import { access, appendFile, mkdir, readFile, writeFile } from "node:fs/promises";
+import { access, appendFile, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
@@ -38,6 +38,23 @@ describe("project index generation", () => {
         await readFile(join(root, "generated", "project-diagnostics.json"), "utf8"),
       ).diagnostics,
     ).toEqual(expect.arrayContaining([expect.objectContaining({ code: "NODE_CYCLE" })]));
+  });
+
+  it("writes an actionable diagnostic when publishing a valid index fails unexpectedly", async () => {
+    const root = await createProjectFixture({ valid: true });
+    await generateProjectIndex(root);
+    const indexPath = join(root, "generated", "project-index.json");
+    const before = await readFile(indexPath, "utf8");
+
+    await rm(indexPath);
+    await mkdir(indexPath);
+
+    await expect(generateProjectIndex(root)).rejects.toThrow();
+    expect(await readFile(join(root, "generated", "project-diagnostics.json"), "utf8"))
+      .toContain("PROJECT_GENERATION_FAILED");
+    expect(await readFile(join(root, "generated", "project-diagnostics.json"), "utf8"))
+      .not.toContain(root);
+    expect(before).toContain('"schemaVersion": 1');
   });
 
   it("sorts records, embeds Markdown, and changes digest only when source changes", async () => {
