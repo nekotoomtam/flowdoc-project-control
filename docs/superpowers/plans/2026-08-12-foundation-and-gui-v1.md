@@ -28,7 +28,7 @@
 - Use test-driven development for every behavior change: preserve RED output, make the minimum GREEN change, rerun the focused test, then run the task gate.
 - Every task ends in one focused commit. Do not push, tag, or alter Core/Editor/Backend.
 - Before Task 1, require a clean tracked tree, capture `git rev-parse HEAD` once as `implementationBase`, and retain that exact value for final scope/review; do not recompute it after commits.
-- Before Task 1, record the exact HEAD and clean status of `../flowdoc-vnext-core`, `../flowdoc-vnext-editor`, and `../flowdoc-vnext-backend`; final verification must match those recorded values.
+- Before Task 1, record the exact HEAD and clean status of `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-core`, `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-editor`, and `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-backend`; these absolute paths are execution-only and never enter canonical source data. Final verification must match the recorded values.
 - Execute the plan on branch `feature/foundation-gui-v1` in the external worktree `C:\Users\nekot\Documents\Codex\worktrees\flowdoc-project-control-foundation-gui-v1`; do not add a repo-local worktree directory or broaden Task 1 `.gitignore` for worktree storage.
 - User-approved TDD exception: Task 1 may create only the test runner/configuration bootstrap (`package.json`, lockfile, TypeScript/Vitest configuration, `.gitignore`, installed dependencies) before the first RED so the RED tests schema behavior rather than a missing test runner. No canonical contract or schema production behavior may be written before that RED.
 - V1 uses only the primary parent tree. Do not invent a cross-branch Relation format before the pilot produces a concrete use case.
@@ -92,7 +92,7 @@
 
 - [ ] From the approved `main` commit, create the external worktree at `C:\Users\nekot\Documents\Codex\worktrees\flowdoc-project-control-foundation-gui-v1` on new branch `feature/foundation-gui-v1`; verify `git rev-parse --git-dir` differs from `git rev-parse --git-common-dir` and the checkout is not a submodule.
 - [ ] Verify Project Control has no tracked or staged changes, capture `implementationBase = git rev-parse HEAD`, and append that exact hash to ignored `.superpowers/sdd/2026-08-12-foundation-and-gui-v1/implementation-report.md`.
-- [ ] Capture the exact HEAD and `git status --short` output for `../flowdoc-vnext-core`, `../flowdoc-vnext-editor`, and `../flowdoc-vnext-backend` in the same ignored report. Stop if any product repo is dirty; this plan does not authorize touching or hiding those changes.
+- [ ] Capture the exact HEAD and `git status --short` output for the three execution-only paths `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-core`, `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-editor`, and `C:\Users\nekot\Documents\GitHub\flowdoc-vnext-backend` in the same ignored report. Stop if any product repo is dirty; this plan does not authorize touching or hiding those changes.
 - [ ] Verify runtime evidence is Node `v24.15.0` and npm `11.12.1`. If either differs, stop and reassess dependency compatibility rather than silently changing the pinned stack.
 
 ---
@@ -748,7 +748,7 @@ Use default branch `main`. Do not record `C:\Users\...` paths.
 
 - [ ] **Step 4: Add conservative Nodes, Work, Documents, and Evidence**
 
-Make `flowdoc` planned, `project-control` current only because the approved design commit exists, and Core/Editor/Backend unknown until pilot migration brings their cross-repo truth into this system. Evidence `project-control-design` must point to repository `project-control`, commit `292ac5c5ade95dbf352fc31e020fa140e6edc6ca`, and `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md`.
+Make `flowdoc` planned, `project-control` current only because the approved design commit exists, and Core/Editor/Backend unknown until pilot migration brings their cross-repo truth into this system. Evidence `project-control-design` must point to repository `project-control`, commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`, and `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md`.
 
 Use this exact initial hierarchy and display order:
 
@@ -825,7 +825,7 @@ it("shows a diagnostic instead of a partial map when the index is invalid", asyn
 it("reports a network failure without rendering the map", async () => {
   vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
   render(<App />);
-  expect(await screen.findByText(/Could not load project-index.json/)).toBeVisible();
+  expect(await screen.findByText(/Could not load project data/)).toBeVisible();
   expect(screen.queryByTestId("focus-stack-map")).not.toBeInTheDocument();
 });
 
@@ -1081,7 +1081,7 @@ it("separates work, documents, risks, and evidence", async () => {
   await user.click(screen.getByRole("tab", { name: "Risks" }));
   expect(screen.getByText("Unknown migration scope")).toBeVisible();
   await user.click(screen.getByRole("tab", { name: "Evidence" }));
-  expect(screen.getByText("292ac5c")).toHaveAccessibleDescription(/292ac5c5ade95dbf352fc31e020fa140e6edc6ca/);
+  expect(screen.getByText("bc2e1ef")).toHaveAccessibleDescription(/bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444/);
 });
 
 it("traps focus, locks scroll, and closes on Escape", async () => {
@@ -1326,9 +1326,9 @@ npm run test:e2e
 npm run check
 git diff --check
 git status --short
-git -C ../flowdoc-vnext-core status --short
-git -C ../flowdoc-vnext-editor status --short
-git -C ../flowdoc-vnext-backend status --short
+git -C C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core status --short
+git -C C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor status --short
+git -C C:/Users/nekot/Documents/GitHub/flowdoc-vnext-backend status --short
 ```
 
 Expected:
