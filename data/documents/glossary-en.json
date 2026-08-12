@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-glossary-en",
+  "title": "Flowdoc Glossary",
+  "path": "docs/GLOSSARY.md",
+  "nodeIds": ["flowdoc"],
+  "role": "glossary",
+  "authority": "Canonical English terminology for Project Control records and the read-only GUI.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

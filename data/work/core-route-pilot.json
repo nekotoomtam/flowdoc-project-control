@@ -1,0 +1,12 @@
+{
+  "kind": "work",
+  "id": "work-core-route-pilot",
+  "title": "CORE_ROUTE pilot migration",
+  "nodeId": "core",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "queued",
+  "summary": "Future pilot only; acceptance artifacts to record later are a consolidated document commit, migrated reference/test result, and Project Control evidence record. No future artifact is represented as current Evidence yet.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-12T14:37:25.000Z",
+  "updatedAt": "2026-08-12T14:37:25.000Z"
+}

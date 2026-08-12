@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "core",
+  "title": "Core",
+  "parentId": "flowdoc",
+  "summary": "Core state is not yet verified by Project Control evidence; a future route pilot is queued.",
+  "truthState": "unknown",
+  "order": 20,
+  "documentIds": [],
+  "evidenceIds": [],
+  "repositoryIds": ["repo-core"]
+}

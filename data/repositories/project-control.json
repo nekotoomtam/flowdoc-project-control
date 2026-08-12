@@ -1,0 +1,9 @@
+{
+  "kind": "repository",
+  "id": "repo-project-control",
+  "name": "Flowdoc Project Control",
+  "remote": "https://github.com/nekotoomtam/flowdoc-project-control.git",
+  "checkoutAlias": "project-control",
+  "defaultBranch": "main",
+  "ownershipSummary": "Shared, file-first project-control records and their validated read model."
+}

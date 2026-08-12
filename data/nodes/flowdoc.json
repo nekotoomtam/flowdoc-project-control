@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "flowdoc",
+  "title": "Flowdoc",
+  "parentId": null,
+  "summary": "Planned product-wide map; the product repositories have not yet been verified as current in this registry.",
+  "truthState": "planned",
+  "order": 0,
+  "documentIds": ["doc-glossary-en", "doc-glossary-th"],
+  "evidenceIds": [],
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"]
+}

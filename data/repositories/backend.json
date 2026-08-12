@@ -1,0 +1,9 @@
+{
+  "kind": "repository",
+  "id": "repo-backend",
+  "name": "Flowdoc VNext Backend",
+  "remote": "https://github.com/nekotoomtam/flowdoc-vnext-backend.git",
+  "checkoutAlias": "backend",
+  "defaultBranch": "main",
+  "ownershipSummary": "Backend product repository; its state remains unknown here until evidence is recorded."
+}

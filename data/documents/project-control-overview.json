@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-overview",
+  "title": "Project Control Overview",
+  "path": "docs/domains/project-control.md",
+  "nodeIds": ["project-control"],
+  "role": "current-state",
+  "authority": "Current-state summary for the Project Control registry boundary only.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444",
+      "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
+    }
+  ]
+}
