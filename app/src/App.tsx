@@ -3,6 +3,7 @@ import type { ProjectReadModel } from "../../src/model/types.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { FocusStackMap } from "./components/FocusStackMap.js";
 import { NodeSearch } from "./components/NodeSearch.js";
+import { SummaryInspector } from "./components/SummaryInspector.js";
 import { loadProjectState, type ProjectState } from "./data/loadProjectState.js";
 import { nodePathDiagnostic, nodeUrl, readNodeId, resolveNodePath } from "./navigation/nodeRoute.js";
 
@@ -68,6 +69,14 @@ function ProjectMap({ model }: { model: ProjectReadModel }) {
     return <main><p role="alert">The project map has no usable root node.</p></main>;
   }
 
+  const currentNode = model.nodes.find((node) => node.id === currentNodeId);
+  if (currentNode === undefined) {
+    return <main><p role="alert">The selected node is unavailable.</p></main>;
+  }
+
+  const selectedWork = recordsForIds(currentNode.workIds, model.work);
+  const selectedDocuments = recordsForIds(currentNode.documentIds, model.documents);
+
   function navigate(nodeId: string) {
     if (nodePathDiagnostic(model, nodeId) !== null) {
       return;
@@ -82,12 +91,27 @@ function ProjectMap({ model }: { model: ProjectReadModel }) {
   }
 
   return (
-    <main>
+    <main className="project-map">
       {routeDiagnostic === null ? null : <p role="alert">{routeDiagnostic}</p>}
       <NodeSearch nodes={model.nodes} onNavigate={navigate} />
       <FocusStackMap model={model} currentNodeId={currentNodeId} onNavigate={navigate} />
+      <SummaryInspector
+        node={currentNode}
+        childCount={currentNode.childIds.length}
+        work={selectedWork}
+        documents={selectedDocuments}
+        onOpenDetails={() => undefined}
+      />
     </main>
   );
+}
+
+function recordsForIds<T extends { id: string }>(ids: string[], records: T[]): T[] {
+  const recordsById = new Map(records.map((record) => [record.id, record]));
+  return ids.flatMap((id) => {
+    const record = recordsById.get(id);
+    return record === undefined ? [] : [record];
+  });
 }
 
 interface RouteDiagnosticState {
