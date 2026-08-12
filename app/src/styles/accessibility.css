@@ -1,0 +1,36 @@
+:where(button, input, [role="option"]) {
+  min-height: 2.75rem;
+}
+
+:where(button, input) {
+  font: inherit;
+}
+
+:where(button, input, [role="option"]):focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .focus-stack-map__current,
+  .full-detail-modal__tabs [role="tab"][aria-selected="true"] {
+    border: 2px solid CanvasText;
+    outline: 2px solid CanvasText;
+    outline-offset: 2px;
+  }
+
+  .status-badge {
+    border-color: CanvasText;
+    color: CanvasText;
+  }
+}

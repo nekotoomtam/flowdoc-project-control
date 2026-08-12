@@ -190,6 +190,27 @@ describe("FullDetailModal", () => {
     expect(document.body).not.toHaveClass("modal-open");
   });
 
+  it("keeps inactive roving tabs out of the Tab focus trap", async () => {
+    const user = userEvent.setup();
+    render(<FullDetailModal open {...modalProps} />);
+
+    const overview = screen.getByRole("tab", { name: "Overview" });
+    const workTab = screen.getByRole("tab", { name: "Work" });
+    const close = screen.getByRole("button", { name: "Close details" });
+    expect(overview).toHaveFocus();
+
+    await user.tab();
+    expect(close).toHaveFocus();
+    expect(workTab).not.toHaveFocus();
+
+    await user.tab({ shift: true });
+    expect(overview).toHaveFocus();
+
+    await user.keyboard("{ArrowRight}");
+    expect(workTab).toHaveFocus();
+    expect(workTab).toHaveAttribute("aria-selected", "true");
+  });
+
   it("closes from the close button", async () => {
     const user = userEvent.setup();
     const onClose = vi.fn();

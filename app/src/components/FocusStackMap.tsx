@@ -22,7 +22,7 @@ export function FocusStackMap({ model, currentNodeId, onNavigate }: FocusStackMa
   return (
     <section className="focus-stack-map" aria-label="Focus Stack Map" data-testid="focus-stack-map">
       <h1>Focus Stack Map</h1>
-      <section aria-label="Ancestors">
+      <section className="focus-stack-map__level focus-stack-map__level--ancestors" aria-label="Ancestors">
         <h2>Ancestors</h2>
         <ol className="focus-stack-map__nodes">
           {ancestors.map((node) => (
@@ -35,19 +35,24 @@ export function FocusStackMap({ model, currentNodeId, onNavigate }: FocusStackMa
         </ol>
       </section>
       <Connector />
-      <section aria-label="Current node">
-        <h2>Current</h2>
-        <button type="button" className="focus-stack-map__current" aria-label={`${currentNode.title}, Current`}>
+      <section className="focus-stack-map__level focus-stack-map__level--current" aria-label="Current node">
+        <h2>Current node</h2>
+        <button
+          type="button"
+          className="focus-stack-map__current"
+          aria-current="page"
+          aria-label={`${currentNode.title}, Current`}
+        >
           {currentNode.title}
         </button>
       </section>
       <Connector />
-      <section aria-label="Children">
-        <h2>Children</h2>
+      <section className="focus-stack-map__level focus-stack-map__level--children" aria-label="Child nodes">
+        <h2>Child nodes</h2>
         <ul className="focus-stack-map__nodes">
           {children.map((node) => (
             <li key={node.id}>
-              <button type="button" data-testid="child-node" onClick={() => onNavigate(node.id)}>{node.title}</button>
+              <button type="button" className="focus-stack-map__child" data-testid="child-node" onClick={() => onNavigate(node.id)}>{node.title}</button>
             </li>
           ))}
         </ul>

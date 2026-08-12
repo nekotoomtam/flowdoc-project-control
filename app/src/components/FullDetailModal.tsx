@@ -405,8 +405,16 @@ function normalizeRepositoryPath(value: string): string | null {
 
 function focusableElements(container: HTMLElement): HTMLElement[] {
   return Array.from(container.querySelectorAll<HTMLElement>(
-    "a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex='-1'])",
-  )).filter((element) => element.getAttribute("aria-hidden") !== "true");
+    "a[href], area[href], button, input, select, textarea, [tabindex]",
+  )).filter((element) => {
+    const style = getComputedStyle(element);
+    return element.tabIndex >= 0
+      && !element.matches(":disabled, input[type='hidden']")
+      && element.getAttribute("aria-disabled") !== "true"
+      && element.closest("[aria-hidden='true'], [hidden], [inert]") === null
+      && style.display !== "none"
+      && style.visibility !== "hidden";
+  });
 }
 
 function releaseDialog(dialog: HTMLDialogElement | null) {

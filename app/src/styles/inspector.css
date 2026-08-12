@@ -1,28 +1,24 @@
-.project-map {
-  display: grid;
-  grid-template-columns: minmax(0, 48rem) minmax(16rem, 22rem);
-  gap: 1rem;
-}
-
-.project-map > [role="alert"],
-.project-map > .node-search {
-  grid-column: 1 / -1;
-}
-
 .summary-inspector {
   align-self: start;
   display: grid;
   gap: 1rem;
+  min-width: 0;
   max-width: 22rem;
-  padding: 1rem;
-  border: 1px solid #bcc6d0;
-  border-radius: 0.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.875rem;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-raised);
 }
 
 .summary-inspector h2,
 .summary-inspector h3,
 .summary-inspector p {
   margin: 0;
+}
+
+.summary-inspector h2 {
+  color: var(--text-strong);
 }
 
 .summary-clamp {
@@ -58,7 +54,8 @@
   display: grid;
   gap: 0.25rem;
   padding-left: 0.75rem;
-  border-left: 0.25rem solid currentColor;
+  border-left: 0.25rem solid var(--truth-risk);
+  color: var(--text-default);
 }
 
 .status-badge {
@@ -66,35 +63,45 @@
   padding: 0.125rem 0.375rem;
   border: 1px solid currentColor;
   border-radius: 999px;
+  background: var(--surface-raised);
   font-size: 0.875rem;
   font-weight: 600;
 }
 
 .status-badge--truth.status-badge--current {
-  color: #166534;
+  color: var(--truth-current);
 }
 
-.status-badge--truth.status-badge--planned,
+.status-badge--truth.status-badge--planned {
+  color: var(--truth-planned);
+}
+
+.status-badge--truth.status-badge--risk {
+  color: var(--truth-risk);
+}
+
+.status-badge--truth.status-badge--unknown {
+  color: var(--truth-unknown);
+}
+
 .status-badge--work.status-badge--queued {
-  color: #1d4ed8;
+  color: var(--work-queued);
 }
 
-.status-badge--truth.status-badge--risk,
 .status-badge--work.status-badge--blocked {
-  color: #b91c1c;
+  color: var(--work-blocked);
 }
 
-.status-badge--truth.status-badge--unknown,
 .status-badge--work.status-badge--in-review {
-  color: #92400e;
+  color: var(--work-in-review);
 }
 
 .status-badge--work.status-badge--in-progress {
-  color: #6d28d9;
+  color: var(--work-in-progress);
 }
 
 @media (max-width: 52rem) {
-  .project-map {
-    grid-template-columns: 1fr;
+  .summary-inspector {
+    max-width: none;
   }
 }
