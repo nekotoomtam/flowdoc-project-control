@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6718f626379b0e06d13bbc2ce2fe4f035610181c3c44d940ecd540927b616fe3",
+  "sourceDigest": "db3fd91a91c9357844a09a93053ffb49300a88978612b702a84cd4ef0e976e9a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8,7 +8,7 @@
     {
       "kind": "node",
       "id": "flowdoc",
-      "title": "Flowdoc",
+      "title": "FlowDoc",
       "parentId": null,
       "summary": "Planned product-wide map; the product repositories have not yet been verified as current in this registry.",
       "truthState": "planned",

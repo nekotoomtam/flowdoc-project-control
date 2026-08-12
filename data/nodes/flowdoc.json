@@ -1,7 +1,7 @@
 {
   "kind": "node",
   "id": "flowdoc",
-  "title": "Flowdoc",
+  "title": "FlowDoc",
   "parentId": null,
   "summary": "Planned product-wide map; the product repositories have not yet been verified as current in this registry.",
   "truthState": "planned",
