@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { ProjectReadModel } from "../../src/model/types.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { FocusStackMap } from "./components/FocusStackMap.js";
+import { FullDetailModal } from "./components/FullDetailModal.js";
 import { NodeSearch } from "./components/NodeSearch.js";
 import { SummaryInspector } from "./components/SummaryInspector.js";
 import { loadProjectState, type ProjectState } from "./data/loadProjectState.js";
@@ -42,6 +43,7 @@ export function App({ initialModel }: AppProps) {
 function ProjectMap({ model }: { model: ProjectReadModel }) {
   const [currentNodeId, setCurrentNodeId] = useState(() => resolveCurrentNode(model).nodeId);
   const [routeDiagnostic, setRouteDiagnostic] = useState(() => resolveCurrentNode(model).diagnostic);
+  const [detailsOpen, setDetailsOpen] = useState(false);
 
   useEffect(() => {
     function syncFromLocation() {
@@ -100,7 +102,16 @@ function ProjectMap({ model }: { model: ProjectReadModel }) {
         childCount={currentNode.childIds.length}
         work={selectedWork}
         documents={selectedDocuments}
-        onOpenDetails={() => undefined}
+        onOpenDetails={() => setDetailsOpen(true)}
+      />
+      <FullDetailModal
+        open={detailsOpen}
+        node={currentNode}
+        work={selectedWork}
+        documents={selectedDocuments}
+        evidence={model.evidence}
+        repositories={model.repositories}
+        onClose={() => setDetailsOpen(false)}
       />
     </main>
   );

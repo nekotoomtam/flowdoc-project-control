@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { render, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import { App } from "./App.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
@@ -145,6 +146,24 @@ describe("App", () => {
     render(<App initialModel={model} />);
 
     expect(screen.getByTestId("focus-stack-map")).toBeVisible();
+  });
+
+  it("opens details without changing the selected node and restores focus on close", async () => {
+    const user = userEvent.setup();
+    const detailModel = makeProjectReadModel({
+      nodes: [{ ...model.nodes[0]!, id: "project-control", title: "Project Control" }],
+      rootNodeIds: ["project-control"],
+    });
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={detailModel} />);
+
+    const trigger = screen.getByRole("button", { name: "View all" });
+    await user.click(trigger);
+    expect(screen.getByRole("dialog", { name: "Project Control details" })).toBeVisible();
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
+    expect(window.location.search).toBe("?node=project-control");
   });
 
   it("falls back honestly from an unknown URL and follows popstate", async () => {
