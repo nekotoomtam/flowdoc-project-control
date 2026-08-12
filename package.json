@@ -9,9 +9,9 @@
     "generate": "tsx tools/generate.ts",
     "check:data": "tsx tools/check.ts",
     "type-check": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --exclude \"tests/e2e/**\"",
     "test:e2e": "playwright test",
-    "check": "npm run check:data && npm run type-check && npm test && npm run build"
+    "check": "npm run check:data && npm run type-check && npm test && npm run build && npm run test:e2e"
   },
   "dependencies": {
     "ajv": "8.20.0",

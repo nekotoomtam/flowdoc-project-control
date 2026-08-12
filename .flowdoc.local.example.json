@@ -1,0 +1,8 @@
+{
+  "checkouts": {
+    "project-control": ".",
+    "core": "../flowdoc-vnext-core",
+    "editor": "../flowdoc-vnext-editor",
+    "backend": "../flowdoc-vnext-backend"
+  }
+}
