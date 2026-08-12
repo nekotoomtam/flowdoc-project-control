@@ -8,7 +8,11 @@ export default defineConfig({
         extends: true,
         test: {
           name: "node",
-          exclude: [...configDefaults.exclude, "app/src/**/*.test.tsx"],
+          exclude: [
+            ...configDefaults.exclude,
+            "app/src/**/*.test.tsx",
+            "tests/e2e/**",
+          ],
         },
       },
       {
