@@ -29,6 +29,8 @@
 - Every task ends in one focused commit. Do not push, tag, or alter Core/Editor/Backend.
 - Before Task 1, require a clean tracked tree, capture `git rev-parse HEAD` once as `implementationBase`, and retain that exact value for final scope/review; do not recompute it after commits.
 - Before Task 1, record the exact HEAD and clean status of `../flowdoc-vnext-core`, `../flowdoc-vnext-editor`, and `../flowdoc-vnext-backend`; final verification must match those recorded values.
+- Execute the plan on branch `feature/foundation-gui-v1` in the external worktree `C:\Users\nekot\Documents\Codex\worktrees\flowdoc-project-control-foundation-gui-v1`; do not add a repo-local worktree directory or broaden Task 1 `.gitignore` for worktree storage.
+- User-approved TDD exception: Task 1 may create only the test runner/configuration bootstrap (`package.json`, lockfile, TypeScript/Vitest configuration, `.gitignore`, installed dependencies) before the first RED so the RED tests schema behavior rather than a missing test runner. No canonical contract or schema production behavior may be written before that RED.
 - V1 uses only the primary parent tree. Do not invent a cross-branch Relation format before the pilot produces a concrete use case.
 
 ## File and Boundary Map
@@ -88,6 +90,7 @@
 
 ## Execution Preflight
 
+- [ ] From the approved `main` commit, create the external worktree at `C:\Users\nekot\Documents\Codex\worktrees\flowdoc-project-control-foundation-gui-v1` on new branch `feature/foundation-gui-v1`; verify `git rev-parse --git-dir` differs from `git rev-parse --git-common-dir` and the checkout is not a submodule.
 - [ ] Verify Project Control has no tracked or staged changes, capture `implementationBase = git rev-parse HEAD`, and append that exact hash to ignored `.superpowers/sdd/2026-08-12-foundation-and-gui-v1/implementation-report.md`.
 - [ ] Capture the exact HEAD and `git status --short` output for `../flowdoc-vnext-core`, `../flowdoc-vnext-editor`, and `../flowdoc-vnext-backend` in the same ignored report. Stop if any product repo is dirty; this plan does not authorize touching or hiding those changes.
 - [ ] Verify runtime evidence is Node `v24.15.0` and npm `11.12.1`. If either differs, stop and reassess dependency compatibility rather than silently changing the pinned stack.
@@ -111,50 +114,9 @@
 - Produces: `ProjectRecord`, `NodeRecord`, `WorkRecord`, `DocumentRecord`, `RepositoryRecord`, `EvidenceRecord`, `ProjectReadModel`, `IndexNode`, `IndexDocument`, and `SCHEMA_VERSION`.
 - Produces: JSON Schema ID `https://flowdoc.local/schemas/project-control-v1.json` with `$defs.node`, `$defs.work`, `$defs.document`, `$defs.repository`, and `$defs.evidence`.
 
-- [ ] **Step 1: Write the failing schema contract test**
+- [ ] **Step 1: Create only the approved test-runner bootstrap**
 
-```ts
-import { readFile } from "node:fs/promises";
-import { describe, expect, it } from "vitest";
-
-describe("project-control schema", () => {
-  it("defines all five records and keeps truth/work states separate", async () => {
-    const schema = JSON.parse(
-      await readFile("schemas/project-control.schema.json", "utf8"),
-    );
-
-    expect(Object.keys(schema.$defs).sort()).toEqual([
-      "document",
-      "evidence",
-      "node",
-      "repository",
-      "work",
-    ]);
-    expect(schema.$defs.node.properties.truthState.enum).toEqual([
-      "current",
-      "planned",
-      "risk",
-      "unknown",
-    ]);
-    expect(schema.$defs.work.properties.workState.enum).toEqual([
-      "queued",
-      "in-progress",
-      "blocked",
-      "in-review",
-    ]);
-    expect(schema.$defs.node.properties).not.toHaveProperty("workState");
-    expect(schema.$defs.work.properties).not.toHaveProperty("truthState");
-  });
-});
-```
-
-- [ ] **Step 2: Run the test and preserve RED**
-
-Run: `npm test -- tests/schema.test.ts`
-
-Expected: FAIL because the npm workspace and schema do not exist.
-
-- [ ] **Step 3: Create the pinned workspace**
+Create `package.json`, install the exact dependency versions below to produce `package-lock.json`, create strict `tsconfig.json` and `vitest.config.ts`, and add only the listed transient paths to `.gitignore`. This step is the user-approved configuration exception to TDD; it must not create `src/model/*`, `schemas/*`, or any canonical application behavior.
 
 Use exact dependency versions:
 
@@ -203,6 +165,49 @@ Use exact dependency versions:
 Run `npm install`, then configure strict ESM TypeScript with `resolveJsonModule`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, and JSX `react-jsx`. Configure Vitest to use Node by default and jsdom for `app/src/**/*.test.tsx`.
 
 `.gitignore` must contain exactly the transient categories needed by this plan: `node_modules/`, `dist/`, `coverage/`, `test-results/`, `playwright-report/`, `generated/project-diagnostics.json`, `.flowdoc.local.json`, and `.superpowers/`.
+
+- [ ] **Step 2: Write the failing schema contract test**
+
+```ts
+import { readFile } from "node:fs/promises";
+import { describe, expect, it } from "vitest";
+
+describe("project-control schema", () => {
+  it("defines all five records and keeps truth/work states separate", async () => {
+    const schema = JSON.parse(
+      await readFile("schemas/project-control.schema.json", "utf8"),
+    );
+
+    expect(Object.keys(schema.$defs).sort()).toEqual([
+      "document",
+      "evidence",
+      "node",
+      "repository",
+      "work",
+    ]);
+    expect(schema.$defs.node.properties.truthState.enum).toEqual([
+      "current",
+      "planned",
+      "risk",
+      "unknown",
+    ]);
+    expect(schema.$defs.work.properties.workState.enum).toEqual([
+      "queued",
+      "in-progress",
+      "blocked",
+      "in-review",
+    ]);
+    expect(schema.$defs.node.properties).not.toHaveProperty("workState");
+    expect(schema.$defs.work.properties).not.toHaveProperty("truthState");
+  });
+});
+```
+
+- [ ] **Step 3: Run the test and preserve RED**
+
+Run: `npm test -- tests/schema.test.ts`
+
+Expected: FAIL because `schemas/project-control.schema.json` does not exist; the Vitest runner itself must start successfully.
 
 - [ ] **Step 4: Define canonical TypeScript contracts**
 
