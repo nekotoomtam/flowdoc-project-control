@@ -1,0 +1,38 @@
+.focus-stack-map {
+  display: grid;
+  gap: 0.75rem;
+  max-width: 48rem;
+}
+
+.focus-stack-map__nodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.focus-stack-map__current {
+  font-weight: 700;
+}
+
+.focus-stack-map__connector {
+  width: 1px;
+  height: 1.5rem;
+  stroke: currentColor;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto;
+  }
+}

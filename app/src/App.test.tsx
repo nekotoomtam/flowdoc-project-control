@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { App } from "./App.js";
@@ -144,6 +145,96 @@ describe("App", () => {
     render(<App initialModel={model} />);
 
     expect(screen.getByTestId("focus-stack-map")).toBeVisible();
+  });
+
+  it("falls back honestly from an unknown URL and follows popstate", async () => {
+    const routeModel = makeProjectReadModel({
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    render(<App initialModel={routeModel} />);
+
+    expect(screen.getByText(/Node “missing” was not found/)).toBeVisible();
+    expect(screen.getByRole("button", { name: /Flowdoc, Current/ })).toBeVisible();
+
+    history.pushState(null, "", "/?node=project-control");
+    dispatchEvent(new PopStateEvent("popstate"));
+
+    expect(await screen.findByRole("button", { name: /Project Control, Current/ })).toBeVisible();
+  });
+
+  it("replaces an invalid deep-link with the canonical root URL while retaining the diagnostic", async () => {
+    history.replaceState(null, "", "/?node=missing");
+    const replaceState = vi.spyOn(history, "replaceState");
+    render(<App initialModel={model} />);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    expect(replaceState).toHaveBeenCalledWith(
+      expect.objectContaining({
+        flowdocRouteDiagnostic: expect.objectContaining({ nodeId: "flowdoc" }),
+      }),
+      "",
+      "?node=flowdoc",
+    );
+    expect(window.location.search).toBe("?node=flowdoc");
+  });
+
+  it("retains an invalid-route diagnostic through StrictMode canonical replacement", async () => {
+    history.replaceState(null, "", "/?node=missing");
+    render(<StrictMode><App initialModel={model} /></StrictMode>);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    expect(window.location.search).toBe("?node=flowdoc");
+  });
+
+  it("reports no usable root when the declared fallback root has an invalid ancestry", async () => {
+    const unusableRootModel = makeProjectReadModel({
+      nodes: [{ ...model.nodes[0]!, parentId: "missing-parent" }],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    render(<App initialModel={unusableRootModel} />);
+
+    expect(await screen.findByText("The project map has no usable root node.")).toBeVisible();
+    expect(screen.queryByTestId("focus-stack-map")).not.toBeInTheDocument();
+  });
+
+  it("pushes user navigation into history without pushing browser history changes again", async () => {
+    const routeModel = makeProjectReadModel({
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    const pushState = vi.spyOn(history, "pushState");
+    const user = (await import("@testing-library/user-event")).userEvent.setup();
+    render(<App initialModel={routeModel} />);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Project Control" }));
+    expect(pushState).toHaveBeenCalledWith(null, "", "?node=project-control");
+    expect(screen.queryByText(/Node “missing” was not found/)).not.toBeInTheDocument();
+
+    pushState.mockClear();
+    history.pushState(null, "", "/?node=flowdoc");
+    pushState.mockClear();
+    dispatchEvent(new PopStateEvent("popstate"));
+    expect(pushState).not.toHaveBeenCalled();
   });
 
   it("keeps the generate and data-check command visible for source diagnostics", () => {
