@@ -47,7 +47,7 @@ describe("local Vite server", () => {
     await page.goto(`http://127.0.0.1:${address.port}/?node=flowdoc`);
     await page.getByTestId("focus-stack-map").waitFor({ state: "visible" });
 
-    expect(await page.getByRole("button", { name: /Flowdoc, Current/ }).isVisible()).toBe(true);
+    expect(await page.getByRole("button", { name: /FlowDoc, Current/ }).isVisible()).toBe(true);
     expect(pageErrors).toEqual([]);
   }, 15_000);
 
