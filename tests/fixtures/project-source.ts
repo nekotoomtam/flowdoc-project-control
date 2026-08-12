@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, symlink, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import type { DocumentLifecycle, TruthState, WorkState } from "../../src/model/types.js";
@@ -23,6 +23,7 @@ export interface ProjectFixtureOptions {
   missingDocumentFile?: boolean;
   nonMarkdownDocument?: boolean;
   documentPathDirectory?: boolean;
+  shuffledCreationOrder?: boolean;
   truthState?: TruthState;
   workState?: WorkState;
   documentLifecycle?: DocumentLifecycle;
@@ -171,7 +172,18 @@ export async function createProjectFixture(
     );
   }
 
-  await Promise.all(records);
+  if (options.shuffledCreationOrder) {
+    await Promise.all([...records].reverse());
+  } else {
+    await Promise.all(records);
+  }
 
   return root;
+}
+
+export async function mutateNodeIntoCycle(root: string): Promise<void> {
+  const nodePath = join(root, "data", "nodes", "flowdoc.json");
+  const node = JSON.parse(await readFile(nodePath, "utf8")) as Record<string, unknown>;
+  node.parentId = "flowdoc";
+  await writeFile(nodePath, JSON.stringify(node));
 }
