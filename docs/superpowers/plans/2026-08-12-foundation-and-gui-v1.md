@@ -713,12 +713,12 @@ it("loads the truthful seed without claiming unverified product state", async ()
   expect(model.rootNodeIds).toEqual(["flowdoc"]);
   expect(model.nodes.find((node) => node.id === "project-control")).toMatchObject({
     truthState: "current",
-    evidenceIds: ["project-control-design"],
+    evidenceIds: ["evidence-project-control-design"],
   });
   for (const id of ["core", "editor", "backend"]) {
     expect(model.nodes.find((node) => node.id === id)?.truthState).toBe("unknown");
   }
-  const evidence = model.evidence.find((entry) => entry.id === "project-control-design")!;
+  const evidence = model.evidence.find((entry) => entry.id === "evidence-project-control-design")!;
   await expect(execFileAsync("git", [
     "cat-file",
     "-e",
@@ -735,20 +735,22 @@ Expected: FAIL because canonical seed files do not exist.
 
 - [ ] **Step 3: Add exact repository records**
 
-Use these verified remotes and checkout aliases:
+Use globally unique, type-prefixed Repository IDs with these verified remotes and checkout aliases. Bare IDs are reserved for Nodes so Focus Stack URLs stay concise:
 
 ```text
-project-control → https://github.com/nekotoomtam/flowdoc-project-control.git
-core            → https://github.com/nekotoomtam/flowdoc-vnext-core.git
-editor          → https://github.com/nekotoomtam/flowdoc-vnext-editor.git
-backend         → https://github.com/nekotoomtam/flowdoc-vnext-backend.git
+repo-project-control → https://github.com/nekotoomtam/flowdoc-project-control.git
+repo-core            → https://github.com/nekotoomtam/flowdoc-vnext-core.git
+repo-editor          → https://github.com/nekotoomtam/flowdoc-vnext-editor.git
+repo-backend         → https://github.com/nekotoomtam/flowdoc-vnext-backend.git
 ```
 
 Use default branch `main`. Do not record `C:\Users\...` paths.
 
 - [ ] **Step 4: Add conservative Nodes, Work, Documents, and Evidence**
 
-Make `flowdoc` planned, `project-control` current only because the approved design commit exists, and Core/Editor/Backend unknown until pilot migration brings their cross-repo truth into this system. Evidence `project-control-design` must point to repository `project-control`, commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`, and `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md`.
+Make `flowdoc` planned, `project-control` current only because the approved design commit exists, and Core/Editor/Backend unknown until pilot migration brings their cross-repo truth into this system. Evidence `evidence-project-control-design` must point to repository `repo-project-control`, commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`, and `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md`.
+
+All non-Node canonical IDs use a stable type prefix so the project-wide global-ID invariant remains true: Repository `repo-*`, Document `doc-*`, Evidence `evidence-*`, and Work `work-*`. File names remain the concise names listed above; IDs and paths are independent contracts.
 
 Use this exact initial hierarchy and display order:
 
@@ -756,13 +758,13 @@ Use this exact initial hierarchy and display order:
 |---|---|---:|---|---|---|
 | `flowdoc` | `null` | 0 | `planned` | English/Thai glossaries | none |
 | `backend` | `flowdoc` | 10 | `unknown` | none | none |
-| `core` | `flowdoc` | 20 | `unknown` | none | `core-route-pilot` |
+| `core` | `flowdoc` | 20 | `unknown` | none | `work-core-route-pilot` |
 | `editor` | `flowdoc` | 30 | `unknown` | none | none |
 | `project-control` | `flowdoc` | 40 | `current` | overview + approved design | none |
 
-The Project Control overview is role `current-state`; the approved design is role `decision`; both are active. Glossary records use role `glossary` and belong to `flowdoc`. Only `project-control` lists Evidence `project-control-design`.
+The Project Control overview (`doc-project-control-overview`) is role `current-state`; the approved design (`doc-project-control-design`) is role `decision`; both are active. Glossary records (`doc-glossary-en`, `doc-glossary-th`) use role `glossary` and belong to `flowdoc`. Only `project-control` lists Evidence `evidence-project-control-design`.
 
-Add one queued Work item for the future `CORE_ROUTE_*` pilot. Its required evidence must state: consolidated document commit, migrated reference/test result, and Project Control evidence record. This Work entry does not execute migration in this plan.
+Add one queued Work item `work-core-route-pilot` for the future `CORE_ROUTE_*` pilot. Because `requiredEvidence` contains only IDs of Evidence records that already exist, keep it empty until those artifacts are published. Its summary must explicitly name the three future acceptance artifacts: consolidated document commit, migrated reference/test result, and Project Control evidence record. This Work entry does not execute migration in this plan and must not fabricate dangling Evidence IDs.
 
 Define both glossaries with the exact canonical terms: Node, Truth State, Work State, Document, Evidence, Repository Registry, Focus Stack Map, Summary Inspector, and Full Detail Modal. The Thai glossary explains the same IDs rather than inventing separate Thai term identities.
 
