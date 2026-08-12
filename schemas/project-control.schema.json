@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowdoc.local/schemas/project-control-v1.json",
+  "title": "Flowdoc Project Control Record",
+  "oneOf": [
+    { "$ref": "#/$defs/node" },
+    { "$ref": "#/$defs/work" },
+    { "$ref": "#/$defs/document" },
+    { "$ref": "#/$defs/repository" },
+    { "$ref": "#/$defs/evidence" }
+  ],
+  "$defs": {
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "$defs": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{40}$"
+        },
+        "relativeTarget": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?![A-Za-z]:)(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+        },
+        "repositoryRef": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repositoryId", "commit", "pathOrContractId"],
+          "properties": {
+            "repositoryId": { "$ref": "#/$defs/node/$defs/id" },
+            "commit": { "$ref": "#/$defs/node/$defs/commit" },
+            "pathOrContractId": { "$ref": "#/$defs/node/$defs/relativeTarget" }
+          }
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "title",
+        "parentId",
+        "summary",
+        "truthState",
+        "order",
+        "documentIds",
+        "evidenceIds",
+        "repositoryIds"
+      ],
+      "properties": {
+        "kind": { "const": "node" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "parentId": {
+          "oneOf": [
+            { "$ref": "#/$defs/node/$defs/id" },
+            { "type": "null" }
+          ]
+        },
+        "summary": { "type": "string" },
+        "truthState": {
+          "enum": ["current", "planned", "risk", "unknown"]
+        },
+        "order": { "type": "number" },
+        "documentIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "evidenceIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "repositoryIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        }
+      }
+    },
+    "work": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "title",
+        "nodeId",
+        "repositoryIds",
+        "workState",
+        "summary",
+        "requiredEvidence",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "kind": { "const": "work" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "nodeId": { "$ref": "#/$defs/node/$defs/id" },
+        "repositoryIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "workState": {
+          "enum": ["queued", "in-progress", "blocked", "in-review"]
+        },
+        "summary": { "type": "string" },
+        "blockedBy": { "type": "string", "minLength": 1 },
+        "unblockOwner": { "type": "string", "minLength": 1 },
+        "requiredEvidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "workState": { "const": "blocked" } },
+            "required": ["workState"]
+          },
+          "then": {
+            "properties": {
+              "blockedBy": true,
+              "unblockOwner": true
+            },
+            "required": ["blockedBy", "unblockOwner"]
+          }
+        }
+      ]
+    },
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "title",
+        "path",
+        "nodeIds",
+        "role",
+        "authority",
+        "lifecycle",
+        "repositoryRefs"
+      ],
+      "properties": {
+        "kind": { "const": "document" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "path": { "$ref": "#/$defs/node/$defs/relativeTarget" },
+        "nodeIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "role": {
+          "enum": [
+            "current-state",
+            "contract",
+            "verification",
+            "risk",
+            "unknown",
+            "decision",
+            "historical-note",
+            "glossary",
+            "version"
+          ]
+        },
+        "authority": { "type": "string", "minLength": 1 },
+        "lifecycle": { "enum": ["active", "superseded", "retired"] },
+        "repositoryRefs": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/repositoryRef" }
+        }
+      }
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "name",
+        "remote",
+        "checkoutAlias",
+        "defaultBranch",
+        "ownershipSummary"
+      ],
+      "properties": {
+        "kind": { "const": "repository" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "name": { "type": "string", "minLength": 1 },
+        "remote": { "type": "string", "pattern": "^https://" },
+        "checkoutAlias": { "type": "string", "minLength": 1 },
+        "defaultBranch": { "type": "string", "minLength": 1 },
+        "ownershipSummary": { "type": "string", "minLength": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "nodeIds",
+        "repositoryId",
+        "commit",
+        "pathOrContractId",
+        "verificationSummary",
+        "verifiedAt"
+      ],
+      "properties": {
+        "kind": { "const": "evidence" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "nodeIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "repositoryId": { "$ref": "#/$defs/node/$defs/id" },
+        "commit": { "$ref": "#/$defs/node/$defs/commit" },
+        "pathOrContractId": { "$ref": "#/$defs/node/$defs/relativeTarget" },
+        "verificationSummary": { "type": "string", "minLength": 1 },
+        "verifiedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

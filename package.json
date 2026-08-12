@@ -1,0 +1,39 @@
+{
+  "name": "flowdoc-project-control",
+  "version": "0.1.0-a.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config app/vite.config.ts --host 127.0.0.1",
+    "build": "npm run generate && vite build --config app/vite.config.ts",
+    "generate": "tsx tools/generate.ts",
+    "check:data": "tsx tools/check.ts",
+    "type-check": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "check": "npm run check:data && npm run type-check && npm test && npm run build"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.2",
+    "@testing-library/user-event": "14.6.4",
+    "@types/node": "26.2.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.0.5",
+    "jsdom": "30.0.1",
+    "tsx": "4.23.12",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10"
+  }
+}
