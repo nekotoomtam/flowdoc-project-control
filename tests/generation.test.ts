@@ -12,6 +12,12 @@ import {
 } from "./fixtures/project-source.js";
 
 describe("project index generation", () => {
+  it("pins committed generated JSON to LF for byte-stable checkouts", async () => {
+    const attributes = await readFile(".gitattributes", "utf8");
+
+    expect(attributes.split(/\r?\n/u)).toContain("generated/*.json text eol=lf");
+  });
+
   it("produces byte-identical output for identical sources", async () => {
     const root = await createProjectFixture({ valid: true });
 
