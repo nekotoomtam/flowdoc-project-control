@@ -18,9 +18,7 @@ function withoutFencedCode(markdown: string): string {
     }
     if (
       fence !== null &&
-      match !== null &&
-      match[1]![0] === fence.marker &&
-      match[1]!.length >= fence.length
+      new RegExp(`^(?: {0,3})${fence.marker}{${fence.length},}\\s*$`).test(line)
     ) {
       fence = null;
       continue;
@@ -32,9 +30,37 @@ function withoutFencedCode(markdown: string): string {
   return visibleLines.join("\n");
 }
 
+function withoutInlineCode(markdown: string): string {
+  let visible = "";
+  let position = 0;
+  while (position < markdown.length) {
+    if (markdown[position] !== "`") {
+      visible += markdown[position]!;
+      position += 1;
+      continue;
+    }
+    let delimiterEnd = position;
+    while (markdown[delimiterEnd] === "`") {
+      delimiterEnd += 1;
+    }
+    const delimiter = markdown.slice(position, delimiterEnd);
+    const closingStart = markdown.indexOf(delimiter, delimiterEnd);
+    if (closingStart < 0) {
+      visible += delimiter;
+      position = delimiterEnd;
+      continue;
+    }
+    visible += markdown
+      .slice(position, closingStart + delimiter.length)
+      .replaceAll(/[^\r\n]/g, " ");
+    position = closingStart + delimiter.length;
+  }
+  return visible;
+}
+
 function markdownDestinations(markdown: string): MarkdownDestination[] {
   const destinations: MarkdownDestination[] = [];
-  const visible = withoutFencedCode(markdown);
+  const visible = withoutInlineCode(withoutFencedCode(markdown));
   const linkPattern = /(^|[^!])\[[^\]\n]*\]\(\s*(<[^>\n]+>|[^\s)\n]+)(?:\s+[^)]*)?\)/gm;
   for (const match of visible.matchAll(linkPattern)) {
     const target = match[2];
@@ -53,6 +79,7 @@ function normalizeTarget(target: string): string | null {
   const pathPart = target.split(/[?#]/, 1)[0] ?? "";
   if (
     pathPart.length === 0 ||
+    /\s/.test(pathPart) ||
     pathPart.startsWith("/") ||
     pathPart.startsWith("\\") ||
     /^[a-z][a-z0-9+.-]*:/i.test(pathPart)
@@ -113,7 +140,7 @@ export function extractRepositoryReferences(markdown: string): InventoryReposito
   const visible = withoutFencedCode(markdown);
   const targets = [
     ...markdownDestinations(markdown).map(({ rawTarget }) => rawTarget),
-    ...Array.from(visible.matchAll(/`([^`\r\n]+)`/g), (match) => match[1] ?? ""),
+    ...Array.from(visible.matchAll(/`([^`\r\n]+)`/g), (match) => (match[1] ?? "").trim()),
   ];
   const references = new Map<string, InventoryRepositoryReference>();
   for (const target of targets) {

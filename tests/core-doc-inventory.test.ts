@@ -43,10 +43,14 @@ describe("Core Markdown inventory", () => {
       "![image](docs/CORE_ROUTE_SAMPLE.md)",
       "[reference][route-reference]",
       "[route-reference]: docs/CORE_ROUTE_SAMPLE.md",
+      "`[obsolete](docs/CORE_ROUTE_SAMPLE.md)`",
       "`src/generation/runtime.ts` `tests/runtime.test.ts` `schemas/runtime.schema.json`",
+      "` src/generation/padded.ts ` `src/generation/not a path.ts`",
       "",
       "```md",
       "[ignored](docs/CORE_ROUTE_SAMPLE.md)",
+      "```not-a-closer",
+      "[still ignored](docs/CORE_ROUTE_SAMPLE.md)",
       "`src/ignored.ts`",
       "```",
     ].join("\n");
@@ -59,6 +63,7 @@ describe("Core Markdown inventory", () => {
     ]);
     expect(extractRepositoryReferences(markdown)).toEqual([
       { kind: "contract", target: "schemas/runtime.schema.json" },
+      { kind: "code", target: "src/generation/padded.ts" },
       { kind: "code", target: "src/generation/runtime.ts" },
       { kind: "test", target: "tests/runtime.test.ts" },
     ]);
