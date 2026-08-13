@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-route-generation-contracts",
+  "nodeIds": ["core-route"],
+  "repositoryId": "repo-core",
+  "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+  "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts",
+  "verificationSummary": "Direct tests verify retained generation request parsing and readiness behavior without public route-helper ownership.",
+  "verifiedAt": "2026-08-13T00:00:00.000Z"
+}

@@ -3,10 +3,10 @@
   "id": "core",
   "title": "Core",
   "parentId": "flowdoc",
-  "summary": "Core state is not yet verified by Project Control evidence; a future route pilot is queued.",
+  "summary": "Broader Core state remains unverified; reviewed route ownership is registered under the current core-route child while cleanup evidence remains pending.",
   "truthState": "unknown",
   "order": 20,
-  "documentIds": [],
+  "documentIds": ["doc-core-v0-1-0a-1-document-map"],
   "evidenceIds": [],
   "repositoryIds": ["repo-core"]
 }

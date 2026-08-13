@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "core-route",
+  "title": "Core Route Ownership",
+  "parentId": "core",
+  "summary": "Core retains readiness, artifact manifest, and artifact job contracts; Backend owns HTTP-shaped route envelopes.",
+  "truthState": "current",
+  "order": 10,
+  "documentIds": ["doc-core-route-overview", "doc-core-route-retained-contracts"],
+  "evidenceIds": ["evidence-core-route-artifact-contracts", "evidence-core-route-generation-contracts", "evidence-core-route-public-boundary"],
+  "repositoryIds": ["repo-core", "repo-project-control"]
+}

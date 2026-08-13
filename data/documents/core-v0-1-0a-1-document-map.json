@@ -1,0 +1,62 @@
+{
+  "kind": "document",
+  "id": "doc-core-v0-1-0a-1-document-map",
+  "title": "Core V0_1_0a_1 Document Map",
+  "path": "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md",
+  "nodeIds": ["core"],
+  "role": "version",
+  "authority": "Canonical map of reviewed Core documentation published for the V0_1_0a_1 release line.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/apiRoute.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactApiRoute.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactJob.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactManifest.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/runtime.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/index.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/artifactRetainedContract.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/coreRouteRetainedContractRewrite.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d79b88c23a307e7ec49437a015804d7a4d2de4bf",
+      "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
+    }
+  ]
+}

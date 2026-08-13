@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "db3fd91a91c9357844a09a93053ffb49300a88978612b702a84cd4ef0e976e9a",
+  "sourceDigest": "fff76f83b3a52d4cca5f7d14e4dd7787adc2e2769f45c08f081b79d1f7d26932",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -34,6 +34,30 @@
     },
     {
       "kind": "node",
+      "id": "core-route",
+      "title": "Core Route Ownership",
+      "parentId": "core",
+      "summary": "Core retains readiness, artifact manifest, and artifact job contracts; Backend owns HTTP-shaped route envelopes.",
+      "truthState": "current",
+      "order": 10,
+      "documentIds": [
+        "doc-core-route-overview",
+        "doc-core-route-retained-contracts"
+      ],
+      "evidenceIds": [
+        "evidence-core-route-artifact-contracts",
+        "evidence-core-route-generation-contracts",
+        "evidence-core-route-public-boundary"
+      ],
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "childIds": [],
+      "workIds": []
+    },
+    {
+      "kind": "node",
       "id": "backend",
       "title": "Backend",
       "parentId": "flowdoc",
@@ -53,15 +77,19 @@
       "id": "core",
       "title": "Core",
       "parentId": "flowdoc",
-      "summary": "Core state is not yet verified by Project Control evidence; a future route pilot is queued.",
+      "summary": "Broader Core state remains unverified; reviewed route ownership is registered under the current core-route child while cleanup evidence remains pending.",
       "truthState": "unknown",
       "order": 20,
-      "documentIds": [],
+      "documentIds": [
+        "doc-core-v0-1-0a-1-document-map"
+      ],
       "evidenceIds": [],
       "repositoryIds": [
         "repo-core"
       ],
-      "childIds": [],
+      "childIds": [
+        "core-route"
+      ],
       "workIds": [
         "work-core-route-pilot"
       ]
@@ -114,14 +142,199 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "queued",
-      "summary": "Future pilot only; acceptance artifacts to record later are a consolidated document commit, migrated reference/test result, and Project Control evidence record. No future artifact is represented as current Evidence yet.",
+      "workState": "in-review",
+      "summary": "Reviewed canonical Core route truth is registered in Project Control; Core cleanup Evidence is still pending before source or reference deletion.",
       "requiredEvidence": [],
       "createdAt": "2026-08-12T14:37:25.000Z",
-      "updatedAt": "2026-08-12T14:37:25.000Z"
+      "updatedAt": "2026-08-13T00:00:00.000Z"
     }
   ],
   "documents": [
+    {
+      "kind": "document",
+      "id": "doc-core-route-overview",
+      "title": "Core Route Overview",
+      "path": "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md",
+      "nodeIds": [
+        "core-route"
+      ],
+      "role": "current-state",
+      "authority": "Current-state overview of the reviewed Core route ownership boundary.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/apiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactApiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactJob.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactManifest.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/runtime.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/index.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/artifactRetainedContract.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/coreRouteRetainedContractRewrite.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts"
+        }
+      ],
+      "content": "# Core Route\n\nThis family records the current ownership boundary between Backend HTTP-shaped\nroute envelopes and Core's transport-independent generation readiness,\nartifact-manifest, and artifact-job contracts. It also records that the\nroute-shaped Core modules are absent from the public package entrypoint. Their\nroute source files remain internal; exported route constants and\nresponse-helper functions carry `@deprecated`, while types and interfaces\nremain unannotated.\n\nThe completed family synthesis is:\n\n- [Core Route Ownership and Retained Contracts](route-ownership-and-retained-contracts.md)\n\nRegistration and lifecycle status belong to Project Control truth records and\nthe family coverage state, not this overview. The bounded `core-route` truth\nmay be registered as `current` while the parent Core node remains `unknown`.\nNeither registration nor content review authorizes source or reference\ndeletion; cleanup evidence remains pending until separate readiness and cleanup\ngates pass.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-route-retained-contracts",
+      "title": "Core Route Ownership and Retained Contracts",
+      "path": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+      "nodeIds": [
+        "core-route"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract for the reviewed Core route ownership boundary and retained generation behavior.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/apiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactApiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactJob.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactManifest.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/runtime.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/index.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/artifactRetainedContract.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/coreRouteRetainedContractRewrite.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts"
+        }
+      ],
+      "content": "# Core Route Ownership and Retained Contracts\n\n## Purpose and Scope\n\nThis document records the current Core route boundary for the `V0_1_0a_1`\ndocumentation line. It separates executable package truth from the historical\nreasoning that led to the boundary.\n\nThe scope is limited to Core generation readiness, artifact manifest and job\ncontracts, the Core public package entrypoint, and the ownership boundary with\nBackend HTTP routes. It does not define or change Editor, GUI, Agent, or Skill\nbehavior, and it does not change Core runtime behavior or Backend wiring.\n\n## Current Ownership Boundary\n\nBackend owns the HTTP-shaped generation and artifact route envelopes. At this\nboundary, that includes method handling, HTTP status and headers, and the\nartifact permission, retry, listing, and download-metadata response vocabulary.\nThe current Core route modules identify Backend as that owner and mark their\nroute helpers as deprecated compatibility source.\n\nCore owns the transport-independent contracts consumed below that envelope:\ngeneration request parsing and readiness assessment, artifact manifest\nvalidation/planning, and durable artifact job state transitions. Those retained\ncontracts explicitly do not execute a Backend route. The manifest and job plans\nalso record that they do not perform worker, renderer, queue, database, file, or\nstorage writes.\n\n## Retained Core Contracts\n\nThe public Core entrypoint retains these contract groups:\n\n- `src/generation/runtime.ts` exports\n  `safeParseVNextGenerationRequest(...)` and\n  `assessVNextGenerationReadiness(...)`. Readiness results stay\n  transport-independent: they report request, package, document, key/data,\n  exact-layout, and artifact state without assigning HTTP status or headers.\n- `src/generation/artifactManifest.ts` exports\n  `createVNextArtifactManifestPlan(...)`. It validates JSON-serializable artifact\n  lifecycle records while declaring storage, database, renderer, and Backend\n  route execution false.\n- `src/generation/artifactJob.ts` exports `createVNextArtifactJobPlan(...)` and\n  `advanceVNextArtifactJob(...)`. They create and advance durable job records\n  while declaring worker, layout, renderer, storage, queue, and Backend route\n  execution false.\n\nThe retained tests exercise these contracts through `src/index.ts`, including\nsuccessful and blocked readiness, manifest lifecycle validation, valid job\ntransitions, and invalid transition rejection.\n\n## Public Export State\n\n`src/index.ts` publicly re-exports `./generation/runtime.js`,\n`./generation/artifactManifest.js`, and `./generation/artifactJob.js`. It does\nnot re-export `./generation/apiRoute.js` or\n`./generation/artifactApiRoute.js`; route-shaped helpers are therefore absent\nfrom the Core package public entrypoint.\n\nBoth route source files still exist under `src/generation/`. Their exported\nroute constants and response-helper functions are marked `@deprecated`; route\ntypes and interfaces remain unannotated. All remain internal source rather than\npublic entrypoint exports. Their continued presence does not restore public\nroute ownership and does not authorize their deletion.\n\n## Verification Anchors\n\n| Claim | Current executable anchor |\n|---|---|\n| Retained readiness, manifest, and job modules are public; route modules are not | `src/index.ts` |\n| Readiness is transport-independent and does not render an artifact | `src/generation/runtime.ts`; `tests/generationRuntimeRetainedContract.test.ts` |\n| Manifest planning validates durable records without writes or Backend route execution | `src/generation/artifactManifest.ts`; `tests/artifactRetainedContract.test.ts` |\n| Job planning and transitions do not execute workers, layout, rendering, queues, storage, or Backend routes | `src/generation/artifactJob.ts`; `tests/artifactRetainedContract.test.ts` |\n| Deprecated route-shaped source remains internal after public de-export | `src/generation/apiRoute.ts`; `src/generation/artifactApiRoute.ts`; `tests/coreRouteRetainedContractRewrite.test.ts` |\n| Backend owns HTTP-shaped envelope behavior at this boundary | deprecation contracts in `src/generation/apiRoute.ts` and `src/generation/artifactApiRoute.ts`, reinforced by the retained tests' exclusion of HTTP-shaped ownership |\n\n## Risks and Unknowns\n\n- Consumers outside the inspected repositories may have depended on the former\n  route exports or may deep-import internal Core source paths. No complete\n  external-consumer registry or package-usage scan is available here.\n- The deprecated internal route files duplicate some HTTP vocabulary. They can\n  drift from Backend behavior while they remain, so they are evidence of the\n  boundary, not the current implementation authority for HTTP envelopes.\n- This document does not independently revalidate Backend route implementation or\n  authorize removal of any Core source or reference.\n\n## Historical Design Notes\n\nThe four captured migration records describe a three-window design. Window A\ndocumented the intended ownership split while the route helpers were still\npublic. Window B retained them for one compatibility window and added explicit\ndeprecation markers. Window C removed the route modules from the public\nentrypoint after retained-contract tests replaced route-helper ownership tests.\n\nThe compatibility window was selected to reduce surprise breakage while\nexternal package consumers were not fully known. Rewriting the tests first\npreserved direct evidence for readiness, manifest, and job behavior without\nkeeping HTTP status, header, permission, retry, or download-envelope assertions\nin Core. This sequence explains the current boundary; it is historical design\ncontext, not a current rollout plan, schedule, or source-deletion instruction.\n\n## Provenance\n\nCurrent claims were checked against Core source and tests captured at commit\n`76a2f2311a898e781f53773390d47b05812911e4`. The four historical inputs and\ntheir exact Git blobs are mapped once in the\n[core-route coverage record](../../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\nRegistration and lifecycle status belong to Project Control records and the\ncoverage state; this document does not grant them. Neither registration nor\ncontent review authorizes deletion, and cleanup evidence remains pending until\nseparate readiness and cleanup gates pass.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-v0-1-0a-1-document-map",
+      "title": "Core V0_1_0a_1 Document Map",
+      "path": "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md",
+      "nodeIds": [
+        "core"
+      ],
+      "role": "version",
+      "authority": "Canonical map of reviewed Core documentation published for the V0_1_0a_1 release line.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/apiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactApiRoute.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactJob.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/artifactManifest.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/generation/runtime.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "src/index.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/artifactRetainedContract.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/coreRouteRetainedContractRewrite.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+          "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "d79b88c23a307e7ec49437a015804d7a4d2de4bf",
+          "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
+        }
+      ],
+      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial and\nrecords only the family synthesized in the current pilot.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current content-review and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family may be registered as `current` while the parent\nCore node remains `unknown`. Neither registration nor content review authorizes\nsource or reference deletion; cleanup evidence remains pending until separate\nreadiness and cleanup gates pass.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. All other Core families remain in candidate/inventory\nstate and are not represented here as canonical release documentation.\n"
+    },
     {
       "kind": "document",
       "id": "doc-glossary-en",
@@ -230,6 +443,42 @@
     }
   ],
   "evidence": [
+    {
+      "kind": "evidence",
+      "id": "evidence-core-route-artifact-contracts",
+      "nodeIds": [
+        "core-route"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/artifactRetainedContract.test.ts",
+      "verificationSummary": "Direct tests verify retained artifact manifest and job planning plus valid and invalid job transitions without Backend route execution.",
+      "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-route-generation-contracts",
+      "nodeIds": [
+        "core-route"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts",
+      "verificationSummary": "Direct tests verify retained generation request parsing and readiness behavior without public route-helper ownership.",
+      "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-route-public-boundary",
+      "nodeIds": [
+        "core-route"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/index.ts",
+      "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
+      "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
     {
       "kind": "evidence",
       "id": "evidence-project-control-design",
