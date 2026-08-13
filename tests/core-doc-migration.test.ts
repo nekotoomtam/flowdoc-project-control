@@ -82,6 +82,32 @@ function expectRealCoreRouteCoverageLifecycle(
     .toEqual([canonicalCoreRouteLeaf]);
 }
 
+function expectCoreDocumentMapLifecycleStable(
+  documentMap: string,
+  coverage: FamilyCoverage,
+  inventory: CoreMarkdownInventory,
+): void {
+  expectRealCoreRouteCoverageLifecycle(coverage, inventory);
+  expect(documentMap).toContain("Core consolidation is incomplete");
+  expect(documentMap).toMatch(/map\s+is\s+intentionally\s+partial/iu);
+  expect(documentMap).toMatch(
+    /\[core-route coverage record\]\(\.\.\/\.\.\/\.\.\/\.\.\/migrations\/V0_1_0a_1\/core\/families\/core-route\/coverage\.json\)/u,
+  );
+  expect(documentMap).not.toMatch(/migration\s+coverage\s+is\s+still\s+draft/iu);
+  expect(documentMap).not.toMatch(/coverage\s+is\s+content-reviewed/iu);
+  expect(documentMap).not.toMatch(/no\s+canonical\s+Document\s+IDs/iu);
+  expect(documentMap).not.toMatch(/does\s+not\s+publish\s+a\s+Project\s+Control\s+truth\s+record/iu);
+  expect(documentMap).toMatch(
+    /bounded\s+`core-route`\s+family\s+may\s+be\s+registered\s+as\s+`current`[\s\S]*parent\s+Core\s+node\s+remains\s+`unknown`/iu,
+  );
+  expect(documentMap).toMatch(
+    /Neither\s+registration\s+nor\s+content\s+review\s+authorizes\s+source\s+or\s+reference\s+deletion/iu,
+  );
+  expect(documentMap).toMatch(/cleanup\s+evidence\s+remains\s+pending/iu);
+  expect(documentMap).not.toMatch(/ready\s+for\s+(?:source\s+)?deletion|deletion\s+is\s+authorized/iu);
+  expect(documentMap).not.toMatch(/parent\s+Core\s+node\s+(?:is|remains)\s+`?current`?/iu);
+}
+
 interface MigrationFixture {
   projectRoot: string;
   sourceRoot: string;
@@ -661,6 +687,35 @@ describe("real Project Control Core route pilot", () => {
       ...reviewedCoverage,
       status: "ready-for-deletion",
     }, inventory)).toThrow();
+  });
+
+  it("keeps the partial document map truthful across both review lifecycles", async () => {
+    const [documentMap, inventoryJson, coverageJson] = await Promise.all([
+      readFile(join(process.cwd(), "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8"),
+      readFile(join(process.cwd(), "migrations/V0_1_0a_1/core/inventory.json"), "utf8"),
+      readFile(
+        join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
+        "utf8",
+      ),
+    ]);
+    const inventory = JSON.parse(inventoryJson) as CoreMarkdownInventory;
+    const storedCoverage = JSON.parse(coverageJson) as FamilyCoverage;
+    const draftCoverage: FamilyCoverage = {
+      ...storedCoverage,
+      status: "draft",
+      canonicalDocumentIds: [],
+    };
+    const reviewedCoverage: FamilyCoverage = {
+      ...storedCoverage,
+      status: "content-reviewed",
+      canonicalDocumentIds: [
+        "doc-core-route-overview",
+        "doc-core-route-retained-contracts",
+      ],
+    };
+
+    expect(() => expectCoreDocumentMapLifecycleStable(documentMap, draftCoverage, inventory)).not.toThrow();
+    expect(() => expectCoreDocumentMapLifecycleStable(documentMap, reviewedCoverage, inventory)).not.toThrow();
   });
 
   it("publishes the bounded canonical leaf and an explicitly incomplete Core document map", async () => {
