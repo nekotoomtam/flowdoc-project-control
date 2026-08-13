@@ -841,13 +841,21 @@ Delete only the four listed tests after the consolidated guard passes. Do not re
 
 - [ ] **Step 5: Run reference and Core gates**
 
-Run the Project Control external check against this Core worktree:
+Run the Project Control external check against the still-uncommitted exact Task 7 Core worktree:
 
 ```powershell
 npm run check:migration:core -- --source-root $coreWorktree --family core-route
 ```
 
-Expected: deletion remains blocked only because coverage is `content-reviewed`, with zero active-reference diagnostics.
+Expected exit code: `1`.
+
+Expected diagnostics, and no others:
+
+- exactly four `MIGRATION_ACTIVE_PATH_MENTION` diagnostics, one for each plain-code former-source row in `docs/PHASE_LEDGER.md` naming the four covered Core source paths;
+- exactly one `MIGRATION_COVERAGE_NOT_READY` because coverage remains `content-reviewed`;
+- exactly one `MIGRATION_SOURCE_TREE_DIRTY` because the exact Task 7 repair has not been committed yet.
+
+Any mention outside those four `docs/PHASE_LEDGER.md` rows, any source drift, any missing destination, or any additional diagnostic is a blocker. Do not create historical allowances in Task 7; Task 8 owns the mention report and the exact reviewed allowances.
 
 Run from Core: `npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts tests/generationRuntimeRetainedContract.test.ts tests/artifactRetainedContract.test.ts`
 
@@ -861,7 +869,25 @@ Expected: PASS.
 git add README.md docs/PHASE_LEDGER.md tests
 git diff --cached --check
 git commit -m "test: detach Core route guards from historical docs"
+$coreReferenceRepairCommit = (git rev-parse HEAD).Trim()
+if ($coreReferenceRepairCommit -notmatch '^[0-9a-f]{40}$') { throw "Core reference-repair commit is not a 40-character Git commit." }
+if (git status --short) { throw "Core worktree is not clean after the Task 7 commit." }
 ```
+
+Record `$coreReferenceRepairCommit` in the ignored Task 7 report. From Project Control, rerun the normal external check against that exact clean Core commit:
+
+```powershell
+npm run check:migration:core -- --source-root $coreWorktree --family core-route
+```
+
+Expected exit code: `1`.
+
+Expected diagnostics, and no others:
+
+- exactly four `MIGRATION_ACTIVE_PATH_MENTION` diagnostics for the four `docs/PHASE_LEDGER.md` former-source rows;
+- exactly one `MIGRATION_COVERAGE_NOT_READY` because coverage remains `content-reviewed`.
+
+`MIGRATION_SOURCE_TREE_DIRTY` must be absent after the commit. This five-diagnostic RED is the stable Task 7 handoff to Task 8; Task 7 does not grant deletion authority.
 
 ### Task 8: Prove Deletion Readiness and Publish the Review Record
 
@@ -876,18 +902,32 @@ git commit -m "test: detach Core route guards from historical docs"
 - Modify: `generated/project-index.json`
 
 **Interfaces:**
-- Consumes: Project Control publication commit from Task 6 and Core reference-repair commit from Task 7.
+- Consumes: the exact `$projectControlPublicationCommit` from Task 6 and the exact clean `$coreReferenceRepairCommit` recorded by Task 7.
 - Produces: `ready-for-deletion` coverage and a durable human review record; it performs no Core deletion.
 
 - [ ] **Step 1: Run the external preflight as a RED**
 
-Run:
+First prove Core still points to the exact clean Task 7 commit:
+
+```powershell
+if ((git -C $coreWorktree rev-parse HEAD).Trim() -ne $coreReferenceRepairCommit) { throw "Core HEAD drifted after Task 7." }
+if (git -C $coreWorktree status --short) { throw "Core worktree must be clean before Task 8." }
+```
+
+Then run:
 
 ```powershell
 npm run check:migration:core -- --source-root $coreWorktree --family core-route
 ```
 
-Expected: FAIL only with `COVERAGE_NOT_READY_FOR_DELETION`. Any source drift, active reference, dirty Core tree, or missing destination is a separate blocker and must be corrected before continuing.
+Expected exit code: `1`.
+
+Expected diagnostics, and no others:
+
+- exactly four `MIGRATION_ACTIVE_PATH_MENTION` diagnostics for the four `docs/PHASE_LEDGER.md` former-source rows;
+- exactly one `MIGRATION_COVERAGE_NOT_READY` because coverage is still `content-reviewed`.
+
+`MIGRATION_SOURCE_TREE_DIRTY` must be absent. Any non-ledger mention, source drift, missing destination, changed Core commit, or additional diagnostic is a separate blocker and must be corrected before continuing. This RED intentionally remains identical to the clean post-commit Task 7 gate until Task 8 publishes reviewed historical allowances.
 
 - [ ] **Step 2: Conduct independent readiness review**
 
@@ -904,17 +944,19 @@ Require explicit answers for coverage closure, authority honesty, reference clos
 
 - [ ] **Step 3: Write the review record from actual evidence**
 
-`MIGRATION_REVIEW.md` records reviewed commits, exact four source paths/blobs, tests run, reference-scan result, reviewer verdict, rollback procedure, remaining risks/unknowns, and the statement “ready for source deletion” only after the verdict passes. Do not write simulated command output.
+`MIGRATION_REVIEW.md` records the literal `$projectControlPublicationCommit` and `$coreReferenceRepairCommit`, exact four source paths/blobs, tests run, reference-scan result, reviewer verdict, rollback procedure, remaining risks/unknowns, and the statement “ready for source deletion” only after the verdict passes. Do not write simulated command output.
 
 - [ ] **Step 4: Register review and update coverage**
 
-Add `doc-core-route-migration-review` reciprocally to `core-route`. Update Work summary to say deletion is authorized but cleanup Evidence remains outstanding. Run:
+Task 8 is the sole owner of mention reporting, historical-allowance creation, and the transition to `ready-for-deletion`. Before changing coverage, run the mention report against the exact clean `$coreReferenceRepairCommit`:
 
 ```powershell
 npm run check:migration:core -- --source-root $coreWorktree --family core-route --report-mentions
 ```
 
-Require every returned non-ledger mention to be absent; convert each retained `docs/PHASE_LEDGER.md` mention to a `HistoricalReferenceAllowance` using its returned line and line hash plus the fixed rationale `Preserves a completed Core phase's former source path at the captured Core commit.` No README or test mention may be allowlisted. Set `status` to `ready-for-deletion`, `activeReferences` to `[]`, `projectControlPublicationCommit` to the actual value held in `$projectControlPublicationCommit`, and `coreCleanupCommit` to `null`. Apply the resulting literal values to JSON with `apply_patch`; the tracked file must contain only concrete numbers and hashes.
+Expected exit code: `1`; `--report-mentions` reports exactly four mentions, all in the four `docs/PHASE_LEDGER.md` former-source rows, while readiness diagnostics remain exactly four `MIGRATION_ACTIVE_PATH_MENTION` plus one `MIGRATION_COVERAGE_NOT_READY`. There must be no README mention, test mention, dirty-tree diagnostic, source drift, missing destination, or other diagnostic.
+
+Add `doc-core-route-migration-review` reciprocally to `core-route`. Update Work summary to say deletion is authorized but cleanup Evidence remains outstanding. Convert each of the four reported `docs/PHASE_LEDGER.md` mentions to one concrete `HistoricalReferenceAllowance` using its returned source path, target path, one-based line, normalized line SHA-256, and the fixed rationale `Preserves a completed Core phase's former source path at the captured Core commit.` Do not allowlist any README or test mention. Set `status` to `ready-for-deletion`, `activeReferences` to `[]`, `projectControlPublicationCommit` to the literal value held in `$projectControlPublicationCommit`, and `coreCleanupCommit` to `null`. Apply the concrete line numbers, hashes, and commit to JSON with `apply_patch`; the tracked file must contain no shell variables or inferred placeholders.
 
 - [ ] **Step 5: Run the readiness GREEN**
 
@@ -924,7 +966,13 @@ Run: `npm run check:data`
 
 Run: `npm test -- tests/core-doc-migration.test.ts tests/seed-project.test.ts`
 
-Run the external check again; Expected: PASS with `ready: true` and the exact four source paths.
+Run the external check again:
+
+```powershell
+npm run check:migration:core -- --source-root $coreWorktree --family core-route
+```
+
+Expected exit code: `0`, `ready: true`, `diagnostics: []`, and the exact four covered source paths. This is the first zero-diagnostic readiness result; no earlier Task 7 or Task 8 step may claim zero active mentions before the four exact historical allowances exist.
 
 - [ ] **Step 6: Commit deletion authorization in Project Control**
 
