@@ -1,0 +1,48 @@
+{
+  "kind": "core-document-family-coverage",
+  "schemaVersion": 1,
+  "releaseLine": "V0_1_0a_1",
+  "familyId": "core-route",
+  "sourceCommit": "76a2f2311a898e781f53773390d47b05812911e4",
+  "inventoryDigest": "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b",
+  "status": "draft",
+  "canonicalDocumentIds": [],
+  "sources": [
+    {
+      "path": "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
+      "blobId": "8f17cbd011fb706d69e53f38b86a95bc2afe6c7c",
+      "disposition": "canonical-section",
+      "destinationPath": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+      "destinationSection": "Current Ownership Boundary",
+      "rationale": "Its material contribution is the reviewed ownership split synthesized in Current Ownership Boundary; its compatibility-window sequence is covered secondarily once in Historical Design Notes. Current facts were revalidated against executable anchors."
+    },
+    {
+      "path": "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
+      "blobId": "815dd7117dfdbb9551257afe7d81ac1351fa4b33",
+      "disposition": "historical-note",
+      "destinationPath": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+      "destinationSection": "Historical Design Notes",
+      "rationale": "Its material contribution is the compatibility-window rationale preserved once as historical design context, not as a current rollout step or authority claim."
+    },
+    {
+      "path": "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
+      "blobId": "d8db6dfe0eb6f5d3c6821f1c55b10bd25c1b46ef",
+      "disposition": "historical-note",
+      "destinationPath": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+      "destinationSection": "Historical Design Notes",
+      "rationale": "Its material contribution is the reason route-helper tests were replaced by retained readiness, manifest, and job contract tests; current test coverage is cited separately from this historical reasoning."
+    },
+    {
+      "path": "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
+      "blobId": "188fd81d4e78a025119c8d2b0ae1cef046d0ff13",
+      "disposition": "canonical-section",
+      "destinationPath": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+      "destinationSection": "Public Export State",
+      "rationale": "Its material contribution is the public export result revalidated in src/index.ts and synthesized in Public Export State; the Window C sequence is covered secondarily once in Historical Design Notes."
+    }
+  ],
+  "activeReferences": [],
+  "retainedHistoricalReferences": [],
+  "projectControlPublicationCommit": null,
+  "coreCleanupCommit": null
+}

@@ -27,6 +27,23 @@ import { createProjectFixture } from "./fixtures/project-source.js";
 const execFile = promisify(execFileCallback);
 const destinationPath = "docs/versions/V0_1_0a_1/core/core-route/route.md";
 const sourcePath = "docs/CORE_ROUTE_SAMPLE.md";
+const canonicalCoreRouteLeaf = "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md";
+const coreRouteSources = [
+  "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
+  "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
+  "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
+  "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
+];
+const requiredCoreRouteHeadings = [
+  "## Purpose and Scope",
+  "## Current Ownership Boundary",
+  "## Retained Core Contracts",
+  "## Public Export State",
+  "## Verification Anchors",
+  "## Risks and Unknowns",
+  "## Historical Design Notes",
+  "## Provenance",
+];
 
 interface MigrationFixture {
   projectRoot: string;
@@ -552,5 +569,51 @@ describe("Core migration check integration", () => {
       .toBe("tsx tools/migration/check-core-docs.ts --stored-only");
     expect(packageJson.scripts["check:migration:core"])
       .toBe("tsx tools/migration/check-core-docs.ts");
+  });
+});
+
+describe("real Project Control Core route pilot", () => {
+  it("covers the four captured Core route blobs exactly once in one canonical leaf", async () => {
+    const inventory = JSON.parse(await readFile(
+      join(process.cwd(), "migrations/V0_1_0a_1/core/inventory.json"),
+      "utf8",
+    )) as CoreMarkdownInventory;
+    const coverage = JSON.parse(await readFile(
+      join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
+      "utf8",
+    )) as FamilyCoverage;
+    const inventoryBlobs = new Map(inventory.files.map((file) => [file.path, file.blobId]));
+
+    expect(coverage).toMatchObject({
+      familyId: "core-route",
+      sourceCommit: inventory.sourceCommit,
+      inventoryDigest: inventory.sourceDigest,
+      status: "draft",
+      canonicalDocumentIds: [],
+      activeReferences: [],
+      retainedHistoricalReferences: [],
+      projectControlPublicationCommit: null,
+      coreCleanupCommit: null,
+    });
+    expect(coverage.sources.map((source) => source.path)).toEqual(coreRouteSources);
+    expect(coverage.sources.map((source) => source.blobId)).toEqual(
+      coreRouteSources.map((path) => inventoryBlobs.get(path)),
+    );
+    expect([...new Set(coverage.sources.map((source) => source.destinationPath))])
+      .toEqual([canonicalCoreRouteLeaf]);
+  });
+
+  it("publishes the bounded canonical leaf and an explicitly incomplete Core document map", async () => {
+    const leaf = await readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8");
+    const documentMap = await readFile(
+      join(process.cwd(), "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"),
+      "utf8",
+    );
+
+    expect(leaf.split(/\r?\n/u).filter((line) => line.startsWith("## ")))
+      .toEqual(requiredCoreRouteHeadings);
+    expect(documentMap).toContain("Core consolidation is incomplete");
+    expect(documentMap).toContain("`CORE_OVERVIEW.md` is intentionally unpublished");
+    expect(documentMap).not.toMatch(/\]\([^)]*CORE_OVERVIEW\.md[^)]*\)/u);
   });
 });
