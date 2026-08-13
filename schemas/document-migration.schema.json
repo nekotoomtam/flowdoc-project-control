@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flowdoc.local/schemas/document-migration-v1.json",
+  "title": "Flowdoc Core Documentation Migration Record",
+  "oneOf": [
+    { "$ref": "#/$defs/inventory" },
+    { "$ref": "#/$defs/familyMap" },
+    { "$ref": "#/$defs/familyCoverage" }
+  ],
+  "$defs": {
+    "commit": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{40}$"
+    },
+    "coreSnapshotCommit": {
+      "const": "76a2f2311a898e781f53773390d47b05812911e4"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    },
+    "inventoryLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rawTarget", "resolvedPath"],
+      "properties": {
+        "rawTarget": { "type": "string", "minLength": 1 },
+        "resolvedPath": {
+          "oneOf": [
+            { "$ref": "#/$defs/relativePath" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "inventoryRepositoryReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "target"],
+      "properties": {
+        "kind": { "enum": ["code", "test", "contract"] },
+        "target": { "type": "string", "minLength": 1 }
+      }
+    },
+    "inventoryFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "blobId",
+        "title",
+        "candidateFamily",
+        "outboundMarkdownLinks",
+        "inboundMarkdownReferences",
+        "repositoryReferences"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "blobId": { "$ref": "#/$defs/commit" },
+        "title": { "type": "string", "minLength": 1 },
+        "candidateFamily": { "$ref": "#/$defs/id" },
+        "outboundMarkdownLinks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/inventoryLink" }
+        },
+        "inboundMarkdownReferences": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/relativePath" }
+        },
+        "repositoryReferences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/inventoryRepositoryReference" }
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "schemaVersion",
+        "releaseLine",
+        "repositoryId",
+        "sourceCommit",
+        "expectedFileCount",
+        "sourceDigest",
+        "files"
+      ],
+      "properties": {
+        "kind": { "const": "core-document-inventory" },
+        "schemaVersion": { "const": 1 },
+        "releaseLine": { "const": "V0_1_0a_1" },
+        "repositoryId": { "const": "repo-core" },
+        "sourceCommit": { "$ref": "#/$defs/coreSnapshotCommit" },
+        "expectedFileCount": { "type": "integer", "minimum": 0 },
+        "sourceDigest": { "$ref": "#/$defs/sha256" },
+        "files": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/inventoryFile" }
+        }
+      }
+    },
+    "familySource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "documentClass",
+        "authorityAssessment",
+        "provisionalDisposition",
+        "canonicalDestination",
+        "migrationStatus"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "documentClass": {
+          "enum": [
+            "design",
+            "plan",
+            "decision",
+            "risk",
+            "unknown",
+            "status-or-closeout",
+            "migration",
+            "verification-or-audit",
+            "contract-or-code-adjacent-reference",
+            "operational-readme",
+            "historical-working-record"
+          ]
+        },
+        "authorityAssessment": { "type": "string", "minLength": 1 },
+        "provisionalDisposition": {
+          "enum": [
+            "candidate-current",
+            "historical-input",
+            "duplicate",
+            "repo-local-keep",
+            "needs-review"
+          ]
+        },
+        "canonicalDestination": {
+          "oneOf": [
+            { "$ref": "#/$defs/relativePath" },
+            { "type": "null" }
+          ]
+        },
+        "migrationStatus": { "enum": ["classified", "migrated", "removed-from-core"] }
+      }
+    },
+    "familyAssignment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["familyId", "reviewState", "sources"],
+      "properties": {
+        "familyId": { "$ref": "#/$defs/id" },
+        "reviewState": { "enum": ["candidate", "pilot-reviewed"] },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/familySource" }
+        }
+      }
+    },
+    "familyMap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "schemaVersion", "releaseLine", "inventoryDigest", "families"],
+      "properties": {
+        "kind": { "const": "core-document-family-map" },
+        "schemaVersion": { "const": 1 },
+        "releaseLine": { "const": "V0_1_0a_1" },
+        "inventoryDigest": { "$ref": "#/$defs/sha256" },
+        "families": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/familyAssignment" }
+        }
+      }
+    },
+    "coverageSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "blobId",
+        "disposition",
+        "destinationPath",
+        "destinationSection",
+        "rationale"
+      ],
+      "properties": {
+        "path": { "$ref": "#/$defs/relativePath" },
+        "blobId": { "$ref": "#/$defs/commit" },
+        "disposition": {
+          "enum": ["canonical-section", "historical-note", "repo-local-keep", "discarded-duplicate"]
+        },
+        "destinationPath": {
+          "oneOf": [
+            { "$ref": "#/$defs/relativePath" },
+            { "type": "null" }
+          ]
+        },
+        "destinationSection": {
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    },
+    "activeReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourcePath", "line", "targetPath"],
+      "properties": {
+        "sourcePath": { "$ref": "#/$defs/relativePath" },
+        "line": { "type": "integer", "minimum": 1 },
+        "targetPath": { "$ref": "#/$defs/relativePath" }
+      }
+    },
+    "historicalReferenceAllowance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourcePath", "line", "targetPath", "lineSha256", "rationale"],
+      "properties": {
+        "sourcePath": { "$ref": "#/$defs/relativePath" },
+        "line": { "type": "integer", "minimum": 1 },
+        "targetPath": { "$ref": "#/$defs/relativePath" },
+        "lineSha256": { "$ref": "#/$defs/sha256" },
+        "rationale": { "type": "string", "minLength": 1 }
+      }
+    },
+    "familyCoverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "schemaVersion",
+        "releaseLine",
+        "familyId",
+        "sourceCommit",
+        "inventoryDigest",
+        "status",
+        "canonicalDocumentIds",
+        "sources",
+        "activeReferences",
+        "retainedHistoricalReferences",
+        "projectControlPublicationCommit",
+        "coreCleanupCommit"
+      ],
+      "properties": {
+        "kind": { "const": "core-document-family-coverage" },
+        "schemaVersion": { "const": 1 },
+        "releaseLine": { "const": "V0_1_0a_1" },
+        "familyId": { "$ref": "#/$defs/id" },
+        "sourceCommit": { "$ref": "#/$defs/coreSnapshotCommit" },
+        "inventoryDigest": { "$ref": "#/$defs/sha256" },
+        "status": { "enum": ["draft", "content-reviewed", "ready-for-deletion", "closed"] },
+        "canonicalDocumentIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "sources": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/coverageSource" }
+        },
+        "activeReferences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/activeReference" }
+        },
+        "retainedHistoricalReferences": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/historicalReferenceAllowance" }
+        },
+        "projectControlPublicationCommit": {
+          "oneOf": [
+            { "$ref": "#/$defs/commit" },
+            { "type": "null" }
+          ]
+        },
+        "coreCleanupCommit": {
+          "oneOf": [
+            { "$ref": "#/$defs/commit" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "enum": ["ready-for-deletion", "closed"] } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "canonicalDocumentIds": { "type": "array", "minItems": 1 },
+              "activeReferences": { "type": "array", "maxItems": 0 },
+              "projectControlPublicationCommit": { "$ref": "#/$defs/commit" }
+            },
+            "required": ["canonicalDocumentIds", "activeReferences", "projectControlPublicationCommit"]
+          }
+        },
+        {
+          "if": {
+            "properties": { "status": { "const": "closed" } },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": { "coreCleanupCommit": { "$ref": "#/$defs/commit" } },
+            "required": ["coreCleanupCommit"]
+          }
+        }
+      ]
+    }
+  }
+}
