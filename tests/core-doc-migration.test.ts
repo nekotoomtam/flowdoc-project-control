@@ -317,7 +317,48 @@ describe("stored Core migration closure", () => {
     record.path = "docs/unrelated.md";
     await writeFile(recordPath, JSON.stringify(record), "utf8");
     expect((await validateStoredCoreMigration(mismatchedDocument.projectRoot)).map(({ code }) => code))
-      .toContain("MIGRATION_DOCUMENT_DESTINATION_MISMATCH");
+      .toContain("MIGRATION_DESTINATION_DOCUMENT_MISSING");
+  });
+
+  it("accepts a canonical framing Document that is not a direct source destination", async () => {
+    const fixture = await createMigrationFixture();
+    fixture.coverage.canonicalDocumentIds = ["doc-core-route-overview", "doc-core-route"];
+    await writeStoredFixture(fixture);
+    await writeFile(join(fixture.projectRoot, canonicalCoreRouteOverview), "# Core route overview\n", "utf8");
+    await writeFile(join(fixture.projectRoot, "data", "documents", "core-route-overview.json"), JSON.stringify({
+      kind: "document",
+      id: "doc-core-route-overview",
+      title: "Core route overview",
+      path: canonicalCoreRouteOverview,
+      nodeIds: ["core-route"],
+      role: "current-state",
+      authority: "Reviewed fixture navigation.",
+      lifecycle: "active",
+      repositoryRefs: [{ repositoryId: "repo-core", commit: fixture.commit, pathOrContractId: sourcePath }],
+    }), "utf8");
+
+    expect(await validateStoredCoreMigration(fixture.projectRoot)).toEqual([]);
+  });
+
+  it("accepts draft coverage before canonical Document registration", async () => {
+    const fixture = await createMigrationFixture();
+    fixture.coverage.status = "draft";
+    fixture.coverage.canonicalDocumentIds = [];
+    fixture.coverage.projectControlPublicationCommit = null;
+    await writeStoredFixture(fixture);
+
+    expect(await validateStoredCoreMigration(fixture.projectRoot)).toEqual([]);
+  });
+
+  it("requires every content-reviewed destination to have a listed canonical Document", async () => {
+    const fixture = await createMigrationFixture();
+    fixture.coverage.status = "content-reviewed";
+    fixture.coverage.canonicalDocumentIds = [];
+    fixture.coverage.projectControlPublicationCommit = null;
+    await writeStoredFixture(fixture);
+
+    expect((await validateStoredCoreMigration(fixture.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_DESTINATION_DOCUMENT_MISSING");
   });
 
   it("schema-validates every stored family coverage artifact", async () => {

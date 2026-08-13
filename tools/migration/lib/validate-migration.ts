@@ -400,17 +400,9 @@ async function validateClosure(
       } else {
         const documentPath = documentPaths[0]!;
         listedDocumentPaths.push(documentPath);
-        if (!destinations.has(documentPath)) {
-          diagnostics.push(diagnostic(
-            "MIGRATION_DOCUMENT_DESTINATION_MISMATCH",
-            `Canonical Document ${documentId} does not register a covered destination.`,
-            file,
-            "Point every named canonical Document at one destination in this family coverage.",
-          ));
-        }
       }
     }
-    if (coverage.canonicalDocumentIds.length > 0) {
+    if (coverage.status !== "draft") {
       const listedPathCounts = uniqueCounts(listedDocumentPaths);
       for (const destinationPath of [...destinations].sort(compareCodeUnits)) {
         const listedCount = listedPathCounts.get(destinationPath) ?? 0;
