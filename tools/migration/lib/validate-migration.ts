@@ -1,7 +1,7 @@
 import { execFile as execFileCallback } from "node:child_process";
 import { createHash } from "node:crypto";
-import { access, readFile, readdir } from "node:fs/promises";
-import { join } from "node:path";
+import { access, lstat, readFile, readdir, realpath } from "node:fs/promises";
+import { isAbsolute, join, relative } from "node:path";
 import { promisify } from "node:util";
 
 import { Ajv2020, type ValidateFunction } from "ajv/dist/2020.js";
@@ -12,7 +12,8 @@ import type {
   CoreMarkdownInventory,
   FamilyCoverage,
 } from "../../../src/migration/types.js";
-import { compareCodeUnits, sortProjectDiagnostics } from "../../lib/errors.js";
+import { compareCodeUnits, ProjectValidationError, sortProjectDiagnostics } from "../../lib/errors.js";
+import { loadProjectSources } from "../../lib/load-sources.js";
 import { readGitMarkdownSnapshot } from "./git-snapshot.js";
 
 const execFile = promisify(execFileCallback);
@@ -43,6 +44,12 @@ export interface FamilyDeletionReadinessInput {
 }
 
 let migrationValidatorPromise: Promise<ValidateFunction> | undefined;
+
+interface StoredCoverageArtifact {
+  relativePath: string;
+  storageFamilyId: string;
+  value: FamilyCoverage;
+}
 
 function diagnostic(
   code: string,
@@ -129,37 +136,98 @@ function uniqueCounts(values: string[]): Map<string, number> {
   return counts;
 }
 
-async function loadDocumentRecords(projectRoot: string): Promise<Map<string, string>> {
-  const directory = join(projectRoot, "data", "documents");
-  if (!(await pathExists(directory))) {
-    return new Map();
-  }
-  const records = new Map<string, string>();
-  for (const entry of await readdir(directory, { withFileTypes: true })) {
-    if (!entry.isFile() || !entry.name.endsWith(".json")) {
-      continue;
-    }
-    try {
-      const value = JSON.parse(await readFile(join(directory, entry.name), "utf8")) as {
-        kind?: unknown;
-        id?: unknown;
-        path?: unknown;
-      };
-      if (value.kind === "document" && typeof value.id === "string" && typeof value.path === "string") {
-        records.set(value.id, value.path);
-      }
-    } catch {
-      // Canonical Project Control validation reports malformed source records.
+function duplicateFamilyDiagnostics(familyMap: CoreFamilyMap): ProjectDiagnostic[] {
+  const diagnostics: ProjectDiagnostic[] = [];
+  const counts = uniqueCounts(familyMap.families.map((family) => family.familyId));
+  for (const [familyId, count] of [...counts.entries()].sort(([left], [right]) => compareCodeUnits(left, right))) {
+    if (count > 1) {
+      diagnostics.push(diagnostic(
+        "MIGRATION_FAMILY_ID_DUPLICATE",
+        `Family ID ${familyId} appears ${count} times.`,
+        `${migrationDirectory}/family-map.json`,
+        "Keep exactly one family assignment object for every family ID.",
+      ));
     }
   }
-  return records;
+  return diagnostics;
+}
+
+async function loadDocumentRecords(projectRoot: string): Promise<{
+  records: Map<string, string[]>;
+  pathCounts: Map<string, number>;
+  diagnostics: ProjectDiagnostic[];
+}> {
+  try {
+    const loaded = await loadProjectSources(projectRoot);
+    const records = new Map<string, string[]>();
+    const pathCounts = new Map<string, number>();
+    for (const document of loaded.documents) {
+      const paths = records.get(document.value.id) ?? [];
+      paths.push(document.value.path);
+      records.set(document.value.id, paths);
+      pathCounts.set(document.value.path, (pathCounts.get(document.value.path) ?? 0) + 1);
+    }
+    return { records, pathCounts, diagnostics: [] };
+  } catch (error: unknown) {
+    if (error instanceof ProjectValidationError) {
+      return { records: new Map(), pathCounts: new Map(), diagnostics: error.diagnostics };
+    }
+    return {
+      records: new Map(),
+      pathCounts: new Map(),
+      diagnostics: [diagnostic(
+        "MIGRATION_DOCUMENT_RECORD_INVALID",
+        "Canonical Document records could not be validated.",
+        "data/documents",
+        "Repair canonical Project Control records before validating migration closure.",
+      )],
+    };
+  }
+}
+
+async function destinationState(
+  projectRoot: string,
+  destinationPath: string,
+): Promise<"missing" | "invalid" | "valid"> {
+  const destination = join(projectRoot, ...destinationPath.split("/"));
+  let status;
+  try {
+    status = await lstat(destination);
+  } catch {
+    return "missing";
+  }
+  if (
+    !/\.(?:md|markdown)$/iu.test(destinationPath) ||
+    !status.isFile() ||
+    status.isSymbolicLink()
+  ) {
+    return "invalid";
+  }
+  try {
+    const [rootPath, resolvedDestination] = await Promise.all([
+      realpath(projectRoot),
+      realpath(destination),
+    ]);
+    const containedPath = relative(rootPath, resolvedDestination);
+    if (
+      containedPath === "" ||
+      containedPath === ".." ||
+      containedPath.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
+      isAbsolute(containedPath)
+    ) {
+      return "invalid";
+    }
+  } catch {
+    return "invalid";
+  }
+  return "valid";
 }
 
 async function validateClosure(
   projectRoot: string,
   inventory: CoreMarkdownInventory,
   familyMap: CoreFamilyMap,
-  coverages: FamilyCoverage[],
+  coverages: StoredCoverageArtifact[],
 ): Promise<ProjectDiagnostic[]> {
   const diagnostics: ProjectDiagnostic[] = [];
   const familyPath = `${migrationDirectory}/family-map.json`;
@@ -219,14 +287,24 @@ async function validateClosure(
 
   const inventoryByPath = new Map(inventory.files.map((file) => [file.path, file]));
   const familiesById = new Map(familyMap.families.map((family) => [family.familyId, family]));
-  const documents = await loadDocumentRecords(projectRoot);
-  for (const coverage of coverages) {
-    const file = coverageFile(coverage.familyId);
-    const family = familiesById.get(coverage.familyId);
+  const documentResult = await loadDocumentRecords(projectRoot);
+  diagnostics.push(...documentResult.diagnostics);
+  for (const artifact of coverages) {
+    const coverage = artifact.value;
+    const file = artifact.relativePath;
+    if (coverage.familyId !== artifact.storageFamilyId) {
+      diagnostics.push(diagnostic(
+        "MIGRATION_COVERAGE_STORAGE_FAMILY_MISMATCH",
+        `Coverage stored for ${artifact.storageFamilyId} declares family ${coverage.familyId}.`,
+        file,
+        "Make the coverage familyId exactly match its families/<familyId>/ storage directory.",
+      ));
+    }
+    const family = familiesById.get(artifact.storageFamilyId);
     if (family === undefined) {
       diagnostics.push(diagnostic(
         "MIGRATION_COVERAGE_FAMILY_UNKNOWN",
-        `Coverage names unknown family ${coverage.familyId}.`,
+        `Coverage is stored for unknown family ${artifact.storageFamilyId}.`,
         file,
         "Bind coverage to one family from the stored family map.",
       ));
@@ -281,36 +359,75 @@ async function validateClosure(
         ));
       }
       if (source.destinationPath !== null) {
-        const destination = join(projectRoot, ...source.destinationPath.split("/"));
-        if (!(await pathExists(destination))) {
+        const state = await destinationState(projectRoot, source.destinationPath);
+        if (state === "missing") {
           diagnostics.push(diagnostic(
             "MIGRATION_DESTINATION_MISSING",
             `Canonical destination ${source.destinationPath} is absent.`,
             file,
             "Publish the named canonical Markdown destination before closing coverage.",
           ));
+        } else if (state === "invalid") {
+          diagnostics.push(diagnostic(
+            "MIGRATION_DESTINATION_INVALID",
+            `Canonical destination ${source.destinationPath} is not a regular in-root Markdown file.`,
+            file,
+            "Use a real .md or .markdown file inside the Project Control root, never a directory or symlink escape.",
+          ));
         }
       }
     }
+    const destinations = new Set(
+      coverage.sources.flatMap((source) => source.destinationPath === null ? [] : [source.destinationPath]),
+    );
+    const listedDocumentPaths: string[] = [];
     for (const documentId of coverage.canonicalDocumentIds) {
-      const documentPath = documents.get(documentId);
-      if (documentPath === undefined) {
+      const documentPaths = documentResult.records.get(documentId) ?? [];
+      if (documentPaths.length === 0) {
         diagnostics.push(diagnostic(
           "MIGRATION_DOCUMENT_RECORD_MISSING",
           `Canonical Document ${documentId} is not registered in data/documents.`,
           file,
           "Register every canonical Document ID before authorizing deletion.",
         ));
+      } else if (documentPaths.length > 1) {
+        diagnostics.push(diagnostic(
+          "MIGRATION_DOCUMENT_RECORD_AMBIGUOUS",
+          `Canonical Document ${documentId} is registered more than once.`,
+          file,
+          "Keep exactly one schema-valid data/documents record for every canonical Document ID.",
+        ));
       } else {
-        const destinations = new Set(
-          coverage.sources.flatMap((source) => source.destinationPath === null ? [] : [source.destinationPath]),
-        );
+        const documentPath = documentPaths[0]!;
+        listedDocumentPaths.push(documentPath);
         if (!destinations.has(documentPath)) {
           diagnostics.push(diagnostic(
             "MIGRATION_DOCUMENT_DESTINATION_MISMATCH",
             `Canonical Document ${documentId} does not register a covered destination.`,
             file,
             "Point every named canonical Document at one destination in this family coverage.",
+          ));
+        }
+      }
+    }
+    if (coverage.canonicalDocumentIds.length > 0) {
+      const listedPathCounts = uniqueCounts(listedDocumentPaths);
+      for (const destinationPath of [...destinations].sort(compareCodeUnits)) {
+        const listedCount = listedPathCounts.get(destinationPath) ?? 0;
+        const registeredCount = documentResult.pathCounts.get(destinationPath) ?? 0;
+        if (listedCount === 0) {
+          diagnostics.push(diagnostic(
+            "MIGRATION_DESTINATION_DOCUMENT_MISSING",
+            `Canonical destination ${destinationPath} has no listed Document record.`,
+            file,
+            "List exactly one canonical Document ID for every covered destination.",
+          ));
+        } else if (listedCount > 1 || registeredCount > 1) {
+          diagnostics.push(diagnostic(
+            "MIGRATION_DESTINATION_DOCUMENT_AMBIGUOUS",
+            `Canonical destination ${destinationPath} does not have exactly one unambiguous Document record.`,
+            file,
+            "List exactly one canonical Document ID for every covered destination.",
           ));
         }
       }
@@ -341,6 +458,10 @@ export async function validateStoredCoreMigration(projectRoot: string): Promise<
   }
   const inventory = inventoryResult.value as CoreMarkdownInventory;
   const familyMap = familyMapResult.value as CoreFamilyMap;
+  const duplicateDiagnostics = duplicateFamilyDiagnostics(familyMap);
+  if (duplicateDiagnostics.length > 0) {
+    return sortProjectDiagnostics([...diagnostics, ...duplicateDiagnostics]);
+  }
   const reviewedFamilies = familyMap.families
     .filter((family) => family.reviewState === "pilot-reviewed")
     .sort((left, right) => compareCodeUnits(left.familyId, right.familyId));
@@ -356,13 +477,18 @@ export async function validateStoredCoreMigration(projectRoot: string): Promise<
       }
     }
   }
-  const coverages: FamilyCoverage[] = [];
+  const coverages: StoredCoverageArtifact[] = [];
   for (const relativePath of [...coveragePaths].sort(compareCodeUnits)) {
     const required = reviewedFamilies.some((family) => coverageFile(family.familyId) === relativePath);
     const result = await loadArtifact(projectRoot, relativePath, required);
     diagnostics.push(...result.diagnostics);
     if (result.value !== undefined) {
-      coverages.push(result.value as FamilyCoverage);
+      const segments = relativePath.split("/");
+      coverages.push({
+        relativePath,
+        storageFamilyId: segments[segments.length - 2]!,
+        value: result.value as FamilyCoverage,
+      });
     }
   }
   if (reviewedFamilies.length === 0) {
@@ -508,10 +634,53 @@ function mentionDiagnostics(
   return diagnostics;
 }
 
+function externalFamilyDiagnostics(input: FamilyDeletionReadinessInput): ProjectDiagnostic[] {
+  const diagnostics = duplicateFamilyDiagnostics(input.familyMap);
+  const counts = uniqueCounts(input.familyMap.families.map((family) => family.familyId));
+  const selected = counts.get(input.coverage.familyId) ?? 0;
+  if (selected === 0) {
+    diagnostics.push(diagnostic(
+      "MIGRATION_COVERAGE_FAMILY_UNKNOWN",
+      `Coverage names unknown family ${input.coverage.familyId}.`,
+      coverageFile(input.coverage.familyId),
+      "Bind external readiness to exactly one family from the stored family map.",
+    ));
+  }
+  return diagnostics;
+}
+
+async function cleanupPreimageMatches(
+  input: FamilyDeletionReadinessInput,
+  source: FamilyCoverage["sources"][number],
+  captured: { blobId: string; content: string } | undefined,
+): Promise<boolean> {
+  const inventory = input.inventory.files.find((candidate) => candidate.path === source.path);
+  if (
+    captured === undefined ||
+    inventory === undefined ||
+    captured.blobId.toLowerCase() !== source.blobId.toLowerCase() ||
+    inventory.blobId.toLowerCase() !== source.blobId.toLowerCase()
+  ) {
+    return false;
+  }
+  try {
+    const [headBlob, headContent] = await Promise.all([
+      runGit(input.sourceRoot, ["rev-parse", `HEAD:${source.path}`]),
+      runGit(input.sourceRoot, ["show", `HEAD:${source.path}`]),
+    ]);
+    return (
+      headBlob.toString("utf8").trim().toLowerCase() === source.blobId.toLowerCase() &&
+      headContent.equals(Buffer.from(captured.content, "utf8"))
+    );
+  } catch {
+    return false;
+  }
+}
+
 export async function evaluateFamilyDeletionReadiness(
   input: FamilyDeletionReadinessInput,
 ): Promise<DeletionReadiness> {
-  const diagnostics: ProjectDiagnostic[] = [];
+  const diagnostics: ProjectDiagnostic[] = externalFamilyDiagnostics(input);
   const file = coverageFile(input.coverage.familyId);
   const deletionSources = input.coverage.sources
     .filter((source) => source.disposition !== "repo-local-keep")
@@ -601,6 +770,18 @@ export async function evaluateFamilyDeletionReadiness(
       ));
       continue;
     }
+    if (
+      phase === "cleanup-candidate" &&
+      source.disposition !== "repo-local-keep" &&
+      !(await cleanupPreimageMatches(input, source, snapshotByPath.get(source.path)))
+    ) {
+      diagnostics.push(diagnostic(
+        "MIGRATION_CLEANUP_PREIMAGE_MISMATCH",
+        `Staged deletion ${source.path} does not remove the captured source blob.`,
+        source.path,
+        "Restore the captured blob at HEAD before staging the authorized deletion.",
+      ));
+    }
     if (exists) {
       const captured = snapshotByPath.get(source.path);
       const inventory = input.inventory.files.find((candidate) => candidate.path === source.path);
@@ -629,7 +810,7 @@ export async function evaluateFamilyDeletionReadiness(
 export async function verifyFamilyCleanup(
   input: FamilyDeletionReadinessInput,
 ): Promise<DeletionReadiness> {
-  const diagnostics: ProjectDiagnostic[] = [];
+  const diagnostics: ProjectDiagnostic[] = externalFamilyDiagnostics(input);
   const file = coverageFile(input.coverage.familyId);
   const deletionSources = input.coverage.sources
     .filter((source) => source.disposition !== "repo-local-keep")

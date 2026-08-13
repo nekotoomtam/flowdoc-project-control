@@ -132,6 +132,14 @@ export async function runCoreDocsCheck(
   }
   const familyId = options.family!;
   const artifacts = await readStoredArtifacts(projectRoot, familyId);
+  if (artifacts.coverage.familyId !== familyId) {
+    throw new ProjectValidationError([{
+      code: "MIGRATION_COVERAGE_STORAGE_FAMILY_MISMATCH",
+      message: `Requested family ${familyId} loaded coverage declaring ${artifacts.coverage.familyId}.`,
+      file: `migrations/V0_1_0a_1/core/families/${familyId}/coverage.json`,
+      hint: "Make the stored coverage familyId exactly match the explicitly requested family.",
+    }]);
+  }
   const input = {
     projectRoot,
     sourceRoot: options.sourceRoot!,

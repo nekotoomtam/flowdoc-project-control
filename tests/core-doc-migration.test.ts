@@ -1,6 +1,6 @@
 import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { promisify } from "node:util";
@@ -253,6 +253,114 @@ describe("stored Core migration closure", () => {
     expect((await validateStoredCoreMigration(fixture.projectRoot)).map(({ code }) => code))
       .toContain("MIGRATION_ARTIFACT_SCHEMA_INVALID");
   });
+
+  it("binds coverage content to its storage family and the requested external family", async () => {
+    const fixture = await createMigrationFixture({ secondSource: true });
+    const family = fixture.familyMap.families[0]!;
+    const secondAssignment = family.sources.find((source) => source.path.endsWith("SECOND.md"))!;
+    const secondCoverage = fixture.coverage.sources.find((source) => source.path.endsWith("SECOND.md"))!;
+    family.sources = family.sources.filter((source) => source.path === sourcePath);
+    fixture.familyMap.families.push({
+      familyId: "other-family",
+      reviewState: "candidate",
+      sources: [secondAssignment],
+    });
+    fixture.coverage.familyId = "other-family";
+    fixture.coverage.sources = [secondCoverage];
+    await writeStoredFixture(fixture);
+
+    expect((await validateStoredCoreMigration(fixture.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_COVERAGE_STORAGE_FAMILY_MISMATCH");
+    await expect(runCoreDocsCheck([
+      "--source-root", fixture.sourceRoot,
+      "--family", "core-route",
+    ], fixture.projectRoot)).rejects.toMatchObject({
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ code: "MIGRATION_COVERAGE_STORAGE_FAMILY_MISMATCH" }),
+      ]),
+    });
+  });
+
+  it("rejects duplicate family IDs in both stored and external readiness inputs", async () => {
+    const fixture = await createMigrationFixture({ secondSource: true });
+    const sources = fixture.familyMap.families[0]!.sources;
+    fixture.familyMap.families = [
+      { familyId: "core-route", reviewState: "pilot-reviewed", sources: [sources[0]!] },
+      { familyId: "core-route", reviewState: "pilot-reviewed", sources: [sources[1]!] },
+    ];
+    await writeStoredFixture(fixture);
+
+    expect((await validateStoredCoreMigration(fixture.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_FAMILY_ID_DUPLICATE");
+    expect(diagnosticCodes(await evaluateFamilyDeletionReadiness(fixture)))
+      .toContain("MIGRATION_FAMILY_ID_DUPLICATE");
+  });
+
+  it("requires regular in-root Markdown destinations and unambiguous canonical Documents", async () => {
+    const directoryDestination = await createMigrationFixture();
+    await writeStoredFixture(directoryDestination);
+    await rm(join(directoryDestination.projectRoot, destinationPath));
+    await mkdir(join(directoryDestination.projectRoot, destinationPath));
+    expect((await validateStoredCoreMigration(directoryDestination.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_DESTINATION_INVALID");
+
+    const escapedDestination = await createMigrationFixture();
+    await writeStoredFixture(escapedDestination);
+    const outside = await mkdtemp(join(tmpdir(), "flowdoc-outside-destination-"));
+    await rm(join(escapedDestination.projectRoot, destinationPath));
+    await symlink(outside, join(escapedDestination.projectRoot, destinationPath), "junction");
+    expect((await validateStoredCoreMigration(escapedDestination.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_DESTINATION_INVALID");
+
+    const ambiguousDocument = await createMigrationFixture();
+    await writeStoredFixture(ambiguousDocument);
+    const originalRecord = await readFile(
+      join(ambiguousDocument.projectRoot, "data", "documents", "core-route.json"),
+      "utf8",
+    );
+    await writeFile(
+      join(ambiguousDocument.projectRoot, "data", "documents", "duplicate.json"),
+      originalRecord,
+      "utf8",
+    );
+    expect((await validateStoredCoreMigration(ambiguousDocument.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_DOCUMENT_RECORD_AMBIGUOUS");
+    await expect(runCoreDocsCheck([
+      "--source-root", ambiguousDocument.sourceRoot,
+      "--family", "core-route",
+    ], ambiguousDocument.projectRoot)).rejects.toMatchObject({
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ code: "MIGRATION_DOCUMENT_RECORD_AMBIGUOUS" }),
+      ]),
+    });
+
+    const malformedDocument = await createMigrationFixture();
+    await writeStoredFixture(malformedDocument);
+    await writeFile(
+      join(malformedDocument.projectRoot, "data", "documents", "malformed.json"),
+      "{",
+      "utf8",
+    );
+    expect((await validateStoredCoreMigration(malformedDocument.projectRoot)).map(({ code }) => code))
+      .toContain("JSON_PARSE_ERROR");
+  });
+
+  it("rejects a covered destination registered by an additional unlisted Document ID", async () => {
+    const fixture = await createMigrationFixture();
+    await writeStoredFixture(fixture);
+    const recordPath = join(fixture.projectRoot, "data", "documents", "core-route.json");
+    const duplicatePathRecord = JSON.parse(await readFile(recordPath, "utf8")) as { id: string; title: string };
+    duplicatePathRecord.id = "doc-core-route-copy";
+    duplicatePathRecord.title = "Core route copy";
+    await writeFile(
+      join(fixture.projectRoot, "data", "documents", "core-route-copy.json"),
+      JSON.stringify(duplicatePathRecord),
+      "utf8",
+    );
+
+    expect((await validateStoredCoreMigration(fixture.projectRoot)).map(({ code }) => code))
+      .toContain("MIGRATION_DESTINATION_DOCUMENT_AMBIGUOUS");
+  });
 });
 
 describe("external Core deletion readiness", () => {
@@ -341,6 +449,19 @@ describe("external Core deletion readiness", () => {
     await git(fixture.sourceRoot, ["add", "runtime.ts"]);
     expect(diagnosticCodes(await evaluateFamilyDeletionReadiness({ ...fixture, phase: "cleanup-candidate" })))
       .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+  });
+
+  it("rejects a staged deletion whose HEAD preimage drifted from the captured blob", async () => {
+    const fixture = await createMigrationFixture();
+    await writeFile(join(fixture.sourceRoot, sourcePath), "# Later committed source\n", "utf8");
+    await git(fixture.sourceRoot, ["add", sourcePath]);
+    await git(fixture.sourceRoot, ["commit", "-m", "later source change"]);
+    await git(fixture.sourceRoot, ["rm", "--", sourcePath]);
+
+    expect(diagnosticCodes(await evaluateFamilyDeletionReadiness({
+      ...fixture,
+      phase: "cleanup-candidate",
+    }))).toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
   });
 
   it("fails cleanup verification when any covered source remains", async () => {
