@@ -27,6 +27,7 @@ import { createProjectFixture } from "./fixtures/project-source.js";
 const execFile = promisify(execFileCallback);
 const destinationPath = "docs/versions/V0_1_0a_1/core/core-route/route.md";
 const sourcePath = "docs/CORE_ROUTE_SAMPLE.md";
+const canonicalCoreRouteOverview = "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md";
 const canonicalCoreRouteLeaf = "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md";
 const coreRouteSources = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
@@ -44,6 +45,42 @@ const requiredCoreRouteHeadings = [
   "## Historical Design Notes",
   "## Provenance",
 ];
+
+function expectRealCoreRouteCoverageLifecycle(
+  coverage: FamilyCoverage,
+  inventory: CoreMarkdownInventory,
+): void {
+  const inventoryBlobs = new Map(inventory.files.map((file) => [file.path, file.blobId]));
+  let expectedDocumentIds: string[];
+
+  if (coverage.status === "draft") {
+    expectedDocumentIds = [];
+  } else if (coverage.status === "content-reviewed") {
+    expectedDocumentIds = [
+      "doc-core-route-overview",
+      "doc-core-route-retained-contracts",
+    ];
+  } else {
+    throw new Error(`Unexpected Core route coverage lifecycle: ${coverage.status}`);
+  }
+
+  expect(coverage).toMatchObject({
+    familyId: "core-route",
+    sourceCommit: inventory.sourceCommit,
+    inventoryDigest: inventory.sourceDigest,
+    activeReferences: [],
+    retainedHistoricalReferences: [],
+    projectControlPublicationCommit: null,
+    coreCleanupCommit: null,
+  });
+  expect(coverage.canonicalDocumentIds).toEqual(expectedDocumentIds);
+  expect(coverage.sources.map((source) => source.path)).toEqual(coreRouteSources);
+  expect(coverage.sources.map((source) => source.blobId)).toEqual(
+    coreRouteSources.map((path) => inventoryBlobs.get(path)),
+  );
+  expect([...new Set(coverage.sources.map((source) => source.destinationPath))])
+    .toEqual([canonicalCoreRouteLeaf]);
+}
 
 interface MigrationFixture {
   projectRoot: string;
@@ -582,25 +619,48 @@ describe("real Project Control Core route pilot", () => {
       join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
       "utf8",
     )) as FamilyCoverage;
-    const inventoryBlobs = new Map(inventory.files.map((file) => [file.path, file.blobId]));
 
-    expect(coverage).toMatchObject({
-      familyId: "core-route",
-      sourceCommit: inventory.sourceCommit,
-      inventoryDigest: inventory.sourceDigest,
+    expectRealCoreRouteCoverageLifecycle(coverage, inventory);
+  });
+
+  it("accepts only coherent draft and content-reviewed coverage lifecycles", async () => {
+    const inventory = JSON.parse(await readFile(
+      join(process.cwd(), "migrations/V0_1_0a_1/core/inventory.json"),
+      "utf8",
+    )) as CoreMarkdownInventory;
+    const storedCoverage = JSON.parse(await readFile(
+      join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
+      "utf8",
+    )) as FamilyCoverage;
+    const reviewedDocumentIds = [
+      "doc-core-route-overview",
+      "doc-core-route-retained-contracts",
+    ];
+    const draftCoverage: FamilyCoverage = {
+      ...storedCoverage,
       status: "draft",
       canonicalDocumentIds: [],
-      activeReferences: [],
-      retainedHistoricalReferences: [],
-      projectControlPublicationCommit: null,
-      coreCleanupCommit: null,
-    });
-    expect(coverage.sources.map((source) => source.path)).toEqual(coreRouteSources);
-    expect(coverage.sources.map((source) => source.blobId)).toEqual(
-      coreRouteSources.map((path) => inventoryBlobs.get(path)),
-    );
-    expect([...new Set(coverage.sources.map((source) => source.destinationPath))])
-      .toEqual([canonicalCoreRouteLeaf]);
+    };
+    const reviewedCoverage: FamilyCoverage = {
+      ...storedCoverage,
+      status: "content-reviewed",
+      canonicalDocumentIds: reviewedDocumentIds,
+    };
+
+    expect(() => expectRealCoreRouteCoverageLifecycle(draftCoverage, inventory)).not.toThrow();
+    expect(() => expectRealCoreRouteCoverageLifecycle(reviewedCoverage, inventory)).not.toThrow();
+    expect(() => expectRealCoreRouteCoverageLifecycle({
+      ...draftCoverage,
+      canonicalDocumentIds: reviewedDocumentIds,
+    }, inventory)).toThrow();
+    expect(() => expectRealCoreRouteCoverageLifecycle({
+      ...reviewedCoverage,
+      canonicalDocumentIds: [],
+    }, inventory)).toThrow();
+    expect(() => expectRealCoreRouteCoverageLifecycle({
+      ...reviewedCoverage,
+      status: "ready-for-deletion",
+    }, inventory)).toThrow();
   });
 
   it("publishes the bounded canonical leaf and an explicitly incomplete Core document map", async () => {
@@ -615,5 +675,42 @@ describe("real Project Control Core route pilot", () => {
     expect(documentMap).toContain("Core consolidation is incomplete");
     expect(documentMap).toContain("`CORE_OVERVIEW.md` is intentionally unpublished");
     expect(documentMap).not.toMatch(/\]\([^)]*CORE_OVERVIEW\.md[^)]*\)/u);
+  });
+
+  it("keeps canonical lifecycle wording true across Project Control registration", async () => {
+    const [overview, leaf] = await Promise.all([
+      readFile(join(process.cwd(), canonicalCoreRouteOverview), "utf8"),
+      readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8"),
+    ]);
+    const canonicalFamily = `${overview}\n${leaf}`;
+
+    expect(canonicalFamily).not.toMatch(/documentation draft|this draft/iu);
+    expect(canonicalFamily).not.toMatch(/does not publish a Project Control truth record/iu);
+    expect(canonicalFamily).not.toMatch(/no canonical Document IDs/iu);
+    expect(overview).toMatch(
+      /bounded\s+`core-route`\s+truth\s+may\s+be\s+registered\s+as\s+`current`/iu,
+    );
+    expect(canonicalFamily).toContain("the parent Core node remains `unknown`");
+    expect(canonicalFamily).toMatch(
+      /Neither\s+registration\s+nor\s+content\s+review\s+authorizes\s+(?:source\s+or\s+reference\s+)?deletion/iu,
+    );
+    expect(canonicalFamily).toMatch(/cleanup\s+evidence\s+remains\s+pending/iu);
+  });
+
+  it("distinguishes deprecated route values from unannotated route types", async () => {
+    const [overview, leaf] = await Promise.all([
+      readFile(join(process.cwd(), canonicalCoreRouteOverview), "utf8"),
+      readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8"),
+    ]);
+
+    expect(overview).not.toMatch(/deprecated\s+source\s+files/iu);
+    expect(overview).toMatch(/route\s+source\s+files\s+remain\s+internal/iu);
+    expect(overview).toMatch(
+      /exported\s+route\s+constants\s+and\s+response-helper\s+functions\s+carry\s+`@deprecated`/iu,
+    );
+    expect(overview).toMatch(/types\s+and\s+interfaces\s+remain\s+unannotated/iu);
+    expect(leaf).toMatch(/route\s+constants\s+and\s+response-helper\s+functions\s+are\s+marked\s+`@deprecated`/u);
+    expect(leaf).toMatch(/route\s+types\s+and\s+interfaces\s+remain\s+unannotated/u);
+    expect(leaf).not.toMatch(/constants,\s+types,\s+and\s+response\s+helpers\s+remain\s+marked\s+deprecated/u);
   });
 });

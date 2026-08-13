@@ -56,10 +56,11 @@ not re-export `./generation/apiRoute.js` or
 `./generation/artifactApiRoute.js`; route-shaped helpers are therefore absent
 from the Core package public entrypoint.
 
-Both route source files still exist under `src/generation/`. Their route
-constants, types, and response helpers remain marked deprecated and are
-internal source rather than public entrypoint exports. Their continued presence
-does not restore public route ownership and does not authorize their deletion.
+Both route source files still exist under `src/generation/`. Their exported
+route constants and response-helper functions are marked `@deprecated`; route
+types and interfaces remain unannotated. All remain internal source rather than
+public entrypoint exports. Their continued presence does not restore public
+route ownership and does not authorize their deletion.
 
 ## Verification Anchors
 
@@ -80,7 +81,7 @@ does not restore public route ownership and does not authorize their deletion.
 - The deprecated internal route files duplicate some HTTP vocabulary. They can
   drift from Backend behavior while they remain, so they are evidence of the
   boundary, not the current implementation authority for HTTP envelopes.
-- This draft does not independently revalidate Backend route implementation or
+- This document does not independently revalidate Backend route implementation or
   authorize removal of any Core source or reference.
 
 ## Historical Design Notes
@@ -102,7 +103,9 @@ context, not a current rollout plan, schedule, or source-deletion instruction.
 
 Current claims were checked against Core source and tests captured at commit
 `76a2f2311a898e781f53773390d47b05812911e4`. The four historical inputs and
-their exact Git blobs are mapped once in the draft
+their exact Git blobs are mapped once in the
 [core-route coverage record](../../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).
-The coverage has no canonical Document IDs or publication/cleanup commits and
-does not authorize deletion.
+Registration and lifecycle status belong to Project Control records and the
+coverage state; this document does not grant them. Neither registration nor
+content review authorizes deletion, and cleanup evidence remains pending until
+separate readiness and cleanup gates pass.
