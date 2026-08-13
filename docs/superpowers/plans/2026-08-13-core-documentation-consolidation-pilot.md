@@ -70,6 +70,7 @@ Core worktree:
 README.md
 docs/PHASE_LEDGER.md
 tests/coreRouteCanonicalMigrationGuard.test.ts
+tests/canonicalDocumentationSpine.test.ts                 # separate test-only ancestry correction
 docs/CORE_ROUTE_DEEXPORT_PLAN.md                         # delete
 docs/CORE_ROUTE_DEPRECATION_WINDOW.md                   # delete
 docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md       # delete
@@ -788,7 +789,7 @@ git commit -m "docs: register reviewed Core route truth"
 
 Record this commit as `$projectControlPublicationCommit`; do not write it into coverage yet because reference repair and deletion readiness are not complete.
 
-### Task 7: Repair Core References and Replace Document-Coupled Tests
+### Task 7: Repair Core References, Restore the Guard Contract, and Stabilize the Core Handoff
 
 **Files:**
 - Create: `tests/coreRouteCanonicalMigrationGuard.test.ts` in Core
@@ -798,10 +799,12 @@ Record this commit as `$projectControlPublicationCommit`; do not write it into c
 - Delete: `tests/coreRouteDeprecationWindow.test.ts` in Core
 - Delete: `tests/coreRouteRetainedContractRewrite.test.ts` in Core
 - Delete: `tests/coreRouteWindowCPublicExportRemoval.test.ts` in Core
+- Modify in a separate correction commit: `tests/canonicalDocumentationSpine.test.ts` in Core
 
 **Interfaces:**
 - Consumes: the active canonical Project Control paths and retained Core source/tests.
-- Produces: no active Core navigation to the four source documents and one code-focused guard independent of Project Control checkout availability.
+- Produces: `$coreTask7GuardCommit`, the amended seven-path reference-repair/guard commit; `$coreBaselineTestCorrectionCommit`, a separate one-path test correction; and `$coreReferenceRepairCommit`, the final clean Core handoff commit captured only after both commits pass fresh scoped review.
+- Preserves: deletion authority remains exclusively owned by Task 8. Neither Task 7 commit creates historical allowances, changes coverage, deletes a source document, or claims readiness.
 
 - [ ] **Step 1: Write the consolidated guard before deleting old tests**
 
@@ -817,7 +820,25 @@ expect(generationRoute).toContain("@deprecated Window B compatibility export");
 expect(artifactRoute).toContain("@deprecated Window B compatibility export");
 ```
 
-Also prove retained tests name `assessVNextGenerationReadiness`, `createVNextArtifactManifestPlan`, `createVNextArtifactJobPlan`, and `advanceVNextArtifactJob`, with no named import of route response helpers.
+Also prove retained tests name `assessVNextGenerationReadiness`, `safeParseVNextGenerationRequest`, `createVNextArtifactManifestPlan`, `createVNextArtifactJobPlan`, and `advanceVNextArtifactJob`. Parse every named-import block whose module specifier is exactly `../src/index.js`; normalize `type` imports and aliases to their imported names. For each of the two retained tests independently, reject every member of this exact set:
+
+```ts
+const FORBIDDEN_ROUTE_RESPONSE_HELPERS = [
+  "createVNextGenerationApiRouteResponse",
+  "createVNextArtifactGenerationApiRouteResponse",
+  "createVNextArtifactStatusApiRouteResponse",
+  "createVNextSessionArtifactListApiRouteResponse",
+  "createVNextArtifactDownloadMetadataApiRouteResponse",
+] as const
+```
+
+Restore the remaining code-focused assertions formerly owned by the four deleted tests:
+
+- `tests/generationApiRoute.test.ts` and `tests/artifactApiRoute.test.ts` are absent;
+- neither `src/generation/apiRoute.ts` nor `src/generation/artifactApiRoute.ts` contains an import whose specifier names `flowdoc-vnext-backend`;
+- the generation route source names the exact Backend owner `flowdoc-vnext-backend/src/routes/generationRoute.ts`, retained owner `src/generation/runtime.ts`, and retained helper `assessVNextGenerationReadiness`; `src/generation/runtime.ts` and its retained test keep both `assessVNextGenerationReadiness` and `safeParseVNextGenerationRequest`;
+- the artifact route source names the exact Backend owner `flowdoc-vnext-backend/src/routes/artifactRoute.ts` and retained owners `src/generation/artifactManifest.ts` and `src/generation/artifactJob.ts`; those retained owner files and their retained test keep `createVNextArtifactManifestPlan`, `createVNextArtifactJobPlan`, and `advanceVNextArtifactJob`;
+- `@deprecated Window B compatibility export` is attached to the exported route constants and the five route response helper functions that actually carry the marker. Do not assert that the route types or interfaces are deprecated.
 
 - [ ] **Step 2: Run the new guard alongside the four old tests**
 
@@ -869,12 +890,230 @@ Expected: PASS.
 git add README.md docs/PHASE_LEDGER.md tests
 git diff --cached --check
 git commit -m "test: detach Core route guards from historical docs"
-$coreReferenceRepairCommit = (git rev-parse HEAD).Trim()
-if ($coreReferenceRepairCommit -notmatch '^[0-9a-f]{40}$') { throw "Core reference-repair commit is not a 40-character Git commit." }
-if (git status --short) { throw "Core worktree is not clean after the Task 7 commit." }
+$coreTask7GuardCommit = (git rev-parse HEAD).Trim()
+if ($coreTask7GuardCommit -notmatch '^[0-9a-f]{40}$') { throw "Core Task 7 guard commit is not a 40-character Git commit." }
+if (git status --short) { throw "Core worktree is not clean after the Task 7 guard commit." }
 ```
 
-Record `$coreReferenceRepairCommit` in the ignored Task 7 report. From Project Control, rerun the normal external check against that exact clean Core commit:
+Do not capture `$coreReferenceRepairCommit` yet. The seven-path commit is not the final Task 8 handoff until the review findings below are corrected and both resulting commits are independently reviewed.
+
+- [ ] **Step 7: Reproduce the retained-import review finding as a RED**
+
+Task 7 already has an unpushed seven-path commit at the start of this correction round. Require its exact execution state before editing:
+
+```powershell
+$coreTask7OriginalCommit = (git rev-parse HEAD).Trim()
+if ($coreTask7OriginalCommit -ne '1b6945e76f39fe59f4660246601df460501f5cf9') { throw "Unexpected Core Task 7 review-finding base." }
+$coreTask7BaseCommit = (git rev-parse "$coreTask7OriginalCommit^").Trim()
+if ($coreTask7BaseCommit -ne '76a2f2311a898e781f53773390d47b05812911e4') { throw "Unexpected Core Task 7 parent." }
+if (git status --short) { throw "Core worktree must be clean before the Task 7 fix round." }
+```
+
+First add table-driven mutation tests inside `tests/coreRouteCanonicalMigrationGuard.test.ts`. Keep the actual original named-import block from each retained test, including every original imported name. Add one distinct sentinel named-import block and one block containing the injected forbidden helper, then place the helper block first, middle, and last across equivalent three-block fixtures. Cover both retained tests × all five forbidden helpers × all three placements.
+
+For every case, compare the complete sorted imported-name union, not mere membership of the injected helper. The expected union is the original first-block names below plus the sentinel name plus the injected helper:
+
+```ts
+const EXPECTED_RETAINED_IMPORTS = {
+  "tests/generationRuntimeRetainedContract.test.ts": [
+    "assessVNextGenerationReadiness",
+    "safeParseVNextGenerationRequest",
+  ],
+  "tests/artifactRetainedContract.test.ts": [
+    "advanceVNextArtifactJob",
+    "createVNextArtifactJobPlan",
+    "createVNextArtifactManifestPlan",
+    "VNextArtifactJobRecord",
+    "VNextArtifactManifestRecord",
+  ],
+} as const
+const MULTI_BLOCK_SENTINEL = "VNextGenerationReadinessResult"
+```
+
+Normalize `type` and `imported as local` syntax before union comparison. Require exact equality with no missing or unexpected imported name. This matrix must fail an implementation that reads only the first block, only the last block, or overwrites earlier results with a later block. Run:
+
+```powershell
+npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts
+```
+
+Expected: FAIL because the current `source.match(...)` implementation inspects only one matching import block and cannot return the complete expected union. Preserve this RED output in the ignored Task 7 report. Then add the direct assertions from Step 1 before changing the parser; these assertions may already pass, but the first/middle/last union matrix must remain RED until all matching blocks are collected.
+
+- [ ] **Step 8: Make the consolidated guard complete and amend only the unpushed Task 7 commit**
+
+Replace the single-match parser with global collection over all exact `../src/index.js` named-import blocks. Flatten all imported names, strip a leading `type`, normalize `imported as local` to `imported`, and keep both retained test files under the same five-symbol forbidden set. Add the absence, no-Backend-import, exact retained-owner/helper, and factual deprecation-anchor assertions from Step 1.
+
+Run from Core:
+
+```powershell
+npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts tests/generationRuntimeRetainedContract.test.ts tests/artifactRetainedContract.test.ts
+```
+
+Expected: PASS. Before amending, prove the correction delta contains only the consolidated guard:
+
+```powershell
+$fixPaths = @(git diff --name-only)
+if ($fixPaths.Count -ne 1 -or $fixPaths[0] -ne 'tests/coreRouteCanonicalMigrationGuard.test.ts') { throw "Task 7 fix round changed more than the consolidated guard." }
+git add tests/coreRouteCanonicalMigrationGuard.test.ts
+git diff --cached --check
+git commit --amend --no-edit
+$coreTask7GuardCommit = (git rev-parse HEAD).Trim()
+if ($coreTask7GuardCommit -eq $coreTask7OriginalCommit) { throw "Task 7 amendment did not create a corrected commit." }
+if ($coreTask7GuardCommit -notmatch '^[0-9a-f]{40}$') { throw "Amended Task 7 guard commit is invalid." }
+if ((git rev-parse HEAD).Trim() -ne $coreTask7GuardCommit) { throw "Core HEAD does not equal the recaptured Task 7 guard commit." }
+if (git status --short) { throw "Core worktree is not clean after the amended Task 7 commit." }
+if ((git rev-parse "$coreTask7GuardCommit^").Trim() -ne $coreTask7BaseCommit) { throw "Amended Task 7 guard parent drifted." }
+$expectedTask7Paths = @(
+  'README.md',
+  'docs/PHASE_LEDGER.md',
+  'tests/coreRouteCanonicalMigrationGuard.test.ts',
+  'tests/coreRouteDeexportPlan.test.ts',
+  'tests/coreRouteDeprecationWindow.test.ts',
+  'tests/coreRouteRetainedContractRewrite.test.ts',
+  'tests/coreRouteWindowCPublicExportRemoval.test.ts'
+) | Sort-Object
+$task7Paths = @(git diff --name-only $coreTask7BaseCommit $coreTask7GuardCommit) | Sort-Object
+if (Compare-Object $expectedTask7Paths $task7Paths) { throw "Amended Task 7 range is not the exact seven-path change." }
+```
+
+Immediately regenerate the ignored review package with the updated hashes by running the required `review-package` helper from `superpowers:subagent-driven-development` with Core as the Git working directory. Before changing directories, resolve the tracked Project Control path `docs/superpowers/plans/2026-08-13-core-documentation-consolidation-pilot.md` to its runtime absolute path and pass that value as the plan argument; pass `$coreTask7BaseCommit` as BASE, `$coreTask7GuardCommit` as HEAD, and an ignored output filename containing both recaptured short hashes. Verify its header is exactly `# Review package: $coreTask7BaseCommit..$coreTask7GuardCommit`. Never reuse a package generated for `$coreTask7OriginalCommit`.
+
+The exact seven-path invariant applies only to `$coreTask7BaseCommit..$coreTask7GuardCommit`; it does not describe the later final handoff range.
+
+- [ ] **Step 9: Obtain a fresh scoped review of the amended seven-path Task 7 commit**
+
+Give a fresh reviewer the approved design, this amended plan, the original two Important findings, the complete-union RED mutation evidence, focused GREEN output, and the freshly generated package for exactly `$coreTask7BaseCommit..$coreTask7GuardCommit`. Require explicit verification that every named import block is inspected, all five forbidden helpers are rejected in both retained tests, every restored code-focused assertion is factual, only the consolidated guard changed during the fix round, and the full seven-path Task 7 scope remains exact.
+
+Critical or Important findings require a new RED and another guard-only amendment. For every such review-driven amendment, run the complete focused gates and then immediately execute this identity refresh before requesting the next review:
+
+```powershell
+$previousCoreTask7GuardCommit = $coreTask7GuardCommit
+git add tests/coreRouteCanonicalMigrationGuard.test.ts
+git diff --cached --check
+git commit --amend --no-edit
+$coreTask7GuardCommit = (git rev-parse HEAD).Trim()
+if ($coreTask7GuardCommit -notmatch '^[0-9a-f]{40}$') { throw "Review-amended Task 7 guard commit is invalid." }
+if ($coreTask7GuardCommit -eq $previousCoreTask7GuardCommit) { throw "Review amendment did not change the Task 7 guard commit." }
+if ((git rev-parse HEAD).Trim() -ne $coreTask7GuardCommit) { throw "Core HEAD does not equal the review-amended guard commit." }
+if ((git rev-parse "$coreTask7GuardCommit^").Trim() -ne $coreTask7BaseCommit) { throw "Review-amended guard parent drifted." }
+if (git status --short) { throw "Core must be clean after the review-driven guard amendment." }
+$reviewFixPaths = @(git diff --name-only $previousCoreTask7GuardCommit $coreTask7GuardCommit)
+if ($reviewFixPaths.Count -ne 1 -or $reviewFixPaths[0] -ne 'tests/coreRouteCanonicalMigrationGuard.test.ts') { throw "Review-driven guard correction changed another path." }
+$expectedTask7Paths = @(
+  'README.md',
+  'docs/PHASE_LEDGER.md',
+  'tests/coreRouteCanonicalMigrationGuard.test.ts',
+  'tests/coreRouteDeexportPlan.test.ts',
+  'tests/coreRouteDeprecationWindow.test.ts',
+  'tests/coreRouteRetainedContractRewrite.test.ts',
+  'tests/coreRouteWindowCPublicExportRemoval.test.ts'
+) | Sort-Object
+$task7Paths = @(git diff --name-only $coreTask7BaseCommit $coreTask7GuardCommit) | Sort-Object
+if (Compare-Object $expectedTask7Paths $task7Paths) { throw "Review-amended Task 7 range drifted from its exact paths." }
+```
+
+Regenerate the review package immediately from the recaptured `$coreTask7GuardCommit`, verify the exact range header, and give only that updated package to the next fresh reviewer. Repeat this recapture/validation/package sequence after every guard review amendment. Do not proceed until the verdict is Critical = 0 and Important = 0.
+
+- [ ] **Step 10: Preserve the baseline-publication ancestry failure as a separate RED**
+
+Keep Core at the exact clean `$coreTask7GuardCommit`. Run the real full gate before editing the baseline test:
+
+```powershell
+npm run check
+```
+
+Expected: nonzero because `tests/canonicalDocumentationSpine.test.ts` derives published baseline content from topology-dependent `HEAD^`; at this descendant HEAD it expects `76a2f2311a898e781f53773390d47b05812911e4`, while `docs/coordination/DEVELOPMENT_BASELINE.json` remains correctly anchored to `732793d9bfc11a374121181a2efaaa78a110d7bc`. Preserve the real full-check RED. If an unrelated load-only timeout also occurs, rerun the named timeout test in isolation and record it separately; it does not replace the reproducible baseline mismatch.
+
+In `tests/canonicalDocumentationSpine.test.ts`, add fixture-first tests for a history resolver with this contract:
+
+```ts
+function baselinePublicationContentCommit(repositoryRoot: string): string
+```
+
+The resolver must derive the unique reachable commit that added `docs/coordination/DEVELOPMENT_BASELINE.json`, validate it as one lowercase 40-hex commit with exactly one valid 40-hex parent, prove the path exists at the add commit and is absent at its parent, and return that parent. Tests must prove:
+
+1. a fixture with content commit → baseline-publication commit → one later unrelated descendant returns the original content commit both immediately after publication and at the later descendant;
+2. zero add commits fail closed;
+3. add → remove → re-add, which yields multiple add commits, fails closed;
+4. a root commit that adds the baseline but has no parent fails closed;
+5. malformed, ambiguous, or non-commit history output is rejected rather than accepted as a content commit.
+
+Keep malformed-output coverage deterministic with small pure parsers in the same test file: one parser requires exactly one lowercase 40-hex addition line, and one parser requires exactly `<addition-commit> <single-parent-commit>` with both commits lowercase 40-hex and no extra parent. Feed them empty, duplicate, short, nonhex, and multi-parent strings directly; fixture repositories prove the real Git behavior.
+
+Run the focused test before implementing the resolver:
+
+```powershell
+npm test -- tests/canonicalDocumentationSpine.test.ts
+```
+
+Expected: FAIL for the new history behavior and for the two real-root baseline assertions. Do not change the baseline JSON, manifest, canonical documents, generator, checker, or runtime.
+
+- [ ] **Step 11: Implement the history-derived baseline test correction and commit one path**
+
+Implement the minimum resolver using argument-array Git invocations and the tested strict parsers. Use `git log --diff-filter=A --format=%H -- docs/coordination/DEVELOPMENT_BASELINE.json` to obtain additions, require exactly one nonempty result, use `git rev-list --parents -n 1 <add-commit>` to require one and only one parent, verify both hashes resolve as commits, and prove path presence at the addition plus path absence at its parent with `git cat-file -e`. Replace `task5ContentCommit()` and all `HEAD^` selection with the new resolver; no repository-topology assumption may remain.
+
+Run from Core:
+
+```powershell
+npm test -- tests/canonicalDocumentationSpine.test.ts
+npm run check
+git diff --check
+```
+
+Expected: PASS. Prove the correction scope and commit it separately:
+
+```powershell
+$baselineFixPaths = @(git diff --name-only)
+if ($baselineFixPaths.Count -ne 1 -or $baselineFixPaths[0] -ne 'tests/canonicalDocumentationSpine.test.ts') { throw "Baseline ancestry correction changed more than its one test file." }
+git add tests/canonicalDocumentationSpine.test.ts
+git diff --cached --check
+git commit -m "test(docs): stabilize baseline publication ancestry"
+$coreBaselineTestCorrectionCommit = (git rev-parse HEAD).Trim()
+if ($coreBaselineTestCorrectionCommit -notmatch '^[0-9a-f]{40}$') { throw "Core baseline-test correction commit is invalid." }
+if ((git rev-parse HEAD).Trim() -ne $coreBaselineTestCorrectionCommit) { throw "Core HEAD does not equal the baseline-test correction commit." }
+if ((git rev-parse "$coreBaselineTestCorrectionCommit^").Trim() -ne $coreTask7GuardCommit) { throw "Baseline-test correction parent is not the reviewed Task 7 guard commit." }
+if (git status --short) { throw "Core worktree is not clean after the baseline-test correction." }
+$baselineCorrectionPaths = @(git diff --name-only $coreTask7GuardCommit $coreBaselineTestCorrectionCommit)
+if ($baselineCorrectionPaths.Count -ne 1 -or $baselineCorrectionPaths[0] -ne 'tests/canonicalDocumentationSpine.test.ts') { throw "Committed baseline correction is not the exact one-path range." }
+```
+
+Immediately regenerate a distinct ignored review package from `$coreTask7GuardCommit..$coreBaselineTestCorrectionCommit`, name it from both recaptured short hashes, and verify its exact range header before review.
+
+- [ ] **Step 12: Review the one-path correction, verify the final handoff, then capture it**
+
+Give a fresh reviewer the newly generated separate package for exactly `$coreTask7GuardCommit..$coreBaselineTestCorrectionCommit`. Require confirmation that the range contains only `tests/canonicalDocumentationSpine.test.ts`, derives the unique baseline-add commit and its parent, fails closed on zero/multiple/invalid history, remains invariant under later descendant commits, and does not change baseline JSON, manifest, documents, runtime, or deletion authority.
+
+Critical or Important findings require a new RED, correction in the same one-path scope, amendment of the still-unpushed correction commit, and full Core gates. After every such review-driven amendment, immediately execute:
+
+```powershell
+$previousCoreBaselineTestCorrectionCommit = $coreBaselineTestCorrectionCommit
+git add tests/canonicalDocumentationSpine.test.ts
+git diff --cached --check
+git commit --amend --no-edit
+$coreBaselineTestCorrectionCommit = (git rev-parse HEAD).Trim()
+if ($coreBaselineTestCorrectionCommit -notmatch '^[0-9a-f]{40}$') { throw "Review-amended baseline correction commit is invalid." }
+if ($coreBaselineTestCorrectionCommit -eq $previousCoreBaselineTestCorrectionCommit) { throw "Review amendment did not change the baseline correction commit." }
+if ((git rev-parse HEAD).Trim() -ne $coreBaselineTestCorrectionCommit) { throw "Core HEAD does not equal the review-amended baseline correction." }
+if ((git rev-parse "$coreBaselineTestCorrectionCommit^").Trim() -ne $coreTask7GuardCommit) { throw "Review-amended baseline correction parent drifted." }
+if (git status --short) { throw "Core must be clean after the review-driven baseline amendment." }
+$reviewBaselineFixPaths = @(git diff --name-only $previousCoreBaselineTestCorrectionCommit $coreBaselineTestCorrectionCommit)
+if ($reviewBaselineFixPaths.Count -ne 1 -or $reviewBaselineFixPaths[0] -ne 'tests/canonicalDocumentationSpine.test.ts') { throw "Review-driven baseline correction changed another path." }
+$baselineCorrectionPaths = @(git diff --name-only $coreTask7GuardCommit $coreBaselineTestCorrectionCommit)
+if ($baselineCorrectionPaths.Count -ne 1 -or $baselineCorrectionPaths[0] -ne 'tests/canonicalDocumentationSpine.test.ts') { throw "Review-amended baseline range drifted from its exact path." }
+```
+
+Regenerate the baseline review package immediately from the updated hash pair, verify its exact header, and give only that updated package to the next fresh reviewer. Repeat after every baseline review amendment.
+
+Only after both scoped reviews pass, rerun `npm run check` at the exact committed HEAD and require PASS and a clean Core worktree. Then capture and validate all identities:
+
+```powershell
+$coreReferenceRepairCommit = (git rev-parse HEAD).Trim()
+if ($coreReferenceRepairCommit -ne $coreBaselineTestCorrectionCommit) { throw "Final Core handoff does not include both reviewed commits." }
+if (git status --short) { throw "Core worktree must be clean at final Task 7 handoff." }
+```
+
+Record in the ignored Task 7 report: `$coreTask7BaseCommit`, `$coreTask7GuardCommit`, `$coreBaselineTestCorrectionCommit`, `$coreReferenceRepairCommit`, the exact seven-path range `$coreTask7BaseCommit..$coreTask7GuardCommit`, the exact one-path range `$coreTask7GuardCommit..$coreBaselineTestCorrectionCommit`, both review verdicts, and post-commit full-check evidence. Review packages must never collapse these two ranges into one alleged one-commit or exact-seven-path final handoff.
+
+From Project Control, run the external check against the final exact clean `$coreReferenceRepairCommit`:
 
 ```powershell
 npm run check:migration:core -- --source-root $coreWorktree --family core-route
@@ -887,7 +1126,7 @@ Expected diagnostics, and no others:
 - exactly four `MIGRATION_ACTIVE_PATH_MENTION` diagnostics for the four `docs/PHASE_LEDGER.md` former-source rows;
 - exactly one `MIGRATION_COVERAGE_NOT_READY` because coverage remains `content-reviewed`.
 
-`MIGRATION_SOURCE_TREE_DIRTY` must be absent after the commit. This five-diagnostic RED is the stable Task 7 handoff to Task 8; Task 7 does not grant deletion authority.
+`MIGRATION_SOURCE_TREE_DIRTY` must be absent. The exact diagnostic multiset must remain unchanged from the amended seven-path commit: the same four `MIGRATION_ACTIVE_PATH_MENTION` source/target/line identities plus one `MIGRATION_COVERAGE_NOT_READY`, and no others. This unchanged five-diagnostic RED is the stable final Task 7 handoff to Task 8; neither reviewed Core commit grants deletion authority.
 
 ### Task 8: Prove Deletion Readiness and Publish the Review Record
 
@@ -902,15 +1141,15 @@ Expected diagnostics, and no others:
 - Modify: `generated/project-index.json`
 
 **Interfaces:**
-- Consumes: the exact `$projectControlPublicationCommit` from Task 6 and the exact clean `$coreReferenceRepairCommit` recorded by Task 7.
+- Consumes: the exact `$projectControlPublicationCommit` from Task 6; the reviewed seven-path `$coreTask7GuardCommit`; the reviewed one-path `$coreBaselineTestCorrectionCommit`; and the exact final clean `$coreReferenceRepairCommit`, which equals the latter commit and includes both reviewed commits in history.
 - Produces: `ready-for-deletion` coverage and a durable human review record; it performs no Core deletion.
 
 - [ ] **Step 1: Run the external preflight as a RED**
 
-First prove Core still points to the exact clean Task 7 commit:
+First prove Core still points to the final clean Task 7 handoff after both reviewed commits:
 
 ```powershell
-if ((git -C $coreWorktree rev-parse HEAD).Trim() -ne $coreReferenceRepairCommit) { throw "Core HEAD drifted after Task 7." }
+if ((git -C $coreWorktree rev-parse HEAD).Trim() -ne $coreReferenceRepairCommit) { throw "Core HEAD drifted after the two-commit Task 7 handoff." }
 if (git -C $coreWorktree status --short) { throw "Core worktree must be clean before Task 8." }
 ```
 
@@ -936,15 +1175,15 @@ Give a fresh reviewer:
 - approved design and this plan;
 - exact inventory/family/coverage artifacts;
 - all canonical documents and Project Control records;
-- Core reference-repair diff;
+- the separate Core review packages for `$coreTask7BaseCommit..$coreTask7GuardCommit` and `$coreTask7GuardCommit..$coreBaselineTestCorrectionCommit`, plus both zero-Critical/zero-Important verdicts;
 - retained source/test anchors;
-- Task 6 and Task 7 gate output.
+- Task 6 output and the final Task 7 full-check/five-diagnostic handoff output.
 
 Require explicit answers for coverage closure, authority honesty, reference closure, guard preservation, rollback, and exact deletion scope. Critical and Important findings block readiness.
 
 - [ ] **Step 3: Write the review record from actual evidence**
 
-`MIGRATION_REVIEW.md` records the literal `$projectControlPublicationCommit` and `$coreReferenceRepairCommit`, exact four source paths/blobs, tests run, reference-scan result, reviewer verdict, rollback procedure, remaining risks/unknowns, and the statement “ready for source deletion” only after the verdict passes. Do not write simulated command output.
+`MIGRATION_REVIEW.md` records the literal `$projectControlPublicationCommit`, `$coreTask7GuardCommit`, `$coreBaselineTestCorrectionCommit`, and final `$coreReferenceRepairCommit`; identifies the seven-path and one-path review ranges separately; records the exact four source paths/blobs, tests run, reference-scan result, reviewer verdict, rollback procedure, remaining risks/unknowns; and uses the statement “ready for source deletion” only after the verdict passes. Do not write simulated command output.
 
 - [ ] **Step 4: Register review and update coverage**
 
@@ -977,9 +1216,15 @@ Expected exit code: `0`, `ready: true`, `diagnostics: []`, and the exact four co
 - [ ] **Step 6: Commit deletion authorization in Project Control**
 
 ```powershell
+$projectControlTask8BaseCommit = (git rev-parse HEAD).Trim()
+if ($projectControlTask8BaseCommit -notmatch '^[0-9a-f]{40}$') { throw "Project Control Task 8 base commit is invalid." }
 git add docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md data migrations/V0_1_0a_1/core/families/core-route/coverage.json tests generated/project-index.json
 git diff --cached --check
 git commit -m "docs: authorize Core route source cleanup"
+$projectControlDeletionAuthorizationCommit = (git rev-parse HEAD).Trim()
+if ($projectControlDeletionAuthorizationCommit -notmatch '^[0-9a-f]{40}$') { throw "Project Control deletion-authorization commit is invalid." }
+if ((git rev-parse "$projectControlDeletionAuthorizationCommit^").Trim() -ne $projectControlTask8BaseCommit) { throw "Project Control Task 8 commit parent drifted." }
+if (git status --short) { throw "Project Control must be clean after Task 8." }
 ```
 
 ### Task 9: Delete Only the Four Authorized Core Sources
@@ -1037,11 +1282,25 @@ Expected: PASS; no active reference and no uncovered deletion.
 - [ ] **Step 5: Commit exact Core cleanup**
 
 ```powershell
+$coreCleanupBaseCommit = (git rev-parse HEAD).Trim()
+if ($coreCleanupBaseCommit -ne $coreReferenceRepairCommit) { throw "Core cleanup base is not the final reviewed Task 7 handoff." }
 git diff --cached --check
 git commit -m "docs: remove migrated Core route records"
+$coreCleanupCommit = (git rev-parse HEAD).Trim()
+if ($coreCleanupCommit -notmatch '^[0-9a-f]{40}$') { throw "Core cleanup commit is invalid." }
+if ((git rev-parse "$coreCleanupCommit^").Trim() -ne $coreCleanupBaseCommit) { throw "Core cleanup commit parent drifted." }
+if (git status --short) { throw "Core must be clean after Task 9." }
+$expectedCleanupPaths = @(
+  'docs/CORE_ROUTE_DEEXPORT_PLAN.md',
+  'docs/CORE_ROUTE_DEPRECATION_WINDOW.md',
+  'docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md',
+  'docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md'
+) | Sort-Object
+$cleanupPaths = @(git diff --name-only $coreCleanupBaseCommit $coreCleanupCommit) | Sort-Object
+if (Compare-Object $expectedCleanupPaths $cleanupPaths) { throw "Committed Task 9 range is not the exact four-source deletion." }
 ```
 
-Capture the resulting 40-character commit as `$coreCleanupCommit`.
+Record `$coreCleanupBaseCommit..$coreCleanupCommit` as the exact Task 9 four-deletion review range. It is distinct from both Task 7 Core ranges.
 
 ### Task 10: Close the Pilot Transaction and Verify Both Repositories
 
@@ -1111,9 +1370,15 @@ Expected: exact cleanup commit match, all four sources absent, active references
 - [ ] **Step 5: Commit Project Control closure**
 
 ```powershell
+$projectControlTask10BaseCommit = (git rev-parse HEAD).Trim()
+if ($projectControlTask10BaseCommit -notmatch '^[0-9a-f]{40}$') { throw "Project Control Task 10 base commit is invalid." }
 git add data migrations/V0_1_0a_1/core/families/core-route/coverage.json docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md tests generated/project-index.json
 git diff --cached --check
 git commit -m "docs: close Core route migration pilot"
+$projectControlClosureCommit = (git rev-parse HEAD).Trim()
+if ($projectControlClosureCommit -notmatch '^[0-9a-f]{40}$') { throw "Project Control closure commit is invalid." }
+if ((git rev-parse "$projectControlClosureCommit^").Trim() -ne $projectControlTask10BaseCommit) { throw "Project Control Task 10 commit parent drifted." }
+if (git status --short) { throw "Project Control must be clean after Task 10 commit." }
 ```
 
 - [ ] **Step 6: Run post-commit verification from clean trees**
@@ -1136,7 +1401,22 @@ Expected: both checks pass and both status outputs are empty.
 
 - [ ] **Step 7: Request two independent final reviews**
 
-Request one contract/factual-honesty review and one documentation-architecture/provenance review. Both review the exact Project Control range for Tasks 1–10, the exact Core range for Tasks 7–9, generated artifacts, all gate outputs, deletion allowlist, and rollback commits. Any Critical or Important finding requires a new RED, correction, complete affected gates, and fresh verdict from both reviewers.
+Request one contract/factual-honesty review and one documentation-architecture/provenance review. Generate and give both reviewers separate packages for every mutation boundary below:
+
+Core packages, never collapsed into a singular “Tasks 7–9” range:
+
+1. `$coreTask7BaseCommit..$coreTask7GuardCommit` — the exact seven-path Task 7 reference-repair/guard commit;
+2. `$coreTask7GuardCommit..$coreBaselineTestCorrectionCommit` — the exact one-path baseline ancestry test correction;
+3. `$coreCleanupBaseCommit..$coreCleanupCommit` — the exact four-document Task 9 deletion commit.
+
+Project Control packages:
+
+1. `c488cb412cd6b64808a1a5616299bfce6af25af2..$projectControlPublicationCommit` — Tasks 1–6 implementation and corrections;
+2. `$projectControlPublicationCommit..$projectControlTask8BaseCommit` — governing-plan/handoff amendments before deletion authorization;
+3. `$projectControlTask8BaseCommit..$projectControlDeletionAuthorizationCommit` — exact Task 8 readiness and deletion-authorization commit;
+4. `$projectControlTask10BaseCommit..$projectControlClosureCommit` — exact Task 10 closure commit.
+
+Also provide the complete Project Control provenance range `c488cb412cd6b64808a1a5616299bfce6af25af2..$projectControlClosureCommit` as context, but never use it as a substitute for the scoped packages. Every package must be regenerated from the final recaptured hashes and its header must name the exact base/head pair. Both reviewers also receive generated artifacts, all gate outputs, the deletion allowlist, review verdicts from Tasks 7–8, and rollback commits. Any Critical or Important finding requires a new RED, correction, complete affected gates, refreshed hashes/packages for every affected range, and fresh verdict from both reviewers.
 
 - [ ] **Step 8: Record the next planning boundary**
 
