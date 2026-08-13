@@ -79,7 +79,6 @@ function normalizeTarget(target: string): string | null {
   const pathPart = target.split(/[?#]/, 1)[0] ?? "";
   if (
     pathPart.length === 0 ||
-    /\s/.test(pathPart) ||
     pathPart.startsWith("/") ||
     pathPart.startsWith("\\") ||
     /^[a-z][a-z0-9+.-]*:/i.test(pathPart)
@@ -140,7 +139,9 @@ export function extractRepositoryReferences(markdown: string): InventoryReposito
   const visible = withoutFencedCode(markdown);
   const targets = [
     ...markdownDestinations(markdown).map(({ rawTarget }) => rawTarget),
-    ...Array.from(visible.matchAll(/`([^`\r\n]+)`/g), (match) => (match[1] ?? "").trim()),
+    ...Array.from(visible.matchAll(/`([^`\r\n]+)`/g), (match) => (match[1] ?? "").trim()).filter(
+      (target) => !/\s/.test(target),
+    ),
   ];
   const references = new Map<string, InventoryRepositoryReference>();
   for (const target of targets) {

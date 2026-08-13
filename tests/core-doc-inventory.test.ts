@@ -38,6 +38,8 @@ describe("Core Markdown inventory", () => {
     const markdown = [
       "[route](docs/CORE_ROUTE_SAMPLE.md#summary)",
       "[route with query](docs/CORE_ROUTE_SAMPLE.md?view=full)",
+      "[spaced plan](<docs/Project Plan.md>)",
+      "[runtime source](<src/generation/runtime plan.ts>)",
       "[external](https://example.invalid/guide.md)",
       "[mail](mailto:docs@example.invalid)",
       "![image](docs/CORE_ROUTE_SAMPLE.md)",
@@ -58,12 +60,15 @@ describe("Core Markdown inventory", () => {
     expect(extractMarkdownLinks("README.md", markdown)).toEqual([
       { rawTarget: "docs/CORE_ROUTE_SAMPLE.md#summary", resolvedPath: "docs/CORE_ROUTE_SAMPLE.md" },
       { rawTarget: "docs/CORE_ROUTE_SAMPLE.md?view=full", resolvedPath: "docs/CORE_ROUTE_SAMPLE.md" },
+      { rawTarget: "docs/Project Plan.md", resolvedPath: "docs/Project Plan.md" },
       { rawTarget: "https://example.invalid/guide.md", resolvedPath: null },
       { rawTarget: "mailto:docs@example.invalid", resolvedPath: null },
+      { rawTarget: "src/generation/runtime plan.ts", resolvedPath: null },
     ]);
     expect(extractRepositoryReferences(markdown)).toEqual([
       { kind: "contract", target: "schemas/runtime.schema.json" },
       { kind: "code", target: "src/generation/padded.ts" },
+      { kind: "code", target: "src/generation/runtime plan.ts" },
       { kind: "code", target: "src/generation/runtime.ts" },
       { kind: "test", target: "tests/runtime.test.ts" },
     ]);
