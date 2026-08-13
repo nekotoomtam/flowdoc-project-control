@@ -6,3 +6,4 @@ playwright-report/
 generated/project-diagnostics.json
 .flowdoc.local.json
 .superpowers/
+.worktrees/
