@@ -3,6 +3,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 import { formatProjectDiagnostics, ProjectValidationError } from "./lib/errors.js";
 import { generateToString } from "./generate.js";
+import { validateStoredCoreMigration } from "./migration/lib/validate-migration.js";
 
 export class ProjectIndexCheckError extends Error {
   readonly code: "PROJECT_INDEX_STALE" | "PROJECT_DIAGNOSTICS_PRESENT";
@@ -31,6 +32,11 @@ export async function checkProjectIndex(rootDir: string, indexPath?: string): Pr
   }
   if (current !== expected) {
     throw new ProjectIndexCheckError("PROJECT_INDEX_STALE");
+  }
+
+  const migrationDiagnostics = await validateStoredCoreMigration(rootDir);
+  if (migrationDiagnostics.length > 0) {
+    throw new ProjectValidationError(migrationDiagnostics);
   }
 }
 
