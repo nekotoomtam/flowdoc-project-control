@@ -12,9 +12,6 @@
       "type": "string",
       "pattern": "^[a-fA-F0-9]{40}$"
     },
-    "coreSnapshotCommit": {
-      "const": "76a2f2311a898e781f53773390d47b05812911e4"
-    },
     "sha256": {
       "type": "string",
       "pattern": "^[a-f0-9]{64}$"
@@ -101,7 +98,7 @@
         "schemaVersion": { "const": 1 },
         "releaseLine": { "const": "V0_1_0a_1" },
         "repositoryId": { "const": "repo-core" },
-        "sourceCommit": { "$ref": "#/$defs/coreSnapshotCommit" },
+        "sourceCommit": { "$ref": "#/$defs/commit" },
         "expectedFileCount": { "type": "integer", "minimum": 0 },
         "sourceDigest": { "$ref": "#/$defs/sha256" },
         "files": {
@@ -262,7 +259,7 @@
         "schemaVersion": { "const": 1 },
         "releaseLine": { "const": "V0_1_0a_1" },
         "familyId": { "$ref": "#/$defs/id" },
-        "sourceCommit": { "$ref": "#/$defs/coreSnapshotCommit" },
+        "sourceCommit": { "$ref": "#/$defs/commit" },
         "inventoryDigest": { "$ref": "#/$defs/sha256" },
         "status": { "enum": ["draft", "content-reviewed", "ready-for-deletion", "closed"] },
         "canonicalDocumentIds": {

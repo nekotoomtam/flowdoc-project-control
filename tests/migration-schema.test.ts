@@ -93,9 +93,19 @@ describe("document migration schema", () => {
     expect(validate(validCoverage)).toBe(true);
   });
 
+  it("accepts any structurally valid 40-hex source commit", async () => {
+    const validate = await createValidator();
+    const alternateCommit = "A".repeat(40);
+
+    expect(validate({ ...validInventory, sourceCommit: alternateCommit })).toBe(true);
+    expect(validate({ ...validCoverage, sourceCommit: alternateCommit })).toBe(true);
+  });
+
   it.each([
     ["an absolute inventory path", { ...validInventory, files: [{ ...validInventory.files[0], path: "C:/Core/plan.md" }] }],
     ["a short blob ID", { ...validInventory, files: [{ ...validInventory.files[0], blobId: "b".repeat(39) }] }],
+    ["a short source commit", { ...validInventory, sourceCommit: "a".repeat(39) }],
+    ["a nonhex source commit", { ...validInventory, sourceCommit: "g".repeat(40) }],
     ["duplicate canonical document IDs", { ...validCoverage, canonicalDocumentIds: ["core-route-migration", "core-route-migration"] }],
     ["a deletion-ready coverage record without canonical documents", { ...validCoverage, status: "ready-for-deletion", canonicalDocumentIds: [] }],
     ["a closed coverage record without a Core cleanup commit", { ...validCoverage, coreCleanupCommit: null }],

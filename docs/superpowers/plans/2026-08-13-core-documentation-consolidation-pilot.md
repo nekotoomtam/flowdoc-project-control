@@ -97,7 +97,7 @@ tests/coreRouteWindowCPublicExportRemoval.test.ts         # replace/delete
 
 - [ ] **Step 1: Write schema tests before the contract exists**
 
-Create fixtures in `tests/migration-schema.test.ts` with the exact discriminators below. Assert that Ajv accepts one complete instance of each kind and rejects: an absolute path, a 39-character blob, duplicate scalar document IDs, `ready-for-deletion` with an empty canonical document list, and `closed` without a Core cleanup commit. Duplicate object paths are rejected semantically in Task 4.
+Create fixtures in `tests/migration-schema.test.ts` with the exact discriminators below. Assert that Ajv accepts one complete instance of each kind and an alternate uppercase 40-hex `sourceCommit`, and rejects: an absolute path, a 39-character blob, a short or nonhex `sourceCommit`, duplicate scalar document IDs, `ready-for-deletion` with an empty canonical document list, and `closed` without a Core cleanup commit. The persisted schema validates commit structure only; the Task 3 production CLI owns the policy that the published inventory must use the frozen Core snapshot commit. Duplicate object paths are rejected semantically in Task 4.
 
 ```ts
 const validInventory = {
@@ -246,7 +246,7 @@ export interface FamilyCoverage {
 
 - [ ] **Step 4: Implement strict JSON Schema conditions**
 
-Use `additionalProperties: false` at every object level. Use relative-path rejection matching the existing Project Control schema. Add `if/then` conditions so both `ready-for-deletion` and `closed` require nonempty `canonicalDocumentIds`, empty `activeReferences`, and a 40-character `projectControlPublicationCommit`; `closed` additionally requires a 40-character `coreCleanupCommit`. Historical allowances require positive line numbers, a 64-character lowercase SHA-256 line hash, and nonempty rationale. Add `uniqueItems: true` where scalar arrays must be unique; semantic duplicate path checks remain in Task 4 because JSON Schema cannot enforce object-key uniqueness.
+Use `additionalProperties: false` at every object level. Use relative-path rejection matching the existing Project Control schema. Validate every `sourceCommit`, blob ID, and publication/cleanup commit structurally as exactly 40 hexadecimal characters using the existing Git object convention; do not encode the frozen Core snapshot commit as a schema `const`. Add `if/then` conditions so both `ready-for-deletion` and `closed` require nonempty `canonicalDocumentIds`, empty `activeReferences`, and a 40-character `projectControlPublicationCommit`; `closed` additionally requires a 40-character `coreCleanupCommit`. Historical allowances require positive line numbers, a 64-character lowercase SHA-256 line hash, and nonempty rationale. Add `uniqueItems: true` where scalar arrays must be unique; semantic duplicate path checks remain in Task 4 because JSON Schema cannot enforce object-key uniqueness.
 
 - [ ] **Step 5: Run focused and existing schema tests**
 
@@ -358,8 +358,8 @@ git commit -m "feat(docs): inventory Core Markdown at a Git commit"
 - Modify: `tests/core-doc-inventory.test.ts`
 
 **Interfaces:**
-- Consumes: inventory builders from Task 2 and an execution-only `--source-root` argument.
-- Produces: deterministic tracked inventory/family-map JSON; no checkout path is serialized.
+- Consumes: inventory builders from Task 2, an execution-only `--source-root` argument, and an injectable expected-source-commit policy for disposable test repositories.
+- Produces: `runInventoryCli(args, expectedSourceCommit?)`, deterministic tracked inventory/family-map JSON, and a production CLI entrypoint whose default expected commit is exactly `76a2f2311a898e781f53773390d47b05812911e4`; no checkout path is serialized.
 
 - [ ] **Step 1: Write the CLI RED**
 
@@ -370,10 +370,10 @@ await runInventoryCli([
   "--source-root", fixture.root,
   "--source-commit", fixture.commit,
   "--output-root", outputRoot,
-]);
+], fixture.commit);
 ```
 
-Assert two newline-terminated JSON files, byte-identical output on a second run, no fixture absolute path, and failure if `--source-commit` is not 40 hexadecimal characters.
+Assert two newline-terminated JSON files, byte-identical output on a second run, no fixture absolute path, and failure if `--source-commit` is not 40 hexadecimal characters. Also invoke `runInventoryCli` with a different valid 40-hex `--source-commit` than the injected expected commit and assert rejection. Finally, invoke it without an injected expected commit and assert that any 40-hex commit other than `76a2f2311a898e781f53773390d47b05812911e4` is rejected by the production policy before Git access.
 
 - [ ] **Step 2: Run the focused RED**
 
@@ -383,7 +383,7 @@ Expected: FAIL because `runInventoryCli` is unavailable.
 
 - [ ] **Step 3: Implement the CLI and scripts**
 
-Export `runInventoryCli(args: string[]): Promise<void>`. Parse only the three named flags, reject duplicates/unknown flags, build both artifacts in memory, validate them against `document-migration.schema.json`, and atomically replace outputs only after both validate. Add:
+Export `runInventoryCli(args: string[], expectedSourceCommit = FROZEN_CORE_COMMIT): Promise<void>` and define `FROZEN_CORE_COMMIT` as exactly `76a2f2311a898e781f53773390d47b05812911e4`. Parse only the three named flags, reject duplicates/unknown flags, structurally validate both commit arguments as exactly 40 hexadecimal characters, reject when `--source-commit` differs from `expectedSourceCommit`, build both artifacts in memory, validate them against `document-migration.schema.json`, and atomically replace outputs only after both validate. The production module entrypoint calls `runInventoryCli(process.argv.slice(2))`, so only the exact frozen commit is authorized outside an explicitly injected test policy. Add:
 
 ```json
 {
