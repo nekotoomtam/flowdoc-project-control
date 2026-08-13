@@ -252,4 +252,23 @@ describe("Core Markdown inventory", () => {
 
     expect(familiesByPath).toMatchObject(Object.fromEntries(semanticFamilyCases));
   });
+
+  it("classifies the Thai rebaseline review companion from its plan content", async () => {
+    const familyMap = JSON.parse(await readFile(
+      join(process.cwd(), "migrations/V0_1_0a_1/core/family-map.json"),
+      "utf8",
+    )) as {
+      families: Array<{
+        sources: Array<{ path: string; documentClass: string; authorityAssessment: string }>;
+      }>;
+    };
+    const source = familyMap.families
+      .flatMap((family) => family.sources)
+      .find((candidate) => candidate.path === "docs/superpowers/plans/2026-08-03-unified-incremental-root-transition-5b-2-rebaseline-review-th.md");
+
+    expect(source).toMatchObject({
+      documentClass: "plan",
+      authorityAssessment: "The H1 and body restate the Phase 5B-2 rebaseline implementation plan and checkpoints; the source identifies itself as a Thai review companion to the main plan, so present authority remains needs-review.",
+    });
+  });
 });
