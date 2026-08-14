@@ -25,15 +25,37 @@ interface OrientationSource {
   rationale: string;
 }
 
+interface OrientationSubgroup {
+  id: string;
+  title: string;
+  responsibility: string;
+  boundary: string;
+  sourcePaths: string[];
+  proposedLeaf: string;
+  dependsOn: string[];
+  crossReferences: string[];
+  oversizedCohesionRationale: string | null;
+  evidenceChecks: string[];
+}
+
+interface OrientationConflict {
+  id: string;
+  subgroupId: string;
+  summary: string;
+  evidenceNeeds: string;
+}
+
 interface FamilyOrientation {
   familyId: string;
   sourceCount: number;
   reviewState: string;
   orientationSources: OrientationSource[];
   provisionalModel: string | null;
-  subgroups: unknown[];
-  conflicts: unknown[];
+  subgroups: OrientationSubgroup[];
+  conflicts: OrientationConflict[];
 }
+
+type WaveAFamilyId = FamilyOrientation["familyId"];
 
 interface WaveAOrientation {
   kind: string;
@@ -53,6 +75,54 @@ async function readJson<T>(path: string): Promise<T> {
 
 function sorted(values: string[]): string[] {
   return [...values].sort();
+}
+
+function expectMappedFamily(
+  orientation: WaveAOrientation,
+  familyMap: CoreFamilyMap,
+  familyId: WaveAFamilyId,
+  expectedCount: number,
+): void {
+  const family = orientation.families.find((candidate) => candidate.familyId === familyId);
+  const mappedFamily = familyMap.families.find((candidate) => candidate.familyId === familyId);
+
+  expect(family).toBeDefined();
+  expect(mappedFamily).toBeDefined();
+  expect(family?.reviewState).toBe("mapped");
+  expect(family?.provisionalModel?.trim().length).toBeGreaterThan(0);
+
+  const sourcePaths = family?.subgroups.flatMap((subgroup) => subgroup.sourcePaths) ?? [];
+  expect(sourcePaths).toEqual([...new Set(sourcePaths)]);
+  expect(sorted(sourcePaths)).toEqual(sorted(mappedFamily?.sources.map((source) => source.path) ?? []));
+  expect(sourcePaths).toHaveLength(expectedCount);
+
+  const subgroupIds = new Set(family?.subgroups.map((subgroup) => subgroup.id) ?? []);
+  const proposedLeaves = family?.subgroups.map((subgroup) => subgroup.proposedLeaf) ?? [];
+  for (const subgroup of family?.subgroups ?? []) {
+    expect(subgroup.id).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    expect(subgroup.title.trim().length).toBeGreaterThan(0);
+    expect(subgroup.responsibility.trim().length).toBeGreaterThan(0);
+    expect(subgroup.boundary.trim().length).toBeGreaterThan(0);
+    expect(subgroup.sourcePaths.length).toBeGreaterThan(0);
+    expect(subgroup.proposedLeaf).toMatch(new RegExp(`^docs/versions/V0_1_0a_1/core/${familyId}/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$`));
+    expect(subgroup.evidenceChecks.length).toBeGreaterThan(0);
+    expect(subgroup.oversizedCohesionRationale).toEqual(
+      subgroup.sourcePaths.length > 25 ? expect.any(String) : null,
+    );
+    if (subgroup.sourcePaths.length > 25) {
+      expect(subgroup.oversizedCohesionRationale?.trim().length).toBeGreaterThan(0);
+    }
+    for (const reference of [...subgroup.dependsOn, ...subgroup.crossReferences]) {
+      expect(reference).toMatch(new RegExp(`^${familyId}/[a-z0-9]+(?:-[a-z0-9]+)*$`));
+      expect(subgroupIds.has(reference.slice(familyId.length + 1))).toBe(true);
+    }
+  }
+  expect(proposedLeaves).toEqual([...new Set(proposedLeaves)]);
+
+  for (const conflict of family?.conflicts ?? []) {
+    expect(subgroupIds.has(conflict.subgroupId)).toBe(true);
+    expect(conflict.evidenceNeeds.trim().length).toBeGreaterThan(0);
+  }
 }
 
 describe("Wave A Core documentation orientation", () => {
@@ -94,7 +164,7 @@ describe("Wave A Core documentation orientation", () => {
     ]));
 
     for (const family of orientation.families) {
-      expect(family.reviewState).toBe("orientation-selected");
+      expect(["orientation-selected", "mapped"]).toContain(family.reviewState);
       expect(family.orientationSources.length).toBeGreaterThanOrEqual(3);
       expect(family.orientationSources.length).toBeLessThanOrEqual(8);
       expect(sorted(family.orientationSources.map((source) => source.path)))
@@ -103,9 +173,20 @@ describe("Wave A Core documentation orientation", () => {
       const mappedPaths = familySources.get(family.familyId);
       expect(mappedPaths).toBeDefined();
       expect(family.orientationSources.every((source) => mappedPaths?.has(source.path))).toBe(true);
-      expect(family.provisionalModel).toBeNull();
-      expect(family.subgroups).toEqual([]);
-      expect(family.conflicts).toEqual([]);
+      if (family.reviewState === "orientation-selected") {
+        expect(family.provisionalModel).toBeNull();
+        expect(family.subgroups).toEqual([]);
+        expect(family.conflicts).toEqual([]);
+      }
     }
+  });
+
+  it("maps Template Builder into closed, evidence-bearing subgroups", async () => {
+    const [orientation, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+
+    expectMappedFamily(orientation, familyMap, "template-builder", 73);
   });
 });
