@@ -58,7 +58,7 @@ These digest states are distinct from plan states: `identity-ready`, `parity-rea
 
 The package-local builder creates a JSON-safe metadata summary. It does not import/load WASM, execute shaping, compare runtime output, mutate pagination, bind production measurement, or write artifacts.
 
-Population is historical workflow context; this synthesis only verifies existing tracked bytes. It does not rebuild the artifact, add an evidence record, or promote retained metadata into raw execution evidence. Raw runtime/WASM evidence is excluded from this leaf and from root-facing summaries.
+Population is historical workflow context. This documentation synthesis did not create or execute Core runtime or raw evidence and did not rerun population. It only verifies existing tracked bytes and does not promote retained metadata into raw execution evidence. Raw runtime/WASM evidence is excluded from this leaf and from root-facing summaries.
 
 ## Validation Rules
 

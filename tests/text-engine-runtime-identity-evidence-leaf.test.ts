@@ -229,6 +229,15 @@ function expectEvidenceBoundaries(leaf: string): void {
   expect(leaf).not.toMatch(/\bICU4X(?: [\w-]+)?(?: revisions?)?\s*(?:is|are|=|:)\s*(?:installed|executed|running)\b/i);
 }
 
+function expectRegistrationAwareEvidenceBoundary(leaf: string): void {
+  expect(leaf).toContain(
+    "This documentation synthesis did not create or execute Core runtime or raw evidence and did not rerun population.",
+  );
+  expect(leaf).not.toMatch(
+    /\b(?:does not|did not)\b[^.\n]*\b(?:add|create|register)\b[^.\n]*\b(?:an?\s+)?evidence records?\b/i,
+  );
+}
+
 function readExactStateVocabulary(leaf: string, label: string): string[] {
   const match = leaf.match(new RegExp(`${label}: ((?:\`[a-z-]+\`(?:, |, and )?)+)\\.`, "i"));
   if (!match?.[1]) throw new Error(`Missing ${label}`);
@@ -329,6 +338,7 @@ describe("Text Engine runtime identity and evidence leaf", () => {
     expectExactSeparateStateVocabularies(leaf);
     for (const value of requiredCurrentValues) expect(leaf).toContain(value);
     expectEvidenceBoundaries(leaf);
+    expectRegistrationAwareEvidenceBoundary(leaf);
     expectImmutableAnchors(leaf, subgroup.sourcePaths);
   });
 
@@ -375,6 +385,19 @@ describe("Text Engine runtime identity and evidence leaf", () => {
           "| Comparison evidence | `not-run` | No matching native/WASM result exists |",
           "| Comparison evidence | `pinned` | Digest identity is comparison evidence |",
         ),
+      ),
+    ).toThrow();
+  });
+
+  it("mutation: rejects denial of registered Project Control Evidence", async () => {
+    const orientation = await readJson<WaveAOrientation>(
+      "migrations/V0_1_0a_1/core/wave-a-orientation.json",
+    );
+    const leaf = await readFile(join(root, findSubgroup(orientation).proposedLeafPath), "utf8");
+
+    expect(() =>
+      expectRegistrationAwareEvidenceBoundary(
+        `${leaf}\nThis synthesis did not add an evidence record.`,
       ),
     ).toThrow();
   });
