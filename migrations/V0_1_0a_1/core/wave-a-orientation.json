@@ -303,37 +303,37 @@
       "conflicts": [
         {
           "id": "TB-C1",
-          "subgroupId": "rich-inline-commit-and-session-lifecycle",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
           "summary": "Earlier range and execution cards describe future work while later cards describe bounded implementation; neither chronology nor PASS language establishes production readiness.",
           "evidenceNeeds": "Inspect current browser modules and focused sandbox/rich-inline tests; distinguish bounded implementation, primary-input status, and production readiness."
         },
         {
           "id": "TB-C2",
-          "subgroupId": "rich-inline-commit-and-session-lifecycle",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
           "summary": "The active sandbox draft remains textarea-first even though a contenteditable hardening boundary exists.",
           "evidenceNeeds": "Inspect public/app.js, draftContenteditableSurfaceHardening.js, event wiring, and browser tests for the active input path."
         },
         {
           "id": "TB-C3",
-          "subgroupId": "rich-inline-commit-and-session-lifecycle",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
           "summary": "The session record is storage-ready but the boundary expressly excludes storage-adapter writes.",
           "evidenceNeeds": "Inspect src/authoring/richInlineSessionPersistence.ts, exports, callers, and tests for record construction versus adapter writes."
         },
         {
           "id": "TB-C4",
-          "subgroupId": "rich-inline-commit-and-session-lifecycle",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
           "summary": "Live/exact parity proves stale invalidation, not exact renderer or export parity.",
           "evidenceNeeds": "Inspect src/authoring/richInlineCommit.ts, mutation bridge/core boundary, and tests/richInlineLiveExactParityAudit.test.ts for invalidation-only behavior."
         },
         {
           "id": "TB-C5",
-          "subgroupId": "structural-runtime-and-navigation",
+          "owningSubgroupId": "structural-runtime-and-navigation",
           "summary": "Structural packet v1 is reliable enough as a sandbox foundation transport while remaining non-durable and non-public.",
           "evidenceNeeds": "Verify structural packet consumers, routes, and focused tests; retain the sandbox-foundation boundary unless executable integration evidence proves more."
         },
         {
           "id": "TB-C6",
-          "subgroupId": "viewport-and-virtualized-rendering",
+          "owningSubgroupId": "viewport-and-virtualized-rendering",
           "summary": "The viewport audit proves bounded composition with synthetic shape assertions, not browser timing, recycled-DOM pools, or production performance.",
           "evidenceNeeds": "Re-run or inspect focused shape tests and require separate performance evidence for any latency claim."
         }
@@ -342,7 +342,7 @@
     {
       "familyId": "live-draft",
       "sourceCount": 64,
-      "reviewState": "orientation-selected",
+      "reviewState": "mapped",
       "orientationSources": [
         {
           "path": "docs/superpowers/specs/2026-07-28-unified-incremental-live-draft-product-readiness-design.md",
@@ -377,9 +377,308 @@
           "rationale": "Orients the reviewed source-commit transaction seam amendment and its active terminology."
         }
       ],
-      "provisionalModel": null,
-      "subgroups": [],
-      "conflicts": []
+      "provisionalModel": "Live Draft retains the Core-owned, process-local TextBlock layout route and its product-boundary history: renderer limits, geometry and scene projection, persistent-flow/range foundations, the 5A/5B root transition, later source-authority and source-commit transaction work, and scoped corrective evidence. Product handoffs, plans, and corrective reports keep their distinct authority; none alone establishes browser Worker, Editor, Backend, or broad product activation as current Core truth.",
+      "subgroups": [
+        {
+          "subgroupId": "product-readiness-and-renderer-boundaries",
+          "title": "Product Readiness and Renderer Boundaries",
+          "responsibility": "Capture cross-repository product ownership and the renderer-consumption, no-relayout boundary.",
+          "boundary": "Owns intended product and renderer limits, not Core implementation truth, activation claims, or retained incremental internals.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md",
+            "docs/LIVE_DRAFT_MR1_MULTI_BLOCK_COMPOSITION.md",
+            "docs/superpowers/specs/2026-07-28-unified-incremental-live-draft-product-readiness-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "live-draft/geometry-and-scene-projection",
+            "live-draft/root-and-v3-transition-contracts"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the display-list implementation and tests preserve renderer consumption without measurement or relayout?",
+              "anchors": [
+                "src/renderer/textFlowDisplayListV1.ts",
+                "tests/textFlowDisplayListV1.test.ts"
+              ]
+            },
+            {
+              "question": "Do public exports avoid turning the handoff into unintended product activation?",
+              "anchors": [
+                "src/index.ts",
+                "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "geometry-and-scene-projection",
+          "title": "Geometry and Scene Projection",
+          "responsibility": "Own bounded Phase 3/4 geometry, producer facts, display-list projection, and authored-box and inline-image layout records.",
+          "boundary": "Excludes retained incremental-root transitions, source-commit authority, Canvas layout authority, and cross-runtime pixel-parity claims.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_AUTHORED_BOX_GEOMETRY_4A.md",
+            "docs/LIVE_DRAFT_MR1_COMPLETE_GEOMETRY_BOUNDARY.md",
+            "docs/LIVE_DRAFT_MR1_ENGINE_FACTS.md",
+            "docs/LIVE_DRAFT_MR1_FRAGMENT_DISPLAY_LIST.md",
+            "docs/LIVE_DRAFT_MR1_INLINE_IMAGE_GEOMETRY_4B.md",
+            "docs/LIVE_DRAFT_MR1_LAYOUT_UNIT_POLICY.md",
+            "docs/LIVE_DRAFT_MR1_MULTI_RUN_LAYOUT_CONTRACT.md",
+            "docs/LIVE_DRAFT_MR1_SPATIAL_WRAPPING_3A.md",
+            "docs/LIVE_DRAFT_XR4_TEXT_FLOW_DISPLAY_LIST.md",
+            "docs/LIVE_DRAFT_XR5_SOURCE_SEGMENTS_AND_FORCED_BREAKS.md",
+            "docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md",
+            "docs/superpowers/plans/2026-07-27-core-spatial-wrapping-3a.md",
+            "docs/superpowers/plans/2026-07-27-initial-text-block-authored-box-geometry-4a.md",
+            "docs/superpowers/plans/2026-07-27-inline-image-line-box-geometry-4b.md",
+            "docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md",
+            "docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "live-draft/persistent-flow-and-range-foundations",
+            "live-draft/root-and-v3-transition-contracts",
+            "live-draft/product-readiness-and-renderer-boundaries"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do persistent layout contracts and display-list projection keep geometry producer-owned?",
+              "anchors": [
+                "src/layout/textBlockPersistentFlowContractV1.ts",
+                "src/renderer/textFlowDisplayListV1.ts",
+                "tests/textFlowDisplayListV1.test.ts"
+              ]
+            },
+            {
+              "question": "Do Phase 3/4 tests preserve authored-box, inline-image, and spatial-wrapping gates?",
+              "anchors": [
+                "tests/liveDraftMr1SpatialWrapping3a.test.ts",
+                "tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts",
+                "tests/liveDraftMr1InlineImageGeometry4b.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "persistent-flow-and-range-foundations",
+          "title": "Persistent Flow and Range Foundations",
+          "responsibility": "Own persistent flow-tree, contextual range, semantic checkpoint, affected-line, and oracle-comparison foundations.",
+          "boundary": "Excludes 5B Root V2 admission and work-policy changes, product-speed claims, and using complete-oracle work as an incremental execution input.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_COMPOSITIONAL_SEMANTIC_CHECKPOINTS.md",
+            "docs/LIVE_DRAFT_MR1_CONTEXTUAL_RANGE_FACTS.md",
+            "docs/LIVE_DRAFT_MR1_INCREMENTAL_CORE_COMPOSITION.md",
+            "docs/LIVE_DRAFT_MR1_INCREMENTAL_REFLOW_ANALYSIS.md",
+            "docs/LIVE_DRAFT_MR1_ORACLE_INDEPENDENT_CORE_EXECUTION.md",
+            "docs/LIVE_DRAFT_MR1_PERSISTENT_FLOW_FOUNDATION.md",
+            "docs/LIVE_DRAFT_MR1_RANGE_EXECUTION_AND_AFFECTED_LINES.md",
+            "docs/LIVE_DRAFT_MR1_RETAINED_RANGE_PLANNER.md",
+            "docs/superpowers/plans/2026-07-22-persistent-text-block-flow-tree-foundation.md",
+            "docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md",
+          "dependsOn": ["live-draft/geometry-and-scene-projection"],
+          "crossReferences": ["live-draft/root-and-v3-transition-contracts"],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do persistent flow structures and updates prove bounded structural reuse independently from product-speed claims?",
+              "anchors": [
+                "src/layout/textBlockPersistentFlowTreeV1.ts",
+                "src/layout/textBlockPersistentFlowUpdateV1.ts",
+                "tests/liveDraftMr1PersistentFlowFoundation.test.ts",
+                "tests/textBlockPersistentFlowTreeV1.test.ts",
+                "tests/textBlockPersistentFlowUpdateV1.test.ts"
+              ]
+            },
+            {
+              "question": "Does the line tree keep complete-oracle work separate from incremental execution input?",
+              "anchors": [
+                "src/layout/textBlockPersistentLayoutLineTreeV1.ts",
+                "docs/LIVE_DRAFT_MR1_ORACLE_INDEPENDENT_CORE_EXECUTION.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "root-and-v3-transition-contracts",
+          "title": "Root and V3 Transition Contracts",
+          "responsibility": "Own the 5A/5B unified root, V3 corrective/source-envelope contract, and their related plan/spec evolution.",
+          "boundary": "Excludes later 5B-2 source-authority and source-commit transaction internals; keeps V3-only policy and inactive capability rows scoped to their named evidence.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_UNIFIED_INCREMENTAL_ROOT_5B.md",
+            "docs/LIVE_DRAFT_MR1_UNIFIED_TEXT_BLOCK_ROOT_5A.md",
+            "docs/superpowers/plans/2026-07-28-unified-text-block-retained-root-5a.md",
+            "docs/superpowers/plans/2026-07-30-unified-incremental-root-transition-5b.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-corrective.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-prebinding-source-envelope-amendment.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective.md",
+            "docs/superpowers/specs/2026-07-30-unified-incremental-root-transition-5b-design.md",
+            "docs/superpowers/specs/2026-07-31-unified-incremental-root-transition-5b-1-corrective-design.md",
+            "docs/superpowers/specs/2026-07-31-unified-incremental-root-transition-5b-1-prebinding-source-envelope-amendment-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md",
+          "dependsOn": [
+            "live-draft/geometry-and-scene-projection",
+            "live-draft/persistent-flow-and-range-foundations"
+          ],
+          "crossReferences": [
+            "live-draft/corrective-evidence",
+            "live-draft/source-authority-and-commit-transaction"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do Root V2, scene, delivery, and work-policy code preserve the named 5A/5B capability boundaries?",
+              "anchors": [
+                "src/layout/textBlockUnifiedLayoutRootV2.ts",
+                "src/layout/textBlockPersistentSceneV2.ts",
+                "src/layout/textBlockSceneDeliveryV2.ts",
+                "src/layout/textBlockUnifiedLayoutWorkPolicyV1.ts"
+              ]
+            },
+            {
+              "question": "Do the focused root and calibration tests distinguish 5A acceptance from V3-only policy claims?",
+              "anchors": [
+                "tests/liveDraftMr1UnifiedLayoutRoot5a.test.ts",
+                "tests/liveDraftMr1UnifiedIncrementalRoot5b.test.ts",
+                "tests/textBlockUnifiedLayoutRootV2.test.ts",
+                "tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "source-authority-and-commit-transaction",
+          "title": "Source Authority and Commit Transaction",
+          "responsibility": "Own 5B-2 source topology, producer invocation, evidence/work ownership, and the exact source-commit transaction seam.",
+          "boundary": "Excludes generic product activation and older V3 root policy except as dependency context; retains superseded plans as history and preserves Thai/English companion parity work.",
+          "sourcePaths": [
+            "docs/superpowers/plans/2026-08-01-unified-incremental-root-transition-5b-2-v3.md",
+            "docs/superpowers/plans/2026-08-02-unified-incremental-root-transition-5b-2-evidence-v2.md",
+            "docs/superpowers/plans/2026-08-03-producer-invocation-authority-boundary.md",
+            "docs/superpowers/plans/2026-08-03-unified-incremental-root-transition-5b-2-rebaseline-review-th.md",
+            "docs/superpowers/plans/2026-08-03-unified-incremental-root-transition-5b-2-rebaseline.md",
+            "docs/superpowers/plans/2026-08-09-unified-incremental-root-transition-5b2-plan-a-review-th.md",
+            "docs/superpowers/plans/2026-08-09-unified-incremental-root-transition-5b2-plan-a-source-authority.md",
+            "docs/superpowers/plans/2026-08-11-source-commit-transaction-seam-revised.md",
+            "docs/superpowers/plans/2026-08-11-source-commit-transaction-seam.md",
+            "docs/superpowers/specs/2026-08-01-unified-incremental-root-transition-5b-2-v3-amendment-design.md",
+            "docs/superpowers/specs/2026-08-02-unified-incremental-source-topology-and-fallback-target-design-correction.md",
+            "docs/superpowers/specs/2026-08-02-unified-incremental-transition-evidence-v2-design-correction.md",
+            "docs/superpowers/specs/2026-08-03-producer-invocation-authority-boundary-design.md",
+            "docs/superpowers/specs/2026-08-03-unified-incremental-root-transition-5b-2-plan-lock-design-correction-review-th.md",
+            "docs/superpowers/specs/2026-08-03-unified-incremental-root-transition-5b-2-plan-lock-design-correction.md",
+            "docs/superpowers/specs/2026-08-09-unified-incremental-root-transition-5b2-continuation-rebaseline-design.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-glossary-th.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-glossary.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-seam-design.md",
+            "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md",
+          "dependsOn": ["live-draft/root-and-v3-transition-contracts"],
+          "crossReferences": [
+            "live-draft/corrective-evidence",
+            "live-draft/product-readiness-and-renderer-boundaries"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the source-authority and transaction internals preserve producer, evidence/work-owner, and source-commit seams?",
+              "anchors": [
+                "src/layout/textBlockUnifiedLayoutProducerInvocationAuthorityV2.ts",
+                "src/layout/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.ts",
+                "src/layout/textBlockUnifiedLayoutSourceAuthorityInternalsV1.ts",
+                "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts"
+              ]
+            },
+            {
+              "question": "Do focused tests establish current code evidence while the amendment remains normative pending its named proof?",
+              "anchors": [
+                "tests/textBlockUnifiedLayoutProducerInvocationAuthorityV2.test.ts",
+                "tests/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.test.ts",
+                "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts",
+                "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "corrective-evidence",
+          "title": "Corrective Evidence",
+          "responsibility": "Own five scoped repair, review, and verification records as evidence and residual-risk history.",
+          "boundary": "Does not silently become a normative implementation contract or extend a scoped PASS beyond its reviewed code and test range.",
+          "sourcePaths": [
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-review-verdict.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-verification.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md",
+          "dependsOn": ["live-draft/root-and-v3-transition-contracts"],
+          "crossReferences": ["live-draft/source-authority-and-commit-transaction"],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the named adversarial and scene-delivery tests support the corrective reports only within their stated ranges?",
+              "anchors": [
+                "tests/textBlockUnifiedLayoutAdversarialV2.test.ts",
+                "tests/textBlockSceneDeliveryV2.test.ts"
+              ]
+            },
+            {
+              "question": "Do report ranges preserve both the earlier type-check concern and the later scoped verification rather than resolving by chronology?",
+              "anchors": [
+                ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md",
+                ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-verification.md"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "LD-C1",
+          "owningSubgroupId": "product-readiness-and-renderer-boundaries",
+          "summary": "The handoff's dated current-baseline prose retains older Phase 3/4 history and explicit NO-GO areas.",
+          "evidenceNeeds": "Establish the frozen implementation/test baseline before current-state synthesis and preserve historical labels."
+        },
+        {
+          "id": "LD-C2",
+          "owningSubgroupId": "geometry-and-scene-projection",
+          "summary": "XR-4/XR-5 prove renderer-consumption geometry and selected cross-runtime rows, not Canvas/PDF glyph-pixel parity or production binding.",
+          "evidenceNeeds": "Inspect projection contract/tests and external evidence references; retain no-relayout and QA-only limits."
+        },
+        {
+          "id": "LD-C3",
+          "owningSubgroupId": "persistent-flow-and-range-foundations",
+          "summary": "Range/oracle records can be misread as per-keystroke performance proof even where they describe complete QA materialization.",
+          "evidenceNeeds": "Compare planner and line-tree tests with work ledgers; require measurements for performance claims."
+        },
+        {
+          "id": "LD-C4",
+          "owningSubgroupId": "root-and-v3-transition-contracts",
+          "summary": "V3 records a scoped PASS and V3-only active policy with a 5B-2 stop, while later documents describe subsequent replanning.",
+          "evidenceNeeds": "Resolve exact frozen policy, export, and test state; apply plan/spec precedence only where implementation evidence confirms it."
+        },
+        {
+          "id": "LD-C5",
+          "owningSubgroupId": "source-authority-and-commit-transaction",
+          "summary": "The 2026-08-10 seam design is partly superseded by the 2026-08-11 approved amendment, and Thai companion documents must not drift.",
+          "evidenceNeeds": "Compare amendment, earlier seam design, glossary pair, transaction internals, and focused transaction tests."
+        },
+        {
+          "id": "LD-C6",
+          "owningSubgroupId": "corrective-evidence",
+          "summary": "An earlier blocked type-check concern and later passing verification cover different ranges, so chronology alone is insufficient.",
+          "evidenceNeeds": "Verify cited frozen blobs and exact test names; retain the local repair concern without treating it as a persistent family failure."
+        }
+      ]
     },
     {
       "familyId": "text-engine",

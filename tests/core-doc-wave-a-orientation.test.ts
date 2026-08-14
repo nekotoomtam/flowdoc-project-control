@@ -45,7 +45,7 @@ interface SemanticSubgroup {
 
 interface OrientationConflict {
   id: string;
-  subgroupId: string;
+  owningSubgroupId: string;
   summary: string;
   evidenceNeeds: string;
 }
@@ -132,7 +132,8 @@ function expectMappedFamily(
   expect(proposedLeaves).toEqual([...new Set(proposedLeaves)]);
 
   for (const conflict of family?.conflicts ?? []) {
-    expect(subgroupIds.has(conflict.subgroupId)).toBe(true);
+    expect(conflict).not.toHaveProperty("subgroupId");
+    expect(subgroupIds.has(conflict.owningSubgroupId)).toBe(true);
     expect(conflict.evidenceNeeds.trim().length).toBeGreaterThan(0);
   }
 }
@@ -200,5 +201,14 @@ describe("Wave A Core documentation orientation", () => {
     ]);
 
     expectMappedFamily(orientation, familyMap, "template-builder", 73);
+  });
+
+  it("maps Live Draft into closed, evidence-bearing subgroups", async () => {
+    const [orientation, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+
+    expectMappedFamily(orientation, familyMap, "live-draft", 64);
   });
 });
