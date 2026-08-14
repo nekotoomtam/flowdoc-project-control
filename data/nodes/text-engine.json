@@ -3,10 +3,15 @@
   "id": "text-engine",
   "title": "Text Engine",
   "parentId": "core",
-  "summary": "Text Engine family remains unknown; this registered WASM leaf covers package-local toolchain and tracked-artifact facts only, while broader adoption and production readiness remain unknown.",
+  "summary": "Text Engine family remains unknown; two reviewed bounded leaves register package-local WASM toolchain/artifact facts and runtime identity/digest-evidence facts only, while broader adoption and production readiness remain unknown.",
   "truthState": "unknown",
   "order": 20,
-  "documentIds": ["doc-text-engine-wasm-toolchain-artifacts"],
-  "evidenceIds": ["evidence-text-engine-wasm-toolchain-gates", "evidence-text-engine-wasm-artifact-digest"],
+  "documentIds": ["doc-text-engine-wasm-toolchain-artifacts", "doc-text-engine-runtime-identity-evidence"],
+  "evidenceIds": [
+    "evidence-text-engine-wasm-toolchain-gates",
+    "evidence-text-engine-wasm-artifact-digest",
+    "evidence-text-engine-runtime-identity-contract",
+    "evidence-text-engine-runtime-identity-digest"
+  ],
   "repositoryIds": ["repo-core", "repo-project-control"]
 }

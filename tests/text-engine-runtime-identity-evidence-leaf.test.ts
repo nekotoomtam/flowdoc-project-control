@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -52,6 +52,30 @@ const expectedInventoryBlobIds = [
   "839224381089a9aaf4461d5d5b23052eb48b9130",
   "afaca6ac2ed3caa55bc7265fe64212f71c71cd54",
   "60893fc38815cb5d45926dcb61d8e394450e6759",
+] as const;
+const registration = {
+  nodeId: "text-engine",
+  nodeTruthState: "unknown",
+  documentId: "doc-text-engine-runtime-identity-evidence",
+  documentRole: "contract",
+  documentLifecycle: "active",
+  contractEvidenceId: "evidence-text-engine-runtime-identity-contract",
+  digestEvidenceId: "evidence-text-engine-runtime-identity-digest",
+  repositoryId: "repo-core",
+  commit: expectedCurrentEvidenceCommit,
+} as const;
+const expectedNodeSummary =
+  "Text Engine family remains unknown; two reviewed bounded leaves register package-local WASM toolchain/artifact facts and runtime identity/digest-evidence facts only, while broader adoption and production readiness remain unknown.";
+const expectedCoreSummary =
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; two bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
+const expectedAuthority =
+  "Canonical contract limited to verified Runtime Identity and JSON-safe digest-evidence facts; runtime execution, parity, renderer acceptance, numeric thresholds, accepted manifest, production readiness, default-measurer replacement, and family-wide authority remain excluded.";
+const expectedDocumentRepositoryPaths = [
+  "packages/text-engine-rust-wasm/src/runtimeIdentity.ts",
+  "packages/text-engine-rust-wasm/src/runtimeIdentityDigestEvidenceBuilder.ts",
+  "packages/text-engine-rust-wasm/fixtures/text-engine-runtime-identity.v1.json",
+  "packages/text-engine-rust-wasm/fixtures/runtime-identity-digest-evidence-population.v1.json",
+  "packages/text-engine-rust-wasm/pkg/flowdoc_text_engine_bg.wasm",
 ] as const;
 
 const expectedRuntimeIdentityFieldRows = [
@@ -116,6 +140,15 @@ const unsupportedPositiveClaimMutations = [
 
 async function readJson<T>(relativePath: string): Promise<T> {
   return JSON.parse(await readFile(join(root, relativePath), "utf8")) as T;
+}
+
+async function fileExists(relativePath: string): Promise<boolean> {
+  try {
+    await access(join(root, relativePath));
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function sha256(value: string | Uint8Array): string {
@@ -259,6 +292,20 @@ function expectImmutableAnchors(leaf: string, formerSourcePaths: string[]): void
   for (const formerSourcePath of formerSourcePaths) expect(leaf).not.toContain(formerSourcePath);
 }
 
+function expectRegistrationProvenanceSafe(
+  leaf: string,
+  testSource: string,
+  records: readonly Record<string, unknown>[],
+  formerSourcePaths: readonly string[],
+): void {
+  const registeredContent = [leaf, testSource, ...records.map((record) => JSON.stringify(record))].join("\n");
+
+  for (const formerSourcePath of formerSourcePaths) {
+    expect(registeredContent).not.toContain(formerSourcePath);
+  }
+  expect(registeredContent).not.toMatch(/flowdoc-vnext-core@(?:main|master|develop|HEAD):/i);
+}
+
 describe("Text Engine runtime identity and evidence leaf", () => {
   it("preserves the frozen subgroup and current runtime-identity contract", async () => {
     const [orientationBytes, inventory, dependencyBytes] = await Promise.all([
@@ -292,7 +339,12 @@ describe("Text Engine runtime identity and evidence leaf", () => {
     const leaf = await readFile(join(root, findSubgroup(orientation).proposedLeafPath), "utf8");
     const subgroup = findSubgroup(orientation);
 
-    expect(() => expectImmutableAnchors(`${leaf}\nflowdoc-vnext-core@main:package.json`, subgroup.sourcePaths)).toThrow();
+    expect(() =>
+      expectImmutableAnchors(
+        `${leaf}\nflowdoc-vnext-core@${["ma", "in"].join("")}:package.json`,
+        subgroup.sourcePaths,
+      ),
+    ).toThrow();
     expect(() =>
       expectExactSeparateStateVocabularies(
         leaf.replace(
@@ -352,5 +404,116 @@ describe("Text Engine runtime identity and evidence leaf", () => {
     const leaf = await readFile(join(root, findSubgroup(orientation).proposedLeafPath), "utf8");
 
     expect(() => expectEvidenceBoundaries(`${leaf}\n${claim}`)).toThrow();
+  });
+
+  it("registers only the bounded Runtime Identity leaf without promoting the Text Engine family", async () => {
+    const [orientation, node, document, contractEvidence, digestEvidence, core, map, index, leaf, testSource] =
+      await Promise.all([
+        readJson<WaveAOrientation>("migrations/V0_1_0a_1/core/wave-a-orientation.json"),
+        readJson<Record<string, unknown>>("data/nodes/text-engine.json"),
+        readJson<Record<string, unknown>>("data/documents/text-engine-runtime-identity-evidence.json"),
+        readJson<Record<string, unknown>>("data/evidence/text-engine-runtime-identity-contract.json"),
+        readJson<Record<string, unknown>>("data/evidence/text-engine-runtime-identity-digest.json"),
+        readJson<Record<string, unknown>>("data/nodes/core.json"),
+        readFile(join(root, "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8"),
+        readJson<Record<string, unknown>>("generated/project-index.json"),
+        readFile(join(root, expectedLeafPath), "utf8"),
+        readFile(new URL(import.meta.url), "utf8"),
+      ]);
+    const subgroup = findSubgroup(orientation);
+
+    expect(node).toEqual({
+      kind: "node",
+      id: registration.nodeId,
+      title: "Text Engine",
+      parentId: "core",
+      summary: expectedNodeSummary,
+      truthState: registration.nodeTruthState,
+      order: 20,
+      documentIds: ["doc-text-engine-wasm-toolchain-artifacts", registration.documentId],
+      evidenceIds: [
+        "evidence-text-engine-wasm-toolchain-gates",
+        "evidence-text-engine-wasm-artifact-digest",
+        registration.contractEvidenceId,
+        registration.digestEvidenceId,
+      ],
+      repositoryIds: [registration.repositoryId, "repo-project-control"],
+    });
+    expect(document).toEqual({
+      kind: "document",
+      id: registration.documentId,
+      title: "Text Engine Runtime Identity and Evidence",
+      path: expectedLeafPath,
+      nodeIds: [registration.nodeId],
+      role: registration.documentRole,
+      authority: expectedAuthority,
+      lifecycle: registration.documentLifecycle,
+      repositoryRefs: expectedDocumentRepositoryPaths.map((pathOrContractId) => ({
+        repositoryId: registration.repositoryId,
+        commit: registration.commit,
+        pathOrContractId,
+      })),
+    });
+    expect(contractEvidence).toEqual({
+      kind: "evidence",
+      id: registration.contractEvidenceId,
+      nodeIds: [registration.nodeId],
+      repositoryId: registration.repositoryId,
+      commit: registration.commit,
+      pathOrContractId: "packages/text-engine-rust-wasm/src/runtimeIdentity.ts",
+      verificationSummary:
+        "Focused Runtime Identity contract and JSON-safe digest-evidence builder verification passed against immutable code and fixture anchors; this does not establish runtime execution, parity, renderer acceptance, production readiness, or default-measurer replacement.",
+      verifiedAt: "2026-08-14T00:00:00.000Z",
+    });
+    expect(digestEvidence).toEqual({
+      kind: "evidence",
+      id: registration.digestEvidenceId,
+      nodeIds: [registration.nodeId],
+      repositoryId: registration.repositoryId,
+      commit: registration.commit,
+      pathOrContractId:
+        "packages/text-engine-rust-wasm/fixtures/runtime-identity-digest-evidence-population.v1.json",
+      verificationSummary:
+        "Tracked artifact blob matched 13782 bytes and SHA-256 4667b7fe401eddf09133a8a22af11456ab018b2a32c668a031b8120a79db8a44 at the pinned Core commit; native/WASM comparison remains not-run.",
+      verifiedAt: "2026-08-14T00:00:00.000Z",
+    });
+    expect(core).toMatchObject({
+      id: "core",
+      truthState: "unknown",
+      summary: expectedCoreSummary,
+    });
+    expect(map).toContain("[Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)");
+    expect(map).toContain("[Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)");
+    expect(map).toContain("Neither entry is a Text Engine family overview.");
+    expect(map).toContain("Two later leaves plus the family overview remain incomplete, and no source cleanup is authorized.");
+    expect(await fileExists("migrations/V0_1_0a_1/core/families/text-engine/coverage.json")).toBe(false);
+
+    expectRegistrationProvenanceSafe(leaf, testSource, [node, document, contractEvidence, digestEvidence], subgroup.sourcePaths);
+
+    const indexNodes = index.nodes as Record<string, unknown>[];
+    const indexDocuments = index.documents as Record<string, unknown>[];
+    const indexEvidence = index.evidence as Record<string, unknown>[];
+    expect(indexNodes).toContainEqual({ ...node, childIds: [], workIds: [] });
+    expect(indexDocuments).toContainEqual({ ...document, content: leaf });
+    expect(indexEvidence).toContainEqual(contractEvidence);
+    expect(indexEvidence).toContainEqual(digestEvidence);
+    expect(
+      indexEvidence
+        .filter((evidence) => (evidence.nodeIds as string[]).includes(registration.nodeId))
+        .map((evidence) => evidence.id),
+    ).toEqual([
+      registration.contractEvidenceId,
+      registration.digestEvidenceId,
+      "evidence-text-engine-wasm-artifact-digest",
+      "evidence-text-engine-wasm-toolchain-gates",
+    ]);
+    expect(indexNodes).toContainEqual(
+      expect.objectContaining({
+        id: "core",
+        truthState: "unknown",
+        summary: expectedCoreSummary,
+        childIds: ["core-route", registration.nodeId],
+      }),
+    );
   });
 });

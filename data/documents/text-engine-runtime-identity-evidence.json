@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-text-engine-runtime-identity-evidence",
+  "title": "Text Engine Runtime Identity and Evidence",
+  "path": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md",
+  "nodeIds": ["text-engine"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified Runtime Identity and JSON-safe digest-evidence facts; runtime execution, parity, renderer acceptance, numeric thresholds, accepted manifest, production readiness, default-measurer replacement, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/runtimeIdentity.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/runtimeIdentityDigestEvidenceBuilder.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/text-engine-runtime-identity.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/runtime-identity-digest-evidence-population.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/pkg/flowdoc_text_engine_bg.wasm"
+    }
+  ]
+}

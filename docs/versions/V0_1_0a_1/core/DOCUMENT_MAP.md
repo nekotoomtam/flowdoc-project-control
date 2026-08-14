@@ -25,8 +25,10 @@ No other Core document deletion is authorized by this closure.
 ## Reviewed Partial Family Leaves
 
 - [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)
-  — This is not a Text Engine family overview. Text Engine remains unknown; the
-  remaining three leaves are incomplete, and no source cleanup is authorized.
+- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)
+
+Neither entry is a Text Engine family overview. Text Engine remains unknown.
+Two later leaves plus the family overview remain incomplete, and no source cleanup is authorized.
 
 ## Shared Glossaries
 
@@ -37,6 +39,6 @@ No other Core document deletion is authorized by this closure.
 
 `CORE_OVERVIEW.md` is intentionally unpublished until the broader Core
 synthesis is complete. Unreviewed Core families remain in candidate/inventory
-state. The active reviewed partial Text Engine leaf above is not a family
-overview: Text Engine remains unknown, its remaining three leaves are
-incomplete, and no source cleanup is authorized.
+state. The active reviewed partial Text Engine leaves above are not a family
+overview: Text Engine remains unknown, two later leaves plus the family
+overview remain incomplete, and no source cleanup is authorized.
