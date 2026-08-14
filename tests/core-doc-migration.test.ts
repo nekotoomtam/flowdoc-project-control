@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
-import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { access, mkdir, mkdtemp, readFile, realpath, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { dirname, join } from "node:path";
+import { dirname, isAbsolute, join, relative } from "node:path";
 import { promisify } from "node:util";
 import { describe, expect, it } from "vitest";
 
@@ -268,6 +268,48 @@ async function writeStoredFixture(fixture: MigrationFixture): Promise<void> {
 
 function diagnosticCodes(result: { diagnostics: Array<{ code: string }> }): string[] {
   return result.diagnostics.map((diagnostic) => diagnostic.code);
+}
+
+async function closeMigrationFixture(
+  fixture: MigrationFixture,
+  paths: string[] = fixture.coverage.sources
+    .filter((source) => source.disposition !== "repo-local-keep")
+    .map((source) => source.path),
+): Promise<string> {
+  await git(fixture.sourceRoot, ["rm", "--", ...paths]);
+  await git(fixture.sourceRoot, ["commit", "-m", "complete cleanup"]);
+  const cleanupCommit = await git(fixture.sourceRoot, ["rev-parse", "HEAD"]);
+  fixture.coverage.status = "closed";
+  fixture.coverage.coreCleanupCommit = cleanupCommit;
+  return cleanupCommit;
+}
+
+async function fixturePathExists(path: string): Promise<boolean> {
+  try {
+    await access(path);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function removeDisposableFixtureRoot(path: string): Promise<void> {
+  const resolvedTempRoot = await realpath(tmpdir());
+  const resolvedFixtureRoot = await realpath(path);
+  const relativeFixturePath = relative(resolvedTempRoot, resolvedFixtureRoot);
+  if (
+    relativeFixturePath.length === 0 ||
+    relativeFixturePath.startsWith("..") ||
+    isAbsolute(relativeFixturePath)
+  ) {
+    throw new Error("Refusing to clean a non-temporary fixture repository.");
+  }
+  await rm(resolvedFixtureRoot, {
+    recursive: true,
+    force: true,
+    maxRetries: 3,
+    retryDelay: 100,
+  });
 }
 
 describe("stored Core migration closure", () => {
@@ -629,26 +671,315 @@ describe("external Core deletion readiness", () => {
     }))).toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
   });
 
-  it("fails cleanup verification when any covered source remains", async () => {
-    const fixture = await createMigrationFixture({ secondSource: true });
-    await git(fixture.sourceRoot, ["rm", "--", sourcePath]);
-    await git(fixture.sourceRoot, ["commit", "-m", "partial cleanup"]);
-    fixture.coverage.status = "closed";
-    fixture.coverage.coreCleanupCommit = await git(fixture.sourceRoot, ["rev-parse", "HEAD"]);
-
-    expect(diagnosticCodes(await verifyFamilyCleanup(fixture)))
-      .toContain("MIGRATION_CLEANUP_INCOMPLETE");
-  });
-
-  it("accepts closed cleanup only at the recorded clean HEAD with all covered non-keeps absent", async () => {
+  it("accepts closed cleanup at the exact recorded commit or a clean descendant", async () => {
     const fixture = await createMigrationFixture();
-    await git(fixture.sourceRoot, ["rm", "--", sourcePath]);
-    await git(fixture.sourceRoot, ["commit", "-m", "complete cleanup"]);
-    fixture.coverage.status = "closed";
-    fixture.coverage.coreCleanupCommit = await git(fixture.sourceRoot, ["rev-parse", "HEAD"]);
+    await closeMigrationFixture(fixture);
+
+    expect(await verifyFamilyCleanup(fixture)).toMatchObject({ ready: true, diagnostics: [] });
+
+    await writeFile(join(fixture.sourceRoot, "later.md"), "# Later unrelated documentation\n", "utf8");
+    await git(fixture.sourceRoot, ["add", "later.md"]);
+    await git(fixture.sourceRoot, ["commit", "-m", "later unrelated documentation"]);
 
     expect(await verifyFamilyCleanup(fixture)).toMatchObject({ ready: true, diagnostics: [] });
   });
+
+  it("proves closed cleanup ancestry and tree proof", async () => {
+    const nonAncestor = await createMigrationFixture();
+    const base = nonAncestor.commit;
+    await git(nonAncestor.sourceRoot, ["checkout", "-b", "recorded-cleanup"]);
+    const recordedCleanup = await closeMigrationFixture(nonAncestor);
+    await git(nonAncestor.sourceRoot, ["checkout", "-b", "current-cleanup", base]);
+    await git(nonAncestor.sourceRoot, ["rm", "--", sourcePath]);
+    await git(nonAncestor.sourceRoot, ["commit", "-m", "different cleanup branch"]);
+    nonAncestor.coverage.coreCleanupCommit = recordedCleanup;
+    expect(diagnosticCodes(await verifyFamilyCleanup(nonAncestor)))
+      .toContain("MIGRATION_CLEANUP_COMMIT_NOT_ANCESTOR");
+
+    for (const unavailableCommit of ["d".repeat(40), "not-a-commit"]) {
+      const unavailable = await createMigrationFixture();
+      await closeMigrationFixture(unavailable);
+      unavailable.coverage.coreCleanupCommit = unavailableCommit;
+      expect(diagnosticCodes(await verifyFamilyCleanup(unavailable)))
+        .toContain("MIGRATION_CLEANUP_COMMIT_UNAVAILABLE");
+    }
+
+    const rootCleanup = await createMigrationFixture();
+    await git(rootCleanup.sourceRoot, ["checkout", "--orphan", "root-cleanup"]);
+    await git(rootCleanup.sourceRoot, ["rm", "-rf", "."]);
+    await git(rootCleanup.sourceRoot, ["commit", "--allow-empty", "-m", "root cleanup"]);
+    rootCleanup.coverage.status = "closed";
+    rootCleanup.coverage.coreCleanupCommit = await git(rootCleanup.sourceRoot, ["rev-parse", "HEAD"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(rootCleanup)))
+      .toContain("MIGRATION_CLEANUP_COMMIT_TOPOLOGY_INVALID");
+
+    const mergeCleanup = await createMigrationFixture();
+    const mergeBase = mergeCleanup.commit;
+    await git(mergeCleanup.sourceRoot, ["checkout", "-b", "unrelated-parent", mergeBase]);
+    await writeFile(join(mergeCleanup.sourceRoot, "other.md"), "# Other parent\n", "utf8");
+    await git(mergeCleanup.sourceRoot, ["add", "other.md"]);
+    await git(mergeCleanup.sourceRoot, ["commit", "-m", "other parent"]);
+    await git(mergeCleanup.sourceRoot, ["checkout", "-b", "cleanup-parent", mergeBase]);
+    await closeMigrationFixture(mergeCleanup);
+    await git(mergeCleanup.sourceRoot, ["merge", "--no-ff", "unrelated-parent", "-m", "merge cleanup"]);
+    mergeCleanup.coverage.coreCleanupCommit = await git(mergeCleanup.sourceRoot, ["rev-parse", "HEAD"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(mergeCleanup)))
+      .toContain("MIGRATION_CLEANUP_COMMIT_TOPOLOGY_INVALID");
+
+    const extraDelta = await createMigrationFixture();
+    await git(extraDelta.sourceRoot, ["rm", "--", sourcePath]);
+    await writeFile(join(extraDelta.sourceRoot, "README.md"), "# Changed during cleanup\n", "utf8");
+    await git(extraDelta.sourceRoot, ["add", "README.md"]);
+    await git(extraDelta.sourceRoot, ["commit", "-m", "cleanup plus unrelated change"]);
+    extraDelta.coverage.status = "closed";
+    extraDelta.coverage.coreCleanupCommit = await git(extraDelta.sourceRoot, ["rev-parse", "HEAD"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(extraDelta)))
+      .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+
+    const missingDeletion = await createMigrationFixture({ secondSource: true });
+    await closeMigrationFixture(missingDeletion, [sourcePath]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(missingDeletion)))
+      .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+
+    const nonDeletionDelta = await createMigrationFixture();
+    await writeFile(join(nonDeletionDelta.sourceRoot, sourcePath), "# Retained instead of deleted\n", "utf8");
+    await git(nonDeletionDelta.sourceRoot, ["add", sourcePath]);
+    await git(nonDeletionDelta.sourceRoot, ["commit", "-m", "modify covered source"]);
+    nonDeletionDelta.coverage.status = "closed";
+    nonDeletionDelta.coverage.coreCleanupCommit = await git(nonDeletionDelta.sourceRoot, ["rev-parse", "HEAD"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(nonDeletionDelta)))
+      .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+
+    const driftedPreimage = await createMigrationFixture();
+    await writeFile(join(driftedPreimage.sourceRoot, sourcePath), "# Later committed source\n", "utf8");
+    await git(driftedPreimage.sourceRoot, ["add", sourcePath]);
+    await git(driftedPreimage.sourceRoot, ["commit", "-m", "drift source before cleanup"]);
+    await closeMigrationFixture(driftedPreimage);
+    expect(diagnosticCodes(await verifyFamilyCleanup(driftedPreimage)))
+      .toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
+
+    for (const mutate of [
+      (fixture: MigrationFixture) => { fixture.coverage.sources[0]!.blobId = "b".repeat(40); },
+      (fixture: MigrationFixture) => { fixture.inventory.files[0]!.blobId = "b".repeat(40); },
+    ]) {
+      const mismatchedRecord = await createMigrationFixture();
+      await closeMigrationFixture(mismatchedRecord);
+      mutate(mismatchedRecord);
+      expect(diagnosticCodes(await verifyFamilyCleanup(mismatchedRecord)))
+        .toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
+    }
+  }, 60_000);
+
+  it("detects covered sources in the current Git tree even when skip-worktree hides the filesystem copy", async () => {
+    const fixture = await createMigrationFixture();
+    await closeMigrationFixture(fixture);
+    await git(fixture.sourceRoot, ["checkout", `${fixture.coverage.coreCleanupCommit}^`, "--", sourcePath]);
+    await git(fixture.sourceRoot, ["commit", "-m", "reintroduce covered source"]);
+
+    const resolvedFixtureRoot = await realpath(fixture.sourceRoot);
+    let skipWorktreeSet = false;
+    try {
+      await git(resolvedFixtureRoot, ["update-index", "--skip-worktree", "--", sourcePath]);
+      skipWorktreeSet = true;
+      await rm(join(resolvedFixtureRoot, ...sourcePath.split("/")));
+      expect(await git(resolvedFixtureRoot, ["status", "--porcelain"])).toBe("");
+      await expect(git(resolvedFixtureRoot, ["cat-file", "-e", `HEAD:${sourcePath}`]))
+        .resolves.toBe("");
+      await expect(access(join(resolvedFixtureRoot, ...sourcePath.split("/"))))
+        .rejects.toMatchObject({ code: "ENOENT" });
+      expect(diagnosticCodes(await verifyFamilyCleanup({
+        ...fixture,
+        sourceRoot: resolvedFixtureRoot,
+      }))).toContain("MIGRATION_CLEANUP_INCOMPLETE");
+    } finally {
+      try {
+        if (await fixturePathExists(join(resolvedFixtureRoot, ".git"))) {
+          if (skipWorktreeSet) {
+            await git(resolvedFixtureRoot, ["update-index", "--no-skip-worktree", "--", sourcePath]);
+          }
+          await git(resolvedFixtureRoot, ["restore", "--staged", "--worktree", "--source=HEAD", "--", sourcePath]);
+        }
+      } finally {
+        await removeDisposableFixtureRoot(resolvedFixtureRoot);
+        await removeDisposableFixtureRoot(fixture.projectRoot);
+      }
+    }
+  });
+
+  it("fails closed without throwing for non-blob covered paths and unavailable captured trees", async () => {
+    const directoryReintroduction = await createMigrationFixture();
+    await closeMigrationFixture(directoryReintroduction);
+    await mkdir(join(directoryReintroduction.sourceRoot, ...sourcePath.split("/")), { recursive: true });
+    await writeFile(
+      join(directoryReintroduction.sourceRoot, ...sourcePath.split("/"), "nested.md"),
+      "# Directory reintroduction\n",
+      "utf8",
+    );
+    await git(directoryReintroduction.sourceRoot, ["add", sourcePath]);
+    await git(directoryReintroduction.sourceRoot, ["commit", "-m", "reintroduce source as directory"]);
+    const directoryResult = await verifyFamilyCleanup(directoryReintroduction);
+    expect(diagnosticCodes(directoryResult)).toEqual(["MIGRATION_CLEANUP_INCOMPLETE"]);
+    expect(JSON.stringify(directoryResult.diagnostics)).not.toContain(directoryReintroduction.sourceRoot);
+
+    const gitlinkReintroduction = await createMigrationFixture();
+    await closeMigrationFixture(gitlinkReintroduction);
+    const submoduleRepository = await createCoreDocRepository();
+    await git(gitlinkReintroduction.sourceRoot, [
+      "-c",
+      "protocol.file.allow=always",
+      "submodule",
+      "add",
+      submoduleRepository.root,
+      sourcePath,
+    ]);
+    await git(gitlinkReintroduction.sourceRoot, ["commit", "-m", "reintroduce source as gitlink"]);
+    gitlinkReintroduction.coverage.retainedHistoricalReferences = (
+      await collectCoveredPathMentions(gitlinkReintroduction.sourceRoot, [sourcePath])
+    ).map((mention) => ({
+      ...mention,
+      rationale: "Allows the disposable fixture's generated submodule metadata.",
+    }));
+    const gitlinkResult = await verifyFamilyCleanup(gitlinkReintroduction);
+    expect(diagnosticCodes(gitlinkResult)).toEqual(["MIGRATION_CLEANUP_INCOMPLETE"]);
+    expect(JSON.stringify(gitlinkResult.diagnostics)).not.toContain(gitlinkReintroduction.sourceRoot);
+
+    for (const unavailableSourceCommit of ["f".repeat(40), "not-a-commit"]) {
+      const unavailableCapturedTree = await createMigrationFixture();
+      await closeMigrationFixture(unavailableCapturedTree);
+      unavailableCapturedTree.coverage.sourceCommit = unavailableSourceCommit;
+      const result = await verifyFamilyCleanup(unavailableCapturedTree);
+      expect(diagnosticCodes(result)).toEqual(["MIGRATION_CLEANUP_PREIMAGE_MISMATCH"]);
+      expect(JSON.stringify(result.diagnostics)).not.toContain(unavailableCapturedTree.sourceRoot);
+    }
+
+    const largeTrackedBlob = await createMigrationFixture();
+    await closeMigrationFixture(largeTrackedBlob);
+    await writeFile(join(largeTrackedBlob.sourceRoot, "large.txt"), "x".repeat(1_200_000), "utf8");
+    await git(largeTrackedBlob.sourceRoot, ["add", "large.txt"]);
+    await git(largeTrackedBlob.sourceRoot, ["commit", "-m", "add large tracked blob"]);
+    expect(await verifyFamilyCleanup(largeTrackedBlob)).toMatchObject({ ready: true, diagnostics: [] });
+  }, 30_000);
+
+  it("maps inaccessible cleanup and current trees to sanitized diagnostics", async () => {
+    const corruptTree = async (fixture: MigrationFixture, commit: string): Promise<void> => {
+      const tree = await git(fixture.sourceRoot, ["rev-parse", `${commit}^{tree}`]);
+      const objectPath = join(fixture.sourceRoot, ".git", "objects", tree.slice(0, 2), tree.slice(2));
+      await rm(objectPath);
+    };
+
+    const inaccessibleCleanup = await createMigrationFixture();
+    try {
+      const cleanup = await closeMigrationFixture(inaccessibleCleanup);
+      await corruptTree(inaccessibleCleanup, cleanup);
+      const result = await verifyFamilyCleanup(inaccessibleCleanup);
+      expect(diagnosticCodes(result).length).toBeGreaterThan(0);
+      expect(diagnosticCodes(result).every((code) => code === "MIGRATION_CLEANUP_SCOPE_INVALID")).toBe(true);
+      expect(JSON.stringify(result.diagnostics)).not.toMatch(/fatal:|\.git[\\/]objects/iu);
+      expect(JSON.stringify(result.diagnostics)).not.toContain(inaccessibleCleanup.sourceRoot);
+    } finally {
+      await removeDisposableFixtureRoot(inaccessibleCleanup.sourceRoot);
+      await removeDisposableFixtureRoot(inaccessibleCleanup.projectRoot);
+    }
+
+    const inaccessibleCurrent = await createMigrationFixture();
+    try {
+      await closeMigrationFixture(inaccessibleCurrent);
+      await writeFile(join(inaccessibleCurrent.sourceRoot, "later.md"), "# Later\n", "utf8");
+      await git(inaccessibleCurrent.sourceRoot, ["add", "later.md"]);
+      await git(inaccessibleCurrent.sourceRoot, ["commit", "-m", "later descendant"]);
+      const current = await git(inaccessibleCurrent.sourceRoot, ["rev-parse", "HEAD"]);
+      await corruptTree(inaccessibleCurrent, current);
+      const result = await verifyFamilyCleanup(inaccessibleCurrent);
+      expect(diagnosticCodes(result).length).toBeGreaterThan(0);
+      expect(diagnosticCodes(result).every((code) => code === "MIGRATION_CLEANUP_SCOPE_INVALID")).toBe(true);
+      expect(JSON.stringify(result.diagnostics)).not.toMatch(/fatal:|\.git[\\/]objects/iu);
+      expect(JSON.stringify(result.diagnostics)).not.toContain(inaccessibleCurrent.sourceRoot);
+    } finally {
+      await removeDisposableFixtureRoot(inaccessibleCurrent.sourceRoot);
+      await removeDisposableFixtureRoot(inaccessibleCurrent.projectRoot);
+    }
+  }, 30_000);
+
+  it("enforces closed cleanup reference closure", async () => {
+    const baseline = async (): Promise<MigrationFixture> => {
+      const fixture = await createMigrationFixture({ mention: `Former path: ${sourcePath}` });
+      const mention = (await collectCoveredPathMentions(fixture.sourceRoot, [sourcePath]))[0]!;
+      fixture.coverage.retainedHistoricalReferences = [{
+        ...mention,
+        rationale: "A different family-neutral reviewed historical rationale.",
+      }];
+      await closeMigrationFixture(fixture);
+      return fixture;
+    };
+
+    const untouched = await baseline();
+    expect(await verifyFamilyCleanup(untouched)).toMatchObject({ ready: true, diagnostics: [] });
+
+    const active = await baseline();
+    active.coverage.activeReferences = [{ sourcePath: "README.md", line: 1, targetPath: sourcePath }];
+    expect(diagnosticCodes(await verifyFamilyCleanup(active))).toContain("MIGRATION_ACTIVE_REFERENCE");
+
+    const missing = await baseline();
+    missing.coverage.retainedHistoricalReferences = [];
+    expect(diagnosticCodes(await verifyFamilyCleanup(missing))).toContain("MIGRATION_ACTIVE_PATH_MENTION");
+
+    const allowanceMutations: Array<(fixture: MigrationFixture) => void> = [
+      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.line = 2; },
+      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.lineSha256 = "c".repeat(64); },
+      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.targetPath = "docs/OTHER.md"; },
+    ];
+    for (const mutate of allowanceMutations) {
+      const fixture = await baseline();
+      mutate(fixture);
+      expect(diagnosticCodes(await verifyFamilyCleanup(fixture))).toEqual(expect.arrayContaining([
+        "MIGRATION_ACTIVE_PATH_MENTION",
+        "MIGRATION_HISTORICAL_ALLOWANCE_STALE",
+      ]));
+    }
+
+    const extra = await baseline();
+    extra.coverage.retainedHistoricalReferences.push({
+      ...extra.coverage.retainedHistoricalReferences[0]!,
+      line: 2,
+    });
+    expect(diagnosticCodes(await verifyFamilyCleanup(extra)))
+      .toContain("MIGRATION_HISTORICAL_ALLOWANCE_STALE");
+
+    const changedTrackedLine = await baseline();
+    await writeFile(
+      join(changedTrackedLine.sourceRoot, "notes.txt"),
+      `Historical former path: ${sourcePath}\n`,
+      "utf8",
+    );
+    await git(changedTrackedLine.sourceRoot, ["add", "notes.txt"]);
+    await git(changedTrackedLine.sourceRoot, ["commit", "-m", "edit historical wording"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(changedTrackedLine))).toEqual(expect.arrayContaining([
+      "MIGRATION_ACTIVE_PATH_MENTION",
+      "MIGRATION_HISTORICAL_ALLOWANCE_STALE",
+    ]));
+  }, 30_000);
+
+  it("retains closed cleanup negative controls", async () => {
+    const dirtyDescendant = await createMigrationFixture();
+    await closeMigrationFixture(dirtyDescendant);
+    await writeFile(join(dirtyDescendant.sourceRoot, "dirty.md"), "# Dirty\n", "utf8");
+    expect(diagnosticCodes(await verifyFamilyCleanup(dirtyDescendant)))
+      .toContain("MIGRATION_SOURCE_TREE_DIRTY");
+
+    const reintroducedSource = await createMigrationFixture();
+    await closeMigrationFixture(reintroducedSource);
+    await git(reintroducedSource.sourceRoot, ["checkout", `${reintroducedSource.coverage.coreCleanupCommit}^`, "--", sourcePath]);
+    await git(reintroducedSource.sourceRoot, ["commit", "-m", "reintroduce covered source"]);
+    expect(diagnosticCodes(await verifyFamilyCleanup(reintroducedSource)))
+      .toContain("MIGRATION_CLEANUP_INCOMPLETE");
+
+    const filesystemReintroduction = await createMigrationFixture();
+    await closeMigrationFixture(filesystemReintroduction);
+    await mkdir(dirname(join(filesystemReintroduction.sourceRoot, sourcePath)), { recursive: true });
+    await writeFile(join(filesystemReintroduction.sourceRoot, sourcePath), "# Untracked reintroduction\n", "utf8");
+    expect(diagnosticCodes(await verifyFamilyCleanup(filesystemReintroduction)))
+      .toContain("MIGRATION_CLEANUP_INCOMPLETE");
+  }, 15_000);
 });
 
 describe("Core migration check integration", () => {

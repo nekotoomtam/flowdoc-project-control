@@ -18,6 +18,7 @@ import { readGitMarkdownSnapshot } from "./git-snapshot.js";
 
 const execFile = promisify(execFileCallback);
 const migrationDirectory = "migrations/V0_1_0a_1/core";
+const gitInspectionMaxBuffer = 64 * 1024 * 1024;
 
 export interface DeletionReadiness {
   familyId: string;
@@ -504,6 +505,28 @@ async function runGit(repositoryRoot: string, args: string[]): Promise<Buffer> {
   }
 }
 
+interface GitResult {
+  exitCode: number;
+  stdout: Buffer;
+}
+
+async function runGitResult(repositoryRoot: string, args: string[]): Promise<GitResult> {
+  try {
+    const { stdout } = await execFile("git", args, {
+      cwd: repositoryRoot,
+      encoding: "buffer",
+      maxBuffer: gitInspectionMaxBuffer,
+    });
+    return { exitCode: 0, stdout: stdout as Buffer };
+  } catch (error) {
+    const candidate = error as { code?: unknown; stdout?: unknown };
+    return {
+      exitCode: typeof candidate.code === "number" ? candidate.code : -1,
+      stdout: Buffer.isBuffer(candidate.stdout) ? candidate.stdout : Buffer.alloc(0),
+    };
+  }
+}
+
 function decodeUtf8(bytes: Buffer): string | null {
   if (bytes.includes(0)) {
     return null;
@@ -517,6 +540,56 @@ function decodeUtf8(bytes: Buffer): string | null {
 
 function normalizedLineHash(line: string): string {
   return createHash("sha256").update(line.normalize("NFC"), "utf8").digest("hex");
+}
+
+type CommitMentionResult =
+  | { kind: "ok"; mentions: CoveredPathMention[] }
+  | { kind: "error" };
+
+async function collectCoveredPathMentionsAtCommit(
+  sourceRoot: string,
+  commit: string,
+  targetPaths: string[],
+): Promise<CommitMentionResult> {
+  const tree = await runGitResult(sourceRoot, ["ls-tree", "-r", "-z", "--name-only", commit, "--"]);
+  if (tree.exitCode !== 0) {
+    return { kind: "error" };
+  }
+  const tracked = tree.stdout.toString("utf8")
+    .split("\0")
+    .filter((path) => path.length > 0)
+    .sort(compareCodeUnits);
+  const excluded = new Set(targetPaths);
+  const targets = [...new Set(targetPaths)].sort(compareCodeUnits);
+  const mentions: CoveredPathMention[] = [];
+  for (const sourcePath of tracked) {
+    if (excluded.has(sourcePath)) {
+      continue;
+    }
+    const shown = await runGitResult(sourceRoot, ["show", `${commit}:${sourcePath}`]);
+    if (shown.exitCode !== 0) {
+      return { kind: "error" };
+    }
+    const content = decodeUtf8(shown.stdout);
+    if (content === null) {
+      continue;
+    }
+    const lines = content.split(/\r?\n/u);
+    for (let index = 0; index < lines.length; index += 1) {
+      const line = lines[index]!;
+      for (const targetPath of targets) {
+        if (line.includes(targetPath)) {
+          mentions.push({
+            sourcePath,
+            line: index + 1,
+            targetPath,
+            lineSha256: normalizedLineHash(line),
+          });
+        }
+      }
+    }
+  }
+  return { kind: "ok", mentions };
 }
 
 export async function collectCoveredPathMentions(
@@ -584,6 +657,26 @@ async function gitStatus(sourceRoot: string): Promise<Array<{ status: string; pa
     .split("\0")
     .filter((record) => record.length > 0);
   return records.map((record) => ({ status: record.slice(0, 2), path: record.slice(3) }));
+}
+
+type GitStatusResult =
+  | { kind: "ok"; entries: Array<{ status: string; path: string }> }
+  | { kind: "error" };
+
+async function inspectGitStatus(sourceRoot: string): Promise<GitStatusResult> {
+  const result = await runGitResult(sourceRoot, [
+    "status", "--porcelain=v1", "-z", "--untracked-files=all",
+  ]);
+  if (result.exitCode !== 0) {
+    return { kind: "error" };
+  }
+  return {
+    kind: "ok",
+    entries: result.stdout.toString("utf8")
+      .split("\0")
+      .filter((record) => record.length > 0)
+      .map((record) => ({ status: record.slice(0, 2), path: record.slice(3) })),
+  };
 }
 
 function mentionDiagnostics(
@@ -799,15 +892,87 @@ export async function evaluateFamilyDeletionReadiness(
   return readinessResult(input, deletionSources, diagnostics);
 }
 
+interface CleanupDelta {
+  status: string;
+  paths: string[];
+}
+
+function parseCleanupDelta(bytes: Buffer): CleanupDelta[] | null {
+  const fields = bytes.toString("utf8").split("\0");
+  if (fields.at(-1) === "") {
+    fields.pop();
+  }
+  const entries: CleanupDelta[] = [];
+  for (let index = 0; index < fields.length;) {
+    const status = fields[index++];
+    if (status === undefined || status.length === 0) {
+      return null;
+    }
+    const pathCount = status.startsWith("R") || status.startsWith("C") ? 2 : 1;
+    const paths = fields.slice(index, index + pathCount);
+    if (paths.length !== pathCount || paths.some((path) => path.length === 0)) {
+      return null;
+    }
+    entries.push({ status, paths });
+    index += pathCount;
+  }
+  return entries;
+}
+
+type GitTreeEntryResult =
+  | { kind: "absent" }
+  | { kind: "blob"; blobId: string }
+  | { kind: "nonblob"; objectType: string }
+  | { kind: "error" };
+
+async function inspectGitTreeEntry(
+  sourceRoot: string,
+  commit: string,
+  sourcePath: string,
+): Promise<GitTreeEntryResult> {
+  const result = await runGitResult(sourceRoot, [
+    "ls-tree", "-z", "--full-tree", commit, "--", sourcePath,
+  ]);
+  if (result.exitCode !== 0) {
+    return { kind: "error" };
+  }
+  const records = result.stdout.toString("utf8").split("\0").filter((record) => record.length > 0);
+  for (const record of records) {
+    const tab = record.indexOf("\t");
+    if (tab === -1 || record.slice(tab + 1) !== sourcePath) {
+      continue;
+    }
+    const metadata = record.slice(0, tab).split(" ");
+    if (metadata.length !== 3 || !/^[0-9a-f]{40}$/u.test(metadata[2]!)) {
+      return { kind: "error" };
+    }
+    if (metadata[1] === "blob") {
+      return { kind: "blob", blobId: metadata[2]! };
+    }
+    return { kind: "nonblob", objectType: metadata[1]! };
+  }
+  return { kind: "absent" };
+}
+
+function cleanupCommitUnavailable(
+  file: string,
+): ProjectDiagnostic {
+  return diagnostic(
+    "MIGRATION_CLEANUP_COMMIT_UNAVAILABLE",
+    "The recorded Core cleanup commit is not an available exact commit object.",
+    file,
+    "Restore the exact recorded cleanup commit before verifying closure.",
+  );
+}
+
 export async function verifyFamilyCleanup(
   input: FamilyDeletionReadinessInput,
 ): Promise<DeletionReadiness> {
   const diagnostics: ProjectDiagnostic[] = externalFamilyDiagnostics(input);
   const file = coverageFile(input.coverage.familyId);
-  const deletionSources = input.coverage.sources
-    .filter((source) => source.disposition !== "repo-local-keep")
-    .map((source) => source.path)
-    .sort(compareCodeUnits);
+  const deletionCoverage = input.coverage.sources
+    .filter((source) => source.disposition !== "repo-local-keep");
+  const deletionSources = deletionCoverage.map((source) => source.path).sort(compareCodeUnits);
   if (input.coverage.status !== "closed" || input.coverage.coreCleanupCommit === null) {
     diagnostics.push(diagnostic(
       "MIGRATION_COVERAGE_NOT_CLOSED",
@@ -816,16 +981,28 @@ export async function verifyFamilyCleanup(
       "Record closed coverage only after the exact cleanup commit exists.",
     ));
   }
-  const head = (await runGit(input.sourceRoot, ["rev-parse", "HEAD"])).toString("utf8").trim();
-  if (input.coverage.coreCleanupCommit?.toLowerCase() !== head.toLowerCase()) {
+  const headInspection = await runGitResult(input.sourceRoot, ["rev-parse", "--verify", "HEAD^{commit}"]);
+  const resolvedHead = headInspection.stdout.toString("utf8").trim().toLowerCase();
+  const head = headInspection.exitCode === 0 && /^[0-9a-f]{40}$/u.test(resolvedHead)
+    ? resolvedHead
+    : undefined;
+  if (head === undefined) {
     diagnostics.push(diagnostic(
-      "MIGRATION_CLEANUP_COMMIT_MISMATCH",
-      "Core HEAD does not equal the recorded cleanup commit.",
+      "MIGRATION_CLEANUP_SCOPE_INVALID",
+      "The current Core commit tree is unavailable for closed cleanup verification.",
       file,
-      "Check out the exact recorded cleanup commit before verifying closure.",
+      "Restore a readable clean Core checkout before verifying closure.",
     ));
   }
-  if ((await gitStatus(input.sourceRoot)).length > 0) {
+  const status = await inspectGitStatus(input.sourceRoot);
+  if (status.kind === "error") {
+    diagnostics.push(diagnostic(
+      "MIGRATION_CLEANUP_SCOPE_INVALID",
+      "The current Core worktree status is unavailable for closed cleanup verification.",
+      file,
+      "Restore a readable clean Core checkout before verifying closure.",
+    ));
+  } else if (status.entries.length > 0) {
     diagnostics.push(diagnostic(
       "MIGRATION_SOURCE_TREE_DIRTY",
       "Closed cleanup verification requires a clean Core worktree.",
@@ -833,21 +1010,135 @@ export async function verifyFamilyCleanup(
       "Commit, restore, or remove every Core worktree change before verifying closure.",
     ));
   }
+
+  let cleanupCommit: string | undefined;
+  let cleanupParent: string | undefined;
+  const recordedCleanup = input.coverage.coreCleanupCommit;
+  if (recordedCleanup !== null) {
+    const cleanupCommitSpec = `${recordedCleanup}^{commit}`;
+    const verified = await runGitResult(input.sourceRoot, ["rev-parse", "--verify", cleanupCommitSpec]);
+    const resolved = verified.stdout.toString("utf8").trim().toLowerCase();
+    if (
+      verified.exitCode !== 0 ||
+      !/^[0-9a-f]{40}$/u.test(resolved) ||
+      resolved !== recordedCleanup.toLowerCase()
+    ) {
+      diagnostics.push(cleanupCommitUnavailable(file));
+    } else {
+      cleanupCommit = resolved;
+      const ancestor = await runGitResult(input.sourceRoot, [
+        "merge-base", "--is-ancestor", cleanupCommit, "HEAD",
+      ]);
+      if (ancestor.exitCode === 1) {
+        diagnostics.push(diagnostic(
+          "MIGRATION_CLEANUP_COMMIT_NOT_ANCESTOR",
+          "The recorded Core cleanup commit is not an ancestor of the current Core HEAD.",
+          file,
+          "Use the recorded cleanup commit or a clean descendant that retains the verified deletion.",
+        ));
+      } else if (ancestor.exitCode !== 0) {
+        diagnostics.push(cleanupCommitUnavailable(file));
+      }
+
+      const topology = await runGitResult(input.sourceRoot, [
+        "rev-list", "--parents", "-n", "1", cleanupCommit,
+      ]);
+      const commits = topology.stdout.toString("utf8").trim().split(/\s+/u).filter(Boolean);
+      if (topology.exitCode !== 0) {
+        diagnostics.push(cleanupCommitUnavailable(file));
+      } else if (commits.length !== 2 || commits[0]?.toLowerCase() !== cleanupCommit) {
+        diagnostics.push(diagnostic(
+          "MIGRATION_CLEANUP_COMMIT_TOPOLOGY_INVALID",
+          "The recorded Core cleanup commit must have exactly one parent.",
+          file,
+          "Record a one-parent cleanup commit; the verifier does not guess a merge mainline.",
+        ));
+      } else {
+        cleanupParent = commits[1]!.toLowerCase();
+      }
+    }
+  }
+
+  if (cleanupCommit !== undefined && cleanupParent !== undefined) {
+    const deltaResult = await runGitResult(input.sourceRoot, [
+      "diff-tree", "--no-commit-id", "--name-status", "-r", "-z",
+      cleanupParent, cleanupCommit, "--",
+    ]);
+    const delta = deltaResult.exitCode === 0 ? parseCleanupDelta(deltaResult.stdout) : null;
+    const expected = new Set(deletionSources);
+    const seen = new Set<string>();
+    const exactDelta = delta !== null && delta.every((entry) => {
+      const path = entry.paths[0];
+      if (entry.status !== "D" || entry.paths.length !== 1 || path === undefined || !expected.has(path) || seen.has(path)) {
+        return false;
+      }
+      seen.add(path);
+      return true;
+    }) && seen.size === expected.size;
+    if (!exactDelta) {
+      diagnostics.push(diagnostic(
+        "MIGRATION_CLEANUP_SCOPE_INVALID",
+        "The recorded cleanup commit is not the exact covered deletion set.",
+        file,
+        "Use a one-parent commit containing every covered non-keep deletion and no other delta.",
+      ));
+    }
+
+    for (const source of deletionCoverage) {
+      const inventory = input.inventory.files.find((candidate) => candidate.path === source.path);
+      const [parentEntry, capturedEntry] = await Promise.all([
+        inspectGitTreeEntry(input.sourceRoot, cleanupParent, source.path),
+        inspectGitTreeEntry(input.sourceRoot, input.coverage.sourceCommit.toLowerCase(), source.path),
+      ]);
+      if (
+        parentEntry.kind !== "blob" ||
+        capturedEntry.kind !== "blob" ||
+        inventory === undefined ||
+        parentEntry.blobId.toLowerCase() !== source.blobId.toLowerCase() ||
+        capturedEntry.blobId.toLowerCase() !== source.blobId.toLowerCase() ||
+        inventory.blobId.toLowerCase() !== source.blobId.toLowerCase()
+      ) {
+        diagnostics.push(diagnostic(
+          "MIGRATION_CLEANUP_PREIMAGE_MISMATCH",
+          `Cleanup parent ${source.path} does not match every captured source identity.`,
+          source.path,
+          "Delete only the exact blob bound by coverage, inventory, and the captured source commit.",
+        ));
+      }
+    }
+    // An exact D entry from cleanupParent to cleanupCommit is Git's direct
+    // proof that the path is absent from the cleanup tree. A second ls-tree
+    // query cannot describe an independently possible state.
+  }
+
   for (const source of input.coverage.sources) {
-    const exists = await pathExists(join(input.sourceRoot, ...source.path.split("/")));
-    if (source.disposition === "repo-local-keep" && !exists) {
+    const existsInWorktree = await pathExists(join(input.sourceRoot, ...source.path.split("/")));
+    const headEntry = head === undefined
+      ? { kind: "error" } as const
+      : await inspectGitTreeEntry(input.sourceRoot, head, source.path);
+    if (headEntry.kind === "error") {
+      diagnostics.push(diagnostic(
+        "MIGRATION_CLEANUP_SCOPE_INVALID",
+        `The current Core tree entry for ${source.path} is unavailable.`,
+        source.path,
+        "Restore a readable clean Core commit tree before verifying closure.",
+      ));
+      continue;
+    }
+    const existsInHead = headEntry.kind !== "absent";
+    if (source.disposition === "repo-local-keep" && (!existsInWorktree || !existsInHead)) {
       diagnostics.push(diagnostic(
         "MIGRATION_REPO_LOCAL_KEEP_DELETED",
         `Repository-local keep ${source.path} is absent.`,
         source.path,
         "Restore every repository-local keep.",
       ));
-    } else if (source.disposition !== "repo-local-keep" && exists) {
+    } else if (source.disposition !== "repo-local-keep" && (existsInWorktree || existsInHead)) {
       diagnostics.push(diagnostic(
         "MIGRATION_CLEANUP_INCOMPLETE",
-        `Covered source ${source.path} still exists at the cleanup commit.`,
+        `Covered source ${source.path} still exists in the current Core tree or worktree.`,
         source.path,
-        "Remove every covered non-keep source in the authorized cleanup commit.",
+        "Remove every covered non-keep source from both the current Git tree and filesystem.",
       ));
     }
   }
@@ -859,7 +1150,18 @@ export async function verifyFamilyCleanup(
       "Resolve every active reference before closing migration coverage.",
     ));
   }
-  const mentions = await collectCoveredPathMentions(input.sourceRoot, deletionSources);
-  diagnostics.push(...mentionDiagnostics(input, mentions));
+  if (head !== undefined) {
+    const mentions = await collectCoveredPathMentionsAtCommit(input.sourceRoot, head, deletionSources);
+    if (mentions.kind === "error") {
+      diagnostics.push(diagnostic(
+        "MIGRATION_CLEANUP_SCOPE_INVALID",
+        "Tracked Core references could not be inspected at the current commit.",
+        file,
+        "Restore a readable clean Core commit tree before verifying closure.",
+      ));
+    } else {
+      diagnostics.push(...mentionDiagnostics(input, mentions.mentions));
+    }
+  }
   return readinessResult(input, deletionSources, diagnostics);
 }
