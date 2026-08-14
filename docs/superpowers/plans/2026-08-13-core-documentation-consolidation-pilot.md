@@ -1459,6 +1459,706 @@ Also provide the complete Project Control provenance range `c488cb412cd6b64808a1
 
 The final report recommends a separate `TEMPLATE_BUILDER_*` family implementation plan using the reviewed pilot contract. It must not automatically mark any Template Builder source authoritative or deletable. Phase 3 begins only after the pilot review is READY.
 
+### Task 11: Correct the Closed Verifier for Descendant Core Commits
+
+The first two final reviews did not approve the pilot. The contract reviewer
+reported Critical = 0, Important = 2, Minor = 1; the documentation-architecture
+reviewer reported Critical = 0, Important = 2, Minor = 2. Tasks 11–14 are the
+only authorized correction sequence. They do not reopen deletion scope, add a
+runtime change, or authorize another family.
+
+**Files:**
+- Modify: `tools/migration/lib/validate-migration.ts`
+- Modify: `tests/core-doc-migration.test.ts`
+
+**Interfaces:**
+- Consumes: closed coverage whose immutable `coreCleanupCommit` is
+  `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, the exact four covered source
+  paths/blobs, the clean Core checkout, and the stored historical-reference
+  allowances.
+- Produces: `verifyFamilyCleanup(input): Promise<DeletionReadiness>` whose
+  cleanup authority remains bound to the exact recorded commit while the clean
+  checkout may be that commit or a descendant; `$closedVerifierCorrectionCommit`.
+
+- [ ] **Step 1: Freeze the correction base and reproduce the exact-head defect**
+
+Start from clean Project Control commit
+`$projectControlClosureCommit = 126e505a3cf347e974e0ac3127ccc558fc6d7e27`
+and clean Core commit
+`$coreCleanupCommit = 8aa0be4f662708fa75d4eb8f0f99b4784da2371c`.
+Record the plan-only correction commit as `$finalCorrectionsPlanCommit`; require
+it to be the exact Project Control HEAD and require its parent to be
+`$projectControlClosureCommit`. Do not edit Core in this task.
+
+In `tests/core-doc-migration.test.ts`, retain the passing exact-cleanup-HEAD
+case. Extend the same fixture by committing an unrelated non-covered file after
+the cleanup commit, leave `coverage.coreCleanupCommit` unchanged, and assert:
+
+```ts
+expect(await verifyFamilyCleanup(fixture)).toMatchObject({
+  ready: true,
+  diagnostics: [],
+});
+```
+
+Run:
+
+```powershell
+npm test -- tests/core-doc-migration.test.ts -t "accepts closed cleanup at the exact recorded commit or a clean descendant"
+```
+
+Expected RED: the exact cleanup commit case passes, then the descendant case
+fails with `MIGRATION_CLEANUP_COMMIT_MISMATCH`. This proves that the existing
+HEAD-equality rule, rather than deletion drift, blocks later Core documentation
+commits.
+
+- [ ] **Step 2: Add adversarial cleanup, HEAD-tree, and reference-closure REDs**
+
+Use fixture Git commits, never mocked command output, to require all of these
+behaviors:
+
+```ts
+expect(await verifyFamilyCleanup(exactCleanupFixture)).toMatchObject({ ready: true, diagnostics: [] });
+expect(await verifyFamilyCleanup(cleanDescendantFixture)).toMatchObject({ ready: true, diagnostics: [] });
+expect(diagnosticCodes(await verifyFamilyCleanup(nonAncestorFixture)))
+  .toContain("MIGRATION_CLEANUP_COMMIT_NOT_ANCESTOR");
+expect(diagnosticCodes(await verifyFamilyCleanup(extraDeltaFixture)))
+  .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+expect(diagnosticCodes(await verifyFamilyCleanup(missingDeletionFixture)))
+  .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+expect(diagnosticCodes(await verifyFamilyCleanup(wrongPreimageFixture)))
+  .toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
+expect(diagnosticCodes(await verifyFamilyCleanup(mergeCleanupFixture)))
+  .toContain("MIGRATION_CLEANUP_COMMIT_TOPOLOGY_INVALID");
+expect(diagnosticCodes(await verifyFamilyCleanup(cleanupTreeRetainsSourceFixture)))
+  .toContain("MIGRATION_CLEANUP_SCOPE_INVALID");
+expect(diagnosticCodes(await verifyFamilyCleanup(skipWorktreeReintroductionFixture)))
+  .toContain("MIGRATION_CLEANUP_INCOMPLETE");
+```
+
+The extra-delta fixture adds or modifies one unrelated path in the recorded
+cleanup commit. The missing-deletion fixture omits one covered non-keep source.
+The wrong-preimage fixture commits different bytes for one covered source in
+the cleanup parent before deleting it. The merge fixture records a two-parent
+cleanup commit. The cleanup-tree fixture leaves one covered path in the cleanup
+commit tree, independently of the current worktree check.
+
+Build `skipWorktreeReintroductionFixture` only in a disposable fixture
+repository: start from an exact cleanup, commit a descendant that restores one
+covered source, mark that path `skip-worktree`, remove only its working-tree
+copy, and prove both `git status --porcelain` is empty and `git cat-file -e
+HEAD:$sourcePath` succeeds. The filesystem path is absent while the Git HEAD
+tree still contains the source. `verifyFamilyCleanup` must fail with
+`MIGRATION_CLEANUP_INCOMPLETE`; never apply `skip-worktree`, sparse-checkout, or
+index flags to the real Core worktree.
+
+The fixture owns cleanup with `try/finally`. Create it only with `mkdtemp` under
+Node's `tmpdir()`, resolve both paths with `realpath`, and reject cleanup unless
+the resolved repository is a nonempty descendant of the resolved temp root:
+
+```ts
+const relativeFixturePath = relative(resolvedTempRoot, resolvedFixtureRoot);
+if (
+  relativeFixturePath.length === 0 ||
+  relativeFixturePath.startsWith("..") ||
+  isAbsolute(relativeFixturePath)
+) {
+  throw new Error("Refusing to clean a non-temporary fixture repository.");
+}
+
+let skipWorktreeSet = false;
+try {
+  await git(resolvedFixtureRoot, ["update-index", "--skip-worktree", "--", sourcePath]);
+  skipWorktreeSet = true;
+  await rm(join(resolvedFixtureRoot, ...sourcePath.split("/")));
+  expect(await git(resolvedFixtureRoot, ["status", "--porcelain"])).toBe("");
+  await expect(git(resolvedFixtureRoot, ["cat-file", "-e", `HEAD:${sourcePath}`]))
+    .resolves.toBe("");
+  await expect(access(join(resolvedFixtureRoot, ...sourcePath.split("/"))))
+    .rejects.toMatchObject({ code: "ENOENT" });
+  expect(diagnosticCodes(await verifyFamilyCleanup({
+    ...fixture,
+    sourceRoot: resolvedFixtureRoot,
+  }))).toContain("MIGRATION_CLEANUP_INCOMPLETE");
+} finally {
+  try {
+    if (await fixturePathExists(join(resolvedFixtureRoot, ".git"))) {
+      if (skipWorktreeSet) {
+        await git(resolvedFixtureRoot, ["update-index", "--no-skip-worktree", "--", sourcePath]);
+      }
+      await git(resolvedFixtureRoot, ["restore", "--staged", "--worktree", "--source=HEAD", "--", sourcePath]);
+    }
+  } finally {
+    await rm(resolvedFixtureRoot, {
+      recursive: true,
+      force: true,
+      maxRetries: 3,
+      retryDelay: 100,
+    });
+  }
+}
+```
+
+Define `fixturePathExists` as the same small `access`-based boolean helper used
+by the fixture test. The `.git` guard handles setup failure, but never redirects
+cleanup to another checkout. On Windows, clear the
+`skip-worktree` bit and restore the disposable index/worktree before recursive
+removal so open/index state does not cause a partial delete. Resolve and compare
+the exact target before removal; do not use a glob, `$HOME`, repository parent,
+primary checkout, or real Core path.
+
+Add a separate closed-fixture reference matrix. Commit an allowed historical
+mention outside the deletion set, complete the exact cleanup, and invoke
+`verifyFamilyCleanup` for each row:
+
+| Closed fixture mutation | Required diagnostic |
+| --- | --- |
+| nonempty `activeReferences` | `MIGRATION_ACTIVE_REFERENCE` |
+| mention present but allowance missing | `MIGRATION_ACTIVE_PATH_MENTION` |
+| allowance line changed | `MIGRATION_ACTIVE_PATH_MENTION` and `MIGRATION_HISTORICAL_ALLOWANCE_STALE` |
+| allowance SHA-256 changed | `MIGRATION_ACTIVE_PATH_MENTION` and `MIGRATION_HISTORICAL_ALLOWANCE_STALE` |
+| allowance target changed | `MIGRATION_ACTIVE_PATH_MENTION` and `MIGRATION_HISTORICAL_ALLOWANCE_STALE` |
+| extra allowance with no matching mention | `MIGRATION_HISTORICAL_ALLOWANCE_STALE` |
+| stale allowance after its tracked line changes | `MIGRATION_ACTIVE_PATH_MENTION` and `MIGRATION_HISTORICAL_ALLOWANCE_STALE` |
+
+Rationale integrity remains structural and family-neutral: stored validation
+requires a nonempty rationale, while external verification binds allowance
+source path, target path, line, and normalized line SHA-256 to an actual retained
+mention. Do not add a Core-route rationale constant or require one sentence in
+generic `verifyFamilyCleanup`; future families may have different reviewed
+rationales. The untouched closed fixture with a structurally valid rationale
+and exact mention binding must remain `ready: true` with zero diagnostics.
+
+The existing dirty-tree and ordinary filesystem reintroduction cases are
+retained negative controls, not new RED evidence. Run them before the
+implementation and require their existing diagnostics to remain GREEN:
+
+```ts
+expect(diagnosticCodes(await verifyFamilyCleanup(dirtyDescendantFixture)))
+  .toContain("MIGRATION_SOURCE_TREE_DIRTY");
+expect(diagnosticCodes(await verifyFamilyCleanup(reintroducedSourceFixture)))
+  .toContain("MIGRATION_CLEANUP_INCOMPLETE");
+```
+
+Run:
+
+```powershell
+npm test -- tests/core-doc-migration.test.ts -t "closed cleanup ancestry and tree proof|closed cleanup reference closure|retains closed cleanup negative controls"
+```
+
+Expected RED: the descendant/topology/ancestor/delta/preimage/cleanup-tree and
+skip-worktree-HEAD-tree cases fail for the asserted reason.
+The dirty and ordinary reintroduction controls already pass and must stay
+passing. Every reference/allowance matrix row must fail closed with exactly the
+named diagnostics and no `ready: true` result.
+
+- [ ] **Step 3: Implement the minimum descendant-safe verifier**
+
+Replace cleanup HEAD equality with exact recorded-commit verification:
+
+1. Set `$cleanupCommitSpec` to the recorded cleanup hash plus the literal
+   `^{commit}` suffix, pass it as one argument to
+   `git rev-parse --verify $cleanupCommitSpec`, and require the returned
+   lowercase 40-hex commit to equal the recorded value.
+2. Run `git merge-base --is-ancestor <cleanup> HEAD`. Exit 0 means reachable;
+   exit 1 emits `MIGRATION_CLEANUP_COMMIT_NOT_ANCESTOR`; any other failure emits
+   `MIGRATION_CLEANUP_COMMIT_UNAVAILABLE`. Never invoke a shell or concatenate
+   user-controlled Git syntax.
+3. Parse `git rev-list --parents -n 1 <cleanup>` and require exactly one parent.
+   Zero or multiple parents emit `MIGRATION_CLEANUP_COMMIT_TOPOLOGY_INVALID`;
+   the verifier does not guess a merge mainline.
+4. Parse the NUL-delimited result of
+   `git diff-tree --no-commit-id --name-status -r -z <parent> <cleanup> --`.
+   Require exactly one `D` entry for every covered non-keep source and no other
+   addition, modification, rename, copy, type change, or deletion. Any extra or
+   missing delta emits `MIGRATION_CLEANUP_SCOPE_INVALID`.
+5. For each deletion, require the blob addressed by
+   `$cleanupParent + ':' + $sourcePath` to equal the coverage blob, inventory
+   blob, and captured `sourceCommit` snapshot blob; require the same source path
+   at `$cleanupCommit` to be absent by a direct Git-tree query. A preimage
+   mismatch emits `MIGRATION_CLEANUP_PREIMAGE_MISMATCH`; a path retained by the
+   cleanup tree emits `MIGRATION_CLEANUP_SCOPE_INVALID`.
+6. At current clean `HEAD`, prove every covered non-keep source is absent twice:
+   a Git-tree query such as `git cat-file -e HEAD:$sourcePath` must report the
+   path absent (or an exact `ls-tree` lookup must return no entry), and the
+   filesystem path must also be absent. If either view contains the source,
+   emit `MIGRATION_CLEANUP_INCOMPLETE`. This prevents sparse checkout or
+   `skip-worktree` state from masquerading as committed deletion.
+7. Require every `repo-local-keep` present, no active reference, and only exact
+   stored historical allowances. Match allowance source path, target path,
+   one-based line, and normalized line SHA-256 to current tracked mentions;
+   require rationale to remain structurally nonempty through stored validation.
+   Missing/changed/stale/extra records emit the matrix diagnostics from Step 2.
+   Keep the current dirty-tree failure.
+
+Factor only small private parsers/helpers inside
+`tools/migration/lib/validate-migration.ts`; do not add a public API, schema,
+phase, allowance, or deletion class.
+
+- [ ] **Step 4: Run Task 11 gates**
+
+```powershell
+npm test -- tests/core-doc-migration.test.ts
+npm run check:migrations
+npm run check:data
+npm run type-check
+npm test
+git diff --check
+```
+
+Expected: every command exits 0. Then run the real closed gate first at exact
+Core cleanup HEAD. The fixture RED/GREEN proves descendant behavior without
+mutating Core during this Project Control-only task; Task 13 supplies the real
+clean descendant acceptance check. The coverage file must continue to contain
+the literal cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`.
+
+- [ ] **Step 5: Commit and independently review Task 11**
+
+```powershell
+$expectedTask11Paths = @(
+  'tests/core-doc-migration.test.ts',
+  'tools/migration/lib/validate-migration.ts'
+) | Sort-Object
+git add -- $expectedTask11Paths
+if (Compare-Object $expectedTask11Paths (@(git diff --cached --name-only) | Sort-Object)) { throw "Task 11 staged scope drifted." }
+git diff --cached --check
+git commit -m "fix(migration): verify closed cleanup ancestry"
+$closedVerifierCorrectionCommit = (git rev-parse HEAD).Trim()
+if ((git rev-parse "$closedVerifierCorrectionCommit^").Trim() -ne $finalCorrectionsPlanCommit) { throw "Task 11 parent drifted." }
+if (git status --short) { throw "Project Control must be clean after Task 11." }
+```
+
+Generate an exact `$finalCorrectionsPlanCommit..$closedVerifierCorrectionCommit`
+review package. A fresh contract reviewer must report Critical = 0 and Important
+= 0 before Task 12 starts. Require explicit review of the closed reference/
+allowance matrix, exact cleanup-commit tree absence, separate current HEAD-tree
+and filesystem absence, the clean disposable `skip-worktree` fixture, and the
+retained dirty/ordinary-reintroduction controls. A finding starts fix round 1/5:
+add a RED, amend only the same two-path unpushed commit, rerun all Task 11 gates,
+recapture the commit hash, regenerate the exact package, and obtain a fresh
+verdict. Stop after five failed rounds and return `BLOCKED` rather than
+broadening scope.
+
+### Task 12: Publish Closure-Current Project Control Truth
+
+**Files:**
+- Modify: `README.md`
+- Modify: `docs/domains/project-control.md`
+- Modify: `docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md`
+- Modify: `docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md`
+- Modify: `docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md`
+- Modify: `docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md`
+- Modify: `data/nodes/core.json`
+- Modify: `data/repositories/core.json`
+- Modify: `tests/core-doc-migration.test.ts`
+- Modify: `tests/seed-project.test.ts`
+- Modify: `generated/project-index.json`
+
+**Interfaces:**
+- Consumes: reviewed `$closedVerifierCorrectionCommit`, closed coverage, cleanup
+  Evidence, absent pilot Work, exact Core cleanup commit, and the immutable four
+  source/blob deletion set.
+- Produces: `$projectControlClosedTruthCommit`, the frozen Project Control commit
+  that Core navigation will cite literally in Task 13.
+
+- [ ] **Step 1: Write lifecycle-aware truth REDs**
+
+Add a small test helper that evaluates canonical/current-state wording against
+the actual coverage lifecycle. For `draft`, `content-reviewed`, and
+`ready-for-deletion`, pending wording is allowed only when it matches that
+phase. For `closed`, require exact cleanup Evidence and commit and reject stale
+claims matching `pending`, `queued`, `future work`, `does not exist`, or `no
+artifact` in active current-state/canonical status passages.
+
+The real closed-pilot assertions must require:
+
+```ts
+expect(coverage.status).toBe("closed");
+expect(coverage.coreCleanupCommit).toBe(coreCleanupCommit);
+expect(cleanupEvidence.commit).toBe(coreCleanupCommit);
+expect(model.work.some(({ id }) => id === "work-core-route-pilot")).toBe(false);
+expect(coreNode.truthState).toBe("unknown");
+expect(coreRouteNode.truthState).toBe("current");
+expect(coverage.retainedHistoricalReferences.map(({ rationale }) => rationale))
+  .toEqual(Array(4).fill(
+    "Preserves a completed Core phase's former source path at the captured Core commit.",
+  ));
+expect(currentStateText).not.toMatch(/pending|queued|future\s+work|does\s+not\s+exist|no\s+artifact/iu);
+```
+
+This literal rationale assertion is specific to the real reviewed Core-route
+coverage in Project Control. It does not become a generic cleanup-verifier
+policy and does not constrain rationale text for another family.
+
+Also require all of these facts:
+
+- `docs/domains/project-control.md` describes the pilot as closed, says there is
+  no active `CORE_ROUTE` Work, and names Template Builder only as a separate
+  unregistered plan whose sources are not authoritative or deletable;
+- `DOCUMENT_MAP.md`, `OVERVIEW.md`, and the canonical leaf say exactly the four
+  covered documents were removed at Core
+  `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, coverage is closed, cleanup
+  Evidence is recorded, and no other deletion is authorized;
+- the leaf links to `MIGRATION_REVIEW.md`, and `MIGRATION_REVIEW.md` links back
+  to `route-ownership-and-retained-contracts.md`;
+- `MIGRATION_REVIEW.md` says the deprecated internal route vocabulary remains
+  guarded **until runtime route-source removal is separately authorized and
+  completed**, not “until cleanup”;
+- the parent Core Node and repository summary say broader Core remains unknown
+  while the bounded `core-route` child is closed;
+- `README.md` no longer says `CORE_ROUTE_*` migration execution is deferred;
+  only GUI/product-repository mutation and AGENTS/Skill redesign remain deferred.
+
+Run:
+
+```powershell
+npm test -- tests/core-doc-migration.test.ts tests/seed-project.test.ts
+```
+
+Expected RED: the current files positively assert pending/queued/future/no-
+artifact state and omit reciprocal review navigation.
+
+- [ ] **Step 2: Correct only closure-current prose and summaries**
+
+Replace the registered active Project Control overview's `Queued pilot`
+section with `Closed pilot`. State that the exact four-document cleanup is
+closed at `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, Evidence is recorded, and no
+pilot Work remains. Describe Template Builder as the next separate planning
+candidate only; do not create a Template Builder Node, Document, Work,
+coverage, authority, or deletion claim.
+
+Update the map, overview, leaf, review, README, parent Node, and repository
+summary to the exact facts asserted in Step 1. Preserve parent `core.truthState`
+as `unknown`; do not promote the provisional family map. Add the two relative
+Markdown links without changing `data/nodes/core-route.json` or its sorted
+`documentIds`, because navigation records already contain review, overview, and
+leaf as a set. Do not alter runtime ownership, schemas, GUI behavior, Evidence,
+coverage, or deletion scope.
+
+- [ ] **Step 3: Generate and run Task 12 gates**
+
+```powershell
+npm run generate
+npm test -- tests/core-doc-migration.test.ts tests/seed-project.test.ts
+npm run check:data
+npm run check:migrations
+npm run type-check
+npm test
+npm run build
+npm run test:e2e
+npm run check:migration:core -- --source-root $coreWorktree --family core-route --closed
+git diff --check
+```
+
+Expected: every command exits 0; the closed gate passes at exact clean Core
+cleanup HEAD; generation is deterministic; no active Work reappears.
+
+- [ ] **Step 4: Commit, freeze, and review Project Control truth**
+
+```powershell
+$expectedTask12Paths = @(
+  'README.md',
+  'data/nodes/core.json',
+  'data/repositories/core.json',
+  'docs/domains/project-control.md',
+  'docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md',
+  'docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md',
+  'docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md',
+  'docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md',
+  'generated/project-index.json',
+  'tests/core-doc-migration.test.ts',
+  'tests/seed-project.test.ts'
+) | Sort-Object
+git add -- $expectedTask12Paths
+if (Compare-Object $expectedTask12Paths (@(git diff --cached --name-only) | Sort-Object)) { throw "Task 12 staged scope drifted." }
+git diff --cached --check
+git commit -m "docs: publish closed Core route truth"
+$projectControlClosedTruthCommit = (git rev-parse HEAD).Trim()
+if ((git rev-parse "$projectControlClosedTruthCommit^").Trim() -ne $closedVerifierCorrectionCommit) { throw "Task 12 parent drifted." }
+if (git status --short) { throw "Project Control must be clean after Task 12." }
+```
+
+Generate an exact
+`$closedVerifierCorrectionCommit..$projectControlClosedTruthCommit` package. A
+fresh documentation/factual-honesty reviewer must report Critical = 0 and
+Important = 0. Each finding begins the same maximum-five RED/amend/full-gate/
+recapture/package/fresh-review loop within the exact eleven paths. Task 13 is
+blocked until this commit is frozen and reviewed. Any later amendment of this
+commit invalidates the Task 13 URL and forces Task 13 to be updated and reviewed
+again.
+
+### Task 13: Pin Core Navigation to Immutable Project Control Truth
+
+**Files:**
+- Modify: Core `README.md`
+- Modify: Core `tests/coreRouteCanonicalMigrationGuard.test.ts`
+
+**Interfaces:**
+- Consumes: frozen reviewed `$projectControlClosedTruthCommit` and the locally
+  verified canonical path
+  `docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md` at that commit.
+- Produces: `$coreImmutableNavigationCommit`, a documentation/test-only Core
+  descendant of cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`.
+
+- [ ] **Step 1: Verify the immutable coordinate locally**
+
+From PowerShell, avoid the `^{commit}` expression-parsing ambiguity by passing
+each revision as one quoted Git argument:
+
+Carry `$projectControlClosedTruthCommit` from the reviewed Task 12 report/brief
+as the frozen value. Never derive it from current HEAD and never overwrite it
+with an observed value; HEAD is an independently observed assertion target.
+
+```powershell
+if ($projectControlClosedTruthCommit -notmatch '^[0-9a-f]{40}$') { throw "Closed-truth commit is not lowercase 40-hex." }
+$observedProjectControlHead = (git -C $projectControlWorktree rev-parse HEAD).Trim()
+if ($observedProjectControlHead -notmatch '^[0-9a-f]{40}$') { throw "Observed Project Control HEAD is not lowercase 40-hex." }
+if ($observedProjectControlHead -ne $projectControlClosedTruthCommit) { throw "Project Control HEAD drifted from frozen reviewed truth." }
+if (git -C $projectControlWorktree status --short) { throw "Project Control must be clean before Core navigation is written." }
+$truthCommitSpec = '{0}^{{commit}}' -f $projectControlClosedTruthCommit
+$resolvedTruthCommit = (git -C $projectControlWorktree rev-parse --verify $truthCommitSpec).Trim()
+if ($resolvedTruthCommit -ne $projectControlClosedTruthCommit) { throw "Closed-truth commit does not resolve exactly." }
+$truthPathSpec = '{0}:{1}' -f $projectControlClosedTruthCommit, 'docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md'
+git -C $projectControlWorktree cat-file -e $truthPathSpec
+if ($LASTEXITCODE -ne 0) { throw "Canonical overview is absent at the immutable commit." }
+```
+
+This proves the local Git object/path only. Do not claim the GitHub URL is
+network-resolvable until the commit is integrated and published; do not push,
+merge, tag, or publicize either repository in this plan.
+
+- [ ] **Step 2: Write the immutable-link RED**
+
+In the Core guard, read only Core `README.md`; do not require a Project Control
+checkout or network. Extract canonical URLs matching:
+
+```ts
+const immutableOverviewUrl =
+  `https://github.com/nekotoomtam/flowdoc-project-control/blob/${projectControlClosedTruthCommit}/docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md`;
+
+const canonicalOverviewLinks = Array.from(readme.matchAll(
+  /https:\/\/github\.com\/nekotoomtam\/flowdoc-project-control\/blob\/(?<commit>[^/\s)]+)\/docs\/versions\/V0_1_0a_1\/core\/core-route\/OVERVIEW\.md[^\s)]*/g,
+));
+expect(canonicalOverviewLinks).toHaveLength(2);
+expect(canonicalOverviewLinks.map((match) => match[0])).toEqual([
+  immutableOverviewUrl,
+  immutableOverviewUrl,
+]);
+expect(canonicalOverviewLinks.map((match) => match.groups?.commit)).toEqual([
+  projectControlClosedTruthCommit,
+  projectControlClosedTruthCommit,
+]);
+expect(readme).not.toContain("flowdoc-project-control/blob/main/");
+for (const commit of canonicalOverviewLinks.map((match) => match.groups?.commit)) {
+  expect(commit).toMatch(/^[0-9a-f]{40}$/);
+}
+for (const oldPath of coreRouteSources) {
+  expect(readme).not.toContain(oldPath);
+}
+```
+
+Define the frozen literal `projectControlClosedTruthCommit`, a small
+`canonicalOverviewLinks(source)` collector, and the four literal old paths in
+the same guard file. The collector must scan the entire README, not stop after
+the first two matches. Add pure mutation rows proving the assertion rejects a
+third canonical URL, one link at a different 40-hex commit, `blob/main`, a URL
+suffix/query, and an old removed source path; these rows do not read Project
+Control or use the network. Run:
+
+```powershell
+npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts
+```
+
+Expected RED: both current links use mutable `blob/main`. The mutation rows
+also prove that count two plus “each commit is 40-hex” cannot accidentally
+accept two different immutable commits or ignore a third canonical link.
+
+- [ ] **Step 3: Replace exactly two README links and run Core gates**
+
+Replace both occurrences with the exact literal URL containing the final
+`$projectControlClosedTruthCommit`. Do not use a branch, tag, abbreviated hash,
+redirect, relative cross-repository path, or symbolic placeholder.
+
+Run:
+
+```powershell
+npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts
+npm run type-check
+npm run check
+git diff --check
+```
+
+Expected: focused guard and full Core gate pass. The diff contains only README
+and the guard; no `src/`, package, configuration, removed source, or runtime
+file changes.
+
+- [ ] **Step 4: Commit and independently review Task 13**
+
+```powershell
+$expectedTask13Paths = @('README.md', 'tests/coreRouteCanonicalMigrationGuard.test.ts') | Sort-Object
+git add -- $expectedTask13Paths
+if (Compare-Object $expectedTask13Paths (@(git diff --cached --name-only) | Sort-Object)) { throw "Task 13 staged scope drifted." }
+git diff --cached --check
+git commit -m "docs: pin Core route canonical navigation"
+$coreImmutableNavigationCommit = (git rev-parse HEAD).Trim()
+if ((git rev-parse "$coreImmutableNavigationCommit^").Trim() -ne $coreCleanupCommit) { throw "Task 13 is not the direct cleanup descendant." }
+if (git status --short) { throw "Core must be clean after Task 13." }
+```
+
+Generate an exact `$coreCleanupCommit..$coreImmutableNavigationCommit` package.
+A fresh navigation/provenance reviewer must report Critical = 0 and Important =
+0. Require explicit verification that the frozen Task 12 hash is never assigned
+from observed HEAD; every matching canonical URL is collected; exactly two
+links contain the one frozen hash; and the third-link, different-hash,
+`blob/main`, suffix/query, and old-source mutation rows fail. Each finding begins
+the same maximum-five RED/amend/full-Core-gate/recapture/package/fresh-review
+loop within the exact two paths.
+
+Then prove Task 11's descendant contract from Project Control without changing
+coverage:
+
+```powershell
+npm run check:migration:core -- --source-root $coreWorktree --family core-route --closed
+```
+
+Expected: PASS with `coverage.coreCleanupCommit` still exactly
+`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, Core HEAD exactly
+`$coreImmutableNavigationCommit`, both worktrees clean, and all four sources
+absent. Capture that HEAD as the final Core handoff; it contains no source or
+runtime change.
+
+### Task 14: Refresh Final Evidence and Re-run Both Acceptance Reviews
+
+**Files:**
+- Modify only ignored SDD brief/report/ledger and ignored review packages.
+- Do not modify a tracked file unless a reviewer finding reopens Task 11, 12, or
+  13 within that task's exact scope.
+
+**Interfaces:**
+- Consumes: three independently reviewed correction commits and all earlier
+  mutation packages.
+- Produces: fresh dual final verdicts, exact final handoff hashes, and an honest
+  publication-boundary statement.
+
+- [ ] **Step 1: Recapture all immutable identities from clean worktrees**
+
+Record and validate:
+
+```powershell
+$finalCorrectionsPlanCommit = (git -C $projectControlWorktree rev-parse "$closedVerifierCorrectionCommit^").Trim()
+$projectControlFinalCommit = (git -C $projectControlWorktree rev-parse HEAD).Trim()
+$coreFinalCommit = (git -C $coreWorktree rev-parse HEAD).Trim()
+if ($projectControlFinalCommit -ne $projectControlClosedTruthCommit) { throw "Project Control final HEAD drifted." }
+if ($coreFinalCommit -ne $coreImmutableNavigationCommit) { throw "Core final HEAD drifted." }
+if (git -C $projectControlWorktree status --short) { throw "Project Control is dirty." }
+if (git -C $coreWorktree status --short) { throw "Core is dirty." }
+```
+
+Verify the complete topology: closure → plan-only correction → Task 11 → Task
+12 in Project Control; cleanup → Task 13 in Core. Verify the literal README URL
+hash equals `$projectControlClosedTruthCommit`, and verify that commit/path
+locally again.
+
+- [ ] **Step 2: Regenerate the three new scoped implementation packages**
+
+Use the required `review-package` helper and require exact full-hash headers:
+
+1. `$finalCorrectionsPlanCommit..$closedVerifierCorrectionCommit` — exact
+   two-path descendant-safe closed-verifier correction;
+2. `$closedVerifierCorrectionCommit..$projectControlClosedTruthCommit` — exact
+   eleven-path closure-current Project Control truth correction;
+3. `$coreCleanupCommit..$coreImmutableNavigationCommit` — exact two-path Core
+   immutable-navigation correction.
+
+Also regenerate the plan-governance context
+`$projectControlClosureCommit..$finalCorrectionsPlanCommit`; it is not a
+substitute for any of the three implementation packages. Refresh every earlier
+package whose head is used as final context and regenerate the complete Project
+Control provenance package through `$projectControlClosedTruthCommit`. Do not
+reuse a package after an amend.
+
+- [ ] **Step 3: Run the final gates from exact committed heads**
+
+Project Control:
+
+```powershell
+npm run check
+npm run check:migration:core -- --source-root $coreWorktree --family core-route --closed
+git status --short
+```
+
+Core:
+
+```powershell
+npm run check
+git status --short
+```
+
+Expected: all commands pass; both statuses are empty; closed coverage still
+records the exact cleanup commit while accepting the clean Core descendant.
+Do not turn a timeout into a passing claim: record a timing-sensitive failure,
+run the unchanged exact row in isolation, and rerun the strict full gate; a
+product or test workaround requires a new approved scope.
+
+- [ ] **Step 4: Re-run both independent final reviews**
+
+Give both reviewers the approved design, amended governing plan, original
+verdicts, all scoped packages, complete provenance context, generated index,
+closed coverage/Evidence, exact source/blob allowlist, gate output, and local
+immutable-link verification.
+
+The contract/factual-honesty reviewer must explicitly verify descendant-safe
+cleanup ancestry and exact cleanup-tree/preimage proof; no authority or deletion
+scope broadening; phase-aware closed truth; no stale active Work; exact Evidence
+and commit; and parent Core remains unknown.
+
+The documentation-architecture/provenance reviewer must explicitly verify
+map → overview → leaf ↔ migration-review navigation; exactly two immutable Core
+README links pinned to `$projectControlClosedTruthCommit`; no `blob/main` or old
+source link; no Project Control checkout dependency in the Core guard; and the
+publication boundary is stated as local Git provenance until later integration,
+not as a public availability claim.
+
+Any Critical or Important finding reopens only its owning task and starts or
+continues that task's maximum-five fix loop. After every amend, recapture hashes,
+rerun affected full gates, regenerate every affected package, and obtain fresh
+task plus dual-final verdicts. If Task 12 changes after Task 13 exists, update
+both literal Core README URLs and the guard to the new
+`$projectControlClosedTruthCommit`, amend/review Task 13, rerun the descendant
+closed gate, and refresh both final reviews. Never leave a stale immutable URL.
+
+Task 11 is no longer the Project Control tip after Task 12. If a dual-final
+review finds a new Task 11 defect, do not rewrite the reviewed Task 12 commit or
+use an interactive rebase. Add one new exact-two-path Task 11 correction commit
+on top of the current Project Control HEAD, run/review the full Task 11 gate,
+count it as the next Task 11 fix round, and add its exact scoped package. That
+new Project Control HEAD becomes the recaptured
+`$projectControlClosedTruthCommit` because the canonical path is unchanged and
+present there; Task 13 must then be amended to cite it and must repeat its full
+review. This preserves linear, recoverable history while keeping every fix
+boundary explicit.
+
+- [ ] **Step 5: Record accepted and deferred boundaries honestly**
+
+READY requires both final reviewers to report Critical = 0 and Important = 0.
+The final report records Minor findings and these explicit residual risks:
+external/deep imports remain unknown; Backend behavior was not independently
+revalidated; timing-sensitive rows remain operational risks; the provisional
+family map remains `classified` while authoritative coverage is `closed`; and
+internal route-vocabulary comments can still misstate public compatibility.
+
+The Core source-comment Minor at `src/generation/apiRoute.ts:7-9,103-108` and
+`src/generation/artifactApiRoute.ts:8-10` is deliberately deferred to a separate
+runtime route-source plan. That future plan must decide the runtime vocabulary
+and source-removal boundary with tests; Tasks 11–14 must not edit `src/`.
+
+No merge, push, tag, stash mutation, or network publication occurs here. The
+immutable GitHub URL is a provenance coordinate whose commit and path are
+verified in the local Git object database; it may remain network-unpublished
+until the reviewed branches are integrated and pushed by a separately
+authorized action. Do not report the pilot final-ready before both fresh verdicts
+pass.
+
 ## Final Acceptance Checklist
 
 - [ ] The captured inventory contains exactly 470 Core Markdown paths at commit `76a2f2311a898e781f53773390d47b05812911e4`.
@@ -1472,5 +2172,10 @@ The final report recommends a separate `TEMPLATE_BUILDER_*` family implementatio
 - [ ] Project Control records, generated index, GUI build, and E2E remain green.
 - [ ] Core type-check and tests remain green.
 - [ ] Project Control and Core each have explicit reversible commits and clean worktrees.
+- [ ] Closed verification accepts the exact cleanup commit and clean descendants while proving the recorded cleanup commit's one-parent exact deletion tree and captured preimages.
+- [ ] Active Project Control prose and generated state describe the pilot as closed, with exact cleanup Evidence and no active pilot Work or pending/queued/future-artifact claim.
+- [ ] The canonical leaf links to the migration review and the review links back to the leaf.
+- [ ] Both Core README links use the exact lowercase 40-hex Project Control closed-truth commit; no mutable `blob/main` link or removed source path remains.
+- [ ] The immutable Project Control commit/path resolves locally, and the handoff states that network publication remains outside this plan.
 - [ ] Two final reviewers report Critical = 0 and Important = 0.
 - [ ] No Editor, Backend, Agent, Skill, public Doc API, database, or GUI-write scope entered the diff.
