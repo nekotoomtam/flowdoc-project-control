@@ -1889,6 +1889,20 @@ again.
 
 ### Task 13: Pin Core Navigation to Immutable Project Control Truth
 
+**Approved conflict correction:** The first unpushed Task 13 implementation at
+Core `68c9c6f6a6d29085b04ce000cbcb5f660efb2b4f` proved a new interaction with
+the closed verifier. Its guard stores the four removed source paths as
+contiguous string literals, so the real Project Control `--closed` gate against
+that otherwise clean descendant returns exactly four
+`MIGRATION_ACTIVE_PATH_MENTION` diagnostics at guard lines 75–78. This is not
+new historical evidence and does not justify another allowance. The only
+authorized correction is to amend the same unpushed two-path Core commit so the
+guard constructs each exact path value at runtime from noncontiguous literal
+fragments. Runtime values and every old-source absence/mutation assertion remain
+exact. Do not change Project Control coverage, historical allowances, data,
+Evidence, migration code, or tests for this correction, and do not weaken or
+remove a path-value assertion.
+
 **Files:**
 - Modify: Core `README.md`
 - Modify: Core `tests/coreRouteCanonicalMigrationGuard.test.ts`
@@ -1899,6 +1913,9 @@ again.
   `docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md` at that commit.
 - Produces: `$coreImmutableNavigationCommit`, a documentation/test-only Core
   descendant of cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`.
+- Amends: existing unpushed Core Task 13 commit
+  `68c9c6f6a6d29085b04ce000cbcb5f660efb2b4f`, retaining its exact cleanup
+  parent and exact `README.md` plus guard scope.
 
 - [ ] **Step 1: Verify the immutable coordinate locally**
 
@@ -1906,15 +1923,24 @@ From PowerShell, avoid the `^{commit}` expression-parsing ambiguity by passing
 each revision as one quoted Git argument:
 
 Carry `$projectControlClosedTruthCommit` from the reviewed Task 12 report/brief
-as the frozen value. Never derive it from current HEAD and never overwrite it
-with an observed value; HEAD is an independently observed assertion target.
+as the frozen content value, exactly
+`c9aa003237a5fff8f274b5e7b279ab3125f6bc8c`. Never derive it from current HEAD
+and never overwrite it with an observed value. The Project Control HEAD is now
+the separately committed Task 13 governing-plan correction and therefore a
+clean plan-only descendant of the frozen truth commit, not the immutable URL
+coordinate itself.
 
 ```powershell
 if ($projectControlClosedTruthCommit -notmatch '^[0-9a-f]{40}$') { throw "Closed-truth commit is not lowercase 40-hex." }
 $observedProjectControlHead = (git -C $projectControlWorktree rev-parse HEAD).Trim()
 if ($observedProjectControlHead -notmatch '^[0-9a-f]{40}$') { throw "Observed Project Control HEAD is not lowercase 40-hex." }
-if ($observedProjectControlHead -ne $projectControlClosedTruthCommit) { throw "Project Control HEAD drifted from frozen reviewed truth." }
 if (git -C $projectControlWorktree status --short) { throw "Project Control must be clean before Core navigation is written." }
+git -C $projectControlWorktree merge-base --is-ancestor $projectControlClosedTruthCommit $observedProjectControlHead
+if ($LASTEXITCODE -ne 0) { throw "Frozen reviewed truth is not an ancestor of the current governing-plan HEAD." }
+$observedPlanParent = (git -C $projectControlWorktree rev-parse "$observedProjectControlHead^").Trim()
+if ($observedPlanParent -ne $projectControlClosedTruthCommit) { throw "Task 13 governing-plan correction is not the direct frozen-truth descendant." }
+$observedPlanPaths = @(git -C $projectControlWorktree diff --name-only $projectControlClosedTruthCommit $observedProjectControlHead --)
+if ($observedPlanPaths.Count -ne 1 -or $observedPlanPaths[0] -ne 'docs/superpowers/plans/2026-08-13-core-documentation-consolidation-pilot.md') { throw "Task 13 governing-plan scope drifted." }
 $truthCommitSpec = '{0}^{{commit}}' -f $projectControlClosedTruthCommit
 $resolvedTruthCommit = (git -C $projectControlWorktree rev-parse --verify $truthCommitSpec).Trim()
 if ($resolvedTruthCommit -ne $projectControlClosedTruthCommit) { throw "Closed-truth commit does not resolve exactly." }
@@ -1927,7 +1953,7 @@ This proves the local Git object/path only. Do not claim the GitHub URL is
 network-resolvable until the commit is integrated and published; do not push,
 merge, tag, or publicize either repository in this plan.
 
-- [ ] **Step 2: Write the immutable-link RED**
+- [ ] **Step 2: Preserve the immutable-link contract and capture the mention RED**
 
 In the Core guard, read only Core `README.md`; do not require a Project Control
 checkout or network. Extract canonical URLs matching:
@@ -1958,26 +1984,56 @@ for (const oldPath of coreRouteSources) {
 ```
 
 Define the frozen literal `projectControlClosedTruthCommit`, a small
-`canonicalOverviewLinks(source)` collector, and the four literal old paths in
-the same guard file. The collector must scan the entire README, not stop after
-the first two matches. Add pure mutation rows proving the assertion rejects a
-third canonical URL, one link at a different 40-hex commit, `blob/main`, a URL
+`canonicalOverviewLinks(source)` collector, and the four exact old-path runtime
+values in the same guard file. For the four old paths, "exact" means the runtime
+values, not one contiguous tracked token: construct each value from at least
+two noncontiguous string fragments. Keep an independent exact-value control
+whose expected values are also assembled from noncontiguous fragments by a
+different framing, and require all four runtime values in their existing order.
+Add a self-source control that reads the tracked guard text and proves none of
+the four runtime values occurs contiguously. Before changing the current
+definitions, that self-source control is the focused RED because lines 75–78
+contain the exact contiguous paths.
+
+The collector must scan the entire README, not stop after the first two
+matches. Retain the pure mutation rows proving the assertion rejects a third
+canonical URL, one link at a different 40-hex commit, `blob/main`, a URL
 suffix/query, and an old removed source path; these rows do not read Project
-Control or use the network. Run:
+Control or use the network. The old-source mutation must continue to inject one
+of the exact runtime path values, and the production README assertion must
+continue to reject every one of the four runtime values.
+
+Before fragment construction, also run the real closed verifier against clean
+Core `68c9c6f6a6d29085b04ce000cbcb5f660efb2b4f` and preserve its controller RED:
+exit `1`, `ready: false`, and exactly four
+`MIGRATION_ACTIVE_PATH_MENTION` diagnostics for
+`tests/coreRouteCanonicalMigrationGuard.test.ts:75` through `:78`, one for each
+covered source path, with no other diagnostic. Do not add these guard lines to
+`retainedHistoricalReferences`; they are test implementation text, not reviewed
+history. Run:
 
 ```powershell
 npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts
+npm --prefix $projectControlWorktree run check:migration:core -- --source-root $coreWorktree --family core-route --closed
 ```
 
-Expected RED: both current links use mutable `blob/main`. The mutation rows
-also prove that count two plus “each commit is 40-hex” cannot accidentally
-accept two different immutable commits or ignore a third canonical link.
+The original Task 13 immutable-link RED was the two mutable `blob/main` links,
+and its mutation rows proved that count two plus “each commit is 40-hex” cannot
+accidentally accept two different immutable commits or ignore a third canonical
+link. At the already-created Task 13 commit those immutable-link assertions are
+GREEN; the new self-source control and the real closed gate are the correction
+REDs, while the exact-value control remains GREEN before and after the change.
 
-- [ ] **Step 3: Replace exactly two README links and run Core gates**
+- [ ] **Step 3: Fragment only the guard path literals and run Core gates**
 
-Replace both occurrences with the exact literal URL containing the final
+Retain both README occurrences at the exact literal URL containing frozen
 `$projectControlClosedTruthCommit`. Do not use a branch, tag, abbreviated hash,
-redirect, relative cross-repository path, or symbolic placeholder.
+redirect, relative cross-repository path, or symbolic placeholder. Change only
+the four `coreRouteSources` definitions and the minimum test controls required
+to construct and prove their exact runtime values without storing any complete
+covered source path contiguously in tracked guard text. Do not encode an
+alternate spelling, delete the array, replace the old-path mutation with a
+weaker sentinel, or remove the production README absence loop.
 
 Run:
 
@@ -1985,12 +2041,18 @@ Run:
 npm test -- tests/coreRouteCanonicalMigrationGuard.test.ts
 npm run type-check
 npm run check
+npm --prefix $projectControlWorktree run check:migration:core -- --source-root $coreWorktree --family core-route --closed
 git diff --check
 ```
 
-Expected: focused guard and full Core gate pass. The diff contains only README
-and the guard; no `src/`, package, configuration, removed source, or runtime
-file changes.
+Expected: focused guard and full Core gate pass. The self-source control proves
+zero contiguous tracked copies of all four paths, the exact-value control proves
+the runtime set is unchanged, and the Project Control closed gate returns exit
+`0`, `ready: true`, and zero diagnostics against the clean descendant. Coverage
+still records cleanup `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` and the original four ledger
+allowances only. The amended range contains only README and the guard; no
+`src/`, Project Control data/coverage/allowance, package, configuration, removed
+source, or runtime file changes.
 
 - [ ] **Step 4: Commit and independently review Task 13**
 
@@ -1999,7 +2061,7 @@ $expectedTask13Paths = @('README.md', 'tests/coreRouteCanonicalMigrationGuard.te
 git add -- $expectedTask13Paths
 if (Compare-Object $expectedTask13Paths (@(git diff --cached --name-only) | Sort-Object)) { throw "Task 13 staged scope drifted." }
 git diff --cached --check
-git commit -m "docs: pin Core route canonical navigation"
+git commit --amend --no-edit
 $coreImmutableNavigationCommit = (git rev-parse HEAD).Trim()
 if ((git rev-parse "$coreImmutableNavigationCommit^").Trim() -ne $coreCleanupCommit) { throw "Task 13 is not the direct cleanup descendant." }
 if (git status --short) { throw "Core must be clean after Task 13." }
@@ -2010,9 +2072,12 @@ A fresh navigation/provenance reviewer must report Critical = 0 and Important =
 0. Require explicit verification that the frozen Task 12 hash is never assigned
 from observed HEAD; every matching canonical URL is collected; exactly two
 links contain the one frozen hash; and the third-link, different-hash,
-`blob/main`, suffix/query, and old-source mutation rows fail. Each finding begins
-the same maximum-five RED/amend/full-Core-gate/recapture/package/fresh-review
-loop within the exact two paths.
+`blob/main`, suffix/query, and old-source mutation rows fail. Also require the
+reviewer to prove that all four runtime old-source values are exact, no full
+covered path occurs contiguously in tracked guard text, no Project Control
+allowance/coverage changed, and the closed verifier is zero-diagnostic. Each
+finding begins the same maximum-five RED/amend/full-Core-and-closed-gate/
+recapture/package/fresh-review loop within the exact two Core paths.
 
 Then prove Task 11's descendant contract from Project Control without changing
 coverage:
@@ -2036,7 +2101,8 @@ runtime change.
 
 **Interfaces:**
 - Consumes: three independently reviewed correction commits and all earlier
-  mutation packages.
+  mutation packages, plus the separate Task 13 governing-plan correction
+  committed after the frozen Project Control truth content.
 - Produces: fresh dual final verdicts, exact final handoff hashes, and an honest
   publication-boundary statement.
 
@@ -2044,20 +2110,29 @@ runtime change.
 
 Record and validate:
 
+Carry `$task13MentionPlanCorrectionCommit` from the ignored final-corrections
+report as an independently recorded plan-only identity; do not assign it from
+the observed HEAD. The topology and exact one-plan-path range must match the
+Task 13 preflight above.
+
 ```powershell
 $finalCorrectionsPlanCommit = (git -C $projectControlWorktree rev-parse "$closedVerifierCorrectionCommit^").Trim()
 $projectControlFinalCommit = (git -C $projectControlWorktree rev-parse HEAD).Trim()
 $coreFinalCommit = (git -C $coreWorktree rev-parse HEAD).Trim()
-if ($projectControlFinalCommit -ne $projectControlClosedTruthCommit) { throw "Project Control final HEAD drifted." }
+if ($projectControlFinalCommit -ne $task13MentionPlanCorrectionCommit) { throw "Project Control governing-plan HEAD drifted." }
+git -C $projectControlWorktree merge-base --is-ancestor $projectControlClosedTruthCommit $projectControlFinalCommit
+if ($LASTEXITCODE -ne 0) { throw "Frozen closed truth is not an ancestor of Project Control final HEAD." }
 if ($coreFinalCommit -ne $coreImmutableNavigationCommit) { throw "Core final HEAD drifted." }
 if (git -C $projectControlWorktree status --short) { throw "Project Control is dirty." }
 if (git -C $coreWorktree status --short) { throw "Core is dirty." }
 ```
 
-Verify the complete topology: closure → plan-only correction → Task 11 → Task
-12 in Project Control; cleanup → Task 13 in Core. Verify the literal README URL
-hash equals `$projectControlClosedTruthCommit`, and verify that commit/path
-locally again.
+Verify the complete topology: closure → initial plan-only correction → Task 11
+→ Task 12 frozen truth → Task 13 mention-plan correction in Project Control;
+cleanup → amended Task 13 in Core. The later plan-only descendant does not
+replace the URL coordinate. Verify the literal README URL hash remains exactly
+`$projectControlClosedTruthCommit`, and verify that frozen commit/path locally
+again.
 
 - [ ] **Step 2: Regenerate the three new scoped implementation packages**
 
@@ -2074,8 +2149,11 @@ Also regenerate the plan-governance context
 `$projectControlClosureCommit..$finalCorrectionsPlanCommit`; it is not a
 substitute for any of the three implementation packages. Refresh every earlier
 package whose head is used as final context and regenerate the complete Project
-Control provenance package through `$projectControlClosedTruthCommit`. Do not
-reuse a package after an amend.
+Control provenance package through `$task13MentionPlanCorrectionCommit`. Add a
+separate plan-governance context package
+`$projectControlClosedTruthCommit..$task13MentionPlanCorrectionCommit`; it is
+also not a fourth implementation package and must contain only this governing
+plan. Do not reuse a package after an amend.
 
 - [ ] **Step 3: Run the final gates from exact committed heads**
 
@@ -2115,9 +2193,12 @@ and commit; and parent Core remains unknown.
 The documentation-architecture/provenance reviewer must explicitly verify
 map → overview → leaf ↔ migration-review navigation; exactly two immutable Core
 README links pinned to `$projectControlClosedTruthCommit`; no `blob/main` or old
-source link; no Project Control checkout dependency in the Core guard; and the
-publication boundary is stated as local Git provenance until later integration,
-not as a public availability claim.
+source link; all four exact old-source runtime values retained while no complete
+covered path is contiguous in tracked guard text; no new allowance or coverage
+change; zero-diagnostic descendant closed verification; no Project Control
+checkout dependency in the Core guard; and the publication boundary is stated
+as local Git provenance until later integration, not as a public availability
+claim.
 
 Any Critical or Important finding reopens only its owning task and starts or
 continues that task's maximum-five fix loop. After every amend, recapture hashes,
