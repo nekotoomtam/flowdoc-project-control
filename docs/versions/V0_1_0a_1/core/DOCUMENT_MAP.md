@@ -1,7 +1,6 @@
 # Core Document Map
 
-Core consolidation is incomplete. This map is intentionally partial and
-records only the family closed by the completed pilot.
+Core consolidation is incomplete. This map records the completed pilot family and reviewed partial family leaves; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 
@@ -37,5 +36,7 @@ No other Core document deletion is authorized by this closure.
 ## Unpublished and Candidate Material
 
 `CORE_OVERVIEW.md` is intentionally unpublished until the broader Core
-synthesis is complete. All other Core families remain in candidate/inventory
-state and are not represented here as canonical release documentation.
+synthesis is complete. Unreviewed Core families remain in candidate/inventory
+state. The active reviewed partial Text Engine leaf above is not a family
+overview: Text Engine remains unknown, its remaining three leaves are
+incomplete, and no source cleanup is authorized.

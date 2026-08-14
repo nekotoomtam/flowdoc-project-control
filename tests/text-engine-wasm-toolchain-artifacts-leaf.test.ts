@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { access, readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -16,13 +17,49 @@ interface FamilyOrientation {
 }
 
 interface WaveAOrientation {
+  sourceCommit: string;
+  inventoryDigest: string;
   families: FamilyOrientation[];
+}
+
+interface InventoryFile {
+  path: string;
+  blobId: string;
+}
+
+interface CoreInventory {
+  sourceCommit: string;
+  sourceDigest: string;
+  files: InventoryFile[];
 }
 
 const expectedQualifiedSubgroup = "text-engine/wasm-toolchain-and-artifacts";
 const expectedLeafPath =
   "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md";
 const expectedCurrentEvidenceCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
+const expectedFrozenSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
+const expectedOrientationRawSha256 =
+  "c6b8c74477a51a819bf45cf2e480e26b0c57e72b00dbab69a33080f48ec12b83";
+const expectedOrientationGitBlobId = "3609fb3151a91f68b49e747e4c0dddb7c5624d81";
+const expectedSubgroupSourcePathSha256 =
+  "50f160881ea2fd3e7cdeb418d57b513a58a7b1179e02dc342beb63092ba04c7f";
+const expectedInventorySourceDigest =
+  "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b";
+const expectedInventoryBlobIds = [
+  "04e29dc88fd3ae81d300fe90492b1e44a07f5350",
+  "27c77deca5519d98dbd218b1ac24c87daddbc8f9",
+  "50bbfb1fc40492564947beda2a4a83c909b0d6ad",
+  "b60ce42def241dc81b4ba1966189aafba5a3686b",
+  "22d67f4a5e84cfed92f9f4472838bcbf80f6a291",
+  "a4cec1f8c03a5aa557a95f921827b210400b7ed4",
+  "cc35062654e77539e4a2a1ead6c2ac6666f80b88",
+  "5d97f1914aaad46588a1cf12ce0f40122846f5c0",
+  "a1fe0af326a98a0a67557d39e7e4143e3616fa3d",
+  "2d1df778540ff461f1e0fa07ce6d1a7acd429973",
+  "c2b65acb62ed4c01c6cc54927f7049edd81bbe76",
+  "576e12b5d0f2fc3e83f13fe9b05e2198b811d0d9",
+  "5f3a5f04133201a68fd6b7476df57f624a3f75fe",
+] as const;
 const registration = {
   nodeId: "text-engine",
   nodeTruthState: "unknown",
@@ -88,11 +125,15 @@ const allowedBoundaryMutations = [
 ] as const;
 
 async function readOrientation(): Promise<WaveAOrientation> {
-  const contents = await readFile(
-    join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json"),
-    "utf8",
-  );
-  return JSON.parse(contents) as WaveAOrientation;
+  return JSON.parse((await readOrientationBytes()).toString("utf8")) as WaveAOrientation;
+}
+
+async function readOrientationBytes(): Promise<Buffer> {
+  return readFile(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json"));
+}
+
+async function readInventory(): Promise<CoreInventory> {
+  return readJson<CoreInventory>("migrations/V0_1_0a_1/core/inventory.json");
 }
 
 async function readJson<T>(relativePath: string): Promise<T> {
@@ -122,18 +163,71 @@ function findSubgroup(orientation: WaveAOrientation): SemanticSubgroup {
   return subgroup;
 }
 
+function sha256(value: string | Uint8Array): string {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+function gitBlobId(value: Uint8Array): string {
+  return createHash("sha1")
+    .update(`blob ${value.byteLength}\0`)
+    .update(value)
+    .digest("hex");
+}
+
+function expectFrozenBatchIdentity(orientation: WaveAOrientation, inventory: CoreInventory): void {
+  const subgroup = findSubgroup(orientation);
+
+  expect(orientation.sourceCommit).toBe(expectedFrozenSourceCommit);
+  expect(orientation.inventoryDigest).toBe(expectedInventorySourceDigest);
+  expect(inventory.sourceCommit).toBe(expectedFrozenSourceCommit);
+  expect(inventory.sourceDigest).toBe(expectedInventorySourceDigest);
+  expect(subgroup.proposedLeafPath).toBe(expectedLeafPath);
+  expect(subgroup.sourcePaths).toHaveLength(13);
+  expect(new Set(subgroup.sourcePaths).size).toBe(13);
+  expect(sha256(subgroup.sourcePaths.join("\n"))).toBe(expectedSubgroupSourcePathSha256);
+  expect(
+    subgroup.sourcePaths.map((sourcePath) => {
+      const matches = inventory.files.filter((file) => file.path === sourcePath);
+      expect(matches).toHaveLength(1);
+      return matches[0]?.blobId;
+    }),
+  ).toEqual(expectedInventoryBlobIds);
+}
+
+function expectReviewedPartialMapSafe(map: string): void {
+  expect(map).toContain(
+    "This map records the completed pilot family and reviewed partial family leaves; all broader Core truth remains unknown.",
+  );
+  expect(map).not.toContain("records only the family closed by the completed pilot.");
+  expect(map).not.toMatch(
+    /All other Core families remain in candidate\/inventory\s+state and are not represented here as canonical release documentation\./,
+  );
+  expect(map).toContain("Text Engine remains unknown; the");
+  expect(map).toContain("remaining three leaves are incomplete, and no source cleanup is authorized.");
+}
+
+function expectPowerShellFocusedGateSyntax(leaf: string): void {
+  expect(leaf).toContain("```powershell\nnpm test -- --maxWorkers=1 `");
+  expect(leaf).not.toContain("npm test -- --maxWorkers=1 \\");
+}
+
 function expectProvenanceSafe(
   leaf: string,
   testSource: string,
   formerSourcePaths: string[],
 ): void {
   const evidenceReferences = [...leaf.matchAll(/flowdoc-vnext-core@([^:\s`]+):/g)];
+  const githubBlobReferences = [
+    ...leaf.matchAll(/https?:\/\/github\.com\/[^/\s)]+\/[^/\s)]+\/blob\/([^/\s)]+)(?:\/|$)/gi),
+  ];
 
   expect(evidenceReferences.length).toBeGreaterThan(0);
   for (const reference of evidenceReferences) {
     expect(reference[1]).toBe(expectedCurrentEvidenceCommit);
   }
-  expect(leaf).not.toMatch(/https?:\/\/[^\s)]+\/blob\/(?:main|master)\//i);
+  for (const reference of githubBlobReferences) {
+    expect(reference[1]).toBe(expectedCurrentEvidenceCommit);
+  }
   expect(leaf).not.toMatch(/(?:[A-Za-z]:\\|file:\/\/|\/(?:Users|home|tmp)\/)/);
   for (const formerSourcePath of formerSourcePaths) {
     expect(leaf).not.toContain(formerSourcePath);
@@ -154,13 +248,17 @@ function expectFactualBoundarySafe(leaf: string): void {
 
 describe("Text Engine WASM toolchain and artifacts leaf", () => {
   it("preserves the frozen batch identity and current-first document contract", async () => {
-    const orientation = await readOrientation();
+    const [orientationBytes, orientation, inventory] = await Promise.all([
+      readOrientationBytes(),
+      readOrientation(),
+      readInventory(),
+    ]);
     const subgroup = findSubgroup(orientation);
     const leaf = await readFile(join(root, subgroup.proposedLeafPath), "utf8");
 
-    expect(subgroup.proposedLeafPath).toBe(expectedLeafPath);
-    expect(subgroup.sourcePaths).toHaveLength(13);
-    expect(new Set(subgroup.sourcePaths).size).toBe(13);
+    expect(sha256(orientationBytes)).toBe(expectedOrientationRawSha256);
+    expect(gitBlobId(orientationBytes)).toBe(expectedOrientationGitBlobId);
+    expectFrozenBatchIdentity(orientation, inventory);
 
     const headings = leaf.match(/^## .+$/gm) ?? [];
     expect(headings).toEqual(expectedHeadings);
@@ -181,6 +279,47 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
     const testSource = await readFile(new URL(import.meta.url), "utf8");
 
     expectProvenanceSafe(leaf, testSource, subgroup.sourcePaths);
+  });
+
+  it("mutation: rejects a mutable GitHub blob reference", async () => {
+    const orientation = await readOrientation();
+    const subgroup = findSubgroup(orientation);
+    const leaf = await readFile(join(root, subgroup.proposedLeafPath), "utf8");
+    const testSource = await readFile(new URL(import.meta.url), "utf8");
+    const mutableUrl =
+      "https://github.com/nekotoomtam/flowdoc-vnext-core/blob/develop/packages/text-engine-rust-wasm/package.json";
+
+    expect(() => expectProvenanceSafe(`${leaf}\n${mutableUrl}`, testSource, subgroup.sourcePaths)).toThrow();
+  });
+
+  it("mutation: rejects a 13-for-13 source substitution", async () => {
+    const [orientation, inventory] = await Promise.all([readOrientation(), readInventory()]);
+    const mutatedOrientation = structuredClone(orientation);
+    const subgroup = findSubgroup(mutatedOrientation);
+    const replacement = inventory.files.find((file) => !subgroup.sourcePaths.includes(file.path));
+    if (!replacement) throw new Error("Inventory must contain an unrelated source");
+
+    subgroup.sourcePaths[0] = replacement.path;
+
+    expect(() => expectFrozenBatchIdentity(mutatedOrientation, inventory)).toThrow();
+  });
+
+  it("mutation: rejects inventory blob and source-anchor drift", async () => {
+    const [orientation, inventory] = await Promise.all([readOrientation(), readInventory()]);
+    const blobDriftInventory = structuredClone(inventory);
+    const sourcePath = findSubgroup(orientation).sourcePaths[0];
+    const sourceEntry = blobDriftInventory.files.find((file) => file.path === sourcePath);
+    if (!sourceEntry) throw new Error("Frozen source must exist in inventory");
+    sourceEntry.blobId = "0000000000000000000000000000000000000000";
+    expect(() => expectFrozenBatchIdentity(orientation, blobDriftInventory)).toThrow();
+
+    const commitDriftOrientation = structuredClone(orientation);
+    commitDriftOrientation.sourceCommit = "0000000000000000000000000000000000000000";
+    expect(() => expectFrozenBatchIdentity(commitDriftOrientation, inventory)).toThrow();
+
+    const digestDriftInventory = structuredClone(inventory);
+    digestDriftInventory.sourceDigest = "0000000000000000000000000000000000000000000000000000000000000000";
+    expect(() => expectFrozenBatchIdentity(orientation, digestDriftInventory)).toThrow();
   });
 
   it("rejects unqualified readiness and default-measurer claims", async () => {
@@ -232,6 +371,20 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
     expect(() => expectFactualBoundarySafe(`${leaf}\n${claim}`)).not.toThrow();
   });
 
+  it("uses an explicit PowerShell continuation for the focused Core gate command", async () => {
+    const orientation = await readOrientation();
+    const leaf = await readFile(join(root, findSubgroup(orientation).proposedLeafPath), "utf8");
+
+    expectPowerShellFocusedGateSyntax(leaf);
+    expect(() => expectPowerShellFocusedGateSyntax(`${leaf}\nnpm test -- --maxWorkers=1 \\`)).toThrow();
+  });
+
+  it("keeps the document map honest about closed and reviewed partial family material", async () => {
+    const map = await readFile(join(root, "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8");
+
+    expectReviewedPartialMapSafe(map);
+  });
+
   it("registers only the bounded Text Engine WASM leaf without promoting its family", async () => {
     const [node, document, toolchainEvidence, artifactEvidence, core, map, index, leaf] =
       await Promise.all([
@@ -280,7 +433,7 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
       commit: registration.commit,
       pathOrContractId: "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs",
       verificationSummary:
-        "Focused acquisition, provisioning, optional-readiness, and version-compatibility gates passed (12 files / 93 tests); package-local discovery and planning do not establish globally installed tools.",
+        "A focused 12-file/93-test WASM gate batch passed, including acquisition, provisioning, optional-readiness, and version-compatibility gates; package-local discovery and planning do not establish globally installed tools or production readiness.",
       verifiedAt: "2026-08-14T00:00:00.000Z",
     });
     expect(artifactEvidence).toEqual({
@@ -300,6 +453,7 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
       truthState: "unknown",
       summary: expectedCoreSummary,
     });
+    expectReviewedPartialMapSafe(map);
     expect(map).toContain("## Reviewed Partial Family Leaves");
     expect(map).toContain(
       "[Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)",

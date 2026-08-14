@@ -77,19 +77,19 @@ Get-FileHash -Algorithm SHA256 packages/text-engine-rust-wasm/pkg/flowdoc_text_e
 
 The focused Core contract uses one worker and these test files:
 
-```text
-npm test -- --maxWorkers=1 \
-  tests/textEngineWasmArtifactBuildOutputGate.test.ts \
-  tests/textEngineWasmArtifactDigestPinningGate.test.ts \
-  tests/textEngineWasmArtifactProductionGate.test.ts \
-  tests/textEngineWasmArtifactProductionRetryGate.test.ts \
-  tests/textEngineWasmBindgenExportDependencyGate.test.ts \
-  tests/textEngineWasmBuildToolchainReadinessGate.test.ts \
-  tests/textEngineWasmToolchainAcquisitionGate.test.ts \
-  tests/textEngineWasmToolchainOptionalReadinessSmoke.test.ts \
-  tests/textEngineWasmToolchainProvisioningBootstrapGate.test.ts \
-  tests/textEngineWasmToolchainProvisioningExecutionGate.test.ts \
-  tests/textEngineWasmToolchainRustUpgradeExecutionGate.test.ts \
+```powershell
+npm test -- --maxWorkers=1 `
+  tests/textEngineWasmArtifactBuildOutputGate.test.ts `
+  tests/textEngineWasmArtifactDigestPinningGate.test.ts `
+  tests/textEngineWasmArtifactProductionGate.test.ts `
+  tests/textEngineWasmArtifactProductionRetryGate.test.ts `
+  tests/textEngineWasmBindgenExportDependencyGate.test.ts `
+  tests/textEngineWasmBuildToolchainReadinessGate.test.ts `
+  tests/textEngineWasmToolchainAcquisitionGate.test.ts `
+  tests/textEngineWasmToolchainOptionalReadinessSmoke.test.ts `
+  tests/textEngineWasmToolchainProvisioningBootstrapGate.test.ts `
+  tests/textEngineWasmToolchainProvisioningExecutionGate.test.ts `
+  tests/textEngineWasmToolchainRustUpgradeExecutionGate.test.ts `
   tests/textEngineWasmToolchainVersionCompatibilityGate.test.ts
 ```
 
