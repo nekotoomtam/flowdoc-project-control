@@ -1,0 +1,102 @@
+{
+  "kind": "document",
+  "id": "doc-text-engine-wasm-toolchain-artifacts",
+  "title": "Text Engine WASM Toolchain and Artifacts",
+  "path": "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md",
+  "nodeIds": ["text-engine"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified package-local WASM toolchain and tracked-artifact facts; wider Text Engine adoption, parity, production readiness, and default-measurer replacement remain unknown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/package.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/scripts/plan-wasm-toolchain-bootstrap.mjs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/wasm-artifact-digest-pinning.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/wasm-evidence-summary.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/pkg/flowdoc_text_engine_bg.wasm"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmArtifactBuildOutputGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmArtifactDigestPinningGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmArtifactProductionGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmArtifactProductionRetryGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmBindgenExportDependencyGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmBuildToolchainReadinessGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainAcquisitionGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainOptionalReadinessSmoke.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainProvisioningBootstrapGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainProvisioningExecutionGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainRustUpgradeExecutionGate.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineWasmToolchainVersionCompatibilityGate.test.ts"
+    }
+  ]
+}

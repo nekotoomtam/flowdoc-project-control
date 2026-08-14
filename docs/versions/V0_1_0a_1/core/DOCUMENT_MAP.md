@@ -23,6 +23,12 @@ Exactly four captured Core documents were removed:
 
 No other Core document deletion is authorized by this closure.
 
+## Reviewed Partial Family Leaves
+
+- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)
+  — This is not a Text Engine family overview. Text Engine remains unknown; the
+  remaining three leaves are incomplete, and no source cleanup is authorized.
+
 ## Shared Glossaries
 
 - [Glossary](../../../GLOSSARY.md)

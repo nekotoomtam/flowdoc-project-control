@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-engine-wasm-toolchain-gates",
+  "nodeIds": ["text-engine"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs",
+  "verificationSummary": "Focused acquisition, provisioning, optional-readiness, and version-compatibility gates passed (12 files / 93 tests); package-local discovery and planning do not establish globally installed tools.",
+  "verifiedAt": "2026-08-14T00:00:00.000Z"
+}
