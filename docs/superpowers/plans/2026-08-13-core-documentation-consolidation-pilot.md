@@ -1312,6 +1312,7 @@ Record `$coreCleanupBaseCommit..$coreCleanupCommit` as the exact Task 9 four-del
 - Modify: `docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md`
 - Modify: `tests/core-doc-migration.test.ts`
 - Modify: `tests/seed-project.test.ts`
+- Modify: `tests/e2e/project-control.spec.ts`
 - Modify: `generated/project-index.json`
 
 **Interfaces:**
@@ -1337,16 +1338,38 @@ Run: `npm test -- tests/core-doc-migration.test.ts tests/seed-project.test.ts`
 
 Expected: FAIL because the transaction is still `ready-for-deletion`.
 
+The non-technical UI lifecycle contract is also exact: after closure, opening Core's full-detail dialog and selecting the Work tab must visibly render the durable empty state `No active work is recorded.` and must not render the retired `CORE_ROUTE` pilot Work entry. Keep this as an interaction-level Playwright assertion in `tests/e2e/project-control.spec.ts`; an internal JSON-only assertion does not satisfy the contract. Do not redesign the UI or alter any other E2E behavior.
+
 - [ ] **Step 2: Finalize coverage and Evidence with the real commit**
 
 Set `coreCleanupCommit` to `$coreCleanupCommit`, set status `closed`, add `evidence-core-route-cleanup` to the Node, and remove the pilot Work record. The cleanup Evidence summary must name the exact four removed paths and the passing Core gate. Update `MIGRATION_REVIEW.md` with post-cleanup verification without rewriting the earlier readiness verdict.
 
 - [ ] **Step 3: Regenerate and run Project Control gates**
 
-Run:
+First regenerate the closure candidate, then preserve the existing E2E assertion as the test-first RED:
 
 ```powershell
 npm run generate
+npm run test:e2e -- --grep "explores a node, reads its summary, and opens separated details"
+```
+
+Expected RED: the Work tab visibly contains `No active work is recorded.`, so the stale assertion expecting `CORE_ROUTE` fails.
+
+Then change only that Work-tab assertion in `tests/e2e/project-control.spec.ts`:
+
+```ts
+const workPanel = page.getByRole("tabpanel");
+await expect(workPanel).toContainText("No active work is recorded.");
+await expect(workPanel).not.toContainText("CORE_ROUTE");
+```
+
+Run the same focused Playwright command again. Expected GREEN: PASS, proving the visible closed lifecycle rather than only the generated JSON state.
+
+Run all Project Control gates:
+
+Run:
+
+```powershell
 npm run check:data
 npm run type-check
 npm test
@@ -1372,7 +1395,20 @@ Expected: exact cleanup commit match, all four sources absent, active references
 ```powershell
 $projectControlTask10BaseCommit = (git rev-parse HEAD).Trim()
 if ($projectControlTask10BaseCommit -notmatch '^[0-9a-f]{40}$') { throw "Project Control Task 10 base commit is invalid." }
-git add data migrations/V0_1_0a_1/core/families/core-route/coverage.json docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md tests generated/project-index.json
+$expectedTask10Paths = @(
+  'data/evidence/core-route-cleanup.json',
+  'data/nodes/core-route.json',
+  'data/work/core-route-pilot.json',
+  'docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md',
+  'generated/project-index.json',
+  'migrations/V0_1_0a_1/core/families/core-route/coverage.json',
+  'tests/core-doc-migration.test.ts',
+  'tests/e2e/project-control.spec.ts',
+  'tests/seed-project.test.ts'
+) | Sort-Object
+git add -- $expectedTask10Paths
+$actualTask10Paths = @(git diff --cached --name-only) | Sort-Object
+if (Compare-Object $expectedTask10Paths $actualTask10Paths) { throw "Staged Task 10 scope is not the exact nine paths." }
 git diff --cached --check
 git commit -m "docs: close Core route migration pilot"
 $projectControlClosureCommit = (git rev-parse HEAD).Trim()
@@ -1414,7 +1450,8 @@ Project Control packages:
 1. `c488cb412cd6b64808a1a5616299bfce6af25af2..$projectControlPublicationCommit` — Tasks 1–6 implementation and corrections;
 2. `$projectControlPublicationCommit..$projectControlTask8BaseCommit` — governing-plan/handoff amendments before deletion authorization;
 3. `$projectControlTask8BaseCommit..$projectControlDeletionAuthorizationCommit` — exact Task 8 readiness and deletion-authorization commit;
-4. `$projectControlTask10BaseCommit..$projectControlClosureCommit` — exact Task 10 closure commit.
+4. `$projectControlDeletionAuthorizationCommit..$projectControlTask10BaseCommit` — exact governing-plan correction that binds the closed lifecycle to the visible Work-tab empty state;
+5. `$projectControlTask10BaseCommit..$projectControlClosureCommit` — exact nine-path Task 10 closure commit, including the interaction-level E2E assertion.
 
 Also provide the complete Project Control provenance range `c488cb412cd6b64808a1a5616299bfce6af25af2..$projectControlClosureCommit` as context, but never use it as a substitute for the scoped packages. Every package must be regenerated from the final recaptured hashes and its header must name the exact base/head pair. Both reviewers also receive generated artifacts, all gate outputs, the deletion allowlist, review verdicts from Tasks 7–8, and rollback commits. Any Critical or Important finding requires a new RED, correction, complete affected gates, refreshed hashes/packages for every affected range, and fresh verdict from both reviewers.
 
