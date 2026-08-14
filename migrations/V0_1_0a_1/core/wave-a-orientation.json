@@ -5,7 +5,7 @@
   "repositoryId": "repo-core",
   "sourceCommit": "76a2f2311a898e781f53773390d47b05812911e4",
   "inventoryDigest": "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b",
-  "reviewState": "draft",
+  "reviewState": "reviewed",
   "families": [
     {
       "familyId": "template-builder",
@@ -727,11 +727,12 @@
           ],
           "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md",
           "dependsOn": [
-            "text-engine/runtime-identity-and-evidence",
-            "text-engine/rustybuzz-shaping"
+            "text-engine/runtime-identity-and-evidence"
           ],
           "crossReferences": [
-            "text-engine/wasm-toolchain-and-artifacts"
+            "text-engine/wasm-toolchain-and-artifacts",
+            "text-engine/rustybuzz-shaping",
+            "text-block/v4-measurement-and-pagination"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -772,7 +773,8 @@
           ],
           "crossReferences": [
             "text-engine/adapter-and-provider",
-            "text-engine/rustybuzz-shaping"
+            "text-engine/rustybuzz-shaping",
+            "live-draft/corrective-evidence"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -812,7 +814,8 @@
           ],
           "crossReferences": [
             "text-engine/runtime-identity-and-evidence",
-            "text-engine/wasm-toolchain-and-artifacts"
+            "text-engine/wasm-toolchain-and-artifacts",
+            "text-block/v4-measurement-and-pagination"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -859,7 +862,9 @@
           "dependsOn": [],
           "crossReferences": [
             "text-engine/runtime-identity-and-evidence",
-            "text-engine/rustybuzz-shaping"
+            "text-engine/rustybuzz-shaping",
+            "live-draft/root-and-v3-transition-contracts",
+            "live-draft/corrective-evidence"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -956,7 +961,8 @@
           "dependsOn": [],
           "crossReferences": [
             "text-block/v4-authoring-and-inline",
-            "text-block/v4-measurement-and-pagination"
+            "text-block/v4-measurement-and-pagination",
+            "live-draft/product-readiness-and-renderer-boundaries"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -995,7 +1001,9 @@
             "text-block/v1-grammar-and-migration"
           ],
           "crossReferences": [
-            "text-block/v4-measurement-and-pagination"
+            "text-block/v4-measurement-and-pagination",
+            "live-draft/root-and-v3-transition-contracts",
+            "text-engine/adapter-and-provider"
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
@@ -1034,7 +1042,12 @@
           "dependsOn": [
             "text-block/v4-authoring-and-inline"
           ],
-          "crossReferences": [],
+          "crossReferences": [
+            "text-engine/adapter-and-provider",
+            "text-engine/rustybuzz-shaping",
+            "live-draft/geometry-and-scene-projection",
+            "template-builder/viewport-and-virtualized-rendering"
+          ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
             {
@@ -1086,5 +1099,24 @@
       ]
     }
   ],
-  "synthesisOrder": []
+  "synthesisOrder": [
+    "text-engine/wasm-toolchain-and-artifacts",
+    "text-engine/runtime-identity-and-evidence",
+    "text-engine/adapter-and-provider",
+    "text-engine/rustybuzz-shaping",
+    "template-builder/sandbox-runtime-and-store",
+    "template-builder/structural-runtime-and-navigation",
+    "template-builder/viewport-and-virtualized-rendering",
+    "template-builder/wysiwyg-draft-input-and-guards",
+    "template-builder/rich-inline-commit-and-session-lifecycle",
+    "live-draft/product-readiness-and-renderer-boundaries",
+    "live-draft/geometry-and-scene-projection",
+    "live-draft/persistent-flow-and-range-foundations",
+    "live-draft/root-and-v3-transition-contracts",
+    "live-draft/source-authority-and-commit-transaction",
+    "live-draft/corrective-evidence",
+    "text-block/v1-grammar-and-migration",
+    "text-block/v4-authoring-and-inline",
+    "text-block/v4-measurement-and-pagination"
+  ]
 }

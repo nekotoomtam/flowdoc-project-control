@@ -62,6 +62,36 @@ interface FamilyOrientation {
 
 type WaveAFamilyId = FamilyOrientation["familyId"];
 
+const waveAFamilyIds = [
+  "template-builder",
+  "live-draft",
+  "text-engine",
+  "text-block",
+] as const;
+
+const frozenCoreSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
+
+const expectedSynthesisOrder = [
+  "text-engine/wasm-toolchain-and-artifacts",
+  "text-engine/runtime-identity-and-evidence",
+  "text-engine/adapter-and-provider",
+  "text-engine/rustybuzz-shaping",
+  "template-builder/sandbox-runtime-and-store",
+  "template-builder/structural-runtime-and-navigation",
+  "template-builder/viewport-and-virtualized-rendering",
+  "template-builder/wysiwyg-draft-input-and-guards",
+  "template-builder/rich-inline-commit-and-session-lifecycle",
+  "live-draft/product-readiness-and-renderer-boundaries",
+  "live-draft/geometry-and-scene-projection",
+  "live-draft/persistent-flow-and-range-foundations",
+  "live-draft/root-and-v3-transition-contracts",
+  "live-draft/source-authority-and-commit-transaction",
+  "live-draft/corrective-evidence",
+  "text-block/v1-grammar-and-migration",
+  "text-block/v4-authoring-and-inline",
+  "text-block/v4-measurement-and-pagination",
+] as const;
+
 interface WaveAOrientation {
   kind: string;
   schemaVersion: number;
@@ -80,6 +110,31 @@ async function readJson<T>(path: string): Promise<T> {
 
 function sorted(values: string[]): string[] {
   return [...values].sort();
+}
+
+function qualifiedSubgroupIds(orientation: WaveAOrientation): string[] {
+  return orientation.families.flatMap((family) =>
+    family.subgroups.map((subgroup) => `${family.familyId}/${subgroup.subgroupId}`),
+  );
+}
+
+function expectFrozenSourceIdentity(
+  orientation: WaveAOrientation,
+  inventory: CoreMarkdownInventory,
+): void {
+  expect(inventory.sourceCommit).toBe(frozenCoreSourceCommit);
+  expect(orientation.sourceCommit).toBe(frozenCoreSourceCommit);
+  expect(orientation.sourceCommit).toBe(inventory.sourceCommit);
+}
+
+function expectFrozenSynthesisOrder(orientation: WaveAOrientation): string[] {
+  const subgroupIds = qualifiedSubgroupIds(orientation);
+
+  expect(subgroupIds).toHaveLength(expectedSynthesisOrder.length);
+  expect(new Set(subgroupIds).size).toBe(expectedSynthesisOrder.length);
+  expect(orientation.synthesisOrder).toEqual(expectedSynthesisOrder);
+
+  return subgroupIds;
 }
 
 function expectMappedFamily(
@@ -125,8 +180,7 @@ function expectMappedFamily(
       expect(subgroup.oversizedCohesionRationale?.trim().length).toBeGreaterThan(0);
     }
     for (const reference of [...subgroup.dependsOn, ...subgroup.crossReferences]) {
-      expect(reference).toMatch(new RegExp(`^${familyId}/[a-z0-9]+(?:-[a-z0-9]+)*$`));
-      expect(subgroupIds.has(reference.slice(familyId.length + 1))).toBe(true);
+      expect(reference).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*\/[a-z0-9]+(?:-[a-z0-9]+)*$/);
     }
   }
   expect(proposedLeaves).toEqual([...new Set(proposedLeaves)]);
@@ -139,7 +193,7 @@ function expectMappedFamily(
 }
 
 describe("Wave A Core documentation orientation", () => {
-  it("freezes the draft identity against the stored Core inventory", async () => {
+  it("freezes the reviewed identity against the stored Core inventory", async () => {
     const [orientation, inventory, familyMap] = await Promise.all([
       readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
       readJson<CoreMarkdownInventory>(join(root, "migrations/V0_1_0a_1/core/inventory.json")),
@@ -151,11 +205,11 @@ describe("Wave A Core documentation orientation", () => {
       schemaVersion: 1,
       releaseLine: "V0_1_0a_1",
       repositoryId: "repo-core",
-      sourceCommit: "76a2f2311a898e781f53773390d47b05812911e4",
+      sourceCommit: frozenCoreSourceCommit,
       inventoryDigest: inventory.sourceDigest,
-      reviewState: "draft",
-      synthesisOrder: [],
+      reviewState: "reviewed",
     });
+    expectFrozenSourceIdentity(orientation, inventory);
     expect(inventory.expectedFileCount).toBe(470);
     expect(familyMap.inventoryDigest).toBe(inventory.sourceDigest);
     expect(orientation.families.map(({ familyId, sourceCount }) => [familyId, sourceCount])).toEqual([
@@ -228,5 +282,85 @@ describe("Wave A Core documentation orientation", () => {
     ]);
 
     expectMappedFamily(orientation, familyMap, "text-block", 10);
+  });
+
+  it("closes all Wave A source assignments and freezes a dependency-valid synthesis order", async () => {
+    const [orientation, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+    const expectedWaveAPaths = familyMap.families
+      .filter((family) => (waveAFamilyIds as readonly string[]).includes(family.familyId))
+      .flatMap((family) => family.sources.map((source) => source.path));
+    const assignedPaths = orientation.families.flatMap((family) =>
+      family.subgroups.flatMap((subgroup) => subgroup.sourcePaths),
+    );
+    const allQualifiedSubgroupIds = expectFrozenSynthesisOrder(orientation);
+    const subgroupsByQualifiedId = new Map<string, SemanticSubgroup>(orientation.families.flatMap((family) =>
+      family.subgroups.map((subgroup) => [`${family.familyId}/${subgroup.subgroupId}`, subgroup] as const),
+    ));
+    const orderIndex = new Map(orientation.synthesisOrder.map((subgroupId, index) => [subgroupId, index]));
+
+    expect(orientation.reviewState).toBe("reviewed");
+    expect(assignedPaths).toHaveLength(173);
+    expect(new Set(assignedPaths).size).toBe(173);
+    expect(sorted(assignedPaths)).toEqual(sorted(expectedWaveAPaths));
+    expect(new Set(orientation.synthesisOrder)).toEqual(new Set(allQualifiedSubgroupIds));
+
+    for (const [qualifiedId, subgroup] of subgroupsByQualifiedId) {
+      for (const dependency of subgroup.dependsOn) {
+        expect(subgroupsByQualifiedId.has(dependency)).toBe(true);
+        expect(dependency).not.toBe(qualifiedId);
+        expect(orderIndex.get(dependency)).toBeLessThan(orderIndex.get(qualifiedId)!);
+      }
+      for (const reference of subgroup.crossReferences) {
+        expect(subgroupsByQualifiedId.has(reference)).toBe(true);
+      }
+    }
+
+    const visiting = new Set<string>();
+    const visited = new Set<string>();
+    const visit = (qualifiedId: string): void => {
+      expect(visiting.has(qualifiedId)).toBe(false);
+      if (visited.has(qualifiedId)) return;
+      visiting.add(qualifiedId);
+      for (const dependency of subgroupsByQualifiedId.get(qualifiedId)?.dependsOn ?? []) {
+        visit(dependency);
+      }
+      visiting.delete(qualifiedId);
+      visited.add(qualifiedId);
+    };
+
+    for (const qualifiedId of allQualifiedSubgroupIds) visit(qualifiedId);
+  });
+
+  it("rejects duplicate subgroup identities, synthesis-order drift, and source-commit drift", async () => {
+    const [orientation, inventory] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreMarkdownInventory>(join(root, "migrations/V0_1_0a_1/core/inventory.json")),
+    ]);
+    const duplicateSubgroupIdentity = structuredClone(orientation);
+    const [firstTemplateBuilderSubgroup, secondTemplateBuilderSubgroup] =
+      duplicateSubgroupIdentity.families.find((family) => family.familyId === "template-builder")?.subgroups ?? [];
+    if (!firstTemplateBuilderSubgroup || !secondTemplateBuilderSubgroup) {
+      throw new Error("Template Builder fixture must include two subgroups");
+    }
+    secondTemplateBuilderSubgroup.subgroupId = firstTemplateBuilderSubgroup.subgroupId;
+    const reorderedSynthesis = structuredClone(orientation);
+    const [firstSynthesisId, secondSynthesisId] = reorderedSynthesis.synthesisOrder;
+    if (!firstSynthesisId || !secondSynthesisId) {
+      throw new Error("Wave A fixture must include two synthesis entries");
+    }
+    reorderedSynthesis.synthesisOrder[0] = secondSynthesisId;
+    reorderedSynthesis.synthesisOrder[1] = firstSynthesisId;
+    const driftedOrientation = structuredClone(orientation);
+    driftedOrientation.sourceCommit = "0000000000000000000000000000000000000000";
+    const driftedInventory = structuredClone(inventory);
+    driftedInventory.sourceCommit = "0000000000000000000000000000000000000000";
+
+    expect(() => expectFrozenSynthesisOrder(duplicateSubgroupIdentity)).toThrow();
+    expect(() => expectFrozenSynthesisOrder(reorderedSynthesis)).toThrow();
+    expect(() => expectFrozenSourceIdentity(driftedOrientation, inventory)).toThrow();
+    expect(() => expectFrozenSourceIdentity(orientation, driftedInventory)).toThrow();
   });
 });
