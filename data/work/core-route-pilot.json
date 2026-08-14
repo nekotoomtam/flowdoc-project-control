@@ -5,7 +5,7 @@
   "nodeId": "core",
   "repositoryIds": ["repo-core", "repo-project-control"],
   "workState": "in-review",
-  "summary": "Reviewed canonical Core route truth is registered in Project Control; Core cleanup Evidence is still pending before source or reference deletion.",
+  "summary": "Source deletion is authorized for the four reviewed Core route documents; Core cleanup Evidence remains outstanding.",
   "requiredEvidence": [],
   "createdAt": "2026-08-12T14:37:25.000Z",
   "updatedAt": "2026-08-13T00:00:00.000Z"

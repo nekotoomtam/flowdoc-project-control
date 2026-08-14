@@ -29,6 +29,8 @@ const destinationPath = "docs/versions/V0_1_0a_1/core/core-route/route.md";
 const sourcePath = "docs/CORE_ROUTE_SAMPLE.md";
 const canonicalCoreRouteOverview = "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md";
 const canonicalCoreRouteLeaf = "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md";
+const canonicalCoreRouteReview = "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md";
+const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 const coreRouteSources = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
   "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
@@ -60,6 +62,11 @@ function expectRealCoreRouteCoverageLifecycle(
       "doc-core-route-overview",
       "doc-core-route-retained-contracts",
     ];
+  } else if (coverage.status === "ready-for-deletion") {
+    expectedDocumentIds = [
+      "doc-core-route-overview",
+      "doc-core-route-retained-contracts",
+    ];
   } else {
     throw new Error(`Unexpected Core route coverage lifecycle: ${coverage.status}`);
   }
@@ -69,10 +76,44 @@ function expectRealCoreRouteCoverageLifecycle(
     sourceCommit: inventory.sourceCommit,
     inventoryDigest: inventory.sourceDigest,
     activeReferences: [],
-    retainedHistoricalReferences: [],
-    projectControlPublicationCommit: null,
     coreCleanupCommit: null,
   });
+  if (coverage.status === "ready-for-deletion") {
+    expect(coverage.projectControlPublicationCommit).toBe(projectControlPublicationCommit);
+    expect(coverage.retainedHistoricalReferences).toEqual([
+      {
+        sourcePath: "docs/PHASE_LEDGER.md",
+        line: 244,
+        targetPath: "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
+        lineSha256: "597bc1ed3fc452caeb406f205ed70152d08d68a214d7bdcd5678fdbb7ac0f351",
+        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
+      },
+      {
+        sourcePath: "docs/PHASE_LEDGER.md",
+        line: 245,
+        targetPath: "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
+        lineSha256: "dbdf0de3b8af2f526569602fd3518ef3b234106f9b107c884c31042c70e1edc2",
+        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
+      },
+      {
+        sourcePath: "docs/PHASE_LEDGER.md",
+        line: 246,
+        targetPath: "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
+        lineSha256: "5702989ab7198f3cfdba5f9fe4d5996979f286de46a075e4782ee9360f3f3eb7",
+        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
+      },
+      {
+        sourcePath: "docs/PHASE_LEDGER.md",
+        line: 247,
+        targetPath: "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
+        lineSha256: "2b6dcdddda0dab465843e554ba18a574c0ee9c02b5bf8a11737522f65e83d754",
+        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
+      },
+    ]);
+  } else {
+    expect(coverage.projectControlPublicationCommit).toBeNull();
+    expect(coverage.retainedHistoricalReferences).toEqual([]);
+  }
   expect(coverage.canonicalDocumentIds).toEqual(expectedDocumentIds);
   expect(coverage.sources.map((source) => source.path)).toEqual(coreRouteSources);
   expect(coverage.sources.map((source) => source.blobId)).toEqual(
@@ -690,7 +731,7 @@ describe("real Project Control Core route pilot", () => {
     expectRealCoreRouteCoverageLifecycle(coverage, inventory);
   });
 
-  it("accepts only coherent draft and content-reviewed coverage lifecycles", async () => {
+  it("accepts only coherent draft, content-reviewed, and deletion-ready coverage lifecycles", async () => {
     const inventory = JSON.parse(await readFile(
       join(process.cwd(), "migrations/V0_1_0a_1/core/inventory.json"),
       "utf8",
@@ -707,15 +748,24 @@ describe("real Project Control Core route pilot", () => {
       ...storedCoverage,
       status: "draft",
       canonicalDocumentIds: [],
+      retainedHistoricalReferences: [],
+      projectControlPublicationCommit: null,
     };
     const reviewedCoverage: FamilyCoverage = {
       ...storedCoverage,
       status: "content-reviewed",
       canonicalDocumentIds: reviewedDocumentIds,
+      retainedHistoricalReferences: [],
+      projectControlPublicationCommit: null,
+    };
+    const deletionReadyCoverage: FamilyCoverage = {
+      ...storedCoverage,
+      status: "ready-for-deletion",
     };
 
     expect(() => expectRealCoreRouteCoverageLifecycle(draftCoverage, inventory)).not.toThrow();
     expect(() => expectRealCoreRouteCoverageLifecycle(reviewedCoverage, inventory)).not.toThrow();
+    expect(() => expectRealCoreRouteCoverageLifecycle(deletionReadyCoverage, inventory)).not.toThrow();
     expect(() => expectRealCoreRouteCoverageLifecycle({
       ...draftCoverage,
       canonicalDocumentIds: reviewedDocumentIds,
@@ -725,9 +775,39 @@ describe("real Project Control Core route pilot", () => {
       canonicalDocumentIds: [],
     }, inventory)).toThrow();
     expect(() => expectRealCoreRouteCoverageLifecycle({
-      ...reviewedCoverage,
-      status: "ready-for-deletion",
+      ...deletionReadyCoverage,
+      projectControlPublicationCommit: null,
     }, inventory)).toThrow();
+  });
+
+  it("publishes the reviewed deletion scope without inflating provisional family-map authority", async () => {
+    const [review, coverageJson, familyMapJson] = await Promise.all([
+      readFile(join(process.cwd(), canonicalCoreRouteReview), "utf8"),
+      readFile(
+        join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
+        "utf8",
+      ),
+      readFile(join(process.cwd(), "migrations/V0_1_0a_1/core/family-map.json"), "utf8"),
+    ]);
+    const coverage = JSON.parse(coverageJson) as FamilyCoverage;
+    const familyMap = JSON.parse(familyMapJson) as CoreFamilyMap;
+    const family = familyMap.families.find(({ familyId }) => familyId === "core-route");
+
+    expect(coverage.status).toBe("ready-for-deletion");
+    expect(coverage.activeReferences).toEqual([]);
+    expect(coverage.coreCleanupCommit).toBeNull();
+    expect(coverage.sources.map(({ path, blobId }) => ({ path, blobId }))).toEqual([
+      { path: "docs/CORE_ROUTE_DEEXPORT_PLAN.md", blobId: "8f17cbd011fb706d69e53f38b86a95bc2afe6c7c" },
+      { path: "docs/CORE_ROUTE_DEPRECATION_WINDOW.md", blobId: "815dd7117dfdbb9551257afe7d81ac1351fa4b33" },
+      { path: "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md", blobId: "d8db6dfe0eb6f5d3c6821f1c55b10bd25c1b46ef" },
+      { path: "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md", blobId: "188fd81d4e78a025119c8d2b0ae1cef046d0ff13" },
+    ]);
+    expect(family?.sources.map(({ migrationStatus }) => migrationStatus))
+      .toEqual(["classified", "classified", "classified", "classified"]);
+    expect(review).toContain("READY FOR TASK 8 AUTHORIZATION — not deletion performed.");
+    expect(review).toContain("ready for source deletion");
+    expect(review).toContain("provisional classification");
+    expect(review).toContain("authoritative deletion lifecycle");
   });
 
   it("keeps the partial document map truthful across both review lifecycles", async () => {
@@ -745,6 +825,8 @@ describe("real Project Control Core route pilot", () => {
       ...storedCoverage,
       status: "draft",
       canonicalDocumentIds: [],
+      retainedHistoricalReferences: [],
+      projectControlPublicationCommit: null,
     };
     const reviewedCoverage: FamilyCoverage = {
       ...storedCoverage,
@@ -753,6 +835,8 @@ describe("real Project Control Core route pilot", () => {
         "doc-core-route-overview",
         "doc-core-route-retained-contracts",
       ],
+      retainedHistoricalReferences: [],
+      projectControlPublicationCommit: null,
     };
 
     expect(() => expectCoreDocumentMapLifecycleStable(documentMap, draftCoverage, inventory)).not.toThrow();

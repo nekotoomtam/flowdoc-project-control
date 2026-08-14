@@ -7,6 +7,7 @@ import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 const execFileAsync = promisify(execFile);
 const frozenCoreCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const approvedDesignCommit = "d79b88c23a307e7ec49437a015804d7a4d2de4bf";
+const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 
 describe("truthful seed project", () => {
   it("loads the truthful seed without claiming unverified product state", async () => {
@@ -40,7 +41,11 @@ describe("truthful seed project", () => {
     expect(coreRoute).toMatchObject({
       parentId: "core",
       truthState: "current",
-      documentIds: ["doc-core-route-overview", "doc-core-route-retained-contracts"],
+      documentIds: [
+        "doc-core-route-migration-review",
+        "doc-core-route-overview",
+        "doc-core-route-retained-contracts",
+      ],
       evidenceIds: [
         "evidence-core-route-artifact-contracts",
         "evidence-core-route-generation-contracts",
@@ -54,8 +59,8 @@ describe("truthful seed project", () => {
     expect(pilot).toMatchObject({
       workState: "in-review",
       requiredEvidence: [],
+      summary: "Source deletion is authorized for the four reviewed Core route documents; Core cleanup Evidence remains outstanding.",
     });
-    expect(pilot?.summary).toMatch(/Core cleanup Evidence is still pending/iu);
   });
 
   it("registers the version map and canonical family documents with frozen provenance", async () => {
@@ -136,6 +141,19 @@ describe("truthful seed project", () => {
       role: "contract",
       lifecycle: "active",
       repositoryRefs: frozenCoreSourceAndTestRefs,
+    });
+    expect(documents.get("doc-core-route-migration-review")).toMatchObject({
+      path: "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md",
+      nodeIds: ["core-route"],
+      role: "verification",
+      lifecycle: "active",
+      repositoryRefs: [
+        {
+          repositoryId: "repo-project-control",
+          commit: projectControlPublicationCommit,
+          pathOrContractId: "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+        },
+      ],
     });
   });
 
