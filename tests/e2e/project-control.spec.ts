@@ -15,7 +15,9 @@ test("explores a node, reads its summary, and opens separated details", async ({
   await page.getByRole("button", { name: /Core/ }).click();
   await page.getByRole("button", { name: "View all" }).click();
   await page.getByRole("tab", { name: "Work" }).click();
-  await expect(page.getByRole("tabpanel")).toContainText("CORE_ROUTE");
+  const workPanel = page.getByRole("tabpanel");
+  await expect(workPanel).toContainText("No active work is recorded.");
+  await expect(workPanel).not.toContainText("CORE_ROUTE");
 });
 
 test("keeps URL and map synchronized with browser history", async ({ page }) => {

@@ -8,6 +8,13 @@ const execFileAsync = promisify(execFile);
 const frozenCoreCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const approvedDesignCommit = "d79b88c23a307e7ec49437a015804d7a4d2de4bf";
 const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
+const coreCleanupCommit = "8aa0be4f662708fa75d4eb8f0f99b4784da2371c";
+const removedCoreRoutePaths = [
+  "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
+  "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
+  "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
+  "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
+];
 
 describe("truthful seed project", () => {
   it("loads the truthful seed without claiming unverified product state", async () => {
@@ -32,11 +39,10 @@ describe("truthful seed project", () => {
     ], { cwd: process.cwd() })).resolves.toBeDefined();
   });
 
-  it("registers reviewed Core route truth without promoting the parent Core node", async () => {
+  it("registers closed Core route truth without retaining pilot Work or promoting the parent Core node", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const core = model.nodes.find((node) => node.id === "core");
     const coreRoute = model.nodes.find((node) => node.id === "core-route");
-    const pilot = model.work.find((item) => item.id === "work-core-route-pilot");
 
     expect(coreRoute).toMatchObject({
       parentId: "core",
@@ -48,6 +54,7 @@ describe("truthful seed project", () => {
       ],
       evidenceIds: [
         "evidence-core-route-artifact-contracts",
+        "evidence-core-route-cleanup",
         "evidence-core-route-generation-contracts",
         "evidence-core-route-public-boundary",
       ],
@@ -56,11 +63,7 @@ describe("truthful seed project", () => {
       truthState: "unknown",
       documentIds: ["doc-core-v0-1-0a-1-document-map"],
     });
-    expect(pilot).toMatchObject({
-      workState: "in-review",
-      requiredEvidence: [],
-      summary: "Source deletion is authorized for the four reviewed Core route documents; Core cleanup Evidence remains outstanding.",
-    });
+    expect(model.work.some((item) => item.id === "work-core-route-pilot")).toBe(false);
   });
 
   it("registers the version map and canonical family documents with frozen provenance", async () => {
@@ -157,7 +160,7 @@ describe("truthful seed project", () => {
     });
   });
 
-  it("anchors Core route truth to three frozen executable Evidence records", async () => {
+  it("anchors Core route truth to three frozen executable records and reciprocal cleanup Evidence", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const evidence = new Map(model.evidence.map((item) => [item.id, item]));
 
@@ -191,5 +194,28 @@ describe("truthful seed project", () => {
       verificationSummary: "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       verifiedAt: "2026-08-13T00:00:00.000Z",
     });
+    const cleanup = evidence.get("evidence-core-route-cleanup");
+    expect(cleanup).toMatchObject({
+      kind: "evidence",
+      id: "evidence-core-route-cleanup",
+      nodeIds: ["core-route"],
+      repositoryId: "repo-core",
+      commit: coreCleanupCommit,
+      pathOrContractId: "docs/",
+    });
+    for (const path of removedCoreRoutePaths) {
+      expect(cleanup?.verificationSummary).toContain(path);
+    }
+    expect(cleanup?.verificationSummary).toContain("464 test files / 3,080 tests");
+    expect(model.evidence
+      .filter((item) => item.nodeIds.includes("core-route"))
+      .map((item) => item.id)
+      .sort())
+      .toEqual([
+        "evidence-core-route-artifact-contracts",
+        "evidence-core-route-cleanup",
+        "evidence-core-route-generation-contracts",
+        "evidence-core-route-public-boundary",
+      ]);
   });
 });

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-route-cleanup",
+  "nodeIds": ["core-route"],
+  "repositoryId": "repo-core",
+  "commit": "8aa0be4f662708fa75d4eb8f0f99b4784da2371c",
+  "pathOrContractId": "docs/",
+  "verificationSummary": "Core commit 8aa0be4f662708fa75d4eb8f0f99b4784da2371c removed exactly docs/CORE_ROUTE_DEEXPORT_PLAN.md, docs/CORE_ROUTE_DEPRECATION_WINDOW.md, docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md, and docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md; npm run check passed type checking and 464 test files / 3,080 tests.",
+  "verifiedAt": "2026-08-14T00:00:00.000Z"
+}

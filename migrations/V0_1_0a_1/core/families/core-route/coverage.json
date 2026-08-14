@@ -5,7 +5,7 @@
   "familyId": "core-route",
   "sourceCommit": "76a2f2311a898e781f53773390d47b05812911e4",
   "inventoryDigest": "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b",
-  "status": "ready-for-deletion",
+  "status": "closed",
   "canonicalDocumentIds": ["doc-core-route-overview", "doc-core-route-retained-contracts"],
   "sources": [
     {
@@ -73,5 +73,5 @@
     }
   ],
   "projectControlPublicationCommit": "bd588e336bd466e3c49e0d593ec6296293ef28bb",
-  "coreCleanupCommit": null
+  "coreCleanupCommit": "8aa0be4f662708fa75d4eb8f0f99b4784da2371c"
 }

@@ -48,6 +48,14 @@ Before the historical allowances were registered, the clean external scan at Cor
 - A pre-existing Task 4 row in `core-doc-migration.test.ts` exceeded its five-second limit by 13 milliseconds during the review and passed in isolation without a product change.
 - The normal and mention-report external scans both bound the exact clean Core handoff and found exactly the four `PHASE_LEDGER.md` provenance mentions described above before allowances were added.
 
+## Post-cleanup verification
+
+Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, whose exact parent is `9f4605d91f58e3a4ab8dc00ed7768592cc5a6fb1`, removes only the four paths authorized above. The committed Core tree passed `npm run check`: type checking passed, followed by 464 test files / 3,080 tests. The Project Control closed-family gate binds that exact clean Core HEAD, confirms all four covered source paths are absent, accepts only the four retained ledger provenance lines, and reports zero active references.
+
+One additional post-commit `--cleanup-candidate` invocation produced preimage and cleanup-scope diagnostics because it was intentionally run in the wrong phase: that mode verifies exact staged deletions and cannot validate an already committed clean index. It did not weaken the successful pre-commit cleanup-candidate gate. The post-commit closure authority is the `--closed` gate against the exact cleanup commit.
+
+The pilot Work record is removed only after this durable cleanup Evidence and closed coverage state are registered. This closure does not promote the parent Core node, change the provisional family map, or authorize deletion of any other family.
+
 ## Rollback procedure
 
 Before a Core cleanup commit exists, restore all four staged source paths from Core commit `9f4605d91f58e3a4ab8dc00ed7768592cc5a6fb1` and discard no unrelated change. After a Core cleanup commit exists, revert that single exact cleanup commit without rewriting history. In either case, verify that every restored path has the captured blob listed in this review, then rerun the Core and external migration gates.
