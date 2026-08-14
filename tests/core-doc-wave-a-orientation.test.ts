@@ -220,4 +220,13 @@ describe("Wave A Core documentation orientation", () => {
 
     expectMappedFamily(orientation, familyMap, "text-engine", 26);
   });
+
+  it("maps Text Block into closed, evidence-bearing subgroups", async () => {
+    const [orientation, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+
+    expectMappedFamily(orientation, familyMap, "text-block", 10);
+  });
 });

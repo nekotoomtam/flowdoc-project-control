@@ -920,7 +920,7 @@
     {
       "familyId": "text-block",
       "sourceCount": 10,
-      "reviewState": "orientation-selected",
+      "reviewState": "mapped",
       "orientationSources": [
         {
           "path": "docs/TEXT_BLOCK_V1_VERSION_MIGRATION_DECISION.md",
@@ -939,9 +939,151 @@
           "rationale": "Defines the measurement source packet and accepted line-range boundary."
         }
       ],
-      "provisionalModel": null,
-      "subgroups": [],
-      "conflicts": []
+      "provisionalModel": "Text Block owns authored inline grammar and deterministic selection/commit semantics, then produces resolved measurement source ranges and isolated page fragments. The v1 documents are historical grammar/migration evidence for a v3-to-v4 transition; the v4 documents describe the later bounded contract and must be verified against frozen code/tests before being represented as a current claim.",
+      "subgroups": [
+        {
+          "subgroupId": "v1-grammar-and-migration",
+          "title": "V1 Grammar and Migration History",
+          "responsibility": "Preserve the v1 target grammar, pure validator/normalizer, producer alignment, and explicit v3-to-v4 copy-forward migration decision as historical transition evidence.",
+          "boundary": "Owns historical grammar/migration reasoning and accepted-write alignment; does not restate v1 as the current v4 contract, activate a parser/migration executor, or claim editor/backend/pagination readiness.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V1_GRAMMAR_LOCK.md",
+            "docs/TEXT_BLOCK_V1_GRAMMAR_VALIDATOR.md",
+            "docs/TEXT_BLOCK_V1_PRODUCER_ALIGNMENT.md",
+            "docs/TEXT_BLOCK_V1_VERSION_MIGRATION_DECISION.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "text-block/v4-authoring-and-inline",
+            "text-block/v4-measurement-and-pagination"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Did the frozen v1 grammar and version-policy tests preserve active package v2/document v3 acceptance while blocking v4 parser/migration activation?",
+              "anchors": [
+                "src/authoring/textBlockV1Grammar.ts",
+                "src/schema/documentVersionPolicy.ts",
+                "tests/textBlockV1Grammar.test.ts",
+                "tests/textBlockV1VersionMigrationDecision.test.ts"
+              ]
+            },
+            {
+              "question": "Do frozen accepted-write producers emit canonical empty text-blocks without making package-read normalization authoritative?",
+              "anchors": [
+                "src/operations/documentOperations.ts",
+                "tests/textBlockV1GrammarFixtures.test.ts",
+                "tests/textBlockV1LayoutCompatibility.test.ts",
+                "docs/TEXT_BLOCK_V1_PRODUCER_ALIGNMENT.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "v4-authoring-and-inline",
+          "title": "V4 Authoring and Inline Commands",
+          "responsibility": "Define and apply the v4-native flat-inline grammar, canonical selection, explicit atomic/field command planning, and policy-aware whole-rich-inline replacement.",
+          "boundary": "Owns authored v4 content contract and single-user, policy/pin-aware commit preparation/application; excludes DOM/IME/clipboard input, granular collaboration-safe deltas, backend route/persistence, line measurement, pagination, renderer output, and cross-page editing.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V4_AUTHORING_CONTRACT.md",
+            "docs/TEXT_BLOCK_V4_INLINE_COMMANDS.md",
+            "docs/TEXT_BLOCK_V4_RICH_INLINE_REPLACE.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md",
+          "dependsOn": [
+            "text-block/v1-grammar-and-migration"
+          ],
+          "crossReferences": [
+            "text-block/v4-measurement-and-pagination"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen v4 contract and command tests preserve canonical selection, explicit atomic identity allocation, and whole-rich-inline replacement semantics?",
+              "anchors": [
+                "src/authoring/textBlockV4Contract.ts",
+                "src/authoring/textBlockV4InlineCommands.ts",
+                "src/authoring/textBlockV4RichInlineReplace.ts",
+                "tests/textBlockV4Contract.test.ts",
+                "tests/textBlockV4InlineCommands.test.ts",
+                "tests/textBlockV4RichInlineReplace.test.ts"
+              ]
+            },
+            {
+              "question": "Does the frozen replacement boundary require exact artifact, policy, field-contract, and session pins while remaining single-user and non-collaboration-safe?",
+              "anchors": [
+                "docs/TEXT_BLOCK_V4_RICH_INLINE_REPLACE.md",
+                "src/authoring/textBlockV4RichInlineReplace.ts",
+                "tests/textBlockV4RichInlineReplace.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "v4-measurement-and-pagination",
+          "title": "V4 Measurement and Pagination",
+          "responsibility": "Define the resolved measurement source packet and safe complete line ranges, consume already accepted lines into isolated deterministic page fragments, and bound the close-audit claim.",
+          "boundary": "Owns measurement request/accepted-result and isolated text-line pagination; excludes choosing/executing a shaper, generated page-number expansion, mixed-node document composition, renderer/export, backend jobs, and cross-page DOM/caret behavior.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V4_LINE_PAGINATION.md",
+            "docs/TEXT_BLOCK_V4_MEASUREMENT_SOURCE_RANGES.md",
+            "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md",
+          "dependsOn": [
+            "text-block/v4-authoring-and-inline"
+          ],
+          "crossReferences": [],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen measurement and pagination tests preserve complete gap-free safe ranges, authored/resolved source points, and isolated deterministic fragments?",
+              "anchors": [
+                "src/resolution/resolvedDocument.ts",
+                "src/pagination/textBlockV4Measurement.ts",
+                "src/pagination/textBlockV4Pagination.ts",
+                "tests/textBlockV4Measurement.test.ts",
+                "tests/textBlockV4Pagination.test.ts"
+              ]
+            },
+            {
+              "question": "Does the frozen close audit keep the 6,000-line/250-page threshold bounded to isolated text while excluding engine execution, mixed composition, renderer, backend, and cross-page selection claims?",
+              "anchors": [
+                "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md",
+                "tests/textBlockV4ReadinessCloseAudit.test.ts",
+                "tests/textBlockV4Pagination.test.ts"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "TBL-C1",
+          "owningSubgroupId": "v1-grammar-and-migration",
+          "summary": "V1 target/history versus V4 implementation: Phase 251 says v4 parser/migration activation was absent and blocked, while Phase 275–280 later record a bounded v4 contract. Preserve both rather than resolving the discrepancy merely by choosing the newer prose.",
+          "evidenceNeeds": "Verify the frozen version-policy, parser, grammar, and v4 tests; distinguish historical transition evidence from bounded current v4 behavior."
+        },
+        {
+          "id": "TBL-C2",
+          "owningSubgroupId": "v4-measurement-and-pagination",
+          "summary": "The V4 close audit unblocks columns/table split planning but explicitly excludes browser input, backend lifecycle execution, concrete engine execution in layout, mixed composition, renderer/export, and cross-page UX.",
+          "evidenceNeeds": "Inspect the frozen close audit, measurement/pagination modules, and direct tests before making any readiness claim."
+        },
+        {
+          "id": "TBL-C3",
+          "owningSubgroupId": "v4-measurement-and-pagination",
+          "summary": "Resolved field values can produce multiple ranges from one atomic authored slot, so measurement source points must not become editor caret offsets.",
+          "evidenceNeeds": "Verify frozen resolved-document and measurement source-range behavior together with the v4 authoring selection contract."
+        },
+        {
+          "id": "TBL-C4",
+          "owningSubgroupId": "v4-authoring-and-inline",
+          "summary": "Whole rich-inline replacement is history/revision-gate-ready but is expressly not a concurrency, CRDT, or offline-merge primitive.",
+          "evidenceNeeds": "Verify frozen rich-inline replacement source and tests; verify downstream backend/editor claims separately."
+        }
+      ]
     }
   ],
   "synthesisOrder": []
