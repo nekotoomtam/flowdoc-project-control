@@ -1,0 +1,111 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
+
+const root = process.cwd();
+
+interface InventoryFile {
+  path: string;
+  candidateFamily: string;
+}
+
+interface CoreMarkdownInventory {
+  sourceCommit: string;
+  sourceDigest: string;
+  expectedFileCount: number;
+  files: InventoryFile[];
+}
+
+interface FamilySource { path: string }
+interface FamilyAssignment { familyId: string; sources: FamilySource[] }
+interface CoreFamilyMap { inventoryDigest: string; families: FamilyAssignment[] }
+
+interface OrientationSource {
+  path: string;
+  rationale: string;
+}
+
+interface FamilyOrientation {
+  familyId: string;
+  sourceCount: number;
+  reviewState: string;
+  orientationSources: OrientationSource[];
+  provisionalModel: string | null;
+  subgroups: unknown[];
+  conflicts: unknown[];
+}
+
+interface WaveAOrientation {
+  kind: string;
+  schemaVersion: number;
+  releaseLine: string;
+  repositoryId: string;
+  sourceCommit: string;
+  inventoryDigest: string;
+  reviewState: string;
+  families: FamilyOrientation[];
+  synthesisOrder: string[];
+}
+
+async function readJson<T>(path: string): Promise<T> {
+  return JSON.parse(await readFile(path, "utf8")) as T;
+}
+
+function sorted(values: string[]): string[] {
+  return [...values].sort();
+}
+
+describe("Wave A Core documentation orientation", () => {
+  it("freezes the draft identity against the stored Core inventory", async () => {
+    const [orientation, inventory, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreMarkdownInventory>(join(root, "migrations/V0_1_0a_1/core/inventory.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+
+    expect(orientation).toMatchObject({
+      kind: "core-document-wave-a-orientation",
+      schemaVersion: 1,
+      releaseLine: "V0_1_0a_1",
+      repositoryId: "repo-core",
+      sourceCommit: "76a2f2311a898e781f53773390d47b05812911e4",
+      inventoryDigest: inventory.sourceDigest,
+      reviewState: "draft",
+      synthesisOrder: [],
+    });
+    expect(inventory.expectedFileCount).toBe(470);
+    expect(familyMap.inventoryDigest).toBe(inventory.sourceDigest);
+    expect(orientation.families.map(({ familyId, sourceCount }) => [familyId, sourceCount])).toEqual([
+      ["template-builder", 73],
+      ["live-draft", 64],
+      ["text-engine", 26],
+      ["text-block", 10],
+    ]);
+  });
+
+  it("selects distinct, family-owned orientation sources with rationales", async () => {
+    const [orientation, familyMap] = await Promise.all([
+      readJson<WaveAOrientation>(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json")),
+      readJson<CoreFamilyMap>(join(root, "migrations/V0_1_0a_1/core/family-map.json")),
+    ]);
+    const familySources = new Map(familyMap.families.map((family) => [
+      family.familyId,
+      new Set(family.sources.map((source) => source.path)),
+    ]));
+
+    for (const family of orientation.families) {
+      expect(family.reviewState).toBe("orientation-selected");
+      expect(family.orientationSources.length).toBeGreaterThanOrEqual(3);
+      expect(family.orientationSources.length).toBeLessThanOrEqual(8);
+      expect(sorted(family.orientationSources.map((source) => source.path)))
+        .toEqual(sorted([...new Set(family.orientationSources.map((source) => source.path))]));
+      expect(family.orientationSources.every((source) => source.rationale.trim().length > 0)).toBe(true);
+      const mappedPaths = familySources.get(family.familyId);
+      expect(mappedPaths).toBeDefined();
+      expect(family.orientationSources.every((source) => mappedPaths?.has(source.path))).toBe(true);
+      expect(family.provisionalModel).toBeNull();
+      expect(family.subgroups).toEqual([]);
+      expect(family.conflicts).toEqual([]);
+    }
+  });
+});

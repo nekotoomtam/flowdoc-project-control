@@ -1,0 +1,148 @@
+{
+  "kind": "core-document-wave-a-orientation",
+  "schemaVersion": 1,
+  "releaseLine": "V0_1_0a_1",
+  "repositoryId": "repo-core",
+  "sourceCommit": "76a2f2311a898e781f53773390d47b05812911e4",
+  "inventoryDigest": "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b",
+  "reviewState": "draft",
+  "families": [
+    {
+      "familyId": "template-builder",
+      "sourceCount": 73,
+      "reviewState": "orientation-selected",
+      "orientationSources": [
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md",
+          "rationale": "Sets the WYSIWYG editor direction and its intentionally deferred richer-editing boundary."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_CLOSE_AUDIT.md",
+          "rationale": "Records the stable browser-local editing foundation and its unfinished production scope."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_EXECUTION_CLOSE_AUDIT.md",
+          "rationale": "Summarizes the post-120 rich-inline and contenteditable execution foundation."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_STRUCTURAL_RUNTIME_CLOSE_AUDIT.md",
+          "rationale": "Defines the completed structural-runtime lane and the risks carried into later work."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_VIEWPORT_LARGE_DOCUMENT_AUDIT.md",
+          "rationale": "Establishes the bounded large-document viewport and virtualization behavior."
+        },
+        {
+          "path": "examples/template-builder-sandbox/README.md",
+          "rationale": "Explains the sandbox's extractable repository boundary and its Core package relationship."
+        }
+      ],
+      "provisionalModel": null,
+      "subgroups": [],
+      "conflicts": []
+    },
+    {
+      "familyId": "live-draft",
+      "sourceCount": 64,
+      "reviewState": "orientation-selected",
+      "orientationSources": [
+        {
+          "path": "docs/superpowers/specs/2026-07-28-unified-incremental-live-draft-product-readiness-design.md",
+          "rationale": "Provides the approved Phase 5 product-readiness architecture direction."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_UNIFIED_INCREMENTAL_ROOT_5B.md",
+          "rationale": "Defines the closed 5B-1 Root V2 incremental transition boundary."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_UNIFIED_TEXT_BLOCK_ROOT_5A.md",
+          "rationale": "Captures the accepted 5A unified text-block retained-root checkpoint."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_PERSISTENT_FLOW_FOUNDATION.md",
+          "rationale": "Explains the immutable persistent-flow tree and exact structural-reuse policy."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md",
+          "rationale": "Frames the cross-runtime handoff and its non-activation limits."
+        },
+        {
+          "path": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-review-verdict.md",
+          "rationale": "Records the final scoped review verdict and the reviewed 5B-1 V3 boundaries."
+        },
+        {
+          "path": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md",
+          "rationale": "Verifies the sole active Root V2 policy and its bounded source envelope."
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md",
+          "rationale": "Orients the reviewed source-commit transaction seam amendment and its active terminology."
+        }
+      ],
+      "provisionalModel": null,
+      "subgroups": [],
+      "conflicts": []
+    },
+    {
+      "familyId": "text-engine",
+      "sourceCount": 26,
+      "reviewState": "orientation-selected",
+      "orientationSources": [
+        {
+          "path": "docs/TEXT_ENGINE_ADAPTER_LANE_CLOSE_AUDIT.md",
+          "rationale": "Closes the adapter and evidence foundation while naming external-engine work still excluded."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_ADAPTER_SPI_BOUNDARY.md",
+          "rationale": "Defines the adapter service-provider interface and evidence-only shaping boundary."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_RUNTIME_IDENTITY_BOUNDARY.md",
+          "rationale": "Pins the runtime identity facts needed before parity or production measurement claims."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_EVIDENCE_ACCEPTANCE_BOUNDARY.md",
+          "rationale": "Defines validation for adapter evidence before any pagination measurement handoff."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_GATE.md",
+          "rationale": "States the WASM artifact readiness gate and currently missing toolchain prerequisites."
+        },
+        {
+          "path": "packages/text-engine-rust-wasm/README.md",
+          "rationale": "Describes the package-local Rust/WASM adapter boundary and its QA-only smoke scope."
+        }
+      ],
+      "provisionalModel": null,
+      "subgroups": [],
+      "conflicts": []
+    },
+    {
+      "familyId": "text-block",
+      "sourceCount": 10,
+      "reviewState": "orientation-selected",
+      "orientationSources": [
+        {
+          "path": "docs/TEXT_BLOCK_V1_VERSION_MIGRATION_DECISION.md",
+          "rationale": "Sets the version and migration decision for the next canonical authored document shape."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_AUTHORING_CONTRACT.md",
+          "rationale": "Defines the v4 canonical text-block grammar, projection, and selection boundary."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md",
+          "rationale": "Records the retained core semantics ready for columns and table-split planning."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_MEASUREMENT_SOURCE_RANGES.md",
+          "rationale": "Defines the measurement source packet and accepted line-range boundary."
+        }
+      ],
+      "provisionalModel": null,
+      "subgroups": [],
+      "conflicts": []
+    }
+  ],
+  "synthesisOrder": []
+}
