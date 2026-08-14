@@ -25,17 +25,22 @@ interface OrientationSource {
   rationale: string;
 }
 
-interface OrientationSubgroup {
-  id: string;
+interface EvidenceCheck {
+  question: string;
+  anchors: string[];
+}
+
+interface SemanticSubgroup {
+  subgroupId: string;
   title: string;
   responsibility: string;
   boundary: string;
   sourcePaths: string[];
-  proposedLeaf: string;
+  proposedLeafPath: string;
   dependsOn: string[];
   crossReferences: string[];
   oversizedCohesionRationale: string | null;
-  evidenceChecks: string[];
+  evidenceChecks: EvidenceCheck[];
 }
 
 interface OrientationConflict {
@@ -51,7 +56,7 @@ interface FamilyOrientation {
   reviewState: string;
   orientationSources: OrientationSource[];
   provisionalModel: string | null;
-  subgroups: OrientationSubgroup[];
+  subgroups: SemanticSubgroup[];
   conflicts: OrientationConflict[];
 }
 
@@ -96,16 +101,23 @@ function expectMappedFamily(
   expect(sorted(sourcePaths)).toEqual(sorted(mappedFamily?.sources.map((source) => source.path) ?? []));
   expect(sourcePaths).toHaveLength(expectedCount);
 
-  const subgroupIds = new Set(family?.subgroups.map((subgroup) => subgroup.id) ?? []);
-  const proposedLeaves = family?.subgroups.map((subgroup) => subgroup.proposedLeaf) ?? [];
+  const subgroupIds = new Set(family?.subgroups.map((subgroup) => subgroup.subgroupId) ?? []);
+  const proposedLeaves = family?.subgroups.map((subgroup) => subgroup.proposedLeafPath) ?? [];
   for (const subgroup of family?.subgroups ?? []) {
-    expect(subgroup.id).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+    expect(subgroup).not.toHaveProperty("id");
+    expect(subgroup).not.toHaveProperty("proposedLeaf");
+    expect(subgroup.subgroupId).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
     expect(subgroup.title.trim().length).toBeGreaterThan(0);
     expect(subgroup.responsibility.trim().length).toBeGreaterThan(0);
     expect(subgroup.boundary.trim().length).toBeGreaterThan(0);
     expect(subgroup.sourcePaths.length).toBeGreaterThan(0);
-    expect(subgroup.proposedLeaf).toMatch(new RegExp(`^docs/versions/V0_1_0a_1/core/${familyId}/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$`));
+    expect(subgroup.proposedLeafPath).toMatch(new RegExp(`^docs/versions/V0_1_0a_1/core/${familyId}/[a-z0-9]+(?:-[a-z0-9]+)*\\.md$`));
     expect(subgroup.evidenceChecks.length).toBeGreaterThan(0);
+    for (const evidenceCheck of subgroup.evidenceChecks) {
+      expect(evidenceCheck.question.trim().length).toBeGreaterThan(0);
+      expect(evidenceCheck.anchors.length).toBeGreaterThan(0);
+      expect(evidenceCheck.anchors.every((anchor) => anchor.trim().length > 0)).toBe(true);
+    }
     expect(subgroup.oversizedCohesionRationale).toEqual(
       subgroup.sourcePaths.length > 25 ? expect.any(String) : null,
     );

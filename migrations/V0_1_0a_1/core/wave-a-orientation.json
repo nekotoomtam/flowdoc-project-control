@@ -40,7 +40,7 @@
       "provisionalModel": "Template Builder is an extractable browser sandbox around public vNext Core contracts. Its browser-local runtime turns canonical package snapshots and accepted change packets into a normalized render/store model, then supports bounded structural editing, WYSIWYG drafts, rich-inline commit and replay, and virtualized viewport rendering. Canonical package changes continue through vNext-native mutation and transaction bridges; browser-local drafts, DOM state, caches, and layout summaries are not canonical truth.",
       "subgroups": [
         {
-          "id": "sandbox-runtime-and-store",
+          "subgroupId": "sandbox-runtime-and-store",
           "title": "Sandbox Runtime, Mutation Packets, and Store-backed Render Model",
           "responsibility": "Define the extractable sandbox boundary and turn accepted Core mutations into browser cache, store, and render-model state, including bounded plain-text history and live-layout summaries.",
           "boundary": "Owns sandbox/package separation, snapshot-to-runtime normalization, mutation/change packets, cache/store application, plain-text actions/history, and store-backed render facts. It does not own structural packet semantics, viewport windowing, active WYSIWYG input, rich-inline commits, durable persistence, or renderer output.",
@@ -61,7 +61,7 @@
             "docs/TEMPLATE_BUILDER_UNDO_REDO_BOUNDARY.md",
             "examples/template-builder-sandbox/README.md"
           ],
-          "proposedLeaf": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md",
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md",
           "dependsOn": [],
           "crossReferences": [
             "template-builder/structural-runtime-and-navigation",
@@ -71,13 +71,34 @@
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
-            "Verify public-package-only imports and no root runtime dependency in examples/template-builder-sandbox/package.json, source imports, and sandbox boundary tests.",
-            "Verify packet, cache, store, and snapshot-staleness ownership in examples/template-builder-sandbox/src/coreBoundary.ts, browser runtime modules, and tests/templateBuilderSandboxBoundary.test.ts.",
-            "Verify plain-text history and live-layout summaries against vNext authoring and live-layout helpers rather than historical phase narratives."
+            {
+              "question": "Do sandbox sources import only the public Core package without adding a root runtime dependency?",
+              "anchors": [
+                "examples/template-builder-sandbox/package.json",
+                "docs/TEMPLATE_BUILDER_SANDBOX_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do accepted packets update the cache and store while preserving the documented snapshot-staleness boundary?",
+              "anchors": [
+                "examples/template-builder-sandbox/src/coreBoundary.ts",
+                "docs/TEMPLATE_BUILDER_RUNTIME_STORE_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do plain-text history and live-layout summaries remain grounded in the vNext helpers rather than historical phase narrative?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_HISTORY_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_LIVE_LAYOUT_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
           ]
         },
         {
-          "id": "viewport-and-virtualized-rendering",
+          "subgroupId": "viewport-and-virtualized-rendering",
           "title": "Viewport, Scheduler, and Virtualized Rendering",
           "responsibility": "Convert bounded render-model facts and browser measurements into visible ranges, render windows, scheduler decisions, virtual stacks, lazy-detail plans, and resilient viewport/node anchors.",
           "boundary": "Owns viewport prediction and rendering-window behavior after a store-backed model exists. It does not own the underlying runtime store, structural mutation packet apply, DOM recycling or performance timing claims, contenteditable caret mapping, or production renderer output.",
@@ -102,7 +123,7 @@
             "docs/TEMPLATE_BUILDER_VISIBLE_RANGE_BOUNDARY.md",
             "docs/TEMPLATE_BUILDER_VISIBLE_RANGE_REQUEST_BOUNDARY.md"
           ],
-          "proposedLeaf": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md",
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md",
           "dependsOn": ["template-builder/sandbox-runtime-and-store"],
           "crossReferences": [
             "template-builder/structural-runtime-and-navigation",
@@ -110,12 +131,25 @@
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
-            "Reproduce the shape assertions in tests/templateBuilderSandboxBoundary.test.ts: 72 sections, 936 nodes, bounded visible/rendered sets, spacer preservation, and far-node anchor restore.",
-            "Inspect scheduler sequence, request-id, and stale-candidate guards and preserve the audit as shape evidence rather than a wall-clock performance claim."
+            {
+              "question": "Do the bounded viewport assertions preserve the 72-section, 936-node shape, spacers, and far-node anchor restoration?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_VIEWPORT_LARGE_DOCUMENT_AUDIT.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do scheduler sequence, request-id, and stale-candidate guards remain shape evidence rather than wall-clock performance claims?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_RUNTIME_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_AUTOMATION_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
           ]
         },
         {
-          "id": "structural-runtime-and-navigation",
+          "subgroupId": "structural-runtime-and-navigation",
           "title": "Structural Runtime, Commands, and Navigation",
           "responsibility": "Define the structural projection and packet-v1 path from accepted Core structural operations through sandbox bridge/store application, inspector commands, outline jumps, and diagnostics navigation.",
           "boundary": "Owns structural-tree semantics and packet-v1 application constraints. It does not make packet v1 a durable or public API, own generic runtime-cache rules, implement persistence or collaboration, or claim production editor integration.",
@@ -130,7 +164,7 @@
             "docs/TEMPLATE_BUILDER_STRUCTURAL_PROJECTION_BOUNDARY.md",
             "docs/TEMPLATE_BUILDER_STRUCTURAL_RUNTIME_CLOSE_AUDIT.md"
           ],
-          "proposedLeaf": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md",
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md",
           "dependsOn": ["template-builder/sandbox-runtime-and-store"],
           "crossReferences": [
             "template-builder/viewport-and-virtualized-rendering",
@@ -138,12 +172,27 @@
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
-            "Check that projection remains read-only over canonical facts; structural packet v1 only updates lookup indexes and leaves the boot snapshot stale; and bridge routes use accepted Core operations.",
-            "Verify navigation rejects diagnostics without a nodeId using examples/template-builder-sandbox/src/coreBoundary.ts, mutation bridge modules, and tests/templateBuilderSandboxBoundary.test.ts."
+            {
+              "question": "Does structural projection remain read-only while packet v1 updates lookup indexes, leaves the boot snapshot stale, and routes through accepted Core operations?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_PROJECTION_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_PACKET_CONTRACT_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_MUTATION_BRIDGE_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Does diagnostics navigation reject issues without a nodeId?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_DIAGNOSTICS_NAVIGATION_BOUNDARY.md",
+                "examples/template-builder-sandbox/src/coreBoundary.ts",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
           ]
         },
         {
-          "id": "wysiwyg-draft-input-and-guards",
+          "subgroupId": "wysiwyg-draft-input-and-guards",
           "title": "WYSIWYG Draft Input, Selection, and Browser Guards",
           "responsibility": "Define safe browser-local WYSIWYG draft activation, selection/caret/text-command/IME handling, pre-commit layout summaries, and planning-only toolbar, field, and history affordances.",
           "boundary": "Owns local active-draft behavior and guard outcomes before rich-inline execution. It does not own canonical rich-inline mutation, contenteditable segment capture or range mapping, durable history or persistence, actual renderer/layout output, or a production primary-input replacement.",
@@ -164,7 +213,7 @@
             "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_BOUNDARY.md",
             "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md"
           ],
-          "proposedLeaf": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md",
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md",
           "dependsOn": ["template-builder/sandbox-runtime-and-store"],
           "crossReferences": [
             "template-builder/rich-inline-commit-and-session-lifecycle",
@@ -172,12 +221,26 @@
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
-            "Check design-lock truth layers and safe eligibility against active browser modules and focused tests; draft state must remain browser-local and commit only through the bridge.",
-            "Verify IME composition blocks command, range, and commit actions; verify the Phase 81-84 summaries are planning states rather than production rich-text behavior."
+            {
+              "question": "Do the design-lock truth layers and safe eligibility keep draft state browser-local until bridge commit?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md",
+                "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Does IME composition block command, range, and commit actions while the Phase 81-84 affordances remain planning states?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_DRAFT_IME_HARDENING_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_WYSIWYG_CLOSE_AUDIT.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
           ]
         },
         {
-          "id": "rich-inline-commit-and-session-lifecycle",
+          "subgroupId": "rich-inline-commit-and-session-lifecycle",
           "title": "Rich Inline Capture, Commit, Replay, and Session Lifecycle",
           "responsibility": "Carry rich-inline facts from contenteditable-like segment/range capture and local style/chip state through commit planning, vNext-native commit, undo/redo replay, session-record preparation, and live/exact stale signaling.",
           "boundary": "Owns rich-inline lifecycle contracts and their explicit deferred states. It does not claim renderer artifact generation, storage-adapter writes, collaboration merge, WASM measurement replacement, or that the hardened contenteditable surface is the primary editor input.",
@@ -198,7 +261,7 @@
             "docs/TEMPLATE_BUILDER_WYSIWYG_EXECUTION_REBASELINE_AUDIT.md",
             "docs/TEMPLATE_BUILDER_WYSIWYG_REENTRY_AUDIT.md"
           ],
-          "proposedLeaf": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
           "dependsOn": [
             "template-builder/wysiwyg-draft-input-and-guards",
             "template-builder/sandbox-runtime-and-store"
@@ -209,9 +272,31 @@
           ],
           "oversizedCohesionRationale": null,
           "evidenceChecks": [
-            "Verify FlowDoc UTF-16 offsets rather than raw shaping-byte offsets; prove local segment, range, and hardening layers do not mutate packages.",
-            "Inspect src/authoring/richInlineCommit.ts and bridge tests for accepted-plan-only mutation, stale-plan rejection, field/style preservation, and replay.",
-            "Verify session records are JSON-safe preparation only, exclude layout/artifact truth, and treat Phase 130 stale signaling as invalidation rather than rendering."
+            {
+              "question": "Do local segment, range, and hardening layers use FlowDoc UTF-16 offsets without mutating packages?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_RANGE_MAPPING_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SEGMENT_CAPTURE_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SURFACE_HARDENING_BOUNDARY.md"
+              ]
+            },
+            {
+              "question": "Does rich-inline execution mutate only accepted plans, reject stale plans, preserve fields and styles, and replay through the vNext-native helper?",
+              "anchors": [
+                "src/authoring/richInlineCommit.ts",
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_COMMIT_BRIDGE_BOUNDARY.md",
+                "tests/richInlineCommit.test.ts",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Are session records JSON-safe preparation that excludes layout and artifact truth, with Phase 130 reporting invalidation rather than rendering?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_SESSION_PERSISTENCE_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_LIVE_EXACT_PARITY_AUDIT.md",
+                "tests/richInlineLiveExactParityAudit.test.ts"
+              ]
+            }
           ]
         }
       ],
