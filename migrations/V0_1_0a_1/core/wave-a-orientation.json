@@ -683,7 +683,7 @@
     {
       "familyId": "text-engine",
       "sourceCount": 26,
-      "reviewState": "orientation-selected",
+      "reviewState": "mapped",
       "orientationSources": [
         {
           "path": "docs/TEXT_ENGINE_ADAPTER_LANE_CLOSE_AUDIT.md",
@@ -710,9 +710,212 @@
           "rationale": "Describes the package-local Rust/WASM adapter boundary and its QA-only smoke scope."
         }
       ],
-      "provisionalModel": null,
-      "subgroups": [],
-      "conflicts": []
+      "provisionalModel": "Text Engine owns the evidence-first boundary between Core text-measurement consumers and an external Rust/WASM shaping implementation: Core defines and accepts deterministic request/evidence contracts, package code turns bounded native/WASM work into that evidence, and package-local WASM tooling/artifact records must not be promoted into a production measurement claim without executable evidence.",
+      "subgroups": [
+        {
+          "subgroupId": "adapter-and-provider",
+          "title": "Adapter and Provider",
+          "responsibility": "Define the Core SPI, accept independently produced glyph and line evidence, derive the existing measurement draft after acceptance, and provide an optional renderer-backed bridge without replacing default measurement.",
+          "boundary": "Owns Core-side request/evidence validation and bridge contracts; excludes Rust/WASM execution, runtime/digest provenance, raw shaping mapping, and any default-measurer or production-binding replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_ADAPTER_LANE_CLOSE_AUDIT.md",
+            "docs/TEXT_ENGINE_ADAPTER_PACKAGE_SCAFFOLD.md",
+            "docs/TEXT_ENGINE_ADAPTER_SPI_BOUNDARY.md",
+            "docs/TEXT_ENGINE_EVIDENCE_ACCEPTANCE_BOUNDARY.md",
+            "docs/TEXT_ENGINE_MEASUREMENT_DRAFT_HANDOFF_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RENDERER_BACKED_PROVIDER_BOUNDARY.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md",
+          "dependsOn": [
+            "text-engine/runtime-identity-and-evidence",
+            "text-engine/rustybuzz-shaping"
+          ],
+          "crossReferences": [
+            "text-engine/wasm-toolchain-and-artifacts"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the frozen Core SPI, evidence acceptance, and measurement draft handoff remain covered by their focused implementation and tests?",
+              "anchors": [
+                "src/renderer/textEngineAdapterSpi.ts",
+                "src/renderer/textEngineEvidenceAcceptance.ts",
+                "src/renderer/textEngineMeasurementDraftHandoff.ts",
+                "tests/textEngineAdapterSpi.test.ts",
+                "tests/textEngineEvidenceAcceptance.test.ts",
+                "tests/textEngineMeasurementDraftHandoff.test.ts"
+              ]
+            },
+            {
+              "question": "Does the package renderer-backed provider remain optional while measureVNextText(...) stays the default path and the package import boundary stays type/public-contract only?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/rendererBackedProvider.ts",
+                "tests/rendererBackedTextEngineProvider.test.ts",
+                "src/renderer/textEngineAdapterSpi.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "runtime-identity-and-evidence",
+          "title": "Runtime Identity and Evidence",
+          "responsibility": "Define the JSON-safe runtime identity/digest evidence shape and the status rules for building and populating it before any parity or production claim.",
+          "boundary": "Owns identity ingredients, digest status, and root-safe summaries; excludes creating/loading a WASM artifact, raw native/WASM output, parity proof, drift thresholds, and Core production measurement binding.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_DIGEST_EVIDENCE_BUILDER_GATE.md",
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_DIGEST_EVIDENCE_POPULATION_GATE.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md",
+          "dependsOn": [
+            "text-engine/wasm-toolchain-and-artifacts"
+          ],
+          "crossReferences": [
+            "text-engine/adapter-and-provider",
+            "text-engine/rustybuzz-shaping"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do runtime identity records preserve the JSON-safe ingredients and parity-ready requirement for every pinned ingredient?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/runtimeIdentity.ts",
+                "packages/text-engine-rust-wasm/fixtures/text-engine-runtime-identity.v1.json",
+                "tests/textEngineRuntimeIdentity.test.ts"
+              ]
+            },
+            {
+              "question": "Is pending or pinned digest evidence read from executable fixtures or artifacts rather than copied from a gate narrative?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/runtimeIdentityDigestEvidenceBuilder.ts",
+                "packages/text-engine-rust-wasm/fixtures",
+                "tests/textEngineRuntimeIdentityDigestEvidenceBuilderGate.test.ts",
+                "tests/textEngineRuntimeIdentityDigestEvidencePopulationGate.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "rustybuzz-shaping",
+          "title": "Rustybuzz Shaping",
+          "responsibility": "Convert bounded package-local Rustybuzz smoke output into FlowDoc UTF-16 evidence, expand corpus coverage, and derive multi-line wrap evidence while preserving the separate accepted-evidence lane.",
+          "boundary": "Owns byte-cluster-to-UTF-16 mapping and bounded smoke/wrap evidence; excludes native/WASM parity, general ICU4X qualification, production engine selection, pagination placement, and renderer replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_LINE_WRAP_EVIDENCE_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_RAW_MAPPING_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_SMOKE_CORPUS_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_SMOKE_PACKAGE_BOUNDARY.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md",
+          "dependsOn": [
+            "text-engine/adapter-and-provider"
+          ],
+          "crossReferences": [
+            "text-engine/runtime-identity-and-evidence",
+            "text-engine/wasm-toolchain-and-artifacts"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen Rustybuzz mapping, corpus, and line-wrap sources preserve safe UTF-8 byte-cluster to UTF-16 range conversion?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts",
+                "packages/text-engine-rust-wasm/src/rustybuzzSmokeCorpus.ts",
+                "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts",
+                "tests/textEngineRustybuzzRawMapping.test.ts"
+              ]
+            },
+            {
+              "question": "Does accepted line evidence retain complete, non-overlapping glyph coverage across the native smoke corpus and wrap cases?",
+              "anchors": [
+                "tests/textEngineRustybuzzSmokeCorpus.test.ts",
+                "tests/textEngineRustybuzzSmokePackage.test.ts",
+                "tests/textEngineLineWrapEvidence.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "wasm-toolchain-and-artifacts",
+          "title": "WASM Toolchain and Artifacts",
+          "responsibility": "Preserve the package-local operational boundary and document the toolchain acquisition/provisioning, build, bindgen, artifact-production, and digest-gating chronology needed to establish an executable WASM artifact fact.",
+          "boundary": "Owns package-local delivery/environment evidence and README operations; excludes treating historical gates as current parity or production measurement readiness, and excludes Core default-measurer replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_BUILD_OUTPUT_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_DIGEST_PINNING_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_RETRY_GATE.md",
+            "docs/TEXT_ENGINE_WASM_BINDGEN_EXPORT_DEPENDENCY_GATE.md",
+            "docs/TEXT_ENGINE_WASM_BUILD_TOOLCHAIN_READINESS_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_ACQUISITION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_OPTIONAL_READINESS_SMOKE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_PROVISIONING_BOOTSTRAP_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_PROVISIONING_EXECUTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_RUST_UPGRADE_EXECUTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_VERSION_COMPATIBILITY_GATE.md",
+            "packages/text-engine-rust-wasm/README.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "text-engine/runtime-identity-and-evidence",
+            "text-engine/rustybuzz-shaping"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen package scripts, manifests, and fixtures establish toolchain and artifact facts without treating chronological gate prose as current readiness?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/package.json",
+                "packages/text-engine-rust-wasm/rust-shaper/Cargo.toml",
+                "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs",
+                "packages/text-engine-rust-wasm/fixtures"
+              ]
+            },
+            {
+              "question": "Can any claimed SHA-256 be recomputed over exact frozen artifact bytes and matched to its owning fixture or identity record?",
+              "anchors": [
+                "packages/text-engine-rust-wasm",
+                "packages/text-engine-rust-wasm/fixtures",
+                "packages/text-engine-rust-wasm/src/runtimeIdentity.ts"
+              ]
+            },
+            {
+              "question": "Does the package README remain a repo-local operational README under its existing family-map disposition?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/README.md",
+                "migrations/V0_1_0a_1/core/family-map.json"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "TE-C1",
+          "owningSubgroupId": "wasm-toolchain-and-artifacts",
+          "summary": "Chronological toolchain gates disagree about artifact status, so phase/date alone must not establish current production readiness.",
+          "evidenceNeeds": "Verify exact frozen artifact bytes, runtime identity/digest fixtures, package scripts, and corresponding tests before drawing an artifact or production conclusion."
+        },
+        {
+          "id": "TE-C2",
+          "owningSubgroupId": "wasm-toolchain-and-artifacts",
+          "summary": "The package README mixes historical adapter/gate narrative, package commands, and QA-only boundaries.",
+          "evidenceNeeds": "Retain its package-local operational role and migrate family-level explanation only after confirming it is not command, layout, or package-boundary documentation."
+        },
+        {
+          "id": "TE-C3",
+          "owningSubgroupId": "adapter-and-provider",
+          "summary": "Accepted evidence does not bind a production measurer because the default measureVNextText(...) path remains independent.",
+          "evidenceNeeds": "Inspect renderer/Core call sites and focused tests to confirm that the default measurement path remains independent of the optional provider."
+        },
+        {
+          "id": "TE-C4",
+          "owningSubgroupId": "rustybuzz-shaping",
+          "summary": "Bounded Rustybuzz mapping, corpus, and wrap evidence does not prove native/WASM parity or general production measurement readiness.",
+          "evidenceNeeds": "Compare source corpus, summary manifests, parity/drift records outside this family, and executable tests while retaining the bounded smoke scope."
+        }
+      ]
     },
     {
       "familyId": "text-block",
