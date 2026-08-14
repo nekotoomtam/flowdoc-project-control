@@ -3,7 +3,7 @@
   "id": "core",
   "title": "Core",
   "parentId": "flowdoc",
-  "summary": "Broader Core state remains unverified; reviewed route ownership is registered under the current core-route child while cleanup evidence remains pending.",
+  "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence.",
   "truthState": "unknown",
   "order": 20,
   "documentIds": ["doc-core-v0-1-0a-1-document-map"],

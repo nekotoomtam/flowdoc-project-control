@@ -2,7 +2,9 @@
 
 ## Verdict
 
-The independent readiness verdict is **READY FOR TASK 8 AUTHORIZATION — not deletion performed.** The review recorded zero Critical findings, zero Important findings, and three Minor findings. With the historical allowances and lifecycle transition registered by this Task 8 publication, the four sources listed below are **ready for source deletion**. This record does not perform that deletion and does not authorize any other Core path.
+The current migration verdict is **CLOSED**. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded, and no other Core path deletion is authorized. The canonical current boundary is recorded in [Core Route Ownership and Retained Contracts](route-ownership-and-retained-contracts.md).
+
+Before cleanup, the independent readiness verdict was **READY FOR TASK 8 AUTHORIZATION — not deletion performed.** That review recorded zero Critical findings, zero Important findings, and three Minor findings, and concluded that the four sources listed below were **ready for source deletion**. This historical readiness decision remains distinct from the completed cleanup proof.
 
 ## Reviewed revisions and ranges
 
@@ -36,7 +38,7 @@ The reviewer confirmed:
 2. Current authority claims are bounded to the reviewed `core-route` child and supported by the named executable anchors; the parent Core node remains `unknown`.
 3. Reference closure contains only the four completed-phase provenance rows at `docs/PHASE_LEDGER.md:244`–`:247`. No README or test reference remains and no README or test allowance is granted.
 4. The consolidated Core guard preserves the retained generation, artifact, and public-boundary contracts while forbidding the removed route-helper ownership.
-5. The authorized deletion scope is exactly the four paths above. No Core deletion has occurred in this Project Control commit.
+5. The authorized deletion scope is exactly the four paths above; the later cleanup commit removed those four paths and no others.
 
 Before the historical allowances were registered, the clean external scan at Core `9f4605d91f58e3a4ab8dc00ed7768592cc5a6fb1` reported only those four ledger mentions plus coverage not yet ready. It reported no dirty-tree, README, test, source-drift, or destination diagnostic.
 
@@ -54,7 +56,7 @@ Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, whose exact pare
 
 One additional post-commit `--cleanup-candidate` invocation produced preimage and cleanup-scope diagnostics because it was intentionally run in the wrong phase: that mode verifies exact staged deletions and cannot validate an already committed clean index. It did not weaken the successful pre-commit cleanup-candidate gate. The post-commit closure authority is the `--closed` gate against the exact cleanup commit.
 
-The pilot Work record is removed only after this durable cleanup Evidence and closed coverage state are registered. This closure does not promote the parent Core node, change the provisional family map, or authorize deletion of any other family.
+The pilot Work record was removed after this durable cleanup Evidence and closed coverage state were registered. This closure does not promote the parent Core node, change the provisional family map, or authorize deletion of any other family.
 
 ## Rollback procedure
 
@@ -65,7 +67,7 @@ If Project Control closure has already been published, publish or revert the cor
 ## Remaining risks and unknowns
 
 - External consumers and deep imports outside the reviewed repositories remain unknown.
-- The internal deprecated route vocabulary can drift after the captured Core commit and must remain guarded until cleanup.
+- The deprecated internal route vocabulary can drift after the captured Core commit and must remain guarded until runtime route-source removal is separately authorized and completed.
 - Backend behavior was not independently revalidated by this documentation-only pilot.
 - Two pre-existing timing-sensitive test rows remain operational risks even though each passed in isolation and the Task 7 exact-HEAD full check passed.
 - The provisional family-map status and authoritative coverage lifecycle intentionally differ; consumers must use coverage, not family-map `migrationStatus`, to decide deletion readiness.

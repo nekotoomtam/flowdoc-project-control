@@ -21,6 +21,8 @@ These approved preflight baselines identify exact revisions inspected before thi
 | Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |
 | Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |
 
-## Queued pilot
+## Closed pilot
 
-`work-core-route-pilot` is future work for the `CORE_ROUTE_*` migration. Before it can update durable truth, it must produce and record a consolidated document commit, a migrated reference/test result, and a Project Control evidence record. Those artifacts do not exist in this seed and therefore are not represented as Evidence IDs.
+The `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.
+
+Template Builder is only a separate, unregistered plan boundary. Its candidate sources are not authoritative and are not deletable; any work on that family requires its own classification, Evidence, coverage, review, and authorization transaction.

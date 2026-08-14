@@ -32,6 +32,7 @@ const canonicalCoreRouteLeaf = "docs/versions/V0_1_0a_1/core/core-route/route-ow
 const canonicalCoreRouteReview = "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md";
 const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 const coreCleanupCommit = "8aa0be4f662708fa75d4eb8f0f99b4784da2371c";
+const closedTruthStaleClaim = /pending|queued|future\s+work|does\s+not\s+exist|no\s+artifact/iu;
 const coreRouteSources = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
   "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
@@ -141,15 +142,34 @@ function expectCoreDocumentMapLifecycleStable(
   expect(documentMap).not.toMatch(/coverage\s+is\s+content-reviewed/iu);
   expect(documentMap).not.toMatch(/no\s+canonical\s+Document\s+IDs/iu);
   expect(documentMap).not.toMatch(/does\s+not\s+publish\s+a\s+Project\s+Control\s+truth\s+record/iu);
-  expect(documentMap).toMatch(
-    /bounded\s+`core-route`\s+family\s+may\s+be\s+registered\s+as\s+`current`[\s\S]*parent\s+Core\s+node\s+remains\s+`unknown`/iu,
-  );
-  expect(documentMap).toMatch(
-    /Neither\s+registration\s+nor\s+content\s+review\s+authorizes\s+source\s+or\s+reference\s+deletion/iu,
-  );
-  expect(documentMap).toMatch(/cleanup\s+evidence\s+remains\s+pending/iu);
-  expect(documentMap).not.toMatch(/ready\s+for\s+(?:source\s+)?deletion|deletion\s+is\s+authorized/iu);
+  expect(documentMap).toMatch(/parent\s+Core\s+node\s+remains\s+`unknown`/iu);
   expect(documentMap).not.toMatch(/parent\s+Core\s+node\s+(?:is|remains)\s+`?current`?/iu);
+}
+
+function expectLifecycleAwareCurrentTruth(
+  text: string,
+  status: FamilyCoverage["status"],
+): void {
+  if (status === "draft") {
+    expect(text).toMatch(/coverage\s+(?:is|remains)\s+draft/iu);
+    expect(text).toMatch(/pending/iu);
+    return;
+  }
+  if (status === "content-reviewed") {
+    expect(text).toMatch(/coverage\s+is\s+content-reviewed/iu);
+    expect(text).toMatch(/pending/iu);
+    return;
+  }
+  if (status === "ready-for-deletion") {
+    expect(text).toMatch(/coverage\s+is\s+ready-for-deletion/iu);
+    expect(text).toMatch(/queued/iu);
+    return;
+  }
+
+  expect(text).toContain(coreCleanupCommit);
+  expect(text).toMatch(/coverage\s+is\s+closed/iu);
+  expect(text).toMatch(/cleanup\s+Evidence\s+is\s+recorded/u);
+  expect(text).not.toMatch(closedTruthStaleClaim);
 }
 
 interface MigrationFixture {
@@ -1156,7 +1176,7 @@ describe("real Project Control Core route pilot", () => {
     expect(review).toMatch(/wrong[- ]phase/u);
   });
 
-  it("keeps the partial document map truthful across both review lifecycles", async () => {
+  it("keeps the partial document map structurally truthful across preclosed lifecycles", async () => {
     const [documentMap, inventoryJson, coverageJson] = await Promise.all([
       readFile(join(process.cwd(), "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8"),
       readFile(join(process.cwd(), "migrations/V0_1_0a_1/core/inventory.json"), "utf8"),
@@ -1191,6 +1211,99 @@ describe("real Project Control Core route pilot", () => {
     expect(() => expectCoreDocumentMapLifecycleStable(documentMap, reviewedCoverage, inventory)).not.toThrow();
   });
 
+  it("allows phase-matched pending language before closure and rejects it after closure", () => {
+    expect(() => expectLifecycleAwareCurrentTruth(
+      "Coverage remains draft; publication is pending.",
+      "draft",
+    )).not.toThrow();
+    expect(() => expectLifecycleAwareCurrentTruth(
+      "Coverage is content-reviewed; cleanup is pending.",
+      "content-reviewed",
+    )).not.toThrow();
+    expect(() => expectLifecycleAwareCurrentTruth(
+      "Coverage is ready-for-deletion; cleanup is queued.",
+      "ready-for-deletion",
+    )).not.toThrow();
+    expect(() => expectLifecycleAwareCurrentTruth(
+      `Coverage is closed at ${coreCleanupCommit}; cleanup Evidence is recorded.`,
+      "closed",
+    )).not.toThrow();
+    expect(() => expectLifecycleAwareCurrentTruth(
+      `Coverage is closed at ${coreCleanupCommit}; cleanup Evidence is recorded but cleanup is pending.`,
+      "closed",
+    )).toThrow();
+    expect(() => expectLifecycleAwareCurrentTruth(
+      "Coverage is content-reviewed; cleanup is pending.",
+      "ready-for-deletion",
+    )).toThrow();
+  });
+
+  it("publishes closure-current truth and reciprocal review navigation", async () => {
+    const [
+      projectControlOverview,
+      documentMap,
+      overview,
+      leaf,
+      review,
+      readme,
+      coverageJson,
+      cleanupEvidenceJson,
+    ] = await Promise.all([
+      readFile(join(process.cwd(), "docs/domains/project-control.md"), "utf8"),
+      readFile(join(process.cwd(), "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8"),
+      readFile(join(process.cwd(), canonicalCoreRouteOverview), "utf8"),
+      readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8"),
+      readFile(join(process.cwd(), canonicalCoreRouteReview), "utf8"),
+      readFile(join(process.cwd(), "README.md"), "utf8"),
+      readFile(
+        join(process.cwd(), "migrations/V0_1_0a_1/core/families/core-route/coverage.json"),
+        "utf8",
+      ),
+      readFile(join(process.cwd(), "data/evidence/core-route-cleanup.json"), "utf8"),
+    ]);
+    const coverage = JSON.parse(coverageJson) as FamilyCoverage;
+    const cleanupEvidence = JSON.parse(cleanupEvidenceJson) as { commit: string };
+
+    expect(coverage.status).toBe("closed");
+    expect(coverage.coreCleanupCommit).toBe(coreCleanupCommit);
+    expect(cleanupEvidence.commit).toBe(coreCleanupCommit);
+    expect(coverage.retainedHistoricalReferences.map(({ rationale }) => rationale))
+      .toEqual(Array(4).fill(
+        "Preserves a completed Core phase's former source path at the captured Core commit.",
+      ));
+
+    expect(projectControlOverview).toMatch(/## Closed pilot/u);
+    expect(projectControlOverview).toContain(coreCleanupCommit);
+    expect(projectControlOverview).toMatch(/no\s+active\s+`CORE_ROUTE`\s+Work/iu);
+    expect(projectControlOverview).not.toMatch(closedTruthStaleClaim);
+    expect(projectControlOverview).toMatch(
+      /Template\s+Builder[\s\S]*separate[\s\S]*unregistered\s+plan[\s\S]*sources[\s\S]*not\s+authoritative[\s\S]*not\s+deletable/iu,
+    );
+
+    for (const currentTruth of [documentMap, overview, leaf]) {
+      expectLifecycleAwareCurrentTruth(currentTruth, coverage.status);
+      for (const source of coreRouteSources) {
+        expect(currentTruth).toContain(source);
+      }
+      expect(currentTruth).toMatch(/exactly\s+four/iu);
+      expect(currentTruth).toMatch(/no\s+other\s+Core\s+(?:document|path|deletion)[^.]*authorized/iu);
+    }
+
+    expect(leaf).toMatch(/\[Migration Readiness and Cleanup Review\]\(MIGRATION_REVIEW\.md\)/u);
+    expect(review).toMatch(
+      /\[Core Route Ownership and Retained Contracts\]\(route-ownership-and-retained-contracts\.md\)/u,
+    );
+    expect(review).toMatch(
+      /deprecated\s+internal\s+route\s+vocabulary[\s\S]*until\s+runtime\s+route-source\s+removal\s+is\s+separately\s+authorized\s+and\s+completed/iu,
+    );
+    expect(review).not.toMatch(/deprecated\s+internal\s+route\s+vocabulary[^.]*until\s+cleanup/iu);
+
+    expect(readme).not.toMatch(/`CORE_ROUTE_\*`\s+migration\s+execution[^.]*deferred/iu);
+    expect(readme).not.toMatch(closedTruthStaleClaim);
+    expect(readme).toMatch(/GUI[^.]*product-repository\s+mutation[^.]*deferred/iu);
+    expect(readme).toMatch(/AGENTS\/Skill\s+redesign[^.]*deferred/iu);
+  });
+
   it("publishes the bounded canonical leaf and an explicitly incomplete Core document map", async () => {
     const leaf = await readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8");
     const documentMap = await readFile(
@@ -1205,7 +1318,7 @@ describe("real Project Control Core route pilot", () => {
     expect(documentMap).not.toMatch(/\]\([^)]*CORE_OVERVIEW\.md[^)]*\)/u);
   });
 
-  it("keeps canonical lifecycle wording true across Project Control registration", async () => {
+  it("keeps canonical lifecycle wording true after Project Control closure", async () => {
     const [overview, leaf] = await Promise.all([
       readFile(join(process.cwd(), canonicalCoreRouteOverview), "utf8"),
       readFile(join(process.cwd(), canonicalCoreRouteLeaf), "utf8"),
@@ -1215,14 +1328,9 @@ describe("real Project Control Core route pilot", () => {
     expect(canonicalFamily).not.toMatch(/documentation draft|this draft/iu);
     expect(canonicalFamily).not.toMatch(/does not publish a Project Control truth record/iu);
     expect(canonicalFamily).not.toMatch(/no canonical Document IDs/iu);
-    expect(overview).toMatch(
-      /bounded\s+`core-route`\s+truth\s+may\s+be\s+registered\s+as\s+`current`/iu,
-    );
+    expect(overview).toMatch(/bounded\s+`core-route`\s+truth\s+is\s+`current`/iu);
     expect(canonicalFamily).toContain("the parent Core node remains `unknown`");
-    expect(canonicalFamily).toMatch(
-      /Neither\s+registration\s+nor\s+content\s+review\s+authorizes\s+(?:source\s+or\s+reference\s+)?deletion/iu,
-    );
-    expect(canonicalFamily).toMatch(/cleanup\s+evidence\s+remains\s+pending/iu);
+    expect(canonicalFamily).not.toMatch(closedTruthStaleClaim);
   });
 
   it("distinguishes deprecated route values from unannotated route types", async () => {

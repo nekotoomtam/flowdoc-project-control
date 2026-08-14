@@ -5,5 +5,5 @@
   "remote": "https://github.com/nekotoomtam/flowdoc-vnext-core.git",
   "checkoutAlias": "core",
   "defaultBranch": "main",
-  "ownershipSummary": "Core product repository; its state remains unknown here until pilot evidence is recorded."
+  "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence."
 }

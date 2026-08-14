@@ -53,4 +53,4 @@ Project Control owns cross-repository hierarchy, shared definitions, work coordi
 
 ## V1 boundaries
 
-This release has no GUI editing, database, cloud or network-hosted service, account system, public document API, release orchestration, product-repository mutation, drag-and-drop graph editing, or infinite canvas. `CORE_ROUTE_*` migration execution and AGENTS/Skill redesign are deferred work, not claims made by this seed.
+This release has no GUI editing, database, cloud or network-hosted service, account system, public document API, release orchestration, drag-and-drop graph editing, or infinite canvas. The closed `CORE_ROUTE_*` documentation pilot does not change those product boundaries. GUI/product-repository mutation and AGENTS/Skill redesign remain deferred work, not claims made by this release.

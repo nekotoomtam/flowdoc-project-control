@@ -63,6 +63,14 @@ describe("truthful seed project", () => {
       truthState: "unknown",
       documentIds: ["doc-core-v0-1-0a-1-document-map"],
     });
+    expect(core?.summary).toMatch(/broader\s+Core[^.]*unknown/iu);
+    expect(core?.summary).toMatch(/bounded\s+core-route\s+child[^.]*closed/iu);
+    expect(core?.summary).not.toMatch(/pending|queued|future\s+work|does\s+not\s+exist|no\s+artifact/iu);
+    const coreRepository = model.repositories.find((repository) => repository.id === "repo-core");
+    expect(coreRepository?.ownershipSummary).toMatch(/broader\s+Core[^.]*unknown/iu);
+    expect(coreRepository?.ownershipSummary).toMatch(/bounded\s+core-route\s+child[^.]*closed/iu);
+    expect(coreRepository?.ownershipSummary)
+      .not.toMatch(/pending|queued|future\s+work|does\s+not\s+exist|no\s+artifact/iu);
     expect(model.work.some((item) => item.id === "work-core-route-pilot")).toBe(false);
   });
 
