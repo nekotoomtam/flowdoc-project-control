@@ -65,9 +65,9 @@ const registration = {
   commit: expectedCurrentEvidenceCommit,
 } as const;
 const expectedNodeSummary =
-  "Text Engine family remains unknown; two reviewed bounded leaves register package-local WASM toolchain/artifact facts and runtime identity/digest-evidence facts only, while broader adoption and production readiness remain unknown.";
+  "Text Engine family remains unknown; three reviewed bounded leaves register package-local WASM toolchain/artifact facts, runtime identity/digest-evidence facts, and adapter/provider contract facts only, while broader adoption and production readiness remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; two bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
 const expectedAuthority =
   "Canonical contract limited to verified Runtime Identity and JSON-safe digest-evidence facts; runtime execution, parity, renderer acceptance, numeric thresholds, accepted manifest, production readiness, default-measurer replacement, and family-wide authority remain excluded.";
 const expectedDocumentRepositoryPaths = [
@@ -453,12 +453,18 @@ describe("Text Engine runtime identity and evidence leaf", () => {
       summary: expectedNodeSummary,
       truthState: registration.nodeTruthState,
       order: 20,
-      documentIds: ["doc-text-engine-wasm-toolchain-artifacts", registration.documentId],
+      documentIds: [
+        "doc-text-engine-wasm-toolchain-artifacts",
+        registration.documentId,
+        "doc-text-engine-adapter-provider",
+      ],
       evidenceIds: [
         "evidence-text-engine-wasm-toolchain-gates",
         "evidence-text-engine-wasm-artifact-digest",
         registration.contractEvidenceId,
         registration.digestEvidenceId,
+        "evidence-text-engine-adapter-contract",
+        "evidence-text-engine-provider-bridge",
       ],
       repositoryIds: [registration.repositoryId, "repo-project-control"],
     });
@@ -507,8 +513,8 @@ describe("Text Engine runtime identity and evidence leaf", () => {
     });
     expect(map).toContain("[Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)");
     expect(map).toContain("[Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)");
-    expect(map).toContain("Neither entry is a Text Engine family overview.");
-    expect(map).toContain("Two later leaves plus the family overview remain incomplete, and no source cleanup is authorized.");
+    expect(map).toContain("None is a Text Engine family overview.");
+    expect(map).toContain("`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.");
     expect(await fileExists("migrations/V0_1_0a_1/core/families/text-engine/coverage.json")).toBe(false);
 
     expectRegistrationProvenanceSafe(leaf, testSource, [node, document, contractEvidence, digestEvidence], subgroup.sourcePaths);
@@ -525,6 +531,8 @@ describe("Text Engine runtime identity and evidence leaf", () => {
         .filter((evidence) => (evidence.nodeIds as string[]).includes(registration.nodeId))
         .map((evidence) => evidence.id),
     ).toEqual([
+      "evidence-text-engine-adapter-contract",
+      "evidence-text-engine-provider-bridge",
       registration.contractEvidenceId,
       registration.digestEvidenceId,
       "evidence-text-engine-wasm-artifact-digest",

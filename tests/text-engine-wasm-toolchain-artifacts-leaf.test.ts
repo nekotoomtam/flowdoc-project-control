@@ -74,9 +74,9 @@ const registration = {
 const expectedAuthority =
   "Canonical contract limited to verified package-local WASM toolchain and tracked-artifact facts; wider Text Engine adoption, parity, production readiness, and default-measurer replacement remain unknown.";
 const expectedNodeSummary =
-  "Text Engine family remains unknown; two reviewed bounded leaves register package-local WASM toolchain/artifact facts and runtime identity/digest-evidence facts only, while broader adoption and production readiness remain unknown.";
+  "Text Engine family remains unknown; three reviewed bounded leaves register package-local WASM toolchain/artifact facts, runtime identity/digest-evidence facts, and adapter/provider contract facts only, while broader adoption and production readiness remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; two bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
 const expectedDocumentRepositoryPaths = [
   "packages/text-engine-rust-wasm/package.json",
   "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs",
@@ -203,7 +203,7 @@ function expectReviewedPartialMapSafe(map: string): void {
     /All other Core families remain in candidate\/inventory\s+state and are not represented here as canonical release documentation\./,
   );
   expect(map).toContain("Text Engine remains unknown.");
-  expect(map).toContain("Two later leaves plus the family overview remain incomplete, and no source cleanup is authorized.");
+  expect(map).toContain("`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.");
 }
 
 function expectPowerShellFocusedGateSyntax(leaf: string): void {
@@ -406,12 +406,18 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
       summary: expectedNodeSummary,
       truthState: registration.nodeTruthState,
       order: 20,
-      documentIds: [registration.documentId, "doc-text-engine-runtime-identity-evidence"],
+      documentIds: [
+        registration.documentId,
+        "doc-text-engine-runtime-identity-evidence",
+        "doc-text-engine-adapter-provider",
+      ],
       evidenceIds: [
         registration.toolchainEvidenceId,
         registration.artifactEvidenceId,
         "evidence-text-engine-runtime-identity-contract",
         "evidence-text-engine-runtime-identity-digest",
+        "evidence-text-engine-adapter-contract",
+        "evidence-text-engine-provider-bridge",
       ],
       repositoryIds: [registration.repositoryId, "repo-project-control"],
     });
@@ -466,8 +472,8 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
     expect(map).toContain(
       "[Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)",
     );
-    expect(map).toContain("Neither entry is a Text Engine family overview.");
-    expect(map).toContain("Two later leaves plus the family overview remain incomplete");
+    expect(map).toContain("None is a Text Engine family overview.");
+    expect(map).toContain("`rustybuzz-shaping` plus the family overview remain incomplete");
     expect(map).toContain("no source cleanup is authorized.");
     expect(await fileExists("migrations/V0_1_0a_1/core/families/text-engine/coverage.json")).toBe(false);
 
@@ -483,6 +489,8 @@ describe("Text Engine WASM toolchain and artifacts leaf", () => {
         .filter((evidence) => (evidence.nodeIds as string[]).includes(registration.nodeId))
         .map((evidence) => evidence.id),
     ).toEqual([
+      "evidence-text-engine-adapter-contract",
+      "evidence-text-engine-provider-bridge",
       "evidence-text-engine-runtime-identity-contract",
       "evidence-text-engine-runtime-identity-digest",
       registration.artifactEvidenceId,

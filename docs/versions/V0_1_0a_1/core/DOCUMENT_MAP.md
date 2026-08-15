@@ -26,9 +26,10 @@ No other Core document deletion is authorized by this closure.
 
 - [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)
 - [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)
+- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)
 
-Neither entry is a Text Engine family overview. Text Engine remains unknown.
-Two later leaves plus the family overview remain incomplete, and no source cleanup is authorized.
+None is a Text Engine family overview. Text Engine remains unknown.
+`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.
 
 ## Shared Glossaries
 
@@ -40,5 +41,5 @@ Two later leaves plus the family overview remain incomplete, and no source clean
 `CORE_OVERVIEW.md` is intentionally unpublished until the broader Core
 synthesis is complete. Unreviewed Core families remain in candidate/inventory
 state. The active reviewed partial Text Engine leaves above are not a family
-overview: Text Engine remains unknown, two later leaves plus the family
+overview: Text Engine remains unknown, `rustybuzz-shaping` plus the family
 overview remain incomplete, and no source cleanup is authorized.
