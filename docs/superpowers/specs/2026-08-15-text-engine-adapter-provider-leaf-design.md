@@ -2,7 +2,7 @@
 
 **Date:** 2026-08-15
 
-**Status:** Draft for user review
+**Status:** Approved for implementation
 
 **Repository of authority:** `flowdoc-project-control`
 
