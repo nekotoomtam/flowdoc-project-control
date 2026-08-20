@@ -1,1 +1,4 @@
 generated/*.json text eol=lf
+data/** text eol=lf
+docs/versions/V0_1_0a_1/core/** text eol=lf
+migrations/V0_1_0a_1/core/** text eol=lf
