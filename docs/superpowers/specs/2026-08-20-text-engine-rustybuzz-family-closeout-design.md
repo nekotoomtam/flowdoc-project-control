@@ -1,6 +1,6 @@
 # Text Engine Rustybuzz Leaf and Family Closeout Design
 
-Status: Draft for user review
+Status: Approved for implementation
 
 ## Goal
 
