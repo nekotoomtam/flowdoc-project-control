@@ -3,7 +3,7 @@
   "id": "core",
   "title": "Core",
   "parentId": "flowdoc",
-  "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.",
+  "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.",
   "truthState": "unknown",
   "order": 20,
   "documentIds": ["doc-core-v0-1-0a-1-document-map"],

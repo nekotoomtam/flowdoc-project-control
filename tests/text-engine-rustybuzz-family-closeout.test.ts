@@ -10,6 +10,67 @@ const subgroupId = "text-engine/rustybuzz-shaping";
 const leafPath = "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md";
 const overviewPath = "docs/versions/V0_1_0a_1/core/text-engine/OVERVIEW.md";
 const coreCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
+const projectControlCandidateCommit = "4b5abf19468448b2c1c75beda0274aaa40800dd7";
+
+const registration = {
+  nodeId: "text-engine",
+  nodeTruthState: "unknown",
+  leafDocumentId: "doc-text-engine-rustybuzz-shaping",
+  leafDocumentRole: "contract",
+  overviewDocumentId: "doc-text-engine-overview",
+  overviewDocumentRole: "current-state",
+  mappingCorpusEvidenceId: "evidence-text-engine-rustybuzz-mapping-corpus",
+  lineWrapEvidenceId: "evidence-text-engine-rustybuzz-line-wrap",
+  repositoryId: "repo-core",
+  coreCommit: "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  verifiedAt: "2026-08-20T00:00:00.000Z",
+} as const;
+
+const overviewHeadings = [
+  "## Authority and Status",
+  "## Family Architecture",
+  "## Canonical Documents",
+  "## Ownership Map",
+  "## Evidence Flow",
+  "## Current Verified State",
+  "## Known Limits and Unknowns",
+  "## Migration and Cleanup Boundary",
+  "## Evidence Anchors",
+] as const;
+
+const canonicalLeafLinks = [
+  "wasm-toolchain-and-artifacts.md",
+  "runtime-identity-and-evidence.md",
+  "adapter-and-provider.md",
+  "rustybuzz-shaping.md",
+] as const;
+const canonicalLeafPaths = [
+  "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md",
+  "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md",
+  "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md",
+  "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md",
+] as const;
+const canonicalLeafBlobs = [
+  "bc55024985dc1f29086d35a7569fa1ec24bb38ea",
+  "2548592edd80b3f480928b129e86ca260904a3af",
+  "11d8fca99265993ba5f8cf0505903026fb33310e",
+  "f7028107cfddd4145d5a5e84bbf7afd2149ad6a1",
+] as const;
+
+const expectedNodeSummary =
+  "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; family truth remains unknown pending coverage, reference repair, and publication review, while production, default adoption, and native/WASM parity remain unknown.";
+const expectedCoreSummary =
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.";
+const expectedClosureWording =
+  "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.";
+const expectedLeafAuthority =
+  "Canonical contract limited to package-local native Rustybuzz smoke, strict raw mapping, the complete four-case bounded corpus, and seeded line-wrap Evidence; production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, general typography, renderer readiness, and family-wide authority remain excluded.";
+const expectedOverviewAuthority =
+  "Current-state family overview limited to ownership relationships among the four reviewed canonical Text Engine leaves; migration completion, production readiness, default binding, native/WASM parity, publication readiness, cleanup authority, and broader Core truth remain excluded.";
+const expectedMappingCorpusSummary =
+  "Focused package-local native smoke, strict UTF-8-byte-cluster-to-UTF-16 and font-unit mapping, the complete four-case corpus, fail-closed behavior, and the missing-WASM-digest warning were verified; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.";
+const expectedLineWrapSummary =
+  "Focused seeded multi-line Evidence was verified for ascending in-range cluster-safe breaks, exact non-overlapping glyph coverage, and passage through existing structural Evidence Acceptance and draft-handoff contracts; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.";
 
 const leafHeadings = [
   "## Authority and Scope",
@@ -369,9 +430,223 @@ describe("Text Engine Rustybuzz candidate leaf", () => {
     )).toThrow();
   });
 
-  it("requires the candidate leaf without registering an overview", async () => {
+  it("requires the candidate leaf and the ordered family overview", async () => {
     await expect(access(join(root, leafPath))).resolves.toBeUndefined();
-    await expect(access(join(root, overviewPath))).rejects.toThrow();
+    await expect(access(join(root, overviewPath))).resolves.toBeUndefined();
+
+    const [orientation, overview, testSource] = await Promise.all([
+      readJson<WaveAOrientation>("migrations/V0_1_0a_1/core/wave-a-orientation.json"),
+      readFile(join(root, overviewPath), "utf8"),
+      readFile(new URL(import.meta.url), "utf8"),
+    ]);
+    const normalizedOverview = overview.replace(/\s+/g, " ");
+    const headings = overview.match(/^## .+$/gm) ?? [];
+    const links = [...overview.matchAll(/\]\(([^)]+\.md)\)/g)].map((match) => match[1]);
+
+    expect(headings).toEqual(overviewHeadings);
+    expect(links).toEqual(canonicalLeafLinks);
+    expect(overview.match(/^\|/gm) ?? []).toEqual([]);
+    expect(normalizedOverview).toContain(
+      "package delivery/artifact facts → runtime identity/digest state → Core request/acceptance/handoff contracts → package-local native shaping/mapping/corpus/wrap evidence",
+    );
+    expect(normalizedOverview).toContain(
+      "Core adapter request → package-local native smoke / raw Rustybuzz JSON → strict UTF-8-byte-to-UTF-16 and font-unit mapping → current complete four-case bounded corpus → seeded breaks + glyph Evidence on the accepted-evidence lane → multi-line adapter Evidence → Core structural Evidence Acceptance → Core measurement-draft handoff",
+    );
+    expect(normalizedOverview).toContain("Documentation synthesis is complete");
+    expect(normalizedOverview).toContain(
+      "Text Engine family truth remains unknown pending coverage, reference repair, publication review, and separately authorized cleanup",
+    );
+    expect(normalizedOverview).toContain(
+      "Production selection, default adoption, native/WASM parity, real ICU4X evidence, and general typography remain unknown",
+    );
+    expect(normalizedOverview).toContain("no source cleanup is authorized");
+    for (const [index, path] of canonicalLeafPaths.entries()) {
+      expect(overview).toContain(
+        `flowdoc-project-control@${projectControlCandidateCommit}:${path} (Git blob ${canonicalLeafBlobs[index]})`,
+      );
+    }
+    expectNoFormerSources([overview, testSource], findSubgroup(orientation).sourcePaths);
+  });
+
+  it("registers the closeout reciprocally without coverage, cleanup authority, or truth promotion", async () => {
+    const [
+      orientation,
+      leaf,
+      overview,
+      leafDocument,
+      overviewDocument,
+      mappingCorpusEvidence,
+      lineWrapEvidence,
+      node,
+      core,
+      map,
+      index,
+      testSource,
+    ] = await Promise.all([
+      readJson<WaveAOrientation>("migrations/V0_1_0a_1/core/wave-a-orientation.json"),
+      readFile(join(root, leafPath), "utf8"),
+      readFile(join(root, overviewPath), "utf8"),
+      readJson<Record<string, unknown>>("data/documents/text-engine-rustybuzz-shaping.json"),
+      readJson<Record<string, unknown>>("data/documents/text-engine-overview.json"),
+      readJson<Record<string, unknown>>("data/evidence/text-engine-rustybuzz-mapping-corpus.json"),
+      readJson<Record<string, unknown>>("data/evidence/text-engine-rustybuzz-line-wrap.json"),
+      readJson<Record<string, unknown>>("data/nodes/text-engine.json"),
+      readJson<Record<string, unknown>>("data/nodes/core.json"),
+      readFile(join(root, "docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md"), "utf8"),
+      readJson<Record<string, unknown>>("generated/project-index.json"),
+      readFile(new URL(import.meta.url), "utf8"),
+    ]);
+
+    expect(node).toEqual({
+      kind: "node",
+      id: registration.nodeId,
+      title: "Text Engine",
+      parentId: "core",
+      summary: expectedNodeSummary,
+      truthState: registration.nodeTruthState,
+      order: 20,
+      documentIds: [
+        "doc-text-engine-wasm-toolchain-artifacts",
+        "doc-text-engine-runtime-identity-evidence",
+        "doc-text-engine-adapter-provider",
+        registration.leafDocumentId,
+        registration.overviewDocumentId,
+      ],
+      evidenceIds: [
+        "evidence-text-engine-wasm-toolchain-gates",
+        "evidence-text-engine-wasm-artifact-digest",
+        "evidence-text-engine-runtime-identity-contract",
+        "evidence-text-engine-runtime-identity-digest",
+        "evidence-text-engine-adapter-contract",
+        "evidence-text-engine-provider-bridge",
+        registration.mappingCorpusEvidenceId,
+        registration.lineWrapEvidenceId,
+      ],
+      repositoryIds: [registration.repositoryId, "repo-project-control"],
+    });
+    expect(leafDocument).toEqual({
+      kind: "document",
+      id: registration.leafDocumentId,
+      title: "Text Engine Rustybuzz Shaping",
+      path: leafPath,
+      nodeIds: [registration.nodeId],
+      role: registration.leafDocumentRole,
+      authority: expectedLeafAuthority,
+      lifecycle: "active",
+      repositoryRefs: expectedCoreAnchors.map((pathOrContractId) => ({
+        repositoryId: registration.repositoryId,
+        commit: registration.coreCommit,
+        pathOrContractId,
+      })),
+    });
+    expect(overviewDocument).toEqual({
+      kind: "document",
+      id: registration.overviewDocumentId,
+      title: "Text Engine Overview",
+      path: overviewPath,
+      nodeIds: [registration.nodeId],
+      role: registration.overviewDocumentRole,
+      authority: expectedOverviewAuthority,
+      lifecycle: "active",
+      repositoryRefs: canonicalLeafPaths.map((pathOrContractId) => ({
+        repositoryId: "repo-project-control",
+        commit: projectControlCandidateCommit,
+        pathOrContractId,
+      })),
+    });
+    expect(mappingCorpusEvidence).toEqual({
+      kind: "evidence",
+      id: registration.mappingCorpusEvidenceId,
+      nodeIds: [registration.nodeId],
+      repositoryId: registration.repositoryId,
+      commit: registration.coreCommit,
+      pathOrContractId: "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts",
+      verificationSummary: expectedMappingCorpusSummary,
+      verifiedAt: registration.verifiedAt,
+    });
+    expect(lineWrapEvidence).toEqual({
+      kind: "evidence",
+      id: registration.lineWrapEvidenceId,
+      nodeIds: [registration.nodeId],
+      repositoryId: registration.repositoryId,
+      commit: registration.coreCommit,
+      pathOrContractId: "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts",
+      verificationSummary: expectedLineWrapSummary,
+      verifiedAt: registration.verifiedAt,
+    });
+    expect(core).toMatchObject({
+      id: "core",
+      truthState: "unknown",
+      summary: expectedCoreSummary,
+    });
+
+    const mapLinks = [...map.matchAll(/\[Text Engine[^\]]*\]\((text-engine\/[^)]+\.md)\)/g)]
+      .map((match) => match[1]);
+    expect(mapLinks).toEqual([
+      "text-engine/OVERVIEW.md",
+      "text-engine/wasm-toolchain-and-artifacts.md",
+      "text-engine/runtime-identity-and-evidence.md",
+      "text-engine/adapter-and-provider.md",
+      "text-engine/rustybuzz-shaping.md",
+    ]);
+    expect(map).toContain(expectedClosureWording);
+    expect(map).not.toContain("None is a Text Engine family overview");
+    expect(map).not.toContain("`rustybuzz-shaping` plus the family overview remain incomplete");
+    await expect(access(join(
+      root,
+      "migrations/V0_1_0a_1/core/families/text-engine/coverage.json",
+    ))).rejects.toThrow();
+    expect((node.evidenceIds as string[]).some((id) => /coverage|cleanup/i.test(id))).toBe(false);
+
+    const indexNodes = index.nodes as Record<string, unknown>[];
+    const indexDocuments = index.documents as Record<string, unknown>[];
+    const indexEvidence = index.evidence as Record<string, unknown>[];
+    expect(indexNodes).toContainEqual({ ...node, childIds: [], workIds: [] });
+    expect(indexNodes).toContainEqual(expect.objectContaining({
+      id: "core",
+      truthState: "unknown",
+      summary: expectedCoreSummary,
+      childIds: ["core-route", registration.nodeId],
+    }));
+    expect(indexDocuments).toContainEqual({ ...leafDocument, content: leaf });
+    expect(indexDocuments).toContainEqual({ ...overviewDocument, content: overview });
+    expect(indexEvidence).toContainEqual(mappingCorpusEvidence);
+    expect(indexEvidence).toContainEqual(lineWrapEvidence);
+    expect(indexDocuments
+      .filter((document) => (document.nodeIds as string[]).includes(registration.nodeId))
+      .map((document) => document.id)).toEqual([
+      "doc-text-engine-adapter-provider",
+      registration.overviewDocumentId,
+      "doc-text-engine-runtime-identity-evidence",
+      registration.leafDocumentId,
+      "doc-text-engine-wasm-toolchain-artifacts",
+    ]);
+    expect(indexEvidence
+      .filter((evidence) => (evidence.nodeIds as string[]).includes(registration.nodeId))
+      .map((evidence) => evidence.id)).toEqual([
+      "evidence-text-engine-adapter-contract",
+      "evidence-text-engine-provider-bridge",
+      "evidence-text-engine-runtime-identity-contract",
+      "evidence-text-engine-runtime-identity-digest",
+      registration.lineWrapEvidenceId,
+      registration.mappingCorpusEvidenceId,
+      "evidence-text-engine-wasm-artifact-digest",
+      "evidence-text-engine-wasm-toolchain-gates",
+    ]);
+
+    const subgroup = findSubgroup(orientation);
+    expectNoFormerSources([
+      leaf,
+      overview,
+      testSource,
+      JSON.stringify(leafDocument),
+      JSON.stringify(overviewDocument),
+      JSON.stringify(mappingCorpusEvidence),
+      JSON.stringify(lineWrapEvidence),
+      JSON.stringify(node),
+      map,
+      JSON.stringify(index),
+    ], subgroup.sourcePaths);
   });
 
   it("rejects contract-review mutation variants", async () => {

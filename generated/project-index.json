@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6f415d4bd1758119eca605d55668b5747d812ffb65c853f7ae56dd1ae6eb4eaa",
+  "sourceDigest": "8f3c0bebd57af6ddda986ad52ce397072406473378ed70fbbe96b6d2ea94b77f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -63,13 +63,15 @@
       "id": "text-engine",
       "title": "Text Engine",
       "parentId": "core",
-      "summary": "Text Engine family remains unknown; three reviewed bounded leaves register package-local WASM toolchain/artifact facts, runtime identity/digest-evidence facts, and adapter/provider contract facts only, while broader adoption and production readiness remain unknown.",
+      "summary": "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; family truth remains unknown pending coverage, reference repair, and publication review, while production, default adoption, and native/WASM parity remain unknown.",
       "truthState": "unknown",
       "order": 20,
       "documentIds": [
         "doc-text-engine-wasm-toolchain-artifacts",
         "doc-text-engine-runtime-identity-evidence",
-        "doc-text-engine-adapter-provider"
+        "doc-text-engine-adapter-provider",
+        "doc-text-engine-rustybuzz-shaping",
+        "doc-text-engine-overview"
       ],
       "evidenceIds": [
         "evidence-text-engine-wasm-toolchain-gates",
@@ -77,7 +79,9 @@
         "evidence-text-engine-runtime-identity-contract",
         "evidence-text-engine-runtime-identity-digest",
         "evidence-text-engine-adapter-contract",
-        "evidence-text-engine-provider-bridge"
+        "evidence-text-engine-provider-bridge",
+        "evidence-text-engine-rustybuzz-mapping-corpus",
+        "evidence-text-engine-rustybuzz-line-wrap"
       ],
       "repositoryIds": [
         "repo-core",
@@ -107,7 +111,7 @@
       "id": "core",
       "title": "Core",
       "parentId": "flowdoc",
-      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.",
+      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.",
       "truthState": "unknown",
       "order": 20,
       "documentIds": [
@@ -366,7 +370,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
         }
       ],
-      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map records the completed pilot family and reviewed partial family leaves; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Reviewed Partial Family Leaves\n\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n\nNone is a Text Engine family overview. Text Engine remains unknown.\n`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. The active reviewed partial Text Engine leaves above are not a family\noverview: Text Engine remains unknown, `rustybuzz-shaping` plus the family\noverview remain incomplete, and no source cleanup is authorized.\n"
+      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine documentation is synthesized, while migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete. Text Engine and broader Core therefore remain\n`unknown`; no source cleanup is authorized.\n"
     },
     {
       "kind": "document",
@@ -498,6 +502,41 @@
     },
     {
       "kind": "document",
+      "id": "doc-text-engine-overview",
+      "title": "Text Engine Overview",
+      "path": "docs/versions/V0_1_0a_1/core/text-engine/OVERVIEW.md",
+      "nodeIds": [
+        "text-engine"
+      ],
+      "role": "current-state",
+      "authority": "Current-state family overview limited to ownership relationships among the four reviewed canonical Text Engine leaves; migration completion, production readiness, default binding, native/WASM parity, publication readiness, cleanup authority, and broader Core truth remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md"
+        }
+      ],
+      "content": "# Text Engine Overview\n\n## Authority and Status\n\nThis overview is the current navigation and ownership reference for the four\nreviewed canonical Text Engine leaves. Documentation synthesis is complete,\nbut the Text Engine Node and its parent Core Node remain `unknown`. This\noverview does not create runtime, migration, publication, or cleanup authority.\n\n## Family Architecture\n\nThe family architecture is ordered as follows:\n\n```text\npackage delivery/artifact facts\n  → runtime identity/digest state\n  → Core request/acceptance/handoff contracts\n  → package-local native shaping/mapping/corpus/wrap evidence\n```\n\nEach stage constrains the next without promoting it. Artifact identity does not\nprove execution, runtime identity does not prove parity, structurally accepted\nEvidence does not prove production acceptance, and bounded shaping Evidence\ndoes not select a default engine.\n\n## Canonical Documents\n\n1. [WASM Toolchain and Artifacts](wasm-toolchain-and-artifacts.md)\n2. [Runtime Identity and Evidence](runtime-identity-and-evidence.md)\n3. [Adapter and Provider](adapter-and-provider.md)\n4. [Rustybuzz Shaping](rustybuzz-shaping.md)\n\nThese four leaves are the complete reviewed documentation set for the family.\nThis overview links their boundaries; it does not duplicate their detailed\ntables or absorb their evidence authority.\n\n## Ownership Map\n\nWASM Toolchain and Artifacts owns package delivery, toolchain discovery,\ngenerated-package shape, retained artifact bytes, and build/digest status.\nRuntime Identity and Evidence owns runtime identity ingredients, digest states,\nand JSON-safe summary boundaries. Adapter and Provider owns Core request\ncreation, structural Evidence Acceptance, measurement-draft handoff, and the\noptional external provider. Rustybuzz Shaping owns package-local native smoke,\nstrict raw mapping, the complete bounded four-case corpus, and seeded line-wrap\nEvidence.\n\n## Evidence Flow\n\nThe processing order is distinct from the ownership architecture:\n\n```text\nCore adapter request\n  → package-local native smoke / raw Rustybuzz JSON\n  → strict UTF-8-byte-to-UTF-16 and font-unit mapping\n  → current complete four-case bounded corpus\n  → seeded breaks + glyph Evidence on the accepted-evidence lane\n  → multi-line adapter Evidence\n  → Core structural Evidence Acceptance\n  → Core measurement-draft handoff\n```\n\nWrapping consumes glyph Evidence on the accepted-evidence lane; it does not\nverify an earlier Core acceptance result. Only after wrapping does the result\npass through Core structural Evidence Acceptance and the existing draft\nhandoff.\n\nThe layers stay distinct: native raw smoke is not accepted FlowDoc Evidence by\nitself; mapped adapter Evidence is not default measurement; the four-case\ncorpus is not language generality; and seeded multi-line Evidence is not a real\nsegmentation or typography oracle.\n\n## Current Verified State\n\nDocumentation synthesis is complete across four bounded leaves and this family\noverview at Core commit `c503a45c03e0ce3b7a6efba2b029ca842017faa0`.\nThe retained package and artifact facts, identity and digest state, Core\ncontract boundaries, and package-local native shaping Evidence are documented\nunder their separate owners. This documentation state does not promote the\nText Engine family beyond `unknown`.\n\n## Known Limits and Unknowns\n\nProduction selection, default adoption, native/WASM parity, real ICU4X evidence,\nand general typography remain unknown. Cross-runtime determinism, browser or\nworker execution, general script and bidi behavior, justification,\nhyphenation, renderer fidelity, pagination replacement, and wider output or\nstorage integration also remain unknown or excluded.\n\n## Migration and Cleanup Boundary\n\nText Engine family truth remains unknown pending coverage, reference repair,\npublication review, and separately authorized cleanup. No Text Engine migration\ncoverage record is created or advanced by this synthesis, and no source cleanup\nis authorized.\n\n## Evidence Anchors\n\nThe overview inputs are these immutable Project Control objects:\n\n- `flowdoc-project-control@4b5abf19468448b2c1c75beda0274aaa40800dd7:docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md (Git blob bc55024985dc1f29086d35a7569fa1ec24bb38ea)`\n- `flowdoc-project-control@4b5abf19468448b2c1c75beda0274aaa40800dd7:docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md (Git blob 2548592edd80b3f480928b129e86ca260904a3af)`\n- `flowdoc-project-control@4b5abf19468448b2c1c75beda0274aaa40800dd7:docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md (Git blob 11d8fca99265993ba5f8cf0505903026fb33310e)`\n- `flowdoc-project-control@4b5abf19468448b2c1c75beda0274aaa40800dd7:docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md (Git blob f7028107cfddd4145d5a5e84bbf7afd2149ad6a1)`\n\nTheir current executable facts resolve to Core authority\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. Exhaustive module, fixture, test,\nartifact, and Evidence anchors remain in the owning leaves. The Rustybuzz\ncloseout Evidence records only strict mapping/corpus and seeded line-wrap\nverification; it does not establish production, default, parity, ICU4X,\nrenderer, migration, or cleanup authority.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-text-engine-runtime-identity-evidence",
       "title": "Text Engine Runtime Identity and Evidence",
       "path": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md",
@@ -535,6 +574,91 @@
         }
       ],
       "content": "# Text Engine Runtime Identity and Evidence\n\n## Authority and Scope\n\nThis candidate leaf records the bounded current contract for runtime identity and digest evidence in `@flowdoc/text-engine-rust-wasm`. The source batch is frozen at Core commit `76a2f2311a898e781f53773390d47b05812911e4`; current executable evidence was read at `c503a45c03e0ce3b7a6efba2b029ca842017faa0`.\n\nIt covers identity ingredients, digest-state handling, and JSON-safe summaries only. It does not create or load an artifact, run shaping, establish native/WASM or renderer parity, adopt a production measurer, change pagination, or publish raw runtime/WASM evidence.\n\n## Runtime Identity Contract\n\nThe manifest is `text-engine-runtime-identity-v1` under policy `text-engine-runtime-identity-policy-v1`. It names `@flowdoc/text-engine-rust-wasm`, the `glyph-line-box-v1` output shape, and `node-native`, `browser-wasm`, and `worker-wasm` runtime targets. The adapter package and runtime targets identify intended endpoints, not successful execution.\n\n| Field group | Meaning | Current boundary |\n| --- | --- | --- |\n| Manifest identity | Stable manifest ID and policy revision | Identifies the contract version; it does not identify successful execution |\n| Adapter package | Owning package name | Must remain `@flowdoc/text-engine-rust-wasm` |\n| Measurement profile | Font, shaping, segmentation, policy, and output context | Must match the evidence request before a digest is reusable |\n| Output shape | Produced fact shape | Current supported value is `glyph-line-box-v1` |\n| Runtime targets | Native and WASM comparison targets | Targets identify intended comparison endpoints; they do not prove comparison ran |\n| Runtime revisions | Rustybuzz, ICU4X, and ICU4X-data identities | Blank values block identity; planned values remain visibly planned |\n| WASM artifact | Digest status and SHA-256 | A pinned digest identifies bytes only |\n| Font assets | Stable font IDs and hashes | Required identity ingredients, not visual acceptance evidence |\n| Parity comparison | Status, targets, and compared facts | `not-run` cannot support `parity-ready` |\n\nThe identity pins Rustybuzz 0.20.1, planned ICU4X and ICU4X-data revisions, font hashes, the measurement profile, output shape, and the WASM digest before a parity-ready claim. Plan-state vocabulary: `identity-ready`, `parity-ready`, and `blocked`.\n\n| Plan state | Contract |\n| --- | --- |\n| `identity-ready` | Required identity ingredients are structurally valid while parity may remain unproven |\n| `parity-ready` | Requires a pinned valid digest and a matching native/WASM comparison over every required fact |\n| `blocked` | One or more required identity or parity conditions fail |\n\nThe present plan state is `identity-ready`; `identity-ready` may coexist with unproven parity. `parity-ready` requires a valid pinned digest and a matching native/WASM comparison over all required facts: glyph id, glyph advance, cluster map, and line box.\n\n## Digest Evidence States\n\nThe builder recognizes exactly four digest states. Digest-state vocabulary: `pinned`, `pending`, `missing`, and `stale`.\n\n| Digest state | Contract |\n| --- | --- |\n| `pinned` | A lowercase SHA-256 exists and identity matches the requested matrix, profile, and output shape |\n| `pending` | Identity exists but the artifact digest is not pinned |\n| `missing` | A pinned claim lacks a valid digest |\n| `stale` | Identity, profile, output shape, or digest declaration no longer matches the requested evidence context |\n\nThese digest states are distinct from plan states: `identity-ready`, `parity-ready`, and `blocked`. A digest status does not itself report runtime execution, parity, renderer agreement, or production readiness.\n\n| Evidence layer | Current value | Readiness boundary |\n| --- | --- | --- |\n| Identity readiness | `identity-ready` | Identity ingredients validate; parity remains unproven |\n| Digest evidence | `pinned` | Exact retained bytes are identified; execution and parity are not proved |\n| Parity status | `identity-only` | No parity-ready claim |\n| Comparison evidence | `not-run` | No matching native/WASM result exists |\n| Production readiness | `false` | Production binding remains blocked |\n| Default measurer replacement | `false` | The default measurer remains unchanged |\n\n## Building and Populating Evidence\n\nThe package-local builder creates a JSON-safe metadata summary. It does not import/load WASM, execute shaping, compare runtime output, mutate pagination, bind production measurement, or write artifacts.\n\nPopulation is historical workflow context. This documentation synthesis did not create or execute Core runtime or raw evidence and did not rerun population. It only verifies existing tracked bytes and does not promote retained metadata into raw execution evidence. Raw runtime/WASM evidence is excluded from this leaf and from root-facing summaries.\n\n## Validation Rules\n\nRuntime identity validation requires the stable manifest and policy identifiers, the adapter package, a measurement profile, `glyph-line-box-v1`, `node-native`, at least one WASM target, Rustybuzz and planned ICU4X identity fields, font hashes, and complete required parity facts.\n\nOnly a `parity-ready` claim requires both a pinned digest and a `matching` native/WASM comparison. The current comparison remains `not-run`; therefore the tracked pinned digest does not establish parity. Any production binding request is blocked, and the validation contract reports `productionReady: false` and `defaultMeasurerReplacement: false`.\n\n## Current Verified State\n\nAt the pinned Core evidence commit, the runtime identity fixture is `identity-only`, its comparison is `not-run`, and its artifact digest is `4667b7fe401eddf09133a8a22af11456ab018b2a32c668a031b8120a79db8a44`. The retained WASM file is 13782 bytes and matches its `HEAD` Git blob.\n\nThe three focused Runtime Identity and digest tests passed against an unchanged package subtree. This verifies contract and retained-byte identity only; it does not show native or WASM execution.\n\n## Known Limits and Unknowns\n\nICU4X revisions remain planned; they are identity placeholders, not installed or executed runtime components. Browser and worker loading behavior and native/WASM comparison output remain unknown. Renderer drift remains unknown. Numeric and accepted-manifest evidence remains blocked.\n\nProduction readiness is false and default-measurer replacement is false. The pinned artifact and intended endpoints do not change those limits.\n\n## Historical Design Notes\n\nThe frozen three-document sequence first established a runtime-identity boundary, then defined a JSON-safe digest-builder handoff, and then recorded a population decision when evidence was pending. Those gate documents preserve design history rather than selecting present truth by date.\n\nCurrent statements in this leaf come from the immutable executable anchors and retained tracked bytes. Earlier pending-artifact language is historical context; it is not a claim about the current pinned artifact.\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/src/runtimeIdentity.ts` — identity ingredients, plan states, and parity preconditions.\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/src/runtimeIdentityDigestEvidenceBuilder.ts` — digest-state policy and JSON-safe, non-executing builder boundary.\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/text-engine-runtime-identity.v1.json` — current identity, targets, comparison state, and pinned digest metadata.\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/runtime-identity-digest-evidence-population.v1.json` — retained-byte metadata and blocked downstream evidence lanes.\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/pkg/flowdoc_text_engine_bg.wasm` — exact retained artifact bytes.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-text-engine-rustybuzz-shaping",
+      "title": "Text Engine Rustybuzz Shaping",
+      "path": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md",
+      "nodeIds": [
+        "text-engine"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to package-local native Rustybuzz smoke, strict raw mapping, the complete four-case bounded corpus, and seeded line-wrap Evidence; production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, general typography, renderer readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/rust-shaper/Cargo.toml"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/rust-shaper/src/main.rs"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzSmokeCorpus.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textEngineRustybuzzSmokePackage.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textEngineRustybuzzRawMapping.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textEngineRustybuzzSmokeCorpus.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textEngineLineWrapEvidence.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.corpus.v1.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.sarabun.v1.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-combining.sarabun.v1.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.mixed-heading.sarabun-bold.v1.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-currency.noto-sans-thai.v1.json"
+        }
+      ],
+      "content": "# Text Engine Rustybuzz Shaping\n\n## Authority and Scope\n\nThis candidate leaf consolidates bounded Rustybuzz shaping evidence for\n`text-engine/rustybuzz-shaping` at immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. It owns package-local native\nsmoke, safe raw mapping, the bounded four-case corpus, and seeded line-wrap\nevidence. It does not register an overview, change Core, or create production\nengine authority.\n\n## Evidence Pipeline\n\n```text\npackage-local native smoke\n  → raw Rustybuzz JSON\n  → UTF-8 byte-cluster / font-unit mapping\n  → FlowDoc UTF-16 single-line adapter evidence\n  → complete four-case bounded corpus\n  → seeded break opportunities + glyph Evidence on the accepted-evidence lane\n  → multi-line adapter evidence\n  → existing Core acceptance and draft-handoff boundary\n```\n\n## Package-local Native Smoke\n\nThe native crate reads an explicit copied font asset, shapes text with pinned\nRustybuzz `0.20.1`, and emits raw glyph IDs, byte clusters, advances, offsets,\nglyph count, and units-per-em as JSON. This is package-local native smoke only:\nit is external to and not inside Core, is not accepted FlowDoc evidence by\nitself, and establishes neither WASM parity nor production binding.\n\n## UTF-8 Byte-cluster to UTF-16 Mapping\n\n| Raw mapping states | ready, blocked |\n\nThe mapper converts UTF-8 byte clusters into FlowDoc UTF-16 code-unit ranges\nonly after strict validation of request, text, font, revision, shape, glyph,\nunit, byte-length, scalar-count, and cluster-boundary agreement. An invalid\nUTF-8 scalar boundary is fail-closed: it is not guessed, repaired, rounded, or\ncoerced. Raw font units become points through `fontSizePt / unitsPerEm`.\n\n`ready` means only that bounded raw smoke output was safely mapped into adapter\nevidence; it is not default measurement, renderer acceptance, broad script\ncoverage, or production readiness.\n\n## Four-case Smoke Corpus\n\n| Corpus states | ready, blocked |\n\n| Case | Bounded smoke case | Scope |\n| --- | --- | --- |\n| 1 | Sarabun regular Thai greeting | bounded |\n| 2 | Sarabun regular combining marks | bounded |\n| 3 | Sarabun bold mixed Thai/Latin/digit heading | bounded |\n| 4 | Noto Sans Thai currency-fallback text | bounded |\n\nEvery case requires one smoke case, one corpus sample, and one raw-output\nfixture. Missing, duplicate, partial, mismatched, or blocked mapping data\nkeeps the corpus `blocked`. The missing-WASM-digest warning is retained per\ncase; a separately tracked WASM artifact does not make bounded native fixtures\nnative/WASM parity evidence. Structural acceptance for these four cases is not\nlanguage generality, native/WASM determinism, or production corpus sufficiency.\n\n## Seeded Line-wrap Evidence\n\n| Line wrap states | ready, blocked |\n\nLine wrap consumes an adapter request, glyph Evidence on the accepted-evidence\nlane, seeded break evidence, and a positive available width. It does not itself\nverify a prior Core acceptance result. Offsets are UTF-16 code-unit offsets;\nbreak offsets are ascending, in range, and cannot split glyph clusters. An\ninternal mandatory break closes the current line, while a too-wide first\navailable break remains bounded overflow evidence rather than being silently\nrepaired.\n\nLine summaries own break kind, reason, and overflow metadata; public adapter\nline boxes remain unchanged; every glyph is covered exactly once by\nnon-overlapping ranges, and glyph facts remain outside\n`VNextTextMeasurementDraft`. This is seeded multi-line evidence, not generated\nICU4X, browser segmentation, Thai-oracle proof, typography fidelity, or\npagination replacement.\n\n## Evidence Acceptance and Draft Handoff\n\nAccepted evidence may pass through the existing Core contracts, while existing\nCore Evidence Acceptance and draft handoff remain the downstream owners. Here,\naccepted means only the existing structural Evidence Acceptance contract, not\nproduction acceptance, drift acceptance, renderer acceptance, rollout\nacceptance, or default adoption. The handoff derives its existing draft without\nadding glyph facts to `VNextTextMeasurementDraft`. The focused path maps, then\nwraps, then passes the resulting evidence through those downstream boundaries.\n\n## Fail-closed Matrix\n\n| Boundary | `ready` requires | `blocked` when |\n| --- | --- | --- |\n| Raw mapping | validated byte/scalar/range/unit facts | a request, shape, glyph, unit, byte-length, scalar-count, or UTF-8 boundary check fails |\n| Corpus | all four bounded cases map with their samples and raw fixtures | a case is missing, duplicate, partial, mismatched, or blocked |\n| Line wrap | glyph Evidence on the accepted-evidence lane, safe seeded breaks, and positive width | breaks or glyph coverage are invalid, or the request/evidence identities disagree |\n\n## Current Verified State\n\nThe package-local implementation supplies a bounded evidence lane from native\nraw output through mapped single-line evidence, the four listed corpus cases,\nand seeded multi-line evidence. The three boundaries use only `ready` and\n`blocked`; none is a promotion of engine selection, default measurement, or\nruntime parity.\n\n## Known Limits and Unknowns\n\nProduction and default binding, native/WASM parity, cross-runtime determinism,\ngenerated ICU4X or `Intl.Segmenter` observations, Thai-oracle agreement,\ngeneral script coverage, bidi, justification, hyphenation, typography\nfidelity, renderer output, pagination replacement, PDF/DOCX, backend, storage,\nand browser-worker integration remain unknown or excluded.\n\n## Historical Design Notes\n\nThe frozen source set supplies historical ownership and boundaries, not current\nauthority by chronology. Current package modules, fixtures, and focused tests\nat the pinned Core commit govern the wording above.\n\n## Canonical Cross-references\n\n[WASM Toolchain and Artifacts](wasm-toolchain-and-artifacts.md) owns package\ntoolchain, artifact bytes, and build/digest state.\n[Runtime Identity and Evidence](runtime-identity-and-evidence.md) owns runtime\nidentity and digest evidence. [Adapter and Provider](adapter-and-provider.md)\nowns request creation, Evidence Acceptance, measurement-draft handoff, and the\noptional provider. This leaf does not duplicate those contracts.\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/rust-shaper/Cargo.toml`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/rust-shaper/src/main.rs`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/src/rustybuzzSmokeCorpus.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/src/lineWrapEvidence.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textEngineRustybuzzSmokePackage.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textEngineRustybuzzRawMapping.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textEngineRustybuzzSmokeCorpus.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textEngineLineWrapEvidence.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.corpus.v1.json`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.sarabun.v1.json`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-combining.sarabun.v1.json`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.mixed-heading.sarabun-bold.v1.json`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-currency.noto-sans-thai.v1.json`\n"
     },
     {
       "kind": "document",
@@ -788,6 +912,30 @@
       "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/runtime-identity-digest-evidence-population.v1.json",
       "verificationSummary": "Tracked artifact blob matched 13782 bytes and SHA-256 4667b7fe401eddf09133a8a22af11456ab018b2a32c668a031b8120a79db8a44 at the pinned Core commit; native/WASM comparison remains not-run.",
       "verifiedAt": "2026-08-14T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-engine-rustybuzz-line-wrap",
+      "nodeIds": [
+        "text-engine"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts",
+      "verificationSummary": "Focused seeded multi-line Evidence was verified for ascending in-range cluster-safe breaks, exact non-overlapping glyph coverage, and passage through existing structural Evidence Acceptance and draft-handoff contracts; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.",
+      "verifiedAt": "2026-08-20T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-engine-rustybuzz-mapping-corpus",
+      "nodeIds": [
+        "text-engine"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts",
+      "verificationSummary": "Focused package-local native smoke, strict UTF-8-byte-cluster-to-UTF-16 and font-unit mapping, the complete four-case corpus, fail-closed behavior, and the missing-WASM-digest warning were verified; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.",
+      "verifiedAt": "2026-08-20T00:00:00.000Z"
     },
     {
       "kind": "evidence",

@@ -75,9 +75,9 @@ const registration = {
   commit: expectedCurrentCoreCommit,
 } as const;
 const expectedNodeSummary =
-  "Text Engine family remains unknown; three reviewed bounded leaves register package-local WASM toolchain/artifact facts, runtime identity/digest-evidence facts, and adapter/provider contract facts only, while broader adoption and production readiness remain unknown.";
+  "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; family truth remains unknown pending coverage, reference repair, and publication review, while production, default adoption, and native/WASM parity remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.";
 const expectedAuthority =
   "Canonical contract limited to verified adapter request, Evidence Acceptance, measurement-draft handoff, and optional renderer-backed provider contracts; Core engine execution, production binding, real production Evidence, parity, default replacement, production readiness, and family-wide authority remain excluded.";
 const expectedDocumentRepositoryPaths = [
@@ -323,6 +323,8 @@ describe("Text Engine adapter and provider leaf", () => {
         "doc-text-engine-wasm-toolchain-artifacts",
         "doc-text-engine-runtime-identity-evidence",
         registration.documentId,
+        "doc-text-engine-rustybuzz-shaping",
+        "doc-text-engine-overview",
       ],
       evidenceIds: [
         "evidence-text-engine-wasm-toolchain-gates",
@@ -331,6 +333,8 @@ describe("Text Engine adapter and provider leaf", () => {
         "evidence-text-engine-runtime-identity-digest",
         registration.contractEvidenceId,
         registration.providerEvidenceId,
+        "evidence-text-engine-rustybuzz-mapping-corpus",
+        "evidence-text-engine-rustybuzz-line-wrap",
       ],
       repositoryIds: [registration.repositoryId, "repo-project-control"],
     });
@@ -379,8 +383,13 @@ describe("Text Engine adapter and provider leaf", () => {
     expect(map).toContain("[Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)");
     expect(map).toContain("[Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)");
     expect(map).toContain("[Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)");
-    expect(map).toContain("None is a Text Engine family overview. Text Engine remains unknown.");
-    expect(map).toContain("`rustybuzz-shaping` plus the family overview remain incomplete");
+    expect(map).toContain("[Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)");
+    expect(map).toContain("[Text Engine Overview](text-engine/OVERVIEW.md)");
+    expect(map).toContain(
+      "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.",
+    );
+    expect(map).not.toContain("None is a Text Engine family overview");
+    expect(map).not.toContain("`rustybuzz-shaping` plus the family overview remain incomplete");
     expect(map).toContain("no source cleanup is authorized.");
     await expect(access(join(root, "migrations/V0_1_0a_1/core/families/text-engine/coverage.json"))).rejects.toThrow();
     for (const formerSourcePath of findSubgroup(await readJson<WaveAOrientation>(

@@ -1,6 +1,6 @@
 # Core Document Map
 
-Core consolidation is incomplete. This map records the completed pilot family and reviewed partial family leaves; all broader Core truth remains unknown.
+Core consolidation is incomplete. This map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 
@@ -22,14 +22,15 @@ Exactly four captured Core documents were removed:
 
 No other Core document deletion is authorized by this closure.
 
-## Reviewed Partial Family Leaves
+## Text Engine Family Documentation
 
+- [Text Engine Overview](text-engine/OVERVIEW.md)
 - [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)
 - [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)
 - [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)
+- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)
 
-None is a Text Engine family overview. Text Engine remains unknown.
-`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.
+Text Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.
 
 ## Shared Glossaries
 
@@ -40,6 +41,7 @@ None is a Text Engine family overview. Text Engine remains unknown.
 
 `CORE_OVERVIEW.md` is intentionally unpublished until the broader Core
 synthesis is complete. Unreviewed Core families remain in candidate/inventory
-state. The active reviewed partial Text Engine leaves above are not a family
-overview: Text Engine remains unknown, `rustybuzz-shaping` plus the family
-overview remain incomplete, and no source cleanup is authorized.
+state. Text Engine documentation is synthesized, while migration coverage,
+active-reference repair, publication review, and any separately authorized
+cleanup remain incomplete. Text Engine and broader Core therefore remain
+`unknown`; no source cleanup is authorized.

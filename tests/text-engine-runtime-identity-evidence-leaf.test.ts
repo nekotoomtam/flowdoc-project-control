@@ -65,9 +65,9 @@ const registration = {
   commit: expectedCurrentEvidenceCommit,
 } as const;
 const expectedNodeSummary =
-  "Text Engine family remains unknown; three reviewed bounded leaves register package-local WASM toolchain/artifact facts, runtime identity/digest-evidence facts, and adapter/provider contract facts only, while broader adoption and production readiness remain unknown.";
+  "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; family truth remains unknown pending coverage, reference repair, and publication review, while production, default adoption, and native/WASM parity remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; three bounded Text Engine leaves are registered while the Text Engine family remains unknown.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.";
 const expectedAuthority =
   "Canonical contract limited to verified Runtime Identity and JSON-safe digest-evidence facts; runtime execution, parity, renderer acceptance, numeric thresholds, accepted manifest, production readiness, default-measurer replacement, and family-wide authority remain excluded.";
 const expectedDocumentRepositoryPaths = [
@@ -457,6 +457,8 @@ describe("Text Engine runtime identity and evidence leaf", () => {
         "doc-text-engine-wasm-toolchain-artifacts",
         registration.documentId,
         "doc-text-engine-adapter-provider",
+        "doc-text-engine-rustybuzz-shaping",
+        "doc-text-engine-overview",
       ],
       evidenceIds: [
         "evidence-text-engine-wasm-toolchain-gates",
@@ -465,6 +467,8 @@ describe("Text Engine runtime identity and evidence leaf", () => {
         registration.digestEvidenceId,
         "evidence-text-engine-adapter-contract",
         "evidence-text-engine-provider-bridge",
+        "evidence-text-engine-rustybuzz-mapping-corpus",
+        "evidence-text-engine-rustybuzz-line-wrap",
       ],
       repositoryIds: [registration.repositoryId, "repo-project-control"],
     });
@@ -513,8 +517,14 @@ describe("Text Engine runtime identity and evidence leaf", () => {
     });
     expect(map).toContain("[Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)");
     expect(map).toContain("[Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)");
-    expect(map).toContain("None is a Text Engine family overview.");
-    expect(map).toContain("`rustybuzz-shaping` plus the family overview remain incomplete, and no source cleanup is authorized.");
+    expect(map).toContain("[Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)");
+    expect(map).toContain("[Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)");
+    expect(map).toContain("[Text Engine Overview](text-engine/OVERVIEW.md)");
+    expect(map).toContain(
+      "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.",
+    );
+    expect(map).not.toContain("None is a Text Engine family overview");
+    expect(map).not.toContain("`rustybuzz-shaping` plus the family overview remain incomplete");
     expect(await fileExists("migrations/V0_1_0a_1/core/families/text-engine/coverage.json")).toBe(false);
 
     expectRegistrationProvenanceSafe(leaf, testSource, [node, document, contractEvidence, digestEvidence], subgroup.sourcePaths);
@@ -535,6 +545,8 @@ describe("Text Engine runtime identity and evidence leaf", () => {
       "evidence-text-engine-provider-bridge",
       registration.contractEvidenceId,
       registration.digestEvidenceId,
+      "evidence-text-engine-rustybuzz-line-wrap",
+      "evidence-text-engine-rustybuzz-mapping-corpus",
       "evidence-text-engine-wasm-artifact-digest",
       "evidence-text-engine-wasm-toolchain-gates",
     ]);

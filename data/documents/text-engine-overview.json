@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-text-engine-overview",
+  "title": "Text Engine Overview",
+  "path": "docs/versions/V0_1_0a_1/core/text-engine/OVERVIEW.md",
+  "nodeIds": ["text-engine"],
+  "role": "current-state",
+  "authority": "Current-state family overview limited to ownership relationships among the four reviewed canonical Text Engine leaves; migration completion, production readiness, default binding, native/WASM parity, publication readiness, cleanup authority, and broader Core truth remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "4b5abf19468448b2c1c75beda0274aaa40800dd7",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md"
+    }
+  ]
+}

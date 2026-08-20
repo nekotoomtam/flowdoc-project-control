@@ -1,0 +1,82 @@
+{
+  "kind": "document",
+  "id": "doc-text-engine-rustybuzz-shaping",
+  "title": "Text Engine Rustybuzz Shaping",
+  "path": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md",
+  "nodeIds": ["text-engine"],
+  "role": "contract",
+  "authority": "Canonical contract limited to package-local native Rustybuzz smoke, strict raw mapping, the complete four-case bounded corpus, and seeded line-wrap Evidence; production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, general typography, renderer readiness, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-shaper/Cargo.toml"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-shaper/src/main.rs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzSmokeCorpus.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineRustybuzzSmokePackage.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineRustybuzzRawMapping.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineRustybuzzSmokeCorpus.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineLineWrapEvidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.corpus.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.sarabun.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-combining.sarabun.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.mixed-heading.sarabun-bold.v1.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/rustybuzz-native-smoke.thai-currency.noto-sans-thai.v1.json"
+    }
+  ]
+}
