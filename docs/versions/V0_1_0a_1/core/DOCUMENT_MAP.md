@@ -1,6 +1,7 @@
 # Core Document Map
 
-Core consolidation is incomplete. This map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.
+Core consolidation is incomplete. This map is intentionally partial.
+This map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 

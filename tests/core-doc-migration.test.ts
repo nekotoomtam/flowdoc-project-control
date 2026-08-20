@@ -172,6 +172,24 @@ function expectLifecycleAwareCurrentTruth(
   expect(text).not.toMatch(closedTruthStaleClaim);
 }
 
+function expectDocumentMapLifecycleAwareCurrentTruth(
+  documentMap: string,
+  status: FamilyCoverage["status"],
+): void {
+  const normalizedMap = documentMap.replace(/\r\n/gu, "\n");
+  const heading = "## Completed Family Synthesis";
+  const sectionStart = normalizedMap.indexOf(`${heading}\n`);
+  if (sectionStart < 0) throw new Error(`Missing document-map section: ${heading}`);
+  const sectionContentStart = sectionStart + heading.length + 1;
+  const nextSectionStart = normalizedMap.indexOf("\n## ", sectionContentStart);
+  const section = normalizedMap.slice(
+    sectionContentStart,
+    nextSectionStart < 0 ? undefined : nextSectionStart,
+  );
+
+  expectLifecycleAwareCurrentTruth(section, status);
+}
+
 interface MigrationFixture {
   projectRoot: string;
   sourceRoot: string;
@@ -1238,6 +1256,27 @@ describe("real Project Control Core route pilot", () => {
     )).toThrow();
   });
 
+  it("scopes closed Core route wording checks away from other incomplete families", () => {
+    const documentMap = [
+      "# Core Document Map",
+      "",
+      "## Completed Family Synthesis",
+      `Coverage is closed at ${coreCleanupCommit}; cleanup Evidence is recorded.`,
+      "",
+      "## Text Engine Family Documentation",
+      "Text Engine remains unknown pending coverage and publication review.",
+    ].join("\n");
+
+    expect(() => expectDocumentMapLifecycleAwareCurrentTruth(documentMap, "closed")).not.toThrow();
+    expect(() => expectDocumentMapLifecycleAwareCurrentTruth(
+      documentMap.replace(
+        `Coverage is closed at ${coreCleanupCommit}; cleanup Evidence is recorded.`,
+        `Coverage is closed at ${coreCleanupCommit}; cleanup Evidence is recorded but cleanup is pending.`,
+      ),
+      "closed",
+    )).toThrow();
+  });
+
   it("publishes closure-current truth and reciprocal review navigation", async () => {
     const [
       projectControlOverview,
@@ -1280,8 +1319,11 @@ describe("real Project Control Core route pilot", () => {
       /Template\s+Builder[\s\S]*separate[\s\S]*unregistered\s+plan[\s\S]*sources[\s\S]*not\s+authoritative[\s\S]*not\s+deletable/iu,
     );
 
-    for (const currentTruth of [documentMap, overview, leaf]) {
+    expectDocumentMapLifecycleAwareCurrentTruth(documentMap, coverage.status);
+    for (const currentTruth of [overview, leaf]) {
       expectLifecycleAwareCurrentTruth(currentTruth, coverage.status);
+    }
+    for (const currentTruth of [documentMap, overview, leaf]) {
       for (const source of coreRouteSources) {
         expect(currentTruth).toContain(source);
       }
