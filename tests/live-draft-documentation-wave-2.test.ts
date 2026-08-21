@@ -166,9 +166,9 @@ const evidenceSummaries = [
   "The scene-delivery suite verifies current accessor-safe scene delivery for its named inputs; this primary anchor does not establish a historical report-range comparison, outside-range review authority, a normative implementation contract, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
 ] as const;
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete. Text Block documentation is synthesized across three bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete, and family truth remains unknown.";
 const expectedCoreRepositorySummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete. Text Block documentation is synthesized across three bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete and family truth remains unknown.";
 const expectedCurrentScopeSummary =
   "Live Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.";
 
@@ -617,7 +617,7 @@ describe("Live Draft documentation Wave 2", () => {
       id: "core",
       truthState: "unknown",
       summary: expectedCoreSummary,
-      childIds: ["core-route", "text-engine", "template-builder", "live-draft"],
+      childIds: ["core-route", "text-engine", "template-builder", "live-draft", "text-block"],
     }));
     for (const document of documents) {
       const path = document.path as string;

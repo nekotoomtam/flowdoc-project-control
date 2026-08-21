@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-text-block-overview",
+  "title": "Text Block Overview",
+  "path": "docs/versions/V0_1_0a_1/core/text-block/OVERVIEW.md",
+  "nodeIds": ["text-block"],
+  "role": "current-state",
+  "authority": "Current-state family overview limited to dependency, ownership, and evidence flow among the three reviewed canonical Text Block leaves; migration coverage, reference repair, publication review, family promotion, cleanup authority, product activation, and broader Core truth remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Core Document Map
 
 Core consolidation is incomplete. This map is intentionally partial.
-This map records the completed pilot family and the completed Text Engine, Template Builder, and Live Draft documentation syntheses; all broader Core truth remains unknown.
+This map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 
@@ -56,6 +56,15 @@ Template Builder documentation synthesis is complete across five bounded leaves 
 
 Live Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.
 
+## Text Block Family Documentation
+
+- [Text Block Overview](text-block/OVERVIEW.md)
+- [Text Block V1 Grammar and Migration History](text-block/v1-grammar-and-migration-history.md)
+- [Text Block V4 Authoring and Inline](text-block/v4-authoring-and-inline.md)
+- [Text Block V4 Measurement and Pagination](text-block/v4-measurement-and-pagination.md)
+
+Text Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.
+
 ## Shared Glossaries
 
 - [Glossary](../../../GLOSSARY.md)
@@ -74,3 +83,8 @@ authorized.
 Live Draft documentation is synthesized while its migration coverage,
 active-reference repair, publication review, and any separately authorized
 cleanup remain incomplete; Live Draft and broader Core remain `unknown`.
+
+Text Block documentation is synthesized while its migration coverage,
+active-reference repair, publication review, family promotion, and any
+separately authorized cleanup remain incomplete; Text Block and broader Core
+remain `unknown`.

@@ -1,0 +1,47 @@
+{
+  "kind": "document",
+  "id": "doc-text-block-v1-grammar-migration",
+  "title": "Text Block V1 Grammar and Migration History",
+  "path": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md",
+  "nodeIds": ["text-block"],
+  "role": "contract",
+  "authority": "Canonical historical contract limited to the reviewed V1 grammar intent, pure validation and normalization boundary, canonical empty-text producer alignment, and decision-only package-v3/document-v4 copy-forward policy; parser or migration activation, editor or backend behavior, persistence delivery, layout, renderer, product readiness, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV1Grammar.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/schema/documentVersionPolicy.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/operations/documentOperations.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV1Grammar.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV1VersionMigrationDecision.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV1GrammarFixtures.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV1LayoutCompatibility.test.ts"
+    }
+  ]
+}

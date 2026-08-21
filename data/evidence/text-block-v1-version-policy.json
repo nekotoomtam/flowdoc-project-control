@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-block-v1-version-policy",
+  "nodeIds": ["text-block"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/schema/documentVersionPolicy.ts",
+  "verificationSummary": "The version policy keeps ordinary reads at active package v2/document v3, records package v3/document v4 as a decision-only copy-forward target, and does not activate a parser, migration executor, persistence delivery, or product readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

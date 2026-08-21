@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1be9c9084d9eb754f14a3bc326cdda3930b8675c255f9ce32ae1ec072dd42b49",
+  "sourceDigest": "43d9006d13e14c4e6053bd21b740a6da7337e028564760b24b8fbfe8d4026f18",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -167,6 +167,35 @@
     },
     {
       "kind": "node",
+      "id": "text-block",
+      "title": "Text Block",
+      "parentId": "core",
+      "summary": "Text Block documentation synthesis is complete across three bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and family promotion, while migration execution, product activation, input surfaces, collaboration, persistence, mixed composition, renderer and export integration, cross-page editing, and general performance readiness remain unknown.",
+      "truthState": "unknown",
+      "order": 50,
+      "documentIds": [
+        "doc-text-block-v1-grammar-migration",
+        "doc-text-block-v4-authoring-inline",
+        "doc-text-block-v4-measurement-pagination",
+        "doc-text-block-overview"
+      ],
+      "evidenceIds": [
+        "evidence-text-block-v1-version-policy",
+        "evidence-text-block-v1-producer-alignment",
+        "evidence-text-block-v4-authoring-contract",
+        "evidence-text-block-v4-rich-inline-replacement",
+        "evidence-text-block-v4-measurement-pagination",
+        "evidence-text-block-v4-close-audit"
+      ],
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "childIds": [],
+      "workIds": []
+    },
+    {
+      "kind": "node",
       "id": "backend",
       "title": "Backend",
       "parentId": "flowdoc",
@@ -186,7 +215,7 @@
       "id": "core",
       "title": "Core",
       "parentId": "flowdoc",
-      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete.",
+      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete. Text Block documentation is synthesized across three bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete, and family truth remains unknown.",
       "truthState": "unknown",
       "order": 20,
       "documentIds": [
@@ -200,7 +229,8 @@
         "core-route",
         "text-engine",
         "template-builder",
-        "live-draft"
+        "live-draft",
+        "text-block"
       ],
       "workIds": []
     },
@@ -447,7 +477,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
         }
       ],
-      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, and Live Draft documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n"
+      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Text Block Family Documentation\n\n- [Text Block Overview](text-block/OVERVIEW.md)\n- [Text Block V1 Grammar and Migration History](text-block/v1-grammar-and-migration-history.md)\n- [Text Block V4 Authoring and Inline](text-block/v4-authoring-and-inline.md)\n- [Text Block V4 Measurement and Pagination](text-block/v4-measurement-and-pagination.md)\n\nText Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n\nText Block documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, family promotion, and any\nseparately authorized cleanup remain incomplete; Text Block and broader Core\nremain `unknown`.\n"
     },
     {
       "kind": "document",
@@ -710,7 +740,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
         }
       ],
-      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n"
+      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\nText Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.\n"
     },
     {
       "kind": "document",
@@ -881,6 +911,176 @@
         }
       ],
       "content": "# WYSIWYG Draft Input, Selection, and Browser Guards\n\n## Authority and Scope\n\nThis canonical leaf consolidates the 15 sources assigned by the reviewed\nTemplate Builder orientation subgroup: **15 assigned / 15 unique / 0 missing /\n0 extra / 0 drift**. The frozen source commit is\n`76a2f2311a898e781f53773390d47b05812911e4`; every assigned blob is identical\nat the read-only current evidence commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. It documents browser-local draft\nactivation and guards only. Template Builder remains `unknown`.\n\n## Responsibility Boundary\n\nThis leaf owns the active plain-text draft, textarea selection and caret,\nbrowser-local text commands, composition guards, local layout summaries, and\nplanning-only toolbar, field, and history affordances before an accepted\ncommit. It does not own rich-inline segment capture or range mapping, canonical\nrich-inline mutation, durable history, persistence, collaboration, renderer\noutput, export, or a replacement production primary input. Rich-inline\nlifecycle contracts belong to [Rich Inline Capture, Commit, Replay, and Session\nLifecycle](rich-inline-commit-and-session-lifecycle.md).\n\n## Textarea-first Active Draft\n\nThe current active input is textarea-first. Active draft text, its target, and\nits dirty status remain browser-local until a deliberate plain-text bridge\ncommit is accepted. The current app renders `data-draft-editor` as a\n`<textarea>`; its hidden contenteditable-style surface is bounded fallback and\nhardening evidence, not the active primary input. An eligible plain-text draft\nuses the existing packet bridge at commit time; rejected or stale commits retain\nthe local draft rather than changing package truth during typing.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Browser-local Selection, Caret, and Text Commands\n\nSelection start, end, direction, and caret controls are normalized and clamped\nagainst the active textarea draft. Command context and insert or\nreplace-selection commands change only that local text and local selection.\nThey do not create package operations, history records, layout requests, DOM\nrange bindings, or renderer caret measurements. A rejected bridge packet\npreserves local draft and selection facts; a successful packet application\nclears the active draft. UTF-16 mapping for rich-inline segment facts is owned\nby the downstream rich-inline leaf, not by this textarea caret contract.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## IME Composition Guard\n\nTextarea composition stays browser-local. While composition is active, the\ngeneric IME policy blocks commands, range controls, and both plain and rich\ncommit. Input can continue updating the local composing draft, but no commit or\nrange-based command treats intermediate composition state as final intent.\nAfter composition ends, ordinary local commands and the explicit commit path\nmay be reconsidered. This is a bounded generic guard, not language-complete\nIME behavior, persistent composition state, or per-keystroke transaction work.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftImePolicy.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n\n## Pre-commit Local Layout Summary\n\nTyping and local commands can update a browser-local pre-commit layout summary.\nIt reports only preview or deferred facts: no live layout request is made and\nno exact generation runs while a draft is active. Accepted bridge mutation is\nthe earliest point at which the sandbox can report bounded dirty scope or stale\nsignals; those signals remain distinct from renderer output, pagination, and\nexport readiness. Viewport request and render-window ownership remains with\n[Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md).\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftLayoutPush.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Planning-only Toolbar, Field, and History Affordances\n\nToolbar readiness and dispatch, field-chip requests, style-patch summaries, and\nstyle-aware history grouping are browser-local planning or execution evidence.\nThey do not by themselves insert canonical `field-ref` nodes, patch canonical\nstyled runs, create durable history, or produce layout or export output. A\nready indicator is still a plan, not production readiness. Local field and\nstyle facts can be preserved as input to downstream rich-inline planning only\nafter the relevant IME and range guards permit it.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftToolbarState.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftToolbarCommandDispatch.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftFieldChipInline.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftInlineStylePatch.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftStyleHistory.js`\n\n## State and Failure Model\n\nLocal draft state comprises draft text, target and base revision, normalized\nselection, command context, composition status, and bounded planning summaries.\nInactive, mixed, atomic, styled, composing, stale, or rejected cases remain\nguarded according to their local policy. Local edits do not alter a canonical\npackage, and selection-only or planning-only actions do not advance history.\nPlain draft acceptance uses the existing bridge; rich mutation requires the\ndownstream accepted fresh plan gate. No local state is a persistence or\ncollaboration protocol.\n\n## Current Verified State\n\nAt the pinned Core evidence commit, the focused sandbox boundary suite covers\ntextarea-first activation, local selection/caret and text-command behavior,\ncomposition guards, the planning boundaries, and the bridge handoff. The\nimplementation remains browser-local until accepted commit, with no production\neditor claim.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/wysiwygPrimaryInputDecisionGate.test.ts`\n\n## Known Limits and Unknowns\n\nThis leaf does not establish a production contenteditable editor, DOM caret or\nrenderer measurement contract, canonical typing truth, persistence,\ncollaboration, live renderer output, exact layout, or export parity. The active\ninput remains textarea-first. Browser-local draft, selection, commands,\nplanning, and style facts remain bounded until accepted commit; their durable or\nmulti-user behavior is unknown.\n\n## Historical Design Notes\n\nHistorical design and close-audit material establishes the intent to separate\ndraft, cache, working-package, and canonical layers. Historical phase order or\n`PASS` labels do not promote future cards or planning states into current\nproduction behavior. The current executable anchors above control the bounded\nwording used here.\n\n## Canonical Cross-references\n\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\n## Evidence Anchors\n\nAll strong current claims are pinned to immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The reviewed orientation retains\nthe exact frozen assignment and provenance; this leaf deliberately does not\nrepeat former source paths.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-text-block-overview",
+      "title": "Text Block Overview",
+      "path": "docs/versions/V0_1_0a_1/core/text-block/OVERVIEW.md",
+      "nodeIds": [
+        "text-block"
+      ],
+      "role": "current-state",
+      "authority": "Current-state family overview limited to dependency, ownership, and evidence flow among the three reviewed canonical Text Block leaves; migration coverage, reference repair, publication review, family promotion, cleanup authority, product activation, and broader Core truth remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "04b25a19cade79abc99e1652d763839a2347e340",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md"
+        }
+      ],
+      "content": "# Text Block Documentation Overview\n\n## Authority and Status\n\nText Block documentation synthesis is complete across three bounded leaves and\none family overview. Text Block and parent Core remain `unknown`; these\ndocuments do not establish family promotion, migration execution, publication,\nsource-cleanup authority, product activation, or broader Core truth.\n\n## Dependency Chain\n\n`v1 grammar and migration history` -> `v4 authoring and inline` -> `v4 measurement and pagination`\n\nThe historical V1 lane provides transition context for the authored V4\ncontract. The measurement and pagination lane consumes the authored identity\nand projection boundary. No dependency transfers ownership or turns a bounded\nclaim into broader product authority.\n\n## Canonical Documents\n\n- [V1 Grammar and Migration History](v1-grammar-and-migration-history.md)\n- [V4 Authoring and Inline](v4-authoring-and-inline.md)\n- [V4 Measurement and Pagination](v4-measurement-and-pagination.md)\n\n## Responsibility Boundaries\n\nThe V1 leaf owns historical grammar, pure normalization, accepted-write\nalignment, and the copy-forward migration decision. The V4 authoring leaf owns\nthe flat-inline grammar, selection identity, explicit command planning, and\nsingle-user whole-rich-inline replacement boundary. The measurement and\npagination leaf owns resolved measurement source points, accepted line ranges,\nisolated page fragments, and the bounded close-audit result.\n\nInput surfaces, collaboration-safe deltas, persistence, shaper execution,\nmixed-document composition, renderer and export integration, backend jobs,\ncross-page editing, and general performance readiness remain outside these\ndocuments.\n\n## Evidence Flow\n\nVersion-policy and accepted-write Evidence bound the V1 transition record.\nAuthored-contract and rich-inline replacement Evidence bound the V4 authoring\nrecord. Measurement/pagination and close-audit Evidence bound the final leaf.\nEach claim remains limited to its pinned Core executable anchor.\n\n## Current Verified State\n\nThe reviewed leaves preserve active package-v2/document-v3 acceptance and a\ndecision-only copy-forward boundary, bounded V4 authored-inline and replacement\nbehavior, and bounded resolved-range plus isolated-pagination behavior. The\n6,000-line/250-page check remains an isolated regression result rather than\ngeneral performance or product readiness.\n\n## Known Limits and Unknowns\n\nMigration execution, target parsing, product activation, browser editing,\ncollaboration, persistence, generated-page-number expansion, mixed layout,\nrenderer/export parity, backend lifecycle execution, and cross-page selection\nremain incomplete, excluded, or unknown.\n\n## Migration and Cleanup Boundary\n\nNo Text Block migration coverage or cleanup Evidence is recorded. Reference\nrepair, publication review, family promotion, and any separately authorized\nsource cleanup remain incomplete; no source cleanup is authorized by this\noverview.\n\n## Evidence Anchors\n\n- `flowdoc-project-control@04b25a19cade79abc99e1652d763839a2347e340:docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md` (Git blob `f3f02dd300519f657d49e37d684b29d28d7adce9`)\n- `flowdoc-project-control@04b25a19cade79abc99e1652d763839a2347e340:docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md` (Git blob `0485b16e801157866ba2ed1766d7b216c6f83c57`)\n- `flowdoc-project-control@04b25a19cade79abc99e1652d763839a2347e340:docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md` (Git blob `279c8f5f43ef8e933c925e0be32ff38d0f79659d`)\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-text-block-v1-grammar-migration",
+      "title": "Text Block V1 Grammar and Migration History",
+      "path": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md",
+      "nodeIds": [
+        "text-block"
+      ],
+      "role": "contract",
+      "authority": "Canonical historical contract limited to the reviewed V1 grammar intent, pure validation and normalization boundary, canonical empty-text producer alignment, and decision-only package-v3/document-v4 copy-forward policy; parser or migration activation, editor or backend behavior, persistence delivery, layout, renderer, product readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/textBlockV1Grammar.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/schema/documentVersionPolicy.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/operations/documentOperations.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV1Grammar.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV1VersionMigrationDecision.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV1GrammarFixtures.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV1LayoutCompatibility.test.ts"
+        }
+      ],
+      "content": "## Authority and Scope\n\nThis candidate leaf consolidates the historical V1 grammar and migration-decision lane only. It is derived from the reviewed orientation assignment: **4 assigned / 4 unique / 0 missing / 0 extra / 0 drift**. It preserves transition reasoning; it does not promote family truth, migration coverage, or source-cleanup authority.\n\n## Historical V1 Grammar Intent\n\nThe historical v1 intent is a flat ordered authored inline list within a text block. Text uses block-scoped UTF-16 offsets; managed inline usages occupy one slot; text leaves are non-empty and contain no raw CR/LF; and the canonical empty authored block has `children: []`. Inline identity is scoped to its owning text block.\n\nThese target rules are supported as bounded grammar evidence by [the grammar helper](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV1Grammar.ts) and [its focused grammar tests](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1Grammar.test.ts). They are historical target intent, not a restatement of the later v4 authored contract.\n\n## Pure Validation and Normalization Boundary\n\nThe helper validates or plans deterministic normalization without mutating the source input, package records, storage, editor state, or layout output. It can remove empty text leaves and convert raw line endings to explicit line-break children, while unsafe identity, field, zone, malformed-shape, and Unicode cases remain blocked rather than guessed.\n\nThe relevant immutable evidence is [the pure helper](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV1Grammar.ts), [fixture acceptance](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1GrammarFixtures.test.ts), and [layout compatibility characterization](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1LayoutCompatibility.test.ts).\n\n## Canonical Empty-text Producers\n\nThe accepted table row and column insertion paths create a paragraph text block with an empty `children` list rather than persisting an empty text leaf. This aligns newly created Core-owned cells with the historical target empty-block shape, without making package-read normalization authoritative.\n\nThe implementation evidence is [the operation factory and insertion paths](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/operations/documentOperations.ts) and [the producer fixture assertions](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1GrammarFixtures.test.ts).\n\n## Active Acceptance and Copy-forward Decision\n\nActive acceptance remains package v2 and document v3. The recorded target is package v3/document v4, with an explicit copy-forward action: validate a canonical v3 source, block unresolved semantic issues, normalize a copy deterministically, stamp the target document version, validate at the strict target boundary, and retain the source snapshot through revisioned persistence.\n\nThe version-policy record is decision-only: ordinary reads do not normalize or silently upgrade, the source is not mutated, Core owns a semantic plan, and backend persistence remains revisioned. These facts are bounded by [the policy](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/schema/documentVersionPolicy.ts) and [the version-decision tests](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1VersionMigrationDecision.test.ts).\n\n## Historical Absence and Later Bounded V4 Evidence\n\nHistorical absence of v4 parser/migration activation does not deny later bounded v4 implementation. The former statement records a transition gate; current bounded v4 evidence belongs to the downstream leaves for [authoring and inline commands](v4-authoring-and-inline.md) and [measurement and pagination](v4-measurement-and-pagination.md). Those leaves own their own executable evidence and exclusions.\n\nThis leaf keeps historical v1 intent separate from current bounded v4 evidence. It neither substitutes the v1 target grammar for the v4 contract nor treats the later contract as retroactive activation of the historical gate.\n\n## Explicit Exclusions\n\nThis leaf does not activate migration execution, a parser, editor or backend behavior, page construction, rendering, collaboration, or a production claim. It does not establish field/image schema completion, persistence delivery, user-interface behavior, or family-level publication authority.\n\n## Current Verified State\n\nAt the immutable Core evidence commit, the v1 helper is pure and opt-in, active package-v2/document-v3 parsing remains strict, and Core-owned table insertion emits canonical empty children. The historical transition records continue to require separate target-schema and downstream acceptance work before any future version activation.\n\n## Known Limits and Unknowns\n\nThis leaf does not determine when a stored v3 document is offered a transition, the completed target image contract, strict target parsing, revision-gated persistence delivery, or user-facing conflict handling. It also makes no claim about page layout, rendering output, editor input, backend routes, or concurrent editing.\n\n## Canonical Cross-references\n\n- [Text Block v4 authoring and inline](v4-authoring-and-inline.md) owns later bounded authored-content and command evidence.\n- [Text Block v4 measurement and pagination](v4-measurement-and-pagination.md) owns later bounded resolved-range and isolated fragment evidence.\n- [Text Block overview](OVERVIEW.md) retains the candidate family frame and lane order.\n\n## Evidence Anchors\n\n- [Grammar helper](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV1Grammar.ts)\n- [Version policy](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/schema/documentVersionPolicy.ts)\n- [Table insertion operations](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/operations/documentOperations.ts)\n- [Grammar test](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1Grammar.test.ts)\n- [Version-decision test](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1VersionMigrationDecision.test.ts)\n- [Grammar-fixture test](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1GrammarFixtures.test.ts)\n- [Layout-compatibility test](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV1LayoutCompatibility.test.ts)\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-text-block-v4-authoring-inline",
+      "title": "Text Block V4 Authoring and Inline",
+      "path": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md",
+      "nodeIds": [
+        "text-block"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to the verified V4 flat-inline grammar, canonical selection, explicit atomic and field command planning, and single-user policy/pin-aware whole-rich-inline replacement; DOM/IME/clipboard ownership, collaboration-safe deltas, persistence, measurement, pagination, renderer/export, cross-page editing, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/textBlockV4Contract.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4Contract.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/textBlockV4InlineCommands.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4InlineCommands.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/textBlockV4RichInlineReplace.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4RichInlineReplace.test.ts"
+        }
+      ],
+      "content": "# Text Block V4 Authoring and Inline\n\nDocumentation state: `candidate`\n\n## Authority and Scope\n\nThis candidate leaf consolidates the bounded V4 authored-inline contract that\nwas verified against immutable Core evidence. It is not shared current product\ntruth, a migration/publication record, or authority to change source\ndisposition. Its source closure is **3 assigned / 3 unique / 0 missing / 0 extra / 0 drift**.\n\n## Responsibility Boundary\n\nThis leaf owns one text block's authored V4 inline shape, deterministic\nselection identity, explicit atomic/field command planning, and the\nsingle-user whole-rich-inline replacement preparation/application boundary.\nIt does not make an input surface, collaboration mechanism, persistence path,\nor layout/rendering system authoritative.\n\n## V4 Flat-inline Grammar and Projection\n\nA V4 text block has five flat inline forms: text, field-ref, line-break, page-number, and inline-image. The only canonical empty representation is\n`children: []`; empty text leaves, DOM sentinels, and placeholders are not\nauthored content. Inline identities are unique within their owning text block.\n\nText contributes literal UTF-16 length to the model projection, line-break\ncontributes a newline, and each other atomic contributes one U+FFFC slot.\nRendered field values or labels, page digits, and image dimensions do not\nchange authored offsets. Field refs require a key in the pinned field contract\nand a scalar inline-compatible type; page number placement is limited to\nstatic header/footer zones.\n\n## Canonical Selection\n\nA non-empty selection is a pair of anchors in one text block, each identified\nby text-block id, inline id, inline-local UTF-16 offset and affinity. Text\noffsets may not split surrogate pairs. Atomics accept only offset `0` before\nor `1` after; affinity chooses the neighboring identity at a shared boundary.\n\nAn empty block uses its canonical null-inline caret: `inlineId: null` with\noffset `0`. A block offset is adapter input only and is deterministically\ntranslated into the inline-local anchor; page, line, DOM, glyph, and screen\ncoordinates are projections rather than selection identity.\n\n## Atomic and Field Command Planning\n\n`field-ref.insert`, `line-break.insert`, `page-number.insert`, and\n`inline-image.insert` plan a complete replacement child list from a canonical\ncaret. `atomic.remove` targets only a non-text inline and chooses the prior\nend, next start, or canonical empty caret deterministically.\n\nNew atomics and an inside-text split use explicit caller-supplied inline identities. A split retains the source identity on the left and requires the\nright identity; no time- or random-based allocator is part of this boundary.\nPlanning validates both current and proposed grammar, returns identity facts,\nand neither mutates a document nor creates history. The plan remains behind\n`text-block.rich-inline.replace` for policy preflight and accepted application.\n\n## Whole-rich-inline Replacement\n\n`text-block.rich-inline.replace` replaces the complete child list of one text\nblock. An accepted request is bounded by exact artifact, policy, field-contract, and session pins. It accepts only an exact Structure Definition draft revision or a\nDocument Instance pinned to its Published Structure Version, with matching\npolicy and field-contract ownership. Published Structure Versions are not\ndirect mutation targets.\n\nEvery accepted request requires `content.edit`; a new/rebound field, image\nsource, or text style additionally requires `field.place`, `media.place`, or\n`style.override` respectively. Unchanged submitted field, image, and style\nfacts do not require those additional actions. The replacement validates the\nrequest, artifact ownership, source structure and target context, effective\npolicy, V4 grammar, and cloned full document before returning identity, scope,\nfield-key, history, and invalidation facts.\n\n## Apply Boundary and Rejections\n\nThe accepted apply boundary is a validated clone result for one durable\ncontent-history intent with merge key `rich-inline:<textBlockId>`; source input\nremains immutable. It rejects malformed requests, artifact mismatches,\nmissing/unsupported targets, denied policy or session capabilities, no-ops,\nand grammar or complete-document validation failures.\n\nStale, policy, artifact, and session rejection are distinct gates:\nthis bounded implementation enforces policy, artifact, and session rejection,\nwhile stale/revision and idempotency execution remain an integration concern\noutside the boundary. A returned history intent is history/revision-gate-ready;\nbackend revision advancement and before/after persistence are not performed.\n\n## Current Verified State\n\nThe frozen/current evidence confirms canonical selection, explicit atomic\nidentity allocation, policy/pin-aware complete replacement, immutable source\ninput, and accepted clone application. The candidate claim is deliberately\nsingle-user: no result makes whole replacement a granular collaboration\noperation.\n\n## Explicit Exclusions and Conflict\n\nDOM, IME, and clipboard input ownership are excluded. Granular concurrent deltas are excluded. CRDT and offline merge are excluded. Backend persistence is excluded. Measurement and pagination are excluded. Renderer output and export are excluded. Cross-page editing is excluded.\n\n**TBL-C4:** Whole rich-inline replacement is history/revision-gate-ready but is not a concurrency, CRDT, or offline-merge primitive. It must not be read as\na concurrency-safe delta, CRDT, or offline conflict-resolution contract.\n\n## Canonical Cross-references\n\nThe preceding [V1 Grammar and Migration History](v1-grammar-and-migration-history.md)\nleaf remains historical transition context only; it does not establish this V4\ncontract. The downstream [V4 Measurement and Pagination](v4-measurement-and-pagination.md)\nleaf consumes authored identities and projection facts without converting\nmeasurement points into editor caret identity.\n\n## Evidence Anchors\n\n- [V4 grammar and selection](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV4Contract.ts)\n- [V4 grammar tests](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4Contract.test.ts)\n- [V4 atomic/field command planner](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV4InlineCommands.ts)\n- [V4 command-planner tests](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4InlineCommands.test.ts)\n- [V4 policy-aware whole replacement](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/textBlockV4RichInlineReplace.ts)\n- [V4 replacement tests](flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4RichInlineReplace.test.ts)\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-text-block-v4-measurement-pagination",
+      "title": "Text Block V4 Measurement and Pagination",
+      "path": "docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md",
+      "nodeIds": [
+        "text-block"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified resolved measurement source points, complete gap-free accepted line ranges, isolated deterministic pagination, and the bounded 6,000-line/250-page close-audit result; shaper execution, page-number expansion, mixed composition, renderer/export, backend jobs, cross-page editing, general performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/resolution/resolvedDocument.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/pagination/textBlockV4Measurement.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/pagination/textBlockV4Pagination.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4Measurement.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4Pagination.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockV4ReadinessCloseAudit.test.ts"
+        }
+      ],
+      "content": "# Text Block V4 Measurement and Pagination\n\n## Authority and Scope\n\nThis candidate leaf records the bounded v4 contract for resolved measurement\nsource mapping, accepted text-line ranges, and isolated line pagination. It is\npinned to `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0`.\nIt follows the candidate [V4 Authoring and Inline](v4-authoring-and-inline.md)\nleaf, but does not promote Text Block family truth, product readiness, or\nsource-cleanup authority.\n\n## Resolved Measurement Source Contract\n\n`VNextResolvedDocumentV1` preserves the authored v4 document, resolved field\nand image bindings, style bindings, revision and pin facts while its execution\nfields are `inputFetch`, `authoredGraphMutation`, `generatedExpansion`,\n`pagination`, and `rendering`: `inputFetch`, `generatedExpansion`,\n`pagination`, and `rendering` are `not-run`, while `authoredGraphMutation` is\n`false`; there is no `measurement` execution field. The measurement request\ncarries a specific text block's rendered text and runs together with document\nid, instance revision, section id, width, profile, and style identity.\n\nAn authored text run retains its local UTF-16 authored/resolved offset. A\nresolved field run retains its authored `inlineId` and can have multiple\nresolved offsets inside one atomic authored placement. Hard breaks and inline\nimages retain atomic endpoints; images also carry resolved asset/frame facts.\nUnresolved field or image bindings block request construction.\n\nMeasurement source points contain `textBlockId`, `inlineId`, `authoredOffset`,\n`resolvedOffset`, and boundary affinity. For a field, `authoredOffset` is only\n`0` or `1` while `resolvedOffset` identifies the displayed value boundary.\nThese points support measured-range and fragment provenance; they must not\nbecome editor caret offsets. A generated page-number blocks a resolved-document\nmeasurement request until a separately owned expansion supplies page-specific\ntext and its owner fingerprint. This leaf does not perform that expansion.\n\n## Accepted Line Range Contract\n\n`acceptVNextTextBlockV4MeasuredLines` accepts externally measured lines only\nwhen indexes start at zero and remain contiguous, ranges are ordered\nnon-negative integers, and the rendered stream has complete, gap-free coverage\nwithout overlap. Each line must have finite non-negative width, positive finite\nheight, and safe UTF-16 source boundaries. A canonical empty block still has\none zero-range measured line.\n\nEach accepted line receives canonical/resolved `sourceStart` and `sourceEnd`\npoints. At a run boundary, affinity selects the adjoining safe point. A field\nvalue may span many accepted lines and preserve its single atomic authored\nplacement alongside different derived resolved offsets. The accepted result is\ndata only: it does not select a text engine, break lines, mutate authored\ncontent, or execute pagination.\n\n## Isolated Pagination Contract\n\n`paginateVNextTextBlockV4Lines` consumes only accepted lines. It validates a\npositive finite page-body height and rejects any measured line taller than that\nbody. It packs whole accepted lines in order, moves a line to the next page\nwhen necessary, and never remeasures, rewraps, or splits a line.\n\nEvery occupied page receives one derived fragment for the same canonical text\nblock. The deterministic fragment id combines node id, page index, and its\ninclusive line span; the fragment retains the exclusive ending index,\nsource-start/source-end points, page-local offsets, used height, and remaining\nheight. Pagination allocates fragment identity only. It does not allocate an\nauthored node or inline identity, mutate the document, relayout a renderer, or\nturn resolved field offsets into editor positions.\n\n## Bounded Close-Audit Result\n\nThe isolated 6,000-line/250-page scale check constructs 6,000 accepted measured lines, places 24\nwhole lines on each page, and produces 250 deterministic pages/fragments under\nthe local 1.5-second regression threshold. The first and final slices retain\ntheir line/source facts. This is evidence for the isolated text-line contract;\nit is not general performance readiness or product readiness.\n\nThe close audit allows columns and table split planning to consume retained\ntext-line fragments. It does not mark columns, tables, a mixed document, or a\ncomplete product as implemented.\n\n## Explicit Exclusions\n\nThis candidate leaf excludes choosing or executing a shaper, font loading, and\nline breaking; generated page-number expansion; mixed-node composition,\ncolumns/table flow policy, and generated document composition; renderer/export\nor artifact bytes; backend jobs or lifecycle execution; cross-page DOM/caret behavior; and general performance readiness. It also excludes browser input,\nIME, clipboard, selection painting, viewport windowing, backend persistence,\nand any claim of a mixed-document scale threshold.\n\n## Current Verified State\n\nAt the pinned Core commit, resolved documents retain the bindings required to\nform a v4 request; measurement validates and maps accepted line results; and\npagination creates isolated deterministic fragments from those accepted lines.\nThe direct checks cover measurement source ranges, pagination, and the close\naudit. No runtime execution flag is advanced by these modules.\n\n## Risks and Unknowns\n\nResolved field values can yield many lines from one atomic authored slot, so\nthe resolved mapping remains unsuitable for editable caret offsets. Inline\nimage baseline/line-height integration, widow/orphan policy, keep rules,\nmixed-node composition, page-number layout cycles, renderer memory, backend\nthresholds, and cross-page browser selection remain separate risks or unknowns.\n\n## Evidence Anchors\n\nImmutable local anchors at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0`:\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/resolution/resolvedDocument.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/pagination/textBlockV4Measurement.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/pagination/textBlockV4Pagination.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4Measurement.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4Pagination.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockV4ReadinessCloseAudit.test.ts`\n"
     },
     {
       "kind": "document",
@@ -1225,7 +1425,7 @@
       "remote": "https://github.com/nekotoomtam/flowdoc-vnext-core.git",
       "checkoutAlias": "core",
       "defaultBranch": "main",
-      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete."
+      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete. Text Block documentation is synthesized across three bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete and family truth remains unknown."
     },
     {
       "kind": "repository",
@@ -1593,6 +1793,78 @@
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
       "pathOrContractId": "tests/wysiwygPrimaryInputDecisionGate.test.ts",
       "verificationSummary": "The focused decision gate documents a recommendation for hybrid managed cards with a hardened contenteditable island, rejects full-document contenteditable as the v1 primary input, and explicitly records no production contenteditable implementation or package/document schema change; it does not verify runtime draft behavior, canonical typing truth, persistence, or collaboration.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v1-producer-alignment",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/operations/documentOperations.ts",
+      "verificationSummary": "The document operation producers emit canonical empty text blocks for accepted table row and column insertion paths; this does not make package-read normalization authoritative or establish migration, editor, persistence, layout, or product readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v1-version-policy",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/schema/documentVersionPolicy.ts",
+      "verificationSummary": "The version policy keeps ordinary reads at active package v2/document v3, records package v3/document v4 as a decision-only copy-forward target, and does not activate a parser, migration executor, persistence delivery, or product readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v4-authoring-contract",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV4Contract.ts",
+      "verificationSummary": "The V4 authoring contract defines five flat inline forms, canonical empty children, UTF-16 projection, and canonical inline-local selection; this does not establish DOM input, collaboration, persistence, measurement, renderer, or product activation.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v4-close-audit",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV4ReadinessCloseAudit.test.ts",
+      "verificationSummary": "The focused close-audit suite verifies the isolated 6,000-line/250-page regression case; this does not establish general performance readiness, mixed-document readiness, engine execution, renderer/export, backend lifecycle, or cross-page UX.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v4-measurement-pagination",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/pagination/textBlockV4Pagination.ts",
+      "verificationSummary": "The pagination module deterministically packs complete accepted lines into isolated derived fragments without remeasurement, authored mutation, or caret remapping; this does not establish shaper execution, mixed composition, renderer/export, backend lifecycle, cross-page editing, or product readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-text-block-v4-rich-inline-replacement",
+      "nodeIds": [
+        "text-block"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV4RichInlineReplace.ts",
+      "verificationSummary": "The rich-inline replacement module validates exact artifact, policy, field-contract, and session pins and applies an accepted single-user cloned replacement; this does not establish stale-revision execution, idempotency, collaboration-safe deltas, CRDT/offline merge, backend persistence, or product activation.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-block-v4-rich-inline-replacement",
+  "nodeIds": ["text-block"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/authoring/textBlockV4RichInlineReplace.ts",
+  "verificationSummary": "The rich-inline replacement module validates exact artifact, policy, field-contract, and session pins and applies an accepted single-user cloned replacement; this does not establish stale-revision execution, idempotency, collaboration-safe deltas, CRDT/offline merge, backend persistence, or product activation.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}
