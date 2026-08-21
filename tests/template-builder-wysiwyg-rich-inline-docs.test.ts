@@ -1,15 +1,12 @@
-import { execFile as execFileCallback } from "node:child_process";
-import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { promisify } from "node:util";
 import { describe, expect, it } from "vitest";
+import { expectFrozenCurrentSourceProvenance } from "./template-builder-source-provenance.js";
 
 const root = process.cwd();
 const frozenSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const currentEvidenceCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
 const coreEvidenceRoot = resolve(root, "..", "..", "..", "flowdoc-vnext-core", ".worktrees", "core-route-documentation-cleanup");
-const execFile = promisify(execFileCallback);
 
 const wysiwygHeadings = [
   "## Authority and Scope",
@@ -35,7 +32,7 @@ const richInlineHeadings = [
   "## Browser-local Rich State",
   "## Commit Planning and Accepted Application",
   "## In-memory Undo and Redo Replay",
-  "## Storage-ready JSON-safe Session Records",
+  "## JSON-safe Replay-patch Validation and History-ready Facts",
   "## Live/Exact Stale Invalidation Only",
   "## State and Failure Model",
   "## Current Verified State",
@@ -56,17 +53,8 @@ interface Orientation {
   families: Array<{ familyId: string; subgroups: Subgroup[] }>;
 }
 
-interface Inventory {
-  sourceCommit: string;
-  files: Array<{ path: string; blobId: string }>;
-}
-
 async function readOrientation(): Promise<Orientation> {
   return JSON.parse(await readFile(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json"), "utf8")) as Orientation;
-}
-
-async function readInventory(): Promise<Inventory> {
-  return JSON.parse(await readFile(join(root, "migrations/V0_1_0a_1/core/inventory.json"), "utf8")) as Inventory;
 }
 
 function subgroupFor(orientation: Orientation, subgroupId: string): Subgroup {
@@ -83,42 +71,19 @@ async function leafFor(subgroupId: string): Promise<{ subgroup: Subgroup; leaf: 
   return { subgroup, leaf: await readFile(join(root, subgroup.proposedLeafPath), "utf8") };
 }
 
-async function coreGit(args: string[]): Promise<string> {
-  const { stdout } = await execFile("git", args, { cwd: coreEvidenceRoot, encoding: "utf8" });
-  return stdout.trim();
-}
-
-function frozenSourceFingerprint(sourcePaths: readonly string[], inventory: Inventory): string {
-  const blobsByPath = new Map(inventory.files.map(({ path, blobId }) => [path, blobId]));
-  const rows = sourcePaths.map((path) => `${path}\0${blobsByPath.get(path) ?? ""}`);
-  return createHash("sha256").update(rows.join("\n"), "utf8").digest("hex");
-}
-
 async function expectFrozenCurrentProvenance(
   sourcePaths: readonly string[],
   expectedFingerprint: string,
 ): Promise<void> {
-  const inventory = await readInventory();
-  const blobsByPath = new Map(inventory.files.map(({ path, blobId }) => [path, blobId]));
-
-  expect(inventory.sourceCommit).toBe(frozenSourceCommit);
-  expect(sourcePaths).toHaveLength(15);
-  expect(new Set(sourcePaths).size).toBe(15);
-  expect(frozenSourceFingerprint(sourcePaths, inventory)).toBe(expectedFingerprint);
-  expect(await coreGit(["rev-parse", "--verify", `${frozenSourceCommit}^{commit}`])).toBe(frozenSourceCommit);
-  expect(await coreGit(["rev-parse", "--verify", `${currentEvidenceCommit}^{commit}`])).toBe(currentEvidenceCommit);
-  expect(await coreGit(["rev-parse", "HEAD"])).toBe(currentEvidenceCommit);
-
-  await Promise.all(sourcePaths.map(async (path) => {
-    const expectedBlob = blobsByPath.get(path);
-    expect(expectedBlob).toMatch(/^[0-9a-f]{40}$/);
-    const [frozenBlob, currentBlob] = await Promise.all([
-      coreGit(["rev-parse", `${frozenSourceCommit}:${path}`]),
-      coreGit(["rev-parse", `${currentEvidenceCommit}:${path}`]),
-    ]);
-    expect(frozenBlob).toBe(expectedBlob);
-    expect(currentBlob).toBe(expectedBlob);
-  }));
+  await expectFrozenCurrentSourceProvenance({
+    projectRoot: root,
+    coreEvidenceRoot,
+    sourcePaths,
+    expectedCount: 15,
+    expectedFingerprint,
+    frozenCommit: frozenSourceCommit,
+    currentCommit: currentEvidenceCommit,
+  });
 }
 
 function expectImmutableCoreAnchors(leaf: string, minimum: number): void {
@@ -147,6 +112,11 @@ function expectRichInlineBoundaries(leaf: string): void {
   expect(leaf).not.toMatch(/rich mutation (?:is|allows) (?!accepted[- ]fresh[- ]plan[- ]only)/i);
   expect(leaf).not.toMatch(/UTF-16 mapping (?:is|provides) (?:a )?(?:renderer|DOM) caret contract/i);
   expect(leaf).not.toMatch(/(?:session records|replay) (?:is|are) (?:a )?collaboration/i);
+  expect(leaf).not.toMatch(/session-record preparation/i);
+  expect(leaf).not.toMatch(/storage-ready JSON-safe Session Records/i);
+  expect(leaf).not.toMatch(/Session preparation creates JSON-safe records/i);
+  expect(leaf).not.toMatch(/retain(?:s|ing) bounded package/i);
+  expect(leaf).not.toMatch(/live\/exact status facts/i);
 }
 
 describe("Template Builder WYSIWYG and rich-inline documentation leaves", () => {
@@ -202,7 +172,11 @@ describe("Template Builder WYSIWYG and rich-inline documentation leaves", () => 
     expect(richInline.leaf).toMatch(/accepted fresh plan/i);
     expect(richInline.leaf).toMatch(/stale plans are rejected/i);
     expect(richInline.leaf).toMatch(/field and\s+style facts/i);
-    expect(richInline.leaf).toMatch(/JSON-safe/i);
+    expect(richInline.leaf).toMatch(/JSON-safe rich-inline replay-patch validation/i);
+    expect(richInline.leaf).toMatch(/history-ready facts/i);
+    expect(richInline.leaf).toMatch(/before\/after child snapshots/i);
+    expect(richInline.leaf).toMatch(/`storageRecord: false`,\s*`storageWrites: false`, and `replayExecution: false`/i);
+    expect(richInline.leaf).toMatch(/no package\s+snapshot or persisted session record/i);
     expect(richInline.leaf).toMatch(/stale invalidation only/i);
     expectWysiwygBoundaries(wysiwyg.leaf);
     expectRichInlineBoundaries(richInline.leaf);
@@ -220,8 +194,12 @@ describe("Template Builder WYSIWYG and rich-inline documentation leaves", () => 
     expect(() => expectWysiwygBoundaries(`${wysiwyg.leaf}\nbrowser-local draft or style state is canonical package truth`)).toThrow();
     expect(() => expectRichInlineBoundaries(`${richInline.leaf}\nsession records are persisted through a storage adapter`)).toThrow();
     expect(() => expectRichInlineBoundaries(`${richInline.leaf}\nlive/exact parity proves renderer or export parity`)).toThrow();
+    expect(() => expectRichInlineBoundaries(`${richInline.leaf}\nJSON-safe session-record preparation`)).toThrow();
+    expect(() => expectRichInlineBoundaries(`${richInline.leaf}\nSession preparation creates JSON-safe records`)).toThrow();
+    expect(() => expectRichInlineBoundaries(`${richInline.leaf}\nThe helper retains bounded package facts and live/exact status facts`)).toThrow();
     expectWysiwygBoundaries("contenteditable is not the active primary input; planning/ready does not mean production-ready; IME composition does not permit commit or range commands; browser-local draft or style state is not canonical package truth.");
     expectRichInlineBoundaries("session records are not persisted through a storage adapter; live/exact parity does not prove renderer or export parity.");
+    expectRichInlineBoundaries("JSON-safe replay-patch validation reports history-ready facts; it does not create a package snapshot or persisted session record and reports no storage record/write or replay execution.");
   });
 
   it("mutation: rejects a mutable Core ref and former-source leakage in leaf and test evidence", async () => {

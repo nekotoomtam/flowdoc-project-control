@@ -18,6 +18,51 @@ const leafNames = [
   "wysiwyg-draft-input-and-guards.md",
   "rich-inline-commit-and-session-lifecycle.md",
 ] as const;
+type LeafName = typeof leafNames[number];
+const leafContracts = [
+  {
+    leafName: leafNames[0],
+    ownership: "The sandbox consumes public-Core snapshots and accepted mutation responses",
+    dependency: "Structural packet semantics belong to",
+    crossReferences: [leafNames[2], leafNames[1], leafNames[3], leafNames[4]],
+  },
+  {
+    leafName: leafNames[1],
+    ownership: "Viewport owns viewport prediction and rendering-window behavior after the store-backed model exists.",
+    dependency: "The upstream sandbox owns snapshot normalization",
+    crossReferences: [leafNames[0], leafNames[2], leafNames[3], leafNames[4]],
+  },
+  {
+    leafName: leafNames[2],
+    ownership: "This leaf owns structural-tree semantics and their browser-local navigation constraints.",
+    dependency: "Generic cache/store facts remain in",
+    crossReferences: [leafNames[0], leafNames[1], leafNames[3], leafNames[4]],
+  },
+  {
+    leafName: leafNames[3],
+    ownership: "This leaf owns the active plain-text draft, textarea selection and caret",
+    dependency: "Rich-inline lifecycle contracts belong to",
+    crossReferences: [leafNames[0], leafNames[1], leafNames[4]],
+  },
+  {
+    leafName: leafNames[4],
+    ownership: "This leaf owns contenteditable-like segment and range facts, local rich state",
+    dependency: "The prerequisite draft and IME policy belongs to",
+    crossReferences: [leafNames[3], leafNames[0], leafNames[1], leafNames[2]],
+  },
+] as const satisfies ReadonlyArray<{
+  leafName: LeafName;
+  ownership: string;
+  dependency: string;
+  crossReferences: readonly LeafName[];
+}>;
+const authorityTransferClaims = [
+  /\bsandbox owns viewport policy\b/iu,
+  /\bstructural owns active draft input\b/iu,
+  /\bviewport owns structural packet application\b/iu,
+  /\bWYSIWYG owns rich-inline commit\b/iu,
+  /\brich inline owns sandbox cache\/store application\b/iu,
+] as const;
 const leafPaths = leafNames.map((name) =>
   `docs/versions/V0_1_0a_1/core/template-builder/${name}`
 );
@@ -140,7 +185,7 @@ const expectedDocuments = [
     path: leafPaths[4],
     nodeIds: ["template-builder"],
     role: "contract",
-    authority: "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, JSON-safe session-record preparation, and live/exact stale invalidation; production contenteditable input, storage writes, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
+    authority: "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, live/exact stale invalidation, and JSON-safe rich-inline replay-patch validation/history-ready facts; the validation helper creates no package snapshot, persisted session record, or storage record, performs no storage write, and executes no replay, while production contenteditable input, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
     lifecycle: "active",
     repositoryRefs: evidenceAnchors.slice(9, 12).map(coreRef),
   },
@@ -164,12 +209,12 @@ const evidenceSummaries = [
   "The focused synthetic fixture composes exactly 72 ordered sections and 936 runtime nodes with bounded window, shell, stack, lazy-detail, and anchor facts; it is not wall-clock performance, real-document scaling, DOM recycling, or production-renderer evidence.",
   "Focused scheduler checks reject stale, revision-mismatched, draft-protected, IME-protected, blocked, and stable candidates before apply; these are correctness guards, not timing or performance evidence.",
   "Focused structural packet checks verify packet-v1 construction and validation as local non-public, non-durable foundation transport; they do not establish a public API, storage, history, replay, collaboration protocol, or mutable projection authority.",
-  "Focused diagnostics navigation accepts only an existing runtime nodeId and fails closed for document-level, missing, or unknown nodes; it provides no nearest-node repair or persistent navigation authority.",
+  "The Core boundary advertises node-linked diagnostics navigation as wired through the node-aware selection path; this anchor alone does not establish behavior for document-level, missing, or unknown node IDs or provide persistent navigation authority.",
   "The focused decision gate documents a recommendation for hybrid managed cards with a hardened contenteditable island, rejects full-document contenteditable as the v1 primary input, and explicitly records no production contenteditable implementation or package/document schema change; it does not verify runtime draft behavior, canonical typing truth, persistence, or collaboration.",
   "Focused boundary checks verify that IME composition blocks commands, range changes, and plain/rich commit while local planning remains guarded; they do not establish language-complete IME behavior or canonical mutation during composition.",
-  "The hardening module validates browser-local root, target, text, selection, nested-endpoint, and composition facts; the surface remains hidden/fallback evidence and is not a production primary editor, persistence layer, or renderer.",
+  "The hardening module validates supplied browser-local root, target, text, selection, nested-endpoint, and composition facts; this anchor does not establish whether the surface is hidden/fallback or active, and it provides no persistence or renderer authority.",
   "The rich-inline helper validates replacement children, applies them to the target text block, and creates an undoable history-intent record for successful commits; it does not verify freshness-validated plan acceptance, undo/redo child replay, durable persistence, collaboration merge, renderer output, or export parity.",
-  "The session module prepares JSON-safe records retaining bounded package, history, child, and live/exact status facts; it performs no storage-adapter write, replay execution, collaboration merge, or renderer output.",
+  "The session module creates JSON-safe rich-inline replay-patch validation and history-ready facts, including history counts, before/after child snapshots, and field keys; it explicitly reports no storage record/write or replay execution and creates no package snapshot or persisted session record.",
 ] as const;
 
 const expectedEvidence = evidenceIds.map((id, index) => ({
@@ -248,6 +293,35 @@ function gitBlobId(bytes: Uint8Array): string {
     .digest("hex");
 }
 
+function markdownSection(document: string, heading: string): string {
+  const start = document.indexOf(`${heading}\n`);
+  if (start === -1) throw new Error(`Missing section: ${heading}`);
+  const bodyStart = start + heading.length + 1;
+  const next = document.indexOf("\n## ", bodyStart);
+  return document.slice(bodyStart, next === -1 ? document.length : next);
+}
+
+function requiredAt<T>(values: readonly T[], index: number, label: string): T {
+  const value = values[index];
+  if (value === undefined) throw new Error(`Missing ${label} at index ${index}`);
+  return value;
+}
+
+function expectExactLeafContract(
+  contract: typeof leafContracts[number],
+  document: string,
+): void {
+  const responsibility = markdownSection(document, "## Responsibility Boundary");
+  const normalizedResponsibility = responsibility.replace(/\s+/gu, " ").trim();
+  expect(normalizedResponsibility).toContain(contract.ownership);
+  expect(normalizedResponsibility).toContain(contract.dependency);
+  const crossReferences = [...markdownSection(document, "## Canonical Cross-references")
+    .matchAll(/\]\(([^)]+\.md)\)/g)]
+    .map((match) => match[1]);
+  expect(crossReferences).toEqual(contract.crossReferences);
+  for (const transfer of authorityTransferClaims) expect(document).not.toMatch(transfer);
+}
+
 describe("Template Builder documentation Wave 1", () => {
   it("freezes one 73-source family and creates the bounded overview first", async () => {
     const orientation = JSON.parse(await readFile(
@@ -277,6 +351,17 @@ describe("Template Builder documentation Wave 1", () => {
     expect(overview).toMatch(/Template Builder[^.]*`unknown`/iu);
     expect(overview).toContain("Template Builder and parent Core remain `unknown`");
     expect(overview).toMatch(/no[^.]*source cleanup[^.]*authorized/iu);
+  });
+
+  it.each([
+    [evidenceIds[6], evidenceSummaries[6]],
+    [evidenceIds[9], evidenceSummaries[9]],
+    [evidenceIds[11], evidenceSummaries[11]],
+  ] as const)("binds %s to only the facts established by its fixed anchor", async (id, summary) => {
+    const evidence = await readJson(
+      `data/evidence/${id.replace("evidence-template-builder-", "template-builder-")}.json`,
+    );
+    expect(evidence.verificationSummary).toBe(summary);
   });
 
   it("registers exact bounded family truth without coverage, cleanup, or promotion", async () => {
@@ -350,8 +435,8 @@ describe("Template Builder documentation Wave 1", () => {
     ]);
     expect(overview.match(/^\|/gm) ?? []).toEqual([]);
     expect(overview).toContain(expectedNodeSummary);
-    expect(overview).toContain(
-      "public package boundary → accepted mutation packets → browser-local cache/store facts → structural and viewport consumers → guarded local draft → accepted rich-inline commit/replay → session preparation and live/exact stale invalidation",
+    expect(overview.replace(/\s+/gu, " ")).toContain(
+      "public package boundary → accepted mutation packets → browser-local cache/store facts → structural and viewport consumers → guarded local draft → accepted rich-inline commit/replay → JSON-safe replay-patch validation/history-ready facts",
     );
     for (const [index, path] of leafPaths.entries()) {
       expect(overview).toContain(
@@ -452,6 +537,43 @@ describe("Template Builder documentation Wave 1", () => {
 
     for (const [path, blob] of Object.entries(protectedBlobs)) {
       expect(gitBlobId(await readFile(join(root, path))), path).toBe(blob);
+    }
+  });
+
+  it("derives the exact five-leaf ownership, dependency, and cross-reference partition", async () => {
+    const leaves = await Promise.all(leafPaths.map((path) => readFile(join(root, path), "utf8")));
+
+    for (const contract of leafContracts) {
+      expectExactLeafContract(
+        contract,
+        requiredAt(leaves, leafNames.indexOf(contract.leafName), "Template Builder leaf"),
+      );
+    }
+  });
+
+  it("mutation: rejects authority transfers between all five leaves", async () => {
+    const leaves = await Promise.all(leafPaths.map((path) => readFile(join(root, path), "utf8")));
+    const mutations = [
+      "sandbox owns viewport policy",
+      "structural owns active draft input",
+      "viewport owns structural packet application",
+      "WYSIWYG owns rich-inline commit",
+      "rich inline owns sandbox cache/store application",
+    ] as const;
+    const legitimateNegatives = [
+      "sandbox does not own viewport policy",
+      "structural does not own active draft input",
+      "viewport does not own structural packet application",
+      "WYSIWYG does not own rich-inline commit",
+      "rich inline does not own sandbox cache/store application",
+    ] as const;
+
+    for (const [index, mutation] of mutations.entries()) {
+      const contract = requiredAt(leafContracts, index, "leaf contract");
+      const leaf = requiredAt(leaves, index, "Template Builder leaf");
+      const legitimateNegative = requiredAt(legitimateNegatives, index, "negative control");
+      expect(() => expectExactLeafContract(contract, `${leaf}\n${mutation}`)).toThrow();
+      expectExactLeafContract(contract, `${leaf}\n${legitimateNegative}`);
     }
   });
 });

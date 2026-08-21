@@ -5,6 +5,6 @@
   "repositoryId": "repo-core",
   "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
   "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts",
-  "verificationSummary": "Focused diagnostics navigation accepts only an existing runtime nodeId and fails closed for document-level, missing, or unknown nodes; it provides no nearest-node repair or persistent navigation authority.",
+  "verificationSummary": "The Core boundary advertises node-linked diagnostics navigation as wired through the node-aware selection path; this anchor alone does not establish behavior for document-level, missing, or unknown node IDs or provide persistent navigation authority.",
   "verifiedAt": "2026-08-21T00:00:00.000Z"
 }

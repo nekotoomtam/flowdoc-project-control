@@ -1,10 +1,16 @@
 import { access, readFile } from "node:fs/promises";
-import { join } from "node:path";
+import { join, resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import { expectFrozenCurrentSourceProvenance } from "./template-builder-source-provenance.js";
 
 const root = process.cwd();
 const currentEvidenceCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
 const frozenSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
+const expectedLaneAFingerprints = {
+  "sandbox-runtime-and-store": "1a854ca9b9b4f4295350615289cc843b34d97a212101a6ae4a3e3dc1e363fb9b",
+  "structural-runtime-and-navigation": "a04f8ad1a801a9e3f5ef9bd0acc8cd80be9ab00aa312561e023a837e2c5dce39",
+} as const;
+const coreEvidenceRoot = resolve(root, "..", "..", "..", "flowdoc-vnext-core", ".worktrees", "core-route-documentation-cleanup");
 
 const commonHeadings = [
   "## Authority and Scope",
@@ -49,6 +55,18 @@ async function readOrientation(): Promise<Orientation> {
   return JSON.parse(
     await readFile(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json"), "utf8"),
   ) as Orientation;
+}
+
+function laneAProvenance(subgroup: Subgroup) {
+  return {
+    projectRoot: root,
+    coreEvidenceRoot,
+    sourcePaths: subgroup.sourcePaths,
+    expectedCount: subgroup.subgroupId === "sandbox-runtime-and-store" ? 15 : 9,
+    expectedFingerprint: expectedLaneAFingerprints[subgroup.subgroupId as keyof typeof expectedLaneAFingerprints],
+    frozenCommit: frozenSourceCommit,
+    currentCommit: currentEvidenceCommit,
+  };
 }
 
 function subgroupFor(orientation: Orientation, subgroupId: string): Subgroup {
@@ -102,8 +120,7 @@ describe("Template Builder sandbox and structural documentation leaves", () => {
     const orientation = await readOrientation();
 
     expect(orientation.sourceCommit).toBe(frozenSourceCommit);
-    expect(subgroup.sourcePaths).toHaveLength(15);
-    expect(new Set(subgroup.sourcePaths).size).toBe(15);
+    await expectFrozenCurrentSourceProvenance(laneAProvenance(subgroup));
     expectHeadings(leaf, [...commonHeadings.slice(0, 2), ...sandboxHeadings, ...commonHeadings.slice(2)]);
   });
 
@@ -112,8 +129,7 @@ describe("Template Builder sandbox and structural documentation leaves", () => {
     const orientation = await readOrientation();
 
     expect(orientation.sourceCommit).toBe(frozenSourceCommit);
-    expect(subgroup.sourcePaths).toHaveLength(9);
-    expect(new Set(subgroup.sourcePaths).size).toBe(9);
+    await expectFrozenCurrentSourceProvenance(laneAProvenance(subgroup));
     expectHeadings(leaf, [...commonHeadings.slice(0, 2), ...structuralHeadings, ...commonHeadings.slice(2)]);
   });
 
@@ -167,6 +183,21 @@ describe("Template Builder sandbox and structural documentation leaves", () => {
     expect(() => expectImmutableCoreAnchors(`${sandbox.leaf}\nflowdoc-vnext-core@main:example.ts`)).toThrow();
     expect(() => expectNoFormerSourceLeakage(`${structural.leaf}\n${formerSource}`, sandbox.subgroup.sourcePaths)).toThrow();
     expect(() => expectNoFormerSourceLeakage(`${testSource}\n${formerSource}`, sandbox.subgroup.sourcePaths)).toThrow();
+  });
+
+  it("mutation: rejects reordered Lane A assignments at the provenance boundary", async () => {
+    const orientation = await readOrientation();
+    const sandbox = subgroupFor(orientation, "sandbox-runtime-and-store");
+    const structural = subgroupFor(orientation, "structural-runtime-and-navigation");
+
+    await expect(expectFrozenCurrentSourceProvenance({
+      ...laneAProvenance(sandbox),
+      sourcePaths: [...sandbox.sourcePaths].reverse(),
+    })).rejects.toThrow();
+    await expect(expectFrozenCurrentSourceProvenance({
+      ...laneAProvenance(structural),
+      sourcePaths: [...structural.sourcePaths].reverse(),
+    })).rejects.toThrow();
   });
 
   it("keeps only the two orientation-derived leaves in this documentation scope", async () => {

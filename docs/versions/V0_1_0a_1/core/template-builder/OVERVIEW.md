@@ -19,8 +19,8 @@ public vNext Core snapshot and accepted mutations
   ├─→ structural projection, packet application, commands, navigation
   ├─→ viewport prediction, scheduling, virtualized render windows
   └─→ browser-local WYSIWYG draft, selection, caret, IME guards
-        → rich-inline capture, commit, replay, session preparation,
-          and live/exact stale signaling
+        → rich-inline capture, commit, replay, JSON-safe replay-patch
+          validation/history-ready facts, and stale invalidation
 ```
 
 The store-backed model precedes the browser paths. Browser-local drafts, DOM
@@ -51,17 +51,21 @@ separation, guarded scheduling, windows, shells, spacers, virtual stacks, lazy
 detail, and anchors. WYSIWYG owns the textarea-first browser-local draft,
 selection/caret, text commands, IME guards, and planning-only affordances. Rich
 inline owns local segment/range hardening, accepted-plan commit, in-memory
-replay, session preparation, and stale invalidation.
+replay, JSON-safe replay-patch validation/history-ready facts, and stale
+invalidation.
 
 ## Evidence Flow
 
-The current evidence direction is: public package boundary → accepted mutation packets → browser-local cache/store facts → structural and viewport consumers → guarded local draft → accepted rich-inline commit/replay → session preparation and live/exact stale invalidation.
+The current evidence direction is: public package boundary → accepted mutation
+packets → browser-local cache/store facts → structural and viewport consumers →
+guarded local draft → accepted rich-inline commit/replay → JSON-safe
+replay-patch validation/history-ready facts.
 
 Twelve registered Evidence records preserve one material Core anchor per
 reviewed check. They establish bounded package, runtime, shape, guard,
-navigation, commit/replay, and preparation facts only; they do not combine into
-product readiness, renderer authority, persistence, collaboration, or
-performance proof.
+navigation, commit/replay, and validation/history-ready facts only; they do not
+combine into product readiness, renderer authority, persistence,
+collaboration, or performance proof.
 
 ## Current Verified State
 
@@ -69,8 +73,9 @@ At the pinned Core commit, reviewed source closure is 73 assigned / 73 unique /
 0 missing / 0 extra / 0 drift. Focused executable evidence supports the public
 package boundary, bounded packet/cache/store behavior, read-only structural
 projection and fail-closed navigation, browser-local viewport composition,
-textarea-first draft guards, accepted-plan rich commit/replay, JSON-safe session
-preparation, and live/exact stale invalidation. Historical phase chronology and
+textarea-first draft guards, accepted-plan rich commit/replay, JSON-safe
+rich-inline replay-patch validation/history-ready facts, and live/exact stale
+invalidation. Historical phase chronology and
 historical `PASS` wording are not current authority by themselves.
 
 ## Known Limits and Unknowns
@@ -80,8 +85,10 @@ package truth, and packet v1 is neither durable nor public. The 72-section /
 936-node fixture is bounded synthetic shape evidence, not wall-clock
 performance, DOM recycling, real-document scaling, or production rendering.
 The active input remains textarea-first; the hardened contenteditable surface
-is hidden/fallback evidence. Session records do not perform storage-adapter
-writes, and live/exact stale signaling does not prove renderer or export parity.
+is hidden/fallback evidence. The replay-validation helper creates no package
+snapshot or persisted session record, reports no storage record/write, and does
+not execute replay. Live/exact stale signaling does not prove renderer or export
+parity.
 Production editor integration, durable persistence, collaboration, renderer
 output, and performance readiness remain unknown.
 

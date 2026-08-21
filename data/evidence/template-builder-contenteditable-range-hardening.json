@@ -5,6 +5,6 @@
   "repositoryId": "repo-core",
   "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
   "pathOrContractId": "examples/template-builder-sandbox/public/draftContenteditableSurfaceHardening.js",
-  "verificationSummary": "The hardening module validates browser-local root, target, text, selection, nested-endpoint, and composition facts; the surface remains hidden/fallback evidence and is not a production primary editor, persistence layer, or renderer.",
+  "verificationSummary": "The hardening module validates supplied browser-local root, target, text, selection, nested-endpoint, and composition facts; this anchor does not establish whether the surface is hidden/fallback or active, and it provides no persistence or renderer authority.",
   "verifiedAt": "2026-08-21T00:00:00.000Z"
 }

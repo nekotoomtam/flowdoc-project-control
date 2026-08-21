@@ -5,7 +5,7 @@
   "path": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
   "nodeIds": ["template-builder"],
   "role": "contract",
-  "authority": "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, JSON-safe session-record preparation, and live/exact stale invalidation; production contenteditable input, storage writes, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
+  "authority": "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, live/exact stale invalidation, and JSON-safe rich-inline replay-patch validation/history-ready facts; the validation helper creates no package snapshot, persisted session record, or storage record, performs no storage write, and executes no replay, while production contenteditable input, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
   "lifecycle": "active",
   "repositoryRefs": [
     {

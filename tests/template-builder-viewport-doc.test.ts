@@ -1,16 +1,13 @@
-import { execFile as execFileCallback } from "node:child_process";
-import { createHash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
-import { promisify } from "node:util";
 import { describe, expect, it } from "vitest";
+import { expectFrozenCurrentSourceProvenance } from "./template-builder-source-provenance.js";
 
 const root = process.cwd();
 const currentEvidenceCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
 const frozenSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const expectedFrozenViewportSourceFingerprint = "a9088afe0a43bf45d050178c314465ab2c1f104bc6474ea9a5ce212069b7de92";
 const coreEvidenceRoot = resolve(root, "..", "..", "..", "flowdoc-vnext-core", ".worktrees", "core-route-documentation-cleanup");
-const execFile = promisify(execFileCallback);
 
 const headings = [
   "## Authority and Scope",
@@ -42,21 +39,10 @@ interface Orientation {
   families: Array<{ familyId: string; subgroups: Subgroup[] }>;
 }
 
-interface Inventory {
-  sourceCommit: string;
-  files: Array<{ path: string; blobId: string }>;
-}
-
 async function readOrientation(): Promise<Orientation> {
   return JSON.parse(
     await readFile(join(root, "migrations/V0_1_0a_1/core/wave-a-orientation.json"), "utf8"),
   ) as Orientation;
-}
-
-async function readInventory(): Promise<Inventory> {
-  return JSON.parse(
-    await readFile(join(root, "migrations/V0_1_0a_1/core/inventory.json"), "utf8"),
-  ) as Inventory;
 }
 
 function viewportSubgroup(orientation: Orientation): Subgroup {
@@ -73,39 +59,16 @@ async function viewportLeaf(): Promise<{ subgroup: Subgroup; leaf: string }> {
   return { subgroup, leaf: await readFile(join(root, subgroup.proposedLeafPath), "utf8") };
 }
 
-function frozenSourceFingerprint(sourcePaths: readonly string[], inventory: Inventory): string {
-  const blobsByPath = new Map(inventory.files.map(({ path, blobId }) => [path, blobId]));
-  const sourceRows = sourcePaths.map((path) => `${path}\0${blobsByPath.get(path) ?? ""}`);
-  return createHash("sha256").update(sourceRows.join("\n"), "utf8").digest("hex");
-}
-
 async function expectFrozenViewportProvenance(sourcePaths: readonly string[]): Promise<void> {
-  const inventory = await readInventory();
-  const blobsByPath = new Map(inventory.files.map(({ path, blobId }) => [path, blobId]));
-
-  expect(inventory.sourceCommit).toBe(frozenSourceCommit);
-  expect(sourcePaths).toHaveLength(19);
-  expect(new Set(sourcePaths).size).toBe(19);
-  expect(frozenSourceFingerprint(sourcePaths, inventory)).toBe(expectedFrozenViewportSourceFingerprint);
-  expect(await coreGit(["rev-parse", "--verify", `${frozenSourceCommit}^{commit}`])).toBe(frozenSourceCommit);
-  expect(await coreGit(["rev-parse", "--verify", `${currentEvidenceCommit}^{commit}`])).toBe(currentEvidenceCommit);
-  expect(await coreGit(["rev-parse", "HEAD"])).toBe(currentEvidenceCommit);
-
-  await Promise.all(sourcePaths.map(async (path) => {
-    const expectedBlob = blobsByPath.get(path);
-    expect(expectedBlob).toMatch(/^[0-9a-f]{40}$/);
-    const [frozenBlob, currentBlob] = await Promise.all([
-      coreGit(["rev-parse", `${frozenSourceCommit}:${path}`]),
-      coreGit(["rev-parse", `${currentEvidenceCommit}:${path}`]),
-    ]);
-    expect(frozenBlob).toBe(expectedBlob);
-    expect(currentBlob).toBe(expectedBlob);
-  }));
-}
-
-async function coreGit(args: string[]): Promise<string> {
-  const { stdout } = await execFile("git", args, { cwd: coreEvidenceRoot, encoding: "utf8" });
-  return stdout.trim();
+  await expectFrozenCurrentSourceProvenance({
+    projectRoot: root,
+    coreEvidenceRoot,
+    sourcePaths,
+    expectedCount: 19,
+    expectedFingerprint: expectedFrozenViewportSourceFingerprint,
+    frozenCommit: frozenSourceCommit,
+    currentCommit: currentEvidenceCommit,
+  });
 }
 
 function expectImmutableCoreAnchors(leaf: string): void {

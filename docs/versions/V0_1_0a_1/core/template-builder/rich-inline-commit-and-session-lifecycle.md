@@ -15,11 +15,12 @@ lifecycle after the browser-local draft guard. Template Builder remains
 
 This leaf owns contenteditable-like segment and range facts, local rich state,
 commit planning and accepted application, in-memory rich replay, JSON-safe
-session-record preparation, and live/exact stale signaling. It excludes
-renderer artifacts, storage-adapter writes, replay execution from storage,
-collaboration merge, production contenteditable input replacement, and
-renderer- or DOM-caret authority. The prerequisite draft and IME policy belongs
-to [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md).
+rich-inline replay-patch validation and history-ready facts, and live/exact
+stale signaling. It excludes package-snapshot or persisted-session-record
+creation, renderer artifacts, storage-adapter writes, replay execution from
+storage, collaboration merge, production contenteditable input replacement,
+and renderer- or DOM-caret authority. The prerequisite draft and IME policy
+belongs to [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md).
 
 ## Segment Capture and UTF-16 Range Mapping
 
@@ -91,14 +92,16 @@ behavior, merge collaboration changes, or establish renderer/export parity.
 `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineCommit.ts`
 `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineCommit.test.ts`
 
-## Storage-ready JSON-safe Session Records
+## JSON-safe Replay-patch Validation and History-ready Facts
 
-Session preparation creates JSON-safe records that retain bounded package,
-history, and before/after-child facts and validates replay payload shapes.
-Those records are storage-ready only: no storage adapter write, filesystem or
-browser write, backend call, route dispatch, replay execution, or collaboration
-merge is run by this lifecycle. A record is not renderer truth or an accepted
-restored session.
+The helper creates JSON-safe rich-inline replay-patch validations and
+history-ready facts. It reports history-ready and rich-history counts,
+before/after child snapshots and inline counts, field keys, validation status,
+and issues. Its contract explicitly records `storageRecord: false`,
+`storageWrites: false`, and `replayExecution: false`; it creates no package
+snapshot or persisted session record and performs no route dispatch, backend
+call, conflict resolution, selection restore, collaboration merge, or renderer
+work.
 
 `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineSessionPersistence.ts`
 `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineSessionPersistence.test.ts`
@@ -123,15 +126,15 @@ browser-local until an accepted fresh plan enters the bridge. IME blocks rich
 commit and range commands. Unsupported ranges, text mismatch, missing keys,
 overlaps, planner drift, and revision drift fail closed; stale plans are
 rejected without applying an in-memory replacement. Accepted commit and replay
-preserve bounded field/style child facts and mark stale signals, while session
-records remain preparation only.
+preserve bounded field/style child facts and mark stale signals, while
+replay-patch validations remain JSON-safe facts only.
 
 ## Current Verified State
 
 At the pinned Core evidence commit, focused rich-inline commit and live/exact
 tests cover the accepted-plan gate, stale rejection, vNext helper behavior,
 field-key and history-ready facts, replay behavior, JSON-safe record
-preparation, and invalidation-only signals. The sandbox boundary suite covers
+validation, and invalidation-only signals. The sandbox boundary suite covers
 the browser-local capture, guard, state, and planning inputs. This is bounded
 implementation evidence, not production readiness.
 
@@ -144,9 +147,10 @@ implementation evidence, not production readiness.
 This leaf does not establish production contenteditable input, canonical package
 truth for browser-local state, durable persistence, storage replay execution,
 collaboration behavior, renderer output, exact artifacts, export parity, or a
-renderer/DOM caret contract. Session preparation is not a storage system. Live
-and exact signals do not establish rendering. UTF-16 mapping stays local to
-supported segment facts.
+renderer/DOM caret contract. Live and exact signals do not establish rendering.
+The replay-validation helper creates no package snapshot, persisted session
+record, or storage record, performs no storage write, and does not execute
+replay. UTF-16 mapping stays local to supported segment facts.
 
 ## Historical Design Notes
 
