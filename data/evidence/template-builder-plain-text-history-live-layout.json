@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-plain-text-history-live-layout",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+  "verificationSummary": "Focused boundary checks verify bounded in-memory plain-text history and live-layout stale summaries; they do not establish durable history, exact layout, renderer output, storage, or export parity.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

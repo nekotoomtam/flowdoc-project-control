@@ -1,7 +1,7 @@
 # Core Document Map
 
 Core consolidation is incomplete. This map is intentionally partial.
-This map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.
+This map records the completed pilot family and the completed Text Engine and Template Builder documentation syntheses; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 
@@ -33,6 +33,17 @@ No other Core document deletion is authorized by this closure.
 
 Text Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.
 
+## Template Builder Family Documentation
+
+- [Template Builder Overview](template-builder/OVERVIEW.md)
+- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)
+- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)
+- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)
+- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)
+- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)
+
+Template Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.
+
 ## Shared Glossaries
 
 - [Glossary](../../../GLOSSARY.md)
@@ -42,7 +53,8 @@ Text Engine documentation synthesis is complete across four bounded leaves and o
 
 `CORE_OVERVIEW.md` is intentionally unpublished until the broader Core
 synthesis is complete. Unreviewed Core families remain in candidate/inventory
-state. Text Engine documentation is synthesized, while migration coverage,
-active-reference repair, publication review, and any separately authorized
-cleanup remain incomplete. Text Engine and broader Core therefore remain
-`unknown`; no source cleanup is authorized.
+state. Text Engine and Template Builder documentation are synthesized, while
+migration coverage, active-reference repair, publication review, and any
+separately authorized cleanup remain incomplete. Both documentation-family
+Nodes and broader Core therefore remain `unknown`; no source cleanup is
+authorized.

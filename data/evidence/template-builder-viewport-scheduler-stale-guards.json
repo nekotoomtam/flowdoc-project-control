@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-viewport-scheduler-stale-guards",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+  "verificationSummary": "Focused scheduler checks reject stale, revision-mismatched, draft-protected, IME-protected, blocked, and stable candidates before apply; these are correctness guards, not timing or performance evidence.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

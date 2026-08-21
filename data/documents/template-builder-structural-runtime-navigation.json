@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-template-builder-structural-runtime-navigation",
+  "title": "Template Builder Structural Runtime and Navigation",
+  "path": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md",
+  "nodeIds": ["template-builder"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified read-only structural projection, non-public packet-v1 foundation transport, bounded structural bridge/store application, command policy, outline jumps, and fail-closed diagnostics navigation; durable/public transport, persistence, collaboration, production editing, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/structuralPacket.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts"
+    }
+  ]
+}

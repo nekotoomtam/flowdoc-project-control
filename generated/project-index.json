@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "8b7b38f6ae97c08ebbfb3598d7ddee8d68ca7d6b3fcd8d7ab436e45749ba25cc",
+  "sourceDigest": "0e2cdabc253b3888926803d5127a66ee107ca8ee8e126ad46eeb2b209c68482e",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -92,6 +92,43 @@
     },
     {
       "kind": "node",
+      "id": "template-builder",
+      "title": "Template Builder",
+      "parentId": "core",
+      "summary": "Template Builder documentation synthesis is complete across five bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while production editor integration, durable persistence, collaboration, renderer output, and performance readiness remain unknown.",
+      "truthState": "unknown",
+      "order": 30,
+      "documentIds": [
+        "doc-template-builder-sandbox-runtime-store",
+        "doc-template-builder-viewport-virtualized-rendering",
+        "doc-template-builder-structural-runtime-navigation",
+        "doc-template-builder-wysiwyg-draft-guards",
+        "doc-template-builder-rich-inline-session-lifecycle",
+        "doc-template-builder-overview"
+      ],
+      "evidenceIds": [
+        "evidence-template-builder-sandbox-package-boundary",
+        "evidence-template-builder-runtime-store-packet-application",
+        "evidence-template-builder-plain-text-history-live-layout",
+        "evidence-template-builder-viewport-large-document-shape",
+        "evidence-template-builder-viewport-scheduler-stale-guards",
+        "evidence-template-builder-structural-packet-projection",
+        "evidence-template-builder-structural-diagnostics-navigation",
+        "evidence-template-builder-wysiwyg-local-draft-eligibility",
+        "evidence-template-builder-wysiwyg-ime-planning-guards",
+        "evidence-template-builder-contenteditable-range-hardening",
+        "evidence-template-builder-rich-inline-commit-replay",
+        "evidence-template-builder-session-live-exact-boundary"
+      ],
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "childIds": [],
+      "workIds": []
+    },
+    {
+      "kind": "node",
       "id": "backend",
       "title": "Backend",
       "parentId": "flowdoc",
@@ -111,7 +148,7 @@
       "id": "core",
       "title": "Core",
       "parentId": "flowdoc",
-      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview, while migration coverage, reference repair, and family promotion remain incomplete.",
+      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families.",
       "truthState": "unknown",
       "order": 20,
       "documentIds": [
@@ -123,7 +160,8 @@
       ],
       "childIds": [
         "core-route",
-        "text-engine"
+        "text-engine",
+        "template-builder"
       ],
       "workIds": []
     },
@@ -370,7 +408,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
         }
       ],
-      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine documentation synthesis; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine documentation is synthesized, while migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete. Text Engine and broader Core therefore remain\n`unknown`; no source cleanup is authorized.\n"
+      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine and Template Builder documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n"
     },
     {
       "kind": "document",
@@ -438,7 +476,177 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
         }
       ],
-      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder is only a separate, unregistered plan boundary. Its candidate sources are not authoritative and are not deletable; any work on that family requires its own classification, Evidence, coverage, review, and authorization transaction.\n"
+      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-overview",
+      "title": "Template Builder Overview",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/OVERVIEW.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "current-state",
+      "authority": "Current-state family overview limited to ownership relationships and evidence flow among the five reviewed canonical Template Builder leaves; migration coverage, reference repair, publication review, cleanup authority, production editor integration, persistence, collaboration, renderer output, performance readiness, and broader Core truth remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md"
+        }
+      ],
+      "content": "# Template Builder Overview\n\n## Authority and Status\n\nThis documentation family is governed by the immutable 73-source Template\nBuilder assignment in\n`migrations/V0_1_0a_1/core/wave-a-orientation.json`. Its frozen Core source\ncommit is `76a2f2311a898e781f53773390d47b05812911e4`, and current executable evidence\nis pinned to read-only Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. Template Builder and parent Core remain `unknown`; this overview does not promote either scope.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while production editor integration, durable persistence, collaboration, renderer output, and performance readiness remain unknown.\n\n## Family Architecture\n\n```text\npublic vNext Core snapshot and accepted mutations\n  → sandbox runtime/cache/store-backed render model\n  ├─→ structural projection, packet application, commands, navigation\n  ├─→ viewport prediction, scheduling, virtualized render windows\n  └─→ browser-local WYSIWYG draft, selection, caret, IME guards\n        → rich-inline capture, commit, replay, session preparation,\n          and live/exact stale signaling\n```\n\nThe store-backed model precedes the browser paths. Browser-local drafts, DOM\nstate, caches, and layout summaries are not canonical truth; accepted vNext\nCore mutations remain the canonical path. Cross-references express dependency\ndirection and do not transfer authority between leaves.\n\n## Canonical Documents\n\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [Structural Runtime, Commands, and Navigation](structural-runtime-and-navigation.md)\n- [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\nThese five links are the ownership boundary. Each leaf carries its detailed\ncontract, state and failure model, verified facts, limits, and executable Core\nanchors; this overview does not repeat those leaf tables.\n\n## Ownership Map\n\nThe sandbox leaf owns public-package extraction, snapshot normalization,\naccepted mutation packets, cache/store application, bounded plain-text history,\nstore-backed render facts, and live-layout summaries. Structural owns read-only\nprojection, packet-v1 constraints, bounded commands, outline jumps, and\nfail-closed diagnostics navigation. Viewport owns request/prediction/measurement\nseparation, guarded scheduling, windows, shells, spacers, virtual stacks, lazy\ndetail, and anchors. WYSIWYG owns the textarea-first browser-local draft,\nselection/caret, text commands, IME guards, and planning-only affordances. Rich\ninline owns local segment/range hardening, accepted-plan commit, in-memory\nreplay, session preparation, and stale invalidation.\n\n## Evidence Flow\n\nThe current evidence direction is: public package boundary → accepted mutation packets → browser-local cache/store facts → structural and viewport consumers → guarded local draft → accepted rich-inline commit/replay → session preparation and live/exact stale invalidation.\n\nTwelve registered Evidence records preserve one material Core anchor per\nreviewed check. They establish bounded package, runtime, shape, guard,\nnavigation, commit/replay, and preparation facts only; they do not combine into\nproduct readiness, renderer authority, persistence, collaboration, or\nperformance proof.\n\n## Current Verified State\n\nAt the pinned Core commit, reviewed source closure is 73 assigned / 73 unique /\n0 missing / 0 extra / 0 drift. Focused executable evidence supports the public\npackage boundary, bounded packet/cache/store behavior, read-only structural\nprojection and fail-closed navigation, browser-local viewport composition,\ntextarea-first draft guards, accepted-plan rich commit/replay, JSON-safe session\npreparation, and live/exact stale invalidation. Historical phase chronology and\nhistorical `PASS` wording are not current authority by themselves.\n\n## Known Limits and Unknowns\n\nThe sandbox is not a production editor, browser-local state is not canonical\npackage truth, and packet v1 is neither durable nor public. The 72-section /\n936-node fixture is bounded synthetic shape evidence, not wall-clock\nperformance, DOM recycling, real-document scaling, or production rendering.\nThe active input remains textarea-first; the hardened contenteditable surface\nis hidden/fallback evidence. Session records do not perform storage-adapter\nwrites, and live/exact stale signaling does not prove renderer or export parity.\nProduction editor integration, durable persistence, collaboration, renderer\noutput, and performance readiness remain unknown.\n\n## Migration and Cleanup Boundary\n\nNo Template Builder migration coverage, reference repair, publication review,\ncleanup Evidence, deletion Work, cleanup commit, or family promotion is created\nby this synthesis. No source cleanup is authorized. Former source deletion\nrequires a later, separately reviewed transaction.\n\n## Evidence Anchors\n\nThe five reviewed canonical leaves are immutably anchored in Project Control:\n\n- `flowdoc-project-control@5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0:docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md (Git blob 89b6f20aed93ef2b2a18a516b44b3c243a96787b)`\n- `flowdoc-project-control@5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0:docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md (Git blob 42987ef843d4e466e7295546f56b903b2bc4e1df)`\n- `flowdoc-project-control@5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0:docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md (Git blob d3c34b7d14e6f1dfd7783f449d66f1dc103a6480)`\n- `flowdoc-project-control@5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0:docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md (Git blob a8288ba8b20d41140ab225f5b237991dc064e4bb)`\n- `flowdoc-project-control@5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0:docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md (Git blob 13d41032f395c5ec6eb2007f4999d35ef2cc07ce)`\n\nAll strong current claims in those leaves remain pinned to immutable Core\ncommit `c503a45c03e0ce3b7a6efba2b029ca842017faa0`. Unresolved or excluded claims\nremain explicit `unknown`; registration does not inflate their authority.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-rich-inline-session-lifecycle",
+      "title": "Template Builder Rich Inline Commit and Session Lifecycle",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, JSON-safe session-record preparation, and live/exact stale invalidation; production contenteditable input, storage writes, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "examples/template-builder-sandbox/public/draftContenteditableSurfaceHardening.js"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/richInlineCommit.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/authoring/richInlineSessionPersistence.ts"
+        }
+      ],
+      "content": "# Rich Inline Capture, Commit, Replay, and Session Lifecycle\n\n## Authority and Scope\n\nThis canonical leaf consolidates the 15 sources assigned by the reviewed\nTemplate Builder orientation subgroup: **15 assigned / 15 unique / 0 missing /\n0 extra / 0 drift**. The frozen source commit is\n`76a2f2311a898e781f53773390d47b05812911e4`; every assigned blob is identical\nat the read-only current evidence commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. It owns the bounded rich-inline\nlifecycle after the browser-local draft guard. Template Builder remains\n`unknown`.\n\n## Responsibility Boundary\n\nThis leaf owns contenteditable-like segment and range facts, local rich state,\ncommit planning and accepted application, in-memory rich replay, JSON-safe\nsession-record preparation, and live/exact stale signaling. It excludes\nrenderer artifacts, storage-adapter writes, replay execution from storage,\ncollaboration merge, production contenteditable input replacement, and\nrenderer- or DOM-caret authority. The prerequisite draft and IME policy belongs\nto [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md).\n\n## Segment Capture and UTF-16 Range Mapping\n\nBrowser-owned segment capture normalizes plain-text, styled-run, and atomic-chip\nfacts without package mutation. Local mapping converts supported endpoints to\nFlowDoc UTF-16 code-unit offsets and rejects mismatched text, unsupported styled\nor atomic cases, overlap, and drift. This mapping is local planner evidence,\nnot a DOM `Range` binding, a renderer measurement, or a DOM/renderer caret\ncontract. It neither changes package truth nor executes a rich commit.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftContenteditableSegmentCapture.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftContenteditableRangeMapping.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Contenteditable Hardening Boundary\n\nHardening validates local root, target, text, selection, nested-endpoint, and\ncomposition facts for the contenteditable-style surface. It is bounded hidden\nor fallback evidence: current active authoring remains textarea-first, and the\nhardened surface is not the active primary input. Hardening does not itself run\na core transaction, record history, request layout, write storage, or make a\nproduction editor claim. Composition-active state remains guarded before range\nor rich-commit work.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftContenteditableSurfaceHardening.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/wysiwygPrimaryInputDecisionGate.test.ts`\n\n## Browser-local Rich State\n\nNormalized local rich state deterministically combines plain text, styled runs,\nand atomic field-chip facts while rejecting ambiguous overlaps and revision\ndrift. Local style and field facts are preserved as planner input, not treated\nas canonical authored children, durable history, collaborative state, live\nlayout, or renderer output. Local patch and field insertion execution remains\nbounded until the planner admits a fresh replacement plan.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRichInlineState.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRichInlinePatchExecution.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftFieldChipInsertExecution.js`\n\n## Commit Planning and Accepted Application\n\nThe planner maps guarded local state to validated vNext inline-child facts and\nblocks stale revision, document drift, overlaps, unsupported marks, and missing\nkeys before mutation. Rich mutation requires an accepted fresh plan: the bridge\naccepts only the normalized replacement plan when its base and document revision\nmatch the in-memory sandbox revision. Stale plans are rejected, including before\nthe bridge request where applicable. An accepted plan uses the vNext-native\nhelper to replace validated `text` and `field-ref` children, preserve field and\nstyle facts, create bounded history-ready facts, and mark output stale. This is\nan in-memory sandbox package behavior, not a canonical package, durable\npersistence, collaboration transaction, renderer result, or export result.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRichInlineCommitPlan.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineCommit.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineCommit.test.ts`\n\n## In-memory Undo and Redo Replay\n\nSandbox undo and redo replay full before/after inline children through the same\nvNext-native rich-inline helper. This bounded in-memory path preserves field and\nstyle facts and repeats stale invalidation after accepted replay. It does not\nrestore a session, write or read a durable history store, provide granular CRDT\nbehavior, merge collaboration changes, or establish renderer/export parity.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineCommit.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineCommit.test.ts`\n\n## Storage-ready JSON-safe Session Records\n\nSession preparation creates JSON-safe records that retain bounded package,\nhistory, and before/after-child facts and validates replay payload shapes.\nThose records are storage-ready only: no storage adapter write, filesystem or\nbrowser write, backend call, route dispatch, replay execution, or collaboration\nmerge is run by this lifecycle. A record is not renderer truth or an accepted\nrestored session.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineSessionPersistence.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineSessionPersistence.test.ts`\n\n## Live/Exact Stale Invalidation Only\n\nAccepted rich commit, undo, and redo mark shared live-layout and exact-generation\nsignals stale. This is stale invalidation only; it does not render a live\nresult, generate an exact artifact, prove renderer or export parity, produce\nPDF/DOCX output, or establish renderer-backed measurement. It also performs no\nstorage write. The sandbox and viewport leaves own their separate bounded\nsummaries and render-window contracts.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/authoring/richInlineCommit.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineLiveExactParityAudit.test.ts`\n\n## State and Failure Model\n\nSegment capture, mapping, hardening, local style/chip state, and planning remain\nbrowser-local until an accepted fresh plan enters the bridge. IME blocks rich\ncommit and range commands. Unsupported ranges, text mismatch, missing keys,\noverlaps, planner drift, and revision drift fail closed; stale plans are\nrejected without applying an in-memory replacement. Accepted commit and replay\npreserve bounded field/style child facts and mark stale signals, while session\nrecords remain preparation only.\n\n## Current Verified State\n\nAt the pinned Core evidence commit, focused rich-inline commit and live/exact\ntests cover the accepted-plan gate, stale rejection, vNext helper behavior,\nfield-key and history-ready facts, replay behavior, JSON-safe record\npreparation, and invalidation-only signals. The sandbox boundary suite covers\nthe browser-local capture, guard, state, and planning inputs. This is bounded\nimplementation evidence, not production readiness.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineCommit.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/richInlineLiveExactParityAudit.test.ts`\n\n## Known Limits and Unknowns\n\nThis leaf does not establish production contenteditable input, canonical package\ntruth for browser-local state, durable persistence, storage replay execution,\ncollaboration behavior, renderer output, exact artifacts, export parity, or a\nrenderer/DOM caret contract. Session preparation is not a storage system. Live\nand exact signals do not establish rendering. UTF-16 mapping stays local to\nsupported segment facts.\n\n## Historical Design Notes\n\nHistorical re-entry, rebaseline, and close-audit phases capture sequence and\nfuture work, but their chronology and `PASS` labels are not authority for\ncurrent production claims. Current code and focused tests establish only the\nbounded implementation stated here; planned work remains planning, not\nproduction readiness.\n\n## Canonical Cross-references\n\n- [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md)\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [Structural Runtime, Commands, and Navigation](structural-runtime-and-navigation.md)\n\n## Evidence Anchors\n\nAll strong current claims are pinned to immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The reviewed orientation retains\nthe exact frozen assignment and provenance; this leaf deliberately does not\nrepeat former source paths.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-sandbox-runtime-store",
+      "title": "Template Builder Sandbox Runtime and Store",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to the verified public-Core sandbox package boundary, bounded packet/cache/store application, in-memory plain-text history, and live-layout stale summaries; production editor integration, canonical storage, durable persistence, collaboration, renderer output, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "examples/template-builder-sandbox/package.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts"
+        }
+      ],
+      "content": "# Sandbox Runtime, Mutation Packets, and Store-backed Render Model\n\n## Authority and Scope\n\nThis canonical leaf consolidates the 15 sources assigned by the reviewed\nTemplate Builder orientation subgroup. It documents only the browser sandbox\nboundary, normalization, accepted plain-text packet handling, derived runtime\nfacts, bounded in-memory history, and live-layout invalidation summaries.\nTemplate Builder remains `unknown`.\n\n## Responsibility Boundary\n\nThe sandbox consumes public-Core snapshots and accepted mutation responses, then\nderives browser-local cache, lookup, and render-model facts. It does not own\nstructural packet semantics, viewport policy, draft input, rich-inline commit,\nstorage, renderer output, persistence, or collaboration. Structural packet\nsemantics belong to\n[Structural Runtime, Commands, and Navigation](structural-runtime-and-navigation.md).\n\n## Current Package Boundary\n\nThe extractable sandbox package declares `@flowdoc/vnext-core` as its dependency;\nthe snapshot boundary identifies that import as the public entrypoint. This is a\npackage-consumer boundary, not an editor-product readiness claim.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/package.json`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/coreBoundary.ts`\n\n## Runtime Normalization\n\nThe snapshot adapter produces tree-shaped boot and diagnostic metadata, while\nthe browser runtime store derives lookup indexes and the editor view keeps\nvisible-range concerns distinct from those indexes. The boot snapshot is not\nrefreshed automatically after packet application and may therefore be stale.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/coreBoundary.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeStore.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/editorView.js`\n\n## Mutation Packets\n\nPlain-text bridge actions enter public-Core transactions and return bounded\npacket responses with revision, changed-node, diagnostic, and issue facts; they\ndo not return a replacement document tree. Packet handling is local sandbox\ntransport only. Explicit insert and replace actions are not per-keystroke\ncaret input.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeCache.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Cache and Store Application\n\nThe browser-safe cache validates packets, updates runtime metadata, and\ncoordinates rebuilds. Accepted text packets update copied runtime-store text\nfacts; the store-backed render model reads active tree/canvas facts from that\nderived store. These browser-local structures are not document truth and do not\nestablish a renderer.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeCache.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeStore.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/renderModel.js`\n\n## Plain-text Actions and History\n\nAccepted plain-text transactions expose a bounded in-memory authoring-history\nsummary. Undo and redo replay sandbox-held plain-text patches through normal\nCore transactions and packet responses; no cross-session history behavior is\nestablished here.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/coreBoundary.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Live-layout Summaries\n\nAccepted mutations can carry bounded affected-scope and freshness summaries.\nThey report invalidation and exact-generation staleness only; they neither run\nexact layout nor produce renderer output.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/coreBoundary.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## State and Failure Model\n\nInvalid or rejected packets do not advance the accepted runtime state. The\nruntime cache rejects malformed packet identity and revision conditions; a\npacket-applied store may diverge from the immutable boot snapshot by design.\nSelection and shell interaction state stay browser-local.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeCache.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Current Verified State\n\nAt the pinned Core commit, the focused boundary suite covers public-package\nconsumption, packet-only plain-text responses, cache/store application,\nbrowser-only selection, bounded history, and live-layout summaries. This is\nfocused foundation evidence, not broad product evidence.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Known Limits and Unknowns\n\nThe sandbox is not a production editor. This leaf does not establish\ndocument storage, durable history, rendering or export parity, exact layout,\nor collaboration. Viewport behavior is bounded separately in\n[Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md),\nand browser draft behavior is bounded separately in\n[WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md).\n\n## Historical Design Notes\n\nThe source assignment preserves historical boundary decisions, but historical\nphase labels and `PASS` wording are not current authority. The 15 assigned\nsources are closed into this leaf only through the reviewed orientation and the\npinned executable anchors above.\n\n## Canonical Cross-references\n\n- [Structural Runtime, Commands, and Navigation](structural-runtime-and-navigation.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\n## Evidence Anchors\n\nAll strong current claims above are anchored to immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The authoritative source\nassignment and frozen commit are retained in\n`migrations/V0_1_0a_1/core/wave-a-orientation.json`; this leaf does not\nreproduce historical source paths.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-structural-runtime-navigation",
+      "title": "Template Builder Structural Runtime and Navigation",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified read-only structural projection, non-public packet-v1 foundation transport, bounded structural bridge/store application, command policy, outline jumps, and fail-closed diagnostics navigation; durable/public transport, persistence, collaboration, production editing, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/structuralPacket.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts"
+        }
+      ],
+      "content": "# Structural Runtime, Commands, and Navigation\n\n## Authority and Scope\n\nThis canonical leaf consolidates the nine sources assigned by the reviewed\nTemplate Builder orientation subgroup. It covers the read-only structural\nprojection, local packet-v1 foundation transport, accepted structural bridge\nand store application, bounded command policy, outline jumps, and diagnostics\nnavigation. Template Builder remains `unknown`.\n\n## Responsibility Boundary\n\nThis leaf owns structural-tree semantics and their browser-local navigation\nconstraints. It does not own generic runtime-cache rules, viewport windowing,\ndraft input, rich-inline lifecycle, storage, persistence, collaboration, or\nproduction editor integration. Generic cache/store facts remain in\n[Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md).\n\n## Structural Projection\n\n`createStructuralProjection(...)` derives a tree-shaped working view from a\ndocument and relationship-graph facts. Its structures are read-only and the\nfocused test verifies materializing the projection does not mutate the\ncanonical document.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/structure/projection.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/structuralProjection.test.ts`\n\n## Packet v1\n\n`createStructuralChangePacket(...)` represents accepted Core structural\noperation results; `validateStructuralChangePacket(...)` checks source,\nversion, stage, revisions, operation metadata, and invalidation facts. Packet\nv1 is non-public, non-durable local foundation transport; it is not a storage,\nhistory, replay, or collaboration protocol.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/structure/packet.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/structuralPacket.test.ts`\n\n## Command Policy\n\nThe DOM-free policy module evaluates availability, targets, request routes, and\npost-result selection for bounded insert-text-block, delete, and reorder\nactions. It blocks commands for missing selection, active drafts, busy bridge\nstate, or unavailable node capability; it does not establish a backend API.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/structuralCommandPolicy.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Outline Jumps\n\nAn outline jump accepts only a matching node identifier and node fact, then\ncreates a browser-local node-aware visible-range request. A missing node is\nblocked, and no structural edit is implied by navigation.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/structuralOutlineNavigation.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Diagnostics Navigation\n\nDiagnostics navigation accepts a jump only when the item has a node identifier\nthat exists in the current runtime index. Document-level items and missing or\nunknown node identifiers fail closed; no nearest-node fallback is used.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/structuralDiagnosticsNavigation.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/structuralOutlineNavigation.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## State and Failure Model\n\nThe sandbox bridge returns packet-only results from accepted Core structural\noperations. Runtime-store application validates packet identity and rejects\nmalformed, stale, or non-applied packets before rebuilding derived indexes. An\naccepted application does not mutate the boot snapshot, which may be stale\nafter the packet is applied.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/src/mutationBridge.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeStoreStructuralPacket.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/runtimeCache.js`\n\n## Current Verified State\n\nAt the pinned Core commit, the focused structural suites cover projection and\npacket construction/validation, while the sandbox boundary suite contains the\nstructural bridge, store-application, command, outline, and fail-closed\ndiagnostics checks. This bounded evidence does not promote Template Builder.\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/structuralProjection.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/structuralPacket.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Known Limits and Unknowns\n\nStructural foundation transport does not establish a public contract, durable\noperation history, storage writes, collaboration, rendering, or product-ready\neditor behavior. Viewport restoration is owned by\n[Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md),\nwhile draft interaction is owned by\n[WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md).\n\n## Historical Design Notes\n\nThe source assignment includes historical audit and UI ownership material. The\ncurrent policy owner is the DOM-free module cited above; phase chronology and\nhistorical `PASS` wording are not current authority. The nine assigned sources\nare closed into this leaf only through the reviewed orientation and immutable\nexecutable evidence.\n\n## Canonical Cross-references\n\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\n## Evidence Anchors\n\nAll strong current claims above are anchored to immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The authoritative source\nassignment and frozen commit are retained in\n`migrations/V0_1_0a_1/core/wave-a-orientation.json`; this leaf does not\nreproduce historical source paths.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-viewport-virtualized-rendering",
+      "title": "Template Builder Viewport and Virtualized Rendering",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified viewport requests, browser-local measurement, guarded scheduling, render windows, section shells, virtual stacks, lazy-detail plans, anchors, and the bounded synthetic 72-section/936-node shape; wall-clock performance, DOM recycling, production rendering, persistence, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts"
+        }
+      ],
+      "content": "# Viewport, Scheduler, and Virtualized Rendering\n\n## Authority and Scope\n\nThis canonical leaf consolidates the 19 sources assigned by the reviewed Template Builder orientation subgroup. It documents the bounded path from a store-backed render model through visible-range intent, browser-local measurement, guarded range application, scheduler facts, render windows, section shells, spacers, virtual stacks, lazy-detail plans, and viewport/node anchors. Template Builder remains `unknown`.\n\nCurrent executable evidence is pinned to immutable Core commit `c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The frozen assignment is `76a2f2311a898e781f53773390d47b05812911e4`; its closure is **19 assigned / 19 unique / 0 missing / 0 extra / 0 drift**. Historical phase wording is not independent current authority.\n\n## Responsibility Boundary\n\nViewport owns viewport prediction and rendering-window behavior after the store-backed model exists. The upstream sandbox owns snapshot normalization, accepted mutation/cache/store application, and browser-local render-model facts; this leaf neither changes nor makes those facts canonical. See [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md).\n\nViewport does not own structural mutation packet application, authoring draft input, contenteditable caret mapping, durable storage, API behavior, or renderer output. Its bounded state records and browser coordination do not establish a production editor.\n\n## Visible-range Requests and Resolution\n\nA request is request intent: it carries an anchor, reason, budget, overscan, and draft-preservation policy before node ids are resolved. A resolved visible range is a distinct index-derived result: section-window membership and node ids may honor section/node anchors, budget, overscan, and the debug `all-nodes` mode. A request does not resolve itself into rendering, and a resolved range is not a measurement.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/visibleRangeRequest.js#createVisibleRangeRequest`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/visibleRange.js#createVisibleRange`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportController.js#resolveViewportRangeRequest`\n\n## Request, Prediction, Measurement, and Apply\n\nThese facts have a deliberate direction and remain separate:\n\n- A viewport request is request intent, not a resolved range or render result.\n- Section offsets turn retained spacer heights into intervals; their predicted candidate is an advisory intersection/overscan result, not final layout truth.\n- Browser-local measurement facts normalize section-shell boxes and identify a most-visible anchor. They are not authored document data or exact geometry.\n- A guarded apply decision may turn a measurement or eligible candidate into a normal visible-range request. It can be manually invoked and does not make browser measurement canonical.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSectionOffsets.js#createViewportSectionOffsetIndex`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSectionOffsets.js#predictViewportFromSectionOffsets`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportMeasurement.js#createViewportMeasurement`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportMeasurement.js#createViewportMeasurementApplyRequest`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSchedulerApply.js#createViewportSchedulerApplyRequest`\n\n## Render Window, Shell, and Section Representation\n\nThe resolved render window consumes a resolved range to select active section and node membership without reading browser scroll state. The render shell retains ordered section representation: active-window sections carry detailed content while other shell sections remain placeholders. Thus section order and placeholder state are available without claiming that detailed content is mounted for every section.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/renderWindow.js#createRenderWindow`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/renderShell.js#createRenderShell`\n\n## Measured Spacers and Placeholder Estimates\n\nRendered section-shell heights are retained as measured spacer facts. A placeholder uses its prior rendered measurement when one exists, otherwise a default estimate; placeholder-only observation does not replace a retained measurement. The offset index derives section intervals and long-section coverage from those facts, leaving predictions advisory.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSectionSpacers.js#createViewportSectionSpacerMap`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSectionSpacers.js#resolveViewportSectionSpacer`\n\n## Virtual Stack and Lazy Detail\n\nThe virtual stack consumes shell and offset facts. It renders active sections as articles and collapses contiguous hidden sections into spacer items; if offset facts are absent, it mounts all shell sections so measurement can bootstrap. This is a section-granularity consumption boundary, not evidence about reuse of browser elements.\n\nWithin the mounted window, lazy-detail planning may defer heavy nodes. Selected or draft ancestor paths and expanded contexts remain materialized, so deferred detail is neither an asynchronous interface nor a statement that every heavy node is absent.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportVirtualStack.js#createViewportVirtualStack`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportLazyDetail.js#createViewportLazyDetailPlan`\n\n## Scheduler Candidate, Runtime, and Apply Guards\n\nThe candidate module expands offset prediction with overscan and reports a predicted candidate plus delta; observe-only is the default. Scheduler runtime state assigns sequence and request identifiers and captures revision facts. Its stale or revision-mismatched candidates fail closed before apply. Those guards are shape and correctness checks, not elapsed-time evidence.\n\nBudgeted automation plans and attempts guarded application. Disabled, stale, draft, IME, missing, blocked, not-ready, and stable-window conditions do not update the visible-range request. A candidate therefore does not necessarily change the resolved render window.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSchedulerCandidate.js#createViewportSchedulerCandidate`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSchedulerRuntime.js#planViewportSchedulerRuntimeCandidate`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSchedulerRuntime.js#applyViewportSchedulerRuntimeCandidate`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportSchedulerAutomation.js#runViewportSchedulerAutomation`\n\n## Scroll Coordination and Anchor Restoration\n\nThe app binds canvas scrolling and owns its local timer, while the DOM-free scroll controller records and settles state before asking for measurement application. Draft-active and composition states skip automatic application. The debounce configuration is coordination state, not a responsiveness measurement.\n\nA section anchor records `sectionId + offsetInSection` and restores against a later section-shell measurement, with raw scroll position as fallback. A node anchor restores a later node position against a section measurement and fails safely when the section is unavailable. Neither anchor establishes caret-aware navigation.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportScrollController.js#recordViewportScroll`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportScrollController.js#settleViewportScroll`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportAnchor.js#createViewportSectionAnchor`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportAnchor.js#resolveViewportSectionAnchorScrollTop`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportNodeAnchor.js#createViewportNodeAnchor`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/viewportNodeAnchor.js#resolveViewportNodeAnchorScrollTop`\n\n## Bounded Synthetic Shape Evidence\n\nThe focused boundary test constructs exactly **72 ordered synthetic sections** and **936 ordered synthetic runtime nodes** (13 per section), targets `section-50`, and uses an **80-node scheduler budget**. It resolves `section-49–section-51` and 39 visible nodes, renders three shell sections with 69 placeholders, creates two virtual spacers, defers inactive heavy table detail, preserves the active target-table path, and restores the target node after a shifted section measurement. These are fixture-specific composition facts only.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## State and Failure Model\n\nMissing offset facts cause the virtual stack to mount shell sections for measurement bootstrap. Missing anchors fall back safely. A missing, malformed, stale, revision-mismatched, blocked, draft/IME-protected, not-ready, or stable candidate does not advance the apply path. Browser-local measurement, request, runtime, and shell state can become stale relative to accepted Core mutations; they remain derived coordination facts rather than document truth.\n\n## Current Verified State\n\nAt the pinned Core commit, the focused boundary suite exercises request and range separation, measurement application, section prediction/spacers, guarded scheduler runtime and automation, window/shell consumption, virtual spacers, lazy detail, scroll coordination, and section/node anchor restoration. The synthetic fixture supplies bounded shape evidence, not a generalized editor result.\n\n## Known Limits and Unknowns\n\nThis evidence does not establish response-time behavior, throughput, elapsed delay bounds, browser-element reuse, real-document scaling, production virtualization, rendered-output equivalence, async lazy hydration, outline or diagnostics UI, caret-relative text anchoring, persistence, backend/API behavior, or a production renderer. It does not make a fixed node budget a product-wide answer. Template Builder remains `unknown`.\n\n## Historical Design Notes\n\nThe assigned sources preserve historical implementation boundaries, but their phase labels and historical success language are not current authority. Current claims above are limited to the immutable executable modules and focused test at the pinned Core commit; excluded claims remain excluded rather than inferred from chronology.\n\n## Canonical Cross-references\n\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Structural Runtime, Commands, and Navigation](structural-runtime-and-navigation.md)\n- [WYSIWYG Draft Input, Selection, and Browser Guards](wysiwyg-draft-input-and-guards.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\n## Evidence Anchors\n\nAll current claims in this leaf are anchored to immutable Core commit `c503a45c03e0ce3b7a6efba2b029ca842017faa0`; the frozen 19-source assignment is retained in `migrations/V0_1_0a_1/core/wave-a-orientation.json`. The anchors above deliberately identify executable code and focused tests rather than former source documents.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-template-builder-wysiwyg-draft-guards",
+      "title": "Template Builder WYSIWYG Draft Input and Guards",
+      "path": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to the verified textarea-first browser-local draft, selection/caret, text-command, IME, pre-commit layout-summary, and planning-only toolbar/field/history boundaries; production primary-input replacement, canonical typing truth, durable persistence, collaboration, renderer output, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/wysiwygPrimaryInputDecisionGate.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts"
+        }
+      ],
+      "content": "# WYSIWYG Draft Input, Selection, and Browser Guards\n\n## Authority and Scope\n\nThis canonical leaf consolidates the 15 sources assigned by the reviewed\nTemplate Builder orientation subgroup: **15 assigned / 15 unique / 0 missing /\n0 extra / 0 drift**. The frozen source commit is\n`76a2f2311a898e781f53773390d47b05812911e4`; every assigned blob is identical\nat the read-only current evidence commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. It documents browser-local draft\nactivation and guards only. Template Builder remains `unknown`.\n\n## Responsibility Boundary\n\nThis leaf owns the active plain-text draft, textarea selection and caret,\nbrowser-local text commands, composition guards, local layout summaries, and\nplanning-only toolbar, field, and history affordances before an accepted\ncommit. It does not own rich-inline segment capture or range mapping, canonical\nrich-inline mutation, durable history, persistence, collaboration, renderer\noutput, export, or a replacement production primary input. Rich-inline\nlifecycle contracts belong to [Rich Inline Capture, Commit, Replay, and Session\nLifecycle](rich-inline-commit-and-session-lifecycle.md).\n\n## Textarea-first Active Draft\n\nThe current active input is textarea-first. Active draft text, its target, and\nits dirty status remain browser-local until a deliberate plain-text bridge\ncommit is accepted. The current app renders `data-draft-editor` as a\n`<textarea>`; its hidden contenteditable-style surface is bounded fallback and\nhardening evidence, not the active primary input. An eligible plain-text draft\nuses the existing packet bridge at commit time; rejected or stale commits retain\nthe local draft rather than changing package truth during typing.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Browser-local Selection, Caret, and Text Commands\n\nSelection start, end, direction, and caret controls are normalized and clamped\nagainst the active textarea draft. Command context and insert or\nreplace-selection commands change only that local text and local selection.\nThey do not create package operations, history records, layout requests, DOM\nrange bindings, or renderer caret measurements. A rejected bridge packet\npreserves local draft and selection facts; a successful packet application\nclears the active draft. UTF-16 mapping for rich-inline segment facts is owned\nby the downstream rich-inline leaf, not by this textarea caret contract.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## IME Composition Guard\n\nTextarea composition stays browser-local. While composition is active, the\ngeneric IME policy blocks commands, range controls, and both plain and rich\ncommit. Input can continue updating the local composing draft, but no commit or\nrange-based command treats intermediate composition state as final intent.\nAfter composition ends, ordinary local commands and the explicit commit path\nmay be reconsidered. This is a bounded generic guard, not language-complete\nIME behavior, persistent composition state, or per-keystroke transaction work.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftImePolicy.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/app.js`\n\n## Pre-commit Local Layout Summary\n\nTyping and local commands can update a browser-local pre-commit layout summary.\nIt reports only preview or deferred facts: no live layout request is made and\nno exact generation runs while a draft is active. Accepted bridge mutation is\nthe earliest point at which the sandbox can report bounded dirty scope or stale\nsignals; those signals remain distinct from renderer output, pagination, and\nexport readiness. Viewport request and render-window ownership remains with\n[Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md).\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftLayoutPush.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftRuntime.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n\n## Planning-only Toolbar, Field, and History Affordances\n\nToolbar readiness and dispatch, field-chip requests, style-patch summaries, and\nstyle-aware history grouping are browser-local planning or execution evidence.\nThey do not by themselves insert canonical `field-ref` nodes, patch canonical\nstyled runs, create durable history, or produce layout or export output. A\nready indicator is still a plan, not production readiness. Local field and\nstyle facts can be preserved as input to downstream rich-inline planning only\nafter the relevant IME and range guards permit it.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftToolbarState.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftToolbarCommandDispatch.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftFieldChipInline.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftInlineStylePatch.js`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:examples/template-builder-sandbox/public/draftStyleHistory.js`\n\n## State and Failure Model\n\nLocal draft state comprises draft text, target and base revision, normalized\nselection, command context, composition status, and bounded planning summaries.\nInactive, mixed, atomic, styled, composing, stale, or rejected cases remain\nguarded according to their local policy. Local edits do not alter a canonical\npackage, and selection-only or planning-only actions do not advance history.\nPlain draft acceptance uses the existing bridge; rich mutation requires the\ndownstream accepted fresh plan gate. No local state is a persistence or\ncollaboration protocol.\n\n## Current Verified State\n\nAt the pinned Core evidence commit, the focused sandbox boundary suite covers\ntextarea-first activation, local selection/caret and text-command behavior,\ncomposition guards, the planning boundaries, and the bridge handoff. The\nimplementation remains browser-local until accepted commit, with no production\neditor claim.\n\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/templateBuilderSandboxBoundary.test.ts`\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/wysiwygPrimaryInputDecisionGate.test.ts`\n\n## Known Limits and Unknowns\n\nThis leaf does not establish a production contenteditable editor, DOM caret or\nrenderer measurement contract, canonical typing truth, persistence,\ncollaboration, live renderer output, exact layout, or export parity. The active\ninput remains textarea-first. Browser-local draft, selection, commands,\nplanning, and style facts remain bounded until accepted commit; their durable or\nmulti-user behavior is unknown.\n\n## Historical Design Notes\n\nHistorical design and close-audit material establishes the intent to separate\ndraft, cache, working-package, and canonical layers. Historical phase order or\n`PASS` labels do not promote future cards or planning states into current\nproduction behavior. The current executable anchors above control the bounded\nwording used here.\n\n## Canonical Cross-references\n\n- [Sandbox Runtime, Mutation Packets, and Store-backed Render Model](sandbox-runtime-and-store.md)\n- [Viewport, Scheduler, and Virtualized Rendering](viewport-and-virtualized-rendering.md)\n- [Rich Inline Capture, Commit, Replay, and Session Lifecycle](rich-inline-commit-and-session-lifecycle.md)\n\n## Evidence Anchors\n\nAll strong current claims are pinned to immutable Core commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`. The reviewed orientation retains\nthe exact frozen assignment and provenance; this leaf deliberately does not\nrepeat former source paths.\n"
     },
     {
       "kind": "document",
@@ -783,7 +991,7 @@
       "remote": "https://github.com/nekotoomtam/flowdoc-vnext-core.git",
       "checkoutAlias": "core",
       "defaultBranch": "main",
-      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence."
+      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete."
     },
     {
       "kind": "repository",
@@ -864,6 +1072,150 @@
       "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md",
       "verificationSummary": "Verified that the approved design object exists at this exact Project Control commit; this supports only the Project Control design claim.",
       "verifiedAt": "2026-08-12T14:37:25.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-contenteditable-range-hardening",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/public/draftContenteditableSurfaceHardening.js",
+      "verificationSummary": "The hardening module validates browser-local root, target, text, selection, nested-endpoint, and composition facts; the surface remains hidden/fallback evidence and is not a production primary editor, persistence layer, or renderer.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-plain-text-history-live-layout",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+      "verificationSummary": "Focused boundary checks verify bounded in-memory plain-text history and live-layout stale summaries; they do not establish durable history, exact layout, renderer output, storage, or export parity.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-rich-inline-commit-replay",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/richInlineCommit.ts",
+      "verificationSummary": "The rich-inline helper validates replacement children, applies them to the target text block, and creates an undoable history-intent record for successful commits; it does not verify freshness-validated plan acceptance, undo/redo child replay, durable persistence, collaboration merge, renderer output, or export parity.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-runtime-store-packet-application",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts",
+      "verificationSummary": "Focused boundary checks verify bounded packet-only mutation responses and browser-local cache/store application; the derived runtime state is not canonical storage, durable persistence, collaboration, or renderer output.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-sandbox-package-boundary",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/package.json",
+      "verificationSummary": "The sandbox package declares @flowdoc/vnext-core through its public package boundary; this does not establish production editor readiness or wider product integration.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-session-live-exact-boundary",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/richInlineSessionPersistence.ts",
+      "verificationSummary": "The session module prepares JSON-safe records retaining bounded package, history, child, and live/exact status facts; it performs no storage-adapter write, replay execution, collaboration merge, or renderer output.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-structural-diagnostics-navigation",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts",
+      "verificationSummary": "Focused diagnostics navigation accepts only an existing runtime nodeId and fails closed for document-level, missing, or unknown nodes; it provides no nearest-node repair or persistent navigation authority.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-structural-packet-projection",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/structuralPacket.test.ts",
+      "verificationSummary": "Focused structural packet checks verify packet-v1 construction and validation as local non-public, non-durable foundation transport; they do not establish a public API, storage, history, replay, collaboration protocol, or mutable projection authority.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-viewport-large-document-shape",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+      "verificationSummary": "The focused synthetic fixture composes exactly 72 ordered sections and 936 runtime nodes with bounded window, shell, stack, lazy-detail, and anchor facts; it is not wall-clock performance, real-document scaling, DOM recycling, or production-renderer evidence.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-viewport-scheduler-stale-guards",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+      "verificationSummary": "Focused scheduler checks reject stale, revision-mismatched, draft-protected, IME-protected, blocked, and stable candidates before apply; these are correctness guards, not timing or performance evidence.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-wysiwyg-ime-planning-guards",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts",
+      "verificationSummary": "Focused boundary checks verify that IME composition blocks commands, range changes, and plain/rich commit while local planning remains guarded; they do not establish language-complete IME behavior or canonical mutation during composition.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-template-builder-wysiwyg-local-draft-eligibility",
+      "nodeIds": [
+        "template-builder"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/wysiwygPrimaryInputDecisionGate.test.ts",
+      "verificationSummary": "The focused decision gate documents a recommendation for hybrid managed cards with a hardened contenteditable island, rejects full-document contenteditable as the v1 primary input, and explicitly records no production contenteditable implementation or package/document schema change; it does not verify runtime draft behavior, canonical typing truth, persistence, or collaboration.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
       "kind": "evidence",

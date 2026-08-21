@@ -1,0 +1,32 @@
+{
+  "kind": "node",
+  "id": "template-builder",
+  "title": "Template Builder",
+  "parentId": "core",
+  "summary": "Template Builder documentation synthesis is complete across five bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while production editor integration, durable persistence, collaboration, renderer output, and performance readiness remain unknown.",
+  "truthState": "unknown",
+  "order": 30,
+  "documentIds": [
+    "doc-template-builder-sandbox-runtime-store",
+    "doc-template-builder-viewport-virtualized-rendering",
+    "doc-template-builder-structural-runtime-navigation",
+    "doc-template-builder-wysiwyg-draft-guards",
+    "doc-template-builder-rich-inline-session-lifecycle",
+    "doc-template-builder-overview"
+  ],
+  "evidenceIds": [
+    "evidence-template-builder-sandbox-package-boundary",
+    "evidence-template-builder-runtime-store-packet-application",
+    "evidence-template-builder-plain-text-history-live-layout",
+    "evidence-template-builder-viewport-large-document-shape",
+    "evidence-template-builder-viewport-scheduler-stale-guards",
+    "evidence-template-builder-structural-packet-projection",
+    "evidence-template-builder-structural-diagnostics-navigation",
+    "evidence-template-builder-wysiwyg-local-draft-eligibility",
+    "evidence-template-builder-wysiwyg-ime-planning-guards",
+    "evidence-template-builder-contenteditable-range-hardening",
+    "evidence-template-builder-rich-inline-commit-replay",
+    "evidence-template-builder-session-live-exact-boundary"
+  ],
+  "repositoryIds": ["repo-core", "repo-project-control"]
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-template-builder-overview",
+  "title": "Template Builder Overview",
+  "path": "docs/versions/V0_1_0a_1/core/template-builder/OVERVIEW.md",
+  "nodeIds": ["template-builder"],
+  "role": "current-state",
+  "authority": "Current-state family overview limited to ownership relationships and evidence flow among the five reviewed canonical Template Builder leaves; migration coverage, reference repair, publication review, cleanup authority, production editor integration, persistence, collaboration, renderer output, performance readiness, and broader Core truth remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5c3bd8cb9765310f6950300ee17ed3a8c76bf7a0",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md"
+    }
+  ]
+}

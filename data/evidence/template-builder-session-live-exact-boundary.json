@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-session-live-exact-boundary",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/authoring/richInlineSessionPersistence.ts",
+  "verificationSummary": "The session module prepares JSON-safe records retaining bounded package, history, child, and live/exact status facts; it performs no storage-adapter write, replay execution, collaboration merge, or renderer output.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

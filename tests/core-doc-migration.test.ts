@@ -1315,9 +1315,10 @@ describe("real Project Control Core route pilot", () => {
     expect(projectControlOverview).toContain(coreCleanupCommit);
     expect(projectControlOverview).toMatch(/no\s+active\s+`CORE_ROUTE`\s+Work/iu);
     expect(projectControlOverview).not.toMatch(closedTruthStaleClaim);
-    expect(projectControlOverview).toMatch(
-      /Template\s+Builder[\s\S]*separate[\s\S]*unregistered\s+plan[\s\S]*sources[\s\S]*not\s+authoritative[\s\S]*not\s+deletable/iu,
+    expect(projectControlOverview).toContain(
+      "Template Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.",
     );
+    expect(projectControlOverview).not.toMatch(/Template\s+Builder[^.]*unregistered/iu);
 
     expectDocumentMapLifecycleAwareCurrentTruth(documentMap, coverage.status);
     for (const currentTruth of [overview, leaf]) {

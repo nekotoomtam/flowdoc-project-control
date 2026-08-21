@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-template-builder-sandbox-runtime-store",
+  "title": "Template Builder Sandbox Runtime and Store",
+  "path": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md",
+  "nodeIds": ["template-builder"],
+  "role": "contract",
+  "authority": "Canonical contract limited to the verified public-Core sandbox package boundary, bounded packet/cache/store application, in-memory plain-text history, and live-layout stale summaries; production editor integration, canonical storage, durable persistence, collaboration, renderer output, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/package.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts"
+    }
+  ]
+}
