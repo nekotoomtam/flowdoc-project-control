@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-phase-3-4-gates",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "tests/liveDraftMr1InlineImageGeometry4b.test.ts",
+  "verificationSummary": "The focused Phase 3/4 geometry gates verify their named spatial, authored-box, and inline-image record boundaries, with the inline-image suite as the primary anchor; this does not establish product activation, production binding, renderer or export parity, cross-runtime pixel parity, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

@@ -116,9 +116,9 @@ const evidenceAnchors = [
 const expectedNodeSummary =
   "Template Builder documentation synthesis is complete across five bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while production editor integration, durable persistence, collaboration, renderer output, and performance readiness remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete.";
 const expectedCoreRepositorySummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete.";
 const expectedCurrentScopeSummary =
   "Template Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.";
 
@@ -472,7 +472,7 @@ describe("Template Builder documentation Wave 1", () => {
       id: "core",
       truthState: "unknown",
       summary: expectedCoreSummary,
-      childIds: ["core-route", "text-engine", "template-builder"],
+      childIds: ["core-route", "text-engine", "template-builder", "live-draft"],
     }));
     for (const document of documents) {
       const content = document.path === overviewPath

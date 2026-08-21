@@ -1,7 +1,7 @@
 # Core Document Map
 
 Core consolidation is incomplete. This map is intentionally partial.
-This map records the completed pilot family and the completed Text Engine and Template Builder documentation syntheses; all broader Core truth remains unknown.
+This map records the completed pilot family and the completed Text Engine, Template Builder, and Live Draft documentation syntheses; all broader Core truth remains unknown.
 
 ## Completed Family Synthesis
 
@@ -44,6 +44,18 @@ Text Engine documentation synthesis is complete across four bounded leaves and o
 
 Template Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.
 
+## Live Draft Family Documentation
+
+- [Live Draft Overview](live-draft/OVERVIEW.md)
+- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)
+- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)
+- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)
+- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)
+- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)
+- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)
+
+Live Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.
+
 ## Shared Glossaries
 
 - [Glossary](../../../GLOSSARY.md)
@@ -58,3 +70,7 @@ migration coverage, active-reference repair, publication review, and any
 separately authorized cleanup remain incomplete. Both documentation-family
 Nodes and broader Core therefore remain `unknown`; no source cleanup is
 authorized.
+
+Live Draft documentation is synthesized while its migration coverage,
+active-reference repair, publication review, and any separately authorized
+cleanup remain incomplete; Live Draft and broader Core remain `unknown`.

@@ -1,0 +1,42 @@
+{
+  "kind": "document",
+  "id": "doc-live-draft-overview",
+  "title": "Live Draft Overview",
+  "path": "docs/versions/V0_1_0a_1/core/live-draft/OVERVIEW.md",
+  "nodeIds": ["live-draft"],
+  "role": "current-state",
+  "authority": "Current-state family overview limited to ownership relationships and evidence flow among the six reviewed canonical Live Draft leaves; migration coverage, reference repair, publication review, cleanup authority, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, performance readiness, and broader Core truth remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md"
+    }
+  ]
+}

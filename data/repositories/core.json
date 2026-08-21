@@ -5,5 +5,5 @@
   "remote": "https://github.com/nekotoomtam/flowdoc-vnext-core.git",
   "checkoutAlias": "core",
   "defaultBranch": "main",
-  "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete."
+  "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete."
 }

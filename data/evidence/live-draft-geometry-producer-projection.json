@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-geometry-producer-projection",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/layout/textBlockPersistentFlowContractV1.ts",
+  "verificationSummary": "The persistent-flow contract defines producer-owned layout geometry and source facts for downstream projection; this does not establish production binding, retained-root policy, product activation, renderer or export parity, cross-runtime pixel parity, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

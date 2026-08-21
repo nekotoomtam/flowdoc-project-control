@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-live-draft-root-v3-transition-contracts",
+  "title": "Live Draft Root and V3 Transition Contracts",
+  "path": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md",
+  "nodeIds": ["live-draft"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified 5A retained-root history, bounded Root V2 admission, scene and delivery, exact work policy, source-envelope checks, and scoped V3 transition rows; later 5B-2 transaction authority, inactive capability activation, product integration, Editor or Backend binding, browser Worker adoption, performance readiness, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootV2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts"
+    }
+  ]
+}

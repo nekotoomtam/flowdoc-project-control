@@ -26,3 +26,5 @@ These approved preflight baselines identify exact revisions inspected before thi
 The `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.
 
 Template Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.
+
+Live Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.

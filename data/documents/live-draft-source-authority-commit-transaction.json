@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-live-draft-source-authority-commit-transaction",
+  "title": "Live Draft Source Authority and Commit Transaction",
+  "path": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md",
+  "nodeIds": ["live-draft"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified private-Core producer invocation, source topology, evidence and work ownership, fallback targets, exact source authority, and the named Source-commit transaction seam under bounded amendment precedence; generic transaction authority, public API, product activation, Editor or Backend binding, browser Worker adoption, performance readiness, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts"
+    }
+  ]
+}

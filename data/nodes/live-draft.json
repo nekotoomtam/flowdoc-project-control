@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "live-draft",
+  "title": "Live Draft",
+  "parentId": "core",
+  "summary": "Live Draft documentation synthesis is complete across six bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while product activation, Editor and Backend integration, browser Worker adoption, renderer and export parity, and performance readiness remain unknown.",
+  "truthState": "unknown",
+  "order": 40,
+  "documentIds": ["doc-live-draft-product-readiness-renderer-boundaries", "doc-live-draft-geometry-scene-projection", "doc-live-draft-persistent-flow-range-foundations", "doc-live-draft-root-v3-transition-contracts", "doc-live-draft-source-authority-commit-transaction", "doc-live-draft-corrective-evidence", "doc-live-draft-overview"],
+  "evidenceIds": ["evidence-live-draft-renderer-no-relayout", "evidence-live-draft-public-exports-nonactivation", "evidence-live-draft-geometry-producer-projection", "evidence-live-draft-phase-3-4-gates", "evidence-live-draft-persistent-structural-reuse", "evidence-live-draft-oracle-execution-separation", "evidence-live-draft-root-scene-work-policy", "evidence-live-draft-root-calibration-boundary", "evidence-live-draft-source-authority-transaction-internals", "evidence-live-draft-source-authority-amendment-tests", "evidence-live-draft-corrective-adversarial-scene", "evidence-live-draft-corrective-scoped-review-ranges"],
+  "repositoryIds": ["repo-core", "repo-project-control"]
+}

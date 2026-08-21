@@ -67,7 +67,7 @@ const registration = {
 const expectedNodeSummary =
   "Text Engine documentation synthesis is complete across four bounded leaves and one family overview; family truth remains unknown pending coverage, reference repair, and publication review, while production, default adoption, and native/WASM parity remain unknown.";
 const expectedCoreSummary =
-  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families.";
+  "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete.";
 const expectedAuthority =
   "Canonical contract limited to verified Runtime Identity and JSON-safe digest-evidence facts; runtime execution, parity, renderer acceptance, numeric thresholds, accepted manifest, production readiness, default-measurer replacement, and family-wide authority remain excluded.";
 const expectedDocumentRepositoryPaths = [
@@ -555,7 +555,7 @@ describe("Text Engine runtime identity and evidence leaf", () => {
         id: "core",
         truthState: "unknown",
         summary: expectedCoreSummary,
-        childIds: ["core-route", registration.nodeId, "template-builder"],
+        childIds: ["core-route", registration.nodeId, "template-builder", "live-draft"],
       }),
     );
   });

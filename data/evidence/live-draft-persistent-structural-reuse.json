@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-persistent-structural-reuse",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/layout/textBlockPersistentFlowTreeV1.ts",
+  "verificationSummary": "The persistent flow tree path-copies changed paths and reuses untouched nodes by identity under its bounded policy; this structural fact does not establish latency, heap, frame, interaction, product activation, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

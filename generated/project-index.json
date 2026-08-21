@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "da8ded755c46aabd0fd80bd0b08857b660363830e9d96bd04bae515c2be8d2d7",
+  "sourceDigest": "489fb8e37415218b667356eefdd0c4a4483c321c7eff12423b541868e4b89780",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -129,6 +129,44 @@
     },
     {
       "kind": "node",
+      "id": "live-draft",
+      "title": "Live Draft",
+      "parentId": "core",
+      "summary": "Live Draft documentation synthesis is complete across six bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while product activation, Editor and Backend integration, browser Worker adoption, renderer and export parity, and performance readiness remain unknown.",
+      "truthState": "unknown",
+      "order": 40,
+      "documentIds": [
+        "doc-live-draft-product-readiness-renderer-boundaries",
+        "doc-live-draft-geometry-scene-projection",
+        "doc-live-draft-persistent-flow-range-foundations",
+        "doc-live-draft-root-v3-transition-contracts",
+        "doc-live-draft-source-authority-commit-transaction",
+        "doc-live-draft-corrective-evidence",
+        "doc-live-draft-overview"
+      ],
+      "evidenceIds": [
+        "evidence-live-draft-renderer-no-relayout",
+        "evidence-live-draft-public-exports-nonactivation",
+        "evidence-live-draft-geometry-producer-projection",
+        "evidence-live-draft-phase-3-4-gates",
+        "evidence-live-draft-persistent-structural-reuse",
+        "evidence-live-draft-oracle-execution-separation",
+        "evidence-live-draft-root-scene-work-policy",
+        "evidence-live-draft-root-calibration-boundary",
+        "evidence-live-draft-source-authority-transaction-internals",
+        "evidence-live-draft-source-authority-amendment-tests",
+        "evidence-live-draft-corrective-adversarial-scene",
+        "evidence-live-draft-corrective-scoped-review-ranges"
+      ],
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "childIds": [],
+      "workIds": []
+    },
+    {
+      "kind": "node",
       "id": "backend",
       "title": "Backend",
       "parentId": "flowdoc",
@@ -148,7 +186,7 @@
       "id": "core",
       "title": "Core",
       "parentId": "flowdoc",
-      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families.",
+      "summary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; the Text Engine documentation set is synthesized across four bounded leaves and one family overview; Template Builder documentation is synthesized across five bounded leaves and one family overview; migration coverage, reference repair, publication review, and family promotion remain incomplete for both documentation families. Live Draft documentation is synthesized across six bounded leaves and one family overview; its migration coverage, reference repair, publication review, and family promotion remain incomplete.",
       "truthState": "unknown",
       "order": 20,
       "documentIds": [
@@ -161,7 +199,8 @@
       "childIds": [
         "core-route",
         "text-engine",
-        "template-builder"
+        "template-builder",
+        "live-draft"
       ],
       "workIds": []
     },
@@ -408,7 +447,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-13-core-documentation-consolidation-design.md"
         }
       ],
-      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine and Template Builder documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n"
+      "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, and Live Draft documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at Core commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n"
     },
     {
       "kind": "document",
@@ -437,6 +476,201 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# อภิธานศัพท์ Flowdoc\n\nคำอธิบายภาษาไทยนี้ใช้ ID เดียวกับอภิธานศัพท์ภาษาอังกฤษ ไม่สร้างตัวตนคำศัพท์ภาษาไทยแยกต่างหาก และไม่ได้ยืนยันสถานะของ product repository\n\n## Node\n\n`node` คือหัวข้อถาวรในต้นไม้นำทางหลัก มี Node แม่หลักได้หนึ่งตัว หรือเป็นรากของต้นไม้\n\n## Truth State\n\n`truth-state` บอกสถานะของข้อความเกี่ยวกับ Node ว่าเป็น `current`, `planned`, `risk` หรือ `unknown` โดย `current` ต้องมี Evidence รองรับ และห้ามอนุมานจาก Work\n\n## Work State\n\n`work-state` บอกสถานะของงานชั่วคราวว่าเป็น `queued`, `in-progress`, `blocked` หรือ `in-review` ซึ่งแยกจาก Truth State\n\n## Document\n\n`document` คือ metadata ของ Markdown ถาวร มีบทบาท ขอบเขตอำนาจ lifecycle และอาจมี repository reference ที่ตรึง commit\n\n## Evidence\n\n`evidence` เชื่อมคำกล่าวขอบเขตจำกัดกับ commit ที่แน่นอนและ path หรือ contract ID ที่ตรวจได้ ไม่ได้ยืนยันว่าสิ่งอื่นใน commit เดียวกันถูกตรวจแล้ว\n\n## Repository Registry\n\n`repository-registry` ระบุ repository ที่อนุมัติด้วย HTTPS remote, checkout alias, default branch และ ownership summary โดยไม่เก็บ path checkout เฉพาะเครื่อง\n\n## Focus Stack Map\n\n`focus-stack-map` คือมุมนำทางแบบอ่านอย่างเดียวที่แสดง Node บรรพบุรุษ Node ปัจจุบัน และ Node ลูก\n\n## Summary Inspector\n\n`summary-inspector` คือแถบสรุปแบบอ่านอย่างเดียวสำหรับ summary, status และ reference ที่เลือกของ Node\n\n## Full Detail Modal\n\n`full-detail-modal` คือหน้าต่างซ้อนสำหรับรายละเอียด Node โดยไม่แทนที่ตำแหน่งปัจจุบันบนแผนผัง\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-corrective-evidence",
+      "title": "Live Draft Corrective Evidence",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical evidence contract limited to five scoped collision, delivery, source-envelope, verification, and review records with their exact historical ranges and residual risks; normative implementation authority, outside-range promotion, product activation, Editor or Backend binding, browser Worker adoption, performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockUnifiedLayoutAdversarialV2.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockSceneDeliveryV2.test.ts"
+        }
+      ],
+      "content": "# Corrective Evidence\n\n## Authority and Scope\n\nThis leaf preserves five scoped repair, review, and verification records as historical evidence and residual-risk history. It does not make those records a normative implementation contract. Its provenance closure is **5 assigned / 5 unique / 0 missing / 0 extra / 0 drift**; current executable observations are limited to Core head `c503a45c03e0ce3b7a6efba2b029ca842017faa0`.\n\n## Responsibility Boundary\n\nThe leaf owns the documented repair and review ranges, not current broad implementation authority. A scoped review applies only to its stated commit and test range, not to later source, other commits, unreviewed behavior, or product integration.\n\n## Collision Repair\n\nThe collision report records a corrected adversarial proof: distinct exact Scene/Root candidates may claim equal fingerprints, yet foreign exact identity is rejected. Its recorded focused gate covered the adversarial suite; the current named executable anchor is `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutAdversarialV2.test.ts`. This remains a collision-proof record, not a general fingerprint-authority contract.\n\n## Delivery Repair\n\nThe delivery report records a local descriptor-parsing repair for accessor-backed public delivery data and its focused regression range. It also records an earlier local type-check concern: the delivery file had no reported TypeScript error, while the contemporary repository type-check was blocked by unrelated concurrent edits. That concern is preserved rather than silently reclassified as a continuing family failure.\n\n## Source-envelope Verification\n\nThe source-envelope record is a scoped 5B-1 V3 verification of a named policy, source thresholds, and its focused gate. Its explicit limits exclude product-scale memory, Worker/session behavior, Editor apply semantics, Backend publication, and later change-family support. It does not establish authority for the later Source-commit transaction seam.\n\n## Final Verification\n\nThe final verification record reports its own dated focused and full-Core command results for the then-reviewed branch and worktree. Its later scoped verification gives range-specific evidence, but it neither revises the earlier delivery report nor asserts a current whole-family verdict at the pinned evidence head.\n\n## Final Scoped Verdict\n\nThe final review verdict records a PASS only for its plan-only base through implementation-head review range and its listed boundaries. It preserves inactive capability rows and remaining unknowns. A later PASS does not erase an earlier local repair concern, and scoped PASS does not become family-wide truth.\n\n## Residual-risk Boundaries\n\nResidual risks remain explicitly bounded: garbage-collection timing, product-scale memory, Worker lifecycle, scheduling, cancellation, Editor staged/atomic apply, Backend persistence/publication, later 5B-2/5B-3 support, and fixed-height/asset lifecycle were not closed by these records. Corrective evidence does not become a normative implementation contract.\n\n## State and Failure Model\n\nThe records distinguish a genuine collision proof, invalid public delivery input, source-envelope failure, and the historical operational type-check block. They do not merge different failure modes or use chronology to extend a review result outside its range.\n\n## Current Verified State\n\nThe pinned Core head retains named adversarial and scene-delivery test evidence at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutAdversarialV2.test.ts` and `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockSceneDeliveryV2.test.ts`. These anchors support the documented bounded behaviors only; historical reports retain their original scope.\n\n## Known Limits and Unknowns\n\nNo historical PASS, report, or repair proves a normative implementation contract, generic product readiness, public activation, Renderer/Editor/Backend integration, or coverage beyond the named tests and commits. A current claim needs its own current executable anchor.\n\n## Historical Design Notes\n\nAll five records are dated corrective history from the 5B-1 corrective/V3 closure. They preserve both the local repair concern and later scoped evidence because their ranges differ. Report authority is evidence authority, not normative implementation authority.\n\n## Canonical Cross-references\n\nThis leaf depends on [Root and V3 Transition Contracts](root-and-v3-transition-contracts.md) and is bounded by [Source Authority and Commit Transaction](source-authority-and-commit-transaction.md). It does not expand either leaf’s implementation contract.\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutAdversarialV2.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockSceneDeliveryV2.test.ts`\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-geometry-scene-projection",
+      "title": "Live Draft Geometry and Scene Projection",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified producer-owned geometry, layout units, spatial wrapping, authored-box and inline-image facts, source segments, forced breaks, and deterministic display-list projection; production binding, retained-root policy, product activation, renderer or export parity, cross-runtime pixel parity, performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/layout/textBlockPersistentFlowContractV1.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/liveDraftMr1InlineImageGeometry4b.test.ts"
+        }
+      ],
+      "content": "# Geometry and Scene Projection\n\n## Authority and Scope\n\nThis leaf owns the bounded geometry producers and scene/display-list projection described by the Live Draft geometry subgroup. Current assertions are limited to flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0 evidence. It does not own retained incremental-root transitions, source-commit authority, Canvas layout authority, production binding, or cross-runtime pixel parity.\n\n## Responsibility Boundary\n\nGeometry is producer-owned: accepted layout supplies layout-unit values, line boxes, source points, fragments, and pagination. Projection consumes those facts and makes them renderable without measuring or relayout. A renderer owns glyph rasterization only; it does not become a geometry producer.\n\n## Layout Units and Spatial Wrapping\n\nThe bounded geometry contract uses finite point-valued dimensions for page/body boxes and line geometry. Spatial wrapping is a producer-stage layout concern: its focused evidence preserves bounded exclusion regions and placement decisions while keeping the renderer downstream of accepted geometry. See flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowContractV1.ts and flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1SpatialWrapping3a.test.ts.\n\n## Authored-box and Inline-image Geometry\n\nAuthored-box and inline-image records are distinct producer facts with bounded geometry validation. Their focused Phase 4 evidence verifies the accepted record shape and failure boundaries; it does not prove a production renderer binding, browser integration, or Canvas/PDF pixels. See flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts and flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1InlineImageGeometry4b.test.ts.\n\n## Source Segments, Forced Breaks, and Display-list Projection\n\nSource segments preserve ordered, gap-free rendered ranges, inline identity, source offsets, rendered text, and resolved-field metadata when present. Forced breaks remain producer facts expressed in accepted flow/line output rather than instructions for a renderer to recompute. The display-list projector turns complete paginated fragments into deterministic text-line paint commands, retaining source start/end points and segment slices; it consumes those accepted facts with no measurement or relayout. See flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/renderer/textFlowDisplayListV1.ts and flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textFlowDisplayListV1.test.ts.\n\n## Producer-owned Geometry Facts\n\nThe producer’s complete pagination determines page count, line order, line break offsets, bounds, and fragment identity. Projection rejects incomplete pagination, geometry outside the page body, invalid source coverage, and baseline/line-box conflicts. These checks preserve the producer boundary; geometry evidence does not prove production binding or authorize a consumer to repair layout facts.\n\n## Current Verified State\n\nAt the pinned head, the focused evidence covers spatial wrapping, authored-box geometry, inline-image geometry, and deterministic text-flow display-list projection. The exported API surface makes those bounded Core contracts available. This evidence supports a geometry-to-scene handoff only within the stated contracts.\n\n## State and Failure Model\n\nGeometry and projection must fail closed when producer input is incomplete or violates its finite, positive, ordered, contained, or baseline constraints. A blocked result has no ready command list. The correct consumer response is to surface or preserve the blocked state, not to infer missing line breaks, measure text, or relayout fragments.\n\n## Known Limits and Unknowns\n\nThe evidence excludes Canvas/PDF glyph-pixel parity, artifact bytes, production binding, browser Worker activation, product activation, retained-root policy, and general cross-runtime readiness. Phase 3/4 focused PASS material is bounded test evidence, not a universal readiness conclusion.\n\n## Historical Design Notes\n\nThe frozen geometry plans and design notes record the intended Phase 3/4 sequence: unit policy and wrapping, then authored-box and inline-image records, then projection detail. They remain historical rationale. Current wording is controlled by the pinned contracts and focused tests, with unresolved wider integration questions left unknown.\n\n## Canonical Cross-references\n\n- [Product Readiness and Renderer Boundaries](product-readiness-and-renderer-boundaries.md) owns cross-repository responsibility and the renderer no-relayout boundary.\n- `live-draft/persistent-flow-and-range-foundations` owns persistent-flow and range foundations that supply, but do not expand, these geometry facts.\n- `live-draft/root-and-v3-transition-contracts` owns retained-root and transition policy.\n\n## Evidence Anchors\n\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowContractV1.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1SpatialWrapping3a.test.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1InlineImageGeometry4b.test.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/renderer/textFlowDisplayListV1.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textFlowDisplayListV1.test.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/index.ts\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-overview",
+      "title": "Live Draft Overview",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/OVERVIEW.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "current-state",
+      "authority": "Current-state family overview limited to ownership relationships and evidence flow among the six reviewed canonical Live Draft leaves; migration coverage, reference repair, publication review, cleanup authority, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, performance readiness, and broader Core truth remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "25ec577195edd71ec14930d06e24cdc033d0077b",
+          "pathOrContractId": "docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md"
+        }
+      ],
+      "content": "# Live Draft Documentation Overview\n\n## Authority and Status\n\nThis is the reviewed, bounded navigation frame for the Live Draft family. Live Draft and parent Core remain `unknown`. The six canonical leaves are active documentation contracts, but registration does not promote their scoped evidence into product activation, performance readiness, migration coverage, publication approval, or cleanup authority.\n\n## Family Architecture\n\nThe dependency direction is: product ownership and renderer no-relayout boundary → geometry facts and scene/display-list projection → persistent flow, ranges, affected lines, and oracle separation → 5A/5B Root V2 and scoped V3 transition contracts → 5B-2 source authority and source-commit transaction → bounded corrective evidence and residual-risk history. This chain explains prerequisites and evidence flow only; it does not transfer authority between leaves.\n\n## Canonical Documents\n\n- [Product Readiness and Renderer Boundaries](product-readiness-and-renderer-boundaries.md) — reviewed boundary for cross-repository responsibility, Core-owned layout facts, and renderer consumption without measurement or relayout.\n- [Geometry and Scene Projection](geometry-and-scene-projection.md) — reviewed contract for producer-owned geometry, source segments, forced breaks, and deterministic display-list projection.\n- [Persistent Flow and Range Foundations](persistent-flow-and-range-foundations.md) — reviewed contract for persistent flow, contextual and retained ranges, affected-line planning, structural reuse, and oracle-independent execution.\n- [Root and V3 Transition Contracts](root-and-v3-transition-contracts.md) — reviewed contract for the accepted 5A root, bounded Root V2 admission, scene/delivery work, and scoped V3 policy.\n- [Source Authority and Commit Transaction](source-authority-and-commit-transaction.md) — reviewed private-Core contract for producer invocation, source topology, evidence/work ownership, fallback targets, and the named Source-stage transaction seam.\n- [Corrective Evidence](corrective-evidence.md) — reviewed record of five scoped repairs, verifications, verdicts, and residual-risk boundaries as evidence rather than normative implementation authority.\n\n## Ownership Map\n\nProduct Readiness and Renderer Boundaries owns the cross-repository handoff and renderer no-relayout limit, while Core retains layout authority. Geometry and Scene Projection owns the facts consumed by that handoff but not retained-root policy. Persistent Flow and Range Foundations owns reuse and range/oracle separation, while Root and V3 Transition Contracts owns admission and work policy. Source Authority and Commit Transaction owns only the later private Source-stage seam. Corrective Evidence preserves its named review ranges without extending any implementation contract.\n\nThe conflict policy remains exact: dated Phase 3/4 and NO-GO material stays historical; XR-4/XR-5 does not prove Canvas/PDF glyph-pixel parity; range/oracle evidence is not per-keystroke performance proof; scoped V3 policy does not activate later 5B-2 work; the 2026-08-11 approved amendment governs only its supported seam changes and Thai/English companions retain equal authority; and the earlier local type-check concern and later scoped verification keep their different ranges.\n\n## Evidence Flow\n\nAll current executable facts flow from read-only Core evidence at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0` into one responsible leaf, then into this navigation frame. Historical sources are frozen at `flowdoc-vnext-core@76a2f2311a898e781f53773390d47b05812911e4`; plans, phase labels, PASS verdicts, and review records remain historical unless a named current executable anchor supports the same bounded positive fact. No downstream leaf may expand an upstream contract or convert scoped evidence into family-wide truth.\n\n## Current Verified State\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and separately authorized cleanup, while product activation, Editor and Backend integration, browser Worker adoption, renderer and export parity, and performance readiness remain unknown.\n\nThe six leaves close 64 assigned sources one-to-one and bind current claims to twelve named evidence checks at the pinned Core head. This is a documentation synthesis result only; it is not a present product-readiness, runtime-binding, or family-promotion verdict.\n\n## Known Limits and Unknowns\n\nLive Draft and parent Core remain `unknown`. Product activation, Editor and Backend binding, browser Worker adoption, renderer and export parity, cross-runtime glyph-pixel parity, persistence, publication, product-scale memory, and performance readiness remain outside current authority. Unresolved contradictions stay unknown or excluded rather than being averaged into a stronger claim.\n\n## Migration and Cleanup Boundary\n\nNo migration coverage and no source cleanup are authorized. No coverage record, cleanup Evidence, deletion Work, publication claim, source deletion, or activation decision is created by this family registration. Reference repair and publication review remain separate future transactions.\n\n## Evidence Anchors\n\nThe orientation inventory digest is `36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b`. The reviewed Project Control leaf candidates are immutable:\n\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md (Git blob a01d6d0b1be3b18a25d76218c47506f6eb14899c)`\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md (Git blob 4d47c076801d18298ce026da495d6776ccd05eb6)`\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md (Git blob 29dd4da1c5fdfb446e74128069f87b9e3c019868)`\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md (Git blob 8192225c2adbd7c4fa2a7608a4547c0c560f4e8b)`\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md (Git blob b70db07adb04b30254516590f66014ebcd803c80)`\n- `flowdoc-project-control@25ec577195edd71ec14930d06e24cdc033d0077b:docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md (Git blob bcb8d88aaa15f3ccdb86295fbb76c2757a8412e3)`\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-persistent-flow-range-foundations",
+      "title": "Live Draft Persistent Flow and Range Foundations",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified persistent flow trees, contextual and retained ranges, semantic checkpoints, affected-line planning, structural reuse, and oracle-independent execution; product activation, complete-oracle hot-path authority, per-keystroke performance, publication, Editor or Backend binding, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/layout/textBlockPersistentFlowTreeV1.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/layout/textBlockPersistentLayoutLineTreeV1.ts"
+        }
+      ],
+      "content": "# Persistent Flow and Range Foundations\n\n## Authority and Scope\n\nThis leaf records the bounded Core foundations for persistent TextBlock flow,\nretained ranges, and incremental composition. It is grounded in the 10 assigned\nsources, all unchanged between frozen Core commit\n`76a2f2311a898e781f53773390d47b05812911e4` and current evidence commit\n`c503a45c03e0ce3b7a6efba2b029ca842017faa0`: **10 assigned / 10 unique / 0 missing / 0 extra / 0 drift**. It does not establish product activation,\npublication, production, Editor/Backend binding, or a performance budget.\n\n## Responsibility Boundary\n\nThis leaf owns persistent flow-tree structure, contextual range facts, semantic\ncheckpoints, affected-line planning, retained-range planning, update reuse, and\nthe separation of incremental execution from complete-oracle QA. Geometry is an\nupstream dependency; Root V2 admission and work policy are downstream\nresponsibilities. Structural evidence and correctness checks do not transfer\nthose owners or become product-speed evidence.\n\n## Flow-tree Structure\n\nThe current Core implementation projects accepted bounded flow facts into an\nimmutable, process-local persistent tree. It keeps offset-independent item and\nsubtree identity, rejects untrusted provenance, and represents the accepted\ntext subset without granting serialization or publishing authority. Path-copy\nupdates preserve untouched node identity while rebuilding only the changed path\nunder the tree policy. Structural reuse is not a latency claim.\n\n## Contextual Ranges\n\nContextual range work retains exact UTF-16-safe boundaries, shaping context,\nand fail-closed fallback conditions. A stable bounded range remains evidence\nabout range construction; it does not itself position a complete layout, grant\nproduct authority, or turn diagnostic observations into an interaction budget.\n\n## Semantic Checkpoints\n\nLine-aligned semantic fingerprints and prefix/suffix chains are process-local\nproof facts tied to an exact retained snapshot and next request. They distinguish\nsemantic equality from revision-specific physical identities, validate stable\nprefix/suffix conditions, and fail closed on cloning, mutation, topology drift,\nor incompatible context. They do not make retained proof objects transferable\nor persisted authority.\n\n## Affected-line Planning\n\nRetained restart checkpoints and safe contextual boundaries support a bounded\naffected window and reconvergence test. The plan reports fallback when exact\ntext reconstruction, context, topology, safe boundaries, or bounds are not\nsatisfied. Affected-line planning is not per-keystroke performance proof:\ndiagnostic timing and work counters require separate representative measurement\nbefore any latency claim.\n\n## Retained Ranges\n\nThe retained snapshot keeps accepted topology, range, cluster, break, and line\ncheckpoint facts for one exact process-local layout. The planner maps one exact\nedit into a bounded range without rerunning layout, while range execution can\nsplice newly established facts with retained prefix/suffix facts. A fallback is\na truthful planning/execution outcome, not a weakened correctness path.\n\n## Update Reuse\n\nCurrent tree-update behavior path-copies affected nodes, counts created work\nfrom local facts, and reuses untouched nodes by identity. The resulting proof\nkeeps structural reuse separate from retained semantic equality and from\nrevision-specific line/fragment identity. Counters describe the covered\nstructural operation; they are neither heap measurements nor product latency,\nframe, or interaction guarantees.\n\n## Oracle-independent Execution\n\nThe incremental execution boundary can construct the complete next Core request\nfrom retained plans and spliced facts, then invoke incremental acceptance\nwithout receiving a complete next Core layout as an input. An optional complete\noracle is checked only after that construction and acceptance: the complete layout is optional QA-only comparison. It cannot construct the request, choose\nreconvergence, or become a production hot-path authority. Earlier\noracle-gated range/line materialization remains QA evidence, not a conflicting\nexecution rule.\n\n## State and Failure Model\n\nAccepted results remain non-publishable and non-production. Incompatible\nidentity, stale/mutated proof, unsafe UTF-16 edit, source/style topology drift,\nmissing safe boundary, failed reconvergence, or optional-oracle divergence\nfails closed or selects the documented fallback. Complete request validation,\ncomplete shaped/break arrays, and optional materialization are explicitly\nseparate work; their existence does not imply a fast interactive path.\n\n## Current Verified State\n\nCurrent evidence at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowTreeV1.ts`\nprovides the persistent-tree creation and inspection boundary. The update and\nproof behavior is independently exercised by\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowUpdateV1.ts`\nand\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockPersistentFlowUpdateV1.test.ts`.\nThe persistent line-tree boundary is anchored at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentLayoutLineTreeV1.ts`.\nFocused foundation/tree checks are at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1PersistentFlowFoundation.test.ts`\nand\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockPersistentFlowTreeV1.test.ts`.\n\n## Known Limits and Unknowns\n\nNo accepted product-scale heap/rotation policy, user-facing frame or latency\nbudget, cross-process hydration authority, or production scheduling behavior is\nestablished. Complete request validation and complete fact arrays may remain\nmaterial work even where the semantic checkpoint pass is removed. This leaf\ndoes not claim unsupported geometry, list, empty-block, spatial, table,\npublication, Editor, Backend, or production capability.\n\n## Historical Design Notes\n\nThe assigned design and implementation-plan material explains the Phase 2/MR1\nsequence from complete-oracle analysis through retained planning, range\nexecution, composition, and persistent-tree checkpoints. That chronology is\nuseful context, not present authority: current executable evidence controls the\nbounded statements above. The historical oracle-gated rows remain compatible\nwith the later oracle-independent input boundary because they refer to different\nQA and execution roles.\n\n## Canonical Cross-references\n\n- Upstream geometry facts remain owned by [Geometry and Scene Projection](geometry-and-scene-projection.md).\n- Root admission, scene/delivery policy, and the V3 boundary remain owned by [Root and V3 Transition Contracts](root-and-v3-transition-contracts.md).\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowTreeV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentFlowUpdateV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentLayoutLineTreeV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1PersistentFlowFoundation.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockPersistentFlowTreeV1.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockPersistentFlowUpdateV1.test.ts`\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-product-readiness-renderer-boundaries",
+      "title": "Live Draft Product Readiness and Renderer Boundaries",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified cross-repository responsibility, Core-owned layout facts, public nonactivation, and renderer consumption without text measurement or fragment relayout; product activation, Editor or Backend binding, browser Worker adoption, renderer or export parity, cross-runtime pixel parity, performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/renderer/textFlowDisplayListV1.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/index.ts"
+        }
+      ],
+      "content": "# Product Readiness and Renderer Boundaries\n\n## Authority and Scope\n\nThis leaf owns the bounded product-readiness handoff and the renderer-consumption boundary for Live Draft. Current executable facts are pinned to flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0; Core remains the authority for layout facts. This leaf does not activate a product surface or transfer Core implementation authority.\n\n## Responsibility Boundary\n\nThe owning Core route produces accepted pagination, line breaks, bounds, and source provenance. Core alone owns that route; neither the Editor nor the Backend acquires it through this handoff. A renderer may consume the accepted projection, rasterize glyphs in its own domain, and reject invalid input; it may not replace the producer’s layout authority.\n\n## Cross-repository Ownership\n\nThe cross-repository handoff is a boundary, not an activation decision. Core owns the bounded layout and display-list contracts; a consuming application remains responsible for its own integration and renderer choice. Browser Worker adoption, Editor activation, Backend lifecycle integration, durable storage, and broad product availability are unknown or out of scope.\n\n## Renderer Consumption Without Measurement or Relayout\n\nThe display-list projection consumes complete accepted text-flow pagination. Its contract records `rendererMayMeasureText: false`, `rendererMayRelayout: false`, and `lineBreaksAndBounds: \"core-measured\"`; incomplete pagination, invalid geometry, and requested production binding are blocked. The display list supplies line commands, page/body bounds, and optional source segments for a renderer to consume without remeasurement or fragment relayout. See flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/renderer/textFlowDisplayListV1.ts and flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textFlowDisplayListV1.test.ts.\n\n## Selected Parity and Activation Limits\n\nSelected XR-4/XR-5 projection rows support the bounded display-list and source-segment handoff only. They do not establish Canvas/PDF glyph-pixel parity, artifact-byte parity, production renderer binding, or cross-runtime product readiness. Public exports expose bounded Core contracts but do not themselves activate a consumer integration; see flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/index.ts.\n\n## Current Verified State\n\nAt the pinned Core head, the renderer-facing display-list implementation is exported and its focused tests verify deterministic projection, producer-measured line bounds, no renderer measurement, no renderer relayout, source-segment preservation, and fail-closed handling for incomplete or inconsistent input. This is current bounded Core evidence, not a claim that a consuming product is active.\n\n## State and Failure Model\n\nThe projection is ready only for complete accepted pagination with valid page/body geometry, valid style data, and (when supplied) complete ordered source runs. It is blocked for incomplete pagination, drift outside the body, invalid source ranges, invalid style data, or a production-binding request. Consumers must preserve that failure result rather than silently measure or reflow a replacement fragment.\n\n## Known Limits and Unknowns\n\nProduct readiness remains unknown outside the named Core boundary. No browser Worker activation is claimed. No Editor or Backend layout-route ownership is claimed. No Canvas/PDF pixel comparison, production binding, broad activation, persistence, performance, or end-to-end consumer lifecycle is established here.\n\n## Historical Design Notes\n\nDated Phase 3/4 handoff and composition material remains historical design and scoped verification context. Its PASS labels do not prove current product readiness. Where historical wording is broader than the current executable projection contract, the pinned implementation and focused test boundary controls the wording in this leaf.\n\n## Canonical Cross-references\n\n- [Geometry and Scene Projection](geometry-and-scene-projection.md) owns geometry producers, source segments, forced breaks, and projection detail.\n- `live-draft/root-and-v3-transition-contracts` owns retained-root and V3 transition policy, which this leaf does not restate.\n\n## Evidence Anchors\n\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/renderer/textFlowDisplayListV1.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textFlowDisplayListV1.test.ts\n- flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/index.ts\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-root-v3-transition-contracts",
+      "title": "Live Draft Root and V3 Transition Contracts",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified 5A retained-root history, bounded Root V2 admission, scene and delivery, exact work policy, source-envelope checks, and scoped V3 transition rows; later 5B-2 transaction authority, inactive capability activation, product integration, Editor or Backend binding, browser Worker adoption, performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootV2.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts"
+        }
+      ],
+      "content": "# Root and V3 Transition Contracts\n\n## Authority and Scope\n\nThis leaf owns the bounded chronology and current executable evidence for the\naccepted 5A retained root, the 5B Root V2 transition, the scoped V3 corrective\npolicy, and their source-envelope limits. Its 10 assigned sources are\nunchanged between frozen Core commit `76a2f2311a898e781f53773390d47b05812911e4`\nand current evidence commit `c503a45c03e0ce3b7a6efba2b029ca842017faa0`:\n**10 assigned / 10 unique / 0 missing / 0 extra / 0 drift**. This leaf does\nnot own later 5B-2 transaction internals or generic product activation.\n\n## Responsibility Boundary\n\nThis leaf owns the transition from the 5A retained-root checkpoint to the\nbounded Root V2/scene/delivery lane, its deterministic work policy, the V3\nsource envelope, and explicit stop boundaries. It does not broaden persistent\nflow/range ownership, transfer 5B-2 authority from downstream documentation,\nor promote a scoped review result into Editor, Backend, publication, or\nproduction authority.\n\n## 5A Retained Root\n\nPhase 5A is the accepted Core-only retained-root checkpoint: construction is\nall-or-blocked over its exact dependency chain and produces a data-only scene\nwith false product flags. It establishes neither an incremental transition nor\nthe later V3 policy. 5A acceptance does not activate V3 policy. Its complete\nscene projection and fixture observations remain bounded evidence, not product\nlatency or binding claims.\n\n## 5B Root V2 Admission\n\nThe active 5B-1 lane admits Root V2 true no-op and inline-image paint\ntransition only. A true no-op preserves the exact prior Root and scene wrappers;\nthe paint transition proves its selected subtree reuse under the exact active\npolicy. This admission does not authorize text/style, semantic-only,\nauthored-box, fixed-height/overflow, exclusion, 5B-2, or 5B-3 transition\ncapabilities.\n\n## Scene and Delivery\n\nPersistent Scene V2 separates structural-semantic identity from observational\npayload facts. Scene delivery preserves canonical retain/cover and detached\ncomplete-delivery validation under exact registered authority. Incremental\ncandidate, complete fallback, and complete oracle work remain separate ledgers;\nthe oracle is verification-only and does not choose an incremental path or\nbecome production hot-path authority.\n\n## Work Policy\n\nThe scoped V3 work policy has ordered factual rows with locked limits and\ninactive future rows. Limits are deterministic, operation-owned, and based on\nthe named calibration evidence; wall-clock time and payload estimates do not\nselect execution. Inactive capability rows do not describe current product capability; they reserve future 5B-2/5B-3 work. A structural-calibration or\ninactive-reference fixture similarly does not execute a transition capability.\n\n## Source Envelope\n\nFor an accepted V3 Root V2, the source envelope is checked before source\nbinding and remains bound to exact process-local Root/policy authority. A\nsource-envelope breach blocks rather than creating a partial accepted candidate.\nThis is a bounded 5B-1 Root V2 acceptance invariant; it is not the later\n5B-2 source-authority or source-commit transaction contract.\n\n## V3 Corrective Scope\n\nThe V3 corrective work records factual operation counts, scoped fallback and\ndelivery integrity, and an explicit review stop for the 5B-1 lane. A V3 scoped PASS does not activate 5B-2 source authority. It confirms only its named\nRoot V2/scene/delivery policy range when present executable evidence supports\nthat range; it does not activate Worker sessions, Editor apply, Backend\npersistence, publication, production, or retirement of older compatibility\nshapes.\n\n## Stop Boundaries\n\n5B-1 stops for review before later 5B-2 text/style and 5B-3 image/spatial/scale\nwork. Current bounded evidence does not establish product-scale memory, latency,\nfallback frequency, scheduling, Worker lifecycle, fixed-height/overflow,\nColumns/Table, or product integration. Inactive capability rows are not current\nproduct capability, and later planning is not authorization to cross this stop.\n\n## State and Failure Model\n\nRoot V2 and its children are process-local and fail closed on invalid,\nunregistered, stale, malformed, or authority-inconsistent input. Policy-limit\nand proof failures use the bounded fallback protocol; no partial incremental\ncandidate enters complete construction. Accepted results preserve false\npublication/production flags. Source, policy, scene, and delivery facts are\nvalidated by their named owner rather than inferred from payload observation.\n\n## Current Verified State\n\nThe Root V2 construction, source-envelope preparation, and bounded incremental\ncandidate path are current at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutRootV2.ts`.\nScene and delivery implementations are anchored at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentSceneV2.ts`\nand\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockSceneDeliveryV2.ts`.\nThe policy and calibration boundary is at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutWorkPolicyV1.ts`.\nFocused 5A/5B/Root/V3 evidence is at\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1UnifiedLayoutRoot5a.test.ts`,\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1UnifiedIncrementalRoot5b.test.ts`,\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutRootV2.test.ts`,\nand\n`flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts`.\n\n## Known Limits and Unknowns\n\nThis evidence does not resolve generic product activation, browser Worker\ncost/lifetime, cross-process authority, product-scale memory, interaction\nlatency, renderer relayout, data binding, durable persistence, or source-commit\ntransactions. Root V1/Scene V1 retirement and later 5B stage activation remain\noutside the current scope. Historical phase status alone cannot resolve any of\nthese unknowns.\n\n## Historical Design Notes\n\nThe assigned 5A, 5B, corrective, and source-envelope plan/spec material records\nwhy the retained-root checkpoint precedes Root V2 and why V3 stops before later\nwork. It supplies chronology and intent, while current code and focused tests\ngovern current wording. The V3 corrective material is therefore neither a\nfamily-wide policy nor authority for the later source-authority/transaction\nseam.\n\n## Canonical Cross-references\n\n- Persistent tree/range foundations remain owned by [Persistent Flow and Range Foundations](persistent-flow-and-range-foundations.md).\n- Upstream geometry remains owned by [Geometry and Scene Projection](geometry-and-scene-projection.md).\n- Later source topology and source-commit work remain owned by [Source Authority and Commit Transaction](source-authority-and-commit-transaction.md).\n- Scoped repairs and review records remain owned by [Corrective Evidence](corrective-evidence.md).\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutRootV2.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockPersistentSceneV2.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockSceneDeliveryV2.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutWorkPolicyV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1UnifiedLayoutRoot5a.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/liveDraftMr1UnifiedIncrementalRoot5b.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutRootV2.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts`\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-live-draft-source-authority-commit-transaction",
+      "title": "Live Draft Source Authority and Commit Transaction",
+      "path": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "role": "contract",
+      "authority": "Canonical contract limited to verified private-Core producer invocation, source topology, evidence and work ownership, fallback targets, exact source authority, and the named Source-commit transaction seam under bounded amendment precedence; generic transaction authority, public API, product activation, Editor or Backend binding, browser Worker adoption, performance readiness, and family-wide authority remain excluded.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+          "pathOrContractId": "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts"
+        }
+      ],
+      "content": "# Source Authority and Commit Transaction\n\n## Authority and Scope\n\nThis leaf owns the process-local 5B-2 source-topology, producer-invocation, work-owner, fallback-target, and Source-commit transaction seam. It preserves historical plans and design corrections as evidence, while current implementation claims are limited to the immutable Core evidence head `c503a45c03e0ce3b7a6efba2b029ca842017faa0`. Its provenance closure is **20 assigned / 20 unique / 0 missing / 0 extra / 0 drift**.\n\n## Responsibility Boundary\n\nThe leaf records private Core authority and one Source-stage transaction only. It does not establish a generic transaction facility, a public API, Worker protocol, Editor lifecycle, Backend persistence, Root publication, or product activation. In particular, the transaction seam does not activate generic product integration.\n\n## Producer Invocation\n\nProducer invocation is a Core-created, frozen, one-shot authority bound to the exact previous Root, change, evidence request, source material, and work policy. It starts only for its exact request/material pair; producer work is charged in the ordered producer-owned units, binds only a registered matching runtime identity, and can be consumed only after the expected terminal outcome. The current implementation evidence is `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutProducerInvocationAuthorityV2.ts` and its focused proof is `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutProducerInvocationAuthorityV2.test.ts`.\n\n## Source Topology\n\nSource topology is a Core-owned transition concern: exact source candidates, sidecars, access records, reservations, and structural target authority stay private and identity-bound. Historical topology/rebaseline material explains why summary slices are not physical source items and why local versus complete topology cannot simply be required to match. Current implementation evidence remains bounded to `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutSourceAuthorityInternalsV1.ts`.\n\n## Fallback Target\n\nThe recorded fallback target is an exact, policy-bound Core path. A source-envelope or pre-binding failure fails closed before it can mint an unrelated fallback authority; a non-source post-binding limit requires its exact unconsumed evaluator authority. This topology and authority evidence does not turn fallback into a generic product recovery mechanism or a promise of product behavior.\n\n## Evidence and Work Ownership\n\nThe owner registry fixes evidence work to Core preflight, Core materialization, producer, or Core acceptance and charges the `incrementalCandidateWork` ledger; it does not transfer Core admission or acceptance authority to the producer. The owner rows are current private implementation evidence at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.ts`, with focused verification at `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.test.ts`.\n\n## Source Authority Internals\n\nSource authority coordinates the exact detached ticket and the fixed CandidateWork, sidecar, Source, and Stage plans. Participant modules retain authority for their own permanent state; transaction control does not create shadow participant truth. Exact object identity—not clone, equal facts, or a matching fingerprint—is the authorization basis. The named internal seam is evidenced by `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutSourceAuthorityInternalsV1.ts`.\n\n## Source-commit Transaction Seam\n\nThe transaction leaf keeps a detached ticket non-live while it prepares and seals the fixed four-plan tuple. Minting validates and installs the fixed indexes before the final live write; after live, the sequential private apply steps use prevalidated, precreated state and finish by consuming the ticket. The current transaction internals and focused transaction proof are `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts` and `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts`. This is a named Source-stage seam, not a generic transaction or integration contract.\n\n## Approved Amendment Precedence\n\nThe 2026-08-11 approved amendment governs conflicts with the earlier 2026-08-10 seam design only for lifecycle, owner-plan sealing, Source-access ownership, bounded post-live publication, and Stage-result identity where the current private implementation and focused transaction evidence support that amendment. Unchanged earlier design material remains historical/normative context for its unchanged scope. The earlier seam design does not override the approved amendment.\n\n## Bilingual Terminology\n\nThe Thai and English companion terminology preserves the same authority: matching Source Commit Transaction term identifiers and exact English technical identifiers carry the same contract. A companion translation is not an independent or stronger authority source, and Thai and English companion terms have the same authority.\n\n## State and Failure Model\n\nDetached preparation may reject without publication. Mint failure rolls back partial private indexes; live tickets reject re-entry or replay; a post-live invariant violation is not converted into fallback or a partial accepted result. These are process-local failure rules and do not assert generic product lifecycle handling.\n\n## Current Verified State\n\nAt the pinned Core head, the named private producer, owner-registry, source-authority, and transaction modules and their focused tests support the bounded source-authority seam. The evidence does not promote any plan/review prose into a broader current product claim.\n\n## Known Limits and Unknowns\n\nNo claim is made for generic transactions, public exports, persistence, scheduling, cancellation, Worker use, Editor apply, Backend publication, complete traversal, or product-scale memory behavior. Broader source/flow/scene/root transitions remain outside this leaf unless separately evidenced.\n\n## Historical Design Notes\n\nThe 5B-2 plans, corrections, and bilingual review companions record decisions, replanning, and terminology history. Their report or plan authority does not replace executable implementation authority. The approved amendment supplies the conflict rule stated above; it does not erase the historical seam record.\n\n## Canonical Cross-references\n\nThis leaf depends on [Root and V3 Transition Contracts](root-and-v3-transition-contracts.md) and bounds its corrective history through [Corrective Evidence](corrective-evidence.md). Product ownership and activation limits remain with [Product Readiness and Renderer Boundaries](product-readiness-and-renderer-boundaries.md).\n\n## Evidence Anchors\n\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutProducerInvocationAuthorityV2.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutSourceAuthorityInternalsV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutProducerInvocationAuthorityV2.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.test.ts`\n- `flowdoc-vnext-core@c503a45c03e0ce3b7a6efba2b029ca842017faa0:tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts`\n"
     },
     {
       "kind": "document",
@@ -476,7 +710,7 @@
           "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
         }
       ],
-      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n"
+      "content": "# Project Control Overview\n\n## Current scope\n\nProject Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.\n\nThis overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.\n\n## Evidence boundary\n\nThe current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.\n\n## Product-repository inspection baselines\n\nThese approved preflight baselines identify exact revisions inspected before this seed was authored. They are not Evidence records and do not establish current truth for the product Nodes.\n\n| Repository | HTTPS remote | Inspected commit |\n| --- | --- | --- |\n| Project Control | `https://github.com/nekotoomtam/flowdoc-project-control.git` | `d7bbb4cc2a8a30356a59e5d434b794cf357f233a` |\n| Core | `https://github.com/nekotoomtam/flowdoc-vnext-core.git` | `76a2f2311a898e781f53773390d47b05812911e4` |\n| Editor | `https://github.com/nekotoomtam/flowdoc-vnext-editor.git` | `43dcebb22735d7330fda0d57d4e7ce9a726e2454` |\n| Backend | `https://github.com/nekotoomtam/flowdoc-vnext-backend.git` | `280c4ffbe075cd5391cce5219e8f9c40fed16527` |\n\n## Closed pilot\n\nThe `CORE_ROUTE_*` documentation-consolidation pilot is closed. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded as `evidence-core-route-cleanup`, and no active `CORE_ROUTE` Work remains. This bounded closure does not promote the broader Core node from `unknown` or authorize deletion outside the reviewed family.\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n"
     },
     {
       "kind": "document",
@@ -991,7 +1225,7 @@
       "remote": "https://github.com/nekotoomtam/flowdoc-vnext-core.git",
       "checkoutAlias": "core",
       "defaultBranch": "main",
-      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete."
+      "ownershipSummary": "Broader Core remains unknown; the bounded core-route child is closed with recorded cleanup Evidence; Text Engine and Template Builder documentation are synthesized but their migration, publication, and family-promotion work remains incomplete. Live Draft documentation is synthesized across six bounded leaves and one family overview, while its migration, publication, and family-promotion work remains incomplete."
     },
     {
       "kind": "repository",
@@ -1060,6 +1294,150 @@
       "pathOrContractId": "src/index.ts",
       "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-corrective-adversarial-scene",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockUnifiedLayoutAdversarialV2.test.ts",
+      "verificationSummary": "The adversarial suite verifies exact-identity rejection when distinct Scene or Root candidates share a fingerprint; this scoped collision fact does not establish generic fingerprint authority, normative family policy, product activation, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-corrective-scoped-review-ranges",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockSceneDeliveryV2.test.ts",
+      "verificationSummary": "The scene-delivery suite supports the named delivery repair and its current bounded behavior while earlier type-check concern and later verification retain different review ranges; this does not establish outside-range review authority, a normative implementation contract, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-geometry-producer-projection",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockPersistentFlowContractV1.ts",
+      "verificationSummary": "The persistent-flow contract defines producer-owned layout geometry and source facts for downstream projection; this does not establish production binding, retained-root policy, product activation, renderer or export parity, cross-runtime pixel parity, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-oracle-execution-separation",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockPersistentLayoutLineTreeV1.ts",
+      "verificationSummary": "The persistent line-tree boundary constructs incremental acceptance independently of an optional complete-layout QA comparison; this does not make the oracle a production execution input or establish per-keystroke performance, product activation, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-persistent-structural-reuse",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockPersistentFlowTreeV1.ts",
+      "verificationSummary": "The persistent flow tree path-copies changed paths and reuses untouched nodes by identity under its bounded policy; this structural fact does not establish latency, heap, frame, interaction, product activation, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-phase-3-4-gates",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/liveDraftMr1InlineImageGeometry4b.test.ts",
+      "verificationSummary": "The focused Phase 3/4 geometry gates verify their named spatial, authored-box, and inline-image record boundaries, with the inline-image suite as the primary anchor; this does not establish product activation, production binding, renderer or export parity, cross-runtime pixel parity, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-public-exports-nonactivation",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/index.ts",
+      "verificationSummary": "The public Core surface exports the bounded display-list and layout contracts without activating a browser Worker or binding an Editor or Backend consumer; this does not establish product activation, renderer or export parity, cross-runtime pixel parity, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-renderer-no-relayout",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/renderer/textFlowDisplayListV1.ts",
+      "verificationSummary": "The display-list projector converts complete accepted pagination into deterministic text-line commands without measuring text or relaying out fragments; this does not establish product activation, renderer or export parity, cross-runtime pixel parity, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-root-calibration-boundary",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts",
+      "verificationSummary": "The focused calibration suite verifies scoped V3 work rows, exact limits, and inactive future capability rows; this does not activate 5B-2 or 5B-3 capability, product integration, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-root-scene-work-policy",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootV2.ts",
+      "verificationSummary": "Root V2 enforces bounded admission, source-envelope, scene, delivery, and separate work-ledger policy for its named transition rows; this does not activate later 5B-2 authority, Editor or Backend binding, browser Worker adoption, product integration, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-source-authority-amendment-tests",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts",
+      "verificationSummary": "The focused Source-commit suite verifies the bounded 2026-08-11 amendment-backed transaction seam and exact identity rules; this does not turn earlier plans or bilingual companions into stronger authority or establish generic integration, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-live-draft-source-authority-transaction-internals",
+      "nodeIds": [
+        "live-draft"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts",
+      "verificationSummary": "The private Source-commit internals prepare and apply the exact identity-bound Source-stage transaction plans; this does not establish a generic transaction facility, public API, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
       "kind": "evidence",
