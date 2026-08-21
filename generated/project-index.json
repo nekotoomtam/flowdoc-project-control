@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "43d9006d13e14c4e6053bd21b740a6da7337e028564760b24b8fbfe8d4026f18",
+  "sourceDigest": "bc43c473ccc0843c0fe2f431886eb330b152f0b22299ce2384c2b6a5b87607a3",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1839,8 +1839,8 @@
       ],
       "repositoryId": "repo-core",
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
-      "pathOrContractId": "tests/textBlockV4ReadinessCloseAudit.test.ts",
-      "verificationSummary": "The focused close-audit suite verifies the isolated 6,000-line/250-page regression case; this does not establish general performance readiness, mixed-document readiness, engine execution, renderer/export, backend lifecycle, or cross-page UX.",
+      "pathOrContractId": "tests/textBlockV4Pagination.test.ts",
+      "verificationSummary": "The pagination suite verifies the isolated 6,000-line/250-page executable regression, including 24-line boundary-page slices and the local 1.5-second threshold; this does not establish general performance readiness, mixed-document readiness, engine execution, renderer/export, backend lifecycle, or cross-page UX.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {

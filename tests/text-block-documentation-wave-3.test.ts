@@ -72,7 +72,7 @@ const evidenceAnchors = [
   "src/authoring/textBlockV4Contract.ts",
   "src/authoring/textBlockV4RichInlineReplace.ts",
   "src/pagination/textBlockV4Pagination.ts",
-  "tests/textBlockV4ReadinessCloseAudit.test.ts",
+  "tests/textBlockV4Pagination.test.ts",
 ] as const;
 const evidenceSummaries = [
   "The version policy keeps ordinary reads at active package v2/document v3, records package v3/document v4 as a decision-only copy-forward target, and does not activate a parser, migration executor, persistence delivery, or product readiness.",
@@ -80,7 +80,7 @@ const evidenceSummaries = [
   "The V4 authoring contract defines five flat inline forms, canonical empty children, UTF-16 projection, and canonical inline-local selection; this does not establish DOM input, collaboration, persistence, measurement, renderer, or product activation.",
   "The rich-inline replacement module validates exact artifact, policy, field-contract, and session pins and applies an accepted single-user cloned replacement; this does not establish stale-revision execution, idempotency, collaboration-safe deltas, CRDT/offline merge, backend persistence, or product activation.",
   "The pagination module deterministically packs complete accepted lines into isolated derived fragments without remeasurement, authored mutation, or caret remapping; this does not establish shaper execution, mixed composition, renderer/export, backend lifecycle, cross-page editing, or product readiness.",
-  "The focused close-audit suite verifies the isolated 6,000-line/250-page regression case; this does not establish general performance readiness, mixed-document readiness, engine execution, renderer/export, backend lifecycle, or cross-page UX.",
+  "The pagination suite verifies the isolated 6,000-line/250-page executable regression, including 24-line boundary-page slices and the local 1.5-second threshold; this does not establish general performance readiness, mixed-document readiness, engine execution, renderer/export, backend lifecycle, or cross-page UX.",
 ] as const;
 const expectedNodeSummary =
   "Text Block documentation synthesis is complete across three bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and family promotion, while migration execution, product activation, input surfaces, collaboration, persistence, mixed composition, renderer and export integration, cross-page editing, and general performance readiness remain unknown.";
