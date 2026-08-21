@@ -5,6 +5,6 @@
   "repositoryId": "repo-core",
   "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
   "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootV2.ts",
-  "verificationSummary": "Root V2 enforces bounded admission, source-envelope, scene, delivery, and separate work-ledger policy for its named transition rows; this does not activate later 5B-2 authority, Editor or Backend binding, browser Worker adoption, product integration, or performance readiness.",
+  "verificationSummary": "Root V2 creates the bounded root and scene and records complete-build work for its named transition; its `deliveryPlan` is `null`, and this primary anchor does not establish delivery, separate incremental/fallback/oracle ledgers, later 5B-2 authority, product integration, Editor or Backend binding, browser Worker adoption, or performance readiness.",
   "verifiedAt": "2026-08-21T00:00:00.000Z"
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "489fb8e37415218b667356eefdd0c4a4483c321c7eff12423b541868e4b89780",
+  "sourceDigest": "1be9c9084d9eb754f14a3bc326cdda3930b8675c255f9ce32ae1ec072dd42b49",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1316,7 +1316,7 @@
       "repositoryId": "repo-core",
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
       "pathOrContractId": "tests/textBlockSceneDeliveryV2.test.ts",
-      "verificationSummary": "The scene-delivery suite supports the named delivery repair and its current bounded behavior while earlier type-check concern and later verification retain different review ranges; this does not establish outside-range review authority, a normative implementation contract, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+      "verificationSummary": "The scene-delivery suite verifies current accessor-safe scene delivery for its named inputs; this primary anchor does not establish a historical report-range comparison, outside-range review authority, a normative implementation contract, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
@@ -1340,7 +1340,7 @@
       "repositoryId": "repo-core",
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
       "pathOrContractId": "src/layout/textBlockPersistentLayoutLineTreeV1.ts",
-      "verificationSummary": "The persistent line-tree boundary constructs incremental acceptance independently of an optional complete-layout QA comparison; this does not make the oracle a production execution input or establish per-keystroke performance, product activation, or performance readiness.",
+      "verificationSummary": "The persistent line-tree module creates and inspects persistent line trees and their bounded stored facts; this primary anchor does not establish oracle-independent incremental acceptance, make a complete oracle a production execution input, or establish per-keystroke performance, product activation, or performance readiness.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
@@ -1352,7 +1352,7 @@
       "repositoryId": "repo-core",
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
       "pathOrContractId": "src/layout/textBlockPersistentFlowTreeV1.ts",
-      "verificationSummary": "The persistent flow tree path-copies changed paths and reuses untouched nodes by identity under its bounded policy; this structural fact does not establish latency, heap, frame, interaction, product activation, or performance readiness.",
+      "verificationSummary": "The persistent flow-tree module creates and inspects immutable complete trees and exposes their bounded structural facts; this primary anchor does not establish path-copy update reuse, latency, heap, frame, interaction, product activation, or performance readiness.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
@@ -1412,7 +1412,7 @@
       "repositoryId": "repo-core",
       "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
       "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootV2.ts",
-      "verificationSummary": "Root V2 enforces bounded admission, source-envelope, scene, delivery, and separate work-ledger policy for its named transition rows; this does not activate later 5B-2 authority, Editor or Backend binding, browser Worker adoption, product integration, or performance readiness.",
+      "verificationSummary": "Root V2 creates the bounded root and scene and records complete-build work for its named transition; its `deliveryPlan` is `null`, and this primary anchor does not establish delivery, separate incremental/fallback/oracle ledgers, later 5B-2 authority, product integration, Editor or Backend binding, browser Worker adoption, or performance readiness.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
     },
     {
