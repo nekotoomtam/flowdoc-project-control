@@ -1,5 +1,7 @@
 import { configDefaults, defineConfig } from "vitest/config";
 
+const worktreeExclude = "**/.worktrees/**";
+
 export default defineConfig({
   test: {
     environment: "node",
@@ -10,6 +12,7 @@ export default defineConfig({
           name: "node",
           exclude: [
             ...configDefaults.exclude,
+            worktreeExclude,
             "app/src/**/*.test.tsx",
             "tests/e2e/**",
           ],
@@ -20,6 +23,7 @@ export default defineConfig({
         test: {
           name: "app-jsdom",
           include: ["app/src/**/*.test.tsx"],
+          exclude: [...configDefaults.exclude, worktreeExclude],
           environment: "jsdom",
           setupFiles: ["app/src/test/setup.ts"],
         },
