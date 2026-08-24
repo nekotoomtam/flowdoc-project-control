@@ -196,7 +196,7 @@ function expectFrozenBatchIdentity(orientation: WaveAOrientation, inventory: Cor
 
 function expectReviewedPartialMapSafe(map: string): void {
   expect(map).toContain(
-    "This map records the completed pilot family and the completed Text Engine, Template Builder, and Live Draft documentation syntheses; all broader Core truth remains unknown.",
+    "This map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.",
   );
   expect(map).not.toContain("records only the family closed by the completed pilot.");
   expect(map).not.toMatch(
