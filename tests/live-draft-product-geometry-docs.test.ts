@@ -1,12 +1,13 @@
 import { access, readFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { resolveCoreEvidenceRoot } from "./core-evidence-root.js";
 import { expectFrozenCurrentSourceProvenance } from "./template-builder-source-provenance.js";
 
 const root = process.cwd();
 const frozenSourceCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const currentEvidenceCommit = "c503a45c03e0ce3b7a6efba2b029ca842017faa0";
-const coreEvidenceRoot = resolve(root, "..", "..", "..", "flowdoc-vnext-core", ".worktrees", "core-route-documentation-cleanup");
+const coreEvidenceRoot = resolveCoreEvidenceRoot(root);
 
 const commonHeadings = [
   "## Authority and Scope",

@@ -1,6 +1,7 @@
 import { access, readFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
+import { resolveCoreEvidenceRoot } from "./core-evidence-root.js";
 import { expectFrozenCurrentSourceProvenance } from "./template-builder-source-provenance.js";
 
 const root = process.cwd();
@@ -10,7 +11,7 @@ const expectedLaneAFingerprints = {
   "sandbox-runtime-and-store": "1a854ca9b9b4f4295350615289cc843b34d97a212101a6ae4a3e3dc1e363fb9b",
   "structural-runtime-and-navigation": "a04f8ad1a801a9e3f5ef9bd0acc8cd80be9ab00aa312561e023a837e2c5dce39",
 } as const;
-const coreEvidenceRoot = resolve(root, "..", "..", "..", "flowdoc-vnext-core", ".worktrees", "core-route-documentation-cleanup");
+const coreEvidenceRoot = resolveCoreEvidenceRoot(root);
 
 const commonHeadings = [
   "## Authority and Scope",
