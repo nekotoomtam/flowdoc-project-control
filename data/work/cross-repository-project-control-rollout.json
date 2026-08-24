@@ -1,0 +1,12 @@
+{
+  "kind": "work",
+  "id": "cross-repository-project-control-rollout",
+  "title": "Cross-repository Project Control Rollout",
+  "nodeId": "flowdoc",
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
+  "workState": "queued",
+  "summary": "Connect Core, Editor, and Backend to Project Control so this repository becomes the shared control surface and points to repository-owned implementation truth.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-24T00:00:00.000Z",
+  "updatedAt": "2026-08-24T00:00:00.000Z"
+}

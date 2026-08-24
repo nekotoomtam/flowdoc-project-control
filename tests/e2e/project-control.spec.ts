@@ -16,7 +16,8 @@ test("explores a node, reads its summary, and opens separated details", async ({
   await page.getByRole("button", { name: "View all" }).click();
   await page.getByRole("tab", { name: "Work" }).click();
   const workPanel = page.getByRole("tabpanel");
-  await expect(workPanel).toContainText("No active work is recorded.");
+  await expect(workPanel).toContainText("Core Documentation Family Closure");
+  await expect(workPanel).toContainText("Remaining Core Documentation Synthesis");
   await expect(workPanel).not.toContainText("CORE_ROUTE");
 });
 

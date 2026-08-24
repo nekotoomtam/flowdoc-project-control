@@ -1,0 +1,12 @@
+{
+  "kind": "work",
+  "id": "agent-and-skill-design",
+  "title": "Agent and Skill Design",
+  "nodeId": "project-control",
+  "repositoryIds": ["repo-project-control"],
+  "workState": "queued",
+  "summary": "Define FlowDoc agent roles, capabilities, handoffs, and reusable skills after the documentation baseline is under control.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-24T00:00:00.000Z",
+  "updatedAt": "2026-08-24T00:00:00.000Z"
+}
