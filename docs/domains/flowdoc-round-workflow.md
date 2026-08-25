@@ -7,6 +7,16 @@ scope, repository ownership, evidence, and remaining uncertainty visible while
 Project Control reconstructs and maintains system truth across Project Control,
 Core, Editor, and Backend.
 
+Project Control is the governing entrypoint for FlowDoc work rounds. Future
+Codex rooms and agents should start here before treating any FlowDoc repository
+state as current, selecting a role, promoting a map, or opening a broad product
+implementation round.
+
+If a FlowDoc request starts in another repository or chat, first check Project
+Control for the relevant Work, Node, Document, Repository, and Evidence records,
+then continue in the owning repository only after scope and evidence targets are
+clear.
+
 Use this workflow before broad work, cross-repository work, evidence
 registration, lane cleanup, documentation synthesis, or product implementation.
 It is a coordination contract. It does not by itself prove that a product

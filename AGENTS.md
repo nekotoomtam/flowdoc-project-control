@@ -7,6 +7,18 @@ coordination, document metadata, repository identities, and evidence indexes.
 It is not the product runtime and must not become the place where Core, Editor,
 or Backend behavior is implemented.
 
+Project Control is the governing entrypoint for FlowDoc work rounds. Future
+Codex rooms and agents should start here before treating any FlowDoc repository
+state as current, deciding an owner repository, promoting map truth, or planning
+cross-repository work.
+
+If a FlowDoc request starts in another repository or chat, first route through
+this repository's Project Control records unless the user explicitly limits the
+turn to local-only inspection. Use Project Control to identify the Work item or
+explicit request, owner repository, active role, evidence target, known risks,
+and unknown state; then read the owning product repository's `AGENTS.md` before
+editing product behavior.
+
 Before taking broad work, read these files in order:
 
 1. `docs/domains/flowdoc-system-map.md`

@@ -4,6 +4,11 @@
 
 Project Control is the shared, file-first registry for Flowdoc Nodes, Work, Documents, Repository Registry entries, and Evidence. Its generated index is a deterministic read model, and its first GUI is read-only.
 
+Project Control is also the governing entrypoint for FlowDoc work rounds. Future
+Codex rooms and agents should start here to identify owner repositories, active
+roles, evidence targets, known risks, and unknown state before promoting shared
+truth or editing product behavior.
+
 This overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.
 
 ## Evidence boundary

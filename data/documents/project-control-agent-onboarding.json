@@ -5,7 +5,7 @@
   "path": "AGENTS.md",
   "nodeIds": ["project-control"],
   "role": "contract",
-  "authority": "Repository entry contract for new agents working inside FlowDoc Project Control.",
+  "authority": "Repository entry contract for new agents and future FlowDoc rooms that must start from Project Control before broad FlowDoc work.",
   "lifecycle": "active",
   "repositoryRefs": []
 }

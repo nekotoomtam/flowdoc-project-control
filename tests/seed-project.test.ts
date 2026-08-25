@@ -9,6 +9,7 @@ const frozenCoreCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const approvedDesignCommit = "d79b88c23a307e7ec49437a015804d7a4d2de4bf";
 const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 const coreCleanupCommit = "8aa0be4f662708fa75d4eb8f0f99b4784da2371c";
+const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim();
 const removedCoreRoutePaths = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
   "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
@@ -85,22 +86,45 @@ describe("truthful seed project", () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const documents = new Map(model.documents.map((document) => [document.id, document]));
     const projectControl = model.nodes.find((node) => node.id === "project-control");
+    const onboarding = documents.get("doc-project-control-agent-onboarding");
+    const roundWorkflow = documents.get("doc-flowdoc-round-workflow");
 
     expect(projectControl?.documentIds).toContain("doc-project-control-agent-onboarding");
-    expect(documents.get("doc-project-control-agent-onboarding")).toMatchObject({
+    expect(onboarding).toMatchObject({
       path: "AGENTS.md",
       nodeIds: ["project-control"],
       role: "contract",
       lifecycle: "active",
     });
-    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+    expect(roundWorkflow).toMatchObject({
+      path: "docs/domains/flowdoc-round-workflow.md",
+      nodeIds: ["project-control"],
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(onboarding?.authority)
+      .toContain("new agents and future FlowDoc rooms");
+    expect(roundWorkflow?.authority)
+      .toContain("governing entrypoint");
+    expect(onboarding?.content)
       .toContain("Start here");
-    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+    expect(onboarding?.content)
       .toContain("docs/domains/flowdoc-system-map.md");
-    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+    expect(onboarding?.content)
       .toContain("Do not update DOCUMENT_MAP");
-    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+    expect(onboarding?.content)
       .toContain("PASS / FAIL / BLOCKER / RISK / UNKNOWN");
+    for (const content of [
+      normalize(onboarding?.content),
+      normalize(roundWorkflow?.content),
+    ]) {
+      expect(content)
+        .toContain("Project Control is the governing entrypoint for FlowDoc work rounds");
+      expect(content)
+        .toContain("Future Codex rooms and agents should start here");
+    }
+    expect(normalize(roundWorkflow?.content))
+      .toContain("If a FlowDoc request starts in another repository or chat");
   });
 
   it("registers closed Core route truth without retaining pilot Work or promoting the parent Core node", async () => {
