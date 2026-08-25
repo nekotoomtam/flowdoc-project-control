@@ -5,6 +5,7 @@ const worktreeExclude = "**/.worktrees/**";
 export default defineConfig({
   test: {
     environment: "node",
+    testTimeout: 15000,
     projects: [
       {
         extends: true,

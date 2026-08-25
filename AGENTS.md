@@ -13,7 +13,8 @@ Before taking broad work, read these files in order:
 2. `docs/domains/document-map-operating-rules.md`
 3. `docs/domains/flowdoc-role-catalog.md`
 4. `docs/domains/agent-and-skill-operating-model.md`
-5. `docs/domains/project-control.md`
+5. `docs/domains/flowdoc-round-workflow.md`
+6. `docs/domains/project-control.md`
 
 Use `generated/project-index.json` only as the generated read model. Canonical
 records live under `data/` and canonical prose lives under `docs/`.

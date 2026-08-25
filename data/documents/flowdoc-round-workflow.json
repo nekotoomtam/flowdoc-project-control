@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-round-workflow",
+  "title": "FlowDoc Round Workflow",
+  "path": "docs/domains/flowdoc-round-workflow.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control coordination contract for one bounded FlowDoc work round, including intake, scope, verification, evidence packet, and handoff expectations.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
