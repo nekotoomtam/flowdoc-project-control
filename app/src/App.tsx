@@ -3,6 +3,7 @@ import type { ProjectReadModel } from "../../src/model/types.js";
 import { ControlRoom } from "./components/ControlRoom.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { FullDetailModal } from "./components/FullDetailModal.js";
+import { NodeSearch } from "./components/NodeSearch.js";
 import { loadProjectState, type ProjectState } from "./data/loadProjectState.js";
 import { nodePathDiagnostic, nodeUrl, readNodeId, resolveNodePath } from "./navigation/nodeRoute.js";
 
@@ -93,6 +94,7 @@ function ProjectMap({ model }: { model: ProjectReadModel }) {
   return (
     <main className="project-map">
       {routeDiagnostic === null ? null : <p role="alert">{routeDiagnostic}</p>}
+      <NodeSearch nodes={model.nodes} onNavigate={navigate} />
       <ControlRoom
         model={model}
         currentNodeId={currentNodeId}

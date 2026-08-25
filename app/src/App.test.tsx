@@ -162,8 +162,29 @@ describe("App", () => {
     render(<App initialModel={model} />);
 
     expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
+    expect(screen.getByRole("searchbox", { name: "Search Nodes" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
     expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
+  });
+
+  it("routes node search selections through the shared control room navigation", async () => {
+    const user = userEvent.setup();
+    const routeModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], []),
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={routeModel} />);
+
+    await user.type(screen.getByRole("searchbox", { name: "Search Nodes" }), "project con");
+    await user.click(screen.getByRole("option", { name: "Project Control" }));
+
+    expect(window.location.search).toBe("?node=project-control");
+    expect(screen.getByRole("button", { name: /Project Control, selected branch/ })).toBeVisible();
   });
 
   it("presents a control-room work tree for the selected system branch", async () => {
@@ -193,6 +214,13 @@ describe("App", () => {
     const workTree = screen.getByRole("region", { name: "Work tree" });
     expect(within(workTree).getByText("Core Documentation Closure")).toBeVisible();
     expect(within(workTree).getByText("Editor Polish")).toBeVisible();
+    const coreChecklist = within(workTree).getByRole("list", { name: "Core Documentation Closure checklist" });
+    expect(within(coreChecklist).getByText("Ready")).toBeVisible();
+    expect(within(coreChecklist).getAllByText("Review")).toHaveLength(2);
+    expect(within(coreChecklist).getByText("Repository link needed")).toBeVisible();
+    expect(within(coreChecklist).getByText("Evidence requirement needed")).toBeVisible();
+    expect(within(coreChecklist).queryByText("OK")).not.toBeInTheDocument();
+    expect(within(coreChecklist).queryByText("!")).not.toBeInTheDocument();
 
     await user.click(within(systemTree).getByRole("button", { name: /Core/ }));
 

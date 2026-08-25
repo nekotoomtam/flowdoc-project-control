@@ -238,11 +238,11 @@ function WorkCard({
       )}
       <ul className="control-room__checklist" aria-label={`${work.title} checklist`}>
         <ChecklistItem done={true} label="Task is recorded" />
-        <ChecklistItem done={repositories.length > 0} label={repositories.length === 0 ? "Repository not linked" : repositories.join(", ")} />
+        <ChecklistItem done={repositories.length > 0} label={repositories.length === 0 ? "Repository link needed" : repositories.join(", ")} />
         <ChecklistItem
           done={work.requiredEvidence.length > 0}
           label={work.requiredEvidence.length === 0
-            ? "Evidence requirement is empty"
+            ? "Evidence requirement needed"
             : `${work.requiredEvidence.length} evidence item required`}
         />
       </ul>
@@ -253,7 +253,7 @@ function WorkCard({
 function ChecklistItem({ done, label }: { done: boolean; label: string }) {
   return (
     <li className={done ? "control-room__checklist-item control-room__checklist-item--done" : "control-room__checklist-item"}>
-      <span aria-hidden="true">{done ? "OK" : "!"}</span>
+      <span aria-hidden="true">{done ? "Ready" : "Review"}</span>
       <span>{label}</span>
     </li>
   );

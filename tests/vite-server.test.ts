@@ -14,7 +14,7 @@ afterEach(async () => {
 });
 
 describe("local Vite server", () => {
-  it("returns 404 for an absent diagnostics file while serving the application index", async () => {
+  it("serves an empty diagnostics payload when no diagnostic sidecar exists", async () => {
     server = await createServer({
       configFile: "app/vite.config.ts",
       server: { host: "127.0.0.1", port: 0 },
@@ -26,7 +26,8 @@ describe("local Vite server", () => {
     const diagnosticsResponse = await fetch(`${baseUrl}/project-diagnostics.json`);
     const indexResponse = await fetch(`${baseUrl}/`);
 
-    expect(diagnosticsResponse.status).toBe(404);
+    expect(diagnosticsResponse.status).toBe(200);
+    expect(await diagnosticsResponse.json()).toEqual({ schemaVersion: 1, diagnostics: [] });
     expect(indexResponse.status).toBe(200);
     expect(await indexResponse.text()).toContain('id="root"');
   });
