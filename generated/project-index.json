@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "413686d2a88ff06a0433068b3c9d6a8aa38e3b4e7fe0be1b3f6737a2589ccab8",
+  "sourceDigest": "fda9089f93d40fd13fdf7252a42f273016a9f829db923b9e52aabf257d0f07a3",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,8 +286,7 @@
       ],
       "childIds": [],
       "workIds": [
-        "agent-and-skill-design",
-        "lane-worktree-reconciliation"
+        "agent-and-skill-design"
       ]
     }
   ],
@@ -349,20 +348,6 @@
       ],
       "workState": "queued",
       "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories.",
-      "requiredEvidence": [],
-      "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
-    },
-    {
-      "kind": "work",
-      "id": "lane-worktree-reconciliation",
-      "title": "Lane Worktree Reconciliation",
-      "nodeId": "project-control",
-      "repositoryIds": [
-        "repo-project-control"
-      ],
-      "workState": "in-review",
-      "summary": "Review the six lane branches that still contain separate commits, reconcile any retained value, and only then remove their worktrees.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
       "updatedAt": "2026-08-24T00:00:00.000Z"

@@ -12,7 +12,5 @@ export function resolveCoreEvidenceRoot(projectRoot: string): string {
     projectControlRoot,
     "..",
     "flowdoc-vnext-core",
-    ".worktrees",
-    "core-route-documentation-cleanup",
   );
 }

@@ -53,22 +53,10 @@ const expectedWork = [
     createdAt: timestamp,
     updatedAt: timestamp,
   },
-  {
-    kind: "work",
-    id: "lane-worktree-reconciliation",
-    title: "Lane Worktree Reconciliation",
-    nodeId: "project-control",
-    repositoryIds: ["repo-project-control"],
-    workState: "in-review",
-    summary: "Review the six lane branches that still contain separate commits, reconcile any retained value, and only then remove their worktrees.",
-    requiredEvidence: [],
-    createdAt: timestamp,
-    updatedAt: timestamp,
-  },
 ] as const;
 
 describe("project roadmap Work Queue", () => {
-  it("publishes the five active roadmap cards without changing node truth", async () => {
+  it("publishes the four active roadmap cards without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
     expect(model.work).toEqual(expectedWork);
@@ -81,7 +69,7 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.nodes.find((node) => node.id === "project-control")).toMatchObject({
       truthState: "current",
-      workIds: ["agent-and-skill-design", "lane-worktree-reconciliation"],
+      workIds: ["agent-and-skill-design"],
     });
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
       truthState: "planned",

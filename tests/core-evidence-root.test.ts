@@ -8,15 +8,13 @@ describe("Core evidence root resolution", () => {
   const expectedCoreEvidenceRoot = resolve(
     repositoriesRoot,
     "flowdoc-vnext-core",
-    ".worktrees",
-    "core-route-documentation-cleanup",
   );
 
-  it("resolves the sibling Core evidence worktree from the main checkout", () => {
+  it("resolves the sibling Core checkout from the Project Control main checkout", () => {
     expect(resolveCoreEvidenceRoot(projectControlRoot)).toBe(expectedCoreEvidenceRoot);
   });
 
-  it("resolves the same Core evidence worktree from a linked Project Control worktree", () => {
+  it("resolves the same Core checkout from a linked Project Control worktree", () => {
     const linkedWorktreeRoot = resolve(
       projectControlRoot,
       ".worktrees",

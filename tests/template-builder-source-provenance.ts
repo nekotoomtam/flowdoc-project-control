@@ -35,6 +35,10 @@ async function coreGit(coreEvidenceRoot: string, args: string[]): Promise<string
   return stdout.trim();
 }
 
+async function expectCommitReachableFromHead(coreEvidenceRoot: string, commit: string): Promise<void> {
+  await coreGit(coreEvidenceRoot, ["merge-base", "--is-ancestor", commit, "HEAD"]);
+}
+
 export async function expectFrozenCurrentSourceProvenance(
   contract: SourceProvenanceContract,
 ): Promise<void> {
@@ -51,8 +55,7 @@ export async function expectFrozenCurrentSourceProvenance(
     .toBe(contract.frozenCommit);
   expect(await coreGit(contract.coreEvidenceRoot, ["rev-parse", "--verify", `${contract.currentCommit}^{commit}`]))
     .toBe(contract.currentCommit);
-  expect(await coreGit(contract.coreEvidenceRoot, ["rev-parse", "HEAD"]))
-    .toBe(contract.currentCommit);
+  await expectCommitReachableFromHead(contract.coreEvidenceRoot, contract.currentCommit);
 
   await Promise.all(contract.sourcePaths.map(async (path) => {
     const expectedBlob = blobsByPath.get(path);
