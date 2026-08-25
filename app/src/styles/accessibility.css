@@ -22,6 +22,7 @@
 }
 
 @media (forced-colors: active) {
+  .control-room__tree-button[aria-current="page"],
   .focus-stack-map__current,
   .full-detail-modal__tabs [role="tab"][aria-selected="true"] {
     border: 2px solid CanvasText;

@@ -10,15 +10,15 @@ describe("accessible visual system", () => {
   it("exposes map levels and current selection without relying on color", () => {
     render(<App initialModel={model} />);
 
-    expect(screen.getByText("Current node")).toBeVisible();
-    expect(screen.getByRole("heading", { name: "Child nodes" })).toBeVisible();
-    expect(screen.getByRole("button", { name: /Flowdoc, Current/ })).toBeVisible();
+    expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
+    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ })).toBeVisible();
   });
 
   it("marks the current node semantically", () => {
     render(<App initialModel={model} />);
 
-    expect(screen.getByRole("button", { name: /Flowdoc, Current/ }))
+    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ }))
       .toHaveAttribute("aria-current", "page");
   });
 

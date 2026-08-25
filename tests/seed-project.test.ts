@@ -39,6 +39,70 @@ describe("truthful seed project", () => {
     ], { cwd: process.cwd() })).resolves.toBeDefined();
   });
 
+  it("registers the FlowDoc system map and keeps plan documents separate from truth maps", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+
+    expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
+      truthState: "planned",
+      documentIds: [
+        "doc-flowdoc-system-map",
+        "doc-glossary-en",
+        "doc-glossary-th",
+      ],
+    });
+    expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)
+      .toContain("doc-document-map-operating-rules");
+
+    expect(documents.get("doc-flowdoc-system-map")).toMatchObject({
+      path: "docs/domains/flowdoc-system-map.md",
+      nodeIds: ["flowdoc"],
+      role: "current-state",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-flowdoc-system-map")?.content).toContain("## System inventory");
+    expect(documents.get("doc-flowdoc-system-map")?.content).toContain("Core");
+    expect(documents.get("doc-flowdoc-system-map")?.content).toContain("Editor");
+    expect(documents.get("doc-flowdoc-system-map")?.content).toContain("Backend");
+
+    expect(documents.get("doc-document-map-operating-rules")).toMatchObject({
+      path: "docs/domains/document-map-operating-rules.md",
+      nodeIds: ["project-control"],
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-document-map-operating-rules")?.content)
+      .toContain("Plan / Work records intent");
+    expect(documents.get("doc-document-map-operating-rules")?.content)
+      .toContain("DOCUMENT_MAP records verified system truth");
+
+    for (const id of ["core", "editor", "backend"]) {
+      expect(model.nodes.find((node) => node.id === id)?.truthState).toBe("unknown");
+    }
+  });
+
+  it("publishes the new-agent onboarding entrypoint as a Project Control contract", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+
+    expect(projectControl?.documentIds).toContain("doc-project-control-agent-onboarding");
+    expect(documents.get("doc-project-control-agent-onboarding")).toMatchObject({
+      path: "AGENTS.md",
+      nodeIds: ["project-control"],
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+      .toContain("Start here");
+    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+      .toContain("docs/domains/flowdoc-system-map.md");
+    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+      .toContain("Do not update DOCUMENT_MAP");
+    expect(documents.get("doc-project-control-agent-onboarding")?.content)
+      .toContain("PASS / FAIL / BLOCKER / RISK / UNKNOWN");
+  });
+
   it("registers closed Core route truth without retaining pilot Work or promoting the parent Core node", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const core = model.nodes.find((node) => node.id === "core");

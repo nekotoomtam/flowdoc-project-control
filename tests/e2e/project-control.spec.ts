@@ -11,8 +11,8 @@ test("explores a node, reads its summary, and opens separated details", async ({
   await page.getByRole("tab", { name: "Documents" }).click();
   await expect(page.getByRole("tabpanel")).toContainText("Architecture and GUI Design");
   await page.keyboard.press("Escape");
-  await page.getByRole("button", { name: /FlowDoc, Ancestor/ }).click();
-  await page.getByRole("button", { name: /Core/ }).click();
+  await page.getByRole("button", { name: /FlowDoc, active branch/ }).click();
+  await page.getByRole("button", { name: "Core, system node" }).click();
   await page.getByRole("button", { name: "View all" }).click();
   await page.getByRole("tab", { name: "Work" }).click();
   const workPanel = page.getByRole("tabpanel");
@@ -23,10 +23,10 @@ test("explores a node, reads its summary, and opens separated details", async ({
 
 test("keeps URL and map synchronized with browser history", async ({ page }) => {
   await page.goto("/?node=flowdoc");
-  await page.getByRole("button", { name: /Core/ }).click();
+  await page.getByRole("button", { name: "Core, system node" }).click();
   await page.goBack();
   await expect(page).toHaveURL(/\?node=flowdoc$/);
-  await expect(page.getByRole("button", { name: /FlowDoc, Current/ })).toBeVisible();
+  await expect(page.getByRole("button", { name: /FlowDoc, selected branch/ })).toBeVisible();
   await page.goForward();
   await expect(page).toHaveURL(/\?node=core$/);
 });
@@ -38,24 +38,29 @@ test("shows diagnostics for a malformed served index", async ({ page }) => {
   }));
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Project data needs attention" })).toBeVisible();
-  await expect(page.getByTestId("focus-stack-map")).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "FlowDoc control room" })).toHaveCount(0);
 });
 
-test("keeps the map primary and the inspector concise at desktop and mobile widths", async ({ page }, testInfo) => {
+test("keeps the control room readable at desktop and mobile widths", async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/?node=flowdoc");
-  const map = await page.getByTestId("focus-stack-map").boundingBox();
-  const inspector = await page.getByRole("complementary").boundingBox();
-  expect(map).not.toBeNull();
-  expect(inspector).not.toBeNull();
-  expect(map!.x + map!.width).toBeLessThanOrEqual(inspector!.x);
-  expect(inspector!.width).toBeLessThanOrEqual(420);
+  const systemTree = await page.getByRole("navigation", { name: "System tree" }).boundingBox();
+  const workTree = await page.getByRole("region", { name: "Work tree" }).boundingBox();
+  const detail = await page.getByRole("complementary", { name: "Control detail" }).boundingBox();
+  expect(systemTree).not.toBeNull();
+  expect(workTree).not.toBeNull();
+  expect(detail).not.toBeNull();
+  expect(systemTree!.x + systemTree!.width).toBeLessThanOrEqual(workTree!.x);
+  expect(workTree!.x + workTree!.width).toBeLessThanOrEqual(detail!.x);
+  expect(detail!.width).toBeLessThanOrEqual(420);
   await page.screenshot({ path: testInfo.outputPath("desktop-light.png"), fullPage: true });
 
   await page.setViewportSize({ width: 390, height: 844 });
-  const mobileMap = await page.getByTestId("focus-stack-map").boundingBox();
-  const mobileInspector = await page.getByRole("complementary").boundingBox();
-  expect(mobileInspector!.y).toBeGreaterThan(mobileMap!.y + mobileMap!.height - 1);
+  const mobileSystemTree = await page.getByRole("navigation", { name: "System tree" }).boundingBox();
+  const mobileWorkTree = await page.getByRole("region", { name: "Work tree" }).boundingBox();
+  const mobileDetail = await page.getByRole("complementary", { name: "Control detail" }).boundingBox();
+  expect(mobileWorkTree!.y).toBeGreaterThan(mobileSystemTree!.y + mobileSystemTree!.height - 1);
+  expect(mobileDetail!.y).toBeGreaterThan(mobileWorkTree!.y + mobileWorkTree!.height - 1);
   await page.screenshot({ path: testInfo.outputPath("mobile-light.png"), fullPage: true });
 });
 

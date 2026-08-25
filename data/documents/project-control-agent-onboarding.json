@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-agent-onboarding",
+  "title": "Project Control Agent Onboarding",
+  "path": "AGENTS.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Repository entry contract for new agents working inside FlowDoc Project Control.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-role-catalog",
+  "title": "FlowDoc Role Catalog",
+  "path": "docs/domains/flowdoc-role-catalog.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Draft Project Control role catalog for assigning FlowDoc agent responsibilities and handoff expectations.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

@@ -1,7 +1,8 @@
 import { StrictMode } from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
+import type { IndexNode, WorkRecord } from "../../src/model/types.js";
 import { App } from "./App.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { loadProjectState } from "./data/loadProjectState.js";
@@ -22,7 +23,7 @@ describe("App", () => {
 
     expect(await screen.findByRole("heading", { name: "Project data needs attention" }))
       .toBeVisible();
-    expect(screen.queryByTestId("focus-stack-map")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
   });
 
   it("reports a network failure without rendering the map", async () => {
@@ -31,7 +32,7 @@ describe("App", () => {
     render(<App />);
 
     expect(await screen.findByText(/Could not load project data/)).toBeVisible();
-    expect(screen.queryByTestId("focus-stack-map")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
   });
 
   it("prefers source diagnostics and does not fetch the retained old index", async () => {
@@ -160,7 +161,46 @@ describe("App", () => {
   it("renders the shell from a valid injected read model", () => {
     render(<App initialModel={model} />);
 
-    expect(screen.getByTestId("focus-stack-map")).toBeVisible();
+    expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
+    expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
+  });
+
+  it("presents a control-room work tree for the selected system branch", async () => {
+    const user = userEvent.setup();
+    const flowdocNode = appNode("flowdoc", "FlowDoc", null, ["core", "editor"], []);
+    const coreNode = appNode("core", "Core", "flowdoc", [], ["core-docs"]);
+    const editorNode = appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]);
+    const controlModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [flowdocNode, coreNode, editorNode],
+      work: [
+        appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
+        appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={controlModel} />);
+
+    expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
+    const status = screen.getByRole("region", { name: "Overall work status" });
+    expect(status).toHaveTextContent("Blocked1");
+    expect(status).toHaveTextContent("In progress1");
+
+    const systemTree = screen.getByRole("navigation", { name: "System tree" });
+    expect(within(systemTree).getByRole("button", { name: /FlowDoc, selected branch/ })).toBeVisible();
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Core Documentation Closure")).toBeVisible();
+    expect(within(workTree).getByText("Editor Polish")).toBeVisible();
+
+    await user.click(within(systemTree).getByRole("button", { name: /Core/ }));
+
+    expect(within(screen.getByRole("complementary", { name: "Control detail" })).getByRole("heading", { name: "Core" }))
+      .toBeVisible();
+    const filteredWorkTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(filteredWorkTree).getByText("Core Documentation Closure")).toBeVisible();
+    expect(within(filteredWorkTree).queryByText("Editor Polish")).not.toBeInTheDocument();
   });
 
   it("opens details without changing the selected node and restores focus on close", async () => {
@@ -198,12 +238,12 @@ describe("App", () => {
     render(<App initialModel={routeModel} />);
 
     expect(screen.getByText(/Node “missing” was not found/)).toBeVisible();
-    expect(screen.getByRole("button", { name: /Flowdoc, Current/ })).toBeVisible();
+    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ })).toBeVisible();
 
     history.pushState(null, "", "/?node=project-control");
     dispatchEvent(new PopStateEvent("popstate"));
 
-    expect(await screen.findByRole("button", { name: /Project Control, Current/ })).toBeVisible();
+    expect(await screen.findByRole("button", { name: /Project Control, selected branch/ })).toBeVisible();
   });
 
   it("replaces an invalid deep-link with the canonical root URL while retaining the diagnostic", async () => {
@@ -238,7 +278,7 @@ describe("App", () => {
     render(<App initialModel={unusableRootModel} />);
 
     expect(await screen.findByText("The project map has no usable root node.")).toBeVisible();
-    expect(screen.queryByTestId("focus-stack-map")).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
   });
 
   it("pushes user navigation into history without pushing browser history changes again", async () => {
@@ -260,7 +300,7 @@ describe("App", () => {
     render(<App initialModel={routeModel} />);
 
     expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
-    await user.click(screen.getByRole("button", { name: "Project Control" }));
+    await user.click(screen.getByRole("button", { name: /Project Control, system node/ }));
     expect(pushState).toHaveBeenCalledWith(null, "", "?node=project-control");
     expect(screen.queryByText(/Node “missing” was not found/)).not.toBeInTheDocument();
 
@@ -283,3 +323,47 @@ describe("App", () => {
     expect(screen.getByText("Run npm run generate, then npm run check:data.")).toBeVisible();
   });
 });
+
+function appNode(
+  id: string,
+  title: string,
+  parentId: string | null,
+  childIds: string[],
+  workIds: string[],
+): IndexNode {
+  return {
+    kind: "node",
+    id,
+    title,
+    parentId,
+    summary: `${title} summary.`,
+    truthState: id === "flowdoc" ? "planned" : "current",
+    order: id === "flowdoc" ? 0 : id === "core" ? 1 : 2,
+    documentIds: [],
+    evidenceIds: [],
+    repositoryIds: [],
+    childIds,
+    workIds,
+  };
+}
+
+function appWork(
+  id: string,
+  title: string,
+  nodeId: string,
+  workState: WorkRecord["workState"],
+  summary: string,
+): WorkRecord {
+  return {
+    kind: "work",
+    id,
+    title,
+    nodeId,
+    repositoryIds: [],
+    workState,
+    summary,
+    requiredEvidence: [],
+    createdAt: "2026-08-24T00:00:00.000Z",
+    updatedAt: "2026-08-24T00:00:00.000Z",
+  };
+}

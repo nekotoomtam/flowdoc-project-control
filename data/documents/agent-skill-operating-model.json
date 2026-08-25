@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-agent-skill-operating-model",
+  "title": "Agent and Skill Operating Model",
+  "path": "docs/domains/agent-and-skill-operating-model.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Draft Project Control coordination contract for FlowDoc agent roles, reusable skill candidates, and broad-work handoffs.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
