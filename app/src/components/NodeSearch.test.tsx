@@ -45,4 +45,36 @@ describe("NodeSearch", () => {
     expect(searchbox).toHaveValue("");
     expect(screen.queryByRole("option")).not.toBeInTheDocument();
   });
+
+  it("shows an empty search state for unmatched queries", async () => {
+    const user = userEvent.setup();
+    render(<NodeSearch nodes={nodes} onNavigate={vi.fn()} />);
+
+    const searchbox = screen.getByRole("searchbox", { name: "Search Nodes" });
+    expect(searchbox).toHaveAttribute("placeholder", "Title or ID");
+
+    await user.type(searchbox, "missing node");
+
+    expect(screen.getByRole("status")).toHaveTextContent("No matching nodes");
+    expect(screen.queryByRole("option")).not.toBeInTheDocument();
+  });
+
+  it("closes search results when focus moves outside the search control", async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <NodeSearch nodes={nodes} onNavigate={vi.fn()} />
+        <button type="button">Outside</button>
+      </>,
+    );
+
+    const searchbox = screen.getByRole("searchbox", { name: "Search Nodes" });
+    await user.type(searchbox, "project");
+    expect(screen.getAllByRole("option")).toHaveLength(8);
+
+    await user.click(screen.getByRole("button", { name: "Outside" }));
+
+    expect(searchbox).toHaveValue("project");
+    expect(screen.queryByRole("option")).not.toBeInTheDocument();
+  });
 });

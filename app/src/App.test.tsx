@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import type { IndexNode, WorkRecord } from "../../src/model/types.js";
+import type { IndexNode, RepositoryRecord, WorkRecord } from "../../src/model/types.js";
 import { App } from "./App.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { loadProjectState } from "./data/loadProjectState.js";
@@ -231,6 +231,30 @@ describe("App", () => {
     expect(within(filteredWorkTree).queryByText("Editor Polish")).not.toBeInTheDocument();
   });
 
+  it("summarizes multiple linked repositories in work cards without repeating every repository name", () => {
+    const repositoryModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["multi-repo-work"])],
+      work: [{
+        ...appWork("multi-repo-work", "Multi Repo Work", "flowdoc", "queued", "Coordinate the repo set."),
+        repositoryIds: ["project-control", "core", "editor"],
+      }],
+      repositories: [
+        appRepository("project-control", "Flowdoc Project Control"),
+        appRepository("core", "Flowdoc VNext Core"),
+        appRepository("editor", "Flowdoc VNext Editor"),
+      ],
+    });
+
+    render(<App initialModel={repositoryModel} />);
+
+    const checklist = screen.getByRole("list", { name: "Multi Repo Work checklist" });
+    expect(within(checklist).getByText("3 repositories linked")).toBeVisible();
+    expect(within(checklist).queryByText(/Flowdoc Project Control/)).not.toBeInTheDocument();
+    expect(within(checklist).queryByText(/Flowdoc VNext Core/)).not.toBeInTheDocument();
+    expect(within(checklist).queryByText(/Flowdoc VNext Editor/)).not.toBeInTheDocument();
+  });
+
   it("opens details without changing the selected node and restores focus on close", async () => {
     const user = userEvent.setup();
     const detailModel = makeProjectReadModel({
@@ -393,5 +417,17 @@ function appWork(
     requiredEvidence: [],
     createdAt: "2026-08-24T00:00:00.000Z",
     updatedAt: "2026-08-24T00:00:00.000Z",
+  };
+}
+
+function appRepository(id: string, name: string): RepositoryRecord {
+  return {
+    kind: "repository",
+    id,
+    name,
+    remote: `https://example.test/${id}.git`,
+    checkoutAlias: id,
+    defaultBranch: "main",
+    ownershipSummary: `${name} owner.`,
   };
 }
