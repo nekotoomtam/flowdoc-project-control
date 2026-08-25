@@ -14,9 +14,9 @@ Evidence record, or deliberately bounded registry update to point at.
 | System | Repository | Current registry state | Canonical reference |
 | --- | --- | --- | --- |
 | Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |
-| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |
-| Editor | `repo-editor` | `unknown`; no Project Control Evidence currently promotes Editor runtime or UI state. | No product-wide Editor map is registered yet. |
-| Backend | `repo-backend` | `unknown`; no Project Control Evidence currently promotes Backend service state. | No product-wide Backend map is registered yet. |
+| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |
+| Editor | `repo-editor` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Editor runtime or UI state. | No product-wide Editor map is registered yet. |
+| Backend | `repo-backend` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Backend service state. | No product-wide Backend map is registered yet. |
 
 ## Core registered families
 

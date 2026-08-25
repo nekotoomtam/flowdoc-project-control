@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-project-control-entrypoint",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-core",
+  "commit": "e7b848e657f8e08278780a663e868e88d54c59d6",
+  "pathOrContractId": "AGENTS.md",
+  "verificationSummary": "Core AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
+  "verifiedAt": "2026-08-25T00:00:00.000Z"
+}

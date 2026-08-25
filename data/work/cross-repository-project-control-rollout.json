@@ -4,9 +4,13 @@
   "title": "Cross-repository Project Control Rollout",
   "nodeId": "flowdoc",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
-  "workState": "queued",
-  "summary": "Connect Core, Editor, and Backend to Project Control so this repository becomes the shared control surface and points to repository-owned implementation truth.",
-  "requiredEvidence": [],
+  "workState": "in-review",
+  "summary": "Core, Editor, and Backend now have committed AGENTS.md entrypoint pointers that route broad FlowDoc work through Project Control before product edits.",
+  "requiredEvidence": [
+    "evidence-core-project-control-entrypoint",
+    "evidence-editor-project-control-entrypoint",
+    "evidence-backend-project-control-entrypoint"
+  ],
   "createdAt": "2026-08-24T00:00:00.000Z",
-  "updatedAt": "2026-08-24T00:00:00.000Z"
+  "updatedAt": "2026-08-25T00:00:00.000Z"
 }

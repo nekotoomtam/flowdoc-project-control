@@ -47,11 +47,15 @@ const expectedWork = [
     title: "Cross-repository Project Control Rollout",
     nodeId: "flowdoc",
     repositoryIds: ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
-    workState: "queued",
-    summary: "Connect Core, Editor, and Backend to Project Control so this repository becomes the shared control surface and points to repository-owned implementation truth.",
-    requiredEvidence: [],
+    workState: "in-review",
+    summary: "Core, Editor, and Backend now have committed AGENTS.md entrypoint pointers that route broad FlowDoc work through Project Control before product edits.",
+    requiredEvidence: [
+      "evidence-core-project-control-entrypoint",
+      "evidence-editor-project-control-entrypoint",
+      "evidence-backend-project-control-entrypoint",
+    ],
     createdAt: timestamp,
-    updatedAt: timestamp,
+    updatedAt: "2026-08-25T00:00:00.000Z",
   },
   {
     kind: "work",
@@ -106,6 +110,43 @@ describe("project roadmap Work Queue", () => {
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");
       expect(work).not.toHaveProperty("unblockOwner");
+    }
+  });
+
+  it("anchors the cross-repository Project Control rollout to committed AGENTS.md pointers", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const flowdoc = model.nodes.find((node) => node.id === "flowdoc");
+    const evidence = new Map(model.evidence.map((item) => [item.id, item]));
+
+    expect(flowdoc?.truthState).toBe("planned");
+    expect(flowdoc?.evidenceIds).toEqual([
+      "evidence-core-project-control-entrypoint",
+      "evidence-editor-project-control-entrypoint",
+      "evidence-backend-project-control-entrypoint",
+    ]);
+    expect(evidence.get("evidence-core-project-control-entrypoint")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-core",
+      commit: "e7b848e657f8e08278780a663e868e88d54c59d6",
+      pathOrContractId: "AGENTS.md",
+    });
+    expect(evidence.get("evidence-editor-project-control-entrypoint")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-editor",
+      commit: "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+      pathOrContractId: "AGENTS.md",
+    });
+    expect(evidence.get("evidence-backend-project-control-entrypoint")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-backend",
+      commit: "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+      pathOrContractId: "AGENTS.md",
+    });
+    for (const item of evidence.values()) {
+      if (item.id.includes("project-control-entrypoint")) {
+        expect(item.verificationSummary).toContain("Project Control entrypoint");
+        expect(item.verificationSummary).toContain("BLOCKER stop condition");
+      }
     }
   });
 });

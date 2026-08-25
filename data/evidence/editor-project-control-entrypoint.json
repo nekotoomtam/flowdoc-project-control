@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-project-control-entrypoint",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-editor",
+  "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+  "pathOrContractId": "AGENTS.md",
+  "verificationSummary": "Editor AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
+  "verifiedAt": "2026-08-25T00:00:00.000Z"
+}

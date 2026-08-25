@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f3d4fa29ae40bb32c369426b5ec357a6fe02b07572b32b37eb85ae31df4e3146",
+  "sourceDigest": "380b9afbf30f003845fd71bcd063ee72f78d6d45ad1f3a1b97f977b6ab2f4bca",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -10,7 +10,7 @@
       "id": "flowdoc",
       "title": "FlowDoc",
       "parentId": null,
-      "summary": "Planned product-wide map; the product repositories have not yet been verified as current in this registry.",
+      "summary": "Planned product-wide map; Project Control entrypoint pointers are registered across Core, Editor, and Backend, but the product repositories have not yet been verified as current in this registry.",
       "truthState": "planned",
       "order": 0,
       "documentIds": [
@@ -18,7 +18,11 @@
         "doc-glossary-en",
         "doc-glossary-th"
       ],
-      "evidenceIds": [],
+      "evidenceIds": [
+        "evidence-core-project-control-entrypoint",
+        "evidence-editor-project-control-entrypoint",
+        "evidence-backend-project-control-entrypoint"
+      ],
       "repositoryIds": [
         "repo-project-control",
         "repo-core",
@@ -344,11 +348,15 @@
         "repo-editor",
         "repo-backend"
       ],
-      "workState": "queued",
-      "summary": "Connect Core, Editor, and Backend to Project Control so this repository becomes the shared control surface and points to repository-owned implementation truth.",
-      "requiredEvidence": [],
+      "workState": "in-review",
+      "summary": "Core, Editor, and Backend now have committed AGENTS.md entrypoint pointers that route broad FlowDoc work through Project Control before product edits.",
+      "requiredEvidence": [
+        "evidence-core-project-control-entrypoint",
+        "evidence-editor-project-control-entrypoint",
+        "evidence-backend-project-control-entrypoint"
+      ],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
+      "updatedAt": "2026-08-25T00:00:00.000Z"
     },
     {
       "kind": "work",
@@ -670,7 +678,7 @@
       "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
       "lifecycle": "active",
       "repositoryRefs": [],
-      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown`; no Project Control Evidence currently promotes Editor runtime or UI state. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown`; no Project Control Evidence currently promotes Backend service state. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
+      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Editor runtime or UI state. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Backend service state. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
     },
     {
       "kind": "document",
@@ -1656,6 +1664,30 @@
   "evidence": [
     {
       "kind": "evidence",
+      "id": "evidence-backend-project-control-entrypoint",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-backend",
+      "commit": "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+      "pathOrContractId": "AGENTS.md",
+      "verificationSummary": "Backend AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
+      "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-project-control-entrypoint",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "e7b848e657f8e08278780a663e868e88d54c59d6",
+      "pathOrContractId": "AGENTS.md",
+      "verificationSummary": "Core AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
+      "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-core-route-artifact-contracts",
       "nodeIds": [
         "core-route"
@@ -1701,6 +1733,18 @@
       "pathOrContractId": "src/index.ts",
       "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-project-control-entrypoint",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-editor",
+      "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+      "pathOrContractId": "AGENTS.md",
+      "verificationSummary": "Editor AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
+      "verifiedAt": "2026-08-25T00:00:00.000Z"
     },
     {
       "kind": "evidence",

@@ -3,10 +3,10 @@
   "id": "flowdoc",
   "title": "FlowDoc",
   "parentId": null,
-  "summary": "Planned product-wide map; the product repositories have not yet been verified as current in this registry.",
+  "summary": "Planned product-wide map; Project Control entrypoint pointers are registered across Core, Editor, and Backend, but the product repositories have not yet been verified as current in this registry.",
   "truthState": "planned",
   "order": 0,
   "documentIds": ["doc-flowdoc-system-map", "doc-glossary-en", "doc-glossary-th"],
-  "evidenceIds": [],
+  "evidenceIds": ["evidence-core-project-control-entrypoint", "evidence-editor-project-control-entrypoint", "evidence-backend-project-control-entrypoint"],
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"]
 }
