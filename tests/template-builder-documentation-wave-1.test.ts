@@ -240,7 +240,7 @@ const protectedBlobs = {
   "data/documents/text-engine-rustybuzz-shaping.json": "c073b3730bdf54f0c63f37a0122ff1c1a47a6aad",
   "data/documents/text-engine-wasm-toolchain-artifacts.json": "93ff60ba17c29b74a162f357c75811e40ff515b2",
   "data/evidence/core-route-artifact-contracts.json": "6c5d1cc482e1a9c8656dd958bdc6fa73d31f8e24",
-  "data/evidence/core-route-cleanup.json": "6ae8cb5109e9946be2005a9dabb24251b5ead877",
+  "data/evidence/core-route-cleanup.json": "f09f6b0d27c66b8c678858f1d503cfa197523148",
   "data/evidence/core-route-generation-contracts.json": "1c5b5111f76c44380039eb80e81a6bc5a1dd88ad",
   "data/evidence/core-route-public-boundary.json": "622d2a1fa8f47b8e5f587eea430c7c1f84ae9528",
   "data/evidence/text-engine-adapter-contract.json": "55fa7b6dc244a7b8ac5c2e17dfd861a8dad51d25",
@@ -251,15 +251,15 @@ const protectedBlobs = {
   "data/evidence/text-engine-rustybuzz-mapping-corpus.json": "12498a2fc5b33955dcebe3c56f2b7d56d5efd231",
   "data/evidence/text-engine-wasm-artifact-digest.json": "b45b1c0178cf5e54137d35e105a5678e0920f762",
   "data/evidence/text-engine-wasm-toolchain-gates.json": "77a8a23b4434867638ebb1ce55ecfdc81aa89e43",
-  "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md": "3c8bde128515047add849fa460c1d38520b293bf",
-  "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md": "2116c5b00b9e52d5d3ac66849d3e66ddce382832",
-  "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md": "f7ebaa81a912e20c6254a8c54344671cb7297b8b",
+  "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md": "23989894f91a60319583ae7a3bf95b637682cd11",
+  "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md": "89f34911ede860030ff5b62b6b0f6ce99ba206ea",
+  "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md": "27ae0461cd3990d8a385bd4209e6b8dc1de03689",
   "docs/versions/V0_1_0a_1/core/text-engine/OVERVIEW.md": "efb26b60cee0ef231221371f0d7a37b42bfe4398",
   "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md": "11d8fca99265993ba5f8cf0505903026fb33310e",
   "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md": "2548592edd80b3f480928b129e86ca260904a3af",
   "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md": "f7028107cfddd4145d5a5e84bbf7afd2149ad6a1",
   "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md": "bc55024985dc1f29086d35a7569fa1ec24bb38ea",
-  "migrations/V0_1_0a_1/core/families/core-route/coverage.json": "2d637dcc3c35576c61260e56c0e2a0145cd79ab7",
+  "migrations/V0_1_0a_1/core/families/core-route/coverage.json": "e227a7dae0fc1a2b446c74c3fce5fa78a9591432",
 } as const;
 
 type JsonRecord = Record<string, unknown>;

@@ -5,6 +5,6 @@
   "repositoryId": "repo-core",
   "commit": "8aa0be4f662708fa75d4eb8f0f99b4784da2371c",
   "pathOrContractId": "docs/",
-  "verificationSummary": "Core commit 8aa0be4f662708fa75d4eb8f0f99b4784da2371c removed exactly docs/CORE_ROUTE_DEEXPORT_PLAN.md, docs/CORE_ROUTE_DEPRECATION_WINDOW.md, docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md, and docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md; npm run check passed type checking and 464 test files / 3,080 tests.",
+  "verificationSummary": "Exact Core cleanup commit 8aa0be4f662708fa75d4eb8f0f99b4784da2371c removed exactly docs/CORE_ROUTE_DEEXPORT_PLAN.md, docs/CORE_ROUTE_DEPRECATION_WINDOW.md, docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md, and docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md. Core main descendant 501caec1fe3317309d0f6c18c2dec118fb6994e7 retains that cleanup, has zero current retained historical allowances, and ran npm run check: type checking passed and 458 test files / 2,938 tests passed.",
   "verifiedAt": "2026-08-14T00:00:00.000Z"
 }

@@ -32,6 +32,7 @@ const canonicalCoreRouteLeaf = "docs/versions/V0_1_0a_1/core/core-route/route-ow
 const canonicalCoreRouteReview = "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md";
 const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 const coreCleanupCommit = "8aa0be4f662708fa75d4eb8f0f99b4784da2371c";
+const coreMainVerificationCommit = "501caec1fe3317309d0f6c18c2dec118fb6994e7";
 const closedTruthStaleClaim = /pending|queued|future\s+work|does\s+not\s+exist|no\s+artifact/iu;
 const coreRouteSources = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
@@ -81,36 +82,7 @@ function expectRealCoreRouteCoverageLifecycle(
   });
   if (coverage.status === "ready-for-deletion" || coverage.status === "closed") {
     expect(coverage.projectControlPublicationCommit).toBe(projectControlPublicationCommit);
-    expect(coverage.retainedHistoricalReferences).toEqual([
-      {
-        sourcePath: "docs/PHASE_LEDGER.md",
-        line: 244,
-        targetPath: "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
-        lineSha256: "597bc1ed3fc452caeb406f205ed70152d08d68a214d7bdcd5678fdbb7ac0f351",
-        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
-      },
-      {
-        sourcePath: "docs/PHASE_LEDGER.md",
-        line: 245,
-        targetPath: "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
-        lineSha256: "dbdf0de3b8af2f526569602fd3518ef3b234106f9b107c884c31042c70e1edc2",
-        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
-      },
-      {
-        sourcePath: "docs/PHASE_LEDGER.md",
-        line: 246,
-        targetPath: "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
-        lineSha256: "5702989ab7198f3cfdba5f9fe4d5996979f286de46a075e4782ee9360f3f3eb7",
-        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
-      },
-      {
-        sourcePath: "docs/PHASE_LEDGER.md",
-        line: 247,
-        targetPath: "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
-        lineSha256: "2b6dcdddda0dab465843e554ba18a574c0ee9c02b5bf8a11737522f65e83d754",
-        rationale: "Preserves a completed Core phase's former source path at the captured Core commit.",
-      },
-    ]);
+    expect(coverage.retainedHistoricalReferences).toEqual([]);
   } else {
     expect(coverage.projectControlPublicationCommit).toBeNull();
     expect(coverage.retainedHistoricalReferences).toEqual([]);
@@ -1190,7 +1162,9 @@ describe("real Project Control Core route pilot", () => {
     expect(review).toContain("provisional classification");
     expect(review).toContain("authoritative deletion lifecycle");
     expect(review).toContain(coreCleanupCommit);
-    expect(review).toContain("464 test files / 3,080 tests");
+    expect(review).toContain(coreMainVerificationCommit);
+    expect(review).toContain("458 test files / 2,938 tests");
+    expect(review).toContain("zero current retained historical allowances");
     expect(review).toMatch(/wrong[- ]phase/u);
   });
 
@@ -1306,10 +1280,7 @@ describe("real Project Control Core route pilot", () => {
     expect(coverage.status).toBe("closed");
     expect(coverage.coreCleanupCommit).toBe(coreCleanupCommit);
     expect(cleanupEvidence.commit).toBe(coreCleanupCommit);
-    expect(coverage.retainedHistoricalReferences.map(({ rationale }) => rationale))
-      .toEqual(Array(4).fill(
-        "Preserves a completed Core phase's former source path at the captured Core commit.",
-      ));
+    expect(coverage.retainedHistoricalReferences).toEqual([]);
 
     expect(projectControlOverview).toMatch(/## Closed pilot/u);
     expect(projectControlOverview).toContain(coreCleanupCommit);

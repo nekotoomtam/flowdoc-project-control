@@ -287,7 +287,7 @@ const protectedBlobs = {
   "data/documents/text-engine-rustybuzz-shaping.json": "c073b3730bdf54f0c63f37a0122ff1c1a47a6aad",
   "data/documents/text-engine-wasm-toolchain-artifacts.json": "93ff60ba17c29b74a162f357c75811e40ff515b2",
   "data/evidence/core-route-artifact-contracts.json": "6c5d1cc482e1a9c8656dd958bdc6fa73d31f8e24",
-  "data/evidence/core-route-cleanup.json": "6ae8cb5109e9946be2005a9dabb24251b5ead877",
+  "data/evidence/core-route-cleanup.json": "f09f6b0d27c66b8c678858f1d503cfa197523148",
   "data/evidence/core-route-generation-contracts.json": "1c5b5111f76c44380039eb80e81a6bc5a1dd88ad",
   "data/evidence/core-route-public-boundary.json": "622d2a1fa8f47b8e5f587eea430c7c1f84ae9528",
   "data/evidence/template-builder-contenteditable-range-hardening.json": "e84210852d400e87caf8cdf1eb61f2000b457843",
@@ -313,9 +313,9 @@ const protectedBlobs = {
   "data/nodes/core-route.json": "22411fed01af483d1de463b3a9b047a60d6a766c",
   "data/nodes/template-builder.json": "7f95f4c223779d7862f3e5cdd072ebc49b058c2e",
   "data/nodes/text-engine.json": "b6cee8d0c2f3528f32bce1e1fe88600e3b87a630",
-  "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md": "3c8bde128515047add849fa460c1d38520b293bf",
-  "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md": "2116c5b00b9e52d5d3ac66849d3e66ddce382832",
-  "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md": "f7ebaa81a912e20c6254a8c54344671cb7297b8b",
+  "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md": "23989894f91a60319583ae7a3bf95b637682cd11",
+  "docs/versions/V0_1_0a_1/core/core-route/OVERVIEW.md": "89f34911ede860030ff5b62b6b0f6ce99ba206ea",
+  "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md": "27ae0461cd3990d8a385bd4209e6b8dc1de03689",
   "docs/versions/V0_1_0a_1/core/template-builder/OVERVIEW.md": "5d21e6681071c2935c5e5fea94bc18b52941b75c",
   "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md": "da642fd3d993d1b0701e9e0c41b2626db02406e2",
   "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md": "89b6f20aed93ef2b2a18a516b44b3c243a96787b",
@@ -327,7 +327,7 @@ const protectedBlobs = {
   "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md": "2548592edd80b3f480928b129e86ca260904a3af",
   "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md": "f7028107cfddd4145d5a5e84bbf7afd2149ad6a1",
   "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md": "bc55024985dc1f29086d35a7569fa1ec24bb38ea",
-  "migrations/V0_1_0a_1/core/families/core-route/coverage.json": "2d637dcc3c35576c61260e56c0e2a0145cd79ab7",
+  "migrations/V0_1_0a_1/core/families/core-route/coverage.json": "e227a7dae0fc1a2b446c74c3fce5fa78a9591432",
 } as const;
 
 interface Subgroup {

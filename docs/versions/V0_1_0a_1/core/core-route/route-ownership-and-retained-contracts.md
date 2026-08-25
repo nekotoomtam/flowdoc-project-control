@@ -106,9 +106,10 @@ Current claims were checked against Core source and tests captured at commit
 their exact Git blobs are mapped once in the
 [core-route coverage record](../../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).
 Registration and lifecycle status belong to Project Control records and the
-coverage state; this document does not grant them. Coverage is closed at Core
-commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is
-recorded. Exactly four captured Core documents were removed:
+coverage state; this document does not grant them. Coverage is closed at exact
+Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main
+descendant `501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and
+cleanup Evidence is recorded. Exactly four captured Core documents were removed:
 
 - `docs/CORE_ROUTE_DEEXPORT_PLAN.md`
 - `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`

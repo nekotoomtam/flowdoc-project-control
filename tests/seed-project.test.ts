@@ -9,6 +9,7 @@ const frozenCoreCommit = "76a2f2311a898e781f53773390d47b05812911e4";
 const approvedDesignCommit = "d79b88c23a307e7ec49437a015804d7a4d2de4bf";
 const projectControlPublicationCommit = "bd588e336bd466e3c49e0d593ec6296293ef28bb";
 const coreCleanupCommit = "8aa0be4f662708fa75d4eb8f0f99b4784da2371c";
+const coreMainVerificationCommit = "501caec1fe3317309d0f6c18c2dec118fb6994e7";
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim();
 const removedCoreRoutePaths = [
   "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
@@ -76,6 +77,8 @@ describe("truthful seed project", () => {
       .toContain("Plan / Work records intent");
     expect(documents.get("doc-document-map-operating-rules")?.content)
       .toContain("DOCUMENT_MAP records verified system truth");
+    expect(documents.get("doc-document-map-operating-rules")?.content)
+      .toContain("`docs/superpowers/plans/` files are historical execution traces");
 
     for (const id of ["core", "editor", "backend"]) {
       expect(model.nodes.find((node) => node.id === id)?.truthState).toBe("unknown");
@@ -323,7 +326,8 @@ describe("truthful seed project", () => {
     for (const path of removedCoreRoutePaths) {
       expect(cleanup?.verificationSummary).toContain(path);
     }
-    expect(cleanup?.verificationSummary).toContain("464 test files / 3,080 tests");
+    expect(cleanup?.verificationSummary).toContain(coreMainVerificationCommit);
+    expect(cleanup?.verificationSummary).toContain("458 test files / 2,938 tests");
     expect(model.evidence
       .filter((item) => item.nodeIds.includes("core-route"))
       .map((item) => item.id)

@@ -30,6 +30,11 @@ Planning documents answer:
 Planning documents may contain expected outcomes. Expected outcomes are not
 current system truth until the work is implemented, verified, and registered.
 
+`docs/superpowers/plans/` files are historical execution traces. They can
+preserve the exact assumptions, branch-local commits, and review loops from a
+past round, but they do not override active `data/` records, Evidence, coverage
+files, generated index content, or the narrowest current DOCUMENT_MAP.
+
 ## System truth maps
 
 System truth maps answer:

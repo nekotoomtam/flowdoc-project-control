@@ -2,7 +2,7 @@
 
 ## Verdict
 
-The current migration verdict is **CLOSED**. Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, cleanup Evidence is recorded, and no other Core path deletion is authorized. The canonical current boundary is recorded in [Core Route Ownership and Retained Contracts](route-ownership-and-retained-contracts.md).
+The current migration verdict is **CLOSED**. Exact Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c` removed exactly the four covered documents, Core main descendant `501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, cleanup Evidence is recorded, and no other Core path deletion is authorized. The canonical current boundary is recorded in [Core Route Ownership and Retained Contracts](route-ownership-and-retained-contracts.md).
 
 Before cleanup, the independent readiness verdict was **READY FOR TASK 8 AUTHORIZATION — not deletion performed.** That review recorded zero Critical findings, zero Important findings, and three Minor findings, and concluded that the four sources listed below were **ready for source deletion**. This historical readiness decision remains distinct from the completed cleanup proof.
 
@@ -36,7 +36,7 @@ The reviewer confirmed:
 
 1. Coverage, source blobs, canonical destinations, and the exact deletion set are closed and consistent.
 2. Current authority claims are bounded to the reviewed `core-route` child and supported by the named executable anchors; the parent Core node remains `unknown`.
-3. Reference closure contains only the four completed-phase provenance rows at `docs/PHASE_LEDGER.md:244`–`:247`. No README or test reference remains and no README or test allowance is granted.
+3. The earlier readiness review allowed four completed-phase provenance rows at `docs/PHASE_LEDGER.md:244`–`:247`; current Core main no longer has those exact path mentions, so closed coverage now carries zero current retained historical allowances. No README or test allowance is granted.
 4. The consolidated Core guard preserves the retained generation, artifact, and public-boundary contracts while forbidding the removed route-helper ownership.
 5. The authorized deletion scope is exactly the four paths above; the later cleanup commit removed those four paths and no others.
 
@@ -52,7 +52,7 @@ Before the historical allowances were registered, the clean external scan at Cor
 
 ## Post-cleanup verification
 
-Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, whose exact parent is `9f4605d91f58e3a4ab8dc00ed7768592cc5a6fb1`, removes only the four paths authorized above. The committed Core tree passed `npm run check`: type checking passed, followed by 464 test files / 3,080 tests. The Project Control closed-family gate binds that exact clean Core HEAD, confirms all four covered source paths are absent, accepts only the four retained ledger provenance lines, and reports zero active references.
+Exact Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, whose exact parent is `9f4605d91f58e3a4ab8dc00ed7768592cc5a6fb1`, removes only the four paths authorized above. Core main descendant `501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that exact cleanup ancestry, has zero current retained historical allowances, and ran `npm run check`: type checking passed, followed by 458 test files / 2,938 tests. The Project Control closed-family gate binds the exact cleanup commit and accepts the clean Core main descendant, confirms all four covered source paths are absent, and reports zero active references.
 
 One additional post-commit `--cleanup-candidate` invocation produced preimage and cleanup-scope diagnostics because it was intentionally run in the wrong phase: that mode verifies exact staged deletions and cannot validate an already committed clean index. It did not weaken the successful pre-commit cleanup-candidate gate. The post-commit closure authority is the `--closed` gate against the exact cleanup commit.
 

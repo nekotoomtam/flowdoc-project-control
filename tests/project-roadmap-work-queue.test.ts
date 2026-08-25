@@ -43,22 +43,6 @@ const expectedWork = [
   },
   {
     kind: "work",
-    id: "cross-repository-project-control-rollout",
-    title: "Cross-repository Project Control Rollout",
-    nodeId: "flowdoc",
-    repositoryIds: ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
-    workState: "in-review",
-    summary: "Core, Editor, and Backend now have committed AGENTS.md entrypoint pointers that route broad FlowDoc work through Project Control before product edits.",
-    requiredEvidence: [
-      "evidence-core-project-control-entrypoint",
-      "evidence-editor-project-control-entrypoint",
-      "evidence-backend-project-control-entrypoint",
-    ],
-    createdAt: timestamp,
-    updatedAt: "2026-08-25T00:00:00.000Z",
-  },
-  {
-    kind: "work",
     id: "flowdoc-product-development-resumption",
     title: "FlowDoc Product Development Resumption",
     nodeId: "flowdoc",
@@ -84,7 +68,7 @@ const expectedWork = [
 ] as const;
 
 describe("project roadmap Work Queue", () => {
-  it("publishes the six approved roadmap cards without changing node truth", async () => {
+  it("publishes the five active roadmap cards without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
     expect(model.work).toEqual(expectedWork);
@@ -102,7 +86,6 @@ describe("project roadmap Work Queue", () => {
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
       truthState: "planned",
       workIds: [
-        "cross-repository-project-control-rollout",
         "flowdoc-product-development-resumption",
       ],
     });
@@ -119,6 +102,8 @@ describe("project roadmap Work Queue", () => {
     const evidence = new Map(model.evidence.map((item) => [item.id, item]));
 
     expect(flowdoc?.truthState).toBe("planned");
+    expect(model.work.some((item) => item.id === "cross-repository-project-control-rollout"))
+      .toBe(false);
     expect(flowdoc?.evidenceIds).toEqual([
       "evidence-core-project-control-entrypoint",
       "evidence-editor-project-control-entrypoint",

@@ -12,8 +12,10 @@ This map records the completed pilot family and the completed Text Engine, Templ
   [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).
 
 The bounded `core-route` family is `current` while the parent Core node remains
-`unknown`. Coverage is closed at Core commit
-`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is recorded.
+`unknown`. Coverage is closed at exact Core cleanup commit
+`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main descendant
+`501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and cleanup
+Evidence is recorded.
 Exactly four captured Core documents were removed:
 
 - `docs/CORE_ROUTE_DEEXPORT_PLAN.md`

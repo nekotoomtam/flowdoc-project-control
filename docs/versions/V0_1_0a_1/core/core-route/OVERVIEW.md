@@ -15,8 +15,9 @@ The completed family synthesis is:
 Registration and lifecycle status belong to Project Control truth records and
 the family coverage state, not this overview. The bounded `core-route` truth is
 `current` while the parent Core node remains `unknown`. Coverage is closed at
-Core commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`, and cleanup Evidence is
-recorded. Exactly four captured Core documents were removed:
+exact Core cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main
+descendant `501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and
+cleanup Evidence is recorded. Exactly four captured Core documents were removed:
 
 - `docs/CORE_ROUTE_DEEXPORT_PLAN.md`
 - `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`

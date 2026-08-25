@@ -42,36 +42,7 @@
     }
   ],
   "activeReferences": [],
-  "retainedHistoricalReferences": [
-    {
-      "sourcePath": "docs/PHASE_LEDGER.md",
-      "line": 244,
-      "targetPath": "docs/CORE_ROUTE_DEEXPORT_PLAN.md",
-      "lineSha256": "597bc1ed3fc452caeb406f205ed70152d08d68a214d7bdcd5678fdbb7ac0f351",
-      "rationale": "Preserves a completed Core phase's former source path at the captured Core commit."
-    },
-    {
-      "sourcePath": "docs/PHASE_LEDGER.md",
-      "line": 245,
-      "targetPath": "docs/CORE_ROUTE_DEPRECATION_WINDOW.md",
-      "lineSha256": "dbdf0de3b8af2f526569602fd3518ef3b234106f9b107c884c31042c70e1edc2",
-      "rationale": "Preserves a completed Core phase's former source path at the captured Core commit."
-    },
-    {
-      "sourcePath": "docs/PHASE_LEDGER.md",
-      "line": 246,
-      "targetPath": "docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md",
-      "lineSha256": "5702989ab7198f3cfdba5f9fe4d5996979f286de46a075e4782ee9360f3f3eb7",
-      "rationale": "Preserves a completed Core phase's former source path at the captured Core commit."
-    },
-    {
-      "sourcePath": "docs/PHASE_LEDGER.md",
-      "line": 247,
-      "targetPath": "docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md",
-      "lineSha256": "2b6dcdddda0dab465843e554ba18a574c0ee9c02b5bf8a11737522f65e83d754",
-      "rationale": "Preserves a completed Core phase's former source path at the captured Core commit."
-    }
-  ],
+  "retainedHistoricalReferences": [],
   "projectControlPublicationCommit": "bd588e336bd466e3c49e0d593ec6296293ef28bb",
   "coreCleanupCommit": "8aa0be4f662708fa75d4eb8f0f99b4784da2371c"
 }
