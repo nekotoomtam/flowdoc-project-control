@@ -127,6 +127,27 @@ describe("truthful seed project", () => {
       .toContain("If a FlowDoc request starts in another repository or chat");
   });
 
+  it("registers copy-ready global Codex guidance as a Project Control bootstrap contract", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    const globalGuidance = documents.get("doc-flowdoc-global-codex-guidance");
+
+    expect(projectControl?.documentIds).toContain("doc-flowdoc-global-codex-guidance");
+    expect(globalGuidance).toMatchObject({
+      path: "docs/domains/flowdoc-global-codex-guidance.md",
+      nodeIds: ["project-control"],
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(globalGuidance?.authority)
+      .toContain("copy-ready global Codex guidance");
+    expect(normalize(globalGuidance?.content))
+      .toContain("For any FlowDoc-related work, first locate and read");
+    expect(normalize(globalGuidance?.content))
+      .toContain("BLOCKER: FlowDoc Project Control unavailable or unresolved");
+  });
+
   it("registers closed Core route truth without retaining pilot Work or promoting the parent Core node", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const core = model.nodes.find((node) => node.id === "core");

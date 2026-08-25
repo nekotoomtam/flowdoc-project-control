@@ -9,6 +9,12 @@ Codex rooms and agents should start here to identify owner repositories, active
 roles, evidence targets, known risks, and unknown state before promoting shared
 truth or editing product behavior.
 
+The copy-ready global Codex guidance lives at
+`docs/domains/flowdoc-global-codex-guidance.md` and can bootstrap
+`C:\Users\nekot\.codex\AGENTS.md` when the global file is missing or empty.
+That global layer keeps FlowDoc rooms opened from any repository pointed back
+to Project Control first.
+
 This overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.
 
 ## Evidence boundary

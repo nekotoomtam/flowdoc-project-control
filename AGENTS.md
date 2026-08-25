@@ -31,6 +31,21 @@ Before taking broad work, read these files in order:
 Use `generated/project-index.json` only as the generated read model. Canonical
 records live under `data/` and canonical prose lives under `docs/`.
 
+## Global bootstrap
+
+The copy-ready global Codex guidance for this machine lives at
+`docs/domains/flowdoc-global-codex-guidance.md`. If
+`C:\Users\nekot\.codex\AGENTS.md` is missing or empty during Project Control
+maintenance, copy that file into `C:\Users\nekot\.codex\AGENTS.md` so future
+FlowDoc rooms route through Project Control first. If the global file already
+contains other user guidance, preserve it and add or update only the bounded
+FlowDoc section.
+
+If `C:\Users\nekot\.codex\AGENTS.override.md` exists, inspect it before broad
+FlowDoc work. It can take precedence over the base global file; if it does not
+include the FlowDoc entrypoint rule, report the risk before editing FlowDoc
+repositories.
+
 ## First decision
 
 Choose the active role before acting:

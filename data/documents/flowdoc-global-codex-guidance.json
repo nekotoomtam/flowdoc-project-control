@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-global-codex-guidance",
+  "title": "FlowDoc Global Codex Guidance",
+  "path": "docs/domains/flowdoc-global-codex-guidance.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control copy-ready global Codex guidance for bootstrapping C:\\Users\\nekot\\.codex\\AGENTS.md so every FlowDoc room routes through Project Control first.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
