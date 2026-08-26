@@ -4,9 +4,9 @@
   "title": "FlowDoc Product Development Resumption",
   "nodeId": "flowdoc",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
-  "workState": "queued",
-  "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories.",
+  "workState": "in-progress",
+  "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories, starting with a bounded product evidence refresh.",
   "requiredEvidence": [],
   "createdAt": "2026-08-24T00:00:00.000Z",
-  "updatedAt": "2026-08-24T00:00:00.000Z"
+  "updatedAt": "2026-08-26T00:00:00.000Z"
 }

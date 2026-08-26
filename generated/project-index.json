@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "8b44794817a22c644d937a44426acf257034974740aaf9e169046adda5d210ac",
+  "sourceDigest": "bdf9a6840bc467668b0f858d85a5130d27c6745891d08622320ae7d71c0470b2",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -36,7 +36,8 @@
         "project-control"
       ],
       "workIds": [
-        "flowdoc-product-development-resumption"
+        "flowdoc-product-development-resumption",
+        "flowdoc-product-evidence-refresh"
       ]
     },
     {
@@ -364,17 +365,55 @@
         "repo-editor",
         "repo-backend"
       ],
-      "workState": "queued",
-      "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories.",
+      "workState": "in-progress",
+      "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories, starting with a bounded product evidence refresh.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
+        "flowdoc-product-evidence-refresh",
         "project-control-hardening"
       ],
       "phaseIds": [],
       "workPathIds": [
         "flowdoc-product-development-resumption"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-product-evidence-refresh",
+      "title": "FlowDoc Product Evidence Refresh",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-editor",
+        "repo-backend"
+      ],
+      "workState": "in-progress",
+      "summary": "Refresh the cross-repository product evidence packet for the current Core, Editor, and Backend heads before any product-wide truth promotion.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules"
+      ],
+      "activeRole": "evidence-reviewer",
+      "expectedOutput": "A bounded evidence packet that records current repository heads, verification results, promotion blockers, and follow-on remediation targets without changing product runtime behavior.",
+      "riskSummary": "Fresh test output can support an evidence packet, but failed or flaky gates must keep Core, Editor, Backend, and product-wide FlowDoc truth unpromoted.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-product-evidence-refresh-readiness"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-product-evidence-refresh"
       ]
     },
     {
@@ -387,7 +426,7 @@
       "repositoryIds": [
         "repo-project-control"
       ],
-      "workState": "in-progress",
+      "workState": "in-review",
       "summary": "Harden Project Control so future FlowDoc rooms can identify work position, execution phase, checklist target, and evidence target before editing product repositories.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
@@ -397,7 +436,7 @@
       "riskSummary": "The Work execution model must not merge with Node truth or make SQLite canonical too early.",
       "requiredEvidence": [],
       "createdAt": "2026-08-25T00:00:00.000Z",
-      "updatedAt": "2026-08-25T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
         "work-tree-phase-checklist-sqlite-contract"
       ],
@@ -417,7 +456,7 @@
       "repositoryIds": [
         "repo-project-control"
       ],
-      "workState": "in-progress",
+      "workState": "in-review",
       "summary": "Implement the approved Project Control contract for Work tree, Phase, Checklist, agent workflow, and generated SQLite projection.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
@@ -431,7 +470,7 @@
       "riskSummary": "Checklist progress must remain execution state and must not promote Project Control or product Nodes to current.",
       "requiredEvidence": [],
       "createdAt": "2026-08-25T00:00:00.000Z",
-      "updatedAt": "2026-08-25T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-work-tree-contract-validation"
@@ -446,10 +485,34 @@
   "phases": [
     {
       "kind": "phase",
+      "id": "phase-flowdoc-product-evidence-refresh-readiness",
+      "workId": "flowdoc-product-evidence-refresh",
+      "title": "Capture Current Product Evidence",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-editor",
+        "repo-backend"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "A product repository has unresolved local changes that cannot be attributed to this evidence refresh.",
+        "A repository gate fails in a way that prevents a bounded evidence packet.",
+        "A map or Node truth state would be promoted without exact repository Evidence."
+      ],
+      "verificationTarget": "Project Control records the current Core, Editor, and Backend heads, verification results, promotion blockers, and next remediation targets without promoting product truth.",
+      "summary": "Capture the first product resumption evidence packet after Project Control can represent executable Work paths.",
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
       "id": "phase-work-tree-contract-validation",
       "workId": "work-tree-phase-checklist-sqlite-contract",
       "title": "Define Contract and Validation Targets",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-project-control"
@@ -461,12 +524,52 @@
         "A checklist item claims product truth without Evidence."
       ],
       "verificationTarget": "Project Control records can identify Work hierarchy, context documents, current Phase, Checklist targets, and SQLite projection status without promoting Node truth.",
-      "summary": "Define and validate the first execution contract for Project Control itself.",
+      "summary": "Defined and validated the first execution contract for Project Control itself.",
       "createdAt": "2026-08-25T00:00:00.000Z",
-      "updatedAt": "2026-08-25T00:00:00.000Z"
+      "updatedAt": "2026-08-26T00:00:00.000Z"
     }
   ],
   "checklists": [
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-product-evidence-refresh-readiness",
+      "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
+      "title": "FlowDoc Product Evidence Refresh Checklist",
+      "items": [
+        {
+          "id": "capture-current-heads",
+          "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before any product-wide truth promotion.",
+          "state": "pending",
+          "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet."
+        },
+        {
+          "id": "run-current-gates",
+          "label": "Run bounded verification gates for the current Core, Editor, and Backend heads.",
+          "state": "pending",
+          "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure."
+        },
+        {
+          "id": "classify-promotion-blockers",
+          "label": "Classify promotion blockers separately from implementation risks.",
+          "state": "pending",
+          "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states."
+        },
+        {
+          "id": "preserve-map-truth",
+          "label": "Keep FlowDoc, Core, Editor, and Backend truth states unpromoted unless exact Evidence supports a narrower current claim.",
+          "state": "pending",
+          "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown."
+        },
+        {
+          "id": "split-remediation-work",
+          "label": "Name the next smallest remediation work items for Core export boundary, Editor fallback honesty, and Backend service readiness.",
+          "state": "pending",
+          "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits."
+        }
+      ],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
     {
       "kind": "checklist",
       "id": "checklist-work-tree-contract-validation",
@@ -476,36 +579,41 @@
         {
           "id": "define-glossary",
           "label": "Define Work Tree, Phase, Checklist, Context Document, and Evidence Target without conflicting with Node and Truth State.",
-          "state": "pending",
-          "evidenceTarget": "Glossary and operating rules describe the terms with separate responsibilities."
+          "state": "passed",
+          "evidenceTarget": "Glossary and operating rules describe the terms with separate responsibilities.",
+          "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; glossary and operating rules are loaded through generated project-index content."
         },
         {
           "id": "schema-contract",
           "label": "Add schema support for Work, Phase, and Checklist records.",
-          "state": "pending",
-          "evidenceTarget": "Schema and loader tests reject malformed Phase and Checklist records."
+          "state": "passed",
+          "evidenceTarget": "Schema and loader tests reject malformed Phase and Checklist records.",
+          "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; check:data, type-check, and unit tests loaded Phase and Checklist records."
         },
         {
           "id": "semantic-validation",
           "label": "Add semantic validation for references, cycles, active phase conflicts, and missing checklist targets.",
-          "state": "pending",
-          "evidenceTarget": "Semantic validation tests fail on missing or conflicting Work, Phase, and Checklist relationships."
+          "state": "passed",
+          "evidenceTarget": "Semantic validation tests fail on missing or conflicting Work, Phase, and Checklist relationships.",
+          "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; semantic validation protects active phase and checklist support constraints."
         },
         {
           "id": "sqlite-projection",
           "label": "Generate a SQLite projection without making SQLite canonical.",
-          "state": "pending",
-          "evidenceTarget": "SQLite projection tests verify table content and .gitignore keeps the database untracked."
+          "state": "passed",
+          "evidenceTarget": "SQLite projection tests verify table content and .gitignore keeps the database untracked.",
+          "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; generate and SQLite projection tests ran while generated SQLite remained ignored."
         },
         {
           "id": "read-only-ui",
           "label": "Expose Work task, Phase, and Checklist status in the read-only control room.",
-          "state": "pending",
-          "evidenceTarget": "Component tests show task phase and checklist targets without providing GUI editing."
+          "state": "passed",
+          "evidenceTarget": "Component tests show task phase and checklist targets without providing GUI editing.",
+          "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; unit, build, and e2e gates preserve the read-only GUI boundary."
         }
       ],
       "createdAt": "2026-08-25T00:00:00.000Z",
-      "updatedAt": "2026-08-25T00:00:00.000Z"
+      "updatedAt": "2026-08-26T00:00:00.000Z"
     }
   ],
   "documents": [

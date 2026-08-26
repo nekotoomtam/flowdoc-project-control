@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-product-evidence-refresh-readiness",
+  "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
+  "title": "FlowDoc Product Evidence Refresh Checklist",
+  "items": [
+    {
+      "id": "capture-current-heads",
+      "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before any product-wide truth promotion.",
+      "state": "pending",
+      "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet."
+    },
+    {
+      "id": "run-current-gates",
+      "label": "Run bounded verification gates for the current Core, Editor, and Backend heads.",
+      "state": "pending",
+      "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure."
+    },
+    {
+      "id": "classify-promotion-blockers",
+      "label": "Classify promotion blockers separately from implementation risks.",
+      "state": "pending",
+      "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states."
+    },
+    {
+      "id": "preserve-map-truth",
+      "label": "Keep FlowDoc, Core, Editor, and Backend truth states unpromoted unless exact Evidence supports a narrower current claim.",
+      "state": "pending",
+      "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown."
+    },
+    {
+      "id": "split-remediation-work",
+      "label": "Name the next smallest remediation work items for Core export boundary, Editor fallback honesty, and Backend service readiness.",
+      "state": "pending",
+      "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits."
+    }
+  ],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

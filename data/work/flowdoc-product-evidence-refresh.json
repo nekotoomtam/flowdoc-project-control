@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "flowdoc-product-evidence-refresh",
+  "title": "FlowDoc Product Evidence Refresh",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
+  "workState": "in-progress",
+  "summary": "Refresh the cross-repository product evidence packet for the current Core, Editor, and Backend heads before any product-wide truth promotion.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
+  "activeRole": "evidence-reviewer",
+  "expectedOutput": "A bounded evidence packet that records current repository heads, verification results, promotion blockers, and follow-on remediation targets without changing product runtime behavior.",
+  "riskSummary": "Fresh test output can support an evidence packet, but failed or flaky gates must keep Core, Editor, Backend, and product-wide FlowDoc truth unpromoted.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

@@ -7,34 +7,39 @@
     {
       "id": "define-glossary",
       "label": "Define Work Tree, Phase, Checklist, Context Document, and Evidence Target without conflicting with Node and Truth State.",
-      "state": "pending",
-      "evidenceTarget": "Glossary and operating rules describe the terms with separate responsibilities."
+      "state": "passed",
+      "evidenceTarget": "Glossary and operating rules describe the terms with separate responsibilities.",
+      "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; glossary and operating rules are loaded through generated project-index content."
     },
     {
       "id": "schema-contract",
       "label": "Add schema support for Work, Phase, and Checklist records.",
-      "state": "pending",
-      "evidenceTarget": "Schema and loader tests reject malformed Phase and Checklist records."
+      "state": "passed",
+      "evidenceTarget": "Schema and loader tests reject malformed Phase and Checklist records.",
+      "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; check:data, type-check, and unit tests loaded Phase and Checklist records."
     },
     {
       "id": "semantic-validation",
       "label": "Add semantic validation for references, cycles, active phase conflicts, and missing checklist targets.",
-      "state": "pending",
-      "evidenceTarget": "Semantic validation tests fail on missing or conflicting Work, Phase, and Checklist relationships."
+      "state": "passed",
+      "evidenceTarget": "Semantic validation tests fail on missing or conflicting Work, Phase, and Checklist relationships.",
+      "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; semantic validation protects active phase and checklist support constraints."
     },
     {
       "id": "sqlite-projection",
       "label": "Generate a SQLite projection without making SQLite canonical.",
-      "state": "pending",
-      "evidenceTarget": "SQLite projection tests verify table content and .gitignore keeps the database untracked."
+      "state": "passed",
+      "evidenceTarget": "SQLite projection tests verify table content and .gitignore keeps the database untracked.",
+      "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; generate and SQLite projection tests ran while generated SQLite remained ignored."
     },
     {
       "id": "read-only-ui",
       "label": "Expose Work task, Phase, and Checklist status in the read-only control room.",
-      "state": "pending",
-      "evidenceTarget": "Component tests show task phase and checklist targets without providing GUI editing."
+      "state": "passed",
+      "evidenceTarget": "Component tests show task phase and checklist targets without providing GUI editing.",
+      "verificationNote": "Verified by npm run check in the Project Control worktree on 2026-08-26; unit, build, and e2e gates preserve the read-only GUI boundary."
     }
   ],
   "createdAt": "2026-08-25T00:00:00.000Z",
-  "updatedAt": "2026-08-25T00:00:00.000Z"
+  "updatedAt": "2026-08-26T00:00:00.000Z"
 }
