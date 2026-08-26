@@ -117,6 +117,33 @@ describe("App", () => {
     await expect(loadProjectState(fetcher)).resolves.toEqual({ kind: "ready", model });
   });
 
+  it("loads a valid index with Work-scoped evidence that is not attached to a Node", async () => {
+    const evidenceModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["execution-task"])],
+      repositories: [appRepository("repo-project-control", "Flowdoc Project Control")],
+      work: [{
+        ...appWork("execution-task", "Execution Task", "flowdoc", "in-review", "Review scoped evidence."),
+        requiredEvidence: ["evidence-work-scoped"],
+      }],
+      evidence: [{
+        kind: "evidence",
+        id: "evidence-work-scoped",
+        nodeIds: [],
+        repositoryId: "repo-project-control",
+        commit: "bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444",
+        pathOrContractId: "docs/scoped-evidence.md",
+        verificationSummary: "Work-scoped evidence supports a checklist without promoting node truth.",
+        verifiedAt: "2026-08-26T00:00:00.000Z",
+      }],
+    });
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => evidenceModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toEqual({ kind: "ready", model: evidenceModel });
+  });
+
   it("rejects an index with duplicate node IDs", async () => {
     const duplicateNodeModel = makeProjectReadModel({
       nodes: [model.nodes[0]!, { ...model.nodes[0]! }],

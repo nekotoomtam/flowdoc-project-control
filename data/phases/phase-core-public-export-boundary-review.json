@@ -3,7 +3,7 @@
   "id": "phase-core-public-export-boundary-review",
   "workId": "core-public-export-boundary-review",
   "title": "Define Core Consumer Export Surface",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 10,
   "repositoryIds": ["repo-core", "repo-project-control"],
   "activeRole": "cross-repo-boundary-reviewer",
@@ -13,7 +13,7 @@
     "The review would promote broader Core truth while Core remains unknown in Project Control."
   ],
   "verificationTarget": "Core has a reviewed consumer export boundary or a documented no-go decision, with evidence that Editor and Backend imports stay within approved surfaces.",
-  "summary": "Identify the Core package surfaces that are safe for current Editor and Backend consumers before product-wide compatibility promotion.",
+  "summary": "Recorded a Core-owned no-go decision: keep the package root export stable until Backend and Editor have an approved staged adoption path.",
   "createdAt": "2026-08-26T00:00:00.000Z",
   "updatedAt": "2026-08-26T00:00:00.000Z"
 }

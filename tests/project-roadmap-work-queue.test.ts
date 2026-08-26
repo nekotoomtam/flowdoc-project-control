@@ -69,10 +69,10 @@ const remediationTasks = [
   {
     id: "core-public-export-boundary-review",
     nodeId: "core",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "cross-repo-boundary-reviewer",
     phaseId: "phase-core-public-export-boundary-review",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-core-public-export-boundary-review",
   },
   {
@@ -214,6 +214,18 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-product-evidence-refresh",
       ],
     });
+    expect(model.checklists.find((item) => item.id === "checklist-core-public-export-boundary-review")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-core",
+        commit: "969a21ae66a3a1d6a92e5df608d23e08acb9a563",
+        pathOrContractId: "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26")?.verificationSummary)
+      .toContain("bounded no-go export-boundary decision");
 
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");

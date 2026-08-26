@@ -160,8 +160,7 @@ function hasValidReadModelReferences(model: ProjectReadModel): boolean {
       && checklist.items.every((item) => (item.evidenceIds ?? []).every((id) => evidenceIds.has(id))))
     && model.documents.every((document) => document.nodeIds.every((id) => nodeIds.has(id))
       && document.repositoryRefs.every((reference) => repositoryIds.has(reference.repositoryId)))
-    && model.evidence.every((evidence) => nodeIds.has(evidence.nodeIds[0] ?? "")
-      && evidence.nodeIds.every((id) => nodeIds.has(id))
+    && model.evidence.every((evidence) => evidence.nodeIds.every((id) => nodeIds.has(id))
       && repositoryIds.has(evidence.repositoryId));
 }
 

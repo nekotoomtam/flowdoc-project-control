@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-public-export-boundary-review-2026-08-26",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "969a21ae66a3a1d6a92e5df608d23e08acb9a563",
+  "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+  "verificationSummary": "Core main commit 969a21ae66a3a1d6a92e5df608d23e08acb9a563 records a no-go public export boundary review, keeps package root export unchanged, and adds tests/corePublicExportBoundaryReview.test.ts to synchronize the 216 root export declarations with src/index.ts. Core npm run check passed with 459 test files and 2,941 tests. Current consumer gates were also refreshed: Editor main baa871c378a313e8f0c402ea33e3aa480953ce1f npm run check passed with 76 test files and 278 tests plus build; Backend main 7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a npm run check passed with 88 passed test files, 1 skipped test file, 312 passed tests, 24 skipped tests, plus build. This evidence supports only the bounded no-go export-boundary decision and does not promote broader Core, Editor, Backend, or FlowDoc truth.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

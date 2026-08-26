@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "7a0218193e4bda5401e71dbe20b3a1482a1655622f57816871ce0ee392464f34",
+  "sourceDigest": "cb2320ebe18a9e7c5f97f52b38b0718cc7174f0d7d24db789f9107dee8cbdf1a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -391,8 +391,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Review and narrow the Core package export boundary so Editor and Backend consume approved surfaces instead of accidental internals.",
+      "workState": "in-review",
+      "summary": "Recorded a Core-owned no-go public export boundary decision before destructive narrowing; Backend broad root consumption and incomplete public docs keep export narrowing deferred.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -404,8 +404,10 @@
       ],
       "activeRole": "cross-repo-boundary-reviewer",
       "expectedOutput": "A Core-owned boundary decision or implementation patch with tests showing which public package surfaces are supported for Editor and Backend consumers.",
-      "riskSummary": "The current Core root entrypoint exports many layout, authoring, generation, renderer, pagination, and table modules before the release boundary is complete.",
-      "requiredEvidence": [],
+      "riskSummary": "The current Core root entrypoint remains a broad private evidence surface; destructive narrowing is blocked until Backend and Editor adopt approved import paths.",
+      "requiredEvidence": [
+        "evidence-core-public-export-boundary-review-2026-08-26"
+      ],
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [],
@@ -632,7 +634,7 @@
       "id": "phase-core-public-export-boundary-review",
       "workId": "core-public-export-boundary-review",
       "title": "Define Core Consumer Export Surface",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-core",
@@ -645,7 +647,7 @@
         "The review would promote broader Core truth while Core remains unknown in Project Control."
       ],
       "verificationTarget": "Core has a reviewed consumer export boundary or a documented no-go decision, with evidence that Editor and Backend imports stay within approved surfaces.",
-      "summary": "Identify the Core package surfaces that are safe for current Editor and Backend consumers before product-wide compatibility promotion.",
+      "summary": "Recorded a Core-owned no-go decision: keep the package root export stable until Backend and Editor have an approved staged adoption path.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
     },
@@ -767,32 +769,52 @@
         {
           "id": "inventory-root-entrypoint",
           "label": "Inventory the current Core root entrypoint and classify which exports are consumer surface, internal evidence surface, or release-blocked surface.",
-          "state": "in-progress",
-          "evidenceTarget": "Core `src/index.ts`, package exports, and Core-owned docs identify the present public entrypoint shape."
+          "state": "passed",
+          "evidenceTarget": "Core `src/index.ts`, package exports, and Core-owned docs identify the present public entrypoint shape.",
+          "evidenceIds": [
+            "evidence-core-public-export-boundary-review-2026-08-26"
+          ],
+          "verificationNote": "Core docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md records package metadata and 216 root export declarations; tests/corePublicExportBoundaryReview.test.ts keeps the inventory synchronized with src/index.ts."
         },
         {
           "id": "inspect-editor-backend-imports",
           "label": "Inspect current Editor and Backend imports from `@flowdoc/vnext-core` before changing the Core package surface.",
-          "state": "pending",
-          "evidenceTarget": "Editor and Backend import inventories show whether consumers rely on root exports, fixtures, or internals."
+          "state": "passed",
+          "evidenceTarget": "Editor and Backend import inventories show whether consumers rely on root exports, fixtures, or internals.",
+          "evidenceIds": [
+            "evidence-core-public-export-boundary-review-2026-08-26"
+          ],
+          "verificationNote": "Editor production usage remains behind src/core/coreAdapter.ts and fixture imports; Backend still imports @flowdoc/vnext-core broadly across contracts, composition, routes, docgen, pdf export, service, storage, artifacts, fixtures, and tests."
         },
         {
           "id": "define-approved-surface",
           "label": "Define the smallest approved Core consumer surface or record an explicit no-go decision.",
-          "state": "pending",
-          "evidenceTarget": "A Core-owned contract, test, or document names supported consumer modules and excluded internal modules."
+          "state": "passed",
+          "evidenceTarget": "A Core-owned contract, test, or document names supported consumer modules and excluded internal modules.",
+          "evidenceIds": [
+            "evidence-core-public-export-boundary-review-2026-08-26"
+          ],
+          "verificationNote": "The Core-owned review records an explicit NO-GO for removing, renaming, or narrowing the root public entrypoint in this lane and recommends additive subpath staging first."
         },
         {
           "id": "verify-consumer-boundaries",
           "label": "Run Core plus affected consumer checks after any export boundary change or no-go record.",
-          "state": "pending",
-          "evidenceTarget": "Fresh Core, Editor, and Backend checks prove the boundary decision does not silently break current consumers."
+          "state": "passed",
+          "evidenceTarget": "Fresh Core, Editor, and Backend checks prove the boundary decision does not silently break current consumers.",
+          "evidenceIds": [
+            "evidence-core-public-export-boundary-review-2026-08-26"
+          ],
+          "verificationNote": "Core npm run check passed with 459 files and 2,941 tests; Editor npm run check passed with 76 files, 278 tests, and build; Backend npm run check passed with 88 passed files, 1 skipped file, 312 passed tests, 24 skipped tests, and build."
         },
         {
           "id": "return-evidence-candidate",
           "label": "Return a bounded Project Control evidence candidate without promoting broader Core truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence candidate includes exact commit, path or contract ID, verification summary, and remaining unknowns."
+          "state": "passed",
+          "evidenceTarget": "Evidence candidate includes exact commit, path or contract ID, verification summary, and remaining unknowns.",
+          "evidenceIds": [
+            "evidence-core-public-export-boundary-review-2026-08-26"
+          ],
+          "verificationNote": "Evidence candidate records Core commit 969a21ae66a3a1d6a92e5df608d23e08acb9a563, path docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md, current checks, and remaining public subpath/adoption unknowns without promoting Core truthState."
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
@@ -2281,6 +2303,16 @@
       "pathOrContractId": "AGENTS.md",
       "verificationSummary": "Core AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
       "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-public-export-boundary-review-2026-08-26",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "969a21ae66a3a1d6a92e5df608d23e08acb9a563",
+      "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+      "verificationSummary": "Core main commit 969a21ae66a3a1d6a92e5df608d23e08acb9a563 records a no-go public export boundary review, keeps package root export unchanged, and adds tests/corePublicExportBoundaryReview.test.ts to synchronize the 216 root export declarations with src/index.ts. Core npm run check passed with 459 test files and 2,941 tests. Current consumer gates were also refreshed: Editor main baa871c378a313e8f0c402ea33e3aa480953ce1f npm run check passed with 76 test files and 278 tests plus build; Backend main 7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a npm run check passed with 88 passed test files, 1 skipped test file, 312 passed tests, 24 skipped tests, plus build. This evidence supports only the bounded no-go export-boundary decision and does not promote broader Core, Editor, Backend, or FlowDoc truth.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
     },
     {
       "kind": "evidence",
