@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-cross-repository-compatibility-evidence-2026-08-27",
+  "title": "Cross-Repository Compatibility Evidence - 2026-08-27",
+  "path": "docs/domains/cross-repository-compatibility-evidence-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped compatibility review for current local Core, Editor, and Backend heads; records bounded pass, blocker, risk, and unknown classifications without promoting product-wide truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "f86aa644ab3fba4428fd02ae575d78ae264e95dd",
+      "pathOrContractId": "data/work/flowdoc-product-development-resumption.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "969a21a4e888d836ae62164b206cb2dd34d5d702",
+      "pathOrContractId": "package.json#scripts.check"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+      "pathOrContractId": "src/tests/backendIntegration.test.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "src/tests/httpServer.test.ts"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-cross-repo-compatibility-backend-gate-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+  "pathOrContractId": "package.json#scripts.check",
+  "verificationSummary": "Backend main commit 42cc1040c959a16647b7e797929358c401ccfa38 was clean and npm run check passed against the current local Core file dependency. The gate passed type-check, 89 passed test files, 1 skipped test file, 314 passed tests, 24 skipped tests, and build. Reviewed src/contracts/versionCapability.ts wrapping VNEXT_CORE_VERSION_CAPABILITY_CONTRACT, src/http/server.ts exposing /capabilities/versions, /documents, /mutations, and package-v3-document-v4 migration routes, src/service/mutationService.ts executing Core public v3/v4 mutation APIs behind revision/idempotency gates, and src/service/migrationService.ts executing Core public package migration APIs while retaining source snapshots. This supports bounded Backend/Core and Backend HTTP contract compatibility only; Backend tests do not consume the Editor client module.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

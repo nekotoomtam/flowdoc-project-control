@@ -65,6 +65,7 @@ const remediationTasks = [
     phaseId: "phase-backend-service-readiness-boundary-review",
     phaseState: "done",
     checklistId: "checklist-backend-service-readiness-boundary-review",
+    checklistLength: 5,
   },
   {
     id: "core-public-export-boundary-review",
@@ -74,6 +75,17 @@ const remediationTasks = [
     phaseId: "phase-core-public-export-boundary-review",
     phaseState: "done",
     checklistId: "checklist-core-public-export-boundary-review",
+    checklistLength: 5,
+  },
+  {
+    id: "cross-repository-compatibility-evidence-review",
+    nodeId: "flowdoc",
+    workState: "in-review",
+    activeRole: "cross-repo-boundary-reviewer",
+    phaseId: "phase-cross-repository-compatibility-evidence-review",
+    phaseState: "done",
+    checklistId: "checklist-cross-repository-compatibility-evidence-review",
+    checklistLength: 6,
   },
   {
     id: "editor-backend-unavailable-honesty-review",
@@ -83,6 +95,7 @@ const remediationTasks = [
     phaseId: "phase-editor-backend-unavailable-honesty-review",
     phaseState: "done",
     checklistId: "checklist-editor-backend-unavailable-honesty-review",
+    checklistLength: 5,
   },
 ] as const;
 
@@ -90,7 +103,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 6);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 7);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -117,6 +130,7 @@ describe("project roadmap Work Queue", () => {
       childWorkIds: [
         "backend-service-readiness-boundary-review",
         "core-public-export-boundary-review",
+        "cross-repository-compatibility-evidence-review",
         "editor-backend-unavailable-honesty-review",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening",
@@ -177,7 +191,7 @@ describe("project roadmap Work Queue", () => {
         phaseState: task.phaseState,
       });
       expect(model.checklists.find((item) => item.id === task.checklistId)?.items)
-        .toHaveLength(5);
+        .toHaveLength(task.checklistLength);
     }
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
@@ -210,6 +224,7 @@ describe("project roadmap Work Queue", () => {
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
       truthState: "planned",
       workIds: [
+        "cross-repository-compatibility-evidence-review",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
       ],
@@ -223,6 +238,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-backend-service-readiness-boundary-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-cross-repository-compatibility-evidence-review")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "blocked", "passed", "passed", "unknown", "passed"]);
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
       .toMatchObject({
         nodeIds: [],
@@ -250,6 +268,33 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-backend-service-readiness-boundary-review-2026-08-27")?.verificationSummary)
       .toContain("bounded Backend service-readiness boundary lane");
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-core-gate-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-core",
+        commit: "969a21a4e888d836ae62164b206cb2dd34d5d702",
+        pathOrContractId: "package.json#scripts.check",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-core-gate-2026-08-27")?.verificationSummary)
+      .toContain("blocks accepted default-gate compatibility promotion");
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-editor-gate-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+        pathOrContractId: "package.json#scripts.check",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-editor-gate-2026-08-27")?.verificationSummary)
+      .toContain("bounded Editor/Core and Editor/Backend transport-shape compatibility only");
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-backend-gate-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-backend",
+        commit: "42cc1040c959a16647b7e797929358c401ccfa38",
+        pathOrContractId: "package.json#scripts.check",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-backend-gate-2026-08-27")?.verificationSummary)
+      .toContain("bounded Backend/Core and Backend HTTP contract compatibility only");
 
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");

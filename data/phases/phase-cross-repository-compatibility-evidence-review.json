@@ -1,0 +1,19 @@
+{
+  "kind": "phase",
+  "id": "phase-cross-repository-compatibility-evidence-review",
+  "workId": "cross-repository-compatibility-evidence-review",
+  "title": "Classify Current Cross-Repository Compatibility Evidence",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "A FlowDoc compatibility claim ignores a fresh failing default repository gate.",
+    "Editor and Backend mock-backed contract tests are treated as live end-to-end evidence.",
+    "Project Control promotes FlowDoc, Core, Editor, or Backend truth from bounded work evidence."
+  ],
+  "verificationTarget": "Current Core, Editor, and Backend heads have exact gate outcomes and compatibility limits recorded before any product-wide truth promotion.",
+  "summary": "Bounded review completed: Editor and Backend gates pass against current Core package dependencies, but accepted cross-repository compatibility remains unpromoted because Core default npm run check timed out in the full suite and live Editor-to-Backend-to-Core runtime evidence is still missing.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

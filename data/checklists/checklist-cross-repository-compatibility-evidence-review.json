@@ -1,0 +1,57 @@
+{
+  "kind": "checklist",
+  "id": "checklist-cross-repository-compatibility-evidence-review",
+  "phaseId": "phase-cross-repository-compatibility-evidence-review",
+  "title": "Cross-Repository Compatibility Evidence Review Checklist",
+  "items": [
+    {
+      "id": "capture-current-heads",
+      "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before compatibility classification.",
+      "state": "passed",
+      "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded.",
+      "evidenceIds": ["evidence-cross-repo-compatibility-core-gate-2026-08-27", "evidence-cross-repo-compatibility-editor-gate-2026-08-27", "evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
+      "verificationNote": "Captured clean heads: Project Control f86aa644ab3fba4428fd02ae575d78ae264e95dd, Core 969a21a4e888d836ae62164b206cb2dd34d5d702, Editor 3eb382b6c0c891481b1bada0827e0f92f21d18e2, Backend 42cc1040c959a16647b7e797929358c401ccfa38."
+    },
+    {
+      "id": "verify-core-default-gate",
+      "label": "Run the current Core default gate and classify whether Core can support accepted compatibility evidence.",
+      "state": "blocked",
+      "evidenceTarget": "Core package check outcome distinguishes default-gate pass from isolated test reproduction.",
+      "evidenceIds": ["evidence-cross-repo-compatibility-core-gate-2026-08-27"],
+      "verificationNote": "Core npm run check passed type-check but failed the default full test suite with one timeout in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts. The same geometry block and full file passed in isolated runs, so this is recorded as a default-gate stability blocker, not accepted compatibility evidence."
+    },
+    {
+      "id": "verify-editor-core-consumer-gate",
+      "label": "Run the current Editor gate against the current Core file dependency and inspect the Core adapter boundary.",
+      "state": "passed",
+      "evidenceTarget": "Editor package metadata, core adapter, backend transport parser, runtime apply gates, and npm run check result support bounded Editor/Core compatibility.",
+      "evidenceIds": ["evidence-cross-repo-compatibility-editor-gate-2026-08-27"],
+      "verificationNote": "Editor npm run check passed with 77 test files, 283 tests, and build. Production Core imports remain behind src/core/coreAdapter.ts; backend capability parsing compares Backend response facts to the Core adapter contract."
+    },
+    {
+      "id": "verify-backend-core-consumer-gate",
+      "label": "Run the current Backend gate against the current Core file dependency and inspect Backend capability, mutation, migration, and HTTP boundaries.",
+      "state": "passed",
+      "evidenceTarget": "Backend package metadata, version capability envelope, HTTP routes, mutation service, migration service, and npm run check result support bounded Backend/Core compatibility.",
+      "evidenceIds": ["evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
+      "verificationNote": "Backend npm run check passed with 89 passed test files, 1 skipped file, 314 passed tests, 24 skipped tests, and build. Backend wraps VNEXT_CORE_VERSION_CAPABILITY_CONTRACT and executes Core public mutation and migration APIs behind revision gates."
+    },
+    {
+      "id": "classify-live-e2e-gap",
+      "label": "Separate mocked/route-level contract evidence from live Editor-to-Backend-to-Core runtime evidence.",
+      "state": "unknown",
+      "evidenceTarget": "Existing tests identify whether a single accepted integration harness starts Backend, consumes it through the Editor client, and applies Core-backed results into Editor runtime.",
+      "evidenceIds": ["evidence-cross-repo-compatibility-editor-gate-2026-08-27", "evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
+      "verificationNote": "Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path."
+    },
+    {
+      "id": "preserve-map-truth",
+      "label": "Return a bounded evidence packet without promoting FlowDoc, Core, Editor, or Backend truth state.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records no node evidence ownership or truth-state promotion from this review.",
+      "verificationNote": "Added work-scoped evidence and a verification document with empty nodeIds; FlowDoc remains planned and Core, Editor, and Backend remain unknown in the system map."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

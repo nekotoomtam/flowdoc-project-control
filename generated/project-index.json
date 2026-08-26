@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "a8262b768bdbd583833ff24e7d7a61f708a7c80f3e9fff76656ecac668292a66",
+  "sourceDigest": "c70e259764730b491d3e34a70a962a1e7406f97c080278466d44de65132c2075",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -41,6 +41,7 @@
         "project-control"
       ],
       "workIds": [
+        "cross-repository-compatibility-evidence-review",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh"
       ]
@@ -443,6 +444,48 @@
     },
     {
       "kind": "work",
+      "id": "cross-repository-compatibility-evidence-review",
+      "title": "Cross-Repository Compatibility Evidence Review",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-editor",
+        "repo-backend"
+      ],
+      "workState": "in-review",
+      "summary": "Reviewed current Core, Editor, and Backend compatibility evidence and recorded a bounded no-promotion result: Editor and Backend gates pass against the current Core package boundary, while the Core default full gate has a fresh timeout failure and no live Editor-to-Backend-to-Core evidence is accepted.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "expectedOutput": "A Project Control evidence packet that classifies current Core, Editor, and Backend compatibility claims, gate results, blockers, risks, and unknowns without changing product runtime behavior or promoting FlowDoc truth.",
+      "riskSummary": "Accepted cross-repository compatibility remains blocked by the fresh Core default npm run check timeout and by the missing live Editor client to Backend server to Core semantic integration proof.",
+      "requiredEvidence": [
+        "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+        "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
+        "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-cross-repository-compatibility-evidence-review"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "cross-repository-compatibility-evidence-review"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-backend-unavailable-honesty-review",
       "title": "Editor Backend Unavailable Honesty Review",
       "nodeId": "editor",
@@ -498,6 +541,7 @@
       "childWorkIds": [
         "backend-service-readiness-boundary-review",
         "core-public-export-boundary-review",
+        "cross-repository-compatibility-evidence-review",
         "editor-backend-unavailable-honesty-review",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening"
@@ -654,6 +698,30 @@
       "summary": "Recorded a Core-owned no-go decision: keep the package root export stable until Backend and Editor have an approved staged adoption path.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-cross-repository-compatibility-evidence-review",
+      "workId": "cross-repository-compatibility-evidence-review",
+      "title": "Classify Current Cross-Repository Compatibility Evidence",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-editor",
+        "repo-backend"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "stopConditions": [
+        "A FlowDoc compatibility claim ignores a fresh failing default repository gate.",
+        "Editor and Backend mock-backed contract tests are treated as live end-to-end evidence.",
+        "Project Control promotes FlowDoc, Core, Editor, or Backend truth from bounded work evidence."
+      ],
+      "verificationTarget": "Current Core, Editor, and Backend heads have exact gate outcomes and compatibility limits recorded before any product-wide truth promotion.",
+      "summary": "Bounded review completed: Editor and Backend gates pass against current Core package dependencies, but accepted cross-repository compatibility remains unpromoted because Core default npm run check timed out in the full suite and live Editor-to-Backend-to-Core runtime evidence is still missing.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -843,6 +911,76 @@
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-cross-repository-compatibility-evidence-review",
+      "phaseId": "phase-cross-repository-compatibility-evidence-review",
+      "title": "Cross-Repository Compatibility Evidence Review Checklist",
+      "items": [
+        {
+          "id": "capture-current-heads",
+          "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before compatibility classification.",
+          "state": "passed",
+          "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded.",
+          "evidenceIds": [
+            "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+            "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
+            "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
+          ],
+          "verificationNote": "Captured clean heads: Project Control f86aa644ab3fba4428fd02ae575d78ae264e95dd, Core 969a21a4e888d836ae62164b206cb2dd34d5d702, Editor 3eb382b6c0c891481b1bada0827e0f92f21d18e2, Backend 42cc1040c959a16647b7e797929358c401ccfa38."
+        },
+        {
+          "id": "verify-core-default-gate",
+          "label": "Run the current Core default gate and classify whether Core can support accepted compatibility evidence.",
+          "state": "blocked",
+          "evidenceTarget": "Core package check outcome distinguishes default-gate pass from isolated test reproduction.",
+          "evidenceIds": [
+            "evidence-cross-repo-compatibility-core-gate-2026-08-27"
+          ],
+          "verificationNote": "Core npm run check passed type-check but failed the default full test suite with one timeout in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts. The same geometry block and full file passed in isolated runs, so this is recorded as a default-gate stability blocker, not accepted compatibility evidence."
+        },
+        {
+          "id": "verify-editor-core-consumer-gate",
+          "label": "Run the current Editor gate against the current Core file dependency and inspect the Core adapter boundary.",
+          "state": "passed",
+          "evidenceTarget": "Editor package metadata, core adapter, backend transport parser, runtime apply gates, and npm run check result support bounded Editor/Core compatibility.",
+          "evidenceIds": [
+            "evidence-cross-repo-compatibility-editor-gate-2026-08-27"
+          ],
+          "verificationNote": "Editor npm run check passed with 77 test files, 283 tests, and build. Production Core imports remain behind src/core/coreAdapter.ts; backend capability parsing compares Backend response facts to the Core adapter contract."
+        },
+        {
+          "id": "verify-backend-core-consumer-gate",
+          "label": "Run the current Backend gate against the current Core file dependency and inspect Backend capability, mutation, migration, and HTTP boundaries.",
+          "state": "passed",
+          "evidenceTarget": "Backend package metadata, version capability envelope, HTTP routes, mutation service, migration service, and npm run check result support bounded Backend/Core compatibility.",
+          "evidenceIds": [
+            "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
+          ],
+          "verificationNote": "Backend npm run check passed with 89 passed test files, 1 skipped file, 314 passed tests, 24 skipped tests, and build. Backend wraps VNEXT_CORE_VERSION_CAPABILITY_CONTRACT and executes Core public mutation and migration APIs behind revision gates."
+        },
+        {
+          "id": "classify-live-e2e-gap",
+          "label": "Separate mocked/route-level contract evidence from live Editor-to-Backend-to-Core runtime evidence.",
+          "state": "unknown",
+          "evidenceTarget": "Existing tests identify whether a single accepted integration harness starts Backend, consumes it through the Editor client, and applies Core-backed results into Editor runtime.",
+          "evidenceIds": [
+            "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
+            "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
+          ],
+          "verificationNote": "Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path."
+        },
+        {
+          "id": "preserve-map-truth",
+          "label": "Return a bounded evidence packet without promoting FlowDoc, Core, Editor, or Backend truth state.",
+          "state": "passed",
+          "evidenceTarget": "Project Control records no node evidence ownership or truth-state promotion from this review.",
+          "verificationNote": "Added work-scoped evidence and a verification document with empty nodeIds; FlowDoc remains planned and Core, Editor, and Backend remain unknown in the system map."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "checklist",
@@ -1222,6 +1360,39 @@
         }
       ],
       "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at exact Core cleanup commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main descendant\n`501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and cleanup\nEvidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Text Block Family Documentation\n\n- [Text Block Overview](text-block/OVERVIEW.md)\n- [Text Block V1 Grammar and Migration History](text-block/v1-grammar-and-migration-history.md)\n- [Text Block V4 Authoring and Inline](text-block/v4-authoring-and-inline.md)\n- [Text Block V4 Measurement and Pagination](text-block/v4-measurement-and-pagination.md)\n\nText Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n\nText Block documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, family promotion, and any\nseparately authorized cleanup remain incomplete; Text Block and broader Core\nremain `unknown`.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-cross-repository-compatibility-evidence-2026-08-27",
+      "title": "Cross-Repository Compatibility Evidence - 2026-08-27",
+      "path": "docs/domains/cross-repository-compatibility-evidence-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped compatibility review for current local Core, Editor, and Backend heads; records bounded pass, blocker, risk, and unknown classifications without promoting product-wide truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "f86aa644ab3fba4428fd02ae575d78ae264e95dd",
+          "pathOrContractId": "data/work/flowdoc-product-development-resumption.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "969a21a4e888d836ae62164b206cb2dd34d5d702",
+          "pathOrContractId": "package.json#scripts.check"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+          "pathOrContractId": "src/tests/backendIntegration.test.ts"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "src/tests/httpServer.test.ts"
+        }
+      ],
+      "content": "# Cross-Repository Compatibility Evidence - 2026-08-27\n\nStatus: bounded review complete; accepted cross-repository compatibility remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > cross-repository-compatibility-evidence-review`\n\nOwner repositories: `repo-project-control`, `repo-core`, `repo-editor`, `repo-backend`\n\nActive role: `cross-repo-boundary-reviewer`\n\nPhase: `phase-cross-repository-compatibility-evidence-review`\n\nChecklist: `checklist-cross-repository-compatibility-evidence-review`\n\nEvidence targets:\n\n- `evidence-cross-repo-compatibility-core-gate-2026-08-27`\n- `evidence-cross-repo-compatibility-editor-gate-2026-08-27`\n- `evidence-cross-repo-compatibility-backend-gate-2026-08-27`\n\n## Scope\n\nThis packet reviews the current local heads for Core, Editor, and Backend after\nthe Core public export boundary, Editor backend-unavailable honesty, and\nBackend service-readiness boundary lanes. It classifies what the existing\nevidence can safely support and what remains blocked or unknown.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction readiness truth. Its document and evidence records intentionally use\nempty `nodeIds` so the review stays work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Fresh gate result |\n|---|---|---|\n| Project Control | `f86aa644ab3fba4428fd02ae575d78ae264e95dd` | Clean before this worktree. |\n| Core | `969a21a4e888d836ae62164b206cb2dd34d5d702` | `npm run check` failed: 1 timeout in the default full test suite. |\n| Editor | `3eb382b6c0c891481b1bada0827e0f92f21d18e2` | `npm run check` passed: 77 test files, 283 tests, build. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | `npm run check` passed: 89 passed test files, 1 skipped file, 314 passed tests, 24 skipped tests, build. |\n\n## Compatibility Paths Reviewed\n\nCore publishes the relevant package/document version facts and operation APIs\nthrough its root package export:\n\n- `src/schema/versionCapability.ts`\n- `src/index.ts`\n- `runVNextOperation(...)`\n- `runVNextDocumentV4Operation(...)`\n- `runVNextTextBlockV4RichInlineReplace(...)`\n- `planVNextPackageV2ToV3Migration(...)`\n- `applyVNextPackageV2ToV3Migration(...)`\n\nBackend consumes those public Core exports and wraps them in Backend-owned\ncontracts:\n\n- `src/contracts/versionCapability.ts`\n- `src/contracts/mutation.ts`\n- `src/contracts/migration.ts`\n- `src/http/server.ts`\n- `src/service/mutationService.ts`\n- `src/service/migrationService.ts`\n\nEditor keeps production Core imports behind `src/core/coreAdapter.ts` and\nconsumes Backend through Editor-owned transport and runtime gates:\n\n- `src/editor/backend/backendVersionCapability.ts`\n- `src/editor/backend/backendTransport.ts`\n- `src/editor/backend/backendMutationRequests.ts`\n- `src/editor/backend/backendMigrationRequests.ts`\n- `src/editor/runtime/runtimeBackendMutation.ts`\n- `src/editor/runtime/runtimeBackendMigration.ts`\n\n## PASS\n\n- Editor and Backend both depend on the current local Core package through\n  `file:../flowdoc-vnext-core`.\n- Backend wraps `VNEXT_CORE_VERSION_CAPABILITY_CONTRACT` instead of duplicating\n  Core version facts as a separate source of truth.\n- Backend route and service tests cover `/capabilities/versions`, document\n  reads, mutation routes, revision-stale handling, migration persistence,\n  idempotency, and source snapshot retention.\n- Editor tests cover Backend capability parsing, transport envelopes,\n  mutation/migration request creation, stale apply gates, and runtime state\n  replacement only after fresh Core-backed envelopes.\n- Editor production source keeps direct `@flowdoc/vnext-core` imports behind\n  `src/core/coreAdapter.ts`; tests enforce the boundary.\n\n## FAIL / BLOCKER\n\n- Core `npm run check` is not green on the current local Core head. Type-check\n  passed, but the default full Vitest run failed with one timeout:\n  `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A`.\n- The default Core full-suite summary was 1 failed and 458 passed test files,\n  1 failed and 2,940 passed tests, duration 227.23s.\n- Because a default owner-repository gate failed, Project Control must not\n  promote accepted cross-repository compatibility from this packet.\n\n## RISK\n\n- The failing Core geometry block passed when isolated, and the full\n  `textBlockUnifiedLayoutTextStyleSourceV1.test.ts` file passed with 62 tests.\n  That points to suite-load or timeout instability, but the default gate is\n  still the governing signal for promotion.\n- Existing Editor tests use mocked fetch/client boundaries. Existing Backend\n  tests start the Backend server and exercise HTTP routes directly. These are\n  useful contract tests, but they are not a single live runtime path.\n- Previous evidence that recorded a green Core gate is stale for this current\n  compatibility review because this review captured a fresh default-gate\n  timeout on the current Core head.\n\n## UNKNOWN\n\n- No accepted single test currently starts `createFlowDocBackendServer(...)`,\n  consumes it through Editor `createFlowDocBackendClient(...)`, and applies the\n  Core-backed document read, migration, or mutation result into Editor runtime.\n- It remains unknown whether the real browser app, real Backend server,\n  current CORS behavior, current document fixtures, and current Core adapters\n  complete the same flow without a mocked transport boundary.\n- Root cause for the Core full-suite timeout is not proven beyond the observed\n  pattern: default full suite failed, focused block passed, and isolated file\n  passed.\n\n## Intentionally Not Changed\n\n- No Core, Editor, or Backend product files were changed in this review.\n- No system map truth state was promoted.\n- No Node `documentIds` or `evidenceIds` were updated from this packet.\n- No Core timeout workaround was applied.\n- No live end-to-end harness was added in this lane.\n\n## Next Recommended Direction\n\n1. Open a Core-owned gate-stability lane for\n   `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts` under the default\n   `npm run check` command. The target is to make the owner repository gate\n   deterministic before compatibility promotion.\n2. After Core default gate is green, add one accepted live compatibility\n   harness that starts the Backend HTTP server, uses the Editor backend client,\n   reads `/capabilities/versions`, loads a document, performs an explicit\n   migration, commits a mutation, and applies the resulting Core-backed\n   envelope into Editor runtime.\n3. Only after those owner gates pass should Project Control consider promoting\n   a narrower product compatibility truth.\n"
     },
     {
       "kind": "document",
@@ -2415,6 +2586,36 @@
       "pathOrContractId": "src/index.ts",
       "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-cross-repo-compatibility-backend-gate-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "package.json#scripts.check",
+      "verificationSummary": "Backend main commit 42cc1040c959a16647b7e797929358c401ccfa38 was clean and npm run check passed against the current local Core file dependency. The gate passed type-check, 89 passed test files, 1 skipped test file, 314 passed tests, 24 skipped tests, and build. Reviewed src/contracts/versionCapability.ts wrapping VNEXT_CORE_VERSION_CAPABILITY_CONTRACT, src/http/server.ts exposing /capabilities/versions, /documents, /mutations, and package-v3-document-v4 migration routes, src/service/mutationService.ts executing Core public v3/v4 mutation APIs behind revision/idempotency gates, and src/service/migrationService.ts executing Core public package migration APIs while retaining source snapshots. This supports bounded Backend/Core and Backend HTTP contract compatibility only; Backend tests do not consume the Editor client module.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "969a21a4e888d836ae62164b206cb2dd34d5d702",
+      "pathOrContractId": "package.json#scripts.check",
+      "verificationSummary": "Core main commit 969a21a4e888d836ae62164b206cb2dd34d5d702 was clean and npm run check was executed for the cross-repository compatibility review. Type-check passed, but the default full Vitest run failed with one timeout: tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A timed out at 5000ms. The full-suite summary was 1 failed and 458 passed test files, 1 failed and 2940 passed tests, duration 227.23s. A focused rerun of the exact Evidence-backed geometry block passed with 3 passed and 59 skipped tests, duration 17.71s, and an isolated full-file rerun passed with 62 tests, duration 74.20s. This evidence blocks accepted default-gate compatibility promotion while indicating the failing symptom is suite-load or timeout instability rather than a reproduced assertion mismatch.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+      "pathOrContractId": "package.json#scripts.check",
+      "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 was clean and npm run check passed against the current local Core file dependency. The gate passed type-check, 77 test files, 283 tests, and Vite build; the build retained the existing chunk-size warning. Reviewed package.json file dependencies to @flowdoc/vnext-core and @flowdoc/text-engine-rust-wasm, src/core/coreAdapter.ts as the production Core import facade, src/editor/backend/backendVersionCapability.ts for Backend capability parsing against the Core adapter contract, src/editor/backend/backendTransport.ts for document/capability/mutation/migration transport envelopes, and runtime mutation/migration apply gates. This supports bounded Editor/Core and Editor/Backend transport-shape compatibility only; Editor tests use mocked fetch/client boundaries and do not start a real Backend server.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",
