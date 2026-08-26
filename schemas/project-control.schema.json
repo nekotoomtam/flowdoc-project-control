@@ -5,6 +5,8 @@
   "oneOf": [
     { "$ref": "#/$defs/node" },
     { "$ref": "#/$defs/work" },
+    { "$ref": "#/$defs/phase" },
+    { "$ref": "#/$defs/checklist" },
     { "$ref": "#/$defs/document" },
     { "$ref": "#/$defs/repository" },
     { "$ref": "#/$defs/evidence" }
@@ -99,6 +101,8 @@
         "id": { "$ref": "#/$defs/node/$defs/id" },
         "title": { "type": "string", "minLength": 1 },
         "nodeId": { "$ref": "#/$defs/node/$defs/id" },
+        "parentWorkId": { "$ref": "#/$defs/node/$defs/id" },
+        "workKind": { "enum": ["topic", "task"] },
         "repositoryIds": {
           "type": "array",
           "items": { "$ref": "#/$defs/node/$defs/id" }
@@ -107,6 +111,13 @@
           "enum": ["queued", "in-progress", "blocked", "in-review"]
         },
         "summary": { "type": "string" },
+        "contextDocumentIds": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "activeRole": { "type": "string", "minLength": 1 },
+        "expectedOutput": { "type": "string", "minLength": 1 },
+        "riskSummary": { "type": "string", "minLength": 1 },
         "blockedBy": { "type": "string", "minLength": 1 },
         "unblockOwner": { "type": "string", "minLength": 1 },
         "requiredEvidence": {
@@ -131,6 +142,85 @@
           }
         }
       ]
+    },
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "id",
+        "workId",
+        "title",
+        "phaseState",
+        "order",
+        "repositoryIds",
+        "activeRole",
+        "stopConditions",
+        "verificationTarget",
+        "summary",
+        "createdAt",
+        "updatedAt"
+      ],
+      "properties": {
+        "kind": { "const": "phase" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "workId": { "$ref": "#/$defs/node/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "phaseState": {
+          "enum": ["queued", "in-progress", "blocked", "in-review", "done"]
+        },
+        "order": { "type": "number" },
+        "repositoryIds": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "activeRole": { "type": "string", "minLength": 1 },
+        "stopConditions": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "verificationTarget": { "type": "string", "minLength": 1 },
+        "summary": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "checklist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "id", "phaseId", "title", "items", "createdAt", "updatedAt"],
+      "properties": {
+        "kind": { "const": "checklist" },
+        "id": { "$ref": "#/$defs/node/$defs/id" },
+        "phaseId": { "$ref": "#/$defs/node/$defs/id" },
+        "title": { "type": "string", "minLength": 1 },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "state", "evidenceTarget"],
+            "properties": {
+              "id": { "$ref": "#/$defs/node/$defs/id" },
+              "label": { "type": "string", "minLength": 1 },
+              "state": {
+                "enum": ["pending", "in-progress", "passed", "failed", "blocked", "risk", "unknown"]
+              },
+              "evidenceTarget": { "type": "string", "minLength": 1 },
+              "evidenceIds": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/node/$defs/id" }
+              },
+              "verificationNote": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
     },
     "document": {
       "type": "object",

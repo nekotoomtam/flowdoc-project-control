@@ -13,9 +13,9 @@ state as current, selecting a role, promoting a map, or opening a broad product
 implementation round.
 
 If a FlowDoc request starts in another repository or chat, first check Project
-Control for the relevant Work, Node, Document, Repository, and Evidence records,
-then continue in the owning repository only after scope and evidence targets are
-clear.
+Control for the relevant Work path, Phase, Checklist target, Evidence target,
+Node, Document, and Repository records, then continue in the owning repository
+only after scope and evidence targets are clear.
 
 Use this workflow before broad work, cross-repository work, evidence
 registration, lane cleanup, documentation synthesis, or product implementation.
@@ -27,11 +27,18 @@ system is current.
 Before work starts, name the round in plain terms:
 
 - Lane or Work item: the Project Control Work record or explicit user request.
+- Work path: the parent Work chain from the broad topic to the executable task,
+  when a task exists.
 - Owner repository: Project Control, Core, Editor, Backend, or a bounded set of
   repositories.
 - Active role: Planning Partner, Project Control Steward, Evidence Reviewer,
   Lane Reconciliation Reviewer, Cross-Repo Boundary Reviewer, Documentation
   Synthesizer, or Product Implementation Agent.
+- Current Phase: the active or next Phase for an executable Work task.
+- Checklist target: the Checklist item or Checklist group that will be reported
+  at handoff.
+- Evidence target: the command, path, contract, document, or Evidence record
+  that would support the bounded claim.
 - Expected output: commit, evidence packet, map update, recommendation,
   cleanup decision, health report, or another explicit deliverable.
 - Stop condition: the missing input, dirty state, failing check, ownership
@@ -43,6 +50,7 @@ Read the local context for the owner repository before editing:
 
 - the owner repository's `AGENTS.md`;
 - related Work, Node, Document, Repository, and Evidence records;
+- current Phase, Checklist target, and Evidence target for executable Work;
 - current git branch, local changes, and untracked files;
 - the boundary between plan, truth, evidence, risk, and unknown state.
 
@@ -132,6 +140,8 @@ End broad work with:
 - FAIL / BLOCKER: what prevents continuation.
 - RISK: known hazards that did not block the current phase.
 - UNKNOWN: what remains unverified.
+- Work ID, Phase ID, and Checklist item IDs: the execution context being
+  reported.
 - Files changed: grouped by repository.
 - Behavior changed: user-facing, contract-facing, or record-facing effects.
 - Tests run: command and result.

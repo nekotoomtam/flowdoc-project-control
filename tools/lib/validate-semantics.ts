@@ -5,6 +5,7 @@ import type {
   DocumentRecord,
   EvidenceRecord,
   NodeRecord,
+  PhaseRecord,
   ProjectRecord,
   RepositoryRecord,
 } from "../../src/model/types.js";
@@ -30,6 +31,11 @@ export async function validateProjectSemantics(
       checkNodeHierarchy(loaded.nodes),
       checkNodeReferences(loaded),
       checkWorkReferences(loaded),
+      checkWorkTree(loaded),
+      checkTaskContracts(loaded),
+      checkPhaseReferences(loaded),
+      checkSingleActivePhase(loaded),
+      checkChecklistReferences(loaded),
       checkDocumentPathsAndReferences(loaded),
       checkEvidenceReferences(loaded),
       checkReciprocalOwnership(loaded),
@@ -169,6 +175,210 @@ function checkWorkReferences(loaded: LoadedProjectSources): ProjectDiagnostic[] 
     );
   }
 
+  return diagnostics;
+}
+
+function checkWorkTree(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const workById = recordMap(loaded.work);
+  const diagnostics: ProjectDiagnostic[] = [];
+
+  for (const work of loaded.work) {
+    const parentWorkId = work.value.parentWorkId;
+    if (parentWorkId !== undefined && !workById.has(parentWorkId)) {
+      diagnostics.push(
+        recordDiagnostic(
+          "MISSING_WORK_PARENT",
+          `Parent Work "${parentWorkId}" does not exist.`,
+          work,
+          "Set parentWorkId to an existing Work ID or remove it for a root Work item.",
+        ),
+      );
+    }
+  }
+
+  const reportedCycles = new Set<string>();
+  for (const startId of [...workById.keys()].sort(compareCodeUnits)) {
+    const positions = new Map<string, number>();
+    const chain: string[] = [];
+    let currentId: string | undefined = startId;
+    while (currentId !== undefined) {
+      const position = positions.get(currentId);
+      if (position !== undefined) {
+        const cycle = canonicalCycle(chain.slice(position));
+        const cycleText = [...cycle, cycle[0] ?? ""].join(" -> ");
+        if (!reportedCycles.has(cycleText)) {
+          reportedCycles.add(cycleText);
+          diagnostics.push(
+            recordDiagnostic(
+              "WORK_CYCLE",
+              `Work hierarchy contains a cycle: ${cycleText}.`,
+              workById.get(cycle[0] ?? startId) ?? workById.get(startId)!,
+              "Set parentWorkId values so every Work item eventually reaches a root Work item.",
+            ),
+          );
+        }
+        break;
+      }
+      const current = workById.get(currentId);
+      if (current === undefined) break;
+      positions.set(currentId, chain.length);
+      chain.push(currentId);
+      currentId = current.value.parentWorkId;
+    }
+  }
+
+  return diagnostics;
+}
+
+function checkTaskContracts(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const documents = recordMap(loaded.documents);
+  const phaseCountByWorkId = new Map<string, number>();
+  for (const phase of loaded.phases) {
+    phaseCountByWorkId.set(phase.value.workId, (phaseCountByWorkId.get(phase.value.workId) ?? 0) + 1);
+  }
+
+  return loaded.work.flatMap((work) => {
+    if (work.value.workKind !== "task") return [];
+    const diagnostics: ProjectDiagnostic[] = [];
+    const contextDocumentIds = work.value.contextDocumentIds ?? [];
+    if (contextDocumentIds.length === 0) {
+      diagnostics.push(
+        recordDiagnostic(
+          "TASK_MISSING_CONTEXT_DOCUMENT",
+          "A task Work record must list at least one context document.",
+          work,
+          "Add contextDocumentIds with existing Document IDs before execution starts.",
+        ),
+      );
+    }
+    diagnostics.push(
+      ...missingReferences(work, contextDocumentIds, documents, "MISSING_DOCUMENT", "Document"),
+    );
+    if (work.value.activeRole === undefined) {
+      diagnostics.push(
+        recordDiagnostic(
+          "TASK_MISSING_ACTIVE_ROLE",
+          "A task Work record must declare activeRole.",
+          work,
+          "Set activeRole to the current FlowDoc role for this task.",
+        ),
+      );
+    }
+    if (work.value.expectedOutput === undefined) {
+      diagnostics.push(
+        recordDiagnostic(
+          "TASK_MISSING_EXPECTED_OUTPUT",
+          "A task Work record must declare expectedOutput.",
+          work,
+          "Set expectedOutput to the bounded deliverable for this task.",
+        ),
+      );
+    }
+    if ((phaseCountByWorkId.get(work.value.id) ?? 0) === 0) {
+      diagnostics.push(
+        recordDiagnostic(
+          "TASK_WITHOUT_PHASE",
+          "A task Work record must have at least one Phase.",
+          work,
+          "Add a Phase record with workId set to this task ID.",
+        ),
+      );
+    }
+    return diagnostics;
+  });
+}
+
+function checkPhaseReferences(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const work = recordMap(loaded.work);
+  const repositories = recordMap(loaded.repositories);
+  const diagnostics: ProjectDiagnostic[] = [];
+
+  for (const phase of loaded.phases) {
+    if (!work.has(phase.value.workId)) {
+      diagnostics.push(
+        recordDiagnostic(
+          "MISSING_WORK",
+          `Work "${phase.value.workId}" does not exist.`,
+          phase,
+          "Set workId to an existing Work ID.",
+        ),
+      );
+    }
+    diagnostics.push(
+      ...missingReferences(phase, phase.value.repositoryIds, repositories, "MISSING_REPOSITORY", "Repository"),
+    );
+  }
+  return diagnostics;
+}
+
+function checkSingleActivePhase(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const activeByWorkId = new Map<string, LoadedRecord<PhaseRecord>[]>();
+  for (const phase of loaded.phases) {
+    if (phase.value.phaseState !== "in-progress") continue;
+    const phases = activeByWorkId.get(phase.value.workId) ?? [];
+    phases.push(phase);
+    activeByWorkId.set(phase.value.workId, phases);
+  }
+  return [...activeByWorkId.values()].flatMap((phases) =>
+    phases.length <= 1
+      ? []
+      : phases.map((phase) =>
+          recordDiagnostic(
+            "MULTIPLE_ACTIVE_PHASES",
+            `Work "${phase.value.workId}" has more than one in-progress Phase.`,
+            phase,
+            "Keep only one in-progress Phase per Work record.",
+          ),
+        ),
+  );
+}
+
+function checkChecklistReferences(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const phases = recordMap(loaded.phases);
+  const evidence = recordMap(loaded.evidence);
+  const diagnostics: ProjectDiagnostic[] = [];
+
+  for (const checklist of loaded.checklists) {
+    if (!phases.has(checklist.value.phaseId)) {
+      diagnostics.push(
+        recordDiagnostic(
+          "MISSING_PHASE",
+          `Phase "${checklist.value.phaseId}" does not exist.`,
+          checklist,
+          "Set phaseId to an existing Phase ID.",
+        ),
+      );
+    }
+    for (const item of checklist.value.items) {
+      if (item.evidenceTarget.trim().length === 0) {
+        diagnostics.push(
+          recordDiagnostic(
+            "CHECKLIST_ITEM_MISSING_EVIDENCE_TARGET",
+            `Checklist item "${item.id}" must describe an evidence target.`,
+            checklist,
+            "Add evidenceTarget text before the item can guide execution.",
+          ),
+        );
+      }
+      diagnostics.push(
+        ...missingReferences(checklist, item.evidenceIds ?? [], evidence, "MISSING_EVIDENCE", "Evidence"),
+      );
+      if (
+        item.state === "passed" &&
+        (item.evidenceIds ?? []).length === 0 &&
+        item.verificationNote === undefined
+      ) {
+        diagnostics.push(
+          recordDiagnostic(
+            "CHECKLIST_PASSED_WITHOUT_SUPPORT",
+            `Checklist item "${item.id}" is passed without Evidence or verificationNote.`,
+            checklist,
+            "Add an Evidence ID or a bounded verificationNote.",
+          ),
+        );
+      }
+    }
+  }
   return diagnostics;
 }
 

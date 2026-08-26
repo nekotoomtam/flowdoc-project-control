@@ -1,0 +1,16 @@
+{
+  "kind": "work",
+  "id": "project-control-hardening",
+  "title": "Project Control Hardening",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "topic",
+  "repositoryIds": ["repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Harden Project Control so future FlowDoc rooms can identify work position, execution phase, checklist target, and evidence target before editing product repositories.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-round-workflow", "doc-project-control-design"],
+  "riskSummary": "The Work execution model must not merge with Node truth or make SQLite canonical too early.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-25T00:00:00.000Z",
+  "updatedAt": "2026-08-25T00:00:00.000Z"
+}

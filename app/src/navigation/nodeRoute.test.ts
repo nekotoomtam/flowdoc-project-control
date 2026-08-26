@@ -11,6 +11,8 @@ const model: ProjectReadModel = {
     node("project-control", "Project Control", "flowdoc", 1, []),
   ],
   work: [],
+  phases: [],
+  checklists: [],
   documents: [],
   repositories: [],
   evidence: [],

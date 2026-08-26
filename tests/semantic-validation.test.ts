@@ -23,8 +23,19 @@ describe("validateProjectSemantics", () => {
     ],
     ["current without evidence", { currentWithoutEvidence: true }, "CURRENT_WITHOUT_EVIDENCE"],
     ["document outside repo", { escapingDocumentPath: true }, "DOCUMENT_PATH_ESCAPE"],
+    ["missing Work parent", { missingWorkParent: true }, "MISSING_WORK_PARENT"],
+    ["Work hierarchy cycle", { workCycle: true }, "WORK_CYCLE"],
+    ["task without context document", { taskMissingContextDocument: true }, "TASK_MISSING_CONTEXT_DOCUMENT"],
+    ["task without active role", { taskMissingActiveRole: true }, "TASK_MISSING_ACTIVE_ROLE"],
+    ["task without expected output", { taskMissingExpectedOutput: true }, "TASK_MISSING_EXPECTED_OUTPUT"],
+    ["task without Phase", { taskWithoutPhase: true }, "TASK_WITHOUT_PHASE"],
+    ["Phase with missing Work", { phaseMissingWork: true }, "MISSING_WORK"],
+    ["two active Phases under one Work", { duplicateActivePhase: true }, "MULTIPLE_ACTIVE_PHASES"],
+    ["Checklist with missing Phase", { checklistMissingPhase: true }, "MISSING_PHASE"],
+    ["Checklist item with blank evidence target", { checklistMissingEvidenceTarget: true }, "CHECKLIST_ITEM_MISSING_EVIDENCE_TARGET"],
+    ["passed Checklist item without support", { checklistPassedWithoutSupport: true }, "CHECKLIST_PASSED_WITHOUT_SUPPORT"],
   ])("rejects %s", async (_name, mutation, code) => {
-    const root = await createProjectFixture({ valid: true, ...mutation });
+    const root = await createProjectFixture({ valid: true, newContractTask: true, ...mutation });
     const loaded = await loadProjectSources(root);
 
     await expect(validateProjectSemantics(loaded)).rejects.toMatchObject({
@@ -57,6 +68,19 @@ describe("validateProjectSemantics", () => {
     expect(validated.work[0]?.value.workState).toBe(workState);
   });
 
+  it("accepts a legacy V1 Work record without new-contract fields or a Phase", async () => {
+    const root = await createProjectFixture({ valid: true });
+
+    const validated = await validateProjectSemantics(await loadProjectSources(root));
+    const legacyWork = validated.work.find((work) => work.value.id === "pilot");
+
+    expect(legacyWork?.value.workKind).toBeUndefined();
+    expect(legacyWork?.value.contextDocumentIds).toBeUndefined();
+    expect(legacyWork?.value.activeRole).toBeUndefined();
+    expect(legacyWork?.value.expectedOutput).toBeUndefined();
+    expect(validated.phases).toHaveLength(0);
+  });
+
   it("does not derive node truth from document lifecycle", async () => {
     const root = await createProjectFixture({
       valid: true,
@@ -66,6 +90,20 @@ describe("validateProjectSemantics", () => {
     const validated = await validateProjectSemantics(await loadProjectSources(root));
 
     expect(validated.nodes[0]?.value.truthState).toBe("planned");
+  });
+
+  it("does not derive current Node truth from passed Checklist state", async () => {
+    const root = await createProjectFixture({
+      valid: true,
+      newContractTask: true,
+      truthState: "planned",
+      checklistPassedWithVerificationNote: true,
+    });
+
+    const validated = await validateProjectSemantics(await loadProjectSources(root));
+
+    expect(validated.nodes[0]?.value.truthState).toBe("planned");
+    expect(validated.checklists[0]?.value.items[0]?.state).toBe("passed");
   });
 
   it("does not treat unowned evidence as support for a current Node", async () => {

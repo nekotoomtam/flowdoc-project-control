@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "work-tree-phase-checklist-sqlite-contract",
+  "title": "Work Tree Phase Checklist SQLite Contract",
+  "nodeId": "project-control",
+  "parentWorkId": "project-control-hardening",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Implement the approved Project Control contract for Work tree, Phase, Checklist, agent workflow, and generated SQLite projection.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-agent-skill-operating-model", "doc-work-tree-operating-rules"],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Project Control can show one executable Work path with Phase and Checklist targets while preserving JSON/Markdown authority.",
+  "riskSummary": "Checklist progress must remain execution state and must not promote Project Control or product Nodes to current.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-25T00:00:00.000Z",
+  "updatedAt": "2026-08-25T00:00:00.000Z"
+}

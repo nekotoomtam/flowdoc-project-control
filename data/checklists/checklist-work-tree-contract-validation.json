@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-work-tree-contract-validation",
+  "phaseId": "phase-work-tree-contract-validation",
+  "title": "Work Tree Contract Validation Checklist",
+  "items": [
+    {
+      "id": "define-glossary",
+      "label": "Define Work Tree, Phase, Checklist, Context Document, and Evidence Target without conflicting with Node and Truth State.",
+      "state": "pending",
+      "evidenceTarget": "Glossary and operating rules describe the terms with separate responsibilities."
+    },
+    {
+      "id": "schema-contract",
+      "label": "Add schema support for Work, Phase, and Checklist records.",
+      "state": "pending",
+      "evidenceTarget": "Schema and loader tests reject malformed Phase and Checklist records."
+    },
+    {
+      "id": "semantic-validation",
+      "label": "Add semantic validation for references, cycles, active phase conflicts, and missing checklist targets.",
+      "state": "pending",
+      "evidenceTarget": "Semantic validation tests fail on missing or conflicting Work, Phase, and Checklist relationships."
+    },
+    {
+      "id": "sqlite-projection",
+      "label": "Generate a SQLite projection without making SQLite canonical.",
+      "state": "pending",
+      "evidenceTarget": "SQLite projection tests verify table content and .gitignore keeps the database untracked."
+    },
+    {
+      "id": "read-only-ui",
+      "label": "Expose Work task, Phase, and Checklist status in the read-only control room.",
+      "state": "pending",
+      "evidenceTarget": "Component tests show task phase and checklist targets without providing GUI editing."
+    }
+  ],
+  "createdAt": "2026-08-25T00:00:00.000Z",
+  "updatedAt": "2026-08-25T00:00:00.000Z"
+}

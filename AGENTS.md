@@ -15,9 +15,9 @@ cross-repository work.
 If a FlowDoc request starts in another repository or chat, first route through
 this repository's Project Control records unless the user explicitly limits the
 turn to local-only inspection. Use Project Control to identify the Work item or
-explicit request, owner repository, active role, evidence target, known risks,
-and unknown state; then read the owning product repository's `AGENTS.md` before
-editing product behavior.
+Work path, owner repository, active role, current Phase, Checklist target,
+Evidence target, known risks, and unknown state; then read the owning product
+repository's `AGENTS.md` before editing product behavior.
 
 Before taking broad work, read these files in order:
 
@@ -26,10 +26,12 @@ Before taking broad work, read these files in order:
 3. `docs/domains/flowdoc-role-catalog.md`
 4. `docs/domains/agent-and-skill-operating-model.md`
 5. `docs/domains/flowdoc-round-workflow.md`
-6. `docs/domains/project-control.md`
+6. `docs/domains/work-tree-operating-rules.md`
+7. `docs/domains/project-control.md`
 
-Use `generated/project-index.json` only as the generated read model. Canonical
-records live under `data/` and canonical prose lives under `docs/`.
+Use `generated/project-index.json` only as the generated read model. Use
+`generated/project-control.sqlite` only as an ignored local projection.
+Canonical records live under `data/` and canonical prose lives under `docs/`.
 
 ## Global bootstrap
 
@@ -84,7 +86,8 @@ release-line documentation, use
 
 - Preserve unrelated user changes in the working tree.
 - Edit canonical sources under `data/` and `docs/`; regenerate
-  `generated/project-index.json` with `npm run generate`.
+  `generated/project-index.json` and the ignored local SQLite projection with
+  `npm run generate`.
 - Do not hand-edit `generated/project-index.json`.
 - A Work record is not evidence. Strong claims require Evidence records or
   clearly cited repository-owned tests, files, commits, or contracts.
@@ -110,6 +113,7 @@ End broad work with:
 
 ```text
 PASS / FAIL / BLOCKER / RISK / UNKNOWN
+Work ID / Phase ID / Checklist item IDs
 Files changed
 Behavior changed
 Tests run

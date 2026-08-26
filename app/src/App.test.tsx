@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import type { IndexNode, RepositoryRecord, WorkRecord } from "../../src/model/types.js";
+import type { IndexNode, IndexWork, RepositoryRecord } from "../../src/model/types.js";
 import { App } from "./App.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { loadProjectState } from "./data/loadProjectState.js";
@@ -158,6 +158,36 @@ describe("App", () => {
     });
   });
 
+  it("rejects an index that omits execution read-model fields", async () => {
+    const legacyIndex = {
+      ...model,
+      phases: undefined,
+      checklists: undefined,
+      work: [
+        {
+          kind: "work",
+          id: "legacy-work",
+          title: "Legacy Work",
+          nodeId: "flowdoc",
+          repositoryIds: [],
+          workState: "queued",
+          summary: "Missing read-model execution indexes.",
+          requiredEvidence: [],
+          createdAt: "2026-08-24T00:00:00.000Z",
+          updatedAt: "2026-08-24T00:00:00.000Z",
+        },
+      ],
+    };
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => legacyIndex });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
   it("renders the shell from a valid injected read model", () => {
     render(<App initialModel={model} />);
 
@@ -165,6 +195,181 @@ describe("App", () => {
     expect(screen.getByRole("searchbox", { name: "Search Nodes" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
     expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
+  });
+
+  it("shows task phase and checklist context without GUI editing", () => {
+    const executionModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, [], [
+          "project-control-hardening",
+          "work-tree-phase-checklist-sqlite-contract",
+        ]),
+      ],
+      work: [
+        {
+          ...appWork(
+            "project-control-hardening",
+            "Project Control Hardening",
+            "flowdoc",
+            "in-progress",
+            "Harden Project Control.",
+          ),
+          workKind: "topic",
+          childWorkIds: ["work-tree-phase-checklist-sqlite-contract"],
+          phaseIds: [],
+          workPathIds: ["project-control-hardening"],
+        },
+        {
+          ...appWork(
+            "work-tree-phase-checklist-sqlite-contract",
+            "Work Tree Contract",
+            "flowdoc",
+            "in-progress",
+            "Implement execution contract.",
+          ),
+          parentWorkId: "project-control-hardening",
+          workKind: "task",
+          activeRole: "planning-partner",
+          expectedOutput: "Readable execution contract.",
+          contextDocumentIds: ["doc-work-tree-operating-rules"],
+          childWorkIds: [],
+          phaseIds: ["phase-contract"],
+          workPathIds: [
+            "project-control-hardening",
+            "work-tree-phase-checklist-sqlite-contract",
+          ],
+        },
+      ],
+      phases: [{
+        kind: "phase",
+        id: "phase-contract",
+        workId: "work-tree-phase-checklist-sqlite-contract",
+        title: "Define Contract",
+        phaseState: "in-progress",
+        order: 10,
+        repositoryIds: ["project-control"],
+        activeRole: "planning-partner",
+        stopConditions: ["Contract conflict."],
+        verificationTarget: "The task has visible phase context.",
+        summary: "Define contract.",
+        createdAt: "2026-08-25T00:00:00.000Z",
+        updatedAt: "2026-08-25T00:00:00.000Z",
+      }],
+      checklists: [{
+        kind: "checklist",
+        id: "checklist-contract",
+        phaseId: "phase-contract",
+        title: "Contract Checklist",
+        items: [{
+          id: "define-contract",
+          label: "Define contract.",
+          state: "pending",
+          evidenceTarget: "Evidence target is visible.",
+        }],
+        createdAt: "2026-08-25T00:00:00.000Z",
+        updatedAt: "2026-08-25T00:00:00.000Z",
+      }],
+    });
+
+    render(<App initialModel={executionModel} />);
+
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Project Control Hardening")).toBeVisible();
+    expect(within(workTree).getByText("Topic")).toBeVisible();
+    expect(within(workTree).getByText("Work Tree Contract")).toBeVisible();
+    expect(within(
+      within(workTree).getByRole("list", { name: "Project Control Hardening child work" }),
+    ).getByText("Work Tree Contract")).toBeVisible();
+    expect(within(workTree).getByText("Task")).toBeVisible();
+    expect(within(workTree).getByText("Define Contract")).toBeVisible();
+    expect(within(workTree).getByText("1 checklist item")).toBeVisible();
+    expect(within(workTree).queryByRole("button", { name: /edit/i })).not.toBeInTheDocument();
+  });
+
+  it("shows checklist evidence support risks in task phase context", () => {
+    const riskModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["execution-task"])],
+      work: [{
+        ...appWork("execution-task", "Execution Task", "flowdoc", "in-progress", "Review execution risks."),
+        workKind: "task",
+        activeRole: "planning-partner",
+        expectedOutput: "Readable risk labels.",
+        contextDocumentIds: ["doc-work-tree-operating-rules"],
+        childWorkIds: [],
+        phaseIds: ["phase-missing-target", "phase-unsupported-pass"],
+        workPathIds: ["execution-task"],
+      }],
+      phases: [
+        {
+          kind: "phase",
+          id: "phase-missing-target",
+          workId: "execution-task",
+          title: "Missing Target",
+          phaseState: "in-review",
+          order: 10,
+          repositoryIds: ["project-control"],
+          activeRole: "planning-partner",
+          stopConditions: ["Evidence target stays blank."],
+          verificationTarget: "The phase shows a missing target risk.",
+          summary: "Review target coverage.",
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          kind: "phase",
+          id: "phase-unsupported-pass",
+          workId: "execution-task",
+          title: "Unsupported Pass",
+          phaseState: "in-review",
+          order: 20,
+          repositoryIds: ["project-control"],
+          activeRole: "planning-partner",
+          stopConditions: ["Passed item lacks support."],
+          verificationTarget: "The phase shows a passed-without-support risk.",
+          summary: "Review support coverage.",
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+      ],
+      checklists: [
+        {
+          kind: "checklist",
+          id: "checklist-missing-target",
+          phaseId: "phase-missing-target",
+          title: "Missing Target Checklist",
+          items: [{
+            id: "target",
+            label: "Record evidence target.",
+            state: "pending",
+            evidenceTarget: "",
+          }],
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          kind: "checklist",
+          id: "checklist-unsupported-pass",
+          phaseId: "phase-unsupported-pass",
+          title: "Unsupported Pass Checklist",
+          items: [{
+            id: "support",
+            label: "Support passed item.",
+            state: "passed",
+            evidenceTarget: "Evidence or a bounded verification note supports the passed item.",
+          }],
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+      ],
+    });
+
+    render(<App initialModel={riskModel} />);
+
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Evidence target missing")).toBeVisible();
+    expect(within(workTree).getByText("Passed item lacks support")).toBeVisible();
   });
 
   it("routes node search selections through the shared control room navigation", async () => {
@@ -403,9 +608,9 @@ function appWork(
   id: string,
   title: string,
   nodeId: string,
-  workState: WorkRecord["workState"],
+  workState: IndexWork["workState"],
   summary: string,
-): WorkRecord {
+): IndexWork {
   return {
     kind: "work",
     id,
@@ -417,6 +622,9 @@ function appWork(
     requiredEvidence: [],
     createdAt: "2026-08-24T00:00:00.000Z",
     updatedAt: "2026-08-24T00:00:00.000Z",
+    childWorkIds: [],
+    phaseIds: [],
+    workPathIds: [id],
   };
 }
 

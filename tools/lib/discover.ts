@@ -4,9 +4,11 @@ import type { ProjectDiagnostic } from "../../src/model/diagnostics.js";
 import { compareCodeUnits } from "./errors.js";
 
 export const CANONICAL_RECORD_DIRECTORIES = [
+  "checklists",
   "documents",
   "evidence",
   "nodes",
+  "phases",
   "repositories",
   "work",
 ] as const;
@@ -108,7 +110,7 @@ function unexpectedJsonDiagnostic(file: string): ProjectDiagnostic {
     code: "UNEXPECTED_JSON_FILE",
     message: "JSON records must be regular files directly inside a canonical data directory.",
     file,
-    hint: "Keep JSON records directly in data/nodes, data/work, data/documents, data/repositories, or data/evidence.",
+    hint: "Keep JSON records directly in data/nodes, data/work, data/phases, data/checklists, data/documents, data/repositories, or data/evidence.",
   };
 }
 

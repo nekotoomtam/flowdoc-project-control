@@ -4,6 +4,7 @@ coverage/
 test-results/
 playwright-report/
 generated/project-diagnostics.json
+generated/*.sqlite
 .flowdoc.local.json
 .superpowers/
 .worktrees/
