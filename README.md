@@ -15,16 +15,22 @@ The development server binds to `127.0.0.1`; this V1 application is local-only a
 
 ## Source of truth and generated output
 
-Edit only canonical files:
+Canonical sources:
 
 - `data/nodes/` — the primary project hierarchy and concise node summaries.
 - `data/work/` — active work queue records, separate from durable truth.
+- `data/phases/` and `data/checklists/` — execution gates for Work tasks; these do not establish Node truth.
 - `data/documents/` and `docs/` — validated document metadata and long-form project documentation.
 - `data/repositories/` — registered repository identities and checkout aliases.
 - `data/evidence/` — scoped verification records that support claims.
 - `schemas/` and `src/` — the validator, generated-model contract, and generation implementation.
 
-Never edit `generated/project-index.json`; it is deterministic output from the canonical sources. Run `npm run generate` after canonical changes and `npm run check:data` to detect stale generated output. If generation fails, read the generated diagnostics, fix the canonical record, and run generation again; the last valid index is retained rather than replaced with partial output.
+Generated outputs:
+
+- `generated/project-index.json` — tracked deterministic JSON read model generated from canonical sources.
+- `generated/project-control.sqlite` — ignored local SQLite projection generated from canonical sources.
+
+Never edit `generated/project-index.json`; it is deterministic output from the canonical sources. Never commit `generated/project-control.sqlite`; it is disposable local output. Run `npm run generate` after canonical changes and `npm run check:data` to detect stale generated output. If generation fails, read the generated diagnostics, fix the canonical record, and run generation again; the last valid index is retained rather than replaced with partial output.
 
 Project Control owns cross-repository hierarchy, shared definitions, work coordination, repository registration, and evidence indexing. Core, Editor, and Backend own their source code, runtime behavior, tests, and implementation-local contracts. A work state never establishes a truth state: durable `current` claims require the appropriate recorded evidence.
 
@@ -53,4 +59,4 @@ Project Control owns cross-repository hierarchy, shared definitions, work coordi
 
 ## V1 boundaries
 
-This release has no GUI editing, database, cloud or network-hosted service, account system, public document API, release orchestration, drag-and-drop graph editing, or infinite canvas. The closed `CORE_ROUTE_*` documentation pilot does not change those product boundaries. GUI/product-repository mutation and AGENTS/Skill redesign remain deferred work, not claims made by this release.
+This release has no GUI editing, canonical database, cloud or network-hosted service, account system, public document API, release orchestration, drag-and-drop graph editing, or infinite canvas. The generated SQLite projection is disposable local output, not an authoring surface. The closed `CORE_ROUTE_*` documentation pilot does not change those product boundaries. GUI/product-repository mutation and AGENTS/Skill redesign remain deferred work, not claims made by this release.

@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-work-tree-operating-rules",
+  "title": "Work Tree Operating Rules",
+  "path": "docs/domains/work-tree-operating-rules.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Agent-facing Project Control contract for resolving Work tree, Phase, Checklist, and Evidence target before execution.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

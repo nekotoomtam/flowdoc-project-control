@@ -91,8 +91,10 @@ describe("truthful seed project", () => {
     const projectControl = model.nodes.find((node) => node.id === "project-control");
     const onboarding = documents.get("doc-project-control-agent-onboarding");
     const roundWorkflow = documents.get("doc-flowdoc-round-workflow");
+    const workTreeRules = documents.get("doc-work-tree-operating-rules");
 
     expect(projectControl?.documentIds).toContain("doc-project-control-agent-onboarding");
+    expect(projectControl?.documentIds).toContain("doc-work-tree-operating-rules");
     expect(onboarding).toMatchObject({
       path: "AGENTS.md",
       nodeIds: ["project-control"],
@@ -105,6 +107,14 @@ describe("truthful seed project", () => {
       role: "contract",
       lifecycle: "active",
     });
+    expect(workTreeRules).toMatchObject({
+      path: "docs/domains/work-tree-operating-rules.md",
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(normalize(workTreeRules?.content)).toContain("Work tree");
+    expect(normalize(workTreeRules?.content))
+      .toContain("BLOCKER: FlowDoc Project Control unavailable or unresolved.");
     expect(onboarding?.authority)
       .toContain("new agents and future FlowDoc rooms");
     expect(roundWorkflow?.authority)

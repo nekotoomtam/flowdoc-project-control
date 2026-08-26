@@ -14,6 +14,26 @@
 
 `work-state` บอกสถานะของงานชั่วคราวว่าเป็น `queued`, `in-progress`, `blocked` หรือ `in-review` ซึ่งแยกจาก Truth State
 
+## Work Tree
+
+`work-tree` คือลำดับชั้นของ Work record ที่เชื่อมกันด้วย `parentWorkId` ใช้บอกว่าเรื่องกว้างแตกเป็นหัวข้อหรืองานที่ทำได้อย่างไร แต่แยกจาก Node tree และไม่ได้ยืนยัน Truth State
+
+## Phase
+
+`phase` คือรอบการทำงานตามลำดับสำหรับ Work task ที่ลงมือทำได้ ใช้บันทึกขั้นปัจจุบัน บทบาท เงื่อนไขหยุด และเป้าหมายการตรวจสอบ โดยไม่กลายเป็น Node หรือ Work ลูก
+
+## Checklist
+
+`checklist` คือชุดเกตที่วัดได้สำหรับ Phase หนึ่ง สถานะของ Checklist item บันทึกความคืบหน้าการทำงานเท่านั้น ไม่ได้พิสูจน์ product truth หรือเลื่อน Node เป็น `current`
+
+## Context Document
+
+`context-document` คือ Document record ที่ agent ต้องอ่านก่อนทำ Work task หรือ Phase เพื่อให้เส้นทางอ่านเอกสารที่จำเป็นชัดเจน
+
+## Evidence Target
+
+`evidence-target` อธิบาย command, path, contract, document หรือ Evidence record ในอนาคตที่จะรองรับคำกล่าวแบบมีขอบเขต เป็นเป้าหมายสำหรับการตรวจสอบ ไม่ใช่หลักฐานด้วยตัวเอง
+
 ## Document
 
 `document` คือ metadata ของ Markdown ถาวร มีบทบาท ขอบเขตอำนาจ lifecycle และอาจมี repository reference ที่ตรึง commit

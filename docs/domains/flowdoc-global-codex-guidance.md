@@ -31,9 +31,12 @@ or planning cross-repository work.
 After reading Project Control, identify:
 
 - the explicit user request or Project Control Work item;
+- the Work path, if the Work item belongs to a Work tree;
 - the owner repository;
 - the active role;
-- the evidence target;
+- the current Phase;
+- the Checklist target;
+- the Evidence target;
 - known risks;
 - unknown state.
 
@@ -41,8 +44,9 @@ Then read the owning repository's `AGENTS.md` before editing that repository.
 
 ## Missing Project Control
 
-If Project Control is missing, unreadable, or cannot identify the owning
-FlowDoc repository and evidence target, stop before editing and report:
+If Project Control is missing, unreadable, or cannot identify the Work path,
+owning FlowDoc repository, current Phase, Checklist target, and Evidence
+target, stop before editing and report:
 
 ```text
 BLOCKER: FlowDoc Project Control unavailable or unresolved.

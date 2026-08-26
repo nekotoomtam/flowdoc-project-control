@@ -4,7 +4,7 @@ import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 
 const timestamp = "2026-08-24T00:00:00.000Z";
 
-const expectedWork = [
+const expectedLegacyWork = [
   {
     kind: "work",
     id: "agent-and-skill-design",
@@ -56,13 +56,36 @@ const expectedWork = [
 ] as const;
 
 describe("project roadmap Work Queue", () => {
-  it("publishes the four active roadmap cards without changing node truth", async () => {
+  it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedWork.length);
-    for (const work of expectedWork) {
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 2);
+    for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
+    expect(model.work.find((item) => item.id === "project-control-hardening")).toMatchObject({
+      workKind: "topic",
+      parentWorkId: "flowdoc-product-development-resumption",
+      nodeId: "project-control",
+      childWorkIds: ["work-tree-phase-checklist-sqlite-contract"],
+    });
+    expect(model.work.find((item) => item.id === "work-tree-phase-checklist-sqlite-contract")).toMatchObject({
+      workKind: "task",
+      parentWorkId: "project-control-hardening",
+      nodeId: "project-control",
+      phaseIds: ["phase-work-tree-contract-validation"],
+      workPathIds: [
+        "flowdoc-product-development-resumption",
+        "project-control-hardening",
+        "work-tree-phase-checklist-sqlite-contract",
+      ],
+    });
+    expect(model.phases.find((item) => item.id === "phase-work-tree-contract-validation")).toMatchObject({
+      workId: "work-tree-phase-checklist-sqlite-contract",
+      phaseState: "in-progress",
+    });
+    expect(model.checklists.find((item) => item.id === "checklist-work-tree-contract-validation")?.items)
+      .toHaveLength(5);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -72,7 +95,11 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.nodes.find((node) => node.id === "project-control")).toMatchObject({
       truthState: "current",
-      workIds: ["agent-and-skill-design"],
+      workIds: [
+        "agent-and-skill-design",
+        "project-control-hardening",
+        "work-tree-phase-checklist-sqlite-contract",
+      ],
     });
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
       truthState: "planned",
@@ -90,7 +117,7 @@ describe("project roadmap Work Queue", () => {
       workPathIds: string[];
     }>;
     for (const work of indexedWork.filter((item) =>
-      expectedWork.some((expected) => expected.id === item.id),
+      expectedLegacyWork.some((expected) => expected.id === item.id),
     )) {
       expect(work.workKind).toBeUndefined();
       expect(work.phaseIds).toEqual([]);

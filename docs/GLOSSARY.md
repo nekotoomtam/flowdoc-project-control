@@ -14,6 +14,26 @@ The terms below use stable English IDs. They describe the Project Control model 
 
 `work-state` says whether a temporary Work item is `queued`, `in-progress`, `blocked`, or `in-review`. It is separate from Truth State.
 
+## Work Tree
+
+`work-tree` is the hierarchy of Work records linked by `parentWorkId`. It shows how a broad topic splits into narrower topics or executable tasks, but it is separate from the Node tree and does not establish Truth State.
+
+## Phase
+
+`phase` is an ordered execution round for one executable Work task. It records the current step, role, stop conditions, and verification target without becoming a Node or Work child.
+
+## Checklist
+
+`checklist` is the measurable gate set for one Phase. Checklist item state records execution progress only; it does not prove product truth or promote a Node to `current`.
+
+## Context Document
+
+`context-document` is a Document record that an agent must read before executing a Work task or Phase. Context documents keep the required reading path explicit.
+
+## Evidence Target
+
+`evidence-target` describes the command, path, contract, document, or future Evidence record that would support a bounded claim. It is a target for verification, not proof by itself.
+
 ## Document
 
 `document` is durable Markdown metadata with a role, authority boundary, lifecycle, and optional pinned repository references.
