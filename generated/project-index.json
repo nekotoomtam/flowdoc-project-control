@@ -303,7 +303,12 @@
       "summary": "Define FlowDoc agent roles, capabilities, handoffs, and reusable skills after the documentation baseline is under control.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
+      "updatedAt": "2026-08-24T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [],
+      "workPathIds": [
+        "agent-and-skill-design"
+      ]
     },
     {
       "kind": "work",
@@ -318,7 +323,12 @@
       "summary": "Close migration coverage, repair references, review publication readiness, and decide cleanup for the four synthesized Core documentation families.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
+      "updatedAt": "2026-08-24T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [],
+      "workPathIds": [
+        "core-documentation-family-closure"
+      ]
     },
     {
       "kind": "work",
@@ -333,7 +343,12 @@
       "summary": "Synthesize the remaining 293 Core source documents by identifying overview groups before producing bounded subject documents.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
+      "updatedAt": "2026-08-24T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [],
+      "workPathIds": [
+        "core-remaining-documentation-synthesis"
+      ]
     },
     {
       "kind": "work",
@@ -350,9 +365,16 @@
       "summary": "Resume coordinated FlowDoc product development after the control and documentation baseline is usable across repositories.",
       "requiredEvidence": [],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-08-24T00:00:00.000Z"
+      "updatedAt": "2026-08-24T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [],
+      "workPathIds": [
+        "flowdoc-product-development-resumption"
+      ]
     }
   ],
+  "phases": [],
+  "checklists": [],
   "documents": [
     {
       "kind": "document",

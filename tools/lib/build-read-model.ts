@@ -2,10 +2,12 @@ import { createHash, type Hash } from "node:crypto";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import type {
+  IndexWork,
   IndexDocument,
   NodeRecord,
   ProjectRecord,
   ProjectReadModel,
+  WorkRecord,
 } from "../../src/model/types.js";
 import { compareCodeUnits } from "./errors.js";
 import type { LoadedRecord } from "./load-sources.js";
@@ -15,7 +17,17 @@ export async function buildProjectReadModel(
   validated: ValidatedProjectSources,
 ): Promise<ProjectReadModel> {
   const nodes = [...validated.nodes].sort(compareNodes);
-  const work = sortById(validated.work).map(({ value }) => ({ ...value }));
+  const workValues = sortById(validated.work).map(({ value }) => ({ ...value }));
+  const phases = sortById(validated.phases).map(({ value }) => ({ ...value }));
+  const checklists = sortById(validated.checklists).map(({ value }) => ({ ...value }));
+  const childWorkIdsByParentId = groupIds(workValues, (work) => work.parentWorkId);
+  const phaseIdsByWorkId = groupIds(phases, (phase) => phase.workId);
+  const indexedWork: IndexWork[] = workValues.map((work) => ({
+    ...work,
+    childWorkIds: childWorkIdsByParentId.get(work.id) ?? [],
+    phaseIds: work.workKind === undefined ? [] : (phaseIdsByWorkId.get(work.id) ?? []),
+    workPathIds: work.workKind === undefined ? [work.id] : collectWorkPathIds(work, workValues),
+  }));
   const documents = await Promise.all(
     sortById(validated.documents).map(async ({ value }) => ({
       ...value,
@@ -31,19 +43,22 @@ export async function buildProjectReadModel(
     childIds: nodeValues
       .filter((candidate) => candidate.parentId === node.id)
       .map((candidate) => candidate.id),
-    workIds: work.filter((item) => item.nodeId === node.id).map((item) => item.id),
+    workIds: indexedWork.filter((item) => item.nodeId === node.id).map((item) => item.id),
   }));
 
-  return {
-    schemaVersion: 1,
+  const model = {
+    schemaVersion: 1 as const,
     sourceDigest: await calculateSourceDigest(validated, documents),
     rootNodeIds: nodeValues.filter((node) => node.parentId === null).map((node) => node.id),
     nodes: indexNodes,
-    work,
+    work: indexedWork,
+    phases,
+    checklists,
     documents,
     repositories,
     evidence,
   };
+  return model;
 }
 
 export function serializeProjectReadModel(model: ProjectReadModel): string {
@@ -121,4 +136,30 @@ function compareNodes(left: LoadedRecord<NodeRecord>, right: LoadedRecord<NodeRe
 
 function sortById<T extends ProjectRecord>(records: LoadedRecord<T>[]): LoadedRecord<T>[] {
   return [...records].sort((left, right) => compareCodeUnits(left.value.id, right.value.id));
+}
+
+function groupIds<T extends { id: string }>(
+  values: T[],
+  readParentId: (value: T) => string | undefined,
+): Map<string, string[]> {
+  const grouped = new Map<string, string[]>();
+  for (const value of values) {
+    const parentId = readParentId(value);
+    if (parentId === undefined) continue;
+    const ids = grouped.get(parentId) ?? [];
+    ids.push(value.id);
+    grouped.set(parentId, ids.sort(compareCodeUnits));
+  }
+  return grouped;
+}
+
+function collectWorkPathIds(work: WorkRecord, workValues: WorkRecord[]): string[] {
+  const byId = new Map(workValues.map((item) => [item.id, item]));
+  const path: string[] = [];
+  let current: WorkRecord | undefined = work;
+  while (current !== undefined) {
+    path.unshift(current.id);
+    current = current.parentWorkId === undefined ? undefined : byId.get(current.parentWorkId);
+  }
+  return path;
 }

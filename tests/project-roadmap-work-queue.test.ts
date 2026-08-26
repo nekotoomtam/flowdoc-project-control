@@ -59,7 +59,10 @@ describe("project roadmap Work Queue", () => {
   it("publishes the four active roadmap cards without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toEqual(expectedWork);
+    expect(model.work).toHaveLength(expectedWork.length);
+    for (const work of expectedWork) {
+      expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
+    }
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -81,6 +84,17 @@ describe("project roadmap Work Queue", () => {
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");
       expect(work).not.toHaveProperty("unblockOwner");
+    }
+    const indexedWork = model.work as Array<(typeof model.work)[number] & {
+      phaseIds: string[];
+      workPathIds: string[];
+    }>;
+    for (const work of indexedWork.filter((item) =>
+      expectedWork.some((expected) => expected.id === item.id),
+    )) {
+      expect(work.workKind).toBeUndefined();
+      expect(work.phaseIds).toEqual([]);
+      expect(work.workPathIds).toEqual([work.id]);
     }
   });
 

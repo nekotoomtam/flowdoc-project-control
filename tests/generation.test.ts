@@ -78,6 +78,47 @@ describe("project index generation", () => {
     expect(second.sourceDigest).not.toBe(first.sourceDigest);
   });
 
+  it("indexes Work tree, Phase, and Checklist records without changing Node truth", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    const model = JSON.parse(await generateToString(root));
+
+    expect(model.work.find((work: { id: string }) => work.id === "pilot")).toMatchObject({
+      id: "pilot",
+      childWorkIds: ["pilot-task"],
+      phaseIds: [],
+      workPathIds: ["pilot"],
+    });
+    expect(model.work.find((work: { id: string }) => work.id === "pilot-task")).toMatchObject({
+      id: "pilot-task",
+      parentWorkId: "pilot",
+      workKind: "task",
+      childWorkIds: [],
+      phaseIds: ["phase-contract"],
+      workPathIds: ["pilot", "pilot-task"],
+    });
+    expect(model.phases.map((phase: { id: string }) => phase.id)).toEqual(["phase-contract"]);
+    expect(model.checklists.map((checklist: { id: string }) => checklist.id)).toEqual([
+      "checklist-contract",
+    ]);
+    expect(model.nodes[0].truthState).toBe("planned");
+  });
+
+  it("includes Phase sources in the source digest", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    const first = JSON.parse(await generateToString(root));
+
+    await writeFile(
+      join(root, "data", "phases", "phase-contract.json"),
+      JSON.stringify({
+        ...first.phases[0],
+        summary: "Changed phase summary.",
+      }),
+    );
+    const second = JSON.parse(await generateToString(root));
+
+    expect(second.sourceDigest).not.toBe(first.sourceDigest);
+  });
+
   it("normalizes Markdown line endings before indexing and hashing", async () => {
     const root = await createProjectFixture({ valid: true });
     const markdownPath = join(root, "docs", "overview.md");
