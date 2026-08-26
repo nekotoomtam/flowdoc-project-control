@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6bd53828a1c5a50c6751c03477529e6529700f25ce7e3600fb63514facaafd07",
+  "sourceDigest": "756617b0347d789e41e248b8115f1eb0962e712fdfb15b3619cd23fec26bee79",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -375,8 +375,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Investigate and resolve or classify the suite-load timeout observed in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts under the default Core npm run check command.",
+      "workState": "in-review",
+      "summary": "Reproduced and stabilized the Core default npm run check failure with test-only fixes for linked-worktree Backend path resolution and a load-sensitive 5B-2 geometry timeout budget.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -388,8 +388,10 @@
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "A Core-owned gate-stability fix or no-change blocker classification with fresh Core gate evidence and Project Control registration that does not promote broader FlowDoc compatibility truth.",
-      "riskSummary": "The prior Core default full gate timed out while focused and isolated reruns passed; a timeout-only workaround without root-cause evidence could hide a real suite-load or state-leak regression.",
-      "requiredEvidence": [],
+      "riskSummary": "Core default gate is green at commit 77b9e181d1fb43bf69d725108ede664578a07a45, but this does not promote live cross-repository compatibility and does not optimize the heavy 5B-2 Source path-copy evidence scenarios.",
+      "requiredEvidence": [
+        "evidence-core-default-gate-stability-review-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -721,7 +723,7 @@
       "id": "phase-core-default-gate-stability-review",
       "workId": "core-default-gate-stability-review",
       "title": "Reproduce and Resolve Core Default Gate Timeout",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-core",
@@ -735,7 +737,7 @@
         "Project Control promotes FlowDoc, Core, Editor, Backend, or compatibility truth before the owner gate and live integration evidence support it."
       ],
       "verificationTarget": "Core default npm run check is reproduced and either fixed with fresh worktree and main gate evidence or left blocked with root-cause evidence; Project Control records the result without map promotion.",
-      "summary": "Investigate the textBlockUnifiedLayoutTextStyleSourceV1 timeout under the default Core gate, make only root-cause-backed Core changes, and register the resulting evidence separately from compatibility promotion.",
+      "summary": "Completed: baseline Core npm run check reproduced the timeout and linked-worktree Backend path failure; Core test-only fixes landed at 77b9e181d1fb43bf69d725108ede664578a07a45 and the worktree plus merged main default gates passed.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -923,32 +925,52 @@
         {
           "id": "capture-core-baseline",
           "label": "Capture Core head, cleanliness, repository agreement, and prior timeout evidence before changing Core.",
-          "state": "pending",
-          "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed."
+          "state": "passed",
+          "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed.",
+          "evidenceIds": [
+            "evidence-core-default-gate-stability-review-2026-08-27"
+          ],
+          "verificationNote": "Core AGENTS.md and required context were reviewed; Core worktree baseline started clean at 969a21a4e888d836ae62164b206cb2dd34d5d702 with the previous Project Control compatibility packet recording the default-gate timeout."
         },
         {
           "id": "reproduce-default-timeout",
           "label": "Run the default Core gate in the Core lane to determine whether the timeout reproduces under current conditions.",
-          "state": "pending",
-          "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result."
+          "state": "passed",
+          "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result.",
+          "evidenceIds": [
+            "evidence-core-default-gate-stability-review-2026-08-27"
+          ],
+          "verificationNote": "Baseline npm run check reproduced a failing default Core gate with 2 failed and 457 passed test files, 2 failed and 2939 passed tests, duration 247.30s."
         },
         {
           "id": "isolate-root-cause",
           "label": "Inspect the failing test, related helpers, Vitest configuration, and recent changes, then run focused probes for the suspected root cause.",
-          "state": "pending",
-          "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source."
+          "state": "passed",
+          "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source.",
+          "evidenceIds": [
+            "evidence-core-default-gate-stability-review-2026-08-27"
+          ],
+          "verificationNote": "Focused checks showed the geometry block and full Source V1 file pass isolated, while the retirement guard failure came from resolving the Backend sibling relative to a linked Core worktree."
         },
         {
           "id": "implement-minimal-core-fix",
           "label": "Implement a minimal Core change only if the root cause warrants a product or test adjustment.",
-          "state": "pending",
-          "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker."
+          "state": "passed",
+          "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker.",
+          "evidenceIds": [
+            "evidence-core-default-gate-stability-review-2026-08-27"
+          ],
+          "verificationNote": "Core commit 77b9e181d1fb43bf69d725108ede664578a07a45 changed only tests: backend sibling resolution from git common-dir and a local 60000ms timeout for the load-sensitive 5B-2 geometry block."
         },
         {
           "id": "verify-register-evidence",
           "label": "Verify the Core gate in the lane and on main, then register the bounded Project Control evidence without promoting compatibility truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth."
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth.",
+          "evidenceIds": [
+            "evidence-core-default-gate-stability-review-2026-08-27"
+          ],
+          "verificationNote": "Core worktree npm run check passed 459 test files and 2941 tests in 223.28s, and merged Core main npm run check passed 459 test files and 2941 tests in 227.15s; Project Control evidence remains work-scoped."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -1257,6 +1279,29 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# Agent and Skill Operating Model\n\n## Purpose\n\nThis document defines the first Project Control operating model for FlowDoc\nagents, reusable skills, and handoffs. It is a coordination contract, not an\nimplementation claim and not a generated Codex skill package.\n\nProject Control should make agent work safer by keeping scope, ownership,\nevidence, and remaining risk visible before work resumes in Core, Editor, or\nBackend.\n\n## Operating principles\n\n- Project Control records shared truth, work coordination, documents, repository\n  identities, and evidence indexes.\n- Product repositories retain implementation ownership. Core owns document\n  semantics, Editor owns product browser runtime and UI behavior, and Backend\n  owns transport, revision gates, persistence, and service orchestration.\n- A Work record never proves truth by itself. Strong claims require Evidence\n  records that point to repository-owned files, tests, commits, or contracts.\n- Agents should mark risk while inspecting, continue the full inspection unless\n  blocked, and return to decisions only after the scan is complete.\n- Broad work should move in phases with explicit handoffs instead of one large\n  unreviewed change.\n\n## Project roles\n\n### Project Control steward\n\nMaintains Project Control records, generated indexes, roadmap Work, repository\nregistry entries, and document metadata. This role may update canonical\nProject Control files but must not mutate product repositories while recording\ntruth.\n\n### Evidence reviewer\n\nChecks whether a claimed state is supported by durable evidence. This role\nlooks for exact repository IDs, commits, paths, tests, and verification\nsummaries. It should downgrade unsupported claims to unknown, risk, or planned\ninstead of treating work status as proof.\n\n### Lane reconciliation reviewer\n\nReviews old worktrees and lane branches before cleanup. This role identifies\nunique commits, checks whether their patches are already represented in main,\nrecords retained value or discard rationale, and removes only the reviewed\nworktree checkouts.\n\n### Cross-repo boundary reviewer\n\nKeeps Core, Editor, and Backend responsibilities separate. This role checks for\ndirect imports, copied semantics, bypassed revision gates, local-only shortcuts\nthat look like product truth, and activation claims that outrun documented\ngates.\n\n### Documentation synthesizer\n\nTurns repository-owned source documents into bounded Project Control documents.\nThis role preserves authority limits, references source commits, avoids\npromotion of parent nodes without evidence, and keeps migration or cleanup\nclaims separate from summary writing.\n\n### Product implementation agent\n\nWorks in the owning product repository after Project Control has identified the\nlane, scope, and evidence target. This role follows the product repository\nworking agreement and returns checks, changed behavior, risks left, and\nintentionally unchanged boundaries.\n\n## Reusable skill candidates\n\nReusable skills should be written only after their workflow has been repeated\nenough to prove the trigger, scope, inputs, outputs, and stop conditions.\n\n### FlowDoc repository health audit\n\nTrigger: before resuming broad FlowDoc product development.\n\nInputs: Project Control repository registry, local checkout paths, each\nrepository working agreement, and available check commands.\n\nOutput: repository status, check results, dirty-file risks, boundary risks,\nunknowns, and recommended next work blocks.\n\nStop conditions: missing checkout, unavailable required dependency, dirty\ntracked changes that affect the requested scope, or an external service that is\nrequired for the check.\n\n### FlowDoc lane reconciliation\n\nTrigger: when Project Control lists old worktrees or lane branches that need\nreview before cleanup.\n\nInputs: `git worktree list`, branch names, unique commits, patch-equivalence\nchecks, and related Project Control Work records.\n\nOutput: retained/discarded decision for each lane, cleanup actions taken, branch\nrefs intentionally retained or removed, and any follow-up record update.\n\nStop conditions: dirty worktree, non-equivalent unique patch, conflict with\nmain, or unclear owner decision.\n\n### FlowDoc evidence registration\n\nTrigger: when a node is ready to move toward current truth.\n\nInputs: exact repository ID, 40-character commit, tested path or contract ID,\nverification summary, node ID, and supporting document references.\n\nOutput: Evidence record, document or node links, regenerated index, and check\nresult.\n\nStop conditions: unverified commit, missing path, ambiguous owner repository,\nor a claim that belongs in a product repository first.\n\n### FlowDoc documentation synthesis\n\nTrigger: when source documents from a product repository need bounded Project\nControl publication.\n\nInputs: source inventory, family map, source commit, reviewed family boundary,\nand migration/publication intent.\n\nOutput: bounded versioned Markdown, document records, evidence records when\navailable, tests that protect authority wording, and generated index updates.\n\nStop conditions: source authority is unknown, migration coverage is incomplete\nbut being represented as closed, or cleanup is implied before separate review.\n\n### FlowDoc boundary review\n\nTrigger: before cross-repo integration or when a local shortcut may become\nproduct behavior.\n\nInputs: Core, Editor, Backend working agreements, cross-repo operating map,\nimports, service routes, adapters, and tests for touched boundaries.\n\nOutput: PASS, FAIL/BLOCKER, RISK, UNKNOWN, files changed, behavior changed,\ntests run, risks left, and intentionally not changed.\n\nStop conditions: responsibility conflict, missing product decision, bypassed\nBackend revision gate, direct Core internals in Editor, or copied Core\noperation semantics in Backend.\n\n## Handoff format\n\nBroad FlowDoc work should end with:\n\n- PASS: what is verified and by which command or evidence.\n- FAIL / BLOCKER: what prevents continuation.\n- RISK: known hazards that did not block the current phase.\n- UNKNOWN: what remains unverified.\n- Files changed: grouped by repository.\n- Behavior changed: user-facing or contract-facing effects.\n- Tests run: command and result.\n- Risks left: what should be scheduled next.\n- Intentionally not changed: boundaries preserved by design.\n\n## Current status\n\nThis document establishes a draft operating model for the queued\n`agent-and-skill-design` work. It does not complete that Work item, create\nCodex skill files, or define required evidence for roadmap Work. Required\nEvidence should be added later after the user approves the evidence target for\neach Work record.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-default-gate-stability-review-2026-08-27",
+      "title": "Core Default Gate Stability Review - 2026-08-27",
+      "path": "docs/domains/core-default-gate-stability-review-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped Core default gate-stability review for the current local Core head; records reproduced failures, test-only fixes, gate results, risks, and unknowns without promoting Core or FlowDoc truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "8bd85dab04110e453f7ac88d571cb40dca2a9b8b",
+          "pathOrContractId": "data/work/core-default-gate-stability-review.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "package.json#scripts.check"
+        }
+      ],
+      "content": "# Core Default Gate Stability Review - 2026-08-27\n\nStatus: bounded Core gate-stability lane complete; compatibility truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > core-default-gate-stability-review`\n\nOwner repositories: `repo-core`, `repo-project-control`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-core-default-gate-stability-review`\n\nChecklist: `checklist-core-default-gate-stability-review`\n\nEvidence target: `evidence-core-default-gate-stability-review-2026-08-27`\n\n## Scope\n\nThis lane investigated the fresh Core default `npm run check` failure recorded\nby the cross-repository compatibility evidence review. The work was limited to\nCore test-gate stability and Project Control evidence registration.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\naccepted cross-repository compatibility truth. Its document and Evidence records\nintentionally use empty `nodeIds` so the result stays work-scoped.\n\n## Baseline Reproduction\n\nCore worktree baseline started from\n`969a21a4e888d836ae62164b206cb2dd34d5d702` on\n`codex/core-default-gate-stability-review`.\n\nFresh baseline `npm run check` reproduced a failing default Core gate:\n\n- `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A` timed out at the default 5-second limit.\n- `tests/corePackageLaneRetirementGuard.test.ts > core package-lane retirement guard > points current ownership evidence at backend replacement modules and tests` failed because `src/storage/fileJsonStorage.ts` was not found under the worktree-local sibling path.\n- Baseline summary: 2 failed and 457 passed test files; 2 failed and 2,939 passed tests; duration 247.30s.\n\nFocused reproduction separated the two root causes:\n\n- The geometry block passed isolated with 3 passed and 59 skipped tests; the insertion row took 614ms.\n- The full `textBlockUnifiedLayoutTextStyleSourceV1.test.ts` file passed isolated with 62 tests in 74.08s, while several heavier rows took 4.7s to 11.3s.\n- The backend replacement files existed in the real Backend checkout at `C:\\Users\\nekot\\Documents\\GitHub\\flowdoc-vnext-backend`, so the guard failure was path-topology-specific to a linked Core worktree under `.worktrees`.\n\n## Root Cause\n\nThe Core default gate had two independent stability issues:\n\n1. `corePackageLaneRetirementGuard.test.ts` resolved the Backend sibling from\n   the current Core worktree root. In a linked worktree this incorrectly points\n   under `flowdoc-vnext-core/.worktrees/flowdoc-vnext-backend` instead of the\n   canonical sibling checkout.\n2. `textBlockUnifiedLayoutTextStyleSourceV1.test.ts` already contains heavy\n   5B-2 evidence rows with task-local timeout budgets, but the earlier\n   evidence-backed geometry `it.each` block still used Vitest's default\n   5-second timeout. The block is fast when isolated, but the default full\n   suite can stretch it under worker load.\n\nNo assertion mismatch or Core semantic output mismatch reproduced.\n\n## Changes\n\nCore commit `77b9e181d1fb43bf69d725108ede664578a07a45` changed only tests:\n\n- `tests/corePackageLaneRetirementGuard.test.ts` now resolves the canonical Core\n  checkout via `git rev-parse --git-common-dir` before locating the Backend\n  sibling, while falling back to the current root outside Git.\n- `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts` now gives the\n  evidence-backed geometry `it.each` block a local 60-second timeout budget.\n\nNo runtime Core source, public exports, package schema, Editor code, Backend\ncode, or Project Control map was changed.\n\n## Verification\n\nCore focused checks after the patch:\n\n- `npx vitest run --config vitest.config.ts tests/corePackageLaneRetirementGuard.test.ts --reporter verbose`: 1 test file passed, 3 tests passed.\n- `npx vitest run --config vitest.config.ts tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts -t \"commits exact Evidence-backed geometry\" --reporter verbose`: 1 test file passed, 3 passed and 59 skipped tests.\n- `npx vitest run --config vitest.config.ts tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts --reporter verbose`: 1 test file passed, 62 tests passed.\n\nCore owner gate:\n\n- Worktree `npm run check`: type-check passed; 459 test files passed; 2,941 tests passed; duration 223.28s.\n- Merged main `npm run check`: type-check passed; 459 test files passed; 2,941 tests passed; duration 227.15s.\n\nProject Control intake/evidence gate:\n\n- The intake record was opened at Project Control commit `8bd85dab04110e453f7ac88d571cb40dca2a9b8b`.\n- Project Control `npm run check` on main after intake passed 37 test files, 307 tests, build, and 5 e2e tests.\n\n## PASS\n\n- Core default `npm run check` is green at\n  `77b9e181d1fb43bf69d725108ede664578a07a45` after a reproduced baseline\n  failure and minimal test-gate fixes.\n- The Backend sibling guard now works from a linked Core worktree.\n- The load-sensitive 5B-2 geometry evidence block has a local timeout budget\n  without changing global Vitest timeout configuration.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this Core default gate-stability lane.\n\n## RISK\n\n- The 5B-2 Source path-copy file still contains heavy evidence scenarios; this\n  lane stabilizes the default gate but does not optimize those algorithms or\n  reduce file runtime.\n- Core `npm install` in the worktree reported existing npm audit warnings; they\n  were not investigated or fixed in this lane.\n\n## UNKNOWN\n\n- This lane does not add the live Editor-client to Backend-server to Core\n  compatibility harness. Cross-repository live compatibility remains unknown.\n- This lane does not prove broader Core product readiness beyond the default\n  owner gate at the cited commit.\n\n## Intentionally Not Changed\n\n- No Core runtime behavior or public API was changed.\n- No Editor or Backend product files were changed.\n- No system map or Core document map truth was promoted.\n- The stale cross-repository compatibility blocker evidence remains as a\n  historical record of the earlier failed gate; this packet records the later\n  Core gate-stability result.\n\n## Next Recommended Direction\n\nOpen the live compatibility harness lane only after this evidence is accepted:\nstart the Backend HTTP server, consume it through the Editor backend client,\nread `/capabilities/versions`, load a document, perform an explicit migration,\ncommit a mutation, and apply the Core-backed envelope into Editor runtime.\n"
     },
     {
       "kind": "document",
@@ -2617,6 +2662,16 @@
       "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
       "pathOrContractId": "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md",
       "verificationSummary": "Backend main commit 42cc1040c959a16647b7e797929358c401ccfa38 records the service readiness boundary review, adds src/contracts/serviceReadiness.ts, exposes the bounded readiness envelope from GET /health while retaining top-level status ready for probe compatibility, and documents that the default server is development-ready but production service readiness is blocked. The contract separates loopback fixture-backed default HTTP behavior, internal-alpha file JSON storage, accepted local-only PDF export evidence, unmounted PDF export candidate routes, and remaining production blockers for auth, tenancy, storage providers, export route mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. It also fixes a pre-existing Windows CRLF-sensitive doc test in src/tests/durableCompositionSchedulerDueBatchQualificationDoc.test.ts. Focused Backend checks passed with 8 test files and 22 tests. Backend worktree npm run check and merged main npm run check both passed with 89 test files, 314 tests, 1 skipped file, 24 skipped tests, and build. This evidence supports only the bounded Backend service-readiness boundary lane and does not promote broader Backend, FlowDoc production readiness, hosted providers, auth, tenancy, deployment, or map truth.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-default-gate-stability-review-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "package.json#scripts.check",
+      "verificationSummary": "Core default gate-stability lane reproduced the baseline npm run check failure at 969a21a4e888d836ae62164b206cb2dd34d5d702 with two failing tests: textBlockUnifiedLayoutTextStyleSourceV1 geometry insertion timed out at the default 5000ms limit, and corePackageLaneRetirementGuard resolved Backend under the linked Core worktree instead of the canonical sibling checkout. Core commit 77b9e181d1fb43bf69d725108ede664578a07a45 made test-only fixes: resolving the Backend sibling from git common-dir and giving the load-sensitive 5B-2 geometry block a local 60000ms timeout. Focused guards passed, the full Source V1 file passed with 62 tests, worktree npm run check passed 459 test files and 2941 tests in 223.28s, and merged Core main npm run check passed 459 test files and 2941 tests in 227.15s. This supports only the bounded Core default owner gate result and does not promote cross-repository live compatibility.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {

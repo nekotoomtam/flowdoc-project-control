@@ -70,10 +70,10 @@ const remediationTasks = [
   {
     id: "core-default-gate-stability-review",
     nodeId: "core",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-core-default-gate-stability-review",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-core-default-gate-stability-review",
     checklistLength: 5,
   },
@@ -255,7 +255,16 @@ describe("project roadmap Work Queue", () => {
       .toEqual(["passed", "blocked", "passed", "passed", "unknown", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-core-default-gate-stability-review")?.items
       .map((item) => item.state))
-      .toEqual(["pending", "pending", "pending", "pending", "pending"]);
+      .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-core",
+        commit: "77b9e181d1fb43bf69d725108ede664578a07a45",
+        pathOrContractId: "package.json#scripts.check",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27")?.verificationSummary)
+      .toContain("supports only the bounded Core default owner gate result");
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
       .toMatchObject({
         nodeIds: [],

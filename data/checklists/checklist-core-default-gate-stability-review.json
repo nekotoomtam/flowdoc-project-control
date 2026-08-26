@@ -7,32 +7,42 @@
     {
       "id": "capture-core-baseline",
       "label": "Capture Core head, cleanliness, repository agreement, and prior timeout evidence before changing Core.",
-      "state": "pending",
-      "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed."
+      "state": "passed",
+      "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed.",
+      "evidenceIds": ["evidence-core-default-gate-stability-review-2026-08-27"],
+      "verificationNote": "Core AGENTS.md and required context were reviewed; Core worktree baseline started clean at 969a21a4e888d836ae62164b206cb2dd34d5d702 with the previous Project Control compatibility packet recording the default-gate timeout."
     },
     {
       "id": "reproduce-default-timeout",
       "label": "Run the default Core gate in the Core lane to determine whether the timeout reproduces under current conditions.",
-      "state": "pending",
-      "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result."
+      "state": "passed",
+      "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result.",
+      "evidenceIds": ["evidence-core-default-gate-stability-review-2026-08-27"],
+      "verificationNote": "Baseline npm run check reproduced a failing default Core gate with 2 failed and 457 passed test files, 2 failed and 2939 passed tests, duration 247.30s."
     },
     {
       "id": "isolate-root-cause",
       "label": "Inspect the failing test, related helpers, Vitest configuration, and recent changes, then run focused probes for the suspected root cause.",
-      "state": "pending",
-      "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source."
+      "state": "passed",
+      "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source.",
+      "evidenceIds": ["evidence-core-default-gate-stability-review-2026-08-27"],
+      "verificationNote": "Focused checks showed the geometry block and full Source V1 file pass isolated, while the retirement guard failure came from resolving the Backend sibling relative to a linked Core worktree."
     },
     {
       "id": "implement-minimal-core-fix",
       "label": "Implement a minimal Core change only if the root cause warrants a product or test adjustment.",
-      "state": "pending",
-      "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker."
+      "state": "passed",
+      "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker.",
+      "evidenceIds": ["evidence-core-default-gate-stability-review-2026-08-27"],
+      "verificationNote": "Core commit 77b9e181d1fb43bf69d725108ede664578a07a45 changed only tests: backend sibling resolution from git common-dir and a local 60000ms timeout for the load-sensitive 5B-2 geometry block."
     },
     {
       "id": "verify-register-evidence",
       "label": "Verify the Core gate in the lane and on main, then register the bounded Project Control evidence without promoting compatibility truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth."
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth.",
+      "evidenceIds": ["evidence-core-default-gate-stability-review-2026-08-27"],
+      "verificationNote": "Core worktree npm run check passed 459 test files and 2941 tests in 223.28s, and merged Core main npm run check passed 459 test files and 2941 tests in 227.15s; Project Control evidence remains work-scoped."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",

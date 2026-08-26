@@ -6,13 +6,13 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-core", "repo-project-control"],
-  "workState": "in-progress",
-  "summary": "Investigate and resolve or classify the suite-load timeout observed in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts under the default Core npm run check command.",
+  "workState": "in-review",
+  "summary": "Reproduced and stabilized the Core default npm run check failure with test-only fixes for linked-worktree Backend path resolution and a load-sensitive 5B-2 geometry timeout budget.",
   "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-cross-repository-compatibility-evidence-2026-08-27"],
   "activeRole": "product-implementation-agent",
   "expectedOutput": "A Core-owned gate-stability fix or no-change blocker classification with fresh Core gate evidence and Project Control registration that does not promote broader FlowDoc compatibility truth.",
-  "riskSummary": "The prior Core default full gate timed out while focused and isolated reruns passed; a timeout-only workaround without root-cause evidence could hide a real suite-load or state-leak regression.",
-  "requiredEvidence": [],
+  "riskSummary": "Core default gate is green at commit 77b9e181d1fb43bf69d725108ede664578a07a45, but this does not promote live cross-repository compatibility and does not optimize the heavy 5B-2 Source path-copy evidence scenarios.",
+  "requiredEvidence": ["evidence-core-default-gate-stability-review-2026-08-27"],
   "createdAt": "2026-08-27T00:00:00.000Z",
   "updatedAt": "2026-08-27T00:00:00.000Z"
 }
