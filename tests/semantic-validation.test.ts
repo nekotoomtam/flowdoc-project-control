@@ -32,7 +32,7 @@ describe("validateProjectSemantics", () => {
     ["Phase with missing Work", { phaseMissingWork: true }, "MISSING_WORK"],
     ["two active Phases under one Work", { duplicateActivePhase: true }, "MULTIPLE_ACTIVE_PHASES"],
     ["Checklist with missing Phase", { checklistMissingPhase: true }, "MISSING_PHASE"],
-    ["Checklist item without evidence target", { checklistMissingEvidenceTarget: true }, "CHECKLIST_ITEM_MISSING_EVIDENCE_TARGET"],
+    ["Checklist item with blank evidence target", { checklistMissingEvidenceTarget: true }, "CHECKLIST_ITEM_MISSING_EVIDENCE_TARGET"],
     ["passed Checklist item without support", { checklistPassedWithoutSupport: true }, "CHECKLIST_PASSED_WITHOUT_SUPPORT"],
   ])("rejects %s", async (_name, mutation, code) => {
     const root = await createProjectFixture({ valid: true, newContractTask: true, ...mutation });
@@ -66,6 +66,19 @@ describe("validateProjectSemantics", () => {
 
     expect(validated.nodes[0]?.value.truthState).toBe(truthState);
     expect(validated.work[0]?.value.workState).toBe(workState);
+  });
+
+  it("accepts a legacy V1 Work record without new-contract fields or a Phase", async () => {
+    const root = await createProjectFixture({ valid: true });
+
+    const validated = await validateProjectSemantics(await loadProjectSources(root));
+    const legacyWork = validated.work.find((work) => work.value.id === "pilot");
+
+    expect(legacyWork?.value.workKind).toBeUndefined();
+    expect(legacyWork?.value.contextDocumentIds).toBeUndefined();
+    expect(legacyWork?.value.activeRole).toBeUndefined();
+    expect(legacyWork?.value.expectedOutput).toBeUndefined();
+    expect(validated.phases).toHaveLength(0);
   });
 
   it("does not derive node truth from document lifecycle", async () => {
