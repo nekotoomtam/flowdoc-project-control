@@ -1,10 +1,12 @@
 import { useMemo } from "react";
 import type {
+  ChecklistRecord,
   IndexDocument,
   IndexNode,
+  IndexWork,
+  PhaseRecord,
   ProjectReadModel,
   RepositoryRecord,
-  WorkRecord,
   WorkState,
 } from "../../../src/model/types.js";
 import { StatusBadge } from "./StatusBadge.js";
@@ -60,7 +62,11 @@ export function ControlRoom({
         />
         <WorkTree
           currentNode={view.currentNode}
-          groupedWork={view.groupedBranchWork}
+          workTree={view.branchWorkTree}
+          totalWorkCount={view.branchWork.length}
+          workById={view.workById}
+          phasesByWorkId={view.phasesByWorkId}
+          checklistsByPhaseId={view.checklistsByPhaseId}
           repositoriesById={view.repositoriesById}
         />
         <ControlDetail
@@ -173,11 +179,19 @@ function SystemTreeNode({
 
 function WorkTree({
   currentNode,
-  groupedWork,
+  workTree,
+  totalWorkCount,
+  workById,
+  phasesByWorkId,
+  checklistsByPhaseId,
   repositoriesById,
 }: {
   currentNode: IndexNode;
-  groupedWork: Array<{ node: IndexNode; work: WorkRecord[] }>;
+  workTree: IndexWork[];
+  totalWorkCount: number;
+  workById: Map<string, IndexWork>;
+  phasesByWorkId: Map<string, PhaseRecord[]>;
+  checklistsByPhaseId: Map<string, ChecklistRecord[]>;
   repositoriesById: Map<string, RepositoryRecord>;
 }) {
   return (
@@ -187,23 +201,22 @@ function WorkTree({
           <p className="control-room__eyebrow">Selected branch</p>
           <h2>{currentNode.title}</h2>
         </div>
-        <span>{sumWork(groupedWork)} work items</span>
+        <span>{totalWorkCount} work items</span>
       </header>
 
-      {groupedWork.length === 0 ? (
+      {workTree.length === 0 ? (
         <p className="control-room__empty">No active work is recorded under this branch.</p>
       ) : (
-        <ol className="control-room__work-groups">
-          {groupedWork.map(({ node, work }) => (
-            <li key={node.id} className="control-room__work-group">
-              <h3>{node.title}</h3>
-              <ol>
-                {work.map((item) => (
-                  <li key={item.id}>
-                    <WorkCard work={item} repositoriesById={repositoriesById} />
-                  </li>
-                ))}
-              </ol>
+        <ol className="control-room__work-groups" aria-label={`${currentNode.title} work items`}>
+          {workTree.map((item) => (
+            <li key={item.id}>
+              <WorkCard
+                work={item}
+                workById={workById}
+                phasesByWorkId={phasesByWorkId}
+                checklistsByPhaseId={checklistsByPhaseId}
+                repositoriesById={repositoriesById}
+              />
             </li>
           ))}
         </ol>
@@ -214,19 +227,39 @@ function WorkTree({
 
 function WorkCard({
   work,
+  workById,
+  phasesByWorkId,
+  checklistsByPhaseId,
   repositoriesById,
+  depth = 0,
 }: {
-  work: WorkRecord;
+  work: IndexWork;
+  workById: Map<string, IndexWork>;
+  phasesByWorkId: Map<string, PhaseRecord[]>;
+  checklistsByPhaseId: Map<string, ChecklistRecord[]>;
   repositoriesById: Map<string, RepositoryRecord>;
+  depth?: number;
 }) {
   const repositories = work.repositoryIds
     .map((repositoryId) => repositoriesById.get(repositoryId)?.name ?? repositoryId)
     .sort(compareText);
+  const phases = [...(phasesByWorkId.get(work.id) ?? [])].sort(comparePhases);
+  const childWork = work.childWorkIds
+    .flatMap((workId) => {
+      const child = workById.get(workId);
+      return child === undefined ? [] : [child];
+    })
+    .sort(compareWork);
 
   return (
-    <article className="control-room__work-card">
+    <article className={depth === 0 ? "control-room__work-card" : "control-room__work-card control-room__work-card--nested"}>
       <header>
-        <h4>{work.title}</h4>
+        <div className="control-room__work-heading">
+          <h4>{work.title}</h4>
+          <span className="control-room__work-kind">
+            {work.workKind === "task" ? "Task" : "Topic"}
+          </span>
+        </div>
         <StatusBadge kind="work" value={work.workState} />
       </header>
       <p>{work.summary}</p>
@@ -236,18 +269,95 @@ function WorkCard({
           {work.unblockOwner === undefined ? null : <> <strong>Owner:</strong> {work.unblockOwner}</>}
         </p>
       )}
-      <ul className="control-room__checklist" aria-label={`${work.title} checklist`}>
-        <ChecklistItem done={true} label="Task is recorded" />
-        <ChecklistItem done={repositories.length > 0} label={repositoryChecklistLabel(repositories)} />
-        <ChecklistItem
-          done={work.requiredEvidence.length > 0}
-          label={work.requiredEvidence.length === 0
-            ? "Evidence requirement needed"
-            : `${work.requiredEvidence.length} evidence item required`}
-        />
-      </ul>
+      {phases.length === 0 ? (
+        <ul className="control-room__checklist" aria-label={`${work.title} checklist`}>
+          <ChecklistItem done={true} label="Task is recorded" />
+          <ChecklistItem done={repositories.length > 0} label={repositoryChecklistLabel(repositories)} />
+          <ChecklistItem
+            done={work.requiredEvidence.length > 0}
+            label={work.requiredEvidence.length === 0
+              ? "Evidence requirement needed"
+              : `${work.requiredEvidence.length} evidence item required`}
+          />
+        </ul>
+      ) : (
+        <ol className="control-room__phases" aria-label={`${work.title} phases`}>
+          {phases.map((phase) => (
+            <li key={phase.id}>
+              <PhaseSummary
+                phase={phase}
+                checklists={checklistsByPhaseId.get(phase.id) ?? []}
+              />
+            </li>
+          ))}
+        </ol>
+      )}
+      {childWork.length === 0 ? null : (
+        <ol className="control-room__work-children" aria-label={`${work.title} child work`}>
+          {childWork.map((child) => (
+            <li key={child.id}>
+              <WorkCard
+                work={child}
+                workById={workById}
+                phasesByWorkId={phasesByWorkId}
+                checklistsByPhaseId={checklistsByPhaseId}
+                repositoriesById={repositoriesById}
+                depth={depth + 1}
+              />
+            </li>
+          ))}
+        </ol>
+      )}
     </article>
   );
+}
+
+function PhaseSummary({
+  phase,
+  checklists,
+}: {
+  phase: PhaseRecord;
+  checklists: ChecklistRecord[];
+}) {
+  const checklistItemCount = checklists.reduce((total, checklist) => total + checklist.items.length, 0);
+  const issue = checklistIssueLabel(checklists);
+
+  return (
+    <section className="control-room__phase" aria-label={`${phase.title} phase`}>
+      <header className="control-room__phase-header">
+        <h5>{phase.title}</h5>
+        <div className="control-room__phase-meta">
+          <span>{phase.phaseState}</span>
+          <span>{checklistItemLabel(checklistItemCount)}</span>
+        </div>
+      </header>
+      <p>{phase.summary}</p>
+      {issue === null ? null : <p className="control-room__phase-risk">{issue}</p>}
+    </section>
+  );
+}
+
+function checklistItemLabel(count: number): string {
+  return `${count} ${count === 1 ? "checklist item" : "checklist items"}`;
+}
+
+function checklistIssueLabel(checklists: ChecklistRecord[]): string | null {
+  for (const checklist of checklists) {
+    for (const item of checklist.items) {
+      if (item.evidenceTarget.trim().length === 0) {
+        return "Evidence target missing";
+      }
+      if (
+        item.state === "passed"
+        && (item.evidenceIds ?? []).length === 0
+        && item.verificationNote === undefined
+      ) {
+        return "Passed item lacks support";
+      }
+    }
+  }
+
+  return null;
 }
 
 function repositoryChecklistLabel(repositories: string[]): string {
@@ -282,7 +392,7 @@ function ControlDetail({
   node: IndexNode;
   childCount: number;
   branchWorkCount: number;
-  nodeWork: WorkRecord[];
+  nodeWork: IndexWork[];
   documents: IndexDocument[];
   evidenceCount: number;
   repositories: RepositoryRecord[];
@@ -339,8 +449,10 @@ function ControlDetail({
 
 function buildControlRoomView(model: ProjectReadModel, currentNodeId: string) {
   const nodesById = new Map(model.nodes.map((node) => [node.id, node]));
+  const workById = new Map(model.work.map((work) => [work.id, work]));
   const repositoriesById = new Map(model.repositories.map((repository) => [repository.id, repository]));
-  const documentsById = new Map(model.documents.map((document) => [document.id, document]));
+  const phasesByWorkId = groupRecords(model.phases, (phase) => phase.workId);
+  const checklistsByPhaseId = groupRecords(model.checklists, (checklist) => checklist.phaseId);
   const childrenByParentId = buildChildrenByParentId(model.nodes);
   const currentNode = nodesById.get(currentNodeId);
   const branchIds = currentNode === undefined ? new Set<string>() : collectBranchIds(currentNode, childrenByParentId);
@@ -348,10 +460,10 @@ function buildControlRoomView(model: ProjectReadModel, currentNodeId: string) {
   const branchWork = model.work
     .filter((work) => branchIds.has(work.nodeId))
     .sort(compareWork);
+  const branchWorkTree = buildBranchWorkTree(branchWork, workById);
   const nodeWork = currentNode === undefined ? [] : recordsForIds(currentNode.workIds, model.work);
   const nodeDocuments = currentNode === undefined ? [] : recordsForIds(currentNode.documentIds, model.documents);
   const nodeRepositories = currentNode === undefined ? [] : recordsForIds(currentNode.repositoryIds, model.repositories);
-  const groupedBranchWork = groupBranchWork(branchWork, nodesById, activePathIds, currentNodeId);
 
   return {
     rootNodes: rootNodes(model.nodes),
@@ -359,16 +471,41 @@ function buildControlRoomView(model: ProjectReadModel, currentNodeId: string) {
     currentNode,
     activePathIds,
     branchWork,
+    branchWorkTree,
     nodeWork,
     nodeDocuments,
     nodeRepositories,
-    groupedBranchWork,
+    workById,
+    phasesByWorkId,
+    checklistsByPhaseId,
     repositoriesById,
     overallCounts: countWorkStates(model.work),
     directChildCount: currentNode?.childIds.length ?? 0,
     nodeEvidenceCount: currentNode?.evidenceIds.length ?? 0,
-    documentsById,
   };
+}
+
+function groupRecords<T>(records: T[], readKey: (record: T) => string): Map<string, T[]> {
+  const grouped = new Map<string, T[]>();
+  for (const record of records) {
+    const key = readKey(record);
+    const items = grouped.get(key) ?? [];
+    items.push(record);
+    grouped.set(key, items);
+  }
+
+  return grouped;
+}
+
+function buildBranchWorkTree(work: IndexWork[], workById: Map<string, IndexWork>): IndexWork[] {
+  const branchIds = new Set(work.map((item) => item.id));
+  return work
+    .filter((item) => (
+      item.parentWorkId === undefined
+      || !branchIds.has(item.parentWorkId)
+      || !workById.has(item.parentWorkId)
+    ))
+    .sort(compareWork);
 }
 
 function rootNodes(nodes: IndexNode[]): IndexNode[] {
@@ -418,41 +555,7 @@ function collectPathIds(node: IndexNode, nodesById: Map<string, IndexNode>): Set
   return ids;
 }
 
-function groupBranchWork(
-  work: WorkRecord[],
-  nodesById: Map<string, IndexNode>,
-  activePathIds: Set<string>,
-  currentNodeId: string,
-): Array<{ node: IndexNode; work: WorkRecord[] }> {
-  const workByNodeId = new Map<string, WorkRecord[]>();
-  for (const item of work) {
-    const nodeWork = workByNodeId.get(item.nodeId) ?? [];
-    nodeWork.push(item);
-    workByNodeId.set(item.nodeId, nodeWork);
-  }
-
-  return Array.from(workByNodeId.entries())
-    .flatMap(([nodeId, nodeWork]) => {
-      const node = nodesById.get(nodeId);
-      return node === undefined ? [] : [{ node, work: nodeWork.sort(compareWork) }];
-    })
-    .sort((left, right) => {
-      if (left.node.id === currentNodeId && right.node.id !== currentNodeId) {
-        return -1;
-      }
-      if (right.node.id === currentNodeId && left.node.id !== currentNodeId) {
-        return 1;
-      }
-      const leftInPath = activePathIds.has(left.node.id);
-      const rightInPath = activePathIds.has(right.node.id);
-      if (leftInPath !== rightInPath) {
-        return leftInPath ? -1 : 1;
-      }
-      return compareNodes(left.node, right.node);
-    });
-}
-
-function countWorkStates(work: WorkRecord[]): Record<WorkState, number> {
+function countWorkStates(work: IndexWork[]): Record<WorkState, number> {
   const counts: Record<WorkState, number> = {
     blocked: 0,
     "in-progress": 0,
@@ -465,15 +568,11 @@ function countWorkStates(work: WorkRecord[]): Record<WorkState, number> {
   return counts;
 }
 
-function sumWork(groups: Array<{ work: WorkRecord[] }>): number {
-  return groups.reduce((total, group) => total + group.work.length, 0);
-}
-
-function highestPriorityWork(work: WorkRecord[]): WorkRecord {
+function highestPriorityWork(work: IndexWork[]): IndexWork {
   return [...work].sort(compareWork)[0]!;
 }
 
-function priorityIssue(work: WorkRecord[], documents: IndexDocument[]): string | null {
+function priorityIssue(work: IndexWork[], documents: IndexDocument[]): string | null {
   const blockedWork = work.find((item) => item.workState === "blocked");
   if (blockedWork !== undefined) {
     return blockedWork.summary;
@@ -493,7 +592,7 @@ function recordsForIds<T extends { id: string }>(ids: string[], records: T[]): T
   });
 }
 
-function compareWork(left: WorkRecord, right: WorkRecord): number {
+function compareWork(left: IndexWork, right: IndexWork): number {
   const priority = workStates.indexOf(left.workState) - workStates.indexOf(right.workState);
   if (priority !== 0) {
     return priority;
@@ -501,6 +600,10 @@ function compareWork(left: WorkRecord, right: WorkRecord): number {
 
   const updated = right.updatedAt.localeCompare(left.updatedAt);
   return updated !== 0 ? updated : compareText(left.title, right.title);
+}
+
+function comparePhases(left: PhaseRecord, right: PhaseRecord): number {
+  return left.order - right.order || compareText(left.title, right.title) || compareText(left.id, right.id);
 }
 
 function compareNodes(left: IndexNode, right: IndexNode): number {
