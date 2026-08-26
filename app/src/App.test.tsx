@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { render, screen, within } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
-import type { IndexNode, RepositoryRecord, WorkRecord } from "../../src/model/types.js";
+import type { IndexNode, IndexWork, RepositoryRecord } from "../../src/model/types.js";
 import { App } from "./App.js";
 import { DiagnosticView } from "./components/DiagnosticView.js";
 import { loadProjectState } from "./data/loadProjectState.js";
@@ -151,6 +151,36 @@ describe("App", () => {
     const fetcher = vi.fn()
       .mockResolvedValueOnce({ ok: false, status: 404 })
       .mockResolvedValueOnce({ ok: true, status: 200, json: async () => incompleteNodeModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
+  it("rejects an index that omits execution read-model fields", async () => {
+    const legacyIndex = {
+      ...model,
+      phases: undefined,
+      checklists: undefined,
+      work: [
+        {
+          kind: "work",
+          id: "legacy-work",
+          title: "Legacy Work",
+          nodeId: "flowdoc",
+          repositoryIds: [],
+          workState: "queued",
+          summary: "Missing read-model execution indexes.",
+          requiredEvidence: [],
+          createdAt: "2026-08-24T00:00:00.000Z",
+          updatedAt: "2026-08-24T00:00:00.000Z",
+        },
+      ],
+    };
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => legacyIndex });
 
     await expect(loadProjectState(fetcher)).resolves.toMatchObject({
       kind: "diagnostic",
@@ -403,9 +433,9 @@ function appWork(
   id: string,
   title: string,
   nodeId: string,
-  workState: WorkRecord["workState"],
+  workState: IndexWork["workState"],
   summary: string,
-): WorkRecord {
+): IndexWork {
   return {
     kind: "work",
     id,
@@ -417,6 +447,9 @@ function appWork(
     requiredEvidence: [],
     createdAt: "2026-08-24T00:00:00.000Z",
     updatedAt: "2026-08-24T00:00:00.000Z",
+    childWorkIds: [],
+    phaseIds: [],
+    workPathIds: [id],
   };
 }
 

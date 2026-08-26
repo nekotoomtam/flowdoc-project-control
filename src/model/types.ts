@@ -157,7 +157,9 @@ export interface ProjectReadModel {
   sourceDigest: string;
   rootNodeIds: string[];
   nodes: IndexNode[];
-  work: WorkRecord[];
+  work: IndexWork[];
+  phases: PhaseRecord[];
+  checklists: ChecklistRecord[];
   documents: IndexDocument[];
   repositories: RepositoryRecord[];
   evidence: EvidenceRecord[];
