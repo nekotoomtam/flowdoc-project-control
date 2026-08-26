@@ -39,6 +39,25 @@ describe("loadProjectSources", () => {
     ]);
   });
 
+  it("discovers phase and checklist records as canonical execution sources", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+
+    const loaded = await loadProjectSources(root);
+
+    expect(loaded.records.map((entry) => entry.relativePath)).toEqual([
+      "data/checklists/checklist-contract.json",
+      "data/documents/doc-overview.json",
+      "data/evidence/evidence-design.json",
+      "data/nodes/flowdoc.json",
+      "data/phases/phase-contract.json",
+      "data/repositories/project-control.json",
+      "data/work/pilot-task.json",
+      "data/work/pilot.json",
+    ]);
+    expect(loaded.phases.map((entry) => entry.value.id)).toEqual(["phase-contract"]);
+    expect(loaded.checklists.map((entry) => entry.value.id)).toEqual(["checklist-contract"]);
+  });
+
   it("reports malformed JSON with file and repair hint", async () => {
     const root = await createProjectFixture({ valid: true, malformedNodeJson: true });
 

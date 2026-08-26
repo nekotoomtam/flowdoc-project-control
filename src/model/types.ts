@@ -1,5 +1,15 @@
 export type TruthState = "current" | "planned" | "risk" | "unknown";
 export type WorkState = "queued" | "in-progress" | "blocked" | "in-review";
+export type WorkKind = "topic" | "task";
+export type PhaseState = "queued" | "in-progress" | "blocked" | "in-review" | "done";
+export type ChecklistItemState =
+  | "pending"
+  | "in-progress"
+  | "passed"
+  | "failed"
+  | "blocked"
+  | "risk"
+  | "unknown";
 export type DocumentRole =
   | "current-state"
   | "contract"
@@ -30,14 +40,55 @@ export interface WorkRecord {
   id: string;
   title: string;
   nodeId: string;
+  parentWorkId?: string;
+  workKind?: WorkKind;
   repositoryIds: string[];
   workState: WorkState;
   summary: string;
+  contextDocumentIds?: string[];
+  activeRole?: string;
+  expectedOutput?: string;
+  riskSummary?: string;
   blockedBy?: string;
   unblockOwner?: string;
   requiredEvidence: string[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface PhaseRecord {
+  kind: "phase";
+  id: string;
+  workId: string;
+  title: string;
+  phaseState: PhaseState;
+  order: number;
+  repositoryIds: string[];
+  activeRole: string;
+  stopConditions: string[];
+  verificationTarget: string;
+  summary: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ChecklistRecord {
+  kind: "checklist";
+  id: string;
+  phaseId: string;
+  title: string;
+  items: ChecklistItem[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ChecklistItem {
+  id: string;
+  label: string;
+  state: ChecklistItemState;
+  evidenceTarget: string;
+  evidenceIds?: string[];
+  verificationNote?: string;
 }
 
 export interface DocumentRecord {
@@ -80,6 +131,8 @@ export interface EvidenceRecord {
 export type ProjectRecord =
   | NodeRecord
   | WorkRecord
+  | PhaseRecord
+  | ChecklistRecord
   | DocumentRecord
   | RepositoryRecord
   | EvidenceRecord;
@@ -93,12 +146,20 @@ export interface IndexDocument extends DocumentRecord {
   content: string;
 }
 
+export interface IndexWork extends WorkRecord {
+  childWorkIds: string[];
+  phaseIds: string[];
+  workPathIds: string[];
+}
+
 export interface ProjectReadModel {
   schemaVersion: 1;
   sourceDigest: string;
   rootNodeIds: string[];
   nodes: IndexNode[];
-  work: WorkRecord[];
+  work: IndexWork[];
+  phases: PhaseRecord[];
+  checklists: ChecklistRecord[];
   documents: IndexDocument[];
   repositories: RepositoryRecord[];
   evidence: EvidenceRecord[];

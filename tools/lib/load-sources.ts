@@ -3,9 +3,11 @@ import { Ajv2020, type ErrorObject, type ValidateFunction } from "ajv/dist/2020.
 import * as formatsModule from "ajv-formats";
 import type { ProjectDiagnostic } from "../../src/model/diagnostics.js";
 import type {
+  ChecklistRecord,
   DocumentRecord,
   EvidenceRecord,
   NodeRecord,
+  PhaseRecord,
   ProjectRecord,
   RepositoryRecord,
   WorkRecord,
@@ -26,23 +28,29 @@ export interface LoadedProjectSources {
   records: LoadedRecord[];
   nodes: LoadedRecord<NodeRecord>[];
   work: LoadedRecord<WorkRecord>[];
+  phases: LoadedRecord<PhaseRecord>[];
+  checklists: LoadedRecord<ChecklistRecord>[];
   documents: LoadedRecord<DocumentRecord>[];
   repositories: LoadedRecord<RepositoryRecord>[];
   evidence: LoadedRecord<EvidenceRecord>[];
 }
 
 const expectedKinds: Record<CanonicalRecordDirectory, ProjectRecord["kind"]> = {
+  checklists: "checklist",
   documents: "document",
   evidence: "evidence",
   nodes: "node",
+  phases: "phase",
   repositories: "repository",
   work: "work",
 };
 
 const schemaDefinitionNames: Record<CanonicalRecordDirectory, string> = {
+  checklists: "checklist",
   documents: "document",
   evidence: "evidence",
   nodes: "node",
+  phases: "phase",
   repositories: "repository",
   work: "work",
 };
@@ -73,6 +81,8 @@ export async function loadProjectSources(rootDir: string): Promise<LoadedProject
     records,
     nodes: records.filter(isNodeRecord),
     work: records.filter(isWorkRecord),
+    phases: records.filter(isPhaseRecord),
+    checklists: records.filter(isChecklistRecord),
     documents: records.filter(isDocumentRecord),
     repositories: records.filter(isRepositoryRecord),
     evidence: records.filter(isEvidenceRecord),
@@ -172,9 +182,11 @@ async function createValidators(): Promise<Record<CanonicalRecordDirectory, Vali
 }
 
 const CANONICAL_DIRECTORIES: CanonicalRecordDirectory[] = [
+  "checklists",
   "documents",
   "evidence",
   "nodes",
+  "phases",
   "repositories",
   "work",
 ];
@@ -247,6 +259,14 @@ function isNodeRecord(record: LoadedRecord): record is LoadedRecord<NodeRecord> 
 
 function isWorkRecord(record: LoadedRecord): record is LoadedRecord<WorkRecord> {
   return record.value.kind === "work";
+}
+
+function isPhaseRecord(record: LoadedRecord): record is LoadedRecord<PhaseRecord> {
+  return record.value.kind === "phase";
+}
+
+function isChecklistRecord(record: LoadedRecord): record is LoadedRecord<ChecklistRecord> {
+  return record.value.kind === "checklist";
 }
 
 function isDocumentRecord(record: LoadedRecord): record is LoadedRecord<DocumentRecord> {

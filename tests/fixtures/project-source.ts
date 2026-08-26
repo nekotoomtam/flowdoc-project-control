@@ -24,6 +24,7 @@ export interface ProjectFixtureOptions {
   nonMarkdownDocument?: boolean;
   documentPathDirectory?: boolean;
   shuffledCreationOrder?: boolean;
+  newContractTask?: boolean;
   truthState?: TruthState;
   workState?: WorkState;
   documentLifecycle?: DocumentLifecycle;
@@ -35,7 +36,7 @@ export async function createProjectFixture(
   const root = await mkdtemp(join(tmpdir(), "flowdoc-project-source-"));
 
   await Promise.all(
-    ["documents", "evidence", "nodes", "repositories", "work"].map((directory) =>
+    ["checklists", "documents", "evidence", "nodes", "phases", "repositories", "work"].map((directory) =>
       mkdir(join(root, "data", directory), { recursive: true }),
     ),
   );
@@ -117,6 +118,52 @@ export async function createProjectFixture(
     verificationSummary: "Design reviewed.",
     verifiedAt: "2026-08-12T00:00:00.000Z",
   };
+  const taskWork = {
+    kind: "work",
+    id: "pilot-task",
+    title: "Pilot Task",
+    nodeId: "flowdoc",
+    parentWorkId: "pilot",
+    workKind: "task",
+    repositoryIds: ["project-control"],
+    workState: "in-progress",
+    summary: "Pilot executable task.",
+    contextDocumentIds: ["doc-overview"],
+    activeRole: "planning-partner",
+    expectedOutput: "A validated pilot task.",
+    requiredEvidence: [],
+    createdAt: "2026-08-12T00:00:00.000Z",
+    updatedAt: "2026-08-12T00:00:00.000Z",
+  };
+  const phase = {
+    kind: "phase",
+    id: "phase-contract",
+    workId: "pilot-task",
+    title: "Contract Phase",
+    phaseState: "in-progress",
+    order: 10,
+    repositoryIds: ["project-control"],
+    activeRole: "planning-partner",
+    stopConditions: ["The pilot task contract is ambiguous."],
+    verificationTarget: "The pilot task has a phase and checklist.",
+    summary: "Define the pilot contract.",
+    createdAt: "2026-08-12T00:00:00.000Z",
+    updatedAt: "2026-08-12T00:00:00.000Z",
+  };
+  const checklist = {
+    kind: "checklist",
+    id: "checklist-contract",
+    phaseId: "phase-contract",
+    title: "Contract Checklist",
+    items: [{
+      id: "define-contract",
+      label: "Define the execution contract.",
+      state: "pending",
+      evidenceTarget: "A checklist item records the target before Evidence exists.",
+    }],
+    createdAt: "2026-08-12T00:00:00.000Z",
+    updatedAt: "2026-08-12T00:00:00.000Z",
+  };
 
   await mkdir(join(root, "docs"), { recursive: true });
   if (!options.missingDocumentFile && !options.escapingDocumentPath) {
@@ -156,6 +203,17 @@ export async function createProjectFixture(
       JSON.stringify(evidence),
     ),
   ];
+
+  if (options.newContractTask) {
+    records.push(
+      writeFile(join(root, "data", "work", "pilot-task.json"), JSON.stringify(taskWork)),
+      writeFile(join(root, "data", "phases", "phase-contract.json"), JSON.stringify(phase)),
+      writeFile(
+        join(root, "data", "checklists", "checklist-contract.json"),
+        JSON.stringify(checklist),
+      ),
+    );
+  }
 
   if (options.nodeCycle) {
     records.push(
