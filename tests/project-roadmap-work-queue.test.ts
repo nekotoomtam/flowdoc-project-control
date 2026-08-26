@@ -78,10 +78,10 @@ const remediationTasks = [
   {
     id: "editor-backend-unavailable-honesty-review",
     nodeId: "editor",
-    workState: "queued",
+    workState: "in-review",
     activeRole: "evidence-reviewer",
     phaseId: "phase-editor-backend-unavailable-honesty-review",
-    phaseState: "queued",
+    phaseState: "done",
     checklistId: "checklist-editor-backend-unavailable-honesty-review",
   },
 ] as const;
@@ -217,6 +217,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-core-public-export-boundary-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-editor-backend-unavailable-honesty-review")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
       .toMatchObject({
         nodeIds: [],
@@ -226,6 +229,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26")?.verificationSummary)
       .toContain("bounded no-go export-boundary decision");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-backend-unavailable-honesty-review-2026-08-26"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+        pathOrContractId: "docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-backend-unavailable-honesty-review-2026-08-26")?.verificationSummary)
+      .toContain("bounded Editor backend-unavailable Preview honesty lane");
 
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");

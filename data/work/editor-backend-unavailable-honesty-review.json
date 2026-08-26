@@ -6,13 +6,13 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-editor", "repo-project-control"],
-  "workState": "queued",
-  "summary": "Review the Editor fixture boot and backend-unavailable path so product routes do not look like a loaded backend document when transport is unavailable.",
+  "workState": "in-review",
+  "summary": "Recorded an Editor-owned honesty review and narrow Shell fix so fixture-backed Preview fallback does not hide Backend-unavailable context state behind migration-required copy.",
   "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
   "activeRole": "evidence-reviewer",
   "expectedOutput": "Editor-owned evidence or implementation that distinguishes fixture fallback, partial reads, unsupported versions, and loaded backend documents in product-facing UI.",
-  "riskSummary": "The Editor intentionally keeps a fixture boot path alive when Backend is unavailable, which can mask transport failure unless status surfaces are unmistakable.",
-  "requiredEvidence": [],
+  "riskSummary": "The Editor still permits direct document routes to keep fixture content visible when Backend is unavailable; this lane fixes Preview status honesty but does not define the final production document-read fallback policy.",
+  "requiredEvidence": ["evidence-editor-backend-unavailable-honesty-review-2026-08-26"],
   "createdAt": "2026-08-26T00:00:00.000Z",
   "updatedAt": "2026-08-26T00:00:00.000Z"
 }

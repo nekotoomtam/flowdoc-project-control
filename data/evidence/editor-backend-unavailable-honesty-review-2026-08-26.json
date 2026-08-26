@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-backend-unavailable-honesty-review-2026-08-26",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+  "pathOrContractId": "docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md",
+  "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 records the Backend-unavailable honesty review, keeps fixture boot visible when Backend capability is unavailable, and changes src/app/EditorShell.tsx so package 2/document 3 migration-required Preview copy is shown only for Backend API working sets with compatible version capability. The same Shell gate now requires a fresh Core envelope before rendering Preview test input. It adds src/tests/editorBackendUnavailableHonesty.test.ts to prove fixture unavailable/checking Preview states keep Draft/Published status and Retry visible, compatible Backend API documents still show migration-required copy, and Preview input rendering remains gated on core.envelope.status === fresh. Focused Editor checks passed with 7 test files and 39 tests. Editor worktree npm run check and merged main npm run check both passed with 77 test files, 283 tests, and build; build retained the existing Vite chunk-size warning. This evidence supports only the bounded Editor backend-unavailable Preview honesty lane and does not promote broader Editor, Backend, Core, production readiness, auth, persistence, or document-map truth.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

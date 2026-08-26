@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "cb2320ebe18a9e7c5f97f52b38b0718cc7174f0d7d24db789f9107dee8cbdf1a",
+  "sourceDigest": "154c37cd92b746d90a88cce6218ff0872bdea2a05da8af95edab020791495643",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -450,8 +450,8 @@
         "repo-editor",
         "repo-project-control"
       ],
-      "workState": "queued",
-      "summary": "Review the Editor fixture boot and backend-unavailable path so product routes do not look like a loaded backend document when transport is unavailable.",
+      "workState": "in-review",
+      "summary": "Recorded an Editor-owned honesty review and narrow Shell fix so fixture-backed Preview fallback does not hide Backend-unavailable context state behind migration-required copy.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -462,8 +462,10 @@
       ],
       "activeRole": "evidence-reviewer",
       "expectedOutput": "Editor-owned evidence or implementation that distinguishes fixture fallback, partial reads, unsupported versions, and loaded backend documents in product-facing UI.",
-      "riskSummary": "The Editor intentionally keeps a fixture boot path alive when Backend is unavailable, which can mask transport failure unless status surfaces are unmistakable.",
-      "requiredEvidence": [],
+      "riskSummary": "The Editor still permits direct document routes to keep fixture content visible when Backend is unavailable; this lane fixes Preview status honesty but does not define the final production document-read fallback policy.",
+      "requiredEvidence": [
+        "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+      ],
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [],
@@ -656,7 +658,7 @@
       "id": "phase-editor-backend-unavailable-honesty-review",
       "workId": "editor-backend-unavailable-honesty-review",
       "title": "Verify Editor Load State Honesty",
-      "phaseState": "queued",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-editor",
@@ -669,7 +671,7 @@
         "The review requires Backend behavior changes before the Editor boundary is understood."
       ],
       "verificationTarget": "Editor evidence proves product routes distinguish backend-loaded documents from fixture fallback and unavailable transport states.",
-      "summary": "Check the Editor boot, transport, and status surfaces for honest backend-unavailable behavior.",
+      "summary": "Editor fixture boot, Backend capability preflight, Preview context status, and Shell routing were reviewed; migration-required Preview copy is now limited to compatible Backend API documents while fixture fallback keeps unavailable/checking status visible.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
     },
@@ -829,32 +831,52 @@
         {
           "id": "inspect-fixture-boot",
           "label": "Inspect the Editor fixture boot path and async backend document loading path.",
-          "state": "pending",
-          "evidenceTarget": "Editor `src/app/EditorApp.tsx` and backend transport contracts identify where fixture and backend states diverge."
+          "state": "passed",
+          "evidenceTarget": "Editor `src/app/EditorApp.tsx` and backend transport contracts identify where fixture and backend states diverge.",
+          "evidenceIds": [
+            "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+          ],
+          "verificationNote": "Editor docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md records the fixture boot path, Backend capability preflight, Backend document read path, and Preview context transport boundary. Backend capability unavailable keeps fixture visible and Backend-owned operations disabled."
         },
         {
           "id": "verify-status-language",
           "label": "Verify that visible status language separates loaded backend documents from unavailable, unsupported, partial, stale, and blocked states.",
-          "state": "pending",
-          "evidenceTarget": "Component or browser evidence shows product UI state labels for backend-unavailable and non-fresh core envelopes."
+          "state": "passed",
+          "evidenceTarget": "Component or browser evidence shows product UI state labels for backend-unavailable and non-fresh core envelopes.",
+          "evidenceIds": [
+            "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+          ],
+          "verificationNote": "Component render tests prove fixture fallback Preview unavailable/checking states route through PreviewContextStateView with Draft/Published target status and Retry or Loading Preview instead of migration-required copy. The status bar continues to expose Core provenance and version capability status."
         },
         {
           "id": "guard-preview-readiness",
           "label": "Keep preview readiness gated on fresh Core envelopes and explicit preview context availability.",
-          "state": "pending",
-          "evidenceTarget": "Editor tests prove preview cannot look ready when backend/core status is unavailable or partial."
+          "state": "passed",
+          "evidenceTarget": "Editor tests prove preview cannot look ready when backend/core status is unavailable or partial.",
+          "evidenceIds": [
+            "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+          ],
+          "verificationNote": "EditorShell now uses canShowPreviewTestInput, requiring core.envelope.status === \"fresh\", exact Preview target ready status, and initialized projection/Form/JSON state before rendering PreviewTestInputView. Tests guard the unavailable/checking fixture path and the fresh-core source condition."
         },
         {
           "id": "run-editor-gate",
           "label": "Run the Editor verification gate after any honesty change.",
-          "state": "pending",
-          "evidenceTarget": "`npm run check` or focused equivalent plus affected browser/component tests pass in the Editor repository."
+          "state": "passed",
+          "evidenceTarget": "`npm run check` or focused equivalent plus affected browser/component tests pass in the Editor repository.",
+          "evidenceIds": [
+            "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+          ],
+          "verificationNote": "Focused Editor regression checks passed with 7 test files and 39 tests. Editor worktree npm run check and merged main npm run check both passed with 77 test files, 283 tests, and build; the existing Vite chunk-size warning remained."
         },
         {
           "id": "return-evidence-candidate",
           "label": "Return a bounded Project Control evidence candidate without promoting Editor product truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence candidate includes exact Editor commit, path or contract ID, verification summary, and remaining unknowns."
+          "state": "passed",
+          "evidenceTarget": "Evidence candidate includes exact Editor commit, path or contract ID, verification summary, and remaining unknowns.",
+          "evidenceIds": [
+            "evidence-editor-backend-unavailable-honesty-review-2026-08-26"
+          ],
+          "verificationNote": "Evidence candidate records Editor commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2, path docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md, verification summary, and remaining production/document-read unknowns without attaching evidence to the Editor node."
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
@@ -2361,6 +2383,16 @@
       "pathOrContractId": "src/index.ts",
       "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-backend-unavailable-honesty-review-2026-08-26",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
+      "pathOrContractId": "docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md",
+      "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 records the Backend-unavailable honesty review, keeps fixture boot visible when Backend capability is unavailable, and changes src/app/EditorShell.tsx so package 2/document 3 migration-required Preview copy is shown only for Backend API working sets with compatible version capability. The same Shell gate now requires a fresh Core envelope before rendering Preview test input. It adds src/tests/editorBackendUnavailableHonesty.test.ts to prove fixture unavailable/checking Preview states keep Draft/Published status and Retry visible, compatible Backend API documents still show migration-required copy, and Preview input rendering remains gated on core.envelope.status === fresh. Focused Editor checks passed with 7 test files and 39 tests. Editor worktree npm run check and merged main npm run check both passed with 77 test files, 283 tests, and build; build retained the existing Vite chunk-size warning. This evidence supports only the bounded Editor backend-unavailable Preview honesty lane and does not promote broader Editor, Backend, Core, production readiness, auth, persistence, or document-map truth.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
     },
     {
       "kind": "evidence",
