@@ -24,8 +24,6 @@ export function makeProjectReadModel(
       },
     ],
     work: [],
-    phases: [],
-    checklists: [],
     documents: [],
     repositories: [],
     evidence: [],
