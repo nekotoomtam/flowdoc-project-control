@@ -1,0 +1,19 @@
+{
+  "kind": "phase",
+  "id": "phase-backend-service-readiness-boundary-review",
+  "workId": "backend-service-readiness-boundary-review",
+  "title": "Separate Backend Development and Production Claims",
+  "phaseState": "queued",
+  "order": 10,
+  "repositoryIds": ["repo-backend", "repo-project-control"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "A Backend readiness claim relies on the local in-memory server as production evidence.",
+    "A storage or PDF export claim omits auth, tenant, size, queue, renderer, or persistence provider limits.",
+    "Project Control would promote Backend truth without a Backend-owned readiness contract."
+  ],
+  "verificationTarget": "Backend evidence distinguishes local dev readiness from production service readiness across HTTP, storage, auth, and export boundaries.",
+  "summary": "Check Backend readiness boundaries before any product-wide service-state promotion.",
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

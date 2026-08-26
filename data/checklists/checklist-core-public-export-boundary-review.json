@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-public-export-boundary-review",
+  "phaseId": "phase-core-public-export-boundary-review",
+  "title": "Core Public Export Boundary Review Checklist",
+  "items": [
+    {
+      "id": "inventory-root-entrypoint",
+      "label": "Inventory the current Core root entrypoint and classify which exports are consumer surface, internal evidence surface, or release-blocked surface.",
+      "state": "in-progress",
+      "evidenceTarget": "Core `src/index.ts`, package exports, and Core-owned docs identify the present public entrypoint shape."
+    },
+    {
+      "id": "inspect-editor-backend-imports",
+      "label": "Inspect current Editor and Backend imports from `@flowdoc/vnext-core` before changing the Core package surface.",
+      "state": "pending",
+      "evidenceTarget": "Editor and Backend import inventories show whether consumers rely on root exports, fixtures, or internals."
+    },
+    {
+      "id": "define-approved-surface",
+      "label": "Define the smallest approved Core consumer surface or record an explicit no-go decision.",
+      "state": "pending",
+      "evidenceTarget": "A Core-owned contract, test, or document names supported consumer modules and excluded internal modules."
+    },
+    {
+      "id": "verify-consumer-boundaries",
+      "label": "Run Core plus affected consumer checks after any export boundary change or no-go record.",
+      "state": "pending",
+      "evidenceTarget": "Fresh Core, Editor, and Backend checks prove the boundary decision does not silently break current consumers."
+    },
+    {
+      "id": "return-evidence-candidate",
+      "label": "Return a bounded Project Control evidence candidate without promoting broader Core truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence candidate includes exact commit, path or contract ID, verification summary, and remaining unknowns."
+    }
+  ],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

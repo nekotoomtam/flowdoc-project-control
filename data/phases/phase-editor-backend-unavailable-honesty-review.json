@@ -1,0 +1,19 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-backend-unavailable-honesty-review",
+  "workId": "editor-backend-unavailable-honesty-review",
+  "title": "Verify Editor Load State Honesty",
+  "phaseState": "queued",
+  "order": 10,
+  "repositoryIds": ["repo-editor", "repo-project-control"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "A product route can display fixture content without an explicit unavailable or fallback state.",
+    "A UI status change hides partial, stale, blocked, unsupported, or unavailable core/backend states.",
+    "The review requires Backend behavior changes before the Editor boundary is understood."
+  ],
+  "verificationTarget": "Editor evidence proves product routes distinguish backend-loaded documents from fixture fallback and unavailable transport states.",
+  "summary": "Check the Editor boot, transport, and status surfaces for honest backend-unavailable behavior.",
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

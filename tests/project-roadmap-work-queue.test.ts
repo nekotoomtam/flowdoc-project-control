@@ -56,11 +56,41 @@ const expectedLegacyWork = [
   },
 ] as const;
 
+const remediationTasks = [
+  {
+    id: "backend-service-readiness-boundary-review",
+    nodeId: "backend",
+    workState: "queued",
+    activeRole: "evidence-reviewer",
+    phaseId: "phase-backend-service-readiness-boundary-review",
+    phaseState: "queued",
+    checklistId: "checklist-backend-service-readiness-boundary-review",
+  },
+  {
+    id: "core-public-export-boundary-review",
+    nodeId: "core",
+    workState: "in-progress",
+    activeRole: "cross-repo-boundary-reviewer",
+    phaseId: "phase-core-public-export-boundary-review",
+    phaseState: "in-progress",
+    checklistId: "checklist-core-public-export-boundary-review",
+  },
+  {
+    id: "editor-backend-unavailable-honesty-review",
+    nodeId: "editor",
+    workState: "queued",
+    activeRole: "evidence-reviewer",
+    phaseId: "phase-editor-backend-unavailable-honesty-review",
+    phaseState: "queued",
+    checklistId: "checklist-editor-backend-unavailable-honesty-review",
+  },
+] as const;
+
 describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 3);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 6);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -85,6 +115,9 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-development-resumption")).toMatchObject({
       childWorkIds: [
+        "backend-service-readiness-boundary-review",
+        "core-public-export-boundary-review",
+        "editor-backend-unavailable-honesty-review",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening",
       ],
@@ -126,11 +159,44 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-flowdoc-product-evidence-refresh-readiness")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    for (const task of remediationTasks) {
+      expect(model.work.find((item) => item.id === task.id)).toMatchObject({
+        workKind: "task",
+        workState: task.workState,
+        parentWorkId: "flowdoc-product-development-resumption",
+        nodeId: task.nodeId,
+        activeRole: task.activeRole,
+        phaseIds: [task.phaseId],
+        workPathIds: [
+          "flowdoc-product-development-resumption",
+          task.id,
+        ],
+      });
+      expect(model.phases.find((item) => item.id === task.phaseId)).toMatchObject({
+        workId: task.id,
+        phaseState: task.phaseState,
+      });
+      expect(model.checklists.find((item) => item.id === task.checklistId)?.items)
+        .toHaveLength(5);
+    }
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
         "core-documentation-family-closure",
+        "core-public-export-boundary-review",
         "core-remaining-documentation-synthesis",
+      ],
+    });
+    expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({
+      truthState: "unknown",
+      workIds: [
+        "editor-backend-unavailable-honesty-review",
+      ],
+    });
+    expect(model.nodes.find((node) => node.id === "backend")).toMatchObject({
+      truthState: "unknown",
+      workIds: [
+        "backend-service-readiness-boundary-review",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")).toMatchObject({

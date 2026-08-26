@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "editor-backend-unavailable-honesty-review",
+  "title": "Editor Backend Unavailable Honesty Review",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control"],
+  "workState": "queued",
+  "summary": "Review the Editor fixture boot and backend-unavailable path so product routes do not look like a loaded backend document when transport is unavailable.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
+  "activeRole": "evidence-reviewer",
+  "expectedOutput": "Editor-owned evidence or implementation that distinguishes fixture fallback, partial reads, unsupported versions, and loaded backend documents in product-facing UI.",
+  "riskSummary": "The Editor intentionally keeps a fixture boot path alive when Backend is unavailable, which can mask transport failure unless status surfaces are unmistakable.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

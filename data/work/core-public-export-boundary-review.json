@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "core-public-export-boundary-review",
+  "title": "Core Public Export Boundary Review",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Review and narrow the Core package export boundary so Editor and Backend consume approved surfaces instead of accidental internals.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-core-v0-1-0a-1-document-map"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "expectedOutput": "A Core-owned boundary decision or implementation patch with tests showing which public package surfaces are supported for Editor and Backend consumers.",
+  "riskSummary": "The current Core root entrypoint exports many layout, authoring, generation, renderer, pagination, and table modules before the release boundary is complete.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

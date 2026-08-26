@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-backend-unavailable-honesty-review",
+  "phaseId": "phase-editor-backend-unavailable-honesty-review",
+  "title": "Editor Backend Unavailable Honesty Checklist",
+  "items": [
+    {
+      "id": "inspect-fixture-boot",
+      "label": "Inspect the Editor fixture boot path and async backend document loading path.",
+      "state": "pending",
+      "evidenceTarget": "Editor `src/app/EditorApp.tsx` and backend transport contracts identify where fixture and backend states diverge."
+    },
+    {
+      "id": "verify-status-language",
+      "label": "Verify that visible status language separates loaded backend documents from unavailable, unsupported, partial, stale, and blocked states.",
+      "state": "pending",
+      "evidenceTarget": "Component or browser evidence shows product UI state labels for backend-unavailable and non-fresh core envelopes."
+    },
+    {
+      "id": "guard-preview-readiness",
+      "label": "Keep preview readiness gated on fresh Core envelopes and explicit preview context availability.",
+      "state": "pending",
+      "evidenceTarget": "Editor tests prove preview cannot look ready when backend/core status is unavailable or partial."
+    },
+    {
+      "id": "run-editor-gate",
+      "label": "Run the Editor verification gate after any honesty change.",
+      "state": "pending",
+      "evidenceTarget": "`npm run check` or focused equivalent plus affected browser/component tests pass in the Editor repository."
+    },
+    {
+      "id": "return-evidence-candidate",
+      "label": "Return a bounded Project Control evidence candidate without promoting Editor product truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence candidate includes exact Editor commit, path or contract ID, verification summary, and remaining unknowns."
+    }
+  ],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

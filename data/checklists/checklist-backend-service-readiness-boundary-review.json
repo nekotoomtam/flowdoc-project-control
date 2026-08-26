@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-backend-service-readiness-boundary-review",
+  "phaseId": "phase-backend-service-readiness-boundary-review",
+  "title": "Backend Service Readiness Boundary Checklist",
+  "items": [
+    {
+      "id": "inspect-default-server",
+      "label": "Inspect the default Backend HTTP server, local host binding, CORS policy, request body handling, and fixture-backed repository wiring.",
+      "state": "pending",
+      "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces."
+    },
+    {
+      "id": "inspect-storage-boundaries",
+      "label": "Inspect in-memory and file JSON storage contracts for production-readiness exclusions.",
+      "state": "pending",
+      "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits."
+    },
+    {
+      "id": "inspect-export-boundaries",
+      "label": "Inspect PDF export candidate routes separately from the default application server.",
+      "state": "pending",
+      "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items."
+    },
+    {
+      "id": "define-readiness-contract",
+      "label": "Define the smallest Backend-owned readiness contract or record an explicit no-go decision.",
+      "state": "pending",
+      "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness."
+    },
+    {
+      "id": "return-evidence-candidate",
+      "label": "Return a bounded Project Control evidence candidate without promoting Backend product truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns."
+    }
+  ],
+  "createdAt": "2026-08-26T00:00:00.000Z",
+  "updatedAt": "2026-08-26T00:00:00.000Z"
+}

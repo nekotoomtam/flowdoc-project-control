@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b79f0461b9f80ccdfb43131a1d2b86ede3a9bd4aeecf4829e4a0a94ee161830e",
+  "sourceDigest": "7a0218193e4bda5401e71dbe20b3a1482a1655622f57816871ce0ee392464f34",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -221,7 +221,9 @@
         "repo-backend"
       ],
       "childIds": [],
-      "workIds": []
+      "workIds": [
+        "backend-service-readiness-boundary-review"
+      ]
     },
     {
       "kind": "node",
@@ -247,6 +249,7 @@
       ],
       "workIds": [
         "core-documentation-family-closure",
+        "core-public-export-boundary-review",
         "core-remaining-documentation-synthesis"
       ]
     },
@@ -264,7 +267,9 @@
         "repo-editor"
       ],
       "childIds": [],
-      "workIds": []
+      "workIds": [
+        "editor-backend-unavailable-honesty-review"
+      ]
     },
     {
       "kind": "node",
@@ -321,6 +326,42 @@
     },
     {
       "kind": "work",
+      "id": "backend-service-readiness-boundary-review",
+      "title": "Backend Service Readiness Boundary Review",
+      "nodeId": "backend",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "workState": "queued",
+      "summary": "Review Backend service surfaces so local dev server, in-memory storage, file JSON storage, and PDF export candidates are not mistaken for production readiness.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules"
+      ],
+      "activeRole": "evidence-reviewer",
+      "expectedOutput": "Backend-owned evidence or implementation that separates local development readiness from production service, persistence, auth, and export readiness claims.",
+      "riskSummary": "The default Backend server is local and fixture-backed, while storage and PDF export candidates explicitly leave production providers and activation unaccepted.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-backend-service-readiness-boundary-review"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "backend-service-readiness-boundary-review"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "core-documentation-family-closure",
       "title": "Core Documentation Family Closure",
       "nodeId": "core",
@@ -337,6 +378,43 @@
       "phaseIds": [],
       "workPathIds": [
         "core-documentation-family-closure"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "core-public-export-boundary-review",
+      "title": "Core Public Export Boundary Review",
+      "nodeId": "core",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Review and narrow the Core package export boundary so Editor and Backend consume approved surfaces instead of accidental internals.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-core-v0-1-0a-1-document-map"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "expectedOutput": "A Core-owned boundary decision or implementation patch with tests showing which public package surfaces are supported for Editor and Backend consumers.",
+      "riskSummary": "The current Core root entrypoint exports many layout, authoring, generation, renderer, pagination, and table modules before the release boundary is complete.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-core-public-export-boundary-review"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "core-public-export-boundary-review"
       ]
     },
     {
@@ -361,6 +439,42 @@
     },
     {
       "kind": "work",
+      "id": "editor-backend-unavailable-honesty-review",
+      "title": "Editor Backend Unavailable Honesty Review",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "queued",
+      "summary": "Review the Editor fixture boot and backend-unavailable path so product routes do not look like a loaded backend document when transport is unavailable.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules"
+      ],
+      "activeRole": "evidence-reviewer",
+      "expectedOutput": "Editor-owned evidence or implementation that distinguishes fixture fallback, partial reads, unsupported versions, and loaded backend documents in product-facing UI.",
+      "riskSummary": "The Editor intentionally keeps a fixture boot path alive when Backend is unavailable, which can mask transport failure unless status surfaces are unmistakable.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-backend-unavailable-honesty-review"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-backend-unavailable-honesty-review"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-product-development-resumption",
       "title": "FlowDoc Product Development Resumption",
       "nodeId": "flowdoc",
@@ -376,6 +490,9 @@
       "createdAt": "2026-08-24T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
+        "backend-service-readiness-boundary-review",
+        "core-public-export-boundary-review",
+        "editor-backend-unavailable-honesty-review",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening"
       ],
@@ -490,6 +607,72 @@
   "phases": [
     {
       "kind": "phase",
+      "id": "phase-backend-service-readiness-boundary-review",
+      "workId": "backend-service-readiness-boundary-review",
+      "title": "Separate Backend Development and Production Claims",
+      "phaseState": "queued",
+      "order": 10,
+      "repositoryIds": [
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "A Backend readiness claim relies on the local in-memory server as production evidence.",
+        "A storage or PDF export claim omits auth, tenant, size, queue, renderer, or persistence provider limits.",
+        "Project Control would promote Backend truth without a Backend-owned readiness contract."
+      ],
+      "verificationTarget": "Backend evidence distinguishes local dev readiness from production service readiness across HTTP, storage, auth, and export boundaries.",
+      "summary": "Check Backend readiness boundaries before any product-wide service-state promotion.",
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-core-public-export-boundary-review",
+      "workId": "core-public-export-boundary-review",
+      "title": "Define Core Consumer Export Surface",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "stopConditions": [
+        "A proposed export removal breaks Editor or Backend without an approved adoption path.",
+        "A Core boundary claim relies on Project Control prose instead of Core-owned tests or contracts.",
+        "The review would promote broader Core truth while Core remains unknown in Project Control."
+      ],
+      "verificationTarget": "Core has a reviewed consumer export boundary or a documented no-go decision, with evidence that Editor and Backend imports stay within approved surfaces.",
+      "summary": "Identify the Core package surfaces that are safe for current Editor and Backend consumers before product-wide compatibility promotion.",
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-backend-unavailable-honesty-review",
+      "workId": "editor-backend-unavailable-honesty-review",
+      "title": "Verify Editor Load State Honesty",
+      "phaseState": "queued",
+      "order": 10,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "A product route can display fixture content without an explicit unavailable or fallback state.",
+        "A UI status change hides partial, stale, blocked, unsupported, or unavailable core/backend states.",
+        "The review requires Backend behavior changes before the Editor boundary is understood."
+      ],
+      "verificationTarget": "Editor evidence proves product routes distinguish backend-loaded documents from fixture fallback and unavailable transport states.",
+      "summary": "Check the Editor boot, transport, and status surfaces for honest backend-unavailable behavior.",
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
       "id": "phase-flowdoc-product-evidence-refresh-readiness",
       "workId": "flowdoc-product-evidence-refresh",
       "title": "Capture Current Product Evidence",
@@ -535,6 +718,126 @@
     }
   ],
   "checklists": [
+    {
+      "kind": "checklist",
+      "id": "checklist-backend-service-readiness-boundary-review",
+      "phaseId": "phase-backend-service-readiness-boundary-review",
+      "title": "Backend Service Readiness Boundary Checklist",
+      "items": [
+        {
+          "id": "inspect-default-server",
+          "label": "Inspect the default Backend HTTP server, local host binding, CORS policy, request body handling, and fixture-backed repository wiring.",
+          "state": "pending",
+          "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces."
+        },
+        {
+          "id": "inspect-storage-boundaries",
+          "label": "Inspect in-memory and file JSON storage contracts for production-readiness exclusions.",
+          "state": "pending",
+          "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits."
+        },
+        {
+          "id": "inspect-export-boundaries",
+          "label": "Inspect PDF export candidate routes separately from the default application server.",
+          "state": "pending",
+          "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items."
+        },
+        {
+          "id": "define-readiness-contract",
+          "label": "Define the smallest Backend-owned readiness contract or record an explicit no-go decision.",
+          "state": "pending",
+          "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness."
+        },
+        {
+          "id": "return-evidence-candidate",
+          "label": "Return a bounded Project Control evidence candidate without promoting Backend product truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns."
+        }
+      ],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-core-public-export-boundary-review",
+      "phaseId": "phase-core-public-export-boundary-review",
+      "title": "Core Public Export Boundary Review Checklist",
+      "items": [
+        {
+          "id": "inventory-root-entrypoint",
+          "label": "Inventory the current Core root entrypoint and classify which exports are consumer surface, internal evidence surface, or release-blocked surface.",
+          "state": "in-progress",
+          "evidenceTarget": "Core `src/index.ts`, package exports, and Core-owned docs identify the present public entrypoint shape."
+        },
+        {
+          "id": "inspect-editor-backend-imports",
+          "label": "Inspect current Editor and Backend imports from `@flowdoc/vnext-core` before changing the Core package surface.",
+          "state": "pending",
+          "evidenceTarget": "Editor and Backend import inventories show whether consumers rely on root exports, fixtures, or internals."
+        },
+        {
+          "id": "define-approved-surface",
+          "label": "Define the smallest approved Core consumer surface or record an explicit no-go decision.",
+          "state": "pending",
+          "evidenceTarget": "A Core-owned contract, test, or document names supported consumer modules and excluded internal modules."
+        },
+        {
+          "id": "verify-consumer-boundaries",
+          "label": "Run Core plus affected consumer checks after any export boundary change or no-go record.",
+          "state": "pending",
+          "evidenceTarget": "Fresh Core, Editor, and Backend checks prove the boundary decision does not silently break current consumers."
+        },
+        {
+          "id": "return-evidence-candidate",
+          "label": "Return a bounded Project Control evidence candidate without promoting broader Core truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence candidate includes exact commit, path or contract ID, verification summary, and remaining unknowns."
+        }
+      ],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-backend-unavailable-honesty-review",
+      "phaseId": "phase-editor-backend-unavailable-honesty-review",
+      "title": "Editor Backend Unavailable Honesty Checklist",
+      "items": [
+        {
+          "id": "inspect-fixture-boot",
+          "label": "Inspect the Editor fixture boot path and async backend document loading path.",
+          "state": "pending",
+          "evidenceTarget": "Editor `src/app/EditorApp.tsx` and backend transport contracts identify where fixture and backend states diverge."
+        },
+        {
+          "id": "verify-status-language",
+          "label": "Verify that visible status language separates loaded backend documents from unavailable, unsupported, partial, stale, and blocked states.",
+          "state": "pending",
+          "evidenceTarget": "Component or browser evidence shows product UI state labels for backend-unavailable and non-fresh core envelopes."
+        },
+        {
+          "id": "guard-preview-readiness",
+          "label": "Keep preview readiness gated on fresh Core envelopes and explicit preview context availability.",
+          "state": "pending",
+          "evidenceTarget": "Editor tests prove preview cannot look ready when backend/core status is unavailable or partial."
+        },
+        {
+          "id": "run-editor-gate",
+          "label": "Run the Editor verification gate after any honesty change.",
+          "state": "pending",
+          "evidenceTarget": "`npm run check` or focused equivalent plus affected browser/component tests pass in the Editor repository."
+        },
+        {
+          "id": "return-evidence-candidate",
+          "label": "Return a bounded Project Control evidence candidate without promoting Editor product truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence candidate includes exact Editor commit, path or contract ID, verification summary, and remaining unknowns."
+        }
+      ],
+      "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
     {
       "kind": "checklist",
       "id": "checklist-flowdoc-product-evidence-refresh-readiness",
