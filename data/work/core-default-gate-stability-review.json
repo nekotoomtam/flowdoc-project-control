@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "core-default-gate-stability-review",
+  "title": "Core Default Gate Stability Review",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Investigate and resolve or classify the suite-load timeout observed in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts under the default Core npm run check command.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-cross-repository-compatibility-evidence-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "A Core-owned gate-stability fix or no-change blocker classification with fresh Core gate evidence and Project Control registration that does not promote broader FlowDoc compatibility truth.",
+  "riskSummary": "The prior Core default full gate timed out while focused and isolated reruns passed; a timeout-only workaround without root-cause evidence could hide a real suite-load or state-leak regression.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

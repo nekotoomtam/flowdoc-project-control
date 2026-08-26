@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-core-default-gate-stability-review",
+  "workId": "core-default-gate-stability-review",
+  "title": "Reproduce and Resolve Core Default Gate Timeout",
+  "phaseState": "in-progress",
+  "order": 10,
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Core Work path, Checklist target, and Evidence target before editing Core.",
+    "The Core default npm run check result remains failing after the lane or only isolated reruns are available.",
+    "A timeout-only workaround is proposed without reproducing or classifying the root cause.",
+    "Project Control promotes FlowDoc, Core, Editor, Backend, or compatibility truth before the owner gate and live integration evidence support it."
+  ],
+  "verificationTarget": "Core default npm run check is reproduced and either fixed with fresh worktree and main gate evidence or left blocked with root-cause evidence; Project Control records the result without map promotion.",
+  "summary": "Investigate the textBlockUnifiedLayoutTextStyleSourceV1 timeout under the default Core gate, make only root-cause-backed Core changes, and register the resulting evidence separately from compatibility promotion.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

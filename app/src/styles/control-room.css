@@ -157,6 +157,15 @@
   padding: 1rem;
 }
 
+.control-room__work-tree > *,
+.control-room__work-groups > li,
+.control-room__work-children > li,
+.control-room__phases > li,
+.control-room__work-card > *,
+.control-room__phase > * {
+  min-width: 0;
+}
+
 .control-room__work-tree > header {
   display: flex;
   align-items: start;
@@ -217,6 +226,11 @@
 .control-room__work-card h4 {
   min-width: 0;
   color: var(--text-strong);
+  overflow-wrap: anywhere;
+}
+
+.control-room__work-card p,
+.control-room__phase p {
   overflow-wrap: anywhere;
 }
 

@@ -68,6 +68,16 @@ const remediationTasks = [
     checklistLength: 5,
   },
   {
+    id: "core-default-gate-stability-review",
+    nodeId: "core",
+    workState: "in-progress",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-core-default-gate-stability-review",
+    phaseState: "in-progress",
+    checklistId: "checklist-core-default-gate-stability-review",
+    checklistLength: 5,
+  },
+  {
     id: "core-public-export-boundary-review",
     nodeId: "core",
     workState: "in-review",
@@ -103,7 +113,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 7);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 8);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -129,6 +139,7 @@ describe("project roadmap Work Queue", () => {
     expect(model.work.find((item) => item.id === "flowdoc-product-development-resumption")).toMatchObject({
       childWorkIds: [
         "backend-service-readiness-boundary-review",
+        "core-default-gate-stability-review",
         "core-public-export-boundary-review",
         "cross-repository-compatibility-evidence-review",
         "editor-backend-unavailable-honesty-review",
@@ -196,6 +207,7 @@ describe("project roadmap Work Queue", () => {
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
+        "core-default-gate-stability-review",
         "core-documentation-family-closure",
         "core-public-export-boundary-review",
         "core-remaining-documentation-synthesis",
@@ -241,6 +253,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-cross-repository-compatibility-evidence-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "blocked", "passed", "passed", "unknown", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-core-default-gate-stability-review")?.items
+      .map((item) => item.state))
+      .toEqual(["pending", "pending", "pending", "pending", "pending"]);
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
       .toMatchObject({
         nodeIds: [],

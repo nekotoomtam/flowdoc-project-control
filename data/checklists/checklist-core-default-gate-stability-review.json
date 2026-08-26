@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-default-gate-stability-review",
+  "phaseId": "phase-core-default-gate-stability-review",
+  "title": "Core Default Gate Stability Review Checklist",
+  "items": [
+    {
+      "id": "capture-core-baseline",
+      "label": "Capture Core head, cleanliness, repository agreement, and prior timeout evidence before changing Core.",
+      "state": "pending",
+      "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed."
+    },
+    {
+      "id": "reproduce-default-timeout",
+      "label": "Run the default Core gate in the Core lane to determine whether the timeout reproduces under current conditions.",
+      "state": "pending",
+      "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result."
+    },
+    {
+      "id": "isolate-root-cause",
+      "label": "Inspect the failing test, related helpers, Vitest configuration, and recent changes, then run focused probes for the suspected root cause.",
+      "state": "pending",
+      "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source."
+    },
+    {
+      "id": "implement-minimal-core-fix",
+      "label": "Implement a minimal Core change only if the root cause warrants a product or test adjustment.",
+      "state": "pending",
+      "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker."
+    },
+    {
+      "id": "verify-register-evidence",
+      "label": "Verify the Core gate in the lane and on main, then register the bounded Project Control evidence without promoting compatibility truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

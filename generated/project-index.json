@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c70e259764730b491d3e34a70a962a1e7406f97c080278466d44de65132c2075",
+  "sourceDigest": "6bd53828a1c5a50c6751c03477529e6529700f25ce7e3600fb63514facaafd07",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -249,6 +249,7 @@
         "text-block"
       ],
       "workIds": [
+        "core-default-gate-stability-review",
         "core-documentation-family-closure",
         "core-public-export-boundary-review",
         "core-remaining-documentation-synthesis"
@@ -361,6 +362,43 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "backend-service-readiness-boundary-review"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "core-default-gate-stability-review",
+      "title": "Core Default Gate Stability Review",
+      "nodeId": "core",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Investigate and resolve or classify the suite-load timeout observed in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts under the default Core npm run check command.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-cross-repository-compatibility-evidence-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "A Core-owned gate-stability fix or no-change blocker classification with fresh Core gate evidence and Project Control registration that does not promote broader FlowDoc compatibility truth.",
+      "riskSummary": "The prior Core default full gate timed out while focused and isolated reruns passed; a timeout-only workaround without root-cause evidence could hide a real suite-load or state-leak regression.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-core-default-gate-stability-review"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "core-default-gate-stability-review"
       ]
     },
     {
@@ -540,6 +578,7 @@
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
         "backend-service-readiness-boundary-review",
+        "core-default-gate-stability-review",
         "core-public-export-boundary-review",
         "cross-repository-compatibility-evidence-review",
         "editor-backend-unavailable-honesty-review",
@@ -675,6 +714,29 @@
       "verificationTarget": "Backend evidence distinguishes local dev readiness from production service readiness across HTTP, storage, auth, and export boundaries.",
       "summary": "Backend service readiness boundary is recorded: development readiness is explicit, local/integration evidence remains bounded, and production service readiness stays blocked.",
       "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-core-default-gate-stability-review",
+      "workId": "core-default-gate-stability-review",
+      "title": "Reproduce and Resolve Core Default Gate Timeout",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Core Work path, Checklist target, and Evidence target before editing Core.",
+        "The Core default npm run check result remains failing after the lane or only isolated reruns are available.",
+        "A timeout-only workaround is proposed without reproducing or classifying the root cause.",
+        "Project Control promotes FlowDoc, Core, Editor, Backend, or compatibility truth before the owner gate and live integration evidence support it."
+      ],
+      "verificationTarget": "Core default npm run check is reproduced and either fixed with fresh worktree and main gate evidence or left blocked with root-cause evidence; Project Control records the result without map promotion.",
+      "summary": "Investigate the textBlockUnifiedLayoutTextStyleSourceV1 timeout under the default Core gate, make only root-cause-backed Core changes, and register the resulting evidence separately from compatibility promotion.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
@@ -850,6 +912,46 @@
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-core-default-gate-stability-review",
+      "phaseId": "phase-core-default-gate-stability-review",
+      "title": "Core Default Gate Stability Review Checklist",
+      "items": [
+        {
+          "id": "capture-core-baseline",
+          "label": "Capture Core head, cleanliness, repository agreement, and prior timeout evidence before changing Core.",
+          "state": "pending",
+          "evidenceTarget": "Core AGENTS.md, current git status, current head, and the previous cross-repository compatibility timeout evidence are reviewed."
+        },
+        {
+          "id": "reproduce-default-timeout",
+          "label": "Run the default Core gate in the Core lane to determine whether the timeout reproduces under current conditions.",
+          "state": "pending",
+          "evidenceTarget": "Core package.json#scripts.check output distinguishes a default-gate pass, repeatable failure, or flaky/timing-sensitive result."
+        },
+        {
+          "id": "isolate-root-cause",
+          "label": "Inspect the failing test, related helpers, Vitest configuration, and recent changes, then run focused probes for the suspected root cause.",
+          "state": "pending",
+          "evidenceTarget": "Focused command outputs and code references classify whether the timeout is caused by suite load, test shape, leaked state, or another identified source."
+        },
+        {
+          "id": "implement-minimal-core-fix",
+          "label": "Implement a minimal Core change only if the root cause warrants a product or test adjustment.",
+          "state": "pending",
+          "evidenceTarget": "Core diff and focused regression evidence show the fix targets the identified root cause, or the lane records an explicit no-change blocker."
+        },
+        {
+          "id": "verify-register-evidence",
+          "label": "Verify the Core gate in the lane and on main, then register the bounded Project Control evidence without promoting compatibility truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence target evidence-core-default-gate-stability-review-2026-08-27 records the Core commit, command results, supported claim, risks, and intentionally unpromoted truth."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
