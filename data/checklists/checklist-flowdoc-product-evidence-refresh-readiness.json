@@ -7,32 +7,39 @@
     {
       "id": "capture-current-heads",
       "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before any product-wide truth promotion.",
-      "state": "pending",
-      "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet."
+      "state": "passed",
+      "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet.",
+      "evidenceIds": ["evidence-project-control-product-evidence-refresh-path-2026-08-26"],
+      "verificationNote": "Evidence packet records Project Control 3cfab24 and clean Core, Editor, and Backend heads."
     },
     {
       "id": "run-current-gates",
       "label": "Run bounded verification gates for the current Core, Editor, and Backend heads.",
-      "state": "pending",
-      "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure."
+      "state": "passed",
+      "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure.",
+      "evidenceIds": ["evidence-flowdoc-product-refresh-core-2026-08-26", "evidence-flowdoc-product-refresh-editor-2026-08-26", "evidence-flowdoc-product-refresh-backend-2026-08-26"],
+      "verificationNote": "Core, Editor, and Backend type-check and test gates passed on 2026-08-26; prior same-day Core timeout is recorded as monitoring risk."
     },
     {
       "id": "classify-promotion-blockers",
       "label": "Classify promotion blockers separately from implementation risks.",
-      "state": "pending",
-      "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states."
+      "state": "passed",
+      "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states.",
+      "verificationNote": "The evidence packet records supported claims, not-promoted claims, and promotion blockers without changing FlowDoc truthState."
     },
     {
       "id": "preserve-map-truth",
       "label": "Keep FlowDoc, Core, Editor, and Backend truth states unpromoted unless exact Evidence supports a narrower current claim.",
-      "state": "pending",
-      "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown."
+      "state": "passed",
+      "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown.",
+      "verificationNote": "No system map promotion was made; FlowDoc remains planned and Core, Editor, and Backend remain unknown."
     },
     {
       "id": "split-remediation-work",
       "label": "Name the next smallest remediation work items for Core export boundary, Editor fallback honesty, and Backend service readiness.",
-      "state": "pending",
-      "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits."
+      "state": "passed",
+      "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits.",
+      "verificationNote": "The evidence packet names Core export boundary, Editor backend-unavailable honesty, and Backend service readiness remediation targets with owner and evidence target."
     }
   ],
   "createdAt": "2026-08-26T00:00:00.000Z",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "bdf9a6840bc467668b0f858d85a5130d27c6745891d08622320ae7d71c0470b2",
+  "sourceDigest": "b79f0461b9f80ccdfb43131a1d2b86ede3a9bd4aeecf4829e4a0a94ee161830e",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -15,13 +15,18 @@
       "order": 0,
       "documentIds": [
         "doc-flowdoc-system-map",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
         "doc-glossary-en",
         "doc-glossary-th"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
         "evidence-editor-project-control-entrypoint",
-        "evidence-backend-project-control-entrypoint"
+        "evidence-backend-project-control-entrypoint",
+        "evidence-project-control-product-evidence-refresh-path-2026-08-26",
+        "evidence-flowdoc-product-refresh-core-2026-08-26",
+        "evidence-flowdoc-product-refresh-editor-2026-08-26",
+        "evidence-flowdoc-product-refresh-backend-2026-08-26"
       ],
       "repositoryIds": [
         "repo-project-control",
@@ -392,7 +397,7 @@
         "repo-editor",
         "repo-backend"
       ],
-      "workState": "in-progress",
+      "workState": "in-review",
       "summary": "Refresh the cross-repository product evidence packet for the current Core, Editor, and Backend heads before any product-wide truth promotion.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
@@ -488,7 +493,7 @@
       "id": "phase-flowdoc-product-evidence-refresh-readiness",
       "workId": "flowdoc-product-evidence-refresh",
       "title": "Capture Current Product Evidence",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-project-control",
@@ -503,7 +508,7 @@
         "A map or Node truth state would be promoted without exact repository Evidence."
       ],
       "verificationTarget": "Project Control records the current Core, Editor, and Backend heads, verification results, promotion blockers, and next remediation targets without promoting product truth.",
-      "summary": "Capture the first product resumption evidence packet after Project Control can represent executable Work paths.",
+      "summary": "Captured the first product resumption evidence packet after Project Control can represent executable Work paths.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
     },
@@ -539,32 +544,45 @@
         {
           "id": "capture-current-heads",
           "label": "Capture clean current heads for Project Control, Core, Editor, and Backend before any product-wide truth promotion.",
-          "state": "pending",
-          "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet."
+          "state": "passed",
+          "evidenceTarget": "Exact commit IDs and git cleanliness for repo-project-control, repo-core, repo-editor, and repo-backend are recorded in the evidence packet.",
+          "evidenceIds": [
+            "evidence-project-control-product-evidence-refresh-path-2026-08-26"
+          ],
+          "verificationNote": "Evidence packet records Project Control 3cfab24 and clean Core, Editor, and Backend heads."
         },
         {
           "id": "run-current-gates",
           "label": "Run bounded verification gates for the current Core, Editor, and Backend heads.",
-          "state": "pending",
-          "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure."
+          "state": "passed",
+          "evidenceTarget": "Fresh type-check and test results are recorded, including any Core full-suite instability or product gate failure.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-refresh-core-2026-08-26",
+            "evidence-flowdoc-product-refresh-editor-2026-08-26",
+            "evidence-flowdoc-product-refresh-backend-2026-08-26"
+          ],
+          "verificationNote": "Core, Editor, and Backend type-check and test gates passed on 2026-08-26; prior same-day Core timeout is recorded as monitoring risk."
         },
         {
           "id": "classify-promotion-blockers",
           "label": "Classify promotion blockers separately from implementation risks.",
-          "state": "pending",
-          "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states."
+          "state": "passed",
+          "evidenceTarget": "The evidence packet distinguishes BLOCKER, RISK, and UNKNOWN without changing Node truth states.",
+          "verificationNote": "The evidence packet records supported claims, not-promoted claims, and promotion blockers without changing FlowDoc truthState."
         },
         {
           "id": "preserve-map-truth",
           "label": "Keep FlowDoc, Core, Editor, and Backend truth states unpromoted unless exact Evidence supports a narrower current claim.",
-          "state": "pending",
-          "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown."
+          "state": "passed",
+          "evidenceTarget": "Any map change is limited to reviewed evidence; if support is insufficient, maps remain planned or unknown.",
+          "verificationNote": "No system map promotion was made; FlowDoc remains planned and Core, Editor, and Backend remain unknown."
         },
         {
           "id": "split-remediation-work",
           "label": "Name the next smallest remediation work items for Core export boundary, Editor fallback honesty, and Backend service readiness.",
-          "state": "pending",
-          "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits."
+          "state": "passed",
+          "evidenceTarget": "Follow-on Work targets identify owner repository, role, phase, checklist, and evidence target before product behavior edits.",
+          "verificationNote": "The evidence packet names Core export boundary, Editor backend-unavailable honesty, and Backend service readiness remediation targets with owner and evidence target."
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
@@ -863,6 +881,41 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# FlowDoc Global Codex Guidance\n\nThis file is the copy-ready global guidance for:\n\n```text\nC:\\Users\\nekot\\.codex\\AGENTS.md\n```\n\nThe canonical maintained copy lives in FlowDoc Project Control:\n\n```text\nC:\\Users\\nekot\\Documents\\GitHub\\flowdoc-project-control\\docs\\domains\\flowdoc-global-codex-guidance.md\n```\n\n## FlowDoc entrypoint\n\nFor any FlowDoc-related work, first locate and read:\n\n```text\nC:\\Users\\nekot\\Documents\\GitHub\\flowdoc-project-control\\AGENTS.md\n```\n\nFlowDoc-related work includes any request that mentions FlowDoc, project\ncontrol, Core, Editor, Backend, document maps, evidence, Nodes, Work records,\nor repositories named `flowdoc-*`.\n\nUse Project Control before treating any FlowDoc repository state as current,\nchoosing an owner repository, promoting shared truth, editing product behavior,\nor planning cross-repository work.\n\nAfter reading Project Control, identify:\n\n- the explicit user request or Project Control Work item;\n- the Work path, if the Work item belongs to a Work tree;\n- the owner repository;\n- the active role;\n- the current Phase;\n- the Checklist target;\n- the Evidence target;\n- known risks;\n- unknown state.\n\nThen read the owning repository's `AGENTS.md` before editing that repository.\n\n## Worktree discipline\n\nFor any non-read-only FlowDoc work that may edit files, create a dedicated\nworktree from `main` before implementation unless the user explicitly\ninstructs same-checkout maintenance.\n\nCommit and verify inside the worktree first. Merge back to `main` only after\nthe worktree gate passes, then run the required verification again on `main`.\nAfter the merged `main` gate passes, remove the completed worktree and merged\nbranch.\n\nDo not delete a dirty worktree, an unmerged branch, or a lane whose unique\npatches are not understood. Stop and report the cleanup blocker instead.\n\n## Missing Project Control\n\nIf Project Control is missing, unreadable, or cannot identify the Work path,\nowning FlowDoc repository, current Phase, Checklist target, and Evidence\ntarget, stop before editing and report:\n\n```text\nBLOCKER: FlowDoc Project Control unavailable or unresolved.\n```\n\nDo not guess the owner repository, promote map truth, or edit product behavior\nwhile this blocker is active.\n\n## Local-only exception\n\nIf the user explicitly limits the turn to read-only local inspection inside the\ncurrently opened repository, that inspection may proceed without Project\nControl. Keep the result narrow and do not edit files, update maps, promote\ntruth, or claim FlowDoc-wide current state.\n\n## Bootstrap and repair\n\nIf `C:\\Users\\nekot\\.codex\\AGENTS.md` is missing or empty during Project Control\nmaintenance, copy this file into that location so future Codex rooms inherit\nthe FlowDoc entrypoint rule automatically.\n\nIf `C:\\Users\\nekot\\.codex\\AGENTS.md` already exists and contains other user\nguidance, preserve the existing guidance and add or update only a bounded\nFlowDoc section with these rules.\n\nIf `C:\\Users\\nekot\\.codex\\AGENTS.override.md` exists, inspect it before broad\nFlowDoc work. It can take precedence over the base global file. If it does not\ninclude the FlowDoc entrypoint rule, report the risk before editing FlowDoc\nrepositories.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-product-evidence-refresh-2026-08-26",
+      "title": "FlowDoc Product Evidence Refresh - 2026-08-26",
+      "path": "docs/domains/flowdoc-product-evidence-refresh-2026-08-26.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "verification",
+      "authority": "Bounded product resumption evidence packet for the current local Core, Editor, and Backend heads; it records gate results and blockers without promoting product-wide truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "3cfab24a85d1335033105b3d8c12d9a84ae88509",
+          "pathOrContractId": "data/work/flowdoc-product-evidence-refresh.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "501caec1fe3317309d0f6c18c2dec118fb6994e7",
+          "pathOrContractId": "package.json#scripts.type-check,test"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+          "pathOrContractId": "package.json#scripts.type-check,test"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+          "pathOrContractId": "package.json#scripts.type-check,test"
+        }
+      ],
+      "content": "# FlowDoc Product Evidence Refresh - 2026-08-26\n\n## Scope\n\nThis packet records the first product evidence refresh after Project Control gained executable Work path, Phase, Checklist, and Evidence target records. It is intentionally bounded to repository heads, local verification gates, promotion blockers, and next remediation targets.\n\nIt does not promote FlowDoc, Core, Editor, or Backend to product-wide `current`.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > flowdoc-product-evidence-refresh`\n- Phase: `phase-flowdoc-product-evidence-refresh-readiness`\n- Checklist: `checklist-flowdoc-product-evidence-refresh-readiness`\n- Active role: Evidence Reviewer\n- Owner repositories: Project Control, Core, Editor, Backend\n\n## Repository Heads\n\n| Repository | Status | Commit | Subject |\n| --- | --- | --- | --- |\n| Project Control | `main...origin/main [ahead 1]` | `3cfab24a85d1335033105b3d8c12d9a84ae88509` | `chore: open product evidence refresh work path` |\n| Core | `main...origin/main` | `501caec1fe3317309d0f6c18c2dec118fb6994e7` | `chore: integrate core route cleanup history` |\n| Editor | `main...origin/main` | `baa871c378a313e8f0c402ea33e3aa480953ce1f` | `docs: route FlowDoc work through Project Control` |\n| Backend | `main...origin/main` | `7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a` | `docs: route FlowDoc work through Project Control` |\n\nCore, Editor, and Backend were clean at the captured heads.\n\n## Verification Results\n\n| Repository | Command | Result |\n| --- | --- | --- |\n| Core | `npm run type-check --silent` | PASS |\n| Core | `npm run test --silent` | PASS: 458 test files, 2,938 tests |\n| Editor | `npm run type-check --silent` | PASS |\n| Editor | `npm run test --silent` | PASS: 76 test files, 278 tests |\n| Backend | `npm run type-check --silent` | PASS |\n| Backend | `npm run test --silent` | PASS: 88 passed test files, 312 passed tests, 1 skipped file, 24 skipped tests |\n\nEarlier same-day review observed one Core full-suite timeout in `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts:829`; the targeted rerun and whole-file rerun passed, and this evidence refresh full-suite run also passed. Treat this as a monitoring risk, not a current gate failure.\n\n## Supported Claims\n\n- Project Control can now point future FlowDoc rooms at an executable product evidence refresh Work path with Phase, Checklist, and Evidence targets.\n- Current clean local Core, Editor, and Backend heads pass their local type-check and test gates.\n- The evidence supports a product resumption review lane, not product-wide readiness.\n\n## Not Promoted\n\n- FlowDoc remains `planned`.\n- Core remains `unknown` for broader Core.\n- Editor remains `unknown`.\n- Backend remains `unknown`.\n- Core-Editor compatibility remains unaccepted by Project Control.\n- Core-Backend compatibility remains unaccepted by Project Control.\n- Production activation and service readiness remain unaccepted.\n\n## Promotion Blockers\n\n1. Core public package boundary remains broad relative to the incomplete release boundary.\n2. Editor still has a fixture boot/fallback path that can mask backend unavailability unless status surfaces are unmistakable.\n3. Backend default server and storage paths remain local/dev readiness surfaces, not production service evidence.\n4. Project Control has local evidence for current gates, but no accepted cross-repository compatibility Evidence yet.\n\n## Next Remediation Targets\n\n| Target | Owner | Role | Evidence Target |\n| --- | --- | --- | --- |\n| Core public export boundary review | `repo-core` | Cross-Repo Boundary Reviewer | A narrower export/adoption boundary or a documented no-go decision with tests proving consumer imports stay inside approved surfaces. |\n| Editor backend-unavailable honesty review | `repo-editor` | Evidence Reviewer | UI/contract evidence that product routes cannot mistake fixture fallback or partial backend reads for a loaded backend document. |\n| Backend service readiness boundary review | `repo-backend` | Evidence Reviewer | A documented boundary that separates local dev server, file JSON storage, PDF export candidate routes, and production service readiness. |\n"
     },
     {
       "kind": "document",
@@ -1988,6 +2041,42 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-flowdoc-product-refresh-backend-2026-08-26",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-backend",
+      "commit": "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+      "pathOrContractId": "package.json#scripts.type-check,test",
+      "verificationSummary": "Clean Backend main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 88 test files, 312 tests, 1 skipped file, and 24 skipped tests. This supports only the bounded local Backend gate status for product resumption.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-product-refresh-core-2026-08-26",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-core",
+      "commit": "501caec1fe3317309d0f6c18c2dec118fb6994e7",
+      "pathOrContractId": "package.json#scripts.type-check,test",
+      "verificationSummary": "Clean Core main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 458 test files and 2,938 tests. This supports only the bounded local Core gate status for product resumption.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-product-refresh-editor-2026-08-26",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-editor",
+      "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+      "pathOrContractId": "package.json#scripts.type-check,test",
+      "verificationSummary": "Clean Editor main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 76 test files and 278 tests. This supports only the bounded local Editor gate status for product resumption.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-live-draft-corrective-adversarial-scene",
       "nodeIds": [
         "live-draft"
@@ -2141,6 +2230,18 @@
       "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md",
       "verificationSummary": "Verified that the approved design object exists at this exact Project Control commit; this supports only the Project Control design claim.",
       "verifiedAt": "2026-08-12T14:37:25.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-project-control-product-evidence-refresh-path-2026-08-26",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-project-control",
+      "commit": "3cfab24a85d1335033105b3d8c12d9a84ae88509",
+      "pathOrContractId": "data/work/flowdoc-product-evidence-refresh.json",
+      "verificationSummary": "Project Control contains an active FlowDoc Product Evidence Refresh Work task with Phase and Checklist targets before product-wide truth promotion.",
+      "verifiedAt": "2026-08-26T00:00:00.000Z"
     },
     {
       "kind": "evidence",

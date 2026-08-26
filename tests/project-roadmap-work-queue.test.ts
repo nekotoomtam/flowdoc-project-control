@@ -91,6 +91,7 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-evidence-refresh")).toMatchObject({
       workKind: "task",
+      workState: "in-review",
       parentWorkId: "flowdoc-product-development-resumption",
       nodeId: "flowdoc",
       activeRole: "evidence-reviewer",
@@ -106,7 +107,7 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.phases.find((item) => item.id === "phase-flowdoc-product-evidence-refresh-readiness")).toMatchObject({
       workId: "flowdoc-product-evidence-refresh",
-      phaseState: "in-progress",
+      phaseState: "done",
     });
     expect(model.checklists.find((item) => item.id === "checklist-work-tree-contract-validation")?.items)
       .toHaveLength(5);
@@ -122,6 +123,9 @@ describe("project roadmap Work Queue", () => {
         "preserve-map-truth",
         "split-remediation-work",
       ]);
+    expect(model.checklists.find((item) => item.id === "checklist-flowdoc-product-evidence-refresh-readiness")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -174,6 +178,10 @@ describe("project roadmap Work Queue", () => {
       "evidence-core-project-control-entrypoint",
       "evidence-editor-project-control-entrypoint",
       "evidence-backend-project-control-entrypoint",
+      "evidence-project-control-product-evidence-refresh-path-2026-08-26",
+      "evidence-flowdoc-product-refresh-core-2026-08-26",
+      "evidence-flowdoc-product-refresh-editor-2026-08-26",
+      "evidence-flowdoc-product-refresh-backend-2026-08-26",
     ]);
     expect(evidence.get("evidence-core-project-control-entrypoint")).toMatchObject({
       nodeIds: ["flowdoc"],
@@ -192,6 +200,30 @@ describe("project roadmap Work Queue", () => {
       repositoryId: "repo-backend",
       commit: "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
       pathOrContractId: "AGENTS.md",
+    });
+    expect(evidence.get("evidence-project-control-product-evidence-refresh-path-2026-08-26")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-project-control",
+      commit: "3cfab24a85d1335033105b3d8c12d9a84ae88509",
+      pathOrContractId: "data/work/flowdoc-product-evidence-refresh.json",
+    });
+    expect(evidence.get("evidence-flowdoc-product-refresh-core-2026-08-26")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-core",
+      commit: "501caec1fe3317309d0f6c18c2dec118fb6994e7",
+      pathOrContractId: "package.json#scripts.type-check,test",
+    });
+    expect(evidence.get("evidence-flowdoc-product-refresh-editor-2026-08-26")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-editor",
+      commit: "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+      pathOrContractId: "package.json#scripts.type-check,test",
+    });
+    expect(evidence.get("evidence-flowdoc-product-refresh-backend-2026-08-26")).toMatchObject({
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-backend",
+      commit: "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+      pathOrContractId: "package.json#scripts.type-check,test",
     });
     for (const item of evidence.values()) {
       if (item.id.includes("project-control-entrypoint")) {

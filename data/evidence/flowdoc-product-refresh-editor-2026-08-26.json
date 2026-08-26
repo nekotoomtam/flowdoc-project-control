@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-product-refresh-editor-2026-08-26",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-editor",
+  "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+  "pathOrContractId": "package.json#scripts.type-check,test",
+  "verificationSummary": "Clean Editor main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 76 test files and 278 tests. This supports only the bounded local Editor gate status for product resumption.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

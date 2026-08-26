@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-product-evidence-refresh-2026-08-26",
+  "title": "FlowDoc Product Evidence Refresh - 2026-08-26",
+  "path": "docs/domains/flowdoc-product-evidence-refresh-2026-08-26.md",
+  "nodeIds": ["flowdoc"],
+  "role": "verification",
+  "authority": "Bounded product resumption evidence packet for the current local Core, Editor, and Backend heads; it records gate results and blockers without promoting product-wide truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "3cfab24a85d1335033105b3d8c12d9a84ae88509",
+      "pathOrContractId": "data/work/flowdoc-product-evidence-refresh.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "501caec1fe3317309d0f6c18c2dec118fb6994e7",
+      "pathOrContractId": "package.json#scripts.type-check,test"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "baa871c378a313e8f0c402ea33e3aa480953ce1f",
+      "pathOrContractId": "package.json#scripts.type-check,test"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+      "pathOrContractId": "package.json#scripts.type-check,test"
+    }
+  ]
+}

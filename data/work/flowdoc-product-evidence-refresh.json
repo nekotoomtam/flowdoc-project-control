@@ -6,7 +6,7 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
-  "workState": "in-progress",
+  "workState": "in-review",
   "summary": "Refresh the cross-repository product evidence packet for the current Core, Editor, and Backend heads before any product-wide truth promotion.",
   "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
   "activeRole": "evidence-reviewer",

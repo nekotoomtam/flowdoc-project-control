@@ -3,7 +3,7 @@
   "id": "phase-flowdoc-product-evidence-refresh-readiness",
   "workId": "flowdoc-product-evidence-refresh",
   "title": "Capture Current Product Evidence",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 10,
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
   "activeRole": "evidence-reviewer",
@@ -13,7 +13,7 @@
     "A map or Node truth state would be promoted without exact repository Evidence."
   ],
   "verificationTarget": "Project Control records the current Core, Editor, and Backend heads, verification results, promotion blockers, and next remediation targets without promoting product truth.",
-  "summary": "Capture the first product resumption evidence packet after Project Control can represent executable Work paths.",
+  "summary": "Captured the first product resumption evidence packet after Project Control can represent executable Work paths.",
   "createdAt": "2026-08-26T00:00:00.000Z",
   "updatedAt": "2026-08-26T00:00:00.000Z"
 }
