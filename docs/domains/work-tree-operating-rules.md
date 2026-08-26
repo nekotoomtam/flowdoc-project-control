@@ -25,6 +25,22 @@ BLOCKER: FlowDoc Project Control unavailable or unresolved.
 
 Work, Phase, Checklist, and SQLite projection state do not establish Node truth. Durable `current` claims still require Evidence records or repository-owned verification.
 
+## Worktree Discipline
+
+Any non-read-only FlowDoc work that may edit files must start in a dedicated
+worktree from `main` unless the user explicitly approves same-checkout
+maintenance. The worktree is the execution space; `main` is the clean
+integration target.
+
+Commit and verify inside the worktree first. Merge to `main` only after the
+worktree gate passes, then run the required gate again on `main`. After the
+merged `main` gate passes, remove the completed worktree and merged branch so
+stale lanes do not confuse future rooms.
+
+Do not delete a dirty worktree, an unmerged branch, or a lane with unique
+patches that are not understood. Switch to Lane Reconciliation Reviewer and
+report the blocker instead.
+
 ## Handoff
 
 End with PASS, FAIL/BLOCKER, RISK, UNKNOWN, Work ID, Phase ID, Checklist item IDs, files changed, tests run, evidence or map updates, intentionally not changed, and next recommended work.

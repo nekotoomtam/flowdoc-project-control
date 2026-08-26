@@ -85,6 +85,16 @@ release-line documentation, use
 ## Editing rules
 
 - Preserve unrelated user changes in the working tree.
+- For any non-read-only FlowDoc work that may edit files, create a dedicated
+  worktree from `main` before implementation unless the user explicitly
+  instructs same-checkout maintenance.
+- Keep `main` as the clean integration target. Commit and verify the work in
+  the worktree first; merge back to `main` only after the worktree gate passes.
+- After merging to `main`, run the required verification on `main`, then remove
+  the completed worktree and merged branch. Do not leave stale lanes behind.
+- Do not delete a dirty worktree, an unmerged branch, or a lane with unique
+  patches that are not understood; switch to Lane Reconciliation Reviewer and
+  report the blocker instead.
 - Edit canonical sources under `data/` and `docs/`; regenerate
   `generated/project-index.json` and the ignored local SQLite projection with
   `npm run generate`.

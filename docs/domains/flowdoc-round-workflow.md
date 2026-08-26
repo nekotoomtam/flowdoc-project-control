@@ -52,6 +52,8 @@ Read the local context for the owner repository before editing:
 - related Work, Node, Document, Repository, and Evidence records;
 - current Phase, Checklist target, and Evidence target for executable Work;
 - current git branch, local changes, and untracked files;
+- whether the checkout is `main` or a dedicated worktree for the current
+  round;
 - the boundary between plan, truth, evidence, risk, and unknown state.
 
 If the working tree is dirty, classify the changes before continuing:
@@ -66,6 +68,8 @@ Before implementation or record edits, state:
 
 - which repository owns the change;
 - which repositories are intentionally not being edited;
+- which dedicated worktree will hold the work, or why the user explicitly
+  approved same-checkout maintenance;
 - which claims must remain unpromoted;
 - which check, path, test, contract, commit, or Evidence record would be enough
   to close the round.
@@ -80,6 +84,11 @@ Work only inside the approved scope:
 - Product behavior changes belong in the owning product repository.
 - Project Control changes should edit canonical sources under `data/` and
   `docs/`.
+- Non-read-only FlowDoc work must happen in a dedicated worktree created from
+  `main` before implementation unless the user explicitly approves
+  same-checkout maintenance.
+- Commit and verify in the worktree before merging. Keep `main` as the clean
+  integration target, not the experimentation surface.
 - `generated/project-index.json` is deterministic output and should be
   regenerated, not hand-edited.
 - Work records can track intent, but they do not prove truth.
@@ -90,6 +99,16 @@ Work only inside the approved scope:
 
 Before reporting success, run fresh verification for the repository or
 repositories touched. Record the command and result.
+
+For worktree-based rounds, verification has two gates:
+
+1. Run the relevant gate in the worktree before merging.
+2. After the worktree is merged to `main`, run the required gate again on
+   `main`.
+
+Only after the merged `main` gate passes may the completed worktree and merged
+branch be removed. Do not remove a dirty worktree, an unmerged branch, or a
+lane whose unique patches are not understood.
 
 If a claim is strong enough to affect a Node, Document map, or system map, it
 needs durable support such as:
@@ -147,6 +166,7 @@ End broad work with:
 - Tests run: command and result.
 - Evidence or map updates: what changed and what supports it.
 - Intentionally not changed: boundaries preserved by design.
+- Worktree cleanup: merged, retained, blocked, or intentionally not applicable.
 - Next recommended work: the smallest useful next round.
 
 This handoff keeps reconstructed history honest while letting FlowDoc move

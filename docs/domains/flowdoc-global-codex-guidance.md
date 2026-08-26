@@ -42,6 +42,20 @@ After reading Project Control, identify:
 
 Then read the owning repository's `AGENTS.md` before editing that repository.
 
+## Worktree discipline
+
+For any non-read-only FlowDoc work that may edit files, create a dedicated
+worktree from `main` before implementation unless the user explicitly
+instructs same-checkout maintenance.
+
+Commit and verify inside the worktree first. Merge back to `main` only after
+the worktree gate passes, then run the required verification again on `main`.
+After the merged `main` gate passes, remove the completed worktree and merged
+branch.
+
+Do not delete a dirty worktree, an unmerged branch, or a lane whose unique
+patches are not understood. Stop and report the cleanup blocker instead.
+
 ## Missing Project Control
 
 If Project Control is missing, unreadable, or cannot identify the Work path,
