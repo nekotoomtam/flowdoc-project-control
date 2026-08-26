@@ -7,34 +7,44 @@
     {
       "id": "inspect-default-server",
       "label": "Inspect the default Backend HTTP server, local host binding, CORS policy, request body handling, and fixture-backed repository wiring.",
-      "state": "pending",
-      "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces."
+      "state": "passed",
+      "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces.",
+      "evidenceIds": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
+      "verificationNote": "Reviewed default loopback binding, in-memory fixture repository seeding, permissive development CORS, unbounded default JSON body parsing, and `/health` readiness envelope at Backend commit 42cc1040c959a16647b7e797929358c401ccfa38."
     },
     {
       "id": "inspect-storage-boundaries",
       "label": "Inspect in-memory and file JSON storage contracts for production-readiness exclusions.",
-      "state": "pending",
-      "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits."
+      "state": "passed",
+      "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits.",
+      "evidenceIds": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
+      "verificationNote": "Reviewed `src/storage/packageRepository.ts`, `src/storage/fileJsonStorage.ts`, and `src/storage/storageRouteBinding.ts`; focused storage tests passed and retain internal-alpha/file JSON, no authz execution, no multi-record transaction, and productionStorageReady false."
     },
     {
       "id": "inspect-export-boundaries",
       "label": "Inspect PDF export candidate routes separately from the default application server.",
-      "state": "pending",
-      "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items."
+      "state": "passed",
+      "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items.",
+      "evidenceIds": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
+      "verificationNote": "Reviewed PDF export route, concrete HTTP adapter, local loopback server, activation review, local HTTP composition, and local readiness audit; focused PDF tests passed while default application server mounting and productionBinding remain false."
     },
     {
       "id": "define-readiness-contract",
       "label": "Define the smallest Backend-owned readiness contract or record an explicit no-go decision.",
-      "state": "pending",
-      "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness."
+      "state": "passed",
+      "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness.",
+      "evidenceIds": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
+      "verificationNote": "Added `src/contracts/serviceReadiness.ts`, exposed it from `/health`, exported it from `src/index.ts`, and documented the no-go boundary in `docs/BACKEND_SERVICE_READINESS_BOUNDARY.md`."
     },
     {
       "id": "return-evidence-candidate",
       "label": "Return a bounded Project Control evidence candidate without promoting Backend product truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns."
+      "state": "passed",
+      "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns.",
+      "evidenceIds": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
+      "verificationNote": "Recorded work-scoped evidence with repository `repo-backend`, commit 42cc1040c959a16647b7e797929358c401ccfa38, path `docs/BACKEND_SERVICE_READINESS_BOUNDARY.md`, full Backend gate results, and empty nodeIds to avoid Backend truth promotion."
     }
   ],
   "createdAt": "2026-08-26T00:00:00.000Z",
-  "updatedAt": "2026-08-26T00:00:00.000Z"
+  "updatedAt": "2026-08-27T00:00:00.000Z"
 }

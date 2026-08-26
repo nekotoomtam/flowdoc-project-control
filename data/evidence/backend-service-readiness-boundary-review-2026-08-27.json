@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-backend-service-readiness-boundary-review-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+  "pathOrContractId": "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md",
+  "verificationSummary": "Backend main commit 42cc1040c959a16647b7e797929358c401ccfa38 records the service readiness boundary review, adds src/contracts/serviceReadiness.ts, exposes the bounded readiness envelope from GET /health while retaining top-level status ready for probe compatibility, and documents that the default server is development-ready but production service readiness is blocked. The contract separates loopback fixture-backed default HTTP behavior, internal-alpha file JSON storage, accepted local-only PDF export evidence, unmounted PDF export candidate routes, and remaining production blockers for auth, tenancy, storage providers, export route mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. It also fixes a pre-existing Windows CRLF-sensitive doc test in src/tests/durableCompositionSchedulerDueBatchQualificationDoc.test.ts. Focused Backend checks passed with 8 test files and 22 tests. Backend worktree npm run check and merged main npm run check both passed with 89 test files, 314 tests, 1 skipped file, 24 skipped tests, and build. This evidence supports only the bounded Backend service-readiness boundary lane and does not promote broader Backend, FlowDoc production readiness, hosted providers, auth, tenancy, deployment, or map truth.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

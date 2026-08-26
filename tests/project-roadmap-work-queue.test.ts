@@ -60,10 +60,10 @@ const remediationTasks = [
   {
     id: "backend-service-readiness-boundary-review",
     nodeId: "backend",
-    workState: "queued",
+    workState: "in-review",
     activeRole: "evidence-reviewer",
     phaseId: "phase-backend-service-readiness-boundary-review",
-    phaseState: "queued",
+    phaseState: "done",
     checklistId: "checklist-backend-service-readiness-boundary-review",
   },
   {
@@ -220,6 +220,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-editor-backend-unavailable-honesty-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-backend-service-readiness-boundary-review")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     expect(model.evidence.find((item) => item.id === "evidence-core-public-export-boundary-review-2026-08-26"))
       .toMatchObject({
         nodeIds: [],
@@ -238,6 +241,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-unavailable-honesty-review-2026-08-26")?.verificationSummary)
       .toContain("bounded Editor backend-unavailable Preview honesty lane");
+    expect(model.evidence.find((item) => item.id === "evidence-backend-service-readiness-boundary-review-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-backend",
+        commit: "42cc1040c959a16647b7e797929358c401ccfa38",
+        pathOrContractId: "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-backend-service-readiness-boundary-review-2026-08-27")?.verificationSummary)
+      .toContain("bounded Backend service-readiness boundary lane");
 
     for (const work of model.work) {
       expect(work).not.toHaveProperty("blockedBy");

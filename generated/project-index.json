@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "154c37cd92b746d90a88cce6218ff0872bdea2a05da8af95edab020791495643",
+  "sourceDigest": "a8262b768bdbd583833ff24e7d7a61f708a7c80f3e9fff76656ecac668292a66",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -335,8 +335,8 @@
         "repo-backend",
         "repo-project-control"
       ],
-      "workState": "queued",
-      "summary": "Review Backend service surfaces so local dev server, in-memory storage, file JSON storage, and PDF export candidates are not mistaken for production readiness.",
+      "workState": "in-review",
+      "summary": "Recorded a Backend-owned service readiness contract and health envelope so the default local server, internal-alpha storage, and local PDF candidates are not mistaken for production readiness.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -347,10 +347,12 @@
       ],
       "activeRole": "evidence-reviewer",
       "expectedOutput": "Backend-owned evidence or implementation that separates local development readiness from production service, persistence, auth, and export readiness claims.",
-      "riskSummary": "The default Backend server is local and fixture-backed, while storage and PDF export candidates explicitly leave production providers and activation unaccepted.",
-      "requiredEvidence": [],
+      "riskSummary": "Production remains blocked: top-level health status stays ready for probe compatibility, while auth, tenancy, storage provider selection, PDF export mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback remain unaccepted.",
+      "requiredEvidence": [
+        "evidence-backend-service-readiness-boundary-review-2026-08-27"
+      ],
       "createdAt": "2026-08-26T00:00:00.000Z",
-      "updatedAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-backend-service-readiness-boundary-review"
@@ -614,7 +616,7 @@
       "id": "phase-backend-service-readiness-boundary-review",
       "workId": "backend-service-readiness-boundary-review",
       "title": "Separate Backend Development and Production Claims",
-      "phaseState": "queued",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-backend",
@@ -627,9 +629,9 @@
         "Project Control would promote Backend truth without a Backend-owned readiness contract."
       ],
       "verificationTarget": "Backend evidence distinguishes local dev readiness from production service readiness across HTTP, storage, auth, and export boundaries.",
-      "summary": "Check Backend readiness boundaries before any product-wide service-state promotion.",
+      "summary": "Backend service readiness boundary is recorded: development readiness is explicit, local/integration evidence remains bounded, and production service readiness stays blocked.",
       "createdAt": "2026-08-26T00:00:00.000Z",
-      "updatedAt": "2026-08-26T00:00:00.000Z"
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -731,36 +733,56 @@
         {
           "id": "inspect-default-server",
           "label": "Inspect the default Backend HTTP server, local host binding, CORS policy, request body handling, and fixture-backed repository wiring.",
-          "state": "pending",
-          "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces."
+          "state": "passed",
+          "evidenceTarget": "Backend `src/server.ts` and `src/http/server.ts` identify which runtime paths are local development surfaces.",
+          "evidenceIds": [
+            "evidence-backend-service-readiness-boundary-review-2026-08-27"
+          ],
+          "verificationNote": "Reviewed default loopback binding, in-memory fixture repository seeding, permissive development CORS, unbounded default JSON body parsing, and `/health` readiness envelope at Backend commit 42cc1040c959a16647b7e797929358c401ccfa38."
         },
         {
           "id": "inspect-storage-boundaries",
           "label": "Inspect in-memory and file JSON storage contracts for production-readiness exclusions.",
-          "state": "pending",
-          "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits."
+          "state": "passed",
+          "evidenceTarget": "Backend storage contracts identify transaction, authz, atomicity, and provider limits.",
+          "evidenceIds": [
+            "evidence-backend-service-readiness-boundary-review-2026-08-27"
+          ],
+          "verificationNote": "Reviewed `src/storage/packageRepository.ts`, `src/storage/fileJsonStorage.ts`, and `src/storage/storageRouteBinding.ts`; focused storage tests passed and retain internal-alpha/file JSON, no authz execution, no multi-record transaction, and productionStorageReady false."
         },
         {
           "id": "inspect-export-boundaries",
           "label": "Inspect PDF export candidate routes separately from the default application server.",
-          "state": "pending",
-          "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items."
+          "state": "passed",
+          "evidenceTarget": "Backend PDF export docs and route contracts identify mounted versus candidate surfaces and production no-go items.",
+          "evidenceIds": [
+            "evidence-backend-service-readiness-boundary-review-2026-08-27"
+          ],
+          "verificationNote": "Reviewed PDF export route, concrete HTTP adapter, local loopback server, activation review, local HTTP composition, and local readiness audit; focused PDF tests passed while default application server mounting and productionBinding remain false."
         },
         {
           "id": "define-readiness-contract",
           "label": "Define the smallest Backend-owned readiness contract or record an explicit no-go decision.",
-          "state": "pending",
-          "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness."
+          "state": "passed",
+          "evidenceTarget": "Backend docs or tests separate development readiness, integration readiness, and production readiness.",
+          "evidenceIds": [
+            "evidence-backend-service-readiness-boundary-review-2026-08-27"
+          ],
+          "verificationNote": "Added `src/contracts/serviceReadiness.ts`, exposed it from `/health`, exported it from `src/index.ts`, and documented the no-go boundary in `docs/BACKEND_SERVICE_READINESS_BOUNDARY.md`."
         },
         {
           "id": "return-evidence-candidate",
           "label": "Return a bounded Project Control evidence candidate without promoting Backend product truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns."
+          "state": "passed",
+          "evidenceTarget": "Evidence candidate includes exact Backend commit, path or contract ID, verification summary, and remaining unknowns.",
+          "evidenceIds": [
+            "evidence-backend-service-readiness-boundary-review-2026-08-27"
+          ],
+          "verificationNote": "Recorded work-scoped evidence with repository `repo-backend`, commit 42cc1040c959a16647b7e797929358c401ccfa38, path `docs/BACKEND_SERVICE_READINESS_BOUNDARY.md`, full Backend gate results, and empty nodeIds to avoid Backend truth promotion."
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
-      "updatedAt": "2026-08-26T00:00:00.000Z"
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "checklist",
@@ -2313,6 +2335,16 @@
       "pathOrContractId": "AGENTS.md",
       "verificationSummary": "Backend AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
       "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-backend-service-readiness-boundary-review-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md",
+      "verificationSummary": "Backend main commit 42cc1040c959a16647b7e797929358c401ccfa38 records the service readiness boundary review, adds src/contracts/serviceReadiness.ts, exposes the bounded readiness envelope from GET /health while retaining top-level status ready for probe compatibility, and documents that the default server is development-ready but production service readiness is blocked. The contract separates loopback fixture-backed default HTTP behavior, internal-alpha file JSON storage, accepted local-only PDF export evidence, unmounted PDF export candidate routes, and remaining production blockers for auth, tenancy, storage providers, export route mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. It also fixes a pre-existing Windows CRLF-sensitive doc test in src/tests/durableCompositionSchedulerDueBatchQualificationDoc.test.ts. Focused Backend checks passed with 8 test files and 22 tests. Backend worktree npm run check and merged main npm run check both passed with 89 test files, 314 tests, 1 skipped file, 24 skipped tests, and build. This evidence supports only the bounded Backend service-readiness boundary lane and does not promote broader Backend, FlowDoc production readiness, hosted providers, auth, tenancy, deployment, or map truth.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",

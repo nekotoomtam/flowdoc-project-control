@@ -6,13 +6,13 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-backend", "repo-project-control"],
-  "workState": "queued",
-  "summary": "Review Backend service surfaces so local dev server, in-memory storage, file JSON storage, and PDF export candidates are not mistaken for production readiness.",
+  "workState": "in-review",
+  "summary": "Recorded a Backend-owned service readiness contract and health envelope so the default local server, internal-alpha storage, and local PDF candidates are not mistaken for production readiness.",
   "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
   "activeRole": "evidence-reviewer",
   "expectedOutput": "Backend-owned evidence or implementation that separates local development readiness from production service, persistence, auth, and export readiness claims.",
-  "riskSummary": "The default Backend server is local and fixture-backed, while storage and PDF export candidates explicitly leave production providers and activation unaccepted.",
-  "requiredEvidence": [],
+  "riskSummary": "Production remains blocked: top-level health status stays ready for probe compatibility, while auth, tenancy, storage provider selection, PDF export mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback remain unaccepted.",
+  "requiredEvidence": ["evidence-backend-service-readiness-boundary-review-2026-08-27"],
   "createdAt": "2026-08-26T00:00:00.000Z",
-  "updatedAt": "2026-08-26T00:00:00.000Z"
+  "updatedAt": "2026-08-27T00:00:00.000Z"
 }
