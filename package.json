@@ -7,6 +7,7 @@
     "dev": "vite --config app/vite.config.ts --host 127.0.0.1",
     "build": "npm run generate && vite build --config app/vite.config.ts",
     "generate": "tsx tools/generate.ts",
+    "generate:sqlite": "tsx -e \"import('./tools/lib/build-sqlite-projection.ts').then((m) => m.generateProjectSqlite(process.cwd()))\"",
     "check:data": "tsx tools/check.ts",
     "type-check": "tsc --noEmit",
     "test": "vitest run --exclude \"tests/e2e/**\"",

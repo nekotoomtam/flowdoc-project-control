@@ -2,6 +2,7 @@ import { access, readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join, resolve } from "node:path";
 import { formatProjectDiagnostics, ProjectValidationError } from "./lib/errors.js";
+import { checkSqliteProjection } from "./lib/build-sqlite-projection.js";
 import { generateToString } from "./generate.js";
 import { validateStoredCoreMigration } from "./migration/lib/validate-migration.js";
 
@@ -38,6 +39,7 @@ export async function checkProjectIndex(rootDir: string, indexPath?: string): Pr
   if (migrationDiagnostics.length > 0) {
     throw new ProjectValidationError(migrationDiagnostics);
   }
+  await checkSqliteProjection(rootDir);
 }
 
 async function pathExists(path: string): Promise<boolean> {

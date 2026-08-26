@@ -4,6 +4,7 @@ import { dirname, join, resolve } from "node:path";
 import type { ProjectDiagnosticsFile } from "../src/model/diagnostics.js";
 import { formatProjectDiagnostics, ProjectValidationError } from "./lib/errors.js";
 import { buildProjectReadModel, serializeProjectReadModel } from "./lib/build-read-model.js";
+import { generateProjectSqlite } from "./lib/build-sqlite-projection.js";
 import { loadAndValidateProject } from "./lib/validate-semantics.js";
 import { writeFileAtomically } from "./lib/write-atomic.js";
 
@@ -20,6 +21,7 @@ export async function generateProjectIndex(rootDir: string, outputPath?: string)
     const contents = await generateToString(rootDir);
     await writeFileAtomically(indexPath, contents);
     await rm(diagnosticsPath, { force: true });
+    await generateProjectSqlite(rootDir, join(dirname(indexPath), "project-control.sqlite"));
   } catch (error: unknown) {
     if (error instanceof ProjectValidationError) {
       await writeFileAtomically(diagnosticsPath, serializeDiagnostics(error));
