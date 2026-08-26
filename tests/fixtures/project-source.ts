@@ -25,6 +25,18 @@ export interface ProjectFixtureOptions {
   documentPathDirectory?: boolean;
   shuffledCreationOrder?: boolean;
   newContractTask?: boolean;
+  missingWorkParent?: boolean;
+  workCycle?: boolean;
+  taskMissingContextDocument?: boolean;
+  taskMissingActiveRole?: boolean;
+  taskMissingExpectedOutput?: boolean;
+  taskWithoutPhase?: boolean;
+  phaseMissingWork?: boolean;
+  duplicateActivePhase?: boolean;
+  checklistMissingPhase?: boolean;
+  checklistMissingEvidenceTarget?: boolean;
+  checklistPassedWithoutSupport?: boolean;
+  checklistPassedWithVerificationNote?: boolean;
   truthState?: TruthState;
   workState?: WorkState;
   documentLifecycle?: DocumentLifecycle;
@@ -118,7 +130,7 @@ export async function createProjectFixture(
     verificationSummary: "Design reviewed.",
     verifiedAt: "2026-08-12T00:00:00.000Z",
   };
-  const taskWork = {
+  const taskWork: Record<string, unknown> = {
     kind: "work",
     id: "pilot-task",
     title: "Pilot Task",
@@ -135,7 +147,7 @@ export async function createProjectFixture(
     createdAt: "2026-08-12T00:00:00.000Z",
     updatedAt: "2026-08-12T00:00:00.000Z",
   };
-  const phase = {
+  const phase: Record<string, unknown> = {
     kind: "phase",
     id: "phase-contract",
     workId: "pilot-task",
@@ -150,7 +162,7 @@ export async function createProjectFixture(
     createdAt: "2026-08-12T00:00:00.000Z",
     updatedAt: "2026-08-12T00:00:00.000Z",
   };
-  const checklist = {
+  const checklist: Record<string, unknown> = {
     kind: "checklist",
     id: "checklist-contract",
     phaseId: "phase-contract",
@@ -160,10 +172,28 @@ export async function createProjectFixture(
       label: "Define the execution contract.",
       state: "pending",
       evidenceTarget: "A checklist item records the target before Evidence exists.",
-    }],
+    }] as Record<string, unknown>[],
     createdAt: "2026-08-12T00:00:00.000Z",
     updatedAt: "2026-08-12T00:00:00.000Z",
   };
+
+  if (options.missingWorkParent) taskWork.parentWorkId = "missing-work";
+  if (options.workCycle) {
+    work.parentWorkId = "pilot-task";
+    taskWork.parentWorkId = "pilot";
+  }
+  if (options.taskMissingContextDocument) delete taskWork.contextDocumentIds;
+  if (options.taskMissingActiveRole) delete taskWork.activeRole;
+  if (options.taskMissingExpectedOutput) delete taskWork.expectedOutput;
+  if (options.phaseMissingWork) phase.workId = "missing-work";
+  if (options.checklistMissingPhase) checklist.phaseId = "missing-phase";
+  const checklistItems = checklist.items as Record<string, unknown>[];
+  if (options.checklistMissingEvidenceTarget) checklistItems[0]!.evidenceTarget = " ";
+  if (options.checklistPassedWithoutSupport) checklistItems[0]!.state = "passed";
+  if (options.checklistPassedWithVerificationNote) {
+    checklistItems[0]!.state = "passed";
+    checklistItems[0]!.verificationNote = "Verified by read-only fixture review.";
+  }
 
   await mkdir(join(root, "docs"), { recursive: true });
   if (!options.missingDocumentFile && !options.escapingDocumentPath) {
@@ -205,14 +235,24 @@ export async function createProjectFixture(
   ];
 
   if (options.newContractTask) {
-    records.push(
-      writeFile(join(root, "data", "work", "pilot-task.json"), JSON.stringify(taskWork)),
-      writeFile(join(root, "data", "phases", "phase-contract.json"), JSON.stringify(phase)),
-      writeFile(
-        join(root, "data", "checklists", "checklist-contract.json"),
-        JSON.stringify(checklist),
-      ),
-    );
+    records.push(writeFile(join(root, "data", "work", "pilot-task.json"), JSON.stringify(taskWork)));
+    if (!options.taskWithoutPhase) {
+      records.push(
+        writeFile(join(root, "data", "phases", "phase-contract.json"), JSON.stringify(phase)),
+        writeFile(
+          join(root, "data", "checklists", "checklist-contract.json"),
+          JSON.stringify(checklist),
+        ),
+      );
+    }
+    if (options.duplicateActivePhase) {
+      records.push(
+        writeFile(
+          join(root, "data", "phases", "phase-contract-duplicate.json"),
+          JSON.stringify({ ...phase, id: "phase-contract-duplicate", workId: "pilot-task", phaseState: "in-progress" }),
+        ),
+      );
+    }
   }
 
   if (options.nodeCycle) {
