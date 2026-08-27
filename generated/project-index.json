@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "368d5f255879649d70aab0557f88c13403d2466aae645ab50d389e610e155197",
+  "sourceDigest": "b746d199df8f67b2a3b989bd23560aab2803ff9417e313623b6e24dae7033b6c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -4169,9 +4169,9 @@
         "flowdoc"
       ],
       "repositoryId": "repo-project-control",
-      "commit": "44ebfc356e01cc83bf15dbb41b35335ea800b6d5",
+      "commit": "61413513552bba0d078b2d8e03b0b06abdbe633c",
       "pathOrContractId": "docs/domains/flowdoc-product-terminology.md",
-      "verificationSummary": "Project Control defines a product terminology foundation for overloaded FlowDoc terms, adds a Thai companion, and updates AGENTS/global/round workflow rules so future Editor/frontend and cross-repository product rounds classify ambiguous terms before implementation. This evidence supports only the terminology and workflow-control boundary; it does not promote product readiness, Core truth, Backend truth, Editor truth, deployed compatibility, or frontend design readiness.",
+      "verificationSummary": "Project Control commit 61413513552bba0d078b2d8e03b0b06abdbe633c defines a product terminology foundation for overloaded FlowDoc terms, adds a Thai companion, and updates AGENTS/global/round workflow rules so future Editor/frontend and cross-repository product rounds classify ambiguous terms before implementation. This evidence supports only the terminology and workflow-control boundary; it does not promote product readiness, Core truth, Backend truth, Editor truth, deployed compatibility, or frontend design readiness.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
