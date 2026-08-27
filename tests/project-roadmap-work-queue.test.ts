@@ -70,10 +70,10 @@ const remediationTasks = [
   {
     id: "backend-service-contract-hardening",
     nodeId: "backend",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-backend-service-contract-hardening",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-backend-service-contract-hardening",
     checklistLength: 6,
   },
@@ -407,6 +407,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-backend-core-version-contract-consumer-hardening")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-backend-service-contract-hardening")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.documents.find((item) => item.id === "doc-backend-core-version-contract-consumer-hardening-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
