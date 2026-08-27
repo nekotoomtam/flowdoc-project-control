@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-runtime-version-contract-hardening",
+  "phaseId": "phase-core-runtime-version-contract-hardening",
+  "title": "Core Runtime Version Contract Hardening Checklist",
+  "items": [
+    {
+      "id": "capture-current-core-backend-boundary",
+      "label": "Capture Project Control, Core, and Backend heads, repository AGENTS rules, current evidence, and version-related surfaces before product edits.",
+      "state": "in-progress",
+      "evidenceTarget": "Exact Project Control, Core, and Backend commits plus clean/dirty state, AGENTS.md rules, current evidence records, and an initial version-surface inventory are recorded for the Core implementation lane."
+    },
+    {
+      "id": "confirm-core-owner-and-backend-consumer-boundary",
+      "label": "Confirm that Core owns runtime version semantics while Backend remains a consumer until a Core contract is proved.",
+      "state": "pending",
+      "evidenceTarget": "Core-owned files, package contracts, and Backend imports identify which repository may change behavior and which consumer checks must remain bounded."
+    },
+    {
+      "id": "write-failing-version-contract-tests",
+      "label": "Write failing Core tests for the runtime version, migration, mutation, and cleanup expectations before implementation.",
+      "state": "pending",
+      "evidenceTarget": "Focused Core test output fails for the intended missing or weak contract before implementation changes are made."
+    },
+    {
+      "id": "harden-runtime-version-contract",
+      "label": "Implement the smallest Core runtime version contract hardening that satisfies the failing tests without widening public claims.",
+      "state": "pending",
+      "evidenceTarget": "Core implementation and focused tests prove the accepted runtime version, migration, mutation, and public-boundary behavior."
+    },
+    {
+      "id": "classify-retirement-inventory",
+      "label": "Classify every old version surface as deleted, retained for migration, retained for evidence, or blocked with an owner and reason.",
+      "state": "pending",
+      "evidenceTarget": "A Core-owned retirement inventory names each old version code path, fixture, document contract, or public export touched by the lane and records its classification."
+    },
+    {
+      "id": "remove-dead-or-record-retained",
+      "label": "Delete proven-unused old version code and keep only surfaces with explicit migration, evidence, consumer, or blocker reasons.",
+      "state": "pending",
+      "evidenceTarget": "Diff, tests, and retirement inventory show what was deleted, what was retained, and why no unclassified old version surface remains in scope."
+    },
+    {
+      "id": "verify-owner-and-consumer-gates",
+      "label": "Run Core owner gates and bounded Backend consumer checks required by the changed public contract.",
+      "state": "pending",
+      "evidenceTarget": "Fresh Core worktree and merged-main verification plus any required Backend focused checks pass, or failures are recorded as blockers."
+    },
+    {
+      "id": "register-bounded-evidence",
+      "label": "Register Project Control evidence for the bounded hardening result without promoting broad Core or Backend truth.",
+      "state": "pending",
+      "evidenceTarget": "Project Control Evidence and optional verification document cite exact commits, paths, commands, supported claims, risks, and unknowns while Core and Backend broad truth remain unpromoted."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

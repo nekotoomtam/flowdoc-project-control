@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-core-runtime-version-contract-hardening",
+  "workId": "core-runtime-version-contract-hardening",
+  "title": "Harden Core Runtime Version Contracts",
+  "phaseState": "in-progress",
+  "order": 10,
+  "repositoryIds": ["repo-core", "repo-backend", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, checklist target, and evidence target before Core product edits.",
+    "Core product behavior would be edited before reading the Core repository AGENTS.md in a dedicated Core worktree.",
+    "A version-surface deletion target cannot be proven unused or classified as retained for migration, retained for evidence, or blocked.",
+    "Backend compatibility would be changed or claimed without a Core-owned public contract and fresh consumer-boundary evidence.",
+    "The lane would promote broad Core, Backend, or FlowDoc truth from a narrow runtime-version hardening result."
+  ],
+  "verificationTarget": "Core worktree evidence proves the runtime version contract, migration and mutation behavior, public consumer boundary, and retirement inventory; Project Control records the bounded result without broad Node truth promotion.",
+  "summary": "Begin the Core runtime version contract hardening phase with an explicit cleanup and retirement inventory gate before Backend hardening.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

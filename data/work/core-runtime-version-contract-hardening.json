@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "core-runtime-version-contract-hardening",
+  "title": "Core Runtime Version Contract Hardening",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-core", "repo-backend", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Open the Core-owned runtime version contract hardening lane before Backend hardening: inspect package/document version surfaces, migration and mutation contracts, public consumer boundaries, and old or unused version code that must be deleted, retained for migration, retained for evidence, or blocked with a reason.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-core-v0-1-0a-1-document-map", "doc-core-default-gate-stability-review-2026-08-27", "doc-cross-repository-compatibility-evidence-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "A Core-owned implementation patch or bounded blocker that hardens runtime version contracts, proves migration/mutation/public-boundary behavior with Core tests, and includes a retirement inventory for old version surfaces before Backend adoption work proceeds.",
+  "riskSummary": "Broader Core and Backend truth remain unknown; deleting old version surfaces can break migration, evidence replay, or Backend consumers if each target is not classified first.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
