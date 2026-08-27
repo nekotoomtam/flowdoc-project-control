@@ -120,10 +120,10 @@ const remediationTasks = [
   {
     id: "editor-browser-live-backend-smoke",
     nodeId: "flowdoc",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-editor-browser-live-backend-smoke",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-editor-browser-live-backend-smoke",
     checklistLength: 6,
   },
@@ -283,10 +283,19 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-editor-backend-core-live-compatibility-harness")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-editor-browser-live-backend-smoke")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.documents.find((item) => item.id === "doc-editor-backend-core-live-compatibility-harness-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
         path: "docs/domains/editor-backend-core-live-compatibility-harness-2026-08-27.md",
+        role: "verification",
+      });
+    expect(model.documents.find((item) => item.id === "doc-editor-browser-live-backend-smoke-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        path: "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
         role: "verification",
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"))
@@ -298,6 +307,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27")?.verificationSummary)
       .toContain("accepted live Editor client to Backend server to Core harness");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+        pathOrContractId: "src/fixtures/editor-browser-live-backend-smoke.v1.json",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27")?.verificationSummary)
+      .toContain("accepted bounded browser-app live Backend smoke");
     expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-browser-live-backend-smoke-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+  "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json",
+  "verificationSummary": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 provides an accepted bounded browser-app live Backend smoke. The npm script evidence:editor-browser-live-backend-smoke starts a live loopback Backend server in process, seeds it with the Core product-report-vnext-minimal fixture, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, enters /documents/product-report-vnext-minimal/design through the product UI, observes Core: api r3 with compatible versions, clicks Upgrade and observes Core: api r4 partial mode, selects title, clicks Move selected node down, observes Core: mutation-result r5, and retains final outline order summary-columns > title > detail-table. Retained evidence records Backend requests for /documents?limit=24, /capabilities/versions, /documents/product-report-vnext-minimal, /migrations/package-v3-document-v4, and /mutations with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree npm run check passed type-check, 79 test files, 285 tests, and build; merged Editor main re-ran the browser smoke with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same owner gate. Backend and Core were clean and unchanged. This supports only the bounded local loopback headless Chrome product-route smoke claim; it does not promote FlowDoc/product readiness truth, deployed Backend compatibility, cross-browser readiness, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

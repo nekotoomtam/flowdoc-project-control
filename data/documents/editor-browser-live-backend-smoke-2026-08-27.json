@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-browser-live-backend-smoke-2026-08-27",
+  "title": "Editor Browser Live Backend Smoke - 2026-08-27",
+  "path": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped browser-app live Backend smoke evidence for the current local Editor, Backend, and Core heads; records the accepted headless Chrome product-route smoke, owner gate results, risks, and unknowns without promoting FlowDoc or repository truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "f2ccbfbc87d5e9637e3d58277cbd6de564840f7a",
+      "pathOrContractId": "data/work/editor-browser-live-backend-smoke.json"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "src/http/server.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+    }
+  ]
+}

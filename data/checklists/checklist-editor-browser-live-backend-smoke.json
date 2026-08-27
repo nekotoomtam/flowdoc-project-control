@@ -7,38 +7,50 @@
     {
       "id": "capture-current-boundaries",
       "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, browser-test surfaces, and prior live harness evidence before editing.",
-      "state": "pending",
-      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed."
+      "state": "passed",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Reviewed Project Control f2ccbfbc87d5e9637e3d58277cbd6de564840f7a, Editor 16a8fde628b887624249d50a162241ef2d96a415 before the browser smoke lane, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, AGENTS.md boundaries, and the prior Editor Backend Core live compatibility harness evidence before Editor edits."
     },
     {
       "id": "confirm-browser-smoke-owner",
       "label": "Confirm the browser smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
-      "state": "pending",
-      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+      "state": "passed",
+      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Kept the smoke Editor-owned in scripts/run-editor-browser-live-backend-smoke.mjs, src/fixtures/editor-browser-live-backend-smoke.v1.json, and src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts. Backend server/storage/fixture behavior and Core fixture semantics stayed in their owning repositories with no Backend or Core file changes."
     },
     {
       "id": "write-failing-browser-smoke-test",
       "label": "Write an Editor-owned failing browser smoke for the rendered app plus live Backend URL.",
-      "state": "pending",
-      "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path."
+      "state": "passed",
+      "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Focused RED failed as expected before implementation: npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose returned ENOENT because src/fixtures/editor-browser-live-backend-smoke.v1.json did not exist yet."
     },
     {
       "id": "implement-minimal-browser-smoke",
       "label": "Implement the minimal test or app wiring needed for the browser-visible live Backend/Core path, or record a boundary blocker if product UI is missing.",
-      "state": "pending",
-      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence."
+      "state": "passed",
+      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 adds the browser smoke npm script, CDP/Vite live Backend runner, retained fixture, and retained evidence test. It uses product routes /documents and /documents/product-report-vnext-minimal/design and changes no Editor production UI/runtime behavior."
     },
     {
       "id": "verify-owner-gates",
       "label": "Run focused and full owner repository gates after the browser smoke is in place or after the blocker is recorded.",
-      "state": "pending",
-      "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded."
+      "state": "passed",
+      "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Editor worktree evidence script passed, focused retained evidence test passed, and npm run check passed type-check, 79 test files, 285 tests, and build. Merged Editor main re-ran the evidence script with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same 79 test files, 285 tests, and build. Backend and Core were clean and unchanged."
     },
     {
       "id": "register-bounded-evidence",
       "label": "Register the browser smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-smoke-2026-08-27"],
+      "verificationNote": "Added work-scoped Document and Evidence records with empty nodeIds and did not update FlowDoc/Core/Editor/Backend node truth, documentIds, or evidenceIds. The packet records the bounded browser smoke claim, risks, unknowns, and intentionally unpromoted truth."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",

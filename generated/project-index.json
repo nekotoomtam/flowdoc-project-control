@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6f85e969678f289c8fe888ce34a6a3604144114c637efcc3f150c29a780ff92c",
+  "sourceDigest": "45c4cb3ee6df3f00a116390dfa01c3f9c1b6d53199dabec25738a963e9e3ac99",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -620,8 +620,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Add a bounded browser-app smoke that launches the rendered Editor app against a live loopback Backend server and proves the browser-visible runtime can traverse the same Backend/Core compatibility path without relying only on Node-level harness evidence.",
+      "workState": "in-review",
+      "summary": "Completed the bounded Editor browser-app smoke: a real headless Chrome session opens the rendered product routes against a live loopback Backend server, loads the Core-backed document, applies migration through the UI, commits one UI reorder mutation, and retains the observed Backend request/status evidence.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -631,12 +631,15 @@
         "doc-work-tree-operating-rules",
         "doc-cross-repository-compatibility-evidence-2026-08-27",
         "doc-core-default-gate-stability-review-2026-08-27",
-        "doc-editor-backend-core-live-compatibility-harness-2026-08-27"
+        "doc-editor-backend-core-live-compatibility-harness-2026-08-27",
+        "doc-editor-browser-live-backend-smoke-2026-08-27"
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "An Editor-owned browser smoke test or a boundary blocker that distinguishes the rendered browser app plus live Backend/Core path from the accepted Node loopback harness, followed by Project Control evidence registration without broad map promotion.",
-      "riskSummary": "The previous live harness is Node loopback evidence only; this lane must avoid treating a browser smoke as production readiness, must preserve Backend/Core ownership, and must not promote FlowDoc truth before browser evidence and owner gates pass.",
-      "requiredEvidence": [],
+      "riskSummary": "The smoke proves only a local loopback headless Chrome product-route path over one seeded Core fixture and one UI reorder mutation. It does not prove deployed Backend readiness, cross-browser behavior, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-splitting readiness.",
+      "requiredEvidence": [
+        "evidence-editor-browser-live-backend-smoke-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -928,7 +931,7 @@
       "id": "phase-editor-browser-live-backend-smoke",
       "workId": "editor-browser-live-backend-smoke",
       "title": "Prove Browser App Live Backend Smoke",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-editor",
@@ -945,7 +948,7 @@
         "The smoke makes browser-app or production-readiness claims broader than the bounded local loopback evidence can support."
       ],
       "verificationTarget": "An Editor-owned browser test starts a live Backend server, launches the rendered Editor app with the live Backend URL, exercises a visible browser path for capability/read/migration/mutation or records the exact missing UI blocker, and Project Control records the result without broad map promotion.",
-      "summary": "In progress: open the browser smoke lane after the accepted Node loopback live compatibility harness and before any browser-app compatibility truth promotion.",
+      "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1385,38 +1388,62 @@
         {
           "id": "capture-current-boundaries",
           "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, browser-test surfaces, and prior live harness evidence before editing.",
-          "state": "pending",
-          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed."
+          "state": "passed",
+          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Reviewed Project Control f2ccbfbc87d5e9637e3d58277cbd6de564840f7a, Editor 16a8fde628b887624249d50a162241ef2d96a415 before the browser smoke lane, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, AGENTS.md boundaries, and the prior Editor Backend Core live compatibility harness evidence before Editor edits."
         },
         {
           "id": "confirm-browser-smoke-owner",
           "label": "Confirm the browser smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
-          "state": "pending",
-          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+          "state": "passed",
+          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Kept the smoke Editor-owned in scripts/run-editor-browser-live-backend-smoke.mjs, src/fixtures/editor-browser-live-backend-smoke.v1.json, and src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts. Backend server/storage/fixture behavior and Core fixture semantics stayed in their owning repositories with no Backend or Core file changes."
         },
         {
           "id": "write-failing-browser-smoke-test",
           "label": "Write an Editor-owned failing browser smoke for the rendered app plus live Backend URL.",
-          "state": "pending",
-          "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path."
+          "state": "passed",
+          "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Focused RED failed as expected before implementation: npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose returned ENOENT because src/fixtures/editor-browser-live-backend-smoke.v1.json did not exist yet."
         },
         {
           "id": "implement-minimal-browser-smoke",
           "label": "Implement the minimal test or app wiring needed for the browser-visible live Backend/Core path, or record a boundary blocker if product UI is missing.",
-          "state": "pending",
-          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence."
+          "state": "passed",
+          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 adds the browser smoke npm script, CDP/Vite live Backend runner, retained fixture, and retained evidence test. It uses product routes /documents and /documents/product-report-vnext-minimal/design and changes no Editor production UI/runtime behavior."
         },
         {
           "id": "verify-owner-gates",
           "label": "Run focused and full owner repository gates after the browser smoke is in place or after the blocker is recorded.",
-          "state": "pending",
-          "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded."
+          "state": "passed",
+          "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Editor worktree evidence script passed, focused retained evidence test passed, and npm run check passed type-check, 79 test files, 285 tests, and build. Merged Editor main re-ran the evidence script with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same 79 test files, 285 tests, and build. Backend and Core were clean and unchanged."
         },
         {
           "id": "register-bounded-evidence",
           "label": "Register the browser smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-smoke-2026-08-27"
+          ],
+          "verificationNote": "Added work-scoped Document and Evidence records with empty nodeIds and did not update FlowDoc/Core/Editor/Backend node truth, documentIds, or evidenceIds. The packet records the bounded browser smoke claim, risks, unknowns, and intentionally unpromoted truth."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -1843,6 +1870,39 @@
         }
       ],
       "content": "# Editor Backend Core Live Compatibility Harness - 2026-08-27\n\nStatus: bounded live harness complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-backend-core-live-compatibility-harness`\n\nOwner repositories: `repo-editor`, `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-backend-core-live-compatibility-harness`\n\nChecklist: `checklist-editor-backend-core-live-compatibility-harness`\n\nEvidence target: `evidence-editor-backend-core-live-compatibility-harness-2026-08-27`\n\n## Scope\n\nThis lane adds the first accepted live compatibility harness for the current\nlocal FlowDoc Core, Editor, and Backend heads. The harness is Editor-owned and\nproves the Node loopback path from real Editor client calls to a real Backend\nHTTP server and Core-backed document semantics.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `bf987f72820d7a7eb8cfc0f84840808758cc201d` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `16a8fde628b887624249d50a162241ef2d96a415` | Owner implementation and verified harness commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged fixture and public semantic operation source. |\n\nEditor setup commit `e93414e0246c2177c29d5c5b6215fa1f7afcf5c6`\nadded `.worktrees/` to Editor `.gitignore` before the implementation worktree\nwas created.\n\n## Harness Path Proven\n\nEditor test `src/tests/liveCompatibilityHarness.test.ts` now proves one live\nruntime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `loadProductReportMinimalPackage()` from the Core-backed fixture.\n3. Read `/capabilities/versions` through `createFlowDocBackendClient(...)` and\n   verify the advertised active, migration, mutation, and source snapshot\n   contract.\n4. Read `product-report-vnext-minimal` through the real Editor Backend client.\n5. Bind the returned transport envelope through\n   `loadFrontendCoreWorkingSetFromTransportEnvelope(...)` and boot Editor\n   runtime state.\n6. Build an explicit Editor migration request with\n   `createBackendMigrationRequest(...)`.\n7. Post the migration to Backend, read the migrated target document, and apply\n   it through `applyRuntimeBackendMigrationResult(...)`.\n8. Build a v4 `node.reorder` mutation with\n   `createBackendMutationRequestFromCommand(...)`, commit it to Backend, and\n   apply the returned Core-backed mutation envelope through\n   `applyRuntimeBackendMutationResult(...)`.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose`\n  failed before implementation because\n  `flowdoc-vnext-backend/fixtures/productReportMinimal` could not resolve.\n\nFocused GREEN:\n\n- `npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `16a8fde628b887624249d50a162241ef2d96a415` changed:\n\n- `src/tests/liveCompatibilityHarness.test.ts`\n- `tsconfig.json`\n- `vite.config.ts`\n- `vitest.config.ts`\n\nThe config changes are resolver hardening for local sibling repositories so the\nsame tests and build work from both the main checkout and a nested Editor\nworktree.\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Focused harness: 1 test passed.\n- `npm run check`: type-check passed; 78 test files passed; 284 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `npm run check`: type-check passed; 78 test files passed; 284 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\n## PASS\n\n- A single accepted test now spans the real Editor Backend client, real Backend\n  HTTP server, Core-backed fixture read, explicit migration, v4 mutation, and\n  Editor runtime apply gates.\n- Editor production runtime behavior remains unchanged.\n- Backend continues to own HTTP, persistence, migration, and mutation service\n  behavior.\n- Core continues to own fixture parsing, migration semantics, and mutation\n  semantics through public contracts.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this live harness lane.\n\n## RISK\n\n- The harness is a Node loopback test, not a browser-app end-to-end test.\n- The harness covers one fixture and one v4 `node.reorder` mutation after\n  migration; it does not cover the broader document corpus or every operation.\n- Editor test wiring imports Backend source subpaths through local sibling\n  resolver aliases because Backend does not yet publish a dedicated test harness\n  package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether the full browser app, live CORS behavior in a real\n  browser session, and deployed Backend environment complete the same flow.\n- It remains unknown whether all FlowDoc package/document variants and all\n  Backend mutation operations are covered by equivalent live harnesses.\n- This lane does not prove broader product readiness beyond the cited harness\n  and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor browser UI behavior was changed.\n- No npm audit remediation or bundle splitting was attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the next compatibility decision.\nThe next work should either promote only this bounded harness claim or open a\nseparate browser-app smoke lane that exercises the same path from the rendered\nEditor app against a live Backend server.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-browser-live-backend-smoke-2026-08-27",
+      "title": "Editor Browser Live Backend Smoke - 2026-08-27",
+      "path": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped browser-app live Backend smoke evidence for the current local Editor, Backend, and Core heads; records the accepted headless Chrome product-route smoke, owner gate results, risks, and unknowns without promoting FlowDoc or repository truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "f2ccbfbc87d5e9637e3d58277cbd6de564840f7a",
+          "pathOrContractId": "data/work/editor-browser-live-backend-smoke.json"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+          "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "src/http/server.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+        }
+      ],
+      "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
     },
     {
       "kind": "document",
@@ -3082,6 +3142,16 @@
       "pathOrContractId": "docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md",
       "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 records the Backend-unavailable honesty review, keeps fixture boot visible when Backend capability is unavailable, and changes src/app/EditorShell.tsx so package 2/document 3 migration-required Preview copy is shown only for Backend API working sets with compatible version capability. The same Shell gate now requires a fresh Core envelope before rendering Preview test input. It adds src/tests/editorBackendUnavailableHonesty.test.ts to prove fixture unavailable/checking Preview states keep Draft/Published status and Retry visible, compatible Backend API documents still show migration-required copy, and Preview input rendering remains gated on core.envelope.status === fresh. Focused Editor checks passed with 7 test files and 39 tests. Editor worktree npm run check and merged main npm run check both passed with 77 test files, 283 tests, and build; build retained the existing Vite chunk-size warning. This evidence supports only the bounded Editor backend-unavailable Preview honesty lane and does not promote broader Editor, Backend, Core, production readiness, auth, persistence, or document-map truth.",
       "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-browser-live-backend-smoke-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json",
+      "verificationSummary": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 provides an accepted bounded browser-app live Backend smoke. The npm script evidence:editor-browser-live-backend-smoke starts a live loopback Backend server in process, seeds it with the Core product-report-vnext-minimal fixture, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, enters /documents/product-report-vnext-minimal/design through the product UI, observes Core: api r3 with compatible versions, clicks Upgrade and observes Core: api r4 partial mode, selects title, clicks Move selected node down, observes Core: mutation-result r5, and retains final outline order summary-columns > title > detail-table. Retained evidence records Backend requests for /documents?limit=24, /capabilities/versions, /documents/product-report-vnext-minimal, /migrations/package-v3-document-v4, and /mutations with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree npm run check passed type-check, 79 test files, 285 tests, and build; merged Editor main re-ran the browser smoke with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same owner gate. Backend and Core were clean and unchanged. This supports only the bounded local loopback headless Chrome product-route smoke claim; it does not promote FlowDoc/product readiness truth, deployed Backend compatibility, cross-browser readiness, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",
