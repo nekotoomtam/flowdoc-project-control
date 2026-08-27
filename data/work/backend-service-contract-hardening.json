@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "backend-service-contract-hardening",
+  "title": "Backend Service Contract Hardening",
+  "nodeId": "backend",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-backend", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Harden Backend service readiness into explicit contracts and route-visible status so frontend redesign work cannot mistake local development readiness for production Backend readiness.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-role-catalog", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-product-terminology", "doc-flowdoc-product-terminology-th", "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Backend-owned contract and tests that expose unresolved production readiness requirements as explicit blocking capabilities or deployment preflight facts, followed by a Project Control evidence record after Backend verification.",
+  "riskSummary": "Until Backend implementation and verification are complete, production readiness remains blocked for auth, tenancy, storage provider selection, worker orchestration, export route mounting, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. This Work record is an execution target, not evidence.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

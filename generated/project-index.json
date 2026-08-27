@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "56af9c43d46368ca292956f8e57b5ee4ffb9ca0bc293e91997b0c7cb9d00da81",
+  "sourceDigest": "1ceacbe7cd7138c57cb94aa59942ad33b3008308b2d2540123ae5aa7280cdf34",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -235,6 +235,7 @@
       "childIds": [],
       "workIds": [
         "backend-core-version-contract-consumer-hardening",
+        "backend-service-contract-hardening",
         "backend-service-readiness-boundary-review"
       ]
     },
@@ -406,6 +407,46 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "backend-core-version-contract-consumer-hardening"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "backend-service-contract-hardening",
+      "title": "Backend Service Contract Hardening",
+      "nodeId": "backend",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Harden Backend service readiness into explicit contracts and route-visible status so frontend redesign work cannot mistake local development readiness for production Backend readiness.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Backend-owned contract and tests that expose unresolved production readiness requirements as explicit blocking capabilities or deployment preflight facts, followed by a Project Control evidence record after Backend verification.",
+      "riskSummary": "Until Backend implementation and verification are complete, production readiness remains blocked for auth, tenancy, storage provider selection, worker orchestration, export route mounting, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. This Work record is an execution target, not evidence.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-backend-service-contract-hardening"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "backend-service-contract-hardening"
       ]
     },
     {
@@ -920,6 +961,7 @@
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
         "backend-core-version-contract-consumer-hardening",
+        "backend-service-contract-hardening",
         "backend-service-readiness-boundary-review",
         "core-default-gate-stability-review",
         "core-public-export-boundary-review",
@@ -1106,6 +1148,31 @@
       ],
       "verificationTarget": "Backend worktree evidence proves version capability reporting cannot drift from the Core-owned contract, preserves Backend revision/persistence ownership, classifies copied facts, and Project Control records the bounded result without broad truth promotion.",
       "summary": "Done: Backend now wraps the Core version capability and retirement-inventory contract, classifies copied version facts, preserves Backend revision/persistence boundaries, and passed focused plus full Backend gates without promoting broad Backend truth.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-backend-service-contract-hardening",
+      "workId": "backend-service-contract-hardening",
+      "title": "Harden Backend Service Contracts For Frontend Readiness",
+      "phaseState": "in-progress",
+      "order": 30,
+      "repositoryIds": [
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing Backend.",
+        "The Backend change would claim production readiness without tests and an explicit bounded contract.",
+        "Local development readiness, loopback smoke evidence, or top-level health status would be treated as deployed production service readiness.",
+        "The change would move Core document package semantics into Backend instead of calling Core-owned contracts.",
+        "The change would require Editor/frontend UI redesign before Backend contract status is explicit.",
+        "Backend or Project Control gates fail after implementation."
+      ],
+      "verificationTarget": "Backend commit plus Project Control evidence target evidence-backend-service-contract-hardening-2026-08-27 proving production blockers are exposed through Backend-owned contract/readiness status while broader Backend and FlowDoc truth remain unpromoted.",
+      "summary": "In progress: Project Control opened the Backend-owned service contract hardening lane before product implementation.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1523,6 +1590,53 @@
             "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
           ],
           "verificationNote": "Project Control evidence and verification document are work-scoped with nodeIds empty; Backend, Core, Editor, and FlowDoc broad truth states remain unpromoted."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-backend-service-contract-hardening",
+      "phaseId": "phase-backend-service-contract-hardening",
+      "title": "Backend Service Contract Hardening Checklist",
+      "items": [
+        {
+          "id": "capture-work-context",
+          "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before Backend edits.",
+          "state": "passed",
+          "evidenceTarget": "Project Control registers the Backend-owned Work path and names evidence-backend-service-contract-hardening-2026-08-27 as the post-implementation evidence target.",
+          "verificationNote": "Project Control opened work path flowdoc-product-development-resumption > backend-service-contract-hardening with owner repo-backend, active role product-implementation-agent, phase-backend-service-contract-hardening, checklist-backend-service-contract-hardening, and future evidence target evidence-backend-service-contract-hardening-2026-08-27."
+        },
+        {
+          "id": "read-backend-agreement",
+          "label": "Read Backend AGENTS.md and relevant Backend service readiness contracts before editing.",
+          "state": "pending",
+          "evidenceTarget": "Backend implementation notes cite the repository working agreement and touched contract/test surfaces."
+        },
+        {
+          "id": "write-backend-red-test",
+          "label": "Write a Backend RED test that fails because production blockers are not explicit enough for frontend planning.",
+          "state": "pending",
+          "evidenceTarget": "Focused Backend test fails before implementation for the missing contract or readiness status."
+        },
+        {
+          "id": "harden-backend-contract",
+          "label": "Implement the smallest Backend contract change that exposes unresolved production readiness requirements.",
+          "state": "pending",
+          "evidenceTarget": "Backend contract or health route reports explicit blocked capabilities without claiming production readiness."
+        },
+        {
+          "id": "verify-backend-gates",
+          "label": "Run focused Backend tests and the full Backend gate in the Backend worktree and merged main.",
+          "state": "pending",
+          "evidenceTarget": "Backend focused test and npm run check pass in the worktree and after merge to main."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Register the Backend evidence packet in Project Control without map or parent truth promotion.",
+          "state": "pending",
+          "evidenceTarget": "Project Control evidence-backend-service-contract-hardening-2026-08-27 cites the Backend commit, path or contract id, verification summary, remaining risks, and unknowns."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",

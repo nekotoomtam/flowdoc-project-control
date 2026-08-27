@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-backend-service-contract-hardening",
+  "workId": "backend-service-contract-hardening",
+  "title": "Harden Backend Service Contracts For Frontend Readiness",
+  "phaseState": "in-progress",
+  "order": 30,
+  "repositoryIds": ["repo-backend", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing Backend.",
+    "The Backend change would claim production readiness without tests and an explicit bounded contract.",
+    "Local development readiness, loopback smoke evidence, or top-level health status would be treated as deployed production service readiness.",
+    "The change would move Core document package semantics into Backend instead of calling Core-owned contracts.",
+    "The change would require Editor/frontend UI redesign before Backend contract status is explicit.",
+    "Backend or Project Control gates fail after implementation."
+  ],
+  "verificationTarget": "Backend commit plus Project Control evidence target evidence-backend-service-contract-hardening-2026-08-27 proving production blockers are exposed through Backend-owned contract/readiness status while broader Backend and FlowDoc truth remain unpromoted.",
+  "summary": "In progress: Project Control opened the Backend-owned service contract hardening lane before product implementation.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
