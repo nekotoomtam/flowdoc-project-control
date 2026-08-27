@@ -7,50 +7,66 @@
     {
       "id": "capture-current-core-backend-boundary",
       "label": "Capture Project Control, Core, and Backend heads, repository AGENTS rules, current evidence, and version-related surfaces before product edits.",
-      "state": "in-progress",
-      "evidenceTarget": "Exact Project Control, Core, and Backend commits plus clean/dirty state, AGENTS.md rules, current evidence records, and an initial version-surface inventory are recorded for the Core implementation lane."
+      "state": "passed",
+      "evidenceTarget": "Exact Project Control, Core, and Backend commits plus clean/dirty state, AGENTS.md rules, current evidence records, and an initial version-surface inventory are recorded for the Core implementation lane.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "Reviewed Project Control and Core AGENTS rules plus Core README, WORKSPACE_BOUNDARY, LEGACY_MIGRATION_GATE, PHASE_LEDGER, CROSS_REPO_OPERATING_MAP, version capability code/tests/docs, and package v2/v3 parser/migration files. Product edits were made only in Core."
     },
     {
       "id": "confirm-core-owner-and-backend-consumer-boundary",
       "label": "Confirm that Core owns runtime version semantics while Backend remains a consumer until a Core contract is proved.",
-      "state": "pending",
-      "evidenceTarget": "Core-owned files, package contracts, and Backend imports identify which repository may change behavior and which consumer checks must remain bounded."
+      "state": "passed",
+      "evidenceTarget": "Core-owned files, package contracts, and Backend imports identify which repository may change behavior and which consumer checks must remain bounded.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "The additive inventory is owned by Core in src/schema/versionCapability.ts and does not change Backend routes, persistence, parser execution, or existing capability values."
     },
     {
       "id": "write-failing-version-contract-tests",
       "label": "Write failing Core tests for the runtime version, migration, mutation, and cleanup expectations before implementation.",
-      "state": "pending",
-      "evidenceTarget": "Focused Core test output fails for the intended missing or weak contract before implementation changes are made."
+      "state": "passed",
+      "evidenceTarget": "Focused Core test output fails for the intended missing or weak contract before implementation changes are made.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "RED: tests/versionCapability.test.ts failed because VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY_VERSION was undefined and docs/VERSION_CAPABILITY_CONTRACT.md lacked the retirement inventory section."
     },
     {
       "id": "harden-runtime-version-contract",
       "label": "Implement the smallest Core runtime version contract hardening that satisfies the failing tests without widening public claims.",
-      "state": "pending",
-      "evidenceTarget": "Core implementation and focused tests prove the accepted runtime version, migration, mutation, and public-boundary behavior."
+      "state": "passed",
+      "evidenceTarget": "Core implementation and focused tests prove the accepted runtime version, migration, mutation, and public-boundary behavior.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "Core commit 992dbbbd6b6ac8f921d3dd98bd3515b77728868f added a JSON-safe version-surface retirement inventory export and documentation while preserving existing capability contract, parser, runtime, and migration behavior."
     },
     {
       "id": "classify-retirement-inventory",
       "label": "Classify every old version surface as deleted, retained for migration, retained for evidence, or blocked with an owner and reason.",
-      "state": "pending",
-      "evidenceTarget": "A Core-owned retirement inventory names each old version code path, fixture, document contract, or public export touched by the lane and records its classification."
+      "state": "passed",
+      "evidenceTarget": "A Core-owned retirement inventory names each old version code path, fixture, document contract, or public export touched by the lane and records its classification.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "Inventory classifies active v2/v3 runtime authority as active-runtime, v3/v4 target parser and v2-to-v3 planner as retained-for-migration, Phase 258 docs as retained-for-evidence, and silent normalization or compatibility adapters as blocked."
     },
     {
       "id": "remove-dead-or-record-retained",
       "label": "Delete proven-unused old version code and keep only surfaces with explicit migration, evidence, consumer, or blocker reasons.",
-      "state": "pending",
-      "evidenceTarget": "Diff, tests, and retirement inventory show what was deleted, what was retained, and why no unclassified old version surface remains in scope."
+      "state": "passed",
+      "evidenceTarget": "Diff, tests, and retirement inventory show what was deleted, what was retained, and why no unclassified old version surface remains in scope.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "No source deletion was accepted in this lane: every reviewed version surface was active, retained for migration, retained for evidence, or blocked rather than proven unused."
     },
     {
       "id": "verify-owner-and-consumer-gates",
       "label": "Run Core owner gates and bounded Backend consumer checks required by the changed public contract.",
-      "state": "pending",
-      "evidenceTarget": "Fresh Core worktree and merged-main verification plus any required Backend focused checks pass, or failures are recorded as blockers."
+      "state": "passed",
+      "evidenceTarget": "Fresh Core worktree and merged-main verification plus any required Backend focused checks pass, or failures are recorded as blockers.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "Core worktree docs:check passed, focused version/parser/migration suite passed 24 tests, worktree npm run check passed 459 files and 2942 tests in 250.00s, and merged Core main npm run check passed 459 files and 2942 tests in 263.94s. Backend checks were not required because existing capability values and Backend-owned routes/persistence did not change."
     },
     {
       "id": "register-bounded-evidence",
       "label": "Register Project Control evidence for the bounded hardening result without promoting broad Core or Backend truth.",
-      "state": "pending",
-      "evidenceTarget": "Project Control Evidence and optional verification document cite exact commits, paths, commands, supported claims, risks, and unknowns while Core and Backend broad truth remain unpromoted."
+      "state": "passed",
+      "evidenceTarget": "Project Control Evidence and optional verification document cite exact commits, paths, commands, supported claims, risks, and unknowns while Core and Backend broad truth remain unpromoted.",
+      "evidenceIds": ["evidence-core-runtime-version-contract-hardening-2026-08-27"],
+      "verificationNote": "Project Control evidence and verification document are work-scoped with nodeIds empty; Core and Backend broad truth states remain unpromoted."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",

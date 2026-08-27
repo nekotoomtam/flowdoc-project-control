@@ -90,10 +90,10 @@ const remediationTasks = [
   {
     id: "core-runtime-version-contract-hardening",
     nodeId: "core",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-core-runtime-version-contract-hardening",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-core-runtime-version-contract-hardening",
     checklistLength: 8,
   },
@@ -347,6 +347,24 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-flowdoc-bounded-browser-compatibility-promotion")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-core-runtime-version-contract-hardening")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.documents.find((item) => item.id === "doc-core-runtime-version-contract-hardening-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        path: "docs/domains/core-runtime-version-contract-hardening-2026-08-27.md",
+        role: "verification",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-core-runtime-version-contract-hardening-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-core",
+        commit: "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+        pathOrContractId: "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-core-runtime-version-contract-hardening-2026-08-27")?.verificationSummary)
+      .toContain("version-surface retirement inventory");
     expect(model.documents.find((item) => item.id === "doc-editor-backend-core-live-compatibility-harness-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "ba5f722d9112c50dce1d12c3283b681e23c499339b66505127fbd0e935071bdd",
+  "sourceDigest": "845855a0a3519c823d0a27cdbb3f3beaee557a9dc466bbb4d00ccb8399fdbb3b",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -526,8 +526,8 @@
         "repo-backend",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Open the Core-owned runtime version contract hardening lane before Backend hardening: inspect package/document version surfaces, migration and mutation contracts, public consumer boundaries, and old or unused version code that must be deleted, retained for migration, retained for evidence, or blocked with a reason.",
+      "workState": "in-review",
+      "summary": "Core commit 992dbbbd6b6ac8f921d3dd98bd3515b77728868f adds a machine-readable version-surface retirement inventory beside the version capability contract before Backend hardening. The lane classifies active v2/v3 runtime authority, v3/v4 migration-target surfaces, explicit v2-to-v3 migration planning, retained Phase 258 evidence, and blocked silent compatibility adapters without changing parser/runtime behavior or promoting broad Core truth.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -541,8 +541,10 @@
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "A Core-owned implementation patch or bounded blocker that hardens runtime version contracts, proves migration/mutation/public-boundary behavior with Core tests, and includes a retirement inventory for old version surfaces before Backend adoption work proceeds.",
-      "riskSummary": "Broader Core and Backend truth remain unknown; deleting old version surfaces can break migration, evidence replay, or Backend consumers if each target is not classified first.",
-      "requiredEvidence": [],
+      "riskSummary": "Broader Core and Backend truth remain unknown; no version surface was deleted in this lane because the reviewed surfaces were active, migration-retained, evidence-retained, or blocked rather than proven unused.",
+      "requiredEvidence": [
+        "evidence-core-runtime-version-contract-hardening-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -1016,7 +1018,7 @@
       "id": "phase-core-runtime-version-contract-hardening",
       "workId": "core-runtime-version-contract-hardening",
       "title": "Harden Core Runtime Version Contracts",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-core",
@@ -1032,7 +1034,7 @@
         "The lane would promote broad Core, Backend, or FlowDoc truth from a narrow runtime-version hardening result."
       ],
       "verificationTarget": "Core worktree evidence proves the runtime version contract, migration and mutation behavior, public consumer boundary, and retirement inventory; Project Control records the bounded result without broad Node truth promotion.",
-      "summary": "Begin the Core runtime version contract hardening phase with an explicit cleanup and retirement inventory gate before Backend hardening.",
+      "summary": "Done: Core now publishes a version-surface retirement inventory with focused and full Core verification; Project Control records the bounded result without promoting broad Core or Backend truth.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1422,50 +1424,82 @@
         {
           "id": "capture-current-core-backend-boundary",
           "label": "Capture Project Control, Core, and Backend heads, repository AGENTS rules, current evidence, and version-related surfaces before product edits.",
-          "state": "in-progress",
-          "evidenceTarget": "Exact Project Control, Core, and Backend commits plus clean/dirty state, AGENTS.md rules, current evidence records, and an initial version-surface inventory are recorded for the Core implementation lane."
+          "state": "passed",
+          "evidenceTarget": "Exact Project Control, Core, and Backend commits plus clean/dirty state, AGENTS.md rules, current evidence records, and an initial version-surface inventory are recorded for the Core implementation lane.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "Reviewed Project Control and Core AGENTS rules plus Core README, WORKSPACE_BOUNDARY, LEGACY_MIGRATION_GATE, PHASE_LEDGER, CROSS_REPO_OPERATING_MAP, version capability code/tests/docs, and package v2/v3 parser/migration files. Product edits were made only in Core."
         },
         {
           "id": "confirm-core-owner-and-backend-consumer-boundary",
           "label": "Confirm that Core owns runtime version semantics while Backend remains a consumer until a Core contract is proved.",
-          "state": "pending",
-          "evidenceTarget": "Core-owned files, package contracts, and Backend imports identify which repository may change behavior and which consumer checks must remain bounded."
+          "state": "passed",
+          "evidenceTarget": "Core-owned files, package contracts, and Backend imports identify which repository may change behavior and which consumer checks must remain bounded.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "The additive inventory is owned by Core in src/schema/versionCapability.ts and does not change Backend routes, persistence, parser execution, or existing capability values."
         },
         {
           "id": "write-failing-version-contract-tests",
           "label": "Write failing Core tests for the runtime version, migration, mutation, and cleanup expectations before implementation.",
-          "state": "pending",
-          "evidenceTarget": "Focused Core test output fails for the intended missing or weak contract before implementation changes are made."
+          "state": "passed",
+          "evidenceTarget": "Focused Core test output fails for the intended missing or weak contract before implementation changes are made.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "RED: tests/versionCapability.test.ts failed because VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY_VERSION was undefined and docs/VERSION_CAPABILITY_CONTRACT.md lacked the retirement inventory section."
         },
         {
           "id": "harden-runtime-version-contract",
           "label": "Implement the smallest Core runtime version contract hardening that satisfies the failing tests without widening public claims.",
-          "state": "pending",
-          "evidenceTarget": "Core implementation and focused tests prove the accepted runtime version, migration, mutation, and public-boundary behavior."
+          "state": "passed",
+          "evidenceTarget": "Core implementation and focused tests prove the accepted runtime version, migration, mutation, and public-boundary behavior.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "Core commit 992dbbbd6b6ac8f921d3dd98bd3515b77728868f added a JSON-safe version-surface retirement inventory export and documentation while preserving existing capability contract, parser, runtime, and migration behavior."
         },
         {
           "id": "classify-retirement-inventory",
           "label": "Classify every old version surface as deleted, retained for migration, retained for evidence, or blocked with an owner and reason.",
-          "state": "pending",
-          "evidenceTarget": "A Core-owned retirement inventory names each old version code path, fixture, document contract, or public export touched by the lane and records its classification."
+          "state": "passed",
+          "evidenceTarget": "A Core-owned retirement inventory names each old version code path, fixture, document contract, or public export touched by the lane and records its classification.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "Inventory classifies active v2/v3 runtime authority as active-runtime, v3/v4 target parser and v2-to-v3 planner as retained-for-migration, Phase 258 docs as retained-for-evidence, and silent normalization or compatibility adapters as blocked."
         },
         {
           "id": "remove-dead-or-record-retained",
           "label": "Delete proven-unused old version code and keep only surfaces with explicit migration, evidence, consumer, or blocker reasons.",
-          "state": "pending",
-          "evidenceTarget": "Diff, tests, and retirement inventory show what was deleted, what was retained, and why no unclassified old version surface remains in scope."
+          "state": "passed",
+          "evidenceTarget": "Diff, tests, and retirement inventory show what was deleted, what was retained, and why no unclassified old version surface remains in scope.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "No source deletion was accepted in this lane: every reviewed version surface was active, retained for migration, retained for evidence, or blocked rather than proven unused."
         },
         {
           "id": "verify-owner-and-consumer-gates",
           "label": "Run Core owner gates and bounded Backend consumer checks required by the changed public contract.",
-          "state": "pending",
-          "evidenceTarget": "Fresh Core worktree and merged-main verification plus any required Backend focused checks pass, or failures are recorded as blockers."
+          "state": "passed",
+          "evidenceTarget": "Fresh Core worktree and merged-main verification plus any required Backend focused checks pass, or failures are recorded as blockers.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "Core worktree docs:check passed, focused version/parser/migration suite passed 24 tests, worktree npm run check passed 459 files and 2942 tests in 250.00s, and merged Core main npm run check passed 459 files and 2942 tests in 263.94s. Backend checks were not required because existing capability values and Backend-owned routes/persistence did not change."
         },
         {
           "id": "register-bounded-evidence",
           "label": "Register Project Control evidence for the bounded hardening result without promoting broad Core or Backend truth.",
-          "state": "pending",
-          "evidenceTarget": "Project Control Evidence and optional verification document cite exact commits, paths, commands, supported claims, risks, and unknowns while Core and Backend broad truth remain unpromoted."
+          "state": "passed",
+          "evidenceTarget": "Project Control Evidence and optional verification document cite exact commits, paths, commands, supported claims, risks, and unknowns while Core and Backend broad truth remain unpromoted.",
+          "evidenceIds": [
+            "evidence-core-runtime-version-contract-hardening-2026-08-27"
+          ],
+          "verificationNote": "Project Control evidence and verification document are work-scoped with nodeIds empty; Core and Backend broad truth states remain unpromoted."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -2157,6 +2191,34 @@
         }
       ],
       "content": "# Core Route Ownership and Retained Contracts\n\n## Purpose and Scope\n\nThis document records the current Core route boundary for the `V0_1_0a_1`\ndocumentation line. It separates executable package truth from the historical\nreasoning that led to the boundary.\n\nThe scope is limited to Core generation readiness, artifact manifest and job\ncontracts, the Core public package entrypoint, and the ownership boundary with\nBackend HTTP routes. It does not define or change Editor, GUI, Agent, or Skill\nbehavior, and it does not change Core runtime behavior or Backend wiring.\n\n## Current Ownership Boundary\n\nBackend owns the HTTP-shaped generation and artifact route envelopes. At this\nboundary, that includes method handling, HTTP status and headers, and the\nartifact permission, retry, listing, and download-metadata response vocabulary.\nThe current Core route modules identify Backend as that owner and mark their\nroute helpers as deprecated compatibility source.\n\nCore owns the transport-independent contracts consumed below that envelope:\ngeneration request parsing and readiness assessment, artifact manifest\nvalidation/planning, and durable artifact job state transitions. Those retained\ncontracts explicitly do not execute a Backend route. The manifest and job plans\nalso record that they do not perform worker, renderer, queue, database, file, or\nstorage writes.\n\n## Retained Core Contracts\n\nThe public Core entrypoint retains these contract groups:\n\n- `src/generation/runtime.ts` exports\n  `safeParseVNextGenerationRequest(...)` and\n  `assessVNextGenerationReadiness(...)`. Readiness results stay\n  transport-independent: they report request, package, document, key/data,\n  exact-layout, and artifact state without assigning HTTP status or headers.\n- `src/generation/artifactManifest.ts` exports\n  `createVNextArtifactManifestPlan(...)`. It validates JSON-serializable artifact\n  lifecycle records while declaring storage, database, renderer, and Backend\n  route execution false.\n- `src/generation/artifactJob.ts` exports `createVNextArtifactJobPlan(...)` and\n  `advanceVNextArtifactJob(...)`. They create and advance durable job records\n  while declaring worker, layout, renderer, storage, queue, and Backend route\n  execution false.\n\nThe retained tests exercise these contracts through `src/index.ts`, including\nsuccessful and blocked readiness, manifest lifecycle validation, valid job\ntransitions, and invalid transition rejection.\n\n## Public Export State\n\n`src/index.ts` publicly re-exports `./generation/runtime.js`,\n`./generation/artifactManifest.js`, and `./generation/artifactJob.js`. It does\nnot re-export `./generation/apiRoute.js` or\n`./generation/artifactApiRoute.js`; route-shaped helpers are therefore absent\nfrom the Core package public entrypoint.\n\nBoth route source files still exist under `src/generation/`. Their exported\nroute constants and response-helper functions are marked `@deprecated`; route\ntypes and interfaces remain unannotated. All remain internal source rather than\npublic entrypoint exports. Their continued presence does not restore public\nroute ownership and does not authorize their deletion.\n\n## Verification Anchors\n\n| Claim | Current executable anchor |\n|---|---|\n| Retained readiness, manifest, and job modules are public; route modules are not | `src/index.ts` |\n| Readiness is transport-independent and does not render an artifact | `src/generation/runtime.ts`; `tests/generationRuntimeRetainedContract.test.ts` |\n| Manifest planning validates durable records without writes or Backend route execution | `src/generation/artifactManifest.ts`; `tests/artifactRetainedContract.test.ts` |\n| Job planning and transitions do not execute workers, layout, rendering, queues, storage, or Backend routes | `src/generation/artifactJob.ts`; `tests/artifactRetainedContract.test.ts` |\n| Deprecated route-shaped source remains internal after public de-export | `src/generation/apiRoute.ts`; `src/generation/artifactApiRoute.ts`; `tests/coreRouteRetainedContractRewrite.test.ts` |\n| Backend owns HTTP-shaped envelope behavior at this boundary | deprecation contracts in `src/generation/apiRoute.ts` and `src/generation/artifactApiRoute.ts`, reinforced by the retained tests' exclusion of HTTP-shaped ownership |\n\n## Risks and Unknowns\n\n- Consumers outside the inspected repositories may have depended on the former\n  route exports or may deep-import internal Core source paths. No complete\n  external-consumer registry or package-usage scan is available here.\n- The deprecated internal route files duplicate some HTTP vocabulary. They can\n  drift from Backend behavior while they remain, so they are evidence of the\n  boundary, not the current implementation authority for HTTP envelopes.\n- This document does not independently revalidate Backend route implementation or\n  authorize removal of any Core source or reference.\n\n## Historical Design Notes\n\nThe four captured migration records describe a three-window design. Window A\ndocumented the intended ownership split while the route helpers were still\npublic. Window B retained them for one compatibility window and added explicit\ndeprecation markers. Window C removed the route modules from the public\nentrypoint after retained-contract tests replaced route-helper ownership tests.\n\nThe compatibility window was selected to reduce surprise breakage while\nexternal package consumers were not fully known. Rewriting the tests first\npreserved direct evidence for readiness, manifest, and job behavior without\nkeeping HTTP status, header, permission, retry, or download-envelope assertions\nin Core. This sequence explains the current boundary; it is historical design\ncontext, not a current rollout plan, schedule, or source-deletion instruction.\n\n## Provenance\n\nCurrent claims were checked against Core source and tests captured at commit\n`76a2f2311a898e781f53773390d47b05812911e4`. The four historical inputs and\ntheir exact Git blobs are mapped once in the\n[core-route coverage record](../../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\nRegistration and lifecycle status belong to Project Control records and the\ncoverage state; this document does not grant them. Coverage is closed at exact\nCore cleanup commit `8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main\ndescendant `501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and\ncleanup Evidence is recorded. Exactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure. The independent\nreadiness and post-cleanup evidence is preserved in the\n[Migration Readiness and Cleanup Review](MIGRATION_REVIEW.md).\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-runtime-version-contract-hardening-2026-08-27",
+      "title": "Core Runtime Version Contract Hardening - 2026-08-27",
+      "path": "docs/domains/core-runtime-version-contract-hardening-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped Core runtime version contract hardening review for the local Core head; records the version-surface retirement inventory, tests, risks, and unknowns without promoting Core, Backend, or FlowDoc truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "da215940f7b95760f6ad3c488af3b024691c81e5",
+          "pathOrContractId": "data/work/core-runtime-version-contract-hardening.json"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+          "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+          "pathOrContractId": "tests/versionCapability.test.ts"
+        }
+      ],
+      "content": "# Core Runtime Version Contract Hardening - 2026-08-27\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > core-runtime-version-contract-hardening`\n- Owner repository: `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-core-runtime-version-contract-hardening`\n- Checklist: `checklist-core-runtime-version-contract-hardening`\n- Evidence target: `evidence-core-runtime-version-contract-hardening-2026-08-27`\n\nThis record is work-scoped verification only. It does not promote Core,\nBackend, or FlowDoc broad truth.\n\n## PASS\n\nCore commit `992dbbbd6b6ac8f921d3dd98bd3515b77728868f` adds\n`VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY` beside the existing version\ncapability contract.\n\nThe inventory classifies reviewed version surfaces before Backend hardening:\n\n| Surface | Classification | Result |\n| --- | --- | --- |\n| package v2/document v3 active runtime | active-runtime | Kept as canonical persisted input and runtime authority. |\n| package v3/document v4 target parser and read-only runtime | retained-for-migration | Kept for explicit migration target validation and read-only inspection. |\n| package v2-to-v3 explicit copy-forward planner | retained-for-migration | Kept as Core-owned pure semantic planning; Backend owns revisioned persistence. |\n| Phase 258 consumer evidence | retained-for-evidence | Kept as historical cross-repo capability evidence without v4 runtime activation. |\n| silent read normalization or compatibility adapter | blocked | Remains prohibited by Core workspace and migration gates. |\n\nNo version surface was deleted in this lane because no reviewed surface was\nproven unused in scope.\n\n## Verification\n\n- RED: `npx vitest run --config vitest.config.ts tests/versionCapability.test.ts --reporter verbose` failed because the inventory export and documentation section were missing.\n- Focused Core suite: `npx vitest run --config vitest.config.ts tests/versionCapability.test.ts tests/packageV2ToV3Migration.test.ts tests/packageV3.test.ts --reporter verbose` passed 3 files / 24 tests.\n- Core docs: `npm run docs:check` passed.\n- Core worktree gate: `npm run check` passed 459 files / 2,942 tests in 250.00s.\n- Core merged-main gate: `npm run check` passed 459 files / 2,942 tests in 263.94s.\n\n## Intentionally Not Changed\n\n- No package parser acceptance changed.\n- No active runtime/session behavior changed.\n- No migration executor behavior changed.\n- No Backend route, persistence, or HTTP behavior changed.\n- No Core, Backend, or FlowDoc Node truth was promoted.\n\n## RISK\n\n- Backend and Editor can still drift if they copy capability facts instead of\n  comparing with Core.\n- Future version work must update the inventory whenever a version surface is\n  deleted, retained, or blocked.\n\n## UNKNOWN\n\n- Broad Core readiness remains unknown.\n- Backend production readiness remains unknown.\n- Future policy for when workspaces should be offered or required to migrate\n  remains unknown.\n"
     },
     {
       "kind": "document",
@@ -3594,6 +3656,16 @@
       "pathOrContractId": "src/index.ts",
       "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
       "verifiedAt": "2026-08-13T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-runtime-version-contract-hardening-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+      "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY",
+      "verificationSummary": "Core runtime version contract hardening added a JSON-safe version-surface retirement inventory beside the existing capability contract. The inventory classifies active package v2/document v3 runtime authority as active-runtime, package v3/document v4 target parser/read-only runtime and package v2-to-v3 planner as retained-for-migration, Phase 258 consumer evidence as retained-for-evidence, and silent read normalization or compatibility adapters as blocked. No version surface was classified as deleted in this lane because none was proven unused in scope. RED versionCapability test failed before implementation; focused version/parser/migration suite passed 24 tests; docs:check passed; Core worktree npm run check passed 459 files and 2942 tests in 250.00s; merged Core main npm run check passed 459 files and 2942 tests in 263.94s. This supports only the bounded Core version-surface retirement inventory result and does not promote broad Core, Backend, or FlowDoc truth.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",
