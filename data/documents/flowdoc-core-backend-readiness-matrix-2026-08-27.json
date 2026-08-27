@@ -1,0 +1,62 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+  "title": "FlowDoc Core Backend Readiness Matrix - 2026-08-27",
+  "path": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md",
+  "nodeIds": ["flowdoc"],
+  "role": "verification",
+  "authority": "Bounded readiness decision for FlowDoc Core, Backend, and Editor/frontend planning based on accepted Project Control evidence through 2026-08-27; supports lane selection and terminology-qualified planning only, and excludes production Backend readiness, broad Core truth, broad Backend truth, broad Editor truth, FlowDoc product readiness, and map truth promotion.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "2124dbc4e2a0c38b85b5ccb904ba67d2c2dabbd4",
+      "pathOrContractId": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "package.json#scripts.check"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+      "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "969a21ae66a3a1d6a92e5df608d23e08acb9a563",
+      "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+      "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+      "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "61413513552bba0d078b2d8e03b0b06abdbe633c",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    }
+  ]
+}

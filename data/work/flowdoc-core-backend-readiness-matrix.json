@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-backend-readiness-matrix",
+  "title": "FlowDoc Core Backend Readiness Matrix",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+  "workState": "in-review",
+  "summary": "Create a bounded readiness matrix before Editor/frontend redesign so Core, Backend, and Editor evidence is classified into go, no-go, risk, and unknown lanes without promoting product truth.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-role-catalog", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-product-terminology", "doc-flowdoc-product-terminology-th", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-cross-repository-compatibility-evidence-2026-08-27"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "expectedOutput": "A Project Control readiness matrix, Work, Phase, Checklist, Document, and Evidence record that identify which Core and Backend boundaries are ready for planning, which remain blocked for production, and which next lanes should run before frontend implementation.",
+  "riskSummary": "The matrix can coordinate frontend planning and lane selection, but it cannot prove runtime behavior beyond cited evidence or promote FlowDoc, Core, Backend, or Editor truth. Production Backend readiness, hosted compatibility, broader corpus behavior, accessibility, visual, performance, and bundle-size states remain unknown or risk until owner evidence exists.",
+  "requiredEvidence": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-readiness-matrix",
+  "workId": "flowdoc-core-backend-readiness-matrix",
+  "title": "Classify Core and Backend Readiness Before Frontend Redesign",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing.",
+    "The matrix would claim production Backend readiness, broad Core readiness, broad Backend readiness, broad Editor readiness, or FlowDoc product readiness from bounded evidence.",
+    "An overloaded term such as node, document, record, draft, preview, ready, compatible, current, or live is used without the product terminology boundary.",
+    "The matrix would edit Core, Backend, or Editor product behavior instead of recording a Project Control readiness decision.",
+    "The next recommended lanes cannot be traced to an existing risk, blocker, or unknown in accepted evidence.",
+    "Project Control checks cannot validate the new document, records, generated index, or no-promotion boundary."
+  ],
+  "verificationTarget": "Project Control records a bounded Core and Backend readiness matrix that supports frontend planning and next-lane selection while keeping FlowDoc planned and Core, Backend, and Editor unknown outside cited evidence.",
+  "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

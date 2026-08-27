@@ -54,6 +54,7 @@ describe("truthful seed project", () => {
         "doc-glossary-th",
         "doc-flowdoc-product-terminology",
         "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)
@@ -87,6 +88,12 @@ describe("truthful seed project", () => {
       path: "docs/domains/flowdoc-product-terminology-th.md",
       nodeIds: ["flowdoc"],
       role: "glossary",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-flowdoc-core-backend-readiness-matrix-2026-08-27")).toMatchObject({
+      path: "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md",
+      nodeIds: ["flowdoc"],
+      role: "verification",
       lifecycle: "active",
     });
     expect(documents.get("doc-flowdoc-system-map")?.content)

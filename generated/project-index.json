@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b746d199df8f67b2a3b989bd23560aab2803ff9417e313623b6e24dae7033b6c",
+  "sourceDigest": "5b99925c353c84313daf2b0744cfc7156764e2b693c3603b9810445b5b75165c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -19,7 +19,8 @@
         "doc-glossary-en",
         "doc-glossary-th",
         "doc-flowdoc-product-terminology",
-        "doc-flowdoc-product-terminology-th"
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -29,7 +30,8 @@
         "evidence-flowdoc-product-refresh-core-2026-08-26",
         "evidence-flowdoc-product-refresh-editor-2026-08-26",
         "evidence-flowdoc-product-refresh-backend-2026-08-26",
-        "evidence-flowdoc-product-terminology-foundation-2026-08-27"
+        "evidence-flowdoc-product-terminology-foundation-2026-08-27",
+        "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "repositoryIds": [
         "repo-project-control",
@@ -49,6 +51,7 @@
         "editor-backend-core-live-compatibility-harness",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation"
@@ -856,6 +859,51 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-core-backend-readiness-matrix",
+      "title": "FlowDoc Core Backend Readiness Matrix",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-backend",
+        "repo-editor"
+      ],
+      "workState": "in-review",
+      "summary": "Create a bounded readiness matrix before Editor/frontend redesign so Core, Backend, and Editor evidence is classified into go, no-go, risk, and unknown lanes without promoting product truth.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-product-evidence-refresh-2026-08-26",
+        "doc-cross-repository-compatibility-evidence-2026-08-27"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "expectedOutput": "A Project Control readiness matrix, Work, Phase, Checklist, Document, and Evidence record that identify which Core and Backend boundaries are ready for planning, which remain blocked for production, and which next lanes should run before frontend implementation.",
+      "riskSummary": "The matrix can coordinate frontend planning and lane selection, but it cannot prove runtime behavior beyond cited evidence or promote FlowDoc, Core, Backend, or Editor truth. Production Backend readiness, hosted compatibility, broader corpus behavior, accessibility, visual, performance, and bundle-size states remain unknown or risk until owner evidence exists.",
+      "requiredEvidence": [
+        "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-core-backend-readiness-matrix"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-core-backend-readiness-matrix"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-product-development-resumption",
       "title": "FlowDoc Product Development Resumption",
       "nodeId": "flowdoc",
@@ -882,6 +930,7 @@
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "flowdoc-bounded-browser-compatibility-promotion",
+        "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
         "project-control-hardening"
@@ -1299,6 +1348,33 @@
       ],
       "verificationTarget": "A Project Control child node and system map entry record only the bounded local loopback browser compatibility claim, with evidence pointing back to the accepted browser smoke packet and with broad product/repository truth states unchanged.",
       "summary": "Done: the bounded browser compatibility claim is promoted only into a narrow child node and system-map entry, while FlowDoc remains planned and Core, Editor, and Backend remain unknown.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-readiness-matrix",
+      "workId": "flowdoc-core-backend-readiness-matrix",
+      "title": "Classify Core and Backend Readiness Before Frontend Redesign",
+      "phaseState": "done",
+      "order": 20,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-backend",
+        "repo-editor"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing.",
+        "The matrix would claim production Backend readiness, broad Core readiness, broad Backend readiness, broad Editor readiness, or FlowDoc product readiness from bounded evidence.",
+        "An overloaded term such as node, document, record, draft, preview, ready, compatible, current, or live is used without the product terminology boundary.",
+        "The matrix would edit Core, Backend, or Editor product behavior instead of recording a Project Control readiness decision.",
+        "The next recommended lanes cannot be traced to an existing risk, blocker, or unknown in accepted evidence.",
+        "Project Control checks cannot validate the new document, records, generated index, or no-promotion boundary."
+      ],
+      "verificationTarget": "Project Control records a bounded Core and Backend readiness matrix that supports frontend planning and next-lane selection while keeping FlowDoc planned and Core, Backend, and Editor unknown outside cited evidence.",
+      "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -2134,6 +2210,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-readiness-matrix",
+      "phaseId": "phase-flowdoc-core-backend-readiness-matrix",
+      "title": "FlowDoc Core Backend Readiness Matrix Checklist",
+      "items": [
+        {
+          "id": "capture-work-context",
+          "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before editing.",
+          "state": "passed",
+          "evidenceTarget": "The readiness matrix records the current FlowDoc Work context and remains owned by Project Control.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "The matrix records work path flowdoc-product-development-resumption > flowdoc-core-backend-readiness-matrix, owner repo-project-control, active role cross-repo-boundary-reviewer, phase-flowdoc-core-backend-readiness-matrix, checklist-flowdoc-core-backend-readiness-matrix, and evidence-flowdoc-core-backend-readiness-matrix-2026-08-27."
+        },
+        {
+          "id": "reconcile-existing-evidence",
+          "label": "Reconcile accepted Core, Backend, Editor, compatibility, and terminology evidence before deciding readiness.",
+          "state": "passed",
+          "evidenceTarget": "The matrix cites existing evidence records instead of reinterpreting repository heads without proof.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "Reviewed accepted evidence for Core default gate stability, Core runtime version contract, Core public export boundary, Backend Core-version consumer hardening, Backend service readiness boundary, Editor live harness, Editor browser smoke, Editor browser corpus smoke, bounded browser compatibility promotion, and product terminology."
+        },
+        {
+          "id": "classify-core-readiness",
+          "label": "Classify Core readiness into bounded passes, no-go boundaries, risks, and unknowns.",
+          "state": "passed",
+          "evidenceTarget": "Core rows distinguish stable owner gates and version inventory from unresolved public consumer surface readiness.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "The matrix treats Core default gate and runtime version inventory as bounded passes while keeping the broad root export boundary unresolved for future consumer-surface freeze work."
+        },
+        {
+          "id": "classify-backend-readiness",
+          "label": "Classify Backend readiness without confusing local development readiness with production service readiness.",
+          "state": "passed",
+          "evidenceTarget": "Backend rows distinguish Core-version consumer wrapping and local development readiness from production blockers.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "The matrix records Backend Core-version consumer hardening as bounded pass and Backend service readiness as blocked for production until auth, tenancy, storage providers, export mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback are owned."
+        },
+        {
+          "id": "set-frontend-redesign-decision",
+          "label": "State the frontend redesign decision before implementation starts.",
+          "state": "passed",
+          "evidenceTarget": "The matrix permits frontend architecture planning and adapter design, but blocks implementation that assumes production Backend readiness.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "The matrix records GO for architecture planning and contract hardening, plus NO-GO for frontend implementation that assumes production Backend readiness or broad FlowDoc product readiness."
+        },
+        {
+          "id": "verify-project-control-registration",
+          "label": "Register Project Control records and verify the generated read model without truth promotion.",
+          "state": "passed",
+          "evidenceTarget": "Work, Phase, Checklist, Document, Evidence, node links, tests, and generated index validate while FlowDoc remains planned and Core, Backend, and Editor remain unknown.",
+          "evidenceIds": [
+            "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"
+          ],
+          "verificationNote": "This item is satisfied only after the focused readiness matrix test, npm run generate, npm run check:data, focused roadmap/seed tests, and npm run check pass in the worktree and merged main."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-product-evidence-refresh-readiness",
       "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
       "title": "FlowDoc Product Evidence Refresh Checklist",
@@ -2792,6 +2938,71 @@
         }
       ],
       "content": "# FlowDoc Bounded Browser Compatibility Promotion - 2026-08-27\n\nStatus: bounded local loopback browser compatibility child claim promoted;\nbroader FlowDoc, Core, Editor, and Backend truth remains unpromoted.\n\nWork path:\n`flowdoc-product-development-resumption > flowdoc-bounded-browser-compatibility-promotion`\n\nOwner repository: `repo-project-control`\n\nEvidence source repositories: `repo-editor`, `repo-backend`, `repo-core`\n\nActive role: `evidence-reviewer`\n\nPhase: `phase-flowdoc-bounded-browser-compatibility-promotion`\n\nChecklist: `checklist-flowdoc-bounded-browser-compatibility-promotion`\n\nEvidence target:\n`evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27`\n\n## Promotion Decision\n\nCreate a narrow child node:\n\n- Node: `flowdoc-browser-compatibility`\n- Title: `FlowDoc Browser Backend Compatibility`\n- Truth state: `current`\n\nThe node is current only for the accepted bounded local loopback browser smoke:\n\n1. A real headless Chrome session opens the rendered Editor product routes.\n2. The Editor app uses a live loopback Backend URL.\n3. Backend is seeded from the Core `product-report-vnext-minimal` fixture.\n4. The browser path loads `/documents`.\n5. The browser path opens `/documents/product-report-vnext-minimal/design`.\n6. The UI observes `Core: api r3`, `Versions: compatible`, and `Mode: active`.\n7. The UI clicks `Upgrade` and observes `Core: api r4` and `Mode: partial`.\n8. The UI clicks `Move selected node down` and observes\n   `Core: mutation-result r5`.\n9. The retained outline order is\n   `summary-columns > title > detail-table`.\n\nThis promotion does not mark the `flowdoc` parent, `core`, `editor`, or\n`backend` nodes current.\n\n## Supporting Evidence\n\nPrimary Project Control source:\n\n- Project Control commit `739d19d452bdb5151ec030db96a9247da0a29ae5`\n- Document:\n  `docs/domains/editor-browser-live-backend-smoke-2026-08-27.md`\n- Evidence:\n  `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\nSource repository heads cited by that packet:\n\n| Repository | Commit | Supporting path |\n|---|---|---|\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | `src/fixtures/editor-browser-live-backend-smoke.v1.json` |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | `src/http/server.ts` |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | `fixtures/product-report-vnext-minimal.flowdoc.json` |\n\nThe retained browser smoke fixture records 200 or 204 Backend statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\n## Map Update\n\n`docs/domains/flowdoc-system-map.md` now includes the bounded child claim in the\nproduct-wide inventory while preserving the broad states:\n\n- `FlowDoc` remains `planned`.\n- `Core` remains `unknown` for broader Core.\n- `Editor` remains `unknown` for broad runtime/UI state.\n- `Backend` remains `unknown` for broad service or production state.\n- `FlowDoc Browser Backend Compatibility` is `current` only for the accepted\n  local loopback browser smoke path.\n\n## PASS\n\n- The accepted browser smoke evidence is durable and registered in Project\n  Control.\n- The promotion target is the narrowest useful child node rather than a broad\n  repository node.\n- The system map points at the bounded claim without changing product runtime\n  behavior.\n- Project Control generated index and roadmap tests guard the new child claim.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this bounded promotion lane.\n\n## RISK\n\n- The promoted claim is local loopback headless Chrome evidence only.\n- The promoted claim covers one fixture, one product route flow, one migration,\n  and one UI reorder mutation.\n- The accepted smoke retained a non-blocking Vite `/favicon.ico` 404 log entry,\n  with no `console.error` and no page exception.\n- Editor still has previously observed npm audit risk from the implementation\n  worktree and the existing Vite chunk-size warning.\n\n## UNKNOWN\n\n- Deployed Backend and hosted Editor compatibility remain unknown.\n- Cross-browser compatibility remains unknown.\n- Broad document-corpus compatibility remains unknown.\n- Accessibility and visual-regression status remain unknown.\n- Product readiness remains unknown.\n\n## Intentionally Not Changed\n\n- No product repository file was changed.\n- No broad Core, Editor, Backend, or FlowDoc truth state was promoted.\n- No broad repository node received this evidence as a `current` claim.\n- No Backend production readiness, auth, tenancy, deployment, or persistence\n  claim was added.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nOpen a new owner lane for the next remaining unknown, preferably deployed\nloopback-to-hosted parity or broader corpus coverage, before any product\nreadiness claim.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+      "title": "FlowDoc Core Backend Readiness Matrix - 2026-08-27",
+      "path": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "verification",
+      "authority": "Bounded readiness decision for FlowDoc Core, Backend, and Editor/frontend planning based on accepted Project Control evidence through 2026-08-27; supports lane selection and terminology-qualified planning only, and excludes production Backend readiness, broad Core truth, broad Backend truth, broad Editor truth, FlowDoc product readiness, and map truth promotion.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "2124dbc4e2a0c38b85b5ccb904ba67d2c2dabbd4",
+          "pathOrContractId": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "package.json#scripts.check"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+          "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "969a21ae66a3a1d6a92e5df608d23e08acb9a563",
+          "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+          "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "docs/BACKEND_SERVICE_READINESS_BOUNDARY.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+          "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+          "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+          "pathOrContractId": "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "61413513552bba0d078b2d8e03b0b06abdbe633c",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        }
+      ],
+      "content": "# FlowDoc Core Backend Readiness Matrix - 2026-08-27\n\n## Scope\n\nThis matrix records the bounded Core and Backend readiness decision before the\nEditor or future frontend is redesigned. It summarizes accepted Project\nControl evidence, separates implementation-ready boundaries from remaining\nproduction blockers, and names the next work lanes.\n\nThis document does not promote FlowDoc, Core, Backend, Editor, document maps,\nor production readiness truth. FlowDoc remains `planned`; Core, Backend, and\nEditor remain `unknown` outside the specific evidence rows below.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > flowdoc-core-backend-readiness-matrix`\n- Owner repository: `repo-project-control`\n- Related repositories: `repo-core`, `repo-backend`, `repo-editor`\n- Active role: `cross-repo-boundary-reviewer`\n- Phase: `phase-flowdoc-core-backend-readiness-matrix`\n- Checklist: `checklist-flowdoc-core-backend-readiness-matrix`\n- Evidence target: `evidence-flowdoc-core-backend-readiness-matrix-2026-08-27`\n\n## Terminology Boundary\n\nUse the FlowDoc product terminology foundation before translating this matrix\ninto implementation work:\n\n- `Document package` means the Core-owned package payload and schema-versioned\n  document graph.\n- `Core runtime node` means a document graph element owned by Core, not a\n  Project Control Node.\n- `Backend document record` means the Backend-owned service, storage, and\n  transport record that can carry the current Core document package.\n- `Editor draft` means browser-local editable state derived from a Backend\n  document record or fixture.\n- `Preview` means Editor-visible rendering or inspection. It is not export\n  parity, renderer parity, Backend persistence, or product readiness evidence.\n- `current`, `ready`, `compatible`, and `live` are evidence-bearing claims and\n  must include exact scope.\n\n## Decision\n\n| Decision | Status | Boundary |\n| --- | --- | --- |\n| Architecture planning for the Editor/frontend redesign | GO | Safe to use this matrix for information architecture, adapter naming, state boundaries, and risk planning. |\n| Core and Backend contract hardening | GO | Safe to open focused owner-repository lanes that add tests and contracts for the gaps named below. |\n| Frontend implementation that assumes production Backend readiness | NO-GO | NO-GO for frontend implementation that assumes production Backend readiness, deployed service availability, production storage, auth, tenancy, workers, or export routes. |\n| Broad FlowDoc product readiness promotion | NO-GO | Existing evidence does not promote FlowDoc, Core, Backend, or Editor truth beyond the bounded records below. |\n\n## Readiness Matrix\n\n| Area | Current evidence | Readiness class | What this supports | What remains excluded |\n| --- | --- | --- | --- | --- |\n| Core default owner gate | `evidence-core-default-gate-stability-review-2026-08-27`, Core commit `77b9e181d1fb43bf69d725108ede664578a07a45` | Bounded pass | Core `npm run check` is stable at the captured owner head after test-only gate fixes. | Cross-repository live compatibility, broad Core current truth, and production readiness. |\n| Core runtime version contract | `evidence-core-runtime-version-contract-hardening-2026-08-27`, Core commit `992dbbbd6b6ac8f921d3dd98bd3515b77728868f` | Bounded pass | A JSON-safe version-surface inventory distinguishes active runtime, retained migration, retained evidence, and blocked surfaces. | Deleting old surfaces, proving every consumer path, or treating the inventory as a full public API freeze. |\n| Core public export boundary | `evidence-core-public-export-boundary-review-2026-08-26`, Core commit `969a21ae66a3a1d6a92e5df608d23e08acb9a563` | No-go boundary | Root exports remain synchronized and visible; destructive narrowing is blocked until adoption is proven. | A narrow supported consumer surface for Backend, Editor, and future frontend work. |\n| Backend Core version consumer | `evidence-backend-core-version-contract-consumer-hardening-2026-08-27`, Backend commit `6c3331217b509fc635ad25b71fba503ff066cd72` | Bounded pass | Backend wraps the Core-owned version capability and inventory instead of duplicating package version truth. | Broad Backend readiness, Editor compatibility, production service readiness, or FlowDoc map truth. |\n| Backend service readiness | `evidence-backend-service-readiness-boundary-review-2026-08-27`, Backend commit `42cc1040c959a16647b7e797929358c401ccfa38` | Blocked for production | The default Backend server is development-ready and reports a bounded readiness envelope. | Production readiness for auth, tenancy, storage providers, export route mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback. |\n| Editor live loopback harness | `evidence-editor-backend-core-live-compatibility-harness-2026-08-27`, Editor commit `16a8fde628b887624249d50a162241ef2d96a415` | Bounded pass | A Node loopback test proves Editor client to Backend server to Core read, migration, mutation, and runtime application for the minimal product report fixture. | Browser app readiness, deployed Backend compatibility, and broad document corpus coverage. |\n| Editor browser live Backend smoke | `evidence-editor-browser-live-backend-smoke-2026-08-27`, Editor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Bounded pass | Headless Chrome exercises the rendered Editor product route against a live loopback Backend for the minimal product report fixture. | Cross-browser readiness, accessibility, visual regression, npm audit remediation, bundle-size readiness, deployed Backend compatibility, and broad corpus coverage. |\n| Editor browser live Backend corpus smoke | `evidence-editor-browser-live-backend-corpus-smoke-2026-08-27`, Editor commit `5cdd092265eb036be56a2d8f06e3987d0b6199d6` | Bounded pass | Headless Chrome covers the default loopback Backend corpus read, design, and migration path. | Non-default corpus, production corpus, cross-browser, accessibility, visual, performance, and deployment readiness. |\n| Product terminology foundation | `evidence-flowdoc-product-terminology-foundation-2026-08-27`, Project Control commit `61413513552bba0d078b2d8e03b0b06abdbe633c` | Current control boundary | Overloaded terms are split before frontend work starts. | Runtime behavior, compatibility, product readiness, or owner repository truth. |\n\n## Next Work Lanes\n\n| Lane | Owner | Role | Target |\n| --- | --- | --- | --- |\n| Core consumer surface freeze | `repo-core` | `cross-repo-boundary-reviewer` | Define the supported Core consumer imports, subpaths, and blocked/deprecated surfaces that Backend, Editor, and the future frontend may rely on before cleanup or binding work. |\n| Backend service contract hardening | `repo-backend` | `product-implementation-agent` | Turn production blockers into explicit contracts, feature flags, or deferred decisions, especially for auth, tenancy, storage providers, workers, export mounting, deployment, telemetry, backup, and rollback. |\n| Editor integration boundary before redesign | `repo-editor` | `product-implementation-agent` | Define the adapter and state model from Backend document record to Editor draft and Preview before UI reconstruction begins. |\n\n## RISK\n\n- Local loopback evidence can hide deployed service issues such as CORS,\n  reverse proxy behavior, auth, storage providers, worker orchestration, and\n  TLS termination.\n- Editor browser smoke evidence is useful, but it does not cover cross-browser\n  behavior, accessibility, visual regression, npm audit remediation, or bundle\n  size readiness.\n- Core root exports are still broad. Without a Core consumer surface freeze,\n  a frontend redesign can accidentally bind to surfaces that remain retained\n  for migration or evidence only.\n- Backend reports a bounded readiness envelope, but production service\n  readiness remains blocked until the missing contracts and operating surfaces\n  are owned.\n\n## UNKNOWN\n\n- Whether a hosted Backend, hosted frontend, real storage provider, auth,\n  tenancy, workers, and export routes complete the same flows as the accepted\n  local loopback evidence.\n- Whether the future frontend should consume Backend document records directly\n  or through an Editor-owned adapter boundary.\n- Whether non-default documents and broader corpora expose Core runtime node,\n  migration, mutation, Preview, or persistence gaps not present in the default\n  corpus smoke.\n- Whether accessibility, visual regression, performance, and bundle-size gates\n  should be blocking before or after the first Editor redesign slice.\n\n## Evidence Use\n\nUse this matrix as a readiness decision for planning and lane selection. Do\nnot cite it as proof that the FlowDoc product, Backend service, Core package,\nEditor app, or redesigned frontend is production-ready.\n\n"
     },
     {
       "kind": "document",
@@ -4124,6 +4335,18 @@
       "commit": "739d19d452bdb5151ec030db96a9247da0a29ae5",
       "pathOrContractId": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
       "verificationSummary": "Project Control commit 739d19d452bdb5151ec030db96a9247da0a29ae5 records the accepted Editor browser live Backend smoke packet and promotes only the bounded local loopback browser compatibility child claim. The supporting packet cites Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4, whose retained fixture shows headless Chrome opening /documents and /documents/product-report-vnext-minimal/design against a live loopback Backend, observing Core: api r3, clicking Upgrade to Core: api r4 partial mode, clicking Move selected node down to Core: mutation-result r5, and retaining final outline order summary-columns > title > detail-table. It also records Backend request paths and 200/204 statuses for library, capabilities, document read, migration, and mutation routes, plus Editor worktree and merged main owner gates. This promotion creates a current child node only for that bounded smoke. It leaves FlowDoc planned and Core, Editor, and Backend unknown, and does not promote deployed Backend compatibility, cross-browser behavior, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, bundle-size readiness, or product readiness.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-core-backend-readiness-matrix-2026-08-27",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "repositoryId": "repo-project-control",
+      "commit": "2124dbc4e2a0c38b85b5ccb904ba67d2c2dabbd4",
+      "pathOrContractId": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md",
+      "verificationSummary": "Project Control records a bounded Core and Backend readiness matrix before Editor/frontend redesign. The matrix reconciles accepted Core, Backend, Editor, compatibility, browser smoke, and terminology evidence; permits architecture planning, adapter boundary design, and focused contract hardening; and records NO-GO for frontend implementation that assumes production Backend readiness. This evidence supports only the pre-frontend readiness decision and next-lane selection; it does not promote FlowDoc, Core, Backend, or Editor truth, production Backend readiness, deployed compatibility, cross-browser readiness, broad corpus coverage, accessibility, visual regression, performance, bundle-size readiness, or map truth.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
