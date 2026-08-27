@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "5b99925c353c84313daf2b0744cfc7156764e2b693c3603b9810445b5b75165c",
+  "sourceDigest": "56af9c43d46368ca292956f8e57b5ee4ffb9ca0bc293e91997b0c7cb9d00da81",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2953,7 +2953,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "2124dbc4e2a0c38b85b5ccb904ba67d2c2dabbd4",
+          "commit": "616a1822e9d705a763245d0e726aca632a63d868",
           "pathOrContractId": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md"
         },
         {
@@ -4344,9 +4344,9 @@
         "flowdoc"
       ],
       "repositoryId": "repo-project-control",
-      "commit": "2124dbc4e2a0c38b85b5ccb904ba67d2c2dabbd4",
+      "commit": "616a1822e9d705a763245d0e726aca632a63d868",
       "pathOrContractId": "docs/domains/flowdoc-core-backend-readiness-matrix-2026-08-27.md",
-      "verificationSummary": "Project Control records a bounded Core and Backend readiness matrix before Editor/frontend redesign. The matrix reconciles accepted Core, Backend, Editor, compatibility, browser smoke, and terminology evidence; permits architecture planning, adapter boundary design, and focused contract hardening; and records NO-GO for frontend implementation that assumes production Backend readiness. This evidence supports only the pre-frontend readiness decision and next-lane selection; it does not promote FlowDoc, Core, Backend, or Editor truth, production Backend readiness, deployed compatibility, cross-browser readiness, broad corpus coverage, accessibility, visual regression, performance, bundle-size readiness, or map truth.",
+      "verificationSummary": "Project Control commit 616a1822e9d705a763245d0e726aca632a63d868 records a bounded Core and Backend readiness matrix before Editor/frontend redesign. The matrix reconciles accepted Core, Backend, Editor, compatibility, browser smoke, and terminology evidence; permits architecture planning, adapter boundary design, and focused contract hardening; and records NO-GO for frontend implementation that assumes production Backend readiness. This evidence supports only the pre-frontend readiness decision and next-lane selection; it does not promote FlowDoc, Core, Backend, or Editor truth, production Backend readiness, deployed compatibility, cross-browser readiness, broad corpus coverage, accessibility, visual regression, performance, bundle-size readiness, or map truth.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
