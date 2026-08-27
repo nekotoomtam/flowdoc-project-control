@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
+  "title": "Editor Browser Live Backend Corpus Smoke - 2026-08-27",
+  "path": "docs/domains/editor-browser-live-backend-corpus-smoke-2026-08-27.md",
+  "nodeIds": ["flowdoc-browser-compatibility"],
+  "role": "verification",
+  "authority": "Bounded browser-app live Backend corpus smoke evidence for the current local Editor, Backend, and Core heads; records the accepted headless Chrome default loopback corpus product-route read and UI migration coverage without promoting FlowDoc/product readiness, deployed Backend compatibility, cross-browser behavior, accessibility, visual regression, or non-default corpus truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "a65c8189ba446dfca6e3b60c068c2f1c907f6f6a",
+      "pathOrContractId": "data/work/editor-browser-live-backend-corpus-smoke.json"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "src/server.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "fixtures/*.flowdoc.json"
+    }
+  ]
+}

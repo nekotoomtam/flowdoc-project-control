@@ -130,10 +130,10 @@ const remediationTasks = [
   {
     id: "editor-browser-live-backend-corpus-smoke",
     nodeId: "flowdoc",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-editor-browser-live-backend-corpus-smoke",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-editor-browser-live-backend-corpus-smoke",
     checklistLength: 6,
   },
@@ -297,8 +297,14 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.nodes.find((node) => node.id === "flowdoc-browser-compatibility")).toMatchObject({
       truthState: "current",
-      documentIds: ["doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
-      evidenceIds: ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      documentIds: [
+        "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
+        "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+      ],
+      evidenceIds: [
+        "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27",
+        "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+      ],
       repositoryIds: ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
       workIds: ["flowdoc-bounded-browser-compatibility-promotion"],
     });
@@ -323,6 +329,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-editor-browser-live-backend-smoke")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-editor-browser-live-backend-corpus-smoke")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-flowdoc-bounded-browser-compatibility-promotion")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
@@ -336,6 +345,12 @@ describe("project roadmap Work Queue", () => {
       .toMatchObject({
         nodeIds: [],
         path: "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+        role: "verification",
+      });
+    expect(model.documents.find((item) => item.id === "doc-editor-browser-live-backend-corpus-smoke-2026-08-27"))
+      .toMatchObject({
+        nodeIds: ["flowdoc-browser-compatibility"],
+        path: "docs/domains/editor-browser-live-backend-corpus-smoke-2026-08-27.md",
         role: "verification",
       });
     expect(model.documents.find((item) => item.id === "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"))
@@ -362,6 +377,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27")?.verificationSummary)
       .toContain("accepted bounded browser-app live Backend smoke");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"))
+      .toMatchObject({
+        nodeIds: ["flowdoc-browser-compatibility"],
+        repositoryId: "repo-editor",
+        commit: "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+        pathOrContractId: "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27")?.verificationSummary)
+      .toContain("default loopback Backend corpus");
     expect(model.evidence.find((item) => item.id === "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"))
       .toMatchObject({
         nodeIds: ["flowdoc-browser-compatibility"],

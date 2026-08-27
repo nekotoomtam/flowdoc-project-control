@@ -7,38 +7,50 @@
     {
       "id": "capture-current-boundaries",
       "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, prior browser smoke evidence, and default-corpus surfaces before editing.",
-      "state": "in-progress",
-      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits."
+      "state": "passed",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Reviewed Project Control a65c8189ba446dfca6e3b60c068c2f1c907f6f6a, Editor ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 before implementation, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, the prior browser smoke evidence, and Backend default seed IDs before Editor edits."
     },
     {
       "id": "confirm-corpus-smoke-owner",
       "label": "Confirm the corpus smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
-      "state": "pending",
-      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+      "state": "passed",
+      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Kept the corpus smoke Editor-owned in package.json, scripts/run-editor-browser-live-backend-corpus-smoke.mjs, src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json, and src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts. Backend server/storage/fixture behavior and Core fixture semantics stayed unchanged."
     },
     {
       "id": "write-failing-corpus-smoke-test",
       "label": "Write an Editor-owned failing retained-evidence test for the browser/live Backend corpus smoke fixture.",
-      "state": "pending",
-      "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist."
+      "state": "passed",
+      "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Focused RED failed as expected before implementation: npx vitest run src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts --reporter verbose returned ENOENT because src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json did not exist yet."
     },
     {
       "id": "implement-minimal-corpus-smoke",
       "label": "Implement the minimal browser smoke runner needed to open the default live Backend corpus through rendered Editor routes, or record an exact blocker.",
-      "state": "pending",
-      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke."
+      "state": "passed",
+      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Editor commit 5cdd092265eb036be56a2d8f06e3987d0b6199d6 adds the corpus smoke npm script, CDP/Vite live Backend runner, retained fixture, and retained evidence test. It uses product routes /documents and /documents/<document-id>/design for the four default loopback Backend seeds and changes no Editor production UI/runtime behavior."
     },
     {
       "id": "verify-owner-gates",
       "label": "Run focused and full owner repository gates after the corpus smoke is in place or after the blocker is recorded.",
-      "state": "pending",
-      "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded."
+      "state": "passed",
+      "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Editor worktree generated the corpus fixture, write-off evidence script passed, focused retained evidence test passed, and npm run check passed type-check, 80 test files, 286 tests, and build. Merged Editor main re-ran the evidence script with FLOWDOC_EVIDENCE_WRITE=0, focused retained test passed, and npm run check passed the same 80 test files, 286 tests, and build. Backend and Core were clean and unchanged."
     },
     {
       "id": "register-bounded-evidence",
       "label": "Register the corpus smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth.",
+      "evidenceIds": ["evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"],
+      "verificationNote": "Registered the corpus smoke Document and Evidence records, linked the bounded evidence to the FlowDoc Browser Backend Compatibility child node, and updated only the bounded child/system-map wording. FlowDoc remains planned, Core/Editor/Backend remain unknown for broad truth, and deployed/cross-browser/a11y/visual/non-default corpus readiness remain unpromoted."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "65f3b10b3bf7bd604cec0c1b40e1089427c1349bc91dbb8b6d8f20831f16eba1",
+  "sourceDigest": "2492bee0fe46fd7f34a160666fdc98830eea49ff43a97558df008fe2cc68d86f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -282,13 +282,15 @@
       "id": "flowdoc-browser-compatibility",
       "title": "FlowDoc Browser Backend Compatibility",
       "parentId": "flowdoc",
-      "summary": "Current only for the bounded local loopback browser smoke: headless Chrome opens the rendered Editor product routes, reaches a live loopback Backend server seeded from the Core product-report minimal fixture, applies migration through the UI, and commits one UI reorder mutation. Deployed, cross-browser, broad-corpus, accessibility, visual-regression, and product-readiness claims remain unknown.",
+      "summary": "Current only for bounded local loopback browser compatibility evidence: headless Chrome opens rendered Editor product routes against a live loopback Backend, covers the product-report minimal read/migration/mutation smoke, and covers the default four-document Backend corpus for library/design-route read plus UI migration. Deployed, cross-browser, non-default or broad production corpus, accessibility, visual-regression, and product-readiness claims remain unknown.",
       "truthState": "current",
       "order": 35,
       "documentIds": [
+        "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
         "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
       ],
       "evidenceIds": [
+        "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27",
         "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
       ],
       "repositoryIds": [
@@ -647,8 +649,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Extend the accepted browser live Backend smoke from one Core-backed document fixture to the default loopback Backend document corpus, recording which product routes load, which documents require or accept migration, and which compatibility claims remain bounded.",
+      "workState": "in-review",
+      "summary": "Completed the bounded Editor browser live Backend corpus smoke: a real headless Chrome session opens the rendered Editor product routes against a live loopback Backend server seeded with the default four-document corpus, records the library cards, and applies document migration through the UI for every default seed.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -657,12 +659,15 @@
         "doc-flowdoc-role-catalog",
         "doc-work-tree-operating-rules",
         "doc-editor-browser-live-backend-smoke-2026-08-27",
-        "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+        "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+        "doc-editor-browser-live-backend-corpus-smoke-2026-08-27"
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "An Editor-owned browser/live Backend corpus smoke evidence fixture or an explicit blocker, followed by Project Control evidence registration without promoting product readiness, deployed compatibility, cross-browser coverage, accessibility, or broad repository truth.",
-      "riskSummary": "This lane is intended to reduce only the broad-corpus unknown inside the local loopback headless Chrome boundary. It remains local-only and does not prove deployed Backend parity, production service readiness, cross-browser behavior, accessibility, visual regression, npm audit remediation, bundle-size readiness, or parent FlowDoc truth.",
-      "requiredEvidence": [],
+      "riskSummary": "This lane reduces only the default loopback Backend corpus unknown inside the local headless Chrome boundary. It remains local-only and does not prove non-default or broad production corpus coverage, deployed Backend parity, production service readiness, cross-browser behavior, accessibility, visual regression, npm audit remediation, bundle-size readiness, or parent FlowDoc truth.",
+      "requiredEvidence": [
+        "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -1041,7 +1046,7 @@
       "id": "phase-editor-browser-live-backend-corpus-smoke",
       "workId": "editor-browser-live-backend-corpus-smoke",
       "title": "Prove Browser App Live Backend Corpus Smoke",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-editor",
@@ -1058,7 +1063,7 @@
         "The smoke tries to promote product readiness, deployed compatibility, cross-browser coverage, accessibility, visual regression, or broad repository truth from local loopback evidence."
       ],
       "verificationTarget": "An Editor-owned retained evidence fixture generated by a real headless Chrome session against a live loopback Backend seeded with the default document corpus, plus owner repository gates and Project Control registration that preserve bounded truth.",
-      "summary": "In progress: this phase will inspect the default loopback Backend corpus through rendered Editor product routes and record bounded browser/live Backend evidence or exact blockers.",
+      "summary": "Done: Editor commit 5cdd092265eb036be56a2d8f06e3987d0b6199d6 adds a retained browser/live Backend corpus smoke fixture and runner, verifies the default four-document loopback corpus through rendered product routes and UI migration, and leaves broad/product readiness claims unpromoted.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1550,38 +1555,62 @@
         {
           "id": "capture-current-boundaries",
           "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, prior browser smoke evidence, and default-corpus surfaces before editing.",
-          "state": "in-progress",
-          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits."
+          "state": "passed",
+          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Reviewed Project Control a65c8189ba446dfca6e3b60c068c2f1c907f6f6a, Editor ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 before implementation, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, the prior browser smoke evidence, and Backend default seed IDs before Editor edits."
         },
         {
           "id": "confirm-corpus-smoke-owner",
           "label": "Confirm the corpus smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
-          "state": "pending",
-          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+          "state": "passed",
+          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Kept the corpus smoke Editor-owned in package.json, scripts/run-editor-browser-live-backend-corpus-smoke.mjs, src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json, and src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts. Backend server/storage/fixture behavior and Core fixture semantics stayed unchanged."
         },
         {
           "id": "write-failing-corpus-smoke-test",
           "label": "Write an Editor-owned failing retained-evidence test for the browser/live Backend corpus smoke fixture.",
-          "state": "pending",
-          "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist."
+          "state": "passed",
+          "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Focused RED failed as expected before implementation: npx vitest run src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts --reporter verbose returned ENOENT because src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json did not exist yet."
         },
         {
           "id": "implement-minimal-corpus-smoke",
           "label": "Implement the minimal browser smoke runner needed to open the default live Backend corpus through rendered Editor routes, or record an exact blocker.",
-          "state": "pending",
-          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke."
+          "state": "passed",
+          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Editor commit 5cdd092265eb036be56a2d8f06e3987d0b6199d6 adds the corpus smoke npm script, CDP/Vite live Backend runner, retained fixture, and retained evidence test. It uses product routes /documents and /documents/<document-id>/design for the four default loopback Backend seeds and changes no Editor production UI/runtime behavior."
         },
         {
           "id": "verify-owner-gates",
           "label": "Run focused and full owner repository gates after the corpus smoke is in place or after the blocker is recorded.",
-          "state": "pending",
-          "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded."
+          "state": "passed",
+          "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Editor worktree generated the corpus fixture, write-off evidence script passed, focused retained evidence test passed, and npm run check passed type-check, 80 test files, 286 tests, and build. Merged Editor main re-ran the evidence script with FLOWDOC_EVIDENCE_WRITE=0, focused retained test passed, and npm run check passed the same 80 test files, 286 tests, and build. Backend and Core were clean and unchanged."
         },
         {
           "id": "register-bounded-evidence",
           "label": "Register the corpus smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth.",
+          "evidenceIds": [
+            "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27"
+          ],
+          "verificationNote": "Registered the corpus smoke Document and Evidence records, linked the bounded evidence to the FlowDoc Browser Backend Compatibility child node, and updated only the bounded child/system-map wording. FlowDoc remains planned, Core/Editor/Backend remain unknown for broad truth, and deployed/cross-browser/a11y/visual/non-default corpus readiness remain unpromoted."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -2151,6 +2180,41 @@
     },
     {
       "kind": "document",
+      "id": "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
+      "title": "Editor Browser Live Backend Corpus Smoke - 2026-08-27",
+      "path": "docs/domains/editor-browser-live-backend-corpus-smoke-2026-08-27.md",
+      "nodeIds": [
+        "flowdoc-browser-compatibility"
+      ],
+      "role": "verification",
+      "authority": "Bounded browser-app live Backend corpus smoke evidence for the current local Editor, Backend, and Core heads; records the accepted headless Chrome default loopback corpus product-route read and UI migration coverage without promoting FlowDoc/product readiness, deployed Backend compatibility, cross-browser behavior, accessibility, visual regression, or non-default corpus truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "a65c8189ba446dfca6e3b60c068c2f1c907f6f6a",
+          "pathOrContractId": "data/work/editor-browser-live-backend-corpus-smoke.json"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+          "pathOrContractId": "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "src/server.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "fixtures/*.flowdoc.json"
+        }
+      ],
+      "content": "# Editor Browser Live Backend Corpus Smoke - 2026-08-27\n\nStatus: bounded local loopback corpus smoke complete; product readiness remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-corpus-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence sources: `repo-backend`, `repo-core`, `repo-project-control`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-corpus-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-corpus-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-corpus-smoke-2026-08-27`\n\n## Supported Claim\n\nEditor commit `5cdd092265eb036be56a2d8f06e3987d0b6199d6` adds a retained\nbrowser/live Backend corpus smoke for the default loopback Backend corpus. The\nrunner starts a live Backend server in process, seeds the same four documents as\nBackend `src/server.ts`, starts the rendered Editor app with\n`VITE_FLOWDOC_BACKEND_URL`, launches headless Chrome through CDP, opens the\nlibrary route, visits each design route, and clicks `Upgrade` through the UI for\neach document.\n\nThis supports only default local loopback corpus compatibility for the\nbrowser-visible library/design/migration path. It does not establish deployed\nBackend compatibility, non-default or broad production corpus coverage,\ncross-browser readiness, accessibility, visual regression, npm audit\nremediation, bundle-size readiness, or product readiness.\n\n## Documents Covered\n\n| Document | Library revision | Migrated revision | Route |\n| --- | ---: | ---: | --- |\n| `reorder-blocked-target-qa` | 3 | 4 | `/documents/reorder-blocked-target-qa/design` |\n| `product-report-vnext-baseline` | 1 | 2 | `/documents/product-report-vnext-baseline/design` |\n| `product-report-vnext` | 3 | 4 | `/documents/product-report-vnext/design` |\n| `product-report-vnext-minimal` | 3 | 4 | `/documents/product-report-vnext-minimal/design` |\n\nThe retained fixture records the library page exposing exactly these four\ndocuments as `Migration required`, the initial compatible active API state for\neach design route, and the migrated compatible partial API state after UI\nupgrade.\n\n## Verification\n\n- Editor RED: `npx vitest run src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts --reporter verbose` failed before implementation with `ENOENT` because `src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json` did not exist.\n- Editor worktree: `npm run evidence:editor-browser-live-backend-corpus-smoke` generated the retained fixture and reported `reorder-blocked-target-qa r3->r4, product-report-vnext-baseline r1->r2, product-report-vnext r3->r4, product-report-vnext-minimal r3->r4`.\n- Editor worktree: `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-corpus-smoke` passed without rewriting the fixture.\n- Editor worktree: `npx vitest run src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts --reporter verbose` passed 1 test.\n- Editor worktree: `npm run check` passed type-check, 80 test files, 286 tests, and build; the existing Vite chunk-size warning remained.\n- Editor main: `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-corpus-smoke` passed with the same four migrations.\n- Editor main: `npx vitest run src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts --reporter verbose` passed 1 test.\n- Editor main: `npm run check` passed type-check, 80 test files, 286 tests, and build; the existing Vite chunk-size warning remained.\n\n## Files Added In Editor\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-corpus-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendCorpusSmokeEvidence.test.ts`\n\n## Risks\n\n- This is still local loopback evidence, not hosted/deployed parity.\n- This covers the four default Backend seed documents only; non-default,\n  imported, persisted, tenant-owned, or larger production corpora remain\n  unknown.\n- It uses headless Chrome only and does not establish Firefox, Safari, Edge,\n  mobile, or assistive technology behavior.\n- It verifies library, design route load, and migration through UI for all four\n  default seeds, but it does not add per-document UI mutation coverage beyond\n  the earlier product-report minimal mutation smoke.\n- The Editor install still reports the existing five high-severity npm audit\n  findings.\n- The Editor build still reports the existing Vite chunk-size warning.\n- Browser log retains the non-blocking Vite favicon 404 observed in the fixture.\n\n## Unknowns Kept Unpromoted\n\n- Deployed Backend and hosted Editor compatibility.\n- Cross-browser and mobile browser behavior.\n- Accessibility and visual-regression readiness.\n- Non-default or production corpus coverage.\n- Auth, tenancy, durable storage, rate limits, telemetry, backup, and rollback.\n- Product readiness for FlowDoc, Editor, Backend, or Core as parent systems.\n\n## Handoff\n\nUse this packet to expand the bounded `FlowDoc Browser Backend Compatibility`\nchild node only for the default local loopback Backend corpus\nlibrary/design/migration path. Do not promote parent FlowDoc truth or broad\nEditor, Backend, or Core runtime state from this evidence.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-editor-browser-live-backend-smoke-2026-08-27",
       "title": "Editor Browser Live Backend Smoke - 2026-08-27",
       "path": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
@@ -2306,7 +2370,7 @@
       "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
       "lifecycle": "active",
       "repositoryRefs": [],
-      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for the bounded local loopback headless Chrome smoke where the rendered Editor product routes load a Core-backed document through a live Backend server, apply migration, and commit one UI reorder mutation. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, broad corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records one accepted local product-route smoke without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records one accepted local live Backend smoke without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
+      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
     },
     {
       "kind": "document",
@@ -3455,6 +3519,18 @@
       "pathOrContractId": "docs/EDITOR_BACKEND_UNAVAILABLE_HONESTY_REVIEW.md",
       "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 records the Backend-unavailable honesty review, keeps fixture boot visible when Backend capability is unavailable, and changes src/app/EditorShell.tsx so package 2/document 3 migration-required Preview copy is shown only for Backend API working sets with compatible version capability. The same Shell gate now requires a fresh Core envelope before rendering Preview test input. It adds src/tests/editorBackendUnavailableHonesty.test.ts to prove fixture unavailable/checking Preview states keep Draft/Published status and Retry visible, compatible Backend API documents still show migration-required copy, and Preview input rendering remains gated on core.envelope.status === fresh. Focused Editor checks passed with 7 test files and 39 tests. Editor worktree npm run check and merged main npm run check both passed with 77 test files, 283 tests, and build; build retained the existing Vite chunk-size warning. This evidence supports only the bounded Editor backend-unavailable Preview honesty lane and does not promote broader Editor, Backend, Core, production readiness, auth, persistence, or document-map truth.",
       "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27",
+      "nodeIds": [
+        "flowdoc-browser-compatibility"
+      ],
+      "repositoryId": "repo-editor",
+      "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-corpus-smoke.v1.json",
+      "verificationSummary": "Editor commit 5cdd092265eb036be56a2d8f06e3987d0b6199d6 provides an accepted bounded browser-app live Backend corpus smoke for the default loopback Backend corpus. The npm script evidence:editor-browser-live-backend-corpus-smoke starts a live loopback Backend server in process, seeds it with the four default Backend documents backed by Core fixtures, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, and visits /documents/reorder-blocked-target-qa/design, /documents/product-report-vnext-baseline/design, /documents/product-report-vnext/design, and /documents/product-report-vnext-minimal/design. Retained evidence records the library page exposing exactly those four documents as Migration required with revisions 3, 1, 3, and 3; each design route loads as compatible active API state; clicking Upgrade through the browser UI migrates each document to partial mode and advances revisions to 4, 2, 4, and 4. Backend request evidence includes /documents?limit=24, /capabilities/versions, each document read route, and each /migrations/package-v3-document-v4 route with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree and merged main both ran the write-off evidence script successfully, focused retained evidence test passed, and npm run check passed type-check, 80 test files, 286 tests, and build. Backend and Core were clean and unchanged. This supports only bounded local loopback headless Chrome coverage for the default Backend corpus read/design/migration path; it does not promote FlowDoc or product readiness truth, non-default or broad production corpus coverage, deployed Backend compatibility, cross-browser readiness, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",
