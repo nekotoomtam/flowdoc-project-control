@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "editor-browser-live-backend-corpus-smoke",
+  "title": "Editor Browser Live Backend Corpus Smoke",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Extend the accepted browser live Backend smoke from one Core-backed document fixture to the default loopback Backend document corpus, recording which product routes load, which documents require or accept migration, and which compatibility claims remain bounded.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-editor-browser-live-backend-smoke-2026-08-27", "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "An Editor-owned browser/live Backend corpus smoke evidence fixture or an explicit blocker, followed by Project Control evidence registration without promoting product readiness, deployed compatibility, cross-browser coverage, accessibility, or broad repository truth.",
+  "riskSummary": "This lane is intended to reduce only the broad-corpus unknown inside the local loopback headless Chrome boundary. It remains local-only and does not prove deployed Backend parity, production service readiness, cross-browser behavior, accessibility, visual regression, npm audit remediation, bundle-size readiness, or parent FlowDoc truth.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

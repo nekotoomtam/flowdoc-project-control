@@ -1,0 +1,46 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-browser-live-backend-corpus-smoke",
+  "phaseId": "phase-editor-browser-live-backend-corpus-smoke",
+  "title": "Editor Browser Live Backend Corpus Smoke Checklist",
+  "items": [
+    {
+      "id": "capture-current-boundaries",
+      "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, prior browser smoke evidence, and default-corpus surfaces before editing.",
+      "state": "in-progress",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits."
+    },
+    {
+      "id": "confirm-corpus-smoke-owner",
+      "label": "Confirm the corpus smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
+      "state": "pending",
+      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+    },
+    {
+      "id": "write-failing-corpus-smoke-test",
+      "label": "Write an Editor-owned failing retained-evidence test for the browser/live Backend corpus smoke fixture.",
+      "state": "pending",
+      "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist."
+    },
+    {
+      "id": "implement-minimal-corpus-smoke",
+      "label": "Implement the minimal browser smoke runner needed to open the default live Backend corpus through rendered Editor routes, or record an exact blocker.",
+      "state": "pending",
+      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused and full owner repository gates after the corpus smoke is in place or after the blocker is recorded.",
+      "state": "pending",
+      "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded."
+    },
+    {
+      "id": "register-bounded-evidence",
+      "label": "Register the corpus smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

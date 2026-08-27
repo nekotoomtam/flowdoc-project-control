@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9abcb016e7bcb44927c3e387f7845de1feb5075ef88328455c28fe1e58bd115f",
+  "sourceDigest": "65f3b10b3bf7bd604cec0c1b40e1089427c1349bc91dbb8b6d8f20831f16eba1",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -44,6 +44,7 @@
       "workIds": [
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
+        "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh"
@@ -635,6 +636,46 @@
     },
     {
       "kind": "work",
+      "id": "editor-browser-live-backend-corpus-smoke",
+      "title": "Editor Browser Live Backend Corpus Smoke",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Extend the accepted browser live Backend smoke from one Core-backed document fixture to the default loopback Backend document corpus, recording which product routes load, which documents require or accept migration, and which compatibility claims remain bounded.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-editor-browser-live-backend-smoke-2026-08-27",
+        "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "An Editor-owned browser/live Backend corpus smoke evidence fixture or an explicit blocker, followed by Project Control evidence registration without promoting product readiness, deployed compatibility, cross-browser coverage, accessibility, or broad repository truth.",
+      "riskSummary": "This lane is intended to reduce only the broad-corpus unknown inside the local loopback headless Chrome boundary. It remains local-only and does not prove deployed Backend parity, production service readiness, cross-browser behavior, accessibility, visual regression, npm audit remediation, bundle-size readiness, or parent FlowDoc truth.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-browser-live-backend-corpus-smoke"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-browser-live-backend-corpus-smoke"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-browser-live-backend-smoke",
       "title": "Editor Browser Live Backend Smoke",
       "nodeId": "flowdoc",
@@ -741,6 +782,7 @@
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
         "editor-backend-unavailable-honesty-review",
+        "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-product-evidence-refresh",
@@ -993,6 +1035,32 @@
       "summary": "Editor fixture boot, Backend capability preflight, Preview context status, and Shell routing were reviewed; migration-required Preview copy is now limited to compatible Backend API documents while fixture fallback keeps unavailable/checking status visible.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-browser-live-backend-corpus-smoke",
+      "workId": "editor-browser-live-backend-corpus-smoke",
+      "title": "Prove Browser App Live Backend Corpus Smoke",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repositories, Checklist target, and Evidence target before editing Editor.",
+        "The corpus smoke requires Project Control to implement product behavior.",
+        "The corpus smoke requires Editor production code to import Core internals outside the Core adapter boundary.",
+        "The corpus smoke bypasses the Backend HTTP/revision gate or replaces the live Backend server with mocked fetch evidence.",
+        "The smoke tries to promote product readiness, deployed compatibility, cross-browser coverage, accessibility, visual regression, or broad repository truth from local loopback evidence."
+      ],
+      "verificationTarget": "An Editor-owned retained evidence fixture generated by a real headless Chrome session against a live loopback Backend seeded with the default document corpus, plus owner repository gates and Project Control registration that preserve bounded truth.",
+      "summary": "In progress: this phase will inspect the default loopback Backend corpus through rendered Editor product routes and record bounded browser/live Backend evidence or exact blockers.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -1472,6 +1540,52 @@
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-browser-live-backend-corpus-smoke",
+      "phaseId": "phase-editor-browser-live-backend-corpus-smoke",
+      "title": "Editor Browser Live Backend Corpus Smoke Checklist",
+      "items": [
+        {
+          "id": "capture-current-boundaries",
+          "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, prior browser smoke evidence, and default-corpus surfaces before editing.",
+          "state": "in-progress",
+          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior browser smoke evidence, and Backend default corpus fixture IDs are reviewed before Editor edits."
+        },
+        {
+          "id": "confirm-corpus-smoke-owner",
+          "label": "Confirm the corpus smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
+          "state": "pending",
+          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+        },
+        {
+          "id": "write-failing-corpus-smoke-test",
+          "label": "Write an Editor-owned failing retained-evidence test for the browser/live Backend corpus smoke fixture.",
+          "state": "pending",
+          "evidenceTarget": "The focused Editor retained-evidence test fails before implementation because the corpus smoke evidence fixture does not yet exist."
+        },
+        {
+          "id": "implement-minimal-corpus-smoke",
+          "label": "Implement the minimal browser smoke runner needed to open the default live Backend corpus through rendered Editor routes, or record an exact blocker.",
+          "state": "pending",
+          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes default-corpus browser evidence from the previous one-document smoke."
+        },
+        {
+          "id": "verify-owner-gates",
+          "label": "Run focused and full owner repository gates after the corpus smoke is in place or after the blocker is recorded.",
+          "state": "pending",
+          "evidenceTarget": "Editor focused corpus smoke, retained evidence test, npm run check, and any required Backend/Core no-change evidence are recorded."
+        },
+        {
+          "id": "register-bounded-evidence",
+          "label": "Register the corpus smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-corpus-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "checklist",
