@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-core-consumer-surface-freeze-2026-08-27",
+  "title": "Core Consumer Surface Freeze - 2026-08-27",
+  "path": "docs/domains/core-consumer-surface-freeze-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped Core consumer surface freeze review for the local Core head; records the consumer import contract, tests, risks, and unknowns without promoting Core, Backend, Editor, frontend, or FlowDoc truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "7a16d0c97446921da7fb6f7f05b7bb8d3f83677f",
+      "pathOrContractId": "data/work/core-consumer-surface-freeze.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "src/schema/consumerSurface.ts#VNEXT_CORE_CONSUMER_SURFACE_FREEZE"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "tests/consumerSurface.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "docs/CORE_CONSUMER_SURFACE_FREEZE.md"
+    }
+  ]
+}

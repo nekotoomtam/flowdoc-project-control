@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-consumer-surface-freeze-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+  "pathOrContractId": "src/schema/consumerSurface.ts#VNEXT_CORE_CONSUMER_SURFACE_FREEZE",
+  "verificationSummary": "Core consumer surface freeze adds VNEXT_CORE_CONSUMER_SURFACE_FREEZE as a JSON-safe planning contract exported through the existing root entrypoint. The contract keeps @flowdoc/vnext-core as supported-current-private-root, keeps @flowdoc/vnext-core/fixtures/* as supported-fixture, marks schema/operations/runtime/generation/composition/pagination/renderer/table/toc/authoring subpath groups as planned-not-exported, permits Backend and Editor adapter consumption only through their owner boundaries, and blocks direct future frontend Core imports until Backend document records or an Editor-owned adapter boundary are selected. RED tests/consumerSurface.test.ts failed before implementation because the contract export and documentation were missing; focused Core tests passed tests/consumerSurface.test.ts and tests/corePublicExportBoundaryReview.test.ts with 2 files and 6 tests; Core worktree npm run check passed 460 files and 2945 tests; clean detached verification of merged Core main commit 5892df6e542a02b25ae3b18ee02a55842b83d48f passed npm run check with 460 files and 2945 tests. This evidence does not promote broad Core truth, FlowDoc truth, production Backend readiness, deployed compatibility, final public subpath selection, Backend replacement imports, Editor test import policy, or frontend implementation readiness. The primary Core main checkout retained pre-existing unrelated pdf-renderer fixture deletions that were not included in this lane.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

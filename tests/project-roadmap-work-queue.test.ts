@@ -60,10 +60,10 @@ const remediationTasks = [
   {
     id: "core-consumer-surface-freeze",
     nodeId: "core",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "cross-repo-boundary-reviewer",
     phaseId: "phase-core-consumer-surface-freeze",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-core-consumer-surface-freeze",
     checklistLength: 6,
   },
@@ -416,6 +416,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-core-runtime-version-contract-hardening")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-core-consumer-surface-freeze")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-backend-core-version-contract-consumer-hardening")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed"]);

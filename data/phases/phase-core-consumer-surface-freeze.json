@@ -3,7 +3,7 @@
   "id": "phase-core-consumer-surface-freeze",
   "workId": "core-consumer-surface-freeze",
   "title": "Freeze Core Consumer Surface For Frontend Readiness",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 40,
   "repositoryIds": ["repo-core", "repo-project-control"],
   "activeRole": "cross-repo-boundary-reviewer",
@@ -16,7 +16,7 @@
     "Core or Project Control gates fail after implementation."
   ],
   "verificationTarget": "Core commit plus Project Control evidence target evidence-core-consumer-surface-freeze-2026-08-27 proving the Core consumer surface contract is explicit while broad Core and FlowDoc truth remain unpromoted.",
-  "summary": "In progress: Project Control has opened the Core consumer surface freeze lane. Core implementation, verification, and evidence registration remain pending.",
+  "summary": "Done: Core now publishes a JSON-safe consumer surface freeze contract while preserving the existing package export map and leaving broad Core, Backend, Editor, frontend, deployed compatibility, and production readiness truth unpromoted.",
   "createdAt": "2026-08-27T00:00:00.000Z",
   "updatedAt": "2026-08-27T00:00:00.000Z"
 }

@@ -9,37 +9,48 @@
       "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before Core edits.",
       "state": "passed",
       "evidenceTarget": "Project Control registers the Core-owned Work path and names evidence-core-consumer-surface-freeze-2026-08-27 as the post-implementation evidence target.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
       "verificationNote": "Project Control opened work path flowdoc-product-development-resumption > core-consumer-surface-freeze with owner repo-core, active role cross-repo-boundary-reviewer, phase-core-consumer-surface-freeze, checklist-core-consumer-surface-freeze, and future evidence target evidence-core-consumer-surface-freeze-2026-08-27."
     },
     {
       "id": "read-core-agreement",
       "label": "Read Core AGENTS.md and relevant Core public boundary, version, and cross-repository contracts before editing.",
-      "state": "pending",
-      "evidenceTarget": "Core implementation notes cite the repository working agreement and touched contract/test surfaces."
+      "state": "passed",
+      "evidenceTarget": "Core implementation notes cite the repository working agreement and touched contract/test surfaces.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
+      "verificationNote": "Read Core AGENTS.md, README.md boundary sections, docs/WORKSPACE_BOUNDARY.md, docs/LEGACY_MIGRATION_GATE.md, docs/CROSS_REPO_OPERATING_MAP.md, docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md, docs/VERSION_CAPABILITY_CONTRACT.md, docs/CORE_SERVICE_CONSUMER_MAP.md, docs/PACKAGE_CONSUMPTION_STRATEGY.md, docs/project current-state/risk/unknown records, src/index.ts, src/schema/versionCapability.ts, and related Core/Backend/Editor import tests before implementation."
     },
     {
       "id": "write-core-red-test",
       "label": "Write a Core RED test that fails because the consumer surface freeze contract is absent or too ambiguous for frontend planning.",
-      "state": "pending",
-      "evidenceTarget": "Focused Core test fails before implementation for the missing consumer surface contract or classification."
+      "state": "passed",
+      "evidenceTarget": "Focused Core test fails before implementation for the missing consumer surface contract or classification.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
+      "verificationNote": "RED: npx vitest run --config vitest.config.ts tests/consumerSurface.test.ts failed with 3 failed tests because VNEXT_CORE_CONSUMER_SURFACE_FREEZE_VERSION was undefined, VNEXT_CORE_CONSUMER_SURFACE_FREEZE was undefined, and docs/CORE_CONSUMER_SURFACE_FREEZE.md did not exist."
     },
     {
       "id": "freeze-consumer-surface",
       "label": "Implement the smallest Core contract change that distinguishes supported consumer imports from retained, deprecated, or blocked surfaces.",
-      "state": "pending",
-      "evidenceTarget": "Core contract or inventory reports supported Backend, Editor, and future frontend surfaces without claiming broad Core readiness."
+      "state": "passed",
+      "evidenceTarget": "Core contract or inventory reports supported Backend, Editor, and future frontend surfaces without claiming broad Core readiness.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
+      "verificationNote": "Core commit 5892df6e542a02b25ae3b18ee02a55842b83d48f adds src/schema/consumerSurface.ts#VNEXT_CORE_CONSUMER_SURFACE_FREEZE, exports it through the existing root entrypoint, documents docs/CORE_CONSUMER_SURFACE_FREEZE.md, and updates the public export inventory while preserving package.json exports."
     },
     {
       "id": "verify-core-gates",
       "label": "Run focused Core tests and the full Core gate in the Core worktree and merged main.",
-      "state": "pending",
-      "evidenceTarget": "Core focused test and npm run check pass in the worktree and after merge to main."
+      "state": "passed",
+      "evidenceTarget": "Core focused test and npm run check pass in the worktree and after merge to main.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
+      "verificationNote": "Focused Core tests passed tests/consumerSurface.test.ts plus tests/corePublicExportBoundaryReview.test.ts with 2 files / 6 tests. Core worktree npm run check passed 460 files and 2945 tests. A clean detached verification worktree at merged Core main commit 5892df6e542a02b25ae3b18ee02a55842b83d48f also passed npm run check with 460 files and 2945 tests."
     },
     {
       "id": "record-project-control-evidence",
       "label": "Register the Core evidence packet in Project Control without map or parent truth promotion.",
-      "state": "pending",
-      "evidenceTarget": "Project Control evidence-core-consumer-surface-freeze-2026-08-27 cites the Core commit, path or contract id, verification summary, remaining risks, and unknowns."
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence-core-consumer-surface-freeze-2026-08-27 cites the Core commit, path or contract id, verification summary, remaining risks, and unknowns.",
+      "evidenceIds": ["evidence-core-consumer-surface-freeze-2026-08-27"],
+      "verificationNote": "Project Control records the Core evidence as work-scoped nodeIds [] and does not update Core node truth, FlowDoc node truth, or system maps."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",
