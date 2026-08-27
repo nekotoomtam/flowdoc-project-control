@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "flowdoc-browser-compatibility",
+  "title": "FlowDoc Browser Backend Compatibility",
+  "parentId": "flowdoc",
+  "summary": "Current only for the bounded local loopback browser smoke: headless Chrome opens the rendered Editor product routes, reaches a live loopback Backend server seeded from the Core product-report minimal fixture, applies migration through the UI, and commits one UI reorder mutation. Deployed, cross-browser, broad-corpus, accessibility, visual-regression, and product-readiness claims remain unknown.",
+  "truthState": "current",
+  "order": 35,
+  "documentIds": ["doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+  "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"]
+}

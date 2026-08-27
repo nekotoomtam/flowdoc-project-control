@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-bounded-browser-compatibility-promotion",
+  "workId": "flowdoc-bounded-browser-compatibility-promotion",
+  "title": "Promote Bounded Browser Compatibility Claim",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "The accepted Editor browser smoke evidence is missing or not registered in Project Control.",
+    "The promotion would require changing Editor, Backend, or Core product behavior.",
+    "The promotion would mark FlowDoc, Editor, Backend, or broader Core current instead of creating a bounded child claim.",
+    "The promotion would claim deployed, cross-browser, broad-corpus, accessibility, visual-regression, npm-audit, bundle-size, or production readiness.",
+    "Project Control checks cannot validate the new node, Work, document, evidence, and generated index."
+  ],
+  "verificationTarget": "A Project Control child node and system map entry record only the bounded local loopback browser compatibility claim, with evidence pointing back to the accepted browser smoke packet and with broad product/repository truth states unchanged.",
+  "summary": "Done: the bounded browser compatibility claim is promoted only into a narrow child node and system-map entry, while FlowDoc remains planned and Core, Editor, and Backend remain unknown.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

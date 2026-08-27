@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "flowdoc-bounded-browser-compatibility-promotion",
+  "title": "FlowDoc Bounded Browser Compatibility Promotion",
+  "nodeId": "flowdoc-browser-compatibility",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Promote only the bounded local loopback browser compatibility claim into the narrow FlowDoc Browser Backend Compatibility child node, backed by the accepted Editor browser smoke and Project Control evidence packet, while leaving product-wide FlowDoc, Core, Editor, and Backend truth unpromoted.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-editor-browser-live-backend-smoke-2026-08-27"],
+  "activeRole": "evidence-reviewer",
+  "expectedOutput": "A narrow map/node promotion that records the bounded browser compatibility claim as current only for the local loopback smoke path, with Project Control evidence registration and no broad repository truth promotion.",
+  "riskSummary": "The accepted browser smoke supports one local headless Chrome product-route flow only. Deployed, cross-browser, broader document corpus, accessibility, visual regression, npm audit, bundle-size, and production-readiness claims remain explicitly unknown or risk.",
+  "requiredEvidence": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

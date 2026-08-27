@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "45c4cb3ee6df3f00a116390dfa01c3f9c1b6d53199dabec25738a963e9e3ac99",
+  "sourceDigest": "9abcb016e7bcb44927c3e387f7845de1feb5075ef88328455c28fe1e58bd115f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -38,6 +38,7 @@
         "backend",
         "core",
         "editor",
+        "flowdoc-browser-compatibility",
         "project-control"
       ],
       "workIds": [
@@ -273,6 +274,31 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review"
+      ]
+    },
+    {
+      "kind": "node",
+      "id": "flowdoc-browser-compatibility",
+      "title": "FlowDoc Browser Backend Compatibility",
+      "parentId": "flowdoc",
+      "summary": "Current only for the bounded local loopback browser smoke: headless Chrome opens the rendered Editor product routes, reaches a live loopback Backend server seeded from the Core product-report minimal fixture, applies migration through the UI, and commits one UI reorder mutation. Deployed, cross-browser, broad-corpus, accessibility, visual-regression, and product-readiness claims remain unknown.",
+      "truthState": "current",
+      "order": 35,
+      "documentIds": [
+        "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+      ],
+      "evidenceIds": [
+        "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+      ],
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "childIds": [],
+      "workIds": [
+        "flowdoc-bounded-browser-compatibility-promotion"
       ]
     },
     {
@@ -653,6 +679,47 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-bounded-browser-compatibility-promotion",
+      "title": "FlowDoc Bounded Browser Compatibility Promotion",
+      "nodeId": "flowdoc-browser-compatibility",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Promote only the bounded local loopback browser compatibility claim into the narrow FlowDoc Browser Backend Compatibility child node, backed by the accepted Editor browser smoke and Project Control evidence packet, while leaving product-wide FlowDoc, Core, Editor, and Backend truth unpromoted.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-editor-browser-live-backend-smoke-2026-08-27"
+      ],
+      "activeRole": "evidence-reviewer",
+      "expectedOutput": "A narrow map/node promotion that records the bounded browser compatibility claim as current only for the local loopback smoke path, with Project Control evidence registration and no broad repository truth promotion.",
+      "riskSummary": "The accepted browser smoke supports one local headless Chrome product-route flow only. Deployed, cross-browser, broader document corpus, accessibility, visual regression, npm audit, bundle-size, and production-readiness claims remain explicitly unknown or risk.",
+      "requiredEvidence": [
+        "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-bounded-browser-compatibility-promotion"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-bounded-browser-compatibility-promotion"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-product-development-resumption",
       "title": "FlowDoc Product Development Resumption",
       "nodeId": "flowdoc",
@@ -675,6 +742,7 @@
         "editor-backend-core-live-compatibility-harness",
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-smoke",
+        "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening"
       ],
@@ -949,6 +1017,32 @@
       ],
       "verificationTarget": "An Editor-owned browser test starts a live Backend server, launches the rendered Editor app with the live Backend URL, exercises a visible browser path for capability/read/migration/mutation or records the exact missing UI blocker, and Project Control records the result without broad map promotion.",
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-bounded-browser-compatibility-promotion",
+      "workId": "flowdoc-bounded-browser-compatibility-promotion",
+      "title": "Promote Bounded Browser Compatibility Claim",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "The accepted Editor browser smoke evidence is missing or not registered in Project Control.",
+        "The promotion would require changing Editor, Backend, or Core product behavior.",
+        "The promotion would mark FlowDoc, Editor, Backend, or broader Core current instead of creating a bounded child claim.",
+        "The promotion would claim deployed, cross-browser, broad-corpus, accessibility, visual-regression, npm-audit, bundle-size, or production readiness.",
+        "Project Control checks cannot validate the new node, Work, document, evidence, and generated index."
+      ],
+      "verificationTarget": "A Project Control child node and system map entry record only the bounded local loopback browser compatibility claim, with evidence pointing back to the accepted browser smoke packet and with broad product/repository truth states unchanged.",
+      "summary": "Done: the bounded browser compatibility claim is promoted only into a narrow child node and system-map entry, while FlowDoc remains planned and Core, Editor, and Backend remain unknown.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1451,6 +1545,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-bounded-browser-compatibility-promotion",
+      "phaseId": "phase-flowdoc-bounded-browser-compatibility-promotion",
+      "title": "FlowDoc Bounded Browser Compatibility Promotion Checklist",
+      "items": [
+        {
+          "id": "capture-current-map-state",
+          "label": "Capture current FlowDoc, Core, Editor, Backend, and Project Control map/evidence state before promotion.",
+          "state": "passed",
+          "evidenceTarget": "Current node truth states, FlowDoc system map wording, and accepted browser smoke evidence are reviewed before edits.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "Reviewed FlowDoc system map, document-map operating rules, role catalog, round workflow, work-tree rules, Project Control overview, node records, and accepted Editor browser smoke packet at Project Control commit 739d19d452bdb5151ec030db96a9247da0a29ae5 before editing."
+        },
+        {
+          "id": "validate-supporting-evidence",
+          "label": "Validate that the existing browser smoke evidence supports only a bounded local loopback compatibility claim.",
+          "state": "passed",
+          "evidenceTarget": "The supporting Project Control evidence packet cites exact Editor, Backend, and Core commits plus owner checks and remaining risks.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "Used doc-editor-browser-live-backend-smoke-2026-08-27 and evidence-editor-browser-live-backend-smoke-2026-08-27, which cite Editor ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, browser smoke output, focused retained evidence, and Editor owner gates."
+        },
+        {
+          "id": "classify-promotion-scope",
+          "label": "Classify the narrowest safe promotion scope and explicitly preserve broader unknowns.",
+          "state": "passed",
+          "evidenceTarget": "The promotion target is a bounded child node, not the FlowDoc parent or broad Core, Editor, or Backend nodes.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "Created the flowdoc-browser-compatibility child node as current only for the accepted local loopback browser smoke path; left FlowDoc planned and Core, Editor, and Backend unknown."
+        },
+        {
+          "id": "update-bounded-map-and-node-links",
+          "label": "Update only the bounded compatibility node, document/evidence links, and FlowDoc system map entry.",
+          "state": "passed",
+          "evidenceTarget": "Canonical records and the FlowDoc system map point to the bounded claim without attaching it to broad repository nodes.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "Added flowdoc-browser-compatibility node, current-state document, promotion evidence, Work/Phase/Checklist records, and a FlowDoc system-map inventory row. No Editor, Backend, Core, or FlowDoc parent truthState was promoted."
+        },
+        {
+          "id": "verify-project-control-gates",
+          "label": "Run focused and full Project Control gates after the map promotion.",
+          "state": "passed",
+          "evidenceTarget": "Project Control generated index, semantic checks, focused roadmap test, and full gate pass in the worktree and merged main.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "This checklist item is satisfied only after npm run generate, npm run check:data, focused project-roadmap-work-queue test, and npm run check pass in the worktree and merged main."
+        },
+        {
+          "id": "record-promotion-evidence",
+          "label": "Record the promotion evidence and remaining risks without changing product behavior.",
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27 records the supported claim, exclusions, checks, and intentionally unchanged truth.",
+          "evidenceIds": [
+            "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+          ],
+          "verificationNote": "Recorded a Project Control-owned evidence summary that points back to the accepted browser smoke packet and states deployed, cross-browser, broad-corpus, accessibility, visual-regression, npm-audit, bundle-size, and product-readiness claims remain unpromoted."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-product-evidence-refresh-readiness",
       "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
       "title": "FlowDoc Product Evidence Refresh Checklist",
@@ -1906,6 +2070,41 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+      "title": "FlowDoc Bounded Browser Compatibility Promotion - 2026-08-27",
+      "path": "docs/domains/flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md",
+      "nodeIds": [
+        "flowdoc-browser-compatibility"
+      ],
+      "role": "current-state",
+      "authority": "Current only for the bounded local loopback browser compatibility child claim supported by the accepted Editor browser smoke packet; excludes FlowDoc product readiness, deployed Backend compatibility, cross-browser coverage, broader document corpus, accessibility, visual regression, npm audit remediation, bundle-size readiness, and broad Core/Editor/Backend current-state promotion.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "739d19d452bdb5151ec030db96a9247da0a29ae5",
+          "pathOrContractId": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+          "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "src/http/server.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+        }
+      ],
+      "content": "# FlowDoc Bounded Browser Compatibility Promotion - 2026-08-27\n\nStatus: bounded local loopback browser compatibility child claim promoted;\nbroader FlowDoc, Core, Editor, and Backend truth remains unpromoted.\n\nWork path:\n`flowdoc-product-development-resumption > flowdoc-bounded-browser-compatibility-promotion`\n\nOwner repository: `repo-project-control`\n\nEvidence source repositories: `repo-editor`, `repo-backend`, `repo-core`\n\nActive role: `evidence-reviewer`\n\nPhase: `phase-flowdoc-bounded-browser-compatibility-promotion`\n\nChecklist: `checklist-flowdoc-bounded-browser-compatibility-promotion`\n\nEvidence target:\n`evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27`\n\n## Promotion Decision\n\nCreate a narrow child node:\n\n- Node: `flowdoc-browser-compatibility`\n- Title: `FlowDoc Browser Backend Compatibility`\n- Truth state: `current`\n\nThe node is current only for the accepted bounded local loopback browser smoke:\n\n1. A real headless Chrome session opens the rendered Editor product routes.\n2. The Editor app uses a live loopback Backend URL.\n3. Backend is seeded from the Core `product-report-vnext-minimal` fixture.\n4. The browser path loads `/documents`.\n5. The browser path opens `/documents/product-report-vnext-minimal/design`.\n6. The UI observes `Core: api r3`, `Versions: compatible`, and `Mode: active`.\n7. The UI clicks `Upgrade` and observes `Core: api r4` and `Mode: partial`.\n8. The UI clicks `Move selected node down` and observes\n   `Core: mutation-result r5`.\n9. The retained outline order is\n   `summary-columns > title > detail-table`.\n\nThis promotion does not mark the `flowdoc` parent, `core`, `editor`, or\n`backend` nodes current.\n\n## Supporting Evidence\n\nPrimary Project Control source:\n\n- Project Control commit `739d19d452bdb5151ec030db96a9247da0a29ae5`\n- Document:\n  `docs/domains/editor-browser-live-backend-smoke-2026-08-27.md`\n- Evidence:\n  `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\nSource repository heads cited by that packet:\n\n| Repository | Commit | Supporting path |\n|---|---|---|\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | `src/fixtures/editor-browser-live-backend-smoke.v1.json` |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | `src/http/server.ts` |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | `fixtures/product-report-vnext-minimal.flowdoc.json` |\n\nThe retained browser smoke fixture records 200 or 204 Backend statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\n## Map Update\n\n`docs/domains/flowdoc-system-map.md` now includes the bounded child claim in the\nproduct-wide inventory while preserving the broad states:\n\n- `FlowDoc` remains `planned`.\n- `Core` remains `unknown` for broader Core.\n- `Editor` remains `unknown` for broad runtime/UI state.\n- `Backend` remains `unknown` for broad service or production state.\n- `FlowDoc Browser Backend Compatibility` is `current` only for the accepted\n  local loopback browser smoke path.\n\n## PASS\n\n- The accepted browser smoke evidence is durable and registered in Project\n  Control.\n- The promotion target is the narrowest useful child node rather than a broad\n  repository node.\n- The system map points at the bounded claim without changing product runtime\n  behavior.\n- Project Control generated index and roadmap tests guard the new child claim.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this bounded promotion lane.\n\n## RISK\n\n- The promoted claim is local loopback headless Chrome evidence only.\n- The promoted claim covers one fixture, one product route flow, one migration,\n  and one UI reorder mutation.\n- The accepted smoke retained a non-blocking Vite `/favicon.ico` 404 log entry,\n  with no `console.error` and no page exception.\n- Editor still has previously observed npm audit risk from the implementation\n  worktree and the existing Vite chunk-size warning.\n\n## UNKNOWN\n\n- Deployed Backend and hosted Editor compatibility remain unknown.\n- Cross-browser compatibility remains unknown.\n- Broad document-corpus compatibility remains unknown.\n- Accessibility and visual-regression status remain unknown.\n- Product readiness remains unknown.\n\n## Intentionally Not Changed\n\n- No product repository file was changed.\n- No broad Core, Editor, Backend, or FlowDoc truth state was promoted.\n- No broad repository node received this evidence as a `current` claim.\n- No Backend production readiness, auth, tenancy, deployment, or persistence\n  claim was added.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nOpen a new owner lane for the next remaining unknown, preferably deployed\nloopback-to-hosted parity or broader corpus coverage, before any product\nreadiness claim.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-global-codex-guidance",
       "title": "FlowDoc Global Codex Guidance",
       "path": "docs/domains/flowdoc-global-codex-guidance.md",
@@ -1993,7 +2192,7 @@
       "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
       "lifecycle": "active",
       "repositoryRefs": [],
-      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Editor runtime or UI state. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown`; a registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, but no Project Control Evidence currently promotes Backend service state. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
+      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for the bounded local loopback headless Chrome smoke where the rendered Editor product routes load a Core-backed document through a live Backend server, apply migration, and commit one UI reorder mutation. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, broad corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records one accepted local product-route smoke without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records one accepted local live Backend smoke without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
     },
     {
       "kind": "document",
@@ -3164,6 +3363,18 @@
       "pathOrContractId": "AGENTS.md",
       "verificationSummary": "Editor AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
       "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+      "nodeIds": [
+        "flowdoc-browser-compatibility"
+      ],
+      "repositoryId": "repo-project-control",
+      "commit": "739d19d452bdb5151ec030db96a9247da0a29ae5",
+      "pathOrContractId": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+      "verificationSummary": "Project Control commit 739d19d452bdb5151ec030db96a9247da0a29ae5 records the accepted Editor browser live Backend smoke packet and promotes only the bounded local loopback browser compatibility child claim. The supporting packet cites Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4, whose retained fixture shows headless Chrome opening /documents and /documents/product-report-vnext-minimal/design against a live loopback Backend, observing Core: api r3, clicking Upgrade to Core: api r4 partial mode, clicking Move selected node down to Core: mutation-result r5, and retaining final outline order summary-columns > title > detail-table. It also records Backend request paths and 200/204 statuses for library, capabilities, document read, migration, and mutation routes, plus Editor worktree and merged main owner gates. This promotion creates a current child node only for that bounded smoke. It leaves FlowDoc planned and Core, Editor, and Backend unknown, and does not promote deployed Backend compatibility, cross-browser behavior, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, bundle-size readiness, or product readiness.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "evidence",

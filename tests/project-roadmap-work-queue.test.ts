@@ -127,13 +127,23 @@ const remediationTasks = [
     checklistId: "checklist-editor-browser-live-backend-smoke",
     checklistLength: 6,
   },
+  {
+    id: "flowdoc-bounded-browser-compatibility-promotion",
+    nodeId: "flowdoc-browser-compatibility",
+    workState: "in-review",
+    activeRole: "evidence-reviewer",
+    phaseId: "phase-flowdoc-bounded-browser-compatibility-promotion",
+    phaseState: "done",
+    checklistId: "checklist-flowdoc-bounded-browser-compatibility-promotion",
+    checklistLength: 6,
+  },
 ] as const;
 
 describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 10);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 11);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -165,6 +175,7 @@ describe("project roadmap Work Queue", () => {
         "editor-backend-core-live-compatibility-harness",
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-smoke",
+        "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening",
       ],
@@ -257,6 +268,13 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({
       truthState: "planned",
+      childIds: [
+        "backend",
+        "core",
+        "editor",
+        "flowdoc-browser-compatibility",
+        "project-control",
+      ],
       workIds: [
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
@@ -264,6 +282,13 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
       ],
+    });
+    expect(model.nodes.find((node) => node.id === "flowdoc-browser-compatibility")).toMatchObject({
+      truthState: "current",
+      documentIds: ["doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      evidenceIds: ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      repositoryIds: ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+      workIds: ["flowdoc-bounded-browser-compatibility-promotion"],
     });
     expect(model.checklists.find((item) => item.id === "checklist-core-public-export-boundary-review")?.items
       .map((item) => item.state))
@@ -286,6 +311,9 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-editor-browser-live-backend-smoke")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-flowdoc-bounded-browser-compatibility-promotion")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.documents.find((item) => item.id === "doc-editor-backend-core-live-compatibility-harness-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
@@ -297,6 +325,12 @@ describe("project roadmap Work Queue", () => {
         nodeIds: [],
         path: "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
         role: "verification",
+      });
+    expect(model.documents.find((item) => item.id === "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"))
+      .toMatchObject({
+        nodeIds: ["flowdoc-browser-compatibility"],
+        path: "docs/domains/flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md",
+        role: "current-state",
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"))
       .toMatchObject({
@@ -316,6 +350,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27")?.verificationSummary)
       .toContain("accepted bounded browser-app live Backend smoke");
+    expect(model.evidence.find((item) => item.id === "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"))
+      .toMatchObject({
+        nodeIds: ["flowdoc-browser-compatibility"],
+        repositoryId: "repo-project-control",
+        commit: "739d19d452bdb5151ec030db96a9247da0a29ae5",
+        pathOrContractId: "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27")?.verificationSummary)
+      .toContain("promotes only the bounded local loopback browser compatibility child claim");
     expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
