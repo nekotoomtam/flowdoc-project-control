@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-backend-core-live-compatibility-harness",
+  "workId": "editor-backend-core-live-compatibility-harness",
+  "title": "Prove Live Editor Backend Core Compatibility",
+  "phaseState": "in-progress",
+  "order": 10,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repositories, Checklist target, and Evidence target before editing Editor.",
+    "The harness requires Editor production code to import Core internals outside src/core/coreAdapter.ts.",
+    "The harness requires Backend to copy Core operation semantics instead of calling Core public contracts.",
+    "The harness depends on mocked fetch/client boundaries instead of a real loopback Backend HTTP server.",
+    "Project Control promotes FlowDoc, Core, Editor, Backend, or compatibility truth before the live harness and owner gates support the bounded claim."
+  ],
+  "verificationTarget": "An Editor-owned test starts a loopback Backend server, seeds a Core fixture-backed repository, uses the real Editor backend client for capability, read, migration, and mutation calls, and applies Core-backed envelopes into Editor runtime state; Project Control records the result without broad map promotion.",
+  "summary": "In progress: open the live harness lane after Core default gate stabilization and before any compatibility truth promotion.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

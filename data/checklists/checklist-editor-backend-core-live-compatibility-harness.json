@@ -1,0 +1,46 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-backend-core-live-compatibility-harness",
+  "phaseId": "phase-editor-backend-core-live-compatibility-harness",
+  "title": "Editor Backend Core Live Compatibility Harness Checklist",
+  "items": [
+    {
+      "id": "capture-current-boundaries",
+      "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, and compatibility blockers before editing.",
+      "state": "pending",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, and prior Core gate-stability evidence are reviewed."
+    },
+    {
+      "id": "confirm-live-harness-owner",
+      "label": "Confirm the live harness belongs in Editor without moving Backend transport, Core semantics, or Project Control truth responsibilities.",
+      "state": "pending",
+      "evidenceTarget": "Editor, Backend, and Core boundary files show the harness can use public surfaces without product-runtime responsibility drift."
+    },
+    {
+      "id": "write-failing-live-harness-test",
+      "label": "Write an Editor-owned failing test for the real loopback Backend server and real Editor backend client path.",
+      "state": "pending",
+      "evidenceTarget": "The focused Editor test fails before implementation because the accepted live harness is not yet wired."
+    },
+    {
+      "id": "implement-minimal-live-harness",
+      "label": "Implement the minimal test-only wiring needed for the live capability, read, migration, mutation, and runtime apply path.",
+      "state": "pending",
+      "evidenceTarget": "The Editor diff keeps production runtime behavior unchanged and uses Backend/Core public contracts."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused and full owner repository gates after the harness is in place.",
+      "state": "pending",
+      "evidenceTarget": "Editor focused harness, Editor npm run check, and any required Backend/Core gates or no-change evidence are recorded."
+    },
+    {
+      "id": "register-bounded-evidence",
+      "label": "Register the live harness evidence in Project Control without promoting broad FlowDoc truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence target evidence-editor-backend-core-live-compatibility-harness-2026-08-27 records the commit, checks, supported claim, risks, and intentionally unpromoted truth."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
