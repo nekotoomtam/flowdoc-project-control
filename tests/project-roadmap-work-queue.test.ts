@@ -58,6 +58,16 @@ const expectedLegacyWork = [
 
 const remediationTasks = [
   {
+    id: "core-consumer-surface-freeze",
+    nodeId: "core",
+    workState: "in-progress",
+    activeRole: "cross-repo-boundary-reviewer",
+    phaseId: "phase-core-consumer-surface-freeze",
+    phaseState: "in-progress",
+    checklistId: "checklist-core-consumer-surface-freeze",
+    checklistLength: 6,
+  },
+  {
     id: "backend-core-version-contract-consumer-hardening",
     nodeId: "backend",
     workState: "in-review",
@@ -203,7 +213,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 17);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 18);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -231,6 +241,7 @@ describe("project roadmap Work Queue", () => {
         "backend-core-version-contract-consumer-hardening",
         "backend-service-contract-hardening",
         "backend-service-readiness-boundary-review",
+        "core-consumer-surface-freeze",
         "core-default-gate-stability-review",
         "core-public-export-boundary-review",
         "core-runtime-version-contract-hardening",
@@ -306,6 +317,7 @@ describe("project roadmap Work Queue", () => {
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
+        "core-consumer-surface-freeze",
         "core-default-gate-stability-review",
         "core-documentation-family-closure",
         "core-public-export-boundary-review",

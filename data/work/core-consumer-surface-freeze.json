@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "core-consumer-surface-freeze",
+  "title": "Core Consumer Surface Freeze",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Define a Core-owned consumer surface contract for Backend, Editor, and future frontend planning before cleanup or binding work can rely on Core imports, subpaths, or retained evidence surfaces.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-role-catalog", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-product-terminology", "doc-flowdoc-product-terminology-th", "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "expectedOutput": "A Core-owned, JSON-safe consumer surface freeze contract and tests that distinguish supported Backend, Editor, and future frontend imports from retained, deprecated, or blocked surfaces, followed by a Project Control evidence record after Core verification.",
+  "riskSummary": "Core root exports remain broad and Core broad truth remains unknown. Until Core implementation and verification are complete, frontend redesign can still accidentally bind to surfaces retained only for migration, evidence, or historical compatibility.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

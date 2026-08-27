@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1894ecd78e8fec217b9dbd0b939bc60050b15b40049335f562e0145fd2ae5dc3",
+  "sourceDigest": "38c7194242b3316feef50f731e3c544563a4342c85d45f936ddac871d23e954c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -262,6 +262,7 @@
         "text-block"
       ],
       "workIds": [
+        "core-consumer-surface-freeze",
         "core-default-gate-stability-review",
         "core-documentation-family-closure",
         "core-public-export-boundary-review",
@@ -487,6 +488,46 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "backend-service-readiness-boundary-review"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "core-consumer-surface-freeze",
+      "title": "Core Consumer Surface Freeze",
+      "nodeId": "core",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Define a Core-owned consumer surface contract for Backend, Editor, and future frontend planning before cleanup or binding work can rely on Core imports, subpaths, or retained evidence surfaces.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "expectedOutput": "A Core-owned, JSON-safe consumer surface freeze contract and tests that distinguish supported Backend, Editor, and future frontend imports from retained, deprecated, or blocked surfaces, followed by a Project Control evidence record after Core verification.",
+      "riskSummary": "Core root exports remain broad and Core broad truth remains unknown. Until Core implementation and verification are complete, frontend redesign can still accidentally bind to surfaces retained only for migration, evidence, or historical compatibility.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-core-consumer-surface-freeze"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "core-consumer-surface-freeze"
       ]
     },
     {
@@ -965,6 +1006,7 @@
         "backend-core-version-contract-consumer-hardening",
         "backend-service-contract-hardening",
         "backend-service-readiness-boundary-review",
+        "core-consumer-surface-freeze",
         "core-default-gate-stability-review",
         "core-public-export-boundary-review",
         "core-runtime-version-contract-hardening",
@@ -1198,6 +1240,31 @@
       "verificationTarget": "Backend evidence distinguishes local dev readiness from production service readiness across HTTP, storage, auth, and export boundaries.",
       "summary": "Backend service readiness boundary is recorded: development readiness is explicit, local/integration evidence remains bounded, and production service readiness stays blocked.",
       "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-core-consumer-surface-freeze",
+      "workId": "core-consumer-surface-freeze",
+      "title": "Freeze Core Consumer Surface For Frontend Readiness",
+      "phaseState": "in-progress",
+      "order": 40,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, or Evidence target before editing Core.",
+        "Core product behavior would be edited before reading the Core repository AGENTS.md in a dedicated Core worktree.",
+        "A proposed Core consumer surface cannot distinguish supported consumer imports from retained migration, retained evidence, deprecated, or blocked surfaces.",
+        "The lane would delete or narrow existing Core exports before Backend, Editor, and frontend adoption evidence proves the removal safe.",
+        "The lane would move Backend transport, Editor browser state, Preview behavior, or Project Control truth into Core.",
+        "Core or Project Control gates fail after implementation."
+      ],
+      "verificationTarget": "Core commit plus Project Control evidence target evidence-core-consumer-surface-freeze-2026-08-27 proving the Core consumer surface contract is explicit while broad Core and FlowDoc truth remain unpromoted.",
+      "summary": "In progress: Project Control has opened the Core consumer surface freeze lane. Core implementation, verification, and evidence registration remain pending.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
@@ -1725,6 +1792,53 @@
         }
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-core-consumer-surface-freeze",
+      "phaseId": "phase-core-consumer-surface-freeze",
+      "title": "Core Consumer Surface Freeze Checklist",
+      "items": [
+        {
+          "id": "capture-work-context",
+          "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before Core edits.",
+          "state": "passed",
+          "evidenceTarget": "Project Control registers the Core-owned Work path and names evidence-core-consumer-surface-freeze-2026-08-27 as the post-implementation evidence target.",
+          "verificationNote": "Project Control opened work path flowdoc-product-development-resumption > core-consumer-surface-freeze with owner repo-core, active role cross-repo-boundary-reviewer, phase-core-consumer-surface-freeze, checklist-core-consumer-surface-freeze, and future evidence target evidence-core-consumer-surface-freeze-2026-08-27."
+        },
+        {
+          "id": "read-core-agreement",
+          "label": "Read Core AGENTS.md and relevant Core public boundary, version, and cross-repository contracts before editing.",
+          "state": "pending",
+          "evidenceTarget": "Core implementation notes cite the repository working agreement and touched contract/test surfaces."
+        },
+        {
+          "id": "write-core-red-test",
+          "label": "Write a Core RED test that fails because the consumer surface freeze contract is absent or too ambiguous for frontend planning.",
+          "state": "pending",
+          "evidenceTarget": "Focused Core test fails before implementation for the missing consumer surface contract or classification."
+        },
+        {
+          "id": "freeze-consumer-surface",
+          "label": "Implement the smallest Core contract change that distinguishes supported consumer imports from retained, deprecated, or blocked surfaces.",
+          "state": "pending",
+          "evidenceTarget": "Core contract or inventory reports supported Backend, Editor, and future frontend surfaces without claiming broad Core readiness."
+        },
+        {
+          "id": "verify-core-gates",
+          "label": "Run focused Core tests and the full Core gate in the Core worktree and merged main.",
+          "state": "pending",
+          "evidenceTarget": "Core focused test and npm run check pass in the worktree and after merge to main."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Register the Core evidence packet in Project Control without map or parent truth promotion.",
+          "state": "pending",
+          "evidenceTarget": "Project Control evidence-core-consumer-surface-freeze-2026-08-27 cites the Core commit, path or contract id, verification summary, remaining risks, and unknowns."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {

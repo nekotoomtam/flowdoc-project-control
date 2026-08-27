@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-core-consumer-surface-freeze",
+  "workId": "core-consumer-surface-freeze",
+  "title": "Freeze Core Consumer Surface For Frontend Readiness",
+  "phaseState": "in-progress",
+  "order": 40,
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, or Evidence target before editing Core.",
+    "Core product behavior would be edited before reading the Core repository AGENTS.md in a dedicated Core worktree.",
+    "A proposed Core consumer surface cannot distinguish supported consumer imports from retained migration, retained evidence, deprecated, or blocked surfaces.",
+    "The lane would delete or narrow existing Core exports before Backend, Editor, and frontend adoption evidence proves the removal safe.",
+    "The lane would move Backend transport, Editor browser state, Preview behavior, or Project Control truth into Core.",
+    "Core or Project Control gates fail after implementation."
+  ],
+  "verificationTarget": "Core commit plus Project Control evidence target evidence-core-consumer-surface-freeze-2026-08-27 proving the Core consumer surface contract is explicit while broad Core and FlowDoc truth remain unpromoted.",
+  "summary": "In progress: Project Control has opened the Core consumer surface freeze lane. Core implementation, verification, and evidence registration remain pending.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

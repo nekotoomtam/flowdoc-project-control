@@ -1,0 +1,47 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-consumer-surface-freeze",
+  "phaseId": "phase-core-consumer-surface-freeze",
+  "title": "Core Consumer Surface Freeze Checklist",
+  "items": [
+    {
+      "id": "capture-work-context",
+      "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before Core edits.",
+      "state": "passed",
+      "evidenceTarget": "Project Control registers the Core-owned Work path and names evidence-core-consumer-surface-freeze-2026-08-27 as the post-implementation evidence target.",
+      "verificationNote": "Project Control opened work path flowdoc-product-development-resumption > core-consumer-surface-freeze with owner repo-core, active role cross-repo-boundary-reviewer, phase-core-consumer-surface-freeze, checklist-core-consumer-surface-freeze, and future evidence target evidence-core-consumer-surface-freeze-2026-08-27."
+    },
+    {
+      "id": "read-core-agreement",
+      "label": "Read Core AGENTS.md and relevant Core public boundary, version, and cross-repository contracts before editing.",
+      "state": "pending",
+      "evidenceTarget": "Core implementation notes cite the repository working agreement and touched contract/test surfaces."
+    },
+    {
+      "id": "write-core-red-test",
+      "label": "Write a Core RED test that fails because the consumer surface freeze contract is absent or too ambiguous for frontend planning.",
+      "state": "pending",
+      "evidenceTarget": "Focused Core test fails before implementation for the missing consumer surface contract or classification."
+    },
+    {
+      "id": "freeze-consumer-surface",
+      "label": "Implement the smallest Core contract change that distinguishes supported consumer imports from retained, deprecated, or blocked surfaces.",
+      "state": "pending",
+      "evidenceTarget": "Core contract or inventory reports supported Backend, Editor, and future frontend surfaces without claiming broad Core readiness."
+    },
+    {
+      "id": "verify-core-gates",
+      "label": "Run focused Core tests and the full Core gate in the Core worktree and merged main.",
+      "state": "pending",
+      "evidenceTarget": "Core focused test and npm run check pass in the worktree and after merge to main."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Register the Core evidence packet in Project Control without map or parent truth promotion.",
+      "state": "pending",
+      "evidenceTarget": "Project Control evidence-core-consumer-surface-freeze-2026-08-27 cites the Core commit, path or contract id, verification summary, remaining risks, and unknowns."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
