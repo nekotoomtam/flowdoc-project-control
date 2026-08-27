@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "backend-core-version-contract-consumer-hardening",
+  "title": "Backend Core Version Contract Consumer Hardening",
+  "nodeId": "backend",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-backend", "repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Open the Backend-owned consumer hardening lane after Core published a version-surface retirement inventory. Backend must consume or compare against Core-owned version capability facts without untracked copies, preserve Backend revision and persistence ownership, and classify/delete any copied Core version facts found in scope.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-core-runtime-version-contract-hardening-2026-08-27", "doc-cross-repository-compatibility-evidence-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "A Backend-owned implementation patch or bounded blocker that prevents Core version capability drift, keeps revision/persistence behavior Backend-owned, removes or records copied Core version facts, and returns fresh Backend evidence for Project Control.",
+  "riskSummary": "Backend broad truth remains unknown; changing capability reporting can break Editor migration decisions or Backend revision gates if the lane bypasses Core contracts, copies stale facts, or treats Core migration-target parsing as Backend persistence readiness.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

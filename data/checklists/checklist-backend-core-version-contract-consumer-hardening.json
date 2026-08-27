@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-backend-core-version-contract-consumer-hardening",
+  "phaseId": "phase-backend-core-version-contract-consumer-hardening",
+  "title": "Backend Core Version Contract Consumer Hardening Checklist",
+  "items": [
+    {
+      "id": "capture-current-backend-core-boundary",
+      "label": "Capture Project Control, Backend, and Core heads, repository AGENTS rules, and current version capability evidence before product edits.",
+      "state": "in-progress",
+      "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane."
+    },
+    {
+      "id": "inventory-copied-core-version-facts",
+      "label": "Inventory Backend version capability facts and classify whether each is a Core contract consumption, Backend wrapper, copied value, retained response shape, or deletion candidate.",
+      "state": "pending",
+      "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked."
+    },
+    {
+      "id": "write-failing-drift-guard",
+      "label": "Write a failing Backend test that would catch drift between Backend reporting and Core-owned version capability or retirement-inventory facts.",
+      "state": "pending",
+      "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak."
+    },
+    {
+      "id": "harden-backend-consumer-contract",
+      "label": "Implement the smallest Backend change that consumes or verifies Core-owned version facts without widening Backend readiness claims.",
+      "state": "pending",
+      "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified."
+    },
+    {
+      "id": "preserve-backend-revision-persistence-boundaries",
+      "label": "Preserve Backend ownership of revision gates, migration persistence, source retention, and HTTP response semantics while consuming Core facts.",
+      "state": "pending",
+      "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness."
+    },
+    {
+      "id": "verify-backend-owner-gates",
+      "label": "Run focused Backend checks plus the full Backend gate in the worktree and on merged main.",
+      "state": "pending",
+      "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output."
+    },
+    {
+      "id": "register-bounded-evidence",
+      "label": "Register Project Control evidence for the bounded Backend consumer-hardening result without promoting broad Backend, Core, or FlowDoc truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

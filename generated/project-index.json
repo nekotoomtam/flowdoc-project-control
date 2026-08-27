@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "845855a0a3519c823d0a27cdbb3f3beaee557a9dc466bbb4d00ccb8399fdbb3b",
+  "sourceDigest": "e678b7f98faba66e824503e2e4b3c861519be3423bc80c753cf28d7feafae4ed",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -227,6 +227,7 @@
       ],
       "childIds": [],
       "workIds": [
+        "backend-core-version-contract-consumer-hardening",
         "backend-service-readiness-boundary-review"
       ]
     },
@@ -356,6 +357,45 @@
       "phaseIds": [],
       "workPathIds": [
         "agent-and-skill-design"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "backend-core-version-contract-consumer-hardening",
+      "title": "Backend Core Version Contract Consumer Hardening",
+      "nodeId": "backend",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Open the Backend-owned consumer hardening lane after Core published a version-surface retirement inventory. Backend must consume or compare against Core-owned version capability facts without untracked copies, preserve Backend revision and persistence ownership, and classify/delete any copied Core version facts found in scope.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-core-runtime-version-contract-hardening-2026-08-27",
+        "doc-cross-repository-compatibility-evidence-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "A Backend-owned implementation patch or bounded blocker that prevents Core version capability drift, keeps revision/persistence behavior Backend-owned, removes or records copied Core version facts, and returns fresh Backend evidence for Project Control.",
+      "riskSummary": "Backend broad truth remains unknown; changing capability reporting can break Editor migration decisions or Backend revision gates if the lane bypasses Core contracts, copies stale facts, or treats Core migration-target parsing as Backend persistence readiness.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-backend-core-version-contract-consumer-hardening"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "backend-core-version-contract-consumer-hardening"
       ]
     },
     {
@@ -824,6 +864,7 @@
       "createdAt": "2026-08-24T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z",
       "childWorkIds": [
+        "backend-core-version-contract-consumer-hardening",
         "backend-service-readiness-boundary-review",
         "core-default-gate-stability-review",
         "core-public-export-boundary-review",
@@ -946,6 +987,31 @@
     }
   ],
   "phases": [
+    {
+      "kind": "phase",
+      "id": "phase-backend-core-version-contract-consumer-hardening",
+      "workId": "backend-core-version-contract-consumer-hardening",
+      "title": "Harden Backend Core Version Contract Consumption",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, checklist target, and evidence target before Backend product edits.",
+        "Backend product behavior would be edited before reading the Backend repository AGENTS.md in a dedicated Backend worktree.",
+        "Backend copies Core capability or retirement-inventory facts instead of consuming, wrapping, or verifying the Core-owned contract.",
+        "A copied Core version surface cannot be deleted or classified as retained for Backend response compatibility with a reason.",
+        "The lane would claim Backend production readiness, Editor readiness, or broad FlowDoc compatibility from a bounded consumer-hardening patch."
+      ],
+      "verificationTarget": "Backend worktree evidence proves version capability reporting cannot drift from the Core-owned contract, preserves Backend revision/persistence ownership, classifies copied facts, and Project Control records the bounded result without broad truth promotion.",
+      "summary": "Begin Backend consumer hardening for the Core version capability and retirement-inventory contract before further Backend service hardening.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
     {
       "kind": "phase",
       "id": "phase-backend-service-readiness-boundary-review",
@@ -1235,6 +1301,58 @@
     }
   ],
   "checklists": [
+    {
+      "kind": "checklist",
+      "id": "checklist-backend-core-version-contract-consumer-hardening",
+      "phaseId": "phase-backend-core-version-contract-consumer-hardening",
+      "title": "Backend Core Version Contract Consumer Hardening Checklist",
+      "items": [
+        {
+          "id": "capture-current-backend-core-boundary",
+          "label": "Capture Project Control, Backend, and Core heads, repository AGENTS rules, and current version capability evidence before product edits.",
+          "state": "in-progress",
+          "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane."
+        },
+        {
+          "id": "inventory-copied-core-version-facts",
+          "label": "Inventory Backend version capability facts and classify whether each is a Core contract consumption, Backend wrapper, copied value, retained response shape, or deletion candidate.",
+          "state": "pending",
+          "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked."
+        },
+        {
+          "id": "write-failing-drift-guard",
+          "label": "Write a failing Backend test that would catch drift between Backend reporting and Core-owned version capability or retirement-inventory facts.",
+          "state": "pending",
+          "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak."
+        },
+        {
+          "id": "harden-backend-consumer-contract",
+          "label": "Implement the smallest Backend change that consumes or verifies Core-owned version facts without widening Backend readiness claims.",
+          "state": "pending",
+          "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified."
+        },
+        {
+          "id": "preserve-backend-revision-persistence-boundaries",
+          "label": "Preserve Backend ownership of revision gates, migration persistence, source retention, and HTTP response semantics while consuming Core facts.",
+          "state": "pending",
+          "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness."
+        },
+        {
+          "id": "verify-backend-owner-gates",
+          "label": "Run focused Backend checks plus the full Backend gate in the worktree and on merged main.",
+          "state": "pending",
+          "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output."
+        },
+        {
+          "id": "register-bounded-evidence",
+          "label": "Register Project Control evidence for the bounded Backend consumer-hardening result without promoting broad Backend, Core, or FlowDoc truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
     {
       "kind": "checklist",
       "id": "checklist-backend-service-readiness-boundary-review",
