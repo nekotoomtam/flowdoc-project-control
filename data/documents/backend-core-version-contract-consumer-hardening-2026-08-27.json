@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-backend-core-version-contract-consumer-hardening-2026-08-27",
+  "title": "Backend Core Version Contract Consumer Hardening - 2026-08-27",
+  "path": "docs/domains/backend-core-version-contract-consumer-hardening-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped Backend Core-version contract consumer hardening review for the local Backend head; records Core contract wrapping, Backend retained boundaries, tests, risks, and unknowns without promoting Backend, Core, Editor, or FlowDoc truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "47662ea2ef2abd42f166c7fa263c4bf1fc067e92",
+      "pathOrContractId": "data/work/backend-core-version-contract-consumer-hardening.json"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+      "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+      "pathOrContractId": "src/service/migrationService.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+      "pathOrContractId": "src/tests/versionCapability.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+      "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+    }
+  ]
+}

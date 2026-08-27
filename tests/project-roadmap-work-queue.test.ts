@@ -60,10 +60,10 @@ const remediationTasks = [
   {
     id: "backend-core-version-contract-consumer-hardening",
     nodeId: "backend",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-backend-core-version-contract-consumer-hardening",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-backend-core-version-contract-consumer-hardening",
     checklistLength: 7,
   },
@@ -362,6 +362,24 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-core-runtime-version-contract-hardening")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-backend-core-version-contract-consumer-hardening")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.documents.find((item) => item.id === "doc-backend-core-version-contract-consumer-hardening-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        path: "docs/domains/backend-core-version-contract-consumer-hardening-2026-08-27.md",
+        role: "verification",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-backend",
+        commit: "6c3331217b509fc635ad25b71fba503ff066cd72",
+        pathOrContractId: "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-backend-core-version-contract-consumer-hardening-2026-08-27")?.verificationSummary)
+      .toContain("wraps the Core-owned version capability contract");
     expect(model.documents.find((item) => item.id === "doc-core-runtime-version-contract-hardening-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

@@ -7,44 +7,58 @@
     {
       "id": "capture-current-backend-core-boundary",
       "label": "Capture Project Control, Backend, and Core heads, repository AGENTS rules, and current version capability evidence before product edits.",
-      "state": "in-progress",
-      "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane."
+      "state": "passed",
+      "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "Reviewed Project Control and Backend AGENTS rules plus the Core cross-repo operating map, Core versionCapability export, Backend versionCapability, migration service/contract, package repository guards, and related version/migration HTTP tests before product edits."
     },
     {
       "id": "inventory-copied-core-version-facts",
       "label": "Inventory Backend version capability facts and classify whether each is a Core contract consumption, Backend wrapper, copied value, retained response shape, or deletion candidate.",
-      "state": "pending",
-      "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked."
+      "state": "passed",
+      "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "BACKEND_CORE_VERSION_CONSUMER_INVENTORY classifies Core active and migration-target pairs as imported, capability envelope and migration target response as wrapped, persistence version guards as retained, copied capability test snapshots as deleted, and silent read compatibility adapters as blocked."
     },
     {
       "id": "write-failing-drift-guard",
       "label": "Write a failing Backend test that would catch drift between Backend reporting and Core-owned version capability or retirement-inventory facts.",
-      "state": "pending",
-      "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak."
+      "state": "passed",
+      "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "RED focused run failed as intended: versionCapability test expected coreSurfaceRetirementInventory but received undefined, and migrationService test failed because createBackendCoreMigrationTargetPair was not yet a function."
     },
     {
       "id": "harden-backend-consumer-contract",
       "label": "Implement the smallest Backend change that consumes or verifies Core-owned version facts without widening Backend readiness claims.",
-      "state": "pending",
-      "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified."
+      "state": "passed",
+      "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 adds Core retirement inventory wrapping, Backend consumer inventory helpers, Core-derived migration target helper, and tests comparing capability HTTP/service expectations to Core exports."
     },
     {
       "id": "preserve-backend-revision-persistence-boundaries",
       "label": "Preserve Backend ownership of revision gates, migration persistence, source retention, and HTTP response semantics while consuming Core facts.",
-      "state": "pending",
-      "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness."
+      "state": "passed",
+      "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "MigrationService and migration HTTP tests still prove revision-gated v3-to-v4 persistence, immutable source snapshot retention, request-id replay/conflict handling, stale revision rejection, and unsupported target rejection as Backend-owned semantics."
     },
     {
       "id": "verify-backend-owner-gates",
       "label": "Run focused Backend checks plus the full Backend gate in the worktree and on merged main.",
-      "state": "pending",
-      "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output."
+      "state": "passed",
+      "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "Backend focused suite passed 4 files / 12 tests. Worktree npm run check passed after restoring the expected sibling Core fixture path for the nested worktree layout: 89 files passed, 1 skipped, 312 tests passed, 27 skipped, and build passed. Merged main npm run check passed 89 files, 1 skipped, 315 tests passed, 24 skipped, and build passed."
     },
     {
       "id": "register-bounded-evidence",
       "label": "Register Project Control evidence for the bounded Backend consumer-hardening result without promoting broad Backend, Core, or FlowDoc truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns."
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns.",
+      "evidenceIds": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
+      "verificationNote": "Project Control evidence and verification document are work-scoped with nodeIds empty; Backend, Core, Editor, and FlowDoc broad truth states remain unpromoted."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",

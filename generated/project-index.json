@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "e678b7f98faba66e824503e2e4b3c861519be3423bc80c753cf28d7feafae4ed",
+  "sourceDigest": "942b96e57ea0ee2a2bcd1627c51b1cc7a564e8e4b07d142b29526cbbf607d476",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -371,8 +371,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Open the Backend-owned consumer hardening lane after Core published a version-surface retirement inventory. Backend must consume or compare against Core-owned version capability facts without untracked copies, preserve Backend revision and persistence ownership, and classify/delete any copied Core version facts found in scope.",
+      "workState": "in-review",
+      "summary": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 wraps the Core-owned version capability and retirement-inventory facts, exposes a Backend consumer inventory classifying imported, wrapped, retained, deleted, and blocked version facts, and moves the migration result target to a Core-derived helper while preserving Backend revision and persistence ownership.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -381,12 +381,15 @@
         "doc-flowdoc-role-catalog",
         "doc-work-tree-operating-rules",
         "doc-core-runtime-version-contract-hardening-2026-08-27",
-        "doc-cross-repository-compatibility-evidence-2026-08-27"
+        "doc-cross-repository-compatibility-evidence-2026-08-27",
+        "doc-backend-core-version-contract-consumer-hardening-2026-08-27"
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "A Backend-owned implementation patch or bounded blocker that prevents Core version capability drift, keeps revision/persistence behavior Backend-owned, removes or records copied Core version facts, and returns fresh Backend evidence for Project Control.",
-      "riskSummary": "Backend broad truth remains unknown; changing capability reporting can break Editor migration decisions or Backend revision gates if the lane bypasses Core contracts, copies stale facts, or treats Core migration-target parsing as Backend persistence readiness.",
-      "requiredEvidence": [],
+      "riskSummary": "Backend broad truth remains unknown; this lane only hardens the version capability consumer surface. Remaining retained literals are Backend persistence/fixture outcome checks, not broad service readiness or Editor compatibility evidence.",
+      "requiredEvidence": [
+        "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -992,7 +995,7 @@
       "id": "phase-backend-core-version-contract-consumer-hardening",
       "workId": "backend-core-version-contract-consumer-hardening",
       "title": "Harden Backend Core Version Contract Consumption",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-backend",
@@ -1008,7 +1011,7 @@
         "The lane would claim Backend production readiness, Editor readiness, or broad FlowDoc compatibility from a bounded consumer-hardening patch."
       ],
       "verificationTarget": "Backend worktree evidence proves version capability reporting cannot drift from the Core-owned contract, preserves Backend revision/persistence ownership, classifies copied facts, and Project Control records the bounded result without broad truth promotion.",
-      "summary": "Begin Backend consumer hardening for the Core version capability and retirement-inventory contract before further Backend service hardening.",
+      "summary": "Done: Backend now wraps the Core version capability and retirement-inventory contract, classifies copied version facts, preserves Backend revision/persistence boundaries, and passed focused plus full Backend gates without promoting broad Backend truth.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1310,44 +1313,72 @@
         {
           "id": "capture-current-backend-core-boundary",
           "label": "Capture Project Control, Backend, and Core heads, repository AGENTS rules, and current version capability evidence before product edits.",
-          "state": "in-progress",
-          "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane."
+          "state": "passed",
+          "evidenceTarget": "Exact Project Control, Backend, and Core commits plus clean/dirty state, AGENTS.md rules, and relevant Core/Backend version capability files are recorded for the Backend lane.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "Reviewed Project Control and Backend AGENTS rules plus the Core cross-repo operating map, Core versionCapability export, Backend versionCapability, migration service/contract, package repository guards, and related version/migration HTTP tests before product edits."
         },
         {
           "id": "inventory-copied-core-version-facts",
           "label": "Inventory Backend version capability facts and classify whether each is a Core contract consumption, Backend wrapper, copied value, retained response shape, or deletion candidate.",
-          "state": "pending",
-          "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked."
+          "state": "passed",
+          "evidenceTarget": "Backend source/test inventory shows whether Core capability or retirement-inventory facts are imported, copied, wrapped, retained, deleted, or blocked.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "BACKEND_CORE_VERSION_CONSUMER_INVENTORY classifies Core active and migration-target pairs as imported, capability envelope and migration target response as wrapped, persistence version guards as retained, copied capability test snapshots as deleted, and silent read compatibility adapters as blocked."
         },
         {
           "id": "write-failing-drift-guard",
           "label": "Write a failing Backend test that would catch drift between Backend reporting and Core-owned version capability or retirement-inventory facts.",
-          "state": "pending",
-          "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak."
+          "state": "passed",
+          "evidenceTarget": "Focused Backend test output fails before implementation because the drift guard or consumer contract is missing or weak.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "RED focused run failed as intended: versionCapability test expected coreSurfaceRetirementInventory but received undefined, and migrationService test failed because createBackendCoreMigrationTargetPair was not yet a function."
         },
         {
           "id": "harden-backend-consumer-contract",
           "label": "Implement the smallest Backend change that consumes or verifies Core-owned version facts without widening Backend readiness claims.",
-          "state": "pending",
-          "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified."
+          "state": "passed",
+          "evidenceTarget": "Backend implementation and focused tests prove Core capability facts are wrapped or compared safely, and copied values are removed or classified.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 adds Core retirement inventory wrapping, Backend consumer inventory helpers, Core-derived migration target helper, and tests comparing capability HTTP/service expectations to Core exports."
         },
         {
           "id": "preserve-backend-revision-persistence-boundaries",
           "label": "Preserve Backend ownership of revision gates, migration persistence, source retention, and HTTP response semantics while consuming Core facts.",
-          "state": "pending",
-          "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness."
+          "state": "passed",
+          "evidenceTarget": "Backend tests show revision and persistence semantics remain Backend-owned and do not treat Core migration-target validation as service readiness.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "MigrationService and migration HTTP tests still prove revision-gated v3-to-v4 persistence, immutable source snapshot retention, request-id replay/conflict handling, stale revision rejection, and unsupported target rejection as Backend-owned semantics."
         },
         {
           "id": "verify-backend-owner-gates",
           "label": "Run focused Backend checks plus the full Backend gate in the worktree and on merged main.",
-          "state": "pending",
-          "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output."
+          "state": "passed",
+          "evidenceTarget": "Fresh Backend worktree and merged-main verification pass, or failures are recorded as blockers with exact output.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "Backend focused suite passed 4 files / 12 tests. Worktree npm run check passed after restoring the expected sibling Core fixture path for the nested worktree layout: 89 files passed, 1 skipped, 312 tests passed, 27 skipped, and build passed. Merged main npm run check passed 89 files, 1 skipped, 315 tests passed, 24 skipped, and build passed."
         },
         {
           "id": "register-bounded-evidence",
           "label": "Register Project Control evidence for the bounded Backend consumer-hardening result without promoting broad Backend, Core, or FlowDoc truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns."
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-backend-core-version-contract-consumer-hardening-2026-08-27 cites exact commits, paths, commands, supported claims, risks, and unknowns.",
+          "evidenceIds": [
+            "evidence-backend-core-version-contract-consumer-hardening-2026-08-27"
+          ],
+          "verificationNote": "Project Control evidence and verification document are work-scoped with nodeIds empty; Backend, Core, Editor, and FlowDoc broad truth states remain unpromoted."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -2146,6 +2177,44 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# Agent and Skill Operating Model\n\n## Purpose\n\nThis document defines the first Project Control operating model for FlowDoc\nagents, reusable skills, and handoffs. It is a coordination contract, not an\nimplementation claim and not a generated Codex skill package.\n\nProject Control should make agent work safer by keeping scope, ownership,\nevidence, and remaining risk visible before work resumes in Core, Editor, or\nBackend.\n\n## Operating principles\n\n- Project Control records shared truth, work coordination, documents, repository\n  identities, and evidence indexes.\n- Product repositories retain implementation ownership. Core owns document\n  semantics, Editor owns product browser runtime and UI behavior, and Backend\n  owns transport, revision gates, persistence, and service orchestration.\n- A Work record never proves truth by itself. Strong claims require Evidence\n  records that point to repository-owned files, tests, commits, or contracts.\n- Agents should mark risk while inspecting, continue the full inspection unless\n  blocked, and return to decisions only after the scan is complete.\n- Broad work should move in phases with explicit handoffs instead of one large\n  unreviewed change.\n\n## Project roles\n\n### Project Control steward\n\nMaintains Project Control records, generated indexes, roadmap Work, repository\nregistry entries, and document metadata. This role may update canonical\nProject Control files but must not mutate product repositories while recording\ntruth.\n\n### Evidence reviewer\n\nChecks whether a claimed state is supported by durable evidence. This role\nlooks for exact repository IDs, commits, paths, tests, and verification\nsummaries. It should downgrade unsupported claims to unknown, risk, or planned\ninstead of treating work status as proof.\n\n### Lane reconciliation reviewer\n\nReviews old worktrees and lane branches before cleanup. This role identifies\nunique commits, checks whether their patches are already represented in main,\nrecords retained value or discard rationale, and removes only the reviewed\nworktree checkouts.\n\n### Cross-repo boundary reviewer\n\nKeeps Core, Editor, and Backend responsibilities separate. This role checks for\ndirect imports, copied semantics, bypassed revision gates, local-only shortcuts\nthat look like product truth, and activation claims that outrun documented\ngates.\n\n### Documentation synthesizer\n\nTurns repository-owned source documents into bounded Project Control documents.\nThis role preserves authority limits, references source commits, avoids\npromotion of parent nodes without evidence, and keeps migration or cleanup\nclaims separate from summary writing.\n\n### Product implementation agent\n\nWorks in the owning product repository after Project Control has identified the\nlane, scope, and evidence target. This role follows the product repository\nworking agreement and returns checks, changed behavior, risks left, and\nintentionally unchanged boundaries.\n\n## Reusable skill candidates\n\nReusable skills should be written only after their workflow has been repeated\nenough to prove the trigger, scope, inputs, outputs, and stop conditions.\n\n### FlowDoc repository health audit\n\nTrigger: before resuming broad FlowDoc product development.\n\nInputs: Project Control repository registry, local checkout paths, each\nrepository working agreement, and available check commands.\n\nOutput: repository status, check results, dirty-file risks, boundary risks,\nunknowns, and recommended next work blocks.\n\nStop conditions: missing checkout, unavailable required dependency, dirty\ntracked changes that affect the requested scope, or an external service that is\nrequired for the check.\n\n### FlowDoc lane reconciliation\n\nTrigger: when Project Control lists old worktrees or lane branches that need\nreview before cleanup.\n\nInputs: `git worktree list`, branch names, unique commits, patch-equivalence\nchecks, and related Project Control Work records.\n\nOutput: retained/discarded decision for each lane, cleanup actions taken, branch\nrefs intentionally retained or removed, and any follow-up record update.\n\nStop conditions: dirty worktree, non-equivalent unique patch, conflict with\nmain, or unclear owner decision.\n\n### FlowDoc evidence registration\n\nTrigger: when a node is ready to move toward current truth.\n\nInputs: exact repository ID, 40-character commit, tested path or contract ID,\nverification summary, node ID, and supporting document references.\n\nOutput: Evidence record, document or node links, regenerated index, and check\nresult.\n\nStop conditions: unverified commit, missing path, ambiguous owner repository,\nor a claim that belongs in a product repository first.\n\n### FlowDoc documentation synthesis\n\nTrigger: when source documents from a product repository need bounded Project\nControl publication.\n\nInputs: source inventory, family map, source commit, reviewed family boundary,\nand migration/publication intent.\n\nOutput: bounded versioned Markdown, document records, evidence records when\navailable, tests that protect authority wording, and generated index updates.\n\nStop conditions: source authority is unknown, migration coverage is incomplete\nbut being represented as closed, or cleanup is implied before separate review.\n\n### FlowDoc boundary review\n\nTrigger: before cross-repo integration or when a local shortcut may become\nproduct behavior.\n\nInputs: Core, Editor, Backend working agreements, cross-repo operating map,\nimports, service routes, adapters, and tests for touched boundaries.\n\nOutput: PASS, FAIL/BLOCKER, RISK, UNKNOWN, files changed, behavior changed,\ntests run, risks left, and intentionally not changed.\n\nStop conditions: responsibility conflict, missing product decision, bypassed\nBackend revision gate, direct Core internals in Editor, or copied Core\noperation semantics in Backend.\n\n## Handoff format\n\nBroad FlowDoc work should end with:\n\n- PASS: what is verified and by which command or evidence.\n- FAIL / BLOCKER: what prevents continuation.\n- RISK: known hazards that did not block the current phase.\n- UNKNOWN: what remains unverified.\n- Files changed: grouped by repository.\n- Behavior changed: user-facing or contract-facing effects.\n- Tests run: command and result.\n- Risks left: what should be scheduled next.\n- Intentionally not changed: boundaries preserved by design.\n\n## Current status\n\nThis document establishes a draft operating model for the queued\n`agent-and-skill-design` work. It does not complete that Work item, create\nCodex skill files, or define required evidence for roadmap Work. Required\nEvidence should be added later after the user approves the evidence target for\neach Work record.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-backend-core-version-contract-consumer-hardening-2026-08-27",
+      "title": "Backend Core Version Contract Consumer Hardening - 2026-08-27",
+      "path": "docs/domains/backend-core-version-contract-consumer-hardening-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped Backend Core-version contract consumer hardening review for the local Backend head; records Core contract wrapping, Backend retained boundaries, tests, risks, and unknowns without promoting Backend, Core, Editor, or FlowDoc truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "47662ea2ef2abd42f166c7fa263c4bf1fc067e92",
+          "pathOrContractId": "data/work/backend-core-version-contract-consumer-hardening.json"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+          "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+          "pathOrContractId": "src/service/migrationService.ts"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+          "pathOrContractId": "src/tests/versionCapability.test.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+          "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+        }
+      ],
+      "content": "# Backend Core Version Contract Consumer Hardening - 2026-08-27\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > backend-core-version-contract-consumer-hardening`\n- Owner repository: `repo-backend`\n- Active role: `product-implementation-agent`\n- Phase: `phase-backend-core-version-contract-consumer-hardening`\n- Checklist: `checklist-backend-core-version-contract-consumer-hardening`\n- Evidence target: `evidence-backend-core-version-contract-consumer-hardening-2026-08-27`\n\nThis record is work-scoped verification only. It does not promote Backend,\nCore, Editor, or FlowDoc broad truth.\n\n## PASS\n\nBackend commit `6c3331217b509fc635ad25b71fba503ff066cd72` wraps the\nCore-owned version capability and retirement-inventory contracts from\n`@flowdoc/vnext-core`.\n\nThe Backend consumer inventory classifies the reviewed version facts:\n\n| Surface | Classification | Result |\n| --- | --- | --- |\n| Core active package/document pair | imported | Read from `VNEXT_CORE_VERSION_CAPABILITY_CONTRACT.active`. |\n| Core migration target pair | imported | Read from `VNEXT_CORE_VERSION_CAPABILITY_CONTRACT.migrationTarget`. |\n| Backend capability envelope version pairs | wrapped | Exposed as Backend service capabilities without changing Core ownership. |\n| Backend migration result target | wrapped | Reported through a Core-derived helper while Backend owns revisioned persistence. |\n| Backend package repository version guards | retained | Kept as Backend persistence write-family guards. |\n| Legacy copied capability test snapshots | deleted | Replaced with Core export/helper comparisons in focused tests. |\n| Silent read compatibility adapter | blocked | Not added; explicit migration remains required. |\n\n## Verification\n\n- Baseline focused Backend suite: `npx vitest run --config vitest.config.ts src/tests/versionCapability.test.ts src/tests/migrationService.test.ts src/tests/httpServer.test.ts --reporter verbose` passed 3 files / 9 tests.\n- RED: `npx vitest run --config vitest.config.ts src/tests/versionCapability.test.ts src/tests/migrationService.test.ts --reporter verbose` failed because `coreSurfaceRetirementInventory` was undefined and `createBackendCoreMigrationTargetPair` was not a function.\n- Focused Backend suite after implementation: `npx vitest run --config vitest.config.ts src/tests/versionCapability.test.ts src/tests/migrationService.test.ts src/tests/migrationHttp.test.ts src/tests/httpServer.test.ts --reporter verbose` passed 4 files / 12 tests.\n- Worktree verification note: the nested Backend worktree required restoring the expected sibling Core fixture path for tests that read `../flowdoc-vnext-core`; the failing PDF/local group then passed 4 files / 12 tests with 1 skipped test.\n- Backend worktree gate: `npm run check` passed 89 files, 1 skipped file, 312 tests, 27 skipped tests, and build.\n- Backend merged-main gate: `npm run check` passed 89 files, 1 skipped file, 315 tests, 24 skipped tests, and build.\n\n## Intentionally Not Changed\n\n- No Core version capability or retirement-inventory behavior changed.\n- No Backend package parser acceptance changed.\n- No Backend revision gate, idempotency, source snapshot, or persistence write\n  behavior changed.\n- No Editor behavior or browser compatibility claim changed.\n- No Backend production readiness, auth, tenancy, storage provider, deployment,\n  or FlowDoc map truth was promoted.\n\n## RISK\n\n- Backend readiness remains broader than this lane; service production blockers\n  are unchanged.\n- Editor compatibility still needs separate evidence against the updated\n  capability envelope shape.\n- Remaining version literals in Backend are retained persistence, fixture, or\n  outcome checks; future work should reassess them only when changing\n  persistence ownership or package family support.\n- Backend worktree verification is sensitive to tests that assume Core is a\n  sibling of the current working directory.\n\n## UNKNOWN\n\n- Broad Backend production readiness remains unknown.\n- Broad FlowDoc compatibility remains unknown.\n- Whether Editor currently consumes the new retirement-inventory wrapper remains\n  unknown.\n- Future policy for migration prompting or mandatory upgrade remains unknown.\n"
     },
     {
       "kind": "document",
@@ -3673,6 +3742,16 @@
     }
   ],
   "evidence": [
+    {
+      "kind": "evidence",
+      "id": "evidence-backend-core-version-contract-consumer-hardening-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-backend",
+      "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+      "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY",
+      "verificationSummary": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 wraps the Core-owned version capability contract and Core version-surface retirement inventory, exposes BACKEND_CORE_VERSION_CONSUMER_INVENTORY with imported, wrapped, retained, deleted, and blocked classifications, and routes migration result target reporting through a Core-derived helper instead of a standalone target literal. Backend revision gates, migration persistence, source snapshot retention, request-id replay/conflict behavior, stale rejection, HTTP response status, and package repository version guards remain Backend-owned. RED focused tests failed before implementation because the retirement inventory wrapper and migration target helper were missing. Focused Backend tests passed 4 files and 12 tests. Backend worktree npm run check passed after restoring the expected sibling Core fixture path for the nested worktree verification layout: 89 files passed, 1 skipped, 312 tests passed, 27 skipped, and build passed. Merged Backend main npm run check passed 89 files, 1 skipped, 315 tests passed, 24 skipped, and build passed. This supports only the bounded Backend Core-version consumer-hardening result and does not promote broad Backend readiness, Editor compatibility, Core truth, production service readiness, or FlowDoc map truth.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
     {
       "kind": "evidence",
       "id": "evidence-backend-project-control-entrypoint",

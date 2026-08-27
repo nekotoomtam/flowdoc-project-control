@@ -6,13 +6,13 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-backend", "repo-core", "repo-project-control"],
-  "workState": "in-progress",
-  "summary": "Open the Backend-owned consumer hardening lane after Core published a version-surface retirement inventory. Backend must consume or compare against Core-owned version capability facts without untracked copies, preserve Backend revision and persistence ownership, and classify/delete any copied Core version facts found in scope.",
-  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-core-runtime-version-contract-hardening-2026-08-27", "doc-cross-repository-compatibility-evidence-2026-08-27"],
+  "workState": "in-review",
+  "summary": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 wraps the Core-owned version capability and retirement-inventory facts, exposes a Backend consumer inventory classifying imported, wrapped, retained, deleted, and blocked version facts, and moves the migration result target to a Core-derived helper while preserving Backend revision and persistence ownership.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-core-runtime-version-contract-hardening-2026-08-27", "doc-cross-repository-compatibility-evidence-2026-08-27", "doc-backend-core-version-contract-consumer-hardening-2026-08-27"],
   "activeRole": "product-implementation-agent",
   "expectedOutput": "A Backend-owned implementation patch or bounded blocker that prevents Core version capability drift, keeps revision/persistence behavior Backend-owned, removes or records copied Core version facts, and returns fresh Backend evidence for Project Control.",
-  "riskSummary": "Backend broad truth remains unknown; changing capability reporting can break Editor migration decisions or Backend revision gates if the lane bypasses Core contracts, copies stale facts, or treats Core migration-target parsing as Backend persistence readiness.",
-  "requiredEvidence": [],
+  "riskSummary": "Backend broad truth remains unknown; this lane only hardens the version capability consumer surface. Remaining retained literals are Backend persistence/fixture outcome checks, not broad service readiness or Editor compatibility evidence.",
+  "requiredEvidence": ["evidence-backend-core-version-contract-consumer-hardening-2026-08-27"],
   "createdAt": "2026-08-27T00:00:00.000Z",
   "updatedAt": "2026-08-27T00:00:00.000Z"
 }
