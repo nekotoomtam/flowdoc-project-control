@@ -55,6 +55,9 @@ Read the local context for the owner repository before editing:
 - whether the checkout is `main` or a dedicated worktree for the current
   round;
 - the boundary between plan, truth, evidence, risk, and unknown state.
+- `docs/domains/flowdoc-product-terminology.md` and its Thai companion before
+  Editor, frontend, product behavior, cross-repository contract, or ambiguous
+  terminology work.
 
 If the working tree is dirty, classify the changes before continuing:
 
@@ -71,6 +74,9 @@ Before implementation or record edits, state:
 - which dedicated worktree will hold the work, or why the user explicitly
   approved same-checkout maintenance;
 - which claims must remain unpromoted;
+- which overloaded terms have been resolved through canonical terminology or
+  classified as `define`, `split`, `rename`, `deprecated`, `context-only`, or
+  `blocked`;
 - which check, path, test, contract, commit, or Evidence record would be enough
   to close the round.
 
@@ -132,6 +138,8 @@ When a round produces evidence, return or record a bounded evidence packet:
 - commands run and results;
 - related Work, Node, Document, or map records;
 - supported claims;
+- terminology decisions, if ambiguous product words were defined, split,
+  renamed, deprecated, kept context-only, or blocked;
 - claims intentionally left unknown or unpromoted.
 
 Evidence packets are narrow by design. They should not promote parent nodes or

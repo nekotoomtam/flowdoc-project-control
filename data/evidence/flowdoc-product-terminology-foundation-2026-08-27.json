@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-product-terminology-foundation-2026-08-27",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-project-control",
+  "commit": "44ebfc356e01cc83bf15dbb41b35335ea800b6d5",
+  "pathOrContractId": "docs/domains/flowdoc-product-terminology.md",
+  "verificationSummary": "Project Control defines a product terminology foundation for overloaded FlowDoc terms, adds a Thai companion, and updates AGENTS/global/round workflow rules so future Editor/frontend and cross-repository product rounds classify ambiguous terms before implementation. This evidence supports only the terminology and workflow-control boundary; it does not promote product readiness, Core truth, Backend truth, Editor truth, deployed compatibility, or frontend design readiness.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

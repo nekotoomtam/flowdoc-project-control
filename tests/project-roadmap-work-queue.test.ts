@@ -167,13 +167,23 @@ const remediationTasks = [
     checklistId: "checklist-flowdoc-bounded-browser-compatibility-promotion",
     checklistLength: 6,
   },
+  {
+    id: "flowdoc-product-terminology-foundation",
+    nodeId: "flowdoc",
+    workState: "in-review",
+    activeRole: "documentation-synthesizer",
+    phaseId: "phase-flowdoc-product-terminology-foundation",
+    phaseState: "done",
+    checklistId: "checklist-flowdoc-product-terminology-foundation",
+    checklistLength: 6,
+  },
 ] as const;
 
 describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 14);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 15);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -210,6 +220,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-smoke",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-product-evidence-refresh",
+        "flowdoc-product-terminology-foundation",
         "project-control-hardening",
       ],
     });
@@ -317,6 +328,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-smoke",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
+        "flowdoc-product-terminology-foundation",
       ],
     });
     expect(model.nodes.find((node) => node.id === "flowdoc-browser-compatibility")).toMatchObject({
@@ -357,6 +369,9 @@ describe("project roadmap Work Queue", () => {
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-flowdoc-bounded-browser-compatibility-promotion")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-flowdoc-product-terminology-foundation")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-core-runtime-version-contract-hardening")?.items
@@ -419,6 +434,18 @@ describe("project roadmap Work Queue", () => {
         path: "docs/domains/flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md",
         role: "current-state",
       });
+    expect(model.documents.find((item) => item.id === "doc-flowdoc-product-terminology"))
+      .toMatchObject({
+        nodeIds: ["flowdoc"],
+        path: "docs/domains/flowdoc-product-terminology.md",
+        role: "glossary",
+      });
+    expect(model.documents.find((item) => item.id === "doc-flowdoc-product-terminology-th"))
+      .toMatchObject({
+        nodeIds: ["flowdoc"],
+        path: "docs/domains/flowdoc-product-terminology-th.md",
+        role: "glossary",
+      });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
@@ -455,6 +482,14 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27")?.verificationSummary)
       .toContain("promotes only the bounded local loopback browser compatibility child claim");
+    expect(model.evidence.find((item) => item.id === "evidence-flowdoc-product-terminology-foundation-2026-08-27"))
+      .toMatchObject({
+        nodeIds: ["flowdoc"],
+        repositoryId: "repo-project-control",
+        pathOrContractId: "docs/domains/flowdoc-product-terminology.md",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-flowdoc-product-terminology-foundation-2026-08-27")?.verificationSummary)
+      .toContain("does not promote product readiness");
     expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
@@ -552,6 +587,7 @@ describe("project roadmap Work Queue", () => {
       "evidence-flowdoc-product-refresh-core-2026-08-26",
       "evidence-flowdoc-product-refresh-editor-2026-08-26",
       "evidence-flowdoc-product-refresh-backend-2026-08-26",
+      "evidence-flowdoc-product-terminology-foundation-2026-08-27",
     ]);
     expect(evidence.get("evidence-core-project-control-entrypoint")).toMatchObject({
       nodeIds: ["flowdoc"],

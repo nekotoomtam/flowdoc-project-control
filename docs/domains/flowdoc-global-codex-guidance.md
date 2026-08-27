@@ -42,6 +42,37 @@ After reading Project Control, identify:
 
 Then read the owning repository's `AGENTS.md` before editing that repository.
 
+## Terminology discipline
+
+Before Editor, frontend, product behavior, cross-repository contract, or
+ambiguous terminology work, read:
+
+```text
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-product-terminology.md
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-product-terminology-th.md
+```
+
+These correspond to the Project Control document paths
+`docs/domains/flowdoc-product-terminology.md` and
+`docs/domains/flowdoc-product-terminology-th.md`.
+
+Use the English product terminology document as the canonical vocabulary. The
+Thai companion explains the same terms for coordination, but does not create a
+second authority source for records, code, tests, contracts, or evidence.
+
+When a term can mean different things across Project Control, Core, Backend, or
+Editor, use the qualified canonical term or classify the ambiguity as `define`,
+`split`, `rename`, `deprecated`, `context-only`, or `blocked`. If the
+classification is `blocked`, stop or report `UNKNOWN`/`RISK` before
+implementation.
+
+The allowed ambiguity classifications are define, split, rename, deprecated,
+context-only, or blocked.
+
+Terminology is not product evidence. Do not promote FlowDoc, Core, Backend,
+Editor, compatibility, readiness, or frontend design truth from glossary
+language alone.
+
 ## Worktree discipline
 
 For any non-read-only FlowDoc work that may edit files, create a dedicated

@@ -6,7 +6,7 @@
   "summary": "Planned product-wide map; Project Control entrypoint pointers are registered across Core, Editor, and Backend, but the product repositories have not yet been verified as current in this registry.",
   "truthState": "planned",
   "order": 0,
-  "documentIds": ["doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-glossary-en", "doc-glossary-th"],
-  "evidenceIds": ["evidence-core-project-control-entrypoint", "evidence-editor-project-control-entrypoint", "evidence-backend-project-control-entrypoint", "evidence-project-control-product-evidence-refresh-path-2026-08-26", "evidence-flowdoc-product-refresh-core-2026-08-26", "evidence-flowdoc-product-refresh-editor-2026-08-26", "evidence-flowdoc-product-refresh-backend-2026-08-26"],
+  "documentIds": ["doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-glossary-en", "doc-glossary-th", "doc-flowdoc-product-terminology", "doc-flowdoc-product-terminology-th"],
+  "evidenceIds": ["evidence-core-project-control-entrypoint", "evidence-editor-project-control-entrypoint", "evidence-backend-project-control-entrypoint", "evidence-project-control-product-evidence-refresh-path-2026-08-26", "evidence-flowdoc-product-refresh-core-2026-08-26", "evidence-flowdoc-product-refresh-editor-2026-08-26", "evidence-flowdoc-product-refresh-backend-2026-08-26", "evidence-flowdoc-product-terminology-foundation-2026-08-27"],
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"]
 }

@@ -28,6 +28,15 @@ Before taking broad work, read these files in order:
 5. `docs/domains/flowdoc-round-workflow.md`
 6. `docs/domains/work-tree-operating-rules.md`
 7. `docs/domains/project-control.md`
+8. `docs/domains/flowdoc-product-terminology.md`
+9. `docs/domains/flowdoc-product-terminology-th.md`
+
+For Editor, frontend, product behavior, cross-repository contract work, or any
+term that could mean different things across Project Control, Core, Backend, or
+Editor, apply the product terminology discipline before implementation. Use the
+qualified canonical term or classify the ambiguity as `define`, `split`,
+`rename`, `deprecated`, `context-only`, or `blocked`. Terminology records do not
+promote FlowDoc product truth by themselves.
 
 Use `generated/project-index.json` only as the generated read model. Use
 `generated/project-control.sqlite` only as an ignored local projection.

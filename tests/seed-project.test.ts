@@ -52,6 +52,8 @@ describe("truthful seed project", () => {
         "doc-flowdoc-product-evidence-refresh-2026-08-26",
         "doc-glossary-en",
         "doc-glossary-th",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)
@@ -75,6 +77,20 @@ describe("truthful seed project", () => {
     });
     expect(documents.get("doc-flowdoc-product-evidence-refresh-2026-08-26")?.content)
       .toContain("It does not promote FlowDoc, Core, Editor, or Backend to product-wide `current`.");
+    expect(documents.get("doc-flowdoc-product-terminology")).toMatchObject({
+      path: "docs/domains/flowdoc-product-terminology.md",
+      nodeIds: ["flowdoc"],
+      role: "glossary",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-flowdoc-product-terminology-th")).toMatchObject({
+      path: "docs/domains/flowdoc-product-terminology-th.md",
+      nodeIds: ["flowdoc"],
+      role: "glossary",
+      lifecycle: "active",
+    });
+    expect(documents.get("doc-flowdoc-system-map")?.content)
+      .toContain("FlowDoc Product Terminology");
 
     expect(documents.get("doc-document-map-operating-rules")).toMatchObject({
       path: "docs/domains/document-map-operating-rules.md",

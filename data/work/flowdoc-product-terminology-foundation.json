@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "flowdoc-product-terminology-foundation",
+  "title": "FlowDoc Product Terminology Foundation",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control"],
+  "workState": "in-review",
+  "summary": "Define a bounded product terminology foundation before Editor/frontend redesign work so future agents resolve overloaded FlowDoc terms through Project Control instead of guessing across Core, Backend, and Editor contexts.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-global-codex-guidance", "doc-glossary-en", "doc-glossary-th", "doc-flowdoc-product-terminology", "doc-flowdoc-product-terminology-th"],
+  "activeRole": "documentation-synthesizer",
+  "expectedOutput": "A canonical product terminology glossary, Thai companion, FlowDoc guidance update, and Project Control records that make terminology discipline part of future product and frontend rounds without changing product behavior.",
+  "riskSummary": "Terminology can reduce ambiguity but cannot prove product behavior, readiness, compatibility, or repository truth. Missing product-specific terms must remain UNKNOWN, RISK, or BLOCKER until the owning repository and evidence are clear.",
+  "requiredEvidence": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
