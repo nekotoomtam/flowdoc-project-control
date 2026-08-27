@@ -1,0 +1,46 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-browser-live-backend-smoke",
+  "phaseId": "phase-editor-browser-live-backend-smoke",
+  "title": "Editor Browser Live Backend Smoke Checklist",
+  "items": [
+    {
+      "id": "capture-current-boundaries",
+      "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, browser-test surfaces, and prior live harness evidence before editing.",
+      "state": "pending",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed."
+    },
+    {
+      "id": "confirm-browser-smoke-owner",
+      "label": "Confirm the browser smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
+      "state": "pending",
+      "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+    },
+    {
+      "id": "write-failing-browser-smoke-test",
+      "label": "Write an Editor-owned failing browser smoke for the rendered app plus live Backend URL.",
+      "state": "pending",
+      "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path."
+    },
+    {
+      "id": "implement-minimal-browser-smoke",
+      "label": "Implement the minimal test or app wiring needed for the browser-visible live Backend/Core path, or record a boundary blocker if product UI is missing.",
+      "state": "pending",
+      "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused and full owner repository gates after the browser smoke is in place or after the blocker is recorded.",
+      "state": "pending",
+      "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded."
+    },
+    {
+      "id": "register-bounded-evidence",
+      "label": "Register the browser smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
+      "state": "pending",
+      "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

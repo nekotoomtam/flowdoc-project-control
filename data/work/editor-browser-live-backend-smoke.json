@@ -1,0 +1,18 @@
+{
+  "kind": "work",
+  "id": "editor-browser-live-backend-smoke",
+  "title": "Editor Browser Live Backend Smoke",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Add a bounded browser-app smoke that launches the rendered Editor app against a live loopback Backend server and proves the browser-visible runtime can traverse the same Backend/Core compatibility path without relying only on Node-level harness evidence.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-cross-repository-compatibility-evidence-2026-08-27", "doc-core-default-gate-stability-review-2026-08-27", "doc-editor-backend-core-live-compatibility-harness-2026-08-27"],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "An Editor-owned browser smoke test or a boundary blocker that distinguishes the rendered browser app plus live Backend/Core path from the accepted Node loopback harness, followed by Project Control evidence registration without broad map promotion.",
+  "riskSummary": "The previous live harness is Node loopback evidence only; this lane must avoid treating a browser smoke as production readiness, must preserve Backend/Core ownership, and must not promote FlowDoc truth before browser evidence and owner gates pass.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

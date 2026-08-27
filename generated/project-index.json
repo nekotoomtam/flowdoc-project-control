@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f9b1580fd81a885fff97a998a09105687dfdc02b1bbcf60b8d01787600b9625d",
+  "sourceDigest": "6f85e969678f289c8fe888ce34a6a3604144114c637efcc3f150c29a780ff92c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -43,6 +43,7 @@
       "workIds": [
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
+        "editor-browser-live-backend-smoke",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh"
       ]
@@ -608,6 +609,47 @@
     },
     {
       "kind": "work",
+      "id": "editor-browser-live-backend-smoke",
+      "title": "Editor Browser Live Backend Smoke",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Add a bounded browser-app smoke that launches the rendered Editor app against a live loopback Backend server and proves the browser-visible runtime can traverse the same Backend/Core compatibility path without relying only on Node-level harness evidence.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-cross-repository-compatibility-evidence-2026-08-27",
+        "doc-core-default-gate-stability-review-2026-08-27",
+        "doc-editor-backend-core-live-compatibility-harness-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "An Editor-owned browser smoke test or a boundary blocker that distinguishes the rendered browser app plus live Backend/Core path from the accepted Node loopback harness, followed by Project Control evidence registration without broad map promotion.",
+      "riskSummary": "The previous live harness is Node loopback evidence only; this lane must avoid treating a browser smoke as production readiness, must preserve Backend/Core ownership, and must not promote FlowDoc truth before browser evidence and owner gates pass.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-browser-live-backend-smoke"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-browser-live-backend-smoke"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-product-development-resumption",
       "title": "FlowDoc Product Development Resumption",
       "nodeId": "flowdoc",
@@ -629,6 +671,7 @@
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
         "editor-backend-unavailable-honesty-review",
+        "editor-browser-live-backend-smoke",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening"
       ],
@@ -879,6 +922,32 @@
       "summary": "Editor fixture boot, Backend capability preflight, Preview context status, and Shell routing were reviewed; migration-required Preview copy is now limited to compatible Backend API documents while fixture fallback keeps unavailable/checking status visible.",
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-browser-live-backend-smoke",
+      "workId": "editor-browser-live-backend-smoke",
+      "title": "Prove Browser App Live Backend Smoke",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repositories, Checklist target, and Evidence target before editing Editor.",
+        "The smoke requires Project Control to implement product behavior.",
+        "The smoke requires Editor production code to import Core internals outside the Core adapter boundary.",
+        "The smoke bypasses the Backend HTTP/revision gate or replaces the live Backend server with mocked fetch evidence.",
+        "The smoke makes browser-app or production-readiness claims broader than the bounded local loopback evidence can support."
+      ],
+      "verificationTarget": "An Editor-owned browser test starts a live Backend server, launches the rendered Editor app with the live Backend URL, exercises a visible browser path for capability/read/migration/mutation or records the exact missing UI blocker, and Project Control records the result without broad map promotion.",
+      "summary": "In progress: open the browser smoke lane after the accepted Node loopback live compatibility harness and before any browser-app compatibility truth promotion.",
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -1306,6 +1375,52 @@
       ],
       "createdAt": "2026-08-26T00:00:00.000Z",
       "updatedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-browser-live-backend-smoke",
+      "phaseId": "phase-editor-browser-live-backend-smoke",
+      "title": "Editor Browser Live Backend Smoke Checklist",
+      "items": [
+        {
+          "id": "capture-current-boundaries",
+          "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, browser-test surfaces, and prior live harness evidence before editing.",
+          "state": "pending",
+          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, prior Node live harness evidence, and browser smoke candidates are reviewed."
+        },
+        {
+          "id": "confirm-browser-smoke-owner",
+          "label": "Confirm the browser smoke belongs in Editor without moving Backend server behavior, Core semantics, or Project Control truth responsibilities.",
+          "state": "pending",
+          "evidenceTarget": "Editor app/test surfaces, Backend HTTP server surfaces, and Core fixture/adapter boundaries show the smoke can use public or test-only harness surfaces without ownership drift."
+        },
+        {
+          "id": "write-failing-browser-smoke-test",
+          "label": "Write an Editor-owned failing browser smoke for the rendered app plus live Backend URL.",
+          "state": "pending",
+          "evidenceTarget": "The focused Editor browser smoke fails before implementation because the app does not yet expose or bind the accepted live browser path."
+        },
+        {
+          "id": "implement-minimal-browser-smoke",
+          "label": "Implement the minimal test or app wiring needed for the browser-visible live Backend/Core path, or record a boundary blocker if product UI is missing.",
+          "state": "pending",
+          "evidenceTarget": "The Editor diff keeps production responsibility boundaries intact and distinguishes browser-visible evidence from Node-only harness evidence."
+        },
+        {
+          "id": "verify-owner-gates",
+          "label": "Run focused and full owner repository gates after the browser smoke is in place or after the blocker is recorded.",
+          "state": "pending",
+          "evidenceTarget": "Editor focused browser smoke, Editor npm run check, and any required Backend/Core no-change evidence are recorded."
+        },
+        {
+          "id": "register-bounded-evidence",
+          "label": "Register the browser smoke evidence or blocker in Project Control without promoting broad FlowDoc truth.",
+          "state": "pending",
+          "evidenceTarget": "Evidence target evidence-editor-browser-live-backend-smoke-2026-08-27 records the commit, checks, supported claim or blocker, risks, and intentionally unpromoted truth."
+        }
+      ],
+      "createdAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-08-27T00:00:00.000Z"
     },
     {
       "kind": "checklist",

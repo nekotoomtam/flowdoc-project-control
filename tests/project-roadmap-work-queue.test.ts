@@ -117,13 +117,23 @@ const remediationTasks = [
     checklistId: "checklist-editor-backend-core-live-compatibility-harness",
     checklistLength: 6,
   },
+  {
+    id: "editor-browser-live-backend-smoke",
+    nodeId: "flowdoc",
+    workState: "in-progress",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-editor-browser-live-backend-smoke",
+    phaseState: "in-progress",
+    checklistId: "checklist-editor-browser-live-backend-smoke",
+    checklistLength: 6,
+  },
 ] as const;
 
 describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 9);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 10);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -154,6 +164,7 @@ describe("project roadmap Work Queue", () => {
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
         "editor-backend-unavailable-honesty-review",
+        "editor-browser-live-backend-smoke",
         "flowdoc-product-evidence-refresh",
         "project-control-hardening",
       ],
@@ -249,6 +260,7 @@ describe("project roadmap Work Queue", () => {
       workIds: [
         "cross-repository-compatibility-evidence-review",
         "editor-backend-core-live-compatibility-harness",
+        "editor-browser-live-backend-smoke",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
       ],

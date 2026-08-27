@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-browser-live-backend-smoke",
+  "workId": "editor-browser-live-backend-smoke",
+  "title": "Prove Browser App Live Backend Smoke",
+  "phaseState": "in-progress",
+  "order": 10,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repositories, Checklist target, and Evidence target before editing Editor.",
+    "The smoke requires Project Control to implement product behavior.",
+    "The smoke requires Editor production code to import Core internals outside the Core adapter boundary.",
+    "The smoke bypasses the Backend HTTP/revision gate or replaces the live Backend server with mocked fetch evidence.",
+    "The smoke makes browser-app or production-readiness claims broader than the bounded local loopback evidence can support."
+  ],
+  "verificationTarget": "An Editor-owned browser test starts a live Backend server, launches the rendered Editor app with the live Backend URL, exercises a visible browser path for capability/read/migration/mutation or records the exact missing UI blocker, and Project Control records the result without broad map promotion.",
+  "summary": "In progress: open the browser smoke lane after the accepted Node loopback live compatibility harness and before any browser-app compatibility truth promotion.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}
