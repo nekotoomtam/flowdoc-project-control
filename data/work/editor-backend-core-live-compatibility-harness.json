@@ -6,13 +6,13 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
-  "workState": "in-progress",
-  "summary": "Add an accepted live compatibility harness that starts the Backend HTTP server, consumes it through the Editor backend client, migrates a Core-backed document, commits a mutation, and applies the resulting envelopes into Editor runtime state.",
-  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-cross-repository-compatibility-evidence-2026-08-27", "doc-core-default-gate-stability-review-2026-08-27"],
+  "workState": "in-review",
+  "summary": "Completed the Editor-owned live compatibility harness: a loopback Backend HTTP server is seeded from the Core fixture, consumed through the real Editor backend client, migrated, mutated, and applied back into Editor runtime state; Editor owner gates passed on the worktree and merged main.",
+  "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-document-map-operating-rules", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules", "doc-cross-repository-compatibility-evidence-2026-08-27", "doc-core-default-gate-stability-review-2026-08-27", "doc-editor-backend-core-live-compatibility-harness-2026-08-27"],
   "activeRole": "product-implementation-agent",
   "expectedOutput": "An Editor-owned live integration test or a boundary blocker that distinguishes real Editor client to Backend server to Core semantic compatibility from mocked transport evidence, followed by Project Control evidence registration without broad map promotion.",
-  "riskSummary": "The prior compatibility review found no accepted single live harness; this lane must avoid direct Editor imports of Core internals, Backend semantic duplication, and Project Control truth promotion before repository-owned gates pass.",
-  "requiredEvidence": [],
+  "riskSummary": "The harness proves the Node loopback Editor client to Backend server to Core fixture path, but not a browser-app smoke, deployed Backend environment, broader document corpus, or production-readiness truth. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+  "requiredEvidence": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
   "createdAt": "2026-08-27T00:00:00.000Z",
   "updatedAt": "2026-08-27T00:00:00.000Z"
 }

@@ -110,10 +110,10 @@ const remediationTasks = [
   {
     id: "editor-backend-core-live-compatibility-harness",
     nodeId: "flowdoc",
-    workState: "in-progress",
+    workState: "in-review",
     activeRole: "product-implementation-agent",
     phaseId: "phase-editor-backend-core-live-compatibility-harness",
-    phaseState: "in-progress",
+    phaseState: "done",
     checklistId: "checklist-editor-backend-core-live-compatibility-harness",
     checklistLength: 6,
   },
@@ -268,6 +268,24 @@ describe("project roadmap Work Queue", () => {
     expect(model.checklists.find((item) => item.id === "checklist-core-default-gate-stability-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
+    expect(model.checklists.find((item) => item.id === "checklist-editor-backend-core-live-compatibility-harness")?.items
+      .map((item) => item.state))
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
+    expect(model.documents.find((item) => item.id === "doc-editor-backend-core-live-compatibility-harness-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        path: "docs/domains/editor-backend-core-live-compatibility-harness-2026-08-27.md",
+        role: "verification",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "16a8fde628b887624249d50a162241ef2d96a415",
+        pathOrContractId: "src/tests/liveCompatibilityHarness.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27")?.verificationSummary)
+      .toContain("accepted live Editor client to Backend server to Core harness");
     expect(model.evidence.find((item) => item.id === "evidence-core-default-gate-stability-review-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

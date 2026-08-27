@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "fea34e2e8b21aca78217f5f19a76dd9bddd8ae9d1b522e1b61860395d0a10b89",
+  "sourceDigest": "f9b1580fd81a885fff97a998a09105687dfdc02b1bbcf60b8d01787600b9625d",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -538,8 +538,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Add an accepted live compatibility harness that starts the Backend HTTP server, consumes it through the Editor backend client, migrates a Core-backed document, commits a mutation, and applies the resulting envelopes into Editor runtime state.",
+      "workState": "in-review",
+      "summary": "Completed the Editor-owned live compatibility harness: a loopback Backend HTTP server is seeded from the Core fixture, consumed through the real Editor backend client, migrated, mutated, and applied back into Editor runtime state; Editor owner gates passed on the worktree and merged main.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -548,12 +548,15 @@
         "doc-flowdoc-role-catalog",
         "doc-work-tree-operating-rules",
         "doc-cross-repository-compatibility-evidence-2026-08-27",
-        "doc-core-default-gate-stability-review-2026-08-27"
+        "doc-core-default-gate-stability-review-2026-08-27",
+        "doc-editor-backend-core-live-compatibility-harness-2026-08-27"
       ],
       "activeRole": "product-implementation-agent",
       "expectedOutput": "An Editor-owned live integration test or a boundary blocker that distinguishes real Editor client to Backend server to Core semantic compatibility from mocked transport evidence, followed by Project Control evidence registration without broad map promotion.",
-      "riskSummary": "The prior compatibility review found no accepted single live harness; this lane must avoid direct Editor imports of Core internals, Backend semantic duplication, and Project Control truth promotion before repository-owned gates pass.",
-      "requiredEvidence": [],
+      "riskSummary": "The harness proves the Node loopback Editor client to Backend server to Core fixture path, but not a browser-app smoke, deployed Backend environment, broader document corpus, or production-readiness truth. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+      "requiredEvidence": [
+        "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+      ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z",
       "childWorkIds": [],
@@ -834,7 +837,7 @@
       "id": "phase-editor-backend-core-live-compatibility-harness",
       "workId": "editor-backend-core-live-compatibility-harness",
       "title": "Prove Live Editor Backend Core Compatibility",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-editor",
@@ -851,7 +854,7 @@
         "Project Control promotes FlowDoc, Core, Editor, Backend, or compatibility truth before the live harness and owner gates support the bounded claim."
       ],
       "verificationTarget": "An Editor-owned test starts a loopback Backend server, seeds a Core fixture-backed repository, uses the real Editor backend client for capability, read, migration, and mutation calls, and applies Core-backed envelopes into Editor runtime state; Project Control records the result without broad map promotion.",
-      "summary": "In progress: open the live harness lane after Core default gate stabilization and before any compatibility truth promotion.",
+      "summary": "Done: Editor commit 16a8fde628b887624249d50a162241ef2d96a415 adds the live loopback Backend/Core compatibility harness and passes focused plus full Editor gates; Project Control evidence remains work-scoped with no truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
     },
@@ -1183,38 +1186,62 @@
         {
           "id": "capture-current-boundaries",
           "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, and compatibility blockers before editing.",
-          "state": "pending",
-          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, and prior Core gate-stability evidence are reviewed."
+          "state": "passed",
+          "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, and prior Core gate-stability evidence are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Reviewed Project Control, Editor AGENTS.md, Core gate-stability evidence, Backend HTTP/service boundaries, and clean current heads before Editor edits: Project Control bf987f72820d7a7eb8cfc0f84840808758cc201d, Editor 3eb382b6c0c891481b1bada0827e0f92f21d18e2 before setup, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45."
         },
         {
           "id": "confirm-live-harness-owner",
           "label": "Confirm the live harness belongs in Editor without moving Backend transport, Core semantics, or Project Control truth responsibilities.",
-          "state": "pending",
-          "evidenceTarget": "Editor, Backend, and Core boundary files show the harness can use public surfaces without product-runtime responsibility drift."
+          "state": "passed",
+          "evidenceTarget": "Editor, Backend, and Core boundary files show the harness can use public surfaces without product-runtime responsibility drift.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Kept the harness Editor-owned in src/tests/liveCompatibilityHarness.test.ts; it consumes Backend HTTP/server/repository/fixture surfaces through test resolver wiring while Editor production Core imports remain behind src/core/coreAdapter.ts and Backend continues to call Core public contracts."
         },
         {
           "id": "write-failing-live-harness-test",
           "label": "Write an Editor-owned failing test for the real loopback Backend server and real Editor backend client path.",
-          "state": "pending",
-          "evidenceTarget": "The focused Editor test fails before implementation because the accepted live harness is not yet wired."
+          "state": "passed",
+          "evidenceTarget": "The focused Editor test fails before implementation because the accepted live harness is not yet wired.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Focused RED failed as expected: npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose could not resolve flowdoc-vnext-backend/fixtures/productReportMinimal before test resolver wiring existed."
         },
         {
           "id": "implement-minimal-live-harness",
           "label": "Implement the minimal test-only wiring needed for the live capability, read, migration, mutation, and runtime apply path.",
-          "state": "pending",
-          "evidenceTarget": "The Editor diff keeps production runtime behavior unchanged and uses Backend/Core public contracts."
+          "state": "passed",
+          "evidenceTarget": "The Editor diff keeps production runtime behavior unchanged and uses Backend/Core public contracts.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Editor commit 16a8fde628b887624249d50a162241ef2d96a415 adds the live test plus resolver hardening in tsconfig.json, vite.config.ts, and vitest.config.ts; no Editor production runtime module, Backend file, or Core file was changed."
         },
         {
           "id": "verify-owner-gates",
           "label": "Run focused and full owner repository gates after the harness is in place.",
-          "state": "pending",
-          "evidenceTarget": "Editor focused harness, Editor npm run check, and any required Backend/Core gates or no-change evidence are recorded."
+          "state": "passed",
+          "evidenceTarget": "Editor focused harness, Editor npm run check, and any required Backend/Core gates or no-change evidence are recorded.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Focused Editor harness passed 1 test; Editor worktree npm run check passed type-check, 78 test files, 284 tests, and build; merged Editor main npm run check passed the same gate. Backend and Core were not changed and remain cited by existing owner evidence."
         },
         {
           "id": "register-bounded-evidence",
           "label": "Register the live harness evidence in Project Control without promoting broad FlowDoc truth.",
-          "state": "pending",
-          "evidenceTarget": "Evidence target evidence-editor-backend-core-live-compatibility-harness-2026-08-27 records the commit, checks, supported claim, risks, and intentionally unpromoted truth."
+          "state": "passed",
+          "evidenceTarget": "Evidence target evidence-editor-backend-core-live-compatibility-harness-2026-08-27 records the commit, checks, supported claim, risks, and intentionally unpromoted truth.",
+          "evidenceIds": [
+            "evidence-editor-backend-core-live-compatibility-harness-2026-08-27"
+          ],
+          "verificationNote": "Added work-scoped Evidence and Document records with empty nodeIds; FlowDoc remains planned and Core, Editor, and Backend truth states remain unpromoted."
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
@@ -1668,6 +1695,39 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# Document Map Operating Rules\n\n## Purpose\n\nThis document defines how Project Control separates planning documents from\nsystem truth maps. It keeps broad FlowDoc work readable while preventing\nunfinished intent from being presented as verified system state.\n\n## Core rule\n\nPlan / Work records intent.\n\nDOCUMENT_MAP records verified system truth.\n\nThe same round of work can use both document types, but at different moments.\nThe plan comes first and describes the target. A document map changes later,\nafter the target state has been checked and Project Control has a bounded\nreference to point at.\n\n## Planning documents\n\nPlanning documents answer:\n\n- What are we trying to do in this round?\n- Which repository owns the work?\n- Which tasks, checks, and evidence targets belong to this round?\n- Which risks or stop conditions should prevent promotion?\n- What map entry should be updated if the work succeeds?\n\nPlanning documents may contain expected outcomes. Expected outcomes are not\ncurrent system truth until the work is implemented, verified, and registered.\n\n`docs/superpowers/plans/` files are historical execution traces. They can\npreserve the exact assumptions, branch-local commits, and review loops from a\npast round, but they do not override active `data/` records, Evidence, coverage\nfiles, generated index content, or the narrowest current DOCUMENT_MAP.\n\n## System truth maps\n\nSystem truth maps answer:\n\n- What exists in the system according to Project Control right now?\n- Which subsystem or family is represented?\n- Which document is the canonical entry point?\n- Which state is current, planned, risk, or unknown?\n- Which authority is explicitly excluded?\n\nA map entry should point at canonical overview, contract, version, or evidence\nrecords. It should not absorb the detailed content of those records.\n\n## Update timing\n\nUse this order for broad work:\n\n```text\nPlan\n  -> implement in the owning repository\n  -> test or gather durable Evidence\n  -> synthesize bounded Project Control documents\n  -> update node, document, and evidence records\n  -> update the narrowest DOCUMENT_MAP or system map\n  -> report the result\n```\n\nDo not update a map at the start of work except to record an explicitly\nbounded registry fact, such as a new map document that says a system remains\nunknown.\n\n## Map hierarchy\n\nProject Control uses maps at the narrowest useful level:\n\n- `docs/domains/flowdoc-system-map.md`: product-wide entry inventory.\n- `docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md`: Core release-line document\n  map.\n- Future Editor or Backend maps should live near their own domain or versioned\n  documentation once they have reviewed material.\n\nHigher-level maps should link down. Lower-level maps should hold the precise\nfamily or release-line details.\n\n## Handoff requirement\n\nWhen an agent finishes a round that might affect a map, the handoff must say:\n\n- whether a map changed;\n- which map changed;\n- which verification or Evidence supports the change;\n- which planned entries intentionally did not move into the map;\n- which system states remain unknown.\n\nThis makes the GUI and future agent handoffs depend on the same durable source\nof truth.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-backend-core-live-compatibility-harness-2026-08-27",
+      "title": "Editor Backend Core Live Compatibility Harness - 2026-08-27",
+      "path": "docs/domains/editor-backend-core-live-compatibility-harness-2026-08-27.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Work-scoped live compatibility harness evidence for the current local Editor, Backend, and Core heads; records the accepted Node loopback harness, owner gate results, risks, and unknowns without promoting FlowDoc or repository truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "bf987f72820d7a7eb8cfc0f84840808758cc201d",
+          "pathOrContractId": "data/work/editor-backend-core-live-compatibility-harness.json"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+          "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+          "pathOrContractId": "src/http/server.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+          "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+        }
+      ],
+      "content": "# Editor Backend Core Live Compatibility Harness - 2026-08-27\n\nStatus: bounded live harness complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-backend-core-live-compatibility-harness`\n\nOwner repositories: `repo-editor`, `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-backend-core-live-compatibility-harness`\n\nChecklist: `checklist-editor-backend-core-live-compatibility-harness`\n\nEvidence target: `evidence-editor-backend-core-live-compatibility-harness-2026-08-27`\n\n## Scope\n\nThis lane adds the first accepted live compatibility harness for the current\nlocal FlowDoc Core, Editor, and Backend heads. The harness is Editor-owned and\nproves the Node loopback path from real Editor client calls to a real Backend\nHTTP server and Core-backed document semantics.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `bf987f72820d7a7eb8cfc0f84840808758cc201d` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `16a8fde628b887624249d50a162241ef2d96a415` | Owner implementation and verified harness commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged fixture and public semantic operation source. |\n\nEditor setup commit `e93414e0246c2177c29d5c5b6215fa1f7afcf5c6`\nadded `.worktrees/` to Editor `.gitignore` before the implementation worktree\nwas created.\n\n## Harness Path Proven\n\nEditor test `src/tests/liveCompatibilityHarness.test.ts` now proves one live\nruntime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `loadProductReportMinimalPackage()` from the Core-backed fixture.\n3. Read `/capabilities/versions` through `createFlowDocBackendClient(...)` and\n   verify the advertised active, migration, mutation, and source snapshot\n   contract.\n4. Read `product-report-vnext-minimal` through the real Editor Backend client.\n5. Bind the returned transport envelope through\n   `loadFrontendCoreWorkingSetFromTransportEnvelope(...)` and boot Editor\n   runtime state.\n6. Build an explicit Editor migration request with\n   `createBackendMigrationRequest(...)`.\n7. Post the migration to Backend, read the migrated target document, and apply\n   it through `applyRuntimeBackendMigrationResult(...)`.\n8. Build a v4 `node.reorder` mutation with\n   `createBackendMutationRequestFromCommand(...)`, commit it to Backend, and\n   apply the returned Core-backed mutation envelope through\n   `applyRuntimeBackendMutationResult(...)`.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose`\n  failed before implementation because\n  `flowdoc-vnext-backend/fixtures/productReportMinimal` could not resolve.\n\nFocused GREEN:\n\n- `npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `16a8fde628b887624249d50a162241ef2d96a415` changed:\n\n- `src/tests/liveCompatibilityHarness.test.ts`\n- `tsconfig.json`\n- `vite.config.ts`\n- `vitest.config.ts`\n\nThe config changes are resolver hardening for local sibling repositories so the\nsame tests and build work from both the main checkout and a nested Editor\nworktree.\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Focused harness: 1 test passed.\n- `npm run check`: type-check passed; 78 test files passed; 284 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `npm run check`: type-check passed; 78 test files passed; 284 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\n## PASS\n\n- A single accepted test now spans the real Editor Backend client, real Backend\n  HTTP server, Core-backed fixture read, explicit migration, v4 mutation, and\n  Editor runtime apply gates.\n- Editor production runtime behavior remains unchanged.\n- Backend continues to own HTTP, persistence, migration, and mutation service\n  behavior.\n- Core continues to own fixture parsing, migration semantics, and mutation\n  semantics through public contracts.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this live harness lane.\n\n## RISK\n\n- The harness is a Node loopback test, not a browser-app end-to-end test.\n- The harness covers one fixture and one v4 `node.reorder` mutation after\n  migration; it does not cover the broader document corpus or every operation.\n- Editor test wiring imports Backend source subpaths through local sibling\n  resolver aliases because Backend does not yet publish a dedicated test harness\n  package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether the full browser app, live CORS behavior in a real\n  browser session, and deployed Backend environment complete the same flow.\n- It remains unknown whether all FlowDoc package/document variants and all\n  Backend mutation operations are covered by equivalent live harnesses.\n- This lane does not prove broader product readiness beyond the cited harness\n  and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor browser UI behavior was changed.\n- No npm audit remediation or bundle splitting was attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the next compatibility decision.\nThe next work should either promote only this bounded harness claim or open a\nseparate browser-app smoke lane that exercises the same path from the rendered\nEditor app against a live Backend server.\n"
     },
     {
       "kind": "document",
@@ -2886,6 +2946,16 @@
       "commit": "3eb382b6c0c891481b1bada0827e0f92f21d18e2",
       "pathOrContractId": "package.json#scripts.check",
       "verificationSummary": "Editor main commit 3eb382b6c0c891481b1bada0827e0f92f21d18e2 was clean and npm run check passed against the current local Core file dependency. The gate passed type-check, 77 test files, 283 tests, and Vite build; the build retained the existing chunk-size warning. Reviewed package.json file dependencies to @flowdoc/vnext-core and @flowdoc/text-engine-rust-wasm, src/core/coreAdapter.ts as the production Core import facade, src/editor/backend/backendVersionCapability.ts for Backend capability parsing against the Core adapter contract, src/editor/backend/backendTransport.ts for document/capability/mutation/migration transport envelopes, and runtime mutation/migration apply gates. This supports bounded Editor/Core and Editor/Backend transport-shape compatibility only; Editor tests use mocked fetch/client boundaries and do not start a real Backend server.",
+      "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-backend-core-live-compatibility-harness-2026-08-27",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+      "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts",
+      "verificationSummary": "Editor commit 16a8fde628b887624249d50a162241ef2d96a415 provides an accepted live Editor client to Backend server to Core harness. The test starts createFlowDocBackendServer(...) on a loopback random port, seeds createInMemoryPackageRepository(...) with the Core-backed product-report minimal fixture, reads /capabilities/versions through createFlowDocBackendClient(...), reads the document, binds it into Editor runtime, builds an explicit migration request, posts it to Backend, reads the migrated target, applies the migration into Editor runtime, builds and commits a v4 node.reorder mutation, and applies the Core-backed mutation envelope back into Editor runtime. TDD RED failed before resolver wiring because flowdoc-vnext-backend/fixtures/productReportMinimal could not resolve; the focused harness then passed. Editor worktree npm run check passed type-check, 78 test files, 284 tests, and build; merged Editor main npm run check passed the same gate. Setup also added .worktrees/ to Editor .gitignore at e93414e0246c2177c29d5c5b6215fa1f7afcf5c6 so linked worktrees remain local. This supports only the bounded Node loopback live harness claim; it does not promote FlowDoc/product readiness truth, browser-app E2E readiness, deployed Backend compatibility, or broader document-corpus coverage.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
     },
     {

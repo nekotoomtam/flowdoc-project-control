@@ -7,38 +7,50 @@
     {
       "id": "capture-current-boundaries",
       "label": "Capture current Project Control, Core, Editor, and Backend heads, working agreements, and compatibility blockers before editing.",
-      "state": "pending",
-      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, and prior Core gate-stability evidence are reviewed."
+      "state": "passed",
+      "evidenceTarget": "Exact commit IDs, clean git status, AGENTS.md boundaries, and prior Core gate-stability evidence are reviewed.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Reviewed Project Control, Editor AGENTS.md, Core gate-stability evidence, Backend HTTP/service boundaries, and clean current heads before Editor edits: Project Control bf987f72820d7a7eb8cfc0f84840808758cc201d, Editor 3eb382b6c0c891481b1bada0827e0f92f21d18e2 before setup, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45."
     },
     {
       "id": "confirm-live-harness-owner",
       "label": "Confirm the live harness belongs in Editor without moving Backend transport, Core semantics, or Project Control truth responsibilities.",
-      "state": "pending",
-      "evidenceTarget": "Editor, Backend, and Core boundary files show the harness can use public surfaces without product-runtime responsibility drift."
+      "state": "passed",
+      "evidenceTarget": "Editor, Backend, and Core boundary files show the harness can use public surfaces without product-runtime responsibility drift.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Kept the harness Editor-owned in src/tests/liveCompatibilityHarness.test.ts; it consumes Backend HTTP/server/repository/fixture surfaces through test resolver wiring while Editor production Core imports remain behind src/core/coreAdapter.ts and Backend continues to call Core public contracts."
     },
     {
       "id": "write-failing-live-harness-test",
       "label": "Write an Editor-owned failing test for the real loopback Backend server and real Editor backend client path.",
-      "state": "pending",
-      "evidenceTarget": "The focused Editor test fails before implementation because the accepted live harness is not yet wired."
+      "state": "passed",
+      "evidenceTarget": "The focused Editor test fails before implementation because the accepted live harness is not yet wired.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Focused RED failed as expected: npx vitest run src/tests/liveCompatibilityHarness.test.ts --reporter verbose could not resolve flowdoc-vnext-backend/fixtures/productReportMinimal before test resolver wiring existed."
     },
     {
       "id": "implement-minimal-live-harness",
       "label": "Implement the minimal test-only wiring needed for the live capability, read, migration, mutation, and runtime apply path.",
-      "state": "pending",
-      "evidenceTarget": "The Editor diff keeps production runtime behavior unchanged and uses Backend/Core public contracts."
+      "state": "passed",
+      "evidenceTarget": "The Editor diff keeps production runtime behavior unchanged and uses Backend/Core public contracts.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Editor commit 16a8fde628b887624249d50a162241ef2d96a415 adds the live test plus resolver hardening in tsconfig.json, vite.config.ts, and vitest.config.ts; no Editor production runtime module, Backend file, or Core file was changed."
     },
     {
       "id": "verify-owner-gates",
       "label": "Run focused and full owner repository gates after the harness is in place.",
-      "state": "pending",
-      "evidenceTarget": "Editor focused harness, Editor npm run check, and any required Backend/Core gates or no-change evidence are recorded."
+      "state": "passed",
+      "evidenceTarget": "Editor focused harness, Editor npm run check, and any required Backend/Core gates or no-change evidence are recorded.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Focused Editor harness passed 1 test; Editor worktree npm run check passed type-check, 78 test files, 284 tests, and build; merged Editor main npm run check passed the same gate. Backend and Core were not changed and remain cited by existing owner evidence."
     },
     {
       "id": "register-bounded-evidence",
       "label": "Register the live harness evidence in Project Control without promoting broad FlowDoc truth.",
-      "state": "pending",
-      "evidenceTarget": "Evidence target evidence-editor-backend-core-live-compatibility-harness-2026-08-27 records the commit, checks, supported claim, risks, and intentionally unpromoted truth."
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-editor-backend-core-live-compatibility-harness-2026-08-27 records the commit, checks, supported claim, risks, and intentionally unpromoted truth.",
+      "evidenceIds": ["evidence-editor-backend-core-live-compatibility-harness-2026-08-27"],
+      "verificationNote": "Added work-scoped Evidence and Document records with empty nodeIds; FlowDoc remains planned and Core, Editor, and Backend truth states remain unpromoted."
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",
