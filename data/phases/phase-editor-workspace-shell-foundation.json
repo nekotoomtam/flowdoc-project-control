@@ -2,19 +2,19 @@
   "kind": "phase",
   "id": "phase-editor-workspace-shell-foundation",
   "workId": "editor-workspace-shell-redesign-foundation",
-  "title": "Define Shell Boundary Before Editor Implementation",
-  "phaseState": "in-progress",
+  "title": "Implement Shell Frame Boundary",
+  "phaseState": "done",
   "order": 10,
   "repositoryIds": ["repo-project-control", "repo-editor"],
-  "activeRole": "planning-partner",
+  "activeRole": "product-implementation-agent",
   "stopConditions": [
     "The shell lane starts editing Editor behavior before the Work path, terminology boundary, Checklist target, and evidence target are recorded.",
     "The shell takes ownership of Core runtime node semantics, Backend document records, Preview lifecycle behavior, or Editor draft mutation rules.",
     "The plan promotes Editor, Backend, Core, frontend design, or FlowDoc product truth without exact Evidence.",
     "Ambiguous terms such as component, shell, workspace, preview, or draft cannot be qualified against the product terminology documents."
   ],
-  "verificationTarget": "Project Control records an in-progress Editor Workspace Shell foundation lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-shell-foundation, and future evidence target evidence-editor-workspace-shell-foundation-2026-08-28 without map truth promotion.",
-  "summary": "Opened the shell foundation phase for the component-by-component Editor frontend redesign approach.",
+  "verificationTarget": "Project Control records the completed bounded Editor Workspace Shell foundation slice with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-shell-foundation, and evidence target evidence-editor-workspace-shell-foundation-2026-08-28 without map truth promotion.",
+  "summary": "Implemented the first shell frame component split for the component-by-component Editor frontend redesign approach.",
   "createdAt": "2026-08-28T00:00:00.000Z",
   "updatedAt": "2026-08-28T00:00:00.000Z"
 }

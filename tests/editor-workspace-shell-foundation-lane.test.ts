@@ -11,20 +11,21 @@ describe("Editor Workspace Shell foundation lane", () => {
     const phase = model.phases.find((item) => item.id === "phase-editor-workspace-shell-foundation");
     const checklist = model.checklists.find((item) => item.id === "checklist-editor-workspace-shell-foundation");
     const document = model.documents.find((item) => item.id === "doc-editor-workspace-shell-foundation-2026-08-28");
+    const evidence = model.evidence.find((item) => item.id === "evidence-editor-workspace-shell-foundation-2026-08-28");
 
     expect(work).toMatchObject({
       workKind: "task",
       parentWorkId: "flowdoc-product-development-resumption",
       nodeId: "editor",
       repositoryIds: ["repo-editor", "repo-project-control"],
-      workState: "in-progress",
-      activeRole: "planning-partner",
+      workState: "in-review",
+      activeRole: "product-implementation-agent",
       phaseIds: ["phase-editor-workspace-shell-foundation"],
       workPathIds: [
         "flowdoc-product-development-resumption",
         "editor-workspace-shell-redesign-foundation",
       ],
-      requiredEvidence: [],
+      requiredEvidence: ["evidence-editor-workspace-shell-foundation-2026-08-28"],
     });
     expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
       "doc-project-control-agent-onboarding",
@@ -44,9 +45,9 @@ describe("Editor Workspace Shell foundation lane", () => {
 
     expect(phase).toMatchObject({
       workId: "editor-workspace-shell-redesign-foundation",
-      phaseState: "in-progress",
+      phaseState: "done",
       repositoryIds: ["repo-project-control", "repo-editor"],
-      activeRole: "planning-partner",
+      activeRole: "product-implementation-agent",
     });
     expect(phase?.verificationTarget).toContain("evidence-editor-workspace-shell-foundation-2026-08-28");
 
@@ -60,16 +61,19 @@ describe("Editor Workspace Shell foundation lane", () => {
       "prepare-editor-implementation-gate",
     ]);
     expect(checklist?.items.map((item) => item.state)).toEqual([
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
     ]);
     expect(checklist?.items.every((item) =>
       item.evidenceTarget.includes("evidence-editor-workspace-shell-foundation-2026-08-28"),
+    )).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes("evidence-editor-workspace-shell-foundation-2026-08-28"),
     )).toBe(true);
 
     expect(document).toMatchObject({
@@ -81,6 +85,29 @@ describe("Editor Workspace Shell foundation lane", () => {
     expect(normalize(document?.content)).toContain("UI component");
     expect(normalize(document?.content)).toContain("does not promote Editor truth");
     expect(normalize(document?.content)).toContain("evidence-editor-workspace-shell-foundation-2026-08-28");
+    expect(normalize(document?.content)).toContain("WorkspaceFrame");
+    expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
+      {
+        repositoryId: "repo-editor",
+        commit: "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+        pathOrContractId: "src/components/shell/WorkspaceFrame.tsx",
+      },
+      {
+        repositoryId: "repo-editor",
+        commit: "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+        pathOrContractId: "src/tests/workspaceFrame.test.ts",
+      },
+    ]));
+
+    expect(evidence).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+      pathOrContractId: "src/tests/workspaceFrame.test.ts",
+    });
+    expect(evidence?.verificationSummary).toContain("WorkspaceFrame");
+    expect(evidence?.verificationSummary).toContain("81 passed");
+    expect(evidence?.verificationSummary).toContain("287 passed");
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({
       truthState: "unknown",

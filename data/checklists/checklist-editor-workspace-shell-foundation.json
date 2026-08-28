@@ -7,44 +7,58 @@
     {
       "id": "capture-editor-context",
       "label": "Capture the current Editor workspace contracts, Project Control map state, and product terminology before shell implementation.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the exact Editor commit, Project Control context, and verification gate used for the shell foundation."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the exact Editor commit, Project Control context, and verification gate used for the shell foundation.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "Project Control context, terminology, readiness matrix, and Editor working agreement were read before the Editor worktree implementation."
     },
     {
       "id": "define-shell-boundary",
       "label": "Define what the Editor Workspace Shell owns and what remains outside the shell lane.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 shows the shell owns app frame, view slots, status surfaces, and layout states without owning Core, Backend, Preview lifecycle, or draft mutation semantics."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 shows the shell owns app frame, view slots, status surfaces, and layout states without owning Core, Backend, Preview lifecycle, or draft mutation semantics.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "WorkspaceFrame owns the shell frame and tabpanel retention while EditorShell keeps runtime derivation and intent wiring."
     },
     {
       "id": "split-shell-components",
       "label": "Name the first shell component split so implementation can proceed component by component.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 points to the focused component files and tests that prove the shell split stayed bounded."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 points to the focused component files and tests that prove the shell split stayed bounded.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "Editor commit aef34d9 adds src/components/shell/WorkspaceFrame.tsx and src/tests/workspaceFrame.test.ts."
     },
     {
       "id": "lock-data-boundary",
       "label": "Keep shell inputs as an Editor-owned view model and intent callbacks, not raw Core packages or raw Backend records.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 demonstrates that shell components consume narrow view-state props and emit intent without importing Core internals or Backend transport shapes directly."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 demonstrates that shell components consume narrow view-state props and emit intent without importing Core internals or Backend transport shapes directly.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "WorkspaceFrame accepts only activeView and React slot nodes; the focused test checks that it does not import editor or core modules."
     },
     {
       "id": "preserve-runtime-ownership",
       "label": "Preserve Editor runtime ownership rules while redesigning the shell.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 includes tests or review evidence that React shell components render state and dispatch intent while runtime modules own behavior."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 includes tests or review evidence that React shell components render state and dispatch intent while runtime modules own behavior.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "EditorShell still derives inspector, outline, canvas render view, and preview eligibility; WorkspaceFrame renders slots and does not own runtime behavior."
     },
     {
       "id": "keep-map-truth-unpromoted",
       "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged until narrower implementation evidence exists.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 is recorded before any future map promotion; this checklist item stays pending until the implementation evidence exists."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 is recorded before any future map promotion; this checklist item stays pending until the implementation evidence exists.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "Editor Project Control Node remains unknown with no documentIds or evidenceIds added by this bounded implementation evidence."
     },
     {
       "id": "prepare-editor-implementation-gate",
       "label": "Prepare the next Editor implementation worktree gate before touching frontend files.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the focused Editor tests, visual/layout review target, and full repo gate for the shell implementation lane."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the focused Editor tests, visual/layout review target, and full repo gate for the shell implementation lane.",
+      "evidenceIds": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
+      "verificationNote": "Editor worktree and merged main both ran npm run check successfully; focused WorkspaceFrame and shell-adjacent tests passed before the full gate."
     }
   ],
   "createdAt": "2026-08-28T00:00:00.000Z",

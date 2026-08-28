@@ -1,6 +1,6 @@
 # Editor Workspace Shell Foundation - 2026-08-28
 
-Status: in-progress planning lane.
+Status: in-review with bounded implementation evidence.
 
 This document opens the first component-by-component Editor frontend redesign
 lane. It is a Work-scoped planning decision for the Editor Workspace Shell. It
@@ -12,10 +12,10 @@ readiness, or FlowDoc product readiness.
 - Work path: `flowdoc-product-development-resumption > editor-workspace-shell-redesign-foundation`
 - Owner repository for implementation: `repo-editor`
 - Record repository for this lane: `repo-project-control`
-- Active role: `planning-partner`
+- Active role: `product-implementation-agent`
 - Phase: `phase-editor-workspace-shell-foundation`
 - Checklist target: `checklist-editor-workspace-shell-foundation`
-- Future evidence target: `evidence-editor-workspace-shell-foundation-2026-08-28`
+- Evidence target: `evidence-editor-workspace-shell-foundation-2026-08-28`
 
 ## Terminology
 
@@ -98,7 +98,7 @@ React components render state and dispatch intent; runtime modules own behavior.
 
 ## Evidence Target
 
-Future implementation evidence must be recorded as
+Implementation evidence is recorded as
 `evidence-editor-workspace-shell-foundation-2026-08-28` after the Editor
 implementation worktree passes its focused tests, visual/layout review target,
 and full repo gate.
@@ -106,6 +106,30 @@ and full repo gate.
 That evidence can support only the bounded shell foundation claim. It cannot
 promote broad Editor readiness, product frontend readiness, production Backend
 readiness, Preview parity, Core truth, or FlowDoc product readiness.
+
+## Implementation Evidence
+
+Editor commit `aef34d9b0b38521dac361abd95d61db7a1c061ee` adds
+`WorkspaceFrame` as the first extracted UI component for the Editor Workspace
+Shell. `EditorShell` now delegates shell frame and tabpanel retention to that
+component while retaining runtime derivation, view-model assembly, preview
+eligibility, and intent wiring.
+
+The focused RED test failed before implementation because
+`src/components/shell/WorkspaceFrame.tsx` did not exist. After implementation,
+the focused test proved that the Design runtime remains present while Preview is
+active, Preview is not mounted while Design is active, and `WorkspaceFrame`
+does not import Editor runtime or Core modules.
+
+Verification:
+
+- Editor worktree `npm run check`: type-check passed, 81 test files passed, 287
+  tests passed, and Vite build passed.
+- Editor merged main `npm run check`: type-check passed, 81 test files passed,
+  287 tests passed, and Vite build passed.
+- Project Control evidence registration will keep the Editor Project Control
+  Node at `unknown` and will not add this evidence to `editor.documentIds` or
+  `editor.evidenceIds`.
 
 ## Risks
 

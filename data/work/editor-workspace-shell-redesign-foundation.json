@@ -6,8 +6,8 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-editor", "repo-project-control"],
-  "workState": "in-progress",
-  "summary": "Open the first component-by-component Editor frontend redesign lane by defining the workspace shell boundary, component split, data boundary, and evidence target before implementation.",
+  "workState": "in-review",
+  "summary": "Open and complete the first component-by-component Editor frontend redesign lane by defining and implementing the workspace shell frame boundary before deeper UI reconstruction.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -20,10 +20,10 @@
     "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
     "doc-editor-workspace-shell-foundation-2026-08-28"
   ],
-  "activeRole": "planning-partner",
-  "expectedOutput": "A Project Control lane that defines the Editor Workspace Shell redesign foundation, names repo-editor as the implementation owner, keeps repo-project-control as the record owner, and sets the future evidence target evidence-editor-workspace-shell-foundation-2026-08-28.",
-  "riskSummary": "The shell foundation is planning-only and does not promote Editor truth, Backend readiness, Core truth, frontend design readiness, or FlowDoc product readiness.",
-  "requiredEvidence": [],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit aef34d9b0b38521dac361abd95d61db7a1c061ee implements the bounded Editor Workspace Shell foundation by splitting WorkspaceFrame from EditorShell, keeping the Design runtime retained across Preview, keeping Preview mounted only for the active Preview view, and setting evidence target evidence-editor-workspace-shell-foundation-2026-08-28 as the bounded implementation evidence.",
+  "riskSummary": "The shell foundation is evidence-backed only for the first UI component split and does not promote Editor truth, Backend readiness, Core truth, frontend design readiness, visual redesign completion, or FlowDoc product readiness.",
+  "requiredEvidence": ["evidence-editor-workspace-shell-foundation-2026-08-28"],
   "createdAt": "2026-08-28T00:00:00.000Z",
   "updatedAt": "2026-08-28T00:00:00.000Z"
 }
