@@ -280,6 +280,10 @@ function diagnosticCodes(result: { diagnostics: Array<{ code: string }> }): stri
   return result.diagnostics.map((diagnostic) => diagnostic.code);
 }
 
+function cloneCoverage(coverage: FamilyCoverage): FamilyCoverage {
+  return JSON.parse(JSON.stringify(coverage)) as FamilyCoverage;
+}
+
 async function closeMigrationFixture(
   fixture: MigrationFixture,
   paths: string[] = fixture.coverage.sources
@@ -911,6 +915,7 @@ describe("external Core deletion readiness", () => {
   }, 30_000);
 
   it("enforces closed cleanup reference closure", async () => {
+    const fixtures: MigrationFixture[] = [];
     const baseline = async (): Promise<MigrationFixture> => {
       const fixture = await createMigrationFixture({ mention: `Former path: ${sourcePath}` });
       const mention = (await collectCoveredPathMentions(fixture.sourceRoot, [sourcePath]))[0]!;
@@ -919,54 +924,61 @@ describe("external Core deletion readiness", () => {
         rationale: "A different family-neutral reviewed historical rationale.",
       }];
       await closeMigrationFixture(fixture);
+      fixtures.push(fixture);
       return fixture;
     };
 
-    const untouched = await baseline();
-    expect(await verifyFamilyCleanup(untouched)).toMatchObject({ ready: true, diagnostics: [] });
+    try {
+      const untouched = await baseline();
+      expect(await verifyFamilyCleanup(untouched)).toMatchObject({ ready: true, diagnostics: [] });
 
-    const active = await baseline();
-    active.coverage.activeReferences = [{ sourcePath: "README.md", line: 1, targetPath: sourcePath }];
-    expect(diagnosticCodes(await verifyFamilyCleanup(active))).toContain("MIGRATION_ACTIVE_REFERENCE");
+      const active = { ...untouched, coverage: cloneCoverage(untouched.coverage) };
+      active.coverage.activeReferences = [{ sourcePath: "README.md", line: 1, targetPath: sourcePath }];
+      expect(diagnosticCodes(await verifyFamilyCleanup(active))).toContain("MIGRATION_ACTIVE_REFERENCE");
 
-    const missing = await baseline();
-    missing.coverage.retainedHistoricalReferences = [];
-    expect(diagnosticCodes(await verifyFamilyCleanup(missing))).toContain("MIGRATION_ACTIVE_PATH_MENTION");
+      const missing = { ...untouched, coverage: cloneCoverage(untouched.coverage) };
+      missing.coverage.retainedHistoricalReferences = [];
+      expect(diagnosticCodes(await verifyFamilyCleanup(missing))).toContain("MIGRATION_ACTIVE_PATH_MENTION");
 
-    const allowanceMutations: Array<(fixture: MigrationFixture) => void> = [
-      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.line = 2; },
-      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.lineSha256 = "c".repeat(64); },
-      (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.targetPath = "docs/OTHER.md"; },
-    ];
-    for (const mutate of allowanceMutations) {
-      const fixture = await baseline();
-      mutate(fixture);
-      expect(diagnosticCodes(await verifyFamilyCleanup(fixture))).toEqual(expect.arrayContaining([
+      const allowanceMutations: Array<(fixture: MigrationFixture) => void> = [
+        (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.line = 2; },
+        (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.lineSha256 = "c".repeat(64); },
+        (fixture) => { fixture.coverage.retainedHistoricalReferences[0]!.targetPath = "docs/OTHER.md"; },
+      ];
+      for (const mutate of allowanceMutations) {
+        const fixture = { ...untouched, coverage: cloneCoverage(untouched.coverage) };
+        mutate(fixture);
+        expect(diagnosticCodes(await verifyFamilyCleanup(fixture))).toEqual(expect.arrayContaining([
+          "MIGRATION_ACTIVE_PATH_MENTION",
+          "MIGRATION_HISTORICAL_ALLOWANCE_STALE",
+        ]));
+      }
+
+      const extra = { ...untouched, coverage: cloneCoverage(untouched.coverage) };
+      extra.coverage.retainedHistoricalReferences.push({
+        ...extra.coverage.retainedHistoricalReferences[0]!,
+        line: 2,
+      });
+      expect(diagnosticCodes(await verifyFamilyCleanup(extra)))
+        .toContain("MIGRATION_HISTORICAL_ALLOWANCE_STALE");
+
+      await writeFile(
+        join(untouched.sourceRoot, "notes.txt"),
+        `Historical former path: ${sourcePath}\n`,
+        "utf8",
+      );
+      await git(untouched.sourceRoot, ["add", "notes.txt"]);
+      await git(untouched.sourceRoot, ["commit", "-m", "edit historical wording"]);
+      expect(diagnosticCodes(await verifyFamilyCleanup(untouched))).toEqual(expect.arrayContaining([
         "MIGRATION_ACTIVE_PATH_MENTION",
         "MIGRATION_HISTORICAL_ALLOWANCE_STALE",
       ]));
+    } finally {
+      for (const fixture of fixtures) {
+        await removeDisposableFixtureRoot(fixture.sourceRoot);
+        await removeDisposableFixtureRoot(fixture.projectRoot);
+      }
     }
-
-    const extra = await baseline();
-    extra.coverage.retainedHistoricalReferences.push({
-      ...extra.coverage.retainedHistoricalReferences[0]!,
-      line: 2,
-    });
-    expect(diagnosticCodes(await verifyFamilyCleanup(extra)))
-      .toContain("MIGRATION_HISTORICAL_ALLOWANCE_STALE");
-
-    const changedTrackedLine = await baseline();
-    await writeFile(
-      join(changedTrackedLine.sourceRoot, "notes.txt"),
-      `Historical former path: ${sourcePath}\n`,
-      "utf8",
-    );
-    await git(changedTrackedLine.sourceRoot, ["add", "notes.txt"]);
-    await git(changedTrackedLine.sourceRoot, ["commit", "-m", "edit historical wording"]);
-    expect(diagnosticCodes(await verifyFamilyCleanup(changedTrackedLine))).toEqual(expect.arrayContaining([
-      "MIGRATION_ACTIVE_PATH_MENTION",
-      "MIGRATION_HISTORICAL_ALLOWANCE_STALE",
-    ]));
   }, 30_000);
 
   it("retains closed cleanup negative controls", async () => {
