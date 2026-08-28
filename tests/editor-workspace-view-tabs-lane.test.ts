@@ -128,6 +128,7 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
+        "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
       ],
     });

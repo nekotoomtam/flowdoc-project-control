@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-workspace-toolbar-foundation",
+  "phaseId": "phase-editor-workspace-toolbar-foundation",
+  "title": "Editor WorkspaceToolbar Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-toolbar-context",
+      "label": "Capture current EditorToolbar, shell component boundaries, Project Control map state, and product terminology before Editor implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 records the exact Editor commit, toolbar shell boundary, tests, and verification gate used for the WorkspaceToolbar split.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "Project Control lane context, product terminology, EditorToolbar, WorkspaceFrame, WorkspaceViewTabs, WorkspaceHeader, WorkspaceStatusStrip, and shell-adjacent tests were read before Editor implementation."
+    },
+    {
+      "id": "define-workspace-toolbar-boundary",
+      "label": "Define WorkspaceToolbar as an Editor-owned UI component for toolbar shell layout, toolbar sections, dividers, spacer, and trailing slot only.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 shows WorkspaceToolbar owns toolbar shell markup without owning route, Preview lifecycle, Editor draft, Core, Backend, PDF export, migration, paper, zoom, or command behavior.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "WorkspaceToolbar accepts supplied toolbar sections and trailing controls while avoiding Editor runtime, Core, Backend, export, migration, paper, zoom, and icon imports."
+    },
+    {
+      "id": "split-toolbar-shell-component",
+      "label": "Split toolbar shell layout out of EditorToolbar into a focused WorkspaceToolbar UI component.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "Editor commit 9e9d0deaa957297419f34ed4e2a8b53344a9273e adds src/components/shell/WorkspaceToolbar.tsx and src/tests/workspaceToolbar.test.ts."
+    },
+    {
+      "id": "preserve-editor-toolbar-adapter-ownership",
+      "label": "Keep EditorToolbar as the adapter for command controls, callbacks, icons, paper and zoom display, PDF export, migration, and diagnostics display inputs.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 includes test coverage or review evidence that EditorToolbar still owns toolbar controls and passes only UI sections/trailing controls to WorkspaceToolbar.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "src/tests/workspaceToolbar.test.ts verifies EditorToolbar delegates shell layout to WorkspaceToolbar while retaining command, runtime-derived display, export, migration, and diagnostics ownership."
+    },
+    {
+      "id": "lock-toolbar-action-boundary",
+      "label": "Keep toolbar actions as intent surfaces only and avoid unqualified readiness, current, compatible, or live claims from the new UI component.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceToolbar renders supplied sections and trailing controls without adding action, readiness, live, or compatibility semantics.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "WorkspaceToolbar renders supplied children and does not import Core diagnostics, Editor runtime, Backend capability, export, migration, paper, zoom, or icon modules."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceToolbar implementation lane.",
+      "evidenceIds": ["evidence-editor-workspace-toolbar-foundation-2026-08-28"],
+      "verificationNote": "Editor worktree and merged main both ran npm run check successfully; focused WorkspaceToolbar and shell-adjacent tests passed before the full gate."
+    }
+  ],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

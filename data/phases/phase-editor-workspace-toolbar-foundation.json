@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-workspace-toolbar-foundation",
+  "workId": "editor-workspace-toolbar-foundation",
+  "title": "Implement WorkspaceToolbar Boundary",
+  "phaseState": "done",
+  "order": 60,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are identified.",
+    "WorkspaceToolbar starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, Core diagnostics interpretation, Backend document record behavior, Backend capability response interpretation, PDF export behavior, migration behavior, paper model behavior, or zoom behavior.",
+    "EditorToolbar stops acting as the adapter that owns toolbar action controls, callbacks, icons, and display values before handing toolbar sections to the UI component.",
+    "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product truth without exact Evidence.",
+    "Ambiguous terms such as toolbar, action, command, status, readiness, current, live, component, adapter, source, target, preview, or workspace cannot be qualified against the product terminology documents."
+  ],
+  "verificationTarget": "Project Control records the bounded WorkspaceToolbar component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-toolbar-foundation, and evidence target evidence-editor-workspace-toolbar-foundation-2026-08-28 without map truth promotion.",
+  "summary": "Implemented the next Editor shell component split after WorkspaceStatusStrip by isolating the toolbar shell layout from EditorToolbar's action and runtime-derived display ownership.",
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

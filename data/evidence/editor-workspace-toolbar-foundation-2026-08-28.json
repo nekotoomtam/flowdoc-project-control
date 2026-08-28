@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-workspace-toolbar-foundation-2026-08-28",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+  "pathOrContractId": "src/tests/workspaceToolbar.test.ts",
+  "verificationSummary": "Editor commit 9e9d0deaa957297419f34ed4e2a8b53344a9273e implements the bounded WorkspaceToolbar UI component split by adding src/components/shell/WorkspaceToolbar.tsx and refactoring src/components/shell/EditorToolbar.tsx into the adapter that owns toolbar action controls, callbacks, icons, paper and zoom display, PDF export control, migration display/control, and diagnostics display before passing toolbar sections and trailing controls to WorkspaceToolbar. RED failed before implementation because WorkspaceToolbar did not exist. Focused tests then passed for src/tests/workspaceToolbar.test.ts: 1 test file passed and 2 tests passed. Shell-adjacent regression tests passed for src/tests/workspaceToolbar.test.ts, src/tests/workspaceFrame.test.ts, src/tests/workspaceHeader.test.ts, src/tests/workspaceViewTabs.test.ts, src/tests/workspaceStatusStrip.test.ts, src/tests/documentWorkspaceRoute.test.ts, and src/tests/realdocDocumentWorkspaceTabs.test.ts: 7 test files passed and 12 tests passed. Editor worktree npm run check passed type-check, 86 passed test files, 296 passed tests, and build; merged Editor main npm run check also passed type-check, 86 passed test files, 296 passed tests, and build. npm install reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceToolbar shell UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, command readiness, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
+  "verifiedAt": "2026-08-28T00:00:00.000Z"
+}

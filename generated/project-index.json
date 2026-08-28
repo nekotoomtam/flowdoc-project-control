@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "078bc522e29d7359b2c4f88bf0b7e13496ca2fa764b30f9ad811be37ffab0ddd",
+  "sourceDigest": "f1ab6df0ada774e95cbd7bb98f3c611357c95fbe11a20408c326d58ce11e2dee",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -290,6 +290,7 @@
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
+        "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation"
       ]
     },
@@ -1084,6 +1085,51 @@
     },
     {
       "kind": "work",
+      "id": "editor-workspace-toolbar-foundation",
+      "title": "Editor WorkspaceToolbar Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Continue the component-by-component Editor frontend redesign by defining and implementing the WorkspaceToolbar shell UI component boundary after WorkspaceStatusStrip.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-workspace-shell-foundation-2026-08-28",
+        "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+        "doc-editor-workspace-header-foundation-2026-08-28",
+        "doc-editor-workspace-status-strip-foundation-2026-08-28",
+        "doc-editor-workspace-toolbar-foundation-2026-08-28"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit 9e9d0deaa957297419f34ed4e2a8b53344a9273e implements the bounded WorkspaceToolbar lane by splitting toolbar shell layout from EditorToolbar as a UI component that renders supplied toolbar sections and trailing controls while EditorToolbar remains the adapter for command, paper, zoom, PDF export, migration, and diagnostics display inputs. Target evidence id: evidence-editor-workspace-toolbar-foundation-2026-08-28.",
+      "riskSummary": "This lane is a UI component boundary slice only. It does not promote Editor truth, Backend readiness, Core truth, frontend design completion, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product readiness.",
+      "requiredEvidence": [
+        "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-workspace-toolbar-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-workspace-toolbar-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-view-tabs-foundation",
       "title": "Editor WorkspaceViewTabs Foundation",
       "nodeId": "editor",
@@ -1243,6 +1289,7 @@
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
+        "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-readiness-matrix",
@@ -1784,6 +1831,30 @@
       ],
       "verificationTarget": "Project Control records the bounded WorkspaceStatusStrip component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-status-strip-foundation, and evidence target evidence-editor-workspace-status-strip-foundation-2026-08-28 without map truth promotion.",
       "summary": "Implemented the next Editor shell component split after WorkspaceHeader by isolating the status strip UI from StatusBar's runtime-derived display values.",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-workspace-toolbar-foundation",
+      "workId": "editor-workspace-toolbar-foundation",
+      "title": "Implement WorkspaceToolbar Boundary",
+      "phaseState": "done",
+      "order": 60,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are identified.",
+        "WorkspaceToolbar starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, Core diagnostics interpretation, Backend document record behavior, Backend capability response interpretation, PDF export behavior, migration behavior, paper model behavior, or zoom behavior.",
+        "EditorToolbar stops acting as the adapter that owns toolbar action controls, callbacks, icons, and display values before handing toolbar sections to the UI component.",
+        "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product truth without exact Evidence.",
+        "Ambiguous terms such as toolbar, action, command, status, readiness, current, live, component, adapter, source, target, preview, or workspace cannot be qualified against the product terminology documents."
+      ],
+      "verificationTarget": "Project Control records the bounded WorkspaceToolbar component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-toolbar-foundation, and evidence target evidence-editor-workspace-toolbar-foundation-2026-08-28 without map truth promotion.",
+      "summary": "Implemented the next Editor shell component split after WorkspaceStatusStrip by isolating the toolbar shell layout from EditorToolbar's action and runtime-derived display ownership.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
     },
@@ -3075,6 +3146,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-editor-workspace-toolbar-foundation",
+      "phaseId": "phase-editor-workspace-toolbar-foundation",
+      "title": "Editor WorkspaceToolbar Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-toolbar-context",
+          "label": "Capture current EditorToolbar, shell component boundaries, Project Control map state, and product terminology before Editor implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 records the exact Editor commit, toolbar shell boundary, tests, and verification gate used for the WorkspaceToolbar split.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "Project Control lane context, product terminology, EditorToolbar, WorkspaceFrame, WorkspaceViewTabs, WorkspaceHeader, WorkspaceStatusStrip, and shell-adjacent tests were read before Editor implementation."
+        },
+        {
+          "id": "define-workspace-toolbar-boundary",
+          "label": "Define WorkspaceToolbar as an Editor-owned UI component for toolbar shell layout, toolbar sections, dividers, spacer, and trailing slot only.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 shows WorkspaceToolbar owns toolbar shell markup without owning route, Preview lifecycle, Editor draft, Core, Backend, PDF export, migration, paper, zoom, or command behavior.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "WorkspaceToolbar accepts supplied toolbar sections and trailing controls while avoiding Editor runtime, Core, Backend, export, migration, paper, zoom, and icon imports."
+        },
+        {
+          "id": "split-toolbar-shell-component",
+          "label": "Split toolbar shell layout out of EditorToolbar into a focused WorkspaceToolbar UI component.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "Editor commit 9e9d0deaa957297419f34ed4e2a8b53344a9273e adds src/components/shell/WorkspaceToolbar.tsx and src/tests/workspaceToolbar.test.ts."
+        },
+        {
+          "id": "preserve-editor-toolbar-adapter-ownership",
+          "label": "Keep EditorToolbar as the adapter for command controls, callbacks, icons, paper and zoom display, PDF export, migration, and diagnostics display inputs.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 includes test coverage or review evidence that EditorToolbar still owns toolbar controls and passes only UI sections/trailing controls to WorkspaceToolbar.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "src/tests/workspaceToolbar.test.ts verifies EditorToolbar delegates shell layout to WorkspaceToolbar while retaining command, runtime-derived display, export, migration, and diagnostics ownership."
+        },
+        {
+          "id": "lock-toolbar-action-boundary",
+          "label": "Keep toolbar actions as intent surfaces only and avoid unqualified readiness, current, compatible, or live claims from the new UI component.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceToolbar renders supplied sections and trailing controls without adding action, readiness, live, or compatibility semantics.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "WorkspaceToolbar renders supplied children and does not import Core diagnostics, Editor runtime, Backend capability, export, migration, paper, zoom, or icon modules."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-toolbar-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceToolbar implementation lane.",
+          "evidenceIds": [
+            "evidence-editor-workspace-toolbar-foundation-2026-08-28"
+          ],
+          "verificationNote": "Editor worktree and merged main both ran npm run check successfully; focused WorkspaceToolbar and shell-adjacent tests passed before the full gate."
+        }
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-editor-workspace-view-tabs-foundation",
       "phaseId": "phase-editor-workspace-view-tabs-foundation",
       "title": "Editor WorkspaceViewTabs Foundation Checklist",
@@ -4153,6 +4304,44 @@
         }
       ],
       "content": "# Editor WorkspaceStatusStrip Foundation - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the fourth component-by-component Editor frontend\nredesign lane. It narrows this slice to the status strip UI boundary that was\nstill embedded in `StatusBar`. It does not promote Editor truth, Backend\nreadiness, Core truth, frontend design readiness, Preview parity, accessibility\nreadiness, visual regression readiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-status-strip-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-status-strip-foundation`\n- Checklist target: `checklist-editor-workspace-status-strip-foundation`\n- Evidence target: `evidence-editor-workspace-status-strip-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceStatusStrip`: define. The Editor-owned UI component that renders\n  supplied workspace status facts as status strip markup.\n- `status facts`: define for this lane as display-ready label/value items\n  supplied by the owning adapter. Status facts are not evidence packets, not\n  Backend document records, not Core document packages, and not product\n  readiness claims.\n- `StatusBar adapter`: define. The existing Editor shell component now derives\n  display values from Editor runtime inputs and passes those values to\n  `WorkspaceStatusStrip`.\n- `status`: split. This lane means Editor UI status display. It does not mean\n  Core adapter status, Backend capability response status, Project Control truth\n  state, evidence status, or product readiness.\n- `current`, `ready`, `compatible`, and `live`: context-only unless an explicit\n  evidence packet supports the exact scope. `WorkspaceStatusStrip` must not add\n  these claims on its own.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Backend component.\n\n## Component Scope\n\nWorkspaceStatusStrip owns:\n\n- the status strip landmark and shell markup;\n- rendering supplied status fact labels and values;\n- stable keying of status fact rows by caller-provided item id;\n- avoiding readiness, currentness, compatibility, or live claims that were not\n  provided by the adapter.\n\nWorkspaceStatusStrip does not own:\n\n- route navigation, URL parsing, or browser history behavior;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, Core diagnostics\n  interpretation, or Core package validation;\n- Backend document records, Backend revisions, storage, transport shape, or\n  capability response interpretation;\n- Project Control truth state, evidence packets, or map promotion.\n\nStatusBar remains the adapter that derives display values from existing Editor\nruntime inputs before rendering `WorkspaceStatusStrip`.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceStatusStrip` UI\ncomponent under the shell component boundary and update `StatusBar` to build\ndisplay-ready status facts before rendering the component. The first RED test\nshould fail because the component does not exist. The implementation should\nprove:\n\n- `WorkspaceStatusStrip` renders status strip markup from supplied status facts;\n- `WorkspaceStatusStrip` does not import Editor runtime, Core, or Backend\n  modules;\n- `StatusBar` renders `WorkspaceStatusStrip` instead of owning status strip\n  markup directly;\n- layout QA display remains absent when no layout QA summary is supplied and\n  present when the adapter receives a summary;\n- selected node, local history, document change, and undoable counts remain\n  visible after the component split;\n- the lane does not promote map truth.\n\n## Evidence Target\n\nImplementation evidence is recorded as\n`evidence-editor-workspace-status-strip-foundation-2026-08-28` after the Editor\nworktree and merged main both passed focused tests and the full Editor\nrepository gate.\n\nThat evidence can support only the bounded WorkspaceStatusStrip UI component\nsplit. It cannot promote broad Editor readiness, product frontend readiness,\nproduction Backend readiness, Preview parity, Core truth, accessibility\nreadiness, visual regression readiness, or FlowDoc product readiness.\n\n## Implementation Evidence\n\nEditor commit `a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1` adds\n`WorkspaceStatusStrip` as the next extracted UI component for the Editor\nWorkspace Shell. `StatusBar` now acts as the StatusBar adapter: it derives\nstatus facts from the existing Editor runtime inputs and renders\n`WorkspaceStatusStrip`, while the new UI component owns only supplied status\nfact markup.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceStatusStrip.tsx` did not exist. After\nimplementation, the focused test proved that `WorkspaceStatusStrip` renders\ndocument, Core source display, selection, job, and page status facts while\nstaying outside Editor runtime, Core, and Backend ownership.\n\nVerification:\n\n- Editor focused test passed for `src/tests/workspaceStatusStrip.test.ts`: 1\n  test file passed and 2 tests passed.\n- Editor shell/status-adjacent regression tests passed for\n  `src/tests/workspaceStatusStrip.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/layoutQaConfig.test.ts`, and `src/tests/selectionHitTest.test.ts`:\n  6 test files passed and 13 tests passed.\n- Editor worktree `npm run check`: type-check passed, 85 test files passed, 294\n  tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 85 test files passed,\n  294 tests passed, and Vite build passed.\n- Project Control evidence registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Status strip wording can still imply readiness or compatibility if future\n  work passes unqualified `current`, `ready`, `compatible`, or `live` values\n  without exact evidence scope.\n- `Core` remains a visible status fact label in the legacy bar; future copy work\n  may need a clearer display label if frontend terminology becomes stricter.\n- The new component has unit-level markup evidence only; no visual regression or\n  accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and responsive shape of the status\n  strip.\n- Whether future frontend work should group status facts into document,\n  workspace, background work, and QA clusters.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, and broad Editor\n  readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor shell redesign with the next bounded\nsurface, likely `EditorToolbar`, only after a fresh Project Control Work path,\nPhase, Checklist target, and Evidence target are identified. The next lane\nshould start with a RED test, preserve `WorkspaceFrame`, `WorkspaceViewTabs`,\n`WorkspaceHeader`, and `WorkspaceStatusStrip` boundaries, and avoid promoting\nmap truth without exact evidence.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-workspace-toolbar-foundation-2026-08-28",
+      "title": "Editor WorkspaceToolbar Foundation - 2026-08-28",
+      "path": "docs/domains/editor-workspace-toolbar-foundation-2026-08-28.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Work-scoped planning decision and evidence summary for the fifth component-by-component Editor frontend redesign lane; defines WorkspaceToolbar vocabulary, ownership boundaries, checklist target, and evidence target without promoting Editor truth or product readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "2a1210c17a28137dc3897bdbbddf7149d0f8699b",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "2a1210c17a28137dc3897bdbbddf7149d0f8699b",
+          "pathOrContractId": "docs/domains/editor-workspace-status-strip-foundation-2026-08-28.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+          "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+          "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+          "pathOrContractId": "src/tests/workspaceToolbar.test.ts"
+        }
+      ],
+      "content": "# Editor WorkspaceToolbar Foundation - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the fifth component-by-component Editor frontend redesign\nlane. It narrows this slice to the toolbar shell UI boundary that was still\nembedded in `EditorToolbar`. It does not promote Editor truth, Backend\nreadiness, Core truth, frontend design readiness, Preview parity, accessibility\nreadiness, visual regression readiness, command readiness, or FlowDoc product\nreadiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-toolbar-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-toolbar-foundation`\n- Checklist target: `checklist-editor-workspace-toolbar-foundation`\n- Evidence target: `evidence-editor-workspace-toolbar-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceToolbar`: define. The Editor-owned UI component that renders the\n  toolbar shell, toolbar sections, dividers, spacer, and trailing slot from\n  supplied children.\n- `toolbar sections`: define for this lane as caller-supplied groups of toolbar\n  controls with display labels. They are not Core runtime nodes, Backend\n  document records, command contracts, or product readiness evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component now owns\n  toolbar action controls, callbacks, icons, paper and zoom display, PDF export\n  display/control, migration display/control, and diagnostics display before\n  passing sections and trailing controls to `WorkspaceToolbar`.\n- `toolbar action`: define as an Editor UI intent surface. It is not a Core\n  mutation result, Backend HTTP response, Backend revision, or Project Control\n  evidence packet.\n- `status`, `current`, `ready`, `compatible`, and `live`: context-only unless an\n  explicit evidence packet supports the exact scope. `WorkspaceToolbar` must not\n  add these claims on its own.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Backend component.\n\n## Component Scope\n\nWorkspaceToolbar owns:\n\n- the toolbar navigation landmark and shell markup;\n- rendering supplied toolbar sections as labelled groups;\n- rendering dividers between toolbar sections;\n- rendering the toolbar spacer before trailing controls;\n- rendering supplied trailing controls without interpreting their behavior.\n\nWorkspaceToolbar does not own:\n\n- route navigation, URL parsing, or browser history behavior;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, Core diagnostics\n  interpretation, or Core package validation;\n- Backend document records, Backend revisions, storage, transport shape, or\n  capability response interpretation;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  or command readiness;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns toolbar controls, callbacks, icons,\nand runtime-derived display values before rendering `WorkspaceToolbar`.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceToolbar` UI component\nunder the shell component boundary and update `EditorToolbar` to build supplied\ntoolbar sections and trailing controls before rendering the component. The first\nRED test should fail because the component does not exist. The implementation\nshould prove:\n\n- `WorkspaceToolbar` renders toolbar shell markup from supplied toolbar\n  sections;\n- `WorkspaceToolbar` renders dividers, spacer, and trailing controls without\n  importing command, runtime, Core, Backend, export, migration, paper, zoom, or\n  icon modules;\n- `EditorToolbar` renders `WorkspaceToolbar` instead of owning toolbar shell\n  markup directly;\n- EditorToolbar continues owning paper preset, zoom, PDF export, migration, and\n  diagnostics display inputs;\n- the lane does not promote map truth.\n\n## Evidence Target\n\nImplementation evidence is recorded as\n`evidence-editor-workspace-toolbar-foundation-2026-08-28` after the Editor\nworktree and merged main both passed focused tests and the full Editor\nrepository gate.\n\nThat evidence can support only the bounded WorkspaceToolbar UI component split.\nIt cannot promote broad Editor readiness, product frontend readiness, production\nBackend readiness, Preview parity, Core truth, accessibility readiness, visual\nregression readiness, command readiness, or FlowDoc product readiness.\n\n## Implementation Evidence\n\nEditor commit `9e9d0deaa957297419f34ed4e2a8b53344a9273e` adds\n`WorkspaceToolbar` as the next extracted UI component for the Editor Workspace\nShell. `EditorToolbar` now acts as the EditorToolbar adapter: it builds toolbar\nsections and trailing controls from existing props and renders\n`WorkspaceToolbar`, while the new UI component owns only toolbar shell layout.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceToolbar.tsx` did not exist. After implementation,\nthe focused test proved that `WorkspaceToolbar` renders supplied editing, paper,\nand zoom toolbar sections with dividers, spacer, and trailing controls while\nstaying outside command, Editor runtime, Core, Backend, export, migration,\npaper, zoom, and icon ownership.\n\nVerification:\n\n- Editor focused test passed for `src/tests/workspaceToolbar.test.ts`: 1 test\n  file passed and 2 tests passed.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 7 test files passed and 12\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 86 test files passed, 296\n  tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 86 test files passed,\n  296 tests passed, and Vite build passed.\n- Project Control evidence registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Toolbar copy can still imply command readiness if future work displays\n  unqualified enabled, ready, compatible, current, or live wording without exact\n  evidence scope.\n- EditorToolbar remains large after this shell split because it still owns\n  paper, zoom, PDF export, migration, diagnostics, icons, and callbacks.\n- The new component has unit-level markup evidence only; no visual regression or\n  accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and responsive shape of the toolbar.\n- Whether future frontend work should split editing command groups, document\n  actions, paper controls, zoom controls, and export/migration controls into\n  separate UI components.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor shell redesign with a bounded toolbar\nsubcomponent split, likely editing command groups or paper/zoom controls, only\nafter a fresh Project Control Work path, Phase, Checklist target, and Evidence\ntarget are identified. The next lane should start with a RED test, preserve\n`WorkspaceFrame`, `WorkspaceViewTabs`, `WorkspaceHeader`,\n`WorkspaceStatusStrip`, and `WorkspaceToolbar` boundaries, and avoid promoting\nmap truth without exact evidence.\n"
     },
     {
       "kind": "document",
@@ -5686,6 +5875,16 @@
       "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
       "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts",
       "verificationSummary": "Editor commit a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1 implements the bounded WorkspaceStatusStrip UI component split by adding src/components/shell/WorkspaceStatusStrip.tsx, refactoring StatusBar into the adapter that derives status display values from existing Editor runtime inputs, and keeping WorkspaceStatusStrip outside route navigation, Editor draft mutation, Preview lifecycle, Core semantics, Core diagnostics interpretation, Backend document records, and Backend capability response interpretation. RED failed before implementation because WorkspaceStatusStrip did not exist. Focused tests then passed for src/tests/workspaceStatusStrip.test.ts: 1 test file passed and 2 tests passed. Shell/status-adjacent regression tests passed for src/tests/workspaceStatusStrip.test.ts, src/tests/workspaceFrame.test.ts, src/tests/workspaceHeader.test.ts, src/tests/workspaceViewTabs.test.ts, src/tests/layoutQaConfig.test.ts, and src/tests/selectionHitTest.test.ts: 6 test files passed and 13 tests passed. Editor worktree npm run check passed type-check, 85 passed test files, 294 passed tests, and build; merged Editor main npm run check also passed type-check, 85 passed test files, 294 passed tests, and build. npm install reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceStatusStrip UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-workspace-toolbar-foundation-2026-08-28",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+      "pathOrContractId": "src/tests/workspaceToolbar.test.ts",
+      "verificationSummary": "Editor commit 9e9d0deaa957297419f34ed4e2a8b53344a9273e implements the bounded WorkspaceToolbar UI component split by adding src/components/shell/WorkspaceToolbar.tsx and refactoring src/components/shell/EditorToolbar.tsx into the adapter that owns toolbar action controls, callbacks, icons, paper and zoom display, PDF export control, migration display/control, and diagnostics display before passing toolbar sections and trailing controls to WorkspaceToolbar. RED failed before implementation because WorkspaceToolbar did not exist. Focused tests then passed for src/tests/workspaceToolbar.test.ts: 1 test file passed and 2 tests passed. Shell-adjacent regression tests passed for src/tests/workspaceToolbar.test.ts, src/tests/workspaceFrame.test.ts, src/tests/workspaceHeader.test.ts, src/tests/workspaceViewTabs.test.ts, src/tests/workspaceStatusStrip.test.ts, src/tests/documentWorkspaceRoute.test.ts, and src/tests/realdocDocumentWorkspaceTabs.test.ts: 7 test files passed and 12 tests passed. Editor worktree npm run check passed type-check, 86 passed test files, 296 passed tests, and build; merged Editor main npm run check also passed type-check, 86 passed test files, 296 passed tests, and build. npm install reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceToolbar shell UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, command readiness, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-28T00:00:00.000Z"
     },
     {

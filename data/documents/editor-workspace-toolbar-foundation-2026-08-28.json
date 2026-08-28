@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-toolbar-foundation-2026-08-28",
+  "title": "Editor WorkspaceToolbar Foundation - 2026-08-28",
+  "path": "docs/domains/editor-workspace-toolbar-foundation-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped planning decision and evidence summary for the fifth component-by-component Editor frontend redesign lane; defines WorkspaceToolbar vocabulary, ownership boundaries, checklist target, and evidence target without promoting Editor truth or product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "2a1210c17a28137dc3897bdbbddf7149d0f8699b",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "2a1210c17a28137dc3897bdbbddf7149d0f8699b",
+      "pathOrContractId": "docs/domains/editor-workspace-status-strip-foundation-2026-08-28.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+      "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+      "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "9e9d0deaa957297419f34ed4e2a8b53344a9273e",
+      "pathOrContractId": "src/tests/workspaceToolbar.test.ts"
+    }
+  ]
+}
