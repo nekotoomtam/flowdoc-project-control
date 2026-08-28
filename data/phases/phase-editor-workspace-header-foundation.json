@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-workspace-header-foundation",
+  "workId": "editor-workspace-header-foundation",
+  "title": "Implement WorkspaceHeader Boundary",
+  "phaseState": "in-progress",
+  "order": 30,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are recorded.",
+    "WorkspaceHeader starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, Core diagnostics interpretation, or Backend document record behavior.",
+    "WorkspaceViewTabs is folded back into header ownership instead of remaining a separate view-selection UI component.",
+    "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, accessibility readiness, or FlowDoc product truth without exact Evidence.",
+    "Ambiguous terms such as header, app header, document identity, status, readiness, back, component, or workspace cannot be qualified against the product terminology documents."
+  ],
+  "verificationTarget": "Project Control records the bounded WorkspaceHeader component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-header-foundation, and evidence target evidence-editor-workspace-header-foundation-2026-08-28 without map truth promotion.",
+  "summary": "Open the next Editor shell component split after WorkspaceViewTabs by isolating document identity, back intent, and status display from the AppHeader composition wrapper.",
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

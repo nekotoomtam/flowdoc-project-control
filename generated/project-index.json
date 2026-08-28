@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "633f5a9ddd4fca94f33cbb7d865cbf8699d8330a6a771555f92f727d962d8b79",
+  "sourceDigest": "4007ae1029ace897d39dd1a672501bfe44be7cb4bc78c70fb7cc0af3fa1914e0",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,6 +286,7 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review",
+        "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation"
       ]
@@ -906,6 +907,47 @@
     },
     {
       "kind": "work",
+      "id": "editor-workspace-header-foundation",
+      "title": "Editor WorkspaceHeader Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Continue the component-by-component Editor frontend redesign by defining and implementing the WorkspaceHeader UI component boundary after WorkspaceFrame and WorkspaceViewTabs.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-workspace-shell-foundation-2026-08-28",
+        "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+        "doc-editor-workspace-header-foundation-2026-08-28"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Open the bounded WorkspaceHeader lane, then produce Editor evidence that the header identity/status/back surface is split from AppHeader as a UI component that renders document identity, document readiness status display, and back intent while preserving WorkspaceViewTabs composition and without owning route navigation, Editor draft mutation, Preview lifecycle, Core semantics, or Backend document records. Target evidence id: evidence-editor-workspace-header-foundation-2026-08-28.",
+      "riskSummary": "This lane is a UI component boundary slice only. It does not promote Editor truth, Backend readiness, Core truth, visual redesign completion, Preview parity, accessibility readiness, or FlowDoc product readiness.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-workspace-header-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-workspace-header-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-shell-redesign-foundation",
       "title": "Editor Workspace Shell Redesign Foundation",
       "nodeId": "editor",
@@ -1103,6 +1145,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
@@ -1550,6 +1593,30 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-workspace-header-foundation",
+      "workId": "editor-workspace-header-foundation",
+      "title": "Implement WorkspaceHeader Boundary",
+      "phaseState": "in-progress",
+      "order": 30,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are recorded.",
+        "WorkspaceHeader starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, Core diagnostics interpretation, or Backend document record behavior.",
+        "WorkspaceViewTabs is folded back into header ownership instead of remaining a separate view-selection UI component.",
+        "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, accessibility readiness, or FlowDoc product truth without exact Evidence.",
+        "Ambiguous terms such as header, app header, document identity, status, readiness, back, component, or workspace cannot be qualified against the product terminology documents."
+      ],
+      "verificationTarget": "Project Control records the bounded WorkspaceHeader component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-header-foundation, and evidence target evidence-editor-workspace-header-foundation-2026-08-28 without map truth promotion.",
+      "summary": "Open the next Editor shell component split after WorkspaceViewTabs by isolating document identity, back intent, and status display from the AppHeader composition wrapper.",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -2552,6 +2619,58 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-editor-workspace-header-foundation",
+      "phaseId": "phase-editor-workspace-header-foundation",
+      "title": "Editor WorkspaceHeader Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-app-header-context",
+          "label": "Capture current AppHeader, WorkspaceViewTabs, WorkspaceFrame, Project Control map state, and product terminology before Editor implementation.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceHeader split."
+        },
+        {
+          "id": "define-workspace-header-boundary",
+          "label": "Define WorkspaceHeader as an Editor-owned UI component for document identity, back intent, status display, and header slot layout only.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 shows WorkspaceHeader owns document identity presentation, back intent surface, status display, and header layout without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior."
+        },
+        {
+          "id": "split-header-component",
+          "label": "Split the document identity, back button, status display, and view-tabs slot out of AppHeader into a focused shell header component.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded."
+        },
+        {
+          "id": "preserve-view-tabs-composition",
+          "label": "Keep WorkspaceViewTabs as a separate UI component composed into the header instead of folding view-selection behavior into WorkspaceHeader.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceHeader accepts a view-tabs slot and does not import WorkspaceViewTabs directly."
+        },
+        {
+          "id": "lock-status-display-boundary",
+          "label": "Keep document readiness as display state only while diagnostics interpretation remains outside WorkspaceHeader.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceHeader renders status values without importing Core diagnostics types or interpreting Core semantics."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceHeader implementation lane."
+        }
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-editor-workspace-shell-foundation",
       "phaseId": "phase-editor-workspace-shell-foundation",
       "title": "Editor Workspace Shell Foundation Checklist",
@@ -3508,6 +3627,44 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-workspace-header-foundation-2026-08-28",
+      "title": "Editor WorkspaceHeader Foundation - 2026-08-28",
+      "path": "docs/domains/editor-workspace-header-foundation-2026-08-28.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Work-scoped planning decision for the third component-by-component Editor frontend redesign lane; defines WorkspaceHeader vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "3024b2399baa57df24b52ac75d5fc490e70e4493",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "3024b2399baa57df24b52ac75d5fc490e70e4493",
+          "pathOrContractId": "docs/domains/editor-workspace-view-tabs-foundation-2026-08-28.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+          "pathOrContractId": "src/components/shell/AppHeader.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+          "pathOrContractId": "src/components/shell/WorkspaceViewTabs.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+          "pathOrContractId": "src/components/shell/WorkspaceFrame.tsx"
+        }
+      ],
+      "content": "# Editor WorkspaceHeader Foundation - 2026-08-28\n\nStatus: in-progress planning lane; implementation evidence not recorded yet.\n\nThis document opens the third component-by-component Editor frontend redesign\nlane. It narrows the next shell split to the document identity, back intent,\nstatus display, and header slot layout that still sit inside `AppHeader`. It\ndoes not promote Editor truth, Backend readiness, Core truth, frontend design\nreadiness, Preview parity, accessibility readiness, or FlowDoc product\nreadiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-header-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `planning-partner`\n- Phase: `phase-editor-workspace-header-foundation`\n- Checklist target: `checklist-editor-workspace-header-foundation`\n- Evidence target: `evidence-editor-workspace-header-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceHeader`: define. The Editor-owned UI component that renders document\n  identity, back intent surface, document readiness status display, and a slot\n  for already-separated workspace view controls.\n- `AppHeader`: context-only for this lane. It remains the existing composition\n  wrapper called by `EditorShell` and should not become a new behavior owner.\n- `document identity`: define as display-only title, package version, and\n  document version values provided by the Editor view model. It is not Core\n  document package authority and not a Backend document record.\n- `status display`: define as rendering already-derived readiness values. It\n  does not interpret Core diagnostics, decide readiness, or create evidence.\n- `back intent`: define as a callback surface for returning to the document\n  library. It is not route navigation ownership or browser history ownership.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Backend component.\n\n## Component Scope\n\nWorkspaceHeader owns:\n\n- header landmark and shell layout around header content;\n- document identity presentation;\n- optional back button surface and callback dispatch;\n- document readiness status display markup;\n- composition slot for `WorkspaceViewTabs` or a future equivalent view selector.\n\nWorkspaceHeader does not own:\n\n- route navigation, URL parsing, or browser history behavior;\n- WorkspaceViewTabs view-selection logic;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, Core diagnostics\n  interpretation, or Core package validation;\n- Backend document records, Backend revisions, storage, or transport shape.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceHeader` UI component\nunder the shell component boundary and update `AppHeader` to compose\n`WorkspaceHeader` with `WorkspaceViewTabs`. The first RED test should fail\nbecause the component does not exist. The implementation should prove:\n\n- `WorkspaceHeader` renders the app header landmark;\n- document title, package version, and document version render as display-only\n  identity;\n- document readiness status values render without Core diagnostic imports;\n- back intent dispatches only when provided;\n- `WorkspaceViewTabs` stays composed as a slot instead of being imported by\n  `WorkspaceHeader`;\n- WorkspaceHeader does not import Editor runtime, Core, or Backend modules.\n\n## Evidence Target\n\nImplementation evidence will be recorded as\n`evidence-editor-workspace-header-foundation-2026-08-28` after the Editor\nworktree passes focused WorkspaceHeader tests and the full Editor repository\ngate.\n\nThat evidence can support only the bounded WorkspaceHeader UI component split.\nIt cannot promote broad Editor readiness, product frontend readiness, production\nBackend readiness, Preview parity, Core truth, accessibility readiness, or\nFlowDoc product readiness.\n\n## Risks\n\n- `document identity` can be confused with Core document package authority or a\n  Backend document record if evidence wording is not bounded to display state.\n- `status display` can imply readiness interpretation unless the component only\n  renders already-derived values.\n- Moving `WorkspaceViewTabs` into `WorkspaceHeader` would reverse the previous\n  boundary split.\n- Project Control baseline has shown intermittent Vitest worker startup\n  timeout during full-gate runs; rerun evidence is required before claims.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, and responsive shape of the redesigned header.\n- Whether future shell work should split a dedicated `WorkspaceStatusStrip`.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness and broad Editor readiness remain unknown.\n\n## Next Work\n\nOpen the Editor implementation worktree only after this Project Control lane is\nregistered and verified. The next Editor turn should start with a RED test for\n`WorkspaceHeader`, then implement the smallest component split without changing\nCore, Backend, Preview lifecycle, Editor draft mutation, WorkspaceViewTabs\nbehavior, or map truth.\n"
     },
     {
       "kind": "document",

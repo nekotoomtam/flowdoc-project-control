@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-workspace-header-foundation",
+  "phaseId": "phase-editor-workspace-header-foundation",
+  "title": "Editor WorkspaceHeader Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-app-header-context",
+      "label": "Capture current AppHeader, WorkspaceViewTabs, WorkspaceFrame, Project Control map state, and product terminology before Editor implementation.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceHeader split."
+    },
+    {
+      "id": "define-workspace-header-boundary",
+      "label": "Define WorkspaceHeader as an Editor-owned UI component for document identity, back intent, status display, and header slot layout only.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 shows WorkspaceHeader owns document identity presentation, back intent surface, status display, and header layout without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior."
+    },
+    {
+      "id": "split-header-component",
+      "label": "Split the document identity, back button, status display, and view-tabs slot out of AppHeader into a focused shell header component.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded."
+    },
+    {
+      "id": "preserve-view-tabs-composition",
+      "label": "Keep WorkspaceViewTabs as a separate UI component composed into the header instead of folding view-selection behavior into WorkspaceHeader.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceHeader accepts a view-tabs slot and does not import WorkspaceViewTabs directly."
+    },
+    {
+      "id": "lock-status-display-boundary",
+      "label": "Keep document readiness as display state only while diagnostics interpretation remains outside WorkspaceHeader.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 includes test coverage or review evidence that WorkspaceHeader renders status values without importing Core diagnostics types or interpreting Core semantics."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-header-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceHeader implementation lane."
+    }
+  ],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

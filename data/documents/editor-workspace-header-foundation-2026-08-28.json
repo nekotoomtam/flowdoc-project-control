@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-header-foundation-2026-08-28",
+  "title": "Editor WorkspaceHeader Foundation - 2026-08-28",
+  "path": "docs/domains/editor-workspace-header-foundation-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped planning decision for the third component-by-component Editor frontend redesign lane; defines WorkspaceHeader vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "3024b2399baa57df24b52ac75d5fc490e70e4493",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "3024b2399baa57df24b52ac75d5fc490e70e4493",
+      "pathOrContractId": "docs/domains/editor-workspace-view-tabs-foundation-2026-08-28.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+      "pathOrContractId": "src/components/shell/AppHeader.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+      "pathOrContractId": "src/components/shell/WorkspaceViewTabs.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+      "pathOrContractId": "src/components/shell/WorkspaceFrame.tsx"
+    }
+  ]
+}
