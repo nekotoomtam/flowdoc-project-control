@@ -32,6 +32,21 @@
       "repositoryId": "repo-editor",
       "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
       "pathOrContractId": "src/components/shell/WorkspaceFrame.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8adf7d69af1f2a54c88c9c3c716e005ac98ae590",
+      "pathOrContractId": "src/components/shell/WorkspaceHeader.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8adf7d69af1f2a54c88c9c3c716e005ac98ae590",
+      "pathOrContractId": "src/tests/workspaceHeader.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8adf7d69af1f2a54c88c9c3c716e005ac98ae590",
+      "pathOrContractId": "src/components/shell/AppHeader.tsx"
     }
   ]
 }

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-workspace-header-foundation-2026-08-28",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "8adf7d69af1f2a54c88c9c3c716e005ac98ae590",
+  "pathOrContractId": "src/tests/workspaceHeader.test.ts",
+  "verificationSummary": "Editor commit 8adf7d69af1f2a54c88c9c3c716e005ac98ae590 implements the bounded WorkspaceHeader UI component split by adding src/components/shell/WorkspaceHeader.tsx, refactoring AppHeader to compose WorkspaceHeader with the already-separated WorkspaceViewTabs, and keeping document identity, back intent, and readiness status display outside route, Editor draft, Preview lifecycle, Core, and Backend ownership. RED failed before implementation because WorkspaceHeader did not exist; focused tests then passed for src/tests/workspaceHeader.test.ts plus WorkspaceViewTabs, realdoc workspace tabs, WorkspaceFrame, backend-unavailable honesty, and boundary tests. Editor worktree npm run check passed type-check, 83 passed test files, 291 passed tests, and build; merged Editor main npm run check also passed type-check, 83 passed test files, 291 passed tests, and build. npm ci reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceHeader UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
+  "verifiedAt": "2026-08-28T00:00:00.000Z"
+}

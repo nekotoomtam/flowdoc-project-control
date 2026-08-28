@@ -1,6 +1,6 @@
 # Editor WorkspaceHeader Foundation - 2026-08-28
 
-Status: in-progress planning lane; implementation evidence not recorded yet.
+Status: in-review with bounded implementation evidence.
 
 This document opens the third component-by-component Editor frontend redesign
 lane. It narrows the next shell split to the document identity, back intent,
@@ -14,7 +14,7 @@ readiness.
 - Work path: `flowdoc-product-development-resumption > editor-workspace-header-foundation`
 - Owner repository for implementation: `repo-editor`
 - Record repository for this lane: `repo-project-control`
-- Active role: `planning-partner`
+- Active role: `product-implementation-agent`
 - Phase: `phase-editor-workspace-header-foundation`
 - Checklist target: `checklist-editor-workspace-header-foundation`
 - Evidence target: `evidence-editor-workspace-header-foundation-2026-08-28`
@@ -90,14 +90,45 @@ It cannot promote broad Editor readiness, product frontend readiness, production
 Backend readiness, Preview parity, Core truth, accessibility readiness, or
 FlowDoc product readiness.
 
+## Implementation Evidence
+
+Editor commit `8adf7d69af1f2a54c88c9c3c716e005ac98ae590` adds
+`WorkspaceHeader` as the next extracted UI component for the Editor Workspace
+Shell. `AppHeader` now composes `WorkspaceHeader` with the already-separated
+`WorkspaceViewTabs`, while `WorkspaceHeader` owns only document identity display,
+back intent surface, readiness status display, and header slot layout.
+
+The focused RED test failed before implementation because
+`src/components/shell/WorkspaceHeader.tsx` did not exist. After implementation,
+the focused test proved that `WorkspaceHeader` renders the app header landmark,
+document title, package version, document version, view-tabs slot, document
+readiness status values, and optional back intent while staying outside
+WorkspaceViewTabs, Editor runtime, Core, and Backend ownership.
+
+Verification:
+
+- Editor focused tests passed for `src/tests/workspaceHeader.test.ts`,
+  `src/tests/workspaceViewTabs.test.ts`,
+  `src/tests/realdocDocumentWorkspaceTabs.test.ts`,
+  `src/tests/workspaceFrame.test.ts`,
+  `src/tests/editorBackendUnavailableHonesty.test.ts`, and
+  `src/tests/boundary.test.ts`: 6 test files passed and 16 tests passed.
+- Editor worktree `npm run check`: type-check passed, 83 test files passed, 291
+  tests passed, and Vite build passed.
+- Editor merged main `npm run check`: type-check passed, 83 test files passed,
+  291 tests passed, and Vite build passed.
+- Project Control evidence registration keeps the Editor Project Control Node at
+  `unknown` and does not add this evidence to `editor.documentIds` or
+  `editor.evidenceIds`.
+
 ## Risks
 
-- `document identity` can be confused with Core document package authority or a
+- `document identity` can still be confused with Core document package authority or a
   Backend document record if evidence wording is not bounded to display state.
-- `status display` can imply readiness interpretation unless the component only
-  renders already-derived values.
-- Moving `WorkspaceViewTabs` into `WorkspaceHeader` would reverse the previous
-  boundary split.
+- `status display` can still imply readiness interpretation unless future
+  component work keeps it to already-derived values.
+- Moving `WorkspaceViewTabs` deeper into `WorkspaceHeader` later would reverse
+  the previous boundary split.
 - Project Control baseline has shown intermittent Vitest worker startup
   timeout during full-gate runs; rerun evidence is required before claims.
 - Editor dependency installation still reports 5 high severity vulnerabilities.

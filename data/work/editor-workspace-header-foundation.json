@@ -6,7 +6,7 @@
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
   "repositoryIds": ["repo-editor", "repo-project-control"],
-  "workState": "in-progress",
+  "workState": "in-review",
   "summary": "Continue the component-by-component Editor frontend redesign by defining and implementing the WorkspaceHeader UI component boundary after WorkspaceFrame and WorkspaceViewTabs.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
@@ -21,10 +21,10 @@
     "doc-editor-workspace-view-tabs-foundation-2026-08-28",
     "doc-editor-workspace-header-foundation-2026-08-28"
   ],
-  "activeRole": "planning-partner",
-  "expectedOutput": "Open the bounded WorkspaceHeader lane, then produce Editor evidence that the header identity/status/back surface is split from AppHeader as a UI component that renders document identity, document readiness status display, and back intent while preserving WorkspaceViewTabs composition and without owning route navigation, Editor draft mutation, Preview lifecycle, Core semantics, or Backend document records. Target evidence id: evidence-editor-workspace-header-foundation-2026-08-28.",
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit 8adf7d69af1f2a54c88c9c3c716e005ac98ae590 implements the bounded WorkspaceHeader lane by splitting the header identity/status/back surface from AppHeader as a UI component that renders document identity, document readiness status display, and back intent while preserving WorkspaceViewTabs composition and without owning route navigation, Editor draft mutation, Preview lifecycle, Core semantics, or Backend document records. Target evidence id: evidence-editor-workspace-header-foundation-2026-08-28.",
   "riskSummary": "This lane is a UI component boundary slice only. It does not promote Editor truth, Backend readiness, Core truth, visual redesign completion, Preview parity, accessibility readiness, or FlowDoc product readiness.",
-  "requiredEvidence": [],
+  "requiredEvidence": ["evidence-editor-workspace-header-foundation-2026-08-28"],
   "createdAt": "2026-08-28T00:00:00.000Z",
   "updatedAt": "2026-08-28T00:00:00.000Z"
 }
