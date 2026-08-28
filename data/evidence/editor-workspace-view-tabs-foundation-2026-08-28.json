@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-workspace-view-tabs-foundation-2026-08-28",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+  "pathOrContractId": "src/tests/workspaceViewTabs.test.ts",
+  "verificationSummary": "Editor commit a72ae5e5fd8556e4ced63e481390432546eb3f35 implements the bounded WorkspaceViewTabs UI component split by adding src/components/shell/WorkspaceViewTabs.tsx, refactoring AppHeader to delegate only the Design/Preview view selector, and updating the E.5.2 workspace tabs guard to read the new component boundary. RED failed before implementation because WorkspaceViewTabs did not exist; focused tests then passed for src/tests/workspaceViewTabs.test.ts plus realdoc workspace tabs, WorkspaceFrame, backend-unavailable honesty, and boundary tests. Editor worktree npm run check passed type-check, 82 passed test files, 289 passed tests, and build; merged Editor main npm run check also passed type-check, 82 passed test files, 289 passed tests, and build. npm ci reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceViewTabs UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
+  "verifiedAt": "2026-08-28T00:00:00.000Z"
+}

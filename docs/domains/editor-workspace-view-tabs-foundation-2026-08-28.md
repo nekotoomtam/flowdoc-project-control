@@ -1,6 +1,6 @@
 # Editor WorkspaceViewTabs Foundation - 2026-08-28
 
-Status: in-progress planning lane; implementation evidence not recorded yet.
+Status: in-review with bounded implementation evidence.
 
 This document opens the second component-by-component Editor frontend redesign
 lane. It narrows the next shell split to the workspace view selector currently
@@ -12,7 +12,7 @@ truth, frontend design readiness, Preview parity, or FlowDoc product readiness.
 - Work path: `flowdoc-product-development-resumption > editor-workspace-view-tabs-foundation`
 - Owner repository for implementation: `repo-editor`
 - Record repository for this lane: `repo-project-control`
-- Active role: `planning-partner`
+- Active role: `product-implementation-agent`
 - Phase: `phase-editor-workspace-view-tabs-foundation`
 - Checklist target: `checklist-editor-workspace-view-tabs-foundation`
 - Evidence target: `evidence-editor-workspace-view-tabs-foundation-2026-08-28`
@@ -81,17 +81,48 @@ That evidence can support only the bounded WorkspaceViewTabs UI component split.
 It cannot promote broad Editor readiness, product frontend readiness, production
 Backend readiness, Preview parity, Core truth, or FlowDoc product readiness.
 
+## Implementation Evidence
+
+Editor commit `a72ae5e5fd8556e4ced63e481390432546eb3f35` adds
+`WorkspaceViewTabs` as the next extracted UI component for the Editor Workspace
+Shell. `AppHeader` now delegates the Design and Preview view selector to that
+component while retaining document identity, back intent, and document readiness
+status rendering.
+
+The focused RED test failed before implementation because
+`src/components/shell/WorkspaceViewTabs.tsx` did not exist. After
+implementation, the focused test proved that `WorkspaceViewTabs` renders the
+`Document workspace view` tablist, marks exactly one active view, dispatches
+intent only for inactive tabs, and stays outside Editor runtime, Core, and
+Backend ownership.
+
+Verification:
+
+- Editor focused tests passed for `src/tests/workspaceViewTabs.test.ts`,
+  `src/tests/realdocDocumentWorkspaceTabs.test.ts`,
+  `src/tests/workspaceFrame.test.ts`,
+  `src/tests/editorBackendUnavailableHonesty.test.ts`, and
+  `src/tests/boundary.test.ts`: 5 test files passed and 14 tests passed.
+- Editor worktree `npm run check`: type-check passed, 82 test files passed, 289
+  tests passed, and Vite build passed.
+- Editor merged main `npm run check`: type-check passed, 82 test files passed,
+  289 tests passed, and Vite build passed.
+- Project Control evidence registration keeps the Editor Project Control Node at
+  `unknown` and does not add this evidence to `editor.documentIds` or
+  `editor.evidenceIds`.
+
 ## Risks
 
-- AppHeader currently mixes document identity, status summary, and view selector
-  UI; the split can accidentally move header responsibilities into the tabs
-  component.
+- AppHeader now delegates the view selector, but a later header redesign can
+  still accidentally move document identity or status ownership into tab UI.
 - The Preview tab label can imply Preview readiness if evidence wording is not
   bounded to UI intent and current route state.
 - `active view` can be confused with Editor draft state unless the term remains
   tied to `DocumentWorkspaceView`.
 - Project Control baseline has shown intermittent Vitest worker startup
   timeout during full-gate runs; rerun evidence is required before claims.
+- Editor dependency installation still reports 5 high severity vulnerabilities.
+- Vite still reports the existing chunk-size warning during Editor build.
 
 ## Unknowns
 

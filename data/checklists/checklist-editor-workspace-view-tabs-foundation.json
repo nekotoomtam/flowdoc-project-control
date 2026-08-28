@@ -7,44 +7,58 @@
     {
       "id": "capture-header-context",
       "label": "Capture current AppHeader, WorkspaceFrame, document workspace tabs, Project Control map state, and product terminology before Editor implementation.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceViewTabs split."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceViewTabs split.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "Project Control lane context, product terminology, AppHeader, WorkspaceFrame, and workspace tabs contract tests were read before Editor implementation."
     },
     {
       "id": "define-view-tabs-boundary",
       "label": "Define WorkspaceViewTabs as an Editor-owned UI component for view selection display and intent dispatch only.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows WorkspaceViewTabs owns tablist markup, active view display, and selection intent without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows WorkspaceViewTabs owns tablist markup, active view display, and selection intent without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "WorkspaceViewTabs renders the tablist, active view state, and selection intent while route ownership stays with the existing document workspace route and EditorShell wiring."
     },
     {
       "id": "split-view-tabs-component",
       "label": "Split the Design/Preview view selector out of AppHeader into a focused shell component.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "Editor commit a72ae5e5fd8556e4ced63e481390432546eb3f35 adds src/components/shell/WorkspaceViewTabs.tsx and src/tests/workspaceViewTabs.test.ts."
     },
     {
       "id": "lock-view-intent-boundary",
       "label": "Keep view selection as callback intent while the existing route and EditorShell ownership remains outside WorkspaceViewTabs.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 includes test coverage or review evidence that inactive tabs dispatch the requested active view and active tabs do not trigger redundant intent."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 includes test coverage or review evidence that inactive tabs dispatch the requested active view and active tabs do not trigger redundant intent.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "src/tests/workspaceViewTabs.test.ts verifies inactive tab intent dispatch and active-tab no-op behavior."
     },
     {
       "id": "preserve-header-ownership",
       "label": "Keep AppHeader responsible for document identity, back intent, and status summary while delegating only the view tabs UI.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows AppHeader delegates WorkspaceViewTabs without moving diagnostics, document identity, or back navigation ownership into the tabs component."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows AppHeader delegates WorkspaceViewTabs without moving diagnostics, document identity, or back navigation ownership into the tabs component.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "AppHeader now renders WorkspaceViewTabs while retaining document identity, back button, and document readiness status rendering."
     },
     {
       "id": "keep-map-truth-unpromoted",
       "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
     },
     {
       "id": "prepare-editor-gate",
       "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
-      "state": "pending",
-      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceViewTabs implementation lane."
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceViewTabs implementation lane.",
+      "evidenceIds": ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
+      "verificationNote": "Editor worktree and merged main both ran npm run check successfully; focused WorkspaceViewTabs and shell-adjacent tests passed before the full gate."
     }
   ],
   "createdAt": "2026-08-28T00:00:00.000Z",

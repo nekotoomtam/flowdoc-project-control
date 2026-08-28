@@ -18,14 +18,14 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
       parentWorkId: "flowdoc-product-development-resumption",
       nodeId: "editor",
       repositoryIds: ["repo-editor", "repo-project-control"],
-      workState: "in-progress",
-      activeRole: "planning-partner",
+      workState: "in-review",
+      activeRole: "product-implementation-agent",
       phaseIds: ["phase-editor-workspace-view-tabs-foundation"],
       workPathIds: [
         "flowdoc-product-development-resumption",
         "editor-workspace-view-tabs-foundation",
       ],
-      requiredEvidence: [],
+      requiredEvidence: ["evidence-editor-workspace-view-tabs-foundation-2026-08-28"],
     });
     expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
       "doc-project-control-agent-onboarding",
@@ -40,14 +40,15 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
       "doc-editor-workspace-view-tabs-foundation-2026-08-28",
     ]));
     expect(work?.expectedOutput).toContain("WorkspaceViewTabs");
+    expect(work?.expectedOutput).toContain("a72ae5e5fd8556e4ced63e481390432546eb3f35");
     expect(work?.expectedOutput).toContain("evidence-editor-workspace-view-tabs-foundation-2026-08-28");
     expect(work?.riskSummary).toContain("does not promote");
 
     expect(phase).toMatchObject({
       workId: "editor-workspace-view-tabs-foundation",
-      phaseState: "in-progress",
+      phaseState: "done",
       repositoryIds: ["repo-project-control", "repo-editor"],
-      activeRole: "planning-partner",
+      activeRole: "product-implementation-agent",
     });
     expect(phase?.verificationTarget).toContain("evidence-editor-workspace-view-tabs-foundation-2026-08-28");
 
@@ -61,16 +62,19 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
       "prepare-editor-gate",
     ]);
     expect(checklist?.items.map((item) => item.state)).toEqual([
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
-      "pending",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
+      "passed",
     ]);
     expect(checklist?.items.every((item) =>
       item.evidenceTarget.includes("evidence-editor-workspace-view-tabs-foundation-2026-08-28"),
+    )).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes("evidence-editor-workspace-view-tabs-foundation-2026-08-28"),
     )).toBe(true);
 
     expect(document).toMatchObject({
@@ -83,20 +87,36 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
     expect(normalize(document?.content)).toContain("active view");
     expect(normalize(document?.content)).toContain("does not promote Editor truth");
     expect(normalize(document?.content)).toContain("evidence-editor-workspace-view-tabs-foundation-2026-08-28");
+    expect(normalize(document?.content)).toContain("Implementation Evidence");
+    expect(normalize(document?.content)).toContain("a72ae5e5fd8556e4ced63e481390432546eb3f35");
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
       {
         repositoryId: "repo-editor",
-        commit: "aef34d9b0b38521dac361abd95d61db7a1c061ee",
-        pathOrContractId: "src/components/shell/AppHeader.tsx",
+        commit: "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+        pathOrContractId: "src/components/shell/WorkspaceViewTabs.tsx",
       },
       {
         repositoryId: "repo-editor",
-        commit: "aef34d9b0b38521dac361abd95d61db7a1c061ee",
-        pathOrContractId: "src/app/EditorShell.tsx",
+        commit: "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+        pathOrContractId: "src/tests/workspaceViewTabs.test.ts",
+      },
+      {
+        repositoryId: "repo-editor",
+        commit: "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+        pathOrContractId: "src/components/shell/AppHeader.tsx",
       },
     ]));
 
-    expect(evidence).toBeUndefined();
+    expect(evidence).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: "a72ae5e5fd8556e4ced63e481390432546eb3f35",
+      pathOrContractId: "src/tests/workspaceViewTabs.test.ts",
+    });
+    expect(evidence?.verificationSummary).toContain("WorkspaceViewTabs");
+    expect(evidence?.verificationSummary).toContain("82 passed");
+    expect(evidence?.verificationSummary).toContain("289 passed");
+    expect(evidence?.verificationSummary).toContain("does not promote");
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({
       truthState: "unknown",
       documentIds: [],

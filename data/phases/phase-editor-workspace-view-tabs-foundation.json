@@ -3,10 +3,10 @@
   "id": "phase-editor-workspace-view-tabs-foundation",
   "workId": "editor-workspace-view-tabs-foundation",
   "title": "Implement WorkspaceViewTabs Boundary",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 20,
   "repositoryIds": ["repo-project-control", "repo-editor"],
-  "activeRole": "planning-partner",
+  "activeRole": "product-implementation-agent",
   "stopConditions": [
     "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are recorded.",
     "WorkspaceViewTabs starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, or Backend document record behavior.",
@@ -14,7 +14,7 @@
     "Ambiguous terms such as tabs, active view, preview, component, shell, or workspace cannot be qualified against the product terminology documents."
   ],
   "verificationTarget": "Project Control records the bounded WorkspaceViewTabs component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-view-tabs-foundation, and evidence target evidence-editor-workspace-view-tabs-foundation-2026-08-28 without map truth promotion.",
-  "summary": "Open the next Editor shell component split after WorkspaceFrame by isolating the workspace view selector from AppHeader.",
+  "summary": "Implemented the next Editor shell component split after WorkspaceFrame by isolating the workspace view selector from AppHeader.",
   "createdAt": "2026-08-28T00:00:00.000Z",
   "updatedAt": "2026-08-28T00:00:00.000Z"
 }
