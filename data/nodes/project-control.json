@@ -6,7 +6,7 @@
   "summary": "Current project-control architecture is supported by the approved design at its pinned commit.",
   "truthState": "current",
   "order": 40,
-  "documentIds": ["doc-project-control-overview", "doc-project-control-design", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-role-catalog", "doc-document-map-operating-rules", "doc-project-control-agent-onboarding", "doc-flowdoc-global-codex-guidance"],
+  "documentIds": ["doc-project-control-overview", "doc-project-control-design", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-role-catalog", "doc-document-map-operating-rules", "doc-project-control-agent-onboarding", "doc-flowdoc-global-codex-guidance", "doc-project-control-repo-first-overview-history-2026-08-28"],
   "evidenceIds": ["evidence-project-control-design"],
   "repositoryIds": ["repo-project-control"]
 }

@@ -73,6 +73,26 @@ Terminology is not product evidence. Do not promote FlowDoc, Core, Backend,
 Editor, compatibility, readiness, or frontend design truth from glossary
 language alone.
 
+## Project Control GUI orientation
+
+Before Project Control GUI, Project Control frontend, or agent-facing GUI
+workflow work, read:
+
+```text
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\project-control-repo-first-overview-history-2026-08-28.md
+```
+
+Classify the GUI surface as Overview, History, or Detail before implementation.
+Overview is the repo or area entry surface. History is the time-ordered record
+surface that returns to a focused Overview. Detail is the inspection surface for
+full Work, Project Control Node, Evidence, Checklist, document, risk, or
+unknown records.
+
+Do not treat History as Evidence, and do not turn an Overview summary into
+product truth. If Project Control GUI navigation or agent workflow changes,
+update the Project Control agent-facing documents in the same round or report
+the deferred update as `RISK`.
+
 ## Worktree discipline
 
 For any non-read-only FlowDoc work that may edit files, create a dedicated

@@ -46,6 +46,14 @@ The terms below use stable English IDs. They describe the Project Control model 
 
 `repository-registry` identifies approved repositories by HTTPS remote, checkout alias, default branch, and ownership summary. It never stores a machine-local checkout path.
 
+## Repo Directory Overview
+
+`repo-directory-overview` is the Project Control GUI surface that shows repository or area entry headings before Work, Project Control Node, Evidence, or Checklist detail. It answers where an area lives in the system.
+
+## Work History View
+
+`work-history-view` is the Project Control GUI surface that shows recorded work over time and returns the user to the focused Overview for the related repository or area. It is not Evidence.
+
 ## Focus Stack Map
 
 `focus-stack-map` is the read-only navigation view that shows ancestor Nodes, the current Node, and its children.

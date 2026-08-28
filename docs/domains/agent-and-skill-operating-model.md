@@ -24,6 +24,32 @@ Backend.
 - Broad work should move in phases with explicit handoffs instead of one large
   unreviewed change.
 
+## Project Control GUI orientation
+
+Project Control GUI work must classify the surface as Overview, History, or
+Detail before implementation.
+
+- Overview is the repo or area entry surface. It should show repository or area
+  headings first and keep Work, Project Control Node, Evidence, and Checklist
+  detail behind selection.
+- History is the time-ordered record surface. It should show what has been
+  recorded over time and return the user to the focused Overview for the
+  related repository or area.
+- Detail is the inspection surface for full Work, Project Control Node,
+  Evidence, Checklist, document, risk, or unknown records.
+
+Agents must do this classification before changing the GUI or agent-facing
+Project Control docs. Agents must not treat History as Evidence; in short, do
+not treat History as Evidence. They must not promote Overview or History
+wording into system truth until implementation, verification, and Project
+Control records support the bounded claim.
+
+When Project Control GUI navigation or orientation changes, the same round must
+update the agent-facing documents that future rooms read, including this
+operating model, the global Codex guidance when relevant, and any glossary
+terms that changed. If those updates are intentionally deferred, the handoff
+must report a `RISK`.
+
 ## Project roles
 
 ### Project Control steward
@@ -142,6 +168,24 @@ tests run, risks left, and intentionally not changed.
 Stop conditions: responsibility conflict, missing product decision, bypassed
 Backend revision gate, direct Core internals in Editor, or copied Core
 operation semantics in Backend.
+
+### Project Control GUI orientation update
+
+Trigger: before changing the Project Control GUI layout, navigation, Overview,
+History, or Detail behavior.
+
+Inputs: Project Control read model, Project Control GUI tests, current GUI
+screenshots when available, `docs/domains/project-control-repo-first-overview-history-2026-08-28.md`,
+this operating model, global Codex guidance, glossary records, and the related
+Work, Phase, Checklist, and Evidence targets.
+
+Output: a bounded GUI or documentation change that preserves the Overview,
+History, and Detail split, updates agent-facing guidance when navigation rules
+change, and reports which surface changed.
+
+Stop conditions: the change would mix raw Work, Project Control Node, Evidence,
+and Checklist lists into the Home Overview; History would be used as Evidence;
+or the agent-facing docs would become stale after a navigation rule change.
 
 ## Handoff format
 

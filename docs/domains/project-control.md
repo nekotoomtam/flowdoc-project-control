@@ -15,6 +15,15 @@ The copy-ready global Codex guidance lives at
 That global layer keeps FlowDoc rooms opened from any repository pointed back
 to Project Control first.
 
+The approved next Project Control GUI direction is the repo-first Overview and
+History split in
+`docs/domains/project-control-repo-first-overview-history-2026-08-28.md`.
+That decision says the first GUI surface should act as a repository or area
+directory, while a separate History surface records what has happened over
+time and returns the user to a focused Overview. This is an approved design
+direction and agent operating rule, not a claim that the GUI implementation is
+already complete.
+
 This overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.
 
 ## Evidence boundary

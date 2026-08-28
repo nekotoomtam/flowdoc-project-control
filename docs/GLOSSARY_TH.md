@@ -46,6 +46,14 @@
 
 `repository-registry` ระบุ repository ที่อนุมัติด้วย HTTPS remote, checkout alias, default branch และ ownership summary โดยไม่เก็บ path checkout เฉพาะเครื่อง
 
+## Repo Directory Overview
+
+`repo-directory-overview` คือหน้าของ Project Control GUI ที่แสดงหัวข้อ repository หรือ area ก่อนรายละเอียด Work, Project Control Node, Evidence หรือ Checklist ใช้ตอบว่าส่วนหนึ่งอยู่ตรงไหนของระบบ
+
+## Work History View
+
+`work-history-view` คือหน้าของ Project Control GUI ที่แสดงงานที่ถูกบันทึกตามเวลา และพาผู้ใช้กลับไปยัง Overview ที่ focus repository หรือ area ที่เกี่ยวข้อง มันไม่ใช่ Evidence
+
 ## Focus Stack Map
 
 `focus-stack-map` คือมุมนำทางแบบอ่านอย่างเดียวที่แสดง Node บรรพบุรุษ Node ปัจจุบัน และ Node ลูก
