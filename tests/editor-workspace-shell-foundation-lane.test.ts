@@ -119,6 +119,7 @@ describe("Editor Workspace Shell foundation lane", () => {
         "editor-local-loopback-dev-runner",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-status-strip-foundation",
         "editor-workspace-view-tabs-foundation",
       ],
     });

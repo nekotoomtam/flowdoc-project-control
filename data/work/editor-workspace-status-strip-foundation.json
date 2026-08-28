@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-workspace-status-strip-foundation",
+  "title": "Editor WorkspaceStatusStrip Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control"],
+  "workState": "in-review",
+  "summary": "Continue the component-by-component Editor frontend redesign by defining and implementing the WorkspaceStatusStrip UI component boundary after WorkspaceHeader.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-workspace-shell-foundation-2026-08-28",
+    "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+    "doc-editor-workspace-header-foundation-2026-08-28",
+    "doc-editor-workspace-status-strip-foundation-2026-08-28"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1 implements the bounded WorkspaceStatusStrip lane by splitting status strip markup from StatusBar as a UI component that renders supplied status facts while StatusBar remains the adapter for deriving display values from the Editor runtime inputs. Target evidence id: evidence-editor-workspace-status-strip-foundation-2026-08-28.",
+  "riskSummary": "This lane is a UI component boundary slice only. It does not promote Editor truth, Backend readiness, Core truth, frontend design completion, Preview parity, accessibility readiness, visual regression readiness, or FlowDoc product readiness.",
+  "requiredEvidence": ["evidence-editor-workspace-status-strip-foundation-2026-08-28"],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

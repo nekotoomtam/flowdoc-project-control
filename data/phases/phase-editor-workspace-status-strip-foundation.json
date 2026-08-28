@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-workspace-status-strip-foundation",
+  "workId": "editor-workspace-status-strip-foundation",
+  "title": "Implement WorkspaceStatusStrip Boundary",
+  "phaseState": "done",
+  "order": 50,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are identified.",
+    "WorkspaceStatusStrip starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, Core diagnostics interpretation, Backend document record behavior, or Backend capability response interpretation.",
+    "StatusBar stops acting as the adapter that derives display values from Editor runtime inputs before handing them to the UI component.",
+    "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, accessibility readiness, visual regression readiness, or FlowDoc product truth without exact Evidence.",
+    "Ambiguous terms such as status, status facts, readiness, current, live, component, adapter, source, target, preview, or workspace cannot be qualified against the product terminology documents."
+  ],
+  "verificationTarget": "Project Control records the bounded WorkspaceStatusStrip component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-status-strip-foundation, and evidence target evidence-editor-workspace-status-strip-foundation-2026-08-28 without map truth promotion.",
+  "summary": "Implemented the next Editor shell component split after WorkspaceHeader by isolating the status strip UI from StatusBar's runtime-derived display values.",
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}
