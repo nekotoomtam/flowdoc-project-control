@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-workspace-view-tabs-foundation",
+  "phaseId": "phase-editor-workspace-view-tabs-foundation",
+  "title": "Editor WorkspaceViewTabs Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-header-context",
+      "label": "Capture current AppHeader, WorkspaceFrame, document workspace tabs, Project Control map state, and product terminology before Editor implementation.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceViewTabs split."
+    },
+    {
+      "id": "define-view-tabs-boundary",
+      "label": "Define WorkspaceViewTabs as an Editor-owned UI component for view selection display and intent dispatch only.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows WorkspaceViewTabs owns tablist markup, active view display, and selection intent without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior."
+    },
+    {
+      "id": "split-view-tabs-component",
+      "label": "Split the Design/Preview view selector out of AppHeader into a focused shell component.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded."
+    },
+    {
+      "id": "lock-view-intent-boundary",
+      "label": "Keep view selection as callback intent while the existing route and EditorShell ownership remains outside WorkspaceViewTabs.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 includes test coverage or review evidence that inactive tabs dispatch the requested active view and active tabs do not trigger redundant intent."
+    },
+    {
+      "id": "preserve-header-ownership",
+      "label": "Keep AppHeader responsible for document identity, back intent, and status summary while delegating only the view tabs UI.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows AppHeader delegates WorkspaceViewTabs without moving diagnostics, document identity, or back navigation ownership into the tabs component."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceViewTabs implementation lane."
+    }
+  ],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

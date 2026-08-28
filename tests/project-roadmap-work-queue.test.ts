@@ -213,7 +213,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 19);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 20);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -251,6 +251,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
@@ -331,6 +332,7 @@ describe("project roadmap Work Queue", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-view-tabs-foundation",
       ],
     });
     expect(model.nodes.find((node) => node.id === "backend")).toMatchObject({

@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+  "title": "Editor WorkspaceViewTabs Foundation - 2026-08-28",
+  "path": "docs/domains/editor-workspace-view-tabs-foundation-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped planning decision for the second component-by-component Editor frontend redesign lane; defines WorkspaceViewTabs vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d07e868133b62e9d819cbf041489c6e0554c6b22",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d07e868133b62e9d819cbf041489c6e0554c6b22",
+      "pathOrContractId": "docs/domains/editor-workspace-shell-foundation-2026-08-28.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+      "pathOrContractId": "src/components/shell/AppHeader.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+      "pathOrContractId": "src/app/EditorShell.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+      "pathOrContractId": "src/components/shell/WorkspaceFrame.tsx"
+    }
+  ]
+}

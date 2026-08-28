@@ -117,6 +117,7 @@ describe("Editor Workspace Shell foundation lane", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-view-tabs-foundation",
       ],
     });
   });

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "10b5cfc3f6ab997d3016c6004954527eef9432189a64d11d50b6fac6a602e5a0",
+  "sourceDigest": "3661ff38d5af7b808b4eb2fad2517873955713368c7c6db3cf54b86969d3f9cc",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,7 +286,8 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review",
-        "editor-workspace-shell-redesign-foundation"
+        "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-view-tabs-foundation"
       ]
     },
     {
@@ -947,6 +948,46 @@
     },
     {
       "kind": "work",
+      "id": "editor-workspace-view-tabs-foundation",
+      "title": "Editor WorkspaceViewTabs Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Continue the component-by-component Editor frontend redesign by defining and implementing the WorkspaceViewTabs UI component boundary after the WorkspaceFrame shell split.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-workspace-shell-foundation-2026-08-28",
+        "doc-editor-workspace-view-tabs-foundation-2026-08-28"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Open the bounded WorkspaceViewTabs lane, then produce Editor evidence that the Design/Preview view selector is split from AppHeader as a UI component that renders active view state and dispatches view-selection intent without owning route navigation, Editor draft mutation, Preview lifecycle, Core semantics, or Backend document records. Target evidence id: evidence-editor-workspace-view-tabs-foundation-2026-08-28.",
+      "riskSummary": "This lane is a UI component boundary slice only. It does not promote Editor truth, Backend readiness, Core truth, visual redesign completion, Preview parity, or FlowDoc product readiness.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-workspace-view-tabs-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-workspace-view-tabs-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-bounded-browser-compatibility-promotion",
       "title": "FlowDoc Bounded Browser Compatibility Promotion",
       "nodeId": "flowdoc-browser-compatibility",
@@ -1061,6 +1102,7 @@
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-workspace-shell-redesign-foundation",
+        "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
@@ -1527,6 +1569,29 @@
       ],
       "verificationTarget": "Project Control records the completed bounded Editor Workspace Shell foundation slice with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-shell-foundation, and evidence target evidence-editor-workspace-shell-foundation-2026-08-28 without map truth promotion.",
       "summary": "Implemented the first shell frame component split for the component-by-component Editor frontend redesign approach.",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-workspace-view-tabs-foundation",
+      "workId": "editor-workspace-view-tabs-foundation",
+      "title": "Implement WorkspaceViewTabs Boundary",
+      "phaseState": "in-progress",
+      "order": 20,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "The lane edits Editor behavior before the Work path, owner repository, active role, Phase, Checklist target, and Evidence target are recorded.",
+        "WorkspaceViewTabs starts owning route navigation, Editor draft mutation, Preview lifecycle, Core runtime node semantics, or Backend document record behavior.",
+        "The implementation promotes Editor, Backend, Core, frontend design, Preview parity, or FlowDoc product truth without exact Evidence.",
+        "Ambiguous terms such as tabs, active view, preview, component, shell, or workspace cannot be qualified against the product terminology documents."
+      ],
+      "verificationTarget": "Project Control records the bounded WorkspaceViewTabs component lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-view-tabs-foundation, and evidence target evidence-editor-workspace-view-tabs-foundation-2026-08-28 without map truth promotion.",
+      "summary": "Open the next Editor shell component split after WorkspaceFrame by isolating the workspace view selector from AppHeader.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
     },
@@ -2565,6 +2630,58 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-editor-workspace-view-tabs-foundation",
+      "phaseId": "phase-editor-workspace-view-tabs-foundation",
+      "title": "Editor WorkspaceViewTabs Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-header-context",
+          "label": "Capture current AppHeader, WorkspaceFrame, document workspace tabs, Project Control map state, and product terminology before Editor implementation.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the exact Editor commit, component boundary, tests, and verification gate used for the WorkspaceViewTabs split."
+        },
+        {
+          "id": "define-view-tabs-boundary",
+          "label": "Define WorkspaceViewTabs as an Editor-owned UI component for view selection display and intent dispatch only.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows WorkspaceViewTabs owns tablist markup, active view display, and selection intent without owning route, Preview lifecycle, Editor draft, Core, or Backend behavior."
+        },
+        {
+          "id": "split-view-tabs-component",
+          "label": "Split the Design/Preview view selector out of AppHeader into a focused shell component.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 points to the focused component files and tests that prove the split stayed bounded."
+        },
+        {
+          "id": "lock-view-intent-boundary",
+          "label": "Keep view selection as callback intent while the existing route and EditorShell ownership remains outside WorkspaceViewTabs.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 includes test coverage or review evidence that inactive tabs dispatch the requested active view and active tabs do not trigger redundant intent."
+        },
+        {
+          "id": "preserve-header-ownership",
+          "label": "Keep AppHeader responsible for document identity, back intent, and status summary while delegating only the view tabs UI.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 shows AppHeader delegates WorkspaceViewTabs without moving diagnostics, document identity, or back navigation ownership into the tabs component."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged for this bounded component slice.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 is recorded without adding documentIds or evidenceIds to the Editor Project Control Node."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run focused Editor tests and the full Editor gate before Project Control evidence registration.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-view-tabs-foundation-2026-08-28 records the focused Editor tests and full repo gate for the WorkspaceViewTabs implementation lane."
+        }
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-bounded-browser-compatibility-promotion",
       "phaseId": "phase-flowdoc-bounded-browser-compatibility-promotion",
       "title": "FlowDoc Bounded Browser Compatibility Promotion Checklist",
@@ -3409,6 +3526,44 @@
         }
       ],
       "content": "# Editor Workspace Shell Foundation - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document opens the first component-by-component Editor frontend redesign\nlane. It is a Work-scoped planning decision for the Editor Workspace Shell. It\ndoes not promote Editor truth, Backend readiness, Core truth, frontend design\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-shell-redesign-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-shell-foundation`\n- Checklist target: `checklist-editor-workspace-shell-foundation`\n- Evidence target: `evidence-editor-workspace-shell-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `Editor Workspace Shell`: define. The Editor-owned UI frame that hosts the\n  document workspace route, stable app frame, view selection, region slots,\n  status surfaces, unavailable states, and responsive layout boundaries.\n- `component`: split. Use qualified terms when planning or reviewing work:\n  `UI component` for React rendering units, `Editor state component` for\n  Editor-owned view-model assembly, `integration component` for adapter or\n  transport boundaries, and `Preview component` for preview-specific surfaces.\n- `workspace`: context-only unless qualified. In this lane it means the Editor\n  document workspace, not Project Control workspace, repository checkout, or\n  implementation worktree.\n- `shell`: rename in records to `Editor Workspace Shell` when it could be\n  confused with a command shell, Project Control control room, or page chrome.\n- `Preview`: define against the product terminology document. The shell may host\n  a Preview surface or Preview-unavailable surface, but it must not own Preview\n  generation lifecycle or export parity.\n- `Editor draft`: define against the product terminology document. The shell may\n  show draft state, but it must not mutate draft structure or claim source\n  authority.\n\n## Shell Scope\n\nThe Editor Workspace Shell owns the outer product editor frame only:\n\n- document workspace frame and responsive layout constraints;\n- Design and Preview view slot placement;\n- stable header, view tabs, region hosts, status strip, and bounded empty,\n  loading, unavailable, error, and migration-required surfaces;\n- route-derived active workspace view display;\n- intent callbacks passed to owner modules.\n\nThe shell does not own:\n\n- Core runtime node semantics or Core operation contracts;\n- Backend document record persistence, revision identity, or transport shape;\n- Editor draft mutation rules or document package authority;\n- Preview generation lifecycle, PDF/export parity, or production readiness;\n- Outline item semantics, diagnostics interpretation, auth, or full WYSIWYG\n  editing behavior.\n\n## Component Split\n\nThe first implementation pass should split the shell by ownership instead of by\nvisual decoration:\n\n- `WorkspaceFrame`: outer layout, landmark structure, and responsive regions.\n- `WorkspaceHeader`: document identity, workspace-level commands, and stable\n  route context.\n- `WorkspaceViewTabs`: Design and Preview view selection display and intent.\n- `WorkspaceRegionHost`: named content slots for outline, canvas, inspector,\n  diagnostics, and preview-specific panels.\n- `WorkspaceStatusStrip`: save/sync/readiness/status summaries.\n- `WorkspaceEmptyState` and `WorkspaceErrorState`: bounded no-document,\n  unavailable, migration-required, and blocking states.\n\nThe exact component names may change during Editor implementation, but the\nownership split must remain visible in tests and review evidence.\n\n## Data Boundary\n\nShell components should receive a narrow Editor-owned view model rather than raw\nCore or Backend data. Acceptable shell inputs include:\n\n- document identity and display title;\n- active `DocumentWorkspaceView`;\n- view readiness, unavailable, loading, migration-required, and error states;\n- draft status summary;\n- Preview status summary;\n- intent callbacks such as change view, retry, open document, or close panel.\n\nShell components must not import Core internals, inspect raw document packages,\nor couple directly to Backend response shapes. The existing Editor rule remains:\nReact components render state and dispatch intent; runtime modules own behavior.\n\n## Evidence Target\n\nImplementation evidence is recorded as\n`evidence-editor-workspace-shell-foundation-2026-08-28` after the Editor\nimplementation worktree passes its focused tests, visual/layout review target,\nand full repo gate.\n\nThat evidence can support only the bounded shell foundation claim. It cannot\npromote broad Editor readiness, product frontend readiness, production Backend\nreadiness, Preview parity, Core truth, or FlowDoc product readiness.\n\n## Implementation Evidence\n\nEditor commit `aef34d9b0b38521dac361abd95d61db7a1c061ee` adds\n`WorkspaceFrame` as the first extracted UI component for the Editor Workspace\nShell. `EditorShell` now delegates shell frame and tabpanel retention to that\ncomponent while retaining runtime derivation, view-model assembly, preview\neligibility, and intent wiring.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceFrame.tsx` did not exist. After implementation,\nthe focused test proved that the Design runtime remains present while Preview is\nactive, Preview is not mounted while Design is active, and `WorkspaceFrame`\ndoes not import Editor runtime or Core modules.\n\nVerification:\n\n- Editor worktree `npm run check`: type-check passed, 81 test files passed, 287\n  tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 81 test files passed,\n  287 tests passed, and Vite build passed.\n- Project Control evidence registration will keep the Editor Project Control\n  Node at `unknown` and will not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- The current `EditorShell` already coordinates many props and child surfaces;\n  redesign work can easily become another monolith if the shell boundary is not\n  split first.\n- Existing Design, Preview, document library, Backend unavailable, and browser\n  smoke lanes can leak behavior ownership into the shell lane.\n- A visual redesign can outpace evidence and accidentally imply readiness that\n  Project Control still marks as unknown.\n- Ambiguous component vocabulary can send future agents toward the wrong owner\n  repository or behavior layer.\n\n## Unknowns\n\n- Final visual density, navigation hierarchy, and detailed interaction model.\n- Exact component names and prop shapes for the Editor implementation.\n- Whether a dedicated shell view-model adapter is needed before the component\n  split is small enough.\n- Which visual regression or accessibility evidence target should be required\n  beyond the normal Editor test gate.\n- Production Backend readiness and broad Editor readiness remain unknown.\n\n## Next Work\n\nOpen the Editor implementation worktree only after this Project Control lane is\nregistered and verified. The next implementation turn should start with a RED\nEditor test for the shell boundary, then split the first shell component without\nchanging Core, Backend, Preview lifecycle, or map truth.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+      "title": "Editor WorkspaceViewTabs Foundation - 2026-08-28",
+      "path": "docs/domains/editor-workspace-view-tabs-foundation-2026-08-28.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Work-scoped planning decision for the second component-by-component Editor frontend redesign lane; defines WorkspaceViewTabs vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "d07e868133b62e9d819cbf041489c6e0554c6b22",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "d07e868133b62e9d819cbf041489c6e0554c6b22",
+          "pathOrContractId": "docs/domains/editor-workspace-shell-foundation-2026-08-28.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+          "pathOrContractId": "src/components/shell/AppHeader.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+          "pathOrContractId": "src/app/EditorShell.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+          "pathOrContractId": "src/components/shell/WorkspaceFrame.tsx"
+        }
+      ],
+      "content": "# Editor WorkspaceViewTabs Foundation - 2026-08-28\n\nStatus: in-progress planning lane; implementation evidence not recorded yet.\n\nThis document opens the second component-by-component Editor frontend redesign\nlane. It narrows the next shell split to the workspace view selector currently\ninside `AppHeader`. It does not promote Editor truth, Backend readiness, Core\ntruth, frontend design readiness, Preview parity, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-view-tabs-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `planning-partner`\n- Phase: `phase-editor-workspace-view-tabs-foundation`\n- Checklist target: `checklist-editor-workspace-view-tabs-foundation`\n- Evidence target: `evidence-editor-workspace-view-tabs-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceViewTabs`: define. The Editor-owned UI component that renders the\n  Design and Preview view selector for the document workspace and dispatches\n  view-selection intent.\n- `tabs`: rename in records and tests to `WorkspaceViewTabs` when referring to\n  this component. The shorter word can remain context-only in visible UI prose.\n- `active view`: define. The route-derived `DocumentWorkspaceView` value that\n  tells shell UI whether the Design or Preview workspace view is selected.\n- `Preview`: define against the product terminology document. WorkspaceViewTabs\n  may expose a Preview tab intent, but it must not own Preview generation,\n  mounting policy, export parity, or readiness claims.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Preview component.\n\n## Component Scope\n\nWorkspaceViewTabs owns:\n\n- tablist markup and accessibility selection state;\n- visible Design and Preview tab labels and icons;\n- active and inactive view presentation;\n- view-selection intent callback dispatch.\n\nWorkspaceViewTabs does not own:\n\n- route navigation or URL parsing;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, or Core diagnostics;\n- Backend document records, Backend revisions, storage, or transport shape;\n- AppHeader document identity, back navigation intent, or diagnostics summary.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceViewTabs` UI component\nunder the shell component boundary and update `AppHeader` to delegate the view\nselector. The first RED test should fail because the component does not exist.\nThe implementation should prove:\n\n- `WorkspaceViewTabs` renders a `Document workspace view` tablist;\n- exactly one tab reflects the active view;\n- inactive tabs dispatch the requested view;\n- active tabs do not dispatch redundant selection intent;\n- AppHeader still owns document identity, back intent, and status summary;\n- WorkspaceViewTabs does not import Editor runtime, Core, or Backend modules.\n\n## Evidence Target\n\nImplementation evidence will be recorded as\n`evidence-editor-workspace-view-tabs-foundation-2026-08-28` after the Editor\nworktree passes focused WorkspaceViewTabs tests and the full Editor repository\ngate.\n\nThat evidence can support only the bounded WorkspaceViewTabs UI component split.\nIt cannot promote broad Editor readiness, product frontend readiness, production\nBackend readiness, Preview parity, Core truth, or FlowDoc product readiness.\n\n## Risks\n\n- AppHeader currently mixes document identity, status summary, and view selector\n  UI; the split can accidentally move header responsibilities into the tabs\n  component.\n- The Preview tab label can imply Preview readiness if evidence wording is not\n  bounded to UI intent and current route state.\n- `active view` can be confused with Editor draft state unless the term remains\n  tied to `DocumentWorkspaceView`.\n- Project Control baseline has shown intermittent Vitest worker startup\n  timeout during full-gate runs; rerun evidence is required before claims.\n\n## Unknowns\n\n- Final visual styling for the redesigned header and tab control.\n- Whether future shell work should split a dedicated `WorkspaceHeader` after\n  the tab component is isolated.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness and broad Editor readiness remain unknown.\n\n## Next Work\n\nOpen the Editor implementation worktree only after this Project Control lane is\nregistered and verified. The next Editor turn should start with a RED test for\n`WorkspaceViewTabs`, then implement the smallest component split without\nchanging Core, Backend, Preview lifecycle, Editor draft mutation, or map truth.\n"
     },
     {
       "kind": "document",
