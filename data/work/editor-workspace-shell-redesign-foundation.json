@@ -1,0 +1,29 @@
+{
+  "kind": "work",
+  "id": "editor-workspace-shell-redesign-foundation",
+  "title": "Editor Workspace Shell Redesign Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Open the first component-by-component Editor frontend redesign lane by defining the workspace shell boundary, component split, data boundary, and evidence target before implementation.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+    "doc-editor-workspace-shell-foundation-2026-08-28"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "A Project Control lane that defines the Editor Workspace Shell redesign foundation, names repo-editor as the implementation owner, keeps repo-project-control as the record owner, and sets the future evidence target evidence-editor-workspace-shell-foundation-2026-08-28.",
+  "riskSummary": "The shell foundation is planning-only and does not promote Editor truth, Backend readiness, Core truth, frontend design readiness, or FlowDoc product readiness.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

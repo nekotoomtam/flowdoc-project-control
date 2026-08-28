@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-workspace-shell-foundation",
+  "phaseId": "phase-editor-workspace-shell-foundation",
+  "title": "Editor Workspace Shell Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-editor-context",
+      "label": "Capture the current Editor workspace contracts, Project Control map state, and product terminology before shell implementation.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the exact Editor commit, Project Control context, and verification gate used for the shell foundation."
+    },
+    {
+      "id": "define-shell-boundary",
+      "label": "Define what the Editor Workspace Shell owns and what remains outside the shell lane.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 shows the shell owns app frame, view slots, status surfaces, and layout states without owning Core, Backend, Preview lifecycle, or draft mutation semantics."
+    },
+    {
+      "id": "split-shell-components",
+      "label": "Name the first shell component split so implementation can proceed component by component.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 points to the focused component files and tests that prove the shell split stayed bounded."
+    },
+    {
+      "id": "lock-data-boundary",
+      "label": "Keep shell inputs as an Editor-owned view model and intent callbacks, not raw Core packages or raw Backend records.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 demonstrates that shell components consume narrow view-state props and emit intent without importing Core internals or Backend transport shapes directly."
+    },
+    {
+      "id": "preserve-runtime-ownership",
+      "label": "Preserve Editor runtime ownership rules while redesigning the shell.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 includes tests or review evidence that React shell components render state and dispatch intent while runtime modules own behavior."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged until narrower implementation evidence exists.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 is recorded before any future map promotion; this checklist item stays pending until the implementation evidence exists."
+    },
+    {
+      "id": "prepare-editor-implementation-gate",
+      "label": "Prepare the next Editor implementation worktree gate before touching frontend files.",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the focused Editor tests, visual/layout review target, and full repo gate for the shell implementation lane."
+    }
+  ],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

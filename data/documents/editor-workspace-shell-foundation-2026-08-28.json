@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-shell-foundation-2026-08-28",
+  "title": "Editor Workspace Shell Foundation - 2026-08-28",
+  "path": "docs/domains/editor-workspace-shell-foundation-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped planning decision for the first component-by-component Editor frontend redesign lane; defines shell vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6668817933265343442047d5c63e2a8dbb376440",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6668817933265343442047d5c63e2a8dbb376440",
+      "pathOrContractId": "docs/domains/flowdoc-system-map.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+      "pathOrContractId": "docs/REALDOC_DOCUMENT_WORKSPACE_PRODUCT_CONTRACT.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+      "pathOrContractId": "src/app/EditorShell.tsx"
+    }
+  ]
+}

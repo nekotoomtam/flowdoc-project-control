@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "06b16bf40557bab269b5c414ca79baded52709771d186a8f52233c0b0139d43b",
+  "sourceDigest": "892916d792fefbd50e8e6f456276497aa166c5e5ee4f976f3e1a1146762510a0",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -285,7 +285,8 @@
       ],
       "childIds": [],
       "workIds": [
-        "editor-backend-unavailable-honesty-review"
+        "editor-backend-unavailable-honesty-review",
+        "editor-workspace-shell-redesign-foundation"
       ]
     },
     {
@@ -904,6 +905,46 @@
     },
     {
       "kind": "work",
+      "id": "editor-workspace-shell-redesign-foundation",
+      "title": "Editor Workspace Shell Redesign Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Open the first component-by-component Editor frontend redesign lane by defining the workspace shell boundary, component split, data boundary, and evidence target before implementation.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+        "doc-editor-workspace-shell-foundation-2026-08-28"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "A Project Control lane that defines the Editor Workspace Shell redesign foundation, names repo-editor as the implementation owner, keeps repo-project-control as the record owner, and sets the future evidence target evidence-editor-workspace-shell-foundation-2026-08-28.",
+      "riskSummary": "The shell foundation is planning-only and does not promote Editor truth, Backend readiness, Core truth, frontend design readiness, or FlowDoc product readiness.",
+      "requiredEvidence": [],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-workspace-shell-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-workspace-shell-redesign-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-bounded-browser-compatibility-promotion",
       "title": "FlowDoc Bounded Browser Compatibility Promotion",
       "nodeId": "flowdoc-browser-compatibility",
@@ -1017,6 +1058,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-workspace-shell-redesign-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
@@ -1462,6 +1504,29 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-workspace-shell-foundation",
+      "workId": "editor-workspace-shell-redesign-foundation",
+      "title": "Define Shell Boundary Before Editor Implementation",
+      "phaseState": "in-progress",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "The shell lane starts editing Editor behavior before the Work path, terminology boundary, Checklist target, and evidence target are recorded.",
+        "The shell takes ownership of Core runtime node semantics, Backend document records, Preview lifecycle behavior, or Editor draft mutation rules.",
+        "The plan promotes Editor, Backend, Core, frontend design, or FlowDoc product truth without exact Evidence.",
+        "Ambiguous terms such as component, shell, workspace, preview, or draft cannot be qualified against the product terminology documents."
+      ],
+      "verificationTarget": "Project Control records an in-progress Editor Workspace Shell foundation lane with owner repo repo-editor, record repo repo-project-control, checklist target checklist-editor-workspace-shell-foundation, and future evidence target evidence-editor-workspace-shell-foundation-2026-08-28 without map truth promotion.",
+      "summary": "Opened the shell foundation phase for the component-by-component Editor frontend redesign approach.",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -2418,6 +2483,58 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-editor-workspace-shell-foundation",
+      "phaseId": "phase-editor-workspace-shell-foundation",
+      "title": "Editor Workspace Shell Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-editor-context",
+          "label": "Capture the current Editor workspace contracts, Project Control map state, and product terminology before shell implementation.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the exact Editor commit, Project Control context, and verification gate used for the shell foundation."
+        },
+        {
+          "id": "define-shell-boundary",
+          "label": "Define what the Editor Workspace Shell owns and what remains outside the shell lane.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 shows the shell owns app frame, view slots, status surfaces, and layout states without owning Core, Backend, Preview lifecycle, or draft mutation semantics."
+        },
+        {
+          "id": "split-shell-components",
+          "label": "Name the first shell component split so implementation can proceed component by component.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 points to the focused component files and tests that prove the shell split stayed bounded."
+        },
+        {
+          "id": "lock-data-boundary",
+          "label": "Keep shell inputs as an Editor-owned view model and intent callbacks, not raw Core packages or raw Backend records.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 demonstrates that shell components consume narrow view-state props and emit intent without importing Core internals or Backend transport shapes directly."
+        },
+        {
+          "id": "preserve-runtime-ownership",
+          "label": "Preserve Editor runtime ownership rules while redesigning the shell.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 includes tests or review evidence that React shell components render state and dispatch intent while runtime modules own behavior."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor truthState, documentIds, and evidenceIds unchanged until narrower implementation evidence exists.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 is recorded before any future map promotion; this checklist item stays pending until the implementation evidence exists."
+        },
+        {
+          "id": "prepare-editor-implementation-gate",
+          "label": "Prepare the next Editor implementation worktree gate before touching frontend files.",
+          "state": "pending",
+          "evidenceTarget": "evidence-editor-workspace-shell-foundation-2026-08-28 records the focused Editor tests, visual/layout review target, and full repo gate for the shell implementation lane."
+        }
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-bounded-browser-compatibility-promotion",
       "phaseId": "phase-flowdoc-bounded-browser-compatibility-promotion",
       "title": "FlowDoc Bounded Browser Compatibility Promotion Checklist",
@@ -3214,6 +3331,39 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-workspace-shell-foundation-2026-08-28",
+      "title": "Editor Workspace Shell Foundation - 2026-08-28",
+      "path": "docs/domains/editor-workspace-shell-foundation-2026-08-28.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Work-scoped planning decision for the first component-by-component Editor frontend redesign lane; defines shell vocabulary, ownership boundaries, checklist target, and future evidence target without promoting Editor truth or product readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "6668817933265343442047d5c63e2a8dbb376440",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "6668817933265343442047d5c63e2a8dbb376440",
+          "pathOrContractId": "docs/domains/flowdoc-system-map.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+          "pathOrContractId": "docs/REALDOC_DOCUMENT_WORKSPACE_PRODUCT_CONTRACT.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "5cdd092265eb036be56a2d8f06e3987d0b6199d6",
+          "pathOrContractId": "src/app/EditorShell.tsx"
+        }
+      ],
+      "content": "# Editor Workspace Shell Foundation - 2026-08-28\n\nStatus: in-progress planning lane.\n\nThis document opens the first component-by-component Editor frontend redesign\nlane. It is a Work-scoped planning decision for the Editor Workspace Shell. It\ndoes not promote Editor truth, Backend readiness, Core truth, frontend design\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-shell-redesign-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `planning-partner`\n- Phase: `phase-editor-workspace-shell-foundation`\n- Checklist target: `checklist-editor-workspace-shell-foundation`\n- Future evidence target: `evidence-editor-workspace-shell-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `Editor Workspace Shell`: define. The Editor-owned UI frame that hosts the\n  document workspace route, stable app frame, view selection, region slots,\n  status surfaces, unavailable states, and responsive layout boundaries.\n- `component`: split. Use qualified terms when planning or reviewing work:\n  `UI component` for React rendering units, `Editor state component` for\n  Editor-owned view-model assembly, `integration component` for adapter or\n  transport boundaries, and `Preview component` for preview-specific surfaces.\n- `workspace`: context-only unless qualified. In this lane it means the Editor\n  document workspace, not Project Control workspace, repository checkout, or\n  implementation worktree.\n- `shell`: rename in records to `Editor Workspace Shell` when it could be\n  confused with a command shell, Project Control control room, or page chrome.\n- `Preview`: define against the product terminology document. The shell may host\n  a Preview surface or Preview-unavailable surface, but it must not own Preview\n  generation lifecycle or export parity.\n- `Editor draft`: define against the product terminology document. The shell may\n  show draft state, but it must not mutate draft structure or claim source\n  authority.\n\n## Shell Scope\n\nThe Editor Workspace Shell owns the outer product editor frame only:\n\n- document workspace frame and responsive layout constraints;\n- Design and Preview view slot placement;\n- stable header, view tabs, region hosts, status strip, and bounded empty,\n  loading, unavailable, error, and migration-required surfaces;\n- route-derived active workspace view display;\n- intent callbacks passed to owner modules.\n\nThe shell does not own:\n\n- Core runtime node semantics or Core operation contracts;\n- Backend document record persistence, revision identity, or transport shape;\n- Editor draft mutation rules or document package authority;\n- Preview generation lifecycle, PDF/export parity, or production readiness;\n- Outline item semantics, diagnostics interpretation, auth, or full WYSIWYG\n  editing behavior.\n\n## Component Split\n\nThe first implementation pass should split the shell by ownership instead of by\nvisual decoration:\n\n- `WorkspaceFrame`: outer layout, landmark structure, and responsive regions.\n- `WorkspaceHeader`: document identity, workspace-level commands, and stable\n  route context.\n- `WorkspaceViewTabs`: Design and Preview view selection display and intent.\n- `WorkspaceRegionHost`: named content slots for outline, canvas, inspector,\n  diagnostics, and preview-specific panels.\n- `WorkspaceStatusStrip`: save/sync/readiness/status summaries.\n- `WorkspaceEmptyState` and `WorkspaceErrorState`: bounded no-document,\n  unavailable, migration-required, and blocking states.\n\nThe exact component names may change during Editor implementation, but the\nownership split must remain visible in tests and review evidence.\n\n## Data Boundary\n\nShell components should receive a narrow Editor-owned view model rather than raw\nCore or Backend data. Acceptable shell inputs include:\n\n- document identity and display title;\n- active `DocumentWorkspaceView`;\n- view readiness, unavailable, loading, migration-required, and error states;\n- draft status summary;\n- Preview status summary;\n- intent callbacks such as change view, retry, open document, or close panel.\n\nShell components must not import Core internals, inspect raw document packages,\nor couple directly to Backend response shapes. The existing Editor rule remains:\nReact components render state and dispatch intent; runtime modules own behavior.\n\n## Evidence Target\n\nFuture implementation evidence must be recorded as\n`evidence-editor-workspace-shell-foundation-2026-08-28` after the Editor\nimplementation worktree passes its focused tests, visual/layout review target,\nand full repo gate.\n\nThat evidence can support only the bounded shell foundation claim. It cannot\npromote broad Editor readiness, product frontend readiness, production Backend\nreadiness, Preview parity, Core truth, or FlowDoc product readiness.\n\n## Risks\n\n- The current `EditorShell` already coordinates many props and child surfaces;\n  redesign work can easily become another monolith if the shell boundary is not\n  split first.\n- Existing Design, Preview, document library, Backend unavailable, and browser\n  smoke lanes can leak behavior ownership into the shell lane.\n- A visual redesign can outpace evidence and accidentally imply readiness that\n  Project Control still marks as unknown.\n- Ambiguous component vocabulary can send future agents toward the wrong owner\n  repository or behavior layer.\n\n## Unknowns\n\n- Final visual density, navigation hierarchy, and detailed interaction model.\n- Exact component names and prop shapes for the Editor implementation.\n- Whether a dedicated shell view-model adapter is needed before the component\n  split is small enough.\n- Which visual regression or accessibility evidence target should be required\n  beyond the normal Editor test gate.\n- Production Backend readiness and broad Editor readiness remain unknown.\n\n## Next Work\n\nOpen the Editor implementation worktree only after this Project Control lane is\nregistered and verified. The next implementation turn should start with a RED\nEditor test for the shell boundary, then split the first shell component without\nchanging Core, Backend, Preview lifecycle, or map truth.\n"
     },
     {
       "kind": "document",
