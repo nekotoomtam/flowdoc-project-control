@@ -213,7 +213,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 21);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 22);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -250,6 +250,7 @@ describe("project roadmap Work Queue", () => {
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-local-loopback-dev-runner",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation",
@@ -332,6 +333,7 @@ describe("project roadmap Work Queue", () => {
       truthState: "unknown",
       workIds: [
         "editor-backend-unavailable-honesty-review",
+        "editor-local-loopback-dev-runner",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation",

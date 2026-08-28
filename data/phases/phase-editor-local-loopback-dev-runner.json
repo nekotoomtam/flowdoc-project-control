@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-local-loopback-dev-runner",
+  "workId": "editor-local-loopback-dev-runner",
+  "title": "Add Editor Local Loopback Dev Runner",
+  "phaseState": "done",
+  "order": 40,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The runner writes evidence fixtures or mutates Project Control truth maps while being used as a development command.",
+    "Core is treated as a server process instead of a dependency-only package boundary for this lane.",
+    "The runner bypasses Backend-owned transport, revision, persistence, migration, or mutation boundaries.",
+    "The lane claims product readiness, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, or broad repository truth from local loopback startup.",
+    "Ambiguous terms such as live, runtime, session, ready, compatible, source, or target cannot be qualified against the product terminology documents."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor local loopback dev runner with checklist target checklist-editor-local-loopback-dev-runner and evidence target evidence-editor-local-loopback-dev-runner-2026-08-28, while Editor remains truthState unknown and map truth remains unpromoted.",
+  "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

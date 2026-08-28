@@ -1,0 +1,52 @@
+{
+  "kind": "document",
+  "id": "doc-editor-local-loopback-dev-runner-2026-08-28",
+  "title": "Editor Local Loopback Dev Runner - 2026-08-28",
+  "path": "docs/domains/editor-local-loopback-dev-runner-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped decision and evidence packet for an Editor-owned local loopback development runner; supports one-command local startup only and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, or product readiness truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0cb682739df3d2fca448b01db704fff2d1097056",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0cb682739df3d2fca448b01db704fff2d1097056",
+      "pathOrContractId": "docs/domains/editor-browser-live-backend-corpus-smoke-2026-08-27.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+      "pathOrContractId": "scripts/run-local-loopback-dev.mjs"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+      "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+      "pathOrContractId": "package.json"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6d18bd381b77becd33b4ac9785a4b6ba6422191a",
+      "pathOrContractId": "src/server.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "6d18bd381b77becd33b4ac9785a4b6ba6422191a",
+      "pathOrContractId": "src/http/server.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "src/index.ts"
+    }
+  ]
+}

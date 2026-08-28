@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "3ff16724a29731ce5711971d8ec5988ba63c7a502c212a9c708e4575c5d55f55",
+  "sourceDigest": "8b62def3a4d9c640871dddc936574501addee22efdce46a0461e84d4c79332ed",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,6 +286,7 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review",
+        "editor-local-loopback-dev-runner",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation"
@@ -907,6 +908,52 @@
     },
     {
       "kind": "work",
+      "id": "editor-local-loopback-dev-runner",
+      "title": "Editor Local Loopback Dev Runner",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Add a bounded Editor-owned local loopback development runner that starts the Backend loopback server and Editor Vite server from one command while treating Core as dependency-only.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-backend-core-live-compatibility-harness-2026-08-27",
+        "doc-editor-browser-live-backend-smoke-2026-08-27",
+        "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
+        "doc-editor-local-loopback-dev-runner-2026-08-28"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds npm scripts `dev:local-loopback` and `dev:local-loopback:smoke`, plus `scripts/run-local-loopback-dev.mjs`, so one command can start live Backend mode for local development while Core remains dependency-only. Target evidence id: evidence-editor-local-loopback-dev-runner-2026-08-28.",
+      "riskSummary": "This lane is local loopback only and does not prove product readiness, deployed Backend compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, or broad Editor, Backend, Core, or FlowDoc truth.",
+      "requiredEvidence": [
+        "evidence-editor-local-loopback-dev-runner-2026-08-28"
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-local-loopback-dev-runner"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-local-loopback-dev-runner"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-header-foundation",
       "title": "Editor WorkspaceHeader Foundation",
       "nodeId": "editor",
@@ -1147,6 +1194,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-local-loopback-dev-runner",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-view-tabs-foundation",
@@ -1595,6 +1643,32 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-local-loopback-dev-runner",
+      "workId": "editor-local-loopback-dev-runner",
+      "title": "Add Editor Local Loopback Dev Runner",
+      "phaseState": "done",
+      "order": 40,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The runner writes evidence fixtures or mutates Project Control truth maps while being used as a development command.",
+        "Core is treated as a server process instead of a dependency-only package boundary for this lane.",
+        "The runner bypasses Backend-owned transport, revision, persistence, migration, or mutation boundaries.",
+        "The lane claims product readiness, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, or broad repository truth from local loopback startup.",
+        "Ambiguous terms such as live, runtime, session, ready, compatible, source, or target cannot be qualified against the product terminology documents."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor local loopback dev runner with checklist target checklist-editor-local-loopback-dev-runner and evidence target evidence-editor-local-loopback-dev-runner-2026-08-28, while Editor remains truthState unknown and map truth remains unpromoted.",
+      "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -2618,6 +2692,76 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-local-loopback-dev-runner",
+      "phaseId": "phase-editor-local-loopback-dev-runner",
+      "title": "Editor Local Loopback Dev Runner Checklist",
+      "items": [
+        {
+          "id": "capture-existing-loopback-context",
+          "label": "Capture existing Editor browser/live Backend smoke evidence, Backend server entrypoint, Core package boundary, and terminology before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 records the exact Editor commit, existing loopback context, and dependency boundaries used for the dev runner.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "Project Control loopback smoke documents, Editor scripts, Backend src/server.ts and /health route, Core AGENTS.md, Backend AGENTS.md, Editor AGENTS.md, and product terminology were read before implementation."
+        },
+        {
+          "id": "define-dev-runner-boundary",
+          "label": "Define the runner as a local development orchestration command, not product runtime behavior or evidence promotion.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 shows the runner reports local loopback scope, live Backend mode, Core dependency-only status, and no evidence fixture writes.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "The dry-run test verifies scope.localLoopbackOnly true, scope.liveBackendMode true, scope.evidenceFixtureWrite false, and scope.productionReadinessClaim false."
+        },
+        {
+          "id": "add-editor-runner",
+          "label": "Add the Editor-owned runner and npm commands for one-command local loopback startup.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 points to the runner script, package scripts, and test that protect the command shape.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds scripts/run-local-loopback-dev.mjs, dev:local-loopback, dev:local-loopback:smoke, and src/tests/localLoopbackDevRunner.test.ts."
+        },
+        {
+          "id": "smoke-local-loopback-readiness",
+          "label": "Verify the runner can start a Backend loopback server and Editor Vite server, wait for readiness, and stop cleanly.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 records the smoke command that starts Backend and Editor on random ports and reaches Backend /health plus Editor /documents.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "npm run dev:local-loopback:smoke passed in the Editor worktree with random loopback ports and exited after readiness."
+        },
+        {
+          "id": "record-bounded-evidence",
+          "label": "Register Project Control evidence for the bounded dev runner result without turning the development command into product readiness truth.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 cites exact commits, paths, commands, supported claims, risks, and unknowns.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "The evidence record is work-scoped with nodeIds empty and repositoryId repo-editor."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this local development runner lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 remains work-scoped and does not add documentIds or evidenceIds to the Editor Project Control Node.",
+          "evidenceIds": [
+            "evidence-editor-local-loopback-dev-runner-2026-08-28"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        }
+      ],
+      "createdAt": "2026-08-28T00:00:00.000Z",
+      "updatedAt": "2026-08-28T00:00:00.000Z"
     },
     {
       "kind": "checklist",
@@ -3657,6 +3801,59 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-local-loopback-dev-runner-2026-08-28",
+      "title": "Editor Local Loopback Dev Runner - 2026-08-28",
+      "path": "docs/domains/editor-local-loopback-dev-runner-2026-08-28.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Work-scoped decision and evidence packet for an Editor-owned local loopback development runner; supports one-command local startup only and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, or product readiness truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0cb682739df3d2fca448b01db704fff2d1097056",
+          "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0cb682739df3d2fca448b01db704fff2d1097056",
+          "pathOrContractId": "docs/domains/editor-browser-live-backend-corpus-smoke-2026-08-27.md"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+          "pathOrContractId": "scripts/run-local-loopback-dev.mjs"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+          "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+          "pathOrContractId": "package.json"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6d18bd381b77becd33b4ac9785a4b6ba6422191a",
+          "pathOrContractId": "src/server.ts"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "6d18bd381b77becd33b4ac9785a4b6ba6422191a",
+          "pathOrContractId": "src/http/server.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+          "pathOrContractId": "src/index.ts"
+        }
+      ],
+      "content": "# Editor Local Loopback Dev Runner - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a short operational lane added during the component-by-component Editor frontend redesign work. It creates a one-command local development path for checking the rendered Editor against a live Backend loopback server while keeping Core as a package dependency.\n\nThis lane does not prove product readiness, deployed Backend compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, broad Editor truth, broad Backend truth, broad Core truth, or FlowDoc product truth.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-local-loopback-dev-runner`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-local-loopback-dev-runner`\n- Checklist target: `checklist-editor-local-loopback-dev-runner`\n- Evidence target: `evidence-editor-local-loopback-dev-runner-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for records, code, tests, contracts, and evidence. The Thai terminology companion is coordination context only.\n\n- `dev:local-loopback`: define. The Editor-owned local development command that starts Backend and Editor together for local inspection.\n- `live Backend mode`: define for this lane as the Editor Vite dev server calling a real Backend server on a local loopback URL.\n- `Core runtime dependency`: define. Core is dependency-only here; it is not started as a server process.\n- `Editor browser session`: define as the browser-visible development session served by Vite.\n- `ready`: define only as the runner observing Backend `/health` and Editor `/documents` over loopback. It is not product readiness.\n- `runtime`: split. This lane names Backend loopback server process, Editor Vite dev server, and Core dependency separately.\n\n## Runner Scope\n\nThe runner owns:\n\n- local repository path resolution from the Editor checkout or an Editor worktree;\n- Backend loopback server startup through the Backend `src/server.ts` entrypoint;\n- Editor Vite dev server startup with `VITE_FLOWDOC_BACKEND_URL` pointed at Backend;\n- readiness waits for Backend `/health` and Editor `/documents`;\n- a dry-run JSON plan for tests and review;\n- a smoke mode that starts both services and exits after readiness;\n- cleanup of the two child Node processes when the runner exits.\n\nThe runner does not own:\n\n- Core document semantics, package migration, mutation behavior, or runtime truth;\n- Backend transport, revision gates, persistence records, migration logic, mutation logic, or service readiness truth;\n- Editor product UI behavior, Editor draft behavior, Preview lifecycle, browser history, or route semantics;\n- evidence fixture generation or Project Control map promotion;\n- deployed, production, cross-browser, accessibility, visual, PDF export, or durable storage readiness.\n\nCore is dependency-only. Backend runs as a loopback server process. Editor runs as a Vite dev server. The command is for local development convenience, not a broader compatibility claim.\n\n## Implementation Evidence\n\nEditor commit `a007817b0f21de758e93a7c0b63873ca0414d5a7` adds:\n\n- `scripts/run-local-loopback-dev.mjs`\n- `src/tests/localLoopbackDevRunner.test.ts`\n- `package.json` scripts `dev:local-loopback` and `dev:local-loopback:smoke`\n\nThe focused RED test failed before implementation because `scripts/run-local-loopback-dev.mjs` did not exist. After implementation, `src/tests/localLoopbackDevRunner.test.ts` passed and verified that the dry-run plan:\n\n- reports `runner: \"flowdoc-local-loopback-dev\"`;\n- uses `live Backend mode`;\n- marks Core as `dependency-only`;\n- starts Backend and Editor as the only child processes;\n- exposes Backend `/health` and Editor `/documents` URLs;\n- keeps `localLoopbackOnly` true;\n- keeps `evidenceFixtureWrite` false;\n- keeps `productionReadinessClaim` false.\n\n`npm run dev:local-loopback:smoke` passed in the Editor worktree by starting Backend and Editor on random loopback ports, reaching Backend `/health`, reaching Editor `/documents`, and exiting after readiness.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` failed with `MODULE_NOT_FOUND` before the runner existed.\n- Editor focused GREEN: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` passed 1 test.\n- Editor smoke: `npm run dev:local-loopback:smoke` passed and reported Backend `/health` plus Editor `/documents` ready on random loopback ports.\n- Editor worktree `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at `unknown` and does not add this evidence to `editor.documentIds` or `editor.evidenceIds`.\n\n## Risks\n\n- This runner is local loopback only; it does not prove deployed Backend or hosted Editor behavior.\n- It checks startup readiness, not a browser interaction path, cross-browser coverage, accessibility, or visual regression.\n- It depends on local Backend and Editor dependencies being installed.\n- The local Core checkout had unrelated deleted `packages/pdf-renderer-pilot/fixtures/**` files during this lane. They were not edited or reverted.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- PDF export local infrastructure remains outside this runner.\n\n## Unknowns\n\n- Production Backend readiness and broad Backend truth remain unknown.\n- Broad Editor runtime truth and product readiness remain unknown.\n- Broad Core truth remains unknown.\n- Durable storage, auth, tenancy, rate limits, telemetry, backup, rollback, hosted deployment, and PDF export readiness remain unknown.\n- Whether future frontend redesign phases should require this runner as a standard visual-inspection preflight remains undecided.\n\n## Next Work\n\nUse `npm run dev:local-loopback` from the Editor repository when a frontend slice needs the rendered Editor calling a live Backend loopback server. Keep component work in small Editor-owned lanes, and use the existing browser/live Backend evidence runners only when the round needs retained evidence rather than a development session.\n"
     },
     {
       "kind": "document",
@@ -5240,6 +5437,16 @@
       "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json",
       "verificationSummary": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 provides an accepted bounded browser-app live Backend smoke. The npm script evidence:editor-browser-live-backend-smoke starts a live loopback Backend server in process, seeds it with the Core product-report-vnext-minimal fixture, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, enters /documents/product-report-vnext-minimal/design through the product UI, observes Core: api r3 with compatible versions, clicks Upgrade and observes Core: api r4 partial mode, selects title, clicks Move selected node down, observes Core: mutation-result r5, and retains final outline order summary-columns > title > detail-table. Retained evidence records Backend requests for /documents?limit=24, /capabilities/versions, /documents/product-report-vnext-minimal, /migrations/package-v3-document-v4, and /mutations with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree npm run check passed type-check, 79 test files, 285 tests, and build; merged Editor main re-ran the browser smoke with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same owner gate. Backend and Core were clean and unchanged. This supports only the bounded local loopback headless Chrome product-route smoke claim; it does not promote FlowDoc/product readiness truth, deployed Backend compatibility, cross-browser readiness, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-local-loopback-dev-runner-2026-08-28",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "a007817b0f21de758e93a7c0b63873ca0414d5a7",
+      "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts",
+      "verificationSummary": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds the bounded dev:local-loopback runner and dev:local-loopback:smoke command. The runner treats Core as dependency-only, starts Backend as a local loopback server process, starts Editor as a Vite dev server with VITE_FLOWDOC_BACKEND_URL pointed at Backend, waits for Backend /health and Editor /documents, and writes no evidence fixtures. RED failed before implementation because scripts/run-local-loopback-dev.mjs did not exist; focused GREEN passed src/tests/localLoopbackDevRunner.test.ts with 1 test. npm run dev:local-loopback:smoke passed by starting Backend and Editor on random loopback ports and exiting after readiness. Editor worktree npm run check passed type-check, 84 passed test files, 292 passed tests, and build; merged Editor main npm run check also passed type-check, 84 passed test files, 292 passed tests, and build. Editor npm install reported 5 high severity vulnerabilities and Vite retained the existing chunk-size warning; Core local checkout had unrelated deleted pdf-renderer-pilot fixture files and was not edited. This evidence supports only the local loopback dev runner, is local loopback only, and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, or product readiness.",
+      "verifiedAt": "2026-08-28T00:00:00.000Z"
     },
     {
       "kind": "evidence",

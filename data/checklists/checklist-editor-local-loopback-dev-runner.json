@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-local-loopback-dev-runner",
+  "phaseId": "phase-editor-local-loopback-dev-runner",
+  "title": "Editor Local Loopback Dev Runner Checklist",
+  "items": [
+    {
+      "id": "capture-existing-loopback-context",
+      "label": "Capture existing Editor browser/live Backend smoke evidence, Backend server entrypoint, Core package boundary, and terminology before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 records the exact Editor commit, existing loopback context, and dependency boundaries used for the dev runner.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "Project Control loopback smoke documents, Editor scripts, Backend src/server.ts and /health route, Core AGENTS.md, Backend AGENTS.md, Editor AGENTS.md, and product terminology were read before implementation."
+    },
+    {
+      "id": "define-dev-runner-boundary",
+      "label": "Define the runner as a local development orchestration command, not product runtime behavior or evidence promotion.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 shows the runner reports local loopback scope, live Backend mode, Core dependency-only status, and no evidence fixture writes.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "The dry-run test verifies scope.localLoopbackOnly true, scope.liveBackendMode true, scope.evidenceFixtureWrite false, and scope.productionReadinessClaim false."
+    },
+    {
+      "id": "add-editor-runner",
+      "label": "Add the Editor-owned runner and npm commands for one-command local loopback startup.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 points to the runner script, package scripts, and test that protect the command shape.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds scripts/run-local-loopback-dev.mjs, dev:local-loopback, dev:local-loopback:smoke, and src/tests/localLoopbackDevRunner.test.ts."
+    },
+    {
+      "id": "smoke-local-loopback-readiness",
+      "label": "Verify the runner can start a Backend loopback server and Editor Vite server, wait for readiness, and stop cleanly.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 records the smoke command that starts Backend and Editor on random ports and reaches Backend /health plus Editor /documents.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "npm run dev:local-loopback:smoke passed in the Editor worktree with random loopback ports and exited after readiness."
+    },
+    {
+      "id": "record-bounded-evidence",
+      "label": "Register Project Control evidence for the bounded dev runner result without turning the development command into product readiness truth.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 cites exact commits, paths, commands, supported claims, risks, and unknowns.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "The evidence record is work-scoped with nodeIds empty and repositoryId repo-editor."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this local development runner lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-local-loopback-dev-runner-2026-08-28 remains work-scoped and does not add documentIds or evidenceIds to the Editor Project Control Node.",
+      "evidenceIds": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    }
+  ],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}
