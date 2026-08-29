@@ -82,6 +82,8 @@ describe("Editor Inspector detail navigation foundation lane", () => {
     expect(normalize(document?.content)).toContain("display: none");
     expect(normalize(document?.content)).toContain("Source: Backend read");
     expect(normalize(document?.content)).toContain("Authoring: limited");
+    expect(normalize(document?.content)).toContain(".worktrees/editor-inspector-detail-navigation-foundation");
+    expect(normalize(document?.content)).toContain("could not be removed");
     expect(normalize(document?.content)).toContain("does not enable WYSIWYG");
     expect(normalize(document?.content)).toContain(evidenceId);
     expect(normalize(document?.content)).toContain(editorCommit);
@@ -115,6 +117,8 @@ describe("Editor Inspector detail navigation foundation lane", () => {
     expect(evidence?.verificationSummary).toContain("308 passed");
     expect(evidence?.verificationSummary).toContain("Source: Backend read");
     expect(evidence?.verificationSummary).toContain("Authoring: limited");
+    expect(evidence?.verificationSummary).toContain(".worktrees/editor-inspector-detail-navigation-foundation");
+    expect(evidence?.verificationSummary).toContain("could not be removed");
     expect(evidence?.verificationSummary).toContain("does not promote");
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({

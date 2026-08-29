@@ -58,7 +58,7 @@
       "state": "passed",
       "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
       "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
-      "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, and residual cleanup limitations separately from the UI behavior."
+      "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, the residual .worktrees/editor-inspector-detail-navigation-foundation cleanup blocker, and prior residual cleanup limitations separately from the UI behavior."
     }
   ],
   "createdAt": "2026-08-29T12:45:00.000Z",

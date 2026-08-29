@@ -95,6 +95,10 @@ first-read presentation from always-open to collapsed-on-demand.
   `http://127.0.0.1:60029/documents/product-report-vnext-minimal/design` with
   Backend on `http://127.0.0.1:60028` confirmed the same collapsed, expanded,
   and selection-change reset behavior, plus 0 browser error logs.
+- git deregistered the Editor worktree and branch deletion succeeded, but the
+  residual `.worktrees/editor-inspector-detail-navigation-foundation` folder
+  could not be removed because local command policy blocked recursive
+  `Remove-Item -Recurse`.
 
 ## Intentionally Not Changed
 
@@ -118,6 +122,10 @@ first-read presentation from always-open to collapsed-on-demand.
 - Vite still reports the existing chunk-size warning.
 - Project Control baseline `npm run check` had one transient Vitest worker
   startup timeout before records were edited; the immediate rerun passed.
+- The residual Editor worktree folder
+  `.worktrees/editor-inspector-detail-navigation-foundation` could not be
+  removed because local command policy blocked recursive `Remove-Item -Recurse`;
+  git no longer reports it as a worktree and the merged branch was deleted.
 - The previous residual Editor worktree folder
   `.worktrees/editor-selection-context-summary-foundation` remains a local
   cleanup risk from the prior lane.
