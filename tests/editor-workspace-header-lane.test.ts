@@ -125,6 +125,7 @@ describe("Editor WorkspaceHeader foundation lane", () => {
       repositoryIds: ["repo-editor"],
       workIds: [
         "editor-backend-unavailable-honesty-review",
+        "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",

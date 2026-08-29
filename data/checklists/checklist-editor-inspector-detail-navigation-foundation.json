@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-inspector-detail-navigation-foundation",
+  "phaseId": "phase-editor-inspector-detail-navigation-foundation",
+  "title": "Editor Inspector Detail Navigation Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-inspector-detail-navigation-scope",
+      "label": "Capture Project Control, terminology, Editor agreement, prior selection summary evidence, and live Backend mode boundary before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, and prior selection context summary evidence were used before implementation."
+    },
+    {
+      "id": "define-inspector-details-boundary",
+      "label": "Define Inspector Details layer as an Editor Inspector presentation disclosure, not Project Control Full Detail Modal, Core semantics, storage truth, or authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "The lane document defines Inspector Details layer as a context-only Editor UI layer for existing Inspector facts."
+    },
+    {
+      "id": "add-inspector-details-red-tests",
+      "label": "Add RED tests requiring raw Inspector facts to sit behind a collapsed Details layer with hidden state and CSS that keeps hidden facts from rendering.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records the focused RED failures.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "Focused RED first failed because Inspector details did not exist, then failed because the facts list lacked hidden state, then failed because the CSS hidden selector was missing."
+    },
+    {
+      "id": "add-inspector-details-disclosure",
+      "label": "Add the Inspector Details disclosure after node actions while preserving the existing facts-list content and action behavior.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 points to InspectorPanel.tsx, editor.css, and selectionContextSummary.test.ts.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "InspectorPanel now controls Details open state, hides raw facts while collapsed, and resets Details when the selected node changes."
+    },
+    {
+      "id": "verify-editor-live-backend-details-path",
+      "label": "Verify the rendered Editor main live Backend mode design route keeps Details collapsed, opens raw facts on demand, and resets Details after selecting Columns.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence confirmed Source: Backend read, Authoring: limited, collapsed display none, expanded grid, Columns selection reset, and no browser error logs."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this Inspector presentation lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "record-risk-and-unknowns",
+      "label": "Record dependency audit, chunk-size, Project Control baseline retry, and residual Editor worktree cleanup risks separately from product behavior.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+      "evidenceIds": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+      "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, and residual cleanup limitations separately from the UI behavior."
+    }
+  ],
+  "createdAt": "2026-08-29T12:45:00.000Z",
+  "updatedAt": "2026-08-29T12:45:00.000Z"
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-inspector-detail-navigation-foundation",
+  "workId": "editor-inspector-detail-navigation-foundation",
+  "title": "Add Editor Inspector Detail Navigation",
+  "phaseState": "done",
+  "order": 105,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The Details layer treats Editor draft state, Preview rendering, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+    "The Details layer claims WYSIWYG, free text input, command authoring readiness, Backend mutation or persistence readiness, or production readiness.",
+    "The Inspector removes raw facts instead of keeping them available behind the Details disclosure.",
+    "The Inspector changes Duplicate, Delete, Move Up, or Move Down behavior while adding the Details layer.",
+    "The Details layer imports Backend, Core, or Editor runtime behavior instead of receiving bounded display facts from InspectorPanel.",
+    "Browser verification cannot show collapsed, expanded, and selection-change reset behavior on the live Backend mode design route.",
+    "Project Control promotes the broad Editor node from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor Inspector detail navigation foundation with checklist target checklist-editor-inspector-detail-navigation-foundation and evidence target evidence-editor-inspector-detail-navigation-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added a collapsed Inspector Details disclosure after node actions so raw facts remain available without dominating the first-read selection layer.",
+  "createdAt": "2026-08-29T12:45:00.000Z",
+  "updatedAt": "2026-08-29T12:45:00.000Z"
+}

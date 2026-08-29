@@ -1,0 +1,32 @@
+{
+  "kind": "work",
+  "id": "editor-inspector-detail-navigation-foundation",
+  "title": "Editor Inspector Detail Navigation Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Inspector Details disclosure layer so raw Inspector facts remain available but start collapsed behind the selected-block summary and node actions.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-workspace-shell-foundation-2026-08-28",
+    "doc-editor-read-source-authoring-status-2026-08-29",
+    "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+    "doc-editor-selection-context-summary-foundation-2026-08-29",
+    "doc-editor-inspector-detail-navigation-foundation-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit 6ae950600949ec5c868b86cd0db140c9a9bb5780 adds a bounded Inspector Details disclosure layer after node actions. Raw facts stay available inside Details, start collapsed with hidden state and display: none, expand to the existing facts-list grid when clicked, and reset closed when the selected Outline item changes to Columns. Target evidence id: evidence-editor-inspector-detail-navigation-foundation-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+  "requiredEvidence": ["evidence-editor-inspector-detail-navigation-foundation-2026-08-29"],
+  "createdAt": "2026-08-29T12:45:00.000Z",
+  "updatedAt": "2026-08-29T12:45:00.000Z"
+}

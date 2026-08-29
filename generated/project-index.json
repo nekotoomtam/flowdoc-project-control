@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "17a95ad25e0def7c2189d035bf7ae97c248085a9e22d3f03e22c782d08fd022c",
+  "sourceDigest": "c78f9cccdcfee06ae0dae63ed77251a7050db50ea5c4edb46c3575bdd17af8c7",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,6 +286,7 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review",
+        "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
@@ -916,6 +917,53 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "editor-browser-live-backend-smoke"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "editor-inspector-detail-navigation-foundation",
+      "title": "Editor Inspector Detail Navigation Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Add a bounded Inspector Details disclosure layer so raw Inspector facts remain available but start collapsed behind the selected-block summary and node actions.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-workspace-shell-foundation-2026-08-28",
+        "doc-editor-read-source-authoring-status-2026-08-29",
+        "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+        "doc-editor-selection-context-summary-foundation-2026-08-29",
+        "doc-editor-inspector-detail-navigation-foundation-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor merge commit 6ae950600949ec5c868b86cd0db140c9a9bb5780 adds a bounded Inspector Details disclosure layer after node actions. Raw facts stay available inside Details, start collapsed with hidden state and display: none, expand to the existing facts-list grid when clicked, and reset closed when the selected Outline item changes to Columns. Target evidence id: evidence-editor-inspector-detail-navigation-foundation-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+      "requiredEvidence": [
+        "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T12:45:00.000Z",
+      "updatedAt": "2026-08-29T12:45:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-inspector-detail-navigation-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-inspector-detail-navigation-foundation"
       ]
     },
     {
@@ -1571,6 +1619,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
@@ -2072,6 +2121,34 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-inspector-detail-navigation-foundation",
+      "workId": "editor-inspector-detail-navigation-foundation",
+      "title": "Add Editor Inspector Detail Navigation",
+      "phaseState": "done",
+      "order": 105,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The Details layer treats Editor draft state, Preview rendering, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+        "The Details layer claims WYSIWYG, free text input, command authoring readiness, Backend mutation or persistence readiness, or production readiness.",
+        "The Inspector removes raw facts instead of keeping them available behind the Details disclosure.",
+        "The Inspector changes Duplicate, Delete, Move Up, or Move Down behavior while adding the Details layer.",
+        "The Details layer imports Backend, Core, or Editor runtime behavior instead of receiving bounded display facts from InspectorPanel.",
+        "Browser verification cannot show collapsed, expanded, and selection-change reset behavior on the live Backend mode design route.",
+        "Project Control promotes the broad Editor node from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor Inspector detail navigation foundation with checklist target checklist-editor-inspector-detail-navigation-foundation and evidence target evidence-editor-inspector-detail-navigation-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Added a collapsed Inspector Details disclosure after node actions so raw facts remain available without dominating the first-read selection layer.",
+      "createdAt": "2026-08-29T12:45:00.000Z",
+      "updatedAt": "2026-08-29T12:45:00.000Z"
     },
     {
       "kind": "phase",
@@ -3348,6 +3425,86 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-inspector-detail-navigation-foundation",
+      "phaseId": "phase-editor-inspector-detail-navigation-foundation",
+      "title": "Editor Inspector Detail Navigation Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-inspector-detail-navigation-scope",
+          "label": "Capture Project Control, terminology, Editor agreement, prior selection summary evidence, and live Backend mode boundary before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, and prior selection context summary evidence were used before implementation."
+        },
+        {
+          "id": "define-inspector-details-boundary",
+          "label": "Define Inspector Details layer as an Editor Inspector presentation disclosure, not Project Control Full Detail Modal, Core semantics, storage truth, or authoring readiness.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane document defines Inspector Details layer as a context-only Editor UI layer for existing Inspector facts."
+        },
+        {
+          "id": "add-inspector-details-red-tests",
+          "label": "Add RED tests requiring raw Inspector facts to sit behind a collapsed Details layer with hidden state and CSS that keeps hidden facts from rendering.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records the focused RED failures.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused RED first failed because Inspector details did not exist, then failed because the facts list lacked hidden state, then failed because the CSS hidden selector was missing."
+        },
+        {
+          "id": "add-inspector-details-disclosure",
+          "label": "Add the Inspector Details disclosure after node actions while preserving the existing facts-list content and action behavior.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 points to InspectorPanel.tsx, editor.css, and selectionContextSummary.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "InspectorPanel now controls Details open state, hides raw facts while collapsed, and resets Details when the selected node changes."
+        },
+        {
+          "id": "verify-editor-live-backend-details-path",
+          "label": "Verify the rendered Editor main live Backend mode design route keeps Details collapsed, opens raw facts on demand, and resets Details after selecting Columns.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence confirmed Source: Backend read, Authoring: limited, collapsed display none, expanded grid, Columns selection reset, and no browser error logs."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this Inspector presentation lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "record-risk-and-unknowns",
+          "label": "Record dependency audit, chunk-size, Project Control baseline retry, and residual Editor worktree cleanup risks separately from product behavior.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+          "evidenceIds": [
+            "evidence-editor-inspector-detail-navigation-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, and residual cleanup limitations separately from the UI behavior."
+        }
+      ],
+      "createdAt": "2026-08-29T12:45:00.000Z",
+      "updatedAt": "2026-08-29T12:45:00.000Z"
     },
     {
       "kind": "checklist",
@@ -5167,6 +5324,34 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+      "title": "Editor Inspector Detail Navigation Foundation",
+      "path": "docs/domains/editor-inspector-detail-navigation-foundation-2026-08-29.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Bounded implementation evidence for an Editor Inspector Details disclosure layer without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+          "pathOrContractId": "src/components/inspector/InspectorPanel.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+          "pathOrContractId": "src/styles/editor.css"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+          "pathOrContractId": "src/tests/selectionContextSummary.test.ts"
+        }
+      ],
+      "content": "# Editor Inspector Detail Navigation Foundation - 2026-08-29\n\nStatus: bounded Editor Inspector Details layer complete; broad Editor truth\nremains unpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-inspector-detail-navigation-foundation`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-inspector-detail-navigation-foundation`\n- Checklist target: `checklist-editor-inspector-detail-navigation-foundation`\n- Evidence target: `evidence-editor-inspector-detail-navigation-foundation-2026-08-29`\n\nThis record is work-scoped verification only. It does not enable WYSIWYG, text\ninput, authoring, Backend mutation, persistence behavior, production Backend\nreadiness, Core truth, broad Editor truth, or FlowDoc product readiness.\n\n## Terminology Boundary\n\n- `Inspector Details layer` means the Editor Inspector presentation disclosure\n  that keeps existing raw Inspector facts available behind a `Details` summary\n  after the selected-block summary and node actions.\n- It is derived from the Editor browser session's Inspector facts for an\n  `Editor draft` selection. It is not a Backend document record, durable\n  storage truth, Core document package truth, a mutation result, Project\n  Control Node truth, or the Project Control `Full Detail Modal`.\n- The word `Details` in this lane is context-only for the Editor Inspector UI.\n  It should not become a schema, API, evidence ID family, or readiness claim\n  without a later terminology decision.\n\n## PASS\n\nEditor merge commit `6ae950600949ec5c868b86cd0db140c9a9bb5780` adds a bounded\nInspector Details layer to the Editor.\n\nThe Inspector now keeps the first-read layer focused on the selected-block\nsummary and node actions. Raw facts remain available but start collapsed:\n\n| State | Observed value |\n| --- | --- |\n| Summary selection | `Product Report for Customer` |\n| Source | `Source: Backend read` |\n| Authoring | `Authoring: limited` |\n| Initial Details state | closed |\n| Initial facts hidden state | `factsHidden: true` |\n| Initial facts display | `display: none` |\n| Initial facts rects | `0` |\n| Expanded facts display | `grid` |\n| Expanded Node row | `Node = title` |\n| Expanded raw fact rows | `14` |\n| Selection change to Columns | Details reset closed |\n| Browser error logs | `0` |\n\nThe implementation preserves the existing Duplicate, Delete, Move Up, and Move\nDown actions. It also preserves the existing raw facts; it only changes their\nfirst-read presentation from always-open to collapsed-on-demand.\n\n## Verification\n\n- Editor baseline in the worktree: `npm run check` passed type-check, 89 test\n  files, 307 tests, and build.\n- Editor focused RED:\n  `npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose`\n  failed because the Inspector did not render an `inspector-details-layer` after\n  node actions.\n- Editor focused GREEN after the initial disclosure implementation:\n  `npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose`\n  passed 1 file / 3 tests.\n- Worktree browser review found that the facts list still had rendered space\n  while Details was closed because the existing `.facts-list` `display: grid`\n  rule overrode the default hidden behavior.\n- Editor focused RED after browser review:\n  `npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose`\n  failed because the facts list lacked `hidden` state.\n- Editor focused RED after the hidden-state implementation:\n  `npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose`\n  failed because `editor.css` did not include\n  `.inspector-details-layer .facts-list[hidden]`.\n- Editor focused GREEN:\n  `npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose`\n  passed 1 file / 3 tests.\n- Editor worktree gate: `npm run check` passed type-check, 89 test files, 308\n  tests, and build.\n- Worktree browser evidence in live Backend mode at\n  `http://127.0.0.1:54551/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:54550` confirmed `Source: Backend read`,\n  `Authoring: limited`, collapsed Details with `factsHidden: true`,\n  `factsDisplay: none`, `factsRects: 0`, expanded Details with `Node = title`\n  and 14 raw fact rows, and Details reset closed after selecting Columns.\n- Editor merged main gate: `npm run check` passed type-check, 89 test files,\n  308 tests, and build.\n- Main browser evidence at\n  `http://127.0.0.1:60029/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:60028` confirmed the same collapsed, expanded,\n  and selection-change reset behavior, plus 0 browser error logs.\n\n## Intentionally Not Changed\n\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, or document package behavior\n  changed.\n- No WYSIWYG, free text input, command authoring readiness, or document editing\n  behavior changed.\n- No Inspector action semantics were changed; Duplicate, Delete, Move Up, and\n  Move Down still use the existing InspectorPanel behavior.\n- No raw Inspector facts were removed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility or visual-regression readiness claim was made.\n\n## RISK\n\n- Backend `/health` still reports production blocked.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- Project Control baseline `npm run check` had one transient Vitest worker\n  startup timeout before records were edited; the immediate rerun passed.\n- The previous residual Editor worktree folder\n  `.worktrees/editor-selection-context-summary-foundation` remains a local\n  cleanup risk from the prior lane.\n- This browser check proves the local-loopback title and Columns Inspector\n  Details path; it is not a full cross-browser visual-regression suite.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Cross-browser Inspector Details quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n\n## Next Work\n\nContinue Editor frontend work component-by-component. A useful next lane is to\nmake the Outline itself more scannable by grouping or compressing structure rows\nwithout changing document semantics, or to continue the Inspector side by\nseparating action affordances from future editable authoring controls.\n"
     },
     {
       "kind": "document",
@@ -7151,6 +7336,16 @@
       "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json",
       "verificationSummary": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 provides an accepted bounded browser-app live Backend smoke. The npm script evidence:editor-browser-live-backend-smoke starts a live loopback Backend server in process, seeds it with the Core product-report-vnext-minimal fixture, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, enters /documents/product-report-vnext-minimal/design through the product UI, observes Core: api r3 with compatible versions, clicks Upgrade and observes Core: api r4 partial mode, selects title, clicks Move selected node down, observes Core: mutation-result r5, and retains final outline order summary-columns > title > detail-table. Retained evidence records Backend requests for /documents?limit=24, /capabilities/versions, /documents/product-report-vnext-minimal, /migrations/package-v3-document-v4, and /mutations with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree npm run check passed type-check, 79 test files, 285 tests, and build; merged Editor main re-ran the browser smoke with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same owner gate. Backend and Core were clean and unchanged. This supports only the bounded local loopback headless Chrome product-route smoke claim; it does not promote FlowDoc/product readiness truth, deployed Backend compatibility, cross-browser readiness, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-inspector-detail-navigation-foundation-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+      "pathOrContractId": "src/tests/selectionContextSummary.test.ts",
+      "verificationSummary": "Editor merge commit 6ae950600949ec5c868b86cd0db140c9a9bb5780 implements the bounded Inspector Details layer for the Editor Inspector panel. InspectorPanel keeps the selected-block summary and node actions visible, moves raw Inspector facts behind a Details disclosure, starts that facts list collapsed with hidden state and display: none, expands it to the existing facts-list grid when Details is clicked, and resets Details closed when the selected Outline item changes. Focused RED first failed in src/tests/selectionContextSummary.test.ts because the Inspector did not render an inspector-details-layer after node actions. Focused RED after the first implementation failed because the facts list lacked hidden state. Focused RED after browser review failed because the CSS did not include .inspector-details-layer .facts-list[hidden], allowing the existing .facts-list display grid rule to override the hidden attribute. Focused GREEN passed npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose with 1 file and 3 tests. Editor worktree npm run check passed type-check, 89 passed test files, 308 passed tests, and build. Worktree browser evidence in live Backend mode opened http://127.0.0.1:54551/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:54550, confirmed Source: Backend read, Authoring: limited, Details collapsed with factsHidden true, factsDisplay none, and factsRects 0, then clicked Details and confirmed factsHidden false, factsDisplay grid, Node title, and 14 raw fact rows, then selected Columns and confirmed Details reset closed. Merged Editor main npm run check passed type-check, 89 passed test files, 308 passed tests, and build. Main browser evidence at http://127.0.0.1:60029/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:60028 confirmed Source: Backend read, Authoring: limited, Details collapsed with display none, Details expanded with Node title and 14 fact rows, Columns selection reset Details closed, and 0 browser error logs. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check first failed with a transient Vitest worker startup timeout, and the immediate rerun passed before any Project Control record edits. The previous residual Editor worktree folder for editor-selection-context-summary-foundation remains a local cleanup risk; this lane's cleanup is checked separately. This evidence supports only the bounded Editor Inspector Details layer and does not promote broad Editor truth, WYSIWYG readiness, text input readiness, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T12:45:00.000Z"
     },
     {
       "kind": "evidence",
