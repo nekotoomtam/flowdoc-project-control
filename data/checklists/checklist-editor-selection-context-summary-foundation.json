@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-selection-context-summary-foundation",
+  "phaseId": "phase-editor-selection-context-summary-foundation",
+  "title": "Editor Selection Context Summary Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-selection-context-summary-scope",
+      "label": "Capture Project Control, terminology, Editor agreement, prior workspace and selection evidence, and live Backend mode boundary before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, prior workspace records, and prior selection overlay evidence were used before implementation."
+    },
+    {
+      "id": "define-selection-context-summary-boundary",
+      "label": "Define selection context summary as Editor browser-session presentation derived from Inspector facts, not document content, storage truth, Core semantics, or authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "The lane document defines selection context summary as a context-only Editor Inspector presentation concept."
+    },
+    {
+      "id": "add-selection-summary-red-tests",
+      "label": "Add RED tests requiring a selected block context section before Inspector actions and a role-first label for text-block heading selections.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 records the focused RED failures.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "Focused RED first failed because the Inspector did not render Selected block context, then failed because a real heading selection still surfaced Text Block before Heading."
+    },
+    {
+      "id": "add-inspector-summary-component",
+      "label": "Add SelectionContextSummary as a bounded presentation component above Inspector node actions and raw facts.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 points to SelectionContextSummary.tsx, InspectorPanel.tsx, editor.css, and selectionContextSummary.test.ts.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "SelectionContextSummary renders the selected label, user-facing kind, raw type when refined by role, operation surface, child count, and capability badges without owning mutation behavior."
+    },
+    {
+      "id": "verify-editor-live-backend-summary-path",
+      "label": "Verify the rendered Editor main live Backend mode design route shows the summary for title and Columns selections while preserving limited authoring status.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence confirmed Source: Backend read, Authoring: limited, title Heading summary, Columns summary, and no browser error logs."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this Inspector presentation lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "record-cleanup-risk",
+      "label": "Record residual cleanup risk from the Editor worktree directory after git deregistered the worktree and deleted the merged branch.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-context-summary-foundation-2026-08-29 records the cleanup limitation separately from product behavior.",
+      "evidenceIds": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+      "verificationNote": "git worktree list no longer reports the Editor lane and branch deletion succeeded; the leftover folder could not be recursively deleted because the local command policy blocked Remove-Item -Recurse."
+    }
+  ],
+  "createdAt": "2026-08-29T10:30:00.000Z",
+  "updatedAt": "2026-08-29T10:30:00.000Z"
+}

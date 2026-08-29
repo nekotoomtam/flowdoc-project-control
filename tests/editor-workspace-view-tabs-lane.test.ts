@@ -128,6 +128,7 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
+        "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
