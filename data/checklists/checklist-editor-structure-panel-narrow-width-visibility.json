@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-structure-panel-narrow-width-visibility",
+  "phaseId": "phase-editor-structure-panel-narrow-width-visibility",
+  "title": "Editor Structure Panel Narrow Width Visibility Checklist",
+  "items": [
+    {
+      "id": "capture-narrow-structure-panel-scope",
+      "label": "Capture Project Control, terminology, Editor agreement, prior Structure panel evidence, and live Backend mode boundary before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the exact Editor commit, checked route, viewport, and bounded live Backend mode boundary used for this UI bugfix.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, the FlowDoc product terminology records, Editor AGENTS.md, and prior Outline/Structure records were used before implementation."
+    },
+    {
+      "id": "reproduce-hidden-structure-panel",
+      "label": "Reproduce the hidden left Structure panel at the user's narrow design viewport before changing CSS.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the pre-fix browser measurement.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "Pre-fix browser evidence at 704px confirmed .outline-panel existed but computed display was none and width was 0."
+    },
+    {
+      "id": "add-narrow-width-red-test",
+      "label": "Add a RED regression test that fails when a narrow desktop media rule hides the Structure panel.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the focused RED failure.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "Focused RED failed in src/tests/workspaceFrame.test.ts because the <=980px CSS still hid .outline-panel."
+    },
+    {
+      "id": "keep-structure-panel-visible",
+      "label": "Keep the Structure panel visible at the narrow desktop breakpoint while preserving canvas access and keeping the right detail panel secondary.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 points to src/styles/editor.css and src/tests/workspaceFrame.test.ts.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "The <=980px grid now uses Structure panel plus canvas columns and only hides the right detail panel."
+    },
+    {
+      "id": "verify-editor-narrow-live-backend-path",
+      "label": "Verify the rendered Editor main live Backend mode route keeps the Structure panel visible at 704px after merge.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, main npm run check passed, and main browser evidence at 704px reported outlineDisplay grid, workspaceGridColumns 280px 424px, sideDisplay none, and 0 console errors."
+    },
+    {
+      "id": "keep-editor-truth-unpromoted",
+      "label": "Keep broad Editor readiness, mobile readiness, authoring readiness, and map truth unpromoted by this layout bugfix.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+      "verificationNote": "The lane leaves Editor Project Control Node truthState unknown and records no nodeIds on the Evidence record."
+    }
+  ],
+  "createdAt": "2026-08-29T16:36:00.000Z",
+  "updatedAt": "2026-08-29T16:36:00.000Z"
+}

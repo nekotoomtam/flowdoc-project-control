@@ -131,6 +131,7 @@ describe("Editor WorkspaceEditingCommandGroup foundation lane", () => {
         "editor-read-source-authoring-status",
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
+        "editor-structure-panel-narrow-width-visibility",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",

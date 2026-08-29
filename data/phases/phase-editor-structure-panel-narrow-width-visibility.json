@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-structure-panel-narrow-width-visibility",
+  "workId": "editor-structure-panel-narrow-width-visibility",
+  "title": "Fix Editor Structure Panel Narrow Width Visibility",
+  "phaseState": "done",
+  "order": 108,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The fix treats the Editor Structure panel, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+    "The breakpoint fix enables authoring, text input, Backend mutation, Core mutation, or persistence behavior.",
+    "The left Structure panel is still hidden at a narrow desktop viewport around 704px.",
+    "The narrow desktop layout hides the document canvas instead of preserving Structure panel plus canvas access.",
+    "Browser verification cannot load the reorder-blocked-target-qa design route in live Backend mode.",
+    "Project Control promotes the broad Editor node from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor Structure panel narrow-width visibility fix with checklist target checklist-editor-structure-panel-narrow-width-visibility and evidence target evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Fixed the narrow desktop design workspace breakpoint so the left Structure panel remains visible beside the canvas.",
+  "createdAt": "2026-08-29T16:36:00.000Z",
+  "updatedAt": "2026-08-29T16:36:00.000Z"
+}

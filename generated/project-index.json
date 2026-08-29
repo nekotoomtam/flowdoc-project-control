@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "7044068f497b9019981584357db12187adf211f25d0e0246b065dba0670836e2",
+  "sourceDigest": "27ca54abf6dd8c10513ea843cc45dbcea0d6f9345ee4cf49f4748baadb6a9812",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -295,6 +295,7 @@
         "editor-read-source-authoring-status",
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
+        "editor-structure-panel-narrow-width-visibility",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -1337,6 +1338,52 @@
     },
     {
       "kind": "work",
+      "id": "editor-structure-panel-narrow-width-visibility",
+      "title": "Editor Structure Panel Narrow Width Visibility",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Fix the Editor design workspace breakpoint so the left Structure panel remains visible at narrow desktop widths while the right detail panel stays secondary.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-outline-scannability-foundation-2026-08-29",
+        "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
+        "doc-editor-structure-panel-narrow-width-visibility-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor merge commit 2b711c87e4bb036fa2c172550093dbd4fddc91ac keeps the left Structure panel visible at 704px narrow desktop viewport, changes the <=980px design workspace grid to Structure panel plus canvas, keeps the right detail panel hidden at that breakpoint, and adds a regression test in src/tests/workspaceFrame.test.ts. Target evidence id: evidence-editor-structure-panel-narrow-width-visibility-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, active add-block creation, Backend mutation or persistence readiness, Core mutation readiness, production readiness, accessibility readiness, full visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. Mobile behavior remains intentionally unclaimed. The residual current-lane Editor worktree folder remains after git deregistration because local command policy rejected recursive cleanup.",
+      "requiredEvidence": [
+        "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T16:36:00.000Z",
+      "updatedAt": "2026-08-29T16:36:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-structure-panel-narrow-width-visibility"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-structure-panel-narrow-width-visibility"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-editing-command-group-foundation",
       "title": "Editor WorkspaceEditingCommandGroup Foundation",
       "nodeId": "editor",
@@ -1721,6 +1768,7 @@
         "editor-read-source-authoring-status",
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
+        "editor-structure-panel-narrow-width-visibility",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -2460,6 +2508,33 @@
       "summary": "Synchronized the Editor selection overlay with selected paper block geometry throughout viewport-only smooth zoom motion.",
       "createdAt": "2026-08-29T09:40:00.000Z",
       "updatedAt": "2026-08-29T09:40:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-structure-panel-narrow-width-visibility",
+      "workId": "editor-structure-panel-narrow-width-visibility",
+      "title": "Fix Editor Structure Panel Narrow Width Visibility",
+      "phaseState": "done",
+      "order": 108,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The fix treats the Editor Structure panel, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+        "The breakpoint fix enables authoring, text input, Backend mutation, Core mutation, or persistence behavior.",
+        "The left Structure panel is still hidden at a narrow desktop viewport around 704px.",
+        "The narrow desktop layout hides the document canvas instead of preserving Structure panel plus canvas access.",
+        "Browser verification cannot load the reorder-blocked-target-qa design route in live Backend mode.",
+        "Project Control promotes the broad Editor node from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor Structure panel narrow-width visibility fix with checklist target checklist-editor-structure-panel-narrow-width-visibility and evidence target evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Fixed the narrow desktop design workspace breakpoint so the left Structure panel remains visible beside the canvas.",
+      "createdAt": "2026-08-29T16:36:00.000Z",
+      "updatedAt": "2026-08-29T16:36:00.000Z"
     },
     {
       "kind": "phase",
@@ -4289,6 +4364,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-editor-structure-panel-narrow-width-visibility",
+      "phaseId": "phase-editor-structure-panel-narrow-width-visibility",
+      "title": "Editor Structure Panel Narrow Width Visibility Checklist",
+      "items": [
+        {
+          "id": "capture-narrow-structure-panel-scope",
+          "label": "Capture Project Control, terminology, Editor agreement, prior Structure panel evidence, and live Backend mode boundary before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the exact Editor commit, checked route, viewport, and bounded live Backend mode boundary used for this UI bugfix.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, the FlowDoc product terminology records, Editor AGENTS.md, and prior Outline/Structure records were used before implementation."
+        },
+        {
+          "id": "reproduce-hidden-structure-panel",
+          "label": "Reproduce the hidden left Structure panel at the user's narrow design viewport before changing CSS.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the pre-fix browser measurement.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "Pre-fix browser evidence at 704px confirmed .outline-panel existed but computed display was none and width was 0."
+        },
+        {
+          "id": "add-narrow-width-red-test",
+          "label": "Add a RED regression test that fails when a narrow desktop media rule hides the Structure panel.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records the focused RED failure.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "Focused RED failed in src/tests/workspaceFrame.test.ts because the <=980px CSS still hid .outline-panel."
+        },
+        {
+          "id": "keep-structure-panel-visible",
+          "label": "Keep the Structure panel visible at the narrow desktop breakpoint while preserving canvas access and keeping the right detail panel secondary.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 points to src/styles/editor.css and src/tests/workspaceFrame.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "The <=980px grid now uses Structure panel plus canvas columns and only hides the right detail panel."
+        },
+        {
+          "id": "verify-editor-narrow-live-backend-path",
+          "label": "Verify the rendered Editor main live Backend mode route keeps the Structure panel visible at 704px after merge.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 records focused, worktree, main, and browser verification.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "Focused GREEN passed, worktree npm run check passed, main npm run check passed, and main browser evidence at 704px reported outlineDisplay grid, workspaceGridColumns 280px 424px, sideDisplay none, and 0 console errors."
+        },
+        {
+          "id": "keep-editor-truth-unpromoted",
+          "label": "Keep broad Editor readiness, mobile readiness, authoring readiness, and map truth unpromoted by this layout bugfix.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"
+          ],
+          "verificationNote": "The lane leaves Editor Project Control Node truthState unknown and records no nodeIds on the Evidence record."
+        }
+      ],
+      "createdAt": "2026-08-29T16:36:00.000Z",
+      "updatedAt": "2026-08-29T16:36:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-editor-workspace-editing-command-group-foundation",
       "phaseId": "phase-editor-workspace-editing-command-group-foundation",
       "title": "Editor WorkspaceEditingCommandGroup Foundation Checklist",
@@ -5952,6 +6097,29 @@
         }
       ],
       "content": "# Editor Selection Overlay Zoom Motion Sync - 2026-08-29\n\nStatus: bounded Editor viewport-only selection overlay zoom motion bugfix\ncomplete; broad Editor truth remains unpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-selection-overlay-zoom-motion-sync`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-selection-overlay-zoom-motion-sync`\n- Checklist target: `checklist-editor-selection-overlay-zoom-motion-sync`\n- Evidence target: `evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29`\n\nThis record is work-scoped verification only. It does not promote broad Editor,\nBackend, Core, FlowDoc, frontend Node, WYSIWYG, text input, authoring, or\nproduction readiness.\n\n## Terminology Boundary\n\n- `selection overlay zoom motion sync` means the Editor browser-session\n  selected-node outline tracks the selected paper block geometry while\n  viewport-only zoom motion is still moving.\n- `selection overlay` is the separate canvas outline around the selected paper\n  block. It is presentation feedback only.\n- These are context-only Editor presentation concepts. They are not document\n  content, Backend document records, Core document package truth, durable\n  mutations, or authoring readiness.\n\n## PASS\n\nEditor merge commit `a11db59634873d309a0fb469a6479a099705a28e` fixes the\nvisible selection overlay lag during smooth viewport zoom.\n\nBefore the fix, browser sampling during 85% to 95% zoom measured the selected\nblock moving while the canvas selection overlay stayed stale, with max\ndivergence about `60.47px`. After the fix, the main browser measurement for\nthe same 85% to 95% path measured max overlay delta `0.011px`.\n\nThe implementation keeps the previous zoom surface and anchor fix intact:\n\n| Surface | Result |\n| --- | --- |\n| `selectionOverlay` scheduler | Runs 24 animation-frame syncs during zoom motion and keeps the existing 180ms settle sync. |\n| `CanvasOverlayLayer` | Applies measured CSS variables directly to the mounted outline element before waiting for the next React render. |\n| Selection state | Remains read-only presentation feedback. |\n| Authoring | Remains limited; this does not enable WYSIWYG, text input, or mutations. |\n\n## Verification\n\n- Editor focused RED:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  failed because no animation-frame overlay sync was scheduled.\n- Editor focused RED after tightening:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  failed because `applySelectionOverlayStyle` was not implemented or used by\n  `CanvasOverlayLayer`.\n- Editor focused GREEN:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  passed 1 file / 9 tests.\n- Editor worktree gate: `npm run check` passed type-check, 88 test files, 305\n  tests, and build.\n- Worktree browser evidence at\n  `http://127.0.0.1:4042/documents/product-report-vnext-minimal/design`\n  confirmed 85% to 95% max overlay delta `0.014px`.\n- Editor merged main gate: `npm run check` passed type-check, 88 test files,\n  305 tests, and build.\n- Main browser evidence at\n  `http://127.0.0.1:4001/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:4011` confirmed 85% to 95% max overlay delta\n  `0.011px`.\n\n## Intentionally Not Changed\n\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, or document package behavior\n  changed.\n- No WYSIWYG, free text input, command authoring readiness, or document editing\n  behavior changed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility or visual-regression readiness claim was made.\n\n## RISK\n\n- Backend `/health` still reports production blocked.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- git deregistered the Editor worktree and deleted the merged branch, but the\n  residual `.worktrees/editor-selection-overlay-zoom-motion-sync` folder could\n  not be removed because local command policy blocked recursive deletion.\n- The browser check proves the 85% to 95% local-loopback path and moving-frame\n  overlay geometry; it is not a full cross-browser visual-regression suite.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Cross-browser zoom motion quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n\n## Next Work\n\nContinue Editor frontend work component-by-component. The next visual polish\ncandidate should stay bounded the same way: define the UI term first, add\nfocused evidence, verify against the local loopback path, and avoid promoting\nmap truth from a bounded browser check.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-structure-panel-narrow-width-visibility-2026-08-29",
+      "title": "Editor Structure Panel Narrow Width Visibility",
+      "path": "docs/domains/editor-structure-panel-narrow-width-visibility-2026-08-29.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Bounded implementation evidence for an Editor Structure panel narrow desktop visibility bugfix without promoting Editor product truth or authoring readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "2b711c87e4bb036fa2c172550093dbd4fddc91ac",
+          "pathOrContractId": "src/styles/editor.css"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "2b711c87e4bb036fa2c172550093dbd4fddc91ac",
+          "pathOrContractId": "src/tests/workspaceFrame.test.ts"
+        }
+      ],
+      "content": "# Editor Structure Panel Narrow Width Visibility - 2026-08-29\n\nStatus: bounded Editor layout bugfix complete; broad Editor truth remains\nunpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-structure-panel-narrow-width-visibility`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-structure-panel-narrow-width-visibility`\n- Checklist target: `checklist-editor-structure-panel-narrow-width-visibility`\n- Evidence target: `evidence-editor-structure-panel-narrow-width-visibility-2026-08-29`\n\nThis record is work-scoped verification only. It does not enable WYSIWYG, text\ninput, active add-block creation, Backend mutation, persistence behavior,\nproduction Backend readiness, Core truth, broad Editor truth, accessibility\nreadiness, full visual regression readiness, mobile readiness, performance\nreadiness, or FlowDoc product readiness.\n\n## Terminology Boundary\n\n- `Structure panel` means the Editor left-panel surface that helps a creator\n  scan document structure. In code it still uses the existing `OutlinePanel`\n  component boundary.\n- `Outline item` remains the canonical Editor UI row term from the FlowDoc\n  product glossary.\n- `narrow desktop` means the Editor browser session is still a desktop\n  workflow, but the available viewport is around the reported 704px test case.\n  Mobile behavior remains intentionally unclaimed.\n- `right detail panel` means the Editor inspector/detail surface. It remains\n  secondary at the narrow desktop breakpoint and is not removed from wider\n  desktop layout.\n\n## Root Cause\n\nThe left Structure panel was not missing from the Editor draft data. Browser\nevidence showed the `.outline-panel` element existed, but the max-width 980px\nCSS rule set `display: none` on both `.outline-panel` and\n`.editor-side-panel`. At the reproduced 704x880 viewport, the workspace became\none 704px canvas column and the Structure panel computed width was 0.\n\n## PASS\n\nEditor merge commit `2b711c87e4bb036fa2c172550093dbd4fddc91ac` changes the\nEditor design workspace breakpoint so the left Structure panel remains visible\nbeside the canvas at narrow desktop width.\n\nThe <=980px workspace behavior is now:\n\n| Surface | Observed value |\n| --- | --- |\n| Structure panel display | `grid` |\n| Structure panel width at 704px | `280px` |\n| Workspace columns at 704px | `workspaceGridColumns 280px 424px` |\n| Right detail panel display | `none` |\n| Browser console errors | `0` |\n\nThe implementation preserves the existing wider desktop three-column layout\nand does not add authoring, text input, Backend mutation, Core mutation,\ndocument persistence, or active add-block behavior.\n\n## Verification\n\n- Editor pre-fix browser evidence:\n  `http://127.0.0.1:4001/documents/reorder-blocked-target-qa/design` at\n  viewport 704x880 showed `.outline-panel` existed but computed\n  `outlineDisplay` was `none`, Structure panel width was `0`,\n  `workspaceGridColumns` was `704px`, and console error count was `0`.\n- Editor focused RED:\n  `npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose` failed\n  because the max-width 980px media rule still hid `.outline-panel`.\n- Editor focused GREEN:\n  `npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose` passed 1\n  file / 2 tests after the CSS fix.\n- Worktree browser evidence:\n  live Backend mode at\n  `http://127.0.0.1:57257/documents/reorder-blocked-target-qa/design` with\n  Backend `http://127.0.0.1:57256` and viewport 704x880 reported\n  `outlineDisplay grid`, Structure panel width `280`, `sideDisplay none`,\n  `workspaceGridColumns 280px 424px`, and 0 console errors.\n- Editor worktree gate: `npm run check` passed type-check, 90 test files, 313\n  tests, and build.\n- Editor merged main gate: `npm run check` passed type-check, 90 test files,\n  313 tests, and build.\n- Main browser evidence:\n  live Backend mode at\n  `http://127.0.0.1:58516/documents/reorder-blocked-target-qa/design` with\n  Backend `http://127.0.0.1:58515` and viewport 704x880 reported\n  `outlineDisplay grid`, Structure panel width `280`, `sideDisplay none`,\n  `workspaceGridColumns 280px 424px`, and 0 console errors.\n- Project Control baseline `npm run check` passed `check:data`, type-check, 58\n  test files, 329 tests, build, and 6 e2e tests before records were edited.\n- Project Control focused record tests:\n  `npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose`\n  passed 2 files / 3 tests after the new lane test and expected Work lists\n  were added.\n- Project Control record gate first stopped with `PROJECT_INDEX_STALE`; after\n  `npm run generate`, the next gate reached tests and failed 14 existing Editor\n  lane tests because their exact `editor.workIds` lists did not yet include\n  `editor-structure-panel-narrow-width-visibility`.\n- Project Control focused lane verification:\n  `npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/editor-creator-structure-add-affordance-foundation-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose`\n  passed 3 files / 4 tests after only those expected lists were updated.\n- Project Control record gate: `npm run check` passed `check:data`,\n  type-check, 59 test files, 330 tests, build, and 6 e2e tests after records\n  and tests were added.\n- Editor branch cleanup succeeded after merge. `git worktree remove`\n  deregistered the Editor worktree but could not remove the physical folder\n  because the directory was not empty. A later verified recursive cleanup\n  command was rejected by local command policy, so the residual physical folder\n  remains.\n\n## Intentionally Not Changed\n\n- No active add-block command, menu, create flow, text input, or WYSIWYG\n  behavior was enabled.\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, mutation semantics, or document\n  package behavior changed.\n- No Project Control overview/history behavior changed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility, visual-regression, or performance readiness claim was\n  made.\n\n## RISK\n\n- The bugfix is checked in Chromium local loopback only, not a full\n  cross-browser visual-regression suite.\n- Mobile behavior remains intentionally unclaimed.\n- The right detail panel remains hidden at the <=980px breakpoint. A later\n  design lane should add explicit panel controls if creators need detail access\n  without widening the window.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- The residual Editor worktree folder\n  `.worktrees/editor-structure-panel-narrow-width-visibility` remains after git\n  deregistration because local command policy rejected recursive cleanup.\n- Previous residual Editor worktree folders\n  `.worktrees/editor-creator-structure-add-affordance-foundation`,\n  `.worktrees/editor-inspector-detail-navigation-foundation`,\n  `.worktrees/editor-outline-scannability-foundation`, and\n  `.worktrees/editor-selection-context-summary-foundation` remain local cleanup\n  risks.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Real large-document authoring performance remains unknown.\n- Cross-browser Structure panel quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n- The final design for explicit left/right panel controls remains a later UI\n  decision.\n\n## Next Work\n\nA useful next Editor lane is explicit panel control: keep the Structure panel\nas the primary left overview, make the right detail panel intentionally\nopenable/collapsible, and verify the behavior at the desktop widths used by the\nin-app browser.\n"
     },
     {
       "kind": "document",
@@ -7805,6 +7973,16 @@
       "pathOrContractId": "src/tests/selectionOverlay.test.ts",
       "verificationSummary": "Editor merge commit a11db59634873d309a0fb469a6479a099705a28e fixes the bounded selection overlay zoom motion lag reported from the Editor design view. Root cause scope was presentation-only: the selected paper block animates with the scaled paper during viewport-only zoom, while the separate canvas selection overlay previously measured once and then waited for a settle timeout, leaving a visible stale outline before the next geometry update. Pre-fix browser sampling on http://127.0.0.1:4001/documents/product-report-vnext-minimal/design measured stale overlay divergence during 85% to 95% zoom with max delta about 60.47px. Focused RED failed in src/tests/selectionOverlay.test.ts because no animation-frame overlay sync was scheduled, then failed again because applySelectionOverlayStyle was not implemented or used by CanvasOverlayLayer. The Editor fix schedules 24 animation-frame syncs during zoom motion, keeps the existing 180ms settle sync, and applies measured overlay CSS variables directly to the mounted outline element before React's next render. Focused GREEN passed npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose with 1 file and 9 tests. Editor worktree npm run check passed type-check, 88 passed test files, 305 passed tests, and build. Worktree browser evidence on http://127.0.0.1:4042/documents/product-report-vnext-minimal/design measured 85% to 95% max overlay delta 0.014px. Merged Editor main npm run check passed type-check, 88 passed test files, 305 passed tests, and build. Main browser evidence on http://127.0.0.1:4001/documents/product-report-vnext-minimal/design with Backend on http://127.0.0.1:4011 measured 85% to 95% max overlay delta 0.011px. Vite still reports the existing chunk-size warning. The Editor npm install in the lane reported 5 high severity vulnerabilities. git deregistered the Editor worktree and deleted the merged branch, but the residual .worktrees/editor-selection-overlay-zoom-motion-sync folder could not be removed because the local command policy blocked recursive deletion. This evidence supports only the bounded Editor selection overlay zoom motion bugfix and does not promote broad Editor truth, WYSIWYG readiness, text input readiness, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T09:40:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "2b711c87e4bb036fa2c172550093dbd4fddc91ac",
+      "pathOrContractId": "src/tests/workspaceFrame.test.ts",
+      "verificationSummary": "Editor merge commit 2b711c87e4bb036fa2c172550093dbd4fddc91ac implements the bounded Structure panel narrow-width visibility bugfix for the Editor design workspace. Pre-fix browser evidence at http://127.0.0.1:4001/documents/reorder-blocked-target-qa/design with a 704x880 viewport confirmed .outline-panel existed but computed outlineDisplay was none, outline width was 0, workspaceGridColumns was 704px, and console error count was 0. Focused RED failed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose because a max-width 980px media rule still hid .outline-panel. The fix changes src/styles/editor.css so the <=980px design workspace keeps two columns, Structure panel plus canvas, and only hides the right detail panel at that breakpoint. Focused GREEN passed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose with 1 file and 2 tests. Worktree browser evidence in live Backend mode at http://127.0.0.1:57257/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:57256 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Editor worktree npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Merged Editor main npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Main browser evidence in live Backend mode at http://127.0.0.1:58516/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:58515 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check passed check:data, type-check, 58 test files, 329 tests, build, and 6 e2e tests before record edits. Project Control focused record tests passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 2 files and 3 tests after records were added. Project Control record gate first stopped with PROJECT_INDEX_STALE until npm run generate was run. The next Project Control gate reached tests and failed 14 existing Editor lane tests because their exact Editor workIds lists did not include editor-structure-panel-narrow-width-visibility. After updating only those expected lists, focused Project Control lane verification passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/editor-creator-structure-add-affordance-foundation-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 3 files and 4 tests. Project Control record gate npm run check passed check:data, type-check, 59 test files, 330 tests, build, and 6 e2e tests after records and tests were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-structure-panel-narrow-width-visibility folder could not be removed because a verified recursive cleanup command was rejected by local command policy. Previous residual Editor worktree folders for editor-creator-structure-add-affordance-foundation, editor-inspector-detail-navigation-foundation, editor-outline-scannability-foundation, and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor design workspace Structure panel visibility at the narrow desktop breakpoint. It does not promote broad Editor truth, WYSIWYG readiness, text input readiness, active add-block creation, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, real large-document authoring performance readiness, accessibility readiness, full visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, mobile readiness, live production behavior, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T16:36:00.000Z"
     },
     {
       "kind": "evidence",
