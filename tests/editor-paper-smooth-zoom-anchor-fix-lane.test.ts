@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest"
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js"
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js"
 
-const editorCommit = "aca56f18b4e3e41ca514684fdf47478ce0e9ea00"
-const workId = "editor-workspace-editing-command-group-foundation"
-const phaseId = "phase-editor-workspace-editing-command-group-foundation"
-const checklistId = "checklist-editor-workspace-editing-command-group-foundation"
-const documentId = "doc-editor-workspace-editing-command-group-foundation-2026-08-29"
-const evidenceId = "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+const editorCommit = "7a2a62579a02074e7fdf391f4c56a558740dfbf0"
+const workId = "editor-paper-smooth-zoom-anchor-fix"
+const phaseId = "phase-editor-paper-smooth-zoom-anchor-fix"
+const checklistId = "checklist-editor-paper-smooth-zoom-anchor-fix"
+const documentId = "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29"
+const evidenceId = "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim()
 
-describe("Editor WorkspaceEditingCommandGroup foundation lane", () => {
-  it("records the bounded editing command group component lane without promoting Editor truth", async () => {
+describe("Editor paper smooth zoom anchor fix lane", () => {
+  it("records the bounded zoom-anchor bugfix without promoting Editor truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()))
     const work = model.work.find((item) => item.id === workId)
     const phase = model.phases.find((item) => item.id === phaseId)
@@ -24,7 +24,7 @@ describe("Editor WorkspaceEditingCommandGroup foundation lane", () => {
       nodeId: "editor",
       parentWorkId: "flowdoc-product-development-resumption",
       phaseIds: [phaseId],
-      repositoryIds: ["repo-editor", "repo-project-control"],
+      repositoryIds: ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
       requiredEvidence: [evidenceId],
       workKind: "task",
       workPathIds: ["flowdoc-product-development-resumption", workId],
@@ -39,34 +39,32 @@ describe("Editor WorkspaceEditingCommandGroup foundation lane", () => {
       "doc-work-tree-operating-rules",
       "doc-flowdoc-product-terminology",
       "doc-flowdoc-product-terminology-th",
-      "doc-editor-workspace-shell-foundation-2026-08-28",
-      "doc-editor-workspace-view-tabs-foundation-2026-08-28",
-      "doc-editor-workspace-header-foundation-2026-08-28",
-      "doc-editor-workspace-status-strip-foundation-2026-08-28",
-      "doc-editor-workspace-toolbar-foundation-2026-08-28",
+      "doc-editor-local-loopback-dev-runner-2026-08-28",
+      "doc-editor-paper-smooth-zoom-surface-2026-08-29",
       documentId,
     ]))
-    expect(work?.expectedOutput).toContain("WorkspaceEditingCommandGroup")
+    expect(work?.expectedOutput).toContain("zoom anchor")
+    expect(work?.expectedOutput).toContain("footprintDelta 0")
+    expect(work?.expectedOutput).toContain("0.16s/ease")
     expect(work?.expectedOutput).toContain(editorCommit)
     expect(work?.expectedOutput).toContain(evidenceId)
-    expect(work?.riskSummary).toContain("does not promote")
+    expect(work?.riskSummary).toContain("does not enable")
 
     expect(phase).toMatchObject({
       activeRole: "product-implementation-agent",
       phaseState: "done",
-      repositoryIds: ["repo-project-control", "repo-editor"],
+      repositoryIds: ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
       workId,
     })
     expect(phase?.verificationTarget).toContain(evidenceId)
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "capture-editing-command-context",
-      "define-workspace-editing-command-group-boundary",
-      "split-editing-command-group-component",
-      "preserve-editor-toolbar-adapter-ownership",
-      "lock-command-readiness-boundary",
+      "capture-zoom-anchor-context",
+      "define-zoom-anchor-boundary",
+      "add-footprint-motion-regression",
+      "synchronize-zoom-footprint-motion",
+      "verify-editor-main-browser-path",
       "keep-map-truth-unpromoted",
-      "prepare-editor-gate",
     ])
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true)
     expect(checklist?.items.every((item) =>
@@ -75,44 +73,50 @@ describe("Editor WorkspaceEditingCommandGroup foundation lane", () => {
 
     expect(document).toMatchObject({
       nodeIds: [],
-      path: "docs/domains/editor-workspace-editing-command-group-foundation-2026-08-29.md",
-      role: "decision",
+      path: "docs/domains/editor-paper-smooth-zoom-anchor-fix-2026-08-29.md",
+      role: "verification",
     })
-    expect(normalize(document?.content)).toContain("WorkspaceEditingCommandGroup")
-    expect(normalize(document?.content)).toContain("UI component")
-    expect(normalize(document?.content)).toContain("toolbar action")
-    expect(normalize(document?.content)).toContain("EditorToolbar adapter")
-    expect(normalize(document?.content)).toContain("does not promote Editor truth")
+    expect(normalize(document?.content)).toContain("zoom anchor")
+    expect(normalize(document?.content)).toContain("viewport-only")
+    expect(normalize(document?.content)).toContain("footprintDelta 0")
+    expect(normalize(document?.content)).toContain("0.16s/ease")
+    expect(normalize(document?.content)).toContain("does not enable WYSIWYG")
     expect(normalize(document?.content)).toContain(evidenceId)
-    expect(normalize(document?.content)).toContain("Implementation Evidence")
     expect(normalize(document?.content)).toContain(editorCommit)
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/components/shell/WorkspaceEditingCommandGroup.tsx",
+        pathOrContractId: "src/components/paper/PaperPage.tsx",
       },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/components/shell/EditorToolbar.tsx",
+        pathOrContractId: "src/components/paper/PaperPageStack.tsx",
       },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/tests/workspaceEditingCommandGroup.test.ts",
+        pathOrContractId: "src/styles/editor.css",
+      },
+      {
+        repositoryId: "repo-editor",
+        commit: editorCommit,
+        pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
       },
     ]))
 
     expect(evidence).toMatchObject({
       commit: editorCommit,
       nodeIds: [],
-      pathOrContractId: "src/tests/workspaceEditingCommandGroup.test.ts",
+      pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
       repositoryId: "repo-editor",
     })
-    expect(evidence?.verificationSummary).toContain("WorkspaceEditingCommandGroup")
-    expect(evidence?.verificationSummary).toContain("87 passed")
-    expect(evidence?.verificationSummary).toContain("298 passed")
+    expect(evidence?.verificationSummary).toContain("zoom anchor")
+    expect(evidence?.verificationSummary).toContain("85%")
+    expect(evidence?.verificationSummary).toContain("95%")
+    expect(evidence?.verificationSummary).toContain("303 passed")
+    expect(evidence?.verificationSummary).toContain("0 console errors")
     expect(evidence?.verificationSummary).toContain("does not promote")
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({

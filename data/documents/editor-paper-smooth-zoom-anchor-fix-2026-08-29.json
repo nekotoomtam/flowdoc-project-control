@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29",
+  "title": "Editor Paper Smooth Zoom Anchor Fix",
+  "path": "docs/domains/editor-paper-smooth-zoom-anchor-fix-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for Editor viewport-only smooth zoom anchor and footprint synchronization without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "7a2a62579a02074e7fdf391f4c56a558740dfbf0",
+      "pathOrContractId": "src/components/paper/PaperPage.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "7a2a62579a02074e7fdf391f4c56a558740dfbf0",
+      "pathOrContractId": "src/components/paper/PaperPageStack.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "7a2a62579a02074e7fdf391f4c56a558740dfbf0",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "7a2a62579a02074e7fdf391f4c56a558740dfbf0",
+      "pathOrContractId": "src/tests/paperSmoothZoomSurface.test.ts"
+    }
+  ]
+}
