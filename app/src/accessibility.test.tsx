@@ -5,20 +5,46 @@ import { App } from "./App.js";
 import { makeProjectReadModel } from "./test/projectModel.js";
 
 const model = makeProjectReadModel();
+const directoryModel = makeProjectReadModel({
+  nodes: [
+    { ...model.nodes[0]!, childIds: ["project-control"] },
+    {
+      ...model.nodes[0]!,
+      id: "project-control",
+      title: "Project Control",
+      parentId: "flowdoc",
+      truthState: "current",
+      childIds: [],
+      repositoryIds: ["repo-project-control"],
+    },
+  ],
+  repositories: [{
+    kind: "repository",
+    id: "repo-project-control",
+    name: "Flowdoc Project Control",
+    remote: "https://example.test/project-control.git",
+    checkoutAlias: "project-control",
+    defaultBranch: "main",
+    ownershipSummary: "Project Control owner.",
+  }],
+});
 
 describe("accessible visual system", () => {
-  it("exposes map levels and current selection without relying on color", () => {
-    render(<App initialModel={model} />);
+  it("exposes overview areas and surface selection without relying on color", () => {
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={directoryModel} />);
 
-    expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
-    expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
-    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+    expect(screen.getByRole("navigation", { name: "Control room surfaces" })).toBeVisible();
+    expect(screen.getByRole("button", { name: "Overview" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Project Control overview" })).toBeVisible();
   });
 
-  it("marks the current node semantically", () => {
-    render(<App initialModel={model} />);
+  it("marks the current focused node semantically", () => {
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={directoryModel} />);
 
-    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ }))
+    expect(screen.getByRole("button", { name: /Project Control, selected branch/ }))
       .toHaveAttribute("aria-current", "page");
   });
 

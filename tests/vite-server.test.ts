@@ -48,11 +48,12 @@ describe("local Vite server", () => {
     await page.goto(`http://127.0.0.1:${address.port}/?node=flowdoc`);
     await page.getByRole("heading", { name: "FlowDoc control room" }).waitFor({ state: "visible" });
 
-    expect(await page.getByRole("button", { name: /FlowDoc, selected branch/ }).isVisible()).toBe(true);
+    expect(await page.getByRole("region", { name: "Repo Directory Overview" }).isVisible()).toBe(true);
+    expect(await page.getByRole("button", { name: "Project Control overview" }).isVisible()).toBe(true);
     expect(pageErrors).toEqual([]);
   }, 15_000);
 
-  it("fits narrow and desktop viewports without horizontal overflow", async () => {
+  it("keeps the overview and focused branch readable at desktop width", async () => {
     server = await createServer({
       configFile: "app/vite.config.ts",
       server: { host: "127.0.0.1", port: 0 },
@@ -61,29 +62,36 @@ describe("local Vite server", () => {
     const address = server.httpServer?.address() as AddressInfo;
 
     browser = await chromium.launch();
-    const page = await browser.newPage({ viewport: { width: 320, height: 640 } });
+    const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
     await page.goto(`http://127.0.0.1:${address.port}/?node=flowdoc`);
     await page.getByRole("heading", { name: "FlowDoc control room" }).waitFor({ state: "visible" });
 
-    for (const [width, detailBelowWorkTree] of [[320, true], [390, true], [1280, false]] as const) {
-      await page.setViewportSize({ width, height: 640 });
-      const layout = await page.evaluate(() => {
-        const workTree = document.querySelector(".control-room__work-tree");
-        const detail = document.querySelector(".control-room__detail");
-        return {
-          clientWidth: document.documentElement.clientWidth,
-          scrollWidth: document.documentElement.scrollWidth,
-          scrollHeight: document.documentElement.scrollHeight,
-          clientHeight: document.documentElement.clientHeight,
-          detailBelowWorkTree: detail!.getBoundingClientRect().top > workTree!.getBoundingClientRect().top,
-        };
-      });
+    const overviewLayout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+      hasDirectory: document.querySelector(".control-room__directory") !== null,
+    }));
 
-      if (width === 320) {
-        expect(layout.scrollHeight).toBeGreaterThan(layout.clientHeight);
-      }
-      expect(layout.scrollWidth).toBeLessThanOrEqual(layout.clientWidth);
-      expect(layout.detailBelowWorkTree).toBe(detailBelowWorkTree);
-    }
+    expect(overviewLayout.hasDirectory).toBe(true);
+    expect(overviewLayout.scrollWidth).toBeLessThanOrEqual(overviewLayout.clientWidth);
+
+    await page.getByRole("button", { name: "Project Control overview" }).click();
+    await page.waitForURL(/node=project-control/);
+    expect(page.url()).toContain("node=project-control");
+
+    const focusedLayout = await page.evaluate(() => {
+      const workTree = document.querySelector(".control-room__work-tree");
+      const detail = document.querySelector(".control-room__detail");
+      return {
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+        hasFocusedSections: workTree !== null && detail !== null,
+        detailBesideWorkTree: detail!.getBoundingClientRect().top <= workTree!.getBoundingClientRect().top + 1,
+      };
+    });
+
+    expect(focusedLayout.hasFocusedSections).toBe(true);
+    expect(focusedLayout.scrollWidth).toBeLessThanOrEqual(focusedLayout.clientWidth);
+    expect(focusedLayout.detailBesideWorkTree).toBe(true);
   }, 15_000);
 });

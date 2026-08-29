@@ -220,15 +220,18 @@ describe("App", () => {
 
     expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
     expect(screen.getByRole("searchbox", { name: "Search Nodes" })).toBeVisible();
-    expect(screen.getByRole("navigation", { name: "System tree" })).toBeVisible();
-    expect(screen.getByRole("region", { name: "Work tree" })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+    expect(screen.queryByRole("navigation", { name: "System tree" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("complementary", { name: "Control detail" })).not.toBeInTheDocument();
   });
 
   it("shows task phase and checklist context without GUI editing", () => {
     const executionModel = makeProjectReadModel({
       rootNodeIds: ["flowdoc"],
       nodes: [
-        appNode("flowdoc", "FlowDoc", null, [], [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], [
           "project-control-hardening",
           "work-tree-phase-checklist-sqlite-contract",
         ]),
@@ -238,7 +241,7 @@ describe("App", () => {
           ...appWork(
             "project-control-hardening",
             "Project Control Hardening",
-            "flowdoc",
+            "project-control",
             "in-progress",
             "Harden Project Control.",
           ),
@@ -251,7 +254,7 @@ describe("App", () => {
           ...appWork(
             "work-tree-phase-checklist-sqlite-contract",
             "Work Tree Contract",
-            "flowdoc",
+            "project-control",
             "in-progress",
             "Implement execution contract.",
           ),
@@ -299,6 +302,7 @@ describe("App", () => {
       }],
     });
 
+    history.replaceState(null, "", "/?node=project-control");
     render(<App initialModel={executionModel} />);
 
     const workTree = screen.getByRole("region", { name: "Work tree" });
@@ -317,9 +321,12 @@ describe("App", () => {
   it("shows checklist evidence support risks in task phase context", () => {
     const riskModel = makeProjectReadModel({
       rootNodeIds: ["flowdoc"],
-      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["execution-task"])],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], ["execution-task"]),
+      ],
       work: [{
-        ...appWork("execution-task", "Execution Task", "flowdoc", "in-progress", "Review execution risks."),
+        ...appWork("execution-task", "Execution Task", "project-control", "in-progress", "Review execution risks."),
         workKind: "task",
         activeRole: "planning-partner",
         expectedOutput: "Readable risk labels.",
@@ -392,6 +399,7 @@ describe("App", () => {
       ],
     });
 
+    history.replaceState(null, "", "/?node=project-control");
     render(<App initialModel={riskModel} />);
 
     const workTree = screen.getByRole("region", { name: "Work tree" });
@@ -419,17 +427,33 @@ describe("App", () => {
     expect(screen.getByRole("button", { name: /Project Control, selected branch/ })).toBeVisible();
   });
 
-  it("presents a control-room work tree for the selected system branch", async () => {
+  it("starts at a repo directory overview before showing branch work detail", async () => {
     const user = userEvent.setup();
     const flowdocNode = appNode("flowdoc", "FlowDoc", null, ["core", "editor"], []);
-    const coreNode = appNode("core", "Core", "flowdoc", [], ["core-docs"]);
-    const editorNode = appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]);
+    const coreNode = {
+      ...appNode("core", "Core", "flowdoc", [], ["core-docs"]),
+      repositoryIds: ["repo-core"],
+    };
+    const editorNode = {
+      ...appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]),
+      repositoryIds: ["repo-editor"],
+    };
     const controlModel = makeProjectReadModel({
       rootNodeIds: ["flowdoc"],
       nodes: [flowdocNode, coreNode, editorNode],
       work: [
-        appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
-        appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+        {
+          ...appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
+          repositoryIds: ["repo-core"],
+        },
+        {
+          ...appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+          repositoryIds: ["repo-editor"],
+        },
+      ],
+      repositories: [
+        appRepository("repo-core", "Flowdoc VNext Core"),
+        appRepository("repo-editor", "Flowdoc VNext Editor"),
       ],
     });
 
@@ -441,23 +465,87 @@ describe("App", () => {
     expect(status).toHaveTextContent("Blocked1");
     expect(status).toHaveTextContent("In progress1");
 
-    const systemTree = screen.getByRole("navigation", { name: "System tree" });
-    expect(within(systemTree).getByRole("button", { name: /FlowDoc, selected branch/ })).toBeVisible();
+    const overview = screen.getByRole("region", { name: "Repo Directory Overview" });
+    expect(within(overview).getByRole("button", { name: "Core overview" })).toBeVisible();
+    expect(within(overview).getByRole("button", { name: "Editor overview" })).toBeVisible();
+    expect(within(overview).getByText("Flowdoc VNext Core")).toBeVisible();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Core Documentation Closure")).not.toBeInTheDocument();
+    expect(screen.queryByText("Editor Polish")).not.toBeInTheDocument();
+
+    await user.click(within(overview).getByRole("button", { name: "Core overview" }));
+
+    expect(window.location.search).toBe("?node=core");
     const workTree = screen.getByRole("region", { name: "Work tree" });
     expect(within(workTree).getByText("Core Documentation Closure")).toBeVisible();
-    expect(within(workTree).getByText("Editor Polish")).toBeVisible();
     const coreChecklist = within(workTree).getByRole("list", { name: "Core Documentation Closure checklist" });
-    expect(within(coreChecklist).getByText("Ready")).toBeVisible();
-    expect(within(coreChecklist).getAllByText("Review")).toHaveLength(2);
-    expect(within(coreChecklist).getByText("Repository link needed")).toBeVisible();
+    expect(within(coreChecklist).getAllByText("Ready")).toHaveLength(2);
+    expect(within(coreChecklist).getAllByText("Review")).toHaveLength(1);
+    expect(within(coreChecklist).getByText("Flowdoc VNext Core")).toBeVisible();
     expect(within(coreChecklist).getByText("Evidence requirement needed")).toBeVisible();
     expect(within(coreChecklist).queryByText("OK")).not.toBeInTheDocument();
     expect(within(coreChecklist).queryByText("!")).not.toBeInTheDocument();
+    expect(within(workTree).queryByText("Editor Polish")).not.toBeInTheDocument();
+  });
 
-    await user.click(within(systemTree).getByRole("button", { name: /Core/ }));
+  it("shows work history separately and returns entries to the focused overview", async () => {
+    const user = userEvent.setup();
+    const historyModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["core", "editor"], []),
+        {
+          ...appNode("core", "Core", "flowdoc", [], ["core-docs"]),
+          repositoryIds: ["repo-core"],
+        },
+        {
+          ...appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]),
+          repositoryIds: ["repo-editor"],
+        },
+      ],
+      repositories: [
+        appRepository("repo-core", "Flowdoc VNext Core"),
+        appRepository("repo-editor", "Flowdoc VNext Editor"),
+      ],
+      work: [
+        {
+          ...appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
+          repositoryIds: ["repo-core"],
+          requiredEvidence: ["evidence-core-docs"],
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          ...appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+          repositoryIds: ["repo-editor"],
+          updatedAt: "2026-08-27T00:00:00.000Z",
+        },
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={historyModel} />);
+
+    await user.click(screen.getByRole("button", { name: "Work History" }));
+
+    const historyView = screen.getByRole("region", { name: "Work History View" });
+    const historyItems = within(historyView).getAllByRole("listitem");
+    expect(historyItems).toHaveLength(2);
+    expect(historyItems[0]).toHaveTextContent("Editor Polish");
+    expect(historyItems[0]).toHaveTextContent("Editor");
+    expect(historyItems[0]).toHaveTextContent("Flowdoc VNext Editor");
+    expect(historyItems[1]).toHaveTextContent("Core Documentation Closure");
+    expect(historyItems[1]).toHaveTextContent("Core");
+    expect(historyItems[1]).toHaveTextContent("Flowdoc VNext Core");
+    expect(within(historyView).queryByText("Evidence requirement needed")).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+
+    await user.click(within(historyView).getByRole("button", { name: "Focus Core in Overview" }));
 
     expect(within(screen.getByRole("complementary", { name: "Control detail" })).getByRole("heading", { name: "Core" }))
       .toBeVisible();
+    expect(window.location.search).toBe("?node=core");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work History View" })).not.toBeInTheDocument();
     const filteredWorkTree = screen.getByRole("region", { name: "Work tree" });
     expect(within(filteredWorkTree).getByText("Core Documentation Closure")).toBeVisible();
     expect(within(filteredWorkTree).queryByText("Editor Polish")).not.toBeInTheDocument();
@@ -466,9 +554,12 @@ describe("App", () => {
   it("summarizes multiple linked repositories in work cards without repeating every repository name", () => {
     const repositoryModel = makeProjectReadModel({
       rootNodeIds: ["flowdoc"],
-      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["multi-repo-work"])],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], ["multi-repo-work"]),
+      ],
       work: [{
-        ...appWork("multi-repo-work", "Multi Repo Work", "flowdoc", "queued", "Coordinate the repo set."),
+        ...appWork("multi-repo-work", "Multi Repo Work", "project-control", "queued", "Coordinate the repo set."),
         repositoryIds: ["project-control", "core", "editor"],
       }],
       repositories: [
@@ -478,6 +569,7 @@ describe("App", () => {
       ],
     });
 
+    history.replaceState(null, "", "/?node=project-control");
     render(<App initialModel={repositoryModel} />);
 
     const checklist = screen.getByRole("list", { name: "Multi Repo Work checklist" });
@@ -490,8 +582,17 @@ describe("App", () => {
   it("opens details without changing the selected node and restores focus on close", async () => {
     const user = userEvent.setup();
     const detailModel = makeProjectReadModel({
-      nodes: [{ ...model.nodes[0]!, id: "project-control", title: "Project Control" }],
-      rootNodeIds: ["project-control"],
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+      rootNodeIds: ["flowdoc"],
     });
     history.replaceState(null, "", "/?node=project-control");
     render(<App initialModel={detailModel} />);
@@ -522,7 +623,7 @@ describe("App", () => {
     render(<App initialModel={routeModel} />);
 
     expect(screen.getByText(/Node “missing” was not found/)).toBeVisible();
-    expect(screen.getByRole("button", { name: /Flowdoc, selected branch/ })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
 
     history.pushState(null, "", "/?node=project-control");
     dispatchEvent(new PopStateEvent("popstate"));
@@ -584,7 +685,7 @@ describe("App", () => {
     render(<App initialModel={routeModel} />);
 
     expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
-    await user.click(screen.getByRole("button", { name: /Project Control, system node/ }));
+    await user.click(screen.getByRole("button", { name: "Project Control overview" }));
     expect(pushState).toHaveBeenCalledWith(null, "", "?node=project-control");
     expect(screen.queryByText(/Node “missing” was not found/)).not.toBeInTheDocument();
 

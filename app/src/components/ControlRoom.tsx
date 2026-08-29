@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type {
   ChecklistRecord,
   IndexDocument,
@@ -28,16 +28,26 @@ const workStateLabels: Record<WorkState, string> = {
   queued: "Queued",
 };
 
+type ControlSurface = "overview" | "history";
+
 export function ControlRoom({
   model,
   currentNodeId,
   onNavigate,
   onOpenDetails,
 }: ControlRoomProps) {
+  const [surface, setSurface] = useState<ControlSurface>("overview");
   const view = useMemo(() => buildControlRoomView(model, currentNodeId), [model, currentNodeId]);
 
   if (view.currentNode === undefined) {
     return <p role="alert">The selected node is unavailable.</p>;
+  }
+
+  const showRootOverview = surface === "overview" && view.currentNode.parentId === null;
+
+  function navigateToOverview(nodeId: string) {
+    setSurface("overview");
+    onNavigate(nodeId);
   }
 
   return (
@@ -52,35 +62,81 @@ export function ControlRoom({
 
       <OverallWorkStatus counts={view.overallCounts} />
 
-      <div className="control-room__columns">
-        <SystemTree
-          rootNodes={view.rootNodes}
-          childrenByParentId={view.childrenByParentId}
-          currentNodeId={currentNodeId}
-          activePathIds={view.activePathIds}
-          onNavigate={onNavigate}
-        />
-        <WorkTree
-          currentNode={view.currentNode}
-          workTree={view.branchWorkTree}
-          totalWorkCount={view.branchWork.length}
-          workById={view.workById}
-          phasesByWorkId={view.phasesByWorkId}
-          checklistsByPhaseId={view.checklistsByPhaseId}
+      <SurfaceSwitch surface={surface} onChange={setSurface} />
+
+      {surface === "history" ? (
+        <WorkHistoryView
+          items={view.historyWork}
+          nodesById={view.nodesById}
           repositoriesById={view.repositoriesById}
+          onFocusOverview={navigateToOverview}
         />
-        <ControlDetail
-          node={view.currentNode}
-          childCount={view.directChildCount}
-          branchWorkCount={view.branchWork.length}
-          nodeWork={view.nodeWork}
-          documents={view.nodeDocuments}
-          evidenceCount={view.nodeEvidenceCount}
-          repositories={view.nodeRepositories}
-          onOpenDetails={onOpenDetails}
+      ) : showRootOverview ? (
+        <RepoDirectoryOverview
+          nodes={view.directoryNodes}
+          childrenByParentId={view.childrenByParentId}
+          work={model.work}
+          repositoriesById={view.repositoriesById}
+          onNavigate={navigateToOverview}
         />
-      </div>
+      ) : (
+        <div className="control-room__columns">
+          <SystemTree
+            rootNodes={view.rootNodes}
+            childrenByParentId={view.childrenByParentId}
+            currentNodeId={currentNodeId}
+            activePathIds={view.activePathIds}
+            onNavigate={navigateToOverview}
+          />
+          <WorkTree
+            currentNode={view.currentNode}
+            workTree={view.branchWorkTree}
+            totalWorkCount={view.branchWork.length}
+            workById={view.workById}
+            phasesByWorkId={view.phasesByWorkId}
+            checklistsByPhaseId={view.checklistsByPhaseId}
+            repositoriesById={view.repositoriesById}
+          />
+          <ControlDetail
+            node={view.currentNode}
+            childCount={view.directChildCount}
+            branchWorkCount={view.branchWork.length}
+            nodeWork={view.nodeWork}
+            documents={view.nodeDocuments}
+            evidenceCount={view.nodeEvidenceCount}
+            repositories={view.nodeRepositories}
+            onOpenDetails={onOpenDetails}
+          />
+        </div>
+      )}
     </>
+  );
+}
+
+function SurfaceSwitch({
+  surface,
+  onChange,
+}: {
+  surface: ControlSurface;
+  onChange: (surface: ControlSurface) => void;
+}) {
+  return (
+    <nav className="control-room__surface-switch" aria-label="Control room surfaces">
+      <button
+        type="button"
+        aria-pressed={surface === "overview"}
+        onClick={() => onChange("overview")}
+      >
+        Overview
+      </button>
+      <button
+        type="button"
+        aria-pressed={surface === "history"}
+        onClick={() => onChange("history")}
+      >
+        Work History
+      </button>
+    </nav>
   );
 }
 
@@ -93,6 +149,152 @@ function OverallWorkStatus({ counts }: { counts: Record<WorkState, number> }) {
           <strong>{counts[state]}</strong>
         </div>
       ))}
+    </section>
+  );
+}
+
+function RepoDirectoryOverview({
+  nodes,
+  childrenByParentId,
+  work,
+  repositoriesById,
+  onNavigate,
+}: {
+  nodes: IndexNode[];
+  childrenByParentId: Map<string | null, IndexNode[]>;
+  work: IndexWork[];
+  repositoriesById: Map<string, RepositoryRecord>;
+  onNavigate: (nodeId: string) => void;
+}) {
+  return (
+    <section className="control-room__directory" aria-label="Repo Directory Overview">
+      <header>
+        <div>
+          <p className="control-room__eyebrow">Overview</p>
+          <h2>Repo Directory Overview</h2>
+        </div>
+        <span>{nodes.length} areas</span>
+      </header>
+
+      {nodes.length === 0 ? (
+        <p className="control-room__empty">No repository or area entries are recorded yet.</p>
+      ) : (
+        <ol className="control-room__directory-grid">
+          {nodes.map((node) => (
+            <li key={node.id}>
+              <RepoDirectoryCard
+                node={node}
+                work={work}
+                childrenByParentId={childrenByParentId}
+                repositoriesById={repositoriesById}
+                onNavigate={onNavigate}
+              />
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
+  );
+}
+
+function RepoDirectoryCard({
+  node,
+  work,
+  childrenByParentId,
+  repositoriesById,
+  onNavigate,
+}: {
+  node: IndexNode;
+  work: IndexWork[];
+  childrenByParentId: Map<string | null, IndexNode[]>;
+  repositoriesById: Map<string, RepositoryRecord>;
+  onNavigate: (nodeId: string) => void;
+}) {
+  const branchIds = collectBranchIds(node, childrenByParentId);
+  const branchWork = work.filter((item) => branchIds.has(item.nodeId));
+  const blockedCount = branchWork.filter((item) => item.workState === "blocked").length;
+  const repositories = node.repositoryIds
+    .map((repositoryId) => repositoriesById.get(repositoryId)?.name ?? repositoryId)
+    .sort(compareText);
+
+  return (
+    <article className="control-room__directory-card">
+      <button
+        type="button"
+        aria-label={`${node.title} overview`}
+        onClick={() => onNavigate(node.id)}
+      >
+        <span>{node.title}</span>
+        <StatusBadge kind="truth" value={node.truthState} />
+      </button>
+      <p className="control-room__directory-summary">{node.summary}</p>
+      {repositories.length === 0 ? null : (
+        <p className="control-room__directory-repos">{repositories.join(", ")}</p>
+      )}
+      <dl className="control-room__directory-counts">
+        <div><dt>Work</dt><dd>{branchWork.length}</dd></div>
+        <div><dt>Blocked</dt><dd>{blockedCount}</dd></div>
+        <div><dt>Evidence</dt><dd>{node.evidenceIds.length}</dd></div>
+      </dl>
+    </article>
+  );
+}
+
+function WorkHistoryView({
+  items,
+  nodesById,
+  repositoriesById,
+  onFocusOverview,
+}: {
+  items: IndexWork[];
+  nodesById: Map<string, IndexNode>;
+  repositoriesById: Map<string, RepositoryRecord>;
+  onFocusOverview: (nodeId: string) => void;
+}) {
+  return (
+    <section className="control-room__history" aria-label="Work History View">
+      <header>
+        <div>
+          <p className="control-room__eyebrow">History</p>
+          <h2>Work History View</h2>
+        </div>
+        <span>{items.length} records</span>
+      </header>
+
+      {items.length === 0 ? (
+        <p className="control-room__empty">No work history is recorded yet.</p>
+      ) : (
+        <ol className="control-room__history-list">
+          {items.map((work) => {
+            const node = nodesById.get(work.nodeId);
+            const repositories = repositoryNamesForWork(work, node, repositoriesById);
+            return (
+              <li key={work.id}>
+                <article className="control-room__history-row">
+                  <div>
+                    <header>
+                      <h3>{work.title}</h3>
+                      <StatusBadge kind="work" value={work.workState} />
+                    </header>
+                    <p>{work.summary}</p>
+                    <p className="control-room__history-meta">
+                      <span>{formatDate(work.updatedAt)}</span>
+                      <span>{node?.title ?? work.nodeId}</span>
+                      {repositories.length === 0 ? null : <span>{repositories.join(", ")}</span>}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onFocusOverview(work.nodeId)}
+                  >
+                    Focus {node?.title ?? work.nodeId} in Overview
+                  </button>
+                </article>
+              </li>
+            );
+          })}
+        </ol>
+      )}
     </section>
   );
 }
@@ -466,12 +668,15 @@ function buildControlRoomView(model: ProjectReadModel, currentNodeId: string) {
   const nodeRepositories = currentNode === undefined ? [] : recordsForIds(currentNode.repositoryIds, model.repositories);
 
   return {
+    nodesById,
     rootNodes: rootNodes(model.nodes),
     childrenByParentId,
     currentNode,
+    directoryNodes: currentNode === undefined ? [] : (childrenByParentId.get(currentNode.id) ?? []),
     activePathIds,
     branchWork,
     branchWorkTree,
+    historyWork: [...model.work].sort(compareHistoryWork),
     nodeWork,
     nodeDocuments,
     nodeRepositories,
@@ -602,6 +807,11 @@ function compareWork(left: IndexWork, right: IndexWork): number {
   return updated !== 0 ? updated : compareText(left.title, right.title);
 }
 
+function compareHistoryWork(left: IndexWork, right: IndexWork): number {
+  const updated = right.updatedAt.localeCompare(left.updatedAt);
+  return updated !== 0 ? updated : compareText(left.title, right.title);
+}
+
 function comparePhases(left: PhaseRecord, right: PhaseRecord): number {
   return left.order - right.order || compareText(left.title, right.title) || compareText(left.id, right.id);
 }
@@ -612,4 +822,22 @@ function compareNodes(left: IndexNode, right: IndexNode): number {
 
 function compareText(left: string, right: string): number {
   return left < right ? -1 : left > right ? 1 : 0;
+}
+
+function repositoryNamesForWork(
+  work: IndexWork,
+  node: IndexNode | undefined,
+  repositoriesById: Map<string, RepositoryRecord>,
+): string[] {
+  const repositoryIds = work.repositoryIds.length === 0
+    ? node?.repositoryIds ?? []
+    : work.repositoryIds;
+  return repositoryIds
+    .map((repositoryId) => repositoriesById.get(repositoryId)?.name ?? repositoryId)
+    .sort(compareText);
+}
+
+function formatDate(value: string): string {
+  const [date] = value.split("T");
+  return date ?? value;
 }
