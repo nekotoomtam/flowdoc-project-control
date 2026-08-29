@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-selection-context-summary-foundation",
+  "workId": "editor-selection-context-summary-foundation",
+  "title": "Add Editor Inspector Selection Context Summary",
+  "phaseState": "done",
+  "order": 104,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The summary treats Editor draft state, Preview rendering, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+    "The summary claims WYSIWYG, free text input, command authoring readiness, Backend mutation or persistence readiness, or production readiness.",
+    "The Inspector hides raw facts or removes existing Duplicate, Delete, Move Up, and Move Down controls.",
+    "The component imports Backend, Core, or Editor runtime behavior instead of receiving bounded display facts from InspectorPanel.",
+    "Browser verification cannot show the summary updating when the selected Outline item changes.",
+    "Project Control promotes the broad Editor node from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor selection context summary foundation with checklist target checklist-editor-selection-context-summary-foundation and evidence target evidence-editor-selection-context-summary-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added a role-first selected block context summary above Inspector actions and raw facts so the current selection is easier to read without changing authoring behavior.",
+  "createdAt": "2026-08-29T10:30:00.000Z",
+  "updatedAt": "2026-08-29T10:30:00.000Z"
+}
