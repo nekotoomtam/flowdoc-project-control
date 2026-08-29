@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-selection-overlay-zoom-motion-sync",
+  "phaseId": "phase-editor-selection-overlay-zoom-motion-sync",
+  "title": "Editor Selection Overlay Zoom Motion Sync Checklist",
+  "items": [
+    {
+      "id": "capture-selection-overlay-zoom-context",
+      "label": "Capture Project Control, terminology, Editor agreement, prior zoom evidence, user screenshot context, and local-loopback boundaries before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the exact Editor commit, browser measurements, and bounded live Backend mode boundary used for this bugfix.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, prior smooth zoom evidence, the user-provided screenshot, and local loopback context were used before implementation."
+    },
+    {
+      "id": "define-overlay-zoom-boundary",
+      "label": "Define selection overlay zoom motion sync as Editor browser-session presentation timing, not document content, Core truth, Backend persistence, or authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 cites the terminology and scope boundary used in the fix.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "The lane document defines the term as context-only Editor viewport presentation behavior."
+    },
+    {
+      "id": "add-frame-sync-regression",
+      "label": "Add RED regressions requiring frame-level overlay resync during smooth zoom and direct style application for the existing outline.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the focused RED failures.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "Focused RED failed first because no animation-frame sync was scheduled, then because applySelectionOverlayStyle was not implemented or used by CanvasOverlayLayer."
+    },
+    {
+      "id": "sync-overlay-during-motion",
+      "label": "Sync the selected-node overlay repeatedly through zoom-motion frames and apply measured CSS variables directly to the mounted outline element.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 points to CanvasOverlayLayer.tsx, selectionOverlay.ts, and selectionOverlay.test.ts.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "selectionOverlay schedules 24 animation-frame syncs plus the settle timeout; CanvasOverlayLayer applies measured overlay CSS variables to the outline ref before updating React state."
+    },
+    {
+      "id": "verify-editor-main-browser-overlay-delta",
+      "label": "Verify the rendered Editor main browser path changes 85% to 95% with moving-frame overlay delta near zero and no new test or build failure.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence measured max overlay delta 0.011px during 85% to 95% zoom."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this viewport timing bugfix.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "record-cleanup-risk",
+      "label": "Record residual cleanup risk from the editor worktree directory after git deregistered the worktree and deleted the merged branch.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the cleanup limitation separately from product behavior.",
+      "evidenceIds": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+      "verificationNote": "git worktree list no longer reports the Editor lane and branch deletion succeeded; the leftover folder could not be recursively deleted because the local command policy blocked Remove-Item -Recurse."
+    }
+  ],
+  "createdAt": "2026-08-29T09:40:00.000Z",
+  "updatedAt": "2026-08-29T09:40:00.000Z"
+}

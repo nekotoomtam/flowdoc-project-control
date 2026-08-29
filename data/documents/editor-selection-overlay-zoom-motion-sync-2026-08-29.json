@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+  "title": "Editor Selection Overlay Zoom Motion Sync",
+  "path": "docs/domains/editor-selection-overlay-zoom-motion-sync-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for Editor selection overlay synchronization during viewport-only smooth zoom without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+      "pathOrContractId": "src/components/canvas/CanvasOverlayLayer.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+      "pathOrContractId": "src/editor/selection/selectionOverlay.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+      "pathOrContractId": "src/tests/selectionOverlay.test.ts"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "05e1c3d69222fc18c6a92c32e4896508811e2501b648e5acf5d278ae840dfd08",
+  "sourceDigest": "6c9454ed39639bced58573281daaa483e2fd8abf815573115921575a2ecb478e",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -290,6 +290,7 @@
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
+        "editor-selection-overlay-zoom-motion-sync",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -1102,6 +1103,52 @@
     },
     {
       "kind": "work",
+      "id": "editor-selection-overlay-zoom-motion-sync",
+      "title": "Editor Selection Overlay Zoom Motion Sync",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Fix the visible Editor selection overlay lag during viewport-only smooth zoom by tracking selected-node geometry across zoom-motion frames.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+        "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29",
+        "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor merge commit a11db59634873d309a0fb469a6479a099705a28e fixes the bounded selection overlay zoom motion lag by scheduling frame-by-frame selection rect syncs during smooth viewport zoom and applying measured overlay CSS variables directly to the existing outline element before React's next render. Browser evidence confirmed 85% to 95% on main with max overlay delta 0.011px, down from the pre-fix stale overlay delta of about 60.47px. Target evidence id: evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+      "requiredEvidence": [
+        "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T09:40:00.000Z",
+      "updatedAt": "2026-08-29T09:40:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-selection-overlay-zoom-motion-sync"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-selection-overlay-zoom-motion-sync"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-editing-command-group-foundation",
       "title": "Editor WorkspaceEditingCommandGroup Foundation",
       "nodeId": "editor",
@@ -1481,6 +1528,7 @@
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
+        "editor-selection-overlay-zoom-motion-sync",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -2082,6 +2130,33 @@
       "summary": "Added visible Editor shell status for Backend read source and limited authoring, plus disabled authoring control reasons, without enabling authoring behavior or promoting product truth.",
       "createdAt": "2026-08-29T06:26:00.000Z",
       "updatedAt": "2026-08-29T06:26:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-selection-overlay-zoom-motion-sync",
+      "workId": "editor-selection-overlay-zoom-motion-sync",
+      "title": "Sync Editor Selection Overlay During Zoom Motion",
+      "phaseState": "done",
+      "order": 103,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The fix treats viewport-only zoom or selection overlay geometry as document content, Backend persistence, Core package truth, or a durable document mutation.",
+        "The UI claims Backend, Core, Editor, FlowDoc, production, accessibility, visual regression, or product readiness from this local loopback evidence.",
+        "The selected-node overlay stays stale during smooth zoom motion and visibly jumps after the paper block has already moved.",
+        "The implementation enables WYSIWYG, free text input, command authoring readiness, or Backend mutation behavior.",
+        "The browser verification only proves a settled end state and does not inspect the moving zoom frames.",
+        "Project Control promotes Editor node truth from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor selection overlay zoom motion bugfix with checklist target checklist-editor-selection-overlay-zoom-motion-sync and evidence target evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Synchronized the Editor selection overlay with selected paper block geometry throughout viewport-only smooth zoom motion.",
+      "createdAt": "2026-08-29T09:40:00.000Z",
+      "updatedAt": "2026-08-29T09:40:00.000Z"
     },
     {
       "kind": "phase",
@@ -3508,6 +3583,86 @@
       ],
       "createdAt": "2026-08-29T06:26:00.000Z",
       "updatedAt": "2026-08-29T06:26:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-selection-overlay-zoom-motion-sync",
+      "phaseId": "phase-editor-selection-overlay-zoom-motion-sync",
+      "title": "Editor Selection Overlay Zoom Motion Sync Checklist",
+      "items": [
+        {
+          "id": "capture-selection-overlay-zoom-context",
+          "label": "Capture Project Control, terminology, Editor agreement, prior zoom evidence, user screenshot context, and local-loopback boundaries before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the exact Editor commit, browser measurements, and bounded live Backend mode boundary used for this bugfix.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, prior smooth zoom evidence, the user-provided screenshot, and local loopback context were used before implementation."
+        },
+        {
+          "id": "define-overlay-zoom-boundary",
+          "label": "Define selection overlay zoom motion sync as Editor browser-session presentation timing, not document content, Core truth, Backend persistence, or authoring readiness.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 cites the terminology and scope boundary used in the fix.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "The lane document defines the term as context-only Editor viewport presentation behavior."
+        },
+        {
+          "id": "add-frame-sync-regression",
+          "label": "Add RED regressions requiring frame-level overlay resync during smooth zoom and direct style application for the existing outline.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the focused RED failures.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "Focused RED failed first because no animation-frame sync was scheduled, then because applySelectionOverlayStyle was not implemented or used by CanvasOverlayLayer."
+        },
+        {
+          "id": "sync-overlay-during-motion",
+          "label": "Sync the selected-node overlay repeatedly through zoom-motion frames and apply measured CSS variables directly to the mounted outline element.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 points to CanvasOverlayLayer.tsx, selectionOverlay.ts, and selectionOverlay.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "selectionOverlay schedules 24 animation-frame syncs plus the settle timeout; CanvasOverlayLayer applies measured overlay CSS variables to the outline ref before updating React state."
+        },
+        {
+          "id": "verify-editor-main-browser-overlay-delta",
+          "label": "Verify the rendered Editor main browser path changes 85% to 95% with moving-frame overlay delta near zero and no new test or build failure.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records focused, worktree, main, and browser verification.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence measured max overlay delta 0.011px during 85% to 95% zoom."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this viewport timing bugfix.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "record-cleanup-risk",
+          "label": "Record residual cleanup risk from the editor worktree directory after git deregistered the worktree and deleted the merged branch.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 records the cleanup limitation separately from product behavior.",
+          "evidenceIds": [
+            "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+          ],
+          "verificationNote": "git worktree list no longer reports the Editor lane and branch deletion succeeded; the leftover folder could not be recursively deleted because the local command policy blocked Remove-Item -Recurse."
+        }
+      ],
+      "createdAt": "2026-08-29T09:40:00.000Z",
+      "updatedAt": "2026-08-29T09:40:00.000Z"
     },
     {
       "kind": "checklist",
@@ -5029,6 +5184,34 @@
         }
       ],
       "content": "# Editor Read Source Authoring Status - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a small Editor frontend honesty lane opened after live\nloopback inspection showed that the Editor could look more editable than it\ncurrently is. The lane separates the visible read source from authoring\ncapability: a backend-backed document can now show `Source: Backend read` while\nstill showing `Authoring: limited`.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth, command\nreadiness, WYSIWYG readiness, text input readiness, frontend design readiness,\nPreview parity, accessibility readiness, visual regression readiness, durable\nstorage readiness, PDF export readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-read-source-authoring-status`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-read-source-authoring-status`\n- Checklist target: `checklist-editor-read-source-authoring-status`\n- Evidence target: `evidence-editor-read-source-authoring-status-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `Backend read source`: define. A visible Editor shell status for an Editor\n  browser session whose current Core envelope came from a Backend document read.\n  It does not prove full Backend persistence or production readiness.\n- `authoring status`: define for this lane as a compact Editor shell fact about\n  whether the current screen exposes full authoring. It is not Core authoring\n  contract truth and not Backend persistence truth.\n- `limited authoring`: define. The current Editor can show the document and run\n  some bounded command paths, but free text input and full WYSIWYG authoring are\n  not enabled by this lane.\n- `disabled authoring control`: define. Insert, Text, Fields, and Table remain\n  disabled toolbar controls. Their tooltip and accessibility label can explain\n  `authoring not enabled`, but the controls still do not own command behavior.\n- `live Backend mode`: define for verification as Editor Vite calling a real\n  Backend server on a local loopback URL while Core remains dependency-only.\n- `ready` and `live`: context-only unless qualified by route, server, corpus,\n  browser, and evidence boundary.\n\n## Component Scope\n\nStatusBar owns:\n\n- presenting `Source: Backend read` for API envelopes;\n- presenting `Authoring: limited` for non-read-only runtime modes;\n- keeping those facts separate from `Core`, `Versions`, and `Mode`.\n\nWorkspaceEditingCommandGroup and EditorToolbar own:\n\n- passing disabled authoring reasons into the current Insert, Text, Fields, and\n  Table controls;\n- exposing aria labels and titles such as `Insert: authoring not enabled` and\n  `Insert block: authoring not enabled`;\n- preserving disabled command presentation without adding command callbacks.\n\nThis lane does not own:\n\n- WYSIWYG, text input, caret, selection editing, free-form document editing, or\n  full authoring;\n- command activation, command readiness, or new mutation operations;\n- Core document package semantics, Core runtime nodes, Core mutation results,\n  or Core authoring contracts;\n- Backend document record persistence, Backend revision gates, migration,\n  mutation, auth, tenancy, storage, deployment, or production readiness;\n- Preview lifecycle, PDF export, visual regression, accessibility, or map truth\n  promotion.\n\n## Implementation Evidence\n\nEditor commit `b34fa44a25113359004706f32ecdd1d694dbf3e3` changes only the\nEditor shell honesty surface:\n\n- `src/components/shell/StatusBar.tsx` adds source and authoring status facts.\n- `src/components/shell/WorkspaceEditingCommandGroup.tsx` accepts disabled\n  reasons and applies them to aria labels and titles.\n- `src/components/shell/EditorToolbar.tsx` passes `authoring not enabled` to\n  the disabled Insert, Text, Fields, and Table controls.\n- `src/tests/workspaceStatusStrip.test.ts` and\n  `src/tests/workspaceEditingCommandGroup.test.ts` cover the new behavior.\n\nThe focused RED test failed after test setup because the current UI did not\nrender `Source: Backend read`, `Authoring: limited`, or disabled authoring\naria/title labels. After implementation, focused GREEN passed for\n`src/tests/workspaceStatusStrip.test.ts` and\n`src/tests/workspaceEditingCommandGroup.test.ts`: 2 test files passed and 5\ntests passed.\n\nShell-adjacent regression tests passed for\n`src/tests/workspaceEditingCommandGroup.test.ts`,\n`src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n`src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n`src/tests/workspaceStatusStrip.test.ts`,\n`src/tests/documentWorkspaceRoute.test.ts`,\n`src/tests/realdocDocumentWorkspaceTabs.test.ts`, and\n`src/tests/editorBackendUnavailableHonesty.test.ts`: 9 test files passed and 20\ntests passed.\n\nEditor worktree `npm run check` passed type-check, 87 test files, 299 tests,\nand Vite build. Editor merged main `npm run check` also passed type-check, 87\ntest files, 299 tests, and Vite build.\n\nLive Backend mode verification:\n\n- `npm run dev:local-loopback:smoke` passed in the Editor worktree with Backend\n  and Editor on random loopback ports while Core remained dependency-only.\n- A Chrome browser check opened the worktree Editor through live Backend mode,\n  observed Backend `GET /documents?limit=24`, `GET /capabilities/versions`, and\n  `GET /documents/product-report-vnext-minimal` with status 200, then confirmed\n  the design route showed `Source: Backend read`, `Authoring: limited`,\n  `Core: api r3`, and `Insert block: authoring not enabled`.\n- The browser check wrote no evidence fixture and clicked no mutation control.\n\nProject Control registration keeps the Editor Project Control Node at\n`unknown` and does not add this evidence to `editor.documentIds` or\n`editor.evidenceIds`.\n\n## Risks\n\n- This lane improves honesty, not authoring capability. Users still cannot type\n  and edit the full document as a WYSIWYG editor.\n- `Mode: active` remains a Core runtime mode fact; `Authoring: limited` is added\n  to prevent reading that as full UI authoring readiness.\n- Local loopback evidence does not prove deployed Backend compatibility,\n  production storage, auth, tenancy, rate limits, telemetry, backup, rollback,\n  cross-browser behavior, visual regression, or accessibility readiness.\n- Backend `/health` still reports production blocked.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- The primary Core checkout still has unrelated deleted\n  `packages/pdf-renderer-pilot/fixtures/**` files. They were not edited or\n  reverted by this lane.\n\n## Unknowns\n\n- Which full authoring path should be opened first: text input, structured\n  insert, fields, tables, or a narrower command gate.\n- Whether the final frontend redesign should keep these labels in the status\n  bar, move them into a denser header state, or replace them with a richer\n  document/session badge model.\n- The ownership and test shape for WYSIWYG, caret, IME, clipboard, undo/redo,\n  collaborative edits, and Backend persistence remain unresolved.\n- Production Backend readiness, broad Editor runtime truth, broad Core truth,\n  and FlowDoc product readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor redesign, but treat any slice that\ntouches document loading, mutation, persistence, or visible source/authoring\nclaims as live Backend mode work. For low-risk visual slices, the next smallest\ntoolbar candidates remain `WorkspacePaperControlGroup` and\n`WorkspaceZoomControlGroup`. For product behavior, the next larger planning\ntopic is an authoring gate that chooses the first real editable path and its\nCore/Backend evidence boundary before enabling controls.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+      "title": "Editor Selection Overlay Zoom Motion Sync",
+      "path": "docs/domains/editor-selection-overlay-zoom-motion-sync-2026-08-29.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Bounded implementation evidence for Editor selection overlay synchronization during viewport-only smooth zoom without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+          "pathOrContractId": "src/components/canvas/CanvasOverlayLayer.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+          "pathOrContractId": "src/editor/selection/selectionOverlay.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+          "pathOrContractId": "src/tests/selectionOverlay.test.ts"
+        }
+      ],
+      "content": "# Editor Selection Overlay Zoom Motion Sync - 2026-08-29\n\nStatus: bounded Editor viewport-only selection overlay zoom motion bugfix\ncomplete; broad Editor truth remains unpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-selection-overlay-zoom-motion-sync`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-selection-overlay-zoom-motion-sync`\n- Checklist target: `checklist-editor-selection-overlay-zoom-motion-sync`\n- Evidence target: `evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29`\n\nThis record is work-scoped verification only. It does not promote broad Editor,\nBackend, Core, FlowDoc, frontend Node, WYSIWYG, text input, authoring, or\nproduction readiness.\n\n## Terminology Boundary\n\n- `selection overlay zoom motion sync` means the Editor browser-session\n  selected-node outline tracks the selected paper block geometry while\n  viewport-only zoom motion is still moving.\n- `selection overlay` is the separate canvas outline around the selected paper\n  block. It is presentation feedback only.\n- These are context-only Editor presentation concepts. They are not document\n  content, Backend document records, Core document package truth, durable\n  mutations, or authoring readiness.\n\n## PASS\n\nEditor merge commit `a11db59634873d309a0fb469a6479a099705a28e` fixes the\nvisible selection overlay lag during smooth viewport zoom.\n\nBefore the fix, browser sampling during 85% to 95% zoom measured the selected\nblock moving while the canvas selection overlay stayed stale, with max\ndivergence about `60.47px`. After the fix, the main browser measurement for\nthe same 85% to 95% path measured max overlay delta `0.011px`.\n\nThe implementation keeps the previous zoom surface and anchor fix intact:\n\n| Surface | Result |\n| --- | --- |\n| `selectionOverlay` scheduler | Runs 24 animation-frame syncs during zoom motion and keeps the existing 180ms settle sync. |\n| `CanvasOverlayLayer` | Applies measured CSS variables directly to the mounted outline element before waiting for the next React render. |\n| Selection state | Remains read-only presentation feedback. |\n| Authoring | Remains limited; this does not enable WYSIWYG, text input, or mutations. |\n\n## Verification\n\n- Editor focused RED:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  failed because no animation-frame overlay sync was scheduled.\n- Editor focused RED after tightening:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  failed because `applySelectionOverlayStyle` was not implemented or used by\n  `CanvasOverlayLayer`.\n- Editor focused GREEN:\n  `npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose`\n  passed 1 file / 9 tests.\n- Editor worktree gate: `npm run check` passed type-check, 88 test files, 305\n  tests, and build.\n- Worktree browser evidence at\n  `http://127.0.0.1:4042/documents/product-report-vnext-minimal/design`\n  confirmed 85% to 95% max overlay delta `0.014px`.\n- Editor merged main gate: `npm run check` passed type-check, 88 test files,\n  305 tests, and build.\n- Main browser evidence at\n  `http://127.0.0.1:4001/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:4011` confirmed 85% to 95% max overlay delta\n  `0.011px`.\n\n## Intentionally Not Changed\n\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, or document package behavior\n  changed.\n- No WYSIWYG, free text input, command authoring readiness, or document editing\n  behavior changed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility or visual-regression readiness claim was made.\n\n## RISK\n\n- Backend `/health` still reports production blocked.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- git deregistered the Editor worktree and deleted the merged branch, but the\n  residual `.worktrees/editor-selection-overlay-zoom-motion-sync` folder could\n  not be removed because local command policy blocked recursive deletion.\n- The browser check proves the 85% to 95% local-loopback path and moving-frame\n  overlay geometry; it is not a full cross-browser visual-regression suite.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Cross-browser zoom motion quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n\n## Next Work\n\nContinue Editor frontend work component-by-component. The next visual polish\ncandidate should stay bounded the same way: define the UI term first, add\nfocused evidence, verify against the local loopback path, and avoid promoting\nmap truth from a bounded browser check.\n"
     },
     {
       "kind": "document",
@@ -6832,6 +7015,16 @@
       "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts",
       "verificationSummary": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 implements the bounded Editor read source and authoring status honesty lane. StatusBar now renders Source: Backend read for API envelopes and Authoring: limited for non-read-only runtime modes, while WorkspaceEditingCommandGroup and EditorToolbar expose disabled editing command reasons such as Insert: authoring not enabled and Insert block: authoring not enabled. Focused RED failed after test setup because src/tests/workspaceStatusStrip.test.ts expected Source: Backend read and src/tests/workspaceEditingCommandGroup.test.ts expected the disabled authoring aria/title labels before implementation. Focused GREEN passed src/tests/workspaceStatusStrip.test.ts and src/tests/workspaceEditingCommandGroup.test.ts with 2 files and 5 tests. Shell-adjacent regression tests passed 9 files and 20 tests. Editor worktree npm run check passed type-check, 87 passed test files, 299 passed tests, and build. npm run dev:local-loopback:smoke passed in the Editor worktree with Backend and Editor on random loopback ports while Core remained dependency-only. A Chrome browser check in live Backend mode observed Backend GET /documents?limit=24, GET /capabilities/versions, and GET /documents/product-report-vnext-minimal at 200 while the design route displayed Source: Backend read, Authoring: limited, Core: api r3, and Insert block: authoring not enabled; that browser check wrote no files and clicked no mutations. Merged Editor main npm run check passed type-check, 87 passed test files, 299 passed tests, and build. npm install still reports 5 high severity vulnerabilities, Vite still reports the existing chunk-size warning, Backend /health still reports production blocked, and the primary Core checkout still has unrelated deleted pdf-renderer-pilot fixture files. This evidence supports only the bounded Editor UI honesty status lane and does not promote broad Editor truth, command readiness, WYSIWYG readiness, text input readiness, Backend readiness, Core truth, live production behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T06:26:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "a11db59634873d309a0fb469a6479a099705a28e",
+      "pathOrContractId": "src/tests/selectionOverlay.test.ts",
+      "verificationSummary": "Editor merge commit a11db59634873d309a0fb469a6479a099705a28e fixes the bounded selection overlay zoom motion lag reported from the Editor design view. Root cause scope was presentation-only: the selected paper block animates with the scaled paper during viewport-only zoom, while the separate canvas selection overlay previously measured once and then waited for a settle timeout, leaving a visible stale outline before the next geometry update. Pre-fix browser sampling on http://127.0.0.1:4001/documents/product-report-vnext-minimal/design measured stale overlay divergence during 85% to 95% zoom with max delta about 60.47px. Focused RED failed in src/tests/selectionOverlay.test.ts because no animation-frame overlay sync was scheduled, then failed again because applySelectionOverlayStyle was not implemented or used by CanvasOverlayLayer. The Editor fix schedules 24 animation-frame syncs during zoom motion, keeps the existing 180ms settle sync, and applies measured overlay CSS variables directly to the mounted outline element before React's next render. Focused GREEN passed npx vitest run src/tests/selectionOverlay.test.ts --reporter verbose with 1 file and 9 tests. Editor worktree npm run check passed type-check, 88 passed test files, 305 passed tests, and build. Worktree browser evidence on http://127.0.0.1:4042/documents/product-report-vnext-minimal/design measured 85% to 95% max overlay delta 0.014px. Merged Editor main npm run check passed type-check, 88 passed test files, 305 passed tests, and build. Main browser evidence on http://127.0.0.1:4001/documents/product-report-vnext-minimal/design with Backend on http://127.0.0.1:4011 measured 85% to 95% max overlay delta 0.011px. Vite still reports the existing chunk-size warning. The Editor npm install in the lane reported 5 high severity vulnerabilities. git deregistered the Editor worktree and deleted the merged branch, but the residual .worktrees/editor-selection-overlay-zoom-motion-sync folder could not be removed because the local command policy blocked recursive deletion. This evidence supports only the bounded Editor selection overlay zoom motion bugfix and does not promote broad Editor truth, WYSIWYG readiness, text input readiness, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T09:40:00.000Z"
     },
     {
       "kind": "evidence",

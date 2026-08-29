@@ -130,6 +130,7 @@ describe("Editor paper smooth zoom anchor fix lane", () => {
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
+        "editor-selection-overlay-zoom-motion-sync",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",

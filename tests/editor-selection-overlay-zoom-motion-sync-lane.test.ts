@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest"
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js"
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js"
 
-const editorCommit = "58f3002363b29662bb02042fdb1021236844cbc1"
-const workId = "editor-paper-smooth-zoom-surface"
-const phaseId = "phase-editor-paper-smooth-zoom-surface"
-const checklistId = "checklist-editor-paper-smooth-zoom-surface"
-const documentId = "doc-editor-paper-smooth-zoom-surface-2026-08-29"
-const evidenceId = "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+const editorCommit = "a11db59634873d309a0fb469a6479a099705a28e"
+const workId = "editor-selection-overlay-zoom-motion-sync"
+const phaseId = "phase-editor-selection-overlay-zoom-motion-sync"
+const checklistId = "checklist-editor-selection-overlay-zoom-motion-sync"
+const documentId = "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+const evidenceId = "evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim()
 
-describe("Editor paper smooth zoom surface lane", () => {
-  it("records the bounded smooth viewport zoom lane without promoting Editor truth", async () => {
+describe("Editor selection overlay zoom motion sync lane", () => {
+  it("records the bounded selection overlay zoom bugfix without promoting Editor truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()))
     const work = model.work.find((item) => item.id === workId)
     const phase = model.phases.find((item) => item.id === phaseId)
@@ -40,13 +40,14 @@ describe("Editor paper smooth zoom surface lane", () => {
       "doc-flowdoc-product-terminology",
       "doc-flowdoc-product-terminology-th",
       "doc-editor-local-loopback-dev-runner-2026-08-28",
-      "doc-editor-workspace-toolbar-foundation-2026-08-28",
-      "doc-editor-read-source-authoring-status-2026-08-29",
+      "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+      "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29",
       documentId,
     ]))
-    expect(work?.expectedOutput).toContain("smooth viewport zoom")
-    expect(work?.expectedOutput).toContain("50%, 85%, 100%, and 125%")
-    expect(work?.expectedOutput).toContain("no Backend mutation")
+    expect(work?.expectedOutput).toContain("selection overlay")
+    expect(work?.expectedOutput).toContain("zoom motion")
+    expect(work?.expectedOutput).toContain("max overlay delta")
+    expect(work?.expectedOutput).toContain("0.011px")
     expect(work?.expectedOutput).toContain(editorCommit)
     expect(work?.expectedOutput).toContain(evidenceId)
     expect(work?.riskSummary).toContain("does not enable")
@@ -60,14 +61,13 @@ describe("Editor paper smooth zoom surface lane", () => {
     expect(phase?.verificationTarget).toContain(evidenceId)
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "capture-smooth-zoom-context",
-      "define-viewport-only-zoom-boundary",
-      "add-paper-zoom-control-surface",
-      "add-smooth-paper-motion",
-      "keep-selection-overlay-aligned-after-motion",
-      "verify-live-backend-mode-zoom-path",
+      "capture-selection-overlay-zoom-context",
+      "define-overlay-zoom-boundary",
+      "add-frame-sync-regression",
+      "sync-overlay-during-motion",
+      "verify-editor-main-browser-overlay-delta",
       "keep-map-truth-unpromoted",
-      "prepare-editor-gate",
+      "record-cleanup-risk",
     ])
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true)
     expect(checklist?.items.every((item) =>
@@ -76,22 +76,17 @@ describe("Editor paper smooth zoom surface lane", () => {
 
     expect(document).toMatchObject({
       nodeIds: [],
-      path: "docs/domains/editor-paper-smooth-zoom-surface-2026-08-29.md",
-      role: "decision",
+      path: "docs/domains/editor-selection-overlay-zoom-motion-sync-2026-08-29.md",
+      role: "verification",
     })
-    expect(normalize(document?.content)).toContain("smooth viewport zoom")
+    expect(normalize(document?.content)).toContain("selection overlay zoom motion sync")
     expect(normalize(document?.content)).toContain("viewport-only")
-    expect(normalize(document?.content)).toContain("50%, 85%, 100%, and 125%")
-    expect(normalize(document?.content)).toContain("selection overlay")
+    expect(normalize(document?.content)).toContain("60.47px")
+    expect(normalize(document?.content)).toContain("0.011px")
     expect(normalize(document?.content)).toContain("does not enable WYSIWYG")
     expect(normalize(document?.content)).toContain(evidenceId)
     expect(normalize(document?.content)).toContain(editorCommit)
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
-      {
-        repositoryId: "repo-editor",
-        commit: editorCommit,
-        pathOrContractId: "src/components/shell/PaperZoomControls.tsx",
-      },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
@@ -100,21 +95,26 @@ describe("Editor paper smooth zoom surface lane", () => {
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
+        pathOrContractId: "src/editor/selection/selectionOverlay.ts",
+      },
+      {
+        repositoryId: "repo-editor",
+        commit: editorCommit,
+        pathOrContractId: "src/tests/selectionOverlay.test.ts",
       },
     ]))
 
     expect(evidence).toMatchObject({
       commit: editorCommit,
       nodeIds: [],
-      pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
+      pathOrContractId: "src/tests/selectionOverlay.test.ts",
       repositoryId: "repo-editor",
     })
-    expect(evidence?.verificationSummary).toContain("smooth viewport zoom")
+    expect(evidence?.verificationSummary).toContain("selection overlay")
     expect(evidence?.verificationSummary).toContain("85%")
     expect(evidence?.verificationSummary).toContain("95%")
-    expect(evidence?.verificationSummary).toContain("no Backend mutation")
-    expect(evidence?.verificationSummary).toContain("302 passed")
+    expect(evidence?.verificationSummary).toContain("305 passed")
+    expect(evidence?.verificationSummary).toContain("max overlay delta 0.011px")
     expect(evidence?.verificationSummary).toContain("does not promote")
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({

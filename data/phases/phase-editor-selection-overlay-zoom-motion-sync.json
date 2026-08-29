@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-selection-overlay-zoom-motion-sync",
+  "workId": "editor-selection-overlay-zoom-motion-sync",
+  "title": "Sync Editor Selection Overlay During Zoom Motion",
+  "phaseState": "done",
+  "order": 103,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The fix treats viewport-only zoom or selection overlay geometry as document content, Backend persistence, Core package truth, or a durable document mutation.",
+    "The UI claims Backend, Core, Editor, FlowDoc, production, accessibility, visual regression, or product readiness from this local loopback evidence.",
+    "The selected-node overlay stays stale during smooth zoom motion and visibly jumps after the paper block has already moved.",
+    "The implementation enables WYSIWYG, free text input, command authoring readiness, or Backend mutation behavior.",
+    "The browser verification only proves a settled end state and does not inspect the moving zoom frames.",
+    "Project Control promotes Editor node truth from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor selection overlay zoom motion bugfix with checklist target checklist-editor-selection-overlay-zoom-motion-sync and evidence target evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Synchronized the Editor selection overlay with selected paper block geometry throughout viewport-only smooth zoom motion.",
+  "createdAt": "2026-08-29T09:40:00.000Z",
+  "updatedAt": "2026-08-29T09:40:00.000Z"
+}
