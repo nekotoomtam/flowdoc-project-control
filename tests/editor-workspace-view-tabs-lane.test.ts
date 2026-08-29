@@ -124,6 +124,7 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
       repositoryIds: ["repo-editor"],
       workIds: [
         "editor-backend-unavailable-honesty-review",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",

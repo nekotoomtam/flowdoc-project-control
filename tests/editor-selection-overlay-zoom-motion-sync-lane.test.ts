@@ -124,6 +124,7 @@ describe("Editor selection overlay zoom motion sync lane", () => {
       truthState: "unknown",
       workIds: [
         "editor-backend-unavailable-honesty-review",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
