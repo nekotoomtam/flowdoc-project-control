@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-paper-smooth-zoom-anchor-fix",
+  "phaseId": "phase-editor-paper-smooth-zoom-anchor-fix",
+  "title": "Editor Paper Smooth Zoom Anchor Fix Checklist",
+  "items": [
+    {
+      "id": "capture-zoom-anchor-context",
+      "label": "Capture Project Control, terminology, Editor agreement, previous smooth zoom evidence, and local-loopback boundaries before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 records the exact Editor commit, browser check, and bounded live Backend mode boundary used for this bugfix.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, prior smooth zoom evidence, and local loopback context were used before implementation."
+    },
+    {
+      "id": "define-zoom-anchor-boundary",
+      "label": "Define zoom anchor as viewport-only presentation timing, not document content, Core truth, Backend persistence, or authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 cites the terminology and status boundary used in the fix.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "The lane document defines zoom anchor and synchronized zoom footprint as Editor browser-session presentation concepts only."
+    },
+    {
+      "id": "add-footprint-motion-regression",
+      "label": "Add a RED regression that requires the stack and shell zoom footprint motion to stay synchronized with the paper transform.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 records the focused RED test failure.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "Focused RED failed because src/tests/paperSmoothZoomSurface.test.ts expected data-zoom-motion on the paper stack and shell before those markers existed."
+    },
+    {
+      "id": "synchronize-zoom-footprint-motion",
+      "label": "Synchronize paper shell width/height and stack gap/min-height motion with the existing paper transform motion.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 points to PaperPage.tsx, PaperPageStack.tsx, editor.css, and paperSmoothZoomSurface.test.ts.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "PaperPage and PaperPageStack now mark smooth zoom motion; editor.css transitions shell width/height and stack gap/min-height for 160ms with reduced-motion fallback."
+    },
+    {
+      "id": "verify-editor-main-browser-path",
+      "label": "Verify the rendered Editor main browser path changes 85% to 95% with synced footprint motion and no new console errors.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "Editor focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and browser main evidence confirmed stack/shell/paper 0.16s motion, footprintDelta 0, 85% to 95%, and 0 console errors."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this viewport timing bugfix.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    }
+  ],
+  "createdAt": "2026-08-29T08:20:00.000Z",
+  "updatedAt": "2026-08-29T08:20:00.000Z"
+}
