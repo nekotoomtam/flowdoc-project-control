@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest";
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 
-const editorCommit = "6ae950600949ec5c868b86cd0db140c9a9bb5780";
-const workId = "editor-inspector-detail-navigation-foundation";
-const phaseId = "phase-editor-inspector-detail-navigation-foundation";
-const checklistId = "checklist-editor-inspector-detail-navigation-foundation";
-const documentId = "doc-editor-inspector-detail-navigation-foundation-2026-08-29";
-const evidenceId = "evidence-editor-inspector-detail-navigation-foundation-2026-08-29";
+const editorCommit = "f45512f2667d066553b7ffaedfdc85d2c6e1392f";
+const workId = "editor-outline-scannability-foundation";
+const phaseId = "phase-editor-outline-scannability-foundation";
+const checklistId = "checklist-editor-outline-scannability-foundation";
+const documentId = "doc-editor-outline-scannability-foundation-2026-08-29";
+const evidenceId = "evidence-editor-outline-scannability-foundation-2026-08-29";
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim();
 
-describe("Editor Inspector detail navigation foundation lane", () => {
-  it("records the bounded Inspector Details layer without promoting Editor truth", async () => {
+describe("Editor Outline scannability foundation lane", () => {
+  it("records the bounded Outline scannability layer without promoting Editor truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const work = model.work.find((item) => item.id === workId);
     const phase = model.phases.find((item) => item.id === phaseId);
@@ -39,14 +39,13 @@ describe("Editor Inspector detail navigation foundation lane", () => {
       "doc-work-tree-operating-rules",
       "doc-flowdoc-product-terminology",
       "doc-flowdoc-product-terminology-th",
-      "doc-editor-read-source-authoring-status-2026-08-29",
-      "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
-      "doc-editor-selection-context-summary-foundation-2026-08-29",
+      "doc-editor-local-loopback-dev-runner-2026-08-28",
+      "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
       documentId,
     ]));
-    expect(work?.expectedOutput).toContain("Details");
-    expect(work?.expectedOutput).toContain("display: none");
-    expect(work?.expectedOutput).toContain("Columns");
+    expect(work?.expectedOutput).toContain("Outline summary");
+    expect(work?.expectedOutput).toContain("data-outline-type");
+    expect(work?.expectedOutput).toContain("summary-columns");
     expect(work?.expectedOutput).toContain(editorCommit);
     expect(work?.expectedOutput).toContain(evidenceId);
     expect(work?.riskSummary).toContain("does not enable");
@@ -60,11 +59,11 @@ describe("Editor Inspector detail navigation foundation lane", () => {
     expect(phase?.verificationTarget).toContain(evidenceId);
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "capture-inspector-detail-navigation-scope",
-      "define-inspector-details-boundary",
-      "add-inspector-details-red-tests",
-      "add-inspector-details-disclosure",
-      "verify-editor-live-backend-details-path",
+      "capture-outline-scannability-scope",
+      "define-outline-presentation-boundary",
+      "add-outline-scannability-red-tests",
+      "add-outline-summary-and-cues",
+      "verify-editor-live-backend-outline-path",
       "keep-map-truth-unpromoted",
       "record-risk-and-unknowns",
     ]);
@@ -75,23 +74,24 @@ describe("Editor Inspector detail navigation foundation lane", () => {
 
     expect(document).toMatchObject({
       nodeIds: [],
-      path: "docs/domains/editor-inspector-detail-navigation-foundation-2026-08-29.md",
+      path: "docs/domains/editor-outline-scannability-foundation-2026-08-29.md",
       role: "verification",
     });
-    expect(normalize(document?.content)).toContain("Inspector Details layer");
-    expect(normalize(document?.content)).toContain("display: none");
-    expect(normalize(document?.content)).toContain("Source: Backend read");
-    expect(normalize(document?.content)).toContain("Authoring: limited");
-    expect(normalize(document?.content)).toContain(".worktrees/editor-inspector-detail-navigation-foundation");
-    expect(normalize(document?.content)).toContain("could not be removed");
+    expect(normalize(document?.content)).toContain("Outline summary");
+    expect(normalize(document?.content)).toContain("Text 1");
+    expect(normalize(document?.content)).toContain("Columns 1");
+    expect(normalize(document?.content)).toContain("Table 1");
+    expect(normalize(document?.content)).toContain("summary-columns");
     expect(normalize(document?.content)).toContain("does not enable WYSIWYG");
+    expect(normalize(document?.content)).toContain(".worktrees/editor-outline-scannability-foundation");
+    expect(normalize(document?.content)).toContain("could not be removed");
     expect(normalize(document?.content)).toContain(evidenceId);
     expect(normalize(document?.content)).toContain(editorCommit);
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/components/inspector/InspectorPanel.tsx",
+        pathOrContractId: "src/components/outline/OutlinePanel.tsx",
       },
       {
         repositoryId: "repo-editor",
@@ -101,24 +101,20 @@ describe("Editor Inspector detail navigation foundation lane", () => {
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/tests/selectionContextSummary.test.ts",
+        pathOrContractId: "src/tests/outlineScannability.test.ts",
       },
     ]));
 
     expect(evidence).toMatchObject({
       commit: editorCommit,
       nodeIds: [],
-      pathOrContractId: "src/tests/selectionContextSummary.test.ts",
+      pathOrContractId: "src/tests/outlineScannability.test.ts",
       repositoryId: "repo-editor",
     });
-    expect(evidence?.verificationSummary).toContain("Inspector Details layer");
+    expect(evidence?.verificationSummary).toContain("Outline summary");
     expect(evidence?.verificationSummary).toContain("Focused RED");
-    expect(evidence?.verificationSummary).toContain("display: none");
-    expect(evidence?.verificationSummary).toContain("308 passed");
-    expect(evidence?.verificationSummary).toContain("Source: Backend read");
-    expect(evidence?.verificationSummary).toContain("Authoring: limited");
-    expect(evidence?.verificationSummary).toContain(".worktrees/editor-inspector-detail-navigation-foundation");
-    expect(evidence?.verificationSummary).toContain("could not be removed");
+    expect(evidence?.verificationSummary).toContain("310 passed");
+    expect(evidence?.verificationSummary).toContain("summary-columns");
     expect(evidence?.verificationSummary).toContain("does not promote");
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({

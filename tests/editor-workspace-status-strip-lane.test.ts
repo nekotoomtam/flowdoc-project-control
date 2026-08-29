@@ -129,6 +129,7 @@ describe("Editor WorkspaceStatusStrip foundation lane", () => {
         "editor-backend-unavailable-honesty-review",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
+        "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",

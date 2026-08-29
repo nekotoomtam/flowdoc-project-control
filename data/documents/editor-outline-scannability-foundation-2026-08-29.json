@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-editor-outline-scannability-foundation-2026-08-29",
+  "title": "Editor Outline Scannability Foundation",
+  "path": "docs/domains/editor-outline-scannability-foundation-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for an Editor Outline scannability presentation layer without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+      "pathOrContractId": "src/components/outline/OutlinePanel.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+      "pathOrContractId": "src/tests/outlineScannability.test.ts"
+    }
+  ]
+}
