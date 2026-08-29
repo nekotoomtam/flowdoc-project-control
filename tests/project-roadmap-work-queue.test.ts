@@ -158,6 +158,16 @@ const remediationTasks = [
     checklistLength: 7,
   },
   {
+    id: "editor-structure-panel-narrow-width-visibility",
+    nodeId: "editor",
+    workState: "in-review",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-editor-structure-panel-narrow-width-visibility",
+    phaseState: "done",
+    checklistId: "checklist-editor-structure-panel-narrow-width-visibility",
+    checklistLength: 6,
+  },
+  {
     id: "editor-backend-core-live-compatibility-harness",
     nodeId: "flowdoc",
     workState: "in-review",
@@ -283,7 +293,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 34);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 35);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -329,6 +339,7 @@ describe("project roadmap Work Queue", () => {
         "editor-read-source-authoring-status",
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
+        "editor-structure-panel-narrow-width-visibility",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -424,6 +435,7 @@ describe("project roadmap Work Queue", () => {
         "editor-read-source-authoring-status",
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
+        "editor-structure-panel-narrow-width-visibility",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",

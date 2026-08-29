@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest";
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 
-const editorCommit = "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0";
-const workId = "editor-creator-structure-add-affordance-foundation";
-const phaseId = "phase-editor-creator-structure-add-affordance-foundation";
-const checklistId = "checklist-editor-creator-structure-add-affordance-foundation";
-const documentId = "doc-editor-creator-structure-add-affordance-foundation-2026-08-29";
-const evidenceId = "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29";
+const editorCommit = "2b711c87e4bb036fa2c172550093dbd4fddc91ac";
+const workId = "editor-structure-panel-narrow-width-visibility";
+const phaseId = "phase-editor-structure-panel-narrow-width-visibility";
+const checklistId = "checklist-editor-structure-panel-narrow-width-visibility";
+const documentId = "doc-editor-structure-panel-narrow-width-visibility-2026-08-29";
+const evidenceId = "evidence-editor-structure-panel-narrow-width-visibility-2026-08-29";
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim();
 
-describe("Editor creator Structure add affordance foundation lane", () => {
-  it("records disabled add-block affordances and large-structure risk without promoting Editor truth", async () => {
+describe("Editor Structure panel narrow-width visibility lane", () => {
+  it("records the narrow desktop Structure panel fix without promoting Editor truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const work = model.work.find((item) => item.id === workId);
     const phase = model.phases.find((item) => item.id === phaseId);
@@ -41,15 +41,15 @@ describe("Editor creator Structure add affordance foundation lane", () => {
       "doc-flowdoc-product-terminology-th",
       "doc-editor-local-loopback-dev-runner-2026-08-28",
       "doc-editor-outline-scannability-foundation-2026-08-29",
+      "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
       documentId,
     ]));
-    expect(work?.expectedOutput).toContain("Structure");
-    expect(work?.expectedOutput).toContain("disabled");
-    expect(work?.expectedOutput).toContain("1200-item synthetic guard");
+    expect(work?.expectedOutput).toContain("704px");
+    expect(work?.expectedOutput).toContain("Structure panel");
     expect(work?.expectedOutput).toContain(editorCommit);
     expect(work?.expectedOutput).toContain(evidenceId);
     expect(work?.riskSummary).toContain("does not enable WYSIWYG");
-    expect(work?.riskSummary).toContain("real large-document authoring performance readiness");
+    expect(work?.riskSummary).toContain("behavior remains intentionally unclaimed");
 
     expect(phase).toMatchObject({
       activeRole: "product-implementation-agent",
@@ -58,16 +58,15 @@ describe("Editor creator Structure add affordance foundation lane", () => {
       workId,
     });
     expect(phase?.verificationTarget).toContain(evidenceId);
-    expect(phase?.summary).toContain("selected-row affordance count");
+    expect(phase?.summary).toContain("narrow desktop");
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "capture-structure-add-affordance-scope",
-      "define-structure-add-terminology-boundary",
-      "add-structure-add-affordance-red-tests",
-      "add-disabled-structure-add-affordances",
-      "verify-editor-live-backend-structure-path",
-      "keep-authoring-and-map-truth-unpromoted",
-      "record-structure-performance-risks",
+      "capture-narrow-structure-panel-scope",
+      "reproduce-hidden-structure-panel",
+      "add-narrow-width-red-test",
+      "keep-structure-panel-visible",
+      "verify-editor-narrow-live-backend-path",
+      "keep-editor-truth-unpromoted",
     ]);
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
     expect(checklist?.items.every((item) =>
@@ -76,25 +75,18 @@ describe("Editor creator Structure add affordance foundation lane", () => {
 
     expect(document).toMatchObject({
       nodeIds: [],
-      path: "docs/domains/editor-creator-structure-add-affordance-foundation-2026-08-29.md",
+      path: "docs/domains/editor-structure-panel-narrow-width-visibility-2026-08-29.md",
       role: "verification",
     });
     expect(normalize(document?.content)).toContain("Structure panel");
-    expect(normalize(document?.content)).toContain("Add block affordance");
-    expect(normalize(document?.content)).toContain("Document structure");
-    expect(normalize(document?.content)).toContain("1200-item synthetic outline");
+    expect(normalize(document?.content)).toContain("narrow desktop");
+    expect(normalize(document?.content)).toContain("display: none");
+    expect(normalize(document?.content)).toContain("workspaceGridColumns");
     expect(normalize(document?.content)).toContain("does not enable WYSIWYG");
-    expect(normalize(document?.content)).toContain("Real text-block typing performance remains untested");
-    expect(normalize(document?.content)).toContain("Project Control record gate");
-    expect(normalize(document?.content)).toContain(".worktrees/editor-creator-structure-add-affordance-foundation");
+    expect(normalize(document?.content)).toContain("behavior remains intentionally unclaimed");
     expect(normalize(document?.content)).toContain(evidenceId);
     expect(normalize(document?.content)).toContain(editorCommit);
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
-      {
-        repositoryId: "repo-editor",
-        commit: editorCommit,
-        pathOrContractId: "src/components/outline/OutlinePanel.tsx",
-      },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
@@ -103,21 +95,19 @@ describe("Editor creator Structure add affordance foundation lane", () => {
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/tests/outlineScannability.test.ts",
+        pathOrContractId: "src/tests/workspaceFrame.test.ts",
       },
     ]));
 
     expect(evidence).toMatchObject({
       commit: editorCommit,
       nodeIds: [],
-      pathOrContractId: "src/tests/outlineScannability.test.ts",
+      pathOrContractId: "src/tests/workspaceFrame.test.ts",
       repositoryId: "repo-editor",
     });
-    expect(evidence?.verificationSummary).toContain("Structure panel");
-    expect(evidence?.verificationSummary).toContain("Focused RED");
-    expect(evidence?.verificationSummary).toContain("312 passed");
-    expect(evidence?.verificationSummary).toContain("329 passed");
-    expect(evidence?.verificationSummary).toContain("1200 Outline items");
+    expect(evidence?.verificationSummary).toContain("outlineDisplay grid");
+    expect(evidence?.verificationSummary).toContain("workspaceGridColumns 280px 424px");
+    expect(evidence?.verificationSummary).toContain("313 passed");
     expect(evidence?.verificationSummary).toContain("does not promote");
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({
@@ -125,25 +115,6 @@ describe("Editor creator Structure add affordance foundation lane", () => {
       evidenceIds: [],
       repositoryIds: ["repo-editor"],
       truthState: "unknown",
-      workIds: [
-        "editor-backend-unavailable-honesty-review",
-        "editor-creator-structure-add-affordance-foundation",
-        "editor-inspector-detail-navigation-foundation",
-        "editor-local-loopback-dev-runner",
-        "editor-outline-scannability-foundation",
-        "editor-paper-smooth-zoom-anchor-fix",
-        "editor-paper-smooth-zoom-surface",
-        "editor-read-source-authoring-status",
-        "editor-selection-context-summary-foundation",
-        "editor-selection-overlay-zoom-motion-sync",
-        "editor-structure-panel-narrow-width-visibility",
-        "editor-workspace-editing-command-group-foundation",
-        "editor-workspace-header-foundation",
-        "editor-workspace-shell-redesign-foundation",
-        "editor-workspace-status-strip-foundation",
-        "editor-workspace-toolbar-foundation",
-        "editor-workspace-view-tabs-foundation",
-      ],
     });
   });
 });

@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-structure-panel-narrow-width-visibility",
+  "title": "Editor Structure Panel Narrow Width Visibility",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Fix the Editor design workspace breakpoint so the left Structure panel remains visible at narrow desktop widths while the right detail panel stays secondary.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-outline-scannability-foundation-2026-08-29",
+    "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
+    "doc-editor-structure-panel-narrow-width-visibility-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit 2b711c87e4bb036fa2c172550093dbd4fddc91ac keeps the left Structure panel visible at 704px narrow desktop viewport, changes the <=980px design workspace grid to Structure panel plus canvas, keeps the right detail panel hidden at that breakpoint, and adds a regression test in src/tests/workspaceFrame.test.ts. Target evidence id: evidence-editor-structure-panel-narrow-width-visibility-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, active add-block creation, Backend mutation or persistence readiness, Core mutation readiness, production readiness, accessibility readiness, full visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. Mobile behavior remains intentionally unclaimed. The residual current-lane Editor worktree folder remains after git deregistration because local command policy rejected recursive cleanup.",
+  "requiredEvidence": ["evidence-editor-structure-panel-narrow-width-visibility-2026-08-29"],
+  "createdAt": "2026-08-29T16:36:00.000Z",
+  "updatedAt": "2026-08-29T16:36:00.000Z"
+}

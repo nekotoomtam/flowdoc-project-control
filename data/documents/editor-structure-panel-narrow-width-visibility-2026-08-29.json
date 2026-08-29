@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-editor-structure-panel-narrow-width-visibility-2026-08-29",
+  "title": "Editor Structure Panel Narrow Width Visibility",
+  "path": "docs/domains/editor-structure-panel-narrow-width-visibility-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for an Editor Structure panel narrow desktop visibility bugfix without promoting Editor product truth or authoring readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "2b711c87e4bb036fa2c172550093dbd4fddc91ac",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "2b711c87e4bb036fa2c172550093dbd4fddc91ac",
+      "pathOrContractId": "src/tests/workspaceFrame.test.ts"
+    }
+  ]
+}
