@@ -178,6 +178,16 @@ const remediationTasks = [
     checklistLength: 6,
   },
   {
+    id: "editor-paper-smooth-zoom-surface",
+    nodeId: "editor",
+    workState: "in-review",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-editor-paper-smooth-zoom-surface",
+    phaseState: "done",
+    checklistId: "checklist-editor-paper-smooth-zoom-surface",
+    checklistLength: 8,
+  },
+  {
     id: "flowdoc-bounded-browser-compatibility-promotion",
     nodeId: "flowdoc-browser-compatibility",
     workState: "in-review",
@@ -213,7 +223,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 27);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 28);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -251,6 +261,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-local-loopback-dev-runner",
+        "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
@@ -339,6 +350,7 @@ describe("project roadmap Work Queue", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",

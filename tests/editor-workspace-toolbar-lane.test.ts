@@ -129,6 +129,7 @@ describe("Editor WorkspaceToolbar foundation lane", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",

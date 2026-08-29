@@ -2,16 +2,16 @@ import { describe, expect, it } from "vitest"
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js"
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js"
 
-const editorCommit = "b34fa44a25113359004706f32ecdd1d694dbf3e3"
-const workId = "editor-read-source-authoring-status"
-const phaseId = "phase-editor-read-source-authoring-status"
-const checklistId = "checklist-editor-read-source-authoring-status"
-const documentId = "doc-editor-read-source-authoring-status-2026-08-29"
-const evidenceId = "evidence-editor-read-source-authoring-status-2026-08-29"
+const editorCommit = "58f3002363b29662bb02042fdb1021236844cbc1"
+const workId = "editor-paper-smooth-zoom-surface"
+const phaseId = "phase-editor-paper-smooth-zoom-surface"
+const checklistId = "checklist-editor-paper-smooth-zoom-surface"
+const documentId = "doc-editor-paper-smooth-zoom-surface-2026-08-29"
+const evidenceId = "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
 const normalize = (value: string | undefined) => value?.replace(/\s+/gu, " ").trim()
 
-describe("Editor read source authoring status lane", () => {
-  it("records the bounded live Backend read source and limited authoring status lane without promoting Editor truth", async () => {
+describe("Editor paper smooth zoom surface lane", () => {
+  it("records the bounded smooth viewport zoom lane without promoting Editor truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()))
     const work = model.work.find((item) => item.id === workId)
     const phase = model.phases.find((item) => item.id === phaseId)
@@ -40,12 +40,13 @@ describe("Editor read source authoring status lane", () => {
       "doc-flowdoc-product-terminology",
       "doc-flowdoc-product-terminology-th",
       "doc-editor-local-loopback-dev-runner-2026-08-28",
-      "doc-editor-workspace-status-strip-foundation-2026-08-28",
-      "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
+      "doc-editor-workspace-toolbar-foundation-2026-08-28",
+      "doc-editor-read-source-authoring-status-2026-08-29",
       documentId,
     ]))
-    expect(work?.expectedOutput).toContain("Source: Backend read")
-    expect(work?.expectedOutput).toContain("Authoring: limited")
+    expect(work?.expectedOutput).toContain("smooth viewport zoom")
+    expect(work?.expectedOutput).toContain("50%, 85%, 100%, and 125%")
+    expect(work?.expectedOutput).toContain("no Backend mutation")
     expect(work?.expectedOutput).toContain(editorCommit)
     expect(work?.expectedOutput).toContain(evidenceId)
     expect(work?.riskSummary).toContain("does not enable")
@@ -59,11 +60,12 @@ describe("Editor read source authoring status lane", () => {
     expect(phase?.verificationTarget).toContain(evidenceId)
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "capture-read-source-authoring-context",
-      "define-honesty-status-boundary",
-      "add-source-and-authoring-status",
-      "clarify-disabled-editing-controls",
-      "verify-live-backend-mode-read-path",
+      "capture-smooth-zoom-context",
+      "define-viewport-only-zoom-boundary",
+      "add-paper-zoom-control-surface",
+      "add-smooth-paper-motion",
+      "keep-selection-overlay-aligned-after-motion",
+      "verify-live-backend-mode-zoom-path",
       "keep-map-truth-unpromoted",
       "prepare-editor-gate",
     ])
@@ -74,44 +76,45 @@ describe("Editor read source authoring status lane", () => {
 
     expect(document).toMatchObject({
       nodeIds: [],
-      path: "docs/domains/editor-read-source-authoring-status-2026-08-29.md",
+      path: "docs/domains/editor-paper-smooth-zoom-surface-2026-08-29.md",
       role: "decision",
     })
-    expect(normalize(document?.content)).toContain("Source: Backend read")
-    expect(normalize(document?.content)).toContain("Authoring: limited")
-    expect(normalize(document?.content)).toContain("authoring not enabled")
-    expect(normalize(document?.content)).toContain("live Backend mode")
-    expect(normalize(document?.content)).toContain("does not promote Editor truth")
+    expect(normalize(document?.content)).toContain("smooth viewport zoom")
+    expect(normalize(document?.content)).toContain("viewport-only")
+    expect(normalize(document?.content)).toContain("50%, 85%, 100%, and 125%")
+    expect(normalize(document?.content)).toContain("selection overlay")
+    expect(normalize(document?.content)).toContain("does not enable WYSIWYG")
     expect(normalize(document?.content)).toContain(evidenceId)
     expect(normalize(document?.content)).toContain(editorCommit)
     expect(document?.repositoryRefs).toEqual(expect.arrayContaining([
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/components/shell/StatusBar.tsx",
+        pathOrContractId: "src/components/shell/PaperZoomControls.tsx",
       },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/components/shell/WorkspaceEditingCommandGroup.tsx",
+        pathOrContractId: "src/components/canvas/CanvasOverlayLayer.tsx",
       },
       {
         repositoryId: "repo-editor",
         commit: editorCommit,
-        pathOrContractId: "src/tests/workspaceStatusStrip.test.ts",
+        pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
       },
     ]))
 
     expect(evidence).toMatchObject({
       commit: editorCommit,
       nodeIds: [],
-      pathOrContractId: "src/tests/workspaceStatusStrip.test.ts",
+      pathOrContractId: "src/tests/paperSmoothZoomSurface.test.ts",
       repositoryId: "repo-editor",
     })
-    expect(evidence?.verificationSummary).toContain("Source: Backend read")
-    expect(evidence?.verificationSummary).toContain("Authoring: limited")
-    expect(evidence?.verificationSummary).toContain("299 passed")
-    expect(evidence?.verificationSummary).toContain("live Backend mode")
+    expect(evidence?.verificationSummary).toContain("smooth viewport zoom")
+    expect(evidence?.verificationSummary).toContain("85%")
+    expect(evidence?.verificationSummary).toContain("95%")
+    expect(evidence?.verificationSummary).toContain("no Backend mutation")
+    expect(evidence?.verificationSummary).toContain("302 passed")
     expect(evidence?.verificationSummary).toContain("does not promote")
 
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({

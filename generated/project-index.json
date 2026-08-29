@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b67dafaf3aab9770fa68f3d37dbd84f9421a0d5f9771d18d79bd16f9259d0411",
+  "sourceDigest": "ede821b876251baf098af2ca0ddd4d6c688830e94f0ba3a1bc0a6dc004bb3f75",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -287,6 +287,7 @@
       "workIds": [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
@@ -962,6 +963,53 @@
     },
     {
       "kind": "work",
+      "id": "editor-paper-smooth-zoom-surface",
+      "title": "Editor Paper Smooth Zoom Surface",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Add a bounded Editor paper zoom surface with smooth viewport-only motion, fixed zoom presets, and selection overlay resync after zoom motion.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-workspace-toolbar-foundation-2026-08-28",
+        "doc-editor-workspace-status-strip-foundation-2026-08-28",
+        "doc-editor-read-source-authoring-status-2026-08-29",
+        "doc-editor-paper-smooth-zoom-surface-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit 58f3002363b29662bb02042fdb1021236844cbc1 adds smooth viewport zoom through PaperZoomControls with presets 50%, 85%, 100%, and 125%, marks paper zoom as viewport-only, animates paper transform for 160ms with reduced-motion fallback, and schedules selection overlay resync after zoom motion. Browser live Backend mode evidence confirmed 85% to 95%, Source: Backend read, Authoring: limited, no Backend mutation requests, and aligned selected title overlay. Target evidence id: evidence-editor-paper-smooth-zoom-surface-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+      "requiredEvidence": [
+        "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T07:20:00.000Z",
+      "updatedAt": "2026-08-29T07:20:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-paper-smooth-zoom-surface"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-paper-smooth-zoom-surface"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-read-source-authoring-status",
       "title": "Editor Read Source Authoring Status",
       "nodeId": "editor",
@@ -1384,6 +1432,7 @@
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-local-loopback-dev-runner",
+        "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
@@ -1906,6 +1955,33 @@
       "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-paper-smooth-zoom-surface",
+      "workId": "editor-paper-smooth-zoom-surface",
+      "title": "Add Editor Smooth Viewport Zoom Surface",
+      "phaseState": "done",
+      "order": 101,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The lane enables WYSIWYG, free text input, command authoring readiness, or Backend mutation behavior instead of only improving viewport zoom presentation.",
+        "The UI claims Backend, Core, Editor, FlowDoc, production, accessibility, visual regression, or product readiness from local loopback evidence.",
+        "The implementation treats viewport-only zoom as document content, Backend persistence, Core document package truth, or a durable document mutation.",
+        "The smooth zoom motion leaves the selected-node overlay stale after the paper transform settles.",
+        "The status copy uses unqualified live, ready, source, runtime, session, or authoring terms that conflict with product terminology.",
+        "Project Control promotes Editor node truth from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor smooth viewport zoom lane with checklist target checklist-editor-paper-smooth-zoom-surface and evidence target evidence-editor-paper-smooth-zoom-surface-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Added bounded Editor paper zoom controls, smooth viewport-only paper motion, and post-motion selection overlay resync without enabling authoring or promoting product truth.",
+      "createdAt": "2026-08-29T07:20:00.000Z",
+      "updatedAt": "2026-08-29T07:20:00.000Z"
     },
     {
       "kind": "phase",
@@ -3118,6 +3194,96 @@
       ],
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-paper-smooth-zoom-surface",
+      "phaseId": "phase-editor-paper-smooth-zoom-surface",
+      "title": "Editor Paper Smooth Zoom Surface Checklist",
+      "items": [
+        {
+          "id": "capture-smooth-zoom-context",
+          "label": "Capture Project Control, terminology, Editor agreement, prior toolbar/status context, and Backend/Core local-loopback boundaries before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the exact Editor commit, live Backend mode boundary, and dependency context used for this bounded lane.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, local loopback runner records, toolbar foundation records, status honesty records, and Core/Backend boundary context were read before implementation."
+        },
+        {
+          "id": "define-viewport-only-zoom-boundary",
+          "label": "Define smooth zoom as viewport-only presentation, not document content, Core package truth, Backend persistence, or authoring readiness.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 cites the terminology and status boundary used in the UI.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "The lane document defines smooth viewport zoom, viewport-only zoom, paper zoom presets, and post-transition selection overlay sync while preserving Source: Backend read and Authoring: limited honesty."
+        },
+        {
+          "id": "add-paper-zoom-control-surface",
+          "label": "Add paper zoom controls with fixed presets and clear viewport-only labeling.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 points to src/components/shell/PaperZoomControls.tsx, src/components/shell/EditorToolbar.tsx, and src/tests/paperSmoothZoomSurface.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "Editor commit 58f3002363b29662bb02042fdb1021236844cbc1 adds Zoom out, current zoom, presets for 50%, 85%, 100%, and 125%, and Zoom in, with the toolbar label Canvas zoom (viewport only)."
+        },
+        {
+          "id": "add-smooth-paper-motion",
+          "label": "Animate paper transform during viewport zoom while honoring reduced-motion users.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 points to src/components/paper/PaperPage.tsx and src/styles/editor.css.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "PaperPage marks the paper as smooth zoom motion and viewport-only, while CSS transitions transform for 160ms and disables that transition under prefers-reduced-motion: reduce."
+        },
+        {
+          "id": "keep-selection-overlay-aligned-after-motion",
+          "label": "Keep the selected-node overlay aligned after smooth zoom motion settles.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the focused overlay regression and browser overlay measurement.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "A browser check first exposed stale overlay geometry after smooth zoom; the final code schedules post-transition overlay sync, and the final browser check measured the selected title overlay within near-zero deltas after zoom settled."
+        },
+        {
+          "id": "verify-live-backend-mode-zoom-path",
+          "label": "Verify the rendered Editor in live Backend mode changes viewport zoom without Backend mutation requests.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the worktree loopback smoke and browser zoom-path check.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "The browser check opened the design route through live Backend mode, observed only Backend read/capability requests, clicked Zoom in from 85% to 95%, and found no Backend mutation request."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this viewport UI lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run RED/GREEN focused tests, full Editor gates in worktree and merged main, and bounded loopback/browser checks.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records focused, worktree, main, smoke, and browser verification results.",
+          "evidenceIds": [
+            "evidence-editor-paper-smooth-zoom-surface-2026-08-29"
+          ],
+          "verificationNote": "Focused RED failed for missing viewport-only zoom labels/markers and missing post-transition overlay sync, focused GREEN passed, Editor worktree npm run check passed, live Backend mode smoke/browser checks passed, and merged Editor main npm run check passed."
+        }
+      ],
+      "createdAt": "2026-08-29T07:20:00.000Z",
+      "updatedAt": "2026-08-29T07:20:00.000Z"
     },
     {
       "kind": "checklist",
@@ -4600,6 +4766,54 @@
         }
       ],
       "content": "# Editor Local Loopback Dev Runner - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a short operational lane added during the component-by-component Editor frontend redesign work. It creates a one-command local development path for checking the rendered Editor against a live Backend loopback server while keeping Core as a package dependency.\n\nThis lane does not prove product readiness, deployed Backend compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, broad Editor truth, broad Backend truth, broad Core truth, or FlowDoc product truth.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-local-loopback-dev-runner`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-local-loopback-dev-runner`\n- Checklist target: `checklist-editor-local-loopback-dev-runner`\n- Evidence target: `evidence-editor-local-loopback-dev-runner-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for records, code, tests, contracts, and evidence. The Thai terminology companion is coordination context only.\n\n- `dev:local-loopback`: define. The Editor-owned local development command that starts Backend and Editor together for local inspection.\n- `live Backend mode`: define for this lane as the Editor Vite dev server calling a real Backend server on a local loopback URL.\n- `Core runtime dependency`: define. Core is dependency-only here; it is not started as a server process.\n- `Editor browser session`: define as the browser-visible development session served by Vite.\n- `ready`: define only as the runner observing Backend `/health` and Editor `/documents` over loopback. It is not product readiness.\n- `runtime`: split. This lane names Backend loopback server process, Editor Vite dev server, and Core dependency separately.\n\n## Runner Scope\n\nThe runner owns:\n\n- local repository path resolution from the Editor checkout or an Editor worktree;\n- Backend loopback server startup through the Backend `src/server.ts` entrypoint;\n- Editor Vite dev server startup with `VITE_FLOWDOC_BACKEND_URL` pointed at Backend;\n- readiness waits for Backend `/health` and Editor `/documents`;\n- a dry-run JSON plan for tests and review;\n- a smoke mode that starts both services and exits after readiness;\n- cleanup of the two child Node processes when the runner exits.\n\nThe runner does not own:\n\n- Core document semantics, package migration, mutation behavior, or runtime truth;\n- Backend transport, revision gates, persistence records, migration logic, mutation logic, or service readiness truth;\n- Editor product UI behavior, Editor draft behavior, Preview lifecycle, browser history, or route semantics;\n- evidence fixture generation or Project Control map promotion;\n- deployed, production, cross-browser, accessibility, visual, PDF export, or durable storage readiness.\n\nCore is dependency-only. Backend runs as a loopback server process. Editor runs as a Vite dev server. The command is for local development convenience, not a broader compatibility claim.\n\n## Implementation Evidence\n\nEditor commit `a007817b0f21de758e93a7c0b63873ca0414d5a7` adds:\n\n- `scripts/run-local-loopback-dev.mjs`\n- `src/tests/localLoopbackDevRunner.test.ts`\n- `package.json` scripts `dev:local-loopback` and `dev:local-loopback:smoke`\n\nThe focused RED test failed before implementation because `scripts/run-local-loopback-dev.mjs` did not exist. After implementation, `src/tests/localLoopbackDevRunner.test.ts` passed and verified that the dry-run plan:\n\n- reports `runner: \"flowdoc-local-loopback-dev\"`;\n- uses `live Backend mode`;\n- marks Core as `dependency-only`;\n- starts Backend and Editor as the only child processes;\n- exposes Backend `/health` and Editor `/documents` URLs;\n- keeps `localLoopbackOnly` true;\n- keeps `evidenceFixtureWrite` false;\n- keeps `productionReadinessClaim` false.\n\n`npm run dev:local-loopback:smoke` passed in the Editor worktree by starting Backend and Editor on random loopback ports, reaching Backend `/health`, reaching Editor `/documents`, and exiting after readiness.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` failed with `MODULE_NOT_FOUND` before the runner existed.\n- Editor focused GREEN: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` passed 1 test.\n- Editor smoke: `npm run dev:local-loopback:smoke` passed and reported Backend `/health` plus Editor `/documents` ready on random loopback ports.\n- Editor worktree `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at `unknown` and does not add this evidence to `editor.documentIds` or `editor.evidenceIds`.\n\n## Risks\n\n- This runner is local loopback only; it does not prove deployed Backend or hosted Editor behavior.\n- It checks startup readiness, not a browser interaction path, cross-browser coverage, accessibility, or visual regression.\n- It depends on local Backend and Editor dependencies being installed.\n- The local Core checkout had unrelated deleted `packages/pdf-renderer-pilot/fixtures/**` files during this lane. They were not edited or reverted.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- PDF export local infrastructure remains outside this runner.\n\n## Unknowns\n\n- Production Backend readiness and broad Backend truth remain unknown.\n- Broad Editor runtime truth and product readiness remain unknown.\n- Broad Core truth remains unknown.\n- Durable storage, auth, tenancy, rate limits, telemetry, backup, rollback, hosted deployment, and PDF export readiness remain unknown.\n- Whether future frontend redesign phases should require this runner as a standard visual-inspection preflight remains undecided.\n\n## Next Work\n\nUse `npm run dev:local-loopback` from the Editor repository when a frontend slice needs the rendered Editor calling a live Backend loopback server. Keep component work in small Editor-owned lanes, and use the existing browser/live Backend evidence runners only when the round needs retained evidence rather than a development session.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+      "title": "Editor Paper Smooth Zoom Surface",
+      "path": "docs/domains/editor-paper-smooth-zoom-surface-2026-08-29.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Bounded implementation evidence and UI decision for Editor smooth viewport-only paper zoom controls without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/components/shell/PaperZoomControls.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/components/paper/PaperPage.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/components/canvas/CanvasOverlayLayer.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/editor/selection/selectionOverlay.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/tests/paperSmoothZoomSurface.test.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+          "pathOrContractId": "src/tests/selectionOverlay.test.ts"
+        }
+      ],
+      "content": "# Editor Paper Smooth Zoom Surface - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a small Editor frontend lane opened after zoom inspection\nshowed that the paper scale could feel abrupt. The lane adds a smooth viewport\nzoom surface around the existing paper model while keeping the Editor honest:\nthe current browser session can show `Source: Backend read` and\n`Authoring: limited`, but this lane does not enable WYSIWYG editing.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth, command\nreadiness, WYSIWYG readiness, text input readiness, frontend design readiness,\nPreview parity, accessibility readiness, visual regression readiness, durable\nstorage readiness, PDF export readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-paper-smooth-zoom-surface`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-paper-smooth-zoom-surface`\n- Checklist target: `checklist-editor-paper-smooth-zoom-surface`\n- Evidence target: `evidence-editor-paper-smooth-zoom-surface-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `smooth viewport zoom`: define. A visible Editor browser-session interaction\n  that changes paper scale with motion. It is not document content, a Core\n  document package mutation, Backend persistence, or authoring readiness.\n- `viewport-only zoom`: define. The scale is a presentation state for the\n  current Editor viewport. It must not be interpreted as a durable Backend\n  document record field or exported document layout fact.\n- `paper zoom presets`: define. The current bounded preset buttons are 50%,\n  85%, 100%, and 125%. They are UI controls over the existing viewport zoom\n  policy, not a new zoom contract across FlowDoc.\n- `post-transition selection overlay sync`: define. The selected-node overlay\n  is remeasured after the smooth paper transform has had time to settle so the\n  overlay does not remain at the pre-motion geometry.\n- `live Backend mode`: context-only for this lane as Editor Vite calling a real\n  Backend server on a local loopback URL while Core remains dependency-only.\n- `ready`, `live`, `source`, `session`, and `runtime`: context-only unless\n  qualified by route, server, browser, repository, and evidence boundary.\n\n## Component Scope\n\nEditorToolbar and PaperZoomControls own:\n\n- presenting `Canvas zoom (viewport only)`;\n- rendering Zoom out, current zoom, fixed presets for 50%, 85%, 100%, and 125%,\n  and Zoom in;\n- preserving icon-button and segmented-control ergonomics without claiming\n  document editing or Backend persistence.\n\nPaperPage and editor.css own:\n\n- marking the paper shell with `data-paper-viewport-only=\"true\"`;\n- marking paper pages with `data-zoom-motion=\"smooth\"`;\n- applying a 160ms transform transition for zoom motion;\n- disabling that transition under `prefers-reduced-motion: reduce`.\n\nCanvasOverlayLayer and selectionOverlay own:\n\n- keeping the selected-node overlay as a read-only pointer-free measurement\n  layer;\n- measuring selection geometry immediately when the viewport measurement key\n  changes;\n- scheduling one post-transition sync so smooth zoom does not leave the overlay\n  stale after the paper transform settles.\n\nThis lane does not own:\n\n- WYSIWYG, text input, caret, selection editing, free-form document editing, or\n  full authoring;\n- command activation, command readiness, undo/redo readiness, or new mutation\n  operations;\n- Core document package semantics, Core runtime nodes, Core mutation results,\n  or Core authoring contracts;\n- Backend document record persistence, Backend revision gates, migration,\n  mutation, auth, tenancy, storage, deployment, or production readiness;\n- Preview lifecycle, PDF export, visual regression, accessibility, or map truth\n  promotion.\n\n## Implementation Evidence\n\nEditor commit `58f3002363b29662bb02042fdb1021236844cbc1` changes only the\nbounded Editor viewport zoom surface:\n\n- `src/components/shell/PaperZoomControls.tsx` adds the zoom control group.\n- `src/components/shell/EditorToolbar.tsx` uses the new viewport-only zoom\n  control group.\n- `src/components/paper/PaperPage.tsx` marks the paper shell and page for\n  viewport-only smooth zoom.\n- `src/styles/app.css` sizes the zoom preset controls.\n- `src/styles/editor.css` applies smooth transform motion and reduced-motion\n  fallback.\n- `src/components/canvas/CanvasOverlayLayer.tsx` schedules overlay remeasurement\n  after zoom motion.\n- `src/editor/selection/selectionOverlay.ts` defines the post-transition sync\n  scheduler used by the overlay layer.\n- `src/tests/paperSmoothZoomSurface.test.ts` and\n  `src/tests/selectionOverlay.test.ts` cover the new behavior.\n\nThe focused RED test failed because the current UI did not render\n`Canvas zoom (viewport only)`, viewport-only paper markers, zoom presets, or\nsmooth zoom motion before implementation. A second focused RED test failed\nbecause the selection overlay had no post-transition sync helper before the\noverlay drift fix.\n\nAfter implementation, focused GREEN passed for\n`src/tests/paperSmoothZoomSurface.test.ts` and\n`src/tests/selectionOverlay.test.ts`: 2 test files passed and 9 tests passed.\n\nEditor worktree `npm run check` passed type-check, 88 test files, 302 tests,\nand Vite build. Editor merged main `npm run check` also passed type-check, 88\ntest files, 302 tests, and Vite build.\n\nLive Backend mode verification:\n\n- `npm run dev:local-loopback:smoke` passed in the Editor worktree with Backend\n  and Editor on random loopback ports while Core remained dependency-only.\n- A Chromium browser check opened\n  `/documents/product-report-vnext-minimal/design` through live Backend mode,\n  observed Backend `GET /capabilities/versions` and\n  `GET /documents/product-report-vnext-minimal` with status 200, and confirmed\n  the design route showed `Source: Backend read` and `Authoring: limited`.\n- The browser check clicked Zoom in from 85% to 95%, confirmed the paper\n  transform transition was 0.16s, found no Backend mutation request, and\n  measured the selected title overlay with near-zero deltas after motion\n  settled.\n\nProject Control registration keeps the Editor Project Control Node at\n`unknown` and does not add this evidence to `editor.documentIds` or\n`editor.evidenceIds`.\n\n## Risks\n\n- This lane improves zoom feel and viewport clarity, not authoring capability.\n  Users still cannot type and edit the full document as a WYSIWYG editor.\n- `Local history: 1` can increase after a zoom click because viewport command\n  history records the zoom action; it is not a document mutation and `Doc\n  changes` stayed 0 in browser evidence.\n- Local loopback evidence does not prove deployed Backend compatibility,\n  production storage, auth, tenancy, rate limits, telemetry, backup, rollback,\n  cross-browser behavior, visual regression, or accessibility readiness.\n- Backend `/health` still reports production blocked.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- The primary Core checkout still has unrelated deleted\n  `packages/pdf-renderer-pilot/fixtures/**` files. They were not edited or\n  reverted by this lane.\n\n## Unknowns\n\n- Whether the final Editor redesign keeps zoom in this toolbar section, moves\n  it into a denser canvas header, or combines it with page navigation.\n- Whether zoom history should remain undoable viewport history or later split\n  into non-document local view preferences.\n- Cross-browser visual smoothness, accessibility audit results, and high-volume\n  page-stack performance remain unverified.\n- The ownership and test shape for WYSIWYG, caret, IME, clipboard, undo/redo,\n  collaborative edits, and Backend persistence remain unresolved.\n- Production Backend readiness, broad Editor runtime truth, broad Core truth,\n  and FlowDoc product readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor redesign. The next low-risk visual\nslice can split the remaining paper controls out of EditorToolbar, but any\nslice that touches document loading, mutation, persistence, or source/authoring\nclaims must stay under live Backend mode evidence. For product behavior, the\nnext larger planning topic is still the first real authoring gate and its\nCore/Backend evidence boundary before enabling controls.\n"
     },
     {
       "kind": "document",
@@ -6399,6 +6613,16 @@
       "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts",
       "verificationSummary": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds the bounded dev:local-loopback runner and dev:local-loopback:smoke command. The runner treats Core as dependency-only, starts Backend as a local loopback server process, starts Editor as a Vite dev server with VITE_FLOWDOC_BACKEND_URL pointed at Backend, waits for Backend /health and Editor /documents, and writes no evidence fixtures. RED failed before implementation because scripts/run-local-loopback-dev.mjs did not exist; focused GREEN passed src/tests/localLoopbackDevRunner.test.ts with 1 test. npm run dev:local-loopback:smoke passed by starting Backend and Editor on random loopback ports and exiting after readiness. Editor worktree npm run check passed type-check, 84 passed test files, 292 passed tests, and build; merged Editor main npm run check also passed type-check, 84 passed test files, 292 passed tests, and build. Editor npm install reported 5 high severity vulnerabilities and Vite retained the existing chunk-size warning; Core local checkout had unrelated deleted pdf-renderer-pilot fixture files and was not edited. This evidence supports only the local loopback dev runner, is local loopback only, and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, or product readiness.",
       "verifiedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-paper-smooth-zoom-surface-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/tests/paperSmoothZoomSurface.test.ts",
+      "verificationSummary": "Editor commit 58f3002363b29662bb02042fdb1021236844cbc1 implements the bounded smooth viewport zoom surface. PaperZoomControls adds Zoom out, current zoom, presets for 50%, 85%, 100%, and 125%, and Zoom in under the toolbar label Canvas zoom (viewport only). PaperPage marks the paper shell as viewport-only and the paper page as smooth zoom motion; editor.css transitions transform for 160ms and disables motion under prefers-reduced-motion: reduce. CanvasOverlayLayer schedules post-transition selection overlay sync so the selected-node overlay is remeasured after zoom motion settles. Focused RED failed because src/tests/paperSmoothZoomSurface.test.ts expected Canvas zoom (viewport only), viewport-only paper markers, presets, and smooth motion before implementation, and because src/tests/selectionOverlay.test.ts expected a post-transition overlay sync helper before it existed. Focused GREEN passed src/tests/paperSmoothZoomSurface.test.ts and src/tests/selectionOverlay.test.ts with 2 files and 9 tests. Editor worktree npm run check passed type-check, 88 passed test files, 302 passed tests, and build. npm run dev:local-loopback:smoke passed in the Editor worktree with Backend and Editor on random loopback ports while Core remained dependency-only. A Chromium browser check in live Backend mode opened /documents/product-report-vnext-minimal/design, observed Backend GET /capabilities/versions and GET /documents/product-report-vnext-minimal at 200, confirmed Source: Backend read and Authoring: limited, clicked Zoom in from 85% to 95%, confirmed transform transition 0.16s, found no Backend mutation requests, and measured selected title overlay deltas near zero after motion settled. Merged Editor main npm run check passed type-check, 88 passed test files, 302 passed tests, and build. Editor npm install still reports 5 high severity vulnerabilities, Vite still reports the existing chunk-size warning, Backend /health still reports production blocked, and the primary Core checkout still has unrelated deleted pdf-renderer-pilot fixture files. This evidence supports only the bounded Editor smooth viewport zoom lane and does not promote broad Editor truth, command readiness, WYSIWYG readiness, text input readiness, Backend readiness, Core truth, live production behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T07:20:00.000Z"
     },
     {
       "kind": "evidence",

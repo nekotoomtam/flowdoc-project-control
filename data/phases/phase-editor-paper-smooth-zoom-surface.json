@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-paper-smooth-zoom-surface",
+  "workId": "editor-paper-smooth-zoom-surface",
+  "title": "Add Editor Smooth Viewport Zoom Surface",
+  "phaseState": "done",
+  "order": 101,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The lane enables WYSIWYG, free text input, command authoring readiness, or Backend mutation behavior instead of only improving viewport zoom presentation.",
+    "The UI claims Backend, Core, Editor, FlowDoc, production, accessibility, visual regression, or product readiness from local loopback evidence.",
+    "The implementation treats viewport-only zoom as document content, Backend persistence, Core document package truth, or a durable document mutation.",
+    "The smooth zoom motion leaves the selected-node overlay stale after the paper transform settles.",
+    "The status copy uses unqualified live, ready, source, runtime, session, or authoring terms that conflict with product terminology.",
+    "Project Control promotes Editor node truth from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor smooth viewport zoom lane with checklist target checklist-editor-paper-smooth-zoom-surface and evidence target evidence-editor-paper-smooth-zoom-surface-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added bounded Editor paper zoom controls, smooth viewport-only paper motion, and post-motion selection overlay resync without enabling authoring or promoting product truth.",
+  "createdAt": "2026-08-29T07:20:00.000Z",
+  "updatedAt": "2026-08-29T07:20:00.000Z"
+}

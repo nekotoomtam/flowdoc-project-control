@@ -1,0 +1,47 @@
+{
+  "kind": "document",
+  "id": "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+  "title": "Editor Paper Smooth Zoom Surface",
+  "path": "docs/domains/editor-paper-smooth-zoom-surface-2026-08-29.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Bounded implementation evidence and UI decision for Editor smooth viewport-only paper zoom controls without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/components/shell/PaperZoomControls.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/components/paper/PaperPage.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/components/canvas/CanvasOverlayLayer.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/editor/selection/selectionOverlay.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/tests/paperSmoothZoomSurface.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "58f3002363b29662bb02042fdb1021236844cbc1",
+      "pathOrContractId": "src/tests/selectionOverlay.test.ts"
+    }
+  ]
+}
