@@ -128,9 +128,14 @@ Verification:
 
 ## Next Work
 
-Continue the component-by-component Editor shell redesign with another bounded
-toolbar subcomponent only after a fresh Project Control Work path, Phase,
-Checklist target, and Evidence target are identified. The next smallest slices
-are likely `WorkspacePaperControlGroup` or `WorkspaceZoomControlGroup` because
-they are still inside `EditorToolbar` but must preserve the paper and zoom
-ownership boundaries.
+This lane was followed by
+`doc-editor-read-source-authoring-status-2026-08-29`, which clarifies that a
+Backend-backed read can be visible while full authoring remains limited and the
+disabled Insert/Text/Fields/Table controls are not enabled authoring behavior.
+
+After that honesty status lane, continue the component-by-component Editor
+shell redesign with another bounded toolbar subcomponent only after a fresh
+Project Control Work path, Phase, Checklist target, and Evidence target are
+identified. The next smallest slices are likely `WorkspacePaperControlGroup` or
+`WorkspaceZoomControlGroup` because they are still inside `EditorToolbar` but
+must preserve the paper and zoom ownership boundaries.

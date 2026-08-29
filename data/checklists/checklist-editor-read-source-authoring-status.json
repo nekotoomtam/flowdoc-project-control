@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-read-source-authoring-status",
+  "phaseId": "phase-editor-read-source-authoring-status",
+  "title": "Editor Read Source Authoring Status Checklist",
+  "items": [
+    {
+      "id": "capture-read-source-authoring-context",
+      "label": "Capture Project Control, terminology, Editor agreement, Backend/Core boundaries, loopback runner, and prior honesty/component context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records the exact Editor commit, live Backend mode boundary, and dependency context used for this bounded lane.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, Backend AGENTS.md, Core AGENTS.md, local loopback runner records, Backend-unavailable honesty records, StatusBar, EditorToolbar, and WorkspaceEditingCommandGroup were read before implementation."
+    },
+    {
+      "id": "define-honesty-status-boundary",
+      "label": "Define the lane as visible status honesty for Backend read source and limited authoring, not authoring activation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 cites the terminology and status labels used in the UI.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "The document defines Backend read source, authoring status, limited authoring, disabled authoring control, and live Backend mode for this lane."
+    },
+    {
+      "id": "add-source-and-authoring-status",
+      "label": "Add visible Workspace status facts that separate source provenance from authoring capability.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 points to src/components/shell/StatusBar.tsx and src/tests/workspaceStatusStrip.test.ts.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 adds Source: Backend read for API envelopes and Authoring: limited for non-read-only runtime modes."
+    },
+    {
+      "id": "clarify-disabled-editing-controls",
+      "label": "Add non-authoring aria and tooltip reasons to disabled Insert, Text, Fields, and Table toolbar controls.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 points to src/components/shell/WorkspaceEditingCommandGroup.tsx, src/components/shell/EditorToolbar.tsx, and src/tests/workspaceEditingCommandGroup.test.ts.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "Focused tests verify disabled editing controls include aria labels and titles such as Insert: authoring not enabled and Insert block: authoring not enabled."
+    },
+    {
+      "id": "verify-live-backend-mode-read-path",
+      "label": "Verify the rendered Editor in live Backend mode shows the new honesty labels while requests reach Backend loopback.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records the worktree loopback smoke and browser read-path check.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "npm run dev:local-loopback:smoke passed in the Editor worktree; a Chrome browser check observed Backend /documents, /capabilities/versions, and document read responses at 200 while the design route displayed Source: Backend read and Authoring: limited."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this UI honesty lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run RED/GREEN focused tests, shell-adjacent regressions, full Editor gates in worktree and merged main, and bounded loopback/browser checks.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records focused, adjacent, worktree, main, smoke, and browser verification results.",
+      "evidenceIds": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+      "verificationNote": "Focused RED failed for missing aria/source labels, focused GREEN passed, shell-adjacent tests passed, Editor worktree npm run check passed, live Backend mode smoke/browser checks passed, and merged Editor main npm run check passed."
+    }
+  ],
+  "createdAt": "2026-08-29T06:26:00.000Z",
+  "updatedAt": "2026-08-29T06:26:00.000Z"
+}

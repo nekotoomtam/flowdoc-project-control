@@ -128,6 +128,7 @@ describe("Editor WorkspaceStatusStrip foundation lane", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",

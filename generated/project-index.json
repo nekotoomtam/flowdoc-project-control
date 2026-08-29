@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b1a080ffc3b31d610e182701db2006fa879bcc2bea02e79f223558e3070fccd5",
+  "sourceDigest": "b67dafaf3aab9770fa68f3d37dbd84f9421a0d5f9771d18d79bd16f9259d0411",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -287,6 +287,7 @@
       "workIds": [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -961,6 +962,52 @@
     },
     {
       "kind": "work",
+      "id": "editor-read-source-authoring-status",
+      "title": "Editor Read Source Authoring Status",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Clarify the Editor shell so a backend-backed document visibly separates Backend read source from limited authoring status and disabled authoring controls.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-workspace-status-strip-foundation-2026-08-28",
+        "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
+        "doc-editor-read-source-authoring-status-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 adds visible Workspace status facts `Source: Backend read` and `Authoring: limited`, plus disabled editing command aria/tooltip copy such as `Insert block: authoring not enabled`. Live Backend mode browser evidence observed Backend capability, library, and document read requests while the UI showed the new honesty labels. Target evidence id: evidence-editor-read-source-authoring-status-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, command readiness, full authoring, Backend persistence readiness, deployed Backend compatibility, production readiness, or broad Editor, Backend, Core, or FlowDoc truth.",
+      "requiredEvidence": [
+        "evidence-editor-read-source-authoring-status-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T06:26:00.000Z",
+      "updatedAt": "2026-08-29T06:26:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-read-source-authoring-status"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-read-source-authoring-status"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-editing-command-group-foundation",
       "title": "Editor WorkspaceEditingCommandGroup Foundation",
       "nodeId": "editor",
@@ -1337,6 +1384,7 @@
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-local-loopback-dev-runner",
+        "editor-read-source-authoring-status",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -1858,6 +1906,32 @@
       "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-read-source-authoring-status",
+      "workId": "editor-read-source-authoring-status",
+      "title": "Clarify Editor Read Source And Authoring Status",
+      "phaseState": "done",
+      "order": 100,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The lane enables WYSIWYG, free text input, or full authoring behavior instead of only clarifying status.",
+        "The UI claims Backend, Core, Editor, FlowDoc, command, production, visual regression, accessibility, or product readiness from local loopback evidence.",
+        "The status copy uses unqualified live, ready, source, runtime, or authoring terms that conflict with product terminology.",
+        "The implementation bypasses Backend-owned transport, revision, migration, mutation, or persistence boundaries.",
+        "Project Control promotes Editor node truth from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor read source and limited authoring status lane with checklist target checklist-editor-read-source-authoring-status and evidence target evidence-editor-read-source-authoring-status-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Added visible Editor shell status for Backend read source and limited authoring, plus disabled authoring control reasons, without enabling authoring behavior or promoting product truth.",
+      "createdAt": "2026-08-29T06:26:00.000Z",
+      "updatedAt": "2026-08-29T06:26:00.000Z"
     },
     {
       "kind": "phase",
@@ -3044,6 +3118,86 @@
       ],
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-read-source-authoring-status",
+      "phaseId": "phase-editor-read-source-authoring-status",
+      "title": "Editor Read Source Authoring Status Checklist",
+      "items": [
+        {
+          "id": "capture-read-source-authoring-context",
+          "label": "Capture Project Control, terminology, Editor agreement, Backend/Core boundaries, loopback runner, and prior honesty/component context before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records the exact Editor commit, live Backend mode boundary, and dependency context used for this bounded lane.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, Backend AGENTS.md, Core AGENTS.md, local loopback runner records, Backend-unavailable honesty records, StatusBar, EditorToolbar, and WorkspaceEditingCommandGroup were read before implementation."
+        },
+        {
+          "id": "define-honesty-status-boundary",
+          "label": "Define the lane as visible status honesty for Backend read source and limited authoring, not authoring activation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 cites the terminology and status labels used in the UI.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "The document defines Backend read source, authoring status, limited authoring, disabled authoring control, and live Backend mode for this lane."
+        },
+        {
+          "id": "add-source-and-authoring-status",
+          "label": "Add visible Workspace status facts that separate source provenance from authoring capability.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 points to src/components/shell/StatusBar.tsx and src/tests/workspaceStatusStrip.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 adds Source: Backend read for API envelopes and Authoring: limited for non-read-only runtime modes."
+        },
+        {
+          "id": "clarify-disabled-editing-controls",
+          "label": "Add non-authoring aria and tooltip reasons to disabled Insert, Text, Fields, and Table toolbar controls.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 points to src/components/shell/WorkspaceEditingCommandGroup.tsx, src/components/shell/EditorToolbar.tsx, and src/tests/workspaceEditingCommandGroup.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "Focused tests verify disabled editing controls include aria labels and titles such as Insert: authoring not enabled and Insert block: authoring not enabled."
+        },
+        {
+          "id": "verify-live-backend-mode-read-path",
+          "label": "Verify the rendered Editor in live Backend mode shows the new honesty labels while requests reach Backend loopback.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records the worktree loopback smoke and browser read-path check.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "npm run dev:local-loopback:smoke passed in the Editor worktree; a Chrome browser check observed Backend /documents, /capabilities/versions, and document read responses at 200 while the design route displayed Source: Backend read and Authoring: limited."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this UI honesty lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run RED/GREEN focused tests, shell-adjacent regressions, full Editor gates in worktree and merged main, and bounded loopback/browser checks.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-read-source-authoring-status-2026-08-29 records focused, adjacent, worktree, main, smoke, and browser verification results.",
+          "evidenceIds": [
+            "evidence-editor-read-source-authoring-status-2026-08-29"
+          ],
+          "verificationNote": "Focused RED failed for missing aria/source labels, focused GREEN passed, shell-adjacent tests passed, Editor worktree npm run check passed, live Backend mode smoke/browser checks passed, and merged Editor main npm run check passed."
+        }
+      ],
+      "createdAt": "2026-08-29T06:26:00.000Z",
+      "updatedAt": "2026-08-29T06:26:00.000Z"
     },
     {
       "kind": "checklist",
@@ -4449,6 +4603,44 @@
     },
     {
       "kind": "document",
+      "id": "doc-editor-read-source-authoring-status-2026-08-29",
+      "title": "Editor Read Source Authoring Status",
+      "path": "docs/domains/editor-read-source-authoring-status-2026-08-29.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Bounded implementation evidence and UI honesty decision for separating Editor Backend read source from limited authoring status without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+          "pathOrContractId": "src/components/shell/StatusBar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+          "pathOrContractId": "src/components/shell/WorkspaceEditingCommandGroup.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+          "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+          "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+          "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts"
+        }
+      ],
+      "content": "# Editor Read Source Authoring Status - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a small Editor frontend honesty lane opened after live\nloopback inspection showed that the Editor could look more editable than it\ncurrently is. The lane separates the visible read source from authoring\ncapability: a backend-backed document can now show `Source: Backend read` while\nstill showing `Authoring: limited`.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth, command\nreadiness, WYSIWYG readiness, text input readiness, frontend design readiness,\nPreview parity, accessibility readiness, visual regression readiness, durable\nstorage readiness, PDF export readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-read-source-authoring-status`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-read-source-authoring-status`\n- Checklist target: `checklist-editor-read-source-authoring-status`\n- Evidence target: `evidence-editor-read-source-authoring-status-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `Backend read source`: define. A visible Editor shell status for an Editor\n  browser session whose current Core envelope came from a Backend document read.\n  It does not prove full Backend persistence or production readiness.\n- `authoring status`: define for this lane as a compact Editor shell fact about\n  whether the current screen exposes full authoring. It is not Core authoring\n  contract truth and not Backend persistence truth.\n- `limited authoring`: define. The current Editor can show the document and run\n  some bounded command paths, but free text input and full WYSIWYG authoring are\n  not enabled by this lane.\n- `disabled authoring control`: define. Insert, Text, Fields, and Table remain\n  disabled toolbar controls. Their tooltip and accessibility label can explain\n  `authoring not enabled`, but the controls still do not own command behavior.\n- `live Backend mode`: define for verification as Editor Vite calling a real\n  Backend server on a local loopback URL while Core remains dependency-only.\n- `ready` and `live`: context-only unless qualified by route, server, corpus,\n  browser, and evidence boundary.\n\n## Component Scope\n\nStatusBar owns:\n\n- presenting `Source: Backend read` for API envelopes;\n- presenting `Authoring: limited` for non-read-only runtime modes;\n- keeping those facts separate from `Core`, `Versions`, and `Mode`.\n\nWorkspaceEditingCommandGroup and EditorToolbar own:\n\n- passing disabled authoring reasons into the current Insert, Text, Fields, and\n  Table controls;\n- exposing aria labels and titles such as `Insert: authoring not enabled` and\n  `Insert block: authoring not enabled`;\n- preserving disabled command presentation without adding command callbacks.\n\nThis lane does not own:\n\n- WYSIWYG, text input, caret, selection editing, free-form document editing, or\n  full authoring;\n- command activation, command readiness, or new mutation operations;\n- Core document package semantics, Core runtime nodes, Core mutation results,\n  or Core authoring contracts;\n- Backend document record persistence, Backend revision gates, migration,\n  mutation, auth, tenancy, storage, deployment, or production readiness;\n- Preview lifecycle, PDF export, visual regression, accessibility, or map truth\n  promotion.\n\n## Implementation Evidence\n\nEditor commit `b34fa44a25113359004706f32ecdd1d694dbf3e3` changes only the\nEditor shell honesty surface:\n\n- `src/components/shell/StatusBar.tsx` adds source and authoring status facts.\n- `src/components/shell/WorkspaceEditingCommandGroup.tsx` accepts disabled\n  reasons and applies them to aria labels and titles.\n- `src/components/shell/EditorToolbar.tsx` passes `authoring not enabled` to\n  the disabled Insert, Text, Fields, and Table controls.\n- `src/tests/workspaceStatusStrip.test.ts` and\n  `src/tests/workspaceEditingCommandGroup.test.ts` cover the new behavior.\n\nThe focused RED test failed after test setup because the current UI did not\nrender `Source: Backend read`, `Authoring: limited`, or disabled authoring\naria/title labels. After implementation, focused GREEN passed for\n`src/tests/workspaceStatusStrip.test.ts` and\n`src/tests/workspaceEditingCommandGroup.test.ts`: 2 test files passed and 5\ntests passed.\n\nShell-adjacent regression tests passed for\n`src/tests/workspaceEditingCommandGroup.test.ts`,\n`src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n`src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n`src/tests/workspaceStatusStrip.test.ts`,\n`src/tests/documentWorkspaceRoute.test.ts`,\n`src/tests/realdocDocumentWorkspaceTabs.test.ts`, and\n`src/tests/editorBackendUnavailableHonesty.test.ts`: 9 test files passed and 20\ntests passed.\n\nEditor worktree `npm run check` passed type-check, 87 test files, 299 tests,\nand Vite build. Editor merged main `npm run check` also passed type-check, 87\ntest files, 299 tests, and Vite build.\n\nLive Backend mode verification:\n\n- `npm run dev:local-loopback:smoke` passed in the Editor worktree with Backend\n  and Editor on random loopback ports while Core remained dependency-only.\n- A Chrome browser check opened the worktree Editor through live Backend mode,\n  observed Backend `GET /documents?limit=24`, `GET /capabilities/versions`, and\n  `GET /documents/product-report-vnext-minimal` with status 200, then confirmed\n  the design route showed `Source: Backend read`, `Authoring: limited`,\n  `Core: api r3`, and `Insert block: authoring not enabled`.\n- The browser check wrote no evidence fixture and clicked no mutation control.\n\nProject Control registration keeps the Editor Project Control Node at\n`unknown` and does not add this evidence to `editor.documentIds` or\n`editor.evidenceIds`.\n\n## Risks\n\n- This lane improves honesty, not authoring capability. Users still cannot type\n  and edit the full document as a WYSIWYG editor.\n- `Mode: active` remains a Core runtime mode fact; `Authoring: limited` is added\n  to prevent reading that as full UI authoring readiness.\n- Local loopback evidence does not prove deployed Backend compatibility,\n  production storage, auth, tenancy, rate limits, telemetry, backup, rollback,\n  cross-browser behavior, visual regression, or accessibility readiness.\n- Backend `/health` still reports production blocked.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- The primary Core checkout still has unrelated deleted\n  `packages/pdf-renderer-pilot/fixtures/**` files. They were not edited or\n  reverted by this lane.\n\n## Unknowns\n\n- Which full authoring path should be opened first: text input, structured\n  insert, fields, tables, or a narrower command gate.\n- Whether the final frontend redesign should keep these labels in the status\n  bar, move them into a denser header state, or replace them with a richer\n  document/session badge model.\n- The ownership and test shape for WYSIWYG, caret, IME, clipboard, undo/redo,\n  collaborative edits, and Backend persistence remain unresolved.\n- Production Backend readiness, broad Editor runtime truth, broad Core truth,\n  and FlowDoc product readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor redesign, but treat any slice that\ntouches document loading, mutation, persistence, or visible source/authoring\nclaims as live Backend mode work. For low-risk visual slices, the next smallest\ntoolbar candidates remain `WorkspacePaperControlGroup` and\n`WorkspaceZoomControlGroup`. For product behavior, the next larger planning\ntopic is an authoring gate that chooses the first real editable path and its\nCore/Backend evidence boundary before enabling controls.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
       "title": "Editor WorkspaceEditingCommandGroup Foundation",
       "path": "docs/domains/editor-workspace-editing-command-group-foundation-2026-08-29.md",
@@ -4473,7 +4665,7 @@
           "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts"
         }
       ],
-      "content": "# Editor WorkspaceEditingCommandGroup Foundation - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the sixth component-by-component Editor frontend\nredesign lane. It narrows this slice to the disabled editing command\npresentation that was still embedded in `EditorToolbar` after the\n`WorkspaceToolbar` split.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth,\nfrontend design readiness, Preview parity, accessibility readiness, visual\nregression readiness, command readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-editing-command-group-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-editing-command-group-foundation`\n- Checklist target: `checklist-editor-workspace-editing-command-group-foundation`\n- Evidence target: `evidence-editor-workspace-editing-command-group-foundation-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `WorkspaceEditingCommandGroup`: define. The Editor-owned UI component that\n  renders supplied disabled editing command controls inside the toolbar.\n- `editing command presentation`: define for this lane as the visible disabled\n  Insert, Text, Fields, and Table toolbar controls. It is not command behavior,\n  command readiness, Core mutation semantics, Backend transport, or evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component remains\n  responsible for choosing icons and preparing display descriptors before\n  passing them to `WorkspaceEditingCommandGroup`.\n- `toolbar action`: context-only in this lane. The controls are still disabled\n  placeholders and do not prove available editing commands.\n- `command readiness`: blocked for promotion in this lane. It requires a later\n  command-owned evidence path before these controls can become enabled behavior.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor runtime component, Core runtime component, Backend component, or\n  Project Control component.\n\n## Component Scope\n\nWorkspaceEditingCommandGroup owns:\n\n- rendering supplied editing command descriptors as toolbar buttons;\n- preserving the current disabled command presentation;\n- rendering supplied icons and labels without interpreting their behavior.\n\nWorkspaceEditingCommandGroup does not own:\n\n- command activation, command readiness, callbacks, or mutation behavior;\n- Editor draft mutation, runtime state, selection, history, or Preview\n  lifecycle;\n- Core runtime node semantics, Core mutation results, or Core package\n  validation;\n- Backend document records, Backend revisions, persistence, transport, or\n  capability responses;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  diagnostics interpretation, or icon ownership;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns icons, display descriptors, paper,\nzoom, PDF export, migration, diagnostics, and future command readiness inputs\nbefore rendering the bounded UI component.\n\n## Implementation Evidence\n\nEditor commit `aca56f18b4e3e41ca514684fdf47478ce0e9ea00` adds\n`WorkspaceEditingCommandGroup` as the next extracted UI component under the\nEditor WorkspaceToolbar boundary. `EditorToolbar` now passes an\n`editingCommands` descriptor list into that component instead of holding the\ndisabled editing command button markup inline.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceEditingCommandGroup.tsx` did not exist. After\nimplementation, the focused test proved that the component renders supplied\nInsert, Text, Fields, and Table commands as disabled toolbar controls while\nstaying outside Editor runtime, Core, Backend, export, migration, paper, zoom,\ndiagnostics, icon, and command readiness ownership.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` failed before the component existed.\n- Editor focused GREEN: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` passed 1 test file and 2 tests.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceEditingCommandGroup.test.ts`,\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 8 test files passed and 14\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Editing command controls remain disabled placeholders. This lane does not\n  prove command readiness or command behavior.\n- EditorToolbar remains responsible for paper, zoom, PDF export, migration,\n  diagnostics, icons, and display descriptors.\n- The new component has unit-level markup evidence only; no visual regression\n  or accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and enabled-state behavior of the\n  editing command group.\n- Whether command groups should become command-owned controls, stay toolbar\n  presentation, or be replaced during the later full Editor frontend redesign.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor shell redesign with another bounded\ntoolbar subcomponent only after a fresh Project Control Work path, Phase,\nChecklist target, and Evidence target are identified. The next smallest slices\nare likely `WorkspacePaperControlGroup` or `WorkspaceZoomControlGroup` because\nthey are still inside `EditorToolbar` but must preserve the paper and zoom\nownership boundaries.\n"
+      "content": "# Editor WorkspaceEditingCommandGroup Foundation - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the sixth component-by-component Editor frontend\nredesign lane. It narrows this slice to the disabled editing command\npresentation that was still embedded in `EditorToolbar` after the\n`WorkspaceToolbar` split.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth,\nfrontend design readiness, Preview parity, accessibility readiness, visual\nregression readiness, command readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-editing-command-group-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-editing-command-group-foundation`\n- Checklist target: `checklist-editor-workspace-editing-command-group-foundation`\n- Evidence target: `evidence-editor-workspace-editing-command-group-foundation-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `WorkspaceEditingCommandGroup`: define. The Editor-owned UI component that\n  renders supplied disabled editing command controls inside the toolbar.\n- `editing command presentation`: define for this lane as the visible disabled\n  Insert, Text, Fields, and Table toolbar controls. It is not command behavior,\n  command readiness, Core mutation semantics, Backend transport, or evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component remains\n  responsible for choosing icons and preparing display descriptors before\n  passing them to `WorkspaceEditingCommandGroup`.\n- `toolbar action`: context-only in this lane. The controls are still disabled\n  placeholders and do not prove available editing commands.\n- `command readiness`: blocked for promotion in this lane. It requires a later\n  command-owned evidence path before these controls can become enabled behavior.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor runtime component, Core runtime component, Backend component, or\n  Project Control component.\n\n## Component Scope\n\nWorkspaceEditingCommandGroup owns:\n\n- rendering supplied editing command descriptors as toolbar buttons;\n- preserving the current disabled command presentation;\n- rendering supplied icons and labels without interpreting their behavior.\n\nWorkspaceEditingCommandGroup does not own:\n\n- command activation, command readiness, callbacks, or mutation behavior;\n- Editor draft mutation, runtime state, selection, history, or Preview\n  lifecycle;\n- Core runtime node semantics, Core mutation results, or Core package\n  validation;\n- Backend document records, Backend revisions, persistence, transport, or\n  capability responses;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  diagnostics interpretation, or icon ownership;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns icons, display descriptors, paper,\nzoom, PDF export, migration, diagnostics, and future command readiness inputs\nbefore rendering the bounded UI component.\n\n## Implementation Evidence\n\nEditor commit `aca56f18b4e3e41ca514684fdf47478ce0e9ea00` adds\n`WorkspaceEditingCommandGroup` as the next extracted UI component under the\nEditor WorkspaceToolbar boundary. `EditorToolbar` now passes an\n`editingCommands` descriptor list into that component instead of holding the\ndisabled editing command button markup inline.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceEditingCommandGroup.tsx` did not exist. After\nimplementation, the focused test proved that the component renders supplied\nInsert, Text, Fields, and Table commands as disabled toolbar controls while\nstaying outside Editor runtime, Core, Backend, export, migration, paper, zoom,\ndiagnostics, icon, and command readiness ownership.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` failed before the component existed.\n- Editor focused GREEN: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` passed 1 test file and 2 tests.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceEditingCommandGroup.test.ts`,\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 8 test files passed and 14\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Editing command controls remain disabled placeholders. This lane does not\n  prove command readiness or command behavior.\n- EditorToolbar remains responsible for paper, zoom, PDF export, migration,\n  diagnostics, icons, and display descriptors.\n- The new component has unit-level markup evidence only; no visual regression\n  or accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and enabled-state behavior of the\n  editing command group.\n- Whether command groups should become command-owned controls, stay toolbar\n  presentation, or be replaced during the later full Editor frontend redesign.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nThis lane was followed by\n`doc-editor-read-source-authoring-status-2026-08-29`, which clarifies that a\nBackend-backed read can be visible while full authoring remains limited and the\ndisabled Insert/Text/Fields/Table controls are not enabled authoring behavior.\n\nAfter that honesty status lane, continue the component-by-component Editor\nshell redesign with another bounded toolbar subcomponent only after a fresh\nProject Control Work path, Phase, Checklist target, and Evidence target are\nidentified. The next smallest slices are likely `WorkspacePaperControlGroup` or\n`WorkspaceZoomControlGroup` because they are still inside `EditorToolbar` but\nmust preserve the paper and zoom ownership boundaries.\n"
     },
     {
       "kind": "document",
@@ -6219,6 +6411,16 @@
       "pathOrContractId": "AGENTS.md",
       "verificationSummary": "Editor AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
       "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-read-source-authoring-status-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts",
+      "verificationSummary": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 implements the bounded Editor read source and authoring status honesty lane. StatusBar now renders Source: Backend read for API envelopes and Authoring: limited for non-read-only runtime modes, while WorkspaceEditingCommandGroup and EditorToolbar expose disabled editing command reasons such as Insert: authoring not enabled and Insert block: authoring not enabled. Focused RED failed after test setup because src/tests/workspaceStatusStrip.test.ts expected Source: Backend read and src/tests/workspaceEditingCommandGroup.test.ts expected the disabled authoring aria/title labels before implementation. Focused GREEN passed src/tests/workspaceStatusStrip.test.ts and src/tests/workspaceEditingCommandGroup.test.ts with 2 files and 5 tests. Shell-adjacent regression tests passed 9 files and 20 tests. Editor worktree npm run check passed type-check, 87 passed test files, 299 passed tests, and build. npm run dev:local-loopback:smoke passed in the Editor worktree with Backend and Editor on random loopback ports while Core remained dependency-only. A Chrome browser check in live Backend mode observed Backend GET /documents?limit=24, GET /capabilities/versions, and GET /documents/product-report-vnext-minimal at 200 while the design route displayed Source: Backend read, Authoring: limited, Core: api r3, and Insert block: authoring not enabled; that browser check wrote no files and clicked no mutations. Merged Editor main npm run check passed type-check, 87 passed test files, 299 passed tests, and build. npm install still reports 5 high severity vulnerabilities, Vite still reports the existing chunk-size warning, Backend /health still reports production blocked, and the primary Core checkout still has unrelated deleted pdf-renderer-pilot fixture files. This evidence supports only the bounded Editor UI honesty status lane and does not promote broad Editor truth, command readiness, WYSIWYG readiness, text input readiness, Backend readiness, Core truth, live production behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T06:26:00.000Z"
     },
     {
       "kind": "evidence",
