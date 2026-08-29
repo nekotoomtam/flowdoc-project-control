@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-workspace-editing-command-group-foundation",
+  "phaseId": "phase-editor-workspace-editing-command-group-foundation",
+  "title": "Editor WorkspaceEditingCommandGroup Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-editing-command-context",
+      "label": "Capture Project Control, terminology, Editor working agreement, and prior WorkspaceToolbar context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 records the exact Editor commit and Project Control context used for this bounded lane.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, system map, operating rules, role catalog, round workflow, Work tree rules, product terminology, Editor AGENTS.md, WorkspaceToolbar evidence, and Editor source were read before implementation."
+    },
+    {
+      "id": "define-workspace-editing-command-group-boundary",
+      "label": "Define WorkspaceEditingCommandGroup as an Editor-owned UI component for disabled editing command presentation only.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 cites the component and boundary test.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "The document defines WorkspaceEditingCommandGroup, editing command presentation, EditorToolbar adapter, and command readiness boundaries."
+    },
+    {
+      "id": "split-editing-command-group-component",
+      "label": "Split the disabled Insert, Text, Fields, and Table presentation out of EditorToolbar.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 points to src/components/shell/WorkspaceEditingCommandGroup.tsx and src/components/shell/EditorToolbar.tsx.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "Editor commit aca56f18b4e3e41ca514684fdf47478ce0e9ea00 adds WorkspaceEditingCommandGroup and updates EditorToolbar to pass editingCommands into it."
+    },
+    {
+      "id": "preserve-editor-toolbar-adapter-ownership",
+      "label": "Keep EditorToolbar responsible for icons, command display inputs, paper, zoom, PDF export, migration, and diagnostics adapters.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 verifies EditorToolbar still adapts the supplied toolbar data.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "WorkspaceEditingCommandGroup receives supplied command descriptors and does not import icon, runtime, Core, Backend, paper, export, or migration modules."
+    },
+    {
+      "id": "lock-command-readiness-boundary",
+      "label": "Preserve disabled editing command presentation without claiming command readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 includes the RED/GREEN test for disabled command controls.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "Focused tests verify the supplied editing commands render as disabled toolbar controls and do not add onClick behavior."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this UI component split.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run focused Editor tests, shell-adjacent regression tests, and the full Editor gate in the worktree and merged main.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 records focused, adjacent, worktree, and main verification results.",
+      "evidenceIds": ["evidence-editor-workspace-editing-command-group-foundation-2026-08-29"],
+      "verificationNote": "Focused tests passed, shell-adjacent tests passed, Editor worktree npm run check passed, and merged Editor main npm run check passed."
+    }
+  ],
+  "createdAt": "2026-08-29T00:00:00.000Z",
+  "updatedAt": "2026-08-29T05:31:28.000Z"
+}

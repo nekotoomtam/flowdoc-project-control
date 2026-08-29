@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "ad7ce1bb14fc261db4da0f12aef7edb15f7c4d68cf4b612e5b41cd5b392d20a3",
+  "sourceDigest": "b1a080ffc3b31d610e182701db2006fa879bcc2bea02e79f223558e3070fccd5",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -287,6 +287,7 @@
       "workIds": [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
@@ -960,6 +961,52 @@
     },
     {
       "kind": "work",
+      "id": "editor-workspace-editing-command-group-foundation",
+      "title": "Editor WorkspaceEditingCommandGroup Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Continue the component-by-component Editor frontend redesign by splitting the disabled editing command presentation out of EditorToolbar after WorkspaceToolbar.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-workspace-shell-foundation-2026-08-28",
+        "doc-editor-workspace-view-tabs-foundation-2026-08-28",
+        "doc-editor-workspace-header-foundation-2026-08-28",
+        "doc-editor-workspace-status-strip-foundation-2026-08-28",
+        "doc-editor-workspace-toolbar-foundation-2026-08-28",
+        "doc-editor-workspace-editing-command-group-foundation-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit aca56f18b4e3e41ca514684fdf47478ce0e9ea00 implements the bounded WorkspaceEditingCommandGroup lane by moving the disabled Insert, Text, Fields, and Table editing command presentation out of EditorToolbar while EditorToolbar remains the adapter for icons, command readiness boundaries, paper, zoom, PDF export, migration, and diagnostics display inputs. Target evidence id: evidence-editor-workspace-editing-command-group-foundation-2026-08-29.",
+      "riskSummary": "This lane is a UI component boundary slice only and does not promote Editor truth, Backend readiness, Core truth, frontend design completion, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product readiness.",
+      "requiredEvidence": [
+        "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T00:00:00.000Z",
+      "updatedAt": "2026-08-29T05:31:28.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-workspace-editing-command-group-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-workspace-editing-command-group-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-header-foundation",
       "title": "Editor WorkspaceHeader Foundation",
       "nodeId": "editor",
@@ -1290,6 +1337,7 @@
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
         "editor-local-loopback-dev-runner",
+        "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
@@ -1810,6 +1858,29 @@
       "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-workspace-editing-command-group-foundation",
+      "workId": "editor-workspace-editing-command-group-foundation",
+      "title": "Split Editor WorkspaceEditingCommandGroup",
+      "phaseState": "done",
+      "order": 90,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The new component imports Core, Backend, Editor runtime, local PDF export, migration, paper model, or icon ownership directly.",
+        "The lane enables editing commands or claims command readiness instead of preserving the current disabled presentation boundary.",
+        "EditorToolbar loses adapter ownership for command display inputs, paper, zoom, PDF export, migration, or diagnostics.",
+        "The Project Control record promotes broad Editor truth, frontend design completion, Backend readiness, Core truth, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product readiness."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor WorkspaceEditingCommandGroup split with checklist target checklist-editor-workspace-editing-command-group-foundation and evidence target evidence-editor-workspace-editing-command-group-foundation-2026-08-29.",
+      "summary": "Split the disabled editing command presentation from EditorToolbar into a bounded WorkspaceEditingCommandGroup UI component without adding command behavior or promoting product truth.",
+      "createdAt": "2026-08-29T00:00:00.000Z",
+      "updatedAt": "2026-08-29T05:31:28.000Z"
     },
     {
       "kind": "phase",
@@ -2973,6 +3044,86 @@
       ],
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-workspace-editing-command-group-foundation",
+      "phaseId": "phase-editor-workspace-editing-command-group-foundation",
+      "title": "Editor WorkspaceEditingCommandGroup Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-editing-command-context",
+          "label": "Capture Project Control, terminology, Editor working agreement, and prior WorkspaceToolbar context before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 records the exact Editor commit and Project Control context used for this bounded lane.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, system map, operating rules, role catalog, round workflow, Work tree rules, product terminology, Editor AGENTS.md, WorkspaceToolbar evidence, and Editor source were read before implementation."
+        },
+        {
+          "id": "define-workspace-editing-command-group-boundary",
+          "label": "Define WorkspaceEditingCommandGroup as an Editor-owned UI component for disabled editing command presentation only.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 cites the component and boundary test.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "The document defines WorkspaceEditingCommandGroup, editing command presentation, EditorToolbar adapter, and command readiness boundaries."
+        },
+        {
+          "id": "split-editing-command-group-component",
+          "label": "Split the disabled Insert, Text, Fields, and Table presentation out of EditorToolbar.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 points to src/components/shell/WorkspaceEditingCommandGroup.tsx and src/components/shell/EditorToolbar.tsx.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "Editor commit aca56f18b4e3e41ca514684fdf47478ce0e9ea00 adds WorkspaceEditingCommandGroup and updates EditorToolbar to pass editingCommands into it."
+        },
+        {
+          "id": "preserve-editor-toolbar-adapter-ownership",
+          "label": "Keep EditorToolbar responsible for icons, command display inputs, paper, zoom, PDF export, migration, and diagnostics adapters.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 verifies EditorToolbar still adapts the supplied toolbar data.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "WorkspaceEditingCommandGroup receives supplied command descriptors and does not import icon, runtime, Core, Backend, paper, export, or migration modules."
+        },
+        {
+          "id": "lock-command-readiness-boundary",
+          "label": "Preserve disabled editing command presentation without claiming command readiness.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 includes the RED/GREEN test for disabled command controls.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused tests verify the supplied editing commands render as disabled toolbar controls and do not add onClick behavior."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this UI component split.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "prepare-editor-gate",
+          "label": "Run focused Editor tests, shell-adjacent regression tests, and the full Editor gate in the worktree and merged main.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29 records focused, adjacent, worktree, and main verification results.",
+          "evidenceIds": [
+            "evidence-editor-workspace-editing-command-group-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused tests passed, shell-adjacent tests passed, Editor worktree npm run check passed, and merged Editor main npm run check passed."
+        }
+      ],
+      "createdAt": "2026-08-29T00:00:00.000Z",
+      "updatedAt": "2026-08-29T05:31:28.000Z"
     },
     {
       "kind": "checklist",
@@ -4298,6 +4449,34 @@
     },
     {
       "kind": "document",
+      "id": "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
+      "title": "Editor WorkspaceEditingCommandGroup Foundation",
+      "path": "docs/domains/editor-workspace-editing-command-group-foundation-2026-08-29.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Bounded implementation evidence and boundary decision for the Editor WorkspaceEditingCommandGroup UI component split without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+          "pathOrContractId": "src/components/shell/WorkspaceEditingCommandGroup.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+          "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+          "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts"
+        }
+      ],
+      "content": "# Editor WorkspaceEditingCommandGroup Foundation - 2026-08-29\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the sixth component-by-component Editor frontend\nredesign lane. It narrows this slice to the disabled editing command\npresentation that was still embedded in `EditorToolbar` after the\n`WorkspaceToolbar` split.\n\nThis lane does not promote Editor truth, Backend readiness, Core truth,\nfrontend design readiness, Preview parity, accessibility readiness, visual\nregression readiness, command readiness, production readiness, bundle-size\nreadiness, or FlowDoc product readiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-editing-command-group-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-editing-command-group-foundation`\n- Checklist target: `checklist-editor-workspace-editing-command-group-foundation`\n- Evidence target: `evidence-editor-workspace-editing-command-group-foundation-2026-08-29`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion\nis coordination context only.\n\n- `WorkspaceEditingCommandGroup`: define. The Editor-owned UI component that\n  renders supplied disabled editing command controls inside the toolbar.\n- `editing command presentation`: define for this lane as the visible disabled\n  Insert, Text, Fields, and Table toolbar controls. It is not command behavior,\n  command readiness, Core mutation semantics, Backend transport, or evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component remains\n  responsible for choosing icons and preparing display descriptors before\n  passing them to `WorkspaceEditingCommandGroup`.\n- `toolbar action`: context-only in this lane. The controls are still disabled\n  placeholders and do not prove available editing commands.\n- `command readiness`: blocked for promotion in this lane. It requires a later\n  command-owned evidence path before these controls can become enabled behavior.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor runtime component, Core runtime component, Backend component, or\n  Project Control component.\n\n## Component Scope\n\nWorkspaceEditingCommandGroup owns:\n\n- rendering supplied editing command descriptors as toolbar buttons;\n- preserving the current disabled command presentation;\n- rendering supplied icons and labels without interpreting their behavior.\n\nWorkspaceEditingCommandGroup does not own:\n\n- command activation, command readiness, callbacks, or mutation behavior;\n- Editor draft mutation, runtime state, selection, history, or Preview\n  lifecycle;\n- Core runtime node semantics, Core mutation results, or Core package\n  validation;\n- Backend document records, Backend revisions, persistence, transport, or\n  capability responses;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  diagnostics interpretation, or icon ownership;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns icons, display descriptors, paper,\nzoom, PDF export, migration, diagnostics, and future command readiness inputs\nbefore rendering the bounded UI component.\n\n## Implementation Evidence\n\nEditor commit `aca56f18b4e3e41ca514684fdf47478ce0e9ea00` adds\n`WorkspaceEditingCommandGroup` as the next extracted UI component under the\nEditor WorkspaceToolbar boundary. `EditorToolbar` now passes an\n`editingCommands` descriptor list into that component instead of holding the\ndisabled editing command button markup inline.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceEditingCommandGroup.tsx` did not exist. After\nimplementation, the focused test proved that the component renders supplied\nInsert, Text, Fields, and Table commands as disabled toolbar controls while\nstaying outside Editor runtime, Core, Backend, export, migration, paper, zoom,\ndiagnostics, icon, and command readiness ownership.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` failed before the component existed.\n- Editor focused GREEN: `npx vitest run src/tests/workspaceEditingCommandGroup.test.ts --reporter verbose` passed 1 test file and 2 tests.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceEditingCommandGroup.test.ts`,\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 8 test files passed and 14\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 87 test files passed,\n  298 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Editing command controls remain disabled placeholders. This lane does not\n  prove command readiness or command behavior.\n- EditorToolbar remains responsible for paper, zoom, PDF export, migration,\n  diagnostics, icons, and display descriptors.\n- The new component has unit-level markup evidence only; no visual regression\n  or accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and enabled-state behavior of the\n  editing command group.\n- Whether command groups should become command-owned controls, stay toolbar\n  presentation, or be replaced during the later full Editor frontend redesign.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor shell redesign with another bounded\ntoolbar subcomponent only after a fresh Project Control Work path, Phase,\nChecklist target, and Evidence target are identified. The next smallest slices\nare likely `WorkspacePaperControlGroup` or `WorkspaceZoomControlGroup` because\nthey are still inside `EditorToolbar` but must preserve the paper and zoom\nownership boundaries.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-editor-workspace-header-foundation-2026-08-28",
       "title": "Editor WorkspaceHeader Foundation - 2026-08-28",
       "path": "docs/domains/editor-workspace-header-foundation-2026-08-28.md",
@@ -4481,7 +4660,7 @@
           "pathOrContractId": "src/tests/workspaceToolbar.test.ts"
         }
       ],
-      "content": "# Editor WorkspaceToolbar Foundation - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the fifth component-by-component Editor frontend redesign\nlane. It narrows this slice to the toolbar shell UI boundary that was still\nembedded in `EditorToolbar`. It does not promote Editor truth, Backend\nreadiness, Core truth, frontend design readiness, Preview parity, accessibility\nreadiness, visual regression readiness, command readiness, or FlowDoc product\nreadiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-toolbar-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-toolbar-foundation`\n- Checklist target: `checklist-editor-workspace-toolbar-foundation`\n- Evidence target: `evidence-editor-workspace-toolbar-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceToolbar`: define. The Editor-owned UI component that renders the\n  toolbar shell, toolbar sections, dividers, spacer, and trailing slot from\n  supplied children.\n- `toolbar sections`: define for this lane as caller-supplied groups of toolbar\n  controls with display labels. They are not Core runtime nodes, Backend\n  document records, command contracts, or product readiness evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component now owns\n  toolbar action controls, callbacks, icons, paper and zoom display, PDF export\n  display/control, migration display/control, and diagnostics display before\n  passing sections and trailing controls to `WorkspaceToolbar`.\n- `toolbar action`: define as an Editor UI intent surface. It is not a Core\n  mutation result, Backend HTTP response, Backend revision, or Project Control\n  evidence packet.\n- `status`, `current`, `ready`, `compatible`, and `live`: context-only unless an\n  explicit evidence packet supports the exact scope. `WorkspaceToolbar` must not\n  add these claims on its own.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Backend component.\n\n## Component Scope\n\nWorkspaceToolbar owns:\n\n- the toolbar navigation landmark and shell markup;\n- rendering supplied toolbar sections as labelled groups;\n- rendering dividers between toolbar sections;\n- rendering the toolbar spacer before trailing controls;\n- rendering supplied trailing controls without interpreting their behavior.\n\nWorkspaceToolbar does not own:\n\n- route navigation, URL parsing, or browser history behavior;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, Core diagnostics\n  interpretation, or Core package validation;\n- Backend document records, Backend revisions, storage, transport shape, or\n  capability response interpretation;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  or command readiness;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns toolbar controls, callbacks, icons,\nand runtime-derived display values before rendering `WorkspaceToolbar`.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceToolbar` UI component\nunder the shell component boundary and update `EditorToolbar` to build supplied\ntoolbar sections and trailing controls before rendering the component. The first\nRED test should fail because the component does not exist. The implementation\nshould prove:\n\n- `WorkspaceToolbar` renders toolbar shell markup from supplied toolbar\n  sections;\n- `WorkspaceToolbar` renders dividers, spacer, and trailing controls without\n  importing command, runtime, Core, Backend, export, migration, paper, zoom, or\n  icon modules;\n- `EditorToolbar` renders `WorkspaceToolbar` instead of owning toolbar shell\n  markup directly;\n- EditorToolbar continues owning paper preset, zoom, PDF export, migration, and\n  diagnostics display inputs;\n- the lane does not promote map truth.\n\n## Evidence Target\n\nImplementation evidence is recorded as\n`evidence-editor-workspace-toolbar-foundation-2026-08-28` after the Editor\nworktree and merged main both passed focused tests and the full Editor\nrepository gate.\n\nThat evidence can support only the bounded WorkspaceToolbar UI component split.\nIt cannot promote broad Editor readiness, product frontend readiness, production\nBackend readiness, Preview parity, Core truth, accessibility readiness, visual\nregression readiness, command readiness, or FlowDoc product readiness.\n\n## Implementation Evidence\n\nEditor commit `9e9d0deaa957297419f34ed4e2a8b53344a9273e` adds\n`WorkspaceToolbar` as the next extracted UI component for the Editor Workspace\nShell. `EditorToolbar` now acts as the EditorToolbar adapter: it builds toolbar\nsections and trailing controls from existing props and renders\n`WorkspaceToolbar`, while the new UI component owns only toolbar shell layout.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceToolbar.tsx` did not exist. After implementation,\nthe focused test proved that `WorkspaceToolbar` renders supplied editing, paper,\nand zoom toolbar sections with dividers, spacer, and trailing controls while\nstaying outside command, Editor runtime, Core, Backend, export, migration,\npaper, zoom, and icon ownership.\n\nVerification:\n\n- Editor focused test passed for `src/tests/workspaceToolbar.test.ts`: 1 test\n  file passed and 2 tests passed.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 7 test files passed and 12\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 86 test files passed, 296\n  tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 86 test files passed,\n  296 tests passed, and Vite build passed.\n- Project Control evidence registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Toolbar copy can still imply command readiness if future work displays\n  unqualified enabled, ready, compatible, current, or live wording without exact\n  evidence scope.\n- EditorToolbar remains large after this shell split because it still owns\n  paper, zoom, PDF export, migration, diagnostics, icons, and callbacks.\n- The new component has unit-level markup evidence only; no visual regression or\n  accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and responsive shape of the toolbar.\n- Whether future frontend work should split editing command groups, document\n  actions, paper controls, zoom controls, and export/migration controls into\n  separate UI components.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nContinue the component-by-component Editor shell redesign with a bounded toolbar\nsubcomponent split, likely editing command groups or paper/zoom controls, only\nafter a fresh Project Control Work path, Phase, Checklist target, and Evidence\ntarget are identified. The next lane should start with a RED test, preserve\n`WorkspaceFrame`, `WorkspaceViewTabs`, `WorkspaceHeader`,\n`WorkspaceStatusStrip`, and `WorkspaceToolbar` boundaries, and avoid promoting\nmap truth without exact evidence.\n"
+      "content": "# Editor WorkspaceToolbar Foundation - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records the fifth component-by-component Editor frontend redesign\nlane. It narrows this slice to the toolbar shell UI boundary that was still\nembedded in `EditorToolbar`. It does not promote Editor truth, Backend\nreadiness, Core truth, frontend design readiness, Preview parity, accessibility\nreadiness, visual regression readiness, command readiness, or FlowDoc product\nreadiness.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-workspace-toolbar-foundation`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-workspace-toolbar-foundation`\n- Checklist target: `checklist-editor-workspace-toolbar-foundation`\n- Evidence target: `evidence-editor-workspace-toolbar-foundation-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for\nrecords, code, tests, contracts, and evidence. The Thai terminology companion is\ncoordination context only.\n\n- `WorkspaceToolbar`: define. The Editor-owned UI component that renders the\n  toolbar shell, toolbar sections, dividers, spacer, and trailing slot from\n  supplied children.\n- `toolbar sections`: define for this lane as caller-supplied groups of toolbar\n  controls with display labels. They are not Core runtime nodes, Backend\n  document records, command contracts, or product readiness evidence.\n- `EditorToolbar adapter`: define. The existing Editor shell component now owns\n  toolbar action controls, callbacks, icons, paper and zoom display, PDF export\n  display/control, migration display/control, and diagnostics display before\n  passing sections and trailing controls to `WorkspaceToolbar`.\n- `toolbar action`: define as an Editor UI intent surface. It is not a Core\n  mutation result, Backend HTTP response, Backend revision, or Project Control\n  evidence packet.\n- `status`, `current`, `ready`, `compatible`, and `live`: context-only unless an\n  explicit evidence packet supports the exact scope. `WorkspaceToolbar` must not\n  add these claims on its own.\n- `component`: split. This lane uses `UI component`; it does not create an\n  Editor state component, integration component, Core runtime component, or\n  Backend component.\n\n## Component Scope\n\nWorkspaceToolbar owns:\n\n- the toolbar navigation landmark and shell markup;\n- rendering supplied toolbar sections as labelled groups;\n- rendering dividers between toolbar sections;\n- rendering the toolbar spacer before trailing controls;\n- rendering supplied trailing controls without interpreting their behavior.\n\nWorkspaceToolbar does not own:\n\n- route navigation, URL parsing, or browser history behavior;\n- Editor draft mutation or document package authority;\n- Preview lifecycle, Preview data derivation, PDF/export parity, or unavailable\n  state decisions;\n- Core runtime node semantics, Core mutation results, Core diagnostics\n  interpretation, or Core package validation;\n- Backend document records, Backend revisions, storage, transport shape, or\n  capability response interpretation;\n- PDF export behavior, migration behavior, paper model behavior, zoom behavior,\n  or command readiness;\n- Project Control truth state, evidence packets, or map promotion.\n\nEditorToolbar remains the adapter that owns toolbar controls, callbacks, icons,\nand runtime-derived display values before rendering `WorkspaceToolbar`.\n\n## Implementation Target\n\nThe Editor implementation should add a focused `WorkspaceToolbar` UI component\nunder the shell component boundary and update `EditorToolbar` to build supplied\ntoolbar sections and trailing controls before rendering the component. The first\nRED test should fail because the component does not exist. The implementation\nshould prove:\n\n- `WorkspaceToolbar` renders toolbar shell markup from supplied toolbar\n  sections;\n- `WorkspaceToolbar` renders dividers, spacer, and trailing controls without\n  importing command, runtime, Core, Backend, export, migration, paper, zoom, or\n  icon modules;\n- `EditorToolbar` renders `WorkspaceToolbar` instead of owning toolbar shell\n  markup directly;\n- EditorToolbar continues owning paper preset, zoom, PDF export, migration, and\n  diagnostics display inputs;\n- the lane does not promote map truth.\n\n## Evidence Target\n\nImplementation evidence is recorded as\n`evidence-editor-workspace-toolbar-foundation-2026-08-28` after the Editor\nworktree and merged main both passed focused tests and the full Editor\nrepository gate.\n\nThat evidence can support only the bounded WorkspaceToolbar UI component split.\nIt cannot promote broad Editor readiness, product frontend readiness, production\nBackend readiness, Preview parity, Core truth, accessibility readiness, visual\nregression readiness, command readiness, or FlowDoc product readiness.\n\n## Implementation Evidence\n\nEditor commit `9e9d0deaa957297419f34ed4e2a8b53344a9273e` adds\n`WorkspaceToolbar` as the next extracted UI component for the Editor Workspace\nShell. `EditorToolbar` now acts as the EditorToolbar adapter: it builds toolbar\nsections and trailing controls from existing props and renders\n`WorkspaceToolbar`, while the new UI component owns only toolbar shell layout.\n\nThe focused RED test failed before implementation because\n`src/components/shell/WorkspaceToolbar.tsx` did not exist. After implementation,\nthe focused test proved that `WorkspaceToolbar` renders supplied editing, paper,\nand zoom toolbar sections with dividers, spacer, and trailing controls while\nstaying outside command, Editor runtime, Core, Backend, export, migration,\npaper, zoom, and icon ownership.\n\nVerification:\n\n- Editor focused test passed for `src/tests/workspaceToolbar.test.ts`: 1 test\n  file passed and 2 tests passed.\n- Editor shell-adjacent regression tests passed for\n  `src/tests/workspaceToolbar.test.ts`, `src/tests/workspaceFrame.test.ts`,\n  `src/tests/workspaceHeader.test.ts`, `src/tests/workspaceViewTabs.test.ts`,\n  `src/tests/workspaceStatusStrip.test.ts`,\n  `src/tests/documentWorkspaceRoute.test.ts`, and\n  `src/tests/realdocDocumentWorkspaceTabs.test.ts`: 7 test files passed and 12\n  tests passed.\n- Editor worktree `npm run check`: type-check passed, 86 test files passed, 296\n  tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 86 test files passed,\n  296 tests passed, and Vite build passed.\n- Project Control evidence registration keeps the Editor Project Control Node at\n  `unknown` and does not add this evidence to `editor.documentIds` or\n  `editor.evidenceIds`.\n\n## Risks\n\n- Toolbar copy can still imply command readiness if future work displays\n  unqualified enabled, ready, compatible, current, or live wording without exact\n  evidence scope.\n- EditorToolbar remains large after this shell split because it still owns\n  paper, zoom, PDF export, migration, diagnostics, icons, and callbacks.\n- The new component has unit-level markup evidence only; no visual regression or\n  accessibility pass was added in this slice.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n\n## Unknowns\n\n- Final visual styling, density, grouping, and responsive shape of the toolbar.\n- Whether future frontend work should split editing command groups, document\n  actions, paper controls, zoom controls, and export/migration controls into\n  separate UI components.\n- Which visual regression or accessibility evidence should become mandatory\n  before larger frontend redesign phases.\n- Production Backend readiness, Preview parity, Core truth, command readiness,\n  and broad Editor readiness remain unknown.\n\n## Next Work\n\nThe first bounded toolbar subcomponent follow-up is recorded in\n`doc-editor-workspace-editing-command-group-foundation-2026-08-29`, which\nsplits disabled editing command presentation out of `EditorToolbar` without\npromoting command readiness or Editor truth.\n\nContinue the component-by-component Editor shell redesign with another bounded\ntoolbar subcomponent only after a fresh Project Control Work path, Phase,\nChecklist target, and Evidence target are identified. The next lane should\nstart with a RED test, preserve `WorkspaceFrame`, `WorkspaceViewTabs`,\n`WorkspaceHeader`, `WorkspaceStatusStrip`, `WorkspaceToolbar`, and\n`WorkspaceEditingCommandGroup` boundaries, and avoid promoting map truth without\nexact evidence.\n"
     },
     {
       "kind": "document",
@@ -6040,6 +6219,16 @@
       "pathOrContractId": "AGENTS.md",
       "verificationSummary": "Editor AGENTS.md contains the Project Control entrypoint pointer and BLOCKER stop condition for broad FlowDoc work.",
       "verifiedAt": "2026-08-25T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-workspace-editing-command-group-foundation-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+      "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts",
+      "verificationSummary": "Editor commit aca56f18b4e3e41ca514684fdf47478ce0e9ea00 implements the bounded WorkspaceEditingCommandGroup UI component split by adding src/components/shell/WorkspaceEditingCommandGroup.tsx and updating src/components/shell/EditorToolbar.tsx to pass disabled editing command descriptors into it. RED failed before implementation because WorkspaceEditingCommandGroup did not exist. Focused tests then passed for src/tests/workspaceEditingCommandGroup.test.ts: 1 test file passed and 2 tests passed. Shell-adjacent regression tests passed for src/tests/workspaceEditingCommandGroup.test.ts, src/tests/workspaceToolbar.test.ts, src/tests/workspaceFrame.test.ts, src/tests/workspaceHeader.test.ts, src/tests/workspaceViewTabs.test.ts, src/tests/workspaceStatusStrip.test.ts, src/tests/documentWorkspaceRoute.test.ts, and src/tests/realdocDocumentWorkspaceTabs.test.ts: 8 test files passed and 14 tests passed. Editor worktree npm run check passed type-check, 87 passed test files, 298 passed tests, and build; merged Editor main npm run check also passed type-check, 87 passed test files, 298 passed tests, and build. npm install reported 5 high severity vulnerabilities and Vite reported the existing chunk-size warning; both remain risk outside this slice. This evidence supports only the bounded WorkspaceEditingCommandGroup UI component split and does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Preview parity, Backend readiness, Core truth, command readiness, production readiness, accessibility readiness, visual regression readiness, bundle-size readiness, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T05:31:28.000Z"
     },
     {
       "kind": "evidence",

@@ -162,10 +162,15 @@ Verification:
 
 ## Next Work
 
-Continue the component-by-component Editor shell redesign with a bounded toolbar
-subcomponent split, likely editing command groups or paper/zoom controls, only
-after a fresh Project Control Work path, Phase, Checklist target, and Evidence
-target are identified. The next lane should start with a RED test, preserve
-`WorkspaceFrame`, `WorkspaceViewTabs`, `WorkspaceHeader`,
-`WorkspaceStatusStrip`, and `WorkspaceToolbar` boundaries, and avoid promoting
-map truth without exact evidence.
+The first bounded toolbar subcomponent follow-up is recorded in
+`doc-editor-workspace-editing-command-group-foundation-2026-08-29`, which
+splits disabled editing command presentation out of `EditorToolbar` without
+promoting command readiness or Editor truth.
+
+Continue the component-by-component Editor shell redesign with another bounded
+toolbar subcomponent only after a fresh Project Control Work path, Phase,
+Checklist target, and Evidence target are identified. The next lane should
+start with a RED test, preserve `WorkspaceFrame`, `WorkspaceViewTabs`,
+`WorkspaceHeader`, `WorkspaceStatusStrip`, `WorkspaceToolbar`, and
+`WorkspaceEditingCommandGroup` boundaries, and avoid promoting map truth without
+exact evidence.

@@ -125,6 +125,7 @@ describe("Editor WorkspaceViewTabs foundation lane", () => {
       workIds: [
         "editor-backend-unavailable-honesty-review",
         "editor-local-loopback-dev-runner",
+        "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",

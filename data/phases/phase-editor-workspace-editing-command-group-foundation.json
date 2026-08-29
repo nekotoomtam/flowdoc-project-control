@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-workspace-editing-command-group-foundation",
+  "workId": "editor-workspace-editing-command-group-foundation",
+  "title": "Split Editor WorkspaceEditingCommandGroup",
+  "phaseState": "done",
+  "order": 90,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The new component imports Core, Backend, Editor runtime, local PDF export, migration, paper model, or icon ownership directly.",
+    "The lane enables editing commands or claims command readiness instead of preserving the current disabled presentation boundary.",
+    "EditorToolbar loses adapter ownership for command display inputs, paper, zoom, PDF export, migration, or diagnostics.",
+    "The Project Control record promotes broad Editor truth, frontend design completion, Backend readiness, Core truth, Preview parity, accessibility readiness, visual regression readiness, command readiness, or FlowDoc product readiness."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor WorkspaceEditingCommandGroup split with checklist target checklist-editor-workspace-editing-command-group-foundation and evidence target evidence-editor-workspace-editing-command-group-foundation-2026-08-29.",
+  "summary": "Split the disabled editing command presentation from EditorToolbar into a bounded WorkspaceEditingCommandGroup UI component without adding command behavior or promoting product truth.",
+  "createdAt": "2026-08-29T00:00:00.000Z",
+  "updatedAt": "2026-08-29T05:31:28.000Z"
+}
