@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "19c0fade7750533ebd772b3734c34fcd58d1409374cd8e8556648a7627ff2ec3",
+  "sourceDigest": "8f38a0a64ec36cc98afc2cc954e3321e95f9e3b469938ed1a175490d47def0ac",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -288,6 +288,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
+        "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
@@ -1014,6 +1015,51 @@
     },
     {
       "kind": "work",
+      "id": "editor-outline-scannability-foundation",
+      "title": "Editor Outline Scannability Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Add a bounded Outline summary and type/depth cues so the Editor left outline is easier to scan before deeper frontend redesign work.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+        "doc-editor-outline-scannability-foundation-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor merge commit f45512f2667d066553b7ffaedfdc85d2c6e1392f adds a bounded Outline summary plus icon, type, depth, selected-state, and accessibility cues. The live Backend mode design route shows Outline summary, 3 items, Text 1, Columns 1, Table 1, data-outline-type/depth attributes, and selecting summary-columns from the Outline updates the selected state. Target evidence id: evidence-editor-outline-scannability-foundation-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. The residual .worktrees/editor-outline-scannability-foundation folder could not be removed after git deregistered the worktree because ignored files remained in the physical folder.",
+      "requiredEvidence": [
+        "evidence-editor-outline-scannability-foundation-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T14:15:00.000Z",
+      "updatedAt": "2026-08-29T14:15:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-outline-scannability-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-outline-scannability-foundation"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-paper-smooth-zoom-anchor-fix",
       "title": "Editor Paper Smooth Zoom Anchor Fix",
       "nodeId": "editor",
@@ -1621,6 +1667,7 @@
         "editor-browser-live-backend-smoke",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
+        "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
         "editor-paper-smooth-zoom-surface",
         "editor-read-source-authoring-status",
@@ -2175,6 +2222,34 @@
       "summary": "Added and verified an Editor-owned local loopback development runner that starts Backend and Editor together for local inspection without writing evidence fixtures or promoting readiness claims.",
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-outline-scannability-foundation",
+      "workId": "editor-outline-scannability-foundation",
+      "title": "Add Editor Outline Scannability",
+      "phaseState": "done",
+      "order": 106,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The Outline treats Editor draft outline items, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+        "The Outline summary claims WYSIWYG, free text input, command authoring readiness, Backend mutation or persistence readiness, production readiness, accessibility readiness, or visual regression readiness.",
+        "The Outline imports Backend, Core, or Editor runtime behavior instead of rendering the bounded EditorOutlineItem display model it already receives.",
+        "The Outline hides existing items, breaks selection from the Outline to the canvas/Inspector path, or changes document data semantics.",
+        "The UI exposes raw Node terminology as a user-facing Outline label for this presentation lane.",
+        "Browser verification cannot show the summary and selection state on the live Backend mode design route.",
+        "Project Control promotes the broad Editor node from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor Outline scannability foundation with checklist target checklist-editor-outline-scannability-foundation and evidence target evidence-editor-outline-scannability-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Added a compact Outline summary and row cues so users can scan the document structure before opening deeper details.",
+      "createdAt": "2026-08-29T14:15:00.000Z",
+      "updatedAt": "2026-08-29T14:15:00.000Z"
     },
     {
       "kind": "phase",
@@ -3575,6 +3650,86 @@
       ],
       "createdAt": "2026-08-28T00:00:00.000Z",
       "updatedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-outline-scannability-foundation",
+      "phaseId": "phase-editor-outline-scannability-foundation",
+      "title": "Editor Outline Scannability Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-outline-scannability-scope",
+          "label": "Capture Project Control, terminology, Editor agreement, prior Inspector evidence, and live Backend mode boundary before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, and the prior local loopback and Inspector detail navigation records were used before implementation."
+        },
+        {
+          "id": "define-outline-presentation-boundary",
+          "label": "Define the Outline summary as an Editor presentation layer, not Core semantics, Backend storage truth, Project Control overview, or readiness evidence.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane document defines Outline summary, Outline type cue, and Outline depth cue as context-only Editor UI terms."
+        },
+        {
+          "id": "add-outline-scannability-red-tests",
+          "label": "Add RED tests requiring an Outline summary, type/depth attributes, selected-state preservation, bounded dependencies, and no user-facing Node terminology.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records the focused RED failures.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused RED first failed because OutlinePanel had no Outline summary or type/depth cues."
+        },
+        {
+          "id": "add-outline-summary-and-cues",
+          "label": "Add the Outline summary, icons, type labels, depth data attributes, selected-state attributes, and accessibility labels without changing selection semantics.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 points to OutlinePanel.tsx, editor.css, and outlineScannability.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "OutlinePanel now renders a compact summary, semantic row cues, icon affordances, and better accessible names while preserving onSelectNode behavior."
+        },
+        {
+          "id": "verify-editor-live-backend-outline-path",
+          "label": "Verify the rendered Editor main live Backend mode design route shows the summary and updates selected state after choosing Columns from the Outline.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence confirmed Outline summary, 3 items, Text 1, Columns 1, Table 1, summary-columns selection, type/depth attributes, accessible row labels, and no browser errors."
+        },
+        {
+          "id": "keep-map-truth-unpromoted",
+          "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this Outline presentation lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+        },
+        {
+          "id": "record-risk-and-unknowns",
+          "label": "Record dependency audit, chunk-size, Project Control baseline retry, and residual Editor worktree cleanup risks separately from product behavior.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+          "evidenceIds": [
+            "evidence-editor-outline-scannability-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, and the residual .worktrees/editor-outline-scannability-foundation folder separately from the UI behavior."
+        }
+      ],
+      "createdAt": "2026-08-29T14:15:00.000Z",
+      "updatedAt": "2026-08-29T14:15:00.000Z"
     },
     {
       "kind": "checklist",
@@ -5405,6 +5560,34 @@
         }
       ],
       "content": "# Editor Local Loopback Dev Runner - 2026-08-28\n\nStatus: in-review with bounded implementation evidence.\n\nThis document records a short operational lane added during the component-by-component Editor frontend redesign work. It creates a one-command local development path for checking the rendered Editor against a live Backend loopback server while keeping Core as a package dependency.\n\nThis lane does not prove product readiness, deployed Backend compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, broad Editor truth, broad Backend truth, broad Core truth, or FlowDoc product truth.\n\n## Work Identity\n\n- Work path: `flowdoc-product-development-resumption > editor-local-loopback-dev-runner`\n- Owner repository for implementation: `repo-editor`\n- Record repository for this lane: `repo-project-control`\n- Evidence source repositories: `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-local-loopback-dev-runner`\n- Checklist target: `checklist-editor-local-loopback-dev-runner`\n- Evidence target: `evidence-editor-local-loopback-dev-runner-2026-08-28`\n\n## Terminology\n\nThe canonical English product terminology remains the authority source for records, code, tests, contracts, and evidence. The Thai terminology companion is coordination context only.\n\n- `dev:local-loopback`: define. The Editor-owned local development command that starts Backend and Editor together for local inspection.\n- `live Backend mode`: define for this lane as the Editor Vite dev server calling a real Backend server on a local loopback URL.\n- `Core runtime dependency`: define. Core is dependency-only here; it is not started as a server process.\n- `Editor browser session`: define as the browser-visible development session served by Vite.\n- `ready`: define only as the runner observing Backend `/health` and Editor `/documents` over loopback. It is not product readiness.\n- `runtime`: split. This lane names Backend loopback server process, Editor Vite dev server, and Core dependency separately.\n\n## Runner Scope\n\nThe runner owns:\n\n- local repository path resolution from the Editor checkout or an Editor worktree;\n- Backend loopback server startup through the Backend `src/server.ts` entrypoint;\n- Editor Vite dev server startup with `VITE_FLOWDOC_BACKEND_URL` pointed at Backend;\n- readiness waits for Backend `/health` and Editor `/documents`;\n- a dry-run JSON plan for tests and review;\n- a smoke mode that starts both services and exits after readiness;\n- cleanup of the two child Node processes when the runner exits.\n\nThe runner does not own:\n\n- Core document semantics, package migration, mutation behavior, or runtime truth;\n- Backend transport, revision gates, persistence records, migration logic, mutation logic, or service readiness truth;\n- Editor product UI behavior, Editor draft behavior, Preview lifecycle, browser history, or route semantics;\n- evidence fixture generation or Project Control map promotion;\n- deployed, production, cross-browser, accessibility, visual, PDF export, or durable storage readiness.\n\nCore is dependency-only. Backend runs as a loopback server process. Editor runs as a Vite dev server. The command is for local development convenience, not a broader compatibility claim.\n\n## Implementation Evidence\n\nEditor commit `a007817b0f21de758e93a7c0b63873ca0414d5a7` adds:\n\n- `scripts/run-local-loopback-dev.mjs`\n- `src/tests/localLoopbackDevRunner.test.ts`\n- `package.json` scripts `dev:local-loopback` and `dev:local-loopback:smoke`\n\nThe focused RED test failed before implementation because `scripts/run-local-loopback-dev.mjs` did not exist. After implementation, `src/tests/localLoopbackDevRunner.test.ts` passed and verified that the dry-run plan:\n\n- reports `runner: \"flowdoc-local-loopback-dev\"`;\n- uses `live Backend mode`;\n- marks Core as `dependency-only`;\n- starts Backend and Editor as the only child processes;\n- exposes Backend `/health` and Editor `/documents` URLs;\n- keeps `localLoopbackOnly` true;\n- keeps `evidenceFixtureWrite` false;\n- keeps `productionReadinessClaim` false.\n\n`npm run dev:local-loopback:smoke` passed in the Editor worktree by starting Backend and Editor on random loopback ports, reaching Backend `/health`, reaching Editor `/documents`, and exiting after readiness.\n\nVerification:\n\n- Editor focused RED: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` failed with `MODULE_NOT_FOUND` before the runner existed.\n- Editor focused GREEN: `npx vitest run src/tests/localLoopbackDevRunner.test.ts --reporter verbose` passed 1 test.\n- Editor smoke: `npm run dev:local-loopback:smoke` passed and reported Backend `/health` plus Editor `/documents` ready on random loopback ports.\n- Editor worktree `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Editor merged main `npm run check`: type-check passed, 84 test files passed, 292 tests passed, and Vite build passed.\n- Project Control registration keeps the Editor Project Control Node at `unknown` and does not add this evidence to `editor.documentIds` or `editor.evidenceIds`.\n\n## Risks\n\n- This runner is local loopback only; it does not prove deployed Backend or hosted Editor behavior.\n- It checks startup readiness, not a browser interaction path, cross-browser coverage, accessibility, or visual regression.\n- It depends on local Backend and Editor dependencies being installed.\n- The local Core checkout had unrelated deleted `packages/pdf-renderer-pilot/fixtures/**` files during this lane. They were not edited or reverted.\n- Editor dependency installation still reports 5 high severity vulnerabilities.\n- Vite still reports the existing chunk-size warning during Editor build.\n- PDF export local infrastructure remains outside this runner.\n\n## Unknowns\n\n- Production Backend readiness and broad Backend truth remain unknown.\n- Broad Editor runtime truth and product readiness remain unknown.\n- Broad Core truth remains unknown.\n- Durable storage, auth, tenancy, rate limits, telemetry, backup, rollback, hosted deployment, and PDF export readiness remain unknown.\n- Whether future frontend redesign phases should require this runner as a standard visual-inspection preflight remains undecided.\n\n## Next Work\n\nUse `npm run dev:local-loopback` from the Editor repository when a frontend slice needs the rendered Editor calling a live Backend loopback server. Keep component work in small Editor-owned lanes, and use the existing browser/live Backend evidence runners only when the round needs retained evidence rather than a development session.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-outline-scannability-foundation-2026-08-29",
+      "title": "Editor Outline Scannability Foundation",
+      "path": "docs/domains/editor-outline-scannability-foundation-2026-08-29.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Bounded implementation evidence for an Editor Outline scannability presentation layer without promoting Editor product truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+          "pathOrContractId": "src/components/outline/OutlinePanel.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+          "pathOrContractId": "src/styles/editor.css"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+          "pathOrContractId": "src/tests/outlineScannability.test.ts"
+        }
+      ],
+      "content": "# Editor Outline Scannability Foundation - 2026-08-29\n\nStatus: bounded Editor Outline scannability layer complete; broad Editor truth\nremains unpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-outline-scannability-foundation`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-outline-scannability-foundation`\n- Checklist target: `checklist-editor-outline-scannability-foundation`\n- Evidence target: `evidence-editor-outline-scannability-foundation-2026-08-29`\n\nThis record is work-scoped verification only. It does not enable WYSIWYG, text\ninput, authoring, Backend mutation, persistence behavior, production Backend\nreadiness, Core truth, broad Editor truth, accessibility readiness, visual\nregression readiness, or FlowDoc product readiness.\n\n## Terminology Boundary\n\n- `Outline summary` means the compact Editor left-panel summary that reports\n  the number and displayed types of outline items for the current Editor draft.\n- `Outline type cue` means the presentation icon and type label attached to an\n  Editor outline row. It helps scanning; it is not a Core node type authority,\n  Backend record schema, or Project Control Node truth.\n- `Outline depth cue` means the row indentation and `data-outline-depth`\n  presentation attribute for an Editor outline row. It does not change\n  document structure semantics.\n- The word `Outline` in this lane is context-only for the Editor UI. It is not\n  the Project Control overview, Project Control history, Core runtime node\n  graph, or a Backend persistence claim.\n\n## PASS\n\nEditor merge commit `f45512f2667d066553b7ffaedfdc85d2c6e1392f` adds a bounded\nOutline scannability layer to the Editor.\n\nThe left Outline now has:\n\n| Surface | Observed value |\n| --- | --- |\n| Summary label | `Outline summary, 3 items, Text 1, Columns 1, Table 1` |\n| Text row label | `Product Report for Customer, Text block` |\n| Columns row label | `Columns section` |\n| Table row label | `Table section` |\n| Type attributes | `text-block`, `columns`, `table` |\n| Depth attributes on served sample | `0`, `0`, `0` |\n| Selection after choosing Columns | `summary-columns` |\n| Browser error logs | `0` |\n\nThe implementation preserves the existing Outline selection path. Clicking an\nOutline item still calls the existing selection handler; this lane only changes\nhow the outline rows are summarized and visually scanned.\n\n## Verification\n\n- Editor focused RED:\n  `npx vitest run src/tests/outlineScannability.test.ts --reporter verbose`\n  failed because `OutlinePanel` did not render an `Outline summary` or\n  `data-outline-type` / `data-outline-depth` row cues.\n- Editor focused GREEN:\n  `npx vitest run src/tests/outlineScannability.test.ts --reporter verbose`\n  passed 1 file / 2 tests.\n- Editor worktree gate: `npm run check` passed type-check, 90 test files, 310\n  tests, and build.\n- Worktree browser evidence in live Backend mode at\n  `http://127.0.0.1:50079/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:50078` confirmed `outlineVisible: true`,\n  summary label `Outline summary, 3 items, Text 1, Columns 1, Table 1`, item\n  labels `Product Report for Customer, Text block`, `Columns section`, and\n  `Table section`, type/depth attributes, `summary-columns` selected after\n  clicking Columns, and no browser errors.\n- Editor merged main gate: `npm run check` passed type-check, 90 test files,\n  310 tests, and build.\n- Main browser evidence at\n  `http://127.0.0.1:63958/documents/product-report-vnext-minimal/design` with\n  Backend on `http://127.0.0.1:63957` confirmed the same summary, item labels,\n  type/depth attributes, Columns selection state, and 0 browser errors.\n- Project Control baseline `npm run check` first failed with a transient\n  Vitest worker startup timeout before records were edited; the immediate exact\n  rerun passed `check:data`, type-check, 56 test files, 327 tests, build, and 6\n  e2e tests.\n- Project Control worktree record gate: `npm run check` passed `check:data`,\n  type-check, 57 test files, 328 tests, build, and 6 e2e tests after records\n  were added.\n- git deregistered the Editor worktree and branch deletion succeeded, but the\n  residual `.worktrees/editor-outline-scannability-foundation` folder could not\n  be removed because ignored files remained in the physical folder.\n\n## Intentionally Not Changed\n\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, or document package behavior\n  changed.\n- No WYSIWYG, free text input, command authoring readiness, or document editing\n  behavior changed.\n- No Project Control overview/history behavior changed.\n- No Outline item semantics or selection handler behavior changed.\n- No raw Inspector facts, Inspector actions, or canvas behavior were changed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility or visual-regression readiness claim was made.\n\n## RISK\n\n- Backend `/health` still reports production blocked.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- Project Control baseline `npm run check` had one transient Vitest worker\n  startup timeout before records were edited; the immediate rerun passed.\n- The residual Editor worktree folder\n  `.worktrees/editor-outline-scannability-foundation` could not be removed\n  after git deregistered the worktree because ignored files remained in the\n  physical folder; the merged branch was deleted.\n- Previous residual Editor worktree folders\n  `.worktrees/editor-inspector-detail-navigation-foundation` and\n  `.worktrees/editor-selection-context-summary-foundation` remain local cleanup\n  risks.\n- This browser check proves the local-loopback minimal document Outline path;\n  it is not a full cross-browser visual-regression suite.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Cross-browser Outline quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n- Whether deeper Outline grouping, history linkage, or Project Control-like\n  overview diagrams are the right long-term navigation model remains a later\n  frontend design question.\n\n## Next Work\n\nContinue Editor frontend work component-by-component. A useful next lane is to\nseparate the Outline into a stronger human-readable overview/history structure,\nor to continue hardening the canvas and Inspector relationship before enabling\nauthoring controls.\n"
     },
     {
       "kind": "document",
@@ -7356,6 +7539,16 @@
       "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts",
       "verificationSummary": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds the bounded dev:local-loopback runner and dev:local-loopback:smoke command. The runner treats Core as dependency-only, starts Backend as a local loopback server process, starts Editor as a Vite dev server with VITE_FLOWDOC_BACKEND_URL pointed at Backend, waits for Backend /health and Editor /documents, and writes no evidence fixtures. RED failed before implementation because scripts/run-local-loopback-dev.mjs did not exist; focused GREEN passed src/tests/localLoopbackDevRunner.test.ts with 1 test. npm run dev:local-loopback:smoke passed by starting Backend and Editor on random loopback ports and exiting after readiness. Editor worktree npm run check passed type-check, 84 passed test files, 292 passed tests, and build; merged Editor main npm run check also passed type-check, 84 passed test files, 292 passed tests, and build. Editor npm install reported 5 high severity vulnerabilities and Vite retained the existing chunk-size warning; Core local checkout had unrelated deleted pdf-renderer-pilot fixture files and was not edited. This evidence supports only the local loopback dev runner, is local loopback only, and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, or product readiness.",
       "verifiedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-outline-scannability-foundation-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "f45512f2667d066553b7ffaedfdc85d2c6e1392f",
+      "pathOrContractId": "src/tests/outlineScannability.test.ts",
+      "verificationSummary": "Editor merge commit f45512f2667d066553b7ffaedfdc85d2c6e1392f implements the bounded Outline scannability foundation for the Editor left outline. OutlinePanel now renders an Outline summary, count by displayed outline item type, lucide type icons, data-outline-type, data-outline-depth, data-selected attributes, and clearer accessibility labels while preserving the existing onSelectNode selection path. Focused RED first failed in src/tests/outlineScannability.test.ts because OutlinePanel did not render an Outline summary or data-outline-type/depth cues. Focused GREEN passed npx vitest run src/tests/outlineScannability.test.ts --reporter verbose with 1 file and 2 tests. Editor worktree npm run check passed type-check, 90 passed test files, 310 passed tests, and build. Worktree browser evidence in live Backend mode opened http://127.0.0.1:50079/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:50078, confirmed outlineVisible true, summaryLabel Outline summary, 3 items, Text 1, Columns 1, Table 1, item labels Product Report for Customer, Text block / Columns section / Table section, data-outline-type values text-block / columns / table, data-outline-depth 0 values for the served sample, summary-columns selected true after clicking Columns, and no browser errors. Merged Editor main npm run check passed type-check, 90 passed test files, 310 passed tests, and build. Main browser evidence at http://127.0.0.1:63958/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:63957 confirmed the same Outline summary, item labels, selected summary-columns state, type/depth attributes, and 0 browser errors. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check first failed with a transient Vitest worker startup timeout before any Project Control record edits; the immediate exact rerun passed check:data, type-check, 56 test files, 327 tests, build, and 6 e2e tests. Project Control worktree record gate npm run check passed check:data, type-check, 57 test files, 328 tests, build, and 6 e2e tests after records were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-outline-scannability-foundation folder could not be removed because ignored files remained in the physical folder. Previous residual Editor worktree folders for editor-inspector-detail-navigation-foundation and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor Outline scannability presentation layer and does not promote broad Editor truth, WYSIWYG readiness, text input readiness, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T14:15:00.000Z"
     },
     {
       "kind": "evidence",
