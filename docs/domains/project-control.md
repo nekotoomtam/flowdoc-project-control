@@ -20,15 +20,27 @@ History split in
 `docs/domains/project-control-repo-first-overview-history-2026-08-28.md`.
 That decision says the first GUI surface should act as a repository or area
 directory, while a separate History surface records what has happened over
-time and returns the user to a focused Overview. This is an approved design
-direction and agent operating rule, not a claim that the GUI implementation is
-already complete.
+time and returns the user to a focused Overview.
+
+Repo Directory Overview and Work History View are implemented as bounded
+Project Control GUI behavior by Project Control commit
+`97e9d234d2bb1e2d294463a395604d5f0ec75348`. The implementation record is
+`doc-project-control-overview-history-gui-2026-08-29`, and the supporting
+Evidence record is
+`evidence-project-control-overview-history-gui-2026-08-29`. This claim is
+limited to the Project Control read-only GUI entry, History, focused return
+flow, and related agent guidance.
 
 This overview is current only for the Project Control architecture described by the approved design at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`. It does not claim that Core, Editor, or Backend is current.
 
 ## Evidence boundary
 
-The current Project Control claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.
+The current Project Control architecture claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.
+
+The current Project Control GUI Overview and History claim is supported by
+`evidence-project-control-overview-history-gui-2026-08-29`. That Evidence
+deliberately limits verification to the Project Control GUI implementation and
+tests; it does not claim that Core, Editor, or Backend is current.
 
 ## Product-repository inspection baselines
 

@@ -44,6 +44,23 @@ not treat History as Evidence. They must not promote Overview or History
 wording into system truth until implementation, verification, and Project
 Control records support the bounded claim.
 
+### Current GUI implementation
+
+As of `doc-project-control-overview-history-gui-2026-08-29`, the first bounded
+Project Control GUI implementation supports the Overview and History split.
+
+Agents entering the GUI should start at `Repo Directory Overview` for broad
+orientation. Use `Work History View` only when the user asks what happened over
+time, which Work records exist, or where a previous recorded item belongs in
+the map. A History row should return to the focused Overview for the related
+repository or area; it should not open full Detail by default and should not be
+used as Evidence.
+
+Do not restore a raw Work tree to Home when changing Project Control GUI
+behavior. Keep full Work, Project Control Node, Evidence, Checklist, document,
+risk, and unknown detail behind selection unless a later approved decision and
+Evidence record supersede this boundary.
+
 When Project Control GUI navigation or orientation changes, the same round must
 update the agent-facing documents that future rooms read, including this
 operating model, the global Codex guidance when relevant, and any glossary

@@ -26,19 +26,28 @@ describe("truthful seed project", () => {
     expect(model.rootNodeIds).toEqual(["flowdoc"]);
     expect(model.nodes.find((node) => node.id === "project-control")).toMatchObject({
       truthState: "current",
-      evidenceIds: ["evidence-project-control-design"],
+      evidenceIds: [
+        "evidence-project-control-design",
+        "evidence-project-control-overview-history-gui-2026-08-29",
+      ],
     });
     for (const id of ["core", "editor", "backend"]) {
       expect(model.nodes.find((node) => node.id === id)?.truthState).toBe("unknown");
     }
 
-    const evidence = model.evidence.find((entry) => entry.id === "evidence-project-control-design");
-    expect(evidence).toBeDefined();
-    await expect(execFileAsync("git", [
-      "cat-file",
-      "-e",
-      `${evidence!.commit}:${evidence!.pathOrContractId}`,
-    ], { cwd: process.cwd() })).resolves.toBeDefined();
+    for (const evidenceId of [
+      "evidence-project-control-design",
+      "evidence-project-control-overview-history-gui-2026-08-29",
+    ]) {
+      const evidence = model.evidence.find((entry) => entry.id === evidenceId);
+      expect(evidence).toBeDefined();
+      const firstPath = evidence!.pathOrContractId.split(";")[0]!.trim();
+      await expect(execFileAsync("git", [
+        "cat-file",
+        "-e",
+        `${evidence!.commit}:${firstPath}`,
+      ], { cwd: process.cwd() })).resolves.toBeDefined();
+    }
   });
 
   it("registers the FlowDoc system map and keeps plan documents separate from truth maps", async () => {

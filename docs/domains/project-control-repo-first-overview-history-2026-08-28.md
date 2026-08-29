@@ -15,6 +15,17 @@ Evidence by itself.
 Project Control remains the owner of this decision. Product repositories remain
 the owners of runtime behavior, tests, and implementation-local contracts.
 
+## First implementation evidence
+
+The first bounded implementation of this direction is recorded separately in
+`doc-project-control-overview-history-gui-2026-08-29` and supported by
+`evidence-project-control-overview-history-gui-2026-08-29`.
+
+That evidence covers the Project Control read-only GUI Home Overview, separate
+Work History View, History-to-focused-Overview return flow, and agent-facing
+guidance update. It does not promote Core, Backend, Editor, compatibility, or
+product readiness truth.
+
 ## Decision
 
 Project Control should present a repo-first entry experience before it presents

@@ -93,6 +93,17 @@ product truth. If Project Control GUI navigation or agent workflow changes,
 update the Project Control agent-facing documents in the same round or report
 the deferred update as `RISK`.
 
+Current Project Control GUI implementation evidence lives at:
+
+```text
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\project-control-overview-history-gui-2026-08-29.md
+```
+
+Read it before changing current Project Control GUI behavior. Do not restore a
+raw Work tree to Home; keep full Work, Project Control Node, Evidence,
+Checklist, document, risk, and unknown detail behind selection unless a later
+approved decision and Evidence record supersede this boundary.
+
 ## Worktree discipline
 
 For any non-read-only FlowDoc work that may edit files, create a dedicated
