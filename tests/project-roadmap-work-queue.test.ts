@@ -148,6 +148,16 @@ const remediationTasks = [
     checklistLength: 5,
   },
   {
+    id: "editor-creator-structure-add-affordance-foundation",
+    nodeId: "editor",
+    workState: "in-review",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-editor-creator-structure-add-affordance-foundation",
+    phaseState: "done",
+    checklistId: "checklist-editor-creator-structure-add-affordance-foundation",
+    checklistLength: 7,
+  },
+  {
     id: "editor-backend-core-live-compatibility-harness",
     nodeId: "flowdoc",
     workState: "in-review",
@@ -273,7 +283,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 33);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 34);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -310,6 +320,7 @@ describe("project roadmap Work Queue", () => {
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
@@ -404,6 +415,7 @@ describe("project roadmap Work Queue", () => {
       truthState: "unknown",
       workIds: [
         "editor-backend-unavailable-honesty-review",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",

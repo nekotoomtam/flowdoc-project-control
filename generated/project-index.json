@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "8f38a0a64ec36cc98afc2cc954e3321e95f9e3b469938ed1a175490d47def0ac",
+  "sourceDigest": "7044068f497b9019981584357db12187adf211f25d0e0246b065dba0670836e2",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -286,6 +286,7 @@
       "childIds": [],
       "workIds": [
         "editor-backend-unavailable-honesty-review",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
@@ -918,6 +919,52 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "editor-browser-live-backend-smoke"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "editor-creator-structure-add-affordance-foundation",
+      "title": "Editor Creator Structure Add Affordance Foundation",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "Add a bounded Structure panel add-block affordance foundation that keeps authoring disabled while protecting the left-panel shape for larger document structures.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-editor-local-loopback-dev-runner-2026-08-28",
+        "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+        "doc-editor-outline-scannability-foundation-2026-08-29",
+        "doc-editor-creator-structure-add-affordance-foundation-2026-08-29"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor merge commit 2538c2af02f2bda7aa6eafb8d621eec33bc28cc0 renames the left panel landmark and heading to Structure, adds disabled append and selected-row add-block affordances, preserves existing outline selection behavior, and adds a 1200-item synthetic guard so row-level add controls do not render once per row. Target evidence id: evidence-editor-creator-structure-add-affordance-foundation-2026-08-29.",
+      "riskSummary": "This lane does not enable WYSIWYG, text input, active add-block creation, Backend mutation or persistence readiness, Core mutation readiness, production readiness, accessibility readiness, visual regression readiness, real large-document authoring performance readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. A residual .worktrees/editor-creator-structure-add-affordance-foundation folder remains after git deregistration because local command policy rejected recursive cleanup.",
+      "requiredEvidence": [
+        "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+      ],
+      "createdAt": "2026-08-29T15:57:00.000Z",
+      "updatedAt": "2026-08-29T15:57:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-creator-structure-add-affordance-foundation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-creator-structure-add-affordance-foundation"
       ]
     },
     {
@@ -1665,6 +1712,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
@@ -2168,6 +2216,34 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-creator-structure-add-affordance-foundation",
+      "workId": "editor-creator-structure-add-affordance-foundation",
+      "title": "Add Editor Creator Structure Add Affordance Foundation",
+      "phaseState": "done",
+      "order": 107,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The Structure panel treats Editor draft outline items, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+        "The add-block affordance creates, mutates, persists, or routes through Backend/Core behavior before the mutation contract is verified.",
+        "The Structure panel exposes user-facing Node terminology instead of Add block or Structure terminology.",
+        "The selected-row add affordance renders once for every row in large outlines, making the panel heavier as structure count grows.",
+        "The implementation imports Backend or Core directly into the presentation component.",
+        "Browser verification cannot keep the existing live Backend mode design route and selection/mutation smoke path working.",
+        "Project Control promotes the broad Editor node from this work-scoped evidence."
+      ],
+      "verificationTarget": "Project Control records the bounded Editor creator Structure add affordance foundation with checklist target checklist-editor-creator-structure-add-affordance-foundation and evidence target evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+      "summary": "Added disabled add-block affordances to the Editor left Structure panel and guarded the selected-row affordance count for larger outline structures.",
+      "createdAt": "2026-08-29T15:57:00.000Z",
+      "updatedAt": "2026-08-29T15:57:00.000Z"
     },
     {
       "kind": "phase",
@@ -3500,6 +3576,86 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-creator-structure-add-affordance-foundation",
+      "phaseId": "phase-editor-creator-structure-add-affordance-foundation",
+      "title": "Editor Creator Structure Add Affordance Foundation Checklist",
+      "items": [
+        {
+          "id": "capture-structure-add-affordance-scope",
+          "label": "Capture Project Control, terminology, Editor agreement, prior Outline evidence, and live Backend mode boundary before implementation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "Project Control AGENTS.md, the FlowDoc product terminology records, Editor AGENTS.md, and prior Outline/Inspector records were used before implementation."
+        },
+        {
+          "id": "define-structure-add-terminology-boundary",
+          "label": "Define Structure panel and Add block affordance as Editor presentation terms, not Core runtime node creation or Backend mutation readiness.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane document splits Add node into user-facing Add block affordance and future Core runtime node mutation semantics."
+        },
+        {
+          "id": "add-structure-add-affordance-red-tests",
+          "label": "Add RED tests requiring Structure wording, disabled Add block affordances, no text-input controls, no Node wording, and a large-structure affordance-count guard.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records the focused RED failures.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused RED first failed 4 tests because the Structure summary, add state, item count marker, and bounded source marker were absent; the follow-up RED failed because the landmark still used Document outline."
+        },
+        {
+          "id": "add-disabled-structure-add-affordances",
+          "label": "Add disabled append and selected-row Add block affordances in the left Structure panel without changing selection semantics or enabling mutation.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 points to OutlinePanel.tsx, editor.css, and outlineScannability.test.ts.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "OutlinePanel now renders Structure wording, disabled plus icons, add-placement/state data attributes, Authoring limited status, and keeps the selected-row add affordance bounded to one row."
+        },
+        {
+          "id": "verify-editor-live-backend-structure-path",
+          "label": "Verify the rendered Editor main live Backend mode design route still loads and preserves the existing smoke path after the Structure panel change.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "Focused GREEN passed, worktree npm run check passed, worktree browser smoke passed, merged main npm run check passed, and main browser smoke retained summary-columns > title > detail-table."
+        },
+        {
+          "id": "keep-authoring-and-map-truth-unpromoted",
+          "label": "Keep active authoring, Backend/Core mutation readiness, and broad Editor map truth unpromoted by this presentation lane.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane leaves Editor Project Control Node truthState unknown and records no nodeIds on the Evidence record."
+        },
+        {
+          "id": "record-structure-performance-risks",
+          "label": "Record real large-document authoring performance, list virtualization, dependency audit, chunk-size, and residual worktree cleanup risks separately from product behavior.",
+          "state": "passed",
+          "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+          "evidenceIds": [
+            "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"
+          ],
+          "verificationNote": "The lane records synthetic-only large-structure coverage, unknown text-block typing performance, Vite chunk warning, npm audit risk, and residual worktree cleanup risk."
+        }
+      ],
+      "createdAt": "2026-08-29T15:57:00.000Z",
+      "updatedAt": "2026-08-29T15:57:00.000Z"
     },
     {
       "kind": "checklist",
@@ -5479,6 +5635,34 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
+      "title": "Editor Creator Structure Add Affordance Foundation",
+      "path": "docs/domains/editor-creator-structure-add-affordance-foundation-2026-08-29.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Bounded implementation evidence for an Editor Structure panel add-block affordance presentation layer without promoting Editor product truth or authoring readiness.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+          "pathOrContractId": "src/components/outline/OutlinePanel.tsx"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+          "pathOrContractId": "src/styles/editor.css"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+          "pathOrContractId": "src/tests/outlineScannability.test.ts"
+        }
+      ],
+      "content": "# Editor Creator Structure Add Affordance Foundation - 2026-08-29\n\nStatus: bounded Editor structure-panel affordance layer complete; broad Editor\ntruth remains unpromoted.\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > editor-creator-structure-add-affordance-foundation`\n- Owner repository: `repo-editor`\n- Related repositories: `repo-project-control`, `repo-backend`, `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-editor-creator-structure-add-affordance-foundation`\n- Checklist target: `checklist-editor-creator-structure-add-affordance-foundation`\n- Evidence target: `evidence-editor-creator-structure-add-affordance-foundation-2026-08-29`\n\nThis record is work-scoped verification only. It does not enable WYSIWYG, text\ninput, active add-block creation, Backend mutation, persistence behavior,\nproduction Backend readiness, Core truth, broad Editor truth, accessibility\nreadiness, visual regression readiness, performance readiness, or FlowDoc\nproduct readiness.\n\n## Terminology Boundary\n\n- `Structure panel` means the Editor left-panel surface that helps a creator\n  scan document structure. In code it still uses the existing `OutlinePanel`\n  component boundary.\n- `Outline item` remains the canonical Editor UI row term from the FlowDoc\n  product glossary.\n- `Add block affordance` means the disabled plus controls that show future\n  insertion placement in the Structure panel. It is not an active Core\n  mutation, Backend route, document operation, or persistence claim.\n- `Add node` is split for this lane. User-facing UI uses `Add block`; Core\n  graph facts would be named `Core runtime node` only when the backing graph\n  item is in scope.\n- `Authoring limited` is a status cue for the current Editor draft surface. It\n  does not prove authoring readiness.\n\n## PASS\n\nEditor merge commit `2538c2af02f2bda7aa6eafb8d621eec33bc28cc0` adds a bounded\ncreator Structure panel add-affordance foundation to the Editor.\n\nThe left panel now has:\n\n| Surface | Observed value |\n| --- | --- |\n| Landmark | `Document structure` |\n| Heading | `Structure` |\n| Summary label | `Structure summary, 3 items, Text 1, Columns 1, Table 1` |\n| Append affordance | Disabled `Add block at end unavailable until authoring is enabled` |\n| Selected-row affordance | Disabled `Insert block after Columns unavailable until authoring is enabled` |\n| Add state marker | `data-outline-add-state=\"disabled\"` |\n| Add placement markers | `append`, `after` |\n| Large structure guard | A 1200-item synthetic outline renders one selected-row add affordance, not one per row |\n\nThe implementation preserves the existing selection path. Clicking a structure\nrow still calls the existing `onSelectNode` path. The add-block affordances are\ndisabled and do not call Backend, Core, command execution, document mutation,\nor persistence behavior.\n\n## Verification\n\n- Editor worktree baseline: `npm run check` passed type-check, 90 test files,\n  310 tests, and build before implementation. The build kept the existing Vite\n  chunk-size warning.\n- Editor focused RED:\n  `npx vitest run src/tests/outlineScannability.test.ts --reporter verbose`\n  first failed 4 tests because `OutlinePanel` did not render the Structure\n  summary, add-block disabled state, large-outline item count marker, or\n  bounded add source marker.\n- Editor follow-up RED:\n  `npx vitest run src/tests/outlineScannability.test.ts --reporter verbose`\n  failed because the panel landmark still said `Document outline` instead of\n  `Document structure`.\n- Editor focused GREEN:\n  `npx vitest run src/tests/outlineScannability.test.ts --reporter verbose`\n  passed 1 file / 4 tests after implementation and the single-pass summary\n  count refactor.\n- Editor worktree gate: `npm run check` passed type-check, 90 test files, 312\n  tests, and build.\n- Worktree browser evidence:\n  `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed in live Backend mode and retained\n  `editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table`.\n- Editor merged main gate: `npm run check` passed type-check, 90 test files,\n  312 tests, and build.\n- Main browser evidence:\n  `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed in live Backend mode and retained\n  `editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table`.\n- Project Control baseline `npm run check` passed `check:data`, type-check, 57\n  test files, 328 tests, build, and 6 e2e tests before records were edited.\n- Project Control focused record tests:\n  `npx vitest run tests/editor-creator-structure-add-affordance-foundation-lane.test.ts tests/project-roadmap-work-queue.test.ts tests/editor-outline-scannability-foundation-lane.test.ts --reporter verbose`\n  passed 3 files / 4 tests after the new lane test and expected Work lists\n  were added.\n- Project Control record gate: `npm run check` passed `check:data`,\n  type-check, 58 test files, 329 tests, build, and 6 e2e tests after records\n  and tests were added.\n- Editor branch cleanup succeeded after merge. `git worktree remove` deregistered\n  the Editor worktree but could not remove the physical folder because the\n  directory was not empty. A later verified recursive cleanup command was\n  rejected by local command policy, so the residual physical folder remains.\n\n## Intentionally Not Changed\n\n- No active add-block command, menu, create flow, text input, or WYSIWYG\n  behavior was enabled.\n- No Backend mutation, persistence, storage, auth, tenancy, or production\n  readiness behavior changed.\n- No Core package, parser, runtime, renderer, mutation semantics, or document\n  package behavior changed.\n- No table row/cell tree, z-index/layers view, drag reorder, or canvas insertion\n  handle was added.\n- No Project Control overview/history behavior changed.\n- No Editor, Backend, Core, FlowDoc, or frontend Node map truth was promoted.\n- No broad accessibility, visual-regression, or performance readiness claim was\n  made.\n\n## RISK\n\n- Real text-block typing performance remains untested because active text\n  editing is not enabled in this lane.\n- The large-structure guard is synthetic and checks rendering boundaries for\n  the Structure panel. It does not prove real browser latency, virtualization\n  readiness, or caret/IME behavior under heavy documents.\n- The panel still renders all outline rows. Virtualization or windowing remains\n  future work if real documents grow beyond what the current list can handle.\n- Editor `npm install` in the lane still reported 5 high severity\n  vulnerabilities.\n- Vite still reports the existing chunk-size warning.\n- The residual Editor worktree folder\n  `.worktrees/editor-creator-structure-add-affordance-foundation` remains after\n  git deregistration because local command policy rejected recursive cleanup.\n- Previous residual Editor worktree folders\n  `.worktrees/editor-inspector-detail-navigation-foundation`,\n  `.worktrees/editor-outline-scannability-foundation`, and\n  `.worktrees/editor-selection-context-summary-foundation` remain local cleanup\n  risks.\n- Browser smoke proves only the local-loopback minimal document path and the\n  existing mutation smoke route. It is not a full cross-browser visual-regression\n  suite.\n\n## UNKNOWN\n\n- Broad Editor readiness remains unknown.\n- Broad FlowDoc product readiness remains unknown.\n- Real large-document authoring performance remains unknown.\n- Structure panel virtualization thresholds remain unknown.\n- Cross-browser Structure panel quality remains unknown.\n- Mobile behavior remains intentionally unclaimed.\n- Accessibility readiness and full visual regression readiness remain unknown.\n- The safe Backend/Core contract for active add-block creation remains a later\n  product decision.\n\n## Next Work\n\nBefore enabling active add-block creation, define the Backend/Core mutation\ncontract and keep the Editor button disabled until that path has evidence. A\nuseful next Editor lane is a read-only large-structure navigation/performance\nslice: expand/collapse, selected-item reveal, and list windowing or\ninstrumentation without text editing.\n"
     },
     {
       "kind": "document",
@@ -7519,6 +7703,16 @@
       "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json",
       "verificationSummary": "Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4 provides an accepted bounded browser-app live Backend smoke. The npm script evidence:editor-browser-live-backend-smoke starts a live loopback Backend server in process, seeds it with the Core product-report-vnext-minimal fixture, starts the rendered Editor app with VITE_FLOWDOC_BACKEND_URL, launches headless Chrome through CDP, opens /documents, enters /documents/product-report-vnext-minimal/design through the product UI, observes Core: api r3 with compatible versions, clicks Upgrade and observes Core: api r4 partial mode, selects title, clicks Move selected node down, observes Core: mutation-result r5, and retains final outline order summary-columns > title > detail-table. Retained evidence records Backend requests for /documents?limit=24, /capabilities/versions, /documents/product-report-vnext-minimal, /migrations/package-v3-document-v4, and /mutations with 200 or 204 statuses. TDD RED failed before implementation because the retained fixture was absent; focused retained evidence then passed. Editor worktree npm run check passed type-check, 79 test files, 285 tests, and build; merged Editor main re-ran the browser smoke with FLOWDOC_EVIDENCE_WRITE=0 and npm run check passed the same owner gate. Backend and Core were clean and unchanged. This supports only the bounded local loopback headless Chrome product-route smoke claim; it does not promote FlowDoc/product readiness truth, deployed Backend compatibility, cross-browser readiness, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, or bundle-size readiness.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+      "pathOrContractId": "src/tests/outlineScannability.test.ts",
+      "verificationSummary": "Editor merge commit 2538c2af02f2bda7aa6eafb8d621eec33bc28cc0 implements the bounded creator Structure panel add-affordance foundation for the Editor left panel. OutlinePanel now exposes the left landmark as Document structure, labels the panel Structure, renders Structure summary wording, shows a disabled append Add block affordance in the panel header, shows one disabled selected-row Add block affordance after the selected Outline item, exposes data-outline-add-state disabled plus append/after placement markers, keeps Authoring limited visible, preserves the existing onSelectNode selection path, and changes summary type counting to a single pass. Focused RED first failed in src/tests/outlineScannability.test.ts because the Structure summary, disabled add state, large-outline item-count marker, and bounded add source marker were absent. Follow-up RED failed because the panel landmark still said Document outline instead of Document structure. Focused GREEN passed npx vitest run src/tests/outlineScannability.test.ts --reporter verbose with 1 file and 4 tests. The large-structure synthetic test renders 1200 Outline items and asserts exactly one selected-row add affordance instead of one per row. Editor worktree npm run check passed type-check, 90 passed test files, 312 passed tests, and build. Worktree browser evidence in live Backend mode passed FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke and retained editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table. Merged Editor main npm run check passed type-check, 90 passed test files, 312 passed tests, and build. Main browser evidence in live Backend mode passed FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke and retained editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check passed check:data, type-check, 57 test files, 328 tests, build, and 6 e2e tests before record edits. Project Control focused record tests passed 3 files and 4 tests after the new lane test and expected Work lists were added. Project Control record gate npm run check passed check:data, type-check, 58 passed test files, 329 passed tests, build, and 6 e2e tests after records and tests were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-creator-structure-add-affordance-foundation folder could not be removed because a verified recursive cleanup command was rejected by local command policy. Previous residual Editor worktree folders for editor-inspector-detail-navigation-foundation, editor-outline-scannability-foundation, and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor Structure panel add-affordance presentation layer and synthetic large-structure affordance-count guard. It does not promote broad Editor truth, WYSIWYG readiness, text input readiness, active add-block creation, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, real large-document authoring performance readiness, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
+      "verifiedAt": "2026-08-29T15:57:00.000Z"
     },
     {
       "kind": "evidence",

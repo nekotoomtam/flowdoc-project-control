@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-creator-structure-add-affordance-foundation",
+  "title": "Editor Creator Structure Add Affordance Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Structure panel add-block affordance foundation that keeps authoring disabled while protecting the left-panel shape for larger document structures.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+    "doc-editor-outline-scannability-foundation-2026-08-29",
+    "doc-editor-creator-structure-add-affordance-foundation-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit 2538c2af02f2bda7aa6eafb8d621eec33bc28cc0 renames the left panel landmark and heading to Structure, adds disabled append and selected-row add-block affordances, preserves existing outline selection behavior, and adds a 1200-item synthetic guard so row-level add controls do not render once per row. Target evidence id: evidence-editor-creator-structure-add-affordance-foundation-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, active add-block creation, Backend mutation or persistence readiness, Core mutation readiness, production readiness, accessibility readiness, visual regression readiness, real large-document authoring performance readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. A residual .worktrees/editor-creator-structure-add-affordance-foundation folder remains after git deregistration because local command policy rejected recursive cleanup.",
+  "requiredEvidence": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+  "createdAt": "2026-08-29T15:57:00.000Z",
+  "updatedAt": "2026-08-29T15:57:00.000Z"
+}

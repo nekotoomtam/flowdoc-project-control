@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-creator-structure-add-affordance-foundation",
+  "phaseId": "phase-editor-creator-structure-add-affordance-foundation",
+  "title": "Editor Creator Structure Add Affordance Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-structure-add-affordance-scope",
+      "label": "Capture Project Control, terminology, Editor agreement, prior Outline evidence, and live Backend mode boundary before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, the FlowDoc product terminology records, Editor AGENTS.md, and prior Outline/Inspector records were used before implementation."
+    },
+    {
+      "id": "define-structure-add-terminology-boundary",
+      "label": "Define Structure panel and Add block affordance as Editor presentation terms, not Core runtime node creation or Backend mutation readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "The lane document splits Add node into user-facing Add block affordance and future Core runtime node mutation semantics."
+    },
+    {
+      "id": "add-structure-add-affordance-red-tests",
+      "label": "Add RED tests requiring Structure wording, disabled Add block affordances, no text-input controls, no Node wording, and a large-structure affordance-count guard.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records the focused RED failures.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "Focused RED first failed 4 tests because the Structure summary, add state, item count marker, and bounded source marker were absent; the follow-up RED failed because the landmark still used Document outline."
+    },
+    {
+      "id": "add-disabled-structure-add-affordances",
+      "label": "Add disabled append and selected-row Add block affordances in the left Structure panel without changing selection semantics or enabling mutation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 points to OutlinePanel.tsx, editor.css, and outlineScannability.test.ts.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "OutlinePanel now renders Structure wording, disabled plus icons, add-placement/state data attributes, Authoring limited status, and keeps the selected-row add affordance bounded to one row."
+    },
+    {
+      "id": "verify-editor-live-backend-structure-path",
+      "label": "Verify the rendered Editor main live Backend mode design route still loads and preserves the existing smoke path after the Structure panel change.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, worktree browser smoke passed, merged main npm run check passed, and main browser smoke retained summary-columns > title > detail-table."
+    },
+    {
+      "id": "keep-authoring-and-map-truth-unpromoted",
+      "label": "Keep active authoring, Backend/Core mutation readiness, and broad Editor map truth unpromoted by this presentation lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "The lane leaves Editor Project Control Node truthState unknown and records no nodeIds on the Evidence record."
+    },
+    {
+      "id": "record-structure-performance-risks",
+      "label": "Record real large-document authoring performance, list virtualization, dependency audit, chunk-size, and residual worktree cleanup risks separately from product behavior.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+      "evidenceIds": ["evidence-editor-creator-structure-add-affordance-foundation-2026-08-29"],
+      "verificationNote": "The lane records synthetic-only large-structure coverage, unknown text-block typing performance, Vite chunk warning, npm audit risk, and residual worktree cleanup risk."
+    }
+  ],
+  "createdAt": "2026-08-29T15:57:00.000Z",
+  "updatedAt": "2026-08-29T15:57:00.000Z"
+}
