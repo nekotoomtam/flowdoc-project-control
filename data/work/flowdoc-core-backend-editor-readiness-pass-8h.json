@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
   "workState": "in-progress",
-  "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state and proving the Backend owner gate against the actual sibling Core checkout.",
+  "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, and adding bounded Editor live Backend rich-inline harness evidence.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -20,12 +20,13 @@
     "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
   ],
   "activeRole": "cross-repo-boundary-reviewer",
-  "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted.",
-  "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, and full frontend redesign remain unresolved until separately verified.",
+  "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only.",
+  "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass.",
   "requiredEvidence": [
     "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
-    "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+    "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
+    "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
   ],
   "createdAt": "2026-08-30T05:38:00.000Z",
-  "updatedAt": "2026-08-30T05:38:00.000Z"
+  "updatedAt": "2026-08-30T06:15:42.000Z"
 }

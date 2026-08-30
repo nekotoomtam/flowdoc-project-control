@@ -178,6 +178,16 @@ const remediationTasks = [
     checklistLength: 6,
   },
   {
+    id: "editor-live-backend-rich-inline-harness",
+    nodeId: "editor",
+    workState: "in-review",
+    activeRole: "product-implementation-agent",
+    phaseId: "phase-editor-live-backend-rich-inline-harness",
+    phaseState: "done",
+    checklistId: "checklist-editor-live-backend-rich-inline-harness",
+    checklistLength: 7,
+  },
+  {
     id: "editor-browser-live-backend-smoke",
     nodeId: "flowdoc",
     workState: "in-review",
@@ -303,7 +313,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 36);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 37);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -342,6 +352,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-smoke",
         "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
+        "editor-live-backend-rich-inline-harness",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
@@ -439,6 +450,7 @@ describe("project roadmap Work Queue", () => {
         "editor-backend-unavailable-honesty-review",
         "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
+        "editor-live-backend-rich-inline-harness",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
@@ -632,6 +644,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-backend-core-live-compatibility-harness-2026-08-27")?.verificationSummary)
       .toContain("accepted live Editor client to Backend server to Core harness");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-live-backend-rich-inline-harness-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "3b592b48765337efdbd6da539130d2daae1349bc",
+        pathOrContractId: "src/tests/liveCompatibilityHarness.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-live-backend-rich-inline-harness-2026-08-30")?.verificationSummary)
+      .toContain("bounded live Backend rich-inline mutation harness");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

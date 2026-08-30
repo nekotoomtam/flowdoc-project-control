@@ -128,6 +128,7 @@ describe("Editor paper smooth zoom anchor fix lane", () => {
         "editor-backend-unavailable-honesty-review",
         "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
+        "editor-live-backend-rich-inline-harness",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",

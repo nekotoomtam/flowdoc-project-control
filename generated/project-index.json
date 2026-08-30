@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "072b9a14f81e80ccaed523b0ba7e4ec4f9a5ae1d7941d18610a7439d19e976a8",
+  "sourceDigest": "a0fecf825a6399b22b4820d891a641eeca62db331b2b837d2820455aee0a0daf",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -289,6 +289,7 @@
         "editor-backend-unavailable-honesty-review",
         "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
+        "editor-live-backend-rich-inline-harness",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
@@ -1018,6 +1019,50 @@
     },
     {
       "kind": "work",
+      "id": "editor-live-backend-rich-inline-harness",
+      "title": "Editor Live Backend Rich Inline Harness",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Add bounded Editor evidence that rich-inline text-block replacement can travel through the live loopback Backend mutation path, return as a Core-backed mutation result, and be applied through Editor runtime stale-gate handling.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+        "doc-editor-backend-core-live-compatibility-harness-2026-08-27"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds runBackendRichInlineMutation and extends the live compatibility harness so capability, read, migration, reorder, rich-inline replacement, runtime apply, and stale replay blocking are verified against a real loopback Backend client path.",
+      "riskSummary": "This Work is evidence for a bounded Editor harness only. It does not enable WYSIWYG or text input UI, does not prove full frontend readiness, does not prove production Backend or deployed compatibility, does not cover the broad document corpus, and does not promote Editor, Backend, Core, FlowDoc, or map truth. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+      "requiredEvidence": [
+        "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+      ],
+      "createdAt": "2026-08-30T06:15:42.000Z",
+      "updatedAt": "2026-08-30T06:15:42.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-live-backend-rich-inline-harness"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-live-backend-rich-inline-harness"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-local-loopback-dev-runner",
       "title": "Editor Local Loopback Dev Runner",
       "nodeId": "editor",
@@ -1700,7 +1745,7 @@
         "repo-editor"
       ],
       "workState": "in-progress",
-      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state and proving the Backend owner gate against the actual sibling Core checkout.",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, and adding bounded Editor live Backend rich-inline harness evidence.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -1713,14 +1758,15 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "activeRole": "cross-repo-boundary-reviewer",
-      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted.",
-      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, and full frontend redesign remain unresolved until separately verified.",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass.",
       "requiredEvidence": [
         "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
-        "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+        "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
+        "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
-      "updatedAt": "2026-08-30T05:38:00.000Z",
+      "updatedAt": "2026-08-30T06:15:42.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate"
@@ -1806,6 +1852,7 @@
         "editor-browser-live-backend-smoke",
         "editor-creator-structure-add-affordance-foundation",
         "editor-inspector-detail-navigation-foundation",
+        "editor-live-backend-rich-inline-harness",
         "editor-local-loopback-dev-runner",
         "editor-outline-scannability-foundation",
         "editor-paper-smooth-zoom-anchor-fix",
@@ -2366,6 +2413,34 @@
       "summary": "Added a collapsed Inspector Details disclosure after node actions so raw facts remain available without dominating the first-read selection layer.",
       "createdAt": "2026-08-29T12:45:00.000Z",
       "updatedAt": "2026-08-29T12:45:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-live-backend-rich-inline-harness",
+      "workId": "editor-live-backend-rich-inline-harness",
+      "title": "Prove Live Backend Rich Inline Mutation",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-backend",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repositories, Checklist target, and Evidence target before editing Editor.",
+        "The harness requires Editor production UI or WYSIWYG authoring behavior to be enabled before its boundary is defined.",
+        "The harness bypasses the Backend mutation route or applies a local-only Core mutation as evidence for live Backend compatibility.",
+        "The harness copies Backend or Core semantics into Editor instead of using the existing Editor backend mutation request and runtime apply boundaries.",
+        "The focused rich-inline path or full Editor owner gate fails after the implementation.",
+        "Cleanup side effects leave Core, Backend, Editor, or Project Control in a dirty or unverified state.",
+        "Project Control promotes broad FlowDoc, Core, Backend, Editor, frontend, or map truth from this bounded harness."
+      ],
+      "verificationTarget": "The Editor live compatibility harness uses the real loopback Backend client path for a rich-inline text-block replacement, applies the returned Core-backed mutation result through Editor runtime state, blocks stale replay, and records the result without broad truth promotion.",
+      "summary": "Done: Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds the bounded live Backend rich-inline harness and passes focused, worktree, merged-main, and cleanup verification gates.",
+      "createdAt": "2026-08-30T06:15:42.000Z",
+      "updatedAt": "2026-08-30T06:15:42.000Z"
     },
     {
       "kind": "phase",
@@ -3882,6 +3957,86 @@
       ],
       "createdAt": "2026-08-29T12:45:00.000Z",
       "updatedAt": "2026-08-29T12:45:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-live-backend-rich-inline-harness",
+      "phaseId": "phase-editor-live-backend-rich-inline-harness",
+      "title": "Editor Live Backend Rich Inline Harness Checklist",
+      "items": [
+        {
+          "id": "capture-current-boundaries",
+          "label": "Capture Project Control, Core, Backend, and Editor boundaries before changing Editor.",
+          "state": "passed",
+          "evidenceTarget": "Project Control Work path, terminology rules, owner repository instructions, current heads, and known risks are reviewed before implementation.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "Reviewed Project Control entrypoint, Work tree rules, FlowDoc terminology, Core AGENTS.md, Backend AGENTS.md, and Editor AGENTS.md before implementation; owner repository for the harness is Editor and the Work path remains flowdoc-product-development-resumption > editor-live-backend-rich-inline-harness."
+        },
+        {
+          "id": "verify-editor-baseline",
+          "label": "Verify the Editor owner gate before adding the harness.",
+          "state": "passed",
+          "evidenceTarget": "A clean Editor worktree baseline gate proves the starting point is usable.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "After creating the sibling Editor worktree and installing dependencies, npm run check passed type-check, 90 test files with 313 tests, and build; Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "write-focused-red",
+          "label": "Write a focused failing test for the live Backend rich-inline path.",
+          "state": "passed",
+          "evidenceTarget": "The focused test fails for the missing Editor helper before implementation.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "Focused RED initially exposed a test setup issue around package payload source; after correcting the test to use the read envelope package payload, the expected RED was TypeError: runBackendRichInlineMutation is not a function."
+        },
+        {
+          "id": "implement-bounded-runner",
+          "label": "Implement the minimal Editor runner boundary for Backend rich-inline mutation requests.",
+          "state": "passed",
+          "evidenceTarget": "Editor production changes stay limited to the existing backend mutation runner boundary.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds runBackendRichInlineMutation in src/editor/backend/backendMutationRunner.ts, reusing createBackendRichInlineMutationRequest, the live Backend mutation client, and runtimeBackendMutationApply without UI or Core semantic drift."
+        },
+        {
+          "id": "prove-focused-green",
+          "label": "Prove the live Backend rich-inline harness on the focused test.",
+          "state": "passed",
+          "evidenceTarget": "The focused live compatibility test passes with the rich-inline mutation included.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "npx vitest run src/tests/liveCompatibilityHarness.test.ts passed 1 test after the harness verified capability/read/migration/reorder/rich-inline mutation/runtime apply/stale replay blocking through the loopback Backend path."
+        },
+        {
+          "id": "verify-owner-and-main-gates",
+          "label": "Run full Editor gates in the worktree and after merging to main.",
+          "state": "passed",
+          "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 90 test files with 313 tests, and build; Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "verify-cleanup-and-register-evidence",
+          "label": "Verify cleanup side effects and register only the bounded Project Control evidence.",
+          "state": "passed",
+          "evidenceTarget": "Core cleanup side effects are restored and reverified; Project Control records the evidence without truth promotion.",
+          "evidenceIds": [
+            "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+          ],
+          "verificationNote": "A manual cleanup attempt on the external sibling Editor worktree caused Core tracked deletions under packages/text-engine-rust-wasm through npm file-dependency links; the Core path was restored from HEAD, Core git status returned clean, Core npm run check passed 460 test files with 2,945 tests, and this Project Control record keeps the claim bounded."
+        }
+      ],
+      "createdAt": "2026-08-30T06:15:42.000Z",
+      "updatedAt": "2026-08-30T06:15:42.000Z"
     },
     {
       "kind": "checklist",
@@ -8054,6 +8209,16 @@
       "pathOrContractId": "src/tests/selectionContextSummary.test.ts",
       "verificationSummary": "Editor merge commit 6ae950600949ec5c868b86cd0db140c9a9bb5780 implements the bounded Inspector Details layer for the Editor Inspector panel. InspectorPanel keeps the selected-block summary and node actions visible, moves raw Inspector facts behind a Details disclosure, starts that facts list collapsed with hidden state and display: none, expands it to the existing facts-list grid when Details is clicked, and resets Details closed when the selected Outline item changes. Focused RED first failed in src/tests/selectionContextSummary.test.ts because the Inspector did not render an inspector-details-layer after node actions. Focused RED after the first implementation failed because the facts list lacked hidden state. Focused RED after browser review failed because the CSS did not include .inspector-details-layer .facts-list[hidden], allowing the existing .facts-list display grid rule to override the hidden attribute. Focused GREEN passed npx vitest run src/tests/selectionContextSummary.test.ts --reporter verbose with 1 file and 3 tests. Editor worktree npm run check passed type-check, 89 passed test files, 308 passed tests, and build. Worktree browser evidence in live Backend mode opened http://127.0.0.1:54551/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:54550, confirmed Source: Backend read, Authoring: limited, Details collapsed with factsHidden true, factsDisplay none, and factsRects 0, then clicked Details and confirmed factsHidden false, factsDisplay grid, Node title, and 14 raw fact rows, then selected Columns and confirmed Details reset closed. Merged Editor main npm run check passed type-check, 89 passed test files, 308 passed tests, and build. Main browser evidence at http://127.0.0.1:60029/documents/product-report-vnext-minimal/design with Backend at http://127.0.0.1:60028 confirmed Source: Backend read, Authoring: limited, Details collapsed with display none, Details expanded with Node title and 14 fact rows, Columns selection reset Details closed, and 0 browser error logs. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check first failed with a transient Vitest worker startup timeout, and the immediate rerun passed before any Project Control record edits. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-inspector-detail-navigation-foundation folder could not be removed because local command policy blocked recursive Remove-Item -Recurse. The previous residual Editor worktree folder for editor-selection-context-summary-foundation remains a local cleanup risk. This evidence supports only the bounded Editor Inspector Details layer and does not promote broad Editor truth, WYSIWYG readiness, text input readiness, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T12:45:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-live-backend-rich-inline-harness-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "3b592b48765337efdbd6da539130d2daae1349bc",
+      "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts",
+      "verificationSummary": "Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds a bounded live Backend rich-inline mutation harness. The implementation adds runBackendRichInlineMutation in src/editor/backend/backendMutationRunner.ts and extends src/tests/liveCompatibilityHarness.test.ts so the live loopback Backend path reads capabilities and a Core fixture-backed document, migrates to v4, commits a node.reorder mutation, commits a text-block.rich-inline.replace mutation, applies the returned Core-backed mutation result through Editor runtime state, verifies the updated title text, and verifies stale replay is blocked with blocked-stale/base-revision-mismatch. Focused RED failed after test setup correction because runBackendRichInlineMutation was not a function; the focused test then passed with npx vitest run src/tests/liveCompatibilityHarness.test.ts: 1 test passed. Editor worktree npm run check passed type-check, 90 test files with 313 tests, and build; merged Editor main npm run check passed the same gate. During cleanup, deleting the external sibling Editor worktree caused Core tracked deletions under packages/text-engine-rust-wasm through npm file-dependency links; the Core path was restored from HEAD, Core status returned clean, and Core npm run check passed 460 test files with 2,945 tests. This evidence supports only the bounded Editor live Backend rich-inline harness claim; it does not enable WYSIWYG or text input UI, does not prove broad frontend readiness, production Backend readiness, deployed compatibility, broad corpus coverage, accessibility, visual regression, performance readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+      "verifiedAt": "2026-08-30T06:15:42.000Z"
     },
     {
       "kind": "evidence",
