@@ -70,9 +70,9 @@
         "evidence-backend-add-node-transport-gate-2026-08-30",
         "evidence-editor-add-node-capability-compatibility-2026-08-30"
       ],
-      "verificationNote": "Backend and Editor main were fast-forwarded to fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08 and 623d91f204803cb9ac8d7ab7a71246326b77ef78 respectively. Branches backend-add-node-transport-20260830 and editor-add-node-capability-20260830 were deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-be-anc-0830 and C:/Users/nekot/Documents/GitHub/fd-ed-anc-cap-0830 was removed, but both folders remain on disk after git worktree remove failed with Filename too long and direct recursive deletion was blocked by the local tool policy. The older C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 worktree remains intentionally retained detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c."
+      "verificationNote": "Backend and Editor main were fast-forwarded to fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08 and 623d91f204803cb9ac8d7ab7a71246326b77ef78 respectively. Branches backend-add-node-transport-20260830 and editor-add-node-capability-20260830 were deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-be-anc-0830 and C:/Users/nekot/Documents/GitHub/fd-ed-anc-cap-0830 was removed, but both folders remain on disk after git worktree remove failed with Filename too long and direct recursive deletion was blocked by the local tool policy. A later status check showed Core tracked deletions under packages/pdf-renderer-pilot/fixtures and packages/text-engine-rust-wasm; those exact tracked paths were restored from HEAD and Core status returned clean. The older C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 worktree remains intentionally retained detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c."
     }
   ],
   "createdAt": "2026-08-30T11:31:05.254Z",
-  "updatedAt": "2026-08-30T11:31:05.254Z"
+  "updatedAt": "2026-08-30T11:48:40.711Z"
 }
