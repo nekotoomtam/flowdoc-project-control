@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Add Node Visible UI",
+  "phaseState": "done",
+  "order": 100,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Editor enables visible add-node controls without a compatible Backend capability response for the current package/document pair.",
+    "Editor sends add-node mutations outside Backend revision gates or outside Core-owned mutation semantics.",
+    "The visible UI exposes unsupported node kinds, document v4 insert semantics, WYSIWYG behavior, active text input, contenteditable runtime, durable draft persistence, or production readiness claims.",
+    "The browser smoke path cannot prove a real UI click sends text-block.insert and columns.insert mutations through a live local Backend server.",
+    "Focused, worktree, or merged-main Editor gates fail after visible add-node UI changes.",
+    "Project Control registration promotes broad Core, Backend, Editor, frontend, add-node, WYSIWYG, production, deployed, or FlowDoc product readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Editor renders bounded Outline add-node controls for text-block.insert and columns.insert only when Backend capabilities advertise those operations for the current active package/document pair, then proves real browser UI clicks commit both operations through a live local Backend server and preserve reload, upgrade, and reorder revision gates.",
+  "summary": "Done: Editor commit 10ee27089114400468a2faa586997b1bcb15abc9 activates bounded visible Outline add-node controls for Text and Columns only. The slice adds Editor-owned action planning, presentation wiring, and a Backend mutation hook that use existing add-node contracts and capability/revision gates; the browser smoke clicks visible add controls, observes Backend text-block.insert and columns.insert mutations, reloads, upgrades, and reorders through the same local loopback flow. The slice intentionally keeps WYSIWYG behavior, active typing, contenteditable runtime, durable draft persistence, document v4 insert semantics, unsupported add-node kinds, production readiness, broad frontend readiness, and map truth closed.",
+  "createdAt": "2026-08-30T14:26:12.514Z",
+  "updatedAt": "2026-08-30T14:26:12.514Z"
+}

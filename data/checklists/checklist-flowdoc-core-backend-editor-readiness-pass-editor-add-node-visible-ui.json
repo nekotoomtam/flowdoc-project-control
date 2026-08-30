@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui",
+  "title": "Editor Add Node Visible UI Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Backend AGENTS.md, Core AGENTS.md, and Core cross-repo map are reviewed before editing visible add-node behavior.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core boundary references, phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui, checklist-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui, and evidence target before edits."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline in an isolated worktree before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-anui-0830 is created from main and passes npm run check before visible add-node UI changes.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Created branch fd-ed-anui-0830 from Editor main ae6978e3646e6ac4bbedc6ec15e6e38343bf0585. Baseline npm install completed and reported 5 high severity audit findings that were not remediated in this lane. Baseline npm run check passed before implementation with type-check, Vitest, and build."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write failing visible add-node action and Outline UI tests before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before the visible add-node action model and Outline UI controls exist, and a later disabled-reason regression test fails before the reason precedence fix.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Initial RED tests failed because the visible add-node action model and Outline add-action rendering were absent. A later RED run of npm test -- src/tests/addNodeVisibleActions.test.ts failed with expected Backend capability readiness text but received the busy-operation disabled reason, proving the test caught the reason precedence issue before the fix."
+    },
+    {
+      "id": "implement-bounded-visible-ui",
+      "label": "Implement bounded visible Outline add-node controls for Text and Columns only.",
+      "state": "passed",
+      "evidenceTarget": "Editor derives enabled/disabled Outline add actions from current selection, Backend capability support, and add-node contract readiness, and keeps unsupported node kinds hidden or blocked.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Editor commit 10ee27089114400468a2faa586997b1bcb15abc9 adds src/editor/commands/addNodeVisibleActions.ts, src/app/useBackendAddNodeMutation.ts, and OutlinePanel wiring. Actions are limited to text-block.insert and columns.insert, carry target labels, expose deterministic test attributes, require compatible Backend capabilities for the active 2/3 pair, and send mutations through existing Backend transport and runtime stale guards."
+    },
+    {
+      "id": "prove-live-browser-path",
+      "label": "Prove visible add-node clicks against a live local Backend server.",
+      "state": "passed",
+      "evidenceTarget": "The browser smoke starts Backend and Editor loopback servers, clicks visible add Text and Columns controls, observes Backend insert operation kinds, reloads the document, upgrades, and reorders.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "npm run evidence:editor-browser-live-backend-smoke passed in the Editor worktree and merged main. The retained fixture records addTextBlockStatusBar Text block added, addColumnsStatusBar Columns added, Backend operationKinds text-block.insert and columns.insert before node.reorder, and final outline order editor-text-block-zone-cover-body-1 > title > editor-columns-zone-cover-body-2 > summary-columns > detail-table."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused, worktree, and merged-main Editor gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused visible add-node/outline/evidence tests pass, worktree npm run check passes, merged-main npm run check passes, and merged-main no-write browser smoke passes.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Focused GREEN passed npm test -- src/tests/addNodeVisibleActions.test.ts src/tests/outlineScannability.test.ts src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts src/tests/addNodeActivationHarness.test.ts with 4 files and 11 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, Vitest with 98 passed test files and 338 tests, and build. Merged-main FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke also passed."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup blocker and unpromoted product claims honestly.",
+      "state": "passed",
+      "evidenceTarget": "Merged branch is deleted when safe, leftover folder state is recorded, and unresolved frontend/product claims remain risk or unknown instead of map truth.",
+      "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
+      "verificationNote": "Editor main was fast-forwarded to 10ee27089114400468a2faa586997b1bcb15abc9 and branch fd-ed-anui-0830 was deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-ed-anui-0830 is no longer registered, but the folder remains on disk after git worktree remove failed with Filename too long; direct recursive deletion was intentionally avoided. Older cleanup risks remain separate and unmodified."
+    }
+  ],
+  "createdAt": "2026-08-30T14:26:12.514Z",
+  "updatedAt": "2026-08-30T14:26:12.514Z"
+}
