@@ -317,6 +317,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-backend-lifecycle",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -721,6 +727,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-backend-lifecycle-2026-08-30")?.verificationSummary)
       .toContain("active text-block island Backend lifecycle");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-commit-runner-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "747a7269838d457b940251be33cd275d80f9c3b4",
+        pathOrContractId: "src/editor/draft/activeTextBlockIslandCommitRunner.ts; src/tests/liveCompatibilityHarness.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-commit-runner-2026-08-30")?.verificationSummary)
+      .toContain("active text-block island commit runner");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

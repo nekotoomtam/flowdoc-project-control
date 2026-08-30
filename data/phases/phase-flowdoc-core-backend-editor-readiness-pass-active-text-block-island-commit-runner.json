@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Add Active Text Block Island Commit Runner",
+  "phaseState": "done",
+  "order": 50,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The runner bypasses the text-block authoring boundary or active-island commit resolver.",
+    "The runner bypasses the Backend client, Backend revision gate, or Editor stale-gated runtime apply path.",
+    "The runner applies a Backend mutation result against an older Editor runtime state when a newer local active-island draft exists.",
+    "The runner enables visible typing UI, WYSIWYG behavior, contenteditable runtime, or React canvas input binding.",
+    "The live Backend harness cannot prove the runner against a loopback Backend server.",
+    "Focused or full Editor gates fail after the runner is added.",
+    "Project Control registration promotes broad Editor, Backend, Core, frontend, or FlowDoc readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Editor can commit the active text-block island draft through FlowDocBackendClient.commitMutation, expose pending commit state before the request resolves, apply the Backend mutation result through the existing stale-gated runtime path, preserve newer local active-island draft state for older Backend responses, and prove the runner against a live loopback Backend harness without enabling visible text input.",
+  "summary": "Done: Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 adds an active text-block island commit runner and extends the live Backend compatibility harness to exercise that runner after read, migration, reorder, and rich-inline mutation. Focused and full Editor gates passed; broad Editor readiness, visible typing UI, WYSIWYG behavior, and frontend readiness remain unpromoted.",
+  "createdAt": "2026-08-30T08:20:00.000Z",
+  "updatedAt": "2026-08-30T08:20:00.000Z"
+}
