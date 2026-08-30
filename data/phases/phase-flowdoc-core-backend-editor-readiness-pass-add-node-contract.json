@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Add Node Contract",
+  "phaseState": "done",
+  "order": 70,
+  "repositoryIds": ["repo-editor", "repo-core", "repo-backend", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The contract builder treats add-node placement readiness as permission to call Backend transport.",
+    "The Editor introduces Backend insert request types that Backend does not parse or advertise in its capability response.",
+    "The Editor guesses Core runtime node semantics instead of staying bounded to placement facts, caller-owned payload, and exposed operation mappings.",
+    "The phase enables visible add-node UI, WYSIWYG behavior, contenteditable runtime, active text input UI, or durable draft persistence.",
+    "Unsupported generic node kinds such as table, toc, page-break, divider, or spacer are reported as ready without a repository-owned operation path.",
+    "Focused or full Editor gates fail after the add-node contract builder is added.",
+    "Project Control registration promotes broad Editor, Backend, Core, frontend, add-node mutation, or FlowDoc readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Editor builds add-node contract plans from node placement readiness for text-block.insert and columns.insert, preserves base revision, document id, source, reason, and request id facts, validates required payload/count inputs, reports explicit blocked reasons for unsupported placements or node kinds, and keeps Backend add-node transport activation blocked.",
+  "summary": "Done: Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c adds an Editor-owned add-node contract builder and focused tests. The builder creates text-block.insert and columns.insert contract requests from ready placement plans while retaining blocked Backend activation, and it blocks unsupported node kinds, invalid inputs, and blocked placements. No Backend mutation transport, Core semantics, visible add-node UI, WYSIWYG behavior, or durable persistence was enabled.",
+  "createdAt": "2026-08-30T10:02:00.000Z",
+  "updatedAt": "2026-08-30T10:02:00.000Z"
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "19554aeb97ed752831b831bf88fcc1fd0f3b076e1b76b56de435dea7df8cd0b3",
+  "sourceDigest": "f436a9b1089d8064aa6aaaad0fa6ded3d452eb349fc6b7e8d7c065c135bae9bd",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1746,7 +1746,7 @@
         "repo-editor"
       ],
       "workState": "in-progress",
-      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, adding memory-only active text-block island runtime state, wiring that state into the Editor Backend mutation lifecycle, adding an Editor-owned active text-block island commit runner with live Backend proof, and adding an Editor-owned node placement readiness matrix before visible typing UI or add-node mutation activation.",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, adding memory-only active text-block island runtime state, wiring that state into the Editor Backend mutation lifecycle, adding an Editor-owned active text-block island commit runner with live Backend proof, adding an Editor-owned node placement readiness matrix, and adding an Editor-owned add-node contract builder before visible typing UI or add-node mutation transport activation.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -1759,8 +1759,8 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "activeRole": "cross-repo-boundary-reviewer",
-      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. The fifth completed slice records Editor commit 7dc118a23a993c5fb7ca6168ee77027dc9324cfa as the tested active text-block island Backend lifecycle integration inside Editor runtime. The sixth completed slice records Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 as the active text-block island commit runner with focused tests and live loopback Backend proof. The seventh completed slice records Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 as the node placement readiness matrix that mirrors Core allowed child types and computes sibling, inside, and append placement facts without enabling add-node transport or WYSIWYG behavior. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
-      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, add-node mutation activation, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained on branch editor-node-placement-readiness-20260830 because its node_modules contains junctions to Core and cleanup needs a safer dependency-link plan. Project Control worktree npm run check hit Vitest fork worker start timeouts before record edits, so Project Control verification used the same gate split with npm test -- --maxWorkers=1, npm run build, and npm run test:e2e.",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. The fifth completed slice records Editor commit 7dc118a23a993c5fb7ca6168ee77027dc9324cfa as the tested active text-block island Backend lifecycle integration inside Editor runtime. The sixth completed slice records Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 as the active text-block island commit runner with focused tests and live loopback Backend proof. The seventh completed slice records Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 as the node placement readiness matrix that mirrors Core allowed child types and computes sibling, inside, and append placement facts without enabling add-node transport or WYSIWYG behavior. The eighth completed slice records Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c as the add-node contract builder that creates text-block.insert and columns.insert contract requests from ready placements while keeping Backend add-node transport activation blocked. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, add-node mutation activation, Backend add-node transport, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. The add-node contract builder supports only Editor-side planning for text-block.insert and columns.insert; generic table, toc, page-break, divider, spacer, table row, and table column add paths remain blocked or unmodeled until repository-owned Core/Backend/UI contracts are separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c because its node_modules contains junctions to Core and cleanup needs a safer dependency-link plan. Project Control worktree npm run check previously hit Vitest fork worker start timeouts before record edits, so Project Control verification may use the same gate split with npm test -- --maxWorkers=1, npm run build, and npm run test:e2e if the full gate repeats that infrastructure failure.",
       "requiredEvidence": [
         "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
         "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
@@ -1770,10 +1770,11 @@
         "evidence-project-control-phase-order-read-model-2026-08-30",
         "evidence-editor-active-text-block-island-backend-lifecycle-2026-08-30",
         "evidence-editor-active-text-block-island-commit-runner-2026-08-30",
-        "evidence-editor-node-placement-readiness-2026-08-30"
+        "evidence-editor-node-placement-readiness-2026-08-30",
+        "evidence-editor-add-node-contract-2026-08-30"
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
-      "updatedAt": "2026-08-30T09:36:00.000Z",
+      "updatedAt": "2026-08-30T10:02:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
@@ -1781,7 +1782,8 @@
         "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
         "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-backend-lifecycle",
         "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
-        "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness"
+        "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+        "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2920,6 +2922,35 @@
       "summary": "Done: Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 defines the memory-only active text-block island runtime state in code and docs, passes focused and full Editor gates on worktree and main, and leaves visible typing UI, WYSIWYG behavior, and broad frontend readiness unpromoted.",
       "createdAt": "2026-08-30T07:10:56.000Z",
       "updatedAt": "2026-08-30T07:10:56.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+      "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "Add Node Contract",
+      "phaseState": "done",
+      "order": 70,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core",
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+        "The contract builder treats add-node placement readiness as permission to call Backend transport.",
+        "The Editor introduces Backend insert request types that Backend does not parse or advertise in its capability response.",
+        "The Editor guesses Core runtime node semantics instead of staying bounded to placement facts, caller-owned payload, and exposed operation mappings.",
+        "The phase enables visible add-node UI, WYSIWYG behavior, contenteditable runtime, active text input UI, or durable draft persistence.",
+        "Unsupported generic node kinds such as table, toc, page-break, divider, or spacer are reported as ready without a repository-owned operation path.",
+        "Focused or full Editor gates fail after the add-node contract builder is added.",
+        "Project Control registration promotes broad Editor, Backend, Core, frontend, add-node mutation, or FlowDoc readiness from this bounded evidence."
+      ],
+      "verificationTarget": "Editor builds add-node contract plans from node placement readiness for text-block.insert and columns.insert, preserves base revision, document id, source, reason, and request id facts, validates required payload/count inputs, reports explicit blocked reasons for unsupported placements or node kinds, and keeps Backend add-node transport activation blocked.",
+      "summary": "Done: Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c adds an Editor-owned add-node contract builder and focused tests. The builder creates text-block.insert and columns.insert contract requests from ready placement plans while retaining blocked Backend activation, and it blocks unsupported node kinds, invalid inputs, and blocked placements. No Backend mutation transport, Core semantics, visible add-node UI, WYSIWYG behavior, or durable persistence was enabled.",
+      "createdAt": "2026-08-30T10:02:00.000Z",
+      "updatedAt": "2026-08-30T10:02:00.000Z"
     },
     {
       "kind": "phase",
@@ -5599,6 +5630,86 @@
       ],
       "createdAt": "2026-08-30T07:10:56.000Z",
       "updatedAt": "2026-08-30T07:10:56.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+      "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+      "title": "Add Node Contract Checklist",
+      "items": [
+        {
+          "id": "capture-contract-context",
+          "label": "Capture Project Control, terminology, Editor, Core, Backend, placement, and mutation contract context before implementation.",
+          "state": "passed",
+          "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Core AGENTS.md, Core cross-repo map, Backend AGENTS.md, Editor placement and mutation modules, Core operation commands, and Backend mutation contracts are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "Reviewed Project Control AGENTS.md, FlowDoc product terminology EN/TH, flowdoc-core-backend-editor-readiness-pass-8h Work record, Editor AGENTS.md, Core AGENTS.md and CROSS_REPO_OPERATING_MAP.md, Backend AGENTS.md, src/editor/commands/nodePlacementReadiness.ts, src/editor/backend/backendMutationRequests.ts, src/editor/backend/backendTransport.ts, Core src/operations/commands.ts and documentOperations.ts, and Backend src/contracts/mutation.ts and versionCapability.ts before editing."
+        },
+        {
+          "id": "verify-editor-baseline",
+          "label": "Verify the Editor baseline in an isolated worktree before adding the contract builder.",
+          "state": "passed",
+          "evidenceTarget": "The retained clean Editor linked worktree is switched to a new branch from main and passes npm run check before implementation.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "Reused C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 from detached HEAD at Editor main 2be3145210eac74ecc6b82d547f6471456b36114, switched it to branch editor-add-node-contract-20260830, and baseline npm run check passed type-check, 95 test files with 329 tests, and build. Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "write-focused-red",
+          "label": "Write focused failing tests before production implementation.",
+          "state": "passed",
+          "evidenceTarget": "The focused add-node contract test fails before the implementation exists.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "npm run test -- src/tests/addNodeContract.test.ts first failed with Cannot find module ../editor/commands/addNodeContract, proving the new test was red before implementation."
+        },
+        {
+          "id": "implement-contract-builder",
+          "label": "Implement the Editor-owned add-node contract builder.",
+          "state": "passed",
+          "evidenceTarget": "The builder creates text-block.insert and columns.insert contract requests from ready NodeAddPlacementPlan values and validates required inputs.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c adds src/editor/commands/addNodeContract.ts. The builder preserves documentId, baseRevision, requestId, source, reason, parentNodeId, insertIndex, and caller-owned text-block or columns inputs while keeping activationStatus blocked."
+        },
+        {
+          "id": "preserve-transport-boundary",
+          "label": "Preserve Backend transport and Core semantics boundaries.",
+          "state": "passed",
+          "evidenceTarget": "BackendMutationOperation, BackendMutationRequest, FlowDocBackendClient.commitMutation, Backend contracts, Core operations, visible add-node UI, WYSIWYG, contenteditable runtime, active input UI, and durable persistence stay unchanged.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "The Editor change adds only src/editor/commands/addNodeContract.ts and src/tests/addNodeContract.test.ts. It does not widen src/editor/backend/backendTransport.ts, src/editor/backend/backendMutationRequests.ts, Backend src/contracts/mutation.ts, Core operation code, React add-node UI, WYSIWYG behavior, or persistence paths."
+        },
+        {
+          "id": "verify-editor-owner-gates",
+          "label": "Run focused, worktree, and merged-main Editor gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused add-node contract tests, worktree npm run check, and merged Editor main npm run check all pass.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "npm run test -- src/tests/addNodeContract.test.ts passed 1 file and 3 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 96 test files with 332 tests, and build. Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "register-cleanup-risk",
+          "label": "Record cleanup risk and unpromoted product claims honestly.",
+          "state": "passed",
+          "evidenceTarget": "Linked Editor worktree cleanup remains a recorded dependency-link risk, the merged branch is removed, and broad Core, Backend, Editor, frontend, add-node mutation, WYSIWYG, and product readiness claims remain unpromoted.",
+          "evidenceIds": [
+            "evidence-editor-add-node-contract-2026-08-30"
+          ],
+          "verificationNote": "Editor main was fast-forwarded to d2290b47a37adc8aee2067ed4e094c6f39350b6c, branch editor-add-node-contract-20260830 was deleted after merge, and linked worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 remains detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c because node_modules contains junctions to Core and earlier recursive cleanup exposed dependency-link side effects. This evidence is bounded to Editor add-node contract planning only."
+        }
+      ],
+      "createdAt": "2026-08-30T10:02:00.000Z",
+      "updatedAt": "2026-08-30T10:02:00.000Z"
     },
     {
       "kind": "checklist",
@@ -8739,6 +8850,16 @@
       "pathOrContractId": "src/editor/draft/activeTextBlockIsland.ts",
       "verificationSummary": "Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 defines a tested memory-only active text-block island runtime state. It adds src/editor/draft/activeTextBlockIsland.ts, src/tests/activeTextBlockIsland.test.ts, and updates docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md. The runtime opens one active text-block draft at a time through the text-block authoring boundary, clones rich-inline children into browser-local draft state, tracks the Core base revision and local draft revision, tracks IME composition state, blocks commit while IME composition is active, validates rich-inline payloads through the Core adapter before building a Backend text-block.rich-inline.replace request, blocks commit when the opened base revision no longer matches the current Core document revision, and records rejected commit evidence without discarding a newer local draft. The accepted RED was npx vitest run src/tests/activeTextBlockIsland.test.ts failing because ../editor/draft/activeTextBlockIsland was missing. Focused GREEN passed npx vitest run src/tests/activeTextBlockIsland.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts with 3 test files and 11 tests. Editor worktree npm run check passed type-check, 92 test files with 319 tests, and build; merged Editor main npm run check passed the same gate. This evidence does not enable visible text input, WYSIWYG behavior, contenteditable runtime, field-chip input, rich-inline flattening, React canvas input binding, collaboration, durable draft persistence, production Backend readiness, deployed compatibility, large-document authoring performance, accessibility readiness, exact layout, export parity, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. npm ci reported 5 existing high severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane. The feature worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 was intentionally retained because previous Editor worktree cleanup exposed dependency-link side effects that deleted Core tracked files under packages/text-engine-rust-wasm. The older residual folder C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 remains on disk and is still tracked as cleanup risk.",
       "verifiedAt": "2026-08-30T07:10:56.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-add-node-contract-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "d2290b47a37adc8aee2067ed4e094c6f39350b6c",
+      "pathOrContractId": "src/editor/commands/addNodeContract.ts; src/tests/addNodeContract.test.ts",
+      "verificationSummary": "Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c adds an Editor-owned add-node contract builder in src/editor/commands/addNodeContract.ts and focused tests in src/tests/addNodeContract.test.ts. The builder consumes NodeAddPlacementPlan values from the prior placement readiness lane, requires a fresh Core read envelope, preserves documentId and baseRevision from the Editor runtime, and creates Editor-side contract requests for text-block.insert and columns.insert only. text-block.insert requires a caller-owned textBlock payload with valid id, type, props, role, and parsed Core inline children through the Core adapter boundary. columns.insert requires columnCount to be an integer from 1 to 6 and accepts an optional non-empty columnsId. Ready contract plans still return activationStatus blocked with the reason Backend add-node transport is not enabled for Editor runtime yet. The builder blocks stale Core envelopes, blocked placements, disallowed Core runtime child types, missing or invalid text-block payloads, invalid columns counts, and unsupported generic add-node kinds such as table, toc, page-break, divider, and spacer because this Editor contract does not expose repository-owned Core/Backend insert paths for them. Accepted RED evidence: npm run test -- src/tests/addNodeContract.test.ts failed because ../editor/commands/addNodeContract did not exist. GREEN evidence: npm run test -- src/tests/addNodeContract.test.ts passed 1 file and 3 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 96 test files with 332 tests, and build. The change intentionally does not modify BackendMutationOperation, BackendMutationRequest, FlowDocBackendClient.commitMutation, Backend src/contracts/mutation.ts, Backend capability responses, Core operation semantics, visible add-node UI, WYSIWYG behavior, contenteditable runtime, active text input UI, durable draft persistence, production Backend readiness, deployed compatibility, broad corpus coverage, large-document authoring performance, accessibility readiness, exact layout, export parity, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Vite retained the existing chunk-size warning; it was not remediated in this lane. After merge, branch editor-add-node-contract-20260830 was deleted and the linked Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 remains detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c because node_modules contains junctions to Core and previous recursive cleanup exposed dependency-link side effects.",
+      "verifiedAt": "2026-08-30T10:02:00.000Z"
     },
     {
       "kind": "evidence",

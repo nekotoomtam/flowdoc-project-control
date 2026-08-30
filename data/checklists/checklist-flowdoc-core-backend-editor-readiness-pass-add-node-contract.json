@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+  "title": "Add Node Contract Checklist",
+  "items": [
+    {
+      "id": "capture-contract-context",
+      "label": "Capture Project Control, terminology, Editor, Core, Backend, placement, and mutation contract context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Core AGENTS.md, Core cross-repo map, Backend AGENTS.md, Editor placement and mutation modules, Core operation commands, and Backend mutation contracts are reviewed.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "Reviewed Project Control AGENTS.md, FlowDoc product terminology EN/TH, flowdoc-core-backend-editor-readiness-pass-8h Work record, Editor AGENTS.md, Core AGENTS.md and CROSS_REPO_OPERATING_MAP.md, Backend AGENTS.md, src/editor/commands/nodePlacementReadiness.ts, src/editor/backend/backendMutationRequests.ts, src/editor/backend/backendTransport.ts, Core src/operations/commands.ts and documentOperations.ts, and Backend src/contracts/mutation.ts and versionCapability.ts before editing."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline in an isolated worktree before adding the contract builder.",
+      "state": "passed",
+      "evidenceTarget": "The retained clean Editor linked worktree is switched to a new branch from main and passes npm run check before implementation.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "Reused C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 from detached HEAD at Editor main 2be3145210eac74ecc6b82d547f6471456b36114, switched it to branch editor-add-node-contract-20260830, and baseline npm run check passed type-check, 95 test files with 329 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write focused failing tests before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "The focused add-node contract test fails before the implementation exists.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "npm run test -- src/tests/addNodeContract.test.ts first failed with Cannot find module ../editor/commands/addNodeContract, proving the new test was red before implementation."
+    },
+    {
+      "id": "implement-contract-builder",
+      "label": "Implement the Editor-owned add-node contract builder.",
+      "state": "passed",
+      "evidenceTarget": "The builder creates text-block.insert and columns.insert contract requests from ready NodeAddPlacementPlan values and validates required inputs.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "Editor commit d2290b47a37adc8aee2067ed4e094c6f39350b6c adds src/editor/commands/addNodeContract.ts. The builder preserves documentId, baseRevision, requestId, source, reason, parentNodeId, insertIndex, and caller-owned text-block or columns inputs while keeping activationStatus blocked."
+    },
+    {
+      "id": "preserve-transport-boundary",
+      "label": "Preserve Backend transport and Core semantics boundaries.",
+      "state": "passed",
+      "evidenceTarget": "BackendMutationOperation, BackendMutationRequest, FlowDocBackendClient.commitMutation, Backend contracts, Core operations, visible add-node UI, WYSIWYG, contenteditable runtime, active input UI, and durable persistence stay unchanged.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "The Editor change adds only src/editor/commands/addNodeContract.ts and src/tests/addNodeContract.test.ts. It does not widen src/editor/backend/backendTransport.ts, src/editor/backend/backendMutationRequests.ts, Backend src/contracts/mutation.ts, Core operation code, React add-node UI, WYSIWYG behavior, or persistence paths."
+    },
+    {
+      "id": "verify-editor-owner-gates",
+      "label": "Run focused, worktree, and merged-main Editor gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused add-node contract tests, worktree npm run check, and merged Editor main npm run check all pass.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "npm run test -- src/tests/addNodeContract.test.ts passed 1 file and 3 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 96 test files with 332 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup risk and unpromoted product claims honestly.",
+      "state": "passed",
+      "evidenceTarget": "Linked Editor worktree cleanup remains a recorded dependency-link risk, the merged branch is removed, and broad Core, Backend, Editor, frontend, add-node mutation, WYSIWYG, and product readiness claims remain unpromoted.",
+      "evidenceIds": ["evidence-editor-add-node-contract-2026-08-30"],
+      "verificationNote": "Editor main was fast-forwarded to d2290b47a37adc8aee2067ed4e094c6f39350b6c, branch editor-add-node-contract-20260830 was deleted after merge, and linked worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 remains detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c because node_modules contains junctions to Core and earlier recursive cleanup exposed dependency-link side effects. This evidence is bounded to Editor add-node contract planning only."
+    }
+  ],
+  "createdAt": "2026-08-30T10:02:00.000Z",
+  "updatedAt": "2026-08-30T10:02:00.000Z"
+}

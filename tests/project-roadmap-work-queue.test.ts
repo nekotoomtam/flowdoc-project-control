@@ -329,6 +329,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
         checklistLength: 8,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -751,6 +757,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-node-placement-readiness-2026-08-30")?.verificationSummary)
       .toContain("node placement readiness matrix");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-add-node-contract-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "d2290b47a37adc8aee2067ed4e094c6f39350b6c",
+        pathOrContractId: "src/editor/commands/addNodeContract.ts; src/tests/addNodeContract.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-add-node-contract-2026-08-30")?.verificationSummary)
+      .toContain("add-node contract builder");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
