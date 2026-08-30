@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-activation-harness",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Add Node Activation Harness",
+  "phaseState": "done",
+  "order": 90,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Editor activates add-node requests without a compatible Backend capability response for the current package/document pair.",
+    "Editor bypasses Backend revision gates or Core-owned mutation semantics for service-owned add-node mutation behavior.",
+    "The harness treats add-node capability support as permission to enable visible add-node UI, WYSIWYG behavior, contenteditable runtime, active text input, or durable draft persistence.",
+    "Editor enables document v4 insert semantics while Backend and Core still expose add-node inserts only for the active package 2/document 3 pair.",
+    "Focused, worktree, or merged-main Editor gates fail after add-node activation harness changes.",
+    "Project Control registration promotes broad Core, Backend, Editor, frontend, add-node UI, WYSIWYG, production, deployed, or FlowDoc product readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Editor converts an existing ready add-node contract into a Backend mutation request only when Backend capabilities advertise the requested operation for the current active package/document pair, then proves columns.insert and text-block.insert can run through a live local Backend server and apply returned mutation read envelopes into Editor runtime state.",
+  "summary": "Done: Editor commit ae6978e3646e6ac4bbedc6ec15e6e38343bf0585 adds bounded Backend add-node activation request gating, Editor transport operation typing for columns.insert and text-block.insert, and a live Backend harness that applies returned mutation read envelopes for both active insert operations. The slice intentionally keeps visible add-node UI, WYSIWYG behavior, contenteditable runtime, active text input, durable draft persistence, document v4 insert semantics, and broad frontend readiness closed.",
+  "createdAt": "2026-08-30T12:37:29.481Z",
+  "updatedAt": "2026-08-30T12:37:29.481Z"
+}
