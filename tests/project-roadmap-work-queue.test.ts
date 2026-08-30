@@ -278,6 +278,16 @@ const remediationTasks = [
     checklistLength: 6,
   },
   {
+    id: "flowdoc-core-backend-editor-readiness-pass-8h",
+    nodeId: "flowdoc",
+    workState: "in-progress",
+    activeRole: "cross-repo-boundary-reviewer",
+    phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+    phaseState: "done",
+    checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+    checklistLength: 6,
+  },
+  {
     id: "flowdoc-product-terminology-foundation",
     nodeId: "flowdoc",
     workState: "in-review",
@@ -293,7 +303,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 35);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 36);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -347,6 +357,7 @@ describe("project roadmap Work Queue", () => {
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
+        "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
@@ -475,6 +486,7 @@ describe("project roadmap Work Queue", () => {
         "editor-backend-core-live-compatibility-harness",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",

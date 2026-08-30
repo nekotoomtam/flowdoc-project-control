@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+  "pathOrContractId": "packages/pdf-renderer-pilot/fixtures/font-subset-manifest.v1.json",
+  "verificationSummary": "Core main commit 5892df6e542a02b25ae3b18ee02a55842b83d48f still contains the PDF renderer pilot fixture manifests, but the local Core working tree had 57 tracked deletions under packages/pdf-renderer-pilot/fixtures before this readiness pass. After explicit user approval, only packages/pdf-renderer-pilot/fixtures was restored from HEAD. Post-restore checks showed Core git status clean, deleted fixture count 0, the fixture directory containing 57 files, and font-subset-manifest.v1.json present. Core npm run check then passed type-check and Vitest with 460 test files and 2,945 tests. This evidence supports only the local Core PDF fixture state reconciliation and Core owner-gate verification after that reconciliation; it does not promote broad Core truth, renderer/export parity, production readiness, Backend readiness, Editor readiness, frontend implementation readiness, FlowDoc product readiness, or map truth.",
+  "verifiedAt": "2026-08-30T05:38:00.000Z"
+}

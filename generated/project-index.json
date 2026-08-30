@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "27ca54abf6dd8c10513ea843cc45dbcea0d6f9345ee4cf49f4748baadb6a9812",
+  "sourceDigest": "072b9a14f81e80ccaed523b0ba7e4ec4f9a5ae1d7941d18610a7439d19e976a8",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -51,6 +51,7 @@
         "editor-backend-core-live-compatibility-harness",
         "editor-browser-live-backend-corpus-smoke",
         "editor-browser-live-backend-smoke",
+        "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
@@ -1687,6 +1688,50 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "FlowDoc Core Backend Editor Readiness Pass 8h",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-backend",
+        "repo-editor"
+      ],
+      "workState": "in-progress",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state and proving the Backend owner gate against the actual sibling Core checkout.",
+      "contextDocumentIds": [
+        "doc-project-control-agent-onboarding",
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-role-catalog",
+        "doc-work-tree-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, and full frontend redesign remain unresolved until separately verified.",
+      "requiredEvidence": [
+        "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+        "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+      ],
+      "createdAt": "2026-08-30T05:38:00.000Z",
+      "updatedAt": "2026-08-30T05:38:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-core-backend-editor-readiness-pass-8h"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-core-backend-readiness-matrix",
       "title": "FlowDoc Core Backend Readiness Matrix",
       "nodeId": "flowdoc",
@@ -1776,6 +1821,7 @@
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-bounded-browser-compatibility-promotion",
+        "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
@@ -2702,6 +2748,31 @@
       "summary": "Done: the bounded browser compatibility claim is promoted only into a narrow child node and system-map entry, while FlowDoc remains planned and Core, Editor, and Backend remain unknown.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+      "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "Reconcile Core Fixture State and Verify Backend Gate",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core",
+        "repo-backend"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+        "Core fixture restoration would touch paths outside packages/pdf-renderer-pilot/fixtures or hide unrelated local changes.",
+        "Backend npm run check still fails after Core fixture state is reconciled.",
+        "The evidence wording would promote broad Core, Backend, Editor, FlowDoc, production, deployed, or frontend readiness.",
+        "Project Control validation cannot regenerate the deterministic read model from canonical records."
+      ],
+      "verificationTarget": "Core and Backend repository gates prove that the missing Core PDF fixture local-state blocker has been removed for the current sibling checkout layout, without promoting broad repository readiness.",
+      "summary": "Done: Core tracked PDF fixture deletions were restored from HEAD after explicit user approval; Core npm run check and Backend npm run check passed; broad FlowDoc, Core, Backend, Editor, and frontend readiness remain unpromoted.",
+      "createdAt": "2026-08-30T05:38:00.000Z",
+      "updatedAt": "2026-08-30T05:38:00.000Z"
     },
     {
       "kind": "phase",
@@ -4981,6 +5052,78 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+      "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+      "title": "Core Fixture and Backend Gate Checklist",
+      "items": [
+        {
+          "id": "capture-round-context",
+          "label": "Capture the FlowDoc Work path, owner repositories, active role, Phase, Checklist, and Evidence targets before editing.",
+          "state": "passed",
+          "evidenceTarget": "Project Control records the readiness pass under flowdoc-product-development-resumption with bounded Core and Backend evidence targets.",
+          "evidenceIds": [
+            "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+            "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate, checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate, and evidence targets were identified before Project Control record edits."
+        },
+        {
+          "id": "reconcile-core-fixture-state",
+          "label": "Restore only the missing tracked Core PDF renderer fixture files after explicit user approval.",
+          "state": "passed",
+          "evidenceTarget": "Core packages/pdf-renderer-pilot/fixtures is restored from HEAD while preserving unrelated repository state.",
+          "evidenceIds": [
+            "evidence-core-pdf-fixture-state-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "Before restoration, Core main had 57 tracked deletions under packages/pdf-renderer-pilot/fixtures and no other dirty status. After git restore of that path, Core git status was clean, deleted fixture count was 0, the fixture directory contained 57 files, and font-subset-manifest.v1.json existed."
+        },
+        {
+          "id": "verify-core-owner-gate",
+          "label": "Verify the Core owner gate after fixture reconciliation.",
+          "state": "passed",
+          "evidenceTarget": "Core npm run check passes against commit 5892df6e542a02b25ae3b18ee02a55842b83d48f with the restored fixture working tree.",
+          "evidenceIds": [
+            "evidence-core-pdf-fixture-state-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "Core npm run check passed type-check and Vitest with 460 test files and 2,945 tests."
+        },
+        {
+          "id": "verify-backend-pdf-blocker",
+          "label": "Verify the Backend PDF fixture blocker is removed before trusting the full Backend gate.",
+          "state": "passed",
+          "evidenceTarget": "The previously failing Backend PDF local renderer test passes after the sibling Core fixture path is restored.",
+          "evidenceIds": [
+            "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "npx vitest run --config vitest.config.ts src/tests/pdfExportLocalRenderer.test.ts passed with 1 test file and 7 tests."
+        },
+        {
+          "id": "verify-backend-owner-gate",
+          "label": "Verify the Backend owner gate after Core fixture reconciliation.",
+          "state": "passed",
+          "evidenceTarget": "Backend npm run check passes against commit b9615c2dcede7a2289fa75c41fca19deafdba70e with the actual sibling Core checkout.",
+          "evidenceIds": [
+            "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "Backend npm run check passed type-check, Vitest with 89 passed test files, 1 skipped test file, 319 passed tests, 24 skipped tests, and build."
+        },
+        {
+          "id": "preserve-truth-boundary",
+          "label": "Keep the evidence bounded and leave broad product readiness unpromoted.",
+          "state": "passed",
+          "evidenceTarget": "Evidence wording excludes broad Core, Backend, Editor, FlowDoc, production, deployed, frontend, persistence, and authoring readiness.",
+          "evidenceIds": [
+            "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+            "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+          ],
+          "verificationNote": "No Project Control system map or product repository behavior is promoted by this checklist. Remaining work must continue through separate Core, Backend, and Editor evidence slices."
+        }
+      ],
+      "createdAt": "2026-08-30T05:38:00.000Z",
+      "updatedAt": "2026-08-30T05:38:00.000Z"
     },
     {
       "kind": "checklist",
@@ -7660,6 +7803,16 @@
   "evidence": [
     {
       "kind": "evidence",
+      "id": "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-backend",
+      "commit": "b9615c2dcede7a2289fa75c41fca19deafdba70e",
+      "pathOrContractId": "src/tests/pdfExportLocalRenderer.test.ts",
+      "verificationSummary": "Backend main commit b9615c2dcede7a2289fa75c41fca19deafdba70e was verified after the sibling Core checkout restored its tracked PDF renderer fixture files from HEAD. The previously failing Backend PDF local renderer test passed with npx vitest run --config vitest.config.ts src/tests/pdfExportLocalRenderer.test.ts: 1 test file and 7 tests passed. Backend npm run check then passed type-check, Vitest with 89 passed test files, 1 skipped test file, 319 passed tests, 24 skipped tests, and build. This also covers the current Backend rich-inline mutation route hardening at src/http/server.ts and src/tests/httpServer.test.ts, src/tests/migrationHttp.test.ts, and src/tests/mutationService.test.ts from the same Backend commit, while the evidence target remains the owner gate after Core fixture reconciliation. This evidence does not promote broad Backend readiness, production service readiness, deployed compatibility, durable storage readiness beyond existing bounded tests, Editor live Backend mode compatibility, frontend text-block authoring readiness, Core truth, Editor truth, FlowDoc product readiness, or map truth.",
+      "verifiedAt": "2026-08-30T05:38:00.000Z"
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-backend-core-version-contract-consumer-hardening-2026-08-27",
       "nodeIds": [],
       "repositoryId": "repo-backend",
@@ -7719,6 +7872,16 @@
       "pathOrContractId": "package.json#scripts.check",
       "verificationSummary": "Core default gate-stability lane reproduced the baseline npm run check failure at 969a21a4e888d836ae62164b206cb2dd34d5d702 with two failing tests: textBlockUnifiedLayoutTextStyleSourceV1 geometry insertion timed out at the default 5000ms limit, and corePackageLaneRetirementGuard resolved Backend under the linked Core worktree instead of the canonical sibling checkout. Core commit 77b9e181d1fb43bf69d725108ede664578a07a45 made test-only fixes: resolving the Backend sibling from git common-dir and giving the load-sensitive 5B-2 geometry block a local 60000ms timeout. Focused guards passed, the full Source V1 file passed with 62 tests, worktree npm run check passed 459 test files and 2941 tests in 223.28s, and merged Core main npm run check passed 459 test files and 2941 tests in 227.15s. This supports only the bounded Core default owner gate result and does not promote cross-repository live compatibility.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "packages/pdf-renderer-pilot/fixtures/font-subset-manifest.v1.json",
+      "verificationSummary": "Core main commit 5892df6e542a02b25ae3b18ee02a55842b83d48f still contains the PDF renderer pilot fixture manifests, but the local Core working tree had 57 tracked deletions under packages/pdf-renderer-pilot/fixtures before this readiness pass. After explicit user approval, only packages/pdf-renderer-pilot/fixtures was restored from HEAD. Post-restore checks showed Core git status clean, deleted fixture count 0, the fixture directory containing 57 files, and font-subset-manifest.v1.json present. Core npm run check then passed type-check and Vitest with 460 test files and 2,945 tests. This evidence supports only the local Core PDF fixture state reconciliation and Core owner-gate verification after that reconciliation; it does not promote broad Core truth, renderer/export parity, production readiness, Backend readiness, Editor readiness, frontend implementation readiness, FlowDoc product readiness, or map truth.",
+      "verifiedAt": "2026-08-30T05:38:00.000Z"
     },
     {
       "kind": "evidence",

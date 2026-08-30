@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "FlowDoc Core Backend Editor Readiness Pass 8h",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+  "workState": "in-progress",
+  "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state and proving the Backend owner gate against the actual sibling Core checkout.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
+  ],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted.",
+  "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, and full frontend redesign remain unresolved until separately verified.",
+  "requiredEvidence": [
+    "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+    "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+  ],
+  "createdAt": "2026-08-30T05:38:00.000Z",
+  "updatedAt": "2026-08-30T05:38:00.000Z"
+}

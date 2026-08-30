@@ -1,0 +1,64 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+  "title": "Core Fixture and Backend Gate Checklist",
+  "items": [
+    {
+      "id": "capture-round-context",
+      "label": "Capture the FlowDoc Work path, owner repositories, active role, Phase, Checklist, and Evidence targets before editing.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the readiness pass under flowdoc-product-development-resumption with bounded Core and Backend evidence targets.",
+      "evidenceIds": [
+        "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+        "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+      ],
+      "verificationNote": "Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate, checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate, and evidence targets were identified before Project Control record edits."
+    },
+    {
+      "id": "reconcile-core-fixture-state",
+      "label": "Restore only the missing tracked Core PDF renderer fixture files after explicit user approval.",
+      "state": "passed",
+      "evidenceTarget": "Core packages/pdf-renderer-pilot/fixtures is restored from HEAD while preserving unrelated repository state.",
+      "evidenceIds": ["evidence-core-pdf-fixture-state-reconciliation-2026-08-30"],
+      "verificationNote": "Before restoration, Core main had 57 tracked deletions under packages/pdf-renderer-pilot/fixtures and no other dirty status. After git restore of that path, Core git status was clean, deleted fixture count was 0, the fixture directory contained 57 files, and font-subset-manifest.v1.json existed."
+    },
+    {
+      "id": "verify-core-owner-gate",
+      "label": "Verify the Core owner gate after fixture reconciliation.",
+      "state": "passed",
+      "evidenceTarget": "Core npm run check passes against commit 5892df6e542a02b25ae3b18ee02a55842b83d48f with the restored fixture working tree.",
+      "evidenceIds": ["evidence-core-pdf-fixture-state-reconciliation-2026-08-30"],
+      "verificationNote": "Core npm run check passed type-check and Vitest with 460 test files and 2,945 tests."
+    },
+    {
+      "id": "verify-backend-pdf-blocker",
+      "label": "Verify the Backend PDF fixture blocker is removed before trusting the full Backend gate.",
+      "state": "passed",
+      "evidenceTarget": "The previously failing Backend PDF local renderer test passes after the sibling Core fixture path is restored.",
+      "evidenceIds": ["evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"],
+      "verificationNote": "npx vitest run --config vitest.config.ts src/tests/pdfExportLocalRenderer.test.ts passed with 1 test file and 7 tests."
+    },
+    {
+      "id": "verify-backend-owner-gate",
+      "label": "Verify the Backend owner gate after Core fixture reconciliation.",
+      "state": "passed",
+      "evidenceTarget": "Backend npm run check passes against commit b9615c2dcede7a2289fa75c41fca19deafdba70e with the actual sibling Core checkout.",
+      "evidenceIds": ["evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"],
+      "verificationNote": "Backend npm run check passed type-check, Vitest with 89 passed test files, 1 skipped test file, 319 passed tests, 24 skipped tests, and build."
+    },
+    {
+      "id": "preserve-truth-boundary",
+      "label": "Keep the evidence bounded and leave broad product readiness unpromoted.",
+      "state": "passed",
+      "evidenceTarget": "Evidence wording excludes broad Core, Backend, Editor, FlowDoc, production, deployed, frontend, persistence, and authoring readiness.",
+      "evidenceIds": [
+        "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
+        "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30"
+      ],
+      "verificationNote": "No Project Control system map or product repository behavior is promoted by this checklist. Remaining work must continue through separate Core, Backend, and Editor evidence slices."
+    }
+  ],
+  "createdAt": "2026-08-30T05:38:00.000Z",
+  "updatedAt": "2026-08-30T05:38:00.000Z"
+}
