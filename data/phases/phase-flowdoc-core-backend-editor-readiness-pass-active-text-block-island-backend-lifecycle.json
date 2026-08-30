@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-backend-lifecycle",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Wire Active Text Block Island Backend Lifecycle",
+  "phaseState": "done",
+  "order": 40,
+  "repositoryIds": ["repo-editor", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The lifecycle enables visible typing UI, WYSIWYG behavior, or direct canvas input binding.",
+    "The lifecycle treats an Editor draft as canonical document truth.",
+    "The lifecycle applies Backend mutation results without the existing Editor stale gate.",
+    "The lifecycle handles unrelated request ids, unrelated operation kinds, or unrelated text blocks as if they belonged to the active island.",
+    "The lifecycle discards a newer local draft after an older pending commit is applied, rejected, or stale.",
+    "Focused or full Editor gates fail after the lifecycle integration is added.",
+    "Cleanup side effects leave Core, Backend, Editor, or Project Control dirty or unverified."
+  ],
+  "verificationTarget": "Editor runtime starts with inactive active-island state, records pending rich-inline commit metadata, clears the active island only when the current pending draft is applied, keeps newer local draft content when an older pending commit is rejected or stale, and rebases newer local draft state when an older pending commit is applied.",
+  "summary": "Done: Editor commit 7dc118a23a993c5fb7ca6168ee77027dc9324cfa wires active text-block island state into EditorRuntimeState and the stale-gated Backend mutation apply path. Focused and full Editor gates passed, while visible typing UI, WYSIWYG behavior, and broad frontend readiness remain unpromoted.",
+  "createdAt": "2026-08-30T07:43:39.000Z",
+  "updatedAt": "2026-08-30T07:43:39.000Z"
+}
