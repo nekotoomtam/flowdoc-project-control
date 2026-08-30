@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Add Node Placement Readiness Matrix",
+  "phaseState": "done",
+  "order": 60,
+  "repositoryIds": ["repo-editor", "repo-core", "repo-backend", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The placement readiness code guesses allowed child Core runtime node types instead of mirroring adapter-safe Core capability data.",
+    "The readiness matrix treats internal table, column, or text nodes as direct visible operation surfaces when current Editor presentation resolves them to owning surfaces.",
+    "Sibling placement, inside placement, and append placement are collapsed into one ambiguous add-node target.",
+    "The phase enables add-node mutation transport, Backend insert requests, visible WYSIWYG behavior, contenteditable runtime, or active text input UI.",
+    "Focused or full Editor gates fail after the placement readiness matrix is added.",
+    "Project Control registration promotes broad Editor, Backend, Core, frontend, or FlowDoc readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Editor mirrors Core allowed child types into adapter-safe node summaries and the command capability mirror, computes sibling add placements through visible operation surfaces, computes inside and append placements only for real Core runtime containers that accept flow children, and reports explicit blocked reasons while add-node transport remains disabled.",
+  "summary": "Done: Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 adds an Editor-owned node placement readiness matrix and focused tests. The matrix exposes before/after sibling slots through visible operation surfaces, inside/append readiness for real Core runtime containers, and explicit blocked reasons for columns/table/text leaves while add-node transport, WYSIWYG behavior, and visible text input remain unpromoted.",
+  "createdAt": "2026-08-30T09:36:00.000Z",
+  "updatedAt": "2026-08-30T09:36:00.000Z"
+}

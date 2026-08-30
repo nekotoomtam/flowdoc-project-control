@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+  "title": "Node Placement Readiness Matrix Checklist",
+  "items": [
+    {
+      "id": "capture-placement-context",
+      "label": "Capture Project Control, terminology, Editor, Core, Backend, outline, canvas, and command context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Core AGENTS.md, Core cross-repo map, Backend AGENTS.md, Editor presentation, command, capability, outline, and canvas modules are reviewed.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "Reviewed Project Control AGENTS.md, required operating docs, FlowDoc product terminology EN/TH, flowdoc-core-backend-editor-readiness-pass-8h Work record, Editor AGENTS.md, Core AGENTS.md and CROSS_REPO_OPERATING_MAP.md, Backend AGENTS.md, src/editor/runtime/editorView.ts, src/editor/presentation/nodePresentationProjector.ts, src/editor/coreBinding/capabilityMirror.ts, src/editor/commands/reorderPlacement.ts, src/editor/commands/commandPolicy.ts, src/components/outline/OutlinePanel.tsx, and paper/canvas reorder components before editing."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline in an isolated worktree before adding node placement readiness.",
+      "state": "passed",
+      "evidenceTarget": "The retained clean Editor linked worktree is switched to a new branch from main and passes npm run check before implementation.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "Reused C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830, switched it to branch editor-node-placement-readiness-20260830 from main, deleted the already-merged prior branch ref editor-active-text-island-commit-runner-20260830, and baseline npm run check passed type-check, 94 test files with 326 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write focused failing tests before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "The focused node placement readiness test fails before the implementation exists and later catches incorrect matrix revision sourcing.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "npm test -- src/tests/nodePlacementReadiness.test.ts first failed with Cannot find module ../editor/commands/nodePlacementReadiness. After the first implementation, the focused test caught an incorrect matrix revision value of 15 where the capability revision was 3."
+    },
+    {
+      "id": "mirror-core-child-capabilities",
+      "label": "Mirror Core allowed child types through the Editor adapter-safe read model and command capability mirror.",
+      "state": "passed",
+      "evidenceTarget": "Core allowedChildTypes are preserved on node capabilities and cloned through read model and command capability mirror without UI-owned child type guesses.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 updates src/core/coreTypes.ts, src/core/coreRuntimeSeedMapper.ts, src/editor/coreBinding/readModel.ts, and src/editor/coreBinding/capabilityMirror.ts so allowed child Core runtime node types reach Editor placement policy as cloned adapter-safe data."
+    },
+    {
+      "id": "implement-placement-readiness",
+      "label": "Implement the Editor-owned node placement readiness matrix.",
+      "state": "passed",
+      "evidenceTarget": "The matrix exposes before, after, inside, and append placement facts with container ids, insert indexes, surface resolution, represented node ids, allowed child types, and blocked activation status.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 adds src/editor/commands/nodePlacementReadiness.ts and src/tests/nodePlacementReadiness.test.ts. The focused tests prove sibling slots normalize internal nodes such as summary-left-text to summary-columns and detail-cell-b-text to detail-table, while inside/append slots stay tied to real Core runtime containers such as summary-left."
+    },
+    {
+      "id": "preserve-authoring-boundary",
+      "label": "Preserve the add-node, WYSIWYG, and visible input boundary.",
+      "state": "passed",
+      "evidenceTarget": "No add-node mutation transport, Backend insert request, contenteditable canvas input, enabled outline add button, or WYSIWYG surface is introduced.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "Guardrail search found no new node.insert, text-block.insert, columns.insert, table.row.insert, table.column.insert, or enabled outline-add state under src. Existing input and textarea matches belong to PreviewTestInputView and existing text-block authoring boundary tests, not to canvas WYSIWYG activation."
+    },
+    {
+      "id": "verify-editor-owner-gates",
+      "label": "Run focused, related, worktree, and merged-main Editor gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused node placement readiness tests, related Editor presentation/working-set/command tests, worktree npm run check, and merged Editor main npm run check all pass.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "npm test -- src/tests/nodePlacementReadiness.test.ts passed 1 file and 3 tests. npm test -- src/tests/workingSetFactory.test.ts src/tests/nodePresentation.test.ts src/tests/commands.test.ts src/tests/outlineScannability.test.ts src/tests/nodePlacementReadiness.test.ts passed 5 files and 32 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 95 test files with 329 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup risk and unpromoted product claims honestly.",
+      "state": "passed",
+      "evidenceTarget": "Linked Editor worktree cleanup remains a recorded risk, and broad Core, Backend, Editor, frontend, add-node, WYSIWYG, and product readiness claims remain unpromoted.",
+      "evidenceIds": ["evidence-editor-node-placement-readiness-2026-08-30"],
+      "verificationNote": "The linked Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained on branch editor-node-placement-readiness-20260830 because node_modules contains junctions to Core and earlier recursive cleanup exposed dependency-link side effects. This evidence is bounded to Editor node placement readiness only."
+    }
+  ],
+  "createdAt": "2026-08-30T09:36:00.000Z",
+  "updatedAt": "2026-08-30T09:36:00.000Z"
+}

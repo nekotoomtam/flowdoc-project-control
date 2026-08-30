@@ -323,6 +323,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+        checklistLength: 8,
+      },
     ],
   },
   {
@@ -736,6 +742,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-commit-runner-2026-08-30")?.verificationSummary)
       .toContain("active text-block island commit runner");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-node-placement-readiness-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "2be3145210eac74ecc6b82d547f6471456b36114",
+        pathOrContractId: "src/editor/commands/nodePlacementReadiness.ts; src/tests/nodePlacementReadiness.test.ts; src/core/coreRuntimeSeedMapper.ts; src/editor/coreBinding/capabilityMirror.ts; src/editor/coreBinding/readModel.ts; src/core/coreTypes.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-node-placement-readiness-2026-08-30")?.verificationSummary)
+      .toContain("node placement readiness matrix");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

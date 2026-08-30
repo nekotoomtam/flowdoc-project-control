@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "3dd602697f45cbfd93a7c40ba02dcb058ad775ad772b72d4fa61660c737a530e",
+  "sourceDigest": "19554aeb97ed752831b831bf88fcc1fd0f3b076e1b76b56de435dea7df8cd0b3",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1746,7 +1746,7 @@
         "repo-editor"
       ],
       "workState": "in-progress",
-      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, adding memory-only active text-block island runtime state, wiring that state into the Editor Backend mutation lifecycle, and adding an Editor-owned active text-block island commit runner with live Backend proof before visible typing UI.",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, adding memory-only active text-block island runtime state, wiring that state into the Editor Backend mutation lifecycle, adding an Editor-owned active text-block island commit runner with live Backend proof, and adding an Editor-owned node placement readiness matrix before visible typing UI or add-node mutation activation.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -1759,8 +1759,8 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "activeRole": "cross-repo-boundary-reviewer",
-      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. The fifth completed slice records Editor commit 7dc118a23a993c5fb7ca6168ee77027dc9324cfa as the tested active text-block island Backend lifecycle integration inside Editor runtime. The sixth completed slice records Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 as the active text-block island commit runner with focused tests and live loopback Backend proof. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
-      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained on branch editor-active-text-island-commit-runner-20260830 because its node_modules contains junctions to Core and cleanup needs a safer dependency-link plan. Project Control worktree npm run check hit Vitest fork worker start timeouts before record edits, so Project Control verification used the same gate split with npm test -- --maxWorkers=1, npm run build, and npm run test:e2e.",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. The fifth completed slice records Editor commit 7dc118a23a993c5fb7ca6168ee77027dc9324cfa as the tested active text-block island Backend lifecycle integration inside Editor runtime. The sixth completed slice records Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 as the active text-block island commit runner with focused tests and live loopback Backend proof. The seventh completed slice records Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 as the node placement readiness matrix that mirrors Core allowed child types and computes sibling, inside, and append placement facts without enabling add-node transport or WYSIWYG behavior. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, add-node mutation activation, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained on branch editor-node-placement-readiness-20260830 because its node_modules contains junctions to Core and cleanup needs a safer dependency-link plan. Project Control worktree npm run check hit Vitest fork worker start timeouts before record edits, so Project Control verification used the same gate split with npm test -- --maxWorkers=1, npm run build, and npm run test:e2e.",
       "requiredEvidence": [
         "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
         "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
@@ -1769,17 +1769,19 @@
         "evidence-editor-active-text-block-island-runtime-2026-08-30",
         "evidence-project-control-phase-order-read-model-2026-08-30",
         "evidence-editor-active-text-block-island-backend-lifecycle-2026-08-30",
-        "evidence-editor-active-text-block-island-commit-runner-2026-08-30"
+        "evidence-editor-active-text-block-island-commit-runner-2026-08-30",
+        "evidence-editor-node-placement-readiness-2026-08-30"
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
-      "updatedAt": "2026-08-30T08:20:00.000Z",
+      "updatedAt": "2026-08-30T09:36:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
         "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
         "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
         "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-backend-lifecycle",
-        "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner"
+        "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+        "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2943,6 +2945,34 @@
       "summary": "Done: Core tracked PDF fixture deletions were restored from HEAD after explicit user approval; Core npm run check and Backend npm run check passed; broad FlowDoc, Core, Backend, Editor, and frontend readiness remain unpromoted.",
       "createdAt": "2026-08-30T05:38:00.000Z",
       "updatedAt": "2026-08-30T05:38:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+      "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "Add Node Placement Readiness Matrix",
+      "phaseState": "done",
+      "order": 60,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core",
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+        "The placement readiness code guesses allowed child Core runtime node types instead of mirroring adapter-safe Core capability data.",
+        "The readiness matrix treats internal table, column, or text nodes as direct visible operation surfaces when current Editor presentation resolves them to owning surfaces.",
+        "Sibling placement, inside placement, and append placement are collapsed into one ambiguous add-node target.",
+        "The phase enables add-node mutation transport, Backend insert requests, visible WYSIWYG behavior, contenteditable runtime, or active text input UI.",
+        "Focused or full Editor gates fail after the placement readiness matrix is added.",
+        "Project Control registration promotes broad Editor, Backend, Core, frontend, or FlowDoc readiness from this bounded evidence."
+      ],
+      "verificationTarget": "Editor mirrors Core allowed child types into adapter-safe node summaries and the command capability mirror, computes sibling add placements through visible operation surfaces, computes inside and append placements only for real Core runtime containers that accept flow children, and reports explicit blocked reasons while add-node transport remains disabled.",
+      "summary": "Done: Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 adds an Editor-owned node placement readiness matrix and focused tests. The matrix exposes before/after sibling slots through visible operation surfaces, inside/append readiness for real Core runtime containers, and explicit blocked reasons for columns/table/text leaves while add-node transport, WYSIWYG behavior, and visible text input remain unpromoted.",
+      "createdAt": "2026-08-30T09:36:00.000Z",
+      "updatedAt": "2026-08-30T09:36:00.000Z"
     },
     {
       "kind": "phase",
@@ -5641,6 +5671,96 @@
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
       "updatedAt": "2026-08-30T05:38:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+      "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-node-placement-readiness",
+      "title": "Node Placement Readiness Matrix Checklist",
+      "items": [
+        {
+          "id": "capture-placement-context",
+          "label": "Capture Project Control, terminology, Editor, Core, Backend, outline, canvas, and command context before implementation.",
+          "state": "passed",
+          "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Core AGENTS.md, Core cross-repo map, Backend AGENTS.md, Editor presentation, command, capability, outline, and canvas modules are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "Reviewed Project Control AGENTS.md, required operating docs, FlowDoc product terminology EN/TH, flowdoc-core-backend-editor-readiness-pass-8h Work record, Editor AGENTS.md, Core AGENTS.md and CROSS_REPO_OPERATING_MAP.md, Backend AGENTS.md, src/editor/runtime/editorView.ts, src/editor/presentation/nodePresentationProjector.ts, src/editor/coreBinding/capabilityMirror.ts, src/editor/commands/reorderPlacement.ts, src/editor/commands/commandPolicy.ts, src/components/outline/OutlinePanel.tsx, and paper/canvas reorder components before editing."
+        },
+        {
+          "id": "verify-editor-baseline",
+          "label": "Verify the Editor baseline in an isolated worktree before adding node placement readiness.",
+          "state": "passed",
+          "evidenceTarget": "The retained clean Editor linked worktree is switched to a new branch from main and passes npm run check before implementation.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "Reused C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830, switched it to branch editor-node-placement-readiness-20260830 from main, deleted the already-merged prior branch ref editor-active-text-island-commit-runner-20260830, and baseline npm run check passed type-check, 94 test files with 326 tests, and build. Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "write-focused-red",
+          "label": "Write focused failing tests before production implementation.",
+          "state": "passed",
+          "evidenceTarget": "The focused node placement readiness test fails before the implementation exists and later catches incorrect matrix revision sourcing.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "npm test -- src/tests/nodePlacementReadiness.test.ts first failed with Cannot find module ../editor/commands/nodePlacementReadiness. After the first implementation, the focused test caught an incorrect matrix revision value of 15 where the capability revision was 3."
+        },
+        {
+          "id": "mirror-core-child-capabilities",
+          "label": "Mirror Core allowed child types through the Editor adapter-safe read model and command capability mirror.",
+          "state": "passed",
+          "evidenceTarget": "Core allowedChildTypes are preserved on node capabilities and cloned through read model and command capability mirror without UI-owned child type guesses.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 updates src/core/coreTypes.ts, src/core/coreRuntimeSeedMapper.ts, src/editor/coreBinding/readModel.ts, and src/editor/coreBinding/capabilityMirror.ts so allowed child Core runtime node types reach Editor placement policy as cloned adapter-safe data."
+        },
+        {
+          "id": "implement-placement-readiness",
+          "label": "Implement the Editor-owned node placement readiness matrix.",
+          "state": "passed",
+          "evidenceTarget": "The matrix exposes before, after, inside, and append placement facts with container ids, insert indexes, surface resolution, represented node ids, allowed child types, and blocked activation status.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 adds src/editor/commands/nodePlacementReadiness.ts and src/tests/nodePlacementReadiness.test.ts. The focused tests prove sibling slots normalize internal nodes such as summary-left-text to summary-columns and detail-cell-b-text to detail-table, while inside/append slots stay tied to real Core runtime containers such as summary-left."
+        },
+        {
+          "id": "preserve-authoring-boundary",
+          "label": "Preserve the add-node, WYSIWYG, and visible input boundary.",
+          "state": "passed",
+          "evidenceTarget": "No add-node mutation transport, Backend insert request, contenteditable canvas input, enabled outline add button, or WYSIWYG surface is introduced.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "Guardrail search found no new node.insert, text-block.insert, columns.insert, table.row.insert, table.column.insert, or enabled outline-add state under src. Existing input and textarea matches belong to PreviewTestInputView and existing text-block authoring boundary tests, not to canvas WYSIWYG activation."
+        },
+        {
+          "id": "verify-editor-owner-gates",
+          "label": "Run focused, related, worktree, and merged-main Editor gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused node placement readiness tests, related Editor presentation/working-set/command tests, worktree npm run check, and merged Editor main npm run check all pass.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "npm test -- src/tests/nodePlacementReadiness.test.ts passed 1 file and 3 tests. npm test -- src/tests/workingSetFactory.test.ts src/tests/nodePresentation.test.ts src/tests/commands.test.ts src/tests/outlineScannability.test.ts src/tests/nodePlacementReadiness.test.ts passed 5 files and 32 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 95 test files with 329 tests, and build. Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "register-cleanup-risk",
+          "label": "Record cleanup risk and unpromoted product claims honestly.",
+          "state": "passed",
+          "evidenceTarget": "Linked Editor worktree cleanup remains a recorded risk, and broad Core, Backend, Editor, frontend, add-node, WYSIWYG, and product readiness claims remain unpromoted.",
+          "evidenceIds": [
+            "evidence-editor-node-placement-readiness-2026-08-30"
+          ],
+          "verificationNote": "The linked Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained on branch editor-node-placement-readiness-20260830 because node_modules contains junctions to Core and earlier recursive cleanup exposed dependency-link side effects. This evidence is bounded to Editor node placement readiness only."
+        }
+      ],
+      "createdAt": "2026-08-30T09:36:00.000Z",
+      "updatedAt": "2026-08-30T09:36:00.000Z"
     },
     {
       "kind": "checklist",
@@ -8701,6 +8821,16 @@
       "pathOrContractId": "src/tests/localLoopbackDevRunner.test.ts",
       "verificationSummary": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds the bounded dev:local-loopback runner and dev:local-loopback:smoke command. The runner treats Core as dependency-only, starts Backend as a local loopback server process, starts Editor as a Vite dev server with VITE_FLOWDOC_BACKEND_URL pointed at Backend, waits for Backend /health and Editor /documents, and writes no evidence fixtures. RED failed before implementation because scripts/run-local-loopback-dev.mjs did not exist; focused GREEN passed src/tests/localLoopbackDevRunner.test.ts with 1 test. npm run dev:local-loopback:smoke passed by starting Backend and Editor on random loopback ports and exiting after readiness. Editor worktree npm run check passed type-check, 84 passed test files, 292 passed tests, and build; merged Editor main npm run check also passed type-check, 84 passed test files, 292 passed tests, and build. Editor npm install reported 5 high severity vulnerabilities and Vite retained the existing chunk-size warning; Core local checkout had unrelated deleted pdf-renderer-pilot fixture files and was not edited. This evidence supports only the local loopback dev runner, is local loopback only, and does not promote FlowDoc, Editor, Backend, Core, deployed compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, bundle-size readiness, or product readiness.",
       "verifiedAt": "2026-08-28T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-node-placement-readiness-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "2be3145210eac74ecc6b82d547f6471456b36114",
+      "pathOrContractId": "src/editor/commands/nodePlacementReadiness.ts; src/tests/nodePlacementReadiness.test.ts; src/core/coreRuntimeSeedMapper.ts; src/editor/coreBinding/capabilityMirror.ts; src/editor/coreBinding/readModel.ts; src/core/coreTypes.ts",
+      "verificationSummary": "Editor commit 2be3145210eac74ecc6b82d547f6471456b36114 adds an Editor-owned node placement readiness matrix in src/editor/commands/nodePlacementReadiness.ts and focused tests in src/tests/nodePlacementReadiness.test.ts. The implementation mirrors Core allowed child types into CoreEditorNodeCapabilities, clones them through the Editor read model, and exposes them through the command capability mirror. The readiness matrix records visible surface node ids, represented internal Core runtime node ids, before and after sibling add slots resolved through visible operation surfaces, inside placement for real Core runtime containers that accept flow children, append placements by container id, and explicit blocked reasons for columns, table, table-row, and leaf targets. All ready placement plans keep activationStatus blocked with the reason Add-node transport is not enabled for Editor runtime yet. Accepted RED evidence included npm test -- src/tests/nodePlacementReadiness.test.ts failing because ../editor/commands/nodePlacementReadiness did not exist, and a later focused failure where the matrix revision incorrectly used the Core runtime node count 15 instead of capability revision 3. GREEN passed npm test -- src/tests/nodePlacementReadiness.test.ts with 1 file and 3 tests. Related regression passed npm test -- src/tests/workingSetFactory.test.ts src/tests/nodePresentation.test.ts src/tests/commands.test.ts src/tests/outlineScannability.test.ts src/tests/nodePlacementReadiness.test.ts with 5 files and 32 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, 95 test files with 329 tests, and build. Guardrail search found no new node.insert, text-block.insert, columns.insert, table.row.insert, table.column.insert, or enabled outline-add state under src; existing input and textarea matches belong to PreviewTestInputView and existing text-block authoring boundary tests. This evidence supports only the bounded Editor node placement readiness matrix and capability mirroring. It does not enable add-node mutation transport, Backend insert requests, visible WYSIWYG behavior, contenteditable runtime, active text input UI, field chip UI, durable draft persistence, production Backend readiness, deployed compatibility, large-document authoring performance, accessibility readiness, exact layout, export parity, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Vite retained the existing chunk-size warning; it was not remediated in this lane. The linked Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 remains intentionally retained on branch editor-node-placement-readiness-20260830 because node_modules contains junctions to Core and previous recursive cleanup exposed dependency-link side effects.",
+      "verifiedAt": "2026-08-30T09:36:00.000Z"
     },
     {
       "kind": "evidence",
