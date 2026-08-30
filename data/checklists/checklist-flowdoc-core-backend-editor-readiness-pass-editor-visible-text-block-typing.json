@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
+  "title": "Editor Visible Text Block Typing Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work record, terminology, Editor AGENTS.md, Core AGENTS.md and cross-repo map, Backend AGENTS.md, and the approved Editor node authoring roadmap are reviewed before editing visible text-block typing behavior.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core references, phase-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing, checklist-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing, and evidence target evidence-editor-visible-text-block-typing-2026-08-30 before edits."
+    },
+    {
+      "id": "write-source-boundary-red",
+      "label": "Write failing source-boundary tests before retaining editable source package state.",
+      "state": "passed",
+      "evidenceTarget": "A focused Editor test fails before the text-block inline draft adapter and sourcePackageValue working-set field exist.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "npm run test -- src/tests/textBlockInlineDraftAdapter.test.ts failed because ../editor/draft/textBlockInlineDraftAdapter did not exist, proving the RED covered the missing editable source boundary before implementation."
+    },
+    {
+      "id": "implement-editable-source-boundary",
+      "label": "Implement a bounded editable text-block source adapter.",
+      "state": "passed",
+      "evidenceTarget": "Editor stores Backend api and mutation-result package snapshots on the working set and exposes only package 3/document 4 text-block first text-run drafts for editing.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "Editor commit 51db1159f3cf75df0fce3eb725bf875254151ad5 adds sourcePackageValue to CoreAdapterSnapshot and FrontendCoreWorkingSet, carries it only from api and mutation-result transport envelopes, and adds textBlockInlineDraftAdapter tests for ready replacement plus missing-package, unsupported-package-version, non-text-block, and text-run-required blocked states."
+    },
+    {
+      "id": "wire-active-editing-interaction",
+      "label": "Wire active text-block editing interaction with explicit Save and Cancel.",
+      "state": "passed",
+      "evidenceTarget": "Editor hook opens the active island for a ready selected text block, keeps local draft edits there, handles IME composition, gates pending operations, and commits only on Save or Ctrl+Enter.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "Editor commit 027021619bfb90ede2b57992f84f201b1ff6822e adds useActiveTextBlockEditing, focused hook tests for ready/blocked/local-draft/cancel/pending-gate behavior, and EditorApp/EditorShell wiring without visible textarea rendering."
+    },
+    {
+      "id": "render-textarea-island",
+      "label": "Render the selected text block as a bounded textarea island on the paper canvas.",
+      "state": "passed",
+      "evidenceTarget": "The selected ready text block renders a textarea with Save and Cancel icon buttons, ordinary blocks remain keyboard-reorderable buttons, and textarea/editor buttons do not trigger canvas selection or drag.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "Editor commits 41a25385f55458b727a4573230ec5d0b11e26f26, 9bb129987d75a35f95634eb4d9257e0b4b69a575, and 6f59f7269322abfe3428d4df6f4ba0ee6ab0078f add PaperTextBlockEditor, canvasInteractiveTarget, prop wiring from EditorShell to CanvasSurface, focus-control lookup hardening, and restrained CSS. Focused UI tests passed for textarea markup, no contenteditable, ordinary paper block buttons, interactive target detection, smooth zoom, and keyboard reorder focus."
+    },
+    {
+      "id": "prove-live-browser-backend-save",
+      "label": "Prove visible text typing through a live local Backend browser smoke.",
+      "state": "passed",
+      "evidenceTarget": "The browser smoke migrates, selects title, types Updated through visible text block editor, saves through text-block.rich-inline.replace, reloads the route, reads the committed text from Backend api r7, and reorders afterward.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "npm run evidence:editor-browser-live-backend-smoke passed in the Editor worktree and merged main. The retained fixture records textareaValueBefore Product Report for, typedText and savedInlineText Updated through visible text block editor, backend operationKinds text-block.insert, columns.insert, text-block.rich-inline.replace, node.reorder, reload Core: api r7, final reorder Core: mutation-result r8, and contentEditableCount 0."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass npm run check, merged main passes no-write live Backend browser smoke, and cleanup blockers are recorded instead of hidden.",
+      "evidenceIds": ["evidence-editor-visible-text-block-typing-2026-08-30"],
+      "verificationNote": "Editor worktree npm run check passed type-check, Vitest 102 test files with 350 tests, and build; merged Editor main npm run check passed the same gate. Merged main FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke also passed. Branch fd-ed-text-typing-0830 was deleted after fast-forward merge, but C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-text-typing-0830 remains on disk after git worktree remove failed with Directory not empty; Git no longer lists it as a worktree. Older retained worktree cleanup risks remain separate."
+    }
+  ],
+  "createdAt": "2026-08-30T16:37:00.000Z",
+  "updatedAt": "2026-08-30T16:37:00.000Z"
+}

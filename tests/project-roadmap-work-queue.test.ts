@@ -4,6 +4,7 @@ import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 
 const timestamp = "2026-08-24T00:00:00.000Z";
 const resumptionTimestamp = "2026-08-26T00:00:00.000Z";
+const editorVisibleTextBlockTypingCommit = "6f59f7269322abfe3428d4df6f4ba0ee6ab0078f";
 
 const expectedLegacyWork = [
   {
@@ -351,6 +352,12 @@ const remediationTasks = [
         phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui",
         phaseState: "done",
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-add-node-visible-ui",
+        checklistLength: 7,
+      },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
         checklistLength: 7,
       },
     ],
@@ -793,6 +800,19 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-add-node-activation-harness-2026-08-30")?.verificationSummary)
       .toContain("bounded add-node activation harness");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorVisibleTextBlockTypingCommit,
+        pathOrContractId: "src/app/useActiveTextBlockEditing.ts; src/components/paper/PaperTextBlockEditor.tsx; src/editor/draft/textBlockInlineDraftAdapter.ts; scripts/run-editor-browser-live-backend-smoke.mjs; src/fixtures/editor-browser-live-backend-smoke.v1.json; src/tests/textBlockInlineDraftAdapter.test.ts; src/tests/activeTextBlockEditingHook.test.ts; src/tests/paperTextBlockEditor.test.ts; src/tests/canvasInteractiveTarget.test.ts; src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30")?.verificationSummary)
+      .toContain("visible text-block textarea island");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30")?.verificationSummary)
+      .toContain("text-block.rich-inline.replace");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
