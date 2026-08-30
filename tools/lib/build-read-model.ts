@@ -5,6 +5,7 @@ import type {
   IndexWork,
   IndexDocument,
   NodeRecord,
+  PhaseRecord,
   ProjectRecord,
   ProjectReadModel,
   WorkRecord,
@@ -21,7 +22,7 @@ export async function buildProjectReadModel(
   const phases = sortById(validated.phases).map(({ value }) => ({ ...value }));
   const checklists = sortById(validated.checklists).map(({ value }) => ({ ...value }));
   const childWorkIdsByParentId = groupIds(workValues, (work) => work.parentWorkId);
-  const phaseIdsByWorkId = groupIds(phases, (phase) => phase.workId);
+  const phaseIdsByWorkId = groupPhaseIdsByWorkId(phases);
   const indexedWork: IndexWork[] = workValues.map((work) => ({
     ...work,
     childWorkIds: childWorkIdsByParentId.get(work.id) ?? [],
@@ -151,6 +152,29 @@ function groupIds<T extends { id: string }>(
     grouped.set(parentId, ids.sort(compareCodeUnits));
   }
   return grouped;
+}
+
+function groupPhaseIdsByWorkId(phases: PhaseRecord[]): Map<string, string[]> {
+  const grouped = new Map<string, PhaseRecord[]>();
+  for (const phase of phases) {
+    const workPhases = grouped.get(phase.workId) ?? [];
+    workPhases.push(phase);
+    grouped.set(phase.workId, workPhases);
+  }
+
+  return new Map([...grouped.entries()].map(([workId, workPhases]) => [
+    workId,
+    workPhases
+      .sort(comparePhases)
+      .map((phase) => phase.id),
+  ]));
+}
+
+function comparePhases(left: PhaseRecord, right: PhaseRecord): number {
+  if (left.order !== right.order) {
+    return left.order - right.order;
+  }
+  return compareCodeUnits(left.title, right.title) || compareCodeUnits(left.id, right.id);
 }
 
 function collectWorkPathIds(work: WorkRecord, workValues: WorkRecord[]): string[] {
