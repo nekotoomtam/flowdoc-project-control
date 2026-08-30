@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "a0fecf825a6399b22b4820d891a641eeca62db331b2b837d2820455aee0a0daf",
+  "sourceDigest": "174263a38472eb74d456b5fccd6cfa66d7b18f296b855e63fac1e640364f4e10",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1745,7 +1745,7 @@
         "repo-editor"
       ],
       "workState": "in-progress",
-      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, and adding bounded Editor live Backend rich-inline harness evidence.",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, and defining the Editor text-block authoring boundary before visible typing UI.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -1758,18 +1758,20 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "activeRole": "cross-repo-boundary-reviewer",
-      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only.",
-      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass.",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects.",
       "requiredEvidence": [
         "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
         "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
-        "evidence-editor-live-backend-rich-inline-harness-2026-08-30"
+        "evidence-editor-live-backend-rich-inline-harness-2026-08-30",
+        "evidence-editor-text-block-authoring-boundary-2026-08-30"
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
-      "updatedAt": "2026-08-30T06:15:42.000Z",
+      "updatedAt": "2026-08-30T06:46:02.000Z",
       "childWorkIds": [],
       "phaseIds": [
-        "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate"
+        "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+        "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2848,6 +2850,33 @@
       "summary": "Done: Core tracked PDF fixture deletions were restored from HEAD after explicit user approval; Core npm run check and Backend npm run check passed; broad FlowDoc, Core, Backend, Editor, and frontend readiness remain unpromoted.",
       "createdAt": "2026-08-30T05:38:00.000Z",
       "updatedAt": "2026-08-30T05:38:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+      "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "Define Text Block Authoring Boundary",
+      "phaseState": "done",
+      "order": 20,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+        "The boundary enables visible WYSIWYG or active text input before the written gate is approved.",
+        "The boundary makes DOM HTML, draft buffer state, or a React component the canonical document truth.",
+        "The boundary bypasses the Backend mutation request, Backend revision gate, Core mutation result, or Editor stale-gated runtime apply path.",
+        "The boundary introduces a rich editor framework or a full-document editing model.",
+        "Focused or full Editor gates fail after the boundary is added.",
+        "Cleanup side effects leave Core, Backend, Editor, or Project Control dirty or unverified."
+      ],
+      "verificationTarget": "Editor defines a tested text-block authoring boundary that keeps the current rich-inline path intent-only, blocks active-island entry until an explicit gate is approved, blocks unsafe DOM-editable binding, guards IME composition during draft commit, and records the result without frontend readiness promotion.",
+      "summary": "Done: Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 defines the text-block authoring boundary in code and docs, passes focused and full Editor gates on worktree and main, and leaves broad WYSIWYG/frontend readiness unpromoted.",
+      "createdAt": "2026-08-30T06:46:02.000Z",
+      "updatedAt": "2026-08-30T06:46:02.000Z"
     },
     {
       "kind": "phase",
@@ -5279,6 +5308,86 @@
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
       "updatedAt": "2026-08-30T05:38:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+      "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+      "title": "Text Block Authoring Boundary Checklist",
+      "items": [
+        {
+          "id": "capture-authoring-boundary-context",
+          "label": "Capture the current Editor authoring, WYSIWYG, rich-inline, and terminology boundaries before implementation.",
+          "state": "passed",
+          "evidenceTarget": "Project Control entrypoint, terminology, Editor AGENTS.md, Product Editor Plan, Runtime Ownership, and Version Capability Reporting are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "Reviewed the FlowDoc terminology docs, Editor AGENTS.md, docs/PRODUCT_EDITOR_PLAN.md Phase 8.5 through Phase 10, docs/RUNTIME_OWNERSHIP.md draft/input ownership, and docs/VERSION_CAPABILITY_REPORTING.md before adding the boundary."
+        },
+        {
+          "id": "verify-editor-baseline",
+          "label": "Verify the Editor baseline before adding the boundary.",
+          "state": "passed",
+          "evidenceTarget": "A clean Editor worktree passes npm run check before implementation.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "The short sibling Editor worktree fd-editor-tb-20260830 installed dependencies with npm ci and the baseline npm run check passed type-check, 90 test files with 313 tests, and build; npm audit reported 5 existing high severity vulnerabilities and Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "write-focused-red",
+          "label": "Write a focused failing test for the text-block authoring boundary contract.",
+          "state": "passed",
+          "evidenceTarget": "The focused test fails because the boundary module does not exist yet.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "The first RED exposed a syntax error in the new test and was corrected; the accepted RED then failed because ../editor/draft/textBlockAuthoringBoundary could not be found."
+        },
+        {
+          "id": "implement-boundary-contract",
+          "label": "Implement only the tested Editor text-block authoring boundary and companion docs.",
+          "state": "passed",
+          "evidenceTarget": "The implementation adds a code contract and documentation without enabling visible typing or WYSIWYG behavior.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 adds src/editor/draft/textBlockAuthoringBoundary.ts, src/tests/textBlockAuthoringBoundary.test.ts, and docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md; no React component, text input UI, Backend file, or Core file was changed."
+        },
+        {
+          "id": "prove-focused-green",
+          "label": "Prove the boundary behavior with the focused tests and existing source guard.",
+          "state": "passed",
+          "evidenceTarget": "The focused boundary test and existing source boundary guard both pass.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "npx vitest run src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts passed 2 test files and 8 tests."
+        },
+        {
+          "id": "verify-editor-owner-gates",
+          "label": "Run full Editor gates in the worktree and after merging to main.",
+          "state": "passed",
+          "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 91 test files with 316 tests, and build; Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "register-cleanup-risk",
+          "label": "Record cleanup side effects and verify repository status before Project Control registration.",
+          "state": "passed",
+          "evidenceTarget": "Core cleanup side effects are restored and verified; residual cleanup risk is recorded instead of hidden.",
+          "evidenceIds": [
+            "evidence-editor-text-block-authoring-boundary-2026-08-30"
+          ],
+          "verificationNote": "git worktree remove deregistered the short Editor worktree and the feature branch was deleted, but Windows reported Filename too long and left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk. The cleanup also caused Core tracked deletions under packages/text-engine-rust-wasm through dependency links; that path was restored from Core HEAD, Core status returned clean, and Core npm run check passed 460 test files with 2,945 tests. No manual residual-folder delete was attempted after this repeat link risk."
+        }
+      ],
+      "createdAt": "2026-08-30T06:46:02.000Z",
+      "updatedAt": "2026-08-30T06:46:02.000Z"
     },
     {
       "kind": "checklist",
@@ -8311,6 +8420,16 @@
       "pathOrContractId": "src/tests/workspaceFrame.test.ts",
       "verificationSummary": "Editor merge commit 2b711c87e4bb036fa2c172550093dbd4fddc91ac implements the bounded Structure panel narrow-width visibility bugfix for the Editor design workspace. Pre-fix browser evidence at http://127.0.0.1:4001/documents/reorder-blocked-target-qa/design with a 704x880 viewport confirmed .outline-panel existed but computed outlineDisplay was none, outline width was 0, workspaceGridColumns was 704px, and console error count was 0. Focused RED failed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose because a max-width 980px media rule still hid .outline-panel. The fix changes src/styles/editor.css so the <=980px design workspace keeps two columns, Structure panel plus canvas, and only hides the right detail panel at that breakpoint. Focused GREEN passed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose with 1 file and 2 tests. Worktree browser evidence in live Backend mode at http://127.0.0.1:57257/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:57256 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Editor worktree npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Merged Editor main npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Main browser evidence in live Backend mode at http://127.0.0.1:58516/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:58515 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check passed check:data, type-check, 58 test files, 329 tests, build, and 6 e2e tests before record edits. Project Control focused record tests passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 2 files and 3 tests after records were added. Project Control record gate first stopped with PROJECT_INDEX_STALE until npm run generate was run. The next Project Control gate reached tests and failed 14 existing Editor lane tests because their exact Editor workIds lists did not include editor-structure-panel-narrow-width-visibility. After updating only those expected lists, focused Project Control lane verification passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/editor-creator-structure-add-affordance-foundation-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 3 files and 4 tests. Project Control record gate npm run check passed check:data, type-check, 59 test files, 330 tests, build, and 6 e2e tests after records and tests were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-structure-panel-narrow-width-visibility folder could not be removed because a verified recursive cleanup command was rejected by local command policy. Previous residual Editor worktree folders for editor-creator-structure-add-affordance-foundation, editor-inspector-detail-navigation-foundation, editor-outline-scannability-foundation, and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor design workspace Structure panel visibility at the narrow desktop breakpoint. It does not promote broad Editor truth, WYSIWYG readiness, text input readiness, active add-block creation, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, real large-document authoring performance readiness, accessibility readiness, full visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, mobile readiness, live production behavior, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T16:36:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-text-block-authoring-boundary-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "e67a67f8c7dfa703ada43428a366d0db56bd4393",
+      "pathOrContractId": "src/editor/draft/textBlockAuthoringBoundary.ts#TEXT_BLOCK_AUTHORING_BOUNDARY_ID",
+      "verificationSummary": "Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 defines the tested text-block authoring boundary before visible typing UI. It adds src/editor/draft/textBlockAuthoringBoundary.ts, src/tests/textBlockAuthoringBoundary.test.ts, and docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md. The boundary keeps the current package 3/document 4 rich-inline path intent-only, requires a fresh Core envelope and text-block surface, blocks active text-block island entry until an explicit gate is approved, blocks unsafe DOM-editable binding, blocks active IME composition during draft commit, requires a local draft buffer before commit, and preserves the canonical commit path: editor-intent -> backend-mutation-request -> backend-revision-gate -> core-mutation-result -> editor-stale-gated-runtime-apply. The first RED exposed a syntax error in the new test and was corrected; the accepted RED then failed because ../editor/draft/textBlockAuthoringBoundary was missing. Focused GREEN passed npx vitest run src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts with 2 test files and 8 tests. Editor worktree npm run check passed type-check, 91 test files with 316 tests, and build; merged Editor main npm run check passed the same gate. During cleanup, git worktree remove deregistered the short sibling Editor worktree and the feature branch was deleted, but Windows reported Filename too long and left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk. That cleanup also caused Core tracked deletions under packages/text-engine-rust-wasm through dependency links; the Core path was restored from HEAD, Core status returned clean, and Core npm run check passed 460 test files with 2,945 tests. No manual residual-folder delete was attempted after the repeat link risk. This evidence does not enable WYSIWYG, text input UI, contenteditable runtime, field-chip input, rich-inline flattening, collaboration, durable draft persistence, production Backend readiness, deployed compatibility, exact layout, export parity, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Editor npm ci reported 5 existing high severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+      "verifiedAt": "2026-08-30T06:46:02.000Z"
     },
     {
       "kind": "evidence",

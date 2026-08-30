@@ -292,10 +292,20 @@ const remediationTasks = [
     nodeId: "flowdoc",
     workState: "in-progress",
     activeRole: "cross-repo-boundary-reviewer",
-    phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
-    phaseState: "done",
-    checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
-    checklistLength: 6,
+    phases: [
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+        checklistLength: 6,
+      },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+        checklistLength: 7,
+      },
+    ],
   },
   {
     id: "flowdoc-product-terminology-foundation",
@@ -414,24 +424,34 @@ describe("project roadmap Work Queue", () => {
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     for (const task of remediationTasks) {
+      const phases = "phases" in task ? task.phases : [
+        {
+          phaseId: task.phaseId,
+          phaseState: task.phaseState,
+          checklistId: task.checklistId,
+          checklistLength: task.checklistLength,
+        },
+      ];
       expect(model.work.find((item) => item.id === task.id)).toMatchObject({
         workKind: "task",
         workState: task.workState,
         parentWorkId: "flowdoc-product-development-resumption",
         nodeId: task.nodeId,
         activeRole: task.activeRole,
-        phaseIds: [task.phaseId],
+        phaseIds: phases.map((phase) => phase.phaseId),
         workPathIds: [
           "flowdoc-product-development-resumption",
           task.id,
         ],
       });
-      expect(model.phases.find((item) => item.id === task.phaseId)).toMatchObject({
-        workId: task.id,
-        phaseState: task.phaseState,
-      });
-      expect(model.checklists.find((item) => item.id === task.checklistId)?.items)
-        .toHaveLength(task.checklistLength);
+      for (const phase of phases) {
+        expect(model.phases.find((item) => item.id === phase.phaseId)).toMatchObject({
+          workId: task.id,
+          phaseState: phase.phaseState,
+        });
+        expect(model.checklists.find((item) => item.id === phase.checklistId)?.items)
+          .toHaveLength(phase.checklistLength);
+      }
     }
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
@@ -653,6 +673,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-live-backend-rich-inline-harness-2026-08-30")?.verificationSummary)
       .toContain("bounded live Backend rich-inline mutation harness");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-authoring-boundary-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "e67a67f8c7dfa703ada43428a366d0db56bd4393",
+        pathOrContractId: "src/editor/draft/textBlockAuthoringBoundary.ts#TEXT_BLOCK_AUTHORING_BOUNDARY_ID",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-authoring-boundary-2026-08-30")?.verificationSummary)
+      .toContain("tested text-block authoring boundary");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
