@@ -305,6 +305,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -682,6 +688,24 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-authoring-boundary-2026-08-30")?.verificationSummary)
       .toContain("tested text-block authoring boundary");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-runtime-2026-08-30"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: "24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5",
+        pathOrContractId: "src/editor/draft/activeTextBlockIsland.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-active-text-block-island-runtime-2026-08-30")?.verificationSummary)
+      .toContain("memory-only active text-block island runtime state");
+    expect(model.evidence.find((item) => item.id === "evidence-project-control-phase-order-read-model-2026-08-30"))
+      .toMatchObject({
+        nodeIds: ["project-control"],
+        repositoryId: "repo-project-control",
+        commit: "0e0c5fd617ac4618a4a03066a0dd719ce658380c",
+        pathOrContractId: "tools/lib/build-read-model.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-project-control-phase-order-read-model-2026-08-30")?.verificationSummary)
+      .toContain("ordered by phase.order");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],

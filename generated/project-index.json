@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "174263a38472eb74d456b5fccd6cfa66d7b18f296b855e63fac1e640364f4e10",
+  "sourceDigest": "828e1ddc971df0f7cc1a4ba5327315c2111d1ea2f648dbea80c6b6367234a675",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -356,7 +356,8 @@
       ],
       "evidenceIds": [
         "evidence-project-control-design",
-        "evidence-project-control-overview-history-gui-2026-08-29"
+        "evidence-project-control-overview-history-gui-2026-08-29",
+        "evidence-project-control-phase-order-read-model-2026-08-30"
       ],
       "repositoryIds": [
         "repo-project-control"
@@ -1745,7 +1746,7 @@
         "repo-editor"
       ],
       "workState": "in-progress",
-      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, and defining the Editor text-block authoring boundary before visible typing UI.",
+      "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, and adding memory-only active text-block island runtime state before visible typing UI.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -1758,20 +1759,23 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
       ],
       "activeRole": "cross-repo-boundary-reviewer",
-      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input.",
-      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects.",
+      "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
+      "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained until cleanup is handled with a safer dependency-link plan.",
       "requiredEvidence": [
         "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
         "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
         "evidence-editor-live-backend-rich-inline-harness-2026-08-30",
-        "evidence-editor-text-block-authoring-boundary-2026-08-30"
+        "evidence-editor-text-block-authoring-boundary-2026-08-30",
+        "evidence-editor-active-text-block-island-runtime-2026-08-30",
+        "evidence-project-control-phase-order-read-model-2026-08-30"
       ],
       "createdAt": "2026-08-30T05:38:00.000Z",
-      "updatedAt": "2026-08-30T06:46:02.000Z",
+      "updatedAt": "2026-08-30T07:10:56.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
-        "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary"
+        "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+        "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2825,6 +2829,34 @@
       "summary": "Done: the bounded browser compatibility claim is promoted only into a narrow child node and system-map entry, while FlowDoc remains planned and Core, Editor, and Backend remain unknown.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+      "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+      "title": "Define Active Text Block Island Runtime State",
+      "phaseState": "done",
+      "order": 30,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+        "The runtime state enables visible typing UI, WYSIWYG behavior, or direct canvas input binding.",
+        "The runtime state treats a browser-local draft as canonical document truth.",
+        "The runtime state bypasses the text-block authoring boundary, Backend mutation request shape, Backend revision gate, Core mutation result, or Editor stale-gated runtime apply path.",
+        "The runtime state allows commit while IME composition is active.",
+        "The runtime state discards a newer local draft after an older Backend rejection.",
+        "Focused or full Editor gates fail after the runtime state is added.",
+        "Cleanup side effects leave Core, Backend, Editor, or Project Control dirty or unverified."
+      ],
+      "verificationTarget": "Editor defines tested memory-only active text-block island runtime state that opens one active text block at a time, tracks local draft revision and IME state, builds a Core-validated Backend rich-inline replacement request only through the authoring boundary, and preserves newer local drafts after stale rejection without enabling visible text input.",
+      "summary": "Done: Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 defines the memory-only active text-block island runtime state in code and docs, passes focused and full Editor gates on worktree and main, and leaves visible typing UI, WYSIWYG behavior, and broad frontend readiness unpromoted.",
+      "createdAt": "2026-08-30T07:10:56.000Z",
+      "updatedAt": "2026-08-30T07:10:56.000Z"
     },
     {
       "kind": "phase",
@@ -5236,6 +5268,86 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+      "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+      "title": "Active Text Block Island Runtime State Checklist",
+      "items": [
+        {
+          "id": "capture-active-island-runtime-context",
+          "label": "Capture the current Project Control, terminology, Editor boundary, and runtime state context before implementation.",
+          "state": "passed",
+          "evidenceTarget": "Project Control entrypoint, terminology, Editor AGENTS.md, existing text-block authoring boundary, backend rich-inline request shape, and Editor runtime state modules are reviewed.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "Reviewed Project Control AGENTS.md, the active 8h Work record, FlowDoc terminology docs, Editor AGENTS.md, docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md, src/editor/draft/textBlockAuthoringBoundary.ts, src/editor/backend/backendMutationRequests.ts, and adjacent Editor runtime state modules before editing."
+        },
+        {
+          "id": "verify-editor-baseline",
+          "label": "Verify the Editor baseline before adding runtime state.",
+          "state": "passed",
+          "evidenceTarget": "A clean Editor feature worktree passes npm run check before implementation.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "The Editor worktree fd-ed-ati-0830 installed dependencies with npm ci and the baseline npm run check passed type-check, 91 test files with 316 tests, and build; npm audit reported 5 existing high severity vulnerabilities and Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "write-focused-red",
+          "label": "Write a focused failing test for memory-only active text-block island runtime behavior.",
+          "state": "passed",
+          "evidenceTarget": "The focused test fails because the runtime state module does not exist yet.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "npx vitest run src/tests/activeTextBlockIsland.test.ts failed because ../editor/draft/activeTextBlockIsland could not be found."
+        },
+        {
+          "id": "implement-runtime-state",
+          "label": "Implement only the tested memory-only active text-block island runtime state and boundary docs.",
+          "state": "passed",
+          "evidenceTarget": "The implementation adds runtime state helpers without React component, canvas text input, WYSIWYG behavior, Backend file, or Core file changes.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 adds src/editor/draft/activeTextBlockIsland.ts, src/tests/activeTextBlockIsland.test.ts, and updates docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md. It opens one active text-block draft at a time, clones local rich-inline children, tracks local draft revision and IME state, builds Backend rich-inline replacement requests through the authoring boundary, and records stale rejection without discarding newer local draft state."
+        },
+        {
+          "id": "prove-focused-green",
+          "label": "Prove the runtime behavior with focused tests and existing boundary guard tests.",
+          "state": "passed",
+          "evidenceTarget": "The focused runtime test, text-block boundary test, and existing source boundary guard all pass.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "npx vitest run src/tests/activeTextBlockIsland.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts passed 3 test files and 11 tests."
+        },
+        {
+          "id": "verify-editor-owner-gates",
+          "label": "Run full Editor gates in the worktree and after merging to main.",
+          "state": "passed",
+          "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 92 test files with 319 tests, and build; Vite retained the existing chunk-size warning."
+        },
+        {
+          "id": "register-cleanup-risk",
+          "label": "Record cleanup risk and verify repository status before Project Control registration.",
+          "state": "passed",
+          "evidenceTarget": "Editor and Core status are clean, and the retained Editor worktree cleanup risk is recorded instead of hidden.",
+          "evidenceIds": [
+            "evidence-editor-active-text-block-island-runtime-2026-08-30"
+          ],
+          "verificationNote": "Editor main and Core status were clean after the Editor main gate. The feature worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 was intentionally retained because the previous Editor worktree cleanup exposed dependency-link side effects that deleted Core tracked files under packages/text-engine-rust-wasm. The older residual folder C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 also remains on disk and is still tracked as cleanup risk."
+        }
+      ],
+      "createdAt": "2026-08-30T07:10:56.000Z",
+      "updatedAt": "2026-08-30T07:10:56.000Z"
     },
     {
       "kind": "checklist",
@@ -8259,6 +8371,16 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-editor-active-text-block-island-runtime-2026-08-30",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5",
+      "pathOrContractId": "src/editor/draft/activeTextBlockIsland.ts",
+      "verificationSummary": "Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 defines a tested memory-only active text-block island runtime state. It adds src/editor/draft/activeTextBlockIsland.ts, src/tests/activeTextBlockIsland.test.ts, and updates docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md. The runtime opens one active text-block draft at a time through the text-block authoring boundary, clones rich-inline children into browser-local draft state, tracks the Core base revision and local draft revision, tracks IME composition state, blocks commit while IME composition is active, validates rich-inline payloads through the Core adapter before building a Backend text-block.rich-inline.replace request, blocks commit when the opened base revision no longer matches the current Core document revision, and records rejected commit evidence without discarding a newer local draft. The accepted RED was npx vitest run src/tests/activeTextBlockIsland.test.ts failing because ../editor/draft/activeTextBlockIsland was missing. Focused GREEN passed npx vitest run src/tests/activeTextBlockIsland.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts with 3 test files and 11 tests. Editor worktree npm run check passed type-check, 92 test files with 319 tests, and build; merged Editor main npm run check passed the same gate. This evidence does not enable visible text input, WYSIWYG behavior, contenteditable runtime, field-chip input, rich-inline flattening, React canvas input binding, collaboration, durable draft persistence, production Backend readiness, deployed compatibility, large-document authoring performance, accessibility readiness, exact layout, export parity, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. npm ci reported 5 existing high severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane. The feature worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 was intentionally retained because previous Editor worktree cleanup exposed dependency-link side effects that deleted Core tracked files under packages/text-engine-rust-wasm. The older residual folder C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 remains on disk and is still tracked as cleanup risk.",
+      "verifiedAt": "2026-08-30T07:10:56.000Z"
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-editor-backend-core-live-compatibility-harness-2026-08-27",
       "nodeIds": [],
       "repositoryId": "repo-editor",
@@ -8730,6 +8852,18 @@
       "pathOrContractId": "app/src/components/ControlRoom.tsx; app/src/App.test.tsx; app/src/accessibility.test.tsx; tests/vite-server.test.ts; tests/e2e/project-control.spec.ts",
       "verificationSummary": "Worktree npm run check passed on 2026-08-29: 48 unit test files / 319 unit tests passed, production build passed, and 6 e2e tests passed. This supports bounded Project Control GUI behavior for Repo Directory Overview and Work History View and does not promote Core, Backend, or Editor truth.",
       "verifiedAt": "2026-08-29T04:53:09.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-project-control-phase-order-read-model-2026-08-30",
+      "nodeIds": [
+        "project-control"
+      ],
+      "repositoryId": "repo-project-control",
+      "commit": "0e0c5fd617ac4618a4a03066a0dd719ce658380c",
+      "pathOrContractId": "tools/lib/build-read-model.ts",
+      "verificationSummary": "Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c changes buildProjectReadModel so work.phaseIds are grouped by workId and ordered by phase.order, then title, then id, instead of being sorted only by id. This was exposed while adding the third phase under flowdoc-core-backend-editor-readiness-pass-8h: id sorting placed the active text-block island runtime phase before the earlier Core/Backend and text-block boundary phases even though its order is 30. Focused verification passed npx vitest run tests/project-roadmap-work-queue.test.ts with 1 test file and 2 tests after the ordering fix and new evidence records were present. This evidence supports only Project Control read-model ordering for phaseIds; it does not promote Core, Backend, Editor, FlowDoc product truth, or frontend readiness.",
+      "verifiedAt": "2026-08-30T07:10:56.000Z"
     },
     {
       "kind": "evidence",

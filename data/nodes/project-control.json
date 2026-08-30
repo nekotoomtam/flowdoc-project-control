@@ -7,6 +7,6 @@
   "truthState": "current",
   "order": 40,
   "documentIds": ["doc-project-control-overview", "doc-project-control-design", "doc-agent-skill-operating-model", "doc-flowdoc-round-workflow", "doc-work-tree-operating-rules", "doc-flowdoc-role-catalog", "doc-document-map-operating-rules", "doc-project-control-agent-onboarding", "doc-flowdoc-global-codex-guidance", "doc-project-control-repo-first-overview-history-2026-08-28", "doc-project-control-overview-history-gui-2026-08-29"],
-  "evidenceIds": ["evidence-project-control-design", "evidence-project-control-overview-history-gui-2026-08-29"],
+  "evidenceIds": ["evidence-project-control-design", "evidence-project-control-overview-history-gui-2026-08-29", "evidence-project-control-phase-order-read-model-2026-08-30"],
   "repositoryIds": ["repo-project-control"]
 }

@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
   "workState": "in-progress",
-  "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, and defining the Editor text-block authoring boundary before visible typing UI.",
+  "summary": "Execute an eight-hour bounded readiness pass before deeper Editor/frontend implementation, starting by reconciling Core fixture state, proving the Backend owner gate against the actual sibling Core checkout, adding bounded Editor live Backend rich-inline harness evidence, defining the Editor text-block authoring boundary, and adding memory-only active text-block island runtime state before visible typing UI.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -20,14 +20,16 @@
     "doc-flowdoc-core-backend-readiness-matrix-2026-08-27"
   ],
   "activeRole": "cross-repo-boundary-reviewer",
-  "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input.",
-  "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects.",
+  "expectedOutput": "A phased readiness pass that records exact Core, Backend, and Editor evidence before frontend implementation continues. The first completed slice restores the missing Core PDF fixture working-tree state with explicit user approval, verifies Core and Backend owner gates, and keeps broad product readiness unpromoted. The second completed slice records Editor commit 3b592b48765337efdbd6da539130d2daae1349bc as a bounded live Backend rich-inline harness only. The third completed slice records Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 as the tested text-block authoring boundary without enabling active text input. The fourth completed slice records Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 as tested memory-only active text-block island runtime state without visible canvas input binding. Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c also keeps Work phaseIds ordered by phase.order so this multi-phase Work remains readable in overview consumers.",
+  "riskSummary": "This Work record is an execution thread, not product truth. It does not promote FlowDoc, Core, Backend, or Editor readiness; production Backend readiness, deployed compatibility, broad corpus coverage, performance, accessibility, visual regression, text-block authoring UX, WYSIWYG behavior, active text input, contenteditable runtime, React canvas input binding, durable draft persistence, and full frontend redesign remain unresolved until separately verified. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this pass. Windows worktree cleanup left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk after Filename too long; it is no longer registered as a Git worktree, but manual deletion was intentionally avoided after repeat dependency-link side effects. The Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 is intentionally retained until cleanup is handled with a safer dependency-link plan.",
   "requiredEvidence": [
     "evidence-core-pdf-fixture-state-reconciliation-2026-08-30",
     "evidence-backend-core-gate-after-fixture-reconciliation-2026-08-30",
     "evidence-editor-live-backend-rich-inline-harness-2026-08-30",
-    "evidence-editor-text-block-authoring-boundary-2026-08-30"
+    "evidence-editor-text-block-authoring-boundary-2026-08-30",
+    "evidence-editor-active-text-block-island-runtime-2026-08-30",
+    "evidence-project-control-phase-order-read-model-2026-08-30"
   ],
   "createdAt": "2026-08-30T05:38:00.000Z",
-  "updatedAt": "2026-08-30T06:46:02.000Z"
+  "updatedAt": "2026-08-30T07:10:56.000Z"
 }

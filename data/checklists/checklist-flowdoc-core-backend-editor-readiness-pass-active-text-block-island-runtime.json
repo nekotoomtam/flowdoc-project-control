@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+  "title": "Active Text Block Island Runtime State Checklist",
+  "items": [
+    {
+      "id": "capture-active-island-runtime-context",
+      "label": "Capture the current Project Control, terminology, Editor boundary, and runtime state context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, terminology, Editor AGENTS.md, existing text-block authoring boundary, backend rich-inline request shape, and Editor runtime state modules are reviewed.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "Reviewed Project Control AGENTS.md, the active 8h Work record, FlowDoc terminology docs, Editor AGENTS.md, docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md, src/editor/draft/textBlockAuthoringBoundary.ts, src/editor/backend/backendMutationRequests.ts, and adjacent Editor runtime state modules before editing."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline before adding runtime state.",
+      "state": "passed",
+      "evidenceTarget": "A clean Editor feature worktree passes npm run check before implementation.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "The Editor worktree fd-ed-ati-0830 installed dependencies with npm ci and the baseline npm run check passed type-check, 91 test files with 316 tests, and build; npm audit reported 5 existing high severity vulnerabilities and Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write a focused failing test for memory-only active text-block island runtime behavior.",
+      "state": "passed",
+      "evidenceTarget": "The focused test fails because the runtime state module does not exist yet.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/activeTextBlockIsland.test.ts failed because ../editor/draft/activeTextBlockIsland could not be found."
+    },
+    {
+      "id": "implement-runtime-state",
+      "label": "Implement only the tested memory-only active text-block island runtime state and boundary docs.",
+      "state": "passed",
+      "evidenceTarget": "The implementation adds runtime state helpers without React component, canvas text input, WYSIWYG behavior, Backend file, or Core file changes.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 adds src/editor/draft/activeTextBlockIsland.ts, src/tests/activeTextBlockIsland.test.ts, and updates docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md. It opens one active text-block draft at a time, clones local rich-inline children, tracks local draft revision and IME state, builds Backend rich-inline replacement requests through the authoring boundary, and records stale rejection without discarding newer local draft state."
+    },
+    {
+      "id": "prove-focused-green",
+      "label": "Prove the runtime behavior with focused tests and existing boundary guard tests.",
+      "state": "passed",
+      "evidenceTarget": "The focused runtime test, text-block boundary test, and existing source boundary guard all pass.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/activeTextBlockIsland.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts passed 3 test files and 11 tests."
+    },
+    {
+      "id": "verify-editor-owner-gates",
+      "label": "Run full Editor gates in the worktree and after merging to main.",
+      "state": "passed",
+      "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 92 test files with 319 tests, and build; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup risk and verify repository status before Project Control registration.",
+      "state": "passed",
+      "evidenceTarget": "Editor and Core status are clean, and the retained Editor worktree cleanup risk is recorded instead of hidden.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-runtime-2026-08-30"],
+      "verificationNote": "Editor main and Core status were clean after the Editor main gate. The feature worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 was intentionally retained because the previous Editor worktree cleanup exposed dependency-link side effects that deleted Core tracked files under packages/text-engine-rust-wasm. The older residual folder C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 also remains on disk and is still tracked as cleanup risk."
+    }
+  ],
+  "createdAt": "2026-08-30T07:10:56.000Z",
+  "updatedAt": "2026-08-30T07:10:56.000Z"
+}

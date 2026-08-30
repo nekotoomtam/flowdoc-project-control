@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-runtime",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Define Active Text Block Island Runtime State",
+  "phaseState": "done",
+  "order": 30,
+  "repositoryIds": ["repo-editor", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The runtime state enables visible typing UI, WYSIWYG behavior, or direct canvas input binding.",
+    "The runtime state treats a browser-local draft as canonical document truth.",
+    "The runtime state bypasses the text-block authoring boundary, Backend mutation request shape, Backend revision gate, Core mutation result, or Editor stale-gated runtime apply path.",
+    "The runtime state allows commit while IME composition is active.",
+    "The runtime state discards a newer local draft after an older Backend rejection.",
+    "Focused or full Editor gates fail after the runtime state is added.",
+    "Cleanup side effects leave Core, Backend, Editor, or Project Control dirty or unverified."
+  ],
+  "verificationTarget": "Editor defines tested memory-only active text-block island runtime state that opens one active text block at a time, tracks local draft revision and IME state, builds a Core-validated Backend rich-inline replacement request only through the authoring boundary, and preserves newer local drafts after stale rejection without enabling visible text input.",
+  "summary": "Done: Editor commit 24219dc0d6e5ec79368c82b159b37e3f9a0b9ed5 defines the memory-only active text-block island runtime state in code and docs, passes focused and full Editor gates on worktree and main, and leaves visible typing UI, WYSIWYG behavior, and broad frontend readiness unpromoted.",
+  "createdAt": "2026-08-30T07:10:56.000Z",
+  "updatedAt": "2026-08-30T07:10:56.000Z"
+}

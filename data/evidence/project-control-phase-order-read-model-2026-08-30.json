@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-project-control-phase-order-read-model-2026-08-30",
+  "nodeIds": ["project-control"],
+  "repositoryId": "repo-project-control",
+  "commit": "0e0c5fd617ac4618a4a03066a0dd719ce658380c",
+  "pathOrContractId": "tools/lib/build-read-model.ts",
+  "verificationSummary": "Project Control commit 0e0c5fd617ac4618a4a03066a0dd719ce658380c changes buildProjectReadModel so work.phaseIds are grouped by workId and ordered by phase.order, then title, then id, instead of being sorted only by id. This was exposed while adding the third phase under flowdoc-core-backend-editor-readiness-pass-8h: id sorting placed the active text-block island runtime phase before the earlier Core/Backend and text-block boundary phases even though its order is 30. Focused verification passed npx vitest run tests/project-roadmap-work-queue.test.ts with 1 test file and 2 tests after the ordering fix and new evidence records were present. This evidence supports only Project Control read-model ordering for phaseIds; it does not promote Core, Backend, Editor, FlowDoc product truth, or frontend readiness.",
+  "verifiedAt": "2026-08-30T07:10:56.000Z"
+}
