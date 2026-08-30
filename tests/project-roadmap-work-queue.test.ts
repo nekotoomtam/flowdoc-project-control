@@ -335,6 +335,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-add-node-contract",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate",
+        checklistLength: 7,
+      },
     ],
   },
   {

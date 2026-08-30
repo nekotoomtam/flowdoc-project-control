@@ -1,0 +1,78 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate",
+  "title": "Backend Add Node Transport Gate Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Backend, Core, and Editor capability context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Backend AGENTS.md, Core AGENTS.md, Core cross-repo map, Editor AGENTS.md, Core operation commands, Backend mutation contracts, and Editor capability parser are reviewed.",
+      "evidenceIds": [
+        "evidence-backend-add-node-transport-gate-2026-08-30",
+        "evidence-editor-add-node-capability-compatibility-2026-08-30"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-backend with bounded repo-editor compatibility, phase-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate, checklist-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate, and evidence targets before edits."
+    },
+    {
+      "id": "verify-backend-baseline",
+      "label": "Verify the Backend baseline in an isolated worktree before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Backend worktree C:/Users/nekot/Documents/GitHub/fd-be-anc-0830 is created from main and passes npm run check before add-node transport changes.",
+      "evidenceIds": ["evidence-backend-add-node-transport-gate-2026-08-30"],
+      "verificationNote": "Created branch backend-add-node-transport-20260830 from Backend main b9615c2dcede7a2289fa75c41fca19deafdba70e. Baseline npm run check passed type-check, Vitest with 89 passed test files, 1 skipped test file, 319 passed tests, 24 skipped tests, and build. npm install reported 2 high severity audit findings that were not remediated in this lane."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write focused failing Backend and Editor capability tests before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "Backend focused add-node tests fail before parser/service support; Editor capability test fails before the parser recognizes add-node operation kinds.",
+      "evidenceIds": [
+        "evidence-backend-add-node-transport-gate-2026-08-30",
+        "evidence-editor-add-node-capability-compatibility-2026-08-30"
+      ],
+      "verificationNote": "Backend npm test -- --run src/tests/contract.test.ts src/tests/mutationService.test.ts src/tests/httpServer.test.ts failed 5 tests because add-node operations were unsupported, insert target ids were undefined, HTTP returned 400, and document v4 insert threw a mapper error. Editor npm test -- --run src/tests/versionCapability.test.ts failed because the active capability response containing columns.insert and text-block.insert was parsed as invalid-response."
+    },
+    {
+      "id": "implement-backend-transport",
+      "label": "Implement Backend add-node transport for the active package/document pair.",
+      "state": "passed",
+      "evidenceTarget": "Backend parses columns.insert and text-block.insert, validates text-block payloads through Core schema, maps accepted operations to Core active document mutations, preserves revision/idempotency envelopes, and advertises only active add-node support.",
+      "evidenceIds": ["evidence-backend-add-node-transport-gate-2026-08-30"],
+      "verificationNote": "Backend commit fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08 updates src/contracts/mutation.ts, src/core/coreOperationMapper.ts, src/service/mutationService.ts, and src/contracts/versionCapability.ts. Document v4 insert requests return unsupported-version at operation.kind because Core document v4 operation support remains node delete, duplicate, and reorder only."
+    },
+    {
+      "id": "implement-editor-capability-compatibility",
+      "label": "Update Editor capability parsing without activating add-node UI.",
+      "state": "passed",
+      "evidenceTarget": "Editor recognizes active Backend add-node operation kinds in capability responses while existing live Backend compatibility remains rollout-safe.",
+      "evidenceIds": ["evidence-editor-add-node-capability-compatibility-2026-08-30"],
+      "verificationNote": "Editor commit 623d91f204803cb9ac8d7ab7a71246326b77ef78 updates src/editor/backend/backendVersionCapability.ts and src/tests/versionCapability.test.ts to recognize columns.insert and text-block.insert. Active compatibility still requires only node delete, duplicate, and reorder, so the live compatibility harness remains compatible with the previous Backend package during rollout."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused, worktree, and merged-main Backend and Editor gates.",
+      "state": "passed",
+      "evidenceTarget": "Backend focused add-node tests, Backend worktree/main npm run check, Editor focused capability tests, and Editor worktree/main npm run check all pass.",
+      "evidenceIds": [
+        "evidence-backend-add-node-transport-gate-2026-08-30",
+        "evidence-editor-add-node-capability-compatibility-2026-08-30"
+      ],
+      "verificationNote": "Backend focused GREEN passed 4 files and 21 tests. Backend worktree and merged-main npm run check both passed type-check, Vitest with 89 passed test files, 1 skipped test file, 324 passed tests, 24 skipped tests, and build. Editor focused GREEN passed 1 file and 7 tests. Editor worktree and merged-main npm run check both passed type-check, Vitest with 96 passed test files and 332 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup blockers and unpromoted product claims honestly.",
+      "state": "passed",
+      "evidenceTarget": "Merged branches are deleted, worktree metadata is removed, leftover folders and unresolved product claims are recorded as risk instead of hidden.",
+      "evidenceIds": [
+        "evidence-backend-add-node-transport-gate-2026-08-30",
+        "evidence-editor-add-node-capability-compatibility-2026-08-30"
+      ],
+      "verificationNote": "Backend and Editor main were fast-forwarded to fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08 and 623d91f204803cb9ac8d7ab7a71246326b77ef78 respectively. Branches backend-add-node-transport-20260830 and editor-add-node-capability-20260830 were deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-be-anc-0830 and C:/Users/nekot/Documents/GitHub/fd-ed-anc-cap-0830 was removed, but both folders remain on disk after git worktree remove failed with Filename too long and direct recursive deletion was blocked by the local tool policy. The older C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 worktree remains intentionally retained detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c."
+    }
+  ],
+  "createdAt": "2026-08-30T11:31:05.254Z",
+  "updatedAt": "2026-08-30T11:31:05.254Z"
+}

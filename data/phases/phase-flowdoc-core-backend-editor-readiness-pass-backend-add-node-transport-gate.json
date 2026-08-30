@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-backend-add-node-transport-gate",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Backend Add Node Transport Gate",
+  "phaseState": "done",
+  "order": 80,
+  "repositoryIds": ["repo-backend", "repo-editor", "repo-core", "repo-project-control"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Backend accepts add-node payloads without Core-owned operation schemas or Core-owned active document semantics.",
+    "Backend advertises package 3/document 4 insert operations while Core document v4 insert semantics remain unavailable.",
+    "Editor treats Backend add-node capability support as permission to enable visible add-node UI, WYSIWYG behavior, active text input, or durable draft persistence.",
+    "Focused, worktree, or merged-main Backend and Editor gates fail after add-node transport or capability parser changes.",
+    "Project Control registration promotes broad Core, Backend, Editor, frontend, add-node UI, WYSIWYG, production, deployed, or FlowDoc product readiness from this bounded evidence."
+  ],
+  "verificationTarget": "Backend parses and executes active package columns.insert and text-block.insert through the existing mutation HTTP/service revision and idempotency envelope, advertises only active pair add-node operation support, rejects document v4 inserts explicitly, and Editor capability parsing accepts the new active operation kinds without UI activation.",
+  "summary": "Done: Backend commit fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08 adds active package columns.insert and text-block.insert transport, Core mapping, explicit document v4 rejection, capability advertising, and focused plus full gate coverage. Editor commit 623d91f204803cb9ac8d7ab7a71246326b77ef78 updates the capability parser to recognize the new active operation kinds while keeping rollout-safe compatibility and without enabling visible add-node UI or WYSIWYG behavior.",
+  "createdAt": "2026-08-30T11:31:05.254Z",
+  "updatedAt": "2026-08-30T11:31:05.254Z"
+}
