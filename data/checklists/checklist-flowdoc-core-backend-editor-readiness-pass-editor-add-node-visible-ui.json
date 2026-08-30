@@ -58,9 +58,9 @@
       "state": "passed",
       "evidenceTarget": "Merged branch is deleted when safe, leftover folder state is recorded, and unresolved frontend/product claims remain risk or unknown instead of map truth.",
       "evidenceIds": ["evidence-editor-add-node-visible-ui-2026-08-30"],
-      "verificationNote": "Editor main was fast-forwarded to 10ee27089114400468a2faa586997b1bcb15abc9 and branch fd-ed-anui-0830 was deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-ed-anui-0830 is no longer registered, but the folder remains on disk after git worktree remove failed with Filename too long; direct recursive deletion was intentionally avoided. Older cleanup risks remain separate and unmodified."
+      "verificationNote": "Editor main was fast-forwarded to 10ee27089114400468a2faa586997b1bcb15abc9 and branch fd-ed-anui-0830 was deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-ed-anui-0830 is no longer registered, but the folder remains on disk after git worktree remove failed with Filename too long; direct recursive deletion was intentionally avoided. A post-cleanup sanity check showed tracked Core deletions under packages/text-engine-rust-wasm, matching the known dependency-link cleanup side-effect shape; those exact tracked paths were restored from HEAD and Core status returned clean. Older cleanup risks remain separate and unmodified."
     }
   ],
   "createdAt": "2026-08-30T14:26:12.514Z",
-  "updatedAt": "2026-08-30T14:26:12.514Z"
+  "updatedAt": "2026-08-30T14:50:44.337Z"
 }
