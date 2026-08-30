@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux",
+  "title": "Editor Text Block Editing UX Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, Core AGENTS.md, Backend AGENTS.md, and the bounded visible text-block editing UX target are reviewed before implementation.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core references, phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux, checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux, and evidence target evidence-editor-text-block-editing-ux-2026-08-31 before edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor tests before changing text-block editing UX behavior.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before dirty-state cleanup, save-rejection recovery, multiline row display, live smoke fixture update, and Core v4 line-break normalization are implemented.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "RED evidence included focused Editor failures for draft clean-state return, rejection clearing after a new edit, stale live smoke multiline fixture expectations, paper textarea rows/status data, and raw CR/LF text-run replacement before line-break atomic normalization existed."
+    },
+    {
+      "id": "normalize-line-breaks",
+      "label": "Normalize textarea hard line breaks into Core document v4 inline atomics.",
+      "state": "passed",
+      "evidenceTarget": "The Editor text-block inline draft adapter stores hard line breaks as document v4 line-break inline children and reconstructs multiline textarea text from text plus line-break atomics.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "Editor commit a42409a31cb855331e5114a52bc3d07d75cb67e6 updates textBlockInlineDraftAdapter to expose the editable text/line-break range, split textarea CR/LF into Core v4 line-break atomics, preserve trailing field-ref children, and read multiline text back from inline atomics."
+    },
+    {
+      "id": "harden-dirty-and-rejected-state",
+      "label": "Harden dirty-state and rejected-save recovery for the active text-block island.",
+      "state": "passed",
+      "evidenceTarget": "Drafts become clean when their inline children match the Backend value again, and rejected save state clears after the user makes another edit.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "useActiveTextBlockEditing compares normalized draft children against the Backend source children and disables Save when they match; activeTextBlockIsland replacement accepts status override so a new edit clears lastRejected and returns to dirty local state."
+    },
+    {
+      "id": "render-multiline-textarea-state",
+      "label": "Render bounded multiline textarea rows and visible editing status.",
+      "state": "passed",
+      "evidenceTarget": "PaperTextBlockEditor exposes bounded row count, dirty/pending data state, and status text for unsaved, blocked, or failed save states without contenteditable.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "PaperTextBlockEditor adds resolveTextBlockTextareaRows with hard-line and soft-wrap bounds, data-text-block-dirty and data-text-block-pending attributes, and a status label while preserving the existing textarea island rather than switching to contenteditable."
+    },
+    {
+      "id": "prove-live-backend-multiline-smoke",
+      "label": "Prove multiline save and reload through a live local Backend browser smoke.",
+      "state": "passed",
+      "evidenceTarget": "The browser smoke types multiline text through the visible textarea, saves by text-block.rich-inline.replace, reloads from Backend api transport, reconstructs the multiline value, and records rows after typing and reload.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "The updated live smoke uses browser text insertion for Visible text block editor plus three lines, records textareaRowsAfterTyping and textareaRowsAfterReload as 4, reconstructs saved text from text and line-break inline children, and still verifies contentEditableCount 0."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup risks remain explicit.",
+      "evidenceIds": ["evidence-editor-text-block-editing-ux-2026-08-31"],
+      "verificationNote": "Editor worktree and merged main passed the focused 5-file/18-test gate, npm run check with 102 test files and 354 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-text-ux-0831 was deleted after fast-forward merge, but C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-text-ux-0831 remains on disk after git worktree remove failed with Directory not empty; Git no longer lists it as a worktree. Older retained cleanup risks remain separate."
+    }
+  ],
+  "createdAt": "2026-08-30T17:41:00.000Z",
+  "updatedAt": "2026-08-30T17:41:00.000Z"
+}

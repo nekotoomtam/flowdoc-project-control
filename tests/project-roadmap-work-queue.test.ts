@@ -5,6 +5,7 @@ import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 const timestamp = "2026-08-24T00:00:00.000Z";
 const resumptionTimestamp = "2026-08-26T00:00:00.000Z";
 const editorVisibleTextBlockTypingCommit = "6f59f7269322abfe3428d4df6f4ba0ee6ab0078f";
+const editorTextBlockEditingUxCommit = "a42409a31cb855331e5114a52bc3d07d75cb67e6";
 
 const expectedLegacyWork = [
   {
@@ -358,6 +359,12 @@ const remediationTasks = [
         phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
         phaseState: "done",
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
+        checklistLength: 7,
+      },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux",
         checklistLength: 7,
       },
     ],
@@ -812,6 +819,19 @@ describe("project roadmap Work Queue", () => {
     expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30")?.verificationSummary)
       .toContain("text-block.rich-inline.replace");
     expect(model.evidence.find((item) => item.id === "evidence-editor-visible-text-block-typing-2026-08-30")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-editing-ux-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorTextBlockEditingUxCommit,
+        pathOrContractId: "src/editor/draft/textBlockInlineDraftAdapter.ts; src/app/useActiveTextBlockEditing.ts; src/editor/draft/activeTextBlockIsland.ts; src/components/paper/PaperTextBlockEditor.tsx; scripts/run-editor-browser-live-backend-smoke.mjs; src/fixtures/editor-browser-live-backend-smoke.v1.json; src/tests/textBlockInlineDraftAdapter.test.ts; src/tests/activeTextBlockEditingHook.test.ts; src/tests/activeTextBlockIsland.test.ts; src/tests/paperTextBlockEditor.test.ts; src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-editing-ux-2026-08-31")?.verificationSummary)
+      .toContain("line-break inline atomics");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-editing-ux-2026-08-31")?.verificationSummary)
+      .toContain("draft returns to the Backend value");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-editing-ux-2026-08-31")?.verificationSummary)
       .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
