@@ -135,6 +135,13 @@ describe("FlowDoc documentation authority policy", () => {
     expect(operatingModel).toContain("Documentation authority boundary");
     expect(operatingModel).toContain("Project Control remains the canonical home for FlowDoc-wide shared understanding");
 
+    const roleCatalog = normalize(documents.get("doc-flowdoc-role-catalog")?.content);
+    expect(roleCatalog).toContain("Documentation Authority For Roles");
+    expect(roleCatalog).toContain("Product Implementation Agent must not create product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide truth");
+    expect(roleCatalog).toContain("Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation");
+    expect(roleCatalog).toContain("Documentation Synthesizer writes shared summaries in Project Control, not in product-repository superpowers files");
+    expect(roleCatalog).toContain("agent handoff must name the Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state");
+
     expect(evidence.get(EVIDENCE_ID)).toMatchObject({
       nodeIds: [],
       repositoryId: "repo-project-control",

@@ -20,6 +20,36 @@ Each role answers four questions:
 - Read first: local context the role should inspect before acting.
 - Handoff: what the role must report when it stops.
 
+## Documentation Authority For Roles
+
+These rules apply before any role creates, updates, migrates, or deletes
+FlowDoc Markdown.
+
+- Project Control Steward owns shared Work, Phase, Checklist, Evidence,
+  Document, Repository, and Node records. The steward keeps shared truth in
+  Project Control and regenerates the read model from canonical sources.
+- Documentation Synthesizer writes shared summaries in Project Control, not in
+  product-repository superpowers files. It may retire repo-local Markdown only
+  after retained value, source evidence, or discard rationale is recorded.
+- Product Implementation Agent must not create product-repository
+  `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide
+  truth. Repo-local Markdown may remain only when it is code-adjacent,
+  repository-owned, or historical, and surviving repo-local Markdown should
+  carry an Authority Boundary.
+- Planning Partner must put broad plans in Project Control Work, Phase,
+  Checklist, and Evidence targets before implementation. A plan is not
+  evidence and must not be used as proof that a feature is current.
+- Evidence Reviewer checks whether a claim has a repository id, exact commit,
+  path or contract id, verification summary, and unresolved-risk boundary
+  before recommending any truth-state change.
+- Cross-Repo Boundary Reviewer rejects documentation that blends Project
+  Control Node truth, Core runtime truth, Backend service truth, and Editor UI
+  truth into one unqualified claim.
+- Lane Reconciliation Reviewer records retain, merge, discard, or cleanup
+  rationale before removing old worktrees or branches.
+- Every agent handoff must name the Work path, owner repository, active role,
+  Phase target, Checklist target, Evidence target, risks, and unknown state.
+
 ## Project Control Steward
 
 Responsibility:
