@@ -1,0 +1,26 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Large Structure Performance Gate",
+  "phaseState": "done",
+  "order": 220,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing.",
+    "The performance evidence does not measure 100, 1000, and 5000 visible Outline item synthetic documents.",
+    "The 1000-node gate exceeds any hard threshold for render projection, add-action projection, selection plus zoom projection, Structure render time, Structure markup size, or rendered Structure rows.",
+    "The 5000-node scenario is presented as production readiness instead of exploratory local synthetic evidence.",
+    "The implementation optimizes code without a measured bottleneck or without retaining replayable fixture evidence.",
+    "The smoke rewrites evidence during no-write replay.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table/cell/column authoring, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor records a bounded local synthetic large-document performance gate for render projection, add-action projection, selection plus zoom projection, and Structure panel markup/rendering, with hard thresholds at 1000 visible Outline items and exploratory evidence at 5000 visible Outline items.",
+  "summary": "Done: Editor merge commit c0970d6fd2fd50a04c1aecdfb4a394440636108a records a bounded large Structure performance gate. The gate adds a replayable synthetic smoke script, fixture, and Vitest assertions for 100, 1000, and 5000 visible text-block structures. The 1000-node hard gate recorded render projection 7.527ms, add-action projection 62.878ms, selection plus zoom projection 0.126ms, Structure render 89.266ms, 66298 Structure markup bytes, and 61 rendered Structure rows. The 5000-node scenario recorded render projection 11.183ms, add-action projection 143.814ms, Structure render 117.022ms, 66492 Structure markup bytes, and remains exploratory. This does not enable WYSIWYG behavior, contenteditable runtime, browser visual readiness, accessibility readiness, broad frontend readiness, product truth, or map truth.",
+  "createdAt": "2026-08-31T11:05:00.000Z",
+  "updatedAt": "2026-08-31T11:05:00.000Z"
+}

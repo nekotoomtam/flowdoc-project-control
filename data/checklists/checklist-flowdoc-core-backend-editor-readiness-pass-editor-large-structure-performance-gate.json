@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate",
+  "title": "Editor Large Structure Performance Gate Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor owner, and old roadmap context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, active role, current phase, checklist target, evidence target, terminology docs, Editor AGENTS.md, and the old large-document performance task are identified before editing.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, Project Control record owner repo-project-control, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate, and evidence target evidence-editor-large-structure-performance-gate-2026-08-31."
+    },
+    {
+      "id": "write-red-performance-test",
+      "label": "Write failing performance evidence tests before accepting the gate.",
+      "state": "passed",
+      "evidenceTarget": "The focused Editor performance test fails before replayable fixture evidence exists.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included npm run test -- src/tests/editorLargeStructurePerformance.test.ts failing because src/fixtures/editor-large-structure-smoke.v1.json did not exist."
+    },
+    {
+      "id": "generate-synthetic-fixture",
+      "label": "Generate replayable local synthetic large-structure fixture evidence.",
+      "state": "passed",
+      "evidenceTarget": "The smoke script creates src/fixtures/editor-large-structure-smoke.v1.json with 100, 1000, and 5000 visible-node samples.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "scripts/run-editor-large-structure-smoke.mjs generated fixture version editor-large-structure-smoke-v1 with 100, 1000, and 5000 visible text-block structure samples."
+    },
+    {
+      "id": "measure-thresholds",
+      "label": "Measure 1000-node hard thresholds for projection, add actions, selection plus zoom, and Structure rendering.",
+      "state": "passed",
+      "evidenceTarget": "The 1000-node sample stays within the hard limits for projection, add-action projection, selection plus zoom, Structure render time, Structure markup size, and rendered Structure row count.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "The 1000 visible-node fixture recorded render projection 7.527ms, add-action projection 62.878ms, selection plus zoom projection 0.126ms, Structure render 89.266ms, 66298 markup bytes, and 61 rendered Structure rows."
+    },
+    {
+      "id": "keep-5000-exploratory",
+      "label": "Keep the 5000-node scenario exploratory and bounded.",
+      "state": "passed",
+      "evidenceTarget": "The 5000-node sample is recorded as exploratory local synthetic evidence and does not promote broad readiness.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "The 5000 visible-node fixture recorded render projection 11.183ms, add-action projection 143.814ms, Structure render 117.022ms, 66492 markup bytes, 61 rendered Structure rows, and no soft threshold exceeded list while remaining explicitly exploratory."
+    },
+    {
+      "id": "verify-replay-main",
+      "label": "Verify the merged Editor main state and no-write replay.",
+      "state": "passed",
+      "evidenceTarget": "Merged Editor main passes the full check and the no-write performance smoke replay.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "Merged Editor main passed npm run check with 108 test files, 391 tests, and build. FLOWDOC_EVIDENCE_WRITE=0 node scripts/run-editor-large-structure-smoke.mjs passed with the recorded fixture metrics and did not rewrite fixture evidence."
+    },
+    {
+      "id": "record-project-control",
+      "label": "Record the bounded result in Project Control without promoting map truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the phase, checklist, and evidence target for the large Structure performance gate while preserving the bounded risk statements.",
+      "evidenceIds": [
+        "evidence-editor-large-structure-performance-gate-2026-08-31"
+      ],
+      "verificationNote": "Project Control record tests require the phase, checklist, evidence, Editor merge commit, 1000-node metrics, 5000-node exploratory wording, and WYSIWYG exclusion. The Project Control worktree passed the focused roadmap test with 1 file and 2 tests, then npm run check passed check:data, type-check, 59 Vitest files with 330 tests, build, and 6 Playwright e2e tests."
+    }
+  ],
+  "createdAt": "2026-08-31T11:05:00.000Z",
+  "updatedAt": "2026-08-31T11:05:00.000Z"
+}

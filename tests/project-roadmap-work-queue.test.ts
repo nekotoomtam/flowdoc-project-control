@@ -15,6 +15,7 @@ const editorColumnsAuthoringBoundaryCommit = "d9cc21fe2472bd1a611eb6f971b102f69d
 const editorTableAuthoringGateCommit = "87def6310b1ff061d999c6f4b336976e1a3852f0";
 const editorMediaUtilityNodeReadinessCommit = "80a46f03cc05a929ab0f67a8615236bf0908b8bc";
 const editorOverviewHistoryUxPlanCommit = "16b9ba43d42a2a2beebeca48caeb96d533101dac";
+const editorLargeStructurePerformanceGateCommit = "c0970d6fd2fd50a04c1aecdfb4a394440636108a";
 
 const expectedLegacyWork = [
   {
@@ -430,6 +431,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan",
         checklistLength: 6,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-large-structure-performance-gate",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -590,6 +597,8 @@ describe("project roadmap Work Queue", () => {
       .toContain("evidence-editor-media-utility-node-readiness-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
       .toContain("evidence-editor-overview-history-ux-plan-2026-08-31");
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
+      .toContain("evidence-editor-large-structure-performance-gate-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorStructureLargeDocumentNavigationPerformanceCommit);
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
@@ -602,6 +611,8 @@ describe("project roadmap Work Queue", () => {
       .toContain(editorMediaUtilityNodeReadinessCommit);
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorOverviewHistoryUxPlanCommit);
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
+      .toContain(editorLargeStructurePerformanceGateCommit);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -1049,6 +1060,23 @@ describe("project roadmap Work Queue", () => {
       .toContain("388 tests");
     expect(model.evidence.find((item) => item.id === "evidence-editor-overview-history-ux-plan-2026-08-31")?.verificationSummary)
       .toContain("Do not implement Overview or History UI");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorLargeStructurePerformanceGateCommit,
+        pathOrContractId: "scripts/run-editor-large-structure-smoke.mjs; src/fixtures/editor-large-structure-smoke.v1.json; src/tests/editorLargeStructurePerformance.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31")?.verificationSummary)
+      .toContain("large Structure performance gate");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31")?.verificationSummary)
+      .toContain("1000 projection 7.527ms");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31")?.verificationSummary)
+      .toContain("5000 exploratory");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31")?.verificationSummary)
+      .toContain("391 tests");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-large-structure-performance-gate-2026-08-31")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
