@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection",
+  "title": "Editor Canvas Text Descendant Selection Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, and the bounded canvas text descendant selection target are reviewed before implementation.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core references, phase-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection, checklist-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection, and evidence target evidence-editor-canvas-text-descendant-selection-2026-08-31 before edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor tests before changing preview text descendant selection behavior.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before canvas preview child text can select the exact editable text-block descendant, before PaperBlock exposes text descendant hit markers, and before the hit-test helper recognizes those markers.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "RED evidence included commands failure where canvas-text-descendant selection still normalized summary-left-text to summary-columns, paperTextBlockEditor failure for missing data-canvas-text-descendant-id, and selectionHitTest failure before hitTestCanvasTextDescendantTarget existed."
+    },
+    {
+      "id": "add-preview-text-descendant-hit-targets",
+      "label": "Expose selection-only hit markers for represented preview text descendants.",
+      "state": "passed",
+      "evidenceTarget": "PaperBlock marks composite preview text cells with data-canvas-text-descendant-id for editableTextDescendants without turning those descendants into independent renderable paper blocks.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "PaperBlock now derives descendant ids from editableTextDescendants by represented preview text order and adds data-canvas-text-descendant-id such as summary-left-text while preserving the owning surface data-node-id."
+    },
+    {
+      "id": "preserve-source-aware-selection",
+      "label": "Preserve exact child selection for canvas text descendant clicks while keeping canvas operations surface-based.",
+      "state": "passed",
+      "evidenceTarget": "PaperPageStack detects canvas text descendant targets before ordinary canvas hit testing, routes selection through source canvas-text-descendant, and keeps pointer drag/reorder surface-based.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "resolveEditorSelectionTargetForSource preserves exact editable text-block ids for outline and canvas-text-descendant sources, while ordinary canvas still resolves internal ids to the owning operation surface."
+    },
+    {
+      "id": "keep-backend-mutation-source-guarded",
+      "label": "Prevent canvas text descendant selection from becoming a Backend mutation source.",
+      "state": "passed",
+      "evidenceTarget": "Backend mutation request and add-node contract source types exclude canvas-text-descendant, and runtime request building rejects accidental use.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "EditorMutationCommandSource excludes canvas-text-descendant, add-node contracts use mutation-safe command sources, and backendMutationRequests rejects canvas-text-descendant with a dedicated error reason."
+    },
+    {
+      "id": "prove-live-backend-preview-smoke",
+      "label": "Prove preview child selection and Outline highlight through a live local Backend browser smoke.",
+      "state": "passed",
+      "evidenceTarget": "The browser smoke clicks a canvas preview text descendant, verifies selectedOutlineNodeIds contains the child id, reloads from live Backend, and verifies the same child id remains the selected Outline item.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "The retained smoke records selectionMethod canvas-text-descendant-preview, previewHitTargetPresent true, selectedOutlineNodeIds [summary-left-text], reloadedSelectedOutlineNodeIds [summary-left-text], then continues the existing live Backend reorder proof."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup risks remain explicit.",
+      "evidenceIds": ["evidence-editor-canvas-text-descendant-selection-2026-08-31"],
+      "verificationNote": "Editor worktree passed focused tests, type-check, live Backend browser smoke, and npm run check with 102 test files and 362 tests plus build. Merged Editor main passed npm run check and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-outline-selection-0831 was deleted after fast-forward merge. C:/Users/nekot/Documents/GitHub/fd-ed-outline-selection-0831 remains on disk after git worktree remove failed with Filename too long; Git no longer lists it as a worktree, and direct recursive deletion was intentionally avoided because node_modules contains junctions to Core packages. Cleanup briefly exposed Core tracked deletions under packages/text-engine-rust-wasm, those exact paths were restored from HEAD, and Core status returned clean."
+    }
+  ],
+  "createdAt": "2026-08-31T03:55:00.000Z",
+  "updatedAt": "2026-08-31T03:55:00.000Z"
+}
