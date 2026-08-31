@@ -10,6 +10,7 @@ const editorTextBearingNodeCoverageCommit = "3cc2cf9e008fa43bd0be491f4dc6ba83b04
 const editorCanvasTextDescendantSelectionCommit = "940b4dfc5f61fa551993c9c853c5c8aed0a986c5";
 const editorCompositePreviewChildVisualSelectionCommit = "7730a543fb572680144ed8252d9a20d28ce44b7d";
 const editorStructureLargeDocumentNavigationPerformanceCommit = "e1a2a9dc2d5b2a1557aa8838dc03aecece26d102";
+const editorTextBlockInsertToEditCommit = "5f7b0c0064b4a6d70bdc2d121138dd3fae7aba12";
 
 const expectedLegacyWork = [
   {
@@ -395,6 +396,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -545,8 +552,12 @@ describe("project roadmap Work Queue", () => {
     }
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
       .toContain("evidence-editor-structure-large-document-navigation-performance-2026-08-31");
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
+      .toContain("evidence-editor-text-block-insert-to-edit-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorStructureLargeDocumentNavigationPerformanceCommit);
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
+      .toContain(editorTextBlockInsertToEditCommit);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -918,6 +929,21 @@ describe("project roadmap Work Queue", () => {
     expect(model.evidence.find((item) => item.id === "evidence-editor-structure-large-document-navigation-performance-2026-08-31")?.verificationSummary)
       .toContain("367 tests");
     expect(model.evidence.find((item) => item.id === "evidence-editor-structure-large-document-navigation-performance-2026-08-31")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorTextBlockInsertToEditCommit,
+        pathOrContractId: "src/app/EditorApp.tsx; src/app/useBackendAddNodeMutation.ts; src/editor/draft/textBlockInlineDraftAdapter.ts; src/tests/activeTextBlockInsertToEdit.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
+      .toContain("insert-to-edit");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
+      .toContain("children: []");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
+      .toContain("370 tests");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
       .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
