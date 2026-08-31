@@ -11,6 +11,7 @@ const editorCanvasTextDescendantSelectionCommit = "940b4dfc5f61fa551993c9c853c5c
 const editorCompositePreviewChildVisualSelectionCommit = "7730a543fb572680144ed8252d9a20d28ce44b7d";
 const editorStructureLargeDocumentNavigationPerformanceCommit = "e1a2a9dc2d5b2a1557aa8838dc03aecece26d102";
 const editorTextBlockInsertToEditCommit = "5f7b0c0064b4a6d70bdc2d121138dd3fae7aba12";
+const editorColumnsAuthoringBoundaryCommit = "d9cc21fe2472bd1a611eb6f971b102f69d5dbc3e";
 
 const expectedLegacyWork = [
   {
@@ -402,6 +403,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -554,10 +561,14 @@ describe("project roadmap Work Queue", () => {
       .toContain("evidence-editor-structure-large-document-navigation-performance-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
       .toContain("evidence-editor-text-block-insert-to-edit-2026-08-31");
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
+      .toContain("evidence-editor-columns-authoring-boundary-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorStructureLargeDocumentNavigationPerformanceCommit);
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorTextBlockInsertToEditCommit);
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
+      .toContain(editorColumnsAuthoringBoundaryCommit);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -944,6 +955,21 @@ describe("project roadmap Work Queue", () => {
     expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
       .toContain("370 tests");
     expect(model.evidence.find((item) => item.id === "evidence-editor-text-block-insert-to-edit-2026-08-31")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorColumnsAuthoringBoundaryCommit,
+        pathOrContractId: "src/editor/commands/columnsAuthoringReadiness.ts; src/editor/commands/addNodeVisibleActions.ts; src/components/outline/OutlinePanel.tsx; src/components/paper/PaperBlock.tsx; src/editor/render/renderProjector.ts; src/tests/columnsAuthoringReadiness.test.ts; src/tests/addNodeVisibleActions.test.ts; src/tests/outlineScannability.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
+      .toContain("columns authoring readiness");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
+      .toContain("summary-left");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
+      .toContain("376 tests");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
       .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({

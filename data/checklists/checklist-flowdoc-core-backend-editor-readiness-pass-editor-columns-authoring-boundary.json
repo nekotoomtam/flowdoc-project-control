@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
+  "title": "Editor Columns Authoring Boundary Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor roadmap, and owner repository context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, product terminology, Editor AGENTS.md, and old Editor roadmap Task 6 are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary, and evidence target evidence-editor-columns-authoring-boundary-2026-08-31 before record edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting Columns authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "Columns readiness, visible add actions, Paper/projection container facts, and Project Control registration fail before implementation or record edits.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included columnsAuthoringReadiness failing because the module did not exist; addNodeVisibleActions failing because Text still targeted the Columns surface and selected column text still exposed Columns insert; nodePresentation/Paper tests failing because column ids were missing from projection/markup; and Project Control Work Queue failing because this phase was not registered."
+    },
+    {
+      "id": "resolve-columns-container-readiness",
+      "label": "Resolve selected Columns and Column containers to concrete Text append placements.",
+      "state": "passed",
+      "evidenceTarget": "Selected Columns uses a concrete Column child such as summary-left, and selected Column containers append Text to themselves.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "columnsAuthoringReadiness tests prove selected summary-columns resolves to summary-left for text append, and selected summary-right resolves directly to a text append placement under summary-right."
+    },
+    {
+      "id": "preserve-same-column-boundary",
+      "label": "Keep selected text inside Columns scoped to same-parent sibling placement and block cross-column placement.",
+      "state": "passed",
+      "evidenceTarget": "Selected text inside a Column inserts beside siblings in the same Column only; cross-column placement returns an explicit blocked reason.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "createColumnTextSiblingPlacement returns ready before/after placements under summary-left for summary-left-text and blocks targeting summary-right with a reason naming the mismatch."
+    },
+    {
+      "id": "route-visible-actions",
+      "label": "Route visible Structure Text actions to Column containers without exposing broader unsupported actions.",
+      "state": "passed",
+      "evidenceTarget": "Visible Text actions carry the concrete container id and selected column text no longer exposes Columns insert beside it.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "addNodeVisibleActions tests prove Text on selected Columns appends to summary-left, Text on selected summary-left-text inserts after it inside summary-left, append actions target summary-left, and Columns insert is absent from selected column text actions."
+    },
+    {
+      "id": "expose-container-evidence",
+      "label": "Expose container facts in Structure and Paper markup without changing visible copy or enabling WYSIWYG.",
+      "state": "passed",
+      "evidenceTarget": "Outline add buttons include data-outline-add-container, and Paper columns preview text descendants include data-canvas-column-id/data-canvas-columns-id.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "Outline scannability, nodePresentation, and PaperBlock tests prove container facts are present while visible labels stay Text/Columns and contenteditable/textarea are not introduced by this slice."
+    },
+    {
+      "id": "verify-and-record",
+      "label": "Run Editor worktree and merged-main gates, record Project Control evidence, and keep maps unchanged.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests, full Editor check, no-write live Backend smoke, and Project Control record tests support the bounded evidence record.",
+      "evidenceIds": [
+        "evidence-editor-columns-authoring-boundary-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree and merged main passed focused 8-file/37-test gate, npm run check with 104 test files and 376 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Project Control records are added without map promotion."
+    }
+  ],
+  "createdAt": "2026-08-31T09:10:00.000Z",
+  "updatedAt": "2026-08-31T09:10:00.000Z"
+}
