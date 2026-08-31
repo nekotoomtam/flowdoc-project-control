@@ -15,7 +15,7 @@
     "The phase would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
   ],
   "verificationTarget": "Project Control owns the policy document, document record, Work record, Phase, and Checklist for documentation authority cleanup while preserving product-repository Markdown until later repository-owned cleanup phases.",
-  "summary": "Done: Project Control records the documentation authority policy foundation without deleting product-repository Markdown. The policy makes Project Control the canonical home for FlowDoc-wide shared understanding, allows repo-local Markdown only for code-adjacent, repository-owned, or historical purposes, requires Authority Boundary wording for surviving repo-local Markdown, blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and sequences cleanup as inventory, classification, Project Control summary or registration, then retirement.",
+  "summary": "Done: Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 records the documentation authority policy foundation without deleting product-repository Markdown. The policy makes Project Control the canonical home for FlowDoc-wide shared understanding, allows repo-local Markdown only for code-adjacent, repository-owned, or historical purposes, requires Authority Boundary wording for surviving repo-local Markdown, blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and sequences cleanup as inventory, classification, Project Control summary or registration, then retirement. Evidence target evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31 is work-scoped and does not promote product truth.",
   "createdAt": "2026-08-31T14:20:00.000Z",
-  "updatedAt": "2026-08-31T14:20:00.000Z"
+  "updatedAt": "2026-08-31T14:30:00.000Z"
 }

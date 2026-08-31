@@ -9,6 +9,7 @@
       "label": "Capture the current tracked Markdown inventory and risk shape before cleanup.",
       "state": "passed",
       "evidenceTarget": "Project Control, Core, Backend, and Editor tracked Markdown counts and high-risk clusters are identified before any deletion.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "Read-only audit found Project Control 91 tracked Markdown files, Core 352, Backend 40, and Editor 59, with high-risk roadmap/status clusters in Core, Editor, and Backend. No product-repository Markdown was edited or deleted in this phase."
     },
     {
@@ -16,6 +17,7 @@
       "label": "Define Project Control as the canonical home for FlowDoc-wide shared understanding.",
       "state": "passed",
       "evidenceTarget": "The policy states where FlowDoc-wide documentation authority lives and what repo-local Markdown must not claim.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "docs/domains/flowdoc-documentation-authority-policy.md states that Project Control is the canonical home for FlowDoc-wide shared understanding, while product repositories keep local implementation and test ownership."
     },
     {
@@ -23,6 +25,7 @@
       "label": "Separate allowed repo-local Markdown from duplicate shared truth.",
       "state": "passed",
       "evidenceTarget": "The policy allows only code-adjacent, repository-owned, or historical repo-local Markdown and requires Authority Boundary wording for survivors.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "The policy allows repository entrypoints, setup/package/example guidance, code-adjacent contracts, implementation notes, and historical source docs; surviving repo-local Markdown must declare an Authority Boundary."
     },
     {
@@ -30,6 +33,7 @@
       "label": "Define cleanup sequencing before deletion.",
       "state": "passed",
       "evidenceTarget": "The policy blocks deletion until inventory, classification, summary or registration, and retirement decisions are complete.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "The policy orders cleanup as Inventory -> classify -> summarize or register -> retire and states that repo-local Markdown is not deleted by this foundation phase."
     },
     {
@@ -37,6 +41,7 @@
       "label": "Guard future agents without prematurely rewriting role definitions.",
       "state": "passed",
       "evidenceTarget": "Agent-facing Project Control guidance points future rooms to the documentation authority policy while deferring role revisions until cleanup evidence exists.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "AGENTS.md, the copy-ready global guidance, and the agent operating model now point to the documentation authority policy. The policy explicitly leaves role revisions for after cleanup evidence is recorded."
     },
     {
@@ -44,6 +49,7 @@
       "label": "Verify Project Control records and generated read model.",
       "state": "passed",
       "evidenceTarget": "Project Control data validation and focused documentation authority tests pass before the policy foundation is treated as recorded.",
+      "evidenceIds": ["evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"],
       "verificationNote": "Focused verification target is npm run check:data plus npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 after data and documentation records are added."
     }
   ],

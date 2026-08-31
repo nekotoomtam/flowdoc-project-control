@@ -7,5 +7,26 @@
   "role": "contract",
   "authority": "Project Control canonical FlowDoc documentation authority policy for separating shared FlowDoc understanding from repo-local Markdown before cleanup.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "98bcec99d905c95feb765c1d630bda2f225bd998",
+      "pathOrContractId": "docs/domains/flowdoc-documentation-authority-policy.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "98bcec99d905c95feb765c1d630bda2f225bd998",
+      "pathOrContractId": "AGENTS.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "98bcec99d905c95feb765c1d630bda2f225bd998",
+      "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "98bcec99d905c95feb765c1d630bda2f225bd998",
+      "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md"
+    }
+  ]
 }
