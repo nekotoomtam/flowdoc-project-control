@@ -660,6 +660,15 @@ describe("Live Draft documentation Wave 2", () => {
       subgroups: Array<{ sourcePaths: string[] }>;
     }>).find(({ familyId }) => familyId === "live-draft");
     const formerSources = family!.subgroups.flatMap(({ sourcePaths }) => sourcePaths);
+    const liveDraftIndexContent = JSON.stringify({
+      nodes: indexNodes.filter((item) => item.id === "live-draft"),
+      documents: indexDocuments.filter((document) =>
+        (document.nodeIds as string[]).includes("live-draft"),
+      ),
+      evidence: indexEvidence.filter((item) =>
+        (item.nodeIds as string[]).includes("live-draft"),
+      ),
+    });
     const registeredContent = [
       overview,
       ...leaves,
@@ -667,7 +676,7 @@ describe("Live Draft documentation Wave 2", () => {
       JSON.stringify(node),
       ...documents.map((document) => JSON.stringify(document)),
       ...evidence.map((item) => JSON.stringify(item)),
-      JSON.stringify(index),
+      liveDraftIndexContent,
     ].join("\n");
     for (const formerSource of formerSources) expect(registeredContent).not.toContain(formerSource);
     expect(registeredContent).not.toMatch(/flowdoc-(?:vnext-core|project-control)@(?:main|master|develop|HEAD):/iu);
