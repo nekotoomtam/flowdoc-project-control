@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "95b1e3d556fbabab32b466833cf7cbaa761d65c4cc9e1d838d2d3382485e9b13",
+  "sourceDigest": "26c1f6d0f192b593e00fcfef7ff8e4069aeea122d8c6e2d97a3235bd2140731a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1898,16 +1898,18 @@
         "doc-flowdoc-documentation-authority-policy"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Evidence target evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31 records this as a work-scoped policy foundation only.",
-      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase. Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Evidence target evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31 records the first product-repository cleanup slice as work-scoped evidence only.",
+      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor WYSIWYG and Overview/History docs/superpowers files remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core.",
       "requiredEvidence": [
-        "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31"
+        "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
+        "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
-      "updatedAt": "2026-08-31T14:30:00.000Z",
+      "updatedAt": "2026-08-31T15:05:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
-        "phase-flowdoc-documentation-authority-policy-foundation"
+        "phase-flowdoc-documentation-authority-policy-foundation",
+        "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3579,6 +3581,30 @@
       "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Editor Node Authoring Roadmap Docs Retirement",
+      "phaseState": "done",
+      "order": 20,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing Editor Markdown.",
+        "The slice would delete WYSIWYG or Overview/History docs that current Editor tests or Project Control evidence still consume.",
+        "The slice would remove source content before retained value or discard rationale is recorded in Project Control.",
+        "The slice would change Editor product runtime behavior while acting as documentation cleanup.",
+        "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Editor retires exactly the node-authoring roadmap plan/spec pair from docs/superpowers, guards surviving docs/superpowers files with Authority Boundary wording, verifies Editor worktree and main gates, and records work-scoped Project Control evidence without promoting product truth.",
+      "summary": "Done: Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retired exactly two Editor docs/superpowers node-authoring roadmap files: docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md and docs/superpowers/specs/2026-08-30-editor-node-authoring-roadmap-design.md. Editor AGENTS.md now points Markdown cleanup work to the Project Control documentation authority policy. The surviving WYSIWYG and Overview/History docs/superpowers files are left in place without deleting WYSIWYG or Overview/History docs because current tests and Project Control evidence still consume them; the touched survivors now carry temporary Authority Boundary wording until later migration or retirement.",
+      "createdAt": "2026-08-31T15:05:00.000Z",
+      "updatedAt": "2026-08-31T15:05:00.000Z"
     },
     {
       "kind": "phase",
@@ -7843,6 +7869,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+      "title": "Editor Node Authoring Roadmap Docs Retirement Checklist",
+      "items": [
+        {
+          "id": "capture-authority-and-owner",
+          "label": "Capture the Project Control documentation authority policy and Editor owner before cleanup.",
+          "state": "passed",
+          "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Editor Markdown.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-editor, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement, and evidence target evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31."
+        },
+        {
+          "id": "write-red-editor-doc-authority-test",
+          "label": "Write a failing Editor documentation authority guard before deleting files.",
+          "state": "passed",
+          "evidenceTarget": "The focused Editor documentation authority test fails before the roadmap pair is retired.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "RED evidence included npm run test -- src/tests/editorDocumentationAuthority.test.ts failing because docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md still existed."
+        },
+        {
+          "id": "retire-node-authoring-roadmap-pair",
+          "label": "Retire exactly the old node-authoring roadmap plan/spec pair.",
+          "state": "passed",
+          "evidenceTarget": "Editor commit deletes the two node-authoring roadmap docs/superpowers files and no other product-repository Markdown is deleted in this slice.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 deletes only docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md and docs/superpowers/specs/2026-08-30-editor-node-authoring-roadmap-design.md."
+        },
+        {
+          "id": "bound-surviving-superpowers-docs",
+          "label": "Guard surviving Editor docs/superpowers files with Authority Boundary wording.",
+          "state": "passed",
+          "evidenceTarget": "Remaining docs/superpowers Markdown files declare Project Control authority, local/historical scope, and non-evidence status until later migration or retirement.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "Editor AGENTS.md points Markdown work to docs/domains/flowdoc-documentation-authority-policy.md, and the focused guard asserts surviving docs/superpowers Markdown contains Authority Boundary, Project Control, and not product evidence wording."
+        },
+        {
+          "id": "verify-editor-main",
+          "label": "Verify the Editor worktree and merged main gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused docs tests, Editor worktree npm run check, and merged Editor main npm run check pass after cleanup.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "Focused Editor docs gate passed 3 files and 8 tests. Editor worktree and merged main both passed npm run check with type-check, 110 test files, 396 tests, and build."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Record the cleanup in Project Control without promoting product truth.",
+          "state": "passed",
+          "evidenceTarget": "Project Control evidence cites the Editor commit, files, verification, deleted paths, residual cleanup risk, and boundaries intentionally not promoted.",
+          "evidenceIds": [
+            "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+          ],
+          "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+        }
+      ],
+      "createdAt": "2026-08-31T15:05:00.000Z",
+      "updatedAt": "2026-08-31T15:05:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-policy-foundation",
       "phaseId": "phase-flowdoc-documentation-authority-policy-foundation",
       "title": "Documentation Authority Policy Foundation Checklist",
@@ -10955,6 +11051,16 @@
       "pathOrContractId": "src/editor/commands/utilityNodeReadiness.ts; src/editor/commands/addNodeContract.ts; src/editor/commands/addNodeVisibleActions.ts; src/components/paper/PaperBlock.tsx; src/tests/utilityNodeReadiness.test.ts; src/tests/addNodeContract.test.ts; src/tests/addNodeVisibleActions.test.ts",
       "verificationSummary": "Editor merge commit 80a46f03cc05a929ab0f67a8615236bf0908b8bc adds bounded media and utility node readiness. RED evidence included npm run test -- src/tests/utilityNodeReadiness.test.ts src/tests/addNodeContract.test.ts src/tests/addNodeVisibleActions.test.ts failing because utilityNodeReadiness did not exist and unsupported add-node contracts still used the older Core-only blocked reason. GREEN evidence passed npm run test -- src/tests/utilityNodeReadiness.test.ts src/tests/addNodeContract.test.ts src/tests/addNodeVisibleActions.test.ts with 3 files and 12 tests; npm run type-check; focused npm run test -- src/tests/utilityNodeReadiness.test.ts src/tests/addNodeContract.test.ts src/tests/addNodeVisibleActions.test.ts src/tests/nodePlacementReadiness.test.ts src/tests/columnsAuthoringReadiness.test.ts src/tests/tableAuthoringBoundary.test.ts src/tests/paperTextBlockEditor.test.ts src/tests/nodePresentation.test.ts src/tests/renderProjector.test.ts src/tests/outlineScannability.test.ts with 10 files and 50 tests; npm run check in the Editor worktree with 106 test files, 385 tests, and build; and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed npm run check with 106 test files, 385 tests, and build, followed by the same no-write live Backend smoke with final Outline order editor-text-block-zone-cover-body-1 > title > editor-columns-zone-cover-body-2 > summary-columns > summary-left-text > summary-right-text > detail-table > detail-cell-a-text > detail-cell-b-text. The implemented behavior builds readiness facts for image, page-break, spacer, divider, and toc from Core placement facts and Backend advertised mutation operation kinds for the active package/document pair; records backendOperationKind values such as page-break.insert; keeps unsupported contracts blocked with Core/Backend insert operation reasons and request null; keeps visible add buttons for image.insert, page-break.insert, spacer.insert, divider.insert, and toc.insert absent; and marks utility Paper preview blocks with data-utility-node-kind/data-utility-node-readiness without adding textarea or contenteditable controls. This evidence does not enable WYSIWYG behavior, contenteditable runtime, direct image/page-break/spacer/divider/toc authoring, Core or Backend media/utility mutation transport, Core or Backend document v4 insert semantics, arbitrary rich-inline authoring beyond the existing bounded textarea path, field-ref chip editing, durable drafts, collaboration, cross-browser readiness, accessibility readiness, visual regression readiness, full large-document authoring performance readiness, production Backend readiness, deployed compatibility, broad corpus coverage, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Editor npm install still reports 5 high severity audit findings and Vite retains the existing chunk-size warning. The Editor branch fd-ed-utility-readiness-0831 was deleted after merge; Git no longer lists C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-utility-readiness-0831 as a worktree, but that residual folder remains on disk after git worktree remove failed with Directory not empty and direct recursive deletion was intentionally avoided because dependency links have previously caused cleanup risk.",
       "verifiedAt": "2026-08-31T10:10:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "04daeeaaac04317508b5cf8e93de61249255d477",
+      "pathOrContractId": "AGENTS.md; src/tests/editorDocumentationAuthority.test.ts; docs/superpowers/plans/2026-08-30-editor-overview-history.md; docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md",
+      "verificationSummary": "Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 records the first product-repository Markdown cleanup slice under the FlowDoc documentation authority policy. It retired exactly two Editor docs/superpowers node-authoring roadmap files: docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md and docs/superpowers/specs/2026-08-30-editor-node-authoring-roadmap-design.md. It updated Editor AGENTS.md to route Markdown creation, migration, and deletion through Project Control documentation authority; added src/tests/editorDocumentationAuthority.test.ts; and added temporary Authority Boundary wording to the surviving touched docs/superpowers files. RED evidence: npm run test -- src/tests/editorDocumentationAuthority.test.ts failed because docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md still existed. GREEN evidence: npm run test -- src/tests/editorDocumentationAuthority.test.ts src/tests/wysiwygGate.test.ts src/tests/editorOverviewHistoryPlanDocs.test.ts passed 3 files and 8 tests. Editor worktree npm run check passed type-check, 110 test files, 396 tests, and build. Merged Editor main npm run check passed type-check, 110 test files, 396 tests, and build. This evidence does not delete WYSIWYG or Overview/History docs/superpowers files because current tests and Project Control evidence still consume them, does not clean Core or Backend Markdown, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. Git removed C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 from the Editor worktree registry and branch fd-ed-doc-roadmap-retire-0831 was deleted, but the folder remains on disk after git worktree remove reported Filename too long; direct recursive deletion was intentionally avoided because node_modules contains junctions into Core.",
+      "verifiedAt": "2026-08-31T15:05:00.000Z"
     },
     {
       "kind": "evidence",

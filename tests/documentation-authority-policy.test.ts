@@ -8,6 +8,10 @@ const CHECKLIST_ID = "checklist-flowdoc-documentation-authority-policy-foundatio
 const POLICY_DOC_ID = "doc-flowdoc-documentation-authority-policy";
 const EVIDENCE_ID = "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31";
 const POLICY_FOUNDATION_COMMIT = "98bcec99d905c95feb765c1d630bda2f225bd998";
+const EDITOR_ROADMAP_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement";
+const EDITOR_ROADMAP_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement";
+const EDITOR_ROADMAP_RETIRE_EVIDENCE_ID = "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31";
+const EDITOR_ROADMAP_RETIRE_COMMIT = "04daeeaaac04317508b5cf8e93de61249255d477";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -28,7 +32,7 @@ describe("FlowDoc documentation authority policy", () => {
       workKind: "task",
       workPathIds: ["flowdoc-product-development-resumption", WORK_ID],
       workState: "in-progress",
-      requiredEvidence: [EVIDENCE_ID],
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
     });
     expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
       "doc-project-control-agent-onboarding",
@@ -121,6 +125,57 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1");
     expect(verificationSummary).toContain("npm run check:data");
     expect(verificationSummary).toContain("does not delete product-repository Markdown");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
+  });
+
+  it("records the Editor node-authoring roadmap docs retirement as work-scoped cleanup evidence", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === EDITOR_ROADMAP_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === EDITOR_ROADMAP_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      EVIDENCE_ID,
+      EDITOR_ROADMAP_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(EDITOR_ROADMAP_RETIRE_COMMIT);
+    expect(work?.riskSummary).toContain("fd-ed-doc-retire-0831");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.summary).toContain("retired exactly two Editor docs/superpowers node-authoring roadmap files");
+    expect(phase?.summary).toContain("without deleting WYSIWYG or Overview/History docs");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-authority-and-owner",
+      "write-red-editor-doc-authority-test",
+      "retire-node-authoring-roadmap-pair",
+      "bound-surviving-superpowers-docs",
+      "verify-editor-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: EDITOR_ROADMAP_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; src/tests/editorDocumentationAuthority.test.ts; docs/superpowers/plans/2026-08-30-editor-overview-history.md; docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md",
+    });
+    const verificationSummary = evidence.get(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("retired exactly two Editor docs/superpowers node-authoring roadmap files");
+    expect(verificationSummary).toContain("3 files and 8 tests");
+    expect(verificationSummary).toContain("110 test files, 396 tests");
+    expect(verificationSummary).toContain("Filename too long");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
   });
 });

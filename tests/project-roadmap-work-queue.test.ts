@@ -530,7 +530,10 @@ describe("project roadmap Work Queue", () => {
       activeRole: "project-control-steward",
       nodeId: "project-control",
       parentWorkId: "flowdoc-product-development-resumption",
-      phaseIds: ["phase-flowdoc-documentation-authority-policy-foundation"],
+      phaseIds: [
+        "phase-flowdoc-documentation-authority-policy-foundation",
+        "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+      ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",
       workPathIds: [
