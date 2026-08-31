@@ -66,15 +66,15 @@
     },
     {
       "id": "verify-main-and-cleanup",
-      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "label": "Run worktree and merged-main Editor/Project Control gates and record cleanup state honestly.",
       "state": "passed",
-      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup state is recorded.",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; Project Control record gates pass; cleanup state is recorded.",
       "evidenceIds": [
         "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
       ],
-      "verificationNote": "Editor worktree passed focused Vitest, npm run evidence:editor-browser-live-backend-smoke, npm run check with 102 test files and 367 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed npm run check with 102 test files and 367 tests plus build, then FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-struct-navperf-0831 was deleted after fast-forward merge, and the residual .worktrees/fd-ed-struct-navperf-0831 folder was removed after Git deregistered it and the absolute cleanup target was verified."
+      "verificationNote": "Editor worktree passed focused Vitest, npm run evidence:editor-browser-live-backend-smoke, npm run check with 102 test files and 367 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed npm run check with 102 test files and 367 tests plus build, then FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-struct-navperf-0831 was deleted after fast-forward merge, and the residual .worktrees/fd-ed-struct-navperf-0831 folder was removed after Git deregistered it and the absolute cleanup target was verified. Project Control worktree and merged main passed npm run check, including check:data, type-check, 59 Vitest files with 330 tests, build, and 6 Playwright e2e tests."
     }
   ],
   "createdAt": "2026-08-31T07:35:00.000Z",
-  "updatedAt": "2026-08-31T07:35:00.000Z"
+  "updatedAt": "2026-08-31T07:45:00.000Z"
 }
