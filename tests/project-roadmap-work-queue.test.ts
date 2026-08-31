@@ -8,6 +8,7 @@ const editorVisibleTextBlockTypingCommit = "6f59f7269322abfe3428d4df6f4ba0ee6ab0
 const editorTextBlockEditingUxCommit = "a42409a31cb855331e5114a52bc3d07d75cb67e6";
 const editorTextBearingNodeCoverageCommit = "3cc2cf9e008fa43bd0be491f4dc6ba83b041faf2";
 const editorCanvasTextDescendantSelectionCommit = "940b4dfc5f61fa551993c9c853c5c8aed0a986c5";
+const editorCompositePreviewChildVisualSelectionCommit = "7730a543fb572680144ed8252d9a20d28ce44b7d";
 
 const expectedLegacyWork = [
   {
@@ -379,6 +380,12 @@ const remediationTasks = [
         phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection",
         phaseState: "done",
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection",
+        checklistLength: 7,
+      },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection",
         checklistLength: 7,
       },
     ],
@@ -872,6 +879,19 @@ describe("project roadmap Work Queue", () => {
     expect(model.evidence.find((item) => item.id === "evidence-editor-canvas-text-descendant-selection-2026-08-31")?.verificationSummary)
       .toContain("selectedOutlineNodeIds");
     expect(model.evidence.find((item) => item.id === "evidence-editor-canvas-text-descendant-selection-2026-08-31")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-composite-preview-child-visual-selection-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorCompositePreviewChildVisualSelectionCommit,
+        pathOrContractId: "scripts/run-editor-browser-live-backend-smoke.mjs; src/components/paper/PaperBlock.tsx; src/components/paper/PaperPage.tsx; src/fixtures/editor-browser-live-backend-smoke.v1.json; src/styles/editor.css; src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts; src/tests/paperTextBlockEditor.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-composite-preview-child-visual-selection-2026-08-31")?.verificationSummary)
+      .toContain("data-canvas-text-descendant-selected");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-composite-preview-child-visual-selection-2026-08-31")?.verificationSummary)
+      .toContain("computed visual style");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-composite-preview-child-visual-selection-2026-08-31")?.verificationSummary)
       .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({

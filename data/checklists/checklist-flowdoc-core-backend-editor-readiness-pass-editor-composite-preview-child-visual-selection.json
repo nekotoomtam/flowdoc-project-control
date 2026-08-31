@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection",
+  "title": "Editor Composite Preview Child Visual Selection Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, and Editor boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, and the bounded composite preview child visual selection target are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core smoke references, phase phase-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection, checklist checklist-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection, and evidence target evidence-editor-composite-preview-child-visual-selection-2026-08-31 before product edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting the selected child visual state.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before columns/table Preview children expose selected visual state, and Project Control test fails before this phase/evidence exists.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included npm run test -- --run src/tests/paperTextBlockEditor.test.ts failing for missing data-canvas-text-descendant-selected, npm run test -- --run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts failing for missing preview selected/style observations, and npm test -- --maxWorkers=1 tests/project-roadmap-work-queue.test.ts failing before the new phase was registered."
+    },
+    {
+      "id": "propagate-selected-descendant",
+      "label": "Propagate selectedNodeId into composite Paper preview content without changing surface identity.",
+      "state": "passed",
+      "evidenceTarget": "PaperPage passes selectedNodeId to PaperBlock, and PaperBlock marks only represented editable text-block descendants that match that selected id.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "PaperBlock derives selected preview targets from editableTextDescendants and preview label matching, adds data-canvas-text-descendant-selected only to the selected child target, keeps the owning surface data-node-id, and keeps the parent data-selected false when a child is selected."
+    },
+    {
+      "id": "style-selected-child-as-mini-object",
+      "label": "Style selected columns/table Preview children as stable mini objects.",
+      "state": "passed",
+      "evidenceTarget": "Selected preview descendants are visibly boxed with stable background, border, inset highlight, and pointer cursor without layout resize.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "editor.css styles data-canvas-text-descendant-selected targets with rgb(238, 249, 247) background, rgb(30, 111, 103) border color, inset/outer focus-colored box-shadow, and pointer cursor while preserving fixed border widths and existing preview card/cell dimensions."
+    },
+    {
+      "id": "prove-live-backend-preview-visual-smoke",
+      "label": "Prove selected preview child state through a live local Backend browser smoke.",
+      "state": "passed",
+      "evidenceTarget": "The retained browser smoke clicks summary-left-text in the Paper Preview, verifies Outline selection, verifies selected Preview child ids before and after reload, and records computed style for the visible selected child.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "The retained smoke records selectionMethod canvas-text-descendant-preview, selectedPreviewTextDescendantIds [summary-left-text], reloadedSelectedPreviewTextDescendantIds [summary-left-text], previewHitTargetSelected true, reloadedPreviewHitTargetSelected true, and computed visual style values for the selected preview child."
+    },
+    {
+      "id": "preserve-boundaries",
+      "label": "Keep the slice visual-selection-only and preserve mutation/readiness boundaries.",
+      "state": "passed",
+      "evidenceTarget": "The change does not enable direct typing, contenteditable, WYSIWYG, exact table/cell authoring, new Backend mutation sources, Core truth, Backend truth, Editor truth, broad readiness, or map truth.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "No Core or Backend files changed. Editor mutation source exclusions from the previous slice remain unchanged. This slice changes only Paper preview selection state, CSS, tests, and retained smoke evidence."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup risks remain explicit.",
+      "evidenceIds": [
+        "evidence-editor-composite-preview-child-visual-selection-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-composite-child-visual-0831 passed npm run evidence:editor-browser-live-backend-smoke, npm run type-check, focused Vitest with 4 files and 22 tests, and npm run check with 102 test files and 364 tests plus build. Merged Editor main passed npm run check and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-composite-child-visual-0831 was deleted after fast-forward merge. C:/Users/nekot/Documents/GitHub/fd-ed-composite-child-visual-0831 remains on disk after git worktree remove failed with Filename too long; Git no longer lists it as a worktree, and direct recursive deletion was intentionally avoided because node_modules contains dependency links."
+    }
+  ],
+  "createdAt": "2026-08-31T06:35:00.000Z",
+  "updatedAt": "2026-08-31T06:35:00.000Z"
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-composite-preview-child-visual-selection",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Composite Preview Child Visual Selection",
+  "phaseState": "done",
+  "order": 150,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Selected text-block descendants represented inside columns/table Preview surfaces cannot display their own selected visual state on the paper Preview.",
+    "The owning columns/table surface is promoted as the selected object instead of remaining a context surface for the selected child.",
+    "The selected child visual state changes layout dimensions, hides text, or introduces overlap inside the Preview.",
+    "The live Backend browser smoke cannot prove selectedPreviewTextDescendantIds, reloadedSelectedPreviewTextDescendantIds, and computed visual style for the selected preview child.",
+    "The slice leaks canvas text descendant selection into Backend mutation source contracts, add-node mutation sources, Core truth, Backend truth, or Project Control map truth.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table cell editing UI, exact column layout editing UI, arbitrary rich-inline authoring, field-ref chip editing, durable drafts, collaboration, production readiness, broad frontend readiness, or map truth."
+  ],
+  "verificationTarget": "Editor marks selected text-block descendants represented inside columns/table Preview surfaces as visible selected mini objects, while keeping the owning composite surface as context and preserving existing Backend/Core boundaries.",
+  "summary": "Done: Editor commit 7730a543fb572680144ed8252d9a20d28ce44b7d adds bounded selected composite preview child visual state. PaperPage passes selectedNodeId into PaperBlock, and PaperBlock matches that id against editableTextDescendants represented in columns/table preview labels before setting data-canvas-text-descendant-selected on the exact preview child. The owning columns/table paper surface keeps its surface data-node-id and receives only a subtle descendant-selected context marker, so structural selection and mutation behavior remain surface-based. CSS gives selected child preview targets a stable teal background, border, inset highlight, and pointer cursor without resizing the preview item. The live local Backend browser smoke records selectedPreviewTextDescendantIds and reloadedSelectedPreviewTextDescendantIds as summary-left-text, plus computed visual style values for the selected child. This does not enable WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table cell editing UI, exact column layout editing UI, arbitrary rich-inline authoring, field-ref editing, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T06:35:00.000Z",
+  "updatedAt": "2026-08-31T06:35:00.000Z"
+}
