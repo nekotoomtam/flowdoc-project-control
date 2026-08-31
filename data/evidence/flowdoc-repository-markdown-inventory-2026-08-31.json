@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0000000000000000000000000000000000000000",
+  "pathOrContractId": "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
+  "verificationSummary": "Project Control records a repository Markdown inventory snapshot for the FlowDoc documentation authority cleanup. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed before Work requiredEvidence included evidence-flowdoc-repository-markdown-inventory-2026-08-31. The source scan used rg --files -g '*.md' against clean local main checkouts and found Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at source commits Project Control d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541, Core 5892df6e542a02b25ae3b18ee02a55842b83d48f, Backend fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08, and Editor 04daeeaaac04317508b5cf8e93de61249255d477. Product repositories were read-only in this inventory phase. The evidence identifies product-repository docs/superpowers as the first remaining cleanup risk, including the Core and Backend docs/superpowers Authority Boundary gap, while Editor docs/superpowers survivors remain intentionally because current tests and Project Control evidence still consume them. This evidence does not delete product-repository Markdown, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-08-31T15:45:00.000Z"
+}

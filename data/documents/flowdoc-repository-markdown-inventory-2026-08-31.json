@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-repository-markdown-inventory-2026-08-31",
+  "title": "FlowDoc Repository Markdown Inventory - 2026-08-31",
+  "path": "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Project Control canonical Markdown inventory snapshot for the FlowDoc documentation authority cleanup Work item.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541",
+      "pathOrContractId": "rg --files -g '*.md'"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+      "pathOrContractId": "rg --files -g '*.md'"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08",
+      "pathOrContractId": "rg --files -g '*.md'"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "04daeeaaac04317508b5cf8e93de61249255d477",
+      "pathOrContractId": "rg --files -g '*.md'"
+    }
+  ]
+}

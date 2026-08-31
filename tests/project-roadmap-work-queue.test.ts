@@ -533,6 +533,7 @@ describe("project roadmap Work Queue", () => {
       phaseIds: [
         "phase-flowdoc-documentation-authority-policy-foundation",
         "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
       ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",

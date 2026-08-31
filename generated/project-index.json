@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "12ffea53a70429aee96aeacf2ec2b978901283be779665e4dea7f1293403514e",
+  "sourceDigest": "8293491ca3d065a145e65afba9d3d151adfed954d1f494fb6cc8ab7a39030e4b",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -353,7 +353,8 @@
         "doc-flowdoc-global-codex-guidance",
         "doc-project-control-repo-first-overview-history-2026-08-28",
         "doc-project-control-overview-history-gui-2026-08-29",
-        "doc-flowdoc-documentation-authority-policy"
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "evidenceIds": [
         "evidence-project-control-design",
@@ -1895,21 +1896,24 @@
         "doc-flowdoc-role-catalog",
         "doc-project-control-overview",
         "doc-flowdoc-global-codex-guidance",
-        "doc-flowdoc-documentation-authority-policy"
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Evidence target evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31 records the first product-repository cleanup slice as work-scoped evidence only.",
-      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor WYSIWYG and Overview/History docs/superpowers files remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31.",
+      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers has 4 remaining plan/spec files and Backend docs/superpowers has 1 remaining plan file; those files do not yet carry Authority Boundary wording and are the next migration/retirement candidates after source preservation. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
-        "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"
+        "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
+        "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
       "updatedAt": "2026-08-31T15:15:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
-        "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement"
+        "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3605,6 +3609,29 @@
       "summary": "Done: Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retired exactly two Editor docs/superpowers node-authoring roadmap files: docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md and docs/superpowers/specs/2026-08-30-editor-node-authoring-roadmap-design.md. Editor AGENTS.md now points Markdown cleanup work to the Project Control documentation authority policy. The surviving WYSIWYG and Overview/History docs/superpowers files are left in place without deleting WYSIWYG or Overview/History docs because current tests and Project Control evidence still consume them; the touched survivors now carry temporary Authority Boundary wording until later migration or retirement.",
       "createdAt": "2026-08-31T15:05:00.000Z",
       "updatedAt": "2026-08-31T15:05:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Repository Markdown Inventory",
+      "phaseState": "done",
+      "order": 30,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before recording the inventory.",
+        "The inventory would edit or delete product-repository Markdown instead of reading product repositories only.",
+        "The inventory would treat repo-local Markdown, plans, specs, or glossary wording as product evidence.",
+        "The inventory would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+        "The source snapshot lacks exact repository commits or tracked Markdown counts."
+      ],
+      "verificationTarget": "Project Control records a repository Markdown inventory snapshot for Project Control, Core, Backend, and Editor with exact source commits, tracked Markdown counts, authority classification, next cleanup order, and work-scoped evidence.",
+      "summary": "Done: Project Control records the repository Markdown inventory snapshot at source commits Project Control d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541, Core 5892df6e542a02b25ae3b18ee02a55842b83d48f, Backend fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08, and Editor 04daeeaaac04317508b5cf8e93de61249255d477. The source snapshot found Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files without deleting product-repository Markdown. It identifies product-repository docs/superpowers as the first remaining cleanup risk while keeping broader product truth and map truth unpromoted.",
+      "createdAt": "2026-08-31T15:45:00.000Z",
+      "updatedAt": "2026-08-31T15:45:00.000Z"
     },
     {
       "kind": "phase",
@@ -7939,6 +7966,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+      "title": "Repository Markdown Inventory Checklist",
+      "items": [
+        {
+          "id": "capture-source-commits",
+          "label": "Capture exact source commits for Project Control, Core, Backend, and Editor.",
+          "state": "passed",
+          "evidenceTarget": "The inventory document and document record list exact source commits for all four FlowDoc repositories.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "Source commits recorded: Project Control d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541, Core 5892df6e542a02b25ae3b18ee02a55842b83d48f, Backend fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08, and Editor 04daeeaaac04317508b5cf8e93de61249255d477."
+        },
+        {
+          "id": "scan-tracked-markdown",
+          "label": "Scan tracked Markdown counts across all four repositories.",
+          "state": "passed",
+          "evidenceTarget": "Read-only rg --files -g '*.md' counts are preserved for Project Control, Core, Backend, and Editor.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "Read-only scan found Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files."
+        },
+        {
+          "id": "classify-authority-buckets",
+          "label": "Classify Markdown into broad authority buckets before deleting anything.",
+          "state": "passed",
+          "evidenceTarget": "The inventory distinguishes Project Control canonical/historical material from product-repo entrypoints, repo-owned docs, and migration candidates.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "The inventory classifies Project Control docs as canonical or historical control material, product-repo entrypoints as allowed local guidance, product-repo docs as code-adjacent candidates requiring review, and product-repo docs/superpowers as the first cleanup priority."
+        },
+        {
+          "id": "identify-product-repo-superpowers-risk",
+          "label": "Identify remaining product-repository docs/superpowers risk.",
+          "state": "passed",
+          "evidenceTarget": "The inventory lists remaining Core, Backend, and Editor docs/superpowers files and records Authority Boundary gaps.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "Remaining product-repository docs/superpowers files: Core 4, Backend 1, Editor 3. Core and Backend docs/superpowers files do not yet carry Authority Boundary wording; Editor survivors do."
+        },
+        {
+          "id": "preserve-no-delete-boundary",
+          "label": "Preserve the no-delete boundary for product repositories in this phase.",
+          "state": "passed",
+          "evidenceTarget": "The phase records product repositories as read-only and explicitly states no product-repository Markdown is deleted by this inventory.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "Product repositories were read-only in this inventory phase, and the inventory states that no product-repository Markdown is deleted by this inventory."
+        },
+        {
+          "id": "verify-project-control-records",
+          "label": "Verify Project Control records and generated read model.",
+          "state": "passed",
+          "evidenceTarget": "Focused Project Control documentation authority test, generation, check:data, and full worktree/main check gates pass before handoff.",
+          "evidenceIds": [
+            "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+          ],
+          "verificationNote": "Project Control focused tests and generated data checks cover the inventory document, document record, Work link, Phase, Checklist, and Evidence record without promoting product truth."
+        }
+      ],
+      "createdAt": "2026-08-31T15:45:00.000Z",
+      "updatedAt": "2026-08-31T15:45:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-policy-foundation",
       "phaseId": "phase-flowdoc-documentation-authority-policy-foundation",
       "title": "Documentation Authority Policy Foundation Checklist",
@@ -9555,6 +9652,41 @@
       "lifecycle": "active",
       "repositoryRefs": [],
       "content": "# นิยามศัพท์ผลิตภัณฑ์ FlowDoc\n\n## จุดประสงค์\n\nเอกสารนี้อธิบายศัพท์ฝั่ง product ที่มักสับสนข้าม Project Control, Core,\nBackend, Editor และงานออกแบบ frontend ในอนาคต ใช้คู่กับ glossary หลักที่\n`docs/GLOSSARY.md`\n\nเป้าหมายคือช่วยให้ agent แปลคำกว้างให้เป็นคำแคบก่อนเริ่มทำงานจริง เอกสารนี้\nเป็นขอบเขตการใช้คำ ไม่ใช่หลักฐานว่า behavior นั้นมีอยู่ ไม่ใช่ผล test และไม่ใช่\nหลักฐานความพร้อมของ product\n\n## ขอบเขตอำนาจ\n\nเอกสารนี้เป็นคำอธิบายภาษาไทยของ canonical English terminology สำหรับการคุยงาน\nและส่งต่อบริบท English term ID ยังเป็นตัวหลักสำหรับ record, code symbol, test,\ncontract และ evidence packet\n\nห้ามยกระดับ FlowDoc product truth จากนิยามศัพท์เพียงอย่างเดียว คำที่ชัดขึ้นช่วย\nลดความหลงทางได้ แต่ไม่ทำให้ Core, Backend, Editor, feature หรือ compatibility\nclaim กลายเป็น `current`\n\n## เมื่อไหร่ต้องอ่าน\n\nอ่านเอกสารนี้ก่อน:\n\n- งาน redesign ของ Editor หรือ frontend;\n- งาน product behavior ใน Core, Backend หรือ Editor;\n- งาน API, schema, migration, mutation, transport, preview หรือ capability\n  ที่ข้าม repository;\n- การเขียน plan หรือ evidence ที่ใช้คำซ้ำหลายบริบท;\n- การตัดสินใจว่าคำหนึ่งควร define, split, rename, deprecated, context-only\n  หรือ blocked\n\nถ้าคำที่ผู้ใช้หรือ agent ใช้ยังตีความได้หลายทาง ให้แปลเป็น canonical term ที่\nแคบที่สุดก่อน ถ้ายังไม่ชัด ให้บันทึกเป็น `UNKNOWN`, `RISK` หรือ `BLOCKER`\nแทนการเดา\n\n## Ambiguity disposition\n\nคำกำกวมในรอบงาน FlowDoc ควรได้ disposition อย่างใดอย่างหนึ่ง:\n\n- `define`: เก็บคำเดิมไว้ แต่ระบุ owner/context ให้ชัดในรอบงานนี้\n- `split`: คำเดียวครอบหลายสิ่ง ให้แยกเป็นคำที่มี qualifier\n- `rename`: ชื่อชนกับคำอื่นใน FlowDoc ให้เปลี่ยนเป็นชื่อ canonical ที่ชัดกว่า\n- `deprecated`: ไม่ใช้กับงานใหม่ ใช้ได้เฉพาะเมื่ออ้างเอกสารเก่า\n- `context-only`: ใช้ใน prose หรือ handoff ได้ แต่ไม่ใช้ใน code, schema,\n  public API, evidence ID หรือ canonical record\n- `blocked`: ยังเลือกคำที่ปลอดภัยไม่ได้จนกว่า owner, evidence หรือ behavior\n  จะชัด\n\nเมื่อเป็น `split` ให้เติม owner หรือ runtime เช่น `Project Control Node`,\n`Core runtime node`, `Backend document record` หรือ `Editor draft`\n\n## ศัพท์ Core\n\n### Document Package\n\n`Document package` คือ payload และ graph ของเอกสารที่ Core เป็นเจ้าของตาม schema\nversion Core เป็นผู้ parse, validate, migrate และ mutate\n\nอย่าใช้คำนี้แทน Backend storage row, Editor draft, Project Control Document\nrecord, Markdown document หรือ exported file\n\n### Core Runtime Node\n\n`Core runtime node` คือ item ภายใน Core document graph เช่น section, table,\nblock, inline หรือ item ตาม schema อื่น ๆ\n\nอย่าย่อเหลือ `Node` ถ้า Project Control อยู่ในบริบทเดียวกัน เพราะใน Project\nControl คำว่า `Node` หมายถึง topic record ใน navigation/system map\n\n### Package Version\n\n`package version` คือ version ของ Core package/schema family ที่ document\npackage หรือ migration target ใช้ ไม่ใช่ Backend service version, app release,\nnpm package version หรือ lifecycle ของ Project Control document\n\n### Mutation Result\n\n`mutation result` คือ response ที่ Core ผลิตจาก document operation ที่ยอมรับ\nแล้ว อาจรวม changed package, rejected operation, revision facts, diagnostics\nหรือ output ตาม Core contract\n\nอย่าใช้คำนี้แทน UI action ของ Editor หรือ HTTP response ของ Backend เว้นแต่ว่า\nresponse นั้นส่ง Core mutation result อยู่จริง\n\n### Migration Package\n\n`migration package` คือ output หรือ target payload ของ migration ที่ Core เป็น\nเจ้าของ Backend อาจเป็นผู้ขนส่ง และ Editor อาจเป็นผู้ขอ แต่รูปร่าง package และ\nsemantic version boundary เป็นของ Core เว้นแต่ record ที่แคบกว่าระบุเป็นอย่างอื่น\n\n## ศัพท์ Backend\n\n### Backend Document Record\n\n`Backend document record` คือ service/storage และ transport record ของ Backend\nสำหรับเอกสารหนึ่งชุด อาจมี document id, title, revision, timestamp, capability\nfacts และ Core document package payload ปัจจุบัน\n\nอย่าเรียกสิ่งนี้ว่า `Document package` เว้นแต่กำลังพูดถึงเฉพาะ Core payload ที่\nฝังอยู่ข้างใน\n\n### Backend Revision\n\n`Backend revision` คือ marker ฝั่ง service สำหรับ concurrency หรือ freshness\nไม่จำเป็นต้องเท่ากับ Core package version, Editor draft version หรือ Project\nControl evidence revision\n\n### Capability Response\n\n`capability response` คือ Backend API response ที่บอก supported Core package\nversions, document versions, migration targets หรือ service capability facts\n\nอย่าใช้ capability response เป็นหลักฐานว่า route, UI path หรือ deployment ใช้งาน\nได้ เว้นแต่มี evidence แยกที่ตรวจ path นั้นแล้ว\n\n### Storage Record\n\n`storage record` คือ durable persistence state ของ Backend แยกจาก Project\nControl Repository Registry และ local test fixtures\n\n## ศัพท์ Editor และ Frontend\n\n### Editor Draft\n\n`Editor draft` คือ browser-local editable state ที่ derive จาก Backend document\nrecord หรือ fixture อาจมี selection, working copy, local status, preview input\nหรือ pending UI changes\n\nEditor draft ไม่ใช่ canonical storage, ไม่ใช่ Core document package ด้วยตัวเอง\nและไม่ใช่ Project Control truth\n\n### Preview\n\n`Preview` คือโหมดที่ Editor แสดงหรือ inspect เอกสารหรือ working copy มันเป็น\nเป้าหมาย UX ได้ แต่ไม่ใช่หลักฐานของ export parity, renderer parity, Backend\npersistence หรือ product readiness\n\n### Live Backend Mode\n\n`live Backend mode` คือ Editor ถูกตั้งค่าให้เรียก Backend server จริง ปกติมัก\nเป็น local loopback URL ใน smoke evidence ที่ยอมรับแล้ว\n\nอย่าย่อเหลือ `live` โดยไม่บอก route, server, corpus, browser และ evidence\nboundary\n\n### Fixture Mode\n\n`fixture mode` คือ Editor ใช้ local fixture data แทน live Backend ใช้ตรวจ UI และ\nCore adapter ได้ แต่ไม่ได้พิสูจน์ Backend integration\n\n### Outline Item\n\n`outline item` คือ UI item ใน Editor ที่แทนโครงสร้างเอกสาร ถ้า item นั้นผูกกับ\nCore data ให้เรียก backing value แยกเป็น `Core runtime node`\n\n## ศัพท์ข้าม Repository\n\n### Project Control Node\n\n`Project Control Node` คือ topic record ถาวรใน Project Control navigation และ\nsystem map มี truth state และอาจ link ไปยัง document, evidence, work และ\nrepository\n\nอย่าใช้คำว่า `Node` เฉย ๆ ใน handoff ของ product implementation ถ้ามี Core\nruntime node อยู่ในบริบทเดียวกัน\n\n### Document Record\n\n`Document record` คือ metadata ของ Project Control สำหรับ Markdown หรือเอกสาร\nถาวรอื่น ไม่ใช่ Core document package และไม่ใช่ Backend document record\n\n### Evidence Packet\n\n`evidence packet` คือ claim แบบมีขอบเขตพร้อม repository id, commit ที่แน่นอน,\npath หรือ contract id, verification summary และ unknown ที่เหลือ รองรับเฉพาะ\nclaim ที่ระบุเท่านั้น\n\n### Runtime\n\n`runtime` ต้องมี qualifier เช่น `Core runtime`, `Backend runtime`, `Editor\nruntime`, `browser runtime` หรือ owner อื่นที่ชัด ถ้าไม่ qualify ให้ถือว่า\n`split` เป็นค่าเริ่มต้น\n\n### Session\n\n`session` ต้อง qualify เช่น `Editor browser session`, `Backend request session`,\n`agent work session` หรือ owner อื่นที่ชัด มันไม่ใช่ durable document truth\nเว้นแต่ repository-owned contract บอกไว้\n\n### Snapshot\n\n`snapshot` ต้องบอกว่าจับอะไร เช่น Core package snapshot, Backend storage\nsnapshot, Editor fixture snapshot, evidence snapshot หรือ Project Control\ngenerated read-model snapshot\n\n### Source และ Target\n\n`source` และ `target` ต้องบอกแกนที่ใช้ เช่น source package version, target\npackage version, source repository, target repository, source document, target\nroute, source commit หรือ target commit\n\n### Current, Ready, Compatible และ Live\n\n`current`, `ready`, `compatible` และ `live` เป็น claim ที่ต้องมี evidence ต้อง\nบอก scope และหลักฐานให้ชัด ถ้าไม่มี evidence ให้บันทึกเป็น `planned`, `risk`\nหรือ `unknown`\n\n## กฎสำหรับ Frontend Redesign\n\nก่อน redesign Editor หรือ frontend ในอนาคต ให้แปล vocabulary ของ UI ผ่าน glossary\nนี้:\n\n- ใช้ `Editor draft` สำหรับ browser-local working state\n- ใช้ `Preview` สำหรับ visible rendering/inspection\n- ใช้ `Outline item` สำหรับแถวหรือรายการโครงสร้างใน UI\n- ใช้ `Core runtime node` เฉพาะเมื่อ backing Core graph item อยู่ใน scope\n- ใช้ `Backend document record` สำหรับข้อมูลฝั่ง service\n- ใช้ `Document package` สำหรับ Core payload\n- ใช้ `Project Control Node` สำหรับ registry/map topic\n\nถ้า redesign ต้องใช้คำที่ยังไม่มีในเอกสารนี้ ให้เพิ่มคำนั้นในเอกสารนี้ หรือ\nบันทึก terminology decision เป็น `blocked` ก่อนเริ่ม implementation\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-repository-markdown-inventory-2026-08-31",
+      "title": "FlowDoc Repository Markdown Inventory - 2026-08-31",
+      "path": "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md",
+      "nodeIds": [
+        "project-control"
+      ],
+      "role": "verification",
+      "authority": "Project Control canonical Markdown inventory snapshot for the FlowDoc documentation authority cleanup Work item.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541",
+          "pathOrContractId": "rg --files -g '*.md'"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "5892df6e542a02b25ae3b18ee02a55842b83d48f",
+          "pathOrContractId": "rg --files -g '*.md'"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08",
+          "pathOrContractId": "rg --files -g '*.md'"
+        },
+        {
+          "repositoryId": "repo-editor",
+          "commit": "04daeeaaac04317508b5cf8e93de61249255d477",
+          "pathOrContractId": "rg --files -g '*.md'"
+        }
+      ],
+      "content": "# FlowDoc Repository Markdown Inventory - 2026-08-31\n\n## Purpose\n\nThis inventory records the first repository-wide Markdown snapshot for the\nFlowDoc documentation authority cleanup. It is a Project Control source\nsnapshot and cleanup guide, not product evidence.\n\nProject Control remains the canonical home for FlowDoc-wide shared\nunderstanding. Product repositories were read-only in this inventory phase.\n\n## Authority Boundary\n\nThis document is owned by `repo-project-control` and supports only the\ndocumentation cleanup Work item\n`flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup`.\n\nIt records tracked Markdown counts, broad authority buckets, and immediate\ncleanup risks from local main checkouts. It does not prove runtime behavior,\nreadiness, compatibility, frontend design readiness, or product-map truth.\n\nNo product-repository Markdown is deleted by this inventory. Product-repository\ncleanup still requires a separate owner phase, source preservation or discard\nrationale, focused verification, and Project Control evidence registration.\n\n## Source Snapshot\n\nThe snapshot was taken with `rg --files -g '*.md'` against clean local main\ncheckouts after the first Editor docs/superpowers retirement slice.\n\nSource totals: Project Control 92 tracked Markdown files; Core 347 tracked\nMarkdown files; Backend 40 tracked Markdown files; Editor 57 tracked Markdown\nfiles.\n\n| Repository | Source commit | Tracked Markdown | Main buckets |\n| --- | --- | ---: | --- |\n| Project Control | `d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541` | 92 | `docs/domains`: 40; `docs/versions`: 26; `docs/superpowers`: 21; other docs: 2; root entrypoints: 3 |\n| Core | `5892df6e542a02b25ae3b18ee02a55842b83d48f` | 347 | repo docs: 334; `docs/superpowers`: 4; `docs/versions`: 3; entrypoint/package/example docs: 6 |\n| Backend | `fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08` | 40 | repo docs: 37; `docs/superpowers`: 1; root entrypoints: 2 |\n| Editor | `04daeeaaac04317508b5cf8e93de61249255d477` | 57 | repo docs: 53; `docs/superpowers`: 3; root entrypoints: 1 |\n\nThe Project Control count is the source count before this inventory document is\nadded. Future inventory updates should record a new source snapshot instead of\nediting this row into a moving target.\n\nSuperpowers totals: Project Control docs/superpowers: 21; Core\ndocs/superpowers: 4; Backend docs/superpowers: 1; Editor docs/superpowers: 3.\n\nThe docs/superpowers files in Core and Backend do not yet carry Authority\nBoundary wording.\n\n## Superpowers Markdown Risk\n\n`docs/superpowers` is the clearest high-risk Markdown family because plans and\nspecs there can look like active truth if they remain inside product\nrepositories.\n\n| Repository | `docs/superpowers` count | Classification | Cleanup status |\n| --- | ---: | --- | --- |\n| Project Control | 21 | Project Control-local historical plans and specs | Keep for now; already inside the canonical control repository, but later cleanup may summarize or retire old traces. |\n| Core | 4 | Product-repository historical text-block plans/specs | Migration candidate. The files do not yet carry Authority Boundary wording and must not be treated as current Core evidence. |\n| Backend | 1 | Product-repository backend service hardening plan | Migration candidate. The file does not yet carry Authority Boundary wording and must not be treated as current Backend evidence. |\n| Editor | 3 | Product-repository WYSIWYG and Overview/History planning/spec source | Migration candidate. These remain intentionally because current Editor tests and Project Control evidence still consume them. They carry Authority Boundary wording after the first cleanup slice. |\n\nThe remaining product-repository `docs/superpowers` files are:\n\n- Core: `docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md`\n- Core: `docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md`\n- Core: `docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md`\n- Core: `docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md`\n- Backend: `docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md`\n- Editor: `docs/superpowers/plans/2026-08-30-editor-overview-history.md`\n- Editor: `docs/superpowers/specs/2026-08-30-editor-overview-history-design.md`\n- Editor: `docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md`\n\n## Broad Classification\n\nProject Control Markdown is canonical or historical control material. It can\nhold shared understanding when registered through Document, Work, Phase,\nChecklist, and Evidence records.\n\nProduct repository entrypoints such as `AGENTS.md` and `README.md` may remain\nrepo-local. They should point broad FlowDoc work back to Project Control.\n\nProduct repository `docs/` files are not automatically wrong. Many appear to be\ncode-adjacent contracts, boundaries, audits, or implementation notes owned by\nCore, Backend, or Editor. They need classification before removal because they\nmay still explain repository-owned tests or runtime contracts.\n\nProduct repository `docs/superpowers` files are the first cleanup priority\nafter this inventory because their plan/spec shape conflicts most directly\nwith the documentation authority policy.\n\n## Next Cleanup Order\n\n1. Migrate or retire the remaining Editor WYSIWYG and Overview/History\n   `docs/superpowers` files after replacing current test dependencies or\n   preserving their retained value in Project Control.\n2. Classify the Core `docs/superpowers` text-block plan/spec files against the\n   existing Project Control Text Block synthesis and Core document map before\n   deletion or Authority Boundary repair.\n3. Classify the Backend `docs/superpowers` backend-service hardening plan\n   against its existing Project Control Work and Evidence records before\n   deletion or Authority Boundary repair.\n4. Inventory the larger Core, Backend, and Editor `docs/` contract/audit\n   families by repository owner and only then decide which files survive with\n   Authority Boundary wording.\n5. Revise FlowDoc agent roles only after enough cleanup evidence shows which\n   role boundaries are needed.\n\n## Evidence Boundary\n\nThis inventory is not product evidence. It does not promote Core, Backend,\nEditor, compatibility, frontend readiness, FlowDoc product truth, or map truth.\n"
     },
     {
       "kind": "document",
@@ -11385,6 +11517,16 @@
       "pathOrContractId": "docs/domains/flowdoc-product-terminology.md",
       "verificationSummary": "Project Control commit 61413513552bba0d078b2d8e03b0b06abdbe633c defines a product terminology foundation for overloaded FlowDoc terms, adds a Thai companion, and updates AGENTS/global/round workflow rules so future Editor/frontend and cross-repository product rounds classify ambiguous terms before implementation. This evidence supports only the terminology and workflow-control boundary; it does not promote product readiness, Core truth, Backend truth, Editor truth, deployed compatibility, or frontend design readiness.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
+      "verificationSummary": "Project Control records a repository Markdown inventory snapshot for the FlowDoc documentation authority cleanup. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed before Work requiredEvidence included evidence-flowdoc-repository-markdown-inventory-2026-08-31. The source scan used rg --files -g '*.md' against clean local main checkouts and found Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at source commits Project Control d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541, Core 5892df6e542a02b25ae3b18ee02a55842b83d48f, Backend fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08, and Editor 04daeeaaac04317508b5cf8e93de61249255d477. Product repositories were read-only in this inventory phase. The evidence identifies product-repository docs/superpowers as the first remaining cleanup risk, including the Core and Backend docs/superpowers Authority Boundary gap, while Editor docs/superpowers survivors remain intentionally because current tests and Project Control evidence still consume them. This evidence does not delete product-repository Markdown, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-08-31T15:45:00.000Z"
     },
     {
       "kind": "evidence",

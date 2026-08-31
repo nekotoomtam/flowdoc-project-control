@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+  "title": "Repository Markdown Inventory Checklist",
+  "items": [
+    {
+      "id": "capture-source-commits",
+      "label": "Capture exact source commits for Project Control, Core, Backend, and Editor.",
+      "state": "passed",
+      "evidenceTarget": "The inventory document and document record list exact source commits for all four FlowDoc repositories.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "Source commits recorded: Project Control d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541, Core 5892df6e542a02b25ae3b18ee02a55842b83d48f, Backend fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08, and Editor 04daeeaaac04317508b5cf8e93de61249255d477."
+    },
+    {
+      "id": "scan-tracked-markdown",
+      "label": "Scan tracked Markdown counts across all four repositories.",
+      "state": "passed",
+      "evidenceTarget": "Read-only rg --files -g '*.md' counts are preserved for Project Control, Core, Backend, and Editor.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "Read-only scan found Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files."
+    },
+    {
+      "id": "classify-authority-buckets",
+      "label": "Classify Markdown into broad authority buckets before deleting anything.",
+      "state": "passed",
+      "evidenceTarget": "The inventory distinguishes Project Control canonical/historical material from product-repo entrypoints, repo-owned docs, and migration candidates.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "The inventory classifies Project Control docs as canonical or historical control material, product-repo entrypoints as allowed local guidance, product-repo docs as code-adjacent candidates requiring review, and product-repo docs/superpowers as the first cleanup priority."
+    },
+    {
+      "id": "identify-product-repo-superpowers-risk",
+      "label": "Identify remaining product-repository docs/superpowers risk.",
+      "state": "passed",
+      "evidenceTarget": "The inventory lists remaining Core, Backend, and Editor docs/superpowers files and records Authority Boundary gaps.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "Remaining product-repository docs/superpowers files: Core 4, Backend 1, Editor 3. Core and Backend docs/superpowers files do not yet carry Authority Boundary wording; Editor survivors do."
+    },
+    {
+      "id": "preserve-no-delete-boundary",
+      "label": "Preserve the no-delete boundary for product repositories in this phase.",
+      "state": "passed",
+      "evidenceTarget": "The phase records product repositories as read-only and explicitly states no product-repository Markdown is deleted by this inventory.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "Product repositories were read-only in this inventory phase, and the inventory states that no product-repository Markdown is deleted by this inventory."
+    },
+    {
+      "id": "verify-project-control-records",
+      "label": "Verify Project Control records and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Focused Project Control documentation authority test, generation, check:data, and full worktree/main check gates pass before handoff.",
+      "evidenceIds": ["evidence-flowdoc-repository-markdown-inventory-2026-08-31"],
+      "verificationNote": "Project Control focused tests and generated data checks cover the inventory document, document record, Work link, Phase, Checklist, and Evidence record without promoting product truth."
+    }
+  ],
+  "createdAt": "2026-08-31T15:45:00.000Z",
+  "updatedAt": "2026-08-31T15:45:00.000Z"
+}
