@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+  "title": "Agent Role Documentation Authority Rewrite Checklist",
+  "items": [
+    {
+      "id": "capture-role-rewrite-scope",
+      "label": "Capture the Project Control cleanup path and role catalog target before editing.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing the role catalog.",
+      "evidenceIds": ["evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-project-control, active role project-control-steward, phase target phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite, checklist target checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite, and evidence target evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01."
+    },
+    {
+      "id": "write-red-role-catalog-guard",
+      "label": "Write a failing role catalog guard for documentation authority drift.",
+      "state": "passed",
+      "evidenceTarget": "The focused Project Control documentation authority test fails before the role catalog contains the new authority rules.",
+      "evidenceIds": ["evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"],
+      "verificationNote": "RED evidence included npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failing because docs/domains/flowdoc-role-catalog.md did not yet contain Documentation Authority For Roles."
+    },
+    {
+      "id": "update-role-catalog-authority-rules",
+      "label": "Update the role catalog with documentation authority responsibilities and stop rules.",
+      "state": "passed",
+      "evidenceTarget": "The role catalog names how Project Control Steward, Documentation Synthesizer, Product Implementation Agent, Planning Partner, Evidence Reviewer, Cross-Repo Boundary Reviewer, and Lane Reconciliation Reviewer prevent documentation authority drift.",
+      "evidenceIds": ["evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"],
+      "verificationNote": "docs/domains/flowdoc-role-catalog.md now contains Documentation Authority For Roles, blocks Product Implementation Agent from creating product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and requires broad plans to start in Project Control Work, Phase, Checklist, and Evidence targets."
+    },
+    {
+      "id": "verify-project-control-role-guard",
+      "label": "Verify the Project Control role guard and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Focused role guard, npm run generate, and Project Control validation pass after the role catalog update.",
+      "evidenceIds": ["evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"],
+      "verificationNote": "GREEN evidence after the role catalog update passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 file and 6 tests, npm run generate, and npm run check:data."
+    },
+    {
+      "id": "record-role-rewrite-evidence",
+      "label": "Record the role rewrite evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the role rewrite commit, files, verification, and boundaries intentionally not promoted.",
+      "evidenceIds": ["evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+    }
+  ],
+  "createdAt": "2026-08-31T17:42:00.000Z",
+  "updatedAt": "2026-08-31T17:42:00.000Z"
+}

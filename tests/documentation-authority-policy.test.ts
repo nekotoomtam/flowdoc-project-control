@@ -33,6 +33,10 @@ const EDITOR_SUPERPOWERS_FINAL_RETIRE_PHASE_ID = "phase-flowdoc-documentation-au
 const EDITOR_SUPERPOWERS_FINAL_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement";
 const EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID = "evidence-editor-superpowers-docs-retired-2026-09-01";
 const EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT = "4927a0022dc8170b8cb386ede0129a69508a1d29";
+const AGENT_ROLE_REWRITE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite";
+const AGENT_ROLE_REWRITE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite";
+const AGENT_ROLE_REWRITE_EVIDENCE_ID = "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01";
+const AGENT_ROLE_REWRITE_COMMIT = "be0729767ba3e86a828e4f133edf17380ab77fbe";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -489,6 +493,57 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("4 files and 13 tests");
     expect(verificationSummary).toContain("109 test files and 393 tests");
     expect(verificationSummary).toContain("Directory not empty");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the agent role rewrite that prevents product-repo superpowers truth drift", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === AGENT_ROLE_REWRITE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === AGENT_ROLE_REWRITE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      AGENT_ROLE_REWRITE_EVIDENCE_ID,
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(AGENT_ROLE_REWRITE_COMMIT);
+    expect(work?.expectedOutput).toContain("agent-role rewrite");
+    expect(work?.riskSummary).toContain("Final agent-role rewrite is recorded");
+
+    expect(phase).toMatchObject({
+      activeRole: "project-control-steward",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("role catalog");
+    expect(phase?.summary).toContain("Documentation Authority For Roles");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-role-rewrite-scope",
+      "write-red-role-catalog-guard",
+      "update-role-catalog-authority-rules",
+      "verify-project-control-role-guard",
+      "record-role-rewrite-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(AGENT_ROLE_REWRITE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(AGENT_ROLE_REWRITE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: AGENT_ROLE_REWRITE_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-role-catalog.md; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(AGENT_ROLE_REWRITE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Documentation Authority For Roles");
+    expect(verificationSummary).toContain("Product Implementation Agent must not create product-repository");
+    expect(verificationSummary).toContain("6 tests");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });

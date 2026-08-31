@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "e82d129c23cd2006679c69118117b7aab4cca32a73f8ba2d8435cc21b6cf81fb",
+  "sourceDigest": "eb70c4462805aa28500683965299fdd65efaf4113a923034f9ec462faa6511bb",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1900,18 +1900,19 @@
         "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent. Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retires the remaining three Editor docs/superpowers Overview/History and WYSIWYG files, moves the WYSIWYG boundary guard into the Editor code contract, and Editor docs/superpowers is now absent.",
-      "riskSummary": "Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers final cleanup is recorded by evidence-editor-superpowers-docs-retired-2026-09-01 and Editor docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty; Git no longer lists it as a worktree and branch fd-ed-superpowers-retire-0901 was deleted. The retained Editor Overview/History/Structure and WYSIWYG meanings remain bounded by Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and evidence-editor-wysiwyg-gate-definition-2026-08-31 plus the Editor WYSIWYG code contract; they do not promote product or map truth. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed. Final agent-role rewrite is still intentionally pending until the repository-local Markdown cleanup evidence is fuller.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent. Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retires the remaining three Editor docs/superpowers Overview/History and WYSIWYG files, moves the WYSIWYG boundary guard into the Editor code contract, and Editor docs/superpowers is now absent. Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe completes the agent-role rewrite by adding Documentation Authority For Roles to docs/domains/flowdoc-role-catalog.md.",
+      "riskSummary": "Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Final agent-role rewrite is recorded by evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01; the role catalog now blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth and requires broad plans to start in Project Control Work, Phase, Checklist, and Evidence targets. Editor docs/superpowers final cleanup is recorded by evidence-editor-superpowers-docs-retired-2026-09-01 and Editor docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty; Git no longer lists it as a worktree and branch fd-ed-superpowers-retire-0901 was deleted. The retained Editor Overview/History/Structure and WYSIWYG meanings remain bounded by Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and evidence-editor-wysiwyg-gate-definition-2026-08-31 plus the Editor WYSIWYG code contract; they do not promote product or map truth. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
         "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
         "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
         "evidence-backend-service-plan-doc-retired-2026-08-31",
         "evidence-core-superpowers-text-block-docs-retired-2026-09-01",
-        "evidence-editor-superpowers-docs-retired-2026-09-01"
+        "evidence-editor-superpowers-docs-retired-2026-09-01",
+        "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
-      "updatedAt": "2026-08-31T17:29:00.000Z",
+      "updatedAt": "2026-08-31T17:42:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
@@ -1919,7 +1920,8 @@
         "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
         "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
         "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
-        "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement"
+        "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3591,6 +3593,28 @@
       "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Agent Role Documentation Authority Rewrite",
+      "phaseState": "done",
+      "order": 70,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "project-control-steward",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, role catalog document, active role, Checklist target, or Evidence target before editing role guidance.",
+        "The rewrite would authorize product-repository docs/superpowers plans or specs as FlowDoc-wide truth.",
+        "The rewrite would blur Project Control records, Core runtime truth, Backend service truth, and Editor UI truth.",
+        "The rewrite would claim product readiness, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "The role catalog contains Documentation Authority For Roles, product-repository docs/superpowers truth drift is blocked by test, Project Control records the role rewrite evidence, and no product or map truth is promoted.",
+      "summary": "Done: Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe adds Documentation Authority For Roles to docs/domains/flowdoc-role-catalog.md. The role catalog now states that Product Implementation Agent must not create product-repository docs/superpowers plans or specs for FlowDoc-wide truth, Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation, Documentation Synthesizer writes shared summaries in Project Control rather than product-repository superpowers files, and every agent handoff must name Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state.",
+      "createdAt": "2026-08-31T17:42:00.000Z",
+      "updatedAt": "2026-08-31T17:42:00.000Z"
     },
     {
       "kind": "phase",
@@ -7974,6 +7998,66 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+      "title": "Agent Role Documentation Authority Rewrite Checklist",
+      "items": [
+        {
+          "id": "capture-role-rewrite-scope",
+          "label": "Capture the Project Control cleanup path and role catalog target before editing.",
+          "state": "passed",
+          "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing the role catalog.",
+          "evidenceIds": [
+            "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-project-control, active role project-control-steward, phase target phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite, checklist target checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite, and evidence target evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01."
+        },
+        {
+          "id": "write-red-role-catalog-guard",
+          "label": "Write a failing role catalog guard for documentation authority drift.",
+          "state": "passed",
+          "evidenceTarget": "The focused Project Control documentation authority test fails before the role catalog contains the new authority rules.",
+          "evidenceIds": [
+            "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
+          ],
+          "verificationNote": "RED evidence included npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failing because docs/domains/flowdoc-role-catalog.md did not yet contain Documentation Authority For Roles."
+        },
+        {
+          "id": "update-role-catalog-authority-rules",
+          "label": "Update the role catalog with documentation authority responsibilities and stop rules.",
+          "state": "passed",
+          "evidenceTarget": "The role catalog names how Project Control Steward, Documentation Synthesizer, Product Implementation Agent, Planning Partner, Evidence Reviewer, Cross-Repo Boundary Reviewer, and Lane Reconciliation Reviewer prevent documentation authority drift.",
+          "evidenceIds": [
+            "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
+          ],
+          "verificationNote": "docs/domains/flowdoc-role-catalog.md now contains Documentation Authority For Roles, blocks Product Implementation Agent from creating product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and requires broad plans to start in Project Control Work, Phase, Checklist, and Evidence targets."
+        },
+        {
+          "id": "verify-project-control-role-guard",
+          "label": "Verify the Project Control role guard and generated read model.",
+          "state": "passed",
+          "evidenceTarget": "Focused role guard, npm run generate, and Project Control validation pass after the role catalog update.",
+          "evidenceIds": [
+            "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
+          ],
+          "verificationNote": "GREEN evidence after the role catalog update passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 file and 6 tests, npm run generate, and npm run check:data."
+        },
+        {
+          "id": "record-role-rewrite-evidence",
+          "label": "Record the role rewrite evidence without promoting product truth.",
+          "state": "passed",
+          "evidenceTarget": "Project Control evidence cites the role rewrite commit, files, verification, and boundaries intentionally not promoted.",
+          "evidenceIds": [
+            "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01"
+          ],
+          "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+        }
+      ],
+      "createdAt": "2026-08-31T17:42:00.000Z",
+      "updatedAt": "2026-08-31T17:42:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
       "title": "Backend Service Plan Docs Retirement Checklist",
@@ -11763,6 +11847,16 @@
       "pathOrContractId": "docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md; src/editor/draft/textBlockAuthoringBoundary.ts; src/tests/wysiwygGate.test.ts",
       "verificationSummary": "Editor merge commit 4f12a87b5f1e5e440fdf1bf1231450002657fba9 records a bounded WYSIWYG gate definition. RED evidence included npm run test -- src/tests/wysiwygGate.test.ts failing because docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md did not exist and the WYSIWYG gate exports were undefined. GREEN evidence passed npm run test -- src/tests/wysiwygGate.test.ts src/tests/textBlockAuthoringBoundary.test.ts with 2 files and 7 tests, npm run test -- src/tests/wysiwygGate.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts src/tests/paperTextBlockEditor.test.ts src/tests/editorLargeStructurePerformance.test.ts with 5 files and 23 tests, npm run type-check, and npm run check in the Editor worktree with 109 test files, 395 tests, and build. Merged Editor main passed npm run check with 109 test files, 395 tests, and build. The spec states FlowDoc WYSIWYG means managed document-surface authoring, preserves Hybrid Managed Cards + one Active Text-Block Island as the accepted direction, states the bounded textarea active text-block island is not WYSIWYG, states Full-document contenteditable is out of scope, and states History, Overview, Structure, and Preview are not WYSIWYG by themselves. resolveWysiwygGateDecision records WYSIWYG behavior categories, non-WYSIWYG behaviors, required entry prerequisites, contenteditable blocking, rich editor engine package blocking for Slate/ProseMirror/TipTap-style packages, and keeps activeTextInputBinding as textarea. Project Control RED evidence included npm test -- tests/project-roadmap-work-queue.test.ts --maxWorkers=4 failing before this phase/evidence was registered. Project Control GREEN evidence passed the same focused roadmap test with 1 file and 2 tests. Combined npm run check in the Project Control worktree repeatedly hit Vitest fork worker timeouts in app-jsdom, so the worktree verification used the split gate: npm run check:data, npm run type-check, npx vitest run --exclude tests/e2e/** --project=node --maxWorkers=1 with 52 files and 276 tests, npx vitest run --exclude tests/e2e/** --project=app-jsdom --maxWorkers=1 with 7 files and 54 tests, npm run build, and npm run test:e2e with 6 Playwright e2e tests. This evidence does not enable WYSIWYG behavior, contenteditable runtime, DOM innerHTML document truth, ProseMirror, Slate, TipTap, direct preview typing, table/cell surface editing, media authoring, visible UI behavior changes, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Editor npm install still reports 5 high severity audit findings and Vite retains the existing chunk-size warning. The Editor branch fd-ed-wysiwyg-gate-0831 was deleted after merge; Git no longer lists C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-wysiwyg-gate-0831 as a worktree, but that residual folder remains on disk after git worktree remove failed with Directory not empty and direct recursive deletion was intentionally avoided because dependency links have previously caused cleanup risk. Project Control baseline npm run check hit Vitest fork worker start timeouts and one silent runner crash before record edits; split verification passed, so this remains tracked as intermittent runner infrastructure risk rather than a Project Control data failure.",
       "verifiedAt": "2026-08-31T12:25:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "be0729767ba3e86a828e4f133edf17380ab77fbe",
+      "pathOrContractId": "docs/domains/flowdoc-role-catalog.md; tests/documentation-authority-policy.test.ts",
+      "verificationSummary": "Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe records the agent-role documentation authority rewrite after product-repository docs/superpowers cleanup. docs/domains/flowdoc-role-catalog.md now includes Documentation Authority For Roles. The new role rules state that Product Implementation Agent must not create product-repository docs/superpowers plans or specs for FlowDoc-wide truth, Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation, Documentation Synthesizer writes shared summaries in Project Control rather than product-repository superpowers files, Evidence Reviewer checks repository id, exact commit, path or contract id, verification summary, and unresolved-risk boundary before recommending truth-state changes, Cross-Repo Boundary Reviewer rejects blended unqualified truth claims, Lane Reconciliation Reviewer records cleanup rationale before removing old lanes, and every agent handoff must name Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed because the role catalog did not yet contain Documentation Authority For Roles. GREEN evidence after the role catalog update passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 file and 6 tests, npm run generate, and npm run check:data. This evidence does not clean remaining Project Control docs/superpowers, does not edit Core, Backend, or Editor behavior, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-08-31T17:42:00.000Z"
     },
     {
       "kind": "evidence",
