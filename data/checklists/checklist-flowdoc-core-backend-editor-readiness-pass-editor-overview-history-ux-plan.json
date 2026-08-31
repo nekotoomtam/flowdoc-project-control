@@ -1,0 +1,70 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan",
+  "title": "Editor Overview History UX Plan Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Project Control Overview/History, Editor roadmap, and owner repository context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, product terminology, existing Project Control Overview/History implementation evidence, Editor AGENTS.md, and old Editor roadmap Task 9 are reviewed before record edits.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor for the planning files, Project Control as future GUI owner for Project Control Overview/History changes, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan, and evidence target evidence-editor-overview-history-ux-plan-2026-08-31."
+    },
+    {
+      "id": "write-red-doc-tests",
+      "label": "Write failing Editor documentation tests before accepting the Overview, History, and Structure plan.",
+      "state": "passed",
+      "evidenceTarget": "Documentation tests fail before the spec and plan exist.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included npm run test -- src/tests/editorOverviewHistoryPlanDocs.test.ts failing because docs/superpowers/specs/2026-08-30-editor-overview-history-design.md and docs/superpowers/plans/2026-08-30-editor-overview-history.md did not exist."
+    },
+    {
+      "id": "define-surface-split",
+      "label": "Define Project Control Overview, Project Control Work History, Editor Structure, and Editor local history as separate surfaces.",
+      "state": "passed",
+      "evidenceTarget": "Spec text states that Overview answers where an area or repository lives, History answers what was recorded over time, Editor Structure answers current document structure, and History is not Evidence.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "editorOverviewHistoryPlanDocs.test.ts proves the written spec separates Project Control Overview/History from Editor Structure and blocks UI implementation until user review."
+    },
+    {
+      "id": "classify-ambiguous-terms",
+      "label": "Classify ambiguous FlowDoc terms with canonical dispositions.",
+      "state": "passed",
+      "evidenceTarget": "Overview, History, Structure, Work, Evidence, Map, Node, Phase, and Readiness receive define or split classifications.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "The spec classifies Overview, Structure, Work, Evidence, Phase, and Readiness as define; History, Map, and Node as split; and avoids unqualified map/node/history handoff language."
+    },
+    {
+      "id": "create-implementation-plan",
+      "label": "Create a future implementation plan with a user review gate before UI work.",
+      "state": "passed",
+      "evidenceTarget": "Plan includes surface vocabulary, Structure selection path, Project Control cross-link, and user review gate tasks, with no placeholder markers.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "The plan starts with the required agentic-worker header, points to the spec path, includes concrete future tests and implementation snippets, and says not to implement Project Control Overview or Work History View changes until user review approves the spec."
+    },
+    {
+      "id": "verify-and-record",
+      "label": "Run Editor worktree and merged-main gates, record Project Control evidence, and keep maps unchanged.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor documentation tests, related Structure/History tests, full Editor check, and Project Control record tests support the bounded evidence record.",
+      "evidenceIds": [
+        "evidence-editor-overview-history-ux-plan-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree passed doc test 3 cases, focused Structure/History gate with 4 files and 19 tests, and npm run check with 107 test files and 388 tests plus build. Editor main passed npm run check with the same 107 test files and 388 tests plus build. No UI implementation files were changed by this planning slice."
+    }
+  ],
+  "createdAt": "2026-08-31T10:30:00.000Z",
+  "updatedAt": "2026-08-31T10:30:00.000Z"
+}

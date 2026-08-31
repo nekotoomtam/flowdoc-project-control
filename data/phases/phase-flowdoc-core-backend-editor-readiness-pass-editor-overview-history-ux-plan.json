@@ -1,0 +1,25 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-overview-history-ux-plan",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Overview History UX Plan",
+  "phaseState": "done",
+  "order": 210,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Overview, History, Structure, Work, Evidence, Map, Node, Phase, or Readiness remain ambiguous after the planning slice.",
+    "Project Control Overview or Work History implementation starts before the written spec is reviewed by the user.",
+    "Editor Structure implementation starts from this planning slice without a selected follow-up lane.",
+    "History is presented as Evidence or planned work is presented as verified system state.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct UI implementation, product readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor records a bounded Overview, History, and Structure UX design plus implementation plan that separates Project Control Overview/History from Editor Structure, classifies ambiguous terms, and stops before UI implementation pending user review.",
+  "summary": "Done: Editor merge commit 16b9ba43d42a2a2beebeca48caeb96d533101dac adds a bounded Overview, History, and Structure UX planning gate. The spec defines Project Control Repo Directory Overview, Project Control Work History View, Editor Structure Panel, and Editor local history, and classifies Overview, History, Structure, Work, Evidence, Map, Node, Phase, and Readiness using the canonical FlowDoc ambiguity dispositions. The implementation plan gives future tasks for surface vocabulary, Structure selection path facts, Project Control cross-link contracts, and a user review gate. This does not implement Project Control Overview or Work History UI, does not change Editor Structure UI, does not enable WYSIWYG behavior or contenteditable runtime, and does not promote product or map truth.",
+  "createdAt": "2026-08-31T10:30:00.000Z",
+  "updatedAt": "2026-08-31T10:30:00.000Z"
+}
