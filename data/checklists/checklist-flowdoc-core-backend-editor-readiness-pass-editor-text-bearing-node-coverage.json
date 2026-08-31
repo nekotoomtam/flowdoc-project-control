@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-bearing-node-coverage",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-bearing-node-coverage",
+  "title": "Editor Text-Bearing Node Coverage Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, Core AGENTS.md, Backend AGENTS.md, and the bounded text-bearing node coverage target are reviewed before implementation.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core references, phase-flowdoc-core-backend-editor-readiness-pass-editor-text-bearing-node-coverage, checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-bearing-node-coverage, and evidence target evidence-editor-text-bearing-node-coverage-2026-08-31 before edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor tests before changing text-bearing node selection or rendering behavior.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before Outline exposes nested text descendants, Outline selection preserves nested text targets, composite paper surfaces render an embedded textarea, and Backend mutation apply preserves nested text selection.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "RED evidence included nodePresentation, commands, and paperTextBlockEditor failures for missing nested Outline rows, source-aware Outline selection, and embedded textarea rendering, plus backendIntegration failure where text-block.rich-inline.replace selected summary-columns instead of summary-left-text before the root-cause fix."
+    },
+    {
+      "id": "expose-outline-text-descendants",
+      "label": "Expose editable text-bearing descendants in Outline without changing canvas surface render order.",
+      "state": "passed",
+      "evidenceTarget": "Editor presentation and render projections include nested text-block descendants under composite surfaces for Outline and active editing metadata while keeping canvasSurfaceNodeIds and renderableNodeIds surface-based.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "nodePresentationProjector now adds editable text-block descendants such as summary-left-text, summary-right-text, detail-cell-a-text, and detail-cell-b-text as depth 1 Outline rows while projectRenderNodes remains limited to title, summary-columns, and detail-table for the Core fixture."
+    },
+    {
+      "id": "preserve-source-aware-selection",
+      "label": "Preserve exact text-block selection for Outline and rich-inline mutation apply while keeping structural commands surface-based.",
+      "state": "passed",
+      "evidenceTarget": "Outline selection of editable text descendants selects the exact text-block id, canvas selection of internal nodes still resolves to the owning surface, and Backend rich-inline mutation apply preserves nested text-block selection after save.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "editorView/editorState/commandExecutor route selection.selectNode through source-aware selection; runtimeBackendMutation preserves text-block.rich-inline.replace targets when they remain editable text selection targets, while commandTargets and structural mutation paths continue to resolve operation surfaces."
+    },
+    {
+      "id": "render-composite-text-editor",
+      "label": "Render a bounded embedded textarea for the selected text descendant inside a composite paper surface.",
+      "state": "passed",
+      "evidenceTarget": "PaperBlock renders a non-button composite editing container only while a selected nested text-block descendant is active, reusing PaperTextBlockEditorControls and avoiding contenteditable.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "PaperBlock now finds active editableTextDescendants and renders data-active-text-descendant-id with the existing textarea/save/cancel controls inside the columns/table surface; top-level text blocks still swap to PaperTextBlockEditor and inactive blocks remain keyboard-reorderable buttons."
+    },
+    {
+      "id": "prove-live-backend-nested-smoke",
+      "label": "Prove nested text save and reload through a live local Backend browser smoke.",
+      "state": "passed",
+      "evidenceTarget": "The browser smoke selects summary-left-text from Outline, types a new value, saves by text-block.rich-inline.replace, reloads from Backend api transport, reselects summary-left-text, verifies the saved textarea value, and still reorders afterward.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "The updated retained smoke records nestedTextBlockTyping with textareaValueBefore Prepared summary, textareaValueAfterTyping and textareaValueAfterReload Nested outline text editor, savedInlineText Nested outline text editor, contentEditableCount 0, and final outline including nested text descendants."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup risks remain explicit.",
+      "evidenceIds": ["evidence-editor-text-bearing-node-coverage-2026-08-31"],
+      "verificationNote": "Editor worktree passed focused tests, backendIntegration root-cause test, live Backend browser smoke, and npm run check with 102 test files and 358 tests plus build. Merged Editor main passed npm run check and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-text-bearing-0831 was deleted after fast-forward merge, but C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-text-bearing-0831 remains on disk after git worktree remove failed with Directory not empty; Git no longer lists it as a worktree and direct recursive deletion was blocked by local tool policy."
+    }
+  ],
+  "createdAt": "2026-08-31T02:40:00.000Z",
+  "updatedAt": "2026-08-31T02:40:00.000Z"
+}

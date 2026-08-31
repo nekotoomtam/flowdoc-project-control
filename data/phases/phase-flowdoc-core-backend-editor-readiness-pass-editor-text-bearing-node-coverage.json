@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-bearing-node-coverage",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Text-Bearing Node Coverage",
+  "phaseState": "done",
+  "order": 130,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Editor exposes text-bearing descendants in Outline by changing canvas surface order or page render pagination semantics.",
+    "Canvas hit-test, keyboard, inspector, delete, duplicate, or reorder commands stop resolving internal nodes through their owning operation surface.",
+    "Outline selection of an editable text-bearing descendant still normalizes back to the owning columns or table surface.",
+    "Backend text-block.rich-inline.replace results for nested text-block targets snap selection back to the owning composite surface after save.",
+    "The paper surface cannot open a bounded textarea for the selected nested text-block descendant without contenteditable.",
+    "The live Backend browser smoke cannot select, type, save, reload, and reselect a nested columns text-block through the product Design route.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, exact cell/column layout authoring, arbitrary rich-inline authoring, field-ref editing, durable drafts, collaboration, production readiness, broad frontend readiness, or map truth."
+  ],
+  "verificationTarget": "Editor extends the bounded textarea editing lane so text-bearing Core runtime node descendants represented inside composite columns/table surfaces are visible in Outline, selectable from Outline, editable through the existing text-block.rich-inline.replace Backend path, and proven by live local Backend browser smoke without changing canvas surface semantics or enabling WYSIWYG.",
+  "summary": "Done: Editor commit 3cc2cf9e008fa43bd0be491f4dc6ba83b041faf2 extends bounded text-bearing node coverage. Outline now includes editable text-block descendants under columns and table surfaces while canvas renderable surfaces, pagination, hit-test selection, and structural command normalization remain surface-based. Outline selection preserves exact editable text-block targets, Backend text-block.rich-inline.replace apply preserves nested text-block selection after save, and composite paper surfaces render a bounded embedded textarea only for the selected nested text-block. The live local Backend browser smoke selects summary-left-text from Outline, types Nested outline text editor, saves through Backend mutation r8, reloads api r8, reselects summary-left-text to verify the saved value, then reselects title and reorders afterward. The slice intentionally keeps WYSIWYG behavior, contenteditable runtime, exact cell/column layout authoring, arbitrary rich-inline authoring, field-ref editing, durable drafts, collaboration, production readiness, broad frontend readiness, and map truth closed.",
+  "createdAt": "2026-08-31T02:40:00.000Z",
+  "updatedAt": "2026-08-31T02:40:00.000Z"
+}
