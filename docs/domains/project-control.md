@@ -15,6 +15,14 @@ The copy-ready global Codex guidance lives at
 That global layer keeps FlowDoc rooms opened from any repository pointed back
 to Project Control first.
 
+FlowDoc documentation authority is governed by
+`docs/domains/flowdoc-documentation-authority-policy.md`. That policy keeps
+FlowDoc-wide shared understanding in Project Control, permits repo-local
+Markdown only for code-adjacent, repository-owned, or historical purposes, and
+requires Authority Boundary wording before repository-local Markdown survives
+cleanup. The policy does not promote Core, Backend, Editor, compatibility,
+frontend readiness, or FlowDoc product truth.
+
 The approved next Project Control GUI direction is the repo-first Overview and
 History split in
 `docs/domains/project-control-repo-first-overview-history-2026-08-28.md`.

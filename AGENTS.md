@@ -28,8 +28,9 @@ Before taking broad work, read these files in order:
 5. `docs/domains/flowdoc-round-workflow.md`
 6. `docs/domains/work-tree-operating-rules.md`
 7. `docs/domains/project-control.md`
-8. `docs/domains/flowdoc-product-terminology.md`
-9. `docs/domains/flowdoc-product-terminology-th.md`
+8. `docs/domains/flowdoc-documentation-authority-policy.md`
+9. `docs/domains/flowdoc-product-terminology.md`
+10. `docs/domains/flowdoc-product-terminology-th.md`
 
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or
@@ -37,6 +38,29 @@ Editor, apply the product terminology discipline before implementation. Use the
 qualified canonical term or classify the ambiguity as `define`, `split`,
 `rename`, `deprecated`, `context-only`, or `blocked`. Terminology records do not
 promote FlowDoc product truth by themselves.
+
+## Documentation authority
+
+Project Control is the canonical home for FlowDoc-wide shared understanding:
+cross-repository status, Work paths, Phase state, Checklist targets, Evidence
+targets, document authority, repository ownership, product terminology, and
+map-truth boundaries.
+
+Repo-local Markdown may remain only when it is code-adjacent,
+repository-owned, or historical. Every repo-local Markdown file that survives
+cleanup must carry an Authority Boundary naming the owner repository, narrow
+scope, what it does not prove, and the governing Project Control document or
+Work item.
+
+Do not create product-repository `docs/superpowers/plans` or
+`docs/superpowers/specs` files for FlowDoc-wide truth. Put shared or
+cross-repository plans in Project Control Work, Phase, Checklist, and Evidence
+targets first. Repository-local plans or specs are allowed only for bounded
+repo-owned implementation and must not claim FlowDoc-wide status.
+
+Cleanup order is inventory, classify, summarize or register in Project
+Control, then retire. Do not delete repo-local Markdown until retained value,
+source evidence, or discard rationale has been recorded.
 
 Use `generated/project-index.json` only as the generated read model. Use
 `generated/project-control.sqlite` only as an ignored local projection.

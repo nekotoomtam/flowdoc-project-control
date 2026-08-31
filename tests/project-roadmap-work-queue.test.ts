@@ -462,7 +462,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 37);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 38);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -519,11 +519,25 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-documentation-authority-cleanup",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
         "project-control-hardening",
         "project-control-overview-history-gui",
       ],
+    });
+    expect(model.work.find((item) => item.id === "flowdoc-documentation-authority-cleanup")).toMatchObject({
+      activeRole: "project-control-steward",
+      nodeId: "project-control",
+      parentWorkId: "flowdoc-product-development-resumption",
+      phaseIds: ["phase-flowdoc-documentation-authority-policy-foundation"],
+      repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+      workKind: "task",
+      workPathIds: [
+        "flowdoc-product-development-resumption",
+        "flowdoc-documentation-authority-cleanup",
+      ],
+      workState: "in-progress",
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-evidence-refresh")).toMatchObject({
       workKind: "task",
@@ -670,6 +684,7 @@ describe("project roadmap Work Queue", () => {
       truthState: "current",
       workIds: [
         "agent-and-skill-design",
+        "flowdoc-documentation-authority-cleanup",
         "project-control-hardening",
         "project-control-overview-history-gui",
         "work-tree-phase-checklist-sqlite-contract",

@@ -1,0 +1,29 @@
+{
+  "kind": "work",
+  "id": "flowdoc-documentation-authority-cleanup",
+  "title": "FlowDoc Documentation Authority Cleanup",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+  "workState": "in-progress",
+  "summary": "Centralize FlowDoc-wide documentation authority in Project Control, then classify and clean repository-local Markdown without losing source evidence or repo-owned contracts.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-project-control-overview",
+    "doc-flowdoc-global-codex-guidance",
+    "doc-flowdoc-documentation-authority-policy"
+  ],
+  "activeRole": "project-control-steward",
+  "expectedOutput": "Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Target evidence id after policy verification: evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31.",
+  "riskSummary": "Repo-local Markdown is not deleted by this foundation phase. Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-31T14:20:00.000Z",
+  "updatedAt": "2026-08-31T14:20:00.000Z"
+}

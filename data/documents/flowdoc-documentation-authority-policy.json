@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-documentation-authority-policy",
+  "title": "FlowDoc Documentation Authority Policy",
+  "path": "docs/domains/flowdoc-documentation-authority-policy.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control canonical FlowDoc documentation authority policy for separating shared FlowDoc understanding from repo-local Markdown before cleanup.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

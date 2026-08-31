@@ -24,6 +24,25 @@ Backend.
 - Broad work should move in phases with explicit handoffs instead of one large
   unreviewed change.
 
+## Documentation authority boundary
+
+Project Control remains the canonical home for FlowDoc-wide shared
+understanding, including cross-repository status, Work paths, Phase state,
+Checklist targets, Evidence targets, document authority, repository ownership,
+product terminology, and map-truth boundaries.
+
+Product-repository Markdown can remain when it is code-adjacent,
+repository-owned, or historical, but it must not become a second source of
+FlowDoc-wide truth. Surviving repo-local Markdown should carry an Authority
+Boundary that names the owner repository, local scope, what it does not prove,
+and the governing Project Control document or Work item.
+
+Do not write product-repository `docs/superpowers/plans` or
+`docs/superpowers/specs` files for FlowDoc-wide truth. Use Project Control
+Work, Phase, Checklist, and Evidence targets for shared plans and cleanup
+decisions. Agent role revisions for documentation cleanup should wait until
+cleanup evidence shows which roles are needed.
+
 ## Project Control GUI orientation
 
 Project Control GUI work must classify the surface as Overview, History, or

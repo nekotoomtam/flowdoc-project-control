@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-policy-foundation",
+  "phaseId": "phase-flowdoc-documentation-authority-policy-foundation",
+  "title": "Documentation Authority Policy Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-current-inventory",
+      "label": "Capture the current tracked Markdown inventory and risk shape before cleanup.",
+      "state": "passed",
+      "evidenceTarget": "Project Control, Core, Backend, and Editor tracked Markdown counts and high-risk clusters are identified before any deletion.",
+      "verificationNote": "Read-only audit found Project Control 91 tracked Markdown files, Core 352, Backend 40, and Editor 59, with high-risk roadmap/status clusters in Core, Editor, and Backend. No product-repository Markdown was edited or deleted in this phase."
+    },
+    {
+      "id": "define-authority-boundary",
+      "label": "Define Project Control as the canonical home for FlowDoc-wide shared understanding.",
+      "state": "passed",
+      "evidenceTarget": "The policy states where FlowDoc-wide documentation authority lives and what repo-local Markdown must not claim.",
+      "verificationNote": "docs/domains/flowdoc-documentation-authority-policy.md states that Project Control is the canonical home for FlowDoc-wide shared understanding, while product repositories keep local implementation and test ownership."
+    },
+    {
+      "id": "separate-allowed-repo-docs",
+      "label": "Separate allowed repo-local Markdown from duplicate shared truth.",
+      "state": "passed",
+      "evidenceTarget": "The policy allows only code-adjacent, repository-owned, or historical repo-local Markdown and requires Authority Boundary wording for survivors.",
+      "verificationNote": "The policy allows repository entrypoints, setup/package/example guidance, code-adjacent contracts, implementation notes, and historical source docs; surviving repo-local Markdown must declare an Authority Boundary."
+    },
+    {
+      "id": "define-cleanup-sequence",
+      "label": "Define cleanup sequencing before deletion.",
+      "state": "passed",
+      "evidenceTarget": "The policy blocks deletion until inventory, classification, summary or registration, and retirement decisions are complete.",
+      "verificationNote": "The policy orders cleanup as Inventory -> classify -> summarize or register -> retire and states that repo-local Markdown is not deleted by this foundation phase."
+    },
+    {
+      "id": "guard-future-agents",
+      "label": "Guard future agents without prematurely rewriting role definitions.",
+      "state": "passed",
+      "evidenceTarget": "Agent-facing Project Control guidance points future rooms to the documentation authority policy while deferring role revisions until cleanup evidence exists.",
+      "verificationNote": "AGENTS.md, the copy-ready global guidance, and the agent operating model now point to the documentation authority policy. The policy explicitly leaves role revisions for after cleanup evidence is recorded."
+    },
+    {
+      "id": "verify-project-control-records",
+      "label": "Verify Project Control records and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Project Control data validation and focused documentation authority tests pass before the policy foundation is treated as recorded.",
+      "verificationNote": "Focused verification target is npm run check:data plus npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 after data and documentation records are added."
+    }
+  ],
+  "createdAt": "2026-08-31T14:20:00.000Z",
+  "updatedAt": "2026-08-31T14:20:00.000Z"
+}

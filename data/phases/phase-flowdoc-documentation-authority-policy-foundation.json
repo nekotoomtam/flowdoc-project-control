@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-policy-foundation",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Documentation Authority Policy Foundation",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The policy would authorize deleting product-repository Markdown before inventory, classification, source preservation, and Project Control registration.",
+    "The policy would treat repo-local Markdown as the authority for FlowDoc-wide shared understanding.",
+    "The policy would create new agent roles before cleanup evidence shows which roles are actually needed.",
+    "The phase would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Project Control owns the policy document, document record, Work record, Phase, and Checklist for documentation authority cleanup while preserving product-repository Markdown until later repository-owned cleanup phases.",
+  "summary": "Done: Project Control records the documentation authority policy foundation without deleting product-repository Markdown. The policy makes Project Control the canonical home for FlowDoc-wide shared understanding, allows repo-local Markdown only for code-adjacent, repository-owned, or historical purposes, requires Authority Boundary wording for surviving repo-local Markdown, blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and sequences cleanup as inventory, classification, Project Control summary or registration, then retirement.",
+  "createdAt": "2026-08-31T14:20:00.000Z",
+  "updatedAt": "2026-08-31T14:20:00.000Z"
+}

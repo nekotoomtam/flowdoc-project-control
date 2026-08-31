@@ -42,6 +42,35 @@ After reading Project Control, identify:
 
 Then read the owning repository's `AGENTS.md` before editing that repository.
 
+## Documentation authority
+
+Before creating, updating, migrating, or deleting FlowDoc Markdown, read:
+
+```text
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-documentation-authority-policy.md
+```
+
+Project Control is the canonical home for FlowDoc-wide shared understanding:
+cross-repository status, Work paths, Phase state, Checklist targets, Evidence
+targets, document authority, repository ownership, product terminology, and
+map-truth boundaries.
+
+Repo-local Markdown may remain only when it is code-adjacent,
+repository-owned, or historical. Every repo-local Markdown file that survives
+cleanup must carry an Authority Boundary naming the owner repository, narrow
+scope, what it does not prove, and the governing Project Control document or
+Work item.
+
+Do not create product-repository `docs/superpowers/plans` or
+`docs/superpowers/specs` files for FlowDoc-wide truth. Put shared or
+cross-repository plans in Project Control Work, Phase, Checklist, and Evidence
+targets first. Repository-local plans or specs are allowed only for bounded
+repo-owned implementation and must not claim FlowDoc-wide status.
+
+Cleanup order is inventory, classify, summarize or register in Project
+Control, then retire. Do not delete repo-local Markdown until retained value,
+source evidence, or discard rationale has been recorded.
+
 ## Terminology discipline
 
 Before Editor, frontend, product behavior, cross-repository contract, or
