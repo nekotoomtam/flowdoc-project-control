@@ -141,6 +141,7 @@ describe("FlowDoc documentation authority policy", () => {
     ]));
     expect(work?.expectedOutput).toContain(EDITOR_ROADMAP_RETIRE_COMMIT);
     expect(work?.riskSummary).toContain("fd-ed-doc-retire-0831");
+    expect(work?.riskSummary).toContain("tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD");
 
     expect(phase).toMatchObject({
       activeRole: "documentation-synthesizer",
@@ -176,6 +177,8 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("3 files and 8 tests");
     expect(verificationSummary).toContain("110 test files, 396 tests");
     expect(verificationSummary).toContain("Filename too long");
+    expect(verificationSummary).toContain("tracked Core deletions under packages/text-engine-rust-wasm");
+    expect(verificationSummary).toContain("Core status returned clean");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
   });
 });

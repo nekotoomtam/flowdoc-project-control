@@ -50,7 +50,7 @@
       "state": "passed",
       "evidenceTarget": "Project Control evidence cites the Editor commit, files, verification, deleted paths, residual cleanup risk, and boundaries intentionally not promoted.",
       "evidenceIds": ["evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31"],
-      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm; they were restored from Core HEAD and Core status returned clean."
     }
   ],
   "createdAt": "2026-08-31T15:05:00.000Z",
