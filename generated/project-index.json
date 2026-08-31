@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "112320261fe06ea544991ec2cd07b7e8d8a2059e8d123c92d6acddfff1a1ee3b",
+  "sourceDigest": "2caab3d9b9aad95f184efa29da5140b0511c5545ebf3c284009fbd431a482686",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1900,12 +1900,13 @@
         "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31.",
-      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers has 4 remaining plan/spec files and Backend docs/superpowers has 1 remaining plan file; those files do not yet carry Authority Boundary wording and are the next migration/retirement candidates after source preservation. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty.",
+      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers has 4 remaining plan/spec files without Authority Boundary wording and remains the next product-repository docs/superpowers cleanup candidate after source preservation. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
         "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
-        "evidence-flowdoc-repository-markdown-inventory-2026-08-31"
+        "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
+        "evidence-backend-service-plan-doc-retired-2026-08-31"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
       "updatedAt": "2026-08-31T15:15:00.000Z",
@@ -1913,7 +1914,8 @@
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
         "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
-        "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory"
+        "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
+        "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3585,6 +3587,30 @@
       "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Backend Service Plan Docs Retirement",
+      "phaseState": "done",
+      "order": 40,
+      "repositoryIds": [
+        "repo-backend",
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, Backend owner repository, active role, Checklist target, or Evidence target before editing Backend Markdown.",
+        "The slice would delete Backend readiness boundary content before retained value or discard rationale is recorded.",
+        "The slice would change Backend service runtime behavior while acting as documentation cleanup.",
+        "The slice would leave docs/superpowers Markdown in Backend after claiming retirement.",
+        "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Backend docs/superpowers is empty after retiring the one backend service hardening plan, Backend AGENTS.md points future FlowDoc-wide docs work to Project Control, docs/BACKEND_SERVICE_READINESS_BOUNDARY.md carries Authority Boundary wording, Backend worktree and main gates pass, and Project Control records work-scoped evidence without promoting product truth.",
+      "summary": "Done: Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retired the one Backend docs/superpowers plan, docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, without changing Backend service behavior. Backend AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md preserves the retained readiness boundary with explicit Authority Boundary wording.",
+      "createdAt": "2026-08-31T16:15:00.000Z",
+      "updatedAt": "2026-08-31T16:15:00.000Z"
     },
     {
       "kind": "phase",
@@ -7896,6 +7922,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+      "title": "Backend Service Plan Docs Retirement Checklist",
+      "items": [
+        {
+          "id": "capture-backend-owner",
+          "label": "Capture the Project Control cleanup path and Backend owner before editing.",
+          "state": "passed",
+          "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Backend Markdown.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-backend, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement, and evidence target evidence-backend-service-plan-doc-retired-2026-08-31."
+        },
+        {
+          "id": "write-red-backend-doc-authority-test",
+          "label": "Write a failing Backend documentation authority guard before deleting the plan.",
+          "state": "passed",
+          "evidenceTarget": "The focused Backend documentation authority test fails before the docs/superpowers plan is retired.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "RED evidence included npm run test -- src/tests/backendDocumentationAuthority.test.ts failing because docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md still existed."
+        },
+        {
+          "id": "retire-backend-service-plan",
+          "label": "Retire the one Backend docs/superpowers service hardening plan.",
+          "state": "passed",
+          "evidenceTarget": "Backend commit deletes the backend service hardening plan and leaves Backend docs/superpowers empty.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 deletes docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, and rg --files docs/superpowers reports no Backend docs/superpowers path."
+        },
+        {
+          "id": "preserve-backend-readiness-boundary",
+          "label": "Preserve retained Backend readiness context in a bounded repo-owned document.",
+          "state": "passed",
+          "evidenceTarget": "Backend AGENTS.md points future shared Markdown work to Project Control, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md carries Authority Boundary wording.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "Backend AGENTS.md now points to docs/domains/flowdoc-documentation-authority-policy.md, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md states it is repo-backend local scope, not product evidence, and points to evidence-backend-service-contract-hardening-2026-08-27."
+        },
+        {
+          "id": "verify-backend-main",
+          "label": "Verify Backend worktree and merged main gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused docs tests, Backend worktree npm run check, and merged Backend main npm run check pass after cleanup.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "Focused Backend docs/readiness gate passed 3 files and 7 tests. Backend worktree npm run check passed after supplying the expected sibling Core fixture path for worktree-only tests. Backend merged main npm run check eventually passed type-check, 90 passed test files, 1 skipped file, 325 passed tests, 24 skipped tests, and build after removing the temporary Core junction and rerunning a flaky concurrency test."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Record the Backend cleanup in Project Control without promoting product truth.",
+          "state": "passed",
+          "evidenceTarget": "Project Control evidence cites the Backend commit, files, verification, deleted path, temporary junction risk, and boundaries intentionally not promoted.",
+          "evidenceIds": [
+            "evidence-backend-service-plan-doc-retired-2026-08-31"
+          ],
+          "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+        }
+      ],
+      "createdAt": "2026-08-31T16:15:00.000Z",
+      "updatedAt": "2026-08-31T16:15:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
       "title": "Editor Node Authoring Roadmap Docs Retirement Checklist",
@@ -10831,6 +10927,16 @@
       "pathOrContractId": "src/contracts/serviceReadiness.ts#BACKEND_SERVICE_PRODUCTION_REQUIRED_CAPABILITY_IDS",
       "verificationSummary": "Backend main commit 6d18bd381b77becd33b4ac9785a4b6ba6422191a hardens the service readiness contract by adding stable production required capability IDs, machine-readable production blockerDetails, and frontendIntegration.status planning-only with implementationReady false while preserving the existing top-level /health status ready and grouped production.blockers prose for compatibility. Focused Backend tests passed src/tests/serviceReadiness.test.ts and src/tests/httpServer.test.ts with 4 tests; Backend worktree npm run check and merged main npm run check both passed type-check, 89 passed test files, 1 skipped file, 316 passed tests, 24 skipped tests, and build. This evidence supports only the Backend service contract hardening lane and does not promote production Backend readiness, deployed compatibility, auth, tenancy, selected storage providers, PDF export production mounting, worker orchestration, renderer/provider binding, deployment, telemetry, backup, rollback, broader Backend truth, or FlowDoc map truth.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-backend-service-plan-doc-retired-2026-08-31",
+      "nodeIds": [],
+      "repositoryId": "repo-backend",
+      "commit": "c24f7f000a8b8e9a181434dd95d7611afa026a75",
+      "pathOrContractId": "AGENTS.md; docs/BACKEND_SERVICE_READINESS_BOUNDARY.md; src/tests/backendDocumentationAuthority.test.ts",
+      "verificationSummary": "Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 records the Backend docs/superpowers cleanup slice under the FlowDoc documentation authority policy. It retired docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md so Backend docs/superpowers is empty; updated Backend AGENTS.md to route future FlowDoc-wide Markdown work through Project Control documentation authority; added src/tests/backendDocumentationAuthority.test.ts; and added Authority Boundary wording to docs/BACKEND_SERVICE_READINESS_BOUNDARY.md so the retained readiness context remains Backend-local and not product evidence. RED evidence: npm run test -- src/tests/backendDocumentationAuthority.test.ts failed because docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md still existed. GREEN focused evidence: npm run test -- src/tests/backendDocumentationAuthority.test.ts src/tests/serviceReadiness.test.ts src/tests/httpServer.test.ts passed 3 files and 7 tests. Backend worktree npm run check first failed because worktree-relative PDF tests expected ../flowdoc-vnext-core; a temporary Core junction outside the Backend worktree supplied that fixture path, and the rerun passed type-check, 90 passed test files, 1 skipped file, 322 passed tests, 27 skipped tests, and build. The temporary Core junction was removed before the accepted main gate because it polluted Backend main test discovery. Backend main npm run check was rerun after a Vitest worker-exit flake and a focused compositionSchedulerSqliteConcurrency.test.ts rerun; the accepted main gate passed type-check, 90 passed test files, 1 skipped file, 325 passed tests, 24 skipped tests, and build. This evidence does not clean Core or Editor Markdown, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-08-31T16:15:00.000Z"
     },
     {
       "kind": "evidence",

@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+  "title": "Backend Service Plan Docs Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-backend-owner",
+      "label": "Capture the Project Control cleanup path and Backend owner before editing.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Backend Markdown.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-backend, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement, and evidence target evidence-backend-service-plan-doc-retired-2026-08-31."
+    },
+    {
+      "id": "write-red-backend-doc-authority-test",
+      "label": "Write a failing Backend documentation authority guard before deleting the plan.",
+      "state": "passed",
+      "evidenceTarget": "The focused Backend documentation authority test fails before the docs/superpowers plan is retired.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "RED evidence included npm run test -- src/tests/backendDocumentationAuthority.test.ts failing because docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md still existed."
+    },
+    {
+      "id": "retire-backend-service-plan",
+      "label": "Retire the one Backend docs/superpowers service hardening plan.",
+      "state": "passed",
+      "evidenceTarget": "Backend commit deletes the backend service hardening plan and leaves Backend docs/superpowers empty.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 deletes docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, and rg --files docs/superpowers reports no Backend docs/superpowers path."
+    },
+    {
+      "id": "preserve-backend-readiness-boundary",
+      "label": "Preserve retained Backend readiness context in a bounded repo-owned document.",
+      "state": "passed",
+      "evidenceTarget": "Backend AGENTS.md points future shared Markdown work to Project Control, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md carries Authority Boundary wording.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "Backend AGENTS.md now points to docs/domains/flowdoc-documentation-authority-policy.md, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md states it is repo-backend local scope, not product evidence, and points to evidence-backend-service-contract-hardening-2026-08-27."
+    },
+    {
+      "id": "verify-backend-main",
+      "label": "Verify Backend worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused docs tests, Backend worktree npm run check, and merged Backend main npm run check pass after cleanup.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "Focused Backend docs/readiness gate passed 3 files and 7 tests. Backend worktree npm run check passed after supplying the expected sibling Core fixture path for worktree-only tests. Backend merged main npm run check eventually passed type-check, 90 passed test files, 1 skipped file, 325 passed tests, 24 skipped tests, and build after removing the temporary Core junction and rerunning a flaky concurrency test."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record the Backend cleanup in Project Control without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the Backend commit, files, verification, deleted path, temporary junction risk, and boundaries intentionally not promoted.",
+      "evidenceIds": ["evidence-backend-service-plan-doc-retired-2026-08-31"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+    }
+  ],
+  "createdAt": "2026-08-31T16:15:00.000Z",
+  "updatedAt": "2026-08-31T16:15:00.000Z"
+}

@@ -21,6 +21,10 @@ const MARKDOWN_INVENTORY_PROJECT_CONTROL_SOURCE_COMMIT = "d2f2a6ed22d90639c19e10
 const MARKDOWN_INVENTORY_CORE_SOURCE_COMMIT = "5892df6e542a02b25ae3b18ee02a55842b83d48f";
 const MARKDOWN_INVENTORY_BACKEND_SOURCE_COMMIT = "fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08";
 const MARKDOWN_INVENTORY_EDITOR_SOURCE_COMMIT = "04daeeaaac04317508b5cf8e93de61249255d477";
+const BACKEND_SERVICE_PLAN_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement";
+const BACKEND_SERVICE_PLAN_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement";
+const BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID = "evidence-backend-service-plan-doc-retired-2026-08-31";
+const BACKEND_SERVICE_PLAN_RETIRE_COMMIT = "c24f7f000a8b8e9a181434dd95d7611afa026a75";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -298,6 +302,63 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("Project Control 92, Core 347, Backend 40, Editor 57");
     expect(verificationSummary).toContain("Product repositories were read-only");
     expect(verificationSummary).toContain("Core and Backend docs/superpowers Authority Boundary gap");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Backend service hardening plan docs/superpowers retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === BACKEND_SERVICE_PLAN_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === BACKEND_SERVICE_PLAN_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(BACKEND_SERVICE_PLAN_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Backend docs/superpowers is now empty");
+    expect(work?.riskSummary).toContain("Core docs/superpowers has 4 remaining plan/spec files");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers still has WYSIWYG and Overview/History files");
+    expect(work?.riskSummary).toContain("Backend docs/superpowers cleanup is recorded");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-backend", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Backend docs/superpowers is empty");
+    expect(phase?.summary).toContain("retired the one Backend docs/superpowers plan");
+    expect(phase?.summary).toContain("without changing Backend service behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-backend-owner",
+      "write-red-backend-doc-authority-test",
+      "retire-backend-service-plan",
+      "preserve-backend-readiness-boundary",
+      "verify-backend-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-backend",
+      commit: BACKEND_SERVICE_PLAN_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; docs/BACKEND_SERVICE_READINESS_BOUNDARY.md; src/tests/backendDocumentationAuthority.test.ts",
+    });
+    const verificationSummary = evidence.get(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md still existed");
+    expect(verificationSummary).toContain("Backend docs/superpowers is empty");
+    expect(verificationSummary).toContain("3 files and 7 tests");
+    expect(verificationSummary).toContain("90 passed test files, 1 skipped file, 325 passed tests, 24 skipped tests");
+    expect(verificationSummary).toContain("temporary Core junction");
+    expect(verificationSummary).toContain("removed before the accepted main gate");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
