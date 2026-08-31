@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate",
+  "title": "Editor Table Authoring Gate Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor roadmap, and owner repository context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, product terminology, Editor AGENTS.md, and old Editor roadmap Task 7 are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate, and evidence target evidence-editor-table-authoring-gate-2026-08-31 before record edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting the Table authoring gate.",
+      "state": "passed",
+      "evidenceTarget": "Table boundary, misleading table descendant add actions, Paper/projection table facts, Inspector table context, and Project Control registration fail before implementation or record edits.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included tableAuthoringBoundary failing because the module did not exist, nodePresentation/Paper tests failing because table ids were absent from represented text descendants, addNodeVisibleActions failing because selected detail-cell-a-text still exposed ready Text/Columns actions after Metric, and Project Control Work Queue failing because this phase was not registered."
+    },
+    {
+      "id": "resolve-table-selection-levels",
+      "label": "Resolve table, row, cell, and table text selections into explicit read-only boundary facts.",
+      "state": "passed",
+      "evidenceTarget": "Table, table-row, table-cell, and table text descendants expose tableId/tableRowId/tableCellId/textBlockId plus selectionLevel without mutating state.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "tableAuthoringBoundary tests prove detail-table, detail-header-row, detail-cell-a, and detail-cell-a-text resolve to table, row, cell, and cell-text levels while remaining blocked."
+    },
+    {
+      "id": "block-table-structure-intents",
+      "label": "Keep unsupported table structure authoring blocked with one exact reason.",
+      "state": "passed",
+      "evidenceTarget": "Insert/delete row and insert/delete column intents return blocked facts until Backend/Core table mutation operations are advertised.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "tableAuthoringBoundary blockedIntents return insert-row, delete-row, insert-column, and delete-column with the exact reason Table authoring is gated until Backend/Core advertise table mutation operations."
+    },
+    {
+      "id": "block-misleading-add-actions",
+      "label": "Prevent selected table descendants from exposing ready add actions that imply table-cell authoring is available.",
+      "state": "passed",
+      "evidenceTarget": "Selected detail-cell-a-text no longer produces ready Text/Columns add actions after the represented Table surface.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "addNodeVisibleActions tests prove selected detail-cell-a-text returns a disabled Text action targeting detail-cell-a context with the table gate reason and does not expose columns.insert."
+    },
+    {
+      "id": "surface-table-context",
+      "label": "Expose table context in Inspector and Paper markup without claiming authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "Inspector shows table authoring boundary only for table contexts, and Paper table preview text descendants expose table, row, and cell ids.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "Inspector, nodePresentation, and PaperBlock tests prove Cell text context and data-canvas-table-id/data-canvas-table-row-id/data-canvas-table-cell-id are present while contenteditable and implicit textarea authoring are not introduced by this slice."
+    },
+    {
+      "id": "verify-and-record",
+      "label": "Run Editor worktree and merged-main gates, record Project Control evidence, and keep maps unchanged.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests, full Editor check, no-write live Backend smoke, and Project Control record tests support the bounded evidence record.",
+      "evidenceIds": [
+        "evidence-editor-table-authoring-gate-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree and merged main passed focused 10-file/45-test gate, npm run check with 105 test files and 381 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Project Control records are added without map promotion."
+    }
+  ],
+  "createdAt": "2026-08-31T09:35:00.000Z",
+  "updatedAt": "2026-08-31T09:35:00.000Z"
+}
