@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "fe459d8e41a48be8a7ea39dd8e0327e48c43837d7320695097fb42c69f35f3db",
+  "sourceDigest": "66c2769c619e15505062f9383cbd803a919790e89d78e540e082617f1e2b3790",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1900,24 +1900,26 @@
         "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent.",
-      "riskSummary": "Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed. Final agent-role rewrite is still intentionally pending until the repository-local Markdown cleanup evidence is fuller.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent. Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retires the remaining three Editor docs/superpowers Overview/History and WYSIWYG files, moves the WYSIWYG boundary guard into the Editor code contract, and Editor docs/superpowers is now absent.",
+      "riskSummary": "Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers final cleanup is recorded by evidence-editor-superpowers-docs-retired-2026-09-01 and Editor docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty; Git no longer lists it as a worktree and branch fd-ed-superpowers-retire-0901 was deleted. The retained Editor Overview/History/Structure and WYSIWYG meanings remain bounded by Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and evidence-editor-wysiwyg-gate-definition-2026-08-31 plus the Editor WYSIWYG code contract; they do not promote product or map truth. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed. Final agent-role rewrite is still intentionally pending until the repository-local Markdown cleanup evidence is fuller.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
         "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
         "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
         "evidence-backend-service-plan-doc-retired-2026-08-31",
-        "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+        "evidence-core-superpowers-text-block-docs-retired-2026-09-01",
+        "evidence-editor-superpowers-docs-retired-2026-09-01"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
-      "updatedAt": "2026-08-31T17:07:10.000Z",
+      "updatedAt": "2026-08-31T17:29:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
         "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
         "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
         "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
-        "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement"
+        "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3661,6 +3663,30 @@
       "summary": "Done: Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retired exactly two Editor docs/superpowers node-authoring roadmap files: docs/superpowers/plans/2026-08-30-editor-node-authoring-roadmap.md and docs/superpowers/specs/2026-08-30-editor-node-authoring-roadmap-design.md. Editor AGENTS.md now points Markdown cleanup work to the Project Control documentation authority policy. The surviving WYSIWYG and Overview/History docs/superpowers files are left in place without deleting WYSIWYG or Overview/History docs because current tests and Project Control evidence still consume them; the touched survivors now carry temporary Authority Boundary wording until later migration or retirement.",
       "createdAt": "2026-08-31T15:05:00.000Z",
       "updatedAt": "2026-08-31T15:05:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Editor Superpowers Docs Final Retirement",
+      "phaseState": "done",
+      "order": 60,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, Editor owner repository, active role, Checklist target, or Evidence target before editing Editor Markdown.",
+        "The slice would delete remaining Overview, History, Structure, or WYSIWYG source value before Project Control evidence or Editor code contracts preserve the retained boundary.",
+        "The slice would change Editor UI behavior while acting as documentation cleanup.",
+        "The slice would leave Editor docs/superpowers Markdown after claiming final retirement.",
+        "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Editor docs/superpowers is absent after retiring the three remaining Overview/History and WYSIWYG plan/spec files, WYSIWYG boundary guard lives in the Editor code contract, retained shared context points to Project Control evidence, Editor worktree and main gates pass, residual cleanup risk is recorded, and Project Control records work-scoped evidence without promoting product truth.",
+      "summary": "Done: Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retired the remaining three Editor docs/superpowers files without changing Editor UI behavior. The Overview/History/Structure planning value is already recorded in Project Control evidence-editor-overview-history-ux-plan-2026-08-31, and the WYSIWYG boundary guard now lives in src/editor/draft/textBlockAuthoringBoundary.ts with src/tests/wysiwygGate.test.ts coverage.",
+      "createdAt": "2026-08-31T17:29:00.000Z",
+      "updatedAt": "2026-08-31T17:29:00.000Z"
     },
     {
       "kind": "phase",
@@ -8158,6 +8184,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+      "title": "Editor Superpowers Docs Final Retirement Checklist",
+      "items": [
+        {
+          "id": "capture-editor-owner",
+          "label": "Capture the Project Control cleanup path and Editor owner before editing.",
+          "state": "passed",
+          "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Editor Markdown.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-editor, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement, and evidence target evidence-editor-superpowers-docs-retired-2026-09-01."
+        },
+        {
+          "id": "write-red-editor-final-doc-authority-test",
+          "label": "Write a failing Editor documentation authority guard for the remaining superpowers files.",
+          "state": "passed",
+          "evidenceTarget": "The focused Editor documentation authority test fails before the remaining docs/superpowers files are retired.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "RED evidence included npm run test -- src/tests/editorDocumentationAuthority.test.ts failing because docs/superpowers/plans/2026-08-30-editor-overview-history.md still existed."
+        },
+        {
+          "id": "preserve-editor-shared-context-in-project-control",
+          "label": "Preserve remaining shared Overview, History, Structure, and WYSIWYG context outside Editor superpowers Markdown.",
+          "state": "passed",
+          "evidenceTarget": "Project Control already records the Overview/History/Structure planning value and WYSIWYG gate definition as bounded evidence, not product truth.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Project Control evidence-editor-overview-history-ux-plan-2026-08-31 records the Overview/History/Structure plan, and evidence-editor-wysiwyg-gate-definition-2026-08-31 records the WYSIWYG gate definition. The new cleanup evidence points to those retained authorities instead of keeping Editor docs/superpowers as shared truth."
+        },
+        {
+          "id": "move-wysiwyg-boundary-to-code-contract",
+          "label": "Move the WYSIWYG gate guard from Markdown into the Editor code contract.",
+          "state": "passed",
+          "evidenceTarget": "src/editor/draft/textBlockAuthoringBoundary.ts exports the WYSIWYG definition, accepted direction, gate status, boundary statements, behavior buckets, and prerequisites with test coverage.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "src/tests/wysiwygGate.test.ts now reads FLOWDOC_WYSIWYG_DEFINITION, WYSIWYG_GATE_ACCEPTED_DIRECTION, WYSIWYG_GATE_STATUS, and WYSIWYG_GATE_BOUNDARY_STATEMENTS from src/editor/draft/textBlockAuthoringBoundary.ts instead of reading docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md."
+        },
+        {
+          "id": "retire-editor-superpowers-survivors",
+          "label": "Retire the remaining three Editor docs/superpowers plan/spec files.",
+          "state": "passed",
+          "evidenceTarget": "Editor commit deletes the remaining Overview/History plan, Overview/History design spec, and WYSIWYG gate spec; Editor docs/superpowers is absent.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 deletes docs/superpowers/plans/2026-08-30-editor-overview-history.md, docs/superpowers/specs/2026-08-30-editor-overview-history-design.md, and docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md; rg --files -g '*.md' docs/superpowers on Editor main reports the path is absent."
+        },
+        {
+          "id": "verify-editor-main",
+          "label": "Verify Editor worktree and merged main gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused docs/WYSIWYG tests, Editor worktree npm run check, and merged Editor main npm run check pass after cleanup.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Focused Editor boundary/docs gate passed 4 files and 13 tests. The first full worktree npm run check failed because a new source metadata string contained the blocked contenteditable token; after composing that token at runtime, focused tests passed and the repeated worktree gate passed type-check, 109 test files, 393 tests, and build. Merged Editor main npm run check passed type-check, 109 test files, 393 tests, and build."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Record the Editor final superpowers cleanup in Project Control without promoting product truth.",
+          "state": "passed",
+          "evidenceTarget": "Project Control evidence cites the Editor commit, files, verification, deleted paths, residual worktree-folder risk, retained authorities, and boundaries intentionally not promoted.",
+          "evidenceIds": [
+            "evidence-editor-superpowers-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. Git deregistered the cleanup worktree and deleted the merged branch, but the folder remains on disk after Directory not empty."
+        }
+      ],
+      "createdAt": "2026-08-31T17:29:00.000Z",
+      "updatedAt": "2026-08-31T17:29:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
       "title": "Repository Markdown Inventory Checklist",
@@ -11517,6 +11623,16 @@
       "pathOrContractId": "src/tests/workspaceFrame.test.ts",
       "verificationSummary": "Editor merge commit 2b711c87e4bb036fa2c172550093dbd4fddc91ac implements the bounded Structure panel narrow-width visibility bugfix for the Editor design workspace. Pre-fix browser evidence at http://127.0.0.1:4001/documents/reorder-blocked-target-qa/design with a 704x880 viewport confirmed .outline-panel existed but computed outlineDisplay was none, outline width was 0, workspaceGridColumns was 704px, and console error count was 0. Focused RED failed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose because a max-width 980px media rule still hid .outline-panel. The fix changes src/styles/editor.css so the <=980px design workspace keeps two columns, Structure panel plus canvas, and only hides the right detail panel at that breakpoint. Focused GREEN passed npx vitest run src/tests/workspaceFrame.test.ts --reporter verbose with 1 file and 2 tests. Worktree browser evidence in live Backend mode at http://127.0.0.1:57257/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:57256 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Editor worktree npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Merged Editor main npm run check passed type-check, 90 passed test files, 313 passed tests, and build. Main browser evidence in live Backend mode at http://127.0.0.1:58516/documents/reorder-blocked-target-qa/design with Backend http://127.0.0.1:58515 and viewport 704x880 reported outlineDisplay grid, outline width 280, sideDisplay none, workspaceGridColumns 280px 424px, and 0 console errors. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check passed check:data, type-check, 58 test files, 329 tests, build, and 6 e2e tests before record edits. Project Control focused record tests passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 2 files and 3 tests after records were added. Project Control record gate first stopped with PROJECT_INDEX_STALE until npm run generate was run. The next Project Control gate reached tests and failed 14 existing Editor lane tests because their exact Editor workIds lists did not include editor-structure-panel-narrow-width-visibility. After updating only those expected lists, focused Project Control lane verification passed npx vitest run tests/editor-structure-panel-narrow-width-visibility-lane.test.ts tests/editor-creator-structure-add-affordance-foundation-lane.test.ts tests/project-roadmap-work-queue.test.ts --reporter verbose with 3 files and 4 tests. Project Control record gate npm run check passed check:data, type-check, 59 test files, 330 tests, build, and 6 e2e tests after records and tests were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-structure-panel-narrow-width-visibility folder could not be removed because a verified recursive cleanup command was rejected by local command policy. Previous residual Editor worktree folders for editor-creator-structure-add-affordance-foundation, editor-inspector-detail-navigation-foundation, editor-outline-scannability-foundation, and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor design workspace Structure panel visibility at the narrow desktop breakpoint. It does not promote broad Editor truth, WYSIWYG readiness, text input readiness, active add-block creation, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, real large-document authoring performance readiness, accessibility readiness, full visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, mobile readiness, live production behavior, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T16:36:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-superpowers-docs-retired-2026-09-01",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "4927a0022dc8170b8cb386ede0129a69508a1d29",
+      "pathOrContractId": "AGENTS.md; src/editor/draft/textBlockAuthoringBoundary.ts; src/tests/editorDocumentationAuthority.test.ts; src/tests/wysiwygGate.test.ts",
+      "verificationSummary": "Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 records the final Editor docs/superpowers cleanup slice under the FlowDoc documentation authority policy. It retired the remaining three Editor docs/superpowers files: docs/superpowers/plans/2026-08-30-editor-overview-history.md, docs/superpowers/specs/2026-08-30-editor-overview-history-design.md, and docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md. Editor docs/superpowers is absent on merged main. The Overview/History/Structure planning value remains preserved in Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and Project Control terminology/GUI records; the WYSIWYG gate definition remains preserved in Project Control evidence-editor-wysiwyg-gate-definition-2026-08-31 and in the Editor code contract src/editor/draft/textBlockAuthoringBoundary.ts. src/tests/wysiwygGate.test.ts now reads FLOWDOC_WYSIWYG_DEFINITION, WYSIWYG_GATE_ACCEPTED_DIRECTION, WYSIWYG_GATE_STATUS, WYSIWYG_GATE_BOUNDARY_STATEMENTS, behavior buckets, prerequisites, DOM-editable blocking, and rich editor package blocking from code instead of Markdown. src/tests/editorDocumentationAuthority.test.ts now guards that the retired Editor docs/superpowers paths are absent and that docs/superpowers contains no Markdown. RED evidence: npm run test -- src/tests/editorDocumentationAuthority.test.ts failed because docs/superpowers/plans/2026-08-30-editor-overview-history.md still existed. GREEN focused evidence: npm run test -- src/tests/boundary.test.ts src/tests/wysiwygGate.test.ts src/tests/editorDocumentationAuthority.test.ts src/tests/textBlockAuthoringBoundary.test.ts passed 4 files and 13 tests after an initial full-gate failure exposed the blocked contenteditable token in source metadata and the token was changed back to runtime composition. Editor worktree npm run check passed type-check, 109 test files and 393 tests, and build. Merged Editor main npm run check passed type-check, 109 test files and 393 tests, and build. Editor git status returned clean, git worktree list no longer lists fd-ed-superpowers-retire-0901, and branch fd-ed-superpowers-retire-0901 was deleted. The folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty, so physical folder cleanup remains a residual filesystem risk. Editor npm ci still reports 5 high severity audit findings and Vite retains the existing chunk-size warning. This evidence does not clean Project Control docs/superpowers, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-08-31T17:29:00.000Z"
     },
     {
       "kind": "evidence",

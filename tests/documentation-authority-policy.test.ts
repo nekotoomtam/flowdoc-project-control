@@ -29,6 +29,10 @@ const CORE_SUPERPOWERS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-
 const CORE_SUPERPOWERS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement";
 const CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID = "evidence-core-superpowers-text-block-docs-retired-2026-09-01";
 const CORE_SUPERPOWERS_RETIRE_COMMIT = "6c1b53796802772467bf715b83764ac1ef613e52";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID = "evidence-editor-superpowers-docs-retired-2026-09-01";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT = "4927a0022dc8170b8cb386ede0129a69508a1d29";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -323,7 +327,7 @@ describe("FlowDoc documentation authority policy", () => {
     expect(work?.expectedOutput).toContain(BACKEND_SERVICE_PLAN_RETIRE_COMMIT);
     expect(work?.expectedOutput).toContain("Backend docs/superpowers is now empty");
     expect(work?.riskSummary).toContain("Core docs/superpowers cleanup is recorded");
-    expect(work?.riskSummary).toContain("Editor docs/superpowers still has WYSIWYG and Overview/History files");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers final cleanup is recorded");
     expect(work?.riskSummary).toContain("Backend docs/superpowers cleanup is recorded");
 
     expect(phase).toMatchObject({
@@ -420,6 +424,64 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("4 files and 25 tests");
     expect(verificationSummary).toContain("461 files and 2946 tests");
     expect(verificationSummary).toContain("Filename too long");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the remaining Editor docs/superpowers retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === EDITOR_SUPERPOWERS_FINAL_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === EDITOR_SUPERPOWERS_FINAL_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      EDITOR_ROADMAP_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Editor docs/superpowers is now absent");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers final cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-ed-superpowers-retire-0901");
+    expect(work?.riskSummary).toContain("Directory not empty");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Editor docs/superpowers is absent");
+    expect(phase?.summary).toContain("retired the remaining three Editor docs/superpowers files");
+    expect(phase?.summary).toContain("without changing Editor UI behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-editor-owner",
+      "write-red-editor-final-doc-authority-test",
+      "preserve-editor-shared-context-in-project-control",
+      "move-wysiwyg-boundary-to-code-contract",
+      "retire-editor-superpowers-survivors",
+      "verify-editor-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; src/editor/draft/textBlockAuthoringBoundary.ts; src/tests/editorDocumentationAuthority.test.ts; src/tests/wysiwygGate.test.ts",
+    });
+    const verificationSummary = evidence.get(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/superpowers/plans/2026-08-30-editor-overview-history.md still existed");
+    expect(verificationSummary).toContain("Editor docs/superpowers is absent");
+    expect(verificationSummary).toContain("4 files and 13 tests");
+    expect(verificationSummary).toContain("109 test files and 393 tests");
+    expect(verificationSummary).toContain("Directory not empty");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
