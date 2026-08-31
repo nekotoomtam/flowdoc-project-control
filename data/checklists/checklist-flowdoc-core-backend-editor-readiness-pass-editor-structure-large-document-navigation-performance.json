@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance",
+  "title": "Editor Structure Large Document Navigation Performance Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, and the bounded Structure panel navigation/performance target are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core live smoke references, phase-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance, checklist-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance, and evidence target evidence-editor-structure-large-document-navigation-performance-2026-08-31 before edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting the Structure panel safeguards.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before large Structure lists are windowed, before group collapse/forced-open behavior exists, before the live smoke retains Structure navigation metadata, and before Project Control knows this phase/evidence.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included outlineScannability failures for missing data-outline-windowed, data-outline-toggle-target, and data-outline-forced-open; editorBrowserLiveBackendSmokeEvidence failure before initialStructureNavigation existed; a source guard failure for the previous cursor = index + 1 descendant scan; and project-roadmap-work-queue failure before this Project Control phase/evidence was registered."
+    },
+    {
+      "id": "bound-large-structure-rendering",
+      "label": "Bound rendered Structure rows for large Outline lists while keeping the selected item visible.",
+      "state": "passed",
+      "evidenceTarget": "OutlinePanel emits data-outline-windowed, before/after window gap markers, selected item index, and a rendered item count smaller than the full list for large structures.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "OutlinePanel now creates a navigation model that windows visible item rows around selectedNodeId once the visible item count exceeds the bounded threshold, emits hidden-count markers, and keeps the selected row rendered and selected."
+    },
+    {
+      "id": "support-collapse-with-selected-path",
+      "label": "Add collapse/expand affordances without hiding the active selected descendant.",
+      "state": "passed",
+      "evidenceTarget": "Parent Outline rows with descendants expose a toggle, collapsed descendants are summarized, and a collapsed selected ancestor path is forced open.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "OutlinePanel exposes data-outline-toggle-target and data-outline-toggle-state on rows with children, emits data-outline-collapsed-summary for hidden descendants, and emits data-outline-forced-open when a collapsed parent contains the selected descendant."
+    },
+    {
+      "id": "preserve-small-live-documents",
+      "label": "Preserve full Structure rows for the small active live Backend document.",
+      "state": "passed",
+      "evidenceTarget": "Retained live Backend browser smoke records initial and mutated Structure navigation metadata proving the small active document is not windowed and keeps all rows rendered.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "The retained smoke records initialStructureNavigation itemCount/renderedItemCount 7 and mutatedStructureNavigation itemCount/renderedItemCount 9, with windowed false, toggleCount 2, hiddenMarkerCount 0, and forcedOpenCount 0."
+    },
+    {
+      "id": "preserve-boundaries",
+      "label": "Keep the slice navigation-only and preserve authoring/mutation boundaries.",
+      "state": "passed",
+      "evidenceTarget": "The change does not enable direct typing, contenteditable, WYSIWYG, exact table/cell authoring, new Backend mutation sources, Core truth, Backend truth, Editor truth, broad readiness, or map truth.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "No Core or Backend files changed. The changed Editor files are OutlinePanel, editor.css, Outline scannability tests, and retained live smoke evidence collection. Existing text-block textarea and add-node mutation boundaries remain unchanged."
+    },
+    {
+      "id": "verify-main-and-cleanup",
+      "label": "Run worktree and merged-main Editor gates and record cleanup state honestly.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree and merged main pass focused tests, full check, and no-write live Backend browser smoke; cleanup state is recorded.",
+      "evidenceIds": [
+        "evidence-editor-structure-large-document-navigation-performance-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree passed focused Vitest, npm run evidence:editor-browser-live-backend-smoke, npm run check with 102 test files and 367 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed npm run check with 102 test files and 367 tests plus build, then FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Branch fd-ed-struct-navperf-0831 was deleted after fast-forward merge, and the residual .worktrees/fd-ed-struct-navperf-0831 folder was removed after Git deregistered it and the absolute cleanup target was verified."
+    }
+  ],
+  "createdAt": "2026-08-31T07:35:00.000Z",
+  "updatedAt": "2026-08-31T07:35:00.000Z"
+}
