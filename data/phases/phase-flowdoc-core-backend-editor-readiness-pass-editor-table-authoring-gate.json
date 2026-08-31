@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Table Authoring Gate",
+  "phaseState": "done",
+  "order": 190,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Table, table-row, table-cell, and table text descendant selections cannot be distinguished by explicit Editor facts.",
+    "Selected table descendants expose ready Text or Columns add actions that imply table-cell authoring is available.",
+    "Unsupported table row or column authoring lacks an exact blocked reason.",
+    "Table preview text descendants cannot be traced back to table, row, and cell ids for future authoring QA.",
+    "The slice adds Core or Backend table mutation transport before those repositories advertise table operations.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct table/cell editing, exact table layout authoring, durable drafts, collaboration, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor exposes bounded table authoring gate facts so table/row/cell/text selections are distinguishable, unsupported table structure intents are blocked with a single exact reason, selected table descendants do not expose misleading ready add actions, and Paper/Inspector surfaces expose table context without enabling mutation transport or WYSIWYG behavior.",
+  "summary": "Done: Editor merge commit 87def6310b1ff061d999c6f4b336976e1a3852f0 adds a bounded table authoring gate. tableAuthoringBoundary resolves table, table-row, table-cell, and table text descendants such as detail-cell-a-text into tableId/tableRowId/tableCellId/textBlockId facts with selection levels table, row, cell, and cell-text. Unsupported insert-row, delete-row, insert-column, and delete-column intents remain blocked with the exact reason Table authoring is gated until Backend/Core advertise table mutation operations. addNodeVisibleActions now blocks selected table descendants with the same reason instead of presenting ready Text/Columns add actions after the represented Table surface. InspectorPanel shows the table authoring boundary only for table contexts, and Paper/render projection expose data-canvas-table-id/data-canvas-table-row-id/data-canvas-table-cell-id for represented table text descendants. This does not enable Core or Backend table mutation transport, document v4 insert semantics, direct table/cell editing, exact table layout authoring, WYSIWYG behavior, contenteditable runtime, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T09:35:00.000Z",
+  "updatedAt": "2026-08-31T09:35:00.000Z"
+}

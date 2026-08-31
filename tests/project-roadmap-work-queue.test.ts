@@ -12,6 +12,7 @@ const editorCompositePreviewChildVisualSelectionCommit = "7730a543fb572680144ed8
 const editorStructureLargeDocumentNavigationPerformanceCommit = "e1a2a9dc2d5b2a1557aa8838dc03aecece26d102";
 const editorTextBlockInsertToEditCommit = "5f7b0c0064b4a6d70bdc2d121138dd3fae7aba12";
 const editorColumnsAuthoringBoundaryCommit = "d9cc21fe2472bd1a611eb6f971b102f69d5dbc3e";
+const editorTableAuthoringGateCommit = "87def6310b1ff061d999c6f4b336976e1a3852f0";
 
 const expectedLegacyWork = [
   {
@@ -409,6 +410,12 @@ const remediationTasks = [
         checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
         checklistLength: 7,
       },
+      {
+        phaseId: "phase-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate",
+        phaseState: "done",
+        checklistId: "checklist-flowdoc-core-backend-editor-readiness-pass-editor-table-authoring-gate",
+        checklistLength: 7,
+      },
     ],
   },
   {
@@ -563,12 +570,16 @@ describe("project roadmap Work Queue", () => {
       .toContain("evidence-editor-text-block-insert-to-edit-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
       .toContain("evidence-editor-columns-authoring-boundary-2026-08-31");
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.requiredEvidence)
+      .toContain("evidence-editor-table-authoring-gate-2026-08-31");
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorStructureLargeDocumentNavigationPerformanceCommit);
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorTextBlockInsertToEditCommit);
     expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
       .toContain(editorColumnsAuthoringBoundaryCommit);
+    expect(model.work.find((item) => item.id === "flowdoc-core-backend-editor-readiness-pass-8h")?.expectedOutput)
+      .toContain(editorTableAuthoringGateCommit);
     expect(model.nodes.find((node) => node.id === "core")).toMatchObject({
       truthState: "unknown",
       workIds: [
@@ -970,6 +981,21 @@ describe("project roadmap Work Queue", () => {
     expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
       .toContain("376 tests");
     expect(model.evidence.find((item) => item.id === "evidence-editor-columns-authoring-boundary-2026-08-31")?.verificationSummary)
+      .toContain("does not enable WYSIWYG");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-table-authoring-gate-2026-08-31"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-editor",
+        commit: editorTableAuthoringGateCommit,
+        pathOrContractId: "src/editor/table/tableAuthoringBoundary.ts; src/editor/commands/addNodeVisibleActions.ts; src/editor/presentation/nodePresentationProjector.ts; src/editor/presentation/nodePresentationTypes.ts; src/editor/render/renderProjector.ts; src/editor/render/renderTypes.ts; src/editor/runtime/editorView.ts; src/components/inspector/InspectorPanel.tsx; src/components/paper/PaperBlock.tsx; src/styles/editor.css; src/tests/tableAuthoringBoundary.test.ts; src/tests/addNodeVisibleActions.test.ts; src/tests/nodePresentation.test.ts; src/tests/paperTextBlockEditor.test.ts; src/tests/selectionContextSummary.test.ts",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-editor-table-authoring-gate-2026-08-31")?.verificationSummary)
+      .toContain("table authoring gate");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-table-authoring-gate-2026-08-31")?.verificationSummary)
+      .toContain("detail-cell-a-text");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-table-authoring-gate-2026-08-31")?.verificationSummary)
+      .toContain("381 tests");
+    expect(model.evidence.find((item) => item.id === "evidence-editor-table-authoring-gate-2026-08-31")?.verificationSummary)
       .toContain("does not enable WYSIWYG");
     expect(model.evidence.find((item) => item.id === "evidence-editor-browser-live-backend-smoke-2026-08-27"))
       .toMatchObject({
