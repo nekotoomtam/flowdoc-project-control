@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "2caab3d9b9aad95f184efa29da5140b0511c5545ebf3c284009fbd431a482686",
+  "sourceDigest": "fe459d8e41a48be8a7ea39dd8e0327e48c43837d7320695097fb42c69f35f3db",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1900,22 +1900,24 @@
         "doc-flowdoc-repository-markdown-inventory-2026-08-31"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty.",
-      "riskSummary": "Repo-local Markdown is not deleted by this foundation phase, and Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers has 4 remaining plan/spec files without Authority Boundary wording and remains the next product-repository docs/superpowers cleanup candidate after source preservation. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent.",
+      "riskSummary": "Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Editor docs/superpowers still has WYSIWYG and Overview/History files that remain intentionally because current tests and Project Control evidence still reference them; they now carry or already carried Authority Boundary wording until later migration or retirement. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed. Final agent-role rewrite is still intentionally pending until the repository-local Markdown cleanup evidence is fuller.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
         "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
         "evidence-flowdoc-repository-markdown-inventory-2026-08-31",
-        "evidence-backend-service-plan-doc-retired-2026-08-31"
+        "evidence-backend-service-plan-doc-retired-2026-08-31",
+        "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
-      "updatedAt": "2026-08-31T15:15:00.000Z",
+      "updatedAt": "2026-08-31T17:07:10.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
         "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
         "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory",
-        "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement"
+        "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3611,6 +3613,30 @@
       "summary": "Done: Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retired the one Backend docs/superpowers plan, docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, without changing Backend service behavior. Backend AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md preserves the retained readiness boundary with explicit Authority Boundary wording.",
       "createdAt": "2026-08-31T16:15:00.000Z",
       "updatedAt": "2026-08-31T16:15:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Core Text Block Superpowers Docs Retirement",
+      "phaseState": "done",
+      "order": 50,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, Core owner repository, active role, Checklist target, or Evidence target before editing Core Markdown.",
+        "The slice would delete Core Text Block or Live Draft historical source value before retained synthesis or discard rationale is recorded.",
+        "The slice would change Core runtime behavior while acting as documentation cleanup.",
+        "The slice would leave Core docs/superpowers Markdown after claiming retirement.",
+        "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Core docs/superpowers is absent after retiring the four historical Text Block and Live Draft plan/spec sources, active Core references point to Project Control Text Block and Live Draft syntheses, Core worktree and main gates pass, residual cleanup risk is recorded, and Project Control records work-scoped evidence without promoting product truth.",
+      "summary": "Done: Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retired all four Core docs/superpowers plan/spec files without changing Core runtime behavior. Core AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and active Core references now target Project Control Text Block and Live Draft syntheses instead of historical superpowers sources.",
+      "createdAt": "2026-08-31T17:07:10.000Z",
+      "updatedAt": "2026-08-31T17:07:10.000Z"
     },
     {
       "kind": "phase",
@@ -7992,6 +8018,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+      "title": "Core Text Block Superpowers Docs Retirement Checklist",
+      "items": [
+        {
+          "id": "capture-core-owner",
+          "label": "Capture the Project Control cleanup path and Core owner before editing.",
+          "state": "passed",
+          "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Core Markdown.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-core, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement, and evidence target evidence-core-superpowers-text-block-docs-retired-2026-09-01."
+        },
+        {
+          "id": "write-red-core-doc-authority-test",
+          "label": "Write a failing Core documentation authority guard before deleting the historical sources.",
+          "state": "passed",
+          "evidenceTarget": "The focused Core documentation authority test fails before the docs/superpowers plan/spec files are retired.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "RED evidence included npx vitest run tests/coreDocumentationAuthority.test.ts --config vitest.config.ts failing because docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md still existed."
+        },
+        {
+          "id": "preserve-core-text-block-live-draft-context",
+          "label": "Preserve retained Text Block and Live Draft source context in Project Control syntheses.",
+          "state": "passed",
+          "evidenceTarget": "Core active references point to Project Control Text Block and Live Draft synthesis documents instead of retired docs/superpowers sources.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md and related Core tests now point to docs/versions/V0_1_0a_1/core/text-block/OVERVIEW.md, docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md, and docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md."
+        },
+        {
+          "id": "retire-core-superpowers-sources",
+          "label": "Retire the four Core docs/superpowers Text Block and Live Draft source files.",
+          "state": "passed",
+          "evidenceTarget": "Core commit deletes the four historical plan/spec files and leaves Core docs/superpowers absent.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Core commit 6c1b53796802772467bf715b83764ac1ef613e52 deletes docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md, docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md, docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md, and docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md; rg --files -g '*.md' docs/superpowers on Core main reports the path is absent."
+        },
+        {
+          "id": "verify-core-main",
+          "label": "Verify Core worktree and merged main gates.",
+          "state": "passed",
+          "evidenceTarget": "Focused docs tests, Core worktree npm run check, and merged Core main npm run check pass after cleanup.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Focused Core docs/reference gate passed 4 files and 25 tests. Core worktree npm run type-check passed. Core worktree npm run check passed 461 files and 2946 tests. Merged Core main npm run check passed 461 files and 2946 tests."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Record the Core cleanup in Project Control without promoting product truth.",
+          "state": "passed",
+          "evidenceTarget": "Project Control evidence cites the Core commit, files, verification, deleted paths, residual worktree-folder risk, and boundaries intentionally not promoted.",
+          "evidenceIds": [
+            "evidence-core-superpowers-text-block-docs-retired-2026-09-01"
+          ],
+          "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. Git deregistered the cleanup worktree and deleted the merged branch, but the folder remains on disk after Filename too long; safe recursive deletion was blocked by policy."
+        }
+      ],
+      "createdAt": "2026-08-31T17:07:10.000Z",
+      "updatedAt": "2026-08-31T17:07:10.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement",
       "title": "Editor Node Authoring Roadmap Docs Retirement Checklist",
@@ -11057,6 +11153,16 @@
       "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY",
       "verificationSummary": "Core runtime version contract hardening added a JSON-safe version-surface retirement inventory beside the existing capability contract. The inventory classifies active package v2/document v3 runtime authority as active-runtime, package v3/document v4 target parser/read-only runtime and package v2-to-v3 planner as retained-for-migration, Phase 258 consumer evidence as retained-for-evidence, and silent read normalization or compatibility adapters as blocked. No version surface was classified as deleted in this lane because none was proven unused in scope. RED versionCapability test failed before implementation; focused version/parser/migration suite passed 24 tests; docs:check passed; Core worktree npm run check passed 459 files and 2942 tests in 250.00s; merged Core main npm run check passed 459 files and 2942 tests in 263.94s. This supports only the bounded Core version-surface retirement inventory result and does not promote broad Core, Backend, or FlowDoc truth.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-superpowers-text-block-docs-retired-2026-09-01",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "AGENTS.md; docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md; tests/coreDocumentationAuthority.test.ts; tests/liveDraftMr1CompleteGeometryBoundary.test.ts; tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts; tests/liveDraftMr1InlineImageGeometry4b.test.ts",
+      "verificationSummary": "Core commit 6c1b53796802772467bf715b83764ac1ef613e52 records the Core docs/superpowers cleanup slice under the FlowDoc documentation authority policy. It retired all four Core docs/superpowers plan/spec files: docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md, docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md, docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md, and docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md. Core docs/superpowers is absent on merged main. The retained source value is preserved through Project Control Text Block and Live Draft syntheses: docs/versions/V0_1_0a_1/core/text-block/OVERVIEW.md, docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md, docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md, docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md, docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md, and docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md. Core AGENTS.md now routes future FlowDoc-wide Markdown cleanup work to Project Control documentation authority; docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md states historical superpowers sources are retired; and active Core tests no longer require the retired docs/superpowers paths. RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --config vitest.config.ts failed because docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md still existed. GREEN focused evidence: npx vitest run tests/coreDocumentationAuthority.test.ts tests/liveDraftMr1CompleteGeometryBoundary.test.ts tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts tests/liveDraftMr1InlineImageGeometry4b.test.ts --config vitest.config.ts passed 4 files and 25 tests. Core worktree npm run type-check passed. Core worktree npm run check passed 461 files and 2946 tests. Merged Core main npm run check passed 461 files and 2946 tests. Core git status returned clean, git worktree list no longer lists fd-core-doc-superpowers-retire-0831, and branch fd-core-doc-superpowers-retire-0831 was deleted. The folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; a reparse-point scan found no junctions or symlinks, but the safe long-path recursive delete attempt was blocked by policy, so physical folder cleanup remains a residual filesystem risk. This evidence does not clean Project Control, Backend, or Editor Markdown, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-08-31T17:07:10.000Z"
     },
     {
       "kind": "evidence",

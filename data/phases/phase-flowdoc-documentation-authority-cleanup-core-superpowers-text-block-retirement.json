@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Text Block Superpowers Docs Retirement",
+  "phaseState": "done",
+  "order": 50,
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, Core owner repository, active role, Checklist target, or Evidence target before editing Core Markdown.",
+    "The slice would delete Core Text Block or Live Draft historical source value before retained synthesis or discard rationale is recorded.",
+    "The slice would change Core runtime behavior while acting as documentation cleanup.",
+    "The slice would leave Core docs/superpowers Markdown after claiming retirement.",
+    "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Core docs/superpowers is absent after retiring the four historical Text Block and Live Draft plan/spec sources, active Core references point to Project Control Text Block and Live Draft syntheses, Core worktree and main gates pass, residual cleanup risk is recorded, and Project Control records work-scoped evidence without promoting product truth.",
+  "summary": "Done: Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retired all four Core docs/superpowers plan/spec files without changing Core runtime behavior. Core AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and active Core references now target Project Control Text Block and Live Draft syntheses instead of historical superpowers sources.",
+  "createdAt": "2026-08-31T17:07:10.000Z",
+  "updatedAt": "2026-08-31T17:07:10.000Z"
+}
