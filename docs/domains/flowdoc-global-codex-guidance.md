@@ -50,17 +50,24 @@ whether a lane may change shared scope, read:
 
 ```text
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-delivery-operating-model.md
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-plan-room-orchestration-rules.md
 ```
 
 Use this document as the shared operating contract for PLAN rooms, real WORK
 rooms, lane cards, Kickoff Packets, handoffs, Contract Change Requests,
-Collaboration Identity, and Project Control reference IDs. A WORK room is a
-real separate Codex task/chat visible to the user and executes one approved
-lane only; it is not the same thing as an internal subagent.
+Collaboration Identity, and Project Control reference IDs. Use the PLAN Room
+Orchestration Rules before a PLAN room chooses `N WORK rooms`, sets
+`parallelLimit`, opens a dispatch set, tracks room runs, pulls missing
+handoffs, processes `handoffInbox` or `completionQueue`, or runs
+`acceptanceGate`. A WORK room is a real separate Codex task/chat visible to
+the user and executes one approved lane only; it is not the same thing as an
+internal subagent.
 
 This corresponds to the Project Control document path
-`docs/domains/flowdoc-delivery-operating-model.md`; keep this delivery
-operating model in Project Control rather than product-repository Markdown.
+`docs/domains/flowdoc-delivery-operating-model.md` and
+`docs/domains/flowdoc-plan-room-orchestration-rules.md`; keep this delivery
+operating model and its orchestration contract in Project Control rather than
+product-repository Markdown.
 
 ## Documentation authority
 

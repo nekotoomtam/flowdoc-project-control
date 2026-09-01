@@ -92,6 +92,20 @@ Each round should define:
 Round planning records intent. It must not be promoted as product truth until
 supported by repository-owned evidence.
 
+## PLAN Room Orchestration
+
+Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` whenever a PLAN
+room may open or coordinate more than one real WORK room.
+
+The PLAN Room Orchestration Rules define how the PLAN room chooses
+`N WORK rooms`, records `parallelLimit`, builds `laneDependencyGraph`, creates
+a dispatch set, tracks Room Run Registry entries, pulls missing handoffs,
+stages returned work in `handoffInbox`, processes `completionQueue`, and runs
+`acceptanceGate` before accepting lane output or opening dependent lanes.
+
+Those rules extend this Delivery Operating Model. They do not open WORK rooms
+by themselves and do not prove product behavior or map truth.
+
 ## First Delivery Slice
 
 The first delivery slice is:

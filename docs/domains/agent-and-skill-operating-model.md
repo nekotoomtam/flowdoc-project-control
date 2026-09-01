@@ -53,6 +53,13 @@ contract for PLAN rooms, real WORK rooms, lane cards, Kickoff Packets, handoff
 rules, Contract Change Requests, and Project Control versus generated SQLite
 authority.
 
+Multi-room delivery planning now uses
+`docs/domains/flowdoc-plan-room-orchestration-rules.md` as the Project Control
+contract for PLAN Room Orchestration Rules. A PLAN room must use those rules
+before choosing `N WORK rooms`, setting `parallelLimit`, opening a dispatch
+set, tracking Room Run Registry entries, pulling missing handoffs, processing
+`handoffInbox` and `completionQueue`, or accepting returned lane results.
+
 A PLAN room coordinates one or more delivery rounds. A WORK room is a real
 separate Codex task/chat visible to the user and executes exactly one approved
 lane. It is not the same thing as an internal subagent. WORK rooms must not

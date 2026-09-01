@@ -27,17 +27,20 @@ Before taking broad work, read these files in order:
 4. `docs/domains/agent-and-skill-operating-model.md`
 5. `docs/domains/flowdoc-round-workflow.md`
 6. `docs/domains/flowdoc-delivery-operating-model.md`
-7. `docs/domains/work-tree-operating-rules.md`
-8. `docs/domains/project-control.md`
-9. `docs/domains/flowdoc-documentation-authority-policy.md`
-10. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
-11. `docs/domains/flowdoc-product-terminology.md`
-12. `docs/domains/flowdoc-product-terminology-th.md`
+7. `docs/domains/flowdoc-plan-room-orchestration-rules.md`
+8. `docs/domains/work-tree-operating-rules.md`
+9. `docs/domains/project-control.md`
+10. `docs/domains/flowdoc-documentation-authority-policy.md`
+11. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
+12. `docs/domains/flowdoc-product-terminology.md`
+13. `docs/domains/flowdoc-product-terminology-th.md`
 
 For FlowDoc delivery planning, opened rooms, lane splitting, Kickoff Packets,
-or handoff work, use the Delivery Operating Model. Keep this room distinction
-explicit: PLAN room coordinates; WORK room is a real separate Codex task/chat
-that executes one approved lane.
+or handoff work, use the Delivery Operating Model. For any PLAN room that may
+dispatch more than one WORK room, read the PLAN Room Orchestration Rules before
+opening or accepting rooms. Keep this room distinction explicit: PLAN room
+coordinates; WORK room is a real separate Codex task/chat that executes one
+approved lane.
 
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or

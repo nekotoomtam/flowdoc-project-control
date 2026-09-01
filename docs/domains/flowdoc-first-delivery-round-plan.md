@@ -44,6 +44,7 @@ behavior, tests, runtime contracts, local setup, and implementation evidence.
 ## Source Documents
 
 - [FlowDoc Delivery Operating Model](flowdoc-delivery-operating-model.md)
+- [FlowDoc PLAN Room Orchestration Rules](flowdoc-plan-room-orchestration-rules.md)
 - [FlowDoc Round Workflow](flowdoc-round-workflow.md)
 - [Work Tree Operating Rules](work-tree-operating-rules.md)
 - [Document Map Operating Rules](document-map-operating-rules.md)
@@ -343,11 +344,23 @@ Handoff format: PASS/FAIL/BLOCKER/RISK/UNKNOWN plus lane ID, repositories checke
 No real WORK room has been opened by this plan. Opening a WORK room requires
 `ตูม` to approve one specific lane or one revised lane set.
 
+Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` before opening a
+dispatch set with more than one real WORK room. The PLAN room must record the
+selected lane IDs, `parallelLimit`, `laneDependencyGraph`, held-back lanes,
+Room Run Registry entries, and the expected acceptance order before treating
+the set as dispatch-ready.
+
 The PLAN room must give each WORK room the matching Kickoff Packet. A WORK room
 must not redefine the round goal, owner repository, source-of-truth rule,
 evidence target, or cross-repository contract. If the WORK room finds that the
 packet is wrong, it must stop and return a Contract Change Request instead of
 silently changing scope.
+
+The Core WORK room returned a handoff candidate outside automatic PLAN-room
+push. Before this PLAN room treats that lane as accepted, it must put the
+candidate result into `handoffInbox`, process it through `acceptanceGate`, and
+record whether the Core lane is accepted, needs revision, or changes the next
+dispatch set.
 
 ## Handoff Requirements
 
