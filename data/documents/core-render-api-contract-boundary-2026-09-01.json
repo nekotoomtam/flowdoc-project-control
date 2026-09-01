@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-render-api-contract-boundary-2026-09-01",
+  "title": "Core Render API Contract Boundary - 2026-09-01",
+  "path": "docs/domains/core-render-api-contract-boundary-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core Render API contract retained-value and Authority Boundary record before demoting surviving Core-local contract Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "360ea384ba609dcceab502a5ea1ef55daf2b151a",
+      "pathOrContractId": "docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md; docs/RENDER_API_REQUEST_ENVELOPE_CONTRACT_GATE.md; docs/RENDER_READINESS_VALIDATION_POLICY_GATE.md; docs/ARTIFACT_POINTER_JOB_STATUS_PLACEHOLDER_POLICY_GATE.md; docs/RENDER_API_ERROR_BLOCKER_VOCABULARY_GATE.md; docs/RENDER_API_CONTRACT_CLOSE_AUDIT.md"
+    }
+  ]
+}
