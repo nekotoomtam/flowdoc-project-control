@@ -48,12 +48,19 @@ Before creating, updating, migrating, or deleting FlowDoc Markdown, read:
 
 ```text
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-documentation-authority-policy.md
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-agent-documentation-authority-operating-rules.md
 ```
 
 Project Control is the canonical home for FlowDoc-wide shared understanding:
 cross-repository status, Work paths, Phase state, Checklist targets, Evidence
 targets, document authority, repository ownership, product terminology, and
 map-truth boundaries.
+
+Follow the Markdown Authority Pre-Action Gate in
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` before
+writing, moving, retiring, summarizing, or deleting Markdown. If a generic
+planning skill says to write a FlowDoc-wide plan or spec into a product
+repository, Project Control override wins.
 
 Repo-local Markdown may remain only when it is code-adjacent,
 repository-owned, or historical. Every repo-local Markdown file that survives

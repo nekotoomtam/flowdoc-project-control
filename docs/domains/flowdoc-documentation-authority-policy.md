@@ -70,13 +70,16 @@ separate repository-owned phases and verification.
 
 ## Agent Timing
 
-Agent role revisions come after the cleanup evidence is recorded. Until then,
-agents should follow this policy, the existing role catalog, and the active
-Project Control Work/Phase/Checklist records.
+Agent role revisions now live in
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` and the
+role catalog. Agents should follow this policy, the Markdown Authority
+Pre-Action Gate, the existing role catalog, and the active Project Control
+Work/Phase/Checklist records.
 
-The later role revision should decide whether FlowDoc needs separate
 Documentation Authority Steward, Repo Documentation Curator, Evidence
-Registrar, or Documentation Cleanup Reviewer roles.
+Registrar, and Documentation Cleanup Reviewer are role overlays for Markdown
+authority work. They narrow first decisions without replacing the existing
+FlowDoc active roles.
 
 ## Evidence Boundary
 

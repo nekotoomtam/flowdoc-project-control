@@ -202,7 +202,8 @@ describe("FlowDoc documentation authority policy", () => {
     expect(policyText).toContain("Every repo-local Markdown file that survives cleanup must declare an Authority Boundary");
     expect(policyText).toContain("Do not create product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide truth");
     expect(policyText).toContain("Inventory -> classify -> summarize or register -> retire");
-    expect(policyText).toContain("Agent role revisions come after the cleanup evidence is recorded");
+    expect(policyText).toContain("Agent role revisions now live in `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`");
+    expect(policyText).toContain("Markdown Authority Pre-Action Gate");
     expect(policyText).toContain("This policy does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
 
     const agentOnboarding = normalize(documents.get("doc-project-control-agent-onboarding")?.content);

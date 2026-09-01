@@ -23,6 +23,13 @@ requires Authority Boundary wording before repository-local Markdown survives
 cleanup. The policy does not promote Core, Backend, Editor, compatibility,
 frontend readiness, or FlowDoc product truth.
 
+Agent-facing documentation authority operating rules now live at
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`. Those
+rules explain why product-repository Markdown drift happened, define the
+Markdown Authority Pre-Action Gate, and state that the FlowDoc Project Control
+override wins when a generic skill suggests product-repository `docs/superpowers`
+plan or spec paths for FlowDoc-wide truth.
+
 Project Control-local `docs/superpowers` Markdown is retired by
 `docs/domains/project-control-superpowers-retirement-2026-09-01.md` and
 `evidence-project-control-superpowers-docs-retired-2026-09-01`. The active

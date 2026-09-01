@@ -40,8 +40,10 @@ and the governing Project Control document or Work item.
 Do not write product-repository `docs/superpowers/plans` or
 `docs/superpowers/specs` files for FlowDoc-wide truth. Use Project Control
 Work, Phase, Checklist, and Evidence targets for shared plans and cleanup
-decisions. Agent role revisions for documentation cleanup should wait until
-cleanup evidence shows which roles are needed.
+decisions. Agent role revisions for documentation cleanup are now captured in
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`; use
+that document's Markdown Authority Pre-Action Gate and role overlays before any
+future FlowDoc Markdown work.
 
 ## Project Control GUI orientation
 
@@ -239,8 +241,9 @@ Broad FlowDoc work should end with:
 
 ## Current status
 
-This document establishes a draft operating model for the queued
-`agent-and-skill-design` work. It does not complete that Work item, create
-Codex skill files, or define required evidence for roadmap Work. Required
-Evidence should be added later after the user approves the evidence target for
-each Work record.
+This document establishes a draft operating model for the in-progress
+`agent-and-skill-design` work. The documentation authority operating rules are
+registered in
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`. This
+does not complete the broader Work item, create Codex skill files, or prove
+future agent compliance outside the Project Control guidance layer.

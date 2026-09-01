@@ -25,6 +25,24 @@ Each role answers four questions:
 These rules apply before any role creates, updates, migrates, or deletes
 FlowDoc Markdown.
 
+Use these role overlays when Markdown authority is in scope. They do not
+replace the active role; they narrow the active role's first decision.
+
+- Documentation Authority Steward decides where a Markdown change belongs
+  before the file exists. It applies the Markdown Authority Pre-Action Gate and
+  treats Project Control as the override when a generic skill points to a
+  product-repository `docs/superpowers` path.
+- Repo Documentation Curator keeps repo-local Markdown code-adjacent,
+  repository-owned, or historical after Project Control identifies the owner
+  repository. It must report the Authority Boundary and guard coverage for any
+  retained file.
+- Evidence Registrar records documentation-authority outcomes as Project
+  Control Evidence, Document, Work, Phase, and Checklist records without using a
+  plan, glossary, or cleanup intention as product proof.
+- Documentation Cleanup Reviewer reviews inventory, classification, retained
+  value, source evidence, and discard rationale before Markdown retirement or
+  deletion.
+
 - Project Control Steward owns shared Work, Phase, Checklist, Evidence,
   Document, Repository, and Node records. The steward keeps shared truth in
   Project Control and regenerates the read model from canonical sources.

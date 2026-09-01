@@ -21,18 +21,6 @@ const editorWysiwygGateDefinitionCommit = "4f12a87b5f1e5e440fdf1bf1231450002657f
 const expectedLegacyWork = [
   {
     kind: "work",
-    id: "agent-and-skill-design",
-    title: "Agent and Skill Design",
-    nodeId: "project-control",
-    repositoryIds: ["repo-project-control"],
-    workState: "queued",
-    summary: "Define FlowDoc agent roles, capabilities, handoffs, and reusable skills after the documentation baseline is under control.",
-    requiredEvidence: [],
-    createdAt: timestamp,
-    updatedAt: timestamp,
-  },
-  {
-    kind: "work",
     id: "core-documentation-family-closure",
     title: "Core Documentation Family Closure",
     nodeId: "core",
@@ -462,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 38);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 39);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -487,6 +475,7 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-development-resumption")).toMatchObject({
       childWorkIds: [
+        "agent-and-skill-design",
         "backend-core-version-contract-consumer-hardening",
         "backend-service-contract-hardening",
         "backend-service-readiness-boundary-review",

@@ -29,8 +29,9 @@ Before taking broad work, read these files in order:
 6. `docs/domains/work-tree-operating-rules.md`
 7. `docs/domains/project-control.md`
 8. `docs/domains/flowdoc-documentation-authority-policy.md`
-9. `docs/domains/flowdoc-product-terminology.md`
-10. `docs/domains/flowdoc-product-terminology-th.md`
+9. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
+10. `docs/domains/flowdoc-product-terminology.md`
+11. `docs/domains/flowdoc-product-terminology-th.md`
 
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or
@@ -45,6 +46,13 @@ Project Control is the canonical home for FlowDoc-wide shared understanding:
 cross-repository status, Work paths, Phase state, Checklist targets, Evidence
 targets, document authority, repository ownership, product terminology, and
 map-truth boundaries.
+
+Before creating, updating, migrating, summarizing, or deleting FlowDoc
+Markdown, read
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` and
+pass its Markdown Authority Pre-Action Gate. If a generic planning skill says
+to write a FlowDoc-wide plan or spec into a product repository, Project Control
+override wins.
 
 Repo-local Markdown may remain only when it is code-adjacent,
 repository-owned, or historical. Every repo-local Markdown file that survives

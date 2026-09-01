@@ -3,10 +3,26 @@
   "id": "agent-and-skill-design",
   "title": "Agent and Skill Design",
   "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
   "repositoryIds": ["repo-project-control"],
-  "workState": "queued",
-  "summary": "Define FlowDoc agent roles, capabilities, handoffs, and reusable skills after the documentation baseline is under control.",
-  "requiredEvidence": [],
+  "workState": "in-progress",
+  "summary": "Define FlowDoc agent roles, capabilities, handoffs, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, and reusable skill boundaries.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-work-tree-operating-rules"
+  ],
+  "activeRole": "project-control-steward",
+  "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules that explain why product-repository Markdown drift happened, define the Markdown Authority Pre-Action Gate, route future agents through Project Control before writing Markdown, and keep broader reusable skill packaging for later phases.",
+  "riskSummary": "This phase prevents Markdown authority drift at the guidance and record layer, but it does not create packaged Codex skill files, does not edit Core, Backend, or Editor behavior, and does not prove future agent compliance outside the Project Control guidance layer.",
+  "requiredEvidence": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
   "createdAt": "2026-08-24T00:00:00.000Z",
-  "updatedAt": "2026-08-24T00:00:00.000Z"
+  "updatedAt": "2026-09-01T09:45:00.000Z"
 }
