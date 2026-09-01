@@ -541,6 +541,7 @@ describe("project roadmap Work Queue", () => {
         "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
         "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
         "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement",
       ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",

@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-project-docs-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement",
+  "title": "Core Project Docs Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-core-project-docs-source-snapshot",
+      "label": "Capture the Core project docs source snapshot and owner.",
+      "state": "passed",
+      "evidenceTarget": "Core source commit, Core project Markdown paths, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before deletion.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core and repo-project-control, source Core commit 68e7ad7180b2eb9afb0adff14bacaefcecbb4f08, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-core-project-docs-retirement, and evidence target evidence-core-project-docs-retired-2026-09-01."
+    },
+    {
+      "id": "record-retained-value-before-core-delete",
+      "label": "Record retained value and discard rationale before Core deletion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the Core docs/project current-state, roadmap, risk, and unknown signals before deleting Core-local duplicate truth.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "Project Control commit 4118b3e1be0d6df9764ae0237ba0869228b60893 added docs/domains/core-project-docs-retirement-2026-09-01.md before Core cleanup commit 3edd2fe81cf5d9554187cebbe67535204b87a72a."
+    },
+    {
+      "id": "write-red-core-project-docs-guard",
+      "label": "Write failing Core guards for project docs retirement.",
+      "state": "passed",
+      "evidenceTarget": "Focused Core documentation authority and canonical docs tests fail before docs/project retirement and stale generated-map regeneration support.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed because docs/project/CURRENT_STATE.md still existed, with expected true to be false. npx vitest run tests/canonicalDocumentationSpine.test.ts --testNamePattern \"regenerates document map after retiring legacy project docs\" --maxWorkers=1 failed because stale docs/DOCUMENT_MAP.md still referenced DOC-CORE-PROJECT-CURRENT-STATE."
+    },
+    {
+      "id": "retire-core-project-docs",
+      "label": "Retire Core docs/project Markdown and active manifest rows.",
+      "state": "passed",
+      "evidenceTarget": "Exactly the four Core docs/project Markdown files are removed, manifest no longer declares docs/project as a canonical root, and generated navigation drops retired project rows.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "Core commit 3edd2fe81cf5d9554187cebbe67535204b87a72a deleted docs/project/CURRENT_STATE.md, docs/project/ROADMAP.md, docs/project/RISK_REGISTER.md, and docs/project/KNOWN_UNKNOWNS.md; removed docs/project from docs/manifest.json canonicalRoots and document rows; regenerated docs/DOCUMENT_MAP.md; updated legacy status/phase/roadmap pointer docs to Project Control; and kept docs/project support only as legacy fixture compatibility in scripts/documentation/canonical-docs-model.mjs."
+    },
+    {
+      "id": "verify-core-main",
+      "label": "Verify Core worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Core focused guards, canonical docs suite, docs:check, diff check, worktree full gate, merged main full gate, and post-merge Markdown counts pass.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 with 1 file and 3 tests, npx vitest run tests/canonicalDocumentationSpine.test.ts --maxWorkers=1 with 1 file and 130 tests, npm run docs:check, git diff --check, npm run check in the Core worktree with 461 test files and 2949 tests, npm run docs:check on merged Core main, npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 on merged Core main with 1 file and 3 tests, npm run check on merged Core main with 461 test files and 2949 tests, and post-merge counts showing docs/project tracked Markdown = 0 while tracked and visible Markdown both equal 339 files."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record Project Control evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the retained-value commit, Core cleanup commit, verification, and unpromoted claims.",
+      "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained Core project-doc meanings remain in Project Control doc-core-project-docs-retirement-2026-09-01 rather than active Core docs/project truth."
+    }
+  ],
+  "createdAt": "2026-09-01T04:20:00.000Z",
+  "updatedAt": "2026-09-01T04:20:00.000Z"
+}

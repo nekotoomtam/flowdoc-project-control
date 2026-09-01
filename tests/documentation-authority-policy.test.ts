@@ -62,6 +62,11 @@ const CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT = "3d92761e2978e61c938822d10ee00a176
 const CORE_PROJECT_DOCS_RETIRE_DOC_ID = "doc-core-project-docs-retirement-2026-09-01";
 const CORE_PROJECT_DOCS_RETIRE_DOC_PATH = "docs/domains/core-project-docs-retirement-2026-09-01.md";
 const CORE_PROJECT_DOCS_SOURCE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
+const CORE_PROJECT_DOCS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement";
+const CORE_PROJECT_DOCS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-project-docs-retirement";
+const CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID = "evidence-core-project-docs-retired-2026-09-01";
+const CORE_PROJECT_DOCS_RETIRE_COMMIT = "3edd2fe81cf5d9554187cebbe67535204b87a72a";
+const CORE_PROJECT_DOCS_RETAINED_VALUE_COMMIT = "4118b3e1be0d6df9764ae0237ba0869228b60893";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -895,7 +900,7 @@ describe("FlowDoc documentation authority policy", () => {
       CORE_MARKDOWN_CLASSIFICATION_DOC_ID,
     ]));
     expect(work?.expectedOutput).toContain("Project Control records retained value and discard rationale for Core docs/project");
-    expect(work?.riskSummary).toContain("Core docs/project retirement retained value is recorded");
+    expect(work?.riskSummary).toContain("doc-core-project-docs-retirement-2026-09-01");
 
     expect(projectControl?.documentIds).toContain(CORE_PROJECT_DOCS_RETIRE_DOC_ID);
 
@@ -926,5 +931,69 @@ describe("FlowDoc documentation authority policy", () => {
     expect(retirementText).toContain("Core may retain package-local documentation mechanics, but Project Control owns FlowDoc-wide Work, Risk, Unknown, Roadmap, and cleanup sequencing");
     expect(retirementText).toContain("does not delete Core Markdown by itself");
     expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core project docs retirement evidence after Core cleanup", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_PROJECT_DOCS_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_PROJECT_DOCS_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID,
+      CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(CORE_PROJECT_DOCS_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Core docs/project Markdown is now absent");
+    expect(work?.riskSummary).toContain("Core docs/project cleanup is recorded");
+    expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 339 files");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core docs/project Markdown is absent");
+    expect(phase?.summary).toContain("retired four Core docs/project Markdown files");
+    expect(phase?.summary).toContain("manifest canonicalRoots no longer includes docs/project");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-project-docs-source-snapshot",
+      "record-retained-value-before-core-delete",
+      "write-red-core-project-docs-guard",
+      "retire-core-project-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_PROJECT_DOCS_RETIRE_COMMIT,
+      pathOrContractId: "docs/manifest.json; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/NEXT_PHASE_POINTER.md; docs/PHASE_LEDGER.md; docs/CROSS_REPO_OPERATING_MAP.md; docs/PHASE_18_IMPLEMENTATION_ROADMAP.md; scripts/documentation/canonical-docs-model.mjs; tests/coreDocumentationAuthority.test.ts; tests/canonicalDocumentationSpine.test.ts",
+    });
+    const verificationSummary = evidence.get(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("Project Control commit 4118b3e1be0d6df9764ae0237ba0869228b60893 recorded retained value and discard rationale before Core deletion");
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/project/CURRENT_STATE.md");
+    expect(verificationSummary).toContain("regenerates document map after retiring legacy project docs");
+    expect(verificationSummary).toContain("Core commit 3edd2fe81cf5d9554187cebbe67535204b87a72a");
+    expect(verificationSummary).toContain("docs/project Markdown is now absent");
+    expect(verificationSummary).toContain("canonicalRoots [docs/coordination, docs/versions/0_1]");
+    expect(verificationSummary).toContain("projectRows=0");
+    expect(verificationSummary).toContain("tracked and visible Markdown both equal 339 files");
+    expect(verificationSummary).toContain("npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npx vitest run tests/canonicalDocumentationSpine.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npm run docs:check");
+    expect(verificationSummary).toContain("npm run check");
+    expect(verificationSummary).toContain("461 test files and 2949 tests");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
