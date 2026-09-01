@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-render-api-planning-boundary-2026-09-01",
+  "title": "Core Render API Planning Boundary - 2026-09-01",
+  "path": "docs/domains/core-render-api-planning-boundary-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core Render API planning retained-value and Authority Boundary record before demoting surviving Core-local planning Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "2057a7458b1055785a516752e21d8edaa558388f",
+      "pathOrContractId": "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md"
+    }
+  ]
+}
