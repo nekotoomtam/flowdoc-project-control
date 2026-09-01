@@ -52,6 +52,13 @@ const CORE_MARKDOWN_CLASSIFICATION_PHASE_ID = "phase-flowdoc-documentation-autho
 const CORE_MARKDOWN_CLASSIFICATION_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification";
 const CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID = "evidence-core-repository-markdown-classification-2026-09-01";
 const CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT = "6c1b53796802772467bf715b83764ac1ef613e52";
+const CORE_HIDDEN_SDD_RETIRE_DOC_ID = "doc-core-hidden-superpowers-sdd-retirement-2026-09-01";
+const CORE_HIDDEN_SDD_RETIRE_DOC_PATH = "docs/domains/core-hidden-superpowers-sdd-retirement-2026-09-01.md";
+const CORE_HIDDEN_SDD_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement";
+const CORE_HIDDEN_SDD_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement";
+const CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID = "evidence-core-hidden-superpowers-sdd-retired-2026-09-01";
+const CORE_HIDDEN_SDD_RETIRE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
+const CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT = "3d92761e2978e61c938822d10ee00a1769e42110";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -765,6 +772,103 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1");
     expect(verificationSummary).toContain("npm run generate");
     expect(verificationSummary).toContain("npm run check:data");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the hidden Core superpowers SDD retirement after preserving retained value", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_HIDDEN_SDD_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_HIDDEN_SDD_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_HIDDEN_SDD_RETIRE_DOC_ID]));
+    expect(work?.expectedOutput).toContain(CORE_HIDDEN_SDD_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Core hidden .superpowers/sdd Markdown is now absent");
+    expect(work?.riskSummary).toContain("Core hidden .superpowers/sdd cleanup is recorded");
+    expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core hidden .superpowers/sdd Markdown is absent");
+    expect(phase?.summary).toContain("retired five hidden Core .superpowers/sdd Markdown files");
+    expect(phase?.summary).toContain("without changing Core runtime behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-hidden-sdd-source-snapshot",
+      "record-retained-value-before-core-delete",
+      "write-red-core-hidden-sdd-guard",
+      "retire-hidden-sdd-markdown",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_HIDDEN_SDD_RETIRE_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID);
+
+    const retirement = documents.get(CORE_HIDDEN_SDD_RETIRE_DOC_ID);
+    expect(retirement).toMatchObject({
+      path: CORE_HIDDEN_SDD_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirement?.authority).toContain("hidden Core .superpowers/sdd Markdown");
+    expect(retirement?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: "git ls-files '.superpowers/*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_HIDDEN_SDD_RETIRE_COMMIT,
+        pathOrContractId: "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT,
+        pathOrContractId: CORE_HIDDEN_SDD_RETIRE_DOC_PATH,
+      }),
+    ]));
+
+    const retirementText = normalize(retirement?.content);
+    expect(retirementText).toContain("five tracked Markdown files");
+    expect(retirementText).toContain("No active Core source, test, README, or `docs/` path references these hidden file paths by name");
+    expect(retirementText).toContain("Core cleanup commit `68e7ad7180b2eb9afb0adff14bacaefcecbb4f08`");
+    expect(retirementText).toContain("`git ls-files '.superpowers/*.md'` returns 0");
+    expect(retirementText).toContain("tracked and visible Core Markdown counts both report 343 files");
+    expect(retirementText).toContain("does not claim that the 5B-1 V3 runtime area, Live Draft, Text Block, Core, Editor, Backend, or FlowDoc product is ready");
+
+    expect(evidence.get(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_HIDDEN_SDD_RETIRE_COMMIT,
+      pathOrContractId: "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("keeps hidden superpowers SDD Markdown retired from Core");
+    expect(verificationSummary).toContain("expected true to be false");
+    expect(verificationSummary).toContain("Core hidden .superpowers/sdd Markdown is now absent");
+    expect(verificationSummary).toContain("2 tests");
+    expect(verificationSummary).toContain("461 test files and 2947 tests");
+    expect(verificationSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });

@@ -27,6 +27,16 @@
       "repositoryId": "repo-core",
       "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
       "pathOrContractId": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08",
+      "pathOrContractId": "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "3d92761e2978e61c938822d10ee00a1769e42110",
+      "pathOrContractId": "docs/domains/core-hidden-superpowers-sdd-retirement-2026-09-01.md"
     }
   ]
 }

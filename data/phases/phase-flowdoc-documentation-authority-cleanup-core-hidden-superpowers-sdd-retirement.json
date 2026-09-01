@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Hidden Superpowers SDD Retirement",
+  "phaseState": "done",
+  "order": 100,
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The hidden Core SDD retained value or discard rationale has not been recorded in Project Control before Core deletion.",
+    "Core deletion would remove code-adjacent runtime contracts or generated documentation instead of hidden historical execution artifacts.",
+    "The cleanup would promote Core runtime readiness, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Core hidden .superpowers/sdd Markdown is absent after preserving retained value in Project Control, adding a Core documentation authority guard, verifying Core full gates in the worktree and merged main, and recording Project Control evidence.",
+  "summary": "Done: Core commit 68e7ad7180b2eb9afb0adff14bacaefcecbb4f08 retired five hidden Core .superpowers/sdd Markdown files and added tests/coreDocumentationAuthority.test.ts coverage so hidden superpowers SDD Markdown remains absent. The Project Control retained-value record was committed first at 3d92761e2978e61c938822d10ee00a1769e42110. Core tracked Markdown now matches visible Markdown at 343 files, without changing Core runtime behavior.",
+  "createdAt": "2026-09-01T03:45:00.000Z",
+  "updatedAt": "2026-09-01T03:45:00.000Z"
+}

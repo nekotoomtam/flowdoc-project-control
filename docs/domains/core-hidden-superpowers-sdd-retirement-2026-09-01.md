@@ -67,6 +67,19 @@ and git history at the exact source commit. After the Core cleanup commit,
 future agents should cite this record or the exact source commit instead of
 recreating hidden `.superpowers/sdd` Markdown.
 
+## Cleanup Result
+
+Core cleanup commit `68e7ad7180b2eb9afb0adff14bacaefcecbb4f08` retired the
+five hidden `.superpowers/sdd` Markdown files and added a Core documentation
+authority guard in `tests/coreDocumentationAuthority.test.ts`.
+
+After the cleanup, `git ls-files '.superpowers/*.md'` returns 0. The tracked
+and visible Core Markdown counts both report 343 files.
+
+The Core verification gates passed before and after merge to `main`. This
+result removes only hidden historical Markdown artifacts; it does not alter
+Core runtime behavior or claim broader Core readiness.
+
 ## Evidence Boundary
 
 This record preserves cleanup rationale only. It does not delete Core Markdown

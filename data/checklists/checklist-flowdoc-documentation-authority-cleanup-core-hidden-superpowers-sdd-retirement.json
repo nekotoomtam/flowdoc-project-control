@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement",
+  "title": "Core Hidden Superpowers SDD Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-hidden-sdd-source-snapshot",
+      "label": "Capture the hidden Core SDD source snapshot and owner.",
+      "state": "passed",
+      "evidenceTarget": "Core source commit, hidden Markdown paths, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before deletion.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core and repo-project-control, source Core commit 6c1b53796802772467bf715b83764ac1ef613e52, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement, and evidence target evidence-core-hidden-superpowers-sdd-retired-2026-09-01."
+    },
+    {
+      "id": "record-retained-value-before-core-delete",
+      "label": "Record retained value and discard rationale before Core deletion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the retained 5B-1 V3 collision, delivery, review, verification, and source-envelope meanings before deleting hidden Core Markdown.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "Project Control commit 3d92761e2978e61c938822d10ee00a1769e42110 added docs/domains/core-hidden-superpowers-sdd-retirement-2026-09-01.md before Core cleanup commit 68e7ad7180b2eb9afb0adff14bacaefcecbb4f08."
+    },
+    {
+      "id": "write-red-core-hidden-sdd-guard",
+      "label": "Write a failing Core guard for hidden SDD Markdown.",
+      "state": "passed",
+      "evidenceTarget": "Focused Core documentation authority test fails before the hidden .superpowers/sdd Markdown is removed.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed because .superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md still existed, with expected true to be false."
+    },
+    {
+      "id": "retire-hidden-sdd-markdown",
+      "label": "Retire the tracked hidden SDD Markdown files from Core.",
+      "state": "passed",
+      "evidenceTarget": "Exactly the five hidden .superpowers/sdd Markdown files are removed and no Core runtime file changes.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "Core commit 68e7ad7180b2eb9afb0adff14bacaefcecbb4f08 deleted the five tracked hidden .superpowers/sdd Markdown files and changed tests/coreDocumentationAuthority.test.ts only."
+    },
+    {
+      "id": "verify-core-main",
+      "label": "Verify Core worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Core focused guard, diff check, worktree full gate, merged main full gate, and post-merge Markdown counts pass.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 with 1 file and 2 tests, git diff --check, npm run check in the Core worktree with 461 test files and 2947 tests, npm run check on Core main with 461 test files and 2947 tests, and post-merge counts showing git ls-files '.superpowers/*.md' = 0 while tracked and visible Markdown both equal 343."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record Project Control evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the Core cleanup commit, retained-value record, verification, and unpromoted claims.",
+      "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+    }
+  ],
+  "createdAt": "2026-09-01T03:45:00.000Z",
+  "updatedAt": "2026-09-01T03:45:00.000Z"
+}
