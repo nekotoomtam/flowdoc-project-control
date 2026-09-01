@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-project-control-skill-installation-2026-09-01",
+  "title": "FlowDoc Project Control Skill Installation - 2026-09-01",
+  "path": "docs/domains/flowdoc-project-control-skill-installation-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Project Control personal Codex skill installation and validation record for the FlowDoc Project Control entrypoint skill.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-project-control-skill-installation-2026-09-01.md; tests/flowdoc-project-control-skill.test.ts; docs/domains/agent-and-skill-operating-model.md"
+    }
+  ]
+}

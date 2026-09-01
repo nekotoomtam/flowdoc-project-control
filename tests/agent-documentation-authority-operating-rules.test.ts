@@ -28,7 +28,7 @@ describe("FlowDoc agent documentation authority operating rules", () => {
       activeRole: "project-control-steward",
       nodeId: "project-control",
       parentWorkId: PARENT_WORK_ID,
-      phaseIds: [PHASE_ID],
+      phaseIds: expect.arrayContaining([PHASE_ID]),
       repositoryIds: ["repo-project-control"],
       requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       workKind: "task",

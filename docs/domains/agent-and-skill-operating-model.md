@@ -4,7 +4,7 @@
 
 This document defines the first Project Control operating model for FlowDoc
 agents, reusable skills, and handoffs. It is a coordination contract, not an
-implementation claim and not a generated Codex skill package.
+implementation claim and not itself a generated Codex skill package.
 
 Project Control should make agent work safer by keeping scope, ownership,
 evidence, and remaining risk visible before work resumes in Core, Editor, or
@@ -44,6 +44,31 @@ decisions. Agent role revisions for documentation cleanup are now captured in
 `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`; use
 that document's Markdown Authority Pre-Action Gate and role overlays before any
 future FlowDoc Markdown work.
+
+## Packaged local skills
+
+### flowdoc-project-control
+
+The first local Codex skill package for FlowDoc is installed at
+`C:\Users\nekot\.codex\skills\flowdoc-project-control\SKILL.md`.
+
+Trigger: any FlowDoc, Project Control, Core, Backend, Editor, document map,
+evidence, Work record, product terminology, or `flowdoc-*` repository work.
+
+Output: the agent reads Project Control first, identifies Work path, owner
+repository, active role, current Phase, Checklist target, Evidence target,
+known risks, and unknown state, and applies the Markdown Authority Pre-Action
+Gate before any FlowDoc Markdown work.
+
+Stop conditions: Project Control is unavailable or unresolved, the skill would
+conflict with Project Control AGENTS.md, a generic planning path would place
+FlowDoc-wide truth in a product repository, the owner repository is ambiguous,
+or the work would promote product truth without Evidence.
+
+Validation: Project Control record
+`docs/domains/flowdoc-project-control-skill-installation-2026-09-01.md`
+captures structural skill validation and bounded pressure validation against
+the generic `docs/superpowers/plans` default.
 
 ## Project Control GUI orientation
 
@@ -244,6 +269,11 @@ Broad FlowDoc work should end with:
 This document establishes a draft operating model for the in-progress
 `agent-and-skill-design` work. The documentation authority operating rules are
 registered in
-`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`. This
-does not complete the broader Work item, create Codex skill files, or prove
-future agent compliance outside the Project Control guidance layer.
+`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`, and
+the first local Codex skill package `flowdoc-project-control` is recorded in
+`docs/domains/flowdoc-project-control-skill-installation-2026-09-01.md`.
+Broader specialized skills for repository health audit, lane reconciliation,
+evidence registration, documentation synthesis, boundary review, and Project
+Control GUI orientation remain candidates for later phases. Bounded validation
+does not prove future agent compliance outside this machine, future Codex skill
+routing, or all possible prompt pressure cases.
