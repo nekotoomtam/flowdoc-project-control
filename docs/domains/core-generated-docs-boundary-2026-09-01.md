@@ -21,6 +21,10 @@ Scope: Core generated canonical docs boundary for `docs/DOCUMENT_MAP.md`,
 `docs/versions/0_1/CAPABILITY_SET.md`, and the authored
 `docs/versions/0_1/COMPATIBILITY.md`.
 
+Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk,
+Unknown, Roadmap, documentation authority, product terminology, compatibility
+promotion, and cleanup state.
+
 This record does not make those Core generated or authored version docs active
 FlowDoc-wide status, roadmap, risk, unknown, Phase, Checklist, Evidence,
 terminology, compatibility, or map authority. It does not promote Core,
@@ -56,6 +60,35 @@ context because Core tests and canonical documentation checks still use them as
 the local documentation spine, generated glossary views, planned release-line
 views, capability selector view, and explicit non-compatibility record.
 
+## Cleanup Result
+
+Core cleanup commit `661d0bb214db4c68b9403c3e5783e40123944d4a` adds generated
+Authority Boundary output to `scripts/documentation/canonical-docs-render.mjs`
+and regenerates:
+
+- `docs/DOCUMENT_MAP.md`
+- `docs/GLOSSARY.md`
+- `docs/GLOSSARY_TH.md`
+- `docs/versions/0_1/VERSION_OVERVIEW.md`
+- `docs/versions/0_1/CAPABILITY_SET.md`
+
+The same Core commit adds an authored Authority Boundary to
+`docs/versions/0_1/COMPATIBILITY.md` while preserving the
+`FLOWDOC-COMPATIBILITY` metadata block at the document start.
+
+Core tracked and visible Markdown counts remain 339 files. An Authority /
+Project Control signal scan reports 27 matches and 312 tracked Core Markdown
+files without Authority Boundary or Project Control signal. This lane demotes
+the surviving generated canonical docs and compatibility record into bounded
+Core-owned documentation context; it does not delete them.
+
+## Cleanup Housekeeping
+
+The cleanup used short path `C:/w/fd-core-gendocs-0901` to avoid repeating the
+prior long-path cleanup blockers. Post-merge cleanup removed
+`C:/w/fd-core-gendocs-0901`, and branch
+`fd-core-gendocs-boundary-0901` was deleted.
+
 ## Retained Value
 
 | Source | Retained value |
@@ -87,6 +120,11 @@ The cleanup lane should add Core guards that require Authority Boundary wording
 in generated canonical documentation output and in the surviving compatibility
 record, regenerate the generated Markdown from Core sources, and then record
 evidence after Core verification passes.
+
+Verification completed after Core commit
+`661d0bb214db4c68b9403c3e5783e40123944d4a`: focused Core canonical
+documentation and documentation authority guards, Core docs check, Core full
+check, and merged-main Core checks passed.
 
 This record preserves cleanup rationale only. It does not edit Core runtime
 behavior by itself and does not promote Core, Backend, Editor, compatibility,

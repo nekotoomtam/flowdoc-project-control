@@ -1,0 +1,24 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Generated Canonical Docs Boundary",
+  "phaseState": "done",
+  "order": 150,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The Core generated canonical docs retained value has not been recorded in Project Control before Core demotion.",
+    "The cleanup would hand-edit generated Markdown instead of changing the Core canonical docs renderer.",
+    "The compatibility metadata block would no longer remain at the start of docs/versions/0_1/COMPATIBILITY.md.",
+    "The cleanup would promote Core runtime readiness, Backend readiness, Editor readiness, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth."
+  ],
+  "verificationTarget": "The five generated Core canonical docs and the authored Core 0.1 compatibility record carry Authority Boundary wording; generated Markdown is updated through the Core canonical docs renderer; Core worktree plus merged main gates pass.",
+  "summary": "Done: Project Control commit b76e4e82c7d60f8d42c0bc2693baea13a58fc426 recorded retained value for Core generated canonical docs and the authored Core 0.1 compatibility record before Core demotion. Core commit 661d0bb214db4c68b9403c3e5783e40123944d4a added Authority Boundary output to scripts/documentation/canonical-docs-render.mjs, regenerated docs/DOCUMENT_MAP.md, docs/GLOSSARY.md, docs/GLOSSARY_TH.md, docs/versions/0_1/VERSION_OVERVIEW.md, and docs/versions/0_1/CAPABILITY_SET.md, and added an Authority Boundary to docs/versions/0_1/COMPATIBILITY.md while preserving the FLOWDOC-COMPATIBILITY metadata block at the document start. The docs survive as Core-owned generated or authored documentation context without hand-editing generated Markdown, without deleting Core generated canonical docs, without changing runtime behavior, and without promoting release readiness or compatibility. Core tracked and visible Markdown remain 339 files, with 27 Authority/Project Control signal matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal. Cleanup housekeeping used the short worktree path C:/w/fd-core-gendocs-0901; C:/w/fd-core-gendocs-0901 was removed and branch fd-core-gendocs-boundary-0901 was deleted.",
+  "createdAt": "2026-09-01T08:00:00.000Z",
+  "updatedAt": "2026-09-01T08:00:00.000Z"
+}

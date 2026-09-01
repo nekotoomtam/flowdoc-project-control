@@ -88,6 +88,13 @@ const CORE_RENDER_API_CONTRACT_BOUNDARY_COMMIT = "b4992a70091d9e829b7c9f023ac7f0
 const CORE_RENDER_API_CONTRACT_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary";
 const CORE_RENDER_API_CONTRACT_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary";
 const CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID = "evidence-core-render-api-contract-boundary-2026-09-01";
+const CORE_GENERATED_DOCS_BOUNDARY_DOC_ID = "doc-core-generated-docs-boundary-2026-09-01";
+const CORE_GENERATED_DOCS_BOUNDARY_DOC_PATH = "docs/domains/core-generated-docs-boundary-2026-09-01.md";
+const CORE_GENERATED_DOCS_BOUNDARY_SOURCE_COMMIT = "b4992a70091d9e829b7c9f023ac7f0d90250e827";
+const CORE_GENERATED_DOCS_BOUNDARY_COMMIT = "661d0bb214db4c68b9403c3e5783e40123944d4a";
+const CORE_GENERATED_DOCS_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
+const CORE_GENERATED_DOCS_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
+const CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID = "evidence-core-generated-docs-boundary-2026-09-01";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -1279,5 +1286,101 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
     expect(verificationSummary).toContain("branch fd-core-render-contract-0901 was deleted");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core generated canonical docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_GENERATED_DOCS_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_GENERATED_DOCS_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID,
+      CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_GENERATED_DOCS_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core generated canonical docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core generated canonical docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("Authority/Project Control signal scan reports 27 matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without hand-editing generated Markdown");
+    expect(phase?.summary).toContain("without promoting release readiness or compatibility");
+    expect(phase?.summary).toContain("C:/w/fd-core-gendocs-0901 was removed");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-generated-docs-source-snapshot",
+      "record-core-generated-docs-retained-value",
+      "write-red-core-generated-docs-boundary-guard",
+      "bound-surviving-core-generated-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_GENERATED_DOCS_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_GENERATED_DOCS_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_GENERATED_DOCS_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core generated canonical docs retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_GENERATED_DOCS_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_GENERATED_DOCS_BOUNDARY_COMMIT,
+        pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md; tests/canonicalDocumentationSpine.test.ts; tests/coreDocumentationAuthority.test.ts",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core generated canonical docs boundary");
+    expect(boundaryText).toContain("Canonical document map");
+    expect(boundaryText).toContain("Technical glossary");
+    expect(boundaryText).toContain("Thai glossary");
+    expect(boundaryText).toContain("Core 0.1 version overview");
+    expect(boundaryText).toContain("Core 0.1 capability set");
+    expect(boundaryText).toContain("Core 0.1 compatibility record");
+    expect(boundaryText).toContain("survive cleanup as Core-owned generated or authored documentation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, documentation authority, product terminology, compatibility promotion, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+
+    expect(evidence.get(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_GENERATED_DOCS_BOUNDARY_COMMIT,
+      pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md; tests/canonicalDocumentationSpine.test.ts; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core generated canonical docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core generated canonical docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("without hand-editing generated Markdown");
+    expect(verificationSummary).toContain("Authority/Project Control signal scan reports 27 matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal");
+    expect(verificationSummary).toContain("C:/w/fd-core-gendocs-0901 was removed");
+    expect(verificationSummary).toContain("branch fd-core-gendocs-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
   });
 });

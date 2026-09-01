@@ -12,6 +12,11 @@
       "repositoryId": "repo-core",
       "commit": "b4992a70091d9e829b7c9f023ac7f0d90250e827",
       "pathOrContractId": "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "661d0bb214db4c68b9403c3e5783e40123944d4a",
+      "pathOrContractId": "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md; tests/canonicalDocumentationSpine.test.ts; tests/coreDocumentationAuthority.test.ts"
     }
   ]
 }
