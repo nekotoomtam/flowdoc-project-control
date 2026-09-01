@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-generated-docs-boundary-2026-09-01",
+  "title": "Core Generated Canonical Docs Boundary - 2026-09-01",
+  "path": "docs/domains/core-generated-docs-boundary-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core generated canonical docs retained-value and Authority Boundary record before demoting surviving Core generated and version Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "b4992a70091d9e829b7c9f023ac7f0d90250e827",
+      "pathOrContractId": "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md"
+    }
+  ]
+}
