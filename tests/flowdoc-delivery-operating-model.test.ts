@@ -8,6 +8,7 @@ const DOC_ID = "doc-flowdoc-delivery-operating-model";
 const DOC_PATH = "docs/domains/flowdoc-delivery-operating-model.md";
 const PHASE_ID = "phase-agent-and-skill-design-delivery-operating-model";
 const CHECKLIST_ID = "checklist-agent-and-skill-design-delivery-operating-model";
+const EVIDENCE_ID = "evidence-flowdoc-delivery-operating-model-2026-09-01";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -15,6 +16,7 @@ describe("FlowDoc Delivery Operating Model", () => {
   it("records the shared PLAN and WORK room contract in Project Control", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
     const work = model.work.find((item) => item.id === WORK_ID);
     const phase = model.phases.find((item) => item.id === PHASE_ID);
     const checklist = model.checklists.find((item) => item.id === CHECKLIST_ID);
@@ -30,6 +32,7 @@ describe("FlowDoc Delivery Operating Model", () => {
       parentWorkId: PARENT_WORK_ID,
       phaseIds: expect.arrayContaining([PHASE_ID]),
       repositoryIds: ["repo-project-control"],
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       workKind: "task",
       workPathIds: [PARENT_WORK_ID, WORK_ID],
       workState: "in-progress",
@@ -54,6 +57,9 @@ describe("FlowDoc Delivery Operating Model", () => {
     ]);
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
     expect(checklist?.items.every((item) => item.verificationNote !== undefined)).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EVIDENCE_ID),
+    )).toBe(true);
 
     expect(documents.get(DOC_ID)).toMatchObject({
       authority: expect.stringContaining("PLAN and WORK room delivery operating contract"),
@@ -62,6 +68,20 @@ describe("FlowDoc Delivery Operating Model", () => {
       path: DOC_PATH,
       role: "contract",
     });
+    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual([
+      expect.objectContaining({
+        commit: "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
+        pathOrContractId: expect.stringContaining("tests/flowdoc-delivery-operating-model.test.ts"),
+        repositoryId: "repo-project-control",
+      }),
+    ]);
+    expect(evidence.get(EVIDENCE_ID)).toMatchObject({
+      commit: "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
+      nodeIds: [],
+      pathOrContractId: expect.stringContaining(DOC_PATH),
+      repositoryId: "repo-project-control",
+    });
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("PLAN and WORK room delivery operating contract");
 
     expect(docText).toContain("# FlowDoc Delivery Operating Model");
     expect(docText).toContain("Work path: `flowdoc-product-development-resumption > agent-and-skill-design`");

@@ -7,6 +7,11 @@
   "role": "contract",
   "authority": "Project Control PLAN and WORK room delivery operating contract for real multi-room FlowDoc execution, lane kickoff, handoff, evidence target, and source-of-truth boundaries.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
+      "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; tests/flowdoc-delivery-operating-model.test.ts"
+    }
+  ]
 }
-

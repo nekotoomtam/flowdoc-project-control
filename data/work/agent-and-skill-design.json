@@ -26,6 +26,7 @@
   "riskSummary": "The first local entrypoint skill, global guidance, and Delivery Operating Model reduce Markdown authority and room coordination drift risk, but local skills may not be installed or surfaced in every future environment, bounded pressure validation does not prove future agent compliance, and this work does not edit Core, Backend, or Editor behavior or promote product truth.",
   "requiredEvidence": [
     "evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01",
+    "evidence-flowdoc-delivery-operating-model-2026-09-01",
     "evidence-flowdoc-project-control-skill-2026-09-01"
   ],
   "createdAt": "2026-08-24T00:00:00.000Z",
