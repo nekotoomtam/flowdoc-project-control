@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
+  "title": "Project Control Superpowers Docs Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-project-control-owner",
+      "label": "Capture the Project Control cleanup path and owner before editing.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Project Control docs/superpowers.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-project-control, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement, and evidence target evidence-project-control-superpowers-docs-retired-2026-09-01."
+    },
+    {
+      "id": "write-red-project-control-doc-authority-test",
+      "label": "Write failing Project Control documentation authority guards.",
+      "state": "passed",
+      "evidenceTarget": "Focused Project Control documentation authority tests fail before docs/superpowers is retired and before Project Control records the retirement evidence.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "RED evidence included npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failing because docs/superpowers still contained 21 Markdown files, then failing because Work requiredEvidence did not include evidence-project-control-superpowers-docs-retired-2026-09-01."
+    },
+    {
+      "id": "move-active-project-control-design",
+      "label": "Move the active Project Control design into canonical domain docs.",
+      "state": "passed",
+      "evidenceTarget": "The active doc-project-control-design path no longer points under docs/superpowers and the moved design remains readable through the generated read model.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md moved to docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md, and data/documents/project-control-design.json now points to that canonical domain path."
+    },
+    {
+      "id": "record-retained-value-and-discard-rationale",
+      "label": "Record retained value and discard rationale before retirement.",
+      "state": "passed",
+      "evidenceTarget": "A Project Control summary document lists the source snapshot, moved design path, retired historical traces, retained authority, and discard rationale.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "docs/domains/project-control-superpowers-retirement-2026-09-01.md records the source snapshot at Project Control commit 32ca1fe1207c68710382d4198493616e0c086ec6, the 2026-08-12 design move, and retained-value or discard rationale for the remaining historical execution traces."
+    },
+    {
+      "id": "retire-project-control-superpowers-sources",
+      "label": "Retire Project Control docs/superpowers Markdown files.",
+      "state": "passed",
+      "evidenceTarget": "Project Control docs/superpowers contains no Markdown after the active design move and historical source retirement.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "rg --files docs/superpowers -g '*.md' reports the path is absent after Project Control commit 89d68b571ff4f815a99a5e53efc09252258c08e1."
+    },
+    {
+      "id": "verify-project-control-worktree",
+      "label": "Verify the Project Control cleanup guards and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Focused documentation authority tests, seed tests, npm run generate, and npm run check:data pass after the Project Control docs/superpowers retirement.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/documentation-authority-policy.test.ts tests/seed-project.test.ts --maxWorkers=1 with 2 files and 15 tests before this evidence record was added, then passed the same focused command with 2 files and 16 tests after record registration. npm run generate and npm run check:data also passed."
+    },
+    {
+      "id": "record-project-control-superpowers-evidence",
+      "label": "Record Project Control docs/superpowers retirement evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the implementation commit, files, verification, and boundaries intentionally not promoted.",
+      "evidenceIds": ["evidence-project-control-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+    }
+  ],
+  "createdAt": "2026-09-01T01:55:00.000Z",
+  "updatedAt": "2026-09-01T01:55:00.000Z"
+}

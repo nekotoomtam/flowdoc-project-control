@@ -12,6 +12,11 @@
       "repositoryId": "repo-project-control",
       "commit": "bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444",
       "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "89d68b571ff4f815a99a5e53efc09252258c08e1",
+      "pathOrContractId": "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md"
     }
   ]
 }

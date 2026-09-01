@@ -42,6 +42,10 @@ const AGENT_ROLE_REWRITE_COMMIT = "be0729767ba3e86a828e4f133edf17380ab77fbe";
 const PROJECT_CONTROL_DESIGN_CANONICAL_PATH = "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md";
 const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_ID = "doc-project-control-superpowers-retirement-2026-09-01";
 const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_PATH = "docs/domains/project-control-superpowers-retirement-2026-09-01.md";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID = "evidence-project-control-superpowers-docs-retired-2026-09-01";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT = "89d68b571ff4f815a99a5e53efc09252258c08e1";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -594,5 +598,64 @@ describe("FlowDoc documentation authority policy", () => {
     expect(retirementText).toContain(PROJECT_CONTROL_DESIGN_CANONICAL_PATH);
     expect(retirementText).toContain("historical execution traces");
     expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Project Control docs/superpowers retirement evidence", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === PROJECT_CONTROL_SUPERPOWERS_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === PROJECT_CONTROL_SUPERPOWERS_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      AGENT_ROLE_REWRITE_EVIDENCE_ID,
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Project Control docs/superpowers is now absent");
+    expect(work?.riskSummary).toContain("Project Control docs/superpowers cleanup is recorded");
+    expect(work?.riskSummary).toContain("historical source paths remain valid only when commit-pinned");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Project Control docs/superpowers is absent");
+    expect(phase?.summary).toContain("retired all 21 Project Control docs/superpowers Markdown files");
+    expect(phase?.summary).toContain(PROJECT_CONTROL_DESIGN_CANONICAL_PATH);
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-project-control-owner",
+      "write-red-project-control-doc-authority-test",
+      "move-active-project-control-design",
+      "record-retained-value-and-discard-rationale",
+      "retire-project-control-superpowers-sources",
+      "verify-project-control-worktree",
+      "record-project-control-superpowers-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md; docs/domains/project-control-superpowers-retirement-2026-09-01.md; data/documents/project-control-design.json; data/documents/project-control-superpowers-retirement-2026-09-01.json; data/nodes/project-control.json; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("21 Markdown files");
+    expect(verificationSummary).toContain("Project Control docs/superpowers is absent");
+    expect(verificationSummary).toContain("2 files and 15 tests");
+    expect(verificationSummary).toContain("2 files and 16 tests");
+    expect(verificationSummary).toContain("npm run generate");
+    expect(verificationSummary).toContain("npm run check:data");
+    expect(verificationSummary).toContain("does not delete product-repository Markdown");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });

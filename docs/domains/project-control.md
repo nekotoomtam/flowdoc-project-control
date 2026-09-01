@@ -23,6 +23,13 @@ requires Authority Boundary wording before repository-local Markdown survives
 cleanup. The policy does not promote Core, Backend, Editor, compatibility,
 frontend readiness, or FlowDoc product truth.
 
+Project Control-local `docs/superpowers` Markdown is retired by
+`docs/domains/project-control-superpowers-retirement-2026-09-01.md` and
+`evidence-project-control-superpowers-docs-retired-2026-09-01`. The active
+Project Control design now lives under `docs/domains`, and historical
+superpowers paths are valid only when paired with the exact commit that
+contained them.
+
 The approved next Project Control GUI direction is the repo-first Overview and
 History split in
 `docs/domains/project-control-repo-first-overview-history-2026-08-28.md`.
