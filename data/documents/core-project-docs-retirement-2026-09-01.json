@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-project-docs-retirement-2026-09-01",
+  "title": "Core Project Docs Retirement - 2026-09-01",
+  "path": "docs/domains/core-project-docs-retirement-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core docs/project retained-value and discard-rationale record before retiring Core-local project state, risk, unknown, and roadmap Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08",
+      "pathOrContractId": "docs/project/CURRENT_STATE.md; docs/project/ROADMAP.md; docs/project/RISK_REGISTER.md; docs/project/KNOWN_UNKNOWNS.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08",
+      "pathOrContractId": "docs/manifest.json"
+    }
+  ]
+}

@@ -59,6 +59,9 @@ const CORE_HIDDEN_SDD_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-aut
 const CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID = "evidence-core-hidden-superpowers-sdd-retired-2026-09-01";
 const CORE_HIDDEN_SDD_RETIRE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
 const CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT = "3d92761e2978e61c938822d10ee00a1769e42110";
+const CORE_PROJECT_DOCS_RETIRE_DOC_ID = "doc-core-project-docs-retirement-2026-09-01";
+const CORE_PROJECT_DOCS_RETIRE_DOC_PATH = "docs/domains/core-project-docs-retirement-2026-09-01.md";
+const CORE_PROJECT_DOCS_SOURCE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -879,5 +882,49 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("git worktree list no longer lists");
     expect(verificationSummary).toContain("Remove-Item -Recurse attempts were blocked");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core project docs retained value before retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
+      CORE_PROJECT_DOCS_RETIRE_DOC_ID,
+      CORE_MARKDOWN_CLASSIFICATION_DOC_ID,
+    ]));
+    expect(work?.expectedOutput).toContain("Project Control records retained value and discard rationale for Core docs/project");
+    expect(work?.riskSummary).toContain("Core docs/project retirement retained value is recorded");
+
+    expect(projectControl?.documentIds).toContain(CORE_PROJECT_DOCS_RETIRE_DOC_ID);
+
+    const retirement = documents.get(CORE_PROJECT_DOCS_RETIRE_DOC_ID);
+    expect(retirement).toMatchObject({
+      path: CORE_PROJECT_DOCS_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirement?.authority).toContain("Core docs/project retained-value and discard-rationale record");
+    expect(retirement?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_PROJECT_DOCS_SOURCE_COMMIT,
+        pathOrContractId: "docs/project/CURRENT_STATE.md; docs/project/ROADMAP.md; docs/project/RISK_REGISTER.md; docs/project/KNOWN_UNKNOWNS.md",
+      }),
+    ]));
+
+    const retirementText = normalize(retirement?.content);
+    expect(retirementText).toContain("Core `docs/project`");
+    expect(retirementText).toContain("four Core project documents");
+    expect(retirementText).toContain("No alpha release has been authorized");
+    expect(retirementText).toContain("Production activation remains false");
+    expect(retirementText).toContain("WORK-CORE-LAYOUT-CUTOVER-001");
+    expect(retirementText).toContain("RISK-CORE-DOCUMENTATION-DUAL-TRUTH-001");
+    expect(retirementText).toContain("UNKNOWN-CORE-DOCUMENTATION-CONTRACT-INVENTORY-001");
+    expect(retirementText).toContain("Core may retain package-local documentation mechanics, but Project Control owns FlowDoc-wide Work, Risk, Unknown, Roadmap, and cleanup sequencing");
+    expect(retirementText).toContain("does not delete Core Markdown by itself");
+    expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
