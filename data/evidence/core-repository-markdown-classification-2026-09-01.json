@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-repository-markdown-classification-2026-09-01",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+  "pathOrContractId": "git ls-files '*.md'; rg --files -g '*.md'; .superpowers/sdd; docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md",
+  "verificationSummary": "Project Control records the Core repo-local Markdown classification for the FlowDoc documentation authority cleanup. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed before Work requiredEvidence included evidence-core-repository-markdown-classification-2026-09-01. Source scans against Core source commit 6c1b53796802772467bf715b83764ac1ef613e52 used git ls-files '*.md' and rg --files -g '*.md'; they found 348 tracked Markdown files, 343 visible Markdown files, five hidden .superpowers/sdd Markdown execution artifacts, docs/superpowers is absent, four Authority/Project Control signal matches, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal. Core repository was read-only. The classification marks hidden .superpowers/sdd Markdown and Core project-state/status/roadmap/planning docs as the first cleanup lanes while treating code-adjacent contracts, boundaries, gates, and architecture locks as retention candidates requiring Authority Boundary review. GREEN evidence after record registration passed npx vitest run tests/documentation-authority-policy.test.ts tests/seed-project.test.ts --maxWorkers=1 with 2 files and 17 tests, npm run generate, npm run check:data, and the full npm run check worktree gate with 60 unit test files, 340 unit tests, build, and 6 e2e tests. This evidence does not delete Core Markdown, does not edit Core runtime behavior, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-01T02:35:00.000Z"
+}

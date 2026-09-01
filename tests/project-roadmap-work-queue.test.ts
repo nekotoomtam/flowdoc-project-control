@@ -539,6 +539,7 @@ describe("project roadmap Work Queue", () => {
         "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
         "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
         "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
       ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",

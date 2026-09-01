@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Markdown Classification",
+  "phaseState": "done",
+  "order": 90,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The classification would edit Core files or remove Core Markdown before retained value and discard rationale are recorded.",
+    "The visible Markdown scan is treated as complete while tracked hidden Markdown exists.",
+    "The classification would promote Core project state, compatibility, release readiness, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Project Control records Core 348 tracked Markdown files at Core source commit 6c1b53796802772467bf715b83764ac1ef613e52, distinguishes the 343 visible Markdown files from five hidden .superpowers/sdd Markdown files, and keeps Core repository remains read-only while setting the next cleanup lanes.",
+  "summary": "Done: Core docs/superpowers is absent, but Core still has 348 tracked Markdown files at source commit 6c1b53796802772467bf715b83764ac1ef613e52. The classification records 343 visible Markdown files, five tracked .superpowers/sdd hidden execution artifacts, four Authority/Project Control signal matches, and 344 tracked files without Authority Boundary or Project Control signal. It identifies hidden .superpowers/sdd artifacts plus Core project-state/status/roadmap/planning docs as the first cleanup lanes without changing Core files.",
+  "createdAt": "2026-09-01T02:35:00.000Z",
+  "updatedAt": "2026-09-01T02:35:00.000Z"
+}

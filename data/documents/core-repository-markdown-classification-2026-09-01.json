@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-core-repository-markdown-classification-2026-09-01",
+  "title": "Core Repository Markdown Classification - 2026-09-01",
+  "path": "docs/domains/core-repository-markdown-classification-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core repo-local Markdown classification snapshot for the FlowDoc documentation authority cleanup Work item.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "git ls-files '*.md'"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "rg --files -g '*.md'"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": ".superpowers/sdd"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md"
+    }
+  ]
+}

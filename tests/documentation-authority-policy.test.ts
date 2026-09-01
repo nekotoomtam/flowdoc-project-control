@@ -46,6 +46,12 @@ const PROJECT_CONTROL_SUPERPOWERS_RETIRE_PHASE_ID = "phase-flowdoc-documentation
 const PROJECT_CONTROL_SUPERPOWERS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement";
 const PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID = "evidence-project-control-superpowers-docs-retired-2026-09-01";
 const PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT = "89d68b571ff4f815a99a5e53efc09252258c08e1";
+const CORE_MARKDOWN_CLASSIFICATION_DOC_ID = "doc-core-repository-markdown-classification-2026-09-01";
+const CORE_MARKDOWN_CLASSIFICATION_DOC_PATH = "docs/domains/core-repository-markdown-classification-2026-09-01.md";
+const CORE_MARKDOWN_CLASSIFICATION_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification";
+const CORE_MARKDOWN_CLASSIFICATION_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification";
+const CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID = "evidence-core-repository-markdown-classification-2026-09-01";
+const CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT = "6c1b53796802772467bf715b83764ac1ef613e52";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -656,6 +662,109 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("npm run generate");
     expect(verificationSummary).toContain("npm run check:data");
     expect(verificationSummary).toContain("does not delete product-repository Markdown");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core repo-local Markdown classification before broader Core cleanup", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_MARKDOWN_CLASSIFICATION_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_MARKDOWN_CLASSIFICATION_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+      PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_MARKDOWN_CLASSIFICATION_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core repo-local Markdown classification");
+    expect(work?.expectedOutput).toContain("Core 348 tracked Markdown files");
+    expect(work?.riskSummary).toContain("hidden Core .superpowers/sdd Markdown");
+    expect(work?.riskSummary).toContain("344 tracked Core Markdown files without Authority Boundary or Project Control signal");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core 348 tracked Markdown files");
+    expect(phase?.verificationTarget).toContain("Core repository remains read-only");
+    expect(phase?.summary).toContain("docs/superpowers is absent");
+    expect(phase?.summary).toContain(".superpowers/sdd");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-source-snapshot",
+      "distinguish-hidden-superpowers",
+      "classify-core-authority-buckets",
+      "mark-project-state-migration-candidates",
+      "preserve-core-read-only-boundary",
+      "verify-project-control-records",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_MARKDOWN_CLASSIFICATION_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID);
+
+    const classification = documents.get(CORE_MARKDOWN_CLASSIFICATION_DOC_ID);
+    expect(classification).toMatchObject({
+      path: CORE_MARKDOWN_CLASSIFICATION_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(classification?.authority).toContain("Core repo-local Markdown classification snapshot");
+    expect(classification?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: "git ls-files '*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: ".superpowers/sdd",
+      }),
+    ]));
+
+    const classificationText = normalize(classification?.content);
+    expect(classificationText).toContain("Core source commit `6c1b53796802772467bf715b83764ac1ef613e52`");
+    expect(classificationText).toContain("348 tracked Markdown files");
+    expect(classificationText).toContain("343 visible Markdown files");
+    expect(classificationText).toContain("5 hidden `.superpowers/sdd` Markdown files");
+    expect(classificationText).toContain("docs/superpowers: 0");
+    expect(classificationText).toContain("Authority / Project Control signal: 4");
+    expect(classificationText).toContain("344 tracked Core Markdown files without Authority Boundary or Project Control signal");
+    expect(classificationText).toContain("Core repository was read-only in this classification phase");
+    expect(classificationText).toContain("No Core Markdown is deleted by this classification");
+    expect(classificationText).toContain("First cleanup lane: hidden `.superpowers/sdd` execution artifacts");
+    expect(classificationText).toContain("Second cleanup lane: Core project-state, status, roadmap, and planning docs");
+    expect(classificationText).toContain("code-adjacent Core contracts, boundaries, gates, and architecture locks are retention candidates");
+    expect(classificationText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+      pathOrContractId: "git ls-files '*.md'; rg --files -g '*.md'; .superpowers/sdd; docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md",
+    });
+    const verificationSummary = evidence.get(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core repo-local Markdown classification");
+    expect(verificationSummary).toContain("348 tracked Markdown files");
+    expect(verificationSummary).toContain("343 visible Markdown files");
+    expect(verificationSummary).toContain("hidden .superpowers/sdd Markdown");
+    expect(verificationSummary).toContain("docs/superpowers is absent");
+    expect(verificationSummary).toContain("Core repository was read-only");
+    expect(verificationSummary).toContain("npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npm run generate");
+    expect(verificationSummary).toContain("npm run check:data");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });

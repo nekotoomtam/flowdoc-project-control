@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f21086a0f40ed8bce3b350f084eafa5a8d115520cf2974fd09385650a78ee9fd",
+  "sourceDigest": "dba8a0fea023d23615a2dc4ca1c8773860b6ea14d219f57c7811f05c6a60f66a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -355,7 +355,8 @@
         "doc-project-control-overview-history-gui-2026-08-29",
         "doc-flowdoc-documentation-authority-policy",
         "doc-flowdoc-repository-markdown-inventory-2026-08-31",
-        "doc-project-control-superpowers-retirement-2026-09-01"
+        "doc-project-control-superpowers-retirement-2026-09-01",
+        "doc-core-repository-markdown-classification-2026-09-01"
       ],
       "evidenceIds": [
         "evidence-project-control-design",
@@ -1899,11 +1900,12 @@
         "doc-flowdoc-global-codex-guidance",
         "doc-flowdoc-documentation-authority-policy",
         "doc-flowdoc-repository-markdown-inventory-2026-08-31",
-        "doc-project-control-superpowers-retirement-2026-09-01"
+        "doc-project-control-superpowers-retirement-2026-09-01",
+        "doc-core-repository-markdown-classification-2026-09-01"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent. Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retires the remaining three Editor docs/superpowers Overview/History and WYSIWYG files, moves the WYSIWYG boundary guard into the Editor code contract, and Editor docs/superpowers is now absent. Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe completes the agent-role rewrite by adding Documentation Authority For Roles to docs/domains/flowdoc-role-catalog.md. Project Control commit 89d68b571ff4f815a99a5e53efc09252258c08e1 retires all 21 Project Control docs/superpowers Markdown files, moves the active Project Control design to docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md, records retained value and discard rationale in docs/domains/project-control-superpowers-retirement-2026-09-01.md, and Project Control docs/superpowers is now absent.",
-      "riskSummary": "Project Control docs/superpowers cleanup is recorded by evidence-project-control-superpowers-docs-retired-2026-09-01; Project Control docs/superpowers is now absent on the cleanup commit, and historical source paths remain valid only when commit-pinned. Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Final agent-role rewrite is recorded by evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01; the role catalog now blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth and requires broad plans to start in Project Control Work, Phase, Checklist, and Evidence targets. Editor docs/superpowers final cleanup is recorded by evidence-editor-superpowers-docs-retired-2026-09-01 and Editor docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty; Git no longer lists it as a worktree and branch fd-ed-superpowers-retire-0901 was deleted. The retained Editor Overview/History/Structure and WYSIWYG meanings remain bounded by Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and evidence-editor-wysiwyg-gate-definition-2026-08-31 plus the Editor WYSIWYG code contract; they do not promote product or map truth. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed.",
+      "expectedOutput": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the Project Control documentation authority policy and cleanup Work foundation that requires Authority Boundary wording before product-repository Markdown cleanup starts. Editor commit 04daeeaaac04317508b5cf8e93de61249255d477 retires the old node-authoring roadmap plan/spec pair from docs/superpowers and guards surviving docs/superpowers files with temporary Authority Boundary wording. Project Control records a repository Markdown inventory snapshot showing Project Control 92, Core 347, Backend 40, Editor 57 tracked Markdown files at exact source commits, with product repositories read-only and evidence target evidence-flowdoc-repository-markdown-inventory-2026-08-31. Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retires the one backend service hardening plan from docs/superpowers, preserves its retained readiness context in docs/BACKEND_SERVICE_READINESS_BOUNDARY.md, and Backend docs/superpowers is now empty. Core commit 6c1b53796802772467bf715b83764ac1ef613e52 retires all four Core docs/superpowers Text Block and Live Draft plan/spec files, retargets active Core references to Project Control Text Block and Live Draft syntheses, and Core docs/superpowers is now absent. Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retires the remaining three Editor docs/superpowers Overview/History and WYSIWYG files, moves the WYSIWYG boundary guard into the Editor code contract, and Editor docs/superpowers is now absent. Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe completes the agent-role rewrite by adding Documentation Authority For Roles to docs/domains/flowdoc-role-catalog.md. Project Control commit 89d68b571ff4f815a99a5e53efc09252258c08e1 retires all 21 Project Control docs/superpowers Markdown files, moves the active Project Control design to docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md, records retained value and discard rationale in docs/domains/project-control-superpowers-retirement-2026-09-01.md, and Project Control docs/superpowers is now absent. Project Control records Core repo-local Markdown classification at Core commit 6c1b53796802772467bf715b83764ac1ef613e52 showing Core 348 tracked Markdown files, 343 visible Markdown files, five hidden .superpowers/sdd Markdown files, docs/superpowers absent, four Authority/Project Control signal matches, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal. It sets hidden .superpowers/sdd and Core project-state/status/roadmap/planning docs as the next cleanup lanes while Core remains read-only.",
+      "riskSummary": "Project Control docs/superpowers cleanup is recorded by evidence-project-control-superpowers-docs-retired-2026-09-01; Project Control docs/superpowers is now absent on the cleanup commit, and historical source paths remain valid only when commit-pinned. Core repo-local Markdown classification is recorded by evidence-core-repository-markdown-classification-2026-09-01; hidden Core .superpowers/sdd Markdown has five tracked execution artifacts that rg visible scans miss, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal require review before being treated as current authority. Repo-local Markdown is not deleted wholesale by this cleanup Work, and Project Control, Core, Backend, and Editor still contain many Markdown files that need separate classification, source preservation, and repository-owned cleanup verification before removal. Final agent-role rewrite is recorded by evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01; the role catalog now blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth and requires broad plans to start in Project Control Work, Phase, Checklist, and Evidence targets. Editor docs/superpowers final cleanup is recorded by evidence-editor-superpowers-docs-retired-2026-09-01 and Editor docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-superpowers-retire-0901 remains on disk after git worktree remove reported Directory not empty; Git no longer lists it as a worktree and branch fd-ed-superpowers-retire-0901 was deleted. The retained Editor Overview/History/Structure and WYSIWYG meanings remain bounded by Project Control evidence-editor-overview-history-ux-plan-2026-08-31 and evidence-editor-wysiwyg-gate-definition-2026-08-31 plus the Editor WYSIWYG code contract; they do not promote product or map truth. Core docs/superpowers cleanup is recorded by evidence-core-superpowers-text-block-docs-retired-2026-09-01 and Core docs/superpowers is absent on merged main, but the cleanup worktree folder C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-doc-superpowers-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-core-doc-superpowers-retire-0831 was deleted, no reparse points were found, and the safe long-path recursive deletion attempt was blocked by policy. Backend docs/superpowers cleanup is recorded by evidence-backend-service-plan-doc-retired-2026-08-31 and Backend docs/superpowers is now empty. Editor npm ci still reports 5 high severity audit findings and Vite still reports the existing chunk-size warning. The cleanup worktree folder C:/Users/nekot/Documents/GitHub/fd-ed-doc-retire-0831 remains on disk after git worktree remove reported Filename too long; Git no longer lists it as a worktree, branch fd-ed-doc-roadmap-retire-0831 was deleted, and direct recursive deletion was intentionally avoided because node_modules contains junctions into Core. A post-cleanup status check showed tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD with git restore -- packages/text-engine-rust-wasm, and Core status returned clean. Backend cleanup used a temporary Core junction outside the Backend worktree for worktree-only PDF tests, removed it before the accepted main gate, and reran through a Vitest worker-exit flake plus one focused SQLite concurrency rerun before the final Backend main gate passed.",
       "requiredEvidence": [
         "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
         "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31",
@@ -1912,10 +1914,11 @@
         "evidence-core-superpowers-text-block-docs-retired-2026-09-01",
         "evidence-editor-superpowers-docs-retired-2026-09-01",
         "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01",
-        "evidence-project-control-superpowers-docs-retired-2026-09-01"
+        "evidence-project-control-superpowers-docs-retired-2026-09-01",
+        "evidence-core-repository-markdown-classification-2026-09-01"
       ],
       "createdAt": "2026-08-31T14:20:00.000Z",
-      "updatedAt": "2026-09-01T01:55:00.000Z",
+      "updatedAt": "2026-09-01T02:35:00.000Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-documentation-authority-policy-foundation",
@@ -1925,7 +1928,8 @@
         "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
         "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
         "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
-        "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement"
+        "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
+        "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3643,6 +3647,28 @@
       "summary": "Done: Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retired the one Backend docs/superpowers plan, docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, without changing Backend service behavior. Backend AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md preserves the retained readiness boundary with explicit Authority Boundary wording.",
       "createdAt": "2026-08-31T16:15:00.000Z",
       "updatedAt": "2026-08-31T16:15:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+      "workId": "flowdoc-documentation-authority-cleanup",
+      "title": "Core Markdown Classification",
+      "phaseState": "done",
+      "order": 90,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "documentation-synthesizer",
+      "stopConditions": [
+        "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+        "The classification would edit Core files or remove Core Markdown before retained value and discard rationale are recorded.",
+        "The visible Markdown scan is treated as complete while tracked hidden Markdown exists.",
+        "The classification would promote Core project state, compatibility, release readiness, frontend readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Project Control records Core 348 tracked Markdown files at Core source commit 6c1b53796802772467bf715b83764ac1ef613e52, distinguishes the 343 visible Markdown files from five hidden .superpowers/sdd Markdown files, and keeps Core repository remains read-only while setting the next cleanup lanes.",
+      "summary": "Done: Core docs/superpowers is absent, but Core still has 348 tracked Markdown files at source commit 6c1b53796802772467bf715b83764ac1ef613e52. The classification records 343 visible Markdown files, five tracked .superpowers/sdd hidden execution artifacts, four Authority/Project Control signal matches, and 344 tracked files without Authority Boundary or Project Control signal. It identifies hidden .superpowers/sdd artifacts plus Core project-state/status/roadmap/planning docs as the first cleanup lanes without changing Core files.",
+      "createdAt": "2026-09-01T02:35:00.000Z",
+      "updatedAt": "2026-09-01T02:35:00.000Z"
     },
     {
       "kind": "phase",
@@ -8154,6 +8180,76 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+      "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+      "title": "Core Markdown Classification Checklist",
+      "items": [
+        {
+          "id": "capture-core-source-snapshot",
+          "label": "Capture the Core source snapshot and read-only boundary.",
+          "state": "passed",
+          "evidenceTarget": "Core source commit, Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Project Control records.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner edit repo-project-control, source repo-core at commit 6c1b53796802772467bf715b83764ac1ef613e52, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-markdown-classification, checklist target checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification, and evidence target evidence-core-repository-markdown-classification-2026-09-01."
+        },
+        {
+          "id": "distinguish-hidden-superpowers",
+          "label": "Distinguish visible Markdown from tracked hidden Markdown.",
+          "state": "passed",
+          "evidenceTarget": "The classification records both the visible rg scan and the tracked git scan so hidden .superpowers/sdd Markdown is not missed.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "git ls-files '*.md' found 348 tracked Markdown files, while rg --files -g '*.md' found 343 visible Markdown files. The difference is five tracked hidden .superpowers/sdd execution artifacts."
+        },
+        {
+          "id": "classify-core-authority-buckets",
+          "label": "Classify Core Markdown authority buckets.",
+          "state": "passed",
+          "evidenceTarget": "Core Markdown is bucketed as hidden execution artifacts, project-state/planning docs, code-adjacent contracts, historical evidence, generated navigation/version/glossary docs, and repo/package entrypoints.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "The Project Control classification records location counts, suffix signal counts, Authority/Project Control signal count 4, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal."
+        },
+        {
+          "id": "mark-project-state-migration-candidates",
+          "label": "Mark Core project-state and planning docs as migration candidates.",
+          "state": "passed",
+          "evidenceTarget": "Core project-state/status/roadmap/planning docs are not treated as FlowDoc-wide truth while Project Control owns Work, Phase, Checklist, Risk, Unknown, and Evidence records.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "The classification marks docs/project, CURRENT_STATUS, NEXT_PHASE_POINTER, progress indexes, roadmaps, broad PLAN docs, and PLANNING signal docs as migration or synthesis candidates before retirement."
+        },
+        {
+          "id": "preserve-core-read-only-boundary",
+          "label": "Preserve the Core read-only boundary for this phase.",
+          "state": "passed",
+          "evidenceTarget": "No Core Markdown or runtime behavior is edited during the classification phase.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "Core repository status remained clean and this phase changed only Project Control records."
+        },
+        {
+          "id": "verify-project-control-records",
+          "label": "Verify Project Control records and generated read model.",
+          "state": "passed",
+          "evidenceTarget": "Focused documentation authority tests, seed tests, npm run generate, and npm run check:data pass after the classification record is registered.",
+          "evidenceIds": [
+            "evidence-core-repository-markdown-classification-2026-09-01"
+          ],
+          "verificationNote": "GREEN evidence passed npx vitest run tests/documentation-authority-policy.test.ts tests/seed-project.test.ts --maxWorkers=1 with 2 files and 17 tests, npm run generate, npm run check:data, and the full npm run check worktree gate with 60 unit test files, 340 unit tests, build, and 6 e2e tests after Project Control record registration."
+        }
+      ],
+      "createdAt": "2026-09-01T02:35:00.000Z",
+      "updatedAt": "2026-09-01T02:35:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
       "title": "Core Text Block Superpowers Docs Retirement Checklist",
@@ -8939,6 +9035,41 @@
         }
       ],
       "content": "# Core Default Gate Stability Review - 2026-08-27\n\nStatus: bounded Core gate-stability lane complete; compatibility truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > core-default-gate-stability-review`\n\nOwner repositories: `repo-core`, `repo-project-control`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-core-default-gate-stability-review`\n\nChecklist: `checklist-core-default-gate-stability-review`\n\nEvidence target: `evidence-core-default-gate-stability-review-2026-08-27`\n\n## Scope\n\nThis lane investigated the fresh Core default `npm run check` failure recorded\nby the cross-repository compatibility evidence review. The work was limited to\nCore test-gate stability and Project Control evidence registration.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\naccepted cross-repository compatibility truth. Its document and Evidence records\nintentionally use empty `nodeIds` so the result stays work-scoped.\n\n## Baseline Reproduction\n\nCore worktree baseline started from\n`969a21a4e888d836ae62164b206cb2dd34d5d702` on\n`codex/core-default-gate-stability-review`.\n\nFresh baseline `npm run check` reproduced a failing default Core gate:\n\n- `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A` timed out at the default 5-second limit.\n- `tests/corePackageLaneRetirementGuard.test.ts > core package-lane retirement guard > points current ownership evidence at backend replacement modules and tests` failed because `src/storage/fileJsonStorage.ts` was not found under the worktree-local sibling path.\n- Baseline summary: 2 failed and 457 passed test files; 2 failed and 2,939 passed tests; duration 247.30s.\n\nFocused reproduction separated the two root causes:\n\n- The geometry block passed isolated with 3 passed and 59 skipped tests; the insertion row took 614ms.\n- The full `textBlockUnifiedLayoutTextStyleSourceV1.test.ts` file passed isolated with 62 tests in 74.08s, while several heavier rows took 4.7s to 11.3s.\n- The backend replacement files existed in the real Backend checkout at `C:\\Users\\nekot\\Documents\\GitHub\\flowdoc-vnext-backend`, so the guard failure was path-topology-specific to a linked Core worktree under `.worktrees`.\n\n## Root Cause\n\nThe Core default gate had two independent stability issues:\n\n1. `corePackageLaneRetirementGuard.test.ts` resolved the Backend sibling from\n   the current Core worktree root. In a linked worktree this incorrectly points\n   under `flowdoc-vnext-core/.worktrees/flowdoc-vnext-backend` instead of the\n   canonical sibling checkout.\n2. `textBlockUnifiedLayoutTextStyleSourceV1.test.ts` already contains heavy\n   5B-2 evidence rows with task-local timeout budgets, but the earlier\n   evidence-backed geometry `it.each` block still used Vitest's default\n   5-second timeout. The block is fast when isolated, but the default full\n   suite can stretch it under worker load.\n\nNo assertion mismatch or Core semantic output mismatch reproduced.\n\n## Changes\n\nCore commit `77b9e181d1fb43bf69d725108ede664578a07a45` changed only tests:\n\n- `tests/corePackageLaneRetirementGuard.test.ts` now resolves the canonical Core\n  checkout via `git rev-parse --git-common-dir` before locating the Backend\n  sibling, while falling back to the current root outside Git.\n- `tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts` now gives the\n  evidence-backed geometry `it.each` block a local 60-second timeout budget.\n\nNo runtime Core source, public exports, package schema, Editor code, Backend\ncode, or Project Control map was changed.\n\n## Verification\n\nCore focused checks after the patch:\n\n- `npx vitest run --config vitest.config.ts tests/corePackageLaneRetirementGuard.test.ts --reporter verbose`: 1 test file passed, 3 tests passed.\n- `npx vitest run --config vitest.config.ts tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts -t \"commits exact Evidence-backed geometry\" --reporter verbose`: 1 test file passed, 3 passed and 59 skipped tests.\n- `npx vitest run --config vitest.config.ts tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts --reporter verbose`: 1 test file passed, 62 tests passed.\n\nCore owner gate:\n\n- Worktree `npm run check`: type-check passed; 459 test files passed; 2,941 tests passed; duration 223.28s.\n- Merged main `npm run check`: type-check passed; 459 test files passed; 2,941 tests passed; duration 227.15s.\n\nProject Control intake/evidence gate:\n\n- The intake record was opened at Project Control commit `8bd85dab04110e453f7ac88d571cb40dca2a9b8b`.\n- Project Control `npm run check` on main after intake passed 37 test files, 307 tests, build, and 5 e2e tests.\n\n## PASS\n\n- Core default `npm run check` is green at\n  `77b9e181d1fb43bf69d725108ede664578a07a45` after a reproduced baseline\n  failure and minimal test-gate fixes.\n- The Backend sibling guard now works from a linked Core worktree.\n- The load-sensitive 5B-2 geometry evidence block has a local timeout budget\n  without changing global Vitest timeout configuration.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this Core default gate-stability lane.\n\n## RISK\n\n- The 5B-2 Source path-copy file still contains heavy evidence scenarios; this\n  lane stabilizes the default gate but does not optimize those algorithms or\n  reduce file runtime.\n- Core `npm install` in the worktree reported existing npm audit warnings; they\n  were not investigated or fixed in this lane.\n\n## UNKNOWN\n\n- This lane does not add the live Editor-client to Backend-server to Core\n  compatibility harness. Cross-repository live compatibility remains unknown.\n- This lane does not prove broader Core product readiness beyond the default\n  owner gate at the cited commit.\n\n## Intentionally Not Changed\n\n- No Core runtime behavior or public API was changed.\n- No Editor or Backend product files were changed.\n- No system map or Core document map truth was promoted.\n- The stale cross-repository compatibility blocker evidence remains as a\n  historical record of the earlier failed gate; this packet records the later\n  Core gate-stability result.\n\n## Next Recommended Direction\n\nOpen the live compatibility harness lane only after this evidence is accepted:\nstart the Backend HTTP server, consume it through the Editor backend client,\nread `/capabilities/versions`, load a document, perform an explicit migration,\ncommit a mutation, and apply the Core-backed envelope into Editor runtime.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-repository-markdown-classification-2026-09-01",
+      "title": "Core Repository Markdown Classification - 2026-09-01",
+      "path": "docs/domains/core-repository-markdown-classification-2026-09-01.md",
+      "nodeIds": [
+        "project-control"
+      ],
+      "role": "verification",
+      "authority": "Core repo-local Markdown classification snapshot for the FlowDoc documentation authority cleanup Work item.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+          "pathOrContractId": "git ls-files '*.md'"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+          "pathOrContractId": "rg --files -g '*.md'"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+          "pathOrContractId": ".superpowers/sdd"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+          "pathOrContractId": "docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md"
+        }
+      ],
+      "content": "# Core Repository Markdown Classification - 2026-09-01\n\n## Purpose\n\nThis record classifies the remaining repo-local Markdown in\n`flowdoc-vnext-core` for `flowdoc-product-development-resumption >\nflowdoc-documentation-authority-cleanup`.\n\nIt is a cleanup sequencing record. It tells the next agent which Core Markdown\nfamilies should be preserved, summarized, migrated, or retired before any\nbroader Core documentation cleanup starts.\n\n## Authority Boundary\n\nThis document is owned by `repo-project-control` and supports only the\ndocumentation-authority cleanup sequence for Core repo-local Markdown.\n\nCore source commit `6c1b53796802772467bf715b83764ac1ef613e52` is the source\nsnapshot for the counts and sampled classification below. Core repository was\nread-only in this classification phase. No Core Markdown is deleted by this\nclassification.\n\nThis record does not promote Core, Backend, Editor, compatibility, frontend\nreadiness, FlowDoc product truth, or map truth.\n\n## Source Snapshot\n\n| Scan or signal | Count | Classification note |\n| --- | ---: | --- |\n| `git ls-files '*.md'` | 348 tracked Markdown files | Complete tracked Markdown count, including hidden tracked paths. |\n| `rg --files -g '*.md'` | 343 visible Markdown files | Normal visible-file scan; hidden `.superpowers` paths are not returned. |\n| Hidden `.superpowers/sdd` Markdown | 5 hidden `.superpowers/sdd` Markdown files | Tracked execution and review artifacts outside Project Control. |\n| `docs/superpowers` | docs/superpowers: 0 | The former Core `docs/superpowers` cleanup already removed this lane. |\n| Authority / Project Control signal | Authority / Project Control signal: 4 | Only `AGENTS.md`, `docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md`, `docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md`, and `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md` matched the signal scan. |\n| Missing authority signal | 344 tracked Core Markdown files without Authority Boundary or Project Control signal | Every survivor needs boundary review before it is treated as current authority. |\n\nTracked location groups:\n\n| Location | Count |\n| --- | ---: |\n| `.superpowers` | 5 |\n| root | 2 |\n| `docs/root` | 329 |\n| `docs/project` | 4 |\n| `docs/coordination` | 1 |\n| `docs/versions` | 3 |\n| `examples/template-builder-sandbox` | 1 |\n| `packages/pdf-renderer-pilot` | 1 |\n| `packages/text-engine-rust-wasm` | 1 |\n| `packages/uat-realdoc` | 1 |\n\nHigh-signal suffix counts:\n\n| Suffix signal | Count |\n| --- | ---: |\n| `_BOUNDARY.md` | 100 |\n| `_GATE.md` | 47 |\n| `_CLOSE_AUDIT.md` | 34 |\n| `_ARCHITECTURE_LOCK.md` | 20 |\n| `_CONTRACT.md` | 13 |\n| `_PLAN.md` | 8 |\n| `_SMOKE.md` | 6 |\n| `_MAP.md` | 5 |\n| `README.md` | 5 |\n| `_HANDOFF.md` | 4 |\n| `_MATRIX.md` | 4 |\n| `_DECISION.md` | 3 |\n| `_POLICY.md` | 2 |\n| `_ROADMAP.md` | 2 |\n| `_STATUS.md` | 1 |\n| `GLOSSARY.md` | 1 |\n| `GLOSSARY_TH.md` | 1 |\n\n## Classification Buckets\n\n### Hidden execution artifacts\n\nFirst cleanup lane: hidden `.superpowers/sdd` execution artifacts.\n\nThese five files are tracked Markdown under a hidden tool/work directory:\n\n- `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md`\n- `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md`\n- `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-review-verdict.md`\n- `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-verification.md`\n- `.superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md`\n\nDisposition: summarize retained evidence into Project Control or Core\ncode-adjacent records, then retire the hidden Markdown from Core if no current\ntest or source reference still requires the files. These artifacts should not\nremain as a separate work-memory plane.\n\n### Project state and planning records\n\nSecond cleanup lane: Core project-state, status, roadmap, and planning docs.\n\nThe highest-conflict files are `docs/project/CURRENT_STATE.md`,\n`docs/project/ROADMAP.md`, `docs/project/RISK_REGISTER.md`,\n`docs/project/KNOWN_UNKNOWNS.md`, `docs/CURRENT_STATUS.md`,\n`docs/NEXT_PHASE_POINTER.md`, progress indexes, roadmaps, and broad `*_PLAN.md`\nor `*PLANNING*` files.\n\nDisposition: migrate or synthesize Work, Phase, Checklist, Risk, Unknown, and\nEvidence meaning into Project Control before deletion or demotion. Core may\nretain narrow package-local status markers only when they declare that Project\nControl owns FlowDoc-wide state and that Core-local docs are not cross-repo\nauthority.\n\n### Code-adjacent Core contracts and boundaries\n\nThe code-adjacent Core contracts, boundaries, gates, and architecture locks are\nretention candidates, not automatic survivors. They often name source files,\ntests, fixtures, package boundaries, and blocked runtime behavior that may be\nneeded near the Core code.\n\nDisposition: review by family before deletion. Surviving files need an\nAuthority Boundary that says they are Core-owned implementation evidence or\npackage-local contracts only. They must not claim Project Control Work state,\ncross-repository compatibility, release readiness, Editor behavior, Backend\nbehavior, or FlowDoc-wide map truth.\n\n### Historical close audits, handoffs, smokes, matrices, and ledgers\n\nClose audits, handoffs, smoke records, matrices, and the legacy phase ledger\nare historical evidence candidates. They may still be useful when tied to\nexact Core tests, fixtures, and commits, but they should not be treated as\ncurrent planning truth.\n\nDisposition: preserve the retained value in Project Control or narrower\ncode-adjacent records, then retire obsolete prose once evidence pointers and\ndiscard rationale exist.\n\n### Generated navigation, glossary, and version-line docs\n\nGenerated Core navigation/version docs and glossary outputs can remain\nCore-local only as generated or package/version-scoped views. `docs/DOCUMENT_MAP.md`\nexplicitly says it is generated. `docs/versions/0_1/*` declares an unversioned,\nnon-ready release line with compatibility not verified.\n\nDisposition: do not hand-edit generated files. Add or enforce Authority\nBoundary wording at the source that generates or owns the content. Compare\nCore glossary output against Project Control terminology before retiring,\nbecause Project Control owns FlowDoc-wide terminology.\n\n### Entry points and package READMEs\n\n`AGENTS.md`, root `README.md`, example README, and package READMEs are\nrepo-local entrypoint/setup candidates. They can remain when they guide local\nCore development, package checks, examples, or package-local tooling.\n\nDisposition: keep as local onboarding only after boundary review. They should\npoint FlowDoc-wide state decisions back to Project Control.\n\n## Next Cleanup Order\n\n1. Retire or migrate the hidden `.superpowers/sdd` artifacts after recording\n   retained evidence.\n2. Review Core project-state/status/roadmap/planning docs and move shared Work,\n   Risk, Unknown, Phase, Checklist, or Evidence meaning into Project Control.\n3. Sweep generated navigation/glossary/version docs for Authority Boundary\n   source ownership without hand-editing generated outputs.\n4. Review code-adjacent contracts/boundaries/gates/architecture locks by Core\n   family, adding Authority Boundary text to survivors and retiring obsolete\n   historical prose only after source evidence is preserved.\n5. Leave package/example READMEs in place when they remain local setup or\n   package evidence, but make their Project Control boundary explicit.\n\n## Evidence Boundary\n\nThis classification is evidence for cleanup sequencing only. It does not\ndelete Core Markdown, does not edit Core behavior, and does not decide that any\nspecific Core subsystem is current, compatible, release-ready, or product-ready.\n"
     },
     {
       "kind": "document",
@@ -11431,6 +11562,16 @@
       "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
       "verificationSummary": "Core main commit 969a21ae66a3a1d6a92e5df608d23e08acb9a563 records a no-go public export boundary review, keeps package root export unchanged, and adds tests/corePublicExportBoundaryReview.test.ts to synchronize the 216 root export declarations with src/index.ts. Core npm run check passed with 459 test files and 2,941 tests. Current consumer gates were also refreshed: Editor main baa871c378a313e8f0c402ea33e3aa480953ce1f npm run check passed with 76 test files and 278 tests plus build; Backend main 7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a npm run check passed with 88 passed test files, 1 skipped test file, 312 passed tests, 24 skipped tests, plus build. This evidence supports only the bounded no-go export-boundary decision and does not promote broader Core, Editor, Backend, or FlowDoc truth.",
       "verifiedAt": "2026-08-26T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-core-repository-markdown-classification-2026-09-01",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "git ls-files '*.md'; rg --files -g '*.md'; .superpowers/sdd; docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md",
+      "verificationSummary": "Project Control records the Core repo-local Markdown classification for the FlowDoc documentation authority cleanup. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed before Work requiredEvidence included evidence-core-repository-markdown-classification-2026-09-01. Source scans against Core source commit 6c1b53796802772467bf715b83764ac1ef613e52 used git ls-files '*.md' and rg --files -g '*.md'; they found 348 tracked Markdown files, 343 visible Markdown files, five hidden .superpowers/sdd Markdown execution artifacts, docs/superpowers is absent, four Authority/Project Control signal matches, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal. Core repository was read-only. The classification marks hidden .superpowers/sdd Markdown and Core project-state/status/roadmap/planning docs as the first cleanup lanes while treating code-adjacent contracts, boundaries, gates, and architecture locks as retention candidates requiring Authority Boundary review. GREEN evidence after record registration passed npx vitest run tests/documentation-authority-policy.test.ts tests/seed-project.test.ts --maxWorkers=1 with 2 files and 17 tests, npm run generate, npm run check:data, and the full npm run check worktree gate with 60 unit test files, 340 unit tests, build, and 6 e2e tests. This evidence does not delete Core Markdown, does not edit Core runtime behavior, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-01T02:35:00.000Z"
     },
     {
       "kind": "evidence",
