@@ -1,0 +1,12 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-delivery-operating-model",
+  "title": "FlowDoc Delivery Operating Model",
+  "path": "docs/domains/flowdoc-delivery-operating-model.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control PLAN and WORK room delivery operating contract for real multi-room FlowDoc execution, lane kickoff, handoff, evidence target, and source-of-truth boundaries.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
+

@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-delivery-operating-model",
+  "phaseId": "phase-agent-and-skill-design-delivery-operating-model",
+  "title": "Delivery Operating Model Checklist",
+  "items": [
+    {
+      "id": "capture-delivery-operating-context",
+      "label": "Capture the delivery operating model context.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-delivery-operating-model, checklist target checklist-agent-and-skill-design-delivery-operating-model, and evidence target focused Project Control guard plus full Project Control gate."
+    },
+    {
+      "id": "write-red-delivery-operating-guard",
+      "label": "Write a failing Project Control guard for the delivery operating model.",
+      "state": "passed",
+      "evidenceTarget": "The focused Project Control test fails before the Delivery Operating Model document, records, and entrypoint references exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-delivery-operating-model.test.ts --maxWorkers=1 failed because doc-flowdoc-delivery-operating-model was not linked from the project-control node and Project Control entrypoints did not reference docs/domains/flowdoc-delivery-operating-model.md."
+    },
+    {
+      "id": "draft-delivery-operating-model",
+      "label": "Draft the Project Control delivery operating model.",
+      "state": "passed",
+      "evidenceTarget": "The new Project Control document defines PLAN rooms, real WORK rooms, lane cards, Kickoff Packets, handoff rules, Contract Change Requests, and first delivery slice boundaries.",
+      "verificationNote": "docs/domains/flowdoc-delivery-operating-model.md records the long-term operating contract without using the first delivery slice as the whole FlowDoc definition."
+    },
+    {
+      "id": "route-delivery-operating-entrypoints",
+      "label": "Route future FlowDoc rooms to the delivery operating model.",
+      "state": "passed",
+      "evidenceTarget": "Project Control AGENTS.md, global Codex guidance, and the agent operating model point future rooms to the Delivery Operating Model before broad delivery work.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, and docs/domains/agent-and-skill-operating-model.md reference docs/domains/flowdoc-delivery-operating-model.md and the PLAN/WORK room model."
+    },
+    {
+      "id": "record-delivery-operating-model-records",
+      "label": "Record Project Control records for the delivery operating model.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the Document, Work context update, Phase, Checklist, and Project Control Node link without product truth promotion.",
+      "verificationNote": "Registered doc-flowdoc-delivery-operating-model, phase-agent-and-skill-design-delivery-operating-model, checklist-agent-and-skill-design-delivery-operating-model, and the project-control node document link; product repositories and map truth were intentionally not changed."
+    },
+    {
+      "id": "verify-delivery-operating-model-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceTarget": "Focused Delivery Operating Model guard, generation, data validation, and full Project Control gate pass before handoff.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-delivery-operating-model.test.ts, npm run generate, npm run check:data, and npm run check pass after Project Control records are registered."
+    }
+  ],
+  "createdAt": "2026-09-01T21:00:00.000Z",
+  "updatedAt": "2026-09-01T21:00:00.000Z"
+}

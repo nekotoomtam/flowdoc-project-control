@@ -42,6 +42,26 @@ After reading Project Control, identify:
 
 Then read the owning repository's `AGENTS.md` before editing that repository.
 
+## Delivery operating model
+
+Before broad FlowDoc delivery planning, opening real WORK rooms, splitting
+lanes, writing Kickoff Packets, coordinating PLAN/WORK handoffs, or deciding
+whether a lane may change shared scope, read:
+
+```text
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-delivery-operating-model.md
+```
+
+Use this document as the shared operating contract for PLAN rooms, real WORK
+rooms, lane cards, Kickoff Packets, handoffs, Contract Change Requests,
+Collaboration Identity, and Project Control reference IDs. A WORK room is a
+real separate Codex task/chat visible to the user and executes one approved
+lane only; it is not the same thing as an internal subagent.
+
+This corresponds to the Project Control document path
+`docs/domains/flowdoc-delivery-operating-model.md`; keep this delivery
+operating model in Project Control rather than product-repository Markdown.
+
 ## Documentation authority
 
 Before creating, updating, migrating, or deleting FlowDoc Markdown, read:

@@ -45,6 +45,21 @@ decisions. Agent role revisions for documentation cleanup are now captured in
 that document's Markdown Authority Pre-Action Gate and role overlays before any
 future FlowDoc Markdown work.
 
+## Delivery room model
+
+FlowDoc delivery planning now uses
+`docs/domains/flowdoc-delivery-operating-model.md` as the Project Control
+contract for PLAN rooms, real WORK rooms, lane cards, Kickoff Packets, handoff
+rules, Contract Change Requests, and Project Control versus generated SQLite
+authority.
+
+A PLAN room coordinates one or more delivery rounds. A WORK room is a real
+separate Codex task/chat visible to the user and executes exactly one approved
+lane. It is not the same thing as an internal subagent. WORK rooms must not
+redefine delivery scope, role authority, source-of-truth rules, or
+cross-repository contracts; they should return RISK, UNKNOWN, BLOCKED, or a
+Contract Change Request to the PLAN room when scope changes are needed.
+
 ## Packaged local skills
 
 ### flowdoc-project-control
