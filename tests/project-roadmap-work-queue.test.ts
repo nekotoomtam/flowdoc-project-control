@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 39);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 40);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -509,6 +509,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-first-delivery-round",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
         "project-control-hardening",
@@ -712,6 +713,7 @@ describe("project roadmap Work Queue", () => {
         "editor-browser-live-backend-smoke",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-first-delivery-round",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",

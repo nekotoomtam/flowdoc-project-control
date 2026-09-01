@@ -215,6 +215,11 @@ room is opened. This section is a planning draft, not execution authority.
 Each lane becomes executable only after the PLAN room creates a specific Lane
 Card and Kickoff Packet.
 
+The first concrete Project Control round plan for this slice is
+`docs/domains/flowdoc-first-delivery-round-plan.md`. That plan is dispatch
+coordination only; it does not prove product behavior or open WORK rooms by
+itself.
+
 ## Handoff Rule
 
 Each WORK room returns:

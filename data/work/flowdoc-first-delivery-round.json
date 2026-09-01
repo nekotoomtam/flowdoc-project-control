@@ -1,0 +1,33 @@
+{
+  "kind": "work",
+  "id": "flowdoc-first-delivery-round",
+  "title": "FlowDoc First Delivery Round",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-progress",
+  "summary": "Prepare the first FlowDoc delivery round under the Delivery Operating Model by splitting the structure creation to API/key exposure to data input to PDF output path into bounded lanes before real WORK rooms open.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-delivery-operating-model",
+    "doc-work-tree-operating-rules",
+    "doc-project-control-overview",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-first-delivery-round-plan"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, and evidence targets before opening real WORK rooms.",
+  "riskSummary": "The plan may be mistaken for product truth unless each lane keeps product claims unpromoted until repository-owned evidence exists; API key, gateway, product database, and PDF output ownership may require Contract Change Requests after Core, Backend, and Editor inspection.",
+  "requiredEvidence": [],
+  "createdAt": "2026-09-01T22:00:00.000Z",
+  "updatedAt": "2026-09-01T22:00:00.000Z"
+}

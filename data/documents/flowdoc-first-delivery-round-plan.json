@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-first-delivery-round-plan",
+  "title": "FlowDoc First Delivery Round Plan",
+  "path": "docs/domains/flowdoc-first-delivery-round-plan.md",
+  "nodeIds": ["flowdoc"],
+  "role": "contract",
+  "authority": "Project Control first delivery round plan for Lane Cards, WORK room Kickoff Packets, terminology decisions, stop conditions, handoff requirements, and evidence targets.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
