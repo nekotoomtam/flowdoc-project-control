@@ -7,5 +7,11 @@
   "role": "contract",
   "authority": "Project Control first delivery round plan for Lane Cards, WORK room Kickoff Packets, terminology decisions, stop conditions, handoff requirements, and evidence targets.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "99488f37bc590af57819c3beab823936e8dd2038",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-delivery-operating-model.md; data/work/flowdoc-first-delivery-round.json; tests/flowdoc-first-delivery-round-plan.test.ts; npm run check"
+    }
+  ]
 }

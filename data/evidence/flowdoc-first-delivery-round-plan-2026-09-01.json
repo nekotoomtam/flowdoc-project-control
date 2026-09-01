@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-first-delivery-round-plan-2026-09-01",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "99488f37bc590af57819c3beab823936e8dd2038",
+  "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-delivery-operating-model.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-round-plan.json; data/checklists/checklist-flowdoc-first-delivery-round-plan.json; data/documents/flowdoc-first-delivery-round-plan.json; tests/flowdoc-first-delivery-round-plan.test.ts; npm run check",
+  "verificationSummary": "Project Control commit 99488f37bc590af57819c3beab823936e8dd2038 records the first delivery round plan as a Project Control PLAN room coordination contract. The plan defines the First Delivery Slice as Structure creation -> API/key exposure -> data input -> PDF output, records terminology decisions for API key, Gateway, Product database, Project Control SQLite, PDF output, and Room, defines Lane Cards and WORK room Kickoff Packets for Project Control records, Editor structure/publish, Backend gateway/database, Core document/PDF boundary, and integration evidence, and states No real WORK room has been opened by this plan. RED evidence: npx vitest run tests/flowdoc-first-delivery-round-plan.test.ts --maxWorkers=1 failed before the Work requiredEvidence and Evidence record existed. GREEN evidence before this evidence record passed npx vitest run tests/flowdoc-first-delivery-round-plan.test.ts --maxWorkers=1, npx vitest run tests/flowdoc-delivery-operating-model.test.ts tests/flowdoc-first-delivery-round-plan.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check with 64 unit test files and 357 tests, build, and 6 e2e tests. This evidence does not open WORK rooms, does not edit Core, Backend, or Editor behavior, does not prove gateway behavior, product database behavior, API key behavior, PDF generation, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-01T22:20:00.000Z"
+}

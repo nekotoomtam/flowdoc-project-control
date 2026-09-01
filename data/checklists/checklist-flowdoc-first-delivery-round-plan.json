@@ -8,6 +8,7 @@
       "id": "capture-first-delivery-context",
       "label": "Capture the first delivery round context.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "Work path, owner repository, bounded repository set, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
       "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-first-delivery-round, owner repo-project-control, bounded repository set repo-project-control/repo-editor/repo-backend/repo-core, active role planning-partner with documentation-authority-steward and project-control-steward responsibilities, phase target phase-flowdoc-first-delivery-round-plan, checklist target checklist-flowdoc-first-delivery-round-plan, and evidence target evidence-flowdoc-first-delivery-round-plan-2026-09-01."
     },
@@ -15,6 +16,7 @@
       "id": "write-red-first-delivery-round-guard",
       "label": "Write a failing Project Control guard for the first delivery round plan.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "The focused Project Control test fails before the First Delivery Round Plan document and records exist.",
       "verificationNote": "RED evidence: npx vitest run tests/flowdoc-first-delivery-round-plan.test.ts --maxWorkers=1 failed because flowdoc-first-delivery-round was not linked from flowdoc-product-development-resumption and doc-flowdoc-first-delivery-round-plan was not linked from the FlowDoc node."
     },
@@ -22,6 +24,7 @@
       "id": "draft-first-delivery-round-plan",
       "label": "Draft the Project Control first delivery round plan.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "The Project Control document records authority boundary, Work context, source documents, round goal, non-goals, terminology decisions, and dispatch status.",
       "verificationNote": "docs/domains/flowdoc-first-delivery-round-plan.md records the first delivery round as a PLAN room coordination contract and states that no real WORK room has been opened by this plan."
     },
@@ -29,6 +32,7 @@
       "id": "define-first-delivery-lane-cards",
       "label": "Define lane cards for the first delivery round.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "The plan defines lane cards for Project Control records, Editor structure/publish, Backend gateway/database, Core document/PDF boundary, and integration evidence.",
       "verificationNote": "The plan defines lane-project-control-round-records, lane-editor-structure-publish, lane-backend-gateway-database, lane-core-document-pdf-boundary, and lane-integration-evidence with owner repositories, scopes, evidence targets, stop conditions, and handoff formats."
     },
@@ -36,6 +40,7 @@
       "id": "define-work-room-kickoff-packets",
       "label": "Define WORK room Kickoff Packets.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "Every lane has a Kickoff Packet with Room Mode WORK, source of truth, owner repository, allowed scope, forbidden scope, required reading, expected output, evidence target, stop condition, and handoff format.",
       "verificationNote": "The plan includes one Kickoff Packet per lane and requires user approval before opening a real separate WORK room."
     },
@@ -43,6 +48,7 @@
       "id": "record-first-delivery-round-records",
       "label": "Record Project Control records for the first delivery round plan.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "Project Control records the Work, Phase, Checklist, Document, and FlowDoc Node link without product truth promotion.",
       "verificationNote": "Registered flowdoc-first-delivery-round, phase-flowdoc-first-delivery-round-plan, checklist-flowdoc-first-delivery-round-plan, doc-flowdoc-first-delivery-round-plan, and the FlowDoc node document link; product repositories and map truth were intentionally not changed."
     },
@@ -50,6 +56,7 @@
       "id": "verify-first-delivery-round-gate",
       "label": "Verify the first delivery round plan gate.",
       "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
       "evidenceTarget": "Focused guard, generated read model, data validation, and full Project Control gate pass after Project Control records are registered.",
       "verificationNote": "GREEN evidence target: tests/flowdoc-first-delivery-round-plan.test.ts, npm run generate, npm run check:data, and npm run check pass after the Project Control records are registered."
     }

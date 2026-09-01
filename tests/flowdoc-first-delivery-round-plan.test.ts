@@ -8,6 +8,8 @@ const DOC_ID = "doc-flowdoc-first-delivery-round-plan";
 const DOC_PATH = "docs/domains/flowdoc-first-delivery-round-plan.md";
 const PHASE_ID = "phase-flowdoc-first-delivery-round-plan";
 const CHECKLIST_ID = "checklist-flowdoc-first-delivery-round-plan";
+const EVIDENCE_ID = "evidence-flowdoc-first-delivery-round-plan-2026-09-01";
+const PLAN_COMMIT = "99488f37bc590af57819c3beab823936e8dd2038";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -15,6 +17,7 @@ describe("FlowDoc First Delivery Round Plan", () => {
   it("records the first delivery round as a Project Control plan before WORK rooms open", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
     const work = model.work.find((item) => item.id === WORK_ID);
     const phase = model.phases.find((item) => item.id === PHASE_ID);
     const checklist = model.checklists.find((item) => item.id === CHECKLIST_ID);
@@ -41,6 +44,7 @@ describe("FlowDoc First Delivery Round Plan", () => {
       nodeId: "flowdoc",
       parentWorkId: PARENT_WORK_ID,
       phaseIds: expect.arrayContaining([PHASE_ID]),
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       repositoryIds: expect.arrayContaining([
         "repo-project-control",
         "repo-editor",
@@ -73,6 +77,9 @@ describe("FlowDoc First Delivery Round Plan", () => {
     ]);
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
     expect(checklist?.items.every((item) => item.verificationNote !== undefined)).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EVIDENCE_ID),
+    )).toBe(true);
 
     expect(documents.get(DOC_ID)).toMatchObject({
       authority: expect.stringContaining("first delivery round plan"),
@@ -81,6 +88,21 @@ describe("FlowDoc First Delivery Round Plan", () => {
       path: DOC_PATH,
       role: "contract",
     });
+    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual([
+      expect.objectContaining({
+        commit: PLAN_COMMIT,
+        pathOrContractId: expect.stringContaining("tests/flowdoc-first-delivery-round-plan.test.ts"),
+        repositoryId: "repo-project-control",
+      }),
+    ]);
+    expect(evidence.get(EVIDENCE_ID)).toMatchObject({
+      commit: PLAN_COMMIT,
+      nodeIds: [],
+      pathOrContractId: expect.stringContaining(DOC_PATH),
+      repositoryId: "repo-project-control",
+    });
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("first delivery round plan");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("No real WORK room");
 
     expect(docText).toContain("# FlowDoc First Delivery Round Plan");
     expect(docText).toContain("Work path: `flowdoc-product-development-resumption > flowdoc-first-delivery-round`");

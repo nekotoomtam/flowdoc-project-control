@@ -27,7 +27,7 @@
   "activeRole": "planning-partner",
   "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, and evidence targets before opening real WORK rooms.",
   "riskSummary": "The plan may be mistaken for product truth unless each lane keeps product claims unpromoted until repository-owned evidence exists; API key, gateway, product database, and PDF output ownership may require Contract Change Requests after Core, Backend, and Editor inspection.",
-  "requiredEvidence": [],
+  "requiredEvidence": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
   "createdAt": "2026-09-01T22:00:00.000Z",
   "updatedAt": "2026-09-01T22:00:00.000Z"
 }
