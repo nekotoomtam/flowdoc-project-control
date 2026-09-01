@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "99a46a415b89443dbbb7f288e071369cabd2cd4c",
       "pathOrContractId": "docs/domains/flowdoc-project-control-skill-installation-2026-09-01.md; tests/flowdoc-project-control-skill.test.ts; docs/domains/agent-and-skill-operating-model.md"
     }
   ]
