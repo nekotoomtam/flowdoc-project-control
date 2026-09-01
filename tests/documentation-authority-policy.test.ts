@@ -949,6 +949,7 @@ describe("FlowDoc documentation authority policy", () => {
     expect(work?.expectedOutput).toContain("Core docs/project Markdown is now absent");
     expect(work?.riskSummary).toContain("Core docs/project cleanup is recorded");
     expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 339 files");
+    expect(work?.riskSummary).toContain("fd-core-project-docs-retire-0901 on disk");
 
     expect(phase).toMatchObject({
       activeRole: "documentation-synthesizer",
@@ -959,6 +960,7 @@ describe("FlowDoc documentation authority policy", () => {
     expect(phase?.verificationTarget).toContain("Core docs/project Markdown is absent");
     expect(phase?.summary).toContain("retired four Core docs/project Markdown files");
     expect(phase?.summary).toContain("manifest canonicalRoots no longer includes docs/project");
+    expect(phase?.summary).toContain("fd-core-project-docs-retire-0901 remains on disk");
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
       "capture-core-project-docs-source-snapshot",
@@ -989,6 +991,8 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("canonicalRoots [docs/coordination, docs/versions/0_1]");
     expect(verificationSummary).toContain("projectRows=0");
     expect(verificationSummary).toContain("tracked and visible Markdown both equal 339 files");
+    expect(verificationSummary).toContain("fd-core-project-docs-retire-0901 remains on disk");
+    expect(verificationSummary).toContain("Remove-Item -LiteralPath");
     expect(verificationSummary).toContain("npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1");
     expect(verificationSummary).toContain("npx vitest run tests/canonicalDocumentationSpine.test.ts --maxWorkers=1");
     expect(verificationSummary).toContain("npm run docs:check");

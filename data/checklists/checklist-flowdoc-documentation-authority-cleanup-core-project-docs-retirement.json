@@ -50,7 +50,7 @@
       "state": "passed",
       "evidenceTarget": "Project Control evidence cites the retained-value commit, Core cleanup commit, verification, and unpromoted claims.",
       "evidenceIds": ["evidence-core-project-docs-retired-2026-09-01"],
-      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained Core project-doc meanings remain in Project Control doc-core-project-docs-retirement-2026-09-01 rather than active Core docs/project truth."
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained Core project-doc meanings remain in Project Control doc-core-project-docs-retirement-2026-09-01 rather than active Core docs/project truth. Cleanup housekeeping records that fd-core-project-docs-retire-0901 remains on disk after long-path removal was blocked, while git worktree list no longer lists it and branch fd-core-project-docs-retire-0901 was deleted."
     }
   ],
   "createdAt": "2026-09-01T04:20:00.000Z",
