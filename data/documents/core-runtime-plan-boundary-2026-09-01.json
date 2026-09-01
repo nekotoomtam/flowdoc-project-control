@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-runtime-plan-boundary-2026-09-01",
+  "title": "Core Runtime Plan Boundary - 2026-09-01",
+  "path": "docs/domains/core-runtime-plan-boundary-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Core runtime plan retained-value and Authority Boundary record before demoting surviving Core-local runtime planning Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "3edd2fe81cf5d9554187cebbe67535204b87a72a",
+      "pathOrContractId": "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md"
+    }
+  ]
+}
