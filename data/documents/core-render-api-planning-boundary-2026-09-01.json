@@ -12,6 +12,11 @@
       "repositoryId": "repo-core",
       "commit": "2057a7458b1055785a516752e21d8edaa558388f",
       "pathOrContractId": "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "360ea384ba609dcceab502a5ea1ef55daf2b151a",
+      "pathOrContractId": "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md; tests/coreDocumentationAuthority.test.ts"
     }
   ]
 }

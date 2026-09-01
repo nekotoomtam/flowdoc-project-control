@@ -543,6 +543,7 @@ describe("project roadmap Work Queue", () => {
         "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement",
         "phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement",
         "phase-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary",
+        "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary",
       ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",

@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Render API Planning Boundary",
+  "phaseState": "done",
+  "order": 130,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The Core Render API planning retained value has not been recorded in Project Control before Core demotion.",
+    "The cleanup would delete Core Render API planning docs that are still pinned by Core tests or README references without replacement evidence.",
+    "The cleanup would promote Core runtime readiness, Backend readiness, Editor readiness, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "The three surviving Core Render API planning docs carry Authority Boundary wording that points FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state back to Project Control; Core worktree plus merged main gates pass.",
+  "summary": "Done: Project Control commit d89c84a7cfbf41ea96223c75bfb5a6e0c902d874 recorded retained value for three Core Render API planning docs before Core demotion. Core commit 360ea384ba609dcceab502a5ea1ef55daf2b151a added Authority Boundary wording to docs/RENDER_API_CONTRACT_PLANNING_GATE.md, docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md, and docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md, plus a Core guard. The docs survive as Core-local implementation context without deleting Core Render API planning docs or changing runtime behavior. Core tracked and visible Markdown remain 339 files, with 15 Authority/Project Control signal matches and 324 tracked Core Markdown files without Authority Boundary or Project Control signal. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-render-api-plan-boundary-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-render-api-plan-boundary-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch.",
+  "createdAt": "2026-09-01T05:45:00.000Z",
+  "updatedAt": "2026-09-01T05:45:00.000Z"
+}

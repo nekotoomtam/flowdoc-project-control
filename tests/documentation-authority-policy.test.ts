@@ -74,6 +74,13 @@ const CORE_RUNTIME_PLAN_BOUNDARY_COMMIT = "2057a7458b1055785a516752e21d8edaa5583
 const CORE_RUNTIME_PLAN_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
 const CORE_RUNTIME_PLAN_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
 const CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID = "evidence-core-runtime-plan-doc-boundary-2026-09-01";
+const CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID = "doc-core-render-api-planning-boundary-2026-09-01";
+const CORE_RENDER_API_PLANNING_BOUNDARY_DOC_PATH = "docs/domains/core-render-api-planning-boundary-2026-09-01.md";
+const CORE_RENDER_API_PLANNING_BOUNDARY_SOURCE_COMMIT = "2057a7458b1055785a516752e21d8edaa558388f";
+const CORE_RENDER_API_PLANNING_BOUNDARY_COMMIT = "360ea384ba609dcceab502a5ea1ef55daf2b151a";
+const CORE_RENDER_API_PLANNING_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary";
+const CORE_RENDER_API_PLANNING_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary";
+const CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID = "evidence-core-render-api-planning-boundary-2026-09-01";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -1091,6 +1098,91 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("does not edit Core runtime behavior");
     expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
     expect(verificationSummary).toContain("branch fd-core-runtime-plan-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core Render API planning docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_RENDER_API_PLANNING_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_RENDER_API_PLANNING_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID,
+      CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core Render API planning docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core Render API planning docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-render-api-plan-boundary-0901 remains on disk");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without deleting Core Render API planning docs");
+    expect(phase?.summary).toContain("fd-core-render-api-plan-boundary-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-render-api-planning-source-snapshot",
+      "record-render-api-planning-retained-value",
+      "write-red-core-render-api-planning-boundary-guard",
+      "bound-surviving-render-api-planning-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_RENDER_API_PLANNING_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core Render API planning retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_RENDER_API_PLANNING_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core Render API planning docs boundary");
+    expect(boundaryText).toContain("Render API Contract Planning Gate");
+    expect(boundaryText).toContain("Render API Response / Status Contract Gate");
+    expect(boundaryText).toContain("Runtime Binding / Implementation Planning Gate");
+    expect(boundaryText).toContain("survive cleanup as Core-local implementation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_RENDER_API_PLANNING_BOUNDARY_COMMIT,
+      pathOrContractId: "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core Render API planning docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core Render API planning docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
+    expect(verificationSummary).toContain("branch fd-core-render-api-plan-boundary-0901 was deleted");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
