@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "f506160e41c89e88be4d5fde960277fdb2d536ee",
+      "commit": "0796796ededc47a2f71e4ee32f0d0a8cd27c54d3",
       "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-plan-room-orchestration-rules.test.ts"
     }
   ]
