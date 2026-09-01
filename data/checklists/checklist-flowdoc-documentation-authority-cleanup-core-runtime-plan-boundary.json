@@ -9,7 +9,9 @@
       "label": "Capture the Core runtime plan source snapshot and owner.",
       "state": "passed",
       "evidenceTarget": "Core source commit, Core runtime plan Markdown paths, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before demotion.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
       "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core and repo-project-control, source Core commit 3edd2fe81cf5d9554187cebbe67535204b87a72a, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary, checklist target checklist-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary, and evidence target evidence-core-runtime-plan-doc-boundary-2026-09-01."
     },
     {
@@ -17,7 +19,9 @@
       "label": "Record retained value before Core demotion.",
       "state": "passed",
       "evidenceTarget": "Project Control records retained value and boundary rationale for the four Core runtime plan docs before Core edits.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
       "verificationNote": "Project Control commit c7bda1d9268dfd3f7c46e1fed7f8b51f33188764 added docs/domains/core-runtime-plan-boundary-2026-09-01.md before Core commit 2057a7458b1055785a516752e21d8edaa558388f."
     },
     {
@@ -25,7 +29,9 @@
       "label": "Write failing Core guard for runtime plan boundaries.",
       "state": "passed",
       "evidenceTarget": "Focused Core documentation authority guard fails before Authority Boundary wording is added.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
       "verificationNote": "RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed because docs/BACKEND_GENERATION_RUNTIME_PLAN.md lacked Authority Boundary wording, with expected text to contain Authority Boundary."
     },
     {
@@ -33,7 +39,9 @@
       "label": "Add Authority Boundary wording to surviving Core runtime plan docs.",
       "state": "passed",
       "evidenceTarget": "The four Core runtime plan docs identify Core as owner, retain only Core-local implementation context, and point FlowDoc-wide status and cleanup authority back to Project Control.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
       "verificationNote": "Core commit 2057a7458b1055785a516752e21d8edaa558388f added Authority Boundary sections to docs/BACKEND_GENERATION_RUNTIME_PLAN.md, docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md, docs/KEY_REGISTRY_BINDING_PLAN.md, and docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md without changing runtime behavior."
     },
     {
@@ -41,7 +49,9 @@
       "label": "Verify Core worktree and merged main gates.",
       "state": "passed",
       "evidenceTarget": "Core focused guard, docs:check, diff check, worktree full gate, merged main focused guard, merged main docs:check, merged main full gate, and post-merge Markdown counts pass.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
       "verificationNote": "GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 in the Core worktree with 1 file and 4 tests, npm run docs:check, git diff --check, npm run check in the Core worktree with 461 test files and 2950 tests, npm run docs:check on merged Core main, npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 on merged Core main with 1 file and 4 tests, npm run check on merged Core main with 461 test files and 2950 tests, and post-merge counts showing tracked and visible Core Markdown both equal 339 files."
     },
     {
@@ -49,10 +59,12 @@
       "label": "Record Project Control evidence without promoting product truth.",
       "state": "passed",
       "evidenceTarget": "Project Control evidence cites the retained-value commit, Core boundary commit, verification, and unpromoted claims.",
-      "evidenceIds": ["evidence-core-runtime-plan-doc-boundary-2026-09-01"],
-      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained runtime plan meanings remain bounded by Project Control doc-core-runtime-plan-boundary-2026-09-01 and surviving Core-local Authority Boundary wording."
+      "evidenceIds": [
+        "evidence-core-runtime-plan-doc-boundary-2026-09-01"
+      ],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained runtime plan meanings remain bounded by Project Control doc-core-runtime-plan-boundary-2026-09-01 and surviving Core-local Authority Boundary wording. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-runtime-plan-boundary-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-runtime-plan-boundary-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch."
     }
   ],
   "createdAt": "2026-09-01T05:05:00.000Z",
-  "updatedAt": "2026-09-01T05:05:00.000Z"
+  "updatedAt": "2026-09-01T05:20:00.000Z"
 }

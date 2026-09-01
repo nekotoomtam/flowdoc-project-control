@@ -5,7 +5,10 @@
   "title": "Core Runtime Plan Boundary",
   "phaseState": "done",
   "order": 120,
-  "repositoryIds": ["repo-core", "repo-project-control"],
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
   "activeRole": "documentation-synthesizer",
   "stopConditions": [
     "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
@@ -14,7 +17,7 @@
     "The cleanup would promote Core runtime readiness, compatibility, frontend readiness, FlowDoc product truth, or map truth."
   ],
   "verificationTarget": "The four surviving Core runtime plan docs carry Authority Boundary wording that points FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state back to Project Control; Core worktree plus merged main gates pass.",
-  "summary": "Done: Project Control commit c7bda1d9268dfd3f7c46e1fed7f8b51f33188764 recorded retained value for four Core runtime plan docs before Core demotion. Core commit 2057a7458b1055785a516752e21d8edaa558388f added Authority Boundary wording to docs/BACKEND_GENERATION_RUNTIME_PLAN.md, docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md, docs/KEY_REGISTRY_BINDING_PLAN.md, and docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md, plus a Core guard. The docs survive as Core-local implementation context without deleting Core runtime plan docs or changing runtime behavior. Core tracked and visible Markdown remain 339 files.",
+  "summary": "Done: Project Control commit c7bda1d9268dfd3f7c46e1fed7f8b51f33188764 recorded retained value for four Core runtime plan docs before Core demotion. Core commit 2057a7458b1055785a516752e21d8edaa558388f added Authority Boundary wording to docs/BACKEND_GENERATION_RUNTIME_PLAN.md, docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md, docs/KEY_REGISTRY_BINDING_PLAN.md, and docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md, plus a Core guard. The docs survive as Core-local implementation context without deleting Core runtime plan docs or changing runtime behavior. Core tracked and visible Markdown remain 339 files. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-runtime-plan-boundary-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-runtime-plan-boundary-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch.",
   "createdAt": "2026-09-01T05:05:00.000Z",
-  "updatedAt": "2026-09-01T05:05:00.000Z"
+  "updatedAt": "2026-09-01T05:20:00.000Z"
 }

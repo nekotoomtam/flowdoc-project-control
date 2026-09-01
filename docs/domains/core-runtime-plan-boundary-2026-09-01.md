@@ -51,6 +51,17 @@ Core tracked and visible Markdown counts remain 339 files. This lane demotes
 surviving runtime plan docs into bounded Core-local context; it does not delete
 them.
 
+## Cleanup Housekeeping
+
+Post-merge cleanup leaves
+`C:/Users/nekot/Documents/GitHub/fd-core-runtime-plan-boundary-0901` on disk.
+Git no longer lists it as a Core worktree and branch
+`fd-core-runtime-plan-boundary-0901` was deleted, but `git worktree remove`
+failed with `Filename too long`.
+
+The folder is a cleanup blocker only. It is not an active worktree or unmerged
+branch.
+
 ## Retained Value
 
 | Source | Retained value |

@@ -1024,6 +1024,7 @@ describe("FlowDoc documentation authority policy", () => {
     expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID]));
     expect(work?.expectedOutput).toContain("Core runtime plan docs now carry Authority Boundary wording");
     expect(work?.riskSummary).toContain("Core runtime plan docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-runtime-plan-boundary-0901 remains on disk");
 
     expect(phase).toMatchObject({
       activeRole: "documentation-synthesizer",
@@ -1033,6 +1034,7 @@ describe("FlowDoc documentation authority policy", () => {
     });
     expect(phase?.verificationTarget).toContain("Authority Boundary");
     expect(phase?.summary).toContain("without deleting Core runtime plan docs");
+    expect(phase?.summary).toContain("fd-core-runtime-plan-boundary-0901 remains on disk");
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
       "capture-core-runtime-plan-source-snapshot",
@@ -1087,6 +1089,8 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("Core runtime plan docs now carry Authority Boundary wording");
     expect(verificationSummary).toContain("does not delete Core runtime plan docs");
     expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
+    expect(verificationSummary).toContain("branch fd-core-runtime-plan-boundary-0901 was deleted");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
