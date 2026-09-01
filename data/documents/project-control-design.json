@@ -2,7 +2,7 @@
   "kind": "document",
   "id": "doc-project-control-design",
   "title": "Flowdoc Project Control Design",
-  "path": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md",
+  "path": "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md",
   "nodeIds": ["project-control"],
   "role": "decision",
   "authority": "Approved design decision for the Project Control foundation and GUI direction.",

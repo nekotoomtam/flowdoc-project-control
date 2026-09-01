@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-superpowers-retirement-2026-09-01",
+  "title": "Project Control Superpowers Retirement - 2026-09-01",
+  "path": "docs/domains/project-control-superpowers-retirement-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Project Control docs/superpowers retirement record for the FlowDoc documentation authority cleanup Work item.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "32ca1fe1207c68710382d4198493616e0c086ec6",
+      "pathOrContractId": "rg --files docs/superpowers -g '*.md'"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "32ca1fe1207c68710382d4198493616e0c086ec6",
+      "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md"
+    }
+  ]
+}

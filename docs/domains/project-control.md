@@ -43,7 +43,13 @@ This overview is current only for the Project Control architecture described by 
 
 ## Evidence boundary
 
-The current Project Control architecture claim is supported by the approved design object at `docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the Project Control repository. The Evidence record deliberately limits its verification to that object and commit.
+The current Project Control architecture claim is maintained in
+`docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md`.
+The original approved design object was recorded at
+`docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md` in the
+Project Control repository at commit `bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444`.
+The Evidence record deliberately limits its verification to that original
+object and commit.
 
 The current Project Control GUI Overview and History claim is supported by
 `evidence-project-control-overview-history-gui-2026-08-29`. That Evidence

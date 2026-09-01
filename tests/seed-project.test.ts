@@ -121,7 +121,7 @@ describe("truthful seed project", () => {
     expect(documents.get("doc-document-map-operating-rules")?.content)
       .toContain("DOCUMENT_MAP records verified system truth");
     expect(documents.get("doc-document-map-operating-rules")?.content)
-      .toContain("`docs/superpowers/plans/` files are historical execution traces");
+      .toContain("Former `docs/superpowers/plans/` files were historical execution traces");
 
     for (const id of ["core", "editor", "backend"]) {
       expect(model.nodes.find((node) => node.id === id)?.truthState).toBe("unknown");

@@ -1,3 +1,5 @@
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
@@ -37,8 +39,22 @@ const AGENT_ROLE_REWRITE_PHASE_ID = "phase-flowdoc-documentation-authority-clean
 const AGENT_ROLE_REWRITE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite";
 const AGENT_ROLE_REWRITE_EVIDENCE_ID = "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01";
 const AGENT_ROLE_REWRITE_COMMIT = "be0729767ba3e86a828e4f133edf17380ab77fbe";
+const PROJECT_CONTROL_DESIGN_CANONICAL_PATH = "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_ID = "doc-project-control-superpowers-retirement-2026-09-01";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_PATH = "docs/domains/project-control-superpowers-retirement-2026-09-01.md";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
+
+const markdownFilesUnder = (directory: string): string[] => {
+  if (!existsSync(directory)) {
+    return [];
+  }
+
+  return readdirSync(directory, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+    .map((entry) => join(entry.parentPath, entry.name).replace(process.cwd() + "\\", "").replace(/\\/gu, "/"))
+    .sort();
+};
 
 describe("FlowDoc documentation authority policy", () => {
   it("starts cleanup from Project Control before product-repo Markdown changes", async () => {
@@ -545,5 +561,38 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("Product Implementation Agent must not create product-repository");
     expect(verificationSummary).toContain("6 tests");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("retires Project Control docs/superpowers after registering retained control value", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+
+    expect(markdownFilesUnder(join(process.cwd(), "docs", "superpowers"))).toEqual([]);
+
+    const projectControlDesign = documents.get("doc-project-control-design");
+    expect(projectControlDesign).toMatchObject({
+      path: PROJECT_CONTROL_DESIGN_CANONICAL_PATH,
+      nodeIds: ["project-control"],
+      role: "decision",
+      lifecycle: "active",
+    });
+    expect(normalize(projectControlDesign?.content)).toContain("FlowDoc Project Control");
+    expect(normalize(projectControlDesign?.content)).toContain("File-first");
+
+    const retirementSummary = documents.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_ID);
+    expect(retirementSummary).toMatchObject({
+      path: PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirementSummary?.authority).toContain("Project Control docs/superpowers retirement record");
+
+    const retirementText = normalize(retirementSummary?.content);
+    expect(retirementText).toContain("docs/superpowers contains no Markdown files after this cleanup");
+    expect(retirementText).toContain("docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md");
+    expect(retirementText).toContain(PROJECT_CONTROL_DESIGN_CANONICAL_PATH);
+    expect(retirementText).toContain("historical execution traces");
+    expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
