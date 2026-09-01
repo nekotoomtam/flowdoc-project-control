@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion",
+  "title": "Product Repository Markdown Boundary Completion Checklist",
+  "items": [
+    {
+      "id": "capture-product-markdown-boundary-inventory",
+      "label": "Capture product repository Markdown boundary inventory and owners.",
+      "state": "passed",
+      "evidenceTarget": "Core, Backend, and Editor source commits, tracked Markdown counts, missing strict Authority Boundary counts, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before edits.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core, repo-backend, repo-editor, and repo-project-control, active role documentation-synthesizer for product Markdown boundary completion and project-control-steward for Project Control records, phase target phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion, checklist target checklist-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion, and evidence target evidence-product-repo-markdown-boundary-completion-2026-09-01. Initial strict counts were Core 339 tracked Markdown with 319 missing, Backend 39 with 38 missing, and Editor 54 with 54 missing."
+    },
+    {
+      "id": "write-red-product-markdown-boundary-guards",
+      "label": "Write failing product-repository guards.",
+      "state": "passed",
+      "evidenceTarget": "Core, Backend, Editor, and Project Control guards fail before the final product Markdown boundary records exist.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "RED evidence: Core npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed with 319 missing strict Authority Boundary files; Backend npx vitest run src/tests/backendDocumentationAuthority.test.ts --maxWorkers=1 failed with 38 missing files; Editor npx vitest run src/tests/editorDocumentationAuthority.test.ts --maxWorkers=1 failed with 54 missing files. Project Control focused RED npx vitest run tests/documentation-authority-policy.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 failed because the new phase was not in Work phaseIds and the Work was still in-progress."
+    },
+    {
+      "id": "bound-core-markdown",
+      "label": "Bound all surviving tracked Core Markdown.",
+      "state": "passed",
+      "evidenceTarget": "Every tracked Core Markdown file carries strict Authority Boundary wording and Core guards cover the repository-wide scan.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "Core commit a89b02c3d2d0073ee7ef669de25b862d5534717e added Authority Boundary wording to all surviving tracked Core Markdown files without the strict section and updated exact-heading tests. Core commit 87fab8061852a9a1c1c8886dfa029f72e15bf211 stabilized the Core repository-wide Markdown guard timeout. Final strict scan on Core main reports 339 tracked Markdown and missing=0."
+    },
+    {
+      "id": "bound-backend-markdown",
+      "label": "Bound all surviving tracked Backend Markdown.",
+      "state": "passed",
+      "evidenceTarget": "Every tracked Backend Markdown file carries strict Authority Boundary wording and Backend guards cover the repository-wide scan.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "Backend commit d7b417451eac4b64cd68403290ead7e466102648 added Authority Boundary wording to all surviving tracked Backend Markdown files without the strict section and added src/tests/backendDocumentationAuthority.test.ts. Final strict scan on Backend main reports 39 tracked Markdown and missing=0."
+    },
+    {
+      "id": "bound-editor-markdown",
+      "label": "Bound all surviving tracked Editor Markdown.",
+      "state": "passed",
+      "evidenceTarget": "Every tracked Editor Markdown file carries strict Authority Boundary wording and Editor guards cover the repository-wide scan.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "Editor commit 9936d3ff052df45826eb8bfc089a62de46c3d645 added Authority Boundary wording to all surviving tracked Editor Markdown files without the strict section and added src/tests/editorDocumentationAuthority.test.ts. Final strict scan on Editor main reports 54 tracked Markdown and missing=0."
+    },
+    {
+      "id": "verify-product-main-gates",
+      "label": "Verify worktree and merged-main product gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused guards, diff checks, full worktree gates, merged main focused guards, merged main full gates, strict post-merge counts, and cleanup checks pass for product repositories.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "GREEN evidence passed product worktree focused guards, git diff --check, Backend and Editor full worktree gates, Core focused correction with 5 files and 32 tests, and Core full worktree gate with 461 files and 2954 tests. Merged-main gates passed Core npm run docs:check, Core focused guard with 5 files and 32 tests, Core npm run check with 461 files and 2954 tests, Backend focused guard with 1 file and 2 tests, Backend npm run check with 90 passed and 1 skipped test files plus 326 passed and 24 skipped tests and build, Editor focused guard with 1 file and 2 tests, and Editor npm run check with 109 files and 394 tests plus build with the existing Vite chunk-size warning."
+    },
+    {
+      "id": "record-project-control-product-boundary-evidence",
+      "label": "Record Project Control evidence and close Work to review.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records product-repository boundary completion, required evidence, context document, phase, checklist, final counts, cleanup result, and unpromoted claims.",
+      "evidenceIds": [
+        "evidence-product-repo-markdown-boundary-completion-2026-09-01"
+      ],
+      "verificationNote": "Project Control records doc-product-repo-markdown-boundary-completion-2026-09-01, phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion, checklist-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion, and evidence-product-repo-markdown-boundary-completion-2026-09-01. The FlowDoc documentation authority cleanup Work is ready for review after strict product Markdown boundary scans report Core missing=0, Backend missing=0, and Editor missing=0."
+    }
+  ],
+  "createdAt": "2026-09-01T09:10:00.000Z",
+  "updatedAt": "2026-09-01T09:10:00.000Z"
+}

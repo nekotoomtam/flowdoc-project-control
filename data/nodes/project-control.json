@@ -27,7 +27,8 @@
     "doc-core-runtime-plan-boundary-2026-09-01",
     "doc-core-render-api-planning-boundary-2026-09-01",
     "doc-core-render-api-contract-boundary-2026-09-01",
-    "doc-core-generated-docs-boundary-2026-09-01"
+    "doc-core-generated-docs-boundary-2026-09-01",
+    "doc-product-repo-markdown-boundary-completion-2026-09-01"
   ],
   "evidenceIds": [
     "evidence-project-control-design",

@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-product-repo-markdown-boundary-completion-2026-09-01",
+  "title": "Product Repository Markdown Boundary Completion - 2026-09-01",
+  "path": "docs/domains/product-repo-markdown-boundary-completion-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Product repository Markdown Authority Boundary completion record for Core, Backend, and Editor after documentation authority cleanup.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b36daa212bd94ceb66b1a6d70bd75c19831065df",
+      "pathOrContractId": "data/work/flowdoc-documentation-authority-cleanup.json; docs/domains/flowdoc-documentation-authority-policy.md; tests/documentation-authority-policy.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "87fab8061852a9a1c1c8886dfa029f72e15bf211",
+      "pathOrContractId": "AGENTS.md; README.md; docs/**/*.md; examples/**/*.md; packages/**/README.md; tests/coreDocumentationAuthority.test.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "d7b417451eac4b64cd68403290ead7e466102648",
+      "pathOrContractId": "AGENTS.md; README.md; docs/**/*.md; src/tests/backendDocumentationAuthority.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "9936d3ff052df45826eb8bfc089a62de46c3d645",
+      "pathOrContractId": "AGENTS.md; docs/**/*.md; src/tests/editorDocumentationAuthority.test.ts"
+    }
+  ]
+}

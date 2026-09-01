@@ -546,6 +546,7 @@ describe("project roadmap Work Queue", () => {
         "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary",
         "phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary",
         "phase-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary",
+        "phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion",
       ],
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",
@@ -553,7 +554,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-product-development-resumption",
         "flowdoc-documentation-authority-cleanup",
       ],
-      workState: "in-progress",
+      workState: "in-review",
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-evidence-refresh")).toMatchObject({
       workKind: "task",

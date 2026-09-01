@@ -1,0 +1,26 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Product Repository Markdown Boundary Completion",
+  "phaseState": "done",
+  "order": 160,
+  "repositoryIds": [
+    "repo-core",
+    "repo-backend",
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repositories, active role, Checklist target, or Evidence target before editing.",
+    "A product repository Markdown file would survive without explicit Authority Boundary wording.",
+    "The cleanup would delete product-repository Markdown without a retained-value record and repository-owned verification.",
+    "The cleanup would edit Core, Backend, or Editor runtime behavior.",
+    "The cleanup would promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth."
+  ],
+  "verificationTarget": "The strict product Markdown boundary scan reports Core missing=0, Backend missing=0, and Editor missing=0; focused guards and full gates pass on worktrees and merged main; Project Control records the evidence without promoting shared product truth.",
+  "summary": "Done: Core, Backend, and Editor tracked Markdown now all carry Authority Boundary wording. Core: 339 tracked Markdown, 319 newly bounded, missing=0. Backend: 39 tracked Markdown, 38 newly bounded, missing=0. Editor: 54 tracked Markdown, 54 newly bounded, missing=0. Product commits 87fab8061852a9a1c1c8886dfa029f72e15bf211, d7b417451eac4b64cd68403290ead7e466102648, and 9936d3ff052df45826eb8bfc089a62de46c3d645 were merged to main after worktree gates and verified with focused guards plus full product-repository main gates, without changing product runtime behavior and without promoting shared product truth. Product lane worktrees and merged branches were removed; historical stale cleanup folders remain recorded housekeeping risks only.",
+  "createdAt": "2026-09-01T09:10:00.000Z",
+  "updatedAt": "2026-09-01T09:10:00.000Z"
+}

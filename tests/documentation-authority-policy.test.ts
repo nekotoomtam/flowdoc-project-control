@@ -95,6 +95,15 @@ const CORE_GENERATED_DOCS_BOUNDARY_COMMIT = "661d0bb214db4c68b9403c3e5783e401239
 const CORE_GENERATED_DOCS_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
 const CORE_GENERATED_DOCS_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
 const CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID = "evidence-core-generated-docs-boundary-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID = "doc-product-repo-markdown-boundary-completion-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_PATH = "docs/domains/product-repo-markdown-boundary-completion-2026-09-01.md";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID = "evidence-product-repo-markdown-boundary-completion-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT = "b36daa212bd94ceb66b1a6d70bd75c19831065df";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_CORE_COMMIT = "87fab8061852a9a1c1c8886dfa029f72e15bf211";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_BACKEND_COMMIT = "d7b417451eac4b64cd68403290ead7e466102648";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_EDITOR_COMMIT = "9936d3ff052df45826eb8bfc089a62de46c3d645";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -125,7 +134,7 @@ describe("FlowDoc documentation authority policy", () => {
       repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
       workKind: "task",
       workPathIds: ["flowdoc-product-development-resumption", WORK_ID],
-      workState: "in-progress",
+      workState: "in-review",
       requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
     });
     expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
@@ -1381,6 +1390,112 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("Authority/Project Control signal scan reports 27 matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal");
     expect(verificationSummary).toContain("C:/w/fd-core-gendocs-0901 was removed");
     expect(verificationSummary).toContain("branch fd-core-gendocs-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+  });
+
+  it("records product repository Markdown boundary completion without promoting shared truth", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === PRODUCT_REPO_MARKDOWN_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === PRODUCT_REPO_MARKDOWN_BOUNDARY_CHECKLIST_ID);
+
+    expect(work).toMatchObject({
+      activeRole: "project-control-steward",
+      workState: "in-review",
+    });
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID,
+      CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core, Backend, and Editor tracked Markdown now all carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Product repository Markdown boundary completion is recorded");
+    expect(work?.riskSummary).toContain("strict product Markdown boundary scan reports Core missing=0, Backend missing=0, and Editor missing=0");
+    expect(work?.riskSummary).toContain("Project Control Markdown remains canonical source material");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-backend", "repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("strict product Markdown boundary scan");
+    expect(phase?.summary).toContain("Core: 339 tracked Markdown, 319 newly bounded, missing=0");
+    expect(phase?.summary).toContain("Backend: 39 tracked Markdown, 38 newly bounded, missing=0");
+    expect(phase?.summary).toContain("Editor: 54 tracked Markdown, 54 newly bounded, missing=0");
+    expect(phase?.summary).toContain("without changing product runtime behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-product-markdown-boundary-inventory",
+      "write-red-product-markdown-boundary-guards",
+      "bound-core-markdown",
+      "bound-backend-markdown",
+      "bound-editor-markdown",
+      "verify-product-main-gates",
+      "record-project-control-product-boundary-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Product repository Markdown Authority Boundary completion record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT,
+        pathOrContractId: "data/work/flowdoc-documentation-authority-cleanup.json; docs/domains/flowdoc-documentation-authority-policy.md; tests/documentation-authority-policy.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_CORE_COMMIT,
+        pathOrContractId: "AGENTS.md; README.md; docs/**/*.md; examples/**/*.md; packages/**/README.md; tests/coreDocumentationAuthority.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-backend",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_BACKEND_COMMIT,
+        pathOrContractId: "AGENTS.md; README.md; docs/**/*.md; src/tests/backendDocumentationAuthority.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-editor",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_EDITOR_COMMIT,
+        pathOrContractId: "AGENTS.md; docs/**/*.md; src/tests/editorDocumentationAuthority.test.ts",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Product repository Markdown boundary completion");
+    expect(boundaryText).toContain("Core: 339 tracked Markdown files; 319 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Backend: 39 tracked Markdown files; 38 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Editor: 54 tracked Markdown files; 54 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Project Control remains the canonical home for FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, documentation authority, product terminology, compatibility promotion, and map truth");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+
+    expect(evidence.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT,
+      pathOrContractId: "docs/domains/product-repo-markdown-boundary-completion-2026-09-01.md; data/work/flowdoc-documentation-authority-cleanup.json; product repository boundary commits; merged main gates",
+    });
+    const verificationSummary = evidence.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core, Backend, and Editor tracked Markdown now all carry Authority Boundary wording");
+    expect(verificationSummary).toContain("strict product Markdown boundary scan reports Core missing=0, Backend missing=0, and Editor missing=0");
+    expect(verificationSummary).toContain("does not edit Core, Backend, or Editor runtime behavior");
+    expect(verificationSummary).toContain("Work is ready for review");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
   });
 });
