@@ -50,9 +50,9 @@
       "state": "passed",
       "evidenceTarget": "Project Control evidence cites the Core cleanup commit, retained-value record, verification, and unpromoted claims.",
       "evidenceIds": ["evidence-core-hidden-superpowers-sdd-retired-2026-09-01"],
-      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted."
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. Cleanup housekeeping records that fd-core-hidden-sdd-0901 remains on disk after long-path removal was blocked, while Git no longer lists it as a Core worktree and branch fd-core-hidden-sdd-0901 was deleted."
     }
   ],
   "createdAt": "2026-09-01T03:45:00.000Z",
-  "updatedAt": "2026-09-01T03:45:00.000Z"
+  "updatedAt": "2026-09-01T03:50:00.000Z"
 }

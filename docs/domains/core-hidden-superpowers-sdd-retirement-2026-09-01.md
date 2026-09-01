@@ -80,6 +80,19 @@ The Core verification gates passed before and after merge to `main`. This
 result removes only hidden historical Markdown artifacts; it does not alter
 Core runtime behavior or claim broader Core readiness.
 
+## Cleanup Housekeeping
+
+After the merged Core main gate, branch `fd-core-hidden-sdd-0901` was deleted
+and `git worktree list` no longer lists
+`C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-hidden-sdd-0901`
+as a Core worktree.
+
+The directory `fd-core-hidden-sdd-0901` remains on disk because
+`git worktree remove` failed with `Filename too long`, and guarded/direct
+`Remove-Item -Recurse` attempts were blocked by local safety policy. Treat this
+as a cleanup blocker only; it does not represent an unmerged branch or active
+Core worktree.
+
 ## Evidence Boundary
 
 This record preserves cleanup rationale only. It does not delete Core Markdown

@@ -793,6 +793,8 @@ describe("FlowDoc documentation authority policy", () => {
     expect(work?.expectedOutput).toContain("Core hidden .superpowers/sdd Markdown is now absent");
     expect(work?.riskSummary).toContain("Core hidden .superpowers/sdd cleanup is recorded");
     expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
+    expect(work?.riskSummary).toContain("fd-core-hidden-sdd-0901 on disk");
+    expect(work?.riskSummary).toContain("cleanup blocker only, not an active worktree");
 
     expect(phase).toMatchObject({
       activeRole: "documentation-synthesizer",
@@ -803,6 +805,7 @@ describe("FlowDoc documentation authority policy", () => {
     expect(phase?.verificationTarget).toContain("Core hidden .superpowers/sdd Markdown is absent");
     expect(phase?.summary).toContain("retired five hidden Core .superpowers/sdd Markdown files");
     expect(phase?.summary).toContain("without changing Core runtime behavior");
+    expect(phase?.summary).toContain("fd-core-hidden-sdd-0901 remains on disk");
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
       "capture-hidden-sdd-source-snapshot",
@@ -853,6 +856,9 @@ describe("FlowDoc documentation authority policy", () => {
     expect(retirementText).toContain("Core cleanup commit `68e7ad7180b2eb9afb0adff14bacaefcecbb4f08`");
     expect(retirementText).toContain("`git ls-files '.superpowers/*.md'` returns 0");
     expect(retirementText).toContain("tracked and visible Core Markdown counts both report 343 files");
+    expect(retirementText).toContain("`fd-core-hidden-sdd-0901` remains on disk");
+    expect(retirementText).toContain("`git worktree list` no longer lists");
+    expect(retirementText).toContain("cleanup blocker only");
     expect(retirementText).toContain("does not claim that the 5B-1 V3 runtime area, Live Draft, Text Block, Core, Editor, Backend, or FlowDoc product is ready");
 
     expect(evidence.get(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID)).toMatchObject({
@@ -869,6 +875,9 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("2 tests");
     expect(verificationSummary).toContain("461 test files and 2947 tests");
     expect(verificationSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
+    expect(verificationSummary).toContain("fd-core-hidden-sdd-0901 remains on disk");
+    expect(verificationSummary).toContain("git worktree list no longer lists");
+    expect(verificationSummary).toContain("Remove-Item -Recurse attempts were blocked");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });
