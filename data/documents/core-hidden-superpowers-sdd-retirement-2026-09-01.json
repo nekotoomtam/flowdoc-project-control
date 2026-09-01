@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-core-hidden-superpowers-sdd-retirement-2026-09-01",
+  "title": "Core Hidden Superpowers SDD Retirement - 2026-09-01",
+  "path": "docs/domains/core-hidden-superpowers-sdd-retirement-2026-09-01.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Project Control retained-value and discard-rationale record for retiring hidden Core .superpowers/sdd Markdown.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": "git ls-files '.superpowers/*.md'"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "6c1b53796802772467bf715b83764ac1ef613e52",
+      "pathOrContractId": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective"
+    }
+  ]
+}
