@@ -45,6 +45,29 @@ These files survive cleanup as Core-local implementation context because Core
 tests and README references still use them as planning, metadata-contract,
 readiness-policy, placeholder-policy, vocabulary, and close-audit anchors.
 
+## Cleanup Result
+
+Core cleanup commit `b4992a70091d9e829b7c9f023ac7f0d90250e827` adds
+Authority Boundary wording to the six Render API contract documents and adds a
+Core documentation authority guard in `tests/coreDocumentationAuthority.test.ts`.
+
+Core tracked and visible Markdown counts remain 339 files. An Authority /
+Project Control signal scan reports 21 matches and 318 tracked Core Markdown
+files without Authority Boundary or Project Control signal. This lane demotes
+the surviving Render API contract docs into bounded Core-local context; it
+does not delete them.
+
+## Cleanup Housekeeping
+
+Post-merge cleanup leaves
+`C:/Users/nekot/Documents/GitHub/fd-core-render-contract-0901` on disk. Git no
+longer lists it as a Core worktree and branch
+`fd-core-render-contract-0901` was deleted, but `git worktree remove` failed
+with `Filename too long`.
+
+The folder is a cleanup blocker only. It is not an active worktree or unmerged
+branch.
+
 ## Retained Value
 
 | Source | Retained value |
@@ -76,6 +99,11 @@ above.
 The cleanup lane should add Core guards that require Authority Boundary wording
 in each surviving Render API contract document and then record evidence after
 Core verification passes.
+
+Verification completed after Core commit
+`b4992a70091d9e829b7c9f023ac7f0d90250e827`: focused Core documentation
+authority guard, Core docs check, Core full check, and merged-main Core checks
+passed.
 
 This record preserves cleanup rationale only. It does not edit Core runtime
 behavior by itself and does not promote Core, Backend, Editor, compatibility,

@@ -1,0 +1,70 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary",
+  "title": "Core Render API Contract Boundary Checklist",
+  "items": [
+    {
+      "id": "capture-core-render-api-contract-source-snapshot",
+      "label": "Capture the Core Render API contract source snapshot and owner.",
+      "state": "passed",
+      "evidenceTarget": "Core source commit, Core Render API contract Markdown paths, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before demotion.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core and repo-project-control, source Core commit 360ea384ba609dcceab502a5ea1ef55daf2b151a, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary, checklist target checklist-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary, and evidence target evidence-core-render-api-contract-boundary-2026-09-01."
+    },
+    {
+      "id": "record-render-api-contract-retained-value",
+      "label": "Record retained value before Core demotion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records retained value and boundary rationale for the six Core Render API contract docs before Core edits.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "Project Control commit c64d6bf733ec7ea8e4707b35635732537b83797e added docs/domains/core-render-api-contract-boundary-2026-09-01.md before Core commit b4992a70091d9e829b7c9f023ac7f0d90250e827."
+    },
+    {
+      "id": "write-red-core-render-api-contract-boundary-guard",
+      "label": "Write failing Core guard for Render API contract boundaries.",
+      "state": "passed",
+      "evidenceTarget": "Focused Core documentation authority guard fails before Authority Boundary wording is added.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed because docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md lacked Authority Boundary wording, with expected text to contain Authority Boundary."
+    },
+    {
+      "id": "bound-surviving-render-api-contract-docs",
+      "label": "Add Authority Boundary wording to surviving Core Render API contract docs.",
+      "state": "passed",
+      "evidenceTarget": "The six Core Render API contract docs identify Core as owner, retain only Core-local implementation context, and point FlowDoc-wide status and cleanup authority back to Project Control.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "Core commit b4992a70091d9e829b7c9f023ac7f0d90250e827 added Authority Boundary sections to docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md, docs/RENDER_API_REQUEST_ENVELOPE_CONTRACT_GATE.md, docs/RENDER_READINESS_VALIDATION_POLICY_GATE.md, docs/ARTIFACT_POINTER_JOB_STATUS_PLACEHOLDER_POLICY_GATE.md, docs/RENDER_API_ERROR_BLOCKER_VOCABULARY_GATE.md, and docs/RENDER_API_CONTRACT_CLOSE_AUDIT.md without changing runtime behavior."
+    },
+    {
+      "id": "verify-core-main",
+      "label": "Verify Core worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Core focused guard, docs:check, diff check, worktree full gate, merged main focused guard, merged main docs:check, merged main full gate, and post-merge Markdown counts pass.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 in the Core worktree with 1 file and 6 tests, npm run docs:check, git diff --check, npm run check in the Core worktree with 461 test files and 2952 tests, npm run docs:check on merged Core main, npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 on merged Core main with 1 file and 6 tests, npm run check on merged Core main with 461 test files and 2952 tests, and post-merge counts showing tracked and visible Core Markdown both equal 339 files."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record Project Control evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the retained-value commit, Core boundary commit, verification, cleanup blocker, and unpromoted claims.",
+      "evidenceIds": [
+        "evidence-core-render-api-contract-boundary-2026-09-01"
+      ],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained Render API contract meanings remain bounded by Project Control doc-core-render-api-contract-boundary-2026-09-01 and surviving Core-local Authority Boundary wording. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-render-contract-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-render-contract-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch."
+    }
+  ],
+  "createdAt": "2026-09-01T07:20:00.000Z",
+  "updatedAt": "2026-09-01T07:20:00.000Z"
+}
