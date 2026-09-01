@@ -67,6 +67,13 @@ const CORE_PROJECT_DOCS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-a
 const CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID = "evidence-core-project-docs-retired-2026-09-01";
 const CORE_PROJECT_DOCS_RETIRE_COMMIT = "3edd2fe81cf5d9554187cebbe67535204b87a72a";
 const CORE_PROJECT_DOCS_RETAINED_VALUE_COMMIT = "4118b3e1be0d6df9764ae0237ba0869228b60893";
+const CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID = "doc-core-runtime-plan-boundary-2026-09-01";
+const CORE_RUNTIME_PLAN_BOUNDARY_DOC_PATH = "docs/domains/core-runtime-plan-boundary-2026-09-01.md";
+const CORE_RUNTIME_PLAN_BOUNDARY_SOURCE_COMMIT = "3edd2fe81cf5d9554187cebbe67535204b87a72a";
+const CORE_RUNTIME_PLAN_BOUNDARY_COMMIT = "2057a7458b1055785a516752e21d8edaa558388f";
+const CORE_RUNTIME_PLAN_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
+const CORE_RUNTIME_PLAN_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
+const CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID = "evidence-core-runtime-plan-doc-boundary-2026-09-01";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
@@ -998,6 +1005,88 @@ describe("FlowDoc documentation authority policy", () => {
     expect(verificationSummary).toContain("npm run docs:check");
     expect(verificationSummary).toContain("npm run check");
     expect(verificationSummary).toContain("461 test files and 2949 tests");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core runtime plan docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_RUNTIME_PLAN_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_RUNTIME_PLAN_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID,
+      CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core runtime plan docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core runtime plan docs boundary cleanup is recorded");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without deleting Core runtime plan docs");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-runtime-plan-source-snapshot",
+      "record-runtime-plan-retained-value",
+      "write-red-core-runtime-plan-boundary-guard",
+      "bound-surviving-runtime-plan-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_RUNTIME_PLAN_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core runtime plan retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_RUNTIME_PLAN_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core runtime plan docs boundary");
+    expect(boundaryText).toContain("Backend Generation Runtime Plan");
+    expect(boundaryText).toContain("Frontend Authoring Runtime Plan");
+    expect(boundaryText).toContain("Key Registry Binding Plan");
+    expect(boundaryText).toContain("Live Layout And Exact Generation Plan");
+    expect(boundaryText).toContain("survive cleanup as Core-local implementation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_RUNTIME_PLAN_BOUNDARY_COMMIT,
+      pathOrContractId: "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core runtime plan docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core runtime plan docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
     expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
   });
 });

@@ -41,6 +41,16 @@ These files survive cleanup as Core-local implementation context because Core
 tests and README references still use them as narrow contract and historical
 direction anchors.
 
+## Cleanup Result
+
+Core cleanup commit `2057a7458b1055785a516752e21d8edaa558388f` adds Authority
+Boundary wording to the four runtime plan documents and adds a Core
+documentation authority guard in `tests/coreDocumentationAuthority.test.ts`.
+
+Core tracked and visible Markdown counts remain 339 files. This lane demotes
+surviving runtime plan docs into bounded Core-local context; it does not delete
+them.
+
 ## Retained Value
 
 | Source | Retained value |
@@ -70,6 +80,11 @@ above.
 The cleanup lane should add Core guards that require Authority Boundary wording
 in each surviving runtime plan document and then record evidence after Core
 verification passes.
+
+Verification completed after Core commit
+`2057a7458b1055785a516752e21d8edaa558388f`: focused Core documentation
+authority guard, Core docs check, Core full check, and merged-main Core checks
+passed.
 
 This record preserves cleanup rationale only. It does not edit Core runtime
 behavior by itself and does not promote Core, Backend, Editor, compatibility,

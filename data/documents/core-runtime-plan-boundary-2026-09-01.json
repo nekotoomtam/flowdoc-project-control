@@ -12,6 +12,11 @@
       "repositoryId": "repo-core",
       "commit": "3edd2fe81cf5d9554187cebbe67535204b87a72a",
       "pathOrContractId": "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "2057a7458b1055785a516752e21d8edaa558388f",
+      "pathOrContractId": "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md; tests/coreDocumentationAuthority.test.ts"
     }
   ]
 }
