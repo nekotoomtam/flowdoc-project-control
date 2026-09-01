@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1215bee94b634c32a1aa1a013e6892df9f3ef9f0cb823855ae1b3838d06f1fbb",
+  "sourceDigest": "98aded2f2840dc7360bc9491feb2360934d71e04a4d0cc0400c444f1462cd1fa",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -409,7 +409,7 @@
         "doc-work-tree-operating-rules"
       ],
       "activeRole": "project-control-steward",
-      "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules that explain why product-repository Markdown drift happened, define the Markdown Authority Pre-Action Gate, route future agents through Project Control before writing Markdown, and keep broader reusable skill packaging for later phases.",
+      "expectedOutput": "Project Control commit 807ea854868b3ac35d5ac5bfdc09074345318928 records FlowDoc agent documentation authority operating rules that explain why product-repository Markdown drift happened, define the Markdown Authority Pre-Action Gate, route future agents through Project Control before writing Markdown, and keep broader reusable skill packaging for later phases.",
       "riskSummary": "This phase prevents Markdown authority drift at the guidance and record layer, but it does not create packaged Codex skill files, does not edit Core, Backend, or Editor behavior, and does not prove future agent compliance outside the Project Control guidance layer.",
       "requiredEvidence": [
         "evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"
@@ -11053,7 +11053,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "4a8cd26a3545792542803be7f1d2100c6a3b3646",
+          "commit": "807ea854868b3ac35d5ac5bfdc09074345318928",
           "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-documentation-authority-policy.md; docs/domains/flowdoc-role-catalog.md; docs/domains/agent-and-skill-operating-model.md; tests/agent-documentation-authority-operating-rules.test.ts"
         }
       ],
@@ -13234,9 +13234,9 @@
       "id": "evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "4a8cd26a3545792542803be7f1d2100c6a3b3646",
+      "commit": "807ea854868b3ac35d5ac5bfdc09074345318928",
       "pathOrContractId": "docs/domains/flowdoc-agent-documentation-authority-operating-rules.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-role-catalog.md; docs/domains/flowdoc-documentation-authority-policy.md; data/work/agent-and-skill-design.json; tests/agent-documentation-authority-operating-rules.test.ts; tests/project-roadmap-work-queue.test.ts",
-      "verificationSummary": "Project Control records the first agent-and-skill-design documentation authority operating rules phase after product-repository Markdown boundary cleanup evidence was recorded. RED evidence: npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 failed because agent-and-skill-design was not yet a child Work under flowdoc-product-development-resumption, the operating rules document did not exist, role overlays were absent, and agent entrypoints did not reference the new rules. The new document explains that drift was caused by the generic writing-plans docs/superpowers default, older product AGENTS gaps, late Project Control documentation authority policy, late and uneven guard coverage, visible-only scans missing hidden tracked Markdown, and plan/evidence/map wording drift. It defines the Markdown Authority Pre-Action Gate, states that the Project Control override wins over generic skill output paths, requires git ls-files -- '*.md' for repository-wide Markdown authority scans, and defines Documentation Authority Steward, Repo Documentation Curator, Evidence Registrar, and Documentation Cleanup Reviewer as role overlays. GREEN evidence passed npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/documentation-authority-policy.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 with 3 files and 24 tests, npm run generate, npm run check:data, and npm run check with 61 unit test files and 352 tests, build, and 6 e2e tests. This evidence does not create packaged Codex skill files, does not edit Core, Backend, or Editor behavior, and does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth.",
+      "verificationSummary": "Project Control commit 807ea854868b3ac35d5ac5bfdc09074345318928 records the first agent-and-skill-design documentation authority operating rules phase after product-repository Markdown boundary cleanup evidence was recorded. RED evidence: npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 failed because agent-and-skill-design was not yet a child Work under flowdoc-product-development-resumption, the operating rules document did not exist, role overlays were absent, and agent entrypoints did not reference the new rules. The new document explains that drift was caused by the generic writing-plans docs/superpowers default, older product AGENTS gaps, late Project Control documentation authority policy, late and uneven guard coverage, visible-only scans missing hidden tracked Markdown, and plan/evidence/map wording drift. It defines the Markdown Authority Pre-Action Gate, states that the Project Control override wins over generic skill output paths, requires git ls-files -- '*.md' for repository-wide Markdown authority scans, and defines Documentation Authority Steward, Repo Documentation Curator, Evidence Registrar, and Documentation Cleanup Reviewer as role overlays. GREEN evidence passed npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/documentation-authority-policy.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 with 3 files and 24 tests, npm run generate, npm run check:data, and npm run check with 61 unit test files and 352 tests, build, and 6 e2e tests. This evidence does not create packaged Codex skill files, does not edit Core, Backend, or Editor behavior, and does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth.",
       "verifiedAt": "2026-09-01T09:45:00.000Z"
     },
     {

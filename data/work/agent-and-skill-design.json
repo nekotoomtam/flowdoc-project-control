@@ -20,7 +20,7 @@
     "doc-work-tree-operating-rules"
   ],
   "activeRole": "project-control-steward",
-  "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules that explain why product-repository Markdown drift happened, define the Markdown Authority Pre-Action Gate, route future agents through Project Control before writing Markdown, and keep broader reusable skill packaging for later phases.",
+  "expectedOutput": "Project Control commit 807ea854868b3ac35d5ac5bfdc09074345318928 records FlowDoc agent documentation authority operating rules that explain why product-repository Markdown drift happened, define the Markdown Authority Pre-Action Gate, route future agents through Project Control before writing Markdown, and keep broader reusable skill packaging for later phases.",
   "riskSummary": "This phase prevents Markdown authority drift at the guidance and record layer, but it does not create packaged Codex skill files, does not edit Core, Backend, or Editor behavior, and does not prove future agent compliance outside the Project Control guidance layer.",
   "requiredEvidence": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
   "createdAt": "2026-08-24T00:00:00.000Z",

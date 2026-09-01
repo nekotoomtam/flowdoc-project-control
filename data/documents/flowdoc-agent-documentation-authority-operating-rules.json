@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "4a8cd26a3545792542803be7f1d2100c6a3b3646",
+      "commit": "807ea854868b3ac35d5ac5bfdc09074345318928",
       "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-documentation-authority-policy.md; docs/domains/flowdoc-role-catalog.md; docs/domains/agent-and-skill-operating-model.md; tests/agent-documentation-authority-operating-rules.test.ts"
     }
   ]
