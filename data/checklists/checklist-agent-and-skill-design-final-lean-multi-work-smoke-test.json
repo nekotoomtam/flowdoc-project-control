@@ -1,0 +1,82 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-final-lean-multi-work-smoke-test",
+  "phaseId": "phase-agent-and-skill-design-final-lean-multi-work-smoke-test",
+  "title": "Final Lean Multi-WORK Smoke Test Checklist",
+  "items": [
+    {
+      "id": "dispatch-final-lean-two-work-rooms",
+      "label": "Dispatch two final Lean Dispatch WORK rooms.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN opens two real projectless no-edit WORK tasks with distinct lane IDs, roomRunIds, handoff IDs, and Active Return Commands.",
+      "verificationNote": "PLAN opened alpha WORK task 01a061ef-080d-7842-895b-81e553d2a522 and beta WORK task 01a061ef-12a4-7612-8461-e3bf381e1ec4 under dispatch-final-lean-multi-work-smoke-2026-09-02-01 with parallelLimit 2, Work Type planning-coordination, and Active Return Command send_message_to_thread to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454."
+    },
+    {
+      "id": "receive-alpha-automatic-pass-return",
+      "label": "Receive the alpha automatic PASS return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "The alpha WORK room pushes its compact PASS Terminal Handoff back to PLAN without user copy/paste.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-alpha-pass-smoke-2026-09-02-01 from alpha through send_message_to_thread and assigned it completionQueue arrivalSequence 1."
+    },
+    {
+      "id": "receive-beta-initial-needs-revision-return",
+      "label": "Receive the beta intentional needs-revision return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "The beta WORK room pushes an intentional incomplete first handoff to PLAN so PLAN can test acceptanceGate needs-revision handling.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01 from beta through send_message_to_thread and assigned it completionQueue arrivalSequence 2. The handoff intentionally omitted tests/checks run and requested needs-revision."
+    },
+    {
+      "id": "send-beta-same-room-revision-packet",
+      "label": "Send a Revision Packet back to the same beta room.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN sends the exact missing acceptanceGate field back to the original beta WORK task without opening a replacement room.",
+      "verificationNote": "PLAN sent Revision Packet revision-final-lean-beta-revision-smoke-2026-09-02-01 to beta task 01a061ef-12a4-7612-8461-e3bf381e1ec4, preserving the original lane boundary and naming the missing tests/checks run field."
+    },
+    {
+      "id": "receive-beta-revised-automatic-pass-return",
+      "label": "Receive the beta revised automatic PASS return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "The same beta WORK room receives the Revision Packet and pushes a revised compact PASS Terminal Handoff back to PLAN.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01-r1 from the same beta task through send_message_to_thread. The revised handoff included revisionAttempt 1, Revision Packet ID, tests/checks run, locator, no file changes, no commit, risks/unknowns, and Contract Change Request none."
+    },
+    {
+      "id": "run-final-lean-acceptance-gate",
+      "label": "Run the final Lean smoke acceptance gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN accepts only the local no-edit orchestration result after checking compact handoff fields and same-room revision behavior.",
+      "verificationNote": "PLAN accepted alpha as automatic PASS, classified beta first return as needs-revision because tests/checks run was missing, sent a Revision Packet to the same WORK room, then accepted beta revised PASS after all compact handoff fields were present."
+    },
+    {
+      "id": "preserve-final-smoke-boundaries",
+      "label": "Preserve final smoke boundaries.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "The final smoke does not promote product repository behavior, map truth, release readiness, or future-environment guarantees.",
+      "verificationNote": "Both WORK rooms were projectless no-edit planning-coordination lanes. The result supports only local Lean Dispatch return, queue, and same-room revision behavior; it does not prove product WORK edits, multi-product-WORK close-together return, queued clientThreadId dispatch, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, readiness, or release status."
+    },
+    {
+      "id": "record-final-lean-smoke-evidence",
+      "label": "Record Project Control final Lean smoke evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, and Work required evidence for the final Lean Dispatch smoke result.",
+      "verificationNote": "Registered phase-agent-and-skill-design-final-lean-multi-work-smoke-test, checklist-agent-and-skill-design-final-lean-multi-work-smoke-test, evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02, and updated agent-and-skill-design phaseIds, requiredEvidence, summary, and riskSummary."
+    },
+    {
+      "id": "verify-final-lean-smoke-evidence",
+      "label": "Verify the final Lean smoke evidence gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"],
+      "evidenceTarget": "Focused final Lean smoke guard, generated read model, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-final-lean-multi-work-smoke-evidence.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T18:55:00.000+07:00",
+  "updatedAt": "2026-09-02T18:55:00.000+07:00"
+}

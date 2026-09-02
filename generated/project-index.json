@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1c7255d0a42b4a305754fe515044b5fc5886b116e724a28aadf7d543ca675f0e",
+  "sourceDigest": "31c9766fd760203f1a06a71aee2e344490e80d4a5e40606f3cecd67fc200a330",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -403,7 +403,7 @@
         "repo-project-control"
       ],
       "workState": "in-progress",
-      "summary": "Define FlowDoc agent roles, capabilities, handoffs, real PLAN and WORK room delivery flow, N WORK rooms orchestration, Work Type routing, Context Capsules, Context Acknowledgement, mandatory WORK room return, automatic WORK-to-PLAN return, active WORK-to-PLAN return push, PLAN-owned reporting, Revision Packets, Lean Dispatch resource-budget rules, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, delivery round boundaries, PLAN room dispatch/review rules, completionQueue ordering, manual recovery boundaries, lean token/review cost controls, and reusable skill boundaries.",
+      "summary": "Define FlowDoc agent roles, capabilities, handoffs, real PLAN and WORK room delivery flow, N WORK rooms orchestration, Work Type routing, Context Capsules, Context Acknowledgement, mandatory WORK room return, automatic WORK-to-PLAN return, active WORK-to-PLAN return push, PLAN-owned reporting, Revision Packets, Lean Dispatch resource-budget rules, final Lean Dispatch multi-WORK smoke behavior, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, delivery round boundaries, PLAN room dispatch/review rules, completionQueue ordering, same-room revision handling, manual recovery boundaries, lean token/review cost controls, and reusable skill boundaries.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -423,7 +423,7 @@
       ],
       "activeRole": "project-control-steward",
       "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules, the Delivery Operating Model for real PLAN/WORK room coordination, PLAN Room Orchestration Rules for dispatching and reviewing N WORK rooms, the Work Type Routing Model for lane classification, Context Capsule handoff, Context Acknowledgement, mandatory WORK room return, automatic WORK-to-PLAN return, active WORK-to-PLAN return push, PLAN task/chat ID, Active Return Command, liveness tracking, silent room handling, retrievable locator, PLAN-owned reporting, acceptanceGate revision decisions, Revision Packet loop, completionQueue, returnOrderPolicy, arrivalSequence, duplicate handoff handling, manual recovery fallback boundaries, Lean Dispatch resource controls including contextBudget, verificationTier, reviewTier, evidenceMode, handoffDetail, docReadPolicy, Reference Packs, compact Terminal Handoffs, escalation triggers, and skill candidate routing, and the first local flowdoc-project-control Codex skill package so future FlowDoc rooms route through Project Control before generic planning paths, while keeping broader specialized skill packaging for later phases.",
-      "riskSummary": "The first local entrypoint skill, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, and Lean Dispatch Operating Rules reduce Markdown authority, handoff, context, token, liveness, acceptance, revision, automatic return, active return push, queue ordering, evidence batching, verification-cost, and room coordination drift risk. The single-room active return smoke test proves one projectless WORK room on this local host can push a Terminal Handoff back to PLAN with mcp__codex_app.send_message_to_thread, the multi-WORK active return queue smoke test proves two read-only projectless WORK rooms can push distinct handoffs to the same PLAN task and be processed through completionQueue with arrivalSequence 1 and 2, and the product-repository read-only active return smoke test proves a worktree-created Core task can resolve from clientThreadId to a real task and push a no-op handoff back to PLAN; actual product edits remain unproven by that read-only smoke. The Backend product-edit active return smoke proves one product WORK room with actual Backend edits can push its Terminal Handoff back to PLAN and be accepted through PLAN-owned reporting. clientThreadId-only dispatch remains unsafe before PLAN resolves a monitorable task/chat locator. Local skills may not be installed or surfaced in every future environment, bounded pressure validation does not prove future agent compliance, multi-product-WORK return remains unproven, future automatic room wakeups remain unproven, product WORK rooms may still self-promote if a future packet omits PLAN-owned reporting, a PLAN room may still send an incomplete Context Capsule or over-lean packet, manual recovery may still require user-provided recovery context, a silent room may still need recovery classification, and the agent-and-skill-design work itself does not promote Core, Backend, or Editor product truth.",
+      "riskSummary": "The first local entrypoint skill, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, and Lean Dispatch Operating Rules reduce Markdown authority, handoff, context, token, liveness, acceptance, revision, automatic return, active return push, queue ordering, evidence batching, verification-cost, and room coordination drift risk. The single-room active return smoke test proves one projectless WORK room on this local host can push a Terminal Handoff back to PLAN with mcp__codex_app.send_message_to_thread, the multi-WORK active return queue smoke test proves two read-only projectless WORK rooms can push distinct handoffs to the same PLAN task and be processed through completionQueue with arrivalSequence 1 and 2, the product-repository read-only active return smoke test proves a worktree-created Core task can resolve from clientThreadId to a real task and push a no-op handoff back to PLAN, and the final Lean Dispatch multi-WORK same-room Revision Packet smoke proves two projectless no-edit lean WORK rooms can return to PLAN automatically while PLAN classifies one first return as needs-revision, sends a Revision Packet back to the same WORK room, and receives a revised PASS handoff, while actual product edits remain unproven by read-only or projectless smokes. The Backend product-edit active return smoke proves one product WORK room with actual Backend edits can push its Terminal Handoff back to PLAN and be accepted through PLAN-owned reporting. clientThreadId-only dispatch remains unsafe before PLAN resolves a monitorable task/chat locator. Local skills may not be installed or surfaced in every future environment, bounded pressure validation does not prove future agent compliance, multi-product-WORK close-together return remains unproven, future automatic room wakeups remain unproven, product WORK rooms may still self-promote if a future packet omits PLAN-owned reporting, a PLAN room may still send an incomplete Context Capsule or over-lean packet, manual recovery may still require user-provided recovery context, a silent room may still need recovery classification, and the agent-and-skill-design work itself does not promote Core, Backend, or Editor product truth.",
       "requiredEvidence": [
         "evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01",
         "evidence-flowdoc-delivery-operating-model-2026-09-01",
@@ -438,10 +438,11 @@
         "evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02",
         "evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02",
         "evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02",
+        "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02",
         "evidence-flowdoc-project-control-skill-2026-09-01"
       ],
       "createdAt": "2026-08-24T00:00:00.000Z",
-      "updatedAt": "2026-09-02T18:00:00.000+07:00",
+      "updatedAt": "2026-09-02T18:55:00.000+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-agent-and-skill-design-documentation-authority-operating-rules",
@@ -456,7 +457,8 @@
         "phase-agent-and-skill-design-return-channel-smoke-test",
         "phase-agent-and-skill-design-multi-work-queue-smoke-test",
         "phase-agent-and-skill-design-product-repo-readonly-return-smoke-test",
-        "phase-agent-and-skill-design-lean-dispatch-operating-rules"
+        "phase-agent-and-skill-design-lean-dispatch-operating-rules",
+        "phase-agent-and-skill-design-final-lean-multi-work-smoke-test"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2419,6 +2421,29 @@
       "summary": "Done: captured the root cause of product-repository Markdown drift, added a Project Control override for generic planning-skill output paths, defined the Markdown Authority Pre-Action Gate, and added documentation authority role overlays without editing product behavior or promoting map truth.",
       "createdAt": "2026-09-01T09:45:00.000Z",
       "updatedAt": "2026-09-01T09:45:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-agent-and-skill-design-final-lean-multi-work-smoke-test",
+      "workId": "agent-and-skill-design",
+      "title": "Final Lean Multi-WORK Smoke Test",
+      "phaseState": "done",
+      "order": 105,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "project-control-steward",
+      "stopConditions": [
+        "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the final Lean Dispatch smoke result.",
+        "Either WORK room does not actively push a Terminal Handoff back to the PLAN task/chat ID.",
+        "The PLAN room cannot assign returned handoffs to completionQueue arrivals before running acceptanceGate one at a time.",
+        "The beta WORK room cannot receive a Revision Packet in the same Codex task/chat or cannot push the revised Terminal Handoff back to PLAN.",
+        "The smoke result is treated as proof of product WORK implementation, multi-product-WORK close-together return, queued clientThreadId dispatch, product truth, map truth, readiness, or release status."
+      ],
+      "verificationTarget": "two projectless Lean Dispatch WORK rooms return to PLAN automatically, PLAN marks the beta first handoff needs-revision for a missing tests/checks field, sends a Revision Packet back to the same WORK room, receives a revised PASS handoff, and preserves product truth unknowns.",
+      "summary": "Done: recorded the final bounded Lean Dispatch multi-WORK smoke test. PLAN opened alpha WORK task 01a061ef-080d-7842-895b-81e553d2a522 and beta WORK task 01a061ef-12a4-7612-8461-e3bf381e1ec4 under dispatch-final-lean-multi-work-smoke-2026-09-02-01 with parallelLimit 2. Alpha returned PASS automatically to PLAN. Beta returned an intentional RISK needs-revision probe, PLAN sent Revision Packet revision-final-lean-beta-revision-smoke-2026-09-02-01 back to the same beta task, and beta returned a revised PASS handoff. The result proves only local projectless no-edit Lean Dispatch automatic return, completionQueue handling, and same-room revision loop behavior.",
+      "createdAt": "2026-09-02T18:55:00.000+07:00",
+      "updatedAt": "2026-09-02T18:55:00.000+07:00"
     },
     {
       "kind": "phase",
@@ -4892,6 +4917,106 @@
       ],
       "createdAt": "2026-09-01T09:45:00.000Z",
       "updatedAt": "2026-09-01T09:45:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-agent-and-skill-design-final-lean-multi-work-smoke-test",
+      "phaseId": "phase-agent-and-skill-design-final-lean-multi-work-smoke-test",
+      "title": "Final Lean Multi-WORK Smoke Test Checklist",
+      "items": [
+        {
+          "id": "dispatch-final-lean-two-work-rooms",
+          "label": "Dispatch two final Lean Dispatch WORK rooms.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "PLAN opens two real projectless no-edit WORK tasks with distinct lane IDs, roomRunIds, handoff IDs, and Active Return Commands.",
+          "verificationNote": "PLAN opened alpha WORK task 01a061ef-080d-7842-895b-81e553d2a522 and beta WORK task 01a061ef-12a4-7612-8461-e3bf381e1ec4 under dispatch-final-lean-multi-work-smoke-2026-09-02-01 with parallelLimit 2, Work Type planning-coordination, and Active Return Command send_message_to_thread to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454."
+        },
+        {
+          "id": "receive-alpha-automatic-pass-return",
+          "label": "Receive the alpha automatic PASS return.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "The alpha WORK room pushes its compact PASS Terminal Handoff back to PLAN without user copy/paste.",
+          "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-alpha-pass-smoke-2026-09-02-01 from alpha through send_message_to_thread and assigned it completionQueue arrivalSequence 1."
+        },
+        {
+          "id": "receive-beta-initial-needs-revision-return",
+          "label": "Receive the beta intentional needs-revision return.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "The beta WORK room pushes an intentional incomplete first handoff to PLAN so PLAN can test acceptanceGate needs-revision handling.",
+          "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01 from beta through send_message_to_thread and assigned it completionQueue arrivalSequence 2. The handoff intentionally omitted tests/checks run and requested needs-revision."
+        },
+        {
+          "id": "send-beta-same-room-revision-packet",
+          "label": "Send a Revision Packet back to the same beta room.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "PLAN sends the exact missing acceptanceGate field back to the original beta WORK task without opening a replacement room.",
+          "verificationNote": "PLAN sent Revision Packet revision-final-lean-beta-revision-smoke-2026-09-02-01 to beta task 01a061ef-12a4-7612-8461-e3bf381e1ec4, preserving the original lane boundary and naming the missing tests/checks run field."
+        },
+        {
+          "id": "receive-beta-revised-automatic-pass-return",
+          "label": "Receive the beta revised automatic PASS return.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "The same beta WORK room receives the Revision Packet and pushes a revised compact PASS Terminal Handoff back to PLAN.",
+          "verificationNote": "PLAN received WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01-r1 from the same beta task through send_message_to_thread. The revised handoff included revisionAttempt 1, Revision Packet ID, tests/checks run, locator, no file changes, no commit, risks/unknowns, and Contract Change Request none."
+        },
+        {
+          "id": "run-final-lean-acceptance-gate",
+          "label": "Run the final Lean smoke acceptance gate.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "PLAN accepts only the local no-edit orchestration result after checking compact handoff fields and same-room revision behavior.",
+          "verificationNote": "PLAN accepted alpha as automatic PASS, classified beta first return as needs-revision because tests/checks run was missing, sent a Revision Packet to the same WORK room, then accepted beta revised PASS after all compact handoff fields were present."
+        },
+        {
+          "id": "preserve-final-smoke-boundaries",
+          "label": "Preserve final smoke boundaries.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "The final smoke does not promote product repository behavior, map truth, release readiness, or future-environment guarantees.",
+          "verificationNote": "Both WORK rooms were projectless no-edit planning-coordination lanes. The result supports only local Lean Dispatch return, queue, and same-room revision behavior; it does not prove product WORK edits, multi-product-WORK close-together return, queued clientThreadId dispatch, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, readiness, or release status."
+        },
+        {
+          "id": "record-final-lean-smoke-evidence",
+          "label": "Record Project Control final Lean smoke evidence.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, and Work required evidence for the final Lean Dispatch smoke result.",
+          "verificationNote": "Registered phase-agent-and-skill-design-final-lean-multi-work-smoke-test, checklist-agent-and-skill-design-final-lean-multi-work-smoke-test, evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02, and updated agent-and-skill-design phaseIds, requiredEvidence, summary, and riskSummary."
+        },
+        {
+          "id": "verify-final-lean-smoke-evidence",
+          "label": "Verify the final Lean smoke evidence gate.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02"
+          ],
+          "evidenceTarget": "Focused final Lean smoke guard, generated read model, data validation, and full Project Control gate pass.",
+          "verificationNote": "GREEN evidence target: tests/flowdoc-final-lean-multi-work-smoke-evidence.test.ts, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-02T18:55:00.000+07:00",
+      "updatedAt": "2026-09-02T18:55:00.000+07:00"
     },
     {
       "kind": "checklist",
@@ -15438,6 +15563,16 @@
       "pathOrContractId": "docs/domains/flowdoc-documentation-authority-policy.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
       "verificationSummary": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the FlowDoc documentation authority policy foundation, the policy document record, cleanup Work, Phase, Checklist, Project Control node document link, agent onboarding pointer, copy-ready global guidance pointer, agent operating model boundary, roadmap guard, generated read model update, and focused documentation authority policy test. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 first failed before the Work record existed, then failed again before requiredEvidence and this Evidence record existed. GREEN evidence before evidence registration passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 test, npx vitest run tests/project-roadmap-work-queue.test.ts tests/documentation-authority-policy.test.ts --maxWorkers=1 with 2 files and 3 tests, npm run generate, and npm run check:data. This evidence is work-scoped with nodeIds [] and does not delete product-repository Markdown, does not clean Core, Backend, or Editor source documents, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth.",
       "verifiedAt": "2026-08-31T14:30:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-final-lean-multi-work-smoke-test-2026-09-02",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "4782d1b1a7b634a46de5885306bb8415ef94d45f",
+      "pathOrContractId": "PLAN task/chat ID 01a05e34-5b16-7493-ac31-9baf8ba71454; dispatchSetId dispatch-final-lean-multi-work-smoke-2026-09-02-01; parallelLimit 2; alpha WORK task/chat ID 01a061ef-080d-7842-895b-81e553d2a522; beta WORK task/chat ID 01a061ef-12a4-7612-8461-e3bf381e1ec4; handoff-final-lean-alpha-pass-smoke-2026-09-02-01; handoff-final-lean-beta-revision-smoke-2026-09-02-01; revision-final-lean-beta-revision-smoke-2026-09-02-01; handoff-final-lean-beta-revision-smoke-2026-09-02-01-r1; completionQueue arrivalSequence 1 and arrivalSequence 2; tests/flowdoc-final-lean-multi-work-smoke-evidence.test.ts; npm run check",
+      "verificationSummary": "The 2026-09-02 final Lean Dispatch multi-WORK smoke opened two projectless no-edit WORK tasks under dispatch-final-lean-multi-work-smoke-2026-09-02-01 with parallelLimit 2. Alpha WORK task 01a061ef-080d-7842-895b-81e553d2a522 pushed WORK RETURN EVENT handoff-final-lean-alpha-pass-smoke-2026-09-02-01 back to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454 through send_message_to_thread and was queued as arrivalSequence 1. Beta WORK task 01a061ef-12a4-7612-8461-e3bf381e1ec4 pushed WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01 back to the same PLAN task through send_message_to_thread and was queued as arrivalSequence 2. PLAN classified beta's first handoff as needs-revision because it intentionally omitted tests/checks run, then sent Revision Packet revision-final-lean-beta-revision-smoke-2026-09-02-01 back to the same beta task. The same beta task pushed revised WORK RETURN EVENT handoff-final-lean-beta-revision-smoke-2026-09-02-01-r1 back to PLAN with revisionAttempt 1 and all compact handoff fields, including tests/checks run. Both WORK tasks completed idle. This evidence supports only local projectless no-edit Lean Dispatch orchestration: automatic return, completionQueue handling, acceptanceGate needs-revision classification, and same-room Revision Packet return. It does not prove product WORK implementation with edits, multi-product-WORK close-together return, queued clientThreadId dispatch, every Codex environment, future automatic room wakeups, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, readiness, release status, or product evidence promotion. This evidence does not edit Core, Backend, or Editor behavior.",
+      "verifiedAt": "2026-09-02T18:55:00.000+07:00"
     },
     {
       "kind": "evidence",
