@@ -35,7 +35,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "5f72a209a0a35f4cb4ebe92056fee835315275eb",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
       "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
     }
   ]
