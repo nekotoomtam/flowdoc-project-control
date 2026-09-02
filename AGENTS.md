@@ -42,21 +42,36 @@ dispatch more than one WORK room, read the PLAN Room Orchestration Rules before
 opening or accepting rooms. Read the FlowDoc Work Type Routing Model before a
 PLAN room assigns lane Work Types, writes Context Capsules, expects Context
 Acknowledgement, chooses skill candidates, or accepts a returned lane by Work
-Type. A WORK room has mandatory WORK room return and liveness obligations:
-silence, lost room state, or a missing terminal return of PASS / FAIL /
-BLOCKER / RISK / UNKNOWN must not be accepted. Keep this room distinction
-explicit: PLAN room coordinates; WORK room is a real separate Codex task/chat
-that executes one approved lane.
+Type. Automatic WORK-to-PLAN return is mandatory: the Return Channel must send
+the terminal handoff back to PLAN or a PLAN-owned monitor without requiring
+`ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
+Terminal Handoffs. A manual recovery fallback may use a task ID, thread ID,
+worktree, branch, or handoff locator only to recover or classify a missed
+return; it must be recorded as `manual-recovered` or `return-channel-failed`
+and does not satisfy automatic return. A WORK room has
+mandatory WORK room return and liveness obligations: silence, lost room state,
+or a missing terminal return of PASS / FAIL / BLOCKER / RISK / UNKNOWN must
+not be accepted. Keep this room distinction explicit: PLAN room coordinates;
+WORK room is a real separate Codex task/chat that executes one approved lane.
+
+PLAN rooms must be able to hold multiple active WORK rooms. The Room Run
+Registry must record each active room, `completionQueue` must accept returns
+that arrive close together, `returnOrderPolicy` and `arrivalSequence` must
+preserve processing order, duplicate handoff returns must be idempotent, and
+PLAN must process one queued handoff at a time through `acceptanceGate`.
 
 PLAN-owned reporting keeps product WORK output from self-promoting into Project
 Control truth. Core, Backend, and Editor WORK rooms return evidence candidate
 handoffs and must not self-promote Project Control truth, map truth, accepted
-lane status, or round status. PLAN receives or pulls the handoff, stages it in
-`handoffInbox`, runs `acceptanceGate`, and writes Project Control records
-itself or delegates that reporting after acceptance. If acceptance returns
-`needs-revision`, PLAN sends a Revision Packet back to the same WORK room when
-the original retrievable locator is usable; the packet preserves the original
-lane boundary and names any Contract Change Request requirement.
+lane status, or round status. PLAN receives the handoff through the mandatory
+automatic Return Channel, stages it in `handoffInbox`, runs `acceptanceGate`,
+and writes Project Control records itself or delegates that reporting after
+acceptance. PLAN may pull by retrievable locator only to recover or classify a
+room whose Return Channel failed; that recovery must not hide the automatic
+return gap. If acceptance returns `needs-revision`, PLAN sends a Revision
+Packet back to the same WORK room when the original retrievable locator is
+usable; the packet preserves the original lane boundary and names any Contract
+Change Request requirement.
 
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or

@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-automatic-work-return-contract",
+  "phaseId": "phase-agent-and-skill-design-automatic-work-return-contract",
+  "title": "Automatic WORK-to-PLAN Return Contract Checklist",
+  "items": [
+    {
+      "id": "capture-automatic-return-context",
+      "label": "Capture the automatic return and multi-WORK context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-automatic-work-return-contract, checklist target checklist-agent-and-skill-design-automatic-work-return-contract, and evidence target evidence-flowdoc-automatic-work-return-contract-2026-09-02."
+    },
+    {
+      "id": "write-red-automatic-return-guard",
+      "label": "Write a failing Project Control guard for automatic return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before the phase, evidence, automatic return wording, manual recovery boundary, and queue ordering wording exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-automatic-work-return-contract.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include phase-agent-and-skill-design-automatic-work-return-contract or evidence-flowdoc-automatic-work-return-contract-2026-09-02."
+    },
+    {
+      "id": "define-automatic-work-to-plan-return",
+      "label": "Define automatic WORK-to-PLAN return as mandatory.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Agent entrypoints and delivery contracts state that a WORK room must send its Terminal Handoff to PLAN without user copy/paste.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, docs/domains/flowdoc-delivery-operating-model.md, docs/domains/flowdoc-plan-room-orchestration-rules.md, docs/domains/flowdoc-work-type-routing-model.md, docs/domains/agent-and-skill-operating-model.md, and docs/domains/flowdoc-first-delivery-round-plan.md state that Automatic WORK-to-PLAN return is mandatory."
+    },
+    {
+      "id": "define-multi-work-completion-queue-ordering",
+      "label": "Define multi-WORK completion queue ordering.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "The orchestration contract supports multiple active WORK rooms and close-together returns through completionQueue ordering.",
+      "verificationNote": "The routing and orchestration documents require multiple active WORK rooms to use completionQueue, returnOrderPolicy, arrivalSequence, duplicate handoff handling, and one queued handoff at a time through acceptanceGate."
+    },
+    {
+      "id": "define-manual-recovery-boundary",
+      "label": "Define manual recovery as recovery only.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Manual pull or user-bridged handoff is recorded as manual-recovered or return-channel-failed and does not satisfy automatic return.",
+      "verificationNote": "The delivery, routing, orchestration, first-round, global guidance, and agent entrypoint documents state that manual recovery fallback can preserve work but does not satisfy automatic return."
+    },
+    {
+      "id": "route-automatic-return-to-entrypoints",
+      "label": "Route the automatic return contract through agent entrypoints.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Future FlowDoc rooms read the automatic return and multi-WORK queue rules before opening or accepting real WORK rooms.",
+      "verificationNote": "AGENTS.md and docs/domains/flowdoc-global-codex-guidance.md now route future broad delivery, opened rooms, handoffs, and multi-room dispatches through the mandatory automatic return and completionQueue contract."
+    },
+    {
+      "id": "record-automatic-return-contract-records",
+      "label": "Record Project Control records for automatic return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Project Control records Work context update, Phase, Checklist, Evidence, and document repository refs without product truth or map truth promotion.",
+      "verificationNote": "Registered phase-agent-and-skill-design-automatic-work-return-contract, checklist-agent-and-skill-design-automatic-work-return-contract, evidence-flowdoc-automatic-work-return-contract-2026-09-02, updated related document repository refs, and regenerated the Project Control read model."
+    },
+    {
+      "id": "verify-automatic-return-contract-gate",
+      "label": "Verify the automatic return contract gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-automatic-work-return-contract-2026-09-02"],
+      "evidenceTarget": "Focused automatic return guard, related routing/orchestration guards, generation, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-automatic-work-return-contract.test.ts, related PLAN/WORK routing guards, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T12:05:00.000+07:00",
+  "updatedAt": "2026-09-02T12:05:00.000+07:00"
+}

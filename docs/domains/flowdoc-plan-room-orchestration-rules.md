@@ -30,11 +30,13 @@ readiness, release readiness, FlowDoc product truth, or map truth.
 - Known risks: a WORK room may finish without pushing its handoff back to the
   PLAN room, multiple WORK rooms may finish before PLAN can process them,
   `N WORK rooms` may be set higher than the PLAN room can track, room IDs may
-  be missing, a silent room may disappear without a terminal return, and
-  partial handoffs may be mistaken for accepted evidence
+  be missing, a silent room may disappear without a terminal return, partial
+  handoffs may be mistaken for accepted evidence, and manual recovery may be
+  mistaken for a scalable return channel
 - Unknown state: this document does not prove that every Codex environment can
-  automatically wake a PLAN room from a completed WORK room; until that is
-  proven, PLAN rooms must use a pull/review step
+  automatically wake a PLAN room from a completed WORK room. Until that is
+  proven by a future run, automatic WORK-to-PLAN return remains a required
+  capability gap, and manual pull review remains recovery only.
 
 ## Relationship To Delivery Model
 
@@ -69,9 +71,13 @@ the PLAN room records:
   collide;
 - expected handoff size and review cost;
 - user-attention cost, including decisions that may return from more than one
-  room;
+  room, without requiring `ตูม` to copy/paste Terminal Handoffs;
 - `parallelLimit`, the maximum active WORK rooms the PLAN room can actively
-  track for this dispatch set.
+  track for this dispatch set;
+- automatic Return Channel capacity for every active room;
+- `completionQueue` capacity for close-together or simultaneous returns;
+- `returnOrderPolicy` for one-at-a-time acceptance when several rooms finish
+  at once.
 
 When ownership, dependency, or evidence is unclear, set `parallelLimit` to `1`
 until the uncertainty is resolved. When lanes are independent but merge or
@@ -79,7 +85,10 @@ handoff review would collide, split them into smaller dispatch sets instead of
 opening every lane at once.
 
 No new WORK room opens unless the PLAN room records why the selected
-`parallelLimit` is safe for this dispatch set.
+`parallelLimit` is safe for this dispatch set. A dispatch set with
+`parallelLimit` greater than 1 must prove that PLAN can hold multiple active
+WORK rooms, receive their terminal returns automatically, queue every return,
+and process one queued handoff at a time.
 
 ## Dispatch Set
 
@@ -97,10 +106,19 @@ Each dispatch set must record:
 - reason these lanes can run now;
 - lanes intentionally held back;
 - expected fan-in point;
-- acceptance order if more than one room returns at once.
+- acceptance order if more than one room returns at once;
+- `returnOrderPolicy`;
+- expected `arrivalSequence` assignment rule;
+- duplicate handoff handling rule.
 
 The dispatch set does not prove product behavior. It only records coordination
 intent and room-management limits.
+
+Automatic WORK-to-PLAN return is mandatory for every room in the dispatch set.
+The dispatch set must not require `ตูม` to copy/paste Terminal Handoffs for
+ordinary progress. If a room can only be recovered through manual copy/paste or
+manual locator inspection, the result may preserve work as `manual-recovered`,
+but the dispatch set does not satisfy automatic return.
 
 ## Room Run Registry
 
@@ -121,14 +139,19 @@ Minimum registry fields:
 - Context Capsule reference or summary;
 - Context Acknowledgement status;
 - Return Channel;
+- Automatic Return Channel;
+- Return Event ID or pending return event state;
 - Liveness Signal;
 - `livenessDeadline`;
 - `lastHeartbeatAt`;
 - Death Signal or `deathSignal`;
 - status: `queued`, `running`, `needs-attention`, `returned`, `accepted`,
-  `needs-revision`, `returned-silent`, `rejected`, `blocked`, or `closed`;
+  `needs-revision`, `returned-silent`, `manual-recovered`,
+  `return-channel-failed`, `rejected`, `blocked`, or `closed`;
 - last observed state and timestamp;
 - handoff ID or handoff location when returned;
+- `arrivalSequence`, when PLAN receives or recovers a terminal handoff;
+- duplicate handoff disposition;
 - next PLAN action.
 
 Until Project Control has a dedicated Room Run schema, the registry may live in
@@ -144,6 +167,12 @@ The PLAN room must know the Return Channel for the terminal return, the
 Liveness Signal that proves the room is still running or waiting, and the Death
 Signal to record when the room disappears.
 
+Automatic WORK-to-PLAN return is mandatory. The Return Channel must deliver the
+terminal handoff back to the PLAN room or a PLAN-owned monitor without requiring
+`ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
+Terminal Handoffs. A manual recovery fallback is only a recovery path for
+missed or failed Return Channels; it does not satisfy automatic return.
+
 A terminal return is required for every outcome:
 
 - PASS / FAIL / BLOCKER / RISK / UNKNOWN;
@@ -156,30 +185,38 @@ A terminal return is required for every outcome:
 - evidence candidate or reason evidence is unavailable.
 
 The Room Run Registry must record `livenessDeadline` and `lastHeartbeatAt`
-when a WORK room is opened. If the PLAN room reaches the deadline without a
-handoff, it must use the retrievable locator to pull the result. If the room is
-gone, cannot be found, or cannot produce a terminal return, record
+when a WORK room is opened. If the PLAN room reaches the deadline without an
+automatic return, it must mark the Return Channel as missed before recovery.
+PLAN may pull by retrievable locator only to recover or classify the room. If
+the room is gone, cannot be found, or cannot produce a terminal return, record
 `deathSignal`, mark the run `returned-silent`, `needs-attention`, `RISK`,
-`UNKNOWN`, or `blocked`, and choose the next PLAN action.
+`UNKNOWN`, or `blocked`, and choose the next PLAN action. If recovery finds a
+terminal handoff, record it as `manual-recovered` or
+`return-channel-failed`; that result does not satisfy automatic return and must
+not be hidden by later acceptance.
 
 If a WORK room disappears, the missing result is itself a PLAN-visible event.
 The lane must not be accepted, dependent lanes must not open from it, and the
 PLAN room must not treat silence as success.
 
-## Pull Review Rule
+## Automatic Return And Manual Recovery Rule
 
-A WORK room should return its structured handoff to the PLAN room. Current
-Codex task behavior may not always push that result back automatically.
+A WORK room must return its structured handoff to the PLAN room through the
+automatic Return Channel. Current Codex task behavior may not always push that
+result back automatically; when that happens, the dispatch set has not proven
+scalable WORK-to-PLAN return.
 
 If a WORK room does not push a final handoff back to the PLAN room, the PLAN
-room must actively pull the result by using the stored Codex task/chat ID,
-available task list, or known worktree/branch location. If the PLAN room cannot
-find the room result, mark the room run as `returned-silent`, `UNKNOWN`, or
-`RISK` and ask `ตูม` for the missing room/task reference before accepting the
-lane.
+room must mark `return-channel-failed` or another explicit missed-return state
+before using the stored Codex task/chat ID, available task list, or known
+worktree/branch location. PLAN may pull by retrievable locator only to recover
+or classify the room. If the PLAN room cannot find the room result, mark the
+room run as `returned-silent`, `UNKNOWN`, or `RISK` and ask `ตูม` for the
+missing room/task reference before accepting the lane.
 
 The PLAN room must not treat "the WORK room probably finished" as accepted
-evidence.
+evidence. It also must not treat a user-bridged or manually copied Terminal
+Handoff as proof of automatic return.
 
 ## Handoff Inbox
 
@@ -202,6 +239,10 @@ Each inbox item must keep the original handoff bounded to:
 - product states that remain unknown;
 - Contract Change Request, if needed;
 - PR Summary Draft.
+- Return Event ID, handoff ID, or room run ID for duplicate handoff detection;
+- `arrivalSequence`;
+- automatic return status: `automatic-returned`, `manual-recovered`, or
+  `return-channel-failed`.
 
 The inbox is not acceptance. It is only the staging area before PLAN review.
 
@@ -210,10 +251,15 @@ The inbox is not acceptance. It is only the staging area before PLAN review.
 If multiple WORK rooms finish before the PLAN room processes them, enqueue
 every returned handoff in `completionQueue`.
 
-The PLAN room processes one queued handoff at a time. Process blockers and
-Contract Change Requests before ordinary PASS handoffs. For handoffs with the
-same priority, use the dispatch set's recorded acceptance order or lane ID
-order.
+`completionQueue` is mandatory for dispatch sets with multiple active WORK
+rooms. PLAN assigns an `arrivalSequence` to every returned or recovered
+handoff, keeps duplicate handoff returns idempotent by handoff ID, Return Event
+ID, or room run ID, and then applies the dispatch set's `returnOrderPolicy`.
+
+The PLAN room processes one queued handoff at a time. Process BLOCKER, FAIL,
+Contract Change Request, then ordinary PASS handoffs. For handoffs with the
+same priority, use the dispatch set's recorded acceptance order, then
+`arrivalSequence`, then lane ID order.
 
 The PLAN room must not merge, register Evidence, promote truth, or open
 dependent lanes from a handoff until that handoff passes `acceptanceGate`.
@@ -228,6 +274,8 @@ A returned handoff can be accepted only when it includes:
 - the expected lane ID and owner repository;
 - the expected Work Type and completed Context Acknowledgement;
 - a retrievable locator from the Room Run Registry;
+- automatic Return Channel evidence, or an explicit `manual-recovered` /
+  `return-channel-failed` state that is recorded as a scaling failure;
 - terminal return status, or an explicit silent-room state that keeps the lane
   unaccepted;
 - exact commit, file, test, or contract references for the owning repository;
@@ -253,6 +301,9 @@ the Contract Change Request before accepting any dependent handoff.
 A silent room or missing terminal return must not be accepted. Treat it as a
 PLAN-visible liveness failure and decide whether to pull again, ask `ตูม` for a
 room reference, reopen the lane, shrink the dispatch set, or block the round.
+PLAN must not open dependent lanes from a manual-recovered handoff until PLAN
+records the automatic-return gap and decides whether the dispatch set remains
+safe.
 
 ## PLAN-Owned Reporting
 
@@ -260,12 +311,14 @@ Product WORK rooms return evidence candidate handoffs. They must not
 self-promote their own result into Project Control truth, map truth, accepted
 lane status, or round status.
 
-PLAN-owned reporting means the PLAN room receives the WORK handoff, puts it in
-`handoffInbox`, runs `acceptanceGate`, decides `accepted`, `needs-revision`,
-`rejected`, `blocked`, `RISK`, or `UNKNOWN`, and only then writes or delegates
-Project Control reporting. A product WORK room may request an Evidence record,
-but PLAN or a Project Control records lane writes Project Control records after
-acceptance.
+PLAN-owned reporting means the PLAN room receives the WORK handoff through the
+mandatory automatic Return Channel, puts it in `handoffInbox`, runs
+`acceptanceGate`, decides `accepted`, `needs-revision`, `rejected`, `blocked`,
+`RISK`, or `UNKNOWN`, and only then writes or delegates Project Control
+reporting. A product WORK room may request an Evidence record, but PLAN or a
+Project Control records lane writes Project Control records after acceptance.
+Manual recovery fallback can preserve a lane result, but it does not satisfy
+automatic return.
 
 This keeps Core, Backend, and Editor WORK rooms focused on their owner
 repository behavior while the PLAN room carries cross-repository context,
@@ -328,12 +381,15 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
 6. Ask `ตูม` to approve the dispatch set or approve a revised smaller set.
 7. Open or instruct opening real WORK rooms with exact Kickoff Packets that
    include Work Type, Context Capsule, expected Context Acknowledgement,
-   Return Channel, Liveness Signal, and Death Signal.
+   Automatic Return Channel, Return Event ID or handoff ID expectation,
+   Liveness Signal, and Death Signal.
 8. Record each room in the Room Run Registry with a retrievable locator,
-   livenessDeadline, and lastHeartbeatAt.
-9. Wait for, read, or pull returned handoffs; treat missing terminal return as
-   a liveness event, not as success.
-10. Put returned handoffs into `handoffInbox` and `completionQueue`.
+   livenessDeadline, lastHeartbeatAt, and return-channel state.
+9. Wait for automatic returned handoffs. If a Return Channel misses its
+   deadline, record `return-channel-failed` before any manual recovery
+   fallback.
+10. Put returned or recovered handoffs into `handoffInbox` and
+    `completionQueue` with `arrivalSequence`.
 11. Run `acceptanceGate` one handoff at a time.
 12. Send Revision Packets to same WORK rooms for `needs-revision` results when
     the original locator is still usable, or record the fallback state when it
@@ -367,10 +423,14 @@ That acceptance is bounded to additive Core evidence for
 `createVNextPublishedStructurePdfBoundaryPlanV1`. It does not prove Backend or
 Editor adoption, gateway behavior, API key exposure, product database
 persistence, artifact storage, PDF bytes, renderer execution, release
-readiness, frontend readiness, FlowDoc product truth, or map truth. The next
-dispatch should choose Backend and/or Editor owner lanes only after recording
-the dispatch set, dependencies, `parallelLimit`, Room Run Registry entries,
-Return Channel, Liveness Signal, Death Signal, and acceptance order.
+readiness, frontend readiness, FlowDoc product truth, or map truth. The first
+Core WORK-room trial did not satisfy automatic return; it is a
+`manual-recovered` lane acceptance and does not prove automatic WORK-to-PLAN
+return. The next dispatch should choose Backend and/or Editor owner lanes only
+after recording the dispatch set, dependencies, `parallelLimit`, Room Run
+Registry entries, Automatic Return Channel, Return Event ID or handoff ID
+expectation, Liveness Signal, Death Signal, `returnOrderPolicy`,
+`arrivalSequence`, and acceptance order.
 
 The remaining first-delivery lanes should be dispatched only after the PLAN
 room records a dispatch set and `parallelLimit` against their dependencies.

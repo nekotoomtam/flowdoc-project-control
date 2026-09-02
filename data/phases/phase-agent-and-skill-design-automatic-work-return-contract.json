@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-automatic-work-return-contract",
+  "workId": "agent-and-skill-design",
+  "title": "Automatic WORK-to-PLAN Return Contract",
+  "phaseState": "done",
+  "order": 80,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "A PLAN room treats user copy/paste, manual locator pull, or manual recovery as satisfying automatic WORK-to-PLAN return.",
+    "A WORK room lacks a direct Return Channel, Return Event ID or handoff ID, retrievable locator, Liveness Signal, or Death Signal before dispatch.",
+    "A dispatch set with multiple active WORK rooms lacks completionQueue, returnOrderPolicy, arrivalSequence, duplicate handoff handling, or one-at-a-time acceptanceGate processing.",
+    "The phase edits Core, Backend, or Editor product behavior or promotes FlowDoc product truth or map truth."
+  ],
+  "verificationTarget": "automatic WORK-to-PLAN return is required in AGENTS.md, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, Agent and Skill Operating Model, and the First Delivery Round Plan; manual recovery fallback is bounded as manual-recovered or return-channel-failed and does not satisfy automatic return; multi-WORK completionQueue ordering is defined with returnOrderPolicy, arrivalSequence, duplicate handoff handling, and one queued handoff at a time.",
+  "summary": "Done: recorded that real WORK rooms must return Terminal Handoffs to PLAN through an automatic Return Channel, that manual recovery preserves work but does not satisfy automatic return, and that PLAN must handle multiple active WORK rooms through completionQueue, returnOrderPolicy, arrivalSequence, duplicate handoff handling, and one-at-a-time acceptanceGate processing.",
+  "createdAt": "2026-09-02T12:05:00.000+07:00",
+  "updatedAt": "2026-09-02T12:05:00.000+07:00"
+}

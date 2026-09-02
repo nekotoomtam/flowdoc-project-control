@@ -57,7 +57,8 @@ Multi-room delivery planning now uses
 `docs/domains/flowdoc-plan-room-orchestration-rules.md` as the Project Control
 contract for PLAN Room Orchestration Rules. A PLAN room must use those rules
 before choosing `N WORK rooms`, setting `parallelLimit`, opening a dispatch
-set, tracking Room Run Registry entries, pulling missing handoffs, processing
+set, tracking Room Run Registry entries, requiring automatic WORK-to-PLAN
+return, using manual recovery fallback for missed returns, processing
 `handoffInbox` and `completionQueue`, or accepting returned lane results.
 
 Work-type delivery routing now uses
@@ -69,6 +70,17 @@ mandatory WORK room return, liveness tracking, silent room handling, and
 terminal return status of PASS / FAIL / BLOCKER / RISK / UNKNOWN so the PLAN
 room can continue without guessing when a room fails, blocks, or disappears.
 
+Automatic WORK-to-PLAN return is mandatory. A WORK room's Return Channel must
+send the Terminal Handoff to PLAN or a PLAN-owned monitor without requiring
+`ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
+Terminal Handoffs. A manual recovery fallback may preserve work after a missed
+Return Channel, but it must be recorded as
+`manual-recovered` or `return-channel-failed` and does not satisfy automatic
+return. PLAN must be able to hold multiple active WORK rooms, enqueue
+close-together returns in `completionQueue`, preserve `returnOrderPolicy` and
+`arrivalSequence`, treat a duplicate handoff idempotently, and process one
+queued handoff at a time through `acceptanceGate`.
+
 A PLAN room coordinates one or more delivery rounds. A WORK room is a real
 separate Codex task/chat visible to the user and executes exactly one approved
 lane. It is not the same thing as an internal subagent. WORK rooms must not
@@ -79,9 +91,12 @@ Contract Change Request to the PLAN room when scope changes are needed.
 PLAN-owned reporting keeps Project Control truth separate from product WORK.
 Product WORK rooms return evidence candidate handoffs and must not self-promote
 their own result into Project Control truth, map truth, accepted lane status,
-or round status. PLAN receives or pulls the handoff, stages it in
-`handoffInbox`, runs `acceptanceGate`, and then writes Project Control records
-itself or delegates that reporting to a Project Control records lane.
+or round status. PLAN receives the handoff through the mandatory automatic
+Return Channel, stages it in `handoffInbox`, runs `acceptanceGate`, and then
+writes Project Control records itself or delegates that reporting to a Project
+Control records lane. PLAN may pull by retrievable locator only to recover or
+classify a failed Return Channel; that manual recovery fallback does not
+satisfy automatic return.
 
 When returned work is incomplete but still inside the original lane, PLAN marks
 the room `needs-revision` and sends a Revision Packet back to the same WORK

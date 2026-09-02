@@ -48,6 +48,7 @@ push. PLAN treated the user-provided return as a `handoffInbox` candidate and
 used the retrievable locator to pull and verify it before acceptance.
 
 - Handoff status: PASS
+- Return channel status: `manual-recovered`
 - Lane ID: `lane-core-document-pdf-boundary`
 - Work Type: `product-implementation`
 - Owner repository: `repo-core`
@@ -125,6 +126,13 @@ Core WORK room handoff has now been accepted by PLAN for
 The acceptance is bounded to additive Core evidence. It does not promote
 FlowDoc product truth or map truth, and it does not prove Backend or Editor
 adoption.
+
+This acceptance does not prove automatic WORK-to-PLAN return. The WORK room
+did not send its Terminal Handoff back to PLAN without a user bridge, so this
+room run is recorded as `manual-recovered` for product evidence only. It must
+not be treated as proof that a future PLAN room can hold multiple active WORK
+rooms, receive close-together returns, or process `completionQueue` without
+additional automatic Return Channel evidence.
 
 `completionQueue` status: no other returned WORK handoff was queued in this
 acceptance pass.

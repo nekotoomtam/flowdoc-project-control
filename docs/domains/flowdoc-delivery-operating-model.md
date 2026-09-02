@@ -99,9 +99,11 @@ room may open or coordinate more than one real WORK room.
 
 The PLAN Room Orchestration Rules define how the PLAN room chooses
 `N WORK rooms`, records `parallelLimit`, builds `laneDependencyGraph`, creates
-a dispatch set, tracks Room Run Registry entries, pulls missing handoffs,
-stages returned work in `handoffInbox`, processes `completionQueue`, and runs
-`acceptanceGate` before accepting lane output or opening dependent lanes.
+a dispatch set, tracks Room Run Registry entries, requires automatic
+WORK-to-PLAN return, uses manual recovery fallback for missed returns, stages
+returned work in `handoffInbox`, processes `completionQueue` with
+`returnOrderPolicy` and `arrivalSequence`, and runs `acceptanceGate` before
+accepting lane output or opening dependent lanes.
 
 Those rules extend this Delivery Operating Model. They do not open WORK rooms
 by themselves and do not prove product behavior or map truth.
@@ -112,6 +114,29 @@ lane cards, writing a lane Context Capsule, requiring Context Acknowledgement,
 choosing reusable skill candidates, or accepting a returned handoff by Work
 Type. Work Type routing extends the Delivery Operating Model without creating
 packaged Codex skills or product evidence by itself.
+
+## Automatic WORK-to-PLAN Return Rule
+
+Automatic WORK-to-PLAN return is mandatory for real WORK rooms. A WORK room is
+not considered delivery-orchestration-ready unless its Kickoff Packet names a
+direct Return Channel that can deliver the terminal handoff back to the PLAN
+room or a PLAN-owned monitor without requiring `ตูม` to copy/paste Terminal
+Handoffs. It must not require `ตูม` to copy/paste Terminal Handoffs.
+
+A dispatch set is not accepted as scalable until every active WORK room has a
+direct Return Channel, a retrievable locator, a liveness signal, and a death
+signal. PLAN may use a manual recovery fallback only after the Return Channel
+misses its deadline or fails. Manual recovery can preserve product work by
+pulling the task, thread, worktree, branch, commit, or handoff locator, but it
+must be recorded as `manual-recovered` or `return-channel-failed` and does not
+satisfy automatic return.
+
+PLAN must be able to hold multiple active WORK rooms at once when
+`parallelLimit` is greater than 1. When multiple active WORK rooms return close
+together, PLAN records every terminal return in `completionQueue`, assigns an
+`arrivalSequence`, applies the dispatch set's `returnOrderPolicy`, deduplicates
+any duplicate handoff by handoff ID or room run ID, and processes one queued
+handoff at a time through `acceptanceGate`.
 
 ## First Delivery Slice
 
@@ -270,9 +295,13 @@ product truth.
 
 Product WORK rooms return evidence candidate handoffs and must not
 self-promote Project Control truth, map truth, accepted lane status, or round
-status. PLAN receives or pulls returned handoffs, stages them in
-`handoffInbox`, runs `acceptanceGate`, and writes Project Control records
-itself or delegates that reporting after acceptance.
+status. PLAN receives returned handoffs through the mandatory automatic Return
+Channel, stages them in `handoffInbox`, runs `acceptanceGate`, and writes
+Project Control records itself or delegates that reporting after acceptance.
+PLAN may pull by retrievable locator only to recover or classify a failed or
+missed Return Channel; that manual recovery fallback does not satisfy
+automatic return and must not require `ตูม` to copy/paste Terminal Handoffs for
+ordinary progress.
 
 If accepted work needs Project Control record writing, PLAN may use a Project
 Control records lane. If returned work is incomplete but still inside the

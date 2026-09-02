@@ -140,6 +140,18 @@ must use the retrievable locator to pull the result, record a Death Signal when
 the room cannot be recovered, and continue by revising, reopening, blocking, or
 asking `ตูม` for the missing room reference.
 
+Automatic WORK-to-PLAN return is mandatory for this round. Each WORK room must
+have a Return Channel that sends its Terminal Handoff to PLAN or a PLAN-owned
+monitor without requiring `ตูม` to copy/paste Terminal Handoffs. A manual
+recovery fallback may preserve work if the Return Channel fails, but PLAN must
+record `manual-recovered` or `return-channel-failed`, and that recovery does
+not satisfy automatic return.
+
+If PLAN opens multiple active WORK rooms, it must keep every room in the Room
+Run Registry, accept close-together returns into `completionQueue`, assign
+`arrivalSequence`, apply `returnOrderPolicy`, treat a duplicate handoff
+idempotently, and run `acceptanceGate` on one queued handoff at a time.
+
 ## Lane Cards
 
 ### lane-project-control-round-records
@@ -440,9 +452,13 @@ Product WORK rooms for Core, Backend, and Editor must not write Project Control
 acceptance records, Project Control Evidence records, map truth, or accepted
 lane status for their own output; in short, they must not self-promote. They
 return an evidence candidate and Terminal Handoff. PLAN-owned reporting means
-this PLAN room receives or pulls that handoff, places it in `handoffInbox`,
-runs `acceptanceGate`, and writes Project Control records itself or delegates
-them to `lane-project-control-round-records` after acceptance.
+this PLAN room receives that handoff through the mandatory automatic Return
+Channel, places it in `handoffInbox`, runs `acceptanceGate`, and writes Project
+Control records itself or delegates them to `lane-project-control-round-records`
+after acceptance. PLAN may pull by retrievable locator only as a manual
+recovery fallback when a Return Channel fails; that does not satisfy automatic
+return and must not require `ตูม` to copy/paste Terminal Handoffs for ordinary
+progress.
 
 If `acceptanceGate` returns `needs-revision`, PLAN sends a Revision Packet back
 to the same WORK room when the original retrievable locator is still available.
@@ -468,6 +484,11 @@ adopted this Core boundary yet, and the acceptance does not prove gateway
 behavior, API key exposure, product database persistence, artifact storage,
 PDF bytes, renderer execution, release readiness, frontend readiness, FlowDoc
 product truth, or map truth.
+
+The first Core WORK-room trial did not satisfy automatic return. PLAN accepted
+the bounded Core product evidence as `manual-recovered` after pulling the
+available locator, but that trial does not prove automatic WORK-to-PLAN return
+and must not be used as proof that multi-WORK dispatch is scalable.
 
 Next recommended lanes: `lane-backend-gateway-database` and
 `lane-editor-structure-publish`, with `lane-integration-evidence` held back
@@ -512,6 +533,14 @@ Stop and return to the PLAN room when:
 
 This PLAN room records the first delivery round plan, lane packets, and the
 accepted Core WORK room handoff for `lane-core-document-pdf-boundary`.
+
+Automatic WORK-to-PLAN return remains a required dispatch gate for the next
+real WORK rooms. The next dispatch must not require `ตูม` to copy/paste
+Terminal Handoffs, must define a manual recovery fallback that records
+`manual-recovered` or `return-channel-failed`, and must prove that PLAN can
+hold multiple active WORK rooms by using `completionQueue`, `returnOrderPolicy`,
+`arrivalSequence`, duplicate handoff handling, and one queued handoff at a
+time.
 
 Next recommended lanes:
 

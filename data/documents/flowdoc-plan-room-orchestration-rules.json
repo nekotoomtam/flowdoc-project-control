@@ -32,6 +32,11 @@
       "repositoryId": "repo-project-control",
       "commit": "ba0d2ca7622d9053384720e014d09238c172743c",
       "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md; tests/flowdoc-first-delivery-core-boundary-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "1a1c68d57bfb9458ec55f30bd60200bd2249c072",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-automatic-work-return-contract.test.ts"
     }
   ]
 }

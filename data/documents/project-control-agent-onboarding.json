@@ -22,6 +22,11 @@
       "repositoryId": "repo-project-control",
       "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
       "pathOrContractId": "AGENTS.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "1a1c68d57bfb9458ec55f30bd60200bd2249c072",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-automatic-work-return-contract.test.ts"
     }
   ]
 }

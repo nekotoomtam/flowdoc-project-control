@@ -30,8 +30,9 @@ runtime contracts, local setup, and product evidence.
 - Known risks: future PLAN rooms may send a lane goal without the supporting
   understanding, WORK rooms may use the wrong role or tool path for the kind of
   work, UX artifacts may be mistaken for product truth, and branch or worktree
-  names may be accepted as evidence without exact commits, and a silent room
-  may be mistaken for a finished lane
+  names may be accepted as evidence without exact commits, a silent room may be
+  mistaken for a finished lane, and manual recovery may be mistaken for
+  automatic WORK-to-PLAN return
 - Unknown state: this document does not prove future Codex compliance, does not
   install new packaged local skills, and does not inspect current Core,
   Backend, or Editor implementation state
@@ -91,9 +92,13 @@ Minimum fields:
 - Stop condition
 - Handoff format
 - Return Channel
+- Automatic Return Channel
+- Return Event ID or handoff ID
 - Liveness Signal
 - Death Signal
 - Retrievable locator requirement
+- `returnOrderPolicy`, when the dispatch set has multiple active WORK rooms
+- `arrivalSequence` assignment rule for queued returns
 - Contract Change Request trigger
 
 The PLAN room should keep the capsule concise. If the capsule is too large to
@@ -115,6 +120,10 @@ Minimum acknowledgement:
 - the risks and unknowns it will preserve;
 - the stop conditions that will make it return to PLAN;
 - the Return Channel it will use for the terminal return;
+- the Automatic Return Channel it will use so PLAN does not require `ตูม` to
+  copy/paste Terminal Handoffs;
+- the Return Event ID or handoff ID PLAN can use for duplicate handoff
+  detection;
 - the Liveness Signal the PLAN room can use while it is running;
 - the Death Signal or fallback state the PLAN room can record if it disappears;
 - the retrievable locator it will use for PLAN pull review.
@@ -130,9 +139,21 @@ only terminal return. A WORK room must return PASS / FAIL / BLOCKER / RISK /
 UNKNOWN to the PLAN room so the PLAN room can continue without guessing.
 This is the lane-level liveness contract for real separate rooms.
 
+Automatic WORK-to-PLAN return is mandatory. The Return Channel must deliver the
+terminal handoff to PLAN or a PLAN-owned monitor without requiring `ตูม` to
+copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste Terminal
+Handoffs. A manual recovery fallback may recover a missed task, thread,
+worktree, branch, commit, or handoff locator, but it must be recorded as
+`manual-recovered` or `return-channel-failed` and does not satisfy automatic
+return.
+
 The Context Capsule must define:
 
 - Return Channel: where the WORK room sends its terminal return.
+- Automatic Return Channel: how the terminal return reaches PLAN without a
+  user bridge.
+- Return Event ID or handoff ID: how PLAN recognizes a duplicate handoff and
+  keeps the return idempotent.
 - Liveness Signal: how the PLAN room can tell the WORK room is still running,
   waiting, or needs attention.
 - Death Signal: how the PLAN room records that a WORK room disappeared,
@@ -145,6 +166,11 @@ return, its result must not be accepted. The PLAN room must record
 `needs-attention`, `RISK`, `UNKNOWN`, or `blocked`, then decide whether to ask
 the user for a room reference, revise the packet, reopen the lane, or stop the
 dispatch set.
+
+For multiple active WORK rooms, the Context Capsule and dispatch set must
+define `completionQueue`, `returnOrderPolicy`, and `arrivalSequence` handling.
+PLAN must process one queued handoff at a time and must keep duplicate handoff
+returns idempotent before `acceptanceGate`.
 
 ## Locator And Evidence Rule
 
@@ -166,14 +192,19 @@ Core truth, Backend truth, Editor truth, map truth, or release readiness.
 
 Product WORK rooms return evidence candidates. They must not self-promote
 their own result into Project Control truth, map truth, accepted lane status,
-or round status. PLAN-owned reporting means the PLAN room stages the returned
-handoff in `handoffInbox`, runs `acceptanceGate`, and decides whether the lane
-is `accepted`, `needs-revision`, `rejected`, `blocked`, `RISK`, or `UNKNOWN`.
+or round status. PLAN-owned reporting means the PLAN room receives the returned
+handoff through the mandatory automatic Return Channel, stages it in
+`handoffInbox`, runs `acceptanceGate`, and decides whether the lane is
+`accepted`, `needs-revision`, `rejected`, `blocked`, `RISK`, or `UNKNOWN`.
 
 PLAN or a Project Control records lane writes Project Control records after
 acceptance. Core, Backend, and Editor product WORK rooms may request an
 Evidence record or supply an evidence candidate, but they do not register
 accepted Project Control truth by themselves.
+
+PLAN may use a manual recovery fallback only to recover or classify a failed
+Return Channel. Manual recovery does not satisfy automatic return and must not
+require `ตูม` to copy/paste Terminal Handoffs for ordinary progress.
 
 When acceptance fails but the lane is still valid, PLAN sends a Revision Packet
 to the same WORK room using the original retrievable locator. The Revision
@@ -212,14 +243,18 @@ When preparing a dispatch set, the PLAN room must:
 2. split lanes whose primary outputs require conflicting Work Types;
 3. write a Context Capsule for every lane chosen for dispatch;
 4. record the expected Context Acknowledgement;
-5. record the retrievable locator requirement in the Room Run Registry;
+5. record the Automatic Return Channel, Return Event ID or handoff ID, and
+   retrievable locator requirement in the Room Run Registry;
 6. review returned handoffs against the lane's Work Type acceptance focus;
 7. reject or return handoffs that lack exact commits, required verification, or
    required acknowledgement for their Work Type;
 8. own Project Control reporting after acceptance or delegate that reporting to
    a Project Control records lane;
 9. send Revision Packets back to the same WORK room for `needs-revision`
-   outcomes when the original retrievable locator remains usable.
+   outcomes when the original retrievable locator remains usable;
+10. when there are multiple active WORK rooms, process close-together returns
+    through `completionQueue` using `returnOrderPolicy`, `arrivalSequence`,
+    and duplicate handoff handling.
 
 The PLAN room may use internal subagents for exploration, summarization, or
 review. A real WORK room remains a separate Codex task/chat visible to the
@@ -246,7 +281,10 @@ A PLAN or WORK room using this model must report:
 - Work Type, Lane ID, Work ID, Phase ID, Checklist target, and Evidence target;
 - Context Capsule sent or received;
 - Context Acknowledgement result;
+- Automatic Return Channel and whether it returned without manual recovery;
 - retrievable locator used for pull review;
+- `completionQueue`, `returnOrderPolicy`, and `arrivalSequence` decisions when
+  multiple active WORK rooms were dispatched;
 - files changed by repository;
 - exact commits for changed behavior;
 - tests run;
