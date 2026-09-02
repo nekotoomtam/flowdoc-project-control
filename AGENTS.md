@@ -48,6 +48,16 @@ BLOCKER / RISK / UNKNOWN must not be accepted. Keep this room distinction
 explicit: PLAN room coordinates; WORK room is a real separate Codex task/chat
 that executes one approved lane.
 
+PLAN-owned reporting keeps product WORK output from self-promoting into Project
+Control truth. Core, Backend, and Editor WORK rooms return evidence candidate
+handoffs and must not self-promote Project Control truth, map truth, accepted
+lane status, or round status. PLAN receives or pulls the handoff, stages it in
+`handoffInbox`, runs `acceptanceGate`, and writes Project Control records
+itself or delegates that reporting after acceptance. If acceptance returns
+`needs-revision`, PLAN sends a Revision Packet back to the same WORK room when
+the original retrievable locator is usable; the packet preserves the original
+lane boundary and names any Contract Change Request requirement.
+
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or
 Editor, apply the product terminology discipline before implementation. Use the

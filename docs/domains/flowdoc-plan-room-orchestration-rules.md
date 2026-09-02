@@ -126,7 +126,7 @@ Minimum registry fields:
 - `lastHeartbeatAt`;
 - Death Signal or `deathSignal`;
 - status: `queued`, `running`, `needs-attention`, `returned`, `accepted`,
-  `returned-silent`, `rejected`, `blocked`, or `closed`;
+  `needs-revision`, `returned-silent`, `rejected`, `blocked`, or `closed`;
 - last observed state and timestamp;
 - handoff ID or handoff location when returned;
 - next PLAN action.
@@ -254,6 +254,65 @@ A silent room or missing terminal return must not be accepted. Treat it as a
 PLAN-visible liveness failure and decide whether to pull again, ask `ตูม` for a
 room reference, reopen the lane, shrink the dispatch set, or block the round.
 
+## PLAN-Owned Reporting
+
+Product WORK rooms return evidence candidate handoffs. They must not
+self-promote their own result into Project Control truth, map truth, accepted
+lane status, or round status.
+
+PLAN-owned reporting means the PLAN room receives the WORK handoff, puts it in
+`handoffInbox`, runs `acceptanceGate`, decides `accepted`, `needs-revision`,
+`rejected`, `blocked`, `RISK`, or `UNKNOWN`, and only then writes or delegates
+Project Control reporting. A product WORK room may request an Evidence record,
+but PLAN or a Project Control records lane writes Project Control records after
+acceptance.
+
+This keeps Core, Backend, and Editor WORK rooms focused on their owner
+repository behavior while the PLAN room carries cross-repository context,
+truth-promotion discipline, and follow-up sequencing.
+
+## Revision Packet Loop
+
+If acceptanceGate rejects or cannot accept a returned handoff, the PLAN room
+must classify the result before opening dependent lanes:
+
+- `needs-revision`: the lane goal remains valid, the same owner repository
+  remains correct, and the same WORK room can repair missing handoff fields,
+  missing verification, owner-scoped wording, or bounded implementation gaps.
+- `rejected`: the result cannot be used for the lane because it violates the
+  lane boundary, lacks a retrievable locator, lacks required evidence, writes
+  FlowDoc-wide truth into a product repository, or cannot be safely revised.
+- `blocked`: the lane cannot continue without a PLAN decision, user decision,
+  unavailable dependency, or Contract Change Request.
+
+For `needs-revision`, PLAN sends a Revision Packet back to the same WORK room
+when the original retrievable locator is still usable. The packet must include:
+
+- `revisionAttempt`;
+- original lane ID, Work Type, owner repository, and dispatch set ID;
+- original retrievable locator;
+- `revisionReason`;
+- exact missing or rejected acceptanceGate fields;
+- allowed repair scope;
+- forbidden scope that still applies;
+- required additional tests, commit references, or wording corrections;
+- whether a Contract Change Request is required instead of repair;
+- the Return Channel, Liveness Signal, Death Signal, and next
+  `livenessDeadline`.
+
+The same WORK room must continue inside the original lane boundary. It may fix
+handoff completeness, focused tests, owner-limited language, or the bounded
+implementation required by the same lane. It must not redefine the round goal,
+owner repository, source-of-truth rule, evidence target, or cross-repository
+contract. If the repair needs any of those changes, it must return a Contract
+Change Request to PLAN.
+
+If the same WORK room is unavailable, cannot receive the Revision Packet, or
+has lost its retrievable locator, PLAN records the room run as
+`needs-attention`, `returned-silent`, `RISK`, `UNKNOWN`, or `blocked`, then
+chooses whether to ask `ตูม` for the missing room reference, reopen the lane in
+a new WORK room, shrink the dispatch set, or stop the round.
+
 ## PLAN Event Loop
 
 A PLAN room that coordinates real WORK rooms should loop in this order:
@@ -276,9 +335,12 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
    a liveness event, not as success.
 10. Put returned handoffs into `handoffInbox` and `completionQueue`.
 11. Run `acceptanceGate` one handoff at a time.
-12. Update Project Control records only from accepted handoffs and verified
+12. Send Revision Packets to same WORK rooms for `needs-revision` results when
+    the original locator is still usable, or record the fallback state when it
+    is not.
+13. Update Project Control records only from accepted handoffs and verified
     evidence.
-13. Decide whether to dispatch the next set, revise the plan, block, or close
+14. Decide whether to dispatch the next set, revise the plan, block, or close
     the round.
 
 A real WORK room is still a separate Codex task/chat visible to `ตูม`; it is

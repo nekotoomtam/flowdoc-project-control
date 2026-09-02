@@ -434,6 +434,23 @@ source-of-truth rule, evidence target, or cross-repository contract. If the
 WORK room finds that the packet is wrong, it must stop and return a Contract
 Change Request instead of silently changing scope.
 
+Product WORK rooms for Core, Backend, and Editor must not write Project Control
+acceptance records, Project Control Evidence records, map truth, or accepted
+lane status for their own output; in short, they must not self-promote. They
+return an evidence candidate and Terminal Handoff. PLAN-owned reporting means
+this PLAN room receives or pulls that handoff, places it in `handoffInbox`,
+runs `acceptanceGate`, and writes Project Control records itself or delegates
+them to `lane-project-control-round-records` after acceptance.
+
+If `acceptanceGate` returns `needs-revision`, PLAN sends a Revision Packet back
+to the same WORK room when the original retrievable locator is still available.
+The Revision Packet must name the original lane, `revisionAttempt`, exact
+acceptance gaps, allowed repair scope, still-forbidden scope, required
+verification, Return Channel, Liveness Signal, Death Signal, and whether a
+Contract Change Request is required. The same WORK room may repair the original
+lane only; it must not expand owner repository, source-of-truth rule, evidence
+target, or cross-repository contract on its own.
+
 The Core WORK room returned a handoff candidate outside automatic PLAN-room
 push. Before this PLAN room treats that lane as accepted, it must put the
 candidate result into `handoffInbox`, process it through `acceptanceGate`, and

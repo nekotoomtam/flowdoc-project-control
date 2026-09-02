@@ -162,6 +162,29 @@ For `ux-design-exploration`, the design artifact is not product truth. It may
 shape a later implementation lane, but it cannot promote frontend readiness,
 Core truth, Backend truth, Editor truth, map truth, or release readiness.
 
+## PLAN-Owned Reporting And Revision
+
+Product WORK rooms return evidence candidates. They must not self-promote
+their own result into Project Control truth, map truth, accepted lane status,
+or round status. PLAN-owned reporting means the PLAN room stages the returned
+handoff in `handoffInbox`, runs `acceptanceGate`, and decides whether the lane
+is `accepted`, `needs-revision`, `rejected`, `blocked`, `RISK`, or `UNKNOWN`.
+
+PLAN or a Project Control records lane writes Project Control records after
+acceptance. Core, Backend, and Editor product WORK rooms may request an
+Evidence record or supply an evidence candidate, but they do not register
+accepted Project Control truth by themselves.
+
+When acceptance fails but the lane is still valid, PLAN sends a Revision Packet
+to the same WORK room using the original retrievable locator. The Revision
+Packet names the `revisionAttempt`, original lane, exact acceptanceGate gaps,
+allowed repair scope, still-forbidden scope, extra verification required,
+Return Channel, Liveness Signal, Death Signal, and whether a Contract Change
+Request is needed. The same WORK room continues only inside the original lane
+boundary. If the repair needs a different owner, evidence target,
+source-of-truth rule, or cross-repository contract, the WORK room returns a
+Contract Change Request instead of expanding its own scope.
+
 ## Skill Candidate Routing
 
 Reusable skills should still be created only after a workflow repeats enough to
@@ -192,7 +215,11 @@ When preparing a dispatch set, the PLAN room must:
 5. record the retrievable locator requirement in the Room Run Registry;
 6. review returned handoffs against the lane's Work Type acceptance focus;
 7. reject or return handoffs that lack exact commits, required verification, or
-   required acknowledgement for their Work Type.
+   required acknowledgement for their Work Type;
+8. own Project Control reporting after acceptance or delegate that reporting to
+   a Project Control records lane;
+9. send Revision Packets back to the same WORK room for `needs-revision`
+   outcomes when the original retrievable locator remains usable.
 
 The PLAN room may use internal subagents for exploration, summarization, or
 review. A real WORK room remains a separate Codex task/chat visible to the

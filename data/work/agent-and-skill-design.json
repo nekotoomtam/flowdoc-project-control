@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control"],
   "workState": "in-progress",
-  "summary": "Define FlowDoc agent roles, capabilities, handoffs, real PLAN and WORK room delivery flow, N WORK rooms orchestration, Work Type routing, Context Capsules, Context Acknowledgement, mandatory WORK room return, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, delivery round boundaries, PLAN room dispatch/review rules, and reusable skill boundaries.",
+  "summary": "Define FlowDoc agent roles, capabilities, handoffs, real PLAN and WORK room delivery flow, N WORK rooms orchestration, Work Type routing, Context Capsules, Context Acknowledgement, mandatory WORK room return, PLAN-owned reporting, Revision Packets, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, delivery round boundaries, PLAN room dispatch/review rules, and reusable skill boundaries.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -25,16 +25,17 @@
     "doc-work-tree-operating-rules"
   ],
   "activeRole": "project-control-steward",
-  "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules, the Delivery Operating Model for real PLAN/WORK room coordination, PLAN Room Orchestration Rules for dispatching and reviewing N WORK rooms, the Work Type Routing Model for lane classification, Context Capsule handoff, Context Acknowledgement, mandatory WORK room return, liveness tracking, silent room handling, retrievable locator, and skill candidate routing, and the first local flowdoc-project-control Codex skill package so future FlowDoc rooms route through Project Control before generic planning paths, while keeping broader specialized skill packaging for later phases.",
-  "riskSummary": "The first local entrypoint skill, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, and Work Type Routing Model reduce Markdown authority, handoff, context, liveness, and room coordination drift risk, but local skills may not be installed or surfaced in every future environment, bounded pressure validation does not prove future agent compliance, WORK rooms may still fail to push handoffs automatically, a PLAN room may still send an incomplete Context Capsule, a silent room may still need user-provided recovery context, and this work does not edit Core, Backend, or Editor behavior or promote product truth.",
+  "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules, the Delivery Operating Model for real PLAN/WORK room coordination, PLAN Room Orchestration Rules for dispatching and reviewing N WORK rooms, the Work Type Routing Model for lane classification, Context Capsule handoff, Context Acknowledgement, mandatory WORK room return, liveness tracking, silent room handling, retrievable locator, PLAN-owned reporting, acceptanceGate revision decisions, Revision Packet loop, and skill candidate routing, and the first local flowdoc-project-control Codex skill package so future FlowDoc rooms route through Project Control before generic planning paths, while keeping broader specialized skill packaging for later phases.",
+  "riskSummary": "The first local entrypoint skill, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, and Work Type Routing Model reduce Markdown authority, handoff, context, liveness, acceptance, revision, and room coordination drift risk, but local skills may not be installed or surfaced in every future environment, bounded pressure validation does not prove future agent compliance, WORK rooms may still fail to push handoffs automatically, product WORK rooms may still self-promote if a future packet omits PLAN-owned reporting, a PLAN room may still send an incomplete Context Capsule, a silent room may still need user-provided recovery context, and this work does not edit Core, Backend, or Editor behavior or promote product truth.",
   "requiredEvidence": [
     "evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01",
     "evidence-flowdoc-delivery-operating-model-2026-09-01",
     "evidence-flowdoc-plan-room-orchestration-rules-2026-09-02",
     "evidence-flowdoc-work-type-routing-model-2026-09-02",
     "evidence-flowdoc-work-room-return-liveness-2026-09-02",
+    "evidence-flowdoc-plan-work-acceptance-revision-2026-09-02",
     "evidence-flowdoc-project-control-skill-2026-09-01"
   ],
   "createdAt": "2026-08-24T00:00:00.000Z",
-  "updatedAt": "2026-09-02T08:55:00.000+07:00"
+  "updatedAt": "2026-09-02T10:30:00.000+07:00"
 }

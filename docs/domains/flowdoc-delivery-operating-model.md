@@ -266,6 +266,22 @@ Each WORK room returns:
 The PR Summary Draft is handoff material. It is not a separate source of
 product truth.
 
+## PLAN-owned reporting
+
+Product WORK rooms return evidence candidate handoffs and must not
+self-promote Project Control truth, map truth, accepted lane status, or round
+status. PLAN receives or pulls returned handoffs, stages them in
+`handoffInbox`, runs `acceptanceGate`, and writes Project Control records
+itself or delegates that reporting after acceptance.
+
+If accepted work needs Project Control record writing, PLAN may use a Project
+Control records lane. If returned work is incomplete but still inside the
+original lane, PLAN marks it `needs-revision` and sends a Revision Packet back
+to the same WORK room when the original retrievable locator remains usable.
+The same WORK room may repair only the original lane. If repair needs a
+different owner, source-of-truth rule, evidence target, or cross-repository
+contract, the WORK room returns a Contract Change Request.
+
 ## Contract Change Request
 
 A WORK room must stop and send a Contract Change Request when it needs to

@@ -70,6 +70,16 @@ cannot provide a terminal return must not be accepted. A WORK room is a real
 separate Codex task/chat visible to the user and executes one approved lane
 only; it is not the same thing as an internal subagent.
 
+Use PLAN-owned reporting for product WORK output. Core, Backend, and Editor
+WORK rooms return evidence candidate handoffs and must not self-promote Project
+Control truth, map truth, accepted lane status, or round status. PLAN receives
+or pulls the handoff, stages it in `handoffInbox`, runs `acceptanceGate`, and
+writes Project Control records itself or delegates that reporting after
+acceptance. If acceptance returns `needs-revision`, PLAN sends a Revision
+Packet back to the same WORK room when the original retrievable locator is
+usable; the packet must preserve the original lane boundary and name any
+Contract Change Request requirement.
+
 This corresponds to the Project Control document path
 `docs/domains/flowdoc-delivery-operating-model.md` and
 `docs/domains/flowdoc-plan-room-orchestration-rules.md`, extended by

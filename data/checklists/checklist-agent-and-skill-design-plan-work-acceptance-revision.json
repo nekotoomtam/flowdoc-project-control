@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-plan-work-acceptance-revision",
+  "phaseId": "phase-agent-and-skill-design-plan-work-acceptance-revision",
+  "title": "PLAN WORK Acceptance Revision Checklist",
+  "items": [
+    {
+      "id": "capture-plan-work-acceptance-revision-context",
+      "label": "Capture the PLAN-owned reporting and revision context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-plan-work-acceptance-revision, checklist target checklist-agent-and-skill-design-plan-work-acceptance-revision, and evidence target evidence-flowdoc-plan-work-acceptance-revision-2026-09-02."
+    },
+    {
+      "id": "write-red-plan-work-acceptance-revision-guard",
+      "label": "Write a failing Project Control guard for PLAN-owned reporting and Revision Packet handling.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before the phase, evidence, PLAN-owned reporting wording, and Revision Packet wording exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-plan-work-acceptance-revision.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include phase-agent-and-skill-design-plan-work-acceptance-revision or evidence-flowdoc-plan-work-acceptance-revision-2026-09-02."
+    },
+    {
+      "id": "define-plan-owned-project-control-reporting",
+      "label": "Define PLAN-owned Project Control reporting for product WORK handoffs.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "The delivery and routing documents state that product WORK rooms return evidence candidates and must not self-promote Project Control truth, map truth, accepted lane status, or round status.",
+      "verificationNote": "docs/domains/flowdoc-delivery-operating-model.md, docs/domains/flowdoc-work-type-routing-model.md, docs/domains/flowdoc-plan-room-orchestration-rules.md, docs/domains/flowdoc-first-delivery-round-plan.md, docs/domains/agent-and-skill-operating-model.md, docs/domains/flowdoc-global-codex-guidance.md, and AGENTS.md record PLAN-owned reporting."
+    },
+    {
+      "id": "define-revision-packet-loop",
+      "label": "Define the Revision Packet loop for needs-revision handoffs.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "The orchestration rules define needs-revision, same WORK room return, revisionAttempt, original retrievable locator, allowed repair scope, forbidden scope, and fallback handling when the same room is unavailable.",
+      "verificationNote": "docs/domains/flowdoc-plan-room-orchestration-rules.md defines the Revision Packet Loop and PLAN Event Loop handling for needs-revision results."
+    },
+    {
+      "id": "route-revision-loop-to-entrypoints",
+      "label": "Route PLAN-owned reporting and revision rules through agent entrypoints.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "Global guidance, Project Control AGENTS.md, agent operating model, delivery model, work type model, orchestration rules, and first delivery plan all carry the same PLAN-owned reporting and Revision Packet rule.",
+      "verificationNote": "AGENTS.md and docs/domains/flowdoc-global-codex-guidance.md now tell future rooms that product WORK rooms return evidence candidate handoffs, PLAN runs acceptanceGate, and needs-revision goes back to the same WORK room when the original locator remains usable."
+    },
+    {
+      "id": "record-plan-work-acceptance-revision-records",
+      "label": "Record Project Control records for PLAN-owned reporting and revision handling.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "Project Control records Work context update, Phase, Checklist, Evidence, and document repository refs without product truth or map truth promotion.",
+      "verificationNote": "Registered phase-agent-and-skill-design-plan-work-acceptance-revision, checklist-agent-and-skill-design-plan-work-acceptance-revision, evidence-flowdoc-plan-work-acceptance-revision-2026-09-02, and related document repository refs; product repositories and map truth were intentionally not changed."
+    },
+    {
+      "id": "verify-plan-work-acceptance-revision-gate",
+      "label": "Verify the focused guard and Project Control data gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-acceptance-revision-2026-09-02"],
+      "evidenceTarget": "Focused PLAN/WORK acceptance revision guard, generation, data validation, and Project Control gate are run before handoff.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-plan-work-acceptance-revision.test.ts, tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T10:30:00.000+07:00",
+  "updatedAt": "2026-09-02T10:30:00.000+07:00"
+}

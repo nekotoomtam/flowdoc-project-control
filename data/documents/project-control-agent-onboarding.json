@@ -17,6 +17,11 @@
       "repositoryId": "repo-project-control",
       "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
       "pathOrContractId": "AGENTS.md; tests/flowdoc-work-room-return-liveness.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+      "pathOrContractId": "AGENTS.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
     }
   ]
 }

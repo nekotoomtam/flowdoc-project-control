@@ -76,6 +76,21 @@ redefine delivery scope, role authority, source-of-truth rules, or
 cross-repository contracts; they should return RISK, UNKNOWN, BLOCKED, or a
 Contract Change Request to the PLAN room when scope changes are needed.
 
+PLAN-owned reporting keeps Project Control truth separate from product WORK.
+Product WORK rooms return evidence candidate handoffs and must not self-promote
+their own result into Project Control truth, map truth, accepted lane status,
+or round status. PLAN receives or pulls the handoff, stages it in
+`handoffInbox`, runs `acceptanceGate`, and then writes Project Control records
+itself or delegates that reporting to a Project Control records lane.
+
+When returned work is incomplete but still inside the original lane, PLAN marks
+the room `needs-revision` and sends a Revision Packet back to the same WORK
+room when the original retrievable locator remains usable. That packet must
+name `revisionAttempt`, exact acceptance gaps, allowed repair scope,
+still-forbidden scope, required verification, Return Channel, Liveness Signal,
+Death Signal, and any Contract Change Request requirement. The same WORK room
+may repair only the original lane.
+
 ## Packaged local skills
 
 ### flowdoc-project-control
