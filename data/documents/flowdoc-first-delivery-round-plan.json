@@ -60,7 +60,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
       "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
     }
   ]

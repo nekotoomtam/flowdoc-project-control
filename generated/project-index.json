@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "cc39c8689bdc3b17b3a9e24cc780ae63fab46aaab4320bd5e47caded7422b271",
+  "sourceDigest": "41257e8ba2719d18784f2075c05af7aff06b72f65b7f8a666e7b442123582a97",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -12852,7 +12852,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
           "pathOrContractId": "docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke.json; data/checklists/checklist-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke.json; data/evidence/flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02.json; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
         }
       ],
@@ -12950,7 +12950,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
           "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
         }
       ],
@@ -13060,7 +13060,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
           "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
         }
       ],
