@@ -54,6 +54,7 @@ behavior, tests, runtime contracts, local setup, and implementation evidence.
 - [FlowDoc Delivery Operating Model](flowdoc-delivery-operating-model.md)
 - [FlowDoc PLAN Room Orchestration Rules](flowdoc-plan-room-orchestration-rules.md)
 - [FlowDoc Work Type Routing Model](flowdoc-work-type-routing-model.md)
+- [FlowDoc Lean Dispatch Operating Rules](flowdoc-lean-dispatch-operating-rules.md)
 - [FlowDoc Round Workflow](flowdoc-round-workflow.md)
 - [Work Tree Operating Rules](work-tree-operating-rules.md)
 - [Document Map Operating Rules](document-map-operating-rules.md)
@@ -127,6 +128,13 @@ Use `docs/domains/flowdoc-work-type-routing-model.md` before dispatching these
 lanes. Each Lane Card and Kickoff Packet must include a Work Type, Context
 Capsule, expected Context Acknowledgement, Return Channel, Liveness Signal,
 Death Signal, and retrievable locator requirement.
+
+Use `docs/domains/flowdoc-lean-dispatch-operating-rules.md` before the next
+multi-product-WORK dispatch. The next multi-product-WORK dispatch should use
+Lean Dispatch so PLAN sends a compact lane Context Capsule, Reference Pack,
+Resource Budget fields, and compact handoff requirement while preserving
+automatic WORK-to-PLAN return, liveness, retrievable locator, completionQueue,
+arrivalSequence, duplicate handoff handling, and acceptanceGate.
 
 The Context Capsule must carry the lane-specific understanding from this PLAN
 room: owner repository, active role, allowed scope, forbidden scope, required
@@ -510,6 +518,13 @@ Acknowledgement, Return Channel, Liveness Signal, Death Signal,
 entries, retrievable locators, and the expected acceptance order before
 treating the set as dispatch-ready.
 
+If the PLAN room chooses Lean Dispatch, it must also record the Resource Budget
+for each lane: `contextBudget`, `verificationTier`, `reviewTier`,
+`evidenceMode`, `handoffDetail`, and `docReadPolicy`. Lean Dispatch may reduce
+duplicated background context and ask for a compact handoff, but it must not
+lower product behavior acceptance below exact owner-repository commit evidence
+and fresh owner-repository verification.
+
 The PLAN room must give each WORK room the matching Kickoff Packet and Context
 Capsule. A WORK room must not redefine the round goal, owner repository,
 source-of-truth rule, evidence target, or cross-repository contract. If the
@@ -633,6 +648,13 @@ Next recommended implementation-return test: done for one Backend product
 WORK room with an isolated worktree, actual edit scope, active return,
 owner-repository checks, exact commit evidence, and PLAN-owned Project Control
 reporting. Multi-product-WORK return remains unproven.
+
+The next multi-product-WORK dispatch should use Lean Dispatch with compact
+handoff detail and full escalation triggers so the PLAN room can test whether
+Backend and Editor WORK rooms can return close together without repeating the
+full historical context in every prompt. That lean test would still not prove
+FlowDoc product truth or map truth until owner-repository commits, checks, and
+PLAN-owned acceptance records support the exact claim.
 
 Next recommended lanes:
 

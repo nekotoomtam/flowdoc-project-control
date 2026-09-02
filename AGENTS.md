@@ -29,12 +29,13 @@ Before taking broad work, read these files in order:
 6. `docs/domains/flowdoc-delivery-operating-model.md`
 7. `docs/domains/flowdoc-plan-room-orchestration-rules.md`
 8. `docs/domains/flowdoc-work-type-routing-model.md`
-9. `docs/domains/work-tree-operating-rules.md`
-10. `docs/domains/project-control.md`
-11. `docs/domains/flowdoc-documentation-authority-policy.md`
-12. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
-13. `docs/domains/flowdoc-product-terminology.md`
-14. `docs/domains/flowdoc-product-terminology-th.md`
+9. `docs/domains/flowdoc-lean-dispatch-operating-rules.md`
+10. `docs/domains/work-tree-operating-rules.md`
+11. `docs/domains/project-control.md`
+12. `docs/domains/flowdoc-documentation-authority-policy.md`
+13. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
+14. `docs/domains/flowdoc-product-terminology.md`
+15. `docs/domains/flowdoc-product-terminology-th.md`
 
 For FlowDoc delivery planning, opened rooms, lane splitting, Kickoff Packets,
 or handoff work, use the Delivery Operating Model. For any PLAN room that may
@@ -42,7 +43,13 @@ dispatch more than one WORK room, read the PLAN Room Orchestration Rules before
 opening or accepting rooms. Read the FlowDoc Work Type Routing Model before a
 PLAN room assigns lane Work Types, writes Context Capsules, expects Context
 Acknowledgement, chooses skill candidates, or accepts a returned lane by Work
-Type. Automatic WORK-to-PLAN return is mandatory: the Return Channel must send
+Type. Read the FlowDoc Lean Dispatch Operating Rules before a PLAN room marks
+a dispatch set or Kickoff Packet as Lean Dispatch, sets Resource Budget fields,
+uses Reference Packs, chooses compact handoff detail, batches evidence, or
+lowers verification/review scope for a lane. Lean Dispatch is a budget profile,
+not a weaker orchestration mode; it must not remove automatic return,
+liveness, retrievable locator, or acceptanceGate. Automatic WORK-to-PLAN
+return is mandatory: the Return Channel must send
 the terminal handoff back to PLAN or a PLAN-owned monitor without requiring
 `ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
 Terminal Handoffs. Automatic return means an active WORK-to-PLAN return push,

@@ -54,6 +54,12 @@ is dispatch metadata used by the PLAN room to choose the right active role,
 required reading, expected output, evidence shape, acceptance checks, and skill
 candidate.
 
+When a dispatch set uses Lean Dispatch, the PLAN room also applies
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md`. Lean Dispatch adds
+Resource Budget fields, Reference Packs, compact handoff detail, verification
+tiers, evidence batching, and escalation triggers without changing the Work
+Type boundary or acceptance focus.
+
 ## Work Type Taxonomy
 
 Use the narrowest Work Type that describes the lane's main output. If a lane
@@ -217,6 +223,25 @@ plus fresh verification from that repository when behavior changed.
 For `ux-design-exploration`, the design artifact is not product truth. It may
 shape a later implementation lane, but it cannot promote frontend readiness,
 Core truth, Backend truth, Editor truth, map truth, or release readiness.
+
+## Lean Dispatch Defaults By Work Type
+
+Lean Dispatch defaults are starting points for PLAN budget decisions. A PLAN
+room may make any lane stricter, but it must record why before lowering context,
+verification, review, evidence, or handoff detail.
+
+| Work Type | Lean Dispatch default |
+| --- | --- |
+| `planning-coordination` | `contextBudget: small`; `verificationTier: standard`; `reviewTier: risk-triggered`; `evidenceMode: batched-evidence`; compact handoff allowed when no product truth is promoted. |
+| `product-implementation` | `contextBudget: small` for narrow edits or `normal` for public API, storage, renderer, or cross-repository contracts; `verificationTier: standard` while developing and `full` before merge or PLAN acceptance; `evidenceMode: full-acceptance-record`. |
+| `evidence-review` | `contextBudget: normal`; `verificationTier: full` for accepted claims; `reviewTier: mandatory`; `evidenceMode: full-acceptance-record`; compact handoff may summarize but must cite exact evidence. |
+| `documentation-authority` | `contextBudget: normal`; `verificationTier: standard`; `reviewTier: mandatory`; `evidenceMode: full-acceptance-record`; Reference Pack must include the authority policy and operating rules. |
+| `ux-design-exploration` | `contextBudget: small`; `verificationTier: focused`; `reviewTier: risk-triggered`; `evidenceMode: registry-note` or `batched-evidence`; a mockup or prototype can guide a later lane but is not product truth. |
+| `lane-reconciliation` | `contextBudget: normal`; `verificationTier: focused`; `reviewTier: mandatory`; `evidenceMode: batched-evidence`; compact handoff must keep exact branch, worktree, commit, and cleanup decision refs. |
+
+Escalation triggers from the Lean Dispatch Operating Rules override these
+defaults. When a trigger fires, PLAN raises the budget, sends a Revision Packet
+to the same WORK room, splits the lane, or blocks the round.
 
 ## PLAN-Owned Reporting And Revision
 

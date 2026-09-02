@@ -115,6 +115,14 @@ choosing reusable skill candidates, or accepting a returned handoff by Work
 Type. Work Type routing extends the Delivery Operating Model without creating
 packaged Codex skills or product evidence by itself.
 
+Use the Lean Dispatch Operating Rules at
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md` before a PLAN room
+marks a dispatch set or Kickoff Packet as Lean Dispatch, sets Resource Budget
+fields, uses Reference Packs, chooses compact handoff detail, batches evidence,
+or lowers verification/review scope for a lane. Lean Dispatch extends this
+delivery model as a budget profile, not a weaker orchestration mode. It must
+not remove automatic return, liveness, retrievable locator, or acceptanceGate.
+
 ## Automatic WORK-to-PLAN Return Rule
 
 Automatic WORK-to-PLAN return is mandatory for real WORK rooms. A WORK room is

@@ -32,6 +32,11 @@
       "repositoryId": "repo-project-control",
       "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
       "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-active-return-channel-hardening.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
+      "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
     }
   ]
 }
