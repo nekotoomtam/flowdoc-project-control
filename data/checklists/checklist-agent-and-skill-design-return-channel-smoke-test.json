@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-return-channel-smoke-test",
+  "phaseId": "phase-agent-and-skill-design-return-channel-smoke-test",
+  "title": "Return Channel Smoke Test Checklist",
+  "items": [
+    {
+      "id": "dispatch-return-channel-smoke-work-room",
+      "label": "Dispatch the return-channel smoke WORK room.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN opens one real projectless WORK task with a Kickoff Packet naming the PLAN task/chat ID, Active Return Command, Return Event ID, and bounded no-product scope.",
+      "verificationNote": "PLAN opened WORK task 01a0610f-d236-73e1-a4ff-d79fb9f2bd3e with dispatchSetId dispatch-return-channel-smoke-2026-09-02-01, lane-return-channel-smoke-test, handoff-return-channel-smoke-2026-09-02-01, PLAN task/chat ID 01a05e34-5b16-7493-ac31-9baf8ba71454, and Active Return Command mcp__codex_app.send_message_to_thread."
+    },
+    {
+      "id": "receive-active-return-channel-handoff",
+      "label": "Receive the active WORK-to-PLAN handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "The WORK room pushes its Terminal Handoff back to PLAN without requiring user copy/paste.",
+      "verificationNote": "The PLAN wait was interrupted by a received WORK RETURN EVENT for handoff-return-channel-smoke-2026-09-02-01 sent with mcp__codex_app.send_message_to_thread to PLAN task/chat ID 01a05e34-5b16-7493-ac31-9baf8ba71454."
+    },
+    {
+      "id": "accept-single-room-smoke-handoff",
+      "label": "Accept the single-room smoke handoff as bounded evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN classifies the handoff as automatic-returned for single-room return-channel liveness only.",
+      "verificationNote": "The returned handoff included PASS, lane ID, Work Type, Context Acknowledgement, PLAN task/chat ID, Active Return Command, retrievable WORK task ID, no file changes, no behavior changes, no product tests, and no promoted claims."
+    },
+    {
+      "id": "preserve-multi-work-unknown",
+      "label": "Preserve multi-WORK and product-WORK unknowns.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "The smoke proof does not promote multi-WORK close-together return, product WORK return, queued clientThreadId dispatch, or product evidence.",
+      "verificationNote": "The orchestration rules and first delivery round plan now state that the smoke result does not prove multi-WORK close-together returns, product WORK implementation returns, queued clientThreadId dispatch, evidence promotion, or FlowDoc product truth."
+    },
+    {
+      "id": "record-return-channel-smoke-evidence",
+      "label": "Record Project Control smoke evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, Work required evidence, and document refs for the smoke result.",
+      "verificationNote": "Registered phase-agent-and-skill-design-return-channel-smoke-test, checklist-agent-and-skill-design-return-channel-smoke-test, evidence-flowdoc-return-channel-smoke-test-2026-09-02, updated agent-and-skill-design requiredEvidence, and added repository refs for the touched Project Control documents."
+    },
+    {
+      "id": "verify-return-channel-smoke-evidence",
+      "label": "Verify the return-channel smoke evidence gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-return-channel-smoke-test-2026-09-02"],
+      "evidenceTarget": "Focused smoke-evidence guard, generated read model, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-return-channel-smoke-evidence.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T14:50:00.000+07:00",
+  "updatedAt": "2026-09-02T14:50:00.000+07:00"
+}

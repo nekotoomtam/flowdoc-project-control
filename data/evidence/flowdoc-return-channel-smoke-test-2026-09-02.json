@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-return-channel-smoke-test-2026-09-02",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0e852ff86ea627add5e1f12dfb6b4a5a85368232",
+  "pathOrContractId": "PLAN task/chat ID 01a05e34-5b16-7493-ac31-9baf8ba71454; WORK task/chat ID 01a0610f-d236-73e1-a4ff-d79fb9f2bd3e; dispatchSetId dispatch-return-channel-smoke-2026-09-02-01; roomRunId room-return-channel-smoke-2026-09-02-01; lane-return-channel-smoke-test; handoff-return-channel-smoke-2026-09-02-01; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-return-channel-smoke-evidence.test.ts; npm run check",
+  "verificationSummary": "WORK RETURN EVENT: handoff-return-channel-smoke-2026-09-02-01 returned PASS from projectless WORK task 01a0610f-d236-73e1-a4ff-d79fb9f2bd3e to PLAN task/chat ID 01a05e34-5b16-7493-ac31-9baf8ba71454 using mcp__codex_app.send_message_to_thread. The PLAN wait was interrupted by the pushed handoff, and the WORK task then completed with a matching local audit copy. The handoff acknowledged the Kickoff Packet, reported Active Return Command mcp__codex_app.send_message_to_thread, retrievable WORK task ID 01a0610f-d236-73e1-a4ff-d79fb9f2bd3e, files changed none, behavior changed none, product tests none, and claims not promoted. This evidence supports only a single-room projectless active return-channel smoke on this local host. It does not prove multi-WORK close-together return, completionQueue fan-in, product WORK implementation return, queued clientThreadId dispatch, every Codex environment, future automatic room wakeups, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, release readiness, or evidence promotion from product behavior. This evidence does not edit Core, Backend, or Editor behavior.",
+  "verifiedAt": "2026-09-02T14:50:00.000+07:00"
+}
