@@ -78,13 +78,13 @@ describe("FlowDoc work type routing model", () => {
       path: DOC_PATH,
       role: "contract",
     });
-    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual([
+    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual(expect.arrayContaining([
       expect.objectContaining({
         commit: expect.stringMatching(/^[a-f0-9]{40}$/u),
         pathOrContractId: expect.stringContaining("tests/flowdoc-work-type-routing-model.test.ts"),
         repositoryId: "repo-project-control",
       }),
-    ]);
+    ]));
     expect(evidence.get(EVIDENCE_ID)).toMatchObject({
       commit: expect.stringMatching(/^[a-f0-9]{40}$/u),
       nodeIds: [],

@@ -30,7 +30,8 @@ runtime contracts, local setup, and product evidence.
 - Known risks: future PLAN rooms may send a lane goal without the supporting
   understanding, WORK rooms may use the wrong role or tool path for the kind of
   work, UX artifacts may be mistaken for product truth, and branch or worktree
-  names may be accepted as evidence without exact commits
+  names may be accepted as evidence without exact commits, and a silent room
+  may be mistaken for a finished lane
 - Unknown state: this document does not prove future Codex compliance, does not
   install new packaged local skills, and does not inspect current Core,
   Backend, or Editor implementation state
@@ -89,6 +90,9 @@ Minimum fields:
 - Evidence target
 - Stop condition
 - Handoff format
+- Return Channel
+- Liveness Signal
+- Death Signal
 - Retrievable locator requirement
 - Contract Change Request trigger
 
@@ -110,11 +114,37 @@ Minimum acknowledgement:
 - the evidence target it will use;
 - the risks and unknowns it will preserve;
 - the stop conditions that will make it return to PLAN;
+- the Return Channel it will use for the terminal return;
+- the Liveness Signal the PLAN room can use while it is running;
+- the Death Signal or fallback state the PLAN room can record if it disappears;
 - the retrievable locator it will use for PLAN pull review.
 
 If a WORK room cannot acknowledge the capsule, the lane remains
 `needs-attention` or `blocked`. The PLAN room must revise the packet or ask the
 user for the missing decision before accepting work from that room.
+
+## Mandatory Return And Liveness
+
+Every WORK room has a mandatory WORK room return obligation. Passing is not the
+only terminal return. A WORK room must return PASS / FAIL / BLOCKER / RISK /
+UNKNOWN to the PLAN room so the PLAN room can continue without guessing.
+This is the lane-level liveness contract for real separate rooms.
+
+The Context Capsule must define:
+
+- Return Channel: where the WORK room sends its terminal return.
+- Liveness Signal: how the PLAN room can tell the WORK room is still running,
+  waiting, or needs attention.
+- Death Signal: how the PLAN room records that a WORK room disappeared,
+  stopped responding, or lost its retrievable locator.
+
+A silent room is not an accepted lane. If the WORK room does not provide a
+terminal return, the PLAN room must actively pull the result using the
+retrievable locator. If the room cannot be found or cannot produce a terminal
+return, its result must not be accepted. The PLAN room must record
+`needs-attention`, `RISK`, `UNKNOWN`, or `blocked`, then decide whether to ask
+the user for a room reference, revise the packet, reopen the lane, or stop the
+dispatch set.
 
 ## Locator And Evidence Rule
 

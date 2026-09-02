@@ -64,7 +64,10 @@ Work-type delivery routing now uses
 `docs/domains/flowdoc-work-type-routing-model.md` as the Project Control
 contract for assigning Work Type to lanes, writing Context Capsules, requiring
 Context Acknowledgement, choosing reusable skill candidates, and reviewing
-returned handoffs by the correct output shape.
+returned handoffs by the correct output shape. The same model requires
+mandatory WORK room return, liveness tracking, silent room handling, and
+terminal return status of PASS / FAIL / BLOCKER / RISK / UNKNOWN so the PLAN
+room can continue without guessing when a room fails, blocks, or disappears.
 
 A PLAN room coordinates one or more delivery rounds. A WORK room is a real
 separate Codex task/chat visible to the user and executes exactly one approved

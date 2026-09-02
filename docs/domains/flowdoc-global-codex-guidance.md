@@ -62,9 +62,13 @@ Orchestration Rules before a PLAN room chooses `N WORK rooms`, sets
 handoffs, processes `handoffInbox` or `completionQueue`, or runs
 `acceptanceGate`. Use the FlowDoc Work Type Routing Model before assigning
 lane Work Types, writing Context Capsules, expecting Context Acknowledgement,
-choosing skill candidates, or accepting returned lane output by Work Type. A
-WORK room is a real separate Codex task/chat visible to the user and executes
-one approved lane only; it is not the same thing as an internal subagent.
+choosing skill candidates, or accepting returned lane output by Work Type. The
+same routing contract requires mandatory WORK room return, liveness tracking,
+silent room handling, and terminal return status of PASS / FAIL / BLOCKER /
+RISK / UNKNOWN. A WORK room that disappears, misses its Return Channel, or
+cannot provide a terminal return must not be accepted. A WORK room is a real
+separate Codex task/chat visible to the user and executes one approved lane
+only; it is not the same thing as an internal subagent.
 
 This corresponds to the Project Control document path
 `docs/domains/flowdoc-delivery-operating-model.md` and

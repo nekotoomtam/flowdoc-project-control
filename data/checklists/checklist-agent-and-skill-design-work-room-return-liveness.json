@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-work-room-return-liveness",
+  "phaseId": "phase-agent-and-skill-design-work-room-return-liveness",
+  "title": "WORK Room Return Liveness Checklist",
+  "items": [
+    {
+      "id": "capture-work-room-return-liveness-context",
+      "label": "Capture the WORK room return and liveness context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-work-room-return-liveness, checklist target checklist-agent-and-skill-design-work-room-return-liveness, and evidence target evidence-flowdoc-work-room-return-liveness-2026-09-02."
+    },
+    {
+      "id": "write-red-work-room-return-liveness-guard",
+      "label": "Write a failing Project Control guard for WORK room return and liveness.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before the mandatory WORK room return, liveness, death signal, silent room handling, and records exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-work-room-return-liveness.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include phase-agent-and-skill-design-work-room-return-liveness or evidence-flowdoc-work-room-return-liveness-2026-09-02."
+    },
+    {
+      "id": "define-mandatory-terminal-return",
+      "label": "Define mandatory terminal return for every WORK room.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "The routing model and orchestration rules state that every WORK room must return PASS, FAIL, BLOCKER, RISK, or UNKNOWN to PLAN.",
+      "verificationNote": "docs/domains/flowdoc-work-type-routing-model.md and docs/domains/flowdoc-plan-room-orchestration-rules.md require a terminal return for every WORK room outcome."
+    },
+    {
+      "id": "define-liveness-monitoring",
+      "label": "Define PLAN room liveness monitoring.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "The Room Run Registry records Return Channel, Liveness Signal, livenessDeadline, lastHeartbeatAt, Death Signal, retrievable locator, and next PLAN action.",
+      "verificationNote": "docs/domains/flowdoc-plan-room-orchestration-rules.md adds Return Channel, Liveness Signal, livenessDeadline, lastHeartbeatAt, and deathSignal to Room Run Registry tracking."
+    },
+    {
+      "id": "define-silent-room-handling",
+      "label": "Define silent room handling.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "The rules state that a silent room, disappeared room, or missing terminal return must not be accepted and must become a PLAN-visible state.",
+      "verificationNote": "docs/domains/flowdoc-work-type-routing-model.md and docs/domains/flowdoc-plan-room-orchestration-rules.md require PLAN to record returned-silent, needs-attention, RISK, UNKNOWN, or blocked before deciding whether to pull, ask for a room reference, reopen the lane, shrink the dispatch set, or block the round."
+    },
+    {
+      "id": "route-return-contract-to-plan-and-kickoff",
+      "label": "Route return and liveness requirements to PLAN and Kickoff Packets.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "First delivery lane Kickoff Packets and global/agent guidance carry Return Channel, Liveness Signal, Death Signal, mandatory return, and no-acceptance-on-silence rules.",
+      "verificationNote": "docs/domains/flowdoc-first-delivery-round-plan.md adds Return Channel, Liveness Signal, and Death Signal to every Kickoff Packet; AGENTS.md and docs/domains/flowdoc-global-codex-guidance.md route future rooms to the mandatory return and liveness rule."
+    },
+    {
+      "id": "record-work-room-return-liveness-records",
+      "label": "Record Project Control records for WORK room return and liveness.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "Project Control records Work context update, Phase, Checklist, Evidence, and document repository refs without product truth promotion.",
+      "verificationNote": "Registered phase-agent-and-skill-design-work-room-return-liveness, checklist-agent-and-skill-design-work-room-return-liveness, evidence-flowdoc-work-room-return-liveness-2026-09-02, and related document repository refs; product repositories and map truth were intentionally not changed."
+    },
+    {
+      "id": "verify-work-room-return-liveness-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-room-return-liveness-2026-09-02"],
+      "evidenceTarget": "Focused WORK room return liveness guard, generation, data validation, and full Project Control gate pass before handoff.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check pass after Project Control records are registered."
+    }
+  ],
+  "createdAt": "2026-09-02T08:55:00.000+07:00",
+  "updatedAt": "2026-09-02T08:55:00.000+07:00"
+}

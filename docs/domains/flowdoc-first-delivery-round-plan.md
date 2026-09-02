@@ -117,17 +117,26 @@ repository-owned evidence, is:
 
 Use `docs/domains/flowdoc-work-type-routing-model.md` before dispatching these
 lanes. Each Lane Card and Kickoff Packet must include a Work Type, Context
-Capsule, expected Context Acknowledgement, and retrievable locator requirement.
+Capsule, expected Context Acknowledgement, Return Channel, Liveness Signal,
+Death Signal, and retrievable locator requirement.
 
 The Context Capsule must carry the lane-specific understanding from this PLAN
 room: owner repository, active role, allowed scope, forbidden scope, required
 reading, accepted facts, risks, unknowns, terminology decisions, Evidence
 target, stop condition, handoff format, and Contract Change Request trigger.
+It must also name the mandatory WORK room return path so a terminal return of
+PASS / FAIL / BLOCKER / RISK / UNKNOWN reaches the PLAN room.
 
 The Context Acknowledgement must be checked before implementation starts. If a
 WORK room cannot acknowledge the capsule, the room stays `needs-attention` or
 `blocked` until the PLAN room revises the packet or asks `ตูม` for a missing
 decision.
+
+The PLAN room must record liveness for every opened WORK room. A silent room,
+lost room, or room without terminal return must not be accepted. The PLAN room
+must use the retrievable locator to pull the result, record a Death Signal when
+the room cannot be recovered, and continue by revising, reopening, blocking, or
+asking `ตูม` for the missing room reference.
 
 ## Lane Cards
 
@@ -309,6 +318,9 @@ Forbidden scope: product behavior, product repository Markdown for FlowDoc-wide 
 Required reading: Project Control AGENTS.md; FlowDoc Delivery Operating Model; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Documentation Authority Operating Rules.
 Context Capsule: Project Control owns this lane's round records, authority boundaries, evidence registration language, generated read-model update, and no-product-edit rule.
 Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
+Return Channel: send the terminal return back to the PLAN room handoffInbox for this lane.
+Liveness Signal: PLAN tracks the room through the Room Run Registry, retrievable locator, last observed state, and livenessDeadline.
+Death Signal: if the room disappears or cannot return, PLAN marks the room as a silent room with returned-silent, RISK, UNKNOWN, or blocked and the lane must not be accepted.
 Expected output: bounded Project Control record updates for returned lane evidence.
 Evidence target: focused Project Control guard, npm run generate, npm run check:data, npm run check.
 Stop condition: missing repository id, commit, path/contract id, verification summary, or owner-limited claim.
@@ -328,6 +340,9 @@ Forbidden scope: Backend gateway implementation, Backend product database, Core 
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Editor AGENTS.md; relevant Editor source/tests.
 Context Capsule: Editor owns browser runtime and structure/publish UI behavior only; Backend gateway, Core semantics, Project Control truth, and product Markdown authority stay outside this lane.
 Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
+Return Channel: send the terminal return back to the PLAN room handoffInbox for this lane.
+Liveness Signal: PLAN tracks the room through the Room Run Registry, retrievable locator, last observed state, and livenessDeadline.
+Death Signal: if the room disappears or cannot return, PLAN marks the room as a silent room with returned-silent, RISK, UNKNOWN, or blocked and the lane must not be accepted.
 Expected output: Editor handoff for the structure creation and publish boundary.
 Evidence target: Editor commit, exact files, focused Editor tests, full Editor gate when available, and unpromoted product states.
 Stop condition: publish ownership depends on an unresolved Backend gateway contract.
@@ -347,6 +362,9 @@ Forbidden scope: Project Control SQLite as product persistence, real secret valu
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Backend AGENTS.md; relevant Backend source/tests; Core contracts only through approved boundaries.
 Context Capsule: Backend owns gateway, credential reference, persistence, job, validation, and artifact boundaries; Project Control SQLite is not product persistence and real secrets must not be stored.
 Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
+Return Channel: send the terminal return back to the PLAN room handoffInbox for this lane.
+Liveness Signal: PLAN tracks the room through the Room Run Registry, retrievable locator, last observed state, and livenessDeadline.
+Death Signal: if the room disappears or cannot return, PLAN marks the room as a silent room with returned-silent, RISK, UNKNOWN, or blocked and the lane must not be accepted.
 Expected output: Backend handoff for gateway, credential, persistence, job, and artifact boundaries.
 Evidence target: Backend commit, exact route/contract/storage paths, focused Backend tests, full Backend gate when available, and no secret material.
 Stop condition: the lane needs to change Core semantics, PDF ownership, Editor publish expectations, or source-of-truth rules.
@@ -366,6 +384,9 @@ Forbidden scope: Backend HTTP routes, Backend product database storage, Editor b
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Core AGENTS.md; relevant Core document maps/contracts/tests.
 Context Capsule: Core owns document package semantics, validation, mutation contracts, template/data binding semantics, and generation input contracts; Backend routes, Editor UI, and Project Control truth stay outside this lane.
 Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
+Return Channel: send the terminal return back to the PLAN room handoffInbox for this lane.
+Liveness Signal: PLAN tracks the room through the Room Run Registry, retrievable locator, last observed state, and livenessDeadline.
+Death Signal: if the room disappears or cannot return, PLAN marks the room as a silent room with returned-silent, RISK, UNKNOWN, or blocked and the lane must not be accepted.
 Expected output: Core handoff for document package, data binding, and PDF boundary questions.
 Evidence target: Core commit, exact contract/schema/test paths, focused Core tests, full Core gate when available, and unknown renderer or artifact service ownership.
 Stop condition: PDF output ownership cannot be identified as Core-owned, Backend-owned, split, or blocked.
@@ -385,6 +406,9 @@ Forbidden scope: feature implementation before owner-lane handoffs, broad produc
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; owner-lane handoffs; relevant owner repository AGENTS.md files for any repo touched.
 Context Capsule: this lane starts only after owner-lane handoffs are accepted and keeps integration smoke results bounded to exact commits, commands, route or artifact paths, and unpromoted product states.
 Context Acknowledgement: before edits, repeat the Work Type, lane ID, bounded repository set, accepted owner-lane handoffs, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
+Return Channel: send the terminal return back to the PLAN room handoffInbox for this lane.
+Liveness Signal: PLAN tracks the room through the Room Run Registry, retrievable locator, last observed state, and livenessDeadline.
+Death Signal: if the room disappears or cannot return, PLAN marks the room as a silent room with returned-silent, RISK, UNKNOWN, or blocked and the lane must not be accepted.
 Expected output: bounded evidence packet for the First Delivery Slice.
 Evidence target: exact repository commits, exact commands, route or artifact paths, and Project Control Evidence records for only verified claims.
 Stop condition: an owner lane lacks accepted evidence or an undeclared cross-repository contract change is required.
@@ -399,9 +423,10 @@ No real WORK room has been opened by this plan. Opening a WORK room requires
 Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` before opening a
 dispatch set with more than one real WORK room. The PLAN room must record the
 selected lane IDs, Work Types, Context Capsules, expected Context
-Acknowledgement, `parallelLimit`, `laneDependencyGraph`, held-back lanes, Room
-Run Registry entries, retrievable locators, and the expected acceptance order
-before treating the set as dispatch-ready.
+Acknowledgement, Return Channel, Liveness Signal, Death Signal,
+`parallelLimit`, `laneDependencyGraph`, held-back lanes, Room Run Registry
+entries, retrievable locators, and the expected acceptance order before
+treating the set as dispatch-ready.
 
 The PLAN room must give each WORK room the matching Kickoff Packet and Context
 Capsule. A WORK room must not redefine the round goal, owner repository,

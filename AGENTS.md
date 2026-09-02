@@ -42,8 +42,11 @@ dispatch more than one WORK room, read the PLAN Room Orchestration Rules before
 opening or accepting rooms. Read the FlowDoc Work Type Routing Model before a
 PLAN room assigns lane Work Types, writes Context Capsules, expects Context
 Acknowledgement, chooses skill candidates, or accepts a returned lane by Work
-Type. Keep this room distinction explicit: PLAN room coordinates; WORK room is
-a real separate Codex task/chat that executes one approved lane.
+Type. A WORK room has mandatory WORK room return and liveness obligations:
+silence, lost room state, or a missing terminal return of PASS / FAIL /
+BLOCKER / RISK / UNKNOWN must not be accepted. Keep this room distinction
+explicit: PLAN room coordinates; WORK room is a real separate Codex task/chat
+that executes one approved lane.
 
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or

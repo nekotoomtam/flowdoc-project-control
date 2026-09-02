@@ -30,7 +30,8 @@ readiness, release readiness, FlowDoc product truth, or map truth.
 - Known risks: a WORK room may finish without pushing its handoff back to the
   PLAN room, multiple WORK rooms may finish before PLAN can process them,
   `N WORK rooms` may be set higher than the PLAN room can track, room IDs may
-  be missing, and partial handoffs may be mistaken for accepted evidence
+  be missing, a silent room may disappear without a terminal return, and
+  partial handoffs may be mistaken for accepted evidence
 - Unknown state: this document does not prove that every Codex environment can
   automatically wake a PLAN room from a completed WORK room; until that is
   proven, PLAN rooms must use a pull/review step
@@ -119,8 +120,13 @@ Minimum registry fields:
 - Work path, Phase target, Checklist target, and Evidence target;
 - Context Capsule reference or summary;
 - Context Acknowledgement status;
+- Return Channel;
+- Liveness Signal;
+- `livenessDeadline`;
+- `lastHeartbeatAt`;
+- Death Signal or `deathSignal`;
 - status: `queued`, `running`, `needs-attention`, `returned`, `accepted`,
-  `rejected`, `blocked`, or `closed`;
+  `returned-silent`, `rejected`, `blocked`, or `closed`;
 - last observed state and timestamp;
 - handoff ID or handoff location when returned;
 - next PLAN action.
@@ -131,6 +137,35 @@ record. It must still be explicit enough that a future PLAN room can find which
 WORK rooms exist, which Context Capsule each room received, which handoffs
 remain unprocessed, and which locator can be used for pull review.
 
+## WORK Room Return And Liveness
+
+Every WORK room must have a mandatory WORK room return path before dispatch.
+The PLAN room must know the Return Channel for the terminal return, the
+Liveness Signal that proves the room is still running or waiting, and the Death
+Signal to record when the room disappears.
+
+A terminal return is required for every outcome:
+
+- PASS / FAIL / BLOCKER / RISK / UNKNOWN;
+- lane ID;
+- Work Type;
+- owner repository;
+- Context Acknowledgement result;
+- retrievable locator;
+- changed behavior and tests run, if any;
+- evidence candidate or reason evidence is unavailable.
+
+The Room Run Registry must record `livenessDeadline` and `lastHeartbeatAt`
+when a WORK room is opened. If the PLAN room reaches the deadline without a
+handoff, it must use the retrievable locator to pull the result. If the room is
+gone, cannot be found, or cannot produce a terminal return, record
+`deathSignal`, mark the run `returned-silent`, `needs-attention`, `RISK`,
+`UNKNOWN`, or `blocked`, and choose the next PLAN action.
+
+If a WORK room disappears, the missing result is itself a PLAN-visible event.
+The lane must not be accepted, dependent lanes must not open from it, and the
+PLAN room must not treat silence as success.
+
 ## Pull Review Rule
 
 A WORK room should return its structured handoff to the PLAN room. Current
@@ -139,8 +174,9 @@ Codex task behavior may not always push that result back automatically.
 If a WORK room does not push a final handoff back to the PLAN room, the PLAN
 room must actively pull the result by using the stored Codex task/chat ID,
 available task list, or known worktree/branch location. If the PLAN room cannot
-find the room result, mark the room run as `UNKNOWN` or `RISK` and ask `ตูม`
-for the missing room/task reference before accepting the lane.
+find the room result, mark the room run as `returned-silent`, `UNKNOWN`, or
+`RISK` and ask `ตูม` for the missing room/task reference before accepting the
+lane.
 
 The PLAN room must not treat "the WORK room probably finished" as accepted
 evidence.
@@ -192,6 +228,8 @@ A returned handoff can be accepted only when it includes:
 - the expected lane ID and owner repository;
 - the expected Work Type and completed Context Acknowledgement;
 - a retrievable locator from the Room Run Registry;
+- terminal return status, or an explicit silent-room state that keeps the lane
+  unaccepted;
 - exact commit, file, test, or contract references for the owning repository;
 - fresh verification results from the owning repository when product behavior
   changed;
@@ -212,6 +250,10 @@ If any required field is missing, mark the handoff `rejected` or
 requests a scope, owner, source-of-truth, evidence, or contract change, process
 the Contract Change Request before accepting any dependent handoff.
 
+A silent room or missing terminal return must not be accepted. Treat it as a
+PLAN-visible liveness failure and decide whether to pull again, ask `ตูม` for a
+room reference, reopen the lane, shrink the dispatch set, or block the round.
+
 ## PLAN Event Loop
 
 A PLAN room that coordinates real WORK rooms should loop in this order:
@@ -226,9 +268,12 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
 5. Choose a dispatch set and record `parallelLimit`.
 6. Ask `ตูม` to approve the dispatch set or approve a revised smaller set.
 7. Open or instruct opening real WORK rooms with exact Kickoff Packets that
-   include Work Type, Context Capsule, and expected Context Acknowledgement.
-8. Record each room in the Room Run Registry with a retrievable locator.
-9. Wait for, read, or pull returned handoffs.
+   include Work Type, Context Capsule, expected Context Acknowledgement,
+   Return Channel, Liveness Signal, and Death Signal.
+8. Record each room in the Room Run Registry with a retrievable locator,
+   livenessDeadline, and lastHeartbeatAt.
+9. Wait for, read, or pull returned handoffs; treat missing terminal return as
+   a liveness event, not as success.
 10. Put returned handoffs into `handoffInbox` and `completionQueue`.
 11. Run `acceptanceGate` one handoff at a time.
 12. Update Project Control records only from accepted handoffs and verified
@@ -268,6 +313,8 @@ A PLAN room handoff after multi-room coordination must include:
 - Room Run Registry status for every opened WORK room;
 - Work Type, Context Capsule, Context Acknowledgement, and retrievable locator
   status for every opened WORK room;
+- Return Channel, Liveness Signal, Death Signal, livenessDeadline,
+  lastHeartbeatAt, and any silent room decision;
 - handoffInbox and completionQueue decisions;
 - accepted, rejected, blocked, and still-unknown lane IDs;
 - files changed by repository;
