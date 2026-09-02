@@ -147,6 +147,22 @@ recovery fallback may preserve work if the Return Channel fails, but PLAN must
 record `manual-recovered` or `return-channel-failed`, and that recovery does
 not satisfy automatic return.
 
+For the next real-room dispatch, automatic return must be an active
+WORK-to-PLAN return push. The Kickoff Packet must include the PLAN task/chat
+ID, Return Event ID or handoff ID, and Active Return Command; when Codex thread
+tools expose `send_message_to_thread`, WORK uses that command to send the
+Terminal Handoff back to PLAN before or with its own final answer. A WORK room
+final answer alone is not enough for PLAN to continue automatically.
+
+The 2026-09-02 Editor plus Project Control return-channel probe showed that a
+clientThreadId-only dispatch did not satisfy automatic return. Both WORK
+results were retrievable later, but PLAN had to discover real task IDs through
+session/worktree locators before it could read or wait on the rooms. Classify
+that result as `return-channel-failed-then-recovered` or `manual-recovered`,
+not `automatic-returned`. `clientThreadId` alone is not a monitorable
+retrievable locator, and PLAN must not treat it as enough for a scalable
+multi-WORK dispatch set.
+
 If PLAN opens multiple active WORK rooms, it must keep every room in the Room
 Run Registry, accept close-together returns into `completionQueue`, assign
 `arrivalSequence`, apply `returnOrderPolicy`, treat a duplicate handoff

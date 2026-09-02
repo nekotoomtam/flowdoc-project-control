@@ -91,8 +91,10 @@ Minimum fields:
 - Evidence target
 - Stop condition
 - Handoff format
+- PLAN task/chat ID or PLAN-owned monitor locator
 - Return Channel
 - Automatic Return Channel
+- Active Return Command
 - Return Event ID or handoff ID
 - Liveness Signal
 - Death Signal
@@ -119,9 +121,13 @@ Minimum acknowledgement:
 - the evidence target it will use;
 - the risks and unknowns it will preserve;
 - the stop conditions that will make it return to PLAN;
+- the PLAN task/chat ID or PLAN-owned monitor locator it will send the
+  terminal handoff to;
 - the Return Channel it will use for the terminal return;
 - the Automatic Return Channel it will use so PLAN does not require `ตูม` to
   copy/paste Terminal Handoffs;
+- the Active Return Command it will use, such as `send_message_to_thread` when
+  Codex thread tools expose it;
 - the Return Event ID or handoff ID PLAN can use for duplicate handoff
   detection;
 - the Liveness Signal the PLAN room can use while it is running;
@@ -147,11 +153,30 @@ worktree, branch, commit, or handoff locator, but it must be recorded as
 `manual-recovered` or `return-channel-failed` and does not satisfy automatic
 return.
 
+Automatic return means an active WORK-to-PLAN return push. The WORK room must
+send the structured Terminal Handoff to the PLAN task/chat ID or PLAN-owned
+monitor from its Kickoff Packet. When Codex thread tools expose
+`send_message_to_thread`, that command is the Active Return Command. The WORK
+room final answer alone is not enough because PLAN can enqueue it without
+manual locator discovery only after the handoff is pushed back to PLAN or the
+PLAN-owned monitor. If PLAN later recovers a missed handoff by task, thread,
+session, worktree, branch, commit, or handoff location, record
+`return-channel-failed-then-recovered` or `manual-recovered`; that recovery
+does not satisfy automatic return.
+
+`clientThreadId` alone is not a monitorable retrievable locator. It means room
+creation was queued, but PLAN cannot rely on it to wait on a real task/chat,
+send a Revision Packet, or prove liveness. Until a real task/chat ID or other
+monitorable locator is resolved, the room remains `queued` or
+`needs-attention`.
+
 The Context Capsule must define:
 
 - Return Channel: where the WORK room sends its terminal return.
 - Automatic Return Channel: how the terminal return reaches PLAN without a
   user bridge.
+- Active Return Command: the exact action the WORK room must take to push the
+  terminal handoff to PLAN.
 - Return Event ID or handoff ID: how PLAN recognizes a duplicate handoff and
   keeps the return idempotent.
 - Liveness Signal: how the PLAN room can tell the WORK room is still running,
@@ -178,6 +203,11 @@ A Room Run Registry entry must contain at least one retrievable locator: Codex
 task/chat ID, worktree/branch, or handoff location. If none is known, the run is
 not trackable enough for PLAN acceptance and must remain `needs-attention`,
 `RISK`, or `UNKNOWN`.
+
+For Codex room creation, `clientThreadId` alone is not a monitorable
+retrievable locator. PLAN may keep it as a queued creation reference, but it
+must resolve a real task/chat ID or another monitorable locator before
+accepting liveness, active return, or same-room revision behavior.
 
 Branches, worktrees, task IDs, screenshots, mockups, and handoff notes are
 locators or supporting material. They are not enough to prove changed product
@@ -243,8 +273,9 @@ When preparing a dispatch set, the PLAN room must:
 2. split lanes whose primary outputs require conflicting Work Types;
 3. write a Context Capsule for every lane chosen for dispatch;
 4. record the expected Context Acknowledgement;
-5. record the Automatic Return Channel, Return Event ID or handoff ID, and
-   retrievable locator requirement in the Room Run Registry;
+5. record the PLAN task/chat ID, Automatic Return Channel, Active Return
+   Command, Return Event ID or handoff ID, and retrievable locator requirement
+   in the Room Run Registry;
 6. review returned handoffs against the lane's Work Type acceptance focus;
 7. reject or return handoffs that lack exact commits, required verification, or
    required acknowledgement for their Work Type;

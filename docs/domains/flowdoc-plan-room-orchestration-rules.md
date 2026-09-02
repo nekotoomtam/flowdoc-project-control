@@ -120,6 +120,13 @@ ordinary progress. If a room can only be recovered through manual copy/paste or
 manual locator inspection, the result may preserve work as `manual-recovered`,
 but the dispatch set does not satisfy automatic return.
 
+Automatic return means an active WORK-to-PLAN return push. The WORK room must
+send the structured Terminal Handoff to the PLAN task/chat ID or PLAN-owned
+monitor named in the Kickoff Packet. When Codex thread tools expose
+`send_message_to_thread`, that command is the active Return Command. WORK room
+final answer alone is not an active Return Channel because PLAN cannot enqueue
+it without manual locator discovery.
+
 ## Room Run Registry
 
 Every opened WORK room must have a Room Run Registry entry before or
@@ -138,16 +145,24 @@ Minimum registry fields:
 - Work path, Phase target, Checklist target, and Evidence target;
 - Context Capsule reference or summary;
 - Context Acknowledgement status;
+- PLAN task/chat ID or PLAN-owned monitor locator;
 - Return Channel;
 - Automatic Return Channel;
+- Active Return Command;
 - Return Event ID or pending return event state;
 - Liveness Signal;
 - `livenessDeadline`;
 - `lastHeartbeatAt`;
 - Death Signal or `deathSignal`;
+- `clientThreadId` resolution status, when a create-room action returns only a
+  client-side queued locator;
+- `threadIdResolvedAt`, when PLAN resolves a monitorable task/chat ID;
+- `locatorDiscoveryMethod`, such as direct create result, task monitor, task
+  list, session file, worktree, branch, or user-provided reference;
 - status: `queued`, `running`, `needs-attention`, `returned`, `accepted`,
   `needs-revision`, `returned-silent`, `manual-recovered`,
-  `return-channel-failed`, `rejected`, `blocked`, or `closed`;
+  `return-channel-failed`, `return-channel-failed-then-recovered`, `rejected`,
+  `blocked`, or `closed`;
 - last observed state and timestamp;
 - handoff ID or handoff location when returned;
 - `arrivalSequence`, when PLAN receives or recovers a terminal handoff;
@@ -172,6 +187,20 @@ terminal handoff back to the PLAN room or a PLAN-owned monitor without requiring
 `ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
 Terminal Handoffs. A manual recovery fallback is only a recovery path for
 missed or failed Return Channels; it does not satisfy automatic return.
+
+For Codex task/chat rooms, the Kickoff Packet must include the PLAN task/chat
+ID, Return Event ID or handoff ID, and the Active Return Command. When
+`send_message_to_thread` is available, the WORK room must call it to send the
+terminal handoff to PLAN. The WORK room may also place the same handoff in its
+own final answer, but that final answer is only a local record and is not the
+active Return Channel.
+
+`clientThreadId` alone is not a monitorable retrievable locator. It records
+that room creation has been queued, but it is not enough for PLAN to wait on a
+real task/chat, send a Revision Packet, or prove liveness. Until PLAN resolves
+a real Codex task/chat ID or another monitorable locator, the room run remains
+`queued` or `needs-attention`; PLAN must not open a scalable multi-WORK
+dispatch set from that room state.
 
 A terminal return is required for every outcome:
 
@@ -208,9 +237,12 @@ scalable WORK-to-PLAN return.
 
 If a WORK room does not push a final handoff back to the PLAN room, the PLAN
 room must mark `return-channel-failed` or another explicit missed-return state
-before using the stored Codex task/chat ID, available task list, or known
-worktree/branch location. PLAN may pull by retrievable locator only to recover
-or classify the room. If the PLAN room cannot find the room result, mark the
+before using the stored Codex task/chat ID, available task list, session files,
+or known worktree/branch location. PLAN may pull by retrievable locator only to
+recover or classify the room. If recovery finds a terminal handoff after the
+missed return was recorded, classify it as
+`return-channel-failed-then-recovered` or `manual-recovered`, not
+`automatic-returned`. If the PLAN room cannot find the room result, mark the
 room run as `returned-silent`, `UNKNOWN`, or `RISK` and ask `ตูม` for the
 missing room/task reference before accepting the lane.
 
@@ -241,8 +273,8 @@ Each inbox item must keep the original handoff bounded to:
 - PR Summary Draft.
 - Return Event ID, handoff ID, or room run ID for duplicate handoff detection;
 - `arrivalSequence`;
-- automatic return status: `automatic-returned`, `manual-recovered`, or
-  `return-channel-failed`.
+- automatic return status: `automatic-returned`, `manual-recovered`,
+  `return-channel-failed`, or `return-channel-failed-then-recovered`.
 
 The inbox is not acceptance. It is only the staging area before PLAN review.
 
@@ -275,7 +307,9 @@ A returned handoff can be accepted only when it includes:
 - the expected Work Type and completed Context Acknowledgement;
 - a retrievable locator from the Room Run Registry;
 - automatic Return Channel evidence, or an explicit `manual-recovered` /
-  `return-channel-failed` state that is recorded as a scaling failure;
+  `return-channel-failed` /
+  `return-channel-failed-then-recovered` state that is recorded as a scaling
+  failure;
 - terminal return status, or an explicit silent-room state that keeps the lane
   unaccepted;
 - exact commit, file, test, or contract references for the owning repository;
@@ -381,10 +415,12 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
 6. Ask `ตูม` to approve the dispatch set or approve a revised smaller set.
 7. Open or instruct opening real WORK rooms with exact Kickoff Packets that
    include Work Type, Context Capsule, expected Context Acknowledgement,
-   Automatic Return Channel, Return Event ID or handoff ID expectation,
-   Liveness Signal, and Death Signal.
+   PLAN task/chat ID, Automatic Return Channel, Active Return Command, Return
+   Event ID or handoff ID expectation, Liveness Signal, and Death Signal.
 8. Record each room in the Room Run Registry with a retrievable locator,
-   livenessDeadline, lastHeartbeatAt, and return-channel state.
+   livenessDeadline, lastHeartbeatAt, and return-channel state. If creation
+   returns only `clientThreadId`, record it as queued and resolve a real
+   task/chat ID before treating the room as monitorable.
 9. Wait for automatic returned handoffs. If a Return Channel misses its
    deadline, record `return-channel-failed` before any manual recovery
    fallback.

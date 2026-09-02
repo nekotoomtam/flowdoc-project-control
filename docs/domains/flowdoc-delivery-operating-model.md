@@ -123,6 +123,19 @@ direct Return Channel that can deliver the terminal handoff back to the PLAN
 room or a PLAN-owned monitor without requiring `ตูม` to copy/paste Terminal
 Handoffs. It must not require `ตูม` to copy/paste Terminal Handoffs.
 
+Automatic return means an active WORK-to-PLAN return push, not only a final
+answer inside the WORK room. A Kickoff Packet must give the WORK room the PLAN
+task/chat ID, Return Event ID or handoff ID, and Active Return Command; when
+Codex thread tools expose `send_message_to_thread`, the WORK room uses that
+command to send the Terminal Handoff to PLAN before or with its local final
+answer. `clientThreadId` alone is not a monitorable retrievable locator; until
+PLAN resolves a real task/chat ID or other monitorable locator, the room run
+remains queued or `needs-attention` and PLAN must not open a scalable
+multi-WORK dispatch set from it. If PLAN later recovers the result by task,
+thread, session, worktree, branch, or handoff location, record
+`return-channel-failed-then-recovered` or `manual-recovered`; that recovery
+does not satisfy automatic return.
+
 A dispatch set is not accepted as scalable until every active WORK room has a
 direct Return Channel, a retrievable locator, a liveness signal, and a death
 signal. PLAN may use a manual recovery fallback only after the Return Channel
@@ -222,6 +235,9 @@ Each lane should define:
 - Evidence target
 - Stop condition
 - Handoff format
+- PLAN task/chat ID or PLAN-owned monitor locator
+- Active Return Command
+- Return Event ID or handoff ID
 
 ## WORK Room Kickoff Rule
 

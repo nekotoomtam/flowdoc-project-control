@@ -73,8 +73,19 @@ room can continue without guessing when a room fails, blocks, or disappears.
 Automatic WORK-to-PLAN return is mandatory. A WORK room's Return Channel must
 send the Terminal Handoff to PLAN or a PLAN-owned monitor without requiring
 `ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
-Terminal Handoffs. A manual recovery fallback may preserve work after a missed
-Return Channel, but it must be recorded as
+Terminal Handoffs. Automatic return means an active WORK-to-PLAN return push,
+not only a final answer inside the WORK room. A Kickoff Packet must give the
+WORK room the PLAN task/chat ID, Return Event ID or handoff ID, and Active
+Return Command; when Codex thread tools expose `send_message_to_thread`, the
+WORK room uses that command to send the Terminal Handoff to PLAN before or
+with its local final answer. `clientThreadId` alone is not a monitorable
+retrievable locator; until PLAN resolves a real task/chat ID or other
+monitorable locator, the room run remains queued or `needs-attention` and PLAN
+must not open a scalable multi-WORK dispatch set from it. If PLAN later
+recovers the result by task, thread, session, worktree, branch, or handoff
+location, record `return-channel-failed-then-recovered` or `manual-recovered`;
+that recovery does not satisfy automatic return. A manual recovery fallback may
+preserve work after a missed Return Channel, but it must be recorded as
 `manual-recovered` or `return-channel-failed` and does not satisfy automatic
 return. PLAN must be able to hold multiple active WORK rooms, enqueue
 close-together returns in `completionQueue`, preserve `returnOrderPolicy` and
