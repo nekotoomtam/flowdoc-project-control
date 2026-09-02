@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-work-type-routing-model",
+  "phaseId": "phase-agent-and-skill-design-work-type-routing-model",
+  "title": "Work Type Routing Model Checklist",
+  "items": [
+    {
+      "id": "capture-work-type-routing-context",
+      "label": "Capture the Work Type routing context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-work-type-routing-model, checklist target checklist-agent-and-skill-design-work-type-routing-model, and evidence target evidence-flowdoc-work-type-routing-model-2026-09-02."
+    },
+    {
+      "id": "write-red-work-type-routing-guard",
+      "label": "Write a failing Project Control guard for Work Type routing.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before the Work Type Routing Model document, records, and entrypoint references exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-work-type-routing-model.test.ts --maxWorkers=1 failed because doc-flowdoc-work-type-routing-model was not linked from the project-control node and Project Control entrypoints did not reference docs/domains/flowdoc-work-type-routing-model.md."
+    },
+    {
+      "id": "define-work-type-taxonomy",
+      "label": "Define the Work Type taxonomy.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "The model defines planning-coordination, product-implementation, evidence-review, documentation-authority, ux-design-exploration, and lane-reconciliation work types with expected outputs and acceptance focus.",
+      "verificationNote": "docs/domains/flowdoc-work-type-routing-model.md records the Work Type Taxonomy and states that lanes with conflicting primary outputs should split unless the PLAN room records why a combined lane is safer."
+    },
+    {
+      "id": "define-context-capsule",
+      "label": "Define the Context Capsule.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "The model defines the minimum Context Capsule fields that must travel from PLAN to WORK before lane execution.",
+      "verificationNote": "docs/domains/flowdoc-work-type-routing-model.md requires Room Mode, Work Type, Work path or round ID, lane ID, owner repository, role, allowed scope, forbidden scope, required reading, accepted facts, risks, unknowns, terminology decisions, Evidence target, stop condition, handoff format, locator requirement, and Contract Change Request trigger."
+    },
+    {
+      "id": "require-context-acknowledgement",
+      "label": "Require Context Acknowledgement before WORK room edits.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "The model requires the WORK room to acknowledge Work Type, scope, reading, risks, evidence target, stop conditions, and retrievable locator before edits.",
+      "verificationNote": "docs/domains/flowdoc-work-type-routing-model.md defines Context Acknowledgement and states that a room that cannot acknowledge the capsule remains needs-attention or blocked."
+    },
+    {
+      "id": "route-plan-and-kickoff-packets",
+      "label": "Route PLAN rules and Kickoff Packets through Work Type context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "AGENTS.md, global guidance, agent operating model, delivery operating model, PLAN room orchestration rules, and the first delivery round plan route future lanes through Work Type, Context Capsule, Context Acknowledgement, retrievable locator, and exact commit rules.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, docs/domains/agent-and-skill-operating-model.md, docs/domains/flowdoc-delivery-operating-model.md, docs/domains/flowdoc-plan-room-orchestration-rules.md, and docs/domains/flowdoc-first-delivery-round-plan.md reference docs/domains/flowdoc-work-type-routing-model.md and require Work Type context in lane cards or Kickoff Packets."
+    },
+    {
+      "id": "record-work-type-routing-records",
+      "label": "Record Project Control records for Work Type routing.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "Project Control records the Document, Work context update, Phase, Checklist, Evidence, and Project Control Node link without product truth promotion.",
+      "verificationNote": "Registered doc-flowdoc-work-type-routing-model, phase-agent-and-skill-design-work-type-routing-model, checklist-agent-and-skill-design-work-type-routing-model, evidence-flowdoc-work-type-routing-model-2026-09-02, and the project-control node document link; product repositories and map truth were intentionally not changed."
+    },
+    {
+      "id": "verify-work-type-routing-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-work-type-routing-model-2026-09-02"],
+      "evidenceTarget": "Focused Work Type routing guard, generation, data validation, and full Project Control gate pass before handoff.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-work-type-routing-model.test.ts, npm run generate, npm run check:data, and npm run check pass after Project Control records are registered."
+    }
+  ],
+  "createdAt": "2026-09-02T08:20:00.000+07:00",
+  "updatedAt": "2026-09-02T08:20:00.000+07:00"
+}

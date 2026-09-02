@@ -60,6 +60,12 @@ before choosing `N WORK rooms`, setting `parallelLimit`, opening a dispatch
 set, tracking Room Run Registry entries, pulling missing handoffs, processing
 `handoffInbox` and `completionQueue`, or accepting returned lane results.
 
+Work-type delivery routing now uses
+`docs/domains/flowdoc-work-type-routing-model.md` as the Project Control
+contract for assigning Work Type to lanes, writing Context Capsules, requiring
+Context Acknowledgement, choosing reusable skill candidates, and reviewing
+returned handoffs by the correct output shape.
+
 A PLAN room coordinates one or more delivery rounds. A WORK room is a real
 separate Codex task/chat visible to the user and executes exactly one approved
 lane. It is not the same thing as an internal subagent. WORK rooms must not
@@ -183,6 +189,13 @@ intentionally unchanged boundaries.
 
 Reusable skills should be written only after their workflow has been repeated
 enough to prove the trigger, scope, inputs, outputs, and stop conditions.
+
+The Work Type Routing Model is the first routing layer before packaged skills.
+It lets the PLAN room classify a lane as `planning-coordination`,
+`product-implementation`, `evidence-review`, `documentation-authority`,
+`ux-design-exploration`, or `lane-reconciliation`, then put the needed
+instructions into the Context Capsule. A Work Type can point toward a skill
+candidate, but it does not create a packaged Codex skill by itself.
 
 ### FlowDoc repository health audit
 

@@ -7,5 +7,11 @@
   "role": "contract",
   "authority": "Draft Project Control coordination contract for FlowDoc agent roles, reusable skill candidates, and broad-work handoffs.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    }
+  ]
 }

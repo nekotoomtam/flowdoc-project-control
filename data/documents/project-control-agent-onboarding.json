@@ -7,5 +7,11 @@
   "role": "contract",
   "authority": "Repository entry contract for new agents and future FlowDoc rooms that must start from Project Control before broad FlowDoc work.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    }
+  ]
 }

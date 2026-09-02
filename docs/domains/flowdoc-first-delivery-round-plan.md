@@ -45,6 +45,7 @@ behavior, tests, runtime contracts, local setup, and implementation evidence.
 
 - [FlowDoc Delivery Operating Model](flowdoc-delivery-operating-model.md)
 - [FlowDoc PLAN Room Orchestration Rules](flowdoc-plan-room-orchestration-rules.md)
+- [FlowDoc Work Type Routing Model](flowdoc-work-type-routing-model.md)
 - [FlowDoc Round Workflow](flowdoc-round-workflow.md)
 - [Work Tree Operating Rules](work-tree-operating-rules.md)
 - [Document Map Operating Rules](document-map-operating-rules.md)
@@ -112,11 +113,28 @@ repository-owned evidence, is:
 - `Room`: `define`. A WORK room is a real separate Codex task/chat visible to
   `ตูม`, not an internal subagent.
 
+## Work Type Routing
+
+Use `docs/domains/flowdoc-work-type-routing-model.md` before dispatching these
+lanes. Each Lane Card and Kickoff Packet must include a Work Type, Context
+Capsule, expected Context Acknowledgement, and retrievable locator requirement.
+
+The Context Capsule must carry the lane-specific understanding from this PLAN
+room: owner repository, active role, allowed scope, forbidden scope, required
+reading, accepted facts, risks, unknowns, terminology decisions, Evidence
+target, stop condition, handoff format, and Contract Change Request trigger.
+
+The Context Acknowledgement must be checked before implementation starts. If a
+WORK room cannot acknowledge the capsule, the room stays `needs-attention` or
+`blocked` until the PLAN room revises the packet or asks `ตูม` for a missing
+decision.
+
 ## Lane Cards
 
 ### lane-project-control-round-records
 
 - Room Mode: `WORK`
+- Work Type: `documentation-authority`
 - Goal: keep this first delivery round registered in Project Control as lanes
   and evidence come back.
 - Owner repository: `repo-project-control`
@@ -129,6 +147,9 @@ repository-owned evidence, is:
   and opening other WORK rooms without PLAN room approval.
 - Inputs: this plan, the Delivery Operating Model, returned lane handoffs, and
   repository-owned evidence from later WORK rooms.
+- Context Capsule: Project Control owns this lane's records, authority
+  boundaries, evidence target, generated read-model update, and no-product-edit
+  rule.
 - Expected output: Project Control records that cite exact owner repository
   commits, checks, supported claims, risks, unknowns, and intentionally
   unpromoted product states.
@@ -143,6 +164,7 @@ repository-owned evidence, is:
 ### lane-editor-structure-publish
 
 - Room Mode: `WORK`
+- Work Type: `product-implementation`
 - Goal: inspect and implement the Editor-owned path for creating or publishing
   the document structure needed by the First Delivery Slice.
 - Owner repository: `repo-editor`
@@ -157,6 +179,9 @@ repository-owned evidence, is:
 - Inputs: this plan, FlowDoc product terminology, Editor `AGENTS.md`, relevant
   Editor source/tests, and any existing Editor handoff/evidence records cited
   by Project Control.
+- Context Capsule: Editor owns the browser runtime and structure/publish UI
+  boundary; Backend gateway, Core semantics, Project Control truth, and product
+  Markdown authority stay outside this lane.
 - Expected output: an Editor handoff stating whether the structure creation and
   publish boundary is implemented, blocked, risk-bearing, or unknown.
 - Evidence target: Editor commit, exact changed files, focused Editor tests,
@@ -170,6 +195,7 @@ repository-owned evidence, is:
 ### lane-backend-gateway-database
 
 - Room Mode: `WORK`
+- Work Type: `product-implementation`
 - Goal: inspect and implement the Backend-owned API key, gateway, product
   database, job, and artifact boundary needed by the First Delivery Slice.
 - Owner repository: `repo-backend`
@@ -185,6 +211,9 @@ repository-owned evidence, is:
 - Inputs: this plan, FlowDoc product terminology, Backend `AGENTS.md`, Backend
   source/tests, Core contract references as allowed by Backend, and returned
   Editor/Core handoffs when sequencing requires them.
+- Context Capsule: Backend owns gateway, credential reference, persistence,
+  job, validation, and artifact boundary decisions; Project Control SQLite is
+  not product persistence and real secrets must not be stored.
 - Expected output: a Backend handoff naming the gateway contract, credential
   boundary, persistence shape, generation job or synchronous response decision,
   artifact retrieval boundary, and evidence status.
@@ -199,6 +228,7 @@ repository-owned evidence, is:
 ### lane-core-document-pdf-boundary
 
 - Room Mode: `WORK`
+- Work Type: `product-implementation`
 - Goal: inspect and implement the Core-owned document package semantics and
   any Core-owned contract needed to transform structure plus input data toward
   PDF output.
@@ -215,6 +245,9 @@ repository-owned evidence, is:
 - Inputs: this plan, FlowDoc product terminology, Core `AGENTS.md`, Core
   document maps, Core contracts/tests, and Backend gateway boundary questions
   when available.
+- Context Capsule: Core owns document package semantics, validation, mutation
+  contracts, template/data binding semantics, and generation input contracts;
+  Backend routes, Editor UI, and Project Control truth stay outside this lane.
 - Expected output: a Core handoff stating the Core package/data/PDF contract
   boundary, implemented or blocked behavior, evidence candidate, and ownership
   questions that need PLAN room resolution.
@@ -230,6 +263,7 @@ repository-owned evidence, is:
 ### lane-integration-evidence
 
 - Room Mode: `WORK`
+- Work Type: `evidence-review`
 - Goal: run the narrow end-to-end evidence round after owner lanes return
   accepted handoffs.
 - Owner repository: bounded set of `repo-editor`, `repo-backend`, `repo-core`,
@@ -244,6 +278,9 @@ repository-owned evidence, is:
   FlowDoc-wide plans, and unreviewed contract rewrites.
 - Inputs: accepted handoffs from Editor, Backend, Core, exact commits, test
   commands, artifact paths, and the current Project Control evidence policy.
+- Context Capsule: this lane starts only after owner-lane handoffs are accepted
+  and must keep integration smoke results bounded to exact commits, commands,
+  route or artifact paths, and unpromoted product states.
 - Expected output: an evidence packet stating whether the First Delivery Slice
   passed, failed, is blocked, is risk-bearing, or remains unknown.
 - Evidence target: exact repository commits, exact commands, exact route or
@@ -263,12 +300,15 @@ Use these packets only after `ตูม` approves opening the specific room.
 
 ```text
 Room Mode: WORK
+Work Type: documentation-authority
 Lane ID: lane-project-control-round-records
 Source of truth: Project Control records and docs/domains/flowdoc-first-delivery-round-plan.md
 Owner repository: repo-project-control
 Allowed scope: Project Control Work, Phase, Checklist, Document, Evidence, and generated read-model records for this round.
 Forbidden scope: product behavior, product repository Markdown for FlowDoc-wide truth, map promotion from planned outcomes, and real secret storage.
 Required reading: Project Control AGENTS.md; FlowDoc Delivery Operating Model; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Documentation Authority Operating Rules.
+Context Capsule: Project Control owns this lane's round records, authority boundaries, evidence registration language, generated read-model update, and no-product-edit rule.
+Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
 Expected output: bounded Project Control record updates for returned lane evidence.
 Evidence target: focused Project Control guard, npm run generate, npm run check:data, npm run check.
 Stop condition: missing repository id, commit, path/contract id, verification summary, or owner-limited claim.
@@ -279,12 +319,15 @@ Handoff format: PASS/FAIL/BLOCKER/RISK/UNKNOWN plus Work ID, Phase ID, Checklist
 
 ```text
 Room Mode: WORK
+Work Type: product-implementation
 Lane ID: lane-editor-structure-publish
 Source of truth: Project Control records and docs/domains/flowdoc-first-delivery-round-plan.md
 Owner repository: repo-editor
 Allowed scope: Editor-owned structure creation, publish boundary, Editor draft, browser runtime, and Editor tests.
 Forbidden scope: Backend gateway implementation, Backend product database, Core document semantics, Project Control truth promotion, and product-wide Markdown plans.
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Editor AGENTS.md; relevant Editor source/tests.
+Context Capsule: Editor owns browser runtime and structure/publish UI behavior only; Backend gateway, Core semantics, Project Control truth, and product Markdown authority stay outside this lane.
+Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
 Expected output: Editor handoff for the structure creation and publish boundary.
 Evidence target: Editor commit, exact files, focused Editor tests, full Editor gate when available, and unpromoted product states.
 Stop condition: publish ownership depends on an unresolved Backend gateway contract.
@@ -295,12 +338,15 @@ Handoff format: PASS/FAIL/BLOCKER/RISK/UNKNOWN plus lane ID, changed behavior, t
 
 ```text
 Room Mode: WORK
+Work Type: product-implementation
 Lane ID: lane-backend-gateway-database
 Source of truth: Project Control records and docs/domains/flowdoc-first-delivery-round-plan.md
 Owner repository: repo-backend
 Allowed scope: Backend API key or credential reference behavior, gateway routes, product database persistence, job status, artifact pointer, validation, and Backend tests.
 Forbidden scope: Project Control SQLite as product persistence, real secret values in source or Project Control, copied Core operation semantics, Editor UI behavior, and product-wide Markdown plans.
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Backend AGENTS.md; relevant Backend source/tests; Core contracts only through approved boundaries.
+Context Capsule: Backend owns gateway, credential reference, persistence, job, validation, and artifact boundaries; Project Control SQLite is not product persistence and real secrets must not be stored.
+Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
 Expected output: Backend handoff for gateway, credential, persistence, job, and artifact boundaries.
 Evidence target: Backend commit, exact route/contract/storage paths, focused Backend tests, full Backend gate when available, and no secret material.
 Stop condition: the lane needs to change Core semantics, PDF ownership, Editor publish expectations, or source-of-truth rules.
@@ -311,12 +357,15 @@ Handoff format: PASS/FAIL/BLOCKER/RISK/UNKNOWN plus lane ID, contract files, tes
 
 ```text
 Room Mode: WORK
+Work Type: product-implementation
 Lane ID: lane-core-document-pdf-boundary
 Source of truth: Project Control records and docs/domains/flowdoc-first-delivery-round-plan.md
 Owner repository: repo-core
 Allowed scope: Core document package schema, validation, mutation contracts, template/data binding semantics, generation input contract, and Core tests.
 Forbidden scope: Backend HTTP routes, Backend product database storage, Editor browser UI state, Project Control product truth promotion, and product-wide Markdown plans.
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; Core AGENTS.md; relevant Core document maps/contracts/tests.
+Context Capsule: Core owns document package semantics, validation, mutation contracts, template/data binding semantics, and generation input contracts; Backend routes, Editor UI, and Project Control truth stay outside this lane.
+Context Acknowledgement: before edits, repeat the Work Type, lane ID, owner repository, allowed/forbidden scope, required reading completed, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
 Expected output: Core handoff for document package, data binding, and PDF boundary questions.
 Evidence target: Core commit, exact contract/schema/test paths, focused Core tests, full Core gate when available, and unknown renderer or artifact service ownership.
 Stop condition: PDF output ownership cannot be identified as Core-owned, Backend-owned, split, or blocked.
@@ -327,12 +376,15 @@ Handoff format: PASS/FAIL/BLOCKER/RISK/UNKNOWN plus lane ID, contract boundary, 
 
 ```text
 Room Mode: WORK
+Work Type: evidence-review
 Lane ID: lane-integration-evidence
 Source of truth: accepted owner-lane handoffs plus Project Control records and docs/domains/flowdoc-first-delivery-round-plan.md
 Owner repository: bounded set of repo-editor, repo-backend, repo-core, and repo-project-control
 Allowed scope: integration harness, smoke evidence collection, Project Control evidence registration, and narrow map recommendation if supported.
 Forbidden scope: feature implementation before owner-lane handoffs, broad product readiness claims, map promotion from partial smoke, repo-local FlowDoc-wide plans, and unreviewed contract rewrites.
 Required reading: Project Control AGENTS.md; FlowDoc First Delivery Round Plan; FlowDoc Product Terminology and Thai companion; owner-lane handoffs; relevant owner repository AGENTS.md files for any repo touched.
+Context Capsule: this lane starts only after owner-lane handoffs are accepted and keeps integration smoke results bounded to exact commits, commands, route or artifact paths, and unpromoted product states.
+Context Acknowledgement: before edits, repeat the Work Type, lane ID, bounded repository set, accepted owner-lane handoffs, evidence target, stop condition, and retrievable locator that PLAN can use for pull review.
 Expected output: bounded evidence packet for the First Delivery Slice.
 Evidence target: exact repository commits, exact commands, route or artifact paths, and Project Control Evidence records for only verified claims.
 Stop condition: an owner lane lacks accepted evidence or an undeclared cross-repository contract change is required.
@@ -346,21 +398,24 @@ No real WORK room has been opened by this plan. Opening a WORK room requires
 
 Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` before opening a
 dispatch set with more than one real WORK room. The PLAN room must record the
-selected lane IDs, `parallelLimit`, `laneDependencyGraph`, held-back lanes,
-Room Run Registry entries, and the expected acceptance order before treating
-the set as dispatch-ready.
+selected lane IDs, Work Types, Context Capsules, expected Context
+Acknowledgement, `parallelLimit`, `laneDependencyGraph`, held-back lanes, Room
+Run Registry entries, retrievable locators, and the expected acceptance order
+before treating the set as dispatch-ready.
 
-The PLAN room must give each WORK room the matching Kickoff Packet. A WORK room
-must not redefine the round goal, owner repository, source-of-truth rule,
-evidence target, or cross-repository contract. If the WORK room finds that the
-packet is wrong, it must stop and return a Contract Change Request instead of
-silently changing scope.
+The PLAN room must give each WORK room the matching Kickoff Packet and Context
+Capsule. A WORK room must not redefine the round goal, owner repository,
+source-of-truth rule, evidence target, or cross-repository contract. If the
+WORK room finds that the packet is wrong, it must stop and return a Contract
+Change Request instead of silently changing scope.
 
 The Core WORK room returned a handoff candidate outside automatic PLAN-room
 push. Before this PLAN room treats that lane as accepted, it must put the
 candidate result into `handoffInbox`, process it through `acceptanceGate`, and
 record whether the Core lane is accepted, needs revision, or changes the next
-dispatch set.
+dispatch set. No accepted Core room locator is recorded yet; the PLAN room
+must identify a task/chat ID, worktree/branch, or handoff location before the
+Core lane can pass acceptance.
 
 ## Handoff Requirements
 
@@ -368,7 +423,9 @@ Each WORK room must return:
 
 - PASS / FAIL / BLOCKER / RISK / UNKNOWN
 - Lane ID
+- Work Type
 - Owner repository
+- Context Acknowledgement result
 - Files changed
 - Behavior changed
 - Tests run

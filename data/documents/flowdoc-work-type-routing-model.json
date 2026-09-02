@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-work-type-routing-model",
+  "title": "FlowDoc Work Type Routing Model",
+  "path": "docs/domains/flowdoc-work-type-routing-model.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control Work Type routing contract for assigning lane Work Type, writing Context Capsules, requiring Context Acknowledgement, preserving retrievable locators, selecting skill candidates, and accepting returned handoffs by output shape.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-work-type-routing-model.test.ts"
+    }
+  ]
+}

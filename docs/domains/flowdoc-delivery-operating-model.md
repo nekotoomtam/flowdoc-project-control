@@ -106,6 +106,13 @@ stages returned work in `handoffInbox`, processes `completionQueue`, and runs
 Those rules extend this Delivery Operating Model. They do not open WORK rooms
 by themselves and do not prove product behavior or map truth.
 
+Use the Work Type Routing Model at
+`docs/domains/flowdoc-work-type-routing-model.md` before assigning Work Type to
+lane cards, writing a lane Context Capsule, requiring Context Acknowledgement,
+choosing reusable skill candidates, or accepting a returned handoff by Work
+Type. Work Type routing extends the Delivery Operating Model without creating
+packaged Codex skills or product evidence by itself.
+
 ## First Delivery Slice
 
 The first delivery slice is:
@@ -178,12 +185,14 @@ shared meaning.
 Each lane should define:
 
 - Lane ID
+- Work Type
 - Goal
 - Owner repository
 - Active role
 - Allowed scope
 - Forbidden scope
 - Inputs
+- Context Capsule
 - Expected output
 - Evidence target
 - Stop condition
@@ -197,11 +206,14 @@ The Kickoff Packet must include:
 
 - Room Mode: `WORK`
 - Lane ID
+- Work Type
 - Source of truth
 - Owner repository
 - Allowed scope
 - Forbidden scope
 - Required reading
+- Context Capsule
+- Expected Context Acknowledgement
 - Expected output
 - Evidence target
 - Stop condition
@@ -240,6 +252,8 @@ Each WORK room returns:
 
 - PASS / FAIL / BLOCKER / RISK / UNKNOWN
 - Lane ID
+- Work Type
+- Context Acknowledgement result
 - Work ID / Phase ID / Checklist item IDs, if assigned
 - Files changed
 - Behavior changed

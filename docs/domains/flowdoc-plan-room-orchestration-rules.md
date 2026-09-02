@@ -40,6 +40,12 @@ readiness, release readiness, FlowDoc product truth, or map truth.
 The Delivery Operating Model defines the two room modes and the required Lane
 Card, Kickoff Packet, handoff, and Contract Change Request shape.
 
+The Work Type Routing Model at
+`docs/domains/flowdoc-work-type-routing-model.md` defines how a PLAN room
+assigns Work Type, writes the lane Context Capsule, expects Context
+Acknowledgement, chooses skill candidates, and accepts or rejects returned work
+by Work Type.
+
 This document adds the PLAN-room event loop for rounds that may use more than
 one real WORK room. It answers when the PLAN room may split work into a
 dispatch set, how the PLAN room chooses `parallelLimit`, and how completed
@@ -54,6 +60,7 @@ room opens or asks `ตูม` to open for one dispatch set.
 the PLAN room records:
 
 - the candidate lane IDs;
+- the Work Type for each candidate lane;
 - the owner repository for each lane;
 - `laneDependencyGraph`, including lanes that must wait for another lane's
   accepted handoff;
@@ -83,6 +90,7 @@ Each dispatch set must record:
 - `dispatchSetId`;
 - round ID;
 - selected lane IDs;
+- Work Type for each selected lane;
 - `parallelLimit`;
 - `laneDependencyGraph`;
 - reason these lanes can run now;
@@ -101,13 +109,16 @@ immediately after the room is created.
 Minimum registry fields:
 
 - `roomRunId`;
-- Codex task/chat ID, or `UNKNOWN` when the task ID was not captured;
+- Codex task/chat ID, worktree/branch, or handoff location; at least one
+  retrievable locator must be recorded before the lane can be accepted;
 - `dispatchSetId`;
 - lane ID;
+- Work Type;
 - owner repository;
 - active role;
 - Work path, Phase target, Checklist target, and Evidence target;
-- worktree or branch name when known;
+- Context Capsule reference or summary;
+- Context Acknowledgement status;
 - status: `queued`, `running`, `needs-attention`, `returned`, `accepted`,
   `rejected`, `blocked`, or `closed`;
 - last observed state and timestamp;
@@ -117,7 +128,8 @@ Minimum registry fields:
 Until Project Control has a dedicated Room Run schema, the registry may live in
 the PLAN room's handoff notes or a bounded Project Control Work/Checklist
 record. It must still be explicit enough that a future PLAN room can find which
-WORK rooms exist and which handoffs remain unprocessed.
+WORK rooms exist, which Context Capsule each room received, which handoffs
+remain unprocessed, and which locator can be used for pull review.
 
 ## Pull Review Rule
 
@@ -141,11 +153,14 @@ Each inbox item must keep the original handoff bounded to:
 
 - status: PASS / FAIL / BLOCKER / RISK / UNKNOWN;
 - lane ID;
+- Work Type;
 - owner repository;
+- Context Acknowledgement result;
 - files changed;
 - behavior changed;
 - tests run;
-- exact commits, branches, or worktrees reported;
+- exact commits reported for changed behavior, plus branches, worktrees, task
+  IDs, or handoff locations used only as locators;
 - evidence candidate or Evidence record request;
 - claims intentionally not promoted;
 - product states that remain unknown;
@@ -175,7 +190,9 @@ result can be accepted into the round.
 A returned handoff can be accepted only when it includes:
 
 - the expected lane ID and owner repository;
-- exact commit, branch, worktree, file, test, or contract references;
+- the expected Work Type and completed Context Acknowledgement;
+- a retrievable locator from the Room Run Registry;
+- exact commit, file, test, or contract references for the owning repository;
 - fresh verification results from the owning repository when product behavior
   changed;
 - a clear statement of behavior changed and behavior intentionally not changed;
@@ -184,6 +201,11 @@ A returned handoff can be accepted only when it includes:
 - no undeclared cross-repository contract change;
 - no FlowDoc-wide truth written into a product repository;
 - a PR Summary Draft when implementation changed.
+
+For product implementation handoffs, changed behavior requires exact commit
+from the owning repository. A branch, worktree, task/chat ID, screenshot,
+mockup, or handoff note can help the PLAN room find the work, but it is not
+enough evidence for changed behavior by itself.
 
 If any required field is missing, mark the handoff `rejected` or
 `needs-attention` and ask the WORK room or `ตูม` for a revision. If the handoff
@@ -199,16 +221,19 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
 2. Break the goal into candidate lanes with owner repositories and stop
    conditions.
 3. Build `laneDependencyGraph`.
-4. Choose a dispatch set and record `parallelLimit`.
-5. Ask `ตูม` to approve the dispatch set or approve a revised smaller set.
-6. Open or instruct opening real WORK rooms with exact Kickoff Packets.
-7. Record each room in the Room Run Registry.
-8. Wait for, read, or pull returned handoffs.
-9. Put returned handoffs into `handoffInbox` and `completionQueue`.
-10. Run `acceptanceGate` one handoff at a time.
-11. Update Project Control records only from accepted handoffs and verified
+4. Assign Work Type to each candidate lane, split lanes with conflicting Work
+   Types, and write a Context Capsule for every lane chosen for dispatch.
+5. Choose a dispatch set and record `parallelLimit`.
+6. Ask `ตูม` to approve the dispatch set or approve a revised smaller set.
+7. Open or instruct opening real WORK rooms with exact Kickoff Packets that
+   include Work Type, Context Capsule, and expected Context Acknowledgement.
+8. Record each room in the Room Run Registry with a retrievable locator.
+9. Wait for, read, or pull returned handoffs.
+10. Put returned handoffs into `handoffInbox` and `completionQueue`.
+11. Run `acceptanceGate` one handoff at a time.
+12. Update Project Control records only from accepted handoffs and verified
     evidence.
-12. Decide whether to dispatch the next set, revise the plan, block, or close
+13. Decide whether to dispatch the next set, revise the plan, block, or close
     the round.
 
 A real WORK room is still a separate Codex task/chat visible to `ตูม`; it is
@@ -218,13 +243,17 @@ not an internal subagent and it must execute one approved lane only.
 
 For the first delivery round, use
 `docs/domains/flowdoc-first-delivery-round-plan.md` as the lane source and this
-document as the orchestration rule.
+document as the orchestration rule. Use
+`docs/domains/flowdoc-work-type-routing-model.md` to assign the lane Work
+Types and Context Capsules before dispatch.
 
 The current Core WORK room returned a handoff candidate outside automatic
 PLAN-room push. Before the PLAN room treats that Core lane as accepted, the
 PLAN room must place the discovered result into `handoffInbox`, run
 `acceptanceGate`, and record whether the lane is accepted, needs revision, or
-requires a Contract Change Request.
+requires a Contract Change Request. No accepted Core room locator is recorded
+yet; the PLAN room must identify a task/chat ID, worktree/branch, or handoff
+location before the Core lane can pass acceptance.
 
 The remaining first-delivery lanes should be dispatched only after the PLAN
 room records a dispatch set and `parallelLimit` against their dependencies.
@@ -237,6 +266,8 @@ A PLAN room handoff after multi-room coordination must include:
 - Work ID, Phase ID, Checklist item IDs, and Evidence target;
 - dispatch set IDs and `parallelLimit` used;
 - Room Run Registry status for every opened WORK room;
+- Work Type, Context Capsule, Context Acknowledgement, and retrievable locator
+  status for every opened WORK room;
 - handoffInbox and completionQueue decisions;
 - accepted, rejected, blocked, and still-unknown lane IDs;
 - files changed by repository;

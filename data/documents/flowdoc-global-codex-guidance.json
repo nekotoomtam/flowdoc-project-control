@@ -7,5 +7,11 @@
   "role": "contract",
   "authority": "Project Control copy-ready global Codex guidance for bootstrapping C:\\Users\\nekot\\.codex\\AGENTS.md so every FlowDoc room routes through Project Control first.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    }
+  ]
 }

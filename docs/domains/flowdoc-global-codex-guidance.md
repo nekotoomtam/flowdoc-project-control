@@ -51,6 +51,7 @@ whether a lane may change shared scope, read:
 ```text
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-delivery-operating-model.md
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-plan-room-orchestration-rules.md
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-work-type-routing-model.md
 ```
 
 Use this document as the shared operating contract for PLAN rooms, real WORK
@@ -59,15 +60,18 @@ Collaboration Identity, and Project Control reference IDs. Use the PLAN Room
 Orchestration Rules before a PLAN room chooses `N WORK rooms`, sets
 `parallelLimit`, opens a dispatch set, tracks room runs, pulls missing
 handoffs, processes `handoffInbox` or `completionQueue`, or runs
-`acceptanceGate`. A WORK room is a real separate Codex task/chat visible to
-the user and executes one approved lane only; it is not the same thing as an
-internal subagent.
+`acceptanceGate`. Use the FlowDoc Work Type Routing Model before assigning
+lane Work Types, writing Context Capsules, expecting Context Acknowledgement,
+choosing skill candidates, or accepting returned lane output by Work Type. A
+WORK room is a real separate Codex task/chat visible to the user and executes
+one approved lane only; it is not the same thing as an internal subagent.
 
 This corresponds to the Project Control document path
 `docs/domains/flowdoc-delivery-operating-model.md` and
-`docs/domains/flowdoc-plan-room-orchestration-rules.md`; keep this delivery
-operating model and its orchestration contract in Project Control rather than
-product-repository Markdown.
+`docs/domains/flowdoc-plan-room-orchestration-rules.md`, extended by
+`docs/domains/flowdoc-work-type-routing-model.md`; keep this delivery
+operating model, orchestration contract, and Work Type routing contract in
+Project Control rather than product-repository Markdown.
 
 ## Documentation authority
 

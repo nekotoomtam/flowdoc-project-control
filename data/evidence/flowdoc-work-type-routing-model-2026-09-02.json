@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-work-type-routing-model-2026-09-02",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0000000000000000000000000000000000000000",
+  "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; data/work/agent-and-skill-design.json; tests/flowdoc-work-type-routing-model.test.ts; npm run check",
+  "verificationSummary": "Pending final commit update: Project Control records the Work Type Routing Model as a coordination contract for assigning Work Type, writing lane-specific Context Capsules, requiring Context Acknowledgement before WORK room edits, separating retrievable locators from exact commit evidence, routing skill candidates, and updating first delivery lane cards and Kickoff Packets. RED evidence: npx vitest run tests/flowdoc-work-type-routing-model.test.ts --maxWorkers=1 failed before doc-flowdoc-work-type-routing-model and entrypoint references existed. GREEN evidence target: tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not create packaged Codex skills, does not open WORK rooms, does not edit Core, Backend, or Editor behavior, does not prove UX readiness, gateway behavior, product database behavior, API key behavior, PDF generation, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-02T08:20:00.000+07:00"
+}
