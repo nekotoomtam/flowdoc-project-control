@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-multi-work-queue-smoke-test",
+  "workId": "agent-and-skill-design",
+  "title": "Multi-WORK Queue Smoke Test",
+  "phaseState": "done",
+  "order": 95,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the queue smoke result.",
+    "Either WORK room does not actively push a Terminal Handoff back to the PLAN task/chat ID.",
+    "The two returned handoffs cannot be assigned distinct arrivalSequence values or processed one at a time through the smoke acceptance check.",
+    "The smoke result is treated as proof of product WORK return, queued clientThreadId dispatch, product behavior, product evidence promotion, or FlowDoc product truth.",
+    "The phase edits Core, Backend, or Editor product behavior or promotes map truth."
+  ],
+  "verificationTarget": "two projectless WORK tasks push distinct Terminal Handoffs to the same PLAN task with mcp__codex_app.send_message_to_thread, PLAN records them in completionQueue as arrivalSequence 1 and arrivalSequence 2, and product WORK active return remains unproven.",
+  "summary": "Done: recorded the bounded two-room active WORK-to-PLAN queue smoke test. WORK tasks 01a06123-7bb2-7e12-b8fc-1efeaa8d99cc and 01a06123-d366-7a93-b57a-3291cf673b98 returned distinct handoffs to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454 with mcp__codex_app.send_message_to_thread. PLAN queued alpha as arrivalSequence 1 and beta as arrivalSequence 2, then processed both read-only handoffs one at a time. The result proves only projectless read-only multi-WORK queue liveness on this local host.",
+  "createdAt": "2026-09-02T15:10:00.000+07:00",
+  "updatedAt": "2026-09-02T15:10:00.000+07:00"
+}

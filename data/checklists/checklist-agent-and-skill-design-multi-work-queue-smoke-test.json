@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-multi-work-queue-smoke-test",
+  "phaseId": "phase-agent-and-skill-design-multi-work-queue-smoke-test",
+  "title": "Multi-WORK Queue Smoke Test Checklist",
+  "items": [
+    {
+      "id": "dispatch-two-return-channel-queue-work-rooms",
+      "label": "Dispatch two return-channel queue WORK rooms.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN opens two real projectless WORK tasks under one dispatch set with distinct lane IDs, roomRunIds, and handoff IDs.",
+      "verificationNote": "PLAN opened WORK task 01a06123-7bb2-7e12-b8fc-1efeaa8d99cc for lane-return-channel-queue-alpha and WORK task 01a06123-d366-7a93-b57a-3291cf673b98 for lane-return-channel-queue-beta under dispatch-return-channel-queue-2026-09-02-01, with parallelLimit 2 and Active Return Command mcp__codex_app.send_message_to_thread."
+    },
+    {
+      "id": "receive-alpha-active-return",
+      "label": "Receive the alpha active return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "The alpha WORK room pushes its Terminal Handoff back to PLAN without user copy/paste.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-return-channel-queue-alpha-2026-09-02-01 from WORK task 01a06123-7bb2-7e12-b8fc-1efeaa8d99cc through mcp__codex_app.send_message_to_thread."
+    },
+    {
+      "id": "receive-beta-active-return",
+      "label": "Receive the beta active return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "The beta WORK room pushes its Terminal Handoff back to PLAN without user copy/paste.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-return-channel-queue-beta-2026-09-02-01 from WORK task 01a06123-d366-7a93-b57a-3291cf673b98 through mcp__codex_app.send_message_to_thread."
+    },
+    {
+      "id": "assign-completion-queue-arrival-sequence",
+      "label": "Assign completionQueue arrival sequence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN assigns deterministic arrivalSequence values to both returned handoffs.",
+      "verificationNote": "PLAN queued alpha as completionQueue arrivalSequence 1 and beta as completionQueue arrivalSequence 2, with distinct handoff IDs for duplicate detection."
+    },
+    {
+      "id": "run-two-room-acceptance-gate",
+      "label": "Run the two-room smoke acceptance gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN processes the queued read-only handoffs one at a time and accepts only the smoke liveness result.",
+      "verificationNote": "Both returned handoffs included PASS, lane ID, Work Type, Context Acknowledgement, PLAN task/chat ID, Active Return Command, retrievable WORK task ID, no file changes, no behavior changes, no product tests, and no promoted claims. PLAN processed them one at a time as smoke handoffs."
+    },
+    {
+      "id": "preserve-product-work-unknowns",
+      "label": "Preserve product WORK unknowns.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "The queue smoke proof does not promote product WORK return, queued clientThreadId dispatch, or product evidence.",
+      "verificationNote": "The orchestration rules and first delivery round plan state that the two-room queue smoke supports only projectless read-only multi-WORK return queue liveness on this local host and does not prove product WORK implementation return, queued clientThreadId dispatch, product evidence promotion, or FlowDoc product truth."
+    },
+    {
+      "id": "record-multi-work-queue-smoke-evidence",
+      "label": "Record Project Control queue smoke evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, Work required evidence, and document refs for the two-room queue smoke result.",
+      "verificationNote": "Registered phase-agent-and-skill-design-multi-work-queue-smoke-test, checklist-agent-and-skill-design-multi-work-queue-smoke-test, evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02, updated agent-and-skill-design requiredEvidence, and added repository refs for the touched Project Control documents."
+    },
+    {
+      "id": "verify-multi-work-queue-smoke-evidence",
+      "label": "Verify the multi-WORK queue smoke evidence gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02"],
+      "evidenceTarget": "Focused queue-smoke guard, generated read model, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-multi-work-queue-smoke-evidence.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T15:10:00.000+07:00",
+  "updatedAt": "2026-09-02T15:10:00.000+07:00"
+}
