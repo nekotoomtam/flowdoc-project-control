@@ -37,14 +37,16 @@ readiness, release readiness, FlowDoc product truth, or map truth.
 - Unknown state: the 2026-09-02 single-room projectless return-channel smoke
   test proved that one WORK room on this local host could actively push a
   Terminal Handoff to the PLAN task with
-  `mcp__codex_app.send_message_to_thread`. The 2026-09-02 two-room
-  projectless return-channel queue smoke test proved that two read-only WORK
-  rooms on this local host could push distinct Terminal Handoffs to the same
-  PLAN task and be queued with `completionQueue` arrivalSequence 1 and
-  arrivalSequence 2. These smoke tests do not prove product WORK active
-  return, queued `clientThreadId` dispatch, every Codex environment, future
-  automatic room wakeups, or product evidence promotion. Manual pull review
-  remains recovery only.
+  `mcp__codex_app.send_message_to_thread`; the single-room smoke test does not
+  prove multi-WORK by itself. The 2026-09-02 two-room projectless
+  return-channel queue smoke test proved that two read-only WORK rooms on this
+  local host could push distinct Terminal Handoffs to the same PLAN task and be
+  queued with `completionQueue` arrivalSequence 1 and arrivalSequence 2. This
+  keeps the boundary explicit: product WORK active return remains unproven.
+  These smoke tests do not prove product WORK active return, queued
+  `clientThreadId` dispatch, every Codex environment, future automatic room
+  wakeups, or product evidence promotion. Manual pull review remains recovery
+  only.
 
 ## Relationship To Delivery Model
 

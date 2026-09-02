@@ -589,6 +589,10 @@ Next recommended product-return test: dispatch one no-op product WORK room in
 an owner repository with a read-only scope first, require active return, and
 accept only the return-channel behavior without promoting product behavior.
 
+Next recommended return test boundary: the next return-channel trial should
+move from projectless rooms to one owner-repository product WORK room while
+remaining read-only and non-promotional.
+
 Next recommended lanes:
 
 - `lane-backend-gateway-database`, to inspect and implement Backend gateway,
