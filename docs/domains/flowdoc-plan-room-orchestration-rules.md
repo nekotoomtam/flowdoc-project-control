@@ -73,6 +73,13 @@ assigns Work Type, writes the lane Context Capsule, expects Context
 Acknowledgement, chooses skill candidates, and accepts or rejects returned work
 by Work Type.
 
+The Lean Dispatch Operating Rules at
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md` define how a PLAN room
+reduces token, review, verification, evidence, and handoff cost for narrow
+lanes without weakening return or acceptance. Lean Dispatch may be used only
+after the dispatch set records the Resource Budget and the fields that cannot
+be omitted.
+
 This document adds the PLAN-room event loop for rounds that may use more than
 one real WORK room. It answers when the PLAN room may split work into a
 dispatch set, how the PLAN room chooses `parallelLimit`, and how completed
@@ -150,6 +157,36 @@ monitor named in the Kickoff Packet. When Codex thread tools expose
 `send_message_to_thread`, that command is the active Return Command. WORK room
 final answer alone is not an active Return Channel because PLAN cannot enqueue
 it without manual locator discovery.
+
+## Lean Dispatch Mode
+
+Lean Dispatch is available for dispatch sets where the PLAN room needs real
+WORK rooms but wants lower token and review cost.
+
+In short, lean mode is a budget profile, not a weaker orchestration mode. A lean packet
+may reduce duplicated background prose, use a Reference Pack instead of copying
+whole source documents, request a compact Terminal Handoff, choose a lower
+verification tier for no-edit or low-risk probes, or batch evidence for several
+small orchestration checks.
+
+Lean Dispatch must not remove automatic return, liveness, retrievable locator,
+or acceptanceGate. The Kickoff Packet must still include the PLAN task/chat ID
+or PLAN-owned monitor, Return Channel, Automatic Return Channel, Active Return
+Command, Return Event ID or handoff ID, livenessDeadline, Death Signal, Work
+Type, lane ID, owner repository, allowed scope, forbidden scope, evidence
+target, stop condition, and Contract Change Request trigger.
+
+The Room Run Registry or dispatch notes must record the Resource Budget fields
+from `docs/domains/flowdoc-lean-dispatch-operating-rules.md`: `contextBudget`,
+`verificationTier`, `reviewTier`, `evidenceMode`, `handoffDetail`, and
+`docReadPolicy`.
+
+If a lean WORK room returns without required acceptanceGate fields, PLAN marks
+the handoff `needs-revision`, sends a Revision Packet to the same WORK room
+when the retrievable locator is usable, and expands only the missing context.
+If the missing context changes owner repository, source-of-truth rule, evidence
+target, delivery scope, or cross-repository contract, PLAN processes a
+Contract Change Request instead of treating the lane as accepted.
 
 ## Room Run Registry
 

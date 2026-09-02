@@ -62,6 +62,11 @@
       "repositoryId": "repo-project-control",
       "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
       "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5f72a209a0a35f4cb4ebe92056fee835315275eb",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
     }
   ]
 }

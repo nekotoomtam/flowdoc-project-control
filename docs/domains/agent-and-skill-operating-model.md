@@ -70,6 +70,15 @@ mandatory WORK room return, liveness tracking, silent room handling, and
 terminal return status of PASS / FAIL / BLOCKER / RISK / UNKNOWN so the PLAN
 room can continue without guessing when a room fails, blocks, or disappears.
 
+Lean Dispatch now uses
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md` as the Project Control
+contract for reducing PLAN/WORK room token, review, verification, evidence, and
+handoff cost. A PLAN room applies Lean Dispatch through Resource Budget fields,
+Reference Packs, compact handoff detail, evidence batching, and escalation
+triggers. Lean Dispatch is a budget profile, not a weaker orchestration mode;
+it must not remove automatic return, liveness, retrievable locator, or
+acceptanceGate.
+
 Automatic WORK-to-PLAN return is mandatory. A WORK room's Return Channel must
 send the Terminal Handoff to PLAN or a PLAN-owned monitor without requiring
 `ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste

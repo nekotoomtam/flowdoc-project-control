@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-lean-dispatch-operating-rules",
+  "title": "FlowDoc Lean Dispatch Operating Rules",
+  "path": "docs/domains/flowdoc-lean-dispatch-operating-rules.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control Lean Dispatch contract for reducing PLAN/WORK room context, token, verification, review, evidence, and handoff cost without weakening automatic return, liveness, retrievable locator, completion queue, or acceptance gate obligations.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "5f72a209a0a35f4cb4ebe92056fee835315275eb",
+      "pathOrContractId": "docs/domains/flowdoc-lean-dispatch-operating-rules.md; AGENTS.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    }
+  ]
+}

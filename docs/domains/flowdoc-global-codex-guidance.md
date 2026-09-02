@@ -52,6 +52,7 @@ whether a lane may change shared scope, read:
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-delivery-operating-model.md
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-plan-room-orchestration-rules.md
 C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-work-type-routing-model.md
+C:\Users\nekot\Documents\GitHub\flowdoc-project-control\docs\domains\flowdoc-lean-dispatch-operating-rules.md
 ```
 
 Use this document as the shared operating contract for PLAN rooms, real WORK
@@ -70,6 +71,13 @@ RISK / UNKNOWN. A WORK room that disappears, misses its Return Channel, or
 cannot provide a terminal return must not be accepted. A WORK room is a real
 separate Codex task/chat visible to the user and executes one approved lane
 only; it is not the same thing as an internal subagent.
+
+Use the FlowDoc Lean Dispatch Operating Rules before a PLAN room marks a
+dispatch set or Kickoff Packet as Lean Dispatch, sets Resource Budget fields,
+uses Reference Packs, chooses compact handoff detail, batches evidence, or
+lowers verification/review scope for a lane. Lean Dispatch is a budget profile,
+not a weaker orchestration mode; it must not remove automatic return,
+liveness, retrievable locator, or acceptanceGate.
 
 Automatic WORK-to-PLAN return is mandatory. The Return Channel must deliver the
 terminal handoff back to PLAN or a PLAN-owned monitor without requiring `ตูม`
@@ -109,9 +117,11 @@ original lane boundary and name any Contract Change Request requirement.
 This corresponds to the Project Control document path
 `docs/domains/flowdoc-delivery-operating-model.md` and
 `docs/domains/flowdoc-plan-room-orchestration-rules.md`, extended by
-`docs/domains/flowdoc-work-type-routing-model.md`; keep this delivery
-operating model, orchestration contract, and Work Type routing contract in
-Project Control rather than product-repository Markdown.
+`docs/domains/flowdoc-work-type-routing-model.md` and
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md`; keep this delivery
+operating model, orchestration contract, Work Type routing contract, and Lean
+Dispatch resource-budget contract in Project Control rather than
+product-repository Markdown.
 
 ## Documentation authority
 
