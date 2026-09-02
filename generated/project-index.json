@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "eaebde08195fee5a0d25ee0622683fc4adac98eb7008b8654ef8ca027a11ced0",
+  "sourceDigest": "8b05319a9d61bc48b36cb04501d094a1e8ffb13bc042ee175e76624ba8293128",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -10456,7 +10456,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -11954,7 +11954,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -11979,7 +11979,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -12009,7 +12009,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -12194,7 +12194,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -12477,7 +12477,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "0000000000000000000000000000000000000000",
+          "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
           "pathOrContractId": "AGENTS.md; tests/flowdoc-work-room-return-liveness.test.ts"
         }
       ],
@@ -14249,9 +14249,9 @@
       "id": "evidence-flowdoc-work-room-return-liveness-2026-09-02",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
       "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/agent-and-skill-operating-model.md; data/work/agent-and-skill-design.json; tests/flowdoc-work-room-return-liveness.test.ts; npm run check",
-      "verificationSummary": "Pending final commit update: Project Control records the mandatory WORK room return and liveness contract so every WORK room must return PASS, FAIL, BLOCKER, RISK, or UNKNOWN to PLAN, every dispatched room has a Return Channel, Liveness Signal, Death Signal, retrievable locator, livenessDeadline, and lastHeartbeatAt, and silent rooms or missing terminal returns must not be accepted. RED evidence: npx vitest run tests/flowdoc-work-room-return-liveness.test.ts --maxWorkers=1 failed before the phase, evidence, and wording existed. GREEN evidence target: tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not prove future Codex room wakeups, does not create packaged skills, does not open WORK rooms, does not edit Core, Backend, or Editor behavior, and does not promote FlowDoc product truth or map truth.",
+      "verificationSummary": "Project Control commit 96a51d31355acee9afa2f38cab311c8764fe3f6d records the mandatory WORK room return and liveness contract so every WORK room must return PASS, FAIL, BLOCKER, RISK, or UNKNOWN to PLAN, every dispatched room has a Return Channel, Liveness Signal, Death Signal, retrievable locator, livenessDeadline, and lastHeartbeatAt, and silent rooms or missing terminal returns must not be accepted. RED evidence: npx vitest run tests/flowdoc-work-room-return-liveness.test.ts --maxWorkers=1 failed before the phase, evidence, and wording existed. GREEN evidence after the evidence record update passed tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not prove future Codex room wakeups, does not create packaged skills, does not open WORK rooms, does not edit Core, Backend, or Editor behavior, and does not promote FlowDoc product truth or map truth.",
       "verifiedAt": "2026-09-02T08:55:00.000+07:00"
     },
     {

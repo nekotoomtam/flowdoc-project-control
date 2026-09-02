@@ -15,7 +15,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
       "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; tests/flowdoc-work-room-return-liveness.test.ts"
     }
   ]
