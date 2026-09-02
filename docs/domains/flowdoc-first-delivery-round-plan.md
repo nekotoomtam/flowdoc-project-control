@@ -163,6 +163,17 @@ not `automatic-returned`. `clientThreadId` alone is not a monitorable
 retrievable locator, and PLAN must not treat it as enough for a scalable
 multi-WORK dispatch set.
 
+After the active return-channel hardening, the 2026-09-02 single-room active
+return smoke test opened projectless WORK task
+`01a0610f-d236-73e1-a4ff-d79fb9f2bd3e` with handoff ID
+`handoff-return-channel-smoke-2026-09-02-01`. The WORK room sent
+`WORK RETURN EVENT: handoff-return-channel-smoke-2026-09-02-01` back to this
+PLAN room with `mcp__codex_app.send_message_to_thread`. PLAN classifies that
+handoff as `automatic-returned` for single-room return-channel liveness only.
+It does not prove multi-WORK close-together returns, product WORK
+implementation returns, queued `clientThreadId` dispatch, evidence promotion,
+or FlowDoc product truth.
+
 If PLAN opens multiple active WORK rooms, it must keep every room in the Room
 Run Registry, accept close-together returns into `completionQueue`, assign
 `arrivalSequence`, apply `returnOrderPolicy`, treat a duplicate handoff
@@ -550,13 +561,19 @@ Stop and return to the PLAN room when:
 This PLAN room records the first delivery round plan, lane packets, and the
 accepted Core WORK room handoff for `lane-core-document-pdf-boundary`.
 
-Automatic WORK-to-PLAN return remains a required dispatch gate for the next
-real WORK rooms. The next dispatch must not require `ตูม` to copy/paste
-Terminal Handoffs, must define a manual recovery fallback that records
-`manual-recovered` or `return-channel-failed`, and must prove that PLAN can
-hold multiple active WORK rooms by using `completionQueue`, `returnOrderPolicy`,
-`arrivalSequence`, duplicate handoff handling, and one queued handoff at a
-time.
+The single-room active return smoke test passes for one projectless WORK room,
+but automatic WORK-to-PLAN return remains a required dispatch gate for product
+WORK rooms and multi-WORK dispatch. The next dispatch must not require `ตูม` to
+copy/paste Terminal Handoffs, must define a manual recovery fallback that
+records `manual-recovered` or `return-channel-failed`, and must prove that PLAN
+can hold multiple active WORK rooms by using `completionQueue`,
+`returnOrderPolicy`, `arrivalSequence`, duplicate handoff handling, and one
+queued handoff at a time.
+
+Next recommended return test: dispatch two read-only WORK rooms with distinct
+handoff IDs, require both to push their Terminal Handoffs to the same PLAN task,
+and process the two returns through `completionQueue` before opening more
+product work.
 
 Next recommended lanes:
 
