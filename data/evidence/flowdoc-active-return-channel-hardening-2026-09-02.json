@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-active-return-channel-hardening-2026-09-02",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
+  "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-first-delivery-round-plan.md; data/work/agent-and-skill-design.json; tests/flowdoc-active-return-channel-hardening.test.ts; npm run check",
+  "verificationSummary": "Project Control hardens automatic WORK-to-PLAN return after the 2026-09-02 real-room probe showed a clientThreadId-only dispatch could complete WORK but still fail clean PLAN continuation. Automatic return now means an active WORK-to-PLAN return push to the PLAN task/chat ID or PLAN-owned monitor, with a Return Event ID or handoff ID and an Active Return Command such as `send_message_to_thread` when Codex thread tools expose it. A WORK room final answer alone is not an active Return Channel. `clientThreadId` alone is not a monitorable retrievable locator for liveness, wait, Revision Packet, or scalable multi-WORK dispatch. A recovered missed handoff must be recorded as return-channel-failed-then-recovered or manual-recovered, not automatic-returned. RED evidence: npx vitest run tests/flowdoc-active-return-channel-hardening.test.ts --maxWorkers=1 failed before the phase and evidence records existed. GREEN evidence target: tests/flowdoc-active-return-channel-hardening.test.ts, related automatic return guards, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not prove future Codex automatic room wakeups, does not accept the Editor WORK result, and does not promote FlowDoc product truth or map truth.",
+  "verifiedAt": "2026-09-02T14:25:00.000+07:00"
+}

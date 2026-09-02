@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-active-return-channel-hardening",
+  "workId": "agent-and-skill-design",
+  "title": "Active Return Channel Hardening",
+  "phaseState": "done",
+  "order": 85,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "A PLAN room treats a WORK room final answer alone as an active Return Channel.",
+    "A Kickoff Packet does not name the PLAN task/chat ID or PLAN-owned monitor locator, Active Return Command, Return Event ID or handoff ID, retrievable locator requirement, Liveness Signal, and Death Signal before dispatch.",
+    "A PLAN room treats clientThreadId alone as a monitorable retrievable locator for liveness, waiting, Revision Packets, or scalable multi-WORK dispatch.",
+    "A recovered WORK handoff after a missed Return Channel is recorded as automatic-returned instead of return-channel-failed-then-recovered or manual-recovered.",
+    "The phase edits Core, Backend, or Editor product behavior or promotes FlowDoc product truth or map truth."
+  ],
+  "verificationTarget": "active WORK-to-PLAN return push is required in AGENTS.md, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, Agent and Skill Operating Model, and the First Delivery Round Plan; Kickoff Packets must include the PLAN task/chat ID, Active Return Command, and Return Event ID or handoff ID; `clientThreadId` alone is rejected as not a monitorable retrievable locator; recovered missed returns are classified as return-channel-failed-then-recovered or manual-recovered rather than automatic-returned.",
+  "summary": "Done: hardened the automatic WORK-to-PLAN return contract after a real clientThreadId-only dispatch required locator recovery. Future WORK rooms must actively push Terminal Handoffs to the PLAN task/chat ID or PLAN-owned monitor, usually with `send_message_to_thread` when that Codex command is available, while PLAN treats final-answer-only and clientThreadId-only returns as not scalable until a monitorable locator and active push are proven.",
+  "createdAt": "2026-09-02T14:25:00.000+07:00",
+  "updatedAt": "2026-09-02T14:25:00.000+07:00"
+}

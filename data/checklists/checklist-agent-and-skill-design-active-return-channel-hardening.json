@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-active-return-channel-hardening",
+  "phaseId": "phase-agent-and-skill-design-active-return-channel-hardening",
+  "title": "Active Return Channel Hardening Checklist",
+  "items": [
+    {
+      "id": "capture-return-channel-failure",
+      "label": "Capture the clientThreadId-only return-channel failure.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "The follow-up real-room trial is classified as a recovered return-channel failure, not a clean automatic return.",
+      "verificationNote": "The 2026-09-02 Editor plus Project Control return-channel probe produced retrievable WORK handoffs, but PLAN initially received only clientThreadId values and had to discover real task IDs through session/worktree locators before using read/wait tools."
+    },
+    {
+      "id": "write-red-active-return-channel-guard",
+      "label": "Write a failing guard for active return-channel hardening.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before phase, evidence, active push wording, and clientThreadId locator boundaries exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-active-return-channel-hardening.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include phase-agent-and-skill-design-active-return-channel-hardening or evidence-flowdoc-active-return-channel-hardening-2026-09-02."
+    },
+    {
+      "id": "define-active-return-push",
+      "label": "Define automatic return as an active push.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "Agent entrypoints and delivery contracts require WORK to actively send the Terminal Handoff to PLAN or a PLAN-owned monitor.",
+      "verificationNote": "AGENTS.md, global guidance, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, Agent and Skill Operating Model, and First Delivery Round Plan now state that automatic return means an active WORK-to-PLAN return push, not only a WORK room final answer."
+    },
+    {
+      "id": "define-client-thread-id-locator-boundary",
+      "label": "Define clientThreadId locator limits.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "clientThreadId-only dispatch is not enough for monitorable liveness, wait, revision, or scalable multi-WORK coordination.",
+      "verificationNote": "The orchestration, routing, delivery, agent, and entrypoint documents now state that `clientThreadId` alone is not a monitorable retrievable locator and must remain queued or needs-attention until a real task/chat ID or other monitorable locator is resolved."
+    },
+    {
+      "id": "route-active-return-to-kickoff-packets",
+      "label": "Route active return through Kickoff Packets.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "Kickoff Packets and Context Capsules name the PLAN locator, Active Return Command, and Return Event ID before WORK starts.",
+      "verificationNote": "The delivery and Work Type models now require Kickoff Packets and Context Capsules to include PLAN task/chat ID or PLAN-owned monitor locator, Active Return Command such as `send_message_to_thread`, Return Event ID or handoff ID, and retrievable locator requirements."
+    },
+    {
+      "id": "record-active-return-channel-hardening",
+      "label": "Record Project Control active return-channel hardening.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "Project Control records Work context update, Phase, Checklist, Evidence, and document refs without product truth or map truth promotion.",
+      "verificationNote": "Registered phase-agent-and-skill-design-active-return-channel-hardening, checklist-agent-and-skill-design-active-return-channel-hardening, evidence-flowdoc-active-return-channel-hardening-2026-09-02, and related document repository refs."
+    },
+    {
+      "id": "verify-active-return-channel-hardening",
+      "label": "Verify the active return-channel hardening gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-active-return-channel-hardening-2026-09-02"],
+      "evidenceTarget": "Focused active return guard, generation, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-active-return-channel-hardening.test.ts, related automatic return guards, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T14:25:00.000+07:00",
+  "updatedAt": "2026-09-02T14:25:00.000+07:00"
+}
