@@ -13,7 +13,7 @@
     "Project Control promotes FlowDoc, Core, Editor, or Backend truth from bounded work evidence."
   ],
   "verificationTarget": "Current Core, Editor, and Backend heads have exact gate outcomes and compatibility limits recorded before any product-wide truth promotion.",
-  "summary": "Bounded review completed: Editor and Backend gates pass against current Core package dependencies, but accepted cross-repository compatibility remains unpromoted because Core default npm run check timed out in the full suite and live Editor-to-Backend-to-Core runtime evidence is still missing.",
+  "summary": "Bounded review completed and later refreshed for the Core default gate: Editor and Backend gates passed against recorded Core package dependencies on 2026-08-27, and Core npm run check passed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713. Accepted cross-repository compatibility remains unpromoted because live Editor-to-Backend-to-Core runtime evidence is still missing.",
   "createdAt": "2026-08-27T00:00:00.000Z",
-  "updatedAt": "2026-08-27T00:00:00.000Z"
+  "updatedAt": "2026-09-03T00:09:01.720+07:00"
 }

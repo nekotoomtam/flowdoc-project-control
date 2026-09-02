@@ -15,10 +15,10 @@
     {
       "id": "verify-core-default-gate",
       "label": "Run the current Core default gate and classify whether Core can support accepted compatibility evidence.",
-      "state": "blocked",
+      "state": "passed",
       "evidenceTarget": "Core package check outcome distinguishes default-gate pass from isolated test reproduction.",
-      "evidenceIds": ["evidence-cross-repo-compatibility-core-gate-2026-08-27"],
-      "verificationNote": "Core npm run check passed type-check but failed the default full test suite with one timeout in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts. The same geometry block and full file passed in isolated runs, so this is recorded as a default-gate stability blocker, not accepted compatibility evidence."
+      "evidenceIds": ["evidence-cross-repo-compatibility-core-gate-2026-08-27", "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03"],
+      "verificationNote": "The original 2026-08-27 Core evidence recorded a default full-suite timeout at Core commit 969a21a4e888d836ae62164b206cb2dd34d5d702. The Core gate was refreshed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713 after the PDF renderer pilot fixture output retirement: npm run check passed type-check and the default full Vitest run with 431 passed test files and 2,789 passed tests in 286.13s. This resolves the current Core default-gate blocker only; live Editor-to-Backend-to-Core evidence and broad truth promotion remain outside this item."
     },
     {
       "id": "verify-editor-core-consumer-gate",
@@ -53,5 +53,5 @@
     }
   ],
   "createdAt": "2026-08-27T00:00:00.000Z",
-  "updatedAt": "2026-08-27T00:00:00.000Z"
+  "updatedAt": "2026-09-03T00:09:01.720+07:00"
 }

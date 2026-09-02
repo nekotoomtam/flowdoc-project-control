@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c8ecbce5f634dedeb29661e003b1ba10679e7d24829517802c64e2be5644bbff",
+  "sourceDigest": "1af79881e20245cec15c0f21a88d225e6a424a6e8dffd3f011e2631e65385db7",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -805,7 +805,7 @@
         "repo-backend"
       ],
       "workState": "in-review",
-      "summary": "Reviewed current Core, Editor, and Backend compatibility evidence and recorded a bounded no-promotion result: Editor and Backend gates pass against the current Core package boundary, while the Core default full gate has a fresh timeout failure and no live Editor-to-Backend-to-Core evidence is accepted.",
+      "summary": "Reviewed Core, Editor, and Backend compatibility evidence and recorded a bounded no-promotion result: Editor and Backend gates passed against the recorded Core package boundary on 2026-08-27, and the Core default full gate was refreshed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713 with npm run check passing. No live Editor-to-Backend-to-Core evidence is accepted.",
       "contextDocumentIds": [
         "doc-project-control-agent-onboarding",
         "doc-flowdoc-system-map",
@@ -816,14 +816,15 @@
       ],
       "activeRole": "cross-repo-boundary-reviewer",
       "expectedOutput": "A Project Control evidence packet that classifies current Core, Editor, and Backend compatibility claims, gate results, blockers, risks, and unknowns without changing product runtime behavior or promoting FlowDoc truth.",
-      "riskSummary": "Accepted cross-repository compatibility remains blocked by the fresh Core default npm run check timeout and by the missing live Editor client to Backend server to Core semantic integration proof.",
+      "riskSummary": "The stale Core default npm run check timeout is resolved for the current Core head by refresh evidence, but accepted cross-repository compatibility remains limited by the missing live Editor client to Backend server to Core semantic integration proof. Broad Core, Backend, Editor, and FlowDoc truth remain unpromoted.",
       "requiredEvidence": [
         "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+        "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03",
         "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
         "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
-      "updatedAt": "2026-08-27T00:00:00.000Z",
+      "updatedAt": "2026-09-03T00:09:01.720+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-cross-repository-compatibility-evidence-review"
@@ -2865,9 +2866,9 @@
         "Project Control promotes FlowDoc, Core, Editor, or Backend truth from bounded work evidence."
       ],
       "verificationTarget": "Current Core, Editor, and Backend heads have exact gate outcomes and compatibility limits recorded before any product-wide truth promotion.",
-      "summary": "Bounded review completed: Editor and Backend gates pass against current Core package dependencies, but accepted cross-repository compatibility remains unpromoted because Core default npm run check timed out in the full suite and live Editor-to-Backend-to-Core runtime evidence is still missing.",
+      "summary": "Bounded review completed and later refreshed for the Core default gate: Editor and Backend gates passed against recorded Core package dependencies on 2026-08-27, and Core npm run check passed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713. Accepted cross-repository compatibility remains unpromoted because live Editor-to-Backend-to-Core runtime evidence is still missing.",
       "createdAt": "2026-08-27T00:00:00.000Z",
-      "updatedAt": "2026-08-27T00:00:00.000Z"
+      "updatedAt": "2026-09-03T00:09:01.720+07:00"
     },
     {
       "kind": "phase",
@@ -6394,12 +6395,13 @@
         {
           "id": "verify-core-default-gate",
           "label": "Run the current Core default gate and classify whether Core can support accepted compatibility evidence.",
-          "state": "blocked",
+          "state": "passed",
           "evidenceTarget": "Core package check outcome distinguishes default-gate pass from isolated test reproduction.",
           "evidenceIds": [
-            "evidence-cross-repo-compatibility-core-gate-2026-08-27"
+            "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+            "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03"
           ],
-          "verificationNote": "Core npm run check passed type-check but failed the default full test suite with one timeout in tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts. The same geometry block and full file passed in isolated runs, so this is recorded as a default-gate stability blocker, not accepted compatibility evidence."
+          "verificationNote": "The original 2026-08-27 Core evidence recorded a default full-suite timeout at Core commit 969a21a4e888d836ae62164b206cb2dd34d5d702. The Core gate was refreshed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713 after the PDF renderer pilot fixture output retirement: npm run check passed type-check and the default full Vitest run with 431 passed test files and 2,789 passed tests in 286.13s. This resolves the current Core default-gate blocker only; live Editor-to-Backend-to-Core evidence and broad truth promotion remain outside this item."
         },
         {
           "id": "verify-editor-core-consumer-gate",
@@ -6441,7 +6443,7 @@
         }
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
-      "updatedAt": "2026-08-27T00:00:00.000Z"
+      "updatedAt": "2026-09-03T00:09:01.720+07:00"
     },
     {
       "kind": "checklist",
@@ -15100,6 +15102,16 @@
       "pathOrContractId": "package.json#scripts.check",
       "verificationSummary": "Core main commit 969a21a4e888d836ae62164b206cb2dd34d5d702 was clean and npm run check was executed for the cross-repository compatibility review. Type-check passed, but the default full Vitest run failed with one timeout: tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A timed out at 5000ms. The full-suite summary was 1 failed and 458 passed test files, 1 failed and 2940 passed tests, duration 227.23s. A focused rerun of the exact Evidence-backed geometry block passed with 3 passed and 59 skipped tests, duration 17.71s, and an isolated full-file rerun passed with 62 tests, duration 74.20s. This evidence blocks accepted default-gate compatibility promotion while indicating the failing symptom is suite-load or timeout instability rather than a reproduced assertion mismatch.",
       "verifiedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "8de9e5082f3462e42fdff368d0cb380159da3713",
+      "pathOrContractId": "package.json#scripts.check",
+      "verificationSummary": "Core main commit 8de9e5082f3462e42fdff368d0cb380159da3713 was clean and npm run check was executed for the cross-repository compatibility Core gate refresh after the PDF renderer pilot fixture output retirement. Type-check passed, and the default full Vitest run passed with 431 passed test files and 2,789 passed tests in 286.13s. This refresh supersedes the stale 2026-08-27 default-gate timeout blocker for the current Core head only. It does not prove live Editor-to-Backend-to-Core integration, Backend or Editor current-head gates, product readiness, release readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-03T00:09:01.720+07:00"
     },
     {
       "kind": "evidence",

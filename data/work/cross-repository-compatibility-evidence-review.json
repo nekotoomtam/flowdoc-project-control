@@ -7,12 +7,12 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-core", "repo-editor", "repo-backend"],
   "workState": "in-review",
-  "summary": "Reviewed current Core, Editor, and Backend compatibility evidence and recorded a bounded no-promotion result: Editor and Backend gates pass against the current Core package boundary, while the Core default full gate has a fresh timeout failure and no live Editor-to-Backend-to-Core evidence is accepted.",
+  "summary": "Reviewed Core, Editor, and Backend compatibility evidence and recorded a bounded no-promotion result: Editor and Backend gates passed against the recorded Core package boundary on 2026-08-27, and the Core default full gate was refreshed on 2026-09-03 at Core commit 8de9e5082f3462e42fdff368d0cb380159da3713 with npm run check passing. No live Editor-to-Backend-to-Core evidence is accepted.",
   "contextDocumentIds": ["doc-project-control-agent-onboarding", "doc-flowdoc-system-map", "doc-flowdoc-product-evidence-refresh-2026-08-26", "doc-flowdoc-round-workflow", "doc-flowdoc-role-catalog", "doc-work-tree-operating-rules"],
   "activeRole": "cross-repo-boundary-reviewer",
   "expectedOutput": "A Project Control evidence packet that classifies current Core, Editor, and Backend compatibility claims, gate results, blockers, risks, and unknowns without changing product runtime behavior or promoting FlowDoc truth.",
-  "riskSummary": "Accepted cross-repository compatibility remains blocked by the fresh Core default npm run check timeout and by the missing live Editor client to Backend server to Core semantic integration proof.",
-  "requiredEvidence": ["evidence-cross-repo-compatibility-core-gate-2026-08-27", "evidence-cross-repo-compatibility-editor-gate-2026-08-27", "evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
+  "riskSummary": "The stale Core default npm run check timeout is resolved for the current Core head by refresh evidence, but accepted cross-repository compatibility remains limited by the missing live Editor client to Backend server to Core semantic integration proof. Broad Core, Backend, Editor, and FlowDoc truth remain unpromoted.",
+  "requiredEvidence": ["evidence-cross-repo-compatibility-core-gate-2026-08-27", "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03", "evidence-cross-repo-compatibility-editor-gate-2026-08-27", "evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
   "createdAt": "2026-08-27T00:00:00.000Z",
-  "updatedAt": "2026-08-27T00:00:00.000Z"
+  "updatedAt": "2026-09-03T00:09:01.720+07:00"
 }

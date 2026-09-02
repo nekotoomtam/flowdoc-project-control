@@ -743,7 +743,7 @@ describe("project roadmap Work Queue", () => {
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-cross-repository-compatibility-evidence-review")?.items
       .map((item) => item.state))
-      .toEqual(["passed", "blocked", "passed", "passed", "unknown", "passed"]);
+      .toEqual(["passed", "passed", "passed", "passed", "unknown", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-core-default-gate-stability-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
@@ -1216,6 +1216,15 @@ describe("project roadmap Work Queue", () => {
       });
     expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-core-gate-2026-08-27")?.verificationSummary)
       .toContain("blocks accepted default-gate compatibility promotion");
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03"))
+      .toMatchObject({
+        nodeIds: [],
+        repositoryId: "repo-core",
+        commit: "8de9e5082f3462e42fdff368d0cb380159da3713",
+        pathOrContractId: "package.json#scripts.check",
+      });
+    expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03")?.verificationSummary)
+      .toContain("supersedes the stale 2026-08-27 default-gate timeout blocker");
     expect(model.evidence.find((item) => item.id === "evidence-cross-repo-compatibility-editor-gate-2026-08-27"))
       .toMatchObject({
         nodeIds: [],
