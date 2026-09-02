@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02",
+  "title": "FlowDoc First Delivery Backend PDF Boundary Pre-Admission Smoke",
+  "path": "docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the automatically returned Backend WORK room pre-admission smoke handoff in the first delivery round.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-backend",
+      "commit": "5427ebc12bfe52e0961fbdc35544e476ee0fd484",
+      "pathOrContractId": "src/pdfExport/pdfExportPublishedStructurePreAdmission.ts; src/tests/pdfExportPublishedStructurePreAdmission.test.ts; src/index.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke.json; data/checklists/checklist-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke.json; data/evidence/flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02.json; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke",
+  "phaseId": "phase-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke",
+  "title": "First Delivery Backend PDF Boundary Pre-Admission Smoke Checklist",
+  "items": [
+    {
+      "id": "stage-backend-handoff-inbox-candidate",
+      "label": "Stage the automatically returned Backend WORK handoff in the PLAN handoff inbox.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "The PLAN room receives and records the Backend terminal handoff as a handoffInbox input before acceptance.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-backend-pdf-boundary-pre-admission-smoke-2026-09-02-01 from WORK task 01a06166-428a-75e3-8cee-911d4d4c53f2 through mcp__codex_app.send_message_to_thread without a user copy/paste bridge."
+    },
+    {
+      "id": "verify-backend-room-run-locator",
+      "label": "Verify the Backend room locator.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "PLAN can retrieve the returned work by exact Backend task, worktree, branch, and commit.",
+      "verificationNote": "Verified WORK task 01a06166-428a-75e3-8cee-911d4d4c53f2, worktree C:\\Users\\nekot\\Documents\\GitHub\\flowdoc-vnext-backend-pdf-boundary-pre-admission-smoke-2026-09-02, branch codex/backend-pdf-boundary-pre-admission-smoke-2026-09-02, and commit 5427ebc12bfe52e0961fbdc35544e476ee0fd484 before merge; after merge, Backend main points at the same commit."
+    },
+    {
+      "id": "review-backend-work-room-output",
+      "label": "Review the Backend WORK room output and repair loop.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "PLAN records that the WORK room handled review feedback before terminal acceptance.",
+      "verificationNote": "WORK task 01a06166-428a-75e3-8cee-911d4d4c53f2 used reviewer task 01a06175-9bf5-7431-aa4a-ac2b4a1025f3. The first review found critical malformed/forged-ready and leakage risks; the WORK room added regression tests and re-review reported no Critical, Important, or Minor issues before terminal return."
+    },
+    {
+      "id": "run-backend-owner-repository-gates",
+      "label": "Run Backend owner-repository verification.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "Fresh Backend focused, neighboring, full worktree, and main gates pass before PLAN accepts the product implementation handoff.",
+      "verificationNote": "Focused Backend test passed for src/tests/pdfExportPublishedStructurePreAdmission.test.ts with 1 file / 8 tests; neighboring suite passed with 4 files / 21 tests; npm run type-check passed; npm run check passed in the WORK worktree and again on Backend main with 91 passed / 1 skipped test file, 334 passed / 24 skipped tests, and build passed."
+    },
+    {
+      "id": "accept-backend-pre-admission-smoke-handoff",
+      "label": "Accept the bounded Backend pre-admission smoke handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "acceptanceGate accepts only the Backend pre-admission guard and automatic product-edit return proof.",
+      "verificationNote": "Accepted createFlowDocBackendPdfExportPublishedStructurePreAdmissionV1 as a Backend-owned pre-admission guard around the public Core Published Structure PDF boundary plan. The lane did not require a Contract Change Request because route mounting, API key exposure, storage writes, workers, renderer execution, and PDF bytes stayed closed."
+    },
+    {
+      "id": "record-backend-pre-admission-smoke-evidence",
+      "label": "Record Project Control evidence for the accepted Backend smoke lane.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "Project Control records the accepted Backend commit, changed files, tests, active return state, risks, unknowns, and unpromoted claims.",
+      "verificationNote": "Registered evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02 and doc-flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02 without linking them to map-truth nodes."
+    },
+    {
+      "id": "preserve-backend-gateway-boundary",
+      "label": "Preserve the Backend gateway and product truth boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "The accepted Backend smoke does not update system maps or promote broad FlowDoc product truth.",
+      "verificationNote": "No system map or DOCUMENT_MAP record was changed; Backend route/gateway behavior, API key behavior, product database persistence, artifact storage, worker execution, renderer execution, PDF bytes, Editor adoption, end-to-end integration, release readiness, and frontend readiness remain unknown."
+    },
+    {
+      "id": "verify-project-control-backend-smoke-records",
+      "label": "Verify the Project Control Backend smoke records.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after Backend smoke records are registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts, related first delivery and orchestration guards, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T17:10:00.000+07:00",
+  "updatedAt": "2026-09-02T17:10:00.000+07:00"
+}

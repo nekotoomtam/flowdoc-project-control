@@ -32,8 +32,8 @@ readiness, release readiness, FlowDoc product truth, or map truth.
   `N WORK rooms` may be set higher than the PLAN room can track, room IDs may
   be missing, a silent room may disappear without a terminal return, partial
   handoffs may be mistaken for accepted evidence, manual recovery may be
-  mistaken for a scalable return channel, and read-only return smoke evidence
-  may be mistaken for product implementation return with actual edits
+  mistaken for a scalable return channel, and one product-edit active return
+  smoke may be mistaken for multi-product-WORK orchestration
 - Unknown state: the 2026-09-02 single-room projectless return-channel smoke
   test proved that one WORK room on this local host could actively push a
   Terminal Handoff to the PLAN task with
@@ -51,10 +51,16 @@ readiness, release readiness, FlowDoc product truth, or map truth.
   opened local fallback task `01a06147-82e3-71e1-add6-d7d702b6c406` also
   returned, but PLAN treats it as a local fallback diagnostic rather than the
   primary proof because its started context did not know the worktree task had
-  returned. These smoke tests do not prove product WORK implementation return
-  with actual edits, multi-product-WORK return, every Codex environment, future
-  automatic room wakeups, or product evidence promotion. Manual pull review
-  remains recovery only.
+  returned. Those read-only smoke tests do not prove product WORK
+  implementation return with actual edits by themselves. The 2026-09-02
+  Backend product-edit active return smoke then
+  proved that one real product WORK room with actual Backend edits can push
+  `handoff-backend-pdf-boundary-pre-admission-smoke-2026-09-02-01` back to
+  PLAN as `automatic-returned` and be accepted at Backend commit
+  `5427ebc12bfe52e0961fbdc35544e476ee0fd484`. These smoke tests do not prove
+  multi-product-WORK return, every Codex environment, future automatic room
+  wakeups, or product evidence promotion. Manual pull review remains recovery
+  only.
 
 ## Relationship To Delivery Model
 
@@ -485,6 +491,24 @@ after recording the dispatch set, dependencies, `parallelLimit`, Room Run
 Registry entries, Automatic Return Channel, Return Event ID or handoff ID
 expectation, Liveness Signal, Death Signal, `returnOrderPolicy`,
 `arrivalSequence`, and acceptance order.
+
+The Backend product-edit active return smoke returned through the automatic
+WORK-to-PLAN channel. PLAN received
+`WORK RETURN EVENT: handoff-backend-pdf-boundary-pre-admission-smoke-2026-09-02-01`
+from WORK task `01a06166-428a-75e3-8cee-911d4d4c53f2` with
+`mcp__codex_app.send_message_to_thread`, placed it in `handoffInbox`, ran
+`acceptanceGate`, and accepted
+`lane-backend-pdf-boundary-pre-admission-smoke` at Backend commit
+`5427ebc12bfe52e0961fbdc35544e476ee0fd484`. PLAN recorded the decision in
+`docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md`.
+
+That acceptance is bounded to one Backend pre-admission guard and one product
+WORK room automatic return on this local host. It does not prove Backend
+gateway readiness, API key exposure, product database persistence, storage
+writes, route-mounted production behavior, worker or queue execution,
+renderer execution, PDF bytes, artifact persistence, Editor adoption,
+end-to-end integration, FlowDoc product truth, map truth, release readiness,
+frontend readiness, or multi-product-WORK close-together return.
 
 The remaining first-delivery lanes should be dispatched only after the PLAN
 room records a dispatch set and `parallelLimit` against their dependencies.

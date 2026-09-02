@@ -36,12 +36,18 @@ behavior, tests, runtime contracts, local setup, and implementation evidence.
 - Known risks: planned lane wording may be mistaken for product truth, WORK
   rooms may expand their own scope, product database language may be confused
   with Project Control SQLite, and the accepted Core PDF boundary may be
-  mistaken for Backend, Editor, renderer, gateway, storage, or end-to-end
-  delivery evidence.
+  mistaken for full Backend, Editor, renderer, gateway, storage, or
+  end-to-end delivery evidence. The accepted Backend pre-admission smoke may
+  also be mistaken for gateway readiness even though route mounting, API key
+  behavior, product database persistence, workers, renderer execution, PDF
+  bytes, and artifact persistence remain outside that smoke.
 - Unknown state: the original planning phase did not open real WORK rooms. A
   later approved Core WORK room has now returned and been accepted by PLAN, but
-  current Backend, Editor, renderer, storage, API-key gateway, and integration
-  behavior remain unverified by this plan.
+  it did not prove automatic return. A later Backend product-edit WORK room
+  has now returned automatically and been accepted by PLAN for a narrow
+  pre-admission guard, but current Backend route/gateway adoption, Editor,
+  renderer, storage, API-key gateway, and integration behavior remain
+  unverified by this plan.
 
 ## Source Documents
 
@@ -192,6 +198,27 @@ If PLAN opens multiple active WORK rooms, it must keep every room in the Room
 Run Registry, accept close-together returns into `completionQueue`, assign
 `arrivalSequence`, apply `returnOrderPolicy`, treat a duplicate handoff
 idempotently, and run `acceptanceGate` on one queued handoff at a time.
+
+The previous Next recommended implementation-return test has now been run as
+the 2026-09-02 Backend product-edit active return smoke. PLAN opened WORK task
+`01a06166-428a-75e3-8cee-911d4d4c53f2` against a manually prepared Backend
+worktree because Backend was not available as a saved Codex project. The WORK
+room returned
+`WORK RETURN EVENT: handoff-backend-pdf-boundary-pre-admission-smoke-2026-09-02-01`
+to this PLAN room with `mcp__codex_app.send_message_to_thread`, and PLAN
+classifies the return channel as `automatic-returned`. PLAN accepted
+`lane-backend-pdf-boundary-pre-admission-smoke` at Backend commit
+`5427ebc12bfe52e0961fbdc35544e476ee0fd484` after owner-repository gates passed
+in the worktree and again on Backend main.
+
+This Backend product-edit active return smoke supports only one real product
+WORK room with actual Backend edits returning automatically to PLAN and a
+bounded Backend pre-admission guard for the public Core Published Structure
+PDF boundary plan. It does not prove multi-product-WORK return, route-mounted
+gateway behavior, API key exposure, product database persistence, storage
+writes, worker or queue execution, renderer execution, PDF byte production,
+artifact persistence, Editor adoption, end-to-end integration, FlowDoc product
+truth, map truth, release readiness, or frontend readiness.
 
 ## Lane Cards
 
@@ -519,6 +546,12 @@ Core WORK room handoff has now been accepted by PLAN for
 `lane-core-document-pdf-boundary` at Core commit
 `da5011ceeac6e0b72b152a9a5029d684af978581`.
 
+The Backend product-edit active return smoke returned through the automatic
+WORK-to-PLAN channel and has now been accepted by PLAN for
+`lane-backend-pdf-boundary-pre-admission-smoke` at Backend commit
+`5427ebc12bfe52e0961fbdc35544e476ee0fd484`. PLAN recorded the decision in
+`docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md`.
+
 This acceptance is bounded to the additive Core contract
 `createVNextPublishedStructurePdfBoundaryPlanV1`. Backend and Editor have not
 adopted this Core boundary yet, and the acceptance does not prove gateway
@@ -572,8 +605,10 @@ Stop and return to the PLAN room when:
 
 ## Dispatch Status
 
-This PLAN room records the first delivery round plan, lane packets, and the
-accepted Core WORK room handoff for `lane-core-document-pdf-boundary`.
+This PLAN room records the first delivery round plan, lane packets, the
+accepted Core WORK room handoff for `lane-core-document-pdf-boundary`, and the
+accepted Backend product-edit active return smoke for
+`lane-backend-pdf-boundary-pre-admission-smoke`.
 
 The single-room active return smoke test passes for one projectless WORK room,
 and the two-room active return queue smoke test passes for two read-only
@@ -594,16 +629,16 @@ records `manual-recovered` or `return-channel-failed`, and must preserve
 `completionQueue`, `returnOrderPolicy`, `arrivalSequence`, duplicate handoff
 handling, and one queued handoff at a time.
 
-Next recommended implementation-return test: dispatch one very small product
-WORK room in an owner repository with an isolated worktree and actual edit
-scope, require active return, owner-repository checks, exact commit evidence,
-and PLAN-owned Project Control reporting before promoting any claim.
+Next recommended implementation-return test: done for one Backend product
+WORK room with an isolated worktree, actual edit scope, active return,
+owner-repository checks, exact commit evidence, and PLAN-owned Project Control
+reporting. Multi-product-WORK return remains unproven.
 
 Next recommended lanes:
 
 - `lane-backend-gateway-database`, to inspect and implement Backend gateway,
   credential, persistence, job, artifact, and validation adoption of the
-  accepted Core boundary.
+  accepted Core boundary and Backend pre-admission guard.
 - `lane-editor-structure-publish`, to inspect and implement the Editor-owned
   structure creation and publish surface that feeds the delivery path.
 - `lane-integration-evidence`, held back until owner-lane handoffs required

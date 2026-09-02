@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-first-delivery-round-backend-pdf-boundary-pre-admission-smoke",
+  "workId": "flowdoc-first-delivery-round",
+  "title": "First Delivery Backend PDF Boundary Pre-Admission Smoke",
+  "phaseState": "done",
+  "order": 30,
+  "repositoryIds": ["repo-project-control", "repo-backend"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the first delivery round Work path, owner repository, active role, Checklist target, or Evidence target before accepting the Backend handoff.",
+    "The Backend WORK room result lacks lane ID, Work Type, owner repository, Context Acknowledgement, terminal status, retrievable locator, exact commit, files changed, behavior changed, tests run, risks, unknowns, or PR Summary Draft.",
+    "The Backend handoff changes Core semantics, Editor behavior, Project Control truth, API key handling, storage, route mounting, workers, renderer execution, or PDF byte production without an accepted Contract Change Request.",
+    "PLAN accepts the Backend lane without automatic WORK-to-PLAN return evidence and fresh Backend verification from the owner repository.",
+    "The accepted Backend pre-admission smoke is promoted to Backend gateway readiness, API key readiness, product database readiness, renderer readiness, PDF output readiness, FlowDoc product truth, map truth, release readiness, or frontend readiness."
+  ],
+  "verificationTarget": "Backend WORK room handoff for lane-backend-pdf-boundary-pre-admission-smoke proves automatic WORK-to-PLAN return, passes acceptanceGate, is verified against Backend commit 5427ebc12bfe52e0961fbdc35544e476ee0fd484 and fresh Backend gates, is merged into Backend main after verification, and remains bounded to pre-admission evidence while gateway behavior remains unknown.",
+  "summary": "Done: PLAN received the Backend WORK room handoff through the active WORK-to-PLAN return channel, staged it in handoffInbox, ran acceptanceGate, accepted lane-backend-pdf-boundary-pre-admission-smoke at Backend commit 5427ebc12bfe52e0961fbdc35544e476ee0fd484, merged it into Backend main after owner-repository verification, reran Backend main verification, and recorded the remaining route, gateway, API key, storage, worker, renderer, PDF byte, Editor, integration, product-truth, and map-truth unknowns.",
+  "createdAt": "2026-09-02T17:10:00.000+07:00",
+  "updatedAt": "2026-09-02T17:10:00.000+07:00"
+}
