@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-project-control-test-groups",
+  "workId": "agent-and-skill-design",
+  "title": "Project Control Test Groups Stable Gate",
+  "phaseState": "done",
+  "order": 110,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The grouped gate omits any non-e2e Project Control unit test file or assigns a unit test file to more than one group.",
+    "The default check removes data validation, type-check, build, or e2e verification instead of replacing only the unstable parallel unit segment.",
+    "The parallel unit fast path is deleted instead of preserved for exploratory local checks.",
+    "This phase is treated as proof of Core, Backend, Editor, product behavior, readiness, release status, or product-repository test strategy."
+  ],
+  "verificationTarget": "Project Control package scripts make check delegate to check:grouped, test delegate to test:unit, test:unit serially runs records, source-docs, and app groups through tools/run-test-groups.ts with every non-e2e unit file assigned to exactly one group, test:unit:parallel preserves the old parallel fast path, and focused guard plus grouped unit gate pass before Project Control records are accepted.",
+  "summary": "Done: added the Project Control grouped test gate. The repo now separates non-e2e unit tests into records, source-docs, and app groups, runs those groups serially through test:unit and check:grouped, preserves test:unit:parallel as the old fast path, and records that this only fixes Project Control gate stability/resource cost.",
+  "createdAt": "2026-09-02T21:32:00.000+07:00",
+  "updatedAt": "2026-09-02T21:32:00.000+07:00"
+}

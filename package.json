@@ -10,12 +10,19 @@
     "generate:sqlite": "tsx -e \"import('./tools/lib/build-sqlite-projection.ts').then((m) => m.generateProjectSqlite(process.cwd()))\"",
     "check:data": "tsx tools/check.ts",
     "type-check": "tsc --noEmit",
-    "test": "vitest run --exclude \"tests/e2e/**\"",
+    "test": "npm run test:unit",
+    "test:unit": "tsx tools/run-test-groups.ts --all",
+    "test:unit:parallel": "vitest run --exclude \"tests/e2e/**\"",
+    "test:records": "tsx tools/run-test-groups.ts records",
+    "test:source-docs": "tsx tools/run-test-groups.ts source-docs",
+    "test:app": "tsx tools/run-test-groups.ts app",
     "test:e2e": "playwright test",
+    "check:fast": "npm run check:data && npm run type-check && npm run test:records",
+    "check:grouped": "npm run check:data && npm run type-check && npm run test:unit && npm run build && npm run test:e2e",
     "inventory:core-docs": "tsx tools/migration/inventory-core-docs.ts",
     "check:migrations": "tsx tools/migration/check-core-docs.ts --stored-only",
     "check:migration:core": "tsx tools/migration/check-core-docs.ts",
-    "check": "npm run check:data && npm run type-check && npm test && npm run build && npm run test:e2e"
+    "check": "npm run check:grouped"
   },
   "dependencies": {
     "ajv": "8.20.0",
