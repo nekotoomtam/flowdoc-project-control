@@ -32,14 +32,18 @@ readiness, release readiness, FlowDoc product truth, or map truth.
   `N WORK rooms` may be set higher than the PLAN room can track, room IDs may
   be missing, a silent room may disappear without a terminal return, partial
   handoffs may be mistaken for accepted evidence, manual recovery may be
-  mistaken for a scalable return channel, and multi-WORK active return may be
-  treated as proven by a single-room smoke test
+  mistaken for a scalable return channel, and product WORK active return may be
+  treated as proven by a read-only projectless smoke test
 - Unknown state: the 2026-09-02 single-room projectless return-channel smoke
   test proved that one WORK room on this local host could actively push a
   Terminal Handoff to the PLAN task with
-  `mcp__codex_app.send_message_to_thread`. This does not prove multi-WORK
-  close-together return, product WORK return, queued `clientThreadId` dispatch,
-  every Codex environment, or future automatic room wakeups. Manual pull review
+  `mcp__codex_app.send_message_to_thread`. The 2026-09-02 two-room
+  projectless return-channel queue smoke test proved that two read-only WORK
+  rooms on this local host could push distinct Terminal Handoffs to the same
+  PLAN task and be queued with `completionQueue` arrivalSequence 1 and
+  arrivalSequence 2. These smoke tests do not prove product WORK active
+  return, queued `clientThreadId` dispatch, every Codex environment, future
+  automatic room wakeups, or product evidence promotion. Manual pull review
   remains recovery only.
 
 ## Relationship To Delivery Model
