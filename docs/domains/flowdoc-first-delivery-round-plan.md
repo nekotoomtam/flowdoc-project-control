@@ -577,21 +577,27 @@ accepted Core WORK room handoff for `lane-core-document-pdf-boundary`.
 
 The single-room active return smoke test passes for one projectless WORK room,
 and the two-room active return queue smoke test passes for two read-only
-projectless WORK rooms returning to the same PLAN task. Automatic
-WORK-to-PLAN return remains a required dispatch gate for product WORK rooms.
-The next dispatch must not require `ตูม` to copy/paste Terminal Handoffs, must
-define a manual recovery fallback that records `manual-recovered` or
-`return-channel-failed`, and must preserve `completionQueue`,
-`returnOrderPolicy`, `arrivalSequence`, duplicate handoff handling, and one
-queued handoff at a time.
+projectless WORK rooms returning to the same PLAN task. The product-repository
+read-only active return smoke test passes for a worktree-created Core task:
+initial `clientThreadId`
+`client-new-thread:a8a7a22f-152e-46d3-9ab9-d45482469c47` resolved to WORK task
+`01a06146-4c7a-7ca3-9f36-475df0f7ba99`, which actively returned
+`handoff-core-readonly-return-smoke-2026-09-02-01` from
+`C:\Users\nekot\.codex\worktrees\c89e\flowdoc-vnext-core`. The separately
+opened local fallback task `01a06147-82e3-71e1-add6-d7d702b6c406` also
+returned and is kept only as a local fallback diagnostic.
 
-Next recommended product-return test: dispatch one no-op product WORK room in
-an owner repository with a read-only scope first, require active return, and
-accept only the return-channel behavior without promoting product behavior.
+Automatic WORK-to-PLAN return remains a required dispatch gate for product
+WORK rooms that make actual edits. The next dispatch must not require `ตูม` to
+copy/paste Terminal Handoffs, must define a manual recovery fallback that
+records `manual-recovered` or `return-channel-failed`, and must preserve
+`completionQueue`, `returnOrderPolicy`, `arrivalSequence`, duplicate handoff
+handling, and one queued handoff at a time.
 
-Next recommended return test boundary: the next return-channel trial should
-move from projectless rooms to one owner-repository product WORK room while
-remaining read-only and non-promotional.
+Next recommended implementation-return test: dispatch one very small product
+WORK room in an owner repository with an isolated worktree and actual edit
+scope, require active return, owner-repository checks, exact commit evidence,
+and PLAN-owned Project Control reporting before promoting any claim.
 
 Next recommended lanes:
 
