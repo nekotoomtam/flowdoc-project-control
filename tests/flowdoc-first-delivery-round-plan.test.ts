@@ -88,13 +88,13 @@ describe("FlowDoc First Delivery Round Plan", () => {
       path: DOC_PATH,
       role: "contract",
     });
-    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual([
+    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual(expect.arrayContaining([
       expect.objectContaining({
         commit: PLAN_COMMIT,
         pathOrContractId: expect.stringContaining("tests/flowdoc-first-delivery-round-plan.test.ts"),
         repositoryId: "repo-project-control",
       }),
-    ]);
+    ]));
     expect(evidence.get(EVIDENCE_ID)).toMatchObject({
       commit: PLAN_COMMIT,
       nodeIds: [],

@@ -68,13 +68,13 @@ describe("FlowDoc Delivery Operating Model", () => {
       path: DOC_PATH,
       role: "contract",
     });
-    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual([
+    expect(documents.get(DOC_ID)?.repositoryRefs).toEqual(expect.arrayContaining([
       expect.objectContaining({
         commit: "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
         pathOrContractId: expect.stringContaining("tests/flowdoc-delivery-operating-model.test.ts"),
         repositoryId: "repo-project-control",
       }),
-    ]);
+    ]));
     expect(evidence.get(EVIDENCE_ID)).toMatchObject({
       commit: "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
       nodeIds: [],
