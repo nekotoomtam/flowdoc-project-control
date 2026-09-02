@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-product-repo-readonly-return-smoke-test",
+  "workId": "agent-and-skill-design",
+  "title": "Product Repo Read-Only Return Smoke Test",
+  "phaseState": "done",
+  "order": 96,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the product-repository read-only smoke result.",
+    "The worktree-created Core WORK task cannot resolve from clientThreadId to a monitorable task/chat ID.",
+    "The Core WORK task does not actively push a Terminal Handoff back to the PLAN task/chat ID.",
+    "The local fallback diagnostic is treated as the primary proof instead of the worktree-created Core task.",
+    "The smoke result is treated as proof of product implementation return with actual edits, multi-product-WORK return, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, readiness, or release status."
+  ],
+  "verificationTarget": "Core worktree task resolves from initial clientThreadId to a monitorable WORK task, actively pushes a read-only Terminal Handoff back to PLAN with mcp__codex_app.send_message_to_thread, and actual product edits remain unproven.",
+  "summary": "Done: recorded the bounded product-repository read-only active return smoke test. The first Core worktree create returned only clientThreadId client-new-thread:a8a7a22f-152e-46d3-9ab9-d45482469c47, then resolved to WORK task 01a06146-4c7a-7ca3-9f36-475df0f7ba99. That worktree-created Core task actively returned handoff-core-readonly-return-smoke-2026-09-02-01 to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454 from C:\\Users\\nekot\\.codex\\worktrees\\c89e\\flowdoc-vnext-core. A separately opened local fallback task 01a06147-82e3-71e1-add6-d7d702b6c406 also returned and is recorded only as a diagnostic. The result proves only product-repository read-only active return on this local host.",
+  "createdAt": "2026-09-02T15:47:00.000+07:00",
+  "updatedAt": "2026-09-02T15:47:00.000+07:00"
+}

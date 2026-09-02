@@ -3,14 +3,14 @@ import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
 
 const WORK_ID = "agent-and-skill-design";
-const PHASE_ID = "phase-agent-and-skill-design-multi-work-queue-smoke-test";
-const CHECKLIST_ID = "checklist-agent-and-skill-design-multi-work-queue-smoke-test";
-const EVIDENCE_ID = "evidence-flowdoc-multi-work-queue-smoke-test-2026-09-02";
+const PHASE_ID = "phase-agent-and-skill-design-product-repo-readonly-return-smoke-test";
+const CHECKLIST_ID = "checklist-agent-and-skill-design-product-repo-readonly-return-smoke-test";
+const EVIDENCE_ID = "evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02";
 
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
-describe("FlowDoc multi-WORK return queue smoke evidence", () => {
-  it("records bounded two-room automatic return queue processing", async () => {
+describe("FlowDoc product-repo read-only return smoke evidence", () => {
+  it("records bounded Core worktree active return and local fallback diagnostics", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const work = model.work.find((item) => item.id === WORK_ID);
     const phase = model.phases.find((item) => item.id === PHASE_ID);
@@ -29,6 +29,7 @@ describe("FlowDoc multi-WORK return queue smoke evidence", () => {
       repositoryIds: ["repo-project-control"],
       workState: "in-progress",
     });
+    expect(work?.riskSummary).toContain("product-repository read-only active return smoke test");
     expect(work?.riskSummary).toContain("actual product edits remain unproven");
 
     expect(phase).toMatchObject({
@@ -37,17 +38,17 @@ describe("FlowDoc multi-WORK return queue smoke evidence", () => {
       repositoryIds: ["repo-project-control"],
       workId: WORK_ID,
     });
-    expect(phase?.verificationTarget).toContain("two projectless WORK tasks");
+    expect(phase?.verificationTarget).toContain("Core worktree task");
 
     expect(checklist?.items.map((item) => item.id)).toEqual([
-      "dispatch-two-return-channel-queue-work-rooms",
-      "receive-alpha-active-return",
-      "receive-beta-active-return",
-      "assign-completion-queue-arrival-sequence",
-      "run-two-room-acceptance-gate",
-      "preserve-product-work-unknowns",
-      "record-multi-work-queue-smoke-evidence",
-      "verify-multi-work-queue-smoke-evidence",
+      "dispatch-core-worktree-readonly-smoke",
+      "resolve-client-thread-to-task",
+      "receive-core-worktree-active-return",
+      "run-product-repo-readonly-acceptance-gate",
+      "record-local-fallback-diagnostic",
+      "preserve-product-implementation-unknowns",
+      "record-product-repo-readonly-smoke-evidence",
+      "verify-product-repo-readonly-smoke-evidence",
     ]);
     expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
     expect(checklist?.items.every((item) =>
@@ -59,18 +60,19 @@ describe("FlowDoc multi-WORK return queue smoke evidence", () => {
       nodeIds: [],
       repositoryId: "repo-project-control",
     });
-    expect(evidence?.pathOrContractId).toContain("dispatch-return-channel-queue-2026-09-02-01");
-    expect(evidence?.pathOrContractId).toContain("handoff-return-channel-queue-alpha-2026-09-02-01");
-    expect(evidence?.pathOrContractId).toContain("handoff-return-channel-queue-beta-2026-09-02-01");
-    expect(evidence?.verificationSummary).toContain("arrivalSequence 1");
-    expect(evidence?.verificationSummary).toContain("arrivalSequence 2");
-    expect(evidence?.verificationSummary).toContain("completionQueue");
-    expect(evidence?.verificationSummary).toContain("does not prove product WORK");
+    expect(evidence?.pathOrContractId).toContain("client-new-thread:a8a7a22f-152e-46d3-9ab9-d45482469c47");
+    expect(evidence?.pathOrContractId).toContain("01a06146-4c7a-7ca3-9f36-475df0f7ba99");
+    expect(evidence?.pathOrContractId).toContain("handoff-core-readonly-return-smoke-2026-09-02-01");
+    expect(evidence?.pathOrContractId).toContain("01a06147-82e3-71e1-add6-d7d702b6c406");
+    expect(evidence?.verificationSummary).toContain("worktree path C:\\Users\\nekot\\.codex\\worktrees\\c89e\\flowdoc-vnext-core");
+    expect(evidence?.verificationSummary).toContain("detached HEAD at da5011ceeac6e0b72b152a9a5029d684af978581");
+    expect(evidence?.verificationSummary).toContain("local fallback diagnostic");
+    expect(evidence?.verificationSummary).toContain("does not prove product WORK implementation return with actual edits");
     expect(evidence?.verificationSummary).toContain("does not edit Core, Backend, or Editor behavior");
 
-    expect(orchestrationRules).toContain("two-room projectless return-channel queue smoke test");
-    expect(orchestrationRules).toContain("do not prove product WORK implementation return");
-    expect(firstRoundPlan).toContain("two-room active return queue smoke test");
+    expect(orchestrationRules).toContain("product-repository read-only active return smoke test");
+    expect(orchestrationRules).toContain("worktree-created Core task");
+    expect(firstRoundPlan).toContain("product-repository read-only active return smoke test");
     expect(firstRoundPlan).toContain("Next recommended implementation-return test");
   });
 });

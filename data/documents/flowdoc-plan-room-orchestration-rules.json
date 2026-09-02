@@ -52,6 +52,11 @@
       "repositoryId": "repo-project-control",
       "commit": "1eeb1053e4cc7b9559d5060668f4ba467384850e",
       "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-multi-work-queue-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6b50473a3edf60402bf05e460ddb7b1d1df4fadb",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-product-repo-readonly-return-smoke-evidence.test.ts"
     }
   ]
 }

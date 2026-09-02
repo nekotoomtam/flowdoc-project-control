@@ -66,6 +66,6 @@ describe("FlowDoc return-channel smoke evidence", () => {
     expect(orchestrationRules).toContain("single-room projectless return-channel smoke test");
     expect(orchestrationRules).toContain("does not prove multi-WORK");
     expect(firstRoundPlan).toContain("single-room active return smoke test");
-    expect(firstRoundPlan).toContain("Next recommended return test");
+    expect(firstRoundPlan).toContain("Next recommended implementation-return test");
   });
 });
