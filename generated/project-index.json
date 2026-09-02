@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d21c400c2b229d0408b620485a2fea564673c1687f4b537c3092a2eaf9783d39",
+  "sourceDigest": "2005db6db9762d2a6b289105bf79042392abea02699fd4246fe9f6701fd60380",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -10566,7 +10566,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12004,7 +12004,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12074,7 +12074,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12104,7 +12104,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12139,7 +12139,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12329,7 +12329,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -12617,7 +12617,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+          "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
           "pathOrContractId": "AGENTS.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
         }
       ],
@@ -14321,9 +14321,9 @@
       "id": "evidence-flowdoc-plan-work-acceptance-revision-2026-09-02",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
       "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/agent-and-skill-operating-model.md; data/work/agent-and-skill-design.json; tests/flowdoc-plan-work-acceptance-revision.test.ts; npm run check",
-      "verificationSummary": "Project Control commit 73c295b455a69abed1a3e27f6959081ce6a74777 records PLAN-owned reporting and the Revision Packet loop so product WORK rooms return evidence candidate handoffs, must not self-promote Project Control truth, map truth, accepted lane status, or round status, and PLAN receives or pulls returned handoffs into handoffInbox before acceptanceGate. If acceptanceGate returns needs-revision, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable; otherwise PLAN records the fallback state before reopening, shrinking, asking the user, or blocking. RED evidence: npx vitest run tests/flowdoc-plan-work-acceptance-revision.test.ts --maxWorkers=1 failed before the phase, evidence, and wording existed. GREEN evidence target: tests/flowdoc-plan-work-acceptance-revision.test.ts, tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not open WORK rooms, does not edit Core, Backend, or Editor behavior, does not accept the Core handoff candidate, and does not promote FlowDoc product truth or map truth.",
+      "verificationSummary": "Project Control commit c6805d815a50a01c7cb7e607cf9c7ffbb55c129d records PLAN-owned reporting and the Revision Packet loop so product WORK rooms return evidence candidate handoffs, must not self-promote Project Control truth, map truth, accepted lane status, or round status, and PLAN receives or pulls returned handoffs into handoffInbox before acceptanceGate. If acceptanceGate returns needs-revision, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable; otherwise PLAN records the fallback state before reopening, shrinking, asking the user, or blocking. RED evidence: npx vitest run tests/flowdoc-plan-work-acceptance-revision.test.ts --maxWorkers=1 failed before the phase, evidence, and wording existed. GREEN evidence target: tests/flowdoc-plan-work-acceptance-revision.test.ts, tests/flowdoc-work-room-return-liveness.test.ts, tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not open WORK rooms, does not edit Core, Backend, or Editor behavior, does not accept the Core handoff candidate, and does not promote FlowDoc product truth or map truth.",
       "verifiedAt": "2026-09-02T10:30:00.000+07:00"
     },
     {

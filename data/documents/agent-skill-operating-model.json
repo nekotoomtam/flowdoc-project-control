@@ -20,7 +20,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "73c295b455a69abed1a3e27f6959081ce6a74777",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
       "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
     }
   ]
