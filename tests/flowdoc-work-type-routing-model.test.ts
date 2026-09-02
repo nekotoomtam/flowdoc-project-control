@@ -138,6 +138,7 @@ describe("FlowDoc work type routing model", () => {
     expect(firstRoundPlan).toContain("Work Type: `evidence-review`");
     expect(firstRoundPlan).toContain("Context Capsule");
     expect(firstRoundPlan).toContain("Context Acknowledgement");
-    expect(firstRoundPlan).toContain("No accepted Core room locator is recorded yet");
+    expect(firstRoundPlan).toContain("Core WORK room handoff has now been accepted by PLAN");
+    expect(firstRoundPlan).toContain("Next recommended lanes");
   });
 });

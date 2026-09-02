@@ -118,7 +118,10 @@ describe("FlowDoc First Delivery Round Plan", () => {
     expect(docText).toContain("lane-integration-evidence");
     expect(docText).toContain("Room Mode: `WORK`");
     expect(docText).toContain("Contract Change Request");
-    expect(docText).toContain("No real WORK room has been opened by this plan");
+    expect(docText).toContain("Core WORK room handoff has now been accepted by PLAN");
+    expect(docText).toContain("da5011ceeac6e0b72b152a9a5029d684af978581");
+    expect(docText).toContain("Next recommended lanes");
+    expect(docText).not.toContain("No accepted Core room locator is recorded yet");
     expect(docText).not.toMatch(/\bmvp\b/iu);
   });
 });

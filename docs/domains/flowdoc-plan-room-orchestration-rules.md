@@ -355,12 +355,22 @@ document as the orchestration rule. Use
 Types and Context Capsules before dispatch.
 
 The current Core WORK room returned a handoff candidate outside automatic
-PLAN-room push. Before the PLAN room treats that Core lane as accepted, the
-PLAN room must place the discovered result into `handoffInbox`, run
-`acceptanceGate`, and record whether the lane is accepted, needs revision, or
-requires a Contract Change Request. No accepted Core room locator is recorded
-yet; the PLAN room must identify a task/chat ID, worktree/branch, or handoff
-location before the Core lane can pass acceptance.
+PLAN-room push. PLAN pulled the result by the available worktree, branch, and
+terminal handoff locator, placed the discovered result into `handoffInbox`,
+ran `acceptanceGate`, and recorded the lane decision in
+`docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md`.
+Core WORK room handoff has now been accepted by PLAN for
+`lane-core-document-pdf-boundary` at Core commit
+`da5011ceeac6e0b72b152a9a5029d684af978581`.
+
+That acceptance is bounded to additive Core evidence for
+`createVNextPublishedStructurePdfBoundaryPlanV1`. It does not prove Backend or
+Editor adoption, gateway behavior, API key exposure, product database
+persistence, artifact storage, PDF bytes, renderer execution, release
+readiness, frontend readiness, FlowDoc product truth, or map truth. The next
+dispatch should choose Backend and/or Editor owner lanes only after recording
+the dispatch set, dependencies, `parallelLimit`, Room Run Registry entries,
+Return Channel, Liveness Signal, Death Signal, and acceptance order.
 
 The remaining first-delivery lanes should be dispatched only after the PLAN
 room records a dispatch set and `parallelLimit` against their dependencies.

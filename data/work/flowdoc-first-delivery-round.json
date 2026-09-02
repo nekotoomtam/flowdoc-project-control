@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
   "workState": "in-progress",
-  "summary": "Prepare the first FlowDoc delivery round under the Delivery Operating Model by splitting the structure creation to API/key exposure to data input to PDF output path into bounded lanes before real WORK rooms open.",
+  "summary": "Prepare the first FlowDoc delivery round under the Delivery Operating Model by splitting the structure creation to API/key exposure to data input to PDF output path into bounded lanes, then use PLAN-owned reporting to accept returned WORK handoffs. The Core PDF boundary handoff for lane-core-document-pdf-boundary has been accepted by PLAN at Core commit da5011ceeac6e0b72b152a9a5029d684af978581.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -22,12 +22,16 @@
     "doc-flowdoc-agent-documentation-authority-operating-rules",
     "doc-flowdoc-product-terminology",
     "doc-flowdoc-product-terminology-th",
-    "doc-flowdoc-first-delivery-round-plan"
+    "doc-flowdoc-first-delivery-round-plan",
+    "doc-flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, and evidence targets before opening real WORK rooms.",
-  "riskSummary": "The plan may be mistaken for product truth unless each lane keeps product claims unpromoted until repository-owned evidence exists; API key, gateway, product database, and PDF output ownership may require Contract Change Requests after Core, Backend, and Editor inspection.",
-  "requiredEvidence": ["evidence-flowdoc-first-delivery-round-plan-2026-09-01"],
+  "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, evidence targets, accepted Core boundary evidence, and next dispatch recommendations before dependent WORK lanes continue.",
+  "riskSummary": "The accepted Core boundary may be mistaken for product truth or complete product delivery unless Backend and Editor adoption, API key exposure, gateway behavior, product database persistence, artifact storage, renderer execution, PDF bytes, and integration evidence remain unpromoted until repository-owned evidence exists.",
+  "requiredEvidence": [
+    "evidence-flowdoc-first-delivery-round-plan-2026-09-01",
+    "evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"
+  ],
   "createdAt": "2026-09-01T22:00:00.000Z",
-  "updatedAt": "2026-09-01T22:00:00.000Z"
+  "updatedAt": "2026-09-02T11:20:00.000+07:00"
 }

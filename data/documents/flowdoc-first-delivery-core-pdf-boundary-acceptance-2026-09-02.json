@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02",
+  "title": "FlowDoc First Delivery Core PDF Boundary Acceptance",
+  "path": "docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the returned Core WORK room PDF boundary handoff in the first delivery round.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "da5011ceeac6e0b72b152a9a5029d684af978581",
+      "pathOrContractId": "src/generation/publishedStructurePdfBoundaryV1.ts; src/index.ts; tests/publishedStructurePdfBoundaryV1.test.ts; docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b539c81389cd6a06a71dc87d2b418bb82703ae39",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-core-pdf-boundary-acceptance.json; data/checklists/checklist-flowdoc-first-delivery-core-pdf-boundary-acceptance.json; tests/flowdoc-first-delivery-core-boundary-acceptance.test.ts"
+    }
+  ]
+}

@@ -35,11 +35,13 @@ behavior, tests, runtime contracts, local setup, and implementation evidence.
 - Assistant name: `โค`
 - Known risks: planned lane wording may be mistaken for product truth, WORK
   rooms may expand their own scope, product database language may be confused
-  with Project Control SQLite, and PDF ownership may need a Contract Change
-  Request after Core, Backend, and Editor inspection.
-- Unknown state: this plan has not opened real WORK rooms, has not inspected
-  current product implementation in Core, Backend, or Editor, and does not know
-  whether the first slice is already partially implemented.
+  with Project Control SQLite, and the accepted Core PDF boundary may be
+  mistaken for Backend, Editor, renderer, gateway, storage, or end-to-end
+  delivery evidence.
+- Unknown state: the original planning phase did not open real WORK rooms. A
+  later approved Core WORK room has now returned and been accepted by PLAN, but
+  current Backend, Editor, renderer, storage, API-key gateway, and integration
+  behavior remain unverified by this plan.
 
 ## Source Documents
 
@@ -452,12 +454,24 @@ lane only; it must not expand owner repository, source-of-truth rule, evidence
 target, or cross-repository contract on its own.
 
 The Core WORK room returned a handoff candidate outside automatic PLAN-room
-push. Before this PLAN room treats that lane as accepted, it must put the
-candidate result into `handoffInbox`, process it through `acceptanceGate`, and
-record whether the Core lane is accepted, needs revision, or changes the next
-dispatch set. No accepted Core room locator is recorded yet; the PLAN room
-must identify a task/chat ID, worktree/branch, or handoff location before the
-Core lane can pass acceptance.
+push. PLAN pulled the result by the available worktree, branch, and terminal
+handoff locator, put the candidate result into `handoffInbox`, processed it
+through `acceptanceGate`, and recorded the decision in
+`docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md`.
+Core WORK room handoff has now been accepted by PLAN for
+`lane-core-document-pdf-boundary` at Core commit
+`da5011ceeac6e0b72b152a9a5029d684af978581`.
+
+This acceptance is bounded to the additive Core contract
+`createVNextPublishedStructurePdfBoundaryPlanV1`. Backend and Editor have not
+adopted this Core boundary yet, and the acceptance does not prove gateway
+behavior, API key exposure, product database persistence, artifact storage,
+PDF bytes, renderer execution, release readiness, frontend readiness, FlowDoc
+product truth, or map truth.
+
+Next recommended lanes: `lane-backend-gateway-database` and
+`lane-editor-structure-publish`, with `lane-integration-evidence` held back
+until the required owner-lane handoffs have been accepted by PLAN.
 
 ## Handoff Requirements
 
@@ -496,6 +510,15 @@ Stop and return to the PLAN room when:
 
 ## Dispatch Status
 
-This PLAN room records the first delivery round plan and lane packets only.
-The next step is for `ตูม` and `โค` to choose which lane to open first as a
-real separate WORK room.
+This PLAN room records the first delivery round plan, lane packets, and the
+accepted Core WORK room handoff for `lane-core-document-pdf-boundary`.
+
+Next recommended lanes:
+
+- `lane-backend-gateway-database`, to inspect and implement Backend gateway,
+  credential, persistence, job, artifact, and validation adoption of the
+  accepted Core boundary.
+- `lane-editor-structure-publish`, to inspect and implement the Editor-owned
+  structure creation and publish surface that feeds the delivery path.
+- `lane-integration-evidence`, held back until owner-lane handoffs required
+  for the First Delivery Slice have been accepted by PLAN.
