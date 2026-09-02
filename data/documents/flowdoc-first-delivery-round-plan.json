@@ -35,7 +35,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "1a1c68d57bfb9458ec55f30bd60200bd2249c072",
+      "commit": "b3851c15547e5adda77719887c4574d2ba8489c9",
       "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-automatic-work-return-contract.test.ts"
     }
   ]
