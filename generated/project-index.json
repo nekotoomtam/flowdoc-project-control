@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "88b53f067d71bc2aa2ae953d90e07578d501941af8c1d41e655e8ae805a95c86",
+  "sourceDigest": "ae26022715ec3104158ef6d7a0d56a029d7594d8b9c210d3cf58baa9da21d753",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -14660,7 +14660,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "924f466e1d3d2bd0de0ebf52c899db6c30aca9f5",
+          "commit": "f7595c7b32f4e45d2f732cd3e8953104eb8fe2fd",
           "pathOrContractId": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/evidence/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check"
         }
       ],
@@ -17047,7 +17047,7 @@
       "id": "evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "924f466e1d3d2bd0de0ebf52c899db6c30aca9f5",
+      "commit": "f7595c7b32f4e45d2f732cd3e8953104eb8fe2fd",
       "pathOrContractId": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/documents/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check",
       "verificationSummary": "Project Control records the PLAN/WORK continuation feedback before returning to the drafted frontend lanes. The guardrail keeps the accepted multi-WORK pattern, requires a Room Run Registry or Lean Dispatch registry note with retrievable locator, automatic return, liveness, handoffInbox, completionQueue, acceptanceGate, and revision state before the next dispatch set is resumed, and states that PLAN must not repair WORK output itself. If acceptance finds missing or wrong WORK output, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable. RED evidence: npx vitest run tests/flowdoc-plan-work-continuation-guardrails.test.ts --maxWorkers=1 failed before the document, phase, checklist, evidence, and parent Work references existed. GREEN evidence target: tests/flowdoc-plan-work-continuation-guardrails.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not promote frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T18:35:00.000+07:00"
