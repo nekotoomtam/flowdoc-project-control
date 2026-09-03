@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-first-delivery-owner-lanes-acceptance",
+  "workId": "flowdoc-first-delivery-round",
+  "title": "First Delivery Owner Lane Acceptance",
+  "phaseState": "done",
+  "order": 40,
+  "repositoryIds": ["repo-project-control", "repo-backend", "repo-editor"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the first delivery round Work path, owner repository, active role, Checklist target, or Evidence target before accepting owner-lane handoffs.",
+    "The Backend or Editor WORK result lacks lane ID, Work Type, owner repository, Context Acknowledgement, terminal status, retrievable locator, exact commit, files changed, behavior changed, tests run, risks, unknowns, or PR Summary Draft.",
+    "PLAN accepts either owner lane without automatic WORK-to-PLAN return evidence and fresh owner-repository verification from the merged main branch.",
+    "The Backend or Editor lane changes Core semantics, cross-repository contracts, Project Control truth, map truth, production credential handling, renderer execution, PDF bytes, or end-to-end integration without an accepted Contract Change Request.",
+    "The accepted owner lanes are promoted to end-to-end delivery, product readiness, release readiness, frontend readiness, FlowDoc product truth, or map truth before lane-integration-evidence exists."
+  ],
+  "verificationTarget": "PLAN accepts lane-backend-gateway-database and lane-editor-structure-publish only after automatic returns, owner-repository main commits d20b905bf7da33d93d7f4b05117fd1a3ad0bb47a and 15c956d5c887f938a828c80dc45ababe08c7569d, fresh Backend and Editor main gates, bounded claims, Project Control evidence records, and a Project Control guard.",
+  "summary": "Done: PLAN received Backend and Editor owner-lane handoffs through the active WORK-to-PLAN return channel, processed the Backend revision path before final PASS, accepted lane-backend-gateway-database and lane-editor-structure-publish at their merged main commits, recorded bounded Project Control evidence, and kept lane-integration-evidence held until a later integration proof exists.",
+  "createdAt": "2026-09-03T10:30:00.000+07:00",
+  "updatedAt": "2026-09-03T10:30:00.000+07:00"
+}

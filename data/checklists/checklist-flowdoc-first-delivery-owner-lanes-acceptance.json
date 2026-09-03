@@ -1,0 +1,97 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-first-delivery-owner-lanes-acceptance",
+  "phaseId": "phase-flowdoc-first-delivery-owner-lanes-acceptance",
+  "title": "First Delivery Owner Lane Acceptance Checklist",
+  "items": [
+    {
+      "id": "stage-owner-lane-handoffs",
+      "label": "Stage the automatically returned Backend and Editor WORK handoffs in the PLAN handoff inbox.",
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+        "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
+      ],
+      "evidenceTarget": "The PLAN room receives and records both owner-lane terminal handoffs as handoffInbox inputs before acceptance.",
+      "verificationNote": "PLAN received handoff-backend-gateway-database-2026-09-03-01-r1 from WORK task 01a06519-c3a4-70c0-9993-8264cc0418ac and handoff-editor-structure-publish-2026-09-03-01 from WORK task 01a06519-c810-77d1-9382-b50f2bca2a18 through mcp__codex_app.send_message_to_thread without a user copy/paste bridge."
+    },
+    {
+      "id": "verify-backend-gateway-database-locator",
+      "label": "Verify the Backend gateway/database room locator.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-gateway-database-accepted-2026-09-03"],
+      "evidenceTarget": "PLAN can retrieve the returned Backend work by exact task, branch/worktree history, and merged main commit.",
+      "verificationNote": "Verified Backend WORK task 01a06519-c3a4-70c0-9993-8264cc0418ac, branch codex/backend-gateway-database-first-delivery, commits ed26428459d862269d6e856949169f46291801df and 10b87d80b3a72de0bbc3488da2129d4a47d556f7, and final Backend main commit d20b905bf7da33d93d7f4b05117fd1a3ad0bb47a."
+    },
+    {
+      "id": "verify-editor-structure-publish-locator",
+      "label": "Verify the Editor structure/publish room locator.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"],
+      "evidenceTarget": "PLAN can retrieve the returned Editor work by exact task and merged main commit.",
+      "verificationNote": "Verified Editor WORK task 01a06519-c810-77d1-9382-b50f2bca2a18 and final Editor main commit 15c956d5c887f938a828c80dc45ababe08c7569d."
+    },
+    {
+      "id": "run-owner-repository-main-gates",
+      "label": "Run Backend and Editor owner-repository main verification.",
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+        "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
+      ],
+      "evidenceTarget": "Fresh Backend and Editor main gates pass before PLAN accepts the owner-lane product implementation handoffs.",
+      "verificationNote": "Backend main npm run check passed with 92 passed / 1 skipped test files, 333 passed / 27 skipped tests, and build passed after the focused retired-fixture regression suite passed with 2 files / 9 passed / 3 skipped. Editor main npm run check passed with 109 test files / 394 tests and build passed with the existing Vite chunk-size warning family."
+    },
+    {
+      "id": "accept-backend-gateway-database-handoff",
+      "label": "Accept the bounded Backend gateway/database handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-gateway-database-accepted-2026-09-03"],
+      "evidenceTarget": "acceptanceGate accepts only the Backend gateway/database boundary and automatic product-edit return proof.",
+      "verificationNote": "Accepted the optional First Delivery gateway route boundary, injected API-key credential reference, Core boundary pre-admission validation, planned artifact records, and queued job/status metadata. Renderer execution, PDF bytes, worker start, production binding, real secrets, and broad /pdf-exports mounting stayed closed."
+    },
+    {
+      "id": "accept-editor-structure-publish-handoff",
+      "label": "Accept the bounded Editor structure/publish handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"],
+      "evidenceTarget": "acceptanceGate accepts only the Editor workspace publish boundary and automatic product-edit return proof.",
+      "verificationNote": "Accepted /documents/:documentId/publish, the Publish workspace tab, retained Design runtime state while Publish is active, and the Editor-owned Publish boundary panel. Backend calls, publish submission, API key storage, PDF output, and browser-to-backend integration stayed closed."
+    },
+    {
+      "id": "preserve-integration-and-map-boundary",
+      "label": "Preserve the integration and map-truth boundary.",
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+        "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
+      ],
+      "evidenceTarget": "The accepted owner lanes do not update system maps or promote broad FlowDoc product truth.",
+      "verificationNote": "No system map or DOCUMENT_MAP record changed. lane-integration-evidence remains held, and API key provisioning, production database readiness, worker execution, renderer execution, PDF output, artifact download, browser-to-backend integration, release readiness, frontend readiness, product truth, and map truth remain unknown."
+    },
+    {
+      "id": "record-owner-lane-evidence",
+      "label": "Record Project Control evidence for the accepted owner lanes.",
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+        "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
+      ],
+      "evidenceTarget": "Project Control records the accepted Backend and Editor commits, changed files, tests, active return state, risks, unknowns, and unpromoted claims.",
+      "verificationNote": "Registered evidence-flowdoc-backend-gateway-database-accepted-2026-09-03, evidence-flowdoc-editor-structure-publish-accepted-2026-09-03, and doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03 without linking them to map-truth nodes."
+    },
+    {
+      "id": "verify-project-control-owner-lane-records",
+      "label": "Verify the Project Control owner-lane records.",
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+        "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
+      ],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after owner-lane records are registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-first-delivery-owner-lanes-acceptance.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-03T10:30:00.000+07:00",
+  "updatedAt": "2026-09-03T10:30:00.000+07:00"
+}

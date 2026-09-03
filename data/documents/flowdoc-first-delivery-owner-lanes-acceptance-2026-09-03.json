@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03",
+  "title": "FlowDoc First Delivery Owner Lane Acceptance",
+  "path": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the automatically returned Backend gateway/database and Editor structure/publish WORK room handoffs in the first delivery round.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-backend",
+      "commit": "d20b905bf7da33d93d7f4b05117fd1a3ad0bb47a",
+      "pathOrContractId": "src/routes/firstDeliveryGatewayRoute.ts; src/tests/firstDeliveryGatewayRoute.test.ts; src/http/server.ts; src/index.ts; src/tests/pdfExportHttpHandler.test.ts; src/tests/fixtures/flowdoc-local-measured-document-regular-subset.ttf; src/tests/helpers/docGenLocalPdfExportFixture.ts; src/tests/pdfExportLocalRenderer.test.ts; src/tests/pdfExportLocalComposition.test.ts; vitest.config.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "15c956d5c887f938a828c80dc45ababe08c7569d",
+      "pathOrContractId": "src/app/EditorShell.tsx; src/app/documentWorkspaceRoute.ts; src/components/publish/PublishBoundaryView.tsx; src/components/shell/WorkspaceFrame.tsx; src/components/shell/WorkspaceViewTabs.tsx; src/styles/workspace.css; src/tests/documentWorkspaceRoute.test.ts; src/tests/workspaceFrame.test.ts; src/tests/workspaceViewTabs.test.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "750458c6f1dc2e13930403b8062705399fcb7fd9",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; docs/domains/flowdoc-first-delivery-round-plan.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-owner-lanes-acceptance.json; data/checklists/checklist-flowdoc-first-delivery-owner-lanes-acceptance.json; data/evidence/flowdoc-backend-gateway-database-accepted-2026-09-03.json; data/evidence/flowdoc-editor-structure-publish-accepted-2026-09-03.json; tests/flowdoc-first-delivery-owner-lanes-acceptance.test.ts"
+    }
+  ]
+}

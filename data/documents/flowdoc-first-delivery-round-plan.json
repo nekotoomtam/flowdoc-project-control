@@ -67,6 +67,11 @@
       "repositoryId": "repo-project-control",
       "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
       "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "750458c6f1dc2e13930403b8062705399fcb7fd9",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; tests/flowdoc-first-delivery-owner-lanes-acceptance.test.ts"
     }
   ]
 }

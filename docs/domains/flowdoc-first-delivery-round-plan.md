@@ -621,9 +621,11 @@ Stop and return to the PLAN room when:
 ## Dispatch Status
 
 This PLAN room records the first delivery round plan, lane packets, the
-accepted Core WORK room handoff for `lane-core-document-pdf-boundary`, and the
+accepted Core WORK room handoff for `lane-core-document-pdf-boundary`, the
 accepted Backend product-edit active return smoke for
-`lane-backend-pdf-boundary-pre-admission-smoke`.
+`lane-backend-pdf-boundary-pre-admission-smoke`, and the accepted owner-lane
+handoffs for `lane-backend-gateway-database` and
+`lane-editor-structure-publish`.
 
 The single-room active return smoke test passes for one projectless WORK room,
 and the two-room active return queue smoke test passes for two read-only
@@ -656,12 +658,34 @@ full historical context in every prompt. That lean test would still not prove
 FlowDoc product truth or map truth until owner-repository commits, checks, and
 PLAN-owned acceptance records support the exact claim.
 
-Next recommended lanes:
+The Backend gateway/database handoff from
+`dispatch-first-delivery-owner-lanes-2026-09-03-01` returned automatically and
+has now been accepted by PLAN at Backend commit
+`d20b905bf7da33d93d7f4b05117fd1a3ad0bb47a`. The accepted Backend behavior is
+bounded to the optional First Delivery gateway route boundary, injected API-key
+credential reference, Core boundary pre-admission validation, planned
+artifact-manifest and artifact-job records, and queued job/status metadata. It
+does not run renderer, produce PDF bytes, start a worker, enable production
+binding, store credentials or real secrets, or mount the existing V-G
+pdf-export candidate at root `/pdf-exports`.
 
-- `lane-backend-gateway-database`, to inspect and implement Backend gateway,
-  credential, persistence, job, artifact, and validation adoption of the
-  accepted Core boundary and Backend pre-admission guard.
-- `lane-editor-structure-publish`, to inspect and implement the Editor-owned
-  structure creation and publish surface that feeds the delivery path.
-- `lane-integration-evidence`, held back until owner-lane handoffs required
-  for the First Delivery Slice have been accepted by PLAN.
+The Editor structure/publish handoff from
+`dispatch-first-delivery-owner-lanes-2026-09-03-01` returned automatically and
+has now been accepted by PLAN at Editor commit
+`15c956d5c887f938a828c80dc45ababe08c7569d`. The accepted Editor behavior is
+bounded to `/documents/:documentId/publish`, the Publish workspace tab, retained
+Design runtime state while Publish is active, and the Editor-owned Publish
+boundary panel. It keeps publish submission unavailable until the Backend-owned
+gateway contract is ready for integration.
+
+These owner-lane acceptances are recorded in
+`docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md`.
+They do not promote FlowDoc product truth or map truth. `lane-integration-evidence`
+remains held until PLAN opens a later integration lane that connects the
+accepted Backend and Editor surfaces with fresh repository-owned evidence.
+
+Next recommended lane:
+
+- `lane-integration-evidence`, to verify the narrow cross-repository path
+  across the accepted owner surfaces without promoting broader product,
+  release, frontend, or map truth beyond the exact evidence produced.

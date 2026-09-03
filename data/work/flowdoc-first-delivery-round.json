@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
   "workState": "in-progress",
-  "summary": "Prepare the first FlowDoc delivery round under the Delivery Operating Model by splitting the structure creation to API/key exposure to data input to PDF output path into bounded lanes, then use PLAN-owned reporting to accept returned WORK handoffs. The Core PDF boundary handoff for lane-core-document-pdf-boundary has been accepted by PLAN at Core commit da5011ceeac6e0b72b152a9a5029d684af978581. The Backend PDF boundary pre-admission handoff for lane-backend-pdf-boundary-pre-admission-smoke has also been accepted by PLAN as an automatic-returned product-edit smoke at Backend commit 5427ebc12bfe52e0961fbdc35544e476ee0fd484.",
+  "summary": "Prepare the first FlowDoc delivery round under the Delivery Operating Model by splitting the structure creation to API/key exposure to data input to PDF output path into bounded lanes, then use PLAN-owned reporting to accept returned WORK handoffs. The Core PDF boundary handoff for lane-core-document-pdf-boundary has been accepted by PLAN at Core commit da5011ceeac6e0b72b152a9a5029d684af978581. The Backend PDF boundary pre-admission handoff for lane-backend-pdf-boundary-pre-admission-smoke has also been accepted by PLAN as an automatic-returned product-edit smoke at Backend commit 5427ebc12bfe52e0961fbdc35544e476ee0fd484. The Backend gateway/database handoff and Editor structure/publish handoff from dispatch-first-delivery-owner-lanes-2026-09-03-01 are now accepted by PLAN at Backend commit d20b905bf7da33d93d7f4b05117fd1a3ad0bb47a and Editor commit 15c956d5c887f938a828c80dc45ababe08c7569d.",
   "contextDocumentIds": [
     "doc-project-control-agent-onboarding",
     "doc-flowdoc-system-map",
@@ -24,16 +24,19 @@
     "doc-flowdoc-product-terminology-th",
     "doc-flowdoc-first-delivery-round-plan",
     "doc-flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02",
-    "doc-flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02"
+    "doc-flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02",
+    "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, evidence targets, accepted Core boundary evidence, accepted Backend pre-admission smoke evidence, automatic WORK-to-PLAN return status, and next dispatch recommendations before dependent WORK lanes continue.",
-  "riskSummary": "The accepted Core boundary and accepted Backend pre-admission smoke may be mistaken for product truth or complete product delivery unless Backend and Editor adoption stay qualified: Backend route and gateway behavior remains unknown, and Editor adoption, API key exposure, product database persistence, artifact storage, renderer execution, PDF bytes, and integration evidence remain unpromoted until repository-owned evidence exists.",
+  "expectedOutput": "Project Control records the First Delivery Round Plan with Lane Cards, WORK room Kickoff Packets, owner repository boundaries, terminology decisions, stop conditions, evidence targets, accepted Core boundary evidence, accepted Backend pre-admission smoke evidence, accepted Backend gateway/database evidence, accepted Editor structure/publish evidence, automatic WORK-to-PLAN return status, and next dispatch recommendations before dependent WORK lanes continue.",
+  "riskSummary": "The accepted Core boundary, accepted Backend pre-admission smoke, accepted Backend gateway/database handoff, and accepted Editor structure/publish handoff may be mistaken for product truth or complete product delivery unless Backend and Editor adoption stays qualified: gateway behavior remains unknown beyond the bounded optional route boundary, integration evidence remains held, and real API key provisioning, production database readiness, worker execution, renderer execution, PDF bytes, artifact download, browser-to-backend integration, release readiness, frontend readiness, and map truth remain unpromoted until repository-owned evidence exists.",
   "requiredEvidence": [
     "evidence-flowdoc-first-delivery-round-plan-2026-09-01",
     "evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02",
-    "evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02"
+    "evidence-flowdoc-backend-pdf-boundary-pre-admission-smoke-2026-09-02",
+    "evidence-flowdoc-backend-gateway-database-accepted-2026-09-03",
+    "evidence-flowdoc-editor-structure-publish-accepted-2026-09-03"
   ],
   "createdAt": "2026-09-01T22:00:00.000Z",
-  "updatedAt": "2026-09-02T17:10:00.000+07:00"
+  "updatedAt": "2026-09-03T10:30:00.000+07:00"
 }
