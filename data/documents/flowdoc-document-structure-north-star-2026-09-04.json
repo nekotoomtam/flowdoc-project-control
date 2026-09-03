@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "35153baa1817216685bf6d04d9da39675f2d373f",
       "pathOrContractId": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md; data/work/flowdoc-document-structure-north-star.json; data/phases/phase-flowdoc-document-structure-north-star-v1.json; data/checklists/checklist-flowdoc-document-structure-north-star-v1.json; data/evidence/flowdoc-document-structure-north-star-2026-09-04.json; tests/flowdoc-document-structure-north-star.test.ts; npm run check"
     }
   ]
