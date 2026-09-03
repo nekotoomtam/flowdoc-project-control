@@ -25,8 +25,8 @@
       "label": "Record Room Run Registry feedback.",
       "state": "passed",
       "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
-      "evidenceTarget": "The note records that future multi-WORK dispatch continuity must not depend on conversation-only room state.",
-      "verificationNote": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md records that the next dispatch set should use a Room Run Registry or Lean Dispatch registry note with retrievable locators, automatic return data, liveness state, acceptance decisions, and revision state before returning to drafted frontend lanes."
+      "evidenceTarget": "The always-read Project Control entrypoints and orchestration contract record that future multi-WORK dispatch continuity must not depend on conversation-only room state.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, and docs/domains/flowdoc-plan-room-orchestration-rules.md require the next dispatch set to restore a Room Run Registry or Lean Dispatch registry note with retrievable locators, automatic return data, liveness state, acceptance decisions, and revision state before returning to drafted frontend lanes. docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md remains the decision/evidence note."
     },
     {
       "id": "preserve-drafted-lane-plan-boundary",
@@ -34,7 +34,7 @@
       "state": "passed",
       "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
       "evidenceTarget": "The continuation record does not alter lane order, open the next frontend lane, or let PLAN repair WORK output itself.",
-      "verificationNote": "The guardrail states that it does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, and sends needs-revision work back to the same WORK room through a Revision Packet when the locator remains usable."
+      "verificationNote": "The always-read rule and the decision note state that they do not change the drafted frontend lane plan, do not open the next frontend lane, do not edit Core, Backend, or Editor behavior, and send needs-revision work back to the same WORK room through a Revision Packet when the locator remains usable."
     },
     {
       "id": "verify-plan-work-continuation-records",

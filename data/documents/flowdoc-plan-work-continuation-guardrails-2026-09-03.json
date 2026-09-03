@@ -5,7 +5,7 @@
   "path": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md",
   "nodeIds": [],
   "role": "decision",
-  "authority": "Project Control continuation guardrail for preserving PLAN/WORK room feedback before returning to the drafted frontend lane plan.",
+  "authority": "Project Control decision and evidence note for the PLAN/WORK continuation guardrail; canonical rule text is folded into the always-read Project Control entrypoints and PLAN Room Orchestration Rules.",
   "lifecycle": "active",
   "repositoryRefs": [
     {

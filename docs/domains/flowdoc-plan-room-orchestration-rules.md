@@ -236,6 +236,31 @@ record. It must still be explicit enough that a future PLAN room can find which
 WORK rooms exist, which Context Capsule each room received, which handoffs
 remain unprocessed, and which locator can be used for pull review.
 
+## Continuation From Drafted Lane Plans
+
+Before returning to a drafted lane plan after a pause, feedback round, or
+partial dispatch, PLAN must restore the latest Room Run Registry or Lean
+Dispatch registry note for the active dispatch set. PLAN must not rely on
+conversation-only room state. If no retrievable registry state exists, PLAN
+must create a bounded Project Control continuation note before opening or
+resuming the next WORK room.
+
+The restored state must name each room's dispatch set, lane ID, Work Type,
+owner repository, retrievable locator, PLAN task/chat ID or PLAN-owned monitor,
+automatic Return Channel, Active Return Command, liveness state, handoff ID,
+completionQueue arrival, acceptance decision, and revision state. If a
+previous feedback or acceptance round added a guardrail, PLAN must fold the
+operating rule into the required orchestration documents instead of leaving the
+rule only in a separate evidence note.
+
+PLAN must not repair WORK output itself. If returned output is incomplete or
+wrong but still belongs to the same lane, PLAN sends a Revision Packet back to
+the same WORK room when the original retrievable locator remains usable. If the
+same room cannot receive the packet, PLAN records the room as
+`needs-attention`, `returned-silent`, `manual-recovered`,
+`return-channel-failed`, `UNKNOWN`, `RISK`, or `blocked`, then chooses the next
+PLAN action without silently taking over the lane.
+
 ## WORK Room Return And Liveness
 
 Every WORK room must have a mandatory WORK room return path before dispatch.

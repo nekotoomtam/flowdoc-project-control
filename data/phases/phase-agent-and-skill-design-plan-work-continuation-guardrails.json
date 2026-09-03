@@ -15,7 +15,7 @@
     "The record promotes frontend readiness, product truth, map truth, or Core, Backend, or Editor behavior."
   ],
   "verificationTarget": "Record the PLAN/WORK continuation feedback before returning to drafted frontend lanes: PLAN must preserve a Room Run Registry or registry-note locator for every active WORK room, PLAN must not repair WORK output itself, needs-revision results must go back as a Revision Packet to the same WORK room when the locator remains usable, and this guardrail does not alter the drafted frontend lane plan.",
-  "summary": "Done: recorded the continuation guardrail for returning from feedback discussion to the drafted frontend lane plan. The guardrail preserves the accepted orchestration pattern, requires retrievable Room Run Registry or registry-note state before the next dispatch set is resumed, and keeps product WORK correction inside the same WORK room through Revision Packets instead of PLAN-side repair.",
+  "summary": "Done: recorded the continuation guardrail for returning from feedback discussion to the drafted frontend lane plan, then folded the operating rule into the always-read Project Control entrypoints and PLAN Room Orchestration Rules. The separate continuation document remains the decision/evidence note, while AGENTS.md, global guidance, and the orchestration contract carry the rule future PLAN rooms must read. The guardrail preserves the accepted orchestration pattern, requires retrievable Room Run Registry or registry-note state before the next dispatch set is resumed, and keeps product WORK correction inside the same WORK room through Revision Packets instead of PLAN-side repair.",
   "createdAt": "2026-09-03T18:35:00.000+07:00",
   "updatedAt": "2026-09-03T18:35:00.000+07:00"
 }

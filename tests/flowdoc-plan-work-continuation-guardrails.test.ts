@@ -20,6 +20,11 @@ describe("FlowDoc PLAN/WORK continuation guardrails", () => {
     const phase = model.phases.find((item) => item.id === PHASE_ID);
     const checklist = model.checklists.find((item) => item.id === CHECKLIST_ID);
     const docText = normalize(documents.get(DOC_ID)?.content);
+    const agentOnboarding = normalize(documents.get("doc-project-control-agent-onboarding")?.content);
+    const globalGuidance = normalize(documents.get("doc-flowdoc-global-codex-guidance")?.content);
+    const orchestrationRules = normalize(
+      documents.get("doc-flowdoc-plan-room-orchestration-rules")?.content,
+    );
 
     expect(work).toMatchObject({
       activeRole: "project-control-steward",
@@ -54,7 +59,7 @@ describe("FlowDoc PLAN/WORK continuation guardrails", () => {
     expect(checklist?.items.every((item) => item.evidenceIds?.includes(EVIDENCE_ID))).toBe(true);
 
     expect(documents.get(DOC_ID)).toMatchObject({
-      authority: expect.stringContaining("Project Control continuation guardrail"),
+      authority: expect.stringContaining("decision and evidence note"),
       lifecycle: "active",
       nodeIds: [],
       path: DOC_PATH,
@@ -89,5 +94,15 @@ describe("FlowDoc PLAN/WORK continuation guardrails", () => {
     expect(docText).toContain("does not open the next frontend lane");
     expect(docText).not.toMatch(/\bfrontend readiness: current\b/iu);
     expect(docText).not.toMatch(/\bmap truth: current\b/iu);
+
+    for (const mainRuleText of [agentOnboarding, globalGuidance, orchestrationRules]) {
+      expect(mainRuleText.toLowerCase()).toContain("before returning to a drafted lane plan");
+      expect(mainRuleText).toContain("must restore the latest Room Run Registry");
+      expect(mainRuleText).toContain("must not rely on conversation-only room state");
+      expect(mainRuleText).toContain("PLAN must not repair WORK output itself");
+      expect(mainRuleText).toContain("Revision Packet back to the same WORK room");
+    }
+
+    expect(docText).toContain("The canonical rule text lives in");
   });
 });

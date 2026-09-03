@@ -4,7 +4,7 @@
 
 This document records PLAN/WORK continuation feedback before returning to drafted frontend lanes. It is owned by Project Control under `flowdoc-product-development-resumption > agent-and-skill-design`.
 
-This is a Project Control coordination decision. It does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not prove frontend readiness, FlowDoc product truth, or map truth.
+This is a Project Control coordination decision and evidence note. The canonical rule text lives in `AGENTS.md`, `docs/domains/flowdoc-global-codex-guidance.md`, and `docs/domains/flowdoc-plan-room-orchestration-rules.md`. This note records why that rule was added; it is not the only place a future PLAN room should learn the rule. It does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not prove frontend readiness, FlowDoc product truth, or map truth.
 
 ## Work Context
 

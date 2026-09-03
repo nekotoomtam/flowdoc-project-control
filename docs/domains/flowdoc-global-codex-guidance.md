@@ -102,6 +102,19 @@ be able to hold multiple active WORK rooms, enqueue close-together returns in
 duplicate handoff idempotently, and process one queued handoff at a time
 through `acceptanceGate`.
 
+Before returning to a drafted lane plan after a pause, feedback round, or
+partial dispatch, PLAN must restore the latest Room Run Registry or Lean
+Dispatch registry note for the active dispatch set. PLAN must not rely on
+conversation-only room state. If no retrievable registry state exists, PLAN
+must create a bounded Project Control continuation note before opening or
+resuming the next WORK room. The restored state must name each room's dispatch
+set, lane ID, Work Type, owner repository, retrievable locator, automatic
+Return Channel, Active Return Command, liveness state, handoff ID,
+completionQueue arrival, acceptance decision, and revision state. PLAN must
+not repair WORK output itself; if returned output is incomplete or wrong but
+still belongs to the same lane, PLAN sends a Revision Packet back to the same
+WORK room when the original locator remains usable.
+
 Use PLAN-owned reporting for product WORK output. Core, Backend, and Editor
 WORK rooms return evidence candidate handoffs and must not self-promote Project
 Control truth, map truth, accepted lane status, or round status. PLAN receives
