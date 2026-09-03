@@ -5,12 +5,12 @@
   "path": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md",
   "nodeIds": [],
   "role": "decision",
-  "authority": "PLAN-owned Room Run Registry note for dispatch-frontend-continuation-2026-09-03-01, preserving task, worktree, return, liveness, queue, and acceptance locators before waiting on the next frontend WORK rooms.",
+  "authority": "PLAN-owned Room Run Registry note for dispatch-frontend-continuation-2026-09-03-01, preserving task, worktree, return, liveness, queue, and acceptance locators for the returned frontend continuation WORK rooms.",
   "lifecycle": "active",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "c97a51b59dac41d8725feb37f9727e3d1af09a10",
+      "commit": "0000000000000000000000000000000000000000",
       "pathOrContractId": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md; tests/flowdoc-frontend-continuation-dispatch-registry.test.ts"
     }
   ]

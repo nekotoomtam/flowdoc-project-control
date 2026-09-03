@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+  "workId": "flowdoc-frontend-product-map",
+  "title": "Frontend Product Map Preview Confidence Probe v1",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "The probe edits product repository behavior or Project Control truth beyond a bounded PLAN return.",
+    "The returned handoff lacks terminal status, automatic Return Channel evidence, retrievable locator, or explicit risks and unknowns.",
+    "The probe promotes Preview readiness, frontend readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth.",
+    "The next lane would require Backend, Core, Editor, renderer, storage, API key, or PDF behavior without a new approved lane and evidence target."
+  ],
+  "verificationTarget": "Project Control records the read-only lane-preview-confidence-probe result as a bounded evidence-review handoff that defines Preview vocabulary, evidence gaps, and lane-preview-confidence-validation without promoting Preview readiness.",
+  "summary": "Done: PLAN accepted the Preview Confidence Probe as a no-edit planning/evidence-review result. It recommends lane-preview-confidence-validation with parallelLimit 1 before any Preview readiness claim.",
+  "createdAt": "2026-09-03T21:45:00.000+07:00",
+  "updatedAt": "2026-09-03T21:45:00.000+07:00"
+}

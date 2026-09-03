@@ -42,7 +42,7 @@ describe("FlowDoc Frontend Product Map", () => {
       nodeId: "flowdoc",
       parentWorkId: PARENT_WORK_ID,
       phaseIds: expect.arrayContaining([PHASE_ID]),
-      requiredEvidence: [EVIDENCE_ID],
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       repositoryIds: ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
       workKind: "task",
       workPathIds: ["flowdoc-product-development-resumption", PARENT_WORK_ID, WORK_ID],

@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+  "workId": "flowdoc-design-workspace-usability",
+  "title": "Design Selected Region Command Affordance Acceptance v1",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "The returned handoff lacks automatic Return Channel evidence, exact Editor commit, clean retrievable locator, or terminal PASS status.",
+    "The WORK room asks PLAN to repair product repository behavior instead of returning a revised lane result.",
+    "The accepted Editor change activates Preview, Publish, direct WYSIWYG, contenteditable shortcuts, Backend behavior, Core behavior, PDF output, or map truth.",
+    "Editor owner-repository verification fails on the lane worktree or after fast-forwarding an isolated Editor main verification worktree.",
+    "Project Control records would promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Project Control records PLAN acceptance of lane-design-selected-region-command-affordance-cleanup at Editor commit cb3c1ca4e35973c3bd4f89d969826911e109e55c after automatic return, acceptanceGate review, Editor review:gate, Editor review:browser, and no readiness or map truth promotion.",
+  "summary": "Done: PLAN accepted the bounded Editor selected-region command affordance cleanup lane after the WORK room returned automatically with terminal PASS, exact commit evidence, clean locators, and full Editor owner-repository verification.",
+  "createdAt": "2026-09-03T21:45:00.000+07:00",
+  "updatedAt": "2026-09-03T21:45:00.000+07:00"
+}

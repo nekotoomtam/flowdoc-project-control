@@ -8,7 +8,7 @@ const DOC_PATH = "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2
 const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
 
 describe("FlowDoc frontend continuation dispatch registry", () => {
-  it("records monitorable locators for the active two-room frontend dispatch set", async () => {
+  it("records monitorable locators and acceptance outcomes for the two-room frontend dispatch set", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
     const document = model.documents.find((item) => item.id === DOC_ID);
     const docText = normalize(document?.content);
@@ -50,7 +50,12 @@ describe("FlowDoc frontend continuation dispatch registry", () => {
     expect(docText).toContain("C:\\Users\\nekot\\.codex\\worktrees\\758f\\flowdoc-project-control");
     expect(docText).toContain("handoff-preview-confidence-probe-2026-09-03-01");
 
-    expect(docText).toContain("automatic Terminal Handoff not yet received");
+    expect(docText).toContain("automatic-returned");
+    expect(docText).toContain("arrivalSequence: 1");
+    expect(docText).toContain("arrivalSequence: 2");
+    expect(docText).toContain("Status: `accepted`");
+    expect(docText).toContain("cb3c1ca4e35973c3bd4f89d969826911e109e55c");
+    expect(docText).toContain("lane-preview-confidence-validation");
     expect(docText).toContain("does not satisfy automatic return");
     expect(docText).not.toMatch(/\bfrontend readiness: current\b/iu);
     expect(docText).not.toMatch(/\bPreview readiness: current\b/iu);

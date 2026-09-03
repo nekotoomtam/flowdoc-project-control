@@ -43,7 +43,7 @@ describe("FlowDoc design workspace usability acceptance", () => {
       parentWorkId: PARENT_WORK_ID,
       phaseIds: expect.arrayContaining([PHASE_ID]),
       repositoryIds: ["repo-editor", "repo-project-control"],
-      requiredEvidence: [EVIDENCE_ID],
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       workKind: "task",
       workPathIds: [
         "flowdoc-product-development-resumption",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "54df73d61a74eb43fb5b60724c93d6a9313a45f77cb63a3c850148e9010d5201",
+  "sourceDigest": "03079348a067bdfc86d9f59610476dacc7fa4a20ce935b5d55a3c7c96b0906c0",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -1971,7 +1971,7 @@
         "repo-project-control"
       ],
       "workState": "in-review",
-      "summary": "Accept the Editor-owned lane-design-workspace-usability implementation that adds a bounded Design workspace status strip, keeps Preview unavailable and Publish blocked, preserves the WYSIWYG gate boundary, and records PLAN acceptance after automatic return, revision, merge, and owner-repository verification.",
+      "summary": "Accept the Editor-owned Design workspace usability work. The first accepted lane added the bounded Design workspace status strip. The continuation lane accepts a selected-region command summary that makes Text/List availability and Direct page edit, Preview, and Publish unavailable states visible without activating those gated behaviors.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -1989,19 +1989,23 @@
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
         "doc-flowdoc-frontend-product-map-2026-09-03",
         "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
-        "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03"
+        "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03",
+        "doc-flowdoc-frontend-continuation-dispatch-registry-2026-09-03",
+        "doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03"
       ],
       "activeRole": "product-implementation-agent",
-      "expectedOutput": "Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 accepted by PLAN for lane-design-workspace-usability, with evidence-editor-design-workspace-usability-2026-09-03 recording automatic return, revision loop, Editor main verification, bounded Preview unavailable and Publish blocked status, and no product truth or map truth promotion.",
-      "riskSummary": "This lane is a bounded Editor UI affordance only. It does not promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "expectedOutput": "Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 accepted by PLAN for lane-design-workspace-usability, and Editor commit cb3c1ca4e35973c3bd4f89d969826911e109e55c accepted by PLAN for lane-design-selected-region-command-affordance-cleanup. The continuation evidence records a read-only selected-region command summary, automatic return, Editor main review:gate and review:browser verification, Preview unavailable, Publish blocked, Direct page edit unavailable, and no product truth or map truth promotion.",
+      "riskSummary": "These lanes are bounded Editor UI affordances only and this record does not promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
       "requiredEvidence": [
-        "evidence-editor-design-workspace-usability-2026-09-03"
+        "evidence-editor-design-workspace-usability-2026-09-03",
+        "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
       ],
       "createdAt": "2026-09-03T17:55:00.000+07:00",
       "updatedAt": "2026-09-03T17:55:00.000+07:00",
       "childWorkIds": [],
       "phaseIds": [
-        "phase-flowdoc-design-workspace-usability-acceptance-v1"
+        "phase-flowdoc-design-workspace-usability-acceptance-v1",
+        "phase-flowdoc-design-selected-region-command-affordance-acceptance-v1"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -2216,7 +2220,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Expand the accepted Frontend Expert Roadmap into a Project Control-owned screen and action map for Library, Document Detail, Design, Preview, Publish, shared states, and the first Editor implementation lane package.",
+      "summary": "Expand the accepted Frontend Expert Roadmap into a Project Control-owned screen and action map for Library, Document Detail, Design, Preview, Publish, shared states, the first Editor implementation lane package, and the bounded Preview Confidence Probe follow-up route.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2231,13 +2235,16 @@
         "doc-flowdoc-agent-documentation-authority-operating-rules",
         "doc-flowdoc-product-terminology",
         "doc-flowdoc-product-terminology-th",
-        "doc-flowdoc-frontend-expert-roadmap-2026-09-03"
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+        "doc-flowdoc-frontend-continuation-dispatch-registry-2026-09-03",
+        "doc-flowdoc-preview-confidence-probe-2026-09-03"
       ],
       "activeRole": "planning-partner",
-      "expectedOutput": "Frontend Product Map v1 in Project Control, with screen inventory, action inventory, truth boundaries, and a lane-ready package for lane-design-workspace-usability.",
-      "riskSummary": "The map is planning context and may be mistaken for frontend readiness or current product behavior. It intentionally does not promote Editor, Backend, Core, WYSIWYG, publish, production, compatibility, FlowDoc product truth, or map truth.",
+      "expectedOutput": "Frontend Product Map v1 in Project Control, with screen inventory, action inventory, truth boundaries, a lane-ready package for lane-design-workspace-usability, and a Preview Confidence Probe handoff that recommends lane-preview-confidence-validation before any Preview readiness claim.",
+      "riskSummary": "The map is planning context, and the Preview probe is planning and evidence-review context. They may be mistaken for frontend readiness or current product behavior, so they intentionally do not promote Editor, Backend, Core, WYSIWYG, Preview, Publish, production, compatibility, FlowDoc product truth, or map truth.",
       "requiredEvidence": [
-        "evidence-flowdoc-frontend-product-map-2026-09-03"
+        "evidence-flowdoc-frontend-product-map-2026-09-03",
+        "evidence-flowdoc-preview-confidence-probe-2026-09-03"
       ],
       "createdAt": "2026-09-03T10:00:00.000Z",
       "updatedAt": "2026-09-03T10:00:00.000Z",
@@ -2246,7 +2253,8 @@
         "flowdoc-wysiwyg-gate-decision"
       ],
       "phaseIds": [
-        "phase-flowdoc-frontend-product-map-v1"
+        "phase-flowdoc-frontend-product-map-v1",
+        "phase-flowdoc-frontend-product-map-preview-confidence-probe-v1"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -4394,6 +4402,30 @@
     },
     {
       "kind": "phase",
+      "id": "phase-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+      "workId": "flowdoc-design-workspace-usability",
+      "title": "Design Selected Region Command Affordance Acceptance v1",
+      "phaseState": "done",
+      "order": 20,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "The returned handoff lacks automatic Return Channel evidence, exact Editor commit, clean retrievable locator, or terminal PASS status.",
+        "The WORK room asks PLAN to repair product repository behavior instead of returning a revised lane result.",
+        "The accepted Editor change activates Preview, Publish, direct WYSIWYG, contenteditable shortcuts, Backend behavior, Core behavior, PDF output, or map truth.",
+        "Editor owner-repository verification fails on the lane worktree or after fast-forwarding an isolated Editor main verification worktree.",
+        "Project Control records would promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Project Control records PLAN acceptance of lane-design-selected-region-command-affordance-cleanup at Editor commit cb3c1ca4e35973c3bd4f89d969826911e109e55c after automatic return, acceptanceGate review, Editor review:gate, Editor review:browser, and no readiness or map truth promotion.",
+      "summary": "Done: PLAN accepted the bounded Editor selected-region command affordance cleanup lane after the WORK room returned automatically with terminal PASS, exact commit evidence, clean locators, and full Editor owner-repository verification.",
+      "createdAt": "2026-09-03T21:45:00.000+07:00",
+      "updatedAt": "2026-09-03T21:45:00.000+07:00"
+    },
+    {
+      "kind": "phase",
       "id": "phase-flowdoc-design-workspace-usability-acceptance-v1",
       "workId": "flowdoc-design-workspace-usability",
       "title": "Design Workspace Usability Acceptance v1",
@@ -4906,6 +4938,28 @@
       "summary": "Done: Project Control now records a bounded Frontend Expert Roadmap v1 that names the product north star, missing frontend surfaces, first lane sequence, acceptance expectations, and truth boundaries before product implementation begins.",
       "createdAt": "2026-09-03T09:00:00.000Z",
       "updatedAt": "2026-09-03T09:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+      "workId": "flowdoc-frontend-product-map",
+      "title": "Frontend Product Map Preview Confidence Probe v1",
+      "phaseState": "done",
+      "order": 20,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "The probe edits product repository behavior or Project Control truth beyond a bounded PLAN return.",
+        "The returned handoff lacks terminal status, automatic Return Channel evidence, retrievable locator, or explicit risks and unknowns.",
+        "The probe promotes Preview readiness, frontend readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth.",
+        "The next lane would require Backend, Core, Editor, renderer, storage, API key, or PDF behavior without a new approved lane and evidence target."
+      ],
+      "verificationTarget": "Project Control records the read-only lane-preview-confidence-probe result as a bounded evidence-review handoff that defines Preview vocabulary, evidence gaps, and lane-preview-confidence-validation without promoting Preview readiness.",
+      "summary": "Done: PLAN accepted the Preview Confidence Probe as a no-edit planning/evidence-review result. It recommends lane-preview-confidence-validation with parallelLimit 1 before any Preview readiness claim.",
+      "createdAt": "2026-09-03T21:45:00.000+07:00",
+      "updatedAt": "2026-09-03T21:45:00.000+07:00"
     },
     {
       "kind": "phase",
@@ -10655,6 +10709,66 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+      "phaseId": "phase-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+      "title": "Design Selected Region Command Affordance Acceptance v1 Checklist",
+      "items": [
+        {
+          "id": "stage-selected-region-handoff",
+          "label": "Stage the selected-region WORK room handoff in PLAN handoffInbox and completionQueue.",
+          "state": "passed",
+          "evidenceTarget": "PLAN receives handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01 through the automatic Return Channel.",
+          "evidenceIds": [
+            "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+          ],
+          "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a06786-74da-73e2-a852-64e9c7351aef. PLAN queued it as arrivalSequence 2 after the Preview confidence probe."
+        },
+        {
+          "id": "verify-selected-region-owner-repo",
+          "label": "Verify the accepted Editor commit with owner-repository gates.",
+          "state": "passed",
+          "evidenceTarget": "Editor lane worktree and isolated Editor main verification worktree pass review:gate and review:browser at the accepted commit.",
+          "evidenceIds": [
+            "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+          ],
+          "verificationNote": "PLAN independently ran git diff --check HEAD~1..HEAD, npm.cmd run review:gate, and npm.cmd run review:browser on the Editor WORK worktree, then fast-forwarded an isolated Editor main verification worktree to cb3c1ca4e35973c3bd4f89d969826911e109e55c and reran review:gate and review:browser."
+        },
+        {
+          "id": "accept-selected-region-command-affordance",
+          "label": "Accept the bounded selected-region command summary behavior only.",
+          "state": "passed",
+          "evidenceTarget": "The accepted Editor commit adds read-only selected-region command visibility without activating gated commands.",
+          "evidenceIds": [
+            "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+          ],
+          "verificationNote": "Changed paths are src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx, src/app/editor/_components/shell/EditorTopToolbar.tsx, and src/app/editor/_components/__tests__/EditorTopToolbar.test.ts."
+        },
+        {
+          "id": "preserve-selected-region-boundaries",
+          "label": "Preserve Direct page edit, Preview, Publish, Backend, Core, and map-truth boundaries.",
+          "state": "passed",
+          "evidenceTarget": "The accepted Editor lane keeps Direct page edit unavailable, Preview unavailable, and Publish blocked as read-only status and does not promote readiness.",
+          "evidenceIds": [
+            "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+          ],
+          "verificationNote": "PLAN checked changed files for forbidden activation terms and found no contenteditable, dangerouslySetInnerHTML, publish submission, backend call, readiness promotion, or WYSIWYG readiness promotion."
+        },
+        {
+          "id": "record-selected-region-project-control-evidence",
+          "label": "Record the selected-region acceptance evidence in Project Control.",
+          "state": "passed",
+          "evidenceTarget": "Project Control contains Phase, Checklist, Document, and Evidence records for lane-design-selected-region-command-affordance-cleanup.",
+          "evidenceIds": [
+            "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+          ],
+          "verificationNote": "Registered phase-flowdoc-design-selected-region-command-affordance-acceptance-v1, checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1, doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03, and evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03."
+        }
+      ],
+      "createdAt": "2026-09-03T21:45:00.000+07:00",
+      "updatedAt": "2026-09-03T21:45:00.000+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-design-workspace-usability-acceptance-v1",
       "phaseId": "phase-flowdoc-design-workspace-usability-acceptance-v1",
       "title": "Design Workspace Usability Acceptance v1 Checklist",
@@ -12317,6 +12431,66 @@
       ],
       "createdAt": "2026-09-03T09:00:00.000Z",
       "updatedAt": "2026-09-03T09:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+      "phaseId": "phase-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+      "title": "Frontend Product Map Preview Confidence Probe v1 Checklist",
+      "items": [
+        {
+          "id": "stage-preview-probe-handoff",
+          "label": "Stage the Preview probe WORK room handoff in PLAN handoffInbox and completionQueue.",
+          "state": "passed",
+          "evidenceTarget": "PLAN receives handoff-preview-confidence-probe-2026-09-03-01 through the automatic Return Channel.",
+          "evidenceIds": [
+            "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+          ],
+          "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a06786-7d05-7be3-b939-8ff6e7917e61. PLAN queued it as arrivalSequence 1."
+        },
+        {
+          "id": "confirm-preview-probe-no-product-edits",
+          "label": "Confirm the Preview probe did not edit product behavior.",
+          "state": "passed",
+          "evidenceTarget": "The probe remains read-only and returns evidence requirements rather than implementation.",
+          "evidenceIds": [
+            "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+          ],
+          "verificationNote": "The handoff reports no files changed, no behavior changed, and no product edits in Editor, Backend, or Core."
+        },
+        {
+          "id": "record-preview-vocabulary-and-gaps",
+          "label": "Record Preview vocabulary and evidence gaps without promoting readiness.",
+          "state": "passed",
+          "evidenceTarget": "Draft Preview, stale preview, failed preview, unavailable preview, blocked preview, and Published Preview remain definitions for the next validation lane.",
+          "evidenceIds": [
+            "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+          ],
+          "verificationNote": "The acceptance document keeps Preview separate from WYSIWYG and Publish readiness and names missing Editor, Backend, Core, renderer, artifact, and production-route evidence."
+        },
+        {
+          "id": "recommend-preview-validation-lane",
+          "label": "Recommend the next Preview validation lane.",
+          "state": "passed",
+          "evidenceTarget": "The next lane is lane-preview-confidence-validation with parallelLimit 1.",
+          "evidenceIds": [
+            "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+          ],
+          "verificationNote": "The probe recommends starting as evidence-review and allowing Editor product edits only after PLAN explicitly approves a later lane."
+        },
+        {
+          "id": "preserve-progressive-authoring-boundary",
+          "label": "Preserve Progressive Authoring independence boundary.",
+          "state": "passed",
+          "evidenceTarget": "Progressive Authoring may proceed independently only while bounded to managed cards/text islands and treating Preview as unavailable or diagnostic-only.",
+          "evidenceIds": [
+            "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+          ],
+          "verificationNote": "If Progressive Authoring relies on Preview freshness, PDF artifacts, or Published Preview parity, it should wait for Preview validation evidence."
+        }
+      ],
+      "createdAt": "2026-09-03T21:45:00.000+07:00",
+      "updatedAt": "2026-09-03T21:45:00.000+07:00"
     },
     {
       "kind": "checklist",
@@ -14238,6 +14412,29 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03",
+      "title": "FlowDoc Design Selected Region Command Affordance Acceptance",
+      "path": "docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Project Control PLAN acceptance record for the automatically returned lane-design-selected-region-command-affordance-cleanup Editor WORK room handoff.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "cb3c1ca4e35973c3bd4f89d969826911e109e55c",
+          "pathOrContractId": "src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx; src/app/editor/_components/shell/EditorTopToolbar.tsx; src/app/editor/_components/__tests__/EditorTopToolbar.test.ts; npm.cmd run review:gate; npm.cmd run review:browser"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md; data/work/flowdoc-design-workspace-usability.json; data/phases/phase-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/checklists/checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/evidence/editor-design-selected-region-command-affordance-cleanup-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Design Selected Region Command Affordance Acceptance\n\n## Authority Boundary\n\nThis document is the Project Control PLAN acceptance record for `lane-design-selected-region-command-affordance-cleanup`.\n\nIt accepts one bounded Editor-owned UI affordance at Editor commit `cb3c1ca4e35973c3bd4f89d969826911e109e55c`. It does not prove frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, API key readiness, PDF output readiness, production readiness, release readiness, FlowDoc product truth, or map truth.\n\nPLAN did not patch Editor product files after dispatch. PLAN reviewed, verified, merged through an isolated Editor main verification worktree, and recorded Project Control evidence only.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-design-workspace-usability > lane-design-selected-region-command-affordance-cleanup`\n- Dispatch set ID: `dispatch-frontend-continuation-2026-09-03-01`\n- Room run ID: `room-design-selected-region-cleanup-2026-09-03-01`\n- Handoff ID: `handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01`\n- PLAN task/chat ID: `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- WORK task/chat ID: `01a06786-74da-73e2-a852-64e9c7351aef`\n- Owner repository: `repo-editor`\n- Active role: `evidence-reviewer` for PLAN acceptance\n- Phase target: `phase-flowdoc-design-selected-region-command-affordance-acceptance-v1`\n- Checklist target: `checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1`\n- Evidence target: `evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03`\n\n## Acceptance Decision\n\nPASS: PLAN accepted the lane as a bounded Editor selected-region command summary.\n\nThe accepted Editor commit adds a read-only selected-region command summary below the existing top toolbar controls. The summary shows selected-region context from the existing resolver, an honest no-selection state, Text availability, List availability, Direct page edit unavailable, Preview unavailable, and Publish blocked.\n\nThe List availability row uses the resolved toolbar target:\n\n```text\nlistToolbarNodeId ?? selectionAnchorNodeId ?? selectedNodeId\n```\n\nThat matches the live toolbar target resolution reported by the WORK room after reviewer recheck.\n\n## Verification\n\nWORK reported:\n\n- `npm.cmd run test:app -- src/app/editor/_components/__tests__/EditorTopToolbar.test.ts`: PASS, 4 tests.\n- `npm.cmd run review:gate`: PASS; type-check, Core tests 54 files / 837 passed / 6 skipped, app tests 128 files / 1151 passed, and build succeeded.\n- `npm.cmd run review:browser`: PASS; editor smoke passed, Stage 4C smoke ok true, ignored console errors empty, ignored resource errors empty.\n- `git diff --check HEAD~1..HEAD`: PASS.\n- Reviewer recheck: PASS.\n\nPLAN independently verified:\n\n- Editor WORK worktree at `C:\\Users\\nekot\\.codex\\worktrees\\e543\\FlowDocEditor` was clean at `cb3c1ca4e35973c3bd4f89d969826911e109e55c`.\n- `git diff --check HEAD~1..HEAD`: PASS.\n- `npm.cmd run review:gate`: PASS.\n- `npm.cmd run review:browser`: PASS.\n- An isolated Editor main verification worktree was fast-forwarded to `cb3c1ca4e35973c3bd4f89d969826911e109e55c`; `review:gate` and `review:browser` passed there as well.\n\n## Boundaries Preserved\n\n- Direct page edit remains unavailable.\n- Preview remains unavailable and diagnostic-only in this accepted lane.\n- Publish remains blocked and not a submission path.\n- No Backend, Core, storage, credentials, renderer, PDF, or production behavior changed.\n- No contenteditable shortcut or `dangerouslySetInnerHTML` shortcut was introduced.\n- No frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, FlowDoc product truth, or map truth is promoted.\n\n## Risks And Unknowns\n\n- No separate manual screenshot QA was captured by the WORK room.\n- Existing npm audit findings in Editor dependency installation remain outside this lane.\n- Broader Editor UI readiness, Preview execution, Published Preview parity, Backend persistence, Core renderer contracts, and PDF artifact bytes remain unknown.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03",
       "title": "FlowDoc Design Workspace Usability Acceptance",
       "path": "docs/domains/flowdoc-design-workspace-usability-acceptance-2026-09-03.md",
@@ -14465,16 +14662,16 @@
       "path": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md",
       "nodeIds": [],
       "role": "decision",
-      "authority": "PLAN-owned Room Run Registry note for dispatch-frontend-continuation-2026-09-03-01, preserving task, worktree, return, liveness, queue, and acceptance locators before waiting on the next frontend WORK rooms.",
+      "authority": "PLAN-owned Room Run Registry note for dispatch-frontend-continuation-2026-09-03-01, preserving task, worktree, return, liveness, queue, and acceptance locators for the returned frontend continuation WORK rooms.",
       "lifecycle": "active",
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "c97a51b59dac41d8725feb37f9727e3d1af09a10",
+          "commit": "0000000000000000000000000000000000000000",
           "pathOrContractId": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md; tests/flowdoc-frontend-continuation-dispatch-registry.test.ts"
         }
       ],
-      "content": "# FlowDoc Frontend Continuation Dispatch Registry\n\n## Authority Boundary\n\nThis document is the PLAN-owned Room Run Registry note for `dispatch-frontend-continuation-2026-09-03-01`.\n\nIt records active WORK room locators for returning from the accepted frontend roadmap plan into the next lane split. It does not accept any WORK room output, does not edit Core, Backend, or Editor behavior, does not change the drafted frontend lane plan, and does not prove frontend readiness, Preview readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth.\n\n## Dispatch Set\n\n- Dispatch set ID: `dispatch-frontend-continuation-2026-09-03-01`\n- PLAN task/chat ID: `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- `parallelLimit`: `2`\n- Return order policy: process returned handoffs by `completionQueue.arrivalSequence`\n- Active Return Command: `send_message_to_thread` back to PLAN task/chat ID `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- Liveness policy: treat missing automatic return, unresolved task ID, or silent room state as `needs-attention`, `RISK`, `UNKNOWN`, `returned-silent`, or `return-channel-failed` before manual recovery.\n- Acceptance policy: PLAN stages every returned handoff in `handoffInbox`, queues it in `completionQueue`, and runs `acceptanceGate` one handoff at a time. PLAN must not repair WORK output itself; `needs-revision` goes back to the same WORK room when the original locator remains usable.\n\n## Room Run Registry\n\n### room-design-selected-region-cleanup-2026-09-03-01\n\n- Status: `running`\n- Lane ID: `lane-design-selected-region-command-affordance-cleanup`\n- Work Type: `product-implementation` plus `ux-design-exploration`\n- Owner repository: `repo-editor`\n- Active role: `product-implementation-agent`\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-design-workspace-usability > lane-design-selected-region-command-affordance-cleanup`\n- Codex task/chat ID: `01a06786-74da-73e2-a852-64e9c7351aef`\n- Initial client locator: `client-new-thread:d74a80b7-0797-4f81-bdd6-599f4a46fe54`\n- Worktree locator: `C:\\Users\\nekot\\.codex\\worktrees\\e543\\FlowDocEditor`\n- Locator discovery method: `session_index.jsonl` plus Git worktree list after `create_thread` returned only `clientThreadId`\n- Context Acknowledgement status: pending WORK response\n- Return handoff ID: `handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01`\n- Evidence target candidate: `evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03`\n- Last observed state: task metadata exists; automatic Terminal Handoff not yet received by PLAN\n- Next PLAN action: wait for automatic return; if incomplete, send a Revision Packet to the same WORK room.\n\n### room-preview-confidence-probe-2026-09-03-01\n\n- Status: `running`\n- Lane ID: `lane-preview-confidence-probe`\n- Work Type: `evidence-review` plus `planning-coordination`\n- Owner repository: `repo-project-control` for the probe; product repositories remain read-only\n- Active role: `evidence-reviewer` with `planning-partner` responsibility\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > lane-preview-confidence-probe`\n- Codex task/chat ID: `01a06786-7d05-7be3-b939-8ff6e7917e61`\n- Initial client locator: `client-new-thread:edf48cb6-c459-408c-97de-1e7395b11283`\n- Worktree locator: `C:\\Users\\nekot\\.codex\\worktrees\\758f\\flowdoc-project-control`\n- Locator discovery method: `session_index.jsonl` plus Git worktree list after `create_thread` returned only `clientThreadId`\n- Context Acknowledgement status: pending WORK response\n- Return handoff ID: `handoff-preview-confidence-probe-2026-09-03-01`\n- Evidence target candidate: `evidence-flowdoc-preview-confidence-probe-2026-09-03`\n- Last observed state: task metadata exists; automatic Terminal Handoff not yet received by PLAN\n- Next PLAN action: wait for automatic return; if the probe edits files or self-promotes truth, send a Revision Packet to the same WORK room or reject the handoff.\n\n## Required Next PLAN Handling\n\nPLAN must not open dependent lanes from either room until the returned handoff passes `acceptanceGate`.\n\nIf both rooms return close together, PLAN assigns arrival order and processes one handoff at a time. A duplicate handoff ID is idempotent. Manual recovery may use task ID, worktree, branch, or session locator only to recover or classify a missed automatic return; it does not satisfy automatic return.\n\n## Intentionally Not Changed\n\n- No Core, Backend, Editor, or Project Control product behavior changed by this registry note.\n- No Preview implementation opened from this registry note.\n- No Publish implementation opened from this registry note.\n- No Progressive Authoring implementation opened from this registry note.\n- No frontend readiness, Preview readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth promoted.\n"
+      "content": "# FlowDoc Frontend Continuation Dispatch Registry\n\n## Authority Boundary\n\nThis document is the PLAN-owned Room Run Registry note for `dispatch-frontend-continuation-2026-09-03-01`.\n\nIt records WORK room locators, automatic returns, `completionQueue` arrival order, and PLAN acceptance outcomes for returning from the accepted frontend roadmap plan into the next lane split. It does not edit Core, Backend, or Editor behavior and does not prove frontend readiness, Preview readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth.\n\n## Dispatch Set\n\n- Dispatch set ID: `dispatch-frontend-continuation-2026-09-03-01`\n- PLAN task/chat ID: `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- `parallelLimit`: `2`\n- Return order policy: process returned handoffs by `completionQueue.arrivalSequence`\n- Active Return Command: `send_message_to_thread` back to PLAN task/chat ID `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- Liveness policy: treat missing automatic return, unresolved task ID, or silent room state as `needs-attention`, `RISK`, `UNKNOWN`, `returned-silent`, or `return-channel-failed` before manual recovery.\n- Acceptance policy: PLAN stages every returned handoff in `handoffInbox`, queues it in `completionQueue`, and runs `acceptanceGate` one handoff at a time. PLAN must not repair WORK output itself; `needs-revision` goes back to the same WORK room when the original locator remains usable.\n- Completion queue:\n  - `arrivalSequence: 1`: `handoff-preview-confidence-probe-2026-09-03-01`\n  - `arrivalSequence: 2`: `handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01`\n\n## Room Run Registry\n\n### room-design-selected-region-cleanup-2026-09-03-01\n\n- Status: `accepted`\n- Lane ID: `lane-design-selected-region-command-affordance-cleanup`\n- Work Type: `product-implementation` plus `ux-design-exploration`\n- Owner repository: `repo-editor`\n- Active role: `product-implementation-agent`\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-design-workspace-usability > lane-design-selected-region-command-affordance-cleanup`\n- Codex task/chat ID: `01a06786-74da-73e2-a852-64e9c7351aef`\n- Initial client locator: `client-new-thread:d74a80b7-0797-4f81-bdd6-599f4a46fe54`\n- Worktree locator: `C:\\Users\\nekot\\.codex\\worktrees\\e543\\FlowDocEditor`\n- Locator discovery method: `session_index.jsonl` plus Git worktree list after `create_thread` returned only `clientThreadId`\n- Context Acknowledgement status: completed\n- Return handoff ID: `handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01`\n- Evidence target: `evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03`\n- Automatic return status: `automatic-returned`\n- Terminal status: `PASS`\n- Arrival sequence: `2`\n- Accepted Editor commit: `cb3c1ca4e35973c3bd4f89d969826911e109e55c`\n- Accepted changed paths: `src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx`; `src/app/editor/_components/shell/EditorTopToolbar.tsx`; `src/app/editor/_components/__tests__/EditorTopToolbar.test.ts`\n- PLAN acceptance document: `docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md`\n- Last observed state: task idle after terminal return; PLAN acceptance passed after owner-repository verification.\n- Next PLAN action: use the accepted selected-region command summary as bounded Editor evidence only; do not open dependent Preview or Publish lanes from it.\n\n### room-preview-confidence-probe-2026-09-03-01\n\n- Status: `accepted`\n- Lane ID: `lane-preview-confidence-probe`\n- Work Type: `evidence-review` plus `planning-coordination`\n- Owner repository: `repo-project-control` for the probe; product repositories remain read-only\n- Active role: `evidence-reviewer` with `planning-partner` responsibility\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > lane-preview-confidence-probe`\n- Codex task/chat ID: `01a06786-7d05-7be3-b939-8ff6e7917e61`\n- Initial client locator: `client-new-thread:edf48cb6-c459-408c-97de-1e7395b11283`\n- Worktree locator: `C:\\Users\\nekot\\.codex\\worktrees\\758f\\flowdoc-project-control`\n- Locator discovery method: `session_index.jsonl` plus Git worktree list after `create_thread` returned only `clientThreadId`\n- Context Acknowledgement status: completed\n- Return handoff ID: `handoff-preview-confidence-probe-2026-09-03-01`\n- Evidence target: `evidence-flowdoc-preview-confidence-probe-2026-09-03`\n- Automatic return status: `automatic-returned`\n- Terminal status: `PASS / RISK / UNKNOWN`\n- Arrival sequence: `1`\n- Product files changed: none\n- Product behavior changed: none\n- PLAN acceptance document: `docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md`\n- Last observed state: task returned a no-edit planning/evidence-review probe and remained bounded to Preview vocabulary, evidence gaps, and the next validation lane.\n- Next PLAN action: open `lane-preview-confidence-validation` with `parallelLimit: 1` before any Preview readiness claim.\n\n## Required Next PLAN Handling\n\nPLAN must not open dependent lanes from either room until the returned handoff passes `acceptanceGate`.\n\nIf both rooms return close together, PLAN assigns arrival order and processes one handoff at a time. A duplicate handoff ID is idempotent. Manual recovery may use task ID, worktree, branch, or session locator only to recover or classify a missed automatic return; it does not satisfy automatic return.\n\nFor this dispatch set, both rooms returned through the automatic Return Channel and both passed `acceptanceGate`. The Preview probe is accepted only as no-edit planning and evidence-review context. The selected-region command affordance cleanup is accepted only as bounded Editor UI evidence at commit `cb3c1ca4e35973c3bd4f89d969826911e109e55c`.\n\n## Intentionally Not Changed\n\n- No Core, Backend, Editor, or Project Control product behavior changed by this registry note.\n- No Preview implementation opened from this registry note.\n- No Publish implementation opened from this registry note.\n- No Progressive Authoring implementation opened from this registry note.\n- No frontend readiness, Preview readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, or map truth promoted.\n"
     },
     {
       "kind": "document",
@@ -14693,6 +14890,24 @@
         }
       ],
       "content": "# FlowDoc PLAN/WORK Continuation Guardrails\n\n## Authority Boundary\n\nThis document records PLAN/WORK continuation feedback before returning to drafted frontend lanes. It is owned by Project Control under `flowdoc-product-development-resumption > agent-and-skill-design`.\n\nThis is a Project Control coordination decision and evidence note. The canonical rule text lives in `AGENTS.md`, `docs/domains/flowdoc-global-codex-guidance.md`, and `docs/domains/flowdoc-plan-room-orchestration-rules.md`. This note records why that rule was added; it is not the only place a future PLAN room should learn the rule. It does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not prove frontend readiness, FlowDoc product truth, or map truth.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > agent-and-skill-design`\n- Owner repository: `repo-project-control`\n- Active role: `project-control-steward`, with `planning-partner` and `documentation-authority-steward` responsibilities\n- Current Phase: `phase-agent-and-skill-design-plan-work-continuation-guardrails`\n- Checklist target: `checklist-agent-and-skill-design-plan-work-continuation-guardrails`\n- Evidence target: `evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03`\n- Known risks: conversation-only room state may be lost before the drafted frontend lanes resume; PLAN may over-carry WORK correction; a later packet may omit Room Run Registry, liveness, or automatic return fields; a lean dispatch note may be mistaken for weaker acceptance.\n- Unknown state: the durable Room Run Registry schema is not implemented here; the next frontend lane is not opened here; multi-product-WORK close-together returns remain unproven beyond the current bounded evidence.\n\n## Feedback Accepted\n\nThe current PLAN/WORK pattern is accepted for FlowDoc work that needs multiple real WORK rooms, especially when one PLAN room must preserve Project Control truth and review returned product-lane evidence.\n\nThe valuable parts are:\n\n- real WORK rooms can hold lane execution while PLAN stays focused on orchestration, acceptance, and Project Control reporting;\n- automatic WORK-to-PLAN return reduces manual copy/paste and makes handoffs reviewable;\n- `acceptanceGate` can catch bad or incomplete returns before PLAN promotes them;\n- same-room Revision Packets keep repair responsibility with the original WORK room;\n- Lean Dispatch is useful when a lane is low-risk, but it must still keep automatic return, liveness, retrievable locator, and acceptanceGate.\n\n## Continuation Rule\n\nBefore returning to drafted frontend lanes, PLAN should restore the planning context from:\n\n- `docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md`;\n- `docs/domains/flowdoc-frontend-product-map-2026-09-03.md`;\n- `docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md`;\n- `docs/domains/flowdoc-design-workspace-usability-acceptance-2026-09-03.md`;\n- this continuation guardrail.\n\nPLAN should then create or update a Room Run Registry entry, or a Lean Dispatch registry note when the dispatch is intentionally lean, before opening or resuming the next dispatch set. The registry state must include enough information to recover the room without relying on memory in the conversation: dispatch set, lane ID, Work Type, owner repository, retrievable locator, PLAN task/chat ID or PLAN-owned monitor, automatic Return Channel, Active Return Command, liveness state, handoff ID, completionQueue arrival, acceptance decision, and revision state.\n\nPLAN must not repair WORK output itself. If a returned handoff is incomplete or wrong but still belongs to the same lane, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable. If the same room cannot receive the packet, PLAN records the room as `needs-attention`, `returned-silent`, `manual-recovered`, `return-channel-failed`, `UNKNOWN`, `RISK`, or `blocked` instead of silently taking over the lane.\n\n## Drafted Lane Boundary\n\nThis record preserves the existing lane plan; it does not choose a new lane order and does not change accepted lane boundaries.\n\nWhen PLAN returns to the drafted frontend lane plan, this guardrail should be treated as required context for the next Kickoff Packet or Lean Dispatch packet. It should not be treated as product evidence or as permission to skip owner-repository verification.\n\n## Non-Goals\n\n- No Core, Backend, or Editor behavior changes.\n- No product repository tests, fixture, dependency, or configuration repair.\n- No new WORK room opened by this record.\n- No durable Room Run Registry schema implementation.\n- No frontend readiness, WYSIWYG readiness, publish readiness, production readiness, FlowDoc product truth, or map truth promotion.\n\n## Verification\n\nThe focused guard is `tests/flowdoc-plan-work-continuation-guardrails.test.ts`. It requires the parent `agent-and-skill-design` Work record, this document, the Phase, the Checklist, and the Evidence record to preserve the continuation boundary before PLAN resumes drafted frontend lanes.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-preview-confidence-probe-2026-09-03",
+      "title": "FlowDoc Preview Confidence Probe",
+      "path": "docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Project Control PLAN acceptance record for the no-edit lane-preview-confidence-probe evidence-review handoff and next Preview validation lane recommendation.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/evidence/flowdoc-preview-confidence-probe-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Preview Confidence Probe\n\n## Authority Boundary\n\nThis document records PLAN acceptance of the no-edit `lane-preview-confidence-probe` handoff.\n\nIt is planning and evidence-review context for the next Preview validation lane. It does not prove Preview readiness, frontend readiness, WYSIWYG readiness, Publish readiness, Backend readiness, Core readiness, renderer readiness, PDF artifact readiness, production readiness, FlowDoc product truth, or map truth.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > lane-preview-confidence-probe`\n- Dispatch set ID: `dispatch-frontend-continuation-2026-09-03-01`\n- Room run ID: `room-preview-confidence-probe-2026-09-03-01`\n- Handoff ID: `handoff-preview-confidence-probe-2026-09-03-01`\n- PLAN task/chat ID: `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- WORK task/chat ID: `01a06786-7d05-7be3-b939-8ff6e7917e61`\n- Owner repository: `repo-project-control` for the probe\n- Product repositories: read-only for this probe\n- Active role: `evidence-reviewer` with `planning-partner` responsibility\n- Phase target: `phase-flowdoc-frontend-product-map-preview-confidence-probe-v1`\n- Checklist target: `checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1`\n- Evidence target: `evidence-flowdoc-preview-confidence-probe-2026-09-03`\n\n## Acceptance Decision\n\nPASS / RISK / UNKNOWN: PLAN accepted the probe as a bounded no-edit finding set and next-lane recommendation.\n\nThe probe changed no files and no product behavior. It is accepted only as evidence that the PLAN room now has a clearer Preview validation scope. It is not accepted as product implementation or product readiness.\n\n## Preview Vocabulary\n\nUse these terms in the next lane until product evidence narrows them further:\n\n- `Draft Preview`: Editor-visible rendering or inspection of the current Editor draft or working copy.\n- `stale preview`: Preview output that no longer corresponds to the current Editor draft, Backend revision, or source document reference.\n- `failed preview`: Preview request or rendering path that ends in an explicit error state.\n- `unavailable preview`: Preview function not currently usable in the active screen or mode.\n- `blocked preview`: Preview is intentionally stopped because required state, admission, permission, route, renderer, or artifact support is missing.\n- `Published Preview`: Preview of a published or publish-bound document state.\n\nThese terms stay separate from WYSIWYG, Publish readiness, export parity, renderer parity, Backend persistence, and product readiness.\n\n## Evidence Needed Before Preview Readiness\n\nThe next evidence-bearing lane should be `lane-preview-confidence-validation` with `parallelLimit: 1`.\n\nThe lane should start as evidence-review. Product edits should happen only if PLAN opens or approves a later owner-repository implementation lane.\n\nBefore any Preview readiness claim, evidence should include:\n\n- Editor evidence for target switching, lifecycle labels, stale gating, retry/cancel/download gating, diagnostics, no WYSIWYG bypass, and browser checks.\n- Backend evidence for draft and published context, admissions, PDF export request/status/cancel/download, auth, idempotency, revision pins, route mounting mode, and local-only versus production boundary.\n- Core evidence for source document, draft snapshot, published structure, generation or admission contracts.\n- Renderer and artifact evidence for execution, terminal status, artifact ID, operation or job ID, storage/download path, byte length, sha256, content type, and physical byte verification.\n\n## Progressive Authoring Boundary\n\nProgressive Authoring can proceed independently only when bounded to managed cards or text islands and when Preview is treated as unavailable or diagnostic-only.\n\nIf Progressive Authoring depends on Preview freshness, PDF artifact availability, or Published Preview parity, it should wait for accepted Preview validation evidence.\n\n## Risks And Unknowns\n\n- Preview is still overloaded as a product word and can be confused with WYSIWYG or Publish readiness.\n- No dedicated accepted Preview Confidence validation evidence exists yet.\n- Backend and Core Preview-related states remain bounded by local-only, contract-only, or production-false evidence unless a later lane proves more.\n- End-to-end browser-to-backend Preview behavior has not been accepted.\n- Renderer execution, PDF bytes, artifact persistence, download behavior, production route mounting, and Published Preview parity remain unknown.\n"
     },
     {
       "kind": "document",
@@ -16541,6 +16756,16 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "cb3c1ca4e35973c3bd4f89d969826911e109e55c",
+      "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; WORK task/chat ID 01a06786-74da-73e2-a852-64e9c7351aef; dispatchSetId dispatch-frontend-continuation-2026-09-03-01; roomRunId room-design-selected-region-cleanup-2026-09-03-01; lane-design-selected-region-command-affordance-cleanup; handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01; src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx; src/app/editor/_components/shell/EditorTopToolbar.tsx; src/app/editor/_components/__tests__/EditorTopToolbar.test.ts; npm.cmd run review:gate; npm.cmd run review:browser",
+      "verificationSummary": "PLAN acceptanceGate received lane-design-selected-region-command-affordance-cleanup through the automatic WORK-to-PLAN Return Channel via send_message_to_thread. The WORK room returned terminal PASS with Editor commit cb3c1ca4e35973c3bd4f89d969826911e109e55c and a clean detached WORK worktree locator. The accepted commit adds a read-only selected-region command summary below the existing top toolbar controls, shows honest no-selection state, reports Text and List availability from the existing selection resolver, shows Direct page edit unavailable with WYSIWYG gate-closed copy, and keeps Preview unavailable and Publish blocked as read-only status chips and reasons rather than active commands. The WORK room fixed a reviewer-identified list-target mismatch by using listToolbarNodeId ?? selectionAnchorNodeId ?? selectedNodeId. WORK reported focused EditorTopToolbar tests, review:gate, review:browser, git diff --check HEAD~1..HEAD, and reviewer recheck PASS. PLAN independently ran git diff --check HEAD~1..HEAD, npm.cmd run review:gate, and npm.cmd run review:browser on the Editor WORK worktree. PLAN then fast-forwarded an isolated Editor main verification worktree to cb3c1ca4e35973c3bd4f89d969826911e109e55c and reran npm.cmd run review:gate and npm.cmd run review:browser; both passed. PLAN also checked the changed files for forbidden activation and found no contenteditable shortcut, dangerouslySetInnerHTML shortcut, publish submission, Backend call, Preview readiness promotion, frontend readiness promotion, or WYSIWYG readiness promotion. This evidence supports only the bounded Editor selected-region command summary and related top toolbar tests. It does not prove Preview readiness. It does not prove FlowDoc product truth, map truth, frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, API key readiness, PDF output readiness, production readiness, release readiness, or broad compatibility readiness.",
+      "verifiedAt": "2026-09-03T21:45:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-editor-design-workspace-usability-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-editor",
@@ -17084,6 +17309,16 @@
       "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/documents/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check",
       "verificationSummary": "Project Control records the PLAN/WORK continuation feedback before returning to the drafted frontend lanes and folds the operating rule into the always-read Project Control entrypoints and orchestration contract. AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, and docs/domains/flowdoc-plan-room-orchestration-rules.md now require PLAN to restore the latest Room Run Registry or Lean Dispatch registry note before returning to a drafted lane plan, not rely on conversation-only room state, and avoid repairing WORK output itself. If acceptance finds missing or wrong WORK output, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable. The separate continuation document remains a decision and evidence note, not the only rule source. RED evidence: npx vitest run tests/flowdoc-plan-work-continuation-guardrails.test.ts --maxWorkers=1 failed after the guard was raised because the always-read documents did not yet contain the folded rule text. GREEN evidence target: tests/flowdoc-plan-work-continuation-guardrails.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not promote frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T18:35:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-preview-confidence-probe-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "07ae75c7456dccae365103812e163e36436586a9",
+      "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; WORK task/chat ID 01a06786-7d05-7be3-b939-8ff6e7917e61; dispatchSetId dispatch-frontend-continuation-2026-09-03-01; roomRunId room-preview-confidence-probe-2026-09-03-01; lane-preview-confidence-probe; handoff-preview-confidence-probe-2026-09-03-01",
+      "verificationSummary": "PLAN acceptanceGate received lane-preview-confidence-probe through the automatic WORK-to-PLAN Return Channel via send_message_to_thread. The WORK room returned terminal PASS / RISK / UNKNOWN as a no-edit Project Control evidence-review and planning probe. It changed no files and changed no product behavior. The probe recommends lane-preview-confidence-validation with parallelLimit 1 before any Preview readiness claim. It defines Preview vocabulary for Draft Preview, stale preview, failed preview, unavailable preview, blocked preview, and Published Preview, and keeps those terms separate from WYSIWYG and Publish readiness. It names required future evidence across Editor target switching, lifecycle labels, stale gating, retry/cancel/download gating, diagnostics, Backend draft/published context, admissions, PDF export request/status/cancel/download, auth, idempotency, revision pins, route mounting, Core source document and snapshot contracts, renderer execution, artifact ID, job or operation ID, storage/download path, byte length, sha256, content type, and physical byte verification. It also states Progressive Authoring can proceed independently only if bounded to managed cards or text islands and treats Preview as unavailable or diagnostic-only. This evidence supports only the bounded Preview Confidence Probe handoff and next-lane recommendation. It does not prove Preview readiness, frontend readiness, WYSIWYG readiness, Publish readiness, Backend readiness, Core readiness, renderer readiness, PDF artifact readiness, production readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-03T21:45:00.000+07:00"
     },
     {
       "kind": "evidence",

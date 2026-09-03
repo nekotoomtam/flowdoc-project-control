@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-preview-confidence-probe-2026-09-03",
+  "title": "FlowDoc Preview Confidence Probe",
+  "path": "docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Project Control PLAN acceptance record for the no-edit lane-preview-confidence-probe evidence-review handoff and next Preview validation lane recommendation.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/evidence/flowdoc-preview-confidence-probe-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
+    }
+  ]
+}

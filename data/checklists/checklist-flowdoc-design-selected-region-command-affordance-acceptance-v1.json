@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+  "phaseId": "phase-flowdoc-design-selected-region-command-affordance-acceptance-v1",
+  "title": "Design Selected Region Command Affordance Acceptance v1 Checklist",
+  "items": [
+    {
+      "id": "stage-selected-region-handoff",
+      "label": "Stage the selected-region WORK room handoff in PLAN handoffInbox and completionQueue.",
+      "state": "passed",
+      "evidenceTarget": "PLAN receives handoff-design-selected-region-command-affordance-cleanup-2026-09-03-01 through the automatic Return Channel.",
+      "evidenceIds": ["evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"],
+      "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a06786-74da-73e2-a852-64e9c7351aef. PLAN queued it as arrivalSequence 2 after the Preview confidence probe."
+    },
+    {
+      "id": "verify-selected-region-owner-repo",
+      "label": "Verify the accepted Editor commit with owner-repository gates.",
+      "state": "passed",
+      "evidenceTarget": "Editor lane worktree and isolated Editor main verification worktree pass review:gate and review:browser at the accepted commit.",
+      "evidenceIds": ["evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"],
+      "verificationNote": "PLAN independently ran git diff --check HEAD~1..HEAD, npm.cmd run review:gate, and npm.cmd run review:browser on the Editor WORK worktree, then fast-forwarded an isolated Editor main verification worktree to cb3c1ca4e35973c3bd4f89d969826911e109e55c and reran review:gate and review:browser."
+    },
+    {
+      "id": "accept-selected-region-command-affordance",
+      "label": "Accept the bounded selected-region command summary behavior only.",
+      "state": "passed",
+      "evidenceTarget": "The accepted Editor commit adds read-only selected-region command visibility without activating gated commands.",
+      "evidenceIds": ["evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"],
+      "verificationNote": "Changed paths are src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx, src/app/editor/_components/shell/EditorTopToolbar.tsx, and src/app/editor/_components/__tests__/EditorTopToolbar.test.ts."
+    },
+    {
+      "id": "preserve-selected-region-boundaries",
+      "label": "Preserve Direct page edit, Preview, Publish, Backend, Core, and map-truth boundaries.",
+      "state": "passed",
+      "evidenceTarget": "The accepted Editor lane keeps Direct page edit unavailable, Preview unavailable, and Publish blocked as read-only status and does not promote readiness.",
+      "evidenceIds": ["evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"],
+      "verificationNote": "PLAN checked changed files for forbidden activation terms and found no contenteditable, dangerouslySetInnerHTML, publish submission, backend call, readiness promotion, or WYSIWYG readiness promotion."
+    },
+    {
+      "id": "record-selected-region-project-control-evidence",
+      "label": "Record the selected-region acceptance evidence in Project Control.",
+      "state": "passed",
+      "evidenceTarget": "Project Control contains Phase, Checklist, Document, and Evidence records for lane-design-selected-region-command-affordance-cleanup.",
+      "evidenceIds": ["evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"],
+      "verificationNote": "Registered phase-flowdoc-design-selected-region-command-affordance-acceptance-v1, checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1, doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03, and evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03."
+    }
+  ],
+  "createdAt": "2026-09-03T21:45:00.000+07:00",
+  "updatedAt": "2026-09-03T21:45:00.000+07:00"
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03",
+  "title": "FlowDoc Design Selected Region Command Affordance Acceptance",
+  "path": "docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the automatically returned lane-design-selected-region-command-affordance-cleanup Editor WORK room handoff.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "cb3c1ca4e35973c3bd4f89d969826911e109e55c",
+      "pathOrContractId": "src/app/editor/_components/shell/EditorSelectedRegionCommands.tsx; src/app/editor/_components/shell/EditorTopToolbar.tsx; src/app/editor/_components/__tests__/EditorTopToolbar.test.ts; npm.cmd run review:gate; npm.cmd run review:browser"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md; data/work/flowdoc-design-workspace-usability.json; data/phases/phase-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/checklists/checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/evidence/editor-design-selected-region-command-affordance-cleanup-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
+    }
+  ]
+}
