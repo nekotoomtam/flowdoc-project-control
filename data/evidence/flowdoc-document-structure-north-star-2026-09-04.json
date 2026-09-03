@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-document-structure-north-star-2026-09-04",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0000000000000000000000000000000000000000",
+  "pathOrContractId": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md; data/work/flowdoc-document-structure-north-star.json; data/phases/phase-flowdoc-document-structure-north-star-v1.json; data/checklists/checklist-flowdoc-document-structure-north-star-v1.json; data/documents/flowdoc-document-structure-north-star-2026-09-04.json; tests/flowdoc-document-structure-north-star.test.ts; npm run check",
+  "verificationSummary": "Project Control records a bounded Document Structure North Star v1 before database relationship design or product implementation continues. The north star defines FlowDoc as a document-structure definition system, not a Word or Google Docs style editor and not PDF-only; defines Structure Relationship Model v0 with DocumentDefinition, Section, ComponentDefinition, ComponentInstance, FieldDefinition, DataBinding, PageProfile, StyleDefaults, no active recursive components in v0, Section flow rules, PageProfile orientation, section style defaults, Draft as editable, DocumentVersion as frozen baseline, and Publication as a pointer to a selected frozen version; and excludes runtime data, submissions, logs, audit trails, generated files, permissions, and product implementation from the structure-only scope. RED evidence: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1 failed before Project Control contained the new Work and document records. GREEN evidence target includes the focused north star guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a product database schema, does not open WORK rooms, and does not promote product readiness, frontend readiness, publish readiness, PDF readiness, production readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-04T00:00:00.000Z"
+}

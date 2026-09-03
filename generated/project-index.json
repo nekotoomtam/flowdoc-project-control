@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9c3bb2c3decfbe3c8b6993ce6ae66475f845f2b528af4cea65ad37a1a85c8824",
+  "sourceDigest": "e695aa962385107c6cf5813ba1b631c5cd4a70b5a2447d04eac70fb337e711d2",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -24,7 +24,8 @@
         "doc-flowdoc-first-delivery-round-plan",
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
         "doc-flowdoc-frontend-product-map-2026-09-03",
-        "doc-flowdoc-wysiwyg-gate-decision-2026-09-03"
+        "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+        "doc-flowdoc-document-structure-north-star-2026-09-04"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -58,6 +59,7 @@
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-design-workspace-usability",
+        "flowdoc-document-structure-north-star",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-frontend-product-map",
@@ -2016,6 +2018,55 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-document-structure-north-star",
+      "title": "FlowDoc Document Structure North Star",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-progress",
+      "summary": "Record a bounded product north star for FlowDoc as a document-structure definition system before database relationship design or product implementation continues.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+        "doc-flowdoc-frontend-product-map-2026-09-03"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Document Structure North Star v1 in Project Control, with the product framed as document-structure definition, not a Word or Google Docs style editor, not PDF-only, and with Draft, Version, Publication, component, section, style, page profile, and structure-only database boundaries ready for the next design round.",
+      "riskSummary": "The north star may be mistaken for product readiness, database implementation, PDF readiness, or FlowDoc product truth. The record explicitly states FlowDoc is not a Word or Google Docs style editor, not PDF-only, and that runtime data, submissions, logs, audit trails, generated files, permissions, Core behavior, Backend behavior, Editor behavior, and map truth remain out of scope.",
+      "requiredEvidence": [
+        "evidence-flowdoc-document-structure-north-star-2026-09-04"
+      ],
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-document-structure-north-star-v1"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-document-structure-north-star"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-documentation-authority-cleanup",
       "title": "FlowDoc Documentation Authority Cleanup",
       "nodeId": "project-control",
@@ -2312,6 +2363,7 @@
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
@@ -4447,6 +4499,28 @@
       "summary": "Done: PLAN accepted the bounded Editor Design workspace status strip lane after the WORK room returned automatically, fixed its own dirty returned state through revisionAttempt 1, and Editor main passed review:gate and review:browser.",
       "createdAt": "2026-09-03T17:55:00.000+07:00",
       "updatedAt": "2026-09-03T17:55:00.000+07:00"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-document-structure-north-star-v1",
+      "workId": "flowdoc-document-structure-north-star",
+      "title": "Document Structure North Star v1",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+        "The north star would require Core, Backend, or Editor product repository edits.",
+        "The north star would claim product readiness, frontend readiness, publish readiness, PDF generation readiness, production readiness, FlowDoc product truth, or map truth from planning alone.",
+        "The document-structure scope would mix runtime data, submissions, logs, audit trails, generated files, permissions, or product database implementation into the same phase."
+      ],
+      "verificationTarget": "Project Control records the document structure relationship north star, Draft, Version, and Publication boundary, PDF-first renderer boundary, and structure-only database planning scope without product truth promotion.",
+      "summary": "Done: Project Control now records a bounded Document Structure North Star v1 that frames FlowDoc as a document-structure definition system, keeps PDF as the first renderer target rather than the product identity, and prepares the next database relationship design round.",
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -10859,6 +10933,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-document-structure-north-star-v1",
+      "phaseId": "phase-flowdoc-document-structure-north-star-v1",
+      "title": "Document Structure North Star v1 Checklist",
+      "items": [
+        {
+          "id": "capture-document-structure-context",
+          "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+          "state": "passed",
+          "evidenceTarget": "The north star record identifies Project Control ownership before writing product-wide structure framing.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-document-structure-north-star, owner repo-project-control, active role planning-partner with documentation-authority-steward responsibility, phase target phase-flowdoc-document-structure-north-star-v1, checklist target checklist-flowdoc-document-structure-north-star-v1, and evidence target evidence-flowdoc-document-structure-north-star-2026-09-04."
+        },
+        {
+          "id": "write-red-document-structure-north-star-guard",
+          "label": "Write a failing Project Control guard before adding the north star records.",
+          "state": "passed",
+          "evidenceTarget": "A focused test fails before Project Control contains the document-structure north star Work, document, checklist, and evidence records.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "RED evidence: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-document-structure-north-star as a child Work."
+        },
+        {
+          "id": "define-document-structure-north-star",
+          "label": "Define FlowDoc as document-structure definition without claiming implementation readiness.",
+          "state": "passed",
+          "evidenceTarget": "The document states FlowDoc is a document-structure definition system, not a Word or Google Docs style editor, and not a PDF-only system.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md defines the product north star and keeps it bounded to planning and terminology."
+        },
+        {
+          "id": "define-structure-relationship-boundary",
+          "label": "Define the v0 structure relationship boundary for document, section, component, field, style, page profile, and data binding.",
+          "state": "passed",
+          "evidenceTarget": "The document records Structure Relationship Model v0 and the no-recursive-component rule while preserving future relation-table compatibility.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "The north star names DocumentDefinition, Section, ComponentDefinition, ComponentInstance, FieldDefinition, DataBinding, PageProfile, and StyleDefaults, and states components do not contain active child components in v0."
+        },
+        {
+          "id": "define-draft-version-publication-boundary",
+          "label": "Define Draft, Version, and Publication as separate responsibilities.",
+          "state": "passed",
+          "evidenceTarget": "The document says Draft is editable, DocumentVersion is a frozen baseline, and Publication is a pointer to the selected frozen version.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "The north star requires publishing through a frozen document version and keeps publication separate from version mutation."
+        },
+        {
+          "id": "exclude-runtime-data-and-log-scope",
+          "label": "Exclude runtime data, logs, audit trails, generated files, permissions, submissions, and implementation from the structure model.",
+          "state": "passed",
+          "evidenceTarget": "The document keeps the next database design scoped to document structure only.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "The north star explicitly states runtime data, submissions, logs, audit trails, generated files, and permissions are out of scope for this document-structure model."
+        },
+        {
+          "id": "verify-document-structure-north-star-records",
+          "label": "Verify Project Control records, generated read model, and checks.",
+          "state": "passed",
+          "evidenceTarget": "Focused north star guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-flowdoc-document-structure-north-star-2026-09-04"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
       "title": "Agent Role Documentation Authority Rewrite Checklist",
@@ -14458,6 +14612,26 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-document-structure-north-star-2026-09-04",
+      "title": "FlowDoc Document Structure North Star v1",
+      "path": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "decision",
+      "authority": "Project Control Document Structure North Star v1 for bounded document-structure product direction, structure relationship terminology, Draft/Version/Publication boundary, PDF-first renderer boundary, and structure-only database planning scope.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md; data/work/flowdoc-document-structure-north-star.json; data/phases/phase-flowdoc-document-structure-north-star-v1.json; data/checklists/checklist-flowdoc-document-structure-north-star-v1.json; data/evidence/flowdoc-document-structure-north-star-2026-09-04.json; tests/flowdoc-document-structure-north-star.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Document Structure North Star v1\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path: `flowdoc-product-development-resumption > flowdoc-document-structure-north-star`.\n\nThis document records the Project Control product north star for FlowDoc\ndocument-structure definition. It is a planning and terminology boundary for\nfuture Core, Backend, and Editor lanes before product implementation continues.\n\nThis document is not implementation evidence. It does not prove Core runtime\nbehavior, Backend persistence or API behavior, Editor behavior, PDF generation,\nrenderer parity, frontend readiness, production readiness, FlowDoc product\ntruth, or map truth.\n\nNo product repository files change in this phase. Core, Backend, and Editor\nremain the owners of product implementation behavior for later approved lanes.\n\n## Work Context\n\nActive role: `planning-partner`, with `documentation-authority-steward`\nresponsibility for the prose.\n\nCurrent Phase: `phase-flowdoc-document-structure-north-star-v1`.\n\nChecklist target: `checklist-flowdoc-document-structure-north-star-v1`.\n\nEvidence target: `evidence-flowdoc-document-structure-north-star-2026-09-04`.\n\nWork Type: `planning-coordination` plus `documentation-authority`.\n\nKnown risks:\n\n- Future rooms may treat FlowDoc as a Word or Google Docs style editor.\n- Future rooms may treat FlowDoc as a PDF-only system because PDF is the first\n  constrained output target.\n- A database model may mix document structure with runtime data, logs,\n  generated files, permissions, or submission state.\n- A product implementation lane may mistake this north star for evidence that\n  Core, Backend, or Editor behavior already exists.\n\nUnknown state:\n\n- The product database schema for this document-structure model has not been\n  implemented or verified.\n- Core, Backend, and Editor adoption of this model remains unproven.\n- PDF rendering from this model remains planned, not ready.\n\n## North Star\n\nFlowDoc is a document-structure definition system. Its first user-facing goal\nis to let a creator define reusable document structure that a later caller can\nfill with controlled data and render through an approved output target.\n\nFlowDoc is not a Word or Google Docs style editor. It should not start from\nunbounded free text, arbitrary page editing, or direct DOM/contenteditable\nbehavior. The creator works with structured document parts, fields, layout\nchoices, and controlled relationships.\n\nFlowDoc is not a PDF-only system. PDF is the first renderer target because it\nis the first constrained output FlowDoc needs to prove. The central product\nmodel must stay output-aware but output-agnostic enough that later renderer\ntargets can consume the same structure relationship model.\n\nThe stable center of the product is the relationship between document\ndefinition, section, component, field, data binding, style defaults, page\nprofile, version, and publication. The first database design should protect\nthat relationship before optimizing for authoring convenience.\n\n## Product Roles\n\nFlowDoc separates two product roles.\n\nThe structure creator defines the document structure. This role chooses the\ndocument parts, section order, component instances, fields, binding names,\nstyle defaults, and page profiles that the system can support.\n\nThe downstream caller or user supplies data that matches the required contract.\nThat caller does not redefine the document structure. The caller provides the\ndata shape required by the published document version and receives an output\nfrom a renderer target such as PDF.\n\nThe current north star is scoped to the structure creator and the document\nstructure model. Runtime data entry, submission processing, and generated\nartifact lifecycle are later domains.\n\n## Structure Relationship Model v0\n\n`DocumentDefinition` is the top-level identity shown in the document library.\nIt represents one document-structure family and owns the draft structure,\nmetadata, reusable relationship, versions, and publications.\n\n`Section` is a meaningful document-flow group. It can own section-level flow\nrules such as visibility, repeat, page break, keep-together behavior, and\nsection-scoped style defaults.\n\n`ComponentDefinition` is a reusable structured sub-layout with fields and\ninternal layout rules. In v0 it must not contain another active component.\nRecursive component composition is prepared for later relationship modeling,\nbut v0 rendering and authoring must treat components as non-recursive.\n\n`ComponentInstance` is the placement of one component definition inside a\ndocument section. It owns order, local binding context, and allowed local\noverrides without changing the shared component definition.\n\n`FieldDefinition` names a data input required by a component. It describes the\nfield key, label, type, requirement, validation shape, and formatting intent\nthat a later data contract can expose.\n\n`DataBinding` connects a field or repeat rule to a named data path. The\nstructure model records the binding expectation, not the runtime data values.\n\n`PageProfile` describes output-surface defaults such as size and orientation.\nThe document can set a default page profile, and a section can override it.\nComponents do not change page orientation directly.\n\n`StyleDefaults` are inherited defaults used to reduce repeated style\ndeclaration. A section may provide typography, spacing, color role, density, or\nlabel treatment defaults for child components, but these defaults do not own\ncomponent internals or renderer-specific commands.\n\n## Relationship Rules For v0\n\nThe v0 composition path is:\n\n```text\nDocumentDefinition\n  -> Section\n  -> ComponentInstance\n  -> ComponentDefinition\n  -> FieldDefinition\n  -> DataBinding\n```\n\nComponents do not contain active child components in v0. If a real use case\nappears to need nested components, v0 should model it by creating another\ncomponent definition and arranging the components as siblings in a section.\n\nComponent parent-child relationships may be prepared as a separate relation\ntable for future compatibility, but v0 validation and rendering should keep\nthat relationship inactive unless a later approved decision enables it.\n\nSection rules are document-flow rules, not component-layout authority. A\nsection may control visibility, repeat, page profile override, page break, keep\ntogether, and style defaults. It must not define component fields, edit\ncomponent internals, or hold fixed renderer coordinates.\n\n## Draft, Version, And Publication\n\n`Draft` is the editable working structure for one `DocumentDefinition`. The\ndraft is one-to-one with the document definition and can change while creators\nare designing.\n\n`DocumentVersion` is a frozen baseline created from the draft. A document\ndefinition can have many versions. A version freezes the document sections,\ncomponent instances, and resolved component definition versions needed to\nrender or validate that version later.\n\n`Publication` is a pointer from a document definition to one frozen document\nversion that is selected for real use. Publishing must not mutate the frozen\nversion itself. A later rollback or channel change should update the\npublication pointer, not rewrite version history.\n\nFor handoff language: DocumentVersion is a frozen baseline, and Publication is\na pointer to the selected baseline.\n\nCreating a document version should automatically resolve referenced component\ndrafts into immutable component versions. This freeze is automatic for safety\nand creator convenience, but it does not automatically release those component\nversions as reusable library releases.\n\n## Product Database Boundary\n\nThe first product database design should use relational tables as the canonical\nsource for document-structure relationships. JSON render packages may exist as\ncompiled cache or transport snapshots, but they should not become the primary\ntruth for editable structure, version relationships, field discovery, reuse,\nor validation.\n\nThe document-structure scope includes document definitions, sections,\ncomponent definitions, component instances, fields, data bindings, style\ndefaults, page profiles, versions, publications, and prepared component\nrelationship tables.\n\nRuntime data, submissions, logs, audit trails, generated files, and permissions\nare out of scope for this document-structure model. Those domains may relate\nto a published document version later, but they should not be mixed into the\nstructure tables during the first database design.\n\n## First Renderer Boundary\n\nPDF is the first renderer target. The first implementation slice may constrain\nsupported page profiles, section flow rules, and component layouts to what the\nPDF renderer can honestly generate.\n\nThat PDF constraint must not redefine FlowDoc as PDF-only. The renderer reads\na frozen document version and data contract; it does not own the central\ndocument-structure relationship model.\n\n## Intentionally Not Changed\n\n- No Core, Backend, or Editor files change in this phase.\n- No product database schema is implemented in this phase.\n- No migration, API route, renderer, PDF generation, or artifact storage is\n  activated in this phase.\n- No runtime data, log, audit, permission, submission, or generated-file model\n  is designed here.\n- No FlowDoc map truth changes.\n- No product readiness, frontend readiness, publish readiness, or PDF readiness\n  is promoted.\n\n## Next Recommended Work\n\nUse this north star as the input to a bounded `Document Structure Relationship\nDatabase v0` design. That follow-up should map the structure-only tables,\nforeign keys, cardinality, version freeze rules, publication pointer rules, and\nv0 validation constraints before any product implementation lane opens.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-documentation-authority-policy",
       "title": "FlowDoc Documentation Authority Policy",
       "path": "docs/domains/flowdoc-documentation-authority-policy.md",
@@ -17179,6 +17353,16 @@
       "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; data/work/agent-and-skill-design.json; tests/flowdoc-delivery-operating-model.test.ts; npm run check",
       "verificationSummary": "Project Control commit 8dcb483f99ffa5e6c7195b5ac16774f155ca77dc records the FlowDoc Delivery Operating Model as a Project Control PLAN and WORK room delivery operating contract. The document defines Collaboration Identity for ตูม and โค, Agent Shared Understanding for future rooms, the Room Mode Model for PLAN rooms and real separate WORK rooms, Delivery Round Model, First Delivery Slice, Gateway Boundary, Product Database Boundary, Project Control Reference ID Contract, Lane Card Template, WORK Room Kickoff Rule, Handoff Rule, Contract Change Request, and Stop Conditions. RED evidence: npx vitest run tests/flowdoc-delivery-operating-model.test.ts --maxWorkers=1 failed before doc-flowdoc-delivery-operating-model and entrypoint references existed. GREEN evidence before this evidence record passed npx vitest run tests/flowdoc-delivery-operating-model.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check with 63 unit test files and 356 tests, build, and 6 e2e tests. This evidence does not edit Core, Backend, or Editor behavior, does not prove gateway behavior, product database behavior, API key behavior, PDF generation, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-01T21:15:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-document-structure-north-star-2026-09-04",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md; data/work/flowdoc-document-structure-north-star.json; data/phases/phase-flowdoc-document-structure-north-star-v1.json; data/checklists/checklist-flowdoc-document-structure-north-star-v1.json; data/documents/flowdoc-document-structure-north-star-2026-09-04.json; tests/flowdoc-document-structure-north-star.test.ts; npm run check",
+      "verificationSummary": "Project Control records a bounded Document Structure North Star v1 before database relationship design or product implementation continues. The north star defines FlowDoc as a document-structure definition system, not a Word or Google Docs style editor and not PDF-only; defines Structure Relationship Model v0 with DocumentDefinition, Section, ComponentDefinition, ComponentInstance, FieldDefinition, DataBinding, PageProfile, StyleDefaults, no active recursive components in v0, Section flow rules, PageProfile orientation, section style defaults, Draft as editable, DocumentVersion as frozen baseline, and Publication as a pointer to a selected frozen version; and excludes runtime data, submissions, logs, audit trails, generated files, permissions, and product implementation from the structure-only scope. RED evidence: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1 failed before Project Control contained the new Work and document records. GREEN evidence target includes the focused north star guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a product database schema, does not open WORK rooms, and does not promote product readiness, frontend readiness, publish readiness, PDF readiness, production readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-04T00:00:00.000Z"
     },
     {
       "kind": "evidence",

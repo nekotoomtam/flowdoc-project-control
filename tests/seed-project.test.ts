@@ -70,6 +70,7 @@ describe("truthful seed project", () => {
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
         "doc-flowdoc-frontend-product-map-2026-09-03",
         "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+        "doc-flowdoc-document-structure-north-star-2026-09-04",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)

@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-document-structure-north-star-2026-09-04",
+  "title": "FlowDoc Document Structure North Star v1",
+  "path": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control Document Structure North Star v1 for bounded document-structure product direction, structure relationship terminology, Draft/Version/Publication boundary, PDF-first renderer boundary, and structure-only database planning scope.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md; data/work/flowdoc-document-structure-north-star.json; data/phases/phase-flowdoc-document-structure-north-star-v1.json; data/checklists/checklist-flowdoc-document-structure-north-star-v1.json; data/evidence/flowdoc-document-structure-north-star-2026-09-04.json; tests/flowdoc-document-structure-north-star.test.ts; npm run check"
+    }
+  ]
+}
