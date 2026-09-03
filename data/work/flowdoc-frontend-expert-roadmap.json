@@ -1,0 +1,33 @@
+{
+  "kind": "work",
+  "id": "flowdoc-frontend-expert-roadmap",
+  "title": "FlowDoc Frontend Expert Roadmap",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-progress",
+  "summary": "Record a bounded expert frontend roadmap before opening product implementation lanes, with Project Control-owned sequencing for Library, Design, Preview, Publish, and the WYSIWYG gate.",
+  "contextDocumentIds": [
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-delivery-operating-model",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-lean-dispatch-operating-rules",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Frontend Expert Roadmap v1 in Project Control, with lane-ready sequencing, scope boundaries, acceptance expectations, and no product repository changes.",
+  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes.",
+  "requiredEvidence": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+  "createdAt": "2026-09-03T09:00:00.000Z",
+  "updatedAt": "2026-09-03T09:00:00.000Z"
+}

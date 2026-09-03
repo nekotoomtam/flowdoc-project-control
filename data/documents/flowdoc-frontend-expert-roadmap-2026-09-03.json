@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+  "title": "FlowDoc Frontend Expert Roadmap v1",
+  "path": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control Frontend Expert Roadmap v1 for bounded Library, Design, Preview, Publish, lane sequencing, UX design exploration, and truth-boundary planning.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c844c052dbfc43412f3ef2d51105572931bde703",
+      "pathOrContractId": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md; data/work/flowdoc-frontend-expert-roadmap.json; data/phases/phase-flowdoc-frontend-expert-roadmap-v1.json; data/checklists/checklist-flowdoc-frontend-expert-roadmap-v1.json; data/evidence/flowdoc-frontend-expert-roadmap-2026-09-03.json; tests/flowdoc-frontend-expert-roadmap.test.ts; npm run check"
+    }
+  ]
+}

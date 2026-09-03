@@ -67,6 +67,7 @@ describe("truthful seed project", () => {
         "doc-flowdoc-product-terminology-th",
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
         "doc-flowdoc-first-delivery-round-plan",
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)
