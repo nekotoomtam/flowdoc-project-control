@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+  "title": "FlowDoc WYSIWYG Gate Decision v1",
+  "path": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control WYSIWYG Gate Decision v1 for preserving a closed direct-editing gate, allowing managed editable cards and bounded text islands as later progressive authoring direction, blocking unsupported contenteditable shortcuts and rich editor package adoption, and naming prerequisites before any WYSIWYG implementation lane.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/evidence/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check"
+    }
+  ]
+}

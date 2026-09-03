@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "0650e8ce630f5ee948442138209f6337209fa19f486254b44243010822bd56dc",
+  "sourceDigest": "4ca5e90cb7abcaee046a513d88e2c2548dbf959f7e8cf44cc50e323181045b5d",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -23,7 +23,8 @@
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
         "doc-flowdoc-first-delivery-round-plan",
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
-        "doc-flowdoc-frontend-product-map-2026-09-03"
+        "doc-flowdoc-frontend-product-map-2026-09-03",
+        "doc-flowdoc-wysiwyg-gate-decision-2026-09-03"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -61,7 +62,8 @@
         "flowdoc-frontend-product-map",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
-        "flowdoc-product-terminology-foundation"
+        "flowdoc-product-terminology-foundation",
+        "flowdoc-wysiwyg-gate-decision"
       ]
     },
     {
@@ -2184,7 +2186,9 @@
       ],
       "createdAt": "2026-09-03T10:00:00.000Z",
       "updatedAt": "2026-09-03T10:00:00.000Z",
-      "childWorkIds": [],
+      "childWorkIds": [
+        "flowdoc-wysiwyg-gate-decision"
+      ],
       "phaseIds": [
         "phase-flowdoc-frontend-product-map-v1"
       ],
@@ -2332,6 +2336,59 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-product-terminology-foundation"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-wysiwyg-gate-decision",
+      "title": "FlowDoc WYSIWYG Gate Decision",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-frontend-product-map",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-core",
+        "repo-backend"
+      ],
+      "workState": "in-progress",
+      "summary": "Record a Project Control-owned WYSIWYG Gate Decision v1 that keeps the gate closed, preserves existing bounded authoring evidence, defines managed editable cards and bounded text islands, blocks broad contenteditable and rich editor shortcuts, and names prerequisites for later product lanes.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+        "doc-flowdoc-frontend-product-map-2026-09-03",
+        "doc-template-builder-wysiwyg-draft-guards",
+        "doc-template-builder-rich-inline-session-lifecycle"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "WYSIWYG Gate Decision v1 in Project Control, with accepted closed-gate definition, allowed managed editable cards and bounded text islands, blocked contenteditable shortcuts and rich editor package adoption, prerequisites, stop conditions, and no product repository implementation.",
+      "riskSummary": "The WYSIWYG decision may be mistaken for readiness or direct editing permission. Hidden contenteditable shortcuts, broad contenteditable shortcuts, rich editor package adoption, direct preview typing, table/cell surface editing, media surface editing, publish behavior, production behavior, compatibility, FlowDoc product truth, and map truth remain blocked or unknown until later evidence-backed lanes.",
+      "requiredEvidence": [
+        "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+      ],
+      "createdAt": "2026-09-03T11:00:00.000Z",
+      "updatedAt": "2026-09-03T11:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-wysiwyg-gate-decision-v1"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-frontend-expert-roadmap",
+        "flowdoc-frontend-product-map",
+        "flowdoc-wysiwyg-gate-decision"
       ]
     },
     {
@@ -4816,6 +4873,30 @@
       "summary": "Done: Project Control now has a product terminology foundation and terminology discipline rule for future Editor/frontend and cross-repository product work without promoting product readiness.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-wysiwyg-gate-decision-v1",
+      "workId": "flowdoc-wysiwyg-gate-decision",
+      "title": "WYSIWYG Gate Decision v1",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+        "Existing WYSIWYG boundary evidence cannot be found or conflicts with the proposed decision.",
+        "The decision would authorize full-document contenteditable, rich editor package adoption, direct preview typing, DOM innerHTML document truth, or broad direct page editing without prerequisites.",
+        "The decision requires Core, Backend, or Editor product repository edits.",
+        "The decision would promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth from planning alone.",
+        "The room cannot send its terminal handoff automatically to PLAN."
+      ],
+      "verificationTarget": "Project Control records WYSIWYG Gate Decision v1: WYSIWYG gate remains closed, managed editable cards and bounded text islands are the allowed direction, full-document contenteditable and rich editor package adoption remain blocked, prerequisites are explicit, and no product truth or map truth is promoted.",
+      "summary": "Done: Project Control now records a bounded WYSIWYG Gate Decision v1 that preserves existing authoring boundaries, keeps broad WYSIWYG closed, and defines prerequisites before later product implementation lanes may claim direct page editing.",
+      "createdAt": "2026-09-03T11:00:00.000Z",
+      "updatedAt": "2026-09-03T11:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -12189,6 +12270,96 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-wysiwyg-gate-decision-v1",
+      "phaseId": "phase-flowdoc-wysiwyg-gate-decision-v1",
+      "title": "WYSIWYG Gate Decision v1 Checklist",
+      "items": [
+        {
+          "id": "capture-wysiwyg-gate-context",
+          "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, unknown state, and automatic return path.",
+          "state": "passed",
+          "evidenceTarget": "The WYSIWYG gate decision record identifies Project Control ownership and lane boundaries before writing the decision.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-wysiwyg-gate-decision, owner repo-project-control, active role planning-partner with project-control-steward, documentation-authority-steward, and cross-repo boundary review responsibilities, phase target phase-flowdoc-wysiwyg-gate-decision-v1, checklist target checklist-flowdoc-wysiwyg-gate-decision-v1, and evidence target evidence-flowdoc-wysiwyg-gate-decision-2026-09-03."
+        },
+        {
+          "id": "write-red-wysiwyg-gate-guard",
+          "label": "Write a failing Project Control guard before adding the WYSIWYG gate decision records.",
+          "state": "passed",
+          "evidenceTarget": "A focused test fails before Project Control contains the WYSIWYG gate Work, document, checklist, and evidence records.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "RED evidence: npx vitest run tests/flowdoc-wysiwyg-gate-decision.test.ts --maxWorkers=1 failed because flowdoc-frontend-product-map did not yet include flowdoc-wysiwyg-gate-decision as a child Work."
+        },
+        {
+          "id": "review-existing-wysiwyg-boundaries",
+          "label": "Review existing WYSIWYG, contenteditable, rich-inline, and authoring boundary evidence before writing the decision.",
+          "state": "passed",
+          "evidenceTarget": "The decision preserves existing bounded Editor and Core WYSIWYG boundaries instead of replacing them with broader claims.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "Reviewed evidence-editor-wysiwyg-gate-definition-2026-08-31, docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md, docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md, and related Core evidence records."
+        },
+        {
+          "id": "define-closed-gate-decision",
+          "label": "Define the closed WYSIWYG gate and the allowed progressive authoring direction.",
+          "state": "passed",
+          "evidenceTarget": "The decision states that the WYSIWYG gate remains closed while managed editable cards and bounded text islands are the allowed direction for later lanes.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md defines WYSIWYG, Managed Editable Cards, Bounded Text Islands, Contenteditable Shortcuts, and Rich Editor Package Adoption."
+        },
+        {
+          "id": "record-prerequisite-checklist",
+          "label": "Record prerequisite gates for data model, selection, measurement, save, undo/redo, preview, compatibility, accessibility, and evidence.",
+          "state": "passed",
+          "evidenceTarget": "The decision names the prerequisites that must be accepted before later product lanes may claim WYSIWYG or direct page editing behavior.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "The Prerequisite Checklist requires accepted evidence for data model, selection, measurement, save, undo/redo, preview, compatibility, accessibility, and Project Control evidence packets."
+        },
+        {
+          "id": "block-unsupported-shortcuts",
+          "label": "Block unsupported contenteditable shortcuts, broad direct page editing, and rich editor package adoption.",
+          "state": "passed",
+          "evidenceTarget": "The decision keeps unsupported direct editing shortcuts unavailable unless a later Contract Change Request is accepted.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "The decision blocks full-document contenteditable, direct preview typing, DOM innerHTML document truth, hidden contenteditable shortcuts, table/cell surface editing, media surface editing, drag-to-edit layout mutation, broad clipboard rich-paste behavior, and rich editor engines such as Slate, ProseMirror, and TipTap-style packages."
+        },
+        {
+          "id": "preserve-product-truth-boundary",
+          "label": "Preserve planning-only truth boundaries and avoid product or map truth promotion.",
+          "state": "passed",
+          "evidenceTarget": "The decision does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "The document states that the decision is planning context, not product truth; it leaves product repository files unchanged and does not update DOCUMENT_MAP or the FlowDoc system map."
+        },
+        {
+          "id": "verify-wysiwyg-gate-records",
+          "label": "Verify Project Control records, generated read model, and checks.",
+          "state": "passed",
+          "evidenceTarget": "Focused WYSIWYG gate guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-wysiwyg-gate-decision.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-03T11:00:00.000Z",
+      "updatedAt": "2026-09-03T11:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-project-control-overview-history-gui",
       "phaseId": "phase-project-control-overview-history-gui",
       "title": "Project Control Overview and History GUI Checklist",
@@ -14405,6 +14576,26 @@
         }
       ],
       "content": "# FlowDoc Work Type Routing Model\n\n## Authority Boundary\n\nThis document defines how a FlowDoc PLAN room classifies lane work before\ndispatch, packages the understanding a WORK room must receive, and chooses\nwhich reusable skill candidates may help a lane.\n\nIt is owned by Project Control under\n`flowdoc-product-development-resumption > agent-and-skill-design`.\n\nThis is a Project Control coordination contract. It does not create packaged\nCodex skills, does not open WORK rooms, does not edit Core, Backend, or Editor\nbehavior, and does not prove product readiness, UX readiness, API behavior,\nPDF generation, FlowDoc product truth, or map truth.\n\nProject Control owns shared coordination, records, source-of-truth boundaries,\nand evidence targets. Product repositories own implementation behavior, tests,\nruntime contracts, local setup, and product evidence.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > agent-and-skill-design`\n- Owner repository: `repo-project-control`\n- Active role: `project-control-steward`, with `planning-partner` and\n  `documentation-authority-steward` responsibilities for the prose\n- Current Phase: `phase-agent-and-skill-design-work-type-routing-model`\n- Checklist target: `checklist-agent-and-skill-design-work-type-routing-model`\n- Evidence target: `evidence-flowdoc-work-type-routing-model-2026-09-02`\n- Known risks: future PLAN rooms may send a lane goal without the supporting\n  understanding, WORK rooms may use the wrong role or tool path for the kind of\n  work, UX artifacts may be mistaken for product truth, and branch or worktree\n  names may be accepted as evidence without exact commits, a silent room may be\n  mistaken for a finished lane, and manual recovery may be mistaken for\n  automatic WORK-to-PLAN return\n- Unknown state: this document does not prove future Codex compliance, does not\n  install new packaged local skills, and does not inspect current Core,\n  Backend, or Editor implementation state\n\n## Purpose\n\nThe PLAN room is the place that holds the round understanding. A WORK room\nshould not have to reconstruct the whole FlowDoc context from memory, and it\nmust not quietly invent scope when the handoff is thin.\n\nEvery executable lane should therefore carry two pieces of routing metadata:\n\n- `Work Type`: the kind of work the lane is allowed to perform.\n- `Context Capsule`: the bounded understanding the WORK room must receive and\n  acknowledge before it starts.\n\n`Work Type` is not a role, not a Work record kind, and not a packaged skill. It\nis dispatch metadata used by the PLAN room to choose the right active role,\nrequired reading, expected output, evidence shape, acceptance checks, and skill\ncandidate.\n\nWhen a dispatch set uses Lean Dispatch, the PLAN room also applies\n`docs/domains/flowdoc-lean-dispatch-operating-rules.md`. Lean Dispatch adds\nResource Budget fields, Reference Packs, compact handoff detail, verification\ntiers, evidence batching, and escalation triggers without changing the Work\nType boundary or acceptance focus.\n\n## Work Type Taxonomy\n\nUse the narrowest Work Type that describes the lane's main output. If a lane\nneeds two primary Work Types, split the lane unless the PLAN room records why a\ncombined lane is safer.\n\n| Work Type | Use When | Typical Role | Expected Output | Acceptance Focus |\n| --- | --- | --- | --- | --- |\n| `planning-coordination` | A PLAN or Project Control lane records round shape, lane cards, dispatch sets, or sequencing. | `planning-partner` or `project-control-steward` | Plan record, lane card, Kickoff Packet, dispatch set, risk/unknown list. | No product behavior edits; planned outcomes stay out of maps. |\n| `product-implementation` | A WORK room edits Core, Backend, or Editor behavior inside one approved owner repository. | `product-implementation-agent` with boundary review as needed | Owner-repo commit, changed files, behavior summary, focused tests, PR Summary Draft. | Changed behavior requires exact commit from the owner repo and fresh owner-repo verification. |\n| `evidence-review` | A lane checks whether returned work supports a claim or integration slice. | `evidence-reviewer` | Evidence packet, supported claims, rejected claims, exact commands, map recommendation if supported. | Claims remain narrow; unsupported claims stay RISK or UNKNOWN. |\n| `documentation-authority` | A lane creates, migrates, bounds, summarizes, or retires FlowDoc Markdown or Project Control records. | `project-control-steward` with `documentation-authority-steward` | Project Control documents, records, Authority Boundary wording, guard updates, evidence target. | Project Control remains canonical for shared truth; repo-local Markdown stays bounded. |\n| `ux-design-exploration` | A lane explores product flow, screen structure, mockups, screenshots, or prototype direction before implementation. | `planning-partner`, `product-implementation-agent`, or a future design role after approval | Design brief, mockup or prototype artifact, decision notes, accessibility risks, implementation handoff. | A design artifact is not product truth; implementation still needs owner-repo evidence. |\n| `lane-reconciliation` | A lane reviews old branches, worktrees, duplicate room outputs, or merge/cleanup decisions. | `lane-reconciliation-reviewer` | Retain, merge, discard, or cleanup decision with exact refs and risk notes. | No dirty or unmerged lane is removed before unique patches are understood. |\n\n## Context Capsule\n\nA Kickoff Packet must include a Context Capsule before a WORK room starts. The\ncapsule is written for the assigned lane, not for FlowDoc in general.\n\nMinimum fields:\n\n- Room Mode: `WORK`\n- Work Type\n- Round ID or Work path\n- Lane ID\n- Owner repository or bounded repository set\n- Active role and role overlays\n- Allowed scope\n- Forbidden scope\n- Required reading\n- Accepted facts the WORK room may rely on\n- Risks and unknowns the WORK room must preserve\n- Terminology decisions or ambiguity classifications\n- Evidence target\n- Stop condition\n- Handoff format\n- PLAN task/chat ID or PLAN-owned monitor locator\n- Return Channel\n- Automatic Return Channel\n- Active Return Command\n- Return Event ID or handoff ID\n- Liveness Signal\n- Death Signal\n- Retrievable locator requirement\n- `returnOrderPolicy`, when the dispatch set has multiple active WORK rooms\n- `arrivalSequence` assignment rule for queued returns\n- Contract Change Request trigger\n\nThe PLAN room should keep the capsule concise. If the capsule is too large to\nreview, the lane is probably too broad.\n\n## Context Acknowledgement\n\nBefore edits, a WORK room must return or record a Context Acknowledgement. This\ncan be in the room's first response, Room Run Registry note, or bounded handoff\nnotes until Project Control has a dedicated Room Run schema.\n\nMinimum acknowledgement:\n\n- the Work Type it received;\n- the Lane ID and owner repository;\n- the allowed and forbidden scope;\n- the required reading it completed or could not complete;\n- the evidence target it will use;\n- the risks and unknowns it will preserve;\n- the stop conditions that will make it return to PLAN;\n- the PLAN task/chat ID or PLAN-owned monitor locator it will send the\n  terminal handoff to;\n- the Return Channel it will use for the terminal return;\n- the Automatic Return Channel it will use so PLAN does not require `ตูม` to\n  copy/paste Terminal Handoffs;\n- the Active Return Command it will use, such as `send_message_to_thread` when\n  Codex thread tools expose it;\n- the Return Event ID or handoff ID PLAN can use for duplicate handoff\n  detection;\n- the Liveness Signal the PLAN room can use while it is running;\n- the Death Signal or fallback state the PLAN room can record if it disappears;\n- the retrievable locator it will use for PLAN pull review.\n\nIf a WORK room cannot acknowledge the capsule, the lane remains\n`needs-attention` or `blocked`. The PLAN room must revise the packet or ask the\nuser for the missing decision before accepting work from that room.\n\n## Mandatory Return And Liveness\n\nEvery WORK room has a mandatory WORK room return obligation. Passing is not the\nonly terminal return. A WORK room must return PASS / FAIL / BLOCKER / RISK /\nUNKNOWN to the PLAN room so the PLAN room can continue without guessing.\nThis is the lane-level liveness contract for real separate rooms.\n\nAutomatic WORK-to-PLAN return is mandatory. The Return Channel must deliver the\nterminal handoff to PLAN or a PLAN-owned monitor without requiring `ตูม` to\ncopy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste Terminal\nHandoffs. A manual recovery fallback may recover a missed task, thread,\nworktree, branch, commit, or handoff locator, but it must be recorded as\n`manual-recovered` or `return-channel-failed` and does not satisfy automatic\nreturn.\n\nAutomatic return means an active WORK-to-PLAN return push. The WORK room must\nsend the structured Terminal Handoff to the PLAN task/chat ID or PLAN-owned\nmonitor from its Kickoff Packet. When Codex thread tools expose\n`send_message_to_thread`, that command is the Active Return Command. The WORK\nroom final answer alone is not enough because PLAN can enqueue it without\nmanual locator discovery only after the handoff is pushed back to PLAN or the\nPLAN-owned monitor. If PLAN later recovers a missed handoff by task, thread,\nsession, worktree, branch, commit, or handoff location, record\n`return-channel-failed-then-recovered` or `manual-recovered`; that recovery\ndoes not satisfy automatic return.\n\n`clientThreadId` alone is not a monitorable retrievable locator. It means room\ncreation was queued, but PLAN cannot rely on it to wait on a real task/chat,\nsend a Revision Packet, or prove liveness. Until a real task/chat ID or other\nmonitorable locator is resolved, the room remains `queued` or\n`needs-attention`.\n\nThe Context Capsule must define:\n\n- Return Channel: where the WORK room sends its terminal return.\n- Automatic Return Channel: how the terminal return reaches PLAN without a\n  user bridge.\n- Active Return Command: the exact action the WORK room must take to push the\n  terminal handoff to PLAN.\n- Return Event ID or handoff ID: how PLAN recognizes a duplicate handoff and\n  keeps the return idempotent.\n- Liveness Signal: how the PLAN room can tell the WORK room is still running,\n  waiting, or needs attention.\n- Death Signal: how the PLAN room records that a WORK room disappeared,\n  stopped responding, or lost its retrievable locator.\n\nA silent room is not an accepted lane. If the WORK room does not provide a\nterminal return, the PLAN room must actively pull the result using the\nretrievable locator. If the room cannot be found or cannot produce a terminal\nreturn, its result must not be accepted. The PLAN room must record\n`needs-attention`, `RISK`, `UNKNOWN`, or `blocked`, then decide whether to ask\nthe user for a room reference, revise the packet, reopen the lane, or stop the\ndispatch set.\n\nFor multiple active WORK rooms, the Context Capsule and dispatch set must\ndefine `completionQueue`, `returnOrderPolicy`, and `arrivalSequence` handling.\nPLAN must process one queued handoff at a time and must keep duplicate handoff\nreturns idempotent before `acceptanceGate`.\n\n## Locator And Evidence Rule\n\nA Room Run Registry entry must contain at least one retrievable locator: Codex\ntask/chat ID, worktree/branch, or handoff location. If none is known, the run is\nnot trackable enough for PLAN acceptance and must remain `needs-attention`,\n`RISK`, or `UNKNOWN`.\n\nFor Codex room creation, `clientThreadId` alone is not a monitorable\nretrievable locator. PLAN may keep it as a queued creation reference, but it\nmust resolve a real task/chat ID or another monitorable locator before\naccepting liveness, active return, or same-room revision behavior.\n\nBranches, worktrees, task IDs, screenshots, mockups, and handoff notes are\nlocators or supporting material. They are not enough to prove changed product\nbehavior. Changed behavior requires exact commit from the owning repository,\nplus fresh verification from that repository when behavior changed.\n\nFor `ux-design-exploration`, the design artifact is not product truth. It may\nshape a later implementation lane, but it cannot promote frontend readiness,\nCore truth, Backend truth, Editor truth, map truth, or release readiness.\n\n## Lean Dispatch Defaults By Work Type\n\nLean Dispatch defaults are starting points for PLAN budget decisions. A PLAN\nroom may make any lane stricter, but it must record why before lowering context,\nverification, review, evidence, or handoff detail.\n\n| Work Type | Lean Dispatch default |\n| --- | --- |\n| `planning-coordination` | `contextBudget: small`; `verificationTier: standard`; `reviewTier: risk-triggered`; `evidenceMode: batched-evidence`; compact handoff allowed when no product truth is promoted. |\n| `product-implementation` | `contextBudget: small` for narrow edits or `normal` for public API, storage, renderer, or cross-repository contracts; `verificationTier: standard` while developing and `full` before merge or PLAN acceptance; `evidenceMode: full-acceptance-record`. |\n| `evidence-review` | `contextBudget: normal`; `verificationTier: full` for accepted claims; `reviewTier: mandatory`; `evidenceMode: full-acceptance-record`; compact handoff may summarize but must cite exact evidence. |\n| `documentation-authority` | `contextBudget: normal`; `verificationTier: standard`; `reviewTier: mandatory`; `evidenceMode: full-acceptance-record`; Reference Pack must include the authority policy and operating rules. |\n| `ux-design-exploration` | `contextBudget: small`; `verificationTier: focused`; `reviewTier: risk-triggered`; `evidenceMode: registry-note` or `batched-evidence`; a mockup or prototype can guide a later lane but is not product truth. |\n| `lane-reconciliation` | `contextBudget: normal`; `verificationTier: focused`; `reviewTier: mandatory`; `evidenceMode: batched-evidence`; compact handoff must keep exact branch, worktree, commit, and cleanup decision refs. |\n\nEscalation triggers from the Lean Dispatch Operating Rules override these\ndefaults. When a trigger fires, PLAN raises the budget, sends a Revision Packet\nto the same WORK room, splits the lane, or blocks the round.\n\n## PLAN-Owned Reporting And Revision\n\nProduct WORK rooms return evidence candidates. They must not self-promote\ntheir own result into Project Control truth, map truth, accepted lane status,\nor round status. PLAN-owned reporting means the PLAN room receives the returned\nhandoff through the mandatory automatic Return Channel, stages it in\n`handoffInbox`, runs `acceptanceGate`, and decides whether the lane is\n`accepted`, `needs-revision`, `rejected`, `blocked`, `RISK`, or `UNKNOWN`.\n\nPLAN or a Project Control records lane writes Project Control records after\nacceptance. Core, Backend, and Editor product WORK rooms may request an\nEvidence record or supply an evidence candidate, but they do not register\naccepted Project Control truth by themselves.\n\nPLAN may use a manual recovery fallback only to recover or classify a failed\nReturn Channel. Manual recovery does not satisfy automatic return and must not\nrequire `ตูม` to copy/paste Terminal Handoffs for ordinary progress.\n\nWhen acceptance fails but the lane is still valid, PLAN sends a Revision Packet\nto the same WORK room using the original retrievable locator. The Revision\nPacket names the `revisionAttempt`, original lane, exact acceptanceGate gaps,\nallowed repair scope, still-forbidden scope, extra verification required,\nReturn Channel, Liveness Signal, Death Signal, and whether a Contract Change\nRequest is needed. The same WORK room continues only inside the original lane\nboundary. If the repair needs a different owner, evidence target,\nsource-of-truth rule, or cross-repository contract, the WORK room returns a\nContract Change Request instead of expanding its own scope.\n\n## Skill Candidate Routing\n\nReusable skills should still be created only after a workflow repeats enough to\nprove its trigger, scope, inputs, outputs, and stop conditions.\n\nWork Type can route a lane toward a skill candidate:\n\n- `planning-coordination`: delivery round planning and dispatch-set drafting.\n- `product-implementation`: repository-specific implementation and boundary\n  review support.\n- `evidence-review`: evidence registration and map recommendation support.\n- `documentation-authority`: Markdown authority and document synthesis support.\n- `ux-design-exploration`: UX audit, mockup, screenshot, or prototype support.\n- `lane-reconciliation`: worktree, branch, and handoff reconciliation support.\n\nUntil a skill candidate becomes a packaged skill, the PLAN room must write the\nneeded instructions into the Context Capsule rather than assuming another room\nwill know them.\n\n## PLAN Room Duties\n\nWhen preparing a dispatch set, the PLAN room must:\n\n1. assign one Work Type to every candidate lane;\n2. split lanes whose primary outputs require conflicting Work Types;\n3. write a Context Capsule for every lane chosen for dispatch;\n4. record the expected Context Acknowledgement;\n5. record the PLAN task/chat ID, Automatic Return Channel, Active Return\n   Command, Return Event ID or handoff ID, and retrievable locator requirement\n   in the Room Run Registry;\n6. review returned handoffs against the lane's Work Type acceptance focus;\n7. reject or return handoffs that lack exact commits, required verification, or\n   required acknowledgement for their Work Type;\n8. own Project Control reporting after acceptance or delegate that reporting to\n   a Project Control records lane;\n9. send Revision Packets back to the same WORK room for `needs-revision`\n   outcomes when the original retrievable locator remains usable;\n10. when there are multiple active WORK rooms, process close-together returns\n    through `completionQueue` using `returnOrderPolicy`, `arrivalSequence`,\n    and duplicate handoff handling.\n\nThe PLAN room may use internal subagents for exploration, summarization, or\nreview. A real WORK room remains a separate Codex task/chat visible to the\nuser and must receive a full lane Context Capsule before implementation.\n\n## First Delivery Round Application\n\nThe first delivery round should use this initial routing:\n\n- `lane-project-control-round-records`: `documentation-authority`\n- `lane-editor-structure-publish`: `product-implementation`\n- `lane-backend-gateway-database`: `product-implementation`\n- `lane-core-document-pdf-boundary`: `product-implementation`\n- `lane-integration-evidence`: `evidence-review`\n\nThe PLAN room may revise a Work Type before dispatch if the lane boundary\nchanges. Any revision must be recorded in the lane card and Kickoff Packet.\n\n## Handoff Requirement\n\nA PLAN or WORK room using this model must report:\n\n- PASS, FAIL, BLOCKER, RISK, and UNKNOWN statements as applicable;\n- Work Type, Lane ID, Work ID, Phase ID, Checklist target, and Evidence target;\n- Context Capsule sent or received;\n- Context Acknowledgement result;\n- Automatic Return Channel and whether it returned without manual recovery;\n- retrievable locator used for pull review;\n- `completionQueue`, `returnOrderPolicy`, and `arrivalSequence` decisions when\n  multiple active WORK rooms were dispatched;\n- files changed by repository;\n- exact commits for changed behavior;\n- tests run;\n- evidence or map updates;\n- claims intentionally not promoted;\n- next recommended dispatch, revision, or cleanup step.\n\nThis keeps separate rooms useful without letting the context split become a\ntruth split.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+      "title": "FlowDoc WYSIWYG Gate Decision v1",
+      "path": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "decision",
+      "authority": "Project Control WYSIWYG Gate Decision v1 for preserving a closed direct-editing gate, allowing managed editable cards and bounded text islands as later progressive authoring direction, blocking unsupported contenteditable shortcuts and rich editor package adoption, and naming prerequisites before any WYSIWYG implementation lane.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/evidence/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc WYSIWYG Gate Decision v1\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-wysiwyg-gate-decision`.\n\nThis document is the Project Control decision record for the next FlowDoc WYSIWYG gate. It decides the planning boundary for later frontend and authoring lanes before any direct page editing expansion.\n\nThis decision is planning context, not product truth. It does not prove frontend readiness, WYSIWYG readiness, publish readiness, production readiness, Core runtime behavior, Backend service behavior, Editor behavior, compatibility, renderer parity, PDF output, or map truth.\n\nNo product repository files change in this decision lane. Core, Backend, and Editor remain product implementation owners for later approved lanes.\n\n## Work Context\n\n- Lane ID: `lane-wysiwyg-gate-decision`\n- Work Type: `decision` plus `planning-coordination`\n- Active role: `planning-partner`, with `project-control-steward`, `documentation-authority-steward`, and cross-repo boundary review responsibilities\n- Current Phase: `phase-flowdoc-wysiwyg-gate-decision-v1`\n- Checklist target: `checklist-flowdoc-wysiwyg-gate-decision-v1`\n- Evidence target: `evidence-flowdoc-wysiwyg-gate-decision-2026-09-03`\n- Source roadmap: `docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md`\n- Source product map: `docs/domains/flowdoc-frontend-product-map-2026-09-03.md`\n\nKnown risks:\n\n- A WYSIWYG label may be mistaken for current direct editing behavior.\n- Managed editable cards or bounded text islands may be widened into contenteditable shortcuts without the prerequisite checks.\n- Rich editor package adoption may bypass FlowDoc ownership, save, preview, undo/redo, compatibility, and accessibility gates.\n- Preview, publish, or production wording may imply readiness that remains unknown.\n\nUnknown state:\n\n- Broad Editor runtime and UI behavior remain `unknown` until an Editor-owned lane proves the exact path.\n- Full-document contenteditable, table/cell surface editing, media surface editing, direct preview typing, and rich editor engine integration remain `unknown` and blocked for implementation.\n- End-to-end Editor to Backend to Core save, preview, publish, and artifact behavior remain unpromoted outside accepted evidence.\n- Production remains NO-GO until a later evidence-backed decision changes that state.\n\n## Existing Boundary Review\n\nProject Control already records a narrower Editor WYSIWYG gate definition at `evidence-editor-wysiwyg-gate-definition-2026-08-31`. That evidence says FlowDoc WYSIWYG means managed document-surface authoring, preserves Hybrid Managed Cards plus one Active Text-Block Island as the accepted direction for that Editor gate, and explicitly states that a bounded textarea active text-block island is not WYSIWYG.\n\nCore Template Builder records also keep the authoring boundary narrow. `docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md` records textarea-first active draft input, browser-local selection, IME composition guards, and planning-only toolbar or field affordances. `docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md` records contenteditable-like segment and range facts as bounded local planning or in-memory sandbox evidence, not production contenteditable input, durable persistence, collaboration, renderer output, or export parity.\n\nThis v1 decision preserves those boundaries and raises them into the new frontend roadmap context. It does not replace owner-repository evidence, and it does not promote the older Editor or Core records into broad FlowDoc product truth.\n\n## Decision\n\nWYSIWYG gate remains closed.\n\nFlowDoc may continue toward progressive authoring only through managed, bounded authoring surfaces that keep the document model, selection, save, undo/redo, preview, compatibility, and accessibility responsibilities explicit.\n\nThe allowed direction for later lanes is:\n\n- Managed Editable Cards for structure-aware regions where the card owns commands, validation, disabled states, and save eligibility.\n- Bounded Text Islands for text-bearing regions where the backing `Editor draft`, Core runtime node, save path, and unsupported behaviors are explicit.\n- Disabled or unavailable UI for rich behavior that lacks accepted evidence.\n- Project Control acceptance before any later lane claims WYSIWYG behavior, direct page editing, or richer authoring readiness.\n\nThe blocked direction is:\n\n- Full-document contenteditable remains blocked.\n- Rich editor package adoption remains blocked for Slate, ProseMirror, TipTap-style, or similar engines until a later Contract Change Request is accepted.\n- Direct preview typing, DOM innerHTML document truth, hidden contenteditable shortcuts, table/cell surface editing, media surface editing, drag-to-edit layout mutation, and broad clipboard rich-paste behavior remain blocked.\n- Any implementation lane that needs Core mutation changes, Backend persistence or preview changes, product-wide contract changes, or map-truth updates must return a Contract Change Request.\n\n## Definitions\n\n### WYSIWYG\n\nFor this roadmap, WYSIWYG means managed document-surface authoring where the user edits a visual document surface and the system can prove how the edit maps to FlowDoc-owned document state, save state, preview state, undo/redo state, and compatibility boundaries.\n\nA bounded textarea active text-block island is not WYSIWYG. It can be useful progressive authoring, but it remains a bounded text input surface until the WYSIWYG prerequisites below are met and accepted.\n\n### Managed Editable Cards\n\nManaged Editable Cards are structure-aware UI regions such as sections, columns, text blocks, tables, or media placeholders where commands are explicit and validation is owned by the later product lane. A card can show controls, disabled reasons, dirty state, and save eligibility without letting arbitrary DOM edits become document truth.\n\nManaged Editable Cards are the preferred next authoring direction because they preserve ownership and failure states.\n\n### Bounded Text Islands\n\nBounded Text Islands are local text input regions tied to a specific text-bearing document item. They may use textarea-first behavior, bounded selection, IME guards, and explicit commit paths. A text island must name its backing source, base revision, allowed commands, unsupported marks or atomic children, and save boundary.\n\nBounded Text Islands may be used before broad WYSIWYG only when they stay visibly scoped and do not claim direct page editing readiness.\n\n### Contenteditable Shortcuts\n\nContenteditable shortcuts are any direct DOM editing path that lets typed or pasted page content become document state without the approved data model, selection, measurement, save, undo/redo, preview, compatibility, and accessibility prerequisites.\n\nThose shortcuts remain blocked.\n\n### Rich Editor Package Adoption\n\nRich editor package adoption means adding a general rich editor engine such as Slate, ProseMirror, TipTap-style, or similar packages as the primary document authoring model.\n\nThat adoption remains blocked until Project Control accepts a Contract Change Request naming ownership, Core package mapping, Backend persistence and revision behavior, Editor draft shape, preview and renderer boundaries, accessibility risks, migration risks, dependency risks, and verification gates.\n\n## Prerequisite Checklist\n\nBefore PLAN may open a product implementation lane that claims WYSIWYG or direct page editing behavior, Project Control must have accepted evidence for each prerequisite:\n\n| Prerequisite | Required before opening WYSIWYG implementation |\n| --- | --- |\n| data model | Core-owned document representation for each editable structure and inline form, including unsupported cases and migration or version boundaries. |\n| selection | Editor-owned selection model that maps UI focus, caret, ranges, nested targets, IME composition, and unavailable states without DOM truth shortcuts. |\n| measurement | Renderer or layout measurement boundary that says what visual editing can rely on and what remains stale, approximate, or unknown. |\n| save | Backend and Editor save path for supported edits, including revision checks, conflict states, rejected operations, retry, and local draft preservation. |\n| undo/redo | Editor and Core-compatible history model for accepted edits, rejected edits, stale plans, replay, and restore limits. |\n| preview | Draft Preview and Published Preview states tied to source document, generation lifecycle, stale signals, diagnostics, and artifact availability. |\n| compatibility | Accepted Core, Backend, and Editor compatibility evidence for the exact package versions, operations, routes, and fixture or live Backend mode used. |\n| accessibility | Keyboard, focus, screen-reader, IME, reduced-motion, contrast, and mobile or narrow viewport behavior that does not trap users in an editing surface. |\n| evidence | Project Control Evidence packet with repository id, exact commit, path or contract id, verification summary, and claims intentionally not promoted. |\n\nIf any prerequisite is missing, the implementation lane must stay with managed editable cards or bounded text islands and mark the missing state as `blocked`, `unavailable`, `risk`, or `unknown`.\n\n## Owner Responsibilities\n\nProject Control owns this decision, future lane boundaries, Checklist targets, Evidence targets, and truth-promotion discipline.\n\nEditor owns the browser runtime, visible workspace, `Editor draft`, selection, focus, command presentation, disabled states, local dirty state, accessibility behavior, and any eventual WYSIWYG UI implementation.\n\nCore owns document package semantics, Core runtime node structure, mutation results, inline representation, package version behavior, migration boundaries, and any model-level authoring contract.\n\nBackend owns Backend document records, Backend revision checks, persistence, service routes, preview or publish job lifecycle, artifact references, and save or retry behavior when the implementation needs durable service state.\n\nNo single owner may bypass another owner by treating local DOM state, a package glossary, a Project Control plan, or a design artifact as product truth.\n\n## Lane Rules For Later Work\n\nLater `lane-design-workspace-usability` work may show bounded edit regions, managed cards, disabled controls, selected-region status, and unavailable WYSIWYG actions. It must not implement direct page editing or hidden contenteditable shortcuts.\n\nLater `lane-progressive-authoring` work may implement bounded text islands or managed card commands only after the owner lane names its Core, Editor, Backend, preview, save, and undo/redo boundaries. If the lane needs broader WYSIWYG, it must stop for a Contract Change Request.\n\nLater Preview and Publish lanes must keep preview and publish evidence separate from WYSIWYG. Preview is not WYSIWYG by itself, and Publish is not proof that direct editing is safe.\n\n## Stop Conditions\n\nStop and return to PLAN when:\n\n- Existing WYSIWYG boundary evidence conflicts with the proposed implementation direction.\n- A lane would authorize full-document contenteditable, rich editor engine adoption, direct preview typing, or DOM innerHTML document truth.\n- Core mutation, Backend persistence, Editor runtime, preview, publish, or compatibility behavior needs a cross-repository contract change.\n- A product lane cannot identify owner repository, active role, Work Type, Checklist target, Evidence target, risks, unknowns, and return channel.\n- Any claim would promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth without accepted evidence.\n\n## Intentionally Not Changed\n\n- No product repository files change in this decision lane.\n- No runtime UI implementation is performed by this decision lane.\n- No Core, Backend, or Editor behavior is changed.\n- No FlowDoc system map or DOCUMENT_MAP entry is updated with planned outcomes.\n- No frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, or FlowDoc product truth is promoted.\n- No additional WORK rooms are opened by this decision lane.\n\n## Next Recommended Work\n\nPLAN should process this handoff through `acceptanceGate`. If accepted, PLAN may use this decision as required context for `lane-design-workspace-usability` and any later `lane-progressive-authoring` packet. Direct page editing, contenteditable shortcuts, and rich editor package adoption should remain unavailable until a later accepted lane proves every prerequisite above.\n"
     },
     {
       "kind": "document",
@@ -16674,6 +16865,16 @@
       "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; data/work/agent-and-skill-design.json; tests/flowdoc-work-type-routing-model.test.ts; npm run check",
       "verificationSummary": "Project Control commit 87e1092e4113c18b9e4107c0362bad13e94a05d4 records the Work Type Routing Model as a coordination contract for assigning Work Type, writing lane-specific Context Capsules, requiring Context Acknowledgement before WORK room edits, separating retrievable locators from exact commit evidence, routing skill candidates, and updating first delivery lane cards and Kickoff Packets. RED evidence: npx vitest run tests/flowdoc-work-type-routing-model.test.ts --maxWorkers=1 failed before doc-flowdoc-work-type-routing-model and entrypoint references existed. GREEN evidence after the evidence record update passed tests/flowdoc-work-type-routing-model.test.ts, tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not create packaged Codex skills, does not open WORK rooms, does not edit Core, Backend, or Editor behavior, does not prove UX readiness, gateway behavior, product database behavior, API key behavior, PDF generation, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-02T08:20:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/documents/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check",
+      "verificationSummary": "Project Control commit 0000000000000000000000000000000000000000 records a bounded WYSIWYG Gate Decision v1 in Project Control. The decision preserves existing Editor and Core WYSIWYG boundaries, states that the WYSIWYG gate remains closed, defines WYSIWYG as managed document-surface authoring, allows managed editable cards and bounded text islands as the later progressive authoring direction, blocks full-document contenteditable, hidden contenteditable shortcuts, DOM innerHTML document truth, direct preview typing, broad clipboard rich-paste, table/cell and media surface editing, and rich editor package adoption for Slate, ProseMirror, TipTap-style, or similar engines until a later Contract Change Request is accepted. It records prerequisites for data model, selection, measurement, save, undo/redo, preview, compatibility, accessibility, and evidence. RED evidence: npx vitest run tests/flowdoc-wysiwyg-gate-decision.test.ts --maxWorkers=1 failed before Project Control contained the new WYSIWYG gate Work. GREEN evidence target includes the focused WYSIWYG gate guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-03T11:00:00.000Z"
     },
     {
       "kind": "evidence",

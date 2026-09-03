@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-wysiwyg-gate-decision-v1",
+  "workId": "flowdoc-wysiwyg-gate-decision",
+  "title": "WYSIWYG Gate Decision v1",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "Existing WYSIWYG boundary evidence cannot be found or conflicts with the proposed decision.",
+    "The decision would authorize full-document contenteditable, rich editor package adoption, direct preview typing, DOM innerHTML document truth, or broad direct page editing without prerequisites.",
+    "The decision requires Core, Backend, or Editor product repository edits.",
+    "The decision would promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth from planning alone.",
+    "The room cannot send its terminal handoff automatically to PLAN."
+  ],
+  "verificationTarget": "Project Control records WYSIWYG Gate Decision v1: WYSIWYG gate remains closed, managed editable cards and bounded text islands are the allowed direction, full-document contenteditable and rich editor package adoption remain blocked, prerequisites are explicit, and no product truth or map truth is promoted.",
+  "summary": "Done: Project Control now records a bounded WYSIWYG Gate Decision v1 that preserves existing authoring boundaries, keeps broad WYSIWYG closed, and defines prerequisites before later product implementation lanes may claim direct page editing.",
+  "createdAt": "2026-09-03T11:00:00.000Z",
+  "updatedAt": "2026-09-03T11:00:00.000Z"
+}
