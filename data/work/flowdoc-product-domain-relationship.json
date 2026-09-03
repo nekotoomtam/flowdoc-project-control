@@ -1,0 +1,33 @@
+{
+  "kind": "work",
+  "id": "flowdoc-product-domain-relationship",
+  "title": "FlowDoc Product Domain Relationship",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-progress",
+  "summary": "Record a bounded product-domain relationship map that names FlowDoc product domains, their high-level dependencies, and the follow-up domain documents future rooms must read before detailed design or implementation.",
+  "contextDocumentIds": [
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-delivery-operating-model",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-lean-dispatch-operating-rules",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-document-structure-north-star-2026-09-04"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "FlowDoc Product Domain Relationship v0 in Project Control as a domain-level relationship map and reading router, with major product domains listed, high-level domain dependencies captured, follow-up domain documents named, and detailed schema work intentionally deferred to narrower domain documents.",
+  "riskSummary": "The product-domain relationship map may be mistaken for a full database schema, implementation contract, or product readiness evidence. The record explicitly says it is not a full database schema, keeps it bounded as a reading router, and states that internal ERD or hierarchical relationship models belong in follow-up domain documents.",
+  "requiredEvidence": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

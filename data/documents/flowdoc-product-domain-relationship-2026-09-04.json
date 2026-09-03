@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-product-domain-relationship-2026-09-04",
+  "title": "FlowDoc Product Domain Relationship v0",
+  "path": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control FlowDoc Product Domain Relationship v0 for product-domain relationship mapping, reading-route guidance, follow-up domain document selection, and boundary protection against all-domain schema overreach.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md; data/work/flowdoc-product-domain-relationship.json; data/phases/phase-flowdoc-product-domain-relationship-v0.json; data/checklists/checklist-flowdoc-product-domain-relationship-v0.json; data/evidence/flowdoc-product-domain-relationship-2026-09-04.json; tests/flowdoc-product-domain-relationship.test.ts; npm run check"
+    }
+  ]
+}

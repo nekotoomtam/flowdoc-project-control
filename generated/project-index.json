@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "265615e93c1cbf1cd8661864e0e8c7795ff3d2696cf407d45c36a9e346a85fc3",
+  "sourceDigest": "c97bc4288e9cf6412260aa1d7e5bc04423195b2f6cb2efc3ed48224226d07487",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -25,7 +25,8 @@
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
         "doc-flowdoc-frontend-product-map-2026-09-03",
         "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
-        "doc-flowdoc-document-structure-north-star-2026-09-04"
+        "doc-flowdoc-document-structure-north-star-2026-09-04",
+        "doc-flowdoc-product-domain-relationship-2026-09-04"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -64,6 +65,7 @@
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-frontend-product-map",
         "flowdoc-product-development-resumption",
+        "flowdoc-product-domain-relationship",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
         "flowdoc-wysiwyg-gate-decision"
@@ -2367,6 +2369,7 @@
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
+        "flowdoc-product-domain-relationship",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
         "project-control-hardening",
@@ -2375,6 +2378,54 @@
       "phaseIds": [],
       "workPathIds": [
         "flowdoc-product-development-resumption"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-product-domain-relationship",
+      "title": "FlowDoc Product Domain Relationship",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-progress",
+      "summary": "Record a bounded product-domain relationship map that names FlowDoc product domains, their high-level dependencies, and the follow-up domain documents future rooms must read before detailed design or implementation.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-document-structure-north-star-2026-09-04"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "FlowDoc Product Domain Relationship v0 in Project Control as a domain-level relationship map and reading router, with major product domains listed, high-level domain dependencies captured, follow-up domain documents named, and detailed schema work intentionally deferred to narrower domain documents.",
+      "riskSummary": "The product-domain relationship map may be mistaken for a full database schema, implementation contract, or product readiness evidence. The record explicitly says it is not a full database schema, keeps it bounded as a reading router, and states that internal ERD or hierarchical relationship models belong in follow-up domain documents.",
+      "requiredEvidence": [
+        "evidence-flowdoc-product-domain-relationship-2026-09-04"
+      ],
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-product-domain-relationship-v0"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-product-domain-relationship"
       ]
     },
     {
@@ -5057,6 +5108,28 @@
       "summary": "Done: Project Control now records a bounded Frontend Product Map v1 that expands the roadmap into screen states, actions, truth boundaries, and the next Editor lane package before product implementation begins.",
       "createdAt": "2026-09-03T10:00:00.000Z",
       "updatedAt": "2026-09-03T10:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-product-domain-relationship-v0",
+      "workId": "flowdoc-product-domain-relationship",
+      "title": "FlowDoc Product Domain Relationship v0",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+        "The domain relationship map would require Core, Backend, or Editor product repository edits.",
+        "The domain relationship map would claim product readiness, schema completeness, renderer readiness, workflow readiness, permission readiness, billing readiness, integration readiness, or production readiness from planning alone.",
+        "The domain relationship map would replace detailed follow-up domain documents with an oversized all-domain schema design."
+      ],
+      "verificationTarget": "Project Control records a domain-level relationship map and follow-up domain documents without turning FlowDoc Product Domain Relationship v0 into a full database schema or product readiness claim.",
+      "summary": "Done: Project Control now records FlowDoc Product Domain Relationship v0 as a product-domain reading router that names the major product domains, their high-level relationships, and the narrower documents future rooms should read before detailed database or implementation work.",
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -12728,6 +12801,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-product-domain-relationship-v0",
+      "phaseId": "phase-flowdoc-product-domain-relationship-v0",
+      "title": "FlowDoc Product Domain Relationship v0 Checklist",
+      "items": [
+        {
+          "id": "capture-product-domain-relationship-context",
+          "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+          "state": "passed",
+          "evidenceTarget": "The domain relationship record identifies Project Control ownership before writing product-wide domain framing.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-product-domain-relationship, owner repo-project-control, active role planning-partner with documentation-authority-steward responsibility, phase target phase-flowdoc-product-domain-relationship-v0, checklist target checklist-flowdoc-product-domain-relationship-v0, and evidence target evidence-flowdoc-product-domain-relationship-2026-09-04."
+        },
+        {
+          "id": "write-red-product-domain-relationship-guard",
+          "label": "Write a failing Project Control guard before adding the product-domain relationship records.",
+          "state": "passed",
+          "evidenceTarget": "A focused test fails before Project Control contains the product-domain relationship Work, document, checklist, and evidence records.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "RED evidence: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-product-domain-relationship as a child Work."
+        },
+        {
+          "id": "define-domain-map-boundary",
+          "label": "Define FlowDoc Product Domain Relationship as a domain-level map and reading router.",
+          "state": "passed",
+          "evidenceTarget": "The document states it is a domain-level relationship map and reading router, not a full database schema.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md defines the map boundary and keeps schema work in follow-up domain documents."
+        },
+        {
+          "id": "list-major-product-domains",
+          "label": "List the major product domains that future FlowDoc work must recognize.",
+          "state": "passed",
+          "evidenceTarget": "The document lists document structure, component library, dataset/data contract, version/publication, runtime submission, rendering, artifacts, workflow, permission, audit, activity, billing, and integration domains.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "The domain list is intentionally high-level and does not define detailed tables, foreign keys, indexes, migrations, or schema validation."
+        },
+        {
+          "id": "define-cross-domain-reading-rules",
+          "label": "Define high-level cross-domain relationships and reading rules.",
+          "state": "passed",
+          "evidenceTarget": "The document records domain relationships and names follow-up domain documents that must be read before detailed design.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "The high-level relationship section and follow-up domain document table route future rooms to narrower domain documents instead of forcing all-domain schema design here."
+        },
+        {
+          "id": "route-document-structure-next",
+          "label": "Route the next detailed database design back to document structure.",
+          "state": "passed",
+          "evidenceTarget": "The document points the next recommended work to Document Structure Relationship Database v0.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "The next recommended work says to return to Document Structure Relationship Database v0 while keeping broader domain dependencies visible."
+        },
+        {
+          "id": "verify-product-domain-relationship-records",
+          "label": "Verify Project Control records, generated read model, and checks.",
+          "state": "passed",
+          "evidenceTarget": "Focused product-domain relationship guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-flowdoc-product-domain-relationship-2026-09-04"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-04T00:00:00.000Z",
+      "updatedAt": "2026-09-04T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-product-evidence-refresh-readiness",
       "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
       "title": "FlowDoc Product Evidence Refresh Checklist",
@@ -15085,6 +15238,26 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-product-domain-relationship-2026-09-04",
+      "title": "FlowDoc Product Domain Relationship v0",
+      "path": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "decision",
+      "authority": "Project Control FlowDoc Product Domain Relationship v0 for product-domain relationship mapping, reading-route guidance, follow-up domain document selection, and boundary protection against all-domain schema overreach.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md; data/work/flowdoc-product-domain-relationship.json; data/phases/phase-flowdoc-product-domain-relationship-v0.json; data/checklists/checklist-flowdoc-product-domain-relationship-v0.json; data/evidence/flowdoc-product-domain-relationship-2026-09-04.json; tests/flowdoc-product-domain-relationship.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Product Domain Relationship v0\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path:\n`flowdoc-product-development-resumption > flowdoc-product-domain-relationship`.\n\nThis document records the Project Control product-domain relationship map for\nFlowDoc. It is a domain-level relationship map and reading router: it names\nthe major product domains, describes how they relate at a high level, and tells\nfuture rooms which follow-up domain documents to read before detailed design or\nimplementation.\n\nThis document is not a full database schema, migration plan, API contract,\nrenderer contract, implementation evidence, product readiness evidence, or\nproduction readiness evidence. It does not prove Core runtime behavior,\nBackend persistence or service behavior, Editor behavior, generated PDF\nbehavior, workflow behavior, permission behavior, billing behavior, or external\nintegration behavior.\n\nNo product repository files change in this phase. Core, Backend, and Editor\nremain the owners of product implementation behavior for later approved lanes.\n\n## Work Context\n\nActive role: `planning-partner`, with `documentation-authority-steward`\nresponsibility for the prose.\n\nCurrent Phase: `phase-flowdoc-product-domain-relationship-v0`.\n\nChecklist target: `checklist-flowdoc-product-domain-relationship-v0`.\n\nEvidence target: `evidence-flowdoc-product-domain-relationship-2026-09-04`.\n\nWork Type: `planning-coordination` plus `documentation-authority`.\n\nKnown risks:\n\n- Future rooms may try to design every domain schema before the next useful\n  implementation lane.\n- Future rooms may treat this domain map as product readiness or a complete\n  system contract.\n- Future rooms may mix document-structure tables with runtime submission,\n  generated file, audit, permission, workflow, or billing tables too early.\n- Future rooms may call the internal domain model a hierarchical data model\n  and accidentally imply the whole FlowDoc product relationship is one tree.\n\nUnknown state:\n\n- The internal relationship database for each domain has not been designed,\n  implemented, or verified.\n- Core, Backend, and Editor adoption of the domain relationship map remains\n  unproven.\n- Runtime submission, rendering, generated artifact, workflow, permission,\n  audit, activity, billing, and integration behavior remain planned or unknown\n  unless a narrower evidence record says otherwise.\n\n## Purpose\n\n`FlowDoc Product Domain Relationship` is the system reading map for product\ndomain work. It should answer three questions before any narrower design starts:\n\n1. Which product domains exist in the FlowDoc product model?\n2. Which domains need to know about, reference, or observe other domains?\n3. Which narrower domain document must a future room read before it designs or\n   implements that area?\n\nThe map may describe an internal domain as having hierarchical or\ntree-structured relationships where that shape is useful, but this top-level\ndocument remains a domain graph, not a hierarchical database model.\n\n## Product Domains\n\n### Identity / Tenant / Workspace\n\nResponsibility: identify the organization, workspace, actor, and ownership\nboundary for FlowDoc resources.\n\nRelationships: owns or scopes document definitions, component definitions,\ndataset definitions, permissions, activity visibility, and billing usage.\n\nRead next before detailed design: `Permission Scope Model` and `Billing Usage\nModel` when access control or account usage is in scope.\n\n### Permission / Access Control\n\nResponsibility: decide who can view, edit, version, publish, submit data,\ngenerate output, inspect artifacts, or administer workspace resources.\n\nRelationships: references identity, workspace, document definition,\npublication, generated artifact, and integration access boundaries.\n\nRead next before detailed design: `Permission Scope Model`.\n\n### Document Library / DocumentDefinition\n\nResponsibility: provide the top-level document-structure family shown in the\ndocument library or card list.\n\nRelationships: owns one editable draft, many frozen document versions, and one\nor more publication pointers. It also connects to component usage and data\ncontract expectations.\n\nRead next before detailed design:\n`FlowDoc Document Structure North Star v1` and\n`Document Structure Relationship Database v0`.\n\n### Document Structure\n\nResponsibility: define the creator-owned document structure: sections,\ncomponent instances, field bindings, page profiles, style defaults, and the\nrules that let the structure later render through an approved target.\n\nRelationships: uses component definitions and field definitions, declares data\nbinding expectations, and freezes into document versions before publication.\n\nRead next before detailed design:\n`FlowDoc Document Structure North Star v1` and\n`Document Structure Relationship Database v0`.\n\n### Component Library\n\nResponsibility: define reusable sub-layouts that can be placed into document\nsections as component instances.\n\nRelationships: component instances reference component definitions. Document\nversion creation resolves referenced component drafts into immutable component\nversions for stable rendering and validation.\n\nRead next before detailed design:\n`Document Structure Relationship Database v0` until a separate\n`Component Library Relationship Model` exists.\n\n### Dataset / Data Contract\n\nResponsibility: define the named data shape, variable names, field paths, and\nvalidation expectations that downstream callers must satisfy.\n\nRelationships: document structure and component fields declare binding\nexpectations; runtime submissions provide values against the published data\ncontract.\n\nRead next before detailed design: `Dataset / Data Contract Model`.\n\n### Version / Publication\n\nResponsibility: keep editable work separate from frozen baselines and real-use\nselection. A draft changes; a document version freezes; a publication points to\nthe selected frozen version.\n\nRelationships: document definitions own versions and publications. Runtime\nsubmissions and renderer jobs consume a publication and its resolved document\nversion, not an unfrozen draft.\n\nRead next before detailed design: `Publication / Version Lifecycle`.\n\n### Runtime Submission\n\nResponsibility: represent one attempt to submit real data for a selected\npublication and produce an output through the allowed flow.\n\nRelationships: references publication, document version, data contract, actor,\nand workspace. It creates validation results and can create rendering or\ngeneration jobs after data is accepted.\n\nRead next before detailed design: `Runtime Submission And Rendering Flow`.\n\n### Rendering / Generation Job\n\nResponsibility: run output generation such as PDF rendering, track queue state,\nretry state, failure details, and renderer target.\n\nRelationships: references runtime submission, document version, renderer\ntarget, and actor or service identity. It produces generated artifacts.\n\nRead next before detailed design: `Runtime Submission And Rendering Flow` and\n`Generated Artifact Lifecycle`.\n\n### Generated Artifact / File Storage\n\nResponsibility: record generated files and access metadata such as file type,\nstorage locator, retention state, download eligibility, and relation to the job\nthat created it.\n\nRelationships: generated artifacts are produced by rendering jobs and are\nusually accessed through permission, workflow, audit, activity, and integration\nboundaries.\n\nRead next before detailed design: `Generated Artifact Lifecycle`.\n\n### Workflow / Approval\n\nResponsibility: coordinate human or system states such as review, approval,\npublish request, publish approval, generation approval, retry, and request\nchange.\n\nRelationships: references document definitions, document versions,\npublications, runtime submissions, generated artifacts, actors, and permission\nrules when a process requires approval.\n\nRead next before detailed design: `Workflow / Approval Model`.\n\n### Audit Trail\n\nResponsibility: preserve inspectable event history for important actions such\nas create version, publish, rollback, permission change, submit data, generate\nartifact, delete artifact, and integration access.\n\nRelationships: Audit Trail observes important events across domains. It should\nnot own the product resources it records.\n\nRead next before detailed design: `Audit And Activity Boundary`.\n\n### Activity Feed / Notification\n\nResponsibility: show a human-readable stream of selected events and\nnotifications.\n\nRelationships: Activity Feed summarizes selected events from audit, workflow,\nsubmission, rendering, artifact, and permission domains. It is not the same\nauthority as the audit trail.\n\nRead next before detailed design: `Audit And Activity Boundary`.\n\n### Billing / Usage Metering\n\nResponsibility: measure workspace usage such as seats, generated artifacts,\nrendering jobs, storage, retention, and integration calls.\n\nRelationships: references workspace, actors, rendering jobs, generated\nartifacts, storage, and integration usage. It should measure usage without\nbecoming the owner of product resources.\n\nRead next before detailed design: `Billing Usage Model`.\n\n### Integration / External Consumption\n\nResponsibility: define how other systems call FlowDoc through API, webhook,\nembed, token, or external app binding.\n\nRelationships: external consumers should enter through publication, runtime\nsubmission, generated artifact access, and permission boundaries. They should\nnot mutate drafts or document versions directly unless a later explicit\ncontract allows it.\n\nRead next before detailed design: `Integration Boundary`.\n\n## High-Level Relationship\n\nThe first product-domain relationship map is:\n\n```text\nIdentity / Tenant / Workspace\n  -> owns DocumentDefinition, ComponentDefinition, DatasetDefinition\n  -> controls Permission / Access Control\n  -> feeds Billing / Usage Metering\n\nDocumentDefinition\n  -> owns Draft, DocumentVersion, Publication\n  -> uses Component Library\n  -> declares Dataset / Data Contract expectations\n\nPublication\n  -> points to a frozen DocumentVersion\n  -> is consumed by Runtime Submission\n  -> is read by Rendering / Generation Job\n\nRuntime Submission\n  -> provides accepted data for a Publication\n  -> creates Rendering / Generation Job\n  -> produces Generated Artifact / File Storage through the job\n\nWorkflow / Approval\n  -> coordinates review, approve, publish, submit, generate, retry, and change\n\nAudit Trail\n  -> observes important events across domains\n\nActivity Feed / Notification\n  -> summarizes selected events for humans\n\nIntegration / External Consumption\n  -> calls through Publication, Runtime Submission, Artifact, and Permission boundaries\n```\n\n## Follow-Up Domain Documents\n\nUse this document only to choose the next document to read. Do not use it as\nthe detailed schema for any domain.\n\n| If the work is about... | Read next |\n| --- | --- |\n| Document structure, sections, components, fields, data bindings, page profile, style defaults | `FlowDoc Document Structure North Star v1`; `Document Structure Relationship Database v0` |\n| Draft freeze, document version, published baseline, rollback, publish channel | `Publication / Version Lifecycle` |\n| Runtime data input, submission validation, output request | `Runtime Submission And Rendering Flow` |\n| PDF or other output generation, queue, retry, renderer target | `Runtime Submission And Rendering Flow`; `Generated Artifact Lifecycle` |\n| Generated PDF, stored file, download, retention | `Generated Artifact Lifecycle` |\n| Access, sharing, actor permissions, workspace resource rights | `Permission Scope Model` |\n| Review, approval, request change, publish approval | `Workflow / Approval Model` |\n| Inspectable event history versus human-readable feed | `Audit And Activity Boundary` |\n| Seats, render counts, storage, plan limits, usage charges | `Billing Usage Model` |\n| API, webhook, embed, external app call, token-based access | `Integration Boundary` |\n\n## Boundary Rules\n\nThe top-level product relationship is a domain graph. It is not one\nhierarchical data model.\n\nInternal domain documents may use ERD-style relationship diagrams or\nhierarchical relationship diagrams when that makes the domain easier to\nunderstand.\n\nDetailed tables, foreign keys, cardinality, indexes, migration strategy,\nsnapshot strategy, and schema validation belong in the follow-up domain\ndocuments, not in this product-domain map.\n\nRuntime submissions, generated files, audit trail, activity feed, permission,\nworkflow, billing, and integration should not be mixed into the first\ndocument-structure database design unless a later approved domain document\nrequires an explicit reference.\n\n## Intentionally Not Changed\n\n- No Core, Backend, or Editor files change in this phase.\n- No product database schema is implemented in this phase.\n- No migration, API route, renderer, PDF generation, artifact storage,\n  permission rule, workflow engine, billing meter, audit trail, activity feed,\n  or integration endpoint is activated in this phase.\n- No FlowDoc map truth changes beyond registering this planning document as a\n  Project Control domain reading map.\n- No product readiness, frontend readiness, publish readiness, renderer\n  readiness, PDF readiness, production readiness, permission readiness,\n  workflow readiness, billing readiness, audit readiness, activity readiness,\n  or integration readiness is promoted.\n\n## Next Recommended Work\n\nReturn to `Document Structure Relationship Database v0` as the next detailed\ndesign target. Use this document only to keep the broader product-domain\ndependencies visible while designing that narrower document-structure schema.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-product-evidence-refresh-2026-08-26",
       "title": "FlowDoc Product Evidence Refresh - 2026-08-26",
       "path": "docs/domains/flowdoc-product-evidence-refresh-2026-08-26.md",
@@ -15241,7 +15414,7 @@
       "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
       "lifecycle": "active",
       "repositoryRefs": [],
-      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| FlowDoc Product Terminology | `repo-project-control` | `current` as a terminology and workflow-control boundary for overloaded Project Control, Core, Backend, Editor, and frontend redesign terms. This does not promote product readiness, Core truth, Backend truth, Editor truth, compatibility, or frontend design readiness. | [FlowDoc Product Terminology](flowdoc-product-terminology.md); [Thai Companion](flowdoc-product-terminology-th.md) |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
+      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| FlowDoc Product Terminology | `repo-project-control` | `current` as a terminology and workflow-control boundary for overloaded Project Control, Core, Backend, Editor, and frontend redesign terms. This does not promote product readiness, Core truth, Backend truth, Editor truth, compatibility, or frontend design readiness. | [FlowDoc Product Terminology](flowdoc-product-terminology.md); [Thai Companion](flowdoc-product-terminology-th.md) |\n| FlowDoc Product Domain Relationship | `repo-project-control` | `planned` as a product-domain relationship map and reading router for future domain work. This does not promote database schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Product Domain Relationship](flowdoc-product-domain-relationship-2026-09-04.md) |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
     },
     {
       "kind": "document",
@@ -17503,6 +17676,16 @@
       "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; WORK task/chat ID 01a06786-7d05-7be3-b939-8ff6e7917e61; dispatchSetId dispatch-frontend-continuation-2026-09-03-01; roomRunId room-preview-confidence-probe-2026-09-03-01; lane-preview-confidence-probe; handoff-preview-confidence-probe-2026-09-03-01",
       "verificationSummary": "PLAN acceptanceGate received lane-preview-confidence-probe through the automatic WORK-to-PLAN Return Channel via send_message_to_thread. The WORK room returned terminal PASS / RISK / UNKNOWN as a no-edit Project Control evidence-review and planning probe. It changed no files and changed no product behavior. The probe recommends lane-preview-confidence-validation with parallelLimit 1 before any Preview readiness claim. It defines Preview vocabulary for Draft Preview, stale preview, failed preview, unavailable preview, blocked preview, and Published Preview, and keeps those terms separate from WYSIWYG and Publish readiness. It names required future evidence across Editor target switching, lifecycle labels, stale gating, retry/cancel/download gating, diagnostics, Backend draft/published context, admissions, PDF export request/status/cancel/download, auth, idempotency, revision pins, route mounting, Core source document and snapshot contracts, renderer execution, artifact ID, job or operation ID, storage/download path, byte length, sha256, content type, and physical byte verification. It also states Progressive Authoring can proceed independently only if bounded to managed cards or text islands and treats Preview as unavailable or diagnostic-only. This evidence supports only the bounded Preview Confidence Probe handoff and next-lane recommendation. It does not prove Preview readiness, frontend readiness, WYSIWYG readiness, Publish readiness, Backend readiness, Core readiness, renderer readiness, PDF artifact readiness, production readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T21:45:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-product-domain-relationship-2026-09-04",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md; data/work/flowdoc-product-domain-relationship.json; data/phases/phase-flowdoc-product-domain-relationship-v0.json; data/checklists/checklist-flowdoc-product-domain-relationship-v0.json; data/documents/flowdoc-product-domain-relationship-2026-09-04.json; tests/flowdoc-product-domain-relationship.test.ts; npm run check",
+      "verificationSummary": "Project Control records FlowDoc Product Domain Relationship v0 as a domain-level relationship map and reading router before returning to Document Structure Relationship Database v0. The document lists Identity / Tenant / Workspace, Permission / Access Control, Document Library / DocumentDefinition, Document Structure, Component Library, Dataset / Data Contract, Version / Publication, Runtime Submission, Rendering / Generation Job, Generated Artifact / File Storage, Workflow / Approval, Audit Trail, Activity Feed / Notification, Billing / Usage Metering, and Integration / External Consumption domains; records high-level relationships; and names follow-up domain documents for detailed work. RED evidence: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1 failed before Project Control contained the new Work and document records. GREEN evidence target includes the focused product-domain relationship guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a product database schema, does not open WORK rooms, and does not promote product readiness, schema completeness, frontend readiness, publish readiness, renderer readiness, PDF readiness, production readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness.",
+      "verifiedAt": "2026-09-04T00:00:00.000Z"
     },
     {
       "kind": "evidence",

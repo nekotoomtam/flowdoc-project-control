@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-product-domain-relationship-2026-09-04",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0000000000000000000000000000000000000000",
+  "pathOrContractId": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md; data/work/flowdoc-product-domain-relationship.json; data/phases/phase-flowdoc-product-domain-relationship-v0.json; data/checklists/checklist-flowdoc-product-domain-relationship-v0.json; data/documents/flowdoc-product-domain-relationship-2026-09-04.json; tests/flowdoc-product-domain-relationship.test.ts; npm run check",
+  "verificationSummary": "Project Control records FlowDoc Product Domain Relationship v0 as a domain-level relationship map and reading router before returning to Document Structure Relationship Database v0. The document lists Identity / Tenant / Workspace, Permission / Access Control, Document Library / DocumentDefinition, Document Structure, Component Library, Dataset / Data Contract, Version / Publication, Runtime Submission, Rendering / Generation Job, Generated Artifact / File Storage, Workflow / Approval, Audit Trail, Activity Feed / Notification, Billing / Usage Metering, and Integration / External Consumption domains; records high-level relationships; and names follow-up domain documents for detailed work. RED evidence: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1 failed before Project Control contained the new Work and document records. GREEN evidence target includes the focused product-domain relationship guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a product database schema, does not open WORK rooms, and does not promote product readiness, schema completeness, frontend readiness, publish readiness, renderer readiness, PDF readiness, production readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness.",
+  "verifiedAt": "2026-09-04T00:00:00.000Z"
+}
