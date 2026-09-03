@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "f0de783122ba7b04b15a7883c1f3abbbcc115527aed4bbb51c649c9e945f0453",
+  "sourceDigest": "48511c080c74e4b71ca568b2b5dab9f21cc7141d5f71fadbd4885af07d4e2874",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -12039,7 +12039,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -13497,7 +13497,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -13616,7 +13616,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -13746,7 +13746,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -13846,7 +13846,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -14359,7 +14359,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+          "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
           "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
         }
       ],
@@ -16153,7 +16153,7 @@
       "id": "evidence-flowdoc-plan-product-repair-boundary-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+      "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
       "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-product-repair-boundary.json; data/checklists/checklist-agent-and-skill-design-plan-product-repair-boundary.json; tests/flowdoc-plan-product-repair-boundary.test.ts; npm run check",
       "verificationSummary": "Project Control records the PLAN product-repository repair boundary after the first-delivery Backend verification repair showed that a PLAN room may over-carry product repair. The new boundary states: PLAN must not patch Core, Backend, or Editor product repositories after dispatch. When acceptance, merge, or main-gate verification finds that a fix would change a product repository, including test-only, fixture-only, configuration-only, dependency, or harness repair, PLAN may diagnose and attach failure evidence, then product-repository repair goes back to the same WORK room as a Revision Packet when the original retrievable locator remains usable. PLAN-owned exceptions are merge, verification, Project Control records, and cleanup that do not change product repository files or product behavior. RED evidence: npx vitest run tests/flowdoc-plan-product-repair-boundary.test.ts --maxWorkers=1 failed before the phase, evidence, and wording existed. GREEN evidence target: tests/flowdoc-plan-product-repair-boundary.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not change product repository tests or configuration, does not open WORK rooms, and does not promote FlowDoc product truth or map truth.",
       "verifiedAt": "2026-09-03T11:00:00.000+07:00"
