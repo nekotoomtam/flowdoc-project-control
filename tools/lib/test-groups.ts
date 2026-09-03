@@ -1,10 +1,33 @@
-export type TestGroupId = "records" | "source-docs" | "app";
+export type TestGroupId =
+  | "records"
+  | "source-docs"
+  | "source-docs:core-migration"
+  | "source-docs:live-draft"
+  | "source-docs:template-builder"
+  | "source-docs:text-block"
+  | "source-docs:text-engine"
+  | "app";
 
 export interface TestGroupDefinition {
   id: TestGroupId;
   description: string;
+  includeGroupIds?: readonly TestGroupId[];
   patterns: readonly string[];
 }
+
+export const sourceDocsSubgroupIds = [
+  "source-docs:core-migration",
+  "source-docs:live-draft",
+  "source-docs:template-builder",
+  "source-docs:text-block",
+  "source-docs:text-engine",
+] as const satisfies readonly TestGroupId[];
+
+export const defaultTestGroupIds = [
+  "records",
+  "source-docs",
+  "app",
+] as const satisfies readonly TestGroupId[];
 
 export const testGroups = [
   {
@@ -32,15 +55,39 @@ export const testGroups = [
   {
     id: "source-docs",
     description: "Source document migration and document-engine evidence",
+    includeGroupIds: sourceDocsSubgroupIds,
+    patterns: [],
+  },
+  {
+    id: "source-docs:core-migration",
+    description: "Core document inventory, migration, and evidence roots",
     patterns: [
       "tests/core-doc-*.test.ts",
       "tests/core-evidence-root.test.ts",
-      "tests/live-draft-*.test.ts",
       "tests/migration-schema.test.ts",
-      "tests/template-builder-*.test.ts",
-      "tests/text-block-*.test.ts",
-      "tests/text-engine-*.test.ts",
     ],
+  },
+  {
+    id: "source-docs:live-draft",
+    description: "Live Draft source-authority, geometry, and root documents",
+    patterns: ["tests/live-draft-*.test.ts"],
+  },
+  {
+    id: "source-docs:template-builder",
+    description: "Template Builder source provenance and structural documents",
+    patterns: [
+      "tests/template-builder-*.test.ts",
+    ],
+  },
+  {
+    id: "source-docs:text-block",
+    description: "Text Block grammar, authoring, measurement, and pagination",
+    patterns: ["tests/text-block-*.test.ts"],
+  },
+  {
+    id: "source-docs:text-engine",
+    description: "Text Engine runtime, adapter, provider, and toolchain evidence",
+    patterns: ["tests/text-engine-*.test.ts"],
   },
   {
     id: "app",
@@ -76,6 +123,50 @@ export function groupIdsForTestFile(testPath: string): TestGroupId[] {
       ),
     )
     .map((group) => group.id);
+}
+
+export function groupContainsTestFile(
+  testPath: string,
+  groupId: string,
+): boolean {
+  const group = getTestGroup(groupId);
+  if (group === undefined) {
+    return false;
+  }
+
+  return groupContainsNormalizedTestPath(normalizeTestPath(testPath), group);
+}
+
+function groupContainsNormalizedTestPath(
+  normalizedPath: string,
+  group: TestGroupDefinition,
+  visitedGroupIds = new Set<TestGroupId>(),
+): boolean {
+  if (visitedGroupIds.has(group.id)) {
+    return false;
+  }
+  visitedGroupIds.add(group.id);
+
+  if (
+    group.patterns.some((pattern) =>
+      matchesTestPattern(normalizedPath, pattern),
+    )
+  ) {
+    return true;
+  }
+
+  return (
+    group.includeGroupIds?.some((childGroupId) => {
+      const childGroup = getTestGroup(childGroupId);
+      return childGroup === undefined
+        ? false
+        : groupContainsNormalizedTestPath(
+            normalizedPath,
+            childGroup,
+            visitedGroupIds,
+          );
+    }) ?? false
+  );
 }
 
 function patternToRegExp(pattern: string): RegExp {

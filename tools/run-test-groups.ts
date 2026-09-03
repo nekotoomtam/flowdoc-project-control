@@ -4,8 +4,9 @@ import { readdir } from "node:fs/promises";
 import { join } from "node:path";
 
 import {
+  defaultTestGroupIds,
   getTestGroup,
-  groupIdsForTestFile,
+  groupContainsTestFile,
   testGroups,
   type TestGroupDefinition,
 } from "./lib/test-groups.js";
@@ -17,9 +18,8 @@ if (args.includes("--help") || args.length === 0) {
   process.exit(args.includes("--help") ? 0 : 1);
 }
 
-const selectedGroups = args.includes("--all")
-  ? testGroups
-  : args.map((groupId) => {
+const selectedGroupIds = args.includes("--all") ? defaultTestGroupIds : args;
+const selectedGroups = selectedGroupIds.map((groupId) => {
       const group = getTestGroup(groupId);
       if (group === undefined) {
         throw new Error(
@@ -62,7 +62,7 @@ async function collectGroupTestFiles(
   ];
 
   return allUnitTestFiles.filter((testPath) =>
-    groupIdsForTestFile(testPath).includes(group.id),
+    groupContainsTestFile(testPath, group.id),
   );
 }
 
