@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03",
+  "title": "FlowDoc Design Workspace Usability Acceptance",
+  "path": "docs/domains/flowdoc-design-workspace-usability-acceptance-2026-09-03.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the automatically returned and revised lane-design-workspace-usability Editor WORK room handoff.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "e78ae4160d1ab1759961dbeb3d646beb3490ec46",
+      "pathOrContractId": "src/app/editor/_components/shell/EditorToolbar.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/__tests__/EditorToolbar.test.ts; scripts/editor-smoke.mjs; npm.cmd run review:gate; npm.cmd run review:browser"
+    }
+  ]
+}

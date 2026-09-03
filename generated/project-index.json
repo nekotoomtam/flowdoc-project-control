@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "bf8fd3ed761fbe37d266c50f2ac1ecdc32a8685902be70af733d18becbd9a27c",
+  "sourceDigest": "32dce98caa70616cbafe3df2db11e437204a1cb7e3abb94a1b0aace0a3bd4720",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -57,6 +57,7 @@
         "editor-browser-live-backend-smoke",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-design-workspace-usability",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-frontend-product-map",
@@ -1957,6 +1958,57 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-design-workspace-usability",
+      "title": "FlowDoc Design Workspace Usability",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-frontend-product-map",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Accept the Editor-owned lane-design-workspace-usability implementation that adds a bounded Design workspace status strip, keeps Preview unavailable and Publish blocked, preserves the WYSIWYG gate boundary, and records PLAN acceptance after automatic return, revision, merge, and owner-repository verification.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+        "doc-flowdoc-frontend-product-map-2026-09-03",
+        "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+        "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03"
+      ],
+      "activeRole": "product-implementation-agent",
+      "expectedOutput": "Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 accepted by PLAN for lane-design-workspace-usability, with evidence-editor-design-workspace-usability-2026-09-03 recording automatic return, revision loop, Editor main verification, bounded Preview unavailable and Publish blocked status, and no product truth or map truth promotion.",
+      "riskSummary": "This lane is a bounded Editor UI affordance only. It does not promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "requiredEvidence": [
+        "evidence-editor-design-workspace-usability-2026-09-03"
+      ],
+      "createdAt": "2026-09-03T17:55:00.000+07:00",
+      "updatedAt": "2026-09-03T17:55:00.000+07:00",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-design-workspace-usability-acceptance-v1"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-frontend-expert-roadmap",
+        "flowdoc-frontend-product-map",
+        "flowdoc-design-workspace-usability"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-documentation-authority-cleanup",
       "title": "FlowDoc Documentation Authority Cleanup",
       "nodeId": "project-control",
@@ -2187,6 +2239,7 @@
       "createdAt": "2026-09-03T10:00:00.000Z",
       "updatedAt": "2026-09-03T10:00:00.000Z",
       "childWorkIds": [
+        "flowdoc-design-workspace-usability",
         "flowdoc-wysiwyg-gate-decision"
       ],
       "phaseIds": [
@@ -4312,6 +4365,30 @@
       "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-design-workspace-usability-acceptance-v1",
+      "workId": "flowdoc-design-workspace-usability",
+      "title": "Design Workspace Usability Acceptance v1",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "The returned handoff lacks automatic Return Channel evidence, exact Editor commit, clean retrievable locator, or terminal PASS status.",
+        "The WORK room asks PLAN to repair product repository behavior instead of returning a revised lane result.",
+        "The accepted Editor change activates Preview, Publish, direct WYSIWYG, contenteditable shortcuts, Backend behavior, Core behavior, PDF output, or map truth.",
+        "Editor owner-repository verification fails after merge to main.",
+        "Project Control records would promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth."
+      ],
+      "verificationTarget": "Project Control records PLAN acceptance of lane-design-workspace-usability at Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 after automatic return, revision of the dirty returned state by the same WORK room, Editor main review:gate, Editor main review:browser, and no readiness or map truth promotion.",
+      "summary": "Done: PLAN accepted the bounded Editor Design workspace status strip lane after the WORK room returned automatically, fixed its own dirty returned state through revisionAttempt 1, and Editor main passed review:gate and review:browser.",
+      "createdAt": "2026-09-03T17:55:00.000+07:00",
+      "updatedAt": "2026-09-03T17:55:00.000+07:00"
     },
     {
       "kind": "phase",
@@ -10492,6 +10569,96 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-design-workspace-usability-acceptance-v1",
+      "phaseId": "phase-flowdoc-design-workspace-usability-acceptance-v1",
+      "title": "Design Workspace Usability Acceptance v1 Checklist",
+      "items": [
+        {
+          "id": "stage-design-workspace-handoff",
+          "label": "Stage the automatic WORK room handoff in PLAN handoffInbox and completionQueue.",
+          "state": "passed",
+          "evidenceTarget": "PLAN receives handoff-design-workspace-usability-2026-09-03-01 through the automatic Return Channel.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a066b4-6040-7e42-95d6-ac09d36a385f."
+        },
+        {
+          "id": "send-revision-for-dirty-agents",
+          "label": "Reject the first returned state and send a Revision Packet when the WORK worktree is dirty.",
+          "state": "passed",
+          "evidenceTarget": "PLAN does not repair the Editor WORK room's dirty returned state on its behalf.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "PLAN found uncommitted AGENTS.md generated Next dev text after the first PASS return and sent revisionAttempt 1 to the same WORK room."
+        },
+        {
+          "id": "verify-clean-revision-return",
+          "label": "Accept only after the same WORK room returns a clean revised lane state.",
+          "state": "passed",
+          "evidenceTarget": "The revised handoff preserves the same Editor commit and reports a clean lane branch.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "WORK returned handoff-design-workspace-usability-2026-09-03-01-r1 with git status clean on codex/lane-design-workspace-usability and commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 unchanged."
+        },
+        {
+          "id": "run-editor-main-gates",
+          "label": "Run Editor owner-repository verification on merged main.",
+          "state": "passed",
+          "evidenceTarget": "Editor main passes review:gate and review:browser after accepting the lane commit.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "PLAN ran npm.cmd run review:gate and npm.cmd run review:browser on Editor main after fast-forwarding to e78ae4160d1ab1759961dbeb3d646beb3490ec46."
+        },
+        {
+          "id": "accept-design-workspace-usability",
+          "label": "Accept the bounded Design workspace usability behavior only.",
+          "state": "passed",
+          "evidenceTarget": "The accepted Editor commit adds the workspace status strip and smoke helper compatibility without broadening product behavior.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "Changed paths are EditorToolbar.tsx, EditorShell.tsx, EditorToolbar.test.ts, and scripts/editor-smoke.mjs."
+        },
+        {
+          "id": "preserve-wysiwyg-preview-publish-boundaries",
+          "label": "Preserve WYSIWYG, Preview, Publish, Backend, Core, production, and map-truth boundaries.",
+          "state": "passed",
+          "evidenceTarget": "The acceptance record keeps gated behavior unavailable or blocked and does not promote readiness.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "The accepted strip shows Preview unavailable and Publish blocked, while the acceptance document states no WYSIWYG, Preview, Publish, Backend, Core, production, compatibility, FlowDoc product truth, or map truth promotion."
+        },
+        {
+          "id": "record-project-control-evidence",
+          "label": "Record the accepted Editor evidence in Project Control.",
+          "state": "passed",
+          "evidenceTarget": "Project Control contains Work, Phase, Checklist, Document, and Evidence records for lane-design-workspace-usability.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "Registered flowdoc-design-workspace-usability, phase-flowdoc-design-workspace-usability-acceptance-v1, checklist-flowdoc-design-workspace-usability-acceptance-v1, doc-flowdoc-design-workspace-usability-acceptance-2026-09-03, and evidence-editor-design-workspace-usability-2026-09-03."
+        },
+        {
+          "id": "verify-design-workspace-records",
+          "label": "Verify Project Control records and generated read model.",
+          "state": "passed",
+          "evidenceTarget": "Focused Project Control guard, generated read model, data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-editor-design-workspace-usability-2026-09-03"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-design-workspace-usability-acceptance.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-03T17:55:00.000+07:00",
+      "updatedAt": "2026-09-03T17:55:00.000+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
       "phaseId": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
       "title": "Agent Role Documentation Authority Rewrite Checklist",
@@ -13985,6 +14152,24 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03",
+      "title": "FlowDoc Design Workspace Usability Acceptance",
+      "path": "docs/domains/flowdoc-design-workspace-usability-acceptance-2026-09-03.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Project Control PLAN acceptance record for the automatically returned and revised lane-design-workspace-usability Editor WORK room handoff.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "e78ae4160d1ab1759961dbeb3d646beb3490ec46",
+          "pathOrContractId": "src/app/editor/_components/shell/EditorToolbar.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/__tests__/EditorToolbar.test.ts; scripts/editor-smoke.mjs; npm.cmd run review:gate; npm.cmd run review:browser"
+        }
+      ],
+      "content": "# FlowDoc Design Workspace Usability Acceptance\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map > flowdoc-design-workspace-usability`.\n\nThis document is the Project Control PLAN acceptance record for `lane-design-workspace-usability`. It records the accepted Editor-owned implementation evidence returned by the WORK room and the PLAN acceptance gate that reviewed it.\n\nThis record is evidence registration and coordination context, not broad FlowDoc product truth. It does not prove frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, release readiness, FlowDoc product truth, or map truth.\n\nProject Control owns this acceptance record. Editor owns the implemented browser runtime and UI behavior at the accepted commit.\n\n## Work Context\n\n- Dispatch set: `dispatch-frontend-design-and-wysiwyg-2026-09-03-01`\n- Lane ID: `lane-design-workspace-usability`\n- Work ID: `flowdoc-design-workspace-usability`\n- Work Type: `product-implementation` plus `ux-design-exploration`\n- Owner repository: `repo-editor`\n- Active role: `product-implementation-agent`, reviewed by PLAN as `evidence-reviewer`\n- Current Phase: `phase-flowdoc-design-workspace-usability-acceptance-v1`\n- Checklist target: `checklist-flowdoc-design-workspace-usability-acceptance-v1`\n- Evidence target: `evidence-editor-design-workspace-usability-2026-09-03`\n- PLAN task/chat ID: `01a0637c-bc37-7cb1-8655-362695c4c6f7`\n- WORK task/chat ID: `01a066b4-6040-7e42-95d6-ac09d36a385f`\n- Review task/chat ID: `01a066d6-2c0a-78c0-ab83-2f2e448ef37a`\n- Accepted Editor commit: `e78ae4160d1ab1759961dbeb3d646beb3490ec46`\n\nKnown risks:\n\n- The new status strip may be mistaken for Preview or Publish activation even though both remain gated.\n- The Design workspace may be mistaken for broad WYSIWYG readiness even though the WYSIWYG gate remains closed.\n- Next dev can re-add an uncommitted `AGENTS.md` generated block during local verification; PLAN and WORK must keep that local noise out of accepted product commits unless a later repository decision says otherwise.\n- Browser and visual checks support this bounded UI strip only; later authoring, Preview, Publish, Backend, Core, integration, and production lanes still need separate evidence.\n\nUnknown state:\n\n- Direct page editing, rich editor package adoption, broad contenteditable, direct Preview typing, table/cell surface editing, media surface editing, and Publish submission remain unproven and unavailable.\n- Backend persistence, Core runtime mutation behavior, API keys, PDF output, artifact storage, and end-to-end integration remain outside this lane.\n- Production readiness remains NO-GO until a later evidence-backed decision changes it.\n\n## Handoff Inbox\n\nPLAN received `WORK RETURN EVENT: handoff-design-workspace-usability-2026-09-03-01` through the automatic Return Channel using `send_message_to_thread`.\n\nThe first returned handoff reported PASS, exact Editor commit `e78ae4160d1ab1759961dbeb3d646beb3490ec46`, changed files, behavior changed, tests run, claims not promoted, risks, and no Contract Change Request.\n\nPLAN acceptanceGate then found a dirty uncommitted `AGENTS.md` change in the WORK worktree. The dirty file was outside the reported file set and prevented acceptance.\n\nPLAN sent Revision Packet `revisionAttempt: 1` back to the same WORK room. WORK returned `WORK RETURN EVENT: handoff-design-workspace-usability-2026-09-03-01-r1`, restored the accidental `AGENTS.md` generated block, kept the same Editor commit, and reported a clean lane branch.\n\nThis satisfies the expected revision loop: PLAN did not patch the Editor product lane on the WORK room's behalf. The same WORK room repaired the returned lane state before acceptance.\n\n## Accepted Editor Behavior\n\nEditor commit `e78ae4160d1ab1759961dbeb3d646beb3490ec46` changes the bounded Design workspace usability surface:\n\n- Adds a compact Editor workspace status strip beneath the existing toolbar commands.\n- Shows the current document title and Editor draft save state from existing document metadata and autosave status.\n- Shows Design as the current workspace.\n- Shows Preview as unavailable.\n- Shows Publish as blocked.\n- Keeps Preview and Publish non-interactive and unactivated.\n- Renders the workspace stages as accessible status items, not no-op buttons.\n- Updates the browser smoke helper so flow-table internals can be read from nested table nodes or normalized section graph nodes.\n\nChanged Editor paths:\n\n- `src/app/editor/_components/shell/EditorToolbar.tsx`\n- `src/app/editor/_components/EditorShell.tsx`\n- `src/app/editor/_components/__tests__/EditorToolbar.test.ts`\n- `scripts/editor-smoke.mjs`\n\n## Verification\n\nWORK reported these passing checks before the revised handoff:\n\n- `npm.cmd run test:app -- src/app/editor/_components/__tests__/EditorToolbar.test.ts`\n- `npm.cmd run review:gate`\n- `npm.cmd run review:browser`\n- Desktop and mobile visual geometry QA at 1440x900 and 390x844\n- Read-only reviewer pass after one Important accessibility/usability issue was fixed\n\nPLAN independently checked the returned locator and reran Editor owner gates.\n\nOn the lane branch before merge, PLAN ran:\n\n- `npm.cmd run review:gate`: PASS\n- `npm.cmd run review:browser`: PASS\n\nAfter fast-forwarding Editor `main` to `e78ae4160d1ab1759961dbeb3d646beb3490ec46`, PLAN ran:\n\n- `npm.cmd run review:gate`: PASS\n  - Core tests: 54 files passed, 837 tests passed, 6 skipped\n  - App tests: 127 files passed, 1147 tests passed\n  - Production build completed\n- `npm.cmd run review:browser`: PASS\n  - Editor smoke passed\n  - WYSIWYG stage4c smoke returned `ok: true`\n  - `ignoredConsoleErrors`: `[]`\n  - `ignoredResourceErrors`: `[]`\n\nPLAN restored only the uncommitted `AGENTS.md` local generated block caused by the verification run. That cleanup did not change the accepted Editor commit or product behavior.\n\n## Acceptance Decision\n\nPLAN accepts `lane-design-workspace-usability` at Editor commit `e78ae4160d1ab1759961dbeb3d646beb3490ec46`.\n\nAcceptance is limited to the bounded Editor workspace status strip and smoke-helper compatibility described above.\n\nThe lane is accepted because:\n\n- The WORK room returned through the automatic Return Channel.\n- The WORK room acknowledged and preserved the lane boundary.\n- A review issue was sent through the WORK room and fixed before commit.\n- PLAN found and rejected a dirty returned state, sent a Revision Packet, and accepted only after the same WORK room cleaned the lane.\n- The accepted commit stayed inside `repo-editor`.\n- PLAN reran Editor owner-repository gates on merged `main`.\n\n## Claims Not Promoted\n\nThis acceptance does not promote:\n\n- FlowDoc product truth.\n- FlowDoc system map truth.\n- Frontend readiness.\n- WYSIWYG readiness.\n- Preview readiness.\n- Publish readiness.\n- Backend readiness.\n- Core readiness.\n- API key readiness.\n- PDF output readiness.\n- Production readiness.\n- Compatibility readiness beyond the specific smoke paths listed above.\n\n## Next Recommended Work\n\nPLAN may use this accepted lane as context for the next frontend roadmap split.\n\nRecommended next lanes remain separate:\n\n- Design workspace selected-region and command affordance cleanup.\n- Preview evidence lane that keeps Preview separate from WYSIWYG.\n- Publish evidence lane that keeps submission unavailable until Backend/Core contracts are accepted.\n- Progressive authoring lane only after Project Control confirms the WYSIWYG prerequisites remain satisfied or blocked by design.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-documentation-authority-policy",
       "title": "FlowDoc Documentation Authority Policy",
       "path": "docs/domains/flowdoc-documentation-authority-policy.md",
@@ -16211,6 +16396,16 @@
       "pathOrContractId": "src/tests/outlineScannability.test.ts",
       "verificationSummary": "Editor merge commit 2538c2af02f2bda7aa6eafb8d621eec33bc28cc0 implements the bounded creator Structure panel add-affordance foundation for the Editor left panel. OutlinePanel now exposes the left landmark as Document structure, labels the panel Structure, renders Structure summary wording, shows a disabled append Add block affordance in the panel header, shows one disabled selected-row Add block affordance after the selected Outline item, exposes data-outline-add-state disabled plus append/after placement markers, keeps Authoring limited visible, preserves the existing onSelectNode selection path, and changes summary type counting to a single pass. Focused RED first failed in src/tests/outlineScannability.test.ts because the Structure summary, disabled add state, large-outline item-count marker, and bounded add source marker were absent. Follow-up RED failed because the panel landmark still said Document outline instead of Document structure. Focused GREEN passed npx vitest run src/tests/outlineScannability.test.ts --reporter verbose with 1 file and 4 tests. The large-structure synthetic test renders 1200 Outline items and asserts exactly one selected-row add affordance instead of one per row. Editor worktree npm run check passed type-check, 90 passed test files, 312 passed tests, and build. Worktree browser evidence in live Backend mode passed FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke and retained editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table. Merged Editor main npm run check passed type-check, 90 passed test files, 312 passed tests, and build. Main browser evidence in live Backend mode passed FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke and retained editor-browser-live-backend-smoke-v1: summary-columns > title > detail-table. Vite still reports the existing chunk-size warning. Editor npm install in the lane still reported 5 high severity vulnerabilities. Project Control baseline npm run check passed check:data, type-check, 57 test files, 328 tests, build, and 6 e2e tests before record edits. Project Control focused record tests passed 3 files and 4 tests after the new lane test and expected Work lists were added. Project Control record gate npm run check passed check:data, type-check, 58 passed test files, 329 passed tests, build, and 6 e2e tests after records and tests were added. git deregistered the Editor worktree and branch deletion succeeded, but the residual .worktrees/editor-creator-structure-add-affordance-foundation folder could not be removed because a verified recursive cleanup command was rejected by local command policy. Previous residual Editor worktree folders for editor-inspector-detail-navigation-foundation, editor-outline-scannability-foundation, and editor-selection-context-summary-foundation remain local cleanup risks. This evidence supports only the bounded Editor Structure panel add-affordance presentation layer and synthetic large-structure affordance-count guard. It does not promote broad Editor truth, WYSIWYG readiness, text input readiness, active add-block creation, command authoring readiness, Backend mutation or persistence readiness, Backend production readiness, Core truth, real large-document authoring performance readiness, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, bundle-size readiness, live production behavior, or FlowDoc product readiness.",
       "verifiedAt": "2026-08-29T15:57:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-design-workspace-usability-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "e78ae4160d1ab1759961dbeb3d646beb3490ec46",
+      "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; WORK task/chat ID 01a066b4-6040-7e42-95d6-ac09d36a385f; review task/chat ID 01a066d6-2c0a-78c0-ab83-2f2e448ef37a; dispatchSetId dispatch-frontend-design-and-wysiwyg-2026-09-03-01; lane-design-workspace-usability; handoff-design-workspace-usability-2026-09-03-01; handoff-design-workspace-usability-2026-09-03-01-r1; src/app/editor/_components/shell/EditorToolbar.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/__tests__/EditorToolbar.test.ts; scripts/editor-smoke.mjs; npm.cmd run review:gate; npm.cmd run review:browser",
+      "verificationSummary": "PLAN acceptanceGate received lane-design-workspace-usability through the automatic WORK-to-PLAN Return Channel via send_message_to_thread. The first PASS handoff was not accepted because the WORK worktree still had an uncommitted AGENTS.md Next dev generated block outside the reported file set. PLAN sent revisionAttempt 1 back to the same WORK room instead of repairing the product repository lane itself. The WORK room returned handoff-design-workspace-usability-2026-09-03-01-r1 with a clean branch and the same Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46. Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 adds a compact Editor workspace status strip beneath the existing toolbar commands, shows document title and Editor draft save state from existing metadata/autosave status, shows Design as current, Preview unavailable, and Publish blocked, keeps Preview and Publish non-interactive and unactivated, renders workspace stages as accessible status items rather than no-op buttons, and updates scripts/editor-smoke.mjs to read flow-table internals from either nested table nodes or normalized section graph nodes. WORK reported focused toolbar tests, review:gate, review:browser, desktop/mobile visual geometry QA, and reviewer pass after fixing an Important accessibility/usability issue. PLAN independently ran npm.cmd run review:gate on the lane branch and after fast-forwarding Editor main to the accepted commit; post-merge Editor main review:gate passed type-check, Core tests 54 files / 837 passed / 6 skipped, app tests 127 files / 1147 passed, and production build. PLAN independently ran npm.cmd run review:browser on the lane branch and after merge; post-merge Editor main review:browser passed editor smoke and WYSIWYG stage4c smoke with ok true, ignoredConsoleErrors [], and ignoredResourceErrors []. This evidence supports only the bounded Editor Design workspace status strip and smoke helper compatibility. It does not prove FlowDoc product truth, map truth, frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, API key readiness, PDF output readiness, production readiness, release readiness, or broad compatibility readiness.",
+      "verifiedAt": "2026-09-03T17:55:00.000+07:00"
     },
     {
       "kind": "evidence",

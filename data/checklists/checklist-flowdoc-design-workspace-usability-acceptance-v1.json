@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-design-workspace-usability-acceptance-v1",
+  "phaseId": "phase-flowdoc-design-workspace-usability-acceptance-v1",
+  "title": "Design Workspace Usability Acceptance v1 Checklist",
+  "items": [
+    {
+      "id": "stage-design-workspace-handoff",
+      "label": "Stage the automatic WORK room handoff in PLAN handoffInbox and completionQueue.",
+      "state": "passed",
+      "evidenceTarget": "PLAN receives handoff-design-workspace-usability-2026-09-03-01 through the automatic Return Channel.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a066b4-6040-7e42-95d6-ac09d36a385f."
+    },
+    {
+      "id": "send-revision-for-dirty-agents",
+      "label": "Reject the first returned state and send a Revision Packet when the WORK worktree is dirty.",
+      "state": "passed",
+      "evidenceTarget": "PLAN does not repair the Editor WORK room's dirty returned state on its behalf.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "PLAN found uncommitted AGENTS.md generated Next dev text after the first PASS return and sent revisionAttempt 1 to the same WORK room."
+    },
+    {
+      "id": "verify-clean-revision-return",
+      "label": "Accept only after the same WORK room returns a clean revised lane state.",
+      "state": "passed",
+      "evidenceTarget": "The revised handoff preserves the same Editor commit and reports a clean lane branch.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "WORK returned handoff-design-workspace-usability-2026-09-03-01-r1 with git status clean on codex/lane-design-workspace-usability and commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 unchanged."
+    },
+    {
+      "id": "run-editor-main-gates",
+      "label": "Run Editor owner-repository verification on merged main.",
+      "state": "passed",
+      "evidenceTarget": "Editor main passes review:gate and review:browser after accepting the lane commit.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "PLAN ran npm.cmd run review:gate and npm.cmd run review:browser on Editor main after fast-forwarding to e78ae4160d1ab1759961dbeb3d646beb3490ec46."
+    },
+    {
+      "id": "accept-design-workspace-usability",
+      "label": "Accept the bounded Design workspace usability behavior only.",
+      "state": "passed",
+      "evidenceTarget": "The accepted Editor commit adds the workspace status strip and smoke helper compatibility without broadening product behavior.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "Changed paths are EditorToolbar.tsx, EditorShell.tsx, EditorToolbar.test.ts, and scripts/editor-smoke.mjs."
+    },
+    {
+      "id": "preserve-wysiwyg-preview-publish-boundaries",
+      "label": "Preserve WYSIWYG, Preview, Publish, Backend, Core, production, and map-truth boundaries.",
+      "state": "passed",
+      "evidenceTarget": "The acceptance record keeps gated behavior unavailable or blocked and does not promote readiness.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "The accepted strip shows Preview unavailable and Publish blocked, while the acceptance document states no WYSIWYG, Preview, Publish, Backend, Core, production, compatibility, FlowDoc product truth, or map truth promotion."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record the accepted Editor evidence in Project Control.",
+      "state": "passed",
+      "evidenceTarget": "Project Control contains Work, Phase, Checklist, Document, and Evidence records for lane-design-workspace-usability.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "Registered flowdoc-design-workspace-usability, phase-flowdoc-design-workspace-usability-acceptance-v1, checklist-flowdoc-design-workspace-usability-acceptance-v1, doc-flowdoc-design-workspace-usability-acceptance-2026-09-03, and evidence-editor-design-workspace-usability-2026-09-03."
+    },
+    {
+      "id": "verify-design-workspace-records",
+      "label": "Verify Project Control records and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Focused Project Control guard, generated read model, data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-editor-design-workspace-usability-2026-09-03"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-design-workspace-usability-acceptance.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-03T17:55:00.000+07:00",
+  "updatedAt": "2026-09-03T17:55:00.000+07:00"
+}

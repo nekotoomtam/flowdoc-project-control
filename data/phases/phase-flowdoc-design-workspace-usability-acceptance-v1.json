@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-design-workspace-usability-acceptance-v1",
+  "workId": "flowdoc-design-workspace-usability",
+  "title": "Design Workspace Usability Acceptance v1",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control", "repo-editor"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "The returned handoff lacks automatic Return Channel evidence, exact Editor commit, clean retrievable locator, or terminal PASS status.",
+    "The WORK room asks PLAN to repair product repository behavior instead of returning a revised lane result.",
+    "The accepted Editor change activates Preview, Publish, direct WYSIWYG, contenteditable shortcuts, Backend behavior, Core behavior, PDF output, or map truth.",
+    "Editor owner-repository verification fails after merge to main.",
+    "Project Control records would promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Project Control records PLAN acceptance of lane-design-workspace-usability at Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 after automatic return, revision of the dirty returned state by the same WORK room, Editor main review:gate, Editor main review:browser, and no readiness or map truth promotion.",
+  "summary": "Done: PLAN accepted the bounded Editor Design workspace status strip lane after the WORK room returned automatically, fixed its own dirty returned state through revisionAttempt 1, and Editor main passed review:gate and review:browser.",
+  "createdAt": "2026-09-03T17:55:00.000+07:00",
+  "updatedAt": "2026-09-03T17:55:00.000+07:00"
+}
