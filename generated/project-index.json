@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "7581053c7a983ffc58a6dc61da1b5cfdb1e1e99e247838f77fdc9fd3e328166f",
+  "sourceDigest": "54df73d61a74eb43fb5b60724c93d6a9313a45f77cb63a3c850148e9010d5201",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -14470,7 +14470,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "07ae75c7456dccae365103812e163e36436586a9",
+          "commit": "c97a51b59dac41d8725feb37f9727e3d1af09a10",
           "pathOrContractId": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md; tests/flowdoc-frontend-continuation-dispatch-registry.test.ts"
         }
       ],
