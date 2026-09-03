@@ -45,7 +45,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "07fb132f9bc2d7d90fa4689975ef93051564b2ae",
+      "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
       "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
     }
   ]

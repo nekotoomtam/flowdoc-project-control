@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "f7595c7b32f4e45d2f732cd3e8953104eb8fe2fd",
+      "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
       "pathOrContractId": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/evidence/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check"
     }
   ]

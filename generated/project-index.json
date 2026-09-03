@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "5d8e9a59cde39665c9a6e4320b8967ac3f011729e6775d1929b7bfe0d8dce603",
+  "sourceDigest": "4f155fe8c52662e04e4f904d9ea1ccea67d4d3c37cfb9ca2f21cae2b58da55d4",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -14547,7 +14547,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "07fb132f9bc2d7d90fa4689975ef93051564b2ae",
+          "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
           "pathOrContractId": "docs/domains/flowdoc-global-codex-guidance.md; AGENTS.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
         }
       ],
@@ -14652,7 +14652,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "07fb132f9bc2d7d90fa4689975ef93051564b2ae",
+          "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
           "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
         }
       ],
@@ -14670,7 +14670,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "f7595c7b32f4e45d2f732cd3e8953104eb8fe2fd",
+          "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
           "pathOrContractId": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/evidence/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check"
         }
       ],
@@ -15208,7 +15208,7 @@
         },
         {
           "repositoryId": "repo-project-control",
-          "commit": "07fb132f9bc2d7d90fa4689975ef93051564b2ae",
+          "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
           "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
         }
       ],
@@ -17062,7 +17062,7 @@
       "id": "evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "f7595c7b32f4e45d2f732cd3e8953104eb8fe2fd",
+      "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
       "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/documents/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check",
       "verificationSummary": "Project Control records the PLAN/WORK continuation feedback before returning to the drafted frontend lanes and folds the operating rule into the always-read Project Control entrypoints and orchestration contract. AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, and docs/domains/flowdoc-plan-room-orchestration-rules.md now require PLAN to restore the latest Room Run Registry or Lean Dispatch registry note before returning to a drafted lane plan, not rely on conversation-only room state, and avoid repairing WORK output itself. If acceptance finds missing or wrong WORK output, PLAN sends a Revision Packet back to the same WORK room when the original retrievable locator remains usable. The separate continuation document remains a decision and evidence note, not the only rule source. RED evidence: npx vitest run tests/flowdoc-plan-work-continuation-guardrails.test.ts --maxWorkers=1 failed after the guard was raised because the always-read documents did not yet contain the folded rule text. GREEN evidence target: tests/flowdoc-plan-work-continuation-guardrails.test.ts, npm run generate, npm run check:data, and npm run check. This evidence does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, does not implement a durable Room Run Registry schema, and does not promote frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T18:35:00.000+07:00"
