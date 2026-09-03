@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "78a7a1ec12b8d5619eae99f5ca7755adc1184e7c",
       "pathOrContractId": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md; data/work/flowdoc-product-domain-relationship.json; data/phases/phase-flowdoc-product-domain-relationship-v0.json; data/checklists/checklist-flowdoc-product-domain-relationship-v0.json; data/evidence/flowdoc-product-domain-relationship-2026-09-04.json; tests/flowdoc-product-domain-relationship.test.ts; npm run check"
     }
   ]
