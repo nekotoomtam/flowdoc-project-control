@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "588329d3b21676db0601138a6acc86ff2e6ed58347b2c52f6b81f9c1fde74fd6",
+  "sourceDigest": "0650e8ce630f5ee948442138209f6337209fa19f486254b44243010822bd56dc",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -14045,7 +14045,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "c5db3ef3f5c1c02042ad68e5d7b0f382582098d1",
+          "commit": "c8bfd84bcb794692c5fbbe091d042ef9680339c6",
           "pathOrContractId": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-v1.json; data/evidence/flowdoc-frontend-product-map-2026-09-03.json; tests/flowdoc-frontend-product-map.test.ts; npm run check"
         }
       ],
@@ -16492,9 +16492,9 @@
       "id": "evidence-flowdoc-frontend-product-map-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "c5db3ef3f5c1c02042ad68e5d7b0f382582098d1",
+      "commit": "c8bfd84bcb794692c5fbbe091d042ef9680339c6",
       "pathOrContractId": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-v1.json; data/documents/flowdoc-frontend-product-map-2026-09-03.json; tests/flowdoc-frontend-product-map.test.ts; npm run check",
-      "verificationSummary": "Project Control commit c5db3ef3f5c1c02042ad68e5d7b0f382582098d1 is the accepted Frontend Expert Roadmap source commit for this follow-on product map lane. This lane records a bounded Frontend Product Map v1 in Project Control with screen inventory for Library, Document Detail, Design, Preview, Publish, shared empty/error/loading/blocked/unavailable/unknown states, action inventory for open, edit, save, preview, publish, retry, export, and inspect status, truth boundaries for visible readiness claims, and a lane-ready package for lane-design-workspace-usability. RED evidence: npx vitest run tests/flowdoc-frontend-product-map.test.ts --maxWorkers=1 failed before Project Control contained the new product map Work. GREEN evidence target includes the focused product-map guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "verificationSummary": "Project Control commit c8bfd84bcb794692c5fbbe091d042ef9680339c6 records a bounded Frontend Product Map v1 in Project Control with screen inventory for Library, Document Detail, Design, Preview, Publish, shared empty/error/loading/blocked/unavailable/unknown states, action inventory for open, edit, save, preview, publish, retry, export, and inspect status, truth boundaries for visible readiness claims, and a lane-ready package for lane-design-workspace-usability. The accepted Frontend Expert Roadmap source commit for this follow-on product map lane is c5db3ef3f5c1c02042ad68e5d7b0f382582098d1. RED evidence: npx vitest run tests/flowdoc-frontend-product-map.test.ts --maxWorkers=1 failed before Project Control contained the new product map Work. GREEN evidence target includes the focused product-map guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T10:00:00.000Z"
     },
     {
