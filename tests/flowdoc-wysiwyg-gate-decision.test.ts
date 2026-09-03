@@ -96,6 +96,10 @@ describe("FlowDoc WYSIWYG Gate Decision", () => {
     });
 
     expect(docText).toContain("# FlowDoc WYSIWYG Gate Decision v1");
+    expect(docText).toContain("Lane ID: `lane-wysiwyg-gate-decision`");
+    expect(docText).toContain("Work ID: `flowdoc-wysiwyg-gate-decision`");
+    expect(docText).toContain("`lane-wysiwyg-gate-decision` is the dispatch lane ID");
+    expect(docText).toContain("`flowdoc-wysiwyg-gate-decision` is the durable Project Control Work ID");
     expect(docText).toContain("WYSIWYG gate remains closed");
     expect(docText).toContain("Managed Editable Cards");
     expect(docText).toContain("Bounded Text Islands");

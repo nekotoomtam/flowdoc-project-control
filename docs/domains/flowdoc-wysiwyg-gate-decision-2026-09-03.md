@@ -15,6 +15,7 @@ No product repository files change in this decision lane. Core, Backend, and Edi
 ## Work Context
 
 - Lane ID: `lane-wysiwyg-gate-decision`
+- Work ID: `flowdoc-wysiwyg-gate-decision`
 - Work Type: `decision` plus `planning-coordination`
 - Active role: `planning-partner`, with `project-control-steward`, `documentation-authority-steward`, and cross-repo boundary review responsibilities
 - Current Phase: `phase-flowdoc-wysiwyg-gate-decision-v1`
@@ -22,6 +23,8 @@ No product repository files change in this decision lane. Core, Backend, and Edi
 - Evidence target: `evidence-flowdoc-wysiwyg-gate-decision-2026-09-03`
 - Source roadmap: `docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md`
 - Source product map: `docs/domains/flowdoc-frontend-product-map-2026-09-03.md`
+
+Lookup note: `lane-wysiwyg-gate-decision` is the dispatch lane ID, while `flowdoc-wysiwyg-gate-decision` is the durable Project Control Work ID for this decision record.
 
 Known risks:
 
