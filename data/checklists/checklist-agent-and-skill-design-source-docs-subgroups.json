@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-source-docs-subgroups",
+  "phaseId": "phase-agent-and-skill-design-source-docs-subgroups",
+  "title": "Source Docs Subgroup Gates Checklist",
+  "items": [
+    {
+      "id": "capture-source-docs-subgroup-boundary",
+      "label": "Capture the source-docs subgroup boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Record the semantic subgroup split before real FlowDoc lanes use focused Project Control checks.",
+      "verificationNote": "PLAN accepted the subgroup direction: keep source-docs as the umbrella and split focused scripts into core-migration, live-draft, template-builder, text-block, and text-engine so a lane can choose the smallest relevant source-docs gate."
+    },
+    {
+      "id": "write-red-source-docs-subgroup-guard",
+      "label": "Write a failing source-docs subgroup guard.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Focused guard fails before subgroup scripts, default group IDs, subgroup IDs, and umbrella membership exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/project-control-test-groups.test.ts --maxWorkers=1 failed because package.json did not define test:source-docs:* scripts and tools/lib/test-groups.ts did not export defaultTestGroupIds or sourceDocsSubgroupIds."
+    },
+    {
+      "id": "add-source-docs-subgroup-scripts",
+      "label": "Add focused source-docs subgroup scripts.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Project Control package scripts and test group definitions expose focused source-docs gates while preserving source-docs as the umbrella group.",
+      "verificationNote": "package.json now exposes test:source-docs:core-migration, test:source-docs:live-draft, test:source-docs:template-builder, test:source-docs:text-block, and test:source-docs:text-engine. tools/lib/test-groups.ts keeps source-docs as an includeGroupIds umbrella and assigns files only to focused source-docs leaf groups."
+    },
+    {
+      "id": "verify-each-source-docs-subgroup",
+      "label": "Verify every focused source-docs subgroup.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Each focused source-docs subgroup script passes independently.",
+      "verificationNote": "GREEN evidence: test:source-docs:core-migration passed 5 files / 66 tests; test:source-docs:live-draft passed 4 files / 22 tests; test:source-docs:template-builder passed 4 files / 28 tests; test:source-docs:text-block passed 4 files / 18 tests; test:source-docs:text-engine passed 4 files / 49 tests."
+    },
+    {
+      "id": "verify-source-docs-umbrella-and-unit-gate",
+      "label": "Verify source-docs umbrella and unit gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "The source-docs umbrella and default unit gate still cover the full Project Control unit surface without duplicate subgroup runs.",
+      "verificationNote": "GREEN evidence: npm run test:source-docs passed 21 files / 183 tests, and npm run test:unit ran records, source-docs umbrella, and app in default group order."
+    },
+    {
+      "id": "record-source-docs-subgroup-evidence",
+      "label": "Record Project Control source-docs subgroup evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, and Work required evidence for source-docs subgroup routing.",
+      "verificationNote": "Registered phase-agent-and-skill-design-source-docs-subgroups, checklist-agent-and-skill-design-source-docs-subgroups, evidence-flowdoc-source-docs-subgroups-2026-09-03, and updated agent-and-skill-design requiredEvidence, summary, expectedOutput, and riskSummary."
+    },
+    {
+      "id": "verify-source-docs-subgroup-evidence",
+      "label": "Verify the source-docs subgroup evidence guard.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-source-docs-subgroups-2026-09-03"],
+      "evidenceTarget": "Focused evidence guard, generated read model, data validation, and full Project Control check gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-source-docs-subgroups-evidence.test.ts, npm run generate, npm run check:data, and npm run check pass before merge."
+    }
+  ],
+  "createdAt": "2026-09-03T08:36:00.000+07:00",
+  "updatedAt": "2026-09-03T08:36:00.000+07:00"
+}

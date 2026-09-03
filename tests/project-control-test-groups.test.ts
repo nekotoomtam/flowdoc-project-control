@@ -8,7 +8,10 @@ interface PackageJson {
 }
 
 interface TestGroupsModule {
+  defaultTestGroupIds: readonly string[];
   groupIdsForTestFile(testPath: string): string[];
+  groupContainsTestFile(testPath: string, groupId: string): boolean;
+  sourceDocsSubgroupIds: readonly string[];
   testGroups: readonly { id: string; patterns: readonly string[] }[];
 }
 
@@ -53,6 +56,21 @@ describe("Project Control test groups", () => {
     expect(packageJson.scripts["test:source-docs"]).toBe(
       "tsx tools/run-test-groups.ts source-docs",
     );
+    expect(packageJson.scripts["test:source-docs:core-migration"]).toBe(
+      "tsx tools/run-test-groups.ts source-docs:core-migration",
+    );
+    expect(packageJson.scripts["test:source-docs:live-draft"]).toBe(
+      "tsx tools/run-test-groups.ts source-docs:live-draft",
+    );
+    expect(packageJson.scripts["test:source-docs:template-builder"]).toBe(
+      "tsx tools/run-test-groups.ts source-docs:template-builder",
+    );
+    expect(packageJson.scripts["test:source-docs:text-block"]).toBe(
+      "tsx tools/run-test-groups.ts source-docs:text-block",
+    );
+    expect(packageJson.scripts["test:source-docs:text-engine"]).toBe(
+      "tsx tools/run-test-groups.ts source-docs:text-engine",
+    );
     expect(packageJson.scripts["test:app"]).toBe(
       "tsx tools/run-test-groups.ts app",
     );
@@ -87,12 +105,26 @@ describe("Project Control test groups", () => {
   });
 
   it("keeps high-load areas in narrow groups so PLAN can run the useful gate first", async () => {
-    const { groupIdsForTestFile, testGroups } = await loadTestGroups();
+    const {
+      defaultTestGroupIds,
+      groupContainsTestFile,
+      groupIdsForTestFile,
+      sourceDocsSubgroupIds,
+      testGroups,
+    } = await loadTestGroups();
 
+    expect(defaultTestGroupIds).toEqual(["records", "source-docs", "app"]);
+    expect(sourceDocsSubgroupIds).toEqual([
+      "source-docs:core-migration",
+      "source-docs:live-draft",
+      "source-docs:template-builder",
+      "source-docs:text-block",
+      "source-docs:text-engine",
+    ]);
     expect(testGroups.map((group) => group.id)).toEqual([
-      "records",
-      "source-docs",
-      "app",
+      ...defaultTestGroupIds.slice(0, 2),
+      ...sourceDocsSubgroupIds,
+      defaultTestGroupIds[2],
     ]);
     expect(
       groupIdsForTestFile(
@@ -100,11 +132,29 @@ describe("Project Control test groups", () => {
       ),
     ).toEqual(["records"]);
     expect(groupIdsForTestFile("tests/core-doc-migration.test.ts")).toEqual([
-      "source-docs",
+      "source-docs:core-migration",
+    ]);
+    expect(groupIdsForTestFile("tests/core-evidence-root.test.ts")).toEqual([
+      "source-docs:core-migration",
+    ]);
+    expect(groupIdsForTestFile("tests/migration-schema.test.ts")).toEqual([
+      "source-docs:core-migration",
     ]);
     expect(
       groupIdsForTestFile("tests/live-draft-persistent-root-docs.test.ts"),
-    ).toEqual(["source-docs"]);
+    ).toEqual(["source-docs:live-draft"]);
+    expect(groupIdsForTestFile("tests/template-builder-viewport-doc.test.ts")).toEqual([
+      "source-docs:template-builder",
+    ]);
+    expect(
+      groupIdsForTestFile("tests/text-block-v4-measurement-pagination-docs.test.ts"),
+    ).toEqual(["source-docs:text-block"]);
+    expect(
+      groupIdsForTestFile("tests/text-engine-runtime-identity-evidence-leaf.test.ts"),
+    ).toEqual(["source-docs:text-engine"]);
+    expect(groupContainsTestFile("tests/core-doc-migration.test.ts", "source-docs")).toBe(
+      true,
+    );
     expect(groupIdsForTestFile("tests/vite-server.test.ts")).toEqual(["app"]);
     expect(groupIdsForTestFile("app/src/ProjectControlApp.test.tsx")).toEqual([
       "app",
