@@ -12,6 +12,11 @@
       "repositoryId": "repo-editor",
       "commit": "e78ae4160d1ab1759961dbeb3d646beb3490ec46",
       "pathOrContractId": "src/app/editor/_components/shell/EditorToolbar.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/__tests__/EditorToolbar.test.ts; scripts/editor-smoke.mjs; npm.cmd run review:gate; npm.cmd run review:browser"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "fc18a3d278135441ae1834e19a6f14d464dec3f8",
+      "pathOrContractId": "docs/domains/flowdoc-design-workspace-usability-acceptance-2026-09-03.md; data/work/flowdoc-design-workspace-usability.json; data/phases/phase-flowdoc-design-workspace-usability-acceptance-v1.json; data/checklists/checklist-flowdoc-design-workspace-usability-acceptance-v1.json; data/evidence/editor-design-workspace-usability-2026-09-03.json; tests/flowdoc-design-workspace-usability-acceptance.test.ts; npm run check"
     }
   ]
 }

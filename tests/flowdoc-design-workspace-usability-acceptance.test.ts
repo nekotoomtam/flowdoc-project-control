@@ -94,6 +94,11 @@ describe("FlowDoc design workspace usability acceptance", () => {
         pathOrContractId: expect.stringContaining("EditorToolbar.tsx"),
         repositoryId: "repo-editor",
       }),
+      expect.objectContaining({
+        commit: "fc18a3d278135441ae1834e19a6f14d464dec3f8",
+        pathOrContractId: expect.stringContaining("tests/flowdoc-design-workspace-usability-acceptance.test.ts"),
+        repositoryId: "repo-project-control",
+      }),
     ]));
 
     expect(evidence.get(EVIDENCE_ID)).toMatchObject({
