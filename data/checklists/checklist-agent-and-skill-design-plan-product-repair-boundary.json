@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-plan-product-repair-boundary",
+  "phaseId": "phase-agent-and-skill-design-plan-product-repair-boundary",
+  "title": "PLAN Product Repository Repair Boundary Checklist",
+  "items": [
+    {
+      "id": "capture-plan-product-repair-boundary-context",
+      "label": "Capture the PLAN product-repository repair boundary context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with documentation-authority-steward responsibility, phase target phase-agent-and-skill-design-plan-product-repair-boundary, checklist target checklist-agent-and-skill-design-plan-product-repair-boundary, and evidence target evidence-flowdoc-plan-product-repair-boundary-2026-09-03."
+    },
+    {
+      "id": "write-red-plan-product-repair-boundary-guard",
+      "label": "Write a failing guard for the PLAN product-repository repair boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "The focused Project Control test fails before the phase, evidence, entrypoint wording, and first-delivery boundary-risk wording exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-plan-product-repair-boundary.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include phase-agent-and-skill-design-plan-product-repair-boundary or evidence-flowdoc-plan-product-repair-boundary-2026-09-03."
+    },
+    {
+      "id": "define-plan-product-repair-boundary",
+      "label": "Define the PLAN product-repository repair boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "Delivery and orchestration documents state that PLAN must not patch product repositories after dispatch and must send product-repository repair back to the same WORK room when possible.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, docs/domains/agent-and-skill-operating-model.md, docs/domains/flowdoc-delivery-operating-model.md, and docs/domains/flowdoc-plan-room-orchestration-rules.md state that PLAN may diagnose and attach failure evidence but product-repository repair goes back to the same WORK room as a Revision Packet."
+    },
+    {
+      "id": "route-product-repair-boundary-to-entrypoints",
+      "label": "Route the repair boundary through agent entrypoints.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "Future PLAN rooms reading Project Control AGENTS.md, global guidance, delivery, orchestration, and agent operating model see the same boundary.",
+      "verificationNote": "The entrypoints distinguish forbidden product-repository repair from PLAN-owned merge, verification, Project Control records, and cleanup that do not change product repository files or product behavior."
+    },
+    {
+      "id": "record-plan-product-repair-boundary",
+      "label": "Record the first-delivery boundary breach risk.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "The first-delivery owner-lane acceptance record preserves that PLAN-side Backend verification repair was a boundary breach risk rather than the future model.",
+      "verificationNote": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md records the Backend PLAN-side repair as a boundary breach risk and points future PLAN rooms to the same-room WORK Revision Packet path."
+    },
+    {
+      "id": "verify-plan-product-repair-boundary-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-product-repair-boundary-2026-09-03"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after the boundary is registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-plan-product-repair-boundary.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-03T11:00:00.000+07:00",
+  "updatedAt": "2026-09-03T11:00:00.000+07:00"
+}

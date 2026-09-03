@@ -118,6 +118,15 @@ Control records lane. PLAN may pull by retrievable locator only to recover or
 classify a failed Return Channel; that manual recovery fallback does not
 satisfy automatic return.
 
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. If acceptance, merge, or main-gate verification shows that a product
+repository needs repair, even test-only, fixture-only, or configuration-only
+repair, PLAN should diagnose and attach failure evidence, then
+product-repository repair goes back to the same WORK room as a Revision
+Packet when the original retrievable locator remains usable. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
 When returned work is incomplete but still inside the original lane, PLAN marks
 the room `needs-revision` and sends a Revision Packet back to the same WORK
 room when the original retrievable locator remains usable. That packet must

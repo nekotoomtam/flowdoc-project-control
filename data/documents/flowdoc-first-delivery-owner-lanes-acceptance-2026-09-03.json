@@ -22,6 +22,11 @@
       "repositoryId": "repo-project-control",
       "commit": "750458c6f1dc2e13930403b8062705399fcb7fd9",
       "pathOrContractId": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; docs/domains/flowdoc-first-delivery-round-plan.md; data/work/flowdoc-first-delivery-round.json; data/phases/phase-flowdoc-first-delivery-owner-lanes-acceptance.json; data/checklists/checklist-flowdoc-first-delivery-owner-lanes-acceptance.json; data/evidence/flowdoc-backend-gateway-database-accepted-2026-09-03.json; data/evidence/flowdoc-editor-structure-publish-accepted-2026-09-03.json; tests/flowdoc-first-delivery-owner-lanes-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "eb0233c9ba3b7def6d3da349b7c57c3f4f04614d",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
     }
   ]
 }

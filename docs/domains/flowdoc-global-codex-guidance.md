@@ -114,6 +114,15 @@ failed; that recovery does not satisfy automatic return. If acceptance returns
 the original retrievable locator is usable; the packet must preserve the
 original lane boundary and name any Contract Change Request requirement.
 
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. When acceptance, merge, or main-gate verification finds that a fix
+would change a product repository, including test-only, fixture-only, or
+configuration-only repair, PLAN may diagnose and attach failure evidence, then
+product-repository repair goes back to the same WORK room as a Revision
+Packet when the original retrievable locator remains usable. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
 This corresponds to the Project Control document path
 `docs/domains/flowdoc-delivery-operating-model.md` and
 `docs/domains/flowdoc-plan-room-orchestration-rules.md`, extended by

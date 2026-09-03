@@ -91,6 +91,15 @@ Packet back to the same WORK room when the original retrievable locator is
 usable; the packet preserves the original lane boundary and names any Contract
 Change Request requirement.
 
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. When acceptance, merge, or main-gate verification finds that a fix
+would change a product repository, including test-only, fixture-only, or
+configuration-only repair, PLAN may diagnose and attach failure evidence, then
+product-repository repair goes back to the same WORK room as a Revision
+Packet when the original retrievable locator remains usable. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
 For Editor, frontend, product behavior, cross-repository contract work, or any
 term that could mean different things across Project Control, Core, Backend, or
 Editor, apply the product terminology discipline before implementation. Use the

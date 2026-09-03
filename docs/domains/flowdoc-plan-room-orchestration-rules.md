@@ -419,6 +419,16 @@ This keeps Core, Backend, and Editor WORK rooms focused on their owner
 repository behavior while the PLAN room carries cross-repository context,
 truth-promotion discipline, and follow-up sequencing.
 
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. If acceptanceGate review, merge, or main-gate verification exposes a
+problem whose repair would change a product repository, including test-only,
+fixture-only, configuration-only, dependency, or harness repair, PLAN may
+diagnose and attach failure evidence but must not commit a product repository
+repair directly. The product-repository repair goes back to the same WORK room
+as a Revision Packet when the original retrievable locator remains usable.
+PLAN-owned exceptions are merge, verification, Project Control records, and
+cleanup that do not change product repository files or product behavior.
+
 ## Revision Packet Loop
 
 If acceptanceGate rejects or cannot accept a returned handoff, the PLAN room

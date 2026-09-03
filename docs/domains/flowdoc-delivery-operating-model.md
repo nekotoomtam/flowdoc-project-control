@@ -335,6 +335,16 @@ The same WORK room may repair only the original lane. If repair needs a
 different owner, source-of-truth rule, evidence target, or cross-repository
 contract, the WORK room returns a Contract Change Request.
 
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. If acceptance review, merge, or main-gate verification reveals a
+product-repository problem, even a test-only, fixture-only, or
+configuration-only repair, PLAN may diagnose and attach failure evidence but
+must not commit a product repository repair directly. The
+product-repository repair goes back to the same WORK room as a Revision
+Packet when the original retrievable locator remains usable. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
 ## Contract Change Request
 
 A WORK room must stop and send a Contract Change Request when it needs to

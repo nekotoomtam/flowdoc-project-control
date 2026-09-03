@@ -126,6 +126,17 @@ their approved owner-lane boundaries. The Backend revision repaired stale test
 fixture dependencies caused by retired Core canonical output fixtures without
 expanding the lane into renderer or PDF-byte delivery.
 
+boundary breach risk: during PLAN-side verification after merge, PLAN repaired
+Backend test discovery and retired-fixture gating directly in the Backend
+repository. The repair was bounded and verified, but future PLAN rooms must
+not treat this as the model. PLAN must not patch Core, Backend, or Editor
+product repositories after dispatch. When a product repository repair is
+needed, PLAN may diagnose and attach failure evidence, then
+product-repository repair goes back to the same WORK room as a Revision
+Packet when the original retrievable locator remains usable. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
 ## Verification
 
 Backend verification:
