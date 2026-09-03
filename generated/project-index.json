@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "e638aed9dafb9be75ec21bae09829ad56e6bf6898274765b141b08b3323779fe",
+  "sourceDigest": "bf8fd3ed761fbe37d266c50f2ac1ecdc32a8685902be70af733d18becbd9a27c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -14591,7 +14591,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "e631db4000d4a69d92671e1cb4d536175089602b",
+          "commit": "36f925b1ff3c3844ac1c2540b8252838f2b397d3",
           "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/evidence/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check"
         }
       ],
@@ -16871,9 +16871,9 @@
       "id": "evidence-flowdoc-wysiwyg-gate-decision-2026-09-03",
       "nodeIds": [],
       "repositoryId": "repo-project-control",
-      "commit": "e631db4000d4a69d92671e1cb4d536175089602b",
+      "commit": "36f925b1ff3c3844ac1c2540b8252838f2b397d3",
       "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/documents/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check",
-      "verificationSummary": "Project Control commit e631db4000d4a69d92671e1cb4d536175089602b records a bounded WYSIWYG Gate Decision v1 in Project Control. The decision preserves existing Editor and Core WYSIWYG boundaries, states that the WYSIWYG gate remains closed, defines WYSIWYG as managed document-surface authoring, allows managed editable cards and bounded text islands as the later progressive authoring direction, blocks full-document contenteditable, hidden contenteditable shortcuts, DOM innerHTML document truth, direct preview typing, broad clipboard rich-paste, table/cell and media surface editing, and rich editor package adoption for Slate, ProseMirror, TipTap-style, or similar engines until a later Contract Change Request is accepted. It records prerequisites for data model, selection, measurement, save, undo/redo, preview, compatibility, accessibility, and evidence. RED evidence: npx vitest run tests/flowdoc-wysiwyg-gate-decision.test.ts --maxWorkers=1 failed before Project Control contained the new WYSIWYG gate Work. GREEN evidence target includes the focused WYSIWYG gate guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "verificationSummary": "Project Control commit 36f925b1ff3c3844ac1c2540b8252838f2b397d3 records a bounded WYSIWYG Gate Decision v1 in Project Control. The decision preserves existing Editor and Core WYSIWYG boundaries, states that the WYSIWYG gate remains closed, defines WYSIWYG as managed document-surface authoring, maps lane-wysiwyg-gate-decision to Work ID flowdoc-wysiwyg-gate-decision, allows managed editable cards and bounded text islands as the later progressive authoring direction, blocks full-document contenteditable, hidden contenteditable shortcuts, DOM innerHTML document truth, direct preview typing, broad clipboard rich-paste, table/cell and media surface editing, and rich editor package adoption for Slate, ProseMirror, TipTap-style, or similar engines until a later Contract Change Request is accepted. It records prerequisites for data model, selection, measurement, save, undo/redo, preview, compatibility, accessibility, and evidence. RED evidence: npx vitest run tests/flowdoc-wysiwyg-gate-decision.test.ts --maxWorkers=1 failed before Project Control contained the new WYSIWYG gate Work. GREEN evidence target includes the focused WYSIWYG gate guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T11:00:00.000Z"
     },
     {

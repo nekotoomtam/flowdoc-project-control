@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "e631db4000d4a69d92671e1cb4d536175089602b",
+      "commit": "36f925b1ff3c3844ac1c2540b8252838f2b397d3",
       "pathOrContractId": "docs/domains/flowdoc-wysiwyg-gate-decision-2026-09-03.md; data/work/flowdoc-wysiwyg-gate-decision.json; data/phases/phase-flowdoc-wysiwyg-gate-decision-v1.json; data/checklists/checklist-flowdoc-wysiwyg-gate-decision-v1.json; data/evidence/flowdoc-wysiwyg-gate-decision-2026-09-03.json; tests/flowdoc-wysiwyg-gate-decision.test.ts; npm run check"
     }
   ]
