@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "d23d33d16ef7e4267f8590c0f5e872b90b250b56",
       "pathOrContractId": "docs/domains/flowdoc-preview-confidence-probe-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1.json; data/evidence/flowdoc-preview-confidence-probe-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
     }
   ]

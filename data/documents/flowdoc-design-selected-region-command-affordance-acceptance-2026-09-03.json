@@ -15,7 +15,7 @@
     },
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "d23d33d16ef7e4267f8590c0f5e872b90b250b56",
       "pathOrContractId": "docs/domains/flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03.md; data/work/flowdoc-design-workspace-usability.json; data/phases/phase-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/checklists/checklist-flowdoc-design-selected-region-command-affordance-acceptance-v1.json; data/evidence/editor-design-selected-region-command-affordance-cleanup-2026-09-03.json; tests/flowdoc-frontend-continuation-acceptance.test.ts; npm run check"
     }
   ]

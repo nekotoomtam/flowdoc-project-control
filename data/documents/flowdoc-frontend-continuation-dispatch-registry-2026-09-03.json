@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "0000000000000000000000000000000000000000",
+      "commit": "d23d33d16ef7e4267f8590c0f5e872b90b250b56",
       "pathOrContractId": "docs/domains/flowdoc-frontend-continuation-dispatch-registry-2026-09-03.md; tests/flowdoc-frontend-continuation-dispatch-registry.test.ts"
     }
   ]
