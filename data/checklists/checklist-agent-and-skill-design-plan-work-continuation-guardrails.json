@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-plan-work-continuation-guardrails",
+  "phaseId": "phase-agent-and-skill-design-plan-work-continuation-guardrails",
+  "title": "PLAN/WORK Continuation Guardrails Checklist",
+  "items": [
+    {
+      "id": "capture-plan-work-continuation-context",
+      "label": "Capture the PLAN/WORK continuation context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before writing the guardrail note.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-plan-work-continuation-guardrails, checklist target checklist-agent-and-skill-design-plan-work-continuation-guardrails, and evidence target evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03."
+    },
+    {
+      "id": "write-red-plan-work-continuation-guard",
+      "label": "Write a failing guard for the continuation record.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
+      "evidenceTarget": "The focused Project Control test fails before the continuation document, phase, checklist, evidence, and parent Work references exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-plan-work-continuation-guardrails.test.ts --maxWorkers=1 failed because agent-and-skill-design did not yet include doc-flowdoc-plan-work-continuation-guardrails-2026-09-03, phase-agent-and-skill-design-plan-work-continuation-guardrails, or evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03."
+    },
+    {
+      "id": "record-room-registry-feedback",
+      "label": "Record Room Run Registry feedback.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
+      "evidenceTarget": "The note records that future multi-WORK dispatch continuity must not depend on conversation-only room state.",
+      "verificationNote": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md records that the next dispatch set should use a Room Run Registry or Lean Dispatch registry note with retrievable locators, automatic return data, liveness state, acceptance decisions, and revision state before returning to drafted frontend lanes."
+    },
+    {
+      "id": "preserve-drafted-lane-plan-boundary",
+      "label": "Preserve the drafted lane plan boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
+      "evidenceTarget": "The continuation record does not alter lane order, open the next frontend lane, or let PLAN repair WORK output itself.",
+      "verificationNote": "The guardrail states that it does not change the drafted frontend lane plan, does not open the next frontend lane, does not edit Core, Backend, or Editor behavior, and sends needs-revision work back to the same WORK room through a Revision Packet when the locator remains usable."
+    },
+    {
+      "id": "verify-plan-work-continuation-records",
+      "label": "Verify the continuation records.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after the continuation guardrail is registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-plan-work-continuation-guardrails.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-03T18:35:00.000+07:00",
+  "updatedAt": "2026-09-03T18:35:00.000+07:00"
+}

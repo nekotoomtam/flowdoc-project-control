@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-plan-work-continuation-guardrails-2026-09-03",
+  "title": "FlowDoc PLAN/WORK Continuation Guardrails",
+  "path": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Project Control continuation guardrail for preserving PLAN/WORK room feedback before returning to the drafted frontend lane plan.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "924f466e1d3d2bd0de0ebf52c899db6c30aca9f5",
+      "pathOrContractId": "docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; data/work/agent-and-skill-design.json; data/phases/phase-agent-and-skill-design-plan-work-continuation-guardrails.json; data/checklists/checklist-agent-and-skill-design-plan-work-continuation-guardrails.json; data/evidence/flowdoc-plan-work-continuation-guardrails-2026-09-03.json; tests/flowdoc-plan-work-continuation-guardrails.test.ts; npm run check"
+    }
+  ]
+}

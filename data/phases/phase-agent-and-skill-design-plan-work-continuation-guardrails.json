@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-plan-work-continuation-guardrails",
+  "workId": "agent-and-skill-design",
+  "title": "PLAN/WORK Continuation Guardrails",
+  "phaseState": "done",
+  "order": 180,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the continuation feedback.",
+    "The phase opens or edits the next frontend lane instead of only preserving the handoff back to the drafted lane plan.",
+    "The wording allows PLAN to repair WORK output itself when the same WORK room can receive a Revision Packet.",
+    "The note treats conversation-only room state as sufficient for future multi-WORK dispatch continuity.",
+    "The record promotes frontend readiness, product truth, map truth, or Core, Backend, or Editor behavior."
+  ],
+  "verificationTarget": "Record the PLAN/WORK continuation feedback before returning to drafted frontend lanes: PLAN must preserve a Room Run Registry or registry-note locator for every active WORK room, PLAN must not repair WORK output itself, needs-revision results must go back as a Revision Packet to the same WORK room when the locator remains usable, and this guardrail does not alter the drafted frontend lane plan.",
+  "summary": "Done: recorded the continuation guardrail for returning from feedback discussion to the drafted frontend lane plan. The guardrail preserves the accepted orchestration pattern, requires retrievable Room Run Registry or registry-note state before the next dispatch set is resumed, and keeps product WORK correction inside the same WORK room through Revision Packets instead of PLAN-side repair.",
+  "createdAt": "2026-09-03T18:35:00.000+07:00",
+  "updatedAt": "2026-09-03T18:35:00.000+07:00"
+}
