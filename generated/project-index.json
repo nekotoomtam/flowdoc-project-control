@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "04118c9d44a185d57d39393d874fa9bb2f93c43f9734e28bc5d0dfca59085dcc",
+  "sourceDigest": "588329d3b21676db0601138a6acc86ff2e6ed58347b2c52f6b81f9c1fde74fd6",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -22,7 +22,8 @@
         "doc-flowdoc-product-terminology-th",
         "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
         "doc-flowdoc-first-delivery-round-plan",
-        "doc-flowdoc-frontend-expert-roadmap-2026-09-03"
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+        "doc-flowdoc-frontend-product-map-2026-09-03"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -57,6 +58,7 @@
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
+        "flowdoc-frontend-product-map",
         "flowdoc-product-development-resumption",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation"
@@ -2132,13 +2134,64 @@
       ],
       "createdAt": "2026-09-03T09:00:00.000Z",
       "updatedAt": "2026-09-03T09:00:00.000Z",
-      "childWorkIds": [],
+      "childWorkIds": [
+        "flowdoc-frontend-product-map"
+      ],
       "phaseIds": [
         "phase-flowdoc-frontend-expert-roadmap-v1"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-frontend-expert-roadmap"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-frontend-product-map",
+      "title": "FlowDoc Frontend Product Map",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-frontend-expert-roadmap",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-progress",
+      "summary": "Expand the accepted Frontend Expert Roadmap into a Project Control-owned screen and action map for Library, Document Detail, Design, Preview, Publish, shared states, and the first Editor implementation lane package.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-frontend-expert-roadmap-2026-09-03"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Frontend Product Map v1 in Project Control, with screen inventory, action inventory, truth boundaries, and a lane-ready package for lane-design-workspace-usability.",
+      "riskSummary": "The map is planning context and may be mistaken for frontend readiness or current product behavior. It intentionally does not promote Editor, Backend, Core, WYSIWYG, publish, production, compatibility, FlowDoc product truth, or map truth.",
+      "requiredEvidence": [
+        "evidence-flowdoc-frontend-product-map-2026-09-03"
+      ],
+      "createdAt": "2026-09-03T10:00:00.000Z",
+      "updatedAt": "2026-09-03T10:00:00.000Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-frontend-product-map-v1"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-frontend-expert-roadmap",
+        "flowdoc-frontend-product-map"
       ]
     },
     {
@@ -4693,6 +4746,29 @@
       "summary": "Done: Project Control now records a bounded Frontend Expert Roadmap v1 that names the product north star, missing frontend surfaces, first lane sequence, acceptance expectations, and truth boundaries before product implementation begins.",
       "createdAt": "2026-09-03T09:00:00.000Z",
       "updatedAt": "2026-09-03T09:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-frontend-product-map-v1",
+      "workId": "flowdoc-frontend-product-map",
+      "title": "Frontend Product Map v1",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+        "The product map would require Core, Backend, or Editor product repository edits.",
+        "The product map would claim frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth from planning alone.",
+        "The next Editor implementation lane would need product implementation, a different owner, map-truth changes, WYSIWYG acceptance, publish/Backend/Core behavior decisions, or broader evidence than this lane owns.",
+        "The room cannot send its terminal handoff automatically to PLAN."
+      ],
+      "verificationTarget": "Project Control records Frontend Product Map v1 as a Library, Design, Preview, Publish, document detail, shared-state, screen and action map with a lane-ready package for lane-design-workspace-usability and no product truth promotion.",
+      "summary": "Done: Project Control now records a bounded Frontend Product Map v1 that expands the roadmap into screen states, actions, truth boundaries, and the next Editor lane package before product implementation begins.",
+      "createdAt": "2026-09-03T10:00:00.000Z",
+      "updatedAt": "2026-09-03T10:00:00.000Z"
     },
     {
       "kind": "phase",
@@ -11910,6 +11986,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-frontend-product-map-v1",
+      "phaseId": "phase-flowdoc-frontend-product-map-v1",
+      "title": "Frontend Product Map v1 Checklist",
+      "items": [
+        {
+          "id": "capture-product-map-context",
+          "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, unknown state, and automatic return path.",
+          "state": "passed",
+          "evidenceTarget": "The product map record identifies Project Control ownership and lane boundaries before writing the frontend product map.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map, owner repo-project-control, active role planning-partner with project-control-steward and documentation-authority-steward responsibilities, phase target phase-flowdoc-frontend-product-map-v1, checklist target checklist-flowdoc-frontend-product-map-v1, and evidence target evidence-flowdoc-frontend-product-map-2026-09-03."
+        },
+        {
+          "id": "write-red-product-map-guard",
+          "label": "Write a failing Project Control guard before adding the product map records.",
+          "state": "passed",
+          "evidenceTarget": "A focused test fails before Project Control contains the frontend product map Work, document, checklist, and evidence records.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "RED evidence: npx vitest run tests/flowdoc-frontend-product-map.test.ts --maxWorkers=1 failed because flowdoc-frontend-expert-roadmap did not yet include flowdoc-frontend-product-map as a child Work."
+        },
+        {
+          "id": "map-library-design-preview-publish-screens",
+          "label": "Map Library, Document Detail, Design, Preview, Publish, and shared state surfaces.",
+          "state": "passed",
+          "evidenceTarget": "The product map breaks the roadmap into screen-level and state-level planning context.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md defines Library, Document Detail, Design, Preview, Publish, and shared empty, loading, error, blocked, unavailable, and unknown states."
+        },
+        {
+          "id": "map-frontend-actions-and-state-boundaries",
+          "label": "Map open, edit, save, preview, publish, retry, export, and inspect status actions with truth boundaries.",
+          "state": "passed",
+          "evidenceTarget": "The product map records action intent and the evidence boundary required before each action can be enabled.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "The Action Inventory and Truth Boundary Matrix keep planned action behavior separate from Editor, Backend, Core, WYSIWYG, publish, production, compatibility, and map truth."
+        },
+        {
+          "id": "package-design-workspace-usability-lane",
+          "label": "Prepare the next lane package for lane-design-workspace-usability.",
+          "state": "passed",
+          "evidenceTarget": "The product map includes allowed scope, forbidden scope, required reading, acceptance checks, and evidence target proposal for the first Editor implementation lane.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "The Lane-Ready Package proposes repo-editor ownership, product-implementation plus ux-design-exploration Work Type, evidence-editor-design-workspace-usability-2026-09-03, and stop boundaries for WYSIWYG, publish, Backend, Core, production, compatibility, and map truth claims."
+        },
+        {
+          "id": "preserve-product-truth-boundary",
+          "label": "Preserve planning-only truth boundaries and avoid map truth promotion.",
+          "state": "passed",
+          "evidenceTarget": "The product map does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "The document states that the product map is planning context, not product truth; it leaves product repository files unchanged and does not update DOCUMENT_MAP or the FlowDoc system map."
+        },
+        {
+          "id": "verify-product-map-records",
+          "label": "Verify Project Control records, generated read model, and checks.",
+          "state": "passed",
+          "evidenceTarget": "Focused product-map guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-flowdoc-frontend-product-map-2026-09-03"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-frontend-product-map.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-03T10:00:00.000Z",
+      "updatedAt": "2026-09-03T10:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-product-evidence-refresh-readiness",
       "phaseId": "phase-flowdoc-product-evidence-refresh-readiness",
       "title": "FlowDoc Product Evidence Refresh Checklist",
@@ -13874,6 +14030,26 @@
         }
       ],
       "content": "# FlowDoc Frontend Expert Roadmap v1\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap`.\n\nThis document is the Project Control planning and UX design exploration record for the next FlowDoc frontend direction. It coordinates product-facing frontend lanes before implementation starts.\n\nThe design artifact is not product truth. It does not prove frontend readiness, WYSIWYG readiness, publish readiness, production readiness, Core runtime behavior, Backend service behavior, Editor behavior, or map truth.\n\nNo product repository files change in this roadmap phase. Core, Backend, and Editor remain product implementation owners for later approved lanes.\n\n## Work Context\n\nActive role: `planning-partner`.\n\nCurrent Phase: `phase-flowdoc-frontend-expert-roadmap-v1`.\n\nChecklist target: `checklist-flowdoc-frontend-expert-roadmap-v1`.\n\nEvidence target: `evidence-flowdoc-frontend-expert-roadmap-2026-09-03`.\n\nWork Type: `planning-coordination` plus `ux-design-exploration`.\n\nKnown risks:\n\n- A roadmap or mockup may be mistaken for frontend readiness or product truth.\n- The frontend scope may expand into product implementation before lane approval.\n- The WYSIWYG gate may be bypassed by adding broad direct editing before prerequisites are accepted.\n- Preview and Publish wording may imply live integration that remains unknown or unavailable.\n\nUnknown state:\n\n- Broad Editor runtime and UI behavior remain `unknown` until a product-owned inspection or implementation lane proves them.\n- End-to-end Editor to Backend to Core readiness remains unpromoted outside accepted evidence.\n- Production remains NO-GO until a later evidence-backed decision changes that state.\n\n## North Star\n\nFlowDoc should feel like an expert document production workspace, not a scattered demo shell. A user should be able to enter the product, understand the state of their documents, shape a document with visible structure, preview trustworthy output, and move toward publish with clear status and recoverable failures.\n\nThe first product-facing rhythm is Library, Design, Preview, and Publish:\n\n- Library shows what exists, what is draft-only, what is blocked, and what can safely be opened next.\n- Design is the authoring surface where document structure, editable regions, style controls, and page context are visible without overwhelming the user.\n- Preview confidence tells the user whether they are seeing a draft preview, a stale preview, a published preview, or an unavailable state.\n- Publish flow binding connects a reviewed document to submission, queued work, result state, retry, and evidence.\n\n## Roadmap Principles\n\n- Workflow-first: design around repeated work, not a landing page or promotional screen.\n- Honest state: every surface must distinguish current, planned, risk, blocked, unavailable, and unknown state.\n- Progressive authoring: start with bounded edit regions and structural controls before broad rich text behavior.\n- Evidence-bearing UI: actions that claim compatibility, preview, publish, or production state need backing checks and records.\n- No WYSIWYG shortcut: direct page editing stays behind the WYSIWYG gate decision until prerequisites are explicit.\n- Product ownership stays clear: Project Control coordinates; Editor, Backend, and Core implement only through approved lanes.\n- Accessibility and polish are acceptance requirements, not decoration.\n\n## Current Frontend Gaps\n\nLibrary needs a stronger product entry surface. It should show local documents, draft state, available actions, unavailable actions, and recovery paths without implying cloud or production readiness.\n\nDesign authoring surface is the largest missing product experience. The expected workspace needs a clear page canvas, outline or structure navigation, selected-region context, inspector controls, toolbar commands, disabled-state language, and responsive behavior.\n\nPreview confidence is not yet a trusted workflow. Users need clear Draft Preview versus Published Preview state, stale-state warnings, generation status, diagnostics, and download or retry paths.\n\nPublish flow binding is unavailable as a complete product path. It needs a visible review step, submission boundary, queued status, result state, error recovery, and Backend/Core readiness gates before any publish-ready claim.\n\nWYSIWYG gate decision remains closed. The next accepted direction should prefer managed editable cards or bounded text islands before full direct DOM editing or a broad rich editor package.\n\n## Roadmap Phases\n\n### Phase 1: Frontend Product Map\n\nLane ID: `lane-frontend-product-map`.\n\nOwner for this phase: `repo-project-control`.\n\nGoal: create a lane-ready product map for Library, Design, Preview, and Publish, with each surface marked as current, planned, risk, blocked, unavailable, or unknown.\n\nExpected output:\n\n- Screen inventory for Library, Design, Preview, Publish, document detail, and error or empty states.\n- Action inventory for open, edit, save, preview, publish, retry, export, and inspect status.\n- Truth boundary for every visible readiness claim.\n- Next implementation lane cards.\n\nAcceptance:\n\n- No product repository edits.\n- No map truth promotion.\n- The map can become the kickoff context for the first Editor implementation lane.\n\n### Phase 2: Design Workspace Usability\n\nLane ID: `lane-design-workspace-usability`.\n\nLikely implementation owner after approval: `repo-editor`.\n\nGoal: make the Design surface feel like a real document workspace with clear structure, focus, and editing confidence.\n\nExpected output:\n\n- Workspace frame with stable navigation, page canvas, outline, inspector, toolbar, and status strip.\n- Selected node or region state that explains what can be edited.\n- Empty, loading, unavailable, conflict, and error states.\n- Responsive layout for narrow desktop and mobile inspection.\n\nAcceptance:\n\n- The first viewport shows the product workspace, not a marketing hero.\n- Controls use familiar icon or native control patterns where possible.\n- Disabled actions explain state without pretending the feature exists.\n\n### Phase 3: Progressive Authoring\n\nLane ID: `lane-progressive-authoring`.\n\nLikely implementation owner after approval: `repo-editor`, with `repo-core` evidence dependencies.\n\nGoal: add useful authoring in bounded regions before broad WYSIWYG editing.\n\nExpected output:\n\n- Text-region editing model for safe document changes.\n- Structural controls for section, column, table, and media placeholders only where supported.\n- Save and dirty-state handling.\n- Compatibility boundary with Core document model and generation contracts.\n\nAcceptance:\n\n- Editing behavior is scoped to supported structures.\n- Unsupported rich behavior is blocked or clearly unavailable.\n- Tests prove that hidden direct-DOM editing does not bypass the WYSIWYG gate.\n\n### Phase 4: Preview Confidence\n\nLane ID: `lane-preview-confidence`.\n\nLikely implementation owner after approval: `repo-editor`, with `repo-backend` and `repo-core` evidence dependencies.\n\nGoal: let the user trust what preview state means.\n\nExpected output:\n\n- Draft Preview and Published Preview labels.\n- Fresh, stale, queued, failed, unavailable, and blocked preview states.\n- Diagnostics panel for input, backend response, artifact pointer, and retry result.\n- Download or inspect affordance only when supported evidence exists.\n\nAcceptance:\n\n- Preview cannot imply production or publish readiness without accepted evidence.\n- Failed and unavailable states are visible, recoverable, and testable.\n- Preview state is tied to source document and generation lifecycle.\n\n### Phase 5: Publish Flow Binding\n\nLane ID: `lane-publish-flow-binding`.\n\nLikely implementation owner after approval: `repo-editor`, with `repo-backend` and `repo-core` evidence dependencies.\n\nGoal: connect the user-facing publish flow to the real submission and job lifecycle once Backend and Core gates support it.\n\nExpected output:\n\n- Review step before publish.\n- Submit boundary with explicit prerequisites.\n- Queued, running, succeeded, failed, cancelled, and retry states.\n- Result inspection and artifact access paths.\n\nAcceptance:\n\n- Publish actions stay unavailable until service credentials, persistence, and generation contracts are proven.\n- No product copy claims that production is live before Project Control evidence supports it.\n- Errors include next actions without hiding backend or runtime uncertainty.\n\n### Phase 6: Frontend Polish And Accessibility\n\nLane ID: `lane-frontend-polish-and-accessibility`.\n\nLikely implementation owner after approval: `repo-editor`.\n\nGoal: turn the main workflows into a repeatable, readable, accessible product surface.\n\nExpected output:\n\n- Keyboard navigation and focus visibility.\n- Color contrast and reduced-motion checks.\n- Dense but readable operational layout.\n- Loading, long-document, small-screen, and high-density document checks.\n- Visual QA across desktop and mobile breakpoints.\n\nAcceptance:\n\n- No text overlap or unstable resizing in common viewports.\n- Icons, controls, cards, and panels follow the product UI conventions.\n- Accessibility defects are recorded as blockers or risks, not taste notes.\n\n### Phase 7: WYSIWYG Gate Decision\n\nLane ID: `lane-wysiwyg-gate-decision`.\n\nOwner for decision: `repo-project-control`, with later implementation owned by `repo-editor` only if accepted.\n\nGoal: decide whether FlowDoc should progress from bounded authoring to direct page editing, and under which constraints.\n\nExpected output:\n\n- Accepted WYSIWYG definition.\n- Prerequisite checklist for data model, selection, measurement, save, undo, preview, and compatibility.\n- Decision between managed editable cards, bounded text islands, or broader editor integration.\n- Explicit blocks for unsupported contenteditable shortcuts or rich editor package adoption.\n\nAcceptance:\n\n- The gate names what is allowed, blocked, and unknown.\n- The gate does not authorize implementation until Project Control records the decision and product owners accept the lane.\n\n## Recommended First Sequence\n\nStart with `lane-frontend-product-map`. It is a Project Control lane, can be lean, and should not edit product repositories. Its job is to convert this roadmap into screen-level lane cards and acceptance targets that a later Editor WORK room can execute without inventing scope.\n\nThen run `lane-design-workspace-usability` as the first Editor implementation lane after approval. It should use the product map as kickoff context, keep changes bounded to the Editor frontend, and return evidence candidates to PLAN before any truth promotion.\n\nKeep Preview and Publish behind explicit evidence gates. They depend on Backend and Core state and should not be sold in the UI as ready while integration remains unknown.\n\nUse `lane-wysiwyg-gate-decision` before any direct page editing expansion.\n\n## Lane Card Starters\n\n| Lane ID | Work Type | Owner | First deliverable | Must not do |\n| --- | --- | --- | --- | --- |\n| `lane-frontend-product-map` | `planning-coordination` plus `ux-design-exploration` | `repo-project-control` | Screen and action map for Library, Design, Preview, Publish | Edit product repositories |\n| `lane-design-workspace-usability` | `product-implementation` plus `ux-design-exploration` | `repo-editor` | Workspace shell and authoring affordance implementation | Claim broad WYSIWYG readiness |\n| `lane-progressive-authoring` | `product-implementation` | `repo-editor` | Bounded edit-region behavior | Add unsupported rich editing |\n| `lane-preview-confidence` | `product-implementation` plus `verification` | `repo-editor`, `repo-backend`, `repo-core` | Draft and Published Preview lifecycle states | Imply publish or production readiness |\n| `lane-publish-flow-binding` | `product-implementation` plus `cross-repo-compatibility` | `repo-editor`, `repo-backend`, `repo-core` | Review, submit, job, result, retry path | Enable publish without service evidence |\n| `lane-frontend-polish-and-accessibility` | `product-implementation` plus `verification` | `repo-editor` | Visual QA, accessibility, responsive workflow checks | Treat visual taste as evidence |\n| `lane-wysiwyg-gate-decision` | `decision` plus `planning-coordination` | `repo-project-control` | Accepted WYSIWYG direction and prerequisites | Start broad direct editing before acceptance |\n\n## Stop Conditions\n\n- A lane cannot identify owner repository, active role, Work Type, Checklist target, Evidence target, risks, and unknown state.\n- A proposed product lane would change Core, Backend, or Editor outside its approved lane boundary.\n- A frontend surface would claim current readiness, publish readiness, production readiness, or WYSIWYG readiness without accepted evidence.\n- A WORK room cannot return automatically to PLAN with PASS, FAIL, BLOCKER, RISK, or UNKNOWN.\n- The user would need to copy/paste handoffs or personally carry Project Control truth-promotion work.\n\n## Intentionally Not Changed\n\n- No product repository files change in this roadmap phase.\n- No WORK rooms are opened by this roadmap phase.\n- No FlowDoc map truth changes.\n- No frontend readiness, WYSIWYG readiness, publish readiness, production readiness, or compatibility readiness is promoted.\n- No Core, Backend, or Editor behavior is implemented.\n- No production path is activated.\n\n## Next Recommended Work\n\nOpen `lane-frontend-product-map` as the next Project Control lane. Its deliverable should be a screen-by-screen product map and kickoff packet for the first bounded Editor implementation lane.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-frontend-product-map-2026-09-03",
+      "title": "FlowDoc Frontend Product Map v1",
+      "path": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "decision",
+      "authority": "Project Control Frontend Product Map v1 for bounded Library, Document Detail, Design, Preview, Publish, screen state, action inventory, truth-boundary planning, and the lane-design-workspace-usability kickoff package.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "c5db3ef3f5c1c02042ad68e5d7b0f382582098d1",
+          "pathOrContractId": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-v1.json; data/evidence/flowdoc-frontend-product-map-2026-09-03.json; tests/flowdoc-frontend-product-map.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Frontend Product Map v1\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap > flowdoc-frontend-product-map`.\n\nThis document is the Project Control planning and UX design exploration map for the next FlowDoc frontend implementation lane. It expands the accepted Frontend Expert Roadmap v1 into screen, state, action, and handoff boundaries before product repository work starts.\n\nThe product map is planning context, not product truth. It does not prove frontend readiness, WYSIWYG readiness, publish readiness, production readiness, Core runtime behavior, Backend service behavior, Editor behavior, compatibility, or map truth.\n\nNo product repository files change in this phase. Core, Backend, and Editor remain product implementation owners for later approved lanes.\n\n## Work Context\n\n- Lane ID: `lane-frontend-product-map`\n- Work Type: `planning-coordination` plus `ux-design-exploration`\n- Active role: `planning-partner`, with `project-control-steward` and `documentation-authority-steward` responsibilities\n- Current Phase: `phase-flowdoc-frontend-product-map-v1`\n- Checklist target: `checklist-flowdoc-frontend-product-map-v1`\n- Evidence target: `evidence-flowdoc-frontend-product-map-2026-09-03`\n- Source roadmap: `docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md`\n\nKnown risks:\n\n- This product map may be mistaken for current Editor behavior or frontend readiness.\n- Visible Preview and Publish language may imply live Backend, production, artifact, or renderer readiness that remains unknown.\n- A Design surface may invite direct page editing before the WYSIWYG gate is accepted.\n- Later implementation lanes may widen from workspace usability into Core, Backend, or publish contracts without a Contract Change Request.\n\nUnknown state:\n\n- Broad Editor runtime and UI behavior remain `unknown`.\n- End-to-end Editor to Backend to Core readiness remains unpromoted outside accepted evidence.\n- Preview export parity, renderer parity, published artifact access, and production behavior remain `unknown`.\n- The WYSIWYG gate remains closed until a later Project Control decision lane accepts prerequisites.\n\n## Product Rhythm\n\nThe first FlowDoc frontend rhythm is:\n\n```text\nLibrary -> Document Detail -> Design -> Preview -> Publish\n```\n\nLibrary is the entry and recovery surface. Document Detail is the inspection surface for one selected document. Design is the main working surface for structure, bounded editing affordances, and status. Preview is a confidence surface for visible rendering state. Publish is a gated review surface whose actions stay unavailable until later Backend, Core, and integration evidence supports them.\n\nEvery screen must show the user's next safe action without hiding unavailable, blocked, risk, or unknown states.\n\n## Screen And State Map\n\n### Library\n\nPurpose: show the document set, local state, and safe next actions without implying cloud or production readiness.\n\nPrimary content:\n\n- Document list with title, source mode, last known status, and updated time when available.\n- Status grouping for draft, blocked, unavailable, and unknown documents.\n- Per-document action affordances for open, inspect status, preview when supported, and publish only when gated prerequisites are met.\n- Empty state for no documents, with a create or import affordance only if the later Editor lane can prove the backing route exists.\n- Loading state that keeps navigation stable and avoids replacing the whole application with a spinner.\n- Error state with retry and diagnostics affordance; diagnostics should name whether the failure belongs to fixture mode, live Backend mode, or unknown source state.\n\nTruth boundary:\n\n- Library may say a document is present only when the later Editor lane proves its source.\n- Library must not claim cloud sync, production storage, publish readiness, or broad compatibility.\n\n### Document Detail\n\nPurpose: inspect one document before entering a mode-specific workspace.\n\nPrimary content:\n\n- Document identity, source mode, Backend document record freshness when available, and Editor draft status.\n- Summary of structure, outline count, supported editable regions, preview state, and publish gate state.\n- Action row for Design, Preview, Publish, retry source load, and inspect diagnostics.\n- Blocked state when source, package version, migration, or capability facts are insufficient.\n- Unknown state when the document source cannot be classified by accepted evidence.\n\nTruth boundary:\n\n- Detail may expose status from an accepted Editor source adapter only after the owner lane proves it.\n- Detail must keep Project Control Document record, Backend document record, Document package, Editor draft, and Preview wording separate.\n\n### Design\n\nPurpose: provide the first real document workspace shape without authorizing broad direct editing.\n\nPrimary content:\n\n- Stable workspace frame with Library return, document title, mode tabs, status strip, and scoped diagnostics.\n- Left outline panel of `outline item` rows with selection, collapsed groups, and unavailable markers.\n- Center page canvas for document structure and bounded editable cards or text islands.\n- Right inspector for selected region status, supported properties, and disabled controls with state-aware reasons.\n- Toolbar with familiar controls for selection, undo or redo only when supported, zoom, preview, save, and status inspection.\n- Dirty, saving, saved, conflict, blocked, unavailable, loading, and error states.\n- Mobile or narrow desktop inspection layout that preserves document context before controls.\n\nTruth boundary:\n\n- Design may plan bounded edit regions and structural controls.\n- Design must not implement or imply WYSIWYG readiness, unsupported rich text, contenteditable shortcuts, Core mutation results, Backend persistence, or production readiness.\n\n### Preview\n\nPurpose: make visible rendering state legible and recoverable.\n\nPrimary content:\n\n- Draft Preview, stale preview, failed preview, unavailable preview, blocked preview, and Published Preview placeholders.\n- Freshness indicator tied to source document, Editor draft, Backend revision, or unknown source when evidence is missing.\n- Diagnostics panel for source input, capability response, generation attempt, artifact pointer, and retry result once supported.\n- Download or inspect artifact actions only when the later implementation lane has accepted evidence for the specific path.\n- Empty state when no preview exists and unavailable state when the renderer or service path is not proven.\n\nTruth boundary:\n\n- Preview is a UX target and inspection mode, not evidence of export parity, renderer parity, Backend persistence, PDF bytes, or product readiness.\n- Published Preview must stay unavailable until Publish and integration evidence support it.\n\n### Publish\n\nPurpose: show the review, submission, job, result, retry, and blocked states for a future publish flow without activating it early.\n\nPrimary content:\n\n- Review step with document identity, selected version, required input-data shape, and readiness checklist.\n- Submit boundary with explicit prerequisites for API key or credential reference, Backend route, storage, Core contract, worker or renderer, and artifact access.\n- Queued, running, succeeded, failed, cancelled, retrying, unavailable, and blocked job states.\n- Result inspection and artifact access paths only when supported by accepted Backend and Core evidence.\n- Recovery path that distinguishes user-fixable missing input from service, contract, renderer, and storage unknowns.\n\nTruth boundary:\n\n- Publish actions stay unavailable until service credentials, persistence, generation contracts, and integration evidence exist.\n- Publish must not claim live production, real API key provisioning, product database readiness, renderer execution, PDF bytes, artifact persistence, or end-to-end delivery from this map.\n\n### Shared Empty, Error, Loading, Blocked, And Unavailable States\n\nEvery screen should use the same state vocabulary:\n\n- `empty`: no matching user object or no selected document.\n- `loading`: source is being read and the application shell remains stable.\n- `error`: a recoverable failure has a retry path and diagnostic owner.\n- `blocked`: the action would require a closed gate, missing contract, missing evidence, unsupported version, or unresolved owner decision.\n- `unavailable`: the capability is intentionally not exposed in this lane or not proven by accepted evidence.\n- `unknown`: the state cannot be safely classified from Project Control planning context.\n\nThese states are planning requirements for later implementation. They are not proof that the Editor runtime already supports them.\n\n## Action Inventory\n\n| Action | Primary screen | Planned behavior | Required boundary before enabled |\n| --- | --- | --- | --- |\n| Open document | Library, Document Detail | Navigate to document detail or Design for a selected document. | Editor-owned route and source classification evidence. |\n| Edit bounded region | Design | Change only supported managed cards or text islands. | WYSIWYG gate remains closed; Core mutation and Editor draft boundaries must be explicit. |\n| Save | Design | Persist a supported Editor draft change when the owner lane proves the path. | Backend revision and Core mutation result evidence before claiming durable save. |\n| Preview | Design, Preview | Show visible Draft Preview state and freshness. | Renderer, source, and artifact claims stay scoped to accepted evidence. |\n| Publish | Publish | Review prerequisites and submit only when later gates support it. | Backend credential, route, storage, Core contract, worker or renderer, and integration evidence. |\n| Retry | Library, Preview, Publish | Retry a failed source load, preview generation, or publish job. | Retry owner must be named: Editor, Backend, Core, renderer, or unknown. |\n| Export or download | Preview, Publish | Expose artifact access only when supported. | PDF bytes and artifact persistence evidence required. |\n| Inspect status | All screens | Show diagnostics for source, draft, preview, publish, and unavailable states. | Diagnostic copy must not turn a planned or unknown state into current truth. |\n\n## Truth Boundary Matrix\n\n| Visible claim family | Allowed wording in this map | Forbidden wording in this map | Evidence needed later |\n| --- | --- | --- | --- |\n| Frontend workspace | planned workspace surface, lane-ready design target | claiming current frontend readiness | Editor implementation commit and fresh Editor checks. |\n| WYSIWYG | WYSIWYG gate remains closed; bounded edit regions are planned | claiming current WYSIWYG readiness | Project Control gate decision plus Editor/Core evidence. |\n| Preview | Draft Preview and state vocabulary are UX targets | preview proves export parity or renderer parity | Editor, Backend, Core, renderer, and artifact evidence for the exact path. |\n| Publish | publish flow is gated and unavailable until prerequisites are proven | claiming current publish readiness | Backend/Core/Editor implementation plus integration evidence. |\n| Production | production remains NO-GO from this map | live production, deployed, or ready | Separate production readiness decision and evidence. |\n| FlowDoc map truth | no map truth promotion | FlowDoc product truth or system-map current state | PLAN acceptance and evidence registration before any map change. |\n\n## Lane-Ready Package\n\nNext lane: `lane-design-workspace-usability`.\n\nLikely owner repository after PLAN acceptance: `repo-editor`.\n\nWork Type: `product-implementation` plus `ux-design-exploration`.\n\nGoal: implement or refine the Editor-owned Design workspace usability surface so it feels like a real document workspace with stable navigation, visible structure, selected-region context, bounded authoring affordances, status honesty, and responsive inspection.\n\nAllowed scope proposal:\n\n- Editor-owned workspace shell, route/view composition, mode tabs, status strip, outline, canvas framing, inspector, toolbar, disabled-state copy, and responsive layout.\n- Editor-owned tests for workspace shell, selected region state, disabled/unavailable controls, loading/error/empty states, and narrow viewport behavior.\n- Read-only Project Control context from this product map and the roadmap.\n\nForbidden scope proposal:\n\n- Core, Backend, or Project Control source edits.\n- Broad direct page editing, hidden contenteditable shortcuts, or rich editor package adoption.\n- Backend route, storage, credential, API key, worker, renderer, artifact, or production activation.\n- Claims of frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth.\n\nRequired reading proposal:\n\n- Project Control `AGENTS.md`\n- Editor repository `AGENTS.md`\n- `docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md`\n- this product map\n- `docs/domains/flowdoc-product-terminology.md`\n- `docs/domains/flowdoc-product-terminology-th.md`\n- relevant Editor workspace source and tests after the Editor repository AGENTS.md is read\n\nAcceptance checks proposal:\n\n- The first viewport opens on a product workspace, not a landing page.\n- Library return, document identity, Design/Preview/Publish navigation, outline, canvas, inspector, toolbar, and status strip have stable dimensions and no incoherent overlap.\n- Empty, loading, error, blocked, unavailable, dirty, saving, saved, and conflict states are visible or testable where in lane.\n- Controls use familiar icon or native control patterns where possible, with disabled reasons that do not pretend the feature exists.\n- Narrow desktop and mobile inspection layouts preserve document context.\n- Tests prove the lane did not bypass the WYSIWYG gate or enable publish submission.\n\nEvidence target proposal:\n\n- `evidence-editor-design-workspace-usability-2026-09-03`\n\nExpected terminal handoff proposal:\n\n- Editor commit hash for changed behavior.\n- Files changed and behavior changed.\n- Fresh Editor focused tests and `npm run check`.\n- Evidence candidate for PLAN; the Editor WORK room must not self-promote Project Control truth or map truth.\n- Claims intentionally not promoted, especially frontend readiness, WYSIWYG readiness, publish readiness, production readiness, and end-to-end compatibility.\n\n## Intentionally Not Changed\n\n- No product repository files change in this phase.\n- No runtime UI implementation is performed by this phase.\n- No Core, Backend, or Editor behavior is changed.\n- No FlowDoc system map or DOCUMENT_MAP entry is updated with planned outcomes.\n- No frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, or FlowDoc product truth is promoted.\n- No additional WORK rooms are opened by this phase.\n\n## Next Recommended Work\n\nPLAN should review this map through `acceptanceGate`. If accepted, PLAN can use the Lane-Ready Package above as the Context Capsule basis for `lane-design-workspace-usability` and open a real Editor WORK room with automatic return, liveness, retrievable locator, death signal, evidence target, and stop conditions intact.\n"
     },
     {
       "kind": "document",
@@ -16310,6 +16486,16 @@
       "pathOrContractId": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md; data/work/flowdoc-frontend-expert-roadmap.json; data/phases/phase-flowdoc-frontend-expert-roadmap-v1.json; data/checklists/checklist-flowdoc-frontend-expert-roadmap-v1.json; data/documents/flowdoc-frontend-expert-roadmap-2026-09-03.json; tests/flowdoc-frontend-expert-roadmap.test.ts; npm run check",
       "verificationSummary": "Project Control commit 1a1d5fa5b7a90c80926a583ab70a9c87d2967629 records a bounded Frontend Expert Roadmap v1 before product implementation. The roadmap defines the frontend north star, missing Library, Design, Preview, and Publish surfaces, lane-ready sequencing, WYSIWYG gate decision boundary, and acceptance expectations. RED evidence: npx vitest run tests/flowdoc-frontend-expert-roadmap.test.ts --maxWorkers=1 failed before Project Control contained the new roadmap Work. GREEN evidence target includes the focused roadmap guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-03T09:00:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-frontend-product-map-2026-09-03",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "c5db3ef3f5c1c02042ad68e5d7b0f382582098d1",
+      "pathOrContractId": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-v1.json; data/documents/flowdoc-frontend-product-map-2026-09-03.json; tests/flowdoc-frontend-product-map.test.ts; npm run check",
+      "verificationSummary": "Project Control commit c5db3ef3f5c1c02042ad68e5d7b0f382582098d1 is the accepted Frontend Expert Roadmap source commit for this follow-on product map lane. This lane records a bounded Frontend Product Map v1 in Project Control with screen inventory for Library, Document Detail, Design, Preview, Publish, shared empty/error/loading/blocked/unavailable/unknown states, action inventory for open, edit, save, preview, publish, retry, export, and inspect status, truth boundaries for visible readiness claims, and a lane-ready package for lane-design-workspace-usability. RED evidence: npx vitest run tests/flowdoc-frontend-product-map.test.ts --maxWorkers=1 failed before Project Control contained the new product map Work. GREEN evidence target includes the focused product-map guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not open additional WORK rooms, and does not promote frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-03T10:00:00.000Z"
     },
     {
       "kind": "evidence",

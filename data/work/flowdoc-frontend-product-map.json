@@ -1,0 +1,33 @@
+{
+  "kind": "work",
+  "id": "flowdoc-frontend-product-map",
+  "title": "FlowDoc Frontend Product Map",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-frontend-expert-roadmap",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-progress",
+  "summary": "Expand the accepted Frontend Expert Roadmap into a Project Control-owned screen and action map for Library, Document Detail, Design, Preview, Publish, shared states, and the first Editor implementation lane package.",
+  "contextDocumentIds": [
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-delivery-operating-model",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-lean-dispatch-operating-rules",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-frontend-expert-roadmap-2026-09-03"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Frontend Product Map v1 in Project Control, with screen inventory, action inventory, truth boundaries, and a lane-ready package for lane-design-workspace-usability.",
+  "riskSummary": "The map is planning context and may be mistaken for frontend readiness or current product behavior. It intentionally does not promote Editor, Backend, Core, WYSIWYG, publish, production, compatibility, FlowDoc product truth, or map truth.",
+  "requiredEvidence": ["evidence-flowdoc-frontend-product-map-2026-09-03"],
+  "createdAt": "2026-09-03T10:00:00.000Z",
+  "updatedAt": "2026-09-03T10:00:00.000Z"
+}
