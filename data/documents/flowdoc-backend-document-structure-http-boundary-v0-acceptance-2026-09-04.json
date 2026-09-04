@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "ff74ac3a44139115e52ce961fcb38fe0bb3b8f8c",
+      "commit": "1b3626d0e1681a428f65ee788a7252fba11c2cc3",
       "pathOrContractId": "docs/domains/flowdoc-backend-document-structure-http-boundary-v0-acceptance-2026-09-04.md; tests/flowdoc-backend-document-structure-http-boundary-v0-acceptance.test.ts"
     },
     {
