@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-editor-build-preview-usability-dispatch-registry-2026-09-04",
+  "title": "FlowDoc Editor Build Preview Usability Dispatch Registry",
+  "path": "docs/domains/flowdoc-editor-build-preview-usability-dispatch-registry-2026-09-04.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN-owned Room Run Registry note for dispatch-editor-build-preview-usability-v0-2026-09-04-01, preserving clientThreadId, worktree, branch, return, liveness, completionQueue, and acceptance boundaries while two Editor WORK rooms are still awaiting terminal handoff.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "919ad65d087bdc06f2ef2c06bd02cf910ca2351b",
+      "pathOrContractId": "docs/domains/flowdoc-editor-build-preview-usability-dispatch-registry-2026-09-04.md; tests/flowdoc-editor-build-preview-usability-dispatch-registry.test.ts"
+    }
+  ]
+}
