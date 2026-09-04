@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-backend-document-structure-http-boundary-v0-acceptance-2026-09-04",
+  "title": "FlowDoc Backend Document Structure HTTP Boundary V0 Acceptance",
+  "path": "docs/domains/flowdoc-backend-document-structure-http-boundary-v0-acceptance-2026-09-04.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN-owned Room Run Registry and acceptance note for dispatch-backend-document-structure-http-boundary-v0-2026-09-04-01, preserving the WORK room locator, automatic return, code-review repair, Backend main merge, bounded accepted behavior, verification, and unpromoted product/map truth boundaries.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "ff74ac3a44139115e52ce961fcb38fe0bb3b8f8c",
+      "pathOrContractId": "docs/domains/flowdoc-backend-document-structure-http-boundary-v0-acceptance-2026-09-04.md; tests/flowdoc-backend-document-structure-http-boundary-v0-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "eddf727fabef035862c91d3af9eb04b884c8ac6d",
+      "pathOrContractId": "src/documentStructure/documentStructureRepository.ts; src/documentStructure/documentStructureSqliteRepository.ts; src/http/server.ts; src/index.ts; src/routes/documentStructureRoute.ts; src/server.ts; src/tests/documentStructureRepository.test.ts; src/tests/documentStructureRoute.test.ts; package.json#scripts.check"
+    }
+  ]
+}
