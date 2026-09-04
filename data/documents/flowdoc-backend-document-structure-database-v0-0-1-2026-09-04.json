@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04",
+  "title": "FlowDoc Backend Document Structure Database v0.0.1 Acceptance",
+  "path": "docs/domains/flowdoc-backend-document-structure-database-v0-0-1-2026-09-04.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN acceptance record for the automatically returned Backend WORK room document-structure database v0.0.1 implementation handoff.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-backend",
+      "commit": "619dd32decf68ec7f1c3d1e68b64619beeb702c3",
+      "pathOrContractId": "src/documentStructure/documentStructureRepository.ts; src/documentStructure/documentStructureSqliteRepository.ts; src/tests/documentStructureRepository.test.ts; src/index.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6e34d250c03de10a5cad53f98964cc825025ea83",
+      "pathOrContractId": "docs/domains/flowdoc-backend-document-structure-database-v0-0-1-2026-09-04.md; data/work/flowdoc-backend-document-structure-database-v0-0-1.json; data/phases/phase-flowdoc-backend-document-structure-database-v0-0-1.json; data/checklists/checklist-flowdoc-backend-document-structure-database-v0-0-1.json; data/evidence/flowdoc-backend-document-structure-database-v0-0-1-2026-09-04.json; tests/flowdoc-backend-document-structure-database-acceptance.test.ts"
+    }
+  ]
+}

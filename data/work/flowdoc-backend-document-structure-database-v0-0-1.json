@@ -1,0 +1,23 @@
+{
+  "kind": "work",
+  "id": "flowdoc-backend-document-structure-database-v0-0-1",
+  "title": "FlowDoc Backend Document Structure Database v0.0.1",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-document-structure-database-model",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-backend"],
+  "workState": "in-review",
+  "summary": "PLAN accepted the Backend document-structure database v0.0.1 implementation lane after one same-room revision. Backend commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3 adds repository/service/schema foundations for drafts, sections, components, component versions, document versions, bindings, publications, pure field types, section tree validation, and component version create-or-select behavior.",
+  "contextDocumentIds": [
+    "doc-flowdoc-document-structure-database-model-2026-09-04",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"
+  ],
+  "activeRole": "evidence-reviewer",
+  "expectedOutput": "Project Control acceptance record for the Backend-owned document-structure database v0.0.1 foundation, including automatic WORK-to-PLAN return, same-room revision, exact Backend commit, changed files, Backend gates, accepted scope, intentionally closed domains, cleanup risk, and remaining unknowns.",
+  "riskSummary": "HTTP gateway routes remain unknown; external callers are not wired; production database provider and migration runner are not selected; SQLite still keeps JSON read snapshots alongside normalized relationship tables; Core and Editor adoption remain unproven; a residual unregistered Codex worktree directory could not be deleted because Windows path-length cleanup was blocked by policy.",
+  "requiredEvidence": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+  "createdAt": "2026-09-04T11:40:00.000+07:00",
+  "updatedAt": "2026-09-04T11:40:00.000+07:00"
+}

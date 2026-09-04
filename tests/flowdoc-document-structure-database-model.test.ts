@@ -50,7 +50,10 @@ describe("FlowDoc Document Structure Database Model", () => {
       nodeId: "flowdoc",
       parentWorkId: PARENT_WORK_ID,
       phaseIds: expect.arrayContaining([PHASE_ID]),
-      requiredEvidence: [EVIDENCE_ID],
+      requiredEvidence: expect.arrayContaining([
+        EVIDENCE_ID,
+        "evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04",
+      ]),
       repositoryIds: ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
       workKind: "task",
       workPathIds: [PARENT_WORK_ID, WORK_ID],
