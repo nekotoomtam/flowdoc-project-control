@@ -14,8 +14,8 @@ This document does not promote Core, Backend, Editor, compatibility, release rea
 - Current Phase: recovery overlay for the existing Design workspace usability and Structure Pattern Build/Preview evidence paths
 - Checklist target: identify the first path-drift round, mark old-repo evidence as suspect for vNext purposes, accept only replacement commits that exist in canonical `flowdoc-vnext-editor`, and preserve boundaries
 - Evidence target: `evidence-flowdoc-editor-vnext-recovery-path-drift-2026-09-05`
-- Known risks: old Project Control records still contain accepted wording for old `FlowDocEditor` commits; recovery must not turn bounded UI status affordances into broad frontend readiness; current Editor full gate is blocked by local Core package dependency resolution because `@flowdoc/text-engine-rust-wasm` points to a Core checkout with deleted package files
-- Unknown state: Build/Preview usability recovery after the Structure Pattern foundation remains incomplete in this record; Preview readiness, Publish readiness, WYSIWYG readiness, runtime submission persistence, generated PDF files, production readiness, and release readiness remain unverified
+- Known risks: old Project Control records still contain accepted wording for old `FlowDocEditor` commits; recovery must not turn bounded UI status affordances into broad frontend readiness; Core still has unrelated tracked edits and an untracked `.git.broken-backup-25690905-002257/` directory that makes ordinary `git status` noisy with long-path warnings; two WORK-room checkout directories remain on disk after git removed them from its worktree registry because deletion was blocked by local policy or permission
+- Unknown state: Preview readiness, Publish readiness, WYSIWYG readiness, runtime submission persistence, generated PDF files, production readiness, and release readiness remain unverified
 
 ## Drift Finding
 
@@ -45,9 +45,17 @@ The selected-region command summary recovery room first returned a mistyped full
 
 The Structure Pattern Build/Preview foundation recovery room returned PASS/RISK at vNext commit `7a99bd0f959de8671f5e0fe5bf59fad1e98d4151`. PLAN verified that commit exists in `flowdoc-vnext-editor` and does not exist in old `FlowDocEditor`, reviewed the diff, ran focused Structure Pattern Build/Preview tests, and merged it to Editor main as `12d3ebe0a9b69d054d66cf7752c836651c7ec2f2`. The focused main verification passed with 5 test files and 15 tests. Full Editor `npm run check` did not pass, but PLAN reproduced the same `@flowdoc/text-engine-rust-wasm` missing-module type-check failure on Editor main after aborting the Structure Pattern merge, proving the full-gate blocker is a pre-existing local Core dependency state rather than a Structure Pattern lane regression.
 
-## Pending Recovery
+Before accepting the remaining Build/Preview usability recovery lanes, PLAN restored the missing `packages/text-engine-rust-wasm` files in the local Core checkout from Core HEAD so the Editor symlinked dependency could resolve again. This was a local workspace-health repair for verification only. It does not accept Core Structure Pattern Slot work, does not promote Core runtime behavior, and leaves Core's unrelated tracked and untracked changes as a separate risk.
 
-Build/Preview usability records after the Structure Pattern foundation remain pending recovery. The old `FlowDocEditor` commits `3ac90724a5dd6ea92f1d7a9cde11dfb19fa0b48c`, `78dbae50e234487e64c58eae5480d8a8f1c16f97`, `76e32076a6588fb48def07daaf08825c41afa334`, and `715dd2e7edf0e7a3592ab7ff7e55cced361c836a` are not accepted as vNext evidence by this record.
+The Build Authoring Focus recovery room returned PASS/RISK at vNext commit `7c8b34293f3e975635c664732a1389ce2cfddf02`. PLAN verified that commit exists in `flowdoc-vnext-editor` and does not exist in old `FlowDocEditor`, reviewed the diff, confirmed a clean merge tree, merged it to Editor main as `e2517283e7ea49a70beb600d77bae73a987b117b`, ran focused workspace tests with 6 test files and 17 tests passing, and ran full Editor `npm run check` on main with 112 test files and 405 tests passing plus production build.
+
+The Preview Pattern Entry Simulation recovery room returned PASS at vNext commit `531b7457615a470513220c0b040c0c2b7647ece8`. PLAN verified that commit exists in `flowdoc-vnext-editor` and does not exist in old `FlowDocEditor`, reviewed the diff, confirmed a clean merge tree, merged it to Editor main as `bd07c1a54f98b3a391cbc1de06497f1aef7816d3`, ran focused Preview form verification with 2 matched test files and 5 tests passing, and ran full Editor `npm run check` on main with 112 test files and 406 tests passing plus production build.
+
+## Recovery Closure And Remaining Risks
+
+Build/Preview usability records after the Structure Pattern foundation are now recovered onto canonical `flowdoc-vnext-editor` for the bounded Editor UI affordances named in this record. The old `FlowDocEditor` commits `3ac90724a5dd6ea92f1d7a9cde11dfb19fa0b48c`, `78dbae50e234487e64c58eae5480d8a8f1c16f97`, `76e32076a6588fb48def07daaf08825c41afa334`, and `715dd2e7edf0e7a3592ab7ff7e55cced361c836a` are not accepted as vNext evidence by this record. The old integration commit is superseded by the accepted vNext Build and Preview lane merges, not by treating the old integration commit as canonical evidence.
+
+PLAN removed the recovered Editor WORK rooms from the git worktree registry and deleted the Build recovery branch after the merge. Local checkout directories at `C:\Users\nekot\.codex\worktrees\c74c\flowdoc-vnext-editor` and `C:\Users\nekot\.codex\worktrees\6a2a\flowdoc-vnext-editor` remain on disk because `git worktree remove` could not delete all files and direct recursive cleanup was blocked by local policy or permission. This is a housekeeping risk only; `git worktree list` for canonical `flowdoc-vnext-editor` now lists only the main checkout.
 
 ## Boundaries
 
