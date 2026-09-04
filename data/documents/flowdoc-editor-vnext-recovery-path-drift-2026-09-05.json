@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-editor-vnext-recovery-path-drift-2026-09-05",
+  "title": "FlowDoc Editor vNext Recovery From Old Repo Path Drift",
+  "path": "docs/domains/flowdoc-editor-vnext-recovery-path-drift-2026-09-05.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control recovery and evidence-boundary record for Editor work that drifted into the old FlowDocEditor repository before being recovered onto canonical flowdoc-vnext-editor.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8bcc17563daa91780dc01fbb8a7bf90eedc0cbea",
+      "pathOrContractId": "vNext recovery commits 9e0097d87e91923218825021d4b7f0f9c60b7930 and 8b966ee30f6a978a3c20d8b2abf640d3d3eac86e; npm run check on flowdoc-vnext-editor main"
+    }
+  ]
+}

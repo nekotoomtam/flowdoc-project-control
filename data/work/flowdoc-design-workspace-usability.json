@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-editor", "repo-project-control"],
   "workState": "in-review",
-  "summary": "Accept the Editor-owned Design workspace usability work. The first accepted lane added the bounded Design workspace status strip. The continuation lane accepts a selected-region command summary that makes Text/List availability and Direct page edit, Preview, and Publish unavailable states visible without activating those gated behaviors.",
+  "summary": "Recover the Editor-owned Design workspace usability work onto the canonical flowdoc-vnext-editor repository after PLAN found the 2026-09-03 accepted Editor commits were produced in the old FlowDocEditor repository. The first recovered vNext lane adds the bounded Design workspace status strip, and the second recovered vNext lane adds a selected-region command summary that makes Text/List availability and Direct page edit, Preview, and Publish unavailable states visible without activating those gated behaviors.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -25,17 +25,19 @@
     "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
     "doc-flowdoc-frontend-product-map-2026-09-03",
     "doc-flowdoc-wysiwyg-gate-decision-2026-09-03",
+    "doc-flowdoc-editor-vnext-recovery-path-drift-2026-09-05",
     "doc-flowdoc-design-workspace-usability-acceptance-2026-09-03",
     "doc-flowdoc-frontend-continuation-dispatch-registry-2026-09-03",
     "doc-flowdoc-design-selected-region-command-affordance-acceptance-2026-09-03"
   ],
   "activeRole": "product-implementation-agent",
-  "expectedOutput": "Editor commit e78ae4160d1ab1759961dbeb3d646beb3490ec46 accepted by PLAN for lane-design-workspace-usability, and Editor commit cb3c1ca4e35973c3bd4f89d969826911e109e55c accepted by PLAN for lane-design-selected-region-command-affordance-cleanup. The continuation evidence records a read-only selected-region command summary, automatic return, Editor main review:gate and review:browser verification, Preview unavailable, Publish blocked, Direct page edit unavailable, and no product truth or map truth promotion.",
-  "riskSummary": "These lanes are bounded Editor UI affordances only and this record does not promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
+  "expectedOutput": "Wrong-repository evidence is preserved only as historical/suspect context: old FlowDocEditor commits e78ae4160d1ab1759961dbeb3d646beb3490ec46 and cb3c1ca4e35973c3bd4f89d969826911e109e55c must not be treated as canonical flowdoc-vnext-editor evidence. Replacement vNext Editor evidence is commit 9e0097d87e91923218825021d4b7f0f9c60b7930 for the workspace status strip and merged vNext Editor main commit 8bcc17563daa91780dc01fbb8a7bf90eedc0cbea for the selected-region command summary integration. The recovered evidence records read-only UI status affordances, Preview unavailable, Publish blocked, Direct page edit unavailable, and no product truth or map truth promotion.",
+  "riskSummary": "The 2026-09-03 Design workspace evidence was path-drifted into old FlowDocEditor and is superseded for canonical vNext purposes by evidence-flowdoc-editor-vnext-recovery-path-drift-2026-09-05. These lanes are bounded Editor UI affordances only and this record does not promote frontend readiness, WYSIWYG readiness, Preview readiness, Publish readiness, Backend readiness, Core readiness, production readiness, compatibility readiness, FlowDoc product truth, or map truth.",
   "requiredEvidence": [
     "evidence-editor-design-workspace-usability-2026-09-03",
-    "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03"
+    "evidence-editor-design-selected-region-command-affordance-cleanup-2026-09-03",
+    "evidence-flowdoc-editor-vnext-recovery-path-drift-2026-09-05"
   ],
   "createdAt": "2026-09-03T17:55:00.000+07:00",
-  "updatedAt": "2026-09-03T17:55:00.000+07:00"
+  "updatedAt": "2026-09-05T01:45:00.000+07:00"
 }
