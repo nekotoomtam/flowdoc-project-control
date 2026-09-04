@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
   "workState": "in-progress",
-  "summary": "Record a compact Project Control risk register before faster FlowDoc delivery, covering terminology drift, database drift, UX scope, truth promotion, speed/Lean Dispatch, and dependency warning risks.",
+  "summary": "Record a compact Project Control risk register before faster FlowDoc delivery, covering terminology drift, database drift, UX scope, truth promotion, speed/Lean Dispatch, dependency warning risks, and local workspace health risks that can block verification without being product regressions.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -26,9 +26,9 @@
     "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "A fast delivery risk register in Project Control that future PLAN rooms can copy into Kickoff Packets as a compact gate for terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, and dependency warnings.",
-  "riskSummary": "This risk register is not product implementation, not product database implementation, not frontend readiness evidence, not Backend API readiness, not Core renderer readiness, not PDF readiness, and not FlowDoc product truth. It records residual risks and fast-lane stop conditions only.",
+  "expectedOutput": "A fast delivery risk register in Project Control that future PLAN rooms can copy into Kickoff Packets as a compact gate for terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, dependency warnings, and local workspace health issues.",
+  "riskSummary": "This risk register is not product implementation, not product database implementation, not frontend readiness evidence, not Backend API readiness, not Core renderer readiness, not PDF readiness, and not FlowDoc product truth. It records residual risks and fast-lane stop conditions only. The 2026-09-05 operational sweep restored missing Core text-engine-rust-wasm package files from HEAD to unblock Editor verification while preserving unrelated tracked Core edits and recording residual cleanup blockers.",
   "requiredEvidence": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
   "createdAt": "2026-09-04T16:30:00.000+07:00",
-  "updatedAt": "2026-09-04T16:30:00.000+07:00"
+  "updatedAt": "2026-09-05T03:05:00.000+07:00"
 }

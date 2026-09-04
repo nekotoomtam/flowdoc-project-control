@@ -41,6 +41,17 @@ that any Editor, Backend, Core, Preview, Published/API, Runtime Submission, PDF
 renderer, artifact storage, permission, workflow, billing, audit, activity, or
 integration behavior exists.
 
+2026-09-05 operational sweep: PLAN restored only the missing tracked
+`packages/text-engine-rust-wasm` files in the local Core checkout after the
+Editor dependency junction resolved to a package directory without
+`package.json` or generated WASM typings. This restored local Editor usability:
+canonical `flowdoc-vnext-editor` main passed `npm run check` with 112 test
+files and 405 tests plus build, and the in-app browser rendered
+`/documents/reorder-blocked-target-qa/design`. Residual local workspace risks
+remain: Core still has three tracked Structure Pattern Slot edits outside this
+register, two old Editor worktree folders remain on disk after Windows cleanup
+failed, and direct recursive cleanup was blocked by local safety policy.
+
 ## How To Use This Register
 
 Before opening a fast product WORK lane, PLAN should scan this register and
@@ -68,6 +79,7 @@ turn every lane into a new broad design round.
 | `RISK-FD-004` | Truth promotion risk | A handoff treats planning docs, UX docs, risk notes, screenshots, branches, worktrees, or generated Project Control index content as product truth. | Do not promote frontend readiness, product database implementation, Published/API readiness, PDF readiness, or FlowDoc product truth without owner-repository evidence. Maps change only when a bounded Evidence record supports the exact claim. | Keep the claim `planned`, `risk`, or `unknown`; request product evidence from the owning repository. |
 | `RISK-FD-005` | Speed risk | PLAN opens several WORK rooms quickly or uses Lean Dispatch with a thin Context Capsule. | Lean Dispatch may reduce duplicated prose, but it must not remove automatic return, liveness, retrievable locator, acceptanceGate, owner repository, forbidden scope, evidence target, or Contract Change Request triggers. | Before dispatch, record parallelLimit, Return Channel, Active Return Command, handoff ID, livenessDeadline, and compact Terminal Handoff fields. |
 | `RISK-FD-006` | Dependency risk | A worktree setup or dependency install emits warnings such as npm audit findings, startup dependency failures, or long install behavior. | Do not hide dependency warnings. If a lane touches dependencies, security, package manager behavior, or CI setup, promote this to owner-repository evidence work. If unrelated, record as residual risk and continue without changing dependencies. | Keep current dependency warning as residual risk until a dedicated security/dependency lane is approved. |
+| `RISK-FD-007` | Local workspace health risk | Editor, Backend, Core, or Project Control gates fail because local linked checkouts, generated package files, stale worktree folders, or backup metadata are missing, dirty, or blocked by Windows path limits. | First distinguish product regression from local workspace state. Repair only the minimum local workspace state needed for gates, preserve unrelated tracked edits, and record cleanup leftovers separately. Do not treat local repair as product evidence. | If a fast lane is blocked by local workspace health, pause acceptance, prove whether the baseline fails without the lane, repair only non-product local setup when safe, rerun the owner gate, and keep residual dirty files or cleanup blockers visible. |
 
 The `RISK-FD-004` guard is intentionally strict: PLAN must not promote
 frontend readiness and must not promote product database implementation from
@@ -86,6 +98,8 @@ Risk gate:
 - Confirm planning docs are not product implementation evidence.
 - Confirm automatic return, liveness, retrievable locator, and acceptanceGate.
 - Confirm dependency warnings are either out of scope or explicitly owned.
+- Confirm local workspace health separately from product behavior if a gate
+  fails before or after merge.
 ```
 
 If any answer is unclear, the lane should not start as a fast lane. PLAN should
@@ -105,6 +119,8 @@ evidence-shaped:
   changed, tests run, and which renderer or package behavior is still unknown.
 - Project Control lanes may update records and documents, but must not patch
   product repositories after dispatch.
+- Local workspace repairs may unblock verification, but they must stay narrow,
+  preserve unrelated tracked edits, and must not be cited as product behavior.
 
 This register does not require every lane to read every document in full. It
 does require PLAN to give each WORK room the exact risks that can break that
@@ -119,6 +135,9 @@ lane.
   workflow, audit, activity, billing, or integration behavior is implemented.
 - No FlowDoc product truth, frontend readiness, publish readiness, PDF
   readiness, production readiness, or map truth is promoted.
+- The 2026-09-05 local Core package restore does not accept the unrelated
+  tracked Core Structure Pattern Slot edits, does not clean residual on-disk
+  folders that safety policy blocked, and does not change any map.
 
 ## Next Recommended Work
 

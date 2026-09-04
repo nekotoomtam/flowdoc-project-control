@@ -95,6 +95,7 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
       "RISK-FD-004",
       "RISK-FD-005",
       "RISK-FD-006",
+      "RISK-FD-007",
     ]) {
       expect(docText).toContain(riskId);
     }
@@ -104,6 +105,7 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("Truth promotion risk");
     expect(docText).toContain("Speed risk");
     expect(docText).toContain("Dependency risk");
+    expect(docText).toContain("Local workspace health risk");
     expect(docText).toContain("Structure Pattern / Slot / Entry");
     expect(docText).toContain("legacy component_*");
     expect(docText).toContain("Build and Preview");
@@ -112,11 +114,18 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("automatic return");
     expect(docText).toContain("acceptanceGate");
     expect(docText).toContain("npm audit");
+    expect(docText).toContain("112 test files and 405 tests");
+    expect(docText).toContain("text-engine-rust-wasm");
+    expect(docText).toContain("local workspace health");
     expect(docText).toContain("must not patch Core, Backend, or Editor product repositories");
     expect(docText).toContain("must not promote frontend readiness");
     expect(docText).toContain("must not promote product database implementation");
     expect(docText).not.toMatch(/\bFlowDoc product truth: current\b/iu);
     expect(docText).not.toMatch(/\bfrontend readiness\b.*\bready\b/iu);
+
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("RISK-FD-007 Local workspace health risk");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("112 test files and 405 tests");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("does not edit Core, Backend, or Editor product behavior");
 
     expect(systemMapText).toContain("FlowDoc Fast Delivery Risk Register");
     expect(systemMapText).toContain("fast-delivery risk register");
