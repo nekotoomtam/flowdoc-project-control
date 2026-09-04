@@ -105,6 +105,10 @@ describe("FlowDoc Document Structure Database Model", () => {
     expect(docText).toContain("not a product database implementation");
     expect(docText).toContain("DocumentDefinition");
     expect(docText).toContain("DocumentDraft");
+    expect(docText).toContain("Structure Pattern Terminology Clarification");
+    expect(docText).toContain("Structure Pattern Slots");
+    expect(docText).toContain("Structure Pattern Entries");
+    expect(docText).toContain("not runtime repeated entries");
     expect(docText).toContain("draft_sections");
     expect(docText).toContain("parent_draft_section_id");
     expect(docText).toContain("component_definitions");

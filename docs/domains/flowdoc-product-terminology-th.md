@@ -156,6 +156,53 @@ Core adapter ได้ แต่ไม่ได้พิสูจน์ Backend 
 `outline item` คือ UI item ใน Editor ที่แทนโครงสร้างเอกสาร ถ้า item นั้นผูกกับ
 Core data ให้เรียก backing value แยกเป็น `Core runtime node`
 
+## ศัพท์ Document Structure
+
+### Structure Pattern
+
+`Structure Pattern` คือโครงย่อยของเอกสารที่คนสร้างกำหนดไว้เพื่อใช้ซ้ำในกรอบ
+ที่ระบบควบคุมได้ โครงย่อยนี้มี layout, field definitions และพฤติกรรมการแสดงผล
+แบบจำกัดสำหรับส่วนหนึ่งของ document structure
+
+Structure Pattern ไม่ใช่ React component หรือ UI component และไม่ใช่ template
+instance ที่คนสร้างเอาไปวางหลาย ๆ ชุดใน Build คนสร้างกำหนด pattern หนึ่งครั้ง
+และวางหรือกำหนด `Structure Pattern Slot` ในโครงเอกสาร จากนั้น Preview หรือ
+runtime data ในอนาคตจึงสร้าง `Structure Pattern Entry` ได้เป็นศูนย์ หนึ่ง หรือ
+หลายรายการ ตามที่ published document version อนุญาต
+
+ใช้ `Structure Pattern` เป็น product concept หลัก ส่วนชื่อ database แบบเก่า
+ที่เป็น `component_*` ใช้เฉพาะเมื่อพูดถึง model v0.0.1 หรือ Backend foundation
+ที่บันทึกไว้แล้ว และต้องแปลความหมายผ่านคำนี้
+
+### Structure Pattern Slot
+
+`Structure Pattern Slot` คือจุดหรือความสัมพันธ์ฝั่ง author-time ในโครงเอกสาร
+ที่บอกว่า Structure Pattern หนึ่งตัวถูกอนุญาตให้ปรากฏตรงนี้ได้ Slot อยู่กับ
+document draft หรือ frozen document version และอาจกำหนด order, local binding
+scope, repeat allowance และ behavior อื่นที่อยู่ในกรอบของโครงสร้าง
+
+Structure Pattern Slot ไม่ใช่จำนวนรายการจริงตอนใช้งาน อย่าอธิบาย Build ว่า
+คนสร้างวาง `A A A` ของ pattern เดียวกัน เว้นแต่มี product decision ใหม่ที่
+เปลี่ยนเรื่องนี้ ใน model ปัจจุบัน Build กำหนด slot ส่วน Preview หรือ runtime
+data เป็นฝ่ายสร้าง entry
+
+### Structure Pattern Entry
+
+`Structure Pattern Entry` คือ occurrence หนึ่งรายการที่ถูกสร้างใน Preview หรือ
+runtime จาก Structure Pattern Slot เช่น caller เพิ่มหลายรายการจาก slot ที่
+repeat ได้ เมื่อ published document version อนุญาต
+
+Structure Pattern Entry เป็นเรื่อง runtime/submission ไม่ใช่ขอบเขตของ
+document-structure database model แรก นอกจากเป็น future domain ที่อ้างกลับมา
+ยัง published document version
+
+### Component
+
+`component` ให้ถือว่าเป็น `split` โดยค่าเริ่มต้นใน FlowDoc ใช้ `UI component`
+สำหรับ React หรือ frontend rendering unit ใช้ `Structure Pattern` สำหรับ
+โครงย่อยเอกสารที่คนสร้างกำหนด ส่วน `component_*` ใช้เฉพาะชื่อ table เก่าหรือ
+บริบท historical/v0.0.1 จนกว่าจะมี migration หรือ aliasing decision ภายหลัง
+
 ## ศัพท์ข้าม Repository
 
 ### Project Control Node
@@ -216,6 +263,11 @@ route, source commit หรือ target commit
 - ใช้ `Editor draft` สำหรับ browser-local working state
 - ใช้ `Preview` สำหรับ visible rendering/inspection
 - ใช้ `Outline item` สำหรับแถวหรือรายการโครงสร้างใน UI
+- ใช้ `Structure Pattern` สำหรับโครงย่อย reusable ของเอกสารที่คนสร้างกำหนด
+- ใช้ `Structure Pattern Slot` สำหรับจุดในโครงเอกสารฝั่ง author-time ที่จะ
+  สร้าง entry ได้ในภายหลัง
+- ใช้ `Structure Pattern Entry` สำหรับ occurrence ใน Preview หรือ runtime ที่
+  เกิดจาก slot
 - ใช้ `Core runtime node` เฉพาะเมื่อ backing Core graph item อยู่ใน scope
 - ใช้ `Backend document record` สำหรับข้อมูลฝั่ง service
 - ใช้ `Document package` สำหรับ Core payload

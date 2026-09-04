@@ -62,6 +62,11 @@ describe("FlowDoc product terminology foundation", () => {
     expect(productTerminology).toContain("Backend document record");
     expect(productTerminology).toContain("Editor draft");
     expect(productTerminology).toContain("Core runtime node");
+    expect(productTerminology).toContain("Structure Pattern");
+    expect(productTerminology).toContain("Structure Pattern Slot");
+    expect(productTerminology).toContain("Structure Pattern Entry");
+    expect(productTerminology).toContain("component is split by default");
+    expect(productTerminology).toContain("Build defines the slot");
 
     expect(evidence.get("evidence-flowdoc-product-terminology-foundation-2026-08-27"))
       .toMatchObject({

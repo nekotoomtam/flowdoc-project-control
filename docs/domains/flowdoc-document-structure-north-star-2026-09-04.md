@@ -65,22 +65,25 @@ model must stay output-aware but output-agnostic enough that later renderer
 targets can consume the same structure relationship model.
 
 The stable center of the product is the relationship between document
-definition, section, component, field, data binding, style defaults, page
-profile, version, and publication. The first database design should protect
-that relationship before optimizing for authoring convenience.
+definition, section, Structure Pattern, Structure Pattern Slot, field, data
+binding, style defaults, page profile, version, and publication. The first
+database design should protect that relationship before optimizing for
+authoring convenience.
 
 ## Product Roles
 
 FlowDoc separates two product roles.
 
 The structure creator defines the document structure. This role chooses the
-document parts, section order, component instances, fields, binding names,
+document parts, section order, Structure Pattern Slots, fields, binding names,
 style defaults, and page profiles that the system can support.
 
 The downstream caller or user supplies data that matches the required contract.
-That caller does not redefine the document structure. The caller provides the
-data shape required by the published document version and receives an output
-from a renderer target such as PDF.
+That caller does not redefine the document structure. The caller can produce
+Structure Pattern Entries from published Structure Pattern Slots when the
+version allows repeatable or selectable structure. The caller provides the data
+shape required by the published document version and receives an output from a
+renderer target such as PDF.
 
 The current north star is scoped to the structure creator and the document
 structure model. Runtime data entry, submission processing, and generated
@@ -96,56 +99,93 @@ metadata, reusable relationship, versions, and publications.
 rules such as visibility, repeat, page break, keep-together behavior, and
 section-scoped style defaults.
 
-`ComponentDefinition` is a reusable structured sub-layout with fields and
-internal layout rules. In v0 it must not contain another active component.
-Recursive component composition is prepared for later relationship modeling,
-but v0 rendering and authoring must treat components as non-recursive.
+`StructurePatternDefinition` is a reusable structured sub-layout with fields
+and internal layout rules. It is the product term for the concept previously
+discussed with the temporary word `component`.
 
-`ComponentInstance` is the placement of one component definition inside a
-document section. It owns order, local binding context, and allowed local
-overrides without changing the shared component definition.
+`StructurePatternSlot` is the author-time relationship inside a document
+section that says one Structure Pattern is allowed to appear there. It owns
+order, local binding context, repeat allowance, and allowed local overrides
+without changing the shared Structure Pattern definition.
 
-`FieldDefinition` names a data input required by a component. It describes the
-field key, label, type, requirement, validation shape, and formatting intent
-that a later data contract can expose.
+`StructurePatternEntry` is a Preview or runtime occurrence created from a
+Structure Pattern Slot. Entries are not placed by the creator during Build.
+They belong to the later runtime/submission domain and can be zero, one, or
+many depending on the caller data and the published version rules.
+
+`FieldDefinition` names a data input required by a document section or
+Structure Pattern. It describes the field key, label, type, requirement,
+validation shape, and formatting intent that a later data contract can expose.
 
 `DataBinding` connects a field or repeat rule to a named data path. The
 structure model records the binding expectation, not the runtime data values.
 
 `PageProfile` describes output-surface defaults such as size and orientation.
 The document can set a default page profile, and a section can override it.
-Components do not change page orientation directly.
+Structure Patterns do not change page orientation directly.
 
 `StyleDefaults` are inherited defaults used to reduce repeated style
 declaration. A section may provide typography, spacing, color role, density, or
-label treatment defaults for child components, but these defaults do not own
-component internals or renderer-specific commands.
+label treatment defaults for child Structure Patterns, but these defaults do
+not own Structure Pattern internals or renderer-specific commands.
 
 ## Relationship Rules For v0
 
-The v0 composition path is:
+The v0 Build composition path is:
 
 ```text
 DocumentDefinition
   -> Section
-  -> ComponentInstance
-  -> ComponentDefinition
+  -> StructurePatternSlot
+  -> StructurePatternDefinition
   -> FieldDefinition
   -> DataBinding
 ```
 
-Components do not contain active child components in v0. If a real use case
-appears to need nested components, v0 should model it by creating another
-component definition and arranging the components as siblings in a section.
+Preview and runtime can create `StructurePatternEntry` records or equivalent
+submission items from one repeatable slot later. The Build model must not make
+the creator place `A A A` copies to express user-entered repetition.
 
-Component parent-child relationships may be prepared as a separate relation
-table for future compatibility, but v0 validation and rendering should keep
-that relationship inactive unless a later approved decision enables it.
+Structure Patterns do not contain active child Structure Patterns in v0. If a
+real use case appears to need nesting, v0 should model it by creating another
+Structure Pattern definition and arranging slots as siblings in a section.
 
-Section rules are document-flow rules, not component-layout authority. A
+Structure Pattern parent-child relationships may be prepared as a separate
+relation table for future compatibility, but v0 validation and rendering
+should keep that relationship inactive unless a later approved decision
+enables it.
+
+Section rules are document-flow rules, not Structure Pattern layout authority. A
 section may control visibility, repeat, page profile override, page break, keep
-together, and style defaults. It must not define component fields, edit
-component internals, or hold fixed renderer coordinates.
+together, and style defaults. It must not define Structure Pattern fields, edit
+Structure Pattern internals, or hold fixed renderer coordinates.
+
+## Build, Preview, Version, And Published Flow
+
+The creator-facing flow must keep authoring and simulation separate.
+
+`Document Structure Library` is the entry surface for choosing one
+`DocumentDefinition`.
+
+`Build` is the creator workspace for the editable draft. It may contain tabs
+such as Document, Fields, Structure Patterns, and Settings, but those tabs
+still operate on the same draft. The center of Build should show the document
+as a real document surface. Structure details, fields, and slot controls appear
+from selection or tab context; Build should not become a free-form Word or
+Google Docs editor.
+
+`Preview` is a separate simulation surface. It takes the draft or selected
+version's fields and Structure Pattern Slots, generates a form-like input
+surface, lets the user add Structure Pattern Entries when a slot allows it,
+and shows the resulting document output.
+
+In plain guard language: Build defines the slot; Preview or runtime creates
+the entries. Preview is a separate simulation surface.
+
+`Version` freezes the creator-approved draft as a baseline.
+
+`Published` selects one frozen version for real use and exposes the integration
+or API contract that later systems should follow.
 
 ## Draft, Version, And Publication
 
@@ -155,7 +195,7 @@ are designing.
 
 `DocumentVersion` is a frozen baseline created from the draft. A document
 definition can have many versions. A version freezes the document sections,
-component instances, and resolved component definition versions needed to
+Structure Pattern Slots, and resolved Structure Pattern versions needed to
 render or validate that version later.
 
 `Publication` is a pointer from a document definition to one frozen document
@@ -166,10 +206,11 @@ publication pointer, not rewrite version history.
 For handoff language: DocumentVersion is a frozen baseline, and Publication is
 a pointer to the selected baseline.
 
-Creating a document version should automatically resolve referenced component
-drafts into immutable component versions. This freeze is automatic for safety
-and creator convenience, but it does not automatically release those component
-versions as reusable library releases.
+Creating a document version should automatically resolve referenced Structure
+Pattern drafts into immutable Structure Pattern versions. Legacy v0.0.1
+database docs may still call these component drafts. This freeze is automatic
+for safety and creator convenience, but it does not automatically release
+those Structure Pattern versions as reusable library releases.
 
 ## Product Database Boundary
 
@@ -180,9 +221,9 @@ truth for editable structure, version relationships, field discovery, reuse,
 or validation.
 
 The document-structure scope includes document definitions, sections,
-component definitions, component instances, fields, data bindings, style
-defaults, page profiles, versions, publications, and prepared component
-relationship tables.
+Structure Pattern definitions, Structure Pattern Slots, fields, data bindings,
+style defaults, page profiles, versions, publications, and prepared Structure
+Pattern relationship tables.
 
 Runtime data, submissions, logs, audit trails, generated files, and permissions
 are out of scope for this document-structure model. Those domains may relate
@@ -192,8 +233,8 @@ structure tables during the first database design.
 ## First Renderer Boundary
 
 PDF is the first renderer target. The first implementation slice may constrain
-supported page profiles, section flow rules, and component layouts to what the
-PDF renderer can honestly generate.
+supported page profiles, section flow rules, and Structure Pattern layouts to
+what the PDF renderer can honestly generate.
 
 That PDF constraint must not redefine FlowDoc as PDF-only. The renderer reads
 a frozen document version and data contract; it does not own the central

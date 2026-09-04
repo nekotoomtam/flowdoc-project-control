@@ -47,6 +47,10 @@ Known risks:
   frozen relationship needed by later published use.
 - Future rooms may confuse reusable component fields with per-document field
   occurrences.
+- Future rooms may confuse author-time component instance table names with
+  runtime repeated entries. The canonical product term is now Structure
+  Pattern; the v0.0.1 `component_*` names are legacy database names that must
+  be read as Structure Pattern definitions, slots, and versions.
 - Future rooms may let `field_types` absorb format and validation concerns
   before those domains are designed.
 
@@ -68,8 +72,8 @@ FlowDoc as a Word-style editor or as a PDF-only system.
 The model answers these questions:
 
 1. Where does the editable draft live?
-2. How are sections, component instances, component definitions, fields, page
-   settings, style defaults, and binding expectations related?
+2. How are sections, Structure Pattern Slots, Structure Pattern definitions,
+   fields, page settings, style defaults, and binding expectations related?
 3. What gets frozen into a version?
 4. How does publication select a frozen version without rewriting history?
 5. Which domains are deliberately left outside document structure?
@@ -87,8 +91,8 @@ document library.
 active draft for one `DocumentDefinition`.
 
 `DocumentVersion` is a full immutable frozen structure, not a delta-only
-record. A version must carry its own resolved sections, component instances,
-field occurrences, bindings, page settings, and style snapshots needed for
+record. A version must carry its own resolved sections, Structure Pattern
+Slots, field occurrences, bindings, page settings, and style snapshots needed for
 later validation and rendering.
 
 `Publication` is a pointer from a `DocumentDefinition` to one frozen
@@ -102,6 +106,31 @@ version and must not become the canonical truth.
 Actual submitted values are not stored in this structure model. Runtime data
 belongs to a later `Runtime Submission` domain that references a publication
 and resolved document version.
+
+## Structure Pattern Terminology Clarification
+
+The canonical product term for the former temporary `component` concept is
+`Structure Pattern`.
+
+The v0.0.1 database model and accepted Backend foundation still use
+`component_*` table names because they were recorded before this terminology
+clarification. Future rooms must translate those names as follows until a
+later migration or aliasing decision renames them:
+
+- `component_definitions` means Structure Pattern definitions.
+- `component_drafts` means editable Structure Pattern drafts.
+- `component_fields` means fields declared inside a Structure Pattern draft.
+- `component_versions` means immutable Structure Pattern versions.
+- `component_version_fields` means fields frozen inside one Structure Pattern
+  version.
+- `draft_component_instances` means author-time Structure Pattern Slots inside
+  a draft section, not runtime repeated entries.
+- `document_version_component_instances` means frozen Structure Pattern Slots
+  inside one document version, not runtime repeated entries.
+
+Runtime repeated data rows or user-added occurrences should be called
+`Structure Pattern Entries`. They belong to a later Runtime Submission domain
+and are not stored in this v0.0.1 document-structure model.
 
 ## Table Group Overview
 
@@ -132,6 +161,11 @@ document_definitions
 The draft side is normalized for editing. The version side is resolved and
 immutable for later use.
 
+In the table overview above, `draft_component_instances` and
+`document_version_component_instances` are legacy table names for Structure
+Pattern Slots. They are not the same thing as Preview or runtime Structure
+Pattern Entries.
+
 ## Master And Support Tables
 
 ### `field_types`
@@ -155,7 +189,8 @@ format or validation model, not the first pure `field_types` master.
 
 ### Other master tables
 
-`component_kinds` classifies reusable component definitions at a broad level.
+`component_kinds` classifies reusable Structure Pattern definitions at a broad
+level. The table name is legacy v0.0.1 terminology.
 
 `section_kinds` classifies document-flow sections at a broad level.
 
@@ -171,8 +206,8 @@ not the sole truth.
 
 `style_defaults` is a support table for section-scoped inherited style
 defaults. It exists to reduce repeated child declarations. It does not own
-component internals, fixed renderer coordinates, or renderer-specific drawing
-commands.
+Structure Pattern internals, fixed renderer coordinates, or renderer-specific
+drawing commands.
 
 A later implementation may split style defaults into `style_default_sets` and
 `style_default_entries` if the style surface grows. For v0.0.1, the important
@@ -242,12 +277,13 @@ cross the owning `document_draft_id`.
 Page orientation may be portrait or landscape. The actual page width and
 height live on the section when the section overrides the draft default.
 
-## Component Library Tables
+## Structure Pattern Library Tables
 
 ### `component_definitions`
 
-Represents one reusable structured sub-layout that can be placed inside a
-section.
+Represents one reusable Structure Pattern definition. The table name keeps the
+v0.0.1 legacy `component_*` wording, but the product concept is Structure
+Pattern.
 
 Important fields:
 
@@ -259,12 +295,13 @@ Important fields:
 - `created_at`
 - `updated_at`
 
-Component definitions are reusable across document definitions when permission
-and workspace scope allow it. v0.0.1 does not design that permission model.
+Structure Pattern definitions are reusable across document definitions when
+permission and workspace scope allow it. v0.0.1 does not design that
+permission model.
 
 ### `component_drafts`
 
-Represents the editable draft for one component definition.
+Represents the editable draft for one Structure Pattern definition.
 
 Important fields:
 
@@ -273,11 +310,11 @@ Important fields:
 - `created_at`
 - `updated_at`
 
-Like document drafts, component drafts stay mutable until frozen.
+Like document drafts, Structure Pattern drafts stay mutable until frozen.
 
 ### `component_fields`
 
-Represents reusable fields declared by a component draft.
+Represents reusable fields declared by a Structure Pattern draft.
 
 Important fields:
 
@@ -289,13 +326,13 @@ Important fields:
 - `required`
 - `sort_order`
 
-`component_fields` are component-owned draft field definitions. They do not
-store values and they do not know where a component instance will be placed in
-one document.
+`component_fields` are Structure Pattern-owned draft field definitions. They
+do not store values and they do not know which document slot will reference
+the Structure Pattern.
 
 ### `component_versions`
 
-Represents an immutable frozen component definition.
+Represents an immutable frozen Structure Pattern definition.
 
 Important fields:
 
@@ -308,12 +345,14 @@ Important fields:
 - `snapshot_hash`
 
 Creating a document version should automatically create or select the required
-`component_versions` for every referenced component draft. This auto-create
-behavior protects the document version from later component draft edits.
+`component_versions` for every referenced Structure Pattern draft. The legacy
+table name still says component, but the product concept is Structure Pattern.
+This auto-create behavior protects the document version from later Structure
+Pattern draft edits.
 
 ### `component_version_fields`
 
-Represents fields frozen inside one component version.
+Represents fields frozen inside one Structure Pattern version.
 
 Important fields:
 
@@ -327,14 +366,15 @@ Important fields:
 - `required`
 - `sort_order`
 
-`component_version_fields` preserve the reusable component field contract at
-the component version level. They are not the same as
-`document_version_fields`, because the same component version can appear in
-many document instances with different binding context.
+`component_version_fields` preserve the reusable Structure Pattern field
+contract at the legacy component version table level. They are not the same as
+`document_version_fields`, because the same Structure Pattern version can be
+referenced by document slots with different binding context.
 
 ### `prepared_component_relations`
 
-Represents a future parent-child relation between component definitions.
+Represents a future parent-child relation between Structure Pattern
+definitions.
 
 Important fields:
 
@@ -345,16 +385,18 @@ Important fields:
 - `enabled`
 
 This table is prepared for later, but it is inactive in v0.0.1. v0.0.1
-authoring and rendering must not require active nested components. If a real
-case appears to need nesting, first model it as sibling component instances or
-as another component definition until a later decision activates this
-relationship.
+authoring and rendering must not require active nested Structure Patterns. If
+a real case appears to need nesting, first model it as sibling Structure
+Pattern Slots or as another Structure Pattern definition until a later
+decision activates this relationship.
 
 ## Draft Composition Tables
 
 ### `draft_component_instances`
 
-Represents one placement of a component definition inside a draft section.
+Represents one author-time Structure Pattern Slot inside a draft section. The
+table name is legacy v0.0.1 terminology and must not be read as a runtime
+entry table.
 
 Important fields:
 
@@ -362,11 +404,13 @@ Important fields:
 - `draft_section_id`
 - `component_definition_id`
 - `instance_key`
+- `repeat_allowed`
 - `sort_order`
 - `binding_scope`
 
-The instance owns placement, order, and local binding scope. It does not alter
-the shared component definition.
+The slot owns order, repeat allowance, and local binding scope. It does not
+alter the shared Structure Pattern definition. Build creates or edits slots;
+Preview and runtime later create Structure Pattern Entries from slots.
 
 ## Document Version Tables
 
@@ -416,7 +460,8 @@ version. A version section parent must stay inside the same
 
 ### `document_version_component_instances`
 
-Represents a component placement frozen inside one version section.
+Represents a frozen Structure Pattern Slot inside one version section. The
+table name is legacy v0.0.1 terminology.
 
 Important fields:
 
@@ -426,12 +471,14 @@ Important fields:
 - `component_definition_id`
 - `component_version_id`
 - `instance_key`
+- `repeat_allowed`
 - `sort_order`
 - `binding_scope`
 
 This table is the bridge between one document version and one resolved
-component version. It lets the same component definition be reused while each
-document version keeps the exact component version it froze.
+Structure Pattern version. It lets the same Structure Pattern definition be
+reused while each document version keeps the exact Structure Pattern version
+it froze. It does not store runtime Structure Pattern Entries.
 
 ### `document_version_fields`
 
@@ -451,8 +498,8 @@ Important fields:
 - `sort_order`
 
 `document_version_fields` exist because the same
-`component_version_fields` can be used by multiple component instances. The
-document version needs its own field occurrence records for API shape,
+`component_version_fields` can be referenced through different document slots.
+The document version needs its own field occurrence records for API shape,
 preview, validation, and binding discovery.
 
 ### `document_version_bindings`
@@ -519,20 +566,21 @@ Creating a document version should follow this relationship flow:
 ```text
 validate DocumentDraft
   -> validate draft_sections tree
-  -> resolve draft_component_instances
+  -> resolve draft_component_instances as Structure Pattern Slots
   -> auto-create or select component_versions
   -> freeze component_version_fields
   -> create document_versions
   -> clone draft_sections into document_version_sections
   -> preserve section tree with parent_version_section_id
-  -> create document_version_component_instances
+  -> create document_version_component_instances as frozen Structure Pattern Slots
   -> resolve component_version_fields into document_version_fields
   -> create document_version_bindings
   -> optionally compile a published snapshot/cache after publication
 ```
 
 The freeze must copy enough relationship data that the version can be read
-later even if the draft, component draft, or master display names change.
+later even if the draft, Structure Pattern draft, or master display names
+change.
 
 ## Validation Rules For v0.0.1
 
@@ -545,9 +593,11 @@ later even if the draft, component draft, or master display names change.
 - `document_version_sections.parent_version_section_id` must stay inside the
   same `document_version_id` and must not form cycles.
 - `draft_component_instances` must point to `component_definitions`, not
-  directly to `component_drafts`.
-- Version creation resolves every instance to one `component_versions` record.
-- `component_version_fields` preserve reusable component field contracts.
+  directly to `component_drafts`; in product language this is a Structure
+  Pattern Slot, not a runtime entry.
+- Version creation resolves every slot to one `component_versions` record.
+- `component_version_fields` preserve reusable Structure Pattern field
+  contracts.
 - `document_version_fields` preserve per-document field occurrences.
 - `document_version_bindings` preserve expected data paths only.
 - `field_types` stays pure: `text`, `number`, `date`, and `boolean` only in
@@ -558,13 +608,14 @@ later even if the draft, component draft, or master display names change.
 ## Out Of Scope
 
 - Runtime Submission records and actual submitted values.
+- Runtime Structure Pattern Entries created from repeatable slots.
 - Generated PDF files and generated artifact storage.
 - Renderer jobs, queues, retries, and PDF bytes.
 - Permission, access-control, sharing, and workspace rights.
 - Workflow, approval, activity feed, notification, audit trail, billing, and
   integration endpoints.
-- Dataset seeding, curated component promotion, and AI-assisted component
-  creation.
+- Dataset seeding, curated Structure Pattern promotion, and AI-assisted
+  Structure Pattern creation.
 - SQL migration files, production indexes, database engine tuning, and product
   repository implementation.
 
@@ -574,8 +625,8 @@ Use this v0.0.1 model as the Project Control input for a Backend-owned product
 database implementation lane only after the PLAN room creates a bounded lane
 card and Kickoff Packet.
 
-Before opening that product lane, decide whether the next work should first
+Before opening another product lane, decide whether the next work should first
 mock the creator-facing frontend around `DocumentDefinition`, sections,
-component instances, and field binding expectations. That frontend mock can
-pressure-test the structure model without turning this document into product
-database truth.
+Structure Pattern Slots, Structure Pattern Entries in Preview, and field
+binding expectations. That frontend mock can pressure-test the structure model
+without turning this document into product database truth.

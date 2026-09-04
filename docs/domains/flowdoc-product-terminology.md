@@ -167,6 +167,57 @@ Backend integration.
 entry. If the item is backed by Core data, name the backing value separately as
 `Core runtime node`.
 
+## Document Structure Terms
+
+### Structure Pattern
+
+`Structure Pattern` means a creator-defined reusable document sub-structure.
+It can contain layout rules, field definitions, and bounded display behavior
+for one repeatable or selectable part of a document structure.
+
+A Structure Pattern is not a React or UI component. It is not a fixed template
+instance placed many times by the creator during Build. The creator defines the
+pattern once and places or configures a Structure Pattern Slot in the document
+structure. Preview or later runtime data can then create zero, one, or many
+Structure Pattern Entries from that slot, according to the published document
+version.
+
+Use `Structure Pattern` for the product concept. Use legacy `component_*`
+database names only when referring to the already-recorded v0.0.1 database
+model or Backend foundation, and translate their meaning through this term.
+
+### Structure Pattern Slot
+
+`Structure Pattern Slot` means the author-time location or relationship inside
+a document structure where one Structure Pattern is allowed to appear. A slot
+belongs to the document draft or frozen document version. It can define order,
+local binding scope, repeat allowance, and other bounded structure behavior.
+
+A Structure Pattern Slot is not the runtime item count. Do not describe a Build
+page as placing `A A A` copies of the same pattern unless the product decision
+explicitly changes. In the current model, Build defines the slot; Preview or
+runtime data creates the entries.
+
+### Structure Pattern Entry
+
+`Structure Pattern Entry` means one runtime or Preview-created occurrence
+produced from a Structure Pattern Slot. For example, a caller can add multiple
+entries from one repeatable slot when the published document version allows
+that structure.
+
+Structure Pattern Entries are runtime or submission concerns. They are out of
+scope for the first document-structure database model except as a future domain
+that references a published document version.
+
+### Component
+
+`component` is `split` by default in FlowDoc. Use `UI component` for React or
+frontend rendering units. Use `Structure Pattern` for creator-defined document
+sub-structures. Use legacy `component_*` only for historical or v0.0.1 database
+table names until a later migration or aliasing decision renames them.
+
+In plain guard language: component is split by default.
+
 ## Cross-Repository Terms
 
 ### Project Control Node
@@ -228,6 +279,12 @@ through this glossary:
 - use `Editor draft` for browser-local working state;
 - use `Preview` for visible rendering/inspection;
 - use `Outline item` for UI structure rows;
+- use `Structure Pattern` for creator-defined reusable document
+  sub-structures;
+- use `Structure Pattern Slot` for author-time document locations that can
+  produce entries later;
+- use `Structure Pattern Entry` for Preview or runtime occurrences produced
+  from a slot;
 - use `Core runtime node` only when the backing Core graph item is in scope;
 - use `Backend document record` for service data;
 - use `Document package` for the Core payload;

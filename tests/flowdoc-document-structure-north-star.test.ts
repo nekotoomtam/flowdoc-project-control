@@ -100,12 +100,16 @@ describe("FlowDoc Document Structure North Star", () => {
     expect(docText).toContain("Structure Relationship Model v0");
     expect(docText).toContain("DocumentDefinition");
     expect(docText).toContain("Section");
-    expect(docText).toContain("ComponentDefinition");
-    expect(docText).toContain("ComponentInstance");
+    expect(docText).toContain("StructurePatternDefinition");
+    expect(docText).toContain("StructurePatternSlot");
+    expect(docText).toContain("StructurePatternEntry");
     expect(docText).toContain("FieldDefinition");
     expect(docText).toContain("DataBinding");
     expect(docText).toContain("PageProfile");
     expect(docText).toContain("StyleDefaults");
+    expect(docText).toContain("Build, Preview, Version, And Published Flow");
+    expect(docText).toContain("Build defines the slot");
+    expect(docText).toContain("Preview is a separate simulation surface");
     expect(docText).toContain("Draft, Version, And Publication");
     expect(docText).toContain("DocumentVersion is a frozen baseline");
     expect(docText).toContain("Publication is a pointer");
