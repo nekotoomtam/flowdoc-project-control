@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner repository: Project Control.
-Scope: Project Control recovery and evidence-boundary record for Editor work that drifted into the old `FlowDocEditor` repository and the first recovered replacement commits now present in canonical `flowdoc-vnext-editor`.
+Scope: Project Control recovery and evidence-boundary record for Editor work that drifted into the old `FlowDocEditor` repository and the recovered replacement commits now present in canonical `flowdoc-vnext-editor`.
 This document does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, Preview readiness, Publish readiness, WYSIWYG readiness, FlowDoc product truth, Project Control terminology authority, or map truth.
 
 ## Work Context
@@ -14,8 +14,8 @@ This document does not promote Core, Backend, Editor, compatibility, release rea
 - Current Phase: recovery overlay for the existing Design workspace usability and Structure Pattern Build/Preview evidence paths
 - Checklist target: identify the first path-drift round, mark old-repo evidence as suspect for vNext purposes, accept only replacement commits that exist in canonical `flowdoc-vnext-editor`, and preserve boundaries
 - Evidence target: `evidence-flowdoc-editor-vnext-recovery-path-drift-2026-09-05`
-- Known risks: old Project Control records still contain accepted wording for old `FlowDocEditor` commits; recovery must not turn bounded UI status affordances into broad frontend readiness
-- Unknown state: Structure Pattern Build/Preview recovery is not complete in this record; Preview readiness, Publish readiness, WYSIWYG readiness, runtime submission persistence, generated PDF files, production readiness, and release readiness remain unverified
+- Known risks: old Project Control records still contain accepted wording for old `FlowDocEditor` commits; recovery must not turn bounded UI status affordances into broad frontend readiness; current Editor full gate is blocked by local Core package dependency resolution because `@flowdoc/text-engine-rust-wasm` points to a Core checkout with deleted package files
+- Unknown state: Build/Preview usability recovery after the Structure Pattern foundation remains incomplete in this record; Preview readiness, Publish readiness, WYSIWYG readiness, runtime submission persistence, generated PDF files, production readiness, and release readiness remain unverified
 
 ## Drift Finding
 
@@ -43,14 +43,14 @@ The workspace status strip recovery room returned PASS at vNext commit `9e0097d8
 
 The selected-region command summary recovery room first returned a mistyped full hash. PLAN sent a Revision Packet back to the same WORK room instead of correcting the handoff silently. The corrected handoff returned PASS at vNext commit `8b966ee30f6a978a3c20d8b2abf640d3d3eac86e`. PLAN verified that commit exists in `flowdoc-vnext-editor` and does not exist in old `FlowDocEditor`, reviewed the diff, ran focused selected-region tests, merged it to Editor main as `8bcc17563daa91780dc01fbb8a7bf90eedc0cbea`, and ran `npm run check` on Editor main. The main gate passed with 111 test files and 403 tests plus production build.
 
+The Structure Pattern Build/Preview foundation recovery room returned PASS/RISK at vNext commit `7a99bd0f959de8671f5e0fe5bf59fad1e98d4151`. PLAN verified that commit exists in `flowdoc-vnext-editor` and does not exist in old `FlowDocEditor`, reviewed the diff, ran focused Structure Pattern Build/Preview tests, and merged it to Editor main as `12d3ebe97186ebb6a447240e30ce59c7812fa521`. The focused main verification passed with 5 test files and 15 tests. Full Editor `npm run check` did not pass, but PLAN reproduced the same `@flowdoc/text-engine-rust-wasm` missing-module type-check failure on Editor main after aborting the Structure Pattern merge, proving the full-gate blocker is a pre-existing local Core dependency state rather than a Structure Pattern lane regression.
+
 ## Pending Recovery
 
-The Structure Pattern Build/Preview and Build/Preview usability records remain pending recovery. The old `FlowDocEditor` commits from `65ab5b149c5aad10b36bbaa23650b9fce7070dff` through `715dd2e7edf0e7a3592ab7ff7e55cced361c836a` are not accepted as vNext evidence by this record.
-
-A Structure Pattern recovery WORK room was opened from current vNext Editor main, but this document does not accept any Structure Pattern replacement commit yet.
+Build/Preview usability records after the Structure Pattern foundation remain pending recovery. The old `FlowDocEditor` commits `3ac90724a5dd6ea92f1d7a9cde11dfb19fa0b48c`, `78dbae50e234487e64c58eae5480d8a8f1c16f97`, `76e32076a6588fb48def07daaf08825c41afa334`, and `715dd2e7edf0e7a3592ab7ff7e55cced361c836a` are not accepted as vNext evidence by this record.
 
 ## Boundaries
 
-This recovery record accepts only bounded Editor UI evidence for the two recovered Design workspace affordance lanes. It does not activate Preview, Publish, direct page editing, WYSIWYG/contenteditable behavior, Backend calls, Core semantics, runtime submissions, generated PDF files, artifact storage, production behavior, or release readiness.
+This recovery record accepts only bounded Editor UI evidence for the recovered Design workspace affordance lanes and Structure Pattern Build/Preview foundation. It does not activate Preview, Publish, direct page editing, WYSIWYG/contenteditable behavior, Backend calls, Core semantics, runtime submissions, generated PDF files, artifact storage, production behavior, or release readiness.
 
 No system map changed in this record.

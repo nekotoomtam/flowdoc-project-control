@@ -6,9 +6,11 @@ const WORK_ID = "flowdoc-design-workspace-usability";
 const DOC_ID = "doc-flowdoc-editor-vnext-recovery-path-drift-2026-09-05";
 const DOC_PATH = "docs/domains/flowdoc-editor-vnext-recovery-path-drift-2026-09-05.md";
 const EVIDENCE_ID = "evidence-flowdoc-editor-vnext-recovery-path-drift-2026-09-05";
-const EDITOR_MAIN_COMMIT = "8bcc17563daa91780dc01fbb8a7bf90eedc0cbea";
+const EDITOR_SELECTED_REGION_MAIN_COMMIT = "8bcc17563daa91780dc01fbb8a7bf90eedc0cbea";
+const EDITOR_MAIN_COMMIT = "12d3ebe97186ebb6a447240e30ce59c7812fa521";
 const RECOVERED_STATUS_COMMIT = "9e0097d87e91923218825021d4b7f0f9c60b7930";
 const RECOVERED_SELECTED_REGION_COMMIT = "8b966ee30f6a978a3c20d8b2abf640d3d3eac86e";
+const RECOVERED_STRUCTURE_PATTERN_COMMIT = "7a99bd0f959de8671f5e0fe5bf59fad1e98d4151";
 const OLD_STATUS_COMMIT = "e78ae4160d1ab1759961dbeb3d646beb3490ec46";
 const OLD_SELECTED_REGION_COMMIT = "cb3c1ca4e35973c3bd4f89d969826911e109e55c";
 const OLD_STRUCTURE_PATTERN_COMMIT = "65ab5b149c5aad10b36bbaa23650b9fce7070dff";
@@ -30,9 +32,11 @@ describe("FlowDoc Editor vNext recovery from old repo path drift", () => {
     expect(work?.expectedOutput).toContain(OLD_STATUS_COMMIT);
     expect(work?.expectedOutput).toContain(OLD_SELECTED_REGION_COMMIT);
     expect(work?.expectedOutput).toContain(RECOVERED_STATUS_COMMIT);
+    expect(work?.expectedOutput).toContain(RECOVERED_STRUCTURE_PATTERN_COMMIT);
     expect(work?.expectedOutput).toContain(EDITOR_MAIN_COMMIT);
     expect(work?.riskSummary).toContain("path-drifted into old FlowDocEditor");
     expect(work?.riskSummary).toContain("superseded for canonical vNext purposes");
+    expect(work?.riskSummary).toContain("pre-existing local Core dependency state");
 
     expect(documents.get(DOC_ID)).toMatchObject({
       authority: expect.stringContaining("Project Control recovery"),
@@ -61,7 +65,11 @@ describe("FlowDoc Editor vNext recovery from old repo path drift", () => {
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain(OLD_INTEGRATION_COMMIT);
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain(RECOVERED_STATUS_COMMIT);
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain(RECOVERED_SELECTED_REGION_COMMIT);
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain(RECOVERED_STRUCTURE_PATTERN_COMMIT);
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain(EDITOR_SELECTED_REGION_MAIN_COMMIT);
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("111 test files and 403 tests");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("5 test files and 15 tests");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("pre-existing local Core dependency state");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("does not promote FlowDoc product truth");
 
     expect(docText).toContain("# FlowDoc Editor vNext Recovery From Old Repo Path Drift");
@@ -73,8 +81,10 @@ describe("FlowDoc Editor vNext recovery from old repo path drift", () => {
     expect(docText).toContain(OLD_INTEGRATION_COMMIT);
     expect(docText).toContain(RECOVERED_STATUS_COMMIT);
     expect(docText).toContain(RECOVERED_SELECTED_REGION_COMMIT);
+    expect(docText).toContain(RECOVERED_STRUCTURE_PATTERN_COMMIT);
     expect(docText).toContain(EDITOR_MAIN_COMMIT);
-    expect(docText).toContain("Structure Pattern Build/Preview and Build/Preview usability records remain pending recovery");
+    expect(docText).toContain("Build/Preview usability records after the Structure Pattern foundation remain pending recovery");
+    expect(docText).toContain("Full Editor `npm run check` did not pass");
     expect(docText).toContain("No system map changed");
     expect(docText).not.toMatch(/\bfrontend readiness: current\b/iu);
     expect(docText).not.toMatch(/\bPreview readiness: current\b/iu);

@@ -5,13 +5,13 @@
   "path": "docs/domains/flowdoc-editor-vnext-recovery-path-drift-2026-09-05.md",
   "nodeIds": [],
   "role": "verification",
-  "authority": "Project Control recovery and evidence-boundary record for Editor work that drifted into the old FlowDocEditor repository before being recovered onto canonical flowdoc-vnext-editor.",
+  "authority": "Project Control recovery and evidence-boundary record for Editor work that drifted into the old FlowDocEditor repository before being recovered onto canonical flowdoc-vnext-editor, with remaining Build/Preview usability recovery and Core dependency risk kept explicit.",
   "lifecycle": "active",
   "repositoryRefs": [
     {
       "repositoryId": "repo-editor",
-      "commit": "8bcc17563daa91780dc01fbb8a7bf90eedc0cbea",
-      "pathOrContractId": "vNext recovery commits 9e0097d87e91923218825021d4b7f0f9c60b7930 and 8b966ee30f6a978a3c20d8b2abf640d3d3eac86e; npm run check on flowdoc-vnext-editor main"
+      "commit": "12d3ebe97186ebb6a447240e30ce59c7812fa521",
+      "pathOrContractId": "vNext recovery commits 9e0097d87e91923218825021d4b7f0f9c60b7930, 8b966ee30f6a978a3c20d8b2abf640d3d3eac86e, and 7a99bd0f959de8671f5e0fe5bf59fad1e98d4151; focused Structure Pattern Build/Preview main verification passed; full gate blocked by pre-existing Core dependency state"
     }
   ]
 }
