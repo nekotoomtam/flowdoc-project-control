@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+  "title": "FlowDoc Creator UX Contract v0",
+  "path": "docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control FlowDoc Creator UX Contract v0 for the planning relationship between Document Structure Library, Build, Preview, Versions, Published/API, Structure Pattern Slots, and Structure Pattern Entries.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md; data/work/flowdoc-creator-ux-db-alignment-v0.json; data/phases/phase-flowdoc-creator-ux-db-alignment-v0.json; data/checklists/checklist-flowdoc-creator-ux-db-alignment-v0.json; data/evidence/flowdoc-creator-ux-db-alignment-v0-2026-09-04.json; tests/flowdoc-creator-ux-db-alignment-v0.test.ts; npm run check"
+    }
+  ]
+}

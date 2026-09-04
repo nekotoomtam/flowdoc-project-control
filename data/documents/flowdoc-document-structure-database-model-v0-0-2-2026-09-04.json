@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
+  "title": "FlowDoc Document Structure Database Model v0.0.2",
+  "path": "docs/domains/flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control FlowDoc Document Structure Database Model v0.0.2 for Structure Pattern Slots, Structure Pattern Entries boundary, slot repeat policy, layout boundary fields, relational truth, and slot-driven version freeze.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md; docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md; data/work/flowdoc-creator-ux-db-alignment-v0.json; data/phases/phase-flowdoc-creator-ux-db-alignment-v0.json; data/checklists/checklist-flowdoc-creator-ux-db-alignment-v0.json; data/evidence/flowdoc-creator-ux-db-alignment-v0-2026-09-04.json; tests/flowdoc-creator-ux-db-alignment-v0.test.ts; npm run check"
+    }
+  ]
+}

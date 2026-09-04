@@ -82,6 +82,11 @@ This is a relationship model, not a DDL file. Names are stable enough for later
 implementation planning, but a Backend implementation lane must still design
 the exact migration, indexes, constraints, and storage engine behavior.
 
+`FlowDoc Document Structure Database Model v0.0.2` now records the follow-up
+Structure Pattern Slot and Structure Pattern Entry clarification. Use v0.0.2
+for new planning, while keeping this v0.0.1 document as the recorded baseline
+that explains the accepted Backend foundation and legacy `component_*` names.
+
 ## Core Decisions
 
 `DocumentDefinition` is the top-level document-structure family shown in the

@@ -73,6 +73,8 @@ describe("truthful seed project", () => {
         "doc-flowdoc-document-structure-north-star-2026-09-04",
         "doc-flowdoc-product-domain-relationship-2026-09-04",
         "doc-flowdoc-document-structure-database-model-2026-09-04",
+        "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
       ],
     });
     expect(model.nodes.find((node) => node.id === "project-control")?.documentIds)

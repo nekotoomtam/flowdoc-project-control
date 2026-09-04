@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-creator-ux-db-alignment-v0",
+  "phaseId": "phase-flowdoc-creator-ux-db-alignment-v0",
+  "title": "FlowDoc Creator UX and Database Alignment v0 Checklist",
+  "items": [
+    {
+      "id": "capture-creator-ux-db-alignment-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The alignment record identifies Project Control ownership before writing creator UX and v0.0.2 database framing.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-document-structure-database-model > flowdoc-creator-ux-db-alignment-v0, owner repo-project-control, active role planning-partner with documentation-authority-steward and evidence-registrar responsibilities, phase target phase-flowdoc-creator-ux-db-alignment-v0, checklist target checklist-flowdoc-creator-ux-db-alignment-v0, and evidence target evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04."
+    },
+    {
+      "id": "write-red-creator-ux-db-alignment-guard",
+      "label": "Write a failing Project Control guard before adding the creator UX and v0.0.2 database records.",
+      "state": "passed",
+      "evidenceTarget": "A focused records test fails before Project Control contains the alignment Work, documents, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-creator-ux-db-alignment-v0.test.ts --maxWorkers=1 failed because flowdoc-document-structure-database-model did not yet include flowdoc-creator-ux-db-alignment-v0 as a child Work."
+    },
+    {
+      "id": "define-creator-ux-flow-contract",
+      "label": "Define the creator flow from Document Structure Library through Build, Preview, Versions, and Published/API.",
+      "state": "passed",
+      "evidenceTarget": "The Creator UX Contract v0 document defines the authoring and simulation split.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md defines Document Structure Library -> Build -> Preview -> Versions -> Published/API, with Build as draft authoring and Preview as simulation."
+    },
+    {
+      "id": "define-structure-pattern-slot-entry-boundary",
+      "label": "Define Structure Pattern Slot as author-time relationship and Structure Pattern Entry as Preview or runtime occurrence.",
+      "state": "passed",
+      "evidenceTarget": "The UX and database documents state that Build defines the slot and Preview or runtime creates the entries.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "Both alignment documents separate Structure Pattern, Structure Pattern Slot, and Structure Pattern Entry so future rooms do not treat Build as placing repeated runtime copies."
+    },
+    {
+      "id": "define-database-model-v0-0-2",
+      "label": "Define the v0.0.2 database relationship model for slots, fields, bindings, version freeze, and publication pointer behavior.",
+      "state": "passed",
+      "evidenceTarget": "The v0.0.2 document defines draft_structure_pattern_slots, document_version_structure_pattern_slots, draft_fields, document_version_fields, document_version_bindings, repeat policy, layout boundary fields, and slot-driven freeze.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md defines the slot-driven v0.0.2 relationship model and keeps record_json as derived/cache material rather than canonical truth."
+    },
+    {
+      "id": "exclude-runtime-and-product-implementation-scope",
+      "label": "Exclude runtime submissions, submitted values, generated files, permissions, audit, workflow, billing, integrations, and product implementation.",
+      "state": "passed",
+      "evidenceTarget": "The documents keep runtime Structure Pattern Entries and product repository implementation outside this Project Control planning round.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "The alignment documents state that Runtime Structure Pattern Entries are out of scope and that no Core, Backend, or Editor files change in this phase."
+    },
+    {
+      "id": "verify-creator-ux-db-alignment-records",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused records guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-creator-ux-db-alignment-v0.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T15:00:00.000+07:00",
+  "updatedAt": "2026-09-04T15:00:00.000+07:00"
+}

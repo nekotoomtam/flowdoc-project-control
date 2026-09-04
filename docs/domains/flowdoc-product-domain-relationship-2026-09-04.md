@@ -105,7 +105,9 @@ contract expectations.
 
 Read next before detailed design:
 `FlowDoc Document Structure North Star v1` and
-`FlowDoc Document Structure Database Model v0.0.1`.
+`FlowDoc Document Structure Database Model v0.0.2`, with
+`FlowDoc Document Structure Database Model v0.0.1` retained as the recorded
+baseline.
 
 ### Document Structure
 
@@ -118,7 +120,9 @@ binding expectations, and freezes into document versions before publication.
 
 Read next before detailed design:
 `FlowDoc Document Structure North Star v1` and
-`FlowDoc Document Structure Database Model v0.0.1`.
+`FlowDoc Document Structure Database Model v0.0.2`, with
+`FlowDoc Document Structure Database Model v0.0.1` retained as the recorded
+baseline.
 
 ### Component Library
 
@@ -130,8 +134,8 @@ version creation resolves referenced component drafts into immutable component
 versions for stable rendering and validation.
 
 Read next before detailed design:
-`FlowDoc Document Structure Database Model v0.0.1` until a separate
-`Component Library Relationship Model` exists.
+`FlowDoc Document Structure Database Model v0.0.2` until a separate
+`Structure Pattern Library Relationship Model` exists.
 
 ### Dataset / Data Contract
 
@@ -292,7 +296,7 @@ the detailed schema for any domain.
 
 | If the work is about... | Read next |
 | --- | --- |
-| Document structure, sections, components, fields, data bindings, page profile, style defaults | `FlowDoc Document Structure North Star v1`; `FlowDoc Document Structure Database Model v0.0.1` |
+| Document structure, sections, Structure Patterns, Structure Pattern Slots, fields, data bindings, page profile, style defaults | `FlowDoc Document Structure North Star v1`; `FlowDoc Creator UX Contract v0`; `FlowDoc Document Structure Database Model v0.0.2`; `FlowDoc Document Structure Database Model v0.0.1` as the retained baseline |
 | Draft freeze, document version, published baseline, rollback, publish channel | `Publication / Version Lifecycle` |
 | Runtime data input, submission validation, output request | `Runtime Submission And Rendering Flow` |
 | PDF or other output generation, queue, retry, renderer target | `Runtime Submission And Rendering Flow`; `Generated Artifact Lifecycle` |
@@ -337,7 +341,8 @@ requires an explicit reference.
 
 ## Next Recommended Work
 
-Return to `FlowDoc Document Structure Database Model v0.0.1` as the next
-detailed design target. Use this document only to keep the broader
-product-domain dependencies visible while designing that narrower
-document-structure schema.
+Return to `FlowDoc Creator UX Contract v0` and
+`FlowDoc Document Structure Database Model v0.0.2` before the next
+owner-specific Editor or Backend lane. Use this document only to keep the
+broader product-domain dependencies visible while designing narrower
+document-structure implementation work.
