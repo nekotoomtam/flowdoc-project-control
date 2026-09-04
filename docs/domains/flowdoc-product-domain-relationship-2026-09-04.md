@@ -105,7 +105,7 @@ contract expectations.
 
 Read next before detailed design:
 `FlowDoc Document Structure North Star v1` and
-`Document Structure Relationship Database v0`.
+`FlowDoc Document Structure Database Model v0.0.1`.
 
 ### Document Structure
 
@@ -118,7 +118,7 @@ binding expectations, and freezes into document versions before publication.
 
 Read next before detailed design:
 `FlowDoc Document Structure North Star v1` and
-`Document Structure Relationship Database v0`.
+`FlowDoc Document Structure Database Model v0.0.1`.
 
 ### Component Library
 
@@ -130,7 +130,7 @@ version creation resolves referenced component drafts into immutable component
 versions for stable rendering and validation.
 
 Read next before detailed design:
-`Document Structure Relationship Database v0` until a separate
+`FlowDoc Document Structure Database Model v0.0.1` until a separate
 `Component Library Relationship Model` exists.
 
 ### Dataset / Data Contract
@@ -292,7 +292,7 @@ the detailed schema for any domain.
 
 | If the work is about... | Read next |
 | --- | --- |
-| Document structure, sections, components, fields, data bindings, page profile, style defaults | `FlowDoc Document Structure North Star v1`; `Document Structure Relationship Database v0` |
+| Document structure, sections, components, fields, data bindings, page profile, style defaults | `FlowDoc Document Structure North Star v1`; `FlowDoc Document Structure Database Model v0.0.1` |
 | Draft freeze, document version, published baseline, rollback, publish channel | `Publication / Version Lifecycle` |
 | Runtime data input, submission validation, output request | `Runtime Submission And Rendering Flow` |
 | PDF or other output generation, queue, retry, renderer target | `Runtime Submission And Rendering Flow`; `Generated Artifact Lifecycle` |
@@ -337,6 +337,7 @@ requires an explicit reference.
 
 ## Next Recommended Work
 
-Return to `Document Structure Relationship Database v0` as the next detailed
-design target. Use this document only to keep the broader product-domain
-dependencies visible while designing that narrower document-structure schema.
+Return to `FlowDoc Document Structure Database Model v0.0.1` as the next
+detailed design target. Use this document only to keep the broader
+product-domain dependencies visible while designing that narrower
+document-structure schema.

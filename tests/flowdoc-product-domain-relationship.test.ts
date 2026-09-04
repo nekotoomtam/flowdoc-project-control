@@ -105,7 +105,7 @@ describe("FlowDoc Product Domain Relationship", () => {
     expect(docText).toContain("Activity Feed / Notification");
     expect(docText).toContain("Billing / Usage Metering");
     expect(docText).toContain("Integration / External Consumption");
-    expect(docText).toContain("Document Structure Relationship Database v0");
+    expect(docText).toContain("FlowDoc Document Structure Database Model v0.0.1");
     expect(docText).toContain("Publication / Version Lifecycle");
     expect(docText).toContain("Runtime Submission And Rendering Flow");
     expect(docText).toContain("Permission Scope Model");

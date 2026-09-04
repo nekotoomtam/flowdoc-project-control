@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-document-structure-database-model-v0-0-1",
+  "workId": "flowdoc-document-structure-database-model",
+  "title": "FlowDoc Document Structure Database Model v0.0.1",
+  "phaseState": "done",
+  "order": 11,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The document-structure database model would require Core, Backend, or Editor product repository edits.",
+    "The model would claim product database implementation, SQL migration completeness, product readiness, renderer readiness, PDF readiness, or production readiness from planning alone.",
+    "The model would mix actual submitted values, runtime submissions, generated artifacts, audit trail, permissions, workflow, billing, activity feed, or integrations into v0.0.1 structure tables."
+  ],
+  "verificationTarget": "Project Control records draft tables, component draft/version tables, version tables, publication pointer behavior, field type master scope, and runtime exclusions without turning FlowDoc Document Structure Database Model v0.0.1 into a product database implementation.",
+  "summary": "Done: Project Control now records FlowDoc Document Structure Database Model v0.0.1 as a structure-only relationship model that keeps editable drafts normalized, freezes document versions as full resolved structures, uses publication as a pointer, keeps field_types pure, and excludes actual submitted values and non-structure domains.",
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}
