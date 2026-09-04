@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-structure-pattern-build-preview-integration-v0",
+  "workId": "flowdoc-structure-pattern-build-preview-integration-v0",
+  "title": "FlowDoc Structure Pattern Build/Preview Integration v0 Acceptance",
+  "phaseState": "done",
+  "order": 13,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "A WORK room does not return through the automatic Return Channel with PASS / FAIL / BLOCKER / RISK / UNKNOWN.",
+    "acceptanceGate finds that a product fix is required after dispatch.",
+    "An owner repository main branch cannot fast-forward merge to the accepted WORK commit.",
+    "A fresh owner-repository main gate fails after merge.",
+    "The acceptance record would promote FlowDoc product truth, map truth, frontend readiness, published API readiness, runtime submission readiness, generated PDF readiness, or production readiness."
+  ],
+  "verificationTarget": "PLAN acceptance and main integration evidence for Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff, Backend commit 9da58214e087d2f15afd43855bfd1febec882037, and Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a, with Core npm run check, Backend npm run check, Editor npm run review:gate, and Project Control record verification passing.",
+  "summary": "Done: PLAN accepted the automatic returns from the Core, Backend, and Editor Structure Pattern Build/Preview lanes, fast-forward merged each accepted commit to its owner-repository main branch, ran fresh owner-repository main gates, and recorded the bounded evidence without promoting FlowDoc product truth or map truth.",
+  "createdAt": "2026-09-04T18:10:00.000+07:00",
+  "updatedAt": "2026-09-04T18:10:00.000+07:00"
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b6a8c9d8f5ca587cc175d48dc8114f46c49d31ac576e2aaad8e6c25841fff0dd",
+  "sourceDigest": "ff45c48c9f5fe6408bb4ce233535b66497d50fb4637ae5ce09f19bfb3e68ce7e",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -76,6 +76,7 @@
         "flowdoc-product-domain-relationship",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
+        "flowdoc-structure-pattern-build-preview-integration-v0",
         "flowdoc-wysiwyg-gate-decision"
       ]
     },
@@ -2128,7 +2129,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Record the bounded v0.0.1 database relationship model for FlowDoc document-structure definition, then align it with Creator UX Contract v0 and Document Structure Database Model v0.0.2 after the Structure Pattern clarification. The v0.0.2 alignment separates Build-defined Structure Pattern Slots from Preview or runtime Structure Pattern Entries and keeps the accepted Backend v0.0.1 foundation bounded to repository/service/schema foundations at Backend commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3.",
+      "summary": "Record the bounded v0.0.1 database relationship model for FlowDoc document-structure definition, then align it with Creator UX Contract v0 and Document Structure Database Model v0.0.2 after the Structure Pattern clarification. PLAN later accepted the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview implementation lanes and fast-forward merged their owner-repository main branches after fresh main gates passed.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2147,21 +2148,24 @@
         "doc-flowdoc-product-domain-relationship-2026-09-04",
         "doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04",
         "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
-        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04"
+        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
+        "doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "FlowDoc Document Structure Database Model v0.0.1 and v0.0.2 alignment in Project Control as structure-only database relationship decisions, with draft tables, Structure Pattern library draft/version tables, Structure Pattern Slots, version freeze tables, publication pointer rules, field_types master scope, style_defaults, page setting boundaries, slot repeat policy, layout boundary fields, and runtime or implementation domains intentionally excluded.",
-      "riskSummary": "The model, v0.0.2 alignment, and accepted Backend foundation may be mistaken for a SQL migration, product database implementation, complete gateway, runtime submission, generated PDF, production migration, product readiness, frontend readiness, or map truth evidence. The record still explicitly says it is not a SQL migration and not a product database implementation as a complete product claim. The records keep HTTP gateway routes, external callers, actual submitted values, runtime Structure Pattern Entries, generated artifacts, permissions, workflow, billing, audit, activity, integrations, Core adoption, and Editor adoption outside this acceptance.",
+      "riskSummary": "The model, v0.0.2 alignment, accepted Backend foundation, and accepted Structure Pattern Build/Preview implementation lanes may be mistaken for a SQL migration, complete gateway, runtime submission model, generated PDF pipeline, production migration, full product readiness, frontend readiness, or map truth. This remains not a SQL migration and not a product database implementation as a complete product claim. The records keep HTTP gateway routes, external callers, actual submitted values, persisted runtime Structure Pattern Entries, generated artifacts, permissions, workflow, billing, audit, activity, integrations, production readiness, and map truth outside this acceptance.",
       "requiredEvidence": [
         "evidence-flowdoc-document-structure-database-model-2026-09-04",
         "evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04",
-        "evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04"
+        "evidence-flowdoc-creator-ux-db-alignment-v0-2026-09-04",
+        "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
       ],
       "createdAt": "2026-09-04T00:00:00.000Z",
-      "updatedAt": "2026-09-04T15:00:00.000+07:00",
+      "updatedAt": "2026-09-04T18:10:00.000+07:00",
       "childWorkIds": [
         "flowdoc-backend-document-structure-database-v0-0-1",
-        "flowdoc-creator-ux-db-alignment-v0"
+        "flowdoc-creator-ux-db-alignment-v0",
+        "flowdoc-structure-pattern-build-preview-integration-v0"
       ],
       "phaseIds": [
         "phase-flowdoc-document-structure-database-model-v0-0-1"
@@ -2707,6 +2711,54 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-product-terminology-foundation"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-structure-pattern-build-preview-integration-v0",
+      "title": "FlowDoc Structure Pattern Build/Preview Integration v0",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-document-structure-database-model",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-review",
+      "summary": "PLAN accepted and integrated the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview lanes. Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a adds the Structure Pattern Slot boundary probe; Backend commit 9da58214e087d2f15afd43855bfd1febec882037 aligns document-structure version freeze and slot aliases with v0.0.2; Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff shapes Build, Fields, Structure Patterns, and Preview UI affordances.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-document-structure-north-star-2026-09-04",
+        "doc-flowdoc-product-domain-relationship-2026-09-04",
+        "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
+        "doc-flowdoc-fast-delivery-risk-register-2026-09-04",
+        "doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+      ],
+      "activeRole": "evidence-reviewer",
+      "expectedOutput": "Project Control PLAN integration acceptance record for the Core, Backend, and Editor Structure Pattern Build/Preview lanes, including automatic WORK returns, acceptanceGate decisions, owner-repository commits, main-branch fast-forward merges, fresh owner-repository main gates, accepted scope, residual risks, and intentionally unpromoted product truth.",
+      "riskSummary": "This accepted integration is not FlowDoc product readiness, not frontend readiness, not a runtime submission model, not a generated PDF pipeline, not a production database migration, not a published API readiness claim, and not map truth. It supports only the bounded owner-repository behavior proven by the cited commits and main gates. Runtime Structure Pattern Entry persistence, actual submitted values, HTTP gateway exposure, generated files, permissions, workflow, billing, audit, activity, integrations, deployment, and release readiness remain out of scope.",
+      "requiredEvidence": [
+        "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+      ],
+      "createdAt": "2026-09-04T18:10:00.000+07:00",
+      "updatedAt": "2026-09-04T18:10:00.000+07:00",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-structure-pattern-build-preview-integration-v0"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-document-structure-database-model",
+        "flowdoc-structure-pattern-build-preview-integration-v0"
       ]
     },
     {
@@ -5470,6 +5522,32 @@
       "summary": "Done: Project Control now has a product terminology foundation and terminology discipline rule for future Editor/frontend and cross-repository product work without promoting product readiness.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-structure-pattern-build-preview-integration-v0",
+      "workId": "flowdoc-structure-pattern-build-preview-integration-v0",
+      "title": "FlowDoc Structure Pattern Build/Preview Integration v0 Acceptance",
+      "phaseState": "done",
+      "order": 13,
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "activeRole": "evidence-reviewer",
+      "stopConditions": [
+        "A WORK room does not return through the automatic Return Channel with PASS / FAIL / BLOCKER / RISK / UNKNOWN.",
+        "acceptanceGate finds that a product fix is required after dispatch.",
+        "An owner repository main branch cannot fast-forward merge to the accepted WORK commit.",
+        "A fresh owner-repository main gate fails after merge.",
+        "The acceptance record would promote FlowDoc product truth, map truth, frontend readiness, published API readiness, runtime submission readiness, generated PDF readiness, or production readiness."
+      ],
+      "verificationTarget": "PLAN acceptance and main integration evidence for Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff, Backend commit 9da58214e087d2f15afd43855bfd1febec882037, and Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a, with Core npm run check, Backend npm run check, Editor npm run review:gate, and Project Control record verification passing.",
+      "summary": "Done: PLAN accepted the automatic returns from the Core, Backend, and Editor Structure Pattern Build/Preview lanes, fast-forward merged each accepted commit to its owner-repository main branch, ran fresh owner-repository main gates, and recorded the bounded evidence without promoting FlowDoc product truth or map truth.",
+      "createdAt": "2026-09-04T18:10:00.000+07:00",
+      "updatedAt": "2026-09-04T18:10:00.000+07:00"
     },
     {
       "kind": "phase",
@@ -13647,6 +13725,96 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-structure-pattern-build-preview-integration-v0",
+      "phaseId": "phase-flowdoc-structure-pattern-build-preview-integration-v0",
+      "title": "Structure Pattern Build/Preview Integration v0 Acceptance Checklist",
+      "items": [
+        {
+          "id": "stage-structure-pattern-work-returns",
+          "label": "Stage the automatically returned Core, Backend, and Editor WORK handoffs.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "PLAN receives the three terminal WORK returns through the active Return Channel.",
+          "verificationNote": "PLAN received handoff-editor-build-preview-structure-pattern-v0-2026-09-04-01, handoff-backend-structure-pattern-v0-0-2-alignment-2026-09-04-01, and handoff-core-structure-pattern-boundary-probe-2026-09-04-01 through send_message_to_thread without a user copy/paste bridge."
+        },
+        {
+          "id": "accept-structure-pattern-work-returns",
+          "label": "Run acceptanceGate for the returned Structure Pattern lanes.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "PLAN accepts only the bounded lane outputs and records locator risks.",
+          "verificationNote": "Accepted Editor, Backend, and Core lane outputs as bounded owner-repository evidence. PLAN recorded the Editor locator correction and Backend/Core detached commit integration risk without asking the user to copy/paste handoffs."
+        },
+        {
+          "id": "merge-core-main-and-run-gate",
+          "label": "Merge Core main to the accepted Structure Pattern Slot boundary commit and run the Core main gate.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "Core main points at the accepted commit and the fresh Core main gate passes.",
+          "verificationNote": "Fast-forward merged flowdoc-vnext-core main to 8411f26763d81743ba9d44a59fd5ad4942e5601a. Ran npm run check on Core main with 432 passed test files and 2791 passed tests."
+        },
+        {
+          "id": "merge-backend-main-and-run-gate",
+          "label": "Merge Backend main to the accepted v0.0.2 Structure Pattern slot alignment commit and run the Backend main gate.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "Backend main points at the accepted commit and the fresh Backend main gate passes.",
+          "verificationNote": "Fast-forward merged flowdoc-vnext-backend main to 9da58214e087d2f15afd43855bfd1febec882037. Ran npm run check on Backend main with 93 passed / 1 skipped test file, 346 passed / 27 skipped tests, and build passed."
+        },
+        {
+          "id": "merge-editor-main-and-run-gate",
+          "label": "Merge Editor main to the accepted Build/Preview Structure Pattern foundation commit and run the Editor main gate.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "Editor main points at the accepted commit and the fresh Editor main gate passes.",
+          "verificationNote": "Fast-forward merged FlowDocEditor main to 65ab5b149c5aad10b36bbaa23650b9fce7070dff. Ran npm run review:gate on Editor main with Core package tests 54 files / 837 passed / 6 skipped, app tests 129 files / 1155 passed, and production build passed."
+        },
+        {
+          "id": "record-structure-pattern-integration-evidence",
+          "label": "Record Project Control evidence for the accepted and merged Structure Pattern lanes.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "Project Control records the dispatch set, room returns, commits, changed files, tests, risks, unknowns, and accepted boundaries.",
+          "verificationNote": "Registered evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04 and doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04 without linking them to map-truth nodes."
+        },
+        {
+          "id": "preserve-structure-pattern-product-boundaries",
+          "label": "Preserve runtime, gateway, PDF, publication, permission, and map-truth boundaries.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "The accepted integration does not promote broader FlowDoc readiness or map truth.",
+          "verificationNote": "No DOCUMENT_MAP or FlowDoc system map truth state changed. Runtime Structure Pattern Entry persistence, submitted values, HTTP gateway exposure, generated PDF files, renderer jobs, artifact storage, permission, workflow, billing, audit, activity, integrations, deployment, release readiness, production readiness, and map truth remain unproven."
+        },
+        {
+          "id": "verify-project-control-structure-pattern-integration-records",
+          "label": "Verify the Project Control Structure Pattern integration records.",
+          "state": "passed",
+          "evidenceIds": [
+            "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+          ],
+          "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after records are registered.",
+          "verificationNote": "GREEN evidence target: tests/flowdoc-structure-pattern-build-preview-integration.test.ts, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-04T18:10:00.000+07:00",
+      "updatedAt": "2026-09-04T18:10:00.000+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-wysiwyg-gate-decision-v1",
       "phaseId": "phase-flowdoc-wysiwyg-gate-decision-v1",
       "title": "WYSIWYG Gate Decision v1 Checklist",
@@ -16150,6 +16318,39 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04",
+      "title": "FlowDoc Structure Pattern Build/Preview Integration v0 Acceptance",
+      "path": "docs/domains/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.md",
+      "nodeIds": [],
+      "role": "verification",
+      "authority": "Project Control PLAN integration acceptance record for the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview WORK room handoffs.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "65ab5b149c5aad10b36bbaa23650b9fce7070dff",
+          "pathOrContractId": "src/app/editor/_components/AddPanel.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/FillingPanel.tsx; src/app/editor/_components/PagePanel.tsx; src/app/editor/_components/__tests__/structurePatternWorkflow.test.ts; src/app/editor/_components/shell/editorWorkflowNav.ts; npm run review:gate"
+        },
+        {
+          "repositoryId": "repo-backend",
+          "commit": "9da58214e087d2f15afd43855bfd1febec882037",
+          "pathOrContractId": "src/documentStructure/documentStructureRepository.ts; src/documentStructure/documentStructureSqliteRepository.ts; src/tests/documentStructureRepository.test.ts; npm run check"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "8411f26763d81743ba9d44a59fd5ad4942e5601a",
+          "pathOrContractId": "src/lifecycle/structurePatternSlots.ts; tests/structurePatternSlotBoundary.test.ts; src/index.ts; docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md; tests/corePublicExportBoundaryReview.test.ts; npm run check"
+        },
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "3cb5ee9a573002d2b90fa7cfa3612b3e55426e1a",
+          "pathOrContractId": "docs/domains/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.md; data/work/flowdoc-structure-pattern-build-preview-integration-v0.json; data/phases/phase-flowdoc-structure-pattern-build-preview-integration-v0.json; data/checklists/checklist-flowdoc-structure-pattern-build-preview-integration-v0.json; data/evidence/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.json; tests/flowdoc-structure-pattern-build-preview-integration.test.ts"
+        }
+      ],
+      "content": "# FlowDoc Structure Pattern Build/Preview Integration v0 Acceptance\n\n## Authority Boundary\n\nThis document records the PLAN-room integration acceptance decision for the\nautomatically returned Core, Backend, and Editor WORK room handoffs for\nStructure Pattern Build/Preview v0.\n\nIt is owned by Project Control under\n`flowdoc-product-development-resumption > flowdoc-document-structure-database-model > flowdoc-structure-pattern-build-preview-integration-v0`.\n\nThis is a Project Control verification record. It does not edit Core, Backend,\nor Editor behavior, does not create HTTP gateway routes, does not persist\nruntime Structure Pattern Entries, does not store submitted values, does not\ngenerate PDF files, does not execute renderer jobs, and does not promote\nFlowDoc product truth or map truth.\n\nThe accepted product behavior remains owned by the cited owner-repository\ncommits. Runtime submission, generated PDF files, renderer execution, artifact\nstorage, permissions, workflow, billing, audit, activity, integrations,\ndeployment, production database migration, published API readiness, release\nreadiness, full frontend readiness, product readiness, and map truth remain\noutside this record.\n\n## Work Context\n\n- Work path:\n  `flowdoc-product-development-resumption > flowdoc-document-structure-database-model > flowdoc-structure-pattern-build-preview-integration-v0`\n- Owner repository for this acceptance record: `repo-project-control`\n- Product evidence repositories: `repo-editor`, `repo-backend`, `repo-core`\n- Active role: `evidence-reviewer`, with `project-control-steward` and\n  `cross-repo-boundary-reviewer` responsibilities\n- Current Phase:\n  `phase-flowdoc-structure-pattern-build-preview-integration-v0`\n- Checklist target:\n  `checklist-flowdoc-structure-pattern-build-preview-integration-v0`\n- Evidence target:\n  `evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04`\n- Room mode for this record: `PLAN`\n- Dispatch Set ID:\n  `dispatch-structure-pattern-build-preview-v0-2026-09-04-01`\n- Known risks: Editor checkout carried unrelated branch state and an untracked\n  `debug.log`; Backend and Core returned detached commits; dependency audit\n  findings were reported by WORK rooms; legacy Backend physical names still\n  include `component_*` for compatibility.\n- Unknown state: runtime Structure Pattern Entry persistence, submitted value\n  storage, HTTP gateway exposure, generated PDF, renderer, artifact,\n  permission, workflow, billing, audit, activity, integration, deployment,\n  production database migration, published API readiness, release readiness,\n  full frontend readiness, product truth, and map truth remain unverified by\n  this integration record.\n\n## Handoff Inbox Items\n\nPLAN opened three real WORK rooms under dispatch set\n`dispatch-structure-pattern-build-preview-v0-2026-09-04-01` with\n`parallelLimit` 3. Each room returned a terminal handoff through the automatic\nReturn Channel.\n\n### Editor\n\n- Handoff status: PASS\n- Return channel status: `automatic-returned`\n- Handoff ID:\n  `handoff-editor-build-preview-structure-pattern-v0-2026-09-04-01`\n- WORK task/chat ID: `01a06bdf-b876-7920-9c08-a680c766b784`\n- Lane ID: `lane-editor-build-preview-structure-pattern-v0`\n- Work Type: `product-implementation`\n- Owner repository: `repo-editor`\n- Accepted commit:\n  `65ab5b149c5aad10b36bbaa23650b9fce7070dff`\n- Worktree locator:\n  `C:\\Users\\nekot\\.codex\\worktrees\\515f\\FlowDocEditor`\n\nAccepted Editor behavior:\n\n- Build keeps draft authoring separate from Preview.\n- Build defines Structure Pattern Slots.\n- Preview simulates Structure Pattern Entries from fields and Structure\n  Patterns without mutating the Build structure.\n- Workflow labels expose Build, Fields, Structure Patterns, and Preview.\n- Publish remains blocked by readiness policy.\n\nPLAN noted one locator correction: the handoff text used the PLAN task ID in\none place when naming the child WORK task. PLAN verified the real WORK task,\nworktree, branch, and commit before acceptance, so no same-room revision was\nrequired for the product output.\n\n### Backend\n\n- Handoff status: PASS\n- Return channel status: `automatic-returned`\n- Handoff ID:\n  `handoff-backend-structure-pattern-v0-0-2-alignment-2026-09-04-01`\n- WORK task/chat ID: `01a06be4-9e75-7b52-a94d-5804f8bee47b`\n- Lane ID: `lane-backend-structure-pattern-v0-0-2-alignment`\n- Work Type: `product-implementation`\n- Owner repository: `repo-backend`\n- Accepted commit:\n  `9da58214e087d2f15afd43855bfd1febec882037`\n- Worktree locator:\n  `C:\\Users\\nekot\\.codex\\worktrees\\d135\\flowdoc-vnext-backend`\n\nAccepted Backend behavior:\n\n- Backend freezes only Structure Patterns referenced by draft slots.\n- Legacy `component_*` names remain compatibility and physical storage names.\n- Backend exposes `structurePatternSlots` and `structurePatternVersions`\n  aliases for v0.0.2 callers.\n- Version fields expose Structure Pattern Slot ownership and source aliases.\n- SQLite persists slot policy and layout fields.\n- Frozen document version reads hydrate from normalized relational rows instead\n  of canonicalizing `document_versions.record_json`.\n\n### Core\n\n- Handoff status: PASS\n- Return channel status: `automatic-returned`\n- Handoff ID:\n  `handoff-core-structure-pattern-boundary-probe-2026-09-04-01`\n- WORK task/chat ID: `01a06be4-bab9-71a2-b7d2-a5b4cf4a4cfc`\n- Lane ID: `lane-core-structure-pattern-boundary-probe`\n- Work Type: `product-implementation`\n- Owner repository: `repo-core`\n- Accepted commit:\n  `8411f26763d81743ba9d44a59fd5ad4942e5601a`\n- Worktree locator:\n  `C:\\Users\\nekot\\.codex\\worktrees\\8744\\flowdoc-vnext-core`\n\nAccepted Core behavior:\n\n- Core owns a strict Structure Pattern Slot boundary validator.\n- Core accepts draft or published slot facts.\n- Core validates duplicate slot ids and keys.\n- Core validates repeat policy cardinality and required minimums.\n- Published slots require resolved Structure Pattern version pins.\n- Core rejects runtime entries and submitted values.\n\n## Integration Gate Result\n\n`acceptanceGate` result: `accepted`.\n\nPLAN accepted the three returned lanes because each handoff included terminal\nPASS status, owner repository, Work Type, Context Acknowledgement, automatic\nReturn Channel evidence, retrievable locator, exact commit, changed files,\ntests run, risks, unknowns, intentionally closed scope, and no Contract Change\nRequest.\n\nPLAN then integrated the accepted commits into owner-repository main branches:\n\n- Core main fast-forwarded to\n  `8411f26763d81743ba9d44a59fd5ad4942e5601a`.\n- Backend main fast-forwarded to\n  `9da58214e087d2f15afd43855bfd1febec882037`.\n- Editor main fast-forwarded to\n  `65ab5b149c5aad10b36bbaa23650b9fce7070dff`.\n\nPLAN did not patch Core, Backend, or Editor product files after dispatch.\n\n## Verification\n\nWORK verification already returned with each handoff. PLAN then performed fresh\nowner-repository main gates after merge.\n\nCore main:\n\n- Command: `npm run check`\n- Result: type-check passed, 432 passed test files, and 2791 passed tests.\n\nBackend main:\n\n- Command: `npm run check`\n- Result: type-check passed, 93 passed / 1 skipped test file, 346 passed / 27\n  skipped tests, and build passed.\n\nEditor main:\n\n- Command: `npm run review:gate`\n- Result: type-check passed, Core package tests passed with 54 files / 837\n  passed / 6 skipped, app tests passed with 129 files / 1155 passed, and\n  production build passed.\n\n## PLAN Decision\n\nStructure Pattern Build/Preview v0 has been accepted by PLAN at the bounded\nowner-repository commit level:\n\n- Editor:\n  `65ab5b149c5aad10b36bbaa23650b9fce7070dff`\n- Backend:\n  `9da58214e087d2f15afd43855bfd1febec882037`\n- Core:\n  `8411f26763d81743ba9d44a59fd5ad4942e5601a`\n\nThis acceptance supports only the bounded owner-repository behavior proven by\nthose commits and main gates:\n\n- Build defines Structure Pattern Slots.\n- Preview simulates Structure Pattern Entries.\n- Backend freezes only Structure Patterns referenced by slots.\n- Core rejects runtime entries and submitted values from Structure Pattern Slot\n  facts.\n\nThis record does not promote FlowDoc product truth or map truth. It does not\nprove runtime submission persistence, submitted value storage, HTTP gateway\nexposure, generated PDF files, renderer jobs, artifact storage, permission\nbehavior, workflow, billing, audit, activity, integrations, deployment,\nproduction database migration, published API readiness, release readiness, or\nfull frontend readiness.\n\nIntentionally closed by this acceptance:\n\n- No runtime submission model.\n- No persisted runtime Structure Pattern Entries.\n- No submitted value storage.\n- No HTTP gateway exposure.\n- No generated PDF files.\n- No renderer jobs.\n- No artifact storage.\n- No permission, workflow, billing, audit, activity, or integration readiness.\n\n## Next Recommended Lanes\n\nNext recommended lanes:\n\n- `lane-editor-build-surface-creator-usability`: continue making Build usable\n  as the creator-facing document-structure authoring surface.\n- `lane-preview-entry-simulation-contract`: harden Preview as a separate\n  Structure Pattern Entry simulation surface without mutating Build drafts.\n- `lane-backend-document-structure-gateway`: expose the accepted Backend\n  document-structure foundation through a bounded API surface after frontend\n  authoring needs are stable.\n- `lane-runtime-submission-model`: design runtime submitted values and persisted\n  Structure Pattern Entries separately from structure definition.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-system-map",
       "title": "FlowDoc System Map",
       "path": "docs/domains/flowdoc-system-map.md",
@@ -18580,6 +18781,16 @@
       "pathOrContractId": "package.json#scripts.test:source-docs:core-migration; package.json#scripts.test:source-docs:live-draft; package.json#scripts.test:source-docs:template-builder; package.json#scripts.test:source-docs:text-block; package.json#scripts.test:source-docs:text-engine; tools/lib/test-groups.ts#sourceDocsSubgroupIds; tools/lib/test-groups.ts#groupContainsTestFile; tools/run-test-groups.ts; tests/project-control-test-groups.test.ts; tests/flowdoc-source-docs-subgroups-evidence.test.ts",
       "verificationSummary": "The 2026-09-03 Project Control source-docs subgroup split keeps source-docs as the umbrella gate while giving PLAN and WORK lanes focused scripts for source-docs:core-migration, source-docs:live-draft, source-docs:template-builder, source-docs:text-block, and source-docs:text-engine. RED evidence: npx vitest run tests/project-control-test-groups.test.ts --maxWorkers=1 failed before implementation because package.json lacked test:source-docs:* scripts and tools/lib/test-groups.ts lacked defaultTestGroupIds and sourceDocsSubgroupIds. Implementation commit 292a123561dc0bdec779e2d8c76b0c1bf82f9235 added sourceDocsSubgroupIds, kept defaultTestGroupIds as records/source-docs/app, made source-docs an includeGroupIds umbrella, and updated the runner to collect files through groupContainsTestFile. Verification passed: npx vitest run tests/project-control-test-groups.test.ts --maxWorkers=1; npm run type-check; npm run test:source-docs:core-migration with 5 files / 66 tests; npm run test:source-docs:live-draft with 4 files / 22 tests; npm run test:source-docs:template-builder with 4 files / 28 tests; npm run test:source-docs:text-block with 4 files / 18 tests; npm run test:source-docs:text-engine with 4 files / 49 tests; npm run test:source-docs with 21 files / 183 tests; and npm run test:unit through records, source-docs, and app default groups. Full worktree npm run check passed through check:data, type-check, grouped unit tests, build, and 6 e2e tests. This does not lower verification: npm run check still delegates to check:grouped and keeps check:data, type-check, grouped unit tests, build, and e2e. This does not edit Core, Backend, or Editor behavior, does not prove product-repository readiness, and does not promote FlowDoc product truth.",
       "verifiedAt": "2026-09-03T08:36:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "3cb5ee9a573002d2b90fa7cfa3612b3e55426e1a",
+      "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; dispatchSetId dispatch-structure-pattern-build-preview-v0-2026-09-04-01; handoff-editor-build-preview-structure-pattern-v0-2026-09-04-01; handoff-backend-structure-pattern-v0-0-2-alignment-2026-09-04-01; handoff-core-structure-pattern-boundary-probe-2026-09-04-01; Editor WORK task/chat ID 01a06bdf-b876-7920-9c08-a680c766b784; Backend WORK task/chat ID 01a06be4-9e75-7b52-a94d-5804f8bee47b; Core WORK task/chat ID 01a06be4-bab9-71a2-b7d2-a5b4cf4a4cfc; Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff; Backend commit 9da58214e087d2f15afd43855bfd1febec882037; Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a; docs/domains/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.md; tests/flowdoc-structure-pattern-build-preview-integration.test.ts; npm run check",
+      "verificationSummary": "PLAN acceptanceGate received three Structure Pattern Build/Preview WORK room Terminal Handoffs as automatic-returned through mcp__codex_app.send_message_to_thread: Editor handoff-editor-build-preview-structure-pattern-v0-2026-09-04-01, Backend handoff-backend-structure-pattern-v0-0-2-alignment-2026-09-04-01, and Core handoff-core-structure-pattern-boundary-probe-2026-09-04-01. PLAN accepted the bounded lane outputs, recorded the Editor locator correction and Backend/Core detached commit integration risk, then fast-forward merged Core main to 8411f26763d81743ba9d44a59fd5ad4942e5601a, Backend main to 9da58214e087d2f15afd43855bfd1febec882037, and Editor main to 65ab5b149c5aad10b36bbaa23650b9fce7070dff. Fresh owner-repository main gates passed after merge: Core npm run check with 432 passed test files and 2791 passed tests; Backend npm run check with 93 passed / 1 skipped test file, 346 passed / 27 skipped tests, and build passed; Editor npm run review:gate with Core package tests 54 files / 837 passed / 6 skipped, app tests 129 files / 1155 passed, and production build passed. Accepted bounded behavior: Build defines Structure Pattern Slots and Preview simulates Structure Pattern Entries in Editor; Backend freezes only Structure Patterns referenced by slots and exposes v0.0.2 slot aliases while preserving legacy component_* compatibility names; Core validates Structure Pattern Slot facts and rejects runtime entries and submitted values. This evidence does not promote FlowDoc product truth or map truth, and does not prove runtime submission persistence, submitted values, HTTP gateway exposure, generated PDF files, renderer jobs, artifact storage, permission behavior, workflow, billing, audit, activity, integrations, deployment, production database migration, published API readiness, release readiness, or full frontend readiness.",
+      "verifiedAt": "2026-09-04T18:10:00.000+07:00"
     },
     {
       "kind": "evidence",

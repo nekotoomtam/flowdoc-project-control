@@ -1,0 +1,32 @@
+{
+  "kind": "work",
+  "id": "flowdoc-structure-pattern-build-preview-integration-v0",
+  "title": "FlowDoc Structure Pattern Build/Preview Integration v0",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-document-structure-database-model",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "PLAN accepted and integrated the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview lanes. Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a adds the Structure Pattern Slot boundary probe; Backend commit 9da58214e087d2f15afd43855bfd1febec882037 aligns document-structure version freeze and slot aliases with v0.0.2; Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff shapes Build, Fields, Structure Patterns, and Preview UI affordances.",
+  "contextDocumentIds": [
+    "doc-flowdoc-system-map",
+    "doc-flowdoc-delivery-operating-model",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-lean-dispatch-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-document-structure-north-star-2026-09-04",
+    "doc-flowdoc-product-domain-relationship-2026-09-04",
+    "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+    "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
+    "doc-flowdoc-fast-delivery-risk-register-2026-09-04",
+    "doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"
+  ],
+  "activeRole": "evidence-reviewer",
+  "expectedOutput": "Project Control PLAN integration acceptance record for the Core, Backend, and Editor Structure Pattern Build/Preview lanes, including automatic WORK returns, acceptanceGate decisions, owner-repository commits, main-branch fast-forward merges, fresh owner-repository main gates, accepted scope, residual risks, and intentionally unpromoted product truth.",
+  "riskSummary": "This accepted integration is not FlowDoc product readiness, not frontend readiness, not a runtime submission model, not a generated PDF pipeline, not a production database migration, not a published API readiness claim, and not map truth. It supports only the bounded owner-repository behavior proven by the cited commits and main gates. Runtime Structure Pattern Entry persistence, actual submitted values, HTTP gateway exposure, generated files, permissions, workflow, billing, audit, activity, integrations, deployment, and release readiness remain out of scope.",
+  "requiredEvidence": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+  "createdAt": "2026-09-04T18:10:00.000+07:00",
+  "updatedAt": "2026-09-04T18:10:00.000+07:00"
+}
