@@ -5,13 +5,18 @@
   "path": "docs/domains/flowdoc-editor-build-preview-usability-dispatch-registry-2026-09-04.md",
   "nodeIds": [],
   "role": "decision",
-  "authority": "PLAN-owned Room Run Registry note for dispatch-editor-build-preview-usability-v0-2026-09-04-01, preserving clientThreadId, worktree, branch, return, liveness, completionQueue, and acceptance boundaries while two Editor WORK rooms are still awaiting terminal handoff.",
+  "authority": "PLAN-owned Room Run Registry and acceptance note for dispatch-editor-build-preview-usability-v0-2026-09-04-01, preserving clientThreadId, worktree, branch, return, liveness, completionQueue, acceptance boundaries, one same-room Preview revision, and the final Editor main integration gate.",
   "lifecycle": "active",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
       "commit": "919ad65d087bdc06f2ef2c06bd02cf910ca2351b",
       "pathOrContractId": "docs/domains/flowdoc-editor-build-preview-usability-dispatch-registry-2026-09-04.md; tests/flowdoc-editor-build-preview-usability-dispatch-registry.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "715dd2e7edf0e7a3592ab7ff7e55cced361c836a",
+      "pathOrContractId": "src/app/editor/_components/AddPanel.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/FieldPalette.tsx; src/app/editor/_components/FillingPanel.tsx; src/app/editor/_components/__tests__/structurePatternWorkflow.test.ts; src/app/editor/_components/shell/EditorLeftRail.tsx; package.json#scripts.review:gate; package.json#scripts.smoke:editor"
     }
   ]
 }
