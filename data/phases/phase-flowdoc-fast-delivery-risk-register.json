@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-fast-delivery-risk-register",
+  "workId": "flowdoc-fast-delivery-risk-register",
+  "title": "FlowDoc Fast Delivery Risk Register",
+  "phaseState": "done",
+  "order": 13,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The risk register would require Core, Backend, or Editor product repository edits.",
+    "The risk register would claim product database implementation, frontend readiness, API readiness, renderer readiness, PDF readiness, or production readiness from planning alone.",
+    "The risk register would weaken automatic return, liveness, retrievable locator, or acceptanceGate for fast delivery."
+  ],
+  "verificationTarget": "Project Control records Terminology risk, Database drift risk, UX scope risk, Truth promotion risk, Speed risk, Dependency risk, and a compact fast Kickoff risk gate without promoting product implementation truth.",
+  "summary": "Done: Project Control now records a compact fast-delivery risk register that future PLAN rooms can use before opening faster Backend, Editor, Core, or Project Control lanes.",
+  "createdAt": "2026-09-04T16:30:00.000+07:00",
+  "updatedAt": "2026-09-04T16:30:00.000+07:00"
+}

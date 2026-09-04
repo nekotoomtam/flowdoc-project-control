@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 49);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 50);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -511,6 +511,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-product-domain-relationship",
@@ -722,6 +723,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-design-workspace-usability",
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
+        "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-frontend-product-map",

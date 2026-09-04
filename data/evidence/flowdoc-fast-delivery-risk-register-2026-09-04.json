@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-fast-delivery-risk-register-2026-09-04",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0000000000000000000000000000000000000000",
+  "pathOrContractId": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md; data/work/flowdoc-fast-delivery-risk-register.json; data/phases/phase-flowdoc-fast-delivery-risk-register.json; data/checklists/checklist-flowdoc-fast-delivery-risk-register.json; data/documents/flowdoc-fast-delivery-risk-register-2026-09-04.json; tests/flowdoc-fast-delivery-risk-register.test.ts; npm run check",
+  "verificationSummary": "Project Control records a compact FlowDoc Fast Delivery Risk Register before faster product delivery. The register captures RISK-FD-001 Terminology risk for Structure Pattern / Slot / Entry and legacy component_* wording; RISK-FD-002 Database drift risk for Backend v0.0.1 legacy naming; RISK-FD-003 UX scope risk for keeping Build and Preview separate; RISK-FD-004 Truth promotion risk; RISK-FD-005 Speed risk for Lean Dispatch and mandatory automatic return, liveness, retrievable locator, and acceptanceGate; and RISK-FD-006 Dependency risk for npm audit or dependency setup warnings. RED evidence: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1 failed before Project Control contained the new risk Work and document records. GREEN evidence target includes the focused records guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a SQL migration, does not implement a product database, does not implement frontend screens, and does not promote product readiness, frontend readiness, publish readiness, renderer readiness, PDF readiness, production readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, integration readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-04T16:30:00.000+07:00"
+}

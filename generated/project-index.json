@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "417f038b0e7242747ac8ded55c7ff779e75b5dfbccc633c10eba81905522c891",
+  "sourceDigest": "1fd1c17e494b97b4cbc0a391b74a39cee691be55c8c86f11d6c994cf573cc49f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -29,7 +29,8 @@
         "doc-flowdoc-product-domain-relationship-2026-09-04",
         "doc-flowdoc-document-structure-database-model-2026-09-04",
         "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
-        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04"
+        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04",
+        "doc-flowdoc-fast-delivery-risk-register-2026-09-04"
       ],
       "evidenceIds": [
         "evidence-core-project-control-entrypoint",
@@ -67,6 +68,7 @@
         "flowdoc-design-workspace-usability",
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
+        "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-frontend-product-map",
@@ -2304,6 +2306,55 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-fast-delivery-risk-register",
+      "title": "FlowDoc Fast Delivery Risk Register",
+      "nodeId": "flowdoc",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor",
+        "repo-backend",
+        "repo-core"
+      ],
+      "workState": "in-progress",
+      "summary": "Record a compact Project Control risk register before faster FlowDoc delivery, covering terminology drift, database drift, UX scope, truth promotion, speed/Lean Dispatch, and dependency warning risks.",
+      "contextDocumentIds": [
+        "doc-flowdoc-system-map",
+        "doc-document-map-operating-rules",
+        "doc-flowdoc-role-catalog",
+        "doc-agent-skill-operating-model",
+        "doc-flowdoc-round-workflow",
+        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-plan-room-orchestration-rules",
+        "doc-flowdoc-work-type-routing-model",
+        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-documentation-authority-policy",
+        "doc-flowdoc-agent-documentation-authority-operating-rules",
+        "doc-flowdoc-product-terminology",
+        "doc-flowdoc-product-terminology-th",
+        "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+        "doc-flowdoc-document-structure-database-model-v0-0-2-2026-09-04"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "A fast delivery risk register in Project Control that future PLAN rooms can copy into Kickoff Packets as a compact gate for terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, and dependency warnings.",
+      "riskSummary": "This risk register is not product implementation, not product database implementation, not frontend readiness evidence, not Backend API readiness, not Core renderer readiness, not PDF readiness, and not FlowDoc product truth. It records residual risks and fast-lane stop conditions only.",
+      "requiredEvidence": [
+        "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+      ],
+      "createdAt": "2026-09-04T16:30:00.000+07:00",
+      "updatedAt": "2026-09-04T16:30:00.000+07:00",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-fast-delivery-risk-register"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-fast-delivery-risk-register"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-first-delivery-round",
       "title": "FlowDoc First Delivery Round",
       "nodeId": "flowdoc",
@@ -2519,6 +2570,7 @@
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
         "flowdoc-product-domain-relationship",
@@ -5164,6 +5216,28 @@
       "summary": "Done: Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 records the documentation authority policy foundation without deleting product-repository Markdown. The policy makes Project Control the canonical home for FlowDoc-wide shared understanding, allows repo-local Markdown only for code-adjacent, repository-owned, or historical purposes, requires Authority Boundary wording for surviving repo-local Markdown, blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and sequences cleanup as inventory, classification, Project Control summary or registration, then retirement. Evidence target evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31 is work-scoped and does not promote product truth.",
       "createdAt": "2026-08-31T14:20:00.000Z",
       "updatedAt": "2026-08-31T14:30:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-fast-delivery-risk-register",
+      "workId": "flowdoc-fast-delivery-risk-register",
+      "title": "FlowDoc Fast Delivery Risk Register",
+      "phaseState": "done",
+      "order": 13,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+        "The risk register would require Core, Backend, or Editor product repository edits.",
+        "The risk register would claim product database implementation, frontend readiness, API readiness, renderer readiness, PDF readiness, or production readiness from planning alone.",
+        "The risk register would weaken automatic return, liveness, retrievable locator, or acceptanceGate for fast delivery."
+      ],
+      "verificationTarget": "Project Control records Terminology risk, Database drift risk, UX scope risk, Truth promotion risk, Speed risk, Dependency risk, and a compact fast Kickoff risk gate without promoting product implementation truth.",
+      "summary": "Done: Project Control now records a compact fast-delivery risk register that future PLAN rooms can use before opening faster Backend, Editor, Core, or Project Control lanes.",
+      "createdAt": "2026-09-04T16:30:00.000+07:00",
+      "updatedAt": "2026-09-04T16:30:00.000+07:00"
     },
     {
       "kind": "phase",
@@ -12715,6 +12789,86 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-fast-delivery-risk-register",
+      "phaseId": "phase-flowdoc-fast-delivery-risk-register",
+      "title": "FlowDoc Fast Delivery Risk Register Checklist",
+      "items": [
+        {
+          "id": "capture-fast-delivery-risk-context",
+          "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+          "state": "passed",
+          "evidenceTarget": "The risk register record identifies Project Control ownership before writing fast-delivery risk framing.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-fast-delivery-risk-register, owner repo-project-control, active role planning-partner with documentation-authority-steward and evidence-registrar responsibilities, phase target phase-flowdoc-fast-delivery-risk-register, checklist target checklist-flowdoc-fast-delivery-risk-register, and evidence target evidence-flowdoc-fast-delivery-risk-register-2026-09-04."
+        },
+        {
+          "id": "write-red-fast-delivery-risk-guard",
+          "label": "Write a failing Project Control guard before adding the fast-delivery risk records.",
+          "state": "passed",
+          "evidenceTarget": "A focused records test fails before Project Control contains the fast-delivery risk Work, document, checklist, and evidence records.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "RED evidence: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-fast-delivery-risk-register as a child Work."
+        },
+        {
+          "id": "record-terminology-and-db-drift-risks",
+          "label": "Record terminology and database drift risks around Structure Pattern terms and legacy component_* names.",
+          "state": "passed",
+          "evidenceTarget": "The risk register records RISK-FD-001 and RISK-FD-002.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md records terminology risk and database drift risk."
+        },
+        {
+          "id": "record-ux-scope-and-truth-promotion-risks",
+          "label": "Record UX scope and truth promotion risks before faster Editor, Backend, or Core lanes.",
+          "state": "passed",
+          "evidenceTarget": "The risk register records RISK-FD-003 and RISK-FD-004.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "The register states that Build and Preview must remain separate and that planning docs must not be treated as product implementation evidence."
+        },
+        {
+          "id": "record-speed-and-dependency-risks",
+          "label": "Record speed and dependency risks for Lean Dispatch and worktree dependency warnings.",
+          "state": "passed",
+          "evidenceTarget": "The risk register records RISK-FD-005 and RISK-FD-006.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "The register preserves automatic return, liveness, retrievable locator, acceptanceGate, and dependency warning boundaries."
+        },
+        {
+          "id": "define-kickoff-risk-gate",
+          "label": "Define a compact Kickoff Packet risk gate for fast future lanes.",
+          "state": "passed",
+          "evidenceTarget": "The risk register includes a fast Kickoff risk gate for future PLAN rooms.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "The fast Kickoff risk gate lists terminology, legacy component_*, Build/Preview split, planning truth, automatic return, liveness, retrievable locator, acceptanceGate, and dependency checks."
+        },
+        {
+          "id": "verify-fast-delivery-risk-register",
+          "label": "Verify Project Control records, generated read model, and checks.",
+          "state": "passed",
+          "evidenceTarget": "Focused records guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+          "evidenceIds": [
+            "evidence-flowdoc-fast-delivery-risk-register-2026-09-04"
+          ],
+          "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+        }
+      ],
+      "createdAt": "2026-09-04T16:30:00.000+07:00",
+      "updatedAt": "2026-09-04T16:30:00.000+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-first-delivery-core-pdf-boundary-acceptance",
       "phaseId": "phase-flowdoc-first-delivery-core-pdf-boundary-acceptance",
       "title": "First Delivery Core PDF Boundary Acceptance Checklist",
@@ -15392,6 +15546,26 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-fast-delivery-risk-register-2026-09-04",
+      "title": "FlowDoc Fast Delivery Risk Register",
+      "path": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md",
+      "nodeIds": [
+        "flowdoc"
+      ],
+      "role": "risk",
+      "authority": "Project Control fast delivery risk register for FlowDoc PLAN rooms and Kickoff Packets before faster product lanes.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-project-control",
+          "commit": "0000000000000000000000000000000000000000",
+          "pathOrContractId": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md; data/work/flowdoc-fast-delivery-risk-register.json; data/phases/phase-flowdoc-fast-delivery-risk-register.json; data/checklists/checklist-flowdoc-fast-delivery-risk-register.json; data/evidence/flowdoc-fast-delivery-risk-register-2026-09-04.json; tests/flowdoc-fast-delivery-risk-register.test.ts; npm run check"
+        }
+      ],
+      "content": "# FlowDoc Fast Delivery Risk Register\n\n## Authority Boundary\n\nOwner repository: `repo-project-control`.\n\nWork path:\n`flowdoc-product-development-resumption > flowdoc-fast-delivery-risk-register`.\n\nThis document records a compact Project Control risk register for moving faster\nafter the 2026-09-04 creator UX and document-structure database alignment. It\nis a pre-dispatch guard for PLAN rooms and future Kickoff Packets.\n\nThis document is not product implementation, not frontend implementation\nevidence, not a product database implementation, not a SQL migration, not an\nAPI contract, not renderer evidence, and not product readiness evidence. It\ndoes not prove Core runtime behavior, Backend persistence or service behavior,\nEditor behavior, PDF generation, frontend readiness, production readiness,\nFlowDoc product truth, or map truth.\n\nNo product repository files change in this phase. PLAN may record these risks,\nbut PLAN must not patch Core, Backend, or Editor product repositories after\ndispatch. Product repository repair must go back to the same WORK room as a\nRevision Packet when the original retrievable locator remains usable.\n\n## Work Context\n\nActive role: `planning-partner`, with `documentation-authority-steward` and\n`evidence-registrar` responsibilities for the Project Control records.\n\nCurrent Phase: `phase-flowdoc-fast-delivery-risk-register`.\n\nChecklist target: `checklist-flowdoc-fast-delivery-risk-register`.\n\nEvidence target: `evidence-flowdoc-fast-delivery-risk-register-2026-09-04`.\n\nWork Type: `planning-coordination` plus `documentation-authority`.\n\nKnown risks are listed below. Unknown state remains: these risks do not prove\nthat any Editor, Backend, Core, Preview, Published/API, Runtime Submission, PDF\nrenderer, artifact storage, permission, workflow, billing, audit, activity, or\nintegration behavior exists.\n\n## How To Use This Register\n\nBefore opening a fast product WORK lane, PLAN should scan this register and\ncopy only the relevant risk rows into the lane's Kickoff Packet or Context\nCapsule.\n\nEvery selected risk row should become one of:\n\n- an accepted constraint in the Kickoff Packet;\n- a stop condition;\n- a required acknowledgement from the WORK room;\n- a reason to send a Revision Packet back to the same WORK room;\n- a reason to split the lane before dispatch.\n\nThis register is intentionally short. It should make fast movement safer, not\nturn every lane into a new broad design round.\n\n## Risk Register\n\n| ID | Risk | Trigger | Guard / Mitigation | PLAN Action |\n| --- | --- | --- | --- | --- |\n| `RISK-FD-001` | Terminology risk | A lane uses `component`, `component instance`, or `component_*` without saying whether it means UI component, Structure Pattern, Structure Pattern Slot, or Structure Pattern Entry. | Required reading: `FlowDoc Product Terminology`, Thai companion, `FlowDoc Creator UX Contract v0`, and `FlowDoc Document Structure Database Model v0.0.2`. The lane must use Structure Pattern / Slot / Entry product terms unless it is explicitly quoting legacy component_* names. | If the room blurs the terms, mark `needs-revision` and send a Revision Packet. If the term changes product behavior, require a Contract Change Request. |\n| `RISK-FD-002` | Database drift risk | Backend work follows the accepted v0.0.1 foundation but keeps legacy component_* meaning in service/domain behavior. | Treat legacy component_* names as compatibility names only. Product-facing behavior should expose Structure Pattern terms, slot repeat policy, layout boundaries, and slot-driven freeze. | Dispatch Backend work as a bounded owner lane. PLAN records evidence only after exact Backend commit and fresh Backend checks. |\n| `RISK-FD-003` | UX scope risk | Build and Preview collapse into one surface, or Build starts storing runtime data entries. | Build is draft authoring. Preview is simulation. Build defines Structure Pattern Slots; Preview or runtime creates Structure Pattern Entries. The center of Build should remain a real Document Surface, not a free-form Word or Google Docs style editor. | If an Editor lane implements runtime entry behavior inside Build, reject or revise before accepting the lane. |\n| `RISK-FD-004` | Truth promotion risk | A handoff treats planning docs, UX docs, risk notes, screenshots, branches, worktrees, or generated Project Control index content as product truth. | Do not promote frontend readiness, product database implementation, Published/API readiness, PDF readiness, or FlowDoc product truth without owner-repository evidence. Maps change only when a bounded Evidence record supports the exact claim. | Keep the claim `planned`, `risk`, or `unknown`; request product evidence from the owning repository. |\n| `RISK-FD-005` | Speed risk | PLAN opens several WORK rooms quickly or uses Lean Dispatch with a thin Context Capsule. | Lean Dispatch may reduce duplicated prose, but it must not remove automatic return, liveness, retrievable locator, acceptanceGate, owner repository, forbidden scope, evidence target, or Contract Change Request triggers. | Before dispatch, record parallelLimit, Return Channel, Active Return Command, handoff ID, livenessDeadline, and compact Terminal Handoff fields. |\n| `RISK-FD-006` | Dependency risk | A worktree setup or dependency install emits warnings such as npm audit findings, startup dependency failures, or long install behavior. | Do not hide dependency warnings. If a lane touches dependencies, security, package manager behavior, or CI setup, promote this to owner-repository evidence work. If unrelated, record as residual risk and continue without changing dependencies. | Keep current dependency warning as residual risk until a dedicated security/dependency lane is approved. |\n\nThe `RISK-FD-004` guard is intentionally strict: PLAN must not promote\nfrontend readiness and must not promote product database implementation from\nthis register, planning docs, generated indexes, screenshots, or unfinished WORK\noutput.\n\n## Fast Kickoff Risk Gate\n\nA fast Kickoff Packet should include this compact gate:\n\n```text\nRisk gate:\n- Confirm whether Structure Pattern / Slot / Entry terminology is in scope.\n- Confirm whether legacy component_* names are compatibility names only.\n- Confirm Build and Preview remain separate if Editor UI is in scope.\n- Confirm planning docs are not product implementation evidence.\n- Confirm automatic return, liveness, retrievable locator, and acceptanceGate.\n- Confirm dependency warnings are either out of scope or explicitly owned.\n```\n\nIf any answer is unclear, the lane should not start as a fast lane. PLAN should\neither tighten the Context Capsule, reduce parallelism, or split the work.\n\n## Boundaries For Faster Movement\n\nPLAN can move faster after this register by keeping each next lane narrow and\nevidence-shaped:\n\n- Backend lanes must return exact commit, files changed, behavior changed,\n  tests run, risks left, and whether legacy component_* names remain.\n- Editor lanes must return exact commit, files changed, visible flow changed,\n  tests or screenshots when relevant, and whether Build and Preview stayed\n  separate.\n- Core lanes must return exact commit, files changed, semantic contract\n  changed, tests run, and which renderer or package behavior is still unknown.\n- Project Control lanes may update records and documents, but must not patch\n  product repositories after dispatch.\n\nThis register does not require every lane to read every document in full. It\ndoes require PLAN to give each WORK room the exact risks that can break that\nlane.\n\n## Intentionally Not Changed\n\n- No Core, Backend, or Editor files change in this phase.\n- No product repository repair is performed by PLAN.\n- No frontend screen, product database schema, SQL migration, Backend API,\n  Core renderer contract, PDF generation, artifact storage, permission,\n  workflow, audit, activity, billing, or integration behavior is implemented.\n- No FlowDoc product truth, frontend readiness, publish readiness, PDF\n  readiness, production readiness, or map truth is promoted.\n\n## Next Recommended Work\n\nUse this risk register as a small pre-dispatch filter before the next fast\nlane. The next useful decision is whether to open an Editor Build/Preview lane\nor a Backend Structure Pattern alias/schema lane first.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02",
       "title": "FlowDoc First Delivery Backend PDF Boundary Pre-Admission Smoke",
       "path": "docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md",
@@ -15986,7 +16160,7 @@
       "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
       "lifecycle": "active",
       "repositoryRefs": [],
-      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| FlowDoc Product Terminology | `repo-project-control` | `current` as a terminology and workflow-control boundary for overloaded Project Control, Core, Backend, Editor, and frontend redesign terms. This does not promote product readiness, Core truth, Backend truth, Editor truth, compatibility, or frontend design readiness. | [FlowDoc Product Terminology](flowdoc-product-terminology.md); [Thai Companion](flowdoc-product-terminology-th.md) |\n| FlowDoc Product Domain Relationship | `repo-project-control` | `planned` as a product-domain relationship map and reading router for future domain work. This does not promote database schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Product Domain Relationship](flowdoc-product-domain-relationship-2026-09-04.md) |\n| FlowDoc Creator UX Contract | `repo-project-control` | `planned` as a creator-facing flow contract for Document Structure Library, Build, Preview, Versions, and Published/API. This is not frontend implementation evidence and does not promote frontend readiness, Editor truth, Backend truth, Core truth, product readiness, publish readiness, PDF readiness, or map truth. | [FlowDoc Creator UX Contract v0](flowdoc-creator-ux-contract-v0-2026-09-04.md) |\n| FlowDoc Document Structure Database Model | `repo-project-control` | `planned` as a structure-only database relationship decision for document definitions, drafts, sections, Structure Patterns, Structure Pattern Slots, frozen versions, publication pointers, field type master scope, slot repeat policy, layout boundaries, and runtime Structure Pattern Entry exclusion. This is not a SQL migration, not a product database implementation, and does not promote schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Document Structure Database Model v0.0.2](flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md); [v0.0.1 baseline](flowdoc-document-structure-database-model-2026-09-04.md) |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
+      "content": "# FlowDoc System Map\n\n## Purpose\n\nThis is the product-wide entry map for the FlowDoc system as known by Project\nControl. It summarizes registered systems and points to their canonical maps or\noverview documents. It is not a work plan and does not claim product readiness.\n\nThis map should change only when Project Control has a reviewed document,\nEvidence record, or deliberately bounded registry update to point at.\n\n## System inventory\n\n| System | Repository | Current registry state | Canonical reference |\n| --- | --- | --- | --- |\n| FlowDoc Product Terminology | `repo-project-control` | `current` as a terminology and workflow-control boundary for overloaded Project Control, Core, Backend, Editor, and frontend redesign terms. This does not promote product readiness, Core truth, Backend truth, Editor truth, compatibility, or frontend design readiness. | [FlowDoc Product Terminology](flowdoc-product-terminology.md); [Thai Companion](flowdoc-product-terminology-th.md) |\n| FlowDoc Product Domain Relationship | `repo-project-control` | `planned` as a product-domain relationship map and reading router for future domain work. This does not promote database schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Product Domain Relationship](flowdoc-product-domain-relationship-2026-09-04.md) |\n| FlowDoc Creator UX Contract | `repo-project-control` | `planned` as a creator-facing flow contract for Document Structure Library, Build, Preview, Versions, and Published/API. This is not frontend implementation evidence and does not promote frontend readiness, Editor truth, Backend truth, Core truth, product readiness, publish readiness, PDF readiness, or map truth. | [FlowDoc Creator UX Contract v0](flowdoc-creator-ux-contract-v0-2026-09-04.md) |\n| FlowDoc Document Structure Database Model | `repo-project-control` | `planned` as a structure-only database relationship decision for document definitions, drafts, sections, Structure Patterns, Structure Pattern Slots, frozen versions, publication pointers, field type master scope, slot repeat policy, layout boundaries, and runtime Structure Pattern Entry exclusion. This is not a SQL migration, not a product database implementation, and does not promote schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Document Structure Database Model v0.0.2](flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md); [v0.0.1 baseline](flowdoc-document-structure-database-model-2026-09-04.md) |\n| FlowDoc Fast Delivery Risk Register | `repo-project-control` | `planned` as a fast-delivery risk register for future PLAN room Kickoff Packets. This records terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, and dependency warning risks without promoting product implementation, frontend readiness, product database readiness, API readiness, PDF readiness, or map truth. | [FlowDoc Fast Delivery Risk Register](flowdoc-fast-delivery-risk-register-2026-09-04.md) |\n| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |\n| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |\n| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |\n| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |\n| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |\n\n## Core registered families\n\nCore currently has one active document map for the `V0_1_0a_1` release line.\nThat map is the canonical Core-level reference and remains partial until\nbroader Core synthesis, coverage, reference repair, publication review, and\nauthorized cleanup are complete.\n\nThe registered Core families are:\n\n- `core-route`: current bounded family closure with cleanup Evidence.\n- `text-engine`: documentation synthesis complete; family truth remains\n  unknown.\n- `template-builder`: documentation synthesis complete; family truth remains\n  unknown.\n- `live-draft`: documentation synthesis complete; family truth remains\n  unknown.\n- `text-block`: documentation synthesis complete; family truth remains\n  unknown.\n\n## Work and truth boundary\n\nPlan / Work records intent. They describe what a round is trying to do and what\nmust be checked.\n\nSystem maps record verified or deliberately bounded registry truth. A planned\ntask does not enter this map as completed system state. After work finishes,\nProject Control should register documents, Evidence, and node changes first;\nthen the appropriate system map can be updated to point at that reviewed state.\n\n## Update rule\n\nWhen new product work completes:\n\n1. Keep the work plan in Work, spec, or implementation-plan documents.\n2. Verify the owning repository with fresh tests or durable Evidence.\n3. Register or update the bounded Project Control document and Evidence\n   records.\n4. Update the narrowest map that changed first, such as a Core family map.\n5. Update this FlowDoc system map only when the product-wide inventory or\n   canonical reference list changes.\n\nThis keeps plans from becoming truth and keeps maps useful as stable entry\npoints for future work.\n"
     },
     {
       "kind": "document",
@@ -18158,6 +18332,16 @@
       "pathOrContractId": "PLAN task/chat ID 01a0637c-bc37-7cb1-8655-362695c4c6f7; WORK task/chat ID 01a06519-c810-77d1-9382-b50f2bca2a18; dispatchSetId dispatch-first-delivery-owner-lanes-2026-09-03-01; lane-editor-structure-publish; handoff-editor-structure-publish-2026-09-03-01; src/app/EditorShell.tsx; src/app/documentWorkspaceRoute.ts; src/components/publish/PublishBoundaryView.tsx; src/components/shell/WorkspaceFrame.tsx; src/components/shell/WorkspaceViewTabs.tsx; src/styles/workspace.css; src/tests/documentWorkspaceRoute.test.ts; src/tests/workspaceFrame.test.ts; src/tests/workspaceViewTabs.test.ts; npm run check",
       "verificationSummary": "PLAN acceptanceGate received the Editor WORK room Terminal Handoff as automatic-returned through mcp__codex_app.send_message_to_thread. Editor commit 15c956d5c887f938a828c80dc45ababe08c7569d accepts lane-editor-structure-publish: it adds /documents/:documentId/publish as a first-class workspace view, adds a Publish tab to the workspace header, retains the Design runtime while Publish view is active, renders an Editor-owned Publish boundary panel for the active document and version, and keeps publish submission unavailable until the Backend-owned gateway contract is ready for integration. WORK baseline npm run check passed before implementation; RED route/tab/frame tests failed before the publish route, tab, and frame existed; focused GREEN route/tab/frame tests passed with 3 files / 6 tests; post-commit and post-merge Editor main gates passed with 109 files / 394 tests and build, with the existing Vite chunk-size warning family. PLAN independently verified Editor main and reran npm run check with 109 test files / 394 tests and build passing with the same Vite chunk-size warning family. This evidence supports only the bounded Editor structure/publish lane and automatic return. It does not prove Backend calls, publish submission, API key storage, PDF output readiness, browser-to-backend integration, FlowDoc product truth, map truth, release readiness, or frontend readiness.",
       "verifiedAt": "2026-09-03T10:30:00.000+07:00"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-flowdoc-fast-delivery-risk-register-2026-09-04",
+      "nodeIds": [],
+      "repositoryId": "repo-project-control",
+      "commit": "0000000000000000000000000000000000000000",
+      "pathOrContractId": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md; data/work/flowdoc-fast-delivery-risk-register.json; data/phases/phase-flowdoc-fast-delivery-risk-register.json; data/checklists/checklist-flowdoc-fast-delivery-risk-register.json; data/documents/flowdoc-fast-delivery-risk-register-2026-09-04.json; tests/flowdoc-fast-delivery-risk-register.test.ts; npm run check",
+      "verificationSummary": "Project Control records a compact FlowDoc Fast Delivery Risk Register before faster product delivery. The register captures RISK-FD-001 Terminology risk for Structure Pattern / Slot / Entry and legacy component_* wording; RISK-FD-002 Database drift risk for Backend v0.0.1 legacy naming; RISK-FD-003 UX scope risk for keeping Build and Preview separate; RISK-FD-004 Truth promotion risk; RISK-FD-005 Speed risk for Lean Dispatch and mandatory automatic return, liveness, retrievable locator, and acceptanceGate; and RISK-FD-006 Dependency risk for npm audit or dependency setup warnings. RED evidence: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1 failed before Project Control contained the new risk Work and document records. GREEN evidence target includes the focused records guard, npm run generate, npm run check:data, and npm run check. This evidence does not edit Core, Backend, or Editor behavior, does not create a SQL migration, does not implement a product database, does not implement frontend screens, and does not promote product readiness, frontend readiness, publish readiness, renderer readiness, PDF readiness, production readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, integration readiness, FlowDoc product truth, or map truth.",
+      "verifiedAt": "2026-09-04T16:30:00.000+07:00"
     },
     {
       "kind": "evidence",
