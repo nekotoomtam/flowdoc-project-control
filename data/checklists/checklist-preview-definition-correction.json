@@ -1,0 +1,28 @@
+{
+  "phaseId": "phase-preview-definition-correction",
+  "kind": "checklist",
+  "updatedAt": "2026-09-05T15:24:34.3729165Z",
+  "id": "checklist-preview-definition-correction",
+  "items": [
+    {
+      "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
+      "label": "แยก Build, Preview และ PDF output inspection พร้อมนิยามไทย/อังกฤษ",
+      "state": "in-progress",
+      "id": "define-mode-boundaries"
+    },
+    {
+      "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
+      "label": "แก้ Creator contract และ R4 พร้อมเกณฑ์กดแก้บนเอกสารและคงข้อมูล Build",
+      "state": "in-progress",
+      "id": "align-planning-acceptance"
+    },
+    {
+      "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
+      "label": "กำกับแผนเก่ากับข้อค้างโดยไม่อ้าง product readiness หรืออนุมัติ Node",
+      "state": "in-progress",
+      "id": "preserve-history-and-scope"
+    }
+  ],
+  "createdAt": "2026-09-05T15:24:34.3729165Z",
+  "title": "นิยามและเกณฑ์ป้องกัน Preview ผิดทิศ"
+}

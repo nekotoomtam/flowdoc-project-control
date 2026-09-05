@@ -39,14 +39,15 @@
     "doc-core-package-reconciliation-return-2026-09-05",
     "doc-editor-core-retirement-return-2026-09-05",
     "doc-core-closeout-followup-2026-09-05",
-    "doc-editor-dependency-audit-returns-2026-09-05"
+    "doc-editor-dependency-audit-returns-2026-09-05",
+    "doc-preview-definition-correction-2026-09-05"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes.",
+  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate.",
   "requiredEvidence": [
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-05T14:31:19.8270775Z"
+  "updatedAt": "2026-09-05T15:24:34.3729165Z"
 }

@@ -2,6 +2,15 @@
 
 ## Roadmap ปัจจุบัน — ปรับลำดับ 5 กันยายน 2026
 
+### นิยาม Preview ที่แก้ไขตามคำชี้แจงล่าสุด
+
+ใช้ [Preview definition correction](flowdoc-preview-definition-correction-2026-09-05.md)
+และ Creator UX Contract ที่ปรับแล้วก่อนเปิด R3/R4: Preview ต้องกดแก้ข้อมูล
+ทดลองบนเอกสารจำลองได้และเห็นผลโดยไม่ต้องสร้าง PDF ก่อน ช่อง Form/JSON เป็น
+ตัวช่วยได้แต่ไม่แทนการโต้ตอบบนเอกสาร Build ยังคงแก้โครงสร้าง ส่วน Preview
+ไม่แก้ Build draft หรือ frozen version การสร้าง PDF และการดูไฟล์ไม่ใช่เกณฑ์
+ผ่าน Preview การแก้นิยามนี้ไม่ใช่หลักฐานว่าหน้าบ้านทำได้แล้ว
+
 ส่วนนี้เป็นลำดับงานปัจจุบัน ใช้แทนคำแนะนำลำดับงานใน v1 ด้านล่าง ซึ่งเก็บเป็นประวัติการวางแผนวันที่ 3 กันยายน โดยไม่ยกเลิกหลักฐานของงานที่ส่งมอบแล้ว
 
 ### Authority Boundary และบริบทรอบนี้
@@ -37,7 +46,7 @@ Evidence target: `evidence-flowdoc-frontend-roadmap-refresh-2026-09-05`
 | R1 คลังและการเก็บโครงสร้าง | ส่งมอบ local scope แล้ว / Backend | เพิ่มรายการโครงสร้างตาม workspace พร้อมลำดับและการแบ่งหน้า; ต่อ SQLite adapter ที่มีอยู่เข้ากับ local runner พร้อม seed master data และที่เก็บข้อมูลชัดเจน | สร้างครั้งแรกด้วย baseRevision 0 → อ่านกลับ → แก้ไข → ปิดเปิด server → รายการและค่าที่บันทึกยังอยู่; เขียนพร้อมกันสองคำขอต้องไม่ทับ revision ที่ใหม่กว่า; ทดสอบ workspace ไม่ปะปน |
 | R2 สร้าง–เปิด–บันทึกจากหน้าบ้าน | ส่งมอบ draft ขั้นต่ำแล้ว / Editor | ต่อ transport โครงสร้าง, Library, การสร้างฉบับร่างขั้นต่ำ และทางเปิด Build; แสดงกำลังบันทึก/ยังไม่บันทึก/ล้มเหลว/ข้อมูลขัดแย้ง | ผู้ใช้สร้าง ตั้งชื่อ แก้ค่าที่รองรับ บันทึก กลับ Library และเปิดต่อหลัง refresh กับ server restart ได้; ทดสอบสองแท็บโดยไม่ทิ้งการแก้ไขเงียบ ๆ |
 | R3 Build โครงสร้างที่แก้ได้จริง | ถัดไป / Editor; Core หรือ Backend เฉพาะสัญญาที่ขาด | จัดการ sections, fields, Structure Patterns และ Slots ผ่านสัญญาที่รับแล้ว; inspector เข้าถึงได้บนจอแคบ | เปลี่ยนโครงสร้างแล้ว save/reload ได้ครบ; unsupported action บอกเหตุผล; keyboard ใช้งานได้; Build สร้าง Slot ไม่สร้าง runtime Entries |
-| R4 Preview เพื่อทดลองข้อมูล | รอ R3 / Editor; Backend และ Core ตามขอบเขต simulation | สร้างแบบกรอกข้อมูลจาก draft, เพิ่ม/ลบ Entries ตาม repeat policy, แสดงผลเอกสารและเหตุผลเมื่อเปิดไม่ได้ | ทดลองข้อมูลแล้วไม่เปลี่ยน Build draft; ผูกผลกับ draft revision; input ผิด/ผลเก่า/ล้มเหลวมีข้อความและ retry ที่มีชื่อเข้าถึงได้ |
+| R4 Preview เพื่อทดลองข้อมูล | รอ R3 / Editor; Backend และ Core ตามขอบเขต simulation | แสดงเอกสารจำลองจาก draft ให้กดแก้ค่าทดลองบนเอกสาร เพิ่ม/ลบ Entries ตาม repeat policy; Form/JSON เป็นตัวช่วย | กดแก้ค่าบนเอกสารและเห็นผลโดยไม่ต้อง Generate PDF; ไม่เปลี่ยน Build draft; ผูกผลกับ draft revision; input ผิด/ผลเก่า/ล้มเหลวมีข้อความและ retry ที่มีชื่อเข้าถึงได้ |
 | R5 Versions | รอ R4 / Backend สำหรับรายการเวอร์ชัน; Editor สำหรับหน้าใช้งาน | ต่อ freeze/read ที่มีอยู่ เพิ่มรายการเวอร์ชันและหน้าเลือกตรวจ; Preview เวอร์ชันที่เลือก | frozen version ไม่เปลี่ยนตาม draft; รายการและรายละเอียดตรงกัน; Preview เวอร์ชันเก่าไม่แก้ข้อมูลต้นทาง |
 | R6 Published/API | รอ R5 / Backend สำหรับ publication contract; Editor สำหรับหน้าเลือก | เลือก frozen version ให้ channel และแสดง data contract ของเวอร์ชันนั้น | publication ชี้เวอร์ชันถูกต้อง ไม่แก้ frozen version; revision conflict มีทางแก้; ทดสอบเปลี่ยนเวอร์ชันที่เผยแพร่แล้ว |
 | R7 การใช้งานจริงและไฟล์ผลลัพธ์ | รอ R6 และสัญญาบริการ / แยก Backend, Core, Editor ตามเจ้าของ | วางงาน credentials, runtime submissions, jobs, renderer, PDF และ artifact storage จากหลักฐานที่มี โดยไม่สร้างซ้ำส่วนที่รับแล้ว | มีหลักฐานบริการและผลลัพธ์ครบตามขอบเขตที่จะเปิดใช้งาน ก่อนอ้าง production readiness |

@@ -143,9 +143,35 @@ itself, and not Project Control truth.
 
 ### Preview
 
-`Preview` means an Editor-visible rendering or inspection mode for a document
-or working copy. It can be a useful user experience target, but it is not proof
-of export parity, renderer parity, Backend persistence, or product readiness.
+`Preview` means an interactive document simulation in the Editor. The user
+selects and edits permitted simulation values on the visible document surface
+and sees the document update, including permitted Structure Pattern Entries.
+Form or JSON controls may assist this interaction; they must not replace the
+editable document surface with a separate input form and a read-only result.
+
+Preview edits simulation data against a draft or frozen version. It must not
+mutate the Build structure, field definitions, slot policies, or frozen version.
+It does not imply unrestricted Word-style authoring or changes to Core semantics.
+
+Ambiguity disposition: `split`. Use `Build` for structure authoring, `Preview`
+for interactive document simulation, and `PDF output inspection` for viewing
+an exported PDF. PDF.js, a PDF viewer, a read-only canvas, or successful PDF
+generation alone does not satisfy Preview. PDF export may be a separate action;
+it is not a prerequisite for editing simulation data on the document surface.
+
+This definition reflects the user's clarification on 2026-09-05 and supersedes
+the earlier inspection-only meaning for future work. It does not prove current
+implementation, export parity, renderer parity, Backend persistence, or product
+readiness. See `flowdoc-preview-definition-correction-2026-09-05.md` and the
+updated Creator UX Contract for acceptance examples and remaining unknowns.
+
+### Build
+
+`Build` means controlled authoring of document structure, fields, sections,
+Structure Patterns, Slots, and page rules. The user selects a visible document
+part and edits its structure through contextual controls. Build and Preview
+are separate modes with different editable data; a similar document-like
+appearance does not make their responsibilities interchangeable.
 
 ### Live Backend Mode
 
@@ -277,7 +303,9 @@ Before redesigning the Editor or any future frontend, translate UI vocabulary
 through this glossary:
 
 - use `Editor draft` for browser-local working state;
-- use `Preview` for visible rendering/inspection;
+- use `Build` for controlled structure authoring;
+- use `Preview` for interactive document simulation with on-document value editing;
+- use `PDF output inspection` for viewing an exported file;
 - use `Outline item` for UI structure rows;
 - use `Structure Pattern` for creator-defined reusable document
   sub-structures;

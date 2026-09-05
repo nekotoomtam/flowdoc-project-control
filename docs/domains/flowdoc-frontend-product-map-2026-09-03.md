@@ -1,5 +1,15 @@
 # FlowDoc Frontend Product Map v1
 
+## Superseded Preview requirement — 2026-09-05
+
+This v1 map is retained as historical planning context. For new Build/Preview
+work, use `flowdoc-preview-definition-correction-2026-09-05.md`, the updated
+Creator UX Contract, and canonical product terminology. Preview requires
+editing permitted simulation values on the visible document; inspection-only
+wording and PDF lifecycle checks below do not satisfy that requirement.
+Build remains separate structure authoring. Closed WYSIWYG gates require
+explicit prerequisite work, not substitution of a read-only result.
+
 ## Authority Boundary
 
 Owner repository: `repo-project-control`.

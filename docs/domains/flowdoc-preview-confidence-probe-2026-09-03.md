@@ -1,5 +1,13 @@
 # FlowDoc Preview Confidence Probe
 
+## Historical scope / corrected requirement — 2026-09-05
+
+The probe below is historical, bounded inspection/PDF lifecycle context.
+Use `flowdoc-preview-definition-correction-2026-09-05.md` for new Preview
+acceptance: the user must edit permitted simulation values on the document
+itself. Passing the older probe or PDF generation checks does not meet that
+requirement. Historical results are preserved without product promotion.
+
 ## Authority Boundary
 
 This document records PLAN acceptance of the no-edit `lane-preview-confidence-probe` handoff.

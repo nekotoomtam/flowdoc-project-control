@@ -1,0 +1,11 @@
+{
+  "id": "doc-preview-definition-correction-2026-09-05",
+  "title": "นิยาม Preview และเกณฑ์รับงานที่แก้ไข",
+  "lifecycle": "active",
+  "path": "docs/domains/flowdoc-preview-definition-correction-2026-09-05.md",
+  "role": "decision",
+  "kind": "document",
+  "nodeIds": [],
+  "repositoryRefs": [],
+  "authority": "Project Control canonical requirement correction from user clarification: interactive document simulation distinct from Build and PDF output inspection. No product readiness evidence."
+}

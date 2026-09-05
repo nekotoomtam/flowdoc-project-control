@@ -1,5 +1,14 @@
 # PLAN — Close remaining Core retirement items
 
+## User steering after the partial closeout
+
+The latest user decision corrects Preview terminology first; see
+`flowdoc-preview-definition-correction-2026-09-05.md`. Keep the PDF.js/Node
+proposal paused. The user's question about confirming in chat was not approval
+to drop Node 20. The PDF security finding remains unresolved and separate from
+interactive Preview. No new dispatch or support-policy change is authorized by
+the definition correction. Earlier return/acceptance events below remain intact.
+
 ## Authority Boundary
 Owner Project Control; Work flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap; Phase phase-core-closeout-followup; Checklist checklist-core-closeout-followup; Evidence evidence-core-closeout-followup-2026-09-05. Canonical planning/registry, not map promotion. User explicitly requested finishing reported residuals; no R3 authorization.
 

@@ -1,5 +1,15 @@
 # FlowDoc Creator UX Contract v0
 
+## Current clarification — 2026-09-05
+
+The user clarified that Preview must be an interactive document simulation:
+permitted simulation values can be edited on the visible document itself.
+This clarification supersedes the earlier form-beside-result interpretation.
+Build remains controlled structure authoring. See
+`flowdoc-preview-definition-correction-2026-09-05.md` for the decision and
+acceptance scenarios. This is a requirement correction, not implementation
+evidence or authorization to merge Build and Preview.
+
 ## Authority Boundary
 
 Owner repository: `repo-project-control`.
@@ -68,9 +78,9 @@ Document Structure Library -> Build -> Preview -> Versions -> Published/API
 structure, fields, Structure Patterns, Structure Pattern Slots, page defaults,
 section rules, and binding expectations.
 
-`Preview` is simulation. It takes a draft or frozen version, creates a
-form-like input surface from fields and slots, lets the user add Structure
-Pattern Entries where allowed, and shows the resulting document.
+`Preview` is interactive document simulation. It takes a draft or frozen
+version, lets the user edit permitted field values on the visible document,
+add Structure Pattern Entries where allowed, and see the document update.
 
 `Versions` is version inspection and freeze history. A creator can create a
 new frozen baseline from the current draft, inspect prior versions, and preview
@@ -117,18 +127,27 @@ the entries.
 
 Preview is a separate simulation surface.
 
-Preview reads the current draft or a selected frozen version. It then builds a
-controlled input surface from document fields, section fields, Structure
-Pattern Slots, and their allowed repeat rules.
+Preview reads the current draft or a selected frozen version. Its document
+surface provides controlled editing of simulation values from document fields,
+section fields, Structure Pattern Slots, and their allowed repeat rules.
 
 When a slot allows repetition, Preview may show an add action that creates a
 Structure Pattern Entry for that slot. Removing, reordering, or changing those
 entries is Preview data behavior only. It does not mutate the Build draft and
 does not create author-time slots.
 
-Preview should show the filled document result beside or near the input
-surface so the creator can validate how field data, repeat rules, layout
-boundaries, and overflow behavior will feel before freezing a version.
+The user must be able to select a permitted field on the document, change its
+simulation value there, and see the filled document update without generating
+a PDF first. Supporting Form/JSON controls may coexist, but a separate form
+beside a read-only result is insufficient. A PDF viewer or read-only canvas
+alone is also insufficient. Layout boundaries, repeated entries, and overflow
+must be observable on the simulated document before freezing a version.
+
+Direct simulation editing is a required product outcome. Existing WYSIWYG
+gates still require a safe implementation contract, but must not silently
+replace this outcome with PDF display or defer it out of Preview acceptance.
+Missing prerequisites must be reported explicitly. Editing simulation values
+does not authorize changing Build structure or unrestricted rich-text editing.
 
 Preview data is not runtime submission truth and is not persisted as actual
 submitted values in the document-structure model.

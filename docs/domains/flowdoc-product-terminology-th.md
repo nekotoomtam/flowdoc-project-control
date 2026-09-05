@@ -134,9 +134,31 @@ Editor draft ไม่ใช่ canonical storage, ไม่ใช่ Core docum
 
 ### Preview
 
-`Preview` คือโหมดที่ Editor แสดงหรือ inspect เอกสารหรือ working copy มันเป็น
-เป้าหมาย UX ได้ แต่ไม่ใช่หลักฐานของ export parity, renderer parity, Backend
-persistence หรือ product readiness
+`Preview` คือหน้าจำลองเอกสารที่โต้ตอบได้ใน Editor ผู้ใช้กดเลือกและแก้ข้อมูล
+ทดลองที่อนุญาตบนตัวเอกสาร แล้วเห็นเอกสารปรับตามข้อมูล รวมถึง Structure Pattern
+Entries ตามสิทธิ์ของ Slot ช่อง Form หรือ JSON ใช้ช่วยได้ แต่ใช้แทนการแก้บน
+เอกสารด้วยแบบกรอกแยกและผลลัพธ์ที่ดูได้อย่างเดียวไม่ได้
+
+Preview เปลี่ยนเฉพาะข้อมูลทดลองของ draft หรือ frozen version ไม่แก้โครงสร้าง
+Build นิยามฟิลด์ กฎ Slot หรือ frozen version และไม่หมายถึงการแก้ทุกอย่างได้
+อย่างอิสระแบบ Word
+
+แยกคำแบบ `split`: Build ใช้สร้างโครงสร้าง, Preview ใช้ทดลองข้อมูลบนเอกสารจำลอง,
+ส่วน `PDF output inspection` ใช้เรียกการเปิดดู PDF ที่ส่งออก การใช้ PDF.js
+แสดง PDF, canvas ที่ดูได้อย่างเดียว หรือสร้าง PDF สำเร็จ ไม่ถือว่าทำ Preview
+ครบ การส่งออก PDF เป็นอีกการกระทำหนึ่ง ไม่ใช่เงื่อนไขก่อนแก้ข้อมูลบนเอกสาร
+
+นิยามนี้ตามคำชี้แจงตูมวันที่ 5 กันยายน 2026 ใช้แทนนิยามที่เน้นดูผลอย่างเดียว
+สำหรับงานถัดไป ไม่ใช่หลักฐานว่าทำงานได้แล้ว ดูตัวอย่างเกณฑ์รับงานใน
+`flowdoc-preview-definition-correction-2026-09-05.md` และ Creator UX Contract
+ที่ปรับแล้ว English terminology ยังคงเป็นตัวหลัก
+
+### Build
+
+`Build` คือการกำหนดโครงสร้าง ฟิลด์ sections, Structure Patterns, Slots และ
+กฎหน้า ผู้ใช้เลือกส่วนที่เห็นบนเอกสารแล้วแก้โครงสร้างผ่านตัวควบคุมตามบริบท
+Build กับ Preview เป็นคนละโหมดและแก้ข้อมูลคนละประเภท แม้แสดงหน้าคล้ายเอกสาร
+เหมือนกัน ก็ไม่ทำให้ทั้งสองหน้ามีหน้าที่เดียวกัน
 
 ### Live Backend Mode
 
@@ -261,7 +283,9 @@ route, source commit หรือ target commit
 นี้:
 
 - ใช้ `Editor draft` สำหรับ browser-local working state
-- ใช้ `Preview` สำหรับ visible rendering/inspection
+- ใช้ `Build` สำหรับการกำหนดโครงสร้างตามกรอบที่อนุญาต
+- ใช้ `Preview` สำหรับเอกสารจำลองที่กดแก้ค่าทดลองบนเอกสารได้
+- ใช้ `PDF output inspection` สำหรับการเปิดดูไฟล์ที่ส่งออก
 - ใช้ `Outline item` สำหรับแถวหรือรายการโครงสร้างใน UI
 - ใช้ `Structure Pattern` สำหรับโครงย่อย reusable ของเอกสารที่คนสร้างกำหนด
 - ใช้ `Structure Pattern Slot` สำหรับจุดในโครงเอกสารฝั่ง author-time ที่จะ
