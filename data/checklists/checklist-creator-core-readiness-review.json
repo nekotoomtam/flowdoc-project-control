@@ -1,0 +1,22 @@
+{
+  "kind": "checklist",
+  "id": "checklist-creator-core-readiness-review",
+  "phaseId": "phase-creator-core-readiness-review",
+  "title": "เกณฑ์รับผลตรวจ Core",
+  "items": [
+    {
+      "id": "review-core-deletions",
+      "label": "ตรวจไฟล์หาย แหล่งคืนค่าและความเสี่ยงโดยไม่แก้ checkout",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05"
+    },
+    {
+      "id": "accept-automatic-return",
+      "label": "PLAN ตรวจรับ automatic return และข้อเสนอคืนความพร้อม",
+      "state": "pending",
+      "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05"
+    }
+  ],
+  "createdAt": "2026-09-05T10:33:18.927Z",
+  "updatedAt": "2026-09-05T10:33:18.927Z"
+}

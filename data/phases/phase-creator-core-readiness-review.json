@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-creator-core-readiness-review",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "ตรวจ Core ก่อนเปิด R3 ผ่าน PLAN/WORK",
+  "phaseState": "in-progress",
+  "order": 40,
+  "repositoryIds": [
+    "repo-core"
+  ],
+  "activeRole": "lane-reconciliation-reviewer",
+  "stopConditions": [
+    "Read-only only; no restore/delete/install or product edits",
+    "Missing return or locator prevents acceptance"
+  ],
+  "verificationTarget": "evidence-creator-core-readiness-review-2026-09-05; exact tracked diff inventory and safe recovery proposal",
+  "summary": "Authorized single WORK read-only review. R3 and repairs held pending PLAN acceptance.",
+  "createdAt": "2026-09-05T10:33:18.927Z",
+  "updatedAt": "2026-09-05T10:33:18.927Z"
+}

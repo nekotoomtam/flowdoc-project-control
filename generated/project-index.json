@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d79285a3592affddf81ed49c2fcc07297ee65c30fb71a385e09a10239a9628de",
+  "sourceDigest": "4c93c3a4b224b2654b3f7aa83a2b766f902ac65bb76ad3a6dd004eadce34c869",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2485,7 +2485,8 @@
         "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03",
         "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
         "doc-editor-creator-flow-audit-2026-09-05",
-        "doc-creator-draft-first-delivery-2026-09-05"
+        "doc-creator-draft-first-delivery-2026-09-05",
+        "doc-creator-core-readiness-dispatch-2026-09-05"
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -2494,7 +2495,7 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-05T09:30:00.000Z",
+      "updatedAt": "2026-09-05T10:33:18.927Z",
       "childWorkIds": [
         "flowdoc-frontend-product-map"
       ],
@@ -2503,7 +2504,8 @@
         "phase-flowdoc-frontend-roadmap-refresh-2026-09-05",
         "phase-creator-draft-r0",
         "phase-creator-draft-r1",
-        "phase-creator-draft-r2"
+        "phase-creator-draft-r2",
+        "phase-creator-core-readiness-review"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3552,6 +3554,26 @@
       "summary": "Done: Core now publishes a version-surface retirement inventory with focused and full Core verification; Project Control records the bounded result without promoting broad Core or Backend truth.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-creator-core-readiness-review",
+      "workId": "flowdoc-frontend-expert-roadmap",
+      "title": "ตรวจ Core ก่อนเปิด R3 ผ่าน PLAN/WORK",
+      "phaseState": "in-progress",
+      "order": 40,
+      "repositoryIds": [
+        "repo-core"
+      ],
+      "activeRole": "lane-reconciliation-reviewer",
+      "stopConditions": [
+        "Read-only only; no restore/delete/install or product edits",
+        "Missing return or locator prevents acceptance"
+      ],
+      "verificationTarget": "evidence-creator-core-readiness-review-2026-09-05; exact tracked diff inventory and safe recovery proposal",
+      "summary": "Authorized single WORK read-only review. R3 and repairs held pending PLAN acceptance.",
+      "createdAt": "2026-09-05T10:33:18.927Z",
+      "updatedAt": "2026-09-05T10:33:18.927Z"
     },
     {
       "kind": "phase",
@@ -7713,6 +7735,28 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-creator-core-readiness-review",
+      "phaseId": "phase-creator-core-readiness-review",
+      "title": "เกณฑ์รับผลตรวจ Core",
+      "items": [
+        {
+          "id": "review-core-deletions",
+          "label": "ตรวจไฟล์หาย แหล่งคืนค่าและความเสี่ยงโดยไม่แก้ checkout",
+          "state": "in-progress",
+          "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05"
+        },
+        {
+          "id": "accept-automatic-return",
+          "label": "PLAN ตรวจรับ automatic return และข้อเสนอคืนความพร้อม",
+          "state": "pending",
+          "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05"
+        }
+      ],
+      "createdAt": "2026-09-05T10:33:18.927Z",
+      "updatedAt": "2026-09-05T10:33:18.927Z"
     },
     {
       "kind": "checklist",
@@ -14887,6 +14931,18 @@
         }
       ],
       "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at exact Core cleanup commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main descendant\n`501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and cleanup\nEvidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Text Block Family Documentation\n\n- [Text Block Overview](text-block/OVERVIEW.md)\n- [Text Block V1 Grammar and Migration History](text-block/v1-grammar-and-migration-history.md)\n- [Text Block V4 Authoring and Inline](text-block/v4-authoring-and-inline.md)\n- [Text Block V4 Measurement and Pagination](text-block/v4-measurement-and-pagination.md)\n\nText Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n\nText Block documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, family promotion, and any\nseparately authorized cleanup remain incomplete; Text Block and broader Core\nremain `unknown`.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-creator-core-readiness-dispatch-2026-09-05",
+      "title": "PLAN/WORK: ตรวจ Core ก่อน R3",
+      "path": "docs/domains/creator-core-readiness-dispatch-2026-09-05.md",
+      "nodeIds": [],
+      "role": "contract",
+      "authority": "Project Control dispatch and continuation registry; no product or map truth",
+      "lifecycle": "active",
+      "repositoryRefs": [],
+      "content": "# PLAN/WORK — ตรวจ Core ก่อน R3\n\n## Authority Boundary\n\nProject Control canonical coordination only; owner repo-project-control, active role planning-partner / project-control-steward. Work path: flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap. Phase: phase-creator-core-readiness-review. Checklist: checklist-creator-core-readiness-review. Evidence target: evidence-creator-core-readiness-review-2026-09-05. No product readiness or map promotion.\n\nตูมอนุมัติเริ่มตามแผน PLAN/WORK ในห้องนี้วันที่ 5 กันยายน 2026 โดยเริ่มตรวจ Core อ่านอย่างเดียวก่อน งานซ่อมและ R3 ต้องผ่านการกำหนดขอบเขตและตรวจรับจาก PLAN ก่อน\n\n## Dispatch Set และ continuation registry\n\n- dispatchSetId: dispatch-creator-core-readiness-2026-09-05\n- PLAN task: 01a0707e-00e9-74e1-be1b-a272a1b89d2a\n- roomRunId: room-core-readiness-01\n- laneId: lane-core-readiness-review\n- Work Type: lane-reconciliation\n- Owner: repo-core\n- parallelLimit: 1; เหตุผล: ยังไม่ทราบเจ้าของไฟล์ที่หายและผลกระทบ dependency จึงรับผลทีละห้อง\n- laneDependencyGraph: core-readiness-review -> PLAN recovery decision -> owner repair if required -> Editor R3 contract review -> bounded R3 implementation\n- Held: all repair/product editing, R3, Preview, Versions, publication, PDF\n- State: prepared; retrievable WORK locator: pending creation; Context Acknowledgement: pending\n- Automatic Return Channel: WORK actively calls mcp__codex_app__send_message_to_thread to PLAN task above\n- Active Return Command: send_message_to_thread with threadId 01a0707e-00e9-74e1-be1b-a272a1b89d2a, hostId local, prompt containing Terminal Handoff\n- handoffId / Return Event ID: handoff-core-readiness-2026-09-05-01\n- Liveness Signal: real task status plus context acknowledgement/progress; lastHeartbeatAt: pending opening; livenessDeadline: 10 minutes after real task locator resolves\n- Death Signal: task unavailable, terminal error or no response by deadline. Mark return-channel-failed before manual recovery; silence is never accepted.\n- handoffInbox: empty; completionQueue: empty; arrivalSequence: pending; duplicates deduplicated by handoffId\n- returnOrderPolicy: BLOCKER/FAIL/Contract Change Request first, then arrivalSequence; process one at a time\n- acceptanceGate: expected owner/lane, context acknowledgement, automatic return, exact repository refs, no edits, inventory/recovery proposal and unknowns explicit\n- revision state: none; any incomplete return goes back to same WORK locator\n\n## WORK Context Capsule\n\nRead Project Control AGENTS, Delivery Operating Model, PLAN Room Orchestration Rules, Work Type Routing Model, Lean Dispatch Operating Rules, owner Core AGENTS and flowdoc-creator-draft-first-delivery-2026-09-05.md. Read full governing documents where required. Execution scope is read-only lane-reconciliation, not Lean Dispatch.\n\nAccepted observation to recheck: Core canonical checkout C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core at e3b9888b25fe963ef4316fe8066d086bae55db47 had 59 tracked deletions under packages/text-engine-rust-wasm. Editor gate used a separate Git-pinned dependency snapshot. Cause and deletion ownership remain UNKNOWN. FlowDocEditor is retired and not a dependency.\n\nAllowed: inspect canonical Core tracked status, exact missing files, HEAD/index/history, source availability, junction metadata and narrowly relevant setup references. Inspect Editor dependency link metadata read-only when needed to describe Core consumer setup. Use git status --untracked-files=no to avoid large untracked backup scans. The fresh WORK worktree is a locator/isolation surface; it must not be mistaken for the affected canonical checkout.\n\nForbidden: restore, checkout files, reset, clean, delete, install, build, mutate links, edit product files or Project Control records, recursively traverse dependency junctions or backup trees, or infer cause from deletion count alone. Do not repair yet.\n\nReturn: PASS/FAIL/BLOCKER/RISK/UNKNOWN, exact HEAD and changed-file inventory, which files are recoverable from Git and whether working changes could be lost, evidence supporting or failing to support cause, smallest safe repair proposal with exact paths and owner, verification required after repair, commit none / files changed none, automatic return state and next PLAN action. First acknowledge scope, reading, evidence target, stop conditions and return command. Push terminal result actively to PLAN before/with local final; no user copy/paste.\n\n## แผนหลังรับผล\n\nPLAN ตรวจรับข้อเสนอและกำหนด lane ซ่อมให้ owner ที่ถูกต้อง หากต้องแก้ product จะส่ง WORK ทำพร้อม worktree/main gates หลังฐานพร้อมค่อยเปิด WORK Editor ตรวจ R3 แล้วแบ่ง sections -> fields -> Structure Patterns/Slots ตามสัญญาที่พิสูจน์ได้ ไม่ถือว่าข้อเสนอข้างต้นเป็นการอนุมัติแก้ทุก repo\n\n## Registry event: queued\nCreation returned client-new-thread:f0cba599-db78-45ae-a9e1-dd9ab218f96d on local. State queued; real locator pending. No acceptance or dependent dispatch allowed from clientThreadId alone.\n\n\n## Registry event: real locator and acknowledgement\n\nWORK task: 01a07122-1de9-7272-bd87-03d6f2d75793, host local; worktree C:/Users/nekot/.codex/worktrees/3084/flowdoc-vnext-core. State running. PLAN received active Context Acknowledgement through send_message_to_thread; reading completion remains pending terminal confirmation. Return Channel reachable; this acknowledgement is not terminal return or acceptance. lastHeartbeatAt 2026-09-05T10:35:00Z; livenessDeadline 2026-09-05T10:45:00Z. No dependent lane opened.\n\n"
     },
     {
       "kind": "document",
