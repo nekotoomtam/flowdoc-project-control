@@ -14,7 +14,7 @@ Project Control canonical planning-coordination. Owner repo-project-control, act
 
 Core main ผ่าน 430 ชุด / 2,739 tests; Editor ผ่านทั้ง worktree และ main 113 ชุด / 412 tests ใช้ dependency จาก Core ปกติแล้ว ไม่มี snapshot override. หน้าบ้านสร้าง–แก้–บันทึก–เปิดกลับผ่าน และการบันทึกชนกันเก็บข้อความที่ยังไม่บันทึกไว้ ผลและข้อจำกัดอยู่ในบันทึกท้ายเอกสาร
 
-การรวมเอกสาร Project Control ใช้ full gate ใน worktree และ main ตามส่วน Final Project Control integration gate พร้อมผลคำสั่งใน PLAN handoff. โฟลเดอร์ worktree ว่าง 3 แห่งยังติด process lock ของ Windows แต่ถอดทะเบียน Git และสาขางานที่รวมแล้วเรียบร้อย งาน roadmap R3–R7 ยังไม่เริ่มในรอบนี้; ไม่มีการแก้ system map
+การรวมเอกสาร Project Control ใช้ full gate ใน worktree และ main ตามส่วน Final Project Control integration gate พร้อมผลคำสั่งใน PLAN handoff. ข้อค้างโฟลเดอร์ว่างและ dependency มีผลติดตามล่าสุดใน [รอบปิดข้อค้าง](core-closeout-followup-2026-09-05.md): โฟลเดอร์เดิมทั้ง3จุดลบแล้ว, auditแก้4รายการเหลือPDF1รายการที่รอการตัดสินใจ. งาน roadmap R3–R7 ยังไม่เริ่มในรอบนี้; ไม่มีการแก้ system map
 
 ส่วนบริบทและ registry แรกด้านล่างเป็นลำดับประวัติ ให้ใช้ event ล่าสุดและ Evidence ที่รับแล้วในการตัดสินสถานะปัจจุบัน
 

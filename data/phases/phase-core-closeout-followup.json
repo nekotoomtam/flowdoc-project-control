@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-core-closeout-followup",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "ปิดข้อค้าง dependency โฟลเดอร์ว่าง และโหลดฉบับล่าสุด",
+  "phaseState": "in-review",
+  "order": 54,
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "No unrelated process termination or nonempty-directory deletion",
+    "Product fixes only in dedicated Editor WORK",
+    "No Core/Backend source edits or R3 expansion"
+  ],
+  "verificationTarget": "evidence-core-closeout-followup-2026-09-05; exact cleanup, dependency audit and current browser reload evidence",
+  "summary": "Compatible lock patch integrated and full Editor main gate passed; all3old empty roots removed. Remaining PDF Node support decision and browser host confirmation await user; phase is not done.",
+  "createdAt": "2026-09-05T14:13:25.8Z",
+  "updatedAt": "2026-09-05T14:36:11.0243034Z"
+}

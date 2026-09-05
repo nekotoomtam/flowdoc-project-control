@@ -1,0 +1,11 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-closeout-followup-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "0cb3970a4f3a083a0b214c5a72fab953319aafdc",
+  "pathOrContractId": "package-lock.json; PC docs/domains/core-closeout-followup-2026-09-05.md; editor-dependency-audit-returns-2026-09-05.md",
+  "verificationSummary": "PLAN accepted automatic partial/main returns02/03 after exact lock-only14+/14- review. Router7.18.2/PostCSS8.5.23/nanoid3.3.18 within existing ranges; fresh ci and full Editor worktree/main typecheck,113files412tests,build PASS; focused17tests PASS. Full audit5high->1high/prod3->1; remaining PDF.js unchanged pending explicit Node22.13 support approval. Canonical links/status clean, preview51412 restored. PLAN separately removed exact3empty unregistered roots non-recursively. Browser stale text preserved, host-native discard confirmation observed read-only; no native click, latest-load completion awaits user. No zero-audit/broad readiness/R3/map claim.",
+  "verifiedAt": "2026-09-05T14:36:09.766Z"
+}
+

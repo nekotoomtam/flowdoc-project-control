@@ -1,0 +1,37 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-closeout-followup",
+  "phaseId": "phase-core-closeout-followup",
+  "title": "เกณฑ์ปิดข้อค้างหลังถอด V1",
+  "items": [
+    {
+      "id": "dependency-audit",
+      "label": "วิเคราะห์และแก้ dependency audit พร้อม full Editor worktree/main gate",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-core-closeout-followup-2026-09-05",
+      "verificationNote": "Four high findings fixed on main with full gates; PDF remains one high pending Node22.13 support decision, so composite item not passed.",
+      "evidenceIds": [
+        "evidence-core-closeout-followup-2026-09-05"
+      ]
+    },
+    {
+      "id": "empty-directory-cleanup",
+      "label": "ลบเฉพาะโฟลเดอร์ว่างที่หมดงาน หรือระบุ process lock ที่พิสูจน์ได้",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-closeout-followup-2026-09-05",
+      "verificationNote": "All three exact empty unregistered ordinary roots removed non-recursively after revalidation; no process termination or user-file deletion.",
+      "evidenceIds": [
+        "evidence-core-closeout-followup-2026-09-05"
+      ]
+    },
+    {
+      "id": "latest-reload-browser",
+      "label": "ยืนยันโหลดฉบับล่าสุดหลังบันทึกชนกันผ่านหน้าบ้าน",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-core-closeout-followup-2026-09-05",
+      "verificationNote": "Stale preservation observed; latest-load awaits user confirmation in host dialog not exposed by browser API. Native skill forbids app UI automation; no completion claim."
+    }
+  ],
+  "createdAt": "2026-09-05T14:13:25.8Z",
+  "updatedAt": "2026-09-05T14:36:11.0759858Z"
+}
