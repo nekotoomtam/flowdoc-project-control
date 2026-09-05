@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-toolbar-reflow-audit-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "493fd8c90fdc2283e7cc2d0f18436a671a60b952",
+  "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx; src/styles/app.css; src/styles/workspace.css; Project Control docs/domains/editor-creator-flow-audit-2026-09-05.md and docs/assets/editor-creator-flow-audit-2026-09-05/",
+  "verificationSummary": "Editor worktree and merged main npm run check both passed: type-check, 112 files / 406 tests, and build. In-app browser baseline at 946px found eight focus/selection chips extending outside the fixed 46px toolbar. After repair, geometry at 720px, 946px, and 1440px found zero vertically overflowing toolbar buttons/chips; toolbar height was 70px. At 720px, Tab focused A4 and scrolled the control into view; clicking Letter updated the canvas page label and dimensions. Current local screenshots capture Library, Build, Preview before/after migration, and Publish. Versions is absent from product route/navigation source. The repair changes only toolbar layout and keyboard scroll focus. No Core, Backend, authoring capability, Preview service, Publish service, map truth, full accessibility, or broader readiness claim is promoted. Editor install reported five high dependency findings and build retained the existing chunk-size warning.",
+  "verifiedAt": "2026-09-05T15:16:00.000+07:00"
+}

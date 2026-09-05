@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "efe1b8da073c6752021d1dbd2a2d822b83f36c80458635881afd3fb4e4a04bc8",
+  "sourceDigest": "c260dcac8137f25eaf61cd88b18a896340ea885380ce2fec0a7c023ca91f7673",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -320,6 +320,7 @@
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
         "editor-structure-panel-narrow-width-visibility",
+        "editor-toolbar-reflow-audit",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -1535,6 +1536,41 @@
     },
     {
       "kind": "work",
+      "id": "editor-toolbar-reflow-audit",
+      "title": "Editor Creator Flow Audit and Toolbar Reflow",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Inspect the current creator flow against the Creator UX Contract and repair the reproduced Build toolbar overlap without activating missing product capabilities.",
+      "activeRole": "product-implementation-agent",
+      "contextDocumentIds": [
+        "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+        "doc-editor-workspace-toolbar-foundation-2026-08-28",
+        "doc-editor-creator-flow-audit-2026-09-05"
+      ],
+      "expectedOutput": "A bounded toolbar layout fix, current browser observations, owner-repository gates, and prioritized flow gaps in Project Control.",
+      "riskSummary": "Library creation, document-structure persistence adoption, Versions, Preview service integration, Published/API, and full accessibility remain separate work. Legacy worktrees and Core evidence-reference mismatch remain untouched.",
+      "requiredEvidence": [
+        "evidence-editor-toolbar-reflow-audit-2026-09-05"
+      ],
+      "createdAt": "2026-09-05T00:00:00Z",
+      "updatedAt": "2026-09-05T00:00:00Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-editor-toolbar-reflow-audit"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "editor-toolbar-reflow-audit"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "editor-workspace-editing-command-group-foundation",
       "title": "Editor WorkspaceEditingCommandGroup Foundation",
       "nodeId": "editor",
@@ -2564,6 +2600,7 @@
         "editor-selection-context-summary-foundation",
         "editor-selection-overlay-zoom-motion-sync",
         "editor-structure-panel-narrow-width-visibility",
+        "editor-toolbar-reflow-audit",
         "editor-workspace-editing-command-group-foundation",
         "editor-workspace-header-foundation",
         "editor-workspace-shell-redesign-foundation",
@@ -3931,6 +3968,26 @@
       "summary": "Fixed the narrow desktop design workspace breakpoint so the left Structure panel remains visible beside the canvas.",
       "createdAt": "2026-08-29T16:36:00.000Z",
       "updatedAt": "2026-08-29T16:36:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-editor-toolbar-reflow-audit",
+      "workId": "editor-toolbar-reflow-audit",
+      "title": "Audit Creator Flow and Repair Toolbar Containment",
+      "phaseState": "done",
+      "order": 10,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "activeRole": "product-implementation-agent",
+      "stopConditions": [
+        "The repair changes Core or Backend behavior or enables unproven authoring, Preview, or Publish capabilities."
+      ],
+      "verificationTarget": "Current in-app browser captures and toolbar containment checks at desktop and narrow widths; Editor npm run check in worktree and main; Project Control npm run check in worktree and main.",
+      "summary": "Repair wrapping toolbar content overflowing the fixed toolbar row; preserve controls and existing capability gates.",
+      "createdAt": "2026-09-05T00:00:00Z",
+      "updatedAt": "2026-09-05T00:00:00Z"
     },
     {
       "kind": "phase",
@@ -8770,6 +8827,46 @@
       ],
       "createdAt": "2026-08-29T16:36:00.000Z",
       "updatedAt": "2026-08-29T16:36:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-editor-toolbar-reflow-audit",
+      "phaseId": "phase-editor-toolbar-reflow-audit",
+      "title": "Creator Flow Audit and Toolbar Reflow Checks",
+      "items": [
+        {
+          "id": "capture-creator-flow",
+          "label": "Capture Library, Build, Preview, and Publish and identify the Versions gap.",
+          "state": "passed",
+          "evidenceTarget": "Current in-app browser screenshots and owner source inspection.",
+          "evidenceIds": [
+            "evidence-editor-toolbar-reflow-audit-2026-09-05"
+          ],
+          "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+        },
+        {
+          "id": "verify-toolbar-containment",
+          "label": "Keep toolbar content inside its row with reachable controls at desktop and narrow widths.",
+          "state": "passed",
+          "evidenceTarget": "Before/after browser geometry, screenshots, and control checks.",
+          "evidenceIds": [
+            "evidence-editor-toolbar-reflow-audit-2026-09-05"
+          ],
+          "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+        },
+        {
+          "id": "verify-owner-and-record-gates",
+          "label": "Pass Editor and Project Control worktree and main gates without promoting map truth.",
+          "state": "passed",
+          "evidenceTarget": "Fresh npm run check outputs in both repositories.",
+          "evidenceIds": [
+            "evidence-editor-toolbar-reflow-audit-2026-09-05"
+          ],
+          "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+        }
+      ],
+      "createdAt": "2026-09-05T00:00:00Z",
+      "updatedAt": "2026-09-05T00:00:00Z"
     },
     {
       "kind": "checklist",
@@ -14754,6 +14851,24 @@
     },
     {
       "kind": "document",
+      "id": "doc-editor-creator-flow-audit-2026-09-05",
+      "title": "Editor Creator Flow Audit and Toolbar Reflow",
+      "path": "docs/domains/editor-creator-flow-audit-2026-09-05.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Bounded local creator-flow observations, toolbar repair evidence, and recommended next work. Does not promote product or map truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-editor",
+          "commit": "493fd8c90fdc2283e7cc2d0f18436a671a60b952",
+          "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx; src/styles/app.css; src/styles/workspace.css"
+        }
+      ],
+      "content": "# Editor Creator Flow Audit and Toolbar Reflow\n\n## Authority Boundary\n\nOwner: Project Control. Work path: `flowdoc-product-development-resumption > editor-toolbar-reflow-audit`.\nProduct change owner: `repo-editor`. Active role: Product Implementation Agent for the bounded layout repair; Evidence Reviewer and Project Control Steward for this report.\nPhase: `phase-editor-toolbar-reflow-audit`. Checklist: `checklist-editor-toolbar-reflow-audit`.\nEvidence target: `evidence-editor-toolbar-reflow-audit-2026-09-05`.\n\nThis report records current local browser observations and a bounded toolbar repair. It does not prove full creator-flow readiness, accessibility compliance, Core or Backend readiness, persistence, Preview parity, Published/API readiness, PDF output, or map truth. Core, Backend, old worktrees, and the prior Core commit-reference discrepancy are unchanged.\n\n## Scope and Method\n\nCompared the current Editor product routes against [Creator UX Contract v0](flowdoc-creator-ux-contract-v0-2026-09-04.md): Document Structure Library → Build → Preview → Versions → Published/API.\nUsed the Codex in-app browser and the repository local loopback runner, with a temporary Backend process and default seeds. Inspected `product-report-vnext-minimal` before and after its supported migration. The migration changed only that temporary process's document record.\nBaseline Editor: `bd07c1a54f98b3a391cbc1de06497f1aef7816d3`. Backend: `eddf727fabef035862c91d3af9eb04b884c8ac6d`.\nScreenshots below were captured during this audit. The main audit viewport was 946px wide; narrow keyboard verification used 720px. Desktop geometry was also checked at 1440px. The 1440px image was clipped by the host viewport and is excluded as screenshot evidence.\n\n## Flow Findings\n\n1. **Library — partial.** Four seeded documents can be opened and migration status is visible. There is no visible create-document-structure action. Source inspection confirms this is the existing Backend document library, not a complete DocumentDefinition creator library.\n\n   ![Library](../assets/editor-creator-flow-audit-2026-09-05/01-library.png)\n\n2. **Build — layout defect repaired; authoring remains limited.** The document surface and outline exist. The toolbar originally put wrapping focus and selection chips into a fixed 46px row. At 946px, eight chips extended above or below the row and overlapped the header/status area. Fields and Structure Pattern controls remain policy/status affordances, not complete authoring flows. The inspector is hidden below 980px by an existing breakpoint; contextual editing access at that width needs a separate review.\n\n   ![Build before repair](../assets/editor-creator-flow-audit-2026-09-05/02-build.png)\n\n3. **Preview — blocked for the inspected seed and environment.** Before migration it explicitly requests migration. After upgrading the seed to package 3/document 4, it still shows Preview unavailable with the document title and a retry icon. It does not explain the next useful recovery action, and the retry button has no accessible name in the observed accessibility tree. This does not show that every Preview path is unavailable; dedicated QA and local service paths were not audited.\n\n   ![Preview before migration](../assets/editor-creator-flow-audit-2026-09-05/03-preview-blocked.png)\n   ![Preview after migration](../assets/editor-creator-flow-audit-2026-09-05/04-preview-migrated.png)\n\n4. **Versions — missing from the inspected product navigation.** The workspace has Build, Preview, and Publish tabs. `src/app/documentWorkspaceRoute.ts` and the workspace router do not define a Versions view. There is no visible freeze-history or frozen-version-selection path to capture.\n\n5. **Published/API — blocked boundary view.** The page describes the active package/document version and returns to Design, but does not select a frozen DocumentVersion or expose its data contract. The wording says a Backend contract is required even though a bounded document-structure HTTP boundary is now accepted; Editor adoption and the distinction between document structure and the existing document-package workspace require explicit integration work.\n\n   ![Publish](../assets/editor-creator-flow-audit-2026-09-05/05-publish.png)\n\n## Bounded Repair\n\nThe toolbar row now sizes to content, keeps chip groups on one line, and scrolls horizontally within its own boundary. The toolbar is keyboard focusable with a visible focus outline; Tab brings offscreen controls into view. Existing narrow-width CSS no longer removes the editing group or readiness text. No capability or action handler was enabled or changed.\n\n![Build after repair](../assets/editor-creator-flow-audit-2026-09-05/06-build-fixed.png)\n![Keyboard access at 720px](../assets/editor-creator-flow-audit-2026-09-05/07-build-720-keyboard.png)\n\nVerification: browser geometry found zero vertically overflowing buttons/chips at 720px, 946px, and 1440px; the row measured 70px. Tab from the toolbar focused A4 and scrolled it into view at 720px. Selecting Letter updated the canvas page label and page dimensions. Horizontal scrolling remains necessary for this information-heavy toolbar; this is containment repair, not a complete toolbar redesign.\n\n## Next Work Order\n\n1. **Document Structure Library to saved draft:** inspect the accepted Backend document-structure routes and create an Editor-owned DocumentDefinition transport/read model before adding creation and draft-save UI. Resolve the mapping to the existing document-package workspace explicitly; do not equate their IDs or revisions. Deliver a narrow create → open → save → reload integration proof.\n2. **Build authoring and Preview feedback:** add real field/slot editing only through the accepted structure contract; expose contextual editing on narrow screens. Give Preview a named retry control and actionable failure reasons, then validate input/result simulation against a specific draft without changing Build state.\n3. **Versions:** freeze a draft, list frozen versions, inspect one version, and preview it without mutation.\n4. **Published/API:** select a frozen version for a channel and display the applicable data contract. External credentials, durable submissions, render jobs, PDF bytes, and production persistence remain separate owner work.\n\nThese are recommendations and dependency boundaries, not dispatched WORK rooms or accepted product implementation. No system map or DOCUMENT_MAP changes in this round.\n\n## Verification Record\n\nEditor worktree `npm run check`: type-check, 112 test files / 406 tests, and build passed. Editor main and Project Control gates are recorded in the linked Evidence and Checklist after fresh completion. Existing dependency warnings remain: Editor install reported five high findings and Project Control one high finding; Editor build retained its chunk-size warning. Dependency changes were outside this layout repair.\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
       "title": "Editor Creator Structure Add Affordance Foundation",
       "path": "docs/domains/editor-creator-structure-add-affordance-foundation-2026-08-29.md",
@@ -18388,6 +18503,16 @@
       "pathOrContractId": "src/app/EditorApp.tsx; src/app/useBackendAddNodeMutation.ts; src/editor/draft/textBlockInlineDraftAdapter.ts; src/tests/activeTextBlockInsertToEdit.test.ts",
       "verificationSummary": "Editor merge commit 5f7b0c0064b4a6d70bdc2d121138dd3fae7aba12 adds bounded text-block insert-to-edit handoff readiness. The Editor now resolves an applied text-block.insert Backend mutation result into a ready text editor focus target only when the selected node is one of the returned targetNodeIds and the returned package/document pair advertises text-block.rich-inline.replace. notifyTextBlockInsertToEditTarget emits the ready canvasFocusNodeId/textBlockId to EditorApp, which reuses the existing canvas focus path so a ready inserted text block can focus the bounded textarea surface. textBlockInlineDraftAdapter now accepts Core document v4 canonical empty text blocks as children: [] clean drafts and creates the first text run only when non-empty text is entered through the existing bounded textarea path; invalid empty text inline leaves remain outside the fixture. RED evidence included an initial discarded fixture correction after Core rejected an empty text leaf, then npm run test -- src/tests/activeTextBlockInsertToEdit.test.ts failed because resolveTextBlockInsertToEditTarget was not a function. GREEN evidence passed npm run test -- src/tests/activeTextBlockInsertToEdit.test.ts with 3 tests; npm run test -- src/tests/addNodeVisibleActions.test.ts src/tests/activeTextBlockInsertToEdit.test.ts src/tests/activeTextBlockEditingHook.test.ts src/tests/textBlockInlineDraftAdapter.test.ts src/tests/paperTextBlockEditor.test.ts with 5 files and 23 tests; npm run type-check; npm run check in the Editor worktree with 103 test files, 370 tests, and build; and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed the same focused 5-file/23-test gate, npm run check with 103 test files, 370 tests, and build, followed by FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke with final Outline order editor-text-block-zone-cover-body-1 > title > editor-columns-zone-cover-body-2 > summary-columns > summary-left-text > summary-right-text > detail-table > detail-cell-a-text > detail-cell-b-text. Project Control baseline npm run check passed before record edits. Project Control RED evidence passed by failing npx vitest run tests/project-roadmap-work-queue.test.ts --reporter verbose before this phase/evidence was registered. This evidence is Editor-side handoff readiness only: current Backend add-node transport remains bounded to package 2/document 3, and Core/Backend document v4 insert semantics remain unsupported, so it does not prove that the currently visible add Text flow can immediately enter editable text on the live route. This evidence does not enable WYSIWYG behavior, contenteditable runtime, Columns editing, Table editing, exact table cell editing UI, exact column layout editing UI, arbitrary rich-inline authoring beyond the existing bounded textarea path, field-ref chip editing, delete-on-cancel policy, durable drafts, collaboration, cross-browser focus readiness, accessibility readiness, visual regression readiness, full large-document authoring performance readiness, production Backend readiness, deployed compatibility, broad corpus coverage, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth. Editor npm install still reports 5 high severity audit findings and Vite retains the existing chunk-size warning. The Editor branch fd-ed-insert-edit-0831 was deleted after merge; Git no longer lists C:/Users/nekot/Documents/GitHub/flowdoc-vnext-editor/.worktrees/fd-ed-insert-edit-0831 as a worktree, but that residual folder remains on disk after git worktree remove failed with Directory not empty and direct recursive deletion was intentionally avoided because dependency links have previously caused cleanup risk.",
       "verifiedAt": "2026-08-31T08:35:00.000Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-editor-toolbar-reflow-audit-2026-09-05",
+      "nodeIds": [],
+      "repositoryId": "repo-editor",
+      "commit": "493fd8c90fdc2283e7cc2d0f18436a671a60b952",
+      "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx; src/styles/app.css; src/styles/workspace.css; Project Control docs/domains/editor-creator-flow-audit-2026-09-05.md and docs/assets/editor-creator-flow-audit-2026-09-05/",
+      "verificationSummary": "Editor worktree and merged main npm run check both passed: type-check, 112 files / 406 tests, and build. In-app browser baseline at 946px found eight focus/selection chips extending outside the fixed 46px toolbar. After repair, geometry at 720px, 946px, and 1440px found zero vertically overflowing toolbar buttons/chips; toolbar height was 70px. At 720px, Tab focused A4 and scrolled the control into view; clicking Letter updated the canvas page label and dimensions. Current local screenshots capture Library, Build, Preview before/after migration, and Publish. Versions is absent from product route/navigation source. The repair changes only toolbar layout and keyboard scroll focus. No Core, Backend, authoring capability, Preview service, Publish service, map truth, full accessibility, or broader readiness claim is promoted. Editor install reported five high dependency findings and build retained the existing chunk-size warning.",
+      "verifiedAt": "2026-09-05T15:16:00.000+07:00"
     },
     {
       "kind": "evidence",

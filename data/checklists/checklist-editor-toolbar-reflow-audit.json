@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-toolbar-reflow-audit",
+  "phaseId": "phase-editor-toolbar-reflow-audit",
+  "title": "Creator Flow Audit and Toolbar Reflow Checks",
+  "items": [
+    {
+      "id": "capture-creator-flow",
+      "label": "Capture Library, Build, Preview, and Publish and identify the Versions gap.",
+      "state": "passed",
+      "evidenceTarget": "Current in-app browser screenshots and owner source inspection.",
+      "evidenceIds": [
+        "evidence-editor-toolbar-reflow-audit-2026-09-05"
+      ],
+      "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+    },
+    {
+      "id": "verify-toolbar-containment",
+      "label": "Keep toolbar content inside its row with reachable controls at desktop and narrow widths.",
+      "state": "passed",
+      "evidenceTarget": "Before/after browser geometry, screenshots, and control checks.",
+      "evidenceIds": [
+        "evidence-editor-toolbar-reflow-audit-2026-09-05"
+      ],
+      "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+    },
+    {
+      "id": "verify-owner-and-record-gates",
+      "label": "Pass Editor and Project Control worktree and main gates without promoting map truth.",
+      "state": "passed",
+      "evidenceTarget": "Fresh npm run check outputs in both repositories.",
+      "evidenceIds": [
+        "evidence-editor-toolbar-reflow-audit-2026-09-05"
+      ],
+      "verificationNote": "Editor worktree/main gates and browser containment checks passed; Project Control full gate required before commit and after merge."
+    }
+  ],
+  "createdAt": "2026-09-05T00:00:00Z",
+  "updatedAt": "2026-09-05T00:00:00Z"
+}

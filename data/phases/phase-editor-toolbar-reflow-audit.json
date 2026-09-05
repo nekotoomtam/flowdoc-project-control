@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-toolbar-reflow-audit",
+  "workId": "editor-toolbar-reflow-audit",
+  "title": "Audit Creator Flow and Repair Toolbar Containment",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The repair changes Core or Backend behavior or enables unproven authoring, Preview, or Publish capabilities."
+  ],
+  "verificationTarget": "Current in-app browser captures and toolbar containment checks at desktop and narrow widths; Editor npm run check in worktree and main; Project Control npm run check in worktree and main.",
+  "summary": "Repair wrapping toolbar content overflowing the fixed toolbar row; preserve controls and existing capability gates.",
+  "createdAt": "2026-09-05T00:00:00Z",
+  "updatedAt": "2026-09-05T00:00:00Z"
+}
