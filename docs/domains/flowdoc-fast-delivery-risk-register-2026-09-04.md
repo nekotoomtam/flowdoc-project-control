@@ -62,6 +62,20 @@ and the merged Backend branch was deleted. Residual local cleanup risk remains
 because the removed Backend worktree directories still exist on disk after git
 cleanup failed with Windows filename-too-long errors.
 
+2026-09-05 operational sweep C: PLAN inspected the remaining Core dirty state
+without editing or accepting product behavior. The tracked Core changes add a
+root export for `src/lifecycle/structurePatternSlots.ts` and update
+`docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md` plus its guard test. The related
+untracked Core files `src/lifecycle/structurePatternSlots.ts` and
+`tests/structurePatternSlotBoundary.test.ts` define a bounded Structure Pattern
+Slot semantic boundary that keeps Structure Pattern Entries, submitted values,
+Backend persistence, and Editor Preview out of Core slot facts. Focused Core
+verification passed with 2 test files and 5 tests, and full Core `npm run
+check` passed with 432 test files and 2791 tests. This proves the local dirty
+Core state is not an immediate gate failure, but it remains unaccepted product
+work because it has no recorded Core WORK handoff, product commit, or Project
+Control acceptance evidence.
+
 ## How To Use This Register
 
 Before opening a fast product WORK lane, PLAN should scan this register and
@@ -90,6 +104,7 @@ turn every lane into a new broad design round.
 | `RISK-FD-005` | Speed risk | PLAN opens several WORK rooms quickly or uses Lean Dispatch with a thin Context Capsule. | Lean Dispatch may reduce duplicated prose, but it must not remove automatic return, liveness, retrievable locator, acceptanceGate, owner repository, forbidden scope, evidence target, or Contract Change Request triggers. | Before dispatch, record parallelLimit, Return Channel, Active Return Command, handoff ID, livenessDeadline, and compact Terminal Handoff fields. |
 | `RISK-FD-006` | Dependency risk | A worktree setup or dependency install emits warnings such as npm audit findings, startup dependency failures, or long install behavior. | Do not hide dependency warnings. If a lane touches dependencies, security, package manager behavior, or CI setup, promote this to owner-repository evidence work. If unrelated, record as residual risk and continue without changing dependencies. | Keep current dependency warning as residual risk until a dedicated security/dependency lane is approved. |
 | `RISK-FD-007` | Local workspace health risk | Editor, Backend, Core, or Project Control gates fail because local linked checkouts, generated package files, stale worktree folders, detached worktrees, stale branch refs, or backup metadata are missing, dirty, already merged, or blocked by Windows path limits. | First distinguish product regression from local workspace state. Repair only the minimum local workspace state needed for gates, preserve unrelated tracked edits, reconcile worktree registry state before deleting branches, and record cleanup leftovers separately. Do not treat local repair as product evidence. | If a fast lane is blocked by local workspace health, pause acceptance, prove whether the baseline fails without the lane, repair only non-product local setup when safe, rerun the owner gate, remove only clean/already-merged worktree registry entries or branches, and keep residual dirty files or cleanup blockers visible. |
+| `RISK-FD-008` | Unaccepted product work on main risk | A product repository main checkout contains tracked or untracked implementation files that pass tests but were not returned through a WORK room, committed as an accepted product lane, or recorded as bounded evidence. | Treat passing tests as health evidence only. Do not commit, revert, promote, or build follow-on plans from the dirty product work until a Core/Backend/Editor owner lane accepts, revises, or discards it. | Before fast database work, route the dirty product slice to its owner: either recover the original WORK room if available or open a bounded owner lane that returns PASS / FAIL / BLOCKER / RISK / UNKNOWN with exact files, tests, and commit. |
 
 The `RISK-FD-004` guard is intentionally strict: PLAN must not promote
 frontend readiness and must not promote product database implementation from
@@ -110,6 +125,8 @@ Risk gate:
 - Confirm dependency warnings are either out of scope or explicitly owned.
 - Confirm local workspace health separately from product behavior if a gate
   fails before or after merge.
+- Confirm no dirty product repository main checkout is being treated as accepted
+  evidence without an owner WORK handoff and product commit.
 ```
 
 If any answer is unclear, the lane should not start as a fast lane. PLAN should
@@ -149,9 +166,15 @@ lane.
   do not accept the unrelated tracked Core Structure Pattern Slot edits, do not
   clean residual on-disk folders that safety policy or Windows path limits
   blocked, and do not change any map.
+- The 2026-09-05 Core dirty-state verification does not accept
+  `src/lifecycle/structurePatternSlots.ts`,
+  `tests/structurePatternSlotBoundary.test.ts`, or the `src/index.ts` export
+  change as product evidence; it only records that the dirty slice currently
+  passes focused and full Core checks.
 
 ## Next Recommended Work
 
 Use this risk register as a small pre-dispatch filter before the next fast
-lane. The next useful decision is whether to open an Editor Build/Preview lane
-or a Backend Structure Pattern alias/schema lane first.
+lane. The next useful decision is whether to send the dirty Core Structure
+Pattern Slot slice through a bounded Core owner lane before opening the next
+database implementation lane.
