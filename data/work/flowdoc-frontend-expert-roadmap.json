@@ -5,9 +5,14 @@
   "nodeId": "flowdoc",
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
-  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor",
+    "repo-backend",
+    "repo-core"
+  ],
   "workState": "in-progress",
-  "summary": "Record a bounded expert frontend roadmap before opening product implementation lanes, with Project Control-owned sequencing for Library, Design, Preview, Publish, and the WYSIWYG gate.",
+  "summary": "จัด roadmap ปัจจุบันตาม Creator UX Contract: เชื่อมข้อมูลและเก็บ draft ให้ครบวงจร ก่อน Build, Preview, Versions และ Published/API; FlowDocEditor เลิกใช้งานแล้วและไม่เป็น dependency ของชุดปัจจุบัน",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -22,12 +27,16 @@
     "doc-flowdoc-agent-documentation-authority-operating-rules",
     "doc-flowdoc-product-terminology",
     "doc-flowdoc-product-terminology-th",
-    "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03"
+    "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03",
+    "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+    "doc-editor-creator-flow-audit-2026-09-05"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "Frontend Expert Roadmap v1 in Project Control, with lane-ready sequencing, scope boundaries, acceptance expectations, and no product repository changes.",
+  "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
   "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes.",
-  "requiredEvidence": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
-  "createdAt": "2026-09-03T09:00:00.000Z",
-  "updatedAt": "2026-09-03T09:00:00.000Z"
+  "requiredEvidence": [
+    "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
+  ],
+  "createdAt": "2026-09-03T09:00:00Z",
+  "updatedAt": "2026-09-05T09:00:00.000Z"
 }

@@ -1,5 +1,75 @@
 # FlowDoc Frontend Expert Roadmap v1
 
+## Roadmap ปัจจุบัน — ปรับลำดับ 5 กันยายน 2026
+
+ส่วนนี้เป็นลำดับงานปัจจุบัน ใช้แทนคำแนะนำลำดับงานใน v1 ด้านล่าง ซึ่งเก็บเป็นประวัติการวางแผนวันที่ 3 กันยายน โดยไม่ยกเลิกหลักฐานของงานที่ส่งมอบแล้ว
+
+### Authority Boundary และบริบทรอบนี้
+
+เอกสารแผนกลาง (Project Control canonical) เจ้าของ `repo-project-control` บทบาท `planning-partner` ร่วมกับ Project Control Steward
+Work path: `flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap`
+Phase: `phase-flowdoc-frontend-roadmap-refresh-2026-09-05`
+Checklist: `checklist-flowdoc-frontend-roadmap-refresh-2026-09-05`
+Evidence target: `evidence-flowdoc-frontend-roadmap-refresh-2026-09-05`
+
+การปิด Phase นี้หมายถึงจัด roadmap เสร็จเท่านั้น ทุกช่วงพัฒนาด้านล่างยังเป็นแผน ไม่ใช่สถานะส่งมอบ ไม่เปิด WORK rooms และไม่เปลี่ยน system map / DOCUMENT_MAP หรือสถานะความพร้อมของผลิตภัณฑ์
+
+ยึด 4 repo ปัจจุบัน: `flowdoc-project-control`, `flowdoc-vnext-core`, `flowdoc-vnext-backend`, `flowdoc-vnext-editor` ตาม owner IDs เดิม `repo-project-control`, `repo-core`, `repo-backend`, `repo-editor`
+ตามคำชี้แจงของตูมวันที่ 5 กันยายน `FlowDocEditor` เลิกใช้งานแล้ว งานค้างและ branch ของ repo นั้นไม่อยู่บนเส้นทางหลักและไม่ขวางรอบปัจจุบัน ย้อนดูได้เฉพาะมีคำถามเรื่องการย้ายที่ระบุชัด การตัดออกจาก roadmap ไม่ใช่คำสั่งลบ repo หรือ worktree เก่า
+
+### เป้าหมายและสิ่งที่ใช้ตั้งแผน
+
+เป้าหมายคือให้ผู้สร้างทำงานต่อเนื่องได้ตาม [Creator UX Contract](flowdoc-creator-ux-contract-v0-2026-09-04.md): **คลังโครงสร้าง → Build → Preview → Versions → Published/API**
+
+ใช้ [ผลตรวจหน้าบ้านและแก้ toolbar](editor-creator-flow-audit-2026-09-05.md) และ [การรับงาน Backend HTTP](flowdoc-backend-document-structure-http-boundary-v0-acceptance-2026-09-04.md) เป็นฐาน โดยแยกข้อสังเกตออกจากแผน:
+
+- Toolbar แก้แล้วใน Editor `493fd8c90fdc2283e7cc2d0f18436a671a60b952`; ไม่ต้องเปิดงานซ้ำ และไม่ถือว่าปิดงาน Build ทั้งหมด
+- Backend `eddf727fabef035862c91d3af9eb04b884c8ac6d` มี save/read draft, freeze/read version และ publication pointer แล้ว จึงต่อยอดสัญญาที่มีอยู่
+- การตรวจ source วันที่ 5 กันยายนพบว่า Library เรียก `/documents` และ Editor ยังไม่มีตัวเชื่อม `/document-structures` ข้อมูล Document Package กับ DocumentDefinition ต้องแยก ID และ revision (ambiguity disposition: `split`) ไม่อนุมานว่าใช้แทนกันได้
+- ใน Backend commit ข้างต้น `src/server.ts` ใช้ in-memory repository สำหรับโครงสร้าง แม้มี SQLite adapter อยู่แล้ว; interface และ HTTP route ยังไม่มีรายการ DocumentDefinition สำหรับ Library
+- ผลตรวจเฉพาะส่วนวันที่ 5 กันยายน: Backend `documentStructureRoute.test.ts` และ `documentStructureRepository.test.ts` ผ่าน 18 tests รวม SQLite close/reopen; Editor `documentLibrary.test.ts` และ `backendIntegration.test.ts` ผ่าน 20 tests ผลนี้ไม่ใช่หลักฐานว่า UI ทำงานครบวงจรหรือเซิร์ฟเวอร์ที่ใช้งานอยู่เก็บข้อมูลถาวรแล้ว
+
+### ลำดับงานและเกณฑ์จบ
+
+| ช่วง | สถานะแผน / เจ้าของ | งานที่ต้องทำ | ต้องพิสูจน์ก่อนผ่าน |
+| --- | --- | --- | --- |
+| R0 กำหนดทางเชื่อมข้อมูล | ถัดไป / Project Control ประสาน Editor, Backend, Core | ตกลงการเชื่อม DocumentDefinition draft กับ Build ที่อ่าน Document Package; ระบุ ID, revision, fields, sections, slots และข้อมูลที่แปลงกลับไม่ได้ โดยใช้สัญญาที่มีอยู่ก่อน | มีตัวอย่าง request/response และขอบเขตการแปลงที่ตรวจร่วมกันได้; ถ้าต้องเปลี่ยน Core semantics ให้แยกงาน Core ก่อนรับงาน Editor |
+| R1 คลังและการเก็บโครงสร้าง | รอ R0 / Backend | เพิ่มรายการโครงสร้างตาม workspace พร้อมลำดับและการแบ่งหน้า; ต่อ SQLite adapter ที่มีอยู่เข้ากับ local runner พร้อม seed master data และที่เก็บข้อมูลชัดเจน | สร้างครั้งแรกด้วย baseRevision 0 → อ่านกลับ → แก้ไข → ปิดเปิด server → รายการและค่าที่บันทึกยังอยู่; เขียนพร้อมกันสองคำขอต้องไม่ทับ revision ที่ใหม่กว่า; ทดสอบ workspace ไม่ปะปน |
+| R2 สร้าง–เปิด–บันทึกจากหน้าบ้าน | รอ R0 และ R1 / Editor | ต่อ transport โครงสร้าง, Library, การสร้างฉบับร่างขั้นต่ำ และทางเปิด Build; แสดงกำลังบันทึก/ยังไม่บันทึก/ล้มเหลว/ข้อมูลขัดแย้ง | ผู้ใช้สร้าง ตั้งชื่อ แก้ค่าที่รองรับ บันทึก กลับ Library และเปิดต่อหลัง refresh กับ server restart ได้; ทดสอบสองแท็บโดยไม่ทิ้งการแก้ไขเงียบ ๆ |
+| R3 Build โครงสร้างที่แก้ได้จริง | รอ R2 / Editor; Core หรือ Backend เฉพาะสัญญาที่ขาด | จัดการ sections, fields, Structure Patterns และ Slots ผ่านสัญญาที่รับแล้ว; inspector เข้าถึงได้บนจอแคบ | เปลี่ยนโครงสร้างแล้ว save/reload ได้ครบ; unsupported action บอกเหตุผล; keyboard ใช้งานได้; Build สร้าง Slot ไม่สร้าง runtime Entries |
+| R4 Preview เพื่อทดลองข้อมูล | รอ R3 / Editor; Backend และ Core ตามขอบเขต simulation | สร้างแบบกรอกข้อมูลจาก draft, เพิ่ม/ลบ Entries ตาม repeat policy, แสดงผลเอกสารและเหตุผลเมื่อเปิดไม่ได้ | ทดลองข้อมูลแล้วไม่เปลี่ยน Build draft; ผูกผลกับ draft revision; input ผิด/ผลเก่า/ล้มเหลวมีข้อความและ retry ที่มีชื่อเข้าถึงได้ |
+| R5 Versions | รอ R4 / Backend สำหรับรายการเวอร์ชัน; Editor สำหรับหน้าใช้งาน | ต่อ freeze/read ที่มีอยู่ เพิ่มรายการเวอร์ชันและหน้าเลือกตรวจ; Preview เวอร์ชันที่เลือก | frozen version ไม่เปลี่ยนตาม draft; รายการและรายละเอียดตรงกัน; Preview เวอร์ชันเก่าไม่แก้ข้อมูลต้นทาง |
+| R6 Published/API | รอ R5 / Backend สำหรับ publication contract; Editor สำหรับหน้าเลือก | เลือก frozen version ให้ channel และแสดง data contract ของเวอร์ชันนั้น | publication ชี้เวอร์ชันถูกต้อง ไม่แก้ frozen version; revision conflict มีทางแก้; ทดสอบเปลี่ยนเวอร์ชันที่เผยแพร่แล้ว |
+| R7 การใช้งานจริงและไฟล์ผลลัพธ์ | รอ R6 และสัญญาบริการ / แยก Backend, Core, Editor ตามเจ้าของ | วางงาน credentials, runtime submissions, jobs, renderer, PDF และ artifact storage จากหลักฐานที่มี โดยไม่สร้างซ้ำส่วนที่รับแล้ว | มีหลักฐานบริการและผลลัพธ์ครบตามขอบเขตที่จะเปิดใช้งาน ก่อนอ้าง production readiness |
+
+R0–R7 เป็นช่วงของ roadmap ไม่ใช่ Phase records ที่อ้างว่าผ่านแล้ว และไม่ใช่ห้องงานที่เปิดอยู่ ไม่กำหนดวันส่งมอบจนรู้ขอบเขตการเชื่อมข้อมูลใน R0
+
+**เป้าหมายส่งมอบแรก: จบ R0–R2 ให้ครบวงจรสร้าง → บันทึก → เปิดกลับมาแก้ไขได้** ไม่รอให้ Preview, Versions หรือ PDF เสร็จก่อนจึงตรวจผลช่วงแรก
+
+ความอ่านง่าย การใช้คีย์บอร์ด สถานะว่าง/โหลด/ผิดพลาด และจอแคบเป็นเกณฑ์รับงานทุกช่วง ไม่เลื่อนไปตรวจตอนท้ายทั้งหมด
+
+### ขอบเขตที่ต้องรักษา
+
+- `Published/API` ใน R6 คือเลือก frozen DocumentVersion ให้ channel; การส่งข้อมูลจริง งาน render และ PDF อยู่ R7 จึงไม่ใช้บริการ R7 เป็นเหตุปิดกั้น publication pointer ที่มีสัญญาอยู่แล้ว
+- WYSIWYG แบบกว้างยังไม่อยู่ใน roadmap รอบแรก ใช้ Build แบบควบคุมโครงสร้างตาม Creator UX Contract
+- การเชื่อม draft กับ document surface ยังเป็น UNKNOWN จนผ่าน R0; roadmap ไม่อนุมัติ adapter ที่ทำข้อมูลหายหรือเปลี่ยน Core semantics โดยปริยาย
+- SQLite มีหลักฐานระดับ adapter แต่ local runner restart, Library integration และ flow ผ่านเบราว์เซอร์ยังต้องพิสูจน์ใน R1–R2
+- งานตรวจ lane เก่าและการเก็บกวาด worktree เป็น maintenance แยก ไม่ใช่ dependency เว้นแต่พบหลักฐานว่าแตะไฟล์หรือฐานเดียวกับงานที่กำลังเริ่ม
+
+### วิธีนำ roadmap ไปเริ่มงาน
+
+เริ่มจาก R0 โดยอ้าง Work นี้กับ Creator UX Contract และ Backend HTTP acceptance เดิม ก่อนเปิดงาน product ให้ลงทะเบียน Work/Phase/Checklist/Evidence ของเจ้าของแต่ละงาน พร้อมขอบเขตที่อนุมัติจริง; ไม่ใช้รายการ R0–R7 เป็น Kickoff Packet โดยตรง
+
+เมื่อ dispatch ต้องทำตาม Delivery Operating Model, PLAN Room Orchestration Rules และ Work Type Routing Model: หนึ่ง WORK room ต่อหนึ่ง lane ที่อนุมัติ มี registry และ task locator จริง มี automatic Return Channel ส่งกลับ PLAN, ตรวจ liveness และผ่าน acceptanceGate ก่อนรับผล ถ้าต้องซ่อม product output ให้ส่งกลับห้องเดิมตามกติกา ไม่ให้ PLAN ขยายงานแก้เอง
+
+ทุกงานที่จะ merge ต้องผ่าน gate ใน worktree และ main ของ repo เจ้าของก่อนปิดงาน; Project Control บันทึกหลักฐานและสถานะเฉพาะส่วนที่พิสูจน์แล้ว แผนนี้ไม่เปิดห้องและไม่สั่งเริ่ม R1–R7 อัตโนมัติ
+
+---
+
+## ประวัติ roadmap v1 — 3 กันยายน 2026
+
+เนื้อหาต่อจากนี้เก็บเพื่ออ้างอิงทิศทางเดิมเท่านั้น ลำดับเริ่มงานและนิยามการเผยแพร่ใช้ส่วน Roadmap ปัจจุบันด้านบนร่วมกับ Creator UX Contract วันที่ 4 กันยายน
+
 ## Authority Boundary
 
 Owner repository: `repo-project-control`.
