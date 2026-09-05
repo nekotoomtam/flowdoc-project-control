@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-core-structure-pattern-slot-boundary-acceptance-2026-09-05",
+  "title": "FlowDoc Core Structure Pattern Slot Boundary Acceptance",
+  "path": "docs/domains/flowdoc-core-structure-pattern-slot-boundary-acceptance-2026-09-05.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN-owned Room Run Registry and acceptance note for dispatch-core-dirty-risk-0905, preserving the WORK room locator, automatic return, Core main merge, bounded accepted behavior, verification, RISK-FD-008 closure for the known dirty Core slice, and unpromoted product/map truth boundaries.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "fe00f32998651d51ba8b78227d30b5cf6c4c1d7c",
+      "pathOrContractId": "docs/domains/flowdoc-core-structure-pattern-slot-boundary-acceptance-2026-09-05.md; tests/flowdoc-core-structure-pattern-slot-boundary-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "e3b988806ebaa4fdbda4b426924543605e539c2f",
+      "pathOrContractId": "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md; src/index.ts; src/lifecycle/structurePatternSlots.ts; tests/corePublicExportBoundaryReview.test.ts; tests/structurePatternSlotBoundary.test.ts; package.json#scripts.check"
+    }
+  ]
+}

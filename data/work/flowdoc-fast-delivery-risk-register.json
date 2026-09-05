@@ -7,7 +7,7 @@
   "workKind": "task",
   "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
   "workState": "in-progress",
-  "summary": "Record a compact Project Control risk register before faster FlowDoc delivery, covering terminology drift, database drift, UX scope, truth promotion, speed/Lean Dispatch, dependency warning risks, local workspace health risks, and unaccepted product work on main checkouts that can pass tests without being accepted evidence.",
+  "summary": "Record a compact Project Control risk register before faster FlowDoc delivery, covering terminology drift, database drift, UX scope, truth promotion, speed/Lean Dispatch, dependency warning risks, local workspace health risks, and dirty product main checkouts that require owner-lane acceptance before being used as evidence. The known Core Structure Pattern Slot dirty slice is now accepted through a Core WORK room and Core main commit while the general guard remains active.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -27,8 +27,8 @@
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "A fast delivery risk register in Project Control that future PLAN rooms can copy into Kickoff Packets as a compact gate for terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, dependency warnings, local workspace health issues, and dirty product main checkouts that require owner-lane acceptance before use as evidence.",
-  "riskSummary": "This risk register is not product implementation, not product database implementation, not frontend readiness evidence, not Backend API readiness, not Core renderer readiness, not PDF readiness, and not FlowDoc product truth. It records residual risks and fast-lane stop conditions only. The 2026-09-05 operational sweeps restored missing Core text-engine-rust-wasm package files from HEAD to unblock Editor verification, accepted recovered Editor usability lanes only after full Editor npm run check passed with 112 test files and 406 tests, reconciled stale Backend worktree registry entries, and verified that the dirty Core Structure Pattern Slot slice passes focused and full Core checks while preserving it as unaccepted product work until a Core owner lane accepts, revises, or discards it.",
+  "riskSummary": "This risk register is not product implementation, not product database implementation, not frontend readiness evidence, not Backend API readiness, not Core renderer readiness, not PDF readiness, and not FlowDoc product truth. It records residual risks and fast-lane stop conditions only. The 2026-09-05 operational sweeps restored missing Core text-engine-rust-wasm package files from HEAD to unblock Editor verification, accepted recovered Editor usability lanes only after full Editor npm run check passed with 112 test files and 406 tests, reconciled stale Backend worktree registry entries, verified the Core Structure Pattern Slot dirty slice without accepting it, then routed that slice through Core WORK lane lane-core-structure-pattern-slot-boundary-acceptance-2026-09-05. PLAN accepted the automatic WORK return, cherry-picked Core commit e3b988806ebaa4fdbda4b426924543605e539c2f to main, and reran Core main npm run check with 432 files and 2791 tests passed. RISK-FD-008 remains active as a general dirty-product-main guard for future cases.",
   "requiredEvidence": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
   "createdAt": "2026-09-04T16:30:00.000+07:00",
-  "updatedAt": "2026-09-05T12:45:00.000+07:00"
+  "updatedAt": "2026-09-05T14:06:00.000+07:00"
 }

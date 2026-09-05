@@ -76,6 +76,18 @@ Core state is not an immediate gate failure, but it remains unaccepted product
 work because it has no recorded Core WORK handoff, product commit, or Project
 Control acceptance evidence.
 
+2026-09-05 operational sweep D: PLAN opened the bounded Core owner WORK lane
+`lane-core-structure-pattern-slot-boundary-acceptance-2026-09-05` for the dirty
+Structure Pattern Slot slice. The WORK room returned automatically to PLAN with
+PASS and Core commit `0de05a3fe3502847d1179c1d2debb2f4c02e514f`. PLAN accepted
+the handoff, cherry-picked the accepted commit to canonical Core main as
+`e3b988806ebaa4fdbda4b426924543605e539c2f`, and reran Core main verification:
+`npm run type-check` passed, the focused two-file gate passed with 2 files and
+5 tests, and full Core `npm run check` passed with 432 files and 2791 tests.
+This closes the known Core Structure Pattern Slot dirty-product slice under
+`RISK-FD-008`. The general `RISK-FD-008` guard remains active for future dirty
+product main checkouts.
+
 ## How To Use This Register
 
 Before opening a fast product WORK lane, PLAN should scan this register and
@@ -171,10 +183,16 @@ lane.
   `tests/structurePatternSlotBoundary.test.ts`, or the `src/index.ts` export
   change as product evidence; it only records that the dirty slice currently
   passes focused and full Core checks.
+- The 2026-09-05 Core Structure Pattern Slot WORK acceptance closes only that
+  Core dirty slice. It does not implement Backend persistence, Editor Preview,
+  runtime submitted values, product database tables, PDF generation, API key
+  behavior, workflow, permission, billing, audit, activity, production
+  readiness, FlowDoc product truth, or map truth.
 
 ## Next Recommended Work
 
 Use this risk register as a small pre-dispatch filter before the next fast
-lane. The next useful decision is whether to send the dirty Core Structure
-Pattern Slot slice through a bounded Core owner lane before opening the next
-database implementation lane.
+lane. The next useful work is to resume the database implementation direction
+from the accepted document-structure model, carrying the remaining Backend,
+Editor, runtime submission, PDF, permission, workflow, billing, audit, activity,
+and integration risks as explicit lane boundaries.

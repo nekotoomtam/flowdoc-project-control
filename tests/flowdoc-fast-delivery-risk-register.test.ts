@@ -111,6 +111,7 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("operational sweep A");
     expect(docText).toContain("operational sweep B");
     expect(docText).toContain("operational sweep C");
+    expect(docText).toContain("operational sweep D");
     expect(docText).toContain("Structure Pattern / Slot / Entry");
     expect(docText).toContain("legacy component_*");
     expect(docText).toContain("Build and Preview");
@@ -126,6 +127,10 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("stale branch refs");
     expect(docText).toContain("filename-too-long");
     expect(docText).toContain("432 test files and 2791 tests");
+    expect(docText).toContain("lane-core-structure-pattern-slot-boundary-acceptance-2026-09-05");
+    expect(docText).toContain("0de05a3fe3502847d1179c1d2debb2f4c02e514f");
+    expect(docText).toContain("e3b988806ebaa4fdbda4b426924543605e539c2f");
+    expect(docText).toContain("closes the known Core Structure Pattern Slot dirty-product slice");
     expect(docText).toContain("src/lifecycle/structurePatternSlots.ts");
     expect(docText).toContain("tests/structurePatternSlotBoundary.test.ts");
     expect(docText).toContain("dirty product repository main checkout");
@@ -146,7 +151,9 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("filename-too-long cleanup blockers");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("focused Core verification passed with 2 test files and 5 tests");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("full Core npm run check passed with 432 test files and 2791 tests");
-    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("unaccepted product work until a Core owner lane accepts, revises, or discards it");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("WORK room returned automatically to PLAN with PASS");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("Core main commit e3b988806ebaa4fdbda4b426924543605e539c2f");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("known Core Structure Pattern Slot dirty-product slice is closed under RISK-FD-008");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("does not edit Core, Backend, or Editor product behavior");
 
     expect(systemMapText).toContain("FlowDoc Fast Delivery Risk Register");
