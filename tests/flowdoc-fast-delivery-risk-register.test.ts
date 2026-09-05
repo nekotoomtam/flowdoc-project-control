@@ -106,6 +106,8 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("Speed risk");
     expect(docText).toContain("Dependency risk");
     expect(docText).toContain("Local workspace health risk");
+    expect(docText).toContain("operational sweep A");
+    expect(docText).toContain("operational sweep B");
     expect(docText).toContain("Structure Pattern / Slot / Entry");
     expect(docText).toContain("legacy component_*");
     expect(docText).toContain("Build and Preview");
@@ -115,7 +117,11 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
     expect(docText).toContain("acceptanceGate");
     expect(docText).toContain("npm audit");
     expect(docText).toContain("112 test files and 405 tests");
+    expect(docText).toContain("112 test files and 406 tests");
     expect(docText).toContain("text-engine-rust-wasm");
+    expect(docText).toContain("detached worktrees");
+    expect(docText).toContain("stale branch refs");
+    expect(docText).toContain("filename-too-long");
     expect(docText).toContain("local workspace health");
     expect(docText).toContain("must not patch Core, Backend, or Editor product repositories");
     expect(docText).toContain("must not promote frontend readiness");
@@ -125,6 +131,11 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
 
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("RISK-FD-007 Local workspace health risk");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("112 test files and 405 tests");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("112 test files and 406 tests");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("codex/backend-document-structure-http-boundary-v0 had no unique commits over main");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("detached Backend commit 9da5821 was already contained by main");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("git worktree list now shows only the Backend main checkout");
+    expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("filename-too-long cleanup blockers");
     expect(evidence.get(EVIDENCE_ID)?.verificationSummary).toContain("does not edit Core, Backend, or Editor product behavior");
 
     expect(systemMapText).toContain("FlowDoc Fast Delivery Risk Register");
