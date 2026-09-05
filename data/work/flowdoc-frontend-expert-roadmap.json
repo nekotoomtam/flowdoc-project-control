@@ -40,7 +40,8 @@
     "doc-editor-core-retirement-return-2026-09-05",
     "doc-core-closeout-followup-2026-09-05",
     "doc-editor-dependency-audit-returns-2026-09-05",
-    "doc-preview-definition-correction-2026-09-05"
+    "doc-preview-definition-correction-2026-09-05",
+    "doc-preview-integration-plan-2026-09-05"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -49,5 +50,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-05T15:24:34.3729165Z"
+  "updatedAt": "2026-09-05T16:15:46.4169788Z"
 }

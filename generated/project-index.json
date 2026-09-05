@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "e29f5d32a3d4deeb010771371b1371c611405e250b51003378e812fba1ae7b4c",
+  "sourceDigest": "1caf253733d7804bf3b8398335c51688dfc24348fb3d75859044684f12e8c9f5",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2495,7 +2495,8 @@
         "doc-editor-core-retirement-return-2026-09-05",
         "doc-core-closeout-followup-2026-09-05",
         "doc-editor-dependency-audit-returns-2026-09-05",
-        "doc-preview-definition-correction-2026-09-05"
+        "doc-preview-definition-correction-2026-09-05",
+        "doc-preview-integration-plan-2026-09-05"
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -2504,7 +2505,7 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-05T15:24:34.3729165Z",
+      "updatedAt": "2026-09-05T16:15:46.4169788Z",
       "childWorkIds": [
         "flowdoc-frontend-product-map"
       ],
@@ -2520,7 +2521,8 @@
         "phase-core-package-reconciliation",
         "phase-editor-core-retirement-verification",
         "phase-core-closeout-followup",
-        "phase-preview-definition-correction"
+        "phase-preview-definition-correction",
+        "phase-preview-integration-assessment"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -5881,6 +5883,27 @@
       ],
       "updatedAt": "2026-09-05T15:27:06.3004459Z",
       "phaseState": "done"
+    },
+    {
+      "verificationTarget": "checklist-preview-integration-assessment; evidence-preview-integration-assessment-2026-09-05; automatic WORK return and PLAN review",
+      "summary": "Assessment complete with automatic return accepted; recommended scoped content/occurrence prerequisite then Core/Backend/Editor lanes. Implementation contract and product behavior remain unaccepted.",
+      "updatedAt": "2026-09-05T16:27:17.3110615Z",
+      "createdAt": "2026-09-05T16:15:46.4169788Z",
+      "phaseState": "done",
+      "id": "phase-preview-integration-assessment",
+      "workId": "flowdoc-frontend-expert-roadmap",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "planning-partner",
+      "title": "ตรวจทางเชื่อม Preview แบบโต้ตอบก่อนกำหนดงานพัฒนา",
+      "order": 56,
+      "kind": "phase",
+      "stopConditions": [
+        "Read-only product assessment; do not implement or change Node/PDF policy",
+        "Require explicit mapping from current Build draft; no QA-only completion"
+      ]
     },
     {
       "kind": "phase",
@@ -14557,6 +14580,36 @@
       "title": "นิยามและเกณฑ์ป้องกัน Preview ผิดทิศ"
     },
     {
+      "createdAt": "2026-09-05T16:15:46.4169788Z",
+      "title": "เกณฑ์ตรวจทางเชื่อม Preview",
+      "kind": "checklist",
+      "updatedAt": "2026-09-05T16:27:17.3110615Z",
+      "phaseId": "phase-preview-integration-assessment",
+      "id": "checklist-preview-integration-assessment",
+      "items": [
+        {
+          "id": "contract-and-reuse",
+          "state": "passed",
+          "evidenceTarget": "evidence-preview-integration-assessment-2026-09-05",
+          "label": "WORK ตรวจ Live Draft และตัวระบุจุดแก้ พร้อม return อัตโนมัติ",
+          "evidenceIds": [
+            "evidence-preview-integration-assessment-2026-09-05"
+          ],
+          "verificationNote": "Automatic source-only WORK return accepted and compared with PLAN inspection; missing prerequisites and proposed first lane documented. No product/browser acceptance."
+        },
+        {
+          "id": "creator-path-and-lane",
+          "state": "passed",
+          "evidenceTarget": "evidence-preview-integration-assessment-2026-09-05",
+          "label": "PLAN ตรวจทางจาก Build และกำหนดขอบเขตงานแรกที่ไม่แปลงข้อมูลหาย",
+          "evidenceIds": [
+            "evidence-preview-integration-assessment-2026-09-05"
+          ],
+          "verificationNote": "Automatic source-only WORK return accepted and compared with PLAN inspection; missing prerequisites and proposed first lane documented. No product/browser acceptance."
+        }
+      ]
+    },
+    {
       "kind": "checklist",
       "id": "checklist-project-control-overview-history-gui",
       "phaseId": "phase-project-control-overview-history-gui",
@@ -17605,6 +17658,18 @@
       "content": "# Preview definition correction — 2026-09-05\n\n## Authority Boundary\n\nProject Control canonical product decision and planning correction, owned by\nrepo-project-control. Work path: flowdoc-product-development-resumption >\nflowdoc-frontend-expert-roadmap. Role: planning-partner with documentation\nauthority stewardship. Phase: phase-preview-definition-correction.\nChecklist: checklist-preview-definition-correction. Evidence target:\nevidence-preview-definition-correction-2026-09-05 (documentation only).\nThis decision does not prove any product behavior or promote a system map.\n\n## ข้อสรุปที่ตูมยืนยัน\n\nPreview ต้องเป็นหน้าจำลองเอกสารที่ผู้ใช้กดและแก้ข้อมูลบนเอกสารได้ แล้วเห็นผล\nเปลี่ยนตามข้อมูล ไม่ใช่สร้าง PDF แล้วเอาไฟล์มาแสดง ความคล้ายกับหน้า Build\nหมายถึงลักษณะเอกสารที่โต้ตอบได้ ไม่ได้หมายถึงรวมสองหน้าเป็นหน้าที่เดียวกัน\n\n| โหมด | ผู้ใช้ทำอะไร | ข้อมูลที่เปลี่ยน |\n| --- | --- | --- |\n| Build | กำหนดส่วนเอกสาร ฟิลด์ รูปแบบซ้ำ Slots และกฎหน้า ผ่านส่วนที่เลือกและตัวควบคุมตามบริบท | โครงสร้างฉบับร่าง |\n| Preview | กดกรอก/แก้ค่าที่อนุญาตบนเอกสารจำลอง และเพิ่มหรือลบ Entries ตามกฎ | ข้อมูลทดลอง ไม่แก้โครงสร้าง Build หรือ frozen version |\n| PDF output inspection | เปิดดูไฟล์ที่ส่งออกเพื่อเช็กผลลัพธ์ | ไม่ใช่การแก้ข้อมูลใน Preview |\n\nEnglish terminology is canonical. Ambiguity disposition is `split`: Build,\nPreview, and PDF output inspection. Draft/Published Preview identifies which\ndraft or frozen version supplies the simulation; it does not select PDF as the\nrequired display technology. Form/JSON is optional supporting input, not a\nreplacement for direct interaction on the document.\n\n## Required acceptance scenarios for later WORK\n\n1. Open a supported draft or frozen version in Preview, select a permitted\n   visible field (for example a customer name), edit its simulation value on\n   the document, and observe the updated document without a Generate PDF step.\n2. Add/remove a permitted repeated Entry through controls associated with its\n   document location; observe the resulting layout. Disallowed repetition\n   remains constrained by the Slot policy. Build Slots remain unchanged.\n3. Return to Build or inspect the selected frozen version and verify structure,\n   field definitions, and repeat policies were not mutated by Preview edits.\n4. Exercise keyboard entry and Thai composition on the document, invalid\n   values, stale results, and a failed update. Preserve entered simulation data\n   and make the current result/failure understandable. A failed update must not\n   silently revert to a PDF viewer and claim success.\n5. Inspect overflow and pagination for the supported scope on the simulated\n   document. Record unsupported structures explicitly instead of claiming\n   broad editing support from a single fixture.\n\nBrowser evidence for these interactions is mandatory before accepting the\nproduct capability. Package checks, generated PDF bytes, screenshots alone,\nand a read-only canvas do not prove it. The implementation technology and\nlayout/input contracts must be selected in a later approved PLAN/WORK lane;\nthis document does not select DOM, Canvas overlays, or a rich-text library.\n\n## Why earlier acceptance was insufficient\n\nThe earlier Creator UX Contract described form input beside a filled result.\nThe older product map/probe emphasized visible rendering and PDF lifecycle.\nThose definitions omitted editing simulation values on the document. Their\nhistorical evidence remains valid only for the behavior actually tested; it\ncannot be reused as proof of the corrected Preview requirement.\n\nThe read-only review found, at Editor 0cb3970a4f3a083a0b214c5a72fab953319aafdc:\n`src/app/EditorShell.tsx` connects the normal Preview to exact generation;\n`src/components/preview/PublishedPreviewPdf.tsx` renders PDF pages;\n`src/components/preview/LiveDraftCanvasPage.tsx` paints Core display-list pages,\nwith the live-draft hook used by a development QA page. These are source\nobservations, not fresh browser or product readiness evidence. Existing Core\nlayout foundations may be reusable; full integration scope is still unknown.\n\nThe separate `/structures/:definitionId/build` surface remains a minimal\nstructure-authoring implementation. This decision neither certifies Build as\ncomplete nor redesigns it. R3 remains planned, R4 must use the acceptance\nscenarios above, and PDF output belongs to the separate export/runtime scope.\n\n## Continuation and limits\n\nNo new product WORK is dispatched by this definition change. Do not resume the\nPDF.js/Node support-policy proposal as a prerequisite for correcting Preview.\nThe earlier chat asking whether confirmation was possible did not authorize\ndropping Node 20. The residual PDF security finding remains unresolved; this\ndecision neither fixes nor dismisses it. The existing Editor dependency room\n01a071eb-36b3-73b0-83e3-c1cc42e143e8 remains a retrievable paused lane, not a\nPreview implementation room. Existing browser reload confirmation is separate.\n\nNext PLAN must restore the registry, size the missing document interaction and\ndata-binding contract, and dispatch an approved owner lane through PLAN/WORK.\nExisting WYSIWYG gates must be resolved as implementation prerequisites; they\nmust not redefine Preview as read-only. No product files, Node requirement,\npackage versions, system map, or DOCUMENT_MAP change in this round.\n"
     },
     {
+      "id": "doc-preview-integration-plan-2026-09-05",
+      "repositoryRefs": [],
+      "lifecycle": "active",
+      "kind": "document",
+      "authority": "Project Control assessment registry and implementation proposal only; no product acceptance or map promotion",
+      "path": "docs/domains/flowdoc-preview-integration-plan-2026-09-05.md",
+      "nodeIds": [],
+      "role": "contract",
+      "title": "PLAN ทางเชื่อม Preview แบบโต้ตอบ",
+      "content": "# PLAN — Interactive Preview integration assessment\n\n## Authority Boundary\nProject Control canonical continuation and dispatch registry. Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap. Owner repo-project-control, active role planning-partner. Phase phase-preview-integration-assessment; Checklist checklist-preview-integration-assessment; Evidence target evidence-preview-integration-assessment-2026-09-05. This round assesses the first implementation contract; it does not accept product behavior or promote maps.\n\n## Restored state and user authorization\nPC main8a65069 records the corrected definition. User explicitly said to begin PLAN inspection and dispatch WORK. Prior dependency lane remains paused; no Node/PDF upgrade authorization. Prior dispatch-core-closeout-followup-2026-09-05 room-editor-dependency-audit-01 locator01a071eb-36b3-73b0-83e3-c1cc42e143e8 has automatic returns01/02/03 accepted only for partial repair; queue empty, no pending implementation authorization. New assessment is separate, not a revision of the dependency lane. No model-routing policy adopted.\n\n## Current registry\ndispatchSetId dispatch-preview-integration-assessment-2026-09-05; parallelLimit1; laneDependencyGraph assessment -> reviewed implementation contract -> later owner implementation. roomRunId room-preview-integration-assessment-01; laneId lane-preview-integration-assessment; WorkType evidence-review; owner repo-editor with read-only Core/Backend contract inspection. Locator pending creation, liveness prepared. No implementation room is opened by this assessment packet. handoffInbox/completionQueue empty, arrivalSequence starts1, duplicate handoffId idempotent, returnOrderPolicy BLOCKER/FAIL/CCR first then arrival. PLAN processes one return through acceptanceGate.\n\n## WORK Kickoff Packet / Context Capsule\nRoom WORK; Work Type evidence-review; role evidence-reviewer with cross-repo-boundary-reviewer. Same Work/Phase/Checklist/Evidence above. Checklist item contract-and-reuse. Return event handoff-preview-integration-assessment-2026-09-05-01. PLAN task01a0707e-00e9-74e1-be1b-a272a1b89d2a/local. Mandatory automatic Return Channel: actively call send_message_to_thread to this PLAN with terminal handoff before/with local final. Final text alone is insufficient. Send Context ACK after required reading and progress if assessment exceeds10minutes; liveness deadline20minutes renewable by meaningful progress. Missing return/dead locator is UNKNOWN/needs-attention, not accepted. PLAN pull is failure recovery only and recorded as such.\n\nRead canonical PC AGENTS, corrected English/Thai terminology, Creator UX Contract, docs/domains/flowdoc-preview-definition-correction-2026-09-05.md, current R3/R4 roadmap and relevant delivery/routing rules, then owning Editor AGENTS. Read Core/Backend AGENTS before inspecting their contracts. Canonical PC worktree continuation at C:/Users/nekot/Documents/GitHub/flowdoc-project-control/.worktrees/preview-integration-plan/docs/domains/flowdoc-preview-integration-plan-2026-09-05.md.\nSkill candidates flowdoc-project-control, verification-before-completion; no product implementation skill needed for read-only assessment. No internal subagents required.\n\nAccepted meaning: Preview is on-document editing of permitted simulation values with live document result, no Generate PDF prerequisite, Build structure/frozen version unchanged. Build is separate controlled structure authoring. PDF output inspection and QA-only read-only canvas do not meet the requirement. No unrestricted Word-like authoring implied.\n\nAllowed read-only scope: trace actual Editor routes, Live Draft producer/painter/Worker, source range/field occurrence provenance, hit-test/edit target support, simulation state, Thai IME/keyboard/undo/stale protections. Inspect existing Core public contracts and Backend DocumentDefinition APIs only as needed. Compare old /documents workspace with new /structures draft: do not silently implement only a QA route or substitute the old product path. Inspect existing tests and exact commits. No dependency installs, product edits, PC Markdown edits, source copies, process kills or browser test-data writes. Use tracked status (-uno) to avoid scanning Core's retained .git.broken-backup tree. Old FlowDocEditor is retired and excluded.\n\nReturn an evidence-backed recommendation: (1) reuse/gap matrix with exact source paths and refs, (2) 2-3 implementation options with tradeoffs, (3) smallest honest user-visible slice reachable from the current Build draft, (4) explicit data binding/identity/input/layout boundary, (5) whether Core or Backend contract work is prerequisite, (6) concrete browser acceptance for field editing/Thai IME/stale/failure/Build unchanged, plus future repeated Entries and overflow scope. Do not equate drawing a single text field with whole-document resolution. Assess whether current R3 prerequisite needs a narrowly named prerequisite lane, not an unannounced Build redesign.\n\nStop on unknown owner, required destructive actions, unapproved contract changes or unresolvable data mapping. Return PASS/FAIL/BLOCKER/RISK/UNKNOWN even if no implementation is feasible. ACK includes read completion, boundaries, evidence target, real task/worktree locator, risks and active return command. Handoff includes exact refs/paths, checks actually run (or source-only), recommendation and uncertainties; no commit/PR needed for a no-edit assessment. PLAN alone accepts and records output.\n\n## PLAN local work\nInspect DocumentDefinition/section/field occurrence/Slot transport shape and prior R0 mapping limitations independently while WORK inspects Live Draft integration. Stage returned candidate, compare to current Creator flow, decide first lane boundaries. Preserve user requirement over historical inspection-only wording. No product source edits, no R3/R4 completion claims. Register plan/evidence, run PC full worktree/main gates, clean completed planning worktree.\n\n\n## Locator resolution / PLAN contract observation\nResolved real task01a0725b-15d9-7443-a1f2-3232ce1f13d6/local at65eb/flowdoc-vnext-editor, base0cb3970. Initial client-new-thread:d9e389ef-85dd-467a-8fd1-3bf3dc39c04d was queued. list_threads omitted new task; PLAN resolved cwd-to-id through read-only local task metadata and confirmed active with wait_threads. This resolves setup, not a terminal return recovery. Liveness active, deadline20minutes renewed; automatic terminal return remains required, arrival queue empty.\n\nPLAN inspected Editor structureTransport.ts/structureSession.ts at0cb3970 and Backend documentStructureRepository.ts/documentStructureRoute.ts ata639dad. New drafts create one section and empty pattern/Slot/binding arrays. Nested field definitions exist inside componentDefinitions; binding expectations reference Slot and fieldKey. Current draft has no complete text/table content payload or explicit per-field visual placement geometry. R0 already states package conversion is deferred and must not lose data. Existing styleDefaults is an untyped record, not permission to invent a hidden content store. The first lane must resolve this contract before claiming a live whole-document Preview; old /documents or a QA scalar demo cannot substitute for creator /structures.\n\n## Context ACK and progress\nWORK actively pushed Context ACK with required read completion, owner, read-only scope, target, worktree65eb/base0cb3970 and mandatory return command. Follow-up liveness push confirms DefinitionDraft lacks placed text/block/inline content and field occurrence targets; existing Live Draft selected-scalar and V2 consumer restrictions are not a creator-route activation. Registry ACK accepted; liveness renewed20minutes. No terminal arrival accepted yet.\n\n## Accepted assessment / completionQueue\nAutomatic Terminal Handoff handoff-preview-integration-assessment-2026-09-05-01 arrived from task01a0725b-15d9-7443-a1f2-3232ce1f13d6; arrivalSequence1. Context ACK complete, owner and no-edit boundary confirmed, no duplicate and no manual return recovery. PLAN staged handoffInbox -> completionQueue -> acceptanceGate, accepted bounded source assessment only. PASS assessment; BLOCKER immediate creator-route implementation until contract prerequisites; RISK/UNKNOWN browser behavior and whole-document coverage. Queue now empty, room terminal; no revision pending. Full terminal matrix/options remains retrievable in the task automatic push and completed turn01a0725b-1e72-7b82-ad90-81d96ef12cfa. Compact accepted evidence below is canonical; no product readiness or R3/R4 promotion.\n\nSource pins: Editor0cb3970a4f3a083a0b214c5a72fab953319aafdc; Coref4f4425dcd7b370d165d2a0d7383aa14cf88b586; Backenda639dadb82d674360992ce085960989bc9cf2656. All tracked states clean in source review. WORK ran source searches/read-only Git checks; no unit/build/browser/IME tests. PLAN independently inspected the creator transport/session, Backend draft schema, Core display-list and RootV2/SceneDelivery restrictions.\n\n## ผลตรวจภาษาไทย / ข้อเสนอ\nยังต่อ Live Draft เข้า Preview ของ Build ตรง ๆ ไม่ได้ เพราะข้อมูล draft ไม่มีเนื้อหาและตำแหน่งฟิลด์สำหรับจัดหน้าครบ และสัญญา Core ที่มีอยู่ยังจำกัดผู้ใช้ข้อมูลไว้ ไม่ใช่เหตุให้เปลี่ยน Preview กลับเป็น PDF\n\n| ส่วนที่ใช้ต่อได้ | ส่วนที่ต้องเติม |\n| --- | --- |\n| draft ID, revision, read/save และการป้องกันข้อมูลทับกัน | เนื้อหาข้อความคงที่กับตำแหน่งฟิลด์ที่ Build กำหนดได้จริง |\n| Core shaping, pagination, source provenance และการวาดหน้า | สัญญาจากตัวระบุฟิลด์แต่ละตำแหน่งไปยังพื้นที่กดแก้ รวมกรณีค่าว่าง |\n| Worker, cancellation, debounce และการทิ้งผลเก่า | การผูกผลกับ draft/simulation revision และการกู้คืน client หลังล้มเหลว |\n| ช่องกรอกมาตรฐานและ state ค่าทดลอง | การวางช่องแก้บนเอกสาร พร้อม Thai IME, focus, undo/redo และ keyboard |\n\nEvidence anchors: E src/app/FlowDocApp.tsx and src/app/EditorShell.tsx separate /structures Build and old /documents Preview. E src/editor/liveDraft/liveDraftFormProjection.ts explicitly selectedScalarOnly/wholeDocumentResolution:false and rejects empty values. E liveDraftBrowserClient.ts supplies a single block with hardcoded defaults, not Build geometry. E LiveDraftCanvasPage.tsx is role=img with no edit targets. B src/documentStructure/documentStructureRepository.ts:10-87 has Pattern fields/Slots/bindings but no static text/inline placement. C src/renderer/textFlowDisplayListV1.ts preserves source segments but productionBinding:false; C src/layout/textBlockUnifiedLayoutRootContractV2.ts names core-synthetic-qa-only, stagedEditorApply:false, mayPublishLayout:false, productionBinding:false; SceneDeliveryV2 has corresponding restrictions. A whole shaping fragment may cover static and field segments, so source offsets/fieldKey alone are not an exact editable occurrence rectangle. Never derive Thai hit geometry by browser measureText or treat a synthetic plain-text inline as field provenance.\n\n## Options and recommended first delivery\nA (recommended): bounded authored content/occurrence contract + Core-approved current layout consumer + Editor native field input positioned on the document. Reuses Core layout authority and browser input primitives; needs explicit cross-owner contracts and activation evidence.\nB: explicitly versioned DOM simulation layout with document-embedded form controls. Easier browser input, but browser wrapping/pagination differs and cannot claim Core layout/export parity. Still requires real content/placement source; not a silent shortcut.\nC: full Definition-to-Package bridge plus mixed Table/Columns/TOC and repeated Entries before first Preview. Most complete, highest scope; old /documents fixtures do not substitute for creator /structures.\nPLAN recommends A for a small supported text-only document, not forced reuse of XR3 or retired RootV1/SceneV1. Core owner must decide the current public consumer path; do not bypass restrictions by leaving bindProduction flags false.\n\nProposed dependency order, not dispatched implementation:\n1. Contract prerequisite (PLAN coordinates Core/Backend/Editor): define saved content/layout representation, field occurrence identity, binding address and supported text-only scope. Explicit static text + one text field in a real section; preserve unknown/unsupported data. Do not hide new content in untyped styleDefaults.\n2. Core owner lane: resolve approved product input/layout/scene consumption and field target geometry, including empty values and line/page-spanning fields. Core remains shaping/pagination authority.\n3. Backend owner lane if the accepted representation adds persisted content: strict schema, read/save/revision, migration and freeze boundaries as required. Simulation values remain Editor memory; no runtime submission storage added.\n4. Narrow R3 Editor prerequisite: creator can author, place, save and reopen the supported text field/content from /structures Build. This completes only that prerequisite, not broad Build redesign or all R3.\n5. R4 Editor integration: same draft opens /structures/:definitionId/preview; edit permitted values directly on the visible document, show live result with source unchanged. No QA/old-document substitute, no Generate PDF prerequisite.\n6. Later lanes: repeated Entries, mixed layouts, frozen-version simulation and larger coverage with separate acceptance. The first scalar slice never closes full R4.\n\nImplementation contract must pin Definition/draft ID + Backend revision + snapshot fingerprint + local generation. Stable occurrence identity uses section/Slot/Pattern field/content inline (and later Entry ID); fieldKey/labels/index alone are insufficient. Separate the value binding address from a visual occurrence. Editor owns temporary values, focus and IME composition transaction; Core owns layout. Do not remount a composing input on delayed results. Retain last valid output visibly stale on errors and preserve data; recover failed font/WASM initialization instead of retaining a rejected promise forever.\n\nBrowser acceptance for the first supported slice: author/save/reopen actual Build content; enter Preview without QA or PDF generation; click/Tab to the field and type Thai/Latin, clear to empty, paste, undo/redo and cancel composition; visible reflow preserves downstream static text. Reject reordered Worker replies and mismatched source/font identities. Fail layout or initialization then retry without losing data. Compare Build payload/revision before and after simulation and route return. Check zoom/DPR, supported page sizes and long Thai field across lines/pages. Explicitly block unsupported families; no silent content drop. Future Entries need stable row identity and min/max/repeat policy checks on the document.\n\n## Outcome and next gate\nThis round finishes the assessment and a reviewable implementation direction only. No implementation packet or product source change is accepted. Before code, write/review the content/occurrence and Core consumer contract with owner evidence, preserving the approved user-facing behavior. A major choice between A/B/C is a design decision, not model routing or dependency maintenance. Prior PDF security and native reload residuals remain separate and paused as previously recorded.\n"
+    },
+    {
       "kind": "document",
       "id": "doc-product-repo-markdown-boundary-completion-2026-09-01",
       "title": "Product Repository Markdown Boundary Completion - 2026-09-01",
@@ -20078,6 +20143,16 @@
       "kind": "evidence",
       "verifiedAt": "2026-09-05T15:27:06.3004459Z",
       "repositoryId": "repo-project-control"
+    },
+    {
+      "verificationSummary": "PLAN accepted automatic source-assessment handoff01 from task01a0725b-15d9-7443-a1f2-3232ce1f13d6, arrival1; no manual recovery. Current creator route lacks content/placement/Preview integration; Live Draft selected-scalar/QA canvas is reusable foundation only. Companion Coref4f4425/Backenda639dad source refs and contract gaps are recorded in flowdoc-preview-integration-plan-2026-09-05.md. Read-only source/Git checks only; no runtime/browser tests, edits, Node policy or map promotion. Assessment PASS; immediate product integration blocked pending explicit content/occurrence/Core consumption contract; R3/R4 unaccepted.",
+      "repositoryId": "repo-editor",
+      "pathOrContractId": "src/editor/structures/structureTransport.ts; src/editor/liveDraft/liveDraftFormProjection.ts; src/components/preview/LiveDraftCanvasPage.tsx; src/app/EditorShell.tsx",
+      "kind": "evidence",
+      "nodeIds": [],
+      "commit": "0cb3970a4f3a083a0b214c5a72fab953319aafdc",
+      "id": "evidence-preview-integration-assessment-2026-09-05",
+      "verifiedAt": "2026-09-05T16:27:17.3110615Z"
     },
     {
       "kind": "evidence",

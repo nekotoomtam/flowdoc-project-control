@@ -1,0 +1,10 @@
+{
+  "verificationSummary": "PLAN accepted automatic source-assessment handoff01 from task01a0725b-15d9-7443-a1f2-3232ce1f13d6, arrival1; no manual recovery. Current creator route lacks content/placement/Preview integration; Live Draft selected-scalar/QA canvas is reusable foundation only. Companion Coref4f4425/Backenda639dad source refs and contract gaps are recorded in flowdoc-preview-integration-plan-2026-09-05.md. Read-only source/Git checks only; no runtime/browser tests, edits, Node policy or map promotion. Assessment PASS; immediate product integration blocked pending explicit content/occurrence/Core consumption contract; R3/R4 unaccepted.",
+  "repositoryId": "repo-editor",
+  "pathOrContractId": "src/editor/structures/structureTransport.ts; src/editor/liveDraft/liveDraftFormProjection.ts; src/components/preview/LiveDraftCanvasPage.tsx; src/app/EditorShell.tsx",
+  "kind": "evidence",
+  "nodeIds": [],
+  "commit": "0cb3970a4f3a083a0b214c5a72fab953319aafdc",
+  "id": "evidence-preview-integration-assessment-2026-09-05",
+  "verifiedAt": "2026-09-05T16:27:17.3110615Z"
+}
