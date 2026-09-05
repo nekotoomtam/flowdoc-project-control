@@ -6,6 +6,12 @@
   "role": "decision",
   "kind": "document",
   "nodeIds": [],
-  "repositoryRefs": [],
+  "repositoryRefs": [
+    {
+      "commit": "5cbfb1c8ddc906b8847eeba374d15cac7280ab92",
+      "repositoryId": "repo-project-control",
+      "pathOrContractId": "docs/domains/flowdoc-preview-definition-correction-2026-09-05.md"
+    }
+  ],
   "authority": "Project Control canonical requirement correction from user clarification: interactive document simulation distinct from Build and PDF output inspection. No product readiness evidence."
 }

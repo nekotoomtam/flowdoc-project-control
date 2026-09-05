@@ -1,26 +1,38 @@
 {
   "phaseId": "phase-preview-definition-correction",
   "kind": "checklist",
-  "updatedAt": "2026-09-05T15:24:34.3729165Z",
+  "updatedAt": "2026-09-05T15:27:06.3004459Z",
   "id": "checklist-preview-definition-correction",
   "items": [
     {
       "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
       "label": "แยก Build, Preview และ PDF output inspection พร้อมนิยามไทย/อังกฤษ",
-      "state": "in-progress",
-      "id": "define-mode-boundaries"
+      "state": "passed",
+      "id": "define-mode-boundaries",
+      "evidenceIds": [
+        "evidence-preview-definition-correction-2026-09-05"
+      ],
+      "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
     },
     {
       "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
       "label": "แก้ Creator contract และ R4 พร้อมเกณฑ์กดแก้บนเอกสารและคงข้อมูล Build",
-      "state": "in-progress",
-      "id": "align-planning-acceptance"
+      "state": "passed",
+      "id": "align-planning-acceptance",
+      "evidenceIds": [
+        "evidence-preview-definition-correction-2026-09-05"
+      ],
+      "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
     },
     {
       "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
       "label": "กำกับแผนเก่ากับข้อค้างโดยไม่อ้าง product readiness หรืออนุมัติ Node",
-      "state": "in-progress",
-      "id": "preserve-history-and-scope"
+      "state": "passed",
+      "id": "preserve-history-and-scope",
+      "evidenceIds": [
+        "evidence-preview-definition-correction-2026-09-05"
+      ],
+      "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
     }
   ],
   "createdAt": "2026-09-05T15:24:34.3729165Z",

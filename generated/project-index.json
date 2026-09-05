@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b77b4a7d8e17a341b83bfb3d47f75c3eb140e13e2a949126a61a3e37337bb664",
+  "sourceDigest": "e29f5d32a3d4deeb010771371b1371c611405e250b51003378e812fba1ae7b4c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -5870,7 +5870,7 @@
       "title": "แก้นิยาม Preview ให้เป็นเอกสารจำลองที่โต้ตอบได้",
       "kind": "phase",
       "workId": "flowdoc-frontend-expert-roadmap",
-      "summary": "Definition correction requested by user; implementation remains unproven.",
+      "summary": "นิยามและเกณฑ์รับงานแก้แล้วตาม source commit; done applies to the documentation decision only, not Preview implementation. Full integration gates required.",
       "verificationTarget": "checklist-preview-definition-correction; evidence-preview-definition-correction-2026-09-05; canonical English/Thai definitions, Creator contract, current roadmap and historical notices; full Project Control worktree/main checks",
       "repositoryIds": [
         "repo-project-control"
@@ -5879,8 +5879,8 @@
         "Documentation only; no product implementation or map promotion",
         "Do not equate Preview simulation edits with Build structure edits"
       ],
-      "updatedAt": "2026-09-05T15:24:34.3729165Z",
-      "phaseState": "in-progress"
+      "updatedAt": "2026-09-05T15:27:06.3004459Z",
+      "phaseState": "done"
     },
     {
       "kind": "phase",
@@ -14519,26 +14519,38 @@
     {
       "phaseId": "phase-preview-definition-correction",
       "kind": "checklist",
-      "updatedAt": "2026-09-05T15:24:34.3729165Z",
+      "updatedAt": "2026-09-05T15:27:06.3004459Z",
       "id": "checklist-preview-definition-correction",
       "items": [
         {
           "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
           "label": "แยก Build, Preview และ PDF output inspection พร้อมนิยามไทย/อังกฤษ",
-          "state": "in-progress",
-          "id": "define-mode-boundaries"
+          "state": "passed",
+          "id": "define-mode-boundaries",
+          "evidenceIds": [
+            "evidence-preview-definition-correction-2026-09-05"
+          ],
+          "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
         },
         {
           "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
           "label": "แก้ Creator contract และ R4 พร้อมเกณฑ์กดแก้บนเอกสารและคงข้อมูล Build",
-          "state": "in-progress",
-          "id": "align-planning-acceptance"
+          "state": "passed",
+          "id": "align-planning-acceptance",
+          "evidenceIds": [
+            "evidence-preview-definition-correction-2026-09-05"
+          ],
+          "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
         },
         {
           "evidenceTarget": "evidence-preview-definition-correction-2026-09-05",
           "label": "กำกับแผนเก่ากับข้อค้างโดยไม่อ้าง product readiness หรืออนุมัติ Node",
-          "state": "in-progress",
-          "id": "preserve-history-and-scope"
+          "state": "passed",
+          "id": "preserve-history-and-scope",
+          "evidenceIds": [
+            "evidence-preview-definition-correction-2026-09-05"
+          ],
+          "verificationNote": "Reviewed canonical documentation in source commit; existing focused planning checks passed. Documentation only; does not accept product behavior."
         }
       ],
       "createdAt": "2026-09-05T15:24:34.3729165Z",
@@ -17582,7 +17594,13 @@
       "role": "decision",
       "kind": "document",
       "nodeIds": [],
-      "repositoryRefs": [],
+      "repositoryRefs": [
+        {
+          "commit": "5cbfb1c8ddc906b8847eeba374d15cac7280ab92",
+          "repositoryId": "repo-project-control",
+          "pathOrContractId": "docs/domains/flowdoc-preview-definition-correction-2026-09-05.md"
+        }
+      ],
       "authority": "Project Control canonical requirement correction from user clarification: interactive document simulation distinct from Build and PDF output inspection. No product readiness evidence.",
       "content": "# Preview definition correction — 2026-09-05\n\n## Authority Boundary\n\nProject Control canonical product decision and planning correction, owned by\nrepo-project-control. Work path: flowdoc-product-development-resumption >\nflowdoc-frontend-expert-roadmap. Role: planning-partner with documentation\nauthority stewardship. Phase: phase-preview-definition-correction.\nChecklist: checklist-preview-definition-correction. Evidence target:\nevidence-preview-definition-correction-2026-09-05 (documentation only).\nThis decision does not prove any product behavior or promote a system map.\n\n## ข้อสรุปที่ตูมยืนยัน\n\nPreview ต้องเป็นหน้าจำลองเอกสารที่ผู้ใช้กดและแก้ข้อมูลบนเอกสารได้ แล้วเห็นผล\nเปลี่ยนตามข้อมูล ไม่ใช่สร้าง PDF แล้วเอาไฟล์มาแสดง ความคล้ายกับหน้า Build\nหมายถึงลักษณะเอกสารที่โต้ตอบได้ ไม่ได้หมายถึงรวมสองหน้าเป็นหน้าที่เดียวกัน\n\n| โหมด | ผู้ใช้ทำอะไร | ข้อมูลที่เปลี่ยน |\n| --- | --- | --- |\n| Build | กำหนดส่วนเอกสาร ฟิลด์ รูปแบบซ้ำ Slots และกฎหน้า ผ่านส่วนที่เลือกและตัวควบคุมตามบริบท | โครงสร้างฉบับร่าง |\n| Preview | กดกรอก/แก้ค่าที่อนุญาตบนเอกสารจำลอง และเพิ่มหรือลบ Entries ตามกฎ | ข้อมูลทดลอง ไม่แก้โครงสร้าง Build หรือ frozen version |\n| PDF output inspection | เปิดดูไฟล์ที่ส่งออกเพื่อเช็กผลลัพธ์ | ไม่ใช่การแก้ข้อมูลใน Preview |\n\nEnglish terminology is canonical. Ambiguity disposition is `split`: Build,\nPreview, and PDF output inspection. Draft/Published Preview identifies which\ndraft or frozen version supplies the simulation; it does not select PDF as the\nrequired display technology. Form/JSON is optional supporting input, not a\nreplacement for direct interaction on the document.\n\n## Required acceptance scenarios for later WORK\n\n1. Open a supported draft or frozen version in Preview, select a permitted\n   visible field (for example a customer name), edit its simulation value on\n   the document, and observe the updated document without a Generate PDF step.\n2. Add/remove a permitted repeated Entry through controls associated with its\n   document location; observe the resulting layout. Disallowed repetition\n   remains constrained by the Slot policy. Build Slots remain unchanged.\n3. Return to Build or inspect the selected frozen version and verify structure,\n   field definitions, and repeat policies were not mutated by Preview edits.\n4. Exercise keyboard entry and Thai composition on the document, invalid\n   values, stale results, and a failed update. Preserve entered simulation data\n   and make the current result/failure understandable. A failed update must not\n   silently revert to a PDF viewer and claim success.\n5. Inspect overflow and pagination for the supported scope on the simulated\n   document. Record unsupported structures explicitly instead of claiming\n   broad editing support from a single fixture.\n\nBrowser evidence for these interactions is mandatory before accepting the\nproduct capability. Package checks, generated PDF bytes, screenshots alone,\nand a read-only canvas do not prove it. The implementation technology and\nlayout/input contracts must be selected in a later approved PLAN/WORK lane;\nthis document does not select DOM, Canvas overlays, or a rich-text library.\n\n## Why earlier acceptance was insufficient\n\nThe earlier Creator UX Contract described form input beside a filled result.\nThe older product map/probe emphasized visible rendering and PDF lifecycle.\nThose definitions omitted editing simulation values on the document. Their\nhistorical evidence remains valid only for the behavior actually tested; it\ncannot be reused as proof of the corrected Preview requirement.\n\nThe read-only review found, at Editor 0cb3970a4f3a083a0b214c5a72fab953319aafdc:\n`src/app/EditorShell.tsx` connects the normal Preview to exact generation;\n`src/components/preview/PublishedPreviewPdf.tsx` renders PDF pages;\n`src/components/preview/LiveDraftCanvasPage.tsx` paints Core display-list pages,\nwith the live-draft hook used by a development QA page. These are source\nobservations, not fresh browser or product readiness evidence. Existing Core\nlayout foundations may be reusable; full integration scope is still unknown.\n\nThe separate `/structures/:definitionId/build` surface remains a minimal\nstructure-authoring implementation. This decision neither certifies Build as\ncomplete nor redesigns it. R3 remains planned, R4 must use the acceptance\nscenarios above, and PDF output belongs to the separate export/runtime scope.\n\n## Continuation and limits\n\nNo new product WORK is dispatched by this definition change. Do not resume the\nPDF.js/Node support-policy proposal as a prerequisite for correcting Preview.\nThe earlier chat asking whether confirmation was possible did not authorize\ndropping Node 20. The residual PDF security finding remains unresolved; this\ndecision neither fixes nor dismisses it. The existing Editor dependency room\n01a071eb-36b3-73b0-83e3-c1cc42e143e8 remains a retrievable paused lane, not a\nPreview implementation room. Existing browser reload confirmation is separate.\n\nNext PLAN must restore the registry, size the missing document interaction and\ndata-binding contract, and dispatch an approved owner lane through PLAN/WORK.\nExisting WYSIWYG gates must be resolved as implementation prerequisites; they\nmust not redefine Preview as read-only. No product files, Node requirement,\npackage versions, system map, or DOCUMENT_MAP change in this round.\n"
     },
@@ -20050,6 +20068,16 @@
       "pathOrContractId": "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts",
       "verificationSummary": "The private Source-commit internals prepare and apply the exact identity-bound Source-stage transaction plans; this does not establish a generic transaction facility, public API, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
       "verifiedAt": "2026-08-21T00:00:00.000Z"
+    },
+    {
+      "id": "evidence-preview-definition-correction-2026-09-05",
+      "pathOrContractId": "docs/domains/flowdoc-preview-definition-correction-2026-09-05.md; docs/domains/flowdoc-product-terminology.md; docs/domains/flowdoc-product-terminology-th.md; docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md; docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md",
+      "nodeIds": [],
+      "verificationSummary": "Documentation decision evidence only. User clarification recorded as interactive on-document simulation, distinct from Build structure authoring and PDF output inspection. Reviewed English/Thai definitions, Creator contract, R4 acceptance, historical notices and paused PDF/Node proposal. generate/check:data and four existing planning contract tests passed before source commit. This is not browser evidence or implementation acceptance. Full worktree/main gates remain required for integration; no product files or system maps changed.",
+      "commit": "5cbfb1c8ddc906b8847eeba374d15cac7280ab92",
+      "kind": "evidence",
+      "verifiedAt": "2026-09-05T15:27:06.3004459Z",
+      "repositoryId": "repo-project-control"
     },
     {
       "kind": "evidence",

@@ -6,7 +6,7 @@
   "title": "แก้นิยาม Preview ให้เป็นเอกสารจำลองที่โต้ตอบได้",
   "kind": "phase",
   "workId": "flowdoc-frontend-expert-roadmap",
-  "summary": "Definition correction requested by user; implementation remains unproven.",
+  "summary": "นิยามและเกณฑ์รับงานแก้แล้วตาม source commit; done applies to the documentation decision only, not Preview implementation. Full integration gates required.",
   "verificationTarget": "checklist-preview-definition-correction; evidence-preview-definition-correction-2026-09-05; canonical English/Thai definitions, Creator contract, current roadmap and historical notices; full Project Control worktree/main checks",
   "repositoryIds": [
     "repo-project-control"
@@ -15,6 +15,6 @@
     "Documentation only; no product implementation or map promotion",
     "Do not equate Preview simulation edits with Build structure edits"
   ],
-  "updatedAt": "2026-09-05T15:24:34.3729165Z",
-  "phaseState": "in-progress"
+  "updatedAt": "2026-09-05T15:27:06.3004459Z",
+  "phaseState": "done"
 }
