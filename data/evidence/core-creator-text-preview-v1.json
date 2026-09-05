@@ -1,0 +1,10 @@
+{
+  "verificationSummary": "PLAN accepted automatic handoffs01/03/04 after source review and independent focused52tests, retaining main02 FAIL history. Core7194009 implements strict creator-text-preview/1 content/simulation resolution, pinned raw-WASM adapter, opaque executable-host engine authority, glyph/cluster field regions including empty and line/page reflow. Test-only358e14a splits10 aggregate negative cases without dropping assertions or raising timeouts. Full npm run check -- -- --maxWorkers=1 passes432files/2797tests on worktree1343.10s and locked canonical main1246.17s; sequential adapter type-check PASS. Vitest4.1.9 matches unchanged lock; tracked main clean. Logs and four-arrival registry in docs/domains/flowdoc-core-creator-preview-dispatch-2026-09-06.md. Default parallel timing remains RISK. No Backend/Editor/browser/IME/full R3/R4 or map acceptance.",
+  "repositoryId": "repo-core",
+  "pathOrContractId": "src/creatorPreview/contentV1.ts; src/creatorPreview/layoutV1.ts; packages/text-engine-rust-wasm/src/creatorTextPreviewRuntimeV1.ts; tests/creatorTextContentV1.test.ts; tests/creatorTextPreviewV1.test.ts; tests/textBlockPersistentFlowUpdateV1.test.ts",
+  "kind": "evidence",
+  "nodeIds": [],
+  "commit": "358e14a786e8fd9e996da4469f4ed26aa9291fcd",
+  "id": "evidence-core-creator-text-preview-v1",
+  "verifiedAt": "2026-09-05T20:35:50.4245446Z"
+}

@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-core-creator-text-preview-v1; evidence-core-creator-text-preview-v1",
+  "summary": "Core Creator text Preview pipeline integrated at358e14a; complete original-timeout serial worktree/main gates passed. Backend/Editor/browser and broad R3/R4 remain open.",
+  "updatedAt": "2026-09-05T20:35:50.4245446Z",
+  "createdAt": "2026-09-05T18:03:13.0024307Z",
+  "phaseState": "done",
+  "id": "phase-core-creator-text-preview-v1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "activeRole": "planning-partner",
+  "title": "Core จัดหน้าและตำแหน่งฟิลด์ Preview",
+  "order": 58,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}

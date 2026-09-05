@@ -820,7 +820,7 @@ describe("external Core deletion readiness", () => {
     }
   });
 
-  it("fails closed without throwing for non-blob covered paths and unavailable captured trees", async () => {
+  it("fails closed when a covered source is reintroduced as a directory", async () => {
     const directoryReintroduction = await createMigrationFixture();
     await closeMigrationFixture(directoryReintroduction);
     await mkdir(join(directoryReintroduction.sourceRoot, ...sourcePath.split("/")), { recursive: true });
@@ -834,7 +834,9 @@ describe("external Core deletion readiness", () => {
     const directoryResult = await verifyFamilyCleanup(directoryReintroduction);
     expect(diagnosticCodes(directoryResult)).toEqual(["MIGRATION_CLEANUP_INCOMPLETE"]);
     expect(JSON.stringify(directoryResult.diagnostics)).not.toContain(directoryReintroduction.sourceRoot);
+  }, 30_000);
 
+  it("fails closed when a covered source is reintroduced as a gitlink", async () => {
     const gitlinkReintroduction = await createMigrationFixture();
     await closeMigrationFixture(gitlinkReintroduction);
     const submoduleRepository = await createCoreDocRepository();
@@ -856,16 +858,18 @@ describe("external Core deletion readiness", () => {
     const gitlinkResult = await verifyFamilyCleanup(gitlinkReintroduction);
     expect(diagnosticCodes(gitlinkResult)).toEqual(["MIGRATION_CLEANUP_INCOMPLETE"]);
     expect(JSON.stringify(gitlinkResult.diagnostics)).not.toContain(gitlinkReintroduction.sourceRoot);
+  }, 30_000);
 
-    for (const unavailableSourceCommit of ["f".repeat(40), "not-a-commit"]) {
-      const unavailableCapturedTree = await createMigrationFixture();
-      await closeMigrationFixture(unavailableCapturedTree);
-      unavailableCapturedTree.coverage.sourceCommit = unavailableSourceCommit;
-      const result = await verifyFamilyCleanup(unavailableCapturedTree);
-      expect(diagnosticCodes(result)).toEqual(["MIGRATION_CLEANUP_PREIMAGE_MISMATCH"]);
-      expect(JSON.stringify(result.diagnostics)).not.toContain(unavailableCapturedTree.sourceRoot);
-    }
+  it.each(["f".repeat(40), "not-a-commit"])("fails closed for unavailable captured commit %s", async (unavailableSourceCommit) => {
+    const unavailableCapturedTree = await createMigrationFixture();
+    await closeMigrationFixture(unavailableCapturedTree);
+    unavailableCapturedTree.coverage.sourceCommit = unavailableSourceCommit;
+    const result = await verifyFamilyCleanup(unavailableCapturedTree);
+    expect(diagnosticCodes(result)).toEqual(["MIGRATION_CLEANUP_PREIMAGE_MISMATCH"]);
+    expect(JSON.stringify(result.diagnostics)).not.toContain(unavailableCapturedTree.sourceRoot);
+  }, 30_000);
 
+  it("accepts cleanup with an unrelated large tracked blob", async () => {
     const largeTrackedBlob = await createMigrationFixture();
     await closeMigrationFixture(largeTrackedBlob);
     await writeFile(join(largeTrackedBlob.sourceRoot, "large.txt"), "x".repeat(1_200_000), "utf8");
@@ -981,20 +985,24 @@ describe("external Core deletion readiness", () => {
     }
   }, 30_000);
 
-  it("retains closed cleanup negative controls", async () => {
+  it("rejects a dirty descendant after closed cleanup", async () => {
     const dirtyDescendant = await createMigrationFixture();
     await closeMigrationFixture(dirtyDescendant);
     await writeFile(join(dirtyDescendant.sourceRoot, "dirty.md"), "# Dirty\n", "utf8");
     expect(diagnosticCodes(await verifyFamilyCleanup(dirtyDescendant)))
       .toContain("MIGRATION_SOURCE_TREE_DIRTY");
+  }, 15_000);
 
+  it("rejects a committed source reintroduction after closed cleanup", async () => {
     const reintroducedSource = await createMigrationFixture();
     await closeMigrationFixture(reintroducedSource);
     await git(reintroducedSource.sourceRoot, ["checkout", `${reintroducedSource.coverage.coreCleanupCommit}^`, "--", sourcePath]);
     await git(reintroducedSource.sourceRoot, ["commit", "-m", "reintroduce covered source"]);
     expect(diagnosticCodes(await verifyFamilyCleanup(reintroducedSource)))
       .toContain("MIGRATION_CLEANUP_INCOMPLETE");
+  }, 15_000);
 
+  it("rejects a filesystem source reintroduction after closed cleanup", async () => {
     const filesystemReintroduction = await createMigrationFixture();
     await closeMigrationFixture(filesystemReintroduction);
     await mkdir(dirname(join(filesystemReintroduction.sourceRoot, sourcePath)), { recursive: true });
