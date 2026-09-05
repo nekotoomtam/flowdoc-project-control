@@ -10,7 +10,7 @@
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",
-      "commit": "fe00f32998651d51ba8b78227d30b5cf6c4c1d7c",
+      "commit": "98a6d7d4db53f8a76ec98b40dc8b2f85d63242dd",
       "pathOrContractId": "docs/domains/flowdoc-core-structure-pattern-slot-boundary-acceptance-2026-09-05.md; tests/flowdoc-core-structure-pattern-slot-boundary-acceptance.test.ts"
     },
     {
