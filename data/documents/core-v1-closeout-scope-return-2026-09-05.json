@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-v1-closeout-scope-return-2026-09-05",
+  "title": "WORK รายการ Core V1 ที่ถอดได้และ disposition 59 ไฟล์",
+  "path": "docs/domains/core-v1-closeout-scope-return-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Preserved automatic read-only handoff and recommendations; implementation acceptance remains separate",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+      "pathOrContractId": "src/layout; tests; packages/text-engine-rust-wasm"
+    }
+  ]
+}

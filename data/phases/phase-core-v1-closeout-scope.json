@@ -3,7 +3,7 @@
   "id": "phase-core-v1-closeout-scope",
   "workId": "flowdoc-frontend-expert-roadmap",
   "title": "ปิดขอบเขต Core V1 ที่เลิกใช้และรักษา V2",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 50,
   "repositoryIds": [
     "repo-core"
@@ -15,7 +15,7 @@
     "No product edits in scope-review lane"
   ],
   "verificationTarget": "evidence-core-v1-closeout-scope-2026-09-05; exact obsolete candidate and 59-path disposition table",
-  "summary": "User authorized PLAN/WORK closeout; first lane produces decision-ready scope, later owner edits require PLAN acceptance.",
+  "summary": "Scope review accepted via automatic WORK return; exact nine-source retirement selected, retained dependencies preserved. Product execution and canonical recovery not yet complete.",
   "createdAt": "2026-09-05T11:20:15.817Z",
-  "updatedAt": "2026-09-05T11:20:15.817Z"
+  "updatedAt": "2026-09-05T11:33:23.359Z"
 }

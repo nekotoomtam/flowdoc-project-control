@@ -33,7 +33,8 @@
     "doc-creator-draft-first-delivery-2026-09-05",
     "doc-creator-core-readiness-dispatch-2026-09-05",
     "doc-core-readiness-return-2026-09-05",
-    "doc-core-v1-closeout-plan-2026-09-05"
+    "doc-core-v1-closeout-plan-2026-09-05",
+    "doc-core-v1-closeout-scope-return-2026-09-05"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -42,5 +43,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-05T11:20:15.817Z"
+  "updatedAt": "2026-09-05T11:33:23.359Z"
 }

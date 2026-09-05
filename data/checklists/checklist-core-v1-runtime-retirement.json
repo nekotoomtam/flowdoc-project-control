@@ -1,0 +1,16 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-v1-runtime-retirement",
+  "phaseId": "phase-core-v1-runtime-retirement",
+  "title": "เกณฑ์รับการถอด V1",
+  "items": [
+    {
+      "id": "retire-nine-sources-preserve-v2",
+      "label": "ถอดเก้า source หลังแยก type/fixture และรักษา V2 evidence พร้อม full gate",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-core-v1-runtime-retirement-2026-09-05"
+    }
+  ],
+  "createdAt": "2026-09-05T11:33:23.359Z",
+  "updatedAt": "2026-09-05T11:33:23.359Z"
+}
