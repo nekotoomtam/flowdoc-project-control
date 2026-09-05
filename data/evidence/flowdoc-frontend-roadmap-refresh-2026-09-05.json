@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-frontend-roadmap-refresh-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "ea3fbd7adb9f926b25a9c55d813bfdb08c4ac6bd",
+  "pathOrContractId": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md; data/work/flowdoc-frontend-expert-roadmap.json; tests/flowdoc-frontend-expert-roadmap.test.ts",
+  "verificationSummary": "Planning evidence only: ea3fbd7 records the Thai current roadmap, R0–R7 dependencies, first delivery goal R0–R2, retired FlowDocEditor scope, and explicitly historical v1 sequence. npm run generate and focused roadmap guard passed before this source commit. User clarification and the linked Creator UX Contract, toolbar audit and Backend HTTP acceptance determine sequencing; the roadmap does not prove product integration. No product repository changes, WORK room dispatch, production readiness or map truth promotion. Full Project Control gates remain required before integration and after merge; this record does not claim those gates from the focused result.",
+  "verifiedAt": "2026-09-05T09:00:00.000Z"
+}

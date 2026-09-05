@@ -14,6 +14,11 @@
       "repositoryId": "repo-project-control",
       "commit": "1a1d5fa5b7a90c80926a583ab70a9c87d2967629",
       "pathOrContractId": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md; data/work/flowdoc-frontend-expert-roadmap.json; data/phases/phase-flowdoc-frontend-expert-roadmap-v1.json; data/checklists/checklist-flowdoc-frontend-expert-roadmap-v1.json; data/evidence/flowdoc-frontend-expert-roadmap-2026-09-03.json; tests/flowdoc-frontend-expert-roadmap.test.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "ea3fbd7adb9f926b25a9c55d813bfdb08c4ac6bd",
+      "pathOrContractId": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md; Thai current roadmap section dated 2026-09-05"
     }
   ]
 }
