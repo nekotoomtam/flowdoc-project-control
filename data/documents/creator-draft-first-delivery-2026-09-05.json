@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-creator-draft-first-delivery-2026-09-05",
+  "title": "เริ่มส่งมอบคลังโครงสร้างและฉบับร่าง R0–R2",
+  "path": "docs/domains/flowdoc-creator-draft-first-delivery-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Project Control execution scope for R0–R2; no product or map truth promotion",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-backend",
+      "pathOrContractId": "src/routes/documentStructureRoute.ts; src/documentStructure/documentStructureRepository.ts",
+      "commit": "eddf727fabef035862c91d3af9eb04b884c8ac6d"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "a639dadb82d674360992ce085960989bc9cf2656",
+      "pathOrContractId": "src/tests/documentStructureLibrary.test.ts; src/routes/documentStructureLibraryRoute.ts; src/server.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8e29b711405916491a9efbaa3db2361175075519",
+      "pathOrContractId": "src/tests/creatorDraft.test.ts; src/components/structures; src/editor/structures"
+    }
+  ]
+}

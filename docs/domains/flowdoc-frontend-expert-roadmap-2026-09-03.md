@@ -12,7 +12,7 @@ Phase: `phase-flowdoc-frontend-roadmap-refresh-2026-09-05`
 Checklist: `checklist-flowdoc-frontend-roadmap-refresh-2026-09-05`
 Evidence target: `evidence-flowdoc-frontend-roadmap-refresh-2026-09-05`
 
-การปิด Phase นี้หมายถึงจัด roadmap เสร็จเท่านั้น ทุกช่วงพัฒนาด้านล่างยังเป็นแผน ไม่ใช่สถานะส่งมอบ ไม่เปิด WORK rooms และไม่เปลี่ยน system map / DOCUMENT_MAP หรือสถานะความพร้อมของผลิตภัณฑ์
+การปิด Phase จัด roadmap หมายถึงจัดแผนเสร็จเท่านั้น ต่อมารอบ creator-draft รับ R0–R2 ตามหลักฐานเฉพาะส่วนด้านล่าง ส่วน R3–R7 ยังเป็นแผน ไม่เปิด WORK rooms และไม่เปลี่ยน system map / DOCUMENT_MAP หรือสถานะความพร้อมของผลิตภัณฑ์
 
 ยึด 4 repo ปัจจุบัน: `flowdoc-project-control`, `flowdoc-vnext-core`, `flowdoc-vnext-backend`, `flowdoc-vnext-editor` ตาม owner IDs เดิม `repo-project-control`, `repo-core`, `repo-backend`, `repo-editor`
 ตามคำชี้แจงของตูมวันที่ 5 กันยายน `FlowDocEditor` เลิกใช้งานแล้ว งานค้างและ branch ของ repo นั้นไม่อยู่บนเส้นทางหลักและไม่ขวางรอบปัจจุบัน ย้อนดูได้เฉพาะมีคำถามเรื่องการย้ายที่ระบุชัด การตัดออกจาก roadmap ไม่ใช่คำสั่งลบ repo หรือ worktree เก่า
@@ -33,16 +33,16 @@ Evidence target: `evidence-flowdoc-frontend-roadmap-refresh-2026-09-05`
 
 | ช่วง | สถานะแผน / เจ้าของ | งานที่ต้องทำ | ต้องพิสูจน์ก่อนผ่าน |
 | --- | --- | --- | --- |
-| R0 กำหนดทางเชื่อมข้อมูล | ถัดไป / Project Control ประสาน Editor, Backend, Core | ตกลงการเชื่อม DocumentDefinition draft กับ Build ที่อ่าน Document Package; ระบุ ID, revision, fields, sections, slots และข้อมูลที่แปลงกลับไม่ได้ โดยใช้สัญญาที่มีอยู่ก่อน | มีตัวอย่าง request/response และขอบเขตการแปลงที่ตรวจร่วมกันได้; ถ้าต้องเปลี่ยน Core semantics ให้แยกงาน Core ก่อนรับงาน Editor |
-| R1 คลังและการเก็บโครงสร้าง | รอ R0 / Backend | เพิ่มรายการโครงสร้างตาม workspace พร้อมลำดับและการแบ่งหน้า; ต่อ SQLite adapter ที่มีอยู่เข้ากับ local runner พร้อม seed master data และที่เก็บข้อมูลชัดเจน | สร้างครั้งแรกด้วย baseRevision 0 → อ่านกลับ → แก้ไข → ปิดเปิด server → รายการและค่าที่บันทึกยังอยู่; เขียนพร้อมกันสองคำขอต้องไม่ทับ revision ที่ใหม่กว่า; ทดสอบ workspace ไม่ปะปน |
-| R2 สร้าง–เปิด–บันทึกจากหน้าบ้าน | รอ R0 และ R1 / Editor | ต่อ transport โครงสร้าง, Library, การสร้างฉบับร่างขั้นต่ำ และทางเปิด Build; แสดงกำลังบันทึก/ยังไม่บันทึก/ล้มเหลว/ข้อมูลขัดแย้ง | ผู้ใช้สร้าง ตั้งชื่อ แก้ค่าที่รองรับ บันทึก กลับ Library และเปิดต่อหลัง refresh กับ server restart ได้; ทดสอบสองแท็บโดยไม่ทิ้งการแก้ไขเงียบ ๆ |
-| R3 Build โครงสร้างที่แก้ได้จริง | รอ R2 / Editor; Core หรือ Backend เฉพาะสัญญาที่ขาด | จัดการ sections, fields, Structure Patterns และ Slots ผ่านสัญญาที่รับแล้ว; inspector เข้าถึงได้บนจอแคบ | เปลี่ยนโครงสร้างแล้ว save/reload ได้ครบ; unsupported action บอกเหตุผล; keyboard ใช้งานได้; Build สร้าง Slot ไม่สร้าง runtime Entries |
+| R0 กำหนดทางเชื่อมข้อมูล | รับขอบเขตแล้ว / Project Control | ตกลงการเชื่อม DocumentDefinition draft กับ Build ที่อ่าน Document Package; ระบุ ID, revision, fields, sections, slots และข้อมูลที่แปลงกลับไม่ได้ โดยใช้สัญญาที่มีอยู่ก่อน | มีตัวอย่าง request/response และขอบเขตการแปลงที่ตรวจร่วมกันได้; ถ้าต้องเปลี่ยน Core semantics ให้แยกงาน Core ก่อนรับงาน Editor |
+| R1 คลังและการเก็บโครงสร้าง | ส่งมอบ local scope แล้ว / Backend | เพิ่มรายการโครงสร้างตาม workspace พร้อมลำดับและการแบ่งหน้า; ต่อ SQLite adapter ที่มีอยู่เข้ากับ local runner พร้อม seed master data และที่เก็บข้อมูลชัดเจน | สร้างครั้งแรกด้วย baseRevision 0 → อ่านกลับ → แก้ไข → ปิดเปิด server → รายการและค่าที่บันทึกยังอยู่; เขียนพร้อมกันสองคำขอต้องไม่ทับ revision ที่ใหม่กว่า; ทดสอบ workspace ไม่ปะปน |
+| R2 สร้าง–เปิด–บันทึกจากหน้าบ้าน | ส่งมอบ draft ขั้นต่ำแล้ว / Editor | ต่อ transport โครงสร้าง, Library, การสร้างฉบับร่างขั้นต่ำ และทางเปิด Build; แสดงกำลังบันทึก/ยังไม่บันทึก/ล้มเหลว/ข้อมูลขัดแย้ง | ผู้ใช้สร้าง ตั้งชื่อ แก้ค่าที่รองรับ บันทึก กลับ Library และเปิดต่อหลัง refresh กับ server restart ได้; ทดสอบสองแท็บโดยไม่ทิ้งการแก้ไขเงียบ ๆ |
+| R3 Build โครงสร้างที่แก้ได้จริง | ถัดไป / Editor; Core หรือ Backend เฉพาะสัญญาที่ขาด | จัดการ sections, fields, Structure Patterns และ Slots ผ่านสัญญาที่รับแล้ว; inspector เข้าถึงได้บนจอแคบ | เปลี่ยนโครงสร้างแล้ว save/reload ได้ครบ; unsupported action บอกเหตุผล; keyboard ใช้งานได้; Build สร้าง Slot ไม่สร้าง runtime Entries |
 | R4 Preview เพื่อทดลองข้อมูล | รอ R3 / Editor; Backend และ Core ตามขอบเขต simulation | สร้างแบบกรอกข้อมูลจาก draft, เพิ่ม/ลบ Entries ตาม repeat policy, แสดงผลเอกสารและเหตุผลเมื่อเปิดไม่ได้ | ทดลองข้อมูลแล้วไม่เปลี่ยน Build draft; ผูกผลกับ draft revision; input ผิด/ผลเก่า/ล้มเหลวมีข้อความและ retry ที่มีชื่อเข้าถึงได้ |
 | R5 Versions | รอ R4 / Backend สำหรับรายการเวอร์ชัน; Editor สำหรับหน้าใช้งาน | ต่อ freeze/read ที่มีอยู่ เพิ่มรายการเวอร์ชันและหน้าเลือกตรวจ; Preview เวอร์ชันที่เลือก | frozen version ไม่เปลี่ยนตาม draft; รายการและรายละเอียดตรงกัน; Preview เวอร์ชันเก่าไม่แก้ข้อมูลต้นทาง |
 | R6 Published/API | รอ R5 / Backend สำหรับ publication contract; Editor สำหรับหน้าเลือก | เลือก frozen version ให้ channel และแสดง data contract ของเวอร์ชันนั้น | publication ชี้เวอร์ชันถูกต้อง ไม่แก้ frozen version; revision conflict มีทางแก้; ทดสอบเปลี่ยนเวอร์ชันที่เผยแพร่แล้ว |
 | R7 การใช้งานจริงและไฟล์ผลลัพธ์ | รอ R6 และสัญญาบริการ / แยก Backend, Core, Editor ตามเจ้าของ | วางงาน credentials, runtime submissions, jobs, renderer, PDF และ artifact storage จากหลักฐานที่มี โดยไม่สร้างซ้ำส่วนที่รับแล้ว | มีหลักฐานบริการและผลลัพธ์ครบตามขอบเขตที่จะเปิดใช้งาน ก่อนอ้าง production readiness |
 
-R0–R7 เป็นช่วงของ roadmap ไม่ใช่ Phase records ที่อ้างว่าผ่านแล้ว และไม่ใช่ห้องงานที่เปิดอยู่ ไม่กำหนดวันส่งมอบจนรู้ขอบเขตการเชื่อมข้อมูลใน R0
+R0–R2 มี Phase records `phase-creator-draft-r0/r1/r2` และ [หลักฐานส่งมอบ](flowdoc-creator-draft-first-delivery-2026-09-05.md) แล้ว เฉพาะ create/save/reopen และ local persistence; R3–R7 ยังเป็นแผน ไม่มี WORK rooms ที่เปิดจากรอบนี้
 
 **เป้าหมายส่งมอบแรก: จบ R0–R2 ให้ครบวงจรสร้าง → บันทึก → เปิดกลับมาแก้ไขได้** ไม่รอให้ Preview, Versions หรือ PDF เสร็จก่อนจึงตรวจผลช่วงแรก
 
@@ -52,8 +52,8 @@ R0–R7 เป็นช่วงของ roadmap ไม่ใช่ Phase recor
 
 - `Published/API` ใน R6 คือเลือก frozen DocumentVersion ให้ channel; การส่งข้อมูลจริง งาน render และ PDF อยู่ R7 จึงไม่ใช้บริการ R7 เป็นเหตุปิดกั้น publication pointer ที่มีสัญญาอยู่แล้ว
 - WYSIWYG แบบกว้างยังไม่อยู่ใน roadmap รอบแรก ใช้ Build แบบควบคุมโครงสร้างตาม Creator UX Contract
-- การเชื่อม draft กับ document surface ยังเป็น UNKNOWN จนผ่าน R0; roadmap ไม่อนุมัติ adapter ที่ทำข้อมูลหายหรือเปลี่ยน Core semantics โดยปริยาย
-- SQLite มีหลักฐานระดับ adapter แต่ local runner restart, Library integration และ flow ผ่านเบราว์เซอร์ยังต้องพิสูจน์ใน R1–R2
+- R0 เลือก DocumentDefinition draft เป็นต้นทางของ Build ขั้นต่ำโดยตรง; การแปลงเป็น Core Package และ renderer ยังไม่ส่งมอบ ไม่อนุมัติ adapter ที่ทำข้อมูลหาย
+- R1–R2 พิสูจน์ local runner restart, Library และ browser flow แล้วตามหลักฐานรอบ creator-draft; Core checkout มีไฟล์ tracked หาย 59 ไฟล์ จึงใช้ dependency snapshot ระบุ commit ในการตรวจ Editor ต้อง reconcile ก่อนอ้าง clean install พร้อมใช้
 - งานตรวจ lane เก่าและการเก็บกวาด worktree เป็น maintenance แยก ไม่ใช่ dependency เว้นแต่พบหลักฐานว่าแตะไฟล์หรือฐานเดียวกับงานที่กำลังเริ่ม
 
 ### วิธีนำ roadmap ไปเริ่มงาน

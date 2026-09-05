@@ -1,0 +1,20 @@
+{
+  "kind": "checklist",
+  "id": "checklist-creator-draft-r2",
+  "phaseId": "phase-creator-draft-r2",
+  "title": "R2 สร้าง บันทึก และเปิดกลับจาก Editor",
+  "items": [
+    {
+      "id": "verify-creator-draft-r2",
+      "state": "passed",
+      "evidenceTarget": "evidence-creator-draft-r2-2026-09-05",
+      "label": "R2 สร้าง บันทึก และเปิดกลับจาก Editor",
+      "evidenceIds": [
+        "evidence-creator-draft-r2-2026-09-05"
+      ],
+      "verificationNote": "R2 accepted for bounded creator draft flow: worktree and main npm run check passed (113 files, 412 tests, type-check/build). Browser create/edit/save/reopen/reload, two-tab stale conflict preserving edits, Backend outage/retry and restart persistence passed; revision 5 read from main. Keyboard Tab/Enter returns to Library. Layout observed at 702 and 1280 pixels; smaller mobile width unverified. Gate used pinned Core dependency snapshot because canonical Core has 59 tracked deletions; fresh npm ci is not proven healthy. No full Package rendering, Preview, Versions or PDF readiness."
+    }
+  ],
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

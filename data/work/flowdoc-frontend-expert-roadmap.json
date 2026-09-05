@@ -29,7 +29,8 @@
     "doc-flowdoc-product-terminology-th",
     "doc-flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03",
     "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
-    "doc-editor-creator-flow-audit-2026-09-05"
+    "doc-editor-creator-flow-audit-2026-09-05",
+    "doc-creator-draft-first-delivery-2026-09-05"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -38,5 +39,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-05T09:00:00.000Z"
+  "updatedAt": "2026-09-05T09:30:00.000Z"
 }

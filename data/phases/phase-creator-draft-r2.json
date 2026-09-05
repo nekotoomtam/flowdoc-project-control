@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-creator-draft-r2",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "R2 สร้าง บันทึก และเปิดกลับจาก Editor",
+  "phaseState": "done",
+  "order": 32,
+  "repositoryIds": [
+    "repo-editor"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "ขอบเขตเปลี่ยน Core semantics หรือทำข้อมูล draft หาย",
+    "ห้ามอ้างผลิตภัณฑ์พร้อมใช้จากแผนหรือการตรวจบางส่วน"
+  ],
+  "verificationTarget": "docs/domains/flowdoc-creator-draft-first-delivery-2026-09-05.md; evidence-creator-draft-r2-2026-09-05; owner worktree/main gates",
+  "summary": "R2 accepted for bounded creator draft flow: worktree and main npm run check passed (113 files, 412 tests, type-check/build). Browser create/edit/save/reopen/reload, two-tab stale conflict preserving edits, Backend outage/retry and restart persistence passed; revision 5 read from main. Keyboard Tab/Enter returns to Library. Layout observed at 702 and 1280 pixels; smaller mobile width unverified. Gate used pinned Core dependency snapshot because canonical Core has 59 tracked deletions; fresh npm ci is not proven healthy. No full Package rendering, Preview, Versions or PDF readiness.",
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

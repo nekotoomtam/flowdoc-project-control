@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-creator-draft-r2-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "8e29b711405916491a9efbaa3db2361175075519",
+  "pathOrContractId": "src/tests/creatorDraft.test.ts; src/components/structures; src/editor/structures",
+  "verificationSummary": "R2 accepted for bounded creator draft flow: worktree and main npm run check passed (113 files, 412 tests, type-check/build). Browser create/edit/save/reopen/reload, two-tab stale conflict preserving edits, Backend outage/retry and restart persistence passed; revision 5 read from main. Keyboard Tab/Enter returns to Library. Layout observed at 702 and 1280 pixels; smaller mobile width unverified. Gate used pinned Core dependency snapshot because canonical Core has 59 tracked deletions; fresh npm ci is not proven healthy. No full Package rendering, Preview, Versions or PDF readiness.",
+  "verifiedAt": "2026-09-05T10:00:50.163Z"
+}

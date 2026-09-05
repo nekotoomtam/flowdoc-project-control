@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-creator-draft-r0-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "eddf727fabef035862c91d3af9eb04b884c8ac6d",
+  "pathOrContractId": "src/routes/documentStructureRoute.ts",
+  "verificationSummary": "R0 resolved: Backend DocumentDefinition draft is canonical for creator Build; no lossy Package conversion. Minimal handler save/read/edit/stale probe passed at eddf727. R1/R2 evidence verifies subsequent integration; no Core semantics or map promotion.",
+  "verifiedAt": "2026-09-05T10:00:50.163Z"
+}
