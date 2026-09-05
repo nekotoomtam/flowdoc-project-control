@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-readiness-return-2026-09-05",
+  "title": "หลักฐาน WORK ตรวจ Core แบบอ่านอย่างเดียว",
+  "path": "docs/domains/core-readiness-return-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Preserved automatic WORK return and bounded PLAN review; no repair or product/map readiness",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+      "pathOrContractId": "packages/text-engine-rust-wasm"
+    }
+  ]
+}

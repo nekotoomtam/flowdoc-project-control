@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-creator-core-readiness-review-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+  "pathOrContractId": "packages/text-engine-rust-wasm; WORK task 01a07122-1de9-7272-bd87-03d6f2d75793; docs/domains/core-readiness-return-2026-09-05.md in Project Control",
+  "verificationSummary": "PLAN acceptance: read-only review only. Automatic return handoff-core-readiness-2026-09-05-01 received from expected WORK and queued arrivalSequence 1; completed Context Acknowledgement, exact HEAD/index and 59 missing path/blob inventory, initial/final unchanged tracked status. All 59 committed objects available; no staged alternatives. Cause, actor and pre-deletion uncommitted content UNKNOWN. No edits, tests, repair, runtime readiness or map promotion. Same-checkout recovery decision pending explicit user exception; R3 held. Subsequent automatic revision returns 02 and 03 accepted as source-based consumer/version-axis evidence. RootV2 shares V1 internals and native range inputs. Missing paths: 9 shared, 32 historical-evidence, 18 unknown-generation artifacts, zero certified legacy-v1-only. User requests obsolete-v1-only removal preserving v2; recovery proposal superseded and no restoration authorized. No product deletion accepted; exact obsolete layout surface still needs scoped audit.",
+  "verifiedAt": "2026-09-05T10:58:32.219Z"
+}
