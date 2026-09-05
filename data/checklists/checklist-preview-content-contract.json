@@ -1,0 +1,30 @@
+{
+  "createdAt": "2026-09-05T17:25:17.6442823Z",
+  "title": "เกณฑ์สัญญาเนื้อหา Preview",
+  "kind": "checklist",
+  "updatedAt": "2026-09-05T17:36:25.8091810Z",
+  "phaseId": "phase-preview-content-contract",
+  "id": "checklist-preview-content-contract",
+  "items": [
+    {
+      "id": "content-schema",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-content-contract-2026-09-06",
+      "label": "สัญญา versioned content และ occurrence ที่ใช้จัดหน้าและแก้ค่าบนเอกสาร",
+      "evidenceIds": [
+        "evidence-preview-content-contract-2026-09-06"
+      ],
+      "verificationNote": "Automatic planning candidate accepted after source/boundary review; design only, no product runtime acceptance."
+    },
+    {
+      "id": "owner-sequence",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-content-contract-2026-09-06",
+      "label": "ขอบเขตเจ้าของและเกณฑ์งานพัฒนาถัดไป",
+      "evidenceIds": [
+        "evidence-preview-content-contract-2026-09-06"
+      ],
+      "verificationNote": "Automatic planning candidate accepted after source/boundary review; design only, no product runtime acceptance."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "verificationTarget": "checklist-preview-content-contract; evidence-preview-content-contract-2026-09-06",
+  "summary": "Concrete creator-text-preview/1 design accepted from automatic WORK return; Core/Backend/Editor implementation packets and loss-prevention gates defined. Product activation and runtime remain unaccepted.",
+  "updatedAt": "2026-09-05T17:36:25.8091810Z",
+  "createdAt": "2026-09-05T17:25:17.6442823Z",
+  "phaseState": "done",
+  "id": "phase-preview-content-contract",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core",
+    "repo-backend",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "title": "กำหนดสัญญาเนื้อหาและตำแหน่งฟิลด์สำหรับ Preview",
+  "order": 57,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}

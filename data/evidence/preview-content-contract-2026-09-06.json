@@ -1,0 +1,10 @@
+{
+  "verificationSummary": "Source-only contract boundary review supporting the new design: existing Core QA restrictions remain, creator product activation requires owner evidence. Automatic planning handoff-preview-content-contract-2026-09-06-01 from task01a07299-4ac0-7560-8072-e2a1a9925d57 accepted by PLAN arrival1; duplicate finalization idempotent, no manual return recovery. Companion Backend a639dad and Editor 0cb3970 source review identifies strict transport, downgrade/CAS and pre-write freeze protection requirements. Canonical design docs/domains/flowdoc-preview-content-contract-2026-09-06.md contains versioned JSON, identities, geometry and owner gates. This evidence does not claim the proposed APIs exist; no product edits, runtime/browser tests or maps.",
+  "repositoryId": "repo-core",
+  "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootContractV2.ts; src/layout/textBlockSceneDeliveryContractV2.ts; src/fingerprint/canonicalJson.ts",
+  "kind": "evidence",
+  "nodeIds": [],
+  "commit": "f4f4425dcd7b370d165d2a0d7383aa14cf88b586",
+  "id": "evidence-preview-content-contract-2026-09-06",
+  "verifiedAt": "2026-09-05T17:36:25.8091810Z"
+}
