@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-core-v1-closeout-plan-2026-09-05",
+  "title": "PLAN ปิด Core V1 ที่เลิกใช้และรักษา V2",
+  "path": "docs/domains/core-v1-closeout-plan-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Project Control approved round intent and room registry; not deletion or readiness evidence",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-v1-closeout-scope",
+  "phaseId": "phase-core-v1-closeout-scope",
+  "title": "เกณฑ์ปิดรายการ Core เก่า",
+  "items": [
+    {
+      "id": "classify-obsolete-layout",
+      "label": "แยก RootV1/SceneV1 ที่ถอดได้จากส่วนร่วม V2 ด้วยหลักฐาน reachability",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+    },
+    {
+      "id": "resolve-missing-package-disposition",
+      "label": "ข้อเสนอ disposition ครบ 59 ไฟล์พร้อมผลกระทบและเจ้าของ",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+    },
+    {
+      "id": "accept-closeout-scope",
+      "label": "PLAN ตรวจรับ exact path list และลำดับ owner lanes",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+    }
+  ],
+  "createdAt": "2026-09-05T11:20:15.817Z",
+  "updatedAt": "2026-09-05T11:20:15.817Z"
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "431b1eeb501994cdd3fbe9f1d508020ec857f6115e844e0212e7731867496f2f",
+  "sourceDigest": "291c33ebf2e3aec660ff6df097a213b0db86170bd221689b486e424072597bce",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2487,7 +2487,8 @@
         "doc-editor-creator-flow-audit-2026-09-05",
         "doc-creator-draft-first-delivery-2026-09-05",
         "doc-creator-core-readiness-dispatch-2026-09-05",
-        "doc-core-readiness-return-2026-09-05"
+        "doc-core-readiness-return-2026-09-05",
+        "doc-core-v1-closeout-plan-2026-09-05"
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -2496,7 +2497,7 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-05T10:40:31.267Z",
+      "updatedAt": "2026-09-05T11:20:15.817Z",
       "childWorkIds": [
         "flowdoc-frontend-product-map"
       ],
@@ -2506,7 +2507,8 @@
         "phase-creator-draft-r0",
         "phase-creator-draft-r1",
         "phase-creator-draft-r2",
-        "phase-creator-core-readiness-review"
+        "phase-creator-core-readiness-review",
+        "phase-core-v1-closeout-scope"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3555,6 +3557,27 @@
       "summary": "Done: Core now publishes a version-surface retirement inventory with focused and full Core verification; Project Control records the bounded result without promoting broad Core or Backend truth.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-core-v1-closeout-scope",
+      "workId": "flowdoc-frontend-expert-roadmap",
+      "title": "ปิดขอบเขต Core V1 ที่เลิกใช้และรักษา V2",
+      "phaseState": "in-progress",
+      "order": 50,
+      "repositoryIds": [
+        "repo-core"
+      ],
+      "activeRole": "lane-reconciliation-reviewer",
+      "stopConditions": [
+        "No deletion based on filename version alone",
+        "No current V2 feature or evidence loss",
+        "No product edits in scope-review lane"
+      ],
+      "verificationTarget": "evidence-core-v1-closeout-scope-2026-09-05; exact obsolete candidate and 59-path disposition table",
+      "summary": "User authorized PLAN/WORK closeout; first lane produces decision-ready scope, later owner edits require PLAN acceptance.",
+      "createdAt": "2026-09-05T11:20:15.817Z",
+      "updatedAt": "2026-09-05T11:20:15.817Z"
     },
     {
       "kind": "phase",
@@ -7736,6 +7759,34 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-core-v1-closeout-scope",
+      "phaseId": "phase-core-v1-closeout-scope",
+      "title": "เกณฑ์ปิดรายการ Core เก่า",
+      "items": [
+        {
+          "id": "classify-obsolete-layout",
+          "label": "แยก RootV1/SceneV1 ที่ถอดได้จากส่วนร่วม V2 ด้วยหลักฐาน reachability",
+          "state": "in-progress",
+          "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+        },
+        {
+          "id": "resolve-missing-package-disposition",
+          "label": "ข้อเสนอ disposition ครบ 59 ไฟล์พร้อมผลกระทบและเจ้าของ",
+          "state": "pending",
+          "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+        },
+        {
+          "id": "accept-closeout-scope",
+          "label": "PLAN ตรวจรับ exact path list และลำดับ owner lanes",
+          "state": "pending",
+          "evidenceTarget": "evidence-core-v1-closeout-scope-2026-09-05"
+        }
+      ],
+      "createdAt": "2026-09-05T11:20:15.817Z",
+      "updatedAt": "2026-09-05T11:20:15.817Z"
     },
     {
       "kind": "checklist",
@@ -14958,6 +15009,18 @@
         }
       ],
       "content": "# Core Document Map\n\nCore consolidation is incomplete. This map is intentionally partial.\nThis map records the completed pilot family and the completed Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses; all broader Core truth remains unknown.\n\n## Completed Family Synthesis\n\n- [core-route](core-route/OVERVIEW.md) — Backend owns HTTP-shaped route\n  envelopes; retained readiness, manifest, and job contracts remain public in\n  Core; route source remains internal. The current closed coverage and canonical\n  Document registration state is recorded in the\n  [core-route coverage record](../../../../migrations/V0_1_0a_1/core/families/core-route/coverage.json).\n\nThe bounded `core-route` family is `current` while the parent Core node remains\n`unknown`. Coverage is closed at exact Core cleanup commit\n`8aa0be4f662708fa75d4eb8f0f99b4784da2371c`; Core main descendant\n`501caec1fe3317309d0f6c18c2dec118fb6994e7` retains that cleanup, and cleanup\nEvidence is recorded.\nExactly four captured Core documents were removed:\n\n- `docs/CORE_ROUTE_DEEXPORT_PLAN.md`\n- `docs/CORE_ROUTE_DEPRECATION_WINDOW.md`\n- `docs/CORE_ROUTE_RETAINED_CONTRACT_TEST_REWRITE.md`\n- `docs/CORE_ROUTE_WINDOW_C_PUBLIC_EXPORT_REMOVAL.md`\n\nNo other Core document deletion is authorized by this closure.\n\n## Text Engine Family Documentation\n\n- [Text Engine Overview](text-engine/OVERVIEW.md)\n- [Text Engine WASM toolchain and artifacts](text-engine/wasm-toolchain-and-artifacts.md)\n- [Text Engine Runtime Identity and Evidence](text-engine/runtime-identity-and-evidence.md)\n- [Text Engine Adapter and Provider](text-engine/adapter-and-provider.md)\n- [Text Engine Rustybuzz Shaping](text-engine/rustybuzz-shaping.md)\n\nText Engine documentation synthesis is complete across four bounded leaves and one family overview; Text Engine remains unknown pending coverage, reference repair, and publication review, and no source cleanup is authorized.\n\n## Template Builder Family Documentation\n\n- [Template Builder Overview](template-builder/OVERVIEW.md)\n- [Template Builder Sandbox Runtime and Store](template-builder/sandbox-runtime-and-store.md)\n- [Template Builder Viewport and Virtualized Rendering](template-builder/viewport-and-virtualized-rendering.md)\n- [Template Builder Structural Runtime and Navigation](template-builder/structural-runtime-and-navigation.md)\n- [Template Builder WYSIWYG Draft Input and Guards](template-builder/wysiwyg-draft-input-and-guards.md)\n- [Template Builder Rich Inline Commit and Session Lifecycle](template-builder/rich-inline-commit-and-session-lifecycle.md)\n\nTemplate Builder documentation synthesis is complete across five bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, production editor, persistence, collaboration, renderer, or performance authority is created.\n\n## Live Draft Family Documentation\n\n- [Live Draft Overview](live-draft/OVERVIEW.md)\n- [Live Draft Product Readiness and Renderer Boundaries](live-draft/product-readiness-and-renderer-boundaries.md)\n- [Live Draft Geometry and Scene Projection](live-draft/geometry-and-scene-projection.md)\n- [Live Draft Persistent Flow and Range Foundations](live-draft/persistent-flow-and-range-foundations.md)\n- [Live Draft Root and V3 Transition Contracts](live-draft/root-and-v3-transition-contracts.md)\n- [Live Draft Source Authority and Commit Transaction](live-draft/source-authority-and-commit-transaction.md)\n- [Live Draft Corrective Evidence](live-draft/corrective-evidence.md)\n\nLive Draft documentation synthesis is complete across six bounded leaves and one family overview; the Node remains unknown, and no migration coverage, source cleanup, product activation, Editor or Backend integration, browser Worker adoption, renderer or export parity, or performance authority is created.\n\n## Text Block Family Documentation\n\n- [Text Block Overview](text-block/OVERVIEW.md)\n- [Text Block V1 Grammar and Migration History](text-block/v1-grammar-and-migration-history.md)\n- [Text Block V4 Authoring and Inline](text-block/v4-authoring-and-inline.md)\n- [Text Block V4 Measurement and Pagination](text-block/v4-measurement-and-pagination.md)\n\nText Block documentation synthesis is complete across three bounded leaves and one family overview; the Node remains unknown, and migration coverage, reference repair, publication review, family promotion, and separately authorized cleanup remain incomplete.\n\n## Shared Glossaries\n\n- [Glossary](../../../GLOSSARY.md)\n- [Thai Glossary](../../../GLOSSARY_TH.md)\n\n## Unpublished and Candidate Material\n\n`CORE_OVERVIEW.md` is intentionally unpublished until the broader Core\nsynthesis is complete. Unreviewed Core families remain in candidate/inventory\nstate. Text Engine and Template Builder documentation are synthesized, while\nmigration coverage, active-reference repair, publication review, and any\nseparately authorized cleanup remain incomplete. Both documentation-family\nNodes and broader Core therefore remain `unknown`; no source cleanup is\nauthorized.\n\nLive Draft documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, and any separately authorized\ncleanup remain incomplete; Live Draft and broader Core remain `unknown`.\n\nText Block documentation is synthesized while its migration coverage,\nactive-reference repair, publication review, family promotion, and any\nseparately authorized cleanup remain incomplete; Text Block and broader Core\nremain `unknown`.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-core-v1-closeout-plan-2026-09-05",
+      "title": "PLAN ปิด Core V1 ที่เลิกใช้และรักษา V2",
+      "path": "docs/domains/core-v1-closeout-plan-2026-09-05.md",
+      "nodeIds": [],
+      "role": "contract",
+      "authority": "Project Control approved round intent and room registry; not deletion or readiness evidence",
+      "lifecycle": "active",
+      "repositoryRefs": [],
+      "content": "# PLAN — ปิด Core V1 ที่เลิกใช้ โดยรักษา V2\n\n## Authority Boundary / Work context\n\nProject Control canonical planning-coordination. Owner repo-project-control, active role planning-partner / project-control-steward. Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap. Phase phase-core-v1-closeout-scope; Checklist checklist-core-v1-closeout-scope; Evidence target evidence-core-v1-closeout-scope-2026-09-05. No map or product truth promotion.\n\nตูมอนุมัติเริ่มรอบปิดงานตาม PLAN/WORK: ระบุของเก่าที่ไม่มีผู้ใช้ -> PLAN รับรายการ -> owner WORK ถอด consumer ที่จำเป็น -> Core WORK cleanup -> owner/main checks และ Project Control ปิดรอบ เป้าหมายรักษา V2/Creator และเลิกพึ่ง text-engine snapshot ชั่วคราว ไม่เพิ่ม R3 ในรอบนี้\n\nการอนุมัติรอบนี้ไม่เปลี่ยนข้อเท็จจริงว่า 59 ไฟล์ที่หายยังไม่ใช่ชุด V1-only ที่พิสูจน์แล้ว และไม่ใช่คำสั่ง restore ทั้งชุดลง checkout เดิม ความจำเป็นที่จะคืนไฟล์ที่ยังใช้ต้องเสนอเป็นรายการชัดเจนก่อนลงมือ ไม่ปล่อยให้ตัดสินใจผิดเป็นข้อมูลสูญหาย\n\n## Accepted baseline / unknowns\n\nPC main c379e4c128be51a3e0dbf46b8070a3d8248bcc14 records prior automatic read-only returns 01–03 in creator-core-readiness-dispatch-2026-09-05.md. Core HEAD e3b9888b25fe963ef4316fe8066d086bae55db47; Editor 8e29b711405916491a9efbaa3db2361175075519. Revalidate refs before relying on them.\n\nTerminology SPLIT: most plausible old/current code axis is layout RootV1/SceneV1 vs RootV2/SceneV2, not package schema versions or *.v1.json. Shared V1-named kernels and native range inputs support V2. Missing 59 classified 9 shared, 32 historical-evidence, 18 unknown-generation QA artifacts; none yet certified legacy-v1-only. Initial-flow adapter and spatial-index wrapper narrow removals already landed. Do not redo them. FlowDocEditor is retired and excluded.\n\nUnknown: exact obsolete layout candidate set, indirect/deep-import consumers, historical retention decisions, safe disposition for each missing file, full clean dependency setup. Preserve current V2 semantics and evidence; do not remove tests merely to get green.\n\n## Dispatch and Room Run Registry\n\n- dispatchSetId: dispatch-core-v1-closeout-2026-09-05\n- PLAN task: 01a0707e-00e9-74e1-be1b-a272a1b89d2a, host local\n- parallelLimit: 1; one owner/review at a time because retirement boundaries overlap retained dependencies\n- laneDependencyGraph: scope-review -> PLAN acceptance -> consumer changes only if required -> Core cleanup -> integrated clean setup/Creator proof -> PC closeout\n- current lane: lane-core-v1-closeout-scope; Work Type lane-reconciliation; owner repo-core\n- roomRunId: room-core-v1-closeout-scope-01; state prepared; task locator pending; Context Acknowledgement pending\n- Return Event ID/handoffId: handoff-core-v1-closeout-scope-2026-09-05-01\n- Active Return Command: mcp__codex_app__send_message_to_thread to PLAN task above, host local, terminal handoff in prompt\n- automatic return required; final answer alone not return. No user copy/paste.\n- liveness: real task status plus acknowledgement/progress; deadline 15 minutes after real locator resolves; missed deadline recorded return-channel-failed before recovery\n- death signal: unavailable/silent/error task; no dependent lane opens from silence\n- handoffInbox/completionQueue empty; arrivalSequence pending; dedupe by handoffId; returnOrderPolicy BLOCKER/FAIL/CCR first then arrivalSequence, one acceptance at a time\n- revision state none; incomplete result returns to same task\n- Held: all product edits until exact scope accepted; R3, Preview, Versions, publication, PDF feature work\n\n## WORK scope capsule\n\nRead PC AGENTS, delivery model, orchestration, Work Type routing, Lean Dispatch rules (not selecting Lean mode), English/Thai terminology, documentation authority rules, Core AGENTS and current prior review registry/evidence. Use prior returns; do not restart the generic 59-file investigation.\n\nRead-only task: produce a decision-ready exact scope for obsolete RootV1/SceneV1/top-level wrappers while preserving RootV2 and shared kernels. Trace imports, exports, dynamic/deep imports, current tests, native evidence helpers and narrow Editor/Backend consumer references where required. Examine only bounded layout family and affected 59 paths; do not expand into whole-repo cleanup or storage-size surveys. No install/build/test runs or file writes in this lane.\n\nDeliver two tables: (A) each obsolete candidate with delete/retain/migrate recommendation, exact files and consumer proof; (B) all 59 missing paths with recommended retain/recover, retire-after-consumer-change, historical-retention, or unresolved decision, reason and owner. If a decision is not technically knowable, name the specific user/product decision instead of inventing an answer. Runtime Version V1 filename is not deletion proof. All candidate references must carry exact source refs and useful locations.\n\nGive the smallest concrete implementation packet(s), owner order, required tests, expected feature changes (ideally none for V2), and any precise maintenance exception needed. Do not issue a blanket restoration or blanket retirement recommendation. Preserve user intent to reduce obsolete code/confusion and all current V2 behavior/evidence.\n\nForbidden: restore/delete/reset/clean, install/build, link mutation, product/PC edits, recursive node_modules or backup traversal, package-wide removal by inference, map promotion. Use canonical checkout tracked reads (git status --untracked-files=no); fresh WORK worktree is isolation/locator, not evidence that canonical 59 absences are fixed.\n\nFirst acknowledge allowed/forbidden scope, reading, evidence, return path, liveness and unknowns. Terminal return PASS/FAIL/BLOCKER/RISK/UNKNOWN with exact tables/refs, no files changed/commit none/tests not run, CCR if next lane changes contracts, active return state and next PLAN decision. Push automatically to PLAN before/with final.\n\n## Closeout gates\n\nNo unresolved tracked missing files inside accepted final scope; V2 and existing Creator flow checks pass; normal dependency setup no temporary snapshot override; deprecated/shared/evidence boundaries documented; exact owner commits and fresh worktree/main gates; no stale completed custom worktree. These are goals, not claims already achieved.\n\n## Registry event: queued creation\n\nCreation client-new-thread:3d9fd9ab-6f5e-4641-bf71-95768045355d returned on local. State queued; real task locator and Context Acknowledgement pending. No dependent dispatch or acceptance from clientThreadId alone.\n\n## Registry event: running / acknowledgement\nReal WORK task 01a0714c-efdf-7dd0-b6ad-61d80b01bd13, local; worktree C:/Users/nekot/.codex/worktrees/39e1/flowdoc-vnext-core. State running. Active ACK/LIVENESS received through send_message_to_thread; full packet acknowledged, governing reading underway. lastHeartbeatAt 2026-09-05T11:22:36.7810937Z; livenessDeadline 2026-09-05T11:37:36.7810937Z. No terminal acceptance yet. Automatic channel is reachable; no dependent lane opened.\n\n"
     },
     {
       "kind": "document",
