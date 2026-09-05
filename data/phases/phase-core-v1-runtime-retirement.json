@@ -3,7 +3,7 @@
   "id": "phase-core-v1-runtime-retirement",
   "workId": "flowdoc-frontend-expert-roadmap",
   "title": "ถอด runtime V1 เก่าโดยรักษา V2 และหลักฐาน",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 51,
   "repositoryIds": [
     "repo-core"
@@ -15,7 +15,7 @@
     "No broad test exclusions or loss of parity/rejection/fingerprint evidence"
   ],
   "verificationTarget": "evidence-core-v1-runtime-retirement-2026-09-05; exact nine-path removal, migrated V2 tests, full Core gate",
-  "summary": "Approved Core-only owner lane combines dependent evidence/type migration with exact runtime retirement; canonical 59-path reconciliation remains separate.",
+  "summary": "Accepted exact nine-source retirement in f4f4425; owner worktree and integrated canonical main full gates pass (430 files/2739 tests). Retained package/fixtures unchanged; Editor integration verification follows.",
   "createdAt": "2026-09-05T11:33:23.359Z",
-  "updatedAt": "2026-09-05T11:33:23.359Z"
+  "updatedAt": "2026-09-05T12:40:41.2659462Z"
 }

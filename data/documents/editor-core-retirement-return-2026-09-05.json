@@ -1,0 +1,18 @@
+{
+  "kind": "document",
+  "id": "doc-editor-core-retirement-return-2026-09-05",
+  "title": "WORK ผลตรวจ Editor หลังถอด Core V1",
+  "path": "docs/domains/editor-core-retirement-return-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Preserved automatic WORK verification handoff; PLAN accepts bounded results and owns browser evidence",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "8e29b711405916491a9efbaa3db2361175075519",
+      "pathOrContractId": "package.json; src/tests/creatorDraft.test.ts"
+    }
+  ]
+}
+

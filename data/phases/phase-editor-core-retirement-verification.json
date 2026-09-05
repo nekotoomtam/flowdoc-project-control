@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-core-retirement-verification",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "ตรวจ Editor กับ Core หลังถอด V1 และคืน dependency ปกติ",
+  "phaseState": "done",
+  "order": 53,
+  "repositoryIds": [
+    "repo-editor"
+  ],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "No Editor feature or Core/Backend source edits",
+    "Normalize only the two agent-owned ignored dependency links after exact target verification",
+    "Return source failures to owning WORK rather than broadening verification lane"
+  ],
+  "verificationTarget": "evidence-editor-core-retirement-verification-2026-09-05; ordinary dependency install/full Editor checks and Creator flow",
+  "summary": "Normal dependency setup and full worktree/main Editor gates pass. PLAN live Creator create/edit/save/reopen and stale preservation pass; explicit reload browser confirmation remained tool-limited. No product source changes.",
+  "createdAt": "2026-09-05T12:35:50.308Z",
+  "updatedAt": "2026-09-05T12:56:45.6696599Z"
+}

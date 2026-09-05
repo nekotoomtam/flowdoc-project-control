@@ -1,0 +1,11 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-core-retirement-verification-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "8e29b711405916491a9efbaa3db2361175075519",
+  "pathOrContractId": "package.json; src/tests/creatorDraft.test.ts; PC docs/domains/editor-core-retirement-return-2026-09-05.md; browser /structures on local 51412",
+  "verificationSummary": "Automatic WORK handoff arrival 5 accepted after PLAN review. Fresh ordinary npm ci worktree install PASS; canonical dependency junction restored to Core f4f4425, original-link absent, no snapshot override. Editor full worktree and main checks both PASS:113 files/412 tests,typecheck,Vite build; focused6Creator testsPASS; no tracked changes/Core or Backend installs. PLAN browser against live Backend51411: create revision1, edit title/section/page200x297,save revision2,list/reopen retain values; second tab save revision3,stale first tab blocks save and preserves pending text. Explicit reload-after-conflict browser confirmation tooling timed out, so that browser step is not claimed. npm install reported5high audit findings; build chunk warning and worktree-only npm ls lexical junction diagnostic retained as risks. No R3/Preview/publication/map promotion.",
+  "verifiedAt": "2026-09-05T12:56:44.489Z"
+}
+

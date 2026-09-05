@@ -1,0 +1,18 @@
+{
+  "kind": "document",
+  "id": "doc-core-package-reconciliation-return-2026-09-05",
+  "title": "WORK คืน 59 ไฟล์ Core ตามข้อยกเว้น",
+  "path": "docs/domains/core-package-reconciliation-return-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Preserved automatic WORK evidence candidate returns; PLAN acceptance and integration gates remain separate",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+      "pathOrContractId": "packages/text-engine-rust-wasm"
+    }
+  ]
+}
+

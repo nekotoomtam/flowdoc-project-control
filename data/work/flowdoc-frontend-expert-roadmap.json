@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "จัด roadmap ปัจจุบันตาม Creator UX Contract: เชื่อมข้อมูลและเก็บ draft ให้ครบวงจร ก่อน Build, Preview, Versions และ Published/API; FlowDocEditor เลิกใช้งานแล้วและไม่เป็น dependency ของชุดปัจจุบัน",
+  "summary": "R0-R2 Creator draft loop มีหลักฐานแยกแล้ว; รอบถอด Core runtime V1 เก่าและคืน dependency ปกติปิดแล้ว โดยรักษา V2/Creator. Roadmap R3-R7 ยังเป็นงานถัดไปและไม่ใช่หลักฐานพร้อมใช้; FlowDocEditor เลิกใช้และไม่เป็น dependency.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -34,7 +34,10 @@
     "doc-creator-core-readiness-dispatch-2026-09-05",
     "doc-core-readiness-return-2026-09-05",
     "doc-core-v1-closeout-plan-2026-09-05",
-    "doc-core-v1-closeout-scope-return-2026-09-05"
+    "doc-core-v1-closeout-scope-return-2026-09-05",
+    "doc-core-v1-retirement-return-2026-09-05",
+    "doc-core-package-reconciliation-return-2026-09-05",
+    "doc-editor-core-retirement-return-2026-09-05"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -43,5 +46,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-05T11:33:23.359Z"
+  "updatedAt": "2026-09-05T12:56:45.7187712Z"
 }

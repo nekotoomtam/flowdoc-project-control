@@ -1,0 +1,19 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-package-reconciliation",
+  "phaseId": "phase-core-package-reconciliation",
+  "title": "เกณฑ์คืน 59 ไฟล์",
+  "items": [
+    {
+      "id": "restore-exact-missing-baseline",
+      "label": "ตรวจ preflight คืนเฉพาะรายการและยืนยัน blob/index/artifact digest",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-package-reconciliation-2026-09-05",
+      "evidenceIds": [
+        "evidence-core-package-reconciliation-2026-09-05"
+      ]
+    }
+  ],
+  "createdAt": "2026-09-05T12:22:40.963Z",
+  "updatedAt": "2026-09-05T12:35:23.8091412Z"
+}
