@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "User rejects current typing UX; review complete, waiting for bounded Core text-edit geometry prerequisite before Editor repair.",
-  "updatedAt": "2026-09-06T11:34:16.1954232Z",
+  "summary": "Core cluster geometry prerequisite accepted46ccc1a; next sequential Editor direct-paper experiment still to be dispatched. Current Build/Preview UX remains rejected; OS input unknown.",
+  "updatedAt": "2026-09-06T12:29:28.0094923Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
-  "phaseState": "blocked",
+  "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [

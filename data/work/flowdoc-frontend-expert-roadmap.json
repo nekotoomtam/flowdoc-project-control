@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "ผู้ใช้ยังไม่รับ UX ทั้ง Build และ Preview: ต้องพิมพ์ต่อเนื่องบนกระดาษ ฟอร์มซ้ายเป็นตัวช่วยสำหรับค่าฟิลด์ Preview. รอบ1 ตรวจ Core และรีวิว Editor เพื่อแยกใช้ต่อ/ต้องแก้/ยังต้องพิสูจน์ ก่อน WORK ขอบเขตเล็ก; หลักฐานกลไกเดิมคงไว้ ไม่ใช่ UX PASS.",
+  "summary": "Core46ccc1a ทดลองข้อมูลเคอร์เซอร์/คลิก/เลือกข้อความตามขอบกลุ่มอักษรผ่าน worktree/main2821tests. ถัดไป Editor พิมพ์บนกระดาษกับฟอร์มซ้ายในขอบเขตเล็ก; UX Build/Preview เดิมยังไม่ผ่าน และยังไม่พิสูจน์ Thai IME/ความลื่น/รูปกับ30nodesข้ามหน้า.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -57,5 +57,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T11:34:49.6100988Z"
+  "updatedAt": "2026-09-06T12:31:02.2931821Z"
 }

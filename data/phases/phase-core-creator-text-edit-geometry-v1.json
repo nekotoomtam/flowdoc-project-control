@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-core-creator-text-edit-geometry-v1; evidence-core-creator-text-edit-geometry-v1",
-  "summary": "Bounded additive source/layout-bound caret, hit and selection geometry for existing Creator text profile; not UX completion or broad incremental activation.",
-  "updatedAt": "2026-09-06T11:34:16.1954232Z",
+  "summary": "Core46ccc1a shaping-cluster geometry experiment accepted after independent review and full worktree/main gates. No complete grapheme/Thai UX, Editor integration, or latency claim.",
+  "updatedAt": "2026-09-06T12:29:28.0094923Z",
   "createdAt": "2026-09-06T11:34:16.1954232Z",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "id": "phase-core-creator-text-edit-geometry-v1",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [
