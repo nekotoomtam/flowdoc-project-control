@@ -1,7 +1,7 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "Core d4bd081 overlong-run wrapping repair verified on worktree/main and unchanged Editor67c3647 actual browser: long spans fill remaining space, ordinary fitting spans retain legal wrapping. User UX/OS acceptance remains pending; Build direct authoring follows.",
-  "updatedAt": "2026-09-06T15:46:31.3261345Z",
+  "summary": "Boundary capability inspection accepted: current line offsets and shaping clusters available; installed word/grapheme APIs not exposed, no ready Thai syllable oracle. Two-stage wrapping policy and user UX remain unresolved. Editor caret candidate 3fc61e3 held unmerged; next step is user policy discussion, not implementation.",
+  "updatedAt": "2026-09-06T18:26:26.0689563Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",

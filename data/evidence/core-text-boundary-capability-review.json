@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-text-boundary-capability-review",
+  "repositoryId": "repo-core",
+  "commit": "d4bd081766abd76326b4ad08c80cfea649efb7ca",
+  "pathOrContractId": "packages/text-engine-rust-wasm/src/creatorTextPreviewRuntimeV1.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-06T18:26:26.0689563Z",
+  "verificationSummary": "PLAN accepted automatic handoff-core-boundary-review-01 as inspection only. MR1 compiled exports supply segment/shape and version/readiness, no public word/grapheme/syllable/range API. Installed ICU segmenter/data 2.2.0 LineSegmenter::new_auto selects LSTM; line offsets are not dictionary-known word labels. WordSegmenter and GraphemeClusterSegmenter exist in installed library but require separately authorized integration; WordType is not unknown-word metadata. No Thai syllable API or validated syllable oracle found in inspected stack. 11 pinned samples, 170 incremental W/Thai layouts, 32 Thai append observations, 22 repeated layouts passed; repeated comparisons identical and source/pins unchanged. Fresh-span policy reproduces whole-run-down then prior-line-fill with unchanged interior line opportunities; Thai append can also revise prior line opportunities. Detailed boundaries alone do not settle placement policy. PLAN verified all 15 source excerpt file hashes with zero mismatches. Evidence: C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/boundary-review (probe.mjs, probe-results.json, source-evidence.json, handoff-core-boundary-review-01.json). Independent fixture thresholds are not exact Editor replay. No product edits, dependencies, assets, browser trial actions, policy choice, map promotion or UX PASS. Editor candidate 3fc61e3 remains held unmerged; CCR editor-held-key-wrap-policy-01 unresolved."
+}

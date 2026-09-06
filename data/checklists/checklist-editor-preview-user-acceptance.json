@@ -2,7 +2,7 @@
   "kind": "checklist",
   "phaseId": "phase-editor-preview-user-acceptance",
   "id": "checklist-editor-preview-user-acceptance",
-  "updatedAt": "2026-09-06T15:46:31.3185968Z",
+  "updatedAt": "2026-09-06T18:26:26.0689563Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "title": "เกณฑ์ทดลอง Preview จริง",
   "items": [
@@ -72,6 +72,22 @@
       "evidenceTarget": "evidence-core-creator-overlong-wrap-v1",
       "evidenceIds": [
         "evidence-core-creator-overlong-wrap-v1"
+      ]
+    },
+    {
+      "id": "held-key-visual-stability",
+      "label": "Held-key typing avoids avoidable line flicker while preserving current geometry and input",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-held-key-visual-stability",
+      "evidenceIds": []
+    },
+    {
+      "id": "text-boundary-capability-review",
+      "label": "Verify available line, word, syllable, grapheme and shaping-cluster facts before policy choice",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-text-boundary-capability-review",
+      "evidenceIds": [
+        "evidence-core-text-boundary-capability-review"
       ]
     }
   ]
