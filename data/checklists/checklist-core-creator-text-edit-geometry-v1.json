@@ -1,0 +1,45 @@
+{
+  "title": "เกณฑ์ทดลองข้อมูลการแก้ข้อความ",
+  "kind": "checklist",
+  "id": "checklist-core-creator-text-edit-geometry-v1",
+  "createdAt": "2026-09-06T11:34:16.1954232Z",
+  "phaseId": "phase-core-creator-text-edit-geometry-v1",
+  "updatedAt": "2026-09-06T11:34:16.1954232Z",
+  "items": [
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "source-layout-identity",
+      "evidenceIds": [],
+      "id": "source-layout-identity",
+      "state": "pending"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "caret-boundary-semantics",
+      "evidenceIds": [],
+      "id": "caret-boundary-semantics",
+      "state": "pending"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "hit-selection-geometry",
+      "evidenceIds": [],
+      "id": "hit-selection-geometry",
+      "state": "pending"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "empty-wrap-page",
+      "evidenceIds": [],
+      "id": "empty-wrap-page",
+      "state": "pending"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "regression-provenance",
+      "evidenceIds": [],
+      "id": "regression-provenance",
+      "state": "pending"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-core-creator-text-edit-geometry-v1; evidence-core-creator-text-edit-geometry-v1",
+  "summary": "Bounded additive source/layout-bound caret, hit and selection geometry for existing Creator text profile; not UX completion or broad incremental activation.",
+  "updatedAt": "2026-09-06T11:34:16.1954232Z",
+  "createdAt": "2026-09-06T11:34:16.1954232Z",
+  "phaseState": "in-progress",
+  "id": "phase-core-creator-text-edit-geometry-v1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "activeRole": "planning-partner",
+  "title": "ทดลองตำแหน่งเคอร์เซอร์และการเลือกข้อความจาก Core",
+  "order": 63,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}

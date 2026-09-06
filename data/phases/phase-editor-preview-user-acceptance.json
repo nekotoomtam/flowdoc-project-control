@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "User rejected Build/Preview display and typing UX. Round1 reviews Core continuous typing primitives and Editor integration before bounded repairs; prior mechanism/demo evidence retained, OS IME unknown.",
-  "updatedAt": "2026-09-06T09:47:46.0594525Z",
+  "summary": "User rejects current typing UX; review complete, waiting for bounded Core text-edit geometry prerequisite before Editor repair.",
+  "updatedAt": "2026-09-06T11:34:16.1954232Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
-  "phaseState": "in-progress",
+  "phaseState": "blocked",
   "id": "phase-editor-preview-user-acceptance",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [
