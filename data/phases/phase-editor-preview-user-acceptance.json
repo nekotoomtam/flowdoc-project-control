@@ -1,7 +1,7 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "Core cluster geometry prerequisite accepted46ccc1a; next sequential Editor direct-paper experiment still to be dispatched. Current Build/Preview UX remains rejected; OS input unknown.",
-  "updatedAt": "2026-09-06T12:29:28.0094923Z",
+  "summary": "Sequential Editor Preview direct-paper one-field experiment now dispatched using accepted Core46ccc1a geometry; Build direct typing remains following scope, user UX/OS acceptance pending.",
+  "updatedAt": "2026-09-06T13:04:52.0624994Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",
