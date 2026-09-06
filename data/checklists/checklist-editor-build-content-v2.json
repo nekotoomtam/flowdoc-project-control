@@ -2,48 +2,58 @@
   "createdAt": "2026-09-06T06:06:26.6170358Z",
   "title": "เกณฑ์ Editor Build V2",
   "kind": "checklist",
-  "updatedAt": "2026-09-06T06:06:26.6170358Z",
+  "updatedAt": "2026-09-06T06:31:06.3340931Z",
   "phaseId": "phase-editor-build-content-v2",
   "id": "checklist-editor-build-content-v2",
   "items": [
     {
       "id": "capability-transport",
       "evidenceTarget": "evidence-editor-build-content-v2",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
-      "evidenceIds": [],
-      "state": "pending",
+      "verificationNote": "PLAN diff/browser evidence review and independent24 tests; full worktree/main114files436tests plus type-check/build passed at d187ca7. Browser03 actual Build/Backend SQLite restart, failures/conflicts and legacy preservation. No Preview/OS IME claim.",
+      "evidenceIds": [
+        "evidence-editor-build-content-v2"
+      ],
+      "state": "passed",
       "label": "capability-transport"
     },
     {
       "id": "explicit-content-authoring",
       "evidenceTarget": "evidence-editor-build-content-v2",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
-      "evidenceIds": [],
-      "state": "pending",
+      "verificationNote": "PLAN diff/browser evidence review and independent24 tests; full worktree/main114files436tests plus type-check/build passed at d187ca7. Browser03 actual Build/Backend SQLite restart, failures/conflicts and legacy preservation. No Preview/OS IME claim.",
+      "evidenceIds": [
+        "evidence-editor-build-content-v2"
+      ],
+      "state": "passed",
       "label": "explicit-content-authoring"
     },
     {
       "id": "draft-preservation",
       "evidenceTarget": "evidence-editor-build-content-v2",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
-      "evidenceIds": [],
-      "state": "pending",
+      "verificationNote": "PLAN diff/browser evidence review and independent24 tests; full worktree/main114files436tests plus type-check/build passed at d187ca7. Browser03 actual Build/Backend SQLite restart, failures/conflicts and legacy preservation. No Preview/OS IME claim.",
+      "evidenceIds": [
+        "evidence-editor-build-content-v2"
+      ],
+      "state": "passed",
       "label": "draft-preservation"
     },
     {
       "id": "browser-roundtrip",
       "evidenceTarget": "evidence-editor-build-content-v2",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
-      "evidenceIds": [],
-      "state": "pending",
+      "verificationNote": "PLAN diff/browser evidence review and independent24 tests; full worktree/main114files436tests plus type-check/build passed at d187ca7. Browser03 actual Build/Backend SQLite restart, failures/conflicts and legacy preservation. No Preview/OS IME claim.",
+      "evidenceIds": [
+        "evidence-editor-build-content-v2"
+      ],
+      "state": "passed",
       "label": "browser-roundtrip"
     },
     {
       "id": "regression-gate",
       "evidenceTarget": "evidence-editor-build-content-v2",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
-      "evidenceIds": [],
-      "state": "pending",
+      "verificationNote": "PLAN diff/browser evidence review and independent24 tests; full worktree/main114files436tests plus type-check/build passed at d187ca7. Browser03 actual Build/Backend SQLite restart, failures/conflicts and legacy preservation. No Preview/OS IME claim.",
+      "evidenceIds": [
+        "evidence-editor-build-content-v2"
+      ],
+      "state": "passed",
       "label": "regression-gate"
     }
   ]

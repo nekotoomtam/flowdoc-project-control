@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Core Creator Preview358e14a และ Backend V2 content a1745c4 ผ่านระดับ package/service แล้ว; ถัดไป Editor Build เขียนและบันทึกเนื้อหา V2 แล้ว Preview แก้ค่าบนเอกสาร. R3-R7 และ browser/IME ยังไม่ปิด. FlowDocEditor เลิกใช้.",
+  "summary": "Core358e14a, Backend content V2 a1745c4 และ Editor Build V2 d187ca7 ผ่านขอบเขตแรกแล้ว พร้อมหลักฐาน Build บันทึก/เปิดกลับจริง. ถัดไป Preview แก้ค่าทดลองบนเอกสารและจัดหน้าใหม่; full R3/R4 และ OS IME ยังไม่ปิด. FlowDocEditor เลิกใช้.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -54,5 +54,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T06:06:26.6170358Z"
+  "updatedAt": "2026-09-06T06:31:06.3340931Z"
 }

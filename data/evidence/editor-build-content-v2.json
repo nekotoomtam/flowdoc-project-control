@@ -1,0 +1,10 @@
+{
+  "nodeIds": [],
+  "pathOrContractId": "src/editor/structures/structureContent.ts; src/editor/structures/structureSession.ts; src/editor/structures/structureTransport.ts; src/core/coreAdapter.ts; src/components/structures/StructureContentControls.tsx; src/tests/creatorContent.test.ts; scripts/run-creator-content-browser-evidence.mjs",
+  "repositoryId": "repo-editor",
+  "id": "evidence-editor-build-content-v2",
+  "commit": "d187ca7850fde129bd36744ab2cf8ea40fda496f",
+  "verifiedAt": "2026-09-06T06:31:06.3340931Z",
+  "verificationSummary": "PLAN accepted automatic candidate01/main02 after exact diff/test/log/harness/browser03 JSON and saved screenshot review, independent24/24 new tests9.00s. Full original worktree/main114files436tests no skips plus type-check/build pass; main total37.6802026s with equal before/after identities. Core358e14a/Backend a1745c4 and locked dependencies unchanged. Actual Chrome152 Build explicit author, V2 save/reload, SQLite Backend restart exact record, offline retry,409 retained edits, incompatible legacy unchanged and capability block. External evidence C:/Users/nekot/.codex/visualizations/2026/09/06/01a07553-c36c-7923-a1b9-5e2686c2b1bb: full-final.log, main02-check.log/result/identity JSON, browser03/browser-evidence.json and screenshots. Initial focused red and browser harness failures retained; no assertion/timeouts/config/version changes. Bounded one-section/A4/text field only; existing large-chunk warning; no real OS IME, interactive Preview, PDF, general layout/full R3/R4 or maps accepted.",
+  "kind": "evidence"
+}
