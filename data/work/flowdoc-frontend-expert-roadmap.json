@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "R0-R2 Creator draft loop มีหลักฐานแล้ว; Core Creator text Preview ผ่านระดับ package ที่358e14a พร้อม field geometry และแก้เทสต์รวมที่ timeout โดยไม่ลดเงื่อนไข. ถัดไป Backend V2 content persistence แล้ว Editor Build/Preview; R3-R7 และ browser acceptance ยังไม่ปิด. FlowDocEditor เลิกใช้.",
+  "summary": "Core Creator Preview358e14a และ Backend V2 content a1745c4 ผ่านระดับ package/service แล้ว; ถัดไป Editor Build เขียนและบันทึกเนื้อหา V2 แล้ว Preview แก้ค่าบนเอกสาร. R3-R7 และ browser/IME ยังไม่ปิด. FlowDocEditor เลิกใช้.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -53,5 +53,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T04:57:10.0696369Z"
+  "updatedAt": "2026-09-06T05:24:11.6091386Z"
 }
