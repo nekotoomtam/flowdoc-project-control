@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "b4d9fa8ac23199a3fdf981c6df0aed275f5500c9c4a0d222136b1e5c394df6b7",
+  "sourceDigest": "fdcccf9d77c577693262e420c31d6076b322651ea14c41cac70537b8df58a725",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2499,7 +2499,8 @@
         "doc-preview-integration-plan-2026-09-05",
         "doc-preview-content-contract-2026-09-06",
         "doc-core-creator-preview-dispatch-2026-09-06",
-        "doc-backend-content-dispatch-2026-09-06"
+        "doc-backend-content-dispatch-2026-09-06",
+        "doc-editor-build-dispatch-2026-09-06"
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -2508,7 +2509,7 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-06T05:24:11.6091386Z",
+      "updatedAt": "2026-09-06T06:06:26.6170358Z",
       "childWorkIds": [
         "flowdoc-frontend-product-map"
       ],
@@ -2528,7 +2529,8 @@
         "phase-preview-integration-assessment",
         "phase-preview-content-contract",
         "phase-core-creator-text-preview-v1",
-        "phase-backend-creator-content-v2"
+        "phase-backend-creator-content-v2",
+        "phase-editor-build-content-v2"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -3908,6 +3910,27 @@
       "summary": "Done: the Editor-owned browser smoke now proves the bounded product-route live Backend path from the rendered app through library read, capability/read, migration, and one UI mutation, with Project Control evidence registered without broad truth promotion.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "verificationTarget": "checklist-editor-build-content-v2; evidence-editor-build-content-v2",
+      "summary": "One sequential Editor Build WORK authorized; product and browser evidence pending.",
+      "updatedAt": "2026-09-06T06:06:26.6170358Z",
+      "createdAt": "2026-09-06T06:06:26.6170358Z",
+      "phaseState": "in-progress",
+      "id": "phase-editor-build-content-v2",
+      "workId": "flowdoc-frontend-expert-roadmap",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-editor"
+      ],
+      "activeRole": "planning-partner",
+      "title": "Editor Build เขียนและบันทึกเนื้อหา V2",
+      "order": 60,
+      "kind": "phase",
+      "stopConditions": [
+        "No product readiness from design; do not bypass current Core restrictions",
+        "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+      ]
     },
     {
       "kind": "phase",
@@ -8636,6 +8659,56 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "createdAt": "2026-09-06T06:06:26.6170358Z",
+      "title": "เกณฑ์ Editor Build V2",
+      "kind": "checklist",
+      "updatedAt": "2026-09-06T06:06:26.6170358Z",
+      "phaseId": "phase-editor-build-content-v2",
+      "id": "checklist-editor-build-content-v2",
+      "items": [
+        {
+          "id": "capability-transport",
+          "evidenceTarget": "evidence-editor-build-content-v2",
+          "verificationNote": "Await WORK evidence and PLAN acceptance.",
+          "evidenceIds": [],
+          "state": "pending",
+          "label": "capability-transport"
+        },
+        {
+          "id": "explicit-content-authoring",
+          "evidenceTarget": "evidence-editor-build-content-v2",
+          "verificationNote": "Await WORK evidence and PLAN acceptance.",
+          "evidenceIds": [],
+          "state": "pending",
+          "label": "explicit-content-authoring"
+        },
+        {
+          "id": "draft-preservation",
+          "evidenceTarget": "evidence-editor-build-content-v2",
+          "verificationNote": "Await WORK evidence and PLAN acceptance.",
+          "evidenceIds": [],
+          "state": "pending",
+          "label": "draft-preservation"
+        },
+        {
+          "id": "browser-roundtrip",
+          "evidenceTarget": "evidence-editor-build-content-v2",
+          "verificationNote": "Await WORK evidence and PLAN acceptance.",
+          "evidenceIds": [],
+          "state": "pending",
+          "label": "browser-roundtrip"
+        },
+        {
+          "id": "regression-gate",
+          "evidenceTarget": "evidence-editor-build-content-v2",
+          "verificationNote": "Await WORK evidence and PLAN acceptance.",
+          "evidenceIds": [],
+          "state": "pending",
+          "label": "regression-gate"
+        }
+      ]
     },
     {
       "kind": "checklist",
@@ -15836,6 +15909,18 @@
         }
       ],
       "content": "# Editor Browser Live Backend Smoke - 2026-08-27\n\nStatus: bounded browser-app live Backend smoke complete; broader FlowDoc truth remains unpromoted.\n\nWork path: `flowdoc-product-development-resumption > editor-browser-live-backend-smoke`\n\nOwner repository: `repo-editor`\n\nEvidence owner: `repo-project-control`\n\nEvidence source repositories: `repo-backend`, `repo-core`\n\nActive role: `product-implementation-agent`\n\nPhase: `phase-editor-browser-live-backend-smoke`\n\nChecklist: `checklist-editor-browser-live-backend-smoke`\n\nEvidence target: `evidence-editor-browser-live-backend-smoke-2026-08-27`\n\n## Scope\n\nThis lane adds an Editor-owned browser smoke for the rendered product routes\nagainst a live loopback Backend server seeded from the Core minimal product\nreport fixture. It closes the UNKNOWN left by the prior Node loopback live\ncompatibility harness for one bounded browser-app path.\n\nThis packet does not promote FlowDoc, Core, Editor, Backend, document maps, or\nproduction-readiness truth. Its Document and Evidence records intentionally use\nempty `nodeIds` so the result remains work-scoped.\n\n## Current Heads\n\n| Repository | Commit | Role in this lane |\n|---|---|---|\n| Project Control | `f2ccbfbc87d5e9637e3d58277cbd6de564840f7a` | Intake Work/Phase/Checklist source before evidence registration. |\n| Editor | `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` | Owner browser smoke implementation and verified main commit. |\n| Backend | `42cc1040c959a16647b7e797929358c401ccfa38` | Unchanged live HTTP server, storage, migration, and mutation source. |\n| Core | `77b9e181d1fb43bf69d725108ede664578a07a45` | Unchanged product-report minimal fixture and semantic contract source. |\n\n## Browser Path Proven\n\nEditor script `scripts/run-editor-browser-live-backend-smoke.mjs` and retained\nfixture `src/fixtures/editor-browser-live-backend-smoke.v1.json` now prove one\nbrowser-visible runtime path:\n\n1. Start `createFlowDocBackendServer(...)` on a random loopback port.\n2. Seed `createInMemoryPackageRepository(...)` with\n   `product-report-vnext-minimal` from the Core-backed fixture.\n3. Start the rendered Editor app with `VITE_FLOWDOC_BACKEND_URL` pointed at the\n   live Backend server.\n4. Launch headless Chrome through Chrome DevTools Protocol.\n5. Open product route `/documents` and observe the library card loaded from\n   Backend with `Migration required` and revision `3`.\n6. Open `/documents/product-report-vnext-minimal/design` through the visible\n   product UI and observe `Core: api r3`, `Versions: compatible`, and\n   `Mode: active`.\n7. Click `Upgrade` in the rendered toolbar and observe `Core: api r4` and\n   `Mode: partial`.\n8. Select `title`, click `Move selected node down`, and observe\n   `Core: mutation-result r5`.\n9. Retain final outline order:\n   `summary-columns > title > detail-table`.\n\nThe retained fixture records Backend request paths and statuses for:\n\n- `GET /documents?limit=24`\n- `GET /capabilities/versions`\n- `GET /documents/product-report-vnext-minimal`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/migrations/package-v3-document-v4`\n- `OPTIONS` and `POST /documents/product-report-vnext-minimal/mutations`\n\nAll recorded Backend statuses were 200 or 204.\n\n## TDD Record\n\nFocused RED:\n\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  failed before implementation because\n  `src/fixtures/editor-browser-live-backend-smoke.v1.json` did not exist.\n\nFocused GREEN:\n\n- `npm run evidence:editor-browser-live-backend-smoke` generated the retained\n  browser evidence fixture and passed.\n- `npx vitest run src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts --reporter verbose`\n  passed 1 test.\n\n## Changes\n\nEditor commit `ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4` changed:\n\n- `package.json`\n- `scripts/run-editor-browser-live-backend-smoke.mjs`\n- `src/fixtures/editor-browser-live-backend-smoke.v1.json`\n- `src/tests/editorBrowserLiveBackendSmokeEvidence.test.ts`\n\nNo Backend files, Core files, Project Control map truth files, or Editor\nproduction runtime/UI modules were changed by the implementation commit.\n\n## Verification\n\nEditor worktree gate:\n\n- Browser evidence script passed and generated the retained fixture.\n- Focused retained evidence test passed 1 test.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nEditor merged main gate:\n\n- `FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke`\n  passed without rewriting the retained fixture.\n- `npm run check`: type-check passed; 79 test files passed; 285 tests passed;\n  Vite build passed.\n\nBoth Vite builds retained the existing chunk-size warning for large output\nchunks. The warning did not fail the gate and was not remediated in this lane.\n\nThe browser fixture retained one non-blocking Chrome log entry for\n`/favicon.ico` returning 404 from the Vite dev server. The fixture recorded no\n`console.error` calls and no page exceptions.\n\n## PASS\n\n- The rendered Editor product routes can load the document library and design\n  view from a live loopback Backend server in a real headless Chrome session.\n- The browser-visible app path reaches the real Backend capability/read,\n  migration, and mutation HTTP routes.\n- The UI-driven migration reaches `Core: api r4` partial mode.\n- The UI-driven reorder mutation reaches `Core: mutation-result r5` and updates\n  the visible outline order.\n- Backend and Core remained unchanged; the smoke consumes their existing\n  boundaries.\n- Project Control records this as bounded evidence with empty `nodeIds`.\n\n## FAIL / BLOCKER\n\n- No blocker remains for this browser smoke lane.\n\n## RISK\n\n- The smoke is local loopback headless Chrome evidence, not deployed Backend or\n  hosted-product evidence.\n- The smoke covers one fixture, one product route flow, one migration path, and\n  one UI reorder mutation.\n- The smoke is not cross-browser coverage.\n- The smoke is not an accessibility audit or visual regression test.\n- The script imports Backend source through Vite SSR for local evidence; Backend\n  still does not publish a dedicated browser-smoke harness package surface.\n- Editor `npm install` in the implementation worktree reported 5 high-severity\n  npm audit findings; they were not investigated or fixed in this lane.\n- Vite retained the existing chunk-size warning during build.\n\n## UNKNOWN\n\n- It remains unknown whether a deployed Backend and hosted Editor environment\n  complete the same flow.\n- It remains unknown whether the broader document corpus and every Backend\n  mutation operation work through the same browser path.\n- It remains unknown whether other browsers, assistive technology paths, and\n  visual layout baselines pass equivalent gates.\n- This lane does not prove broader product readiness beyond the cited browser\n  smoke and Editor owner gates.\n\n## Intentionally Not Changed\n\n- No FlowDoc, Core, Editor, or Backend node truth state was promoted.\n- No node `documentIds` or `evidenceIds` were updated from this packet.\n- No Backend or Core implementation file was changed.\n- No Editor production runtime/UI module was changed.\n- No npm audit remediation, favicon asset addition, or bundle splitting was\n  attempted.\n\n## Next Recommended Direction\n\nUse this packet as the narrow evidence base for the browser-app compatibility\nclaim. The next work should either promote only this bounded claim through the\nproper map rules or open a separate deployed/cross-browser/broader-corpus lane\nbefore making product-readiness claims.\n"
+    },
+    {
+      "id": "doc-editor-build-dispatch-2026-09-06",
+      "repositoryRefs": [],
+      "lifecycle": "active",
+      "kind": "document",
+      "authority": "Project Control implementation dispatch registry, not product acceptance",
+      "path": "docs/domains/flowdoc-editor-build-dispatch-2026-09-06.md",
+      "nodeIds": [],
+      "role": "contract",
+      "title": "PLAN ส่งงาน Editor Build V2",
+      "content": "# PLAN — Editor Build authored content V2\n\n## Authority Boundary and context\nProject Control canonical dispatch intent, not product evidence or map truth. Work flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap; PLAN planning-partner; owner repo-editor / product-implementation-agent. Phase phase-editor-build-content-v2; checklist checklist-editor-build-content-v2; evidence target evidence-editor-build-content-v2 pending. User approved next WORK sequentially; open exactly one room. Backend terminal03 accepted a1745c4, Core accepted358e14a; prior queue empty/no revision. Editor inspected0cb3970 tracked clean. Backend and PC closeout full main gates passed; this does not prove Editor readiness.\n\n## Room Run Registry\nDispatch dispatch-editor-build-content-v2-2026-09-06; parallelLimit1; lane lane-editor-build-content-v2; roomRun room-editor-build-content-01; Work Type product-implementation; owner repo-editor. Locator pending creation, liveness prepared, handoffInbox=[], completionQueue=[], next arrivalSequence1; returnOrderPolicy BLOCKER/FAIL/CCR then arrival; duplicate IDs idempotent; acceptance pending; revision none. One queued terminal processed at a time. Silent/missing return is UNKNOWN/needs-attention; manual recovery must record return-channel-failed/manual-recovered and never substitute for active return.\n\n## Kickoff / Context Capsule\nRead PC AGENTS, delivery/orchestration/routing/authority and English/Thai terminology, accepted flowdoc-preview-content-contract-2026-09-06.md, Backend dispatch and evidence-backend-creator-content-v2, Core accepted evidence, then Editor AGENTS. Source of truth is canonical PC records; this prepared packet governs the lane until integrated. Use native isolated Editor worktree based on current main; preserve unrelated worktree13e1 and paused PDF dependency audit. No internal subagents or extra rooms. Skills flowdoc-project-control, executing-plans, relevant focused verification; existing approved contract supplies design, no new broad design round needed. Cross-owner questions require CCR before changing contracts.\n\nGoal: actual /structures/:definitionId/build can explicitly author the supported text/field content, save via negotiated V2 and reopen with exact IDs/content. Keep existing UI shell, add contextual authoring controls with Thai labels and accessible native inputs. This is Build source authoring, not Preview value entry or PDF display.\n\nAllowed files: src/editor/structures/structureTransport.ts, structureSession.ts, src/components/structures/StructureBuildPage.tsx and cohesive new Editor-owned content modules/components, src/styles/creator-structures.css, focused tests and existing browser evidence tooling where needed. Core imports only via src/core/coreAdapter.ts; do not import Core internals or copy semantics. No Core/Backend/PC product edits, dependency/Node/PDF.js upgrades, retired FlowDocEditor, QA render loop, generalized rich-text editor, Preview runtime, frozen-version authoring or broad layout expansion.\n\n## Bounded behavior\n1. Negotiate GET /document-structures/v2/capabilities and check contractVersion2, supportedContentVersions[1], creator-text-preview/1 before enabling content authoring. Read V2 draft route including legacy records; use V2 save envelope {contractVersion:2,baseRevision,draft} for content. Never fallback V2 content saves/reads to lossy V1 or synthesize content from titles/fields. Unavailable/unsupported capability blocks content authoring with understandable message and preserves working copy; existing content-free V1 flows remain usable where safe.\n2. Provide explicit action to start supported text content ONLY for compatible empty one-section A4 portrait draft. Allocate stable opaque IDs once for one content-block Pattern, one required single Slot, one text field/scalar binding, paragraph and static-prefix/field/static-suffix inlines, matching accepted contract. No destructive conversion of populated/incompatible legacy draft, no silently dropping/replacing fields/styles/sections or coercing page dimensions. Explain unsupported state; user may use a fresh compatible draft. Keep original unchanged until explicit action, dirty state and successful save. Generated initial empty authored content follows deliberate user action; never invented during load.\n3. Allow authoring prefix/suffix and field label/key/required flag with coherent binding references, stable IDs and visible field placement on Build surface. No simulation values stored. Preserve exact Thai/Latin Unicode, whitespace and empty static text, respect accepted single-paragraph limits. Key edits preserve field identity and update corresponding binding metadata consistently; required flag updates matching field/binding. Reject duplicates/invalid changes without truncation. If existing contract imposes additional reference restrictions, use its authority through allowed adapter, not copied Core rules.\n4. V2 page/profile controls cannot create unsavable unsupported layout; preserve existing V1 page controls. Dirty/save/loading/conflict handling must retain working copy on errors and stale responses, apply only latest matching generation/document, and not overwrite edits with a late response. Refresh/discard remains deliberate. Save success uses returned revision; reopening returns exact content/IDs. V2 freeze/publish unavailable with clear explanation; do not bypass Backend guard. Preview remains next WORK and must not route to PDF/read-only fake success.\n\n## Implementation and acceptance\n- Send Context ACK after source/contract reads with actual task/worktree/branch/base, dependency Core358e14a and Backend a1745c4 provenance, proposed focused file/test map and any concrete CCR. Routine UI placement uses current Build shell, no extra approval cycle.\n- Write meaningful failing transport/session tests for capability mismatch, no fallback, exact authored-only roundtrip, explicit upgrade, stable IDs, save failure/conflict/stale generation and unsupported legacy preservation. Implement smallest cohesive changes, focused checks.\n- Add real browser evidence using current tooling and actual Editor route with Backend a1745c4 and isolated disposable SQLite: new compatible structure -> explicit content action -> Thai prefix/field/suffix -> save -> reload/reopen -> edit/save again. Verify network V2, revision and stable IDs, empty text, retained working copy on failed save/conflict, capability unavailable, incompatible legacy untouched. Capture screenshots of actual Build before/after. Use isolated ephemeral ports/data; no production/user-store writes or dependency upgrades. Report browser execution unavailable as RISK, never replace with QA screenshots or claim acceptance from unit tests alone.\n- Full original Editor npm run check with unchanged assertions/timeouts/skips and dependency versions. Capture logs and exact before/after identities externally. Commit in WORK; return candidate; no merge/cleanup. PLAN reviews evidence, requests same-room revision if needed, merges only after accepted worktree gate, then same-room main verification. PLAN never patches product files. Checklist: capability-transport, explicit-content-authoring, draft-preservation, browser-roundtrip, regression-gate. Evidence candidate only; no self-promoted PC truth/map status.\n\n## Active Return Channel\nPLAN task01a0707e-00e9-74e1-be1b-a272a1b89d2a/local. Handoff handoff-editor-build-content-v2-01. Mandatory Active Return Command mcp__codex_app__send_message_to_thread with threadId PLAN and prompt carrying Context ACK/progress/terminal PASS/FAIL/BLOCKER/RISK/UNKNOWN. Terminal before/with local final, final alone insufficient. Meaningful progress every10minutes, renewable deadline20minutes. Include exact branch/worktree/commit/files, tests/logs/browser captures, limitations and PR summary draft. Stop for missing owner/evidence, failed return channel or cross-owner contract changes and actively return CCR. Full Preview, IME simulation/reflow, R3/R4 and generalized layout remain unproven and outside this lane.\n\n## Resolved room setup\nQueued client client-new-thread:0cc4931b-3947-4a93-81bd-ead3b47e6d2c resolved after list_threads omitted it via read-only local metadata. Real WORK01a07553-c36c-7923-a1b9-5e2686c2b1bb/local; native worktree C:/Users/nekot/.codex/worktrees/44ce/flowdoc-vnext-editor. wait_threads confirms active. This is setup resolution, not manual terminal recovery. Context ACK pending; liveness active initial deadline20minutes; terminal01 pending, no acceptance. No second WORK opened. PC registry full gate running independently.\n\n## Automatic Context ACK\nWORK01a07553-c36c-7923-a1b9-5e2686c2b1bb actively returned Context ACK: native44ce branch codex/editor-build-content-v2 at clean0cb3970, Core358e14a and Backend a1745c4 verified. Required contracts read; file map transport/capability, content helper through coreAdapter, session stale-safe edits/save, contextual native Thai controls/styles and focused plus real-browser SQLite evidence. No CCR, no extra rooms. Liveness active renewed20minutes; terminal01 pending, queue empty, no product acceptance.\n\n## CCR-editor-authored-admission-01 — approved\nAutomatic nonterminal CCR received; PLAN approves the same bounded private validation-only context already accepted for Backend, now strictly through Editor src/core/coreAdapter.ts. This narrow bridge is explicitly allowed. Exported Core strict schema then validateVNextCreatorTextContentV1 with internal fixed session/entry IDs, actual parsed slotId, values:[], revision0. Treat accepted status as authored admission; required-empty temporary-value issue must not block a valid Build save. Return only admitted authored draft or typed authored issues; discard all resolved simulation/value/text/occurrence data. Never send, persist, render or expose validation context as user content; no layout/engine call. No direct package imports outside coreAdapter and no copied semantic rules. Add focused tests for required-empty acceptance, reference/duplicate/static/Unicode rejection and authored-only payloads with no simulation leakage. Preserves first supported profile and makes no Preview readiness claim. No Core/Backend edits or new room required. CCR resolved before affected implementation; terminal01 pending, queue empty, liveness renewed20minutes.\n\n## WORK progress and PC dispatch gate\nAutomatic progress01: private coreAdapter bridge/helper/V2 transport/session/native Thai Build controls implemented; focused18new+6legacy tests and type-check reported passing. Full original Editor check and actual Chrome/isolated Backend SQLite evidence active; negatives being strengthened, no candidate commit or acceptance. Sibling Backend junction for native worktree paths only, no dependency/config changes. Liveness renewed20minutes, terminal01 pending. PLAN dispatch worktree full check independently completed405unit+6browser PASS; refresh index after latest registry text before integration. No product or map readiness claimed by PC gate.\n"
     },
     {
       "kind": "document",

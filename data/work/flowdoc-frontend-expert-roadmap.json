@@ -44,7 +44,8 @@
     "doc-preview-integration-plan-2026-09-05",
     "doc-preview-content-contract-2026-09-06",
     "doc-core-creator-preview-dispatch-2026-09-06",
-    "doc-backend-content-dispatch-2026-09-06"
+    "doc-backend-content-dispatch-2026-09-06",
+    "doc-editor-build-dispatch-2026-09-06"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -53,5 +54,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T05:24:11.6091386Z"
+  "updatedAt": "2026-09-06T06:06:26.6170358Z"
 }

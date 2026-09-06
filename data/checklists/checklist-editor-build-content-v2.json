@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-09-06T06:06:26.6170358Z",
+  "title": "เกณฑ์ Editor Build V2",
+  "kind": "checklist",
+  "updatedAt": "2026-09-06T06:06:26.6170358Z",
+  "phaseId": "phase-editor-build-content-v2",
+  "id": "checklist-editor-build-content-v2",
+  "items": [
+    {
+      "id": "capability-transport",
+      "evidenceTarget": "evidence-editor-build-content-v2",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "capability-transport"
+    },
+    {
+      "id": "explicit-content-authoring",
+      "evidenceTarget": "evidence-editor-build-content-v2",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "explicit-content-authoring"
+    },
+    {
+      "id": "draft-preservation",
+      "evidenceTarget": "evidence-editor-build-content-v2",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "draft-preservation"
+    },
+    {
+      "id": "browser-roundtrip",
+      "evidenceTarget": "evidence-editor-build-content-v2",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "browser-roundtrip"
+    },
+    {
+      "id": "regression-gate",
+      "evidenceTarget": "evidence-editor-build-content-v2",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "regression-gate"
+    }
+  ]
+}

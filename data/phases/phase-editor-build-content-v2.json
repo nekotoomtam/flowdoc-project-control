@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-editor-build-content-v2; evidence-editor-build-content-v2",
+  "summary": "One sequential Editor Build WORK authorized; product and browser evidence pending.",
+  "updatedAt": "2026-09-06T06:06:26.6170358Z",
+  "createdAt": "2026-09-06T06:06:26.6170358Z",
+  "phaseState": "in-progress",
+  "id": "phase-editor-build-content-v2",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "title": "Editor Build เขียนและบันทึกเนื้อหา V2",
+  "order": 60,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}
