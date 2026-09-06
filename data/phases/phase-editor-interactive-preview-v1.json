@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-editor-interactive-preview-v1; evidence-editor-interactive-preview-v1",
+  "summary": "Paused clean after terminal BLOCKER01; awaits Core glyph-outline prerequisite. No Preview product evidence.",
+  "updatedAt": "2026-09-06T06:53:35.8065062Z",
+  "createdAt": "2026-09-06T06:53:35.8065062Z",
+  "phaseState": "blocked",
+  "id": "phase-editor-interactive-preview-v1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "title": "Editor Preview แก้ค่าบนเอกสารจำลอง",
+  "order": 61,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}

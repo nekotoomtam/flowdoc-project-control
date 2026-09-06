@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-09-06T06:53:35.8065062Z",
+  "title": "เกณฑ์ Preview แก้ค่าบนเอกสาร",
+  "kind": "checklist",
+  "updatedAt": "2026-09-06T06:53:35.8065062Z",
+  "phaseId": "phase-editor-interactive-preview-v1",
+  "id": "checklist-editor-interactive-preview-v1",
+  "items": [
+    {
+      "evidenceTarget": "evidence-editor-interactive-preview-v1",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "saved-source-boundary",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "id": "saved-source-boundary"
+    },
+    {
+      "evidenceTarget": "evidence-editor-interactive-preview-v1",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "verified-document-paint",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "id": "verified-document-paint"
+    },
+    {
+      "evidenceTarget": "evidence-editor-interactive-preview-v1",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "on-document-edit-reflow",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "id": "on-document-edit-reflow"
+    },
+    {
+      "evidenceTarget": "evidence-editor-interactive-preview-v1",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "composition-stale-safety",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "id": "composition-stale-safety"
+    },
+    {
+      "evidenceTarget": "evidence-editor-interactive-preview-v1",
+      "evidenceIds": [],
+      "state": "pending",
+      "label": "browser-regression",
+      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "id": "browser-regression"
+    }
+  ]
+}

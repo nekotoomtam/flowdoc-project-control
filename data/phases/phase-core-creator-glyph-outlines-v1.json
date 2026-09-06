@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-core-creator-glyph-outlines-v1; evidence-core-creator-glyph-outlines-v1",
+  "summary": "Sequential prerequisite for blocked Editor paint; verified outline provider pending.",
+  "updatedAt": "2026-09-06T06:59:53.4063811Z",
+  "createdAt": "2026-09-06T06:59:53.4063811Z",
+  "phaseState": "in-progress",
+  "id": "phase-core-creator-glyph-outlines-v1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "activeRole": "planning-partner",
+  "title": "Core รูปร่างตัวอักษรสำหรับ Preview",
+  "order": 62,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}

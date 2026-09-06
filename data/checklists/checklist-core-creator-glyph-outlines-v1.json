@@ -1,0 +1,50 @@
+{
+  "createdAt": "2026-09-06T06:59:53.4063811Z",
+  "title": "เกณฑ์ Core glyph outlines",
+  "kind": "checklist",
+  "updatedAt": "2026-09-06T06:59:53.4063811Z",
+  "phaseId": "phase-core-creator-glyph-outlines-v1",
+  "id": "checklist-core-creator-glyph-outlines-v1",
+  "items": [
+    {
+      "evidenceTarget": "evidence-core-creator-glyph-outlines-v1",
+      "evidenceIds": [],
+      "verificationNote": "Await Core evidence and PLAN acceptance.",
+      "label": "pinned-asset-provenance",
+      "state": "pending",
+      "id": "pinned-asset-provenance"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-glyph-outlines-v1",
+      "evidenceIds": [],
+      "verificationNote": "Await Core evidence and PLAN acceptance.",
+      "label": "glyph-outline-fidelity",
+      "state": "pending",
+      "id": "glyph-outline-fidelity"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-glyph-outlines-v1",
+      "evidenceIds": [],
+      "verificationNote": "Await Core evidence and PLAN acceptance.",
+      "label": "fail-closed-lookup",
+      "state": "pending",
+      "id": "fail-closed-lookup"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-glyph-outlines-v1",
+      "evidenceIds": [],
+      "verificationNote": "Await Core evidence and PLAN acceptance.",
+      "label": "creator-package-integration",
+      "state": "pending",
+      "id": "creator-package-integration"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-glyph-outlines-v1",
+      "evidenceIds": [],
+      "verificationNote": "Await Core evidence and PLAN acceptance.",
+      "label": "regression-gate",
+      "state": "pending",
+      "id": "regression-gate"
+    }
+  ]
+}
