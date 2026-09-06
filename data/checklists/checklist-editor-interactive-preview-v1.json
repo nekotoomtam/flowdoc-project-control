@@ -2,48 +2,58 @@
   "createdAt": "2026-09-06T06:53:35.8065062Z",
   "title": "เกณฑ์ Preview แก้ค่าบนเอกสาร",
   "kind": "checklist",
-  "updatedAt": "2026-09-06T06:53:35.8065062Z",
+  "updatedAt": "2026-09-06T08:12:19.0432539Z",
   "phaseId": "phase-editor-interactive-preview-v1",
   "id": "checklist-editor-interactive-preview-v1",
   "items": [
     {
       "evidenceTarget": "evidence-editor-interactive-preview-v1",
-      "evidenceIds": [],
-      "state": "pending",
+      "evidenceIds": [
+        "evidence-editor-interactive-preview-v1"
+      ],
+      "state": "passed",
       "label": "saved-source-boundary",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "verificationNote": "PLAN reviewed code/visual/browser08 and fresh16tests; full worktree/main117files452tests plus type-check/build passed. Synthetic browser composition only, real OS IME unproven; bounded creator-text-preview/1.",
       "id": "saved-source-boundary"
     },
     {
       "evidenceTarget": "evidence-editor-interactive-preview-v1",
-      "evidenceIds": [],
-      "state": "pending",
+      "evidenceIds": [
+        "evidence-editor-interactive-preview-v1"
+      ],
+      "state": "passed",
       "label": "verified-document-paint",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "verificationNote": "PLAN reviewed code/visual/browser08 and fresh16tests; full worktree/main117files452tests plus type-check/build passed. Synthetic browser composition only, real OS IME unproven; bounded creator-text-preview/1.",
       "id": "verified-document-paint"
     },
     {
       "evidenceTarget": "evidence-editor-interactive-preview-v1",
-      "evidenceIds": [],
-      "state": "pending",
+      "evidenceIds": [
+        "evidence-editor-interactive-preview-v1"
+      ],
+      "state": "passed",
       "label": "on-document-edit-reflow",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "verificationNote": "PLAN reviewed code/visual/browser08 and fresh16tests; full worktree/main117files452tests plus type-check/build passed. Synthetic browser composition only, real OS IME unproven; bounded creator-text-preview/1.",
       "id": "on-document-edit-reflow"
     },
     {
       "evidenceTarget": "evidence-editor-interactive-preview-v1",
-      "evidenceIds": [],
-      "state": "pending",
+      "evidenceIds": [
+        "evidence-editor-interactive-preview-v1"
+      ],
+      "state": "passed",
       "label": "composition-stale-safety",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "verificationNote": "PLAN reviewed code/visual/browser08 and fresh16tests; full worktree/main117files452tests plus type-check/build passed. Synthetic browser composition only, real OS IME unproven; bounded creator-text-preview/1.",
       "id": "composition-stale-safety"
     },
     {
       "evidenceTarget": "evidence-editor-interactive-preview-v1",
-      "evidenceIds": [],
-      "state": "pending",
+      "evidenceIds": [
+        "evidence-editor-interactive-preview-v1"
+      ],
+      "state": "passed",
       "label": "browser-regression",
-      "verificationNote": "Await WORK evidence and PLAN acceptance.",
+      "verificationNote": "PLAN reviewed code/visual/browser08 and fresh16tests; full worktree/main117files452tests plus type-check/build passed. Synthetic browser composition only, real OS IME unproven; bounded creator-text-preview/1.",
       "id": "browser-regression"
     }
   ]
