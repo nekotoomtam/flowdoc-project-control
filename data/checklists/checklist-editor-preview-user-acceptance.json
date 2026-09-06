@@ -1,0 +1,33 @@
+{
+  "kind": "checklist",
+  "phaseId": "phase-editor-preview-user-acceptance",
+  "id": "checklist-editor-preview-user-acceptance",
+  "updatedAt": "2026-09-06T09:21:04.6180505Z",
+  "createdAt": "2026-09-06T09:13:00.7811844Z",
+  "title": "เกณฑ์ทดลอง Preview จริง",
+  "items": [
+    {
+      "label": "isolated-live-workflow",
+      "id": "isolated-live-workflow",
+      "evidenceIds": [
+        "evidence-editor-preview-user-acceptance"
+      ],
+      "evidenceTarget": "evidence-editor-preview-user-acceptance",
+      "state": "passed"
+    },
+    {
+      "label": "user-thai-input",
+      "id": "user-thai-input",
+      "evidenceIds": [],
+      "evidenceTarget": "evidence-editor-preview-user-acceptance",
+      "state": "pending"
+    },
+    {
+      "label": "source-preservation",
+      "id": "source-preservation",
+      "evidenceIds": [],
+      "evidenceTarget": "evidence-editor-preview-user-acceptance",
+      "state": "pending"
+    }
+  ]
+}

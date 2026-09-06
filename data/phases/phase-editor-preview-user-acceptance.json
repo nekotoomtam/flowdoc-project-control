@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
+  "summary": "Prepare isolated real Preview workflow for user acceptance; actual OS Thai input remains UNKNOWN until observed by the user.",
+  "updatedAt": "2026-09-06T09:13:00.7811844Z",
+  "createdAt": "2026-09-06T09:13:00.7811844Z",
+  "phaseState": "in-progress",
+  "id": "phase-editor-preview-user-acceptance",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "title": "ทดลอง Preview และภาษาไทยกับผู้ใช้",
+  "order": 62,
+  "kind": "phase",
+  "stopConditions": [
+    "No product readiness from design; do not bypass current Core restrictions",
+    "Preserve authored content across read/save/freeze; no hidden styleDefaults payload"
+  ]
+}
