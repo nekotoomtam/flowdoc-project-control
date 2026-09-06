@@ -2,7 +2,7 @@
   "kind": "checklist",
   "phaseId": "phase-editor-preview-user-acceptance",
   "id": "checklist-editor-preview-user-acceptance",
-  "updatedAt": "2026-09-06T09:21:04.6180505Z",
+  "updatedAt": "2026-09-06T09:56:43.8273145Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "title": "เกณฑ์ทดลอง Preview จริง",
   "items": [
@@ -28,6 +28,15 @@
       "evidenceIds": [],
       "evidenceTarget": "evidence-editor-preview-user-acceptance",
       "state": "pending"
+    },
+    {
+      "id": "continuous-typing-review",
+      "label": "Core continuous typing and Editor integration reviewed; UX still rejected",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-preview-user-acceptance",
+      "evidenceIds": [
+        "evidence-editor-preview-user-acceptance"
+      ]
     }
   ]
 }

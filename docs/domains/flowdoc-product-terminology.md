@@ -143,6 +143,13 @@ itself, and not Project Control truth.
 
 ### Preview
 
+Interaction clarification (2026-09-06): continuous WYSIWYG typing directly on
+the document is primary. Caret and selection stay in the document while its
+layout updates. Only defined field values are editable here; they synchronize
+with a left-side form used as a secondary aid. Opening a separate visible
+textarea over the page does not satisfy direct document typing. This is an
+acceptance requirement, not evidence of current implementation or OS IME support.
+
 `Preview` means an interactive document simulation in the Editor. The user
 selects and edits permitted simulation values on the visible document surface
 and sees the document update, including permitted Structure Pattern Entries.
@@ -166,6 +173,12 @@ readiness. See `flowdoc-preview-definition-correction-2026-09-05.md` and the
 updated Creator UX Contract for acceptance examples and remaining unknowns.
 
 ### Build
+
+Interaction clarification (2026-09-06): document content authoring uses
+continuous typing directly on the document. Contextual forms assist structure
+configuration; side-form text entry followed by a read-only paper display does
+not satisfy the primary authoring experience. Preserve this distinction when
+accepting bounded mechanism tests versus user experience.
 
 `Build` means controlled authoring of document structure, fields, sections,
 Structure Patterns, Slots, and page rules. The user selects a visible document

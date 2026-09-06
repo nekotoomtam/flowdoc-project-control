@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Build V2 และ Preview แก้ค่าทดลองบนเอกสารตาม Core ผ่านขอบเขตแรกที่ Editor a036105 พร้อม browser08/main gates; Core outlines1a18601 และ Backend a1745c4. ถัดไปตรวจ workflow/OS IME กับผู้ใช้ก่อนขยายรูปแบบ; full R3/R4 และ frozen/repeated ยังไม่ปิด.",
+  "summary": "ผู้ใช้ยังไม่รับ UX ทั้ง Build และ Preview: ต้องพิมพ์ต่อเนื่องบนกระดาษ ฟอร์มซ้ายเป็นตัวช่วยสำหรับค่าฟิลด์ Preview. รอบ1 ตรวจ Core และรีวิว Editor เพื่อแยกใช้ต่อ/ต้องแก้/ยังต้องพิสูจน์ ก่อน WORK ขอบเขตเล็ก; หลักฐานกลไกเดิมคงไว้ ไม่ใช่ UX PASS.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -56,5 +56,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T08:12:19.0432539Z"
+  "updatedAt": "2026-09-06T09:49:11.3068191Z"
 }

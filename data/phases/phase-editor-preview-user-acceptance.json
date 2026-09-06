@@ -1,7 +1,7 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "Prepare isolated real Preview workflow for user acceptance; actual OS Thai input remains UNKNOWN until observed by the user.",
-  "updatedAt": "2026-09-06T09:13:00.7811844Z",
+  "summary": "User rejected Build/Preview display and typing UX. Round1 reviews Core continuous typing primitives and Editor integration before bounded repairs; prior mechanism/demo evidence retained, OS IME unknown.",
+  "updatedAt": "2026-09-06T09:47:46.0594525Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",
