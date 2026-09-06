@@ -2,7 +2,7 @@
   "kind": "checklist",
   "phaseId": "phase-editor-preview-user-acceptance",
   "id": "checklist-editor-preview-user-acceptance",
-  "updatedAt": "2026-09-06T13:04:52.0624994Z",
+  "updatedAt": "2026-09-06T13:52:20.3529338Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "title": "เกณฑ์ทดลอง Preview จริง",
   "items": [
@@ -41,23 +41,29 @@
     {
       "id": "paper-caret-selection",
       "label": "paper-caret-selection",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-editor-preview-user-acceptance",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-editor-preview-user-acceptance"
+      ]
     },
     {
       "id": "paper-input-left-form",
       "label": "paper-input-left-form",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-editor-preview-user-acceptance",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-editor-preview-user-acceptance"
+      ]
     },
     {
       "id": "input-history-reflow",
       "label": "input-history-reflow",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-editor-preview-user-acceptance",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-editor-preview-user-acceptance"
+      ]
     }
   ]
 }

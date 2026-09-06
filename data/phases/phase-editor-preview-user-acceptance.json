@@ -1,7 +1,7 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "Sequential Editor Preview direct-paper one-field experiment now dispatched using accepted Core46ccc1a geometry; Build direct typing remains following scope, user UX/OS acceptance pending.",
-  "updatedAt": "2026-09-06T13:04:52.0624994Z",
+  "summary": "Direct-paper Preview one-field experiment verified on Editor main67c3647 with synchronized left form, Core caret/selection and keyboard viewport repair; canonical isolated trial61783 ready. User UX/OS trial and post-user source preservation remain pending; Build direct authoring follows.",
+  "updatedAt": "2026-09-06T13:52:20.3456197Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",
