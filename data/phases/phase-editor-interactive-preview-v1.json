@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-editor-interactive-preview-v1; evidence-editor-interactive-preview-v1",
-  "summary": "Paused clean after terminal BLOCKER01; awaits Core glyph-outline prerequisite. No Preview product evidence.",
-  "updatedAt": "2026-09-06T06:53:35.8065062Z",
+  "summary": "Same Editor Preview room resumes after Core1a18601 outline prerequisite accepted; browser/interaction evidence pending.",
+  "updatedAt": "2026-09-06T07:40:58.6240425Z",
   "createdAt": "2026-09-06T06:53:35.8065062Z",
-  "phaseState": "blocked",
+  "phaseState": "in-progress",
   "id": "phase-editor-interactive-preview-v1",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [

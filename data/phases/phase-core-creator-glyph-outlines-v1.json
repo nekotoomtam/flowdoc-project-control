@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-core-creator-glyph-outlines-v1; evidence-core-creator-glyph-outlines-v1",
-  "summary": "Sequential prerequisite for blocked Editor paint; verified outline provider pending.",
-  "updatedAt": "2026-09-06T06:59:53.4063811Z",
+  "summary": "Core1a18601 verified glyph outlines accepted with complete serial worktree/main gates; Editor Preview can resume.",
+  "updatedAt": "2026-09-06T07:40:58.6240425Z",
   "createdAt": "2026-09-06T06:59:53.4063811Z",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "id": "phase-core-creator-glyph-outlines-v1",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [

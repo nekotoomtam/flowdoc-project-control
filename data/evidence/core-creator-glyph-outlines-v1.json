@@ -1,0 +1,10 @@
+{
+  "id": "evidence-core-creator-glyph-outlines-v1",
+  "verifiedAt": "2026-09-06T07:40:58.6240425Z",
+  "pathOrContractId": "src/creatorPreview/outlineV1.ts; packages/text-engine-rust-wasm/assets/creator-sarabun-outlines.v1.json; packages/text-engine-rust-wasm/scripts/generate-creator-outlines.mjs; packages/text-engine-rust-wasm/scripts/verify-creator-outlines.py; tests/creatorGlyphOutlinesV1.test.ts",
+  "repositoryId": "repo-core",
+  "verificationSummary": "PLAN accepted active candidate01/main02 with independent33tests, source/reference review.777glyphs/1000units digest8a5e7be2038f8fe54e5b1163425be14f05bb55c4b74aa88c8821c0914364b75d,413287bytes. Full exact oriented contour reference allowing cyclic starts,343compounds;6original-font FreeType samples1.397-1.499percent XOR/union at6percent raster-edge threshold; no contour geometry tolerance or scaled-component corpus claim. Complete original-timeout serial worktree433files2810tests562.52s/main547.83s, root/adapter checks, exact-byte regeneration and final package/OFL/no-targets passed. Before/after identities clean, font/MR1/locks unchanged. Logs/reference PNGs C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517; registry retains interrupted gate and diagnostics. Default parallel RISK; browser-target bundle exercised via Node Web APIs only; no Editor/IME/Preview/map acceptance.",
+  "nodeIds": [],
+  "commit": "1a18601f03cbb27e4851ac7bf963b870fc1564b9",
+  "kind": "evidence"
+}
