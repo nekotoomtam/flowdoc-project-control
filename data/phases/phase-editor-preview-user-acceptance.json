@@ -1,7 +1,7 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "User rejects overlong-run wrapping; bounded Core repair dispatched before further user acceptance. Preview paper-input mechanisms retained, user UX remains pending.",
-  "updatedAt": "2026-09-06T14:51:03.0730534Z",
+  "summary": "Core d4bd081 overlong-run wrapping repair verified on worktree/main and unchanged Editor67c3647 actual browser: long spans fill remaining space, ordinary fitting spans retain legal wrapping. User UX/OS acceptance remains pending; Build direct authoring follows.",
+  "updatedAt": "2026-09-06T15:46:31.3261345Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "phaseState": "in-progress",
   "id": "phase-editor-preview-user-acceptance",

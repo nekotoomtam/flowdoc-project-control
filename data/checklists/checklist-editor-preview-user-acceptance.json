@@ -2,7 +2,7 @@
   "kind": "checklist",
   "phaseId": "phase-editor-preview-user-acceptance",
   "id": "checklist-editor-preview-user-acceptance",
-  "updatedAt": "2026-09-06T14:51:03.0115618Z",
+  "updatedAt": "2026-09-06T15:46:31.3185968Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
   "title": "เกณฑ์ทดลอง Preview จริง",
   "items": [
@@ -68,9 +68,11 @@
     {
       "id": "overlong-run-wrapping",
       "label": "Overlong runs use remaining line space while ordinary words retain legal wrapping",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-creator-overlong-wrap-v1",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-creator-overlong-wrap-v1"
+      ]
     }
   ]
 }
