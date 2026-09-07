@@ -1,5 +1,43 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Work4A bounded acceptance — 2026-09-08
+
+Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap;
+phase-core-text-layout-roadmap. Owner repo-editor; product-implementation; PLAN reviewer/steward.
+User reaffirmed that field typing and continuous display pass, while Enter/newline and
+other editing keys remain incomplete. Do not interpret this as complete WYSIWYG acceptance.
+New child checklist preview-field-typing passes with evidence-editor-preview-core-b;
+parent paper-integration remains pending because Build and further keyboard scope remain.
+
+Editor236a3ac merged to main from67c3647 against Core607bb20. PLAN independently ran
+npm run check on Editor main: exit0; WORK full118files460tests/build also passed.
+Three changed files: session display-only selection, Preview rendering, focused test.
+Retained glyph/caret are one completed geometry; newest form value can lead them while
+working. Current paper alone authorizes edits/hits; old display geometry grants no edits.
+
+Registry dispatch-editor-paper-integration-2026-09-07 / lane-editor-preview-core-b,
+Editor WORK01a0757e-98ba-79c2-96d1-3aa690ead2a1/local terminal accepted. Automatic
+handoffs01/02 arrived1/2;01 required live demo/precise timing evidence,02 fulfilled it.
+Queue drained, active return succeeded. Requested Terra medium, actual runtime unverified.
+External registry/editor WORK work4a evidence retains detailed artifacts and run locators.
+Review demo59348 definition8daac945-63ab-42f9-b66f-3635eeaa0d5f remains in user use.
+Therefore merged e4a worktree/branch are retained intentionally, cleanup deferred until
+it no longer serves the user demo. Do not stop/reseed it. Held eflick3fc61e3 untouched.
+
+Next bounded step: inventory and define Preview Enter/Shift+Enter and keyboard behavior
+against current Core before implementation. Checklist preview-keyboard-contract pending.
+Separate soft wraps from explicit line breaks; decide supported field-value semantics,
+source offsets, caret/selection and delete-at-boundary behavior. If Core lacks hard breaks,
+return a Core-owned prerequisite/CCR, never fake newline layout in Editor. Existing
+navigation/selection/clipboard/undo behavior must be inventoried before adding it again.
+No keyboard implementation or Work4B dispatch by this acceptance record. Continue one WORK
+at a time. Work4B authored Build, incremental assessment and complex page flow remain later.
+
+Maps unchanged; no Core/Backend/assets/dependencies modified this round. Physical OS IME,
+full WYSIWYG, broad latency/accessibility and Build readiness remain unverified.
+This section supersedes broader or pending Work4A wording in historical sections below.
+
+
 ## Work3 accepted on Core main — 2026-09-07
 
 PLAN accepted automatic handoff-core-text-policy-implementation-02 at Core607bb20,
@@ -403,6 +441,7 @@ PC verification: generate, check:data, type-check, original full check ใน wo
 และ main; ไม่มี product tests รอบวางแผน ไม่มี map promotion.
 Next: เมื่อเริ่ม execution ให้เปิด Work1 เพียงงานเดียว แล้วรายงาน inventory พร้อม
 ข้อเสนอเส้นทางหลักก่อน Work2. ไม่เปิดทั้งหกงานล่วงหน้า.
+
 
 
 

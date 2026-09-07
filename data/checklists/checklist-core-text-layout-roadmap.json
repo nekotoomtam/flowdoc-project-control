@@ -51,8 +51,24 @@
       "state": "pending",
       "evidenceTarget": "evidence-editor-complex-flow",
       "evidenceIds": []
+    },
+    {
+      "id": "preview-field-typing",
+      "label": "Work4A พิมพ์ค่าฟิลด์และแสดงผลต่อเนื่อง",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-preview-core-b",
+      "evidenceIds": [
+        "evidence-editor-preview-core-b"
+      ]
+    },
+    {
+      "id": "preview-keyboard-contract",
+      "label": "กำหนดและตรวจ Enter กับปุ่มแก้ข้อความเป็นขั้นถัดไป",
+      "state": "pending",
+      "evidenceTarget": "evidence-preview-keyboard-contract",
+      "evidenceIds": []
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T13:52:27.0194634Z"
+  "updatedAt": "2026-09-07T20:09:43.9262916Z"
 }
