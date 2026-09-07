@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "ทดลองพิมพ์บนกระดาษมีฐานแล้ว แต่ held-key wrap/Thai UX ยังไม่ผ่าน; Core boundary review ยืนยันขอบเขตปัจจุบัน. วางแผน Core Text/Layout6ช่วงก่อนเริ่มงานต่อ โดยเริ่ม inventory และ policy decision; ยังไม่ dispatch และ Editor caret candidate3fc61e3ยัง held/unmerged.",
+  "summary": "Work1 Core capability inventory เริ่มด้วย Luna medium แบบ read-only; หนึ่ง WORK เท่านั้น. PLAN ตรวจรับก่อน policy examples. Preview UX รอ Core policy และ caret candidate3fc61e3ยัง held/unmerged.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -58,5 +58,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-07T07:16:11.8621317Z"
+  "updatedAt": "2026-09-07T07:39:49.8453397Z"
 }

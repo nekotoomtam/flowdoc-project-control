@@ -1,9 +1,9 @@
 {
   "verificationTarget": "checklist-editor-preview-user-acceptance; evidence-editor-preview-user-acceptance",
-  "summary": "Boundary capability inspection accepted: current line offsets and shaping clusters available; installed word/grapheme APIs not exposed, no ready Thai syllable oracle. Two-stage wrapping policy and user UX remain unresolved. Editor caret candidate 3fc61e3 held unmerged; next step is user policy discussion, not implementation.",
-  "updatedAt": "2026-09-06T18:26:26.0689563Z",
+  "summary": "User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
+  "updatedAt": "2026-09-07T07:39:49.8453397Z",
   "createdAt": "2026-09-06T09:13:00.7811844Z",
-  "phaseState": "in-progress",
+  "phaseState": "blocked",
   "id": "phase-editor-preview-user-acceptance",
   "workId": "flowdoc-frontend-expert-roadmap",
   "repositoryIds": [

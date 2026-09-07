@@ -3,7 +3,7 @@
   "id": "phase-core-text-layout-roadmap",
   "workId": "flowdoc-frontend-expert-roadmap",
   "title": "Core Text/Layout: สำรวจฐานและวางทางเชื่อมการพิมพ์",
-  "phaseState": "queued",
+  "phaseState": "in-progress",
   "order": 63,
   "repositoryIds": [
     "repo-project-control",
@@ -17,7 +17,7 @@
     "Text placement policy must be decided from examples before implementation"
   ],
   "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-  "summary": "แผน6ช่วง: inventory, policy examples/decision, Core correction, Preview then Build integration, incremental assessment, complex flow. ยังไม่ dispatch; phase ทดลอง Preview เดิมยังเปิดและ caret candidate ยัง held.",
+  "summary": "เริ่ม Work1 inventory แบบ read-only ใน Core WORK เดิมด้วย gpt-5.6-luna/medium; ยังไม่เริ่ม policy/implementation. PLAN รอหลักฐานและตรวจรับก่อน Work2.",
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T07:16:11.8621317Z"
+  "updatedAt": "2026-09-07T07:39:49.8453397Z"
 }

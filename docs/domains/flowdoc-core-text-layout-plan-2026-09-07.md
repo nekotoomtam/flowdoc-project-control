@@ -1,5 +1,43 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Active Work1 registry — 2026-09-07
+
+ตูมอนุญาตเริ่ม Work1 หลังเลือกใช้โมเดลเล็กตามประเภทงาน. Dispatch
+`dispatch-core-inventory-2026-09-07`, lane `lane-core-capability-inventory`,
+Work Type evidence-review, owner repo-core, active role evidence-reviewer.
+Model `gpt-5.6-luna`, reasoning `medium`; no automatic GPT-6 escalation.
+Routine inventory uses Luna; bounded implementation may use Terra; complex
+reasoning may use Sol through a later explicit packet. PLAN reviews evidence.
+Phase phase-core-text-layout-roadmap now in-progress, checklist capability-inventory
+pending, target evidence-core-capability-inventory. Prior Preview acceptance phase
+blocked awaiting policy work, not done; all pending UX checks retained.
+
+Restored real Core WORK `01a07584-49dc-7602-b662-6033c1469517`/local is terminal
+before resume; previous review accepted, queue drained. Same locator reused for
+read-only canonical Core d4bd081; Editor67c3647/Backend a1745c4 consumers read-only.
+No product worktree required for read-only inspection. Editor WORK remains terminal
+held/RISK with candidate3fc61e3 in eflick; no concurrent Editor run or merge/cleanup.
+
+Handoff `handoff-core-capability-inventory-01`, dispatch arrivalSequence starts1;
+handoffInbox/completionQueue empty; acceptance pending; revision0. Liveness dispatched,
+Automatic Context ACK received: WORK confirms scope/owner/phase/evidence and read-only
+consumer tracing; liveness active, progress10minutes, renewable deadline20minutes. ReturnOrderPolicy
+arrival; idempotent duplicate handling; one acceptance at a time. Active Return Command
+`mcp__codex_app__send_message_to_thread` to PLAN
+`01a0707e-00e9-74e1-be1b-a272a1b89d2a`/local before or with terminal final.
+Return PASS/FAIL/BLOCKER/RISK/UNKNOWN with retrievable external evidence; local final
+alone is insufficient. No automated monitor/extra rooms/subagents requested.
+
+Lean budget: contextBudget small, verificationTier read-only (focused probes only
+for unresolved facts), reviewTier mandatory, evidenceMode batched-evidence,
+handoffDetail compact, docReadPolicy reference-pack. Scan tracked files, avoid
+node_modules/backup dumps; no broad suites/build/install. Evidence matrix must cover
+all Work1 families and trace actual consumer calls, public/QA/compatibility boundaries,
+retained value and uncertainty. No product changes, policy selection, dependency
+changes, deletions, user61783/57840 actions or PC/map promotion by WORK.
+Registry is durable in PLAN reporting worktree until its required gate/merge;
+this section supersedes the historical planning-only status below for Work1 only.
+
 ## Authority Boundary
 
 Owner: Project Control. Classification: Project Control canonical plan.
