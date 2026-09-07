@@ -1,5 +1,48 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Work2 decision accepted; Work3 ready plan — 2026-09-07
+
+Work path: flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap.
+PLAN role planning-partner/project-control-steward; phase-core-text-layout-roadmap.
+Checklist text-policy-decision passed with evidence-core-text-policy-decision.
+User selected B and qualitatively reported that held typing in external08 seems to work.
+This accepts a policy decision and bounded experiment, not production readiness.
+
+B fills available line width at shaping-cluster boundaries without ordinary-word
+preference. Ordinary words may split. Preserve measured line-end reshaping, source
+ranges, field boundaries and deterministic final layout; shaping clusters do not
+claim complete grapheme or Thai syllable support.
+
+Registry: dispatch-core-text-policy-2026-09-07, lane-core-text-policy-examples,
+Core WORK01a07584-49dc-7602-b662-6033c1469517/local terminal. Automatic returns01-08
+received in arrival order;01/02/04/05/07 needs-revision;03 data-only accepted;
+06/08 bounded prototypes admitted to trial;08 followed by user feedback. Queue drained.
+External plan-registry.json retains detailed reasons and locator under original WORK
+visualizations/text-policy-examples. Mandatory return push succeeded, no manual recovery.
+Model overrides requested Terra/Sol medium; actual runtime switch was not verified.
+Live08 port50783/PID27268/session44887 stays available; older user demos untouched.
+
+Work3 plan: owner repo-core, product-implementation, checklist core-text-policy,
+evidence target evidence-core-text-policy-implementation. Use original Core WORK,
+Terra medium, one lane, dedicated worktree from current verified main. No dispatch yet.
+Start with failing regressions for chosen B in creatorPreview/layoutFactsV1.ts;
+inspect textEditGeometryV1.ts only where changed line boundaries require it.
+Test ordinary Latin, long repeats, Thai marks/mixed text, exact-fit/overwide cluster,
+inline boundaries and typing/paste/reopen equivalence with pinned assets. Preserve
+actual end-of-line shaping and invalid-fact guards. Run focused plus full Core gate.
+Return exact candidate commit and evidence automatically to PLAN for review; PLAN
+owns merge/main verification and records. No dependency, ABI, schema or QA admission.
+Broader surface changes require a bounded Contract Change Request.
+
+External08 display scheduler fixes belong to later Editor Work4 evaluation, not Core
+Work3: avoid discard-all starvation, keep rendered value/selection/geometry coherent,
+preserve drag, handle errors, and verify sustained display updates. Do not copy the
+prototype UI wholesale or claim its synthetic timings prove product latency.
+Maps unchanged. Editor held3fc61e3 remains unmerged. Unknown: OS IME, Build authoring,
+production held-key timing, glyph-outline fidelity and complex page-flow performance.
+This section supersedes historical pending Work2/no-choice statements below.
+
+
 ## Work2 examples dispatched — 2026-09-07
 
 User authorizes Work2; no cleanup prerequisite. PCmain6c92eaf clean and Work1
@@ -332,3 +375,4 @@ PC verification: generate, check:data, type-check, original full check ใน wo
 และ main; ไม่มี product tests รอบวางแผน ไม่มี map promotion.
 Next: เมื่อเริ่ม execution ให้เปิด Work1 เพียงงานเดียว แล้วรายงาน inventory พร้อม
 ข้อเสนอเส้นทางหลักก่อน Work2. ไม่เปิดทั้งหกงานล่วงหน้า.
+

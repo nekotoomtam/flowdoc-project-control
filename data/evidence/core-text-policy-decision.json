@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-text-policy-decision",
+  "repositoryId": "repo-core",
+  "commit": "d4bd081766abd76326b4ad08c80cfea649efb7ca",
+  "pathOrContractId": "src/creatorPreview/layoutFactsV1.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-07T12:34:32.7007010Z",
+  "verificationSummary": "Bounded Work2 decision: user chose B_cluster_fill after external comparisons, then reported revision08 held typing seems to work. This is qualitative user trial, not measured production readiness. PLAN reviewed03 operation reconstruction77 events and policy convergence; reviewed06 geometry fixes and screenshots; rejected07 drag/evidence defects and reviewed08 staging/error recovery and strict synthetic input-window evidence. External root C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples retains revisions and browser-check JSON. Automatic handoffs01-08 returned to PLAN;01/02/04/05/07 needed revisions;03 bounded data accepted;06/08 admitted only to user trial. Live08 http://127.0.0.1:50783/ retained. B fills available width at shaping-cluster boundaries without ordinary-word preference; normal words may split. Browser display starvation fix is external scheduler behavior, separate from Core wrap policy and requires later Editor integration. No product files or maps changed. Physical OS IME, production held-key latency, complete grapheme behavior, Build and complex pagination remain unverified."
+}
