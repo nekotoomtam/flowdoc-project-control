@@ -1,5 +1,45 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Work1 accepted — bounded inventory, 2026-09-07
+
+PLAN รับ automatic handoff-core-capability-inventory-05 หลังตรวจ v05 ซ้ำ:
+45 capability rows / 11 families / 159 references / 0 invalid references.
+Checklist capability-inventory passed ด้วย evidence-core-capability-inventory.
+การผ่านนี้หมายถึง inventory ตามขอบเขตค้นหา ไม่ใช่ Core readiness หรือการรับ UX.
+
+ผลสำรวจ: 13 rows มี external runtime call ที่ยืนยัน;26 rows เป็น internal หรือยังไม่ยืนยัน
+external consumer;4 rows QA/experimental;2 rows library capability ที่ยังไม่เชื่อม.
+Availability แยกต่างหาก:35 public-export-readiness-unverified,4 QA,3 internal,
+2 installed-library-only,1 compatibility. จำนวนสองชุดนี้เป็นคนละแกน ห้ามนำมาบวกกัน.
+พบ test-source refs43จุดและตรวจ hash เท่านั้น ไม่ได้รันทดสอบผลิตภัณฑ์รอบนี้.
+
+เส้นทาง Preview ยืนยันจาก page/session/assets ผ่าน pinned runtime/Core layout
+ไป paint และ geometry/hit ด้วย alias refs. Build ยังยืนยันเพียง navigation ในเส้นทางนี้
+ไม่ใช่ authored Build readiness. DOCX/PDF แยกชัด; public export ไม่เท่ากับพร้อมผลิตจริง.
+Unified layout inputAuthority guard และ incremental acceptance production-binding guard
+อ้างขอบเขตของตน ไม่ขยายไปทุก helper. ไม่เสนอถอด API จากการค้น consumer ไม่พบ.
+
+Registry restored/closed: dispatch-core-inventory-2026-09-07,
+lane-core-capability-inventory, evidence-review, repo-core,
+Core WORK01a07584-49dc-7602-b662-6033c1469517/local terminal accepted, revision4.
+Automatic handoffs01/02/03/04/05 arrived in order1/2/3/4/5; acceptance01/02
+needs-revision for invalid/imprecise refs;03 needs-revision for alias contradiction
+and omitted test/QA evidence;04 needs-revision for DOCX/export wording/scoped guards;
+05 accepted after independent validation and source review. Return Channel succeeded,
+no manual recovery, completionQueue/handoffInbox drained, no active WORK.
+Luna medium ran01/02; Terra medium ran03/04/05 by the user's tiering preference.
+No GPT-6 WORK run. PLAN terminal acceptance ACK sent; no Work2 dispatch.
+External registry: original Core WORK visualization directory/core-inventory-plan-registry.json.
+
+Canonical Core d4bd081/Editor67c3647/Backend a1745c4 unchanged. Evidence root:
+`C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517`.
+Accepted artifact capability-inventory-v05.json; validator validate-inventory-v05.mjs
+and output .json/.log; v01-v04 preserved. Unknowns remain complete consumer map,
+Build/OS IME/user UX, complex-document latency and Thai syllable oracle.
+No product changes, tests/build/install, dependency upgrade, demos or maps changed.
+Editor held candidate3fc61e3 remains unmerged; next recommended work is Work2 examples.
+This acceptance section supersedes the active-dispatch history below.
+
 ## Active Work1 registry — 2026-09-07
 
 ตูมอนุญาตเริ่ม Work1 หลังเลือกใช้โมเดลเล็กตามประเภทงาน. Dispatch

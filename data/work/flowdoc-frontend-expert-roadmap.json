@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Work1 Core capability inventory เริ่มด้วย Luna medium แบบ read-only; หนึ่ง WORK เท่านั้น. PLAN ตรวจรับก่อน policy examples. Preview UX รอ Core policy และ caret candidate3fc61e3ยัง held/unmerged.",
+  "summary": "Work1 Core inventory ผ่านขอบเขตสำรวจ45รายการ/159refs หลังตรวจแก้หลักฐานด้วย Luna แล้ว Terra. ถัดไปตัวอย่างกฎข้อความใน Work2; ยังไม่ dispatch. Preview UX/Build/IME/performance ไม่ผ่านโดยอัตโนมัติและ caret candidate3fc61e3ยัง held.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -58,5 +58,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-07T07:39:49.8453397Z"
+  "updatedAt": "2026-09-07T08:10:26.2212642Z"
 }

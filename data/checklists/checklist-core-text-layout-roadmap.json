@@ -7,9 +7,11 @@
     {
       "id": "capability-inventory",
       "label": "สำรวจความสามารถและผู้ใช้ API",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-capability-inventory",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-capability-inventory"
+      ]
     },
     {
       "id": "text-policy-decision",
@@ -48,5 +50,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T07:16:11.8621317Z"
+  "updatedAt": "2026-09-07T08:10:26.2212642Z"
 }

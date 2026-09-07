@@ -17,7 +17,7 @@
     "Text placement policy must be decided from examples before implementation"
   ],
   "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-  "summary": "เริ่ม Work1 inventory แบบ read-only ใน Core WORK เดิมด้วย gpt-5.6-luna/medium; ยังไม่เริ่ม policy/implementation. PLAN รอหลักฐานและตรวจรับก่อน Work2.",
+  "summary": "Work1 inventory accepted:45รายการ11กลุ่ม อ้างอิง159จุดตรวจซ้ำผ่าน;13รายการมี external calls. ข้อจำกัดและ QA แยกชัด ยังไม่รับรอง Core ทั้งหมด. ถัดไป Work2 ตัวอย่างเพื่อเลือกกฎข้อความ ยังไม่ dispatch.",
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T07:39:49.8453397Z"
+  "updatedAt": "2026-09-07T08:10:26.2212642Z"
 }
