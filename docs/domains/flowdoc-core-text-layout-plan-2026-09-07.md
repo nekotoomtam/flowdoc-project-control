@@ -1,5 +1,33 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Work3 accepted on Core main — 2026-09-07
+
+PLAN accepted automatic handoff-core-text-policy-implementation-02 at Core607bb20,
+including fb72157. Checklist core-text-policy passed via evidence-core-text-policy-implementation.
+Work path/phase unchanged. Owner repo-core; product-implementation; PLAN review/reporting.
+The minimum change removes post-fit ordinary-word rollback; B fills measured shaping
+clusters while preserving actual line-end shaping, inline/source boundaries and guards.
+
+Registry dispatch-core-policy-implementation-2026-09-07 / lane-core-text-policy-implementation,
+Core WORK01a07584-49dc-7602-b662-6033c1469517/local terminal accepted, revision1.
+Return01 needs-revision for lost empty-field wrap fixture and missing value-history evidence;
+return02 accepted after source review. Arrival order1/2, mandatory active push successful,
+handoffInbox/completionQueue drained. Requested Terra medium; runtime model unverified.
+WORK focused46 tests/full2835 reported; PLAN independently ran full Core main check exit0.
+Merged branch removed after main gate; worktree directory cleanup failed with Filename too long. Residual directory is retained as cleanup RISK; no further delete attempted. No user demos touched.
+
+Tests retain same-line and split-line empty-field affinities, threshold cases and pinned
+mixed Thai-mark/Latin final-layout comparison across value construction histories.
+These histories do not prove Editor paste, persistence, physical held-key or OS IME.
+Evidence log: C:/Users/nekot/AppData/Local/Temp/core-policy-main-gate.log.
+Maps unchanged. No dependency/assets/ABI/schema/Editor/Backend changes.
+
+Next: Work4A Editor Preview integration after user continuation, then Build separately.
+Carry external08 scheduling lessons into product review; do not assume the existing
+Editor needs the exact prototype patch. Held candidate3fc61e3 stays unmerged.
+No Work4 dispatch in this acceptance. This supersedes historical Work3 pending statements.
+
+
 ## Work2 decision accepted; Work3 ready plan — 2026-09-07
 
 Work path: flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap.
@@ -375,4 +403,6 @@ PC verification: generate, check:data, type-check, original full check ใน wo
 และ main; ไม่มี product tests รอบวางแผน ไม่มี map promotion.
 Next: เมื่อเริ่ม execution ให้เปิด Work1 เพียงงานเดียว แล้วรายงาน inventory พร้อม
 ข้อเสนอเส้นทางหลักก่อน Work2. ไม่เปิดทั้งหกงานล่วงหน้า.
+
+
 

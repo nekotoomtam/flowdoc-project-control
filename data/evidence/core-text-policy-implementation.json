@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-text-policy-implementation",
+  "repositoryId": "repo-core",
+  "commit": "607bb2062456e7c7f28f13c6eba5ebcd68e27559",
+  "pathOrContractId": "src/creatorPreview/layoutFactsV1.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-07T13:52:27.0194634Z",
+  "verificationSummary": "PLAN accepted mandatory automatic handoff-core-text-policy-implementation-02 after01 needed restored empty-field wrap coverage and value-history evidence. Candidate fb72157 plus607bb20 merged fast-forward from d4bd081. Product delta removes ordinary-word rollback after measured cluster fit; actual line-end reshaping, source/inline boundaries, segmentation validation and guards retained. Four files total including three focused tests. WORK reports RED before policy change, focused46 tests and full2835 tests435 files. PLAN inspected both diffs and independently ran npm run check on Core main: exit0, typecheck and full suite passed; log C:/Users/nekot/AppData/Local/Temp/core-policy-main-gate.log. Empty field tested both same-line and split-line affinities; pinned mixed Thai/Latin final-layout equality across bounded value construction histories is not browser paste/persistence/IME integration proof. Core cleanup attempted after main gate: merged branch removed, but worktree directory removal reported Filename too long; residual path retained as cleanup RISK, no further deletion attempted. No Editor/Backend/dependencies/fonts/WASM/ABI/schema/map changes. B ordinary words may split; shaping-cluster policy does not establish syllable/full-grapheme support, product held-key latency or Build readiness. External08 display scheduler remains for later Editor Work4 evaluation."
+}
