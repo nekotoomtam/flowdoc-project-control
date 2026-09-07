@@ -17,7 +17,7 @@
     "Text placement policy must be decided from examples before implementation"
   ],
   "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-  "summary": "Work1 inventory accepted:45รายการ11กลุ่ม อ้างอิง159จุดตรวจซ้ำผ่าน;13รายการมี external calls. ข้อจำกัดและ QA แยกชัด ยังไม่รับรอง Core ทั้งหมด. ถัดไป Work2 ตัวอย่างเพื่อเลือกกฎข้อความ ยังไม่ dispatch.",
+  "summary": "Work1 accepted. Work2 ตัวอย่างกฎข้อความเริ่มใน Core WORK เดิมด้วย Terra medium; เปรียบเทียบกับ pinned baseline แบบ external simulation. Checklist decision ยัง pending จนตูมเลือกหลังดูตัวอย่าง; ไม่มี product edits/Work3.",
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T08:10:26.2212642Z"
+  "updatedAt": "2026-09-07T08:21:55.3039698Z"
 }

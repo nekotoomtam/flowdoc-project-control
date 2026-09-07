@@ -1,5 +1,52 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Work2 examples dispatched — 2026-09-07
+
+User authorizes Work2; no cleanup prerequisite. PCmain6c92eaf clean and Work1
+accepted; original Core WORK01a07584-49dc-7602-b662-6033c1469517/local idle before resume.
+Dispatch dispatch-core-text-policy-2026-09-07; lane-core-text-policy-examples;
+Work Type evidence-review; owner repo-core; role evidence-reviewer.
+Model gpt-5.6-terra / medium. Work/phase unchanged; checklist text-policy-decision
+pending, evidence target evidence-core-text-policy-decision. No chosen policy,
+product edit or Work3 authorization; user choice follows reviewed visual examples.
+
+Real WORK same Core locator, parallelLimit1. Handoff-core-text-policy-examples-01,
+revision0, arrivalSequence starts1, handoffInbox/completionQueue empty, acceptance pending.
+Automatic Context ACK received; WORK confirms baseline parity and external examples only.
+Liveness active; progress10minutes, renewable deadline20minutes.
+Mandatory active push mcp__codex_app__send_message_to_thread to PLAN
+01a0707e-00e9-74e1-be1b-a272a1b89d2a/local before terminal final.
+Return PASS/FAIL/BLOCKER/RISK/UNKNOWN; duplicate idempotence; arrival order; one gate at a time.
+Editor WORK stays terminal held/RISK; candidate3fc61e3/eflick untouched/unmerged.
+
+Reference Pack: accepted Work1 v05, prior boundary-review/probe-results and
+Core creatorPreview layoutFactsV1/engineV1/textEditGeometryV1 plus pinned adapter.
+Budget small context, focused verification, mandatory review, batched evidence,
+compact handoff, reference-pack reads. No full suites/install/build/dependency/assets
+changes, no product worktree needed for read-only source and external simulation artifacts.
+No user61783/57840 actions, no PDF, no retirement or general production admission.
+
+Deliver actual pinned measurements and illustrative policy comparisons outside repos:
+baseline current policy; candidate preserving preceding legal break even when following
+span becomes oversized (emergency split on next line); candidate filling available space
+at shaping-cluster boundary without ordinary-word preference. Candidates are alternatives
+for discussion, not approved changes or claims of typographic quality. Implement only
+external probe/simulation, validate baseline parity with current Core before comparisons.
+Use actual line-end shaping, inline/source boundaries and pinned glyph outlines for paper
+visuals; do not use browser reshaping as fidelity evidence. No invented syllabifier.
+
+Compare Thai ordinary/marks/repeats, Latin words/long repeats and mixed text near the
+threshold. Show successive input revisions, line membership, widths/blank remainder and
+backward movement; test append/delete/middle insertion/paste/reopen equivalence.
+Label valid content reflow and segmentation revisions separately from policy migration.
+No history-sticky placement silently introduced. Same source/style/width/assets must
+converge across input histories. Report current cluster-only edit/caret/deletion limits
+and whether policy changes require different geometry; do not imply full grapheme/IME support.
+Deliver concise Thai comparison with a local viewable artifact and reproducible JSON/probe;
+include remaining tradeoffs and the exact decision needed from ตูม. Experimental results
+are not an edit to live Preview, not a policy decision, and cannot close Work2 by themselves.
+This section supersedes the no-Work2-dispatch history below.
+
 ## Work1 accepted — bounded inventory, 2026-09-07
 
 PLAN รับ automatic handoff-core-capability-inventory-05 หลังตรวจ v05 ซ้ำ:
