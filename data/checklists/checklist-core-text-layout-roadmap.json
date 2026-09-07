@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-text-layout-roadmap",
+  "phaseId": "phase-core-text-layout-roadmap",
+  "title": "เกณฑ์แผน Core Text/Layout",
+  "items": [
+    {
+      "id": "capability-inventory",
+      "label": "สำรวจความสามารถและผู้ใช้ API",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-capability-inventory",
+      "evidenceIds": []
+    },
+    {
+      "id": "text-policy-decision",
+      "label": "เลือกกฎจากตัวอย่างระหว่างพิมพ์",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-text-policy-decision",
+      "evidenceIds": []
+    },
+    {
+      "id": "core-text-policy",
+      "label": "แก้ Core ตามกฎที่เลือก",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-text-policy-implementation",
+      "evidenceIds": []
+    },
+    {
+      "id": "paper-integration",
+      "label": "ตรวจ Preview แล้ว Build แยกกัน",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-paper-integration",
+      "evidenceIds": []
+    },
+    {
+      "id": "incremental-admission",
+      "label": "ประเมิน incremental ก่อนเปิดใช้งาน",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-incremental-admission",
+      "evidenceIds": []
+    },
+    {
+      "id": "complex-flow",
+      "label": "ตรวจรูป layout และ30nodesข้ามหน้า",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-complex-flow",
+      "evidenceIds": []
+    }
+  ],
+  "createdAt": "2026-09-07T07:16:11.8621317Z",
+  "updatedAt": "2026-09-07T07:16:11.8621317Z"
+}

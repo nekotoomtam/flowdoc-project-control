@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Core46ccc1a ทดลองข้อมูลเคอร์เซอร์/คลิก/เลือกข้อความตามขอบกลุ่มอักษรผ่าน worktree/main2821tests. ถัดไป Editor พิมพ์บนกระดาษกับฟอร์มซ้ายในขอบเขตเล็ก; UX Build/Preview เดิมยังไม่ผ่าน และยังไม่พิสูจน์ Thai IME/ความลื่น/รูปกับ30nodesข้ามหน้า.",
+  "summary": "ทดลองพิมพ์บนกระดาษมีฐานแล้ว แต่ held-key wrap/Thai UX ยังไม่ผ่าน; Core boundary review ยืนยันขอบเขตปัจจุบัน. วางแผน Core Text/Layout6ช่วงก่อนเริ่มงานต่อ โดยเริ่ม inventory และ policy decision; ยังไม่ dispatch และ Editor caret candidate3fc61e3ยัง held/unmerged.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -48,7 +48,8 @@
     "doc-editor-build-dispatch-2026-09-06",
     "doc-editor-preview-dispatch-2026-09-06",
     "doc-core-outlines-dispatch-2026-09-06",
-    "doc-core-text-edit-geometry-dispatch-2026-09-06"
+    "doc-core-text-edit-geometry-dispatch-2026-09-06",
+    "doc-core-text-layout-plan-2026-09-07"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -57,5 +58,5 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-06T12:31:02.2931821Z"
+  "updatedAt": "2026-09-07T07:16:11.8621317Z"
 }
