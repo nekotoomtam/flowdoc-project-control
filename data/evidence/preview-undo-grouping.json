@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-preview-undo-grouping",
+  "repositoryId": "repo-editor",
+  "commit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
+  "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-08T14:43:28.0496926Z",
+  "verificationSummary": "Bounded Preview typing-run Undo/Redo accepted by user on trial60048. Handoffs01-08 reviewed by PLAN; physical-key history shortcuts and direct mounted beforeinput history routing included. WORK fresh check passed119files476tests/typecheck/build; mounted two-run1416.2ms gap retained first entry on one undo, redo restored second; immediate/pending simulation undo and stale completion tested. PLAN merged Editor main npm run check passed exit0: typecheck,119files476tests,production build; log plan-main-check.log. Source and evidence root: C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/keyboard-step2 (handoff-preview-undo-grouping-08.json, revision08-mounted-history-evidence.json, plan-main-check.log). 1000ms idle is current adjustable policy, not universal UX proof. Leading/zero-advance Thai marks explicitly deferred for policy discussion; Core rejects leading mark boundary. Enter, full WYSIWYG, Build, multifield, OS-wide IME readiness and maps not promoted. e4b retained temporarily to preserve user trial60048; cleanup pending trial relocation/retirement."
+}

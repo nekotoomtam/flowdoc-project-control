@@ -67,8 +67,17 @@
       "state": "pending",
       "evidenceTarget": "evidence-preview-keyboard-contract",
       "evidenceIds": []
+    },
+    {
+      "id": "preview-undo-grouping",
+      "label": "Preview Undo/Redo แยกตามช่วงพิมพ์",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-undo-grouping",
+      "evidenceIds": [
+        "evidence-preview-undo-grouping"
+      ]
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-07T20:09:43.9262916Z"
+  "updatedAt": "2026-09-08T14:43:28.0496926Z"
 }

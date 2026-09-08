@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "e60dac4428826c63e900651cf35651050d12a20c56da824e1828f7645fb0c655",
+  "sourceDigest": "edad4871c5f9fe21ac69b5d0f85a40c1610a09190c7be9a2646b7602aae7e601",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -3735,9 +3735,9 @@
         "Text placement policy must be decided from examples before implementation"
       ],
       "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-      "summary": "Work1 accepted. Work2 ตัวอย่างกฎข้อความเริ่มใน Core WORK เดิมด้วย Terra medium; เปรียบเทียบกับ pinned baseline แบบ external simulation. Checklist decision ยัง pending จนตูมเลือกหลังดูตัวอย่าง; ไม่มี product edits/Work3.",
+      "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow.",
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-07T08:21:55.3039698Z"
+      "updatedAt": "2026-09-08T14:43:28.0496926Z"
     },
     {
       "kind": "phase",
@@ -8471,10 +8471,19 @@
           "state": "pending",
           "evidenceTarget": "evidence-preview-keyboard-contract",
           "evidenceIds": []
+        },
+        {
+          "id": "preview-undo-grouping",
+          "label": "Preview Undo/Redo แยกตามช่วงพิมพ์",
+          "state": "passed",
+          "evidenceTarget": "evidence-preview-undo-grouping",
+          "evidenceIds": [
+            "evidence-preview-undo-grouping"
+          ]
         }
       ],
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-07T20:09:43.9262916Z"
+      "updatedAt": "2026-09-08T14:43:28.0496926Z"
     },
     {
       "kind": "checklist",
@@ -21153,6 +21162,16 @@
       "commit": "0cb3970a4f3a083a0b214c5a72fab953319aafdc",
       "id": "evidence-preview-integration-assessment-2026-09-05",
       "verifiedAt": "2026-09-05T16:27:17.3110615Z"
+    },
+    {
+      "kind": "evidence",
+      "id": "evidence-preview-undo-grouping",
+      "repositoryId": "repo-editor",
+      "commit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
+      "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
+      "nodeIds": [],
+      "verifiedAt": "2026-09-08T14:43:28.0496926Z",
+      "verificationSummary": "Bounded Preview typing-run Undo/Redo accepted by user on trial60048. Handoffs01-08 reviewed by PLAN; physical-key history shortcuts and direct mounted beforeinput history routing included. WORK fresh check passed119files476tests/typecheck/build; mounted two-run1416.2ms gap retained first entry on one undo, redo restored second; immediate/pending simulation undo and stale completion tested. PLAN merged Editor main npm run check passed exit0: typecheck,119files476tests,production build; log plan-main-check.log. Source and evidence root: C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/keyboard-step2 (handoff-preview-undo-grouping-08.json, revision08-mounted-history-evidence.json, plan-main-check.log). 1000ms idle is current adjustable policy, not universal UX proof. Leading/zero-advance Thai marks explicitly deferred for policy discussion; Core rejects leading mark boundary. Enter, full WYSIWYG, Build, multifield, OS-wide IME readiness and maps not promoted. e4b retained temporarily to preserve user trial60048; cleanup pending trial relocation/retirement."
     },
     {
       "kind": "evidence",
