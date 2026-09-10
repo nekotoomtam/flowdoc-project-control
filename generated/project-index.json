@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "763104e32a60cc3bb602a4c496bd89df0735c2070aa665817ffc503e26580d41",
+  "sourceDigest": "29cd05f459a6ce384be8f2d1ea6e7c8fb90b72668f51ed6a90a081d754e0edfa",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2934,7 +2934,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded.",
+      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 1,
+        "revision": 4,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3025,7 +3025,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-typing-baseline-enter-g1-a1",
-            "status": "active",
+            "status": "superseded",
             "locator": {
               "branch": "codex/editor-stage-a-multiline-measurement-20260909",
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -3072,6 +3072,77 @@
               "escalationTriggers": [
                 "Two evidence attribution corrections fail for the same reasoning limitation",
                 "Required product or Core contract mutation"
+              ]
+            },
+            "ux": {
+              "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
+              "applicability": "not-applicable",
+              "visibleChange": false
+            },
+            "requiredEvidence": [
+              "evidence-preview-keyboard-contract"
+            ]
+          },
+          {
+            "roomRunId": "typing-baseline-enter-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "editor-key-to-visible-baseline",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-preview-keyboard-contract",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 2,
+            "expectedHandoffId": "handoff-typing-baseline-enter-g1-a2",
+            "status": "active",
+            "locator": {
+              "branch": "codex/editor-stage-a-multiline-measurement-20260909",
+              "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-10T14:43:39.6296741Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-10T15:02:03.3259467Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "medium",
+              "taskComplexity": "Bounded instrumentation and baseline attribution",
+              "scopeSize": "Existing Editor measurement lane, isolated fixtures only",
+              "uncertainty": "Enter and key-to-matching-render attribution",
+              "missingContext": "Actual paper-edit button focus/blur event sequence; artifacts typing-baseline-g1-a1 preserve failed harness",
+              "failureImpact": "Misleading measurements, no production mutation",
+              "recoverability": "Discard invalid samples and correct once",
+              "reason": "Escalation reviewed: two rejected setup calibrations, no accepted samples. Historical paper onFocus already sets editing true, so missing DOM caret is an unresolved focus/event setup issue, not demonstrated model reasoning limitation. Retain Sol medium for one bounded actual-button setup calibration; preserve exact glyph/caret attribution.",
+              "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "One revised actual-button calibration fails: return BLOCKER with event sequence, no further trial",
+                "Product behavior or Core contract mutation required"
               ]
             },
             "ux": {
