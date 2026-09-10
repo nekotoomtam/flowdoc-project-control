@@ -34,7 +34,9 @@
     "doc-flowdoc-plan-room-orchestration-rules",
     "doc-flowdoc-work-type-routing-model",
     "doc-flowdoc-lean-dispatch-operating-rules",
-    "doc-flowdoc-project-control-skill-installation-2026-09-01"
+    "doc-flowdoc-project-control-skill-installation-2026-09-01",
+    "doc-flowdoc-coordination-hardening-plan-2026-09-10",
+    "doc-flowdoc-coordination-controls"
   ],
   "evidenceIds": [
     "evidence-project-control-design",

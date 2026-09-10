@@ -51,6 +51,13 @@ Project Control owns cross-repository hierarchy, shared definitions, work coordi
 
 ## Commands
 
+For PLAN/WORK coordination, start with
+[Coordination controls](docs/domains/flowdoc-coordination-controls.md).
+The registry is canonical coordination data; it does not prove product behavior.
+New WORK packets name their PLAN owner, return route, model/effort decision and
+UX evidence requirements. The CLI usage and verified scope are recorded with
+the [six-control implementation](docs/domains/flowdoc-coordination-hardening-plan-2026-09-10.md).
+
 - `npm run generate` validates canonical sources and publishes the deterministic local read model.
 - `npm run check:data` validates sources and verifies that the committed read model is current.
 - `npm run dev` starts the local GUI on the loopback interface.

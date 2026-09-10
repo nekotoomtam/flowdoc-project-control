@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-coordination-six-2026-09-10",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "0e28f4b906b263398a54a895cc1bcdd561e3a171",
+  "pathOrContractId": "src/model/coordination.ts; tools/coordination-registry.ts; tests/flowdoc-coordination-registry.test.ts; tests/flowdoc-coordination-cli.test.ts; docs/domains/flowdoc-coordination-smoke-2026-09-10.md",
+  "verificationSummary": "Exact code commit 0e28f4b906b263398a54a895cc1bcdd561e3a171 implements typed coordination, semantic stored-state validation, local atomic CLI, ownership, return/receipt/acceptance, measured UX gate, cleanup authority, model rationale and released history. WORK focused 46 tests and records 205 tests passed; PLAN full worktree npm run check passed with records, source-docs, app, build and Chromium e2e. Live probe source task 01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00 actively returned duplicate r0 and same-task r1; PLAN receipt/acknowledgement and normalized import are distinguished in the smoke record. Code WORK actively returned exact commit from 01a08a42-290d-7090-a192-7c11bae62db0. Simulated negative lifecycle/UX/ownership/retry/cleanup cases are tests, not live product trials. Main integration gate and final cleanup remain pending. No product behavior, typing fix, product UX readiness, distributed mutex, unattended wakeup, model equivalence or map truth is promoted.",
+  "verifiedAt": "2026-09-10T08:50:26.738Z"
+}

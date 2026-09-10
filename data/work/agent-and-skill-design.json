@@ -5,7 +5,9 @@
   "nodeId": "project-control",
   "parentWorkId": "flowdoc-product-development-resumption",
   "workKind": "task",
-  "repositoryIds": ["repo-project-control"],
+  "repositoryIds": [
+    "repo-project-control"
+  ],
   "workState": "in-progress",
   "summary": "Define FlowDoc agent roles, capabilities, handoffs, real PLAN and WORK room delivery flow, N WORK rooms orchestration, Work Type routing, Context Capsules, Context Acknowledgement, mandatory WORK room return, automatic WORK-to-PLAN return, active WORK-to-PLAN return push, PLAN-owned reporting, Revision Packets, the PLAN product-repository repair boundary, PLAN/WORK continuation guardrails, Lean Dispatch resource-budget rules, final Lean Dispatch multi-WORK smoke behavior, the Project Control grouped test gate, the source-docs subgroup gate, and reusable skills after the documentation authority cleanup evidence by turning root-cause analysis into operating rules, role overlays, handoff requirements, delivery round boundaries, PLAN room dispatch/review rules, completionQueue ordering, same-room revision handling, manual recovery boundaries, product-repository repair return-to-WORK boundaries, drafted-lane continuation safeguards, lean token/review cost controls, Project Control records/source-docs/app gate stability, focused source-docs gate routing, and reusable skill boundaries.",
   "contextDocumentIds": [
@@ -24,7 +26,10 @@
     "doc-agent-skill-operating-model",
     "doc-flowdoc-project-control-skill-installation-2026-09-01",
     "doc-flowdoc-round-workflow",
-    "doc-work-tree-operating-rules"
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-coordination-hardening-plan-2026-09-10",
+    "doc-flowdoc-coordination-controls",
+    "doc-flowdoc-coordination-smoke-2026-09-10"
   ],
   "activeRole": "project-control-steward",
   "expectedOutput": "Project Control records FlowDoc agent documentation authority operating rules, the Delivery Operating Model for real PLAN/WORK room coordination, PLAN Room Orchestration Rules for dispatching and reviewing N WORK rooms, the Work Type Routing Model for lane classification, Context Capsule handoff, Context Acknowledgement, mandatory WORK room return, automatic WORK-to-PLAN return, active WORK-to-PLAN return push, PLAN task/chat ID, Active Return Command, liveness tracking, silent room handling, retrievable locator, PLAN-owned reporting, acceptanceGate revision decisions, Revision Packet loop, the rule that product-repository repair goes back to the same WORK room as a Revision Packet instead of PLAN patching product repositories after dispatch, completionQueue, returnOrderPolicy, arrivalSequence, duplicate handoff handling, manual recovery fallback boundaries, a Room Run Registry continuation note for returning to drafted frontend lanes, Lean Dispatch resource controls including contextBudget, verificationTier, reviewTier, evidenceMode, handoffDetail, docReadPolicy, Reference Packs, compact Terminal Handoffs, escalation triggers, Project Control check:grouped and test:unit grouped gate scripts, focused source-docs subgroup scripts including test:source-docs:core-migration, test:source-docs:live-draft, test:source-docs:template-builder, test:source-docs:text-block, and test:source-docs:text-engine, and skill candidate routing, and the first local flowdoc-project-control Codex skill package so future FlowDoc rooms route through Project Control before generic planning paths, while keeping broader specialized skill packaging for later phases.",
@@ -50,6 +55,441 @@
     "evidence-flowdoc-plan-product-repair-boundary-2026-09-03",
     "evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"
   ],
-  "createdAt": "2026-08-24T00:00:00.000Z",
-  "updatedAt": "2026-09-03T18:35:00.000+07:00"
+  "createdAt": "2026-08-24T00:00:00Z",
+  "updatedAt": "2026-09-10T07:38:48.083Z",
+  "coordination": {
+    "version": 1,
+    "revision": 14,
+    "scopeOwnership": {
+      "scopeId": "coordination-six",
+      "scopeKeys": [
+        "repo-project-control:coordination-six"
+      ],
+      "allowedFiles": [
+        "AGENTS.md",
+        "README.md",
+        "OPERATIONS.md",
+        "data/",
+        "docs/",
+        "schemas/",
+        "src/model/",
+        "tools/",
+        "tests/",
+        "package.json",
+        "generated/project-index.json"
+      ],
+      "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+      "generation": 1,
+      "state": "active",
+      "transfers": []
+    },
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "generation": 1,
+        "baseCommit": "91319cb8a5494a0bdc408d66f0be9a739422661c",
+        "state": "active"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "coordination-registry-01",
+        "dispatchSetId": "coordination-six-code-20260910",
+        "laneId": "coordination-registry",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-project-control",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-agent-and-skill-design-coordination-six",
+        "checklistId": "checklist-agent-and-skill-design-coordination-six",
+        "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 0,
+        "expectedHandoffId": "coordination-registry-01-r0",
+        "status": "accepted",
+        "locator": {
+          "threadId": "01a08a42-290d-7090-a192-7c11bae62db0",
+          "worktree": ".worktrees/coordination-six",
+          "branch": "codex/coordination-six"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-10T07:47:29Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "automaticChannel": "Codex task active return",
+          "activeCommand": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "livenessDeadline": "2026-09-10T08:50:00Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-sol",
+          "reasoningEffort": "high",
+          "taskComplexity": "Typed state transitions and local persistence across one repository",
+          "scopeSize": "schemas, model, tools and behavioral tests only",
+          "uncertainty": "Known acceptance invariants; existing schema/projection integration needs inspection",
+          "missingContext": "none after Context Acknowledgement",
+          "failureImpact": "Incorrect acceptance or overwritten local coordination state",
+          "recoverability": "Isolated worktree and test fixtures; no product repository changes",
+          "reason": "Bounded one-repo implementation with explicit invariants warrants Sol and high reasoning for transition correctness",
+          "smallerOptionAssessment": "Luna reserved for literal no-edit probe; multi-file state validation needs stronger initial reasoning hypothesis",
+          "availabilitySource": "create_thread host schema observed by PLAN on 2026-09-10",
+          "availabilityObservedAt": "2026-09-10T07:39:00Z",
+          "escalationTriggers": [
+            "Two bounded revisions fail for same reasoning limitation after packet and environment checks"
+          ],
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            }
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Internal Project Control coordination tooling; no visible product behavior changed"
+        },
+        "requiredEvidence": [
+          "evidence-flowdoc-coordination-six-2026-09-10"
+        ]
+      },
+      {
+        "roomRunId": "coordination-return-probe-01",
+        "dispatchSetId": "coordination-six-probe-20260910",
+        "laneId": "coordination-return-probe",
+        "workType": "evidence-review",
+        "ownerRepositoryId": "repo-project-control",
+        "activeRole": "evidence-reviewer",
+        "phaseId": "phase-agent-and-skill-design-coordination-six",
+        "checklistId": "checklist-agent-and-skill-design-coordination-six",
+        "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 0,
+        "expectedHandoffId": "coordination-return-probe-01-r0",
+        "status": "superseded",
+        "locator": {
+          "threadId": "01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-10T07:51:28.018Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "automaticChannel": "Codex task active return",
+          "activeCommand": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "livenessDeadline": "2026-09-10T07:55:48.008Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-luna",
+          "reasoningEffort": "low",
+          "taskComplexity": "Literal read-only transport protocol",
+          "scopeSize": "One no-edit return probe",
+          "uncertainty": "Can the real task push an identical payload and receive a revision?",
+          "missingContext": "none after Context Acknowledgement",
+          "failureImpact": "Probe failure only; no file writes",
+          "recoverability": "Keep source task and handoff; repeat bounded probe if needed",
+          "reason": "Fixed literal payload and explicit no-edit protocol require little synthesis",
+          "smallerOptionAssessment": "Luna is an available small starting option; no larger model is needed for this probe",
+          "availabilitySource": "create_thread host schema observed by PLAN on 2026-09-10",
+          "availabilityObservedAt": "2026-09-10T07:50:48.008Z",
+          "escalationTriggers": [
+            "Protocol still cannot be followed after explicit clarification"
+          ],
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            }
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "No-edit agent return transport probe"
+        },
+        "requiredEvidence": [
+          "evidence-flowdoc-coordination-six-2026-09-10"
+        ]
+      },
+      {
+        "roomRunId": "coordination-return-probe-01",
+        "dispatchSetId": "coordination-six-probe-20260910",
+        "laneId": "coordination-return-probe",
+        "workType": "evidence-review",
+        "ownerRepositoryId": "repo-project-control",
+        "activeRole": "evidence-reviewer",
+        "phaseId": "phase-agent-and-skill-design-coordination-six",
+        "checklistId": "checklist-agent-and-skill-design-coordination-six",
+        "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "coordination-return-probe-01-r1",
+        "status": "accepted",
+        "locator": {
+          "threadId": "01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-10T07:52:05.749Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "automaticChannel": "Codex task active return",
+          "activeCommand": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "livenessDeadline": "2026-09-10T07:56:45.987Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-luna",
+          "reasoningEffort": "low",
+          "taskComplexity": "Literal read-only transport protocol",
+          "scopeSize": "One no-edit return probe",
+          "uncertainty": "Can the real task push an identical payload and receive a revision?",
+          "missingContext": "none after Context Acknowledgement",
+          "failureImpact": "Probe failure only; no file writes",
+          "recoverability": "Keep source task and handoff; repeat bounded probe if needed",
+          "reason": "Fixed literal payload and explicit no-edit protocol require little synthesis",
+          "smallerOptionAssessment": "Luna is an available small starting option; no larger model is needed for this probe",
+          "availabilitySource": "create_thread host schema observed by PLAN on 2026-09-10",
+          "availabilityObservedAt": "2026-09-10T07:50:48.008Z",
+          "escalationTriggers": [
+            "Protocol still cannot be followed after explicit clarification"
+          ],
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            }
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "No-edit agent return transport probe"
+        },
+        "requiredEvidence": [
+          "evidence-flowdoc-coordination-six-2026-09-10"
+        ]
+      }
+    ],
+    "handoffs": [
+      {
+        "handoffId": "coordination-return-probe-01-r0",
+        "payloadDigest": "b6624d40b4fc636f8eac0debc8dcd1e03314b9065073dad8015488391ad3be9b",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "coordination-return-probe-01",
+          "laneId": "coordination-return-probe",
+          "ownerRepositoryId": "repo-project-control",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "Read-only packet understood and active return invoked",
+          "changedFiles": [],
+          "tests": [],
+          "evidenceIds": [],
+          "risks": [],
+          "unknowns": [
+            "No product behavior, model equivalence, distributed locking or future wakeup proven"
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "lastAttemptAt": "2026-09-10T07:51:28.018Z",
+          "attemptHistory": [
+            {
+              "outcome": "sent",
+              "attemptedAt": "2026-09-10T07:51:28.018Z"
+            }
+          ]
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-10T07:51:28.018Z",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-10T08:19:27.73Z",
+          "senderThreadId": "01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00",
+          "channel": "Codex task active return"
+        },
+        "acceptance": {
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-10T08:19:27.731Z",
+          "reviewNote": "Deliberate same-room protocol revision, not model quality failure",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "same-room revision return"
+          ]
+        }
+      },
+      {
+        "handoffId": "coordination-return-probe-01-r1",
+        "payloadDigest": "e01f71f304f1192e4ed112f758392849ca0a2b9a1ab39843b645613b9c795840",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "coordination-return-probe-01",
+          "laneId": "coordination-return-probe",
+          "ownerRepositoryId": "repo-project-control",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "Received explicit PLAN receipt for r0 and continued in the same task",
+          "changedFiles": [],
+          "tests": [],
+          "evidenceIds": [],
+          "risks": [],
+          "unknowns": [
+            "No product behavior, model equivalence, distributed locking or future wakeup proven"
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "lastAttemptAt": "2026-09-10T07:52:05.749Z",
+          "attemptHistory": [
+            {
+              "outcome": "sent",
+              "attemptedAt": "2026-09-10T07:52:05.749Z"
+            }
+          ]
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-10T07:52:05.749Z",
+          "arrivalSequence": 2,
+          "acknowledgedAt": "2026-09-10T08:19:27.732Z",
+          "senderThreadId": "01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00",
+          "channel": "Codex task active return"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-10T08:50:28.952Z",
+          "evidenceIds": [
+            "evidence-flowdoc-coordination-six-2026-09-10"
+          ],
+          "requiredChecks": [
+            {
+              "name": "Real active return, duplicate receipt and same-task revision observation",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": []
+        }
+      },
+      {
+        "handoffId": "coordination-registry-01-r0",
+        "payloadDigest": "7244a2c1cc94c4c8b24cc0fd258641bf913ec976945a7d348b6069da3a6f6648",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "coordination-registry-01",
+          "laneId": "coordination-registry",
+          "ownerRepositoryId": "repo-project-control",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "Typed durable coordination registry, local atomic CLI, semantic gates and lifecycle/UX/model/cleanup validation",
+          "exactCommit": "0e28f4b906b263398a54a895cc1bcdd561e3a171",
+          "changedFiles": [
+            "package.json",
+            "schemas/project-control.schema.json",
+            "src/model/coordination.ts",
+            "src/model/types.ts",
+            "tests/fixtures/coordination-registry.ts",
+            "tests/flowdoc-coordination-cli.test.ts",
+            "tests/flowdoc-coordination-projection.test.ts",
+            "tests/flowdoc-coordination-registry.test.ts",
+            "tests/flowdoc-coordination-schema.test.ts",
+            "tools/coordination-registry.ts",
+            "tools/lib/build-sqlite-projection.ts",
+            "tools/lib/load-sources.ts",
+            "tools/lib/validate-semantics.ts"
+          ],
+          "tests": [
+            "46 focused coordination tests PASS",
+            "75 records files / 205 tests PASS",
+            "type-check PASS",
+            "coordination validate PASS"
+          ],
+          "evidenceIds": [
+            "evidence-flowdoc-coordination-six-2026-09-10"
+          ],
+          "risks": [
+            "Cooperative local filesystem protection can be bypassed by manual edits or other clones/hosts"
+          ],
+          "unknowns": [
+            "No OS authentication, hosted service, distributed mutex, scheduler, product behavior or map truth proven"
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-10T08:47:30.877Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-10T08:47:30.877Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-10T08:47:30.877Z",
+          "senderThreadId": "01a08a42-290d-7090-a192-7c11bae62db0",
+          "channel": "Codex task active return",
+          "arrivalSequence": 3,
+          "acknowledgedAt": "2026-09-10T08:50:28.254Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-10T08:50:29.661Z",
+          "evidenceIds": [
+            "evidence-flowdoc-coordination-six-2026-09-10"
+          ],
+          "requiredChecks": [
+            {
+              "name": "Exact commit independent review and full worktree gate",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": []
+        }
+      }
+    ],
+    "completionQueue": [],
+    "cleanup": []
+  }
 }

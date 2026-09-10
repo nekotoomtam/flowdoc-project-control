@@ -237,3 +237,13 @@ cross-repository contract, PLAN requires a Contract Change Request instead.
 
 This keeps separate rooms cheaper without turning the context split into a
 truth split.
+
+## Coordination control gate
+
+Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, generation and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

@@ -1,0 +1,90 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-coordination-six",
+  "phaseId": "phase-agent-and-skill-design-coordination-six",
+  "title": "Six coordination controls",
+  "items": [
+    {
+      "id": "ownership",
+      "label": "ownership",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "returns",
+      "label": "returns",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "registry",
+      "label": "registry",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "ux-acceptance",
+      "label": "ux-acceptance",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "cleanup",
+      "label": "cleanup",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "model-selection",
+      "label": "model-selection",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "real-return-smoke",
+      "label": "real-return-smoke",
+      "state": "passed",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+    },
+    {
+      "id": "full-gate",
+      "label": "full-gate",
+      "state": "in-progress",
+      "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
+      "evidenceIds": [
+        "evidence-flowdoc-coordination-six-2026-09-10"
+      ],
+      "verificationNote": "Full worktree gate passed; main integration gate remains pending."
+    }
+  ],
+  "createdAt": "2026-09-10T07:38:48.083Z",
+  "updatedAt": "2026-09-10T08:50:30.421Z"
+}

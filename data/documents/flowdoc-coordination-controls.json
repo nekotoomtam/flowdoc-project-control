@@ -1,0 +1,13 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-coordination-controls",
+  "title": "FlowDoc coordination controls",
+  "path": "docs/domains/flowdoc-coordination-controls.md",
+  "nodeIds": [
+    "project-control"
+  ],
+  "role": "contract",
+  "authority": "Canonical six-control coordination contract only; no Core, Backend, Editor or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

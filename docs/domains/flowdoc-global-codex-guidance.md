@@ -291,3 +291,14 @@ If `C:\Users\nekot\.codex\AGENTS.override.md` exists, inspect it before broad
 FlowDoc work. It can take precedence over the base global file. If it does not
 include the FlowDoc entrypoint rule, report the risk before editing FlowDoc
 repositories.
+
+## Six coordination controls
+
+Before dispatch, transfer, acceptance, model selection or cleanup, read
+`docs/domains/flowdoc-coordination-controls.md` in Project Control. It governs
+exclusive PLAN and integration ownership, reliable handoff receipts, the typed
+registry, UX acceptance, cleanup authorization and per-WORK model selection.
+PLAN may retain GPT-6. WORK must record its model, effort, task-specific reason,
+availability and escalation trigger before starting; never silently inherit
+PLAN settings. Approved current-round cleanup covers only clean merged lanes
+after the main gate; historical or unresolved lanes require reconciliation.

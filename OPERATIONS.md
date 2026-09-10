@@ -22,6 +22,13 @@ Run `npm run generate` after canonical changes. It validates first and publishes
 
 ## Verification before commit
 
+For new PLAN/WORK runs, use the canonical coordination registry and
+[coordination controls](docs/domains/flowdoc-coordination-controls.md).
+Reload shared ownership before dispatch or integration. A validated local
+registry is not a distributed lock. Never infer receipt from a successful send,
+or UX acceptance from a passing mechanism test. Preserve unresolved lanes and
+record the actual WORK model and effort before dispatch.
+
 Run `npm run check` before committing. It performs the data check, TypeScript check, unit/component suite, production build, and Chromium browser workflow. The unit suite excludes `tests/e2e/**`; `npm run test:e2e` runs only the Playwright browser specs against a loopback development server.
 
 `dist/`, browser reports, local configuration, and generated diagnostics are transient local artifacts. No command in this repository changes Core, Editor, or Backend automatically.

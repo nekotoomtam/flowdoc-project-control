@@ -69,7 +69,7 @@ combined lane is safer.
 | Work Type | Use When | Typical Role | Expected Output | Acceptance Focus |
 | --- | --- | --- | --- | --- |
 | `planning-coordination` | A PLAN or Project Control lane records round shape, lane cards, dispatch sets, or sequencing. | `planning-partner` or `project-control-steward` | Plan record, lane card, Kickoff Packet, dispatch set, risk/unknown list. | No product behavior edits; planned outcomes stay out of maps. |
-| `product-implementation` | A WORK room edits Core, Backend, or Editor behavior inside one approved owner repository. | `product-implementation-agent` with boundary review as needed | Owner-repo commit, changed files, behavior summary, focused tests, PR Summary Draft. | Changed behavior requires exact commit from the owner repo and fresh owner-repo verification. |
+| `product-implementation` | A WORK room edits executable behavior inside one approved owner repository: Core, Backend, Editor, or Project Control-owned tooling. | `product-implementation-agent` with boundary review as needed | Owner-repo commit, changed files, behavior summary, focused tests, PR Summary Draft. | Changed behavior requires exact commit from the owner repo and fresh owner-repo verification. Project Control tooling does not authorize product-repository edits. |
 | `evidence-review` | A lane checks whether returned work supports a claim or integration slice. | `evidence-reviewer` | Evidence packet, supported claims, rejected claims, exact commands, map recommendation if supported. | Claims remain narrow; unsupported claims stay RISK or UNKNOWN. |
 | `documentation-authority` | A lane creates, migrates, bounds, summarizes, or retires FlowDoc Markdown or Project Control records. | `project-control-steward` with `documentation-authority-steward` | Project Control documents, records, Authority Boundary wording, guard updates, evidence target. | Project Control remains canonical for shared truth; repo-local Markdown stays bounded. |
 | `ux-design-exploration` | A lane explores product flow, screen structure, mockups, screenshots, or prototype direction before implementation. | `planning-partner`, `product-implementation-agent`, or a future design role after approval | Design brief, mockup or prototype artifact, decision notes, accessibility risks, implementation handoff. | A design artifact is not product truth; implementation still needs owner-repo evidence. |
@@ -350,3 +350,13 @@ A PLAN or WORK room using this model must report:
 
 This keeps separate rooms useful without letting the context split become a
 truth split.
+
+## Coordination control gate
+
+Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, generation and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

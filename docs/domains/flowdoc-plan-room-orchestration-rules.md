@@ -230,9 +230,11 @@ Minimum registry fields:
 - duplicate handoff disposition;
 - next PLAN action.
 
-Until Project Control has a dedicated Room Run schema, the registry may live in
+Historical rounds created before the typed registry may retain their registry in
 the PLAN room's handoff notes or a bounded Project Control Work/Checklist
-record. It must still be explicit enough that a future PLAN room can find which
+record. New dispatches use the canonical typed registry from
+flowdoc-coordination-controls.md. Historical state must still be explicit
+enough that a future PLAN room can find which
 WORK rooms exist, which Context Capsule each room received, which handoffs
 remain unprocessed, and which locator can be used for pull review.
 
@@ -608,3 +610,13 @@ A PLAN room handoff after multi-room coordination must include:
 This document does not open WORK rooms. It makes the PLAN room responsible for
 tracking, pulling, reviewing, and sequencing them before FlowDoc truth is
 updated.
+
+## Coordination control gate
+
+Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, generation and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

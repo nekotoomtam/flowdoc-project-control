@@ -147,7 +147,9 @@ Responsibility:
 Must not do:
 
 - Delete a dirty worktree.
-- Delete branch refs before the user approves branch cleanup.
+- Delete historical or unresolved branch refs without a recorded owner decision.
+  Approved current-round cleanup follows flowdoc-coordination-controls.md;
+  clean merged branches may be removed after the main gate without asking again.
 - Remove a lane whose unique patch is not understood.
 - Treat hash difference as useful work if patch-equivalence says otherwise.
 
@@ -311,3 +313,13 @@ Use this quick route before starting:
 
 When unsure, start with Project Control Steward plus Planning Partner, then
 switch roles after the owner and evidence target are clear.
+
+## Coordination control gate
+
+Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, generation and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.
