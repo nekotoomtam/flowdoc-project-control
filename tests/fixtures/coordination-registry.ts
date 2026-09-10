@@ -1,0 +1,81 @@
+import type { CoordinationRegistry } from "../../src/model/types.js";
+
+export function createCoordinationRegistryFixture(
+  overrides: { planTaskId?: string; status?: "prepared" | "active" | "superseded" } = {},
+): CoordinationRegistry {
+  const planTaskId = overrides.planTaskId ?? "plan-1";
+  return {
+    version: 1,
+    revision: 0,
+    scopeOwnership: {
+      scopeId: "pilot-coordination",
+      scopeKeys: ["flowdoc:pilot-coordination"],
+      allowedFiles: ["schemas/", "src/model/", "tools/", "tests/"],
+      planTaskId,
+      generation: 1,
+      state: "active",
+      transfers: [],
+    },
+    integrationClaims: [{
+      repositoryId: "project-control",
+      planTaskId,
+      generation: 1,
+      baseCommit: "a".repeat(40),
+      state: "active",
+    }],
+    returnOrderPolicy: "severity-then-arrival",
+    roomRuns: [{
+      roomRunId: "pilot-room",
+      dispatchSetId: "pilot-dispatch",
+      laneId: "pilot-lane",
+      workType: "product-implementation",
+      ownerRepositoryId: "project-control",
+      activeRole: "product-implementation-agent",
+      phaseId: "phase-contract",
+      checklistId: "checklist-contract",
+      evidenceTarget: "evidence-design",
+      ownershipGeneration: 1,
+      revisionAttempt: 0,
+      expectedHandoffId: "pilot-room-r0",
+      status: overrides.status ?? "active",
+      locator: { threadId: "pilot-thread" },
+      contextAcknowledgement: {
+        status: "acknowledged",
+        acknowledgedAt: "2026-09-10T07:00:00.000Z",
+      },
+      returnRoute: {
+        planTaskId,
+        automaticChannel: "send_message_to_thread",
+        activeCommand: "mcp__codex_app__send_message_to_thread",
+        monitorOwner: planTaskId,
+        livenessDeadline: "2026-09-10T07:20:00.000Z",
+        maxSendAttempts: 3,
+      },
+      modelDecision: {
+        modelId: "gpt-5.6-sol",
+        reasoningEffort: "high",
+        taskComplexity: "typed state transition",
+        scopeSize: "one repository",
+        uncertainty: "bounded",
+        missingContext: "none",
+        failureImpact: "invalid coordination",
+        recoverability: "fixture reset",
+        reason: "verified transition logic",
+        smallerOptionAssessment: "not selected for transition complexity",
+        availabilitySource: "host schema",
+        availabilityObservedAt: "2026-09-10T07:00:00.000Z",
+        availableModelEfforts: [{ modelId: "gpt-5.6-sol", reasoningEfforts: ["high"] }],
+        escalationTriggers: ["two reasoning failures"],
+      },
+      ux: {
+        visibleChange: false,
+        applicability: "not-applicable",
+        reason: "internal fixture",
+      },
+      requiredEvidence: ["evidence-design"],
+    }],
+    handoffs: [],
+    completionQueue: [],
+    cleanup: [],
+  };
+}

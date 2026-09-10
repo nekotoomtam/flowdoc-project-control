@@ -10,6 +10,7 @@ import type {
   RepositoryRecord,
 } from "../../src/model/types.js";
 import { compareCodeUnits, ProjectValidationError } from "./errors.js";
+import { validateCoordinationRegistries } from "../../src/model/coordination.js";
 import {
   loadProjectSources,
   type LoadedProjectSources,
@@ -33,6 +34,7 @@ export async function validateProjectSemantics(
       checkWorkReferences(loaded),
       checkWorkTree(loaded),
       checkTaskContracts(loaded),
+      checkCoordination(loaded),
       checkPhaseReferences(loaded),
       checkSingleActivePhase(loaded),
       checkChecklistReferences(loaded),
@@ -48,6 +50,73 @@ export async function validateProjectSemantics(
   }
 
   return loaded as ValidatedProjectSources;
+}
+
+function checkCoordination(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const workById = recordMap(loaded.work);
+  const repositoryById = recordMap(loaded.repositories);
+  const phaseById = recordMap(loaded.phases);
+  const checklistById = recordMap(loaded.checklists);
+  const evidenceById = new Map(loaded.evidence.map(({ value }) => [
+    value.id,
+    { repositoryId: value.repositoryId, commit: value.commit },
+  ]));
+  const diagnostics = validateCoordinationRegistries(
+    loaded.work.map(({ value }) => value),
+    evidenceById,
+  ).flatMap((coordinationIssue) => {
+    const work = workById.get(coordinationIssue.workId);
+    return work === undefined
+      ? []
+      : [recordDiagnostic(
+          coordinationIssue.code,
+          coordinationIssue.message,
+          work,
+          "Repair the stored coordination registry before generation or publication.",
+        )];
+  });
+
+  for (const work of loaded.work) {
+    const registry = work.value.coordination;
+    if (registry === undefined) continue;
+    for (const claim of registry.integrationClaims) {
+      if (!repositoryById.has(claim.repositoryId)) {
+        diagnostics.push(recordDiagnostic(
+          "COORDINATION_MISSING_REPOSITORY",
+          `Integration repository "${claim.repositoryId}" does not exist.`,
+          work,
+          "Reference a canonical Repository record.",
+        ));
+      }
+    }
+    for (const room of registry.roomRuns) {
+      if (!repositoryById.has(room.ownerRepositoryId)) {
+        diagnostics.push(recordDiagnostic(
+          "COORDINATION_MISSING_REPOSITORY",
+          `Room owner repository "${room.ownerRepositoryId}" does not exist.`,
+          work,
+          "Reference a canonical Repository record.",
+        ));
+      }
+      if (!phaseById.has(room.phaseId)) {
+        diagnostics.push(recordDiagnostic(
+          "COORDINATION_MISSING_PHASE",
+          `Room Phase "${room.phaseId}" does not exist.`,
+          work,
+          "Reference a canonical Phase record.",
+        ));
+      }
+      if (!checklistById.has(room.checklistId)) {
+        diagnostics.push(recordDiagnostic(
+          "COORDINATION_MISSING_CHECKLIST",
+          `Room Checklist "${room.checklistId}" does not exist.`,
+          work,
+          "Reference a canonical Checklist record.",
+        ));
+      }
+    }
+  }
+  return diagnostics;
 }
 
 export async function loadAndValidateProject(rootDir: string): Promise<ValidatedProjectSources> {

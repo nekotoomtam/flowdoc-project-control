@@ -155,6 +155,34 @@ async function loadFile(
   };
 }
 
+export async function validateCanonicalRecordValue(
+  directory: CanonicalRecordDirectory,
+  relativePath: string,
+  value: unknown,
+): Promise<ProjectDiagnostic[]> {
+  const recordId = readRecordId(value);
+  const expectedKind = expectedKinds[directory];
+  if (!hasExpectedKind(value, expectedKind)) {
+    return [
+      withRecordId(
+        {
+          code: "RECORD_KIND_MISMATCH",
+          message: `Records in data/${directory} must have kind \"${expectedKind}\".`,
+          file: relativePath,
+          hint: `Move this record to the matching data directory or set kind to \"${expectedKind}\".`,
+        },
+        recordId,
+      ),
+    ];
+  }
+
+  const validator = (await getValidators())[directory];
+  if (!validator(value)) {
+    return schemaDiagnostics(relativePath, recordId, validator.errors ?? []);
+  }
+  return [];
+}
+
 async function getValidators(): Promise<Record<CanonicalRecordDirectory, ValidateFunction>> {
   validatorsPromise ??= createValidators();
   return validatorsPromise;

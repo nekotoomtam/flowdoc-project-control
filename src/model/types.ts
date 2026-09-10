@@ -22,6 +22,234 @@ export type DocumentRole =
   | "version";
 export type DocumentLifecycle = "active" | "superseded" | "retired";
 
+export type CoordinationTerminalStatus = "PASS" | "FAIL" | "BLOCKER" | "RISK" | "UNKNOWN";
+export type CoordinationCheckStatus = "pending" | "passed" | "failed";
+
+export interface CoordinationRegistry {
+  version: 1;
+  revision: number;
+  scopeOwnership: {
+    scopeId: string;
+    scopeKeys: string[];
+    allowedFiles: string[];
+    planTaskId: string;
+    generation: number;
+    state: "active" | "released" | "cancelled";
+    transfers: CoordinationOwnershipTransfer[];
+  };
+  integrationClaims: CoordinationIntegrationClaim[];
+  returnOrderPolicy: "severity-then-arrival";
+  roomRuns: CoordinationRoomRun[];
+  handoffs: CoordinationHandoff[];
+  completionQueue: CoordinationQueueItem[];
+  cleanup: CoordinationCleanupState[];
+}
+
+export interface CoordinationOwnershipTransfer {
+  fromPlanTaskId: string;
+  toPlanTaskId: string;
+  fromGeneration: number;
+  newGeneration: number;
+  reason: string;
+  affectedRoomRunIds: string[];
+  transferredAt: string;
+}
+
+export interface CoordinationIntegrationClaim {
+  repositoryId: string;
+  planTaskId: string;
+  generation: number;
+  baseCommit: string;
+  state: "active" | "released" | "frozen";
+}
+
+export interface CoordinationRoomRun {
+  roomRunId: string;
+  dispatchSetId: string;
+  laneId: string;
+  workType: string;
+  ownerRepositoryId: string;
+  activeRole: string;
+  phaseId: string;
+  checklistId: string;
+  evidenceTarget: string;
+  ownershipGeneration: number;
+  revisionAttempt: number;
+  expectedHandoffId: string;
+  status: "prepared" | "active" | "superseded" | "returned" | "accepted" | "closed";
+  locator: {
+    threadId: string;
+    worktree?: string;
+    branch?: string;
+    handoffPath?: string;
+  };
+  contextAcknowledgement: {
+    status: "pending" | "acknowledged" | "rejected";
+    acknowledgedAt?: string;
+  };
+  returnRoute: {
+    planTaskId: string;
+    automaticChannel: string;
+    activeCommand: string;
+    monitorOwner: string;
+    livenessDeadline: string;
+    maxSendAttempts: 3;
+  };
+  modelDecision: CoordinationModelDecision;
+  ux: CoordinationUxGate;
+  requiredEvidence: string[];
+}
+
+export interface CoordinationModelDecision {
+  modelId: string;
+  reasoningEffort: string;
+  taskComplexity: string;
+  scopeSize: string;
+  uncertainty: string;
+  missingContext: string;
+  failureImpact: string;
+  recoverability: string;
+  reason: string;
+  smallerOptionAssessment: string;
+  availabilitySource: string;
+  availabilityObservedAt: string;
+  availableModelEfforts: Array<{
+    modelId: string;
+    reasoningEfforts: string[];
+  }>;
+  escalationTriggers: string[];
+}
+
+export type CoordinationUxGate = CoordinationUxNotApplicable | CoordinationUxApplicable;
+
+export interface CoordinationUxNotApplicable {
+  visibleChange: false;
+  applicability: "not-applicable";
+  reason: string;
+}
+
+export interface CoordinationUxApplicable {
+  visibleChange: boolean;
+  applicability: "applicable";
+  scenario: {
+    userAction: string;
+    expectedVisibleBehavior: string;
+    fixture: string;
+    inputMethod: string;
+    browser: string;
+    device: string;
+    environment: string;
+  };
+  criteria: CoordinationUxCriterion[];
+  mechanismChecks: CoordinationNamedCheck[];
+  regressionChecks: CoordinationNamedCheck[];
+  userAcceptance: {
+    required: boolean;
+    status: "not-required" | "pending" | "accepted" | "rejected";
+    actor?: {
+      kind: "user" | "agent";
+      id: string;
+    };
+    evidenceIds: string[];
+  };
+}
+
+export interface CoordinationUxCriterion {
+  id: string;
+  criterion: string;
+  measurementMethod: string;
+  evidenceTarget: string;
+  inspector: string;
+  status: CoordinationCheckStatus;
+  evidenceIds: string[];
+}
+
+export interface CoordinationNamedCheck {
+  name: string;
+  status: CoordinationCheckStatus;
+}
+
+export interface CoordinationTerminalPayload {
+  planTaskId: string;
+  roomRunId: string;
+  laneId: string;
+  ownerRepositoryId: string;
+  ownershipGeneration: number;
+  revisionAttempt: number;
+  status: CoordinationTerminalStatus;
+  behaviorChanged: boolean;
+  behaviorSummary: string;
+  exactCommit?: string;
+  changedFiles: string[];
+  tests: string[];
+  evidenceIds: string[];
+  risks: string[];
+  unknowns: string[];
+  contractChangeRequest?: string;
+}
+
+export interface CoordinationHandoff {
+  handoffId: string;
+  payloadDigest: string;
+  payload: CoordinationTerminalPayload;
+  transport: {
+    status: "pending" | "sent" | "return-channel-failed";
+    attempts: number;
+    attemptHistory: Array<{
+      attemptedAt: string;
+      outcome: "sent" | "failed";
+    }>;
+    lastAttemptAt?: string;
+  };
+  receipt: {
+    status: "pending" | "received";
+    receivedAt?: string;
+    senderThreadId?: string;
+    channel?: string;
+    acknowledgedAt?: string;
+    arrivalSequence?: number;
+  };
+  acceptance: {
+    status: "pending" | "accepted" | "needs-revision" | "rejected" | "blocked";
+    reviewer?: string;
+    reviewedAt?: string;
+    reviewNote?: string;
+    evidenceIds: string[];
+    requiredChecks: CoordinationNamedCheck[];
+    remainingScope: string[];
+  };
+}
+
+export interface CoordinationQueueItem {
+  handoffId: string;
+  arrivalSequence: number;
+}
+
+export interface CoordinationCleanupState {
+  repositoryId: string;
+  worktreePath: string;
+  branch: string;
+  planTaskId: string;
+  ownershipGeneration: number;
+  executor: string;
+  delegatedBy?: string;
+  preflightEvidenceIds: string[];
+  preflightSources: {
+    cleanliness: string;
+    merge: string;
+    worktreeGate: string;
+    mainGate: string;
+    liveProcess: string;
+  };
+  currentRound: boolean;
+  worktreeClean: boolean;
+  merged: boolean;
+  worktreeGate: CoordinationCheckStatus;
+  mainGate: CoordinationCheckStatus;
+  liveProcessClear: boolean;
+  disposition: "retain" | "eligible" | "removed";
+}
+
 export interface NodeRecord {
   kind: "node";
   id: string;
@@ -52,6 +280,7 @@ export interface WorkRecord {
   blockedBy?: string;
   unblockOwner?: string;
   requiredEvidence: string[];
+  coordination?: CoordinationRegistry;
   createdAt: string;
   updatedAt: string;
 }
