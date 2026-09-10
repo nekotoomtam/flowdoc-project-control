@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "เริ่ม Work2 เปรียบเทียบกฎข้อความด้วย Terra medium หลังรับ Work1 inventory. รอผลตัวอย่างและการเลือกของตูมก่อนแก้ Core; held caret candidate/Preview UX ยังไม่ปิด.",
+  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -58,5 +58,112 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-07T08:21:55.3039698Z"
+  "updatedAt": "2026-09-10T14:18:57.7484817Z",
+  "coordination": {
+    "version": 1,
+    "revision": 1,
+    "scopeOwnership": {
+      "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+      "scopeId": "creator-typing-four-points",
+      "transfers": [],
+      "generation": 1,
+      "state": "active",
+      "scopeKeys": [
+        "creator-preview-typing-latency"
+      ],
+      "allowedFiles": [
+        "repo-editor/src/editor/structures/creatorPreviewSession.ts",
+        "repo-editor/src/editor/structures/creatorPreviewPaint.ts",
+        "repo-editor/src/core/coreAdapter.ts",
+        "repo-editor/src/components/structures/StructurePreviewPage.tsx",
+        "repo-core/src/creatorPreview"
+      ]
+    },
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "generation": 1,
+        "state": "active",
+        "baseCommit": "2679f70dae2868843855104544257f19de903a9f"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "typing-baseline-enter-g1-a1",
+        "dispatchSetId": "typing-four-points-20260910",
+        "laneId": "editor-key-to-visible-baseline",
+        "workType": "evidence-review",
+        "ownerRepositoryId": "repo-editor",
+        "activeRole": "evidence-reviewer",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-preview-keyboard-contract",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "handoff-typing-baseline-enter-g1-a1",
+        "status": "active",
+        "locator": {
+          "branch": "codex/editor-stage-a-multiline-measurement-20260909",
+          "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-10T14:22:15.5966142Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-10T14:38:57.758343Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-sol",
+          "reasoningEffort": "medium",
+          "taskComplexity": "Bounded instrumentation and baseline attribution",
+          "scopeSize": "Existing Editor measurement lane, isolated fixtures only",
+          "uncertainty": "Enter and key-to-matching-render attribution",
+          "missingContext": "Fresh baseline timings",
+          "failureImpact": "Misleading measurements, no production mutation",
+          "recoverability": "Discard invalid samples and correct once",
+          "reason": "Existing measurement code and explicit input-count/render checks make this bounded work verifiable",
+          "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+          "availableModelEfforts": [
+            {
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "modelId": "gpt-5.6-sol"
+            }
+          ],
+          "escalationTriggers": [
+            "Two evidence attribution corrections fail for the same reasoning limitation",
+            "Required product or Core contract mutation"
+          ]
+        },
+        "ux": {
+          "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
+          "applicability": "not-applicable",
+          "visibleChange": false
+        },
+        "requiredEvidence": [
+          "evidence-preview-keyboard-contract"
+        ]
+      }
+    ],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  }
 }
