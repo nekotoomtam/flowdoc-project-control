@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins.",
+  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 20,
+    "revision": 22,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -372,6 +372,77 @@
         },
         "requiredEvidence": [
           "evidence-preview-keyboard-contract"
+        ]
+      },
+      {
+        "roomRunId": "typing-core-candidate-comparison-g1-a1",
+        "dispatchSetId": "typing-four-points-20260910",
+        "laneId": "editor-core-candidate-comparison",
+        "workType": "evidence-review",
+        "ownerRepositoryId": "repo-editor",
+        "activeRole": "evidence-reviewer",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-incremental-admission",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "handoff-typing-core-candidate-comparison-g1-a1",
+        "status": "active",
+        "locator": {
+          "branch": "codex/editor-stage-a-multiline-measurement-20260909",
+          "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-10T15:38:07.5598795Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-10T16:07:04.1076972Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-sol",
+          "reasoningEffort": "high",
+          "taskComplexity": "Bounded instrumentation and baseline attribution",
+          "scopeSize": "Existing Editor measurement lane, isolated fixtures only",
+          "uncertainty": "Enter and key-to-matching-render attribution",
+          "missingContext": "Browser gain and residual phase costs of fc05287 versus f190 with unchanged Editor",
+          "failureImpact": "Misleading measurements, no production mutation",
+          "recoverability": "Discard invalid samples and correct once",
+          "reason": "Reuse now-verified180link harness for paired oldCore versus existing cumulative candidate. Sol high handles historical bridge instrumentation differences and exact-output comparison; no new algorithms or product edits.",
+          "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+          "availableModelEfforts": [
+            {
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "modelId": "gpt-5.6-sol"
+            }
+          ],
+          "escalationTriggers": [
+            "Existing candidate incompatible with old Editor: report exact contract gap without product edit",
+            "Failed setup or count parity: preserve diagnostics, no repeated sweeps"
+          ]
+        },
+        "ux": {
+          "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
+          "applicability": "not-applicable",
+          "visibleChange": false
+        },
+        "requiredEvidence": [
+          "evidence-core-incremental-admission"
         ]
       }
     ],
