@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d0ca039d93b90c9c431082aa51323f9950f3e6bf9919aa08c1fdada1fe1bf487",
+  "sourceDigest": "047e0cef53153bac3c0b3b4cd2b540d3537904dd41ec950a3cc66c7afd4b35bd",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 10,
+        "revision": 14,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3167,7 +3167,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 3,
             "expectedHandoffId": "handoff-typing-baseline-enter-g1-a3",
-            "status": "active",
+            "status": "closed",
             "locator": {
               "branch": "codex/editor-stage-a-multiline-measurement-20260909",
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -3283,6 +3283,68 @@
               "requiredChecks": [],
               "remainingScope": [
                 "Six-case exact baseline",
+                "Four typing issues and UX acceptance"
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-typing-baseline-enter-g1-a3",
+            "payloadDigest": "5e24e1fb6467ab4d367a9ae849c1c63ebc23677f78a576e47b5d98e76d259fc8",
+            "payload": {
+              "ownershipGeneration": 1,
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "unknowns": [
+                "Exact launch failure cause and invocation",
+                "Viewport hypothesis unproven"
+              ],
+              "laneId": "editor-key-to-visible-baseline",
+              "status": "BLOCKER",
+              "ownerRepositoryId": "repo-editor",
+              "tests": [
+                "Persistence self-test PASS",
+                "Untimed diagnosis exit1, no artifact",
+                "PLAN node --check passed"
+              ],
+              "behaviorChanged": false,
+              "risks": [
+                "Zero accepted baseline samples",
+                "Envelope normalized by PLAN; returned evidenceIds are pending targets, not registered evidence",
+                "No engine behavior conclusion"
+              ],
+              "roomRunId": "typing-baseline-enter-g1-a1",
+              "revisionAttempt": 3,
+              "behaviorSummary": "Persistence self-test passed; untimed diagnostic launch exited1 without output/artifact; cause UNKNOWN. Raw C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/typing-baseline-g1-a3/handoff-typing-baseline-enter-g1-a3.json SHA25640b3d5abb8b86f7f1bea16ff8e53251d3055609d2f4a1d9442cddcbc4a593fe7",
+              "changedFiles": [],
+              "evidenceIds": []
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-10T15:05:40.1159051Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-10T15:05:40.1159051Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-10T15:05:40.1159051Z",
+              "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 2,
+              "acknowledgedAt": "2026-09-10T15:05:40.1159051Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-10T15:05:40.1159051Z",
+              "reviewNote": "Do not repeat harness retries. Audit exact failed invocation and output paths; runner already persists from catch/finally. Need source-backed launch diagnosis before next authority.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Exact baseline corpus",
                 "Four typing issues and UX acceptance"
               ]
             }
