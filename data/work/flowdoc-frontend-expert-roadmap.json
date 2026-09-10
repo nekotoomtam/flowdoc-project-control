@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven.",
+  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 4,
+    "revision": 10,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -174,7 +174,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 2,
         "expectedHandoffId": "handoff-typing-baseline-enter-g1-a2",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "branch": "codex/editor-stage-a-multiline-measurement-20260909",
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -231,9 +231,141 @@
         "requiredEvidence": [
           "evidence-preview-keyboard-contract"
         ]
+      },
+      {
+        "roomRunId": "typing-baseline-enter-g1-a1",
+        "dispatchSetId": "typing-four-points-20260910",
+        "laneId": "editor-key-to-visible-baseline",
+        "workType": "evidence-review",
+        "ownerRepositoryId": "repo-editor",
+        "activeRole": "evidence-reviewer",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-preview-keyboard-contract",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 3,
+        "expectedHandoffId": "handoff-typing-baseline-enter-g1-a3",
+        "status": "active",
+        "locator": {
+          "branch": "codex/editor-stage-a-multiline-measurement-20260909",
+          "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor"
+        },
+        "contextAcknowledgement": {
+          "acknowledgedAt": "2026-09-10T14:57:57.2556695Z",
+          "status": "acknowledged"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-10T15:21:16.0308534Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-sol",
+          "reasoningEffort": "high",
+          "taskComplexity": "Bounded instrumentation and baseline attribution",
+          "scopeSize": "Existing Editor measurement lane, isolated fixtures only",
+          "uncertainty": "Enter and key-to-matching-render attribution",
+          "missingContext": "Per-case failure state and toolbar viewport/hit-target geometry",
+          "failureImpact": "Misleading measurements, no production mutation",
+          "recoverability": "Discard invalid samples and correct once",
+          "reason": "Keep Sol and raise effort to high after repeated setup/evidence omissions. Bounded cross-case focus and viewport diagnosis with durable failures; explicit source hypothesis replaces retries. No need for GPT6 for this harness-only scope.",
+          "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+          "availableModelEfforts": [
+            {
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ],
+              "modelId": "gpt-5.6-sol"
+            }
+          ],
+          "escalationTriggers": [
+            "No proven setup cause after one diagnostic sequence: return preserved BLOCKER, no new corpus",
+            "Product behavior change required"
+          ]
+        },
+        "ux": {
+          "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
+          "applicability": "not-applicable",
+          "visibleChange": false
+        },
+        "requiredEvidence": [
+          "evidence-preview-keyboard-contract"
+        ]
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "handoffId": "handoff-typing-baseline-enter-g1-a2",
+        "payloadDigest": "d0c2e78846f1d31f95ee16a608773ada68236d972065cfc3a96482f852d1e66c",
+        "payload": {
+          "risks": [
+            "No latency baseline established",
+            "Terminal normalized by PLAN from preserved original JSON; no changed source payload"
+          ],
+          "roomRunId": "typing-baseline-enter-g1-a1",
+          "ownerRepositoryId": "repo-editor",
+          "status": "BLOCKER",
+          "revisionAttempt": 2,
+          "behaviorChanged": false,
+          "tests": [
+            "Calibration: 15/15 key/revision/request/frame links",
+            "Six-case corpus: timeout at button-paper-focus, no accepted corpus",
+            "Exact source clean; no live demo changes"
+          ],
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "changedFiles": [],
+          "laneId": "editor-key-to-visible-baseline",
+          "evidenceIds": [],
+          "behaviorSummary": "Diagnostic calibration passed; corpus rejected at paper-focus setup. Raw handoff C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/typing-baseline-g1-a1/handoff-typing-baseline-enter-g1-a2.json SHA256 0405bbff4b106ecf0c619c04558234180de6f11afad23e688059956b27a7c158",
+          "ownershipGeneration": 1,
+          "unknowns": [
+            "Failed case identity and setup failure cause"
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-10T14:55:02.2826814Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-10T14:55:02.2826814Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-10T14:55:02.2826814Z",
+          "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-10T14:55:02.2826814Z"
+        },
+        "acceptance": {
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-10T14:55:02.2826814Z",
+          "reviewNote": "Calibration supported; corpus unusable. Persist per-case setup/failure state before further timing; investigate focus/viewport transitions rather than another unobserved retry.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Six-case exact baseline",
+            "Four typing issues and UX acceptance"
+          ]
+        }
+      }
+    ],
     "completionQueue": [],
     "cleanup": []
   }
