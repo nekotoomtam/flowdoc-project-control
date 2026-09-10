@@ -152,3 +152,5 @@ Observed code progress at 2026-09-10T15:28:00+07:00: WORK actively reports 29 fo
 ## Implementation acceptance
 
 PLAN accepted code handoff coordination-registry-01-r0 at exact commit 0e28f4b906b263398a54a895cc1bcdd561e3a171 after the full worktree npm run check passed (205 records tests, 189 source-document tests, 60 app tests, build and six Chromium e2e scenarios). Evidence evidence-flowdoc-coordination-six-2026-09-10 is registered. Probe r1 and code r0 were accepted in arrival order through the persisted CLI queue. Post-acceptance data generation/check and 62 focused data/lifecycle/projection tests passed. Main integration gate and cleanup remain pending; ownership is retained until the main gate and cleanup decision. Product maps remain unchanged.
+
+Initial main gate stopped at PROJECT_INDEX_STALE: PLAN appended the final acceptance prose after its last regeneration, so the generated document content lagged two source documents. No product repair was involved. PLAN regenerated from canonical sources in the original worktree and rechecked before retrying main. Further integration remained held during this repair.
