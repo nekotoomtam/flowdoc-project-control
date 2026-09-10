@@ -3,7 +3,7 @@
   "id": "phase-agent-and-skill-design-coordination-six",
   "workId": "agent-and-skill-design",
   "title": "Coordination hardening: six controls",
-  "phaseState": "in-review",
+  "phaseState": "done",
   "order": 70,
   "repositoryIds": [
     "repo-project-control"
@@ -16,5 +16,5 @@
   "verificationTarget": "checklist-agent-and-skill-design-coordination-six; evidence-flowdoc-coordination-six-2026-09-10; focused lifecycle tests and full npm run check",
   "summary": "Implement ownership, reliable returns, durable registry, UX acceptance, cleanup authority and per-WORK model selection.",
   "createdAt": "2026-09-10T07:38:48.083Z",
-  "updatedAt": "2026-09-10T08:50:30.423Z"
+  "updatedAt": "2026-09-10T08:57:11.327Z"
 }

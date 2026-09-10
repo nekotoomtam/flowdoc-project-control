@@ -51,7 +51,8 @@ payload, received PLAN acknowledgement, and returned an authorized revision
 from the same task. Real task locator:
 01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00. This bounded transport observation is
 accepted. The implementation and canonical evidence were subsequently accepted
-after the full worktree gate; main integration and cleanup are still pending.
+after the full worktree gate. The main gate subsequently passed and the original
+lane was retired; the final chronology below records closure.
 
 Dispatch was observed at 2026-09-10T07:50:48.008Z, with a five-minute deadline.
 The chronological log below preserves the state known at each observation.
@@ -103,3 +104,7 @@ At 2026-09-10T08:47:30.8774585Z, PLAN received the active send_message_to_thread
 ## Accepted implementation and probe
 
 At 2026-09-10T08:50:30.424Z, after the full worktree gate passed, PLAN registered canonical evidence evidence-flowdoc-coordination-six-2026-09-10 and used the local CLI with expected revisions to persist the code receipt and acknowledgement. The code handoff is arrivalSequence 3. PLAN accepted probe r1 first and code r0 second through the serialized queue, referencing exact commit 0e28f4b906b263398a54a895cc1bcdd561e3a171. The final queue is empty. Imported acknowledgement time records the typed operation; the original app receipt/acknowledgement is documented above. Main gate and final cleanup remain pending.
+
+## Completed-round closure
+
+At 2026-09-10T08:57:11.327Z, PLAN recorded the passing main gate at 292a461 (454 unit tests, build and six Chromium e2e scenarios), verified clean merged ancestry and no live process, and removed the original coordination-six worktree and merged branch. A bounded documentation-finalization worktree records this actual cleanup. The local release-round command closed the two accepted room attempts and released PLAN/integration ownership while preserving accepted handoffs, receipt provenance, evidence and removed-lane history. The queue remains empty. All eight checklist targets in this phase passed; the broader agent-and-skill-design Work and product maps are not promoted. Finalization documentation is verified before integration, and its temporary checkout is removed after the final main gate. The PLAN task final response records that last housekeeping result.

@@ -56,10 +56,10 @@
     "evidence-flowdoc-plan-work-continuation-guardrails-2026-09-03"
   ],
   "createdAt": "2026-08-24T00:00:00Z",
-  "updatedAt": "2026-09-10T07:38:48.083Z",
+  "updatedAt": "2026-09-10T08:57:11.327Z",
   "coordination": {
     "version": 1,
-    "revision": 14,
+    "revision": 15,
     "scopeOwnership": {
       "scopeId": "coordination-six",
       "scopeKeys": [
@@ -80,7 +80,7 @@
       ],
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "generation": 1,
-      "state": "active",
+      "state": "released",
       "transfers": []
     },
     "integrationClaims": [
@@ -89,7 +89,7 @@
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
         "baseCommit": "91319cb8a5494a0bdc408d66f0be9a739422661c",
-        "state": "active"
+        "state": "released"
       }
     ],
     "returnOrderPolicy": "severity-then-arrival",
@@ -107,7 +107,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 0,
         "expectedHandoffId": "coordination-registry-01-r0",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a08a42-290d-7090-a192-7c11bae62db0",
           "worktree": ".worktrees/coordination-six",
@@ -244,7 +244,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "coordination-return-probe-01-r1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a08a4b-f8d4-7cb3-bb16-8279ca8bfd00"
         },
@@ -490,6 +490,32 @@
       }
     ],
     "completionQueue": [],
-    "cleanup": []
+    "cleanup": [
+      {
+        "repositoryId": "repo-project-control",
+        "worktreePath": "C:/Users/nekot/Documents/GitHub/flowdoc-project-control/.worktrees/coordination-six",
+        "branch": "codex/coordination-six",
+        "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "ownershipGeneration": 1,
+        "executor": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "preflightEvidenceIds": [
+          "evidence-flowdoc-coordination-six-2026-09-10"
+        ],
+        "preflightSources": {
+          "cleanliness": "PLAN pre-removal git status --porcelain was empty for main and original worktree; ignored artifacts were this round dependency/build/test/command outputs.",
+          "merge": "Original lane HEAD 292a461 and branch were merged into main; git merge-base --is-ancestor succeeded before git worktree remove and git branch -d.",
+          "worktreeGate": "Full npm run check exit 0 on original worktree; PLAN task trace and coordination evidence record.",
+          "mainGate": "Full npm run check exit 0 on main after projection repair at 292a461; PLAN task trace and coordination evidence record.",
+          "liveProcess": "WORK task idle and no node process referencing the original worktree before removal; no user trial uses this internal tooling lane."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed"
+      }
+    ]
   }
 }

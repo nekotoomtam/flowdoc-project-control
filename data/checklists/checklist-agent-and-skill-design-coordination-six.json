@@ -52,7 +52,7 @@
       "evidenceIds": [
         "evidence-flowdoc-coordination-six-2026-09-10"
       ],
-      "verificationNote": "Covered by exact code review, focused tests, full worktree gate and bounded live-return evidence where applicable."
+      "verificationNote": "Cleanup rejection tests passed; actual original lane retired only after main gate, clean merged preflight and no live process. Durable removed record preserves authority/evidence."
     },
     {
       "id": "model-selection",
@@ -77,14 +77,14 @@
     {
       "id": "full-gate",
       "label": "full-gate",
-      "state": "in-progress",
+      "state": "passed",
       "evidenceTarget": "evidence-flowdoc-coordination-six-2026-09-10",
       "evidenceIds": [
         "evidence-flowdoc-coordination-six-2026-09-10"
       ],
-      "verificationNote": "Full worktree gate passed; main integration gate remains pending."
+      "verificationNote": "Full worktree and main gates passed, including 454 unit tests, build and 6 Chromium e2e scenarios. Initial main projection staleness was repaired by regeneration and the gate rerun."
     }
   ],
   "createdAt": "2026-09-10T07:38:48.083Z",
-  "updatedAt": "2026-09-10T08:50:30.421Z"
+  "updatedAt": "2026-09-10T08:57:11.327Z"
 }
