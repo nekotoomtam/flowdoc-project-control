@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 16,
+    "revision": 20,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -316,7 +316,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-typing-observed-launch-g1-a1",
-        "status": "active",
+        "status": "accepted",
         "locator": {
           "branch": "codex/editor-stage-a-multiline-measurement-20260909",
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -495,6 +495,84 @@
           "remainingScope": [
             "Exact baseline corpus",
             "Four typing issues and UX acceptance"
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-typing-observed-launch-g1-a1",
+        "payloadDigest": "b8a8aa0ac06fb49b49a16ac8f3c835f67e2bd14d8e99350696ad9ecf81319bd4",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "typing-observed-launch-g1-a1",
+          "laneId": "editor-observed-launch-baseline",
+          "ownerRepositoryId": "repo-editor",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "Observed-launch recovery produced a fully attributed exact historical baseline. Playwright using system Chrome completed setup, calibration, and the one authorized six-case corpus. All 180 corpus operations matched unique input/revision/request/commit/frame records with zero censored or invalid samples; exact text, paper/form synchronization, ordering, and caret checks passed. No product behavior changed and this does not claim UX acceptance, a performance threshold, or an engine fix.",
+          "changedFiles": [],
+          "tests": [
+            "PASS explicit Node v24.15.0 syntax checks for launch wrapper, Playwright runner, and summary verifier",
+            "PASS observed calibration: 15 expected, 15 matched, 0 censored, 0 invalid",
+            "PASS six-case corpus: 180 expected, 180 observed session inputs, 180 matched, 0 censored, 0 invalid",
+            "PASS all six cases: ordered no-loss revisions, exact final string, paper/form synchronization, and caret correctness",
+            "PASS external launch journals: exact executable/version/cwd/argv/output directory preserved, exit code 0, empty stderr",
+            "PASS exact runtime pins: Editor 0f3c32eac82fb1922e11fdda881e64669b491aea and Core f19088445d2b9848d36e3b206178d40853dbd73f",
+            "PASS temporary services stopped; live 61348 remained present and untouched"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "The visible endpoint is a requestAnimationFrame opportunity after a matching React/DOM commit, not photon time.",
+            "Headless system Chrome with a fixed 1280x720 viewport and disabled GPU does not represent every user device.",
+            "Other host activity was uncontrolled, so these values are an observed baseline rather than a universal performance guarantee.",
+            "No numerical acceptance thresholds were authorized; the measured values do not close UX acceptance or typing-readiness scope."
+          ],
+          "unknowns": [
+            "User-perceived responsiveness on the live interactive surface and representative hardware remains unmeasured.",
+            "Causal attribution for the observed latency beyond the instrumented phase timings remains open for later PLAN analysis.",
+            "The historical toolbar viewport hypothesis remains neither required nor accepted as a cause."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-10T15:35:25.2069316Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-10T15:35:25.2069316Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-10T15:36:13.1008297Z",
+          "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 3,
+          "acknowledgedAt": "2026-09-10T15:36:13.1008297Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-10T15:36:13.1008297Z",
+          "evidenceIds": [
+            "evidence-preview-keyboard-contract"
+          ],
+          "requiredChecks": [
+            {
+              "status": "passed",
+              "name": "PLAN independently checked180 raw links and hashes"
+            },
+            {
+              "status": "passed",
+              "name": "Canonical registry source validation"
+            }
+          ],
+          "remainingScope": [
+            "Compare existing Core candidate under same harness",
+            "Four-point fixes and UX acceptance remain pending"
           ]
         }
       }

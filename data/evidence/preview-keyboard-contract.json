@@ -1,0 +1,10 @@
+{
+  "id": "evidence-preview-keyboard-contract",
+  "verificationSummary": "Bounded historical typing baseline only, not complete keyboard contract or UX readiness. Editor0f3c32e with Coref190884, instrumented production in headless Chrome152 via Playwright,1280x720. PLAN independently checked SHA256 corpus a929254578b4917d66abbb6e88750bff865f2ece1c5e00701f6943ba39bbade8 and all180 unique key/request/revision/matching-frame links, including Enter/Backspace; no loss/reordering, exact text and caret. Six pure/mixed256/1024/2048 cases; p50 respectively27.5/102.9,289.2/394.1,523.6/805.2ms. Endpoint is rAF opportunity after matching commit, not photon time. Instrumented core planning largest measured phase across every case. Headless, GPUdisabled, one corpus, uncontrolled hostload, instrumentation overhead unisolated; no numerical UX threshold or user acceptance. Evidence received automatically handoff-typing-observed-launch-g1-a1; original payload sha25633c70242908d76d156a3c9496e81e51640f0c981efb9776a225f99671ce57df4. No product edits or map promotion; checklist remains pending. Artifact: C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/typing-observed-launch-g1-a1/baseline-summary.json",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "kind": "evidence",
+  "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
+  "verifiedAt": "2026-09-10T15:35:25.126626Z",
+  "commit": "0f3c32eac82fb1922e11fdda881e64669b491aea"
+}
