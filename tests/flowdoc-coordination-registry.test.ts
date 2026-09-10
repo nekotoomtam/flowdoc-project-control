@@ -155,6 +155,35 @@ function sendAndReceive(registry = makeRegistry(), payload = makePayload()): Coo
 }
 
 describe("coordination registry transitions", () => {
+  it.each([
+    ["2026-09-10T07:03:00.000Z", false],
+    ["2026-09-10T07:01:45.000Z", true],
+  ])("validates accepted priority against receipt history at %s", (receivedAt, violatesPriority) => {
+    const accepted = applyCoordinationCommand(sendAndReceive(), {
+      type: "accept-handoff", handoffId: "coordination-registry-01-r0",
+      reviewer: "plan-1", reviewedAt: "2026-09-10T07:02:00.000Z",
+      evidenceIds: ["evidence-code"], requiredChecks: [{ name: "checks", status: "passed" }],
+      remainingScope: [],
+    }, { evidenceById: evidenceMap() });
+    const room = structuredClone(makeRegistry().roomRuns[0]!);
+    room.roomRunId = "later-room";
+    room.expectedHandoffId = "later-handoff";
+    room.locator.threadId = "later-thread";
+    accepted.roomRuns.push(room);
+    const payload = makePayload({ roomRunId: room.roomRunId, status: "BLOCKER" });
+    const sent = applyCoordinationCommand(accepted, {
+      type: "record-send", handoffId: room.expectedHandoffId, payload,
+      outcome: "sent", attemptedAt: receivedAt,
+    });
+    const received = applyCoordinationCommand(sent, {
+      type: "receive-handoff", handoffId: room.expectedHandoffId, payload,
+      senderThreadId: room.locator.threadId, receivedAt,
+    });
+    const issues = validateCoordinationRegistries([{ id: "work", coordination: received }], evidenceMap());
+    expect(issues.some(({ code }) => code === "COORDINATION_QUEUE_PRIORITY_VIOLATION")).toBe(violatesPriority);
+    if (!violatesPriority) expect(issues).toEqual([]);
+  });
+
   it("rejects an active room with a blank model rationale without mutating input", () => {
     const registry = makeRegistry();
     registry.roomRuns[0]!.status = "prepared";

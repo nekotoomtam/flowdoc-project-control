@@ -867,7 +867,7 @@ function collectStoredAcceptanceIssues(
     ensureCommitEvidence(handoff.payload);
     ensureEvidenceMatchesPayload(handoff.payload, handoff.acceptance.evidenceIds, evidenceById);
     ensureUxComplete(room.ux, handoff.acceptance.evidenceIds, evidenceById);
-    ensureQueuePriority(registry, handoff.handoffId);
+    ensureQueuePriority(registry, handoff.handoffId, handoff.acceptance.reviewedAt);
   } catch (error) {
     if (error instanceof CoordinationTransitionError) {
       issues.push(issue(`COORDINATION_${error.code}`, error.message, workId));
@@ -1085,11 +1085,20 @@ function sameAttemptPayload(payload: CoordinationTerminalPayload, room: Coordina
     payload.revisionAttempt === room.revisionAttempt;
 }
 
-function ensureQueuePriority(registry: CoordinationRegistry, handoffId: string): void {
+function ensureQueuePriority(registry: CoordinationRegistry, handoffId: string, reviewedAt?: string): void {
   const target = registry.handoffs.find((handoff) => handoff.handoffId === handoffId);
   ensure(target !== undefined, "HANDOFF_NOT_FOUND", "The handoff is not stored.");
   const candidates = registry.handoffs.filter((queued) => {
     if (queued.handoffId === handoffId) return true;
+    if (reviewedAt !== undefined) {
+      // Later arrivals cannot invalidate an earlier acceptance. A handoff
+      // resolved after that acceptance was still pending at review time.
+      return queued.receipt.status === "received" &&
+        Date.parse(queued.receipt.receivedAt!) <= Date.parse(reviewedAt) &&
+        (queued.acceptance.status === "pending" ||
+          (queued.acceptance.reviewedAt !== undefined &&
+            Date.parse(queued.acceptance.reviewedAt) > Date.parse(reviewedAt)));
+    }
     const room = findRoomForStoredHandoff(registry, queued);
     return queued.receipt.status === "received" &&
       queued.acceptance.status === "pending" &&

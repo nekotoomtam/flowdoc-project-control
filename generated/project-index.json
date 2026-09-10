@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "a8064c7c6cc8ea19b308462b1a5aa2c738ef1451c3bfa953bb2d1e2c4da86723",
+  "sourceDigest": "2aeaf59223335f6816e0b2a35f77fe01da9ff3b1f7c08c07d0d28c4dace5ce08",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2934,7 +2934,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet.",
+      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet. Next Core lane prepared from source-reviewed Enter/merge paragraphSnapshot recomputation and partial A1/B1 planning spikes. Experimental terminal-LF reuse only; no UX acceptance or product integration authority. Registry24 receive rejected due retrospective priority check against accepted history; state unchanged, prematureACK corrected to sender. Regression RED then48focusedGREEN verifies later arrivals no longer invalidate earlier acceptance while already-waiting highpriority still blocks. Receipt now actually recorded.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 22,
+        "revision": 28,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -2998,7 +2998,10 @@
             "repo-editor/src/editor/structures/creatorPreviewPaint.ts",
             "repo-editor/src/core/coreAdapter.ts",
             "repo-editor/src/components/structures/StructurePreviewPage.tsx",
-            "repo-core/src/creatorPreview"
+            "repo-core/src/creatorPreview",
+            "repo-core/tests",
+            "repo-project-control/src/model/coordination.ts",
+            "repo-project-control/tests/flowdoc-coordination-registry.test.ts"
           ]
         },
         "integrationClaims": [
@@ -3309,7 +3312,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-typing-core-candidate-comparison-g1-a1",
-            "status": "active",
+            "status": "closed",
             "locator": {
               "branch": "codex/editor-stage-a-multiline-measurement-20260909",
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -3362,6 +3365,122 @@
               "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
               "applicability": "not-applicable",
               "visibleChange": false
+            },
+            "requiredEvidence": [
+              "evidence-core-incremental-admission"
+            ]
+          },
+          {
+            "roomRunId": "core-terminal-lf-reuse-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "core-terminal-lf-reuse",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-incremental-admission",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-terminal-lf-reuse-g1-a1",
+            "status": "active",
+            "locator": {
+              "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
+              "threadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "branch": "codex/core-creator-native-tail-20260909"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-10T15:59:07.0878751Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-10T16:24:06.6840548Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Immutable paragraph reuse across terminal LF topology",
+              "scopeSize": "One Core optimization and focused adjacent tests",
+              "uncertainty": "Enter and key-to-matching-render attribution",
+              "missingContext": "Whether exact paragraph facts and explicit-break marker can be safely reused",
+              "failureImpact": "Incorrect line or caret geometry if reuse predicate is too broad",
+              "recoverability": "Experimental branch only with full-path fallback; no production activation",
+              "reason": "Bounded optimization of unchanged paragraph text across terminal LF split/merge. Sol high already owns cumulative Core context; exact full-layout/geometry oracle and work-count tests make correctness checkable. Escalate public contract changes rather than assume fixed-line safety.",
+              "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Exact oracle parity fails under admissible topology",
+                "Need public contract or broader range-shaping change"
+              ]
+            },
+            "ux": {
+              "regressionChecks": [
+                {
+                  "name": "Prefix/suffix changes unsupported edits and page boundaries retain correct fallback",
+                  "status": "pending"
+                }
+              ],
+              "criteria": [
+                {
+                  "evidenceTarget": "evidence-core-incremental-admission",
+                  "status": "pending",
+                  "criterion": "Eligible unchanged closing paragraph must not reshape/replan its entire unchanged content; ineligible cases preserve full fallback",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "measurementMethod": "Exact operation work counts and baseline/candidate paired Core measurements; no arbitrary timing threshold",
+                  "id": "terminal-lf-work",
+                  "evidenceIds": []
+                },
+                {
+                  "evidenceTarget": "evidence-preview-keyboard-contract",
+                  "status": "pending",
+                  "criterion": "Paired browser comparison must show no correctness regression; smoothness acceptance remains pending user trial",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "measurementMethod": "Complete key/revision accounting and visible output evidence; final numerical UX threshold pending before UX closure",
+                  "id": "typing-visible",
+                  "evidenceIds": []
+                }
+              ],
+              "userAcceptance": {
+                "required": true,
+                "evidenceIds": [],
+                "status": "pending"
+              },
+              "mechanismChecks": [
+                {
+                  "name": "Exact full layout geometry caret and hit-test parity",
+                  "status": "pending"
+                }
+              ],
+              "applicability": "applicable",
+              "scenario": {
+                "environment": "Isolated experimental candidate; live61348 remains unchanged",
+                "device": "Current Windows host; headless benchmark does not establish user hardware experience",
+                "userAction": "Typing at end, Enter, trailing LF merge, re-Enter across four cycles",
+                "fixture": "Pure/mixed256/1024/2048 plus adversarial prefix/suffix and page boundaries",
+                "expectedVisibleBehavior": "Reduce unnecessary layout delay while preserving exact text and caret",
+                "browser": "Headless Chrome152 baseline; live user trial pending",
+                "inputMethod": "Core sequential operations then browser native keyboard confirmation"
+              },
+              "visibleChange": true
             },
             "requiredEvidence": [
               "evidence-core-incremental-admission"
@@ -3566,6 +3685,74 @@
               "remainingScope": [
                 "Compare existing Core candidate under same harness",
                 "Four-point fixes and UX acceptance remain pending"
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-typing-core-candidate-comparison-g1-a1",
+            "payloadDigest": "f399f14d6e2b93a8dc42d22034785ec15d60c859dbeeb0f25d6b68e907609fd9",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "typing-core-candidate-comparison-g1-a1",
+              "laneId": "editor-core-candidate-comparison",
+              "ownerRepositoryId": "repo-editor",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "BLOCKER",
+              "behaviorChanged": false,
+              "behaviorSummary": "No product behavior changed. Candidate calibration and the first A/B pair completed with full attribution, but B2 stopped in pure-256 because the exact same-revision frame criterion classified one of 24 operations as censored. All 24 inputs, public requests, revisions, exact final text, ordering, paper/form sync and caret checks were present. The event may be a legitimately coalesced visible revision and is not evidence of dropped input or product failure. ABBA remains incomplete, no retry or A2 was run, and the runner did not persist B2 raw link arrays before validation, so the exact censored revision/key and next matching revision are unavailable.",
+              "changedFiles": [],
+              "tests": [
+                "PASS old and candidate instrumented bundles built against unchanged Editor; candidate public contract compatible",
+                "PASS candidate calibration: 15 expected, 15 matched, 0 censored, 0 invalid",
+                "PASS A1 old Core: 180 expected, 180 matched, 0 censored, 0 invalid",
+                "PASS B1 candidate Core: 180 expected, 180 matched, 0 censored, 0 invalid",
+                "BLOCKER B2 candidate pure-256: 24 inputs/revisions/requests, 23 exact same-revision matching frames, 1 censored, 0 invalid; text/order/sync/caret passed",
+                "NOT RUN A2 old Core because the ABBA sequence was already invalid and packet prohibited continued blind sweeping",
+                "PASS temporary services stopped; live 61348 remained present and untouched"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "A1/B1 is one complete pair and informative only; it is not a completed ABBA comparison.",
+                "The exact one-frame-per-input criterion can censor a revision that is coalesced into a later visible frame; this is a measurement limitation, not a demonstrated dropped input.",
+                "Per-action commit and frame fingerprints differ across Core builds, while glyph count, caret offset and rendered-line count match all 180 actions and final SVG projection matches every case. Fingerprint equality is therefore not a cross-build oracle.",
+                "Headless fixed-viewport rAF opportunity timing is not photon time or UX acceptance."
+              ],
+              "unknowns": [
+                "The exact B2 censored input revision, key/event and the next later matching visible revision cannot be recovered because raw B2 link/native/stage/frame arrays were not persisted before validation.",
+                "Whether a later visible revision containing the unchanged appended prefix provides an acceptable visibility upper bound requires PLAN measurement-criterion review.",
+                "Second-run variability and a full ABBA effect estimate remain unknown because B2 failed and A2 was not run."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-10T15:55:36.9823032Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-10T15:55:36.9823032Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-10T15:55:36.9823032Z",
+              "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 4,
+              "acknowledgedAt": "2026-09-10T15:59:07.0878751Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-10T15:59:07.0878751Z",
+              "reviewNote": "Partial A1/B1 diagnostic only; fullABBA incomplete, oneB2censored frame has no preserved raw. No droppedinput or coalescingcause inference. Sourceplanning spikes justify bounded Core investigation.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Core terminal LF reuse",
+                "Remaining four-point performance and UX acceptance"
               ]
             }
           }
