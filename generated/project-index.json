@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "047e0cef53153bac3c0b3b4cd2b540d3537904dd41ec950a3cc66c7afd4b35bd",
+  "sourceDigest": "9ccdf9712d4935e66c2bd7c20693cc4e5932b4d406b0a934490b5d15a450dd9c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2934,7 +2934,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state.",
+      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 14,
+        "revision": 16,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3214,6 +3214,77 @@
               "escalationTriggers": [
                 "No proven setup cause after one diagnostic sequence: return preserved BLOCKER, no new corpus",
                 "Product behavior change required"
+              ]
+            },
+            "ux": {
+              "reason": "Diagnostic baseline only; no product behavior change or UX readiness acceptance. Measure input-to-matching-render including Enter and report uncertainty; numerical smoothness acceptance remains pending.",
+              "applicability": "not-applicable",
+              "visibleChange": false
+            },
+            "requiredEvidence": [
+              "evidence-preview-keyboard-contract"
+            ]
+          },
+          {
+            "roomRunId": "typing-observed-launch-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "editor-observed-launch-baseline",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-preview-keyboard-contract",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-typing-observed-launch-g1-a1",
+            "status": "active",
+            "locator": {
+              "branch": "codex/editor-stage-a-multiline-measurement-20260909",
+              "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor"
+            },
+            "contextAcknowledgement": {
+              "acknowledgedAt": "2026-09-10T15:12:53.9596981Z",
+              "status": "acknowledged"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-10T15:36:46.1650239Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded instrumentation and baseline attribution",
+              "scopeSize": "Existing Editor measurement lane, isolated fixtures only",
+              "uncertainty": "Enter and key-to-matching-render attribution",
+              "missingContext": "Actual launch outcome under observed process wrapper",
+              "failureImpact": "Misleading measurements, no production mutation",
+              "recoverability": "Discard invalid samples and correct once",
+              "reason": "Previous baseline room closed BLOCKER after unobserved launch. Separate bounded recovery replaces handwritten browser lifecycle with installed Playwright, explicit verified Node executable and external stdout/stderr plus prelaunch journal. Sol high sufficient for existing harness adaptation; retain exact measurement contract.",
+              "smallerOptionAssessment": "Luna not selected because event ordering and render revision attribution span multiple asynchronous boundaries",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-10T14:18:57.7484817Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Observed launch or setup fails: return exact boundary and logs, no blind retries",
+                "Public product behavior change needed"
               ]
             },
             "ux": {
