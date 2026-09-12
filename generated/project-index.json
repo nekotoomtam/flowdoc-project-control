@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6f8808265eae7962d8274e374f933679bdd39613b7eff7b635fd5e8973bbe8cb",
+  "sourceDigest": "4e2bef950f5c56b4b3550c40029e04835639b8707d6fe3639a7ca7c27562205a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2985,7 +2985,7 @@
       "updatedAt": "2026-09-12T18:00:33.2156560Z",
       "coordination": {
         "version": 1,
-        "revision": 105,
+        "revision": 106,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4327,7 +4327,7 @@
             "returnRoute": {
               "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "activeCommand": "mcp__codex_app__send_message_to_thread",
-              "livenessDeadline": "2026-09-12T18:53:10.072210Z",
+              "livenessDeadline": "2026-09-12T19:02:51.541908Z",
               "maxSendAttempts": 3,
               "automaticChannel": "send_message_to_thread",
               "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
