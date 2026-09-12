@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-core-incremental-typing-feasibility-implementation-plan-2026-09-13",
+  "title": "Core Incremental Typing Feasibility Implementation Plan",
+  "path": "docs/domains/flowdoc-core-incremental-typing-feasibility-implementation-plan-2026-09-13.md",
+  "role": "contract",
+  "authority": "Project Control implementation plan derived from the user-approved architecture for Core Gate 1 only; plan execution is not yet approved and no dispatch, product change, production binding, UX acceptance, integration, cleanup, or map promotion is claimed.",
+  "lifecycle": "active",
+  "nodeIds": [],
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "7a7b5d39ac53cccb803c668594a748867b990b9f",
+      "pathOrContractId": "docs/domains/flowdoc-core-authoritative-incremental-typing-architecture-2026-09-12.md"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "src/creatorPreview/nativeTailExperimentV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "src/creatorPreview/layoutFactsV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/runtimeMr1Range.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/workerMr1Range.ts"
+    }
+  ]
+}
