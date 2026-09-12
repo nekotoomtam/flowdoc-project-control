@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "2aeaf59223335f6816e0b2a35f77fe01da9ff3b1f7c08c07d0d28c4dace5ce08",
+  "sourceDigest": "8e74bff79169b877527b7307a48c67f82b91822caf0937dadfaff60da4ce8858",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2934,7 +2934,7 @@
         "repo-core"
       ],
       "workState": "in-progress",
-      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet. Next Core lane prepared from source-reviewed Enter/merge paragraphSnapshot recomputation and partial A1/B1 planning spikes. Experimental terminal-LF reuse only; no UX acceptance or product integration authority. Registry24 receive rejected due retrospective priority check against accepted history; state unchanged, prematureACK corrected to sender. Regression RED then48focusedGREEN verifies later arrivals no longer invalidate earlier acceptance while already-waiting highpriority still blocks. Receipt now actually recorded.",
+      "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet. Next Core lane prepared from source-reviewed Enter/merge paragraphSnapshot recomputation and partial A1/B1 planning spikes. Experimental terminal-LF reuse only; no UX acceptance or product integration authority. Registry24 receive rejected due retrospective priority check against accepted history; state unchanged, prematureACK corrected to sender. Regression RED then48focusedGREEN verifies later arrivals no longer invalidate earlier acceptance while already-waiting highpriority still blocks. Receipt now actually recorded. TerminalLF mechanism candidate4e3b0c9 preserved, finalUX blockedpending notaccepted. PCmain gate456unit6e2e passed823c739. Next readonly result-cost attribution separates serialization/UTF8/SHA256 and retained-object reuse before selecting point2 optimization. Resumed 2026-09-12 after explicit user HOLD. Registry33 restored; prior Core Context Acknowledgement and HOLD receipt retained in PLAN task. No probe ran during pause. Core clean4e3b0c9 and PC main823c739 reverified. Renewed five-minute no-edit liveness deadline; same generation and lane. Core cost-attribution checkpoint received via automatic channel: one probe completed,8 cases and7 measured phase samples; SHA scan then canonical serialization dominate terminal cases, pure-append planning remains. Preliminary only, terminal evidence review pending. Extended five minutes for artifact packaging and immutable handoff only; no second probe. Receipt normalization first attempt rejected SCHEMA_ADDITIONAL_PROPERTY for six external-only handoff fields; active registry remained36. Raw handoff locator preserved; retry strips external-only fields into schema envelope, no claim of receipt before success. User authorized completing remaining four typing points. Prepare two read-only owning-repository design lanes: Core safe incremental planning/result costs; Editor worker scheduling and immediate native typing with authoritative geometry retained. No product mutation in design lanes. Existing Work tasks reused, Sol high selected explicitly. Product UX still pending.",
       "contextDocumentIds": [
         "doc-flowdoc-system-map",
         "doc-document-map-operating-rules",
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 28,
+        "revision": 45,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3383,7 +3383,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-core-terminal-lf-reuse-g1-a1",
-            "status": "active",
+            "status": "closed",
             "locator": {
               "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
               "threadId": "01a07584-49dc-7602-b662-6033c1469517",
@@ -3484,6 +3484,219 @@
             },
             "requiredEvidence": [
               "evidence-core-incremental-admission"
+            ]
+          },
+          {
+            "roomRunId": "core-result-cost-attribution-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "core-result-cost-attribution",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-incremental-admission",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-result-cost-attribution-g1-a1",
+            "status": "accepted",
+            "locator": {
+              "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
+              "threadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "branch": "codex/core-creator-native-tail-20260909"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-12T08:28:09.4303621Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T08:39:50.4387813Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "medium",
+              "taskComplexity": "Separate canonical serialization, UTF8 and SHA256 costs in actual layout fingerprint",
+              "scopeSize": "No product edits; one focused actual-pipeline measurement",
+              "uncertainty": "Canonical serialization, encoding and SHA loop cost attribution",
+              "missingContext": "Share of serialization versus hashing and whether authentic unchanged objects recur",
+              "failureImpact": "Misattributed performance evidence only",
+              "recoverability": "Read-only artifact probe can be discarded without product mutation",
+              "reason": "Read-only cost attribution at three known source boundaries on exact candidate; Sol medium reuses Core context and count/byte checks without new algorithm design. No need for high effort or GPT6 for this bounded probe.",
+              "smallerOptionAssessment": "Sol medium retained for authenticated layout instrumentation and independently checked phase attribution; smaller model not selected for this boundary-sensitive probe.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-12T08:28:09.4535939Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Need source/public API mutation beyond observation",
+                "Attribution boundaries not independently verifiable"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only cost attribution; no product behavior change or UX acceptance"
+            },
+            "requiredEvidence": [
+              "evidence-core-incremental-admission"
+            ]
+          },
+          {
+            "roomRunId": "core-typing-boundary-design-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "core-typing-boundary-design",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-incremental-admission",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-typing-boundary-design-g1-a1",
+            "status": "active",
+            "locator": {
+              "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
+              "threadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "branch": "codex/core-creator-native-tail-20260909"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-12T08:54:11.5600574Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T08:59:11.5735981Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded source-grounded design for approved typing responsiveness changes",
+              "scopeSize": "Read-only owning repository design and contract gap report",
+              "uncertainty": "Safe bounded processing and state authority",
+              "missingContext": "Exact implementation boundaries and regression criteria",
+              "failureImpact": "Misattributed performance evidence only",
+              "recoverability": "Read-only artifact probe can be discarded without product mutation",
+              "reason": "Sol high has existing lane context; asynchronous state or shaping authority requires deeper reasoning than prior numeric attribution, with exact source references and parity criteria as checks.",
+              "smallerOptionAssessment": "Medium attribution pass is complete; design must reconcile state ownership and correctness boundaries, so high effort selected without GPT6 escalation.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-12T08:51:48.1249045Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Contract gap requires PLAN decision",
+                "Design lacks source-grounded correctness argument"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only cost attribution; no product behavior change or UX acceptance"
+            },
+            "requiredEvidence": [
+              "evidence-core-incremental-admission"
+            ]
+          },
+          {
+            "roomRunId": "editor-typing-boundary-design-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "editor-typing-boundary-design",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-preview-keyboard-contract",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-editor-typing-boundary-design-g1-a1",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor",
+              "branch": "codex/editor-stage-a-multiline-measurement-20260909"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-12T08:53:27.7329448Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T08:58:27.741796Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded source-grounded design for approved typing responsiveness changes",
+              "scopeSize": "Read-only owning repository design and contract gap report",
+              "uncertainty": "Safe bounded processing and state authority",
+              "missingContext": "Exact implementation boundaries and regression criteria",
+              "failureImpact": "Misattributed performance evidence only",
+              "recoverability": "Read-only artifact probe can be discarded without product mutation",
+              "reason": "Sol high has existing lane context; asynchronous state or shaping authority requires deeper reasoning than prior numeric attribution, with exact source references and parity criteria as checks.",
+              "smallerOptionAssessment": "Medium attribution pass is complete; design must reconcile state ownership and correctness boundaries, so high effort selected without GPT6 escalation.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-12T08:51:48.131943Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Contract gap requires PLAN decision",
+                "Design lacks source-grounded correctness argument"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only cost attribution; no product behavior change or UX acceptance"
+            },
+            "requiredEvidence": [
+              "evidence-preview-keyboard-contract"
             ]
           }
         ],
@@ -3753,6 +3966,151 @@
               "remainingScope": [
                 "Core terminal LF reuse",
                 "Remaining four-point performance and UX acceptance"
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-terminal-lf-reuse-g1-a1",
+            "payloadDigest": "66c2c6b0a2b506108ad9c624ed7338374f68c78942d61274dac213dc513009f7",
+            "payload": {
+              "ownerRepositoryId": "repo-core",
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "laneId": "core-terminal-lf-reuse",
+              "evidenceIds": [],
+              "revisionAttempt": 1,
+              "changedFiles": [
+                "src/creatorPreview/nativeTailExperimentV1.ts",
+                "tests/creatorNativeTailExperimentV1.test.ts",
+                "tests/creatorStageATrialBridgeV1.test.ts"
+              ],
+              "roomRunId": "core-terminal-lf-reuse-g1-a1",
+              "unknowns": [
+                "Full browser ABBA performance distribution",
+                "User-approved numerical typing smoothness threshold and acceptance result"
+              ],
+              "behaviorChanged": true,
+              "exactCommit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+              "ownershipGeneration": 1,
+              "risks": [
+                "Browser UX measurement and user acceptance remain pending",
+                "No Node-to-browser responsiveness claim",
+                "Burst and nonempty-suffix timing variance remains despite exact work-count parity",
+                "Fingerprint and geometry costs remain outside this lane"
+              ],
+              "status": "PASS",
+              "tests": [
+                "RED: baseline terminal Enter at 1024 shaped 1024 planning UTF-16 and ran 21 line-shape calls / 2022 UTF-16",
+                "Terminal focused: 2 files / 19 tests passed",
+                "Focused and adjacent: 8 files / 123 tests passed",
+                "Paired B-C-C-B measurement: 720/720 public layout, fingerprint, and geometry calls exact",
+                "Full Core gate: npm run check; type-check and 438 files / 2871 tests passed",
+                "git diff --check passed"
+              ],
+              "behaviorSummary": "Eligible terminal Enter, trailing-LF merge, and re-Enter now reuse exact immutable closing-paragraph planning facts and rebuild only explicit-break metadata/new empty-tail state. All 96 eligible candidate terminal rows perform zero paragraph and line shaping; nonempty suffix movement retains the existing reconstruction path. PLAN-normalized envelope preserves raw SHA2563B6EA2C948EE1241ADDB02361B1FDAC7F7607F7419A30E4932DD10C0D5930B5C; commit mapped to exactCommit, artifact IDs retained in external evidence locator, not canonical IDs."
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-10T16:43:46.7768833Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-10T16:43:46.7768833Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-10T16:43:46.7768833Z",
+              "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 5,
+              "acknowledgedAt": "2026-09-10T16:43:46.7768833Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-10T16:43:46.7768833Z",
+              "reviewNote": "Mechanism candidate source-reviewed, PLAN19focused tests pass and720oracle matches reported. Final lane acceptance cannot close declared UX gate: browser and user trial pending. Preserve candidate4e3b0c9, no product main merge or UX promotion. Continue remaining four-point work from verified candidate.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Browser/user UX acceptance of terminal LF candidate",
+                "Whole-result costs and scheduling/visible typing"
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-result-cost-attribution-g1-a1",
+            "payloadDigest": "7d44b114cd137c87f7ba5b3259a80e3618904a5db2a71067f9552bef86ffda9a",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "core-result-cost-attribution-g1-a1",
+              "laneId": "core-result-cost-attribution",
+              "ownerRepositoryId": "repo-core",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "PASS",
+              "behaviorChanged": false,
+              "behaviorSummary": "One authenticated Stage A probe separated whole-result fingerprint cost. SHA-256 compression is the largest isolated phase, canonical serialization is second, and UTF-8 encoding is small. Reused frozen commands and regions are still recursively serialized; identity/freeze observations do not authorize a generic cache. PLAN schema envelope only; external details retained in raw handoff SHA2568F670A4D8932A05A53176D7EE571E73AB0BC529E6866183CE534276A31312351.",
+              "exactCommit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+              "changedFiles": [],
+              "tests": [
+                "8/8 authenticated 1024/2048 pure-append and terminal-LF cases preserved exact canonical strings and layout digests",
+                "7 measured samples per isolated phase per case plus one excluded warmup",
+                "All copied SHA-loop digests matched createVNextCompactFingerprint and layout.layoutFingerprint",
+                "Core worktree remained clean"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Single-process Node wall-clock samples are preliminary attribution only",
+                "Isolated phase medians were measured after the public call and do not sum exactly to its synchronous fingerprint timer",
+                "Object identity plus Object.isFrozen does not prove proxy absence or a safe generic memoization boundary"
+              ],
+              "unknowns": [
+                "Browser and live-user cost distribution",
+                "Benefit of a byte-sink implementation after parity and allocation evidence"
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-12T08:39:24.3291803Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-12T08:39:24.3291803Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-12T08:39:24.3291803Z",
+              "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 6,
+              "acknowledgedAt": "2026-09-12T08:39:24.3291803Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-12T08:40:14.8878546Z",
+              "evidenceIds": [
+                "evidence-core-incremental-admission"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Artifact hashes and8raw cases checked",
+                  "status": "passed"
+                },
+                {
+                  "name": "Harness exact parity assertions reviewed; no new product edits",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "Four-point implementation and browser UX remain pending",
+                "Byte-sink benefit unproven; noLF planning remains linear"
               ]
             }
           }
@@ -21058,6 +21416,16 @@
       "pathOrContractId": "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'; npm run check",
       "verificationSummary": "Core hidden .superpowers/sdd cleanup is recorded for the FlowDoc documentation authority cleanup. Project Control commit 3d92761e2978e61c938822d10ee00a1769e42110 recorded retained value and discard rationale before Core deletion. RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed in Core because the new keeps hidden superpowers SDD Markdown retired from Core guard found .superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md and reported expected true to be false. Core commit 68e7ad7180b2eb9afb0adff14bacaefcecbb4f08 retired exactly five hidden .superpowers/sdd Markdown files and changed tests/coreDocumentationAuthority.test.ts only. Core hidden .superpowers/sdd Markdown is now absent. GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 with 1 file and 2 tests, git diff --check, npm run check in the Core worktree with 461 test files and 2947 tests, npm run check on merged Core main with 461 test files and 2947 tests, and post-merge counts showing git ls-files '.superpowers/*.md' = 0 while Core tracked Markdown now matches visible Markdown at 343 files. Cleanup housekeeping: branch fd-core-hidden-sdd-0901 was deleted and git worktree list no longer lists C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/fd-core-hidden-sdd-0901 as a Core worktree, but fd-core-hidden-sdd-0901 remains on disk because git worktree remove failed with Filename too long and guarded/direct Remove-Item -Recurse attempts were blocked by local safety policy. This is a cleanup blocker only, not an active worktree or unmerged branch. This evidence does not edit Core runtime behavior and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
       "verifiedAt": "2026-09-01T03:50:00.000Z"
+    },
+    {
+      "pathOrContractId": "src/creatorPreview/nativeTailExperimentV1.ts",
+      "verificationSummary": "Bounded terminal-LF reuse MECHANISM evidence only; not complete incremental admission/UX acceptance. PLAN source-reviewed exact predicate and identity guard; independent19tests passed. WORK full gate438files2871tests,720/720paired publiclayout/fingerprint/geometry oracle parity. Eligible96terminalrows have zero paragraph/line shaping; nonempty suffix keeps reconstruction. Node terminal2048p95 completecall285.7 to58.3ms; median45.5to44.7ms. Ineligible suffix p95158.9to167.3ms variance remains. No browser or user acceptance, no productmain merge, maps unchanged. Artifact C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-terminal-lf-reuse-g1-a1.json Read-only cost probe2026-09-12 accepted as bounded attribution:8 actual StageA cases,7 phase samples each; PLAN verified handoff/config artifact hashes and inspected raw rows/harness parity assertions. SHA loop largest isolated phase, serialization second, UTF8 third. Isolated timings are not additive public-call trace. Terminal2048 fingerprint22.1-25.0ms; pureappend planning72.0ms still shapes2049UTF16. Proposed byte sink unproven and still linear; no implementation approval inferred, no UX claim. Artifact: C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-result-cost-attribution-g1-a1-config.json",
+      "nodeIds": [],
+      "kind": "evidence",
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "id": "evidence-core-incremental-admission",
+      "verifiedAt": "2026-09-12T08:40:14.8684748Z"
     },
     {
       "kind": "evidence",
