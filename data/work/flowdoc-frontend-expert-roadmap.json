@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 90,
+    "revision": 95,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1115,7 +1115,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 2,
         "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a2",
-        "status": "returned",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
           "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -1173,6 +1173,10 @@
             {
               "name": "Visual wrapping continuity while provisional browser text hands off to exact Core projection",
               "status": "passed"
+            },
+            {
+              "name": "Narrow-preview horizontal viewport remains stable across insertion, blur and exact Core adoption",
+              "status": "failed"
             }
           ],
           "criteria": [
@@ -1193,10 +1197,140 @@
               "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
               "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "evidenceTarget": "evidence-preview-keyboard-contract",
-              "status": "passed",
+              "status": "failed",
               "evidenceIds": [
                 "evidence-preview-keyboard-contract"
               ]
+            }
+          ],
+          "userAcceptance": {
+            "required": true,
+            "evidenceIds": [
+              "evidence-preview-keyboard-contract"
+            ],
+            "status": "rejected",
+            "actor": {
+              "kind": "user",
+              "id": "ตูม"
+            }
+          },
+          "mechanismChecks": [
+            {
+              "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
+              "status": "passed"
+            }
+          ],
+          "applicability": "applicable",
+          "scenario": {
+            "environment": "Isolated exact-commit candidate at http://127.0.0.1:62172; live61348 unchanged",
+            "device": "Current Windows host followed by actual user trial",
+            "userAction": "Continuous Thai/Latin typing for at least12 lines with automatic wrapping mixed with Enter, then selection, Backspace, undo/redo and IME",
+            "fixture": "Retained pure/mixed256/1024/2048 plus live twelve-line paper editing",
+            "expectedVisibleBehavior": "Characters and caret follow native typing immediately while Core continues in the background; no duplicate text, lost input or unsafe stale replacement",
+            "browser": "Real Google Chrome module Worker with a 400ms delayed-Core continuity scenario and fresh visible in-app trial",
+            "inputMethod": "Native textarea input and composition events with Core projection adoption observed separately"
+          },
+          "visibleChange": true
+        },
+        "requiredEvidence": [
+          "evidence-preview-keyboard-contract"
+        ]
+      },
+      {
+        "roomRunId": "editor-immediate-paper-echo-g1-a1",
+        "dispatchSetId": "typing-four-points-20260910",
+        "laneId": "editor-immediate-paper-echo",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-editor",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-preview-keyboard-contract",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 3,
+        "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a3",
+        "status": "active",
+        "locator": {
+          "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
+          "branch": "codex/creator-worker-20260912"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-12T13:36:00Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-12T17:00:00Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-sol",
+          "reasoningEffort": "high",
+          "taskComplexity": "Narrow-preview viewport preservation across browser focus, blur, textarea collapse and exact Core adoption",
+          "scopeSize": "Bounded Editor-only scroll snapshot/restore guard plus one real-browser regression on the clean revision2 candidate",
+          "uncertainty": "Distinguishing browser-induced horizontal movement from deliberate user pan without fighting either axis",
+          "missingContext": "Exact event that mutates scrollLeft during the rejected user sequence",
+          "failureImpact": "Paper origin and line beginnings become clipped after a normal mid-line insertion",
+          "recoverability": "Isolated revision commit and demo; revision2 remains unmerged",
+          "reason": "Sol high is sufficient because revision2 resolved the alternating-renderer failure and this is a new deterministic Editor-only viewport side effect with exact DOM metrics and screenshots.",
+          "smallerOptionAssessment": "Lower effort is not selected because focus, blur, asynchronous adoption and intentional pan must be separated. GPT-6 is unnecessary unless this attempt fails the same scroll-preservation boundary or requires a Core contract change.",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-12T13:36:00Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "Revision attempt3 fails the same viewport-preservation requirement",
+            "A Core ABI or cross-repository contract change becomes necessary"
+          ]
+        },
+        "ux": {
+          "regressionChecks": [
+            {
+              "name": "IME, selection, undo/redo, source reset, Worker crash/retry and existing paper editing",
+              "status": "pending"
+            },
+            {
+              "name": "Visual wrapping continuity while provisional browser text hands off to exact Core projection",
+              "status": "pending"
+            },
+            {
+              "name": "Narrow-preview horizontal viewport remains stable across insertion, blur and exact Core adoption",
+              "status": "pending"
+            }
+          ],
+          "criteria": [
+            {
+              "id": "immediate-native-paper-echo",
+              "criterion": "Every native input synchronously updates the visible paper editing surface and the newest value is paintable on the next browser frame without waiting for Core.",
+              "measurementMethod": "Real Chrome raw input, DOM value and requestAnimationFrame linkage across retained pure/mixed workloads; report timings without inventing a threshold.",
+              "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "evidenceTarget": "evidence-preview-keyboard-contract",
+              "status": "pending",
+              "evidenceIds": []
+            },
+            {
+              "id": "authoritative-projection-handoff",
+              "criterion": "Stale Core glyphs do not duplicate current text; exact accepted projection replaces provisional display only under matching identity while text, wrapping geometry, caret, order and history remain visually continuous.",
+              "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
+              "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "evidenceTarget": "evidence-preview-keyboard-contract",
+              "status": "pending",
+              "evidenceIds": []
             }
           ],
           "userAcceptance": {
@@ -1207,7 +1341,7 @@
           "mechanismChecks": [
             {
               "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
-              "status": "passed"
+              "status": "pending"
             }
           ],
           "applicability": "applicable",
@@ -2078,19 +2212,22 @@
           "acknowledgedAt": "2026-09-12T13:15:32.958Z"
         },
         "acceptance": {
-          "status": "pending",
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-12T13:32:00Z",
+          "reviewNote": "Actual user insertion trial rejected revision2. In a narrow preview viewport, blur and exact Core adoption changed creator-preview-scroll.scrollLeft to55.2px, placing31.2px of the paper behind the left viewport edge and clipping line beginnings. Text remained intact. Automated continuity checked renderer authority but did not assert horizontal viewport preservation across blur.",
           "evidenceIds": [],
           "requiredChecks": [],
-          "remainingScope": []
+          "remainingScope": [
+            "Preserve the exact preview scrollLeft and scrollTop across the editing-burst blur and Core-adoption boundary at narrow widths.",
+            "Keep the single visible renderer during focused typing and the one-time exact Core adoption after blur.",
+            "Add a real-browser regression at a horizontally overflowed viewport that inserts mid-line, blurs, waits for adoption and asserts unchanged viewport coordinates and unclipped paper origin.",
+            "Return a new isolated demo for actual user acceptance before merge."
+          ]
         }
       }
     ],
-    "completionQueue": [
-      {
-        "handoffId": "handoff-editor-immediate-paper-echo-g1-a2",
-        "arrivalSequence": 12
-      }
-    ],
+    "completionQueue": [],
     "cleanup": []
   }
 }
