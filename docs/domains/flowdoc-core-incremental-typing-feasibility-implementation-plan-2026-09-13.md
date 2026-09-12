@@ -455,9 +455,12 @@ export function advanceVNextCreatorIncrementalTypingFeasibilitySessionV1(input: 
 
 - [ ] **Step 1: Write RED tests for authentic state and operation coverage**
 
-Require exact results for append, backspace, middle Thai insert, localized selection
-replacement, terminal Enter split, trailing-LF Backspace merge and the sequence
-`"" → "ก" → "กำ" → "กำ" commit`.
+Require at least one bounded `incremental-exact` positive case for append, backspace,
+middle Thai insert, localized selection replacement, terminal Enter split, trailing-LF
+Backspace merge and the sequence `"" → "ก" → "กำ" → "กำ" commit`. Also retain long
+Thai, Latin and mixed cases that exceed reflow or combined-work limits as explicit
+`full-context-required` tests; they must preserve the prior session and remain in the fixed
+corpus rather than being rewritten, discarded or counted as timing PASS.
 Require rejection of copied sessions, wrong engine/provider, repeated or decreasing revision,
 prefix/suffix/style drift and edit/source mismatch.
 
@@ -489,8 +492,11 @@ Start at the first previous line intersecting `previousRange`. Call
 `planCreatorPreviewNextLineV1` one line at a time. A line reconverges only when normalized
 cluster source ranges, inline indexes, glyph facts, advance, break status and shifted next
 start offset equal the retained line. Require two consecutive equal lines before retaining
-the suffix; if the paragraph ends first, use text-end convergence. Cap common reflow at the
-Gate thresholds and return `full-context-required` instead of publishing a partial result.
+the suffix; if the paragraph ends first, use text-end convergence. Before planning the next
+line, stop when its conservative work bound would cross the Gate threshold; do not perform
+unbounded candidate work and label it fallback afterward. Return `full-context-required`
+with `reflow-limit-exceeded` instead of publishing a partial result. Oracle-only diagnostics
+may inspect farther outside candidate timing to explain why reconvergence did not occur.
 
 ```ts
 while (cursor < nextFacts.clusters.length) {
@@ -512,7 +518,9 @@ while (cursor < nextFacts.clusters.length) {
 
 In tests only, call `createVNextCreatorTextPreviewLayoutV1` after candidate timing and
 normalize its paint commands into line cluster/source facts. Require exact equality and
-verify the session consumes the old token only after a successful advance.
+verify the session atomically promotes the successor only after a successful advance. A
+fallback must leave the old session/token current and permit the same authenticated edit to
+be retried without full initialization.
 
 - [ ] **Step 7: Run focused and neighboring tests, then commit Task 3**
 
