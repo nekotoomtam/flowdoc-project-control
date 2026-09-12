@@ -543,7 +543,15 @@ interface CreatorIncrementalFeasibilityArtifactV1 {
   schemaVersion: "creator-incremental-typing-feasibility/1"
   environment: Record<string, string | number>
   pins: { coreCommit: string; wasmSha256: string; fontSha256: string; measurementProfileId: string }
-  policy: { warmup: 5; repetitions: number; p95Ms: 16.7; maxMs: 33.4; maxWorkUtf16: 512 }
+  policy: {
+    warmup: 5
+    repetitions: number
+    p95Ms: 16.7
+    maxMs: 33.4
+    maxAcceptedContextPerCallUtf16: 256
+    maxExploratoryContextPerCallUtf16: 512
+    maxAcceptedShapeAndSegmentUtf16: 1024
+  }
   rows: Array<{
     caseId: string; burstRevision: number | null
     language: "thai" | "latin" | "mixed"; sizeUtf16: 256 | 1024 | 2048
@@ -558,6 +566,13 @@ interface CreatorIncrementalFeasibilityArtifactV1 {
   summary: { validRows: number; invalidRows: number; fallbackRows: number; admissionRate: number; gate: "PASS" | "BLOCKER" }
 }
 ```
+
+`maxExploratoryContextPerCallUtf16: 512` อนุญาตให้ candidate ตรวจว่าบริบทที่เล็กกว่า
+ไม่เสถียรและคืน `full-context-required` อย่างมีเหตุผลเท่านั้น ผล localized edit ที่ใช้
+context เกิน `maxAcceptedContextPerCallUtf16: 256` ใน call ใด call หนึ่งห้ามนับเป็น
+`incremental-exact` หรือ timing PASS แม้ผลจะตรง oracle ส่วนเพดาน
+`maxAcceptedShapeAndSegmentUtf16: 1024` นับผลรวมงาน shape และ segment ทุก range call
+ใน revision ที่รับเข้า Gate 1 ทั้งสามค่าเป็นคนละมิติและ verifier ต้องตรวจแยกกัน
 
 - [ ] **Step 1: Add the fixed corpus**
 
