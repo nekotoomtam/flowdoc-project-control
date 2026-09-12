@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 86,
+    "revision": 90,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1115,7 +1115,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 2,
         "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a2",
-        "status": "active",
+        "status": "returned",
         "locator": {
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
           "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -1168,11 +1168,11 @@
           "regressionChecks": [
             {
               "name": "IME, selection, undo/redo, source reset, Worker crash/retry and existing paper editing",
-              "status": "pending"
+              "status": "passed"
             },
             {
               "name": "Visual wrapping continuity while provisional browser text hands off to exact Core projection",
-              "status": "pending"
+              "status": "passed"
             }
           ],
           "criteria": [
@@ -1182,8 +1182,10 @@
               "measurementMethod": "Real Chrome raw input, DOM value and requestAnimationFrame linkage across retained pure/mixed workloads; report timings without inventing a threshold.",
               "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "evidenceTarget": "evidence-preview-keyboard-contract",
-              "status": "pending",
-              "evidenceIds": []
+              "status": "passed",
+              "evidenceIds": [
+                "evidence-preview-keyboard-contract"
+              ]
             },
             {
               "id": "authoritative-projection-handoff",
@@ -1191,8 +1193,10 @@
               "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
               "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "evidenceTarget": "evidence-preview-keyboard-contract",
-              "status": "pending",
-              "evidenceIds": []
+              "status": "passed",
+              "evidenceIds": [
+                "evidence-preview-keyboard-contract"
+              ]
             }
           ],
           "userAcceptance": {
@@ -1203,17 +1207,17 @@
           "mechanismChecks": [
             {
               "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
-              "status": "pending"
+              "status": "passed"
             }
           ],
           "applicability": "applicable",
           "scenario": {
-            "environment": "Isolated experimental candidate; live61348 unchanged until PLAN prepares a separate reviewable demo",
+            "environment": "Isolated exact-commit candidate at http://127.0.0.1:62172; live61348 unchanged",
             "device": "Current Windows host followed by actual user trial",
             "userAction": "Continuous Thai/Latin typing for at least12 lines with automatic wrapping mixed with Enter, then selection, Backspace, undo/redo and IME",
             "fixture": "Retained pure/mixed256/1024/2048 plus live twelve-line paper editing",
             "expectedVisibleBehavior": "Characters and caret follow native typing immediately while Core continues in the background; no duplicate text, lost input or unsafe stale replacement",
-            "browser": "Real Google Chrome module Worker",
+            "browser": "Real Google Chrome module Worker with a 400ms delayed-Core continuity scenario and fresh visible in-app trial",
             "inputMethod": "Native textarea input and composition events with Core projection adoption observed separately"
           },
           "visibleChange": true
@@ -2015,9 +2019,78 @@
             "Return a new isolated demo for actual user acceptance before merge."
           ]
         }
+      },
+      {
+        "handoffId": "handoff-editor-immediate-paper-echo-g1-a2",
+        "payloadDigest": "c331066c7e56248b66e9b25e1b3e9d42562c38438688c6749784a046bb40dcb6",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "editor-immediate-paper-echo-g1-a1",
+          "laneId": "editor-immediate-paper-echo",
+          "ownerRepositoryId": "repo-editor",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 2,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "The first paper mutation latches the browser-shaped textarea as the sole visible renderer for the focused editing burst while Worker-local Core keeps projecting. Exact Core glyph and caret geometry are adopted once after blur; blocked layout and explicit source reload release the latch. Automatic wrapping no longer alternates as individual Core results arrive. PLAN-normalized from immutable terminal c919858a3ef639771544da4f541b77980c339d80314327c3f63bec768a4fce19.",
+          "exactCommit": "7a7a4d7386d44b248c0e0f241f901c437e859148",
+          "changedFiles": [
+            "package.json",
+            "scripts/run-creator-paper-echo-continuity-evidence.mjs",
+            "src/components/structures/StructurePreviewPage.tsx",
+            "src/editor/structures/creatorPreviewLocalEcho.ts",
+            "src/styles/creator-preview.css",
+            "src/tests/creatorPreviewLocalEcho.test.ts"
+          ],
+          "tests": [
+            "PASS focused: 3 files, 18 tests",
+            "PASS exact-commit full Editor gate: type-check, 124 files, 510 tests, production build",
+            "PASS exact-commit real Chrome with 400ms delayed Core: automatic wrap plus Enter, 10 accepted Core updates, renderer transitions exactly Core to browser echo to Core, exact final value and Core text",
+            "PASS broad real Chrome compatibility and fresh visible in-app browser trial"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Browser-shaped echo and exact Core shaping may adjust once at the explicit blur boundary.",
+            "Very long uninterrupted input remains bounded by the current page-body echo height until blur."
+          ],
+          "unknowns": [
+            "Real OS IME candidate-window placement remains unproven; CDP composition passes.",
+            "Actual user acceptance of revision attempt 2 remains pending."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-12T13:15:32.958Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-12T13:15:32.958Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-12T13:15:32.958Z",
+          "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 12,
+          "acknowledgedAt": "2026-09-12T13:15:32.958Z"
+        },
+        "acceptance": {
+          "status": "pending",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": []
+        }
       }
     ],
-    "completionQueue": [],
+    "completionQueue": [
+      {
+        "handoffId": "handoff-editor-immediate-paper-echo-g1-a2",
+        "arrivalSequence": 12
+      }
+    ],
     "cleanup": []
   }
 }
