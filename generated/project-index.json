@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "c901f97dce513b1b2d09e018716ee13a8506251f9dccf9bf361b84b65c6b00d7",
+  "sourceDigest": "1bbd95d609a44b84df346efc1d43611ee83e6c7fe4fa90d00657a6c2e82f9f05",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2985,7 +2985,7 @@
       "updatedAt": "2026-09-12T18:00:33.2156560Z",
       "coordination": {
         "version": 1,
-        "revision": 103,
+        "revision": 104,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4314,7 +4314,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
-            "status": "prepared",
+            "status": "active",
             "locator": {
               "threadId": "01a07584-49dc-7602-b662-6033c1469517",
               "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
