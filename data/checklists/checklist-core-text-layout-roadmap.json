@@ -41,9 +41,11 @@
     {
       "id": "incremental-admission",
       "label": "ประเมิน incremental ก่อนเปิดใช้งาน",
-      "state": "pending",
+      "state": "blocked",
       "evidenceTarget": "evidence-core-incremental-admission",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-incremental-admission"
+      ]
     },
     {
       "id": "complex-flow",
@@ -79,5 +81,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-08T14:43:28.0496926Z"
+  "updatedAt": "2026-09-12T19:54:44.563301Z"
 }

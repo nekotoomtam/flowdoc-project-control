@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1108edb82622a74f4e88e60cc8c34e6cb4b4dcf416904eb017d7b08d998dd293",
+  "sourceDigest": "e8ff565cc365e00ac945678f78eb2b9cf0a8aaf7e84bf9db63eff0b66b208c69",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2977,15 +2977,15 @@
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-      "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate.",
+      "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation.",
       "requiredEvidence": [
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-12T18:00:33.2156560Z",
+      "updatedAt": "2026-09-12T19:54:44.563301Z",
       "coordination": {
         "version": 1,
-        "revision": 114,
+        "revision": 118,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4315,7 +4315,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
-            "status": "active",
+            "status": "closed",
             "locator": {
               "threadId": "01a07584-49dc-7602-b662-6033c1469517",
               "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
@@ -5308,6 +5308,93 @@
                 "Choose a single authoritative layout path that can provide immediate input feedback without changing geometry between focused and unfocused states.",
                 "Determine whether the requirement needs a Core incremental shaping/layout contract and cross-repository lane before authorizing more product implementation.",
                 "Preserve all rejected commits and evidence; do not merge or clean up until the architecture decision is recorded."
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
+            "payloadDigest": "20dbb71ff02d9abd20edf2d3a6059c435b082ec18d3e9f7068eab8d441fa4a6e",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "core-incremental-typing-feasibility-g1-a1",
+              "laneId": "lane-core-incremental-typing-feasibility",
+              "ownerRepositoryId": "repo-core",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "BLOCKER",
+              "behaviorChanged": true,
+              "behaviorSummary": "Candidate-only Core feasibility APIs now retain authenticated paragraph and line state, apply bounded range shaping and exact reflow, and produce verified corpus evidence. The implementation and full Core gate pass, but Gate 1 product admission is blocked at 80% with long mid-insert/replacement fallbacks plus responsiveness and scaling failures. No production binding or default path is active.",
+              "exactCommit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+              "changedFiles": [
+                "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+                "package.json",
+                "packages/text-engine-rust-wasm/src/creatorIncrementalParagraphProviderV1.ts",
+                "packages/text-engine-rust-wasm/src/index.ts",
+                "scripts/run-creator-incremental-typing-feasibility.mjs",
+                "scripts/verify-creator-incremental-typing-feasibility.mjs",
+                "src/creatorPreview/incrementalLineReflowFeasibilityV1.ts",
+                "src/creatorPreview/incrementalTypingFeasibilityContractV1.ts",
+                "src/creatorPreview/incrementalTypingFeasibilityV1.ts",
+                "src/creatorPreview/layoutFactsV1.ts",
+                "src/index.ts",
+                "tests/creatorIncrementalParagraphProviderV1.test.ts",
+                "tests/creatorIncrementalTypingFeasibilityArtifactV1.test.ts",
+                "tests/creatorPreviewIncrementalLineReflowFeasibilityV1.test.ts",
+                "tests/creatorPreviewIncrementalTypingFeasibilityV1.test.ts",
+                "tests/fixtures/creator-preview/incremental-typing-feasibility.v1.json"
+              ],
+              "tests": [
+                "PLAN fresh npm run check: type-check PASS; 442 test files and 2,911 tests PASS at 3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+                "PLAN fresh verifier: ok true, gate BLOCKER for final-1.json at measured commit efef6c899e2ca6efca7c231a72f4486232955091",
+                "Final artifact SHA-256 4723ab417a021a7c2e32bf6518f2fda4632a0967a021a4ec08d050e9fbac37d3; 3,980 measured rows, 3,180 exact, 800 fallback, 0 invalid",
+                "All 180 sustained revisions exact without session reset; p95 13.622 ms and max 17.0365 ms",
+                "15 measured source hashes unchanged after the documentation-only final commit; worktree clean and git diff check PASS"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Successive-context stability remains an experimental heuristic rather than a production-safe boundary certificate.",
+                "Whole-paragraph byte-offset conversion, marshaling, copying and freezing remain inside candidate work.",
+                "Long localized edits may require more line reflow than the accepted bounds.",
+                "Measurements cover one Windows reference environment and geometry diagnostics remain outside candidate timing."
+              ],
+              "unknowns": [
+                "Production-safe incremental shaping and geometry/page patch contracts.",
+                "Editor key-to-visible latency, real Windows Thai IME, caret/selection parity and user acceptance.",
+                "Node-scale full-document pagination performance.",
+                "Feasibility after a runtime-binding or architecture redesign that removes whole-paragraph work."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-12T19:52:10Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-12T19:52:10Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-12T19:52:10Z",
+              "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 14,
+              "acknowledgedAt": "2026-09-12T19:52:10Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-12T19:52:10Z",
+              "reviewNote": "PLAN independently verified the exact commits, clean worktree, immutable handoff/artifact hashes, final verifier, measured-source provenance and a fresh full Core gate (442 files / 2,911 tests). The diagnostic implementation is coherent, exactness has 0 invalid rows and the 180-revision burst is exact. Gate 1 product admission is blocked because common admission is 80% below 95%, long mid-insert/replacement cases fall back across Thai/Latin/mixed, multiple p95/max groups exceed 16.7/33.4 ms and 18 scaling groups exceed 1.50. Preserve the candidate and evidence; do not merge, activate production binding, dispatch Editor, complete the checklist or promote map truth.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Run PLAN architecture review before authorizing any Gate 2 or Gate 3 implementation.",
+                "Design a runtime/state boundary that removes whole-paragraph conversion/copying and handles long mid-line reflow without hiding fallback.",
+                "Define a new fixed feasibility gate before any Editor integration or user trial.",
+                "Keep node-count and full-document pagination performance as a separate later lane."
               ]
             }
           }
@@ -6556,9 +6643,9 @@
         "Text placement policy must be decided from examples before implementation"
       ],
       "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-      "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow.",
+      "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration.",
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-08T14:43:28.0496926Z"
+      "updatedAt": "2026-09-12T19:54:44.563301Z"
     },
     {
       "kind": "phase",
@@ -11356,9 +11443,11 @@
         {
           "id": "incremental-admission",
           "label": "ประเมิน incremental ก่อนเปิดใช้งาน",
-          "state": "pending",
+          "state": "blocked",
           "evidenceTarget": "evidence-core-incremental-admission",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-incremental-admission"
+          ]
         },
         {
           "id": "complex-flow",
@@ -11394,7 +11483,7 @@
         }
       ],
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-08T14:43:28.0496926Z"
+      "updatedAt": "2026-09-12T19:54:44.563301Z"
     },
     {
       "kind": "checklist",
@@ -22696,14 +22785,14 @@
       "verifiedAt": "2026-09-01T03:50:00.000Z"
     },
     {
-      "pathOrContractId": "src/creatorPreview/nativeTailExperimentV1.ts",
-      "verificationSummary": "Bounded terminal-LF reuse MECHANISM evidence only; not complete incremental admission/UX acceptance. PLAN source-reviewed exact predicate and identity guard; independent19tests passed. WORK full gate438files2871tests,720/720paired publiclayout/fingerprint/geometry oracle parity. Eligible96terminalrows have zero paragraph/line shaping; nonempty suffix keeps reconstruction. Node terminal2048p95 completecall285.7 to58.3ms; median45.5to44.7ms. Ineligible suffix p95158.9to167.3ms variance remains. No browser or user acceptance, no productmain merge, maps unchanged. Artifact C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-terminal-lf-reuse-g1-a1.json Read-only cost probe2026-09-12 accepted as bounded attribution:8 actual StageA cases,7 phase samples each; PLAN verified handoff/config artifact hashes and inspected raw rows/harness parity assertions. SHA loop largest isolated phase, serialization second, UTF8 third. Isolated timings are not additive public-call trace. Terminal2048 fingerprint22.1-25.0ms; pureappend planning72.0ms still shapes2049UTF16. Proposed byte sink unproven and still linear; no implementation approval inferred, no UX claim. Artifact: C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-result-cost-attribution-g1-a1-config.json Core read-only boundary design reviewed: existing same-realm StageA and geometry APIs allow Editor-owned Worker without Core ABI changes; provider shape/segment APIs do not certify bounded context. Original handoff txt842562a38cf530379f81adfd238ceb3484242f77a8f004e46e5cc214061e7880 and separate clarification retained. No implementation/UX proof.",
+      "pathOrContractId": "creator-incremental-typing-feasibility/1",
+      "verificationSummary": "Bounded terminal-LF reuse MECHANISM evidence only; not complete incremental admission/UX acceptance. PLAN source-reviewed exact predicate and identity guard; independent19tests passed. WORK full gate438files2871tests,720/720paired publiclayout/fingerprint/geometry oracle parity. Eligible96terminalrows have zero paragraph/line shaping; nonempty suffix keeps reconstruction. Node terminal2048p95 completecall285.7 to58.3ms; median45.5to44.7ms. Ineligible suffix p95158.9to167.3ms variance remains. No browser or user acceptance, no productmain merge, maps unchanged. Artifact C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-terminal-lf-reuse-g1-a1.json Read-only cost probe2026-09-12 accepted as bounded attribution:8 actual StageA cases,7 phase samples each; PLAN verified handoff/config artifact hashes and inspected raw rows/harness parity assertions. SHA loop largest isolated phase, serialization second, UTF8 third. Isolated timings are not additive public-call trace. Terminal2048 fingerprint22.1-25.0ms; pureappend planning72.0ms still shapes2049UTF16. Proposed byte sink unproven and still linear; no implementation approval inferred, no UX claim. Artifact: C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-result-cost-attribution-g1-a1-config.json Core read-only boundary design reviewed: existing same-realm StageA and geometry APIs allow Editor-owned Worker without Core ABI changes; provider shape/segment APIs do not certify bounded context. Original handoff txt842562a38cf530379f81adfd238ceb3484242f77a8f004e46e5cc214061e7880 and separate clarification retained. No implementation/UX proof. Gate1 Core-authoritative incremental typing feasibility returned BLOCKER through automatic handoff handoff-core-incremental-typing-feasibility-g1-a1 and PLAN accepted the negative evidence at coordination revision118. Candidate-only implementation final commit3b0c418; measured source efef6c8; productionBinding=false; mayPublishLayout=false; no default path, merge, Editor dispatch or map promotion. PLAN fresh npm run check passed 442files/2911tests and verifier returned ok=true gate=BLOCKER. Final artifact C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-policy-examples/core-incremental-typing-feasibility-g1-a1/final-1.json SHA256 4723ab417a021a7c2e32bf6518f2fda4632a0967a021a4ec08d050e9fbac37d3: 3980 measured rows,3180 exact,800 fallback,0 invalid, common admission3000/3750=80% below95%. Fallbacks:600 reflow-limit,150 provider-full-context,50 unsupported topology. All180 sustained revisions exact without reset and burst p95=13.622ms/max17.0365ms passed, but28 timing groups and18 scaling groups failed; Thai2048 append p95=34.4607ms/max41.7104ms and Latin backspace scaling7.2368. Fifteen measured source hashes remained identical after the authorized documentation-only final commit. This evidence blocks Gate2/Editor work until a new architecture review and fixed feasibility gate; it is not engine-wide impossibility proof, production readiness or UX acceptance.",
       "nodeIds": [],
       "kind": "evidence",
       "repositoryId": "repo-core",
-      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
       "id": "evidence-core-incremental-admission",
-      "verifiedAt": "2026-09-12T08:40:14.8684748Z"
+      "verifiedAt": "2026-09-12T19:54:44.563301Z"
     },
     {
       "kind": "evidence",

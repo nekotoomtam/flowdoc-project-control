@@ -17,7 +17,7 @@
     "Text placement policy must be decided from examples before implementation"
   ],
   "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-  "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow.",
+  "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration.",
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-08T14:43:28.0496926Z"
+  "updatedAt": "2026-09-12T19:54:44.563301Z"
 }

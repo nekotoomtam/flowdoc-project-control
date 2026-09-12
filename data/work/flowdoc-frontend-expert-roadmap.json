@@ -55,15 +55,15 @@
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate.",
+  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation.",
   "requiredEvidence": [
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-12T18:00:33.2156560Z",
+  "updatedAt": "2026-09-12T19:54:44.563301Z",
   "coordination": {
     "version": 1,
-    "revision": 114,
+    "revision": 118,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1393,7 +1393,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "01a07584-49dc-7602-b662-6033c1469517",
           "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
@@ -2386,6 +2386,93 @@
             "Choose a single authoritative layout path that can provide immediate input feedback without changing geometry between focused and unfocused states.",
             "Determine whether the requirement needs a Core incremental shaping/layout contract and cross-repository lane before authorizing more product implementation.",
             "Preserve all rejected commits and evidence; do not merge or clean up until the architecture decision is recorded."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
+        "payloadDigest": "20dbb71ff02d9abd20edf2d3a6059c435b082ec18d3e9f7068eab8d441fa4a6e",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-incremental-typing-feasibility-g1-a1",
+          "laneId": "lane-core-incremental-typing-feasibility",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "BLOCKER",
+          "behaviorChanged": true,
+          "behaviorSummary": "Candidate-only Core feasibility APIs now retain authenticated paragraph and line state, apply bounded range shaping and exact reflow, and produce verified corpus evidence. The implementation and full Core gate pass, but Gate 1 product admission is blocked at 80% with long mid-insert/replacement fallbacks plus responsiveness and scaling failures. No production binding or default path is active.",
+          "exactCommit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+          "changedFiles": [
+            "docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+            "package.json",
+            "packages/text-engine-rust-wasm/src/creatorIncrementalParagraphProviderV1.ts",
+            "packages/text-engine-rust-wasm/src/index.ts",
+            "scripts/run-creator-incremental-typing-feasibility.mjs",
+            "scripts/verify-creator-incremental-typing-feasibility.mjs",
+            "src/creatorPreview/incrementalLineReflowFeasibilityV1.ts",
+            "src/creatorPreview/incrementalTypingFeasibilityContractV1.ts",
+            "src/creatorPreview/incrementalTypingFeasibilityV1.ts",
+            "src/creatorPreview/layoutFactsV1.ts",
+            "src/index.ts",
+            "tests/creatorIncrementalParagraphProviderV1.test.ts",
+            "tests/creatorIncrementalTypingFeasibilityArtifactV1.test.ts",
+            "tests/creatorPreviewIncrementalLineReflowFeasibilityV1.test.ts",
+            "tests/creatorPreviewIncrementalTypingFeasibilityV1.test.ts",
+            "tests/fixtures/creator-preview/incremental-typing-feasibility.v1.json"
+          ],
+          "tests": [
+            "PLAN fresh npm run check: type-check PASS; 442 test files and 2,911 tests PASS at 3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+            "PLAN fresh verifier: ok true, gate BLOCKER for final-1.json at measured commit efef6c899e2ca6efca7c231a72f4486232955091",
+            "Final artifact SHA-256 4723ab417a021a7c2e32bf6518f2fda4632a0967a021a4ec08d050e9fbac37d3; 3,980 measured rows, 3,180 exact, 800 fallback, 0 invalid",
+            "All 180 sustained revisions exact without session reset; p95 13.622 ms and max 17.0365 ms",
+            "15 measured source hashes unchanged after the documentation-only final commit; worktree clean and git diff check PASS"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Successive-context stability remains an experimental heuristic rather than a production-safe boundary certificate.",
+            "Whole-paragraph byte-offset conversion, marshaling, copying and freezing remain inside candidate work.",
+            "Long localized edits may require more line reflow than the accepted bounds.",
+            "Measurements cover one Windows reference environment and geometry diagnostics remain outside candidate timing."
+          ],
+          "unknowns": [
+            "Production-safe incremental shaping and geometry/page patch contracts.",
+            "Editor key-to-visible latency, real Windows Thai IME, caret/selection parity and user acceptance.",
+            "Node-scale full-document pagination performance.",
+            "Feasibility after a runtime-binding or architecture redesign that removes whole-paragraph work."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-12T19:52:10Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-12T19:52:10Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-12T19:52:10Z",
+          "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 14,
+          "acknowledgedAt": "2026-09-12T19:52:10Z"
+        },
+        "acceptance": {
+          "status": "blocked",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-12T19:52:10Z",
+          "reviewNote": "PLAN independently verified the exact commits, clean worktree, immutable handoff/artifact hashes, final verifier, measured-source provenance and a fresh full Core gate (442 files / 2,911 tests). The diagnostic implementation is coherent, exactness has 0 invalid rows and the 180-revision burst is exact. Gate 1 product admission is blocked because common admission is 80% below 95%, long mid-insert/replacement cases fall back across Thai/Latin/mixed, multiple p95/max groups exceed 16.7/33.4 ms and 18 scaling groups exceed 1.50. Preserve the candidate and evidence; do not merge, activate production binding, dispatch Editor, complete the checklist or promote map truth.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Run PLAN architecture review before authorizing any Gate 2 or Gate 3 implementation.",
+            "Design a runtime/state boundary that removes whole-paragraph conversion/copying and handles long mid-line reflow without hiding fallback.",
+            "Define a new fixed feasibility gate before any Editor integration or user trial.",
+            "Keep node-count and full-document pagination performance as a separate later lane."
           ]
         }
       }
