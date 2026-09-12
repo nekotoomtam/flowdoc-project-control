@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "55b718f50bd8e9bfc46045a59209e4db712ece8ba66ef1d834bfcd1063778f1b",
+  "sourceDigest": "7e78849bbf15487883650de8806bc88133c4fa02e3d4823bb9dccfcf92b1d2fc",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 81,
+        "revision": 86,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3907,7 +3907,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a1",
-            "status": "returned",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
               "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -3961,6 +3961,10 @@
                 {
                   "name": "IME, selection, undo/redo, source reset, Worker crash/retry and existing paper editing",
                   "status": "passed"
+                },
+                {
+                  "name": "Visual wrapping continuity while provisional browser text hands off to exact Core projection",
+                  "status": "failed"
                 }
               ],
               "criteria": [
@@ -3977,14 +3981,140 @@
                 },
                 {
                   "id": "authoritative-projection-handoff",
-                  "criterion": "Stale Core glyphs do not duplicate current text; exact accepted projection replaces provisional display only under matching identity while text, order and history remain exact.",
-                  "measurementMethod": "Focused tests plus isolated browser typing, Enter, IME, selection, undo/redo, delayed projection and crash/retry scenarios.",
+                  "criterion": "Stale Core glyphs do not duplicate current text; exact accepted projection replaces provisional display only under matching identity while text, wrapping geometry, caret, order and history remain visually continuous.",
+                  "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
                   "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
                   "evidenceTarget": "evidence-preview-keyboard-contract",
-                  "status": "passed",
+                  "status": "failed",
                   "evidenceIds": [
                     "evidence-preview-keyboard-contract"
                   ]
+                }
+              ],
+              "userAcceptance": {
+                "required": true,
+                "evidenceIds": [
+                  "evidence-preview-keyboard-contract"
+                ],
+                "status": "rejected",
+                "actor": {
+                  "kind": "user",
+                  "id": "ตูม"
+                }
+              },
+              "mechanismChecks": [
+                {
+                  "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
+                  "status": "passed"
+                }
+              ],
+              "applicability": "applicable",
+              "scenario": {
+                "environment": "Isolated experimental candidate; live61348 unchanged until PLAN prepares a separate reviewable demo",
+                "device": "Current Windows host followed by actual user trial",
+                "userAction": "Continuous Thai/Latin typing for at least12 lines with automatic wrapping mixed with Enter, then selection, Backspace, undo/redo and IME",
+                "fixture": "Retained pure/mixed256/1024/2048 plus live twelve-line paper editing",
+                "expectedVisibleBehavior": "Characters and caret follow native typing immediately while Core continues in the background; no duplicate text, lost input or unsafe stale replacement",
+                "browser": "Real Google Chrome module Worker",
+                "inputMethod": "Native textarea input and composition events with Core projection adoption observed separately"
+              },
+              "visibleChange": true
+            },
+            "requiredEvidence": [
+              "evidence-preview-keyboard-contract"
+            ]
+          },
+          {
+            "roomRunId": "editor-immediate-paper-echo-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "editor-immediate-paper-echo",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-preview-keyboard-contract",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 2,
+            "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a2",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
+              "branch": "codex/creator-worker-20260912"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-12T12:41:21.703Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T15:00:00Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Visible native paper echo coordinated with asynchronous Core projection, IME, selection and history",
+              "scopeSize": "Bounded Editor-only overlay behavior and browser regressions on the committed Worker candidate",
+              "uncertainty": "Avoiding duplicate stale glyphs and unsafe handoff when browser wrapping differs from Core",
+              "missingContext": "Concrete overlay geometry and transition behavior in the current paper DOM",
+              "failureImpact": "Visible duplication, caret jump or text/history regression",
+              "recoverability": "Isolated candidate commit with explicit browser/user acceptance before merge",
+              "reason": "Sol high is sufficient for a constrained multi-file Editor interaction change whose Core boundary and measurable invariants are already known.",
+              "smallerOptionAssessment": "Lower effort is not selected because native composition, selection and asynchronous projection interact across DOM and session state; GPT-6 is unnecessary unless two corrected attempts fail the same reasoning boundary.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-12T10:31:20.8124726Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Two bounded revisions fail the same overlay correctness requirement",
+                "A Core ABI or cross-repository contract change becomes necessary"
+              ]
+            },
+            "ux": {
+              "regressionChecks": [
+                {
+                  "name": "IME, selection, undo/redo, source reset, Worker crash/retry and existing paper editing",
+                  "status": "pending"
+                },
+                {
+                  "name": "Visual wrapping continuity while provisional browser text hands off to exact Core projection",
+                  "status": "pending"
+                }
+              ],
+              "criteria": [
+                {
+                  "id": "immediate-native-paper-echo",
+                  "criterion": "Every native input synchronously updates the visible paper editing surface and the newest value is paintable on the next browser frame without waiting for Core.",
+                  "measurementMethod": "Real Chrome raw input, DOM value and requestAnimationFrame linkage across retained pure/mixed workloads; report timings without inventing a threshold.",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "evidenceTarget": "evidence-preview-keyboard-contract",
+                  "status": "pending",
+                  "evidenceIds": []
+                },
+                {
+                  "id": "authoritative-projection-handoff",
+                  "criterion": "Stale Core glyphs do not duplicate current text; exact accepted projection replaces provisional display only under matching identity while text, wrapping geometry, caret, order and history remain visually continuous.",
+                  "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "evidenceTarget": "evidence-preview-keyboard-contract",
+                  "status": "pending",
+                  "evidenceIds": []
                 }
               ],
               "userAcceptance": {
@@ -3995,7 +4125,7 @@
               "mechanismChecks": [
                 {
                   "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
-                  "status": "passed"
+                  "status": "pending"
                 }
               ],
               "applicability": "applicable",
@@ -4795,19 +4925,21 @@
               "acknowledgedAt": "2026-09-12T11:29:21Z"
             },
             "acceptance": {
-              "status": "pending",
+              "status": "needs-revision",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-12T12:38:25Z",
+              "reviewNote": "Actual user trial rejected the candidate because browser provisional wrapping differs from Core wrapping, causing visible text alternation and jumps while typing. Automated latency and correctness checks omitted perceptual continuity across provisional-to-Core adoption.",
               "evidenceIds": [],
               "requiredChecks": [],
-              "remainingScope": []
+              "remainingScope": [
+                "Preserve immediate native typing and Worker-local Core authority without switching between two visibly different wrapping geometries.",
+                "Add a real-browser test that detects glyph-line or caret discontinuity during delayed Core adoption under automatic wrap mixed with Enter.",
+                "Return a new isolated demo for actual user acceptance before merge."
+              ]
             }
           }
         ],
-        "completionQueue": [
-          {
-            "handoffId": "handoff-editor-immediate-paper-echo-g1-a1",
-            "arrivalSequence": 11
-          }
-        ],
+        "completionQueue": [],
         "cleanup": []
       },
       "childWorkIds": [
@@ -23631,12 +23763,12 @@
     },
     {
       "id": "evidence-preview-keyboard-contract",
-      "verificationSummary": "Historical baseline retained: Editor0f3c32e/Coref190884, Chrome152,180/180 linked inputs; exact-paper delay grew strongly with text. Worker-only Editor3565716/Core4e3b0c9 moved authentic engine, Stage A, layout, geometry, queries and paint off main and preserved180/180 ordered inputs, but accepted paper projection remained p50/p95/max651.3/1762.2/1866.4ms. Current immediate-paper-echo candidate Editorcf6f47d/Core4e3b0c9 adds a field-scoped native echo while Core is behind, suppresses stale Core caret/selection and adopts matching Core paint atomically. Fresh exact-commit Chrome raw-first evidence:95 edit steps=84 native inputs+11 Enter across12 mixed Thai/Latin lines;95/95 synchronous exact visible value/caret and95/95 next-frame coverage,0 censored/invalid; next-frame p50/p95/max1.2/10.4/23.2ms, matching Core adoption331.5ms after final edit. Broad Chrome compatibility13 passes Thai cluster selection/delete, form replacement, IME composition/cancel, undo/redo, fast drag/no-scroll,7200 UTF16 cross-page caret, zoom150/DPR2 exact geometry, static-prefix rejection, supported LF and unchanged Backend source. Full Editor gate passes type-check,124 files/509 tests and production Worker build. Browser shaping is provisional and may shift at exact Core adoption; echo beyond current page body and real OS IME remain unknown. Automated criteria pass; actual user trial remains pending, so no UX acceptance, main merge or map promotion. Terminal SHA256b113f1c1de7285294eed3eac7ffa70ae0594bbc9b23f5c65379ead8a412eb234; raw SHA256e49031913c649cb91dd2bd6ec41633f8d8491ba3a4ecf05a7f3805c38ab89968; analysis SHA256ac568a4396ffa74973d47b7ea3227466a48d402d8ba0d3e05e7584735b8ab841 at C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-immediate-paper-echo-g1-a1/.",
+      "verificationSummary": "Historical baseline retained: Editor0f3c32e/Coref190884, Chrome152,180/180 linked inputs; exact-paper delay grew strongly with text. Worker-only Editor3565716/Core4e3b0c9 moved authentic engine, Stage A, layout, geometry, queries and paint off main and preserved180/180 ordered inputs, but accepted paper projection remained p50/p95/max651.3/1762.2/1866.4ms. Current immediate-paper-echo candidate Editorcf6f47d/Core4e3b0c9 adds a field-scoped native echo while Core is behind, suppresses stale Core caret/selection and adopts matching Core paint atomically. Fresh exact-commit Chrome raw-first evidence:95 edit steps=84 native inputs+11 Enter across12 mixed Thai/Latin lines;95/95 synchronous exact visible value/caret and95/95 next-frame coverage,0 censored/invalid; next-frame p50/p95/max1.2/10.4/23.2ms, matching Core adoption331.5ms after final edit. Broad Chrome compatibility13 passes Thai cluster selection/delete, form replacement, IME composition/cancel, undo/redo, fast drag/no-scroll,7200 UTF16 cross-page caret, zoom150/DPR2 exact geometry, static-prefix rejection, supported LF and unchanged Backend source. Full Editor gate passes type-check,124 files/509 tests and production Worker build. Actual user trial on the isolated candidate rejected the UX: browser provisional wrapping differs from the later Core projection, so text visibly alternates or jumps during typing. This exposes a missing visual-continuity criterion in the automated suite. The candidate is therefore needs-revision; no UX acceptance, main merge or map promotion. Echo beyond current page body and real OS IME remain unknown. Terminal SHA256b113f1c1de7285294eed3eac7ffa70ae0594bbc9b23f5c65379ead8a412eb234; raw SHA256e49031913c649cb91dd2bd6ec41633f8d8491ba3a4ecf05a7f3805c38ab89968; analysis SHA256ac568a4396ffa74973d47b7ea3227466a48d402d8ba0d3e05e7584735b8ab841 at C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-immediate-paper-echo-g1-a1/.",
       "nodeIds": [],
       "repositoryId": "repo-editor",
       "kind": "evidence",
       "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
-      "verifiedAt": "2026-09-12T11:29:21Z",
+      "verifiedAt": "2026-09-12T12:38:25Z",
       "commit": "cf6f47d1f97047699b48b80a26500c9bcf1ef5d0"
     },
     {
