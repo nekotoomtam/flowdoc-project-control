@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "d12e751948dc56df4fd08e88638413d98f0a23536808811084b76ce960dc30f4",
+  "sourceDigest": "55b718f50bd8e9bfc46045a59209e4db712ece8ba66ef1d834bfcd1063778f1b",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 67,
+        "revision": 81,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3836,7 +3836,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-editor-worker-performance-g1-a1",
-            "status": "active",
+            "status": "accepted",
             "locator": {
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
               "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -3889,6 +3889,126 @@
               "reason": "Evidence-only diagnostic lane. It measures a committed visible-change candidate but does not itself change behavior or grant UX acceptance; the product lane retains the separate pending user trial.",
               "applicability": "not-applicable",
               "visibleChange": false
+            },
+            "requiredEvidence": [
+              "evidence-preview-keyboard-contract"
+            ]
+          },
+          {
+            "roomRunId": "editor-immediate-paper-echo-g1-a1",
+            "dispatchSetId": "typing-four-points-20260910",
+            "laneId": "editor-immediate-paper-echo",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-preview-keyboard-contract",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a1",
+            "status": "returned",
+            "locator": {
+              "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
+              "branch": "codex/creator-worker-20260912"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-12T10:33:29.0000000Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T12:15:00.0000000Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEffort": "high",
+              "taskComplexity": "Visible native paper echo coordinated with asynchronous Core projection, IME, selection and history",
+              "scopeSize": "Bounded Editor-only overlay behavior and browser regressions on the committed Worker candidate",
+              "uncertainty": "Avoiding duplicate stale glyphs and unsafe handoff when browser wrapping differs from Core",
+              "missingContext": "Concrete overlay geometry and transition behavior in the current paper DOM",
+              "failureImpact": "Visible duplication, caret jump or text/history regression",
+              "recoverability": "Isolated candidate commit with explicit browser/user acceptance before merge",
+              "reason": "Sol high is sufficient for a constrained multi-file Editor interaction change whose Core boundary and measurable invariants are already known.",
+              "smallerOptionAssessment": "Lower effort is not selected because native composition, selection and asynchronous projection interact across DOM and session state; GPT-6 is unnecessary unless two corrected attempts fail the same reasoning boundary.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-12T10:31:20.8124726Z",
+              "availableModelEfforts": [
+                {
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ],
+                  "modelId": "gpt-5.6-sol"
+                }
+              ],
+              "escalationTriggers": [
+                "Two bounded revisions fail the same overlay correctness requirement",
+                "A Core ABI or cross-repository contract change becomes necessary"
+              ]
+            },
+            "ux": {
+              "regressionChecks": [
+                {
+                  "name": "IME, selection, undo/redo, source reset, Worker crash/retry and existing paper editing",
+                  "status": "passed"
+                }
+              ],
+              "criteria": [
+                {
+                  "id": "immediate-native-paper-echo",
+                  "criterion": "Every native input synchronously updates the visible paper editing surface and the newest value is paintable on the next browser frame without waiting for Core.",
+                  "measurementMethod": "Real Chrome raw input, DOM value and requestAnimationFrame linkage across retained pure/mixed workloads; report timings without inventing a threshold.",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "evidenceTarget": "evidence-preview-keyboard-contract",
+                  "status": "passed",
+                  "evidenceIds": [
+                    "evidence-preview-keyboard-contract"
+                  ]
+                },
+                {
+                  "id": "authoritative-projection-handoff",
+                  "criterion": "Stale Core glyphs do not duplicate current text; exact accepted projection replaces provisional display only under matching identity while text, order and history remain exact.",
+                  "measurementMethod": "Focused tests plus isolated browser typing, Enter, IME, selection, undo/redo, delayed projection and crash/retry scenarios.",
+                  "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
+                  "evidenceTarget": "evidence-preview-keyboard-contract",
+                  "status": "passed",
+                  "evidenceIds": [
+                    "evidence-preview-keyboard-contract"
+                  ]
+                }
+              ],
+              "userAcceptance": {
+                "required": true,
+                "evidenceIds": [],
+                "status": "pending"
+              },
+              "mechanismChecks": [
+                {
+                  "name": "Core authority remains Worker-local and no heavy main-thread fallback is added",
+                  "status": "passed"
+                }
+              ],
+              "applicability": "applicable",
+              "scenario": {
+                "environment": "Isolated experimental candidate; live61348 unchanged until PLAN prepares a separate reviewable demo",
+                "device": "Current Windows host followed by actual user trial",
+                "userAction": "Continuous Thai/Latin typing for at least12 lines with automatic wrapping mixed with Enter, then selection, Backspace, undo/redo and IME",
+                "fixture": "Retained pure/mixed256/1024/2048 plus live twelve-line paper editing",
+                "expectedVisibleBehavior": "Characters and caret follow native typing immediately while Core continues in the background; no duplicate text, lost input or unsafe stale replacement",
+                "browser": "Real Google Chrome module Worker",
+                "inputMethod": "Native textarea input and composition events with Core projection adoption observed separately"
+              },
+              "visibleChange": true
             },
             "requiredEvidence": [
               "evidence-preview-keyboard-contract"
@@ -4529,9 +4649,165 @@
                 "Decide visible provisional overlay only if Worker-only paper behavior remains insufficient"
               ]
             }
+          },
+          {
+            "handoffId": "handoff-editor-worker-performance-g1-a1",
+            "payloadDigest": "33b375d0d07f34e301ab26795a5521e021da986cb33def47f7f906f0445b9bd2",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "editor-worker-performance-g1-a1",
+              "laneId": "editor-worker-performance",
+              "ownerRepositoryId": "repo-editor",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "PASS",
+              "behaviorChanged": false,
+              "behaviorSummary": "Read-only isolated Chrome measurement completed against exact Worker candidate3565716. Native acknowledgement remained short while exact Core paper projection remained substantially later. Latest-snapshot backpressure produced60 exact visible and120 coalesced-covered revisions from180 ordered inputs, with0 censored/invalid and exact final text, selection, history and IME. Evidence only, not UX acceptance. Immutable raw handoff SHA256bb5eebb306f123ccdb6a88d15d868eaf2b9f8d26a86687b3816ffb5d0f5961b5.",
+              "exactCommit": "3565716d5b51568521d89be46e2d87963002b9ae",
+              "changedFiles": [],
+              "tests": [
+                "PASS clean read-only Editor3565716 and Core4e3b0c9",
+                "PASS real Chrome152 module Worker isolated raw-first corpus",
+                "PASS180/180 ordered inputs:60 exact visible,120 coalesced-covered,0 censored,0 invalid",
+                "PASS final values, selections, undo/redo, reversed selection and IME invariants",
+                "OBSERVED native p50/p95/max0.5/0.9/1.3ms; visible paper651.3/1762.2/1866.4ms",
+                "PASS temporary services stopped and live61348 untouched"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Exact paper projection is materially later than native acknowledgement.",
+                "Candidate visible timing uses an external read-only subscriber rather than production React/SVG photon time.",
+                "Twenty-four stale active Worker computations still consumed time."
+              ],
+              "unknowns": [
+                "Production React/SVG latency on representative hardware.",
+                "Numerical UX threshold and actual user acceptance.",
+                "Whether cancellation, a smaller boundary or provisional overlay is required."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-12T10:27:15Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-12T10:27:15Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-12T10:27:15Z",
+              "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 10,
+              "acknowledgedAt": "2026-09-12T10:27:15Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-12T10:27:15Z",
+              "evidenceIds": [
+                "evidence-preview-keyboard-contract"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Artifact hashes and180-input accounting verified",
+                  "status": "passed"
+                },
+                {
+                  "name": "Correctness gates, source pins, cleanup and live61348 exclusion verified",
+                  "status": "passed"
+                },
+                {
+                  "name": "No UX acceptance or historical latency comparability claimed",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "Immediate visible paper feedback remains unresolved",
+                "Representative live user trial and numerical acceptance remain pending",
+                "Product candidates remain unmerged"
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-editor-immediate-paper-echo-g1-a1",
+            "payloadDigest": "f22cd4b8a0be141e31bea1f773cb5f292c691748dcd7300b384b432b75486b72",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "editor-immediate-paper-echo-g1-a1",
+              "laneId": "editor-immediate-paper-echo",
+              "ownerRepositoryId": "repo-editor",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "PASS",
+              "behaviorChanged": true,
+              "behaviorSummary": "Editor paints the current native field value and caret immediately on paper while Core projection remains asynchronous in the Worker. Matching Core paint replaces the provisional echo atomically. Form routing, rapid Enter, async hit/miss, fast drag anchoring, viewport stability, IME/history and stale identity guards are preserved. PLAN-normalized exact commit; immutable terminal SHA256b113f1c1de7285294eed3eac7ffa70ae0594bbc9b23f5c65379ead8a412eb234.",
+              "exactCommit": "cf6f47d1f97047699b48b80a26500c9bcf1ef5d0",
+              "changedFiles": [
+                "src/components/structures/StructurePreviewPage.tsx",
+                "src/editor/structures/creatorPreviewKeyboard.ts",
+                "src/editor/structures/creatorPreviewLocalEcho.ts",
+                "src/editor/structures/creatorPreviewSession.ts",
+                "src/styles/creator-preview.css",
+                "src/tests/creatorPreviewKeyboard.test.ts",
+                "src/tests/creatorPreviewLocalEcho.test.ts",
+                "src/tests/creatorPreviewWorkerSession.test.ts"
+              ],
+              "tests": [
+                "PASS17 focused keyboard/local-echo/Worker-session tests",
+                "PASS full post-commit gate: type-check,124 files/509 tests,production build",
+                "PASS fresh Chrome raw-first immediate echo95/95 edits,0 censored,0 invalid",
+                "PASS broad Chrome compatibility13 including selection/form/IME/history/drag/pages/zoom/static/LF/source"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Browser-shaped provisional text can shift when exact Core paint is adopted.",
+                "Local echo is bounded to the accepted field and current page body.",
+                "Real OS IME candidate-window behavior is unproven.",
+                "No user acceptance is claimed."
+              ],
+              "unknowns": [
+                "Representative-hardware user acceptance.",
+                "Real OS IME candidate-window behavior.",
+                "Whether multi-page provisional echo is later needed."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-12T11:29:21Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-12T11:29:21Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-12T11:29:21Z",
+              "senderThreadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 11,
+              "acknowledgedAt": "2026-09-12T11:29:21Z"
+            },
+            "acceptance": {
+              "status": "pending",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": []
+            }
           }
         ],
-        "completionQueue": [],
+        "completionQueue": [
+          {
+            "handoffId": "handoff-editor-immediate-paper-echo-g1-a1",
+            "arrivalSequence": 11
+          }
+        ],
         "cleanup": []
       },
       "childWorkIds": [
@@ -23355,13 +23631,13 @@
     },
     {
       "id": "evidence-preview-keyboard-contract",
-      "verificationSummary": "Bounded historical typing baseline only, not complete keyboard contract or UX readiness. Editor0f3c32e with Coref190884, instrumented production in headless Chrome152 via Playwright,1280x720. PLAN independently checked SHA256 corpus a929254578b4917d66abbb6e88750bff865f2ece1c5e00701f6943ba39bbade8 and all180 unique key/request/revision/matching-frame links, including Enter/Backspace; no loss/reordering, exact text and caret. Six pure/mixed256/1024/2048 cases; p50 respectively27.5/102.9,289.2/394.1,523.6/805.2ms. Endpoint is rAF opportunity after matching commit, not photon time. Instrumented core planning largest measured phase across every case. Headless, GPUdisabled, one corpus, uncontrolled hostload, instrumentation overhead unisolated; no numerical UX threshold or user acceptance. Evidence received automatically handoff-typing-observed-launch-g1-a1; original payload sha25633c70242908d76d156a3c9496e81e51640f0c981efb9776a225f99671ce57df4. No product edits or map promotion; checklist remains pending. Artifact: C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/typing-observed-launch-g1-a1/baseline-summary.json Additional read-only design reference (not baseline code/UX proof): Editor82eba4bc with Core4e3b0c9; worker-owned authentic state, one in-flight and newest pending projection, exact identity adoption, no main-thread fallback. Design C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-typing-boundary-design-g1-a1/boundary-design.json SHA256fcc89b0da5c6626e513881dca706a4f732c4e5b5be033b28ba8c443648f9eb3e reviewed. Native overlay pending user preference; async query latency unresolved. Original baseline pin retained.",
+      "verificationSummary": "Historical baseline retained: Editor0f3c32e/Coref190884, Chrome152,180/180 linked inputs; exact-paper delay grew strongly with text. Worker-only Editor3565716/Core4e3b0c9 moved authentic engine, Stage A, layout, geometry, queries and paint off main and preserved180/180 ordered inputs, but accepted paper projection remained p50/p95/max651.3/1762.2/1866.4ms. Current immediate-paper-echo candidate Editorcf6f47d/Core4e3b0c9 adds a field-scoped native echo while Core is behind, suppresses stale Core caret/selection and adopts matching Core paint atomically. Fresh exact-commit Chrome raw-first evidence:95 edit steps=84 native inputs+11 Enter across12 mixed Thai/Latin lines;95/95 synchronous exact visible value/caret and95/95 next-frame coverage,0 censored/invalid; next-frame p50/p95/max1.2/10.4/23.2ms, matching Core adoption331.5ms after final edit. Broad Chrome compatibility13 passes Thai cluster selection/delete, form replacement, IME composition/cancel, undo/redo, fast drag/no-scroll,7200 UTF16 cross-page caret, zoom150/DPR2 exact geometry, static-prefix rejection, supported LF and unchanged Backend source. Full Editor gate passes type-check,124 files/509 tests and production Worker build. Browser shaping is provisional and may shift at exact Core adoption; echo beyond current page body and real OS IME remain unknown. Automated criteria pass; actual user trial remains pending, so no UX acceptance, main merge or map promotion. Terminal SHA256b113f1c1de7285294eed3eac7ffa70ae0594bbc9b23f5c65379ead8a412eb234; raw SHA256e49031913c649cb91dd2bd6ec41633f8d8491ba3a4ecf05a7f3805c38ab89968; analysis SHA256ac568a4396ffa74973d47b7ea3227466a48d402d8ba0d3e05e7584735b8ab841 at C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-immediate-paper-echo-g1-a1/.",
       "nodeIds": [],
       "repositoryId": "repo-editor",
       "kind": "evidence",
       "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
-      "verifiedAt": "2026-09-10T15:35:25.126626Z",
-      "commit": "0f3c32eac82fb1922e11fdda881e64669b491aea"
+      "verifiedAt": "2026-09-12T11:29:21Z",
+      "commit": "cf6f47d1f97047699b48b80a26500c9bcf1ef5d0"
     },
     {
       "kind": "evidence",
