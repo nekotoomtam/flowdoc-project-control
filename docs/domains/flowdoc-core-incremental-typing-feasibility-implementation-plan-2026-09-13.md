@@ -646,7 +646,12 @@ git diff --check
 ```
 
 Expected: genuine artifact PASSes structural verification; each mutated copy fails its
-target invariant. Commit:
+target invariant. A verified `BLOCKER` from the feasibility policy is the successful output
+of this diagnostic phase, not a failing implementation test or an incomplete patch. When
+the runner, verifier, focused tests and source provenance are coherent and passing, commit
+the diagnostic mechanism even though the measured product-admission decision is
+`BLOCKER`; do not commit a production binding, weakened threshold or hidden fallback.
+Commit:
 
 ```text
 test(core): add incremental typing feasibility gate
