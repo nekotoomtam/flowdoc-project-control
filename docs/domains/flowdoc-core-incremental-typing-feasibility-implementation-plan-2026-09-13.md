@@ -662,6 +662,12 @@ test(core): add incremental typing feasibility gate
 **Files:**
 
 - Modify only if required by final focused failures: files already owned by Tasks 1–4
+- Conditional final-gate repair: `docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md` may be
+  updated by the same Core WORK only when the existing export-inventory guard fails solely
+  because this lane added the planned explicit candidate exports. PLAN must first add the
+  exact file to the registered scope. Keep its Authority Boundary, refresh only source pin,
+  inventory counts/table and a bounded candidate-export note; do not promote release,
+  compatibility, production readiness or FlowDoc-wide truth.
 - Evidence outside repository: raw artifact, verifier log, full-gate log, source inventory,
   `git status`, commit and artifact SHA-256
 

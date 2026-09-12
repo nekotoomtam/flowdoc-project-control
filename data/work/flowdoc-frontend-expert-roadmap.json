@@ -63,7 +63,7 @@
   "updatedAt": "2026-09-12T18:00:33.2156560Z",
   "coordination": {
     "version": 1,
-    "revision": 113,
+    "revision": 114,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -92,7 +92,8 @@
         "repo-editor/vite.config.ts",
         "repo-core/src/index.ts",
         "repo-core/packages/text-engine-rust-wasm/src",
-        "repo-core/scripts"
+        "repo-core/scripts",
+        "repo-core/docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md"
       ]
     },
     "integrationClaims": [
@@ -1405,7 +1406,7 @@
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
-          "livenessDeadline": "2026-09-12T19:46:49.105167Z",
+          "livenessDeadline": "2026-09-12T19:55:26.570812Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
