@@ -61,7 +61,7 @@
   "updatedAt": "2026-09-10T14:18:57.7484817Z",
   "coordination": {
     "version": 1,
-    "revision": 99,
+    "revision": 101,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1249,7 +1249,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 3,
         "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a3",
-        "status": "returned",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
           "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -1311,6 +1311,10 @@
             {
               "name": "Narrow-preview horizontal viewport remains stable across insertion, blur and exact Core adoption",
               "status": "passed"
+            },
+            {
+              "name": "Core text layout remains geometrically identical before editing, during the first inserted character and after blur",
+              "status": "failed"
             }
           ],
           "criteria": [
@@ -1331,7 +1335,7 @@
               "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
               "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "evidenceTarget": "evidence-preview-keyboard-contract",
-              "status": "passed",
+              "status": "failed",
               "evidenceIds": [
                 "evidence-preview-keyboard-contract"
               ]
@@ -1339,8 +1343,14 @@
           ],
           "userAcceptance": {
             "required": true,
-            "evidenceIds": [],
-            "status": "pending"
+            "evidenceIds": [
+              "evidence-preview-keyboard-contract"
+            ],
+            "status": "rejected",
+            "actor": {
+              "kind": "user",
+              "id": "ตูม"
+            }
           },
           "mechanismChecks": [
             {
@@ -2287,19 +2297,22 @@
           "acknowledgedAt": "2026-09-12T14:08:00Z"
         },
         "acceptance": {
-          "status": "pending",
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-12T14:21:00Z",
+          "reviewNote": "Actual user trial rejected revision3. Scroll preservation fixed a secondary clipping symptom, but the whole-field browser echo still replaces Core shaping as soon as one character is typed, changing layout during editing and reverting on blur. The requirement is identical geometry before, during and after input. Three visible overlay candidates have now been rejected, so further implementation is held for architecture review rather than another tactical patch.",
           "evidenceIds": [],
           "requiredChecks": [],
-          "remainingScope": []
+          "remainingScope": [
+            "Retire browser-shaped whole-field echo as a candidate for exact visual continuity.",
+            "Choose a single authoritative layout path that can provide immediate input feedback without changing geometry between focused and unfocused states.",
+            "Determine whether the requirement needs a Core incremental shaping/layout contract and cross-repository lane before authorizing more product implementation.",
+            "Preserve all rejected commits and evidence; do not merge or clean up until the architecture decision is recorded."
+          ]
         }
       }
     ],
-    "completionQueue": [
-      {
-        "handoffId": "handoff-editor-immediate-paper-echo-g1-a3",
-        "arrivalSequence": 13
-      }
-    ],
+    "completionQueue": [],
     "cleanup": []
   }
 }

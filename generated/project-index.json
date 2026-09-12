@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9fc8f14f7d89bb91a163885214040dadbb3eed62b5a9530319e06e5cc9592e41",
+  "sourceDigest": "ac40cd69283ecbd2c494e15a69ab9da5d2f701239c5c8fa7813bed30e807931c",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,7 +2983,7 @@
       "updatedAt": "2026-09-10T14:18:57.7484817Z",
       "coordination": {
         "version": 1,
-        "revision": 99,
+        "revision": 101,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4171,7 +4171,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 3,
             "expectedHandoffId": "handoff-editor-immediate-paper-echo-g1-a3",
-            "status": "returned",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
               "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -4233,6 +4233,10 @@
                 {
                   "name": "Narrow-preview horizontal viewport remains stable across insertion, blur and exact Core adoption",
                   "status": "passed"
+                },
+                {
+                  "name": "Core text layout remains geometrically identical before editing, during the first inserted character and after blur",
+                  "status": "failed"
                 }
               ],
               "criteria": [
@@ -4253,7 +4257,7 @@
                   "measurementMethod": "Focused tests plus isolated browser typing, Enter, automatic wrapping, IME, selection, undo/redo, delayed projection and crash/retry scenarios, followed by actual user observation of the provisional-to-Core transition.",
                   "inspector": "01a08a25-13d9-7090-8d91-1c32242988d8",
                   "evidenceTarget": "evidence-preview-keyboard-contract",
-                  "status": "passed",
+                  "status": "failed",
                   "evidenceIds": [
                     "evidence-preview-keyboard-contract"
                   ]
@@ -4261,8 +4265,14 @@
               ],
               "userAcceptance": {
                 "required": true,
-                "evidenceIds": [],
-                "status": "pending"
+                "evidenceIds": [
+                  "evidence-preview-keyboard-contract"
+                ],
+                "status": "rejected",
+                "actor": {
+                  "kind": "user",
+                  "id": "ตูม"
+                }
               },
               "mechanismChecks": [
                 {
@@ -5209,19 +5219,22 @@
               "acknowledgedAt": "2026-09-12T14:08:00Z"
             },
             "acceptance": {
-              "status": "pending",
+              "status": "needs-revision",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-12T14:21:00Z",
+              "reviewNote": "Actual user trial rejected revision3. Scroll preservation fixed a secondary clipping symptom, but the whole-field browser echo still replaces Core shaping as soon as one character is typed, changing layout during editing and reverting on blur. The requirement is identical geometry before, during and after input. Three visible overlay candidates have now been rejected, so further implementation is held for architecture review rather than another tactical patch.",
               "evidenceIds": [],
               "requiredChecks": [],
-              "remainingScope": []
+              "remainingScope": [
+                "Retire browser-shaped whole-field echo as a candidate for exact visual continuity.",
+                "Choose a single authoritative layout path that can provide immediate input feedback without changing geometry between focused and unfocused states.",
+                "Determine whether the requirement needs a Core incremental shaping/layout contract and cross-repository lane before authorizing more product implementation.",
+                "Preserve all rejected commits and evidence; do not merge or clean up until the architecture decision is recorded."
+              ]
             }
           }
         ],
-        "completionQueue": [
-          {
-            "handoffId": "handoff-editor-immediate-paper-echo-g1-a3",
-            "arrivalSequence": 13
-          }
-        ],
+        "completionQueue": [],
         "cleanup": []
       },
       "childWorkIds": [
@@ -24045,12 +24058,12 @@
     },
     {
       "id": "evidence-preview-keyboard-contract",
-      "verificationSummary": "Historical Editor0f3c32e/Coref190884 evidence showed exact-paper delay growing strongly with text. Worker-only Editor3565716/Core4e3b0c9 moved projection off main but accepted paper p95 remained1762.2ms. Immediate echo attempt1 Editorcf6f47d delivered next-frame p9510.4ms but actual user trial rejected alternating browser/Core wrapping. Attempt2 Editor7a7a4d7 latched one browser renderer through focused typing and adopted Core once after blur; automated delayed-Core continuity and full510-test gate passed, but actual user mid-line Thai insertion trial rejected a narrow-viewport shift: scrollLeft changed0 to55.2px, clipping31.2px from the paper left while text remained intact. Durable user screenshots and DOM observation SHA256caee2e0f68e28ad3a7b797e67b2c72f088845c8a81b046fb21dfebe13ceb48cf remain under attempt2/user-trial-insert-blur. Revision3 Editor59412e6/Core4e3b0c9 captures exact scrollLeft/scrollTop immediately before echo collapse, restores them post-commit and once next frame, while new pointer/wheel/touch input cancels deferred correction to preserve deliberate pan. Exact-commit focused3 files/19 tests and full Editor type-check,124 files/511 tests,production build pass. Real Chrome RED reproduced0 to55 after mid-line Thai insert/blur/delayed Core. GREEN at clientWidth691 less than scrollWidth842 injected+55.2/+7 drift: zero case stayed0/0 and deliberate pan stayed35/18, with exact revisions/text/caret and Core to browser echo to Core transitions. Broad Chrome and visible in-app checks pass. One wrapping adjustment at blur, page-body echo height and real OS IME candidate-window placement remain risk/unknown. Automated revision3 gates pass; actual user acceptance remains pending, so no acceptance, merge, cleanup or map promotion. Terminal SHA25631792946840e4020d2c0d0c6caad30f117aa7f7633fa74bbc90e615bd6ab7b2a and manifest SHA25647fb503e001cd86c00fe9518cf7c1f88f2207c81f2ee807fa23dd6e662c6f368 at C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-immediate-paper-echo-g1-a3/.",
+      "verificationSummary": "Historical Editor0f3c32e/Coref190884 evidence showed exact-paper delay growing strongly with text. Worker-only Editor3565716/Core4e3b0c9 moved projection off main but accepted paper p95 remained1762.2ms. Immediate echo attempt1 Editorcf6f47d delivered next-frame p9510.4ms but actual user trial rejected alternating browser/Core wrapping. Attempt2 Editor7a7a4d7 latched one browser renderer through focused typing and adopted Core once after blur; automated delayed-Core continuity and full510-test gate passed, but actual user mid-line Thai insertion trial rejected a narrow-viewport shift: scrollLeft changed0 to55.2px, clipping31.2px from the paper left while text remained intact. Durable user screenshots and DOM observation SHA256caee2e0f68e28ad3a7b797e67b2c72f088845c8a81b046fb21dfebe13ceb48cf remain under attempt2/user-trial-insert-blur. Revision3 Editor59412e6/Core4e3b0c9 captures exact scrollLeft/scrollTop immediately before echo collapse, restores them post-commit and once next frame, while new pointer/wheel/touch input cancels deferred correction to preserve deliberate pan. Exact-commit focused3 files/19 tests and full Editor type-check,124 files/511 tests,production build pass. Real Chrome RED reproduced0 to55 after mid-line Thai insert/blur/delayed Core. GREEN at clientWidth691 less than scrollWidth842 injected+55.2/+7 drift: zero case stayed0/0 and deliberate pan stayed35/18, with exact revisions/text/caret and Core to browser echo to Core transitions. Broad Chrome and visible in-app checks pass. One wrapping adjustment at blur, page-body echo height and real OS IME candidate-window placement remain risk/unknown. Actual user trial rejected revision3. The viewport guard corrected the measured horizontal-scroll symptom, but typing one character at a selected mid-line position still switches the entire field from exact Core shaping to browser textarea shaping, changing glyph positions and wrapping immediately; blur then switches back to Core. The user requires geometric continuity before editing, during input and after editing. This invalidates the browser-shaped whole-field echo architecture rather than one more viewport patch. After three rejected visible candidates, implementation is held for architecture review; no acceptance, merge, cleanup or map promotion. Terminal SHA25631792946840e4020d2c0d0c6caad30f117aa7f7633fa74bbc90e615bd6ab7b2a and manifest SHA25647fb503e001cd86c00fe9518cf7c1f88f2207c81f2ee807fa23dd6e662c6f368 at C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-immediate-paper-echo-g1-a3/.",
       "nodeIds": [],
       "repositoryId": "repo-editor",
       "kind": "evidence",
       "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
-      "verifiedAt": "2026-09-12T14:08:00Z",
+      "verifiedAt": "2026-09-12T14:21:00Z",
       "commit": "59412e6beb834a96c3c113e03a857de8ffd4efe9"
     },
     {
