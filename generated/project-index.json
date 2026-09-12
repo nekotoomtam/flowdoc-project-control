@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "4c29f6fba7d80fec4ce7b1f6b72389d5eb9321faa0d72f7b4a414e067ff60031",
+  "sourceDigest": "ddcaec96d9ac0ae77be1af5283becf8ac85ff9ce4161c1c3e19c95afad2f06ee",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2985,7 +2985,7 @@
       "updatedAt": "2026-09-12T18:00:33.2156560Z",
       "coordination": {
         "version": 1,
-        "revision": 101,
+        "revision": 102,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3011,7 +3011,10 @@
             "repo-editor/src/styles/creator-preview.css",
             "repo-editor/src/tests",
             "repo-editor/tests",
-            "repo-editor/vite.config.ts"
+            "repo-editor/vite.config.ts",
+            "repo-core/src/index.ts",
+            "repo-core/packages/text-engine-rust-wasm/src",
+            "repo-core/scripts"
           ]
         },
         "integrationClaims": [
@@ -4296,6 +4299,77 @@
             },
             "requiredEvidence": [
               "evidence-preview-keyboard-contract"
+            ]
+          },
+          {
+            "roomRunId": "core-incremental-typing-feasibility-g1-a1",
+            "dispatchSetId": "dispatch-core-incremental-typing-feasibility-2026-09-13",
+            "laneId": "lane-core-incremental-typing-feasibility",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-incremental-admission",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-incremental-typing-feasibility-g1-a1",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
+              "branch": "codex/core-incremental-typing-feasibility-20260913"
+            },
+            "contextAcknowledgement": {
+              "status": "pending"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-12T18:45:00Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Core-safe Thai and mixed-script incremental shaping, retained paragraph state, line reconvergence, and isolated measurement certification",
+              "scopeSize": "One Core-only candidate feasibility gate across the pinned MR1 range provider, Creator paragraph planning, retained session, fixed corpus, and evidence verifier",
+              "uncertainty": "Whether bounded range shaping and reflow can certify exact full-layout parity for common Thai edits without work growing with unrelated paragraph text",
+              "missingContext": "No production-grade safe-boundary certificate or retained exact line-layout contract exists yet; Gate 1 must prove or reject that boundary",
+              "failureImpact": "A false positive would repeat the visible geometry-swap architecture and could invalidate later Editor integration; a false negative would discard the viable Text Engine path",
+              "recoverability": "Candidate-only exports in a fresh exact-pin worktree with productionBinding and mayPublishLayout false; PLAN can reject without merging or changing product behavior",
+              "reason": "GPT-6 Astra high is selected for the first feasibility gate because it must reconcile Thai shaping boundaries, authenticated retained state, exact reconvergence, and measurement isolation after three user-rejected UX approaches.",
+              "smallerOptionAssessment": "GPT-5.6 Sol high is suitable once the contract is proven, but is not selected for this first boundary-certification pass because an incorrect safety decision has high architecture and correctness cost.",
+              "availabilitySource": "Current host send_message_to_thread model and reasoning-effort capability schema",
+              "availabilityObservedAt": "2026-09-12T18:20:29.1788545Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "A bounded revision fails because of unresolved reasoning across shaping, state, and reconvergence contracts rather than missing runtime evidence",
+                "Any dependency, font, WASM ABI, production binding, Editor/Backend edit, default public behavior, scope beyond one active paragraph, or weakened gate is required",
+                "The pinned runtime cannot provide safe bounded facts, which must return BLOCKER rather than increasing model effort"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Gate 1 adds candidate-only Core feasibility APIs and evidence with productionBinding and mayPublishLayout false; no Editor path or user-visible renderer is activated."
+            },
+            "requiredEvidence": [
+              "evidence-core-incremental-admission"
             ]
           }
         ],
