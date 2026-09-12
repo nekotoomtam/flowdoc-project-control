@@ -1,5 +1,16 @@
 # แผน Core Text และ Layout สำหรับการพิมพ์บนเอกสาร
 
+## Architecture continuation accepted — 2026-09-12
+
+หลัง actual user trial ปฏิเสธ browser-shaped visible echo ทั้งสามรอบ ตูมยอมรับ
+สถาปัตยกรรม `doc-core-authoritative-incremental-typing-architecture-2026-09-12`
+เป็นฐานสำหรับแผนถัดไป สถาปัตยกรรมนี้อิง FlowDoc vNext Text Engine: Core เป็น visible
+layout authority เพียงรายเดียว, input adapter ไม่วาดข้อความ, และ Core feasibility ต้อง
+พิสูจน์ provider-owned incremental shaping, reflow-until-reconvergence และ geometry
+patch ก่อนเปิด Editor integration ไม่มี product dispatch, merge, cleanup หรือ map
+promotion จากการตัดสินใจนี้ เอกสารสถาปัตยกรรมใหม่เป็นข้อกำหนดล่าสุดสำหรับงาน typing;
+ส่วน acceptance history และหลักฐานเดิมในเอกสารนี้ยังคงเป็นประวัติที่ต้องเก็บ
+
 ## Work4A bounded acceptance — 2026-09-08
 
 Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap;

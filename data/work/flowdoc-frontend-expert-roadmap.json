@@ -49,7 +49,8 @@
     "doc-editor-preview-dispatch-2026-09-06",
     "doc-core-outlines-dispatch-2026-09-06",
     "doc-core-text-edit-geometry-dispatch-2026-09-06",
-    "doc-core-text-layout-plan-2026-09-07"
+    "doc-core-text-layout-plan-2026-09-07",
+    "doc-core-authoritative-incremental-typing-architecture-2026-09-12"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -58,7 +59,7 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-10T14:18:57.7484817Z",
+  "updatedAt": "2026-09-12T17:00:35.5880666Z",
   "coordination": {
     "version": 1,
     "revision": 101,
