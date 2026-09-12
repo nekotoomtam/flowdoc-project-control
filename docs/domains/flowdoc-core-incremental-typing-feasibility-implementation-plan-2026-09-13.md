@@ -250,9 +250,14 @@ and failing import in the WORK evidence directory.
 
 Use a module-local `WeakMap<object, ParagraphStateInternals>` keyed by the frozen state
 token. `create` performs the only full shape/segment for initial state. `advance` verifies
-the exact edit relation and state identity before any range call; it consumes the old state
-only after producing a successful successor. A `composition-commit` with unchanged text
-returns `candidate-noop`, advances the authentic token and records zero shaping/segmentation.
+the exact edit relation and state identity before any range call and returns an immutable
+successor token without invalidating the old token. The Core session promotes that successor
+only after range splice and line reflow both succeed; a failed downstream step drops the
+successor and keeps the prior session/token current. Session revision identity rejects stale
+or branching edits, while the provider token remains reusable for one retry from the same
+authenticated previous text. Abandoned successors are reclaimed through the `WeakMap`.
+A `composition-commit` with unchanged text returns `candidate-noop`, supplies a successor
+token for the same text and records zero shaping/segmentation.
 
 ```ts
 const paragraphs = new WeakMap<object, ParagraphStateInternals>()
