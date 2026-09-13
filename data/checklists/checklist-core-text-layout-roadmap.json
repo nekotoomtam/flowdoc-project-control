@@ -50,9 +50,11 @@
     {
       "id": "incremental-boundary-admission",
       "label": "พิสูจน์ retained text และ bounded window ก่อน line/geometry",
-      "state": "pending",
+      "state": "blocked",
       "evidenceTarget": "evidence-core-incremental-boundary-admission",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-admission"
+      ]
     },
     {
       "id": "complex-flow",
@@ -88,5 +90,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T05:41:31.974Z"
+  "updatedAt": "2026-09-13T07:32:03.8395464Z"
 }

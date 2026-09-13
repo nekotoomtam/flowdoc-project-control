@@ -12,7 +12,7 @@
     "repo-core"
   ],
   "workState": "in-progress",
-  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet. Next Core lane prepared from source-reviewed Enter/merge paragraphSnapshot recomputation and partial A1/B1 planning spikes. Experimental terminal-LF reuse only; no UX acceptance or product integration authority. Registry24 receive rejected due retrospective priority check against accepted history; state unchanged, prematureACK corrected to sender. Regression RED then48focusedGREEN verifies later arrivals no longer invalidate earlier acceptance while already-waiting highpriority still blocks. Receipt now actually recorded. TerminalLF mechanism candidate4e3b0c9 preserved, finalUX blockedpending notaccepted. PCmain gate456unit6e2e passed823c739. Next readonly result-cost attribution separates serialization/UTF8/SHA256 and retained-object reuse before selecting point2 optimization. Resumed 2026-09-12 after explicit user HOLD. Registry33 restored; prior Core Context Acknowledgement and HOLD receipt retained in PLAN task. No probe ran during pause. Core clean4e3b0c9 and PC main823c739 reverified. Renewed five-minute no-edit liveness deadline; same generation and lane. Core cost-attribution checkpoint received via automatic channel: one probe completed,8 cases and7 measured phase samples; SHA scan then canonical serialization dominate terminal cases, pure-append planning remains. Preliminary only, terminal evidence review pending. Extended five minutes for artifact packaging and immutable handoff only; no second probe. Receipt normalization first attempt rejected SCHEMA_ADDITIONAL_PROPERTY for six external-only handoff fields; active registry remained36. Raw handoff locator preserved; retry strips external-only fields into schema envelope, no claim of receipt before success. User authorized completing remaining four typing points. Prepare two read-only owning-repository design lanes: Core safe incremental planning/result costs; Editor worker scheduling and immediate native typing with authoritative geometry retained. No product mutation in design lanes. Existing Work tasks reused, Sol high selected explicitly. Product UX still pending. Core design checkpoint: current MR1 range stack still full shapes/segments and lacks publishable bounded proof. Worker owning entire authentic realm is leading recommendation; provider-owned additive capability remains future contract. Extend five minutes for terminal design packet. PC full gate456unit6e2e passed before commit5863715. Editor checkpoint received: source review complete, runtime-local authority requires worker-owned engine/session/layout/geometry and queries. Native overlay is provisional and may reflow; user preference requested while independent Worker work remains authorized. Extend five minutes for immutable artifact packaging. Design accepted; prepare Editor Worker-only implementation. Fresh worktree from main d1a9670 then fast-forward approved retained StageA source82eba4bc; no merge to product main. Core candidate4e3b0c9 pinned externally. Async Worker queries allowed as experimental mechanism with UX pending; no wire geometry authority or visible native overlay. Native provisional wrapping question remains pending. Editor Worker checkpoint received through automatic channel: exact isolated worktree created from main d1a9670 and fast-forwarded to retained82eba4b; Core candidate linked4e3b0c9. Baseline focused Editor50/50 PASS. TDD protocol RED for missing module then GREEN2/2; strict identity and display-only DTO boundary established. Extended20min for client queue/lifecycle, runtime and integration. No live61348 or visible overlay. Gate1 blocker architecture review completed: full-paragraph clone/freeze, UTF8/UTF16 conversion, JS/WASM marshalling, Rust property scans and flat suffix rewrites are separated from line-reflow fallback. Gate2 is now a Core-only retained-store and bounded-window provider gate; Editor, line/geometry and Node-count work remain excluded. Gate2 active progress observed: characterization and retained-paragraph-store RED test files created in the retained clean-scope Core worktree; liveness extended without scope or gate change. Gate2 bounded-store checkpoint observed: baseline2files10tests PASS; Rust/WASM toolchain available; V1 4000-unit append characterized at24006UTF16 range payload with one source clone, three large-array freezes and7201 mapped elements; retained tree3tests PASS including bounded8192 middle edit and180 revisions. No scope or gate change.",
+  "summary": "Typing four-point continuation owned by PLAN 01a08a25-13d9-7090-8d91-1c32242988d8. Old PLAN 01a0707e-00e9-74e1-be1b-a272a1b89d2a actively acknowledged stand-down on 2026-09-10; historical experimental attempts retain no new acceptance authority. Initial typed generation 1, not retroactive validation. First lane measures exact retained demo including Enter and matching render; implementation and UX acceptance follow evidence. Node-count performance excluded. Baseline attempt1 superseded after two rejected seed-caret calibrations; zero accepted timing samples. Attempt2 retains Sol medium after source review classifies missing setup context; actual paper-edit button and visible-caret precondition required. Focus-alone failure cause remains unproven. Attempt2 calibration passed15links but corpus rejected with unknown failedcase. Receipt recorded; attempt3 raises Sol effort to high for durable per-case viewport/focus diagnosis and strict all-link accounting before one corpus. Rejected supersede transition at revision8 left state unchanged: resolve-handoff already superseded attempt2; authorized revision from that state. Attempt3 closed BLOCKER with raw immutable launch audit; PLAN verified explicit Node v24.15.0 works and syntax parses. New bounded observed-launch recovery uses installed Playwright lifecycle and prelaunch journal, preserving native measured events and original pins. Historical baseline accepted180links. Next evidence-only comparison reuses same Editor and workload against existing cumulative Corefc05287; no new product fixes or live activation yet. Next Core lane prepared from source-reviewed Enter/merge paragraphSnapshot recomputation and partial A1/B1 planning spikes. Experimental terminal-LF reuse only; no UX acceptance or product integration authority. Registry24 receive rejected due retrospective priority check against accepted history; state unchanged, prematureACK corrected to sender. Regression RED then48focusedGREEN verifies later arrivals no longer invalidate earlier acceptance while already-waiting highpriority still blocks. Receipt now actually recorded. TerminalLF mechanism candidate4e3b0c9 preserved, finalUX blockedpending notaccepted. PCmain gate456unit6e2e passed823c739. Next readonly result-cost attribution separates serialization/UTF8/SHA256 and retained-object reuse before selecting point2 optimization. Resumed 2026-09-12 after explicit user HOLD. Registry33 restored; prior Core Context Acknowledgement and HOLD receipt retained in PLAN task. No probe ran during pause. Core clean4e3b0c9 and PC main823c739 reverified. Renewed five-minute no-edit liveness deadline; same generation and lane. Core cost-attribution checkpoint received via automatic channel: one probe completed,8 cases and7 measured phase samples; SHA scan then canonical serialization dominate terminal cases, pure-append planning remains. Preliminary only, terminal evidence review pending. Extended five minutes for artifact packaging and immutable handoff only; no second probe. Receipt normalization first attempt rejected SCHEMA_ADDITIONAL_PROPERTY for six external-only handoff fields; active registry remained36. Raw handoff locator preserved; retry strips external-only fields into schema envelope, no claim of receipt before success. User authorized completing remaining four typing points. Prepare two read-only owning-repository design lanes: Core safe incremental planning/result costs; Editor worker scheduling and immediate native typing with authoritative geometry retained. No product mutation in design lanes. Existing Work tasks reused, Sol high selected explicitly. Product UX still pending. Core design checkpoint: current MR1 range stack still full shapes/segments and lacks publishable bounded proof. Worker owning entire authentic realm is leading recommendation; provider-owned additive capability remains future contract. Extend five minutes for terminal design packet. PC full gate456unit6e2e passed before commit5863715. Editor checkpoint received: source review complete, runtime-local authority requires worker-owned engine/session/layout/geometry and queries. Native overlay is provisional and may reflow; user preference requested while independent Worker work remains authorized. Extend five minutes for immutable artifact packaging. Design accepted; prepare Editor Worker-only implementation. Fresh worktree from main d1a9670 then fast-forward approved retained StageA source82eba4bc; no merge to product main. Core candidate4e3b0c9 pinned externally. Async Worker queries allowed as experimental mechanism with UX pending; no wire geometry authority or visible native overlay. Native provisional wrapping question remains pending. Editor Worker checkpoint received through automatic channel: exact isolated worktree created from main d1a9670 and fast-forwarded to retained82eba4b; Core candidate linked4e3b0c9. Baseline focused Editor50/50 PASS. TDD protocol RED for missing module then GREEN2/2; strict identity and display-only DTO boundary established. Extended20min for client queue/lifecycle, runtime and integration. No live61348 or visible overlay. Gate1 blocker architecture review completed: full-paragraph clone/freeze, UTF8/UTF16 conversion, JS/WASM marshalling, Rust property scans and flat suffix rewrites are separated from line-reflow fallback. Gate2 is now a Core-only retained-store and bounded-window provider gate; Editor, line/geometry and Node-count work remain excluded. Gate2 active progress observed: characterization and retained-paragraph-store RED test files created in the retained clean-scope Core worktree; liveness extended without scope or gate change. Gate2 bounded-store checkpoint observed: baseline2files10tests PASS; Rust/WASM toolchain available; V1 4000-unit append characterized at24006UTF16 range payload with one source clone, three large-array freezes and7201 mapped elements; retained tree3tests PASS including bounded8192 middle edit and180 revisions. No scope or gate change. Gate2 terminal BLOCKER received automatically: clean Core064d844,4500/4500 common exact,180/180 burst exact,0invalid and bounded foreground work; final failed six Latin scaling groups plus one17.4971ms tail. PLAN fresh Core448files/2939tests and immutable verifier passed. Candidate retained; Gate3/Editor/production/maps remain held.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
     "doc-document-map-operating-rules",
@@ -61,10 +61,10 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-13T07:12:18.9732362Z",
+  "updatedAt": "2026-09-13T07:32:03.8395464Z",
   "coordination": {
     "version": 1,
-    "revision": 130,
+    "revision": 134,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1478,7 +1478,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-incremental-boundary-g2-a1",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "01a07584-49dc-7602-b662-6033c1469517",
           "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
@@ -2558,6 +2558,97 @@
             "Design a runtime/state boundary that removes whole-paragraph conversion/copying and handles long mid-line reflow without hiding fallback.",
             "Define a new fixed feasibility gate before any Editor integration or user trial.",
             "Keep node-count and full-document pagination performance as a separate later lane."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-incremental-boundary-g2-a1",
+        "payloadDigest": "5447714a33d3faa83139bae41b77959f922526e821231995cd4b2bf5c698966a",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-incremental-boundary-g2-a1",
+          "laneId": "lane-core-incremental-boundary-g2",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "BLOCKER",
+          "behaviorChanged": false,
+          "behaviorSummary": "Production behavior unchanged. Candidate-only V2 retains paragraph text and layout facts, sends only bounded windows through a separate Rust/WASM runtime, and validates two-anchor certificates. Exactness and bounded work passed; fixed performance admission failed six Latin scaling groups and one absolute max sample.",
+          "exactCommit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/package.json",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/.gitignore",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/flowdoc_incremental_window_v2.d.ts",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/flowdoc_incremental_window_v2.js",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/flowdoc_incremental_window_v2_bg.wasm",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/flowdoc_incremental_window_v2_bg.wasm.d.ts",
+            "packages/text-engine-rust-wasm/pkg-incremental-window-v2/package.json",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/window_v2.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/tests/incremental_window_v2.rs",
+            "packages/text-engine-rust-wasm/src/incrementalWindowRuntimeV2.ts",
+            "scripts/run-incremental-boundary-v2.mjs",
+            "scripts/verify-incremental-boundary-v2.mjs",
+            "src/creatorPreview/incrementalBoundaryProviderV2.ts",
+            "src/creatorPreview/incrementalBoundarySessionV2.ts",
+            "src/creatorPreview/incrementalWindowContractV2.ts",
+            "src/creatorPreview/retainedParagraphFactsV2.ts",
+            "src/creatorPreview/retainedParagraphStoreV2.ts",
+            "tests/creatorIncrementalBoundaryCharacterizationV2.test.ts",
+            "tests/fixtures/creator-preview/incremental-boundary.v2.json",
+            "tests/incrementalBoundaryArtifactV2.test.ts",
+            "tests/incrementalBoundarySessionV2.test.ts",
+            "tests/incrementalWindowRuntimeV2.test.ts",
+            "tests/retainedParagraphFactsV2.test.ts",
+            "tests/retainedParagraphStoreV2.test.ts"
+          ],
+          "tests": [
+            "PLAN fresh npm run check PASS: 448 files / 2,939 tests at exact commit 064d84422ce10855cf5c85ee04fa2e8a03113944",
+            "PLAN fresh immutable verifier PASS: valid=true, gate=BLOCKER, 4,930 measured rows and 475 warmups",
+            "4,500/4,500 common exact, 180/180 authentic burst exact, 0 invalid, 250/250 expected adversarial fallback",
+            "All foreground full-text work counters zero; max window 89 UTF16; max combined shape and segment 178 UTF16"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Fixed Gate2 performance boundary is not admitted despite exact facts and bounded foreground work.",
+            "Final timing ratios varied from calibration; stable performance and pure timing noise are not proven."
+          ],
+          "unknowns": [
+            "Full cause of six Latin scaling failures and the 17.4971 ms tail remains unresolved.",
+            "Line reflow, geometry, Editor transport/paint, visible typing and Node-count performance remain untested in this gate."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-13T07:24:03Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-13T07:24:03Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-13T07:24:03Z",
+          "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 15,
+          "acknowledgedAt": "2026-09-13T07:24:03Z"
+        },
+        "acceptance": {
+          "status": "blocked",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-13T07:32:03.8395464Z",
+          "reviewNote": "PLAN independently verified exact clean commit 064d844, all source/raw-row hashes, immutable verifier and a fresh full Core gate (448 files / 2,939 tests). Correctness and bounded foreground work pass, but fixed Gate2 admission is blocked: six Latin scaling ratios exceed 1.50 and mixed-8192 append has a 17.4971ms max above 16.7ms. Retain candidate; do not merge, open Gate3/Editor, activate production binding, clean the worktree or promote map truth.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Diagnose the cold-setup/working-set and Latin scaling cause under the unchanged fixed gate.",
+            "Eliminate or explain the mixed 8192 append tail above 16.7ms with immutable evidence.",
+            "Only after Gate2 PASS may PLAN draft or authorize Gate3 line/geometry work; Editor and Node-count remain separate."
           ]
         }
       }

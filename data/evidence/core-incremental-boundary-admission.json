@@ -1,0 +1,10 @@
+{
+  "pathOrContractId": "creator-incremental-boundary-admission/2",
+  "verificationSummary": "Gate2 retained-text and bounded-window candidate returned BLOCKER through automatic handoff handoff-core-incremental-boundary-g2-a1 and PLAN accepted the negative evidence. Exact clean Core commit 064d84422ce10855cf5c85ee04fa2e8a03113944; productionBinding=false; mayPublishLayout=false; V1 and public entry points unchanged. PLAN fresh npm run check passed 448 files / 2,939 tests and the immutable verifier returned valid=true, gate=BLOCKER for 4,930 measured rows plus 475 warmups. Final evidence SHA256 8a28fc47177df7969e1c1f1ec445a8acd9edcc855dd70d87421223a921a30e1d; raw rows SHA256 23bb76d00dea3257a9224a063e7229c7257a4a97fb22d96e05e02758d966ea66. Common edits were exact 4,500/4,500; authentic burst exact 180/180 with one retained session; 0 invalid; 250/250 adversarial cases fell back explicitly. All full-text foreground counters were zero; maximum window 89 UTF16 and combined shape plus segment 178 UTF16. Absolute latency passed 89/90 groups; mixed 8192 append max 17.4971ms exceeded 16.7ms. Scaling passed 12/18; all six Latin operations measured 8192/256 p95 ratios 1.7939-2.4674 above 1.50. This blocks Gate3, Editor integration, production binding and UX claims. Candidate worktree and branch remain clean and retained; maps unchanged.",
+  "nodeIds": [],
+  "kind": "evidence",
+  "repositoryId": "repo-core",
+  "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+  "id": "evidence-core-incremental-boundary-admission",
+  "verifiedAt": "2026-09-13T07:32:03.8395464Z"
+}
