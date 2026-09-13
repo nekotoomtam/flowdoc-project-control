@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "57a6e9d204fc623a9b66d6a54c5a3c20a6a50c2804f5e3880f2f62bf615cdded",
+  "sourceDigest": "cc8c462921ef8f73aec3b9eb9720fa775f6de2250852e6d9e11c69d9d79540eb",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,10 +2983,10 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-13T09:25:50.9060685Z",
+      "updatedAt": "2026-09-13T09:37:33.0649512Z",
       "coordination": {
         "version": 1,
-        "revision": 135,
+        "revision": 136,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4473,19 +4473,20 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-core-incremental-boundary-g2a-a1",
-            "status": "prepared",
+            "status": "active",
             "locator": {
               "threadId": "01a07584-49dc-7602-b662-6033c1469517",
               "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-boundary-g2a-20260913/flowdoc-vnext-core",
               "branch": "codex/core-incremental-boundary-g2a-20260913"
             },
             "contextAcknowledgement": {
-              "status": "pending"
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-13T09:37:33.0649512Z"
             },
             "returnRoute": {
               "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "activeCommand": "mcp__codex_app__send_message_to_thread",
-              "livenessDeadline": "2026-09-13T09:45:50.9060685Z",
+              "livenessDeadline": "2026-09-13T09:57:33.0649512Z",
               "maxSendAttempts": 3,
               "automaticChannel": "send_message_to_thread",
               "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
