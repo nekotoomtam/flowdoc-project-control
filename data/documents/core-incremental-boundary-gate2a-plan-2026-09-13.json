@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-core-incremental-boundary-gate2a-plan-2026-09-13",
+  "title": "Core Incremental Boundary Gate 2A Plan",
+  "path": "docs/domains/flowdoc-core-incremental-boundary-gate2a-plan-2026-09-13.md",
+  "role": "contract",
+  "authority": "Project Control user-approved Gate 2A lifecycle and measurement contract after accepted Gate 2 negative evidence; no line/geometry, Editor, production, UX or map authority.",
+  "lifecycle": "active",
+  "nodeIds": [],
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+      "pathOrContractId": "src/creatorPreview/incrementalBoundarySessionV2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+      "pathOrContractId": "src/creatorPreview/retainedParagraphStoreV2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/incrementalWindowRuntimeV2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
+      "pathOrContractId": "scripts/verify-incremental-boundary-v2.mjs"
+    }
+  ]
+}
