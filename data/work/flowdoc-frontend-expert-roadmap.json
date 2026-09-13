@@ -56,15 +56,15 @@
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation. Gate2 must prove zero full-text foreground scans/copies/clones/freezes/serialization/hashing and exact bounded-window facts before any line/geometry or Editor work.",
+  "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation. Gate2 must prove zero full-text foreground scans/copies/clones/freezes/serialization/hashing and exact bounded-window facts before any line/geometry or Editor work. Gate2A WORK missed its 2026-09-13T11:26:44.745253Z liveness deadline after completing the final artifact but before sending the mandatory terminal handoff. Classify the room return channel as return-channel-failed pending recovery from the registered thread, clean Core commit d5031b6151a0a6aba2fbe2c3320f122a935470a3 and immutable evidence locator; manual recovery does not satisfy automatic return.",
   "requiredEvidence": [
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-13T11:11:44.745253Z",
+  "updatedAt": "2026-09-13T11:28:02.418836Z",
   "coordination": {
     "version": 1,
-    "revision": 145,
+    "revision": 146,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
