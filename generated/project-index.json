@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "35caba4fe51c54c20cfc3d37b112133625a216f32e7e4e58bbb8204e665f868b",
+  "sourceDigest": "516a6be24372e4ae3092f9669b81da11e17b175ea6ec40a0121ca7ff4f703515",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,10 +2983,10 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-13T05:41:31.974Z",
+      "updatedAt": "2026-09-13T05:56:24.950Z",
       "coordination": {
         "version": 1,
-        "revision": 118,
+        "revision": 119,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -3016,7 +3016,12 @@
             "repo-core/src/index.ts",
             "repo-core/packages/text-engine-rust-wasm/src",
             "repo-core/scripts",
-            "repo-core/docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md"
+            "repo-core/docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
+            "repo-core/packages/text-engine-rust-wasm/rust-live-draft-engine",
+            "repo-core/packages/text-engine-rust-wasm/pkg-live-draft-mr1-window",
+            "repo-core/packages/text-engine-rust-wasm/package.json",
+            "repo-core/package.json",
+            "repo-core/package-lock.json"
           ]
         },
         "integrationClaims": [
@@ -3026,6 +3031,13 @@
             "generation": 1,
             "state": "active",
             "baseCommit": "2679f70dae2868843855104544257f19de903a9f"
+          },
+          {
+            "repositoryId": "repo-core",
+            "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+            "generation": 1,
+            "state": "active",
+            "baseCommit": "bd6cc75589a22de569364e27bb4bb46d3986becb"
           }
         ],
         "returnOrderPolicy": "severity-then-arrival",
@@ -4373,6 +4385,77 @@
             },
             "requiredEvidence": [
               "evidence-core-incremental-admission"
+            ]
+          },
+          {
+            "roomRunId": "core-incremental-boundary-g2-a1",
+            "dispatchSetId": "dispatch-core-incremental-boundary-g2-2026-09-13",
+            "laneId": "lane-core-incremental-boundary-g2",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-incremental-boundary-admission",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-incremental-boundary-g2-a1",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
+              "branch": "codex/core-incremental-typing-feasibility-20260913"
+            },
+            "contextAcknowledgement": {
+              "status": "pending"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-13T06:16:24.950Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Retained text structure, UTF-8/UTF-16 indexing, Rust/WASM bounded-window ABI, shaping correctness and immutable performance evidence",
+              "scopeSize": "One Core-only non-publishing Gate2 on the retained Gate1 candidate; no line reflow, geometry, Editor or Node-count work",
+              "uncertainty": "Whether the provider can certify exact Thai and mixed-script shaping facts while the foreground path never receives or scans complete paragraph text",
+              "missingContext": "No existing runtime contract takes only a bounded context window with retained paragraph properties and local offsets",
+              "failureImpact": "A false PASS could admit incorrect shaping boundaries and later visible geometry corruption; a correct BLOCKER remains isolated",
+              "recoverability": "Candidate remains in a clean isolated worktree with productionBinding=false and mayPublishLayout=false; Gate1 commit and artifacts stay addressable",
+              "reason": "GPT-6 Astra high is selected because this attempt crosses persistent structures, Unicode offset correctness, Rust/WASM ABI design and performance proof after Gate1 exposed concealed whole-text work",
+              "smallerOptionAssessment": "A smaller model is not selected for attempt1 because the unresolved boundary spans TypeScript and Rust and must distinguish measured bounded work from hidden full-text marshalling; use a smaller model after this contract is proven",
+              "availabilitySource": "Current host send_message_to_thread capability schema observed by PLAN on 2026-09-13",
+              "availabilityObservedAt": "2026-09-13T05:56:24.950Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "One bounded revision cannot reconcile exact oracle facts with the no-full-text foreground contract for a demonstrated reasoning limitation",
+                "Any line reflow, geometry, Editor, Backend, production binding, default-path change or weakened fixed gate is required",
+                "The runtime cannot certify a bounded window, which must return BLOCKER rather than silently expand to full text"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Gate2 is a candidate-only Core mechanism and performance gate with productionBinding=false and mayPublishLayout=false; no visible renderer changes."
+            },
+            "requiredEvidence": [
+              "evidence-core-incremental-boundary-admission"
             ]
           }
         ],
