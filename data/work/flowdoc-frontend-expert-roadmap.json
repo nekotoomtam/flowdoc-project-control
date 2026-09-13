@@ -61,10 +61,10 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-13T10:17:33.566475Z",
+  "updatedAt": "2026-09-13T10:28:10.981200Z",
   "coordination": {
     "version": 1,
-    "revision": 140,
+    "revision": 141,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1564,7 +1564,7 @@
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
-          "livenessDeadline": "2026-09-13T10:37:33.566475Z",
+          "livenessDeadline": "2026-09-13T10:48:10.981200Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
