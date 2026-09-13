@@ -62,7 +62,8 @@
       "state": "blocked",
       "evidenceTarget": "evidence-core-incremental-boundary-lifecycle-admission",
       "evidenceIds": [
-        "evidence-core-incremental-boundary-lifecycle-admission"
+        "evidence-core-incremental-boundary-lifecycle-admission",
+        "evidence-core-incremental-boundary-preparation-attribution"
       ]
     },
     {
@@ -99,5 +100,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T11:39:30.445239Z"
+  "updatedAt": "2026-09-13T13:06:24.407Z"
 }
