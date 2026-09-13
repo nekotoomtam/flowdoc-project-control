@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "508f7520d21765deb9f9378fa83cf046bf779c20022825167217852c39ba2783",
+  "sourceDigest": "31177c99173ad1c1956fc0e085296ce1aa420f15a1c59687568c00ee33a2086f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2983,10 +2983,10 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-13T06:55:38.6052926Z",
+      "updatedAt": "2026-09-13T07:04:34.5701287Z",
       "coordination": {
         "version": 1,
-        "revision": 128,
+        "revision": 129,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4413,7 +4413,7 @@
             "returnRoute": {
               "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
               "activeCommand": "mcp__codex_app__send_message_to_thread",
-              "livenessDeadline": "2026-09-13T07:15:38.6052926Z",
+              "livenessDeadline": "2026-09-13T07:24:34.5701287Z",
               "maxSendAttempts": 3,
               "automaticChannel": "send_message_to_thread",
               "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
