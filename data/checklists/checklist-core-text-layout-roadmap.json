@@ -59,9 +59,11 @@
     {
       "id": "incremental-boundary-lifecycle-admission",
       "label": "พิสูจน์ preparation และ input-facing lifecycle ของ Gate 2A",
-      "state": "pending",
+      "state": "blocked",
       "evidenceTarget": "evidence-core-incremental-boundary-lifecycle-admission",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-lifecycle-admission"
+      ]
     },
     {
       "id": "complex-flow",
@@ -97,5 +99,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T09:25:50.9060685Z"
+  "updatedAt": "2026-09-13T11:39:30.445239Z"
 }

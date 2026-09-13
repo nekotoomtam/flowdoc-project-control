@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "1a39a2f172867228239e62ec03b4061154574c59a938ef411e849cd007e1c5eb",
+  "sourceDigest": "7f0bafedc0334b1a99292454c03d1a2b5c1d9fa3943f01bacbdbc4eaccc11802",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2978,15 +2978,15 @@
       ],
       "activeRole": "planning-partner",
       "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-      "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation. Gate2 must prove zero full-text foreground scans/copies/clones/freezes/serialization/hashing and exact bounded-window facts before any line/geometry or Editor work. Gate2A WORK missed its 2026-09-13T11:26:44.745253Z liveness deadline after completing the final artifact but before sending the mandatory terminal handoff. Classify the room return channel as return-channel-failed pending recovery from the registered thread, clean Core commit d5031b6151a0a6aba2fbe2c3320f122a935470a3 and immutable evidence locator; manual recovery does not satisfy automatic return.",
+      "riskSummary": "The roadmap could be mistaken for frontend readiness or current product behavior. The design artifact is not product truth, no map truth is promoted, and product implementation remains gated by future approved lanes. Preview must support editing permitted simulation values on the document; PDF display and a read-only result do not meet this requirement. R4 acceptance requires correction; Build remains separate. Core Gate1 incremental feasibility is blocked at80% common admission with long mid-line fallbacks and scaling/timing failures. Keep the candidate unmerged and do architecture review before any Gate2/Editor activation. Gate2 must prove zero full-text foreground scans/copies/clones/freezes/serialization/hashing and exact bounded-window facts before any line/geometry or Editor work. Gate2A WORK missed its 2026-09-13T11:26:44.745253Z liveness deadline after completing the final artifact but before sending the mandatory terminal handoff. The terminal payload later arrived through the registered channel and was classified return-channel-failed-then-recovered; late recovery does not satisfy timely automatic return. PLAN verified clean Core commit d5031b6151a0a6aba2fbe2c3320f122a935470a3 and the immutable evidence locator independently. PLAN manually recovered and independently verified the final Gate2A artifact from the registered locator after the automatic return deadline: gate BLOCKER; prepared edit absolute and scaling criteria pass, paragraph preparation fails11/15. The late return does not satisfy timely automatic return; receipt was acknowledged, the handoff was resolved BLOCKED, and the room is closed without acceptance. Candidate/evidence are retained and Gate3/Editor remain held.",
       "requiredEvidence": [
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-13T11:28:02.418836Z",
+      "updatedAt": "2026-09-13T11:39:30.445239Z",
       "coordination": {
         "version": 1,
-        "revision": 146,
+        "revision": 150,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4473,7 +4473,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 1,
             "expectedHandoffId": "handoff-core-incremental-boundary-g2a-a1",
-            "status": "active",
+            "status": "closed",
             "locator": {
               "threadId": "01a07584-49dc-7602-b662-6033c1469517",
               "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-boundary-g2a-20260913/flowdoc-vnext-core",
@@ -5644,6 +5644,82 @@
                 "Diagnose the cold-setup/working-set and Latin scaling cause under the unchanged fixed gate.",
                 "Eliminate or explain the mixed 8192 append tail above 16.7ms with immutable evidence.",
                 "Only after Gate2 PASS may PLAN draft or authorize Gate3 line/geometry work; Editor and Node-count remain separate."
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-incremental-boundary-g2a-a1",
+            "payloadDigest": "3d0f18be915357c4c61668f413198a3e2e37f95558b5ac17d5e9285bfb231ce1",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "core-incremental-boundary-g2a-a1",
+              "laneId": "lane-core-incremental-boundary-g2a",
+              "ownerRepositoryId": "repo-core",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 1,
+              "status": "BLOCKER",
+              "behaviorChanged": false,
+              "behaviorSummary": "Production behavior is unchanged. Candidate-only Gate2A adds an explicit retained runtime/paragraph lifecycle and immutable admission measurement. Prepared edits are exact, bounded, below absolute latency limits and pass all scaling groups; paragraph preparation exceeds the fixed limit in 11 of 15 language-size groups, so Gate2A remains blocked.",
+              "exactCommit": "d5031b6151a0a6aba2fbe2c3320f122a935470a3",
+              "changedFiles": [
+                "scripts/incremental-boundary-gate2a-cold-worker.mjs",
+                "scripts/run-incremental-boundary-gate2a-v2.mjs",
+                "scripts/verify-incremental-boundary-gate2a-v2.mjs",
+                "src/creatorPreview/incrementalBoundaryLifecycleV2.ts",
+                "src/creatorPreview/incrementalBoundarySessionV2.ts",
+                "src/creatorPreview/retainedParagraphStoreV2.ts",
+                "tests/fixtures/creator-preview/incremental-boundary-gate2a.v2.json",
+                "tests/incrementalBoundaryLifecycleArtifactV2.test.ts",
+                "tests/incrementalBoundaryLifecycleV2.test.ts"
+              ],
+              "tests": [
+                "Focused Core suite PASS: 6 files / 21 tests",
+                "WORK clean full Core gate PASS: 450 files / 2,950 tests at exact commit",
+                "PLAN independent clean full Core gate PASS: 450 files / 2,950 tests, exit0, 203.06s",
+                "PLAN independent immutable verifier PASS: valid=true, gate=BLOCKER, rows9,936, warmups975, coldRows360",
+                "Final exactness/bounds PASS: invalid0, prepared absolute180/180, scaling36/36, authentic burst180/180, adversarial PASS, max window111 UTF16, max shape+segment222 UTF16"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Paragraph preparation fails the fixed timing boundary in 11/15 language-size groups; Thai8192 p95237.3521ms/max245.1224ms.",
+                "The first attempted final command started before its full-gate dependency was confirmed and was stopped without an artifact; partial streams are retained as invalid protocol evidence.",
+                "The mandatory terminal handoff arrived after its liveness deadline and is classified return-channel-failed-then-recovered; late recovery does not satisfy timely automatic return."
+              ],
+              "unknowns": [
+                "A bounded preparation/readiness design that meets the unchanged 8.0ms p95 and16.7ms max limits.",
+                "Line reflow, retained geometry, Editor transport/paint, real Windows Thai IME and Node-count behavior remain outside Gate2A."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-13T11:38:56.073139Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-13T11:38:56.073139Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-13T11:38:57.073139Z",
+              "senderThreadId": "01a07584-49dc-7602-b662-6033c1469517",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 16,
+              "acknowledgedAt": "2026-09-13T11:38:58.073139Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-13T11:38:59.073139Z",
+              "reviewNote": "PLAN independently verified the exact clean Core commit, complete immutable final artifact/raw streams/source manifest, fixed corpus and thresholds, protocol-incident hashes, and a fresh full Core gate. Gate2A technical admission is BLOCKER because paragraph preparation fails 11/15 groups although correctness, bounded input work, all prepared absolute limits, all36 scaling groups, burst and adversarial checks pass. The handoff arrived after the registered liveness deadline, so record return-channel-failed-then-recovered; the room is closed blocked and is not accepted. Retain candidate/evidence and do not open Gate3 or Editor.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Design a separately approved paragraph-preparation/readiness repair under the unchanged Gate2A thresholds.",
+                "Preserve the retained Core candidate, complete final evidence, incomplete protocol streams and late-return record.",
+                "Do not authorize Gate3 line/geometry, Editor integration, production binding, public export or map promotion."
               ]
             }
           }
@@ -6892,9 +6968,9 @@
         "Text placement policy must be decided from examples before implementation"
       ],
       "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-      "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration. Architecture review after Gate1 identifies whole-paragraph session cloning/freezing, full-text JS/WASM marshalling and offset scans, Rust full-text property/metadata scans, and flat suffix rewrites as separate hot-path costs. Gate2 now isolates a retained paragraph store plus bounded-window provider contract before Gate3 line/geometry work. Gate2 retained-text/bounded-window candidate is now blocked by final performance evidence despite exact bounded facts:89/90 absolute groups and12/18 scaling groups passed; six Latin scaling groups exceeded1.50 and mixed8192 append max reached17.4971ms. Gate3 and Editor remain held. User approved Gate2A: separate runtime preparation, paragraph preparation, prepared first edit and sustained edits; retain all Gate2 limits, add preparation/first-edit gates and preserve cold stress separately. One Core-only lifecycle lane is prepared from064d844; no line/geometry/Editor/production authority.",
+      "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration. Architecture review after Gate1 identifies whole-paragraph session cloning/freezing, full-text JS/WASM marshalling and offset scans, Rust full-text property/metadata scans, and flat suffix rewrites as separate hot-path costs. Gate2 now isolates a retained paragraph store plus bounded-window provider contract before Gate3 line/geometry work. Gate2 retained-text/bounded-window candidate is now blocked by final performance evidence despite exact bounded facts:89/90 absolute groups and12/18 scaling groups passed; six Latin scaling groups exceeded1.50 and mixed8192 append max reached17.4971ms. Gate3 and Editor remain held. User approved Gate2A: separate runtime preparation, paragraph preparation, prepared first edit and sustained edits; retain all Gate2 limits, add preparation/first-edit gates and preserve cold stress separately. One Core-only lifecycle lane is prepared from064d844; no line/geometry/Editor/production authority. Gate2A is technically BLOCKED by PLAN manual-recovered immutable evidence: prepared edit exactness, absolute latency, bounded work, burst, adversarial behavior and all36 scaling groups pass, but paragraph preparation fails11/15 groups (Thai8192 p95237.3521ms). The WORK room missed its liveness deadline; its late terminal return is classified return-channel-failed-then-recovered and resolved BLOCKED without acceptance. Retain the candidate and hold Gate3/Editor.",
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-13T09:25:50.9060685Z"
+      "updatedAt": "2026-09-13T11:39:30.445239Z"
     },
     {
       "kind": "phase",
@@ -11710,9 +11786,11 @@
         {
           "id": "incremental-boundary-lifecycle-admission",
           "label": "พิสูจน์ preparation และ input-facing lifecycle ของ Gate 2A",
-          "state": "pending",
+          "state": "blocked",
           "evidenceTarget": "evidence-core-incremental-boundary-lifecycle-admission",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-incremental-boundary-lifecycle-admission"
+          ]
         },
         {
           "id": "complex-flow",
@@ -11748,7 +11826,7 @@
         }
       ],
       "createdAt": "2026-09-07T07:16:11.8621317Z",
-      "updatedAt": "2026-09-13T09:25:50.9060685Z"
+      "updatedAt": "2026-09-13T11:39:30.445239Z"
     },
     {
       "kind": "checklist",
@@ -23144,6 +23222,16 @@
       "commit": "064d84422ce10855cf5c85ee04fa2e8a03113944",
       "id": "evidence-core-incremental-boundary-admission",
       "verifiedAt": "2026-09-13T07:32:03.8395464Z"
+    },
+    {
+      "pathOrContractId": "creator-incremental-boundary-lifecycle-admission/2",
+      "verificationSummary": "Gate2A technical result is BLOCKER, manually recovered by PLAN from the registered Core worktree/commit and immutable evidence locator after WORK missed the mandatory liveness deadline. The WORK terminal payload later arrived through the registered channel and was recorded as return-channel-failed-then-recovered, receipt acknowledged, and resolved BLOCKED; late recovery does not satisfy timely automatic return and the room is not accepted. Exact clean Core commit d5031b6151a0a6aba2fbe2c3320f122a935470a3; productionBinding=false; mayPublishLayout=false; behaviorChanged=false; public/default entry points unchanged. PLAN independently ran npm run check: 450/450 files and 2,950/2,950 tests passed in 203.06s. PLAN independently ran the immutable verifier: valid=true, gate=BLOCKER, 9,936 measured rows, 975 warmups and 360 cold rows. Final artifact SHA256 8892efd6eb8e15eb9d41f4abf65041d8145cfc16582e95df70655c0302608f04; raw rows SHA256 ce29ca7b8ed22ec0f5bd7f99b5a11b859fb10aa66fbaf3a0db44597fa15d6046; cold rows SHA256 1cff46c8ee8b52eb68c6e7d82b262eca2225db77f709ae8c984e277750cde935; WORK clean full-gate log SHA256 b0ffdcabe226b41f26a38a9e78f501a657dc35c45956ad48a0f7a7601ff573aa. Exactness, bounded work, the one-session 180-revision burst, adversarial behavior, all 180 prepared absolute timing groups, and all 36 prepared scaling groups passed. Maximum input window was 111 UTF16 and maximum combined shape plus segment input was 222 UTF16; forbidden foreground preparation/full-text counters were zero. Admission is blocked solely because paragraph preparation exceeded 8.0ms p95 or 16.7ms max in 11/15 language-size groups; Thai 8192 measured p95 237.3521ms/max245.1224ms, Latin8192 33.3668/41.2087ms, mixed8192 145.0721/153.5504ms. A prematurely started final command was stopped before an artifact existed; its partial row stream SHA256 586b9c995ea55f09a845139ccad77c57b14a2a0b594157c64388dda3131dc9da and empty cold stream SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 are retained as invalid protocol-incident evidence. Gate3, Editor integration, production binding and map promotion remain blocked. Candidate worktree/branch and all evidence are retained.",
+      "nodeIds": [],
+      "kind": "evidence",
+      "repositoryId": "repo-core",
+      "commit": "d5031b6151a0a6aba2fbe2c3320f122a935470a3",
+      "id": "evidence-core-incremental-boundary-lifecycle-admission",
+      "verifiedAt": "2026-09-13T11:39:30.445239Z"
     },
     {
       "kind": "evidence",
