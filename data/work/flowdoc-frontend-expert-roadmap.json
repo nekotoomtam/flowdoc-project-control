@@ -61,10 +61,10 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-13T05:56:24.950Z",
+  "updatedAt": "2026-09-13T06:03:09.867Z",
   "coordination": {
     "version": 1,
-    "revision": 119,
+    "revision": 121,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1478,14 +1478,15 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-incremental-boundary-g2-a1",
-        "status": "prepared",
+        "status": "active",
         "locator": {
           "threadId": "01a07584-49dc-7602-b662-6033c1469517",
           "worktree": "C:/Users/nekot/.codex/worktrees/core-incremental-typing-feasibility-20260913/flowdoc-vnext-core",
           "branch": "codex/core-incremental-typing-feasibility-20260913"
         },
         "contextAcknowledgement": {
-          "status": "pending"
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-13T06:03:09.867Z"
         },
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
