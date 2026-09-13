@@ -67,6 +67,13 @@
       ]
     },
     {
+      "id": "incremental-boundary-redesign-options",
+      "label": "ออกแบบ Core ใหม่ 3 แนวทางก่อนรัน Gate 2 อีกครั้ง",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-incremental-boundary-redesign-options",
+      "evidenceIds": []
+    },
+    {
       "id": "complex-flow",
       "label": "ตรวจรูป layout และ30nodesข้ามหน้า",
       "state": "pending",
@@ -100,5 +107,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T13:06:24.407Z"
+  "updatedAt": "2026-09-13T14:19:04.394Z"
 }
