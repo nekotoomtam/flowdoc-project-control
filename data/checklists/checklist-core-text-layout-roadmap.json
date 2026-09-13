@@ -69,9 +69,11 @@
     {
       "id": "incremental-boundary-redesign-options",
       "label": "ออกแบบ Core ใหม่ 3 แนวทางก่อนรัน Gate 2 อีกครั้ง",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-incremental-boundary-redesign-options",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-redesign-options"
+      ]
     },
     {
       "id": "complex-flow",
@@ -107,5 +109,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T14:19:04.394Z"
+  "updatedAt": "2026-09-13T14:58:20.5682811Z"
 }
