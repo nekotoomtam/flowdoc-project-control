@@ -48,6 +48,13 @@
       ]
     },
     {
+      "id": "incremental-boundary-admission",
+      "label": "พิสูจน์ retained text และ bounded window ก่อน line/geometry",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-incremental-boundary-admission",
+      "evidenceIds": []
+    },
+    {
       "id": "complex-flow",
       "label": "ตรวจรูป layout และ30nodesข้ามหน้า",
       "state": "pending",
@@ -81,5 +88,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-12T19:54:44.563301Z"
+  "updatedAt": "2026-09-13T05:41:31.974Z"
 }

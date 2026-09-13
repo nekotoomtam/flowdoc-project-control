@@ -1,0 +1,42 @@
+{
+  "kind": "document",
+  "id": "doc-core-incremental-boundary-review-and-gate2-plan-2026-09-13",
+  "title": "Core Incremental Boundary Review and Gate 2 Plan",
+  "path": "docs/domains/flowdoc-core-incremental-boundary-review-and-gate2-plan-2026-09-13.md",
+  "role": "contract",
+  "authority": "Project Control architecture review and bounded Gate 2 plan authorized by the user on 2026-09-13 after accepted Gate 1 negative evidence; no production binding, Editor integration, UX acceptance, or map promotion.",
+  "lifecycle": "active",
+  "nodeIds": [],
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/creatorIncrementalParagraphProviderV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/workerMr1Range.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/runtimeMr1Range.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "src/creatorPreview/incrementalTypingFeasibilityV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "3b0c4183362bc7c1ea2596db3e9912318bdb63ac",
+      "pathOrContractId": "src/creatorPreview/incrementalLineReflowFeasibilityV1.ts"
+    }
+  ]
+}

@@ -17,7 +17,7 @@
     "Text placement policy must be decided from examples before implementation"
   ],
   "verificationTarget": "checklist-core-text-layout-roadmap; evidence targets listed in plan",
-  "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration.",
+  "summary": "Core B และ Preview field typing ผ่านตามขอบเขตเดิม; Preview Undo เป็นช่วงพิมพ์ผ่านการยอมรับของผู้ใช้แล้ว. Enter และ keyboard contract ทั้งชุดยัง pending. Leading/zero-advance marks พักเพื่อกำหนดนโยบายภายหลัง. ไม่รับรอง full WYSIWYG, Build หรือ complex flow. Gate1 incremental feasibility is now blocked by verified Core evidence:80% admission, long mid-insert/replacement fallback across Thai/Latin/mixed, and failed responsiveness/scaling groups despite exact accepted revisions. Architecture review is required before Gate2 or Editor integration. Architecture review after Gate1 identifies whole-paragraph session cloning/freezing, full-text JS/WASM marshalling and offset scans, Rust full-text property/metadata scans, and flat suffix rewrites as separate hot-path costs. Gate2 now isolates a retained paragraph store plus bounded-window provider contract before Gate3 line/geometry work.",
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-12T19:54:44.563301Z"
+  "updatedAt": "2026-09-13T05:41:31.974Z"
 }
