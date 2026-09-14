@@ -83,6 +83,22 @@ the two incremental branches and three September branches are unmerged; and
 the `typing-baseline-g1-a1` detached baseline needs a separate retention or
 discard decision before its sole physical ref can be removed.
 
+### Duplicate Removal Execution Result
+
+After the Project Control main gate passed, Git removed
+`C:/Users/nekot/.codex/worktrees/7c1a/flowdoc-vnext-core` completely. Its
+worktree registration and physical checkout no longer exist; the preserving
+unmerged branch remains unchanged.
+
+Git also removed the `ede4` worktree registration, but Windows returned
+`Permission denied` while deleting
+`C:/Users/nekot/.codex/worktrees/ede4/flowdoc-vnext-core`. The residual
+directory was empty when inspected and is no longer listed by `git worktree
+list`. It is a filesystem cleanup-incomplete record rather than a retained
+Core worktree. No forced recursive deletion or process termination was used.
+It may be removed only after the lock is released and the exact empty target is
+rechecked.
+
 ## Separate Blocker
 
 The untracked directory
