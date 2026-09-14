@@ -56,7 +56,8 @@
     "doc-core-run-owned-property-gate2-design-2026-09-14",
     "doc-core-run-owned-property-semantic-characterization-plan-2026-09-14",
     "doc-core-run-owned-property-semantic-contract-2026-09-14",
-    "doc-core-run-owned-property-implementation-plan-2026-09-14"
+    "doc-core-run-owned-property-implementation-plan-2026-09-14",
+    "doc-core-worktree-reconciliation-2026-09-14"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
