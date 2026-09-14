@@ -51,12 +51,37 @@ performed.
 
 ## Retained Worktrees
 
-All remaining Core worktrees are retained. They are detached diagnostic
-candidates, unmerged branches, historical implementation work, or contain
-tracked changes. In particular, retain the blocked Gate 2B candidate at
+The remaining Core worktrees are retained until a separate reconciliation
+either preserves their commits by a durable ref or records a discard decision.
+They include unmerged implementation branches, historical diagnostic work, and
+one checkout with tracked changes. In particular, retain the blocked Gate 2B candidate at
 `C:/Users/nekot/.codex/worktrees/7c82/flowdoc-vnext-core` on commit
 `1540b7d71154e40b793c3c5ee0fffa90aa2569fc`, because the run-owned property
 contract and its evidence cite it directly.
+
+## Second Audit and Approved Duplicate Removal
+
+On 2026-09-14, the registered worktrees were audited again with full tracked
+and untracked status, exact commits, Project Control locator searches, and the
+visible Codex task list. Two clean detached worktrees are duplicate physical
+checkouts rather than separate retained candidates:
+
+| Worktree | HEAD | Why the commit remains available | Decision |
+| --- | --- | --- | --- |
+| `C:/Users/nekot/.codex/worktrees/7c1a/flowdoc-vnext-core` | `d5031b6151a0a6aba2fbe2c3320f122a935470a3` | the unmerged branch `codex/core-incremental-boundary-g2a-20260913` retains the same commit | remove worktree only |
+| `C:/Users/nekot/.codex/worktrees/ede4/flowdoc-vnext-core` | `1540b7d71154e40b793c3c5ee0fffa90aa2569fc` | the retained Gate 2B candidate at `7c82` has the identical commit and is cited by the active semantic contract | remove worktree only |
+
+Neither checkout has tracked or untracked changes. No visible active Codex task
+uses either locator, and no Project Control record cites either exact locator.
+The removal must use Git's single-worktree removal operation only. It must not
+delete the preserving branch, the `7c82` candidate, any evidence, or an
+unregistered filesystem residual.
+
+The remaining worktrees are deliberately outside this duplicate-removal
+decision: `8faf` has tracked changes; `7c82` is the active semantic candidate;
+the two incremental branches and three September branches are unmerged; and
+the `typing-baseline-g1-a1` detached baseline needs a separate retention or
+discard decision before its sole physical ref can be removed.
 
 ## Separate Blocker
 
