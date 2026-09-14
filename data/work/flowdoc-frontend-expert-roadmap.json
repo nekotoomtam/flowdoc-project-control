@@ -69,7 +69,7 @@
   "updatedAt": "2026-09-14T04:31:24.8104109Z",
   "coordination": {
     "version": 1,
-    "revision": 197,
+    "revision": 199,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -2105,13 +2105,14 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 3,
         "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
-        "status": "prepared",
+        "status": "active",
         "locator": {
           "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
           "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
         },
         "contextAcknowledgement": {
-          "status": "pending"
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-14T15:19:46.253Z"
         },
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
