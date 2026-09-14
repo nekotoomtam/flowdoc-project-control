@@ -36,6 +36,22 @@ AuthoredSpan tree ── derive ──> AnalysisRun tree ── certify ──> 
 
 No layer may silently substitute for the layer above it.
 
+### Decision Confirmation — 2026-09-14
+
+After the read-only semantic characterization returned `UNKNOWN`, the user
+confirmed this contract as the selected direction: run-owned analysis is the
+new semantic authority, but a command may publish only with a provider-backed
+bounded `SeamCertificate`. A missing proof is never an invitation to infer a
+boundary or fall back to whole-paragraph repair. It returns a typed,
+non-publishing result with the previous revision and receipt intact.
+
+This is deliberately neither a blanket permanent rejection of run-owned edits
+nor an immediate claim that every run boundary is exact. Stage 2 must first
+provide an independent reference oracle and fixtures for Thai/Latin property
+changes, arbitrary Latin splits such as `off|ice`, grapheme and composition
+boundaries, and RTL-sensitive direction behavior. Until each fixture has a
+provider-backed rule, that case remains `not-admissible`.
+
 ## 1. Semantic Ownership
 
 ### ParagraphContext
