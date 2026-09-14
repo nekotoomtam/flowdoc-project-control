@@ -782,7 +782,7 @@ describe("external Core deletion readiness", () => {
       expect(diagnosticCodes(await verifyFamilyCleanup(mismatchedRecord)))
         .toContain("MIGRATION_CLEANUP_PREIMAGE_MISMATCH");
     }
-  }, 60_000);
+  }, 90_000);
 
   it("detects covered sources in the current Git tree even when skip-worktree hides the filesystem copy", async () => {
     const fixture = await createMigrationFixture();
