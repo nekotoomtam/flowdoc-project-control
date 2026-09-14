@@ -78,9 +78,11 @@
     {
       "id": "incremental-boundary-rust-session-feasibility",
       "label": "พิสูจน์ Gate 2B: Rust-owned paragraph session สำหรับ readiness, Enter และ fallback แบบ bounded",
-      "state": "pending",
+      "state": "blocked",
       "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-rust-paragraph-session-feasibility"
+      ]
     },
     {
       "id": "complex-flow",
@@ -116,5 +118,5 @@
     }
   ],
   "createdAt": "2026-09-07T07:16:11.8621317Z",
-  "updatedAt": "2026-09-13T16:17:46.3205860Z"
+  "updatedAt": "2026-09-14T03:09:21.7250683Z"
 }
