@@ -69,7 +69,7 @@
   "updatedAt": "2026-09-14T04:31:24.8104109Z",
   "coordination": {
     "version": 1,
-    "revision": 200,
+    "revision": 204,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -2105,7 +2105,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 3,
         "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
-        "status": "active",
+        "status": "accepted",
         "locator": {
           "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
           "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
@@ -3753,6 +3753,100 @@
             "Fail closed on invalid provider direction, empty provider id/revision, malformed or duplicate features, and empty/duplicate authored span IDs.",
             "Assert both fixed-context first-strong paired fixtures are certified and add rejection tests for zero-length, far-edge, fractional/unaccounted budget and missing outside-validity evidence.",
             "Preserve the same private two-file Stage 2 boundary and all earlier fixtures; do not enter mutable session, public export, production binding, Gate2/Gate3, Editor, Backend or map scope."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
+        "payloadDigest": "c20cbc7c562cd56fe4a19c111d920f9a24d85732d63c3fbe7f7d285a194b2774",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-stage2-semantic-oracle-a1",
+          "laneId": "lane-core-stage2-semantic-oracle-a1",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 3,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "Revision 3 completes the Core-private Stage 2 semantic oracle: certificates are bound to exact source, authored properties, paragraph context, provider runs, non-empty seam partitions, derived immediate/deferred work accounting, typed before/after edge summaries and exact outside-range validity coverage.",
+          "exactCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+          "changedFiles": [
+            "src/layout/runOwnedSemanticOracleStage2.ts",
+            "tests/runOwnedSemanticOracleStage2.test.ts"
+          ],
+          "tests": [
+            "WORK focused Stage 2 oracle suite: 1 file / 39 tests passed",
+            "WORK type-check: passed",
+            "WORK full Core gate: 436 files / 2,887 tests passed",
+            "PLAN independent focused Stage 2 oracle suite: 1 file / 39 tests passed",
+            "PLAN independent type-check: passed",
+            "PLAN independent full Core gate: 436 files / 2,887 tests passed",
+            "Independent reviewer: PASS with no actionable findings"
+          ],
+          "evidenceIds": [
+            "evidence-core-rust-paragraph-session-feasibility"
+          ],
+          "risks": [
+            "The private fixture oracle validates the structure, identity, coverage and arithmetic of reviewed provider evidence but does not execute a live shaping or segmentation provider or independently authenticate provider fact and digest content."
+          ],
+          "unknowns": [
+            "Mutable-session atomicity, receipt and revision behavior, live provider integration and Gate2 performance remain subsequent-stage work.",
+            "Gate3, Editor, Backend, public exports and production binding remain outside this lane."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-14T15:43:19.4997908Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-14T15:43:19.4997908Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-14T15:43:20.4997908Z",
+          "senderThreadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 22,
+          "acknowledgedAt": "2026-09-14T15:43:21.4997908Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-14T15:43:23.4997908Z",
+          "evidenceIds": [
+            "evidence-core-rust-paragraph-session-feasibility"
+          ],
+          "requiredChecks": [
+            {
+              "name": "Exact commit and private two-file scope",
+              "status": "passed"
+            },
+            {
+              "name": "Required semantic fixture matrix and adversarial fail-closed coverage",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN focused 39-test suite and type-check",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN full Core gate: 436 files and 2,887 tests",
+              "status": "passed"
+            },
+            {
+              "name": "Independent adversarial code review",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Design and prove the mutable Rust-owned session as a separate Stage 3 lane using the accepted oracle meanings.",
+            "Integrate and authenticate a live shaping and segmentation provider rather than trusting fixture-supplied fact and digest content.",
+            "Prove atomic revision and receipt behavior, cancellation, disposal, recovery and the unchanged Gate2 latency and scaling corpus.",
+            "Keep Gate3, Editor, Backend, public exports, production binding, product UX, Node-count claims and map promotion held."
           ]
         }
       }

@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-stage2-semantic-oracle-return-2026-09-14",
+  "title": "Core Stage 2 semantic oracle return",
+  "path": "docs/domains/flowdoc-core-stage2-semantic-oracle-return-2026-09-14.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN acceptance record for the Core-private Stage 2 semantic oracle. It does not prove a mutable engine, live provider integration, Gate 2 or Gate 3 admission, public API, production behavior, UX acceptance or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+      "pathOrContractId": "src/layout/runOwnedSemanticOracleStage2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+      "pathOrContractId": "tests/runOwnedSemanticOracleStage2.test.ts"
+    }
+  ]
+}

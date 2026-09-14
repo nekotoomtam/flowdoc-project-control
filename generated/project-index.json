@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "5510ce717f7d1f495ddf80ccdd6aceade42492fd24780c3e6832fc0be32c3dcb",
+  "sourceDigest": "3c24b675378e6e08ac2141be81a5926b7cad8bf8f5ad2027df248042c7761a2d",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2991,7 +2991,7 @@
       "updatedAt": "2026-09-14T04:31:24.8104109Z",
       "coordination": {
         "version": 1,
-        "revision": 200,
+        "revision": 204,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -5027,7 +5027,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 3,
             "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
-            "status": "active",
+            "status": "accepted",
             "locator": {
               "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
               "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
@@ -6675,6 +6675,100 @@
                 "Fail closed on invalid provider direction, empty provider id/revision, malformed or duplicate features, and empty/duplicate authored span IDs.",
                 "Assert both fixed-context first-strong paired fixtures are certified and add rejection tests for zero-length, far-edge, fractional/unaccounted budget and missing outside-validity evidence.",
                 "Preserve the same private two-file Stage 2 boundary and all earlier fixtures; do not enter mutable session, public export, production binding, Gate2/Gate3, Editor, Backend or map scope."
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
+            "payloadDigest": "c20cbc7c562cd56fe4a19c111d920f9a24d85732d63c3fbe7f7d285a194b2774",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "core-stage2-semantic-oracle-a1",
+              "laneId": "lane-core-stage2-semantic-oracle-a1",
+              "ownerRepositoryId": "repo-core",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 3,
+              "status": "PASS",
+              "behaviorChanged": false,
+              "behaviorSummary": "Revision 3 completes the Core-private Stage 2 semantic oracle: certificates are bound to exact source, authored properties, paragraph context, provider runs, non-empty seam partitions, derived immediate/deferred work accounting, typed before/after edge summaries and exact outside-range validity coverage.",
+              "exactCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+              "changedFiles": [
+                "src/layout/runOwnedSemanticOracleStage2.ts",
+                "tests/runOwnedSemanticOracleStage2.test.ts"
+              ],
+              "tests": [
+                "WORK focused Stage 2 oracle suite: 1 file / 39 tests passed",
+                "WORK type-check: passed",
+                "WORK full Core gate: 436 files / 2,887 tests passed",
+                "PLAN independent focused Stage 2 oracle suite: 1 file / 39 tests passed",
+                "PLAN independent type-check: passed",
+                "PLAN independent full Core gate: 436 files / 2,887 tests passed",
+                "Independent reviewer: PASS with no actionable findings"
+              ],
+              "evidenceIds": [
+                "evidence-core-rust-paragraph-session-feasibility"
+              ],
+              "risks": [
+                "The private fixture oracle validates the structure, identity, coverage and arithmetic of reviewed provider evidence but does not execute a live shaping or segmentation provider or independently authenticate provider fact and digest content."
+              ],
+              "unknowns": [
+                "Mutable-session atomicity, receipt and revision behavior, live provider integration and Gate2 performance remain subsequent-stage work.",
+                "Gate3, Editor, Backend, public exports and production binding remain outside this lane."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-14T15:43:19.4997908Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-14T15:43:19.4997908Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-14T15:43:20.4997908Z",
+              "senderThreadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 22,
+              "acknowledgedAt": "2026-09-14T15:43:21.4997908Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-14T15:43:23.4997908Z",
+              "evidenceIds": [
+                "evidence-core-rust-paragraph-session-feasibility"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Exact commit and private two-file scope",
+                  "status": "passed"
+                },
+                {
+                  "name": "Required semantic fixture matrix and adversarial fail-closed coverage",
+                  "status": "passed"
+                },
+                {
+                  "name": "PLAN focused 39-test suite and type-check",
+                  "status": "passed"
+                },
+                {
+                  "name": "PLAN full Core gate: 436 files and 2,887 tests",
+                  "status": "passed"
+                },
+                {
+                  "name": "Independent adversarial code review",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "Design and prove the mutable Rust-owned session as a separate Stage 3 lane using the accepted oracle meanings.",
+                "Integrate and authenticate a live shaping and segmentation provider rather than trusting fixture-supplied fact and digest content.",
+                "Prove atomic revision and receipt behavior, cancellation, disposal, recovery and the unchanged Gate2 latency and scaling corpus.",
+                "Keep Gate3, Editor, Backend, public exports, production binding, product UX, Node-count claims and map promotion held."
               ]
             }
           }
@@ -20668,6 +20762,29 @@
       "content": "# Core Runtime Version Contract Hardening - 2026-08-27\n\n## Scope\n\n- Work path: `flowdoc-product-development-resumption > core-runtime-version-contract-hardening`\n- Owner repository: `repo-core`\n- Active role: `product-implementation-agent`\n- Phase: `phase-core-runtime-version-contract-hardening`\n- Checklist: `checklist-core-runtime-version-contract-hardening`\n- Evidence target: `evidence-core-runtime-version-contract-hardening-2026-08-27`\n\nThis record is work-scoped verification only. It does not promote Core,\nBackend, or FlowDoc broad truth.\n\n## PASS\n\nCore commit `992dbbbd6b6ac8f921d3dd98bd3515b77728868f` adds\n`VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY` beside the existing version\ncapability contract.\n\nThe inventory classifies reviewed version surfaces before Backend hardening:\n\n| Surface | Classification | Result |\n| --- | --- | --- |\n| package v2/document v3 active runtime | active-runtime | Kept as canonical persisted input and runtime authority. |\n| package v3/document v4 target parser and read-only runtime | retained-for-migration | Kept for explicit migration target validation and read-only inspection. |\n| package v2-to-v3 explicit copy-forward planner | retained-for-migration | Kept as Core-owned pure semantic planning; Backend owns revisioned persistence. |\n| Phase 258 consumer evidence | retained-for-evidence | Kept as historical cross-repo capability evidence without v4 runtime activation. |\n| silent read normalization or compatibility adapter | blocked | Remains prohibited by Core workspace and migration gates. |\n\nNo version surface was deleted in this lane because no reviewed surface was\nproven unused in scope.\n\n## Verification\n\n- RED: `npx vitest run --config vitest.config.ts tests/versionCapability.test.ts --reporter verbose` failed because the inventory export and documentation section were missing.\n- Focused Core suite: `npx vitest run --config vitest.config.ts tests/versionCapability.test.ts tests/packageV2ToV3Migration.test.ts tests/packageV3.test.ts --reporter verbose` passed 3 files / 24 tests.\n- Core docs: `npm run docs:check` passed.\n- Core worktree gate: `npm run check` passed 459 files / 2,942 tests in 250.00s.\n- Core merged-main gate: `npm run check` passed 459 files / 2,942 tests in 263.94s.\n\n## Intentionally Not Changed\n\n- No package parser acceptance changed.\n- No active runtime/session behavior changed.\n- No migration executor behavior changed.\n- No Backend route, persistence, or HTTP behavior changed.\n- No Core, Backend, or FlowDoc Node truth was promoted.\n\n## RISK\n\n- Backend and Editor can still drift if they copy capability facts instead of\n  comparing with Core.\n- Future version work must update the inventory whenever a version surface is\n  deleted, retained, or blocked.\n\n## UNKNOWN\n\n- Broad Core readiness remains unknown.\n- Backend production readiness remains unknown.\n- Future policy for when workspaces should be offered or required to migrate\n  remains unknown.\n"
     },
     {
+      "kind": "document",
+      "id": "doc-core-stage2-semantic-oracle-return-2026-09-14",
+      "title": "Core Stage 2 semantic oracle return",
+      "path": "docs/domains/flowdoc-core-stage2-semantic-oracle-return-2026-09-14.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "PLAN acceptance record for the Core-private Stage 2 semantic oracle. It does not prove a mutable engine, live provider integration, Gate 2 or Gate 3 admission, public API, production behavior, UX acceptance or map truth.",
+      "lifecycle": "active",
+      "repositoryRefs": [
+        {
+          "repositoryId": "repo-core",
+          "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+          "pathOrContractId": "src/layout/runOwnedSemanticOracleStage2.ts"
+        },
+        {
+          "repositoryId": "repo-core",
+          "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+          "pathOrContractId": "tests/runOwnedSemanticOracleStage2.test.ts"
+        }
+      ],
+      "content": "# Core Stage 2 Semantic Oracle Return — 2026-09-14\n\n## Authority Boundary\n\nOwner repository: `repo-core`.\n\nWork: `flowdoc-frontend-expert-roadmap`.\n\nPhase: `phase-core-text-layout-roadmap`.\n\nChecklist: `checklist-core-text-layout-roadmap`.\n\nEvidence: `evidence-core-rust-paragraph-session-feasibility`.\n\nThis is PLAN's receipt and acceptance record for a temporary Core-private proof\noracle. It does not accept a mutable text engine, Gate 2 or Gate 3, public API,\nproduction binding, Editor or Backend integration, product UX, Node-count\nperformance, or map truth.\n\n## Purpose and Use\n\nThe accepted artifact converts the approved run-owned property semantic\ncontract into executable fixtures before a new mutable engine is designed. It\nanswers one bounded question: whether reviewed evidence proves an exact local\ncaret seam, or whether the command must return a typed non-publishing\n`not-admissible` result.\n\nCore tests may use the oracle as a reference for later session behavior. The\nfuture engine must not call this whole-reference oracle on the foreground edit\npath or treat fixture facts as live provider integration.\n\n## Accepted Result\n\nPLAN received automatic handoff\n`handoff-core-stage2-semantic-oracle-a3-20260914` from Core WORK task\n`01a0a046-e4bb-7ef1-bc33-40daa07bf09e`. Two earlier Terra-high revisions were\nreturned for certificate-completeness gaps. The third attempt used GPT-6 Astra\nat high effort under the recorded escalation trigger and closed the same\ntwo-file private scope at Core commit\n`c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.\n\nThe oracle now requires:\n\n- full source, authored-property, paragraph-context, provider and run binding;\n- non-empty exact left and right seam partitions with scalar-safe endpoints;\n- work totals derived from all immediate, repeated and deferred partitions;\n- completed before and after work for source, property, shaping and segmentation;\n- typed before and after edge facts and summaries bound to their fact IDs;\n- exact complement coverage and matching digests for facts outside inspected ranges;\n- source and property work no greater than 512, and shaping plus segmentation no greater than 1,024.\n\nMalformed proof fails closed. The suite covers same-property Enter,\nThai-left/Latin-right Enter, `off|ice`, Thai combining marks, surrogate and ZWJ\nboundaries, active composition, fixed-context first-strong changes, and missing\nor malformed seam evidence.\n\n## Verification\n\n- WORK focused suite: 39 of 39 passed.\n- WORK type-check: passed.\n- WORK full Core gate: 436 files and 2,887 tests passed.\n- PLAN independent focused suite: 39 of 39 passed.\n- PLAN independent type-check: passed.\n- PLAN independent full Core gate: 436 files and 2,887 tests passed.\n- Independent adversarial review: PASS with no actionable findings.\n\n## Remaining Boundary\n\nThe oracle validates the structure, identity, coverage and accounting of facts\nsupplied by a reviewed provider. It does not run or authenticate a live shaping\nor segmentation provider. It also does not prove mutable-session ownership,\natomic publication, revisions, receipts, cancellation, disposal, latency or\nscaling. Those remain explicit later-stage responsibilities.\n\nThe earlier blocked candidate at\n`1540b7d71154e40b793c3c5ee0fffa90aa2569fc` remains a historical negative\ncontrol. Stage 3 may start only as a separate approved Core lane that consumes\nthese accepted fixture meanings while preserving every held product and gate\nboundary above.\n"
+    },
+    {
       "id": "doc-core-text-edit-geometry-dispatch-2026-09-06",
       "repositoryRefs": [],
       "lifecycle": "active",
@@ -24498,10 +24615,10 @@
       "id": "evidence-core-rust-paragraph-session-feasibility",
       "nodeIds": [],
       "repositoryId": "repo-core",
-      "commit": "1540b7d71154e40b793c3c5ee0fffa90aa2569fc",
-      "pathOrContractId": "creator-rust-paragraph-session-feasibility/1",
-      "verificationSummary": "Gate2B terminal result is BLOCKER for the tested single-property Rust-owned raw-fact paragraph-session candidate. WORK returned automatically through the registered task and retained exact clean Core commit 1540b7d71154e40b793c3c5ee0fffa90aa2569fc on parent d5031b6151a0a6aba2fbe2c3320f122a935470a3 in the detached worktree. The private QA mechanism proves cold-created immutable AVL rope ownership with at most 64 UTF16 payloads, opaque TypeScript receipts, exact tail and middle edits, failure atomicity, and exact same-property Enter at head, middle and tail. PLAN independently confirmed the clean commit, 11 changed files, private WASM SHA256 6c6cef1c868b6c2722fb531b8035c4dceb36348b47897d87a0aa4f1dace7fde1, TypeScript type-check PASS, Rust tests 2/2 PASS, and the focused result of 16 PASS plus one preserved admission RED. The diagnostic test independently passes and proves the blocker: Enter after Thai text makes the right child first-strong script Latin; full oracle facts differ at 640 cluster positions spanning offsets 10 through 2686 of a 2688 UTF16 child. The actual exact non-publishing fallback measured shape2690, segment2690, maxWindow2688, one full shape and segment call each, source2690, fact5380, indexed2690 and invalidated2690, then returned enter-property-dependency-over-budget while retaining the original revision and exactly one live session. Full Core verification reported 449 files and 2965 tests passing with only that same preserved admission test failing. Gate2B is not admitted; the 180-revision latency/scaling corpus, Gate3, Editor, public exports, production binding and maps remain held. The narrow conclusion does not prove every future architecture must fully reshape or segment: a new design must address retained property alternatives or bounded property dependency coverage. Rustybuzz/ICU internal allocations, all local rescans, reference destruction and complete host/WASM glue costs remain unmeasured. The clean blocked worktree and commit are retained and must not be merged as a passing product candidate.",
-      "verifiedAt": "2026-09-14T03:09:21.7250683Z"
+      "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+      "pathOrContractId": "core-stage2-run-owned-semantic-oracle/2",
+      "verificationSummary": "Stage 2 PASS establishes a deterministic Core-private oracle for the approved run-owned property semantic contract. At exact clean Core commit c70b3e00416e38d2fd5757b9e80ee0339f60fce3, the oracle derives ordered AnalysisRun descriptors and returns exactly certified(seam facts) or not-admissible(reason). Certification is bound to exact committed text, authored-property spans, fixed paragraph context, provider identity and revision, provider runs, grapheme-safe caret, non-empty exact seam partitions, derived immediate and deferred work accounting, typed before/after edge summaries, and exact outside-range validity coverage. The fixed suite covers same-property Enter, Thai-left/Latin-right Enter, off|ice, Thai combining marks, surrogate and ZWJ boundaries, active composition, fixed-context first-strong changes, and missing or malformed proof. WORK and PLAN independently passed the focused 39-test suite, TypeScript type-check, and the full Core gate of 436 files and 2,887 tests; an independent reviewer reported no actionable findings. The result is a proof tool and fixture authority only: it has no public export, mutable session, production binding or user-visible behavior. It validates reviewed provider evidence structure, identity, coverage and accounting, but it does not execute or authenticate a live provider. Mutable-session atomicity, revisions and receipts, live provider integration, Gate2 latency and scaling, Gate3, Editor, Backend and map promotion remain held. The prior blocked paragraph-session candidate at 1540b7d71154e40b793c3c5ee0fffa90aa2569fc remains historical negative-control evidence and was not merged by this acceptance.",
+      "verifiedAt": "2026-09-14T15:43:22.4997908Z"
     },
     {
       "kind": "evidence",
