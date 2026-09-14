@@ -69,7 +69,7 @@
   "updatedAt": "2026-09-14T04:31:24.8104109Z",
   "coordination": {
     "version": 1,
-    "revision": 183,
+    "revision": 188,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
@@ -1863,7 +1863,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a1-20260914",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
           "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
@@ -1876,6 +1876,126 @@
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
           "livenessDeadline": "2026-09-14T15:05:23.260Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-terra",
+          "reasoningEffort": "high",
+          "taskComplexity": "Bounded multi-file Core semantic-oracle implementation across Unicode run derivation, shaping-provider seam facts and exact typed boundary decisions",
+          "scopeSize": "One Core-private oracle with a fixed nine-case fixture matrix; no mutable session, public export, product binding or cross-repository implementation",
+          "uncertainty": "Whether reviewed provider facts can certify each required seam or produce an exact conservative typed rejection under the approved run-owned semantic contract",
+          "missingContext": "Concrete provider-backed seam evidence for arbitrary Latin ligatures, Thai combining sequences, ZWJ boundaries, composition and direction-sensitive cases",
+          "failureImpact": "A false certified result could carry incorrect run semantics into the later mutable session design",
+          "recoverability": "The oracle is private proof code on an isolated Core worktree; PLAN can reject the commit or issue a bounded revision without changing production behavior",
+          "reason": "Terra high is sufficient because the cross-boundary semantic policy is fixed and the deliverable is a bounded Core-private proof with exact fixtures, while careful Unicode and provider evidence tracing still needs strong reasoning",
+          "smallerOptionAssessment": "Luna is not selected because certification must connect grapheme, shaping, direction and composition evidence across several boundary classes rather than make a simple local code change; GPT-6 is not selected because the governing architecture and fallback semantics are already decided",
+          "availabilitySource": "Current host create_thread capability schema observed by PLAN immediately before dispatch",
+          "availabilityObservedAt": "2026-09-14T14:19:06.228Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-6-astra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            {
+              "modelId": "gpt-5.5",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            },
+            {
+              "modelId": "gpt-5.3-codex-spark",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "Reviewed provider behavior contradicts the approved run-owned semantic contract",
+            "Two bounded revisions fail for the same demonstrated reasoning limitation after packet and fixture gaps are corrected",
+            "Any mutable session, public API, production binding, Gate2 performance, Gate3, Editor, Backend or map scope becomes necessary"
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Stage 2 is a Core-private proof oracle and fixture lane with no renderer, browser interaction or user-visible product behavior."
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-paragraph-session-feasibility"
+        ]
+      },
+      {
+        "roomRunId": "core-stage2-semantic-oracle-a1",
+        "dispatchSetId": "dispatch-core-stage2-semantic-oracle-2026-09-14",
+        "laneId": "lane-core-stage2-semantic-oracle-a1",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 2,
+        "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a2-20260914",
+        "status": "prepared",
+        "locator": {
+          "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+          "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
+        },
+        "contextAcknowledgement": {
+          "status": "pending"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-14T15:16:52.505Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
@@ -3369,6 +3489,77 @@
             "Define and review a Core run-owned property semantic contract, including required-oracle equivalence fixtures and typed non-publishing fallback semantics.",
             "Define certified UTF-16, grapheme, composition, direction and property-boundary seam rules before any run-tree implementation.",
             "Keep Gate2 admission, Gate3, Editor, Backend, public exports, production binding and map promotion held."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-stage2-semantic-oracle-a1-20260914",
+        "payloadDigest": "26f0c8640c200d049da6f43544390830296da302a75194b7f4f9aef465d8c823",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-stage2-semantic-oracle-a1",
+          "laneId": "lane-core-stage2-semantic-oracle-a1",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "A Core-private Stage 2 oracle derives ordered run descriptors and returns certified seam facts or typed not-admissible decisions without public export, mutable session or production binding.",
+          "exactCommit": "0d5ab0bc74fd2d290e9cf7b1c9c16018ebcbaa5d",
+          "changedFiles": [
+            "src/layout/runOwnedSemanticOracleStage2.ts",
+            "tests/runOwnedSemanticOracleStage2.test.ts"
+          ],
+          "tests": [
+            "WORK focused oracle suite: 1 file / 7 tests passed",
+            "WORK type-check: passed",
+            "WORK full Core gate: 436 files / 2,855 tests passed",
+            "PLAN independent focused oracle suite: 1 file / 7 tests passed",
+            "PLAN independent type-check: passed",
+            "PLAN independent full Core gate: 436 files / 2,855 tests passed"
+          ],
+          "evidenceIds": [
+            "evidence-core-rust-paragraph-session-feasibility"
+          ],
+          "risks": [
+            "Provider facts are fixture-supplied and the first implementation accepts non-empty opaque fact strings without binding certificate provenance to the exact source, provider revision, paragraph context or analysis keys."
+          ],
+          "unknowns": [
+            "Real-provider seam coverage beyond the fixture rows remains unproven.",
+            "Authored language/style provenance and a paired fixed-context first-strong change are not yet proven by the initial tests."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-14T14:56:52.505Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-14T14:56:52.505Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-14T14:56:52.505Z",
+          "senderThreadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 20,
+          "acknowledgedAt": "2026-09-14T14:57:52.368Z"
+        },
+        "acceptance": {
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-14T14:57:52.368Z",
+          "reviewNote": "Independent focused, type and full Core checks pass, but acceptance rejects the first semantic shape. The certificate accepts arbitrary non-empty strings, does not bind safety/provenance to exact source, provider revision, paragraph context or analysis keys, and can certify an explicitly unsafe marker. Authored language/style do not influence or appear in run provenance, and the RTL case does not prove a fixed ParagraphContext across a first-strong source change.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Use typed safe/unsafe provider evidence and bind a SeamCertificate to exact source identity, provider identity/revision, paragraph context and left/right analysis keys or facts.",
+            "Carry and validate authored language/style provenance so property-boundary fixtures can prove distinct run meanings.",
+            "Add paired fixed-ParagraphContext first-strong fixtures plus explicit unsafe-certificate rejection and preserve all existing required fixtures and private boundaries.",
+            "Rerun focused, type-check and full Core gate on the corrected commit; do not expand into a mutable session, public export, production binding, Gate2/Gate3, Editor, Backend or map scope."
           ]
         }
       }
