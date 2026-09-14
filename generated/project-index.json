@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "16cfbea860ece697f3e383ff34f8271e2b6d0e2caddc1ef3f5c8acef2634ee1b",
+  "sourceDigest": "c0df8afcf8ffe347dff3c79a97f97f095a900c806b96eaeed3a657e6498bafa9",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2991,7 +2991,7 @@
       "updatedAt": "2026-09-14T04:31:24.8104109Z",
       "coordination": {
         "version": 1,
-        "revision": 191,
+        "revision": 197,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4906,7 +4906,7 @@
             "ownershipGeneration": 1,
             "revisionAttempt": 2,
             "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a2-20260914",
-            "status": "active",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
               "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
@@ -5003,6 +5003,126 @@
                 "Reviewed provider behavior contradicts the approved run-owned semantic contract",
                 "Two bounded revisions fail for the same demonstrated reasoning limitation after packet and fixture gaps are corrected",
                 "Any mutable session, public API, production binding, Gate2 performance, Gate3, Editor, Backend or map scope becomes necessary"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Stage 2 is a Core-private proof oracle and fixture lane with no renderer, browser interaction or user-visible product behavior."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-paragraph-session-feasibility"
+            ]
+          },
+          {
+            "roomRunId": "core-stage2-semantic-oracle-a1",
+            "dispatchSetId": "dispatch-core-stage2-semantic-oracle-2026-09-14",
+            "laneId": "lane-core-stage2-semantic-oracle-a1",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 3,
+            "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+              "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
+            },
+            "contextAcknowledgement": {
+              "status": "pending"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-14T15:35:27.905Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded multi-file Core semantic-oracle implementation across Unicode run derivation, shaping-provider seam facts and exact typed boundary decisions",
+              "scopeSize": "One Core-private oracle with a fixed nine-case fixture matrix; no mutable session, public export, product binding or cross-repository implementation",
+              "uncertainty": "Whether reviewed provider facts can certify each required seam or produce an exact conservative typed rejection under the approved run-owned semantic contract",
+              "missingContext": "Concrete provider-backed seam evidence for arbitrary Latin ligatures, Thai combining sequences, ZWJ boundaries, composition and direction-sensitive cases",
+              "failureImpact": "A false certified result could carry incorrect run semantics into the later mutable session design",
+              "recoverability": "The oracle is private proof code on an isolated Core worktree; PLAN can reject the commit or issue a bounded revision without changing production behavior",
+              "reason": "GPT-6 high is selected after two bounded Terra revisions missed the same certificate-completeness invariant: proof facts must be structurally tied to seam-edge coverage, derived work accounting, before/after edge summaries and outside-range validity. The third attempt remains two private files but now needs adversarial contract closure rather than another local patch.",
+              "smallerOptionAssessment": "Terra high produced the initial oracle and corrected provenance and typed safety, but two acceptance reviews still found certifiable uninspected work. The recorded two-revision escalation trigger is therefore met; GPT-6 high is used for the bounded final semantic-proof pass without relaxing any acceptance requirement.",
+              "availabilitySource": "Current host create_thread capability schema observed by PLAN immediately before dispatch",
+              "availabilityObservedAt": "2026-09-14T15:17:47.444Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-sol",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-luna",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.5",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.3-codex-spark",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "Any required seam proof cannot be represented inside the approved Stage 2 contract: return BLOCKER for PLAN redesign instead of adding a fourth blind revision",
+                "Any mutable session, public API, production binding, Gate2 performance, Gate3, Editor, Backend or map scope becomes necessary",
+                "The exact Core worktree, source or provider evidence cannot support the adversarial fixture matrix"
               ]
             },
             "ux": {
@@ -6483,6 +6603,77 @@
                 "Carry and validate authored language/style provenance so property-boundary fixtures can prove distinct run meanings.",
                 "Add paired fixed-ParagraphContext first-strong fixtures plus explicit unsafe-certificate rejection and preserve all existing required fixtures and private boundaries.",
                 "Rerun focused, type-check and full Core gate on the corrected commit; do not expand into a mutable session, public export, production binding, Gate2/Gate3, Editor, Backend or map scope."
+              ]
+            }
+          },
+          {
+            "handoffId": "handoff-core-stage2-semantic-oracle-a2-20260914",
+            "payloadDigest": "589cbd1d2b9aa27901c71b43d2d163655996e2244e26a097d68eb312b56c5254",
+            "payload": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "roomRunId": "core-stage2-semantic-oracle-a1",
+              "laneId": "lane-core-stage2-semantic-oracle-a1",
+              "ownerRepositoryId": "repo-core",
+              "ownershipGeneration": 1,
+              "revisionAttempt": 2,
+              "status": "PASS",
+              "behaviorChanged": false,
+              "behaviorSummary": "Revision 2 binds the private semantic-oracle certificate to source, provider, paragraph, run and authored-property provenance and replaces opaque unsafe markers with typed safety evidence.",
+              "exactCommit": "5a7335e692124960e43e1d8e2ae5f247e279919e",
+              "changedFiles": [
+                "src/layout/runOwnedSemanticOracleStage2.ts",
+                "tests/runOwnedSemanticOracleStage2.test.ts"
+              ],
+              "tests": [
+                "WORK focused oracle suite: 1 file / 10 tests passed",
+                "WORK type-check: passed",
+                "WORK full Core gate: 436 files / 2,858 tests passed",
+                "PLAN independent focused oracle suite: 1 file / 10 tests passed",
+                "PLAN independent type-check: passed"
+              ],
+              "evidenceIds": [
+                "evidence-core-rust-paragraph-session-feasibility"
+              ],
+              "risks": [
+                "Range facts can still be zero-length or located away from the caret, while caller-declared non-integer counters are not derived from actual inspected ranges, so bounded seam accounting is not proven."
+              ],
+              "unknowns": [
+                "Typed before/after edge summaries and proof that facts outside inspected ranges remain valid are not represented.",
+                "Real provider integration and wider seam coverage remain outside Stage 2."
+              ]
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-14T15:15:27.905Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-14T15:15:27.905Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-14T15:15:27.905Z",
+              "senderThreadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+              "channel": "send_message_to_thread",
+              "arrivalSequence": 21,
+              "acknowledgedAt": "2026-09-14T15:15:27.905Z"
+            },
+            "acceptance": {
+              "status": "needs-revision",
+              "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "reviewedAt": "2026-09-14T15:15:27.905Z",
+              "reviewNote": "Revision 2 resolves certificate provenance, typed unsafe evidence, authored-property binding and paired first-strong context, and PLAN focused/type checks pass. Acceptance still fails because range facts may be zero-length or away from the seam, budget counters are caller-declared and not derived from inspected work, required before/after edge summaries and outside-range validity proof are absent, the paired RTL fixture does not assert certified decisions, and external provider/authored identifiers and direction/features are not fully validated.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Derive budget accounting from exact non-empty inspected source/property/shaping/segmentation ranges, include deferred work, and require evidence covering both seam edges at the caret.",
+                "Represent typed before/after edge summaries and typed proof that facts outside inspected ranges remain valid for the new revision.",
+                "Fail closed on invalid provider direction, empty provider id/revision, malformed or duplicate features, and empty/duplicate authored span IDs.",
+                "Assert both fixed-context first-strong paired fixtures are certified and add rejection tests for zero-length, far-edge, fractional/unaccounted budget and missing outside-validity evidence.",
+                "Preserve the same private two-file Stage 2 boundary and all earlier fixtures; do not enter mutable session, public export, production binding, Gate2/Gate3, Editor, Backend or map scope."
               ]
             }
           }
