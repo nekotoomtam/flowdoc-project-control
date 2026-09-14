@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6e58557075b91ba6c9e02d5685aa460aa7a84329b28f0fd40eef2ea607a64e94",
+  "sourceDigest": "7c0bef4b0c27f6c4090c05e3570f9d52114a6bfda7e57eeea14a02298c0691ac",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2991,7 +2991,7 @@
       "updatedAt": "2026-09-14T04:31:24.8104109Z",
       "coordination": {
         "version": 1,
-        "revision": 178,
+        "revision": 180,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "creator-typing-four-points",
@@ -4767,6 +4767,127 @@
               "visibleChange": false,
               "applicability": "not-applicable",
               "reason": "This is a read-only semantic evidence lane with no renderer or user-facing behavior change."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-paragraph-session-feasibility"
+            ]
+          },
+          {
+            "roomRunId": "core-stage2-semantic-oracle-a1",
+            "dispatchSetId": "dispatch-core-stage2-semantic-oracle-2026-09-14",
+            "laneId": "lane-core-stage2-semantic-oracle-a1",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a1-20260914",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
+              "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-14T14:19:06.228Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-14T14:39:06.228Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded multi-file Core semantic-oracle implementation across Unicode run derivation, shaping-provider seam facts and exact typed boundary decisions",
+              "scopeSize": "One Core-private oracle with a fixed nine-case fixture matrix; no mutable session, public export, product binding or cross-repository implementation",
+              "uncertainty": "Whether reviewed provider facts can certify each required seam or produce an exact conservative typed rejection under the approved run-owned semantic contract",
+              "missingContext": "Concrete provider-backed seam evidence for arbitrary Latin ligatures, Thai combining sequences, ZWJ boundaries, composition and direction-sensitive cases",
+              "failureImpact": "A false certified result could carry incorrect run semantics into the later mutable session design",
+              "recoverability": "The oracle is private proof code on an isolated Core worktree; PLAN can reject the commit or issue a bounded revision without changing production behavior",
+              "reason": "Terra high is sufficient because the cross-boundary semantic policy is fixed and the deliverable is a bounded Core-private proof with exact fixtures, while careful Unicode and provider evidence tracing still needs strong reasoning",
+              "smallerOptionAssessment": "Luna is not selected because certification must connect grapheme, shaping, direction and composition evidence across several boundary classes rather than make a simple local code change; GPT-6 is not selected because the governing architecture and fallback semantics are already decided",
+              "availabilitySource": "Current host create_thread capability schema observed by PLAN immediately before dispatch",
+              "availabilityObservedAt": "2026-09-14T14:19:06.228Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-sol",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-luna",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.5",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.3-codex-spark",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "Reviewed provider behavior contradicts the approved run-owned semantic contract",
+                "Two bounded revisions fail for the same demonstrated reasoning limitation after packet and fixture gaps are corrected",
+                "Any mutable session, public API, production binding, Gate2 performance, Gate3, Editor, Backend or map scope becomes necessary"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Stage 2 is a Core-private proof oracle and fixture lane with no renderer, browser interaction or user-visible product behavior."
             },
             "requiredEvidence": [
               "evidence-core-rust-paragraph-session-feasibility"
