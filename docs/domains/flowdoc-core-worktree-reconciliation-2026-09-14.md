@@ -99,6 +99,28 @@ Core worktree. No forced recursive deletion or process termination was used.
 It may be removed only after the lock is released and the exact empty target is
 rechecked.
 
+## Approved Archival Checkout Removal
+
+A final audit found six more registered checkouts that are fully clean but are
+only physical copies of historical, unmerged Core commits. Their branches keep
+the commits reachable and the historical Project Control work records continue
+to name the old checkout locators as execution history. Those records do not
+require a live checkout at the old path.
+
+| Worktree | HEAD | Durable retention | Decision |
+| --- | --- | --- | --- |
+| `core-incremental-boundary-g2a-20260913` | `d5031b6151a0a6aba2fbe2c3320f122a935470a3` | `codex/core-incremental-boundary-g2a-20260913` | remove worktree only |
+| `core-incremental-typing-feasibility-20260913` | `064d84422ce10855cf5c85ee04fa2e8a03113944` | `codex/core-incremental-typing-feasibility-20260913` | remove worktree only |
+| `typing-baseline-g1-a1` | `f19088445d2b9848d36e3b206178d40853dbd73f` | create `codex/archive-typing-baseline-g1-a1-20260914` first | remove worktree only |
+| `core-creator-native-tail-20260909` | `4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224` | `codex/core-creator-native-tail-20260909` | remove worktree only |
+| `core-edit-safety-proof-20260909` | `92f96fc6726679769ea49b1a5d0202f103dd7c89` | `codex/core-edit-safety-proof-20260909` | remove worktree only |
+| `core-preview-shape-memo-20260909` | `5e7b81313d8593e700e93dcf1f4d5deaa42e2fa1` | `codex/core-preview-shape-memo-20260909` | remove worktree only |
+
+Before every removal, recheck the resolved absolute path, full status including
+untracked files, exact HEAD, and the listed retaining branch. Do not delete the
+retaining branch. This decision does not include `7c82`, which remains the
+current semantic candidate, or `8faf`, which has tracked changes.
+
 ## Separate Blocker
 
 The untracked directory
