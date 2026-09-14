@@ -31,6 +31,24 @@ have no current registered room or retained evidence obligation:
 Both removals require the worktree to remain clean at the point of deletion and
 Core `main` to remain an ancestor of the target HEAD.
 
+## Execution Result
+
+On 2026-09-14, Git removed both worktree registrations and deleted the merged
+`codex/core-preview-explicit-line-breaks-20260908` branch. The physical folders
+remain and are intentionally retained as cleanup-incomplete:
+
+- `72b0` is locked by an unidentified Windows process. Its creation time also
+  overlaps a queued Core WORK-room provisioning attempt, which never resolved
+  to a monitorable task ID. Treat it as unknown rather than deleting it.
+- `core-preview-explicit-line-breaks-20260908` could not be removed because
+  Windows encountered a path longer than its supported deletion path. Its
+  contents now lack Git worktree registration, so they need a separate
+  filesystem reconciliation that inventories untracked content before removal.
+
+Neither residual is evidence of a successful cleanup. No forced recursive
+deletion, branch recreation, or deletion of the separate backup directory was
+performed.
+
 ## Retained Worktrees
 
 All remaining Core worktrees are retained. They are detached diagnostic
