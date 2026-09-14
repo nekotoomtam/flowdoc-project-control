@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-run-owned-property-implementation-plan-2026-09-14",
+  "title": "Core run-owned property implementation plan",
+  "path": "docs/domains/flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Project Control staged plan for future Core-only run-owned property proof and implementation. It does not constitute product evidence, Gate 2 admission, implementation authorization, UX acceptance, public API readiness, or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "1540b7d71154e40b793c3c5ee0fffa90aa2569fc",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-live-draft-engine/src/paragraph_enter_v2.rs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "1540b7d71154e40b793c3c5ee0fffa90aa2569fc",
+      "pathOrContractId": "tests/incrementalWindowRuntimeV2.test.ts"
+    }
+  ]
+}
