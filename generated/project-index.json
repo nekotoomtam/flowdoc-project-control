@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "042c5b5ea63059de68ea02e2004081e9be7f1f3b73735298b194a2c154d0335d",
+  "sourceDigest": "d531f0647c4ffd71bfa1bf4ab7596c52136aea58e8a319ebd6bb75b9e9cbbc49",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -4694,6 +4694,76 @@
               "visibleChange": false,
               "applicability": "not-applicable",
               "reason": "Gate2B is a private Core feasibility and evidence lane with no renderer or user-facing behavior change."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-paragraph-session-feasibility"
+            ]
+          },
+          {
+            "roomRunId": "core-run-owned-property-semantic-characterization-a1",
+            "dispatchSetId": "dispatch-core-run-owned-property-semantics-2026-09-14",
+            "laneId": "lane-core-run-owned-property-semantic-characterization-a1",
+            "workType": "evidence-review",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-run-owned-property-semantic-characterization-a1",
+            "status": "active",
+            "locator": {
+              "threadId": "01a09e9f-94a4-7f21-ab78-6265eaad4bd9"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-14T06:35:31.3818253Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-14T06:55:31.3818253Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Read-only Core semantic characterization across Rust paragraph-session ownership, TypeScript oracle behavior, mixed-script Enter and Unicode boundary policy",
+              "scopeSize": "One exact retained candidate and one four-case semantic matrix; no implementation, product mutation or cross-repository change",
+              "uncertainty": "Whether run-owned property facts can preserve current exact behavior for first-strong changes, arbitrary Latin splits and Thai grapheme or composition boundaries within the unchanged fixed limits",
+              "missingContext": "Source-supported equivalence or a precise missing semantic contract for the four required cases",
+              "failureImpact": "A false PASS could authorize a replacement session whose run-level facts silently differ from required text semantics",
+              "recoverability": "Read-only detached candidate; no Core artifact, public API, generated WASM or product behavior can change in this lane",
+              "reason": "Terra high is sufficient for a single bounded comparison that needs careful Rust-to-TypeScript evidence tracing and Unicode reasoning. The task does not design or implement an ABI, so GPT-6 would be disproportionate.",
+              "smallerOptionAssessment": "Luna is not selected because the conclusion depends on exact ownership flow, independent oracle behavior, Thai boundary policy and cited evidence across Rust and TypeScript rather than a simple local source lookup.",
+              "availabilitySource": "Current host create_thread capability schema observed by PLAN before dispatch",
+              "availabilityObservedAt": "2026-09-14T06:35:31.3818253Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "A source-supported answer requires a new property ABI, ownership model or source-of-truth contract",
+                "The retained candidate is not exact and clean at the registered commit",
+                "Any Gate3, Editor, Backend, public export, production binding, changed threshold, corpus or map scope is required"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "This is a read-only semantic evidence lane with no renderer or user-facing behavior change."
             },
             "requiredEvidence": [
               "evidence-core-rust-paragraph-session-feasibility"
