@@ -71,7 +71,7 @@
   "updatedAt": "2026-09-19T16:45:08.146Z",
   "coordination": {
     "version": 1,
-    "revision": 215,
+    "revision": 220,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage3-cold-session",
@@ -2320,7 +2320,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-stage3-provider-context-a1-20260919",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
           "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
@@ -2407,6 +2407,116 @@
           "escalationTriggers": [
             "Evidence shows immutable ProviderContext still cannot let Rust reproduce the accepted Stage 2 meanings without caller-supplied derived facts",
             "Two bounded Terra revisions fail for the same reasoning limitation after context and environment gaps are corrected"
+          ]
+        },
+        "ux": {
+          "reason": "Private Core construction and QA evidence only; no Editor binding, browser interaction or visible product behavior is in scope",
+          "applicability": "not-applicable",
+          "visibleChange": false
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-paragraph-session-feasibility"
+        ]
+      },
+      {
+        "roomRunId": "core-stage3-provider-context-a1",
+        "dispatchSetId": "core-stage3-provider-context-20260919",
+        "laneId": "lane-core-stage3-provider-context-a1",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 2,
+        "expectedHandoffId": "handoff-core-stage3-provider-context-a2-20260920",
+        "status": "prepared",
+        "locator": {
+          "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
+        },
+        "contextAcknowledgement": {
+          "status": "pending"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-19T18:00:00.000Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-6-astra",
+          "reasoningEffort": "high",
+          "taskComplexity": "Contract-sensitive private Rust/WASM implementation joining executable Unicode resolution policy, verified provider resources, sole ownership, accounting and lifecycle proof",
+          "scopeSize": "One bounded Core Stage 3 revision for the Thai/Latin provider profile; no commands, product binding or later gates",
+          "uncertainty": "The executable policy shape is now fixed, but Rust interpretation, raw-fact comparison and WASM lifecycle must agree without importing Stage 2 facts",
+          "missingContext": "Exact existing font fixtures and private package adapters must be located in the owner repository",
+          "failureImpact": "A wrong policy interpreter would create a second semantic authority and invalidate Stage 3 evidence, but the isolated worktree and pre-merge gate keep it reversible",
+          "recoverability": "Reject or return one bounded Revision Packet; retain the accepted Stage 2 commit and stop before integration",
+          "reason": "Two bounded Terra attempts correctly exposed successive semantic input omissions before retaining code. The recorded semantic-contradiction trigger is now met, so GPT-6 high is justified for one coupled contract and Rust implementation revision.",
+          "smallerOptionAssessment": "Terra remains suitable for later mechanical work, but this revision must translate a newly completed semantic policy into Rust while preserving provider ownership and exact oracle boundaries. The escalation is limited to this revision.",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-19T17:20:00.000Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-6-astra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            {
+              "modelId": "gpt-5.5",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "The executable ResolutionPolicyBundle still cannot reproduce the accepted Thai/Latin Stage 2 meanings without source-specific run or fact input",
+            "Verified repository-owned resources cannot support the bounded profile without expanding owner or product scope"
           ]
         },
         "ux": {
@@ -4117,6 +4227,70 @@
             "Approve the private Stage 3 provider-input ownership contract.",
             "Amend the semantic contract and implementation plan with the exact private ABI, receipt authentication, cold accounting and disposal observables.",
             "Dispatch a new bounded Stage 3 revision to the same WORK task; keep Stage 4, Gate 2, Gate 3, Editor, Backend, public exports, production binding and maps held."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-stage3-provider-context-a1-20260919",
+        "payloadDigest": "dd4517157e4c8c52efe8ec9ff9496a1221821fcafd83a805c7c1db717a2aac99",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-stage3-provider-context-a1",
+          "laneId": "lane-core-stage3-provider-context-a1",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "BLOCKER",
+          "behaviorChanged": false,
+          "behaviorSummary": "Stage 3 stopped without retained changes because ProviderContext revision IDs and a single style-to-font binding do not provide an executable reviewed policy for Rust to resolve language, script-specific font fallback, direction or shaping features.",
+          "exactCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+          "changedFiles": [],
+          "tests": [
+            "WORK Stage 2 semantic oracle: 39 of 39 passed after restoration",
+            "WORK Core type-check: passed",
+            "WORK Rust crate baseline: passed with 0 existing tests",
+            "WASM toolchain and wasm-pack build path available",
+            "Full Core gate not claimed because the contract stop gate invalidated the exploratory candidate"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Stage 2 provider descriptors remain pre-derived external facts until a canonical executable Rust resolution policy is supplied."
+          ],
+          "unknowns": [
+            "Exact live-provider behavior for RTL and font fallback beyond the first verified Thai/Latin profile remains unproven."
+          ],
+          "contractChangeRequest": "Add a reviewed immutable executable ResolutionPolicyBundle to ProviderContext. It must deterministically define language resolution, script-specific verified font routing, direction/bidi behavior, shaping features, run-boundary behavior and unsupported-case rejection without carrying source-specific runs or raw facts."
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-19T17:14:10.000Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-19T17:14:10.000Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-19T17:15:00.000Z",
+          "senderThreadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 24,
+          "acknowledgedAt": "2026-09-19T17:15:01.000Z"
+        },
+        "acceptance": {
+          "status": "needs-revision",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-19T17:15:02.000Z",
+          "reviewNote": "PLAN verified the automatic duplicate-idempotent BLOCKER return, exact unchanged Core commit, clean worktree and focused checks. The diagnosis is accepted: revision labels and one style mapping are not executable provider policy. Revision must add a canonical immutable ResolutionPolicyBundle interpreted in Rust, preserve sole authority, and fail closed outside verified resource coverage.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Define and validate the canonical executable ResolutionPolicyBundle without source-specific run or fact payloads.",
+            "Implement the bounded Thai/Latin cold-session profile with exact oracle comparison, opaque receipt, complete cold accounting and disposal.",
+            "Return typed unsupported-provider-capability for rows without verified resources; keep Stage 4, Gate 2, Gate 3, Editor, Backend, public exports, production binding and maps held."
           ]
         }
       }

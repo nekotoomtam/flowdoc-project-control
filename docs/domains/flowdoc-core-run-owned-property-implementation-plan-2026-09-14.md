@@ -126,18 +126,32 @@ traversal, provider, allocation, and ABI work. Rust derives provider runs and
 raw facts internally. The Stage 2 provider fact bundle is used only as an
 independent expected-result oracle.
 
+`ProviderContext` must carry the canonical, digest-bound
+`ResolutionPolicyBundle` from the semantic contract. The Rust implementation
+must interpret its ordered language, font-route, feature and run-boundary rules
+and must reject ambiguity, missing rules, invalid coverage and fact-shaped
+configuration. Revision labels alone are insufficient. The first admitted
+profile is Thai/Latin; an RTL fixture without a verified Hebrew-capable resource
+must return the named unsupported result and cannot be counted as provider
+equality.
+
 **Required evidence.** Rust is the sole mutable owner; TypeScript has no second
 text/fact tree; `ProviderContext` contains no derived run or raw-fact payload;
-session construction reproduces the Stage 2 descriptors and expected facts;
-invalid configuration and unsupported bindings fail before publication;
+session construction reproduces the supported Stage 2 Latin and Thai/Latin
+descriptors and expected facts; unsupported resource/script rows return the
+exact typed result without publication; invalid, overlapping, ambiguous and
+fact-shaped policy configuration fails before publication;
 receipt identity cannot be caller-forged; cold work reports ABI transfer,
 source/span traversal, provider work, shaping, segmentation, allocation and
 tree construction separately from command work; and disposal returns the live
 session count to its prior value while invalidating the receipt.
 
-**Exit gate.** Exact source and semantic fixture equality from a cold session,
+**Exit gate.** Exact source plus Latin and Thai/Latin semantic fixture equality
+from a cold session, exact typed rejection for unsupported provider capability,
 complete cold accounting with no hidden warm-cache setup, clean disposal,
-invalid-receipt rejection, and no hidden full-paragraph fallback.
+invalid-receipt rejection, and no hidden full-paragraph fallback. This proves a
+bounded Stage 3 provider profile; broader script coverage stays explicit and
+must be completed before a later admission gate claims it.
 
 **Recommended WORK model.** `gpt-5.6-terra`, high effort. The task is
 contained systems implementation with detailed ownership tests. Escalate to

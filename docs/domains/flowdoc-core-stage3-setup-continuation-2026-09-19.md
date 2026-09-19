@@ -141,3 +141,43 @@ The WORK task returned the new Context Acknowledgement automatically at
 acknowledgement and activates `core-stage3-provider-context-a1` with liveness
 deadline `2026-09-19T17:15:08.146Z`. The amended contract and unchanged Stage
 3 exclusions govern the activation.
+
+## Stage 3 Provider-Context Attempt 1 Return And Revision Decision
+
+The WORK task completed with a clean Core worktree at
+`c70b3e00416e38d2fd5757b9e80ee0339f60fce3` and no retained product changes.
+It reported a valid second contract blocker: provider and policy revision IDs
+plus one style-to-font binding do not execute language resolution, per-script
+font fallback, bidi direction or shaping-feature selection. The accepted Stage
+2 Thai/Latin fixture uses those derived distinctions even when the authored
+span language is `und`, so implementing them by local guesses would create an
+unreviewed authority.
+
+The automatic terminal handoff arrived repeatedly with the same stable handoff
+ID and identical payload after the sender calls waited unusually long. PLAN
+records the first arrival and treats later arrivals idempotently; this does not
+create additional queue entries.
+
+PLAN accepts the blocker diagnosis and completes the provider contract with a
+canonical immutable `ResolutionPolicyBundle`. Its ordered declarative rules
+resolve language, font route, direction/features and run boundaries inside
+Rust; the bundle cannot contain source text, offsets, run boundaries or raw
+facts. The first provider profile is bounded to repository-owned Thai/Latin
+resources. Missing verified script coverage returns a typed pre-publication
+failure; the RTL oracle row stays required semantic evidence and is not
+misreported as live shaping support.
+
+Coordination revision 219 accepts the diagnosis as `needs-revision` and
+supersedes attempt 1. Revision 220 prepares attempt 2 in the same registered
+WORK task and worktree with handoff
+`handoff-core-stage3-provider-context-a2-20260920`. Attempt 2 must first
+acknowledge this amended contract and the unchanged exclusions, then may
+implement only the bounded private Stage 3 provider profile.
+
+The two bounded Terra attempts each identified a missing semantic input before
+retaining code: first provider resources/configuration, then executable
+resolution policy. This satisfies the recorded semantic-contradiction
+escalation condition. Attempt 2 therefore uses `gpt-6-astra` at high effort for
+one contract-sensitive implementation revision. The larger model is selected
+for this specific coupled semantic/Rust boundary, not as a new default for
+later WORK.

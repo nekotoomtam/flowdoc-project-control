@@ -78,16 +78,68 @@ the analysis runs and raw facts, then owns the only session copies. The Stage 2
 oracle remains an independent expected-result reference; its caller-supplied
 provider facts are never imported as live session authority.
 
+### Stage 3 Executable Resolution Policy Decision — 2026-09-20
+
+The first `ProviderContext` implementation attempt stopped before retaining
+code because revision identifiers and one authored-style-to-font mapping do
+not define how Rust must resolve script, language, direction, font fallback or
+shaping features. Rust would have had to invent those meanings locally. The
+configuration boundary is therefore completed with one immutable,
+digest-bound `ResolutionPolicyBundle` that Rust validates and interprets.
+
+`ResolutionPolicyBundle` is canonical declarative configuration. Its first
+private schema contains:
+
+- `schemaVersion`, `unicodeVersion`, and exact script, bidi, grapheme, line
+  segmentation and shaping implementation revisions;
+- ordered `languageRules` that match authored language plus resolved script
+  and either return one canonical language or reject;
+- ordered `fontRouteRules` that match authored style, resolved language,
+  script, direction and writing mode, then select an ordered list of verified
+  font resource IDs and a fail-closed coverage policy;
+- ordered `featureRules` that resolve a canonical feature set for the same
+  key; and
+- one named `runBoundaryPolicy` that defines how Common and Inherited scalars
+  attach to neighbouring strong-script runs and where an analysis-key change
+  creates a new run.
+
+The bundle is executable only through the reviewed Rust interpreter. It cannot
+contain source text, paragraph or span IDs, UTF-16 offsets, provider run
+boundaries, glyph IDs, clusters, break opportunities, unsafe-boundary results,
+seam certificates, callbacks, bytecode or mutable state. Rule matching depends
+only on authored properties, paragraph context, Unicode/provider analysis and
+verified resource metadata. Consequently the bundle remains provider
+configuration rather than a per-session result tree.
+
+The first admitted policy profile is deliberately bounded to the verified
+Thai/Latin resources already owned by Core. It must reproduce the accepted
+Stage 2 Thai/Latin and Latin descriptor meanings, including `und` resolving to
+`th` for Thai and `en` for Latin, script-specific logical font selection and
+the canonical feature list. A script/font combination without a verified
+coverage resource returns `NotCreated(unsupported-font-script)` before a
+session is published. In particular, the Stage 2 RTL fixture remains semantic
+oracle evidence, but it is not claimed as a live-shaping success until a
+verified Hebrew-capable resource and matching policy row exist. This typed
+rejection preserves the RTL meaning without fabricating glyph evidence or
+silently substituting a font.
+
+Rust must hash the canonical bundle and include the digest in the cold summary
+and receipt binding. Reordered, overlapping, unreachable, ambiguous or
+unsupported rules are invalid configuration. Tests must prove that changing a
+rule or digest changes the binding, that per-session fact-shaped fields are
+rejected, and that no implicit fallback runs outside the selected policy.
+
 ## 1. Semantic Ownership
 
 ### ProviderContext
 
 `ProviderContext` owns the immutable provider capability required to construct
-a session. It binds provider and policy revisions, verified font resources and
-authored style mappings. It does not own document text or derived per-session
-runs and facts. TypeScript may retain independent immutable application font
-assets, but it must not retain a session's derived run tree, shard tree or raw
-fact copy.
+a session. It binds provider and implementation revisions, verified font
+resources, authored style mappings and one canonical `ResolutionPolicyBundle`
+plus its digest. It does not own document text or derived per-session runs and
+facts. TypeScript may retain independent immutable application font assets and
+the provider policy configuration, but it must not retain a session's derived
+run tree, shard tree or raw fact copy.
 
 ### ParagraphContext
 
@@ -192,9 +244,13 @@ Dispose(receipt)
   | UnknownReceipt
 ```
 
-`CreateSession` validates all IDs, digests, ranges, policies and resources
-before publication. Rust derives `AnalysisRun` and `LayoutShard` state through
-the named providers; caller-supplied provider runs and raw facts are rejected.
+`CreateSession` validates all IDs, digests, ranges, the complete resolution
+policy and every referenced resource before publication. Rust resolves
+language, script, direction, font route and shaping features through the named
+policy, then derives `AnalysisRun` and `LayoutShard` state through the named
+providers; caller-supplied provider runs and raw facts are rejected. A missing
+or ambiguous rule and a font without required script coverage are typed
+`NotCreated` results, never implicit fallback.
 The receipt is a Rust-created opaque capability bound to one live session and
 revision. A caller-created or disposed receipt cannot inspect, mutate or
 dispose a session.
@@ -240,9 +296,14 @@ context, and the reviewed Unicode/shaping provider result. The old
 paragraph-wide first-strong tuple is a negative-control fixture, not the new
 oracle.
 
-For Stage 3, the same expected provider result is reproduced from a reviewed
-`ProviderContext` and compared with the Stage 2 oracle. The oracle fact bundle
-is comparison evidence only and is never passed to `CreateSession`.
+For Stage 3, every capability-declared supported fixture result is reproduced
+from a reviewed `ProviderContext` and compared with the Stage 2 oracle. The
+first profile must cover the accepted Latin and Thai/Latin rows. An accepted
+Stage 2 semantic row outside the provider's verified resource coverage must
+return the exact typed unsupported result defined by the profile and remains a
+required future capability; it cannot be reported as live-provider equality.
+The oracle fact bundle is comparison evidence only and is never passed to
+`CreateSession`.
 
 Before implementation claims semantic readiness, Core must carry fixtures for:
 
