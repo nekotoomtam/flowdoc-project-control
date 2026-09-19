@@ -181,3 +181,11 @@ escalation condition. Attempt 2 therefore uses `gpt-6-astra` at high effort for
 one contract-sensitive implementation revision. The larger model is selected
 for this specific coupled semantic/Rust boundary, not as a new default for
 later WORK.
+
+The WORK task returned a complete revision-attempt-2 Context Acknowledgement
+through the automatic Return Channel. It confirmed the canonical Project
+Control commit, exact clean Core starting commit, new policy boundary, model
+decision, evidence target, exclusions and stop conditions without inspecting
+or editing Core during the acknowledgement turn. Coordination revision 221
+activates attempt 2 with liveness deadline `2026-09-19T18:13:00.000Z`; product
+work begins only after PLAN sends the separate Activation Notice.
