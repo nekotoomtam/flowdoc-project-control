@@ -68,10 +68,10 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-19T15:53:54.029Z",
+  "updatedAt": "2026-09-19T16:10:32.605Z",
   "coordination": {
     "version": 1,
-    "revision": 206,
+    "revision": 208,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage3-cold-session",
@@ -2209,18 +2209,19 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-stage3-cold-session-a1-20260919",
-        "status": "prepared",
+        "status": "active",
         "locator": {
           "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
           "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
         },
         "contextAcknowledgement": {
-          "status": "pending"
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-19T16:10:32.605Z"
         },
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
-          "livenessDeadline": "2026-09-19T16:13:54.029Z",
+          "livenessDeadline": "2026-09-19T16:40:32.605Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"

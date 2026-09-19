@@ -73,6 +73,13 @@ authorized during recovery. The room may proceed only after receiving the
 complete Kickoff Packet and returning Context Acknowledgement through the
 registered automatic Return Channel.
 
+The selected task returned a complete Context Acknowledgement through the
+automatic Return Channel at `2026-09-19T16:10:32.605Z`. Project Control
+coordination revision 208 records that acknowledgement and activates the Room
+Run with liveness deadline `2026-09-19T16:40:32.605Z`. The task may inspect or
+change Core only after it receives PLAN's Activation Notice; the notice does
+not expand the registered scope or exit gate.
+
 ## Model Decision
 
 The prepared selection is `gpt-5.6-terra` at high effort. The semantic contract
