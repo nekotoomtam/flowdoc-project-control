@@ -135,3 +135,9 @@ Core worktree as prepared Room Run `core-stage3-provider-context-a1`. This is a
 new bounded lane under the amended contract, not an acceptance or continuation
 of the blocked implementation attempt. It requires a fresh Context
 Acknowledgement and Activation Notice before product edits resume.
+
+The WORK task returned the new Context Acknowledgement automatically at
+`2026-09-19T16:45:08.146Z`. Coordination revision 215 records the
+acknowledgement and activates `core-stage3-provider-context-a1` with liveness
+deadline `2026-09-19T17:15:08.146Z`. The amended contract and unchanged Stage
+3 exclusions govern the activation.
