@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-stage3-setup-continuation-2026-09-19",
+  "title": "Core Stage 3 setup continuation",
+  "path": "docs/domains/flowdoc-core-stage3-setup-continuation-2026-09-19.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN continuation record for an incomplete Core Stage 3 Codex task setup. It does not activate WORK, authorize Core edits, accept Stage 3, change Gate 2 or Gate 3, or promote product or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+      "pathOrContractId": "src/layout/runOwnedSemanticOracleStage2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+      "pathOrContractId": "tests/runOwnedSemanticOracleStage2.test.ts"
+    }
+  ]
+}
