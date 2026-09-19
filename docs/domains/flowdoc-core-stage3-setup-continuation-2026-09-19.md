@@ -189,3 +189,34 @@ decision, evidence target, exclusions and stop conditions without inspecting
 or editing Core during the acknowledgement turn. Coordination revision 221
 activates attempt 2 with liveness deadline `2026-09-19T18:13:00.000Z`; product
 work begins only after PLAN sends the separate Activation Notice.
+
+## Stage 3 Attempt 2 Acceptance
+
+The WORK task returned handoff
+`handoff-core-stage3-provider-context-a2-20260920` automatically from the
+registered task and clean worktree. Project Control coordination revision 224
+records the sent payload, arrival sequence 25 and PLAN receipt
+acknowledgement. The evidence candidate is Core commit
+`1c810bcab48a9d4df7a758ccbd29a4824389e349`.
+
+PLAN reviewed the 14-file private scope and independently passed the actual
+WASM plus unchanged Stage 2 oracle suite at 57 of 57 tests, the Rust feature
+suite at 10 of 10 tests plus binary and doc targets, TypeScript type-check and
+the full Core gate at 437 files and 2,905 tests. The implementation keeps the
+feature opt-in, leaves public exports unchanged and retains the only cold
+source, span, run, shard and raw-fact authority inside Rust. Its provider
+policy and resources are digest-bound, unsupported coverage rejects before
+publication, receipts are opaque capabilities, cold work is reported without
+exporting session state, and disposal returns the live-session count to its
+baseline.
+Accepted implementation evidence is recorded separately as
+`evidence-core-rust-cold-session-stage3-2026-09-19`; the existing
+`evidence-core-rust-paragraph-session-feasibility` record remains pinned to the
+accepted Stage 2 oracle commit and is not rewritten.
+
+This acceptance is deliberately narrow. It proves Stage 3 cold construction
+for the reviewed Thai/Latin profile. It does not accept `Apply`, Enter,
+command locality, performance thresholds, RTL live shaping, Gate 2, Gate 3,
+public or production binding, Editor, Backend, UX, Node-count behavior or map
+truth. The checklist stays blocked until later command and admission stages
+meet their unchanged limits.

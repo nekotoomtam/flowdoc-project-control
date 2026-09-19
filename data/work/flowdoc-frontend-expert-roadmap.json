@@ -71,7 +71,7 @@
   "updatedAt": "2026-09-19T16:45:08.146Z",
   "coordination": {
     "version": 1,
-    "revision": 221,
+    "revision": 225,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage3-cold-session",
@@ -2431,7 +2431,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 2,
         "expectedHandoffId": "handoff-core-stage3-provider-context-a2-20260920",
-        "status": "active",
+        "status": "accepted",
         "locator": {
           "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
           "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
@@ -4292,6 +4292,114 @@
             "Define and validate the canonical executable ResolutionPolicyBundle without source-specific run or fact payloads.",
             "Implement the bounded Thai/Latin cold-session profile with exact oracle comparison, opaque receipt, complete cold accounting and disposal.",
             "Return typed unsupported-provider-capability for rows without verified resources; keep Stage 4, Gate 2, Gate 3, Editor, Backend, public exports, production binding and maps held."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-stage3-provider-context-a2-20260920",
+        "payloadDigest": "aafdcd4c7e9e2e6690e9747b7deea2abfe5b0c16c7a6ce0e58c21a34764a0cf4",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-stage3-provider-context-a1",
+          "laneId": "lane-core-stage3-provider-context-a1",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 2,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "The opt-in private Stage 3 QA feature constructs and disposes Rust-owned cold sessions from a digest-bound executable Thai/Latin provider policy, retains balanced source/span/run/shard ownership trees and real Rustybuzz/ICU facts, returns opaque random receipts and compact complete cold-work accounting, rejects unsupported or malformed input before publication, and leaves public exports and product binding unchanged.",
+          "exactCommit": "1c810bcab48a9d4df7a758ccbd29a4824389e349",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/policy.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldStage3Fixtures.ts"
+          ],
+          "tests": [
+            "WORK full npm run check: type-check and 437 files / 2,905 tests passed on the unchanged rerun",
+            "WORK Stage 3 WASM integration: 18 of 18 passed in the full gate",
+            "WORK unchanged Stage 2 oracle: 39 of 39 passed",
+            "WORK cargo test with cold-session-qa: 10 of 10 native tests plus binary and doc targets passed",
+            "WORK no-default-feature cargo check and rustfmt check passed",
+            "Independent bounded code review passed after allocator-window, traversal-accounting and explicit-null fixes"
+          ],
+          "evidenceIds": [
+            "evidence-core-rust-paragraph-session-feasibility"
+          ],
+          "risks": [
+            "The first full Core gate had one unrelated existing producer-authority test exceed its unchanged five-second timeout; the file passed 8 of 8 in isolation and the identical full gate then passed 2,905 of 2,905.",
+            "Cold duplicate-span validation still has explicitly counted quadratic work and no performance-budget admission is claimed.",
+            "The opt-in QA feature emits dead-code warnings for retained state that only native tests inspect at this stage."
+          ],
+          "unknowns": [
+            "Merged-main verification remains pending PLAN integration.",
+            "Commands, locality and performance admission, RTL live shaping, Gate 2, Gate 3, production binding and Editor integration remain unproven."
+          ]
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-19T18:39:54.634Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-19T18:39:54.634Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-19T18:39:55.634Z",
+          "senderThreadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 25,
+          "acknowledgedAt": "2026-09-19T18:39:56.634Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-19T18:49:00.000Z",
+          "evidenceIds": [
+            "evidence-core-rust-paragraph-session-feasibility",
+            "evidence-core-rust-cold-session-stage3-2026-09-19"
+          ],
+          "requiredChecks": [
+            {
+              "name": "Exact Core commit, clean 14-file private scope and unchanged public exports",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN actual WASM plus unchanged Stage 2 oracle: 57 tests",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN Rust cold-session feature suite: 10 tests plus binary and doc targets",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN TypeScript type-check and full Core gate: 437 files and 2,905 tests",
+              "status": "passed"
+            },
+            {
+              "name": "Rust sole authority, digest-bound provider policy, opaque receipt, complete cold accounting and clean disposal review",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Implement and prove ordinary atomic Apply commands as a separate Stage 4 lane.",
+            "Prove structural Enter and join, command locality, recovery, cancellation and the fixed performance corpus before Gate 2 admission.",
+            "Add verified RTL-capable resources before claiming live RTL shaping.",
+            "Keep Gate 2, Gate 3, public and production binding, Editor, Backend, UX, Node-count claims and map promotion held."
           ]
         }
       }
