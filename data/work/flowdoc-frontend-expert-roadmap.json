@@ -68,10 +68,10 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-19T16:10:32.605Z",
+  "updatedAt": "2026-09-19T16:33:09.617Z",
   "coordination": {
     "version": 1,
-    "revision": 208,
+    "revision": 213,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage3-cold-session",
@@ -2209,7 +2209,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-stage3-cold-session-a1-20260919",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
           "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
@@ -2296,6 +2296,116 @@
           "escalationTriggers": [
             "Evidence shows the private Rust/WASM ownership or ABI cannot implement the approved semantic contract without changing it",
             "Two bounded Terra revisions fail for the same reasoning limitation after packet, context and environment gaps are corrected"
+          ]
+        },
+        "ux": {
+          "reason": "Private Core construction and QA evidence only; no Editor binding, browser interaction or visible product behavior is in scope",
+          "applicability": "not-applicable",
+          "visibleChange": false
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-paragraph-session-feasibility"
+        ]
+      },
+      {
+        "roomRunId": "core-stage3-provider-context-a1",
+        "dispatchSetId": "core-stage3-provider-context-20260919",
+        "laneId": "lane-core-stage3-provider-context-a1",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "handoff-core-stage3-provider-context-a1-20260919",
+        "status": "prepared",
+        "locator": {
+          "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
+        },
+        "contextAcknowledgement": {
+          "status": "pending"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-19T17:03:09.617Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-terra",
+          "reasoningEffort": "high",
+          "taskComplexity": "Contained private Rust/WASM cold-session implementation after the provider-input ownership decision was made explicit",
+          "scopeSize": "One Core Stage 3 lane adding immutable ProviderContext construction, cold ownership/accounting tests and disposal",
+          "uncertainty": "Repository-local ABI and provider-resource encoding remain implementation choices; semantic ownership and forbidden raw-fact input are fixed",
+          "missingContext": "Exact existing font fixtures and private package adapters must be located in the owner repository",
+          "failureImpact": "An incorrect provider boundary would invalidate Stage 3 evidence but remains isolated and reversible before merge",
+          "recoverability": "Reject the handoff or return a bounded Revision Packet to the same WORK task and worktree",
+          "reason": "Terra high is sufficient now that ProviderContext ownership, inputs, forbidden fields, accounting and disposal obligations are explicit",
+          "smallerOptionAssessment": "Luna is not selected because verified font resources, Rust/WASM ownership, opaque receipts, accounting and disposal interact across Rust and private TypeScript adapters; GPT-6 is unnecessary unless implementation contradicts the amended contract",
+          "availabilitySource": "Current host send_message_to_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-19T16:33:09.617Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-6-astra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            {
+              "modelId": "gpt-5.5",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "Evidence shows immutable ProviderContext still cannot let Rust reproduce the accepted Stage 2 meanings without caller-supplied derived facts",
+            "Two bounded Terra revisions fail for the same reasoning limitation after context and environment gaps are corrected"
           ]
         },
         "ux": {
@@ -3941,6 +4051,71 @@
             "Integrate and authenticate a live shaping and segmentation provider rather than trusting fixture-supplied fact and digest content.",
             "Prove atomic revision and receipt behavior, cancellation, disposal, recovery and the unchanged Gate2 latency and scaling corpus.",
             "Keep Gate3, Editor, Backend, public exports, production binding, product UX, Node-count claims and map promotion held."
+          ]
+        }
+      },
+      {
+        "handoffId": "handoff-core-stage3-cold-session-a1-20260919",
+        "payloadDigest": "a2feb850c97f23b9c316dcf2635ee528bf72900933722b8527e888cd0218f5bf",
+        "payload": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "roomRunId": "core-stage3-cold-session-a1",
+          "laneId": "lane-core-stage3-cold-session-a1",
+          "ownerRepositoryId": "repo-core",
+          "ownershipGeneration": 1,
+          "revisionAttempt": 1,
+          "status": "BLOCKER",
+          "behaviorChanged": false,
+          "behaviorSummary": "Stage 3 stopped before implementation because the approved CreateSession semantic inputs do not supply Rust with provider configuration or an authenticated immutable provider-result bridge needed to derive and own LayoutShard facts.",
+          "exactCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+          "changedFiles": [],
+          "tests": [
+            "WORK Rust crate cargo test: passed with 0 existing tests",
+            "WORK Stage 2 semantic oracle: 39 of 39 passed",
+            "WORK Core type-check: passed",
+            "PLAN exact Core commit and clean worktree verification: passed"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "The current Rust provider cannot yet be shown to reproduce all accepted mixed-script, RTL and font-provenance Stage 2 descriptors.",
+            "Passing caller-provided raw facts would create or permit a second authority unless the private ABI is redesigned."
+          ],
+          "unknowns": [
+            "The approved owner of immutable provider configuration and font/style resolution is not defined.",
+            "Ownership and retention semantics for generated WASM module state across private sessions remain undefined."
+          ],
+          "contractChangeRequest": "Choose and specify one Stage 3 construction boundary: preferred A, Rust receives an immutable versioned provider configuration and derives all facts internally; or B, CreateSession receives an independently authenticated immutable Stage 2 provider-result bundle with explicit identity and no retained TypeScript fact tree. Either decision must define the exact private ABI, receipt authentication, complete cold accounting and disposal observables."
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-19T16:28:58.197Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-19T16:28:58.197Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-19T16:28:59.197Z",
+          "senderThreadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "channel": "send_message_to_thread",
+          "arrivalSequence": 23,
+          "acknowledgedAt": "2026-09-19T16:29:00.197Z"
+        },
+        "acceptance": {
+          "status": "blocked",
+          "reviewer": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "reviewedAt": "2026-09-19T16:29:01.197Z",
+          "reviewNote": "PLAN verified the automatic return, unchanged exact Core commit, clean worktree and focused checks. The stop is valid: the approved semantic-only CreateSession boundary cannot currently produce Rust-owned provider facts without an explicit provider configuration or authenticated provider-result bridge. No implementation or merge is accepted.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Approve the private Stage 3 provider-input ownership contract.",
+            "Amend the semantic contract and implementation plan with the exact private ABI, receipt authentication, cold accounting and disposal observables.",
+            "Dispatch a new bounded Stage 3 revision to the same WORK task; keep Stage 4, Gate 2, Gate 3, Editor, Backend, public exports, production binding and maps held."
           ]
         }
       }

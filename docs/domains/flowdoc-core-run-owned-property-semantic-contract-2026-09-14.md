@@ -52,7 +52,42 @@ changes, arbitrary Latin splits such as `off|ice`, grapheme and composition
 boundaries, and RTL-sensitive direction behavior. Until each fixture has a
 provider-backed rule, that case remains `not-admissible`.
 
+### Stage 3 Provider Input Decision — 2026-09-19
+
+Stage 3 source review found that `ParagraphContext` and `AuthoredSpan[]` do not
+contain the font resources or provider policy needed for Rust to derive the
+required glyph, cluster, break and unsafe-boundary facts. Passing the Stage 2
+fact bundle into the session would make caller-supplied derived facts a second
+authority. The private construction protocol therefore adds one immutable,
+versioned `ProviderContext` input and keeps all derived facts inside Rust.
+
+`ProviderContext` is configuration, not a run or fact tree. It contains:
+
+- provider identity and revision;
+- immutable font resources with stable IDs and verified content digests;
+- authored-style-to-font and shaping-feature bindings;
+- the script, bidi, shaping and segmentation policy revisions used by Core;
+  and
+- validation policy for unsupported language, feature, font and writing-mode
+  combinations.
+
+It must not contain provider run boundaries, glyphs, clusters, line breaks,
+unsafe-boundary results, seam certificates or mutable session state. Rust
+validates the configuration, imports the required immutable resources, derives
+the analysis runs and raw facts, then owns the only session copies. The Stage 2
+oracle remains an independent expected-result reference; its caller-supplied
+provider facts are never imported as live session authority.
+
 ## 1. Semantic Ownership
+
+### ProviderContext
+
+`ProviderContext` owns the immutable provider capability required to construct
+a session. It binds provider and policy revisions, verified font resources and
+authored style mappings. It does not own document text or derived per-session
+runs and facts. TypeScript may retain independent immutable application font
+assets, but it must not retain a session's derived run tree, shard tree or raw
+fact copy.
 
 ### ParagraphContext
 
@@ -142,15 +177,38 @@ returns `not-admissible(uncertified-seam)`.
 
 ## 4. Private Session Protocol
 
-The private Rust/WASM boundary carries semantic input and compact command
-results only:
+The private Rust/WASM boundary carries immutable provider configuration,
+semantic input and compact results only:
 
 ```text
-CreateSession(ParagraphContext, AuthoredSpan[])
+CreateSession(ProviderContext, ParagraphContext, AuthoredSpan[])
+  -> Created(receipt, revision = 0, coldSummary)
+  | NotCreated(reason)
 Apply(receipt, EditCommand)
   -> Accepted(nextReceipt, revision, affectedSummary)
   | NotAdmissible(reason, unchangedReceipt)
+Dispose(receipt)
+  -> Disposed(disposalSummary)
+  | UnknownReceipt
 ```
+
+`CreateSession` validates all IDs, digests, ranges, policies and resources
+before publication. Rust derives `AnalysisRun` and `LayoutShard` state through
+the named providers; caller-supplied provider runs and raw facts are rejected.
+The receipt is a Rust-created opaque capability bound to one live session and
+revision. A caller-created or disposed receipt cannot inspect, mutate or
+dispose a session.
+
+`coldSummary` is a compact QA result. It may report exact source and descriptor
+digests plus counters for ABI transfer, source/span traversal, provider input,
+shaping, segmentation, allocation and tree construction. It cannot expose the
+authoritative source, run tree, shard tree or raw facts. Provider setup and all
+deferred work performed for construction are charged to the same cold report;
+no setup cost may be hidden in an unreported warm cache.
+
+`Dispose` removes the Rust-owned session and reports compact released-resource
+counters. Tests must prove that the live-session count returns to its prior
+value and that subsequent use of the old receipt fails without state change.
 
 `EditCommand` names the expected receipt/revision, committed replacement or
 Enter caret, and any supplied authored-span change. It never supplies a caller
@@ -181,6 +239,10 @@ The exact oracle is defined by committed text, authored spans, paragraph
 context, and the reviewed Unicode/shaping provider result. The old
 paragraph-wide first-strong tuple is a negative-control fixture, not the new
 oracle.
+
+For Stage 3, the same expected provider result is reproduced from a reviewed
+`ProviderContext` and compared with the Stage 2 oracle. The oracle fact bundle
+is comparison evidence only and is never passed to `CreateSession`.
 
 Before implementation claims semantic readiness, Core must carry fixtures for:
 

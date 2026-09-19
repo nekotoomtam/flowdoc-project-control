@@ -42,6 +42,9 @@ Project Control records.
 
 - Rust owns the only mutable committed source, run tree, shard facts, revision,
   and receipt. TypeScript may hold opaque QA handles and compact outcomes only.
+- Stage 3 construction receives an immutable versioned `ProviderContext` with
+  verified font resources and policy bindings. It never receives caller-built
+  provider runs, raw facts or seam certificates as session authority.
 - A command either publishes a complete new revision or changes nothing. There
   is no provisional browser text, background whole-paragraph repair, or
   post-publication relabeling.
@@ -115,18 +118,26 @@ Escalate to GPT-6 only if implementation exposes a semantic contradiction.
 
 ## Stage 3 — Cold Rust-Owned Session
 
-**Scope.** Create private `CreateSession(ParagraphContext, AuthoredSpan[])`
-construction with immutable source references, a balanced run tree, layout
-shards, opaque receipts, and counters for all traversal, provider, allocation,
-and ABI work.
+**Scope.** Create private
+`CreateSession(ProviderContext, ParagraphContext, AuthoredSpan[])`
+construction with immutable provider resources, immutable source references, a
+balanced run tree, layout shards, opaque receipts, and counters for all
+traversal, provider, allocation, and ABI work. Rust derives provider runs and
+raw facts internally. The Stage 2 provider fact bundle is used only as an
+independent expected-result oracle.
 
-**Required evidence.** Rust is the sole mutable owner; TypeScript has no
-second text/fact tree; session construction preserves the Stage 2 descriptors;
-receipt identity cannot be caller-forged; and cold work is reported separately
-from command work.
+**Required evidence.** Rust is the sole mutable owner; TypeScript has no second
+text/fact tree; `ProviderContext` contains no derived run or raw-fact payload;
+session construction reproduces the Stage 2 descriptors and expected facts;
+invalid configuration and unsupported bindings fail before publication;
+receipt identity cannot be caller-forged; cold work reports ABI transfer,
+source/span traversal, provider work, shaping, segmentation, allocation and
+tree construction separately from command work; and disposal returns the live
+session count to its prior value while invalidating the receipt.
 
 **Exit gate.** Exact source and semantic fixture equality from a cold session,
-complete accounting, clean disposal, and no hidden full-paragraph fallback.
+complete cold accounting with no hidden warm-cache setup, clean disposal,
+invalid-receipt rejection, and no hidden full-paragraph fallback.
 
 **Recommended WORK model.** `gpt-5.6-terra`, high effort. The task is
 contained systems implementation with detailed ownership tests. Escalate to

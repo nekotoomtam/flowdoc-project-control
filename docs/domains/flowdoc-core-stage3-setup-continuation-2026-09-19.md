@@ -110,3 +110,28 @@ are corrected. Any escalation keeps the same exit gate and exclusions.
 
 Until steps 2 and 3 succeed, Stage 3 remains prepared and Core product work is
 not authorized.
+
+## Stage 3 Attempt 1 Return And PLAN Decision
+
+The WORK room returned `BLOCKER` automatically under handoff
+`handoff-core-stage3-cold-session-a1-20260919`. PLAN verified the exact clean
+Core commit, no changed files, 39 of 39 Stage 2 oracle tests, Core type-check
+and the repository ABI evidence. The blocker is accepted: the approved
+`ParagraphContext` plus `AuthoredSpan[]` input does not supply font/provider
+configuration, while importing caller-supplied Stage 2 raw facts would violate
+Rust sole ownership. Coordination revision 212 records the received,
+acknowledged and blocked handoff with arrival sequence 23.
+
+PLAN chooses the narrower ownership-preserving resolution: add an immutable,
+versioned `ProviderContext` to private Stage 3 construction. Rust validates the
+font resources and policy bindings, derives runs and raw facts internally, and
+owns the only session copies. The Stage 2 provider bundle remains reference
+oracle evidence and is not a session input. This decision does not authorize a
+public API, product binding, commands, Gate 2, Gate 3, Editor, Backend or map
+change.
+
+Coordination revision 213 registers the same retrievable WORK task and clean
+Core worktree as prepared Room Run `core-stage3-provider-context-a1`. This is a
+new bounded lane under the amended contract, not an acceptance or continuation
+of the blocked implementation attempt. It requires a fresh Context
+Acknowledgement and Activation Notice before product edits resume.
