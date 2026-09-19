@@ -69,13 +69,13 @@
   "updatedAt": "2026-09-14T04:31:24.8104109Z",
   "coordination": {
     "version": 1,
-    "revision": 204,
+    "revision": 205,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "creator-typing-four-points",
       "transfers": [],
       "generation": 1,
-      "state": "active",
+      "state": "released",
       "scopeKeys": [
         "creator-preview-typing-latency"
       ],
@@ -113,14 +113,14 @@
         "repositoryId": "repo-project-control",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "active",
+        "state": "released",
         "baseCommit": "2679f70dae2868843855104544257f19de903a9f"
       },
       {
         "repositoryId": "repo-core",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "active",
+        "state": "released",
         "baseCommit": "bd6cc75589a22de569364e27bb4bb46d3986becb"
       }
     ],
@@ -352,7 +352,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-typing-observed-launch-g1-a1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "branch": "codex/editor-stage-a-multiline-measurement-20260909",
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
@@ -610,7 +610,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-result-cost-attribution-g1-a1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
           "threadId": "01a07584-49dc-7602-b662-6033c1469517",
@@ -681,7 +681,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-typing-boundary-design-g1-a1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "worktree": "C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/core-creator-native-tail-20260909",
           "threadId": "01a07584-49dc-7602-b662-6033c1469517",
@@ -752,7 +752,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-editor-typing-boundary-design-g1-a1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
           "worktree": "C:/Users/nekot/.codex/worktrees/stagea22/flowdoc-vnext-editor",
@@ -939,7 +939,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-editor-worker-performance-g1-a1",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a0757e-98ba-79c2-96d1-3aa690ead2a1",
           "worktree": "C:/Users/nekot/.codex/worktrees/creator-worker-20260912/flowdoc-vnext-editor",
@@ -2105,7 +2105,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 3,
         "expectedHandoffId": "handoff-core-stage2-semantic-oracle-a3-20260914",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a0a046-e4bb-7ef1-bc33-40daa07bf09e",
           "worktree": "C:/Users/nekot/.codex/worktrees/995f/flowdoc-vnext-core"
