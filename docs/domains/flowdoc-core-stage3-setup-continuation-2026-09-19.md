@@ -49,6 +49,32 @@ is not a retrievable room locator. Therefore PLAN did not register or activate a
 Room Run, send a Kickoff Packet, authorize source inspection, or permit edits.
 No implementation began.
 
+## Bounded Recovery Result
+
+PLAN confirmed that the provisional `f538` worktree was clean, detached, and
+still at the exact Core starting commit. Git removed its worktree registration;
+Windows retained only an empty directory shell because the directory was in
+use. PLAN then made the one permitted replacement request titled `Core Stage 3
+cold session retry`, with the same project, worktree isolation, model and
+prepare-only boundary. The replacement returned only:
+
+- client setup ID: `client-new-thread:c263a40e-fa30-4b9b-9e66-80b91e3fe624`;
+- provisional worktree: `C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core`;
+- exact clean detached Core commit:
+  `c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.
+
+No monitorable task ID appeared during four bounded registry checks. PLAN
+confirmed that `9c7e` contained no tracked or untracked change and removed its
+Git worktree registration. Windows again retained only an empty directory
+shell because the directory was in use. Neither shell is a registered Core
+worktree, branch, room, or product change.
+
+The identical failure after a clean reconciliation and one replacement request
+classifies this as a Codex task-registration setup failure. Further automatic
+replacement attempts are stopped to avoid duplicate late-arriving rooms. Stage
+3 remains `needs-attention`; no Room Run, integration claim, Kickoff Packet,
+Context Acknowledgement, activation, source inspection or Core edit exists.
+
 ## Model Decision
 
 The prepared selection is `gpt-5.6-terra` at high effort. The semantic contract
@@ -65,18 +91,20 @@ are corrected. Any escalation keeps the same exit gate and exclusions.
 
 ## Safe Continuation
 
-1. Resolve a real task ID for the existing client setup without creating a
-   duplicate WORK room.
-2. Verify that the resolved task owns the clean `f538` worktree at the exact
-   starting commit.
-3. Register a new active ownership generation, Core integration claim, prepared
-   Stage 3 Room Run, real locator, model decision, evidence requirement, return
-   command and liveness deadline in Project Control.
-4. Send the complete Kickoff Packet. Require Context Acknowledgement through
-   `mcp__codex_app__send_message_to_thread` before activation.
-5. If the client setup is confirmed failed, reconcile and remove its clean
-   provisional worktree before making one replacement task request. Record the
-   failed setup; never reuse the client setup ID as a task ID.
+1. Do not create another replacement while either client setup could still
+   resolve late. Refresh the task registry first.
+2. If exactly one real task ID appears, verify its Core worktree and exact
+   starting commit before registering anything. If both appear, keep both
+   inactive and reconcile the duplicate before choosing one.
+3. If neither setup resolves, repair or restart the Codex task-registration
+   path outside product scope, then make at most one new request after a fresh
+   registry check.
+4. Only after a real task ID and worktree are verified, register a new active
+   ownership generation, Core integration claim, prepared Stage 3 Room Run,
+   model decision, evidence requirement, return command and liveness deadline.
+5. Send the complete Kickoff Packet. Require Context Acknowledgement through
+   `mcp__codex_app__send_message_to_thread` before activation. Never reuse a
+   client setup ID as a task ID.
 
 Until step 2 succeeds, Stage 3 status is `needs-attention` and no Core product
 work is authorized.
