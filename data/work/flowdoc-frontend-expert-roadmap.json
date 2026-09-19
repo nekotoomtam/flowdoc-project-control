@@ -68,46 +68,27 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-19T15:08:59.6248677Z",
+  "updatedAt": "2026-09-19T15:53:54.029Z",
   "coordination": {
     "version": 1,
-    "revision": 205,
+    "revision": 206,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
-      "scopeId": "creator-typing-four-points",
+      "scopeId": "core-stage3-cold-session",
       "transfers": [],
       "generation": 1,
-      "state": "released",
+      "state": "active",
       "scopeKeys": [
-        "creator-preview-typing-latency"
+        "core-run-owned-cold-session"
       ],
       "allowedFiles": [
-        "repo-editor/src/editor/structures/creatorPreviewSession.ts",
-        "repo-editor/src/editor/structures/creatorPreviewPaint.ts",
-        "repo-editor/src/core/coreAdapter.ts",
-        "repo-editor/src/components/structures/StructurePreviewPage.tsx",
-        "repo-core/src/creatorPreview",
-        "repo-core/tests",
-        "repo-project-control/src/model/coordination.ts",
-        "repo-project-control/tests/flowdoc-coordination-registry.test.ts",
-        "repo-editor/src/editor/structures/creatorPreviewWorkerProtocol.ts",
-        "repo-editor/src/editor/structures/creatorPreviewEngine.worker.ts",
-        "repo-editor/src/editor/structures/creatorPreviewWorkerClient.ts",
-        "repo-editor/src/editor/structures/creatorPaperInput.ts",
-        "repo-editor/src/styles/creator-preview.css",
-        "repo-editor/src/tests",
-        "repo-editor/tests",
-        "repo-editor/vite.config.ts",
-        "repo-core/src/index.ts",
-        "repo-core/packages/text-engine-rust-wasm/src",
-        "repo-core/scripts",
-        "repo-core/docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
         "repo-core/packages/text-engine-rust-wasm/rust-live-draft-engine",
-        "repo-core/packages/text-engine-rust-wasm/pkg-live-draft-mr1-window",
+        "repo-core/packages/text-engine-rust-wasm/src",
         "repo-core/packages/text-engine-rust-wasm/package.json",
         "repo-core/package.json",
         "repo-core/package-lock.json",
-        "repo-core/packages/text-engine-rust-wasm/pkg-incremental-window-v2"
+        "repo-core/src/layout/runOwnedSemanticOracleStage2.ts",
+        "repo-core/tests"
       ]
     },
     "integrationClaims": [
@@ -115,15 +96,15 @@
         "repositoryId": "repo-project-control",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "released",
-        "baseCommit": "2679f70dae2868843855104544257f19de903a9f"
+        "state": "active",
+        "baseCommit": "b5eeccc75cd0d058c90a48c7807db7f9ce0bbfe4"
       },
       {
         "repositoryId": "repo-core",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "released",
-        "baseCommit": "bd6cc75589a22de569364e27bb4bb46d3986becb"
+        "state": "active",
+        "baseCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3"
       }
     ],
     "returnOrderPolicy": "severity-then-arrival",
@@ -2210,6 +2191,116 @@
           "visibleChange": false,
           "applicability": "not-applicable",
           "reason": "Stage 2 is a Core-private proof oracle and fixture lane with no renderer, browser interaction or user-visible product behavior."
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-paragraph-session-feasibility"
+        ]
+      },
+      {
+        "roomRunId": "core-stage3-cold-session-a1",
+        "dispatchSetId": "core-stage3-cold-session-20260919",
+        "laneId": "lane-core-stage3-cold-session-a1",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "handoff-core-stage3-cold-session-a1-20260919",
+        "status": "prepared",
+        "locator": {
+          "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+          "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
+        },
+        "contextAcknowledgement": {
+          "status": "pending"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-19T16:13:54.029Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-terra",
+          "reasoningEffort": "high",
+          "taskComplexity": "Contained multi-file Rust/WASM ownership and accounting implementation under an accepted semantic contract",
+          "scopeSize": "One private Core Stage 3 cold-session lane with fixture equality, lifecycle and accounting tests",
+          "uncertainty": "Exact private Rust/WASM ownership and ABI shape needed to preserve the accepted Stage 2 descriptors without duplicate TypeScript authority",
+          "missingContext": "Repository-local implementation layout must be inspected after Context Acknowledgement; semantic meaning and exclusions are already fixed",
+          "failureImpact": "An incorrect ownership or accounting seam would invalidate Stage 3 evidence but remains private and reversible before merge",
+          "recoverability": "Reject the handoff or send a bounded Revision Packet to the same isolated WORK task",
+          "reason": "Terra high is sufficient for a bounded systems implementation whose semantic contract, fixture oracle, owner repository and exit gate are already explicit",
+          "smallerOptionAssessment": "Luna is not selected because Rust ownership, WASM ABI, opaque receipts and complete accounting interact across multiple files and failure paths; GPT-6 is reserved for an evidence-backed contract contradiction",
+          "availabilitySource": "Current host create_thread model and effort capability schema",
+          "availabilityObservedAt": "2026-09-19T15:53:54.029Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-6-astra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            {
+              "modelId": "gpt-5.5",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "Evidence shows the private Rust/WASM ownership or ABI cannot implement the approved semantic contract without changing it",
+            "Two bounded Terra revisions fail for the same reasoning limitation after packet, context and environment gaps are corrected"
+          ]
+        },
+        "ux": {
+          "reason": "Private Core construction and QA evidence only; no Editor binding, browser interaction or visible product behavior is in scope",
+          "applicability": "not-applicable",
+          "visibleChange": false
         },
         "requiredEvidence": [
           "evidence-core-rust-paragraph-session-feasibility"

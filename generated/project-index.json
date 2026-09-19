@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "61321660e0f24d94b339072e380d6c2e5cb0b32c528eab21ef6d6cb383cb4987",
+  "sourceDigest": "d769cb2dbc7a8c6d93c5f5e8a0f51f58db02a3f24f51e00f8962c648814657c3",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2990,46 +2990,27 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-19T15:08:59.6248677Z",
+      "updatedAt": "2026-09-19T15:53:54.029Z",
       "coordination": {
         "version": 1,
-        "revision": 205,
+        "revision": 206,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
-          "scopeId": "creator-typing-four-points",
+          "scopeId": "core-stage3-cold-session",
           "transfers": [],
           "generation": 1,
-          "state": "released",
+          "state": "active",
           "scopeKeys": [
-            "creator-preview-typing-latency"
+            "core-run-owned-cold-session"
           ],
           "allowedFiles": [
-            "repo-editor/src/editor/structures/creatorPreviewSession.ts",
-            "repo-editor/src/editor/structures/creatorPreviewPaint.ts",
-            "repo-editor/src/core/coreAdapter.ts",
-            "repo-editor/src/components/structures/StructurePreviewPage.tsx",
-            "repo-core/src/creatorPreview",
-            "repo-core/tests",
-            "repo-project-control/src/model/coordination.ts",
-            "repo-project-control/tests/flowdoc-coordination-registry.test.ts",
-            "repo-editor/src/editor/structures/creatorPreviewWorkerProtocol.ts",
-            "repo-editor/src/editor/structures/creatorPreviewEngine.worker.ts",
-            "repo-editor/src/editor/structures/creatorPreviewWorkerClient.ts",
-            "repo-editor/src/editor/structures/creatorPaperInput.ts",
-            "repo-editor/src/styles/creator-preview.css",
-            "repo-editor/src/tests",
-            "repo-editor/tests",
-            "repo-editor/vite.config.ts",
-            "repo-core/src/index.ts",
-            "repo-core/packages/text-engine-rust-wasm/src",
-            "repo-core/scripts",
-            "repo-core/docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md",
             "repo-core/packages/text-engine-rust-wasm/rust-live-draft-engine",
-            "repo-core/packages/text-engine-rust-wasm/pkg-live-draft-mr1-window",
+            "repo-core/packages/text-engine-rust-wasm/src",
             "repo-core/packages/text-engine-rust-wasm/package.json",
             "repo-core/package.json",
             "repo-core/package-lock.json",
-            "repo-core/packages/text-engine-rust-wasm/pkg-incremental-window-v2"
+            "repo-core/src/layout/runOwnedSemanticOracleStage2.ts",
+            "repo-core/tests"
           ]
         },
         "integrationClaims": [
@@ -3037,15 +3018,15 @@
             "repositoryId": "repo-project-control",
             "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
             "generation": 1,
-            "state": "released",
-            "baseCommit": "2679f70dae2868843855104544257f19de903a9f"
+            "state": "active",
+            "baseCommit": "b5eeccc75cd0d058c90a48c7807db7f9ce0bbfe4"
           },
           {
             "repositoryId": "repo-core",
             "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
             "generation": 1,
-            "state": "released",
-            "baseCommit": "bd6cc75589a22de569364e27bb4bb46d3986becb"
+            "state": "active",
+            "baseCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3"
           }
         ],
         "returnOrderPolicy": "severity-then-arrival",
@@ -5132,6 +5113,116 @@
               "visibleChange": false,
               "applicability": "not-applicable",
               "reason": "Stage 2 is a Core-private proof oracle and fixture lane with no renderer, browser interaction or user-visible product behavior."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-paragraph-session-feasibility"
+            ]
+          },
+          {
+            "roomRunId": "core-stage3-cold-session-a1",
+            "dispatchSetId": "core-stage3-cold-session-20260919",
+            "laneId": "lane-core-stage3-cold-session-a1",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-stage3-cold-session-a1-20260919",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
+              "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"
+            },
+            "contextAcknowledgement": {
+              "status": "pending"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-19T16:13:54.029Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Contained multi-file Rust/WASM ownership and accounting implementation under an accepted semantic contract",
+              "scopeSize": "One private Core Stage 3 cold-session lane with fixture equality, lifecycle and accounting tests",
+              "uncertainty": "Exact private Rust/WASM ownership and ABI shape needed to preserve the accepted Stage 2 descriptors without duplicate TypeScript authority",
+              "missingContext": "Repository-local implementation layout must be inspected after Context Acknowledgement; semantic meaning and exclusions are already fixed",
+              "failureImpact": "An incorrect ownership or accounting seam would invalidate Stage 3 evidence but remains private and reversible before merge",
+              "recoverability": "Reject the handoff or send a bounded Revision Packet to the same isolated WORK task",
+              "reason": "Terra high is sufficient for a bounded systems implementation whose semantic contract, fixture oracle, owner repository and exit gate are already explicit",
+              "smallerOptionAssessment": "Luna is not selected because Rust ownership, WASM ABI, opaque receipts and complete accounting interact across multiple files and failure paths; GPT-6 is reserved for an evidence-backed contract contradiction",
+              "availabilitySource": "Current host create_thread model and effort capability schema",
+              "availabilityObservedAt": "2026-09-19T15:53:54.029Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-sol",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-luna",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.5",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "Evidence shows the private Rust/WASM ownership or ABI cannot implement the approved semantic contract without changing it",
+                "Two bounded Terra revisions fail for the same reasoning limitation after packet, context and environment gaps are corrected"
+              ]
+            },
+            "ux": {
+              "reason": "Private Core construction and QA evidence only; no Editor binding, browser interaction or visible product behavior is in scope",
+              "applicability": "not-applicable",
+              "visibleChange": false
             },
             "requiredEvidence": [
               "evidence-core-rust-paragraph-session-feasibility"
@@ -20807,7 +20898,7 @@
           "pathOrContractId": "tests/runOwnedSemanticOracleStage2.test.ts"
         }
       ],
-      "content": "# Core Stage 3 Setup Continuation — 2026-09-19\n\n## Authority Boundary\n\nOwner repository: `repo-core`.\n\nWork: `flowdoc-frontend-expert-roadmap`.\n\nPhase: `phase-core-text-layout-roadmap`.\n\nChecklist: `checklist-core-text-layout-roadmap`.\n\nEvidence target: `evidence-core-rust-paragraph-session-feasibility`.\n\nThis Project Control continuation note records an incomplete Codex WORK-task\nsetup. It does not activate a room, authorize product edits, accept Stage 3,\nchange Gate 2 or Gate 3, or promote product or map truth.\n\n## Preserved Starting State\n\nStage 2 remains accepted at Core commit\n`c70b3e00416e38d2fd5757b9e80ee0339f60fce3`. On 2026-09-19, PLAN freshly\nconfirmed the private oracle suite at 39 of 39 tests and a passing Core\ntype-check. The previous coordination round was released at Project Control\nrevision 205; no active room, active integration claim, or completion-queue\nitem remained.\n\nThe next approved lane is Stage 3, Cold Rust-Owned Session. Its scope is the\nprivate construction proof described by\n`docs/domains/flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md`.\nIt must preserve the accepted Stage 2 meanings and prove one Rust-owned\nauthority, opaque receipts, complete cold accounting, clean disposal, and no\nhidden full-paragraph fallback. Ordinary commands, structural commands, Gate 2\nadmission, Gate 3, Editor, Backend, public exports, production binding, UX,\nNode-count claims, and map promotion remain excluded.\n\n## Incomplete Task Setup\n\nPLAN requested one Core project worktree task titled `Core Stage 3 cold\nsession`, using `gpt-5.6-terra` at high effort. The request returned only:\n\n- client setup ID: `client-new-thread:15793c5c-4466-41cb-b819-3e16c7b11489`;\n- provisional worktree: `C:/Users/nekot/.codex/worktrees/f538/flowdoc-vnext-core`;\n- exact clean detached Core commit:\n  `c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.\n\nNo monitorable task ID appeared after repeated bounded checks. A client setup ID\nis not a retrievable room locator. Therefore PLAN did not register or activate a\nRoom Run, send a Kickoff Packet, authorize source inspection, or permit edits.\nNo implementation began.\n\n## Bounded Recovery Result\n\nPLAN confirmed that the provisional `f538` worktree was clean, detached, and\nstill at the exact Core starting commit. Git removed its worktree registration;\nWindows retained only an empty directory shell because the directory was in\nuse. PLAN then made the one permitted replacement request titled `Core Stage 3\ncold session retry`, with the same project, worktree isolation, model and\nprepare-only boundary. The replacement returned only:\n\n- client setup ID: `client-new-thread:c263a40e-fa30-4b9b-9e66-80b91e3fe624`;\n- provisional worktree: `C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core`;\n- exact clean detached Core commit:\n  `c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.\n\nNo monitorable task ID appeared during four bounded registry checks. PLAN\nconfirmed that `9c7e` contained no tracked or untracked change and removed its\nGit worktree registration. Windows again retained only an empty directory\nshell because the directory was in use. Neither shell is a registered Core\nworktree, branch, room, or product change.\n\nThe identical failure after a clean reconciliation and one replacement request\nclassifies this as a Codex task-registration setup failure. Further automatic\nreplacement attempts are stopped to avoid duplicate late-arriving rooms. Stage\n3 remains `needs-attention`; no Room Run, integration claim, Kickoff Packet,\nContext Acknowledgement, activation, source inspection or Core edit exists.\n\n## Model Decision\n\nThe prepared selection is `gpt-5.6-terra` at high effort. The semantic contract\nand Stage 2 oracle are fixed, while the deliverable is a contained systems\nimplementation across Rust ownership, a private WASM boundary, fixture equality\nand accounting. Luna is too small for the coupled ownership and accounting\nproof. GPT-6 is not the default because no unresolved semantic decision is\npresent.\n\nEscalation is permitted only when evidence shows that Rust/WASM ownership or\nthe private ABI invalidates the approved contract, or after two bounded Terra\nrevisions fail for the same reasoning limitation after packet and context gaps\nare corrected. Any escalation keeps the same exit gate and exclusions.\n\n## Safe Continuation\n\n1. Do not create another replacement while either client setup could still\n   resolve late. Refresh the task registry first.\n2. If exactly one real task ID appears, verify its Core worktree and exact\n   starting commit before registering anything. If both appear, keep both\n   inactive and reconcile the duplicate before choosing one.\n3. If neither setup resolves, repair or restart the Codex task-registration\n   path outside product scope, then make at most one new request after a fresh\n   registry check.\n4. Only after a real task ID and worktree are verified, register a new active\n   ownership generation, Core integration claim, prepared Stage 3 Room Run,\n   model decision, evidence requirement, return command and liveness deadline.\n5. Send the complete Kickoff Packet. Require Context Acknowledgement through\n   `mcp__codex_app__send_message_to_thread` before activation. Never reuse a\n   client setup ID as a task ID.\n\nUntil step 2 succeeds, Stage 3 status is `needs-attention` and no Core product\nwork is authorized.\n"
+      "content": "# Core Stage 3 Setup Continuation — 2026-09-19\n\n## Authority Boundary\n\nOwner repository: `repo-core`.\n\nWork: `flowdoc-frontend-expert-roadmap`.\n\nPhase: `phase-core-text-layout-roadmap`.\n\nChecklist: `checklist-core-text-layout-roadmap`.\n\nEvidence target: `evidence-core-rust-paragraph-session-feasibility`.\n\nThis Project Control continuation note records an incomplete Codex WORK-task\nsetup. It does not activate a room, authorize product edits, accept Stage 3,\nchange Gate 2 or Gate 3, or promote product or map truth.\n\n## Preserved Starting State\n\nStage 2 remains accepted at Core commit\n`c70b3e00416e38d2fd5757b9e80ee0339f60fce3`. On 2026-09-19, PLAN freshly\nconfirmed the private oracle suite at 39 of 39 tests and a passing Core\ntype-check. The previous coordination round was released at Project Control\nrevision 205; no active room, active integration claim, or completion-queue\nitem remained.\n\nThe next approved lane is Stage 3, Cold Rust-Owned Session. Its scope is the\nprivate construction proof described by\n`docs/domains/flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md`.\nIt must preserve the accepted Stage 2 meanings and prove one Rust-owned\nauthority, opaque receipts, complete cold accounting, clean disposal, and no\nhidden full-paragraph fallback. Ordinary commands, structural commands, Gate 2\nadmission, Gate 3, Editor, Backend, public exports, production binding, UX,\nNode-count claims, and map promotion remain excluded.\n\n## Incomplete Task Setup\n\nPLAN requested one Core project worktree task titled `Core Stage 3 cold\nsession`, using `gpt-5.6-terra` at high effort. The request returned only:\n\n- client setup ID: `client-new-thread:15793c5c-4466-41cb-b819-3e16c7b11489`;\n- provisional worktree: `C:/Users/nekot/.codex/worktrees/f538/flowdoc-vnext-core`;\n- exact clean detached Core commit:\n  `c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.\n\nNo monitorable task ID appeared after repeated bounded checks. A client setup ID\nis not a retrievable room locator. Therefore PLAN did not register or activate a\nRoom Run, send a Kickoff Packet, authorize source inspection, or permit edits.\nNo implementation began.\n\n## Bounded Recovery Result\n\nPLAN confirmed that both setup requests created real idle Codex tasks. The\nnormal task list omitted them because their local state rows have no associated\nproject ID, while the task engine and read API retain valid task IDs. The setup\nfailure was therefore a list/index visibility failure rather than a task-engine\ncreation failure.\n\nThe first task is `01a0ba31-8f17-7a11-93fa-a127d30a4863`. PLAN verified its\nprepare-only response and archived it as the unused duplicate. The selected\ntask is `01a0ba4c-d305-72b2-b27d-8805ca2496b7`, titled `Core Stage 3 cold\nsession retry`. PLAN verified its prepare-only response, restored its clean\ndetached Core worktree at\n`C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core`, and confirmed exact\nHEAD `c70b3e00416e38d2fd5757b9e80ee0339f60fce3` with no tracked or untracked\nchange.\n\nProject Control coordination revision 206 reopens the existing PLAN ownership\ngeneration 1 for the new Stage 3 scope and registers only the selected task as prepared Room Run\n`core-stage3-cold-session-a1`. No product source inspection or Core edit was\nauthorized during recovery. The room may proceed only after receiving the\ncomplete Kickoff Packet and returning Context Acknowledgement through the\nregistered automatic Return Channel.\n\n## Model Decision\n\nThe prepared selection is `gpt-5.6-terra` at high effort. The semantic contract\nand Stage 2 oracle are fixed, while the deliverable is a contained systems\nimplementation across Rust ownership, a private WASM boundary, fixture equality\nand accounting. Luna is too small for the coupled ownership and accounting\nproof. GPT-6 is not the default because no unresolved semantic decision is\npresent.\n\nEscalation is permitted only when evidence shows that Rust/WASM ownership or\nthe private ABI invalidates the approved contract, or after two bounded Terra\nrevisions fail for the same reasoning limitation after packet and context gaps\nare corrected. Any escalation keeps the same exit gate and exclusions.\n\n## Safe Continuation\n\n1. Send the complete Stage 3 Kickoff Packet to the selected task with ownership\n   generation 1, revision attempt 1 and expected handoff ID\n   `handoff-core-stage3-cold-session-a1-20260919`.\n2. Require Context Acknowledgement through\n   `mcp__codex_app__send_message_to_thread`; verify the owner, scope,\n   exclusions, starting commit, model, evidence target, Return Channel and stop\n   conditions.\n3. Record the acknowledgement, activate the prepared Room Run, and send an\n   Activation Notice before Core source inspection or edits begin.\n4. Monitor the automatic return and process its terminal handoff through the\n   Project Control inbox, completion queue and acceptance gate.\n\nUntil steps 2 and 3 succeed, Stage 3 remains prepared and Core product work is\nnot authorized.\n"
     },
     {
       "id": "doc-core-text-edit-geometry-dispatch-2026-09-06",

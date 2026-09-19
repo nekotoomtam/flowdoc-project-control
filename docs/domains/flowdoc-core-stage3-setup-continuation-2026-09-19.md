@@ -51,29 +51,27 @@ No implementation began.
 
 ## Bounded Recovery Result
 
-PLAN confirmed that the provisional `f538` worktree was clean, detached, and
-still at the exact Core starting commit. Git removed its worktree registration;
-Windows retained only an empty directory shell because the directory was in
-use. PLAN then made the one permitted replacement request titled `Core Stage 3
-cold session retry`, with the same project, worktree isolation, model and
-prepare-only boundary. The replacement returned only:
+PLAN confirmed that both setup requests created real idle Codex tasks. The
+normal task list omitted them because their local state rows have no associated
+project ID, while the task engine and read API retain valid task IDs. The setup
+failure was therefore a list/index visibility failure rather than a task-engine
+creation failure.
 
-- client setup ID: `client-new-thread:c263a40e-fa30-4b9b-9e66-80b91e3fe624`;
-- provisional worktree: `C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core`;
-- exact clean detached Core commit:
-  `c70b3e00416e38d2fd5757b9e80ee0339f60fce3`.
+The first task is `01a0ba31-8f17-7a11-93fa-a127d30a4863`. PLAN verified its
+prepare-only response and archived it as the unused duplicate. The selected
+task is `01a0ba4c-d305-72b2-b27d-8805ca2496b7`, titled `Core Stage 3 cold
+session retry`. PLAN verified its prepare-only response, restored its clean
+detached Core worktree at
+`C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core`, and confirmed exact
+HEAD `c70b3e00416e38d2fd5757b9e80ee0339f60fce3` with no tracked or untracked
+change.
 
-No monitorable task ID appeared during four bounded registry checks. PLAN
-confirmed that `9c7e` contained no tracked or untracked change and removed its
-Git worktree registration. Windows again retained only an empty directory
-shell because the directory was in use. Neither shell is a registered Core
-worktree, branch, room, or product change.
-
-The identical failure after a clean reconciliation and one replacement request
-classifies this as a Codex task-registration setup failure. Further automatic
-replacement attempts are stopped to avoid duplicate late-arriving rooms. Stage
-3 remains `needs-attention`; no Room Run, integration claim, Kickoff Packet,
-Context Acknowledgement, activation, source inspection or Core edit exists.
+Project Control coordination revision 206 reopens the existing PLAN ownership
+generation 1 for the new Stage 3 scope and registers only the selected task as prepared Room Run
+`core-stage3-cold-session-a1`. No product source inspection or Core edit was
+authorized during recovery. The room may proceed only after receiving the
+complete Kickoff Packet and returning Context Acknowledgement through the
+registered automatic Return Channel.
 
 ## Model Decision
 
@@ -91,20 +89,17 @@ are corrected. Any escalation keeps the same exit gate and exclusions.
 
 ## Safe Continuation
 
-1. Do not create another replacement while either client setup could still
-   resolve late. Refresh the task registry first.
-2. If exactly one real task ID appears, verify its Core worktree and exact
-   starting commit before registering anything. If both appear, keep both
-   inactive and reconcile the duplicate before choosing one.
-3. If neither setup resolves, repair or restart the Codex task-registration
-   path outside product scope, then make at most one new request after a fresh
-   registry check.
-4. Only after a real task ID and worktree are verified, register a new active
-   ownership generation, Core integration claim, prepared Stage 3 Room Run,
-   model decision, evidence requirement, return command and liveness deadline.
-5. Send the complete Kickoff Packet. Require Context Acknowledgement through
-   `mcp__codex_app__send_message_to_thread` before activation. Never reuse a
-   client setup ID as a task ID.
+1. Send the complete Stage 3 Kickoff Packet to the selected task with ownership
+   generation 1, revision attempt 1 and expected handoff ID
+   `handoff-core-stage3-cold-session-a1-20260919`.
+2. Require Context Acknowledgement through
+   `mcp__codex_app__send_message_to_thread`; verify the owner, scope,
+   exclusions, starting commit, model, evidence target, Return Channel and stop
+   conditions.
+3. Record the acknowledgement, activate the prepared Room Run, and send an
+   Activation Notice before Core source inspection or edits begin.
+4. Monitor the automatic return and process its terminal handoff through the
+   Project Control inbox, completion queue and acceptance gate.
 
-Until step 2 succeeds, Stage 3 status is `needs-attention` and no Core product
-work is authorized.
+Until steps 2 and 3 succeed, Stage 3 remains prepared and Core product work is
+not authorized.
