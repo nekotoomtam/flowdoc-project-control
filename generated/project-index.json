@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "4f9c0ea81cf0fbe789b4b8e1b85f372096ae5307d3db95f260df4ef320f33f88",
+  "sourceDigest": "527457685137ab6f9d822a693ea46357b90c83cb9e60ef1297014fe15b4b0ffe",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2994,7 +2994,7 @@
       "updatedAt": "2026-09-20T09:48:02.042Z",
       "coordination": {
         "version": 1,
-        "revision": 232,
+        "revision": 233,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "scopeId": "core-stage4-ordinary-commands",
@@ -5572,6 +5572,117 @@
               "visibleChange": false,
               "applicability": "not-applicable",
               "reason": "This lane changes only an opt-in private Core QA feature. It does not change visible product behavior or claim typing UX acceptance."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-ordinary-commands-stage4-2026-09-20"
+            ]
+          },
+          {
+            "roomRunId": "core-stage4-repeated-cumulative-a1",
+            "dispatchSetId": "core-stage4-ordinary-commands-20260920",
+            "laneId": "lane-core-stage4-repeated-cumulative-a1",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-ordinary-commands-stage4-2026-09-20",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-stage4-repeated-cumulative-a1-20260920",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a0bd81-dd35-7b30-94e0-9c9da761c7ba",
+              "worktree": "C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core",
+              "branch": "codex/core-stage4-ordinary-commands"
+            },
+            "contextAcknowledgement": {
+              "status": "pending"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-20T11:20:00.000Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Coupled cumulative-ledger, persistent-tree-height and exact-oracle proof across repeated Rust-owned revisions",
+              "scopeSize": "One final private Core Stage 4 group using only already-admitted ordinary command shapes",
+              "uncertainty": "How to retain cumulative work and structural-height evidence across receipt replacement without silent reset, hidden warm state or whole-document work",
+              "missingContext": "No implementation yet binds a persistent cumulative ledger and sustained-height observables to the authoritative revision chain",
+              "failureImpact": "A false PASS could hide growing work behind per-command counters and advance an engine whose typing cost degrades with edit history",
+              "recoverability": "Reject the private candidate, retain exact commit 7c918010e51100db14bc7b5e45bf0f91752034d6 and revise the same isolated WORK task",
+              "reason": "This group closes the same persistent Rust ownership and accounting problem that triggered the recorded Astra escalation. It couples immutable trees, receipt/revision publication, exact provider oracles and cumulative work semantics; Astra high remains limited to this final Stage 4 proof rather than routine verification or Project Control work.",
+              "smallerOptionAssessment": "Terra high previously stopped twice before implementing the required persistent representation, and this group must reason across that representation plus non-resettable accounting. Sol or Luna are not selected for this coupled invariant proof; routine tests and record maintenance remain outside the model choice.",
+              "availabilitySource": "Current host send_message_to_thread model and effort capability schema; same WORK task already runs gpt-6-astra high",
+              "availabilityObservedAt": "2026-09-20T10:46:26.107Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-sol",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-luna",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.5",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "The accepted semantic contract cannot define cumulative ledger ownership or receipt-chain identity without a Contract Change Request",
+                "A repeated admitted sequence requires new command shapes, adjacent-context certification, Enter/join or public/product binding"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "This group proves only private Core cumulative work and persistent structural bounds. It changes no visible product behavior and cannot claim typing UX acceptance."
             },
             "requiredEvidence": [
               "evidence-core-rust-ordinary-commands-stage4-2026-09-20"
