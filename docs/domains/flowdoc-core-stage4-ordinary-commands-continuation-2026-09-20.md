@@ -543,3 +543,18 @@ sustained tree-height/locality proof. It must not silently reset counters,
 depend on hidden warm state, add command shapes, enter structural Enter/join,
 or change public/default/product bindings. Stage 5, Stage 6/Gate 2, Editor,
 Backend, UX, Node-count claims and map promotion remain closed.
+
+## Post-Blocker Design Decision — 2026-09-21
+
+The sustained matrix later stopped when an inverse backspace wholly inside one
+target span was rejected only because the same paragraph session contained
+three authored spans. The governing continuation decision is now recorded in
+`flowdoc-core-stage4-multi-authored-span-command-boundary-2026-09-21.md`.
+
+That decision separates session cardinality from command footprint: a
+paragraph session may contain many `AuthoredSpan` values, while an ordinary
+within-span command still targets one exact stable span. The next Core repair
+may remove the session-wide single-span restriction for such a command, but it
+must not add a general cross-span mutation, split the combined fixture, change
+the fixed budgets, enter Stage 5/6 or bind product behavior. Implementation and
+all remaining sustained-matrix proof are still pending.
