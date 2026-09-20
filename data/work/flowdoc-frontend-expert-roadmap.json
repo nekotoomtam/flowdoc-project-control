@@ -72,7 +72,7 @@
   "updatedAt": "2026-09-20T09:48:02.042Z",
   "coordination": {
     "version": 1,
-    "revision": 233,
+    "revision": 235,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage4-ordinary-commands",
@@ -2668,19 +2668,20 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 1,
         "expectedHandoffId": "handoff-core-stage4-repeated-cumulative-a1-20260920",
-        "status": "prepared",
+        "status": "active",
         "locator": {
           "threadId": "01a0bd81-dd35-7b30-94e0-9c9da761c7ba",
           "worktree": "C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core",
           "branch": "codex/core-stage4-ordinary-commands"
         },
         "contextAcknowledgement": {
-          "status": "pending"
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-20T10:57:55.849Z"
         },
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
-          "livenessDeadline": "2026-09-20T11:20:00.000Z",
+          "livenessDeadline": "2026-09-20T11:30:00.000Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
