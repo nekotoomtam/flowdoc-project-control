@@ -69,27 +69,27 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-20T00:00:00.000Z",
+  "updatedAt": "2026-09-20T06:34:20.363Z",
   "coordination": {
     "version": 1,
-    "revision": 226,
+    "revision": 228,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
-      "scopeId": "core-stage3-cold-session",
+      "scopeId": "core-stage4-ordinary-commands",
       "transfers": [],
       "generation": 1,
-      "state": "released",
+      "state": "active",
       "scopeKeys": [
-        "core-run-owned-cold-session"
+        "core-run-owned-ordinary-commands"
       ],
       "allowedFiles": [
         "repo-core/packages/text-engine-rust-wasm/rust-live-draft-engine",
-        "repo-core/packages/text-engine-rust-wasm/src",
-        "repo-core/packages/text-engine-rust-wasm/package.json",
-        "repo-core/package.json",
-        "repo-core/package-lock.json",
-        "repo-core/src/layout/runOwnedSemanticOracleStage2.ts",
-        "repo-core/tests"
+        "repo-core/packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+        "repo-core/packages/text-engine-rust-wasm/src/coldSessionStage4.ts",
+        "repo-core/tests/coldSessionStage3.test.ts",
+        "repo-core/tests/coldSessionStage4.test.ts",
+        "repo-core/tests/coldStage3Fixtures.ts",
+        "repo-core/tests/coldStage4Fixtures.ts"
       ]
     },
     "integrationClaims": [
@@ -106,6 +106,20 @@
         "generation": 1,
         "state": "released",
         "baseCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "generation": 1,
+        "state": "active",
+        "baseCommit": "5f00833c3f7aed04becfb581d614617802d1ce77"
+      },
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+        "generation": 1,
+        "state": "active",
+        "baseCommit": "1c810bcab48a9d4df7a758ccbd29a4824389e349"
       }
     ],
     "returnOrderPolicy": "severity-then-arrival",
@@ -2528,6 +2542,117 @@
         },
         "requiredEvidence": [
           "evidence-core-rust-paragraph-session-feasibility"
+        ]
+      },
+      {
+        "roomRunId": "core-stage4-ordinary-commands-a1",
+        "dispatchSetId": "core-stage4-ordinary-commands-20260920",
+        "laneId": "lane-core-stage4-ordinary-commands-a1",
+        "workType": "product-implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-core-text-layout-roadmap",
+        "checklistId": "checklist-core-text-layout-roadmap",
+        "evidenceTarget": "evidence-core-rust-ordinary-commands-stage4-2026-09-20",
+        "ownershipGeneration": 1,
+        "revisionAttempt": 1,
+        "expectedHandoffId": "handoff-core-stage4-ordinary-commands-a1-20260920",
+        "status": "active",
+        "locator": {
+          "threadId": "01a0bd81-dd35-7b30-94e0-9c9da761c7ba",
+          "worktree": "C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-20T06:34:20.363Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+          "activeCommand": "mcp__codex_app__send_message_to_thread",
+          "livenessDeadline": "2026-09-20T06:54:20.364Z",
+          "maxSendAttempts": 3,
+          "automaticChannel": "send_message_to_thread",
+          "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+        },
+        "modelDecision": {
+          "modelId": "gpt-5.6-terra",
+          "reasoningEffort": "high",
+          "taskComplexity": "Bounded multi-file Rust/WASM ordinary-command implementation with fixed semantics, atomicity and accounting",
+          "scopeSize": "One private Core Stage 4 lane covering append, backspace, middle insert, replacement and deletion",
+          "uncertainty": "Authored-span anchoring and provider-certified locality at edited seams",
+          "missingContext": "No known missing context after the accepted Stage 1 oracle, Stage 2 derivation proof and Stage 3 cold-session ownership",
+          "failureImpact": "An incorrect command could mutate authoritative text or facts; the private opt-in boundary and stop gates keep it recoverable before product binding",
+          "recoverability": "Reject the candidate, preserve the clean base, and revise the same WORK task without public or production activation",
+          "reason": "The semantic and ownership decisions are already fixed, making Terra high sufficient for a deterministic systems implementation with strong native and actual-WASM tests",
+          "smallerOptionAssessment": "Luna is not selected because atomic Rust ownership, Unicode boundary safety, provider accounting and WASM receipt lifecycle span multiple coupled modules",
+          "availabilitySource": "Current host mcp__codex_app__create_thread model and effort capability schema plus the explicit successful dispatch request",
+          "availabilityObservedAt": "2026-09-20T06:34:20.363Z",
+          "availableModelEfforts": [
+            {
+              "modelId": "gpt-6-astra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-sol",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max",
+                "ultra"
+              ]
+            },
+            {
+              "modelId": "gpt-5.6-luna",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ]
+            },
+            {
+              "modelId": "gpt-5.5",
+              "reasoningEfforts": [
+                "low",
+                "medium",
+                "high",
+                "xhigh"
+              ]
+            }
+          ],
+          "escalationTriggers": [
+            "One complete diagnostic and one bounded Terra revision still cannot resolve a source-backed ownership, atomicity or provider-seam contradiction",
+            "The accepted semantic contract cannot uniquely determine authored-span ownership within the fixed Stage 4 boundary"
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "This lane changes only an opt-in private Core QA feature. It does not change visible product behavior or claim typing UX acceptance."
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-ordinary-commands-stage4-2026-09-20"
         ]
       }
     ],

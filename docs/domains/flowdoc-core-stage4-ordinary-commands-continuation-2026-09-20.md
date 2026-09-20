@@ -187,3 +187,35 @@ failure atomicity. Product-repository repair returns to the same WORK task as
 a Revision Packet. PLAN alone integrates accepted output, writes Project
 Control evidence, runs the main gate and performs authorized current-round
 cleanup.
+
+## Task Preparation and Context Acknowledgement
+
+The host created one isolated Core task from exact commit
+`1c810bcab48a9d4df7a758ccbd29a4824389e349`:
+
+- task ID: `01a0bd81-dd35-7b30-94e0-9c9da761c7ba`;
+- worktree: `C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core`;
+- selected model: `gpt-5.6-terra` at high effort;
+- room: `core-stage4-ordinary-commands-a1`;
+- expected terminal handoff:
+  `handoff-core-stage4-ordinary-commands-a1-20260920`; and
+- automatic return target: PLAN task
+  `01a08a25-13d9-7090-8d91-1c32242988d8` through
+  `mcp__codex_app__send_message_to_thread`.
+
+The initial task response could see only a broad local model label. PLAN used
+the successful host `create_thread` request as the model/effort authority and
+sent the exact selection and monitorable task ID back to the same task. WORK
+then returned a corrected Context Acknowledgement through the automatic channel
+confirming Terra high, the exact clean Core base, the fixed Stage 4 command and
+accounting scope, all stop gates, the evidence target and the excluded Stage
+5/6 and product surfaces. No product file, branch, dependency or broad test was
+created during setup.
+
+Project Control coordination revision 227 registers the task as prepared under
+the existing PLAN ownership generation 1. The ownership generation does not
+increment because no PLAN ownership transfer occurred; Stage number and
+ownership generation are different concepts. Activation is a separate typed
+transition. Coordination revision 228 records that transition after the
+corrected Context Acknowledgement; WORK remains read-only until the matching
+Activation Notice arrives in its task.

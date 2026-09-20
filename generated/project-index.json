@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "5804f61f8ee885cadcff9aa32a2c5d9273717fd65725814a829fb7feb6bdf5ca",
+  "sourceDigest": "ffa6aa530c15908826aeecad84e218feca2d602252baa190e6152cdf68712994",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2991,27 +2991,27 @@
         "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
       ],
       "createdAt": "2026-09-03T09:00:00Z",
-      "updatedAt": "2026-09-20T00:00:00.000Z",
+      "updatedAt": "2026-09-20T06:34:20.363Z",
       "coordination": {
         "version": 1,
-        "revision": 226,
+        "revision": 228,
         "scopeOwnership": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
-          "scopeId": "core-stage3-cold-session",
+          "scopeId": "core-stage4-ordinary-commands",
           "transfers": [],
           "generation": 1,
-          "state": "released",
+          "state": "active",
           "scopeKeys": [
-            "core-run-owned-cold-session"
+            "core-run-owned-ordinary-commands"
           ],
           "allowedFiles": [
             "repo-core/packages/text-engine-rust-wasm/rust-live-draft-engine",
-            "repo-core/packages/text-engine-rust-wasm/src",
-            "repo-core/packages/text-engine-rust-wasm/package.json",
-            "repo-core/package.json",
-            "repo-core/package-lock.json",
-            "repo-core/src/layout/runOwnedSemanticOracleStage2.ts",
-            "repo-core/tests"
+            "repo-core/packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "repo-core/packages/text-engine-rust-wasm/src/coldSessionStage4.ts",
+            "repo-core/tests/coldSessionStage3.test.ts",
+            "repo-core/tests/coldSessionStage4.test.ts",
+            "repo-core/tests/coldStage3Fixtures.ts",
+            "repo-core/tests/coldStage4Fixtures.ts"
           ]
         },
         "integrationClaims": [
@@ -3028,6 +3028,20 @@
             "generation": 1,
             "state": "released",
             "baseCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3"
+          },
+          {
+            "repositoryId": "repo-project-control",
+            "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+            "generation": 1,
+            "state": "active",
+            "baseCommit": "5f00833c3f7aed04becfb581d614617802d1ce77"
+          },
+          {
+            "repositoryId": "repo-core",
+            "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+            "generation": 1,
+            "state": "active",
+            "baseCommit": "1c810bcab48a9d4df7a758ccbd29a4824389e349"
           }
         ],
         "returnOrderPolicy": "severity-then-arrival",
@@ -5450,6 +5464,117 @@
             },
             "requiredEvidence": [
               "evidence-core-rust-paragraph-session-feasibility"
+            ]
+          },
+          {
+            "roomRunId": "core-stage4-ordinary-commands-a1",
+            "dispatchSetId": "core-stage4-ordinary-commands-20260920",
+            "laneId": "lane-core-stage4-ordinary-commands-a1",
+            "workType": "product-implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-core-text-layout-roadmap",
+            "checklistId": "checklist-core-text-layout-roadmap",
+            "evidenceTarget": "evidence-core-rust-ordinary-commands-stage4-2026-09-20",
+            "ownershipGeneration": 1,
+            "revisionAttempt": 1,
+            "expectedHandoffId": "handoff-core-stage4-ordinary-commands-a1-20260920",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0bd81-dd35-7b30-94e0-9c9da761c7ba",
+              "worktree": "C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-20T06:34:20.363Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
+              "activeCommand": "mcp__codex_app__send_message_to_thread",
+              "livenessDeadline": "2026-09-20T06:54:20.364Z",
+              "maxSendAttempts": 3,
+              "automaticChannel": "send_message_to_thread",
+              "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
+            },
+            "modelDecision": {
+              "modelId": "gpt-5.6-terra",
+              "reasoningEffort": "high",
+              "taskComplexity": "Bounded multi-file Rust/WASM ordinary-command implementation with fixed semantics, atomicity and accounting",
+              "scopeSize": "One private Core Stage 4 lane covering append, backspace, middle insert, replacement and deletion",
+              "uncertainty": "Authored-span anchoring and provider-certified locality at edited seams",
+              "missingContext": "No known missing context after the accepted Stage 1 oracle, Stage 2 derivation proof and Stage 3 cold-session ownership",
+              "failureImpact": "An incorrect command could mutate authoritative text or facts; the private opt-in boundary and stop gates keep it recoverable before product binding",
+              "recoverability": "Reject the candidate, preserve the clean base, and revise the same WORK task without public or production activation",
+              "reason": "The semantic and ownership decisions are already fixed, making Terra high sufficient for a deterministic systems implementation with strong native and actual-WASM tests",
+              "smallerOptionAssessment": "Luna is not selected because atomic Rust ownership, Unicode boundary safety, provider accounting and WASM receipt lifecycle span multiple coupled modules",
+              "availabilitySource": "Current host mcp__codex_app__create_thread model and effort capability schema plus the explicit successful dispatch request",
+              "availabilityObservedAt": "2026-09-20T06:34:20.363Z",
+              "availableModelEfforts": [
+                {
+                  "modelId": "gpt-6-astra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-sol",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-terra",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max",
+                    "ultra"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.6-luna",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                {
+                  "modelId": "gpt-5.5",
+                  "reasoningEfforts": [
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh"
+                  ]
+                }
+              ],
+              "escalationTriggers": [
+                "One complete diagnostic and one bounded Terra revision still cannot resolve a source-backed ownership, atomicity or provider-seam contradiction",
+                "The accepted semantic contract cannot uniquely determine authored-span ownership within the fixed Stage 4 boundary"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "This lane changes only an opt-in private Core QA feature. It does not change visible product behavior or claim typing UX acceptance."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-ordinary-commands-stage4-2026-09-20"
             ]
           }
         ],
@@ -21382,7 +21507,7 @@
           "pathOrContractId": "tests/coldSessionStage3.test.ts"
         }
       ],
-      "content": "# Core Stage 4 Ordinary Commands Continuation — 2026-09-20\n\n## Authority Boundary\n\nOwner repository: `repo-core`.\n\nWork: `flowdoc-frontend-expert-roadmap`.\n\nPhase: `phase-core-text-layout-roadmap`.\n\nChecklist: `checklist-core-text-layout-roadmap` item\n`incremental-boundary-rust-session-feasibility`.\n\nEvidence target:\n`evidence-core-rust-ordinary-commands-stage4-2026-09-20`.\n\nActive role: Planning Partner. The future WORK role is Product Implementation\nAgent.\n\nThis Project Control document owns the Stage 4 continuation, dispatch boundary\nand acceptance plan. It does not itself authorize public API or production\nbinding, prove command behavior, accept Gate 2 or Gate 3, change Editor or\nBackend, establish UX or Node-count readiness, or promote map truth.\n\n## Restored State\n\nStage 3 is accepted at Core commit\n`1c810bcab48a9d4df7a758ccbd29a4824389e349`. Rust owns the only retained cold\nsource, authored-span, analysis-run, layout-shard and raw-fact state for the\nverified Thai/Latin provider profile. Construction has digest-bound provider\npolicy, opaque receipts, complete cold accounting and clean disposal.\n\nProject Control coordination revision 226 released the completed Stage 3\nscope and its Project Control/Core integration claims. The Stage 3 room and\nhandoff are closed. The old registered worktree is removed; one unregistered\nresidual directory containing build output remains a local cleanup limitation\nand has no Git or acceptance authority. Core has local `core.longpaths=true`\nfor later worktree cleanup.\n\nGate 2 remains blocked. Stage 3 did not prove `Apply`, command locality,\nperformance admission, structural Enter/join, RTL live shaping, public or\nproduct binding, Editor behavior, UX, Node-count behavior or map truth.\n\n## Stage 4 Outcome\n\nAdd a private, opt-in ordinary-command protocol to the accepted Rust-owned\nsession:\n\n```text\nApply(receipt, EditCommand)\n  -> Accepted(nextReceipt, nextRevision, affectedSummary)\n  | NotAdmissible(reason, unchangedReceipt, unchangedRevision)\n```\n\nThe bounded command set is append, backspace, middle insert, replacement and\ndeletion. Enter, paragraph split/join, public exports, default binding and\nEditor integration are excluded.\n\nAn `EditCommand` may carry the expected revision, one UTF-16 replacement\nrange, committed replacement text, composition state, and a stable authored\nspan anchor only when the accepted semantic contract requires one. It must not\ncarry caller-derived script, language, font, run, glyph, cluster, break,\nunsafe-boundary, seam-certificate or mutable-tree facts.\n\nWhen source review cannot derive one exact authored-span owner for inserted\ntext from existing paragraph context and stable span identity, the command\nmust return a typed `missing-anchor`/`ambiguous-anchor` result or WORK must\nreturn one narrow Contract Change Request. It must not inherit an arbitrary\nleft/right property or recreate the blocked first-strong paragraph rule.\n\n## Fixed Semantics and Work Bounds\n\nOne accepted command must:\n\n- authenticate the live receipt and expected revision;\n- classify scalar, grapheme and composition safety before publication;\n- plan against the Rust-owned session without exporting authoritative state;\n- derive provider facts inside Rust from the accepted immutable provider\n  configuration;\n- account for every source, property, shaping, segmentation, allocation, tree,\n  hash, receipt and ABI operation, including deferred work;\n- publish the complete new source/span/run/shard revision exactly once; and\n- invalidate the prior receipt only after publication succeeds.\n\nThe unchanged per-command ceilings are:\n\n- at most 512 UTF-16 units of inspected source facts;\n- at most 512 UTF-16 units of inspected property facts; and\n- at most 1,024 combined UTF-16 units supplied to shaping plus segmentation.\n\nNo admitted command may serialize, clone, hash, scan, shape, segment, move or\nreindex the whole paragraph or an unbounded suffix. Compact QA digests,\ncounters and affected ranges may cross the ABI; authoritative source, trees\nand raw facts may not.\n\nEvery rejection, including forged or stale receipt, stale revision, active\ncomposition, surrogate or uncertified grapheme split, unsupported provider\ncoverage, missing/ambiguous anchor, cancellation, budget exhaustion or\nprovider failure, preserves the previous source, spans, runs, shards, raw\nfacts, revision, authentic receipt and live-session count byte-for-byte.\n\n## Required Proof Matrix\n\nThe WORK lane must use tests-first development and retain RED/GREEN evidence\nfor these groups:\n\n1. append and backspace in Latin, Thai and mixed Thai/Latin source;\n2. middle insertion at scalar- and grapheme-safe positions;\n3. non-empty replacement and forward/backward deletion;\n4. deletion across authored-span edges while preserving surviving stable span\n   identities and authored meaning;\n5. insertion at an authored-span edge with an exact existing anchor, plus\n   missing and ambiguous anchor rejection;\n6. Thai base/combining-mark, surrogate and ZWJ unsafe-boundary rejection;\n7. active composition, cancellation and injected budget-exhaustion rejection;\n8. stale revision, forged receipt, reuse of a replaced receipt and disposal;\n9. exact comparison with the accepted independent oracle through test-only\n   Rust inspection or compact digests, without exposing a second TypeScript\n   authority; and\n10. repeated admitted ordinary edits that keep tree height bounded and report\n    cumulative work without silently resetting or warming hidden state.\n\nThe implementation must preserve all Stage 2 and Stage 3 checks. Actual WASM\ntests must execute the built feature; native-only mocks are insufficient.\n\n## Stop Gates\n\nStop Stage 4 and return `BLOCKER` or one Contract Change Request when:\n\n- property ownership for an ordinary command is not determined by the accepted\n  contract;\n- any accepted case needs whole-paragraph or unbounded-suffix work;\n- complete provider/allocation/ABI accounting cannot be observed;\n- a failed command mutates state or invalidates the authentic receipt;\n- TypeScript must retain authoritative source or provider facts;\n- the fixed work limits would have to change; or\n- Stage 5 Enter/join, Gate 2 admission, Editor, public/production binding or\n  another excluded scope is required to make Stage 4 pass.\n\nA stop preserves the candidate and evidence. It does not authorize PLAN to\npatch Core or advance to Stage 5.\n\n## Model Decision\n\nPreferred WORK model: `gpt-5.6-terra`, high effort.\n\nReason: Stage 1 fixed the semantics, Stage 2 fixed the oracle, and Stage 3\nfixed Rust/WASM ownership and provider construction. Stage 4 is a bounded\nmulti-file systems implementation with strong deterministic tests. Terra high\nis sufficient without using the largest model by default.\n\nUse the model/effort capability snapshot exposed by the task host at dispatch.\nIf Terra is unavailable, PLAN reassesses the available list rather than\nsilently inheriting PLAN settings. Escalate to `gpt-6-astra` high only when a\nsource-backed ownership, atomicity or provider-seam contradiction survives one\ncomplete diagnostic and one bounded Terra revision, or when a required\ncontract decision cannot be resolved within the existing Stage 4 boundary.\nAcceptance requirements never weaken after a model change.\n\n## UX and Product Boundary\n\nUX applicability is `not-applicable` for this lane because it changes only an\nopt-in private Core QA feature and does not alter visible product behavior.\nThis exemption cannot be reused by a later Editor typing lane. Key-to-visible\nlatency, wrapping, caret stability, IME behavior and user acceptance remain\npending until the engine passes later admission and a separately declared UX\ngate.\n\n## Dispatch and Return Boundary\n\nOpen one real Core WORK task from exact clean Core main\n`1c810bcab48a9d4df7a758ccbd29a4824389e349`. Register a monitorable task ID,\nisolated worktree, branch, ownership generation, model decision, twenty-minute\nliveness deadline, stable handoff ID and active\n`mcp__codex_app__send_message_to_thread` return command before activation.\n\nWORK first returns a Context Acknowledgement that repeats the Stage 4 scope,\nbase commit, accepted contracts, stop gates, evidence target and exclusions.\nPLAN activates only after recording that acknowledgement. WORK sends progress\nonly at meaningful TDD or blocker boundaries and sends its terminal handoff\nautomatically to PLAN.\n\nPLAN accepts only after reviewing the exact commit and diff, reproducing the\nfocused native and actual-WASM proof, running Core type-check and the full Core\ngate, confirming repository cleanliness and verifying the fixed bounds and\nfailure atomicity. Product-repository repair returns to the same WORK task as\na Revision Packet. PLAN alone integrates accepted output, writes Project\nControl evidence, runs the main gate and performs authorized current-round\ncleanup.\n"
+      "content": "# Core Stage 4 Ordinary Commands Continuation — 2026-09-20\n\n## Authority Boundary\n\nOwner repository: `repo-core`.\n\nWork: `flowdoc-frontend-expert-roadmap`.\n\nPhase: `phase-core-text-layout-roadmap`.\n\nChecklist: `checklist-core-text-layout-roadmap` item\n`incremental-boundary-rust-session-feasibility`.\n\nEvidence target:\n`evidence-core-rust-ordinary-commands-stage4-2026-09-20`.\n\nActive role: Planning Partner. The future WORK role is Product Implementation\nAgent.\n\nThis Project Control document owns the Stage 4 continuation, dispatch boundary\nand acceptance plan. It does not itself authorize public API or production\nbinding, prove command behavior, accept Gate 2 or Gate 3, change Editor or\nBackend, establish UX or Node-count readiness, or promote map truth.\n\n## Restored State\n\nStage 3 is accepted at Core commit\n`1c810bcab48a9d4df7a758ccbd29a4824389e349`. Rust owns the only retained cold\nsource, authored-span, analysis-run, layout-shard and raw-fact state for the\nverified Thai/Latin provider profile. Construction has digest-bound provider\npolicy, opaque receipts, complete cold accounting and clean disposal.\n\nProject Control coordination revision 226 released the completed Stage 3\nscope and its Project Control/Core integration claims. The Stage 3 room and\nhandoff are closed. The old registered worktree is removed; one unregistered\nresidual directory containing build output remains a local cleanup limitation\nand has no Git or acceptance authority. Core has local `core.longpaths=true`\nfor later worktree cleanup.\n\nGate 2 remains blocked. Stage 3 did not prove `Apply`, command locality,\nperformance admission, structural Enter/join, RTL live shaping, public or\nproduct binding, Editor behavior, UX, Node-count behavior or map truth.\n\n## Stage 4 Outcome\n\nAdd a private, opt-in ordinary-command protocol to the accepted Rust-owned\nsession:\n\n```text\nApply(receipt, EditCommand)\n  -> Accepted(nextReceipt, nextRevision, affectedSummary)\n  | NotAdmissible(reason, unchangedReceipt, unchangedRevision)\n```\n\nThe bounded command set is append, backspace, middle insert, replacement and\ndeletion. Enter, paragraph split/join, public exports, default binding and\nEditor integration are excluded.\n\nAn `EditCommand` may carry the expected revision, one UTF-16 replacement\nrange, committed replacement text, composition state, and a stable authored\nspan anchor only when the accepted semantic contract requires one. It must not\ncarry caller-derived script, language, font, run, glyph, cluster, break,\nunsafe-boundary, seam-certificate or mutable-tree facts.\n\nWhen source review cannot derive one exact authored-span owner for inserted\ntext from existing paragraph context and stable span identity, the command\nmust return a typed `missing-anchor`/`ambiguous-anchor` result or WORK must\nreturn one narrow Contract Change Request. It must not inherit an arbitrary\nleft/right property or recreate the blocked first-strong paragraph rule.\n\n## Fixed Semantics and Work Bounds\n\nOne accepted command must:\n\n- authenticate the live receipt and expected revision;\n- classify scalar, grapheme and composition safety before publication;\n- plan against the Rust-owned session without exporting authoritative state;\n- derive provider facts inside Rust from the accepted immutable provider\n  configuration;\n- account for every source, property, shaping, segmentation, allocation, tree,\n  hash, receipt and ABI operation, including deferred work;\n- publish the complete new source/span/run/shard revision exactly once; and\n- invalidate the prior receipt only after publication succeeds.\n\nThe unchanged per-command ceilings are:\n\n- at most 512 UTF-16 units of inspected source facts;\n- at most 512 UTF-16 units of inspected property facts; and\n- at most 1,024 combined UTF-16 units supplied to shaping plus segmentation.\n\nNo admitted command may serialize, clone, hash, scan, shape, segment, move or\nreindex the whole paragraph or an unbounded suffix. Compact QA digests,\ncounters and affected ranges may cross the ABI; authoritative source, trees\nand raw facts may not.\n\nEvery rejection, including forged or stale receipt, stale revision, active\ncomposition, surrogate or uncertified grapheme split, unsupported provider\ncoverage, missing/ambiguous anchor, cancellation, budget exhaustion or\nprovider failure, preserves the previous source, spans, runs, shards, raw\nfacts, revision, authentic receipt and live-session count byte-for-byte.\n\n## Required Proof Matrix\n\nThe WORK lane must use tests-first development and retain RED/GREEN evidence\nfor these groups:\n\n1. append and backspace in Latin, Thai and mixed Thai/Latin source;\n2. middle insertion at scalar- and grapheme-safe positions;\n3. non-empty replacement and forward/backward deletion;\n4. deletion across authored-span edges while preserving surviving stable span\n   identities and authored meaning;\n5. insertion at an authored-span edge with an exact existing anchor, plus\n   missing and ambiguous anchor rejection;\n6. Thai base/combining-mark, surrogate and ZWJ unsafe-boundary rejection;\n7. active composition, cancellation and injected budget-exhaustion rejection;\n8. stale revision, forged receipt, reuse of a replaced receipt and disposal;\n9. exact comparison with the accepted independent oracle through test-only\n   Rust inspection or compact digests, without exposing a second TypeScript\n   authority; and\n10. repeated admitted ordinary edits that keep tree height bounded and report\n    cumulative work without silently resetting or warming hidden state.\n\nThe implementation must preserve all Stage 2 and Stage 3 checks. Actual WASM\ntests must execute the built feature; native-only mocks are insufficient.\n\n## Stop Gates\n\nStop Stage 4 and return `BLOCKER` or one Contract Change Request when:\n\n- property ownership for an ordinary command is not determined by the accepted\n  contract;\n- any accepted case needs whole-paragraph or unbounded-suffix work;\n- complete provider/allocation/ABI accounting cannot be observed;\n- a failed command mutates state or invalidates the authentic receipt;\n- TypeScript must retain authoritative source or provider facts;\n- the fixed work limits would have to change; or\n- Stage 5 Enter/join, Gate 2 admission, Editor, public/production binding or\n  another excluded scope is required to make Stage 4 pass.\n\nA stop preserves the candidate and evidence. It does not authorize PLAN to\npatch Core or advance to Stage 5.\n\n## Model Decision\n\nPreferred WORK model: `gpt-5.6-terra`, high effort.\n\nReason: Stage 1 fixed the semantics, Stage 2 fixed the oracle, and Stage 3\nfixed Rust/WASM ownership and provider construction. Stage 4 is a bounded\nmulti-file systems implementation with strong deterministic tests. Terra high\nis sufficient without using the largest model by default.\n\nUse the model/effort capability snapshot exposed by the task host at dispatch.\nIf Terra is unavailable, PLAN reassesses the available list rather than\nsilently inheriting PLAN settings. Escalate to `gpt-6-astra` high only when a\nsource-backed ownership, atomicity or provider-seam contradiction survives one\ncomplete diagnostic and one bounded Terra revision, or when a required\ncontract decision cannot be resolved within the existing Stage 4 boundary.\nAcceptance requirements never weaken after a model change.\n\n## UX and Product Boundary\n\nUX applicability is `not-applicable` for this lane because it changes only an\nopt-in private Core QA feature and does not alter visible product behavior.\nThis exemption cannot be reused by a later Editor typing lane. Key-to-visible\nlatency, wrapping, caret stability, IME behavior and user acceptance remain\npending until the engine passes later admission and a separately declared UX\ngate.\n\n## Dispatch and Return Boundary\n\nOpen one real Core WORK task from exact clean Core main\n`1c810bcab48a9d4df7a758ccbd29a4824389e349`. Register a monitorable task ID,\nisolated worktree, branch, ownership generation, model decision, twenty-minute\nliveness deadline, stable handoff ID and active\n`mcp__codex_app__send_message_to_thread` return command before activation.\n\nWORK first returns a Context Acknowledgement that repeats the Stage 4 scope,\nbase commit, accepted contracts, stop gates, evidence target and exclusions.\nPLAN activates only after recording that acknowledgement. WORK sends progress\nonly at meaningful TDD or blocker boundaries and sends its terminal handoff\nautomatically to PLAN.\n\nPLAN accepts only after reviewing the exact commit and diff, reproducing the\nfocused native and actual-WASM proof, running Core type-check and the full Core\ngate, confirming repository cleanliness and verifying the fixed bounds and\nfailure atomicity. Product-repository repair returns to the same WORK task as\na Revision Packet. PLAN alone integrates accepted output, writes Project\nControl evidence, runs the main gate and performs authorized current-round\ncleanup.\n\n## Task Preparation and Context Acknowledgement\n\nThe host created one isolated Core task from exact commit\n`1c810bcab48a9d4df7a758ccbd29a4824389e349`:\n\n- task ID: `01a0bd81-dd35-7b30-94e0-9c9da761c7ba`;\n- worktree: `C:/Users/nekot/.codex/worktrees/431e/flowdoc-vnext-core`;\n- selected model: `gpt-5.6-terra` at high effort;\n- room: `core-stage4-ordinary-commands-a1`;\n- expected terminal handoff:\n  `handoff-core-stage4-ordinary-commands-a1-20260920`; and\n- automatic return target: PLAN task\n  `01a08a25-13d9-7090-8d91-1c32242988d8` through\n  `mcp__codex_app__send_message_to_thread`.\n\nThe initial task response could see only a broad local model label. PLAN used\nthe successful host `create_thread` request as the model/effort authority and\nsent the exact selection and monitorable task ID back to the same task. WORK\nthen returned a corrected Context Acknowledgement through the automatic channel\nconfirming Terra high, the exact clean Core base, the fixed Stage 4 command and\naccounting scope, all stop gates, the evidence target and the excluded Stage\n5/6 and product surfaces. No product file, branch, dependency or broad test was\ncreated during setup.\n\nProject Control coordination revision 227 registers the task as prepared under\nthe existing PLAN ownership generation 1. The ownership generation does not\nincrement because no PLAN ownership transfer occurred; Stage number and\nownership generation are different concepts. Activation is a separate typed\ntransition. Coordination revision 228 records that transition after the\ncorrected Context Acknowledgement; WORK remains read-only until the matching\nActivation Notice arrives in its task.\n"
     },
     {
       "id": "doc-core-text-edit-geometry-dispatch-2026-09-06",
