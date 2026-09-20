@@ -450,6 +450,49 @@ tree height, tail-repair review and all later stages remain closed. Liveness
 is reserved through `2026-09-20T10:00:00.0000000Z` for Project Control gate,
 this one group and its checkpoint review.
 
+The failure-atomicity group then implemented a separate private QA sidecar
+with one authentic receipt/revision-bound fault slot. Four recoverable points
+run before the sole session mutation block: cancellation before provider work,
+injected provider failure after the old facts, cancellation after the bounded
+old/new provider phase, and refusal after complete candidate/accepted-response
+preparation. Every rejection preserves the exact session and all retained
+payload identities; an unarmed identical retry publishes once. Matching
+disposal clears the slot, while early rejection, another session and a wrong
+binding do not consume it. The raw control channel accounts for parsing,
+storage, encoding, allocation and ABI transfer without entering `EditCommand`
+or the TypeScript adapter. Actual default native and WASM artifacts contain no
+cold-session or fault-control exports.
+
+Independent review found no issue in this bounded group. Native tests pass
+32/32, focused Stage 2/3/4 tests pass 124/124, and the full Core gate passes
+438 test files and 2,972 tests. PLAN reviewed the exact seven-file diff and
+accepted it as an internal failure-atomicity milestone only, then instructed
+WORK to commit without beginning another group. The claim explicitly excludes
+allocator abort, process failure and WASM trap recovery. Cancellation after
+provider work also does not cover the inherited later tail-repair provider
+call. That path, along with the baseline append/backspace/middle accounting,
+requires a dedicated audit before cumulative-work proof. Liveness is renewed
+to `2026-09-20T10:45:00.0000000Z` for the commit receipt, Project Control gate
+and that next separately authorized audit; repeated-edit/cumulative work
+remains closed.
+
+WORK committed the accepted failure-atomicity milestone as Core commit
+`0101396c9bb08bb93022d6355ed1bd14720b6aba`, parent
+`5cdcca9584ff0a39c010a692493cbe05be2afdcc`, and returned a clean worktree.
+The next group is an audit-first closure of inherited ordinary-command paths,
+not a new admission profile. It must re-prove append, backspace, middle insert
+and final-run tail deletion against the current exact oracle and complete
+source/property/provider/structural/allocation/hash/receipt/ABI accounting.
+The tail case that removes the final analysis run and re-derives the previous
+shard must receive its own provider-failure and cancellation checkpoints before
+publication, with exact unchanged state and clean retry. Source review must
+identify every provider call and auxiliary copy/index/fact pass in those paths;
+literal or incomplete counters, an uncovered recoverable failure after a
+provider call, or a whole-paragraph/unbounded suffix dependency is a RED and
+must be corrected or rejected fail-closed. This audit does not authorize new
+adjacent-context behavior, new command shapes or repeated-edit/cumulative-work
+proof.
+
 WORK committed that accepted internal milestone as Core commit
 `bde3a1743da73d0b7d7d0fb00b0f109f6916af6b`, parent
 `3f15275cae62917a175877f04863976ac07e7498`, and returned a clean worktree.
