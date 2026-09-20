@@ -358,3 +358,64 @@ candidate before further implementation, then opened only nonempty replacement
 and general deletion wholly inside one existing authored span and bounded
 window. Liveness is renewed to `2026-09-20T08:17:56.0577415Z`; all other
 command groups and later stages remain held.
+
+WORK committed the accepted internal milestone as Core commit
+`3f15275cae62917a175877f04863976ac07e7498` with a clean worktree, then began
+only the authorized single-span replacement and general-deletion group. Exact
+native and actual-WASM tests reached a provisional green, but explicit
+auxiliary-work accounting first exposed unreported source reads, index
+construction and payload copying. After those passes were charged, an 80-unit
+repair rejected before provider work because the conservative total would
+exceed the 512-unit cap. A fresh review then found a run-edge defect: replacing
+a Thai base with a leading combining mark could publish even though the mark
+joined the preceding Latin grapheme. WORK reproduced the case as a native RED
+and changed unproved newly-authored run-edge edits to typed unchanged
+rejection. Focused Stage 2/3/4 verification now passes 92/92 and native tests
+pass 22/22. PLAN renewed liveness to `2026-09-20T08:37:00.0000000Z` only for
+the repaired candidate's already-running full Core gate and checkpoint
+packaging. No further command group is authorized until PLAN reviews that
+result.
+
+Before the repaired full gate could become evidence, a final current-group
+regression exposed a second certificate gap. Replacing one Thai code point
+inside a partial shard of a longer Thai analysis run could preserve local
+shaping while still changing dictionary line facts outside the bounded
+window. PLAN authorized only a fail-closed correction: a range edit must cover
+the complete bounded retained analysis run, or return `uncertified-seam` with
+the exact receipt, revision and state unchanged before provider work. Adjacent
+context certification remains closed. The earlier full-gate process is not
+evidence for this corrected candidate; WORK must rerun focused proof, review
+and the full Core gate after the guard.
+
+The corrected replacement/deletion candidate then passed the fresh full Core
+gate with 438 test files and 2,941 tests, the focused actual-WASM Stage 2/3/4
+matrix with 93 tests, and the native cold-session suite with 23 tests. Default
+Rust check, type-check, diff validation and read-only review also passed. PLAN
+reviewed the exact six-file diff and accepted it as an internal bounded
+single-span replacement/deletion milestone only. It admits same-script edits
+whose bounded shard covers the complete retained analysis run; unproved run
+edges, script transitions, interior-run removal, whole-span removal, partial
+analysis runs and oversized repairs reject with the authentic state unchanged.
+The checkpoint does not accept Stage 4: authored-span edges, cross-span
+ownership, cancellation/failure injection, cumulative accounting, sustained
+tree height and inherited tail-repair limitations remain open. PLAN instructed
+WORK to commit the exact verified candidate and stop before the next ownership
+group.
+
+WORK committed that accepted internal milestone as Core commit
+`bde3a1743da73d0b7d7d0fb00b0f109f6916af6b`, parent
+`3f15275cae62917a175877f04863976ac07e7498`, and returned a clean worktree.
+PLAN next isolates only the authored-ownership group required by the fixed
+proof matrix: insertion at one existing authored-span edge with an exact
+adjacent stable anchor, and deletion across one adjacent authored-span edge
+while both surviving spans retain their stable identities and authored
+meaning. Source review must establish that the accepted semantic contract
+determines ownership before implementation; otherwise WORK returns one narrow
+Contract Change Request. The command path must also remove or avoid work that
+copies `Run.span_indexes` in proportion to the total span count before a
+bounded admission decision. Multi-edge deletion, complete authored-span
+removal, cross-edge nonempty replacement, adjacent-context certification and
+all failure-injection or recovery work remain closed. The next authorization
+may begin only after this Project Control continuation update passes its gate;
+liveness is reserved through `2026-09-20T09:05:00.0000000Z` for that isolated
+group.
