@@ -510,3 +510,36 @@ all failure-injection or recovery work remain closed. The next authorization
 may begin only after this Project Control continuation update passes its gate;
 liveness is reserved through `2026-09-20T09:05:00.0000000Z` for that isolated
 group.
+
+The inherited baseline and tail-repair audit is now accepted at exact Core
+commit `7c918010e51100db14bc7b5e45bf0f91752034d6`, parent
+`0101396c9bb08bb93022d6355ed1bd14720b6aba`. It replaced literal and
+success-only work estimates with operation-site accounting for inspected
+source and properties, provider calls and input, copied UTF-16 and bytes,
+tree payloads and positions, canonical/hash work, receipts and ABI transfer.
+Copy volume remains a separate ledger from inspected source facts. A bounded
+replacement iterator stops before decoding a scalar that could cross the fixed
+512-fact limit and never performs a semantic full-length pass over an
+oversized replacement; JSON wire parsing remains separately reported ABI
+work. Long unrelated prefixes and suffixes do not change the admitted-path
+ledger or exact cold-oracle result.
+
+Final-run tail repair now rejects partial prior analysis runs without an
+adjacent-context certificate and has private provider-failure and
+post-provider cancellation checkpoints. A private entropy checkpoint preserves
+already-executed canonical/hash counters on rejection, and publication clears
+only an unreached control bound to the exact retired receipt and revision.
+All recoverable failures preserve the authoritative session and retained
+payload identity, then allow one clean exact retry. The new controls and names
+remain absent from default native, WASM and wrapper artifacts. WORK passed 42
+native tests, 137 focused Stage 2/3/4 tests and the full Core gate of 438 files
+and 2,985 tests. PLAN independently matched the accepted 12-file manifest,
+passed actual-WASM Stage 4 80/80 and native cold-session 42/42. Evidence is
+registered as `evidence-core-rust-ordinary-commands-stage4-2026-09-20`.
+
+This is not full Stage 4 acceptance. The next separately gated group is limited
+to repeated admitted ordinary edits, persistent cumulative work reporting and
+sustained tree-height/locality proof. It must not silently reset counters,
+depend on hidden warm state, add command shapes, enter structural Enter/join,
+or change public/default/product bindings. Stage 5, Stage 6/Gate 2, Editor,
+Backend, UX, Node-count claims and map promotion remain closed.
