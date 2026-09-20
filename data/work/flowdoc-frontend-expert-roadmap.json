@@ -59,7 +59,8 @@
     "doc-core-run-owned-property-implementation-plan-2026-09-14",
     "doc-core-worktree-reconciliation-2026-09-14",
     "doc-core-stage2-semantic-oracle-return-2026-09-14",
-    "doc-core-stage3-setup-continuation-2026-09-19"
+    "doc-core-stage3-setup-continuation-2026-09-19",
+    "doc-core-stage4-ordinary-commands-continuation-2026-09-20"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
@@ -68,16 +69,16 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-19T16:45:08.146Z",
+  "updatedAt": "2026-09-20T00:00:00.000Z",
   "coordination": {
     "version": 1,
-    "revision": 225,
+    "revision": 226,
     "scopeOwnership": {
       "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
       "scopeId": "core-stage3-cold-session",
       "transfers": [],
       "generation": 1,
-      "state": "active",
+      "state": "released",
       "scopeKeys": [
         "core-run-owned-cold-session"
       ],
@@ -96,14 +97,14 @@
         "repositoryId": "repo-project-control",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "active",
+        "state": "released",
         "baseCommit": "b5eeccc75cd0d058c90a48c7807db7f9ce0bbfe4"
       },
       {
         "repositoryId": "repo-core",
         "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
         "generation": 1,
-        "state": "active",
+        "state": "released",
         "baseCommit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3"
       }
     ],
@@ -2431,7 +2432,7 @@
         "ownershipGeneration": 1,
         "revisionAttempt": 2,
         "expectedHandoffId": "handoff-core-stage3-provider-context-a2-20260920",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "01a0ba4c-d305-72b2-b27d-8805ca2496b7",
           "worktree": "C:/Users/nekot/.codex/worktrees/9c7e/flowdoc-vnext-core"

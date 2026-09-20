@@ -6,7 +6,7 @@
   "nodeIds": [],
   "role": "decision",
   "authority": "PLAN continuation record for an incomplete Core Stage 3 Codex task setup. It does not activate WORK, authorize Core edits, accept Stage 3, change Gate 2 or Gate 3, or promote product or map truth.",
-  "lifecycle": "active",
+  "lifecycle": "superseded",
   "repositoryRefs": [
     {
       "repositoryId": "repo-core",

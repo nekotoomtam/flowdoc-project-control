@@ -236,6 +236,20 @@ change.
 
 ## Immediate Next Work
 
-Open only Stage 1 as a Core semantic-oracle WORK lane. It must define the
-fixture table and provider-backed expected facts, then return PASS, BLOCKER,
-RISK, or UNKNOWN. PLAN must not dispatch Stage 2 until Stage 1 is accepted.
+Stages 1 through 3 are accepted at their bounded scopes. Stage 3 implementation
+evidence is pinned to Core commit
+`1c810bcab48a9d4df7a758ccbd29a4824389e349` by
+`evidence-core-rust-cold-session-stage3-2026-09-19`.
+
+Open only Stage 4 as a Core ordinary-command WORK lane. It must add the private
+atomic `Apply` protocol for append, backspace, middle insert, replacement and
+deletion, preserve Rust as the sole mutable authority, and prove exactness,
+failure atomicity and the unchanged source/property/provider work limits. If
+the existing semantic contract does not uniquely determine authored-span
+ownership at an insertion or replacement boundary, WORK must stop with one
+narrow Contract Change Request instead of inventing a property anchor.
+
+PLAN must not dispatch Stage 5 Enter/join work or Stage 6 admission work until
+Stage 4 is accepted. The current Stage 4 continuation and dispatch boundary is
+recorded in
+`docs/domains/flowdoc-core-stage4-ordinary-commands-continuation-2026-09-20.md`.
