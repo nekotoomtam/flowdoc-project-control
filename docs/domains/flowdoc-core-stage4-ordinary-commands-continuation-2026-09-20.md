@@ -402,6 +402,54 @@ tree height and inherited tail-repair limitations remain open. PLAN instructed
 WORK to commit the exact verified candidate and stop before the next ownership
 group.
 
+The authored-ownership semantic gate passed for one narrow subset. At one
+existing authored edge, an exact adjacent stable span ID directly selects the
+owner of inserted text; it does not infer a property from caret side. Empty
+deletion across one edge introduces no property and can preserve both
+nonempty surviving spans in source order. The initial representation test
+proved that materializing a same-key run copied membership in proportion to
+600 versus 6,000 spans. WORK replaced that command-path payload with immutable
+shared membership, then implemented an adjacent-only ownership helper that
+inspects at most two spans and path-copies only the affected descriptors.
+
+Exact native and actual-WASM tests cover left- and right-anchored Latin and
+Thai insertion, one-edge deletion, unchanged missing/nonadjacent/wrong
+anchors, unsafe authored cuts, cross-script seams, oversized work,
+cross-edge replacement, whole-span removal, multi-edge deletion, forged and
+stale commands, and full ABI allocation. Work remains constant across 300 and
+3,000 unrelated suffix spans, with shared membership and untouched payload
+identity. Review found one newly widened Thai dictionary-context defect:
+style-separated same-script analysis runs did not isolate line facts. WORK
+reproduced both directions as RED and made those cases reject before provider
+work; adjacent-context certification remains closed. The final candidate
+passes 119 focused tests, 29 native tests and the full Core gate with 438 test
+files and 2,967 tests. PLAN reviewed the exact nine-file diff and accepted it
+as an internal authored-ownership milestone only, then instructed WORK to
+commit without opening another group. Liveness is renewed to
+`2026-09-20T09:35:00.0000000Z` for commit receipt, Project Control recording
+and the next separately gated Stage 4 group. Full Stage 4 remains blocked by
+failure injection, cancellation, cumulative accounting and the retained
+baseline limitations.
+
+WORK committed the accepted authored-ownership milestone as Core commit
+`5cdcca9584ff0a39c010a692493cbe05be2afdcc`, parent
+`bde3a1743da73d0b7d7d0fb00b0f109f6916af6b`, and returned a clean worktree.
+The next isolated Stage 4 group is failure atomicity only. It must use a
+private `cold-session-qa` fault-control channel separate from `EditCommand` and
+absent from default/product builds. One-shot faults bound to an authentic
+receipt and revision must cover cancellation before provider work,
+cancellation after bounded provider work, injected provider failure, and
+refusal at the final pre-publication gate. Every case must preserve exact
+source, spans, runs, shards, binding, authentic receipt, revision and live
+session count, then allow a clean retry to publish exactly once. Source review
+must also show that every recoverable `Result` or typed failure occurs before
+the single mutation point; post-publication work may not introduce a
+recoverable semantic failure. Fault controls must not become caller semantic
+facts, a production export or a second authority. Cumulative work, sustained
+tree height, tail-repair review and all later stages remain closed. Liveness
+is reserved through `2026-09-20T10:00:00.0000000Z` for Project Control gate,
+this one group and its checkpoint review.
+
 WORK committed that accepted internal milestone as Core commit
 `bde3a1743da73d0b7d7d0fb00b0f109f6916af6b`, parent
 `3f15275cae62917a175877f04863976ac07e7498`, and returned a clean worktree.
