@@ -69,7 +69,7 @@
     "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
   ],
   "createdAt": "2026-09-03T09:00:00Z",
-  "updatedAt": "2026-09-20T06:34:20.363Z",
+  "updatedAt": "2026-09-20T07:47:56.057Z",
   "coordination": {
     "version": 1,
     "revision": 228,
@@ -2569,13 +2569,13 @@
         "returnRoute": {
           "planTaskId": "01a08a25-13d9-7090-8d91-1c32242988d8",
           "activeCommand": "mcp__codex_app__send_message_to_thread",
-          "livenessDeadline": "2026-09-20T06:54:20.364Z",
+          "livenessDeadline": "2026-09-20T08:17:56.0577415Z",
           "maxSendAttempts": 3,
           "automaticChannel": "send_message_to_thread",
           "monitorOwner": "01a08a25-13d9-7090-8d91-1c32242988d8"
         },
         "modelDecision": {
-          "modelId": "gpt-5.6-terra",
+          "modelId": "gpt-6-astra",
           "reasoningEffort": "high",
           "taskComplexity": "Bounded multi-file Rust/WASM ordinary-command implementation with fixed semantics, atomicity and accounting",
           "scopeSize": "One private Core Stage 4 lane covering append, backspace, middle insert, replacement and deletion",
@@ -2583,7 +2583,7 @@
           "missingContext": "No known missing context after the accepted Stage 1 oracle, Stage 2 derivation proof and Stage 3 cold-session ownership",
           "failureImpact": "An incorrect command could mutate authoritative text or facts; the private opt-in boundary and stop gates keep it recoverable before product binding",
           "recoverability": "Reject the candidate, preserve the clean base, and revise the same WORK task without public or production activation",
-          "reason": "The semantic and ownership decisions are already fixed, making Terra high sufficient for a deterministic systems implementation with strong native and actual-WASM tests",
+          "reason": "Terra high completed bounded append and tail-deletion proof, but two subsequent bounded turns identified the persistent position representation required for middle insertion without attempting the authorized revision. Astra high is selected under the recorded reasoning-limitation trigger for this unchanged internal Rust scope.",
           "smallerOptionAssessment": "Luna is not selected because atomic Rust ownership, Unicode boundary safety, provider accounting and WASM receipt lifecycle span multiple coupled modules",
           "availabilitySource": "Current host mcp__codex_app__create_thread model and effort capability schema plus the explicit successful dispatch request",
           "availabilityObservedAt": "2026-09-20T06:34:20.363Z",

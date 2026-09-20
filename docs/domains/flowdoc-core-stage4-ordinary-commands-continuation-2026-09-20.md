@@ -219,3 +219,142 @@ ownership generation are different concepts. Activation is a separate typed
 transition. Coordination revision 228 records that transition after the
 corrected Context Acknowledgement; WORK remains read-only until the matching
 Activation Notice arrives in its task.
+
+PLAN then sent the Activation Notice after Project Control main commit
+`76e9f3a4d1cc6751297b2a6ccdef3c46ddc9c6c1` passed the full main gate. The
+first observed WORK progress established the Rust/WASM/TypeScript
+responsibility split and added the smallest append contract test. Its first
+focused invocation did not reach the test because the fresh worktree lacked
+the locked local test runner. PLAN classified this as setup progress rather
+than semantic failure and extended liveness to
+`2026-09-20T07:09:24.4341866Z` for lockfile dependency provisioning and the
+intended actual-WASM RED. Scope, model and all gates remain unchanged.
+
+The first GREEN proved only the private append mechanism: actual WASM accepted
+an anchored Latin append and advanced revision 0 to 1. WORK correctly retained
+the accounting risk because that temporary path called cold whole-session
+construction and did not expose command-only counters. PLAN did not accept or
+expand from that result. It required a long-paragraph accounting/locality RED
+and one complete source-grounded diagnostic.
+
+The diagnostic found a bounded Rust-only route: use the existing final shard
+as the certificate window, re-shape and re-segment that window before and after
+append, compare the old facts, and publish only after the candidate is sound.
+Persistent source chunks and final-node/shard replacement are internal
+representation work inside the existing Stage 4 boundary, not a new product
+contract. PLAN extended liveness to `2026-09-20T07:16:53.3550123Z` for this one
+bounded revision. Other command groups remain held until its accounting and
+locality test passes.
+
+The bounded tail revision then passed its actual-WASM short and 600-unit append
+tests. The long case reported 89 UTF-16 source facts, one UTF-16 property fact,
+267 combined UTF-16 shaping plus segmentation input, zero whole-paragraph
+scans, zero full serializations and zero unbounded-suffix work. This accepts a
+locality checkpoint only. Allocation, tree, hash, receipt and ABI accounting,
+receipt lifecycle, exact post-state and line/unsafe edge comparison remain
+required; the legacy non-tail reconstruction path must be removed or reject
+without mutation. PLAN extended liveness to
+`2026-09-20T07:21:09.7677791Z` to complete append proof before any other
+command group begins.
+
+The same task then removed the residual cold reconstruction path and reached
+three passing actual-WASM append tests. It stopped its turn with two explicit
+gaps: exact post-state proof and complete response-side ABI accounting. PLAN
+continued the same attempt, kept all non-append commands closed, and extended
+liveness to `2026-09-20T07:26:32.0872455Z` for compact revision-bound state
+digests or Rust-native inspection plus complete request/response byte and
+remaining command-ledger accounting.
+
+Append proof then completed at three passing actual-WASM tests and eleven
+passing native cold-session tests. The command result reports the fixed
+source/property/provider limits, zero forbidden full or suffix work, allocator,
+tree-copy, hash, receipt-binding and exact ABI request/response byte counters,
+plus seam, line and unsafe-edge certification. Rust-native inspection proves
+the exact retained source, revision, descriptors and provider facts without
+exporting them to TypeScript. Non-tail fallback now rejects unchanged. PLAN
+accepted this append-only proof and extended liveness to
+`2026-09-20T07:30:15.6091423Z` for the next isolated group: bounded tail
+Backspace/deletion across Latin, Thai, mixed, combining, surrogate and ZWJ
+boundaries. Middle edits and cross-span deletion remain closed.
+
+The tail Backspace/deletion group then passed nine actual-WASM tests and the
+same eleven native cold-session tests. It covers safe Latin, Thai and mixed
+final-grapheme deletion, rejects a Thai base/combining split unchanged, and
+preserves the complete command ledger and zero forbidden work. The first
+provider profile rejects unsupported surrogate/ZWJ source at construction, so
+those rows remain typed unsupported coverage rather than command equality.
+PLAN accepted the bounded tail proof and extended liveness to
+`2026-09-20T07:34:41.9239677Z` for middle insertion inside one existing stable
+authored span. Span-edge anchoring, replacement and cross-span work remain
+closed; middle insertion must not rewrite absolute suffix offsets.
+
+The middle-insert test reached the intended RED: a safe 600-unit single-span
+edit rejects because the current descriptors use absolute offsets whose direct
+update would reindex the suffix. PLAN authorized a Rust-internal persistent
+position representation. Two bounded Terra turns retained the RED and named
+subtree lengths/lazy offsets as the required repair but did not attempt the
+authorized revision. PLAN therefore applied the recorded reasoning-limitation
+trigger, changed the same task to `gpt-6-astra` high, and renewed liveness to
+`2026-09-20T07:36:25.8354498Z`. Scope, ownership, evidence target and every
+acceptance limit remain unchanged.
+
+The escalated diagnostic supersedes the earlier provisional append/tail
+locality acceptance. `Source::utf16` and `tail_from` still scanned the whole
+Cold source, `treePathCopies` used a literal rather than measured structural
+operations, allocation measurement excluded request parsing and response
+encoding, the native oracle checked only endpoints/nonempty glyphs, and the
+provider counter omitted the old-window pass. PLAN reclassified those results
+as `RISK`, retained their useful mechanism evidence only, and required Astra to
+replace the representation and proof defects. The corrected work must measure
+both old and new provider passes, all structural copies and the complete ABI
+allocation window, and compare exact provider facts before append, deletion or
+middle insertion can be accepted as bounded.
+
+The persistent lookup then reached a 128-unit middle window without scanning
+the paragraph. Rustybuzz marked the proposed join unsafe to concatenate. PLAN
+renewed liveness to `2026-09-20T07:46:59.8768937Z` for a bounded outward search
+that charges every attempted old/new provider window. An unsafe original seam
+must remain an exact unchanged rejection; a separate provider-certified seam
+must prove an admitted middle insert. Scalar or grapheme safety alone cannot
+authorize publication.
+
+The provider-backed middle outcomes then separated correctly: the original
+all-Latin seam rejects unchanged, while an insertion inside a short Latin run
+between long Thai runs succeeds and shares the suffix payload. Extending the
+same exact oracle to tail deletion exposed two earlier defects: an empty run
+remained after deleting the final Thai run and the paragraph-end line break was
+lost. WORK pruned the empty run and repaired the new tail. Combined Stage
+2/3/4 verification also exposed concurrent WASM builds sharing one output
+directory; PLAN allowed test-only serialization and extended liveness to
+`2026-09-20T07:53:58.0231803Z` without changing product semantics or proof
+requirements.
+
+Astra then completed the corrected persistent-position proof. An insertion
+inside the short Latin run of `Thai x 300 + AB + Thai x 300` matches an
+independent cold-provider oracle for source, authored descriptors, run keys,
+UTF-8/UTF-16 positions, every glyph and line/grapheme fact. Native pointer
+identity proves the long suffix payload is shared through ten successive
+publications. Unsafe all-Latin seams reject unchanged; a provider-certified
+mixed long append and exact Thai-tail deletion provide the positive cases.
+Measured middle work reports source 5, property 2, provider 15 UTF-16, two
+shape and four segment calls, seven tree copies, nine visits, six shared nodes
+and three lazy shifts. Combined Stage 2/3/4 tests pass 71/71, native tests pass
+18/18 and type-check passes. PLAN renewed liveness to
+`2026-09-20T08:02:30.5132226Z` for the already-running full Core gate and held
+all additional command groups.
+
+The full Core gate then passed 438 files and 2,919 tests, the default Rust
+build and feature-gated native suite passed, type-check passed, and diff
+whitespace validation passed. PLAN's read-only review found fourteen changed
+or new Core files, all inside the private QA adapter, cold-session Rust module,
+and its tests. No production/default binding, Editor, Backend, dependency,
+Markdown or map change entered the candidate. PLAN accepted this as an
+internal persistent-position and certified single-span milestone only; it is
+not Stage 4 acceptance. The returned risks remain authoritative: replacement,
+general middle deletion, authored-edge and cross-span ownership, cancellation,
+failure injection, cumulative accounting and sustained tree-height behavior
+are not yet proved. PLAN instructed WORK to commit the exact verified
+candidate before further implementation, then opened only nonempty replacement
+and general deletion wholly inside one existing authored span and bounded
+window. Liveness is renewed to `2026-09-20T08:17:56.0577415Z`; all other
+command groups and later stages remain held.
