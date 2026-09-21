@@ -5,8 +5,8 @@
     "project-control"
   ],
   "repositoryId": "repo-project-control",
-  "commit": "ef6d2f7209682f5d9fabf6bf21d2bd2f1a9478b3",
+  "commit": "f47af2fabc207add771d6a37ec36c881ad37cbe0",
   "pathOrContractId": "src/model/coordination-v2.ts; src/model/coordination.ts; schemas/project-control.schema.json; tools/coordination-registry.ts; tests/flowdoc-coordination-v2.test.ts; docs/domains/flowdoc-plan-self-contained-rounds-design-2026-09-21.md",
   "verificationSummary": "Version 1 coordination is readable history with no mutation authority; version 2 binds one PLAN task to one round with no ownership-transfer path; stale execution identities and mutable Historical Recovery Work are rejected; focused coordination and full Project Control worktree gates passed. No Core, Backend, Editor, product behavior, or map truth changed.",
-  "verifiedAt": "2026-09-22T00:08:49.9926885+07:00"
+  "verifiedAt": "2026-09-22T00:28:50.2893632+07:00"
 }

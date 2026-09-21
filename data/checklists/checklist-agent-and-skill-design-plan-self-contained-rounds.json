@@ -65,9 +65,9 @@
       "evidenceIds": [
         "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
       ],
-      "verificationNote": "The full worktree gate passed at implementation commit ef6d2f7209682f5d9fabf6bf21d2bd2f1a9478b3; the main gate remains pending until integration."
+      "verificationNote": "The full worktree gate passed at implementation commit f47af2fabc207add771d6a37ec36c881ad37cbe0; the main gate remains pending until integration."
     }
   ],
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-22T00:08:49.9926885+07:00"
+  "updatedAt": "2026-09-22T00:28:50.2893632+07:00"
 }
