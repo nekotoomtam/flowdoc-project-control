@@ -678,7 +678,11 @@ function validateRegistry(
     }
     seenAttempts.add(attemptKey);
 
-    if (room.status === "active" || room.status === "returned" || room.status === "accepted") {
+    if (
+      room.status === "active" ||
+      room.status === "returned" ||
+      (room.status === "accepted" && room.ownershipGeneration === registry.scopeOwnership.generation)
+    ) {
       collectActivationIssues(workId, registry, room, issues);
     }
     if (
@@ -696,7 +700,7 @@ function validateRegistry(
     seenHandoffIds.add(handoff.handoffId);
     const exactRoom = findRoomForStoredHandoff(registry, handoff);
     const room = exactRoom ?? registry.roomRuns.find(({ expectedHandoffId }) => expectedHandoffId === handoff.handoffId);
-    if (room === undefined || !handoffIdentityMatches(registry, room, handoff.handoffId, handoff.payload)) {
+    if (room === undefined || !handoffIdentityMatches(room, handoff.handoffId, handoff.payload)) {
       issues.push(issue(
         "COORDINATION_HANDOFF_IDENTITY_MISMATCH",
         `Handoff ${handoff.handoffId} does not match its registered room attempt.`,
@@ -843,9 +847,8 @@ function collectStoredAcceptanceIssues(
     handoff.receipt.status !== "received" ||
     handoff.receipt.acknowledgedAt === undefined ||
     handoff.payload.status !== "PASS" ||
-    room.ownershipGeneration !== registry.scopeOwnership.generation ||
     !isCurrentAttempt(registry, room) ||
-    handoff.acceptance.reviewer !== registry.scopeOwnership.planTaskId
+    handoff.acceptance.reviewer !== room.returnRoute.planTaskId
   ) {
     issues.push(issue("COORDINATION_ACCEPTANCE_STATE_MISMATCH", `Handoff ${handoff.handoffId} has invalid accepted state.`, workId));
   }
@@ -1002,7 +1005,7 @@ function roomForPayload(
   ensure(room !== undefined, "ROOM_ATTEMPT_NOT_FOUND", "The handoff room attempt is not registered.");
   ensureCurrentGeneration(registry, room.ownershipGeneration);
   ensure(
-    handoffIdentityMatches(registry, room, handoffId, payload),
+    handoffIdentityMatches(room, handoffId, payload),
     handoffId === room.expectedHandoffId ? "HANDOFF_IDENTITY_MISMATCH" : "UNEXPECTED_HANDOFF_ID",
     "Handoff identity does not match the registered attempt.",
   );
@@ -1010,14 +1013,12 @@ function roomForPayload(
 }
 
 function handoffIdentityMatches(
-  registry: CoordinationRegistry,
   room: CoordinationRoomRun,
   handoffId: string,
   payload: CoordinationTerminalPayload,
 ): boolean {
   return handoffId === room.expectedHandoffId &&
     payload.planTaskId === room.returnRoute.planTaskId &&
-    payload.planTaskId === registry.scopeOwnership.planTaskId &&
     payload.roomRunId === room.roomRunId &&
     payload.laneId === room.laneId &&
     payload.ownerRepositoryId === room.ownerRepositoryId &&

@@ -417,6 +417,50 @@ describe("coordination registry transitions", () => {
     );
   });
 
+  it("preserves validated accepted history when PLAN ownership transfers", () => {
+    const accepted = applyCoordinationCommand(sendAndReceive(), {
+      type: "accept-handoff",
+      handoffId: "coordination-registry-01-r0",
+      reviewer: "plan-1",
+      reviewedAt: nextTimestamp,
+      evidenceIds: ["evidence-code"],
+      requiredChecks: [{ name: "focused tests", status: "passed" }],
+      remainingScope: [],
+    }, { evidenceById: evidenceMap() });
+    const pending = structuredClone(makeRegistry().roomRuns[0]!);
+    pending.roomRunId = "coordination-registry-02";
+    pending.expectedHandoffId = "coordination-registry-02-r0";
+    pending.status = "prepared";
+    pending.contextAcknowledgement = { status: "pending" };
+    pending.locator.threadId = "thread-work-2";
+    accepted.roomRuns.push(pending);
+
+    const superseded = applyCoordinationCommand(accepted, {
+      type: "supersede-attempt",
+      roomRunId: "coordination-registry-02",
+      ownershipGeneration: 1,
+      revisionAttempt: 0,
+    });
+    const transferred = applyCoordinationCommand(superseded, {
+      type: "transfer-ownership",
+      fromPlanTaskId: "plan-1",
+      toPlanTaskId: "plan-2",
+      fromGeneration: 1,
+      newGeneration: 2,
+      reason: "explicit PLAN handoff",
+      affectedRoomRunIds: ["coordination-registry-02"],
+      transferredAt: timestamp,
+    });
+
+    expect(validateCoordinationRegistries([
+      { id: "work-1", coordination: transferred },
+    ], evidenceMap())).toEqual([]);
+    expect(transferred.handoffs[0]?.acceptance).toMatchObject({
+      status: "accepted",
+      reviewer: "plan-1",
+    });
+  });
+
   it("resumes from serialized state instead of conversation state", () => {
     const payload = makePayload();
     const sent = applyCoordinationCommand(makeRegistry(), {
