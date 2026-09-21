@@ -30,6 +30,7 @@ describe("truthful seed project", () => {
         "evidence-project-control-design",
         "evidence-project-control-overview-history-gui-2026-08-29",
         "evidence-project-control-phase-order-read-model-2026-08-30",
+        "evidence-flowdoc-plan-self-contained-rounds-2026-09-21",
       ],
     });
     for (const id of ["core", "editor", "backend"]) {
@@ -40,6 +41,7 @@ describe("truthful seed project", () => {
       "evidence-project-control-design",
       "evidence-project-control-overview-history-gui-2026-08-29",
       "evidence-project-control-phase-order-read-model-2026-08-30",
+      "evidence-flowdoc-plan-self-contained-rounds-2026-09-21",
     ]) {
       const evidence = model.evidence.find((entry) => entry.id === evidenceId);
       expect(evidence).toBeDefined();

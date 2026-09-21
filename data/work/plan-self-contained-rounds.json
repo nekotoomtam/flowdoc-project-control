@@ -18,7 +18,9 @@
   "activeRole": "project-control-steward",
   "expectedOutput": "Approved design, implementation plan, version 2 coordination enforcement, legacy read-only compatibility, focused tests, full Project Control gates, and bounded Evidence without product or map-truth promotion.",
   "riskSummary": "The existing version 1 registry can represent ownership transfer and later generations. Migration must remove future mutation authority without invalidating historical records or accidentally treating legacy active wording as current execution authority.",
-  "requiredEvidence": [],
+  "requiredEvidence": [
+    "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+  ],
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-21T22:10:00+07:00"
+  "updatedAt": "2026-09-22T00:08:49.9926885+07:00"
 }

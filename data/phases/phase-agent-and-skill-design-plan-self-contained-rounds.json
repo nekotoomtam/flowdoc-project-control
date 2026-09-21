@@ -3,7 +3,7 @@
   "id": "phase-agent-and-skill-design-plan-self-contained-rounds",
   "workId": "plan-self-contained-rounds",
   "title": "Design and enforce self-contained PLAN rounds",
-  "phaseState": "in-progress",
+  "phaseState": "in-review",
   "order": 10,
   "repositoryIds": [
     "repo-project-control"
@@ -17,5 +17,5 @@
   "verificationTarget": "checklist-agent-and-skill-design-plan-self-contained-rounds; evidence-flowdoc-plan-self-contained-rounds-2026-09-21; focused coordination tests; full worktree and main Project Control gates",
   "summary": "Approve the architectural boundary, plan the migration, implement version 2 PLAN-owned coordination without cross-PLAN transfer, and preserve version 1 as historical read-only data.",
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-21T21:59:25.7064665+07:00"
+  "updatedAt": "2026-09-22T00:08:49.9926885+07:00"
 }

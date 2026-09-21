@@ -9,5 +9,11 @@
   "role": "decision",
   "authority": "Approved design target for Project Control coordination only; no Core, Backend, Editor, product readiness, or map truth.",
   "lifecycle": "active",
-  "repositoryRefs": []
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "ef6d2f7209682f5d9fabf6bf21d2bd2f1a9478b3",
+      "pathOrContractId": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    }
+  ]
 }
