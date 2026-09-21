@@ -1,14 +1,23 @@
 import { createHash } from "node:crypto";
 import type {
   CoordinationCleanupState,
+  CoordinationCleanupStateV2,
   CoordinationHandoff,
   CoordinationIntegrationClaim,
+  CoordinationIntegrationClaimV2,
+  CoordinationRegistry as VersionedCoordinationRegistry,
   CoordinationRegistryV1 as CoordinationRegistry,
+  CoordinationRegistryV2,
   CoordinationRoomRun,
   CoordinationTerminalPayload,
   CoordinationUxGate,
   WorkRecord,
 } from "./types.js";
+import {
+  applyCoordinationV2Command,
+  validateCoordinationV2Registry,
+  type CoordinationCommandV2,
+} from "./coordination-v2.js";
 
 export interface CoordinationValidationIssue {
   code: string;
@@ -113,6 +122,35 @@ export function canonicalPayloadDigest(payload: CoordinationTerminalPayload): st
 }
 
 export function applyCoordinationCommand(
+  registry: VersionedCoordinationRegistry,
+  command: CoordinationCommandV2 | { type: string; [key: string]: unknown },
+  context: CoordinationCommandContext = {},
+): CoordinationRegistryV2 {
+  if (registry.version === 1) {
+    throw new CoordinationTransitionError(
+      "LEGACY_REGISTRY_READ_ONLY",
+      "Version 1 coordination is historical and cannot be mutated.",
+    );
+  }
+  if (command.type === "transfer-ownership") {
+    throw new CoordinationTransitionError(
+      "OWNERSHIP_TRANSFER_REMOVED",
+      "A PLAN round cannot transfer execution authority to another PLAN.",
+    );
+  }
+  return applyCoordinationV2Command(registry, command as CoordinationCommandV2, context);
+}
+
+export interface CoordinationCleanupContextV2 {
+  planTaskId: string;
+  roundId: string;
+  roundState: "active" | "released" | "cancelled";
+  integrationClaims: readonly CoordinationIntegrationClaimV2[];
+  evidenceById: ReadonlyMap<string, { repositoryId: string; commit: string }>;
+}
+
+/** @internal Shared transition engine used to preserve lifecycle gates in registry v2. */
+export function applyLegacyCoordinationCommand(
   registry: CoordinationRegistry,
   command: CoordinationCommand,
   context: CoordinationCommandContext = {},
@@ -149,6 +187,19 @@ export function applyCoordinationCommand(
 }
 
 export function assessCleanupEligibility(
+  candidate: CoordinationCleanupState | CoordinationCleanupStateV2,
+  context: CoordinationCleanupContext | CoordinationCleanupContextV2,
+): { eligible: boolean; reasons: string[] } {
+  if ("roundId" in candidate && "roundId" in context) {
+    return assessCleanupEligibilityV2(candidate, context);
+  }
+  return assessLegacyCleanupEligibility(
+    candidate as CoordinationCleanupState,
+    context as CoordinationCleanupContext,
+  );
+}
+
+function assessLegacyCleanupEligibility(
   candidate: CoordinationCleanupState,
   context: CoordinationCleanupContext,
 ): { eligible: boolean; reasons: string[] } {
@@ -185,6 +236,44 @@ export function assessCleanupEligibility(
   return { eligible: reasons.length === 0, reasons };
 }
 
+function assessCleanupEligibilityV2(
+  candidate: CoordinationCleanupStateV2,
+  context: CoordinationCleanupContextV2,
+): { eligible: boolean; reasons: string[] } {
+  const reasons: string[] = [];
+  if (candidate.planTaskId !== context.planTaskId) reasons.push("CLEANUP_OWNER_MISMATCH");
+  if (candidate.roundId !== context.roundId) reasons.push("CLEANUP_ROUND_MISMATCH");
+  if (candidate.executor !== context.planTaskId && candidate.delegatedBy !== context.planTaskId) {
+    reasons.push("CLEANUP_EXECUTOR_UNAUTHORIZED");
+  }
+  if (
+    candidate.preflightEvidenceIds.length === 0 ||
+    candidate.preflightEvidenceIds.some((id) => !context.evidenceById.has(id)) ||
+    !candidate.preflightEvidenceIds.some(
+      (id) => context.evidenceById.get(id)?.repositoryId === candidate.repositoryId,
+    )
+  ) reasons.push("CLEANUP_EVIDENCE_MISSING");
+  const matchingClaim = context.integrationClaims.find((claim) =>
+    claim.repositoryId === candidate.repositoryId &&
+    claim.planTaskId === candidate.planTaskId &&
+    claim.roundId === candidate.roundId);
+  const validIntegrationClaim = matchingClaim?.state === "active" ||
+    (candidate.disposition === "removed" &&
+      context.roundState === "released" &&
+      matchingClaim?.state === "released");
+  if (!validIntegrationClaim) reasons.push("CLEANUP_INTEGRATION_CLAIM_MISSING");
+  if (Object.values(candidate.preflightSources).some((source) => source.trim() === "")) {
+    reasons.push("CLEANUP_PREFLIGHT_SOURCE_MISSING");
+  }
+  if (!candidate.currentRound) reasons.push("NOT_CURRENT_ROUND");
+  if (!candidate.worktreeClean) reasons.push("WORKTREE_DIRTY");
+  if (!candidate.merged) reasons.push("BRANCH_UNMERGED");
+  if (candidate.worktreeGate !== "passed") reasons.push("WORKTREE_GATE_NOT_PASSED");
+  if (candidate.mainGate !== "passed") reasons.push("MAIN_GATE_NOT_PASSED");
+  if (!candidate.liveProcessClear) reasons.push("LIVE_PROCESS_PRESENT");
+  return { eligible: reasons.length === 0, reasons };
+}
+
 export function validateCoordinationRegistries(
   workRecords: Array<Pick<WorkRecord, "id" | "coordination">>,
   evidenceById: ReadonlyMap<string, { repositoryId: string; commit: string }>,
@@ -197,7 +286,49 @@ export function validateCoordinationRegistries(
   for (const work of workRecords) {
     const registry = work.coordination;
     if (registry === undefined) continue;
-    if (registry.version !== 1) continue;
+    if (registry.version === 2) {
+      issues.push(...validateCoordinationV2Registry(work.id, registry, evidenceById));
+      if (registry.round.state === "active") {
+        for (const scopeKey of registry.round.scopeKeys) {
+          const existing = activeScopes.get(scopeKey);
+          if (existing !== undefined && existing.planTaskId !== registry.round.planTaskId) {
+            issues.push(issue(
+              "COORDINATION_SCOPE_CONFLICT",
+              `Scope key "${scopeKey}" is actively owned by ${existing.planTaskId} in ${existing.workId}.`,
+              work.id,
+            ));
+          } else {
+            activeScopes.set(scopeKey, { workId: work.id, planTaskId: registry.round.planTaskId });
+          }
+        }
+        for (const allowedPath of registry.round.allowedFiles) {
+          const normalized = normalizeScopePath(allowedPath);
+          for (const existing of activeFileScopes) {
+            if (existing.planTaskId !== registry.round.planTaskId && pathsOverlap(existing.path, normalized)) {
+              issues.push(issue(
+                "COORDINATION_FILE_SCOPE_CONFLICT",
+                `Allowed path "${allowedPath}" overlaps active path "${existing.path}" in ${existing.workId}.`,
+                work.id,
+              ));
+            }
+          }
+          activeFileScopes.push({ workId: work.id, planTaskId: registry.round.planTaskId, path: normalized });
+        }
+      }
+      for (const claim of registry.integrationClaims.filter(({ state }) => state === "active")) {
+        const existing = activeIntegrators.get(claim.repositoryId);
+        if (existing !== undefined && existing.planTaskId !== claim.planTaskId) {
+          issues.push(issue(
+            "COORDINATION_INTEGRATION_OWNER_CONFLICT",
+            `Repository "${claim.repositoryId}" has active integration owners ${existing.planTaskId} and ${claim.planTaskId}.`,
+            work.id,
+          ));
+        } else {
+          activeIntegrators.set(claim.repositoryId, { workId: work.id, planTaskId: claim.planTaskId });
+        }
+      }
+      continue;
+    }
     issues.push(...validateRegistry(work.id, registry, evidenceById));
 
     if (registry.scopeOwnership.state === "active") {
@@ -816,6 +947,15 @@ function validateRegistry(
     }
   }
   return issues;
+}
+
+/** @internal Normalized validation used by the version 2 adapter. */
+export function validateLegacyCoordinationRegistry(
+  workId: string,
+  registry: CoordinationRegistry,
+  evidenceById: ReadonlyMap<string, { repositoryId: string; commit: string }>,
+): CoordinationValidationIssue[] {
+  return validateRegistry(workId, registry, evidenceById);
 }
 
 function collectActivationIssues(

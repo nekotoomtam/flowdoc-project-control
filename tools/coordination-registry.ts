@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { isAbsolute, join, relative, resolve } from "node:path";
 import {
   CoordinationTransitionError,
-  applyCoordinationCommand,
+  applyLegacyCoordinationCommand,
   type CoordinationCommand,
 } from "../src/model/coordination.js";
 import type { CoordinationRegistry, CoordinationRegistryV1, WorkRecord } from "../src/model/types.js";
@@ -71,7 +71,7 @@ export async function applyCoordinationCommandToWorkFile(
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },
     ]));
-    const coordination = applyCoordinationCommand(
+    const coordination = applyLegacyCoordinationCommand(
       work.coordination as CoordinationRegistryV1,
       options.command,
       { evidenceById },
