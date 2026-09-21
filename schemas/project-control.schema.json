@@ -769,6 +769,7 @@
         },
         "activeRole": { "type": "string", "minLength": 1 },
         "expectedOutput": { "type": "string", "minLength": 1 },
+        "executionMode": { "enum": ["standard", "historical-recovery"] },
         "riskSummary": { "type": "string", "minLength": 1 },
         "blockedBy": { "type": "string", "minLength": 1 },
         "unblockOwner": { "type": "string", "minLength": 1 },

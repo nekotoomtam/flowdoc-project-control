@@ -34,6 +34,7 @@ export async function validateProjectSemantics(
       checkWorkReferences(loaded),
       checkWorkTree(loaded),
       checkTaskContracts(loaded),
+      checkHistoricalRecoveryWork(loaded),
       checkCoordination(loaded),
       checkPhaseReferences(loaded),
       checkSingleActivePhase(loaded),
@@ -50,6 +51,40 @@ export async function validateProjectSemantics(
   }
 
   return loaded as ValidatedProjectSources;
+}
+
+function checkHistoricalRecoveryWork(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const diagnostics: ProjectDiagnostic[] = [];
+  const readOnlyRoles = new Set(["evidence-reviewer", "lane-reconciliation-reviewer"]);
+
+  for (const work of loaded.work) {
+    if (work.value.executionMode !== "historical-recovery") continue;
+    if (work.value.coordination !== undefined) {
+      diagnostics.push(recordDiagnostic(
+        "HISTORICAL_RECOVERY_COORDINATION_FORBIDDEN",
+        "Historical Recovery Work cannot own a coordination registry or execution authority.",
+        work,
+        "Remove coordination and keep recovery limited to read-only historical inspection.",
+      ));
+    }
+    if (work.value.workKind !== "task") {
+      diagnostics.push(recordDiagnostic(
+        "HISTORICAL_RECOVERY_TASK_REQUIRED",
+        "Historical Recovery Work must be a bounded task.",
+        work,
+        "Set workKind to task and keep the recovery scope explicit.",
+      ));
+    }
+    if (work.value.activeRole === undefined || !readOnlyRoles.has(work.value.activeRole)) {
+      diagnostics.push(recordDiagnostic(
+        "HISTORICAL_RECOVERY_READ_ONLY_ROLE_REQUIRED",
+        "Historical Recovery Work must use an approved read-only role.",
+        work,
+        "Use evidence-reviewer or lane-reconciliation-reviewer.",
+      ));
+    }
+  }
+  return diagnostics;
 }
 
 function checkCoordination(loaded: LoadedProjectSources): ProjectDiagnostic[] {

@@ -40,7 +40,7 @@ function writeProjection(outputPath: string, model: ProjectReadModel): void {
       pragma foreign_keys = on;
       create table projection_meta(schema_version integer not null, source_digest text not null, generated_at text not null);
       create table nodes(id text primary key, parent_id text, truth_state text not null, node_order real not null, title text not null, summary text not null);
-      create table work(id text primary key, parent_work_id text, node_id text not null, work_kind text, work_state text not null, title text not null, summary text not null, coordination_json text);
+      create table work(id text primary key, parent_work_id text, node_id text not null, work_kind text, work_state text not null, title text not null, summary text not null, execution_mode text, coordination_version integer, coordination_authority text, coordination_json text);
       create table work_closure(ancestor_work_id text not null, descendant_work_id text not null, depth integer not null, primary key(ancestor_work_id, descendant_work_id));
       create table phases(id text primary key, work_id text not null, phase_state text not null, phase_order real not null, title text not null, verification_target text not null, summary text not null);
       create table checklists(id text primary key, phase_id text not null, title text not null);
@@ -95,7 +95,7 @@ function insertNodes(db: DatabaseSync, model: ProjectReadModel): void {
 
 function insertWork(db: DatabaseSync, model: ProjectReadModel): void {
   const insertWork = db.prepare(
-    "insert into work(id, parent_work_id, node_id, work_kind, work_state, title, summary, coordination_json) values (?, ?, ?, ?, ?, ?, ?, ?)",
+    "insert into work(id, parent_work_id, node_id, work_kind, work_state, title, summary, execution_mode, coordination_version, coordination_authority, coordination_json) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
   );
   const insertContextDocument = db.prepare(
     "insert into work_context_documents(work_id, document_id) values (?, ?)",
@@ -116,6 +116,9 @@ function insertWork(db: DatabaseSync, model: ProjectReadModel): void {
       work.workState,
       work.title,
       work.summary,
+      work.executionMode ?? null,
+      work.coordination?.version ?? null,
+      coordinationAuthority(work),
       work.coordination === undefined ? null : JSON.stringify(work.coordination),
     );
     for (const documentId of work.contextDocumentIds ?? []) {
@@ -128,6 +131,12 @@ function insertWork(db: DatabaseSync, model: ProjectReadModel): void {
       insertEvidence.run(work.id, evidenceId);
     }
   }
+}
+
+function coordinationAuthority(work: ProjectReadModel["work"][number]): string | null {
+  if (work.coordination === undefined) return null;
+  if (work.coordination.version === 1) return "legacy-read-only";
+  return work.coordination.round.state === "active" ? "current-round" : "historical-read-only";
 }
 
 function insertWorkClosure(db: DatabaseSync, model: ProjectReadModel): void {

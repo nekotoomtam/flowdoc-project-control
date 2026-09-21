@@ -421,6 +421,7 @@ export interface WorkRecord {
   contextDocumentIds?: string[];
   activeRole?: string;
   expectedOutput?: string;
+  executionMode?: "standard" | "historical-recovery";
   riskSummary?: string;
   blockedBy?: string;
   unblockOwner?: string;
