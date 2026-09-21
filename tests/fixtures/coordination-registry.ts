@@ -1,8 +1,8 @@
-import type { CoordinationRegistry } from "../../src/model/types.js";
+import type { CoordinationRegistryV1 } from "../../src/model/types.js";
 
 export function createCoordinationRegistryFixture(
   overrides: { planTaskId?: string; status?: "prepared" | "active" | "superseded" } = {},
-): CoordinationRegistry {
+): CoordinationRegistryV1 {
   const planTaskId = overrides.planTaskId ?? "plan-1";
   return {
     version: 1,

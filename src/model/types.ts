@@ -25,18 +25,20 @@ export type DocumentLifecycle = "active" | "superseded" | "retired";
 export type CoordinationTerminalStatus = "PASS" | "FAIL" | "BLOCKER" | "RISK" | "UNKNOWN";
 export type CoordinationCheckStatus = "pending" | "passed" | "failed";
 
-export interface CoordinationRegistry {
+export interface LegacyCoordinationScopeOwnership {
+  scopeId: string;
+  scopeKeys: string[];
+  allowedFiles: string[];
+  planTaskId: string;
+  generation: number;
+  state: "active" | "released" | "cancelled";
+  transfers: CoordinationOwnershipTransfer[];
+}
+
+export interface CoordinationRegistryV1 {
   version: 1;
   revision: number;
-  scopeOwnership: {
-    scopeId: string;
-    scopeKeys: string[];
-    allowedFiles: string[];
-    planTaskId: string;
-    generation: number;
-    state: "active" | "released" | "cancelled";
-    transfers: CoordinationOwnershipTransfer[];
-  };
+  scopeOwnership: LegacyCoordinationScopeOwnership;
   integrationClaims: CoordinationIntegrationClaim[];
   returnOrderPolicy: "severity-then-arrival";
   roomRuns: CoordinationRoomRun[];
@@ -44,6 +46,28 @@ export interface CoordinationRegistry {
   completionQueue: CoordinationQueueItem[];
   cleanup: CoordinationCleanupState[];
 }
+
+export interface CoordinationRegistryV2 {
+  version: 2;
+  revision: number;
+  round: {
+    planTaskId: string;
+    roundId: string;
+    workId: string;
+    scopeId: string;
+    scopeKeys: string[];
+    allowedFiles: string[];
+    state: "active" | "released" | "cancelled";
+  };
+  integrationClaims: CoordinationIntegrationClaimV2[];
+  returnOrderPolicy: "severity-then-arrival";
+  roomRuns: CoordinationRoomRunV2[];
+  handoffs: CoordinationHandoffV2[];
+  completionQueue: CoordinationQueueItem[];
+  cleanup: CoordinationCleanupStateV2[];
+}
+
+export type CoordinationRegistry = CoordinationRegistryV1 | CoordinationRegistryV2;
 
 export interface CoordinationOwnershipTransfer {
   fromPlanTaskId: string;
@@ -63,6 +87,14 @@ export interface CoordinationIntegrationClaim {
   state: "active" | "released" | "frozen";
 }
 
+export interface CoordinationIntegrationClaimV2 {
+  repositoryId: string;
+  planTaskId: string;
+  roundId: string;
+  baseCommit: string;
+  state: "active" | "released" | "frozen";
+}
+
 export interface CoordinationRoomRun {
   roomRunId: string;
   dispatchSetId: string;
@@ -74,6 +106,43 @@ export interface CoordinationRoomRun {
   checklistId: string;
   evidenceTarget: string;
   ownershipGeneration: number;
+  revisionAttempt: number;
+  expectedHandoffId: string;
+  status: "prepared" | "active" | "superseded" | "returned" | "accepted" | "closed";
+  locator: {
+    threadId: string;
+    worktree?: string;
+    branch?: string;
+    handoffPath?: string;
+  };
+  contextAcknowledgement: {
+    status: "pending" | "acknowledged" | "rejected";
+    acknowledgedAt?: string;
+  };
+  returnRoute: {
+    planTaskId: string;
+    automaticChannel: string;
+    activeCommand: string;
+    monitorOwner: string;
+    livenessDeadline: string;
+    maxSendAttempts: 3;
+  };
+  modelDecision: CoordinationModelDecision;
+  ux: CoordinationUxGate;
+  requiredEvidence: string[];
+}
+
+export interface CoordinationRoomRunV2 {
+  roomRunId: string;
+  dispatchSetId: string;
+  laneId: string;
+  workType: string;
+  ownerRepositoryId: string;
+  activeRole: string;
+  phaseId: string;
+  checklistId: string;
+  evidenceTarget: string;
+  roundId: string;
   revisionAttempt: number;
   expectedHandoffId: string;
   status: "prepared" | "active" | "superseded" | "returned" | "accepted" | "closed";
@@ -188,10 +257,61 @@ export interface CoordinationTerminalPayload {
   contractChangeRequest?: string;
 }
 
+export interface CoordinationTerminalPayloadV2 {
+  planTaskId: string;
+  roundId: string;
+  roomRunId: string;
+  laneId: string;
+  ownerRepositoryId: string;
+  revisionAttempt: number;
+  status: CoordinationTerminalStatus;
+  behaviorChanged: boolean;
+  behaviorSummary: string;
+  exactCommit?: string;
+  changedFiles: string[];
+  tests: string[];
+  evidenceIds: string[];
+  risks: string[];
+  unknowns: string[];
+  contractChangeRequest?: string;
+}
+
 export interface CoordinationHandoff {
   handoffId: string;
   payloadDigest: string;
   payload: CoordinationTerminalPayload;
+  transport: {
+    status: "pending" | "sent" | "return-channel-failed";
+    attempts: number;
+    attemptHistory: Array<{
+      attemptedAt: string;
+      outcome: "sent" | "failed";
+    }>;
+    lastAttemptAt?: string;
+  };
+  receipt: {
+    status: "pending" | "received";
+    receivedAt?: string;
+    senderThreadId?: string;
+    channel?: string;
+    acknowledgedAt?: string;
+    arrivalSequence?: number;
+  };
+  acceptance: {
+    status: "pending" | "accepted" | "needs-revision" | "rejected" | "blocked";
+    reviewer?: string;
+    reviewedAt?: string;
+    reviewNote?: string;
+    evidenceIds: string[];
+    requiredChecks: CoordinationNamedCheck[];
+    remainingScope: string[];
+  };
+}
+
+export interface CoordinationHandoffV2 {
+  handoffId: string;
+  payloadDigest: string;
+  payload: CoordinationTerminalPayloadV2;
   transport: {
     status: "pending" | "sent" | "return-channel-failed";
     attempts: number;
@@ -231,6 +351,31 @@ export interface CoordinationCleanupState {
   branch: string;
   planTaskId: string;
   ownershipGeneration: number;
+  executor: string;
+  delegatedBy?: string;
+  preflightEvidenceIds: string[];
+  preflightSources: {
+    cleanliness: string;
+    merge: string;
+    worktreeGate: string;
+    mainGate: string;
+    liveProcess: string;
+  };
+  currentRound: boolean;
+  worktreeClean: boolean;
+  merged: boolean;
+  worktreeGate: CoordinationCheckStatus;
+  mainGate: CoordinationCheckStatus;
+  liveProcessClear: boolean;
+  disposition: "retain" | "eligible" | "removed";
+}
+
+export interface CoordinationCleanupStateV2 {
+  repositoryId: string;
+  worktreePath: string;
+  branch: string;
+  planTaskId: string;
+  roundId: string;
   executor: string;
   delegatedBy?: string;
   preflightEvidenceIds: string[];

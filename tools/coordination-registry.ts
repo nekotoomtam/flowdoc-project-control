@@ -6,7 +6,7 @@ import {
   applyCoordinationCommand,
   type CoordinationCommand,
 } from "../src/model/coordination.js";
-import type { CoordinationRegistry, WorkRecord } from "../src/model/types.js";
+import type { CoordinationRegistry, CoordinationRegistryV1, WorkRecord } from "../src/model/types.js";
 import { ProjectValidationError } from "./lib/errors.js";
 import {
   loadProjectSources,
@@ -71,7 +71,11 @@ export async function applyCoordinationCommandToWorkFile(
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },
     ]));
-    const coordination = applyCoordinationCommand(work.coordination, options.command, { evidenceById });
+    const coordination = applyCoordinationCommand(
+      work.coordination as CoordinationRegistryV1,
+      options.command,
+      { evidenceById },
+    );
     const candidate: WorkRecord = { ...work, coordination };
     const schemaDiagnostics = await validateCanonicalRecordValue("work", relativePath, candidate);
     if (schemaDiagnostics.length > 0) {

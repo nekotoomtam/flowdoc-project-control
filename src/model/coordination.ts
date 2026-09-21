@@ -3,7 +3,7 @@ import type {
   CoordinationCleanupState,
   CoordinationHandoff,
   CoordinationIntegrationClaim,
-  CoordinationRegistry,
+  CoordinationRegistryV1 as CoordinationRegistry,
   CoordinationRoomRun,
   CoordinationTerminalPayload,
   CoordinationUxGate,
@@ -197,6 +197,7 @@ export function validateCoordinationRegistries(
   for (const work of workRecords) {
     const registry = work.coordination;
     if (registry === undefined) continue;
+    if (registry.version !== 1) continue;
     issues.push(...validateRegistry(work.id, registry, evidenceById));
 
     if (registry.scopeOwnership.state === "active") {

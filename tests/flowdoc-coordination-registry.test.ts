@@ -8,7 +8,7 @@ import {
 } from "../src/model/coordination.js";
 import type {
   CoordinationCleanupState,
-  CoordinationRegistry,
+  CoordinationRegistryV1 as CoordinationRegistry,
   CoordinationTerminalPayload,
 } from "../src/model/types.js";
 import { loadProjectSources } from "../tools/lib/load-sources.js";
