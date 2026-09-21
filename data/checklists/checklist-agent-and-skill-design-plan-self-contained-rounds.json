@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-plan-self-contained-rounds",
+  "phaseId": "phase-agent-and-skill-design-plan-self-contained-rounds",
+  "title": "PLAN self-contained round enforcement",
+  "items": [
+    {
+      "id": "design-approved",
+      "label": "The written self-contained PLAN round design is reviewed and approved by the user.",
+      "state": "pending",
+      "evidenceTarget": "docs/domains/flowdoc-plan-self-contained-rounds-design-2026-09-21.md and the user review decision"
+    },
+    {
+      "id": "implementation-planned",
+      "label": "A reviewed implementation plan maps the approved design to bounded files, tests, migration, and verification steps.",
+      "state": "pending",
+      "evidenceTarget": "Project Control implementation plan for plan-self-contained-rounds"
+    },
+    {
+      "id": "legacy-read-only",
+      "label": "Version 1 coordination remains readable but every mutation path is rejected.",
+      "state": "pending",
+      "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    },
+    {
+      "id": "version-two-isolation",
+      "label": "Version 2 binds one PLAN task to one round and has no cross-PLAN transfer path.",
+      "state": "pending",
+      "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    },
+    {
+      "id": "historical-recovery-boundary",
+      "label": "Historical recovery is read-only and produces immutable input without reactivating old execution state.",
+      "state": "pending",
+      "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    },
+    {
+      "id": "focused-tests",
+      "label": "Focused schema, transition, persistence, projection, and stored-state tests pass.",
+      "state": "pending",
+      "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    },
+    {
+      "id": "full-gates",
+      "label": "Full Project Control gates pass in the implementation worktree and again on main after integration.",
+      "state": "pending",
+      "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    }
+  ],
+  "createdAt": "2026-09-21T21:59:25.7064665+07:00",
+  "updatedAt": "2026-09-21T21:59:25.7064665+07:00"
+}
