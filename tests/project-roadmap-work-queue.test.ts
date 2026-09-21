@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 52);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 53);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -699,6 +699,7 @@ describe("project roadmap Work Queue", () => {
       workIds: [
         "agent-and-skill-design",
         "flowdoc-documentation-authority-cleanup",
+        "plan-self-contained-rounds",
         "project-control-hardening",
         "project-control-overview-history-gui",
         "work-tree-phase-checklist-sqlite-contract",

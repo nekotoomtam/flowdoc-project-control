@@ -8,12 +8,29 @@ import {
   readConfinedCommandJson,
 } from "../tools/coordination-registry.js";
 import { createCoordinationRegistryFixture } from "./fixtures/coordination-registry.js";
+import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
 import { createProjectFixture } from "./fixtures/project-source.js";
 
-async function installRegistry(root: string, workId: "pilot" | "pilot-task", planTaskId = "plan-1"): Promise<string> {
+async function installRegistry(
+  root: string,
+  workId: "pilot" | "pilot-task",
+  options: { legacy?: boolean; planTaskId?: string } = {},
+): Promise<string> {
   const path = join(root, "data", "work", `${workId}.json`);
   const work = JSON.parse(await readFile(path, "utf8")) as Record<string, unknown>;
-  work.coordination = createCoordinationRegistryFixture({ planTaskId });
+  if (options.legacy === true) {
+    work.coordination = createCoordinationRegistryFixture(
+      options.planTaskId === undefined ? {} : { planTaskId: options.planTaskId },
+    );
+  } else {
+    const registry = createCoordinationRegistryV2Fixture();
+    registry.round.workId = workId;
+    registry.round.planTaskId = options.planTaskId ?? "plan-2";
+    registry.integrationClaims[0]!.planTaskId = registry.round.planTaskId;
+    registry.roomRuns[0]!.returnRoute.planTaskId = registry.round.planTaskId;
+    registry.roomRuns[0]!.returnRoute.monitorOwner = registry.round.planTaskId;
+    work.coordination = registry;
+  }
   await writeFile(path, JSON.stringify(work));
   return path;
 }
@@ -29,8 +46,9 @@ describe("coordination registry persistence", () => {
       expectedRevision: 0,
       command: {
         type: "supersede-attempt",
-        roomRunId: "pilot-room",
-        ownershipGeneration: 1,
+        planTaskId: "plan-2",
+        roundId: "round-2",
+        roomRunId: "pilot-v2-room",
         revisionAttempt: 0,
       },
     });
@@ -43,9 +61,11 @@ describe("coordination registry persistence", () => {
       expectedRevision: 0,
       command: {
         type: "authorize-revision",
-        roomRunId: "pilot-room",
+        planTaskId: "plan-2",
+        roundId: "round-2",
+        roomRunId: "pilot-v2-room",
         priorAttempt: 0,
-        expectedHandoffId: "pilot-room-r1",
+        expectedHandoffId: "pilot-v2-room-r1",
         livenessDeadline: "2026-09-10T07:40:00.000Z",
       },
     })).rejects.toMatchObject({ code: "REVISION_CONFLICT" });
@@ -77,32 +97,47 @@ describe("coordination registry persistence", () => {
     })).rejects.toMatchObject({ code: "WORK_PATH_OUTSIDE_ROOT" });
   });
 
-  it("validates the cross-Work candidate before replacing the canonical file", async () => {
+  it("rejects a raw legacy command before parsing lifecycle fields", async () => {
     const root = await createProjectFixture({ valid: true, newContractTask: true });
-    await installRegistry(root, "pilot-task");
-    const path = await installRegistry(root, "pilot");
-    const current = JSON.parse(await readFile(path, "utf8")) as {
-      coordination: ReturnType<typeof createCoordinationRegistryFixture>;
-    };
-    current.coordination.roomRuns[0]!.status = "superseded";
-    await writeFile(path, JSON.stringify(current));
+    const path = await installRegistry(root, "pilot-task", { legacy: true });
     const before = await readFile(path, "utf8");
 
     await expect(applyCoordinationCommandToWorkFile({
       rootDir: root,
-      workFile: "data/work/pilot.json",
+      workFile: "data/work/pilot-task.json",
       expectedRevision: 0,
       command: {
         type: "transfer-ownership",
         fromPlanTaskId: "plan-1",
         toPlanTaskId: "plan-2",
-        fromGeneration: 1,
-        newGeneration: 2,
-        reason: "competing owner test",
-        affectedRoomRunIds: ["pilot-room"],
-        transferredAt: "2026-09-10T07:10:00.000Z",
       },
-    })).rejects.toMatchObject({ code: "CANDIDATE_INVALID" });
+    })).rejects.toMatchObject({ code: "LEGACY_REGISTRY_READ_ONLY" });
+    expect(await readFile(path, "utf8")).toBe(before);
+  });
+
+  it("rejects removed transfer and wrong PLAN/round commands atomically", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    const path = await installRegistry(root, "pilot-task");
+    const before = await readFile(path, "utf8");
+
+    await expect(applyCoordinationCommandToWorkFile({
+      rootDir: root,
+      workFile: "data/work/pilot-task.json",
+      expectedRevision: 0,
+      command: { type: "transfer-ownership" },
+    })).rejects.toMatchObject({ code: "OWNERSHIP_TRANSFER_REMOVED" });
+    await expect(applyCoordinationCommandToWorkFile({
+      rootDir: root,
+      workFile: "data/work/pilot-task.json",
+      expectedRevision: 0,
+      command: {
+        type: "supersede-attempt",
+        planTaskId: "old-plan",
+        roundId: "old-round",
+        roomRunId: "pilot-v2-room",
+        revisionAttempt: 0,
+      },
+    })).rejects.toMatchObject({ code: "PLAN_ROUND_MISMATCH" });
     expect(await readFile(path, "utf8")).toBe(before);
   });
 
@@ -118,8 +153,9 @@ describe("coordination registry persistence", () => {
       expectedRevision: 0,
       command: {
         type: "supersede-attempt",
-        roomRunId: "pilot-room",
-        ownershipGeneration: 1,
+        planTaskId: "plan-2",
+        roundId: "round-2",
+        roomRunId: "pilot-v2-room",
         revisionAttempt: 0,
       },
     })).rejects.toMatchObject({ code: "WRITER_GUARD_HELD" });

@@ -141,6 +141,17 @@ export function applyCoordinationCommand(
   return applyCoordinationV2Command(registry, command as CoordinationCommandV2, context);
 }
 
+interface ExecutionIdentity {
+  kind: "roomRunId" | "dispatchSetId" | "threadId" | "worktree" | "branch" | "handoffId";
+  value: string;
+  workId: string;
+  planTaskId: string;
+  roundId: string;
+  roomRunId?: string;
+  revisionAttempt?: number;
+  mutableV2: boolean;
+}
+
 export interface CoordinationCleanupContextV2 {
   planTaskId: string;
   roundId: string;
@@ -383,6 +394,99 @@ export function validateCoordinationRegistries(
     }
   }
 
+  issues.push(...collectExecutionIdentityIssues(workRecords));
+  return issues;
+}
+
+export function collectExecutionIdentityIssues(
+  workRecords: Array<Pick<WorkRecord, "id" | "coordination">>,
+): CoordinationValidationIssue[] {
+  const identities: ExecutionIdentity[] = [];
+  const seenOccurrences = new Set<string>();
+  const add = (identity: ExecutionIdentity): void => {
+    const occurrence = [
+      identity.kind,
+      identity.value,
+      identity.workId,
+      identity.planTaskId,
+      identity.roundId,
+      identity.roomRunId ?? "",
+      identity.revisionAttempt ?? "",
+    ].join("\u0000");
+    if (!seenOccurrences.has(occurrence)) {
+      seenOccurrences.add(occurrence);
+      identities.push(identity);
+    }
+  };
+
+  for (const work of workRecords) {
+    const registry = work.coordination;
+    if (registry === undefined) continue;
+    const planTaskId = registry.version === 1
+      ? registry.scopeOwnership.planTaskId
+      : registry.round.planTaskId;
+    const roundId = registry.version === 1
+      ? `legacy:${work.id}:generation:${registry.scopeOwnership.generation}`
+      : registry.round.roundId;
+    const mutableV2 = registry.version === 2 && registry.round.state === "active";
+
+    for (const room of registry.roomRuns) {
+      const base = {
+        workId: work.id,
+        planTaskId,
+        roundId,
+        roomRunId: room.roomRunId,
+        revisionAttempt: room.revisionAttempt,
+        mutableV2,
+      };
+      add({ ...base, kind: "roomRunId", value: room.roomRunId });
+      add({ ...base, kind: "dispatchSetId", value: room.dispatchSetId });
+      add({ ...base, kind: "threadId", value: room.locator.threadId });
+      if (room.locator.worktree !== undefined) {
+        add({ ...base, kind: "worktree", value: room.locator.worktree });
+      }
+      if (room.locator.branch !== undefined) {
+        add({ ...base, kind: "branch", value: room.locator.branch });
+      }
+      add({ ...base, kind: "handoffId", value: room.expectedHandoffId });
+    }
+    for (const handoff of registry.handoffs) {
+      add({
+        kind: "handoffId",
+        value: handoff.handoffId,
+        workId: work.id,
+        planTaskId,
+        roundId,
+        roomRunId: handoff.payload.roomRunId,
+        revisionAttempt: handoff.payload.revisionAttempt,
+        mutableV2,
+      });
+    }
+  }
+
+  const issues: CoordinationValidationIssue[] = [];
+  for (let leftIndex = 0; leftIndex < identities.length; leftIndex += 1) {
+    const left = identities[leftIndex]!;
+    for (let rightIndex = leftIndex + 1; rightIndex < identities.length; rightIndex += 1) {
+      const right = identities[rightIndex]!;
+      if (left.kind !== right.kind || left.value !== right.value) continue;
+      if (!left.mutableV2 && !right.mutableV2) continue;
+      const sameRound = left.planTaskId === right.planTaskId && left.roundId === right.roundId;
+      const sameLineage = sameRound && left.roomRunId === right.roomRunId;
+      const allowed = left.kind === "dispatchSetId"
+        ? sameRound
+        : left.kind === "handoffId"
+          ? false
+          : sameLineage;
+      if (allowed) continue;
+      const current = right.mutableV2 ? right : left;
+      issues.push(issue(
+        "COORDINATION_EXECUTION_IDENTITY_REUSED",
+        `${current.kind} "${current.value}" reuses execution identity from another PLAN round or room lineage.`,
+        current.workId,
+      ));
+    }
+  }
   return issues;
 }
 

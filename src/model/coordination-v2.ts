@@ -89,6 +89,10 @@ export function validateCoordinationV2Registry(
   const issues: CoordinationValidationIssue[] = [];
   const add = (code: string, message: string) => issues.push({ code, message, workId });
 
+  if (registry.round.workId !== workId) {
+    add("COORDINATION_ROUND_WORK_MISMATCH", "The coordination round must name its containing Work record.");
+  }
+
   for (const claim of registry.integrationClaims) {
     if (claim.planTaskId !== registry.round.planTaskId || claim.roundId !== registry.round.roundId) {
       add("COORDINATION_INTEGRATION_OWNER_MISMATCH", "Integration claims must belong to the current PLAN round.");

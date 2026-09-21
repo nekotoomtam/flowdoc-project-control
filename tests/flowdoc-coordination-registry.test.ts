@@ -4,6 +4,7 @@ import {
   applyLegacyCoordinationCommand as applyCoordinationCommand,
   assessCleanupEligibility,
   canonicalPayloadDigest,
+  collectExecutionIdentityIssues,
   validateCoordinationRegistries,
 } from "../src/model/coordination.js";
 import type {
@@ -14,6 +15,7 @@ import type {
 import { loadProjectSources } from "../tools/lib/load-sources.js";
 import { validateProjectSemantics } from "../tools/lib/validate-semantics.js";
 import { createProjectFixture } from "./fixtures/project-source.js";
+import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
 
 const timestamp = "2026-09-10T07:00:00.000Z";
 const nextTimestamp = "2026-09-10T07:01:00.000Z";
@@ -1077,5 +1079,70 @@ it("exposes transition failures as stable coded errors", () => {
     name: "CoordinationTransitionError",
     code: "TEST",
     message: "message",
+  });
+});
+
+describe("self-contained execution identities", () => {
+  it.each([
+    "roomRunId",
+    "dispatchSetId",
+    "threadId",
+    "worktree",
+    "branch",
+    "expectedHandoffId",
+  ] as const)("rejects reused historical %s in a mutable version 2 round", (identity) => {
+    const legacy = makeRegistry();
+    legacy.roomRuns[0]!.locator.worktree = "C:/worktrees/legacy";
+    legacy.roomRuns[0]!.locator.branch = "codex/legacy";
+    const current = createCoordinationRegistryV2Fixture();
+    const legacyRoom = legacy.roomRuns[0]!;
+    const currentRoom = current.roomRuns[0]!;
+    if (identity === "roomRunId" || identity === "dispatchSetId" || identity === "expectedHandoffId") {
+      currentRoom[identity] = legacyRoom[identity];
+    } else {
+      currentRoom.locator[identity] = legacyRoom.locator[identity]!;
+    }
+
+    expect(collectExecutionIdentityIssues([
+      { id: "historical-work", coordination: legacy },
+      { id: "current-work", coordination: current },
+    ])).toContainEqual(expect.objectContaining({
+      code: "COORDINATION_EXECUTION_IDENTITY_REUSED",
+    }));
+  });
+
+  it("permits locator reuse only for revisions in the same PLAN/round room lineage", () => {
+    const registry = createCoordinationRegistryV2Fixture();
+    const first = registry.roomRuns[0]!;
+    first.locator.worktree = "C:/worktrees/current";
+    first.locator.branch = "codex/current";
+    first.status = "superseded";
+    registry.roomRuns.push({
+      ...structuredClone(first),
+      revisionAttempt: 1,
+      expectedHandoffId: "pilot-v2-room-r1",
+      status: "prepared",
+    });
+
+    expect(collectExecutionIdentityIssues([
+      { id: "current-work", coordination: registry },
+    ])).toEqual([]);
+  });
+
+  it("never permits a handoff ID to be reused by another revision attempt", () => {
+    const registry = createCoordinationRegistryV2Fixture();
+    const first = registry.roomRuns[0]!;
+    first.status = "superseded";
+    registry.roomRuns.push({
+      ...structuredClone(first),
+      revisionAttempt: 1,
+      status: "prepared",
+    });
+
+    expect(collectExecutionIdentityIssues([
+      { id: "current-work", coordination: registry },
+    ])).toContainEqual(expect.objectContaining({
+      code: "COORDINATION_EXECUTION_IDENTITY_REUSED",
+    }));
   });
 });

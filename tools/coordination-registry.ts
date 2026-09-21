@@ -3,10 +3,10 @@ import { fileURLToPath } from "node:url";
 import { isAbsolute, join, relative, resolve } from "node:path";
 import {
   CoordinationTransitionError,
-  applyLegacyCoordinationCommand,
-  type CoordinationCommand,
+  applyCoordinationCommand,
 } from "../src/model/coordination.js";
-import type { CoordinationRegistry, CoordinationRegistryV1, WorkRecord } from "../src/model/types.js";
+import type { CoordinationCommandV2 } from "../src/model/coordination-v2.js";
+import type { CoordinationRegistry, WorkRecord } from "../src/model/types.js";
 import { ProjectValidationError } from "./lib/errors.js";
 import {
   loadProjectSources,
@@ -27,7 +27,7 @@ export interface ApplyCoordinationCommandOptions {
   rootDir: string;
   workFile: string;
   expectedRevision: number;
-  command: CoordinationCommand;
+  command: unknown;
 }
 
 export async function applyCoordinationCommandToWorkFile(
@@ -59,6 +59,12 @@ export async function applyCoordinationCommandToWorkFile(
     if (work.coordination === undefined) {
       throw new CoordinationPersistenceError("COORDINATION_MISSING", "The Work record has no coordination registry.");
     }
+    if (work.coordination.version === 1) {
+      throw new CoordinationTransitionError(
+        "LEGACY_REGISTRY_READ_ONLY",
+        "Version 1 coordination is historical and cannot be mutated.",
+      );
+    }
     if (work.coordination.revision !== options.expectedRevision) {
       throw new CoordinationPersistenceError(
         "REVISION_CONFLICT",
@@ -71,11 +77,8 @@ export async function applyCoordinationCommandToWorkFile(
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },
     ]));
-    const coordination = applyLegacyCoordinationCommand(
-      work.coordination as CoordinationRegistryV1,
-      options.command,
-      { evidenceById },
-    );
+    const command = parseCommand(options.command);
+    const coordination = applyCoordinationCommand(work.coordination, command, { evidenceById });
     const candidate: WorkRecord = { ...work, coordination };
     const schemaDiagnostics = await validateCanonicalRecordValue("work", relativePath, candidate);
     if (schemaDiagnostics.length > 0) {
@@ -182,22 +185,27 @@ function readOption(args: string[], name: string): string | undefined {
   return index < 0 ? undefined : args[index + 1];
 }
 
-function parseCommand(value: unknown): CoordinationCommand {
+function parseCommand(value: unknown): CoordinationCommandV2 {
   if (typeof value !== "object" || value === null || !("type" in value) || typeof value.type !== "string") {
     throw new CoordinationPersistenceError("MALFORMED_COMMAND", "Command JSON must contain a string type.");
   }
   const requiredKeys: Record<string, string[]> = {
-    "activate-room": ["roomRunId", "ownershipGeneration", "revisionAttempt"],
-    "supersede-attempt": ["roomRunId", "ownershipGeneration", "revisionAttempt"],
-    "authorize-revision": ["roomRunId", "priorAttempt", "expectedHandoffId", "livenessDeadline"],
-    "transfer-ownership": ["fromPlanTaskId", "toPlanTaskId", "fromGeneration", "newGeneration", "reason", "affectedRoomRunIds", "transferredAt"],
-    "record-send": ["handoffId", "payload", "outcome", "attemptedAt"],
-    "receive-handoff": ["handoffId", "payload", "senderThreadId", "receivedAt"],
-    "acknowledge-receipt": ["handoffId", "planTaskId", "acknowledgedAt"],
-    "accept-handoff": ["handoffId", "reviewer", "reviewedAt", "evidenceIds", "requiredChecks", "remainingScope"],
-    "resolve-handoff": ["handoffId", "reviewer", "reviewedAt", "decision", "reviewNote", "remainingScope"],
-    "release-round": ["planTaskId"],
+    "activate-room": ["planTaskId", "roundId", "roomRunId", "revisionAttempt"],
+    "supersede-attempt": ["planTaskId", "roundId", "roomRunId", "revisionAttempt"],
+    "authorize-revision": ["planTaskId", "roundId", "roomRunId", "priorAttempt", "expectedHandoffId", "livenessDeadline"],
+    "record-send": ["planTaskId", "roundId", "handoffId", "payload", "outcome", "attemptedAt"],
+    "receive-handoff": ["planTaskId", "roundId", "handoffId", "payload", "senderThreadId", "receivedAt"],
+    "acknowledge-receipt": ["planTaskId", "roundId", "handoffId", "acknowledgedAt"],
+    "accept-handoff": ["planTaskId", "roundId", "handoffId", "reviewer", "reviewedAt", "evidenceIds", "requiredChecks", "remainingScope"],
+    "resolve-handoff": ["planTaskId", "roundId", "handoffId", "reviewer", "reviewedAt", "decision", "reviewNote", "remainingScope"],
+    "release-round": ["planTaskId", "roundId"],
   };
+  if (value.type === "transfer-ownership") {
+    throw new CoordinationTransitionError(
+      "OWNERSHIP_TRANSFER_REMOVED",
+      "A PLAN round cannot transfer execution authority to another PLAN.",
+    );
+  }
   const keys = requiredKeys[value.type];
   if (keys === undefined) {
     throw new CoordinationTransitionError("UNKNOWN_COMMAND", `Unknown coordination command: ${value.type}.`);
@@ -205,7 +213,7 @@ function parseCommand(value: unknown): CoordinationCommand {
   if (keys.some((key) => !(key in value))) {
     throw new CoordinationPersistenceError("MALFORMED_COMMAND", `Command ${value.type} is missing required fields.`);
   }
-  return value as CoordinationCommand;
+  return value as CoordinationCommandV2;
 }
 
 export async function readConfinedCommandJson(rootDir: string, path: string): Promise<unknown> {
@@ -255,7 +263,7 @@ async function runCli(): Promise<void> {
       if (!Number.isSafeInteger(expectedRevision) || expectedRevision < 0) {
         throw new CoordinationPersistenceError("CLI_ARGUMENTS_INVALID", "Expected revision must be a non-negative integer.");
       }
-      const command = parseCommand(await readConfinedCommandJson(rootDir, commandFile));
+      const command = await readConfinedCommandJson(rootDir, commandFile);
       const next = await applyCoordinationCommandToWorkFile({ rootDir, workFile, expectedRevision, command });
       process.stdout.write(`Coordination revision ${next.revision} persisted.\n`);
       return;
