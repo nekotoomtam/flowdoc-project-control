@@ -8,7 +8,7 @@
   "repositoryIds": [
     "repo-project-control"
   ],
-  "workState": "in-progress",
+  "workState": "in-review",
   "summary": "Replace cross-PLAN ownership transfer and inherited execution context with one self-contained execution round per PLAN task. Preserve version 1 coordination as readable history, introduce a non-transferable version 2 registry for new PLAN work, and route missing historical context through separate read-only Historical Recovery Work.",
   "contextDocumentIds": [
     "doc-flowdoc-coordination-controls",
@@ -22,5 +22,5 @@
     "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
   ],
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-22T00:28:50.2893632+07:00"
+  "updatedAt": "2026-09-22T00:41:44.8755081+07:00"
 }

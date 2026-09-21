@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "32ef5c4d7878e4931fcaad06b27d12fdda1580db0de067c6eeb651704a99c3bf",
+  "sourceDigest": "5cde83b967ebc6944a37fa231f9a8ac2c38238e06851a5bffe55820fb7f80bda",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8545,7 +8545,7 @@
       "repositoryIds": [
         "repo-project-control"
       ],
-      "workState": "in-progress",
+      "workState": "in-review",
       "summary": "Replace cross-PLAN ownership transfer and inherited execution context with one self-contained execution round per PLAN task. Preserve version 1 coordination as readable history, introduce a non-transferable version 2 registry for new PLAN work, and route missing historical context through separate read-only Historical Recovery Work.",
       "contextDocumentIds": [
         "doc-flowdoc-coordination-controls",
@@ -8559,7 +8559,7 @@
         "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
       ],
       "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-      "updatedAt": "2026-09-22T00:28:50.2893632+07:00",
+      "updatedAt": "2026-09-22T00:41:44.8755081+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-agent-and-skill-design-plan-self-contained-rounds"
@@ -8937,7 +8937,7 @@
       "id": "phase-agent-and-skill-design-plan-self-contained-rounds",
       "workId": "plan-self-contained-rounds",
       "title": "Design and enforce self-contained PLAN rounds",
-      "phaseState": "in-review",
+      "phaseState": "done",
       "order": 10,
       "repositoryIds": [
         "repo-project-control"
@@ -8951,7 +8951,7 @@
       "verificationTarget": "checklist-agent-and-skill-design-plan-self-contained-rounds; evidence-flowdoc-plan-self-contained-rounds-2026-09-21; focused coordination tests; full worktree and main Project Control gates",
       "summary": "Approve the architectural boundary, plan the migration, implement version 2 PLAN-owned coordination without cross-PLAN transfer, and preserve version 1 as historical read-only data.",
       "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-      "updatedAt": "2026-09-22T00:28:50.2893632+07:00"
+      "updatedAt": "2026-09-22T00:41:44.8755081+07:00"
     },
     {
       "kind": "phase",
@@ -12849,16 +12849,16 @@
         {
           "id": "full-gates",
           "label": "Full Project Control gates pass in the implementation worktree and again on main after integration.",
-          "state": "in-progress",
+          "state": "passed",
           "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21",
           "evidenceIds": [
             "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
           ],
-          "verificationNote": "The full worktree gate passed at implementation commit f47af2fabc207add771d6a37ec36c881ad37cbe0; the main gate remains pending until integration."
+          "verificationNote": "The full worktree gate passed at f47af2fabc207add771d6a37ec36c881ad37cbe0, and the post-integration main gate passed at b4b0f1a904cbefdb87d2ae129b84554846ec9175."
         }
       ],
       "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-      "updatedAt": "2026-09-22T00:28:50.2893632+07:00"
+      "updatedAt": "2026-09-22T00:41:44.8755081+07:00"
     },
     {
       "kind": "checklist",
@@ -24295,7 +24295,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "f47af2fabc207add771d6a37ec36c881ad37cbe0",
+          "commit": "84debacc335572889142e1ae8d9d0285934b43a9",
           "pathOrContractId": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
         }
       ],
@@ -24315,7 +24315,7 @@
       "repositoryRefs": [
         {
           "repositoryId": "repo-project-control",
-          "commit": "f47af2fabc207add771d6a37ec36c881ad37cbe0",
+          "commit": "84debacc335572889142e1ae8d9d0285934b43a9",
           "pathOrContractId": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
         }
       ],
@@ -27270,10 +27270,10 @@
         "project-control"
       ],
       "repositoryId": "repo-project-control",
-      "commit": "f47af2fabc207add771d6a37ec36c881ad37cbe0",
+      "commit": "84debacc335572889142e1ae8d9d0285934b43a9",
       "pathOrContractId": "src/model/coordination-v2.ts; src/model/coordination.ts; schemas/project-control.schema.json; tools/coordination-registry.ts; tests/flowdoc-coordination-v2.test.ts; docs/domains/flowdoc-plan-self-contained-rounds-design-2026-09-21.md",
-      "verificationSummary": "Version 1 coordination is readable history with no mutation authority; version 2 binds one PLAN task to one round with no ownership-transfer path; stale execution identities and mutable Historical Recovery Work are rejected; focused coordination and full Project Control worktree gates passed. No Core, Backend, Editor, product behavior, or map truth changed.",
-      "verifiedAt": "2026-09-22T00:28:50.2893632+07:00"
+      "verificationSummary": "Version 1 coordination is readable history with no mutation authority; version 2 binds one PLAN task to one round with no ownership-transfer path; stale execution identities and mutable Historical Recovery Work are rejected; focused coordination, full Project Control worktree gate, and post-integration main gate passed. No Core, Backend, Editor, product behavior, or map truth changed.",
+      "verifiedAt": "2026-09-22T00:41:44.8755081+07:00"
     },
     {
       "kind": "evidence",

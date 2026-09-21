@@ -60,14 +60,14 @@
     {
       "id": "full-gates",
       "label": "Full Project Control gates pass in the implementation worktree and again on main after integration.",
-      "state": "in-progress",
+      "state": "passed",
       "evidenceTarget": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21",
       "evidenceIds": [
         "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
       ],
-      "verificationNote": "The full worktree gate passed at implementation commit f47af2fabc207add771d6a37ec36c881ad37cbe0; the main gate remains pending until integration."
+      "verificationNote": "The full worktree gate passed at f47af2fabc207add771d6a37ec36c881ad37cbe0, and the post-integration main gate passed at b4b0f1a904cbefdb87d2ae129b84554846ec9175."
     }
   ],
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-22T00:28:50.2893632+07:00"
+  "updatedAt": "2026-09-22T00:41:44.8755081+07:00"
 }
