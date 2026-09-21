@@ -7,8 +7,9 @@
     {
       "id": "design-approved",
       "label": "The written self-contained PLAN round design is reviewed and approved by the user.",
-      "state": "pending",
-      "evidenceTarget": "docs/domains/flowdoc-plan-self-contained-rounds-design-2026-09-21.md and the user review decision"
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-plan-self-contained-rounds-design-2026-09-21.md and the user review decision",
+      "verificationNote": "The user approved the written design in the current PLAN task on 2026-09-21 and confirmed that the boundary belongs entirely to Project Control."
     },
     {
       "id": "implementation-planned",
@@ -48,5 +49,5 @@
     }
   ],
   "createdAt": "2026-09-21T21:59:25.7064665+07:00",
-  "updatedAt": "2026-09-21T21:59:25.7064665+07:00"
+  "updatedAt": "2026-09-21T22:10:00+07:00"
 }

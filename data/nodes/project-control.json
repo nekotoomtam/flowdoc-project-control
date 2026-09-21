@@ -37,7 +37,8 @@
     "doc-flowdoc-project-control-skill-installation-2026-09-01",
     "doc-flowdoc-coordination-hardening-plan-2026-09-10",
     "doc-flowdoc-coordination-controls",
-    "doc-flowdoc-plan-self-contained-rounds-design-2026-09-21"
+    "doc-flowdoc-plan-self-contained-rounds-design-2026-09-21",
+    "doc-flowdoc-plan-self-contained-rounds-implementation-plan-2026-09-21"
   ],
   "evidenceIds": [
     "evidence-project-control-design",
