@@ -41,5 +41,10 @@ describe("coordination controls documentation boundary", () => {
     expect(controls).toContain("Receipt is not");
     expect(controls).toContain("WORK does not inherit that choice");
     expect(controls).toContain("Mechanism PASS can be recorded while UX remains pending");
+    expect(controls).toContain("One PLAN task owns exactly one execution round");
+    expect(controls).toContain("Version 1 coordination is historical and read-only");
+    expect(controls).toContain("Cross-PLAN ownership transfer is not supported");
+    expect(controls).toContain("Historical Recovery Work");
+    expect(controls).not.toContain("Ownership transfer names the old and new PLAN");
   });
 });

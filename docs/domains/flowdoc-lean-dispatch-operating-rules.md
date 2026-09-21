@@ -47,12 +47,16 @@ Lean Dispatch exists because real WORK rooms can now return to PLAN, but the
 first experiments showed that giving every room full context and writing full
 records for every probe costs too much.
 
-New PLAN task means a new delivery round and a fresh execution context. Lean
-Dispatch does not permit reuse of an older PLAN, WORK task, room run, handoff,
-worktree, branch, or Return Channel. The current PLAN must not send, wait,
-revise, resume, or hand off through an older PLAN or WORK task. The same WORK
-room may receive a lean revision only while the same PLAN task and delivery
-round remain active.
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry. Version 1 coordination is historical
+and read-only. Cross-PLAN ownership transfer is not supported. Lean Dispatch
+does not permit reuse of an older PLAN, WORK task, room run, handoff, worktree,
+branch, or Return Channel. The current PLAN must not send, wait, revise, resume,
+or hand off through an older PLAN or WORK task. Missing history is recovered
+through separate read-only Historical Recovery Work; it never reactivates the
+inspected PLAN or WORK task. The same WORK room may receive a lean revision
+only while the same PLAN task and delivery round remain active.
 
 Prior accepted commits, Evidence, and Project Control records may be referenced
 only as immutable input. An older task may be inspected only for an explicit
@@ -257,9 +261,9 @@ truth split.
 
 ## Coordination control gate
 
-Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+Before new dispatch, return acceptance, UX acceptance,
 model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
-That contract owns exclusive PLAN/integration authority, generation and attempt
+That contract owns exclusive PLAN/integration authority, round and attempt
 checks, sent/received/accepted receipts, typed durable registry, UX criteria,
 current-round cleanup authority and per-WORK model/effort rationale. PLAN may
 retain GPT-6; each WORK needs an explicit task-based selection. Legacy records

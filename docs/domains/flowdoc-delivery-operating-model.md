@@ -94,11 +94,15 @@ supported by repository-owned evidence.
 
 ## New PLAN Round Isolation
 
-New PLAN task means a new delivery round and a fresh execution context. The
-current PLAN must create fresh round, ownership-generation, dispatch-set,
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with fresh round, dispatch-set,
 room-run, handoff, WORK-task, worktree-or-branch, and Return-Channel identities.
-It must not send, wait, revise, resume, or hand off through an older PLAN or
-WORK task.
+Version 1 coordination is historical and read-only. Cross-PLAN ownership
+transfer is not supported. The current PLAN must not send, wait, revise,
+resume, or hand off through an older PLAN or WORK task. Missing history is
+recovered through separate read-only Historical Recovery Work; it never
+reactivates the inspected PLAN or WORK task.
 
 The same WORK room is reusable only while the same PLAN task and delivery round
 remain active. A correction started from a new PLAN task is a new lane attempt
@@ -110,7 +114,7 @@ unmerged branches remain historical until separately reconciled.
 
 An older task may be inspected only for an explicit audit or evidence-recovery
 request and never regains execution authority. A stale PLAN ID, monitor owner,
-Return Channel, WORK locator, or generation is a pre-dispatch stop condition.
+Return Channel, WORK locator, or round ID is a pre-dispatch stop condition.
 
 ## PLAN Room Orchestration
 
@@ -398,9 +402,9 @@ Stop and return to the PLAN room when:
 
 ## Coordination control gate
 
-Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+Before new dispatch, return acceptance, UX acceptance,
 model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
-That contract owns exclusive PLAN/integration authority, generation and attempt
+That contract owns exclusive PLAN/integration authority, round and attempt
 checks, sent/received/accepted receipts, typed durable registry, UX criteria,
 current-round cleanup authority and per-WORK model/effort rationale. PLAN may
 retain GPT-6; each WORK needs an explicit task-based selection. Legacy records

@@ -87,11 +87,16 @@ handoffs are processed without letting rooms collide.
 
 ## New PLAN Round Isolation
 
-New PLAN task means a new delivery round and a fresh execution context. It
-must allocate a fresh round ID, ownership generation, dispatch set, room run,
-handoff ID, WORK task, worktree or branch, and Return Channel. The current PLAN
-must not send, wait, revise, resume, or hand off through an older PLAN or WORK
-task. The old PLAN and every room it owned become historical and read-only.
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with a fresh round ID, dispatch set,
+room run, handoff ID, WORK task, worktree or branch, and Return Channel. Version
+1 coordination is historical and read-only. Cross-PLAN ownership transfer is
+not supported. The current PLAN must not send, wait, revise, resume, or hand
+off through an older PLAN or WORK task. Missing history is recovered through
+separate read-only Historical Recovery Work; it never reactivates the inspected
+PLAN or WORK task. The old PLAN and every room it owned remain historical and
+read-only.
 
 A Revision Packet returns to the same WORK room only while the same PLAN task
 and delivery round remain active. If a new PLAN task has started, even a repair
@@ -105,7 +110,7 @@ An older task may be inspected only for an explicit audit or evidence-recovery
 request and never regains execution authority. Retained unmerged value requires
 a separate reconciliation decision before a fresh round adopts it as an
 explicit commit or patch input. Before dispatch, PLAN must verify that the
-packet's PLAN ID, monitor owner, Return Channel, generation, and every room
+packet's PLAN ID, round ID, monitor owner, Return Channel, and every room
 locator belong to the current round; any stale identity is a stop condition.
 
 ## N WORK Room Assessment
@@ -641,9 +646,9 @@ updated.
 
 ## Coordination control gate
 
-Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+Before new dispatch, return acceptance, UX acceptance,
 model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
-That contract owns exclusive PLAN/integration authority, generation and attempt
+That contract owns exclusive PLAN/integration authority, round and attempt
 checks, sent/received/accepted receipts, typed durable registry, UX criteria,
 current-round cleanup authority and per-WORK model/effort rationale. PLAN may
 retain GPT-6; each WORK needs an explicit task-based selection. Legacy records

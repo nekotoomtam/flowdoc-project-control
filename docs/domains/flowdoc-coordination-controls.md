@@ -19,12 +19,16 @@ applicable; this contract never authorizes an unrelated new task.
 
 ### New PLAN round isolation
 
-New PLAN task means a new delivery round and a fresh execution context. The
-new PLAN must create a fresh round ID, ownership generation, dispatch set,
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with a fresh round ID, dispatch set,
 room run, handoff ID, WORK task, worktree or branch, and Return Channel before
-dispatch. The current PLAN must not send, wait, revise, resume, or hand off
-through an older PLAN or WORK task. An older PLAN or WORK task is historical
-and read-only; receiving a correction request does not reactivate it.
+dispatch. Version 1 coordination is historical and read-only. Cross-PLAN
+ownership transfer is not supported. The current PLAN must not send, wait,
+revise, resume, or hand off through an older PLAN or WORK task. Missing history
+is recovered through separate read-only Historical Recovery Work; it never
+reactivates the inspected PLAN or WORK task. An older PLAN or WORK task remains
+historical and read-only; receiving a correction request does not reactivate it.
 
 The same WORK room may receive a Revision Packet only while the same PLAN task
 and delivery round remain active. After a new PLAN task starts, unfinished or
@@ -41,15 +45,15 @@ the active task identity with the packet's PLAN task ID, monitor owner, and
 Return Channel. Any mismatch stops dispatch; do not repair it by sending a
 message to the older task.
 
-Resolve a stable Work scope, owner repository, PLAN task, current ownership
-generation, lane, Phase, Checklist and Evidence target before dispatch. The
+Resolve a stable Work scope, owner repository, PLAN task, current round ID,
+lane, Phase, Checklist and Evidence target before dispatch. The
 same scope cannot have two active PLAN owners. Overlapping scope must be
 explicitly split or assigned to one PLAN; different lane names alone do not
 make edits independent. Record the overlap decision and allowed files.
 
 One integration owner holds the merge turn for each repository across PLANs.
 Before taking that turn, read the latest canonical registry on main and verify
-that the expected ownership generation and base commit still match. A stale
+that the expected PLAN/round identity and base commit still match. A stale
 worktree cannot authorize its own merge. Serialize integration, verify the
 candidate against current main, merge, run the main gate, then release the
 turn. A failed gate freezes further integration for that repository while the
@@ -57,13 +61,12 @@ same-round WORK receives a Revision Packet. If a new PLAN task has started,
 open a new round and fresh WORK context instead. Preserve the failed round's
 worktree and evidence as historical material pending reconciliation.
 
-Ownership transfer names the old and new PLAN, reason, new generation and
-affected rooms. It seals the older PLAN and rooms as history; it does not move
-their live execution context into the new PLAN. Supersede old active room
-attempts before creating fresh replacement rooms and authority. Late output
-remains reviewable history but cannot be accepted under the new generation.
-Cancellation similarly removes acceptance authority; it does not erase unique
-code or authorize deletion.
+Cross-PLAN ownership transfer is not supported. A new PLAN creates a distinct
+Work execution record and version 2 registry without moving live execution
+context from an older PLAN. Older PLAN and room records remain reviewable
+history, but their late output cannot be accepted by the new round. Cancellation
+similarly removes acceptance authority; it does not erase unique code or
+authorize deletion.
 
 The file-first registry provides validation and local write-conflict checks.
 It is not a distributed mutex or proof that an uncooperative room obeyed the
@@ -73,7 +76,7 @@ unresolved collision, stop integration and report RISK or BLOCKER.
 
 ## 2. Sent, received and accepted are different
 
-Each terminal handoff identifies PLAN, room, lane, owner, ownership generation,
+Each terminal handoff identifies PLAN, round, room, lane, owner,
 revision attempt, stable handoff ID and payload. A resend uses the identical
 ID and content. One attempt has one terminal handoff. Corrected terminal content
 requires a PLAN-authorized new attempt and new handoff ID; the old attempt is
@@ -105,7 +108,7 @@ before recovery, not silently treated as success.
 Inbox arrival order is assigned once on first valid receipt. Exact duplicates
 reuse that receipt and do not create another completionQueue item. Process
 BLOCKER, FAIL and Contract Change Request ahead of ordinary PASS, then the
-recorded acceptance order and arrivalSequence. Only the current generation and
+recorded acceptance order and arrivalSequence. Only the current round and
 attempt can advance acceptance. Wrong-room, wrong-PLAN and superseded returns
 are rejected/quarantined with a reason; retain their locator for reconciliation.
 
@@ -131,7 +134,7 @@ readable; it does not gain validated orchestration status retroactively.
 The standard Project Control gate must reject structurally malformed and
 semantically conflicting stored registries, including states written by hand.
 Behavior tests exercise transitions, persistence/resumption, duplicate content,
-stale generations, missing evidence and competing ownership. Text-presence
+stale PLAN/round identities, missing evidence and competing ownership. Text-presence
 tests protect documentation routing only; they do not prove room behavior.
 
 Local write operations use an exclusive short-lived writer guard and expected
@@ -152,8 +155,8 @@ npm run coordination -- apply --work data/work/<work>.json --expected-revision <
 ```
 
 Read the current Work revision before constructing the command. Supported
-operations activate or supersede an attempt, authorize a revision, transfer
-ownership, record send/receipt/acknowledgement, accept or resolve a handoff,
+operations activate or supersede an attempt, authorize a revision, record
+send/receipt/acknowledgement, accept or resolve a handoff,
 and release a completed round. `release-round` requires the current PLAN,
 resolved room attempts and handoffs, an empty queue, resolved cleanup decisions,
 and no frozen integration claim. It closes accepted rooms and releases ownership
@@ -260,7 +263,7 @@ acceptance results govern continued selection. No pricing table is frozen here.
 
 ## Kickoff and acceptance additions
 
-A packet includes scope ownership/generation, integration owner, current attempt,
+A packet includes PLAN/round identity, integration owner, current attempt,
 model decision, UX applicability and criteria, retry/receipt rules, deadline,
 expected handoff ID and acceptance evidence. Context Acknowledgement repeats
 these boundaries. An acceptance review verifies current ownership and attempt,

@@ -108,12 +108,17 @@ redefine delivery scope, role authority, source-of-truth rules, or
 cross-repository contracts; they should return RISK, UNKNOWN, BLOCKED, or a
 Contract Change Request to the PLAN room when scope changes are needed.
 
-New PLAN task means a new delivery round and a fresh execution context. It
-must create new coordination and execution identities rather than reuse an old
-PLAN, WORK task, room run, handoff, worktree, branch, or Return Channel. The
-current PLAN must not send, wait, revise, resume, or hand off through an older
-PLAN or WORK task. The same WORK room remains eligible for revision only while
-the same PLAN task and delivery round remain active.
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with fresh coordination and execution
+identities rather than reusing an old PLAN, WORK task, room run, handoff,
+worktree, branch, or Return Channel. Version 1 coordination is historical and
+read-only. Cross-PLAN ownership transfer is not supported. The current PLAN
+must not send, wait, revise, resume, or hand off through an older PLAN or WORK
+task. Missing history is recovered through separate read-only Historical
+Recovery Work; it never reactivates the inspected PLAN or WORK task. The same
+WORK room remains eligible for revision only while the same PLAN task and
+delivery round remain active.
 
 Prior accepted commits, Evidence, and Project Control records may be referenced
 only as immutable input. An older task may be inspected only for an explicit
@@ -393,9 +398,9 @@ routing, or all possible prompt pressure cases.
 
 ## Coordination control gate
 
-Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+Before new dispatch, return acceptance, UX acceptance,
 model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
-That contract owns exclusive PLAN/integration authority, generation and attempt
+That contract owns exclusive PLAN/integration authority, round and attempt
 checks, sent/received/accepted receipts, typed durable registry, UX criteria,
 current-round cleanup authority and per-WORK model/effort rationale. PLAN may
 retain GPT-6; each WORK needs an explicit task-based selection. Legacy records

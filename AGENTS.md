@@ -78,19 +78,23 @@ that arrive close together, `returnOrderPolicy` and `arrivalSequence` must
 preserve processing order, duplicate handoff returns must be idempotent, and
 PLAN must process one queued handoff at a time through `acceptanceGate`.
 
-New PLAN task means a new delivery round and a fresh execution context. It
-must allocate fresh round, generation, dispatch-set, room-run, handoff,
-WORK-task, worktree-or-branch, and Return-Channel identities. The current PLAN
-must not send, wait, revise, resume, or hand off through an older PLAN or WORK
-task. The same WORK room may receive revisions only while the same PLAN task
-and delivery round remain active.
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with fresh round, dispatch-set,
+room-run, handoff, WORK-task, worktree-or-branch, and Return-Channel identities.
+Version 1 coordination is historical and read-only. Cross-PLAN ownership
+transfer is not supported. The current PLAN must not send, wait, revise,
+resume, or hand off through an older PLAN or WORK task. Missing history is
+recovered through separate read-only Historical Recovery Work; it never
+reactivates the inspected PLAN or WORK task. The same WORK room may receive
+revisions only while the same PLAN task and delivery round remain active.
 
 Prior accepted commits, Evidence, and Project Control records may be referenced
 only as immutable input. Older conversations, registries, liveness state,
 Return Channels, tasks, worktrees, and branches are historical rather than
 reusable execution context. An older task may be inspected only for an explicit
 audit or evidence-recovery request and never regains execution authority. Any
-stale PLAN, monitor, Return Channel, generation, or room locator blocks
+stale PLAN, monitor, Return Channel, round, or room locator blocks
 dispatch; do not wake the older task to repair the mismatch.
 
 Before returning to a drafted lane plan after a pause, feedback round, or

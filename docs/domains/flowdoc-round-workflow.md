@@ -24,10 +24,15 @@ system is current.
 
 ## PLAN round identity
 
-New PLAN task means a new delivery round and a fresh execution context. The
-current PLAN must not send, wait, revise, resume, or hand off through an older
-PLAN or WORK task. It creates fresh round, generation, dispatch, room, handoff,
-WORK-task, worktree-or-branch, and Return-Channel identities before execution.
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with fresh round, dispatch, room,
+handoff, WORK-task, worktree-or-branch, and Return-Channel identities before
+execution. Version 1 coordination is historical and read-only. Cross-PLAN
+ownership transfer is not supported. The current PLAN must not send, wait,
+revise, resume, or hand off through an older PLAN or WORK task. Missing history
+is recovered through separate read-only Historical Recovery Work; it never
+reactivates the inspected PLAN or WORK task.
 
 Prior accepted commits, Evidence, and Project Control records may be referenced
 only as immutable input. Older rooms and their live coordination state are not
@@ -195,9 +200,9 @@ forward one verified round at a time.
 
 ## Coordination control gate
 
-Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+Before new dispatch, return acceptance, UX acceptance,
 model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
-That contract owns exclusive PLAN/integration authority, generation and attempt
+That contract owns exclusive PLAN/integration authority, round and attempt
 checks, sent/received/accepted receipts, typed durable registry, UX criteria,
 current-round cleanup authority and per-WORK model/effort rationale. PLAN may
 retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
