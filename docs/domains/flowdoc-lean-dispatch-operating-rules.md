@@ -47,6 +47,19 @@ Lean Dispatch exists because real WORK rooms can now return to PLAN, but the
 first experiments showed that giving every room full context and writing full
 records for every probe costs too much.
 
+New PLAN task means a new delivery round and a fresh execution context. Lean
+Dispatch does not permit reuse of an older PLAN, WORK task, room run, handoff,
+worktree, branch, or Return Channel. The current PLAN must not send, wait,
+revise, resume, or hand off through an older PLAN or WORK task. The same WORK
+room may receive a lean revision only while the same PLAN task and delivery
+round remain active.
+
+Prior accepted commits, Evidence, and Project Control records may be referenced
+only as immutable input. An older task may be inspected only for an explicit
+audit or evidence-recovery request and never regains execution authority. A
+fresh PLAN round must pay the small setup cost for new execution identities;
+avoiding that cost by reusing old live state is not Lean Dispatch.
+
 A PLAN room may choose Lean Dispatch for a dispatch set when the lane boundary
 is narrow, the owner repository is clear, and the WORK room can use a compact
 Context Capsule plus source pointers instead of a copied wall of context.
@@ -184,7 +197,8 @@ A compact Terminal Handoff must include:
 
 PLAN may ask the same WORK room for expanded detail only when acceptanceGate
 finds a missing field, a risk trigger fires, or the result affects a broader
-contract than the lane allowed.
+contract than the lane allowed, and only while the same PLAN task and delivery
+round remain active. A new PLAN task creates a fresh round and WORK context.
 
 ## Escalation Triggers
 
@@ -207,8 +221,9 @@ triggers appears:
 - any claim that would change FlowDoc product truth or map truth
 
 When a trigger fires, PLAN either expands the packet, raises the verification
-tier, sends a Revision Packet to the same WORK room, splits the lane, or blocks
-the round.
+tier, sends a Revision Packet to the same WORK room within the same active PLAN
+and round, splits the lane, or blocks the round. A new PLAN task opens a fresh
+round and WORK context instead.
 
 ## Lean Dispatch Defaults By Work Type
 
@@ -230,8 +245,10 @@ not remove required orchestration or evidence fields. A compact handoff can be
 accepted when it carries all acceptanceGate fields for the lane's Work Type.
 
 If a lean packet caused the WORK room to miss required context, PLAN marks the
-handoff `needs-revision`, sends a Revision Packet to the same WORK room when
-the original locator is usable, and expands only the missing context. If the
+handoff `needs-revision`, sends a Revision Packet to the same WORK room only
+while the same PLAN task and delivery round remain active and the original
+locator is usable, and expands only the missing context. A new PLAN task opens
+a fresh round and WORK context. If the
 missing context changes owner, evidence target, source-of-truth rule, or
 cross-repository contract, PLAN requires a Contract Change Request instead.
 

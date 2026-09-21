@@ -102,6 +102,21 @@ be able to hold multiple active WORK rooms, enqueue close-together returns in
 duplicate handoff idempotently, and process one queued handoff at a time
 through `acceptanceGate`.
 
+New PLAN task means a new delivery round and a fresh execution context. It
+must allocate fresh round, generation, dispatch-set, room-run, handoff,
+WORK-task, worktree-or-branch, and Return-Channel identities. The current PLAN
+must not send, wait, revise, resume, or hand off through an older PLAN or WORK
+task. The same WORK room may receive revisions only while the same PLAN task
+and delivery round remain active.
+
+Prior accepted commits, Evidence, and Project Control records may be referenced
+only as immutable input. Older conversations, registries, liveness state,
+Return Channels, tasks, worktrees, and branches are historical rather than
+reusable execution context. An older task may be inspected only for an explicit
+audit or evidence-recovery request and never regains execution authority. Any
+stale PLAN, monitor, Return Channel, generation, or room locator blocks
+dispatch; do not wake the older task to repair the mismatch.
+
 Before returning to a drafted lane plan after a pause, feedback round, or
 partial dispatch, PLAN must restore the latest Room Run Registry or Lean
 Dispatch registry note for the active dispatch set. PLAN must not rely on
@@ -113,7 +128,9 @@ Return Channel, Active Return Command, liveness state, handoff ID,
 completionQueue arrival, acceptance decision, and revision state. PLAN must
 not repair WORK output itself; if returned output is incomplete or wrong but
 still belongs to the same lane, PLAN sends a Revision Packet back to the same
-WORK room when the original locator remains usable.
+WORK room only while the same PLAN task and delivery round remain active and
+the original locator remains usable. A new PLAN task creates a fresh round and
+WORK context instead.
 
 Use PLAN-owned reporting for product WORK output. Core, Backend, and Editor
 WORK rooms return evidence candidate handoffs and must not self-promote Project
@@ -123,16 +140,20 @@ the handoff through the mandatory automatic Return Channel, stages it in
 itself or delegates that reporting after acceptance. PLAN may pull by
 retrievable locator only to recover or classify a room whose Return Channel
 failed; that recovery does not satisfy automatic return. If acceptance returns
-`needs-revision`, PLAN sends a Revision Packet back to the same WORK room when
-the original retrievable locator is usable; the packet must preserve the
-original lane boundary and name any Contract Change Request requirement.
+`needs-revision`, PLAN sends a Revision Packet back to the same WORK room only
+while the same PLAN task and delivery round remain active and the original
+retrievable locator is usable; the packet must preserve the original lane
+boundary and name any Contract Change Request requirement. A new PLAN task
+opens a fresh round and WORK context instead.
 
 PLAN must not patch Core, Backend, or Editor product repositories after
 dispatch. When acceptance, merge, or main-gate verification finds that a fix
 would change a product repository, including test-only, fixture-only, or
 configuration-only repair, PLAN may diagnose and attach failure evidence, then
-product-repository repair goes back to the same WORK room as a Revision
-Packet when the original retrievable locator remains usable. PLAN-owned
+product-repository repair goes back to the same WORK room as a Revision Packet
+only while the same PLAN task and delivery round remain active and the original
+retrievable locator remains usable. A new PLAN task creates a fresh repair lane
+and WORK context. PLAN-owned
 exceptions are merge, verification, Project Control records, and cleanup that
 do not change product repository files or product behavior.
 

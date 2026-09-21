@@ -43,6 +43,18 @@ The PLAN room is the place that holds the round understanding. A WORK room
 should not have to reconstruct the whole FlowDoc context from memory, and it
 must not quietly invent scope when the handoff is thin.
 
+New PLAN task means a new delivery round and a fresh execution context. The
+current PLAN must not send, wait, revise, resume, or hand off through an older
+PLAN or WORK task. It creates fresh round, generation, dispatch, room, handoff,
+WORK-task, worktree-or-branch, and Return-Channel identities before assigning a
+Work Type or Context Capsule.
+
+The same WORK room remains eligible for revision only while the same PLAN task
+and delivery round remain active. Prior accepted commits, Evidence, and Project
+Control records may be referenced only as immutable input. An older task may be
+inspected only for an explicit audit or evidence-recovery request and never
+regains execution authority.
+
 Every executable lane should therefore carry two pieces of routing metadata:
 
 - `Work Type`: the kind of work the lane is allowed to perform.
@@ -262,7 +274,9 @@ Return Channel. Manual recovery does not satisfy automatic return and must not
 require `ตูม` to copy/paste Terminal Handoffs for ordinary progress.
 
 When acceptance fails but the lane is still valid, PLAN sends a Revision Packet
-to the same WORK room using the original retrievable locator. The Revision
+to the same WORK room only while the same PLAN task and delivery round remain
+active and using the original retrievable locator. A new PLAN task opens a
+fresh round and WORK context instead. The Revision
 Packet names the `revisionAttempt`, original lane, exact acceptanceGate gaps,
 allowed repair scope, still-forbidden scope, extra verification required,
 Return Channel, Liveness Signal, Death Signal, and whether a Contract Change
@@ -307,7 +321,9 @@ When preparing a dispatch set, the PLAN room must:
 8. own Project Control reporting after acceptance or delegate that reporting to
    a Project Control records lane;
 9. send Revision Packets back to the same WORK room for `needs-revision`
-   outcomes when the original retrievable locator remains usable;
+   outcomes only while the same PLAN task and delivery round remain active and
+   the original retrievable locator remains usable; otherwise open a fresh
+   round and WORK context;
 10. when there are multiple active WORK rooms, process close-together returns
     through `completionQueue` using `returnOrderPolicy`, `arrivalSequence`,
     and duplicate handoff handling.

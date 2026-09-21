@@ -85,6 +85,29 @@ one real WORK room. It answers when the PLAN room may split work into a
 dispatch set, how the PLAN room chooses `parallelLimit`, and how completed
 handoffs are processed without letting rooms collide.
 
+## New PLAN Round Isolation
+
+New PLAN task means a new delivery round and a fresh execution context. It
+must allocate a fresh round ID, ownership generation, dispatch set, room run,
+handoff ID, WORK task, worktree or branch, and Return Channel. The current PLAN
+must not send, wait, revise, resume, or hand off through an older PLAN or WORK
+task. The old PLAN and every room it owned become historical and read-only.
+
+A Revision Packet returns to the same WORK room only while the same PLAN task
+and delivery round remain active. If a new PLAN task has started, even a repair
+of the same product problem is a new lane and a new WORK task in the new round.
+Prior accepted commits, Evidence, and Project Control records may be referenced
+only as immutable input. Old conversations, room runs, handoff IDs, liveness
+state, Return Channels, branches, dirty candidates, and worktrees must not be
+reused as the new execution context.
+
+An older task may be inspected only for an explicit audit or evidence-recovery
+request and never regains execution authority. Retained unmerged value requires
+a separate reconciliation decision before a fresh round adopts it as an
+explicit commit or patch input. Before dispatch, PLAN must verify that the
+packet's PLAN ID, monitor owner, Return Channel, generation, and every room
+locator belong to the current round; any stale identity is a stop condition.
+
 ## N WORK Room Assessment
 
 `N WORK rooms` means the number of real separate Codex task/chat rooms the PLAN
@@ -257,8 +280,10 @@ rule only in a separate evidence note.
 
 PLAN must not repair WORK output itself. If returned output is incomplete or
 wrong but still belongs to the same lane, PLAN sends a Revision Packet back to
-the same WORK room when the original retrievable locator remains usable. If the
-same room cannot receive the packet, PLAN records the room as
+the same WORK room only while the same PLAN task and delivery round remain
+active and the original retrievable locator remains usable. If a new PLAN task
+has started, it creates a fresh round and WORK context instead. If the
+same-round room cannot receive the packet, PLAN records the room as
 `needs-attention`, `returned-silent`, `manual-recovered`,
 `return-channel-failed`, `UNKNOWN`, `RISK`, or `blocked`, then chooses the next
 PLAN action without silently taking over the lane.
@@ -471,7 +496,9 @@ must classify the result before opening dependent lanes:
   unavailable dependency, or Contract Change Request.
 
 For `needs-revision`, PLAN sends a Revision Packet back to the same WORK room
-when the original retrievable locator is still usable. The packet must include:
+only while the same PLAN task and delivery round remain active and the original
+retrievable locator is still usable. A new PLAN task must create a new round,
+lane attempt, WORK task, and Return Channel instead. The packet must include:
 
 - `revisionAttempt`;
 - original lane ID, Work Type, owner repository, and dispatch set ID;
@@ -525,9 +552,10 @@ A PLAN room that coordinates real WORK rooms should loop in this order:
 10. Put returned or recovered handoffs into `handoffInbox` and
     `completionQueue` with `arrivalSequence`.
 11. Run `acceptanceGate` one handoff at a time.
-12. Send Revision Packets to same WORK rooms for `needs-revision` results when
-    the original locator is still usable, or record the fallback state when it
-    is not.
+12. Send Revision Packets to same WORK rooms for `needs-revision` results only
+    within the same active PLAN task and round; otherwise open a fresh round and
+    WORK context. Record the fallback state when the same-round locator is not
+    usable.
 13. Update Project Control records only from accepted handoffs and verified
     evidence.
 14. Decide whether to dispatch the next set, revise the plan, block, or close

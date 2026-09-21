@@ -108,6 +108,19 @@ redefine delivery scope, role authority, source-of-truth rules, or
 cross-repository contracts; they should return RISK, UNKNOWN, BLOCKED, or a
 Contract Change Request to the PLAN room when scope changes are needed.
 
+New PLAN task means a new delivery round and a fresh execution context. It
+must create new coordination and execution identities rather than reuse an old
+PLAN, WORK task, room run, handoff, worktree, branch, or Return Channel. The
+current PLAN must not send, wait, revise, resume, or hand off through an older
+PLAN or WORK task. The same WORK room remains eligible for revision only while
+the same PLAN task and delivery round remain active.
+
+Prior accepted commits, Evidence, and Project Control records may be referenced
+only as immutable input. An older task may be inspected only for an explicit
+audit or evidence-recovery request and never regains execution authority. A
+new PLAN must stop before dispatch if any packet or monitor still points to an
+older PLAN or WORK task.
+
 PLAN-owned reporting keeps Project Control truth separate from product WORK.
 Product WORK rooms return evidence candidate handoffs and must not self-promote
 their own result into Project Control truth, map truth, accepted lane status,
@@ -122,14 +135,17 @@ PLAN must not patch Core, Backend, or Editor product repositories after
 dispatch. If acceptance, merge, or main-gate verification shows that a product
 repository needs repair, even test-only, fixture-only, or configuration-only
 repair, PLAN should diagnose and attach failure evidence, then
-product-repository repair goes back to the same WORK room as a Revision
-Packet when the original retrievable locator remains usable. PLAN-owned
+product-repository repair goes back to the same WORK room as a Revision Packet
+only while the same PLAN task and delivery round remain active and the original
+retrievable locator remains usable. A new PLAN task opens a fresh round and
+WORK context instead. PLAN-owned
 exceptions are merge, verification, Project Control records, and cleanup that
 do not change product repository files or product behavior.
 
 When returned work is incomplete but still inside the original lane, PLAN marks
 the room `needs-revision` and sends a Revision Packet back to the same WORK
-room when the original retrievable locator remains usable. That packet must
+room only while the same PLAN task and delivery round remain active and the
+original retrievable locator remains usable. That packet must
 name `revisionAttempt`, exact acceptance gaps, allowed repair scope,
 still-forbidden scope, required verification, Return Channel, Liveness Signal,
 Death Signal, and any Contract Change Request requirement. The same WORK room

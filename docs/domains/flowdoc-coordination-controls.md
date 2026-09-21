@@ -17,6 +17,30 @@ applicable; this contract never authorizes an unrelated new task.
 
 ## 1. Ownership before dispatch and integration
 
+### New PLAN round isolation
+
+New PLAN task means a new delivery round and a fresh execution context. The
+new PLAN must create a fresh round ID, ownership generation, dispatch set,
+room run, handoff ID, WORK task, worktree or branch, and Return Channel before
+dispatch. The current PLAN must not send, wait, revise, resume, or hand off
+through an older PLAN or WORK task. An older PLAN or WORK task is historical
+and read-only; receiving a correction request does not reactivate it.
+
+The same WORK room may receive a Revision Packet only while the same PLAN task
+and delivery round remain active. After a new PLAN task starts, unfinished or
+incorrect work becomes a newly defined lane in the new round. Prior accepted
+commits, Evidence, and Project Control records may be referenced only as
+immutable input. An unmerged candidate, dirty worktree, branch, room registry,
+conversation, liveness state, or Return Channel is not reusable execution
+state. Reconcile retained value separately, then materialize any approved input
+into the fresh round without attaching the older task or worktree.
+
+An older task may be inspected only for an explicit audit or evidence-recovery
+request and never regains execution authority. Before every dispatch, compare
+the active task identity with the packet's PLAN task ID, monitor owner, and
+Return Channel. Any mismatch stops dispatch; do not repair it by sending a
+message to the older task.
+
 Resolve a stable Work scope, owner repository, PLAN task, current ownership
 generation, lane, Phase, Checklist and Evidence target before dispatch. The
 same scope cannot have two active PLAN owners. Overlapping scope must be
@@ -29,13 +53,17 @@ that the expected ownership generation and base commit still match. A stale
 worktree cannot authorize its own merge. Serialize integration, verify the
 candidate against current main, merge, run the main gate, then release the
 turn. A failed gate freezes further integration for that repository while the
-original WORK receives a Revision Packet. Preserve its worktree and evidence.
+same-round WORK receives a Revision Packet. If a new PLAN task has started,
+open a new round and fresh WORK context instead. Preserve the failed round's
+worktree and evidence as historical material pending reconciliation.
 
 Ownership transfer names the old and new PLAN, reason, new generation and
-affected rooms. Supersede old active room attempts before issuing replacement
-authority. Late output remains reviewable history but cannot be accepted under
-the new generation. Cancellation similarly removes acceptance authority; it
-does not erase unique code or authorize deletion.
+affected rooms. It seals the older PLAN and rooms as history; it does not move
+their live execution context into the new PLAN. Supersede old active room
+attempts before creating fresh replacement rooms and authority. Late output
+remains reviewable history but cannot be accepted under the new generation.
+Cancellation similarly removes acceptance authority; it does not erase unique
+code or authorize deletion.
 
 The file-first registry provides validation and local write-conflict checks.
 It is not a distributed mutex or proof that an uncooperative room obeyed the

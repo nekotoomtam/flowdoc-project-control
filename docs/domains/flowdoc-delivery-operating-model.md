@@ -92,6 +92,26 @@ Each round should define:
 Round planning records intent. It must not be promoted as product truth until
 supported by repository-owned evidence.
 
+## New PLAN Round Isolation
+
+New PLAN task means a new delivery round and a fresh execution context. The
+current PLAN must create fresh round, ownership-generation, dispatch-set,
+room-run, handoff, WORK-task, worktree-or-branch, and Return-Channel identities.
+It must not send, wait, revise, resume, or hand off through an older PLAN or
+WORK task.
+
+The same WORK room is reusable only while the same PLAN task and delivery round
+remain active. A correction started from a new PLAN task is a new lane attempt
+with a new WORK task and execution context, not a continuation of the old
+Revision Packet loop. Prior accepted commits, Evidence, and Project Control
+records may be referenced only as immutable input. Older conversations,
+registries, liveness state, handoff IDs, Return Channels, dirty worktrees, and
+unmerged branches remain historical until separately reconciled.
+
+An older task may be inspected only for an explicit audit or evidence-recovery
+request and never regains execution authority. A stale PLAN ID, monitor owner,
+Return Channel, WORK locator, or generation is a pre-dispatch stop condition.
+
 ## PLAN Room Orchestration
 
 Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` whenever a PLAN
@@ -330,8 +350,10 @@ ordinary progress.
 If accepted work needs Project Control record writing, PLAN may use a Project
 Control records lane. If returned work is incomplete but still inside the
 original lane, PLAN marks it `needs-revision` and sends a Revision Packet back
-to the same WORK room when the original retrievable locator remains usable.
-The same WORK room may repair only the original lane. If repair needs a
+to the same WORK room only while the same PLAN task and delivery round remain
+active and the original retrievable locator remains usable. The same WORK room
+may repair only the original lane in that round. A new PLAN task creates a new
+round and fresh WORK context even for repair. If repair needs a
 different owner, source-of-truth rule, evidence target, or cross-repository
 contract, the WORK room returns a Contract Change Request.
 
@@ -340,8 +362,10 @@ dispatch. If acceptance review, merge, or main-gate verification reveals a
 product-repository problem, even a test-only, fixture-only, or
 configuration-only repair, PLAN may diagnose and attach failure evidence but
 must not commit a product repository repair directly. The
-product-repository repair goes back to the same WORK room as a Revision
-Packet when the original retrievable locator remains usable. PLAN-owned
+product-repository repair goes back to the same WORK room as a Revision Packet
+only while the same PLAN task and delivery round remain active and the original
+retrievable locator remains usable. A new PLAN task creates a new repair lane
+and WORK context. PLAN-owned
 exceptions are merge, verification, Project Control records, and cleanup that
 do not change product repository files or product behavior.
 

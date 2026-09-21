@@ -22,6 +22,19 @@ registration, lane cleanup, documentation synthesis, or product implementation.
 It is a coordination contract. It does not by itself prove that a product
 system is current.
 
+## PLAN round identity
+
+New PLAN task means a new delivery round and a fresh execution context. The
+current PLAN must not send, wait, revise, resume, or hand off through an older
+PLAN or WORK task. It creates fresh round, generation, dispatch, room, handoff,
+WORK-task, worktree-or-branch, and Return-Channel identities before execution.
+
+Prior accepted commits, Evidence, and Project Control records may be referenced
+only as immutable input. Older rooms and their live coordination state are not
+continuation inputs. An older task may be inspected only for an explicit audit
+or evidence-recovery request and never regains execution authority. Even a
+repair starts as a newly defined lane when the PLAN task has changed.
+
 ## 1. Round intake
 
 Before work starts, name the round in plain terms:
