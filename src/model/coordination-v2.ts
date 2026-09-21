@@ -13,6 +13,7 @@ import type {
 import {
   CoordinationTransitionError,
   applyLegacyCoordinationCommand,
+  canonicalPayloadDigest,
   validateLegacyCoordinationRegistry,
   type CoordinationCommand,
   type CoordinationCommandContext,
@@ -76,9 +77,24 @@ export function applyCoordinationV2Command(
   context: CoordinationCommandContext = {},
 ): CoordinationRegistryV2 {
   ensureRoundIdentity(registry, command);
+  if (command.type === "record-send" || command.type === "receive-handoff") {
+    ensurePayloadIdentity(command.payload, command);
+  }
   const legacy = toLegacyRegistry(registry);
   const result = applyLegacyCoordinationCommand(legacy, toLegacyCommand(command), context);
   return fromLegacyRegistry(result, registry.round);
+}
+
+function ensurePayloadIdentity(
+  payload: CoordinationTerminalPayloadV2,
+  identity: RoundCommandIdentity,
+): void {
+  if (payload.planTaskId !== identity.planTaskId || payload.roundId !== identity.roundId) {
+    throw new CoordinationTransitionError(
+      "PLAN_ROUND_MISMATCH",
+      "Terminal payload must belong to the active owning PLAN round.",
+    );
+  }
 }
 
 export function validateCoordinationV2Registry(
@@ -285,11 +301,13 @@ function fromLegacyPayload(
 }
 
 function toLegacyHandoff(handoff: CoordinationHandoffV2): CoordinationHandoff {
-  return { ...handoff, payload: toLegacyPayload(handoff.payload) };
+  const payload = toLegacyPayload(handoff.payload);
+  return { ...handoff, payload, payloadDigest: canonicalPayloadDigest(payload) };
 }
 
 function fromLegacyHandoff(handoff: CoordinationHandoff, roundId: string): CoordinationHandoffV2 {
-  return { ...handoff, payload: fromLegacyPayload(handoff.payload, roundId) };
+  const payload = fromLegacyPayload(handoff.payload, roundId);
+  return { ...handoff, payload, payloadDigest: canonicalPayloadDigest(payload) };
 }
 
 function toLegacyCleanup(

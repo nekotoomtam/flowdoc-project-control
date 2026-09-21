@@ -73,6 +73,17 @@ export async function applyCoordinationCommandToWorkFile(
     }
 
     const loaded = await loadProjectSources(rootDir);
+    try {
+      await validateProjectSemantics(loaded);
+    } catch (error: unknown) {
+      if (error instanceof ProjectValidationError) {
+        throw new CoordinationPersistenceError(
+          "CANDIDATE_INVALID",
+          `Stored Work failed semantic validation: ${error.diagnostics.map(({ code }) => code).join(", ")}.`,
+        );
+      }
+      throw error;
+    }
     const evidenceById = new Map(loaded.evidence.map(({ value }) => [
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },

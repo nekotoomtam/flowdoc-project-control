@@ -3,12 +3,33 @@ import {
   CoordinationTransitionError,
   applyCoordinationCommand,
   assessCleanupEligibility,
+  canonicalPayloadDigest,
 } from "../src/model/coordination.js";
-import type { CoordinationCleanupStateV2 } from "../src/model/types.js";
+import type {
+  CoordinationCleanupStateV2,
+  CoordinationTerminalPayloadV2,
+} from "../src/model/types.js";
 import { createCoordinationRegistryFixture } from "./fixtures/coordination-registry.js";
 import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
 
 describe("self-contained coordination registry v2", () => {
+  const payload = (roundId = "round-2"): CoordinationTerminalPayloadV2 => ({
+    planTaskId: "plan-2",
+    roundId,
+    roomRunId: "pilot-v2-room",
+    laneId: "pilot-v2-lane",
+    ownerRepositoryId: "project-control",
+    revisionAttempt: 0,
+    status: "PASS",
+    behaviorChanged: false,
+    behaviorSummary: "No behavior change.",
+    changedFiles: [],
+    tests: ["focused"],
+    evidenceIds: [],
+    risks: [],
+    unknowns: [],
+  });
+
   it("rejects every mutation against version 1", () => {
     expect(() => applyCoordinationCommand(createCoordinationRegistryFixture(), {
       type: "release-round",
@@ -61,6 +82,39 @@ describe("self-contained coordination registry v2", () => {
       planTaskId: "plan-2",
       roundId: "round-2",
     } as never)).toThrowError(expect.objectContaining({ code: "UNKNOWN_COMMAND" }));
+  });
+
+  it("rejects a terminal payload from another round without rewriting it", () => {
+    const registry = createCoordinationRegistryV2Fixture();
+    registry.roomRuns[0]!.status = "active";
+    const wrongRoundPayload = payload("old-round");
+    expect(() => applyCoordinationCommand(registry, {
+      type: "record-send",
+      planTaskId: "plan-2",
+      roundId: "round-2",
+      handoffId: "pilot-v2-room-r0",
+      payload: wrongRoundPayload,
+      outcome: "sent",
+      attemptedAt: "2026-09-21T07:01:00.000Z",
+    })).toThrowError(expect.objectContaining({ code: "PLAN_ROUND_MISMATCH" }));
+    expect(wrongRoundPayload.roundId).toBe("old-round");
+    expect(registry.handoffs).toEqual([]);
+  });
+
+  it("stores the digest of the actual version 2 payload", () => {
+    const registry = createCoordinationRegistryV2Fixture();
+    registry.roomRuns[0]!.status = "active";
+    const terminalPayload = payload();
+    const sent = applyCoordinationCommand(registry, {
+      type: "record-send",
+      planTaskId: "plan-2",
+      roundId: "round-2",
+      handoffId: "pilot-v2-room-r0",
+      payload: terminalPayload,
+      outcome: "sent",
+      attemptedAt: "2026-09-21T07:01:00.000Z",
+    });
+    expect(sent.handoffs[0]!.payloadDigest).toBe(canonicalPayloadDigest(terminalPayload));
   });
 
   it("never reactivates a released round", () => {

@@ -10,6 +10,7 @@ import type {
   CoordinationRegistryV2,
   CoordinationRoomRun,
   CoordinationTerminalPayload,
+  CoordinationTerminalPayloadV2,
   CoordinationUxGate,
   WorkRecord,
 } from "./types.js";
@@ -117,7 +118,9 @@ export class CoordinationTransitionError extends Error {
   }
 }
 
-export function canonicalPayloadDigest(payload: CoordinationTerminalPayload): string {
+export function canonicalPayloadDigest(
+  payload: CoordinationTerminalPayload | CoordinationTerminalPayloadV2,
+): string {
   return createHash("sha256").update(JSON.stringify(canonicalize(payload))).digest("hex");
 }
 
@@ -293,11 +296,24 @@ export function validateCoordinationRegistries(
   const activeScopes = new Map<string, { workId: string; planTaskId: string }>();
   const activeIntegrators = new Map<string, { workId: string; planTaskId: string }>();
   const activeFileScopes: Array<{ workId: string; planTaskId: string; path: string }> = [];
+  const planRounds = new Map<string, { workId: string; mutable: boolean }>();
 
   for (const work of workRecords) {
     const registry = work.coordination;
     if (registry === undefined) continue;
     if (registry.version === 2) {
+      const planRoundKey = `${registry.round.planTaskId}\u0000${registry.round.roundId}`;
+      const existingRound = planRounds.get(planRoundKey);
+      const mutable = registry.round.state === "active";
+      if (existingRound !== undefined && existingRound.workId !== work.id && (existingRound.mutable || mutable)) {
+        issues.push(issue(
+          "COORDINATION_PLAN_ROUND_REUSED",
+          `PLAN/round identity ${registry.round.planTaskId}/${registry.round.roundId} is already registered by ${existingRound.workId}.`,
+          work.id,
+        ));
+      } else if (existingRound === undefined) {
+        planRounds.set(planRoundKey, { workId: work.id, mutable });
+      }
       issues.push(...validateCoordinationV2Registry(work.id, registry, evidenceById));
       if (registry.round.state === "active") {
         for (const scopeKey of registry.round.scopeKeys) {

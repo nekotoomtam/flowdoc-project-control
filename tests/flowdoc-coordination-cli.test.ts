@@ -141,6 +141,31 @@ describe("coordination registry persistence", () => {
     expect(await readFile(path, "utf8")).toBe(before);
   });
 
+  it("does not normalize an invalid stored room into the current round", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    const path = await installRegistry(root, "pilot-task");
+    const work = JSON.parse(await readFile(path, "utf8")) as {
+      coordination: ReturnType<typeof createCoordinationRegistryV2Fixture>;
+    };
+    work.coordination.roomRuns[0]!.roundId = "old-round";
+    await writeFile(path, JSON.stringify(work));
+    const before = await readFile(path, "utf8");
+
+    await expect(applyCoordinationCommandToWorkFile({
+      rootDir: root,
+      workFile: "data/work/pilot-task.json",
+      expectedRevision: 0,
+      command: {
+        type: "supersede-attempt",
+        planTaskId: "plan-2",
+        roundId: "round-2",
+        roomRunId: "pilot-v2-room",
+        revisionAttempt: 0,
+      },
+    })).rejects.toMatchObject({ code: "CANDIDATE_INVALID" });
+    expect(await readFile(path, "utf8")).toBe(before);
+  });
+
   it("never force-unlocks an existing writer guard", async () => {
     const root = await createProjectFixture({ valid: true, newContractTask: true });
     await installRegistry(root, "pilot-task");

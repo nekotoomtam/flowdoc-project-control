@@ -1145,4 +1145,26 @@ describe("self-contained execution identities", () => {
       code: "COORDINATION_EXECUTION_IDENTITY_REUSED",
     }));
   });
+
+  it("rejects the same PLAN and round identity on another Work record", () => {
+    const first = createCoordinationRegistryV2Fixture();
+    first.round.workId = "work-one";
+    const second = createCoordinationRegistryV2Fixture();
+    second.round.workId = "work-two";
+    second.round.scopeId = "other-scope";
+    second.round.scopeKeys = ["flowdoc:other-scope"];
+    second.round.allowedFiles = ["other/"];
+    second.integrationClaims[0]!.repositoryId = "other-repository";
+    second.roomRuns[0]!.roomRunId = "other-room";
+    second.roomRuns[0]!.dispatchSetId = "other-dispatch";
+    second.roomRuns[0]!.expectedHandoffId = "other-handoff";
+    second.roomRuns[0]!.locator.threadId = "other-thread";
+
+    expect(validateCoordinationRegistries([
+      { id: "work-one", coordination: first },
+      { id: "work-two", coordination: second },
+    ], new Map())).toContainEqual(expect.objectContaining({
+      code: "COORDINATION_PLAN_ROUND_REUSED",
+    }));
+  });
 });
