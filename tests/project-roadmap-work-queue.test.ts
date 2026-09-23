@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 53);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 54);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -471,6 +471,22 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-product-development-resumption",
         "project-control-hardening",
         "work-tree-phase-checklist-sqlite-contract",
+      ],
+    });
+    expect(model.work.find((item) => item.id === "agent-and-skill-design")).toMatchObject({
+      childWorkIds: ["plan-self-contained-rounds", "workflow-economy-clean-cutover"],
+    });
+    expect(model.work.find((item) => item.id === "workflow-economy-clean-cutover")).toMatchObject({
+      workKind: "task",
+      workState: "in-review",
+      parentWorkId: "agent-and-skill-design",
+      nodeId: "project-control",
+      activeRole: "project-control-steward",
+      phaseIds: ["phase-workflow-economy-clean-cutover-design"],
+      workPathIds: [
+        "flowdoc-product-development-resumption",
+        "agent-and-skill-design",
+        "workflow-economy-clean-cutover",
       ],
     });
     expect(model.work.find((item) => item.id === "flowdoc-product-development-resumption")).toMatchObject({
@@ -703,6 +719,7 @@ describe("project roadmap Work Queue", () => {
         "project-control-hardening",
         "project-control-overview-history-gui",
         "work-tree-phase-checklist-sqlite-contract",
+        "workflow-economy-clean-cutover",
       ],
     });
     expect(model.nodes.find((node) => node.id === "flowdoc")).toMatchObject({

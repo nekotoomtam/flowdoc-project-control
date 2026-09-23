@@ -1,0 +1,30 @@
+{
+  "kind": "checklist",
+  "id": "checklist-workflow-economy-clean-cutover-design",
+  "phaseId": "phase-workflow-economy-clean-cutover-design",
+  "title": "Workflow economy clean authority cutover design",
+  "items": [
+    {
+      "id": "twenty-item-coverage",
+      "label": "The written design maps every item in the user-provided twenty-item brief to one bounded rule.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-workflow-economy-clean-cutover-design-2026-09-23.md",
+      "verificationNote": "The Source Brief table maps items 1 through 20 individually to bounded design decisions."
+    },
+    {
+      "id": "no-dual-authority",
+      "label": "The design requires one atomic cutover and prohibits simultaneous current old and new authority.",
+      "state": "passed",
+      "evidenceTarget": "Clean Authority Cutover section of the written design",
+      "verificationNote": "The design keeps existing authority current before cutover, requires all entrypoints to switch at one gate, and permits only the replacement authority afterward."
+    },
+    {
+      "id": "user-design-review",
+      "label": "The user reviews and approves the written design before implementation planning.",
+      "state": "pending",
+      "evidenceTarget": "User review decision in the current PLAN task"
+    }
+  ],
+  "createdAt": "2026-09-23T10:01:53.2697189+07:00",
+  "updatedAt": "2026-09-23T10:01:53.2697189+07:00"
+}

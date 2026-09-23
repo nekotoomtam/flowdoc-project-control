@@ -1,0 +1,13 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-workflow-economy-clean-cutover-design-2026-09-23",
+  "title": "FlowDoc Workflow Economy Clean Cutover Design",
+  "path": "docs/domains/flowdoc-workflow-economy-clean-cutover-design-2026-09-23.md",
+  "nodeIds": [
+    "project-control"
+  ],
+  "role": "decision",
+  "authority": "Design target for a future Project Control workflow authority cutover; the existing workflow remains authoritative until the verified atomic cutover.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}
