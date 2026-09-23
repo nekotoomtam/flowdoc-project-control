@@ -482,7 +482,10 @@ describe("project roadmap Work Queue", () => {
       parentWorkId: "agent-and-skill-design",
       nodeId: "project-control",
       activeRole: "project-control-steward",
-      phaseIds: ["phase-workflow-economy-clean-cutover-design"],
+      phaseIds: [
+        "phase-workflow-economy-clean-cutover-design",
+        "phase-workflow-economy-clean-cutover-implementation-planning",
+      ],
       workPathIds: [
         "flowdoc-product-development-resumption",
         "agent-and-skill-design",
