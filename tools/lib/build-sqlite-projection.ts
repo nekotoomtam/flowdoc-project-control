@@ -45,9 +45,10 @@ function writeProjection(outputPath: string, model: ProjectReadModel): void {
       create table phases(id text primary key, work_id text not null, phase_state text not null, phase_order real not null, title text not null, verification_target text not null, summary text not null);
       create table checklists(id text primary key, phase_id text not null, title text not null);
       create table checklist_items(checklist_id text not null, id text not null, item_order integer not null, label text not null, state text not null, evidence_target text not null, verification_note text, primary key(checklist_id, id));
-      create table documents(id text primary key, path text not null, role text not null, lifecycle text not null, title text not null, authority text not null);
+      create table documents(id text primary key, path text not null, role text not null, lifecycle text not null, context_class text, superseded_by text, title text not null, authority text not null);
+      create table document_supersession(successor_document_id text not null, superseded_document_id text not null, primary key(successor_document_id, superseded_document_id));
       create table repositories(id text primary key, name text not null, remote text not null, checkout_alias text not null, default_branch text not null, ownership_summary text not null);
-      create table evidence(id text primary key, repository_id text not null, commit_sha text not null, path_or_contract_id text not null, verification_summary text not null, verified_at text not null);
+      create table evidence(id text primary key, repository_id text not null, commit_sha text not null, path_or_contract_id text not null, verification_summary text not null, verified_at text not null, validity_json text);
       create table work_context_documents(work_id text not null, document_id text not null, primary key(work_id, document_id));
       create table work_repositories(work_id text not null, repository_id text not null, primary key(work_id, repository_id));
       create table phase_repositories(phase_id text not null, repository_id text not null, primary key(phase_id, repository_id));
@@ -206,7 +207,10 @@ function insertChecklists(db: DatabaseSync, model: ProjectReadModel): void {
 
 function insertDocuments(db: DatabaseSync, model: ProjectReadModel): void {
   const insert = db.prepare(
-    "insert into documents(id, path, role, lifecycle, title, authority) values (?, ?, ?, ?, ?, ?)",
+    "insert into documents(id, path, role, lifecycle, context_class, superseded_by, title, authority) values (?, ?, ?, ?, ?, ?, ?, ?)",
+  );
+  const insertSupersession = db.prepare(
+    "insert into document_supersession(successor_document_id, superseded_document_id) values (?, ?)",
   );
   for (const document of model.documents) {
     insert.run(
@@ -214,9 +218,14 @@ function insertDocuments(db: DatabaseSync, model: ProjectReadModel): void {
       document.path,
       document.role,
       document.lifecycle,
+      document.contextClass ?? null,
+      document.supersededBy ?? null,
       document.title,
       document.authority,
     );
+    for (const supersededId of document.supersedes ?? []) {
+      insertSupersession.run(document.id, supersededId);
+    }
   }
 }
 
@@ -238,7 +247,7 @@ function insertRepositories(db: DatabaseSync, model: ProjectReadModel): void {
 
 function insertEvidence(db: DatabaseSync, model: ProjectReadModel): void {
   const insert = db.prepare(
-    "insert into evidence(id, repository_id, commit_sha, path_or_contract_id, verification_summary, verified_at) values (?, ?, ?, ?, ?, ?)",
+    "insert into evidence(id, repository_id, commit_sha, path_or_contract_id, verification_summary, verified_at, validity_json) values (?, ?, ?, ?, ?, ?, ?)",
   );
   for (const evidence of model.evidence) {
     insert.run(
@@ -248,6 +257,7 @@ function insertEvidence(db: DatabaseSync, model: ProjectReadModel): void {
       evidence.pathOrContractId,
       evidence.verificationSummary,
       evidence.verifiedAt,
+      evidence.validity === undefined ? null : JSON.stringify(evidence.validity),
     );
   }
 }

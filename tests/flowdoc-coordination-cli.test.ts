@@ -39,7 +39,9 @@ async function installRegistry(
 
 async function installV3Registry(root: string, active = false): Promise<string> {
   const path = join(root, "data", "work", "pilot-task.json");
+  const evidencePath = join(root, "data", "evidence", "evidence-design.json");
   const work = JSON.parse(await readFile(path, "utf8")) as Record<string, unknown>;
+  const evidence = JSON.parse(await readFile(evidencePath, "utf8")) as Record<string, unknown>;
   const registry = createCoordinationRegistryV3Fixture();
   registry.round.workId = "pilot-task";
   registry.round.allowedFiles = ["src/model/"];
@@ -54,8 +56,17 @@ async function installV3Registry(root: string, active = false): Promise<string> 
   room.packet.relevantEvidenceIds = ["evidence-design"];
   room.packetDigest = packetDigest(room.packet);
   if (active) room.status = "active";
+  evidence.validity = {
+    claim: "Design reviewed.",
+    repositoryId: "project-control",
+    pathScope: ["docs/overview.md"],
+    sourceRevision: "0123456789abcdef0123456789abcdef01234567",
+    verificationMethod: "fixture review",
+    freshnessTriggers: ["source changes"],
+  };
   work.coordination = registry;
   await writeFile(path, JSON.stringify(work));
+  await writeFile(evidencePath, JSON.stringify(evidence));
   return path;
 }
 

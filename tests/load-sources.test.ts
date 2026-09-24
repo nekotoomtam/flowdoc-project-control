@@ -1,4 +1,4 @@
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import type { PathLike } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
@@ -56,6 +56,26 @@ describe("loadProjectSources", () => {
     ]);
     expect(loaded.phases.map((entry) => entry.value.id)).toEqual(["phase-contract"]);
     expect(loaded.checklists.map((entry) => entry.value.id)).toEqual(["checklist-contract"]);
+  });
+
+  it("loads optional document context and Evidence validity metadata without rewriting legacy records", async () => {
+    const root = await createProjectFixture({ valid: true });
+    const documentPath = join(root, "data", "documents", "doc-overview.json");
+    const evidencePath = join(root, "data", "evidence", "evidence-design.json");
+    const document = JSON.parse(await readFile(documentPath, "utf8"));
+    const evidence = JSON.parse(await readFile(evidencePath, "utf8"));
+    document.contextClass = "current";
+    document.supersedes = [];
+    evidence.validity = {
+      claim: "Design is reviewed.", repositoryId: "project-control", pathScope: ["docs/overview.md"],
+      sourceRevision: evidence.commit, verificationMethod: "review", freshnessTriggers: ["document changes"],
+    };
+    await writeFile(documentPath, JSON.stringify(document));
+    await writeFile(evidencePath, JSON.stringify(evidence));
+
+    const loaded = await loadProjectSources(root);
+    expect(loaded.documents[0]!.value).toMatchObject({ contextClass: "current", supersedes: [] });
+    expect(loaded.evidence[0]!.value.validity).toMatchObject({ claim: "Design is reviewed." });
   });
 
   it("reports malformed JSON with file and repair hint", async () => {

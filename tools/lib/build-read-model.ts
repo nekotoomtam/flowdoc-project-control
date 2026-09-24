@@ -32,11 +32,21 @@ export async function buildProjectReadModel(
   const documents = await Promise.all(
     sortById(validated.documents).map(async ({ value }) => ({
       ...value,
+      ...(value.supersedes === undefined ? {} : { supersedes: [...value.supersedes].sort(compareCodeUnits) }),
       content: normalizeLineEndings(await readFile(join(validated.rootDir, value.path), "utf8")),
     })),
   );
   const repositories = sortById(validated.repositories).map(({ value }) => ({ ...value }));
-  const evidence = sortById(validated.evidence).map(({ value }) => ({ ...value }));
+  const evidence = sortById(validated.evidence).map(({ value }) => ({
+    ...value,
+    ...(value.validity === undefined ? {} : {
+      validity: {
+        ...value.validity,
+        pathScope: [...value.validity.pathScope].sort(compareCodeUnits),
+        freshnessTriggers: [...value.validity.freshnessTriggers].sort(compareCodeUnits),
+      },
+    }),
+  }));
 
   const nodeValues = nodes.map(({ value }) => value);
   const indexNodes = nodeValues.map((node) => ({

@@ -1298,6 +1298,13 @@
         },
         "authority": { "type": "string", "minLength": 1 },
         "lifecycle": { "enum": ["active", "superseded", "retired"] },
+        "contextClass": { "enum": ["current", "supporting", "historical"] },
+        "supersedes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/node/$defs/id" }
+        },
+        "supersededBy": { "$ref": "#/$defs/node/$defs/id" },
         "repositoryRefs": {
           "type": "array",
           "items": { "$ref": "#/$defs/node/$defs/repositoryRef" }
@@ -1350,7 +1357,32 @@
         "commit": { "$ref": "#/$defs/node/$defs/commit" },
         "pathOrContractId": { "$ref": "#/$defs/node/$defs/relativeTarget" },
         "verificationSummary": { "type": "string", "minLength": 1 },
-        "verifiedAt": { "type": "string", "format": "date-time" }
+        "verifiedAt": { "type": "string", "format": "date-time" },
+        "validity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "claim", "repositoryId", "pathScope", "sourceRevision", "verificationMethod", "freshnessTriggers"
+          ],
+          "properties": {
+            "claim": { "type": "string", "minLength": 1 },
+            "repositoryId": { "$ref": "#/$defs/node/$defs/id" },
+            "pathScope": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/node/$defs/relativeTarget" }
+            },
+            "sourceRevision": { "type": "string", "minLength": 1 },
+            "verificationMethod": { "type": "string", "minLength": 1 },
+            "freshnessTriggers": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "supersedesEvidenceId": { "$ref": "#/$defs/node/$defs/id" }
+          }
+        }
       }
     }
   }

@@ -159,9 +159,14 @@ function hasValidReadModelReferences(model: ProjectReadModel): boolean {
     && model.checklists.every((checklist) => phaseIds.has(checklist.phaseId)
       && checklist.items.every((item) => (item.evidenceIds ?? []).every((id) => evidenceIds.has(id))))
     && model.documents.every((document) => document.nodeIds.every((id) => nodeIds.has(id))
-      && document.repositoryRefs.every((reference) => repositoryIds.has(reference.repositoryId)))
+      && document.repositoryRefs.every((reference) => repositoryIds.has(reference.repositoryId))
+      && (document.supersededBy === undefined || documentIds.has(document.supersededBy))
+      && (document.supersedes ?? []).every((id) => documentIds.has(id)))
     && model.evidence.every((evidence) => evidence.nodeIds.every((id) => nodeIds.has(id))
-      && repositoryIds.has(evidence.repositoryId));
+      && repositoryIds.has(evidence.repositoryId)
+      && (evidence.validity === undefined || repositoryIds.has(evidence.validity.repositoryId))
+      && (evidence.validity?.supersedesEvidenceId === undefined
+        || evidenceIds.has(evidence.validity.supersedesEvidenceId)));
 }
 
 function isIndexNode(value: unknown): value is ProjectReadModel["nodes"][number] {
@@ -219,6 +224,9 @@ function isIndexDocument(value: unknown): value is ProjectReadModel["documents"]
   return isRecord(value) && value.kind === "document" && isNonEmptyString(value.id) && isNonEmptyString(value.title)
     && isNonEmptyString(value.path) && isUniqueStringArray(value.nodeIds) && isDocumentRole(value.role)
     && isNonEmptyString(value.authority) && isDocumentLifecycle(value.lifecycle) && typeof value.content === "string"
+    && (value.contextClass === undefined || isContextClass(value.contextClass))
+    && (value.supersedes === undefined || isUniqueStringArray(value.supersedes))
+    && (value.supersededBy === undefined || isNonEmptyString(value.supersededBy))
     && Array.isArray(value.repositoryRefs) && value.repositoryRefs.every(isRepositoryReference);
 }
 
@@ -231,7 +239,15 @@ function isRepositoryRecord(value: unknown): value is ProjectReadModel["reposito
 function isEvidenceRecord(value: unknown): value is ProjectReadModel["evidence"][number] {
   return isRecord(value) && value.kind === "evidence" && isNonEmptyString(value.id) && isUniqueStringArray(value.nodeIds)
     && isNonEmptyString(value.repositoryId) && isNonEmptyString(value.commit) && isNonEmptyString(value.pathOrContractId)
-    && isNonEmptyString(value.verificationSummary) && isNonEmptyString(value.verifiedAt);
+    && isNonEmptyString(value.verificationSummary) && isNonEmptyString(value.verifiedAt)
+    && (value.validity === undefined || isEvidenceValidity(value.validity));
+}
+
+function isEvidenceValidity(value: unknown): boolean {
+  return isRecord(value) && isNonEmptyString(value.claim) && isNonEmptyString(value.repositoryId)
+    && isNonEmptyUniqueStringArray(value.pathScope) && isNonEmptyString(value.sourceRevision)
+    && isNonEmptyString(value.verificationMethod) && isUniqueStringArray(value.freshnessTriggers)
+    && (value.supersedesEvidenceId === undefined || isNonEmptyString(value.supersedesEvidenceId));
 }
 
 function isRepositoryReference(value: unknown): boolean {
@@ -283,6 +299,10 @@ function isDocumentRole(value: unknown): boolean {
 
 function isDocumentLifecycle(value: unknown): boolean {
   return value === "active" || value === "superseded" || value === "retired";
+}
+
+function isContextClass(value: unknown): boolean {
+  return value === "current" || value === "supporting" || value === "historical";
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

@@ -40,7 +40,9 @@ export async function validateProjectSemantics(
       checkSingleActivePhase(loaded),
       checkChecklistReferences(loaded),
       checkDocumentPathsAndReferences(loaded),
+      checkDocumentSupersession(loaded),
       checkEvidenceReferences(loaded),
+      checkWorkflowEvidenceValidity(loaded),
       checkReciprocalOwnership(loaded),
       checkCurrentEvidence(loaded),
     ])
@@ -51,6 +53,206 @@ export async function validateProjectSemantics(
   }
 
   return loaded as ValidatedProjectSources;
+}
+
+function checkDocumentSupersession(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const documents = recordMap(loaded.documents);
+  const diagnostics: ProjectDiagnostic[] = [];
+  const successorsByOldId = new Map<string, LoadedRecord<DocumentRecord>[]>();
+
+  for (const document of loaded.documents) {
+    const value = document.value;
+    if ((value.supersededBy !== undefined || value.supersedes !== undefined) && value.contextClass === undefined) {
+      diagnostics.push(recordDiagnostic(
+        "DOCUMENT_CONTEXT_CLASS_REQUIRED",
+        `Document "${value.id}" participates in supersession without a context class.`,
+        document,
+        "Classify supersession participants as current or historical; legacy documents may omit contextClass only while they remain outside this policy.",
+      ));
+    }
+    if (value.contextClass === "historical" && value.lifecycle === "active") {
+      diagnostics.push(recordDiagnostic(
+        "HISTORICAL_DOCUMENT_ACTIVE",
+        `Historical document "${value.id}" cannot remain active authority.`,
+        document,
+        "Mark the document superseded or retired, or classify the active authority as current/supporting.",
+      ));
+    }
+    if (value.supersededBy !== undefined) {
+      const successor = documents.get(value.supersededBy);
+      if (successor === undefined) {
+        diagnostics.push(recordDiagnostic(
+          "DOCUMENT_SUCCESSOR_MISSING",
+          `Document "${value.id}" names missing successor "${value.supersededBy}".`,
+          document,
+          "Point supersededBy to one existing current Document.",
+        ));
+      } else {
+        if (!(successor.value.supersedes ?? []).includes(value.id)) {
+          diagnostics.push(recordDiagnostic(
+            "DOCUMENT_SUPERSESSION_ASYMMETRIC",
+            `Successor "${successor.value.id}" does not list "${value.id}" in supersedes.`,
+            document,
+            "Make supersedes and supersededBy reciprocal.",
+          ));
+        }
+        if (successor.value.contextClass !== "current" || successor.value.lifecycle !== "active") {
+          diagnostics.push(recordDiagnostic(
+            "SUPERSESSION_SUCCESSOR_NOT_ACTIVE",
+            `Successor "${successor.value.id}" is not active current authority.`,
+            successor,
+            "Classify the successor as current and keep lifecycle active.",
+          ));
+        }
+      }
+      if (value.contextClass !== "historical" || value.lifecycle !== "superseded") {
+        diagnostics.push(recordDiagnostic(
+          "SUPERSEDED_DOCUMENT_NOT_HISTORICAL",
+          `Superseded document "${value.id}" must be historical with superseded lifecycle.`,
+          document,
+          "Set contextClass to historical and lifecycle to superseded.",
+        ));
+      }
+    }
+
+    for (const oldId of value.supersedes ?? []) {
+      const candidates = successorsByOldId.get(oldId) ?? [];
+      candidates.push(document);
+      successorsByOldId.set(oldId, candidates);
+      const old = documents.get(oldId);
+      if (old === undefined) {
+        diagnostics.push(recordDiagnostic(
+          "DOCUMENT_SUPERSEDED_TARGET_MISSING",
+          `Document "${value.id}" supersedes missing document "${oldId}".`,
+          document,
+          "Reference an existing historical Document.",
+        ));
+      } else if (old.value.supersededBy !== value.id) {
+        diagnostics.push(recordDiagnostic(
+          "DOCUMENT_SUPERSESSION_ASYMMETRIC",
+          `Document "${oldId}" does not point back to successor "${value.id}".`,
+          document,
+          "Make supersedes and supersededBy reciprocal.",
+        ));
+      }
+    }
+  }
+
+  for (const [oldId, successors] of successorsByOldId) {
+    if (successors.length > 1) {
+      for (const successor of successors) {
+        diagnostics.push(recordDiagnostic(
+          "DOCUMENT_SUPERSESSION_FORK",
+          `Document "${oldId}" has multiple current successor candidates.`,
+          successor,
+          "Keep exactly one successor for each superseded Document.",
+        ));
+      }
+    }
+  }
+
+  const reportedCycles = new Set<string>();
+  for (const start of loaded.documents) {
+    const chain: string[] = [];
+    const positions = new Map<string, number>();
+    let current: LoadedRecord<DocumentRecord> | undefined = start;
+    while (current !== undefined) {
+      const position = positions.get(current.value.id);
+      if (position !== undefined) {
+        const cycle = chain.slice(position);
+        const key = [...cycle].sort(compareCodeUnits).join("\u0000");
+        if (!reportedCycles.has(key)) {
+          reportedCycles.add(key);
+          diagnostics.push(recordDiagnostic(
+            "DOCUMENT_SUPERSESSION_CYCLE",
+            `Document supersession contains a cycle: ${[...cycle, cycle[0]].join(" -> ")}.`,
+            current,
+            "Break the cycle and retain one directional path to active current authority.",
+          ));
+        }
+        break;
+      }
+      positions.set(current.value.id, chain.length);
+      chain.push(current.value.id);
+      current = current.value.supersededBy === undefined
+        ? undefined
+        : documents.get(current.value.supersededBy);
+    }
+  }
+
+  for (const work of loaded.work) {
+    for (const documentId of work.value.contextDocumentIds ?? []) {
+      const document = documents.get(documentId);
+      if (document?.value.contextClass === "historical") {
+        diagnostics.push(recordDiagnostic(
+          "HISTORICAL_DEFAULT_CONTEXT",
+          `Work default context names historical document "${documentId}".`,
+          work,
+          "Remove historical content from contextDocumentIds and load it only for a named audit or recovery mode.",
+        ));
+      }
+    }
+  }
+  return diagnostics;
+}
+
+function checkWorkflowEvidenceValidity(loaded: LoadedProjectSources): ProjectDiagnostic[] {
+  const evidence = recordMap(loaded.evidence);
+  const diagnostics: ProjectDiagnostic[] = [];
+
+  for (const record of loaded.evidence) {
+    const validity = record.value.validity;
+    if (validity === undefined) continue;
+    if (validity.repositoryId !== record.value.repositoryId) {
+      diagnostics.push(recordDiagnostic(
+        "EVIDENCE_VALIDITY_REPOSITORY_MISMATCH",
+        `Evidence "${record.value.id}" validity names a different repository.`,
+        record,
+        "Match validity.repositoryId to the Evidence owner repository.",
+      ));
+    }
+    if (validity.sourceRevision !== record.value.commit) {
+      diagnostics.push(recordDiagnostic(
+        "EVIDENCE_VALIDITY_REVISION_MISMATCH",
+        `Evidence "${record.value.id}" validity does not match its source commit.`,
+        record,
+        "Use the verified source commit as sourceRevision.",
+      ));
+    }
+    if (validity.supersedesEvidenceId !== undefined && !evidence.has(validity.supersedesEvidenceId)) {
+      diagnostics.push(recordDiagnostic(
+        "EVIDENCE_SUPERSEDED_TARGET_MISSING",
+        `Evidence "${record.value.id}" supersedes missing Evidence "${validity.supersedesEvidenceId}".`,
+        record,
+        "Reference an existing Evidence record.",
+      ));
+    }
+  }
+
+  for (const work of loaded.work) {
+    if (work.value.coordination?.version !== 3) continue;
+    for (const room of work.value.coordination.roomRuns) {
+      for (const evidenceId of room.packet.relevantEvidenceIds) {
+        const referenced = evidence.get(evidenceId);
+        if (referenced === undefined) {
+          diagnostics.push(recordDiagnostic(
+            "MISSING_EVIDENCE",
+            `Version 3 packet references missing Evidence "${evidenceId}".`,
+            work,
+            "Reference a canonical Evidence record.",
+          ));
+        } else if (referenced.value.validity === undefined) {
+          diagnostics.push(recordDiagnostic(
+            "WORKFLOW_EVIDENCE_VALIDITY_REQUIRED",
+            `Version 3 packet Evidence "${evidenceId}" has no validity boundary.`,
+            work,
+            "Add claim, scope, source revision, verification method, and freshness triggers before reuse.",
+          ));
+        }
+      }
+    }
+  }
+  return diagnostics;
 }
 
 function checkHistoricalRecoveryWork(loaded: LoadedProjectSources): ProjectDiagnostic[] {

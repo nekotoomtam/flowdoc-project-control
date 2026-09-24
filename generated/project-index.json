@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "7e13bd65fe991d5c272fd962b75a29247b8ba6d48fe585655e1f9d04bbf2cc26",
+  "sourceDigest": "ad073b64103a9899aed30a4cb211ef2ec5b2cfa28fd1d3c348270487aab971f4",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8703,7 +8703,7 @@
       "riskSummary": "A partial migration could leave two active rule sets or remove a safety invariant. The design therefore requires an atomic entrypoint cutover, behavior tests, historical readability, and no reuse of closed PLAN or WORK execution context.",
       "requiredEvidence": [],
       "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-      "updatedAt": "2026-09-24T09:00:16.2352636+07:00",
+      "updatedAt": "2026-09-24T09:27:48.0704957+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-economy-clean-cutover-design",
@@ -21572,8 +21572,9 @@
         {
           "id": "context-supersession",
           "label": "Evidence validity, context routing, and document supersession are deterministic and reject conflicting authority.",
-          "state": "pending",
-          "evidenceTarget": "tests/flowdoc-context-routing.test.ts"
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-context-routing.test.ts",
+          "verificationNote": "RED: context routing module, schema fields, browser validation, SQLite projection, V3 Evidence validity, and supersession context classification were absent or rejected. GREEN: 37 focused routing, projection, source-loading, schema, and browser-loader tests plus TypeScript type-check passed on 2026-09-24."
         },
         {
           "id": "current-truth-cockpit",
@@ -21595,7 +21596,7 @@
         }
       ],
       "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-      "updatedAt": "2026-09-24T09:00:16.2352636+07:00"
+      "updatedAt": "2026-09-24T09:27:48.0704957+07:00"
     },
     {
       "kind": "checklist",

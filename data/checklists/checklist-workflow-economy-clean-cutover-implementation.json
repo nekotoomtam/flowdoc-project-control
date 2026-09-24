@@ -21,8 +21,9 @@
     {
       "id": "context-supersession",
       "label": "Evidence validity, context routing, and document supersession are deterministic and reject conflicting authority.",
-      "state": "pending",
-      "evidenceTarget": "tests/flowdoc-context-routing.test.ts"
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-context-routing.test.ts",
+      "verificationNote": "RED: context routing module, schema fields, browser validation, SQLite projection, V3 Evidence validity, and supersession context classification were absent or rejected. GREEN: 37 focused routing, projection, source-loading, schema, and browser-loader tests plus TypeScript type-check passed on 2026-09-24."
     },
     {
       "id": "current-truth-cockpit",
@@ -44,5 +45,5 @@
     }
   ],
   "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-  "updatedAt": "2026-09-24T09:00:16.2352636+07:00"
+  "updatedAt": "2026-09-24T09:27:48.0704957+07:00"
 }

@@ -26,6 +26,7 @@ export type DocumentRole =
   | "glossary"
   | "version";
 export type DocumentLifecycle = "active" | "superseded" | "retired";
+export type ContextClass = "current" | "supporting" | "historical";
 
 export type CoordinationTerminalStatus = "PASS" | "FAIL" | "BLOCKER" | "RISK" | "UNKNOWN";
 export type CoordinationCheckStatus = "pending" | "passed" | "failed";
@@ -517,11 +518,24 @@ export interface DocumentRecord {
   role: DocumentRole;
   authority: string;
   lifecycle: DocumentLifecycle;
+  contextClass?: ContextClass;
+  supersedes?: string[];
+  supersededBy?: string;
   repositoryRefs: Array<{
     repositoryId: string;
     commit: string;
     pathOrContractId: string;
   }>;
+}
+
+export interface EvidenceValidity {
+  claim: string;
+  repositoryId: string;
+  pathScope: string[];
+  sourceRevision: string;
+  verificationMethod: string;
+  freshnessTriggers: string[];
+  supersedesEvidenceId?: string;
 }
 
 export interface RepositoryRecord {
@@ -543,6 +557,7 @@ export interface EvidenceRecord {
   pathOrContractId: string;
   verificationSummary: string;
   verifiedAt: string;
+  validity?: EvidenceValidity;
 }
 
 export type ProjectRecord =

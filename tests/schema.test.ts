@@ -48,5 +48,11 @@ describe("project-control schema", () => {
     expect(schema.$defs.work.properties).not.toHaveProperty("truthState");
     expect(schema.$defs.node.properties).not.toHaveProperty("phaseState");
     expect(schema.$defs.node.properties).not.toHaveProperty("items");
+    expect(schema.$defs.document.properties.contextClass.enum).toEqual(["current", "supporting", "historical"]);
+    expect(schema.$defs.document.properties).toHaveProperty("supersedes");
+    expect(schema.$defs.document.properties).toHaveProperty("supersededBy");
+    expect(schema.$defs.evidence.properties.validity.required).toEqual([
+      "claim", "repositoryId", "pathScope", "sourceRevision", "verificationMethod", "freshnessTriggers",
+    ]);
   });
 });
