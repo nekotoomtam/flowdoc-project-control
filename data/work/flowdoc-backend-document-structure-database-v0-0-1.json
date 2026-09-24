@@ -10,8 +10,7 @@
   "summary": "PLAN accepted the Backend document-structure database v0.0.1 implementation lane after one same-room revision. Backend commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3 adds repository/service/schema foundations for drafts, sections, components, component versions, document versions, bindings, publications, pure field types, section tree validation, and component version create-or-select behavior.",
   "contextDocumentIds": [
     "doc-flowdoc-document-structure-database-model-2026-09-04",
-    "doc-flowdoc-plan-room-orchestration-rules",
-    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-workflow-economy-policy",
     "doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"
   ],
   "activeRole": "evidence-reviewer",

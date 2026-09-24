@@ -6,7 +6,9 @@
   "nodeIds": ["project-control"],
   "role": "contract",
   "authority": "Project Control PLAN room orchestration contract for decomposing delivery understanding into N WORK rooms, dispatch sets, room run tracking, handoff inbox processing, completion queue sequencing, acceptance gates, and source-of-truth boundaries.",
-  "lifecycle": "active",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",

@@ -6,7 +6,9 @@
   "nodeIds": ["project-control"],
   "role": "contract",
   "authority": "Project Control Work Type routing contract for assigning lane Work Type, writing Context Capsules, requiring Context Acknowledgement, preserving retrievable locators, selecting skill candidates, and accepting returned handoffs by output shape.",
-  "lifecycle": "active",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",

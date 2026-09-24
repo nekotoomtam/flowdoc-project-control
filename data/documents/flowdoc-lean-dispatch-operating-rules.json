@@ -6,7 +6,9 @@
   "nodeIds": ["project-control"],
   "role": "contract",
   "authority": "Project Control Lean Dispatch contract for reducing PLAN/WORK room context, token, verification, review, evidence, and handoff cost without weakening automatic return, liveness, retrievable locator, completion queue, or acceptance gate obligations.",
-  "lifecycle": "active",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",

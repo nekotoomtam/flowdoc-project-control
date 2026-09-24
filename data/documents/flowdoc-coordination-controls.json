@@ -9,5 +9,6 @@
   "role": "contract",
   "authority": "Canonical six-control coordination contract only; no Core, Backend, Editor or map truth.",
   "lifecycle": "active",
+  "contextClass": "supporting",
   "repositoryRefs": []
 }

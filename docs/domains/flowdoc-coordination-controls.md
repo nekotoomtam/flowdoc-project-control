@@ -9,11 +9,12 @@ checklist-agent-and-skill-design-coordination-six. Evidence target:
 evidence-flowdoc-coordination-six-2026-09-10. This contract defines agent
 workflow, not Core, Backend, Editor, typing performance, or map truth.
 
-This document owns the six controls below. Delivery, orchestration, routing,
-Lean Dispatch and role documents link here instead of maintaining independent
-copies of these rules. Existing historical evidence remains bounded to its
-recorded revision. User instructions and approved narrower lane scope remain
-applicable; this contract never authorizes an unrelated new task.
+This is a supporting contract for the six controls below when PLAN uses a real
+separate WORK room. The current workflow authority is
+`docs/domains/flowdoc-workflow-economy-policy.md`; it decides whether a room is
+needed and owns size, risk, authority, proof, document, context, completion, and
+stopping policy. Existing historical evidence remains bounded to its recorded
+revision. This contract never authorizes an unrelated new task.
 
 ## 1. Ownership before dispatch and integration
 
@@ -21,9 +22,10 @@ applicable; this contract never authorizes an unrelated new task.
 
 One PLAN task owns exactly one execution round. New PLAN task means a new
 delivery round and a fresh execution context. A new PLAN creates a new Work
-execution record and version 2 registry with a fresh round ID, dispatch set,
+execution record and version 3 registry with a fresh round ID, dispatch set,
 room run, handoff ID, WORK task, worktree or branch, and Return Channel before
-dispatch. Version 1 coordination is historical and read-only. Cross-PLAN
+dispatch. Version 1 coordination is historical and read-only. Version 2 is also
+historical and read-only. Cross-PLAN
 ownership transfer is not supported. The current PLAN must not send, wait,
 revise, resume, or hand off through an older PLAN or WORK task. Missing history
 is recovered through separate read-only Historical Recovery Work; it never
@@ -62,7 +64,7 @@ open a new round and fresh WORK context instead. Preserve the failed round's
 worktree and evidence as historical material pending reconciliation.
 
 Cross-PLAN ownership transfer is not supported. A new PLAN creates a distinct
-Work execution record and version 2 registry without moving live execution
+Work execution record and version 3 registry without moving live execution
 context from an older PLAN. Older PLAN and room records remain reviewable
 history, but their late output cannot be accepted by the new round. Cancellation
 similarly removes acceptance authority; it does not erase unique code or

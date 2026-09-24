@@ -6,7 +6,9 @@
   "nodeIds": ["project-control"],
   "role": "contract",
   "authority": "Project Control PLAN and WORK room delivery operating contract for real multi-room FlowDoc execution, lane kickoff, handoff, evidence target, and source-of-truth boundaries.",
-  "lifecycle": "active",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
   "repositoryRefs": [
     {
       "repositoryId": "repo-project-control",

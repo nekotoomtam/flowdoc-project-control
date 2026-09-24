@@ -1,10 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
   CoordinationTransitionError,
-  applyCoordinationCommand,
+  applyCoordinationCommand as applyVersionedCoordinationCommand,
   assessCleanupEligibility,
   canonicalPayloadDigest,
 } from "../src/model/coordination.js";
+import { applyCoordinationV2Command as applyCoordinationCommand } from "../src/model/coordination-v2.js";
 import type {
   CoordinationCleanupStateV2,
   CoordinationTerminalPayloadV2,
@@ -31,11 +32,11 @@ describe("self-contained coordination registry v2", () => {
   });
 
   it("rejects every mutation against version 1", () => {
-    expect(() => applyCoordinationCommand(createCoordinationRegistryFixture(), {
+    expect(() => applyVersionedCoordinationCommand(createCoordinationRegistryFixture(), {
       type: "release-round",
       planTaskId: "plan-1",
       roundId: "legacy-round",
-    })).toThrowError(expect.objectContaining({ code: "LEGACY_REGISTRY_READ_ONLY" }));
+    })).toThrowError(expect.objectContaining({ code: "HISTORICAL_REGISTRY_READ_ONLY" }));
   });
 
   it("rejects a command from another PLAN or round without mutation", () => {
@@ -68,12 +69,6 @@ describe("self-contained coordination registry v2", () => {
       revisionAttempt: 1,
       status: "prepared",
     });
-  });
-
-  it("rejects the removed ownership-transfer command", () => {
-    expect(() => applyCoordinationCommand(createCoordinationRegistryV2Fixture(), {
-      type: "transfer-ownership",
-    } as never)).toThrowError(expect.objectContaining({ code: "OWNERSHIP_TRANSFER_REMOVED" }));
   });
 
   it("rejects unknown commands with a stable code", () => {

@@ -1,0 +1,20 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-workflow-economy-policy",
+  "title": "FlowDoc Workflow Economy Policy",
+  "path": "docs/domains/flowdoc-workflow-economy-policy.md",
+  "nodeIds": [
+    "project-control"
+  ],
+  "role": "contract",
+  "authority": "Sole current Project Control workflow authority for PLAN responsibility, bounded WORK, proof and document economy, context loading, completion, and stopping; no product or map truth.",
+  "lifecycle": "active",
+  "contextClass": "current",
+  "supersedes": [
+    "doc-flowdoc-delivery-operating-model",
+    "doc-flowdoc-plan-room-orchestration-rules",
+    "doc-flowdoc-work-type-routing-model",
+    "doc-flowdoc-lean-dispatch-operating-rules"
+  ],
+  "repositoryRefs": []
+}

@@ -136,22 +136,13 @@ export function applyCoordinationCommand(
   command: CoordinationCommandV2 | CoordinationCommandV3 | { type: string; [key: string]: unknown },
   context: CoordinationCommandContext = {},
 ): CoordinationRegistryV2 | CoordinationRegistryV3 {
-  if (registry.version === 1) {
+  if (registry.version !== 3) {
     throw new CoordinationTransitionError(
-      "LEGACY_REGISTRY_READ_ONLY",
-      "Version 1 coordination is historical and cannot be mutated.",
+      "HISTORICAL_REGISTRY_READ_ONLY",
+      `Version ${registry.version} coordination is historical and cannot be mutated.`,
     );
   }
-  if (registry.version === 3) {
-    return applyCoordinationV3Command(registry, command as CoordinationCommandV3, context);
-  }
-  if (command.type === "transfer-ownership") {
-    throw new CoordinationTransitionError(
-      "OWNERSHIP_TRANSFER_REMOVED",
-      "A PLAN round cannot transfer execution authority to another PLAN.",
-    );
-  }
-  return applyCoordinationV2Command(registry, command as CoordinationCommandV2, context);
+  return applyCoordinationV3Command(registry, command as CoordinationCommandV3, context);
 }
 
 interface ExecutionIdentity {

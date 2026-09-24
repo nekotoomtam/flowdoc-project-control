@@ -2,265 +2,157 @@
 
 ## Start here
 
-This repository is the FlowDoc control surface. It records shared truth, work
-coordination, document metadata, repository identities, and evidence indexes.
-It is not the product runtime and must not become the place where Core, Editor,
-or Backend behavior is implemented.
+This repository is the FlowDoc control surface for shared truth, Work records,
+document authority, Evidence indexes, repository identity, and the generated
+Cockpit. It is not a product runtime.
 
 Project Control is the governing entrypoint for FlowDoc work rounds. Future
-Codex rooms and agents should start here before treating any FlowDoc repository
-state as current, deciding an owner repository, promoting map truth, or planning
-cross-repository work.
+Codex rooms and agents should start here before treating repository state as
+current or promoting shared truth.
 
-If a FlowDoc request starts in another repository or chat, first route through
-this repository's Project Control records unless the user explicitly limits the
-turn to local-only inspection. Use Project Control to identify the Work item or
-Work path, owner repository, active role, current Phase, Checklist target,
-Evidence target, known risks, and unknown state; then read the owning product
-repository's `AGENTS.md` before editing product behavior.
+For any FlowDoc request, first identify from Project Control:
 
-Before taking broad work, read these files in order:
+- the explicit request or Work path;
+- owner repository and active role;
+- current Phase, Checklist target, and Evidence target;
+- known risks, unknowns, and owner decisions.
 
-1. `docs/domains/flowdoc-system-map.md`
-2. `docs/domains/document-map-operating-rules.md`
-3. `docs/domains/flowdoc-role-catalog.md`
-4. `docs/domains/agent-and-skill-operating-model.md`
-5. `docs/domains/flowdoc-round-workflow.md`
-6. `docs/domains/flowdoc-delivery-operating-model.md`
-7. `docs/domains/flowdoc-plan-room-orchestration-rules.md`
-8. `docs/domains/flowdoc-work-type-routing-model.md`
-9. `docs/domains/flowdoc-lean-dispatch-operating-rules.md`
-10. `docs/domains/work-tree-operating-rules.md`
-11. `docs/domains/project-control.md`
-12. `docs/domains/flowdoc-documentation-authority-policy.md`
-13. `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`
-14. `docs/domains/flowdoc-product-terminology.md`
-15. `docs/domains/flowdoc-product-terminology-th.md`
+Then read the owning repository's `AGENTS.md` before changing product behavior.
+Use `docs/domains/flowdoc-system-map.md` only for verified product-wide truth.
+If Project Control cannot resolve those fields, stop with:
 
-For FlowDoc delivery planning, opened rooms, lane splitting, Kickoff Packets,
-or handoff work, use the Delivery Operating Model. For any PLAN room that may
-dispatch more than one WORK room, read the PLAN Room Orchestration Rules before
-opening or accepting rooms. Read the FlowDoc Work Type Routing Model before a
-PLAN room assigns lane Work Types, writes Context Capsules, expects Context
-Acknowledgement, chooses skill candidates, or accepts a returned lane by Work
-Type. Read the FlowDoc Lean Dispatch Operating Rules before a PLAN room marks
-a dispatch set or Kickoff Packet as Lean Dispatch, sets Resource Budget fields,
-uses Reference Packs, chooses compact handoff detail, batches evidence, or
-lowers verification/review scope for a lane. Lean Dispatch is a budget profile,
-not a weaker orchestration mode; it must not remove automatic return,
-liveness, retrievable locator, or acceptanceGate. Automatic WORK-to-PLAN
-return is mandatory: the Return Channel must send
-the terminal handoff back to PLAN or a PLAN-owned monitor without requiring
-`ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
-Terminal Handoffs. Automatic return means an active WORK-to-PLAN return push,
-not only a final answer inside the WORK room. A Kickoff Packet must give the
-WORK room the PLAN task/chat ID, Return Event ID or handoff ID, and Active
-Return Command; when Codex thread tools expose `send_message_to_thread`, the
-WORK room uses that command to send the Terminal Handoff to PLAN before or
-with its local final answer. `clientThreadId` alone is not a monitorable
-retrievable locator; until PLAN resolves a real task/chat ID or other
-monitorable locator, the room run remains queued or `needs-attention` and PLAN
-must not open a scalable multi-WORK dispatch set from it. If PLAN later
-recovers the result by task, thread, session, worktree, branch, or handoff
-location, record `return-channel-failed-then-recovered` or `manual-recovered`;
-that recovery does not satisfy automatic return. A manual recovery fallback may
-use a task ID, thread ID, worktree, branch, or handoff locator only to recover
-or classify a missed return; it must be recorded as `manual-recovered` or
-`return-channel-failed` and does not satisfy automatic return. A WORK room has
-mandatory WORK room return and liveness obligations: silence, lost room state,
-or a missing terminal return of PASS / FAIL / BLOCKER / RISK / UNKNOWN must
-not be accepted. Keep this room distinction explicit: PLAN room coordinates;
-WORK room is a real separate Codex task/chat that executes one approved lane.
+```text
+BLOCKER: FlowDoc Project Control unavailable or unresolved.
+```
 
-PLAN rooms must be able to hold multiple active WORK rooms. The Room Run
-Registry must record each active room, `completionQueue` must accept returns
-that arrive close together, `returnOrderPolicy` and `arrivalSequence` must
-preserve processing order, duplicate handoff returns must be idempotent, and
-PLAN must process one queued handoff at a time through `acceptanceGate`.
+## Default context
 
-One PLAN task owns exactly one execution round. New PLAN task means a new
-delivery round and a fresh execution context. A new PLAN creates a new Work
-execution record and version 2 registry with fresh round, dispatch-set,
-room-run, handoff, WORK-task, worktree-or-branch, and Return-Channel identities.
-Version 1 coordination is historical and read-only. Cross-PLAN ownership
-transfer is not supported. The current PLAN must not send, wait, revise,
-resume, or hand off through an older PLAN or WORK task. Missing history is
-recovered through separate read-only Historical Recovery Work; it never
-reactivates the inspected PLAN or WORK task. The same WORK room may receive
-revisions only while the same PLAN task and delivery round remain active.
+Start with the generated Current Truth Snapshot, then the current Work packet,
+then only its referenced current/supporting contracts and Evidence. The sole
+current workflow authority is:
 
-Prior accepted commits, Evidence, and Project Control records may be referenced
-only as immutable input. Older conversations, registries, liveness state,
-Return Channels, tasks, worktrees, and branches are historical rather than
-reusable execution context. An older task may be inspected only for an explicit
-audit or evidence-recovery request and never regains execution authority. Any
-stale PLAN, monitor, Return Channel, round, or room locator blocks
-dispatch; do not wake the older task to repair the mismatch.
+```text
+docs/domains/flowdoc-workflow-economy-policy.md
+```
 
-Before returning to a drafted lane plan after a pause, feedback round, or
-partial dispatch, PLAN must restore the latest Room Run Registry or Lean
-Dispatch registry note for the active dispatch set. PLAN must not rely on
-conversation-only room state. If no retrievable registry state exists, PLAN
-must create a bounded Project Control continuation note before opening or
-resuming the next WORK room. The restored state must name each room's dispatch
-set, lane ID, Work Type, owner repository, retrievable locator, automatic
-Return Channel, Active Return Command, liveness state, handoff ID,
-completionQueue arrival, acceptance decision, and revision state. PLAN must
-not repair WORK output itself; if returned output is incomplete or wrong but
-still belongs to the same lane, PLAN sends a Revision Packet back to the same
-WORK room only while the same PLAN task and delivery round remain active and
-the original locator remains usable. A new PLAN task creates a fresh round and
-WORK context instead.
+Do not load historical documents, closed task conversations, old registries,
+old branches/worktrees, unrelated Work trees, or unreferenced supporting
+documents by default. Load history only for explicit audit, conflict, Evidence
+recovery, or reconciliation.
 
-PLAN-owned reporting keeps product WORK output from self-promoting into Project
-Control truth. Core, Backend, and Editor WORK rooms return evidence candidate
-handoffs and must not self-promote Project Control truth, map truth, accepted
-lane status, or round status. PLAN receives the handoff through the mandatory
-automatic Return Channel, stages it in `handoffInbox`, runs `acceptanceGate`,
-and writes Project Control records itself or delegates that reporting after
-acceptance. PLAN may pull by retrievable locator only to recover or classify a
-room whose Return Channel failed; that recovery must not hide the automatic
-return gap. If acceptance returns `needs-revision`, PLAN sends a Revision
-Packet back to the same WORK room only while the same PLAN task and delivery
-round remain active and the original retrievable locator is usable; the packet
-preserves the original lane boundary and names any Contract Change Request
-requirement. A new PLAN task opens a fresh round and WORK context instead.
+Read these supporting authorities only when their scope is actually involved:
 
-PLAN must not patch Core, Backend, or Editor product repositories after
-dispatch. When acceptance, merge, or main-gate verification finds that a fix
-would change a product repository, including test-only, fixture-only, or
-configuration-only repair, PLAN may diagnose and attach failure evidence, then
-product-repository repair goes back to the same WORK room as a Revision Packet
-only while the same PLAN task and delivery round remain active and the original
-retrievable locator remains usable. A new PLAN task creates a fresh repair lane
-and WORK context. PLAN-owned
-exceptions are merge, verification, Project Control records, and cleanup that
-do not change product repository files or product behavior.
+- `docs/domains/flowdoc-documentation-authority-policy.md` and
+  `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` before
+  changing FlowDoc Markdown;
+- `docs/domains/flowdoc-product-terminology.md` before ambiguous product,
+  Editor, frontend, or cross-repository contract work;
+- `docs/domains/project-control-repo-first-overview-history-2026-08-28.md`
+  before Project Control GUI work;
+- `docs/domains/flowdoc-coordination-controls.md` only when PLAN opens,
+  accepts, integrates, or cleans up a real separate WORK room.
 
-For Editor, frontend, product behavior, cross-repository contract work, or any
-term that could mean different things across Project Control, Core, Backend, or
-Editor, apply the product terminology discipline before implementation. Use the
-qualified canonical term or classify the ambiguity as `define`, `split`,
-`rename`, `deprecated`, `context-only`, or `blocked`. Terminology records do not
-promote FlowDoc product truth by themselves.
+## Workflow boundary
+
+PLAN converts the owner's intent into a Minimal Kickoff Packet. It independently
+sets Work Size, Risk Tier, work authority, scope, acceptance criteria, reusable
+Evidence, Proof Budget, Document Budget, model decision, and return route.
+Default Risk Tier is `routine`; `critical` requires a concrete escalation reason.
+
+A WORK has one authority: discovery, implementation, or verification. Discovery
+and verification are read-only. Split discovery from implementation when the
+finding can change architecture, ownership, contract, safety, or scope.
+
+One PLAN task owns exactly one execution round. A new PLAN creates a fresh
+version 3 execution context. Registry versions 1 and 2 and all closed PLAN/WORK
+execution contexts are historical and read-only. Cross-PLAN ownership transfer
+is not supported. Prior accepted commits, Evidence, and records may be immutable
+input; old tasks must not be sent, waited, revised, resumed, or handed off.
+
+When a real separate WORK room is used, automatic WORK-to-PLAN return,
+retrievable locator, liveness, idempotent receipt, and PLAN-owned acceptance are
+mandatory. PLAN does not patch a product repository after dispatch; product
+repair returns to the same active WORK in the same round or becomes a fresh lane
+in a new round.
+
+This means mandatory WORK room return is an active WORK-to-PLAN return push,
+not only a local final answer. PLAN tracks liveness; a silent room or missing
+terminal return of PASS / FAIL / BLOCKER / RISK / UNKNOWN must not be accepted.
+PLAN-owned reporting treats product output as an evidence candidate: WORK must
+not self-promote it. If acceptance returns `needs-revision`, PLAN sends a
+Revision Packet to the same WORK room inside the active round; a Contract Change
+Request is required for scope expansion. PLAN may diagnose and attach failure
+evidence, but product-repository repair goes back to WORK. PLAN-owned exceptions
+are merge, verification, Project Control records, and cleanup that do not change
+product files or behavior.
+
+When acceptance criteria pass, stop. Do not create more proof unless there is a
+safety/correctness blocker, authority violation, missing prerequisite, or scope
+escape. Respect recorded owner decisions: accept risk, defer proof, freeze scope,
+and stop investigation.
 
 ## Documentation authority
 
-Project Control is the canonical home for FlowDoc-wide shared understanding:
-cross-repository status, Work paths, Phase state, Checklist targets, Evidence
-targets, document authority, repository ownership, product terminology, and
-map-truth boundaries.
+Project Control is canonical for FlowDoc-wide plans, shared understanding,
+cross-repository status, Work/Phase/Checklist/Evidence state, ownership,
+terminology, and map boundaries. Pass the Markdown Authority Pre-Action Gate
+before creating, moving, summarizing, retiring, or deleting Markdown.
 
-Before creating, updating, migrating, summarizing, or deleting FlowDoc
-Markdown, read
-`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` and
-pass its Markdown Authority Pre-Action Gate. If a generic planning skill says
-to write a FlowDoc-wide plan or spec into a product repository, Project Control
-override wins.
+Repo-local Markdown may remain only when code-adjacent, repository-owned, or
+historical and must state its Authority Boundary. Do not create
+product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for
+FlowDoc-wide truth. Project Control override wins over a generic planning path.
+Cleanup order is inventory, classify, register retained value or discard
+rationale, then retire.
 
-Repo-local Markdown may remain only when it is code-adjacent,
-repository-owned, or historical. Every repo-local Markdown file that survives
-cleanup must carry an Authority Boundary naming the owner repository, narrow
-scope, what it does not prove, and the governing Project Control document or
-Work item.
+Canonical records live under `data/`; canonical prose lives under `docs/`.
+`generated/project-index.json` and the ignored SQLite file are generated read
+models. Never hand-edit the generated index.
 
-Do not create product-repository `docs/superpowers/plans` or
-`docs/superpowers/specs` files for FlowDoc-wide truth. Put shared or
-cross-repository plans in Project Control Work, Phase, Checklist, and Evidence
-targets first. Repository-local plans or specs are allowed only for bounded
-repo-owned implementation and must not claim FlowDoc-wide status.
+## Terminology and truth
 
-Cleanup order is inventory, classify, summarize or register in Project
-Control, then retire. Do not delete repo-local Markdown until retained value,
-source evidence, or discard rationale has been recorded.
+Use the English product terminology document as canonical; the Thai companion
+is explanatory. Resolve ambiguity as `define`, `split`, `rename`, `deprecated`,
+`context-only`, or `blocked`. Terminology is not product Evidence.
 
-Use `generated/project-index.json` only as the generated read model. Use
-`generated/project-control.sqlite` only as an ignored local projection.
-Canonical records live under `data/` and canonical prose lives under `docs/`.
+Plan and Work records describe intent. DOCUMENT_MAP and system maps contain only
+verified truth. Update the narrowest map only after implementation, verification,
+and registered Evidence support it. Do not promote a parent because a child has
+Evidence.
 
-## Global bootstrap
+Do not update DOCUMENT_MAP from planned outcomes or unfinished work.
 
-The copy-ready global Codex guidance for this machine lives at
-`docs/domains/flowdoc-global-codex-guidance.md`. If
-`C:\Users\nekot\.codex\AGENTS.md` is missing or empty during Project Control
-maintenance, copy that file into `C:\Users\nekot\.codex\AGENTS.md` so future
-FlowDoc rooms route through Project Control first. If the global file already
-contains other user guidance, preserve it and add or update only the bounded
-FlowDoc section.
+## Roles
 
-If `C:\Users\nekot\.codex\AGENTS.override.md` exists, inspect it before broad
-FlowDoc work. It can take precedence over the base global file; if it does not
-include the FlowDoc entrypoint rule, report the risk before editing FlowDoc
-repositories.
+Choose the active role before acting: Project Control Steward, Evidence
+Reviewer, Lane Reconciliation Reviewer, Cross-Repo Boundary Reviewer,
+Documentation Synthesizer, Product Implementation Agent, or Planning Partner.
 
-## First decision
+## Editing and verification
 
-Choose the active role before acting:
+- Preserve unrelated user changes.
+- For non-read-only work, use a dedicated worktree from `main` unless the user
+  explicitly requests same-checkout maintenance.
+- Commit and verify in the worktree, merge only after its gate passes, rerun the
+  gate on `main`, then remove only clean merged current-round lanes.
+- Never delete a dirty, unmerged, or unresolved lane.
+- Regenerate projections with `npm run generate` after canonical record changes.
+- A Work record is not Evidence; cite durable repository tests, files, commits,
+  or contracts for strong claims.
 
-- Project Control Steward: maintain records, documents, generated index, and
-  GUI-facing truth.
-- Evidence Reviewer: check whether a claim has durable repository evidence.
-- Lane Reconciliation Reviewer: review old worktrees or lane branches before
-  cleanup.
-- Cross-Repo Boundary Reviewer: keep Project Control, Core, Editor, and Backend
-  ownership separate.
-- Documentation Synthesizer: publish bounded summaries from reviewed source
-  material.
-- Product Implementation Agent: work in the owning product repository after
-  scope and evidence target are clear.
-- Planning Partner: turn broad intent into staged, verifiable work.
-
-If the task touches product behavior, identify the owning repository first and
-read that repository's `AGENTS.md` before editing there.
-
-## Plan versus truth
-
-Plan / Work records intent. It can describe what this round is trying to do,
-which tasks exist, and what evidence should be produced.
-
-DOCUMENT_MAP records verified system truth. Do not update DOCUMENT_MAP or a
-system map with planned outcomes, expected behavior, or unfinished work. Update
-the narrowest map only after implementation, verification, and Project Control
-document/evidence registration support the new state.
-
-For product-wide inventory, use `docs/domains/flowdoc-system-map.md`. For Core
-release-line documentation, use
-`docs/versions/V0_1_0a_1/core/DOCUMENT_MAP.md`.
-
-## Editing rules
-
-- Preserve unrelated user changes in the working tree.
-- For any non-read-only FlowDoc work that may edit files, create a dedicated
-  worktree from `main` before implementation unless the user explicitly
-  instructs same-checkout maintenance.
-- Keep `main` as the clean integration target. Commit and verify the work in
-  the worktree first; merge back to `main` only after the worktree gate passes.
-- After merging to `main`, run the required verification on `main`, then remove
-  the completed worktree and merged branch. Do not leave stale lanes behind.
-- Do not delete a dirty worktree, an unmerged branch, or a lane with unique
-  patches that are not understood; switch to Lane Reconciliation Reviewer and
-  report the blocker instead.
-- Edit canonical sources under `data/` and `docs/`; regenerate
-  `generated/project-index.json` and the ignored local SQLite projection with
-  `npm run generate`.
-- Do not hand-edit `generated/project-index.json`.
-- A Work record is not evidence. Strong claims require Evidence records or
-  clearly cited repository-owned tests, files, commits, or contracts.
-- Do not promote parent nodes because a child node has evidence.
-- Mark risks while inspecting, continue the full scan unless blocked, and make
-  decisions after the scan is complete.
-
-## Verification
-
-Use focused checks while developing and run the full Project Control gate before
-claiming completion:
+Before claiming completion run:
 
 ```text
 npm run check
 ```
 
-If a product repository was touched, also report that repository's relevant
-checks. Do not claim PASS without fresh verification output.
+## Global bootstrap
+
+The copy-ready machine guidance is
+`docs/domains/flowdoc-global-codex-guidance.md`. Do not sync it to
+`C:\Users\nekot\.codex\AGENTS.md` until the verified main-integration step.
+Preserve unrelated global guidance. Inspect `AGENTS.override.md` if it exists;
+an override missing the FlowDoc entrypoint is a reported risk.
 
 ## Handoff
 
@@ -276,18 +168,3 @@ Evidence or map updates
 Intentionally not changed
 Next recommended work
 ```
-
-Call out whether a map changed, which map changed, what supports the change,
-which planned items intentionally stayed out of the map, and which system
-states remain unknown.
-
-## Six coordination controls
-
-Before dispatch, transfer, acceptance, model selection or cleanup, read
-`docs/domains/flowdoc-coordination-controls.md` in Project Control. It governs
-exclusive PLAN and integration ownership, reliable handoff receipts, the typed
-registry, UX acceptance, cleanup authorization and per-WORK model selection.
-PLAN may retain GPT-6. WORK must record its model, effort, task-specific reason,
-availability and escalation trigger before starting; never silently inherit
-PLAN settings. Approved current-round cleanup covers only clean merged lanes
-after the main gate; historical or unresolved lanes require reconciliation.

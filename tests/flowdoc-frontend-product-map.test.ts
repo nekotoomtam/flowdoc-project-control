@@ -30,10 +30,7 @@ describe("FlowDoc Frontend Product Map", () => {
       activeRole: "planning-partner",
       contextDocumentIds: expect.arrayContaining([
         "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
-        "doc-flowdoc-delivery-operating-model",
-        "doc-flowdoc-plan-room-orchestration-rules",
-        "doc-flowdoc-work-type-routing-model",
-        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-workflow-economy-policy",
         "doc-flowdoc-documentation-authority-policy",
         "doc-flowdoc-agent-documentation-authority-operating-rules",
         "doc-flowdoc-product-terminology",

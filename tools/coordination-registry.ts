@@ -60,10 +60,10 @@ export async function applyCoordinationCommandToWorkFile(
     if (work.coordination === undefined) {
       throw new CoordinationPersistenceError("COORDINATION_MISSING", "The Work record has no coordination registry.");
     }
-    if (work.coordination.version === 1) {
+    if (work.coordination.version !== 3) {
       throw new CoordinationTransitionError(
-        "LEGACY_REGISTRY_READ_ONLY",
-        "Version 1 coordination is historical and cannot be mutated.",
+        "HISTORICAL_REGISTRY_READ_ONLY",
+        `Version ${work.coordination.version} coordination is historical and cannot be mutated.`,
       );
     }
     if (work.coordination.revision !== options.expectedRevision) {

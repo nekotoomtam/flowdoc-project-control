@@ -47,114 +47,41 @@ future FlowDoc Markdown work.
 
 ## Delivery room model
 
-FlowDoc delivery planning now uses
-`docs/domains/flowdoc-delivery-operating-model.md` as the Project Control
-contract for PLAN rooms, real WORK rooms, lane cards, Kickoff Packets, handoff
-rules, Contract Change Requests, and Project Control versus generated SQLite
-authority.
+The current delivery authority is
+`docs/domains/flowdoc-workflow-economy-policy.md`. PLAN creates one bounded
+Minimal Kickoff Packet with independent Work Size and Risk Tier, one authority
+(`discovery`, `implementation`, or `verification`), allowed scope, acceptance
+criteria, reusable Evidence, Proof Budget, Document Budget, model decision,
+unknown dispositions, escalation triggers, and return route.
 
-Multi-room delivery planning now uses
-`docs/domains/flowdoc-plan-room-orchestration-rules.md` as the Project Control
-contract for PLAN Room Orchestration Rules. A PLAN room must use those rules
-before choosing `N WORK rooms`, setting `parallelLimit`, opening a dispatch
-set, tracking Room Run Registry entries, requiring automatic WORK-to-PLAN
-return, using manual recovery fallback for missed returns, processing
-`handoffInbox` and `completionQueue`, or accepting returned lane results.
+One PLAN task owns exactly one execution round and creates a fresh version 3
+execution context. Registry versions 1 and 2 are historical and read-only.
+Cross-PLAN ownership transfer is not supported. Prior accepted commits,
+Evidence, and Project Control records are immutable inputs; older PLAN/WORK
+tasks and their live state are not continuation inputs.
 
-Work-type delivery routing now uses
-`docs/domains/flowdoc-work-type-routing-model.md` as the Project Control
-contract for assigning Work Type to lanes, writing Context Capsules, requiring
-Context Acknowledgement, choosing reusable skill candidates, and reviewing
-returned handoffs by the correct output shape. The same model requires
-mandatory WORK room return, liveness tracking, silent room handling, and
-terminal return status of PASS / FAIL / BLOCKER / RISK / UNKNOWN so the PLAN
-room can continue without guessing when a room fails, blocks, or disappears.
+A real separate WORK room executes exactly one approved lane. It requires a
+retrievable locator, context acknowledgement, liveness, automatic return,
+idempotent receipt, and PLAN-owned acceptance. A final answer only inside WORK
+is not a return. PLAN may send an in-scope Revision Packet to the same WORK only
+while the same PLAN and round remain active. Product repair returns to WORK;
+PLAN does not patch a dispatched product repository.
 
-Lean Dispatch now uses
-`docs/domains/flowdoc-lean-dispatch-operating-rules.md` as the Project Control
-contract for reducing PLAN/WORK room token, review, verification, evidence, and
-handoff cost. A PLAN room applies Lean Dispatch through Resource Budget fields,
-Reference Packs, compact handoff detail, evidence batching, and escalation
-triggers. Lean Dispatch is a budget profile, not a weaker orchestration mode;
-it must not remove automatic return, liveness, retrievable locator, or
-acceptanceGate.
-
-Automatic WORK-to-PLAN return is mandatory. A WORK room's Return Channel must
-send the Terminal Handoff to PLAN or a PLAN-owned monitor without requiring
-`ตูม` to copy/paste Terminal Handoffs. It must not require `ตูม` to copy/paste
-Terminal Handoffs. Automatic return means an active WORK-to-PLAN return push,
-not only a final answer inside the WORK room. A Kickoff Packet must give the
-WORK room the PLAN task/chat ID, Return Event ID or handoff ID, and Active
-Return Command; when Codex thread tools expose `send_message_to_thread`, the
-WORK room uses that command to send the Terminal Handoff to PLAN before or
-with its local final answer. `clientThreadId` alone is not a monitorable
-retrievable locator; until PLAN resolves a real task/chat ID or other
-monitorable locator, the room run remains queued or `needs-attention` and PLAN
-must not open a scalable multi-WORK dispatch set from it. If PLAN later
-recovers the result by task, thread, session, worktree, branch, or handoff
-location, record `return-channel-failed-then-recovered` or `manual-recovered`;
-that recovery does not satisfy automatic return. A manual recovery fallback may
-preserve work after a missed Return Channel, but it must be recorded as
-`manual-recovered` or `return-channel-failed` and does not satisfy automatic
-return. PLAN must be able to hold multiple active WORK rooms, enqueue
-close-together returns in `completionQueue`, preserve `returnOrderPolicy` and
-`arrivalSequence`, treat a duplicate handoff idempotently, and process one
-queued handoff at a time through `acceptanceGate`.
-
-A PLAN room coordinates one or more delivery rounds. A WORK room is a real
-separate Codex task/chat visible to the user and executes exactly one approved
-lane. It is not the same thing as an internal subagent. WORK rooms must not
-redefine delivery scope, role authority, source-of-truth rules, or
-cross-repository contracts; they should return RISK, UNKNOWN, BLOCKED, or a
-Contract Change Request to the PLAN room when scope changes are needed.
-
-One PLAN task owns exactly one execution round. New PLAN task means a new
-delivery round and a fresh execution context. A new PLAN creates a new Work
-execution record and version 2 registry with fresh coordination and execution
-identities rather than reusing an old PLAN, WORK task, room run, handoff,
-worktree, branch, or Return Channel. Version 1 coordination is historical and
-read-only. Cross-PLAN ownership transfer is not supported. The current PLAN
-must not send, wait, revise, resume, or hand off through an older PLAN or WORK
-task. Missing history is recovered through separate read-only Historical
-Recovery Work; it never reactivates the inspected PLAN or WORK task. The same
-WORK room remains eligible for revision only while the same PLAN task and
-delivery round remain active.
-
-Prior accepted commits, Evidence, and Project Control records may be referenced
-only as immutable input. An older task may be inspected only for an explicit
-audit or evidence-recovery request and never regains execution authority. A
-new PLAN must stop before dispatch if any packet or monitor still points to an
-older PLAN or WORK task.
-
-PLAN-owned reporting keeps Project Control truth separate from product WORK.
-Product WORK rooms return evidence candidate handoffs and must not self-promote
-their own result into Project Control truth, map truth, accepted lane status,
-or round status. PLAN receives the handoff through the mandatory automatic
-Return Channel, stages it in `handoffInbox`, runs `acceptanceGate`, and then
-writes Project Control records itself or delegates that reporting to a Project
-Control records lane. PLAN may pull by retrievable locator only to recover or
-classify a failed Return Channel; that manual recovery fallback does not
-satisfy automatic return.
-
-PLAN must not patch Core, Backend, or Editor product repositories after
-dispatch. If acceptance, merge, or main-gate verification shows that a product
-repository needs repair, even test-only, fixture-only, or configuration-only
-repair, PLAN should diagnose and attach failure evidence, then
-product-repository repair goes back to the same WORK room as a Revision Packet
-only while the same PLAN task and delivery round remain active and the original
-retrievable locator remains usable. A new PLAN task opens a fresh round and
-WORK context instead. PLAN-owned
+Automatic return is an active WORK-to-PLAN return push. Mandatory WORK room
+return includes liveness and a terminal return of PASS / FAIL / BLOCKER / RISK /
+UNKNOWN; a silent room must not be accepted. PLAN-owned reporting treats product
+WORK output as an evidence candidate and WORK must not self-promote it. A
+`needs-revision` decision sends a Revision Packet to the same WORK room; scope
+expansion requires a Contract Change Request. PLAN may diagnose and attach
+failure evidence, but product-repository repair goes back to WORK. PLAN-owned
 exceptions are merge, verification, Project Control records, and cleanup that
-do not change product repository files or product behavior.
+do not change product files or behavior.
 
-When returned work is incomplete but still inside the original lane, PLAN marks
-the room `needs-revision` and sends a Revision Packet back to the same WORK
-room only while the same PLAN task and delivery round remain active and the
-original retrievable locator remains usable. That packet must
-name `revisionAttempt`, exact acceptance gaps, allowed repair scope,
-still-forbidden scope, required verification, Return Channel, Liveness Signal,
-Death Signal, and any Contract Change Request requirement. The same WORK room
-may repair only the original lane.
+Inline work does not synthesize separate-room ceremony. Once acceptance
+criteria pass, stop unless a safety/correctness blocker, authority violation,
+missing prerequisite, or scope escape is present. The detailed transport and
+integration invariants for real separate WORK are supporting rules in
+`docs/domains/flowdoc-coordination-controls.md`.
 
 ## Packaged local skills
 

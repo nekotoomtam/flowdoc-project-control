@@ -31,10 +31,7 @@ describe("FlowDoc Fast Delivery Risk Register", () => {
       activeRole: "planning-partner",
       contextDocumentIds: expect.arrayContaining([
         "doc-flowdoc-system-map",
-        "doc-flowdoc-delivery-operating-model",
-        "doc-flowdoc-plan-room-orchestration-rules",
-        "doc-flowdoc-work-type-routing-model",
-        "doc-flowdoc-lean-dispatch-operating-rules",
+        "doc-flowdoc-workflow-economy-policy",
         "doc-flowdoc-product-terminology",
         "doc-flowdoc-product-terminology-th",
         "doc-flowdoc-creator-ux-contract-v0-2026-09-04",

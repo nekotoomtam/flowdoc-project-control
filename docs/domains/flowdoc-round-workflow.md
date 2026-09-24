@@ -22,13 +22,18 @@ registration, lane cleanup, documentation synthesis, or product implementation.
 It is a coordination contract. It does not by itself prove that a product
 system is current.
 
+The current policy for deciding size, risk, authority, scope, proof, documents,
+context, completion, and stopping is
+`docs/domains/flowdoc-workflow-economy-policy.md`. This round workflow is a
+supporting execution summary and does not create a second authority.
+
 ## PLAN round identity
 
 One PLAN task owns exactly one execution round. New PLAN task means a new
 delivery round and a fresh execution context. A new PLAN creates a new Work
-execution record and version 2 registry with fresh round, dispatch, room,
+execution record and version 3 registry with fresh round, dispatch, room,
 handoff, WORK-task, worktree-or-branch, and Return-Channel identities before
-execution. Version 1 coordination is historical and read-only. Cross-PLAN
+execution. Registry versions 1 and 2 are historical and read-only. Cross-PLAN
 ownership transfer is not supported. The current PLAN must not send, wait,
 revise, resume, or hand off through an older PLAN or WORK task. Missing history
 is recovered through separate read-only Historical Recovery Work; it never
@@ -59,8 +64,8 @@ Before work starts, name the round in plain terms:
   that would support the bounded claim.
 - Expected output: commit, evidence packet, map update, recommendation,
   cleanup decision, health report, or another explicit deliverable.
-- Stop condition: the missing input, dirty state, failing check, ownership
-  conflict, or unsupported claim that should pause the round.
+- Stop condition: only a safety/correctness blocker, authority violation,
+  missing prerequisite, or scope escape.
 
 ## 2. Context check
 

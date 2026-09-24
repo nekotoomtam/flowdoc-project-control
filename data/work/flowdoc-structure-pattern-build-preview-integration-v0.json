@@ -10,10 +10,7 @@
   "summary": "PLAN accepted and integrated the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview lanes. Core commit 8411f26763d81743ba9d44a59fd5ad4942e5601a adds the Structure Pattern Slot boundary probe; Backend commit 9da58214e087d2f15afd43855bfd1febec882037 aligns document-structure version freeze and slot aliases with v0.0.2; Editor commit 65ab5b149c5aad10b36bbaa23650b9fce7070dff shapes Build, Fields, Structure Patterns, and Preview UI affordances.",
   "contextDocumentIds": [
     "doc-flowdoc-system-map",
-    "doc-flowdoc-delivery-operating-model",
-    "doc-flowdoc-plan-room-orchestration-rules",
-    "doc-flowdoc-work-type-routing-model",
-    "doc-flowdoc-lean-dispatch-operating-rules",
+    "doc-flowdoc-workflow-economy-policy",
     "doc-flowdoc-product-terminology",
     "doc-flowdoc-product-terminology-th",
     "doc-flowdoc-document-structure-north-star-2026-09-04",

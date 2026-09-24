@@ -35,8 +35,9 @@
     {
       "id": "atomic-authority-cutover",
       "label": "All current entrypoints switch to one workflow-economy authority while replaced rules remain readable history.",
-      "state": "pending",
-      "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts"
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts",
+      "verificationNote": "RED: all five cutover checks failed before the policy, supersession records, Work context migration, and v3-only mutation boundary existed. GREEN: the focused Task 5 suite passed 123 tests, check:data passed, and the full Project Control gate passed 83/297 records, 21/189 source-docs, 10/68 app, production build, and 6/6 browser tests on 2026-09-24."
     },
     {
       "id": "evidence-main-gate",
@@ -46,5 +47,5 @@
     }
   ],
   "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-  "updatedAt": "2026-09-24T10:05:58.7132457+07:00"
+  "updatedAt": "2026-09-24T10:45:51.4006129+07:00"
 }

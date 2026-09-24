@@ -28,7 +28,16 @@ describe("FlowDoc Project Control Codex skill", () => {
       requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
       workState: "in-progress",
     });
-    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([DOC_ID]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
+      DOC_ID,
+      "doc-flowdoc-workflow-economy-policy",
+    ]));
+    expect(work?.contextDocumentIds).not.toEqual(expect.arrayContaining([
+      "doc-flowdoc-delivery-operating-model",
+      "doc-flowdoc-plan-room-orchestration-rules",
+      "doc-flowdoc-work-type-routing-model",
+      "doc-flowdoc-lean-dispatch-operating-rules",
+    ]));
     expect(work?.riskSummary).toContain("does not prove future agent compliance");
 
     expect(phase).toMatchObject({

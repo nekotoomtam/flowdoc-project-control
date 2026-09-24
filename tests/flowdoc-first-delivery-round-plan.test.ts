@@ -34,7 +34,7 @@ describe("FlowDoc First Delivery Round Plan", () => {
         "doc-flowdoc-role-catalog",
         "doc-agent-skill-operating-model",
         "doc-flowdoc-round-workflow",
-        "doc-flowdoc-delivery-operating-model",
+        "doc-flowdoc-workflow-economy-policy",
         "doc-work-tree-operating-rules",
         "doc-flowdoc-documentation-authority-policy",
         "doc-flowdoc-agent-documentation-authority-operating-rules",

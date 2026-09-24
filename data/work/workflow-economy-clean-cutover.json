@@ -19,5 +19,5 @@
   "riskSummary": "A partial migration could leave two active rule sets or remove a safety invariant. The design therefore requires an atomic entrypoint cutover, behavior tests, historical readability, and no reuse of closed PLAN or WORK execution context.",
   "requiredEvidence": [],
   "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-  "updatedAt": "2026-09-24T10:05:58.7132457+07:00"
+  "updatedAt": "2026-09-24T10:45:51.4006129+07:00"
 }
