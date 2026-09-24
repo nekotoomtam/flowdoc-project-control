@@ -2,11 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 import type { ProjectReadModel } from "../../../src/model/types.js";
+import { makeProjectReadModel } from "../test/projectModel.js";
 import { FocusStackMap } from "./FocusStackMap.js";
 
-const model: ProjectReadModel = {
-  schemaVersion: 1,
-  sourceDigest: "test-digest",
+const model: ProjectReadModel = makeProjectReadModel({
   rootNodeIds: ["flowdoc"],
   nodes: [
     node("flowdoc", "FlowDoc", null, 0, ["editor", "project-control", "backend", "core"]),
@@ -15,13 +14,7 @@ const model: ProjectReadModel = {
     node("core", "Core", "flowdoc", 2, []),
     node("backend", "Backend", "flowdoc", 1, []),
   ],
-  work: [],
-  phases: [],
-  checklists: [],
-  documents: [],
-  repositories: [],
-  evidence: [],
-};
+});
 
 function node(
   id: string,

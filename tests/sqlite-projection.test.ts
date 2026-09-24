@@ -89,10 +89,12 @@ describe("SQLite projection", () => {
         { name: "checklist_item_evidence" },
         { name: "checklist_items" },
         { name: "checklists" },
+        { name: "current_truth_snapshot" },
         { name: "diagnostics" },
         { name: "document_supersession" },
         { name: "documents" },
         { name: "evidence" },
+        { name: "governance_cost_snapshot" },
         { name: "nodes" },
         { name: "phase_repositories" },
         { name: "phases" },
@@ -125,6 +127,10 @@ describe("SQLite projection", () => {
       ]);
       expect(JSON.parse(String(db.prepare("select validity_json from evidence where id = ?").get("evidence-design")!.validity_json)))
         .toMatchObject({ claim: "Design is reviewed.", sourceRevision: "0123456789abcdef0123456789abcdef01234567" });
+      expect(db.prepare("select current_goal, current_blocker, active_work_json from current_truth_snapshot").get())
+        .toMatchObject({ current_goal: "A validated pilot task.", current_blocker: null });
+      expect(db.prepare("select context_document_count, reopen_count from governance_cost_snapshot").get())
+        .toEqual({ context_document_count: 1, reopen_count: 0 });
       expect(
         db
           .prepare("select ancestor_work_id, descendant_work_id, depth from work_closure order by ancestor_work_id, descendant_work_id")

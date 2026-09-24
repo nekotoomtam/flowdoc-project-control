@@ -39,6 +39,8 @@ function writeProjection(outputPath: string, model: ProjectReadModel): void {
     db.exec(`
       pragma foreign_keys = on;
       create table projection_meta(schema_version integer not null, source_digest text not null, generated_at text not null);
+      create table current_truth_snapshot(generated_at text not null, current_goal text, current_blocker text, active_work_json text not null, accepted_truth_json text not null, critical_unknowns_json text not null, deferred_work_json text not null, next_decision text, repository_ids_json text not null, authority_document_ids_json text not null);
+      create table governance_cost_snapshot(approximate_context_tokens integer not null, context_document_count integer not null, evidence_created integer not null, durable_documents_created integer not null, implementation_commit_count integer not null, review_cycle_count integer not null, reopen_count integer not null);
       create table nodes(id text primary key, parent_id text, truth_state text not null, node_order real not null, title text not null, summary text not null);
       create table work(id text primary key, parent_work_id text, node_id text not null, work_kind text, work_state text not null, title text not null, summary text not null, execution_mode text, coordination_version integer, coordination_authority text, coordination_json text);
       create table work_closure(ancestor_work_id text not null, descendant_work_id text not null, depth integer not null, primary key(ancestor_work_id, descendant_work_id));
@@ -60,6 +62,8 @@ function writeProjection(outputPath: string, model: ProjectReadModel): void {
     db.exec("begin immediate");
     try {
       insertMeta(db, model);
+      insertCurrentSnapshot(db, model);
+      insertGovernanceCost(db, model);
       insertNodes(db, model);
       insertWork(db, model);
       insertWorkClosure(db, model);
@@ -82,7 +86,40 @@ function insertMeta(db: DatabaseSync, model: ProjectReadModel): void {
   const insert = db.prepare(
     "insert into projection_meta(schema_version, source_digest, generated_at) values (?, ?, ?)",
   );
-  insert.run(model.schemaVersion, model.sourceDigest, new Date().toISOString());
+  insert.run(model.schemaVersion, model.sourceDigest, model.currentSnapshot.generatedAt);
+}
+
+function insertCurrentSnapshot(db: DatabaseSync, model: ProjectReadModel): void {
+  const snapshot = model.currentSnapshot;
+  db.prepare(
+    "insert into current_truth_snapshot(generated_at, current_goal, current_blocker, active_work_json, accepted_truth_json, critical_unknowns_json, deferred_work_json, next_decision, repository_ids_json, authority_document_ids_json) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+  ).run(
+    snapshot.generatedAt,
+    snapshot.currentGoal,
+    snapshot.currentBlocker,
+    JSON.stringify(snapshot.activeWork),
+    JSON.stringify(snapshot.acceptedTruth),
+    JSON.stringify(snapshot.criticalUnknowns),
+    JSON.stringify(snapshot.deferredWork),
+    snapshot.nextDecision,
+    JSON.stringify(snapshot.repositoryIds),
+    JSON.stringify(snapshot.authorityDocumentIds),
+  );
+}
+
+function insertGovernanceCost(db: DatabaseSync, model: ProjectReadModel): void {
+  const cost = model.governanceCost;
+  db.prepare(
+    "insert into governance_cost_snapshot(approximate_context_tokens, context_document_count, evidence_created, durable_documents_created, implementation_commit_count, review_cycle_count, reopen_count) values (?, ?, ?, ?, ?, ?, ?)",
+  ).run(
+    cost.approximateContextTokens,
+    cost.contextDocumentCount,
+    cost.evidenceCreated,
+    cost.durableDocumentsCreated,
+    cost.implementationCommitCount,
+    cost.reviewCycleCount,
+    cost.reopenCount,
+  );
 }
 
 function insertNodes(db: DatabaseSync, model: ProjectReadModel): void {

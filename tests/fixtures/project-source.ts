@@ -1,7 +1,9 @@
 import { mkdtemp, mkdir, readFile, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import type { CurrentTruthSource } from "../../src/model/current-truth-snapshot.js";
 import type { DocumentLifecycle, TruthState, WorkState } from "../../src/model/types.js";
+import { createCoordinationRegistryV3Fixture } from "./coordination-registry-v3.js";
 
 export interface ProjectFixtureOptions {
   valid: true;
@@ -284,4 +286,193 @@ export async function mutateNodeIntoCycle(root: string): Promise<void> {
   const node = JSON.parse(await readFile(nodePath, "utf8")) as Record<string, unknown>;
   node.parentId = "flowdoc";
   await writeFile(nodePath, JSON.stringify(node));
+}
+
+export function planningOnlyFixture(): CurrentTruthSource {
+  return {
+    generatedAt: "2026-09-24T00:00:00.000Z",
+    nodes: [{
+      kind: "node",
+      id: "flowdoc",
+      title: "FlowDoc",
+      parentId: null,
+      summary: "Project root.",
+      truthState: "planned",
+      order: 0,
+      documentIds: [],
+      evidenceIds: [],
+      repositoryIds: ["repo-project-control"],
+    }],
+    work: [{
+      kind: "work",
+      id: "planning-only",
+      title: "Planning Only",
+      nodeId: "flowdoc",
+      workKind: "task",
+      repositoryIds: ["repo-project-control"],
+      workState: "in-review",
+      summary: "Agree the bounded plan.",
+      expectedOutput: "An accepted plan.",
+      requiredEvidence: [],
+      createdAt: "2026-09-23T00:00:00.000Z",
+      updatedAt: "2026-09-24T00:00:00.000Z",
+    }],
+    phases: [{
+      kind: "phase",
+      id: "phase-planning",
+      workId: "planning-only",
+      title: "Planning",
+      phaseState: "done",
+      order: 10,
+      repositoryIds: ["repo-project-control"],
+      activeRole: "planning-partner",
+      stopConditions: [],
+      verificationTarget: "The plan is accepted.",
+      summary: "Plan the change.",
+      createdAt: "2026-09-23T00:00:00.000Z",
+      updatedAt: "2026-09-24T00:00:00.000Z",
+    }],
+    checklists: [{
+      kind: "checklist",
+      id: "checklist-planning",
+      phaseId: "phase-planning",
+      title: "Planning checklist",
+      items: [{
+        id: "plan",
+        label: "Approve the plan.",
+        state: "passed",
+        evidenceTarget: "Owner approval.",
+        verificationNote: "Approved.",
+      }],
+      createdAt: "2026-09-23T00:00:00.000Z",
+      updatedAt: "2026-09-24T00:00:00.000Z",
+    }],
+    documents: [],
+    evidence: [],
+  };
+}
+
+export function projectFixture(): CurrentTruthSource {
+  const coordination = createCoordinationRegistryV3Fixture();
+  coordination.round.workId = "blocked-delivery";
+  coordination.roomRuns[0]!.packet.goal = "Resolve the blocked delivery safely.";
+  coordination.roomRuns[0]!.packet.unknowns = [
+    { id: "unknown-blocking", summary: "Required authority is missing.", disposition: "blocking", ownerAction: "Choose the authority owner." },
+    { id: "unknown-deferred", summary: "Hosted scale is unmeasured.", disposition: "deferred", returnTrigger: "Before hosted rollout." },
+  ];
+  coordination.roomRuns[0]!.status = "active";
+
+  return {
+    generatedAt: "2026-09-24T01:00:00.000Z",
+    nodes: [{
+      kind: "node",
+      id: "flowdoc",
+      title: "FlowDoc",
+      parentId: null,
+      summary: "Project root.",
+      truthState: "current",
+      order: 0,
+      documentIds: ["doc-current", "doc-historical"],
+      evidenceIds: ["evidence-current"],
+      repositoryIds: ["repo-project-control"],
+    }],
+    work: [
+      {
+        kind: "work",
+        id: "blocked-delivery",
+        title: "Blocked Delivery",
+        nodeId: "flowdoc",
+        workKind: "task",
+        repositoryIds: ["repo-project-control"],
+        workState: "blocked",
+        summary: "Resolve the blocked delivery safely.",
+        blockedBy: "Required authority is missing.",
+        unblockOwner: "Project Control owner",
+        contextDocumentIds: ["doc-current", "doc-historical"],
+        requiredEvidence: [],
+        coordination,
+        createdAt: "2026-09-23T00:00:00.000Z",
+        updatedAt: "2026-09-24T00:30:00.000Z",
+      },
+      {
+        kind: "work",
+        id: "active-a",
+        title: "Active A",
+        nodeId: "flowdoc",
+        repositoryIds: ["repo-project-control"],
+        workState: "in-progress",
+        summary: "First deterministic tie.",
+        contextDocumentIds: ["doc-other-work"],
+        requiredEvidence: [],
+        createdAt: "2026-09-23T00:00:00.000Z",
+        updatedAt: "2026-09-24T00:00:00.000Z",
+      },
+      {
+        kind: "work",
+        id: "active-b",
+        title: "Active B",
+        nodeId: "flowdoc",
+        repositoryIds: ["repo-project-control"],
+        workState: "in-progress",
+        summary: "Second deterministic tie.",
+        requiredEvidence: [],
+        createdAt: "2026-09-23T00:00:00.000Z",
+        updatedAt: "2026-09-24T00:00:00.000Z",
+      },
+    ],
+    phases: [],
+    checklists: [],
+    documents: [
+      {
+        kind: "document",
+        id: "doc-current",
+        title: "Current authority",
+        path: "docs/current.md",
+        nodeIds: ["flowdoc"],
+        role: "contract",
+        authority: "Project Control",
+        lifecycle: "active",
+        contextClass: "current",
+        repositoryRefs: [],
+        content: "# Current authority\n",
+      },
+      {
+        kind: "document",
+        id: "doc-other-work",
+        title: "Other Work context",
+        path: "docs/other.md",
+        nodeIds: ["flowdoc"],
+        role: "contract",
+        authority: "Project Control",
+        lifecycle: "active",
+        contextClass: "supporting",
+        repositoryRefs: [],
+        content: "This context belongs to another Work item.",
+      },
+      {
+        kind: "document",
+        id: "doc-historical",
+        title: "Historical authority",
+        path: "docs/historical.md",
+        nodeIds: ["flowdoc"],
+        role: "historical-note",
+        authority: "Project Control",
+        lifecycle: "superseded",
+        contextClass: "historical",
+        supersededBy: "doc-current",
+        repositoryRefs: [],
+        content: "# Historical authority\n",
+      },
+    ],
+    evidence: [{
+      kind: "evidence",
+      id: "evidence-current",
+      nodeIds: ["flowdoc"],
+      repositoryId: "repo-project-control",
+      commit: "a".repeat(40),
+      pathOrContractId: "docs/current.md",
+      verificationSummary: "Current truth is verified.",
+      verifiedAt: "2026-09-24T00:00:00.000Z",
+    }],
+  };
 }

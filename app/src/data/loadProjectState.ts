@@ -91,7 +91,9 @@ function isProjectReadModel(value: unknown): value is ProjectReadModel {
     || !Array.isArray(value.checklists)
     || !Array.isArray(value.documents)
     || !Array.isArray(value.repositories)
-    || !Array.isArray(value.evidence)) {
+    || !Array.isArray(value.evidence)
+    || !isCurrentTruthSnapshot(value.currentSnapshot)
+    || !isGovernanceCostSnapshot(value.governanceCost)) {
     return false;
   }
 
@@ -166,7 +168,69 @@ function hasValidReadModelReferences(model: ProjectReadModel): boolean {
       && repositoryIds.has(evidence.repositoryId)
       && (evidence.validity === undefined || repositoryIds.has(evidence.validity.repositoryId))
       && (evidence.validity?.supersedesEvidenceId === undefined
-        || evidenceIds.has(evidence.validity.supersedesEvidenceId)));
+        || evidenceIds.has(evidence.validity.supersedesEvidenceId)))
+    && model.currentSnapshot.activeWork.every(({ workId }) => workIds.has(workId))
+    && model.currentSnapshot.acceptedTruth.every(({ nodeId, evidenceIds: acceptedEvidenceIds }) =>
+      nodeIds.has(nodeId) && acceptedEvidenceIds.every((id) => evidenceIds.has(id)))
+    && model.currentSnapshot.repositoryIds.every((id) => repositoryIds.has(id))
+    && model.currentSnapshot.authorityDocumentIds.every((id) => documentIds.has(id));
+}
+
+function isCurrentTruthSnapshot(value: unknown): value is ProjectReadModel["currentSnapshot"] {
+  return isRecord(value) && isNonEmptyString(value.generatedAt)
+    && isNullableString(value.currentGoal) && isNullableString(value.currentBlocker)
+    && Array.isArray(value.activeWork) && value.activeWork.every(isSnapshotWork)
+    && Array.isArray(value.acceptedTruth) && value.acceptedTruth.every(isAcceptedTruth)
+    && Array.isArray(value.criticalUnknowns) && value.criticalUnknowns.every((item) =>
+      isWorkflowUnknown(item) && item.disposition === "blocking")
+    && Array.isArray(value.deferredWork) && value.deferredWork.every((item) =>
+      isWorkflowUnknown(item) && item.disposition === "deferred")
+    && isNullableString(value.nextDecision)
+    && isUniqueStringArray(value.repositoryIds) && isUniqueStringArray(value.authorityDocumentIds);
+}
+
+function isSnapshotWork(value: unknown): boolean {
+  return isRecord(value) && isNonEmptyString(value.workId) && isNonEmptyString(value.title)
+    && isRecord(value.milestones)
+    && isMilestoneState(value.milestones.planning)
+    && isMilestoneState(value.milestones.implementation)
+    && isMilestoneState(value.milestones.verification)
+    && isMilestoneState(value.milestones.truthPromotion);
+}
+
+function isAcceptedTruth(value: unknown): boolean {
+  return isRecord(value) && isNonEmptyString(value.nodeId) && isUniqueStringArray(value.evidenceIds);
+}
+
+function isWorkflowUnknown(value: unknown): boolean {
+  return isRecord(value) && isNonEmptyString(value.id) && isNonEmptyString(value.summary)
+    && (value.disposition === "blocking" || value.disposition === "accepted"
+      || value.disposition === "deferred" || value.disposition === "irrelevant")
+    && (value.ownerAction === undefined || isNonEmptyString(value.ownerAction))
+    && (value.returnTrigger === undefined || isNonEmptyString(value.returnTrigger));
+}
+
+function isGovernanceCostSnapshot(value: unknown): value is ProjectReadModel["governanceCost"] {
+  return isRecord(value)
+    && isNonNegativeInteger(value.approximateContextTokens)
+    && isNonNegativeInteger(value.contextDocumentCount)
+    && isNonNegativeInteger(value.evidenceCreated)
+    && isNonNegativeInteger(value.durableDocumentsCreated)
+    && isNonNegativeInteger(value.implementationCommitCount)
+    && isNonNegativeInteger(value.reviewCycleCount)
+    && isNonNegativeInteger(value.reopenCount);
+}
+
+function isMilestoneState(value: unknown): boolean {
+  return value === "not-required" || value === "pending" || value === "complete";
+}
+
+function isNonNegativeInteger(value: unknown): boolean {
+  return typeof value === "number" && Number.isInteger(value) && value >= 0;
+}
+
+function isNullableString(value: unknown): boolean {
+  return value === null || isNonEmptyString(value);
 }
 
 function isIndexNode(value: unknown): value is ProjectReadModel["nodes"][number] {

@@ -35,9 +35,36 @@ describe("accessible visual system", () => {
     render(<App initialModel={directoryModel} />);
 
     expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Current Truth Cockpit" })).toBeVisible();
     expect(screen.getByRole("navigation", { name: "Control room surfaces" })).toBeVisible();
     expect(screen.getByRole("button", { name: "Overview" })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: "Project Control overview" })).toBeVisible();
+  });
+
+  it("exposes Current Truth as a named Overview region with explicit milestone language", () => {
+    const cockpitModel = makeProjectReadModel({
+      currentSnapshot: {
+        ...model.currentSnapshot,
+        currentGoal: "Verify the Overview.",
+        activeWork: [{
+          workId: "accessibility-work",
+          title: "Accessibility Work",
+          milestones: {
+            planning: "complete",
+            implementation: "pending",
+            verification: "not-required",
+            truthPromotion: "pending",
+          },
+        }],
+      },
+    });
+    render(<App initialModel={cockpitModel} />);
+
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(cockpit).toHaveTextContent("Planning");
+    expect(cockpit).toHaveTextContent("Implementation");
+    expect(cockpit).toHaveTextContent("Verification");
+    expect(cockpit).toHaveTextContent("Truth promotion");
   });
 
   it("marks the current focused node semantically", () => {

@@ -13,9 +13,14 @@ import type {
 import { compareCodeUnits } from "./errors.js";
 import type { LoadedRecord } from "./load-sources.js";
 import type { ValidatedProjectSources } from "./validate-semantics.js";
+import {
+  buildCurrentTruthSnapshot,
+  buildGovernanceCostSnapshot,
+} from "../../src/model/current-truth-snapshot.js";
 
 export async function buildProjectReadModel(
   validated: ValidatedProjectSources,
+  generatedAt: string = effectiveGeneratedAt(validated),
 ): Promise<ProjectReadModel> {
   const nodes = [...validated.nodes].sort(compareNodes);
   const workValues = sortById(validated.work).map(({ value }) => ({ ...value }));
@@ -57,6 +62,16 @@ export async function buildProjectReadModel(
     workIds: indexedWork.filter((item) => item.nodeId === node.id).map((item) => item.id),
   }));
 
+  const snapshotSource = {
+    generatedAt,
+    nodes: nodeValues,
+    work: indexedWork,
+    phases,
+    checklists,
+    documents,
+    evidence,
+  };
+
   const model = {
     schemaVersion: 1 as const,
     sourceDigest: await calculateSourceDigest(validated, documents),
@@ -68,8 +83,17 @@ export async function buildProjectReadModel(
     documents,
     repositories,
     evidence,
+    currentSnapshot: buildCurrentTruthSnapshot(snapshotSource),
+    governanceCost: buildGovernanceCostSnapshot(snapshotSource),
   };
   return model;
+}
+
+function effectiveGeneratedAt(validated: ValidatedProjectSources): string {
+  const timestamps = [...validated.work, ...validated.phases, ...validated.checklists]
+    .flatMap(({ value }) => [value.createdAt, value.updatedAt])
+    .sort(compareCodeUnits);
+  return timestamps.at(-1) ?? "1970-01-01T00:00:00.000Z";
 }
 
 export function serializeProjectReadModel(model: ProjectReadModel): string {

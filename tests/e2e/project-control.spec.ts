@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 test("explores a node, reads its summary, and opens separated details", async ({ page }) => {
   await page.goto("/?node=flowdoc");
   expect(new URL(page.url()).hostname).toBe("127.0.0.1");
+  await expect(page.getByRole("region", { name: "Current Truth Cockpit" })).toBeVisible();
   await expect(page.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
   await page.getByRole("button", { name: "Project Control overview" }).click();
   await expect(page).toHaveURL(/\?node=project-control$/);
@@ -56,8 +57,11 @@ test("shows diagnostics for a malformed served index", async ({ page }) => {
 test("keeps the overview and focused branch readable at desktop width", async ({ page }, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/?node=flowdoc");
+  const cockpit = await page.getByRole("region", { name: "Current Truth Cockpit" }).boundingBox();
   const overview = await page.getByRole("region", { name: "Repo Directory Overview" }).boundingBox();
+  expect(cockpit).not.toBeNull();
   expect(overview).not.toBeNull();
+  expect(cockpit!.y + cockpit!.height).toBeLessThanOrEqual(overview!.y);
   expect(overview!.width).toBeGreaterThan(1000);
   await page.screenshot({ path: testInfo.outputPath("overview-desktop.png"), fullPage: true });
 

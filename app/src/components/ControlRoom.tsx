@@ -7,6 +7,8 @@ import type {
   PhaseRecord,
   ProjectReadModel,
   RepositoryRecord,
+  CompletionMilestones,
+  MilestoneState,
   WorkState,
 } from "../../../src/model/types.js";
 import { StatusBadge } from "./StatusBadge.js";
@@ -72,13 +74,16 @@ export function ControlRoom({
           onFocusOverview={navigateToOverview}
         />
       ) : showRootOverview ? (
-        <RepoDirectoryOverview
-          nodes={view.directoryNodes}
-          childrenByParentId={view.childrenByParentId}
-          work={model.work}
-          repositoriesById={view.repositoriesById}
-          onNavigate={navigateToOverview}
-        />
+        <>
+          <CurrentTruthCockpit model={model} repositoriesById={view.repositoriesById} />
+          <RepoDirectoryOverview
+            nodes={view.directoryNodes}
+            childrenByParentId={view.childrenByParentId}
+            work={model.work}
+            repositoriesById={view.repositoriesById}
+            onNavigate={navigateToOverview}
+          />
+        </>
       ) : (
         <div className="control-room__columns">
           <SystemTree
@@ -111,6 +116,91 @@ export function ControlRoom({
       )}
     </>
   );
+}
+
+function CurrentTruthCockpit({
+  model,
+  repositoriesById,
+}: {
+  model: ProjectReadModel;
+  repositoriesById: Map<string, RepositoryRecord>;
+}) {
+  const snapshot = model.currentSnapshot;
+  const repositories = snapshot.repositoryIds.map((id) => repositoriesById.get(id)?.name ?? id);
+  const visibleWork = snapshot.activeWork.slice(0, 3);
+  const hiddenWorkCount = snapshot.activeWork.length - visibleWork.length;
+  return (
+    <section className="control-room__cockpit" aria-label="Current Truth Cockpit">
+      <header>
+        <div>
+          <p className="control-room__eyebrow">Current truth</p>
+          <h2>{snapshot.currentGoal ?? "No active goal"}</h2>
+        </div>
+        <p className={snapshot.currentBlocker === null ? "control-room__clear" : "control-room__blocked"}>
+          <span>Current blocker</span>
+          <strong>{snapshot.currentBlocker ?? "None"}</strong>
+        </p>
+      </header>
+
+      <div className="control-room__cockpit-summary">
+        <p><span>Accepted truth</span><strong>{snapshot.acceptedTruth.length}</strong></p>
+        <p><span>Critical unknowns</span><strong>{snapshot.criticalUnknowns.length}</strong></p>
+        <p><span>Deferred work</span><strong>{snapshot.deferredWork.length}</strong></p>
+        <p><span>Repositories</span><strong>{repositories.length}</strong></p>
+      </div>
+
+      <div className="control-room__cockpit-body">
+        <div>
+          <h3>Active work</h3>
+          {snapshot.activeWork.length === 0 ? (
+            <p className="control-room__empty">No active Work is recorded.</p>
+          ) : (
+            <ol className="control-room__cockpit-work">
+              {visibleWork.map((work) => (
+                <li key={work.workId}>
+                  <strong>{work.title}</strong>
+                  <MilestoneList milestones={work.milestones} />
+                </li>
+              ))}
+            </ol>
+          )}
+          {hiddenWorkCount > 0 ? (
+            <p className="control-room__cockpit-overflow">
+              {hiddenWorkCount} more active Work {hiddenWorkCount === 1 ? "item" : "items"}
+            </p>
+          ) : null}
+        </div>
+        <dl className="control-room__cockpit-decisions">
+          <div><dt>Next decision</dt><dd>{snapshot.nextDecision ?? "None"}</dd></div>
+          <div><dt>Repositories</dt><dd>{repositories.join(", ") || "None"}</dd></div>
+        </dl>
+      </div>
+    </section>
+  );
+}
+
+function MilestoneList({ milestones }: { milestones: CompletionMilestones }) {
+  const rows: Array<[string, MilestoneState]> = [
+    ["Planning", milestones.planning],
+    ["Implementation", milestones.implementation],
+    ["Verification", milestones.verification],
+    ["Truth promotion", milestones.truthPromotion],
+  ];
+  return (
+    <dl className="control-room__milestones">
+      {rows.map(([label, state]) => (
+        <div key={label}>
+          <dt>{label}</dt>
+          <dd>{milestoneLabel(state)}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function milestoneLabel(state: MilestoneState): string {
+  if (state === "not-required") return "Not required";
+  return state === "complete" ? "Complete" : "Pending";
 }
 
 function SurfaceSwitch({

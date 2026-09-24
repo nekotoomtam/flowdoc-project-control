@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "ad073b64103a9899aed30a4cb211ef2ec5b2cfa28fd1d3c348270487aab971f4",
+  "sourceDigest": "f4b326b9454054b90bea1c91c5fb6c6e25af22dd2ad63f8092bbd8ce29a71b9a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8703,7 +8703,7 @@
       "riskSummary": "A partial migration could leave two active rule sets or remove a safety invariant. The design therefore requires an atomic entrypoint cutover, behavior tests, historical readability, and no reuse of closed PLAN or WORK execution context.",
       "requiredEvidence": [],
       "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-      "updatedAt": "2026-09-24T09:27:48.0704957+07:00",
+      "updatedAt": "2026-09-24T10:05:58.7132457+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-economy-clean-cutover-design",
@@ -21579,8 +21579,9 @@
         {
           "id": "current-truth-cockpit",
           "label": "Completion milestones, Current Truth Snapshot, governance metrics, and compact Cockpit are generated from canonical records.",
-          "state": "pending",
-          "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts"
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts",
+          "verificationNote": "RED: snapshot module and Cockpit region were absent; SQLite omitted snapshot tables; browser validation accepted ambiguous milestones and negative metrics; governance context initially included another Work. GREEN: focused snapshot, projection, loader, App, accessibility, build, and browser checks passed on 2026-09-24."
         },
         {
           "id": "atomic-authority-cutover",
@@ -21596,7 +21597,7 @@
         }
       ],
       "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-      "updatedAt": "2026-09-24T09:27:48.0704957+07:00"
+      "updatedAt": "2026-09-24T10:05:58.7132457+07:00"
     },
     {
       "kind": "checklist",
@@ -28279,5 +28280,108 @@
       "verificationSummary": "A focused 12-file/93-test WASM gate batch passed, including acquisition, provisioning, optional-readiness, and version-compatibility gates; package-local discovery and planning do not establish globally installed tools or production readiness.",
       "verifiedAt": "2026-08-14T00:00:00.000Z"
     }
-  ]
+  ],
+  "currentSnapshot": {
+    "generatedAt": "2026-09-24T10:05:58.7132457+07:00",
+    "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
+    "currentBlocker": null,
+    "activeWork": [
+      {
+        "workId": "flowdoc-frontend-expert-roadmap",
+        "title": "FlowDoc Frontend Expert Roadmap",
+        "milestones": {
+          "planning": "pending",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "agent-and-skill-design",
+        "title": "Agent and Skill Design",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "complete"
+        }
+      },
+      {
+        "workId": "flowdoc-fast-delivery-risk-register",
+        "title": "FlowDoc Fast Delivery Risk Register",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "flowdoc-document-structure-database-model",
+        "title": "FlowDoc Document Structure Database Model",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "flowdoc-creator-ux-db-alignment-v0",
+        "title": "FlowDoc Creator UX and Database Alignment v0",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      }
+    ],
+    "acceptedTruth": [
+      {
+        "nodeId": "core-route",
+        "evidenceIds": [
+          "evidence-core-route-artifact-contracts",
+          "evidence-core-route-cleanup",
+          "evidence-core-route-generation-contracts",
+          "evidence-core-route-public-boundary"
+        ]
+      },
+      {
+        "nodeId": "flowdoc-browser-compatibility",
+        "evidenceIds": [
+          "evidence-editor-browser-live-backend-corpus-smoke-2026-08-27",
+          "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"
+        ]
+      },
+      {
+        "nodeId": "project-control",
+        "evidenceIds": [
+          "evidence-flowdoc-plan-self-contained-rounds-2026-09-21",
+          "evidence-project-control-design",
+          "evidence-project-control-overview-history-gui-2026-08-29",
+          "evidence-project-control-phase-order-read-model-2026-08-30"
+        ]
+      }
+    ],
+    "criticalUnknowns": [],
+    "deferredWork": [],
+    "nextDecision": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
+    "repositoryIds": [
+      "repo-backend",
+      "repo-core",
+      "repo-editor",
+      "repo-project-control"
+    ],
+    "authorityDocumentIds": []
+  },
+  "governanceCost": {
+    "approximateContextTokens": 191389,
+    "contextDocumentCount": 48,
+    "evidenceCreated": 0,
+    "durableDocumentsCreated": 0,
+    "implementationCommitCount": 0,
+    "reviewCycleCount": 0,
+    "reopenCount": 0
+  }
 }

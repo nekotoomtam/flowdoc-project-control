@@ -28,8 +28,9 @@
     {
       "id": "current-truth-cockpit",
       "label": "Completion milestones, Current Truth Snapshot, governance metrics, and compact Cockpit are generated from canonical records.",
-      "state": "pending",
-      "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts"
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts",
+      "verificationNote": "RED: snapshot module and Cockpit region were absent; SQLite omitted snapshot tables; browser validation accepted ambiguous milestones and negative metrics; governance context initially included another Work. GREEN: focused snapshot, projection, loader, App, accessibility, build, and browser checks passed on 2026-09-24."
     },
     {
       "id": "atomic-authority-cutover",
@@ -45,5 +46,5 @@
     }
   ],
   "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-  "updatedAt": "2026-09-24T09:27:48.0704957+07:00"
+  "updatedAt": "2026-09-24T10:05:58.7132457+07:00"
 }

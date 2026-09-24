@@ -226,6 +226,80 @@ describe("App", () => {
     expect(screen.queryByRole("complementary", { name: "Control detail" })).not.toBeInTheDocument();
   });
 
+  it("renders a compact Current Truth Cockpit without a generic Done label", () => {
+    const cockpitModel = makeProjectReadModel({
+      currentSnapshot: {
+        generatedAt: "2026-09-24T01:00:00.000Z",
+        currentGoal: "Ship the workflow economy cutover.",
+        currentBlocker: null,
+        activeWork: [{
+          workId: "workflow-economy",
+          title: "Workflow Economy",
+          milestones: {
+            planning: "complete",
+            implementation: "pending",
+            verification: "not-required",
+            truthPromotion: "pending",
+          },
+        }],
+        acceptedTruth: [{ nodeId: "flowdoc", evidenceIds: ["evidence-current"] }],
+        criticalUnknowns: [],
+        deferredWork: [],
+        nextDecision: "Complete implementation.",
+        repositoryIds: ["repo-project-control"],
+        authorityDocumentIds: ["doc-current"],
+      },
+      governanceCost: {
+        approximateContextTokens: 10,
+        contextDocumentCount: 1,
+        evidenceCreated: 0,
+        durableDocumentsCreated: 0,
+        implementationCommitCount: 0,
+        reviewCycleCount: 0,
+        reopenCount: 0,
+      },
+    });
+
+    render(<App initialModel={cockpitModel} />);
+
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(cockpit).toHaveTextContent("Ship the workflow economy cutover.");
+    expect(cockpit).toHaveTextContent("PlanningComplete");
+    expect(cockpit).toHaveTextContent("ImplementationPending");
+    expect(cockpit).toHaveTextContent("VerificationNot required");
+    expect(cockpit).toHaveTextContent("Truth promotionPending");
+    expect(cockpit).not.toHaveTextContent(/\bDone\b/);
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+  });
+
+  it("keeps the root Cockpit compact when many Work records are active", () => {
+    const activeWork = ["One", "Two", "Three", "Four"].map((title, index) => ({
+      workId: `work-${index + 1}`,
+      title,
+      milestones: {
+        planning: "complete" as const,
+        implementation: "pending" as const,
+        verification: "not-required" as const,
+        truthPromotion: "pending" as const,
+      },
+    }));
+    const compactModel = makeProjectReadModel({
+      currentSnapshot: {
+        ...model.currentSnapshot,
+        currentGoal: "Keep the cockpit compact.",
+        activeWork,
+      },
+    });
+
+    render(<App initialModel={compactModel} />);
+
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(within(cockpit).getByText("One")).toBeVisible();
+    expect(within(cockpit).getByText("Three")).toBeVisible();
+    expect(within(cockpit).queryByText("Four")).not.toBeInTheDocument();
+    expect(within(cockpit).getByText("1 more active Work item")).toBeVisible();
+  });
+
   it("shows task phase and checklist context without GUI editing", () => {
     const executionModel = makeProjectReadModel({
       rootNodeIds: ["flowdoc"],

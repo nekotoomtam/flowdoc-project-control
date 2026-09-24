@@ -1,6 +1,7 @@
 import type {
   WorkflowCompletionReport,
   WorkflowEconomyPacket,
+  WorkflowUnknown,
 } from "./workflow-economy.js";
 
 export type TruthState = "current" | "planned" | "risk" | "unknown";
@@ -584,6 +585,42 @@ export interface IndexWork extends WorkRecord {
   workPathIds: string[];
 }
 
+export type MilestoneState = "not-required" | "pending" | "complete";
+
+export interface CompletionMilestones {
+  planning: MilestoneState;
+  implementation: MilestoneState;
+  verification: MilestoneState;
+  truthPromotion: MilestoneState;
+}
+
+export interface CurrentTruthSnapshot {
+  generatedAt: string;
+  currentGoal: string | null;
+  currentBlocker: string | null;
+  activeWork: Array<{
+    workId: string;
+    title: string;
+    milestones: CompletionMilestones;
+  }>;
+  acceptedTruth: Array<{ nodeId: string; evidenceIds: string[] }>;
+  criticalUnknowns: WorkflowUnknown[];
+  deferredWork: WorkflowUnknown[];
+  nextDecision: string | null;
+  repositoryIds: string[];
+  authorityDocumentIds: string[];
+}
+
+export interface GovernanceCostSnapshot {
+  approximateContextTokens: number;
+  contextDocumentCount: number;
+  evidenceCreated: number;
+  durableDocumentsCreated: number;
+  implementationCommitCount: number;
+  reviewCycleCount: number;
+  reopenCount: number;
+}
+
 export interface ProjectReadModel {
   schemaVersion: 1;
   sourceDigest: string;
@@ -595,4 +632,6 @@ export interface ProjectReadModel {
   documents: IndexDocument[];
   repositories: RepositoryRecord[];
   evidence: EvidenceRecord[];
+  currentSnapshot: CurrentTruthSnapshot;
+  governanceCost: GovernanceCostSnapshot;
 }

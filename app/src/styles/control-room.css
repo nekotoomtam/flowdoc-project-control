@@ -46,6 +46,101 @@
   gap: 0.75rem;
 }
 
+.control-room__cockpit {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-raised);
+}
+
+.control-room__cockpit > header,
+.control-room__cockpit-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(16rem, 0.6fr);
+  gap: 1rem;
+}
+
+.control-room__cockpit h2,
+.control-room__cockpit h3,
+.control-room__cockpit p,
+.control-room__cockpit dl {
+  margin: 0;
+}
+
+.control-room__cockpit > header > p,
+.control-room__cockpit-decisions {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  border-left: 0.3rem solid var(--work-in-progress);
+  background: var(--surface-subtle);
+}
+
+.control-room__cockpit > header > .control-room__blocked {
+  border-left-color: var(--work-blocked);
+}
+
+.control-room__cockpit > header span,
+.control-room__cockpit-summary span,
+.control-room__milestones dt,
+.control-room__cockpit-decisions dt {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.control-room__cockpit-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.control-room__cockpit-summary p {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.65rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.4rem;
+  background: var(--surface-canvas);
+}
+
+.control-room__cockpit-work,
+.control-room__milestones {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.control-room__cockpit-work > li {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.4rem;
+}
+
+.control-room__milestones {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.control-room__milestones div,
+.control-room__cockpit-decisions div {
+  min-width: 0;
+}
+
+.control-room__milestones dd,
+.control-room__cockpit-decisions dd {
+  margin: 0.15rem 0 0;
+  overflow-wrap: anywhere;
+}
+
 .control-room__surface-switch {
   grid-column: 1 / -1;
   display: flex;
@@ -104,6 +199,18 @@
 
 .control-room__metric--queued {
   border-left-color: var(--work-queued);
+}
+
+@media (max-width: 56rem) {
+  .control-room__cockpit > header,
+  .control-room__cockpit-body {
+    grid-template-columns: 1fr;
+  }
+
+  .control-room__cockpit-summary,
+  .control-room__milestones {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .control-room__columns {

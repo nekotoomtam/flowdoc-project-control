@@ -1,22 +1,15 @@
 import { describe, expect, it } from "vitest";
 import type { ProjectReadModel } from "../../../src/model/types.js";
+import { makeProjectReadModel } from "../test/projectModel.js";
 import { nodeUrl, readNodeId, resolveNodePath } from "./nodeRoute.js";
 
-const model: ProjectReadModel = {
-  schemaVersion: 1,
-  sourceDigest: "test-digest",
+const model: ProjectReadModel = makeProjectReadModel({
   rootNodeIds: ["flowdoc"],
   nodes: [
     node("flowdoc", "FlowDoc", null, 0, ["project-control"]),
     node("project-control", "Project Control", "flowdoc", 1, []),
   ],
-  work: [],
-  phases: [],
-  checklists: [],
-  documents: [],
-  repositories: [],
-  evidence: [],
-};
+});
 
 function node(
   id: string,
