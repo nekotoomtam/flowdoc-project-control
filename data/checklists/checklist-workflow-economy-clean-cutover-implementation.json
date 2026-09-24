@@ -14,8 +14,9 @@
     {
       "id": "workflow-enforcement",
       "label": "PLAN and WORK authority, proof economy, unknown disposition, owner decisions, and stopping are enforced by behavior tests.",
-      "state": "pending",
-      "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts"
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts",
+      "verificationNote": "RED: lifecycle and CLI suites failed because version 3 validation and transitions did not exist. GREEN: 63 focused lifecycle, CLI, and semantic tests plus 273 records tests passed on 2026-09-24; TypeScript type-check also passed."
     },
     {
       "id": "context-supersession",
@@ -43,5 +44,5 @@
     }
   ],
   "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-  "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+  "updatedAt": "2026-09-24T09:00:16.2352636+07:00"
 }

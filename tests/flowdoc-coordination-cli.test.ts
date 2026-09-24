@@ -9,7 +9,9 @@ import {
 } from "../tools/coordination-registry.js";
 import { createCoordinationRegistryFixture } from "./fixtures/coordination-registry.js";
 import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
+import { createCoordinationRegistryV3Fixture } from "./fixtures/coordination-registry-v3.js";
 import { createProjectFixture } from "./fixtures/project-source.js";
+import { packetDigest } from "../src/model/coordination-v3.js";
 
 async function installRegistry(
   root: string,
@@ -31,6 +33,28 @@ async function installRegistry(
     registry.roomRuns[0]!.returnRoute.monitorOwner = registry.round.planTaskId;
     work.coordination = registry;
   }
+  await writeFile(path, JSON.stringify(work));
+  return path;
+}
+
+async function installV3Registry(root: string, active = false): Promise<string> {
+  const path = join(root, "data", "work", "pilot-task.json");
+  const work = JSON.parse(await readFile(path, "utf8")) as Record<string, unknown>;
+  const registry = createCoordinationRegistryV3Fixture();
+  registry.round.workId = "pilot-task";
+  registry.round.allowedFiles = ["src/model/"];
+  registry.integrationClaims[0]!.repositoryId = "project-control";
+  const room = registry.roomRuns[0]!;
+  room.ownerRepositoryId = "project-control";
+  room.phaseId = "phase-contract";
+  room.checklistId = "checklist-contract";
+  room.requiredEvidence = ["evidence-design"];
+  room.packet.ownerRepositoryId = "project-control";
+  room.packet.allowedScope = ["src/model/"];
+  room.packet.relevantEvidenceIds = ["evidence-design"];
+  room.packetDigest = packetDigest(room.packet);
+  if (active) room.status = "active";
+  work.coordination = registry;
   await writeFile(path, JSON.stringify(work));
   return path;
 }
@@ -185,6 +209,48 @@ describe("coordination registry persistence", () => {
       },
     })).rejects.toMatchObject({ code: "WRITER_GUARD_HELD" });
     expect(await readFile(guardPath, "utf8")).toBe("existing writer");
+  });
+
+  it("applies version 3 commands without cutting off version 2 mutation", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    await installV3Registry(root);
+    const next = await applyCoordinationCommandToWorkFile({
+      rootDir: root,
+      workFile: "data/work/pilot-task.json",
+      expectedRevision: 0,
+      command: {
+        type: "activate-room",
+        planTaskId: "plan-economy-1",
+        roundId: "round-economy-1",
+        roomRunId: "workflow-economy-room",
+        revisionAttempt: 0,
+      },
+    });
+    expect(next).toMatchObject({ version: 3, revision: 1 });
+    expect(next.roomRuns[0]!.status).toBe("active");
+  });
+
+  it("rejects a raw packet change after activation without writing", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    const path = await installV3Registry(root, true);
+    const work = JSON.parse(await readFile(path, "utf8"));
+    work.coordination.roomRuns[0].packet.risk.tier = "bounded";
+    await writeFile(path, JSON.stringify(work));
+    const before = await readFile(path, "utf8");
+
+    await expect(applyCoordinationCommandToWorkFile({
+      rootDir: root,
+      workFile: "data/work/pilot-task.json",
+      expectedRevision: 0,
+      command: {
+        type: "supersede-attempt",
+        planTaskId: "plan-economy-1",
+        roundId: "round-economy-1",
+        roomRunId: "workflow-economy-room",
+        revisionAttempt: 0,
+      },
+    })).rejects.toMatchObject({ code: "CANDIDATE_INVALID" });
+    expect(await readFile(path, "utf8")).toBe(before);
   });
 
   it("rejects a command file that resolves through a junction outside root", async () => {

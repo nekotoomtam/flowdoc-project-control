@@ -6,6 +6,7 @@ import {
   applyCoordinationCommand,
 } from "../src/model/coordination.js";
 import type { CoordinationCommandV2 } from "../src/model/coordination-v2.js";
+import type { CoordinationCommandV3 } from "../src/model/coordination-v3.js";
 import type { CoordinationRegistry, WorkRecord } from "../src/model/types.js";
 import { ProjectValidationError } from "./lib/errors.js";
 import {
@@ -88,7 +89,7 @@ export async function applyCoordinationCommandToWorkFile(
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },
     ]));
-    const command = parseCommand(options.command);
+    const command = parseCommand(options.command, work.coordination.version);
     const coordination = applyCoordinationCommand(work.coordination, command, { evidenceById });
     const candidate: WorkRecord = { ...work, coordination };
     const schemaDiagnostics = await validateCanonicalRecordValue("work", relativePath, candidate);
@@ -196,7 +197,7 @@ function readOption(args: string[], name: string): string | undefined {
   return index < 0 ? undefined : args[index + 1];
 }
 
-function parseCommand(value: unknown): CoordinationCommandV2 {
+function parseCommand(value: unknown, registryVersion: 2 | 3): CoordinationCommandV2 | CoordinationCommandV3 {
   if (typeof value !== "object" || value === null || !("type" in value) || typeof value.type !== "string") {
     throw new CoordinationPersistenceError("MALFORMED_COMMAND", "Command JSON must contain a string type.");
   }
@@ -224,6 +225,7 @@ function parseCommand(value: unknown): CoordinationCommandV2 {
   if (keys.some((key) => !(key in value))) {
     throw new CoordinationPersistenceError("MALFORMED_COMMAND", `Command ${value.type} is missing required fields.`);
   }
+  if (registryVersion === 3) return value as CoordinationCommandV3;
   return value as CoordinationCommandV2;
 }
 

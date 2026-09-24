@@ -1,7 +1,36 @@
+import { readFile, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { loadProjectSources } from "../tools/lib/load-sources.js";
 import { validateProjectSemantics } from "../tools/lib/validate-semantics.js";
 import { createProjectFixture } from "./fixtures/project-source.js";
+import { createCoordinationRegistryV3Fixture } from "./fixtures/coordination-registry-v3.js";
+import { packetDigest } from "../src/model/coordination-v3.js";
+
+async function installSemanticV3(
+  root: string,
+  mutate?: (work: Record<string, any>) => void,
+): Promise<void> {
+  const path = join(root, "data", "work", "pilot-task.json");
+  const work = JSON.parse(await readFile(path, "utf8")) as Record<string, any>;
+  const registry = createCoordinationRegistryV3Fixture();
+  registry.round.workId = "pilot-task";
+  registry.integrationClaims[0]!.repositoryId = "project-control";
+  const room = registry.roomRuns[0]!;
+  room.ownerRepositoryId = "project-control";
+  room.phaseId = "phase-contract";
+  room.checklistId = "checklist-contract";
+  room.requiredEvidence = ["evidence-design"];
+  room.packet.ownerRepositoryId = "project-control";
+  room.packet.relevantEvidenceIds = ["evidence-design"];
+  room.packetDigest = packetDigest(room.packet);
+  work.coordination = registry;
+  mutate?.(work);
+  for (const candidate of work.coordination.roomRuns) {
+    candidate.packetDigest = packetDigest(candidate.packet);
+  }
+  await writeFile(path, JSON.stringify(work));
+}
 
 describe("validateProjectSemantics", () => {
   it.each([
@@ -90,6 +119,43 @@ describe("validateProjectSemantics", () => {
     const validated = await validateProjectSemantics(await loadProjectSources(root));
 
     expect(validated.nodes[0]?.value.truthState).toBe("planned");
+  });
+
+  it("rejects a version 3 packet whose owner differs from its room", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    await installSemanticV3(root, (work) => {
+      work.coordination.roomRuns[0].packet.ownerRepositoryId = "different-repository";
+    });
+    await expect(validateProjectSemantics(await loadProjectSources(root))).rejects.toMatchObject({
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ code: "WORKFLOW_PACKET_OWNER_ROOM_MISMATCH" }),
+      ]),
+    });
+  });
+
+  it("rejects a version 3 owner outside the containing Work repository boundary", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    await installSemanticV3(root, (work) => {
+      work.repositoryIds = ["different-repository"];
+    });
+    await expect(validateProjectSemantics(await loadProjectSources(root))).rejects.toMatchObject({
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ code: "WORKFLOW_PACKET_OWNER_WORK_MISMATCH" }),
+      ]),
+    });
+  });
+
+  it("rejects active version 3 rooms under a released round", async () => {
+    const root = await createProjectFixture({ valid: true, newContractTask: true });
+    await installSemanticV3(root, (work) => {
+      work.coordination.round.state = "released";
+      work.coordination.roomRuns[0].status = "active";
+    });
+    await expect(validateProjectSemantics(await loadProjectSources(root))).rejects.toMatchObject({
+      diagnostics: expect.arrayContaining([
+        expect.objectContaining({ code: "WORKFLOW_ACTIVE_ROOM_ROUND_INACTIVE" }),
+      ]),
+    });
   });
 
   it("does not derive current Node truth from passed Checklist state", async () => {

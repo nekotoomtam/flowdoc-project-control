@@ -149,6 +149,22 @@ function checkCoordination(loaded: LoadedProjectSources): ProjectDiagnostic[] {
           "Reference a canonical Checklist record.",
         ));
       }
+      if (registry.version === 3 && "packet" in room && room.packet.ownerRepositoryId !== room.ownerRepositoryId) {
+        diagnostics.push(recordDiagnostic(
+          "WORKFLOW_PACKET_OWNER_ROOM_MISMATCH",
+          `Room "${room.roomRunId}" and its workflow packet name different owner repositories.`,
+          work,
+          "Make the packet owner match the room owner before dispatch.",
+        ));
+      }
+      if (registry.version === 3 && "packet" in room && !work.value.repositoryIds.includes(room.packet.ownerRepositoryId)) {
+        diagnostics.push(recordDiagnostic(
+          "WORKFLOW_PACKET_OWNER_WORK_MISMATCH",
+          `Workflow packet owner "${room.packet.ownerRepositoryId}" is outside the containing Work repository boundary.`,
+          work,
+          "Choose an owner repository already declared by the containing Work.",
+        ));
+      }
     }
   }
   return diagnostics;

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "bb13f262b048bc47d85911d73c5fc07f13f5ab2fa42fd121edcc1f957893966f",
+  "sourceDigest": "7e13bd65fe991d5c272fd962b75a29247b8ba6d48fe585655e1f9d04bbf2cc26",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8703,7 +8703,7 @@
       "riskSummary": "A partial migration could leave two active rule sets or remove a safety invariant. The design therefore requires an atomic entrypoint cutover, behavior tests, historical readability, and no reuse of closed PLAN or WORK execution context.",
       "requiredEvidence": [],
       "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-      "updatedAt": "2026-09-24T08:37:44.4543671+07:00",
+      "updatedAt": "2026-09-24T09:00:16.2352636+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-economy-clean-cutover-design",
@@ -21565,8 +21565,9 @@
         {
           "id": "workflow-enforcement",
           "label": "PLAN and WORK authority, proof economy, unknown disposition, owner decisions, and stopping are enforced by behavior tests.",
-          "state": "pending",
-          "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts"
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts",
+          "verificationNote": "RED: lifecycle and CLI suites failed because version 3 validation and transitions did not exist. GREEN: 63 focused lifecycle, CLI, and semantic tests plus 273 records tests passed on 2026-09-24; TypeScript type-check also passed."
         },
         {
           "id": "context-supersession",
@@ -21594,7 +21595,7 @@
         }
       ],
       "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-      "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+      "updatedAt": "2026-09-24T09:00:16.2352636+07:00"
     },
     {
       "kind": "checklist",

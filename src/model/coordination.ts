@@ -8,6 +8,7 @@ import type {
   CoordinationRegistry as VersionedCoordinationRegistry,
   CoordinationRegistryV1 as CoordinationRegistry,
   CoordinationRegistryV2,
+  CoordinationRegistryV3,
   CoordinationRoomRun,
   CoordinationTerminalPayload,
   CoordinationTerminalPayloadV2,
@@ -20,6 +21,11 @@ import {
   validateCoordinationV2Registry,
   type CoordinationCommandV2,
 } from "./coordination-v2.js";
+import {
+  applyCoordinationV3Command,
+  validateCoordinationV3Registry,
+  type CoordinationCommandV3,
+} from "./coordination-v3.js";
 
 export interface CoordinationValidationIssue {
   code: string;
@@ -127,9 +133,9 @@ export function canonicalPayloadDigest(
 
 export function applyCoordinationCommand(
   registry: VersionedCoordinationRegistry,
-  command: CoordinationCommandV2 | { type: string; [key: string]: unknown },
+  command: CoordinationCommandV2 | CoordinationCommandV3 | { type: string; [key: string]: unknown },
   context: CoordinationCommandContext = {},
-): CoordinationRegistryV2 {
+): CoordinationRegistryV2 | CoordinationRegistryV3 {
   if (registry.version === 1) {
     throw new CoordinationTransitionError(
       "LEGACY_REGISTRY_READ_ONLY",
@@ -137,10 +143,7 @@ export function applyCoordinationCommand(
     );
   }
   if (registry.version === 3) {
-    throw new CoordinationTransitionError(
-      "WORKFLOW_ECONOMY_NOT_ACTIVE",
-      "Version 3 coordination is a non-authoritative candidate until its lifecycle is implemented and cut over.",
-    );
+    return applyCoordinationV3Command(registry, command as CoordinationCommandV3, context);
   }
   if (command.type === "transfer-ownership") {
     throw new CoordinationTransitionError(
@@ -323,6 +326,8 @@ export function validateCoordinationRegistries(
       }
       if (registry.version === 2) {
         issues.push(...validateCoordinationV2Registry(work.id, registry, evidenceById));
+      } else {
+        issues.push(...validateCoordinationV3Registry(work.id, registry, evidenceById));
       }
       if (registry.round.state === "active") {
         for (const scopeKey of registry.round.scopeKeys) {
@@ -453,7 +458,7 @@ export function collectExecutionIdentityIssues(
     const roundId = registry.version === 1
       ? `legacy:${work.id}:generation:${registry.scopeOwnership.generation}`
       : registry.round.roundId;
-    const mutableV2 = registry.version === 2 && registry.round.state === "active";
+    const mutableV2 = registry.version !== 1 && registry.round.state === "active";
 
     for (const room of registry.roomRuns) {
       const base = {

@@ -1,4 +1,5 @@
 import { createRoutineWorkflowPacket } from "../../src/model/workflow-economy.js";
+import { packetDigest } from "../../src/model/coordination-v3.js";
 import type {
   CoordinationModelDecision,
   CoordinationRegistryV3,
@@ -119,6 +120,7 @@ export function createCoordinationRegistryV3Fixture(
       },
       requiredEvidence: ["evidence-workflow-economy-design"],
       packet: workflowPacket,
+      packetDigest: packetDigest(workflowPacket),
     }],
     handoffs: [],
     completionQueue: [],

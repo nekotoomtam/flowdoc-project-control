@@ -658,7 +658,7 @@
             "activeRole", "phaseId", "checklistId", "evidenceTarget", "roundId",
             "revisionAttempt", "expectedHandoffId", "status", "locator",
             "contextAcknowledgement", "returnRoute", "modelDecision", "ux",
-            "requiredEvidence", "packet"
+            "requiredEvidence", "packet", "packetDigest"
           ],
           "properties": {
             "roomRunId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
@@ -684,7 +684,8 @@
               "minItems": 1,
               "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
             },
-            "packet": { "$ref": "#/$defs/work/$defs/workflowPacket" }
+            "packet": { "$ref": "#/$defs/work/$defs/workflowPacket" },
+            "packetDigest": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
           }
         },
         "handoffPayloadV3": {

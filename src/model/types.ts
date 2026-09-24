@@ -200,6 +200,7 @@ export interface CoordinationRoomRunV2 {
 
 export interface CoordinationRoomRunV3 extends CoordinationRoomRunV2 {
   packet: WorkflowEconomyPacket;
+  packetDigest: string;
 }
 
 export interface CoordinationModelDecision {
