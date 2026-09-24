@@ -7,8 +7,8 @@
   "repositoryId": "repo-project-control",
   "commit": "dc429f04b78da6026ef6bb27dfa9354034942682",
   "pathOrContractId": "docs/domains/flowdoc-workflow-economy-policy.md; src/model/workflow-economy.ts; src/model/coordination-v3.ts; src/model/context-routing.ts; src/model/current-truth-snapshot.ts; tests/flowdoc-workflow-economy-schema.test.ts; tests/flowdoc-workflow-economy-lifecycle.test.ts; tests/flowdoc-context-routing.test.ts; tests/flowdoc-current-truth-snapshot.test.ts; tests/flowdoc-workflow-economy-cutover.test.ts",
-  "verificationSummary": "Project Control commit dc429f04b78da6026ef6bb27dfa9354034942682 implements the version 3 Minimal Packet and lifecycle, proportional proof and document budgets, Evidence validity and context routing, Current Truth Snapshot/Cockpit, one current workflow policy, reciprocal supersession of four historical workflow contracts, and v3-only public mutation. Focused Task 5 verification passed 123 tests and check:data; the full clean worktree gate passed 83 files/297 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests on 2026-09-24. Default agent-and-skill-design context decreased from 19 documents to 16 by replacing four workflow authorities with one. No Core, Backend, Editor, product behavior, product map, or DOCUMENT_MAP changed. Main integration, post-integration main verification, machine-guidance sync, and cleanup remain pending and are not claimed by this Evidence revision.",
-  "verifiedAt": "2026-09-24T11:14:05.8890474+07:00",
+  "verificationSummary": "Project Control commit dc429f04b78da6026ef6bb27dfa9354034942682 implements the version 3 Minimal Packet and lifecycle, proportional proof and document budgets, Evidence validity and context routing, Current Truth Snapshot/Cockpit, one current workflow policy, reciprocal supersession of four historical workflow contracts, and v3-only public mutation. Focused Task 5 verification passed 123 tests and check:data; the final clean worktree gate at 90c37e177e3ca38e33005d2107b03a950ba0f170 passed 83 files/297 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. Main fast-forwarded to the identical reviewed commit and the unchanged full main gate passed the same suites after one diagnosed environment-sensitive timeout retry. Canonical global guidance and the installed FlowDoc skill were synchronized and validated, then the clean merged worktree and branch were removed. Default agent-and-skill-design context decreased from 19 documents to 16 by replacing four workflow authorities with one. No Core, Backend, Editor, product behavior, product map, or DOCUMENT_MAP changed.",
+  "verifiedAt": "2026-09-24T11:46:55.1300650+07:00",
   "validity": {
     "claim": "The Project Control workflow economy authority is current, proportionally enforced, context-routed, and verified at the pinned implementation commit.",
     "repositoryId": "repo-project-control",
@@ -21,7 +21,7 @@
       "app/"
     ],
     "sourceRevision": "dc429f04b78da6026ef6bb27dfa9354034942682",
-    "verificationMethod": "Focused workflow-economy suites, npm run check:data, and the full npm run check worktree gate.",
+    "verificationMethod": "Focused workflow-economy suites, npm run check:data, full npm run check gates in the worktree and on main, skill validation, and repository skill parity tests.",
     "freshnessTriggers": [
       "Workflow Economy Policy changes",
       "workflow packet or coordination registry schema changes",

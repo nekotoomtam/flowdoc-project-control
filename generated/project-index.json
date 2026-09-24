@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "451d89ca53f04556569de1f7c705d8a7044642b2c5514999c2c4b0891bca26f7",
+  "sourceDigest": "9d074efad18f95e4a74ea4450e2a67b165a94a7710fb399086146e3c4b178185",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8674,7 +8674,7 @@
         "evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23"
       ],
       "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-      "updatedAt": "2026-09-24T11:14:05.8890474+07:00",
+      "updatedAt": "2026-09-24T11:46:55.1300650+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-economy-clean-cutover-design",
@@ -11923,9 +11923,9 @@
         "Stop if implementation escapes the approved twenty-item scope or the Project Control owner repository."
       ],
       "verificationTarget": "checklist-workflow-economy-clean-cutover-implementation; focused Tasks 1-5 gates; npm run check",
-      "summary": "Built and verified the version 3 workflow-economy contract, context routing, Cockpit, and atomic authority cutover in Project Control; post-integration main verification, machine-guidance sync, and cleanup remain in the final Checklist item.",
+      "summary": "Built and verified the version 3 workflow-economy contract, context routing, Cockpit, and atomic authority cutover in Project Control; the reviewed branch is integrated, the main gate and machine-guidance checks passed, and the clean merged worktree was removed.",
       "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-      "updatedAt": "2026-09-24T11:14:05.8890474+07:00"
+      "updatedAt": "2026-09-24T11:46:55.1300650+07:00"
     },
     {
       "kind": "phase",
@@ -21564,12 +21564,13 @@
         {
           "id": "evidence-main-gate",
           "label": "Bounded Evidence, final worktree gate, main gate, machine guidance sync, and cleanup complete without product-repository changes.",
-          "state": "pending",
-          "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23"
+          "state": "passed",
+          "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
+          "verificationNote": "The final worktree gate passed at 90c37e177e3ca38e33005d2107b03a950ba0f170. Main fast-forwarded to the same reviewed commit and the unchanged full main gate passed 83/297 records, 21/189 source-docs, 10/68 app, production build, and 6/6 Chromium tests after one diagnosed environment-sensitive timeout retry. Canonical global guidance and the installed FlowDoc skill were synchronized and validated. The clean merged workflow-economy worktree and branch were removed; no product repository changed."
         }
       ],
       "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-      "updatedAt": "2026-09-24T11:14:05.8890474+07:00"
+      "updatedAt": "2026-09-24T11:46:55.1300650+07:00"
     },
     {
       "kind": "checklist",
@@ -27727,8 +27728,8 @@
       "repositoryId": "repo-project-control",
       "commit": "dc429f04b78da6026ef6bb27dfa9354034942682",
       "pathOrContractId": "docs/domains/flowdoc-workflow-economy-policy.md; src/model/workflow-economy.ts; src/model/coordination-v3.ts; src/model/context-routing.ts; src/model/current-truth-snapshot.ts; tests/flowdoc-workflow-economy-schema.test.ts; tests/flowdoc-workflow-economy-lifecycle.test.ts; tests/flowdoc-context-routing.test.ts; tests/flowdoc-current-truth-snapshot.test.ts; tests/flowdoc-workflow-economy-cutover.test.ts",
-      "verificationSummary": "Project Control commit dc429f04b78da6026ef6bb27dfa9354034942682 implements the version 3 Minimal Packet and lifecycle, proportional proof and document budgets, Evidence validity and context routing, Current Truth Snapshot/Cockpit, one current workflow policy, reciprocal supersession of four historical workflow contracts, and v3-only public mutation. Focused Task 5 verification passed 123 tests and check:data; the full clean worktree gate passed 83 files/297 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests on 2026-09-24. Default agent-and-skill-design context decreased from 19 documents to 16 by replacing four workflow authorities with one. No Core, Backend, Editor, product behavior, product map, or DOCUMENT_MAP changed. Main integration, post-integration main verification, machine-guidance sync, and cleanup remain pending and are not claimed by this Evidence revision.",
-      "verifiedAt": "2026-09-24T11:14:05.8890474+07:00",
+      "verificationSummary": "Project Control commit dc429f04b78da6026ef6bb27dfa9354034942682 implements the version 3 Minimal Packet and lifecycle, proportional proof and document budgets, Evidence validity and context routing, Current Truth Snapshot/Cockpit, one current workflow policy, reciprocal supersession of four historical workflow contracts, and v3-only public mutation. Focused Task 5 verification passed 123 tests and check:data; the final clean worktree gate at 90c37e177e3ca38e33005d2107b03a950ba0f170 passed 83 files/297 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. Main fast-forwarded to the identical reviewed commit and the unchanged full main gate passed the same suites after one diagnosed environment-sensitive timeout retry. Canonical global guidance and the installed FlowDoc skill were synchronized and validated, then the clean merged worktree and branch were removed. Default agent-and-skill-design context decreased from 19 documents to 16 by replacing four workflow authorities with one. No Core, Backend, Editor, product behavior, product map, or DOCUMENT_MAP changed.",
+      "verifiedAt": "2026-09-24T11:46:55.1300650+07:00",
       "validity": {
         "claim": "The Project Control workflow economy authority is current, proportionally enforced, context-routed, and verified at the pinned implementation commit.",
         "repositoryId": "repo-project-control",
@@ -27741,7 +27742,7 @@
           "tools/"
         ],
         "sourceRevision": "dc429f04b78da6026ef6bb27dfa9354034942682",
-        "verificationMethod": "Focused workflow-economy suites, npm run check:data, and the full npm run check worktree gate.",
+        "verificationMethod": "Focused workflow-economy suites, npm run check:data, full npm run check gates in the worktree and on main, skill validation, and repository skill parity tests.",
         "freshnessTriggers": [
           "Current Truth Snapshot or Cockpit behavior changes",
           "Workflow Economy Policy changes",
@@ -28337,7 +28338,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-24T11:14:05.8890474+07:00",
+    "generatedAt": "2026-09-24T11:46:55.1300650+07:00",
     "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
     "currentBlocker": null,
     "activeWork": [

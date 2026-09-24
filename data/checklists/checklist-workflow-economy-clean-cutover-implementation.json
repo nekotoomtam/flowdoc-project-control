@@ -42,10 +42,11 @@
     {
       "id": "evidence-main-gate",
       "label": "Bounded Evidence, final worktree gate, main gate, machine guidance sync, and cleanup complete without product-repository changes.",
-      "state": "pending",
-      "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23"
+      "state": "passed",
+      "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
+      "verificationNote": "The final worktree gate passed at 90c37e177e3ca38e33005d2107b03a950ba0f170. Main fast-forwarded to the same reviewed commit and the unchanged full main gate passed 83/297 records, 21/189 source-docs, 10/68 app, production build, and 6/6 Chromium tests after one diagnosed environment-sensitive timeout retry. Canonical global guidance and the installed FlowDoc skill were synchronized and validated. The clean merged workflow-economy worktree and branch were removed; no product repository changed."
     }
   ],
   "createdAt": "2026-09-24T00:00:00.0000000+07:00",
-  "updatedAt": "2026-09-24T11:14:05.8890474+07:00"
+  "updatedAt": "2026-09-24T11:46:55.1300650+07:00"
 }
