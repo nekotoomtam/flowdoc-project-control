@@ -1,3 +1,8 @@
+import type {
+  WorkflowCompletionReport,
+  WorkflowEconomyPacket,
+} from "./workflow-economy.js";
+
 export type TruthState = "current" | "planned" | "risk" | "unknown";
 export type WorkState = "queued" | "in-progress" | "blocked" | "in-review";
 export type WorkKind = "topic" | "task";
@@ -67,7 +72,31 @@ export interface CoordinationRegistryV2 {
   cleanup: CoordinationCleanupStateV2[];
 }
 
-export type CoordinationRegistry = CoordinationRegistryV1 | CoordinationRegistryV2;
+export interface CoordinationRegistryV3 {
+  version: 3;
+  revision: number;
+  round: {
+    planTaskId: string;
+    roundId: string;
+    workId: string;
+    scopeId: string;
+    scopeKeys: string[];
+    allowedFiles: string[];
+    state: "active" | "released" | "cancelled";
+    policyId: "flowdoc-workflow-economy-v1";
+  };
+  integrationClaims: CoordinationIntegrationClaimV2[];
+  returnOrderPolicy: "severity-then-arrival";
+  roomRuns: CoordinationRoomRunV3[];
+  handoffs: CoordinationHandoffV3[];
+  completionQueue: CoordinationQueueItem[];
+  cleanup: CoordinationCleanupStateV2[];
+}
+
+export type CoordinationRegistry =
+  | CoordinationRegistryV1
+  | CoordinationRegistryV2
+  | CoordinationRegistryV3;
 
 export interface CoordinationOwnershipTransfer {
   fromPlanTaskId: string;
@@ -167,6 +196,10 @@ export interface CoordinationRoomRunV2 {
   modelDecision: CoordinationModelDecision;
   ux: CoordinationUxGate;
   requiredEvidence: string[];
+}
+
+export interface CoordinationRoomRunV3 extends CoordinationRoomRunV2 {
+  packet: WorkflowEconomyPacket;
 }
 
 export interface CoordinationModelDecision {
@@ -276,6 +309,10 @@ export interface CoordinationTerminalPayloadV2 {
   contractChangeRequest?: string;
 }
 
+export interface CoordinationTerminalPayloadV3 extends CoordinationTerminalPayloadV2 {
+  completion: WorkflowCompletionReport;
+}
+
 export interface CoordinationHandoff {
   handoffId: string;
   payloadDigest: string;
@@ -338,6 +375,10 @@ export interface CoordinationHandoffV2 {
     requiredChecks: CoordinationNamedCheck[];
     remainingScope: string[];
   };
+}
+
+export interface CoordinationHandoffV3 extends Omit<CoordinationHandoffV2, "payload"> {
+  payload: CoordinationTerminalPayloadV3;
 }
 
 export interface CoordinationQueueItem {

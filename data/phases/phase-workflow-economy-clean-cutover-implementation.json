@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-workflow-economy-clean-cutover-implementation",
+  "workId": "workflow-economy-clean-cutover",
+  "title": "Implement the workflow economy clean authority cutover",
+  "phaseState": "in-progress",
+  "order": 30,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Stop for a safety or correctness blocker.",
+    "Stop for an authority violation.",
+    "Stop when a required Project Control prerequisite is missing.",
+    "Stop if implementation escapes the approved twenty-item scope or the Project Control owner repository."
+  ],
+  "verificationTarget": "checklist-workflow-economy-clean-cutover-implementation; focused Tasks 1-5 gates; npm run check",
+  "summary": "Build and verify the version 3 workflow-economy candidate in stages, then change authority only through the final atomic cutover gate.",
+  "createdAt": "2026-09-24T00:00:00.0000000+07:00",
+  "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+}

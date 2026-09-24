@@ -1,0 +1,47 @@
+{
+  "kind": "checklist",
+  "id": "checklist-workflow-economy-clean-cutover-implementation",
+  "phaseId": "phase-workflow-economy-clean-cutover-implementation",
+  "title": "Workflow economy clean authority cutover implementation",
+  "items": [
+    {
+      "id": "packet-contract",
+      "label": "Version 3 Minimal Packet and compact completion contract are typed and schema-validated without changing current authority.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-schema.test.ts",
+      "verificationNote": "RED: the complete V3 packet, exact Safety Kernel field diagnostics, large Work rejection, independent size/risk axes, critical reason, default routine proof, and mandatory completion tests failed before the V3 schema and types existed. GREEN: 17 focused tests and TypeScript type-check passed on 2026-09-24."
+    },
+    {
+      "id": "workflow-enforcement",
+      "label": "PLAN and WORK authority, proof economy, unknown disposition, owner decisions, and stopping are enforced by behavior tests.",
+      "state": "pending",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts"
+    },
+    {
+      "id": "context-supersession",
+      "label": "Evidence validity, context routing, and document supersession are deterministic and reject conflicting authority.",
+      "state": "pending",
+      "evidenceTarget": "tests/flowdoc-context-routing.test.ts"
+    },
+    {
+      "id": "current-truth-cockpit",
+      "label": "Completion milestones, Current Truth Snapshot, governance metrics, and compact Cockpit are generated from canonical records.",
+      "state": "pending",
+      "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts"
+    },
+    {
+      "id": "atomic-authority-cutover",
+      "label": "All current entrypoints switch to one workflow-economy authority while replaced rules remain readable history.",
+      "state": "pending",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts"
+    },
+    {
+      "id": "evidence-main-gate",
+      "label": "Bounded Evidence, final worktree gate, main gate, machine guidance sync, and cleanup complete without product-repository changes.",
+      "state": "pending",
+      "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23"
+    }
+  ],
+  "createdAt": "2026-09-24T00:00:00.0000000+07:00",
+  "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+}

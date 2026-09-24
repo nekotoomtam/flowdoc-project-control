@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9e3d65cf6cfc8c5d627542c914ef9ed1937e0aeb3d7a7beba4f74651875766d5",
+  "sourceDigest": "bb13f262b048bc47d85911d73c5fc07f13f5ab2fa42fd121edcc1f957893966f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8703,11 +8703,12 @@
       "riskSummary": "A partial migration could leave two active rule sets or remove a safety invariant. The design therefore requires an atomic entrypoint cutover, behavior tests, historical readability, and no reuse of closed PLAN or WORK execution context.",
       "requiredEvidence": [],
       "createdAt": "2026-09-23T10:01:53.2697189+07:00",
-      "updatedAt": "2026-09-23T10:27:09.9352981+07:00",
+      "updatedAt": "2026-09-24T08:37:44.4543671+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-economy-clean-cutover-design",
-        "phase-workflow-economy-clean-cutover-implementation-planning"
+        "phase-workflow-economy-clean-cutover-implementation-planning",
+        "phase-workflow-economy-clean-cutover-implementation"
       ],
       "workPathIds": [
         "flowdoc-product-development-resumption",
@@ -11935,10 +11936,32 @@
     },
     {
       "kind": "phase",
+      "id": "phase-workflow-economy-clean-cutover-implementation",
+      "workId": "workflow-economy-clean-cutover",
+      "title": "Implement the workflow economy clean authority cutover",
+      "phaseState": "in-progress",
+      "order": 30,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "project-control-steward",
+      "stopConditions": [
+        "Stop for a safety or correctness blocker.",
+        "Stop for an authority violation.",
+        "Stop when a required Project Control prerequisite is missing.",
+        "Stop if implementation escapes the approved twenty-item scope or the Project Control owner repository."
+      ],
+      "verificationTarget": "checklist-workflow-economy-clean-cutover-implementation; focused Tasks 1-5 gates; npm run check",
+      "summary": "Build and verify the version 3 workflow-economy candidate in stages, then change authority only through the final atomic cutover gate.",
+      "createdAt": "2026-09-24T00:00:00.0000000+07:00",
+      "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+    },
+    {
+      "kind": "phase",
       "id": "phase-workflow-economy-clean-cutover-implementation-planning",
       "workId": "workflow-economy-clean-cutover",
       "title": "Plan the staged workflow economy implementation",
-      "phaseState": "in-review",
+      "phaseState": "done",
       "order": 20,
       "repositoryIds": [
         "repo-project-control"
@@ -11953,7 +11976,7 @@
       "verificationTarget": "checklist-workflow-economy-clean-cutover-implementation-planning; user review of docs/domains/flowdoc-workflow-economy-clean-cutover-implementation-plan-2026-09-23.md; full Project Control gate",
       "summary": "Translate the approved design into independently testable candidate stages while preserving one final atomic authority cutover.",
       "createdAt": "2026-09-23T10:27:09.9352981+07:00",
-      "updatedAt": "2026-09-23T10:27:09.9352981+07:00"
+      "updatedAt": "2026-09-24T00:00:00.0000000+07:00"
     }
   ],
   "checklists": [
@@ -21528,6 +21551,53 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-workflow-economy-clean-cutover-implementation",
+      "phaseId": "phase-workflow-economy-clean-cutover-implementation",
+      "title": "Workflow economy clean authority cutover implementation",
+      "items": [
+        {
+          "id": "packet-contract",
+          "label": "Version 3 Minimal Packet and compact completion contract are typed and schema-validated without changing current authority.",
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-workflow-economy-schema.test.ts",
+          "verificationNote": "RED: the complete V3 packet, exact Safety Kernel field diagnostics, large Work rejection, independent size/risk axes, critical reason, default routine proof, and mandatory completion tests failed before the V3 schema and types existed. GREEN: 17 focused tests and TypeScript type-check passed on 2026-09-24."
+        },
+        {
+          "id": "workflow-enforcement",
+          "label": "PLAN and WORK authority, proof economy, unknown disposition, owner decisions, and stopping are enforced by behavior tests.",
+          "state": "pending",
+          "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts"
+        },
+        {
+          "id": "context-supersession",
+          "label": "Evidence validity, context routing, and document supersession are deterministic and reject conflicting authority.",
+          "state": "pending",
+          "evidenceTarget": "tests/flowdoc-context-routing.test.ts"
+        },
+        {
+          "id": "current-truth-cockpit",
+          "label": "Completion milestones, Current Truth Snapshot, governance metrics, and compact Cockpit are generated from canonical records.",
+          "state": "pending",
+          "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts"
+        },
+        {
+          "id": "atomic-authority-cutover",
+          "label": "All current entrypoints switch to one workflow-economy authority while replaced rules remain readable history.",
+          "state": "pending",
+          "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts"
+        },
+        {
+          "id": "evidence-main-gate",
+          "label": "Bounded Evidence, final worktree gate, main gate, machine guidance sync, and cleanup complete without product-repository changes.",
+          "state": "pending",
+          "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23"
+        }
+      ],
+      "createdAt": "2026-09-24T00:00:00.0000000+07:00",
+      "updatedAt": "2026-09-24T08:37:44.4543671+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-workflow-economy-clean-cutover-implementation-planning",
       "phaseId": "phase-workflow-economy-clean-cutover-implementation-planning",
       "title": "Workflow economy staged implementation plan",
@@ -21549,12 +21619,13 @@
         {
           "id": "user-plan-review",
           "label": "The user reviews the staged implementation plan and chooses the execution approach before implementation.",
-          "state": "pending",
-          "evidenceTarget": "User review decision in the current PLAN task"
+          "state": "passed",
+          "evidenceTarget": "User review decision in the current PLAN task",
+          "verificationNote": "The user instructed the current PLAN to begin the first implementation stage on 2026-09-24, selecting native inline execution."
         }
       ],
       "createdAt": "2026-09-23T10:27:09.9352981+07:00",
-      "updatedAt": "2026-09-23T10:27:09.9352981+07:00"
+      "updatedAt": "2026-09-24T00:00:00.0000000+07:00"
     }
   ],
   "documents": [

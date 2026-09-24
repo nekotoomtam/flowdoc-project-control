@@ -474,6 +474,260 @@
             "acceptance": { "$ref": "#/$defs/work/$defs/handoff/properties/acceptance" }
           }
         },
+        "workflowUnknown": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "summary", "disposition"],
+          "properties": {
+            "id": { "$ref": "#/$defs/node/$defs/id" },
+            "summary": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "disposition": { "enum": ["blocking", "accepted", "deferred", "irrelevant"] },
+            "ownerAction": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "returnTrigger": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+          }
+        },
+        "ownerDecision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "kind", "reason", "decidedBy", "decidedAt"],
+          "properties": {
+            "id": { "$ref": "#/$defs/node/$defs/id" },
+            "kind": { "enum": ["accept-risk", "defer-proof", "freeze-scope", "stop-investigation"] },
+            "reason": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "decidedBy": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "decidedAt": { "type": "string", "format": "date-time" },
+            "returnTrigger": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+          }
+        },
+        "proofBudget": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "maxNewEvidence", "maxDurableDocuments", "maxReviewCycles",
+            "closeForm", "authorizedArtifacts"
+          ],
+          "properties": {
+            "maxNewEvidence": { "type": "integer", "minimum": 0 },
+            "maxDurableDocuments": { "type": "integer", "minimum": 0 },
+            "maxReviewCycles": { "type": "integer", "minimum": 0 },
+            "closeForm": { "enum": ["none", "acceptance-summary", "formal-audit"] },
+            "authorizedArtifacts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["kind", "failurePrevented", "existingProofInsufficient"],
+                "properties": {
+                  "kind": { "enum": ["evidence", "gate", "audit", "document"] },
+                  "failurePrevented": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "existingProofInsufficient": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                }
+              }
+            }
+          }
+        },
+        "workflowPacket": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "policyId", "goal", "ownerRepositoryId", "allowedScope", "forbiddenScope",
+            "acceptanceCriteria", "workAuthority", "workSize", "risk", "proofBudget",
+            "relevantEvidenceIds", "unknowns", "ownerDecisions", "modelDecision",
+            "escalationTriggers", "returnRoute"
+          ],
+          "properties": {
+            "policyId": { "const": "flowdoc-workflow-economy-v1" },
+            "goal": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "ownerRepositoryId": { "$ref": "#/$defs/node/$defs/id" },
+            "allowedScope": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+            },
+            "forbiddenScope": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+            },
+            "acceptanceCriteria": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+            },
+            "workAuthority": { "enum": ["discovery", "implementation", "verification"] },
+            "workSize": { "enum": ["small", "medium"] },
+            "risk": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["tier"],
+              "properties": {
+                "tier": { "enum": ["routine", "bounded", "critical"] },
+                "escalationReason": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+              },
+              "allOf": [{
+                "if": {
+                  "properties": { "tier": { "const": "critical" } },
+                  "required": ["tier"]
+                },
+                "then": {
+                  "properties": {
+                    "escalationReason": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                  },
+                  "required": ["escalationReason"]
+                }
+              }]
+            },
+            "proofBudget": { "$ref": "#/$defs/work/$defs/proofBudget" },
+            "relevantEvidenceIds": { "$ref": "#/$defs/work/$defs/stringList" },
+            "unknowns": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/work/$defs/workflowUnknown" }
+            },
+            "ownerDecisions": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/work/$defs/ownerDecision" }
+            },
+            "fallback": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["behavior", "performanceBudget", "verification"],
+              "properties": {
+                "behavior": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "performanceBudget": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "verification": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+              }
+            },
+            "modelDecision": { "$ref": "#/$defs/work/$defs/modelDecision" },
+            "escalationTriggers": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+            },
+            "returnRoute": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["planTaskId", "automaticChannel", "activeCommand"],
+              "properties": {
+                "planTaskId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "automaticChannel": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "activeCommand": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+              }
+            }
+          }
+        },
+        "completionReport": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "behaviorChanged", "proof", "remainingUnknowns", "downstreamInformation",
+            "changedFiles", "createdEvidenceIds", "createdDocumentIds", "reviewCyclesUsed",
+            "implementationCommitCount"
+          ],
+          "properties": {
+            "behaviorChanged": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "proof": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["kind", "reference"],
+                "properties": {
+                  "kind": { "enum": ["test", "evidence"] },
+                  "reference": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                }
+              }
+            },
+            "remainingUnknowns": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/work/$defs/workflowUnknown" }
+            },
+            "downstreamInformation": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "changedFiles": { "$ref": "#/$defs/work/$defs/stringList" },
+            "createdEvidenceIds": { "$ref": "#/$defs/work/$defs/stringList" },
+            "createdDocumentIds": { "$ref": "#/$defs/work/$defs/stringList" },
+            "reviewCyclesUsed": { "type": "integer", "minimum": 0 },
+            "implementationCommitCount": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "roomRunV3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "roomRunId", "dispatchSetId", "laneId", "workType", "ownerRepositoryId",
+            "activeRole", "phaseId", "checklistId", "evidenceTarget", "roundId",
+            "revisionAttempt", "expectedHandoffId", "status", "locator",
+            "contextAcknowledgement", "returnRoute", "modelDecision", "ux",
+            "requiredEvidence", "packet"
+          ],
+          "properties": {
+            "roomRunId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "dispatchSetId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "laneId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "workType": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "ownerRepositoryId": { "$ref": "#/$defs/node/$defs/id" },
+            "activeRole": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "phaseId": { "$ref": "#/$defs/node/$defs/id" },
+            "checklistId": { "$ref": "#/$defs/node/$defs/id" },
+            "evidenceTarget": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "roundId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "revisionAttempt": { "type": "integer", "minimum": 0 },
+            "expectedHandoffId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "status": { "enum": ["prepared", "active", "superseded", "returned", "accepted", "closed"] },
+            "locator": { "$ref": "#/$defs/work/$defs/roomRun/properties/locator" },
+            "contextAcknowledgement": { "$ref": "#/$defs/work/$defs/roomRun/properties/contextAcknowledgement" },
+            "returnRoute": { "$ref": "#/$defs/work/$defs/roomRun/properties/returnRoute" },
+            "modelDecision": { "$ref": "#/$defs/work/$defs/modelDecision" },
+            "ux": { "$ref": "#/$defs/work/$defs/uxGate" },
+            "requiredEvidence": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+            },
+            "packet": { "$ref": "#/$defs/work/$defs/workflowPacket" }
+          }
+        },
+        "handoffPayloadV3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "planTaskId", "roundId", "roomRunId", "laneId", "ownerRepositoryId",
+            "revisionAttempt", "status", "changedFiles", "tests", "behaviorChanged",
+            "behaviorSummary", "evidenceIds", "risks", "unknowns", "completion"
+          ],
+          "properties": {
+            "planTaskId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "roundId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "roomRunId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "laneId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "ownerRepositoryId": { "$ref": "#/$defs/node/$defs/id" },
+            "revisionAttempt": { "type": "integer", "minimum": 0 },
+            "status": { "enum": ["PASS", "FAIL", "BLOCKER", "RISK", "UNKNOWN"] },
+            "behaviorChanged": { "type": "boolean" },
+            "behaviorSummary": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "exactCommit": { "$ref": "#/$defs/node/$defs/commit" },
+            "changedFiles": { "$ref": "#/$defs/work/$defs/stringList" },
+            "tests": { "$ref": "#/$defs/work/$defs/stringList" },
+            "evidenceIds": { "$ref": "#/$defs/work/$defs/stringList" },
+            "risks": { "$ref": "#/$defs/work/$defs/stringList" },
+            "unknowns": { "$ref": "#/$defs/work/$defs/stringList" },
+            "contractChangeRequest": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "completion": { "$ref": "#/$defs/work/$defs/completionReport" }
+          }
+        },
+        "handoffV3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["handoffId", "payloadDigest", "payload", "transport", "receipt", "acceptance"],
+          "properties": {
+            "handoffId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+            "payloadDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+            "payload": { "$ref": "#/$defs/work/$defs/handoffPayloadV3" },
+            "transport": { "$ref": "#/$defs/work/$defs/handoff/properties/transport" },
+            "receipt": { "$ref": "#/$defs/work/$defs/handoff/properties/receipt" },
+            "acceptance": { "$ref": "#/$defs/work/$defs/handoff/properties/acceptance" }
+          }
+        },
         "coordinationV1": {
           "type": "object",
           "additionalProperties": false,
@@ -734,6 +988,129 @@
               }
             }
           }
+        },
+        "coordinationV3": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "version", "revision", "round", "integrationClaims", "returnOrderPolicy",
+            "roomRuns", "handoffs", "completionQueue", "cleanup"
+          ],
+          "properties": {
+            "version": { "const": 3 },
+            "revision": { "type": "integer", "minimum": 0 },
+            "round": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "planTaskId", "roundId", "workId", "scopeId", "scopeKeys",
+                "allowedFiles", "state", "policyId"
+              ],
+              "properties": {
+                "planTaskId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "roundId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "workId": { "$ref": "#/$defs/node/$defs/id" },
+                "scopeId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "scopeKeys": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                },
+                "allowedFiles": {
+                  "type": "array",
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                },
+                "state": { "enum": ["active", "released", "cancelled"] },
+                "policyId": { "const": "flowdoc-workflow-economy-v1" }
+              }
+            },
+            "integrationClaims": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["repositoryId", "planTaskId", "roundId", "baseCommit", "state"],
+                "properties": {
+                  "repositoryId": { "$ref": "#/$defs/node/$defs/id" },
+                  "planTaskId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "roundId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "baseCommit": { "$ref": "#/$defs/node/$defs/commit" },
+                  "state": { "enum": ["active", "released", "frozen"] }
+                }
+              }
+            },
+            "returnOrderPolicy": { "const": "severity-then-arrival" },
+            "roomRuns": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/work/$defs/roomRunV3" }
+            },
+            "handoffs": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/work/$defs/handoffV3" }
+            },
+            "completionQueue": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["handoffId", "arrivalSequence"],
+                "properties": {
+                  "handoffId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "arrivalSequence": { "type": "integer", "minimum": 1 }
+                }
+              }
+            },
+            "cleanup": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "repositoryId", "worktreePath", "branch", "planTaskId", "roundId",
+                  "executor", "preflightEvidenceIds", "preflightSources", "currentRound",
+                  "worktreeClean", "merged", "worktreeGate", "mainGate", "liveProcessClear",
+                  "disposition"
+                ],
+                "properties": {
+                  "repositoryId": { "$ref": "#/$defs/node/$defs/id" },
+                  "worktreePath": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "branch": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "planTaskId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "roundId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "executor": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "delegatedBy": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "preflightEvidenceIds": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                  },
+                  "preflightSources": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["cleanliness", "merge", "worktreeGate", "mainGate", "liveProcess"],
+                    "properties": {
+                      "cleanliness": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                      "merge": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                      "worktreeGate": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                      "mainGate": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                      "liveProcess": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                    }
+                  },
+                  "currentRound": { "type": "boolean" },
+                  "worktreeClean": { "type": "boolean" },
+                  "merged": { "type": "boolean" },
+                  "worktreeGate": { "$ref": "#/$defs/work/$defs/checkStatus" },
+                  "mainGate": { "$ref": "#/$defs/work/$defs/checkStatus" },
+                  "liveProcessClear": { "type": "boolean" },
+                  "disposition": { "enum": ["retain", "eligible", "removed"] }
+                }
+              }
+            }
+          }
         }
       },
       "required": [
@@ -780,7 +1157,8 @@
         "coordination": {
           "oneOf": [
             { "$ref": "#/$defs/work/$defs/coordinationV1" },
-            { "$ref": "#/$defs/work/$defs/coordinationV2" }
+            { "$ref": "#/$defs/work/$defs/coordinationV2" },
+            { "$ref": "#/$defs/work/$defs/coordinationV3" }
           ]
         },
         "createdAt": { "type": "string", "format": "date-time" },

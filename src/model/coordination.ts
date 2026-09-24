@@ -11,6 +11,7 @@ import type {
   CoordinationRoomRun,
   CoordinationTerminalPayload,
   CoordinationTerminalPayloadV2,
+  CoordinationTerminalPayloadV3,
   CoordinationUxGate,
   WorkRecord,
 } from "./types.js";
@@ -119,7 +120,7 @@ export class CoordinationTransitionError extends Error {
 }
 
 export function canonicalPayloadDigest(
-  payload: CoordinationTerminalPayload | CoordinationTerminalPayloadV2,
+  payload: CoordinationTerminalPayload | CoordinationTerminalPayloadV2 | CoordinationTerminalPayloadV3,
 ): string {
   return createHash("sha256").update(JSON.stringify(canonicalize(payload))).digest("hex");
 }
@@ -133,6 +134,12 @@ export function applyCoordinationCommand(
     throw new CoordinationTransitionError(
       "LEGACY_REGISTRY_READ_ONLY",
       "Version 1 coordination is historical and cannot be mutated.",
+    );
+  }
+  if (registry.version === 3) {
+    throw new CoordinationTransitionError(
+      "WORKFLOW_ECONOMY_NOT_ACTIVE",
+      "Version 3 coordination is a non-authoritative candidate until its lifecycle is implemented and cut over.",
     );
   }
   if (command.type === "transfer-ownership") {
@@ -301,7 +308,7 @@ export function validateCoordinationRegistries(
   for (const work of workRecords) {
     const registry = work.coordination;
     if (registry === undefined) continue;
-    if (registry.version === 2) {
+    if (registry.version !== 1) {
       const planRoundKey = `${registry.round.planTaskId}\u0000${registry.round.roundId}`;
       const existingRound = planRounds.get(planRoundKey);
       const mutable = registry.round.state === "active";
@@ -314,7 +321,9 @@ export function validateCoordinationRegistries(
       } else if (existingRound === undefined) {
         planRounds.set(planRoundKey, { workId: work.id, mutable });
       }
-      issues.push(...validateCoordinationV2Registry(work.id, registry, evidenceById));
+      if (registry.version === 2) {
+        issues.push(...validateCoordinationV2Registry(work.id, registry, evidenceById));
+      }
       if (registry.round.state === "active") {
         for (const scopeKey of registry.round.scopeKeys) {
           const existing = activeScopes.get(scopeKey);

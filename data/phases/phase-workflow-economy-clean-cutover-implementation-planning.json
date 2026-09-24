@@ -3,7 +3,7 @@
   "id": "phase-workflow-economy-clean-cutover-implementation-planning",
   "workId": "workflow-economy-clean-cutover",
   "title": "Plan the staged workflow economy implementation",
-  "phaseState": "in-review",
+  "phaseState": "done",
   "order": 20,
   "repositoryIds": [
     "repo-project-control"
@@ -18,5 +18,5 @@
   "verificationTarget": "checklist-workflow-economy-clean-cutover-implementation-planning; user review of docs/domains/flowdoc-workflow-economy-clean-cutover-implementation-plan-2026-09-23.md; full Project Control gate",
   "summary": "Translate the approved design into independently testable candidate stages while preserving one final atomic authority cutover.",
   "createdAt": "2026-09-23T10:27:09.9352981+07:00",
-  "updatedAt": "2026-09-23T10:27:09.9352981+07:00"
+  "updatedAt": "2026-09-24T00:00:00.0000000+07:00"
 }

@@ -485,6 +485,7 @@ describe("project roadmap Work Queue", () => {
       phaseIds: [
         "phase-workflow-economy-clean-cutover-design",
         "phase-workflow-economy-clean-cutover-implementation-planning",
+        "phase-workflow-economy-clean-cutover-implementation",
       ],
       workPathIds: [
         "flowdoc-product-development-resumption",
