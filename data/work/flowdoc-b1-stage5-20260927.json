@@ -1,0 +1,285 @@
+{
+  "kind": "work",
+  "id": "flowdoc-b1-stage5-20260927",
+  "title": "B1 private Stage5 Enter and inverse implementation",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "in-progress",
+  "summary": "Fresh PLAN-owned implementation round under 2026-09-27 gate alignment. Prior discovery records remain immutable; their empty-renderer limitation is deferred to Core layout, not a demonstrated private structural blocker. Preparing one directly-owned WORK; no implementation PASS yet.",
+  "contextDocumentIds": [
+    "doc-flowdoc-b1-empty-side-contract-20260926",
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14",
+    "doc-core-run-owned-property-implementation-plan-2026-09-14"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Clean committed verified private Stage5 candidate, PLAN-owned acceptance/integration, exact Evidence and deferred Stage6/geometry/Editor obligations.",
+  "riskSummary": "Bounded private correctness risk: endpoint provenance, provider equality, atomic sibling publication and cumulative lineage. No product, geometry or timing admission. Proof budget one candidate Evidence, one acceptance review plus one repair cycle; zero new prose documents/formal audits.",
+  "requiredEvidence": [
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+  ],
+  "createdAt": "2026-09-26T18:28:26.518Z",
+  "updatedAt": "2026-09-26T18:28:26.518Z",
+  "coordination": {
+    "version": 3,
+    "revision": 1,
+    "round": {
+      "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+      "roundId": "b1-stage5-20260927-01a0def5",
+      "workId": "flowdoc-b1-stage5-20260927",
+      "scopeId": "core-private-stage5-20260927",
+      "scopeKeys": [
+        "repo-core:private-cold-session-stage5"
+      ],
+      "allowedFiles": [
+        "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+        "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+        "src/layout/runOwnedSemanticOracleStage2.ts",
+        "tests/coldSessionStage3.test.ts",
+        "tests/coldSessionStage4.test.ts",
+        "tests/coldSessionStage5.test.ts",
+        "tests/runOwnedSemanticOracleStage2.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "local-stage5-20260927",
+        "hostId": "local",
+        "source": "Host collaboration.spawn_agent tool capability list observed in this PLAN; independent WORK decision, not old implementation-plan model recommendation.",
+        "observedAt": "2026-09-26T18:28:26.518Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+        "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+        "state": "active",
+        "roundId": "b1-stage5-20260927-01a0def5"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "core-stage5-20260927-r1",
+        "dispatchSetId": "stage5-20260927-implementation",
+        "laneId": "core-stage5",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-b1-stage5-20260927",
+        "checklistId": "checklist-flowdoc-b1-stage5-20260927",
+        "evidenceTarget": "evidence-core-private-stage5-20260927",
+        "revisionAttempt": 1,
+        "expectedHandoffId": "stage5-20260927-r1-terminal",
+        "status": "active",
+        "locator": {
+          "threadId": "/root/stage5_impl",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/b1-stage5-20260927/flowdoc-vnext-core",
+          "branch": "codex/b1-stage5-20260927",
+          "handoffPath": "C:/Users/nekot/.codex/worktrees/36f8/flowdoc-project-control/.superpowers/stage5-handoff-r1.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-26T18:29:01.8365615Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message({target:\"/root\",message:\"<handoff ID, durable payload path, digest and result>\"}) before final; same payload retry only on transport failure, at 10s and 30s, maximum three attempts",
+          "monitorOwner": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+          "livenessDeadline": "2026-09-26T18:48:26.519Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "frontier",
+          "modelId": "gpt-6-astra",
+          "reasoningEffort": "medium",
+          "reason": "Coupled bounded structural transactions, authenticated inverse capabilities, provider certificates and shared-lineage additive accounting require systems reasoning across Rust/WASM and the independent oracle. Existing architecture and exact acceptance are fixed; medium effort is sufficient.",
+          "smallerOptionAssessment": "Sol medium is available and suitable for deterministic local edits, but this implementation couples lineage, rollback and provider proof; a silent accounting/provenance error is harder to detect than a compile failure. Astra medium chosen independently of PLAN; no inherited high-effort recommendation.",
+          "escalationTriggers": [
+            "Two in-scope revisions fail the same reasoning invariant after packet/environment correction.",
+            "An exact provider/default dependency contradicts the approved contract; return discovery/Contract Change Request before expanding scope."
+          ],
+          "availabilitySnapshotRef": "local-stage5-20260927"
+        },
+        "ux": {
+          "applicability": "not-applicable",
+          "visibleChange": false,
+          "reason": "Private Rust/WASM QA structural mechanism only, no renderer/public binding. Core geometry and Editor visual/user proof remain deferred, not passed."
+        },
+        "requiredEvidence": [
+          "Native and actual-WASM structural/provider/accounting results at exact clean commit; full Core gate; Scope Lock manifest."
+        ],
+        "roundId": "b1-stage5-20260927-01a0def5",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Implement and verify private Core Stage5 Enter and exact unchanged-sibling inverse under the owner-approved 2026-09-27 responsibility alignment.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "worktree": "C:/Users/nekot/.codex/worktrees/b1-stage5-20260927/flowdoc-vnext-core"
+          },
+          "allowedScope": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "src/layout/runOwnedSemanticOracleStage2.ts",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/runOwnedSemanticOracleStage2.test.ts"
+          ],
+          "forbiddenScope": [
+            "docs",
+            "src/index.ts",
+            "src/creatorPreview",
+            "src/render",
+            "src/layout/textBlockInitialFlowInputV1.ts",
+            "package.json",
+            "package-lock.json"
+          ],
+          "acceptanceCriteria": [
+            "Endpoint reference oracle explicitly tags empty/nonempty; independently test head/middle/tail/empty and forged empty/source/context/provider rejections without weakening two-sided interior rules.",
+            "Preserve exact source partition, explicit-versus-absent authored style/language and stable origins, explicit paragraph defaults and context/resource/policy identities actually consumed by this private API. Existing Stage3/4 inputs keep meaning. No guessed cascade, empty font or sentinel run.",
+            "Accept AB, Thai/Latin กA and office at head/middle/tail, off|ice, empty source and exact unchanged sibling inverse with independent full-provider child/joined equality (source, descriptors, raw facts, edges/outside facts). All accepted command work meets combined 512 source/512 property/1024 shape+segment caps; no whole-child rebuild/relabel fallback.",
+            "Authentic fresh child/joined identities revision0 and consumed capabilities; exact ordered unchanged siblings only. Forged/reversed/unrelated/duplicate/disposed/stale/replayed or child-mutated joins reject. Unsafe scalar/grapheme/ZWJ, composition, unsupported RTL, missing proofs and unbounded seams reject unchanged. Fault injection at each preparation/preflight stage proves atomic source, receipts, eligibility, session counts and accepted ledgers.",
+            "Complete additive actual-work accounting includes failed attempts, empty endpoints, provider calls, allocations, ABI/response/reclamation and scalar writes. Shared ancestry counts cold cost once, P+E then P+E+J without scans of event history, overflow or double count/drop. Repeated cycles, stale siblings and disposal preserve lifecycle totals; gauges remain non-additive.",
+            "Pin the private structural producer/consumer chain and preserved input meanings; exercise changed identity/default/policy negative controls. Renderer/empty line metrics and section4a consumer parity are downstream Core layout proof unless an exact structural dependency is demonstrated.",
+            "Meaningful focused native and actual-WASM Stage2/3/4/5 tests, affected regressions, type-check and full Core npm run check pass; private QA exports remain excluded from default/public artifacts. Clean committed candidate and exact file manifest returned. No Stage6 timing/Gate2/geometry/Editor/Backend/public/map claim."
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 2,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent Stage4 ordinary-command proof from being represented as structural Stage5 acceptance.",
+                "existingProofInsufficient": "Stage4 validity excludes Enter/join; one PLAN-owned commit-specific Evidence records fresh structural tests and boundaries."
+              }
+            ]
+          },
+          "relevantEvidenceIds": [
+            "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+          ],
+          "unknowns": [
+            {
+              "id": "structural-provider-equality",
+              "summary": "Fresh implementation must establish endpoint/interior split and inverse provider equality; prior Stage4 does not prove structural commands.",
+              "disposition": "accepted",
+              "ownerAction": "WORK implements and tests; failures return exact invariant and remedy, never partial PASS."
+            },
+            {
+              "id": "prior-empty-geometry-blocker",
+              "summary": "2026-09-27 amendment supersedes the use of InitialFlow blocked empty geometry as a blanket Stage5 prerequisite. Empty creation exists, and private Paragraph/Provider inputs do not consume InitialFlow geometry. Retain exact private identities and establish any real structural dependency before blocking.",
+              "disposition": "irrelevant"
+            },
+            {
+              "id": "stage6-gate2",
+              "summary": "Core owner: fixed 180-revision corpus and existing timing/scaling thresholds remain unproven.",
+              "disposition": "deferred",
+              "returnTrigger": "After accepted Stage5, fresh authorized Core Stage6/Gate2 round."
+            },
+            {
+              "id": "core-geometry",
+              "summary": "Core owner: effective style/empty metrics and glyph/line/caret/selection geometry plus exact consumer binding remain unproven.",
+              "disposition": "deferred",
+              "returnTrigger": "After Stage6/Gate2 admission, separately authorized Core geometry round."
+            },
+            {
+              "id": "editor-transition",
+              "summary": "Editor owner: unchanged Core geometry before/during/after activation including transient frames, blur/reentry and user trial remain unproven; browser only receives input and paints Core results.",
+              "disposition": "deferred",
+              "returnTrigger": "After applicable Core geometry admission, separately authorized Editor integration/user acceptance."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "owner-stage5-start",
+              "kind": "freeze-scope",
+              "reason": "User approved prepare WORK and implement Stage5 under amended accepted A; no reapproval of existing requirement. Core geometry/timing/Editor remain ordered downstream.",
+              "decidedBy": "user via control task 01a0dd89-4aaf-7701-997c-7c294174187c",
+              "decidedAt": "2026-09-26T18:28:26.518Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "frontier",
+            "modelId": "gpt-6-astra",
+            "reasoningEffort": "medium",
+            "reason": "Coupled bounded structural transactions, authenticated inverse capabilities, provider certificates and shared-lineage additive accounting require systems reasoning across Rust/WASM and the independent oracle. Existing architecture and exact acceptance are fixed; medium effort is sufficient.",
+            "smallerOptionAssessment": "Sol medium is available and suitable for deterministic local edits, but this implementation couples lineage, rollback and provider proof; a silent accounting/provenance error is harder to detect than a compile failure. Astra medium chosen independently of PLAN; no inherited high-effort recommendation.",
+            "escalationTriggers": [
+              "Two in-scope revisions fail the same reasoning invariant after packet/environment correction.",
+              "An exact provider/default dependency contradicts the approved contract; return discovery/Contract Change Request before expanding scope."
+            ],
+            "availabilitySnapshotRef": "local-stage5-20260927"
+          },
+          "escalationTriggers": [
+            "Missing structural field/meaning with exact producer/consumer and failing invariant.",
+            "Failed provider equality, atomicity, accounting or unbounded lineage; fix locally if in scope, otherwise return remedy and Contract Change Request.",
+            "Architecture, ownership, cap, public binding or allowed-path expansion."
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message({target:\"/root\",message:\"<handoff ID, durable payload path, digest and result>\"}) before final; same payload retry only on transport failure, at 10s and 30s, maximum three attempts"
+          }
+        },
+        "packetDigest": "806ac6f2a69d94e8e9255151034529817a368be7a90f1502e6a7decfcd04460d"
+      }
+    ],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  }
+}

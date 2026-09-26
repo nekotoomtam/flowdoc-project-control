@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-b1-stage5-20260927",
+  "workId": "flowdoc-b1-stage5-20260927",
+  "title": "Implement and accept private Stage5 structural commands",
+  "phaseState": "in-progress",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-b1-stage5-20260927; Core focused native/actual-WASM and npm run check; PC npm run check",
+  "summary": "Current implementation scope follows amendment: private structural invariants now; rendered empty geometry deferred absent exact structural dependency.",
+  "stopConditions": [
+    "Missing structural field/meaning with exact producer/consumer and failing invariant.",
+    "Failed provider equality, atomicity, accounting or unbounded lineage; fix locally if in scope, otherwise return remedy and Contract Change Request.",
+    "Architecture, ownership, cap, public binding or allowed-path expansion."
+  ],
+  "createdAt": "2026-09-26T18:28:26.518Z",
+  "updatedAt": "2026-09-26T18:28:26.518Z"
+}
