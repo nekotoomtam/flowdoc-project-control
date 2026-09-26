@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "fe7ccfa5e1e60805addb8bd5f81e3984453f73a54aea4c51941698cef1973e37",
+  "sourceDigest": "200b334581a82bca642f014567dd27ce8aaa8be4106d42e60dfce3f0ac327902",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -2460,7 +2460,7 @@
       ],
       "coordination": {
         "version": 3,
-        "revision": 5,
+        "revision": 6,
         "round": {
           "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
           "roundId": "b1-20260926-01a0de0b",
@@ -2473,7 +2473,7 @@
             "packages/text-engine-rust-wasm/",
             "tests/"
           ],
-          "state": "active",
+          "state": "released",
           "policyId": "flowdoc-workflow-economy-v2"
         },
         "modelAvailabilitySnapshots": [
@@ -2503,14 +2503,14 @@
             "repositoryId": "repo-core",
             "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
             "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
-            "state": "active",
+            "state": "released",
             "roundId": "b1-20260926-01a0de0b"
           },
           {
             "repositoryId": "repo-project-control",
             "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
             "baseCommit": "3e1c7bd9c9dead32dfed5de31929835a3d969f63",
-            "state": "active",
+            "state": "released",
             "roundId": "b1-20260926-01a0de0b"
           }
         ],
@@ -2765,10 +2765,36 @@
           }
         ],
         "completionQueue": [],
-        "cleanup": []
+        "cleanup": [
+          {
+            "repositoryId": "repo-core",
+            "worktreePath": "C:/Users/nekot/.codex/worktrees/3799/flowdoc-project-control/.worktrees/b1-core-discovery",
+            "branch": "codex/b1-discovery-20260926",
+            "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+            "executor": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+            "preflightEvidenceIds": [
+              "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+            ],
+            "preflightSources": {
+              "cleanliness": "PLAN Git Scope Lock verified clean, exact base/terminal and zero changed files; repeated immediately before git worktree remove.",
+              "merge": "Core discovery HEAD a39e91fd671706d8217d58f4668ed45afa0d0e67 equals unchanged Core main; ancestor check passed. No product merge needed.",
+              "worktreeGate": "Read-only discovery gate: source inspection and actual Git Scope Lock PASS. No Core tests/builds authorized or run.",
+              "mainGate": "Unchanged Core main exact-base validation PASS. Project Control npm run check PASS in worktree and local main at 22d813a: records 364, source-docs 189, app 68, e2e 6.",
+              "liveProcess": "Discovery agent finished after active terminal return; no Core builds, tests or services launched; no user trial."
+            },
+            "currentRound": true,
+            "worktreeClean": true,
+            "merged": true,
+            "worktreeGate": "passed",
+            "mainGate": "passed",
+            "liveProcessClear": true,
+            "disposition": "removed",
+            "roundId": "b1-20260926-01a0de0b"
+          }
+        ]
       },
       "createdAt": "2026-09-26T14:12:08.747Z",
-      "updatedAt": "2026-09-26T14:18:50.918Z",
+      "updatedAt": "2026-09-26T14:29:17.738Z",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-b1-certified-seam-discovery-20260926"
