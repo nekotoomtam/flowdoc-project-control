@@ -64,7 +64,7 @@ export function createCoordinationRegistryV3Fixture(
     goal: "Implement the version 3 workflow packet contract.",
     ownerRepositoryId: "repo-project-control",
     allowedScope: ["src/model/", "schemas/", "tests/"],
-    forbiddenScope: ["../flowdoc-core/", "../flowdoc-backend/", "../flowdoc-editor/"],
+    forbiddenScope: ["forbidden/"],
     acceptanceCriteria: ["The version 3 schema accepts a complete routine packet."],
     workAuthority: "implementation",
     workSize: options.workSize ?? "small",
@@ -131,6 +131,7 @@ export function createCoordinationRegistryV3Fixture(
       status: "prepared",
       locator: {
         threadId: "workflow-economy-thread",
+        hostId: "local",
         worktree: "C:/worktrees/workflow-economy",
         branch: "codex/workflow-economy",
       },

@@ -345,6 +345,7 @@
               "required": ["threadId"],
               "properties": {
                 "threadId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                "hostId": { "$ref": "#/$defs/work/$defs/nonEmpty" },
                 "worktree": { "$ref": "#/$defs/work/$defs/nonEmpty" },
                 "branch": { "$ref": "#/$defs/work/$defs/nonEmpty" },
                 "handoffPath": { "$ref": "#/$defs/work/$defs/nonEmpty" }

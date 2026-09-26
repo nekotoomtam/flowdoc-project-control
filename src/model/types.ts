@@ -143,6 +143,7 @@ export interface CoordinationRoomRun {
   status: "prepared" | "active" | "superseded" | "returned" | "accepted" | "closed";
   locator: {
     threadId: string;
+    hostId?: string;
     worktree?: string;
     branch?: string;
     handoffPath?: string;
@@ -180,6 +181,7 @@ export interface CoordinationRoomRunV2 {
   status: "prepared" | "active" | "superseded" | "returned" | "accepted" | "closed";
   locator: {
     threadId: string;
+    hostId?: string;
     worktree?: string;
     branch?: string;
     handoffPath?: string;

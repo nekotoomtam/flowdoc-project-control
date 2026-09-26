@@ -19,6 +19,11 @@ import type {
   CoordinationRoomRunV3,
   CoordinationTerminalPayloadV3,
 } from "./types.js";
+import {
+  collectScopeDefinitionIssues,
+  pathWithinScope,
+  resolveModelAvailability,
+} from "./scope-lock.js";
 import type {
   WorkflowCompletionReport,
   WorkflowEconomyPacket,
@@ -121,6 +126,9 @@ export function validateWorkflowPacket(packet: WorkflowEconomyPacket): WorkflowE
   )) {
     add("FALLBACK_VERIFICATION_REQUIRED", "A fallback requires behavior, performance budget, and verification.");
   }
+  if (packet.policyId === "flowdoc-workflow-economy-v2") {
+    issues.push(...collectScopeDefinitionIssues(packet));
+  }
   return issues;
 }
 
@@ -128,7 +136,8 @@ export function validateWorkflowCompletion(
   packet: WorkflowEconomyPacket,
   completion: WorkflowCompletionReport,
 ): WorkflowEconomyIssue[] {
-  const issues = [...validateWorkflowPacket(packet)];
+  const packetIssues = validateWorkflowPacket(packet);
+  const issues = [...packetIssues];
   const add = (code: string, message: string): void => { issues.push({ code, message }); };
 
   if (!nonBlank(completion.behaviorChanged)) add("COMPLETION_BEHAVIOR_REQUIRED", "Completion must state the behavior change.");
@@ -136,6 +145,29 @@ export function validateWorkflowCompletion(
     add("COMPLETION_PROOF_REQUIRED", "Completion must reference at least one test or Evidence item.");
   }
   if (!nonBlank(completion.downstreamInformation)) add("COMPLETION_DOWNSTREAM_REQUIRED", "Completion must state downstream information or none.");
+
+  if (packet.policyId === "flowdoc-workflow-economy-v2") {
+    const validCriteria = new Set(packet.acceptanceCriteria.map((_criterion, index) => `AC-${index + 1}`));
+    const coveredCriteria = new Set<string>();
+    for (const proof of completion.proof) {
+      if (proof.criterionRefs === undefined || proof.criterionRefs.length === 0) {
+        add("ACCEPTANCE_CRITERION_REFERENCE_REQUIRED", "Every current-profile proof requires at least one AC-* reference.");
+        continue;
+      }
+      for (const reference of proof.criterionRefs) {
+        if (!validCriteria.has(reference)) {
+          add("ACCEPTANCE_CRITERION_UNKNOWN", `Proof references unknown acceptance criterion ${reference}.`);
+        } else {
+          coveredCriteria.add(reference);
+        }
+      }
+    }
+    for (const reference of validCriteria) {
+      if (!coveredCriteria.has(reference)) {
+        add("ACCEPTANCE_CRITERION_UNPROVEN", `Acceptance criterion ${reference} has no proof reference.`);
+      }
+    }
+  }
 
   validateUnknowns(completion.remainingUnknowns, issues);
   if (completion.remainingUnknowns.some(({ disposition }) => disposition === "blocking")) {
@@ -161,11 +193,14 @@ export function validateWorkflowCompletion(
   if (packet.workAuthority !== "implementation" && completion.changedFiles.length > 0) {
     add("WORK_AUTHORITY_READ_ONLY", `${packet.workAuthority} WORK cannot return changed files.`);
   }
-  for (const changedFile of completion.changedFiles) {
-    if (packet.forbiddenScope.some((scope) => pathWithin(changedFile, scope))) {
-      add("CHANGED_FILE_FORBIDDEN", `Changed file ${changedFile} is inside forbidden scope.`);
-    } else if (!packet.allowedScope.some((scope) => pathWithin(changedFile, scope))) {
-      add("CHANGED_FILE_OUTSIDE_SCOPE", `Changed file ${changedFile} is outside allowed scope.`);
+  const scopeDefinitionIsValid = !packetIssues.some(({ code }) => code.startsWith("SCOPE_"));
+  if (scopeDefinitionIsValid) {
+    for (const changedFile of completion.changedFiles) {
+      if (packet.forbiddenScope.some((scope) => pathWithinScope(changedFile, scope))) {
+        add("CHANGED_FILE_FORBIDDEN", `Changed file ${changedFile} is inside forbidden scope.`);
+      } else if (!packet.allowedScope.some((scope) => pathWithinScope(changedFile, scope))) {
+        add("CHANGED_FILE_OUTSIDE_SCOPE", `Changed file ${changedFile} is outside allowed scope.`);
+      }
     }
   }
   return deduplicateIssues(issues);
@@ -187,7 +222,13 @@ export function applyCoordinationV3Command(
 
   if (command.type === "activate-room") {
     const room = findRoom(registry, command.roomRunId, command.revisionAttempt);
+    ensure(
+      room.packet.policyId === "flowdoc-workflow-economy-v2",
+      "HISTORICAL_WORKFLOW_PACKET_READ_ONLY",
+      "Policy v1 packets remain readable but cannot activate a new round.",
+    );
     throwFirstIssue(validateWorkflowPacket(room.packet));
+    throwFirstIssue(collectRoomProfileIssues(registry, room));
   }
   if (command.type === "record-send" || command.type === "receive-handoff") {
     const room = findRoom(registry, command.payload.roomRunId, command.payload.revisionAttempt);
@@ -236,6 +277,9 @@ export function validateCoordinationV3Registry(
     if (registry.round.state !== "active" && (room.status === "prepared" || room.status === "active" || room.status === "returned")) {
       add("WORKFLOW_ACTIVE_ROOM_ROUND_INACTIVE", `Room ${room.roomRunId} remains executable under an inactive round.`);
     }
+    if (room.packet.policyId === "flowdoc-workflow-economy-v2") {
+      for (const profileIssue of collectRoomProfileIssues(registry, room)) add(profileIssue.code, profileIssue.message);
+    }
   }
   for (const handoff of registry.handoffs) {
     const room = registry.roomRuns.find((candidate) =>
@@ -269,14 +313,36 @@ function nonBlank(value: string | undefined): boolean {
   return value !== undefined && value.trim().length > 0;
 }
 
-function normalizePath(value: string): string {
-  return value.replaceAll("\\", "/").replace(/^\.\//, "");
-}
-
-function pathWithin(path: string, scope: string): boolean {
-  const normalizedPath = normalizePath(path);
-  const normalizedScope = normalizePath(scope).replace(/\/+$/, "");
-  return normalizedPath === normalizedScope || normalizedPath.startsWith(`${normalizedScope}/`);
+function collectRoomProfileIssues(
+  registry: CoordinationRegistryV3,
+  room: CoordinationRoomRunV3,
+): WorkflowEconomyIssue[] {
+  if (room.packet.policyId !== "flowdoc-workflow-economy-v2") return [];
+  const issues: WorkflowEconomyIssue[] = [];
+  const add = (code: string, message: string): void => { issues.push({ code, message }); };
+  const claim = registry.integrationClaims.find(({ repositoryId }) => repositoryId === room.ownerRepositoryId);
+  if (registry.round.policyId !== room.packet.policyId) {
+    add("WORKFLOW_POLICY_ROUND_MISMATCH", "The round and room packet name different workflow policies.");
+  }
+  if (room.locator.worktree !== room.packet.scopeLock.worktree) {
+    add("SCOPE_WORKTREE_MISMATCH", "The room locator and packet bind different worktrees.");
+  }
+  if (claim === undefined || claim.baseCommit !== room.packet.scopeLock.baseCommit) {
+    add("SCOPE_BASE_COMMIT_MISMATCH", "The integration claim and packet bind different base commits.");
+  }
+  if (JSON.stringify(room.modelDecision) !== JSON.stringify(room.packet.modelDecision)) {
+    add("MODEL_DECISION_ROOM_PACKET_MISMATCH", "The room and packet contain different model decisions.");
+  }
+  if (room.locator.hostId === undefined || room.locator.hostId.trim() === "") {
+    add("MODEL_DISPATCH_HOST_MISSING", "Current-profile rooms require a dispatch host ID.");
+  } else {
+    issues.push(...resolveModelAvailability(
+      room.packet.modelDecision,
+      registry.modelAvailabilitySnapshots,
+      room.locator.hostId,
+    ));
+  }
+  return issues;
 }
 
 function ensureRoundIdentity(registry: CoordinationRegistryV3, identity: RoundCommandIdentity): void {
@@ -425,6 +491,9 @@ function fromV2Registry(
     version: 3,
     revision: next.revision,
     round: { ...structuredClone(next.round), policyId: previous.round.policyId },
+    ...(previous.modelAvailabilitySnapshots === undefined
+      ? {}
+      : { modelAvailabilitySnapshots: structuredClone(previous.modelAvailabilitySnapshots) }),
     integrationClaims: structuredClone(next.integrationClaims),
     returnOrderPolicy: next.returnOrderPolicy,
     roomRuns,

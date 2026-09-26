@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   CoordinationTransitionError,
+  applyCoordinationCommand as applyVersionedCoordinationCommand,
   applyLegacyCoordinationCommand as applyCoordinationCommand,
   assessCleanupEligibility,
   canonicalPayloadDigest,
@@ -16,6 +17,7 @@ import { loadProjectSources } from "../tools/lib/load-sources.js";
 import { validateProjectSemantics } from "../tools/lib/validate-semantics.js";
 import { createProjectFixture } from "./fixtures/project-source.js";
 import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
+import { createCoordinationRegistryV3Fixture } from "./fixtures/coordination-registry-v3.js";
 
 const timestamp = "2026-09-10T07:00:00.000Z";
 const nextTimestamp = "2026-09-10T07:01:00.000Z";
@@ -157,6 +159,27 @@ function sendAndReceive(registry = makeRegistry(), payload = makePayload()): Coo
 }
 
 describe("coordination registry transitions", () => {
+  it("requires the referenced current-host model snapshot before activating policy v2", () => {
+    const missing = createCoordinationRegistryV3Fixture();
+    delete missing.modelAvailabilitySnapshots;
+    expect(() => applyVersionedCoordinationCommand(missing, {
+      type: "activate-room",
+      planTaskId: missing.round.planTaskId,
+      roundId: missing.round.roundId,
+      roomRunId: missing.roomRuns[0]!.roomRunId,
+      revisionAttempt: 0,
+    })).toThrowError(expect.objectContaining({ code: "MODEL_SNAPSHOT_MISSING" }));
+
+    const wrongHost = createCoordinationRegistryV3Fixture();
+    wrongHost.roomRuns[0]!.locator.hostId = "remote";
+    expect(() => applyVersionedCoordinationCommand(wrongHost, {
+      type: "activate-room",
+      planTaskId: wrongHost.round.planTaskId,
+      roundId: wrongHost.round.roundId,
+      roomRunId: wrongHost.roomRuns[0]!.roomRunId,
+      revisionAttempt: 0,
+    })).toThrowError(expect.objectContaining({ code: "MODEL_SNAPSHOT_HOST_MISMATCH" }));
+  });
   it.each([
     ["2026-09-10T07:03:00.000Z", false],
     ["2026-09-10T07:01:45.000Z", true],

@@ -53,7 +53,7 @@ function completionFixture(overrides: CompletionFixtureOverrides = {}): {
     packet,
     completion: {
       behaviorChanged: "Implemented the bounded workflow behavior.",
-      proof: [{ kind: "test", reference: "tests/workflow.test.ts" }],
+      proof: [{ kind: "test", reference: "tests/workflow.test.ts", criterionRefs: ["AC-1"] }],
       remainingUnknowns: structuredClone(packet.unknowns),
       downstreamInformation: "No downstream action is required.",
       changedFiles: [...(overrides.changedFiles ?? [])],
@@ -157,8 +157,23 @@ describe("workflow economy validation", () => {
     expect(validateWorkflowCompletion(allowed.packet, allowed.completion)).toEqual([]);
     expectIssue(completionFixture({ changedFiles: ["outside/changed.ts"] }), "CHANGED_FILE_OUTSIDE_SCOPE");
     const forbidden = completionFixture({ changedFiles: ["src/model/private/changed.ts"] });
+    forbidden.packet.allowedScope = ["src/model/public/", "schemas/", "tests/"];
     forbidden.packet.forbiddenScope = ["src/model/private/"];
     expectIssue(forbidden, "CHANGED_FILE_FORBIDDEN");
+  });
+
+  it("requires current-profile proof to reference every immutable acceptance criterion", () => {
+    const missing = completionFixture();
+    delete missing.completion.proof[0]!.criterionRefs;
+    expectIssue(missing, "ACCEPTANCE_CRITERION_REFERENCE_REQUIRED");
+
+    const unknown = completionFixture();
+    unknown.completion.proof[0]!.criterionRefs = ["AC-2"];
+    expectIssue(unknown, "ACCEPTANCE_CRITERION_UNKNOWN");
+
+    const uncovered = completionFixture();
+    uncovered.packet.acceptanceCriteria.push("Second criterion.");
+    expectIssue(uncovered, "ACCEPTANCE_CRITERION_UNPROVEN");
   });
 
   it("blocks only blocking unknowns and requires a return trigger for deferred unknowns", () => {
