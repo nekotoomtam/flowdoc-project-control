@@ -7,39 +7,58 @@
     {
       "id": "ac-1",
       "label": "Pin retained Gate2A corpus and generator from Core d5031b6151a0a6aba2fbe2c3320f122a935470a3; preserve all 3 languages, 5 sizes, 6 operations, 5 warmups/50 repetitions, original 180 revision sequence and adversarial/cold obligations. Record current API mapping explicitly, including active composition incompatibility. No removed rows or silent accepted-rejection substitution.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-preflight-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
     },
     {
       "id": "ac-2",
       "label": "Add only missing private Stage6 preflight harness plus meaningful verifier/tests. Preserve exact requested text/edits and use current Stage3/4/5 API with independent full run-owned oracle where applicable; no historical paragraph-wide property oracle as current semantic authority. Identify first required unsupported case and exact unchanged receipt/source/revision result, retained raw request/response and counters.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-preflight-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
     },
     {
       "id": "ac-3",
       "label": "Preserve immutable raw preflight results from clean committed source with commit, environment, source/font/WASM hashes, denominators, unexecuted rows and explicit finalAdmissionRun=false. Report all provider/host/cumulative accounting coverage and gaps; no invented zero counters. Stop admission on a required rejection, equality failure, missing lifecycle operation or accounting gap; exact remedy/CCR, no latency PASS from preflight.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-preflight-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
     },
     {
       "id": "ac-4",
       "label": "Required remaining Stage6 plan: no-anchor recovery, eviction, cancellation, disposal/receipts, continuous ordinary plus structural commands with independent oracle; unchanged p95<=8ms/max<=16.7ms/scaling<=1.50 and 512 source/512 property/1024 shape+segment caps. If prerequisite preflight fails, report these as unexecuted/blocked without spending a final timing run. If prerequisites pass, return harness for PLAN acceptance before separate final measurement; do not silently expand to runtime implementation.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-preflight-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
     },
     {
       "id": "ac-5",
       "label": "Focused harness tests and Core npm run check pass; clean exact commit and full actual changed-file manifest. Preserve raw failures. No public/default exports, runtime, geometry, Editor, Backend or map changes.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-preflight-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
+    },
+    {
+      "id": "gate2-admission",
+      "label": "Every fixed corpus case accepted and exact; complete lifecycle/continuous ordinary+structural commands, no-anchor/eviction/cancellation/disposal/receipts, all provider/host/cumulative work, unchanged p95/max/scaling/window limits and180 authentic revisions. A required rejection blocks this item.",
+      "state": "blocked",
+      "evidenceTarget": "evidence-core-stage6-preflight-20260927",
+      "evidenceIds": [
+        "evidence-core-stage6-preflight-20260927"
+      ]
     }
   ],
   "createdAt": "2026-09-26T20:10:41.583Z",
-  "updatedAt": "2026-09-26T20:10:41.583Z"
+  "updatedAt": "2026-09-26T20:38:24.028Z"
 }

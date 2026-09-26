@@ -9,8 +9,8 @@
     "repo-core",
     "repo-project-control"
   ],
-  "workState": "in-progress",
-  "summary": "Fresh authorized Stage6 round. Resolve retained fixed corpus/current API applicability and add bounded harness before final measurement. Prior Stage5 accepted immutable input; old rounds closed.",
+  "workState": "blocked",
+  "summary": "Terminal Stage6/Gate2 BLOCKER, confirmed by WORK and independent PLAN actual-WASM reproduction at clean b48f19454a8b1d9587bb0834d0ac261746fcc4f6. First fixed Thai256 append returns uncertified-seam with unchanged receipt/revision0 and full cold QA Equal. Harness checks pass440 files/3016 tests, exact original corpus/generator and clean5-file Scope Lock verified. All11271 final rows remain unexecuted; no timing or downstream admission. R2 schema-corrected handoff received/acknowledged/resolved blocked, queue empty; R1 invalid envelope preserved and superseded. WORK closed; Core candidate clean/unmerged retained, Core main17d8986 unchanged. PC kickoff worktree/main gates passed at c623d17; closure records require fresh worktree/main gates before terminal completion and clean PC lane removal. No old-round mutation, push or map promotion.",
   "contextDocumentIds": [
     "doc-flowdoc-workflow-economy-policy",
     "doc-core-run-owned-property-implementation-plan-2026-09-14",
@@ -18,16 +18,17 @@
     "doc-flowdoc-b1-empty-side-contract-20260926"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "Actual Stage6 admission evidence or precise actionable failure with exact required rows and unchanged limits; PLAN-owned acceptance and closure.",
-  "riskSummary": "Bounded risk of invalid admission through changed corpus, unsupported rows or unaccounted work; preserve denominator and stop on capability gap.",
+  "expectedOutput": "Fresh next work: bounded Core provider-backed script-transition/adjacent-run certificate for exact retained commands, explicit empty committed-request compatibility, then lifecycle applicability and unchanged full final admission measurement. Current round closes with precise failure; geometry/Editor remain downstream.",
+  "riskSummary": "Known admission blocker, not an unexplained uncertainty or cap failure. Single probe source/property/provider work6/1/0. Full latency/scaling, host heap/GC/phase work, family cumulative lifecycle and180+structural continuity remain unmeasured. Do not reduce denominator, use active composition as canonical source, waive owner visual requirement or reactivate this round.",
   "requiredEvidence": [
-    "evidence-core-private-stage5-20260927"
+    "evidence-core-private-stage5-20260927",
+    "evidence-core-stage6-preflight-20260927"
   ],
   "createdAt": "2026-09-26T20:10:41.583Z",
-  "updatedAt": "2026-09-26T20:10:41.583Z",
+  "updatedAt": "2026-09-26T20:38:24.028Z",
   "coordination": {
     "version": 3,
-    "revision": 1,
+    "revision": 9,
     "round": {
       "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
       "roundId": "core-stage6-20260927-01a0df53",
@@ -44,7 +45,7 @@
         "generated/project-index.json",
         "tests/project-roadmap-work-queue.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -94,14 +95,14 @@
         "repositoryId": "repo-core",
         "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
         "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
-        "state": "active",
+        "state": "released",
         "roundId": "core-stage6-20260927-01a0df53"
       },
       {
         "repositoryId": "repo-project-control",
         "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
         "baseCommit": "c743369c63216447d5a76aee532adb1b9b7c02a9",
-        "state": "active",
+        "state": "released",
         "roundId": "core-stage6-20260927-01a0df53"
       }
     ],
@@ -119,7 +120,7 @@
         "evidenceTarget": "evidence-core-stage6-preflight-20260927",
         "revisionAttempt": 1,
         "expectedHandoffId": "stage6-harness-r1-terminal",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "threadId": "/root/stage6_harness",
           "hostId": "local",
@@ -136,7 +137,158 @@
           "automaticChannel": "collaboration.send_message",
           "activeCommand": "collaboration.send_message({target:\"/root\",message:\"handoff ID, durable payload path, digest and result\"}) before final; identical retry on transport failure after 10s then 30s, at most 3 attempts",
           "monitorOwner": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
-          "livenessDeadline": "2026-09-26T20:30:41.585Z",
+          "livenessDeadline": "2026-09-26T20:51:14.2735303Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "workhorse",
+          "modelId": "gpt-6-sol",
+          "reasoningEffort": "medium",
+          "reason": "Bounded harness adaptation with immutable fixtures and explicit expected failure classification; no runtime or contract invention.",
+          "smallerOptionAssessment": "Luna is available but cross-language WASM fixtures, independent oracle and denominator preservation require workhorse capacity.",
+          "escalationTriggers": [
+            "Repeated accounting or corpus mismatch after one correction.",
+            "Runtime/contract change required: stop and return exact gap."
+          ],
+          "availabilitySnapshotRef": "local-stage6-20260927"
+        },
+        "ux": {
+          "applicability": "not-applicable",
+          "visibleChange": false,
+          "reason": "Private QA harness only; no runtime or visible layout changes."
+        },
+        "requiredEvidence": [
+          "evidence-core-stage6-preflight-20260927"
+        ],
+        "roundId": "core-stage6-20260927-01a0df53",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+            "worktree": "C:/Users/nekot/.codex/worktrees/core-stage6-20260927/flowdoc-vnext-core"
+          },
+          "allowedScope": [
+            "scripts/stage6",
+            "tests/stage6Preflight.test.ts",
+            "tests/fixtures/stage6"
+          ],
+          "forbiddenScope": [
+            "packages",
+            "src",
+            "docs",
+            "package.json",
+            "package-lock.json"
+          ],
+          "acceptanceCriteria": [
+            "Pin retained Gate2A corpus and generator from Core d5031b6151a0a6aba2fbe2c3320f122a935470a3; preserve all 3 languages, 5 sizes, 6 operations, 5 warmups/50 repetitions, original 180 revision sequence and adversarial/cold obligations. Record current API mapping explicitly, including active composition incompatibility. No removed rows or silent accepted-rejection substitution.",
+            "Add only missing private Stage6 preflight harness plus meaningful verifier/tests. Preserve exact requested text/edits and use current Stage3/4/5 API with independent full run-owned oracle where applicable; no historical paragraph-wide property oracle as current semantic authority. Identify first required unsupported case and exact unchanged receipt/source/revision result, retained raw request/response and counters.",
+            "Preserve immutable raw preflight results from clean committed source with commit, environment, source/font/WASM hashes, denominators, unexecuted rows and explicit finalAdmissionRun=false. Report all provider/host/cumulative accounting coverage and gaps; no invented zero counters. Stop admission on a required rejection, equality failure, missing lifecycle operation or accounting gap; exact remedy/CCR, no latency PASS from preflight.",
+            "Required remaining Stage6 plan: no-anchor recovery, eviction, cancellation, disposal/receipts, continuous ordinary plus structural commands with independent oracle; unchanged p95<=8ms/max<=16.7ms/scaling<=1.50 and 512 source/512 property/1024 shape+segment caps. If prerequisite preflight fails, report these as unexecuted/blocked without spending a final timing run. If prerequisites pass, return harness for PLAN acceptance before separate final measurement; do not silently expand to runtime implementation.",
+            "Focused harness tests and Core npm run check pass; clean exact commit and full actual changed-file manifest. Preserve raw failures. No public/default exports, runtime, geometry, Editor, Backend or map changes."
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 2,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent private Stage5 subset from being misrepresented as fixed-corpus Stage6/Gate2 admission.",
+                "existingProofInsufficient": "Stage5 explicitly excludes latency/scaling and full Stage6 corpus. Exact current-API preflight failure or readiness must be preserved before final measurement."
+              }
+            ]
+          },
+          "relevantEvidenceIds": [
+            "evidence-core-private-stage5-20260927"
+          ],
+          "unknowns": [
+            {
+              "id": "current-api-corpus",
+              "summary": "Legacy runner uses old paragraph-owned API; retained generator is authoritative for workload, current run-owned semantic oracle for facts. Missing API capability must be shown concretely.",
+              "disposition": "blocking",
+              "ownerAction": "Bounded harness preflight, then remedy/CCR on required unsupported case."
+            },
+            {
+              "id": "geometry-editor",
+              "summary": "Core geometry, Editor transition including transient frames and user-visible parity remain separately authorized downstream obligations.",
+              "disposition": "deferred",
+              "returnTrigger": "Stage6/Gate2 PASS and separately approved next plan."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "stage6-authorized",
+              "kind": "freeze-scope",
+              "reason": "Owner authorized fresh Stage6 PLAN, direct registered WORK only, preserved corpus and thresholds; exact actionable failure is a valid terminal result. No nested WORK.",
+              "decidedBy": "user via control 01a0dd89-4aaf-7701-997c-7c294174187c",
+              "decidedAt": "2026-09-26T20:10:41.583Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "workhorse",
+            "modelId": "gpt-6-sol",
+            "reasoningEffort": "medium",
+            "reason": "Bounded harness adaptation with immutable fixtures and explicit expected failure classification; no runtime or contract invention.",
+            "smallerOptionAssessment": "Luna is available but cross-language WASM fixtures, independent oracle and denominator preservation require workhorse capacity.",
+            "escalationTriggers": [
+              "Repeated accounting or corpus mismatch after one correction.",
+              "Runtime/contract change required: stop and return exact gap."
+            ],
+            "availabilitySnapshotRef": "local-stage6-20260927"
+          },
+          "escalationTriggers": [
+            "Required corpus case cannot be accepted by current API.",
+            "Missing independent oracle or provider/host accounting invalidates measurement.",
+            "Runtime, architecture, contract or allowed-path expansion required."
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message({target:\"/root\",message:\"handoff ID, durable payload path, digest and result\"}) before final; identical retry on transport failure after 10s then 30s, at most 3 attempts"
+          }
+        },
+        "packetDigest": "ed1a9b6902a7424a5352505bc93a1a5dd9dab51d7ed2314eaf0fa4824d7d3cf0"
+      },
+      {
+        "roomRunId": "core-stage6-harness-r1",
+        "dispatchSetId": "stage6-20260927-harness",
+        "laneId": "core-stage6-harness",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-stage6-20260927",
+        "checklistId": "checklist-flowdoc-core-stage6-20260927",
+        "evidenceTarget": "evidence-core-stage6-preflight-20260927",
+        "revisionAttempt": 2,
+        "expectedHandoffId": "stage6-harness-r2-terminal",
+        "status": "closed",
+        "locator": {
+          "threadId": "/root/stage6_harness",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/core-stage6-20260927/flowdoc-vnext-core",
+          "branch": "codex/core-stage6-harness-20260927",
+          "handoffPath": "C:/Users/nekot/.codex/worktrees/00cb/flowdoc-project-control/.superpowers/stage6-handoff-r2.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-26T20:35:36.2021036Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message({target:\"/root\",message:\"handoff ID, durable payload path, digest and result\"}) before final; identical retry on transport failure after 10s then 30s, at most 3 attempts",
+          "monitorOwner": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "livenessDeadline": "2026-09-26T20:39:15.9354065Z",
           "maxSendAttempts": 3
         },
         "modelDecision": {
@@ -259,8 +411,163 @@
         "packetDigest": "ed1a9b6902a7424a5352505bc93a1a5dd9dab51d7ed2314eaf0fa4824d7d3cf0"
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "handoffId": "stage6-harness-r2-terminal",
+        "payloadDigest": "d9b7dc8f575fc99d38de2a3f0e043fb6e89d34be137149c58de19b806296345b",
+        "payload": {
+          "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "roomRunId": "core-stage6-harness-r1",
+          "laneId": "core-stage6-harness",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 2,
+          "status": "BLOCKER",
+          "behaviorChanged": false,
+          "behaviorSummary": "Private Stage6 fixed-corpus preflight harness PASS at Core b48f19454a8b1d9587bb0834d0ac261746fcc4f6; no Core runtime behavior changed. Stage6/Gate2 admission BLOCKER: the first retained required committed row prepared-first-thai-256-append returns NotAdmissible/uncertified-seam, with unchanged receipt and revision 0. Independent full-provider QA verifies the unchanged source. No final admission sample was run.",
+          "exactCommit": "b48f19454a8b1d9587bb0834d0ac261746fcc4f6",
+          "changedFiles": [
+            "scripts/stage6/corpus.mjs",
+            "scripts/stage6/preflight.mjs",
+            "scripts/stage6/verify.mjs",
+            "tests/fixtures/stage6/gate2a.v2.json",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "tests": [
+            "Core npm run check at exact commit with STAGE6_PREFLIGHT_ARTIFACT set: 440 test files, 3016 tests passed; result record C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/core-check-b48f194.txt",
+            "Focused immutable artifact replay, source-hash, denominator, and tamper checks: tests/stage6Preflight.test.ts 3/3 passed",
+            "Git worktree clean; exact base 17d898696d6df412b2d73d487f106939b890568a; five changed paths only inside allowed scope"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Gate2 thresholds remain p95<=8ms, max<=16.7ms, 8192/256<=1.50; current 512 source/512 property/1024 shaping plus segmentation caps remain unchanged. No latency or scaling result exists.",
+            "Provider and Rust ABI counters exist for the diagnostic rejection; host heap, GC, full phase latency, and remaining corpus accounting are unmeasured.",
+            "The retained composition-update label generates a committed replacement; it is not proof of active composition support. Current Stage4 intentionally rejects active composition. The composition-commit generator is a committed empty insertion, not an active-to-committed transition.",
+            "Retained initial raw capture fffc5f086a77dac40f67fb37ecba68ffdde9180d is an implementation diagnostic whose verifier expected 91 total work fields. The corrected b48f194 capture distinguishes 95 work fields from the 91 additive cumulative slots and is the authoritative candidate. Both raw files are preserved."
+          ],
+          "unknowns": [
+            "Future provider-backed bounded seam remedy and subsequent full Stage6 admission remain unresolved; the first-row rejection is an observed blocker recorded in behaviorSummary and contractChangeRequest."
+          ],
+          "contractChangeRequest": "Narrow remedy request to PLAN: authorize a separate Core runtime/semantic lane to prove and implement provider-backed bounded seam certification for committed Thai insertion after a Latin final character in the exact first fixed corpus row (source length 256, edit 256..256 inserting ก), or record an explicit owner contract decision. Preserve the fixed corpus, all rows, all thresholds, and the original non-publishing result until then; this harness lane cannot edit runtime or contract.",
+          "roundId": "core-stage6-20260927-01a0df53",
+          "completion": {
+            "behaviorChanged": "Added private immutable Stage6 preflight harness and verifier; product runtime and public API unchanged.",
+            "proof": [
+              {
+                "kind": "test",
+                "reference": "Core b48f19454a8b1d9587bb0834d0ac261746fcc4f6: npm run check passed 440 files/3016 tests; C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/core-check-b48f194.txt",
+                "criterionRefs": [
+                  "AC-5"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "Immutable verified raw preflight C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/stage6-preflight-b48f194.json; earlier retained diagnostic stage6-preflight-fffc5f0.json",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3"
+                ]
+              },
+              {
+                "criterionRefs": [
+                  "AC-4"
+                ],
+                "kind": "test",
+                "reference": "Immutable raw preflight obligation manifest records all 11271 final rows unexecuted, all lifecycle obligations, unchanged thresholds and run-owned caps, and finalAdmissionRun=false; C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/stage6-preflight-b48f194.json"
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "ownerAction": "PLAN to scope a separate bounded remedy lane; retain current NotAdmissible behavior until verified.",
+                "summary": "A provider-backed bounded seam remedy for this known first-row failure requires a newly authorized Core runtime or contract lane.",
+                "disposition": "deferred",
+                "id": "future-runtime-remedy",
+                "returnTrigger": "PLAN authorizes a fresh bounded Core runtime or contract lane for the observed uncertified-seam rejection."
+              },
+              {
+                "summary": "All fixed final timing, scaling, lifecycle, and cumulative accounting obligations remain unexecuted after the observed preflight blocker.",
+                "disposition": "deferred",
+                "id": "final-measurement",
+                "returnTrigger": "Accepted remedy and new clean preflight on the unchanged corpus."
+              }
+            ],
+            "downstreamInformation": "Do not count the one preflight probe as a final warmup or repetition, nor run the 180 burst revisions on unchanged source. PLAN owns acceptance, Evidence registration, integration, and any new runtime scope.",
+            "changedFiles": [
+              "scripts/stage6/corpus.mjs",
+              "scripts/stage6/preflight.mjs",
+              "scripts/stage6/verify.mjs",
+              "tests/fixtures/stage6/gate2a.v2.json",
+              "tests/stage6Preflight.test.ts"
+            ],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 2,
+            "implementationCommitCount": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-26T20:36:37.4270198Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-26T20:36:37.4270198Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-26T20:36:47.1327865Z",
+          "senderThreadId": "/root/stage6_harness",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-26T20:36:56.9348189Z"
+        },
+        "acceptance": {
+          "status": "blocked",
+          "reviewer": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "reviewedAt": "2026-09-26T20:37:20.4244353Z",
+          "reviewNote": "PLAN independently reproduced first required Thai256 append rejection at b48f194, same receipt/revision0 and full cold QA Equal. Raw SHA cca0ed7d5e91a87ece03d59bb77da1283442494df02d84ddd25c1656b99598d3. Corpus/generator and tracked source hashes verified. Scope Lock passed: exact base17d8986, clean5-file manifest c3b27e5a42e4b8e462363780d65a177a12042f95f5e1ca71db31456fe81025c5, packet ed1a9b6902a7424a5352505bc93a1a5dd9dab51d7ed2314eaf0fa4824d7d3cf0. Core gate440/3016 passed. Harness verified; required admission fails. Preserve terminal BLOCKER and retain clean unmerged candidate, do not manufacture a PASS handoff to integrate.",
+          "evidenceIds": [],
+          "requiredChecks": [],
+          "remainingScope": [
+            "Fresh bounded provider-backed adjacent-run/script-transition repair under original corpus/caps.",
+            "Then unchanged complete lifecycle/180 ordinary+structural corpus and all host/cumulative/latency/scaling obligations.",
+            "Core geometry and Editor transient visual parity remain separately authorized downstream; no map/public/production admission."
+          ]
+        }
+      }
+    ],
     "completionQueue": [],
-    "cleanup": []
-  }
+    "cleanup": [
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/core-stage6-20260927/flowdoc-vnext-core",
+        "branch": "codex/core-stage6-harness-20260927",
+        "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+        "executor": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+        "preflightEvidenceIds": [
+          "evidence-core-stage6-preflight-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "git status --short empty at b48f194; Scope Lock manifest c3b27e5a42e4b8e462363780d65a177a12042f95f5e1ca71db31456fe81025c5.",
+          "merge": "Not merged: terminal BLOCKER, no accepted integration candidate. Core main remains17d898696d6df412b2d73d487f106939b890568a.",
+          "worktreeGate": "WORK exact-commit Core npm run check440 files/3016 tests PASS; PLAN source/raw verifier and independent actual-WASM reproduction PASS for known rejection.",
+          "mainGate": "Not applicable: no Core merge or main mutation; do not claim a new Core main gate.",
+          "liveProcess": "WORK final/idle; PLAN process scan found no command referencing current Core lane after reproduction."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": false,
+        "worktreeGate": "passed",
+        "mainGate": "pending",
+        "liveProcessClear": true,
+        "disposition": "retain",
+        "roundId": "core-stage6-20260927-01a0df53"
+      }
+    ]
+  },
+  "blockedBy": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
+  "unblockOwner": "repo-core via fresh PLAN-owned bounded adjacent-run/script-transition certificate repair; preserve corpus/caps, then complete lifecycle and final measurement."
 }

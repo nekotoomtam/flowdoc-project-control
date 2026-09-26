@@ -1329,6 +1329,12 @@ describe("project roadmap Work Queue", () => {
       .toContain("bounded Backend/Core and Backend HTTP contract compatibility only");
 
     for (const work of model.work) {
+      if (work.id === "flowdoc-core-stage6-20260927") {
+        expect(work.workState).toBe("blocked");
+        expect(work.blockedBy).toContain("prepared-first-thai-256-append rejects uncertified-seam");
+        expect(work.unblockOwner).toContain("fresh PLAN-owned bounded");
+        continue;
+      }
       if (work.id === "flowdoc-b1-stage5-20260926") {
         expect(work.workState).toBe("blocked");
         expect(work.blockedBy).toContain("Missing Core empty-state style/metric contract");
