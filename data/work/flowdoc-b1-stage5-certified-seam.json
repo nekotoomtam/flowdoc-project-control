@@ -1,0 +1,106 @@
+{
+  "kind": "work",
+  "id": "flowdoc-b1-stage5-certified-seam",
+  "title": "B1 Stage 5 — blocked before discovery",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "workState": "blocked",
+  "summary": "B1 stopped before discovery activation on two validated Project Control prerequisites. Prepared WORK cancelled; no Core changes, acceptance or product/map promotion.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-flowdoc-a1-work-plan-reconciliation-2026-09-26",
+    "doc-flowdoc-b1-stage5-preflight-blocker-2026-09-26"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Read-only discovery with exact source refs, bounded seam/cost decision and implementation scope; implementation and verification only if no architecture/contract/scope change is required.",
+  "riskSummary": "Property-changing Enter may lack a bounded certificate. Discovery must close before a new implementation round if material contract changes are needed. No Stage 4 reproof, general cross-span editing, Editor/public bindings, production activation, B2/C/D/A2 or map promotion. Integration BLOCKER: check:data reports COORDINATION_INTEGRATION_OWNER_CONFLICT against historical v1 flowdoc-frontend-expert-roadmap owner 01a0c002-caef-7da3-a7e0-492a5c95a6a4. No integration turn is claimed for this read-only discovery. Do not bypass this conflict or mutate the historical registry; a separate control-plane fix is required before product dispatch/integration.",
+  "requiredEvidence": [
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 0,
+    "round": {
+      "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+      "roundId": "round-b1-2026-09-26",
+      "workId": "flowdoc-b1-stage5-certified-seam",
+      "scopeId": "b1-stage5-certified-seam",
+      "scopeKeys": [
+        "core:b1-stage5-certified-seam"
+      ],
+      "allowedFiles": [
+        "data/work/flowdoc-b1-stage5-certified-seam.json",
+        "data/phases/phase-flowdoc-b1-stage5-certified-seam.json",
+        "data/checklists/checklist-flowdoc-b1-stage5-certified-seam.json",
+        "generated/project-index.json",
+        "docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md",
+        "data/documents/flowdoc-b1-stage5-preflight-blocker-2026-09-26.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "cancelled",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "b1-local-host-2026-09-26",
+        "hostId": "local",
+        "source": "Observed mcp__codex_app create_thread tool schema in this PLAN session",
+        "observedAt": "2026-09-26T12:39:47.681Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+        "roundId": "round-b1-2026-09-26",
+        "baseCommit": "b3b6e6b8bd8c5fb2ed96fc10c168d4d84957fafc",
+        "state": "released"
+      },
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+        "roundId": "round-b1-2026-09-26",
+        "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+        "state": "released"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-26T12:39:47.681Z",
+  "updatedAt": "2026-09-26T12:44:19.039Z",
+  "blockedBy": "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
+  "unblockOwner": "Project Control prerequisite round; then a fresh B1 PLAN/WORK context."
+}

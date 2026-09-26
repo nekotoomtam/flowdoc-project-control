@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "ba14630ebf1a245a03a18a77db86da28608e9178d88243ad61b3a36e2dce9054",
+  "sourceDigest": "47c77fb0b22d7661b05ec6f1a01a7e83a2f2fc7c0c5ef52e0e4f96a0be976cfd",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -416,6 +416,7 @@
         "agent-and-skill-design",
         "cockpit-active-work-reconciliation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-stage5-certified-seam",
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
@@ -2429,6 +2430,120 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-a1-work-plan-reconciliation"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-b1-stage5-certified-seam",
+      "title": "B1 Stage 5 — blocked before discovery",
+      "nodeId": "project-control",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control",
+        "repo-core"
+      ],
+      "workState": "blocked",
+      "summary": "B1 stopped before discovery activation on two validated Project Control prerequisites. Prepared WORK cancelled; no Core changes, acceptance or product/map promotion.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy",
+        "doc-flowdoc-a1-work-plan-reconciliation-2026-09-26",
+        "doc-flowdoc-b1-stage5-preflight-blocker-2026-09-26"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Read-only discovery with exact source refs, bounded seam/cost decision and implementation scope; implementation and verification only if no architecture/contract/scope change is required.",
+      "riskSummary": "Property-changing Enter may lack a bounded certificate. Discovery must close before a new implementation round if material contract changes are needed. No Stage 4 reproof, general cross-span editing, Editor/public bindings, production activation, B2/C/D/A2 or map promotion. Integration BLOCKER: check:data reports COORDINATION_INTEGRATION_OWNER_CONFLICT against historical v1 flowdoc-frontend-expert-roadmap owner 01a0c002-caef-7da3-a7e0-492a5c95a6a4. No integration turn is claimed for this read-only discovery. Do not bypass this conflict or mutate the historical registry; a separate control-plane fix is required before product dispatch/integration.",
+      "requiredEvidence": [
+        "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+      ],
+      "coordination": {
+        "version": 3,
+        "revision": 0,
+        "round": {
+          "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+          "roundId": "round-b1-2026-09-26",
+          "workId": "flowdoc-b1-stage5-certified-seam",
+          "scopeId": "b1-stage5-certified-seam",
+          "scopeKeys": [
+            "core:b1-stage5-certified-seam"
+          ],
+          "allowedFiles": [
+            "data/work/flowdoc-b1-stage5-certified-seam.json",
+            "data/phases/phase-flowdoc-b1-stage5-certified-seam.json",
+            "data/checklists/checklist-flowdoc-b1-stage5-certified-seam.json",
+            "generated/project-index.json",
+            "docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md",
+            "data/documents/flowdoc-b1-stage5-preflight-blocker-2026-09-26.json",
+            "tests/project-roadmap-work-queue.test.ts"
+          ],
+          "state": "cancelled",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "b1-local-host-2026-09-26",
+            "hostId": "local",
+            "source": "Observed mcp__codex_app create_thread tool schema in this PLAN session",
+            "observedAt": "2026-09-26T12:39:47.681Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "low",
+                  "medium",
+                  "high",
+                  "xhigh",
+                  "max",
+                  "ultra"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "low",
+                  "medium",
+                  "high",
+                  "xhigh",
+                  "max",
+                  "ultra"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-project-control",
+            "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+            "roundId": "round-b1-2026-09-26",
+            "baseCommit": "b3b6e6b8bd8c5fb2ed96fc10c168d4d84957fafc",
+            "state": "released"
+          },
+          {
+            "repositoryId": "repo-core",
+            "planTaskId": "01a0ddb8-a56d-7f63-a93c-2cc0003bfc98",
+            "roundId": "round-b1-2026-09-26",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "state": "released"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [],
+        "handoffs": [],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "createdAt": "2026-09-26T12:39:47.681Z",
+      "updatedAt": "2026-09-26T12:44:19.039Z",
+      "blockedBy": "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
+      "unblockOwner": "Project Control prerequisite round; then a fresh B1 PLAN/WORK context.",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-b1-stage5-certified-seam"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-b1-stage5-certified-seam"
       ]
     },
     {
@@ -8395,6 +8510,7 @@
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-stage5-certified-seam",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
@@ -10488,6 +10604,28 @@
         "Stop on missing prerequisite, authority conflict or scope escape.",
         "Stop when all A1 dispositions and required Project Control gates pass."
       ]
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-b1-stage5-certified-seam",
+      "workId": "flowdoc-b1-stage5-certified-seam",
+      "title": "B1 certified seam discovery and admission decision",
+      "phaseState": "blocked",
+      "order": 0,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "verificationTarget": "checklist-flowdoc-b1-stage5-certified-seam; Core exact source at a39e91fd671706d8217d58f4668ed45afa0d0e67; npm run check",
+      "summary": "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
+      "stopConditions": [
+        "Contract/architecture/ownership/scope change requires a fresh implementation round.",
+        "Missing bounded certificate yields not-admissible; no widening of fixed caps.",
+        "Stop once authorized acceptance and required gates pass."
+      ],
+      "createdAt": "2026-09-26T12:39:47.681Z",
+      "updatedAt": "2026-09-26T12:44:19.039Z"
     },
     {
       "kind": "phase",
@@ -16927,6 +17065,40 @@
       ],
       "createdAt": "2026-09-26T12:12:15.162Z",
       "updatedAt": "2026-09-26T12:12:15.162Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-b1-stage5-certified-seam",
+      "phaseId": "phase-flowdoc-b1-stage5-certified-seam",
+      "title": "B1 discovery acceptance",
+      "items": [
+        {
+          "id": "base-and-seam",
+          "label": "Pin Core base and existing seam mechanism with exact source/test references.",
+          "state": "blocked",
+          "evidenceTarget": "Core source at exact base and discovery terminal handoff",
+          "evidenceIds": [],
+          "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+        },
+        {
+          "id": "semantic-cost-boundary",
+          "label": "Resolve head/middle/tail, inverse join, Thai/Latin, off|ice, empty and RTL outcomes and source/property/provider accounting bounds.",
+          "state": "blocked",
+          "evidenceTarget": "Discovery findings and bounded certificate admission decision",
+          "evidenceIds": [],
+          "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+        },
+        {
+          "id": "next-scope",
+          "label": "Identify one implementation owner, exact files/tests, model decision and whether a fresh implementation round is required.",
+          "state": "blocked",
+          "evidenceTarget": "PLAN-owned acceptance of discovery; no product/map promotion",
+          "evidenceIds": [],
+          "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+        }
+      ],
+      "createdAt": "2026-09-26T12:39:47.681Z",
+      "updatedAt": "2026-09-26T12:44:19.039Z"
     },
     {
       "kind": "checklist",
@@ -24060,6 +24232,19 @@
     },
     {
       "kind": "document",
+      "id": "doc-flowdoc-b1-stage5-preflight-blocker-2026-09-26",
+      "title": "B1 Stage 5 Pre-dispatch Blockers",
+      "path": "docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Canonical pre-dispatch failure and next prerequisite; not product discovery, Evidence or map truth.",
+      "lifecycle": "active",
+      "contextClass": "supporting",
+      "repositoryRefs": [],
+      "content": "# B1 Stage 5 — pre-dispatch blockers\n\n## Authority Boundary\n\nProject Control canonical coordination finding for Work `flowdoc-b1-stage5-certified-seam`, Phase `phase-flowdoc-b1-stage5-certified-seam`, Checklist `checklist-flowdoc-b1-stage5-certified-seam`. PLAN `01a0ddb8-a56d-7f63-a93c-2cc0003bfc98`, round `round-b1-2026-09-26`. Role: Planning Partner and Project Control Steward. This records failed prerequisites, not Core discovery, Stage 5 acceptance, product Evidence, or map truth.\n\n## Outcome\n\nBLOCKER before activation. B1 product acceptance remains untested. WORK 1 was created with Astra medium and returned PREPARED at clean Core base `a39e91fd671706d8217d58f4668ed45afa0d0e67`; no source discovery was dispatched. WORK 2/Sol medium and WORK 3/Sol medium were conditional proposals and were not created. No historical task was contacted or reactivated.\n\nPLAN base: Project Control `b3b6e6b8bd8c5fb2ed96fc10c168d4d84957fafc`, isolated worktree `C:/Users/nekot/.codex/worktrees/dd0b/flowdoc-project-control`, branch `codex/b1-stage5-plan`. WORK locator: task `01a0ddbb-09df-72f1-bd3d-bf345b0d9009`, `C:/Users/nekot/.codex/worktrees/6395/flowdoc-vnext-core`, detached HEAD at the exact Core base. The WORK preparation acknowledgement was actively returned to this PLAN; it is not a context acknowledgement for the rejected packet and not a terminal discovery handoff.\n\n## Reproducible prerequisites\n\n1. With fresh v3 active integration claims for Core and Project Control, `npm run check:data` rejects `COORDINATION_INTEGRATION_OWNER_CONFLICT`: historical v1 Work `flowdoc-frontend-expert-roadmap` revision 253 still stores generation-2 active claims for PLAN `01a0c002-caef-7da3-a7e0-492a5c95a6a4`. The current policy makes v1/v2 historical read-only, while `src/model/coordination.ts::validateCoordinationRegistries` still includes those claims in live integration exclusivity. Initial candidate claims were relinquished; this does not resolve the prerequisite for future integration. Do not mutate or transfer the old registry to bypass it.\n2. A read-only discovery candidate without a merge turn then fails `WORKFLOW_EVIDENCE_VALIDITY_REQUIRED` in `tools/lib/validate-semantics.ts`: Stage 4 Evidence `evidence-core-rust-stage4-multispan-cumulative-2026-09-21` has a detailed verification summary but no structured validity boundary required for v3 packet reuse. The claim, source revision and accepted status remain immutable input. Omitting it from packet evidence merely to pass validation is not an acceptable repair.\n\nHistorical inspection was limited to the exact ownership record implicated by the diagnostic. No Stage 4 proof was rerun. No Core code, old registry, Stage 4 Evidence, roadmap item or map changed.\n\n## Scope and next decision\n\nThis round is cancelled before dispatch. The prepared room and current PLAN worktree are retained; no acceptance, integration, main gate or cleanup is claimed. The fresh Work records the blocker and has no executable room. The rejected packet below remains a non-executable diagnostic, never an accepted or activated packet.\n\nNext pointer: a fresh bounded Project Control prerequisite round should decide and test how historical ownership participates in current v3 conflict validation, and how immutable accepted Evidence gains an explicit validated reuse boundary without inventing new product proof. After that prerequisite passes worktree/main gates, create a fresh B1 round and fresh WORK identities; do not resume this cancelled execution context. No B2/C/D/A2 work is authorized here.\n\nPLAN model: Astra medium per owner request. WORK 1 selected independently as Astra medium for unresolved atomicity/seam/cost reasoning. Host availability is the actual local create_thread schema snapshot in the Work. No effort escalation occurred. The prepared WORK returned only identity and clean status.\n\nBudget: zero product tests, zero new Evidence, zero formal audits, one focused preflight review. One Project Control decision document is justified by the missing-prerequisite stop condition: it preserves the two rejected transitions and prevents a later agent from bypassing them or rerunning Stage 4. The product WORK's zero-document budget was never activated. Standard Project Control checks verify only the blocked records.\n\n## Rejected packet (diagnostic only)\n\nPreparation cancellation receipt: WORK task `01a0ddbb-09df-72f1-bd3d-bf345b0d9009` actively returned `PREPARATION-CANCELLED` to this PLAN after a fresh HEAD/status check. HEAD remained `a39e91fd671706d8217d58f4668ed45afa0d0e67`, detached and clean. The WORK confirmed no product source inspection, mutation, repair, historical resumption or cleanup. This receipt is not a terminal discovery handoff or acceptance.\n\nDigest from the canonical packetDigest function: `ee2592bed671c2d59943f474bf7c7830e6d44bb48310d75999865abfb6823506`. Recorded at 2026-09-26T12:44:19.039Z. The referenced availability snapshot remains in the fresh Work.\n\n```json\n{\n  \"roomRunId\": \"b1-discovery-r1\",\n  \"dispatchSetId\": \"b1-discovery-dispatch-2026-09-26\",\n  \"laneId\": \"b1-certified-seam-discovery\",\n  \"workType\": \"evidence-review\",\n  \"ownerRepositoryId\": \"repo-core\",\n  \"activeRole\": \"evidence-reviewer\",\n  \"phaseId\": \"phase-flowdoc-b1-stage5-certified-seam\",\n  \"checklistId\": \"checklist-flowdoc-b1-stage5-certified-seam\",\n  \"evidenceTarget\": \"Core exact source references in terminal discovery payload; reuse Stage 4 Evidence only at its original claim.\",\n  \"roundId\": \"round-b1-2026-09-26\",\n  \"revisionAttempt\": 1,\n  \"expectedHandoffId\": \"b1-discovery-handoff-1\",\n  \"status\": \"prepared\",\n  \"locator\": {\n    \"threadId\": \"01a0ddbb-09df-72f1-bd3d-bf345b0d9009\",\n    \"hostId\": \"local\",\n    \"worktree\": \"C:/Users/nekot/.codex/worktrees/6395/flowdoc-vnext-core\"\n  },\n  \"contextAcknowledgement\": {\n    \"status\": \"pending\"\n  },\n  \"returnRoute\": {\n    \"planTaskId\": \"01a0ddb8-a56d-7f63-a93c-2cc0003bfc98\",\n    \"automaticChannel\": \"send_message_to_thread\",\n    \"activeCommand\": \"send_message_to_thread(threadId=01a0ddb8-a56d-7f63-a93c-2cc0003bfc98, prompt=exact handoff payload)\",\n    \"monitorOwner\": \"01a0ddb8-a56d-7f63-a93c-2cc0003bfc98\",\n    \"livenessDeadline\": \"2026-09-26T12:47:35.443Z\",\n    \"maxSendAttempts\": 3\n  },\n  \"modelDecision\": {\n    \"capabilityClass\": \"frontier\",\n    \"modelId\": \"gpt-6-astra\",\n    \"reasoningEffort\": \"medium\",\n    \"availabilitySnapshotRef\": \"b1-local-host-2026-09-26\",\n    \"reason\": \"Bounded read-only source review has unresolved structural atomicity, seam and cost contracts; mistakes could create an unsafe implementation packet but are recoverable at PLAN review.\",\n    \"smallerOptionAssessment\": \"Sol medium is reserved for explicit implementation/verification after discovery. Unresolved seam ownership and property-changing bounds justify Astra medium here.\",\n    \"escalationTriggers\": [\n      \"Source findings change architecture, contract, ownership or scope: stop and return fresh-round requirement.\",\n      \"Conflicting source/Evidence cannot be resolved within the focused source review: return BLOCKER.\"\n    ]\n  },\n  \"ux\": {\n    \"visibleChange\": false,\n    \"applicability\": \"not-applicable\",\n    \"reason\": \"Read-only review of private Core QA mechanisms; no user-visible behavior or activation.\"\n  },\n  \"requiredEvidence\": [\n    \"evidence-core-rust-stage4-multispan-cumulative-2026-09-21\"\n  ],\n  \"packet\": {\n    \"policyId\": \"flowdoc-workflow-economy-v2\",\n    \"goal\": \"Read-only discovery of Stage 5 certified-seam Enter/join at accepted Stage 4 base. Return exact semantics, boundedness, source paths and next-round decision; no implementation.\",\n    \"ownerRepositoryId\": \"repo-core\",\n    \"allowedScope\": [\n      \"packages\",\n      \"src\",\n      \"tests\",\n      \"fixtures\",\n      \"docs\",\n      \"scripts\",\n      \"AGENTS.md\",\n      \"README.md\",\n      \"package.json\"\n    ],\n    \"forbiddenScope\": [\n      \".github\",\n      \"examples\",\n      \"assets\"\n    ],\n    \"acceptanceCriteria\": [\n      \"Verify exact clean Core base; identify existing certified seam, structural command, provider/property and accounting mechanisms with source/test references.\",\n      \"Classify head/middle/tail Enter and inverse join for same-property, Thai/Latin, off|ice, empty children and RTL-sensitive outcomes; identify certificate fields, unchanged-parent atomicity and preserved 512/512/1024 bounds.\",\n      \"Return exact implementation file ownership and focused checks; decide if contract/architecture/scope changes require a fresh round. Classify missing bounded property-changing certificate as not-admissible/BLOCKER; no Stage 4 rerun or product promotion.\"\n    ],\n    \"workAuthority\": \"discovery\",\n    \"workSize\": \"medium\",\n    \"risk\": {\n      \"tier\": \"bounded\"\n    },\n    \"proofBudget\": {\n      \"maxNewEvidence\": 0,\n      \"maxDurableDocuments\": 0,\n      \"maxReviewCycles\": 1,\n      \"closeForm\": \"acceptance-summary\",\n      \"authorizedArtifacts\": []\n    },\n    \"relevantEvidenceIds\": [\n      \"evidence-core-rust-stage4-multispan-cumulative-2026-09-21\"\n    ],\n    \"unknowns\": [\n      {\n        \"id\": \"seam-contract\",\n        \"summary\": \"Current certified seam and property-changing Enter admission contract.\",\n        \"disposition\": \"blocking\",\n        \"ownerAction\": \"Resolve by bounded source review or explicitly return a blocked implementation recommendation.\"\n      },\n      {\n        \"id\": \"integration-owner-conflict\",\n        \"summary\": \"Historical v1 active claims conflict with a new integration owner. Read-only discovery claims no merge turn.\",\n        \"disposition\": \"deferred\",\n        \"returnTrigger\": \"Before any implementation dispatch or integration, resolve validator policy mismatch in separately authorized control-plane scope.\"\n      }\n    ],\n    \"ownerDecisions\": [\n      {\n        \"id\": \"b1-scope-freeze\",\n        \"kind\": \"freeze-scope\",\n        \"reason\": \"User authorizes B1 only; no B2/C/D/A2, Stage 4 reproof, old-context mutations, public bindings, production activation or general cross-span edit.\",\n        \"decidedBy\": \"user via PLAN kickoff\",\n        \"decidedAt\": \"2026-09-26T12:42:35.442Z\"\n      }\n    ],\n    \"escalationTriggers\": [\n      \"Source findings change architecture, contract, ownership or scope: stop and return fresh-round requirement.\",\n      \"Conflicting source/Evidence cannot be resolved within the focused source review: return BLOCKER.\"\n    ],\n    \"returnRoute\": {\n      \"planTaskId\": \"01a0ddb8-a56d-7f63-a93c-2cc0003bfc98\",\n      \"automaticChannel\": \"send_message_to_thread\",\n      \"activeCommand\": \"send_message_to_thread(threadId=01a0ddb8-a56d-7f63-a93c-2cc0003bfc98, prompt=exact handoff payload)\"\n    },\n    \"scopeLock\": {\n      \"version\": 1,\n      \"enforcement\": \"git-worktree\",\n      \"baseCommit\": \"a39e91fd671706d8217d58f4668ed45afa0d0e67\",\n      \"worktree\": \"C:/Users/nekot/.codex/worktrees/6395/flowdoc-vnext-core\"\n    },\n    \"modelDecision\": {\n      \"capabilityClass\": \"frontier\",\n      \"modelId\": \"gpt-6-astra\",\n      \"reasoningEffort\": \"medium\",\n      \"availabilitySnapshotRef\": \"b1-local-host-2026-09-26\",\n      \"reason\": \"Bounded read-only source review has unresolved structural atomicity, seam and cost contracts; mistakes could create an unsafe implementation packet but are recoverable at PLAN review.\",\n      \"smallerOptionAssessment\": \"Sol medium is reserved for explicit implementation/verification after discovery. Unresolved seam ownership and property-changing bounds justify Astra medium here.\",\n      \"escalationTriggers\": [\n        \"Source findings change architecture, contract, ownership or scope: stop and return fresh-round requirement.\",\n        \"Conflicting source/Evidence cannot be resolved within the focused source review: return BLOCKER.\"\n      ]\n    }\n  },\n  \"packetDigest\": \"ee2592bed671c2d59943f474bf7c7830e6d44bb48310d75999865abfb6823506\"\n}\n```\n"
+    },
+    {
+      "kind": "document",
       "id": "doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04",
       "title": "FlowDoc Backend Document Structure Database v0.0.1 Acceptance",
       "path": "docs/domains/flowdoc-backend-document-structure-database-v0-0-1-2026-09-04.md",
@@ -28841,9 +29026,19 @@
   ],
   "currentSnapshot": {
     "generatedAt": "2026-09-26T17:28:00.0000000+07:00",
-    "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-    "currentBlocker": "User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
+    "currentGoal": "Read-only discovery with exact source refs, bounded seam/cost decision and implementation scope; implementation and verification only if no architecture/contract/scope change is required.",
+    "currentBlocker": "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
     "activeWork": [
+      {
+        "workId": "flowdoc-b1-stage5-certified-seam",
+        "title": "B1 Stage 5 — blocked before discovery",
+        "milestones": {
+          "planning": "pending",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "complete"
+        }
+      },
       {
         "workId": "flowdoc-frontend-expert-roadmap",
         "title": "FlowDoc Frontend Expert Roadmap",
@@ -28885,7 +29080,7 @@
     ],
     "criticalUnknowns": [],
     "deferredWork": [],
-    "nextDecision": "Resolve: User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
+    "nextDecision": "Resolve: Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
     "repositoryIds": [
       "repo-backend",
       "repo-core",
@@ -28897,8 +29092,8 @@
     ]
   },
   "governanceCost": {
-    "approximateContextTokens": 172747,
-    "contextDocumentCount": 45,
+    "approximateContextTokens": 23578,
+    "contextDocumentCount": 3,
     "evidenceCreated": 0,
     "durableDocumentsCreated": 0,
     "implementationCommitCount": 0,

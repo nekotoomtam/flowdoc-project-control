@@ -1,0 +1,34 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-b1-stage5-certified-seam",
+  "phaseId": "phase-flowdoc-b1-stage5-certified-seam",
+  "title": "B1 discovery acceptance",
+  "items": [
+    {
+      "id": "base-and-seam",
+      "label": "Pin Core base and existing seam mechanism with exact source/test references.",
+      "state": "blocked",
+      "evidenceTarget": "Core source at exact base and discovery terminal handoff",
+      "evidenceIds": [],
+      "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+    },
+    {
+      "id": "semantic-cost-boundary",
+      "label": "Resolve head/middle/tail, inverse join, Thai/Latin, off|ice, empty and RTL outcomes and source/property/provider accounting bounds.",
+      "state": "blocked",
+      "evidenceTarget": "Discovery findings and bounded certificate admission decision",
+      "evidenceIds": [],
+      "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+    },
+    {
+      "id": "next-scope",
+      "label": "Identify one implementation owner, exact files/tests, model decision and whether a fresh implementation round is required.",
+      "state": "blocked",
+      "evidenceTarget": "PLAN-owned acceptance of discovery; no product/map promotion",
+      "evidenceIds": [],
+      "verificationNote": "Not executed: pre-dispatch Project Control validation failed. See docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md"
+    }
+  ],
+  "createdAt": "2026-09-26T12:39:47.681Z",
+  "updatedAt": "2026-09-26T12:44:19.039Z"
+}

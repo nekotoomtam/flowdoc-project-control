@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 58);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 59);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -553,6 +553,7 @@ describe("project roadmap Work Queue", () => {
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-stage5-certified-seam",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
@@ -748,6 +749,7 @@ describe("project roadmap Work Queue", () => {
         "agent-and-skill-design",
         "cockpit-active-work-reconciliation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-stage5-certified-seam",
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
@@ -1317,6 +1319,14 @@ describe("project roadmap Work Queue", () => {
       .toContain("bounded Backend/Core and Backend HTTP contract compatibility only");
 
     for (const work of model.work) {
+      if (work.id === "flowdoc-b1-stage5-certified-seam") {
+        expect(work).toMatchObject({
+          workState: "blocked",
+          blockedBy: "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
+          unblockOwner: "Project Control prerequisite round; then a fresh B1 PLAN/WORK context.",
+        });
+        continue;
+      }
       expect(work).not.toHaveProperty("blockedBy");
       expect(work).not.toHaveProperty("unblockOwner");
     }

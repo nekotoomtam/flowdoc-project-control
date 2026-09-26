@@ -1,0 +1,12 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-b1-stage5-preflight-blocker-2026-09-26",
+  "title": "B1 Stage 5 Pre-dispatch Blockers",
+  "path": "docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Canonical pre-dispatch failure and next prerequisite; not product discovery, Evidence or map truth.",
+  "lifecycle": "active",
+  "contextClass": "supporting",
+  "repositoryRefs": []
+}

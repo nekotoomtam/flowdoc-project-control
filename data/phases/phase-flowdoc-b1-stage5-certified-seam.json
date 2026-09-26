@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-b1-stage5-certified-seam",
+  "workId": "flowdoc-b1-stage5-certified-seam",
+  "title": "B1 certified seam discovery and admission decision",
+  "phaseState": "blocked",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-b1-stage5-certified-seam; Core exact source at a39e91fd671706d8217d58f4668ed45afa0d0e67; npm run check",
+  "summary": "Historical v1 integration claims conflict with new v3 owner; Stage 4 Evidence lacks structured v3 reuse validity. No product WORK activated.",
+  "stopConditions": [
+    "Contract/architecture/ownership/scope change requires a fresh implementation round.",
+    "Missing bounded certificate yields not-admissible; no widening of fixed caps.",
+    "Stop once authorized acceptance and required gates pass."
+  ],
+  "createdAt": "2026-09-26T12:39:47.681Z",
+  "updatedAt": "2026-09-26T12:44:19.039Z"
+}
