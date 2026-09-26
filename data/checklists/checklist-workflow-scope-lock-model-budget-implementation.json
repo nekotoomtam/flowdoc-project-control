@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-workflow-scope-lock-model-budget-implementation",
+  "phaseId": "phase-workflow-scope-lock-model-budget-implementation",
+  "title": "Workflow Scope Lock and Model Budget implementation",
+  "items": [
+    {
+      "id": "scope-lock-packet-contract",
+      "label": "Policy v2 packet, compact model decision, host snapshot, and persisted Scope Lock verification contracts are typed and schema validated.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-schema.test.ts; tests/flowdoc-scope-lock.test.ts",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "RED failed before policy v2, Scope Lock, compact model decisions, snapshot resolution, and criterion references existed. GREEN passed schema, pure Scope Lock, and type checks."
+    },
+    {
+      "id": "actual-git-scope-inspection",
+      "label": "Git inspection covers committed, staged, unstaged, untracked, ignored, deletion, rename, spaced paths, dirty submodules, root, base, and HEAD identity without shell parsing.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-git-scope-verifier.test.ts",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "The real temporary-repository adapter suite passed 5/5 and the implementation uses execFile with explicit arguments and NUL-delimited Git output."
+    },
+    {
+      "id": "acceptance-and-integration-lock",
+      "label": "Current acceptance persists only a clean exact verification and integration preflight rejects stale candidate identity without writing.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts; tests/flowdoc-coordination-cli.test.ts",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "Focused acceptance, persistence, dirty-state, manifest, commit, base, packet, worktree, model, and integration identity tests passed."
+    },
+    {
+      "id": "workflow-authority-cutover",
+      "label": "The sole Workflow Economy Policy and current agent guidance contain Scope Lock, compact Model Budget, PLAN defaults, and the honest read-audit limit.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts; tests/flowdoc-project-control-skill.test.ts",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "Authority tests require policy v2 for new rounds, actual Git verification, one referenced availability snapshot, Astra-medium PLAN default, bounded PLAN Lite, and the explicit unsupported read-audit claim."
+    },
+    {
+      "id": "worktree-gate-and-bounded-evidence",
+      "label": "Canonical records, generated projection, focused suites, and the full Project Control worktree gate pass at the pinned implementation commit.",
+      "state": "passed",
+      "evidenceTarget": "npm run generate; focused Task 7 suites; npm run check; evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "The bounded Evidence pins implementation commit 3cc2426efe910249c4bce4de400c1fcb00e84e6d. The focused Task 7 gate passed 7 files/99 tests, and npm run check passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests without promoting product or map truth."
+    },
+    {
+      "id": "main-integration-guidance-sync-cleanup",
+      "label": "PLAN integrates the reviewed branch, reruns the main gate, synchronizes machine guidance and installed skill parity, and removes only the clean merged lane.",
+      "state": "pending",
+      "evidenceTarget": "Post-merge main npm run check; machine guidance and installed skill parity validation; clean current-round cleanup",
+      "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
+      "verificationNote": "Intentionally deferred until owner-authorized integration. The current evidence does not claim main integration, machine-global guidance sync, installed-skill parity, or cleanup."
+    }
+  ],
+  "createdAt": "2026-09-26T16:00:00.0000000+07:00",
+  "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+}

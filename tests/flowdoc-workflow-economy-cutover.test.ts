@@ -27,6 +27,10 @@ const ENTRYPOINTS = [
   "docs/domains/agent-and-skill-operating-model.md",
   "docs/domains/flowdoc-round-workflow.md",
 ] as const;
+const SCOPE_WORK_ID = "workflow-scope-lock-model-budget";
+const SCOPE_PHASE_ID = "phase-workflow-scope-lock-model-budget-implementation";
+const SCOPE_CHECKLIST_ID = "checklist-workflow-scope-lock-model-budget-implementation";
+const SCOPE_EVIDENCE_ID = "evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26";
 
 async function text(path: string): Promise<string> {
   return readFile(join(process.cwd(), path), "utf8");
@@ -113,6 +117,61 @@ describe("workflow economy authority cutover", () => {
     ]) {
       expect(policy, required).toContain(required);
     }
+  });
+
+  it("cuts new rounds over to policy v2 Scope Lock and the compact Model Budget", async () => {
+    const policy = await text(POLICY_PATH);
+    for (const required of [
+      "flowdoc-workflow-economy-v2",
+      "Scope Lock Enforcement v1",
+      "actual Git manifest",
+      "availabilitySnapshotRef",
+      "gpt-6-astra` at `medium",
+      "PLAN Lite",
+      "gpt-6-sol` at `medium",
+      "read-audit",
+      "cannot prove every file read",
+    ]) {
+      expect(policy, required).toContain(required);
+    }
+    expect(policy).toContain("Legacy policy v1 packets remain readable");
+    expect(policy).toContain("must not activate");
+  });
+
+  it("registers the fresh bounded implementation round without promoting product or map truth", async () => {
+    const loaded = await loadProjectSources(process.cwd());
+    const work = loaded.work.find(({ value }) => value.id === SCOPE_WORK_ID)?.value;
+    const phase = loaded.phases.find(({ value }) => value.id === SCOPE_PHASE_ID)?.value;
+    const checklist = loaded.checklists.find(({ value }) => value.id === SCOPE_CHECKLIST_ID)?.value;
+    const evidence = loaded.evidence.find(({ value }) => value.id === SCOPE_EVIDENCE_ID)?.value;
+
+    expect(work).toMatchObject({
+      nodeId: "project-control",
+      parentWorkId: "agent-and-skill-design",
+      repositoryIds: ["repo-project-control"],
+      activeRole: "project-control-steward",
+      requiredEvidence: expect.arrayContaining([
+        "evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
+        SCOPE_EVIDENCE_ID,
+      ]),
+      workState: "in-review",
+    });
+    expect(phase).toMatchObject({
+      workId: SCOPE_WORK_ID,
+      repositoryIds: ["repo-project-control"],
+      activeRole: "project-control-steward",
+      phaseState: "in-review",
+    });
+    expect(checklist).toMatchObject({ phaseId: SCOPE_PHASE_ID });
+    expect(checklist?.items.every((item) => item.evidenceIds?.includes(SCOPE_EVIDENCE_ID))).toBe(true);
+    expect(evidence).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: "3cc2426efe910249c4bce4de400c1fcb00e84e6d",
+    });
+    expect(evidence?.verificationSummary).toContain("Scope Lock");
+    expect(evidence?.verificationSummary).toContain("npm run check");
+    expect(evidence?.verificationSummary).toContain("does not promote Core, Backend, Editor, product, or map truth");
   });
 
   it("rejects version 1 and 2 mutation before command parsing and mutates only version 3", () => {

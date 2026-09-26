@@ -1,3 +1,4 @@
+import { readFile } from "node:fs/promises";
 import { describe, expect, it } from "vitest";
 import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
 import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
@@ -95,5 +96,18 @@ describe("FlowDoc Project Control Codex skill", () => {
     expect(operatingModel).toContain("flowdoc-project-control");
     expect(operatingModel).toContain("first local Codex skill package");
     expect(operatingModel).not.toContain("does not complete the broader Work item, create Codex skill files");
+  });
+
+  it("routes future PLAN rooms through Scope Lock and the bounded model default", async () => {
+    for (const path of ["AGENTS.md", "docs/domains/flowdoc-global-codex-guidance.md"]) {
+      const guidance = normalize(await readFile(path, "utf8"));
+      expect(guidance, path).toContain("flowdoc-workflow-economy-v2");
+      expect(guidance, path).toContain("Scope Lock");
+      expect(guidance, path).toContain("gpt-6-astra");
+      expect(guidance, path).toContain("medium");
+      expect(guidance, path).toContain("PLAN Lite");
+      expect(guidance, path).toContain("availability snapshot");
+      expect(guidance, path).toContain("cannot prove every file read");
+    }
   });
 });

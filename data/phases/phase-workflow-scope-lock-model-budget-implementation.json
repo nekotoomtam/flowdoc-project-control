@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-workflow-scope-lock-model-budget-implementation",
+  "workId": "workflow-scope-lock-model-budget",
+  "title": "Implement Scope Lock and compact Model Budget",
+  "phaseState": "in-review",
+  "order": 40,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Stop for a safety or correctness blocker.",
+    "Stop for an authority violation.",
+    "Stop when a required Project Control prerequisite is missing.",
+    "Stop if implementation escapes the approved Project Control-only scope."
+  ],
+  "verificationTarget": "checklist-workflow-scope-lock-model-budget-implementation; focused Scope Lock, Git adapter, lifecycle, CLI, authority, and skill tests; npm run check",
+  "summary": "The fresh round implements actual Git mutation containment, acceptance and integration locks, compact host-referenced model decisions, and the policy/guidance cutover. It remains in review until PLAN-owned main integration, post-merge gate, guidance sync, and cleanup complete.",
+  "createdAt": "2026-09-26T16:00:00.0000000+07:00",
+  "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+}

@@ -34,6 +34,10 @@ Registry versions 1 and 2 are historical and read-only. Only version 3 may be
 mutated. Historical Recovery Work may inspect older state but never reactivate
 its authority. Cross-PLAN ownership transfer is not supported.
 
+New rounds use packet policy `flowdoc-workflow-economy-v2` and Scope Lock
+Enforcement v1. Legacy policy v1 packets remain readable as historical input
+but must not activate, accept, or authorize integration for a new round.
+
 ## PLAN responsibility
 
 PLAN listens to the owner, identifies current truth, and converts the request
@@ -55,6 +59,64 @@ small, local, and cannot materially change scope. Use a discovery-only WORK
 when findings determine architecture, repository ownership, contract, safety,
 or scope. Discovery returns findings and stops; PLAN decides whether to open a
 fresh implementation WORK.
+
+## Scope Lock Enforcement v1
+
+Scope Lock is part of the Safety Kernel for every Risk Tier. The immutable
+policy v2 packet binds one repository, exact base commit, registered worktree,
+work authority, allowed and forbidden repository-relative paths, ordered
+acceptance criteria, budgets, model decision, return identity, and packet
+digest. Scope paths use `/`, reject absolute paths and `..`, compare by path
+segment, and cannot overlap.
+
+For a real separate implementation WORK, PLAN computes an actual Git manifest
+from the registered worktree instead of trusting reported `changedFiles`. The
+manifest covers committed, staged, unstaged, untracked non-ignored, deleted,
+renamed, copied, and dirty-submodule paths; rename and copy checks include both
+endpoints. Discovery and verification reject any mutation. Implementation
+rejects forbidden paths before paths outside allowed scope.
+
+Acceptance requires a clean worktree, exact base and terminal commits, an
+unchanged packet digest, identical actual/payload/completion file sets, passing
+required checks, and a persisted compact Scope Lock verification. A violation
+fails without writing accepted state and is routed as
+`needs-revision: scope-violation:<code>` when repair remains in scope. Before
+integration, PLAN reruns the read-only preflight against the accepted commit,
+base ref, packet, manifest digest, and clean worktree. Git hooks may warn but
+never authorize acceptance or integration.
+
+Scope Lock proves repository mutation containment and accepted candidate
+identity. It cannot prove every file read, network request, or external
+application side effect. Hard read-audit remains unsupported until the host
+provides an enforceable read sandbox or audit surface; do not describe Git
+Scope Lock as read containment.
+
+## Model Budget
+
+PLAN chooses the least costly capability and reasoning effort that can reliably
+satisfy the unchanged packet. Work Size and Risk Tier inform but do not dictate
+model choice. Each current packet records a compact decision: capability class,
+actual model ID and effort, task-specific sufficiency reason, assessment of the
+next smaller available option, measurable escalation triggers, and one
+`availabilitySnapshotRef`. The version 3 round stores the referenced host,
+observation time, and available model/effort pairs once. A selected pair absent
+from that host availability snapshot cannot activate.
+
+For future PLAN rounds, the default is `gpt-6-astra` at `medium`. PLAN Lite may
+use `gpt-6-sol` at `medium` only when there is one owner repository, no
+unresolved architecture or ownership question, no critical or irreversible
+data concern, at most one bounded or inline WORK, and deterministic acceptance.
+Use Astra `high` only for a concrete critical or cross-repository conflict,
+conflicting Evidence, or repeated reasoning failure after correcting packet and
+context. `xhigh`, `max`, and `ultra` are never standing defaults.
+
+WORK does not inherit the PLAN model. Resolve its decision from actual host
+availability and task needs. On failure, correct scope, context, environment,
+acceptance, and test reliability first. Escalate one capability class, raise
+effort, or split the lane only after a recorded trigger; reconsider and
+de-escalate after discovery removes uncertainty. Model choice never weakens
+Scope Lock, proof, acceptance, verification, or stopping rules and creates no
+new Evidence artifact by itself.
 
 ## Work Size and work authority
 

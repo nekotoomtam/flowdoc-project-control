@@ -51,6 +51,18 @@ model decision, and return route. Risk defaults to `routine`; `critical` needs a
 concrete reason. Use discovery-only WORK when findings can change architecture,
 ownership, contract, safety, or scope.
 
+New rounds use `flowdoc-workflow-economy-v2`. Scope Lock binds the exact base,
+worktree, allowed/forbidden paths, packet digest, terminal commit, and actual Git
+manifest; current separate-room acceptance and integration require a clean
+passing verification. Scope Lock proves mutation containment but cannot prove
+every file read, network request, or external application side effect.
+
+Future PLAN defaults to `gpt-6-astra` at `medium`. PLAN Lite may use
+`gpt-6-sol` at `medium` only for one-owner, deterministic, non-critical work
+with no unresolved architecture or ownership question and at most one bounded
+or inline WORK. WORK gets its own compact model decision resolved through one
+referenced host availability snapshot; it never inherits PLAN's model.
+
 One PLAN task owns exactly one execution round. A new PLAN creates a fresh
 version 3 execution context. Registry versions 1 and 2 and closed PLAN/WORK
 execution contexts are historical and read-only. Cross-PLAN ownership transfer

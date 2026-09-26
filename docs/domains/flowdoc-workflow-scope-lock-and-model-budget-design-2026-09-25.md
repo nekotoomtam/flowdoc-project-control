@@ -1,22 +1,21 @@
 # FlowDoc Workflow Scope Lock and Model Budget Design
 
 - Date: 2026-09-25
-- Status: approved by the owner on 2026-09-26
+- Status: implemented in Project Control at `3cc2426efe910249c4bce4de400c1fcb00e84e6d`; authority promoted through the Workflow Economy Policy after the worktree gate
 - Context class: supporting
 - Owner repository: `repo-project-control`
 
 ## Authority Boundary
 
-This document is a Project Control design proposal for strengthening the
-current FlowDoc workflow economy authority. It defines the intended behavior
-of Scope Lock Enforcement v1 and a smaller Model Budget policy before an
-implementation plan is written.
+This document is the supporting Project Control design for Scope Lock
+Enforcement v1 and the compact Model Budget policy. The implementation is now
+recorded at the pinned Project Control commit above.
 
-This document is not current workflow authority, does not supersede
-`docs/domains/flowdoc-workflow-economy-policy.md`, and does not authorize schema,
-runtime, product-repository, global guidance, or map changes. The existing
-workflow economy policy and coordination controls remain authoritative until a
-separate approved implementation passes its gates and is promoted.
+This document is not current workflow authority and does not supersede
+`docs/domains/flowdoc-workflow-economy-policy.md`. The implemented rules now
+live in that policy; this design remains supporting context and does not
+authorize later schema, runtime, product-repository, global guidance, or map
+changes by itself.
 
 This design does not prove Core, Backend, Editor, release, compatibility,
 security, performance, or product map truth.
@@ -439,8 +438,9 @@ Git Scope Lock.
 
 ## Review and Next Step
 
-The owner approved this design on 2026-09-26. Approval authorizes the bounded
-implementation plan, not implementation by itself. The implementation plan is
-`docs/domains/flowdoc-workflow-scope-lock-and-model-budget-implementation-plan-2026-09-26.md`.
-Execution begins only after the owner reviews that plan and selects its execution
-method.
+The owner approved this design and its bounded implementation plan on
+2026-09-26. Tasks 1-6 produced the policy v2 packet, pure Scope Lock evaluator,
+confined Git inspection, acceptance lock, and integration preflight at
+`3cc2426efe910249c4bce4de400c1fcb00e84e6d`. The Workflow Economy Policy is the
+current authority. This file and the implementation plan remain supporting
+context; future changes require a fresh PLAN round.

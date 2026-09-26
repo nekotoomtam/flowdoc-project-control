@@ -123,6 +123,15 @@ Persist the observed sender and return channel with the receipt. This is a
 retrievable provenance declaration checked against the registered task, not
 cryptographic authentication of manually edited files.
 
+For a current policy v2 room, acceptance also runs the workflow policy's Scope
+Lock verifier against the registered worktree. PLAN persists only a passing
+verification containing the exact base and terminal commits, packet and
+manifest digests, changed-file set, verification time, and clean-state marker.
+Missing, dirty, stale, or mismatched verification rejects acceptance without a
+registry write. This section defines the separate-room command mechanics; the
+Workflow Economy Policy remains authority for when Scope Lock applies and what
+it means.
+
 ## 3. Durable registry and validation boundary
 
 New dispatched rounds use the optional `coordination` object on the canonical
@@ -155,6 +164,16 @@ For a transition, place the command JSON inside that checkout and run:
 ```text
 npm run coordination -- apply --work data/work/<work>.json --expected-revision <revision> --command <command.json>
 ```
+
+Before integrating an accepted current candidate, run the read-only preflight:
+
+```text
+npm run coordination -- preflight-integration --work data/work/<work>.json --handoff <id> --repository <path> --base-ref <ref>
+```
+
+It rejects a non-accepted handoff, changed base or HEAD, changed packet or
+manifest digest, unexpected repository root, missing verification, or dirty
+worktree. It does not merge, edit, or promote truth.
 
 Read the current Work revision before constructing the command. Supported
 operations activate or supersede an attempt, authorize a revision, record

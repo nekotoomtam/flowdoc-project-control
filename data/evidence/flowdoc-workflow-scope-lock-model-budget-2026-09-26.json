@@ -1,0 +1,32 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "3cc2426efe910249c4bce4de400c1fcb00e84e6d",
+  "pathOrContractId": "src/model/workflow-economy.ts; src/model/scope-lock.ts; src/model/coordination.ts; src/model/coordination-v3.ts; tools/lib/git-scope-verifier.ts; tools/coordination-registry.ts; schemas/project-control.schema.json; tests/flowdoc-scope-lock.test.ts; tests/flowdoc-git-scope-verifier.test.ts; tests/flowdoc-workflow-economy-lifecycle.test.ts; tests/flowdoc-coordination-cli.test.ts",
+  "verificationSummary": "Project Control implementation commit 3cc2426efe910249c4bce4de400c1fcb00e84e6d adds policy v2 packet contracts, Scope Lock Enforcement v1, canonical actual Git manifests, compact host-snapshot model decisions, acceptance verification, and read-only integration preflight. The focused Task 7 gate passed 7 files and 99 tests. The full dedicated-worktree npm run check passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. The round reused evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23 as immutable baseline input and created one bounded Evidence record. It does not promote Core, Backend, Editor, product, or map truth. Main integration, post-merge main gate, machine-global guidance sync, installed-skill parity, and cleanup remain intentionally unclaimed.",
+  "verifiedAt": "2026-09-26T16:16:00.0000000+07:00",
+  "validity": {
+    "claim": "The Project Control worktree implements and verifies Scope Lock Enforcement v1, compact Model Budget decisions, acceptance locking, and integration preflight at the pinned implementation commit.",
+    "repositoryId": "repo-project-control",
+    "pathScope": [
+      "src/model/workflow-economy.ts",
+      "src/model/scope-lock.ts",
+      "src/model/coordination.ts",
+      "src/model/coordination-v3.ts",
+      "tools/lib/git-scope-verifier.ts",
+      "tools/coordination-registry.ts",
+      "schemas/project-control.schema.json",
+      "tests/"
+    ],
+    "sourceRevision": "3cc2426efe910249c4bce4de400c1fcb00e84e6d",
+    "verificationMethod": "Focused Scope Lock, Git adapter, workflow schema/lifecycle, coordination CLI, authority, and skill tests plus npm run check in the dedicated worktree.",
+    "freshnessTriggers": [
+      "Workflow Economy Policy or policy v2 packet contract changes",
+      "Scope Lock manifest or Git inspection behavior changes",
+      "acceptance or integration identity rules change",
+      "model availability snapshot or PLAN Model Budget rules change"
+    ]
+  }
+}

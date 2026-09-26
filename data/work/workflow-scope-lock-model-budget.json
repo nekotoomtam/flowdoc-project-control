@@ -1,0 +1,26 @@
+{
+  "kind": "work",
+  "id": "workflow-scope-lock-model-budget",
+  "title": "Workflow Scope Lock and Model Budget",
+  "nodeId": "project-control",
+  "parentWorkId": "agent-and-skill-design",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "Implement the owner-approved Scope Lock Enforcement v1 and compact Model Budget as a fresh Project Control-only round without reactivating the closed workflow-economy execution context.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-flowdoc-coordination-controls"
+  ],
+  "activeRole": "project-control-steward",
+  "expectedOutput": "Policy v2 packets bind actual Git scope, acceptance and integration require a clean persisted verification, compact model decisions reference one host snapshot, and current guidance records the Astra-medium PLAN default with a bounded PLAN Lite exception.",
+  "riskSummary": "Git Scope Lock cannot prove every file read, network request, or external application side effect. The worktree implementation and authority cutover are verified here, while main integration, machine-global guidance sync, installed-skill parity, and cleanup remain PLAN-owned downstream steps.",
+  "requiredEvidence": [
+    "evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
+    "evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"
+  ],
+  "createdAt": "2026-09-26T16:00:00.0000000+07:00",
+  "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+}
