@@ -9,8 +9,8 @@
     "repo-core",
     "repo-project-control"
   ],
-  "workState": "in-progress",
-  "summary": "Fresh PLAN-owned implementation round under 2026-09-27 gate alignment. Prior discovery records remain immutable; their empty-renderer limitation is deferred to Core layout, not a demonstrated private structural blocker. Preparing one directly-owned WORK; no implementation PASS yet.",
+  "workState": "in-review",
+  "summary": "PASS private Stage5 accepted by PLAN and integrated locally to Core main 17d898696d6df412b2d73d487f106939b890568a. PLAN reproduced native74 and actual-WASM/reference165; WORK and Core main full checks passed439 files/3013 tests. AC-1..AC-7 passed with one pinned Evidence; 23-file Scope Lock verified, queue empty. Current Core WORK lane clean/merged, processes clear, removed after main gate. No push or map promotion. Stage6/Gate2 -> Core geometry -> Editor remain explicit deferred owner obligations. PC closure records are subject to the required worktree and post-integration main checks; their fresh results are reported by PLAN at terminal. Current PC PLAN lane is eligible for cleanup only after those checks and commit integration.",
   "contextDocumentIds": [
     "doc-flowdoc-b1-empty-side-contract-20260926",
     "doc-flowdoc-workflow-economy-policy",
@@ -19,15 +19,16 @@
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Clean committed verified private Stage5 candidate, PLAN-owned acceptance/integration, exact Evidence and deferred Stage6/geometry/Editor obligations.",
-  "riskSummary": "Bounded private correctness risk: endpoint provenance, provider equality, atomic sibling publication and cumulative lineage. No product, geometry or timing admission. Proof budget one candidate Evidence, one acceptance review plus one repair cycle; zero new prose documents/formal audits.",
+  "riskSummary": "Private admission intentionally rejects unsupported/unbounded seams; current provider cannot construct empty RTL, ZWJ or astral-font fixtures. Explicit defaults remain metadata, not a new cascade. Overflow reports actual unaccumulated attempt work and freezes exhausted family totals; OOM/process traps remain outside retry atomicity. No unresolved Stage5 correctness blocker; Stage6 timing/Gate2, geometry and Editor proof remain deferred.",
   "requiredEvidence": [
-    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21",
+    "evidence-core-private-stage5-20260927"
   ],
   "createdAt": "2026-09-26T18:28:26.518Z",
-  "updatedAt": "2026-09-26T18:28:26.518Z",
+  "updatedAt": "2026-09-26T19:40:33.513Z",
   "coordination": {
     "version": 3,
-    "revision": 1,
+    "revision": 13,
     "round": {
       "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
       "roundId": "b1-stage5-20260927-01a0def5",
@@ -45,7 +46,7 @@
         "tests/coldSessionStage5.test.ts",
         "tests/runOwnedSemanticOracleStage2.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -95,7 +96,7 @@
         "repositoryId": "repo-core",
         "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
         "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
-        "state": "active",
+        "state": "released",
         "roundId": "b1-stage5-20260927-01a0def5"
       }
     ],
@@ -113,7 +114,7 @@
         "evidenceTarget": "evidence-core-private-stage5-20260927",
         "revisionAttempt": 1,
         "expectedHandoffId": "stage5-20260927-r1-terminal",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "/root/stage5_impl",
           "hostId": "local",
@@ -130,7 +131,7 @@
           "automaticChannel": "collaboration.send_message",
           "activeCommand": "collaboration.send_message({target:\"/root\",message:\"<handoff ID, durable payload path, digest and result>\"}) before final; same payload retry only on transport failure, at 10s and 30s, maximum three attempts",
           "monitorOwner": "01a0def5-4e67-7c80-8efb-651a8289daa3",
-          "livenessDeadline": "2026-09-26T18:48:26.519Z",
+          "livenessDeadline": "2026-09-26T19:47:30.7187601Z",
           "maxSendAttempts": 3
         },
         "modelDecision": {
@@ -151,7 +152,7 @@
           "reason": "Private Rust/WASM QA structural mechanism only, no renderer/public binding. Core geometry and Editor visual/user proof remain deferred, not passed."
         },
         "requiredEvidence": [
-          "Native and actual-WASM structural/provider/accounting results at exact clean commit; full Core gate; Scope Lock manifest."
+          "evidence-core-private-stage5-20260927"
         ],
         "roundId": "b1-stage5-20260927-01a0def5",
         "packet": {
@@ -278,8 +279,253 @@
         "packetDigest": "806ac6f2a69d94e8e9255151034529817a368be7a90f1502e6a7decfcd04460d"
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "handoffId": "stage5-20260927-r1-terminal",
+        "payloadDigest": "b267f88303662c1ce2dec6977b2f388fb7fa105e810c27a1446194961ae60cf7",
+        "payload": {
+          "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+          "roomRunId": "core-stage5-20260927-r1",
+          "laneId": "core-stage5",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 1,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "Implemented opt-in private Stage5 atomic head/middle/tail/empty Enter and exact ordered unchanged-sibling inverse, persistent source/tree reuse, explicit defaults/authored origins, provider-bound endpoint/interior witnesses, independent full-provider QA equality and fixed-size shared lifecycle accounting.",
+          "exactCommit": "17d898696d6df412b2d73d487f106939b890568a",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_work.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "src/layout/runOwnedSemanticOracleStage2.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/runOwnedSemanticOracleStage2.test.ts"
+          ],
+          "tests": [
+            "PASS npm run check: type-check and 439 test files / 3013 tests, 0 failures, 141.61s; final log packages/text-engine-rust-wasm/rust-live-draft-engine/target/stage5-check-verified.log.",
+            "PASS cargo test --manifest-path packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml --features cold-session-qa --lib -- --test-threads=1: 74 passed, 0 failed, 307.02s; final log target/stage5-native-final.log under crate.",
+            "PASS actual-WASM Stage5 focused final matrix: 15 passed; head/middle/tail/empty, independent origins/provider comparison, opaque capabilities, typed unchanged failures and explicit unsupported construction.",
+            "PASS Stage2 endpoint reference tests: 50 passed within final full check; Stage4 82 tests retained (copy count 9->10 explicitly accounts added retained event identity).",
+            "PASS wasm-pack default build and WebAssembly.Module.exports inspection: 17 exports; no Stage3/4/5 or cold_session symbols. Private feature and public source exports remain unchanged.",
+            "PASS git diff --cached --check before commit; exact base manifest 23 allowed paths; git status --porcelain empty after commit."
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Private provider profile deliberately rejects unsupported/unbounded seam contexts; downstream gates remain deferred.",
+            "Overflow reporting preserves semantic state and exposes unaccumulated actual attempt work; exhausted fixed-size family totals remain frozen."
+          ],
+          "unknowns": [],
+          "roundId": "b1-stage5-20260927-01a0def5",
+          "completion": {
+            "behaviorChanged": "Implemented opt-in private Stage5 atomic head/middle/tail/empty Enter and exact ordered unchanged-sibling inverse, persistent source/tree reuse, explicit defaults/authored origins, provider-bound endpoint/interior witnesses, independent full-provider QA equality and fixed-size shared lifecycle accounting.",
+            "proof": [
+              {
+                "kind": "test",
+                "reference": "PASS npm run check: type-check and 439 test files / 3013 tests, 0 failures, 141.61s; final log packages/text-engine-rust-wasm/rust-live-draft-engine/target/stage5-check-verified.log.",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5",
+                  "AC-6",
+                  "AC-7"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "PASS cargo test --manifest-path packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml --features cold-session-qa --lib -- --test-threads=1: 74 passed, 0 failed, 307.02s; final log target/stage5-native-final.log under crate. structural_tests.rs covers origins, negative tampering, long outer subtree identity, all preparation faults, all91+8 totals, nested/ordinary invalidation, rejected eligibility and four overflow counters.",
+                "criterionRefs": [
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5",
+                  "AC-6"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "PASS wasm-pack default build and WebAssembly.Module.exports inspection: 17 exports; no Stage3/4/5 or cold_session symbols. Private feature and public source exports remain unchanged.",
+                "criterionRefs": [
+                  "AC-7"
+                ]
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "stage6-gate2",
+                "summary": "Core owner: fixed 180-revision corpus and existing timing/scaling thresholds remain unproven.",
+                "disposition": "deferred",
+                "returnTrigger": "After accepted Stage5, fresh authorized Core Stage6/Gate2 round."
+              },
+              {
+                "id": "core-geometry",
+                "summary": "Core owner: effective style/empty metrics and glyph/line/caret/selection geometry plus exact consumer binding remain unproven.",
+                "disposition": "deferred",
+                "returnTrigger": "After Stage6/Gate2 admission, separately authorized Core geometry round."
+              },
+              {
+                "id": "editor-transition",
+                "summary": "Editor owner: unchanged Core geometry before/during/after activation including transient frames, blur/reentry and user trial remain unproven; browser only receives input and paints Core results.",
+                "disposition": "deferred",
+                "returnTrigger": "After applicable Core geometry admission, separately authorized Editor integration/user acceptance."
+              }
+            ],
+            "downstreamInformation": "PLAN alone accepts/integrates this private candidate. No Stage6 timing, Gate2, Core geometry, renderer, section4a consumer parity, Editor, Backend, public API or map admission. Producer/consumer: private TS opaque handles -> stage5_apply -> authenticated Runtime Session source/spans/default metadata/provider policy/resources -> persistent source/tree partition and bounded commands::facts -> fresh child/inverse receipts; stage5_verify independently cold-reconstructs only in QA. Explicit defaults are validated document metadata, not a new cascade: absent authored styleKey still rejects; existing provider policy supplies effective language exactly as before. Outside reuse is narrower than a run/style boundary: affected run <=32 UTF16, pure ASCII alphabetic AL, both nonempty child portions retain AL, and each actual outer neighbor is inspected Thai consonant U+0E01..U+0E2E (SA). ICU segmenter2.2 line.rs line_handle_complex_language_utf8 stops dictionary input at first non-SA; AL/AL Keep and unchanged adjacent SA/AL properties preserve those exact external dictionary inputs. Certificate records inspected edges, source/context bindings and independent fact digests; existing shard facts are verified before reuse. Other outside contexts (including AกขB cut2) reject uncertified-seam unchanged; long seam rejects budget-exhaustion. Current private Sarabun profile rejects empty RTL, A+ZWJ+B and A😀B at creation (unsupported-font-script), so no live surrogate/ZWJ cut support is claimed. Cold cost is retained once per family; accepted ancestry excludes rejected attempts, while family attempts include accepted/rejected/disposal deltas once. On accumulator/counter exhaustion, typed non-publishing rejection reports actual per-attempt work and reported-not-accumulated-overflow explicitly, with frozen prior totals; no panic/wrap or lost host capability. Logical disposal sizes are gauges, actual reclamation is allocator work. OOM/process traps remain outside retry atomicity.",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "src/layout/runOwnedSemanticOracleStage2.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/coldSessionStage5.test.ts",
+              "tests/runOwnedSemanticOracleStage2.test.ts"
+            ],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 0,
+            "implementationCommitCount": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-26T19:30:30.771Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-26T19:30:30.771Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-26T19:30:30.772Z",
+          "senderThreadId": "/root/stage5_impl",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-26T19:30:30.772Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+          "reviewedAt": "2026-09-26T19:36:12.077Z",
+          "evidenceIds": [
+            "evidence-core-private-stage5-20260927"
+          ],
+          "requiredChecks": [
+            {
+              "name": "AC-1..AC-7 reviewed with pinned native 74 and actual-WASM/reference 165 PASS",
+              "status": "passed"
+            },
+            {
+              "name": "Full Core gate 439 files/3013 tests and default artifact private-export exclusion",
+              "status": "passed"
+            },
+            {
+              "name": "Bounded private claim; downstream obligations retained",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "terminalCommit": "17d898696d6df412b2d73d487f106939b890568a",
+            "packetDigest": "806ac6f2a69d94e8e9255151034529817a368be7a90f1502e6a7decfcd04460d",
+            "manifestDigest": "5eb9c30369266e1e640637fbc1b55b1be64b0c21152bfa3e194574a7c59b1f64",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "src/layout/runOwnedSemanticOracleStage2.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/coldSessionStage5.test.ts",
+              "tests/runOwnedSemanticOracleStage2.test.ts"
+            ],
+            "verifiedAt": "2026-09-26T19:36:12.077Z",
+            "clean": true
+          }
+        }
+      }
+    ],
     "completionQueue": [],
-    "cleanup": []
+    "cleanup": [
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/b1-stage5-20260927/flowdoc-vnext-core",
+        "branch": "codex/b1-stage5-20260927",
+        "planTaskId": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+        "executor": "01a0def5-4e67-7c80-8efb-651a8289daa3",
+        "preflightEvidenceIds": [
+          "evidence-core-private-stage5-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "git status --porcelain empty at17d8986 immediately before removal; only ignored node_modules/target artifacts.",
+          "merge": "Core main fast-forwarded to17d898696d6df412b2d73d487f106939b890568a; ancestor check passed.",
+          "worktreeGate": "WORK npm run check439 files/3013 tests; PLAN native74 and actual-WASM/reference165 PASS at clean terminal.",
+          "mainGate": "Fresh Core main npm run check439 files/3013 tests PASS after fast-forward.",
+          "liveProcess": "WORK confirmed no active lane process; PLAN native/WASM sessions completed before cleanup."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "b1-stage5-20260927-01a0def5"
+      }
+    ]
   }
 }

@@ -7,53 +7,67 @@
     {
       "id": "ac-1",
       "label": "Endpoint reference oracle explicitly tags empty/nonempty; independently test head/middle/tail/empty and forged empty/source/context/provider rejections without weakening two-sided interior rules.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-2",
       "label": "Preserve exact source partition, explicit-versus-absent authored style/language and stable origins, explicit paragraph defaults and context/resource/policy identities actually consumed by this private API. Existing Stage3/4 inputs keep meaning. No guessed cascade, empty font or sentinel run.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-3",
       "label": "Accept AB, Thai/Latin กA and office at head/middle/tail, off|ice, empty source and exact unchanged sibling inverse with independent full-provider child/joined equality (source, descriptors, raw facts, edges/outside facts). All accepted command work meets combined 512 source/512 property/1024 shape+segment caps; no whole-child rebuild/relabel fallback.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-4",
       "label": "Authentic fresh child/joined identities revision0 and consumed capabilities; exact ordered unchanged siblings only. Forged/reversed/unrelated/duplicate/disposed/stale/replayed or child-mutated joins reject. Unsafe scalar/grapheme/ZWJ, composition, unsupported RTL, missing proofs and unbounded seams reject unchanged. Fault injection at each preparation/preflight stage proves atomic source, receipts, eligibility, session counts and accepted ledgers.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-5",
       "label": "Complete additive actual-work accounting includes failed attempts, empty endpoints, provider calls, allocations, ABI/response/reclamation and scalar writes. Shared ancestry counts cold cost once, P+E then P+E+J without scans of event history, overflow or double count/drop. Repeated cycles, stale siblings and disposal preserve lifecycle totals; gauges remain non-additive.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-6",
       "label": "Pin the private structural producer/consumer chain and preserved input meanings; exercise changed identity/default/policy negative controls. Renderer/empty line metrics and section4a consumer parity are downstream Core layout proof unless an exact structural dependency is demonstrated.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     },
     {
       "id": "ac-7",
       "label": "Meaningful focused native and actual-WASM Stage2/3/4/5 tests, affected regressions, type-check and full Core npm run check pass; private QA exports remain excluded from default/public artifacts. Clean committed candidate and exact file manifest returned. No Stage6 timing/Gate2/geometry/Editor/Backend/public/map claim.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-private-stage5-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-private-stage5-20260927"
+      ]
     }
   ],
   "createdAt": "2026-09-26T18:28:26.518Z",
-  "updatedAt": "2026-09-26T18:28:26.518Z"
+  "updatedAt": "2026-09-26T19:40:33.513Z"
 }
