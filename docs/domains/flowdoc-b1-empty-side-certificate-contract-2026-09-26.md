@@ -7,11 +7,12 @@ Work: `flowdoc-b1-empty-side-contract-20260926`; Phase:
 `phase-flowdoc-b1-empty-side-contract-20260926`; Checklist:
 `checklist-flowdoc-b1-empty-side-contract-20260926`.
 
-Status: **reviewable proposal; owner decision pending**. This document is the
+Status: **conditional owner acceptance; visual parity unproven**. This document is the
 single contract/decision packet for this round, not accepted runtime semantics.
-It supplements section 3 of the approved run-owned semantic contract only after
-an explicit owner decision is recorded here. The older contract remains the
-accepted authority until then. No implementation, Stage 5, Stage 6, Gate 2,
+The owner condition below is authoritative as an acceptance requirement, not
+unconditional approval of A or evidence that its condition has been met.
+The older run-owned semantic contract remains the accepted runtime-design
+authority; this conditional supplement cannot weaken it. No implementation, Stage 5, Stage 6, Gate 2,
 latency, UX, public binding or map admission follows from this design.
 
 ## Round and Markdown pre-action gate
@@ -84,9 +85,36 @@ validity explicitly excludes structural certificates and Enter/join.
 
 ## Owner decision and alternatives
 
+### Conditional owner response, 2026-09-26
+
+The user replied, relayed through reporting observer
+`01a0dd89-4aaf-7701-997c-7c294174187c` to this same active PLAN:
+
+> ถ้ามันทำให้ layout ตอนยังม่ได้พิมแล้วตอนที่จะแก้ไขมีหน้าตามแบ่งข้อความเหมื่อนกันได้ยอมรับนะแต่ถ้าไม่เราไม่ให้นะ
+
+Meaning: with unchanged content, authored/effective style and layout constraints,
+viewing/non-editing and entering editing must retain the same text appearance,
+positions and line division. Focus or entering editing alone must not reflow or
+restyle the document. This does not prohibit layout changes after a real text,
+style, structural or constraint edit. Caret/selection indicators may appear but
+must not alter document metrics or replace the document's text rendering.
+
+**Review conclusion:** original A is insufficient to guarantee this condition.
+It preserved defaults and authored origin and required structural raw-fact
+equality, but did not bind the effective inherited style chain, actual layout
+constraints or the viewing-to-editing presentation transition. Empty glyph facts
+also do not determine an empty paragraph's line box. The revisions below close
+the specification gap; they do not prove either runtime path complies.
+
+The user has supplied the requirement; another A/B/C permission question is
+unnecessary. `ac-owner` stays pending conditional acceptance, not passed. A
+source/spec review or PC gate cannot discharge visual parity. The alternatives
+below remain design context; the response does not separately approve every
+internal choice of A. Product implementation remains outside this round.
+
 **Recommendation A:** select the complete narrow contract in sections below:
-explicit empty-side variant, document-supplied defaults plus preserved authored
-provenance, and inverse join of the exact unchanged sibling pair only. This
+explicit empty-side variant, preserved effective style resolution and authored
+provenance (including explicit defaults), and inverse join of the exact unchanged sibling pair only. This
 meets the intended endpoint scope without expanding into arbitrary joins.
 
 **Alternative B:** retain the current two-sided certificate and hold Stage 5
@@ -98,10 +126,11 @@ empty typing style from the adjacent run. Both need additional semantics
 (conflicts, insertion affinity, ancestry merging), so require a new bounded
 decision. They are not silently included in A.
 
-Required owner decision: select A, B, or identify a change to A. The approved
-request to resolve this contract authorizes preparation and review, but does
-not itself select these previously undecided semantics. No response means
-pending, never approval. Implementation remains closed in this round.
+Acceptance disposition: A is revised to respect the owner's condition. Its
+compliance remains unverified. Do not replace this condition with a request to
+accept visual differences, silently waive it for empty children, or label A
+unconditionally approved. Future owner-scoped work must produce the proofs
+below before claiming the condition is met.
 
 ## Proposed semantic contract (A)
 
@@ -121,6 +150,19 @@ The private protocol must carry/validate any missing explicit defaults from
 the document model; unsupported or ambiguous defaults reject before publication.
 The additive private schema must preserve existing Stage 3/4 input meaning.
 
+Document defaults are only one input to style resolution, never a replacement
+for the effective style used to display the unchanged document. Preserve the
+authored overrides, inherited document/container/paragraph context, explicit
+versus absent values, resolution policy and resource provenance that produced
+the existing effective properties. Session creation, focus and entry into
+editing must resolve to the same effective values without materializing absent
+authored properties as new overrides. A digest of defaults alone is insufficient.
+The owning Core round must identify the existing authoritative resolution chain
+and define its private input/binding schema from source; this document does not
+invent a new cascade, use CSS guesses as document authority, or import a mutable
+second fact tree. Missing or ambiguous effective-context provenance blocks
+admission instead of choosing generic defaults.
+
 Nonempty authored spans are sliced without changing their authored style,
 language, property presence or source order. Each slice records original span
 identity and source interval; implementation IDs may be fresh but cannot
@@ -139,11 +181,25 @@ Absent authored edge on an empty parent is explicitly absent. Later insertion
 and selection/typing affinity are outside this structural contract; no implicit
 neighbor-style inheritance is authorized by this descriptor.
 
+Zero text facts do not mean zero line height or permission to restyle an empty
+paragraph. Preserve the authoritative effective empty-paragraph style/metrics
+context already used by viewing, including any explicitly authored empty-state
+formatting. If the document model has no such definition, its owner must resolve
+that missing contract before claiming parity; neither the adjacent run nor
+generic paragraph defaults may be guessed to supply it. This requirement does
+not select future typed-character affinity or create a zero-length analysis run.
+
 ### 2. Certificate variants and admission
 
 The certificate is tagged `interior`, `head`, `tail` or `empty-source`. It binds
 the authentic input receipt/revision, command, provider/resource/policy digests,
 paragraph contexts/defaults, authored origin, caret and output identities.
+The semantic binding includes the effective-context provenance/resolution
+revision and resource identity described above. Reuse is invalid when any
+layout-relevant semantic input changes even if text and paragraph defaults do
+not. Downstream layout reuse must additionally match its constraints and layout
+policy revision; a seam certificate does not itself certify line geometry or
+the Editor's rendering path.
 Both inspected source ranges are present in parent coordinates. Interior keeps
 the accepted two-sided rules. At head the left range is [0,0); at tail the
 right range is [n,n); empty-source has [0,0) on both sides. A zero-length side
@@ -236,6 +292,84 @@ unsupported under the accepted profile, not a live equality claim. Provider
 equality for all proposed structural acceptance rows is **unknown** until a
 fresh implementation and measurement round.
 
+### 4a. Viewing-to-editing parity: required downstream proof
+
+This is an owner acceptance obligation for appropriately authorized Core and
+Editor rounds, not an expansion of this PC-only round or an authorization to
+open Editor now. Semantic certificate equality and user-visible layout parity
+must be reported separately. A private Core mechanism PASS cannot imply the
+owner's visible condition is met or authorize public/Editor integration.
+
+Freeze a baseline identity containing committed source revision, authored and
+effective style provenance, paragraph and empty-state metrics, resolved font
+resource digests/fallback/feature policy, language/direction/writing mode, and
+layout constraints. Constraints include the applicable width/height, insets,
+paragraph spacing, line-height, pagination/container policy and scale. Record
+the environment (font readiness, viewport, zoom/device scale and renderer
+revision). It is not enough that both paths name the same font family. Input
+identity must exclude focus state: focus must not change any layout input.
+
+Core-owned proof in a fresh authorized Core round:
+
+- Characterize the authoritative effective-style and empty-paragraph resolution
+  chain; do not infer it from this plan or invent an alternative default rule.
+- Compare the immutable view-side semantic inputs and the private editing
+  session's inputs/derived results for unchanged content. Assert authored
+  property presence/origin and effective values, provider facts and layout-input
+  bindings are identical; initialization itself must not become a document edit.
+- Reject lost, stale or mismatched effective-context provenance and changed
+  resource/policy bindings. Add negative controls where text/defaults match but
+  an inherited style, font feature or layout constraint differs. Such cases may
+  not reuse a certificate/layout identity as though nothing changed.
+- Retain all existing endpoint, Thai/Latin, `off|ice`, inverse, atomicity and
+  combined 512/512/1024 obligations. Actual Enter changes structure, so compare
+  view and edit at each identical resulting revision rather than requiring the
+  pre-Enter and post-Enter documents to have identical geometry.
+
+Editor-owned proof only in a separately authorized UX/integration round after
+the applicable Core gates permit it:
+
+- Render viewing mode with the fixed baseline and ready font resources. Capture
+  document-coordinate line start/end source ranges, glyph-to-source placement,
+  glyph advances/positions, baselines, line boxes, paragraph/empty-line boxes
+  and relevant page/container positions, plus screenshots.
+- Enter editing by each supported activation route without typing or changing
+  source/style/constraints; then blur and re-enter. Assert the source revision
+  and baseline identity stay unchanged. Compare the same geometry and text
+  appearance before, during and after activation, including every intermediate
+  rendered state observable by the user. An eventual matching screenshot cannot
+  excuse a temporary reflow or provisional native-text replacement.
+- Assert exact line division and document-coordinate geometry equality in the
+  controlled environment. Screenshot differences may mask only declared caret,
+  focus/selection indicators; masking must not hide text displacement, font,
+  wrapping, line-box or paragraph changes. No new visual tolerance is approved
+  here. Required browser/scale coverage and any raster-only comparison policy
+  must be explicit in that future packet, not retrofitted after a failure.
+- Exercise same-property and mixed Thai/Latin text, `office`/`off|ice` results,
+  head/middle/tail and empty-source/child results, inherited style differing from
+  document defaults, explicit versus absent authored properties, empty-state
+  formatting and wrap-sensitive widths. Include RTL-sensitive typed rejection
+  without changing the existing visible document; do not claim unsupported live
+  RTL shaping parity. A real edit is a separate positive-control transaction:
+  expected reflow is allowed and must match its new semantic/layout oracle.
+- Preserve the old valid visible document if preparation cannot meet the input
+  contract; do not silently show a differently styled editing surface. Record
+  the failure and block visual acceptance. Supported-entry success cannot be
+  claimed merely by rejecting every attempt to enter editing.
+
+Evidence must bind exact Core/Editor commits, fixture/input/resource identities,
+activation sequence, environment, geometry comparisons and transition captures.
+PLAN reviews the measured outcomes, and the applicable owner-visible acceptance
+must confirm the unchanged appearance. The final acceptance cannot be inferred
+from PC tests, matching raw glyph facts alone, or a source review. Core layout
+data must stay Core-owned; Editor observes and presents the supported result,
+not a second mutable semantic or geometry authority.
+
+Current proof status: no Core parity test, Editor transition capture or user
+trial was run in this round. The condition is **UNKNOWN / not satisfied by
+evidence yet**. This is a downstream proof obligation, not a request for the
+user to waive their condition or select A again.
+
 ### 5. Atomic publication and rejected attempts
 
 One Rust-owned transaction prepares both children or the joined session, all
@@ -293,7 +427,8 @@ or performance admission. If bounded ledger management cannot be shown, stop.
 
 ## Fresh implementation kickoff (conditional, not dispatched)
 
-After owner selection and contract review, a new PLAN creates a new v3/policy-v2
+After the revised conditional contract review and a separately authorized
+implementation scope, a new PLAN creates a new v3/policy-v2
 round, fresh exact Core base/worktree and one implementation WORK. No context,
 room or authority is transferred from this or closed discovery rounds. Future
 WORK model is selected independently from a fresh host snapshot; no inherited
@@ -303,6 +438,10 @@ verification WORK. WORK must not dispatch children.
 Implementation scope must explicitly include the private Rust/WASM cold-session
 code, private QA wrapper/tests, and the narrow Stage 2 reference-oracle types/
 schemas/tests required for the tagged endpoint certificate and explicit defaults.
+Its initial source-grounded prerequisite must resolve the effective-context
+binding and empty-state provenance required by the owner condition. If that
+requires a new cross-repository contract or broad style-resolution change,
+return the gap to PLAN before mutation; do not expand the Stage 5 lane locally.
 The discovery packet forbade `src/`; do not reuse that packet to authorize this
 necessary oracle change. No public export, product binding or unrelated source
 change is authorized. Name exact paths after fresh-base inspection.
@@ -312,10 +451,13 @@ rejections; (2) explicit defaults and origin preservation; (3) all required
 split/join rows with independent provider equality and combined caps;
 (4) atomicity, authentic receipt/revision and exact sibling rejection matrix;
 (5) full additive accounting, shared lineage, empty-side costs and overflow;
-(6) focused native and actual-WASM tests, affected regressions, type check and
+(6) Core-owned unchanged-input/effective-context checks in section 4a;
+(7) focused native and actual-WASM tests, affected regressions, type check and
 Core's required gate. Reuse Stage 4 only within its validity; revalidate changed
 behavior rather than repeat unrelated proof. Stage 6's fixed 180-revision corpus
 and Gate 2 timing/scaling admission remain separate and unchanged.
+Editor visual parity remains a separately authorized downstream owner gate;
+passing this private implementation lane cannot discharge it or open Editor.
 
 Stop for owner semantic disagreement, missing provider/default authority,
 unbounded edge/lineage work, changed caps, architecture/ownership/scope expansion,
@@ -327,12 +469,18 @@ do not substitute interior-only PASS or silently weaken the corpus.
 Source/spec review: endpoint gap confirmed; source findings and proposed rules
 are separated above. The proposal covers all requested cases, both publication
 directions and empty-side accounting; no product Evidence or map is created.
-Blocking: owner selection of A's defaults/empty provenance and exact-unchanged-
-sibling semantics. Deferred to implementation: actual provider equality,
-bounded structural work, defaults schema encoding, ledger representation and
-counter completeness. Deferred to Stage 6: performance admission.
+The owner requirement is now explicit: unchanged viewing-to-editing appearance,
+positions and line division. A was revised because defaults/provenance alone
+did not establish that guarantee. Conditional acceptance is recorded; ac-owner
+is not passed. Blocking for unconditional acceptance: the condition lacks
+measured proof. Next Core-owned prerequisite: source-grounded effective-context
+and empty-state binding, then actual provider equality, bounded structural work,
+private schema encoding, ledger representation and counter completeness. A
+separately authorized Editor round must prove the transition, with user-visible
+acceptance. Stage 6 performance admission is also still unproven. This round
+does not inspect or modify Editor or promote a visual-parity claim.
 
 PC record verification and integration results are reported with exact commits
 through the observer and terminal handoff after execution; this text does not
 claim a gate result before it happens. A reviewable pending proposal may be
-integrated as pending documentation, never as accepted product semantics.
+integrated as conditional documentation, never as accepted product semantics.

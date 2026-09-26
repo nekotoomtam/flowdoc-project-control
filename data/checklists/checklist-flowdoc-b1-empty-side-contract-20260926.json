@@ -18,23 +18,25 @@
       "state": "passed",
       "evidenceTarget": "Contract proposal sections 1-6",
       "evidenceIds": [],
-      "verificationNote": "Inline source/spec review complete; desired semantics explicitly remain proposals."
+      "verificationNote": "Proposal revised to preserve effective inherited style and empty-state provenance; binds certificate reuse and defines distinct future Core/Editor parity proof. This passes specification coverage only, not parity."
     },
     {
       "id": "ac-owner",
-      "label": "Record explicit owner selection of unresolved semantics before contract acceptance.",
+      "label": "Preserve the conditional owner requirement; do not pass acceptance without the required unchanged-layout proof.",
       "state": "pending",
       "evidenceTarget": "Owner decision in controlling observer task",
-      "evidenceIds": []
+      "evidenceIds": [],
+      "verificationNote": "Actual user response via observer 01a0dd89-4aaf-7701-997c-7c294174187c: accepts only if viewing and entering editing keep identical appearance/positions/line division for unchanged inputs. No blanket A approval. Contract section 4a defines Core/Editor proof; none measured in this round."
     },
     {
       "id": "ac-gate",
       "label": "Validate and integrate the bounded decision records, with fresh worktree and main gates.",
       "state": "pending",
       "evidenceTarget": "npm run check in supplied worktree and local main; terminal commit report",
-      "evidenceIds": []
+      "evidenceIds": [],
+      "verificationNote": "Previous d42f16f worktree/main gates passed records364/source-docs189/app68/e2e6. This revision requires fresh gates; final results are reported after execution, not preclaimed."
     }
   ],
   "createdAt": "2026-09-26T14:56:41.895Z",
-  "updatedAt": "2026-09-26T14:56:41.895Z"
+  "updatedAt": "2026-09-26T15:29:25.713Z"
 }
