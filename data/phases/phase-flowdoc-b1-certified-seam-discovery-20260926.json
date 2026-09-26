@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-b1-certified-seam-discovery-20260926",
+  "workId": "flowdoc-b1-certified-seam-discovery-20260926",
+  "title": "B1 certified seam discovery",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "evidence-reviewer",
+  "verificationTarget": "checklist-flowdoc-b1-certified-seam-discovery-20260926; terminal source references; npm run check for Project Control records",
+  "summary": "Read-only discovery terminal BLOCKER delivered and reviewed. Discovery complete; Stage5 implementation and Gate2 remain unpassed.",
+  "createdAt": "2026-09-26T14:12:08.747Z",
+  "updatedAt": "2026-09-26T14:18:50.918Z",
+  "stopConditions": [
+    "Contract/architecture/ownership/scope change closes discovery for a fresh implementation round.",
+    "No implementation without bounded property-changing certificate; caps unchanged."
+  ]
+}

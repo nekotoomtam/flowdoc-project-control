@@ -86,6 +86,9 @@ describe("historical coordination and live v3 exclusivity", () => {
 describe("Stage 4 accepted Evidence reuse", () => {
   it("admits the existing Stage 4 Evidence in a fresh v3 packet and rejects missing or mismatched validity", async () => {
     const loaded = await loadProjectSources(process.cwd());
+    // This Evidence fixture owns its synthetic round; unrelated live rounds
+    // are covered by the exclusivity tests above, not this validity check.
+    for (const record of loaded.work) delete record.value.coordination;
     const workId = "project-control-b1-prerequisites-2026-09-26";
     const work = loaded.work.find(({ value }) => value.id === workId)!;
     const evidenceId = "evidence-core-rust-stage4-multispan-cumulative-2026-09-21";

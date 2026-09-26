@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "423f8e827df5911352174c8f93f319c59041b898a0f955fbdb624bff43e3a415",
+  "sourceDigest": "fe7ccfa5e1e60805addb8bd5f81e3984453f73a54aea4c51941698cef1973e37",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -416,6 +416,7 @@
         "agent-and-skill-design",
         "cockpit-active-work-reconciliation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-certified-seam-discovery-20260926",
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
@@ -2431,6 +2432,350 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-a1-work-plan-reconciliation"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-b1-certified-seam-discovery-20260926",
+      "title": "B1 Certified Seam Discovery — fresh round 2026-09-26",
+      "nodeId": "project-control",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Discovery complete; Stage5 implementation BLOCKER: accepted two-sided seam oracle cannot certify head/tail empty children. Fresh round must define endpoint certificate semantics before implementation; no product changes or promotion.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy",
+        "doc-flowdoc-remaining-work-plan-catalog-2026-09-26",
+        "doc-flowdoc-a1-work-plan-reconciliation-2026-09-26"
+      ],
+      "activeRole": "project-control-steward",
+      "expectedOutput": "Fresh implementation round proposal: explicit empty-side certificate, preserved paragraph defaults/authored provenance, sibling receipt and cumulative lineage, fixed 512/512/1024 caps; one implementation owner then read-only verification.",
+      "riskSummary": "Scope Lock clean and unchanged at a39e91fd671706d8217d58f4668ed45afa0d0e67. Discovery findings only; no measured Stage5 bounded proof. Project Control test fixture isolated its synthetic Evidence round from live registries after required gate exposed a fixture collision; actual live exclusivity tests unchanged.",
+      "requiredEvidence": [
+        "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+      ],
+      "coordination": {
+        "version": 3,
+        "revision": 5,
+        "round": {
+          "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+          "roundId": "b1-20260926-01a0de0b",
+          "workId": "flowdoc-b1-certified-seam-discovery-20260926",
+          "scopeId": "b1-certified-seam-discovery",
+          "scopeKeys": [
+            "core:b1-certified-seam"
+          ],
+          "allowedFiles": [
+            "packages/text-engine-rust-wasm/",
+            "tests/"
+          ],
+          "state": "active",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "b1-local-host-20260926",
+            "hostId": "local",
+            "source": "Observed collaboration.spawn_agent tool schema in this task; Astra/Sol medium available; Astra medium explicitly selected for discovery.",
+            "observedAt": "2026-09-26T14:12:08.747Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-core",
+            "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "state": "active",
+            "roundId": "b1-20260926-01a0de0b"
+          },
+          {
+            "repositoryId": "repo-project-control",
+            "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+            "baseCommit": "3e1c7bd9c9dead32dfed5de31929835a3d969f63",
+            "state": "active",
+            "roundId": "b1-20260926-01a0de0b"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [
+          {
+            "roomRunId": "b1-seam-discovery",
+            "dispatchSetId": "b1-discovery-dispatch",
+            "laneId": "b1-seam",
+            "workType": "discovery",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-flowdoc-b1-certified-seam-discovery-20260926",
+            "checklistId": "checklist-flowdoc-b1-certified-seam-discovery-20260926",
+            "evidenceTarget": "Pinned Core source references in terminal discovery payload; no new product Evidence.",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "b1-seam-discovery-0",
+            "status": "closed",
+            "locator": {
+              "threadId": "/root/b1_discovery",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/3799/flowdoc-project-control/.worktrees/b1-core-discovery",
+              "branch": "codex/b1-discovery-20260926"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-26T14:12:08.747Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; identical terminal payload before local final",
+              "monitorOwner": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+              "livenessDeadline": "2026-09-26T14:17:08.748Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Read-only source analysis resolves seam semantics and bounded-cost prerequisites before implementation; uncertainty can change contract.",
+              "smallerOptionAssessment": "Sol medium reserved for explicit implementation/verification after discovery; unresolved property-changing seam reasoning requires Astra.",
+              "availabilitySnapshotRef": "b1-local-host-20260926",
+              "escalationTriggers": [
+                "Contract, architecture, ownership or scope change requires terminal discovery return and new round."
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only private Core mechanism discovery; no user-facing runtime changed."
+            },
+            "requiredEvidence": [
+              "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+            ],
+            "roundId": "b1-20260926-01a0de0b",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Determine whether Stage 5 certified-seam Enter/join is implementable inside unchanged caps and contract.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/",
+                "tests/"
+              ],
+              "forbiddenScope": [
+                "docs/",
+                "src/",
+                "data/"
+              ],
+              "acceptanceCriteria": [
+                "Identify current source owners and certified seam implementation with exact source references at pinned Core base.",
+                "Resolve Enter head/middle/tail, inverse join, same-property, Thai/Latin, off|ice, empty-child and RTL-sensitive admissibility from contract/source.",
+                "Determine bounded property-changing certificate and atomic publication/cumulative accounting feasibility under unchanged 512/512/1024 caps; explicitly return blocking contract/architecture/scope changes.",
+                "Return read-only findings and exact base with zero file changes; preserve Stage 4 validity and all excluded scope."
+              ],
+              "workAuthority": "discovery",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 0,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 1,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": []
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+              ],
+              "unknowns": [
+                {
+                  "id": "certified-seam-feasibility",
+                  "summary": "Source ownership, seam semantics and property-changing bounded cost need discovery.",
+                  "disposition": "blocking",
+                  "ownerAction": "Read-only discovery; stop for new implementation round if contract/architecture/scope changes."
+                }
+              ],
+              "ownerDecisions": [
+                {
+                  "id": "b1-scope-freeze",
+                  "kind": "freeze-scope",
+                  "reason": "User authorized discovery first, immutable Stage 4 reuse, unchanged caps; no general cross-span, production, Editor/Backend, B2/C/D/A2 or maps.",
+                  "decidedBy": "user via kickoff",
+                  "decidedAt": "2026-09-26T14:12:08.747Z"
+                }
+              ],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Read-only source analysis resolves seam semantics and bounded-cost prerequisites before implementation; uncertainty can change contract.",
+                "smallerOptionAssessment": "Sol medium reserved for explicit implementation/verification after discovery; unresolved property-changing seam reasoning requires Astra.",
+                "availabilitySnapshotRef": "b1-local-host-20260926",
+                "escalationTriggers": [
+                  "Contract, architecture, ownership or scope change requires terminal discovery return and new round."
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+                "worktree": "C:/Users/nekot/.codex/worktrees/3799/flowdoc-project-control/.worktrees/b1-core-discovery"
+              },
+              "escalationTriggers": [
+                "Contract, architecture, ownership or scope change requires terminal discovery return and new round."
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; identical terminal payload before local final"
+              }
+            },
+            "packetDigest": "a7411a54765e2144ac9b8a3985f3fee6ebb736e2abcc01a68677baeeff1ebd41"
+          }
+        ],
+        "handoffs": [
+          {
+            "handoffId": "b1-seam-discovery-0",
+            "payloadDigest": "2945dbdf50329e73bd2b9ced491f54db0ca81c47d12293eb173687340a3884e4",
+            "payload": {
+              "planTaskId": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+              "roomRunId": "b1-seam-discovery",
+              "laneId": "b1-seam",
+              "ownerRepositoryId": "repo-core",
+              "revisionAttempt": 0,
+              "status": "BLOCKER",
+              "behaviorChanged": false,
+              "behaviorSummary": "Read-only discovery completed at pinned Core base. Middle certified Enter and inverse recombination have a bounded implementation route for short admitted windows, but full Stage 5 cannot be claimed under an unchanged certificate definition: accepted Stage 2 requires two nonempty sides and rejects head/tail, while Stage 5 requires head/middle/tail and empty-child coverage. No code, artifacts, tests, Evidence, documents or commits created.",
+              "exactCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+              "changedFiles": [],
+              "tests": [
+                "No tests/builds run: source-inspection-only packet. Read-only git rev-parse HEAD matched base; git status --porcelain=v1 --untracked-files=all and git diff --name-only were empty."
+              ],
+              "evidenceIds": [
+                "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+              ],
+              "risks": [
+                "All Core citations are at a39e91fd671706d8217d58f4668ed45afa0d0e67. Runtime ownership: packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs:18-34 owns source, span/run/shard trees, provider, paragraph, revision and accepted_work. mod.rs:23-39 exposes only Stage3 construction/disposal and Stage4 apply/fault APIs. Structural commands and their certificate records do not yet exist; that absence alone is expected implementation work, not a CCR.",
+                "Existing runtime seam mechanism is commands.rs:117-250 facts(), 441-481 before/after provider equality, 485-525 concat restrictions, and 660-662 boolean certification. It does not constitute the required structural certificate containing both inspected ranges, before/after edges, run keys, repaired facts and outside-range validity. Stage2 src/layout/runOwnedSemanticOracleStage2.ts:477-515 checks such a certificate, but tests/runOwnedSemanticOracleStage2.test.ts:20-110 supplies reviewed fixture facts; these are not a Rust live certificate generator.",
+                "Source classifications: same-property AB is certified by Stage2 test:123-148; Thai/Latin ก|A by :150-161; off|ice by :163-171 only with an explicit certificate. These establish desired semantic outcomes, not measured Rust Stage5 bounded work. Thai combining, surrogate and ZWJ rejection is :173-184; active composition :186-191. Head/tail and empty children are currently uncertified-seam because oracle :490-491 requires positive ranges on both sides and :547-551 requires two runs. Empty authored spans are rejected by Rust derive.rs:60-73; empty-session representation/edge handling must be made explicit when accepting empty children.",
+                "RTL remains deliberately unsupported in the current live profile: cold_session/derive.rs:47-52 rejects non-LTR paragraphs and :100-107 rejects unsupported scripts/controls. Stage2 test:193-208 keeps paragraph base direction distinct from per-run script. Do not replace this supported typed rejection with first-strong inference or claim Hebrew live equality.",
+                "Bounded middle property-changing route: retain per-run keys and certified outside subtrees; derive both edge results with actual Rust provider calls and one combined meter. commands.rs:128 preflights provider input as 3*n (shape plus two segmenters); :348-372 preflights source reads, and :722-727 counts source/property facts. A sufficiently short fully inspected fixture such as ก|A or off|ice has no inherent 512/512/1024 size obstruction. This is feasibility reasoning, not measured PASS. Long Thai/context-sensitive boundaries remain rejected unless a genuine bounded outside-validity proof exists: commands.rs:310-313 and :374-376 explicitly warn that style/font boundaries or shaping concat flags do not certify adjacent ICU dictionary/line facts; :424-438 rejects script transitions in ordinary repair.",
+                "Atomic publication is implementable within existing Rust ownership: commands.rs:767-813 prepares response and preflights before :824-849 sole exclusive Runtime publication; :863-867 finalizes ledger before return. Stage5 must prepare both child sessions/receipts and all fallible checks before one exclusive publication. New internal pair candidates/tree split operations are ordinary implementation choices, not independent blockers. Current accepted_work is per session (runtime.rs:27; command_work.rs:297-327); split/join must preserve total command work without duplicating or dropping shared ancestry. Restricting inverse join to the exact live sibling pair is a possible bounded design, but no cumulative lineage behavior is currently implemented or proven.",
+                "No Stage4 retesting or validity challenge, no Editor/Backend/public/production/general cross-span/map work. All implementation and provider measurement remain for a fresh authorized round."
+              ],
+              "unknowns": [
+                "Deferred to a fresh implementation round: measured bounded provider equality and cumulative accounting for admitted structural fixtures; source inspection cannot establish test PASS or Stage5/Gate2 admission."
+              ],
+              "contractChangeRequest": "Resolve one narrow endpoint-certificate decision before implementation. PC docs/domains/flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md:180-190 asks head/middle/tail Enter, empty children and both-child publication; PC semantic contract §3 (lines 210-228) requires a provider-backed left/right certificate, while the accepted Core oracle src/layout/runOwnedSemanticOracleStage2.ts:490-491 and :547-551 cannot certify an empty side. Option A: explicitly record head/tail/empty-child as not-admissible(uncertified-seam) and limit initial acceptance to certified interior seams. Option B (recommended if Stage5 means accepted head/tail): approve a minimal empty-side certificate rule with vacuous empty glyph/cluster/run facts, certified nonempty paragraph edge, explicit preserved paragraph defaults/authored provenance, and unchanged combined 512/512/1024 accounting; then implement and test in a fresh round. Do not silently weaken the Stage2 two-sided oracle or invent empty run keys. Record the selected split/inverse receipt lineage and cumulative-work convention in the fresh packet; internal representation is left to Core. Stop here without implementation.",
+              "roundId": "b1-20260926-01a0de0b",
+              "completion": {
+                "behaviorChanged": "None. Read-only B1 discovery resolved source ownership, required fixture admissibility and the endpoint certificate gap.",
+                "proof": [
+                  {
+                    "kind": "evidence",
+                    "reference": "Pinned source inspection at a39e91fd671706d8217d58f4668ed45afa0d0e67: cold_session/runtime.rs:18-34, commands.rs:117-250,441-525,660-662 and src/layout/runOwnedSemanticOracleStage2.ts:477-515 establish current ownership and certificate boundary.",
+                    "criterionRefs": [
+                      "AC-1"
+                    ]
+                  },
+                  {
+                    "kind": "evidence",
+                    "reference": "Pinned tests/runOwnedSemanticOracleStage2.test.ts:123-208 plus src/layout/runOwnedSemanticOracleStage2.ts:490-491,547-551 and cold_session/derive.rs:47-73,100-107 classify same-property, Thai/Latin, off|ice, head/tail/empty and RTL-sensitive cases. Tests were read, not executed.",
+                    "criterionRefs": [
+                      "AC-2"
+                    ]
+                  },
+                  {
+                    "kind": "evidence",
+                    "reference": "Pinned cold_session/commands.rs:128,348-376,424-481,722-727,767-867 and command_work.rs:297-327 show fixed budgets and publication/accounting mechanism; PC implementation plan:180-190 versus Stage2 oracle:490-491,547-551 establishes the narrow Contract Change Request. Feasibility is source reasoning, not runtime verification.",
+                    "criterionRefs": [
+                      "AC-3"
+                    ]
+                  },
+                  {
+                    "kind": "evidence",
+                    "reference": "Read-only git HEAD=a39e91fd671706d8217d58f4668ed45afa0d0e67; status and diff empty. Reused Stage4 evidence-core-rust-stage4-multispan-cumulative-2026-09-21 without revalidation or promotion. No files or artifacts created.",
+                    "criterionRefs": [
+                      "AC-4"
+                    ]
+                  }
+                ],
+                "remainingUnknowns": [
+                  {
+                    "id": "stage5-measured-bounded-proof",
+                    "summary": "Actual structural provider equality and cumulative accounting remain unimplemented and unmeasured; this does not prevent accepting the read-only discovery findings.",
+                    "disposition": "deferred",
+                    "returnTrigger": "Fresh Stage5 implementation round after endpoint certificate decision."
+                  }
+                ],
+                "downstreamInformation": "PLAN should accept only discovery findings, resolve the endpoint certificate choice, and open a fresh implementation round if proceeding. Preserve exact caps, Rust-only mutable authority, authentic receipts and single atomic publication; prove both children/inverse lineage and cumulative work without child-wide relabel or uncharged repair. Missing Stage5 structs alone are implementation work; the concrete blocker is that the existing accepted certificate oracle excludes empty sides. Stage4 remains accepted immutable input; Stage5, Stage6 and Gate2 are not passed.",
+                "changedFiles": [],
+                "createdEvidenceIds": [],
+                "createdDocumentIds": [],
+                "reviewCyclesUsed": 1,
+                "implementationCommitCount": 0
+              }
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-26T14:17:36.786Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-26T14:17:36.786Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-26T14:17:36.787Z",
+              "senderThreadId": "/root/b1_discovery",
+              "channel": "collaboration.send_message",
+              "arrivalSequence": 1,
+              "acknowledgedAt": "2026-09-26T14:17:36.787Z"
+            },
+            "acceptance": {
+              "status": "blocked",
+              "reviewer": "01a0de0b-d1fe-7c63-9317-5d48c726f10c",
+              "reviewedAt": "2026-09-26T14:18:07.462Z",
+              "reviewNote": "Discovery findings confirmed by PLAN source inspection; Stage5 implementation blocked on explicit endpoint/empty-side certificate decision. Scope Lock actual Git verification passed: {\"version\":1,\"status\":\"passed\",\"baseCommit\":\"a39e91fd671706d8217d58f4668ed45afa0d0e67\",\"terminalCommit\":\"a39e91fd671706d8217d58f4668ed45afa0d0e67\",\"packetDigest\":\"a7411a54765e2144ac9b8a3985f3fee6ebb736e2abcc01a68677baeeff1ebd41\",\"manifestDigest\":\"05fa0c177f71d75487d5b57a870522e2fa7ae100cc71fbc1e58c36c90575391e\",\"changedFiles\":[],\"verifiedAt\":\"2026-09-26T14:18:07.460Z\",\"clean\":true}. No product acceptance or promotion.",
+              "evidenceIds": [],
+              "requiredChecks": [],
+              "remainingScope": [
+                "Fresh round: approve explicit empty-side certificate semantics for accepted head/tail, preserving paragraph defaults/authored provenance and exact caps.",
+                "Define sibling receipt/cumulative lineage in the fresh packet; implement Enter/join with one owner, then independent read-only verification.",
+                "No Stage5 or Gate2 PASS; Stage4 remains immutable accepted input."
+              ]
+            }
+          }
+        ],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "createdAt": "2026-09-26T14:12:08.747Z",
+      "updatedAt": "2026-09-26T14:18:50.918Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-b1-certified-seam-discovery-20260926"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-b1-certified-seam-discovery-20260926"
       ]
     },
     {
@@ -8397,6 +8742,7 @@
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
         "flowdoc-a1-work-plan-reconciliation",
+        "flowdoc-b1-certified-seam-discovery-20260926",
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
@@ -10605,6 +10951,27 @@
       "stopConditions": [
         "Stop on missing prerequisite, authority conflict or scope escape.",
         "Stop when all A1 dispositions and required Project Control gates pass."
+      ]
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-b1-certified-seam-discovery-20260926",
+      "workId": "flowdoc-b1-certified-seam-discovery-20260926",
+      "title": "B1 certified seam discovery",
+      "phaseState": "done",
+      "order": 0,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "evidence-reviewer",
+      "verificationTarget": "checklist-flowdoc-b1-certified-seam-discovery-20260926; terminal source references; npm run check for Project Control records",
+      "summary": "Read-only discovery terminal BLOCKER delivered and reviewed. Discovery complete; Stage5 implementation and Gate2 remain unpassed.",
+      "createdAt": "2026-09-26T14:12:08.747Z",
+      "updatedAt": "2026-09-26T14:18:50.918Z",
+      "stopConditions": [
+        "Contract/architecture/ownership/scope change closes discovery for a fresh implementation round.",
+        "No implementation without bounded property-changing certificate; caps unchanged."
       ]
     },
     {
@@ -17067,6 +17434,48 @@
       ],
       "createdAt": "2026-09-26T12:12:15.162Z",
       "updatedAt": "2026-09-26T12:12:15.162Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-b1-certified-seam-discovery-20260926",
+      "phaseId": "phase-flowdoc-b1-certified-seam-discovery-20260926",
+      "title": "B1 discovery acceptance",
+      "items": [
+        {
+          "id": "ac-1",
+          "label": "Identify current source owners and certified seam implementation with exact source references at pinned Core base.",
+          "state": "passed",
+          "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+          "evidenceIds": [],
+          "verificationNote": "Rust cold_session owns mutable state; Stage2 oracle owns the accepted two-sided certificate checks. See exact source citations in b1-seam-discovery-0."
+        },
+        {
+          "id": "ac-2",
+          "label": "Resolve Enter head/middle/tail, inverse join, same-property, Thai/Latin, off|ice, empty-child and RTL-sensitive admissibility from contract/source.",
+          "state": "passed",
+          "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+          "evidenceIds": [],
+          "verificationNote": "Existing fixture expectations classified, including deliberate RTL/non-LTR rejection. Head/tail cannot satisfy current two-sided oracle. Tests were read only."
+        },
+        {
+          "id": "ac-3",
+          "label": "Determine bounded property-changing certificate and atomic publication/cumulative accounting feasibility under unchanged 512/512/1024 caps; explicitly return blocking contract/architecture/scope changes.",
+          "state": "passed",
+          "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+          "evidenceIds": [],
+          "verificationNote": "Discovery identified the endpoint contract gap and returned a narrow Contract Change Request. This passes gap discovery, not Stage5 implementation or measured cost proof."
+        },
+        {
+          "id": "ac-4",
+          "label": "Return read-only findings and exact base with zero file changes; preserve Stage 4 validity and all excluded scope.",
+          "state": "passed",
+          "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+          "evidenceIds": [],
+          "verificationNote": "PLAN actual Git Scope Lock passed: exact base and terminal a39e91fd671706d8217d58f4668ed45afa0d0e67, clean, zero changed files; packet and manifest digests persisted in acceptance reviewNote."
+        }
+      ],
+      "createdAt": "2026-09-26T14:12:08.747Z",
+      "updatedAt": "2026-09-26T14:18:50.918Z"
     },
     {
       "kind": "checklist",
