@@ -1,7 +1,7 @@
 # FlowDoc Workflow Scope Lock and Model Budget Design
 
 - Date: 2026-09-25
-- Status: proposed design awaiting owner review
+- Status: approved by the owner on 2026-09-26
 - Context class: supporting
 - Owner repository: `repo-project-control`
 
@@ -439,8 +439,8 @@ Git Scope Lock.
 
 ## Review and Next Step
 
-The owner reviews this written design before any implementation plan is
-created. Approval authorizes planning, not implementation. Requested changes
-are made in this design worktree. After written approval, a fresh implementation
-plan will split the minimum policy, schema, verifier, compatibility, and test
-work while preserving one PLAN round and the document budget.
+The owner approved this design on 2026-09-26. Approval authorizes the bounded
+implementation plan, not implementation by itself. The implementation plan is
+`docs/domains/flowdoc-workflow-scope-lock-and-model-budget-implementation-plan-2026-09-26.md`.
+Execution begins only after the owner reviews that plan and selects its execution
+method.
