@@ -7,12 +7,11 @@ Work: `flowdoc-b1-empty-side-contract-20260926`; Phase:
 `phase-flowdoc-b1-empty-side-contract-20260926`; Checklist:
 `checklist-flowdoc-b1-empty-side-contract-20260926`.
 
-Status: **conditional owner acceptance; visual parity unproven**. This document is the
-single contract/decision packet for this round, not accepted runtime semantics.
-The owner condition below is authoritative as an acceptance requirement, not
-unconditional approval of A or evidence that its condition has been met.
-The older run-owned semantic contract remains the accepted runtime-design
-authority; this conditional supplement cannot weaken it. No implementation, Stage 5, Stage 6, Gate 2,
+Status: **design accepted as implementation target; product parity unproven**.
+This is the single accepted design/decision packet for this completed round.
+The revised design supplements the approved run-owned semantic contract without
+weakening it. The owner's unchanged-layout condition remains mandatory product
+acceptance, not a claim that it has been met. No implementation, Stage 5, Stage 6, Gate 2,
 latency, UX, public binding or map admission follows from this design.
 
 ## Round and Markdown pre-action gate
@@ -106,13 +105,31 @@ constraints or the viewing-to-editing presentation transition. Empty glyph facts
 also do not determine an empty paragraph's line box. The revisions below close
 the specification gap; they do not prove either runtime path complies.
 
-The user has supplied the requirement; another A/B/C permission question is
-unnecessary. `ac-owner` stays pending conditional acceptance, not passed. A
-source/spec review or PC gate cannot discharge visual parity. The alternatives
-below remain design context; the response does not separately approve every
-internal choice of A. Product implementation remains outside this round.
+At this first response, `ac-owner` remained pending; source/spec review and PC
+gates could not discharge visual parity. The subsequent design acceptance below
+closes design review only. Product implementation remains outside this round.
 
-**Recommendation A:** select the complete narrow contract in sections below:
+### Design acceptance and round closure, 2026-09-26
+
+After reviewing revision `20d5e7a40240f765c280c019fa296e1b708e1ea6`, the user
+said **"งันต่อได้เลยนะ"** in the control task. The observer relayed explicit
+authorization to accept this revised design as the implementation target and
+start a fresh implementation round under the unchanged strict condition.
+
+`ac-owner` therefore passes **design acceptance**, not product/visual acceptance.
+Requiring future implementation evidence to close this design-only round would
+conflate these milestones. The design round is complete and releases ownership;
+the control task owns opening the fresh implementation PLAN. This PLAN opens no
+new task and makes no product changes. Closed context is immutable input only.
+
+The accepted design at `20d5e7a` was already integrated into local main with fresh
+worktree and main `npm run check` passes (364 records, 189 source-docs, 68 app,
+6 browser tests, plus data/type/build checks). Closure metadata receives its own
+fresh required checks and final integration report; no future result is claimed
+here. Remove the current clean merged lane only after that main gate passes;
+retain/report it if cleanup preconditions fail. Historical lanes remain untouched.
+
+**Selected design A (revised):** the complete narrow contract in sections below:
 explicit empty-side variant, preserved effective style resolution and authored
 provenance (including explicit defaults), and inverse join of the exact unchanged sibling pair only. This
 meets the intended endpoint scope without expanding into arbitrary joins.
@@ -126,13 +143,13 @@ empty typing style from the adjacent run. Both need additional semantics
 (conflicts, insertion affinity, ancestry merging), so require a new bounded
 decision. They are not silently included in A.
 
-Acceptance disposition: A is revised to respect the owner's condition. Its
-compliance remains unverified. Do not replace this condition with a request to
+Acceptance disposition: revised A is accepted as the implementation target. Its
+product compliance remains unverified. Do not replace this condition with a request to
 accept visual differences, silently waive it for empty children, or label A
-unconditionally approved. Future owner-scoped work must produce the proofs
+proven in the product. Future owner-scoped work must produce the proofs
 below before claiming the condition is met.
 
-## Proposed semantic contract (A)
+## Accepted implementation-target contract (A, revised)
 
 ### 1. Text, authored meaning and paragraph context
 
@@ -427,8 +444,8 @@ or performance admission. If bounded ledger management cannot be shown, stop.
 
 ## Fresh implementation kickoff (conditional, not dispatched)
 
-After the revised conditional contract review and a separately authorized
-implementation scope, a new PLAN creates a new v3/policy-v2
+The user has authorized moving to implementation under this design. The control
+task creates a fresh PLAN that binds the exact implementation scope and a new v3/policy-v2
 round, fresh exact Core base/worktree and one implementation WORK. No context,
 room or authority is transferred from this or closed discovery rounds. Future
 WORK model is selected independently from a fresh host snapshot; no inherited
@@ -469,11 +486,12 @@ do not substitute interior-only PASS or silently weaken the corpus.
 Source/spec review: endpoint gap confirmed; source findings and proposed rules
 are separated above. The proposal covers all requested cases, both publication
 directions and empty-side accounting; no product Evidence or map is created.
-The owner requirement is now explicit: unchanged viewing-to-editing appearance,
-positions and line division. A was revised because defaults/provenance alone
-did not establish that guarantee. Conditional acceptance is recorded; ac-owner
-is not passed. Blocking for unconditional acceptance: the condition lacks
-measured proof. Next Core-owned prerequisite: source-grounded effective-context
+The owner requirement is explicit: unchanged viewing-to-editing appearance,
+positions and line division, including transient frames. A was revised because
+defaults/provenance alone did not establish that guarantee. Design acceptance
+is passed and this design round closes; product acceptance remains outstanding
+because the condition lacks measured proof. This is not a design-round blocker.
+Next Core-owned prerequisite: source-grounded effective-context
 and empty-state binding, then actual provider equality, bounded structural work,
 private schema encoding, ledger representation and counter completeness. A
 separately authorized Editor round must prove the transition, with user-visible
@@ -482,5 +500,5 @@ does not inspect or modify Editor or promote a visual-parity claim.
 
 PC record verification and integration results are reported with exact commits
 through the observer and terminal handoff after execution; this text does not
-claim a gate result before it happens. A reviewable pending proposal may be
-integrated as conditional documentation, never as accepted product semantics.
+claim a gate result before it happens. The accepted implementation-target design
+must never be cited as product proof or permission to waive the owner condition.

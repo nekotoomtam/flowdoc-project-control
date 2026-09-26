@@ -10,7 +10,7 @@
     "repo-core"
   ],
   "workState": "in-review",
-  "summary": "Same active contract-only round: owner condition requires identical viewing-to-editing appearance, positions and line division for unchanged inputs. A revised; conditional acceptance only, visual parity unproven.",
+  "summary": "Design round complete: user accepted revised 20d5e7a as implementation target with strict unchanged-layout condition. Product/visual parity remains unproven; control task opens a fresh implementation PLAN after release.",
   "contextDocumentIds": [
     "doc-flowdoc-b1-empty-side-contract-20260926",
     "doc-flowdoc-workflow-economy-policy",
@@ -18,14 +18,14 @@
     "doc-core-run-owned-property-implementation-plan-2026-09-14"
   ],
   "activeRole": "planning-partner",
-  "expectedOutput": "Revised effective-context/provenance contract with separate Core semantic and future Editor transition proof obligations; no product mutation or unconditional A approval.",
-  "riskSummary": "Original A defaults and structural certificate cannot guarantee focus-only visual parity. Effective-style/empty-state provenance and actual Core/Editor parity require owner-scoped proof; ac-owner remains pending. Structural accounting and Stage5/Gate2 remain unproven.",
+  "expectedOutput": "Accepted endpoint/effective-context/provenance contract and fresh-round kickoff, with separate Core semantic and Editor visual proof obligations.",
+  "riskSummary": "Design acceptance is complete, not product acceptance. Effective-context implementation, structural equality/accounting, actual viewing-to-editing parity and Stage5/Gate2 remain unproven downstream obligations.",
   "requiredEvidence": [
     "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
   ],
   "coordination": {
     "version": 3,
-    "revision": 1,
+    "revision": 2,
     "round": {
       "planTaskId": "01a0de32-c1af-7fd0-866a-e886c976671f",
       "roundId": "b1-empty-contract-20260926-01a0de32",
@@ -43,7 +43,7 @@
         "generated/project-index.json",
         "tests/project-roadmap-work-queue.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -73,7 +73,7 @@
         "repositoryId": "repo-project-control",
         "planTaskId": "01a0de32-c1af-7fd0-866a-e886c976671f",
         "baseCommit": "d42f16fb7eee564f9d955c797f3bdb37f175ddca",
-        "state": "active",
+        "state": "released",
         "roundId": "b1-empty-contract-20260926-01a0de32"
       }
     ],
@@ -84,5 +84,5 @@
     "cleanup": []
   },
   "createdAt": "2026-09-26T14:56:41.895Z",
-  "updatedAt": "2026-09-26T15:29:25.713Z"
+  "updatedAt": "2026-09-26T15:46:22.469Z"
 }
