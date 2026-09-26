@@ -1,8 +1,13 @@
-import { createRoutineWorkflowPacket } from "../../src/model/workflow-economy.js";
+import {
+  createRoutineWorkflowPacket,
+  createRoutineWorkflowPacketV2,
+} from "../../src/model/workflow-economy.js";
 import { packetDigest } from "../../src/model/coordination-v3.js";
 import type {
   CoordinationModelDecision,
   CoordinationRegistryV3,
+  CompactCoordinationModelDecision,
+  LegacyCoordinationModelDecision,
 } from "../../src/model/types.js";
 import type { RiskTier, WorkSize } from "../../src/model/workflow-economy.js";
 
@@ -12,7 +17,7 @@ export interface V3FixtureOptions {
   escalationReason?: string;
 }
 
-function modelDecision(): CoordinationModelDecision {
+function legacyModelDecision(): LegacyCoordinationModelDecision {
   return {
     modelId: "gpt-6-sol",
     reasoningEffort: "high",
@@ -31,6 +36,18 @@ function modelDecision(): CoordinationModelDecision {
   };
 }
 
+function compactModelDecision(): CompactCoordinationModelDecision {
+  return {
+    capabilityClass: "workhorse",
+    modelId: "gpt-6-sol",
+    reasoningEffort: "medium",
+    reason: "typed workflow contract with deterministic acceptance",
+    smallerOptionAssessment: "fast class is insufficient for cross-file acceptance state",
+    availabilitySnapshotRef: "snapshot-local-2026-09-26",
+    escalationTriggers: ["two corrected reasoning-attributable revisions fail"],
+  };
+}
+
 export function createCoordinationRegistryV3Fixture(
   options: V3FixtureOptions = {},
 ): CoordinationRegistryV3 {
@@ -42,8 +59,8 @@ export function createCoordinationRegistryV3Fixture(
           ? {}
           : { escalationReason: options.escalationReason }),
       };
-  const workflowPacket = createRoutineWorkflowPacket({
-    policyId: "flowdoc-workflow-economy-v1",
+  const workflowPacket = createRoutineWorkflowPacketV2({
+    policyId: "flowdoc-workflow-economy-v2",
     goal: "Implement the version 3 workflow packet contract.",
     ownerRepositoryId: "repo-project-control",
     allowedScope: ["src/model/", "schemas/", "tests/"],
@@ -54,7 +71,13 @@ export function createCoordinationRegistryV3Fixture(
     relevantEvidenceIds: ["evidence-workflow-economy-design"],
     unknowns: [],
     ownerDecisions: [],
-    modelDecision: modelDecision(),
+    modelDecision: compactModelDecision(),
+    scopeLock: {
+      version: 1,
+      enforcement: "git-worktree",
+      baseCommit: "c".repeat(40),
+      worktree: "C:/worktrees/workflow-economy",
+    },
     escalationTriggers: ["schema contract conflict"],
     returnRoute: {
       planTaskId: "plan-economy-1",
@@ -75,8 +98,15 @@ export function createCoordinationRegistryV3Fixture(
       scopeKeys: ["flowdoc:workflow-economy"],
       allowedFiles: ["src/model/", "schemas/", "tests/"],
       state: "active",
-      policyId: "flowdoc-workflow-economy-v1",
+      policyId: "flowdoc-workflow-economy-v2",
     },
+    modelAvailabilitySnapshots: [{
+      id: "snapshot-local-2026-09-26",
+      hostId: "local",
+      source: "host create_thread schema",
+      observedAt: "2026-09-26T00:00:00.000Z",
+      availableModelEfforts: [{ modelId: "gpt-6-sol", reasoningEfforts: ["medium"] }],
+    }],
     integrationClaims: [{
       repositoryId: "repo-project-control",
       planTaskId: "plan-economy-1",
@@ -99,7 +129,11 @@ export function createCoordinationRegistryV3Fixture(
       revisionAttempt: 0,
       expectedHandoffId: "workflow-economy-handoff-0",
       status: "prepared",
-      locator: { threadId: "workflow-economy-thread" },
+      locator: {
+        threadId: "workflow-economy-thread",
+        worktree: "C:/worktrees/workflow-economy",
+        branch: "codex/workflow-economy",
+      },
       contextAcknowledgement: {
         status: "acknowledged",
         acknowledgedAt: "2026-09-24T00:00:00.000Z",
@@ -112,7 +146,7 @@ export function createCoordinationRegistryV3Fixture(
         livenessDeadline: "2026-09-24T00:20:00.000Z",
         maxSendAttempts: 3,
       },
-      modelDecision: modelDecision(),
+      modelDecision: compactModelDecision(),
       ux: {
         visibleChange: false,
         applicability: "not-applicable",
@@ -126,6 +160,56 @@ export function createCoordinationRegistryV3Fixture(
     completionQueue: [],
     cleanup: [],
   };
+}
+
+export function createLegacyCoordinationRegistryV3Fixture(
+  options: V3FixtureOptions = {},
+): CoordinationRegistryV3 {
+  const configuredRisk = options.riskTier === undefined && options.escalationReason === undefined
+    ? undefined
+    : {
+        tier: options.riskTier ?? "routine",
+        ...(options.escalationReason === undefined
+          ? {}
+          : { escalationReason: options.escalationReason }),
+      };
+  const workflowPacket = createRoutineWorkflowPacket({
+    policyId: "flowdoc-workflow-economy-v1",
+    goal: "Read a legacy version 3 workflow packet.",
+    ownerRepositoryId: "repo-project-control",
+    allowedScope: ["src/model/", "schemas/", "tests/"],
+    forbiddenScope: ["../flowdoc-core/", "../flowdoc-backend/", "../flowdoc-editor/"],
+    acceptanceCriteria: ["The legacy packet remains readable."],
+    workAuthority: "implementation",
+    workSize: options.workSize ?? "small",
+    relevantEvidenceIds: ["evidence-workflow-economy-design"],
+    unknowns: [],
+    ownerDecisions: [],
+    modelDecision: legacyModelDecision(),
+    escalationTriggers: ["schema contract conflict"],
+    returnRoute: {
+      planTaskId: "plan-economy-legacy",
+      automaticChannel: "send_message_to_thread",
+      activeCommand: "mcp__codex_app__send_message_to_thread",
+    },
+    ...(configuredRisk === undefined ? {} : { risk: configuredRisk }),
+  });
+  const current = createCoordinationRegistryV3Fixture(options);
+  delete current.modelAvailabilitySnapshots;
+  current.round.planTaskId = "plan-economy-legacy";
+  current.round.roundId = "round-economy-legacy";
+  current.round.policyId = "flowdoc-workflow-economy-v1";
+  current.integrationClaims[0]!.planTaskId = "plan-economy-legacy";
+  current.integrationClaims[0]!.roundId = "round-economy-legacy";
+  const room = current.roomRuns[0]!;
+  room.roundId = "round-economy-legacy";
+  room.locator = { threadId: "workflow-economy-legacy-thread" };
+  room.returnRoute.planTaskId = "plan-economy-legacy";
+  room.returnRoute.monitorOwner = "plan-economy-legacy";
+  room.modelDecision = legacyModelDecision();
+  room.packet = workflowPacket;
+  room.packetDigest = packetDigest(workflowPacket);
+  return current;
 }
 
 export function createInvalidLargeCoordinationRegistryV3Fixture(): Record<string, unknown> {

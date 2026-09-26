@@ -1160,20 +1160,29 @@ function ensureActivationReady(registry: CoordinationRegistry, room: Coordinatio
     "RETURN_PLAN_MISMATCH",
     "Return route PLAN must own the current scope.",
   );
-  const modelFields = {
-    modelId: room.modelDecision.modelId,
-    reasoningEffort: room.modelDecision.reasoningEffort,
-    taskComplexity: room.modelDecision.taskComplexity,
-    scopeSize: room.modelDecision.scopeSize,
-    uncertainty: room.modelDecision.uncertainty,
-    missingContext: room.modelDecision.missingContext,
-    failureImpact: room.modelDecision.failureImpact,
-    recoverability: room.modelDecision.recoverability,
-    reason: room.modelDecision.reason,
-    smallerOptionAssessment: room.modelDecision.smallerOptionAssessment,
-    availabilitySource: room.modelDecision.availabilitySource,
-    availabilityObservedAt: room.modelDecision.availabilityObservedAt,
-  };
+  const modelFields = "availableModelEfforts" in room.modelDecision
+    ? {
+        modelId: room.modelDecision.modelId,
+        reasoningEffort: room.modelDecision.reasoningEffort,
+        taskComplexity: room.modelDecision.taskComplexity,
+        scopeSize: room.modelDecision.scopeSize,
+        uncertainty: room.modelDecision.uncertainty,
+        missingContext: room.modelDecision.missingContext,
+        failureImpact: room.modelDecision.failureImpact,
+        recoverability: room.modelDecision.recoverability,
+        reason: room.modelDecision.reason,
+        smallerOptionAssessment: room.modelDecision.smallerOptionAssessment,
+        availabilitySource: room.modelDecision.availabilitySource,
+        availabilityObservedAt: room.modelDecision.availabilityObservedAt,
+      }
+    : {
+        capabilityClass: room.modelDecision.capabilityClass,
+        modelId: room.modelDecision.modelId,
+        reasoningEffort: room.modelDecision.reasoningEffort,
+        reason: room.modelDecision.reason,
+        smallerOptionAssessment: room.modelDecision.smallerOptionAssessment,
+        availabilitySnapshotRef: room.modelDecision.availabilitySnapshotRef,
+      };
   for (const [name, value] of Object.entries(modelFields)) {
     ensure(
       value.trim() !== "",
@@ -1187,12 +1196,14 @@ function ensureActivationReady(registry: CoordinationRegistry, room: Coordinatio
     "MODEL_RATIONALE_MISSING",
     "Model decision escalation triggers are required.",
   );
-  ensure(
-    room.modelDecision.availableModelEfforts.some(({ modelId, reasoningEfforts }) =>
-      modelId === room.modelDecision.modelId && reasoningEfforts.includes(room.modelDecision.reasoningEffort)),
-    "MODEL_EFFORT_UNAVAILABLE",
-    "Selected model and effort are absent from the observed host capability snapshot.",
-  );
+  if ("availableModelEfforts" in room.modelDecision) {
+    ensure(
+      room.modelDecision.availableModelEfforts.some(({ modelId, reasoningEfforts }) =>
+        modelId === room.modelDecision.modelId && reasoningEfforts.includes(room.modelDecision.reasoningEffort)),
+      "MODEL_EFFORT_UNAVAILABLE",
+      "Selected model and effort are absent from the observed host capability snapshot.",
+    );
+  }
   ensureUxDeclared(room.ux);
   ensure(room.requiredEvidence.length > 0, "EVIDENCE_REQUIREMENT_MISSING", "Room activation requires evidence targets.");
 }

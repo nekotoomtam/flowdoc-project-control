@@ -500,7 +500,9 @@ describe("coordination registry transitions", () => {
   it("requires selected model and effort to exist in the observed host snapshot", () => {
     const registry = makeRegistry();
     registry.roomRuns[0]!.status = "prepared";
-    registry.roomRuns[0]!.modelDecision.availableModelEfforts = [
+    const decision = registry.roomRuns[0]!.modelDecision;
+    if (!("availableModelEfforts" in decision)) throw new Error("Expected a legacy model decision fixture.");
+    decision.availableModelEfforts = [
       { modelId: "gpt-5.6-sol", reasoningEfforts: ["medium"] },
     ];
 

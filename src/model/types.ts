@@ -85,8 +85,9 @@ export interface CoordinationRegistryV3 {
     scopeKeys: string[];
     allowedFiles: string[];
     state: "active" | "released" | "cancelled";
-    policyId: "flowdoc-workflow-economy-v1";
+    policyId: "flowdoc-workflow-economy-v1" | "flowdoc-workflow-economy-v2";
   };
+  modelAvailabilitySnapshots?: CoordinationModelAvailabilitySnapshot[];
   integrationClaims: CoordinationIntegrationClaimV2[];
   returnOrderPolicy: "severity-then-arrival";
   roomRuns: CoordinationRoomRunV3[];
@@ -205,24 +206,59 @@ export interface CoordinationRoomRunV3 extends CoordinationRoomRunV2 {
   packetDigest: string;
 }
 
-export interface CoordinationModelDecision {
+interface CoordinationModelDecisionBase {
   modelId: string;
   reasoningEffort: string;
+  reason: string;
+  smallerOptionAssessment: string;
+  escalationTriggers: string[];
+}
+
+export interface LegacyCoordinationModelDecision extends CoordinationModelDecisionBase {
   taskComplexity: string;
   scopeSize: string;
   uncertainty: string;
   missingContext: string;
   failureImpact: string;
   recoverability: string;
-  reason: string;
-  smallerOptionAssessment: string;
   availabilitySource: string;
   availabilityObservedAt: string;
   availableModelEfforts: Array<{
     modelId: string;
     reasoningEfforts: string[];
   }>;
-  escalationTriggers: string[];
+}
+
+export interface CompactCoordinationModelDecision extends CoordinationModelDecisionBase {
+  capabilityClass: "fast" | "workhorse" | "frontier";
+  availabilitySnapshotRef: string;
+}
+
+export type CoordinationModelDecision =
+  | LegacyCoordinationModelDecision
+  | CompactCoordinationModelDecision;
+
+export interface CoordinationModelAvailabilitySnapshot {
+  id: string;
+  hostId: string;
+  source: string;
+  observedAt: string;
+  availableModelEfforts: Array<{
+    modelId: string;
+    reasoningEfforts: string[];
+  }>;
+}
+
+export interface ScopeLockVerification {
+  version: 1;
+  status: "passed";
+  baseCommit: string;
+  terminalCommit: string;
+  packetDigest: string;
+  manifestDigest: string;
+  changedFiles: string[];
+  verifiedAt: string;
+  clean: true;
 }
 
 export type CoordinationUxGate = CoordinationUxNotApplicable | CoordinationUxApplicable;
@@ -380,8 +416,11 @@ export interface CoordinationHandoffV2 {
   };
 }
 
-export interface CoordinationHandoffV3 extends Omit<CoordinationHandoffV2, "payload"> {
+export interface CoordinationHandoffV3 extends Omit<CoordinationHandoffV2, "payload" | "acceptance"> {
   payload: CoordinationTerminalPayloadV3;
+  acceptance: CoordinationHandoffV2["acceptance"] & {
+    scopeLockVerification?: ScopeLockVerification;
+  };
 }
 
 export interface CoordinationQueueItem {

@@ -1,9 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { createRoutineWorkflowPacket } from "../src/model/workflow-economy.js";
+import { createRoutineWorkflowPacketV2 } from "../src/model/workflow-economy.js";
 import { validateCanonicalRecordValue } from "../tools/lib/load-sources.js";
 import {
   createCoordinationRegistryV3Fixture,
   createInvalidLargeCoordinationRegistryV3Fixture,
+  createLegacyCoordinationRegistryV3Fixture,
 } from "./fixtures/coordination-registry-v3.js";
 
 function createWork(coordination: unknown): Record<string, unknown> {
@@ -80,7 +81,7 @@ describe("workflow economy version 3 schema", () => {
     const source = packet(fixture);
     const { risk: _risk, proofBudget: _proofBudget, ...input } = source;
 
-    expect(createRoutineWorkflowPacket(input as never)).toMatchObject({
+    expect(createRoutineWorkflowPacketV2(input as never)).toMatchObject({
       workSize: "medium",
       risk: { tier: "routine" },
       proofBudget: {
@@ -96,6 +97,50 @@ describe("workflow economy version 3 schema", () => {
   it("accepts a complete routine packet", async () => {
     expect(await schemaDiagnostics(createCoordinationRegistryV3Fixture())).toEqual([]);
   });
+
+  it("keeps legacy policy v1 packets readable without rewriting their inline model snapshot", async () => {
+    const registry = createLegacyCoordinationRegistryV3Fixture();
+
+    expect(packet(registry).policyId).toBe("flowdoc-workflow-economy-v1");
+    expect(await schemaDiagnostics(registry)).toEqual([]);
+  });
+
+  it("requires the current policy v2 packet to bind Scope Lock v1", async () => {
+    const registry = createCoordinationRegistryV3Fixture();
+    expect(packet(registry)).toMatchObject({
+      policyId: "flowdoc-workflow-economy-v2",
+      scopeLock: {
+        version: 1,
+        enforcement: "git-worktree",
+        baseCommit: "c".repeat(40),
+        worktree: "C:/worktrees/workflow-economy",
+      },
+    });
+    delete packet(registry).scopeLock;
+
+    expect(await schemaDiagnostics(registry)).toContainEqual(
+      expect.objectContaining({
+        code: "SCHEMA_REQUIRED",
+        message: expect.stringContaining("must have required property 'scopeLock'"),
+      }),
+    );
+  });
+
+  it.each(["capabilityClass", "availabilitySnapshotRef"])(
+    "requires compact model decision field %s on the current profile",
+    async (field) => {
+      const registry = createCoordinationRegistryV3Fixture() as unknown as Record<string, unknown>;
+      const room = (registry.roomRuns as Array<Record<string, unknown>>)[0]!;
+      delete (room.modelDecision as Record<string, unknown>)[field];
+
+      expect(await schemaDiagnostics(registry)).toContainEqual(
+        expect.objectContaining({
+          code: "SCHEMA_REQUIRED",
+          message: expect.stringContaining(`must have required property '${field}'`),
+        }),
+      );
+    },
+  );
 
   it.each([
     "goal",

@@ -1,4 +1,7 @@
-import type { CoordinationModelDecision } from "./types.js";
+import type {
+  CompactCoordinationModelDecision,
+  LegacyCoordinationModelDecision,
+} from "./types.js";
 
 export type WorkAuthority = "discovery" | "implementation" | "verification";
 export type WorkSize = "small" | "medium";
@@ -36,8 +39,7 @@ export interface ProofBudget {
   }>;
 }
 
-export interface WorkflowEconomyPacket {
-  policyId: "flowdoc-workflow-economy-v1";
+interface WorkflowEconomyPacketBase {
   goal: string;
   ownerRepositoryId: string;
   allowedScope: string[];
@@ -51,7 +53,6 @@ export interface WorkflowEconomyPacket {
   unknowns: WorkflowUnknown[];
   ownerDecisions: OwnerDecision[];
   fallback?: { behavior: string; performanceBudget: string; verification: string };
-  modelDecision: CoordinationModelDecision;
   escalationTriggers: string[];
   returnRoute: {
     planTaskId: string;
@@ -60,9 +61,33 @@ export interface WorkflowEconomyPacket {
   };
 }
 
+export interface ScopeLockProfileV1 {
+  version: 1;
+  enforcement: "git-worktree";
+  baseCommit: string;
+  worktree: string;
+}
+
+export interface WorkflowEconomyPacketV1 extends WorkflowEconomyPacketBase {
+  policyId: "flowdoc-workflow-economy-v1";
+  modelDecision: LegacyCoordinationModelDecision;
+}
+
+export interface WorkflowEconomyPacketV2 extends WorkflowEconomyPacketBase {
+  policyId: "flowdoc-workflow-economy-v2";
+  scopeLock: ScopeLockProfileV1;
+  modelDecision: CompactCoordinationModelDecision;
+}
+
+export type WorkflowEconomyPacket = WorkflowEconomyPacketV1 | WorkflowEconomyPacketV2;
+
 export interface WorkflowCompletionReport {
   behaviorChanged: string;
-  proof: Array<{ kind: "test" | "evidence"; reference: string }>;
+  proof: Array<{
+    kind: "test" | "evidence";
+    reference: string;
+    criterionRefs?: string[];
+  }>;
   remainingUnknowns: WorkflowUnknown[];
   downstreamInformation: string;
   changedFiles: string[];
@@ -73,16 +98,36 @@ export interface WorkflowCompletionReport {
 }
 
 export type CreateRoutineWorkflowPacketInput = Omit<
-  WorkflowEconomyPacket,
+  WorkflowEconomyPacketV1,
   "risk" | "proofBudget"
 > & {
-  risk?: WorkflowEconomyPacket["risk"];
+  risk?: WorkflowEconomyPacketV1["risk"];
   proofBudget?: ProofBudget;
 };
 
 export function createRoutineWorkflowPacket(
   input: CreateRoutineWorkflowPacketInput,
-): WorkflowEconomyPacket {
+): WorkflowEconomyPacketV1 {
+  return withRoutineDefaults(input);
+}
+
+export type CreateRoutineWorkflowPacketV2Input = Omit<
+  WorkflowEconomyPacketV2,
+  "risk" | "proofBudget"
+> & {
+  risk?: WorkflowEconomyPacketV2["risk"];
+  proofBudget?: ProofBudget;
+};
+
+export function createRoutineWorkflowPacketV2(
+  input: CreateRoutineWorkflowPacketV2Input,
+): WorkflowEconomyPacketV2 {
+  return withRoutineDefaults(input);
+}
+
+function withRoutineDefaults<T extends CreateRoutineWorkflowPacketInput | CreateRoutineWorkflowPacketV2Input>(
+  input: T,
+): T & { risk: NonNullable<T["risk"]>; proofBudget: ProofBudget } {
   return {
     ...input,
     risk: input.risk ?? { tier: "routine" },
@@ -93,5 +138,5 @@ export function createRoutineWorkflowPacket(
       closeForm: "none",
       authorizedArtifacts: [],
     },
-  };
+  } as T & { risk: NonNullable<T["risk"]>; proofBudget: ProofBudget };
 }

@@ -46,9 +46,19 @@ describe("coordination registry schema", () => {
     expect(schema.$defs.work.$defs).toMatchObject({
       coordinationV1: expect.any(Object),
       coordinationV2: expect.any(Object),
+      coordinationV3: expect.any(Object),
+      legacyModelDecision: expect.any(Object),
+      compactModelDecision: expect.any(Object),
+      scopeLockVerification: expect.any(Object),
     });
-    expect(schema.$defs.work.$defs?.modelDecision).toMatchObject({
+    expect(schema.$defs.work.$defs?.legacyModelDecision).toMatchObject({
       properties: { availableModelEfforts: expect.any(Object) },
+    });
+    expect(schema.$defs.work.$defs?.compactModelDecision).toMatchObject({
+      properties: {
+        capabilityClass: expect.any(Object),
+        availabilitySnapshotRef: expect.any(Object),
+      },
     });
   });
 
