@@ -3,7 +3,7 @@
   "id": "phase-flowdoc-core-stage6-seam-repair-20260927",
   "workId": "flowdoc-core-stage6-seam-repair-20260927",
   "title": "Bounded certificate repair and prerequisite applicability",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 0,
   "repositoryIds": [
     "repo-core",
@@ -11,12 +11,12 @@
   ],
   "activeRole": "planning-partner",
   "verificationTarget": "checklist-flowdoc-core-stage6-seam-repair-20260927; native and actual-WASM regressions; exact retained preflight; Core/PC required gates",
-  "summary": "Repair implementation and prerequisite verification only; final Stage6 and UX remain separate.",
+  "summary": "All bounded repair AC1–6 passed. Core main integrated/verified and current Core lane removed. Stage6 full admission remains unexecuted with exact remaining unsupported request/lifecycle prerequisites; downstream UX unproven.",
   "stopConditions": [
     "Missing semantics materially changes architecture/contract/scope.",
     "Unbounded provider context or incomplete accounting.",
     "Equality/atomicity/cap failure must be fixed in scope or reported."
   ],
   "createdAt": "2026-09-26T21:20:28.334Z",
-  "updatedAt": "2026-09-26T21:20:28.334Z"
+  "updatedAt": "2026-09-26T21:53:46.244Z"
 }

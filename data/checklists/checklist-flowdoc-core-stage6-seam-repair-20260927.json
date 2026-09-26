@@ -7,46 +7,58 @@
     {
       "id": "ac-1",
       "label": "Reproduce exact retained prepared-first-thai-256-append RED, review and materialize only the five-file b48f194 harness into this fresh lane with explicit provenance; fixed d5031b6 corpus/generator remain byte-equivalent and old lane/raw unchanged.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     },
     {
       "id": "ac-2",
       "label": "Implement source-backed provider-certified adjacent-run/script-transition repair resolving exact retained Thai256 append; native and actual-WASM mixed Thai/Latin positive and negative fixtures prove independent cold equality, safe boundary witnesses and outside-fact validity without guessed boundaries or paragraph fallback.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     },
     {
       "id": "ac-3",
       "label": "Preserve authored source/default/origin semantics, Rust sole authority, atomic authentic receipt/revision behavior and complete accepted/attempt/family accounting within512/512/1024. Revalidate affected Stage4/5 tests and unsupported-case unchanged state.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     },
     {
       "id": "ac-4",
       "label": "Boundedly classify exact no-op/composition-named committed requests and lifecycle calls with source/test evidence; preserve active-composition rejection and identify any missing semantic authority/dependency with remedies and recommendation. Do not implement material contract expansion.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     },
     {
       "id": "ac-5",
       "label": "Run retained first-case preflight from clean committed fresh candidate, retain immutable raw results/hashes plus applicability outcomes. All11271 final timing obligations, thresholds and corpus remain unchanged and unexecuted; no Stage6/Gate2/geometry/Editor/UX admission.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     },
     {
       "id": "ac-6",
       "label": "Focused native and actual-WASM regressions, Core npm run check and private/public export boundary pass. Return clean exact commit, actual changed paths, four-field completion, tests and limitations; no unrelated edits.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ]
     }
   ],
   "createdAt": "2026-09-26T21:20:28.334Z",
-  "updatedAt": "2026-09-26T21:20:28.334Z"
+  "updatedAt": "2026-09-26T21:53:46.244Z"
 }

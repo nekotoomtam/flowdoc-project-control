@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "328ddee0188ba9c6cce02e10ea286e64ea070310599aea6b796838354d4d69ad",
+  "sourceDigest": "38e65504ea64ed22940a16ccdb995f446a4e7792836e8337f34e387cdf458193",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -4626,8 +4626,8 @@
         "repo-core",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Fresh PLAN-owned bounded repair of retained Thai256 append rejection, with exact corpus/no-op/lifecycle applicability review. Old rounds and unmerged harness retained immutable; no Stage6 timing or UX admission.",
+      "workState": "in-review",
+      "summary": "Bounded prerequisite repair accepted and integrated to Core main8997f4c14b1a5a2487ea990c5c6f35bd4da54aff. Exact retained Thai256 append now Accepted revision1, independent cold Equal19/5/10. Native79 and Core lane/main gates pass440files/3025tests (artifact skip separately3/3PASS); PLAN independently reproduced preflight and109 focused WASM tests. All6 repair criteria pass, actual19-file Scope Lock accepted. Diagnostic18rows:2Accepted/16typed unchanged rejections;11271 final obligations unexecuted. No Stage6/Gate2/geometry/Editor/UX admission. Transport-only attempt1 canonical correction retained original rich return; queue0. Core current lane clean/merged removed; old unmergedb48f194 and raw evidence retained. PC final closure gate/integration/clean-lane removal recorded in external terminal report after execution; no further product proof required.",
       "contextDocumentIds": [
         "doc-flowdoc-workflow-economy-policy",
         "doc-core-run-owned-property-implementation-plan-2026-09-14",
@@ -4635,17 +4635,18 @@
         "doc-flowdoc-b1-empty-side-contract-20260926"
       ],
       "activeRole": "planning-partner",
-      "expectedOutput": "Provider-backed bounded certificate and exact retained preflight, independent inline PLAN acceptance, supported/unsupported request inventory and deferred measurement/UX obligations.",
-      "riskSummary": "Bounded semantic correctness impact. No arbitrary boundary, whole-paragraph fallback, weaker corpus/caps or no-op/composition relabeling. PLAN may not patch Core after dispatch.",
+      "expectedOutput": "Repair complete. Recommended fresh prerequisite decision: exact no-op receipt/revision contract, remaining source-backed bounded ordinary certificates and explicit recovery/eviction/host-cancellation mapping; then unchanged11271 measurement. No geometry or Editor until applicable admission; user unchanged appearance/positions/line division including transient frames remains mandatory.",
+      "riskSummary": "Known remaining required-row rejections are explicit prerequisite blockers to Stage6, not failure of this bounded repair acceptance. Keep original corpus/generator/caps/thresholds. Do not equate disposal with eviction, missing-anchor rejection with recovery, injected faults with host cancellation, or composition-named committed rows with active composition.",
       "requiredEvidence": [
         "evidence-core-private-stage5-20260927",
-        "evidence-core-stage6-preflight-20260927"
+        "evidence-core-stage6-preflight-20260927",
+        "evidence-core-stage6-seam-repair-20260927"
       ],
       "createdAt": "2026-09-26T21:20:28.334Z",
-      "updatedAt": "2026-09-26T21:20:28.334Z",
+      "updatedAt": "2026-09-26T21:53:46.244Z",
       "coordination": {
         "version": 3,
-        "revision": 1,
+        "revision": 9,
         "round": {
           "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
           "roundId": "stage6-seam-repair-20260927-01a0df93",
@@ -4662,7 +4663,7 @@
             "generated/project-index.json",
             "tests/project-roadmap-work-queue.test.ts"
           ],
-          "state": "active",
+          "state": "released",
           "policyId": "flowdoc-workflow-economy-v2"
         },
         "modelAvailabilitySnapshots": [
@@ -4712,14 +4713,14 @@
             "repositoryId": "repo-core",
             "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
             "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
-            "state": "active",
+            "state": "released",
             "roundId": "stage6-seam-repair-20260927-01a0df93"
           },
           {
             "repositoryId": "repo-project-control",
             "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
             "baseCommit": "6310eac87c2fad1837d0347c64ecaaf262075cf7",
-            "state": "active",
+            "state": "released",
             "roundId": "stage6-seam-repair-20260927-01a0df93"
           }
         ],
@@ -4737,7 +4738,7 @@
             "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
             "revisionAttempt": 0,
             "expectedHandoffId": "seam-repair-handoff-0",
-            "status": "active",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0df95-2009-7b90-9d6c-8d0de92a8b86",
               "hostId": "local",
@@ -4754,7 +4755,172 @@
               "automaticChannel": "collaboration.send_message",
               "activeCommand": "collaboration.send_message target=/root; also send_message_to_thread PLAN; save handoff.json",
               "monitorOwner": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
-              "livenessDeadline": "2026-09-26T21:40:28.336Z",
+              "livenessDeadline": "2026-09-26T21:56:41.673Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Bounded provider-certified mixed-script repair requires source-backed Unicode boundary and outside-fact reasoning plus Rust atomic accounting; current contracts constrain the implementation.",
+              "smallerOptionAssessment": "Sol medium is available but this seam proof spans provider context and persistent state; use Astra medium to avoid unsupported locality assumptions. No higher effort justified.",
+              "availabilitySnapshotRef": "seam-local-host-20260927",
+              "escalationTriggers": [
+                "Material semantic/provider authority gap: return decision before expansion.",
+                "Two corrected reasoning-attributable revisions fail: reassess context and model."
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Private opt-in Core certificate only; user-visible Core geometry and Editor parity remain mandatory separately measured downstream."
+            },
+            "requiredEvidence": [
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "roundId": "stage6-seam-repair-20260927-01a0df93",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Repair private Core bounded adjacent-run/script-transition certificate prerequisite and recheck retained first-case preflight; report exact other corpus/lifecycle applicability.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+                "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+                "src/layout/runOwnedSemanticOracleStage2.ts",
+                "tests/coldSessionStage4.test.ts",
+                "tests/coldSessionStage5.test.ts",
+                "tests/runOwnedSemanticOracleStage2.test.ts",
+                "scripts/stage6/",
+                "tests/fixtures/stage6/",
+                "tests/stage6Preflight.test.ts"
+              ],
+              "forbiddenScope": [
+                "src/index.ts",
+                "docs/",
+                "packages/text-engine-rust-wasm/src/index.ts",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs",
+                "package.json"
+              ],
+              "acceptanceCriteria": [
+                "Reproduce exact retained prepared-first-thai-256-append RED, review and materialize only the five-file b48f194 harness into this fresh lane with explicit provenance; fixed d5031b6 corpus/generator remain byte-equivalent and old lane/raw unchanged.",
+                "Implement source-backed provider-certified adjacent-run/script-transition repair resolving exact retained Thai256 append; native and actual-WASM mixed Thai/Latin positive and negative fixtures prove independent cold equality, safe boundary witnesses and outside-fact validity without guessed boundaries or paragraph fallback.",
+                "Preserve authored source/default/origin semantics, Rust sole authority, atomic authentic receipt/revision behavior and complete accepted/attempt/family accounting within512/512/1024. Revalidate affected Stage4/5 tests and unsupported-case unchanged state.",
+                "Boundedly classify exact no-op/composition-named committed requests and lifecycle calls with source/test evidence; preserve active-composition rejection and identify any missing semantic authority/dependency with remedies and recommendation. Do not implement material contract expansion.",
+                "Run retained first-case preflight from clean committed fresh candidate, retain immutable raw results/hashes plus applicability outcomes. All11271 final timing obligations, thresholds and corpus remain unchanged and unexecuted; no Stage6/Gate2/geometry/Editor/UX admission.",
+                "Focused native and actual-WASM regressions, Core npm run check and private/public export boundary pass. Return clean exact commit, actual changed paths, four-field completion, tests and limitations; no unrelated edits."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 1,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": [
+                  {
+                    "kind": "evidence",
+                    "failurePrevented": "Do not mistake resolved seam regression for unchanged corpus admission or lose raw rejection evidence.",
+                    "existingProofInsufficient": "Stage6 evidence pins rejected old behavior; changed certificate triggers Stage4/5 freshness and requires narrow new result."
+                  }
+                ]
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-private-stage5-20260927",
+                "evidence-core-stage6-preflight-20260927"
+              ],
+              "unknowns": [
+                {
+                  "id": "required-row-applicability",
+                  "summary": "Other exact no-op/composition-named requests and lifecycle applicability need bounded classification, not automatic expansion.",
+                  "disposition": "deferred",
+                  "returnTrigger": "Source/test applicability review in this round; material gap returns exact decision before implementation."
+                },
+                {
+                  "id": "stage6-full-admission",
+                  "summary": "Full immutable performance/lifecycle admission remains unexecuted.",
+                  "disposition": "deferred",
+                  "returnTrigger": "Fresh separately scoped measurement after prerequisite readiness."
+                },
+                {
+                  "id": "geometry-ux",
+                  "summary": "Core geometry then Editor unchanged appearance/positions/line divisions including transient frames remain mandatory downstream.",
+                  "disposition": "deferred",
+                  "returnTrigger": "Stage6 admission and separate Core/Editor plans."
+                }
+              ],
+              "ownerDecisions": [
+                {
+                  "id": "bounded-repair-approved",
+                  "kind": "freeze-scope",
+                  "reason": "User approved continue bounded certificate repair and applicability review; preserve exact corpus/caps; no geometry/Editor/full measurement or historical lane mutation.",
+                  "decidedBy": "user via observer 01a0dd89-4aaf-7701-997c-7c294174187c",
+                  "decidedAt": "2026-09-26T21:20:28.334Z"
+                }
+              ],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Bounded provider-certified mixed-script repair requires source-backed Unicode boundary and outside-fact reasoning plus Rust atomic accounting; current contracts constrain the implementation.",
+                "smallerOptionAssessment": "Sol medium is available but this seam proof spans provider context and persistent state; use Astra medium to avoid unsupported locality assumptions. No higher effort justified.",
+                "availabilitySnapshotRef": "seam-local-host-20260927",
+                "escalationTriggers": [
+                  "Material semantic/provider authority gap: return decision before expansion.",
+                  "Two corrected reasoning-attributable revisions fail: reassess context and model."
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+                "worktree": "C:/Users/nekot/.codex/worktrees/stage6-seam-repair-core"
+              },
+              "escalationTriggers": [
+                "Missing semantics materially changes architecture/contract/scope.",
+                "Unbounded provider context or incomplete accounting.",
+                "Equality/atomicity/cap failure must be fixed in scope or reported."
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; also send_message_to_thread PLAN; save handoff.json"
+              }
+            },
+            "packetDigest": "1a024ea21c6c6e93cd3b43e5c00a461dd75b5254d1d7e2feb3ba3b90ecc762cc"
+          },
+          {
+            "roomRunId": "seam-repair-work",
+            "dispatchSetId": "seam-repair-dispatch",
+            "laneId": "seam-repair-core",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-stage6-seam-repair-20260927",
+            "checklistId": "checklist-flowdoc-core-stage6-seam-repair-20260927",
+            "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
+            "revisionAttempt": 1,
+            "expectedHandoffId": "seam-repair-handoff-1",
+            "status": "closed",
+            "locator": {
+              "threadId": "01a0df95-2009-7b90-9d6c-8d0de92a8b86",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/stage6-seam-repair-core",
+              "branch": "codex/stage6-seam-repair-core",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-repair/handoff-v3.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-26T21:47:36.691Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; also send_message_to_thread PLAN; save handoff.json",
+              "monitorOwner": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+              "livenessDeadline": "2026-09-26T22:06:57.031Z",
               "maxSendAttempts": 3
             },
             "modelDecision": {
@@ -4891,9 +5057,269 @@
             "packetDigest": "1a024ea21c6c6e93cd3b43e5c00a461dd75b5254d1d7e2feb3ba3b90ecc762cc"
           }
         ],
-        "handoffs": [],
+        "handoffs": [
+          {
+            "handoffId": "seam-repair-handoff-1",
+            "payloadDigest": "bc9ce77b4b44590c3fb5e30a1c00cafeb1c87907c773a5694912ff487016b316",
+            "payload": {
+              "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+              "roomRunId": "seam-repair-work",
+              "laneId": "seam-repair-core",
+              "ownerRepositoryId": "repo-core",
+              "revisionAttempt": 1,
+              "status": "PASS",
+              "behaviorChanged": true,
+              "behaviorSummary": "Private Rust Stage4 accepts bounded opposite-script tail insertion: complete old run<=32UTF16, inserted opposite ASCII AL or Thai consonant SA alphabet<=8UTF16, actual opposite outer neighbor or paragraph start. Real old provider facts and new combined grapheme/line segmentation certify the seam. Immutable outside payloads remain shared; AVL descriptor/source append preserves lazy coordinates. Authored spans/defaults/origins retained. Atomic authentic receipt/revision publication remains sole critical section. Explicit policyRuleVisits raises additive meter91->92; accepted/family/response/structural scalar accounting updated.",
+              "exactCommit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+              "changedFiles": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                "scripts/stage6/applicability.mjs",
+                "scripts/stage6/corpus.mjs",
+                "scripts/stage6/preflight.mjs",
+                "scripts/stage6/verify.mjs",
+                "tests/coldSessionStage4.test.ts",
+                "tests/fixtures/stage6/gate2a.v2.json",
+                "tests/stage6Preflight.test.ts"
+              ],
+              "tests": [
+                "cargo test --manifest-path packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml --features cold-session-qa cold_session — PASS: 79passed",
+                "npm run check — PASS: type-check;440files,3025passed,1skip",
+                "STAGE6_PREFLIGHT_ARTIFACT=.../seam-repair-green.json npx vitest run --config vitest.config.ts tests/stage6Preflight.test.ts — PASS: 3passed; previously skipped raw-artifact check executed",
+                "wasm-pack build private-disabled default artifact; WebAssembly.Module.exports inspection — PASS: 17exports;0stage3/4/5"
+              ],
+              "evidenceIds": [],
+              "risks": [
+                "Private bounded repair only; Stage6/Gate2 is not admitted.16of18 diagnostic required requests still reject unchanged.",
+                "No-op receipt/revision and lifecycle mapping need separate authority; no active-composition relabeling or waived cases.",
+                "Clean fresh lane retained for PLAN acceptance/integration; historical unmerged lane and raw evidence unchanged."
+              ],
+              "unknowns": [
+                "All11271final performance/lifecycle obligations remain unexecuted.",
+                "True no-op handling and explicit recovery/eviction/host cancellation mapping are unresolved.",
+                "Core geometry and Editor unchanged visual/position/line-division parity including transient frames remain downstream."
+              ],
+              "roundId": "stage6-seam-repair-20260927-01a0df93",
+              "completion": {
+                "behaviorChanged": "Private Rust Stage4 accepts bounded opposite-script tail insertion: complete old run<=32UTF16, inserted opposite ASCII AL or Thai consonant SA alphabet<=8UTF16, actual opposite outer neighbor or paragraph start. Real old provider facts and new combined grapheme/line segmentation certify the seam. Immutable outside payloads remain shared; AVL descriptor/source append preserves lazy coordinates. Authored spans/defaults/origins retained. Atomic authentic receipt/revision publication remains sole critical section. Explicit policyRuleVisits raises additive meter91->92; accepted/family/response/structural scalar accounting updated.",
+                "proof": [
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-repair-red.json; exact five-file provenance c8c33205ef4b5777c2f9e68082131da471ca9d42, immutable corpus/generator byte comparison",
+                    "criterionRefs": [
+                      "AC-1"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-native-final.log;79 native tests including independent provider equality, source-backed tails, negatives, atomic faults, all92 accepted/family slots, defaults/origins/index bases",
+                    "criterionRefs": [
+                      "AC-2",
+                      "AC-3",
+                      "AC-6"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-core-check-final.log;type-check and440files/3025tests PASS including actual WASM Stage4/5",
+                    "criterionRefs": [
+                      "AC-2",
+                      "AC-3",
+                      "AC-6"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-applicability.json;90 static request shapes,18 diagnostics, exact no-op/composition/lifecycle classification. Detailed source evidence, dependency impacts, remedies/tradeoffs and recommendations retained in C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-repair/handoff.json",
+                    "criterionRefs": [
+                      "AC-4"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-repair-green.json;clean committed exact retained preflight Accepted revision1/Equal19/5/10 with11271final obligations unchanged and unexecuted",
+                    "criterionRefs": [
+                      "AC-5"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-artifact-check.log;3of3 raw artifact/source-hash/tamper checks PASS; C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-public.log default actual WASM17exports/0private checked",
+                    "criterionRefs": [
+                      "AC-5",
+                      "AC-6"
+                    ]
+                  }
+                ],
+                "remainingUnknowns": [
+                  {
+                    "id": "required-row-applicability",
+                    "summary": "Exact required ordinary rejections, no-op semantics and lifecycle mappings remain as classified in immutable applicability and detailed handoff.",
+                    "disposition": "deferred",
+                    "returnTrigger": "Fresh bounded compatibility/discovery/repair decision before full Stage6 measurement."
+                  },
+                  {
+                    "id": "stage6-full-admission",
+                    "summary": "All11271fixed final obligations, full host/GC/phase timing/scaling and continuous lifecycle admission unexecuted.",
+                    "disposition": "deferred",
+                    "returnTrigger": "Separately scoped unchanged-corpus measurement after prerequisites are supported."
+                  },
+                  {
+                    "id": "geometry-ux",
+                    "summary": "Core geometry and Editor unchanged appearance, positions and line division including transient frames remain mandatory downstream.",
+                    "disposition": "deferred",
+                    "returnTrigger": "Stage6 admission followed by separate Core geometry and Editor acceptance plans."
+                  }
+                ],
+                "downstreamInformation": "Repair implemented is separate from Stage6 admission and UX. Retain full immutable corpus/thresholds. Recommend a fresh bounded decision on no-op receipt/revision and explicit lifecycle mapping plus scoped certificate work for unsupported ordinary rows before full measurement. Do not waive rows, relabel active composition, or reuse this preflight as timing PASS. Geometry/renderer/Editor/Backend/public/production/map unchanged; unchanged appearance/positions/line division including transient frames remains mandatory downstream.",
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "scripts/stage6/applicability.mjs",
+                  "scripts/stage6/corpus.mjs",
+                  "scripts/stage6/preflight.mjs",
+                  "scripts/stage6/verify.mjs",
+                  "tests/coldSessionStage4.test.ts",
+                  "tests/fixtures/stage6/gate2a.v2.json",
+                  "tests/stage6Preflight.test.ts"
+                ],
+                "createdEvidenceIds": [],
+                "createdDocumentIds": [],
+                "reviewCyclesUsed": 1,
+                "implementationCommitCount": 2
+              }
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-26T21:49:22.525Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-26T21:49:22.525Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-26T21:49:22.525Z",
+              "senderThreadId": "01a0df95-2009-7b90-9d6c-8d0de92a8b86",
+              "channel": "collaboration.send_message",
+              "arrivalSequence": 1,
+              "acknowledgedAt": "2026-09-26T21:49:22.525Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+              "reviewedAt": "2026-09-26T21:49:38.465Z",
+              "evidenceIds": [
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Native79 and full Core440files/3025tests",
+                  "status": "passed"
+                },
+                {
+                  "name": "PLAN actual-WASM preflight19/5/10 Equal and109 focused tests",
+                  "status": "passed"
+                },
+                {
+                  "name": "Raw source hashes and tamper checks3/3; private boundary17 exports",
+                  "status": "passed"
+                },
+                {
+                  "name": "Exact clean candidate and actual19-file Scope Lock",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "Stage6/Gate2 remains NOT_RUN;16/18 required diagnostic requests rejected.",
+                "Fresh no-op semantics, remaining ordinary certificate and lifecycle prerequisites precede11271 full measurement.",
+                "Core geometry and Editor unchanged view/edit UX remain downstream."
+              ],
+              "scopeLockVerification": {
+                "version": 1,
+                "status": "passed",
+                "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+                "terminalCommit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+                "packetDigest": "1a024ea21c6c6e93cd3b43e5c00a461dd75b5254d1d7e2feb3ba3b90ecc762cc",
+                "manifestDigest": "331c22f74b58c77188db669ab3a8b3c69e882bb5ba53378b2adc5f15a7aa2d3a",
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "scripts/stage6/applicability.mjs",
+                  "scripts/stage6/corpus.mjs",
+                  "scripts/stage6/preflight.mjs",
+                  "scripts/stage6/verify.mjs",
+                  "tests/coldSessionStage4.test.ts",
+                  "tests/fixtures/stage6/gate2a.v2.json",
+                  "tests/stage6Preflight.test.ts"
+                ],
+                "verifiedAt": "2026-09-26T21:49:38.465Z",
+                "clean": true
+              }
+            }
+          }
+        ],
         "completionQueue": [],
-        "cleanup": []
+        "cleanup": [
+          {
+            "repositoryId": "repo-core",
+            "worktreePath": "C:/Users/nekot/.codex/worktrees/stage6-seam-repair-core",
+            "branch": "codex/stage6-seam-repair-core",
+            "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+            "executor": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+            "preflightEvidenceIds": [
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "preflightSources": {
+              "cleanliness": "PLAN fresh git status --short empty before removal",
+              "merge": "Core main8997f4c contains both c8c3320 and8997f4c current-lane commits",
+              "worktreeGate": "seam-core-check-final.log; native79; ScopeLock accepted",
+              "mainGate": "core-main-check.log exit0 after fast-forward integration",
+              "liveProcess": "WORK terminal no builds; PLAN OS process path inspection clear"
+            },
+            "currentRound": true,
+            "worktreeClean": true,
+            "merged": true,
+            "worktreeGate": "passed",
+            "mainGate": "passed",
+            "liveProcessClear": true,
+            "disposition": "removed",
+            "roundId": "stage6-seam-repair-20260927-01a0df93"
+          }
+        ]
       },
       "childWorkIds": [],
       "phaseIds": [
@@ -13695,7 +14121,7 @@
       "id": "phase-flowdoc-core-stage6-seam-repair-20260927",
       "workId": "flowdoc-core-stage6-seam-repair-20260927",
       "title": "Bounded certificate repair and prerequisite applicability",
-      "phaseState": "in-progress",
+      "phaseState": "done",
       "order": 0,
       "repositoryIds": [
         "repo-core",
@@ -13703,14 +14129,14 @@
       ],
       "activeRole": "planning-partner",
       "verificationTarget": "checklist-flowdoc-core-stage6-seam-repair-20260927; native and actual-WASM regressions; exact retained preflight; Core/PC required gates",
-      "summary": "Repair implementation and prerequisite verification only; final Stage6 and UX remain separate.",
+      "summary": "All bounded repair AC1–6 passed. Core main integrated/verified and current Core lane removed. Stage6 full admission remains unexecuted with exact remaining unsupported request/lifecycle prerequisites; downstream UX unproven.",
       "stopConditions": [
         "Missing semantics materially changes architecture/contract/scope.",
         "Unbounded provider context or incomplete accounting.",
         "Equality/atomicity/cap failure must be fixed in scope or reported."
       ],
       "createdAt": "2026-09-26T21:20:28.334Z",
-      "updatedAt": "2026-09-26T21:20:28.334Z"
+      "updatedAt": "2026-09-26T21:53:46.244Z"
     },
     {
       "kind": "phase",
@@ -21818,48 +22244,60 @@
         {
           "id": "ac-1",
           "label": "Reproduce exact retained prepared-first-thai-256-append RED, review and materialize only the five-file b48f194 harness into this fresh lane with explicit provenance; fixed d5031b6 corpus/generator remain byte-equivalent and old lane/raw unchanged.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         },
         {
           "id": "ac-2",
           "label": "Implement source-backed provider-certified adjacent-run/script-transition repair resolving exact retained Thai256 append; native and actual-WASM mixed Thai/Latin positive and negative fixtures prove independent cold equality, safe boundary witnesses and outside-fact validity without guessed boundaries or paragraph fallback.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         },
         {
           "id": "ac-3",
           "label": "Preserve authored source/default/origin semantics, Rust sole authority, atomic authentic receipt/revision behavior and complete accepted/attempt/family accounting within512/512/1024. Revalidate affected Stage4/5 tests and unsupported-case unchanged state.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         },
         {
           "id": "ac-4",
           "label": "Boundedly classify exact no-op/composition-named committed requests and lifecycle calls with source/test evidence; preserve active-composition rejection and identify any missing semantic authority/dependency with remedies and recommendation. Do not implement material contract expansion.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         },
         {
           "id": "ac-5",
           "label": "Run retained first-case preflight from clean committed fresh candidate, retain immutable raw results/hashes plus applicability outcomes. All11271 final timing obligations, thresholds and corpus remain unchanged and unexecuted; no Stage6/Gate2/geometry/Editor/UX admission.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         },
         {
           "id": "ac-6",
           "label": "Focused native and actual-WASM regressions, Core npm run check and private/public export boundary pass. Return clean exact commit, actual changed paths, four-field completion, tests and limitations; no unrelated edits.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
-          "evidenceIds": []
+          "evidenceIds": [
+            "evidence-core-stage6-seam-repair-20260927"
+          ]
         }
       ],
       "createdAt": "2026-09-26T21:20:28.334Z",
-      "updatedAt": "2026-09-26T21:20:28.334Z"
+      "updatedAt": "2026-09-26T21:53:46.244Z"
     },
     {
       "kind": "checklist",
@@ -30023,6 +30461,48 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-core-stage6-seam-repair-20260927",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+      "pathOrContractId": "core-private-stage6-tail-seam-repair/1",
+      "verificationSummary": "Private bounded opposite-script tail certificate resolves exact retained prepared-first-thai-256-append with independent cold equality and19/5/10 source/property/provider work. This is repair acceptance only; Stage6/Gate2 and UX are not admitted. At 8997f4c14b1a5a2487ea990c5c6f35bd4da54aff, full old run<=32 UTF16 and inserted opposite alphabet<=8 UTF16, pure ASCII letters/Thai consonants U+0E01..U+0E2E, require paragraph start or actual opposite-class outer neighbor. Existing ICU2.2 dictionary input stops at non-SA; old/new full bounded provider facts plus combined segmentation certify retained outside facts and new seam. Authored source/default/origin semantics, authentic atomic receipt/revision,92 additive accepted/attempt/family slots and persistent prefix sharing preserved. No whole-paragraph fallback or guessed style/run fence. PLAN-owned independent inline code/accounting review, followed by actual-WASM retained preflight reproduction and109 focused Stage4/5/harness tests (one artifact-only test then separately enabled:3/3 passed including source hashes/tamper controls). WORK native79 tests and Core npm run check440 files/3025 tests pass,1 artifact-only skip; separate artifact3/3 pass; default WASM17 exports excludes private Stage3/4/5. Review corrected overwritten payload counters, unmetered boundary comparisons, cancellation ordering and cumulative pre-read budget before terminal commit. Existing policy limits fallback resources to2; admitted32+8 bound estimates source<=207/property<=58/provider<=200. Current19-file actual Git manifest and clean exact terminal are independently checked by Scope Lock acceptance. Applicability:90 static first-request shapes and18 size256 diagnostic probes;2 Accepted (Thai append and mixed backspace),16 NotAdmissible ({\"Accepted\":2,\"uncertified-seam\":4,\"budget-exhaustion\":6,\"unsupported-command-shape\":3,\"uncertified-boundary\":3}), all18 independent cold Equal to their actual edited/unchanged source. No blanket corpus support: Thai/Latin backspace, interior/long-window/script/mark transitions and true no-op still have recorded rejections. composition-update is a committed replacement; composition-commit is [n,n)+empty and returns unsupported-command-shape; active composition stays composition-active. Required next decisions: explicit no-op receipt/revision semantics, source-backed certificates for remaining required rows, and lifecycle mapping for recovery/eviction/host cancellation. Missing-anchor rejection is not recovery; disposal is not eviction; injected cancellation is not a host cancellation contract. Recommend a separately scoped prerequisite/contract decision, then unchanged measurement; do not lower corpus or caps. All11271 final obligations remain unexecuted:825 preparation,4950 prepared-first,4950 sustained,180 burst,6 adversarial,360 cold; p95<=8ms/max<=16.7ms/scaling<=1.50 remain. No geometry/renderer/Editor/Backend/public/production/map admission; owner unchanged view/edit appearance, positions and line division including transient frames remains mandatory downstream. Old unmerged b48f194 lane/raw remain immutable; five-file harness reviewed byte-equivalent at fresh c8c3320 provenance before repair. Raw root C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b; SHA256 {\"seam-repair-red.json\":\"87ceff8412ae719a6a07ac4790d69ad21a2957f431f7abdd17d24d1d53b897af\",\"seam-repair-green.json\":\"992b3353d477d68787235e7625016252c4cc45ed917fa0472ae7b211803be650\",\"plan-independent-preflight.json\":\"99f5270ac99f1c7f5f0331bf0eff2a89445cfa0d43d9fa5ac17e0d2a714d6cd4\",\"seam-applicability.json\":\"1906eedb771e045ea380febb3c4b17a60193794318737dc5329d07be2e39a32c\"}. Required Core main npm run check passed after clean fast-forward integration at the same8997f4c commit; current clean merged Core lane/branch removed after process inspection. PC closure gate/main and PLAN-lane cleanup are workflow results in terminal report, not expanded product claims.",
+      "verifiedAt": "2026-09-26T21:45:34.582Z",
+      "validity": {
+        "claim": "Private bounded opposite-script tail certificate resolves exact retained prepared-first-thai-256-append with independent cold equality and19/5/10 source/property/provider work. This is repair acceptance only; Stage6/Gate2 and UX are not admitted.",
+        "repositoryId": "repo-core",
+        "pathScope": [
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+          "scripts/stage6/applicability.mjs",
+          "scripts/stage6/corpus.mjs",
+          "scripts/stage6/preflight.mjs",
+          "scripts/stage6/verify.mjs",
+          "tests/coldSessionStage4.test.ts",
+          "tests/fixtures/stage6/gate2a.v2.json",
+          "tests/stage6Preflight.test.ts"
+        ],
+        "sourceRevision": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+        "verificationMethod": "PLAN-owned independent inline code/accounting review, followed by actual-WASM retained preflight reproduction and109 focused Stage4/5/harness tests (one artifact-only test then separately enabled:3/3 passed including source hashes/tamper controls). WORK native79 tests and Core npm run check440 files/3025 tests pass,1 artifact-only skip; separate artifact3/3 pass; default WASM17 exports excludes private Stage3/4/5. Review corrected overwritten payload counters, unmetered boundary comparisons, cancellation ordering and cumulative pre-read budget before terminal commit. Existing policy limits fallback resources to2; admitted32+8 bound estimates source<=207/property<=58/provider<=200. Current19-file actual Git manifest and clean exact terminal are independently checked by Scope Lock acceptance.",
+        "freshnessTriggers": [
+          "Any change to admitted alphabets/window/witness, provider policy/resources, source/run/shard derivation, receipts, cancellation or accounting requires affected revalidation.",
+          "Any change to corpus/generator/harness/QA oracle/WASM invalidates these exact raw results;11271 denominator and original thresholds remain immutable.",
+          "This narrow repair cannot grant Stage6/Gate2 or downstream Core geometry/Editor/UX admission; remaining rejected rows and lifecycle contract prerequisites must be resolved first."
+        ]
+      }
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-core-superpowers-text-block-docs-retired-2026-09-01",
       "nodeIds": [],
       "repositoryId": "repo-core",
@@ -31860,7 +32340,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-26T21:20:28.334Z",
+    "generatedAt": "2026-09-26T21:53:46.244Z",
     "currentGoal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
     "currentBlocker": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
     "activeWork": [
@@ -31880,16 +32360,6 @@
         "milestones": {
           "planning": "pending",
           "implementation": "not-required",
-          "verification": "not-required",
-          "truthPromotion": "pending"
-        }
-      },
-      {
-        "workId": "flowdoc-core-stage6-seam-repair-20260927",
-        "title": "Core Stage6 bounded mixed-script seam prerequisite repair",
-        "milestones": {
-          "planning": "pending",
-          "implementation": "pending",
           "verification": "not-required",
           "truthPromotion": "pending"
         }
@@ -31965,24 +32435,6 @@
         "summary": "Core geometry, Editor transition including transient frames and user-visible parity remain separately authorized downstream obligations.",
         "disposition": "deferred",
         "returnTrigger": "Stage6/Gate2 PASS and separately approved next plan."
-      },
-      {
-        "id": "geometry-ux",
-        "summary": "Core geometry then Editor unchanged appearance/positions/line divisions including transient frames remain mandatory downstream.",
-        "disposition": "deferred",
-        "returnTrigger": "Stage6 admission and separate Core/Editor plans."
-      },
-      {
-        "id": "required-row-applicability",
-        "summary": "Other exact no-op/composition-named requests and lifecycle applicability need bounded classification, not automatic expansion.",
-        "disposition": "deferred",
-        "returnTrigger": "Source/test applicability review in this round; material gap returns exact decision before implementation."
-      },
-      {
-        "id": "stage6-full-admission",
-        "summary": "Full immutable performance/lifecycle admission remains unexecuted.",
-        "disposition": "deferred",
-        "returnTrigger": "Fresh separately scoped measurement after prerequisite readiness."
       }
     ],
     "nextDecision": "Bounded harness preflight, then remedy/CCR on required unsupported case.",
