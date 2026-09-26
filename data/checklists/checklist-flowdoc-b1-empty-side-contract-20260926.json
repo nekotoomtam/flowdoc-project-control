@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-b1-empty-side-contract-20260926",
+  "phaseId": "phase-flowdoc-b1-empty-side-contract-20260926",
+  "title": "B1 empty-side decision acceptance",
+  "items": [
+    {
+      "id": "ac-source",
+      "label": "Pin accepted discovery, semantic contract and source gap without reproof.",
+      "state": "passed",
+      "evidenceTarget": "Contract Source-grounded findings; Core a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "evidenceIds": [],
+      "verificationNote": "Read-only source inspection confirms two nonempty oracle sides, absent runtime paragraph defaults and per-session cumulative ledger."
+    },
+    {
+      "id": "ac-contract",
+      "label": "Specify endpoints, empty source/children, provenance, oracle, atomicity, receipts, lineage and all work costs under unchanged caps.",
+      "state": "passed",
+      "evidenceTarget": "Contract proposal sections 1-6",
+      "evidenceIds": [],
+      "verificationNote": "Inline source/spec review complete; desired semantics explicitly remain proposals."
+    },
+    {
+      "id": "ac-owner",
+      "label": "Record explicit owner selection of unresolved semantics before contract acceptance.",
+      "state": "pending",
+      "evidenceTarget": "Owner decision in controlling observer task",
+      "evidenceIds": []
+    },
+    {
+      "id": "ac-gate",
+      "label": "Validate and integrate the bounded decision records, with fresh worktree and main gates.",
+      "state": "pending",
+      "evidenceTarget": "npm run check in supplied worktree and local main; terminal commit report",
+      "evidenceIds": []
+    }
+  ],
+  "createdAt": "2026-09-26T14:56:41.895Z",
+  "updatedAt": "2026-09-26T14:56:41.895Z"
+}

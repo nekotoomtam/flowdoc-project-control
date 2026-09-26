@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-b1-empty-side-contract-20260926",
+  "workId": "flowdoc-b1-empty-side-contract-20260926",
+  "title": "Resolve B1 endpoint contract",
+  "phaseState": "blocked",
+  "order": 0,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-b1-empty-side-contract-20260926; source-bound contract review; npm run check in worktree and main",
+  "summary": "Complete source-grounded proposal is ready for owner selection. Contract acceptance and downstream implementation remain blocked on explicit decision.",
+  "stopConditions": [
+    "No product mutation in this round.",
+    "Do not claim approval without explicit owner decision.",
+    "Stop for scope expansion or unresolved authority."
+  ],
+  "createdAt": "2026-09-26T14:56:41.895Z",
+  "updatedAt": "2026-09-26T15:00:12.171Z"
+}

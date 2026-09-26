@@ -1,0 +1,88 @@
+{
+  "kind": "work",
+  "id": "flowdoc-b1-empty-side-contract-20260926",
+  "title": "B1 empty-side certificate contract decision",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "workState": "in-review",
+  "summary": "Fresh contract-only round. Reviewable endpoint/defaults/sibling-lineage proposal; owner decision pending. No product mutation or performance admission.",
+  "contextDocumentIds": [
+    "doc-flowdoc-b1-empty-side-contract-20260926",
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14",
+    "doc-core-run-owned-property-implementation-plan-2026-09-14"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "One source-grounded owner-reviewed contract and conditional fresh implementation kickoff; all endpoint and empty-side costs explicit.",
+  "riskSummary": "Owner intent does not yet select empty-side defaults/provenance and unchanged-sibling inverse semantics. Structural provider equality/accounting unmeasured; no Stage5/Gate2 PASS.",
+  "requiredEvidence": [
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 0,
+    "round": {
+      "planTaskId": "01a0de32-c1af-7fd0-866a-e886c976671f",
+      "roundId": "b1-empty-contract-20260926-01a0de32",
+      "workId": "flowdoc-b1-empty-side-contract-20260926",
+      "scopeId": "b1-empty-side-contract",
+      "scopeKeys": [
+        "project-control:b1-empty-side-contract"
+      ],
+      "allowedFiles": [
+        "docs/domains/flowdoc-b1-empty-side-certificate-contract-2026-09-26.md",
+        "data/work/flowdoc-b1-empty-side-contract-20260926.json",
+        "data/phases/phase-flowdoc-b1-empty-side-contract-20260926.json",
+        "data/checklists/checklist-flowdoc-b1-empty-side-contract-20260926.json",
+        "data/documents/flowdoc-b1-empty-side-contract-20260926.json",
+        "generated/project-index.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "b1-empty-local-20260926",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent and create_thread tool schemas expose Astra medium and Sol medium; no new model room required for inline contract maintenance.",
+        "observedAt": "2026-09-26T14:56:41.895Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0de32-c1af-7fd0-866a-e886c976671f",
+        "baseCommit": "20a55019ef5174e7241d795daae8358a1b861b80",
+        "state": "active",
+        "roundId": "b1-empty-contract-20260926-01a0de32"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-26T14:56:41.895Z",
+  "updatedAt": "2026-09-26T15:00:12.170Z"
+}
