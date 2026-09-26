@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 56);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 57);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -564,6 +564,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-product-domain-relationship",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
+        "flowdoc-remaining-work-plan-catalog",
         "project-control-hardening",
         "project-control-overview-history-gui",
       ],
@@ -746,6 +747,7 @@ describe("project roadmap Work Queue", () => {
         "agent-and-skill-design",
         "cockpit-active-work-reconciliation",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
         "project-control-hardening",
         "project-control-overview-history-gui",

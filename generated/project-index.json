@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6b1afd63f84b67ec98c9c6775b54136ed88efcef686f2c91642c05d6fbe11dcb",
+  "sourceDigest": "b6d7ce5be9ec3c68e40e73433871c7f4cd4521cc08b6eb59b93c8d14dc48dbf1",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -416,6 +416,7 @@
         "agent-and-skill-design",
         "cockpit-active-work-reconciliation",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
         "project-control-hardening",
         "project-control-overview-history-gui",
@@ -8317,6 +8318,7 @@
         "flowdoc-product-domain-relationship",
         "flowdoc-product-evidence-refresh",
         "flowdoc-product-terminology-foundation",
+        "flowdoc-remaining-work-plan-catalog",
         "project-control-hardening",
         "project-control-overview-history-gui"
       ],
@@ -8445,6 +8447,37 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-product-terminology-foundation"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-remaining-work-plan-catalog",
+      "title": "FlowDoc Remaining Work Plan Catalog",
+      "nodeId": "project-control",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "Owner-requested planning catalog partitions remaining work into eleven independently opened future PLAN rounds across four categories. Catalog preparation only; no product execution or historical registry mutation.",
+      "contextDocumentIds": [
+        "doc-flowdoc-remaining-work-plan-catalog-2026-09-26",
+        "doc-flowdoc-workflow-economy-policy"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Registered category plan cards with owners, dependencies, scope, acceptance and budgets; future PLAN execution starts separately with fresh context.",
+      "riskSummary": "Legacy product and cleanup state must be refreshed at each future kickoff. This catalog does not activate any future room or validate product behavior.",
+      "requiredEvidence": [],
+      "createdAt": "2026-09-26T11:53:56.176Z",
+      "updatedAt": "2026-09-26T11:53:56.176Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-remaining-work-plan-catalog"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-remaining-work-plan-catalog"
       ]
     },
     {
@@ -11818,6 +11851,26 @@
       "summary": "Done: Project Control now has a product terminology foundation and terminology discipline rule for future Editor/frontend and cross-repository product work without promoting product readiness.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-remaining-work-plan-catalog",
+      "workId": "flowdoc-remaining-work-plan-catalog",
+      "title": "Categorize remaining work into future PLAN rounds",
+      "phaseState": "done",
+      "order": 0,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "stopConditions": [
+        "No product mutations or old execution registry changes",
+        "Stop when category coverage and registration are complete"
+      ],
+      "verificationTarget": "checklist-flowdoc-remaining-work-plan-catalog; docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md; npm run check",
+      "summary": "Planning deliverable groups the remaining scope into A1-A2, B1-B2, C1-C4 and D1-D3. Completion refers only to catalog preparation, not execution of these future plans.",
+      "createdAt": "2026-09-26T11:53:56.176Z",
+      "updatedAt": "2026-09-26T11:53:56.176Z"
     },
     {
       "kind": "phase",
@@ -21248,6 +21301,32 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-remaining-work-plan-catalog",
+      "phaseId": "phase-flowdoc-remaining-work-plan-catalog",
+      "title": "Remaining-work catalog acceptance",
+      "items": [
+        {
+          "id": "remaining-work-coverage",
+          "label": "Map the twelve pending items, four unphased Work records and residual cleanup to categorized plans.",
+          "state": "passed",
+          "evidenceTarget": "docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md",
+          "evidenceIds": [],
+          "verificationNote": "The coverage table maps all twelve pending checklist items and four unphased records from the pre-catalog 59-Work inventory; A2 handles residual cleanup."
+        },
+        {
+          "id": "future-round-boundaries",
+          "label": "Define owner, dependency, scope, acceptance and budgets without activating future execution.",
+          "state": "passed",
+          "evidenceTarget": "docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md",
+          "evidenceIds": [],
+          "verificationNote": "Eleven cards define future rounds; the common kickoff requires fresh version-3 execution and policy-v2 packets. No old records or product files are modified."
+        }
+      ],
+      "createdAt": "2026-09-26T11:53:56.176Z",
+      "updatedAt": "2026-09-26T11:53:56.176Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-structure-pattern-build-preview-integration-v0",
       "phaseId": "phase-flowdoc-structure-pattern-build-preview-integration-v0",
       "title": "Structure Pattern Build/Preview Integration v0 Acceptance Checklist",
@@ -24876,6 +24955,19 @@
         }
       ],
       "content": "# FlowDoc Project Control Skill Installation - 2026-09-01\n\n## Authority Boundary\n\nThis document records installation and bounded validation of the local personal\nCodex skill `flowdoc-project-control`. It is owned by Project Control under\n`flowdoc-product-development-resumption > agent-and-skill-design`.\n\nThe skill is an agent entrypoint guard. It is not a FlowDoc product behavior\nclaim, not a generated Project Control read model, not a source of map truth,\nand not a replacement for Project Control records. Canonical FlowDoc shared\nunderstanding still lives in Project Control `data/` and `docs/` records.\n\nThis document does not promote Core, Backend, Editor, compatibility, release\nreadiness, frontend readiness, FlowDoc product truth, or map truth.\n\n## Work Context\n\n- Work path: `flowdoc-product-development-resumption > agent-and-skill-design`\n- Owner repository: `repo-project-control`\n- Active role: `project-control-steward`, with Documentation Authority Steward\n  and Evidence Registrar responsibilities for this phase\n- Current Phase: `phase-agent-and-skill-design-flowdoc-project-control-skill`\n- Checklist target:\n  `checklist-agent-and-skill-design-flowdoc-project-control-skill`\n- Evidence target: `evidence-flowdoc-project-control-skill-2026-09-01`\n- Known risks: local personal skills may not be installed or surfaced in every\n  future environment, and generic planning defaults can still be present\n- Unknown state: bounded validation does not prove future agent compliance\n  outside this machine, future Codex skill routing, or all possible prompt\n  pressure cases\n\n## Installed Skill\n\nThe local skill is installed at:\n\n```text\nC:\\Users\\nekot\\.codex\\skills\\flowdoc-project-control\\SKILL.md\n```\n\nIts trigger description starts:\n\n```text\nUse when working on FlowDoc\n```\n\nThe skill routes any FlowDoc, Project Control, Core, Backend, Editor, document\nmap, evidence, Work record, product terminology, or `flowdoc-*` repository work\nthrough Project Control first. It requires the agent to identify the Work path,\nowner repository, active role, current Phase, Checklist target, Evidence target,\nknown risks, and unknown state before treating repository state as current or\nediting behavior.\n\nFor FlowDoc Markdown work, it points to\n`docs/domains/flowdoc-agent-documentation-authority-operating-rules.md` and\nstates that Project Control override wins over generic planning or writing\nskills. It blocks FlowDoc-wide plans, role definitions, cleanup decisions,\nproduct terminology, cross-repository readiness, and map-truth boundaries from\nbeing written into product-repository `docs/superpowers/plans` or\n`docs/superpowers/specs` paths.\n\nIf Project Control cannot identify the required context, the skill requires the\nagent to stop before editing and report exactly:\n\n```text\nBLOCKER: FlowDoc Project Control unavailable or unresolved.\n```\n\n## Validation\n\nStructural validation passed for the local skill package:\n\n```text\npython C:\\Users\\nekot\\.codex\\skills\\.system\\skill-creator\\scripts\\quick_validate.py C:\\Users\\nekot\\.codex\\skills\\flowdoc-project-control\n```\n\nThe RED Project Control guard failed before these records existed:\n\n```text\nnpx vitest run tests/flowdoc-project-control-skill.test.ts tests/agent-documentation-authority-operating-rules.test.ts --maxWorkers=1\n```\n\nThe failure showed that `agent-and-skill-design` still lacked the skill\npackaging Phase, required Evidence, and installation document.\n\nHistorical RED evidence remains the product-repository Markdown drift already\nrecorded by Project Control: generic `docs/superpowers` planning defaults were\nusable before Project Control documentation authority policy, role overlays,\nguards, and global guidance were explicit.\n\nA live no-skill pressure scenario did not reproduce the old failure because\nthe current global guidance already routes FlowDoc-wide planning through\nProject Control. The agent chose Project Control Work/Phase/Checklist/Evidence\ninstead of the generic product-repository plan path, which means the global\ncontrol layer is now helping.\n\nThe GREEN skill pressure scenario attached this skill directly. The agent chose\nProject Control first, listed the required pre-action fields, rejected the\ngeneric `docs/superpowers/plans` path for FlowDoc-wide truth, and gave the\nProject Control unresolved blocker phrase.\n\nThis is bounded validation. It confirms the skill structure and one pressure\ncase; it does not prove future agent compliance for every environment, missing\nskill installation, disabled skill routing, or adversarial prompts.\n\n## Limits\n\n- The skill is local to `C:\\Users\\nekot\\.codex\\skills` and is not stored inside\n  Core, Backend, Editor, or the Project Control repository.\n- Project Control `AGENTS.md` and global Codex guidance remain the primary\n  durable entrypoint rules.\n- Product repositories still own behavior and their own `AGENTS.md` files.\n- Work records, glossary wording, plans, GUI history, generated indexes, and\n  this skill are not product evidence by themselves.\n"
+    },
+    {
+      "kind": "document",
+      "id": "doc-flowdoc-remaining-work-plan-catalog-2026-09-26",
+      "title": "FlowDoc Remaining Work: Categorized Plan Catalog",
+      "path": "docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md",
+      "nodeIds": [],
+      "role": "decision",
+      "authority": "Future round sequencing only; not an execution packet, product evidence, current workflow policy or map truth.",
+      "lifecycle": "active",
+      "contextClass": "supporting",
+      "repositoryRefs": [],
+      "content": "# FlowDoc — แผนแยกหมวดสำหรับงานคงเหลือ\n\n## Authority Boundary\n\nOwner: FlowDoc Project Control. Classification: Project Control canonical planning prose.\nเอกสารนี้กำหนดหมวด ขอบเขต ลำดับ และเกณฑ์จบของรอบที่จะเปิดใหม่ตามคำขอผู้ใช้\nไม่ใช่ execution packet, product Evidence, หรือการเปิด PLAN/WORK เก่ากลับมาใช้\nไม่แก้สถานะงานเก่า ไม่อนุมัติ product implementation และไม่เปลี่ยน DOCUMENT_MAP\nนโยบายการทำงานปัจจุบันคือ `flowdoc-workflow-economy-policy.md`\n\n## รอบจัดทำแผนนี้\n\n- Work: `flowdoc-remaining-work-plan-catalog` ใต้ `flowdoc-product-development-resumption`\n- Owner: `repo-project-control`; role: `planning-partner`\n- Phase: `phase-flowdoc-remaining-work-plan-catalog`\n- Checklist: `checklist-flowdoc-remaining-work-plan-catalog`\n- Evidence target: เอกสารนี้สำหรับความครบของแผน; `npm run check` สำหรับความถูกต้องของ records/projection เท่านั้น\n- Work Size: small; Risk Tier: routine; authority: implementation เฉพาะเอกสารและ records ของ catalog นี้\n- Base: `6a5162aeb97f572a5daf0d0d75f81760f9ece691`; branch: `codex/remaining-work-plan-catalog`\n- Worktree: `C:/Users/nekot/.codex/worktrees/remaining-work-plan-catalog/flowdoc-project-control`\n- Allowed: เอกสารนี้, document/work/phase/checklist records ที่ใช้ชื่อ catalog นี้, projection ที่สร้างโดยเครื่องมือ\n  และค่าคาดหวังจำนวน/รายชื่อ Work ใน `tests/project-roadmap-work-queue.test.ts` ที่จำเป็นต่อ registration\n- Forbidden: product repositories, source/schema changes, unrelated test changes, old execution registries, old Work status, Evidence/map promotion\n- Proof Budget: ตรวจ coverage กับงานค้างและ `npm run check` ใน worktree/main; ไม่เพิ่ม formal audit หรือ product proof\n- Document Budget: catalog เดียวและ registration records; ไม่สร้างสำเนาแผนเก่า\n- Model: ใช้ session ปัจจุบันสำหรับการจัดหมวดเอกสารแบบ inline; ไม่ dispatch WORK และไม่อ้างว่าตรวจ host model availability แล้ว\n- Return: รายงานและลิงก์กลับใน task นี้; ไม่มี separate-room ceremony\n- Stop: prerequisite หาย, authority conflict, scope escape หรือ catalog/registration/check ผ่านครบ\n\n## ฐานที่ใช้และขอบเขตความสด\n\nตรวจ records ณ 2026-09-26 ก่อนเพิ่ม catalog: Work 59 รายการ; 54 รายการมีทุก Phase done\nและทุก Checklist passed; Roadmap เหลือ 3 Phase/12 items; อีก 4 Work ไม่มี Phase\nตัวเลขนี้เป็น snapshot ของ records ไม่ใช่ผลตรวจ product repositories ใหม่\n\nCore Stage 4 ผ่านที่ `a39e91fd671706d8217d58f4668ed45afa0d0e67` ตาม\n`evidence-core-rust-stage4-multispan-cumulative-2026-09-21` และ Work หลักบันทึก main integration แล้ว\nใช้เป็น immutable input ไม่ทำ Stage 4 ซ้ำเพียงเพราะแผนเก่ายังเขียนว่าเป็นงานถัดไป\nStage 5/6, Enter/join, general cross-span editing และ Editor UX ยังไม่ได้รับรองโดย Evidence นี้\nสถานะโฟลเดอร์ตกค้าง, PDF dependency และจำนวนเอกสาร 293 ชิ้นเป็นบันทึกเก่าที่ต้องตรวจใหม่\n\n## วิธีเปิดแต่ละ PLAN\n\nรหัส A1–D3 เป็นรหัสคิวใน catalog ไม่ใช่ live task IDs หรือ registry IDs\nแต่ละรายการเริ่มใน PLAN ใหม่หนึ่งรอบ ใช้ execution context version 3 ใหม่เมื่อเปิด execution\nห้ามส่งงาน รอผล หรือโอน ownership ผ่านห้อง/registry เก่าที่ปิดแล้ว\nก่อนเริ่มอ่าน Current Truth Snapshot, input ที่อ้างไว้ และ AGENTS.md ของ owner\nแล้ว pin base/worktree, exact allowed/forbidden paths, Phase/Checklist/Evidence target,\npolicy-v2 packet digest, acceptance, budgets, model decision และ return route ของรอบนั้น\nPLAN default คือ Astra medium; WORK เลือกแยกจาก host availability snapshot ณ ตอนเปิด\nไม่มี product file list หรือ model availability ที่เดาล่วงหน้าใน catalog นี้\nหาก discovery เปลี่ยน architecture/ownership/contract/scope ให้จบ discovery แล้วเปิด implementation รอบใหม่\nProduct repair หลัง dispatch ต้องกลับ WORK; หยุดเมื่อเกณฑ์ผ่าน ห้ามลด gate เพื่อให้ผ่าน\n\n## หมวด A — สถานะและการปิดงาน\n\n### A1 — กระทบยอด Work/Plan และกำหนดคิวปัจจุบัน\n\n- Owner: Project Control; size small; risk routine; ทำก่อน B1\n- เป้าหมาย: แยกงานจบ งานยังค้าง งานภาพรวม และงานที่ถูกแทนที่ โดยไม่แตะประวัติ execution\n- ขั้นตอน: ตรวจ 54 Work ที่ผ่านครบ; ตรวจ 4 Work ไม่มี Phase; เทียบข้อความแผนกับ Evidence ล่าสุด;\n  บันทึก disposition ของแต่ละรายการและ current continuation pointer เท่าที่จำเป็น\n- เกณฑ์จบ: ทั้ง 59 Work มีคำอธิบายสถานะที่ตรวจย้อนกลับได้; 4 รายการไม่มี Phase มีคำตัดสิน\n  retain/close/superseded/needs-discovery พร้อมเหตุผล; Stage 4 ไม่ถูกเสนอให้ทำซ้ำ;\n  `npm run check` ผ่าน โดยไม่สร้างสถานะ enum ใหม่หรือแก้ registry v1/v2\n- Proof/Document Budget: disposition หนึ่งชุด ใช้ records/Evidence เดิม; ไม่พิสูจน์ผลิตภัณฑ์ใหม่\n\n### A2 — ตรวจโฟลเดอร์ตกค้างหลัง Core integration\n\n- Owner: Project Control coordination และ Core repository; size small; risk routine; หลัง A1\n- เริ่ม discovery อ่านอย่างเดียว: ตรวจเฉพาะ residual lane ที่ Work บันทึกว่า Windows ลบไม่ได้\n- เกณฑ์จบ discovery: ระบุ path, registration, cleanliness, merge และ process ownership ปัจจุบัน\n  แล้วตัดสิน retain หรือ eligible-for-cleanup พร้อมหลักฐาน\n- หากลบได้ ให้เปิด cleanup round ที่มีขอบเขตชัดตาม coordination controls;\n  ห้ามลบ dirty/unmerged/unresolved state หรือฆ่า process ที่ไม่ทราบเจ้าของ\n- Budget: รายงานสั้นหนึ่งชุด; cleanup ไม่เป็น prerequisite ของ B1 ถ้าไม่มี authority conflict\n\n## หมวด B — Core text engine\n\n### B1 — Stage 5: Enter/join แบบ atomic และ bounded\n\n- Owner: Core; size medium; risk bounded; หลัง A1 ยืนยัน Stage 4 และฐานปัจจุบัน\n- Input: Stage 4 Evidence และ `flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md` ส่วน Stage 5\n- ขั้นตอน: ตรวจ contract ของ certified seam; ถ้ายังไม่ชัดเปิด discovery-only ก่อน;\n  จึงเตรียม implementation สำหรับ Enter head/middle/tail และ inverse join\n- เกณฑ์จบ: same-property, Thai/Latin, Latin split เช่น off|ice, empty child และ RTL-sensitive outcomes\n  เป็นไปตาม contract; children publish ทั้งคู่หรือ parent ไม่เปลี่ยน;\n  SeamCertificate และ cumulative accounting ครบ; คงเพดาน source/property/provider เดิม\n- หาก property-changing Enter ไม่มี bounded certificate ให้คืน not-admissible/BLOCKER;\n  ไม่เพิ่ม general cross-span edit, Editor, public binding หรือ production activation\n- Budget: focused semantic/atomicity tests, required owner gate และผลรับงานหนึ่งชุด;\n  contract เพิ่มได้เฉพาะเมื่อ source review ชี้ ambiguity ที่ขวาง acceptance\n\n### B2 — Stage 6: Recovery และ Gate 2 admission\n\n- Owner: Core; size medium; risk bounded; หลัง B1 ผ่าน\n- ขั้นตอน: ตรวจ no-anchor recovery, eviction, cancellation, disposal และ receipt lifecycle;\n  รัน fixed 180-revision corpus พร้อม raw measurements/oracle/cumulative work\n- เกณฑ์จบ: ทุก case ผ่าน semantic, bounds, latency, scaling และ lifecycle ตามเกณฑ์เดิม\n  พร้อม required Core gate; fail จุดเดียวต้องคง BLOCKER และเก็บ failure evidence\n- Budget: ใช้ corpus เดิมหนึ่งรอบและซ่อมเฉพาะ failure ที่เข้า scope; ห้ามเปลี่ยน thresholds/fixtures เพื่อหลบ failure\n- ผลผ่านอนุญาตให้วางรอบ Gate 3/Editor ถัดไปเท่านั้น ไม่เปิด production อัตโนมัติ\n\n## หมวด C — Editor และประสบการณ์ใช้งาน\n\n### C1 — Gate 3/geometry boundary และ Preview keyboard contract\n\n- Owner: Core สำหรับ geometry contract; Editor สำหรับ keyboard behavior; Project Control แยก owner lanes\n- Size medium; risk bounded; หลัง B2; เริ่ม discovery-only\n- ขั้นตอน: ตรวจ boundary ของ authoritative line/geometry และ input; นิยาม Enter, delete/backspace,\n  selection และ undo ตาม source/owner decision; แยก Core กับ Editor implementation หากจำเป็น\n- เกณฑ์จบ: contract พร้อมตัวอย่างและ acceptance ที่ไม่ขัด Core; ownership ชัด;\n  keyboard behavior ผ่านการตรวจใน implementation รอบที่เปิดแยก และ `preview-keyboard-contract` ปิดได้ด้วย Evidence\n- Budget: contract หนึ่งชุดเมื่อจำเป็นและ focused keyboard/geometry proof; ไม่อ้าง full WYSIWYG\n\n### C2 — เชื่อมและตรวจ Preview ก่อน Build\n\n- Owner: Editor; size medium; risk bounded; หลัง C1 และ Core prerequisites ผ่าน\n- ขั้นตอน: ตรวจ Preview integration ตาม contract ก่อน แล้วเปิด Build validation เป็นรอบแยกถ้าขอบเขตต่างกัน\n- เกณฑ์จบ: `paper-integration` มี Evidence แยก Preview/Build; authored content, input และ authoritative geometry ถูกต้อง;\n  required Editor gate ผ่าน; ไม่มีการเปิด private QA API เป็น production โดยปริยาย\n- Budget: ใช้ integration harness เดิมและ browser proof เฉพาะ acceptance; ไม่รวม complex flow\n\n### C3 — ทดลอง Preview/ภาษาไทยกับผู้ใช้\n\n- Owner: Editor; size small; risk bounded; หลัง C2 มี candidate ที่ตรวจได้\n- ขั้นตอน: ทดสอบ Thai input, source preservation/read-save-freeze และ held-key visual stability\n- เกณฑ์จบ: `user-thai-input`, `source-preservation`, `held-key-visual-stability` มี Evidence\n  และคำยอมรับของผู้ใช้จริง; automated pass แทน user acceptance ไม่ได้\n- Budget: user trial หนึ่งรอบและสรุปประเด็น; regression กลับ owner WORK ไม่แก้ใน PLAN\n\n### C4 — Complex layout และ 30 nodes ข้ามหน้า\n\n- Owner: Editor โดยมี Core dependency ตาม findings; size medium; risk bounded; หลัง C2\n- ขั้นตอน: กำหนด fixture ของรูป/layout/30 nodes ข้ามหน้า แล้วตรวจ rendering และ editing\n- เกณฑ์จบ: `complex-flow` มีผลตรวจเทียบ expected behavior; ข้อจำกัดบันทึกชัด;\n  ถ้าพบ Core contract gap ให้แยก discovery/implementation แทนขยาย Editor lane\n- Budget: fixture และ browser proof ที่จำเป็น; ไม่สรุปเป็น Node-count performance ทั้งระบบ\n\n## หมวด D — Dependency และเอกสาร\n\n### D1 — PDF dependency และยืนยันโหลดฉบับล่าสุด\n\n- Owner: Editor; size small; risk routine; หลัง A1; ทำได้โดยไม่รอ B/C\n- ขั้นตอน: ตรวจ dependency audit และ Node support ปัจจุบัน; เสนอทางเลือกให้ owner เลือกเมื่อเปลี่ยน support policy;\n  ตรวจ latest-load หลัง save conflict ผ่าน host/browser ที่รองรับ\n- เกณฑ์จบ: `dependency-audit` และ `latest-reload-browser` มีผลปัจจุบันที่ปิดได้\n  หรือ owner ยอมรับ/defer ความเสี่ยงอย่างชัดเจน; การ defer ไม่ถูกนับว่า test passed\n- Budget: audit ปัจจุบันหนึ่งครั้ง, focused repair/owner gate เมื่อมีการแก้ และ user confirmation ที่จำเป็น\n\n### D2 — Core Documentation Family Closure\n\n- Owner: Project Control + Core docs; size small; risk routine; หลัง A1\n- ขั้นตอน: discovery inventory ของสี่ family เดิม เทียบ migration/reference/publication evidence;\n  ระบุ retained value ก่อนเสนอย้ายหรือลบไฟล์\n- เกณฑ์จบ discovery: disposition ครบทุก family พร้อม gap/owner;\n  งานซ่อมเอกสารเปิดรอบใหม่เฉพาะ gap แล้วจึงปิด Work ด้วยผลตรวจ references และ authority\n- Budget: inventory/closure decision ชุดเดียว; ไม่ rewrite เอกสารที่ใช้งานได้อยู่แล้ว\n\n### D3 — Remaining Core Documentation Synthesis\n\n- Owner: Project Control synthesis + Core source ownership; size small discovery แล้วแบ่ง implementation เป็น batch;\n  risk routine; หลัง D2 ระบุ coverage\n- ขั้นตอน: ตรวจจำนวนคงเหลือใหม่ ไม่ถือว่า 293 ยังถูกต้อง; แบ่งตาม subject และคุณค่าที่ต้องรักษา\n- เกณฑ์จบ discovery: inventory ปัจจุบันและ batch ที่มี owner/scope/acceptance;\n  แต่ละ batch สังเคราะห์หรือบันทึก discard rationale ก่อน retirement\n- Budget: ใช้ source/migration records เดิม; ไม่มีการสั่งสังเคราะห์ทั้ง 293 ชิ้นในรอบเดียว\n\n## ลำดับและการครอบคลุมรายการค้าง\n\nลำดับผลิตภัณฑ์: A1 → B1 → B2 → C1 → C2 → C3; C4 เริ่มหลัง C2\nงานปิดท้าย: A2 และ D1 หลัง A1; D2 หลัง A1 แล้ว D3 หลัง D2\nทำทีละ PLAN ตามที่ผู้ใช้เลือก ไม่มีการสร้างห้องทั้งหมดหรือเริ่มงานอัตโนมัติจาก catalog\n\n| รายการเดิม | รอบที่รับผิดชอบ |\n|---|---|\n| 4 blocked incremental Checklist items | A1 กระทบยอดประวัติ; B1/B2 สร้างผลใหม่ ไม่เขียนทับ failure เก่า |\n| paper-integration | C2 |\n| preview-keyboard-contract | C1 |\n| complex-flow | C4 |\n| user-thai-input / source-preservation / held-key-visual-stability | C3 |\n| dependency-audit / latest-reload-browser | D1 |\n| Core Documentation Family Closure | D2 |\n| Remaining Core Documentation Synthesis | D3 |\n| Product Development Resumption / Project Control Hardening ที่ไม่มี Phase | A1 |\n| residual merged Core directory | A2 |\n\nDeferred: general cross-span editing, leading/zero-advance-mark policy, broad WYSIWYG,\npublic/production binding และ release/map promotion ไม่มี execution authority ในชุดนี้\nถ้าเป็น prerequisite จริงให้ PLAN รายงาน contract/scope decision ก่อนเปิดรอบเพิ่ม\nUnknown แบบ blocking: ฐาน/contract ที่ขัด acceptance ของรอบนั้น; แบบ deferred: legacy inventory และ cleanup\nที่ยังไม่ถึงคิว; accepted boundary: catalog ไม่ยืนยัน product main ปัจจุบันจากการอ่าน records เพียงอย่างเดียว\n\n## Review และเกณฑ์จบรอบจัดทำ catalog\n\nตรวจแล้วว่าครอบคลุม 12 Checklist ค้าง, 4 Work ไม่มี Phase และ residual cleanup โดยไม่ทำ Stage 4 ซ้ำ\nเกณฑ์จบ: แผนมี owner/dependency/scope/acceptance/budget; registration resolve ได้;\ngenerated projection สร้างจาก canonical records และ full Project Control gate ผ่าน\nไม่เพิ่ม product test สำหรับการจัดหมวดเอกสาร และไม่สร้าง Evidence ใหม่เพื่อบรรยายแผนนี้\nรอบที่แนะนำให้เปิดถัดไปคือ A1\n"
     },
     {
       "kind": "document",

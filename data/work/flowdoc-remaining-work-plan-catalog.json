@@ -1,0 +1,23 @@
+{
+  "kind": "work",
+  "id": "flowdoc-remaining-work-plan-catalog",
+  "title": "FlowDoc Remaining Work Plan Catalog",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "Owner-requested planning catalog partitions remaining work into eleven independently opened future PLAN rounds across four categories. Catalog preparation only; no product execution or historical registry mutation.",
+  "contextDocumentIds": [
+    "doc-flowdoc-remaining-work-plan-catalog-2026-09-26",
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Registered category plan cards with owners, dependencies, scope, acceptance and budgets; future PLAN execution starts separately with fresh context.",
+  "riskSummary": "Legacy product and cleanup state must be refreshed at each future kickoff. This catalog does not activate any future room or validate product behavior.",
+  "requiredEvidence": [],
+  "createdAt": "2026-09-26T11:53:56.176Z",
+  "updatedAt": "2026-09-26T11:53:56.176Z"
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-remaining-work-plan-catalog",
+  "phaseId": "phase-flowdoc-remaining-work-plan-catalog",
+  "title": "Remaining-work catalog acceptance",
+  "items": [
+    {
+      "id": "remaining-work-coverage",
+      "label": "Map the twelve pending items, four unphased Work records and residual cleanup to categorized plans.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md",
+      "evidenceIds": [],
+      "verificationNote": "The coverage table maps all twelve pending checklist items and four unphased records from the pre-catalog 59-Work inventory; A2 handles residual cleanup."
+    },
+    {
+      "id": "future-round-boundaries",
+      "label": "Define owner, dependency, scope, acceptance and budgets without activating future execution.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md",
+      "evidenceIds": [],
+      "verificationNote": "Eleven cards define future rounds; the common kickoff requires fresh version-3 execution and policy-v2 packets. No old records or product files are modified."
+    }
+  ],
+  "createdAt": "2026-09-26T11:53:56.176Z",
+  "updatedAt": "2026-09-26T11:53:56.176Z"
+}

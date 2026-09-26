@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-remaining-work-plan-catalog",
+  "workId": "flowdoc-remaining-work-plan-catalog",
+  "title": "Categorize remaining work into future PLAN rounds",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "No product mutations or old execution registry changes",
+    "Stop when category coverage and registration are complete"
+  ],
+  "verificationTarget": "checklist-flowdoc-remaining-work-plan-catalog; docs/domains/flowdoc-remaining-work-plan-catalog-2026-09-26.md; npm run check",
+  "summary": "Planning deliverable groups the remaining scope into A1-A2, B1-B2, C1-C4 and D1-D3. Completion refers only to catalog preparation, not execution of these future plans.",
+  "createdAt": "2026-09-26T11:53:56.176Z",
+  "updatedAt": "2026-09-26T11:53:56.176Z"
+}
