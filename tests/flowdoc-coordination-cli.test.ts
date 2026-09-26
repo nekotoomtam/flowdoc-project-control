@@ -10,6 +10,7 @@ import {
   CoordinationPersistenceError,
   applyCoordinationCommandToWorkFile,
   readConfinedCommandJson,
+  verifyAcceptedIntegrationCandidate,
 } from "../tools/coordination-registry.js";
 import { createCoordinationRegistryFixture } from "./fixtures/coordination-registry.js";
 import { createCoordinationRegistryV2Fixture } from "./fixtures/coordination-registry-v2.js";
@@ -94,7 +95,7 @@ async function installReturnedCurrentRegistry(options: {
   wrongBase?: boolean;
   wrongPacketDigest?: boolean;
   wrongWorktree?: boolean;
-} = {}): Promise<{ projectRoot: string; workPath: string; repositoryRoot: string; headCommit: string }> {
+} = {}): Promise<{ projectRoot: string; workPath: string; repositoryRoot: string; baseCommit: string; headCommit: string }> {
   const projectRoot = await createProjectFixture({ valid: true, newContractTask: true });
   const candidate = await createGitCandidate(options.extraCommittedPath);
   const workPath = await installRegistry(projectRoot, 3);
@@ -174,7 +175,7 @@ async function installReturnedCurrentRegistry(options: {
   evidence.validity.sourceRevision = candidate.headCommit;
   await writeFile(evidencePath, JSON.stringify(evidence));
   await writeFile(workPath, JSON.stringify(work));
-  return { projectRoot, workPath, repositoryRoot: candidate.root, headCommit: candidate.headCommit };
+  return { projectRoot, workPath, repositoryRoot: candidate.root, baseCommit: candidate.baseCommit, headCommit: candidate.headCommit };
 }
 
 function currentAcceptanceCommand(requiredChecks = [{ name: "focused", status: "passed" }]) {
@@ -189,6 +190,17 @@ function currentAcceptanceCommand(requiredChecks = [{ name: "focused", status: "
     requiredChecks,
     remainingScope: [],
   };
+}
+
+async function acceptedIntegrationFixture() {
+  const fixture = await installReturnedCurrentRegistry();
+  await applyCoordinationCommandToWorkFile({
+    rootDir: fixture.projectRoot,
+    workFile: "data/work/pilot-task.json",
+    expectedRevision: 0,
+    command: currentAcceptanceCommand(),
+  });
+  return fixture;
 }
 
 describe("coordination registry persistence", () => {
@@ -356,6 +368,91 @@ describe("coordination registry persistence", () => {
     await symlink(external, join(root, "command-link"), "junction");
     await expect(readConfinedCommandJson(root, "command-link/command.json"))
       .rejects.toMatchObject({ code: "COMMAND_PATH_OUTSIDE_ROOT" });
+  });
+});
+
+describe("accepted candidate integration preflight", () => {
+  it("passes the exact accepted clean candidate without mutating either repository", async () => {
+    const fixture = await acceptedIntegrationFixture();
+    const workBefore = await readFile(fixture.workPath, "utf8");
+    const headBefore = await git(fixture.repositoryRoot, "rev-parse", "HEAD");
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: fixture.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: fixture.repositoryRoot,
+      baseRef: fixture.baseCommit,
+    })).resolves.toBeUndefined();
+    expect(await readFile(fixture.workPath, "utf8")).toBe(workBefore);
+    expect(await git(fixture.repositoryRoot, "rev-parse", "HEAD")).toBe(headBefore);
+  });
+
+  it("rejects non-accepted, changed HEAD, changed base ref, unexpected root, and dirty state", async () => {
+    const pending = await installReturnedCurrentRegistry();
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: pending.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: pending.repositoryRoot,
+      baseRef: pending.baseCommit,
+    })).rejects.toMatchObject({ code: "INTEGRATION_HANDOFF_NOT_ACCEPTED" });
+
+    const changedHead = await acceptedIntegrationFixture();
+    await writeFile(join(changedHead.repositoryRoot, "README.md"), "changed head\n", "utf8");
+    await git(changedHead.repositoryRoot, "add", "--all");
+    await git(changedHead.repositoryRoot, "commit", "-m", "changed head");
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: changedHead.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: changedHead.repositoryRoot,
+      baseRef: changedHead.baseCommit,
+    })).rejects.toMatchObject({ code: "GIT_SCOPE_HEAD_MISMATCH" });
+
+    const changedBase = await acceptedIntegrationFixture();
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: changedBase.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: changedBase.repositoryRoot,
+      baseRef: "HEAD",
+    })).rejects.toMatchObject({ code: "INTEGRATION_BASE_REF_MISMATCH" });
+
+    const unexpectedRoot = await acceptedIntegrationFixture();
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: unexpectedRoot.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: join(unexpectedRoot.repositoryRoot, "src"),
+      baseRef: unexpectedRoot.baseCommit,
+    })).rejects.toMatchObject({ code: "SCOPE_WORKTREE_MISMATCH" });
+
+    const dirty = await acceptedIntegrationFixture();
+    await writeFile(join(dirty.repositoryRoot, "src", "model", "dirty.ts"), "dirty\n", "utf8");
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: dirty.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: dirty.repositoryRoot,
+      baseRef: dirty.baseCommit,
+    })).rejects.toMatchObject({ code: "SCOPE_WORKTREE_DIRTY" });
+  });
+
+  it.each([
+    ["packet digest", (work: any) => { work.coordination.roomRuns[0].packetDigest = "a".repeat(64); }, "SCOPE_PACKET_DIGEST_MISMATCH"],
+    ["stored verification", (work: any) => { work.coordination.handoffs[0].acceptance.scopeLockVerification.manifestDigest = "b".repeat(64); }, "SCOPE_VERIFICATION_STALE"],
+  ])("rejects changed %s", async (_name, mutate, code) => {
+    const fixture = await acceptedIntegrationFixture();
+    const work = JSON.parse(await readFile(fixture.workPath, "utf8"));
+    mutate(work);
+    await writeFile(fixture.workPath, JSON.stringify(work));
+    await expect(verifyAcceptedIntegrationCandidate({
+      rootDir: fixture.projectRoot,
+      workFile: "data/work/pilot-task.json",
+      handoffId: "workflow-economy-handoff-0",
+      repository: fixture.repositoryRoot,
+      baseRef: fixture.baseCommit,
+    })).rejects.toMatchObject({ code });
   });
 });
 

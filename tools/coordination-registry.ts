@@ -1,6 +1,8 @@
+import { execFile as execFileCallback } from "node:child_process";
 import { open, readFile, realpath, rm, type FileHandle } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { isAbsolute, join, relative, resolve } from "node:path";
+import { promisify } from "node:util";
 import {
   CoordinationTransitionError,
   applyCoordinationCommand,
@@ -18,6 +20,8 @@ import {
 import { validateProjectSemantics } from "./lib/validate-semantics.js";
 import { writeFileAtomically } from "./lib/write-atomic.js";
 import { inspectGitScope } from "./lib/git-scope-verifier.js";
+
+const execFile = promisify(execFileCallback);
 
 export class CoordinationPersistenceError extends Error {
   constructor(readonly code: string, message: string) {
@@ -169,6 +173,94 @@ export async function validateCoordinationRoot(rootDir: string): Promise<void> {
   await validateProjectSemantics(await loadProjectSources(await realpath(resolve(rootDir))));
 }
 
+export async function verifyAcceptedIntegrationCandidate(options: {
+  rootDir: string;
+  workFile: string;
+  handoffId: string;
+  repository: string;
+  baseRef: string;
+}): Promise<void> {
+  const rootDir = await realpath(resolve(options.rootDir));
+  const workPath = await resolveConfinedWorkPath(rootDir, options.workFile);
+  const work = parseWorkRecord(await readFile(workPath, "utf8"), normalizeRelativePath(relative(rootDir, workPath)));
+  if (work.coordination?.version !== 3) {
+    throw new CoordinationTransitionError("HISTORICAL_REGISTRY_READ_ONLY", "Integration preflight requires a current version 3 registry.");
+  }
+  const registry = work.coordination;
+  const handoff = registry.handoffs.find(({ handoffId }) => handoffId === options.handoffId);
+  if (handoff === undefined || handoff.acceptance.status !== "accepted") {
+    throw new CoordinationTransitionError("INTEGRATION_HANDOFF_NOT_ACCEPTED", "Integration preflight requires an accepted handoff.");
+  }
+  const verification = handoff.acceptance.scopeLockVerification;
+  if (verification === undefined) {
+    throw new CoordinationTransitionError("SCOPE_VERIFICATION_REQUIRED", "The accepted handoff has no persisted Scope Lock verification.");
+  }
+  const room = registry.roomRuns.find((candidate) =>
+    candidate.roomRunId === handoff.payload.roomRunId &&
+    candidate.revisionAttempt === handoff.payload.revisionAttempt);
+  if (room === undefined || room.packet.policyId !== "flowdoc-workflow-economy-v2") {
+    throw new CoordinationTransitionError("CURRENT_SCOPE_PACKET_REQUIRED", "Integration preflight requires a current Scope Lock packet.");
+  }
+  const repository = await realpath(resolve(options.repository));
+  const packetWorktree = await realpath(resolve(room.packet.scopeLock.worktree));
+  if (comparableFilesystemPath(repository) !== comparableFilesystemPath(packetWorktree)) {
+    throw new CoordinationTransitionError("SCOPE_WORKTREE_MISMATCH", "Integration repository differs from the accepted Scope Lock worktree.");
+  }
+  const claim = registry.integrationClaims.find(({ repositoryId }) => repositoryId === room.ownerRepositoryId);
+  if (claim === undefined) {
+    throw new CoordinationTransitionError("INTEGRATION_CLAIM_MISSING", "The accepted room has no integration claim.");
+  }
+  let resolvedBaseRef: string;
+  try {
+    const { stdout } = await execFile("git", ["rev-parse", "--verify", `${options.baseRef}^{commit}`], {
+      cwd: repository,
+      encoding: "utf8",
+      windowsHide: true,
+    });
+    resolvedBaseRef = stdout.trim();
+  } catch {
+    throw new CoordinationTransitionError("INTEGRATION_BASE_REF_MISMATCH", "The requested integration base ref does not resolve.");
+  }
+  if (
+    resolvedBaseRef !== claim.baseCommit ||
+    resolvedBaseRef !== room.packet.scopeLock.baseCommit ||
+    resolvedBaseRef !== verification.baseCommit
+  ) {
+    throw new CoordinationTransitionError("INTEGRATION_BASE_REF_MISMATCH", "The integration base ref changed after acceptance.");
+  }
+  const manifest = await inspectGitScope({
+    worktree: repository,
+    baseCommit: verification.baseCommit,
+    expectedHead: verification.terminalCommit,
+  });
+  if (manifest.dirty) {
+    throw new CoordinationTransitionError("SCOPE_WORKTREE_DIRTY", "The accepted candidate became dirty after acceptance.");
+  }
+  const evaluation = evaluateScopeLock({
+    packet: room.packet,
+    manifest,
+    payloadChangedFiles: handoff.payload.changedFiles,
+    completionChangedFiles: handoff.payload.completion.changedFiles,
+    terminalCommit: verification.terminalCommit,
+    packetDigest: packetDigest(room.packet),
+    expectedPacketDigest: room.packetDigest,
+    verifiedAt: new Date().toISOString(),
+  });
+  const issue = evaluation.issues[0];
+  if (issue !== undefined) throw new CoordinationTransitionError(issue.code, issue.message);
+  const current = evaluation.verification;
+  if (
+    current === undefined ||
+    current.baseCommit !== verification.baseCommit ||
+    current.terminalCommit !== verification.terminalCommit ||
+    current.packetDigest !== verification.packetDigest ||
+    current.manifestDigest !== verification.manifestDigest ||
+    !sameStringSet(current.changedFiles, verification.changedFiles)
+  ) {
+    throw new CoordinationTransitionError("SCOPE_VERIFICATION_STALE", "The accepted Scope Lock verification no longer matches the candidate.");
+  }
+}
+
 async function resolveConfinedWorkPath(rootDir: string, workFile: string): Promise<string> {
   if (isAbsolute(workFile)) {
     throw new CoordinationPersistenceError("WORK_PATH_OUTSIDE_ROOT", "Work path must be relative to the Project Control root.");
@@ -229,6 +321,17 @@ function replaceLoadedWork(
 
 function normalizeRelativePath(value: string): string {
   return value.replaceAll("\\", "/");
+}
+
+function comparableFilesystemPath(value: string): string {
+  const normalized = value.replaceAll("\\", "/").replace(/\/+$/, "");
+  return process.platform === "win32" ? normalized.toLowerCase() : normalized;
+}
+
+function sameStringSet(left: readonly string[], right: readonly string[]): boolean {
+  const sortedLeft = [...new Set(left)].sort();
+  const sortedRight = [...new Set(right)].sort();
+  return sortedLeft.length === sortedRight.length && sortedLeft.every((value, index) => value === sortedRight[index]);
 }
 
 function isNodeError(error: unknown): error is NodeJS.ErrnoException {
@@ -324,7 +427,22 @@ async function runCli(): Promise<void> {
       process.stdout.write(`Coordination revision ${next.revision} persisted.\n`);
       return;
     }
-    throw new CoordinationPersistenceError("CLI_ARGUMENTS_INVALID", "Use coordination validate or coordination apply.");
+    if (action === "preflight-integration") {
+      const workFile = readOption(args, "--work");
+      const handoffId = readOption(args, "--handoff");
+      const repository = readOption(args, "--repository");
+      const baseRef = readOption(args, "--base-ref");
+      if (workFile === undefined || handoffId === undefined || repository === undefined || baseRef === undefined) {
+        throw new CoordinationPersistenceError(
+          "CLI_ARGUMENTS_INVALID",
+          "Usage: coordination preflight-integration --work <data/work/file.json> --handoff <id> --repository <path> --base-ref <ref> [--root <dir>]",
+        );
+      }
+      await verifyAcceptedIntegrationCandidate({ rootDir, workFile, handoffId, repository, baseRef });
+      process.stdout.write("Accepted integration candidate verified.\n");
+      return;
+    }
+    throw new CoordinationPersistenceError("CLI_ARGUMENTS_INVALID", "Use coordination validate, coordination apply, or coordination preflight-integration.");
   } catch (error: unknown) {
     const message = error instanceof Error ? `${"code" in error ? `${String(error.code)}: ` : ""}${error.message}` : String(error);
     process.stderr.write(`${message}\n`);
