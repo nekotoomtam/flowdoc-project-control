@@ -160,7 +160,7 @@ describe("workflow economy authority cutover", () => {
       workId: SCOPE_WORK_ID,
       repositoryIds: ["repo-project-control"],
       activeRole: "project-control-steward",
-      phaseState: "in-review",
+      phaseState: "done",
     });
     expect(checklist).toMatchObject({ phaseId: SCOPE_PHASE_ID });
     expect(checklist?.items.every((item) => item.evidenceIds?.includes(SCOPE_EVIDENCE_ID))).toBe(true);
