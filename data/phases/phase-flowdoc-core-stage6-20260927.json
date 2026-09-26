@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-stage6-20260927",
+  "workId": "flowdoc-core-stage6-20260927",
+  "title": "Stage6 fixed corpus preflight and lifecycle/admission decision",
+  "phaseState": "in-progress",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-core-stage6-20260927; exact pinned raw current API results; Core/PC npm run check",
+  "summary": "Bounded harness then separate verification. Stop on precise required capability gap; no downstream promotion.",
+  "stopConditions": [
+    "Required corpus case cannot be accepted by current API.",
+    "Missing independent oracle or provider/host accounting invalidates measurement.",
+    "Runtime, architecture, contract or allowed-path expansion required."
+  ],
+  "createdAt": "2026-09-26T20:10:41.583Z",
+  "updatedAt": "2026-09-26T20:10:41.583Z"
+}

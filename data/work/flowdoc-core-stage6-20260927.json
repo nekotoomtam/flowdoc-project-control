@@ -1,0 +1,266 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-stage6-20260927",
+  "title": "Core Stage6 lifecycle and fixed Gate2 admission",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "in-progress",
+  "summary": "Fresh authorized Stage6 round. Resolve retained fixed corpus/current API applicability and add bounded harness before final measurement. Prior Stage5 accepted immutable input; old rounds closed.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-implementation-plan-2026-09-14",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14",
+    "doc-flowdoc-b1-empty-side-contract-20260926"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Actual Stage6 admission evidence or precise actionable failure with exact required rows and unchanged limits; PLAN-owned acceptance and closure.",
+  "riskSummary": "Bounded risk of invalid admission through changed corpus, unsupported rows or unaccounted work; preserve denominator and stop on capability gap.",
+  "requiredEvidence": [
+    "evidence-core-private-stage5-20260927"
+  ],
+  "createdAt": "2026-09-26T20:10:41.583Z",
+  "updatedAt": "2026-09-26T20:10:41.583Z",
+  "coordination": {
+    "version": 3,
+    "revision": 1,
+    "round": {
+      "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+      "roundId": "core-stage6-20260927-01a0df53",
+      "workId": "flowdoc-core-stage6-20260927",
+      "scopeId": "core-stage6-admission",
+      "scopeKeys": [
+        "core:stage6-admission"
+      ],
+      "allowedFiles": [
+        "data/work/flowdoc-core-stage6-20260927.json",
+        "data/phases/phase-flowdoc-core-stage6-20260927.json",
+        "data/checklists/checklist-flowdoc-core-stage6-20260927.json",
+        "data/evidence/core-stage6-preflight-20260927.json",
+        "generated/project-index.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "local-stage6-20260927",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent tool model/effort schema",
+        "observedAt": "2026-09-26T20:10:41.583Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          },
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+        "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+        "state": "active",
+        "roundId": "core-stage6-20260927-01a0df53"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+        "baseCommit": "c743369c63216447d5a76aee532adb1b9b7c02a9",
+        "state": "active",
+        "roundId": "core-stage6-20260927-01a0df53"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "core-stage6-harness-r1",
+        "dispatchSetId": "stage6-20260927-harness",
+        "laneId": "core-stage6-harness",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-stage6-20260927",
+        "checklistId": "checklist-flowdoc-core-stage6-20260927",
+        "evidenceTarget": "evidence-core-stage6-preflight-20260927",
+        "revisionAttempt": 1,
+        "expectedHandoffId": "stage6-harness-r1-terminal",
+        "status": "active",
+        "locator": {
+          "threadId": "/root/stage6_harness",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/core-stage6-20260927/flowdoc-vnext-core",
+          "branch": "codex/core-stage6-harness-20260927",
+          "handoffPath": "C:/Users/nekot/.codex/worktrees/00cb/flowdoc-project-control/.superpowers/stage6-handoff.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-26T20:12:33.716804Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message({target:\"/root\",message:\"handoff ID, durable payload path, digest and result\"}) before final; identical retry on transport failure after 10s then 30s, at most 3 attempts",
+          "monitorOwner": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+          "livenessDeadline": "2026-09-26T20:30:41.585Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "workhorse",
+          "modelId": "gpt-6-sol",
+          "reasoningEffort": "medium",
+          "reason": "Bounded harness adaptation with immutable fixtures and explicit expected failure classification; no runtime or contract invention.",
+          "smallerOptionAssessment": "Luna is available but cross-language WASM fixtures, independent oracle and denominator preservation require workhorse capacity.",
+          "escalationTriggers": [
+            "Repeated accounting or corpus mismatch after one correction.",
+            "Runtime/contract change required: stop and return exact gap."
+          ],
+          "availabilitySnapshotRef": "local-stage6-20260927"
+        },
+        "ux": {
+          "applicability": "not-applicable",
+          "visibleChange": false,
+          "reason": "Private QA harness only; no runtime or visible layout changes."
+        },
+        "requiredEvidence": [
+          "evidence-core-stage6-preflight-20260927"
+        ],
+        "roundId": "core-stage6-20260927-01a0df53",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+            "worktree": "C:/Users/nekot/.codex/worktrees/core-stage6-20260927/flowdoc-vnext-core"
+          },
+          "allowedScope": [
+            "scripts/stage6",
+            "tests/stage6Preflight.test.ts",
+            "tests/fixtures/stage6"
+          ],
+          "forbiddenScope": [
+            "packages",
+            "src",
+            "docs",
+            "package.json",
+            "package-lock.json"
+          ],
+          "acceptanceCriteria": [
+            "Pin retained Gate2A corpus and generator from Core d5031b6151a0a6aba2fbe2c3320f122a935470a3; preserve all 3 languages, 5 sizes, 6 operations, 5 warmups/50 repetitions, original 180 revision sequence and adversarial/cold obligations. Record current API mapping explicitly, including active composition incompatibility. No removed rows or silent accepted-rejection substitution.",
+            "Add only missing private Stage6 preflight harness plus meaningful verifier/tests. Preserve exact requested text/edits and use current Stage3/4/5 API with independent full run-owned oracle where applicable; no historical paragraph-wide property oracle as current semantic authority. Identify first required unsupported case and exact unchanged receipt/source/revision result, retained raw request/response and counters.",
+            "Preserve immutable raw preflight results from clean committed source with commit, environment, source/font/WASM hashes, denominators, unexecuted rows and explicit finalAdmissionRun=false. Report all provider/host/cumulative accounting coverage and gaps; no invented zero counters. Stop admission on a required rejection, equality failure, missing lifecycle operation or accounting gap; exact remedy/CCR, no latency PASS from preflight.",
+            "Required remaining Stage6 plan: no-anchor recovery, eviction, cancellation, disposal/receipts, continuous ordinary plus structural commands with independent oracle; unchanged p95<=8ms/max<=16.7ms/scaling<=1.50 and 512 source/512 property/1024 shape+segment caps. If prerequisite preflight fails, report these as unexecuted/blocked without spending a final timing run. If prerequisites pass, return harness for PLAN acceptance before separate final measurement; do not silently expand to runtime implementation.",
+            "Focused harness tests and Core npm run check pass; clean exact commit and full actual changed-file manifest. Preserve raw failures. No public/default exports, runtime, geometry, Editor, Backend or map changes."
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 2,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent private Stage5 subset from being misrepresented as fixed-corpus Stage6/Gate2 admission.",
+                "existingProofInsufficient": "Stage5 explicitly excludes latency/scaling and full Stage6 corpus. Exact current-API preflight failure or readiness must be preserved before final measurement."
+              }
+            ]
+          },
+          "relevantEvidenceIds": [
+            "evidence-core-private-stage5-20260927"
+          ],
+          "unknowns": [
+            {
+              "id": "current-api-corpus",
+              "summary": "Legacy runner uses old paragraph-owned API; retained generator is authoritative for workload, current run-owned semantic oracle for facts. Missing API capability must be shown concretely.",
+              "disposition": "blocking",
+              "ownerAction": "Bounded harness preflight, then remedy/CCR on required unsupported case."
+            },
+            {
+              "id": "geometry-editor",
+              "summary": "Core geometry, Editor transition including transient frames and user-visible parity remain separately authorized downstream obligations.",
+              "disposition": "deferred",
+              "returnTrigger": "Stage6/Gate2 PASS and separately approved next plan."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "stage6-authorized",
+              "kind": "freeze-scope",
+              "reason": "Owner authorized fresh Stage6 PLAN, direct registered WORK only, preserved corpus and thresholds; exact actionable failure is a valid terminal result. No nested WORK.",
+              "decidedBy": "user via control 01a0dd89-4aaf-7701-997c-7c294174187c",
+              "decidedAt": "2026-09-26T20:10:41.583Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "workhorse",
+            "modelId": "gpt-6-sol",
+            "reasoningEffort": "medium",
+            "reason": "Bounded harness adaptation with immutable fixtures and explicit expected failure classification; no runtime or contract invention.",
+            "smallerOptionAssessment": "Luna is available but cross-language WASM fixtures, independent oracle and denominator preservation require workhorse capacity.",
+            "escalationTriggers": [
+              "Repeated accounting or corpus mismatch after one correction.",
+              "Runtime/contract change required: stop and return exact gap."
+            ],
+            "availabilitySnapshotRef": "local-stage6-20260927"
+          },
+          "escalationTriggers": [
+            "Required corpus case cannot be accepted by current API.",
+            "Missing independent oracle or provider/host accounting invalidates measurement.",
+            "Runtime, architecture, contract or allowed-path expansion required."
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0df53-6cd4-79f2-8a4c-0b6b0338385b",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message({target:\"/root\",message:\"handoff ID, durable payload path, digest and result\"}) before final; identical retry on transport failure after 10s then 30s, at most 3 attempts"
+          }
+        },
+        "packetDigest": "ed1a9b6902a7424a5352505bc93a1a5dd9dab51d7ed2314eaf0fa4824d7d3cf0"
+      }
+    ],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  }
+}
