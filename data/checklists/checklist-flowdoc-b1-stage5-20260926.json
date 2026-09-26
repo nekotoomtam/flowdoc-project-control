@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-b1-stage5-20260926",
+  "phaseId": "phase-flowdoc-b1-stage5-20260926",
+  "title": "B1 Stage5 prerequisite and acceptance boundary",
+  "items": [
+    {
+      "id": "ac-provenance",
+      "label": "Trace effective-style, empty-state and layout/resource bindings from pinned Core authority.",
+      "state": "passed",
+      "evidenceTarget": "Discovery handoff with source lines and exact Core base",
+      "evidenceIds": [],
+      "verificationNote": "AC1/2 source chain cited in accepted same-round handoff at Core a39e91f; no runtime/parity proof."
+    },
+    {
+      "id": "ac-scope",
+      "label": "Determine local implementation feasibility or return contract/authority blocker before mutation.",
+      "state": "passed",
+      "evidenceTarget": "PLAN-owned source review and Scope Lock",
+      "evidenceIds": [],
+      "verificationNote": "PLAN confirmed InitialFlow empty classification, MR1/V2 blocking and external measured-lines boundary. AC3/4 answered; automatic Scope Lock persisted in acceptance, zero changed files. Exact CCR retained."
+    },
+    {
+      "id": "ac-stage5",
+      "label": "Keep complete private Stage5 implementation acceptance including actual native/WASM proof pending until authorized prerequisites hold.",
+      "state": "blocked",
+      "evidenceTarget": "Accepted B1 contract ordered acceptance 1-7; not fulfilled by discovery",
+      "evidenceIds": [],
+      "verificationNote": "Missing Core empty-state style/metric contract: v4 permits empty blocks but not zero-length styled leaves; InitialFlow/MR1/V2 block empty geometry, while supplied measured-line heights do not derive authority. This exceeds private Stage5 encoding scope."
+    },
+    {
+      "id": "ac-visual",
+      "label": "Unchanged viewing/editing appearance, positions and line division including transient frames requires separate Core/Editor evidence.",
+      "state": "pending",
+      "evidenceTarget": "B1 section4a downstream Core+Editor measured proof",
+      "evidenceIds": [],
+      "verificationNote": "No Core parity test or Editor transition capture; user condition including transient frames remains mandatory. No performance admission."
+    },
+    {
+      "id": "ac-gate",
+      "label": "Validate new records and coordination in isolated worktree and main.",
+      "state": "pending",
+      "evidenceTarget": "PC npm run check; no product proof",
+      "evidenceIds": [],
+      "verificationNote": "Data validation and inventory test2 passed. Fresh full PC worktree/main gates pending; no product tests in read-only discovery."
+    }
+  ],
+  "createdAt": "2026-09-26T16:01:27.957Z",
+  "updatedAt": "2026-09-26T16:10:07.165Z"
+}

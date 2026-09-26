@@ -1,0 +1,369 @@
+{
+  "kind": "work",
+  "id": "flowdoc-b1-stage5-20260926",
+  "title": "B1 private Stage5 Enter and inverse join prerequisite",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "blocked",
+  "summary": "Discovery PASS with accepted source-bound return and clean Scope Lock; private Stage5 implementation BLOCKED because the inspected Core v4 viewing paths lack authoritative authored empty-state/default-resolution and line-metric semantics. Design remains accepted; no product or parity promotion.",
+  "contextDocumentIds": [
+    "doc-flowdoc-b1-empty-side-contract-20260926",
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Completed prerequisite discovery and exact CCR in b1-provenance-handoff-0. Stage5 acceptance remains blocked and unchanged: endpoints/empty/interior/forgery, defaults/origin, provider equality, exact siblings, atomicity/receipts/revisions, additive shared ancestry, 512/512/1024 caps, Core unchanged-input bindings, native+actual WASM and owner gates. Editor transitions and Stage6/Gate2 are separate unproven obligations.",
+  "riskSummary": "Empty layout authority may be absent; no generic defaults or blanket rejection can satisfy acceptance. PLAN selected policy-default Astra medium. Discovery WORK independently selects Astra medium from fresh host snapshot. Document budget: 3 canonical JSON records and generated projection only, zero new Markdown/Evidence/maps; one current inventory expectation update only if required. PC gate worktree/main; no unrelated proof. Discovery reads followed directly referenced current Core schema/resolution/producer dependencies under AC1; scope fields prove mutation containment, not hard read audit. Existing Stage4 Evidence is background only. Current Core lane retained until PC integration/main gate; no historical lane cleanup authorized.",
+  "requiredEvidence": [
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 5,
+    "round": {
+      "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+      "roundId": "b1-stage5-20260926-01a0de64",
+      "workId": "flowdoc-b1-stage5-20260926",
+      "scopeId": "b1-stage5-provenance",
+      "scopeKeys": [
+        "core:b1-stage5-provenance"
+      ],
+      "allowedFiles": [
+        "data/work/flowdoc-b1-stage5-20260926.json",
+        "data/phases/phase-flowdoc-b1-stage5-20260926.json",
+        "data/checklists/checklist-flowdoc-b1-stage5-20260926.json",
+        "generated/project-index.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "b1-stage5-host-20260926",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent schema lists gpt-6-astra and gpt-6-sol with medium reasoning. Selected pair explicitly requested at spawn, not inherited from PLAN.",
+        "observedAt": "2026-09-26T16:01:27.957Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+        "baseCommit": "cbc30f30f5e2091549d966d009e977343ba4b995",
+        "state": "active",
+        "roundId": "b1-stage5-20260926-01a0de64"
+      },
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+        "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+        "state": "active",
+        "roundId": "b1-stage5-20260926-01a0de64"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "b1-provenance-room",
+        "dispatchSetId": "b1-provenance-dispatch",
+        "laneId": "b1-provenance",
+        "workType": "discovery",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "cross-repo-boundary-reviewer",
+        "phaseId": "phase-flowdoc-b1-stage5-20260926",
+        "checklistId": "checklist-flowdoc-b1-stage5-20260926",
+        "evidenceTarget": "Pinned source findings in same-round terminal handoff; no new product Evidence.",
+        "revisionAttempt": 0,
+        "expectedHandoffId": "b1-provenance-handoff-0",
+        "status": "accepted",
+        "locator": {
+          "threadId": "/root/b1_provenance",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/b1-provenance-01a0de64/flowdoc-vnext-core",
+          "branch": "codex/b1-provenance-20260926",
+          "handoffPath": "data/work/flowdoc-b1-stage5-20260926.json#/coordination/handoffs"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-26T16:01:45.905Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message target=/root; terminal payload JSON inline, fixed handoff b1-provenance-handoff-0; no file mutation",
+          "monitorOwner": "01a0de64-a557-7441-af26-9bd95e7a129f",
+          "livenessDeadline": "2026-09-26T16:21:27.963Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "frontier",
+          "modelId": "gpt-6-astra",
+          "reasoningEffort": "medium",
+          "reason": "Source-grounded empty-state and effective-style provenance may determine architecture or contract scope before Stage5 implementation; bounded read-only authority.",
+          "smallerOptionAssessment": "gpt-6-sol medium is available and suitable for deterministic implementation after the unresolved authority chain is settled; this discovery must distinguish absent authority from a local encoding gap.",
+          "availabilitySnapshotRef": "b1-stage5-host-20260926",
+          "escalationTriggers": [
+            "Missing authoritative empty-state definition or provenance changes contract: return exact gap without mutation.",
+            "Two corrected reasoning failures: PLAN reassesses scope/model; no automatic effort escalation."
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Read-only source discovery changes no visible behavior. User visual parity remains downstream pending and is not waived."
+        },
+        "requiredEvidence": [
+          "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+        ],
+        "roundId": "b1-stage5-20260926-01a0de64",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Discover whether the accepted B1 section4a effective/empty-state authority exists at pinned Core base, identify exact binding chain and classify whether private Stage5 implementation can proceed without architecture/ownership/contract expansion.",
+          "ownerRepositoryId": "repo-core",
+          "allowedScope": [
+            "src/layout",
+            "src/contracts",
+            "src/operations",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+            "tests",
+            "tools"
+          ],
+          "forbiddenScope": [
+            "src/index.ts",
+            "docs/superpowers",
+            "dist"
+          ],
+          "acceptanceCriteria": [
+            "Trace actual Core authored/inherited effective-style resolution, resource/feature/policy/layout-constraint identity from document input to viewing layout and private cold session. Cite exact files, symbols and lines; distinguish existing authority from hypothetical schema.",
+            "Determine authoritative empty-paragraph/empty-child style and metrics including explicitly authored empty-state formatting. Verify whether empty layout is supported or blocked in current routes; no neighboring-run/default guesses.",
+            "Classify gaps as local additive private encoding versus architecture/ownership/cross-repository contract change. Return a concrete blocker/CCR for missing authority; otherwise list exact future implementation paths and source-backed binding design within accepted contract.",
+            "Preserve zero product mutations at exact base; no Core implementation, public binding, Editor/Backend access or edits, tests/gates/performance runs, map/Evidence promotion or subagents. Source inspection is discovery evidence only; downstream Core and Editor acceptance remains unproven."
+          ],
+          "workAuthority": "discovery",
+          "workSize": "medium",
+          "risk": {
+            "tier": "routine"
+          },
+          "proofBudget": {
+            "maxNewEvidence": 0,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 0,
+            "closeForm": "none",
+            "authorizedArtifacts": []
+          },
+          "relevantEvidenceIds": [
+            "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+          ],
+          "unknowns": [
+            {
+              "id": "effective-empty-authority",
+              "summary": "InitialFlow explicitly blocks empty layout; determine whether another current Core authority defines empty-state and view/private-session provenance.",
+              "disposition": "blocking",
+              "ownerAction": "PLAN receives discovery before any implementation; missing authority requires bounded contract resolution."
+            }
+          ],
+          "ownerDecisions": [],
+          "escalationTriggers": [
+            "Missing authoritative empty-state definition or provenance changes contract: return exact gap without mutation.",
+            "Two corrected reasoning failures: PLAN reassesses scope/model; no automatic effort escalation."
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message target=/root; terminal payload JSON inline, fixed handoff b1-provenance-handoff-0; no file mutation"
+          },
+          "modelDecision": {
+            "capabilityClass": "frontier",
+            "modelId": "gpt-6-astra",
+            "reasoningEffort": "medium",
+            "reason": "Source-grounded empty-state and effective-style provenance may determine architecture or contract scope before Stage5 implementation; bounded read-only authority.",
+            "smallerOptionAssessment": "gpt-6-sol medium is available and suitable for deterministic implementation after the unresolved authority chain is settled; this discovery must distinguish absent authority from a local encoding gap.",
+            "availabilitySnapshotRef": "b1-stage5-host-20260926",
+            "escalationTriggers": [
+              "Missing authoritative empty-state definition or provenance changes contract: return exact gap without mutation.",
+              "Two corrected reasoning failures: PLAN reassesses scope/model; no automatic effort escalation."
+            ]
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "worktree": "C:/Users/nekot/.codex/worktrees/b1-provenance-01a0de64/flowdoc-vnext-core"
+          }
+        },
+        "packetDigest": "0648a95cb3a769c29edf6e339d7ae7f34aa3e237fa9b287eb4cdfff0eace4245"
+      }
+    ],
+    "handoffs": [
+      {
+        "handoffId": "b1-provenance-handoff-0",
+        "payloadDigest": "f042160369668693a109e78a4f023c2f915eb10aff85e424a5abffbb2ba1f05f",
+        "payload": {
+          "planTaskId": "01a0de64-a557-7441-af26-9bd95e7a129f",
+          "roomRunId": "b1-provenance-room",
+          "laneId": "b1-provenance",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": false,
+          "behaviorSummary": "PASS for the four discovery criteria only. Stage5 implementation admission remains BLOCKED on the concrete missing v4 empty-state style/metric authority. Existing nonempty style/resource/constraint facts can receive additive private provenance bindings; current sources do not define general authored empty-state formatting or its authoritative line metrics. No product, parity, Stage5, Stage6, public binding, Editor or Backend claim.",
+          "exactCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+          "changedFiles": [],
+          "tests": [
+            "Source inspection only: v4 schema, resolved style catalog/binding, measurement, InitialFlow, MR1 and V2 admission, narrow producer/resource route, private cold-session model/policy/derive/runtime",
+            "Read-only git rev-parse HEAD returned a39e91fd671706d8217d58f4668ed45afa0d0e67 and git status --porcelain returned empty before and after discovery",
+            "No tests, gates, builds or performance runs executed"
+          ],
+          "evidenceIds": [
+            "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+          ],
+          "risks": [
+            "Reused Stage4 Evidence is background for its accepted ordinary-command scope only, never proof of new structural or visual parity.",
+            "Private opacity/digests cannot supply missing empty-state semantics; accepting arbitrary height or neighboring style would invent authority.",
+            "MR1 features:[] and cold explicit kern/liga use distinct policy representations; matching text/font family cannot establish provider-policy equivalence.",
+            "Source inspection is bounded discovery and not exhaustive negative proof over every Core pipeline."
+          ],
+          "unknowns": [
+            "Stage5 implementation blocker: v4 has no separate authored empty-state formatting carrier or accepted derivation of empty paragraph metrics for the inspected viewing routes.",
+            "The policy for completing partial catalog styles and absent textStyleId into authoritative paragraph values must be identified/decided by the Core contract owner; current InitialFlow/producer consume caller-resolved complete values.",
+            "Core unchanged-input parity, native/actual-WASM structural equality and Editor transition geometry remain unproven."
+          ],
+          "contractChangeRequest": "Before authorizing Stage5 implementation, PLAN/Core contract owner must resolve a bounded empty-state contract: (1) identify the canonical authored empty-state style carrier, including absence versus explicit values, and whether existing textStyleId is sufficient or a new v4 field is required; zero-length text leaves are currently forbidden; (2) define its resolution against the existing published style catalog/default context, including partial/absent values, without a new guessed container cascade; (3) specify authoritative empty line/paragraph metrics from pinned font resources, declared line-height and box/container constraints, including baseline/line box and unchanged-input identity; (4) state split/join preservation of that empty-state origin independently from later typing affinity. Minimum owner is repo-core with Project Control contract decision; likely contract/source scope is src/schema/documentV4Foundation.ts and documentV4ImageTarget.ts if a new authored carrier is required, src/resolution/resolutionInputPins.ts and resolvedDocument.ts for provenance/default completion, and the named InitialFlow/FlowEvidence/MR1 producer paths for any new empty metric authority. This exceeds the currently authorized private Stage5 encoding and must be explicitly scoped, not silently implemented. Once resolved, a fresh private implementation lane can bind original authored presence/origin plus resolved style/catalog/policy/resource/constraint identity in cold_session/model.rs/policy.rs/derive.rs/runtime.rs and private coldSessionStage3.ts, and extend runOwnedSemanticOracleStage2.ts endpoint schemas/tests without public exports. No Editor/Backend work is needed to decide this Core prerequisite; downstream visual proof remains separate.",
+          "roundId": "b1-stage5-20260926-01a0de64",
+          "completion": {
+            "behaviorChanged": "None; discovery criteria answered. Stage5 implementation is blocked on a resolved missing-contract finding, not deferred visual testing alone.",
+            "proof": [
+              {
+                "kind": "evidence",
+                "reference": "Core@a39e91fd671706d8217d58f4668ed45afa0d0e67: src/schema/documentV4Foundation.ts:18-27,74-77; src/resolution/resolutionInputPins.ts:21-32; src/resolution/resolvedDocument.ts:364-386; src/pagination/textBlockV4Measurement.ts:311-325; src/layout/textBlockInitialFlowInputV1.ts:655-757,910-948,1089-1125; src/layout/textBlockInitialFlowRequestBindingV1.ts:483-505; packages/text-engine-rust-wasm/src/multiRunEvidenceInternals.ts:317-331,529-588,630-694; packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs:6-9,85-106 and policy.rs:41-90,164-177 and runtime.rs:141-177. Existing caller-resolved effective facts and resource/policy bindings are distinguishable from missing upstream completion/provenance.",
+                "criterionRefs": [
+                  "AC-1"
+                ]
+              },
+              {
+                "kind": "evidence",
+                "reference": "Core@a39e91fd671706d8217d58f4668ed45afa0d0e67: src/schema/documentV4ImageTarget.ts:80-87,115-121; src/layout/textBlockInitialFlowInputV1.ts:1079-1106; src/layout/textBlockInitialFlowRequestBindingV1.ts:463-474; src/layout/textBlockFlowEvidenceV2.ts:712-716; src/layout/textBlockMultiRunLayoutV1.ts:122-126; packages/text-engine-rust-wasm/src/multiRunEvidenceInternals.ts:299-307; src/pagination/textBlockV4Measurement.ts:336-343,362-419; src/pagination/textMeasurement.ts:266-295; src/creatorPreview/layoutV1.ts:24-26,36-77. Empty classification differs from blocked layout admission; external/fixed-profile measurements do not define general v4 empty formatting.",
+                "criterionRefs": [
+                  "AC-2"
+                ]
+              },
+              {
+                "kind": "evidence",
+                "reference": "Accepted B1 contract docs/domains/flowdoc-b1-empty-side-certificate-contract-2026-09-26.md sections1,4a and Fresh implementation kickoff, compared with Core@a39e91fd671706d8217d58f4668ed45afa0d0e67 schema/InitialFlow/producer citations above and cold_session/model.rs:85-106, derive.rs:55-82,139-154, runtime.rs:141-177: private serialization can preserve established context but cannot invent missing authored empty-state metrics. Concrete minimum owner decisions and future path scope are in contractChangeRequest.",
+                "criterionRefs": [
+                  "AC-3"
+                ]
+              },
+              {
+                "kind": "evidence",
+                "reference": "Read-only git identity and clean-status inspections before/after discovery in C:/Users/nekot/.codex/worktrees/b1-provenance-01a0de64/flowdoc-vnext-core returned exact a39e91fd671706d8217d58f4668ed45afa0d0e67 and no changed paths. No Editor/Backend reads, product mutations, public binding, builds/tests/gates/performance runs, Evidence/map promotion or subagents.",
+                "criterionRefs": [
+                  "AC-4"
+                ]
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "empty-state-contract-next-round",
+                "summary": "Resolved discovery finding: the inspected current v4 paths lack authoritative authored empty-state metric semantics; future contract resolution is required before Stage5 implementation admission.",
+                "disposition": "deferred",
+                "returnTrigger": "PLAN/Core owner approves an explicit empty-state carrier/resolution/metric contract and scopes a fresh authorized implementation lane."
+              },
+              {
+                "id": "core-editor-parity-proof",
+                "summary": "Core unchanged-input and structural equality, plus downstream Editor visual transition parity, are unproven and not discharged by this discovery.",
+                "disposition": "deferred",
+                "returnTrigger": "The applicable Core and separately authorized Editor proof rounds execute after contract prerequisites are resolved."
+              }
+            ],
+            "downstreamInformation": "Keep user unchanged-layout condition mandatory. Approve bounded Core empty-state/default-resolution contract scope first; preserve current private Stage5 scope until then. No blanket visual-proof blocker: missing Core authoritative meaning is the immediate blocker. Existing Stage4 Evidence reused only as background. No cleanup performed; PLAN owns acceptance and clean lane cleanup.",
+            "changedFiles": [],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 0,
+            "implementationCommitCount": 0
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-26T16:09:09.524Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-26T16:09:09.524Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-26T16:09:09.524Z",
+          "senderThreadId": "/root/b1_provenance",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-26T16:09:09.524Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0de64-a557-7441-af26-9bd95e7a129f",
+          "reviewedAt": "2026-09-26T16:09:32.424Z",
+          "evidenceIds": [
+            "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+          ],
+          "requiredChecks": [
+            {
+              "name": "AC1-3 source chain and actual empty-layout gates independently inspected by PLAN; discovery only",
+              "status": "passed"
+            },
+            {
+              "name": "AC4 exact Core base and clean actual Git manifest; unchanged packet and zero mutations",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Stage5 implementation BLOCKER: missing authoritative authored empty-state/default completion and metrics contract; no private encoding may invent it.",
+            "Native and actual-WASM Stage5 acceptance, Core unchanged-input and downstream Editor visual parity, Stage6/Gate2 performance remain unproven.",
+            "Direct Core dependency reads were authorized by AC1 source-to-view tracing; Git scope is mutation containment, not a read audit."
+          ],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "terminalCommit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+            "packetDigest": "0648a95cb3a769c29edf6e339d7ae7f34aa3e237fa9b287eb4cdfff0eace4245",
+            "manifestDigest": "f16fe100e794a24688b7180b4ff3c6f770550433ad12ddb9fdcdc485c167fda8",
+            "changedFiles": [],
+            "verifiedAt": "2026-09-26T16:09:32.424Z",
+            "clean": true
+          }
+        }
+      }
+    ],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-26T16:01:27.957Z",
+  "updatedAt": "2026-09-26T16:10:07.165Z",
+  "blockedBy": "Missing Core empty-state style/metric contract: v4 permits empty blocks but not zero-length styled leaves; InitialFlow/MR1/V2 block empty geometry, while supplied measured-line heights do not derive authority. This exceeds private Stage5 encoding scope.",
+  "unblockOwner": "PLAN/Core contract owner: explicitly scope and resolve empty-state carrier, partial/absent style completion, pinned metric derivation and split-origin preservation; then authorize a fresh private Stage5 implementation lane."
+}
