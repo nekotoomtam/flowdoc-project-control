@@ -10,19 +10,19 @@
   ],
   "workState": "in-review",
   "activeRole": "project-control-steward",
-  "summary": "Fresh PLAN-owned inline implementation round. Work Size small; Risk Tier routine. Goal: isolate historical v1/v2 ownership from active v3 exclusivity and enrich existing Stage 4 Evidence with a supported reuse boundary. Inline steward bootstrap is necessary because the ownership validator blocks new registry integration claims. No separate WORK was dispatched. This Work summary, scope and Checklist are the bounded inline kickoff packet; no synthetic room, handoff or return ceremony.",
+  "summary": "Fresh PLAN-owned inline implementation round. Work Size small; Risk Tier routine. Goal: isolate historical v1/v2 ownership from active v3 exclusivity and enrich existing Stage 4 Evidence with a supported reuse boundary. Inline steward bootstrap is necessary because the ownership validator blocks new registry integration claims. No separate WORK was dispatched. This Work summary, scope and Checklist are the bounded inline kickoff packet; no synthetic room, handoff or return ceremony. Accepted implementation 59f5aa8a73c38b379f354bea21f63f732b824a23 passed full dedicated-worktree and post-merge main npm run check. One read-only review found no findings. Current round releases ownership after those gates; it does not authorize B1 product execution.",
   "contextDocumentIds": [
     "doc-flowdoc-workflow-economy-policy",
     "doc-flowdoc-coordination-controls"
   ],
   "expectedOutput": "Acceptance: historical v1/v2 plus live v3 passes; current-current scope/file/integration conflicts, reused identities and malformed historical records still fail; closed rounds remain immutable. Stage 4 original fields unchanged, validity derived only from its accepted summary and pinned source footprint. Focused regression tests, full worktree check, local main integration and main check; clean merged lane cleanup. Immutable diagnostic input: b8bed03, docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md. Return observer: task 01a0dd89-4aaf-7701-997c-7c294174187c; not execution owner.",
-  "riskSummary": "Scope limited to round.allowedFiles. Forbidden: old Work registries, product repositories, product/map truth, B1 product/B2/A2, push and Core reproof. Proof Budget: focused regression tests, full worktree/main npm run check, one review, zero new Evidence, zero formal audit. Document Budget: zero Markdown; only this round Work/Phase/Checklist and existing Stage 4 validity. Model decision: PLAN gpt-6-astra medium per host capability list and owner request; inline work uses this running PLAN, no separately selected WORK. Smaller Sol medium would suffice after bounded diagnosis, but no room added solely for model ceremony. Unknown disposition: metadata permission resolved by current Evidence reuse policy and validator remediation; exact path footprint verified read-only at pinned Core commit. Stop only for correctness, authority violation, missing prerequisite or scope escape; stop when acceptance passes. Gate prerequisite adjustment: update the existing fixed Work count for this newly registered round. One read-only inline reviewer checks the diff; no separate execution room or formal audit.",
+  "riskSummary": "Scope limited to round.allowedFiles. Forbidden: old Work registries, product repositories, product/map truth, B1 product/B2/A2, push and Core reproof. Proof Budget: focused regression tests, full worktree/main npm run check, one review, zero new Evidence, zero formal audit. Document Budget: zero Markdown; only this round Work/Phase/Checklist and existing Stage 4 validity. Model decision: PLAN gpt-6-astra medium per host capability list and owner request; inline work uses this running PLAN, no separately selected WORK. Smaller Sol medium would suffice after bounded diagnosis, but no room added solely for model ceremony. Unknown disposition: metadata permission resolved by current Evidence reuse policy and validator remediation; exact path footprint verified read-only at pinned Core commit. Stop only for correctness, authority violation, missing prerequisite or scope escape; stop when acceptance passes. Gate prerequisite adjustment: update the existing fixed Work count for this newly registered round. One read-only inline reviewer checks the diff; no separate execution room or formal audit. Closure decision: remove only C:/Users/nekot/.codex/worktrees/aa91/flowdoc-project-control and codex/project-control-b1-prerequisites after the final record commit is clean, fully merged and gated. Retain every historical lane. npm ci reported existing dependency audit findings (2 moderate, 1 high); dependency remediation is outside this round. Next pointer: fresh B1 PLAN/WORK identities may consume this fix and the original Stage 4 Evidence at its stated boundary; do not resume cancelled B1.",
   "requiredEvidence": [
     "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
   ],
   "coordination": {
     "version": 3,
-    "revision": 0,
+    "revision": 1,
     "round": {
       "planTaskId": "01a0dde0-b293-7dd1-8b64-51f12bd3e58c",
       "roundId": "round-pc-b1-prerequisites-2026-09-26",
@@ -42,7 +42,7 @@
         "generated/project-index.json",
         "tests/project-roadmap-work-queue.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -91,9 +91,9 @@
       {
         "repositoryId": "repo-project-control",
         "planTaskId": "01a0dde0-b293-7dd1-8b64-51f12bd3e58c",
-        "roundId": "round-pc-b1-prerequisites-2026-09-26",
         "baseCommit": "b3b6e6b8bd8c5fb2ed96fc10c168d4d84957fafc",
-        "state": "active"
+        "state": "released",
+        "roundId": "round-pc-b1-prerequisites-2026-09-26"
       }
     ],
     "returnOrderPolicy": "severity-then-arrival",
@@ -103,5 +103,5 @@
     "cleanup": []
   },
   "createdAt": "2026-09-26T13:25:32.751Z",
-  "updatedAt": "2026-09-26T13:31:14.105Z"
+  "updatedAt": "2026-09-26T13:44:29.665Z"
 }
