@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 58);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 59);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -477,6 +477,7 @@ describe("project roadmap Work Queue", () => {
       childWorkIds: [
         "cockpit-active-work-reconciliation",
         "plan-self-contained-rounds",
+        "project-control-b1-prerequisites-2026-09-26",
         "workflow-economy-clean-cutover",
         "workflow-scope-lock-model-budget",
       ],
@@ -751,6 +752,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
+        "project-control-b1-prerequisites-2026-09-26",
         "project-control-hardening",
         "project-control-overview-history-gui",
         "work-tree-phase-checklist-sqlite-contract",

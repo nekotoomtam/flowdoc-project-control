@@ -6,5 +6,35 @@
   "commit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
   "pathOrContractId": "core-stage4-private-multispan-cumulative/1",
   "verificationSummary": "Stage 4 private Rust-owned ordinary-command evidence is accepted at Core commit a39e91fd671706d8217d58f4668ed45afa0d0e67. The candidate extends the prior bounded baseline with exact 91-field attempt and cumulative accounting, checked overflow, allocation-free final wire-slot publication, cached current/max structural count and height, correct tail-pruning metadata, and exact anchored within-AuthoredSpan command admission inside multi-span sessions without authorizing general cross-span mutation or authored-span removal. Focused TDD reproduced the prior context-300 inverse-backspace rejection; four footprint regressions and five existing authored-edge tests then passed after the minimal ownership correction. The unchanged sustained matrix passed contexts 300 and 3000 with two long-lived twins, 160 accepted revisions per session over 16 cycles of five inverse pairs, plus a 31-command tail-pruning chain: 671 accepted commands, 671 stale-receipt rejections, and 351 independent cold-oracle constructions. Every accepted revision checked exact source, authored spans, analysis runs, glyphs, line and grapheme facts; all 91 cumulative fields; sibling identities and retained payload sharing; receipt continuity; cached versus recursive tree counts/heights and logarithmic height bounds; and fixed 512/512/1024 work caps. The approved ignored matrix artifact has 675 JSONL records, 5,552,246 bytes, and SHA256 0fdccc1688883391aae5a7c783f49e9de8c550ac49e9134222c40c6140aac1bf. Fresh verification passed 59 native cold-session tests, 139 actual-WASM Stage 2/3/4 tests, TypeScript type-check, default native/WASM/LLVM artifact exclusion scans, and the full Core gate of 438 files and 2,987 tests. Independent review found no findings. PLAN independently matched the exact 16-file aggregate SHA256 9581cd010d546d6c3fe8ebef128e22a6ba7be5509b4c93b0196121cd9cb1f4d5, clean commit/worktree state, and approved artifact hash. This evidence remains private QA-only and does not prove general cross-span commands, adjacent-context certificates, Enter/join, Stage 5, Stage 6/Gate 2 timing, public or production binding, Editor, Backend, Pattern/Build/Preview, UX, Node-count, or map readiness.",
-  "verifiedAt": "2026-09-21T12:17:19.177Z"
+  "verifiedAt": "2026-09-21T12:17:19.177Z",
+  "validity": {
+    "claim": "At the pinned Core revision, accepted private QA Stage 4 evidence covers Rust-owned within-AuthoredSpan ordinary commands in multi-span sessions, exact 91-field attempt/cumulative accounting, retained sharing and receipt continuity, tree metadata and fixed 512/512/1024 work caps. It does not prove general cross-span mutation, authored-span removal, adjacent-context certificates, Enter/join, Stage 5, Stage 6/Gate 2 timing, public or production binding, Editor, Backend, Pattern/Build/Preview, UX, Node-count or map readiness.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/footprint_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structure.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "tests/coldSessionStage4.test.ts"
+    ],
+    "sourceRevision": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+    "verificationMethod": "Reuse of the already accepted verificationSummary at the original verifiedAt, not a new Core proof run: four footprint regressions and five authored-edge tests; unchanged sustained 300/3000-context matrix with 671 accepted commands, 671 stale-receipt rejections and 351 independent cold oracles; 59 native cold-session tests, 139 actual-WASM Stage 2/3/4 tests, TypeScript check, artifact exclusion scans and full Core gate (438 files, 2987 tests). Original PLAN matched the 16-file aggregate and approved matrix artifact hashes recorded above. Metadata enrichment checks only the original accepted record and the exact 16-file commit footprint.",
+    "freshnessTriggers": [
+      "Reuse at a Core source revision other than a39e91fd671706d8217d58f4668ed45afa0d0e67 requires revalidation or explicit supersession; this record proves only its pinned revision.",
+      "Changes to command admission, ownership, source or AuthoredSpan semantics, receipts, accounting fields or work caps, sharing, tree counts/heights or publication behavior invalidate reuse for the changed implementation.",
+      "Changes to the sustained matrix, cold oracle, native/WASM test methods or approved artifact identity require revalidation of the affected claim.",
+      "A proposed claim involving cross-span mutation/removal, adjacent-context certificates, Enter/join, Stage 5, timing, public/product integration, UX or map readiness is outside this accepted boundary and requires separate Evidence."
+    ]
+  }
 }

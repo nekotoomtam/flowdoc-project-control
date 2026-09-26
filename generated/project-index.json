@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "ba14630ebf1a245a03a18a77db86da28608e9178d88243ad61b3a36e2dce9054",
+  "sourceDigest": "9aa9fbf335d716c78786acb2bf5ce399ee0330449019436c63e5cd5d8db77e7f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -419,6 +419,7 @@
         "flowdoc-documentation-authority-cleanup",
         "flowdoc-remaining-work-plan-catalog",
         "plan-self-contained-rounds",
+        "project-control-b1-prerequisites-2026-09-26",
         "project-control-hardening",
         "project-control-overview-history-gui",
         "work-tree-phase-checklist-sqlite-contract",
@@ -948,6 +949,7 @@
       "childWorkIds": [
         "cockpit-active-work-reconciliation",
         "plan-self-contained-rounds",
+        "project-control-b1-prerequisites-2026-09-26",
         "workflow-economy-clean-cutover",
         "workflow-scope-lock-model-budget"
       ],
@@ -8701,6 +8703,122 @@
     },
     {
       "kind": "work",
+      "id": "project-control-b1-prerequisites-2026-09-26",
+      "title": "Project Control B1 prerequisite repair",
+      "nodeId": "project-control",
+      "parentWorkId": "agent-and-skill-design",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "activeRole": "project-control-steward",
+      "summary": "Fresh PLAN-owned inline implementation round. Work Size small; Risk Tier routine. Goal: isolate historical v1/v2 ownership from active v3 exclusivity and enrich existing Stage 4 Evidence with a supported reuse boundary. Inline steward bootstrap is necessary because the ownership validator blocks new registry integration claims. No separate WORK was dispatched. This Work summary, scope and Checklist are the bounded inline kickoff packet; no synthetic room, handoff or return ceremony.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy",
+        "doc-flowdoc-coordination-controls"
+      ],
+      "expectedOutput": "Acceptance: historical v1/v2 plus live v3 passes; current-current scope/file/integration conflicts, reused identities and malformed historical records still fail; closed rounds remain immutable. Stage 4 original fields unchanged, validity derived only from its accepted summary and pinned source footprint. Focused regression tests, full worktree check, local main integration and main check; clean merged lane cleanup. Immutable diagnostic input: b8bed03, docs/domains/flowdoc-b1-stage5-preflight-blocker-2026-09-26.md. Return observer: task 01a0dd89-4aaf-7701-997c-7c294174187c; not execution owner.",
+      "riskSummary": "Scope limited to round.allowedFiles. Forbidden: old Work registries, product repositories, product/map truth, B1 product/B2/A2, push and Core reproof. Proof Budget: focused regression tests, full worktree/main npm run check, one review, zero new Evidence, zero formal audit. Document Budget: zero Markdown; only this round Work/Phase/Checklist and existing Stage 4 validity. Model decision: PLAN gpt-6-astra medium per host capability list and owner request; inline work uses this running PLAN, no separately selected WORK. Smaller Sol medium would suffice after bounded diagnosis, but no room added solely for model ceremony. Unknown disposition: metadata permission resolved by current Evidence reuse policy and validator remediation; exact path footprint verified read-only at pinned Core commit. Stop only for correctness, authority violation, missing prerequisite or scope escape; stop when acceptance passes. Gate prerequisite adjustment: update the existing fixed Work count for this newly registered round. One read-only inline reviewer checks the diff; no separate execution room or formal audit.",
+      "requiredEvidence": [
+        "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+      ],
+      "coordination": {
+        "version": 3,
+        "revision": 0,
+        "round": {
+          "planTaskId": "01a0dde0-b293-7dd1-8b64-51f12bd3e58c",
+          "roundId": "round-pc-b1-prerequisites-2026-09-26",
+          "workId": "project-control-b1-prerequisites-2026-09-26",
+          "scopeId": "project-control-b1-prerequisites-2026-09-26",
+          "scopeKeys": [
+            "project-control:b1-prerequisites"
+          ],
+          "allowedFiles": [
+            "src/model/coordination.ts",
+            "tests/flowdoc-coordination-live-exclusivity.test.ts",
+            "tests/flowdoc-coordination-registry.test.ts",
+            "data/evidence/core-rust-stage4-multispan-cumulative-2026-09-21.json",
+            "data/work/project-control-b1-prerequisites-2026-09-26.json",
+            "data/phases/phase-project-control-b1-prerequisites-2026-09-26.json",
+            "data/checklists/checklist-project-control-b1-prerequisites-2026-09-26.json",
+            "generated/project-index.json",
+            "tests/project-roadmap-work-queue.test.ts"
+          ],
+          "state": "active",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "pc-prerequisites-local-2026-09-26",
+            "hostId": "local",
+            "source": "Current host create_thread tool schema",
+            "observedAt": "2026-09-26T13:25:32.751Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "low",
+                  "medium",
+                  "high",
+                  "xhigh",
+                  "max",
+                  "ultra"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "low",
+                  "medium",
+                  "high",
+                  "xhigh",
+                  "max",
+                  "ultra"
+                ]
+              },
+              {
+                "modelId": "gpt-6-luna",
+                "reasoningEfforts": [
+                  "low",
+                  "medium",
+                  "high",
+                  "xhigh",
+                  "max"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-project-control",
+            "planTaskId": "01a0dde0-b293-7dd1-8b64-51f12bd3e58c",
+            "roundId": "round-pc-b1-prerequisites-2026-09-26",
+            "baseCommit": "b3b6e6b8bd8c5fb2ed96fc10c168d4d84957fafc",
+            "state": "active"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [],
+        "handoffs": [],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "createdAt": "2026-09-26T13:25:32.751Z",
+      "updatedAt": "2026-09-26T13:31:14.105Z",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-project-control-b1-prerequisites-2026-09-26"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "agent-and-skill-design",
+        "project-control-b1-prerequisites-2026-09-26"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "project-control-hardening",
       "title": "Project Control Hardening",
       "nodeId": "project-control",
@@ -12093,6 +12211,28 @@
       "stopConditions": [
         "Read-only product assessment; do not implement or change Node/PDF policy",
         "Require explicit mapping from current Build draft; no QA-only completion"
+      ]
+    },
+    {
+      "kind": "phase",
+      "id": "phase-project-control-b1-prerequisites-2026-09-26",
+      "workId": "project-control-b1-prerequisites-2026-09-26",
+      "title": "Repair historical ownership and Evidence reuse prerequisites",
+      "phaseState": "in-review",
+      "order": 50,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "project-control-steward",
+      "summary": "Implementation and focused tests complete; full worktree/main integration gates pending.",
+      "verificationTarget": "checklist-project-control-b1-prerequisites-2026-09-26; npm run check",
+      "createdAt": "2026-09-26T13:25:32.751Z",
+      "updatedAt": "2026-09-26T13:31:14.105Z",
+      "stopConditions": [
+        "Correctness blocker",
+        "Authority violation",
+        "Missing prerequisite",
+        "Scope escape"
       ]
     },
     {
@@ -21750,6 +21890,36 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-project-control-b1-prerequisites-2026-09-26",
+      "phaseId": "phase-project-control-b1-prerequisites-2026-09-26",
+      "title": "B1 prerequisite acceptance",
+      "items": [
+        {
+          "id": "historical-live-exclusivity",
+          "label": "Separate historical validation from live exclusivity while preserving identity and immutable history checks.",
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-coordination-live-exclusivity.test.ts; tests/flowdoc-coordination-registry.test.ts",
+          "verificationNote": "RED: v1/v2 ownership and closed-round false conflicts reproduced. GREEN: 59 focused tests across two files; original cross-Work tests now exercise current v3. Per-version malformed history, current-current conflicts, reused execution and PLAN/round identities, released/cancelled immutability remain guarded."
+        },
+        {
+          "id": "stage4-validity",
+          "label": "Existing Stage 4 Evidence gains supported reuse metadata without changing original accepted fields or rerunning Core proof.",
+          "state": "passed",
+          "evidenceTarget": "data/evidence/core-rust-stage4-multispan-cumulative-2026-09-21.json",
+          "verificationNote": "RED reproduced WORKFLOW_EVIDENCE_VALIDITY_REQUIRED with canonical Stage 4 Evidence in an in-memory fresh v3 packet. GREEN accepts it with validity, rejects missing validity and mismatched sourceRevision. Every original JSON field compared unchanged against base; pathScope is the exact 16-file pinned Core commit footprint. No Core proof rerun."
+        },
+        {
+          "id": "worktree-main-gates",
+          "label": "Full worktree and main gates pass; clean merged current-round lane removed.",
+          "state": "pending",
+          "evidenceTarget": "npm run check; Git ancestry and clean status"
+        }
+      ],
+      "createdAt": "2026-09-26T13:25:32.751Z",
+      "updatedAt": "2026-09-26T13:31:14.105Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-project-control-overview-history-gui",
       "phaseId": "phase-project-control-overview-history-gui",
       "title": "Project Control Overview and History GUI Checklist",
@@ -26999,7 +27169,37 @@
       "commit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
       "pathOrContractId": "core-stage4-private-multispan-cumulative/1",
       "verificationSummary": "Stage 4 private Rust-owned ordinary-command evidence is accepted at Core commit a39e91fd671706d8217d58f4668ed45afa0d0e67. The candidate extends the prior bounded baseline with exact 91-field attempt and cumulative accounting, checked overflow, allocation-free final wire-slot publication, cached current/max structural count and height, correct tail-pruning metadata, and exact anchored within-AuthoredSpan command admission inside multi-span sessions without authorizing general cross-span mutation or authored-span removal. Focused TDD reproduced the prior context-300 inverse-backspace rejection; four footprint regressions and five existing authored-edge tests then passed after the minimal ownership correction. The unchanged sustained matrix passed contexts 300 and 3000 with two long-lived twins, 160 accepted revisions per session over 16 cycles of five inverse pairs, plus a 31-command tail-pruning chain: 671 accepted commands, 671 stale-receipt rejections, and 351 independent cold-oracle constructions. Every accepted revision checked exact source, authored spans, analysis runs, glyphs, line and grapheme facts; all 91 cumulative fields; sibling identities and retained payload sharing; receipt continuity; cached versus recursive tree counts/heights and logarithmic height bounds; and fixed 512/512/1024 work caps. The approved ignored matrix artifact has 675 JSONL records, 5,552,246 bytes, and SHA256 0fdccc1688883391aae5a7c783f49e9de8c550ac49e9134222c40c6140aac1bf. Fresh verification passed 59 native cold-session tests, 139 actual-WASM Stage 2/3/4 tests, TypeScript type-check, default native/WASM/LLVM artifact exclusion scans, and the full Core gate of 438 files and 2,987 tests. Independent review found no findings. PLAN independently matched the exact 16-file aggregate SHA256 9581cd010d546d6c3fe8ebef128e22a6ba7be5509b4c93b0196121cd9cb1f4d5, clean commit/worktree state, and approved artifact hash. This evidence remains private QA-only and does not prove general cross-span commands, adjacent-context certificates, Enter/join, Stage 5, Stage 6/Gate 2 timing, public or production binding, Editor, Backend, Pattern/Build/Preview, UX, Node-count, or map readiness.",
-      "verifiedAt": "2026-09-21T12:17:19.177Z"
+      "verifiedAt": "2026-09-21T12:17:19.177Z",
+      "validity": {
+        "claim": "At the pinned Core revision, accepted private QA Stage 4 evidence covers Rust-owned within-AuthoredSpan ordinary commands in multi-span sessions, exact 91-field attempt/cumulative accounting, retained sharing and receipt continuity, tree metadata and fixed 512/512/1024 work caps. It does not prove general cross-span mutation, authored-span removal, adjacent-context certificates, Enter/join, Stage 5, Stage 6/Gate 2 timing, public or production binding, Editor, Backend, Pattern/Build/Preview, UX, Node-count or map readiness.",
+        "repositoryId": "repo-core",
+        "pathScope": [
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/footprint_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structure.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+          "tests/coldSessionStage4.test.ts"
+        ],
+        "sourceRevision": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+        "verificationMethod": "Reuse of the already accepted verificationSummary at the original verifiedAt, not a new Core proof run: four footprint regressions and five authored-edge tests; unchanged sustained 300/3000-context matrix with 671 accepted commands, 671 stale-receipt rejections and 351 independent cold oracles; 59 native cold-session tests, 139 actual-WASM Stage 2/3/4 tests, TypeScript check, artifact exclusion scans and full Core gate (438 files, 2987 tests). Original PLAN matched the 16-file aggregate and approved matrix artifact hashes recorded above. Metadata enrichment checks only the original accepted record and the exact 16-file commit footprint.",
+        "freshnessTriggers": [
+          "A proposed claim involving cross-span mutation/removal, adjacent-context certificates, Enter/join, Stage 5, timing, public/product integration, UX or map readiness is outside this accepted boundary and requires separate Evidence.",
+          "Changes to command admission, ownership, source or AuthoredSpan semantics, receipts, accounting fields or work caps, sharing, tree counts/heights or publication behavior invalidate reuse for the changed implementation.",
+          "Changes to the sustained matrix, cold oracle, native/WASM test methods or approved artifact identity require revalidation of the affected claim.",
+          "Reuse at a Core source revision other than a39e91fd671706d8217d58f4668ed45afa0d0e67 requires revalidation or explicit supersession; this record proves only its pinned revision."
+        ]
+      }
     },
     {
       "kind": "evidence",
@@ -28852,6 +29052,16 @@
           "implementation": "not-required",
           "verification": "not-required",
           "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "project-control-b1-prerequisites-2026-09-26",
+        "title": "Project Control B1 prerequisite repair",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "complete"
         }
       }
     ],

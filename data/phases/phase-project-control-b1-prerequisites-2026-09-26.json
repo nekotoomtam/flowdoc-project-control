@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-project-control-b1-prerequisites-2026-09-26",
+  "workId": "project-control-b1-prerequisites-2026-09-26",
+  "title": "Repair historical ownership and Evidence reuse prerequisites",
+  "phaseState": "in-review",
+  "order": 50,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "project-control-steward",
+  "summary": "Implementation and focused tests complete; full worktree/main integration gates pending.",
+  "verificationTarget": "checklist-project-control-b1-prerequisites-2026-09-26; npm run check",
+  "createdAt": "2026-09-26T13:25:32.751Z",
+  "updatedAt": "2026-09-26T13:31:14.105Z",
+  "stopConditions": [
+    "Correctness blocker",
+    "Authority violation",
+    "Missing prerequisite",
+    "Scope escape"
+  ]
+}

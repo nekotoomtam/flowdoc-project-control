@@ -322,6 +322,9 @@ export function validateCoordinationRegistries(
       } else {
         issues.push(...validateCoordinationV3Registry(work.id, registry, evidenceById));
       }
+      // Historical registries remain validated above, but only active v3 rounds
+      // participate in live ownership. Identity reuse is checked across history below.
+      if (registry.version !== 3 || registry.round.state !== "active") continue;
       if (registry.round.state === "active") {
         for (const scopeKey of registry.round.scopeKeys) {
           const existing = activeScopes.get(scopeKey);
@@ -364,57 +367,6 @@ export function validateCoordinationRegistries(
       continue;
     }
     issues.push(...validateRegistry(work.id, registry, evidenceById));
-
-    if (registry.scopeOwnership.state === "active") {
-      for (const scopeKey of registry.scopeOwnership.scopeKeys) {
-        const existing = activeScopes.get(scopeKey);
-        if (existing !== undefined && existing.planTaskId !== registry.scopeOwnership.planTaskId) {
-          issues.push(issue(
-            "COORDINATION_SCOPE_CONFLICT",
-            `Scope key "${scopeKey}" is actively owned by ${existing.planTaskId} in ${existing.workId}.`,
-            work.id,
-          ));
-        } else {
-          activeScopes.set(scopeKey, {
-            workId: work.id,
-            planTaskId: registry.scopeOwnership.planTaskId,
-          });
-        }
-      }
-      for (const allowedPath of registry.scopeOwnership.allowedFiles) {
-        const normalized = normalizeScopePath(allowedPath);
-        for (const existing of activeFileScopes) {
-          if (
-            existing.planTaskId !== registry.scopeOwnership.planTaskId &&
-            pathsOverlap(existing.path, normalized)
-          ) {
-            issues.push(issue(
-              "COORDINATION_FILE_SCOPE_CONFLICT",
-              `Allowed path "${allowedPath}" overlaps active path "${existing.path}" in ${existing.workId}.`,
-              work.id,
-            ));
-          }
-        }
-        activeFileScopes.push({
-          workId: work.id,
-          planTaskId: registry.scopeOwnership.planTaskId,
-          path: normalized,
-        });
-      }
-    }
-
-    for (const claim of registry.integrationClaims.filter(({ state }) => state === "active")) {
-      const existing = activeIntegrators.get(claim.repositoryId);
-      if (existing !== undefined && existing.planTaskId !== claim.planTaskId) {
-        issues.push(issue(
-          "COORDINATION_INTEGRATION_OWNER_CONFLICT",
-          `Repository "${claim.repositoryId}" has active integration owners ${existing.planTaskId} and ${claim.planTaskId}.`,
-          work.id,
-        ));
-      } else {
-        activeIntegrators.set(claim.repositoryId, { workId: work.id, planTaskId: claim.planTaskId });
-      }
-    }
   }
 
   issues.push(...collectExecutionIdentityIssues(workRecords));

@@ -814,10 +814,16 @@ describe("coordination registry transitions", () => {
 
 describe("stored coordination validation", () => {
   it("rejects competing active scope and integration owners across Work records", () => {
-    const first = makeRegistry();
-    const second = makeRegistry();
-    second.scopeOwnership.planTaskId = "plan-2";
+    const first = createCoordinationRegistryV3Fixture();
+    const second = createCoordinationRegistryV3Fixture();
+    first.roomRuns = [];
+    second.roomRuns = [];
+    second.round.planTaskId = "plan-2";
+    second.round.roundId = "round-2";
+    second.integrationClaims[0]!.roundId = "round-2";
     second.integrationClaims[0]!.planTaskId = "plan-2";
+    first.round.workId = "work-1";
+    second.round.workId = "work-2";
 
     const issues = validateCoordinationRegistries([
       { id: "work-1", coordination: first },
@@ -831,14 +837,20 @@ describe("stored coordination validation", () => {
   });
 
   it("rejects ancestor and descendant allowed-file overlap even when scope keys differ", () => {
-    const first = makeRegistry();
-    first.scopeOwnership.allowedFiles = ["schemas/"];
-    const second = makeRegistry();
-    second.scopeOwnership.scopeKeys = ["different-scope"];
-    second.scopeOwnership.allowedFiles = ["schemas/project-control.schema.json"];
-    second.scopeOwnership.planTaskId = "plan-2";
+    const first = createCoordinationRegistryV3Fixture();
+    first.round.allowedFiles = ["schemas/"];
+    const second = createCoordinationRegistryV3Fixture();
+    second.round.scopeKeys = ["different-scope"];
+    second.round.allowedFiles = ["schemas/project-control.schema.json"];
+    first.roomRuns = [];
+    second.roomRuns = [];
+    second.round.planTaskId = "plan-2";
+    second.round.roundId = "round-2";
+    second.integrationClaims[0]!.roundId = "round-2";
     second.integrationClaims[0]!.planTaskId = "plan-2";
     second.integrationClaims[0]!.state = "released";
+    first.round.workId = "work-1";
+    second.round.workId = "work-2";
 
     const issues = validateCoordinationRegistries([
       { id: "work-1", coordination: first },
@@ -949,16 +961,16 @@ describe("stored coordination validation", () => {
   it("runs cross-Work coordination validation in the standard semantic gate", async () => {
     const root = await createProjectFixture({ valid: true, newContractTask: true });
     const loaded = await loadProjectSources(root);
-    const first = makeRegistry();
+    const first = createCoordinationRegistryV3Fixture();
     first.integrationClaims[0]!.repositoryId = "project-control";
-    first.roomRuns[0]!.ownerRepositoryId = "project-control";
-    first.roomRuns[0]!.phaseId = "phase-contract";
-    first.roomRuns[0]!.checklistId = "checklist-contract";
+    first.roomRuns = [];
     const second = structuredClone(first);
-    second.scopeOwnership.planTaskId = "plan-2";
+    second.round.planTaskId = "plan-2";
+    second.round.roundId = "round-2";
+    second.integrationClaims[0]!.roundId = "round-2";
     second.integrationClaims[0]!.planTaskId = "plan-2";
-    second.roomRuns[0]!.returnRoute.planTaskId = "plan-2";
-    second.roomRuns[0]!.returnRoute.monitorOwner = "plan-2";
+    first.round.workId = loaded.work[0]!.value.id;
+    second.round.workId = loaded.work[1]!.value.id;
     loaded.work[0]!.value.coordination = first;
     loaded.work[1]!.value.coordination = second;
 

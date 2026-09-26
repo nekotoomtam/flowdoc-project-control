@@ -1,0 +1,30 @@
+{
+  "kind": "checklist",
+  "id": "checklist-project-control-b1-prerequisites-2026-09-26",
+  "phaseId": "phase-project-control-b1-prerequisites-2026-09-26",
+  "title": "B1 prerequisite acceptance",
+  "items": [
+    {
+      "id": "historical-live-exclusivity",
+      "label": "Separate historical validation from live exclusivity while preserving identity and immutable history checks.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-coordination-live-exclusivity.test.ts; tests/flowdoc-coordination-registry.test.ts",
+      "verificationNote": "RED: v1/v2 ownership and closed-round false conflicts reproduced. GREEN: 59 focused tests across two files; original cross-Work tests now exercise current v3. Per-version malformed history, current-current conflicts, reused execution and PLAN/round identities, released/cancelled immutability remain guarded."
+    },
+    {
+      "id": "stage4-validity",
+      "label": "Existing Stage 4 Evidence gains supported reuse metadata without changing original accepted fields or rerunning Core proof.",
+      "state": "passed",
+      "evidenceTarget": "data/evidence/core-rust-stage4-multispan-cumulative-2026-09-21.json",
+      "verificationNote": "RED reproduced WORKFLOW_EVIDENCE_VALIDITY_REQUIRED with canonical Stage 4 Evidence in an in-memory fresh v3 packet. GREEN accepts it with validity, rejects missing validity and mismatched sourceRevision. Every original JSON field compared unchanged against base; pathScope is the exact 16-file pinned Core commit footprint. No Core proof rerun."
+    },
+    {
+      "id": "worktree-main-gates",
+      "label": "Full worktree and main gates pass; clean merged current-round lane removed.",
+      "state": "pending",
+      "evidenceTarget": "npm run check; Git ancestry and clean status"
+    }
+  ],
+  "createdAt": "2026-09-26T13:25:32.751Z",
+  "updatedAt": "2026-09-26T13:31:14.105Z"
+}
