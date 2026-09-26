@@ -5,9 +5,14 @@
   "path": "docs/domains/flowdoc-b1-empty-side-certificate-contract-2026-09-26.md",
   "nodeIds": [],
   "role": "decision",
-  "authority": "Project Control owner-accepted implementation-target contract. User accepted revised 20d5e7a with mandatory unchanged viewing-to-editing appearance, positions and line division including transient frames. Design acceptance does not prove Core/Editor parity, product Evidence, Stage5/Gate2 admission or map truth.",
+  "authority": "Project Control owner-accepted implementation-target contract, with owner-approved 2026-09-27 gate alignment. Preserve Core-only visible geometry and unchanged viewing-to-editing appearance, positions and line division including transient frames. Separate private Stage5 structural proof, downstream Core layout proof and Editor presentation proof without weakening existing Stage6/Gate2 limits. Reconcile prior decisions/source/Evidence before declaring blockers; report design or excessive-gate problems with evidence, impact, remedies and recommendation. Closed execution records remain immutable. Design acceptance does not prove product behavior, Core/Editor parity, Stage5/Gate2 admission or map truth.",
   "lifecycle": "active",
   "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "pathOrContractId": "tests/coldSessionStage3.test.ts"
+    },
     {
       "repositoryId": "repo-core",
       "commit": "a39e91fd671706d8217d58f4668ed45afa0d0e67",

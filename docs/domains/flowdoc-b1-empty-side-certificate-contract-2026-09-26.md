@@ -14,7 +14,99 @@ weakening it. The owner's unchanged-layout condition remains mandatory product
 acceptance, not a claim that it has been met. No implementation, Stage 5, Stage 6, Gate 2,
 latency, UX, public binding or map admission follows from this design.
 
-## Round and Markdown pre-action gate
+## Owner-approved gate alignment — 2026-09-27
+
+This amendment follows the owner's acceptance of separating private Core
+structural proof, Core layout proof, and Editor presentation proof. It governs
+future kickoff and acceptance; the closed design/discovery execution records
+remain immutable. Their findings remain scoped historical input, not a mandate
+to reopen those rounds or to treat every V4 limitation as a Stage 5 dependency.
+Where earlier wording below joins these proof layers, this section controls
+their sequencing. No semantic invariant, work cap or final UX requirement is
+weakened, and no product PASS follows from this amendment.
+
+Inline documentation maintenance context: Work `flowdoc-frontend-expert-roadmap`,
+Phase `phase-core-text-layout-roadmap`, Checklist
+`checklist-core-text-layout-roadmap`; owner Project Control; active roles
+Planning Partner and Documentation Synthesizer. The change is canonical decision
+maintenance, not another product execution round. Scope is this existing
+contract, its Document record and generated projection. Work Size small, Risk
+Tier routine; proof budget is source/document reconciliation and required PC
+worktree/main checks, with no new product Evidence or audit. Product Evidence
+targets remain `evidence-core-rust-paragraph-session-feasibility` and downstream
+`evidence-preview-keyboard-contract`, each within its own validity. No closed
+Work/Phase/Checklist/registry or product source is changed.
+
+### Reuse established authority before declaring a gap
+
+Read the applicable decision and its source/Evidence chain before proposing new
+semantics. Record what is already decided, what is implemented at the pinned
+revision, and what remains missing for the exact consumer. Relevant inputs are:
+
+- [Accepted Core-only architecture](flowdoc-core-authoritative-incremental-typing-architecture-2026-09-12.md),
+  especially its non-negotiable UX and input/paint boundaries: Core owns visible
+  glyph, line, caret and selection geometry before typing, during input/IME and
+  after blur. Browser input does not paint or reshape text; a late Core result
+  retains the last exact Core frame and records latency failure.
+- [Run-owned semantic contract](flowdoc-core-run-owned-property-semantic-contract-2026-09-14.md)
+  and [implementation sequence](flowdoc-core-run-owned-property-implementation-plan-2026-09-14.md):
+  Stage 5 owns private structural commands; renderer geometry and Editor remain
+  downstream. Stage 6/Gate 2 admission still precedes the later geometry plan.
+- Core at `a39e91fd671706d8217d58f4668ed45afa0d0e67`:
+  `tests/coldSessionStage3.test.ts:174` already specifies creation/disposal of an
+  empty session with zero spans/runs/shards and no shaping call. This is source
+  and test inspection, not a new test run or proof of structural commands.
+- The consolidated [V4 authoring and inline record](../versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md)
+  retains `children: []` and the null-inline empty caret, with bounded executable
+  evidence anchors and its stated publication limits. At that same Core revision, Creator
+  `src/creatorPreview/layoutFactsV1.ts`, `layoutV1.ts` and `engineV1.ts` provide
+  empty-line/field geometry under a fixed profile. These do not prove general
+  styled V4 geometry. Conversely, the blocked-empty-layout-contract rows in
+  `src/layout/textBlockInitialFlowInputV1.ts` and
+  `tests/textBlockInitialFlowInputV1.test.ts` do not establish that every private
+  structural command depends on InitialFlow. Name and prove that dependency
+  before using this limitation to block Stage 5.
+
+### Acceptance by responsibility
+
+These are responsibility boundaries, not extra numbered gates or permission
+to skip the existing Stage 6/Gate 2 sequence.
+
+| Boundary | Required result | What remains downstream |
+| --- | --- | --- |
+| Private Core structural commands (Stage 5) | Exact endpoint/empty/interior certificate and provider equality; authored property presence, defaults and origin preservation; exact unchanged-sibling inverse; atomic receipts/revisions; bounded lineage and complete accounting within 512/512/1024; native and actual-WASM checks. Preserve established immutable style/resource/context identities consumed by this private API. | No rendered geometry, browser transition or visual PASS. |
+| Core layout and geometry | After applicable prior admission, bind the intended consumer to authoritative effective style, font resources, empty-line metrics, constraints and layout revision; compute glyph/line/caret/selection geometry only in Core and compare against the applicable exact oracle. | No Editor transition or final UX PASS. |
+| Editor presentation | After applicable Core admission, display the same Core geometry for unchanged content/style/constraints before, during and after activation/blur/re-entry, including transient frames; input is non-rendering; section 4a measurements and user-visible acceptance remain required. | Feature acceptance still requires all applicable correctness, performance and user acceptance results. |
+
+Missing information needed to preserve the structural result is a real Stage 5
+blocker. Report the missing field/meaning, exact producer and consumer, and a
+failing invariant or source-backed dependency. Do not guess a style or invent a
+font/metric default. An unimplemented downstream renderer alone is not a
+structural blocker when the private command can preserve already defined input
+meaning without it. Carry deferred obligations with their owner and return
+trigger; never satisfy them by dropping metadata, blanket rejection or replacing
+Core geometry with browser layout. Implementing a private subset does not
+establish that the complete feature is ready.
+
+### Report design and gate problems with a remedy
+
+When design ambiguity or excessive gate cost impedes progress, report together:
+
+1. The observed result and exact document/source/test evidence; distinguish a
+   confirmed defect, unresolved question and duplicated proof.
+2. The affected boundary, dependency and concrete impact on correctness, user
+   behavior, time or repeated work. Label estimates; do not invent measurements.
+3. Feasible remedies with trade-offs, including reuse of existing authority or
+   tests, a narrower in-scope fix, or deferral to the consuming boundary.
+4. A recommended remedy, remaining risk, unchanged acceptance conditions and
+   any specific owner decision required. Continue independent authorized work.
+
+Do not silently add gates or relax an approved contract. A proposed new gate
+must name the failure it prevents, why existing checks cannot cover it and the
+evidence that ends it. Stop after applicable criteria pass; completion reporting
+must distinguish a closed investigation from an implemented feature.
+
+## Original round and Markdown pre-action gate
 
 PLAN task: `01a0de32-c1af-7fd0-866a-e886c976671f`.
 Round: `b1-empty-contract-20260926-01a0de32`; registry version 3;
@@ -326,7 +418,7 @@ the environment (font readiness, viewport, zoom/device scale and renderer
 revision). It is not enough that both paths name the same font family. Input
 identity must exclude focus state: focus must not change any layout input.
 
-Core-owned proof in a fresh authorized Core round:
+Core-owned proof, allocated by the responsibility table above:
 
 - Characterize the authoritative effective-style and empty-paragraph resolution
   chain; do not infer it from this plan or invent an alternative default rule.
@@ -455,10 +547,13 @@ verification WORK. WORK must not dispatch children.
 Implementation scope must explicitly include the private Rust/WASM cold-session
 code, private QA wrapper/tests, and the narrow Stage 2 reference-oracle types/
 schemas/tests required for the tagged endpoint certificate and explicit defaults.
-Its initial source-grounded prerequisite must resolve the effective-context
-binding and empty-state provenance required by the owner condition. If that
-requires a new cross-repository contract or broad style-resolution change,
-return the gap to PLAN before mutation; do not expand the Stage 5 lane locally.
+Its initial source-grounded prerequisite must resolve the input meaning and
+provenance actually consumed or preserved by the private structural command.
+Keep complete rendered metrics and viewing/editing consumer integration at the
+Core layout boundary unless an exact structural dependency is established.
+If preserving the structural result requires a new contract or broad style
+resolution change, return that concrete gap to PLAN before mutation; do not
+expand the Stage 5 lane locally or substitute guessed defaults.
 The discovery packet forbade `src/`; do not reuse that packet to authorize this
 necessary oracle change. No public export, product binding or unrelated source
 change is authorized. Name exact paths after fresh-base inspection.
@@ -468,7 +563,8 @@ rejections; (2) explicit defaults and origin preservation; (3) all required
 split/join rows with independent provider equality and combined caps;
 (4) atomicity, authentic receipt/revision and exact sibling rejection matrix;
 (5) full additive accounting, shared lineage, empty-side costs and overflow;
-(6) Core-owned unchanged-input/effective-context checks in section 4a;
+(6) unchanged private-input meaning and preserved context identities, with
+section 4a rendered-metric and consumer comparisons assigned to Core layout;
 (7) focused native and actual-WASM tests, affected regressions, type check and
 Core's required gate. Reuse Stage 4 only within its validity; revalidate changed
 behavior rather than repeat unrelated proof. Stage 6's fixed 180-revision corpus
