@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "311a88db8746d5c08755291cf1c26a5353cc1de2e8ce9fdb4763907dca696f0f",
+  "sourceDigest": "9d94711520b6676ec50c9750d35aa12acc64ce7fd0a43100a6ab459800dbe53f",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -8707,13 +8707,13 @@
       ],
       "activeRole": "project-control-steward",
       "expectedOutput": "Policy v2 packets bind actual Git scope, acceptance and integration require a clean persisted verification, compact model decisions reference one host snapshot, and current guidance records the Astra-medium PLAN default with a bounded PLAN Lite exception.",
-      "riskSummary": "Git Scope Lock cannot prove every file read, network request, or external application side effect. The worktree implementation and authority cutover are verified here, while main integration, machine-global guidance sync, installed-skill parity, and cleanup remain PLAN-owned downstream steps.",
+      "riskSummary": "Git Scope Lock cannot prove every file read, network request, or external application side effect. The implementation, main integration, machine-global guidance sync, installed-skill parity, and clean merged-lane cleanup are complete; the read-audit limit remains an explicit accepted boundary.",
       "requiredEvidence": [
         "evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
         "evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"
       ],
       "createdAt": "2026-09-26T16:00:00.0000000+07:00",
-      "updatedAt": "2026-09-26T16:00:00.0000000+07:00",
+      "updatedAt": "2026-09-26T16:51:10.6056264+07:00",
       "childWorkIds": [],
       "phaseIds": [
         "phase-workflow-scope-lock-model-budget-implementation"
@@ -11991,7 +11991,7 @@
       "id": "phase-workflow-scope-lock-model-budget-implementation",
       "workId": "workflow-scope-lock-model-budget",
       "title": "Implement Scope Lock and compact Model Budget",
-      "phaseState": "in-review",
+      "phaseState": "done",
       "order": 40,
       "repositoryIds": [
         "repo-project-control"
@@ -12004,9 +12004,9 @@
         "Stop if implementation escapes the approved Project Control-only scope."
       ],
       "verificationTarget": "checklist-workflow-scope-lock-model-budget-implementation; focused Scope Lock, Git adapter, lifecycle, CLI, authority, and skill tests; npm run check",
-      "summary": "The fresh round implements actual Git mutation containment, acceptance and integration locks, compact host-referenced model decisions, and the policy/guidance cutover. It remains in review until PLAN-owned main integration, post-merge gate, guidance sync, and cleanup complete.",
+      "summary": "The fresh round implemented actual Git mutation containment, acceptance and integration locks, compact host-referenced model decisions, and the policy/guidance cutover. PLAN integrated the reviewed branch into main, passed the post-merge gate, synchronized machine guidance and the installed skill, and removed the clean merged lane.",
       "createdAt": "2026-09-26T16:00:00.0000000+07:00",
-      "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+      "updatedAt": "2026-09-26T16:51:10.6056264+07:00"
     }
   ],
   "checklists": [
@@ -21721,16 +21721,16 @@
         {
           "id": "main-integration-guidance-sync-cleanup",
           "label": "PLAN integrates the reviewed branch, reruns the main gate, synchronizes machine guidance and installed skill parity, and removes only the clean merged lane.",
-          "state": "pending",
+          "state": "passed",
           "evidenceTarget": "Post-merge main npm run check; machine guidance and installed skill parity validation; clean current-round cleanup",
           "evidenceIds": [
             "evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"
           ],
-          "verificationNote": "Intentionally deferred until owner-authorized integration. The current evidence does not claim main integration, machine-global guidance sync, installed-skill parity, or cleanup."
+          "verificationNote": "Owner-authorized local integration fast-forwarded main through eb6b2f49ca624f98c380cec376229144e50a3acb. The post-merge main npm run check passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. Machine guidance matches the maintained source apart from line endings; the installed skill passed structural validation and contains policy v2, Scope Lock, PLAN defaults, and WORK model non-inheritance. The clean merged worktree and branch were removed without force."
         }
       ],
       "createdAt": "2026-09-26T16:00:00.0000000+07:00",
-      "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+      "updatedAt": "2026-09-26T16:51:10.6056264+07:00"
     }
   ],
   "documents": [
@@ -27888,8 +27888,8 @@
       "repositoryId": "repo-project-control",
       "commit": "3cc2426efe910249c4bce4de400c1fcb00e84e6d",
       "pathOrContractId": "src/model/workflow-economy.ts; src/model/scope-lock.ts; src/model/coordination.ts; src/model/coordination-v3.ts; tools/lib/git-scope-verifier.ts; tools/coordination-registry.ts; schemas/project-control.schema.json; tests/flowdoc-scope-lock.test.ts; tests/flowdoc-git-scope-verifier.test.ts; tests/flowdoc-workflow-economy-lifecycle.test.ts; tests/flowdoc-coordination-cli.test.ts",
-      "verificationSummary": "Project Control implementation commit 3cc2426efe910249c4bce4de400c1fcb00e84e6d adds policy v2 packet contracts, Scope Lock Enforcement v1, canonical actual Git manifests, compact host-snapshot model decisions, acceptance verification, and read-only integration preflight. The focused Task 7 gate passed 7 files and 99 tests. The full dedicated-worktree npm run check passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. The round reused evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23 as immutable baseline input and created one bounded Evidence record. It does not promote Core, Backend, Editor, product, or map truth. Main integration, post-merge main gate, machine-global guidance sync, installed-skill parity, and cleanup remain intentionally unclaimed.",
-      "verifiedAt": "2026-09-26T16:16:00.0000000+07:00",
+      "verificationSummary": "Project Control implementation commit 3cc2426efe910249c4bce4de400c1fcb00e84e6d adds policy v2 packet contracts, Scope Lock Enforcement v1, canonical actual Git manifests, compact host-snapshot model decisions, acceptance verification, and read-only integration preflight. The focused Task 7 gate passed 7 files and 99 tests. The full dedicated-worktree and post-merge main npm run check each passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. Main was fast-forwarded through eb6b2f49ca624f98c380cec376229144e50a3acb; machine guidance and installed-skill parity were validated; the clean merged lane was removed without force. The round reused evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23 as immutable baseline input and created one bounded Evidence record. It does not promote Core, Backend, Editor, product, or map truth.",
+      "verifiedAt": "2026-09-26T16:51:10.6056264+07:00",
       "validity": {
         "claim": "The Project Control worktree implements and verifies Scope Lock Enforcement v1, compact Model Budget decisions, acceptance locking, and integration preflight at the pinned implementation commit.",
         "repositoryId": "repo-project-control",
@@ -27904,7 +27904,7 @@
           "tools/lib/git-scope-verifier.ts"
         ],
         "sourceRevision": "3cc2426efe910249c4bce4de400c1fcb00e84e6d",
-        "verificationMethod": "Focused Scope Lock, Git adapter, workflow schema/lifecycle, coordination CLI, authority, and skill tests plus npm run check in the dedicated worktree.",
+        "verificationMethod": "Focused Scope Lock, Git adapter, workflow schema/lifecycle, coordination CLI, authority, and skill tests; full npm run check in the dedicated worktree and after merge on main; machine-guidance parity, installed-skill validation, and clean merged-lane cleanup checks.",
         "freshnessTriggers": [
           "Scope Lock manifest or Git inspection behavior changes",
           "Workflow Economy Policy or policy v2 packet contract changes",
@@ -28499,7 +28499,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-26T16:00:00.0000000+07:00",
+    "generatedAt": "2026-09-26T16:51:10.6056264+07:00",
     "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
     "currentBlocker": null,
     "activeWork": [

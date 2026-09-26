@@ -47,12 +47,12 @@
     {
       "id": "main-integration-guidance-sync-cleanup",
       "label": "PLAN integrates the reviewed branch, reruns the main gate, synchronizes machine guidance and installed skill parity, and removes only the clean merged lane.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "Post-merge main npm run check; machine guidance and installed skill parity validation; clean current-round cleanup",
       "evidenceIds": ["evidence-flowdoc-workflow-scope-lock-model-budget-2026-09-26"],
-      "verificationNote": "Intentionally deferred until owner-authorized integration. The current evidence does not claim main integration, machine-global guidance sync, installed-skill parity, or cleanup."
+      "verificationNote": "Owner-authorized local integration fast-forwarded main through eb6b2f49ca624f98c380cec376229144e50a3acb. The post-merge main npm run check passed 85 files/349 records tests, 21 files/189 source-document tests, 10 files/68 app tests, production build, and 6/6 Chromium tests. Machine guidance matches the maintained source apart from line endings; the installed skill passed structural validation and contains policy v2, Scope Lock, PLAN defaults, and WORK model non-inheritance. The clean merged worktree and branch were removed without force."
     }
   ],
   "createdAt": "2026-09-26T16:00:00.0000000+07:00",
-  "updatedAt": "2026-09-26T16:00:00.0000000+07:00"
+  "updatedAt": "2026-09-26T16:51:10.6056264+07:00"
 }
