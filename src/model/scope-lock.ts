@@ -1,13 +1,46 @@
+import { createHash } from "node:crypto";
 import { posix, win32 } from "node:path";
 import type {
   CompactCoordinationModelDecision,
   CoordinationModelAvailabilitySnapshot,
+  ScopeLockVerification,
 } from "./types.js";
 import type { WorkflowEconomyPacketV2 } from "./workflow-economy.js";
 
 export interface ScopeLockIssue {
   code: string;
   message: string;
+}
+
+export interface GitChangeEntry {
+  source: "committed" | "staged" | "unstaged" | "untracked" | "submodule";
+  kind: "added" | "modified" | "deleted" | "renamed" | "copied" | "untracked" | "submodule";
+  path: string;
+  previousPath?: string;
+}
+
+export interface GitScopeManifest {
+  repositoryRoot: string;
+  baseCommit: string;
+  headCommit: string;
+  entries: GitChangeEntry[];
+  dirty: boolean;
+}
+
+export interface ScopeLockEvaluationInput {
+  packet: WorkflowEconomyPacketV2;
+  manifest: GitScopeManifest;
+  payloadChangedFiles: string[];
+  completionChangedFiles: string[];
+  terminalCommit: string;
+  packetDigest: string;
+  expectedPacketDigest: string;
+  verifiedAt: string;
+}
+
+export interface ScopeLockEvaluation {
+  issues: ScopeLockIssue[];
+  verification?: ScopeLockVerification;
 }
 
 export function normalizeRepositoryPath(value: string): string {
@@ -78,6 +111,78 @@ export function resolveModelAvailability(
   }];
 }
 
+export function canonicalScopeManifestDigest(manifest: GitScopeManifest): string {
+  const canonical = {
+    repositoryRoot: normalizeLocatorPath(manifest.repositoryRoot),
+    baseCommit: manifest.baseCommit,
+    headCommit: manifest.headCommit,
+    entries: manifest.entries
+      .map(canonicalizeEntry)
+      .sort((left, right) => JSON.stringify(left).localeCompare(JSON.stringify(right))),
+    dirty: manifest.dirty,
+  };
+  return createHash("sha256").update(JSON.stringify(canonical)).digest("hex");
+}
+
+export function evaluateScopeLock(input: ScopeLockEvaluationInput): ScopeLockEvaluation {
+  const issues: ScopeLockIssue[] = [];
+  let actualChangedFiles: string[];
+  try {
+    actualChangedFiles = changedFilesFromManifest(input.manifest);
+  } catch {
+    return { issues: [{ code: "SCOPE_MANIFEST_PATH_INVALID", message: "The Git manifest contains an invalid repository path." }] };
+  }
+
+  if (input.packet.workAuthority !== "implementation" && actualChangedFiles.length > 0) {
+    issues.push({ code: "WORK_AUTHORITY_READ_ONLY", message: `${input.packet.workAuthority} WORK cannot mutate repository files.` });
+  }
+  for (const path of actualChangedFiles) {
+    if (input.packet.forbiddenScope.some((scope) => pathWithinScope(path, scope))) {
+      issues.push({ code: "CHANGED_FILE_FORBIDDEN", message: `Changed file ${path} is inside forbidden scope.` });
+    } else if (!input.packet.allowedScope.some((scope) => pathWithinScope(path, scope))) {
+      issues.push({ code: "CHANGED_FILE_OUTSIDE_SCOPE", message: `Changed file ${path} is outside allowed scope.` });
+    }
+  }
+  if (
+    !samePathSet(actualChangedFiles, input.payloadChangedFiles) ||
+    !samePathSet(actualChangedFiles, input.completionChangedFiles)
+  ) {
+    issues.push({ code: "CHANGE_MANIFEST_MISMATCH", message: "Reported changed files do not equal the authoritative Git manifest." });
+  }
+  if (input.manifest.dirty) {
+    issues.push({ code: "SCOPE_WORKTREE_DIRTY", message: "The returned worktree contains staged, unstaged, untracked, or dirty-submodule state." });
+  }
+  if (input.terminalCommit !== input.manifest.headCommit) {
+    issues.push({ code: "SCOPE_TERMINAL_COMMIT_MISMATCH", message: "The reported terminal commit does not equal the inspected HEAD." });
+  }
+  if (input.packet.scopeLock.baseCommit !== input.manifest.baseCommit) {
+    issues.push({ code: "SCOPE_BASE_COMMIT_MISMATCH", message: "The inspected base commit does not equal the packet Scope Lock base." });
+  }
+  if (normalizeLocatorPath(input.packet.scopeLock.worktree) !== normalizeLocatorPath(input.manifest.repositoryRoot)) {
+    issues.push({ code: "SCOPE_WORKTREE_MISMATCH", message: "The inspected Git root does not equal the packet Scope Lock worktree." });
+  }
+  if (input.packetDigest !== input.expectedPacketDigest) {
+    issues.push({ code: "SCOPE_PACKET_DIGEST_MISMATCH", message: "The current packet digest differs from the dispatched packet digest." });
+  }
+
+  const deduplicated = deduplicateIssues(issues);
+  if (deduplicated.length > 0) return { issues: deduplicated };
+  return {
+    issues: [],
+    verification: {
+      version: 1,
+      status: "passed",
+      baseCommit: input.manifest.baseCommit,
+      terminalCommit: input.manifest.headCommit,
+      packetDigest: input.packetDigest,
+      manifestDigest: canonicalScopeManifestDigest(input.manifest),
+      changedFiles: actualChangedFiles,
+      verifiedAt: input.verifiedAt,
+      clean: true,
+    },
+  };
+}
+
 function normalizeList(
   label: "allowed" | "forbidden",
   values: readonly string[],
@@ -101,6 +206,38 @@ function normalizeList(
     normalized.push(path);
   }
   return normalized;
+}
+
+function canonicalizeEntry(entry: GitChangeEntry): GitChangeEntry {
+  return {
+    source: entry.source,
+    kind: entry.kind,
+    path: normalizeRepositoryPath(entry.path),
+    ...(entry.previousPath === undefined ? {} : { previousPath: normalizeRepositoryPath(entry.previousPath) }),
+  };
+}
+
+function changedFilesFromManifest(manifest: GitScopeManifest): string[] {
+  const paths = new Set<string>();
+  for (const entry of manifest.entries) {
+    paths.add(normalizeRepositoryPath(entry.path));
+    if (entry.previousPath !== undefined) paths.add(normalizeRepositoryPath(entry.previousPath));
+  }
+  return [...paths].sort();
+}
+
+function samePathSet(actual: readonly string[], reported: readonly string[]): boolean {
+  let normalized: string[];
+  try {
+    normalized = [...new Set(reported.map(normalizeRepositoryPath))].sort();
+  } catch {
+    return false;
+  }
+  return actual.length === normalized.length && actual.every((path, index) => path === normalized[index]);
+}
+
+function normalizeLocatorPath(value: string): string {
+  return value.replaceAll("\\", "/").replace(/\/+$/, "");
 }
 
 function deduplicateIssues(issues: ScopeLockIssue[]): ScopeLockIssue[] {
