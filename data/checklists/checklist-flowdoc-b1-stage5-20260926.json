@@ -39,12 +39,12 @@
     {
       "id": "ac-gate",
       "label": "Validate new records and coordination in isolated worktree and main.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "PC npm run check; no product proof",
       "evidenceIds": [],
-      "verificationNote": "Data validation and inventory test2 passed. Fresh full PC worktree/main gates pending; no product tests in read-only discovery."
+      "verificationNote": "Fresh full npm run check passed in PC lane and main at b7923036e748b83e8ce63ca009020df9054b7869: 364/189/68 unit groups and6 browser, plus data/type/build. Core Scope Lock and preflight passed clean at exact base=terminal a39e91f. Closure-only metadata gate outcomes are reported at terminal, not preclaimed here."
     }
   ],
   "createdAt": "2026-09-26T16:01:27.957Z",
-  "updatedAt": "2026-09-26T16:10:07.165Z"
+  "updatedAt": "2026-09-26T16:22:45.062Z"
 }
