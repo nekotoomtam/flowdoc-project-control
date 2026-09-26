@@ -1,0 +1,281 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-stage6-seam-repair-20260927",
+  "title": "Core Stage6 bounded mixed-script seam prerequisite repair",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "in-progress",
+  "summary": "Fresh PLAN-owned bounded repair of retained Thai256 append rejection, with exact corpus/no-op/lifecycle applicability review. Old rounds and unmerged harness retained immutable; no Stage6 timing or UX admission.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-implementation-plan-2026-09-14",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14",
+    "doc-flowdoc-b1-empty-side-contract-20260926"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Provider-backed bounded certificate and exact retained preflight, independent inline PLAN acceptance, supported/unsupported request inventory and deferred measurement/UX obligations.",
+  "riskSummary": "Bounded semantic correctness impact. No arbitrary boundary, whole-paragraph fallback, weaker corpus/caps or no-op/composition relabeling. PLAN may not patch Core after dispatch.",
+  "requiredEvidence": [
+    "evidence-core-private-stage5-20260927",
+    "evidence-core-stage6-preflight-20260927"
+  ],
+  "createdAt": "2026-09-26T21:20:28.334Z",
+  "updatedAt": "2026-09-26T21:20:28.334Z",
+  "coordination": {
+    "version": 3,
+    "revision": 1,
+    "round": {
+      "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+      "roundId": "stage6-seam-repair-20260927-01a0df93",
+      "workId": "flowdoc-core-stage6-seam-repair-20260927",
+      "scopeId": "core-stage6-seam-repair",
+      "scopeKeys": [
+        "core:stage6-seam-repair"
+      ],
+      "allowedFiles": [
+        "data/work/flowdoc-core-stage6-seam-repair-20260927.json",
+        "data/phases/phase-flowdoc-core-stage6-seam-repair-20260927.json",
+        "data/checklists/checklist-flowdoc-core-stage6-seam-repair-20260927.json",
+        "data/evidence/core-stage6-seam-repair-20260927.json",
+        "generated/project-index.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "seam-local-host-20260927",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent schema; default/inherited frontier model selected independently for this WORK, effort medium requested.",
+        "observedAt": "2026-09-26T21:20:28.334Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "ultra"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+        "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+        "state": "active",
+        "roundId": "stage6-seam-repair-20260927-01a0df93"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+        "baseCommit": "6310eac87c2fad1837d0347c64ecaaf262075cf7",
+        "state": "active",
+        "roundId": "stage6-seam-repair-20260927-01a0df93"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "seam-repair-work",
+        "dispatchSetId": "seam-repair-dispatch",
+        "laneId": "seam-repair-core",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-stage6-seam-repair-20260927",
+        "checklistId": "checklist-flowdoc-core-stage6-seam-repair-20260927",
+        "evidenceTarget": "evidence-core-stage6-seam-repair-20260927",
+        "revisionAttempt": 0,
+        "expectedHandoffId": "seam-repair-handoff-0",
+        "status": "active",
+        "locator": {
+          "threadId": "01a0df95-2009-7b90-9d6c-8d0de92a8b86",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/stage6-seam-repair-core",
+          "branch": "codex/stage6-seam-repair-core",
+          "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b/seam-repair/handoff.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-26T21:20:28.334Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message target=/root; also send_message_to_thread PLAN; save handoff.json",
+          "monitorOwner": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+          "livenessDeadline": "2026-09-26T21:40:28.336Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "frontier",
+          "modelId": "gpt-6-astra",
+          "reasoningEffort": "medium",
+          "reason": "Bounded provider-certified mixed-script repair requires source-backed Unicode boundary and outside-fact reasoning plus Rust atomic accounting; current contracts constrain the implementation.",
+          "smallerOptionAssessment": "Sol medium is available but this seam proof spans provider context and persistent state; use Astra medium to avoid unsupported locality assumptions. No higher effort justified.",
+          "availabilitySnapshotRef": "seam-local-host-20260927",
+          "escalationTriggers": [
+            "Material semantic/provider authority gap: return decision before expansion.",
+            "Two corrected reasoning-attributable revisions fail: reassess context and model."
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Private opt-in Core certificate only; user-visible Core geometry and Editor parity remain mandatory separately measured downstream."
+        },
+        "requiredEvidence": [
+          "evidence-core-stage6-seam-repair-20260927"
+        ],
+        "roundId": "stage6-seam-repair-20260927-01a0df93",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Repair private Core bounded adjacent-run/script-transition certificate prerequisite and recheck retained first-case preflight; report exact other corpus/lifecycle applicability.",
+          "ownerRepositoryId": "repo-core",
+          "allowedScope": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "src/layout/runOwnedSemanticOracleStage2.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/runOwnedSemanticOracleStage2.test.ts",
+            "scripts/stage6/",
+            "tests/fixtures/stage6/",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "forbiddenScope": [
+            "src/index.ts",
+            "docs/",
+            "packages/text-engine-rust-wasm/src/index.ts",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs",
+            "package.json"
+          ],
+          "acceptanceCriteria": [
+            "Reproduce exact retained prepared-first-thai-256-append RED, review and materialize only the five-file b48f194 harness into this fresh lane with explicit provenance; fixed d5031b6 corpus/generator remain byte-equivalent and old lane/raw unchanged.",
+            "Implement source-backed provider-certified adjacent-run/script-transition repair resolving exact retained Thai256 append; native and actual-WASM mixed Thai/Latin positive and negative fixtures prove independent cold equality, safe boundary witnesses and outside-fact validity without guessed boundaries or paragraph fallback.",
+            "Preserve authored source/default/origin semantics, Rust sole authority, atomic authentic receipt/revision behavior and complete accepted/attempt/family accounting within512/512/1024. Revalidate affected Stage4/5 tests and unsupported-case unchanged state.",
+            "Boundedly classify exact no-op/composition-named committed requests and lifecycle calls with source/test evidence; preserve active-composition rejection and identify any missing semantic authority/dependency with remedies and recommendation. Do not implement material contract expansion.",
+            "Run retained first-case preflight from clean committed fresh candidate, retain immutable raw results/hashes plus applicability outcomes. All11271 final timing obligations, thresholds and corpus remain unchanged and unexecuted; no Stage6/Gate2/geometry/Editor/UX admission.",
+            "Focused native and actual-WASM regressions, Core npm run check and private/public export boundary pass. Return clean exact commit, actual changed paths, four-field completion, tests and limitations; no unrelated edits."
+          ],
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 2,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Do not mistake resolved seam regression for unchanged corpus admission or lose raw rejection evidence.",
+                "existingProofInsufficient": "Stage6 evidence pins rejected old behavior; changed certificate triggers Stage4/5 freshness and requires narrow new result."
+              }
+            ]
+          },
+          "relevantEvidenceIds": [
+            "evidence-core-private-stage5-20260927",
+            "evidence-core-stage6-preflight-20260927"
+          ],
+          "unknowns": [
+            {
+              "id": "required-row-applicability",
+              "summary": "Other exact no-op/composition-named requests and lifecycle applicability need bounded classification, not automatic expansion.",
+              "disposition": "deferred",
+              "returnTrigger": "Source/test applicability review in this round; material gap returns exact decision before implementation."
+            },
+            {
+              "id": "stage6-full-admission",
+              "summary": "Full immutable performance/lifecycle admission remains unexecuted.",
+              "disposition": "deferred",
+              "returnTrigger": "Fresh separately scoped measurement after prerequisite readiness."
+            },
+            {
+              "id": "geometry-ux",
+              "summary": "Core geometry then Editor unchanged appearance/positions/line divisions including transient frames remain mandatory downstream.",
+              "disposition": "deferred",
+              "returnTrigger": "Stage6 admission and separate Core/Editor plans."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "bounded-repair-approved",
+              "kind": "freeze-scope",
+              "reason": "User approved continue bounded certificate repair and applicability review; preserve exact corpus/caps; no geometry/Editor/full measurement or historical lane mutation.",
+              "decidedBy": "user via observer 01a0dd89-4aaf-7701-997c-7c294174187c",
+              "decidedAt": "2026-09-26T21:20:28.334Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "frontier",
+            "modelId": "gpt-6-astra",
+            "reasoningEffort": "medium",
+            "reason": "Bounded provider-certified mixed-script repair requires source-backed Unicode boundary and outside-fact reasoning plus Rust atomic accounting; current contracts constrain the implementation.",
+            "smallerOptionAssessment": "Sol medium is available but this seam proof spans provider context and persistent state; use Astra medium to avoid unsupported locality assumptions. No higher effort justified.",
+            "availabilitySnapshotRef": "seam-local-host-20260927",
+            "escalationTriggers": [
+              "Material semantic/provider authority gap: return decision before expansion.",
+              "Two corrected reasoning-attributable revisions fail: reassess context and model."
+            ]
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "17d898696d6df412b2d73d487f106939b890568a",
+            "worktree": "C:/Users/nekot/.codex/worktrees/stage6-seam-repair-core"
+          },
+          "escalationTriggers": [
+            "Missing semantics materially changes architecture/contract/scope.",
+            "Unbounded provider context or incomplete accounting.",
+            "Equality/atomicity/cap failure must be fixed in scope or reported."
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0df93-c2e2-71f1-b879-92ee62ec8e6b",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message target=/root; also send_message_to_thread PLAN; save handoff.json"
+          }
+        },
+        "packetDigest": "1a024ea21c6c6e93cd3b43e5c00a461dd75b5254d1d7e2feb3ba3b90ecc762cc"
+      }
+    ],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  }
+}

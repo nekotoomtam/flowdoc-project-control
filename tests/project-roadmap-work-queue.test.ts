@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 64);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 65);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -562,6 +562,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
         "flowdoc-core-stage6-20260927",
+        "flowdoc-core-stage6-seam-repair-20260927",
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
@@ -717,6 +718,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-b1-stage5-20260926",
         "flowdoc-b1-stage5-20260927",
         "flowdoc-core-stage6-20260927",
+        "flowdoc-core-stage6-seam-repair-20260927",
       ],
     });
     expect(model.nodes.find((node) => node.id === "editor")).toMatchObject({
