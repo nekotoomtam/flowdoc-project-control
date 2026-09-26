@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-a1-work-plan-reconciliation",
+  "workId": "flowdoc-a1-work-plan-reconciliation",
+  "title": "Reconcile baseline Work and continuation",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "project-control-steward",
+  "verificationTarget": "checklist-flowdoc-a1-work-plan-reconciliation; docs/domains/flowdoc-a1-work-plan-reconciliation-2026-09-26.md; npm run check",
+  "summary": "Operational disposition only; no product or historical execution promotion.",
+  "createdAt": "2026-09-26T12:12:15.162Z",
+  "updatedAt": "2026-09-26T12:12:15.162Z",
+  "stopConditions": [
+    "Stop on missing prerequisite, authority conflict or scope escape.",
+    "Stop when all A1 dispositions and required Project Control gates pass."
+  ]
+}
