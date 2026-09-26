@@ -17,10 +17,12 @@ import type {
   CoordinationRegistryV2,
   CoordinationRegistryV3,
   CoordinationRoomRunV3,
+  ScopeLockVerification,
   CoordinationTerminalPayloadV3,
 } from "./types.js";
 import {
   collectScopeDefinitionIssues,
+  normalizeRepositoryPath,
   pathWithinScope,
   resolveModelAvailability,
 } from "./scope-lock.js";
@@ -240,6 +242,10 @@ export function applyCoordinationV3Command(
     ensure(handoff !== undefined, "HANDOFF_NOT_FOUND", "The handoff is not stored.");
     const room = findRoom(registry, handoff.payload.roomRunId, handoff.payload.revisionAttempt);
     throwFirstIssue(validateWorkflowCompletion(room.packet, handoff.payload.completion));
+    if (room.packet.policyId === "flowdoc-workflow-economy-v2") {
+      ensure(context.scopeLockVerification !== undefined, "SCOPE_VERIFICATION_REQUIRED", "Current-profile acceptance requires a passing Scope Lock verification.");
+      throwFirstIssue(collectScopeVerificationIssues(room, handoff, context.scopeLockVerification));
+    }
   }
   if (command.type === "authorize-revision") {
     const prior = findRoom(registry, command.roomRunId, command.priorAttempt);
@@ -255,7 +261,7 @@ export function applyCoordinationV3Command(
     toV2Command(command),
     context,
   );
-  return fromV2Registry(nextV2, registry, command);
+  return fromV2Registry(nextV2, registry, command, context);
 }
 
 export function validateCoordinationV3Registry(
@@ -288,6 +294,15 @@ export function validateCoordinationV3Registry(
     if (room !== undefined) {
       for (const completionIssue of validateWorkflowCompletion(room.packet, handoff.payload.completion)) {
         add(completionIssue.code, completionIssue.message);
+      }
+      if (room.packet.policyId === "flowdoc-workflow-economy-v2" && handoff.acceptance.status === "accepted") {
+        if (handoff.acceptance.scopeLockVerification === undefined) {
+          add("SCOPE_VERIFICATION_REQUIRED", `Accepted handoff ${handoff.handoffId} lacks Scope Lock verification.`);
+        } else {
+          for (const issue of collectScopeVerificationIssues(room, handoff, handoff.acceptance.scopeLockVerification)) {
+            add(issue.code, issue.message);
+          }
+        }
       }
     }
   }
@@ -343,6 +358,46 @@ function collectRoomProfileIssues(
     ));
   }
   return issues;
+}
+
+function collectScopeVerificationIssues(
+  room: CoordinationRoomRunV3,
+  handoff: CoordinationHandoffV3,
+  verification: ScopeLockVerification,
+): WorkflowEconomyIssue[] {
+  if (room.packet.policyId !== "flowdoc-workflow-economy-v2") return [];
+  const issues: WorkflowEconomyIssue[] = [];
+  const add = (code: string, message: string): void => { issues.push({ code, message }); };
+  if (verification.baseCommit !== room.packet.scopeLock.baseCommit) {
+    add("SCOPE_BASE_COMMIT_MISMATCH", "Scope verification and packet bind different base commits.");
+  }
+  if (handoff.payload.exactCommit === undefined || verification.terminalCommit !== handoff.payload.exactCommit) {
+    add("SCOPE_TERMINAL_COMMIT_MISMATCH", "Scope verification and handoff bind different terminal commits.");
+  }
+  if (verification.packetDigest !== room.packetDigest || verification.packetDigest !== packetDigest(room.packet)) {
+    add("SCOPE_PACKET_DIGEST_MISMATCH", "Scope verification does not bind the immutable dispatched packet.");
+  }
+  if (
+    !sameRepositoryPathSet(verification.changedFiles, handoff.payload.changedFiles) ||
+    !sameRepositoryPathSet(verification.changedFiles, handoff.payload.completion.changedFiles)
+  ) {
+    add("CHANGE_MANIFEST_MISMATCH", "Scope verification changed files differ from the returned payload.");
+  }
+  if (verification.status !== "passed" || verification.clean !== true) {
+    add("SCOPE_VERIFICATION_NOT_PASSING", "Scope verification must be passed and clean.");
+  }
+  return deduplicateIssues(issues);
+}
+
+function sameRepositoryPathSet(left: readonly string[], right: readonly string[]): boolean {
+  try {
+    const normalize = (values: readonly string[]): string[] => [...new Set(values.map(normalizeRepositoryPath))].sort();
+    const normalizedLeft = normalize(left);
+    const normalizedRight = normalize(right);
+    return normalizedLeft.length === normalizedRight.length && normalizedLeft.every((value, index) => value === normalizedRight[index]);
+  } catch {
+    return false;
+  }
 }
 
 function ensureRoundIdentity(registry: CoordinationRegistryV3, identity: RoundCommandIdentity): void {
@@ -469,6 +524,7 @@ function fromV2Registry(
   next: CoordinationRegistryV2,
   previous: CoordinationRegistryV3,
   command: CoordinationCommandV3,
+  context: CoordinationCommandContext,
 ): CoordinationRegistryV3 {
   const roomRuns = next.roomRuns.map((room): CoordinationRoomRunV3 => {
     const existing = previous.roomRuns.find((candidate) =>
@@ -485,7 +541,15 @@ function fromV2Registry(
     const completion = commandPayload?.completion ?? existing?.payload.completion;
     ensure(completion !== undefined, "COMPLETION_REPORT_MISSING", "Version 3 handoffs require a completion report.");
     const payload: CoordinationTerminalPayloadV3 = { ...structuredClone(handoff.payload), completion: structuredClone(completion) };
-    return { ...structuredClone(handoff), payload, payloadDigest: canonicalPayloadDigest(payload) };
+    const result: CoordinationHandoffV3 = { ...structuredClone(handoff), payload, payloadDigest: canonicalPayloadDigest(payload) };
+    if (
+      command.type === "accept-handoff" &&
+      command.handoffId === handoff.handoffId &&
+      context.scopeLockVerification !== undefined
+    ) {
+      result.acceptance.scopeLockVerification = structuredClone(context.scopeLockVerification);
+    }
+    return result;
   });
   return {
     version: 3,

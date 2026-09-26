@@ -14,6 +14,7 @@ import type {
   CoordinationTerminalPayloadV2,
   CoordinationTerminalPayloadV3,
   CoordinationUxGate,
+  ScopeLockVerification,
   WorkRecord,
 } from "./types.js";
 import {
@@ -35,6 +36,7 @@ export interface CoordinationValidationIssue {
 
 export interface CoordinationCommandContext {
   evidenceById?: ReadonlyMap<string, { repositoryId: string; commit: string }>;
+  scopeLockVerification?: ScopeLockVerification;
 }
 
 export interface CoordinationCleanupContext {

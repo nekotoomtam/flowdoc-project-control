@@ -470,7 +470,8 @@
                   "type": "array",
                   "items": { "$ref": "#/$defs/work/$defs/namedCheck" }
                 },
-                "remainingScope": { "$ref": "#/$defs/work/$defs/stringList" }
+                "remainingScope": { "$ref": "#/$defs/work/$defs/stringList" },
+                "scopeLockVerification": { "$ref": "#/$defs/work/$defs/scopeLockVerification" }
               }
             }
           }
@@ -747,7 +748,13 @@
                 "required": ["kind", "reference"],
                 "properties": {
                   "kind": { "enum": ["test", "evidence"] },
-                  "reference": { "$ref": "#/$defs/work/$defs/nonEmpty" }
+                  "reference": { "$ref": "#/$defs/work/$defs/nonEmpty" },
+                  "criterionRefs": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "type": "string", "pattern": "^AC-[1-9][0-9]*$" }
+                  }
                 }
               }
             },

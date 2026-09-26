@@ -9,6 +9,7 @@ import {
 import type {
   CoordinationHandoffV3,
   CoordinationRegistryV3,
+  ScopeLockVerification,
 } from "../src/model/types.js";
 import type {
   RiskTier,
@@ -139,6 +140,72 @@ function acceptedRegistry(): CoordinationRegistryV3 {
   return registry;
 }
 
+function returnedCurrentRegistry(changedFiles = ["src/model/file.ts"]): CoordinationRegistryV3 {
+  const registry = createCoordinationRegistryV3Fixture();
+  const room = registry.roomRuns[0]!;
+  room.status = "returned";
+  room.requiredEvidence = [];
+  const completion = completionFixture({ changedFiles }).completion;
+  const payload = {
+    planTaskId: registry.round.planTaskId,
+    roundId: registry.round.roundId,
+    roomRunId: room.roomRunId,
+    laneId: room.laneId,
+    ownerRepositoryId: room.ownerRepositoryId,
+    revisionAttempt: room.revisionAttempt,
+    status: "PASS" as const,
+    behaviorChanged: true,
+    behaviorSummary: "Implemented the scoped change.",
+    exactCommit: "d".repeat(40),
+    changedFiles,
+    tests: ["focused"],
+    evidenceIds: ["evidence-code"],
+    risks: [],
+    unknowns: [],
+    completion,
+  };
+  registry.handoffs.push({
+    handoffId: room.expectedHandoffId,
+    payloadDigest: "stored-digest",
+    payload,
+    transport: { status: "sent", attempts: 1, attemptHistory: [] },
+    receipt: { status: "received", acknowledgedAt: "2026-09-26T08:00:00.000Z", arrivalSequence: 1 },
+    acceptance: { status: "pending", evidenceIds: [], requiredChecks: [], remainingScope: [] },
+  });
+  registry.completionQueue = [{ handoffId: room.expectedHandoffId, arrivalSequence: 1 }];
+  return registry;
+}
+
+function passingScopeVerification(registry: CoordinationRegistryV3): ScopeLockVerification {
+  const room = registry.roomRuns[0]!;
+  const handoff = registry.handoffs[0]!;
+  return {
+    version: 1,
+    status: "passed",
+    baseCommit: room.packet.policyId === "flowdoc-workflow-economy-v2" ? room.packet.scopeLock.baseCommit : "c".repeat(40),
+    terminalCommit: handoff.payload.exactCommit!,
+    packetDigest: room.packetDigest,
+    manifestDigest: "e".repeat(64),
+    changedFiles: [...handoff.payload.changedFiles],
+    verifiedAt: "2026-09-26T08:01:00.000Z",
+    clean: true,
+  };
+}
+
+function acceptanceCommand(registry: CoordinationRegistryV3) {
+  return {
+    type: "accept-handoff" as const,
+    planTaskId: registry.round.planTaskId,
+    roundId: registry.round.roundId,
+    handoffId: registry.handoffs[0]!.handoffId,
+    reviewer: registry.round.planTaskId,
+    reviewedAt: "2026-09-26T08:02:00.000Z",
+    evidenceIds: ["evidence-code"],
+    requiredChecks: [{ name: "focused", status: "passed" as const }],
+    remainingScope: [],
+  };
+}
+
 describe("workflow economy validation", () => {
   it.each([
     ["critical without a reason", criticalWithoutReason(), "CRITICAL_REASON_REQUIRED"],
@@ -216,6 +283,32 @@ describe("workflow economy validation", () => {
 });
 
 describe("workflow economy lifecycle", () => {
+  it("requires and persists an exact Scope Lock verification for current acceptance", () => {
+    const missing = returnedCurrentRegistry();
+    const evidenceById = new Map([["evidence-code", { repositoryId: missing.roomRuns[0]!.ownerRepositoryId, commit: "d".repeat(40) }]]);
+    expect(() => applyCoordinationV3Command(missing, acceptanceCommand(missing), { evidenceById }))
+      .toThrowError(expect.objectContaining({ code: "SCOPE_VERIFICATION_REQUIRED" }));
+
+    const registry = returnedCurrentRegistry();
+    const verification = passingScopeVerification(registry);
+    const accepted = applyCoordinationV3Command(registry, acceptanceCommand(registry), { evidenceById, scopeLockVerification: verification });
+    expect(accepted.handoffs[0]!.acceptance).toMatchObject({ status: "accepted", scopeLockVerification: verification });
+  });
+
+  it.each([
+    ["base", (value: ScopeLockVerification) => { value.baseCommit = "a".repeat(40); }, "SCOPE_BASE_COMMIT_MISMATCH"],
+    ["HEAD", (value: ScopeLockVerification) => { value.terminalCommit = "b".repeat(40); }, "SCOPE_TERMINAL_COMMIT_MISMATCH"],
+    ["packet", (value: ScopeLockVerification) => { value.packetDigest = "f".repeat(64); }, "SCOPE_PACKET_DIGEST_MISMATCH"],
+    ["files", (value: ScopeLockVerification) => { value.changedFiles = []; }, "CHANGE_MANIFEST_MISMATCH"],
+  ] as const)("rejects a Scope Lock verification with the wrong %s", (_name, mutate, code) => {
+    const registry = returnedCurrentRegistry();
+    const verification = passingScopeVerification(registry);
+    mutate(verification);
+    const evidenceById = new Map([["evidence-code", { repositoryId: registry.roomRuns[0]!.ownerRepositoryId, commit: "d".repeat(40) }]]);
+    expect(() => applyCoordinationV3Command(registry, acceptanceCommand(registry), { evidenceById, scopeLockVerification: verification }))
+      .toThrowError(expect.objectContaining({ code }));
+  });
+
   it("keeps ownership transfer removed for version 3", () => {
     const registry = createCoordinationRegistryV3Fixture();
     expect(() => applyCoordinationV3Command(registry, {

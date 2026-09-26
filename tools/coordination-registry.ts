@@ -6,8 +6,9 @@ import {
   applyCoordinationCommand,
 } from "../src/model/coordination.js";
 import type { CoordinationCommandV2 } from "../src/model/coordination-v2.js";
-import type { CoordinationCommandV3 } from "../src/model/coordination-v3.js";
-import type { CoordinationRegistry, WorkRecord } from "../src/model/types.js";
+import { packetDigest, type CoordinationCommandV3 } from "../src/model/coordination-v3.js";
+import { evaluateScopeLock } from "../src/model/scope-lock.js";
+import type { CoordinationRegistry, CoordinationRegistryV3, ScopeLockVerification, WorkRecord } from "../src/model/types.js";
 import { ProjectValidationError } from "./lib/errors.js";
 import {
   loadProjectSources,
@@ -16,6 +17,7 @@ import {
 } from "./lib/load-sources.js";
 import { validateProjectSemantics } from "./lib/validate-semantics.js";
 import { writeFileAtomically } from "./lib/write-atomic.js";
+import { inspectGitScope } from "./lib/git-scope-verifier.js";
 
 export class CoordinationPersistenceError extends Error {
   constructor(readonly code: string, message: string) {
@@ -74,6 +76,8 @@ export async function applyCoordinationCommandToWorkFile(
     }
 
     const loaded = await loadProjectSources(rootDir);
+    const command = parseCommand(options.command, work.coordination.version);
+    const scopeLockVerification = await createScopeLockVerification(work.coordination, command);
     try {
       await validateProjectSemantics(loaded);
     } catch (error: unknown) {
@@ -89,8 +93,10 @@ export async function applyCoordinationCommandToWorkFile(
       value.id,
       { repositoryId: value.repositoryId, commit: value.commit },
     ]));
-    const command = parseCommand(options.command, work.coordination.version);
-    const coordination = applyCoordinationCommand(work.coordination, command, { evidenceById });
+    const coordination = applyCoordinationCommand(work.coordination, command, {
+      evidenceById,
+      ...(scopeLockVerification === undefined ? {} : { scopeLockVerification }),
+    });
     const candidate: WorkRecord = { ...work, coordination };
     const schemaDiagnostics = await validateCanonicalRecordValue("work", relativePath, candidate);
     if (schemaDiagnostics.length > 0) {
@@ -120,6 +126,43 @@ export async function applyCoordinationCommandToWorkFile(
       await rm(guardPath, { force: true });
     }
   }
+}
+
+async function createScopeLockVerification(
+  registry: CoordinationRegistryV3,
+  command: CoordinationCommandV2 | CoordinationCommandV3,
+): Promise<ScopeLockVerification | undefined> {
+  if (command.type !== "accept-handoff") return undefined;
+  const handoff = registry.handoffs.find(({ handoffId }) => handoffId === command.handoffId);
+  if (handoff === undefined) return undefined;
+  const room = registry.roomRuns.find((candidate) =>
+    candidate.roomRunId === handoff.payload.roomRunId &&
+    candidate.revisionAttempt === handoff.payload.revisionAttempt);
+  if (room === undefined || room.packet.policyId !== "flowdoc-workflow-economy-v2") return undefined;
+  if (handoff.payload.exactCommit === undefined) {
+    throw new CoordinationTransitionError("EXACT_COMMIT_REQUIRED", "Current-profile acceptance requires an exact terminal commit.");
+  }
+  const manifest = await inspectGitScope({
+    worktree: room.locator.worktree ?? room.packet.scopeLock.worktree,
+    baseCommit: room.packet.scopeLock.baseCommit,
+    expectedHead: handoff.payload.exactCommit,
+  });
+  const evaluation = evaluateScopeLock({
+    packet: room.packet,
+    manifest,
+    payloadChangedFiles: handoff.payload.changedFiles,
+    completionChangedFiles: handoff.payload.completion.changedFiles,
+    terminalCommit: handoff.payload.exactCommit,
+    packetDigest: packetDigest(room.packet),
+    expectedPacketDigest: room.packetDigest,
+    verifiedAt: command.reviewedAt,
+  });
+  const issue = evaluation.issues[0];
+  if (issue !== undefined) throw new CoordinationTransitionError(issue.code, issue.message);
+  if (evaluation.verification === undefined) {
+    throw new CoordinationTransitionError("SCOPE_VERIFICATION_REQUIRED", "Scope Lock evaluation did not produce a passing verification.");
+  }
+  return evaluation.verification;
 }
 
 export async function validateCoordinationRoot(rootDir: string): Promise<void> {
