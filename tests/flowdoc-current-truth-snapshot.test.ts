@@ -63,10 +63,72 @@ describe("Current Truth Snapshot", () => {
       { ...template, id: "queued-b", title: "Queued B", workState: "queued" },
       { ...template, id: "queued-c", title: "Queued C", workState: "queued" },
     );
+    source.phases.push(
+      { ...source.phases[1]!, id: "phase-queued-a", workId: "queued-a" },
+      { ...source.phases[1]!, id: "phase-queued-b", workId: "queued-b" },
+      { ...source.phases[1]!, id: "phase-queued-c", workId: "queued-c" },
+    );
 
     const snapshot = buildCurrentTruthSnapshot(source);
     expect(snapshot.activeWork).toHaveLength(5);
     expect(snapshot.activeWork.map(({ workId }) => workId)).not.toContain("queued-c");
+  });
+
+  it("omits legacy Work whose phases and checklist obligations are complete", () => {
+    const source = projectFixture();
+    source.phases.find(({ id }) => id === "phase-active-a")!.phaseState = "done";
+    source.checklists.push({
+      kind: "checklist",
+      id: "checklist-active-a-complete",
+      phaseId: "phase-active-a",
+      title: "Completed planning checklist",
+      items: [{
+        id: "accepted",
+        label: "Record the accepted plan.",
+        state: "passed",
+        evidenceTarget: "Owner acceptance.",
+        verificationNote: "Accepted.",
+      }],
+      createdAt: "2026-09-23T00:00:00.000Z",
+      updatedAt: "2026-09-24T00:00:00.000Z",
+    });
+
+    expect(buildCurrentTruthSnapshot(source).activeWork.map(({ workId }) => workId))
+      .toEqual(["blocked-delivery", "active-b"]);
+  });
+
+  it("surfaces a blocked phase from the primary active Work as the current blocker", () => {
+    const source = projectFixture();
+    source.work = source.work.filter(({ id }) => id !== "blocked-delivery");
+    const phase = source.phases.find(({ id }) => id === "phase-active-a")!;
+    phase.phaseState = "blocked";
+    phase.summary = "Required upstream proof is unavailable.";
+
+    expect(buildCurrentTruthSnapshot(source)).toMatchObject({
+      currentGoal: "First deterministic tie.",
+      currentBlocker: "Required upstream proof is unavailable.",
+      nextDecision: "Resolve: Required upstream proof is unavailable.",
+    });
+  });
+
+  it("omits phase-less containers from the active Work list", () => {
+    const source = projectFixture();
+    source.work.push({
+      kind: "work",
+      id: "historical-container",
+      title: "Historical Container",
+      nodeId: "flowdoc",
+      workKind: "topic",
+      repositoryIds: ["repo-project-control"],
+      workState: "in-progress",
+      summary: "Groups completed child Work.",
+      requiredEvidence: [],
+      createdAt: "2026-09-23T00:00:00.000Z",
+      updatedAt: "2026-09-24T01:00:00.000Z",
+    });
+
+    expect(buildCurrentTruthSnapshot(source).activeWork.map(({ workId }) => workId))
+      .not.toContain("historical-container");
   });
 });
 
@@ -148,7 +210,7 @@ describe("generated read model", () => {
     );
 
     expect(model.currentSnapshot.generatedAt).toBe("2026-09-24T02:00:00.000Z");
-    expect(model.currentSnapshot.activeWork.map(({ workId }) => workId)).toEqual(["pilot-task", "pilot"]);
+    expect(model.currentSnapshot.activeWork.map(({ workId }) => workId)).toEqual(["pilot-task"]);
     expect(model.governanceCost).toMatchObject({
       contextDocumentCount: 1,
       evidenceCreated: 0,

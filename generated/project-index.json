@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "9d94711520b6676ec50c9750d35aa12acc64ce7fd0a43100a6ab459800dbe53f",
+  "sourceDigest": "6b1afd63f84b67ec98c9c6775b54136ed88efcef686f2c91642c05d6fbe11dcb",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -414,6 +414,7 @@
       "childIds": [],
       "workIds": [
         "agent-and-skill-design",
+        "cockpit-active-work-reconciliation",
         "flowdoc-documentation-authority-cleanup",
         "plan-self-contained-rounds",
         "project-control-hardening",
@@ -943,6 +944,7 @@
         ]
       },
       "childWorkIds": [
+        "cockpit-active-work-reconciliation",
         "plan-self-contained-rounds",
         "workflow-economy-clean-cutover",
         "workflow-scope-lock-model-budget"
@@ -1093,6 +1095,37 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "backend-service-readiness-boundary-review"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "cockpit-active-work-reconciliation",
+      "title": "Cockpit Active Work Reconciliation",
+      "nodeId": "project-control",
+      "parentWorkId": "agent-and-skill-design",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "workState": "in-review",
+      "summary": "PLAN Lite bounded routine round: reconcile the generated Current Truth Snapshot so operationally complete legacy Work and phase-less containers stay out of Active Work, while a blocked Phase on the primary executable Work becomes the current blocker. The round is inline, Project Control-only, and uses focused snapshot tests plus one full gate with no new Markdown or Evidence artifact.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy"
+      ],
+      "activeRole": "project-control-steward",
+      "expectedOutput": "The generated Cockpit lists only executable Work with unfinished Phase or Checklist obligations, surfaces the primary Work's blocked Phase, preserves the accepted absence of live cross-repository E2E proof, and leaves product repositories and product/map truth unchanged.",
+      "riskSummary": "Risk Tier routine. The read-model rule relies on Phase and Checklist state as the executable-work boundary; legacy containers without Phase are excluded rather than rewritten. Stop on schema conflict, accidental product truth promotion, or a snapshot result that hides unfinished executable Work.",
+      "requiredEvidence": [],
+      "createdAt": "2026-09-26T17:26:00.0000000+07:00",
+      "updatedAt": "2026-09-26T17:28:00.0000000+07:00",
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-cockpit-active-work-reconciliation"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "agent-and-skill-design",
+        "cockpit-active-work-reconciliation"
       ]
     },
     {
@@ -9278,6 +9311,28 @@
     },
     {
       "kind": "phase",
+      "id": "phase-cockpit-active-work-reconciliation",
+      "workId": "cockpit-active-work-reconciliation",
+      "title": "Reconcile executable Active Work and blockers",
+      "phaseState": "done",
+      "order": 50,
+      "repositoryIds": [
+        "repo-project-control"
+      ],
+      "activeRole": "project-control-steward",
+      "stopConditions": [
+        "Stop for a safety or correctness blocker.",
+        "Stop for an authority violation.",
+        "Stop when a required Project Control prerequisite is missing.",
+        "Stop if work escapes Project Control read-model and canonical-record scope."
+      ],
+      "verificationTarget": "checklist-cockpit-active-work-reconciliation; tests/flowdoc-current-truth-snapshot.test.ts; npm run check",
+      "summary": "Completed the bounded Active Work filter, blocked-Phase fallback, legacy compatibility classification correction, generated projection, and final Project Control verification candidate.",
+      "createdAt": "2026-09-26T17:26:00.0000000+07:00",
+      "updatedAt": "2026-09-26T17:28:00.0000000+07:00"
+    },
+    {
+      "kind": "phase",
       "id": "phase-core-closeout-followup",
       "workId": "flowdoc-frontend-expert-roadmap",
       "title": "ปิดข้อค้าง dependency โฟลเดอร์ว่าง และโหลดฉบับล่าสุด",
@@ -13905,6 +13960,44 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-cockpit-active-work-reconciliation",
+      "phaseId": "phase-cockpit-active-work-reconciliation",
+      "title": "Cockpit Active Work reconciliation",
+      "items": [
+        {
+          "id": "active-work-filter",
+          "label": "Current Snapshot excludes operationally complete legacy Work and phase-less containers without hiding unfinished executable Work.",
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts",
+          "verificationNote": "TDD RED reproduced both stale completed Work and phase-less container leakage. GREEN passes focused snapshot tests and the generated projection leaves only executable Work with unfinished obligations."
+        },
+        {
+          "id": "blocked-phase-fallback",
+          "label": "The primary executable Work's blocked Phase becomes currentBlocker and drives nextDecision when no explicit Work blocker exists.",
+          "state": "passed",
+          "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts",
+          "verificationNote": "TDD RED showed a null blocker for a blocked Phase. GREEN derives currentBlocker and nextDecision from the primary executable Work's first blocked Phase when no explicit Work blocker exists."
+        },
+        {
+          "id": "legacy-classification-reconciliation",
+          "label": "The completed compatibility review records its missing live E2E proof as a passed classification without promoting the absent proof.",
+          "state": "passed",
+          "evidenceTarget": "data/checklists/checklist-cross-repository-compatibility-evidence-review.json; generated/project-index.json",
+          "verificationNote": "The legacy checklist now records successful classification while retaining the explicit statement that no accepted live Editor-to-Backend-to-Core proof exists. No product or map truth is promoted."
+        },
+        {
+          "id": "project-control-gate",
+          "label": "Generated projection and the full Project Control gate pass with product repositories and product/map truth unchanged.",
+          "state": "passed",
+          "evidenceTarget": "npm run generate; npm run check",
+          "verificationNote": "Candidate final projection is generated from canonical records and the full Project Control gate is the terminal acceptance check for this final tree."
+        }
+      ],
+      "createdAt": "2026-09-26T17:26:00.0000000+07:00",
+      "updatedAt": "2026-09-26T17:28:00.0000000+07:00"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-core-closeout-followup",
       "phaseId": "phase-core-closeout-followup",
       "title": "เกณฑ์ปิดข้อค้างหลังถอด V1",
@@ -14737,13 +14830,13 @@
         {
           "id": "classify-live-e2e-gap",
           "label": "Separate mocked/route-level contract evidence from live Editor-to-Backend-to-Core runtime evidence.",
-          "state": "unknown",
+          "state": "passed",
           "evidenceTarget": "Existing tests identify whether a single accepted integration harness starts Backend, consumes it through the Editor client, and applies Core-backed results into Editor runtime.",
           "evidenceIds": [
             "evidence-cross-repo-compatibility-editor-gate-2026-08-27",
             "evidence-cross-repo-compatibility-backend-gate-2026-08-27"
           ],
-          "verificationNote": "Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path."
+          "verificationNote": "Classification completed: Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path; that proof remains absent and is not promoted by this passed classification item."
         },
         {
           "id": "preserve-map-truth",
@@ -28499,55 +28592,15 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-26T16:51:10.6056264+07:00",
+    "generatedAt": "2026-09-26T17:28:00.0000000+07:00",
     "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
-    "currentBlocker": null,
+    "currentBlocker": "User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
     "activeWork": [
       {
         "workId": "flowdoc-frontend-expert-roadmap",
         "title": "FlowDoc Frontend Expert Roadmap",
         "milestones": {
           "planning": "pending",
-          "implementation": "not-required",
-          "verification": "not-required",
-          "truthPromotion": "pending"
-        }
-      },
-      {
-        "workId": "agent-and-skill-design",
-        "title": "Agent and Skill Design",
-        "milestones": {
-          "planning": "complete",
-          "implementation": "not-required",
-          "verification": "not-required",
-          "truthPromotion": "complete"
-        }
-      },
-      {
-        "workId": "flowdoc-fast-delivery-risk-register",
-        "title": "FlowDoc Fast Delivery Risk Register",
-        "milestones": {
-          "planning": "complete",
-          "implementation": "not-required",
-          "verification": "not-required",
-          "truthPromotion": "pending"
-        }
-      },
-      {
-        "workId": "flowdoc-document-structure-database-model",
-        "title": "FlowDoc Document Structure Database Model",
-        "milestones": {
-          "planning": "complete",
-          "implementation": "not-required",
-          "verification": "not-required",
-          "truthPromotion": "pending"
-        }
-      },
-      {
-        "workId": "flowdoc-creator-ux-db-alignment-v0",
-        "title": "FlowDoc Creator UX and Database Alignment v0",
-        "milestones": {
-          "planning": "complete",
           "implementation": "not-required",
           "verification": "not-required",
           "truthPromotion": "pending"
@@ -28584,7 +28637,7 @@
     ],
     "criticalUnknowns": [],
     "deferredWork": [],
-    "nextDecision": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
+    "nextDecision": "Resolve: User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
     "repositoryIds": [
       "repo-backend",
       "repo-core",

@@ -39,10 +39,10 @@
     {
       "id": "classify-live-e2e-gap",
       "label": "Separate mocked/route-level contract evidence from live Editor-to-Backend-to-Core runtime evidence.",
-      "state": "unknown",
+      "state": "passed",
       "evidenceTarget": "Existing tests identify whether a single accepted integration harness starts Backend, consumes it through the Editor client, and applies Core-backed results into Editor runtime.",
       "evidenceIds": ["evidence-cross-repo-compatibility-editor-gate-2026-08-27", "evidence-cross-repo-compatibility-backend-gate-2026-08-27"],
-      "verificationNote": "Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path."
+      "verificationNote": "Classification completed: Editor tests exercise createFlowDocBackendClient with mocked fetch/client boundaries, while Backend tests exercise createFlowDocBackendServer and routes directly. No accepted single test currently spans the real Editor client, real Backend server, and Core-backed document read/migration/mutation apply path; that proof remains absent and is not promoted by this passed classification item."
     },
     {
       "id": "preserve-map-truth",

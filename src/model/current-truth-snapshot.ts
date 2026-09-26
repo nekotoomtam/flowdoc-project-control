@@ -54,13 +54,20 @@ export function buildCompletionMilestones(source: CurrentTruthSource, workId?: s
 }
 
 export function buildCurrentTruthSnapshot(source: CurrentTruthSource): CurrentTruthSnapshot {
-  const allWork = orderedWork(source.work);
+  const workIdsWithPhases = new Set(source.phases.map(({ workId }) => workId));
+  const allWork = orderedWork(source.work)
+    .filter((item) => workIdsWithPhases.has(item.id) && !isOperationallyComplete(source, item.id));
   const work = allWork.slice(0, 5);
   const primary = work[0];
   const unknowns = collectUnknowns(allWork);
   const criticalUnknowns = unknowns.filter(({ disposition }) => disposition === "blocking");
   const deferredWork = unknowns.filter(({ disposition }) => disposition === "deferred");
-  const currentBlocker = primary?.blockedBy ?? criticalUnknowns[0]?.summary ?? null;
+  const blockedPhase = primary === undefined
+    ? undefined
+    : source.phases
+      .filter((phase) => phase.workId === primary.id && phase.phaseState === "blocked")
+      .sort((left, right) => left.order - right.order || compareText(left.id, right.id))[0];
+  const currentBlocker = primary?.blockedBy ?? blockedPhase?.summary ?? criticalUnknowns[0]?.summary ?? null;
   const nextDecision = criticalUnknowns[0]?.ownerAction
     ?? criticalUnknowns[0]?.returnTrigger
     ?? (currentBlocker === null ? (primary?.expectedOutput ?? null) : `Resolve: ${currentBlocker}`);
@@ -92,6 +99,15 @@ export function buildCurrentTruthSnapshot(source: CurrentTruthSource): CurrentTr
       .map(({ id }) => id)
       .sort(compareText),
   };
+}
+
+function isOperationallyComplete(source: CurrentTruthSource, workId: string): boolean {
+  const phases = source.phases.filter((phase) => phase.workId === workId);
+  if (phases.length === 0 || phases.some((phase) => phase.phaseState !== "done")) return false;
+  const phaseIds = new Set(phases.map(({ id }) => id));
+  return source.checklists
+    .filter((checklist) => phaseIds.has(checklist.phaseId))
+    .every(allChecklistItemsPassed);
 }
 
 export function buildGovernanceCostSnapshot(source: CurrentTruthSource): GovernanceCostSnapshot {

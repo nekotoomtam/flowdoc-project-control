@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 55);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 56);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -475,10 +475,19 @@ describe("project roadmap Work Queue", () => {
     });
     expect(model.work.find((item) => item.id === "agent-and-skill-design")).toMatchObject({
       childWorkIds: [
+        "cockpit-active-work-reconciliation",
         "plan-self-contained-rounds",
         "workflow-economy-clean-cutover",
         "workflow-scope-lock-model-budget",
       ],
+    });
+    expect(model.work.find((item) => item.id === "cockpit-active-work-reconciliation")).toMatchObject({
+      workKind: "task",
+      workState: "in-review",
+      parentWorkId: "agent-and-skill-design",
+      nodeId: "project-control",
+      activeRole: "project-control-steward",
+      phaseIds: ["phase-cockpit-active-work-reconciliation"],
     });
     expect(model.work.find((item) => item.id === "workflow-economy-clean-cutover")).toMatchObject({
       workKind: "task",
@@ -735,6 +744,7 @@ describe("project roadmap Work Queue", () => {
       truthState: "current",
       workIds: [
         "agent-and-skill-design",
+        "cockpit-active-work-reconciliation",
         "flowdoc-documentation-authority-cleanup",
         "plan-self-contained-rounds",
         "project-control-hardening",
@@ -801,7 +811,7 @@ describe("project roadmap Work Queue", () => {
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-cross-repository-compatibility-evidence-review")?.items
       .map((item) => item.state))
-      .toEqual(["passed", "passed", "passed", "passed", "unknown", "passed"]);
+      .toEqual(["passed", "passed", "passed", "passed", "passed", "passed"]);
     expect(model.checklists.find((item) => item.id === "checklist-core-default-gate-stability-review")?.items
       .map((item) => item.state))
       .toEqual(["passed", "passed", "passed", "passed", "passed"]);

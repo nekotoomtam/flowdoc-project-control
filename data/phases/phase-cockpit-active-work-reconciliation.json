@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-cockpit-active-work-reconciliation",
+  "workId": "cockpit-active-work-reconciliation",
+  "title": "Reconcile executable Active Work and blockers",
+  "phaseState": "done",
+  "order": 50,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Stop for a safety or correctness blocker.",
+    "Stop for an authority violation.",
+    "Stop when a required Project Control prerequisite is missing.",
+    "Stop if work escapes Project Control read-model and canonical-record scope."
+  ],
+  "verificationTarget": "checklist-cockpit-active-work-reconciliation; tests/flowdoc-current-truth-snapshot.test.ts; npm run check",
+  "summary": "Completed the bounded Active Work filter, blocked-Phase fallback, legacy compatibility classification correction, generated projection, and final Project Control verification candidate.",
+  "createdAt": "2026-09-26T17:26:00.0000000+07:00",
+  "updatedAt": "2026-09-26T17:28:00.0000000+07:00"
+}
