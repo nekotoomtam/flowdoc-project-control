@@ -1,0 +1,27 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-stage6-ordinary-local-window-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+  "pathOrContractId": "core-private-stage6-ordinary-local-window/1",
+  "verificationSummary": "Private same-analysis bounded subshard certificates accept and independently cold-verify the20 fixed target rows in native and actualWASM. This slice does not close all75 ordinary applicability.\n\nFinal stable native96 PASS including671 sustained revisions; Core npm run check440 files3030 passed/1 existing skip. Exact20 imported unchanged firstEdit WASM rows,24 repeated committed insert/delete or ก/กำ toggles, bounded negatives,5 fault/retry cases and failed-reservation accounting. Maximum observed target source407/property122/provider198 within512/512/1024; all92 additive fields retained. PLAN reviewed actual SA/exterior context, old/new real concat witnesses and complete right guard, persistent partial-shard splice, copy/shift/property charges and immediate failed-scan charging; fixes are included in final source. Clean cumulative round manifest has15paths; slice from8c09107 has5paths. Core main fast-forward integrated91462c4 and fresh npm run check passed440 files3030 tests1 existing skip; core-local-window-main-check.log.\n\nMinimal PLAN-owned exactcommit Evidence required by registry acceptance, reusing existing tests; WORK created no Evidence or Markdown. No current all75 or31remaining-count remeasurement claim. No no-op/lifecycle/Editor/Backend/public API/maps changes. Full180/11271 measurement NOT_RUN;8ms/16.7ms/1.50 unchanged; geometry/UX unproven.",
+  "verifiedAt": "2026-09-27T12:36:02.881Z",
+  "validity": {
+    "claim": "Private same-analysis bounded subshard certificates accept and independently cold-verify the20 fixed target rows in native and actualWASM. This slice does not close all75 ordinary applicability.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "tests/coldSessionStage4.test.ts"
+    ],
+    "sourceRevision": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+    "verificationMethod": "Final stable native96 PASS including671 sustained revisions; Core npm run check440 files3030 passed/1 existing skip. Exact20 imported unchanged firstEdit WASM rows,24 repeated committed insert/delete or ก/กำ toggles, bounded negatives,5 fault/retry cases and failed-reservation accounting. Maximum observed target source407/property122/provider198 within512/512/1024; all92 additive fields retained. PLAN reviewed actual SA/exterior context, old/new real concat witnesses and complete right guard, persistent partial-shard splice, copy/shift/property charges and immediate failed-scan charging; fixes are included in final source. Clean cumulative round manifest has15paths; slice from8c09107 has5paths. Core main fast-forward integrated91462c4 and fresh npm run check passed440 files3030 tests1 existing skip; core-local-window-main-check.log.",
+    "freshnessTriggers": [
+      "Changes to bounded window/provider/source/run/splice/accounting require affected revalidation.",
+      "Analysis changes and full75 closure need their own proof; no-op/lifecycle/timing/UX excluded."
+    ]
+  }
+}

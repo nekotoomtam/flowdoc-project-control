@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "4398090181009aabe32567a934e7851539a8046e020e4872e9b32eb5e5ecb927",
+  "sourceDigest": "f5d0b5cb2233ec0aba84c9e8bbdb8db80b71e66fe806e3e2798965cd4971a141",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -5709,7 +5709,7 @@
         "repo-project-control"
       ],
       "workState": "in-progress",
-      "summary": "Foundation accepted at8c09107 with native92+focused1, Core lane/main gates and PLAN reproduction. Actual baseline75 atf339c674 is24Accepted/51rejected; bounded provider windows next, then analysis transitions and full75 closure. No-op/lifecycle and full measurement excluded.",
+      "summary": "Foundation8c09107 and local-window91462c4 accepted with clean Scope Lock and Core main gates PASS. Final analysis-transition WORK chat01a0e2e4-c405-7663-8179-49634380e024 active after user-authorized fresh chat and ACK. Actual full75 and meaningful multi-language sequence closure remain; no-op/lifecycle/full measurement excluded.",
       "contextDocumentIds": [
         "doc-flowdoc-workflow-economy-policy",
         "doc-core-run-owned-property-semantic-contract-2026-09-14",
@@ -5722,13 +5722,14 @@
       "requiredEvidence": [
         "evidence-core-stage6-ordinary-tail-20260927",
         "evidence-core-stage6-seam-repair-20260927",
-        "evidence-core-stage6-ordinary-foundation-20260927"
+        "evidence-core-stage6-ordinary-foundation-20260927",
+        "evidence-core-stage6-ordinary-local-window-20260927"
       ],
       "createdAt": "2026-09-27T11:12:13.864Z",
-      "updatedAt": "2026-09-27T12:00:45.198Z",
+      "updatedAt": "2026-09-27T12:40:34.32Z",
       "coordination": {
         "version": 3,
-        "revision": 11,
+        "revision": 16,
         "round": {
           "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
           "roundId": "ordinary-complete-20260927-01a0e28e",
@@ -6054,7 +6055,7 @@
             "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-return.json",
             "revisionAttempt": 0,
             "expectedHandoffId": "ordinary-local-window-0",
-            "status": "active",
+            "status": "accepted",
             "locator": {
               "threadId": "/root/ordinary_local_window",
               "hostId": "local",
@@ -6179,6 +6180,149 @@
               }
             },
             "packetDigest": "e5e0ba3325c6e1599bc73afb1491ab322311d367e67fd39d2519e1f7ac2e90a2"
+          },
+          {
+            "roomRunId": "ordinary-analysis-transition",
+            "dispatchSetId": "ordinary-analysis-transition-dispatch",
+            "laneId": "ordinary-analysis-transition",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+            "checklistId": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/analysis-transition-return.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "ordinary-analysis-transition-0",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0e2e4-c405-7663-8179-49634380e024",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-analysis-01a0e28e/flowdoc-vnext-core",
+              "branch": "codex/ordinary-analysis-transition-0927",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/analysis-transition-return.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-27T12:45:17.608Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "automaticChannel": "mcp__codex_app__send_message_to_thread",
+              "activeCommand": "send_message_to_thread threadId=01a0e28e-4f1b-7bc0-992a-803736f6c993; retrievable canonical payload and detailed return",
+              "monitorOwner": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "livenessDeadline": "2026-09-27T13:00:34.309Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Bounded rederivation of analysis runs and Common/Inherited attachment with multi-provider seam proofs and truthful fixed-cap accounting requires frontier Unicode/ownership reasoning.",
+              "smallerOptionAssessment": "Sol medium can implement deterministic reporting, but unresolved multi-run certificate reasoning justifies Astra medium for this coherent final ordinary slice.",
+              "availabilitySnapshotRef": "ordinary-complete-local",
+              "escalationTriggers": [
+                "An exact target row cannot be certified within unchanged caps",
+                "Contract conflict or required mutation outside scope",
+                "Two bounded revisions fail the same reasoning limitation"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Private Core QA command applicability only; rendering, geometry and UX remain unproven downstream."
+            },
+            "requiredEvidence": [
+              "evidence-core-stage6-ordinary-local-window-20260927",
+              "evidence-core-stage6-ordinary-foundation-20260927",
+              "evidence-core-stage6-ordinary-tail-20260927",
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "roundId": "ordinary-complete-20260927-01a0e28e",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Complete goal1 ordinary command/certificate applicability: bounded adjacent analysis transitions and Common/Inherited reassignment, actual75 initial ordinary rows and meaningful multi-language committed streams. Starting accepted checkout91462c428837eb08be9a23d4ada8982f473b6ed2; immutable round Scope Lock basef339c674. Return cumulative base-to-terminal manifest and separate91462c4-to-terminal slice diff; preserve prior accepted foundation/window behavior. No subset closure.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+                "tests/coldSessionStage3.test.ts",
+                "tests/coldSessionStage4.test.ts",
+                "tests/coldSessionStage5.test.ts",
+                "scripts/stage6/applicability.mjs"
+              ],
+              "forbiddenScope": [
+                "docs",
+                "src",
+                "packages/text-engine-rust-wasm/src",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock",
+                "scripts/stage6/corpus.mjs",
+                "tests/fixtures"
+              ],
+              "acceptanceCriteria": [
+                "Rederive only bounded affected analysis keys with authentic preceding/following strong-script witnesses under the unchanged Common/Inherited policy. Split/merge neighboring runs and lazily adjust suffix shard rank, preserving exact authored source/defaults/origins, context/font/language/features and providerRunId. No whole-run/paragraph rewrite, style fences, fixture-specific predicates, guessed reset or semantic waiver. Reuse verified persistent source/splice foundation.",
+                "Certify each old/new shaping seam with actual retained and new unsafe-to-concat witnesses and real interior guards, complete affected actual ICU SA segments/non-SA/EOF context and grapheme/LB9 state. Charge all actual repeated source/property/provider scans, copy/shift/allocation/lookup/ABI/family work and reserve before execution. Every accepted/rejected attempt respects512source/512property/1024provider and all92 accepted/attempt/family slots; unsupported/unbounded inputs reject atomically unchanged. Preserve A+B/Stage4/5 receipts/stale/inverse behavior.",
+                "Execute all75 fixed initial ordinary rows (5sizes256/1024/2048/4096/8192 x3languages x5ordinaryoperations) with actualWASM; every row Accepted and independent cold Equal to edited source. Preserve the separate15 true-no-op inventory and unchanged firstEdit/corpus/generator/thresholds/180/11271. Update only applicability.mjs to execute full90 diagnostic inventory honestly and report raw calls/current categories, no timing admission. Native regression covers new analysis-transition classes including arbitrary-offset variants, Latin->Thai and reverse, space removal/neutral reassignment and adjacent merge.",
+                "Add meaningful sequential committed regression across all3languages and long contexts using live revisions: append/delete pairs, middle insert/delete pairs, tail replacement/inverse and ก/กำ toggles across old/new source pieces. Include structural-after-ordinary preservation and adversarial unsafe/unbounded/stale/fault cases. Verify independent cold after each accepted mutation, real caps and92-field cumulative algebra. Do not substitute no-op repetitions or relabel active composition as committed support.",
+                "Final full native cold-session suite and Core npm run check PASS on clean committed source; immutable full75 diagnostic binds terminal commit. Return exact changed manifests/test outcomes/actual per-row outcomes/max work and remaining limitations. PLAN accepts Scope Lock and integrates. If a required row cannot be certified, return exact source/provider dependency and measured/reserved costs, concrete contract/architecture alternatives and recommendation; do not claim goal1 or move to no-op/lifecycle/timing."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 0,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": []
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-stage6-ordinary-local-window-20260927",
+                "evidence-core-stage6-ordinary-foundation-20260927",
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "unknowns": [
+                {
+                  "id": "downstream-noop-lifecycle-measurement",
+                  "summary": "No-op implementation and lifecycle design precede full measurement in later rounds; geometry/UX remain unproven.",
+                  "disposition": "deferred",
+                  "returnTrigger": "All75 ordinary and committed sequence goal1 accepted; separate next-round authorization/packet."
+                }
+              ],
+              "ownerDecisions": [],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Bounded rederivation of analysis runs and Common/Inherited attachment with multi-provider seam proofs and truthful fixed-cap accounting requires frontier Unicode/ownership reasoning.",
+                "smallerOptionAssessment": "Sol medium can implement deterministic reporting, but unresolved multi-run certificate reasoning justifies Astra medium for this coherent final ordinary slice.",
+                "availabilitySnapshotRef": "ordinary-complete-local",
+                "escalationTriggers": [
+                  "An exact target row cannot be certified within unchanged caps",
+                  "Contract conflict or required mutation outside scope",
+                  "Two bounded revisions fail the same reasoning limitation"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-analysis-01a0e28e/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "An exact target row cannot be certified within unchanged caps",
+                "Contract conflict or required mutation outside scope",
+                "Two bounded revisions fail the same reasoning limitation"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+                "automaticChannel": "mcp__codex_app__send_message_to_thread",
+                "activeCommand": "send_message_to_thread threadId=01a0e28e-4f1b-7bc0-992a-803736f6c993; retrievable canonical payload and detailed return"
+              }
+            },
+            "packetDigest": "1bed26cd99b4972ab53444f003535609f8c885cf3a2347326c187af9e810fb84"
           }
         ],
         "handoffs": [
@@ -6485,6 +6629,183 @@
                   "tests/coldSessionStage4.test.ts"
                 ],
                 "verifiedAt": "2026-09-27T11:54:05.2319146Z",
+                "clean": true
+              }
+            }
+          },
+          {
+            "handoffId": "ordinary-local-window-0",
+            "payloadDigest": "cee57daf2790a6cf249819ec561d1cf89f1d8efb7d732513d7797f6bda7240d1",
+            "payload": {
+              "laneId": "ordinary-local-window",
+              "roomRunId": "ordinary-local-window",
+              "changedFiles": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                "tests/coldSessionStage4.test.ts"
+              ],
+              "ownerRepositoryId": "repo-core",
+              "tests": [
+                "Full native cold_session96 PASS,including exact20+sequence/negative/fault/preflight tests and671 sustained revisions",
+                "Core npm run check440 files3030 passed1skip,including actualWASM Stage3/4/5 and exact20/24-sequence/negative/fault tests"
+              ],
+              "risks": [
+                "Bounded20 target slice only; no full75, no-op/lifecycle, measurement or UX closure"
+              ],
+              "unknowns": [
+                "Adjacent analysis/neutral transitions and full75 admission remain for the subsequent slice. Baseline-derived31 failures are not claimed as a current full75 rerun."
+              ],
+              "behaviorChanged": true,
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927",
+                "evidence-core-stage6-ordinary-foundation-20260927"
+              ],
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "revisionAttempt": 0,
+              "status": "PASS",
+              "exactCommit": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+              "behaviorSummary": "Adds bounded same-analysis partial-shard editing. Source search uses retained safe clusters and actual SP exterior context; pinned ICU line property data classifies actual SA rather than Thai script as a proxy. Complete affected SA segments, old/new shaping cuts, an unchanged complete right guard, retained replay, grapheme boundaries and strict independent cold QA certify each accepted edit. Persistent splicing shares untouched source/tree ranges. Existing command/fault/receipt/default/origin/accounting behavior is retained.",
+              "roundId": "ordinary-complete-20260927-01a0e28e",
+              "completion": {
+                "behaviorChanged": "Adds bounded same-analysis partial-shard editing. Source search uses retained safe clusters and actual SP exterior context; pinned ICU line property data classifies actual SA rather than Thai script as a proxy. Complete affected SA segments, old/new shaping cuts, an unchanged complete right guard, retained replay, grapheme boundaries and strict independent cold QA certify each accepted edit. Persistent splicing shares untouched source/tree ranges. Existing command/fault/receipt/default/origin/accounting behavior is retained.",
+                "createdEvidenceIds": [],
+                "proof": [
+                  {
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-2",
+                      "AC-3",
+                      "AC-4"
+                    ],
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-native-stable.log :: 96 native cold_session tests, all20 targets, repeated cross-piece edits/toggles, guard/mark/unbounded-SA negatives, all5 faults and preflight scan accounting",
+                    "kind": "test"
+                  },
+                  {
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-2",
+                      "AC-3",
+                      "AC-4"
+                    ],
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-check-stable.log :: Core npm run check,440 files/3030 passed/1 skipped; actualWASM Stage3/4/5 plus exact20 imported unchanged firstEdit rows,24 repeated revisions,negative/fault tests",
+                    "kind": "test"
+                  }
+                ],
+                "remainingUnknowns": [
+                  {
+                    "disposition": "deferred",
+                    "summary": "Current full75 has not been rerun or closed. Baseline-derived31 remaining failures require adjacent analysis/neutral ownership transitions.",
+                    "id": "adjacent-analysis-next-slice",
+                    "returnTrigger": "PLAN accepts this slice and dispatches the subsequent same-round analysis-transition lane."
+                  }
+                ],
+                "implementationCommitCount": 1,
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "tests/coldSessionStage4.test.ts"
+                ],
+                "downstreamInformation": "Same-analysis certificates are an additional private path for long runs and bounded spaces/SA/ASCII-AL neighborhoods. The min8 and max24 search distances are candidate selection/budget limits, never independence witnesses. Real old/new concat flags and complete ICU context remain mandatory. Rejection reason fallback consults the prior whole-shard budget formula only and executes no fallback provider. Future analysis changes need their own bounded key/font/language/run-rank proof; no current full75, no-op/lifecycle, full timing or UX claim.",
+                "createdDocumentIds": [],
+                "reviewCyclesUsed": 1
+              }
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-27T12:36:39.917Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-27T12:36:39.917Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-27T12:36:39.917Z",
+              "senderThreadId": "/root/ordinary_local_window",
+              "channel": "collaboration.send_message",
+              "arrivalSequence": 3,
+              "acknowledgedAt": "2026-09-27T12:36:39.917Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "reviewedAt": "2026-09-27T12:36:39.917Z",
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927",
+                "evidence-core-stage6-ordinary-foundation-20260927",
+                "evidence-core-stage6-ordinary-local-window-20260927"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Final native96 with exact20 and sequences",
+                  "status": "passed"
+                },
+                {
+                  "name": "Final Core gate440files3030tests including actualWASM",
+                  "status": "passed"
+                },
+                {
+                  "name": "PLAN source/provider/copy/property/preflight review",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "Adjacent analysis transitions, meaningful all-language sequences and actual full75 closure remain. No-op/lifecycle/full measurement excluded."
+              ],
+              "scopeLockVerification": {
+                "version": 1,
+                "status": "passed",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "terminalCommit": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+                "packetDigest": "e5e0ba3325c6e1599bc73afb1491ab322311d367e67fd39d2519e1f7ac2e90a2",
+                "manifestDigest": "52a61f8ee62493bc8f5b563f65735f5d5e96ada825fe69f6af859eb526fd9839",
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "tests/coldSessionStage4.test.ts"
+                ],
+                "verifiedAt": "2026-09-27T12:36:39.917Z",
                 "clean": true
               }
             }
@@ -32582,6 +32903,33 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-core-stage6-ordinary-local-window-20260927",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+      "pathOrContractId": "core-private-stage6-ordinary-local-window/1",
+      "verificationSummary": "Private same-analysis bounded subshard certificates accept and independently cold-verify the20 fixed target rows in native and actualWASM. This slice does not close all75 ordinary applicability.\n\nFinal stable native96 PASS including671 sustained revisions; Core npm run check440 files3030 passed/1 existing skip. Exact20 imported unchanged firstEdit WASM rows,24 repeated committed insert/delete or ก/กำ toggles, bounded negatives,5 fault/retry cases and failed-reservation accounting. Maximum observed target source407/property122/provider198 within512/512/1024; all92 additive fields retained. PLAN reviewed actual SA/exterior context, old/new real concat witnesses and complete right guard, persistent partial-shard splice, copy/shift/property charges and immediate failed-scan charging; fixes are included in final source. Clean cumulative round manifest has15paths; slice from8c09107 has5paths. Core main fast-forward integrated91462c4 and fresh npm run check passed440 files3030 tests1 existing skip; core-local-window-main-check.log.\n\nMinimal PLAN-owned exactcommit Evidence required by registry acceptance, reusing existing tests; WORK created no Evidence or Markdown. No current all75 or31remaining-count remeasurement claim. No no-op/lifecycle/Editor/Backend/public API/maps changes. Full180/11271 measurement NOT_RUN;8ms/16.7ms/1.50 unchanged; geometry/UX unproven.",
+      "verifiedAt": "2026-09-27T12:36:02.881Z",
+      "validity": {
+        "claim": "Private same-analysis bounded subshard certificates accept and independently cold-verify the20 fixed target rows in native and actualWASM. This slice does not close all75 ordinary applicability.",
+        "repositoryId": "repo-core",
+        "pathScope": [
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+          "tests/coldSessionStage4.test.ts"
+        ],
+        "sourceRevision": "91462c428837eb08be9a23d4ada8982f473b6ed2",
+        "verificationMethod": "Final stable native96 PASS including671 sustained revisions; Core npm run check440 files3030 passed/1 existing skip. Exact20 imported unchanged firstEdit WASM rows,24 repeated committed insert/delete or ก/กำ toggles, bounded negatives,5 fault/retry cases and failed-reservation accounting. Maximum observed target source407/property122/provider198 within512/512/1024; all92 additive fields retained. PLAN reviewed actual SA/exterior context, old/new real concat witnesses and complete right guard, persistent partial-shard splice, copy/shift/property charges and immediate failed-scan charging; fixes are included in final source. Clean cumulative round manifest has15paths; slice from8c09107 has5paths. Core main fast-forward integrated91462c4 and fresh npm run check passed440 files3030 tests1 existing skip; core-local-window-main-check.log.",
+        "freshnessTriggers": [
+          "Analysis changes and full75 closure need their own proof; no-op/lifecycle/timing/UX excluded.",
+          "Changes to bounded window/provider/source/run/splice/accounting require affected revalidation."
+        ]
+      }
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-core-stage6-ordinary-tail-20260927",
       "nodeIds": [],
       "repositoryId": "repo-core",
@@ -34518,7 +34866,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-27T12:00:45.198Z",
+    "generatedAt": "2026-09-27T12:40:34.32Z",
     "currentGoal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
     "currentBlocker": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
     "activeWork": [
@@ -34613,16 +34961,22 @@
     ],
     "deferredWork": [
       {
-        "id": "adjacent-analysis-next-slice",
-        "summary": "Opposite-script insertion/deletion and Common/Inherited reassignment require the final bounded analysis-transition lane; all75 closure remains pending.",
         "disposition": "deferred",
-        "returnTrigger": "This local-window slice accepted in the same round"
+        "summary": "Current full75 has not been rerun or closed. Baseline-derived31 remaining failures require adjacent analysis/neutral ownership transitions.",
+        "id": "adjacent-analysis-next-slice",
+        "returnTrigger": "PLAN accepts this slice and dispatches the subsequent same-round analysis-transition lane."
       },
       {
         "id": "core-editor-parity-proof",
         "summary": "Core unchanged-input and structural equality, plus downstream Editor visual transition parity, are unproven and not discharged by this discovery.",
         "disposition": "deferred",
         "returnTrigger": "The applicable Core and separately authorized Editor proof rounds execute after contract prerequisites are resolved."
+      },
+      {
+        "id": "downstream-noop-lifecycle-measurement",
+        "summary": "No-op implementation and lifecycle design precede full measurement in later rounds; geometry/UX remain unproven.",
+        "disposition": "deferred",
+        "returnTrigger": "All75 ordinary and committed sequence goal1 accepted; separate next-round authorization/packet."
       },
       {
         "id": "empty-state-contract-next-round",
