@@ -9,8 +9,8 @@
     "repo-core",
     "repo-project-control"
   ],
-  "workState": "in-progress",
-  "summary": "Foundation8c09107 and local-window91462c4 accepted with clean Scope Lock and Core main gates PASS. Final analysis-transition WORK chat01a0e2e4-c405-7663-8179-49634380e024 active after user-authorized fresh chat and ACK. Actual full75 and meaningful multi-language sequence closure remain; no-op/lifecycle/full measurement excluded.",
+  "workState": "in-review",
+  "summary": "Goal1 ordinary applicability complete at Corecf54a700: actual75/75 Accepted and independent cold Equal,48 meaningful committed mutations over3languages, all92 meters, maxima475/139/260 within512/512/1024. Native102 release and Core lane/main440files3031tests PASS. Scope Lock and PLAN acceptance complete; four clean merged Core lanes removed with ignored proof preserved. Final PC lane/main verification is reported by the terminal record; no-op implementation and lifecycle design remain later rounds before full measurement.",
   "contextDocumentIds": [
     "doc-flowdoc-workflow-economy-policy",
     "doc-core-run-owned-property-semantic-contract-2026-09-14",
@@ -19,18 +19,19 @@
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Actual 75 ordinary applicability with independent cold equality, real accounting and accepted integration, or exact contract blocker with alternatives.",
-  "riskSummary": "No subset closure; no-op/lifecycle remain unimplemented; full timing NOT_RUN; geometry and UX unproven.",
+  "riskSummary": "Conservative bounded context/one-authored-span/one-resource profile; general unsupported contexts reject atomically.15noops specified but not implemented. Full180/11271 measurement NOT_RUN;8ms/16.7ms/1.50 unchanged; geometry/UX and downstream consumers unproven.",
   "requiredEvidence": [
     "evidence-core-stage6-ordinary-tail-20260927",
     "evidence-core-stage6-seam-repair-20260927",
     "evidence-core-stage6-ordinary-foundation-20260927",
-    "evidence-core-stage6-ordinary-local-window-20260927"
+    "evidence-core-stage6-ordinary-local-window-20260927",
+    "evidence-core-stage6-ordinary-complete-20260927"
   ],
   "createdAt": "2026-09-27T11:12:13.864Z",
-  "updatedAt": "2026-09-27T12:40:34.32Z",
+  "updatedAt": "2026-09-27T13:32:37.912Z",
   "coordination": {
     "version": 3,
-    "revision": 16,
+    "revision": 21,
     "round": {
       "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
       "roundId": "ordinary-complete-20260927-01a0e28e",
@@ -49,7 +50,7 @@
         "tests/coldSessionStage4.test.ts",
         "tests/coldSessionStage5.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -79,7 +80,7 @@
         "repositoryId": "repo-core",
         "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
         "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
-        "state": "active",
+        "state": "released",
         "roundId": "ordinary-complete-20260927-01a0e28e"
       }
     ],
@@ -97,7 +98,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "ordinary-full-discovery-0",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "/root/ordinary_full_discovery",
           "hostId": "local",
@@ -220,7 +221,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-return.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "ordinary-foundation-0",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "/root/ordinary_foundation",
           "hostId": "local",
@@ -356,7 +357,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-return.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "ordinary-local-window-0",
-        "status": "accepted",
+        "status": "closed",
         "locator": {
           "threadId": "/root/ordinary_local_window",
           "hostId": "local",
@@ -494,7 +495,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/analysis-transition-return.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "ordinary-analysis-transition-0",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "01a0e2e4-c405-7663-8179-49634380e024",
           "hostId": "local",
@@ -511,7 +512,7 @@
           "automaticChannel": "mcp__codex_app__send_message_to_thread",
           "activeCommand": "send_message_to_thread threadId=01a0e28e-4f1b-7bc0-992a-803736f6c993; retrievable canonical payload and detailed return",
           "monitorOwner": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
-          "livenessDeadline": "2026-09-27T13:00:34.309Z",
+          "livenessDeadline": "2026-09-27T13:35:19.2764673Z",
           "maxSendAttempts": 3
         },
         "modelDecision": {
@@ -1110,9 +1111,316 @@
             "clean": true
           }
         }
+      },
+      {
+        "handoffId": "ordinary-analysis-transition-0",
+        "payloadDigest": "0f4c9913267dd7df4406ce998520e0f4f70cb068879f8cae0b926e7b6c15df60",
+        "payload": {
+          "laneId": "ordinary-analysis-transition",
+          "roomRunId": "ordinary-analysis-transition",
+          "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "exactCommit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/analysis_transition.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+            "scripts/stage6/applicability.mjs",
+            "tests/coldSessionStage4.test.ts"
+          ],
+          "tests": [
+            "Native release cold_session102 PASS including all75 and committed streams",
+            "Core npm run check440files3031tests PASS/1existing skip",
+            "Immutable actualWASM90:75ordinary Accepted/edited-source Equal;15separate unsupported noops;360rawcalls"
+          ],
+          "risks": [
+            "New multi-run certificate is conservative: bounded long-session neighborhoods, one authored span and one configured font resource per route; ambiguous multi-resource fallback and unsupported/unbounded contexts reject without publication.",
+            "The new line-context profile admits actual ASCII AL/SP and actual Thai SA classes; other Common/Inherited neighborhoods are not newly admitted. The canonical attachment policy is unchanged.",
+            "No-op receipt/revision and lifecycle semantics are specified but not implemented by this WORK. All15 diagnostic no-op requests remain separately unsupported.",
+            "Full180/11271 measurement NOT_RUN;8ms/16.7ms/1.50 unchanged. Geometry, Editor/Backend, public binding and UX remain unproven/downstream."
+          ],
+          "unknowns": [
+            "No-op/lifecycle implementation and full fixed measurement remain later prerequisites; geometry/UX remain unproven."
+          ],
+          "behaviorChanged": true,
+          "evidenceIds": [
+            "evidence-core-stage6-ordinary-tail-20260927",
+            "evidence-core-stage6-seam-repair-20260927",
+            "evidence-core-stage6-ordinary-foundation-20260927",
+            "evidence-core-stage6-ordinary-local-window-20260927"
+          ],
+          "behaviorSummary": "Adds bounded multi-run analysis transitions for opposite-script insertion/deletion/replacement and neutral reassignment. The unchanged previous-strong/leading-next-strong policy resolves local runs; exact source, authored presence/defaults/origins, context, language/font/features and providerRunId remain authoritative. Real AL/SP/ICU-SA source context, retained and old/new concat witnesses, full affected SA segments, global window segmentation and unchanged right guard certify repairs. Persistent source views/range splice share untouched data and lazily shift suffix run ranks. Existing accepted certificates run first; eligible repair retains all failed-attempt work and preserves failure atomicity.",
+          "roundId": "ordinary-complete-20260927-01a0e28e",
+          "completion": {
+            "behaviorChanged": "Adds bounded multi-run analysis transitions for opposite-script insertion/deletion/replacement and neutral reassignment. The unchanged previous-strong/leading-next-strong policy resolves local runs; exact source, authored presence/defaults/origins, context, language/font/features and providerRunId remain authoritative. Real AL/SP/ICU-SA source context, retained and old/new concat witnesses, full affected SA segments, global window segmentation and unchanged right guard certify repairs. Persistent source views/range splice share untouched data and lazily shift suffix run ranks. Existing accepted certificates run first; eligible repair retains all failed-attempt work and preserves failure atomicity.",
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "proof": [
+              {
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5"
+                ],
+                "reference": "C:\\Users\\nekot\\.codex\\visualizations\\2026\\09\\27\\01a0e28e-4f1b-7bc0-992a-803736f6c993\\analysis-native-release-final.log",
+                "kind": "test"
+              },
+              {
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5"
+                ],
+                "reference": "C:\\Users\\nekot\\.codex\\visualizations\\2026\\09\\27\\01a0e28e-4f1b-7bc0-992a-803736f6c993\\analysis-core-verified.log",
+                "kind": "test"
+              },
+              {
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5"
+                ],
+                "reference": "C:\\Users\\nekot\\.codex\\visualizations\\2026\\09\\27\\01a0e28e-4f1b-7bc0-992a-803736f6c993\\analysis-transition-applicability-cf54a700.json",
+                "kind": "test"
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "downstream-noop-lifecycle-measurement",
+                "disposition": "deferred",
+                "summary": "No-op/lifecycle implementation and full fixed measurement remain later prerequisites; geometry/UX remain unproven.",
+                "returnTrigger": "PLAN accepts ordinary goal1 and authorizes the separate next round."
+              }
+            ],
+            "implementationCommitCount": 1,
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/analysis_transition.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "scripts/stage6/applicability.mjs",
+              "tests/coldSessionStage4.test.ts"
+            ],
+            "downstreamInformation": "Full75 ordinary candidate PASS, not Stage6/Gate2 or UX admission.15noops remain specified/not implemented; later lifecycle/full measurement preserves fixed180/11271 and thresholds. General unsupported contexts remain typed nonpublishing rejections. PLAN alone accepts/integrates. Detailed report and both Git manifests reside beside this payload.",
+            "reviewCyclesUsed": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-27T13:26:53.462Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-27T13:26:53.462Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-27T13:26:53.462Z",
+          "senderThreadId": "01a0e2e4-c405-7663-8179-49634380e024",
+          "channel": "mcp__codex_app__send_message_to_thread",
+          "arrivalSequence": 4,
+          "acknowledgedAt": "2026-09-27T13:26:53.462Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+          "reviewedAt": "2026-09-27T13:26:53.462Z",
+          "evidenceIds": [
+            "evidence-core-stage6-ordinary-tail-20260927",
+            "evidence-core-stage6-seam-repair-20260927",
+            "evidence-core-stage6-ordinary-foundation-20260927",
+            "evidence-core-stage6-ordinary-local-window-20260927",
+            "evidence-core-stage6-ordinary-complete-20260927"
+          ],
+          "requiredChecks": [
+            {
+              "name": "Final native102 release profile",
+              "status": "passed"
+            },
+            {
+              "name": "Frozen Core gate440files3031tests",
+              "status": "passed"
+            },
+            {
+              "name": "Immutable actualWASM75 ordinary+15noops, PLAN rawcall/cap validation",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN source/provider/ownership/accounting review",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Core main integration/gate and PC completion remain PLAN-owned. No-op implementation/lifecycle design/full measurement are later rounds."
+          ],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+            "terminalCommit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+            "packetDigest": "1bed26cd99b4972ab53444f003535609f8c885cf3a2347326c187af9e810fb84",
+            "manifestDigest": "83cea7669225dc089522c7c421437f23d65f126cb75715325504b050714608dc",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/analysis_transition.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "scripts/stage6/applicability.mjs",
+              "tests/coldSessionStage4.test.ts"
+            ],
+            "verifiedAt": "2026-09-27T13:26:53.462Z",
+            "clean": true
+          }
+        }
       }
     ],
     "completionQueue": [],
-    "cleanup": []
+    "cleanup": [
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/ordinary-discovery-01a0e28e/flowdoc-vnext-core",
+        "branch": "HEAD (detached)",
+        "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "executor": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "preflightEvidenceIds": [
+          "evidence-core-stage6-ordinary-complete-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: fresh clean tracked/untracked status and exact Git root/HEAD before removal",
+          "merge": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: exact candidate ancestor of main",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json :: read-only discovery PASS plus clean zero-mutation Scope Lock at accepted base",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-ordinary-complete-main-check.log :: PASS440files3031tests1skip",
+          "liveProcess": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: agents complete/WORK idle and no matching lane process; sustained artifacts copied before removal"
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "ordinary-complete-20260927-01a0e28e"
+      },
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/ordinary-foundation-01a0e28e/flowdoc-vnext-core",
+        "branch": "codex/ordinary-foundation-0927",
+        "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "executor": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "preflightEvidenceIds": [
+          "evidence-core-stage6-ordinary-complete-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: fresh clean tracked/untracked status and exact Git root/HEAD before removal",
+          "merge": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: exact candidate ancestor of main",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-core-check-final.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-ordinary-complete-main-check.log :: PASS440files3031tests1skip",
+          "liveProcess": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: agents complete/WORK idle and no matching lane process; sustained artifacts copied before removal"
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "ordinary-complete-20260927-01a0e28e"
+      },
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/ordinary-window-01a0e28e/flowdoc-vnext-core",
+        "branch": "codex/ordinary-local-window-0927",
+        "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "executor": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "preflightEvidenceIds": [
+          "evidence-core-stage6-ordinary-complete-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: fresh clean tracked/untracked status and exact Git root/HEAD before removal",
+          "merge": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: exact candidate ancestor of main",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-check-stable.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-ordinary-complete-main-check.log :: PASS440files3031tests1skip",
+          "liveProcess": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: agents complete/WORK idle and no matching lane process; sustained artifacts copied before removal"
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "ordinary-complete-20260927-01a0e28e"
+      },
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/ordinary-analysis-01a0e28e/flowdoc-vnext-core",
+        "branch": "codex/ordinary-analysis-transition-0927",
+        "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "executor": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+        "preflightEvidenceIds": [
+          "evidence-core-stage6-ordinary-complete-20260927"
+        ],
+        "preflightSources": {
+          "cleanliness": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: fresh clean tracked/untracked status and exact Git root/HEAD before removal",
+          "merge": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: exact candidate ancestor of main",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/analysis-core-verified.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-ordinary-complete-main-check.log :: PASS440files3031tests1skip",
+          "liveProcess": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/core-cleanup-results.json :: agents complete/WORK idle and no matching lane process; sustained artifacts copied before removal"
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "ordinary-complete-20260927-01a0e28e"
+      }
+    ]
   }
 }

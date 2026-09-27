@@ -3,7 +3,7 @@
   "id": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
   "workId": "flowdoc-core-stage6-ordinary-complete-20260927",
   "title": "Complete ordinary applicability",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 0,
   "repositoryIds": [
     "repo-core",
@@ -11,11 +11,11 @@
   ],
   "activeRole": "planning-partner",
   "verificationTarget": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
-  "summary": "Discovery followed by bounded Core implementation slices within this round.",
+  "summary": "Fixed75 ordinary and48 meaningful committed transitions accepted atcf54a700 with independent cold equality, real bounded work and Core main gate. PLAN-owned final PC gate results reside in terminal report. No-op/lifecycle/full timing remain separate.",
   "stopConditions": [
     "Contract conflict or scope escape requires PLAN resolution",
     "No no-op/lifecycle implementation or full measurement"
   ],
   "createdAt": "2026-09-27T11:12:13.864Z",
-  "updatedAt": "2026-09-27T11:12:13.864Z"
+  "updatedAt": "2026-09-27T13:32:37.912Z"
 }
