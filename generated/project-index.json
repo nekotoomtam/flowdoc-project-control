@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "599acf88963aca54436f67a1ebfdd8ef536f8e71c9b6bd984fa5cecdef0d1263",
+  "sourceDigest": "4398090181009aabe32567a934e7851539a8046e020e4872e9b32eb5e5ecb927",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -5709,7 +5709,7 @@
         "repo-project-control"
       ],
       "workState": "in-progress",
-      "summary": "Fresh PLAN round closes goal 1 across all 75 initial ordinary shapes and affected sequential regressions, via bounded discovery and implementation slices. No-op follows in a later round; lifecycle design remains prerequisite to full measurement.",
+      "summary": "Foundation accepted at8c09107 with native92+focused1, Core lane/main gates and PLAN reproduction. Actual baseline75 atf339c674 is24Accepted/51rejected; bounded provider windows next, then analysis transitions and full75 closure. No-op/lifecycle and full measurement excluded.",
       "contextDocumentIds": [
         "doc-flowdoc-workflow-economy-policy",
         "doc-core-run-owned-property-semantic-contract-2026-09-14",
@@ -5721,13 +5721,14 @@
       "riskSummary": "No subset closure; no-op/lifecycle remain unimplemented; full timing NOT_RUN; geometry and UX unproven.",
       "requiredEvidence": [
         "evidence-core-stage6-ordinary-tail-20260927",
-        "evidence-core-stage6-seam-repair-20260927"
+        "evidence-core-stage6-seam-repair-20260927",
+        "evidence-core-stage6-ordinary-foundation-20260927"
       ],
       "createdAt": "2026-09-27T11:12:13.864Z",
-      "updatedAt": "2026-09-27T11:12:13.864Z",
+      "updatedAt": "2026-09-27T12:00:45.198Z",
       "coordination": {
         "version": 3,
-        "revision": 1,
+        "revision": 11,
         "round": {
           "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
           "roundId": "ordinary-complete-20260927-01a0e28e",
@@ -5740,7 +5741,11 @@
             "packages/text-engine-rust-wasm",
             "scripts/stage6",
             "tests",
-            "src/layout"
+            "src/layout",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts"
           ],
           "state": "active",
           "policyId": "flowdoc-workflow-economy-v2"
@@ -5790,7 +5795,7 @@
             "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json",
             "revisionAttempt": 0,
             "expectedHandoffId": "ordinary-full-discovery-0",
-            "status": "active",
+            "status": "accepted",
             "locator": {
               "threadId": "/root/ordinary_full_discovery",
               "hostId": "local",
@@ -5900,9 +5905,591 @@
               }
             },
             "packetDigest": "80ad46dd33db0df70ea08e88f9b21c90b15daf07bc99c157d0d810df6a51d8f0"
+          },
+          {
+            "roomRunId": "ordinary-foundation",
+            "dispatchSetId": "ordinary-foundation-dispatch",
+            "laneId": "ordinary-foundation",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+            "checklistId": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-return.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "ordinary-foundation-0",
+            "status": "accepted",
+            "locator": {
+              "threadId": "/root/ordinary_foundation",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-foundation-01a0e28e/flowdoc-vnext-core",
+              "branch": "codex/ordinary-foundation-0927",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-return.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-27T11:25:08.387Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; retrievable final",
+              "monitorOwner": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "livenessDeadline": "2026-09-27T12:02:02.9544958Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Persistent lazy coordinate/rank algebra and strict independent oracle must preserve structural inverse, sharing and counter semantics across several coupled private modules.",
+              "smallerOptionAssessment": "Sol medium suitable for deterministic follow-on harness edits; this bounded foundation changes persistent representation and oracle validation and benefits from frontier reasoning.",
+              "availabilitySnapshotRef": "ordinary-complete-local",
+              "escalationTriggers": [
+                "Required changes outside allowed private scope",
+                "A provider/semantic contract contradiction",
+                "Two in-scope revisions fail same reasoning limitation"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Private Core source/tree/oracle foundation only; no new command admission or rendering changes. UX remains downstream unproven."
+            },
+            "requiredEvidence": [
+              "evidence-core-stage6-ordinary-tail-20260927",
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "roundId": "ordinary-complete-20260927-01a0e28e",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Foundation slice only: bounded shared-source views and multi-piece access/replacement, persistent balanced range splice and lazy shard run-rank shifts, and strict partition-independent cold QA oracle. Preserve existing admitted commands, actual accounting, structural inverse and all source/default/origin semantics. This slice does not close goal1 or add new certificate admission.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+                "tests/coldSessionStage3.test.ts",
+                "tests/coldSessionStage4.test.ts",
+                "tests/coldSessionStage5.test.ts"
+              ],
+              "forbiddenScope": [
+                "docs",
+                "scripts",
+                "src",
+                "packages/text-engine-rust-wasm/src",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock"
+              ],
+              "acceptanceCriteria": [
+                "Bounded multi-piece source window/replacement uses shared text/offset views and persistent balanced splice without full source/index copies; scalar-invalid and invalid ranges reject. Verify BOF/interior/EOF, empty result, cross-piece ranges, prefix/suffix Arc sharing and work proportional to touched pieces/new text.",
+                "Persistent tree splice and lazy run-rank deltas preserve AVL/coordinate/rank composition and structural child run_index_base/inverse behavior without suffix payload rewrites; meter all traversals, copies, offsets, rank rewrites using truthful existing counters.",
+                "QA compares exact independently cold-derived source, authored spans/defaults/origins, analysis keys/providerRunIds, glyphs, line/grapheme facts and per-cluster concat unsafe facts independently of shard partition. Validate live partition coverage/no gaps/overlaps/run membership/safe edge metadata. Different valid partitions pass; corrupt gaps/overlaps/rank/unsafe/glyph/concat/line/grapheme fail. Never merely remove edge checks.",
+                "Existing A+B/Stage3/4/5 acceptance, failure atomicity, receipts/revisions, accepted/attempt/family counters and structural inverse remain intact. Focused new native tests, full native cold-session suite, actual-WASM regression suites, required npm run check pass at clean committed candidate. No new ordinary admission, no no-op/lifecycle or measurement/corpus/threshold changes."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 0,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": []
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "unknowns": [
+                {
+                  "id": "provider-certificates-next-slices",
+                  "summary": "Remaining51 initial ordinary failures require later bounded provider and analysis-transition slices.",
+                  "disposition": "deferred",
+                  "returnTrigger": "Foundation accepted in this same round"
+                }
+              ],
+              "ownerDecisions": [],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Persistent lazy coordinate/rank algebra and strict independent oracle must preserve structural inverse, sharing and counter semantics across several coupled private modules.",
+                "smallerOptionAssessment": "Sol medium suitable for deterministic follow-on harness edits; this bounded foundation changes persistent representation and oracle validation and benefits from frontier reasoning.",
+                "availabilitySnapshotRef": "ordinary-complete-local",
+                "escalationTriggers": [
+                  "Required changes outside allowed private scope",
+                  "A provider/semantic contract contradiction",
+                  "Two in-scope revisions fail same reasoning limitation"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-foundation-01a0e28e/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "Required changes outside allowed private scope",
+                "A provider/semantic contract contradiction",
+                "Two in-scope revisions fail same reasoning limitation"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; retrievable final"
+              }
+            },
+            "packetDigest": "8e1001090de2fc10a09a7f01fb75038e8410a2843d964bbb5ea9239b46154025"
+          },
+          {
+            "roomRunId": "ordinary-local-window",
+            "dispatchSetId": "ordinary-local-window-dispatch",
+            "laneId": "ordinary-local-window",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+            "checklistId": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-return.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "ordinary-local-window-0",
+            "status": "active",
+            "locator": {
+              "threadId": "/root/ordinary_local_window",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-window-01a0e28e/flowdoc-vnext-core",
+              "branch": "codex/ordinary-local-window-0927",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/local-window-return.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-27T12:04:03.518Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; retrievable final",
+              "monitorOwner": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "livenessDeadline": "2026-09-27T12:20:45.188Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Bounded provider shaping and ICU outside-dependency certificates require precise Unicode context and actual work accounting within fixed caps.",
+              "smallerOptionAssessment": "Sol medium can implement deterministic harness followups; novel provider witness and segmentation reset reasoning justifies Astra medium for this bounded slice.",
+              "availabilitySnapshotRef": "ordinary-complete-local",
+              "escalationTriggers": [
+                "An exact target row cannot be certified within unchanged caps",
+                "Contract conflict or required mutation outside scope",
+                "Two bounded revisions fail the same reasoning limitation"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Private Core QA command applicability only; rendering, geometry and UX remain unproven downstream."
+            },
+            "requiredEvidence": [
+              "evidence-core-stage6-ordinary-foundation-20260927",
+              "evidence-core-stage6-ordinary-tail-20260927",
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "roundId": "ordinary-complete-20260927-01a0e28e",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Implement provider-certified subshard ordinary edits that preserve the existing analysis run key/count: long Latin backspace and Thai middle insert/replacement/committed composition replacement. Preserve old A+B and structural semantics. This is the second bounded slice; adjacent analysis/neutral reassignment and final75 closure remain a fresh subsequent lane in this round. The immutable round Scope Lock base is f339c674; this worktree starts from accepted, main-verified foundation8c09107. Return the actual cumulative f339c674-to-terminal manifest for Scope Lock, separately identifying inherited foundation paths versus this slice changes from8c09107. Preserve accepted foundation as immutable input; this is a serial continuation within the same round, not a new base claim.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session",
+                "tests/coldSessionStage3.test.ts",
+                "tests/coldSessionStage4.test.ts",
+                "tests/coldSessionStage5.test.ts"
+              ],
+              "forbiddenScope": [
+                "docs",
+                "scripts",
+                "src",
+                "packages/text-engine-rust-wasm/src",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock"
+              ],
+              "acceptanceCriteria": [
+                "Choose bounded source/property windows from authentic retained scalar/grapheme/cluster facts. Certify shaping cuts using old AND new unsafe-to-concat witnesses and an interior unchanged right guard when needed; replay old facts and preserve outside facts. ICU segmentation includes complete affected actual SA segments with proven non-SA/EOF context and LB9/grapheme state; never infer a reset from style/script boundaries or missing flags. Use the pinned provider data and policy; no corpus-specific predicates.",
+                "Perform partial-shard replacement with bounded edge payload work and shared untouched subtrees/source views. Keep exact analysis key/count and authored source/default/origin semantics. Unsupported analysis changes, unsafe boundaries or unbounded dependencies reject unchanged. All source/property/provider work is reserved before execution, actual repeated scans/lookups/indexing/copies/allocations/provider/ABI/family work charged within512/512/1024 and all92 accepted/attempt/family fields remain sound.",
+                "Actually accept and independently cold-verify the20 fixed initial target rows: five sizes256/1024/2048/4096/8192 times Thai mid-insert/replacement/composition-update plus Latin backspace, using unchanged firstEdit corpus definitions. Add bounded meaningful repeated same-run insert/delete and committed ก/กำ toggles across old/new source pieces, plus provider-guard, Thai mark/grapheme, joined SA, long unbounded context and fault/retry negatives. New tests include native and actualWASM; no altered fixtures/generator/thresholds.",
+                "Preserve A+B/Stage4/5 receipts/revisions/inverse and accounting. Full native cold-session suite and required Core npm run check pass on clean committed candidate; PLAN accepts exact Scope Lock. Report exact target-row outcomes and remaining categories honestly, with no no-op/lifecycle/full-measurement/UX or goal1 closure claim."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 0,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": []
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-stage6-ordinary-foundation-20260927",
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "unknowns": [
+                {
+                  "id": "adjacent-analysis-next-slice",
+                  "summary": "Opposite-script insertion/deletion and Common/Inherited reassignment require the final bounded analysis-transition lane; all75 closure remains pending.",
+                  "disposition": "deferred",
+                  "returnTrigger": "This local-window slice accepted in the same round"
+                }
+              ],
+              "ownerDecisions": [],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Bounded provider shaping and ICU outside-dependency certificates require precise Unicode context and actual work accounting within fixed caps.",
+                "smallerOptionAssessment": "Sol medium can implement deterministic harness followups; novel provider witness and segmentation reset reasoning justifies Astra medium for this bounded slice.",
+                "availabilitySnapshotRef": "ordinary-complete-local",
+                "escalationTriggers": [
+                  "An exact target row cannot be certified within unchanged caps",
+                  "Contract conflict or required mutation outside scope",
+                  "Two bounded revisions fail the same reasoning limitation"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-window-01a0e28e/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "An exact target row cannot be certified within unchanged caps",
+                "Contract conflict or required mutation outside scope",
+                "Two bounded revisions fail the same reasoning limitation"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; retrievable final"
+              }
+            },
+            "packetDigest": "e5e0ba3325c6e1599bc73afb1491ab322311d367e67fd39d2519e1f7ac2e90a2"
           }
         ],
-        "handoffs": [],
+        "handoffs": [
+          {
+            "handoffId": "ordinary-full-discovery-0",
+            "payloadDigest": "196da15d9403e7bed156d987f7903c5cfde8bb2f18c44c2764cda0830d50332b",
+            "payload": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "roomRunId": "ordinary-full-discovery",
+              "laneId": "ordinary-full-discovery",
+              "ownerRepositoryId": "repo-core",
+              "revisionAttempt": 0,
+              "status": "PASS",
+              "behaviorChanged": false,
+              "behaviorSummary": "None. Read-only discovery complete; ordinary applicability remains incomplete and this PASS is not goal1 closure.",
+              "exactCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+              "changedFiles": [],
+              "tests": [
+                "Static exact corpus inventory + secondary Intl grapheme endpoint check: PASS",
+                "Fresh checkout identity and git status: PASS",
+                "PLAN-owned actual90 initial-shape baseline: APPLICABILITY_INCOMPLETE"
+              ],
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "risks": [
+                "Goal1 remains incomplete; 24/75 actual ordinary accepted"
+              ],
+              "unknowns": [
+                "Actual success and measured work of future bounded certificates are unproved. ICU reset predicate must use reviewed actual line classes including Thai marks; do not infer SA from Script=Thai. No initial-shape semantic contradiction identified. Full timing and lifecycle/no-op implementation remain outside scope."
+              ],
+              "roundId": "ordinary-complete-20260927-01a0e28e",
+              "completion": {
+                "behaviorChanged": "None. Read-only discovery complete; ordinary applicability remains incomplete and this PASS is not goal1 closure.",
+                "proof": [
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json",
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-2",
+                      "AC-3"
+                    ]
+                  }
+                ],
+                "remainingUnknowns": [
+                  {
+                    "id": "implementation-proof",
+                    "summary": "Actual success and measured work of future bounded certificates are unproved. ICU reset predicate must use reviewed actual line classes including Thai marks; do not infer SA from Script=Thai. No initial-shape semantic contradiction identified. Full timing and lifecycle/no-op implementation remain outside scope.",
+                    "disposition": "deferred",
+                    "returnTrigger": "Fresh bounded implementation slices in this round"
+                  }
+                ],
+                "downstreamInformation": "Use bounded slices below in fresh implementation packets within current round. Require actual75 ordinary acceptance, independent edited-source equality, sequential regression, real accounting, current native+WASM and Core gates. Preserve no-op/lifecycle prerequisites and 180/11271 denominators. No geometry/UX or public promotion.",
+                "changedFiles": [],
+                "createdEvidenceIds": [],
+                "createdDocumentIds": [],
+                "reviewCyclesUsed": 1,
+                "implementationCommitCount": 0
+              }
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-27T11:23:02.712Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-27T11:23:02.712Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-27T11:23:02.713Z",
+              "senderThreadId": "/root/ordinary_full_discovery",
+              "channel": "collaboration.send_message",
+              "arrivalSequence": 1,
+              "acknowledgedAt": "2026-09-27T11:23:02.713Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "reviewedAt": "2026-09-27T11:23:02.713Z",
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "requiredChecks": [
+                {
+                  "name": "Read-only source dependency review and actual90 baseline",
+                  "status": "passed"
+                }
+              ],
+              "remainingScope": [
+                "All product implementation and goal1 closure pending; no-op/lifecycle/full measurement remain outside this round."
+              ],
+              "scopeLockVerification": {
+                "version": 1,
+                "status": "passed",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "terminalCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "packetDigest": "80ad46dd33db0df70ea08e88f9b21c90b15daf07bc99c157d0d810df6a51d8f0",
+                "manifestDigest": "7b91dc147bb65b5fc01f90c9c384e4bd62bc699b78f5cf3ac031df652d641ff9",
+                "changedFiles": [],
+                "verifiedAt": "2026-09-27T11:23:02.713Z",
+                "clean": true
+              }
+            }
+          },
+          {
+            "handoffId": "ordinary-foundation-0",
+            "payloadDigest": "1a7fde7f7268e43637714a730946dbe863a9f19c7179e0bd87f7db81c1218ad8",
+            "payload": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "roomRunId": "ordinary-foundation",
+              "laneId": "ordinary-foundation",
+              "ownerRepositoryId": "repo-core",
+              "revisionAttempt": 0,
+              "status": "PASS",
+              "behaviorChanged": true,
+              "behaviorSummary": "Source pieces now hold shared text/offset views; bounded multi-piece reads/replacements and structural splits avoid reindexing unchanged text. Persistent AVL rank splice/slicing/removal preserves sharing and lazy UTF-16/byte/run-rank deltas. Independent cold QA compares exact source, authored context/origins, analysis/provider identities, glyphs, line/grapheme and complete concat flags while independently validating live shard coverage/run membership/safe edges, allowing valid repartitioning. No new command certificate admission.",
+              "exactCommit": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+              "changedFiles": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                "tests/coldSessionStage4.test.ts"
+              ],
+              "tests": [
+                "Full native92 PASS + added focused regression PASS",
+                "Core npm run check440 files3027 passed1skip",
+                "PLAN8 foundation native + actualWASM cross-piece PASS"
+              ],
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927",
+                "evidence-core-stage6-ordinary-foundation-20260927"
+              ],
+              "risks": [
+                "Foundation only; no complete ordinary, lifecycle, measurement or UX admission"
+              ],
+              "unknowns": [
+                "Foundation does not complete the remaining ordinary corpus admission or implement new provider certificates."
+              ],
+              "roundId": "ordinary-complete-20260927-01a0e28e",
+              "completion": {
+                "behaviorChanged": "Source pieces now hold shared text/offset views; bounded multi-piece reads/replacements and structural splits avoid reindexing unchanged text. Persistent AVL rank splice/slicing/removal preserves sharing and lazy UTF-16/byte/run-rank deltas. Independent cold QA compares exact source, authored context/origins, analysis/provider identities, glyphs, line/grapheme and complete concat flags while independently validating live shard coverage/run membership/safe edges, allowing valid repartitioning. No new command certificate admission.",
+                "proof": [
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-native-final.log :: source::foundation_tests (cross-piece ranges/scalar rejection/empty result/Arc sharing/index-copy accounting/fragmentation budget)",
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-4"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-native-final.log :: tree::foundation_tests (AVL splice, rank/coordinate inverse and child base, sizes31/255/4095, zero retained payload rewrites, height-proportional work)",
+                    "criterionRefs": [
+                      "AC-2",
+                      "AC-4"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-native-final.log :: qa_compare::foundation_tests (different valid partition; gap/overlap/rank/edge/glyph/concat/line/grapheme corruption; raw providerRunId and child-base underflow)",
+                    "criterionRefs": [
+                      "AC-3"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-native-final.log :: full native cold_session suite,92 passed including sustained671 accepted revisions/671 stale rejections/351 fresh cold oracles",
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-2",
+                      "AC-3",
+                      "AC-4"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-fragmented-budget.log :: additional focused55-piece source command,Accepted/Equal,448 source facts<=512; production unchanged from full92 run",
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-4"
+                    ]
+                  },
+                  {
+                    "kind": "test",
+                    "reference": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/foundation-core-check-final.log :: npm run check exit0,type-check and440 files,3027 passed/1 skipped; includes actualWASM Stage3/4/5 and new cross-piece command stream",
+                    "criterionRefs": [
+                      "AC-1",
+                      "AC-2",
+                      "AC-3",
+                      "AC-4"
+                    ]
+                  }
+                ],
+                "remainingUnknowns": [
+                  {
+                    "id": "provider-certificates-next-slices",
+                    "summary": "Foundation does not complete the remaining ordinary corpus admission or implement new provider certificates.",
+                    "disposition": "deferred",
+                    "returnTrigger": "PLAN accepts foundation and dispatches bounded provider/analysis-transition implementation in this round."
+                  }
+                ],
+                "downstreamInformation": "Use Tree.splice(start,end,values,Delta{units,bytes,runs},work) for bounded repair. Shard.run_index remains absolute; structural children retain run_index_base and coordinate-only split deltas use runs:0. Source views share immutable backing; piece count no longer tracks shard count. Refresh TreeWork.source_allowance with already-performed command source+property scans before source operations; every offset read and replacement indexing reserves before access. Read/copy/index counters remain separate; actual92 accepted/attempt/family fields and512/512/1024 caps unchanged. No provider certificate, no-op/lifecycle, corpus/threshold, public API, Editor/Backend, map or Evidence promotion. Next provider/analysis slices must supply their own remaining-work reservation before provider passes.",
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "tests/coldSessionStage4.test.ts"
+                ],
+                "createdEvidenceIds": [],
+                "createdDocumentIds": [],
+                "reviewCyclesUsed": 1,
+                "implementationCommitCount": 1
+              }
+            },
+            "transport": {
+              "status": "sent",
+              "attempts": 1,
+              "attemptHistory": [
+                {
+                  "attemptedAt": "2026-09-27T11:54:05.2319146Z",
+                  "outcome": "sent"
+                }
+              ],
+              "lastAttemptAt": "2026-09-27T11:54:05.2319146Z"
+            },
+            "receipt": {
+              "status": "received",
+              "receivedAt": "2026-09-27T11:54:05.2319146Z",
+              "senderThreadId": "/root/ordinary_foundation",
+              "channel": "collaboration.send_message",
+              "arrivalSequence": 2,
+              "acknowledgedAt": "2026-09-27T11:54:05.2319146Z"
+            },
+            "acceptance": {
+              "status": "accepted",
+              "reviewer": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "reviewedAt": "2026-09-27T11:54:05.2319146Z",
+              "evidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927",
+                "evidence-core-stage6-ordinary-foundation-20260927"
+              ],
+              "requiredChecks": [
+                {
+                  "status": "passed",
+                  "name": "Full native92 plus added focused case"
+                },
+                {
+                  "status": "passed",
+                  "name": "Core npm run check440 files3027 tests"
+                },
+                {
+                  "status": "passed",
+                  "name": "PLAN focused native8 and actualWASM reproduction"
+                }
+              ],
+              "remainingScope": [
+                "Bounded provider and analysis-transition slices; goal1 remains incomplete. No-op/lifecycle and full measurement excluded."
+              ],
+              "scopeLockVerification": {
+                "version": 1,
+                "status": "passed",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "terminalCommit": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+                "packetDigest": "8e1001090de2fc10a09a7f01fb75038e8410a2843d964bbb5ea9239b46154025",
+                "manifestDigest": "9d23edd909c45907eeb925125b2bee7806ad42356108a1978b7a9f349510e2ff",
+                "changedFiles": [
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+                  "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+                  "tests/coldSessionStage4.test.ts"
+                ],
+                "verifiedAt": "2026-09-27T11:54:05.2319146Z",
+                "clean": true
+              }
+            }
+          }
+        ],
         "completionQueue": [],
         "cleanup": []
       },
@@ -31961,6 +32548,40 @@
     },
     {
       "kind": "evidence",
+      "id": "evidence-core-stage6-ordinary-foundation-20260927",
+      "nodeIds": [],
+      "repositoryId": "repo-core",
+      "commit": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+      "pathOrContractId": "core-private-stage6-ordinary-foundation/1",
+      "verificationSummary": "Private persistent source views, bounded multi-piece access, balanced range splice/lazy shard run ranks and strict partition-independent cold QA preserve existing admitted semantics. Foundation only: no new certificate predicates or complete ordinary/Stage6/UX admission.\n\nWORK full native cold-session suite passed92 tests with unchanged production, followed by one added focused55-piece command regression PASS (not a claimed full93 run). WORK Core npm run check passed440 files,3027 tests,1 artifact-only skip with default lane-local Cargo target. Initial shared-target environment failure is superseded. PLAN independently reproduced8 foundation native tests and one actualWASM cross-piece edit sequence at clean8c09107. Source/tree/oracle review verified real index/copy/lookup charges, per-read source allowance, AVL height bounds, shared backing, exact cold semantic/concat equality and negative partition/identity cases. Core main fast-forward integrated8c09107 and fresh npm run check passed440 files,3027 tests,1 artifact-only skip (core-foundation-main-check.log).\n\nAll92 additive accepted/attempt/family slots remain. Example actual source cost AB append20 versus prior24; XY replacement52 with2 indexed UTF16 and12 offset lookups, copies14 versus20.55 one-character pieces plus append:Accepted,Equal,source448/property2/provider333. No whole-source foreground scan or new authoritative host facts. New QA compares exact independent source, authored identity/defaults/origins, runs/providerRunId, glyphs/line/grapheme/concat facts and requires valid coverage/run membership/safe edges; physical shard partitions may differ as the semantic contract permits.\n\nPLAN-owned minimal exact-commit Evidence record is required for current coordination acceptance/integration identity; it references existing tests instead of adding a proof gate. WORK created no Evidence or Markdown. Baseline actual75 remains pinned to f339c674:24Accepted/51rejected, with15separate no-ops; no fresh all75 support claim for this foundation. Provider window and analysis-transition slices remain in this round. No-op/lifecycle remain later prerequisites; full180/11271 measurement NOT_RUN; caps512/512/1024 and8ms/16.7ms/1.50 unchanged; geometry/Editor/Backend/public binding/maps and UX unproven.",
+      "verifiedAt": "2026-09-27T11:52:44.572Z",
+      "validity": {
+        "claim": "Private persistent source views, bounded multi-piece access, balanced range splice/lazy shard run ranks and strict partition-independent cold QA preserve existing admitted semantics. Foundation only: no new certificate predicates or complete ordinary/Stage6/UX admission.",
+        "repositoryId": "repo-core",
+        "pathScope": [
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+          "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+          "tests/coldSessionStage4.test.ts"
+        ],
+        "sourceRevision": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+        "verificationMethod": "WORK full native cold-session suite passed92 tests with unchanged production, followed by one added focused55-piece command regression PASS (not a claimed full93 run). WORK Core npm run check passed440 files,3027 tests,1 artifact-only skip with default lane-local Cargo target. Initial shared-target environment failure is superseded. PLAN independently reproduced8 foundation native tests and one actualWASM cross-piece edit sequence at clean8c09107. Source/tree/oracle review verified real index/copy/lookup charges, per-read source allowance, AVL height bounds, shared backing, exact cold semantic/concat equality and negative partition/identity cases. Core main fast-forward integrated8c09107 and fresh npm run check passed440 files,3027 tests,1 artifact-only skip (core-foundation-main-check.log).",
+        "freshnessTriggers": [
+          "New certificate admission, complete75 applicability, no-op/lifecycle, full measurement and UX require separate proof; this foundation cannot substitute.",
+          "Source/tree/rank/oracle/accounting or provider changes require affected revalidation."
+        ]
+      }
+    },
+    {
+      "kind": "evidence",
       "id": "evidence-core-stage6-ordinary-tail-20260927",
       "nodeIds": [],
       "repositoryId": "repo-core",
@@ -33897,7 +34518,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-27T11:12:13.864Z",
+    "generatedAt": "2026-09-27T12:00:45.198Z",
     "currentGoal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
     "currentBlocker": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
     "activeWork": [
@@ -33926,7 +34547,7 @@
         "title": "Core Stage6 complete ordinary applicability",
         "milestones": {
           "planning": "pending",
-          "implementation": "not-required",
+          "implementation": "pending",
           "verification": "not-required",
           "truthPromotion": "pending"
         }
@@ -33992,6 +34613,12 @@
     ],
     "deferredWork": [
       {
+        "id": "adjacent-analysis-next-slice",
+        "summary": "Opposite-script insertion/deletion and Common/Inherited reassignment require the final bounded analysis-transition lane; all75 closure remains pending.",
+        "disposition": "deferred",
+        "returnTrigger": "This local-window slice accepted in the same round"
+      },
+      {
         "id": "core-editor-parity-proof",
         "summary": "Core unchanged-input and structural equality, plus downstream Editor visual transition parity, are unproven and not discharged by this discovery.",
         "disposition": "deferred",
@@ -34008,6 +34635,18 @@
         "summary": "Core geometry, Editor transition including transient frames and user-visible parity remain separately authorized downstream obligations.",
         "disposition": "deferred",
         "returnTrigger": "Stage6/Gate2 PASS and separately approved next plan."
+      },
+      {
+        "id": "implementation-proof",
+        "summary": "Actual success and measured work of future bounded certificates are unproved. ICU reset predicate must use reviewed actual line classes including Thai marks; do not infer SA from Script=Thai. No initial-shape semantic contradiction identified. Full timing and lifecycle/no-op implementation remain outside scope.",
+        "disposition": "deferred",
+        "returnTrigger": "Fresh bounded implementation slices in this round"
+      },
+      {
+        "id": "provider-certificates-next-slices",
+        "summary": "Foundation does not complete the remaining ordinary corpus admission or implement new provider certificates.",
+        "disposition": "deferred",
+        "returnTrigger": "PLAN accepts foundation and dispatches bounded provider/analysis-transition implementation in this round."
       }
     ],
     "nextDecision": "Bounded harness preflight, then remedy/CCR on required unsupported case.",
