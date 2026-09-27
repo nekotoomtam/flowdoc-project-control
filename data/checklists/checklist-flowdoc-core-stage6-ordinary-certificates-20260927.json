@@ -1,0 +1,38 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-stage6-ordinary-certificates-20260927",
+  "phaseId": "phase-flowdoc-core-stage6-ordinary-certificates-20260927",
+  "title": "Bounded ordinary support acceptance",
+  "items": [
+    {
+      "id": "ac-1",
+      "label": "Exact applicability inventory and source-backed root causes",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/discovery-return.json"
+    },
+    {
+      "id": "ac-2",
+      "label": "Coherent scoped native and actual-WASM certificate repair",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+    },
+    {
+      "id": "ac-3",
+      "label": "Preserve receipts, authored meaning, counters, sharing and structural inverse",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+    },
+    {
+      "id": "ac-4",
+      "label": "Required Core and PC gates, exact Scope Lock, integration and honest remaining matrix",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+    }
+  ],
+  "createdAt": "2026-09-27T09:55:42.694Z",
+  "updatedAt": "2026-09-27T09:55:42.694Z"
+}
