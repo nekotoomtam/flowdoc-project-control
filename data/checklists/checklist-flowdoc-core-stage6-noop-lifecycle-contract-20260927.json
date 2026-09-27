@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+  "phaseId": "phase-flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+  "title": "No-op and lifecycle contract acceptance",
+  "items": [
+    {
+      "evidenceTarget": "Contract existing authority table; Core8997f4c and PCd84a20d",
+      "state": "passed",
+      "label": "Read current contracts and pinned implementation before declaring gaps.",
+      "id": "ac-source",
+      "evidenceIds": [],
+      "verificationNote": "Local main freshness checked; semantic contract, Stage6 obligations, B1 amendment and exact implementation sources inspected."
+    },
+    {
+      "evidenceTarget": "Contract section1",
+      "state": "passed",
+      "label": "Set exact no-op outcome, identity, revision, validation, accounting, retry and fixed-row mapping.",
+      "id": "ac-noop",
+      "evidenceIds": [],
+      "verificationNote": "Specified NoOp with authentic unchanged capability/revision and charged family attempts; active composition stays rejected."
+    },
+    {
+      "evidenceTarget": "Contract sections2-3",
+      "state": "passed",
+      "label": "Resolve recovery, eviction and host cancellation with authority, states, atomicity and family ownership.",
+      "id": "ac-lifecycle",
+      "evidenceIds": [],
+      "verificationNote": "User selected retained-source recovery. Real Rustybuzz reusable plan identified. Existing architecture permits bounded synchronous host pre-entry cancellation with honest too-late result; in-flight transport is not an added prerequisite."
+    },
+    {
+      "evidenceTarget": "Contract section4",
+      "state": "passed",
+      "label": "Provide exact implementation acceptance and dependencies without new gate or product claims.",
+      "id": "ac-delta",
+      "evidenceIds": [],
+      "verificationNote": "Exact private protocol/state/accounting/verifier deltas, focused acceptance and deferred product obligations specified; no new gates."
+    },
+    {
+      "evidenceTarget": "Fresh npm run check lane/main and terminal commits",
+      "state": "passed",
+      "label": "Pass required PC lane/main checks and integrate only the bounded decision records.",
+      "id": "ac-gate",
+      "evidenceIds": [],
+      "verificationNote": "Contract worktree npm run check passed:364records/189source-docs/68app/6e2e plus data/type/build. Closure metadata and final main integration receive fresh required checks; terminal report states their results only after execution. This checklist accepts the design, not product behavior."
+    }
+  ],
+  "createdAt": "2026-09-27T08:57:37.9444031Z",
+  "updatedAt": "2026-09-27T09:07:19.6835932Z"
+}
