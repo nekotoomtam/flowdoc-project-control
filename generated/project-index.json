@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "10336ef863f684d5c79f0b8e0c5f62efef2e52289d949b3db2b57b08d63033a9",
+  "sourceDigest": "599acf88963aca54436f67a1ebfdd8ef536f8e71c9b6bd984fa5cecdef0d1263",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -296,6 +296,7 @@
         "flowdoc-core-stage6-20260927",
         "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
         "flowdoc-core-stage6-ordinary-certificates-20260927",
+        "flowdoc-core-stage6-ordinary-complete-20260927",
         "flowdoc-core-stage6-seam-repair-20260927"
       ]
     },
@@ -5694,6 +5695,224 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-core-stage6-ordinary-certificates-20260927"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-core-stage6-ordinary-complete-20260927",
+      "title": "Core Stage6 complete ordinary applicability",
+      "nodeId": "core",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Fresh PLAN round closes goal 1 across all 75 initial ordinary shapes and affected sequential regressions, via bounded discovery and implementation slices. No-op follows in a later round; lifecycle design remains prerequisite to full measurement.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy",
+        "doc-core-run-owned-property-semantic-contract-2026-09-14",
+        "doc-core-run-owned-property-implementation-plan-2026-09-14",
+        "doc-core-stage6-noop-lifecycle-contract-20260927"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Actual 75 ordinary applicability with independent cold equality, real accounting and accepted integration, or exact contract blocker with alternatives.",
+      "riskSummary": "No subset closure; no-op/lifecycle remain unimplemented; full timing NOT_RUN; geometry and UX unproven.",
+      "requiredEvidence": [
+        "evidence-core-stage6-ordinary-tail-20260927",
+        "evidence-core-stage6-seam-repair-20260927"
+      ],
+      "createdAt": "2026-09-27T11:12:13.864Z",
+      "updatedAt": "2026-09-27T11:12:13.864Z",
+      "coordination": {
+        "version": 3,
+        "revision": 1,
+        "round": {
+          "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+          "roundId": "ordinary-complete-20260927-01a0e28e",
+          "workId": "flowdoc-core-stage6-ordinary-complete-20260927",
+          "scopeId": "stage6-ordinary-complete",
+          "scopeKeys": [
+            "core:stage6-ordinary-complete"
+          ],
+          "allowedFiles": [
+            "packages/text-engine-rust-wasm",
+            "scripts/stage6",
+            "tests",
+            "src/layout"
+          ],
+          "state": "active",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "ordinary-complete-local",
+            "hostId": "local",
+            "source": "Current collaboration spawn_agent host tool schema",
+            "observedAt": "2026-09-27T11:12:13.864Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-core",
+            "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+            "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+            "state": "active",
+            "roundId": "ordinary-complete-20260927-01a0e28e"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [
+          {
+            "roomRunId": "ordinary-full-discovery",
+            "dispatchSetId": "ordinary-full-discovery-dispatch",
+            "laneId": "ordinary-full-discovery",
+            "workType": "discovery",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+            "checklistId": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "ordinary-full-discovery-0",
+            "status": "active",
+            "locator": {
+              "threadId": "/root/ordinary_full_discovery",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-discovery-01a0e28e/flowdoc-vnext-core",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/discovery-return.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-27T11:15:02.0315383Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; retrievable final",
+              "monitorOwner": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+              "livenessDeadline": "2026-09-27T11:32:13.866Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Read-only Unicode/provider dependency discovery determines bounded implementation scope.",
+              "smallerOptionAssessment": "Sol medium is suitable once dependency closure is explicit; unresolved source/provider context requires frontier discovery.",
+              "availabilitySnapshotRef": "ordinary-complete-local",
+              "escalationTriggers": [
+                "Contract conflict or correctness cannot fit unchanged caps"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only private Core discovery; product UX remains unproven."
+            },
+            "requiredEvidence": [
+              "evidence-core-stage6-ordinary-tail-20260927",
+              "evidence-core-stage6-seam-repair-20260927"
+            ],
+            "roundId": "ordinary-complete-20260927-01a0e28e",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Inventory all 75 ordinary initial shapes across fixed five sizes/three languages/five operations, separating 15 no-op shapes. Identify source-backed dependency closure and bounded implementation slices sufficient for all ordinary rows and meaningful sequential committed-composition regressions. No implementation, mutation, full timing or denominator waiver.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm",
+                "scripts/stage6",
+                "tests",
+                "src/layout"
+              ],
+              "forbiddenScope": [
+                "docs"
+              ],
+              "acceptanceCriteria": [
+                "Complete 75 ordinary static inventory with known actual results clearly distinguished; no-op separate",
+                "Exact provider/source/property dependency root causes and coherent bounded slice plan preserving derive policy, actual 512/512/1024 caps, all accounting, receipts, sharing, B1/Stage4/5",
+                "Identify any genuinely incompatible contract dependency with alternatives and recommendation; do not stop at subset"
+              ],
+              "workAuthority": "discovery",
+              "workSize": "medium",
+              "risk": {
+                "tier": "routine"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 0,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 1,
+                "closeForm": "none",
+                "authorizedArtifacts": []
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-stage6-ordinary-tail-20260927",
+                "evidence-core-stage6-seam-repair-20260927"
+              ],
+              "unknowns": [
+                {
+                  "id": "ordinary-dependencies",
+                  "summary": "Long/interior windows, cross-piece access, partial-shard repair and neutral transitions need exact dependency closure.",
+                  "disposition": "blocking",
+                  "ownerAction": "PLAN scopes fresh implementation slices after discovery"
+                }
+              ],
+              "ownerDecisions": [],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Read-only Unicode/provider dependency discovery determines bounded implementation scope.",
+                "smallerOptionAssessment": "Sol medium is suitable once dependency closure is explicit; unresolved source/provider context requires frontier discovery.",
+                "availabilitySnapshotRef": "ordinary-complete-local",
+                "escalationTriggers": [
+                  "Contract conflict or correctness cannot fit unchanged caps"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "f339c674ab04924f3b52d9e7abbf17434dc6d107",
+                "worktree": "C:/Users/nekot/.codex/worktrees/ordinary-discovery-01a0e28e/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "Contract conflict or correctness cannot fit unchanged caps"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e28e-4f1b-7bc0-992a-803736f6c993",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; retrievable final"
+              }
+            },
+            "packetDigest": "80ad46dd33db0df70ea08e88f9b21c90b15daf07bc99c157d0d810df6a51d8f0"
+          }
+        ],
+        "handoffs": [],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-core-stage6-ordinary-complete-20260927"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-core-stage6-ordinary-complete-20260927"
       ]
     },
     {
@@ -12172,6 +12391,7 @@
         "flowdoc-core-stage6-20260927",
         "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
         "flowdoc-core-stage6-ordinary-certificates-20260927",
+        "flowdoc-core-stage6-ordinary-complete-20260927",
         "flowdoc-core-stage6-seam-repair-20260927",
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
@@ -15240,6 +15460,27 @@
       ],
       "createdAt": "2026-09-27T09:55:42.694Z",
       "updatedAt": "2026-09-27T10:44:53.222Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+      "workId": "flowdoc-core-stage6-ordinary-complete-20260927",
+      "title": "Complete ordinary applicability",
+      "phaseState": "in-progress",
+      "order": 0,
+      "repositoryIds": [
+        "repo-core",
+        "repo-project-control"
+      ],
+      "activeRole": "planning-partner",
+      "verificationTarget": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+      "summary": "Discovery followed by bounded Core implementation slices within this round.",
+      "stopConditions": [
+        "Contract conflict or scope escape requires PLAN resolution",
+        "No no-op/lifecycle implementation or full measurement"
+      ],
+      "createdAt": "2026-09-27T11:12:13.864Z",
+      "updatedAt": "2026-09-27T11:12:13.864Z"
     },
     {
       "kind": "phase",
@@ -23459,6 +23700,44 @@
       ],
       "createdAt": "2026-09-27T09:55:42.694Z",
       "updatedAt": "2026-09-27T10:44:53.222Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+      "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+      "title": "Complete ordinary acceptance",
+      "items": [
+        {
+          "id": "ac-1",
+          "label": "Full inventory and dependency closure",
+          "state": "pending",
+          "evidenceIds": [],
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+        },
+        {
+          "id": "ac-2",
+          "label": "Actual 75 ordinary shapes accepted and independent cold equal",
+          "state": "pending",
+          "evidenceIds": [],
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+        },
+        {
+          "id": "ac-3",
+          "label": "Meaningful sequential/composition regressions and real accounting preserve semantics",
+          "state": "pending",
+          "evidenceIds": [],
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+        },
+        {
+          "id": "ac-4",
+          "label": "Scope Lock and Core/PC lane/main gates with clean integration",
+          "state": "pending",
+          "evidenceIds": [],
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+        }
+      ],
+      "createdAt": "2026-09-27T11:12:13.864Z",
+      "updatedAt": "2026-09-27T11:12:13.864Z"
     },
     {
       "kind": "checklist",
@@ -33618,7 +33897,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-27T10:44:53.222Z",
+    "generatedAt": "2026-09-27T11:12:13.864Z",
     "currentGoal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
     "currentBlocker": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
     "activeWork": [
@@ -33635,6 +33914,16 @@
       {
         "workId": "flowdoc-b1-stage5-20260926",
         "title": "B1 private Stage5 Enter and inverse join prerequisite",
+        "milestones": {
+          "planning": "pending",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "flowdoc-core-stage6-ordinary-complete-20260927",
+        "title": "Core Stage6 complete ordinary applicability",
         "milestones": {
           "planning": "pending",
           "implementation": "not-required",
@@ -33693,6 +33982,12 @@
         "summary": "InitialFlow explicitly blocks empty layout; determine whether another current Core authority defines empty-state and view/private-session provenance.",
         "disposition": "blocking",
         "ownerAction": "PLAN receives discovery before any implementation; missing authority requires bounded contract resolution."
+      },
+      {
+        "id": "ordinary-dependencies",
+        "summary": "Long/interior windows, cross-piece access, partial-shard repair and neutral transitions need exact dependency closure.",
+        "disposition": "blocking",
+        "ownerAction": "PLAN scopes fresh implementation slices after discovery"
       }
     ],
     "deferredWork": [

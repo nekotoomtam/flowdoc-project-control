@@ -1,0 +1,38 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+  "phaseId": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+  "title": "Complete ordinary acceptance",
+  "items": [
+    {
+      "id": "ac-1",
+      "label": "Full inventory and dependency closure",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+    },
+    {
+      "id": "ac-2",
+      "label": "Actual 75 ordinary shapes accepted and independent cold equal",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+    },
+    {
+      "id": "ac-3",
+      "label": "Meaningful sequential/composition regressions and real accounting preserve semantics",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+    },
+    {
+      "id": "ac-4",
+      "label": "Scope Lock and Core/PC lane/main gates with clean integration",
+      "state": "pending",
+      "evidenceIds": [],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e28e-4f1b-7bc0-992a-803736f6c993/terminal-report.json"
+    }
+  ],
+  "createdAt": "2026-09-27T11:12:13.864Z",
+  "updatedAt": "2026-09-27T11:12:13.864Z"
+}

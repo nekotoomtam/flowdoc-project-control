@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 67);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 68);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -564,6 +564,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-core-stage6-20260927",
         "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
         "flowdoc-core-stage6-ordinary-certificates-20260927",
+        "flowdoc-core-stage6-ordinary-complete-20260927",
         "flowdoc-core-stage6-seam-repair-20260927",
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
@@ -722,6 +723,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-core-stage6-20260927",
         "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
         "flowdoc-core-stage6-ordinary-certificates-20260927",
+        "flowdoc-core-stage6-ordinary-complete-20260927",
         "flowdoc-core-stage6-seam-repair-20260927",
       ],
     });
@@ -1432,3 +1434,5 @@ describe("project roadmap Work Queue", () => {
     }
   });
 });
+
+

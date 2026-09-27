@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-stage6-ordinary-complete-20260927",
+  "workId": "flowdoc-core-stage6-ordinary-complete-20260927",
+  "title": "Complete ordinary applicability",
+  "phaseState": "in-progress",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-core-stage6-ordinary-complete-20260927",
+  "summary": "Discovery followed by bounded Core implementation slices within this round.",
+  "stopConditions": [
+    "Contract conflict or scope escape requires PLAN resolution",
+    "No no-op/lifecycle implementation or full measurement"
+  ],
+  "createdAt": "2026-09-27T11:12:13.864Z",
+  "updatedAt": "2026-09-27T11:12:13.864Z"
+}
