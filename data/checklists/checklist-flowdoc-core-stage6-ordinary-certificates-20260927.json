@@ -7,32 +7,44 @@
     {
       "id": "ac-1",
       "label": "Exact applicability inventory and source-backed root causes",
-      "state": "pending",
-      "evidenceIds": [],
-      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/discovery-return.json"
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-core-stage6-seam-repair-20260927"
+      ],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/discovery-return.json",
+      "verificationNote": "Discovery-only exact90static/18executed inventory accepted; immutable baseline hash verified."
     },
     {
       "id": "ac-2",
       "label": "Coherent scoped native and actual-WASM certificate repair",
-      "state": "pending",
-      "evidenceIds": [],
-      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-core-stage6-ordinary-tail-20260927"
+      ],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json",
+      "verificationNote": "Six-file A+B repair accepted atf339c674; native focused proof and actualWASM coldEqual,5/18diagnosticAccepted."
     },
     {
       "id": "ac-3",
       "label": "Preserve receipts, authored meaning, counters, sharing and structural inverse",
-      "state": "pending",
-      "evidenceIds": [],
-      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-core-stage6-ordinary-tail-20260927"
+      ],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json",
+      "verificationNote": "Source/provider/accounting review repaired real scan/copy omissions; fault/retry92slots, authored origins/defaults and structural inverse tests pass."
     },
     {
       "id": "ac-4",
       "label": "Required Core and PC gates, exact Scope Lock, integration and honest remaining matrix",
-      "state": "pending",
-      "evidenceIds": [],
-      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json"
+      "state": "passed",
+      "evidenceIds": [
+        "evidence-core-stage6-ordinary-tail-20260927"
+      ],
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/27/01a0e247-e7cf-7d73-b719-2ff3736241e4/terminal-report.json",
+      "verificationNote": "Core lane/main gate440files3026passed1skip; ScopeLock accepted and integrationpreflight passed. PC kickoff lane/main gate passed; closure lane/main gate and finalcleanup results are recorded externally after execution."
     }
   ],
   "createdAt": "2026-09-27T09:55:42.694Z",
-  "updatedAt": "2026-09-27T09:55:42.694Z"
+  "updatedAt": "2026-09-27T10:44:53.222Z"
 }

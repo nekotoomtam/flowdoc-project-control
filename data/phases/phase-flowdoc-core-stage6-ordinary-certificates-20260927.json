@@ -3,7 +3,7 @@
   "id": "phase-flowdoc-core-stage6-ordinary-certificates-20260927",
   "workId": "flowdoc-core-stage6-ordinary-certificates-20260927",
   "title": "Ordinary certificate discovery and bounded repair",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 0,
   "repositoryIds": [
     "repo-core",
@@ -11,11 +11,11 @@
   ],
   "activeRole": "planning-partner",
   "verificationTarget": "checklist-flowdoc-core-stage6-ordinary-certificates-20260927",
-  "summary": "Certificate support before separately scoped full measurement.",
+  "summary": "A+B implementation, verification and PLAN acceptance complete at f339c674; Core integrated/main gate passed and clean current lane removed. Broader ordinary, no-op/lifecycle, timing and UX remain outside accepted scope. PC closure/main checks reported in terminal after execution.",
   "stopConditions": [
     "No contract expansion without PLAN decision",
     "No-op/lifecycle and full timing excluded"
   ],
   "createdAt": "2026-09-27T09:55:42.694Z",
-  "updatedAt": "2026-09-27T09:55:42.694Z"
+  "updatedAt": "2026-09-27T10:44:53.222Z"
 }
