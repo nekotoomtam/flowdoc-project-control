@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-editor-trial-20260928-measurement",
+  "phaseId": "phase-flowdoc-core-editor-trial-20260928-measurement",
+  "title": "Bounded trial measurement",
+  "items": [
+    {
+      "id": "measurement-1",
+      "state": "pending",
+      "label": "Repository unchanged at frozen60258d9e8196bf6439ccb5c888e321fa5aad2def; outputs and orchestration only outside repository. Record release build, host and conditions; hold exclusive timing slot.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+    },
+    {
+      "id": "measurement-2",
+      "state": "pending",
+      "label": "Keep exact180/11271 corpus identities, thresholds8ms/16.7ms/1.50 and512/512/1024 caps. Report independent rows and dependent blocked/notrun rows with original denominator.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+    },
+    {
+      "id": "measurement-3",
+      "state": "pending",
+      "label": "Known mixed2048 [500,500)+A uncertified-seam remains blocked and rejection timing never counted as successful edit. No certificate/runtime/harness tracked repair.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+    },
+    {
+      "id": "measurement-4",
+      "state": "pending",
+      "label": "Separate preparation, accepted/noop/rejected command timing, cold/heap/GC/scaling where measurable; disclose missing fork/per-phase clocks. Reuse ordinary75/noop15/lifecycle/host evidence; no reproof expansion.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+    },
+    {
+      "id": "measurement-5",
+      "state": "pending",
+      "label": "Return exact commit, immutable raw rows and PASS/FAIL/NOTRUN/blocked summary; do not certify integration candidate or use measurement as Editor prerequisite.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+    }
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}

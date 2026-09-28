@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 71);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 72);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -561,6 +561,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-core-editor-trial-20260928",
         "flowdoc-core-lifecycle-20260928",
         "flowdoc-core-noop-20260928",
         "flowdoc-core-stage6-20260927",
@@ -754,6 +755,7 @@ describe("project roadmap Work Queue", () => {
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-core-editor-trial-20260928",
         "flowdoc-editor-core-integration-20260928",
       ],
     });

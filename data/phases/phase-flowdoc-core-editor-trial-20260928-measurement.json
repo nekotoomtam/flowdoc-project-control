@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-editor-trial-20260928-measurement",
+  "workId": "flowdoc-core-editor-trial-20260928",
+  "title": "Bounded trial measurement",
+  "phaseState": "queued",
+  "order": 1,
+  "repositoryIds": [
+    "repo-core"
+  ],
+  "activeRole": "evidence-reviewer",
+  "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-measurement",
+  "summary": "Measurement results tracked here; actual parallel execution belongs to the single active delivery Phase. Frozen timings are not a prerequisite for integration.",
+  "stopConditions": [
+    "Acceptance complete",
+    "Safety/correctness blocker or scope escape"
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}

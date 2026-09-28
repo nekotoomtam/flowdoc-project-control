@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-editor-trial-20260928-core",
+  "phaseId": "phase-flowdoc-core-editor-trial-20260928-core",
+  "title": "Bounded trial core",
+  "items": [
+    {
+      "id": "core-1",
+      "state": "pending",
+      "label": "Product build exports retained create/apply/Enter/inverseJoin/dispose and revision-bound frames; QA fault/verifier stay private. Actual accepted retained session owns authored content/style/constraints and render facts.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+    },
+    {
+      "id": "core-2",
+      "state": "pending",
+      "label": "Reuse existing Creator line-end shaping/layout concepts. For identical Thai/Latin source, Sarabun style and fixed constraints, compare old producer baseline glyph positions/linebreaks to new frame. No new engine, browser shaping or status-only bridge.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+    },
+    {
+      "id": "core-3",
+      "state": "pending",
+      "label": "One authored paragraph supports committed typing/delete/selection/caret; authored Enter produces two paragraph sessions with preserved spans/defaults/empty sides and inverse join. State restrictions reported explicitly.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+    },
+    {
+      "id": "core-4",
+      "state": "pending",
+      "label": "Core provisional composition updates produce visible Core frames; cancel restores base; final commit increments history once. Stale identity, rejected commands and disposal are atomic.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+    },
+    {
+      "id": "core-5",
+      "state": "pending",
+      "label": "Focused native and actual release WASM tests plus Core npm run check pass; commit exact candidate and file list. Provide Editor consumption interface and limitations. No merge, persistence, maps, measurement certification or Editor edits.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+    }
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}

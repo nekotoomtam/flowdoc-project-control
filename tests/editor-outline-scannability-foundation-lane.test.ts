@@ -142,6 +142,7 @@ describe("Editor Outline scannability foundation lane", () => {
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-core-editor-trial-20260928",
         "flowdoc-editor-core-integration-20260928",
       ],
     });

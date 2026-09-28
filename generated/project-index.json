@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "cfec83380eb1ab9821220c906ec82d638c70ac41f5256a4c6b4c9adb9d7afef1",
+  "sourceDigest": "e4bea1d45bd5d68a9bff1df5634bd9eaf60f0c6a479fe83bdfd35cb3fffaf246",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -336,6 +336,7 @@
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-core-editor-trial-20260928",
         "flowdoc-editor-core-integration-20260928"
       ]
     },
@@ -4038,6 +4039,612 @@
       "workPathIds": [
         "flowdoc-product-development-resumption",
         "flowdoc-core-backend-readiness-matrix"
+      ]
+    },
+    {
+      "kind": "work",
+      "id": "flowdoc-core-editor-trial-20260928",
+      "title": "Core authored editing trial in real Editor",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-core",
+        "repo-editor",
+        "repo-project-control"
+      ],
+      "workState": "in-progress",
+      "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Runnable local-draft authored paragraph Editor trial: Core-only frame/caret, typing/delete/selection/Enter/inversejoin, provisional IME and baseline/transient checks; independent frozen measurement report.",
+      "riskSummary": "Bounded trial; full performance admission not prerequisite. No Backend persistence path added. Same-input old baseline geometry must remain identical, including transitions. Measurement frozen60258d9 does not certify new integration.",
+      "requiredEvidence": [
+        "evidence-core-lifecycle-20260928",
+        "evidence-core-host-control-20260928"
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z",
+      "coordination": {
+        "version": 3,
+        "revision": 2,
+        "round": {
+          "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+          "roundId": "core-editor-trial-20260928-01a0e784",
+          "workId": "flowdoc-core-editor-trial-20260928",
+          "scopeId": "core-editor-bounded-trial",
+          "scopeKeys": [
+            "core:product-session-trial",
+            "editor:authored-core-trial",
+            "core:frozen-stage6-measurement"
+          ],
+          "allowedFiles": [
+            "data/work/flowdoc-core-editor-trial-20260928.json",
+            "data/phases/",
+            "data/checklists/",
+            "data/evidence/",
+            "generated/project-index.json",
+            "tests/"
+          ],
+          "state": "active",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "host-01a0e784",
+            "hostId": "local",
+            "source": "collaboration.spawn_agent tool schema; execution agents explicitly selected, preparation agents read only",
+            "observedAt": "2026-09-28T10:24:31.546Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-luna",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-project-control",
+            "baseCommit": "0417b6a48bee8f3295d5d7599a35da751d5c4656",
+            "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+            "state": "active",
+            "roundId": "core-editor-trial-20260928-01a0e784"
+          },
+          {
+            "repositoryId": "repo-core",
+            "baseCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+            "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+            "state": "active",
+            "roundId": "core-editor-trial-20260928-01a0e784"
+          },
+          {
+            "repositoryId": "repo-editor",
+            "baseCommit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
+            "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+            "state": "active",
+            "roundId": "core-editor-trial-20260928-01a0e784"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [
+          {
+            "roomRunId": "trial-core-room",
+            "dispatchSetId": "trial-core-dispatch",
+            "laneId": "core",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-editor-trial-20260928-core",
+            "checklistId": "checklist-flowdoc-core-editor-trial-20260928-core",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "trial-core-handoff-0",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/core_implementation",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/core-session-trial/flowdoc-vnext-core",
+              "branch": "codex/core-session-trial",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-28T10:25:43.0368101Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; terminal payload and durable handoff path",
+              "monitorOwner": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "livenessDeadline": "2026-09-28T10:57:59.6353156Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "frontier",
+              "modelId": "gpt-6-astra",
+              "reasoningEffort": "medium",
+              "reason": "Rust retained semantics, exact existing layout reuse and composition require cross-boundary reasoning.",
+              "smallerOptionAssessment": "Workhorse adequate for ordinary wiring but this lane must preserve authenticated session semantics and exact line-end geometry across Rust/TS.",
+              "availabilitySnapshotRef": "host-01a0e784",
+              "escalationTriggers": [
+                "Two corrected bounded revisions fail for same reasoning limitation",
+                "Contract outside approved authored paragraph slice"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Core produces render DTO and exact baseline tests; user-facing Editor integration has separately declared UX acceptance in same round."
+            },
+            "requiredEvidence": [
+              "evidence-core-lifecycle-20260928",
+              "evidence-core-host-control-20260928"
+            ],
+            "roundId": "core-editor-trial-20260928-01a0e784",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Deliver bounded Core-owned retained authored editing session, identical baseline geometry and provisional IME for real Editor consumer.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/lib.rs",
+                "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+                "packages/text-engine-rust-wasm/src/productSessionV1.ts",
+                "packages/text-engine-rust-wasm/package.json",
+                "packages/text-engine-rust-wasm/pkg-product-session/",
+                "src/creatorPreview/",
+                "tests/"
+              ],
+              "forbiddenScope": [
+                "docs/",
+                "scripts/stage6/",
+                "assets/"
+              ],
+              "acceptanceCriteria": [
+                "Product build exports retained create/apply/Enter/inverseJoin/dispose and revision-bound frames; QA fault/verifier stay private. Actual accepted retained session owns authored content/style/constraints and render facts.",
+                "Reuse existing Creator line-end shaping/layout concepts. For identical Thai/Latin source, Sarabun style and fixed constraints, compare old producer baseline glyph positions/linebreaks to new frame. No new engine, browser shaping or status-only bridge.",
+                "One authored paragraph supports committed typing/delete/selection/caret; authored Enter produces two paragraph sessions with preserved spans/defaults/empty sides and inverse join. State restrictions reported explicitly.",
+                "Core provisional composition updates produce visible Core frames; cancel restores base; final commit increments history once. Stale identity, rejected commands and disposal are atomic.",
+                "Focused native and actual release WASM tests plus Core npm run check pass; commit exact candidate and file list. Provide Editor consumption interface and limitations. No merge, persistence, maps, measurement certification or Editor edits."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 1,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": [
+                  {
+                    "kind": "evidence",
+                    "failurePrevented": "Publishing frames whose geometry, composition or authored semantics differ from accepted session.",
+                    "existingProofInsufficient": "Existing private receipts do not expose a product frame/IME contract."
+                  }
+                ]
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-lifecycle-20260928",
+                "evidence-core-host-control-20260928"
+              ],
+              "unknowns": [
+                {
+                  "id": "performance",
+                  "summary": "Full Stage6/Gate2 is separate and not prerequisite; local draft only, no persistence.",
+                  "disposition": "accepted",
+                  "ownerAction": "Owner approved bounded trial and parallel frozen measurement."
+                }
+              ],
+              "ownerDecisions": [
+                {
+                  "id": "owner-approved-bridge-ime",
+                  "kind": "freeze-scope",
+                  "reason": "Owner approved product export, geometry, authored split/join and IME in same round; measurement parallel without prerequisite.",
+                  "decidedBy": "user via delegation",
+                  "decidedAt": "2026-09-28T10:24:31.546Z"
+                }
+              ],
+              "modelDecision": {
+                "capabilityClass": "frontier",
+                "modelId": "gpt-6-astra",
+                "reasoningEffort": "medium",
+                "reason": "Rust retained semantics, exact existing layout reuse and composition require cross-boundary reasoning.",
+                "smallerOptionAssessment": "Workhorse adequate for ordinary wiring but this lane must preserve authenticated session semantics and exact line-end geometry across Rust/TS.",
+                "availabilitySnapshotRef": "host-01a0e784",
+                "escalationTriggers": [
+                  "Two corrected bounded revisions fail for same reasoning limitation",
+                  "Contract outside approved authored paragraph slice"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+                "worktree": "C:/Users/nekot/.codex/worktrees/core-session-trial/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "Safety/correctness blocker",
+                "Scope escape beyond approved slice"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; terminal payload and durable handoff path"
+              }
+            },
+            "packetDigest": "a76441f30581221127bd9d74b5e6d0e8f0fe94aa1155a112346b99e84d9765a9"
+          },
+          {
+            "roomRunId": "trial-measurement-room",
+            "dispatchSetId": "trial-measurement-dispatch",
+            "laneId": "measurement",
+            "workType": "verification",
+            "ownerRepositoryId": "repo-core",
+            "activeRole": "evidence-reviewer",
+            "phaseId": "phase-flowdoc-core-editor-trial-20260928-core",
+            "checklistId": "checklist-flowdoc-core-editor-trial-20260928-measurement",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "trial-measurement-handoff-0",
+            "status": "active",
+            "locator": {
+              "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/frozen_measure",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/core-frozen-measure/flowdoc-vnext-core",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-28T10:25:43.0671237Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root; terminal payload and durable handoff path",
+              "monitorOwner": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "livenessDeadline": "2026-09-28T10:57:59.6489593Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "workhorse",
+              "modelId": "gpt-6-sol",
+              "reasoningEffort": "medium",
+              "reason": "Deterministic frozen corpus measurement with explicit blocked dependencies.",
+              "smallerOptionAssessment": "Fast class insufficient for current-API timing mapping and denominator accounting.",
+              "availabilitySnapshotRef": "host-01a0e784",
+              "escalationTriggers": [
+                "Two corrected bounded revisions fail for same reasoning limitation",
+                "Contract outside approved authored paragraph slice"
+              ]
+            },
+            "ux": {
+              "visibleChange": false,
+              "applicability": "not-applicable",
+              "reason": "Read-only frozen engine benchmark; no UI mutation."
+            },
+            "requiredEvidence": [
+              "evidence-core-lifecycle-20260928",
+              "evidence-core-host-control-20260928"
+            ],
+            "roundId": "core-editor-trial-20260928-01a0e784",
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Measure independent fixed Stage6/Gate2 obligations on frozen Core with honest blocked dependencies.",
+              "ownerRepositoryId": "repo-core",
+              "allowedScope": [
+                "scripts/stage6/",
+                "tests/"
+              ],
+              "forbiddenScope": [
+                "packages/",
+                "src/",
+                "docs/"
+              ],
+              "acceptanceCriteria": [
+                "Repository unchanged at frozen60258d9e8196bf6439ccb5c888e321fa5aad2def; outputs and orchestration only outside repository. Record release build, host and conditions; hold exclusive timing slot.",
+                "Keep exact180/11271 corpus identities, thresholds8ms/16.7ms/1.50 and512/512/1024 caps. Report independent rows and dependent blocked/notrun rows with original denominator.",
+                "Known mixed2048 [500,500)+A uncertified-seam remains blocked and rejection timing never counted as successful edit. No certificate/runtime/harness tracked repair.",
+                "Separate preparation, accepted/noop/rejected command timing, cold/heap/GC/scaling where measurable; disclose missing fork/per-phase clocks. Reuse ordinary75/noop15/lifecycle/host evidence; no reproof expansion.",
+                "Return exact commit, immutable raw rows and PASS/FAIL/NOTRUN/blocked summary; do not certify integration candidate or use measurement as Editor prerequisite."
+              ],
+              "workAuthority": "verification",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 1,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": [
+                  {
+                    "kind": "evidence",
+                    "failurePrevented": "Mistaking blocked/rejected rows for performance admission.",
+                    "existingProofInsufficient": "Prior reports are correctness/applicability, not release timing."
+                  }
+                ]
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-lifecycle-20260928",
+                "evidence-core-host-control-20260928"
+              ],
+              "unknowns": [
+                {
+                  "id": "named-seam",
+                  "summary": "Exact mixed2048 eviction seam is uncertified; dependent admission remains blocked.",
+                  "disposition": "accepted",
+                  "ownerAction": "Owner approved bounded trial and parallel frozen measurement."
+                }
+              ],
+              "ownerDecisions": [
+                {
+                  "id": "owner-approved-bridge-ime",
+                  "kind": "freeze-scope",
+                  "reason": "Owner approved product export, geometry, authored split/join and IME in same round; measurement parallel without prerequisite.",
+                  "decidedBy": "user via delegation",
+                  "decidedAt": "2026-09-28T10:24:31.546Z"
+                }
+              ],
+              "modelDecision": {
+                "capabilityClass": "workhorse",
+                "modelId": "gpt-6-sol",
+                "reasoningEffort": "medium",
+                "reason": "Deterministic frozen corpus measurement with explicit blocked dependencies.",
+                "smallerOptionAssessment": "Fast class insufficient for current-API timing mapping and denominator accounting.",
+                "availabilitySnapshotRef": "host-01a0e784",
+                "escalationTriggers": [
+                  "Two corrected bounded revisions fail for same reasoning limitation",
+                  "Contract outside approved authored paragraph slice"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+                "worktree": "C:/Users/nekot/.codex/worktrees/core-frozen-measure/flowdoc-vnext-core"
+              },
+              "escalationTriggers": [
+                "Safety/correctness blocker",
+                "Scope escape beyond approved slice"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root; terminal payload and durable handoff path"
+              }
+            },
+            "packetDigest": "fc88436c1665ac1a43b8a61d66bc2ce7e00a02cd830716e2ccdc4961a48e5d69"
+          },
+          {
+            "roomRunId": "trial-editor-room",
+            "dispatchSetId": "trial-editor-dispatch",
+            "laneId": "editor",
+            "workType": "implementation",
+            "ownerRepositoryId": "repo-editor",
+            "activeRole": "product-implementation-agent",
+            "phaseId": "phase-flowdoc-core-editor-trial-20260928-core",
+            "checklistId": "checklist-flowdoc-core-editor-trial-20260928-editor",
+            "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json",
+            "roundId": "core-editor-trial-20260928-01a0e784",
+            "revisionAttempt": 0,
+            "expectedHandoffId": "trial-editor-handoff-0",
+            "status": "prepared",
+            "locator": {
+              "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/editor_implementation",
+              "hostId": "local",
+              "worktree": "C:/Users/nekot/.codex/worktrees/core-session-trial/flowdoc-vnext-editor",
+              "branch": "codex/editor-core-trial",
+              "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+            },
+            "contextAcknowledgement": {
+              "status": "acknowledged",
+              "acknowledgedAt": "2026-09-28T10:30:45.7021019Z"
+            },
+            "returnRoute": {
+              "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "automaticChannel": "collaboration.send_message",
+              "activeCommand": "collaboration.send_message target=/root with terminal payload and durable handoff locator",
+              "monitorOwner": "01a0e784-99bb-7d03-9495-5457c2115d85",
+              "livenessDeadline": "2026-09-28T10:57:59.6490229Z",
+              "maxSendAttempts": 3
+            },
+            "modelDecision": {
+              "capabilityClass": "workhorse",
+              "modelId": "gpt-6-sol",
+              "reasoningEffort": "medium",
+              "reason": "Bounded existing React/adapter wiring against explicit Core interface, with deterministic session and browser checks.",
+              "smallerOptionAssessment": "Fast model insufficient for composition event ordering, stale frame atomicity and real browser evidence.",
+              "availabilitySnapshotRef": "host-01a0e784",
+              "escalationTriggers": [
+                "Two corrected in-scope revisions fail same reasoning limitation",
+                "Core interface cannot express approved interaction"
+              ]
+            },
+            "ux": {
+              "visibleChange": true,
+              "applicability": "applicable",
+              "scenario": {
+                "userAction": "Open local trial, focus, type/delete/select, Enter/inversejoin, compose/cancel/commit Thai, blur.",
+                "expectedVisibleBehavior": "Core-only unchanged-input glyph/line geometry throughout; atomic caret/selection and ordered input.",
+                "fixture": "One authored Thai/Latin paragraph, Sarabun Regular12pt, fixed523.28pt content width; include wrapped and empty-side cases.",
+                "inputMethod": "Native browser keyboard and trusted CDP IME; OS candidate UI outside automated coverage.",
+                "browser": "Chrome on Windows",
+                "device": "Current local Windows host",
+                "environment": "Real Editor development/build route with product Core WASM; no persistence."
+              },
+              "criteria": [
+                {
+                  "id": "baseline-transition",
+                  "criterion": "Original Creator same-input glyph and line equality; unchanged observed transition frames.",
+                  "measurementMethod": "Exact Core DTO baseline and rAF SVG glyph/path/transform checks with sample counts.",
+                  "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json",
+                  "inspector": "01a0e784-99bb-7d03-9495-5457c2115d85",
+                  "status": "pending",
+                  "evidenceIds": []
+                },
+                {
+                  "id": "editing-ime-timing",
+                  "criterion": "No text loss/reordering, authored structural operations, Core provisional IME and final history once; real key-to-visible latency recorded.",
+                  "measurementMethod": "Browser trusted input/composition, frame revision observation, event timestamp to paint boundary.",
+                  "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json",
+                  "inspector": "01a0e784-99bb-7d03-9495-5457c2115d85",
+                  "status": "pending",
+                  "evidenceIds": []
+                }
+              ],
+              "mechanismChecks": [
+                {
+                  "name": "Focused session ordering/atomicity and Core contract tests",
+                  "status": "pending"
+                }
+              ],
+              "regressionChecks": [
+                {
+                  "name": "Editor npm run check",
+                  "status": "pending"
+                }
+              ],
+              "userAcceptance": {
+                "required": false,
+                "status": "not-required",
+                "evidenceIds": []
+              }
+            },
+            "requiredEvidence": [
+              "evidence-core-lifecycle-20260928",
+              "evidence-core-host-control-20260928"
+            ],
+            "packet": {
+              "policyId": "flowdoc-workflow-economy-v2",
+              "goal": "Deliver a runnable real Editor local-draft authored paragraph trial powered solely by the accepted retained Core frame before/during/after editing, including provisional IME.",
+              "ownerRepositoryId": "repo-editor",
+              "allowedScope": [
+                "src/core/coreAdapter.ts",
+                "src/editor/coreEditingTrial/",
+                "src/components/coreEditingTrial/",
+                "src/styles/core-editing-trial.css",
+                "src/app/FlowDocApp.tsx",
+                "src/components/structures/StructurePreviewPage.tsx",
+                "src/tests/",
+                "package-lock.json"
+              ],
+              "forbiddenScope": [
+                "docs/",
+                "src/editor/backend/",
+                "package.json"
+              ],
+              "acceptanceCriteria": [
+                "Discoverable real Editor /core-editing-trial route with one authored Thai/Latin paragraph and supported Sarabun style/fixed width; launch instructions and explicit unsaved local-draft behavior. Existing Creator simulated field remains semantically separate.",
+                "Only coreAdapter imports product package. Runtime dispatches intents; React paints Core outline/frame/caret/selection atomically at same revision. Hidden textarea transports keyboard/IME; no browser visible shaping/wrapping. Pending retains last exact Core frame.",
+                "Typing, backspace/delete, selection/caret navigation, structural Enter to two authored paragraphs and supported inversejoin preserve style/empty sides. Restrictions explicit; no Backend save path.",
+                "Active browser IME provisional updates paint Core frames; final commit exactly once; cancellation/stale events do not lose/reorder text. Real browser composition path tested, OS candidate-window testing scope disclosed.",
+                "Compare same-input new frame to ORIGINAL Creator baseline glyph positions/linebreaks. Observe actual view/focus/edit/blur transition frames and pending behavior. Never replace both paths to fake parity; report observation coverage rather than universal all-frame proof.",
+                "Record real event-to-visible-frame timings, ordered text correctness and browser errors, with method/conditions; no orchestration duration mislabeled or Gate2 claim. Focused session tests and full Editor npm run check pass; commit clean exact candidate and return files/proof/limits."
+              ],
+              "workAuthority": "implementation",
+              "workSize": "medium",
+              "risk": {
+                "tier": "bounded"
+              },
+              "proofBudget": {
+                "maxNewEvidence": 1,
+                "maxDurableDocuments": 0,
+                "maxReviewCycles": 2,
+                "closeForm": "acceptance-summary",
+                "authorizedArtifacts": [
+                  {
+                    "kind": "evidence",
+                    "failurePrevented": "Mechanism tests passing while visible baseline, IME or transient revision binding is wrong.",
+                    "existingProofInsufficient": "Previous14-frame baseline measured unmodified Creator path only; Core tests alone cannot prove Editor interaction."
+                  }
+                ]
+              },
+              "relevantEvidenceIds": [
+                "evidence-core-lifecycle-20260928",
+                "evidence-core-host-control-20260928"
+              ],
+              "unknowns": [
+                {
+                  "id": "full-performance",
+                  "summary": "Stage6/Gate2 frozen measurement is separate; trial does not certify full performance or all possible frames.",
+                  "disposition": "accepted",
+                  "ownerAction": "Deliver bounded trial and report timing/coverage honestly."
+                }
+              ],
+              "ownerDecisions": [
+                {
+                  "id": "local-authored-trial",
+                  "kind": "freeze-scope",
+                  "reason": "User approved known export/geometry/IME bridges and bounded authored trial; no repeat requirement approval.",
+                  "decidedBy": "user via delegation",
+                  "decidedAt": "2026-09-28T10:29:44.842Z"
+                }
+              ],
+              "modelDecision": {
+                "capabilityClass": "workhorse",
+                "modelId": "gpt-6-sol",
+                "reasoningEffort": "medium",
+                "reason": "Bounded existing React/adapter wiring against explicit Core interface, with deterministic session and browser checks.",
+                "smallerOptionAssessment": "Fast model insufficient for composition event ordering, stale frame atomicity and real browser evidence.",
+                "availabilitySnapshotRef": "host-01a0e784",
+                "escalationTriggers": [
+                  "Two corrected in-scope revisions fail same reasoning limitation",
+                  "Core interface cannot express approved interaction"
+                ]
+              },
+              "scopeLock": {
+                "version": 1,
+                "enforcement": "git-worktree",
+                "baseCommit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
+                "worktree": "C:/Users/nekot/.codex/worktrees/core-session-trial/flowdoc-vnext-editor"
+              },
+              "escalationTriggers": [
+                "Unresolvable approved Core interface gap",
+                "Scope expansion beyond local authored trial",
+                "Safety/correctness blocker"
+              ],
+              "returnRoute": {
+                "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
+                "automaticChannel": "collaboration.send_message",
+                "activeCommand": "collaboration.send_message target=/root with terminal payload and durable handoff locator"
+              }
+            },
+            "packetDigest": "9e6bfea028461eb1cb6e40fe5355cf041c1c7197e64fb75aa42be01af5923f44"
+          }
+        ],
+        "handoffs": [],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-core-editor-trial-20260928-core",
+        "phase-flowdoc-core-editor-trial-20260928-measurement",
+        "phase-flowdoc-core-editor-trial-20260928-editor"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-core-editor-trial-20260928"
       ]
     },
     {
@@ -15189,6 +15796,7 @@
         "flowdoc-bounded-browser-compatibility-promotion",
         "flowdoc-core-backend-editor-readiness-pass-8h",
         "flowdoc-core-backend-readiness-matrix",
+        "flowdoc-core-editor-trial-20260928",
         "flowdoc-core-lifecycle-20260928",
         "flowdoc-core-noop-20260928",
         "flowdoc-core-stage6-20260927",
@@ -18200,6 +18808,66 @@
       "summary": "Done: Project Control now has a Core and Backend readiness matrix for pre-frontend planning, with explicit go/no-go decisions, risk and unknown classifications, and next owner-repository lanes.",
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-editor-trial-20260928-core",
+      "workId": "flowdoc-core-editor-trial-20260928",
+      "title": "Deliver Core and Editor trial with independent frozen measurement",
+      "phaseState": "in-progress",
+      "order": 0,
+      "repositoryIds": [
+        "repo-core"
+      ],
+      "activeRole": "product-implementation-agent",
+      "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-core",
+      "summary": "Bounded owner-authorized delivery; exact packet in current round. Stop when criteria pass.",
+      "stopConditions": [
+        "Acceptance complete",
+        "Safety/correctness blocker or scope escape"
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-editor-trial-20260928-editor",
+      "workId": "flowdoc-core-editor-trial-20260928",
+      "title": "Bounded trial editor",
+      "phaseState": "queued",
+      "order": 2,
+      "repositoryIds": [
+        "repo-editor"
+      ],
+      "activeRole": "product-implementation-agent",
+      "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-editor",
+      "summary": "Bounded owner-authorized delivery; exact packet in current round. Stop when criteria pass.",
+      "stopConditions": [
+        "Acceptance complete",
+        "Safety/correctness blocker or scope escape"
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-core-editor-trial-20260928-measurement",
+      "workId": "flowdoc-core-editor-trial-20260928",
+      "title": "Bounded trial measurement",
+      "phaseState": "queued",
+      "order": 1,
+      "repositoryIds": [
+        "repo-core"
+      ],
+      "activeRole": "evidence-reviewer",
+      "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-measurement",
+      "summary": "Measurement results tracked here; actual parallel execution belongs to the single active delivery Phase. Frozen timings are not a prerequisite for integration.",
+      "stopConditions": [
+        "Acceptance complete",
+        "Safety/correctness blocker or scope escape"
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
     },
     {
       "kind": "phase",
@@ -26424,6 +27092,114 @@
       ],
       "createdAt": "2026-08-27T00:00:00.000Z",
       "updatedAt": "2026-08-27T00:00:00.000Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-editor-trial-20260928-core",
+      "phaseId": "phase-flowdoc-core-editor-trial-20260928-core",
+      "title": "Bounded trial core",
+      "items": [
+        {
+          "id": "core-1",
+          "state": "pending",
+          "label": "Product build exports retained create/apply/Enter/inverseJoin/dispose and revision-bound frames; QA fault/verifier stay private. Actual accepted retained session owns authored content/style/constraints and render facts.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+        },
+        {
+          "id": "core-2",
+          "state": "pending",
+          "label": "Reuse existing Creator line-end shaping/layout concepts. For identical Thai/Latin source, Sarabun style and fixed constraints, compare old producer baseline glyph positions/linebreaks to new frame. No new engine, browser shaping or status-only bridge.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+        },
+        {
+          "id": "core-3",
+          "state": "pending",
+          "label": "One authored paragraph supports committed typing/delete/selection/caret; authored Enter produces two paragraph sessions with preserved spans/defaults/empty sides and inverse join. State restrictions reported explicitly.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+        },
+        {
+          "id": "core-4",
+          "state": "pending",
+          "label": "Core provisional composition updates produce visible Core frames; cancel restores base; final commit increments history once. Stale identity, rejected commands and disposal are atomic.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+        },
+        {
+          "id": "core-5",
+          "state": "pending",
+          "label": "Focused native and actual release WASM tests plus Core npm run check pass; commit exact candidate and file list. Provide Editor consumption interface and limitations. No merge, persistence, maps, measurement certification or Editor edits.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json"
+        }
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-editor-trial-20260928-editor",
+      "phaseId": "phase-flowdoc-core-editor-trial-20260928-editor",
+      "title": "Bounded trial editor",
+      "items": [
+        {
+          "id": "editor-1",
+          "state": "pending",
+          "label": "Real Editor coreAdapter integration with hidden input and atomic same-revision frame/caret; local-draft label and launch instructions.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+        },
+        {
+          "id": "editor-2",
+          "state": "pending",
+          "label": "Committed typing/delete/selection/Enter/inversejoin plus provisional IME final history once.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+        },
+        {
+          "id": "editor-3",
+          "state": "pending",
+          "label": "Old baseline unchanged-input equality and actual transition/transient samples; real key-to-visible timing with explicit coverage limits.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+        }
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-core-editor-trial-20260928-measurement",
+      "phaseId": "phase-flowdoc-core-editor-trial-20260928-measurement",
+      "title": "Bounded trial measurement",
+      "items": [
+        {
+          "id": "measurement-1",
+          "state": "pending",
+          "label": "Repository unchanged at frozen60258d9e8196bf6439ccb5c888e321fa5aad2def; outputs and orchestration only outside repository. Record release build, host and conditions; hold exclusive timing slot.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+        },
+        {
+          "id": "measurement-2",
+          "state": "pending",
+          "label": "Keep exact180/11271 corpus identities, thresholds8ms/16.7ms/1.50 and512/512/1024 caps. Report independent rows and dependent blocked/notrun rows with original denominator.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+        },
+        {
+          "id": "measurement-3",
+          "state": "pending",
+          "label": "Known mixed2048 [500,500)+A uncertified-seam remains blocked and rejection timing never counted as successful edit. No certificate/runtime/harness tracked repair.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+        },
+        {
+          "id": "measurement-4",
+          "state": "pending",
+          "label": "Separate preparation, accepted/noop/rejected command timing, cold/heap/GC/scaling where measurable; disclose missing fork/per-phase clocks. Reuse ordinary75/noop15/lifecycle/host evidence; no reproof expansion.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+        },
+        {
+          "id": "measurement-5",
+          "state": "pending",
+          "label": "Return exact commit, immutable raw rows and PASS/FAIL/NOTRUN/blocked summary; do not certify integration candidate or use measurement as Editor prerequisite.",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json"
+        }
+      ],
+      "createdAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-09-28T10:24:31.546Z"
     },
     {
       "kind": "checklist",
@@ -37261,7 +38037,7 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-28T08:58:26.917Z",
+    "generatedAt": "2026-09-28T10:24:31.546Z",
     "currentGoal": "Recommended bounded contract change: expose a Core-owned retained editing product session and revision-bound paint/line/caret result, seed view and editing from the same content/style/constraints, then connect a one-paragraph Editor slice with typing/delete/Enter/inverse join and every transition frame unchanged. Do not substitute Creator value newline for authored paragraph Enter/join. No downstream task automatically opened.",
     "currentBlocker": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
     "activeWork": [
@@ -37292,6 +38068,16 @@
           "planning": "pending",
           "implementation": "not-required",
           "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
+      {
+        "workId": "flowdoc-core-editor-trial-20260928",
+        "title": "Core authored editing trial in real Editor",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "pending",
+          "verification": "pending",
           "truthPromotion": "pending"
         }
       },

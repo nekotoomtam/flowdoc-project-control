@@ -1,0 +1,28 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-editor-trial-20260928-editor",
+  "phaseId": "phase-flowdoc-core-editor-trial-20260928-editor",
+  "title": "Bounded trial editor",
+  "items": [
+    {
+      "id": "editor-1",
+      "state": "pending",
+      "label": "Real Editor coreAdapter integration with hidden input and atomic same-revision frame/caret; local-draft label and launch instructions.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+    },
+    {
+      "id": "editor-2",
+      "state": "pending",
+      "label": "Committed typing/delete/selection/Enter/inversejoin plus provisional IME final history once.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+    },
+    {
+      "id": "editor-3",
+      "state": "pending",
+      "label": "Old baseline unchanged-input equality and actual transition/transient samples; real key-to-visible timing with explicit coverage limits.",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/editor-handoff.json"
+    }
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}

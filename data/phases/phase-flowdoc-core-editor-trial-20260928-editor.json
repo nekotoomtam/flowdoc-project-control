@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-editor-trial-20260928-editor",
+  "workId": "flowdoc-core-editor-trial-20260928",
+  "title": "Bounded trial editor",
+  "phaseState": "queued",
+  "order": 2,
+  "repositoryIds": [
+    "repo-editor"
+  ],
+  "activeRole": "product-implementation-agent",
+  "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-editor",
+  "summary": "Bounded owner-authorized delivery; exact packet in current round. Stop when criteria pass.",
+  "stopConditions": [
+    "Acceptance complete",
+    "Safety/correctness blocker or scope escape"
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}
