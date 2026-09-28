@@ -9,22 +9,24 @@
     "repo-core",
     "repo-project-control"
   ],
-  "workState": "in-progress",
-  "summary": "Fresh PLAN round: sequential bounded lifecycle then host-control slices under settled contract. PLAN gpt-6-astra medium; no contract redesign, children, formal audit or full measurement. Snapshot historical blocker superseded by exact reused ordinary/no-op Evidence, no broad reconciliation.",
+  "workState": "in-review",
+  "summary": "Bounded lifecycle and synchronous host-control prerequisites accepted and integrated at Core60258d9 after both original-base ScopeLock preflights. Fresh Core main check passed443 files3052 tests1 existing skip. All12 scoped Checklist criteria pass with two narrow Evidence records. This round stops before full measurement; exact named-row seam admission remains a separate prerequisite. Work in-review is the schema terminal presentation; execution round is released after resolved acceptance/cleanup. Final Project Control lane/main gate and managed lane cleanup are reported in C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/terminal-report.json.",
   "contextDocumentIds": [
     "doc-core-stage6-noop-lifecycle-contract-20260927",
     "doc-flowdoc-workflow-economy-policy"
   ],
   "activeRole": "planning-partner",
   "expectedOutput": "Focused lifecycle/recovery/eviction/host timing readiness before item4; not Stage6/performance/UX PASS.",
-  "riskSummary": "Bounded private Rust state/resource ownership and exact family accounting. Full measurement and downstream unchanged view/edit appearance/positions/linebreaks including transients remain required. Core managed worktree tool has no cross-repository target; dedicated Core lane created by Git fallback. Original chat checkout preserved.",
+  "riskSummary": "Exact mixed2048 shape-plan-cache-eviction [500,500)+A retains pre-existing uncertified-seam: actual used-plan eviction requires recovery and recovery restores unchanged/cold-equal baseline, not positive edit admission. Separate certificate repair is required before full measurement/item4. Partially shared source disposal is a labeled conservative owned-tree lower bound; exact allocator frees are separate. Full180/11271 timing8ms/16.7ms/1.50, heap/GC/scaling, all-context recovery, unchanged view/edit appearance/positions/linebreaks/transients, geometry and Stage6/Gate2/UX remain unproven. No maps/public API/Editor/Backend/product Markdown changed. No push; original chat checkout and historical lanes preserved.",
   "requiredEvidence": [
     "evidence-core-stage6-ordinary-complete-20260927",
-    "evidence-core-noop-20260928"
+    "evidence-core-noop-20260928",
+    "evidence-core-lifecycle-20260928",
+    "evidence-core-host-control-20260928"
   ],
   "coordination": {
     "version": 3,
-    "revision": 1,
+    "revision": 11,
     "round": {
       "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
       "roundId": "core-lifecycle-20260928-01a0e5da",
@@ -46,9 +48,11 @@
         "tests/coldSessionStage5.test.ts",
         "tests/coldSessionNoOp.test.ts",
         "tests/coldSessionLifecycle.test.ts",
-        "tests/stage6Preflight.test.ts"
+        "tests/stage6Preflight.test.ts",
+        "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+        "tests/coldSessionHostControl.test.ts"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -84,14 +88,14 @@
         "repositoryId": "repo-core",
         "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
         "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
-        "state": "active",
+        "state": "released",
         "roundId": "core-lifecycle-20260928-01a0e5da"
       },
       {
         "repositoryId": "repo-project-control",
         "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
         "baseCommit": "e8cd402bc102c157702418e12e1f8713853ad015",
-        "state": "active",
+        "state": "released",
         "roundId": "core-lifecycle-20260928-01a0e5da"
       }
     ],
@@ -109,7 +113,7 @@
         "evidenceTarget": "evidence-core-lifecycle-20260928",
         "revisionAttempt": 0,
         "expectedHandoffId": "lifecycle-handoff-0",
-        "status": "active",
+        "status": "closed",
         "locator": {
           "threadId": "/root/lifecycle_work",
           "hostId": "local",
@@ -126,7 +130,7 @@
           "automaticChannel": "collaboration.send_message",
           "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator",
           "monitorOwner": "01a0e5da-e9da-7f21-8d17-763389517c98",
-          "livenessDeadline": "2026-09-28T02:55:54.141Z",
+          "livenessDeadline": "2026-09-28T04:00:00.000Z",
           "maxSendAttempts": 3
         },
         "modelDecision": {
@@ -258,12 +262,725 @@
           }
         },
         "packetDigest": "ac1e322e37263ae7b7fd9e0de66d6d67d0d85516ff77da487467c60d85bd067a"
+      },
+      {
+        "roomRunId": "host-work-01",
+        "dispatchSetId": "host-dispatch-01",
+        "laneId": "core-host-control",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-lifecycle-20260928",
+        "checklistId": "checklist-flowdoc-core-lifecycle-20260928",
+        "evidenceTarget": "evidence-core-host-control-20260928",
+        "revisionAttempt": 0,
+        "expectedHandoffId": "host-handoff-0",
+        "status": "closed",
+        "locator": {
+          "threadId": "/root/host_work",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/core-host-work/flowdoc-vnext-core",
+          "branch": "codex/core-host-work-20260928",
+          "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-handoff.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-28T03:49:32.826Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator",
+          "monitorOwner": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "livenessDeadline": "2026-09-28T04:40:00.000Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "workhorse",
+          "modelId": "gpt-6-sol",
+          "reasoningEffort": "medium",
+          "reason": "Settled private synchronous cancellation contract, accepted lifecycle input and bounded Rust/TypeScript authentication, accounting and real host delivery tests.",
+          "smallerOptionAssessment": "Luna medium insufficient for atomic multi-capability validation, stale opaque operation identities, cancellation precedence and exact cross-boundary accounting.",
+          "availabilitySnapshotRef": "local-lifecycle-20260928",
+          "escalationTriggers": [
+            "Two bounded revisions fail the same reasoning limitation after context correction; contract or scope question returns to PLAN."
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Private Core mechanism only; geometry and Editor/Backend UX including transients remain mandatory downstream and unclaimed."
+        },
+        "requiredEvidence": [
+          "evidence-core-host-control-20260928"
+        ],
+        "roundId": "core-lifecycle-20260928-01a0e5da",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Implement settled private synchronous pre-entry host cancellation and honest too-late completion on immutable accepted lifecycle input cbca90f347c4328e5a335f78ef879ce24d6b9d07; stop before full measurement.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "allowedScope": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "packages/text-engine-rust-wasm/src/coldSessionLifecycle.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/preflight.mjs",
+            "scripts/stage6/verify.mjs",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/coldSessionNoOp.test.ts",
+            "tests/coldSessionLifecycle.test.ts",
+            "tests/stage6Preflight.test.ts",
+            "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+            "tests/coldSessionHostControl.test.ts"
+          ],
+          "forbiddenScope": [
+            "docs/",
+            "src/",
+            "scripts/stage6/corpus.mjs",
+            "tests/fixtures/",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock"
+          ],
+          "acceptanceCriteria": [
+            "Implement settled private synchronous host control using actual AbortSignal or explicit equivalent, fresh opaque operation identity bound to authentic receipt/revision; Enter/Join all capabilities atomically and Recover exact missing target/provider identity. Semantic commands carry no QA flags or caller facts; Rust validation precedes cancel observation and provider work. Pre-entry cancellation returns typed cancelled unchanged and enters Rust accounting.",
+            "Late cancellation reports too-late with actual completed Accepted/NoOp/Recovered or failure; never discard receipt, rewrite outcome, rollback or claim in-flight interruptibility. Stale/unrelated operation IDs cannot cancel other commands. Fresh retry after pre-entry cancel uses new identity. No Begin/Step/Finish, persistent Rust candidate, shared memory, worker or reentrant Runtime callbacks.",
+            "Actual-WASM tests deliver real host cancellation before submit, queued before entry, callback queued but delayed by synchronous invocation, and after completion. Cover ordinary/no-op/Enter/Join/recovery, stale IDs, fresh retry, all capability atomic identity and exact unchanged or completed results. Record delivery/completion order honestly. QA fault tests remain separately labelled and cannot substitute for host delivery.",
+            "Maintain checked continuous family sums through create/edit/no-op/Enter/sibling activity/evict/recover/cancel/join/dispose with one cold charge, fixed compact counters and no event history. Rust-entered cancellation rejected-attempt work counted; invalid unresolved family work unattributed. Host queue/control/serialization costs separately visible and included in end-to-end latency/accounting without double-counting Rust ABI. Source/property/provider caps512/512/1024 unchanged.",
+            "Focused native/actualWASM tests and stable candidate Core npm run check pass. Reuse exact accepted lifecycle 75 ordinary +15 EOF no-op static actualWASM Evidence where shaping/classification inputs and code remain unchanged; revalidate affected dispatch/auth/control paths with ordinary/no-op/Enter/Join/recovery cold equality, family sums and caps, including maximum-work representatives from that report. If source/provider/classification behavior changes, full75+15 is a freshness prerequisite. Preserve named shape-plan-cache-eviction exact dependency/provenance and declared pre-existing uncertified-seam limitation; no fake row support. Fixed generator/IDs180/11271 and timing8ms/16.7ms/1.50 unchanged. Full performance, heap/GC/scaling, all-context recovery and Stage6/Gate2/UX readiness unclaimed; unchanged view/edit geometry/transients mandatory downstream.",
+            "Clean passing exact commit, actual changed manifest, narrow executable Evidence candidate and V3 durable active handoff. No public exports/Editor/Backend/geometry/product Markdown/maps/dependency changes. Stop at focused correctness prerequisites before item4/full measurement; no extra audit/gate or automatic downstream continuation."
+          ],
+          "relevantEvidenceIds": [
+            "evidence-core-lifecycle-20260928",
+            "evidence-core-noop-20260928",
+            "evidence-core-stage6-ordinary-complete-20260927"
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 1,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent QA-only or discarded-result behavior being mislabeled real host cancellation, and detect accounting or identity regressions.",
+                "existingProofInsufficient": "Accepted lifecycle and static75+15 do not prove real AbortSignal delivery and synchronous too-late behavior. Reuse accepted shaping/classification proof unless changed."
+              }
+            ]
+          },
+          "unknowns": [
+            {
+              "id": "remaining-exact-row-seam",
+              "summary": "Exact mixed2048 shape-plan-cache-eviction committed edit remains uncertified-seam in Ready state, with true missing/recovery proven. This host slice does not repair seam certificates.",
+              "disposition": "deferred",
+              "returnTrigger": "Separate scoped certificate repair before full measurement admission."
+            },
+            {
+              "id": "full-measurement-geometry",
+              "summary": "Full180/11271 performance, heap/GC/scaling, all-context recovery, Core geometry and downstream view/edit appearance/positions/linebreaks/transients remain unproven.",
+              "disposition": "deferred",
+              "returnTrigger": "Separately authorized later readiness and measurement work."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "remaining-prerequisites",
+              "kind": "freeze-scope",
+              "reason": "User approved remaining settled lifecycle/host prerequisites before item4; no new design, audit, gates, benchmark or downstream expansion. Direct WORK without children.",
+              "decidedBy": "user",
+              "decidedAt": "2026-09-28T02:35:54.140Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "workhorse",
+            "modelId": "gpt-6-sol",
+            "reasoningEffort": "medium",
+            "reason": "Settled private synchronous cancellation contract, accepted lifecycle input and bounded Rust/TypeScript authentication, accounting and real host delivery tests.",
+            "smallerOptionAssessment": "Luna medium insufficient for atomic multi-capability validation, stale opaque operation identities, cancellation precedence and exact cross-boundary accounting.",
+            "availabilitySnapshotRef": "local-lifecycle-20260928",
+            "escalationTriggers": [
+              "Two bounded revisions fail the same reasoning limitation after context correction; contract or scope question returns to PLAN."
+            ]
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+            "worktree": "C:/Users/nekot/.codex/worktrees/core-host-work/flowdoc-vnext-core"
+          },
+          "escalationTriggers": [
+            "Safety/correctness blocker",
+            "Authority violation",
+            "Missing prerequisite changes architecture or contract",
+            "Scope escape"
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator"
+          }
+        },
+        "packetDigest": "177940f11f62f26bca60532d751d9747f228d233210ecdc3be17c8d287c2c2bc"
       }
     ],
-    "handoffs": [],
+    "handoffs": [
+      {
+        "handoffId": "lifecycle-handoff-0",
+        "payloadDigest": "d6c33a58d82cf46cade303237037ae3bcf2debc2ea7f3e5c45acd62a110fd182",
+        "payload": {
+          "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "roomRunId": "lifecycle-work-01",
+          "laneId": "core-lifecycle",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "Private Rust-owned derived-shard and provider ShapePlan eviction/recovery now release actual resources, require explicit bounded recovery, preserve receipt and revision, and charge fixed-size family work.",
+          "exactCommit": "cbca90f347c4328e5a335f78ef879ce24d6b9d07",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/preflight.mjs",
+            "tests/coldSessionLifecycle.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "tests": [
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-native.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-focused-wasm.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-core-check-final.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-static-applicability.json"
+          ],
+          "evidenceIds": [
+            "evidence-core-stage6-ordinary-complete-20260927",
+            "evidence-core-noop-20260928"
+          ],
+          "risks": [
+            "Exact shape-plan-cache-eviction row at mixed/2048 and committed [500,500)+A: baseline Ready -> NotAdmissible/uncertified-seam with unchanged receipt/revision and cold Equal; actual used plan Evict -> recovery-required unchanged; explicit Recover -> uncertified-seam unchanged and cold Equal. Historical d5031b6 churned unrelated plans. Options: A expand seam certificate and proof now; B retain this exact negative dependency proof and defer certificate to separate scope. Recommendation B per PLAN decision; seam certificate is prerequisite before full measurement/item4.",
+            "ReleasedSourceBytes is labeled conservative-owned-tree-lower-bound when a source tree is partially shared; exact allocator free counts remain in the work meter."
+          ],
+          "unknowns": [
+            "Real host cancellation delivery remains for the next packet; no UX, geometry or performance claim."
+          ],
+          "contractChangeRequest": "Exact shape-plan-cache-eviction row at mixed/2048 and committed [500,500)+A: baseline Ready -> NotAdmissible/uncertified-seam with unchanged receipt/revision and cold Equal; actual used plan Evict -> recovery-required unchanged; explicit Recover -> uncertified-seam unchanged and cold Equal. Historical d5031b6 churned unrelated plans. Options: A expand seam certificate and proof now; B retain this exact negative dependency proof and defer certificate to separate scope. Recommendation B per PLAN decision; seam certificate is prerequisite before full measurement/item4.",
+          "roundId": "core-lifecycle-20260928-01a0e5da",
+          "completion": {
+            "behaviorChanged": "Private Rust-owned derived-shard and provider ShapePlan eviction/recovery now release actual resources, require explicit bounded recovery, preserve receipt and revision, and charge fixed-size family work.",
+            "proof": [
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-native.log (54 native tests)",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-6"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-focused-wasm.log and tests/coldSessionLifecycle.test.ts (actual WASM lifecycle, exact named row)",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-5",
+                  "AC-6"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-core-check-final.log (442 files; 3039 pass; 1 skip)",
+                "criterionRefs": [
+                  "AC-6"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-static-applicability.json (commit-bound 75 ordinary Accepted and cold Equal, 15 NoOp; 360 raw calls)",
+                "criterionRefs": [
+                  "AC-5"
+                ]
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "named-row-seam-certificate",
+                "summary": "Exact shape-plan-cache-eviction row at mixed/2048 and committed [500,500)+A: baseline Ready -> NotAdmissible/uncertified-seam with unchanged receipt/revision and cold Equal; actual used plan Evict -> recovery-required unchanged; explicit Recover -> uncertified-seam unchanged and cold Equal. Historical d5031b6 churned unrelated plans. Options: A expand seam certificate and proof now; B retain this exact negative dependency proof and defer certificate to separate scope. Recommendation B per PLAN decision; seam certificate is prerequisite before full measurement/item4.",
+                "disposition": "deferred",
+                "returnTrigger": "Before full measurement/item4, separately authorize and prove the missing seam certificate."
+              }
+            ],
+            "downstreamInformation": "Host-independent cancellation QA is distinct from real host delivery. Host cancellation is the next separate packet and may use immutable Core commit cbca90f347c4328e5a335f78ef879ce24d6b9d07. The exact named row seam certificate remains a separate prerequisite before full measurement/item4. No Stage6, UX, geometry, transient-frame or performance claim.",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/preflight.mjs",
+              "tests/coldSessionLifecycle.test.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/stage6Preflight.test.ts"
+            ],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 0,
+            "implementationCommitCount": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-28T03:46:23.785Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-28T03:46:23.785Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-28T03:46:23.786Z",
+          "senderThreadId": "/root/lifecycle_work",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-28T03:46:23.786Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "reviewedAt": "2026-09-28T03:47:28.250Z",
+          "evidenceIds": [
+            "evidence-core-lifecycle-20260928",
+            "evidence-core-stage6-ordinary-complete-20260927",
+            "evidence-core-noop-20260928"
+          ],
+          "requiredChecks": [
+            {
+              "name": "focused-native-and-actual-WASM",
+              "status": "passed"
+            },
+            {
+              "name": "stable-Core-check",
+              "status": "passed"
+            },
+            {
+              "name": "exact-commit-static75-plus15-and-raw-calls",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN-bounded-source-and-manifest-review",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Dispatch settled host-control packet on immutable accepted lifecycle input.",
+            "Exact named-row seam certificate before full measurement remains separate; fullperformance/all-context/geometry/UX deferred."
+          ],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+            "terminalCommit": "cbca90f347c4328e5a335f78ef879ce24d6b9d07",
+            "packetDigest": "ac1e322e37263ae7b7fd9e0de66d6d67d0d85516ff77da487467c60d85bd067a",
+            "manifestDigest": "9b0a2e39ef460ed8e5ec011bcc72a0e4dc0008f1f0de94f995add49ae6c17c22",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/preflight.mjs",
+              "tests/coldSessionLifecycle.test.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/stage6Preflight.test.ts"
+            ],
+            "verifiedAt": "2026-09-28T03:47:28.250Z",
+            "clean": true
+          }
+        }
+      },
+      {
+        "handoffId": "host-handoff-0",
+        "payloadDigest": "9b8e4e7e149b88370991092d04688bee23d1c9cf26de03691ed9a5dae6b5d99a",
+        "payload": {
+          "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "roomRunId": "host-work-01",
+          "laneId": "core-host-control",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "Private Core synchronous host cancellation authenticates fresh opaque operation IDs with live receipt/revision and exact maintenance target/provider; Rust validates before observation and provider work. Pre-entry cancellation is typed and unchanged with counted Rust work; late delivery preserves the actual completed outcome. Checked compact family and host costs include queue/control/serialization, one cold charge, and explicit overflow/unattributed work. No public API or product geometry change.",
+          "exactCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/host_control.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+            "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/preflight.mjs",
+            "tests/coldSessionHostControl.test.ts",
+            "tests/coldSessionLifecycle.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "tests": [
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-focused-wasm.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-native-final.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-core-check-final.log",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-order-accounting.json",
+            "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-static-applicability.json"
+          ],
+          "evidenceIds": [
+            "evidence-core-lifecycle-20260928",
+            "evidence-core-noop-20260928",
+            "evidence-core-stage6-ordinary-complete-20260927"
+          ],
+          "risks": [
+            "The pre-existing named mixed2048 shape-plan-cache-eviction edit remains an uncertified seam, so it is not admitted as a positive edit row.",
+            "Partially shared source disposal reports a conservative owned-tree lower bound; exact allocator frees remain separate."
+          ],
+          "unknowns": [
+            "Full180/11271 performance, heap/GC/scaling, all-context recovery, Core geometry, view/edit appearance, positions, linebreaks, transients, Stage6/Gate2 and UX readiness are not established."
+          ],
+          "roundId": "core-lifecycle-20260928-01a0e5da",
+          "completion": {
+            "behaviorChanged": "Private Core synchronous host cancellation authenticates fresh opaque operation IDs with live receipt/revision and exact maintenance target/provider; Rust validates before observation and provider work. Pre-entry cancellation is typed and unchanged with counted Rust work; late delivery preserves the actual completed outcome. Checked compact family and host costs include queue/control/serialization, one cold charge, and explicit overflow/unattributed work. No public API or product geometry change.",
+            "proof": [
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-focused-wasm.log",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4",
+                  "AC-5"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-native-final.log",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-4",
+                  "AC-5"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-core-check-final.log",
+                "criterionRefs": [
+                  "AC-5",
+                  "AC-6"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-order-accounting.json",
+                "criterionRefs": [
+                  "AC-2",
+                  "AC-3",
+                  "AC-4"
+                ]
+              },
+              {
+                "kind": "evidence",
+                "reference": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-static-applicability.json",
+                "criterionRefs": [
+                  "AC-5"
+                ]
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "remaining-exact-row-seam",
+                "summary": "Exact mixed2048 shape-plan-cache-eviction committed edit remains uncertified-seam in Ready state, with true missing/recovery proven. This host slice does not repair seam certificates.",
+                "disposition": "deferred",
+                "returnTrigger": "Separate scoped certificate repair before full measurement admission."
+              },
+              {
+                "id": "full-measurement-geometry",
+                "summary": "Full180/11271 performance, heap/GC/scaling, all-context recovery, Core geometry and downstream view/edit appearance/positions/linebreaks/transients remain unproven.",
+                "disposition": "deferred",
+                "returnTrigger": "Separately authorized later readiness and measurement work."
+              }
+            ],
+            "downstreamInformation": "Accepted lifecycle commit cbca90f is immutable input. Its static actual-WASM 75 ordinary Accepted plus 15 NoOp Evidence is reused because source/provider/classification shaping semantics did not change; affected dispatch/auth/control paths, cold equality, family sums, and mixed1024 maximum-work replacement caps 475/139/260 were revalidated in focused native/actual-WASM tests. Two inherited native test files received expectation-only arithmetic corrections for lifecycle Meter growth 95 to 100 fields and lineage scalar writes; assertions and caps were preserved. Named mixed2048 [500,500)+A remains Ready uncertified-seam; used-plan eviction requires recovery, and Recover is unchanged/coldEqual. A separate certificate repair is required before full measurement admission. Full180/11271 timing, heap/GC/scaling, all-context recovery, Stage6/Gate2, UX and geometry/transients remain unclaimed. PLAN owns Evidence registration and integration.",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/host_control.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/preflight.mjs",
+              "tests/coldSessionHostControl.test.ts",
+              "tests/coldSessionLifecycle.test.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/stage6Preflight.test.ts"
+            ],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 1,
+            "implementationCommitCount": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-28T04:29:02.404Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-28T04:29:02.404Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-28T04:29:02.405Z",
+          "senderThreadId": "/root/host_work",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 2,
+          "acknowledgedAt": "2026-09-28T04:29:02.405Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "reviewedAt": "2026-09-28T04:29:18.048Z",
+          "evidenceIds": [
+            "evidence-core-host-control-20260928",
+            "evidence-core-lifecycle-20260928",
+            "evidence-core-noop-20260928",
+            "evidence-core-stage6-ordinary-complete-20260927"
+          ],
+          "requiredChecks": [
+            {
+              "name": "focused-native-actualWASM-and-real-host-delivery",
+              "status": "passed"
+            },
+            {
+              "name": "independent-cold-family-sums-and-max-cap-representative",
+              "status": "passed"
+            },
+            {
+              "name": "stable-Core-check",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN-bounded-review-and-repair-verification",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "PLAN preflights both accepted candidates and integrates final descendant once; main gates and current-round cleanup.",
+            "Separate exact-row seam and later full measurement/geometry/UX remain deferred."
+          ],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+            "terminalCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+            "packetDigest": "177940f11f62f26bca60532d751d9747f228d233210ecdc3be17c8d287c2c2bc",
+            "manifestDigest": "3ab23bb796b7738b9d5a28d98f0e0fadb430676c0b1b673970ef322470bcef81",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/host_control.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/preflight.mjs",
+              "tests/coldSessionHostControl.test.ts",
+              "tests/coldSessionLifecycle.test.ts",
+              "tests/coldSessionStage4.test.ts",
+              "tests/stage6Preflight.test.ts"
+            ],
+            "verifiedAt": "2026-09-28T04:29:18.048Z",
+            "clean": true
+          }
+        }
+      }
+    ],
     "completionQueue": [],
-    "cleanup": []
+    "cleanup": [
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/core-lifecycle-work/flowdoc-vnext-core",
+        "branch": "codex/core-lifecycle-work-20260928",
+        "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "executor": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "preflightEvidenceIds": [
+          "evidence-core-lifecycle-20260928"
+        ],
+        "preflightSources": {
+          "cleanliness": "Actual clean porcelain before removal; C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/core-cleanup.json",
+          "merge": "Both current-round commits verified ancestors of main60258d9 before removal.",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-core-check-final.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/core-main-check.log",
+          "liveProcess": "Direct WORK agents finished; no node/cargo/rustc/wasm processes reference either Core lane."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "core-lifecycle-20260928-01a0e5da"
+      },
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/core-host-work/flowdoc-vnext-core",
+        "branch": "codex/core-host-work-20260928",
+        "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "executor": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "preflightEvidenceIds": [
+          "evidence-core-host-control-20260928"
+        ],
+        "preflightSources": {
+          "cleanliness": "Actual clean porcelain before removal; C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/core-cleanup.json",
+          "merge": "Both current-round commits verified ancestors of main60258d9 before removal.",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-core-check-final.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/core-main-check.log",
+          "liveProcess": "Direct WORK agents finished; no node/cargo/rustc/wasm processes reference either Core lane."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "core-lifecycle-20260928-01a0e5da"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/core-lifecycle-plan/flowdoc-project-control",
+        "branch": "codex/core-lifecycle-plan-20260928",
+        "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "executor": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "preflightEvidenceIds": [
+          "evidence-core-lifecycle-20260928",
+          "evidence-core-host-control-20260928"
+        ],
+        "preflightSources": {
+          "cleanliness": "Retain while canonical close records are committed and checked; final actual status in external terminal-report.json.",
+          "merge": "Final PC integration pending at record-writing time; exact commit in external terminal.",
+          "worktreeGate": "Final C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/pc-final-check.log pending.",
+          "mainGate": "Final C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/pc-main-check.log pending.",
+          "liveProcess": "PLAN uses this checkout until final gates finish; archive only after no process relies on it."
+        },
+        "currentRound": true,
+        "worktreeClean": false,
+        "merged": false,
+        "worktreeGate": "pending",
+        "mainGate": "pending",
+        "liveProcessClear": false,
+        "disposition": "retain",
+        "roundId": "core-lifecycle-20260928-01a0e5da"
+      }
+    ]
   },
   "createdAt": "2026-09-28T02:35:54.14Z",
-  "updatedAt": "2026-09-28T02:35:54.14Z"
+  "updatedAt": "2026-09-28T04:35:27.250Z"
 }

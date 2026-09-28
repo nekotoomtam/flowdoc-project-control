@@ -7,53 +7,124 @@
     {
       "id": "lifecycle-1",
       "label": "Implement Ready/DerivedMissing/Disposed with Rust retained source, authored properties and provider authority. Explicit bounded Evict releases real derived payload plus acceleration anchor (no retained alias counted as freed), explicit Recover keeps receipt/revision/family/inverse. Pinning returns resource-in-use. No Dispose/Create, host facts, or implicit whole-paragraph rebuild.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
       "id": "lifecycle-2",
       "label": "Recover a short isolated admitted complete run using actual source/provider revision-bound outside witnesses. Missing derived anchor is not missing authored owner. Typed unchanged missing witness/owner/provider mismatch/budget/fault failures and retry; independent cold equality; Apply/Enter/Join recovery-required only for needed targets; unrelated misses do not block EOF no-op.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
       "id": "lifecycle-3",
       "label": "Family-local real Rustybuzz ShapePlan cache genuinely used via shape_with_plan before eviction. Capacity exactly 2 entries derived from admitted fixture Latin/en and Thai/th two-key working set; deterministic FIFO replacement of oldest unpinned entry, resource-in-use if no victim; bounded lookups, no hidden warmup. Key includes exact font digest/index/variations, direction/script/language/canonical features/provider version/policy. Cold charges creation once; explicit recover charges rebuild. Prove real released resources/bytes, plan reuse, eviction, pinning and recovery.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
       "id": "lifecycle-4",
       "label": "Continuous checked fixed-size family maintenance and disposal accounting, no per-event history. Count actual source/property/provider/witness/allocation/free/index/hash/ABI work once including rejected and QA-cancelled attempts. Final compact family summary before last disposal; no accepted mutation count or revision change for maintenance. Structural inverse preservation and pinned snapshots accounted honestly.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
       "id": "lifecycle-5",
       "label": "Keep shape-plan-cache-eviction exact named adversarial row and committed edit; record historical churn provenance versus current private explicit eviction, test true dependent cache-miss, explicit recovery then cold-equal edit. Preserve generator/corpus IDs, 180/11271 denominator, caps512/512/1024 and timing8ms/16.7ms/1.50. Static actualWASM75ordinary Accepted and15NoOp remain cold-equal. No fullperformance or all-context recovery claim.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN clarification from contract section2 exact mapping and section5 deferred certificates: exact row remains intact; verify same Ready uncertified-seam baseline, dependent recovery-required after true plan eviction, explicit recovery, unchanged independent cold equality, and separate admitted positive edit. Do not claim exact row edit Accepted or Stage6 admission. PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
       "id": "lifecycle-6",
       "label": "Focused native and actualWASM lifecycle, negatives, atomic fault/retry, pinning, sibling/family/disposal tests and stable candidate Core npm run check pass. Clean committed actual manifest and durable handoff. No public exports/Editor/Backend/geometry/Markdown changes. Host execution control is separately packeted next in this same round, QA is not host proof; unchanged view/edit appearance/positions/linebreaks/transient frames stays mandatory downstream.",
-      "state": "pending",
+      "state": "passed",
       "evidenceTarget": "evidence-core-lifecycle-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-lifecycle-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; exact clean22-file candidate, focused native/WASM, stable Core gate and committed-source75+15. Named-row admission remains explicitly deferred; no full measurement/UX claim."
     },
     {
-      "id": "host-control",
-      "label": "Second bounded packet: authenticated private pre-entry host cancellation and honest too-late completion across ordinary/no-op/Enter/Join/recovery with actual host delivery and exact family/ABI/host accounting; full measurement remains deferred.",
-      "state": "pending",
+      "id": "host-1",
+      "label": "Implement settled private synchronous host control using actual AbortSignal or explicit equivalent, fresh opaque operation identity bound to authentic receipt/revision; Enter/Join all capabilities atomically and Recover exact missing target/provider identity. Semantic commands carry no QA flags or caller facts; Rust validation precedes cancel observation and provider work. Pre-entry cancellation returns typed cancelled unchanged and enters Rust accounting.",
+      "state": "passed",
       "evidenceTarget": "evidence-core-host-control-20260928",
-      "evidenceIds": []
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
+    },
+    {
+      "id": "host-2",
+      "label": "Late cancellation reports too-late with actual completed Accepted/NoOp/Recovered or failure; never discard receipt, rewrite outcome, rollback or claim in-flight interruptibility. Stale/unrelated operation IDs cannot cancel other commands. Fresh retry after pre-entry cancel uses new identity. No Begin/Step/Finish, persistent Rust candidate, shared memory, worker or reentrant Runtime callbacks.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
+    },
+    {
+      "id": "host-3",
+      "label": "Actual-WASM tests deliver real host cancellation before submit, queued before entry, callback queued but delayed by synchronous invocation, and after completion. Cover ordinary/no-op/Enter/Join/recovery, stale IDs, fresh retry, all capability atomic identity and exact unchanged or completed results. Record delivery/completion order honestly. QA fault tests remain separately labelled and cannot substitute for host delivery.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
+    },
+    {
+      "id": "host-4",
+      "label": "Maintain checked continuous family sums through create/edit/no-op/Enter/sibling activity/evict/recover/cancel/join/dispose with one cold charge, fixed compact counters and no event history. Rust-entered cancellation rejected-attempt work counted; invalid unresolved family work unattributed. Host queue/control/serialization costs separately visible and included in end-to-end latency/accounting without double-counting Rust ABI. Source/property/provider caps512/512/1024 unchanged.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
+    },
+    {
+      "id": "host-5",
+      "label": "Focused native/actualWASM tests and stable candidate Core npm run check pass. Reuse exact accepted lifecycle 75 ordinary +15 EOF no-op static actualWASM Evidence where shaping/classification inputs and code remain unchanged; revalidate affected dispatch/auth/control paths with ordinary/no-op/Enter/Join/recovery cold equality, family sums and caps, including maximum-work representatives from that report. If source/provider/classification behavior changes, full75+15 is a freshness prerequisite. Preserve named shape-plan-cache-eviction exact dependency/provenance and declared pre-existing uncertified-seam limitation; no fake row support. Fixed generator/IDs180/11271 and timing8ms/16.7ms/1.50 unchanged. Full performance, heap/GC/scaling, all-context recovery and Stage6/Gate2/UX readiness unclaimed; unchanged view/edit geometry/transients mandatory downstream.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
+    },
+    {
+      "id": "host-6",
+      "label": "Clean passing exact commit, actual changed manifest, narrow executable Evidence candidate and V3 durable active handoff. No public exports/Editor/Backend/geometry/product Markdown/maps/dependency changes. Stop at focused correctness prerequisites before item4/full measurement; no extra audit/gate or automatic downstream continuation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": [
+        "evidence-core-host-control-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/plan-acceptance.json; actual host timing/control/cold/family/caps proofs and candidate gate. Reuses accepted static75+15 under unchanged shaping/classification; no full measurement/UX promotion."
     }
   ],
   "createdAt": "2026-09-28T02:35:54.140Z",
-  "updatedAt": "2026-09-28T02:35:54.140Z"
+  "updatedAt": "2026-09-28T04:29:18.048Z"
 }

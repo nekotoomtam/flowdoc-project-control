@@ -3,19 +3,19 @@
   "id": "phase-flowdoc-core-lifecycle-20260928",
   "workId": "flowdoc-core-lifecycle-20260928",
   "title": "Implement lifecycle and synchronous host control",
-  "phaseState": "in-progress",
+  "phaseState": "done",
   "order": 0,
   "repositoryIds": [
     "repo-core"
   ],
   "activeRole": "product-implementation-agent",
   "verificationTarget": "checklist-flowdoc-core-lifecycle-20260928",
-  "summary": "Lifecycle slice first; host-control packet follows accepted lifecycle. Stop at focused correctness readiness before full measurement.",
+  "summary": "All12 bounded lifecycle/host-control criteria accepted; Core main60258d9 fresh check passed. Exact named-row seam remains separate prerequisite before full measurement, with no Stage6/performance/geometry/UX promotion.",
   "stopConditions": [
     "Acceptance criteria pass",
     "Safety/correctness or authority blocker",
     "Scope or contract decision needed"
   ],
   "createdAt": "2026-09-28T02:35:54.140Z",
-  "updatedAt": "2026-09-28T02:35:54.140Z"
+  "updatedAt": "2026-09-28T04:35:27.250Z"
 }
