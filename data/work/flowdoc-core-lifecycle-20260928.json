@@ -1,0 +1,269 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-lifecycle-20260928",
+  "title": "Core retained-source lifecycle and host cancellation prerequisites",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "in-progress",
+  "summary": "Fresh PLAN round: sequential bounded lifecycle then host-control slices under settled contract. PLAN gpt-6-astra medium; no contract redesign, children, formal audit or full measurement. Snapshot historical blocker superseded by exact reused ordinary/no-op Evidence, no broad reconciliation.",
+  "contextDocumentIds": [
+    "doc-core-stage6-noop-lifecycle-contract-20260927",
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Focused lifecycle/recovery/eviction/host timing readiness before item4; not Stage6/performance/UX PASS.",
+  "riskSummary": "Bounded private Rust state/resource ownership and exact family accounting. Full measurement and downstream unchanged view/edit appearance/positions/linebreaks including transients remain required. Core managed worktree tool has no cross-repository target; dedicated Core lane created by Git fallback. Original chat checkout preserved.",
+  "requiredEvidence": [
+    "evidence-core-stage6-ordinary-complete-20260927",
+    "evidence-core-noop-20260928"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 1,
+    "round": {
+      "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+      "roundId": "core-lifecycle-20260928-01a0e5da",
+      "workId": "flowdoc-core-lifecycle-20260928",
+      "scopeId": "core-lifecycle-and-host-control",
+      "scopeKeys": [
+        "core:retained-lifecycle",
+        "core:private-host-control"
+      ],
+      "allowedFiles": [
+        "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+        "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+        "packages/text-engine-rust-wasm/src/coldSessionLifecycle.ts",
+        "scripts/stage6/applicability.mjs",
+        "scripts/stage6/preflight.mjs",
+        "scripts/stage6/verify.mjs",
+        "tests/coldSessionStage3.test.ts",
+        "tests/coldSessionStage4.test.ts",
+        "tests/coldSessionStage5.test.ts",
+        "tests/coldSessionNoOp.test.ts",
+        "tests/coldSessionLifecycle.test.ts",
+        "tests/stage6Preflight.test.ts"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "local-lifecycle-20260928",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent tool model/effort schema",
+        "observedAt": "2026-09-28T02:35:54.14Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+        "state": "active",
+        "roundId": "core-lifecycle-20260928-01a0e5da"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+        "baseCommit": "e8cd402bc102c157702418e12e1f8713853ad015",
+        "state": "active",
+        "roundId": "core-lifecycle-20260928-01a0e5da"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "lifecycle-work-01",
+        "dispatchSetId": "lifecycle-dispatch-01",
+        "laneId": "core-lifecycle",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-lifecycle-20260928",
+        "checklistId": "checklist-flowdoc-core-lifecycle-20260928",
+        "evidenceTarget": "evidence-core-lifecycle-20260928",
+        "revisionAttempt": 0,
+        "expectedHandoffId": "lifecycle-handoff-0",
+        "status": "active",
+        "locator": {
+          "threadId": "/root/lifecycle_work",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/core-lifecycle-work/flowdoc-vnext-core",
+          "branch": "codex/core-lifecycle-work-20260928",
+          "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-handoff.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-28T02:38:08.5777021Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator",
+          "monitorOwner": "01a0e5da-e9da-7f21-8d17-763389517c98",
+          "livenessDeadline": "2026-09-28T02:55:54.141Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "workhorse",
+          "modelId": "gpt-6-sol",
+          "reasoningEffort": "medium",
+          "reason": "One bounded lifecycle slice with settled retained-source and provider-cache contract and deterministic native/WASM tests; host transport separate.",
+          "smallerOptionAssessment": "Luna medium insufficient for persistent Rust alias lifetime, provider witness and exact accounting across structural inverses.",
+          "availabilitySnapshotRef": "local-lifecycle-20260928",
+          "escalationTriggers": [
+            "Two bounded revisions fail same reasoning limitation after correcting context; contract or scope question returns to PLAN before changes."
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Private Core mechanism only; geometry and Editor/Backend UX including transients remain mandatory downstream and unclaimed."
+        },
+        "requiredEvidence": [
+          "evidence-core-lifecycle-20260928"
+        ],
+        "roundId": "core-lifecycle-20260928-01a0e5da",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Implement settled private retained-source bounded recovery, real eviction and reused provider plans before host cancellation and full measurement.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "allowedScope": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "packages/text-engine-rust-wasm/src/coldSessionLifecycle.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/preflight.mjs",
+            "scripts/stage6/verify.mjs",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/coldSessionNoOp.test.ts",
+            "tests/coldSessionLifecycle.test.ts",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "forbiddenScope": [
+            "docs/",
+            "src/",
+            "scripts/stage6/corpus.mjs",
+            "tests/fixtures/",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock"
+          ],
+          "acceptanceCriteria": [
+            "Implement Ready/DerivedMissing/Disposed with Rust retained source, authored properties and provider authority. Explicit bounded Evict releases real derived payload plus acceleration anchor (no retained alias counted as freed), explicit Recover keeps receipt/revision/family/inverse. Pinning returns resource-in-use. No Dispose/Create, host facts, or implicit whole-paragraph rebuild.",
+            "Recover a short isolated admitted complete run using actual source/provider revision-bound outside witnesses. Missing derived anchor is not missing authored owner. Typed unchanged missing witness/owner/provider mismatch/budget/fault failures and retry; independent cold equality; Apply/Enter/Join recovery-required only for needed targets; unrelated misses do not block EOF no-op.",
+            "Family-local real Rustybuzz ShapePlan cache genuinely used via shape_with_plan before eviction. Capacity exactly 2 entries derived from admitted fixture Latin/en and Thai/th two-key working set; deterministic FIFO replacement of oldest unpinned entry, resource-in-use if no victim; bounded lookups, no hidden warmup. Key includes exact font digest/index/variations, direction/script/language/canonical features/provider version/policy. Cold charges creation once; explicit recover charges rebuild. Prove real released resources/bytes, plan reuse, eviction, pinning and recovery.",
+            "Continuous checked fixed-size family maintenance and disposal accounting, no per-event history. Count actual source/property/provider/witness/allocation/free/index/hash/ABI work once including rejected and QA-cancelled attempts. Final compact family summary before last disposal; no accepted mutation count or revision change for maintenance. Structural inverse preservation and pinned snapshots accounted honestly.",
+            "Keep shape-plan-cache-eviction exact named adversarial row and committed edit; record historical churn provenance versus current private explicit eviction, test true dependent cache-miss, explicit recovery then cold-equal edit. Preserve generator/corpus IDs, 180/11271 denominator, caps512/512/1024 and timing8ms/16.7ms/1.50. Static actualWASM75ordinary Accepted and15NoOp remain cold-equal. No fullperformance or all-context recovery claim.",
+            "Focused native and actualWASM lifecycle, negatives, atomic fault/retry, pinning, sibling/family/disposal tests and stable candidate Core npm run check pass. Clean committed actual manifest and durable handoff. No public exports/Editor/Backend/geometry/Markdown changes. Host execution control is separately packeted next in this same round, QA is not host proof; unchanged view/edit appearance/positions/linebreaks/transient frames stays mandatory downstream."
+          ],
+          "relevantEvidenceIds": [
+            "evidence-core-stage6-ordinary-complete-20260927",
+            "evidence-core-noop-20260928"
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 1,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent false lifecycle/recovery/resource-release support before measurement.",
+                "existingProofInsufficient": "Ordinary/no-op evidence does not prove eviction, positive bounded recovery or shape-plan reuse; normal focused executable tests provide new narrow proof."
+              }
+            ]
+          },
+          "unknowns": [
+            {
+              "id": "host-control-next-slice",
+              "summary": "Actual host cancellation follows lifecycle in separate bounded packet this round; QA is not host proof.",
+              "disposition": "deferred",
+              "returnTrigger": "PLAN accepts lifecycle candidate and dispatches private host control packet."
+            },
+            {
+              "id": "full-measurement-geometry",
+              "summary": "Full performance and all-context certificates plus unchanged Core view/edit geometry and downstream UI remain unproven.",
+              "disposition": "deferred",
+              "returnTrigger": "Separately authorized later measurement and geometry rounds."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "remaining-prerequisites",
+              "kind": "freeze-scope",
+              "reason": "User approved remaining settled lifecycle/host prerequisites before item4; no new design, audit, gates, benchmark or downstream expansion. Direct WORK without children.",
+              "decidedBy": "user",
+              "decidedAt": "2026-09-28T02:35:54.140Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "workhorse",
+            "modelId": "gpt-6-sol",
+            "reasoningEffort": "medium",
+            "reason": "One bounded lifecycle slice with settled retained-source and provider-cache contract and deterministic native/WASM tests; host transport separate.",
+            "smallerOptionAssessment": "Luna medium insufficient for persistent Rust alias lifetime, provider witness and exact accounting across structural inverses.",
+            "availabilitySnapshotRef": "local-lifecycle-20260928",
+            "escalationTriggers": [
+              "Two bounded revisions fail same reasoning limitation after correcting context; contract or scope question returns to PLAN before changes."
+            ]
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+            "worktree": "C:/Users/nekot/.codex/worktrees/core-lifecycle-work/flowdoc-vnext-core"
+          },
+          "escalationTriggers": [
+            "Safety/correctness blocker",
+            "Authority violation",
+            "Missing prerequisite changes architecture or contract",
+            "Scope escape"
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0e5da-e9da-7f21-8d17-763389517c98",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator"
+          }
+        },
+        "packetDigest": "ac1e322e37263ae7b7fd9e0de66d6d67d0d85516ff77da487467c60d85bd067a"
+      }
+    ],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-28T02:35:54.14Z",
+  "updatedAt": "2026-09-28T02:35:54.14Z"
+}

@@ -1,0 +1,59 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-lifecycle-20260928",
+  "phaseId": "phase-flowdoc-core-lifecycle-20260928",
+  "title": "Lifecycle and host cancellation acceptance",
+  "items": [
+    {
+      "id": "lifecycle-1",
+      "label": "Implement Ready/DerivedMissing/Disposed with Rust retained source, authored properties and provider authority. Explicit bounded Evict releases real derived payload plus acceleration anchor (no retained alias counted as freed), explicit Recover keeps receipt/revision/family/inverse. Pinning returns resource-in-use. No Dispose/Create, host facts, or implicit whole-paragraph rebuild.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "lifecycle-2",
+      "label": "Recover a short isolated admitted complete run using actual source/provider revision-bound outside witnesses. Missing derived anchor is not missing authored owner. Typed unchanged missing witness/owner/provider mismatch/budget/fault failures and retry; independent cold equality; Apply/Enter/Join recovery-required only for needed targets; unrelated misses do not block EOF no-op.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "lifecycle-3",
+      "label": "Family-local real Rustybuzz ShapePlan cache genuinely used via shape_with_plan before eviction. Capacity exactly 2 entries derived from admitted fixture Latin/en and Thai/th two-key working set; deterministic FIFO replacement of oldest unpinned entry, resource-in-use if no victim; bounded lookups, no hidden warmup. Key includes exact font digest/index/variations, direction/script/language/canonical features/provider version/policy. Cold charges creation once; explicit recover charges rebuild. Prove real released resources/bytes, plan reuse, eviction, pinning and recovery.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "lifecycle-4",
+      "label": "Continuous checked fixed-size family maintenance and disposal accounting, no per-event history. Count actual source/property/provider/witness/allocation/free/index/hash/ABI work once including rejected and QA-cancelled attempts. Final compact family summary before last disposal; no accepted mutation count or revision change for maintenance. Structural inverse preservation and pinned snapshots accounted honestly.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "lifecycle-5",
+      "label": "Keep shape-plan-cache-eviction exact named adversarial row and committed edit; record historical churn provenance versus current private explicit eviction, test true dependent cache-miss, explicit recovery then cold-equal edit. Preserve generator/corpus IDs, 180/11271 denominator, caps512/512/1024 and timing8ms/16.7ms/1.50. Static actualWASM75ordinary Accepted and15NoOp remain cold-equal. No fullperformance or all-context recovery claim.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "lifecycle-6",
+      "label": "Focused native and actualWASM lifecycle, negatives, atomic fault/retry, pinning, sibling/family/disposal tests and stable candidate Core npm run check pass. Clean committed actual manifest and durable handoff. No public exports/Editor/Backend/geometry/Markdown changes. Host execution control is separately packeted next in this same round, QA is not host proof; unchanged view/edit appearance/positions/linebreaks/transient frames stays mandatory downstream.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-lifecycle-20260928",
+      "evidenceIds": []
+    },
+    {
+      "id": "host-control",
+      "label": "Second bounded packet: authenticated private pre-entry host cancellation and honest too-late completion across ordinary/no-op/Enter/Join/recovery with actual host delivery and exact family/ABI/host accounting; full measurement remains deferred.",
+      "state": "pending",
+      "evidenceTarget": "evidence-core-host-control-20260928",
+      "evidenceIds": []
+    }
+  ],
+  "createdAt": "2026-09-28T02:35:54.140Z",
+  "updatedAt": "2026-09-28T02:35:54.140Z"
+}
