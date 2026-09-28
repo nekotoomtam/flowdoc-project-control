@@ -142,6 +142,7 @@ describe("Editor selection overlay zoom motion sync lane", () => {
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-editor-core-integration-20260928",
       ],
     })
   })

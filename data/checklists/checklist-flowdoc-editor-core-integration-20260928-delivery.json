@@ -1,0 +1,31 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-editor-core-integration-20260928-delivery",
+  "phaseId": "phase-flowdoc-editor-core-integration-20260928-delivery",
+  "title": "Deliver real retained Core editing in Editor",
+  "items": [
+    {
+      "id": "delivery-integration",
+      "state": "blocked",
+      "label": "Core alone calculates; type/delete/Enter/join through real Editor",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "No product implementation or new-session UX claimed. Missing revision-bound Core consumer output."
+    },
+    {
+      "id": "delivery-parity",
+      "state": "blocked",
+      "label": "Identical appearance, positions and linebreaks on unchanged inputs, including transient frames",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "Baseline captured only; new-session transition proof pending."
+    },
+    {
+      "id": "delivery-response",
+      "state": "blocked",
+      "label": "Measure real input-to-visible response without claiming full admission",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "Baseline orchestration-inclusive timings are not sufficient for target-path response acceptance."
+    }
+  ],
+  "createdAt": "2026-09-28T08:58:26.917Z",
+  "updatedAt": "2026-09-28T08:58:26.917Z"
+}

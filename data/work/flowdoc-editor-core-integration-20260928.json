@@ -1,0 +1,93 @@
+{
+  "kind": "work",
+  "id": "flowdoc-editor-core-integration-20260928",
+  "title": "Editor retained Core editing integration",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-editor",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "blocked",
+  "summary": "Fresh version3 inline discovery completed; feature NOT complete. Owner decision: Defer full180/11271 measurement and exact mixed2048 [500,500)+A shape-plan-cache-eviction uncertified-seam repair. They are not prerequisites for all Editor integration. Reuse ordinary75/no-op15/lifecycle/host Evidence. Do not claim Gate2/performance admission. Current product boundary discovery and corrected live browser baseline: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json. Packet: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/inline-discovery-packet.json. No separate WORK room, no old task resumed, no product mutation.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Recommended bounded contract change: expose a Core-owned retained editing product session and revision-bound paint/line/caret result, seed view and editing from the same content/style/constraints, then connect a one-paragraph Editor slice with typing/delete/Enter/inverse join and every transition frame unchanged. Do not substitute Creator value newline for authored paragraph Enter/join. No downstream task automatically opened.",
+  "riskSummary": "Routine discovery only. Core60258d9 and Editord1a9670 inspected. Existing Creator baseline has unchanged page/glyph geometry in14/14 sampled frames after correcting harness-induced scrolling; this does not prove new-engine parity or every possible transient. CDP input-to-ready24.87ms/delete25.10ms includes polling; not key-to-visible or performance admission. Full180/11271 and named seam remain deferred until actual chosen-path impact.",
+  "blockedBy": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
+  "unblockOwner": "Core and Editor contract owners via PLAN",
+  "requiredEvidence": [
+    "evidence-core-lifecycle-20260928",
+    "evidence-core-host-control-20260928"
+  ],
+  "createdAt": "2026-09-28T08:58:26.917Z",
+  "updatedAt": "2026-09-28T08:58:26.917Z",
+  "coordination": {
+    "version": 3,
+    "revision": 0,
+    "round": {
+      "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
+      "roundId": "editor-core-integration-20260928-01a0e735",
+      "workId": "flowdoc-editor-core-integration-20260928",
+      "scopeId": "editor-core-product-integration",
+      "scopeKeys": [
+        "editor:retained-core-integration"
+      ],
+      "allowedFiles": [
+        "data/work/flowdoc-editor-core-integration-20260928.json",
+        "data/phases/",
+        "data/checklists/",
+        "generated/project-index.json",
+        "tests/"
+      ],
+      "state": "active",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "host-schema-20260928",
+        "hostId": "local",
+        "source": "Current create_thread host capability schema",
+        "observedAt": "2026-09-28T08:58:26.917Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
+        "roundId": "editor-core-integration-20260928-01a0e735",
+        "baseCommit": "df3e38b38eecb5f17a33ab6cab81b1a3d2b5c2eb",
+        "state": "active"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  }
+}

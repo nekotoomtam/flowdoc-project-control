@@ -450,7 +450,7 @@ describe("project roadmap Work Queue", () => {
   it("publishes roadmap cards and the first executable Work path without changing node truth", async () => {
     const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
 
-    expect(model.work).toHaveLength(expectedLegacyWork.length + 70);
+    expect(model.work).toHaveLength(expectedLegacyWork.length + 71);
     for (const work of expectedLegacyWork) {
       expect(model.work.find((item) => item.id === work.id)).toEqual(expect.objectContaining(work));
     }
@@ -571,6 +571,7 @@ describe("project roadmap Work Queue", () => {
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-editor-core-integration-20260928",
         "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
@@ -753,6 +754,7 @@ describe("project roadmap Work Queue", () => {
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-editor-core-integration-20260928",
       ],
     });
     expect(model.nodes.find((node) => node.id === "backend")).toMatchObject({
@@ -1341,6 +1343,12 @@ describe("project roadmap Work Queue", () => {
       .toContain("bounded Backend/Core and Backend HTTP contract compatibility only");
 
     for (const work of model.work) {
+      if (work.id === "flowdoc-editor-core-integration-20260928") {
+        expect(work.workState).toBe("blocked");
+        expect(work.blockedBy).toContain("revision-bound render/geometry result");
+        expect(work.unblockOwner).toBe("Core and Editor contract owners via PLAN");
+        continue;
+      }
       if (work.id === "flowdoc-core-stage6-20260927") {
         expect(work.workState).toBe("blocked");
         expect(work.blockedBy).toContain("prepared-first-thai-256-append rejects uncertified-seam");

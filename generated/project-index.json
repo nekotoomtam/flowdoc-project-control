@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "22cc888f64c128bfefe8300b0b35e7ce215ee7091bf5290a9369e243a3074d2b",
+  "sourceDigest": "0286e835f0988f1bab6268181719fbabe3fcbfaa14f1511c2a0b968881ee8bb6",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -335,7 +335,8 @@
         "editor-workspace-shell-redesign-foundation",
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
-        "editor-workspace-view-tabs-foundation"
+        "editor-workspace-view-tabs-foundation",
+        "flowdoc-editor-core-integration-20260928"
       ]
     },
     {
@@ -9619,6 +9620,108 @@
     },
     {
       "kind": "work",
+      "id": "flowdoc-editor-core-integration-20260928",
+      "title": "Editor retained Core editing integration",
+      "nodeId": "editor",
+      "parentWorkId": "flowdoc-product-development-resumption",
+      "workKind": "task",
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core",
+        "repo-project-control"
+      ],
+      "workState": "blocked",
+      "summary": "Fresh version3 inline discovery completed; feature NOT complete. Owner decision: Defer full180/11271 measurement and exact mixed2048 [500,500)+A shape-plan-cache-eviction uncertified-seam repair. They are not prerequisites for all Editor integration. Reuse ordinary75/no-op15/lifecycle/host Evidence. Do not claim Gate2/performance admission. Current product boundary discovery and corrected live browser baseline: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json. Packet: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/inline-discovery-packet.json. No separate WORK room, no old task resumed, no product mutation.",
+      "contextDocumentIds": [
+        "doc-flowdoc-workflow-economy-policy"
+      ],
+      "activeRole": "planning-partner",
+      "expectedOutput": "Recommended bounded contract change: expose a Core-owned retained editing product session and revision-bound paint/line/caret result, seed view and editing from the same content/style/constraints, then connect a one-paragraph Editor slice with typing/delete/Enter/inverse join and every transition frame unchanged. Do not substitute Creator value newline for authored paragraph Enter/join. No downstream task automatically opened.",
+      "riskSummary": "Routine discovery only. Core60258d9 and Editord1a9670 inspected. Existing Creator baseline has unchanged page/glyph geometry in14/14 sampled frames after correcting harness-induced scrolling; this does not prove new-engine parity or every possible transient. CDP input-to-ready24.87ms/delete25.10ms includes polling; not key-to-visible or performance admission. Full180/11271 and named seam remain deferred until actual chosen-path impact.",
+      "blockedBy": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
+      "unblockOwner": "Core and Editor contract owners via PLAN",
+      "requiredEvidence": [
+        "evidence-core-lifecycle-20260928",
+        "evidence-core-host-control-20260928"
+      ],
+      "createdAt": "2026-09-28T08:58:26.917Z",
+      "updatedAt": "2026-09-28T08:58:26.917Z",
+      "coordination": {
+        "version": 3,
+        "revision": 0,
+        "round": {
+          "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
+          "roundId": "editor-core-integration-20260928-01a0e735",
+          "workId": "flowdoc-editor-core-integration-20260928",
+          "scopeId": "editor-core-product-integration",
+          "scopeKeys": [
+            "editor:retained-core-integration"
+          ],
+          "allowedFiles": [
+            "data/work/flowdoc-editor-core-integration-20260928.json",
+            "data/phases/",
+            "data/checklists/",
+            "generated/project-index.json",
+            "tests/"
+          ],
+          "state": "active",
+          "policyId": "flowdoc-workflow-economy-v2"
+        },
+        "modelAvailabilitySnapshots": [
+          {
+            "id": "host-schema-20260928",
+            "hostId": "local",
+            "source": "Current create_thread host capability schema",
+            "observedAt": "2026-09-28T08:58:26.917Z",
+            "availableModelEfforts": [
+              {
+                "modelId": "gpt-6-astra",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-sol",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              },
+              {
+                "modelId": "gpt-6-luna",
+                "reasoningEfforts": [
+                  "medium"
+                ]
+              }
+            ]
+          }
+        ],
+        "integrationClaims": [
+          {
+            "repositoryId": "repo-project-control",
+            "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
+            "roundId": "editor-core-integration-20260928-01a0e735",
+            "baseCommit": "df3e38b38eecb5f17a33ab6cab81b1a3d2b5c2eb",
+            "state": "active"
+          }
+        ],
+        "returnOrderPolicy": "severity-then-arrival",
+        "roomRuns": [],
+        "handoffs": [],
+        "completionQueue": [],
+        "cleanup": []
+      },
+      "childWorkIds": [],
+      "phaseIds": [
+        "phase-flowdoc-editor-core-integration-20260928-discovery",
+        "phase-flowdoc-editor-core-integration-20260928-delivery"
+      ],
+      "workPathIds": [
+        "flowdoc-product-development-resumption",
+        "flowdoc-editor-core-integration-20260928"
+      ]
+    },
+    {
+      "kind": "work",
       "id": "flowdoc-fast-delivery-risk-register",
       "title": "FlowDoc Fast Delivery Risk Register",
       "nodeId": "flowdoc",
@@ -15096,6 +15199,7 @@
         "flowdoc-document-structure-database-model",
         "flowdoc-document-structure-north-star",
         "flowdoc-documentation-authority-cleanup",
+        "flowdoc-editor-core-integration-20260928",
         "flowdoc-fast-delivery-risk-register",
         "flowdoc-first-delivery-round",
         "flowdoc-frontend-expert-roadmap",
@@ -18732,6 +18836,48 @@
       "summary": "Done: Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 records the documentation authority policy foundation without deleting product-repository Markdown. The policy makes Project Control the canonical home for FlowDoc-wide shared understanding, allows repo-local Markdown only for code-adjacent, repository-owned, or historical purposes, requires Authority Boundary wording for surviving repo-local Markdown, blocks product-repository docs/superpowers plans or specs for FlowDoc-wide truth, and sequences cleanup as inventory, classification, Project Control summary or registration, then retirement. Evidence target evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31 is work-scoped and does not promote product truth.",
       "createdAt": "2026-08-31T14:20:00.000Z",
       "updatedAt": "2026-08-31T14:30:00.000Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-editor-core-integration-20260928-delivery",
+      "workId": "flowdoc-editor-core-integration-20260928",
+      "title": "Deliver real retained Core editing in Editor",
+      "phaseState": "blocked",
+      "order": 1,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "verificationTarget": "checklist-flowdoc-editor-core-integration-20260928-delivery",
+      "summary": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
+      "stopConditions": [
+        "Concrete contract or ownership change",
+        "Acceptance criteria satisfied; no additional proof"
+      ],
+      "createdAt": "2026-09-28T08:58:26.917Z",
+      "updatedAt": "2026-09-28T08:58:26.917Z"
+    },
+    {
+      "kind": "phase",
+      "id": "phase-flowdoc-editor-core-integration-20260928-discovery",
+      "workId": "flowdoc-editor-core-integration-20260928",
+      "title": "Resolve actual Editor/Core integration boundary",
+      "phaseState": "done",
+      "order": 0,
+      "repositoryIds": [
+        "repo-editor",
+        "repo-core"
+      ],
+      "activeRole": "cross-repo-boundary-reviewer",
+      "verificationTarget": "checklist-flowdoc-editor-core-integration-20260928-discovery",
+      "summary": "Bounded inline discovery, actual browser baseline and source inspection completed. Missing product result boundary changes contract and scope; no implementation lane dispatched.",
+      "stopConditions": [
+        "Concrete contract or ownership change",
+        "Acceptance criteria satisfied; no additional proof"
+      ],
+      "createdAt": "2026-09-28T08:58:26.917Z",
+      "updatedAt": "2026-09-28T08:58:26.917Z"
     },
     {
       "kind": "phase",
@@ -28285,6 +28431,68 @@
     },
     {
       "kind": "checklist",
+      "id": "checklist-flowdoc-editor-core-integration-20260928-delivery",
+      "phaseId": "phase-flowdoc-editor-core-integration-20260928-delivery",
+      "title": "Deliver real retained Core editing in Editor",
+      "items": [
+        {
+          "id": "delivery-integration",
+          "state": "blocked",
+          "label": "Core alone calculates; type/delete/Enter/join through real Editor",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "No product implementation or new-session UX claimed. Missing revision-bound Core consumer output."
+        },
+        {
+          "id": "delivery-parity",
+          "state": "blocked",
+          "label": "Identical appearance, positions and linebreaks on unchanged inputs, including transient frames",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "Baseline captured only; new-session transition proof pending."
+        },
+        {
+          "id": "delivery-response",
+          "state": "blocked",
+          "label": "Measure real input-to-visible response without claiming full admission",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "Baseline orchestration-inclusive timings are not sufficient for target-path response acceptance."
+        }
+      ],
+      "createdAt": "2026-09-28T08:58:26.917Z",
+      "updatedAt": "2026-09-28T08:58:26.917Z"
+    },
+    {
+      "kind": "checklist",
+      "id": "checklist-flowdoc-editor-core-integration-20260928-discovery",
+      "phaseId": "phase-flowdoc-editor-core-integration-20260928-discovery",
+      "title": "Resolve actual Editor/Core integration boundary",
+      "items": [
+        {
+          "id": "discovery-path",
+          "state": "passed",
+          "label": "Resolve actual path and ownership",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "Editor coreAdapter.ts and creatorPreviewSession.ts; Core coldSessionStage3.ts and QA-only Rust feature at exact commits."
+        },
+        {
+          "id": "discovery-baseline",
+          "state": "passed",
+          "label": "Inspect unmodified real UI baseline",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json:14/14 sampled equal page/glyph frames; actual insert/delete; Enter suppressed; zero browser exceptions."
+        },
+        {
+          "id": "discovery-decision",
+          "state": "passed",
+          "label": "Record current owner deferrals and contract impact",
+          "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+          "verificationNote": "This Work and inline-discovery-packet.json override old blanket Gate2 prerequisite for this round without mutating closed contexts."
+        }
+      ],
+      "createdAt": "2026-09-28T08:58:26.917Z",
+      "updatedAt": "2026-09-28T08:58:26.917Z"
+    },
+    {
+      "kind": "checklist",
       "id": "checklist-flowdoc-fast-delivery-risk-register",
       "phaseId": "phase-flowdoc-fast-delivery-risk-register",
       "title": "FlowDoc Fast Delivery Risk Register Checklist",
@@ -37053,10 +37261,20 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-28T04:35:27.250Z",
-    "currentGoal": "Establish Stage6/Gate2 admission prerequisites using retained fixed corpus on current run-owned API; implement only missing harness, return precise actionable failure if required capability is absent.",
-    "currentBlocker": "Required fixed corpus prepared-first-thai-256-append rejects uncertified-seam at Core b48f194; expected revision1, unchanged actual0. Stage6/Gate2 not admitted.",
+    "generatedAt": "2026-09-28T08:58:26.917Z",
+    "currentGoal": "Recommended bounded contract change: expose a Core-owned retained editing product session and revision-bound paint/line/caret result, seed view and editing from the same content/style/constraints, then connect a one-paragraph Editor slice with typing/delete/Enter/inverse join and every transition frame unchanged. Do not substitute Creator value newline for authored paragraph Enter/join. No downstream task automatically opened.",
+    "currentBlocker": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
     "activeWork": [
+      {
+        "workId": "flowdoc-editor-core-integration-20260928",
+        "title": "Editor retained Core editing integration",
+        "milestones": {
+          "planning": "complete",
+          "implementation": "not-required",
+          "verification": "not-required",
+          "truthPromotion": "pending"
+        }
+      },
       {
         "workId": "flowdoc-core-stage6-20260927",
         "title": "Core Stage6 lifecycle and fixed Gate2 admission",
@@ -37163,12 +37381,12 @@
     ]
   },
   "governanceCost": {
-    "approximateContextTokens": 20860,
-    "contextDocumentCount": 4,
+    "approximateContextTokens": 3442,
+    "contextDocumentCount": 1,
     "evidenceCreated": 0,
     "durableDocumentsCreated": 0,
     "implementationCommitCount": 0,
     "reviewCycleCount": 0,
-    "reopenCount": 1
+    "reopenCount": 0
   }
 }

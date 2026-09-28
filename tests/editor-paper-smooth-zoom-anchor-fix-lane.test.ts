@@ -144,6 +144,7 @@ describe("Editor paper smooth zoom anchor fix lane", () => {
         "editor-workspace-status-strip-foundation",
         "editor-workspace-toolbar-foundation",
         "editor-workspace-view-tabs-foundation",
+        "flowdoc-editor-core-integration-20260928",
       ],
     })
   })
