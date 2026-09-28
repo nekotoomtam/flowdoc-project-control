@@ -28,7 +28,7 @@
   "updatedAt": "2026-09-28T08:58:26.917Z",
   "coordination": {
     "version": 3,
-    "revision": 0,
+    "revision": 1,
     "round": {
       "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
       "roundId": "editor-core-integration-20260928-01a0e735",
@@ -44,7 +44,7 @@
         "generated/project-index.json",
         "tests/"
       ],
-      "state": "active",
+      "state": "released",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -79,9 +79,9 @@
       {
         "repositoryId": "repo-project-control",
         "planTaskId": "01a0e735-73d9-7f20-b68e-3cccf1b94176",
-        "roundId": "editor-core-integration-20260928-01a0e735",
         "baseCommit": "df3e38b38eecb5f17a33ab6cab81b1a3d2b5c2eb",
-        "state": "active"
+        "state": "released",
+        "roundId": "editor-core-integration-20260928-01a0e735"
       }
     ],
     "returnOrderPolicy": "severity-then-arrival",
