@@ -1,0 +1,38 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-noop-20260928",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+  "pathOrContractId": "core-private-exact-eof-noop/1",
+  "verificationSummary": "Exact committed EOF empty replacement (including empty session) returns private NoOp with identical TS handle, Rust token and live revision; unchanged authoritative state and accepted mutation ledger, checked noOpEvents and actual unique family work. Static actualWASM75 ordinary Accepted/coldEqual plus15 NoOp/unchangedcoldEqual at ccfce0669f17634b3f9e3d2d308a21fe4bd135df.\n\nNative release cold_session107/107; actualWASM focused6pass/1existing conditional skip; Core npm run check441files3035pass/1existing skip. PLAN reviewed exact16-file manifest, no-op branch and fixed checked counters, all5 actual auth lookups, bounded anchors, no publication/provider/whole-source work, QA cancellation/fault isolation, native overflow, same object/token, mixed WASM exact family sums and Stage5 inverse. Independent PLAN inspection of360 rawcalls hash fbe3f06bb8a6a3487a6f5c6de96d866df3f2e32fd19a50911d8b01ab8e0e7c78 confirms all75+15 and caps max475/139/260 within512/512/1024. ScopeLock acceptance binds exact base, terminal and packet; main checks/cleanup are reported in external terminal after execution. Proof locators: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json, work-handoff.json, static-applicability.json, core-check.log. Full180burst/11271 timing, heap, scaling NOT_RUN. 15static diagnostic rows are not fullburst execution; immutable burst mapping remains180handled/165mutations if all succeed. New private QA no-op-completion checkpoint reuses fault machinery, not real host cancellation. Native overflow injection only; no WASM injected overflow claim. Private adapter lacks host-control envelope/operation identity; implement settled retained-source recovery/eviction and synchronous pre-entry/too-late host control before item4. Do not substitute QA faults or expand interruptible lifecycle. Core unchanged view/edit geometry including transients remains mandatory downstream; public/Editor/Backend/geometry/UX unproven. No map update.",
+  "verifiedAt": "2026-09-28T02:06:53.897Z",
+  "validity": {
+    "claim": "Exact committed EOF empty replacement (including empty session) returns private NoOp with identical TS handle, Rust token and live revision; unchanged authoritative state and accepted mutation ledger, checked noOpEvents and actual unique family work. Static actualWASM75 ordinary Accepted/coldEqual plus15 NoOp/unchangedcoldEqual at ccfce0669f17634b3f9e3d2d308a21fe4bd135df.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+      "scripts/stage6/applicability.mjs",
+      "scripts/stage6/verify.mjs",
+      "tests/coldSessionNoOp.test.ts",
+      "tests/coldSessionStage4.test.ts"
+    ],
+    "sourceRevision": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+    "verificationMethod": "Native release cold_session107/107; actualWASM focused6pass/1existing conditional skip; Core npm run check441files3035pass/1existing skip. PLAN reviewed exact16-file manifest, no-op branch and fixed checked counters, all5 actual auth lookups, bounded anchors, no publication/provider/whole-source work, QA cancellation/fault isolation, native overflow, same object/token, mixed WASM exact family sums and Stage5 inverse. Independent PLAN inspection of360 rawcalls hash fbe3f06bb8a6a3487a6f5c6de96d866df3f2e32fd19a50911d8b01ab8e0e7c78 confirms all75+15 and caps max475/139/260 within512/512/1024. ScopeLock acceptance binds exact base, terminal and packet; main checks/cleanup are reported in external terminal after execution. Proof locators: C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json, work-handoff.json, static-applicability.json, core-check.log.",
+    "freshnessTriggers": [
+      "Changes to private command validation, identity, family counters, adapter or verifier require affected revalidation.",
+      "Lifecycle/host-control and full measurement/geometry need separately scoped implementation and proof; this Evidence does not discharge them."
+    ]
+  }
+}

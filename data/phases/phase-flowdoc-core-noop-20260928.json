@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-noop-20260928",
+  "workId": "flowdoc-core-noop-20260928",
+  "title": "Implement and accept exact EOF no-op",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core"
+  ],
+  "activeRole": "product-implementation-agent",
+  "verificationTarget": "checklist-flowdoc-core-noop-20260928",
+  "summary": "All five no-op acceptance criteria passed at Core ccfce066, accepted by PLAN; Core main gate passed. No lifecycle/performance/geometry or public/UX promotion. Exact records and terminal report retain downstream prerequisites.",
+  "stopConditions": [
+    "Acceptance criteria pass",
+    "New contract or missing prerequisite",
+    "No lifecycle/fullmeasurement expansion"
+  ],
+  "createdAt": "2026-09-28T01:27:27.559Z",
+  "updatedAt": "2026-09-28T02:13:58.063Z"
+}
