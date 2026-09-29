@@ -75,6 +75,45 @@ Product repair หลัง dispatch ต้องกลับ WORK; หยุด
   ห้ามลบ dirty/unmerged/unresolved state หรือฆ่า process ที่ไม่ทราบเจ้าของ
 - Budget: รายงานสั้นหนึ่งชุด; cleanup ไม่เป็น prerequisite ของ B1 ถ้าไม่มี authority conflict
 
+
+#### A2 cleanup round — 2026-09-29
+
+- Scope: inline maintenance of this catalog under Work
+  `flowdoc-remaining-work-plan-catalog`, Phase
+  `phase-flowdoc-remaining-work-plan-catalog`, checklist target `remaining-work-coverage`.
+  Role: Lane Reconciliation Reviewer / Project Control Steward. Size small; risk routine.
+- Base: `de60fed40dd43c74b8490e8ef89fd79faf109754`; isolated workspace:
+  `C:/Users/nekot/.codex/worktrees/a2-cleanup/flowdoc-project-control`.
+  No historical execution context is reactivated; no separate WORK room is dispatched.
+- Allowed: this A2 status subsection and deletion of the five exact residual directories below.
+  Forbidden: primary repository content, branches, other plans, execution registries and maps.
+- Owner decision: discard old worktree material without recovery copies. These five directories
+  have no `.git` marker or worktree registration. Cleanliness and merge ancestry cannot be
+  reconstructed from unregistered residual files; deletion rests on explicit owner discard,
+  not an assertion that their contents are clean or merged.
+- Retirement candidates, relative to `C:/Users/nekot/Documents/GitHub/flowdoc-vnext-core/.worktrees/`:
+  `core-creator-text-edit-geometry-v1`, `core-preview-explicit-line-breaks-20260908`,
+  `fd-core-doc-superpowers-retire-0831`, `fd-core-hidden-sdd-0901`,
+  `fd-core-project-docs-retire-0901`. Discard rationale: abandoned unregistered lane material,
+  explicitly unwanted by the owner; no archival copy is requested.
+- Inspection: 7,427 entries in the residual directories, no nested reparse points detected.
+  No non-PowerShell process command line matched the Core/Backend `.worktrees` paths.
+  This does not prove that no external process holds an open file handle; no process is killed.
+- Retain: `C:/Users/nekot/Documents/GitHub/flowdoc-vnext-backend/.worktrees/flowdoc-vnext-core`
+  is a junction targeting the actual Core main checkout, not a sixth residual checkout.
+  Backend tracked dependencies resolve `../flowdoc-vnext-core`; no tracked usage of this
+  junction was found. Retain the link conservatively; do not traverse or delete its target.
+- Acceptance / proof budget: five candidates absent or explicitly blocked, retained junction
+  classified, product main HEAD/status unchanged, and `npm run check` on worktree and main.
+  Evidence target: filesystem/worktree/process observations and check outputs in this task.
+  Existing product tests do not prove local directory absence. Document budget: this subsection only.
+  Model: current session, inline; no new model or host-availability claim. Return: this task.
+- Status: BLOCKED for deletion; discovery complete. The automatic approval review rejected the
+  exact five-directory removal command with `blocked by policy` before execution. No deletion
+  occurred and no bypass was attempted. The five candidates remain; A2 is not closed.
+  Next action: owner removes these five directories manually, then a fresh read-only check
+  confirms absence before marking A2 complete. This is housekeeping, not product Evidence.
+
 ## หมวด B — Core text engine
 
 ### B1 — Stage 5: Enter/join แบบ atomic และ bounded
