@@ -108,7 +108,7 @@ Product repair หลัง dispatch ต้องกลับ WORK; หยุด
   Evidence target: filesystem/worktree/process observations and check outputs in this task.
   Existing product tests do not prove local directory absence. Document budget: this subsection only.
   Model: current session, inline; no new model or host-availability claim. Return: this task.
-- - Status: CLOSED — 2026-09-29. The owner manually deleted all five listed residual directories.
+- Status: CLOSED — 2026-09-29. The owner manually deleted all five listed residual directories.
   Fresh `Test-Path -LiteralPath` checks confirmed all five absent. Each of Project Control,
   Core, Backend and Editor had only its primary `main` worktree before this documentation follow-up.
   The Backend junction remains classified as a retained link to Core main, not residual lane content.
@@ -125,7 +125,7 @@ Product repair หลัง dispatch ต้องกลับ WORK; หยุด
   Required verification remains `npm run check` in the isolated workspace and on main.
   This closes residual-directory housekeeping only; no product Evidence or map is promoted.
 
-หมวด B — Core text engine
+## หมวด B — Core text engine
 
 ### B1 — Stage 5: Enter/join แบบ atomic และ bounded
 
