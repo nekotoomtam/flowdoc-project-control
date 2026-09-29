@@ -206,12 +206,12 @@ intentionally unchanged boundaries.
 Reusable skills should be written only after their workflow has been repeated
 enough to prove the trigger, scope, inputs, outputs, and stop conditions.
 
-The Work Type Routing Model is the first routing layer before packaged skills.
-It lets the PLAN room classify a lane as `planning-coordination`,
-`product-implementation`, `evidence-review`, `documentation-authority`,
-`ux-design-exploration`, or `lane-reconciliation`, then put the needed
-instructions into the Context Capsule. A Work Type can point toward a skill
-candidate, but it does not create a packaged Codex skill by itself.
+Use `docs/domains/flowdoc-workflow-economy-policy.md` as the current routing
+authority before choosing a skill. Classify owner, scope, work authority, and
+verification needs there, then load only a skill relevant to the task. The Work
+Type Routing Model is historical context, not a prerequisite or an alternate
+current workflow. Do not load it by default or revive its execution ceremony.
+A skill candidate does not create a packaged skill by itself.
 
 ### FlowDoc repository health audit
 

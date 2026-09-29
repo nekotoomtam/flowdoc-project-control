@@ -156,7 +156,8 @@ Must not do:
 - Delete a dirty worktree.
 - Delete historical or unresolved branch refs without a recorded owner decision.
   Approved current-round cleanup follows flowdoc-coordination-controls.md;
-  clean merged branches may be removed after the main gate without asking again.
+  clean merged branches may be removed after integration verification or valid
+  proof reuse under the Workflow Economy Policy without asking again.
 - Remove a lane whose unique patch is not understood.
 - Treat hash difference as useful work if patch-equivalence says otherwise.
 

@@ -79,10 +79,13 @@ applicable, not a blocker. Do not create execution records merely for closure.
 Ownership, scope, supporting verification, and product/map boundaries still
 must be clear. Broad or separate-room work retains the execution fields below.
 
-1. Read Project Control first: `AGENTS.md`,
-   `docs/domains/flowdoc-documentation-authority-policy.md`, this document,
-   `docs/domains/flowdoc-role-catalog.md`, and
-   `docs/domains/agent-and-skill-operating-model.md`.
+1. Start from Project Control `AGENTS.md` and the documentation authority policy.
+   Read only the relevant sections of this gate and referenced current rules.
+   Load the role catalog for an unresolved role question, and the agent/skill
+   operating model for an applicable coordination or skill question. Reuse
+   sections already read in the current task when their source is unchanged;
+   re-read when the source, scope, or authority changes. A reference alone does
+   not require loading its entire document or following all of its references.
 2. Resolve the execution context in the handoff language: Work path, owner
    repository, active role, Phase, Checklist, Evidence, risks, and unknown
    state.
@@ -98,9 +101,12 @@ must be clear. Broad or separate-room work retains the execution fields below.
    `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide
    truth.
 6. If repo-local Markdown is truly needed, read that repository's `AGENTS.md`,
-   keep the file code-adjacent and repository-owned, add an Authority Boundary,
-   and add or update that repository's guard so tracked Markdown cannot survive
-   without the boundary.
+   keep the file code-adjacent and repository-owned, and retain or add its
+   Authority Boundary. Use the existing relevant guard when it covers the
+   change. Add or change a guard only for a demonstrated coverage gap relevant
+   to this task and within its authorized scope; otherwise report the gap and
+   its effect on acceptance. Editing Markdown alone does not require new guard
+   code or a repository-wide guard rollout.
 7. Use `git ls-files -- '*.md'` for repository-wide Markdown authority scans.
    Use visible scans only to supplement tracked-file evidence, not to replace
    it.

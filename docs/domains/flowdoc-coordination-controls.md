@@ -57,8 +57,11 @@ One integration owner holds the merge turn for each repository across PLANs.
 Before taking that turn, read the latest canonical registry on main and verify
 that the expected PLAN/round identity and base commit still match. A stale
 worktree cannot authorize its own merge. Serialize integration, verify the
-candidate against current main, merge, run the main gate, then release the
-turn. A failed gate freezes further integration for that repository while the
+candidate against current main, merge, then verify or reuse passing results
+under the Workflow Economy Policy's Verification by impact rules before
+releasing the turn. An unchanged fast-forward does not require automatic
+full-suite repetition. Ownership and Scope Lock preflights remain mandatory.
+A failed required check freezes further integration for that repository while the
 same-round WORK receives a Revision Packet. If a new PLAN task has started,
 open a new round and fresh WORK context instead. Preserve the failed round's
 worktree and evidence as historical material pending reconciliation.
@@ -182,7 +185,8 @@ and release a completed round. `release-round` requires the current PLAN,
 resolved room attempts and handoffs, an empty queue, resolved cleanup decisions,
 and no frozen integration claim. It closes accepted rooms and releases ownership
 while preserving their accepted evidence history. Operationally release only
-after the integration/main gate and cleanup decision; the command does not run
+after integration verification or valid proof reuse under the Workflow Economy
+Policy, and the cleanup decision; the command does not run
 Git or infer gate results from the filesystem.
 The typed command contract lives in `src/model/coordination.ts`. Packet creation
 and initial registry setup remain Project Control record maintenance subject
@@ -228,13 +232,15 @@ typing. Scope or threshold changes require PLAN review before acceptance.
 ## 5. Cleanup and approval scope
 
 Approval to execute an ordinary delivery round includes cleanup of that
-round's clean, fully merged worktree and branch after worktree and main gates
-pass. The designated integration owner performs or explicitly delegates it;
+round's clean, fully merged worktree and branch after verification or valid
+proof reuse under the Workflow Economy Policy's Verification by impact rules.
+The designated integration owner performs or explicitly delegates it;
 WORK never merges or removes a lane merely because its local tests passed.
 
 Before removal verify exact repository, branch, worktree path, clean tracked
-and untracked state, merged ancestry or reviewed patch equivalence, required
-main gate, and whether a live user trial/process still needs the worktree.
+and untracked state, merged ancestry or reviewed patch equivalence, passing
+required checks or valid proof reuse for the integrated content, and whether a
+live user trial/process still needs the worktree.
 If any condition fails, retain and report the blocker. Never recursively delete
 a path to bypass a failed Git cleanup; inspect residual files first.
 
