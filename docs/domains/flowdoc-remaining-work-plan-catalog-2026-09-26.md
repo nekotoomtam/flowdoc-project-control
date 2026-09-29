@@ -108,13 +108,24 @@ Product repair หลัง dispatch ต้องกลับ WORK; หยุด
   Evidence target: filesystem/worktree/process observations and check outputs in this task.
   Existing product tests do not prove local directory absence. Document budget: this subsection only.
   Model: current session, inline; no new model or host-availability claim. Return: this task.
-- Status: BLOCKED for deletion; discovery complete. The automatic approval review rejected the
-  exact five-directory removal command with `blocked by policy` before execution. No deletion
-  occurred and no bypass was attempted. The five candidates remain; A2 is not closed.
-  Next action: owner removes these five directories manually, then a fresh read-only check
-  confirms absence before marking A2 complete. This is housekeeping, not product Evidence.
+- - Status: CLOSED — 2026-09-29. The owner manually deleted all five listed residual directories.
+  Fresh `Test-Path -LiteralPath` checks confirmed all five absent. Each of Project Control,
+  Core, Backend and Editor had only its primary `main` worktree before this documentation follow-up.
+  The Backend junction remains classified as a retained link to Core main, not residual lane content.
+- Prior blocker: automatic approval review rejected the earlier deletion command with
+  `blocked by policy` before execution. No tool bypass was attempted; the owner performed deletion.
+- Product boundary: Core HEAD remains `2f0f1e4ba8e13625e046709ffc330ea15c270122`,
+  Backend HEAD `a1745c4c030466bb326c53e93de4146bb11700ed`, and Editor HEAD
+  `d1a9670a868493531423e3e92ff5e4d186c1141b`. Backend and Editor remain clean.
+  Core still reports its pre-existing 101 tracked deletions; A2 does not resolve or certify that state.
+- Closure follow-up: base `ac39d2ca855ae0b836d15631ce416c323176df26`, workspace
+  `C:/Users/nekot/.codex/worktrees/a2-close/flowdoc-project-control`.
+  Scope is this subsection and its generated projection; the original catalog Phase/checklist
+  remain completed catalog-registration records, not reactivated execution. No other plan is closed.
+  Required verification remains `npm run check` in the isolated workspace and on main.
+  This closes residual-directory housekeeping only; no product Evidence or map is promoted.
 
-## หมวด B — Core text engine
+หมวด B — Core text engine
 
 ### B1 — Stage 5: Enter/join แบบ atomic และ bounded
 
