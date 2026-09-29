@@ -18,6 +18,9 @@ For any FlowDoc request, first identify from Project Control:
 - known risks, unknowns, and owner decisions.
 
 Then read the owning repository's `AGENTS.md` before changing product behavior.
+Small inline documentation/status maintenance may use the explicit request and
+existing canonical record instead of creating new Work/Phase/Checklist records.
+Mark absent execution IDs not applicable; follow the workflow economy policy.
 Use `docs/domains/flowdoc-system-map.md` only for verified product-wide truth.
 If Project Control cannot resolve those fields, stop with:
 
@@ -143,20 +146,29 @@ Documentation Synthesizer, Product Implementation Agent, or Planning Partner.
 ## Editing and verification
 
 - Preserve unrelated user changes.
-- For non-read-only work, use a dedicated worktree from `main` unless the user
-  explicitly requests same-checkout maintenance.
-- Commit and verify in the worktree, merge only after its gate passes, rerun the
-  gate on `main`, then remove only clean merged current-round lanes.
+- Small documentation/status maintenance may use the existing checkout when
+  scope is separable and no other work conflicts. Use an isolated worktree when
+  concurrent work, experiments, or change risk requires separation.
+- Verify the changed area and all affected areas, including dependencies and
+  consumers. Briefly record impact and chosen checks; unclear impact calls for
+  investigation, not an automatic full-suite run.
+- Wait for prerequisites to finish and read the final diff before testing.
+- Commit after relevant checks pass. Reuse passing results after an unchanged
+  fast-forward when tested content, relevant base, dependencies, configuration,
+  and environment are unchanged. Conflicts or further changes require checks
+  of the changed and affected areas, not automatic full-suite repetition.
+- Keep separate-room ownership and Scope Lock preflights. Remove only clean
+  merged current-round lanes after verification or valid proof reuse.
 - Never delete a dirty, unmerged, or unresolved lane.
 - Regenerate projections with `npm run generate` after canonical record changes.
 - A Work record is not Evidence; cite durable repository tests, files, commits,
   or contracts for strong claims.
 
-Before claiming completion run:
-
-```text
-npm run check
-```
+Completion requires passing checks for the changed and affected areas.
+`npm run check` remains available for a concrete full-system verification need;
+it is not mandatory for every task. Stop when acceptance and impact coverage
+pass; repeat or broaden checks only for a new change, failure, stale prerequisite,
+or unresolved affected area.
 
 ## Global bootstrap
 
@@ -180,3 +192,8 @@ Evidence or map updates
 Intentionally not changed
 Next recommended work
 ```
+
+For small inline maintenance, update the existing record and report the result,
+supporting checks, and remaining issues briefly. Do not create new Work, Phase,
+Checklist, or report artifacts merely to close a status item. Preserve the
+difference between completed, cancelled, and superseded work.

@@ -22,6 +22,13 @@ Each role answers four questions:
 
 ## Documentation Authority For Roles
 
+Small inline documentation/status maintenance follows
+`docs/domains/flowdoc-workflow-economy-policy.md`: use the explicit request and
+existing canonical record, mark absent execution IDs not applicable, and return
+the result, supporting checks, and remaining issues briefly. The execution
+context fields below apply to broad or separate-room work; do not create new
+Work/Phase/Checklist records merely to close status.
+
 These rules apply before any role creates, updates, migrates, or deletes
 FlowDoc Markdown.
 

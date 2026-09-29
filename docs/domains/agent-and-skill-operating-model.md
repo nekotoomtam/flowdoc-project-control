@@ -47,6 +47,12 @@ future FlowDoc Markdown work.
 
 ## Delivery room model
 
+Small inline documentation/status maintenance follows the exception in the
+workflow economy policy: use the explicit request and existing canonical record,
+without creating Work/Phase/Checklist or room artifacts merely for closure.
+The following execution-round and separate-room controls remain in force for
+work that uses those modes.
+
 The current delivery authority is
 `docs/domains/flowdoc-workflow-economy-policy.md`. PLAN creates one bounded
 Minimal Kickoff Packet with independent Work Size and Risk Tier, one authority

@@ -72,6 +72,13 @@ lined up:
 Before any FlowDoc agent writes, moves, retires, summarizes, or deletes
 Markdown, it must pass this gate.
 
+For small inline documentation/status maintenance, apply the exception in
+`docs/domains/flowdoc-workflow-economy-policy.md`: the explicit request and
+existing canonical record resolve context; absent Phase/Checklist IDs are not
+applicable, not a blocker. Do not create execution records merely for closure.
+Ownership, scope, supporting verification, and product/map boundaries still
+must be clear. Broad or separate-room work retains the execution fields below.
+
 1. Read Project Control first: `AGENTS.md`,
    `docs/domains/flowdoc-documentation-authority-policy.md`, this document,
    `docs/domains/flowdoc-role-catalog.md`, and
@@ -163,7 +170,9 @@ target, cleanup action, and remaining risks.
 
 ## Handoff Requirement
 
-Any FlowDoc round that touches Markdown must end with:
+Small inline maintenance updates the existing record and returns the result,
+supporting checks, and remaining issues briefly. Preserve completed, cancelled,
+and superseded dispositions. Broad FlowDoc rounds that touch Markdown end with:
 
 - PASS, FAIL, BLOCKER, RISK, and UNKNOWN statements as applicable.
 - Work ID, Phase ID, Checklist item IDs, and Evidence target.

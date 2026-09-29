@@ -60,10 +60,58 @@ when findings determine architecture, repository ownership, contract, safety,
 or scope. Discovery returns findings and stops; PLAN decides whether to open a
 fresh implementation WORK.
 
+## Small inline maintenance
+
+Owner decision, 2026-09-29: small documentation or status maintenance may use
+the existing checkout when its scope is separable and no other work conflicts.
+Inspect the diff and preserve unrelated changes. Use an isolated worktree when
+concurrent work, experiments, or change risk requires separation; real separate
+WORK rooms keep their existing ownership, identity, and Scope Lock controls.
+
+For small inline maintenance, the explicit user request and relevant existing
+record or canonical document are sufficient context. State owner, scope,
+acceptance, affected areas, and verification briefly in the current task. Update
+the existing record with the result, supporting checks, and remaining issues.
+Do not create a Work, Phase, Checklist, registry, or new report merely to close
+a status item. Mark unavailable Phase/Checklist IDs not applicable; do not
+reactivate a historical execution context. Broad or separate-room work still
+requires its execution context and the controls below.
+
+## Verification by impact
+
+Verify the changed area and every other area affected by the change. Before
+running checks, briefly identify the change, its dependencies and consumers,
+and which checks cover those effects, including other repositories when needed.
+File extension alone does not establish impact: policy or contract prose may
+affect guidance, consumers, validation, and generated projections.
+
+There is no mandatory full-suite check for every task. `npm run check` remains
+available when a concrete task-specific reason calls for full-system coverage.
+If impact is unclear, investigate the boundary first; uncertainty alone does
+not automatically require the full suite. Do not skip an affected area merely
+to save time. Record material coverage gaps and do not claim unverified scope.
+
+Wait for prerequisite commands, including generation, to finish successfully
+before starting dependent checks. Read the final diff, including prose and
+headings, before testing; a passing test does not replace that review.
+
+After integration, reuse passing results for an unchanged fast-forward when
+the tested content, relevant base, dependencies, configuration, and environment
+remain the same. Confirm that identity and record the reused result; do not
+automatically run the suite again on `main`. Conflicts, additional changes, or
+relevant environment changes require checks of the changed and affected areas.
+Separate-room acceptance and integration preflights still apply; proof reuse
+does not bypass candidate identity, ownership, or mutation-containment checks.
+
+Stop when acceptance and the selected impact coverage pass. A repeat or broader
+check needs a reason tied to a new change, failure, stale prerequisite, or
+unresolved affected area, within the existing stopping rules.
+
 ## Scope Lock Enforcement v1
 
-Scope Lock is part of the Safety Kernel for every Risk Tier. The immutable
-policy v2 packet binds one repository, exact base commit, registered worktree,
+For registered execution rounds, Scope Lock is part of the Safety Kernel for
+every Risk Tier. Small inline maintenance uses the bounded context above. The
+immutable policy v2 packet binds one repository, exact base commit, registered worktree,
 work authority, allowed and forbidden repository-relative paths, ordered
 acceptance criteria, budgets, model decision, return identity, and packet
 digest. Scope paths use `/`, reject absolute paths and `..`, compare by path

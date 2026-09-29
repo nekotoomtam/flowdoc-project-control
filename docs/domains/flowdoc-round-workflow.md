@@ -29,6 +29,11 @@ supporting execution summary and does not create a second authority.
 
 ## PLAN round identity
 
+Small inline documentation/status maintenance follows the exception in the
+workflow economy policy: use the explicit request and existing record, mark
+absent execution IDs not applicable, and do not create a new registry or room
+merely for status closure. The following identity rules govern execution rounds.
+
 One PLAN task owns exactly one execution round. New PLAN task means a new
 delivery round and a fresh execution context. A new PLAN creates a new Work
 execution record and version 3 registry with fresh round, dispatch, room,
@@ -113,11 +118,11 @@ Work only inside the approved scope:
 - Product behavior changes belong in the owning product repository.
 - Project Control changes should edit canonical sources under `data/` and
   `docs/`.
-- Non-read-only FlowDoc work must happen in a dedicated worktree created from
-  `main` before implementation unless the user explicitly approves
-  same-checkout maintenance.
-- Commit and verify in the worktree before merging. Keep `main` as the clean
-  integration target, not the experimentation surface.
+- Small documentation/status maintenance may use the existing checkout when
+  scope is separable and no other work conflicts. Use an isolated worktree when
+  concurrent work, experiments, or change risk requires separation.
+- Wait for prerequisite commands to finish, review the final diff, and verify
+  the changed and affected areas before committing or merging.
 - `generated/project-index.json` is deterministic output and should be
   regenerated, not hand-edited.
 - Work records can track intent, but they do not prove truth.
@@ -126,18 +131,22 @@ Work only inside the approved scope:
 
 ## 5. Verification
 
-Before reporting success, run fresh verification for the repository or
-repositories touched. Record the command and result.
+Identify the changed area and all affected dependencies and consumers, including
+other repositories when needed. Choose checks covering those effects and record
+commands and results. Investigate unclear impact first. A full suite is optional
+and requires a concrete task-specific reason; it is not mandatory for every task.
 
-For worktree-based rounds, verification has two gates:
+After an unchanged fast-forward, reuse passing results if tested content,
+relevant base, dependencies, configuration, and environment are unchanged.
+Confirm that identity; do not automatically repeat checks on `main`. Conflicts,
+additional changes, or relevant environment changes require verification of the
+changed and affected areas. Separate-room Scope Lock preflights still apply.
 
-1. Run the relevant gate in the worktree before merging.
-2. After the worktree is merged to `main`, run the required gate again on
-   `main`.
-
-Only after the merged `main` gate passes may the completed worktree and merged
-branch be removed. Do not remove a dirty worktree, an unmerged branch, or a
-lane whose unique patches are not understood.
+After verification or valid proof reuse, remove only clean merged current-round
+lanes. Do not remove a dirty worktree, an unmerged branch, or a lane whose unique
+patches are not understood. Stop when acceptance and impact coverage pass;
+additional checks need a new change, failure, stale prerequisite, or unresolved
+affected area.
 
 If a claim is strong enough to affect a Node, Document map, or system map, it
 needs durable support such as:
@@ -177,12 +186,17 @@ If the round changes Project Control's shared knowledge:
 - update Node links or Work state when supported;
 - update the narrowest map that changed;
 - regenerate `generated/project-index.json`;
-- run the Project Control gate.
+- run the impact-scoped Project Control checks.
 
 Do not update `docs/domains/flowdoc-system-map.md` merely because work started
 or because a plan expects success. Update maps after reviewed evidence exists.
 
 ## 8. Handoff
+
+For small inline maintenance, update the existing record with the result,
+supporting checks, and remaining issues. Do not create Work/Phase/Checklist or
+report artifacts solely to close status. Preserve completed, cancelled, and
+superseded dispositions. Broad work uses the context below.
 
 End broad work with:
 

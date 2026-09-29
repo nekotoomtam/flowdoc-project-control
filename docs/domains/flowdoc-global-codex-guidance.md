@@ -2,7 +2,7 @@
 
 This file is the copy-ready FlowDoc section for
 `C:\Users\nekot\.codex\AGENTS.md`. The maintained authority stays in Project
-Control. Sync it only after the Project Control main gate passes.
+Control. Sync it only after the impact-scoped checks pass for the main content.
 
 ## FlowDoc entrypoint
 
@@ -21,6 +21,11 @@ owner repository, promoting shared truth, changing product behavior, or planning
 cross-repository work. Resolve the request or Work path, owner repository,
 active role, Phase, Checklist target, Evidence target, risks, and unknowns; then
 read the owner repository's `AGENTS.md` before editing it.
+
+For small inline documentation/status maintenance, the explicit request and
+existing canonical record suffice; absent Phase/Checklist IDs are not applicable.
+Do not create new execution records merely to close a status item. Follow the
+small inline maintenance rules in the workflow economy policy.
 
 If Project Control is unavailable or cannot resolve those fields, stop:
 
@@ -117,17 +122,27 @@ wins over a generic planning path.
 
 ## Worktree and verification
 
-For non-read-only FlowDoc work, use a dedicated worktree from `main` unless the
-user explicitly requests same-checkout maintenance. Preserve unrelated changes.
-Verify and commit in the worktree; merge only after its gate passes; rerun the
-gate on `main`; then remove only clean merged current-round lanes. Never delete
-dirty, unmerged, or unresolved state.
+Small documentation/status maintenance may use the existing checkout when scope
+is separable and no other work conflicts. Use an isolated worktree when concurrent
+work, experiments, or change risk requires separation. Preserve unrelated changes.
 
-Project Control completion requires fresh:
+Verify the changed area and all affected areas, including dependencies and
+consumers. Briefly identify impact and checks. Investigate unclear impact first;
+do not automatically run everything. `npm run check` is available for a concrete
+full-system need, not mandatory for every task. Wait for prerequisites to finish
+and review the final diff before testing.
 
-```text
-npm run check
-```
+Commit after relevant checks pass. Reuse passing results after an unchanged
+fast-forward if tested content, relevant base, dependencies, configuration, and
+environment are unchanged. Conflicts or additional changes require checks of
+the changed and affected areas. Keep separate-room ownership and Scope Lock
+preflights. Remove only clean merged current-round lanes after verification or
+valid proof reuse; never delete dirty, unmerged, or unresolved state.
+
+Small inline work closes with an update to the existing record and a brief result,
+supporting checks, and remaining issues. Preserve completed/cancelled/superseded
+distinctions. Stop when acceptance and impact coverage pass; repeated or broader
+checks need a new change, failure, stale prerequisite, or unresolved affected area.
 
 ## Bootstrap and override
 
