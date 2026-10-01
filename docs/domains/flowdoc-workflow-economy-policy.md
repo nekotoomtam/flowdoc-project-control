@@ -21,8 +21,9 @@ Economy may reduce coordination and documentation, never the following safety
 properties:
 
 1. one current PLAN owns one execution round and its integration boundary;
-2. a new PLAN creates a fresh round, packet, room identities, return route, and
-   registry version 3; closed PLAN or WORK execution context is read-only;
+2. a new PLAN creates a fresh round and packet; real separate WORK dispatch adds
+   fresh room identities, return route, and registry version 3;
+   closed PLAN or WORK execution context is read-only;
 3. a WORK may act only inside its explicit repository, authority, allowed scope,
    forbidden scope, and acceptance criteria;
 4. product WORK returns candidates to PLAN and cannot promote shared truth;
@@ -74,8 +75,40 @@ acceptance, affected areas, and verification briefly in the current task. Update
 the existing record with the result, supporting checks, and remaining issues.
 Do not create a Work, Phase, Checklist, registry, or new report merely to close
 a status item. Mark unavailable Phase/Checklist IDs not applicable; do not
-reactivate a historical execution context. Broad or separate-room work still
-requires its execution context and the controls below.
+reactivate a historical execution context. Broad work retains the planning and
+proof appropriate to its scope; separate-room controls apply only to real
+separate WORK dispatch.
+
+## Single-room and separate-room work
+
+Choose coordination steps from the actual working arrangement. Work Size and
+Risk Tier determine planning and proof depth, not how many rooms to open.
+
+- Single-room work states the goal, scope, acceptance criteria, and checks for
+  changed and affected areas. Reuse the request and existing canonical records
+  where appropriate. Do not create Work, Phase, Checklist, reports, room
+  registries, return messages, receipt acknowledgements, or room monitoring
+  merely to imitate separate-room work. Large or risky work still needs its
+  necessary plan, evidence, and authorized acceptance.
+- Real separate WORK dispatch needs a work-based reason, such as distinct
+  responsibility or independent parallel work. Before dispatch, resolve owner,
+  scope, room identity, retrievable locator, monitoring, and an authorized,
+  supported return route. Then apply the coordination and Scope Lock controls;
+  opening rooms is not a compliance ritual.
+- When moving from single-room work to separate WORK, prepare and check the
+  dispatch context before work starts in the new room. Reuse applicable plans
+  and evidence without inventing earlier send or receipt events.
+- After dispatch, moving work back to the main room first requires resolving
+  the existing ownership and room state under the coordination controls.
+  Relabelling work as inline does not bypass the product-repair boundary,
+  active-round restrictions, or outstanding acceptance obligations.
+
+Every arrangement preserves authorization, scope, acceptance authority,
+impact-scoped verification, and the stopping rule. Room arrangement and worktree
+isolation are independent decisions. Separating discovery, implementation, and
+verification authority does not by itself require separate rooms. Room-only
+fields are not applicable when no separate WORK exists; existing execution
+records still retain their genuine status and obligations.
 
 ## Verification by impact
 

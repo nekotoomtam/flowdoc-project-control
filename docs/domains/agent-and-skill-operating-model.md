@@ -50,8 +50,11 @@ future FlowDoc Markdown work.
 Small inline documentation/status maintenance follows the exception in the
 workflow economy policy: use the explicit request and existing canonical record,
 without creating Work/Phase/Checklist or room artifacts merely for closure.
-The following execution-round and separate-room controls remain in force for
-work that uses those modes.
+For all work, follow the policy's Single-room and separate-room work rules:
+size and risk determine planning and proof depth, not room count. Inline work
+does not invent room registries or return steps. Changing the arrangement after
+dispatch must resolve existing ownership and acceptance obligations first.
+Room arrangement and worktree isolation are independent decisions.
 
 The current delivery authority is
 `docs/domains/flowdoc-workflow-economy-policy.md`. PLAN creates one bounded
@@ -60,8 +63,8 @@ Minimal Kickoff Packet with independent Work Size and Risk Tier, one authority
 criteria, reusable Evidence, Proof Budget, Document Budget, model decision,
 unknown dispositions, escalation triggers, and return route.
 
-One PLAN task owns exactly one execution round and creates a fresh version 3
-execution context. Registry versions 1 and 2 are historical and read-only.
+One PLAN task owns exactly one execution round. Real separate WORK dispatch
+requires a fresh version 3 execution context. Registry versions 1 and 2 are historical and read-only.
 Cross-PLAN ownership transfer is not supported. Prior accepted commits,
 Evidence, and Project Control records are immutable inputs; older PLAN/WORK
 tasks and their live state are not continuation inputs.

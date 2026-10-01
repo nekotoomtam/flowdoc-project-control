@@ -80,8 +80,15 @@ outputs follow the workflow policy's Verification output boundary. Split
 discovery from implementation when the finding can change architecture,
 ownership, contract, safety, or scope.
 
-One PLAN task owns exactly one execution round. A new PLAN creates a fresh
-version 3 execution context. Registry versions 1 and 2 and all closed PLAN/WORK
+Follow the workflow policy's Single-room and separate-room work rules. Size or
+risk alone does not require another room. Inline work retains necessary planning,
+proof, and acceptance without synthetic room records or return steps. Room
+arrangement and worktree isolation are independent; changing to inline after
+dispatch does not bypass existing ownership or acceptance obligations.
+
+One PLAN task owns exactly one execution round. A new PLAN creates fresh planning
+context; real separate WORK dispatch requires a fresh version 3 execution
+context. Registry versions 1 and 2 and all closed PLAN/WORK
 execution contexts are historical and read-only. Cross-PLAN ownership transfer
 is not supported. Prior accepted commits, Evidence, and records may be immutable
 input; old tasks must not be sent, waited, revised, resumed, or handed off.
