@@ -72,12 +72,14 @@ lined up:
 Before any FlowDoc agent writes, moves, retires, summarizes, or deletes
 Markdown, it must pass this gate.
 
-For small inline documentation/status maintenance, apply the exception in
+For single-room work without registered execution, apply the entrypoint rule in
 `docs/domains/flowdoc-workflow-economy-policy.md`: the explicit request and
-existing canonical record resolve context; absent Phase/Checklist IDs are not
-applicable, not a blocker. Do not create execution records merely for closure.
+relevant canonical context may suffice; execution IDs are not applicable and
+their absence alone is not a blocker. Registered execution keeps its required
+IDs. Do not create execution records merely to enter the workflow or close work.
 Ownership, scope, supporting verification, and product/map boundaries still
-must be clear. Broad or separate-room work retains the execution fields below.
+must be clear. Registered execution retains the execution fields below; broad
+single-room work retains planning and proof proportionate to its scope.
 
 1. Start from Project Control `AGENTS.md` and the documentation authority policy.
    Read only the relevant sections of this gate and referenced current rules.
@@ -113,9 +115,10 @@ must be clear. Broad or separate-room work retains the execution fields below.
 8. Keep plan, evidence, and map truth separate. A plan can say what the round
    intends to do. Evidence records and repository-owned checks support bounded
    claims. Maps change only after supported Project Control records exist.
-9. If Project Control cannot identify the Work path, owner repository, current
-   Phase, Checklist target, and Evidence target, stop before editing and report
-   exactly:
+9. If Project Control cannot resolve the required context for the chosen mode,
+   stop before editing and report exactly below. For registered execution this
+   includes Work, Phase, Checklist, and Evidence targets; for unregistered
+   single-room work use the entrypoint fields above, not inapplicable IDs:
 
 ```text
 BLOCKER: FlowDoc Project Control unavailable or unresolved.

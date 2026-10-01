@@ -22,10 +22,12 @@ cross-repository work. Resolve the request or Work path, owner repository,
 active role, Phase, Checklist target, Evidence target, risks, and unknowns; then
 read the owner repository's `AGENTS.md` before editing it.
 
-For small inline documentation/status maintenance, the explicit request and
-existing canonical record suffice; absent Phase/Checklist IDs are not applicable.
-Do not create new execution records merely to close a status item. Follow the
-small inline maintenance rules in the workflow economy policy.
+For single-room work without registered execution, the explicit request and
+relevant canonical context may suffice; execution IDs are not applicable.
+Resolve owner, role, scope, acceptance, evidence needs, risks, and unknowns;
+missing inapplicable IDs alone do not trigger the blocker below. Registered
+execution retains its required IDs and controls. Follow the workflow economy
+policy rather than creating records merely to enter the workflow.
 
 If Project Control is unavailable or cannot resolve those fields, stop:
 

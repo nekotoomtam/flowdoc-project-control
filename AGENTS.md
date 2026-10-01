@@ -14,13 +14,16 @@ For any FlowDoc request, first identify from Project Control:
 
 - the explicit request or Work path;
 - owner repository and active role;
-- current Phase, Checklist target, and Evidence target;
+- applicable Phase, Checklist target, and Evidence target;
 - known risks, unknowns, and owner decisions.
 
 Then read the owning repository's `AGENTS.md` before changing product behavior.
-Small inline documentation/status maintenance may use the explicit request and
-existing canonical record instead of creating new Work/Phase/Checklist records.
-Mark absent execution IDs not applicable; follow the workflow economy policy.
+Single-room work without registered execution may use the explicit request and
+relevant canonical context instead of creating Work/Phase/Checklist IDs merely
+to enter the workflow. Mark execution IDs not applicable in that mode; still
+resolve owner, role, scope, acceptance, evidence needs, risks, and unknowns.
+Registered execution retains its required IDs and controls. Follow the workflow
+economy policy; missing inapplicable IDs alone do not trigger the blocker below.
 Use `docs/domains/flowdoc-system-map.md` only for verified product-wide truth.
 If Project Control cannot resolve those fields, stop with:
 
@@ -40,8 +43,8 @@ docs/domains/flowdoc-workflow-economy-policy.md
 
 Do not load historical documents, closed task conversations, old registries,
 old branches/worktrees, unrelated Work trees, or unreferenced supporting
-documents by default. Load history only for explicit audit, conflict, Evidence
-recovery, or reconciliation.
+documents by default. Load only relevant history for user-requested explanation
+or review, explicit audit, conflict, Evidence recovery, or reconciliation.
 
 Read these supporting authorities only when their scope is actually involved:
 

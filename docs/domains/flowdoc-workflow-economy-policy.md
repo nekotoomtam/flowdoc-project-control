@@ -109,6 +109,12 @@ isolation are independent decisions. Separating discovery, implementation, and
 verification authority does not by itself require separate rooms. Room-only
 fields are not applicable when no separate WORK exists; existing execution
 records still retain their genuine status and obligations.
+For single-room work without registered execution, the entrypoint requires the
+request, owner, role, scope, acceptance criteria, evidence needs, risks, and
+unknowns. Phase/Checklist and other execution IDs are not applicable in that
+mode, including for code work; their absence alone is not a blocker. Registered
+execution retains its required IDs. This does not relax owner-repository rules,
+verification, isolation decisions, or existing execution obligations.
 
 ## Returning to an existing conversation
 
@@ -430,8 +436,9 @@ A Minimal Kickoff Packet contains only:
 Default context loading is: Current Truth Snapshot → packet → referenced current
 or supporting contract/Evidence. Do not load historical documents, old task
 conversations, old registries, old branches/worktrees, unrelated Work trees, or
-unreferenced supporting documents by default. Load history only for explicit
-audit, conflict, Evidence recovery, or reconciliation.
+unreferenced supporting documents by default. Load only relevant history for
+user-requested explanation or review, explicit audit, conflict, Evidence
+recovery, or reconciliation.
 
 A separate WORK room must acknowledge context, remain retrievable, and return
 through the agreed route. A local final answer alone is not a completed return.
@@ -484,7 +491,9 @@ Completion uses four distinct milestones:
 
 - `planning complete`: the packet is approved;
 - `implementation complete`: authorized behavior changes are finished;
-- `verification complete`: required checks pass;
+- `verification complete`: required checks pass and appropriate evidence covers
+  the acceptance criteria and affected areas; unresolved verification gaps are
+  reported separately and do not become PASS through risk acceptance;
 - `promoted truth`: PLAN has accepted and registered the supported truth.
 
 They must not be collapsed into a generic Done label.
