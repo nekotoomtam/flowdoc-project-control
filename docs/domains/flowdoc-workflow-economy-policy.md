@@ -161,8 +161,9 @@ For a real separate implementation WORK, PLAN computes an actual Git manifest
 from the registered worktree instead of trusting reported `changedFiles`. The
 manifest covers committed, staged, unstaged, untracked non-ignored, deleted,
 renamed, copied, and dirty-submodule paths; rename and copy checks include both
-endpoints. Discovery and verification reject any mutation. Implementation
-rejects forbidden paths before paths outside allowed scope.
+endpoints. Discovery and verification reject any candidate mutation; verification
+outputs follow the boundary below and do not weaken this manifest check.
+Implementation rejects forbidden paths before paths outside allowed scope.
 
 Acceptance requires a clean worktree, exact base and terminal commits, an
 unchanged packet digest, identical actual/payload/completion file sets, passing
@@ -215,11 +216,39 @@ Each WORK receives exactly one work authority:
 
 - `discovery`: read, inspect, compare, and return findings; no file mutation;
 - `implementation`: change only the allowed scope and verify that change;
-- `verification`: inspect and run checks; no file mutation.
+- `verification`: inspect and run checks without changing the candidate; bounded
+  verification outputs are permitted as described below.
 
 A WORK cannot expand its own authority, scope, proof budget, document budget,
 or downstream obligation. A needed expansion returns to PLAN as a blocker,
 risk, unknown, or Contract Change Request.
+
+### Verification output boundary
+
+Verification must not change what is being verified. Before running a check,
+identify its expected writes and output location; afterwards compare candidate
+state and account for the changes. Apply only the relevant case:
+
+- Temporary outputs such as caches, coverage, and test reports may be written
+  to a designated output area without overwriting existing work or real data.
+  Prefer output outside the candidate or an existing ignored output directory;
+  being ignored alone does not authorize overwriting its contents.
+- Checks that regenerate tracked files must use a non-writing comparison mode
+  when available, or an isolated scratch copy of the exact candidate and relevant
+  environment. Record that input identity and any generated differences. Do not
+  update the candidate's generated files or claim it passes merely because the
+  regenerated scratch copy passes. A difference is a finding for the owner.
+- A required source, configuration, or real-data repair is implementation work.
+  Return the finding to the responsible owner; do not make the repair to obtain
+  a pass while acting as verification.
+
+If a check unexpectedly changes candidate files, stop dependent checks, report
+the mutation and preserve the observed state. Do not silently reset, delete, or
+hide changes to satisfy the clean-state gate. Remove only outputs known to have
+been created by this verification and safe to discard; preserve pre-existing
+or uncertain files. Scope Lock acceptance still requires an unchanged candidate
+and its normal clean-state checks. This boundary does not grant permission for
+external side effects or change discovery authority.
 
 ## Risk Tier
 

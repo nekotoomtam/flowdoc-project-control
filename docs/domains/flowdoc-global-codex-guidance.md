@@ -56,6 +56,10 @@ model decision, and return route. Risk defaults to `routine`; `critical` needs a
 concrete reason. Use discovery-only WORK when findings can change architecture,
 ownership, contract, safety, or scope.
 
+Verification must not change the candidate. Temporary check outputs and tracked
+file regeneration follow the workflow policy's Verification output boundary;
+source/configuration/data repairs return to the responsible owner.
+
 New rounds use `flowdoc-workflow-economy-v2`. Scope Lock binds the exact base,
 worktree, allowed/forbidden paths, packet digest, terminal commit, and actual Git
 manifest; current separate-room acceptance and integration require a clean

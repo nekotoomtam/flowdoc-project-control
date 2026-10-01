@@ -75,8 +75,10 @@ or inline WORK. WORK gets its own compact model decision resolved through one
 referenced host availability snapshot; it never inherits PLAN's model.
 
 A WORK has one authority: discovery, implementation, or verification. Discovery
-and verification are read-only. Split discovery from implementation when the
-finding can change architecture, ownership, contract, safety, or scope.
+and verification are read-only with respect to the candidate; verification
+outputs follow the workflow policy's Verification output boundary. Split
+discovery from implementation when the finding can change architecture,
+ownership, contract, safety, or scope.
 
 One PLAN task owns exactly one execution round. A new PLAN creates a fresh
 version 3 execution context. Registry versions 1 and 2 and all closed PLAN/WORK
