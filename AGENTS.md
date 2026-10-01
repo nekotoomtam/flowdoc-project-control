@@ -169,6 +169,10 @@ Documentation Synthesizer, Product Implementation Agent, or Planning Partner.
   consumers. Briefly record impact and chosen checks; unclear impact calls for
   investigation, not an automatic full-suite run.
 - Wait for prerequisites to finish and read the final diff before testing.
+- Follow the policy's Evidence coverage before completion: connect criteria to
+  appropriate evidence, review coverage as well as results, and report gaps.
+  Skipped or unverified checks are not PASS; owner-accepted limitations do not
+  waive mandatory acceptance prerequisites or require another report.
 - Commit after relevant checks pass. Reuse passing results after an unchanged
   fast-forward when tested content, relevant base, dependencies, configuration,
   and environment are unchanged. Conflicts or further changes require checks

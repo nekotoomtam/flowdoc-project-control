@@ -150,6 +150,10 @@ consumers. Briefly identify impact and checks. Investigate unclear impact first;
 do not automatically run everything. `npm run check` is available for a concrete
 full-system need, not mandatory for every task. Wait for prerequisites to finish
 and review the final diff before testing.
+Follow the policy's Evidence coverage before completion: connect criteria to
+appropriate evidence, review coverage as well as results, and report gaps.
+Skipped or unverified checks are not PASS; owner-accepted limitations do not
+waive mandatory acceptance prerequisites or require another report.
 
 Commit after relevant checks pass. Reuse passing results after an unchanged
 fast-forward if tested content, relevant base, dependencies, configuration, and

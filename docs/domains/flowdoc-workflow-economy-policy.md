@@ -176,6 +176,35 @@ Stop when acceptance and the selected impact coverage pass. A repeat or broader
 check needs a reason tied to a new change, failure, stale prerequisite, or
 unresolved affected area, within the existing stopping rules.
 
+### Evidence coverage before completion
+
+Before verification, briefly connect acceptance criteria and affected behavior
+to the checks or reusable evidence that can establish them. Use the existing
+packet, checklist, or task explanation; no separate report or coverage artifact
+is required. Select checks by impact, not by test count or a default full suite.
+
+Match each claim to the kind and scope of its evidence. Text-presence checks
+can establish documentation consistency, not runtime behavior. Behavior tests
+support the scenarios actually exercised; a passing command, schema validation,
+or Scope Lock result alone does not establish complete acceptance coverage.
+Review policy meaning against the agreed requirement as well as its references;
+do not claim future agent compliance from documentation checks alone.
+
+Before closing, review both results and coverage. Skipped, unavailable, not-run,
+or inconclusive checks are not passing results. State any uncovered criterion
+or affected area and its consequence for acceptance. Fill only the necessary
+gap with an appropriate check or still-valid existing evidence; do not repeat
+unchanged passing checks merely to perform this review. Stop when coverage and
+acceptance pass.
+
+If the authorized owner accepts a risk or defers proof within the Safety Kernel,
+record the specific gap and decision in the existing record and report the
+outcome as accepted with the agreed limitation. The unverified claim remains
+unverified; do not relabel its check PASS or mark verification complete. This
+does not waive mandatory registry acceptance or Scope Lock prerequisites. If
+the mechanism cannot represent the qualified outcome, retain its pending or
+blocked state and explain the limitation instead of fabricating a passing result.
+
 ### Case selection examples
 
 Owner clarification, 2026-10-01: classify work by meaning and impact, not file

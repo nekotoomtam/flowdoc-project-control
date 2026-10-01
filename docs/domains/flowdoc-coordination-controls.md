@@ -135,7 +135,12 @@ attempt can advance acceptance. Wrong-room, wrong-PLAN and superseded returns
 are rejected/quarantined with a reason; retain their locator for reconciliation.
 
 Acceptance records the reviewer, decision, exact evidence, required checks and
-remaining scope. A rejected transition must leave the active registry state
+remaining scope. Apply the Workflow Economy Policy's Evidence coverage before
+completion: supplied passing checks alone do not prove that all criteria and
+affected areas are covered. The reviewer assesses that coverage; registry
+validation is not a semantic completeness proof. A recorded owner limitation
+cannot substitute for mandatory passing acceptance prerequisites.
+A rejected transition must leave the active registry state
 unchanged. PLAN separately records the rejection reason and locator in durable
 audit notes; that audit must not advance the room or acceptance state.
 Restart reads persisted state instead of reconstructing room status from chat.
