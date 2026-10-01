@@ -68,6 +68,10 @@ requires a fresh version 3 execution context. Registry versions 1 and 2 are hist
 Cross-PLAN ownership transfer is not supported. Prior accepted commits,
 Evidence, and Project Control records are immutable inputs; older PLAN/WORK
 tasks and their live state are not continuation inputs.
+Returning to an existing conversation follows the Workflow Economy Policy:
+discussion and eligible inline corrections do not reactivate a closed round.
+Verify canonical state before continuing active work, preserve acceptance
+history when correcting it, and use a new PLAN task for new registered execution.
 
 A real separate WORK room executes exactly one approved lane. It requires a
 retrievable locator, context acknowledgement, liveness, an authorized return route,

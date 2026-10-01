@@ -91,7 +91,11 @@ context; real separate WORK dispatch requires a fresh version 3 execution
 context. Registry versions 1 and 2 and all closed PLAN/WORK
 execution contexts are historical and read-only. Cross-PLAN ownership transfer
 is not supported. Prior accepted commits, Evidence, and records may be immutable
-input; old tasks must not be sent, waited, revised, resumed, or handed off.
+input; old execution contexts must not be sent, waited, revised, resumed, or handed off.
+Follow the policy's Returning to an existing conversation rules: discussion and
+eligible inline corrections may use the same chat without reopening its round.
+Check canonical state before resuming active work; substantive acceptance
+corrections preserve history. New registered execution needs a new PLAN task.
 
 When a real separate WORK room is used, an authorized and supported return route,
 retrievable locator, liveness, idempotent receipt, and PLAN-owned acceptance are

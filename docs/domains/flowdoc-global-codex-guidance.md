@@ -83,6 +83,10 @@ context; real separate WORK dispatch requires a fresh version 3 execution
 context. Registry versions 1 and 2 and closed PLAN/WORK
 execution contexts are historical and read-only. Cross-PLAN ownership transfer
 is unsupported. Historical Recovery Work may inspect but never reactivate them.
+Follow the policy's Returning to an existing conversation rules: discussion and
+eligible inline corrections may use the same chat without reopening its round.
+Check canonical state before resuming active work; substantive acceptance
+corrections preserve history. New registered execution needs a new PLAN task.
 
 When PLAN uses a real separate WORK room, an authorized and supported return route, retrievable locator,
 liveness, idempotent receipt, PLAN-owned acceptance, and the supporting

@@ -29,8 +29,11 @@ historical and read-only. Cross-PLAN
 ownership transfer is not supported. The current PLAN must not send, wait,
 revise, resume, or hand off through an older PLAN or WORK task. Missing history
 is recovered through separate read-only Historical Recovery Work; it never
-reactivates the inspected PLAN or WORK task. An older PLAN or WORK task remains
-historical and read-only; receiving a correction request does not reactivate it.
+reactivates the inspected PLAN or WORK execution context. A closed PLAN or WORK
+execution context remains historical and read-only; receiving a correction
+request does not reactivate it. Discussion and eligible inline corrections in
+the same conversation follow the Workflow Economy Policy's Returning to an
+existing conversation rules; they do not reopen the registry or acceptance.
 
 The same WORK room may receive a Revision Packet only while the same PLAN task
 and delivery round remain active. After a new PLAN task starts, unfinished or
@@ -41,8 +44,9 @@ conversation, liveness state, or Return Channel is not reusable execution
 state. Reconcile retained value separately, then materialize any approved input
 into the fresh round without attaching the older task or worktree.
 
-An older task may be inspected only for an explicit audit or evidence-recovery
-request and never regains execution authority. Before every dispatch, compare
+An older task may be inspected for a user-requested explanation, review, audit,
+or evidence recovery and never regains execution authority from that inspection.
+Read only the relevant history. Before every dispatch, compare
 the active task identity with the packet's PLAN task ID, monitor owner, and
 Return Channel. Any mismatch stops dispatch; do not repair it by sending a
 message to the older task.

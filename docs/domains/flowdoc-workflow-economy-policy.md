@@ -110,6 +110,42 @@ verification authority does not by itself require separate rooms. Room-only
 fields are not applicable when no separate WORK exists; existing execution
 records still retain their genuine status and obligations.
 
+## Returning to an existing conversation
+
+A conversation and its execution round are distinct. Closing a round ends that
+round's execution authority; it does not prohibit further discussion in the
+conversation. Before acting, use the canonical record to distinguish active,
+completed, cancelled, and superseded work. Inactivity, the last chat message,
+or archiving a conversation does not by itself establish round closure. If
+status is unclear, resolve it before mutation; do not guess or reopen a round.
+
+- Questions and reviews of prior work may be answered in the same conversation.
+  Read only the history needed for the user's request; no new execution round
+  or Historical Recovery Work record is required merely to explain it.
+- Work in a still-active round may continue after checking current ownership,
+  scope, state, and prerequisites. A pause in conversation does not confer or
+  remove execution authority.
+- A new request to correct a typo, link, or explanation may use inline
+  maintenance in the same conversation only when it does not alter the old
+  scope, evidence meaning, or acceptance outcome. Small edit size alone is not
+  an exemption. Closed execution registries remain read-only.
+- Findings that affect prior acceptance, or additional behavior work after
+  closure, require a new work scope and current-state checks. Record the finding
+  without reviving the old round's authority. Substantive corrections preserve
+  the original outcome and identify the correction's source, reason, and time
+  in the appropriate current record; never rewrite history to imply the original
+  acceptance was correct. Reuse old evidence only within its still-valid scope.
+- Late output from a closed or superseded WORK is reference material pending
+  review. Preserve its locator when relevant; do not advance old state or accept
+  it into a new round automatically.
+
+The same conversation may support discussion, scoping, and eligible inline
+maintenance without a new registered round. The current registry binds one
+PLAN task to one round: new registered execution requires a new PLAN task and
+fresh context, not another round attached to the old task. This policy does not
+implement multiple registered rounds per task or authorize cross-room messaging.
+Existing ownership, return-route, and acceptance controls still apply.
+
 ## Verification by impact
 
 Verify the changed area and every other area affected by the change. Before
