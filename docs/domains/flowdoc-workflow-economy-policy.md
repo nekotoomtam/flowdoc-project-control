@@ -107,6 +107,46 @@ Stop when acceptance and the selected impact coverage pass. A repeat or broader
 check needs a reason tied to a new change, failure, stale prerequisite, or
 unresolved affected area, within the existing stopping rules.
 
+### Case selection examples
+
+Owner clarification, 2026-10-01: classify work by meaning and impact, not file
+count, line count, or extension. These examples help select checks; they are
+not a checklist to run in full. Select only applicable cases, combine their
+coverage without duplicate checks, and use judgment for cases not listed.
+A short edit to a shared rule or contract is not cosmetic maintenance.
+
+| Change case | Relevant verification |
+| --- | --- |
+| Wording, formatting, or links with unchanged meaning | Review the rendered meaning, links, and generated content when affected. |
+| Status update from existing evidence | Confirm the evidence matches the item and remains valid; do not re-prove unchanged work. Keep completed, cancelled, and superseded distinct. |
+| Policy or contract meaning | Trace affected instructions, consumers, validators, and projections; verify their consistency and the behavior governed by the change where applicable. |
+| Local code behavior | Check the changed behavior, affected callers, and existing behavior that could regress. |
+| Shared components or cross-repository interfaces | Identify affected consumers and check the relevant integration boundaries and behavior. |
+| Deletion, permissions, or hard-to-reverse changes | Confirm exact targets, effects, applicable authorization, and recovery implications. Few changed lines do not imply low risk. |
+| Unknown impact | Inspect dependencies and consumers to establish the boundary before selecting checks; do not automatically run the full suite. |
+| Configuration or defaults | Check paths reading the setting, both explicit values and fallback/default behavior, in the relevant environment. |
+| Dependency or lockfile update | Check affected package consumers, installation/build resolution, and relevant compatibility. |
+| Move or rename intended to preserve behavior | Check imports, links, callers, and name-based or dynamic references; confirm preserved behavior. |
+| Persisted data structure or migration | Check existing-data reads, migration behavior, and consumers of the new format; account for rollback or mixed versions when applicable. |
+| Generator input, schema, or template | Regenerate from the canonical source, inspect its output, and check affected consumers; do not patch generated output alone. |
+| Tests, fixtures, or acceptance thresholds | Confirm the new expectation still matches the requirement and detects the relevant failure. A newly green test alone does not justify changing the criterion. |
+| Performance changes intended to preserve results | Check correctness, cache invalidation where relevant, and comparable before/after measurements for the affected workload. |
+| Revert or feature disablement | Check later dependencies, affected consumers, and data already produced. Reverting code does not necessarily restore previous state. |
+
+Apply these conditions across cases only when relevant:
+
+- Concurrent changes: inspect the latest relevant base and overlapping work
+  before integration. Reuse results only where the tested assumptions still
+  hold; verify newly changed or affected areas.
+- Unavailable or flaky checks: distinguish change failures from environment or
+  tool failures using available evidence. Report what remains unverified; do
+  not retry indefinitely or treat an eventual pass as proof of reliability.
+
+Choose isolation separately from the case label: use the existing small-inline
+maintenance exception only when its conditions hold, and choose a worktree for
+conflicting concurrent work, experiments, or risk requiring separation. These
+examples do not authorize broader edits, new gates, or additional artifacts.
+
 ## Scope Lock Enforcement v1
 
 For registered execution rounds, Scope Lock is part of the Safety Kernel for
