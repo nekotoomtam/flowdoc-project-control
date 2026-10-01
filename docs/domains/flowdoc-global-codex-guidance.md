@@ -77,9 +77,13 @@ version 3 execution context. Registry versions 1 and 2 and closed PLAN/WORK
 execution contexts are historical and read-only. Cross-PLAN ownership transfer
 is unsupported. Historical Recovery Work may inspect but never reactivate them.
 
-When PLAN uses a real separate WORK room, automatic return, retrievable locator,
+When PLAN uses a real separate WORK room, an authorized and supported return route, retrievable locator,
 liveness, idempotent receipt, PLAN-owned acceptance, and the supporting
-coordination controls are mandatory. PLAN must not repair a dispatched product
+coordination controls are mandatory. Follow the workflow policy's Return
+authorization and route selection before dispatch. Reuse verifiable human
+authorization within scope; another agent's message alone is not permission.
+The current registry does not support pull-only receipt; never fabricate a send.
+PLAN must not repair a dispatched product
 lane itself. Inline work does not synthesize separate-room ceremony.
 
 When acceptance criteria pass, stop. Additional proof requires a

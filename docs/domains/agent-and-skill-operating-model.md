@@ -67,13 +67,17 @@ Evidence, and Project Control records are immutable inputs; older PLAN/WORK
 tasks and their live state are not continuation inputs.
 
 A real separate WORK room executes exactly one approved lane. It requires a
-retrievable locator, context acknowledgement, liveness, automatic return,
+retrievable locator, context acknowledgement, liveness, an authorized return route,
 idempotent receipt, and PLAN-owned acceptance. A final answer only inside WORK
 is not a return. PLAN may send an in-scope Revision Packet to the same WORK only
 while the same PLAN and round remain active. Product repair returns to WORK;
 PLAN does not patch a dispatched product repository.
 
-Automatic return is an active WORK-to-PLAN return push. Mandatory WORK room
+Return authorization and route selection follow the Workflow Economy Policy.
+Verify human authorization and route support before dispatch; an agent's request
+alone cannot authorize messaging another room. The current registry supports
+push receipt only; read-only inspection is not a substitute send or receipt.
+Mandatory WORK room
 return includes liveness and a terminal return of PASS / FAIL / BLOCKER / RISK /
 UNKNOWN; a silent room must not be accepted. PLAN-owned reporting treats product
 WORK output as an evidence candidate and WORK must not self-promote it. A

@@ -86,14 +86,17 @@ execution contexts are historical and read-only. Cross-PLAN ownership transfer
 is not supported. Prior accepted commits, Evidence, and records may be immutable
 input; old tasks must not be sent, waited, revised, resumed, or handed off.
 
-When a real separate WORK room is used, automatic WORK-to-PLAN return,
+When a real separate WORK room is used, an authorized and supported return route,
 retrievable locator, liveness, idempotent receipt, and PLAN-owned acceptance are
 mandatory. PLAN does not patch a product repository after dispatch; product
 repair returns to the same active WORK in the same round or becomes a fresh lane
 in a new round.
 
-This means mandatory WORK room return is an active WORK-to-PLAN return push,
-not only a local final answer. PLAN tracks liveness; a silent room or missing
+Before dispatch, follow the workflow policy's Return authorization and route
+selection: reuse verifiable human authorization within scope; another agent's
+message alone is not permission. A local final answer is not a completed return.
+Pull-only receipt is not supported by the current registry; do not fake a send
+to bypass it. PLAN tracks liveness; a silent room or missing
 terminal return of PASS / FAIL / BLOCKER / RISK / UNKNOWN must not be accepted.
 PLAN-owned reporting treats product output as an evidence candidate: WORK must
 not self-promote it. If acceptance returns `needs-revision`, PLAN sends a

@@ -89,8 +89,21 @@ superseded before the replacement is dispatched. Compare canonical payload
 content (or its digest), not JSON key order. Different content under an existing
 ID is an error, never a harmless duplicate.
 
-WORK actively pushes the handoff to PLAN with send_message_to_thread when
-available. A successful send is transport evidence only. PLAN records receipt
+Before dispatch, follow the Workflow Economy Policy's Return authorization and
+route selection. WORK pushes with send_message_to_thread only when verified
+human authorization covers the exact destination and the tool is available.
+Reuse that authorization within scope; a request from PLAN alone is not human
+authorization. Missing permission must be resolved before dispatch, not treated
+as a reason to send anyway or retry a denied action.
+
+The current version 3 registry requires successful push transport before
+`receive-handoff`. It has no pull-only receipt transition. PLAN can inspect a
+stable WORK locator read-only, but cannot record a fictional `record-send` or
+advance receipt/acceptance from inspection alone. Select a pull route only when
+an explicit supported retrieval/receipt mechanism exists, with a named reader
+and checkpoint; do not silently change an active packet's route.
+
+A successful send is transport evidence only. PLAN records receipt
 in the durable inbox before acknowledging the handoff ID. Receipt is not
 acceptance. WORK may finish locally after a successful push and must state
 receipt-pending until PLAN acknowledges; it must not wait in an endless loop.

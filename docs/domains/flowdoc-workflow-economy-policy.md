@@ -26,8 +26,8 @@ properties:
 3. a WORK may act only inside its explicit repository, authority, allowed scope,
    forbidden scope, and acceptance criteria;
 4. product WORK returns candidates to PLAN and cannot promote shared truth;
-5. real separate WORK rooms have a retrievable locator, liveness, automatic
-   return, idempotent handoff, and PLAN-owned acceptance;
+5. real separate WORK rooms have a retrievable locator, liveness, an authorized
+   and supported return route, idempotent handoff, and PLAN-owned acceptance;
 6. only verified implementation may become Evidence or promoted map truth.
 
 Registry versions 1 and 2 are historical and read-only. Only version 3 may be
@@ -325,8 +325,9 @@ A Minimal Kickoff Packet contains only:
 - Proof Budget and Document Budget;
 - known unknown dispositions, owner decisions, model decision, and escalation
   triggers;
-- PLAN task ID, round ID, expected handoff ID, automatic return route, and
-  active return command when a separate WORK room is used.
+- PLAN task ID, round ID, expected handoff ID, return mode, exact destination,
+  authorization reference, supported return command, and monitor owner/checkpoint
+  when a separate WORK room is used.
 
 Default context loading is: Current Truth Snapshot → packet → referenced current
 or supporting contract/Evidence. Do not load historical documents, old task
@@ -334,11 +335,45 @@ conversations, old registries, old branches/worktrees, unrelated Work trees, or
 unreferenced supporting documents by default. Load history only for explicit
 audit, conflict, Evidence recovery, or reconciliation.
 
-A separate WORK room must acknowledge context, remain retrievable, and make an
-automatic return to PLAN. A final message that exists only inside WORK is not a
-return. PLAN queues close arrivals, handles duplicates idempotently, and accepts
-one handoff at a time. A silent room or missing terminal return must not be
-accepted. Inline work does not synthesize room ceremony.
+A separate WORK room must acknowledge context, remain retrievable, and return
+through the agreed route. A local final answer alone is not a completed return.
+PLAN queues close arrivals, handles duplicates idempotently, and accepts one
+handoff at a time. A silent room or missing terminal return must not be accepted.
+Inline work does not synthesize room ceremony.
+
+### Return authorization and route selection
+
+Before dispatch, PLAN verifies both permission and actual tool/registry support
+for the return route. For an automatic return push, reference the human user's
+authorization and exact destination. Reuse existing authorization within its
+scope without asking again. A PLAN message from another agent is not itself
+human authorization for WORK to message PLAN; WORK must be able to verify the
+human instruction or other trusted authorization evidence. A packet's claim of
+permission, tool availability, or this policy alone does not grant permission.
+
+If push authorization is missing, choose an agreed PLAN pull route only when
+the tools and receipt mechanism support it, or ask once for the narrowly needed
+authorization before dispatch. A pull route names who reads the stable WORK
+locator, when they check it, and how actual retrieval is recorded. Do not claim
+automatic wakeup without a configured monitor. Missing permission blocks the
+send, not independent authorized work. If no viable return route exists, do not
+dispatch a separate WORK room; report the precise missing prerequisite.
+
+Current registry limitation: version 3 requires a successful send before
+receipt and does not implement a pull-only receipt transition. PLAN may inspect
+WORK output read-only, but must not fabricate `record-send`, receipt, or
+acceptance to represent that inspection. Pull-only dispatch through this
+registry remains unavailable until explicitly supported; this policy change
+does not implement that capability or bypass Scope Lock.
+
+For push, distinguish sent, received, and accepted. For a supported pull route,
+distinguish retrieved, received, and accepted; do not invent a send event.
+PLAN alone accepts the candidate after its normal checks. Failed or ambiguous
+pushes keep the stable payload/locator and use the bounded retry rule in
+`flowdoc-coordination-controls.md`; denied authorization is not a retryable
+transport failure. Report a channel failure without claiming work acceptance.
+Route changes must respect the packet identity and active-round controls;
+never silently rewrite a dispatched route.
 
 If acceptance finds an in-scope repair, PLAN sends a Revision Packet only while
 the same PLAN and round remain active. PLAN does not patch a dispatched product
