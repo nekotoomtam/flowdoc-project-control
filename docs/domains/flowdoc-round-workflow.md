@@ -29,26 +29,27 @@ supporting execution summary and does not create a second authority.
 
 ## PLAN round identity
 
-Small inline documentation/status maintenance follows the exception in the
-workflow economy policy: use the explicit request and existing record, mark
-absent execution IDs not applicable, and do not create a new registry or room
-merely for status closure. The following identity rules govern execution rounds.
+A single-room request may proceed inline, including code changes, using the
+explicit request and relevant canonical context. Size and risk still determine
+proof, authority, scope, and escalation; they do not require separate rooms or
+a registry. Absent execution IDs are not applicable. Worktree isolation remains
+independent of room arrangement. See the workflow economy policy for the
+single-room and registered-execution routes.
 
-One PLAN task owns exactly one execution round. New PLAN task means a new
-delivery round and a fresh execution context. A new PLAN creates a new Work
-execution record and version 3 registry with fresh round, dispatch, room,
-handoff, WORK-task, worktree-or-branch, and Return-Channel identities before
-execution. Registry versions 1 and 2 are historical and read-only. Cross-PLAN
+The following identity rules apply when PLAN registers and dispatches a separate
+execution round. One PLAN task owns exactly one registered round. A new PLAN
+execution task creates fresh Work and version 3 registry identities before
+dispatch: round, room, handoff, WORK task, worktree-or-branch, and Return-Channel.
+Returning to a conversation for explanation or review does not reopen a closed
+round. Registry versions 1 and 2 are historical and read-only. Cross-PLAN
 ownership transfer is not supported. The current PLAN must not send, wait,
-revise, resume, or hand off through an older PLAN or WORK task. Missing history
-is recovered through separate read-only Historical Recovery Work; it never
-reactivates the inspected PLAN or WORK task.
+revise, resume, or hand off through an older PLAN or WORK task.
 
 Prior accepted commits, Evidence, and Project Control records may be referenced
-only as immutable input. Older rooms and their live coordination state are not
-continuation inputs. An older task may be inspected only for an explicit audit
-or evidence-recovery request and never regains execution authority. Even a
-repair starts as a newly defined lane when the PLAN task has changed.
+as immutable input. Older tasks may be inspected for relevant explanation,
+review, audit, or evidence recovery; inspection never restores execution
+authority. Missing execution history is recovered read-only. New execution after
+a closed round or changed PLAN task requires fresh identities for the new scope.
 
 ## 1. Round intake
 

@@ -44,6 +44,18 @@ describe("loadProjectState workflow metadata", () => {
     expect(await loadProjectState(fetchModel(model))).toMatchObject({ kind: "diagnostic" });
   });
 
+  it("rejects invalid backlog references and malformed optional cost metadata", async () => {
+    const model = await generatedModel();
+    model.currentSnapshot.unresolvedWork = [{ workId: "missing", title: "Closed", roundState: "released" }];
+    expect(await loadProjectState(fetchModel(model))).toMatchObject({ kind: "diagnostic" });
+    model.currentSnapshot.unresolvedWork = [];
+    model.governanceCost.contextCharacters = -1;
+    expect(await loadProjectState(fetchModel(model))).toMatchObject({ kind: "diagnostic" });
+    model.governanceCost.contextCharacters = 0;
+    model.governanceCost.attribution = { method: "guessed" };
+    expect(await loadProjectState(fetchModel(model))).toMatchObject({ kind: "diagnostic" });
+  });
+
   it("rejects negative governance metrics", async () => {
     const model = await generatedModel();
     model.currentSnapshot = validSnapshot();

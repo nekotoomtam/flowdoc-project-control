@@ -644,6 +644,8 @@ export interface CurrentTruthSnapshot {
     title: string;
     milestones: CompletionMilestones;
   }>;
+  /** Closed execution rounds with unresolved phase/checklist obligations; read-only backlog. */
+  unresolvedWork?: Array<{ workId: string; title: string; roundState: "released" | "cancelled" }>;
   acceptedTruth: Array<{ nodeId: string; evidenceIds: string[] }>;
   criticalUnknowns: WorkflowUnknown[];
   deferredWork: WorkflowUnknown[];
@@ -653,6 +655,17 @@ export interface CurrentTruthSnapshot {
 }
 
 export interface GovernanceCostSnapshot {
+  selectedWorkId?: string | null;
+  /** Declared document characters, not measured agent consumption. */
+  contextCharacters?: number;
+  attribution?: {
+    method: "declared-and-commit-matched-proxy";
+    declaredEvidenceIds: string[];
+    commitMatchedEvidenceIds: string[];
+    reusedEvidenceIds: string[];
+    unattributedEvidenceIds: string[];
+  };
+  /** Legacy characters/4 proxy. Not token telemetry and excludes packets/returns/agent reads. */
   approximateContextTokens: number;
   contextDocumentCount: number;
   evidenceCreated: number;

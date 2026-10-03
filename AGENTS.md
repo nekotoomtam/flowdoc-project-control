@@ -33,6 +33,13 @@ BLOCKER: FlowDoc Project Control unavailable or unresolved.
 
 ## Default context
 
+Use `npm run context -- --work <work-id>` (optionally `--room <room-run-id>`)
+for a read-only view rebuilt from validated canonical sources. It exposes the
+latest selected room packet, return controls, relevant Evidence, and document
+locators without returning all document bodies or other Work histories. Retrieve
+the named canonical documents and owning repository guide as required; the view
+does not grant execution or acceptance authority.
+
 Start with the generated Current Truth Snapshot, then the current Work packet,
 then only its referenced current/supporting contracts and Evidence. The sole
 current workflow authority is:

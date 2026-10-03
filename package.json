@@ -8,6 +8,7 @@
     "build": "npm run generate && vite build --config app/vite.config.ts",
     "generate": "tsx tools/generate.ts",
     "generate:sqlite": "tsx -e \"import('./tools/lib/build-sqlite-projection.ts').then((m) => m.generateProjectSqlite(process.cwd()))\"",
+    "context": "node --import tsx tools/context.ts",
     "coordination": "tsx tools/coordination-registry.ts",
     "check:data": "tsx tools/check.ts",
     "type-check": "tsc --noEmit",

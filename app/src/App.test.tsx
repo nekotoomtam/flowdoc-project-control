@@ -226,6 +226,15 @@ describe("App", () => {
     expect(screen.queryByRole("complementary", { name: "Control detail" })).not.toBeInTheDocument();
   });
 
+  it("keeps closed unresolved obligations visible separately from active Work", () => {
+    const closed = makeProjectReadModel();
+    closed.currentSnapshot.unresolvedWork = [{ workId: "closed-round", title: "Closed dependency", roundState: "released" }];
+    render(<App initialModel={closed} />);
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(within(cockpit).getByText("Closed rounds with unresolved obligations (1)")).toBeVisible();
+    expect(within(cockpit).getByText("Closed dependency — released")).toBeInTheDocument();
+  });
+
   it("renders a compact Current Truth Cockpit without a generic Done label", () => {
     const cockpitModel = makeProjectReadModel({
       currentSnapshot: {

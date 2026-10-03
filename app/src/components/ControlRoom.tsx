@@ -170,6 +170,17 @@ function CurrentTruthCockpit({
             </p>
           ) : null}
         </div>
+        {(snapshot.unresolvedWork?.length ?? 0) > 0 ? (
+          <details>
+            <summary>Closed rounds with unresolved obligations ({snapshot.unresolvedWork!.length})</summary>
+            <p>Read-only backlog. Further execution requires a new round.</p>
+            <ul>
+              {snapshot.unresolvedWork!.map((work) => (
+                <li key={work.workId}>{work.title} — {work.roundState}</li>
+              ))}
+            </ul>
+          </details>
+        ) : null}
         <dl className="control-room__cockpit-decisions">
           <div><dt>Next decision</dt><dd>{snapshot.nextDecision ?? "None"}</dd></div>
           <div><dt>Repositories</dt><dd>{repositories.join(", ") || "None"}</dd></div>

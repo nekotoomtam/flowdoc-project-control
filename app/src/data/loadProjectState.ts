@@ -170,6 +170,8 @@ function hasValidReadModelReferences(model: ProjectReadModel): boolean {
       && (evidence.validity?.supersedesEvidenceId === undefined
         || evidenceIds.has(evidence.validity.supersedesEvidenceId)))
     && model.currentSnapshot.activeWork.every(({ workId }) => workIds.has(workId))
+    && (model.currentSnapshot.unresolvedWork ?? []).every(({ workId }) => workIds.has(workId))
+    && (model.governanceCost.selectedWorkId == null || workIds.has(model.governanceCost.selectedWorkId))
     && model.currentSnapshot.acceptedTruth.every(({ nodeId, evidenceIds: acceptedEvidenceIds }) =>
       nodeIds.has(nodeId) && acceptedEvidenceIds.every((id) => evidenceIds.has(id)))
     && model.currentSnapshot.repositoryIds.every((id) => repositoryIds.has(id))
@@ -180,6 +182,9 @@ function isCurrentTruthSnapshot(value: unknown): value is ProjectReadModel["curr
   return isRecord(value) && isNonEmptyString(value.generatedAt)
     && isNullableString(value.currentGoal) && isNullableString(value.currentBlocker)
     && Array.isArray(value.activeWork) && value.activeWork.every(isSnapshotWork)
+    && (value.unresolvedWork === undefined || (Array.isArray(value.unresolvedWork)
+      && value.unresolvedWork.every((item) => isRecord(item) && isNonEmptyString(item.workId)
+        && isNonEmptyString(item.title) && (item.roundState === "released" || item.roundState === "cancelled"))))
     && Array.isArray(value.acceptedTruth) && value.acceptedTruth.every(isAcceptedTruth)
     && Array.isArray(value.criticalUnknowns) && value.criticalUnknowns.every((item) =>
       isWorkflowUnknown(item) && item.disposition === "blocking")
@@ -218,7 +223,15 @@ function isGovernanceCostSnapshot(value: unknown): value is ProjectReadModel["go
     && isNonNegativeInteger(value.durableDocumentsCreated)
     && isNonNegativeInteger(value.implementationCommitCount)
     && isNonNegativeInteger(value.reviewCycleCount)
-    && isNonNegativeInteger(value.reopenCount);
+    && isNonNegativeInteger(value.reopenCount)
+    && (value.selectedWorkId === undefined || isNullableString(value.selectedWorkId))
+    && (value.contextCharacters === undefined || isNonNegativeInteger(value.contextCharacters))
+    && (value.attribution === undefined || (isRecord(value.attribution)
+      && value.attribution.method === "declared-and-commit-matched-proxy"
+      && isUniqueStringArray(value.attribution.declaredEvidenceIds)
+      && isUniqueStringArray(value.attribution.commitMatchedEvidenceIds)
+      && isUniqueStringArray(value.attribution.reusedEvidenceIds)
+      && isUniqueStringArray(value.attribution.unattributedEvidenceIds)));
 }
 
 function isMilestoneState(value: unknown): boolean {

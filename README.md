@@ -51,6 +51,21 @@ Project Control owns cross-repository hierarchy, shared definitions, work coordi
 
 ## Commands
 
+For a bounded context view rebuilt from validated canonical sources, use
+`npm run context -- --work <work-id>` and optionally `--room <room-run-id>`.
+The view returns document locators and selected evidence without document bodies
+or other Work histories. It currently validates and reads the full canonical
+corpus internally; this bounds agent context, not filesystem reads. Room selection
+uses the latest attempt and expands only that room's Phase and Checklist, with
+locators for related obligations. Work milestones use inline Phase/Checklist
+acceptance where room acceptance is unavailable; ambiguous implementation scope
+stays pending. Closed rounds are labeled read-only; this command grants no
+dispatch or acceptance authority. `workCost` reports declared document characters
+and self-reported return costs, including BLOCKER. Its Evidence attribution
+separates declared creation, commit-matched PLAN receipt proxies, reused input,
+and unassigned references; these are not measured token usage or complete cost
+telemetry.
+
 For PLAN/WORK coordination, start with
 [Coordination controls](docs/domains/flowdoc-coordination-controls.md).
 The registry is canonical coordination data; it does not prove product behavior.

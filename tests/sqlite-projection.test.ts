@@ -63,6 +63,9 @@ describe("SQLite projection", () => {
           evidence_target: "A checklist item records the target before Evidence exists.",
         },
       ]);
+      expect(db.prepare("select unresolved_work_json from current_truth_snapshot").get()).toEqual({ unresolved_work_json: "[]" });
+      expect(db.prepare("select selected_work_id, context_characters, attribution_json from governance_cost_snapshot").get())
+        .toMatchObject({ selected_work_id: "pilot-task", context_characters: expect.any(Number), attribution_json: expect.stringContaining("declared-and-commit-matched-proxy") });
       expect(db.prepare("select schema_version, source_digest from projection_meta").get()).toEqual({
         schema_version: 1,
         source_digest: model.sourceDigest,
