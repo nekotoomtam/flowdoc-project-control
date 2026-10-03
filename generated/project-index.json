@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "sourceDigest": "6d37adb20db7b4597c42fe3cb0dcfa5665b13f4e260159e10b3ebbb81da78749",
+  "sourceDigest": "8f4f6b60797f86d7a7f61aa8a84cbbe5d98fbad6a5b1ebe4b4403878dc5af93a",
   "rootNodeIds": [
     "flowdoc"
   ],
@@ -4053,8 +4053,8 @@
         "repo-editor",
         "repo-project-control"
       ],
-      "workState": "in-progress",
-      "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only.",
+      "workState": "blocked",
+      "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only. Owner reconciliation 2026-10-04: user explicitly authorized replacing unfinished Editor scope in the current conversation because the earlier context differs. Old execution is cancelled as superseded, NOT completed; no ownership transfer or old room reactivation. Prior Core result remains immutable at 2f0f1e4ba8e13625e046709ffc330ea15c270122. Historical acceptance and measurement records are preserved in Project Control snapshot 9efc1bdd03836af798b2f6ad78983fb7510b5b52 (data/work/flowdoc-core-editor-trial-20260928.json and data/evidence/); they are reference evidence, not newly accepted output. Editor uncommitted trial was removed in owner-authorized cleanup; it is not a reusable candidate. New bounded inline Editor implementation will use a fresh isolated checkout and current acceptance checks.",
       "contextDocumentIds": [
         "doc-flowdoc-workflow-economy-policy"
       ],
@@ -4066,10 +4066,10 @@
         "evidence-core-host-control-20260928"
       ],
       "createdAt": "2026-09-28T10:24:31.546Z",
-      "updatedAt": "2026-09-28T10:24:31.546Z",
+      "updatedAt": "2026-10-03T17:27:05.425Z",
       "coordination": {
         "version": 3,
-        "revision": 2,
+        "revision": 3,
         "round": {
           "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
           "roundId": "core-editor-trial-20260928-01a0e784",
@@ -4088,7 +4088,7 @@
             "generated/project-index.json",
             "tests/"
           ],
-          "state": "active",
+          "state": "cancelled",
           "policyId": "flowdoc-workflow-economy-v2"
         },
         "modelAvailabilitySnapshots": [
@@ -4124,21 +4124,21 @@
             "repositoryId": "repo-project-control",
             "baseCommit": "0417b6a48bee8f3295d5d7599a35da751d5c4656",
             "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-            "state": "active",
+            "state": "released",
             "roundId": "core-editor-trial-20260928-01a0e784"
           },
           {
             "repositoryId": "repo-core",
             "baseCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
             "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-            "state": "active",
+            "state": "released",
             "roundId": "core-editor-trial-20260928-01a0e784"
           },
           {
             "repositoryId": "repo-editor",
             "baseCommit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
             "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-            "state": "active",
+            "state": "released",
             "roundId": "core-editor-trial-20260928-01a0e784"
           }
         ],
@@ -4156,7 +4156,7 @@
             "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json",
             "revisionAttempt": 0,
             "expectedHandoffId": "trial-core-handoff-0",
-            "status": "active",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/core_implementation",
               "hostId": "local",
@@ -4305,7 +4305,7 @@
             "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json",
             "revisionAttempt": 0,
             "expectedHandoffId": "trial-measurement-handoff-0",
-            "status": "active",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/frozen_measure",
               "hostId": "local",
@@ -4448,7 +4448,7 @@
             "roundId": "core-editor-trial-20260928-01a0e784",
             "revisionAttempt": 0,
             "expectedHandoffId": "trial-editor-handoff-0",
-            "status": "prepared",
+            "status": "superseded",
             "locator": {
               "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/editor_implementation",
               "hostId": "local",
@@ -4636,6 +4636,8 @@
         "completionQueue": [],
         "cleanup": []
       },
+      "blockedBy": "Historical superseded scope; old execution cancelled by owner decision on 2026-10-04. WorkState has no cancelled/superseded value; blocked does not request resumption.",
+      "unblockOwner": "Project Control Steward: retain superseded history; any successor requires its own current scope, not reopening this execution.",
       "childWorkIds": [],
       "phaseIds": [
         "phase-flowdoc-core-editor-trial-20260928-core",
@@ -38037,20 +38039,10 @@
     }
   ],
   "currentSnapshot": {
-    "generatedAt": "2026-09-28T10:24:31.546Z",
-    "currentGoal": "Deliver bounded Core-owned retained authored editing session, identical baseline geometry and provisional IME for real Editor consumer.",
-    "currentBlocker": null,
+    "generatedAt": "2026-10-03T17:27:05.425Z",
+    "currentGoal": "Frontend Expert Roadmap v1 พร้อมลำดับปัจจุบันภาษาไทยวันที่ 2026-09-05: R0–R7, เจ้าของ, dependency และเกณฑ์รับงาน โดยเป้าหมายแรกคือสร้าง–บันทึก–เปิดกลับได้",
+    "currentBlocker": "User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
     "activeWork": [
-      {
-        "workId": "flowdoc-core-editor-trial-20260928",
-        "title": "Core authored editing trial in real Editor",
-        "milestones": {
-          "planning": "complete",
-          "implementation": "pending",
-          "verification": "pending",
-          "truthPromotion": "pending"
-        }
-      },
       {
         "workId": "flowdoc-frontend-expert-roadmap",
         "title": "FlowDoc Frontend Expert Roadmap",
@@ -38063,6 +38055,11 @@
       }
     ],
     "unresolvedWork": [
+      {
+        "workId": "flowdoc-core-editor-trial-20260928",
+        "title": "Core authored editing trial in real Editor",
+        "roundState": "cancelled"
+      },
       {
         "workId": "flowdoc-editor-core-integration-20260928",
         "title": "Editor retained Core editing integration",
@@ -38154,7 +38151,7 @@
         "returnTrigger": "Stage6/Gate2 PASS and separately approved next plan."
       }
     ],
-    "nextDecision": "Runnable local-draft authored paragraph Editor trial: Core-only frame/caret, typing/delete/selection/Enter/inversejoin, provisional IME and baseline/transient checks; independent frozen measurement report.",
+    "nextDecision": "Resolve: User UX remains unresolved, awaiting Core text/layout policy work. Inventory phase is now active; held-key visual stability not passed. Editor candidate3fc61e3 stays held/unmerged; no user trial or source changes.",
     "repositoryIds": [
       "repo-backend",
       "repo-core",
@@ -38167,20 +38164,19 @@
     ]
   },
   "governanceCost": {
-    "selectedWorkId": "flowdoc-core-editor-trial-20260928",
-    "contextCharacters": 31259,
+    "selectedWorkId": "flowdoc-frontend-expert-roadmap",
+    "contextCharacters": 712984,
     "attribution": {
       "method": "declared-and-commit-matched-proxy",
       "declaredEvidenceIds": [],
       "commitMatchedEvidenceIds": [],
-      "reusedEvidenceIds": [
-        "evidence-core-host-control-20260928",
-        "evidence-core-lifecycle-20260928"
-      ],
-      "unattributedEvidenceIds": []
+      "reusedEvidenceIds": [],
+      "unattributedEvidenceIds": [
+        "evidence-flowdoc-frontend-expert-roadmap-2026-09-03"
+      ]
     },
-    "approximateContextTokens": 7815,
-    "contextDocumentCount": 1,
+    "approximateContextTokens": 178246,
+    "contextDocumentCount": 45,
     "evidenceCreated": 0,
     "durableDocumentsCreated": 0,
     "implementationCommitCount": 0,

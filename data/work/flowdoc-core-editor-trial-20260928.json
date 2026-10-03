@@ -10,8 +10,8 @@
     "repo-editor",
     "repo-project-control"
   ],
-  "workState": "in-progress",
-  "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only.",
+  "workState": "blocked",
+  "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only. Owner reconciliation 2026-10-04: user explicitly authorized replacing unfinished Editor scope in the current conversation because the earlier context differs. Old execution is cancelled as superseded, NOT completed; no ownership transfer or old room reactivation. Prior Core result remains immutable at 2f0f1e4ba8e13625e046709ffc330ea15c270122. Historical acceptance and measurement records are preserved in Project Control snapshot 9efc1bdd03836af798b2f6ad78983fb7510b5b52 (data/work/flowdoc-core-editor-trial-20260928.json and data/evidence/); they are reference evidence, not newly accepted output. Editor uncommitted trial was removed in owner-authorized cleanup; it is not a reusable candidate. New bounded inline Editor implementation will use a fresh isolated checkout and current acceptance checks.",
   "contextDocumentIds": [
     "doc-flowdoc-workflow-economy-policy"
   ],
@@ -23,10 +23,10 @@
     "evidence-core-host-control-20260928"
   ],
   "createdAt": "2026-09-28T10:24:31.546Z",
-  "updatedAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-10-03T17:27:05.425Z",
   "coordination": {
     "version": 3,
-    "revision": 2,
+    "revision": 3,
     "round": {
       "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
       "roundId": "core-editor-trial-20260928-01a0e784",
@@ -45,7 +45,7 @@
         "generated/project-index.json",
         "tests/"
       ],
-      "state": "active",
+      "state": "cancelled",
       "policyId": "flowdoc-workflow-economy-v2"
     },
     "modelAvailabilitySnapshots": [
@@ -81,21 +81,21 @@
         "repositoryId": "repo-project-control",
         "baseCommit": "0417b6a48bee8f3295d5d7599a35da751d5c4656",
         "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-        "state": "active",
+        "state": "released",
         "roundId": "core-editor-trial-20260928-01a0e784"
       },
       {
         "repositoryId": "repo-core",
         "baseCommit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
         "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-        "state": "active",
+        "state": "released",
         "roundId": "core-editor-trial-20260928-01a0e784"
       },
       {
         "repositoryId": "repo-editor",
         "baseCommit": "d1a9670a868493531423e3e92ff5e4d186c1141b",
         "planTaskId": "01a0e784-99bb-7d03-9495-5457c2115d85",
-        "state": "active",
+        "state": "released",
         "roundId": "core-editor-trial-20260928-01a0e784"
       }
     ],
@@ -113,7 +113,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/core-handoff.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "trial-core-handoff-0",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/core_implementation",
           "hostId": "local",
@@ -262,7 +262,7 @@
         "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e784-99bb-7d03-9495-5457c2115d85/measurement-handoff.json",
         "revisionAttempt": 0,
         "expectedHandoffId": "trial-measurement-handoff-0",
-        "status": "active",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/frozen_measure",
           "hostId": "local",
@@ -405,7 +405,7 @@
         "roundId": "core-editor-trial-20260928-01a0e784",
         "revisionAttempt": 0,
         "expectedHandoffId": "trial-editor-handoff-0",
-        "status": "prepared",
+        "status": "superseded",
         "locator": {
           "threadId": "01a0e784-99bb-7d03-9495-5457c2115d85/root/editor_implementation",
           "hostId": "local",
@@ -592,5 +592,7 @@
     "handoffs": [],
     "completionQueue": [],
     "cleanup": []
-  }
+  },
+  "blockedBy": "Historical superseded scope; old execution cancelled by owner decision on 2026-10-04. WorkState has no cancelled/superseded value; blocked does not request resumption.",
+  "unblockOwner": "Project Control Steward: retain superseded history; any successor requires its own current scope, not reopening this execution."
 }
