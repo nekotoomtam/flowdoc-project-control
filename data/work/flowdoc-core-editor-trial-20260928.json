@@ -11,7 +11,7 @@
     "repo-project-control"
   ],
   "workState": "blocked",
-  "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only. Owner reconciliation 2026-10-04: user explicitly authorized replacing unfinished Editor scope in the current conversation because the earlier context differs. Old execution is cancelled as superseded, NOT completed; no ownership transfer or old room reactivation. Prior Core result remains immutable at 2f0f1e4ba8e13625e046709ffc330ea15c270122. Historical acceptance and measurement records are preserved in Project Control snapshot 9efc1bdd03836af798b2f6ad78983fb7510b5b52 (data/work/flowdoc-core-editor-trial-20260928.json and data/evidence/); they are reference evidence, not newly accepted output. Editor uncommitted trial was removed in owner-authorized cleanup; it is not a reusable candidate. New bounded inline Editor implementation will use a fresh isolated checkout and current acceptance checks.",
+  "summary": "Fresh version3 round. Approved known product export/geometry/IME bridges are implementation scope. Sequential Core then Editor product mutation; frozen Stage6 measurement parallel with serialized heavy machine use. Prior released discovery immutable only. Owner reconciliation 2026-10-04: user explicitly authorized replacing unfinished Editor scope in the current conversation because the earlier context differs. Old execution is cancelled as superseded, NOT completed; no ownership transfer or old room reactivation. Prior Core result remains immutable at 2f0f1e4ba8e13625e046709ffc330ea15c270122. Historical acceptance and measurement records are preserved in Project Control snapshot 9efc1bdd03836af798b2f6ad78983fb7510b5b52 (data/work/flowdoc-core-editor-trial-20260928.json and data/evidence/); they are reference evidence, not newly accepted output. Editor uncommitted trial was removed in owner-authorized cleanup; it is not a reusable candidate. New bounded inline Editor implementation will use a fresh isolated checkout and current acceptance checks. Successor inline candidate update 2026-10-04 (old registry unchanged): Editor branch codex/core-editor-trial-20261004 at C:/Users/nekot/Documents/FlowDoc-dev/20261004/flowdoc-vnext-editor remains uncommitted and unmerged. Development route /__qa/core-editing-trial supports local draft typing, range replacement, deletion, Enter/inverse join and provisional IME. Candidate type-check/build passed; five focused suites passed 17 tests. Extended Preview coverage passed 11 additional tests but creatorPreviewRuntime.test.ts:125 newline-rejection assertion failed identically on clean Editord1a9670 against Core2f0f1e4, so acceptance remains incomplete. Browser checks and 40 transient samples: C:/Users/nekot/Documents/FlowDoc-dev/20261004/browser-trial-result.json. CDP composition is not physical Thai IME validation; sampled frames are not universal transient proof. No product map promotion, production integration, Backend persistence or performance admission.",
   "contextDocumentIds": [
     "doc-flowdoc-workflow-economy-policy"
   ],
@@ -23,7 +23,7 @@
     "evidence-core-host-control-20260928"
   ],
   "createdAt": "2026-09-28T10:24:31.546Z",
-  "updatedAt": "2026-10-03T17:27:05.425Z",
+  "updatedAt": "2026-10-03T17:47:44.790Z",
   "coordination": {
     "version": 3,
     "revision": 3,
