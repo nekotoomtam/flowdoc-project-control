@@ -1844,3 +1844,47 @@ rejection, but sustained unspaced Thai needs a separately justified segmentation
 boundary strategy. Do not claim reducing reads alone solves held typing, simply
 raise caps, or admit a shaping-safe cut as if it also certified segmentation.
 Implementation requires that bounded design/proof before extending admission.
+
+### Owner acceptance clarification and bounded next investigation (2026-10-04)
+
+Owner approved one end-to-end path investigation and one isolated prototype,
+with a stop/review if that approach fails. The immediate goal is ordinary-feeling
+TextBlock typing and held insertion/Backspace on the failed long corpus, with
+correct text, caret and wrapping. DOC export, cross-page behavior, nested nodes
+and tables are deferred for this slice. Owner explicitly cautions that prior
+automated tests did not predict physical experience and offers physical testing.
+Physical owner acceptance is mandatory; automated timing/correctness cannot
+substitute for it. Do not ask for another capture merely to repeat known failure.
+
+Scope remains inline, IDs N/A; Core/Editor own behavior, Project Control owns this
+record. Discovery is read-only for the candidate. Reuse captured failures and
+historical checks; no broad benchmark rerun. Before implementing a change to a
+core contract, present its concrete design and impact to the owner, as agreed.
+An isolated prototype must preserve every edit, correct visible geometry and
+caret mapping; a temporarily incorrect visible layout is not an accepted shortcut.
+
+Initial current-source path inspection:
+- Editor `textBlockSurface/trial.tsx` onInput calls `session.applyValue`
+  synchronously before publishing the snapshot.
+- `session.ts` computes replacement and invokes the Core bridge; the product
+  wrapper `productSessionV1.ts` builds a candidate frame before publication.
+- Rust `cold_session/product.rs` falls back to `create_product_fallback`;
+  `runtime.rs::construct` validates policy, derives runs/shards, hashes source,
+  descriptors and facts, builds trees and publishes a new session.
+- The product frame then projects text and requests shaping for the changed
+  paragraph through `prepareClusterWrappedLinesV1`. Existing exact-input shape
+  reuse and lazy frame fingerprinting already apply; they are not new proposals.
+
+This establishes two synchronous stages with separate derived data, not proof
+that either can safely be removed or that their shaping results are interchangeable.
+Next design question is which validated results can serve both edit admission
+and final geometry without weakening boundaries or duplicating full-paragraph
+work. Consumer/dependency proof is required before selecting that prototype.
+No new speedup, prototype completion or physical acceptance is claimed here.
+
+Owner help is needed at the meaningful physical comparison, once a candidate
+passes correctness checks and is ready for the same held-input workload. Keep
+the failed baseline available and inspect timing separately from subjective
+smoothness. If the owner still observes stutter, acceptance remains NOT PASSED
+even when automated measurements improve. Current checkpoint changes only this
+record; no product source, WASM, live page or drafts changed, and no tests rerun.
