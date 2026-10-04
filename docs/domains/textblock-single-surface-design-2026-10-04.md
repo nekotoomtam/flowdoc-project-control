@@ -547,3 +547,57 @@ same item: test equivalent actual shaping/segmentation outputs, integrate the
 bounded mapping change if those checks pass, then compare the actual WASM edit
 path with the same corpus before moving to fingerprint or SVG work. Full
 long-text performance acceptance remains open.
+
+### UTF-16 offset repair delivered (2026-10-04)
+
+Owner authorized continuing this single item. Inline Core implementation,
+execution IDs N/A, bounded to product shaping/segmentation offset conversion.
+Core `bb12386` constructs a byte-boundary lookup once per call rather than
+rescanning every prefix. It preserves the existing source limit, script policy,
+layout algorithm and fingerprint contract. The temporary table uses linear
+memory in input bytes and is released with the call; it is not a retained cache.
+Rebuilt the product WASM and its digest pin together (new SHA-256
+`eeec2a5e9610004ea17c8263f6707797cb5e802eea88114f8a9168aef399b3e4`).
+No product-main merge or push.
+
+Verification: new boundary test first failed to compile because the helper was
+missing, then native product tests passed 9 tests. Existing shaping comparison
+against the creator raw provider passed. Product-session and TextBlock bridge
+WASM suites passed 47 tests; Editor surface input/session/pointer suites passed
+10 tests. Core type-check and diff check passed. Candidate release build passed
+with unused/dead-code warnings in shared Rust modules.
+
+Local old/new WASM comparison (`profiling/offset-wasm-compare.mjs`) passed
+36 shaping/segmentation result comparisons including stale revision rejection,
+empty text, mixed Thai/Latin, combining marks and unsupported scripts. Ten
+measured calls per operation followed two warmups, alternating build order.
+At 1,800 graphemes, median shaping was 9.59 -> 4.52 ms and segmentation
+24.05 -> 23.10 ms. At 2,592 graphemes, shaping was 17.14 -> 6.48 ms and
+segmentation 36.49 -> 35.15 ms. These are Node WASM operation times, not browser
+typing latency. Output: `profiling/offset-wasm-results.json`.
+
+Local frame comparison (`tests/offsetFrames.local.test.ts`) passed at 1,800 and
+2,592 graphemes before and after six appends. All frame fields outside diagnostic
+`work` matched, including fingerprint, source, paint, wraps, carets and spans.
+The first comparison exposed differences only in diagnostic canonical-encoding
+and receipt-hash byte counters; these were excluded explicitly, not treated as
+render differences. Local runtimes/probes remain untracked; original WASM is
+retained under `profiling/offset-old-wasm` for reproducibility. Whole-edit timings
+were noisy and do not establish a general speedup percentage.
+
+After adoption, the separate instrumented browser page accepted the same
+1,800-grapheme corpus and three appended characters. Core edit times were
+180.7/235.4/203.5 ms and input-to-DOM-commit 283.7/333.7/295.4 ms (initial fill
+excluded), versus prior 247.1/209.7/231.7 and 408.1/294.5/331.3 respectively.
+Small sequential DEV samples overlap substantially; the end-to-end performance
+target remains unmet. Logs: `profiling/offset-browser-1800-after.json`;
+screenshot: `profiling/offset-browser-after.png`. All profiling paths here are
+relative to `C:/Users/nekot/Documents/FlowDoc-dev/20261004/`.
+
+Saved latest A/B drafts to `profiling/before-offset-fix-drafts.json` before
+adoption. HMR reset the user trial; restored both through normal input and
+verified exact equality. User tab retained; separate measurement tab closed.
+PASS only for this offset repair and stated correctness coverage. Frame build,
+fingerprint, SVG cost, physical IME, and document persistence remain open;
+continue one measured contributor at a time rather than declaring the long
+freeze fixed.
