@@ -1287,3 +1287,58 @@ exact hashes and proof that normal edits/painting do not accidentally force
 hashing. This is a cross-owner Core/Editor implementation proposal, not an
 approved runtime change or a measured speedup. The cost is deferred, not erased.
 No production changes, main merge/push, live-draft or readiness/map changes.
+
+### Demand-computed immutable frame fingerprint (2026-10-04)
+
+Owner approved proceeding and offered physical-input help when needed. Bounded
+inline implementation across Core and its Editor painter consumer, execution
+IDs N/A. Core `195a0e3`; Editor `da0ead2`, development branches only. Scope is the
+audited product frame identity, not Rust receipts, sourceBinding, other FlowDoc
+fingerprints, Backend admission or persistence. Existing record reused.
+
+Core freezes all frame data before installing an enumerable, non-configurable
+fingerprint getter, then freezes the frame itself. The getter holds a frozen
+identity and computes the exact existing canonical/SHA-256 value once on its
+first successful read. It requires no live paragraph receipt; old frames remain
+readable after edits and session disposal. No background queue or asynchronous
+publication was added. Fingerprint failure now occurs on first read, not frame
+publication; failed computations are not memoized and a later read retries.
+Revision/liveness/receipt/schema/position and atomic candidate checks remain
+synchronous and unchanged. Property descriptor changes from frozen data property
+to getter are intentional; the string value, enumerability and serialized output
+are preserved. External descriptor-reflection compatibility is not claimed.
+
+Editor SVG painter now accepts only page data. Cache misses pass only those
+pages rather than spreading the full frame, avoiding incidental fingerprint
+reads. Drawing output and cache identity inputs are unchanged. JSON export,
+structuredClone, object spread or direct fingerprint reads still synchronously
+force calculation when requested; repeated reads of that frame reuse the value.
+Hashing cost is deferred, not eliminated. Consumers that serialize all frames
+on each input could reintroduce the cost.
+
+New Core tests first failed on eager computation, then passed: zero hashes during
+creation/edit/caret queries, stale revision rejection, exact independent Node
+SHA-256, memoization, retained frames after disposal, JSON/spread/structuredClone,
+deep immutability and failure/retry semantics. New Editor test first observed
+23 incidental reads on cold drawing, then zero after repair; warm and tail-edit
+painting also read zero, while explicit enumeration/export reads remain visible.
+Core affected coverage: 76 tests passed; Editor surface/painter/cache/input/
+pointer coverage: 16 passed. Both type-checks passed. Editor type-check initially
+caught an implicit-array type in the prior untracked read-count diagnostic;
+annotated that local diagnostic and reran successfully. No runtime workaround.
+
+Separate browser stage trial, saved 1,800-grapheme article plus xyz: exact text,
+zero alerts, zero frame-fingerprint timing events through create/fill/append.
+Core edits 74.7/61.2/40.6 ms; input-handler-to-DOM-commit 118.5/105.9/73.9 ms.
+Earlier eager three samples were 115.2/135.7/117.1 ms. Sequential DEV samples
+are not a controlled speedup guarantee, physical held-key acceptance or presented
+paint latency. A/B switching retained A's exact text and B's ABC/DEF/GHI lines.
+Physical held-key typing and Backspace remain for owner testing; overall 1,800
+performance acceptance stays open.
+
+Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`lazy-fingerprint-browser.json` and `.png`; regression tests are committed in
+their owner repositories. Live tab contained the default A/B texts on entry;
+saved `before-lazy-fingerprint-drafts.json` and verified these exact values
+unchanged at exit. Did not restore older backups over current state. Measurement
+tab closed; live tab retained. No product main merge/push or map promotion.
