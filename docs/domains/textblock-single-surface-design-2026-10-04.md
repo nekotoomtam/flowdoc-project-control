@@ -1787,3 +1787,60 @@ failed trial as the acceptance regression, then request owner physical
 acceptance only after a corrected candidate demonstrates bounded backlog.
 This checkpoint changes only the existing canonical record; no product source,
 runtime artifact, Evidence index or system map was changed.
+
+### Thai tail fallback investigation: step 1 (2026-10-04)
+
+Owner authorized investigation of the 97-input fallback stretch first. Inline
+discovery under the existing plan; Core owns the investigated behavior, Project
+Control Steward/Evidence Reviewer owns this record; execution IDs N/A. Scope:
+reproduce route selection, distinguish budget and certificate rejection, assess
+repair direction. No candidate source/runtime changes or step-2 rendering work.
+Proof budget: one actual-WASM sequence replay and fresh-session controls at the
+transition lengths; document budget remains this record plus local probes/results.
+
+The visible final A draft equals the original corpus plus sixteen U+0E01
+characters. Replaying captured input types (92 insertions, 76 Backspaces), with
+U+0E01 as the inferred inserted character, against unchanged candidate WASM
+`35b8994039fffcb510f26a97bccf37e24bd0ff25cc22ede0b84f969a7654cf44`
+matches ALL 168 recorded routes, including IDs 31, 41 and 44–140 falling back.
+Every accepted projected string matches the expected edit sequence. The recorder
+did not store inserted characters/caret positions; this is a strongly matching
+reconstruction, not a recovered exact input payload log.
+
+Of the 97 consecutive fallbacks, IDs 44, 45 and 140 report budget-exhaustion;
+the other 94 report uncertified-seam. Source inspection of `thai_tail.rs`
+explains the finite admission boundary: SEARCH is 96 UTF-16 units, the retained
+safe shaping cut must precede an unchanged space, and both old/new suffixes
+must fit 96 units. Continued unspaced insertion moves that witness outside the
+admitted window. Raising only the search size would still encounter work limits
+and would not establish a new segmentation certificate.
+
+A separate control cold-creates the same text before each edit. At 30, 40 and
+43 appended characters, it admits insertion although the sustained sequence
+falls back at those same text lengths (IDs 31, 41, 44). At 44 appended characters
+it rejects for budget-exhaustion; at 45, 49, 50 and 92 it rejects for
+uncertified-seam even from a fresh session. Thus resetting retained state removes
+the early cost issue but cannot remove the certificate/window limit.
+
+The early cost issue is consistent with retained source-piece fragmentation:
+at ID 31 the rejected attempt reports 114 source-offset lookups versus six in
+the corresponding successful fresh control. `Source::window` visits intersecting
+pieces and performs offset reads for each; `local_window::reserve` charges those
+reads together with source/property scans against 512. Fallback rebuilds compact
+state, explaining why later edits can temporarily return to the retained route.
+No internal per-return trace was added, so the exact rejecting reserve call is
+not claimed; public reasons, measured costs and controlled outcomes are retained.
+
+Local probes: Core `tests/ownerThaiReplay.local.test.ts` (asserts every route and
+projected string), `tests/ownerThaiColdControl.local.test.ts` (eight fresh-session
+length controls). Results: `profiling/thai-tail-owner-replay.json` and
+`profiling/thai-tail-cold-length-controls.json`. Final focused run passed both
+tests (two files, 14.91 seconds). These diagnose admission, not
+held-key responsiveness or new cold-oracle correctness. Product acceptance
+remains NOT PASSED; the live page/drafts and tracked Core source are unchanged.
+
+Step 1 finding: bounded source-window access can address premature budget
+rejection, but sustained unspaced Thai needs a separately justified segmentation
+boundary strategy. Do not claim reducing reads alone solves held typing, simply
+raise caps, or admit a shaping-safe cut as if it also certified segmentation.
+Implementation requires that bounded design/proof before extending admission.
