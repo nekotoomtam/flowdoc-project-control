@@ -731,3 +731,52 @@ restored A/B via ordinary input and verified exact equality. User tab retained;
 measurement tab closed. No Backend/persistence, WASM change, SVG repair, product
 main merge/push or global readiness promotion. Next measured contributor is SVG
 construction; Core full affected-text work is reduced but not eliminated.
+
+### SVG command reuse in the single surface (2026-10-04)
+
+Owner accepted later real-use tuning and authorized moving to SVG. Inline Editor
+implementation, execution IDs N/A. Added a per-surface `svgFrameCache.ts`, keyed
+by the complete paint command, page placement, transform and font identity.
+An outline-provider change invalidates reuse. Only commands from the latest
+successful build are retained; failed builds do not publish a partial cache.
+Unchanged commands reuse exact path strings; changed/repositioned commands use
+the original SVG builder. Color aggregation/order and glyph counts stay intact.
+No persistent global glyph/path cache, Core geometry change or renderer switch.
+
+The cache is bounded by the current surface content, not a fixed byte budget;
+it adds retained path/key memory alongside the displayed paths. Multiple-node
+memory tuning remains unverified. Commands whose source/position changes may
+miss even if some glyphs look alike. Reflow affecting all commands can require
+a complete rebuild. The renderer still joins color paths and publishes a whole
+path attribute; browser parsing/painting is not made incremental by this change.
+
+New tests first failed on the missing module, then checked exact cold output,
+one-command rebuild on tail change, placement/provider invalidation, retired
+entry removal, font rejection, empty-outline color ordering and multiple frames.
+Editor cache/painter/input/session/pointer coverage totals 15 passing tests.
+A local actual-WASM article probe compares exact ordered SVG path strings and
+glyph counts for six append revisions each at 1,800 and 2,592 graphemes (12
+comparisons passed). Its first comparator incorrectly depended on object property
+insertion order; corrected it to compare the actual paths and glyph count.
+No rendering difference was suppressed. Local benchmark:
+`src/tests/svgCacheCost.local.test.ts` -> `profiling/svg-cache-cost.json`.
+Median cold/cached preparation in that run: 110.27/7.51 ms at 1,800 and
+162.71/9.81 ms at 2,592 graphemes. This is same-run Node preparation timing,
+not a cross-run browser speedup claim.
+
+In the separate instrumented browser trial, the same 1,800-grapheme corpus plus
+`xyz` yielded SVG build 5.5/6.8/7.0 ms and input-to-DOM-commit
+135.0/153.4/146.2 ms, excluding initial fill (which built SVG cold in 63.7 ms).
+Core edits still took 101.5/110.7/107.0 ms. Prior three browser commit samples
+were 217.1/185.4/176.7 ms. These short DEV automation samples do not prove
+physical held-key smoothness, presented-pixel latency or all-edit performance.
+Browser cross-line replacement selected offsets 1..5 in ABC/DEF/GHI, typed X,
+and retained `AXEF\nGHI` after blur/reactivation.
+
+Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`svg-cache-cost.json`, `svg-cache-browser-after.json` and `.png`.
+Saved live drafts as `before-svg-cache-drafts.json`; restored A/B after HMR and
+verified exact equality. User tab retained; measurement tab closed. No product
+main merge/push, Backend/persistence or Core changes. SVG preparation reuse is
+bounded progress; long-text overall performance and multi-node memory remain
+open. Original general-purpose probe painter is unchanged as the cold reference.
