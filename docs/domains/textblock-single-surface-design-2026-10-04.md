@@ -2437,3 +2437,64 @@ actual shaping, serialization and JS decoding costs before selecting any
 contract-preserving optimization. Avoid another freeze micro-optimization or
 new cross-edit cache without evidence. Discovery complete; implementation
 improvement not established. Physical baseline and remaining acceptance unchanged.
+
+### Direct shape serialization candidate (2026-10-05)
+
+Owner authorized continuation of the shape/transfer investigation and bounded
+optimization. Inline Core implementation and Editor trial preparation; routine
+risk, execution IDs N/A. Existing record remains work authority. Allowed scope:
+shape result transport preserving all facts, errors and revision checks, tests,
+rebuilt authored WASM, and isolated physical trial. No shaping policy, prefix
+reuse, batching, layout semantics, persistence or default activation changes.
+
+Discovery: 80 warmed whole-paragraph WASM shape calls measured median 7.89ms
+and p95 9.18ms; separate JSON.parse median 1.08ms. Native diagnostic comparator
+(100 iterations) averaged 10.34ms for shape_provider including serde Value
+construction, 2.17ms for serializing that Value, and 1.71ms for shaping-only
+script runs. Native comparison is diagnostic, not browser latency and not an
+exact subtraction of all overhead. It supports avoiding per-glyph JSON maps.
+
+Core candidate 2762bb9 on codex/frame-freeze-cost-20261005: typed Serialize
+ShapeFacts/ShapeGlyph replace intermediate per-glyph maps. Authored export emits
+JSON directly; old product export retains Value compatibility. Field names,
+integer values, glyph order, script runs, UTF16 offsets, limits, font checks,
+handle/revision validation and Blocked envelope preserved. No shaped prefix
+reuse or deferred visual truth. Rebuilt authored WASM SHA-256:
+a737deb8cdab6b2402a0cff3f7308170a94f3fe32302e1557e1690995ac2bac5.
+
+TDD: new wire comparison first failed because the direct wire function was
+absent; implementation then passed. Initial test incorrectly required control
+characters to shape successfully; corrected it to require the same rejection
+as the existing provider. Native affected product/authored suites pass 12 tests.
+Seven TS suites passed 41 checks including one local timing probe (40 retained
+correctness tests); existing authored test compares all 168 edit frames with
+legacy output. Fresh review found no blocker and requested coverage of the
+candidate's legacy export too. Added that parity to authoredShapeWire.test.ts;
+it passes against unchanged legacy WASM for both candidate exports, Thai marks,
+mixed scripts, escaping, input limits, stale and disposed handles. Core and
+WASM-package typechecks pass. A temporary probe caused one initial typecheck
+failure; it was moved to profiling and clean candidate typecheck rerun passed.
+
+After change, same whole-paragraph probe median WASM cost 3.21ms, p95 4.19ms;
+JSON.parse median 1.06ms. Browser automated 20-edit samples show layout median
+31.8ms baseline / 18.0ms candidate and input-to-commit 63.2 / 47.0ms, but all
+stages were substantially slower than the owner's physical run and ordering/
+warmup was not controlled. Do not compare those browser numbers to physical
+18.1ms or call this physical acceptance. Raw captures retained; new owner trial
+is the acceptance step.
+
+Editor trial uses prior paint baseline plus heading/entry/config only; typecheck
+and production build pass. New URL http://127.0.0.1:4027/text-block-shape.local.html
+loaded correctly and accepted 20 automated insertions with no dropped timing
+rows. Reset only this agent-created page to corpus for owner. Existing physical
+4026 draft/capture and main baselines preserved. No merge or push this turn.
+
+Local evidence under FlowDoc-dev/20261004/profiling: shape-wire-before-20261005.json,
+shape-wire-after-20261005.json, shapeWire.local.test.ts, shape-cost-probe-20261005.rs,
+shape-browser-first-20261005.json, shape-browser-baseline-20261005.json and
+shape-ready-20261005.png. Temporary diagnostic code removed from candidate.
+The shared-source change is covered by native tests and both exports in the new
+authored artifact; legacy product artifact is intentionally unchanged for reference.
+Status: candidate correctness/preparation PASS; physical responsiveness UNKNOWN.
+Next: owner held Thai input and Backspace on 4027, compare backlog and perceived
+response against the retained 4026 baseline. Broader raster and resize gaps remain.
