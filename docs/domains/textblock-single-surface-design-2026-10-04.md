@@ -1045,3 +1045,55 @@ Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
 Untracked reproduction: `tests/transferBoundary.local.test.ts`, Editor
 `transfer-boundary.local.html` (private local fixtures, do not publish).
 Diagnostic tab closed. No runtime optimization adopted or main merge/push.
+
+### Canonical key-order reuse probe (2026-10-04)
+
+Owner authorized the next exploration. Bounded inline Core discovery, execution
+IDs N/A; production remains 16dce19. Scope: reduce repeated sorting without
+altering canonical bytes, UTF-8 transfer, WASM or hash identity. No implementation
+adopted. Existing record is the document budget; one local parity/generator test
+and one same-run browser comparison are the proof budget.
+
+Diagnostic candidate keeps one key-order plan per recursion depth within a
+single serialization. It still calls Object.keys for each object and checks
+the complete unsorted key sequence before reusing a sorted array. A shape change
+replaces that depth's plan. Existing escaped-key cache, ordinal ordering,
+undefined omission, number/string encoding and concatenation are unchanged.
+No input values or plans survive a serialization call. This isolates one
+optimization; it does not skip walking every value or shrink the frame.
+
+`tests/keyPlan.local.test.ts` passed exact comparison to the independent canonical
+reference for all three actual frame fixtures plus edge cases: numeric keys,
+different insertion order, changed same-sized shapes, undefined values, escaped
+keys, Thai/surrogate strings and finite number encoding. Invalid numbers/bigint/
+symbol values are rejected. Candidate source is a local diagnostic artifact,
+not a production module. Full runtime acceptance remains unperformed.
+
+Browser fresh-serializes each call, then invokes the original WASM wrapper.
+Alternated baseline/candidate order, two warmups and ten measured samples each
+at 900/1,800/2,592. All 72 outputs and hashes including warmups match reference.
+Medians, milliseconds:
+
+| Graphemes | Original serialization | Candidate serialization | Original serialize-through-hash | Candidate serialize-through-hash |
+| --- | ---: | ---: | ---: | ---: |
+| 900 | 8.15 | 6.70 | 18.05 | 17.50 |
+| 1,800 | 15.10 | 12.70 | 35.85 | 34.05 |
+| 2,592 | 21.50 | 17.20 | 52.85 | 48.70 |
+
+At the 1,800 target, observed serialization saving is 2.4 ms (~16%), while total
+fingerprint pipeline median improves 1.8 ms (~5%). These are separately computed
+medians, not an additive cost decomposition. This short fixed-frame DEV probe
+shows a modest opportunity, not a major explanation of typing stalls or proven
+live-input improvement. Transfer/hash remain unchanged and significant.
+
+Decision: keep as a measured candidate; do not claim it deployed or expand into
+a new fingerprint contract. If adopted later, require normal production parity
+and affected-consumer checks. Further substantial gains likely require reducing
+more whole-frame work; that is a hypothesis needing a separate bounded design,
+not justification for an unmeasured rewrite.
+
+Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`key-plan-candidate.local.ts`, `key-plan-browser.json` and `.png`.
+Reproduction: untracked `tests/keyPlan.local.test.ts`, Editor `key-plan.local.html`
+(contains private local fixtures; do not publish). Diagnostic tab closed; user
+drafts untouched. No runtime change, product main merge/push or map promotion.
