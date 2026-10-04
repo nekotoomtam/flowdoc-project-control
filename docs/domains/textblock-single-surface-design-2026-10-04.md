@@ -680,3 +680,54 @@ equality. Kept user tab open and closed the measurement tab. No SVG, layout,
 Backend, persistence, main merge or push. This serialization item is complete
 within the stated proof; long-text performance remains open, with layout and
 SVG costs still pending.
+
+### Product cluster-layout avoids unused word-break queries (2026-10-04)
+
+Owner authorized the next bounded performance item. Inline Core discovery then
+implementation, execution IDs N/A. Inspection found the current B cluster-fit
+policy requests and validates ICU word-break offsets, but never uses those
+offsets to choose a visual line end. Local actual-WASM provider timing at 1,800
+graphemes measured total layout 44.45 ms, shape calls 18.96 ms and segmentation
+23.30 ms (six samples, medians; components need not sum exactly). Valid endpoint-
+only break facts gave identical lines for 18 saved-article cases at 900/1,800/
+2,592 graphemes with appended characters. This was a diagnostic comparison,
+not the shipped implementation.
+
+Introduced a named `prepareClusterWrappedLinesV1` path with a shaping-only
+provider contract and connected product-frame construction to it. The existing
+`prepareSoftWrappedLinesV1` path still queries and validates break facts. Both
+share the same actual line-end shaping, width/cluster/field-boundary validation,
+pagination limits and cluster-fit choices. Product frame no longer depends on
+segment-provider success: malformed/throwing segment providers remain rejected
+by the legacy path but are irrelevant to the new shaping-only path. This is an
+explicit narrowing of product layout's required inputs, not fake break data or
+a change to Thai word-wrap policy. Rust authored-edit validation and segmentation
+elsewhere remain intact; layout work counters now correctly report zero segment
+calls. Full affected-text shaping still occurs.
+
+Tests first failed on the absent cluster entry point, then Core product cluster,
+frame reuse, session, bridge and canonical suites passed 58 tests. The existing
+creator line-planning suite passed 5 tests; Editor input/session/pointer suites
+passed 10. Core type-check and staged diff checks passed. Existing golden frame
+fingerprints remain unchanged; no snapshot regeneration. Local actual-WASM
+old/new layout comparison passed all 18 cases, and current-frame timing probe
+passed 18 reference fingerprint comparisons (two diagnostic tests). Local probes
+are untracked `tests/layoutProviderCost.local.test.ts` and
+`tests/frameStageCurrent.local.test.ts`.
+
+After adoption, median layout at 1,800 graphemes is 17.04 ms (earlier frame-stage
+baseline 41.67 ms); frame build 39.00 ms. The separate browser trial using the
+same 1,800-grapheme article plus `xyz` reports Core edits 111.2/98.9/87.1 ms and
+input-handler-to-DOM-commit 217.1/185.4/176.7 ms, excluding initial fill. Prior
+three browser samples were 291.3/289.4/321.1 ms. These are short sequential DEV
+samples, not physical held-key input, paint presentation or a guaranteed speedup.
+Long-text performance acceptance remains open.
+
+Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`layout-provider-cost.json`, `frame-stage-before-cluster.json`,
+`frame-stage-current.json`, `cluster-layout-browser-after.json` and `.png`.
+Saved latest drafts as `before-cluster-layout-drafts.json`; after HMR reset,
+restored A/B via ordinary input and verified exact equality. User tab retained;
+measurement tab closed. No Backend/persistence, WASM change, SVG repair, product
+main merge/push or global readiness promotion. Next measured contributor is SVG
+construction; Core full affected-text work is reduced but not eliminated.
