@@ -414,3 +414,54 @@ and verified exact equality. Kept that tab open. No original document-route,
 Backend, Core source or product-main changes. PASS is limited to the bounded
 mouse interaction and stated checks; actual IME and document persistence remain
 pending as previously recorded.
+
+### Article paste slowdown: bounded diagnosis (2026-10-04)
+
+Owner reported a long freeze after pasting an article and typing. Inline
+discovery, execution IDs N/A; Editor surface and Core frame cost are the bounded
+owners under this existing record. No runtime fix or readiness promotion in this
+step. Acceptance here is preservation of the actual draft and measured stage
+costs; explaining the complete browser freeze remains unresolved.
+
+Read-only inspection found the page responsive again, both nodes inactive, no
+returned warning/error console entries, and composition counters zero. Preserved
+both exact visible drafts locally at
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/article-hang-drafts.json`.
+The article in A contains 3,118 UTF-16 units / 2,592 grapheme clusters and one
+explicit line. These units are not interchangeable with the 1,800-grapheme
+milestone; that milestone is not an input limit. User text is not committed.
+
+At Editor `1ce804a` / Core `51e7477`, local diagnostic
+`src/tests/articleCost.local.test.ts` uses the actual WASM, font, surface session
+and SVG builder with prefixes of the saved draft. It measures session creation,
+six sequential single-character appends, read and SVG preparation separately.
+Subsequent append results are checked for exact text equality. Vitest passed
+one diagnostic test; this is CPU profiling in Node, not physical browser input
+or browser paint timing. Measurements are local observations, not a statistical
+benchmark or performance acceptance. The test remains an untracked local probe.
+
+Latest local numeric output:
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/article-hang-cost.json`.
+The 3,118-unit case takes 153.5–166.7 ms per edit and 51.3–61.1 ms to build SVG
+paths, totaling 209.5–218.0 ms per append across six calls. The first resulting
+SVG path data contains 4,935,602 characters. A separate bridge read is under
+0.04 ms in all three prefix cases. At 1,800 UTF-16 units (1,474 graphemes), edits
+take 84.0–92.5 ms and SVG preparation 28.7–35.9 ms. The short run does not show
+progressive cost growth; it does show substantial repeated work after warmup.
+
+Core stage totals for all six full-draft edits: Rust edit roundtrip 253.9 ms,
+frame build 675.6 ms; frame layout 432.4 ms and fingerprint 222.1 ms are nested
+within frame build, not additional totals. Inspection of `trial.tsx` and
+`svgPainter.ts` confirms that snapshot changes rebuild outline paths across all
+frames, while the affected explicit-line Core session rebuilds its frame. These
+are measured contributors, not proof of a specific browser event backlog or
+the entire reported long stall. React, SVG parsing/paint, native event ordering,
+GC and sustained input were not measured here.
+
+Next bounded diagnosis: measure the browser input-to-frame path on a separate
+trial using the preserved corpus, including paint preparation and selection
+geometry, before choosing an incremental-frame/painter repair. Preserve the
+owner's live drafts and the single display/edit geometry contract. Do not mask
+the issue by truncating text or claiming the prior interaction tests established
+long-text typing performance. Product code, user tab contents and main branches
+remain unchanged in this diagnosis.
