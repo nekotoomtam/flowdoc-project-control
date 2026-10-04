@@ -286,3 +286,50 @@ source, Backend, Rust or WASM binary changes; no product main merge or push.
 This does not prove physical IME behavior, event deduplication, composition UI
 placement, typing speed or long-term memory. Next work is identity-preserving
 cross-break replacement, then the bounded single-surface Editor integration.
+
+## Browser connection trial (2026-10-04)
+
+Owner requested connecting the browser before further work, and explicitly
+requested click-out to retain/display the draft without a confirmation button.
+Inline Product Implementation; Editor owner, Core adapter consumer; execution
+IDs N/A. Scoped entry is a local development trial, not reopening the broad
+WYSIWYG gate or claiming its historical prerequisites. Implementation keeps the
+existing document route and its unsaved input untouched. No product main merge.
+
+Editor commit `d108ba4` adds `text-block-surface.local.html` and
+`src/editor/textBlockSurface/{input,session,trial}.ts[x]` plus styles/tests.
+URL: `http://127.0.0.1:4017/text-block-surface.local.html`.
+Two seeded plain TextBlock nodes use the actual retained Core bridge. The native
+textarea is the input/IME host only; the visible text uses the same batched SVG
+outline primitive in active and inactive states. Frame-local coordinates are
+stacked consistently for paint, pointer hit testing and overlays. Inactive nodes
+retain their draft/frame and release the editing session; blur does not reshape.
+Click-out requires no confirmation. There is no Backend save on this page, and
+reload loses these trial drafts. This is not yet integration into the document
+route or its persistence/draft-conflict lifecycle.
+
+Input handles same-segment replacements, a single Enter, deletion of an explicit
+break, cluster-safe diff boundaries and composition begin/update/end. Duplicate
+composition payloads and unchanged subsequent input do not reapply text.
+Composition counters expose whether browser composition events occurred. Empty
+compositionend payload currently means cancel; physical platform behavior must
+validate this bounded policy. Node switching waits while composition is active.
+Unsupported multi-line paste/range replacement is rejected with an explanation.
+Full pointer-drag selection, accessibility, undo/redo, variable widths and large
+node counts are not accepted by this trial.
+
+Automated evidence: 6 tests passed across input diff, actual-WASM surface session
+and shared SVG painter suites. Editor type-check and normal application build
+passed (existing large-chunk warning); the standalone development HTML is not a
+production bundle entry. Staged diff check passed after whitespace cleanup.
+Browser smoke via the in-app browser verified Thai text, Enter, Backspace joining,
+A -> B -> A draft retention and click-out without confirmation. SVG path strings
+for the tested text were identical before and after blur. Those interactions
+generated zero composition events; physical IME acceptance is still pending,
+not inferred from synthetic input or unit tests.
+
+Screenshot: `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/textblock-surface-trial.png`.
+Result: PASS for bounded connection/smoke, UNKNOWN for physical composition and
+full document-route readiness. Next: owner physical input observations, resolve
+any event-order failures, then cross-break editing and the actual document
+draft/save integration. No DOCUMENT_MAP or global WYSIWYG promotion.
