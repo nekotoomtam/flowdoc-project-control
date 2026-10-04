@@ -2366,3 +2366,32 @@ Verification: parsed full capture, checked per-input stage coverage, operations,
 route count, burst cadence and age recovery; preserved user feedback verbatim in
 meaning. No runtime suite rerun for read-only capture analysis. Status: measured
 improvement supported; owner says usable but insufficient; full acceptance open.
+
+### Owner-authorized local main integration (2026-10-05)
+
+Owner explicitly requested main integration of the improved baseline. Inline
+integration / Project Control Steward; execution IDs N/A. This accepts landing
+the current bounded implementation, not completion of latency work or broader
+product readiness. Core main fast-forwarded from 2f0f1e4 to 12e5fe3; Editor main
+fast-forwarded from d1a9670 to c703581, including prerequisite commits. Both main
+checkouts were clean before integration; no conflicts or unrelated changes.
+
+Integration found the authored trial adapter depended on the isolated sibling
+folder name. Replaced those two imports with the already exported package
+subpath @flowdoc/text-engine-rust-wasm/authored-session. No runtime semantics,
+default activation or typing algorithm changed. The authored runtime and command
+path painting remain explicitly opt-in; main integration is not default rollout.
+
+Fresh main-checkout verification: Core six affected authored/bridge/frame/width
+suites passed 60 tests. Editor typecheck passed; five surface/cache/fingerprint/
+input/pointer suites passed 15 tests; production paint-trial build passed using
+the main package dependency. Main initially lacked installed test tools; npm ci
+--ignore-scripts restored each lockfile environment, with no tracked lockfile
+change. Prior Rust correctness evidence is retained, not claimed as a fresh run.
+Editor portability fix committed after checks. Final diff whitespace check passed.
+
+Existing 4026 physical trial server, owner draft, and isolated checkouts retained
+for continued comparison. No push or branch/worktree deletion. Existing physical
+assessment remains usable improvement, insufficient final quality. No system map
+promotion. Next work remains bounded layout/frame and pre-input cost discovery.
+`Editor main terminal commit: 191a4eb; Core main terminal commit: 12e5fe3.`
