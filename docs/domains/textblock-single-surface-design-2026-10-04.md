@@ -1447,3 +1447,30 @@ and which seam certification condition rejects this tail remain unresolved.
 Next inspect that certification boundary before proposing a repair; do not
 bypass it merely for speed. Existing correctness and physical acceptance stay
 open. No product main merge/push or map promotion.
+
+### Thai admission boundary inspection (2026-10-04)
+
+Owner approved the staged approach: inspect rejection, design a bounded repair,
+then compare against full rebuild before physical acceptance. Source inspection
+only in this step; no product edits. Core commands.rs existing_plan admits the
+special Thai tail path only when !edge, final run length <=24 UTF-16, replacement
+bytes <=24 and range lies within that run. tail_seam.rs thai_edit additionally
+requires a whole-run final shard, bounded replacement/new length, Thai scalars,
+an ASCII-letter outer witness when not at source start, exact old provider facts
+and matching contextual segmentation. This is a narrow certificate, not a
+general Thai paragraph incremental editor.
+
+The fixed-corpus cold summary reports one run over roughly 3,848 units, so it
+cannot enter that <=24 path. Generic insertion admission in commands.rs rejects
+non-Latin run insertion even at the tail; generic range editing rejects a shard
+that does not span the whole run before provider replay. These source conditions
+explain the missing admitted route for this long Thai case; exact dynamic branch
+instrumentation has not been added. No claim of arbitrary Thai locality follows.
+
+Repair direction must certify a bounded suffix/context window inside a long run,
+not merely raise the 24-unit cap or remove seam checks. It must preserve both
+shaping and dictionary segmentation context and retained prefix facts; if such
+a boundary cannot be established within the budget, retain full fallback.
+Whole-run length and authoring-node length are distinct from the safe context
+window. This discovery changes the size of the repair beyond a constant tweak;
+implementation and oracle comparison remain pending. Existing runtime unchanged.
