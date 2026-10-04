@@ -1360,3 +1360,32 @@ Next bounded diagnostic should capture the remaining end-to-end cost on the same
 retained corpus before selecting another optimization. Root cause remains unknown;
 do not infer that the prior optimization failed to reduce its measured work, or
 that it resolved the owner-visible symptom. No readiness/map promotion.
+
+### Fixed-corpus physical timing probe (2026-10-04)
+
+Owner requested a timing instrument before physical testing. Bounded local
+Editor diagnostic, inline execution IDs N/A; product runtime unchanged. Reuses
+the stage-trial copy with a start/stop recorder and no per-event console or
+statistics UI updates. Owner-supplied paragraph repeated three times with a
+single space separator: 3,848 UTF-16 units / 3,170 graphemes. A is preloaded;
+original live tabs and drafts are untouched. Local URL:
+`http://127.0.0.1:4017/text-block-physical-timing.local.html`.
+
+Untracked diagnostic files: `text-block-physical-timing.local.html`,
+`src/editor/textBlockSurface/trialPhysicalTiming.local.tsx`,
+`physicalTiming.local.tsx` and `timingCorpus.local.json` in that same directory.
+Recorder captures event timestamp age, repeat/trusted flags, input type, Core
+stages, SVG building, geometry, DOM commit, second rAF and supported long tasks.
+Bounded 12,000 rows with explicit dropped count; no key values or typed text in
+recorded rows. Results are rendered only on stop. Stage durations overlap and
+must not be summed. Event age excludes unknown hardware/OS latency; rAF/commit
+are not presented pixels; trusted flags do not establish physical input.
+
+Editor type-check passed. Browser smoke appended xyz then Backspace: four input
+records, four Core-edit/commit/second-rAF records, zero dropped. Maximum measured
+Core edit 347.1 ms; input-to-commit 442.4 ms; long task 499 ms. This is instrumented
+automated DEV input, not physical acceptance or a before/after benchmark.
+Saved `profiling/physical-timing-smoke.json` under the existing local evidence
+directory. Reloaded only this diagnostic tab to discard smoke input/results;
+verified exact original three-copy corpus and ready status. Physical trial is
+pending. No main product integration or readiness promotion.
