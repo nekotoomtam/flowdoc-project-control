@@ -1097,3 +1097,62 @@ Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
 Reproduction: untracked `tests/keyPlan.local.test.ts`, Editor `key-plan.local.html`
 (contains private local fixtures; do not publish). Diagnostic tab closed; user
 drafts untouched. No runtime change, product main merge/push or map promotion.
+
+### Changed-line versus reconstructed-frame inventory (2026-10-04)
+
+Owner agreed to investigate whole-frame work and address design gaps from
+evidence. Inline discovery, execution IDs N/A; Core remains 16dce19. Bounded
+scope: one existing article prefix, 1,800 graphemes / 2,167 UTF-16 units, one
+paragraph inside a TextBlock, width 432pt. Nine independent sessions perform
+insert/delete/replace at start, a middle shaping-cluster boundary, and end.
+Insert/replacement is ASCII x; deletion removes one existing shaping cluster.
+This is not a claim about all Thai input or multi-paragraph TextBlocks.
+
+`tests/frameChangeScope.local.test.ts` passed all nine accepted edits and exact
+source-text assertions. Before/after frames each contain 28 lines. Exact line
+comparison includes the complete line record, paint commands, carets and spans
+at the same line index. Diagnostic visual comparison removes only sourceRange
+and glyph clusterUtf16 offsets from paint commands; it retains text, glyphs,
+positions and all other paint fields. It is not screenshot/pixel evidence.
+
+| Position | Edit | Exactly unchanged line bundles | Visually unchanged paint lines | Exact unchanged prefix |
+| --- | --- | ---: | ---: | ---: |
+| Start | Insert | 0 | 22 | 0 |
+| Start | Delete | 0 | 26 | 0 |
+| Start | Replace | 27 | 27 | 0 |
+| Middle | Insert | 13 | 13 | 13 |
+| Middle | Delete | 13 | 27 | 13 |
+| Middle | Replace | 27 | 27 | 13 |
+| End | Insert | 27 | 27 | 27 |
+| End | Delete | 27 | 27 | 27 |
+| End | Replace | 27 | 27 | 27 |
+
+Despite equal data, every case retains zero object references from the prior
+frame's line, caret, span and paint-command collections. Tail insertion emits
+28 new line records, 3,604 caret records, 1,801 spans and 2,182 positioned glyph
+records, even though only one complete line bundle differs. Raw-shape caching
+still works (two provider calls for each tail edit); that cache does not avoid
+frame geometry allocation, full canonical serialization or hashing. This is an
+allocation/data-change inventory, not a measured speedup opportunity in ms.
+
+Finding: visual equality and editing-position equality must remain separate.
+Insert/delete can leave glyph geometry unchanged while shifting source offsets;
+blind reuse would risk stale caret/selection mapping. Conversely exact complete
+line equality exposes real reuse candidates. A future bounded implementation
+should first test immutable line-bundle reuse while keeping final frame bytes
+and fingerprint identical. Reusing objects only after rebuilding and comparing
+them would not by itself avoid reconstruction work; early reuse requires a
+validated layout/input dependency boundary, including line-end shaping context.
+
+Recommended design sequence: (1) define dependencies for paragraph-local line
+shaping/geometry versus source offsets and document placement; (2) prototype
+safe reuse of unaffected lines with fallback on uncertain boundaries/reflow;
+(3) verify middle edits, Thai clusters, wrapping, split/join, IME and selection
+against the cold reference; (4) measure whether savings survive remaining full
+serialization/hash costs. Do not assume 27/28 equal lines means a 96% speedup.
+Changing fingerprint composition is a separate contract decision, not authorized
+by these observations alone. No runtime implementation adopted in this round.
+
+Evidence: `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/frame-change-scope.json`;
+reproduction is untracked `tests/frameChangeScope.local.test.ts`. Existing user
+tabs/drafts untouched. No product main merge/push or map/readiness promotion.
