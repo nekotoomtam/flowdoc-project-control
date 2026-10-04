@@ -1156,3 +1156,65 @@ by these observations alone. No runtime implementation adopted in this round.
 Evidence: `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/frame-change-scope.json`;
 reproduction is untracked `tests/frameChangeScope.local.test.ts`. Existing user
 tabs/drafts untouched. No product main merge/push or map/readiness promotion.
+
+### Immutable line-bundle prototype and cost boundary (2026-10-04)
+
+Owner approved the recommended exploration. Inline discovery, execution IDs N/A;
+Core candidate remains 16dce19. A generated untracked copy of the current frame
+materializer experiments with retaining complete frozen line/caret/span/paint
+bundles before geometry reconstruction. Production imports and live tabs were
+not changed. One local test and this existing record bound proof/document scope.
+
+Dependency inventory for this fixed-profile, single-inline product path:
+raw shaping uses exact isolated line text and provider/font binding; geometry
+also depends on paragraph-relative start/end offsets, paragraph/line/page index,
+baseline/placement, and whether the line ends the paragraph (caret affinities).
+These must all match before reusing the complete bundle. Layout and actual
+line-end shaping still run first. The prototype does not infer reuse solely
+from unchanged text prefixes or paint similarity. It retains only the latest
+successful frame's bundles; no cross-session global cache.
+
+The first candidate included all shaped cluster/glyph facts in its comparison
+key. This preserved frames but made geometry work slower: tail-edit median
+0.914 ms cold versus 2.864 ms cached, despite reusing 27/28 lines. This candidate
+was rejected. The second candidate keys only the dependencies listed above;
+its validity is restricted to the current fixed provider and single-inline
+line-shaping path, not a general arbitrary-provider/rich-style API guarantee.
+
+Both experiments use the actual 1,800-grapheme article and eight successive
+insertions each at start/middle/end (alternating x and Thai ก). Each of 24 frames
+is compared in full, excluding diagnostic work counters, against both cold
+materialization and the actual runtime frame. Full geometry, source metadata,
+caret affinities and fingerprint match. Both test runs pass. Independent shape
+caches serve cold/candidate paths; measurement order alternates per revision.
+After excluding the first two revisions, six-sample median geometry-loop cost
+for the smaller-key candidate (Node, includes key checking and assembly):
+
+| Edit location | Reused lines / 28 | Cold geometry ms | Candidate geometry ms |
+| --- | ---: | ---: | ---: |
+| Start | 0 | 1.007 | 1.088 |
+| Middle | 13 | 0.728 | 0.581 |
+| End | 27 | 1.023 | 0.335 |
+
+Decision: do not adopt a geometry cache on the strength of this probe. Tail
+geometry allocation can be reduced, but the measured saving is only ~0.69 ms
+in Node. It does not remove whole-text layout, serialization or SHA-256. Total
+frame times fluctuate materially across revisions/runs, including GC/allocation
+effects not isolated here; a production or browser speedup is not established.
+Previously equal line counts were opportunity counts, not evidence that geometry
+construction dominated latency. This experiment prevents conflating the two.
+
+No production-ready acceptance is claimed: deletion, replacement, split/join,
+IME, changed widths/providers, multi-page transitions, memory lifetime and
+browser interaction would need coverage before adoption. Given the small local
+benefit, those checks are deferred rather than expanding this experiment.
+Recommended next investigation is the dependency/consumer contract for full
+frame fingerprinting on each input: determine what must be synchronous and what
+could safely be reused without changing validation. This is read-only discovery,
+not permission to defer integrity checks or replace the hash contract.
+
+Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`geometry-reuse-full-key.json` and `geometry-reuse-probe.json`. Reproduction:
+untracked `tests/makeGeometryProbe.local.mjs`, `tests/geometryReuse.local.test.ts`
+and `src/creatorPreview/frameGeometryProbe.local.ts`; diagnostic artifacts only.
+No runtime change, product main merge/push, user draft or map/readiness changes.
