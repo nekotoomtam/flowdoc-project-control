@@ -932,3 +932,57 @@ Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
 Reproduction page: Editor-local untracked `serialization-only.local.html`;
 contains private local corpus fixtures and must not be committed or published.
 Measurement tab closed. No product main merge/push or readiness promotion.
+
+### Fingerprint investigation, step 2: WASM transfer and hash (2026-10-04)
+
+Owner authorized continuation after step 1. Inline discovery, execution IDs N/A;
+Core remains 16dce19. No runtime changes. Reuse the exact three step-1 identity
+fixtures. Local `tests/hashOnly.local.test.ts` verifies the actual WASM result
+against Node SHA-256 for all three and generates `hash-only.local.html` in Editor.
+The diagnostic initially omitted the public `sha256:` prefix in its expectation;
+after matching the documented Rust return format, all three independent checks
+passed. Production hash code was not changed.
+
+Browser page embeds the unchanged generated WASM JS glue and actual binary;
+binary SHA-256 is the runtime-pinned
+`eeec2a5e9610004ea17c8263f6707797cb5e802eea88114f8a9168aef399b3e4`.
+The artifact also records the glue digest. Initialization, fixture parsing and
+serialization are outside timing. Two warmups plus ten samples per size/mode:
+prepared reference string, and a freshly returned production-serializer string.
+The latter is not compared or encoded before entering the timed wrapper.
+
+Total times use the original `product_session_fingerprint` wrapper. Separate
+diagnostic calls reproduce its allocation/encoding, WASM invocation, returned
+string decode and output free, with timestamps bracketing the first two stages.
+They reuse the glue's actual private functions, not an alternative encoder/hash.
+Every wrapper and split-call result equals the independently computed reference
+(144 browser calls including warmups). Medians, milliseconds:
+
+| Graphemes | String preparation | Original wrapper total | Encode/allocate/copy | WASM call |
+| --- | --- | ---: | ---: | ---: |
+| 900 | Prepared | 8.40 | 4.15 | 5.00 |
+| 900 | Freshly serialized | 10.35 | 6.10 | 4.50 |
+| 1,800 | Prepared | 16.50 | 6.80 | 9.30 |
+| 1,800 | Freshly serialized | 23.05 | 14.00 | 10.00 |
+| 2,592 | Prepared | 22.75 | 10.45 | 12.85 |
+| 2,592 | Freshly serialized | 30.60 | 18.80 | 13.15 |
+
+Do not sum medians from separate calls or subtract step-1/previous-run medians.
+The WASM interval includes call boundary and Rust result construction as well as
+SHA-256, not pure hash CPU. Transfer includes allocation, string access, UTF-8
+encoding/copy and any delayed string work. Fresh strings are measurably more
+costly in this short run, but rope flattening, GC and allocation contributions
+were not independently proven. These are fixed-frame synchronous DEV probes,
+not a physical input or end-to-end latency acceptance. The UI click tool timed
+out while the batch ran; the completed result was read without rerunning it.
+
+Finding: serialization and transfer are both substantial; hashing is not the
+only remaining contributor. Next recommended bounded investigation is the
+serializer-to-UTF-8 transfer boundary, preserving the exact canonical bytes and
+SHA-256 contract. Do not remove identity fields or substitute a hash algorithm
+based on this measurement. No optimization adopted in this round.
+
+Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`hash-only-browser.json` and `.png`. Reproduction test/page remain untracked,
+with private local corpus fixtures; do not publish them. Diagnostic tab closed;
+live drafts untouched. No product main merge/push or readiness promotion.
