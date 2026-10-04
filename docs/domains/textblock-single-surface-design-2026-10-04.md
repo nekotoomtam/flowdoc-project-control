@@ -465,3 +465,49 @@ owner's live drafts and the single display/edit geometry contract. Do not mask
 the issue by truncating text or claiming the prior interaction tests established
 long-text typing performance. Product code, user tab contents and main branches
 remain unchanged in this diagnosis.
+
+### Owner interaction observations and browser cost baseline (2026-10-04)
+
+Owner reports successful pointer selection across multiple lines, replacement,
+select-all/delete/retype, multiline paste, Enter/Backspace split/join, and node
+switching without layout jumps for short text. These are owner observations,
+not physical IME evidence or long-text performance acceptance. Owner initially
+deferred long-text repair, then explicitly authorized resuming that bounded
+performance work before full document-route integration. The overall design
+remains incomplete; retain IME and persistence limitations above.
+
+Inline discovery continued with a separate local browser page copied from the
+current surface, instrumenting Core edit, SVG preparation, selection geometry,
+React layout-effect commit and the second rAF. The user tab was neither reloaded
+nor edited. Latest drafts were separately backed up to
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/before-browser-cost-drafts.json`
+and exact equality was checked afterward. The copied instrumentation remains
+untracked as Editor `src/editor/textBlockSurface/trialProfile.local.tsx` and
+`text-block-profile.local.html`; it does not modify the delivered trial.
+
+The saved 3,118-unit article was filled through the browser textarea, then six
+characters were entered sequentially through browser automation. All six
+appeared in the native value. Excluding initial paste, Core edits took
+303.5–493.8 ms, SVG construction 84.2–102.1 ms, selection geometry about
+3.1–4.2 ms, and input-handler start to DOM commit 430.7–634.7 ms. Second-rAF
+elapsed times were 453.5–662.7 ms. DOM commit and rAF are not proof of presented
+pixels; automated sequential typing does not reproduce physical key repeat or
+measure pre-handler input queue delay. This establishes substantial synchronous
+input-path cost, not complete attribution of the owner's original long freeze.
+
+A prefix of exactly 1,800 grapheme clusters (2,167 UTF-16 units) was also tested
+with three additional characters. Core edit durations were 247.1, 209.7 and
+231.7 ms; input-to-commit durations were 408.1, 294.5 and 331.3 ms. The remaining
+cost therefore also affects the agreed milestone, not just larger articles.
+These are instrumented DEV observations with a small sample; no production
+timing guarantee or physical-input acceptance is implied.
+
+Numeric logs: `profiling/article-browser-before.json` and
+`profiling/article-browser-1800-before.json`, relative to the local
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/` directory. The latter includes
+preceding samples: only its last three edit/commit pairs are the 1,800-grapheme
+typing sample. Screenshot: `profiling/article-browser-cost.png`. Temporary
+browser tab was closed. No runtime repair, product commit, main integration or
+readiness promotion occurred. Next repair should address measured Core
+frame/layout work first, with SVG reconstruction as a second measured contributor;
+preserve exact shaping, wraps, selection, atomic edits and frame identity rules.
