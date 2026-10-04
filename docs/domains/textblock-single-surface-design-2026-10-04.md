@@ -2498,3 +2498,47 @@ authored artifact; legacy product artifact is intentionally unchanged for refere
 Status: candidate correctness/preparation PASS; physical responsiveness UNKNOWN.
 Next: owner held Thai input and Backspace on 4027, compare backlog and perceived
 response against the retained 4026 baseline. Broader raster and resize gaps remain.
+
+### Owner physical direct-wire trial accepted as provisional baseline (2026-10-05)
+
+Owner tested 4027 and says it is usable and can be used for now provided this
+responsiveness can be maintained. Treat this as acceptance of the current
+fixed-width typing baseline, with consistency still a condition; not evidence
+for every document size, editing mode, device or duration. Inline Evidence
+Reviewer; IDs N/A. No runtime changes or further optimization in this assessment.
+Candidate Core 2762bb9 / Editor 74ba3b6 remains separate from main.
+
+Read-only capture saved without reload or draft edits to
+FlowDoc-dev/20261004/profiling/shape-owner-physical-20261005.json (1316459 characters,
+9839 rows), with shape-owner-analysis-20261005.json alongside. Duration 30.22s;
+655 inputs: 326 insertions and 329 backward deletions, 651 repeats, zero dropped
+measurement rows. Every input ID has exactly one Rust edit, Core edit, commit,
+and second-rAF record. All 656 routes are authored-only/1. Final A/B lengths
+3845/25 agree with net three deletions; no UI alerts. This coverage does not
+independently prove all hardware events or all source/caret correctness.
+
+Physical comparison with retained 4026 capture (milliseconds):
+- Input-to-commit median 18.1 -> 13.7; p95 23.2 -> 18.9; max 33.5 -> 25.1.
+- Keydown event age median 2.9 -> 0.7; p95 29.4 -> 5.4; max 48.7 -> 17.6.
+- Frame layout median 9.7 -> 5.7; frame build 12.8 -> 8.7; Core edit 14.8 -> 10.6.
+- Second-rAF median 76.2 -> 19.5; p95 131 -> 75.4; max 228.5 -> 112.1.
+  These are scheduling signals, not actual presented-pixel latency.
+- One 51ms long task occurred before typing and contains zero input entries;
+  no observed long task during the typing bursts in this capture.
+
+Four bursts contain 228, 28, 70 and 329 events. Generated repeat medians
+30.2/30.3/30.2/30.2ms, delivered 30.0/29.8/29.8/30.1ms (excluding initial repeat
+delay). End-of-burst event ages 0.5/1.7/2.2/0.4ms. No accumulating input backlog
+appears, including the longest 329-event deletion burst. Evidence supports
+maintained cadence within this run, not an always-smooth guarantee.
+
+Decision: retain this version as the owner-accepted provisional typing baseline;
+stop chasing further micro-optimizations now. Preserve the physical corpus,
+capture, commit identities and existing correctness tests as regression reference.
+Future affected changes must compare correctness and responsiveness against this
+baseline; middle edits, IME, larger inputs, resizing and structural expansion
+remain outside this physical capture. Existing raster/resize unknowns stay open.
+No automatic default rollout, merge, push or wider readiness/map promotion.
+Verification: full JSON parse, per-ID coverage, operation/route counts, burst
+cadence and recovery, long-task timing; no runtime suite rerun for read-only
+assessment. Owner feedback and evidence now agree on provisional usability.
