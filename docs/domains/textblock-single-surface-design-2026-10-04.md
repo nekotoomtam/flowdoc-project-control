@@ -1218,3 +1218,72 @@ Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
 untracked `tests/makeGeometryProbe.local.mjs`, `tests/geometryReuse.local.test.ts`
 and `src/creatorPreview/frameGeometryProbe.local.ts`; diagnostic artifacts only.
 No runtime change, product main merge/push, user draft or map/readiness changes.
+
+### Product-frame fingerprint consumer audit (2026-10-04)
+
+Owner authorized read-only investigation of synchronous fingerprint consumers.
+Inline discovery, execution IDs N/A; product runtime unchanged. Scope is the
+current product-session/TextBlock single-surface path, not every similarly named
+fingerprint elsewhere in FlowDoc. Initial broad searches were noisy; conclusions
+below use narrowed type/import/call paths and a local observed-read probe.
+
+Producer: `productFrameV1.ts:93–95` excludes work/fingerprint from frame identity,
+then eagerly computes its canonical fingerprint and deep-freezes the frame.
+`productSessionV1.ts:62` supplies the actual canonical serializer/WASM SHA-256.
+Public `ProductFrameV1` requires a string fingerprint, and the product-session
+package exports the type. Regression tests pin frame fingerprints and compare
+full frames; callers requesting/exporting that identity must still get the same
+value for the same immutable frame. This is a real contract, not unused data
+that may simply be deleted.
+
+Consumer findings:
+- Product editing, prepared commits, stale-command checks and caret/selection
+  queries use session liveness, expected revision, Rust receipts and validated
+  positions, not a comparison of the product frame fingerprint. Publication
+  history records paragraph IDs/sourceBinding, not this geometry fingerprint.
+- `textBlockProductBridgeV1.ts` validates schema/inline IDs, prepares candidate
+  Core edits and commits atomically; it reads frame source/geometry/revision.
+  `read()` clones the TextBlock source but returns frames by reference.
+- Editor surface session, trial controller and geometry queries use source text,
+  revisions and geometry. Direct SVG painter consumes page/paint data only.
+- `svgFrameCache.ts:24` spreads the entire frame when building a single command
+  on a cache miss. That implicitly reads an enumerable fingerprint even though
+  the painter does not need it. The cache key itself uses paint/placement/font,
+  not the product frame fingerprint.
+- `productFrameV1.ts` deep-freeze uses Object.values, which would invoke an
+  enumerable lazy fingerprint getter. JSON serialization and spread likewise
+  remain legitimate observable consumers of such a getter.
+- No direct ProductFrameV1/product-session type or authority-tag consumer was
+  found in the searched Backend src tree. This does not prove all generic
+  serialization or external callers absent; other Backend fingerprints serve
+  different contracts and are outside this audit.
+
+Untracked Editor `src/tests/frameFingerprintReads.local.test.ts` wraps real frozen
+frames in transparent proxies that return unchanged values and count fingerprint
+reads. Actual-WASM 1,800-grapheme corpus, 28 lines, original painter/cache:
+
+| Operation | Observed fingerprint reads |
+| --- | ---: |
+| Direct SVG painting | 0 |
+| SVG cache cold build | 28 |
+| SVG cache unchanged build | 0 |
+| SVG cache after tail insertion | 1 |
+| Object.values(frame) | 1 |
+| JSON.stringify(frame) | 1 |
+
+Probe passed. Counts are property reads, not repeated hashes in today's eager
+runtime; a memoized lazy design would compute at most once but would still be
+forced on the typing path by these consumers. Evidence:
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/frame-fingerprint-reads.json`.
+
+Recommended bounded design candidate: defer only product-frame identity hashing
+until an explicit read/export, memoize per deeply immutable frame and retain
+the exact string/serialization contract. Freeze data without invoking that
+getter, and pass only required paint fields rather than spreading the frame.
+Keep revision/receipt/schema/atomicity checks synchronous and unchanged.
+Acceptance must include old retained-frame reads after later edits/disposal,
+JSON/spread compatibility, immutability, first-read failure/timing semantics,
+exact hashes and proof that normal edits/painting do not accidentally force
+hashing. This is a cross-owner Core/Editor implementation proposal, not an
+approved runtime change or a measured speedup. The cost is deferred, not erased.
+No production changes, main merge/push, live-draft or readiness/map changes.
