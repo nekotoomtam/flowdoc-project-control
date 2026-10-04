@@ -159,3 +159,50 @@ prerequisites passed. Preserve all broader readiness limitations.
 - Editor: src/editor/draft/textBlockGeometrySession.ts (diagnostic only)
 
 No product behavior or readiness is changed by this document.
+
+## Implementation slice: retained replacement prerequisite (2026-10-04)
+
+Owner authorized continuing after renderer probe. Inline Product Implementation
+role; Core owner; execution IDs N/A. Bounded scope: prepare/commit/discard a
+retained single-paragraph replacement, then adopt it in TextBlock.replace only
+after full node validation. Existing apply remains immediate and compatible.
+Enter/join/resize and browser input remain unchanged for this slice.
+
+Acceptance: preparing/discarding never changes current frame/history; a stale,
+already-closed or disposed transaction cannot commit; disposal releases pending
+WASM candidates; repeated TextBlock replacements do not call runtime.create and
+retain unaffected line frame identities; rejected edits keep node and frame.
+Proof: real product-WASM tests, existing bridge/session suites, Core type-check
+and Editor consumers. No physical typing or 1,800-character admission claim.
+
+Sequence: failing transaction/bridge tests -> retained transaction implementation
+-> atomic bridge adoption -> focused verification and commit -> record result.
+Reason for scoped first step: directly mutating the retained session before
+TextBlock schema validation would remove the existing rollback safety.
+
+### Result and evidence
+
+PASS for this prerequisite only. Core commit `c20d592` on
+`codex/product-frame-shape-reuse-20261004` adds prepared retained replacements
+and adopts them only after TextBlock validation. Immediate `apply` uses the same
+prepare/commit path. Discard, stale revision, repeated commit and parent disposal
+are covered; rejected node validation preserves the published node and frame.
+Repeated replacements reuse the existing line session and preserve the frame
+identity of unaffected lines. Structural operations still rebuild candidates.
+
+Verification against the unchanged product WASM:
+
+- Core: 48 tests passed across productSessionV1, textBlockProductBridgeV1,
+  productWidthV1, productFrameReuse, productTimingV1 and
+  productEditorIntegrationSmoke. Session and bridge tests assert zero remaining
+  live WASM sessions and retained inverse pairs after cleanup.
+- Editor consumers: 21 tests passed across textBlockGeometryBinding,
+  coreEditingTrial and the three textBlockRenderProbe suites.
+- Core and Editor type-checks passed; Core diff whitespace check passed.
+
+The earlier type-check failure in candidate break access was corrected before
+the final passing checks. No Editor UI, Backend, Rust or WASM binary changed;
+no product main merge or push. Existing local profiling files were preserved.
+This does not establish browser typing speed, long-term process memory, or
+1,800-character acceptance. The next bounded step is bridge caret/selection
+and composition support before connecting the single-surface Editor.
