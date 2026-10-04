@@ -1474,3 +1474,30 @@ a boundary cannot be established within the budget, retain full fallback.
 Whole-run length and authoring-node length are distinct from the safe context
 window. This discovery changes the size of the repair beyond a constant tweak;
 implementation and oracle comparison remain pending. Existing runtime unchanged.
+
+### Bounded suffix candidate feasibility (2026-10-04)
+
+Owner approved trying the proposed boundary approach. Local-only discovery probe
+`tests/ownerSuffixWindow.local.test.ts` uses the unchanged pinned WASM's public
+product shape/segment exports. Candidate finder searches backward at most 128
+UTF-16 units for an ASCII space; this is a candidate, not a production safety
+certificate. On the supplied three-copy corpus it selects offset 3,802, leaving
+46 units before editing. Reuses old prefix glyphs/breaks and computes only the
+candidate suffix; compares the merged result with full new-text provider output.
+
+15 comparisons passed for consonant, tone mark, vowel, Latin insertion and final
+grapheme deletion across original corpus and two Thai-tail variants. Compared
+complete glyph records (IDs, cluster offsets, advances and offsets) and line
+break arrays. A tail of 200 Thai consonants with no space in the search budget
+explicitly returned no candidate; it is not admitted. Actual-WASM Vitest probe
+passed with assertions for all 15 comparisons and the fallback case. Evidence:
+existing local `profiling/owner-suffix-window.json`. Initial corpus suffix-only
+shape/segment samples were about 0.8–1.1 ms in Node, not total edit latency and
+not directly comparable to full retained-session rebuild timings.
+
+This establishes sample feasibility only. Public product shaping differs from
+the retained-session shard provider; its exact metadata, unsafe concat flags,
+grapheme boundaries, run ownership and persistence must be certified separately.
+No caret/layout/session integration or physical improvement is proven. No claim
+that every space or 128-unit window is safe. Runtime unchanged; next stage is a
+retained-provider certificate/oracle probe before production implementation.
