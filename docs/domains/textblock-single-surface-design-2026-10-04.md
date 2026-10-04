@@ -245,3 +245,44 @@ single-surface browser placement/input, drafts and physical input acceptance.
 No UI parity, typing performance, 1,800-character admission or product-main
 readiness claim is made. No Backend, Editor source, Rust or WASM binary changed;
 no product main merge or push and no map promotion.
+
+## Implementation slice: bridge composition lifecycle (2026-10-04)
+
+Owner authorized continuing composition after geometry. Inline Product
+Implementation, Core owner, execution IDs N/A. Scope is one explicit-break
+segment in one plain TextBlock: begin, provisional update, commit, cancel and
+disposal. Browser event normalization, cross-break replacement and Backend
+publication remain outside this slice. Existing design is the work authority;
+this section records bounded acceptance against durable code/tests, not a map
+or general WYSIWYG readiness promotion.
+
+PASS for this prerequisite: Core commit `a5c2af7` changes productSessionV1,
+textBlockProductBridgeV1 and their tests. Product session exposes a prepared
+composition update; immediate update remains compatible via prepare/commit.
+Bridge validates the candidate node before publishing the provisional frame.
+Every update uses the original composition range and inline owners, not the
+previous provisional text. Cancel restores exact original inline children;
+commit records one changed-text history entry, or none for unchanged text.
+
+The bridge read result now includes composition `{id, lineIndex}` or null.
+While active, its textBlock and frames are provisional; consumers must resolve
+composition before treating that snapshot as committed input for persistence.
+Queries use the current provisional frame and bridge revision. Ordinary replace,
+Enter, join, resize and a second begin are blocked while composition is active.
+Newlines in composition updates remain unsupported; explicit breaks require the
+separate structural path. Reversed start/end ranges are rejected at begin.
+
+Verification: new lifecycle tests first failed on the absent methods. Final
+Core product session, TextBlock bridge, integration smoke, frame reuse and timing
+suites passed 54 tests. Coverage includes repeated Thai provisional updates,
+commit once, cancel/ID restoration, empty composition, stale/invalid commands,
+malformed projection rejection with successful retry and active disposal.
+Real product-WASM cleanup assertions report no live sessions or inverse pairs
+after each session/bridge test. Editor geometry binding and editing trial suites
+passed 10 tests; Core and Editor type-checks and Core diff check passed.
+
+Existing local profiling files and user browser state were preserved. No Editor
+source, Backend, Rust or WASM binary changes; no product main merge or push.
+This does not prove physical IME behavior, event deduplication, composition UI
+placement, typing speed or long-term memory. Next work is identity-preserving
+cross-break replacement, then the bounded single-surface Editor integration.
