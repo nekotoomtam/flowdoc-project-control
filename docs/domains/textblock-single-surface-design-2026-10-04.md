@@ -1586,3 +1586,45 @@ Temporary cfg(test) hook removed; product.rs unchanged. No WASM build or browser
 edits. Automatic selection is demonstrated only on these fixtures; admission
 certificate, indexed search/publication, wider script/mark edge coverage and
 runtime integration remain pending. No physical improvement or readiness claim.
+
+### Approved completion plan: Thai tail editing (2026-10-04)
+
+Owner approved proceeding through implementation and a usable browser trial
+without requesting permission for each diagnostic. One inline work authority per
+step; execution IDs N/A. Work size large, routine risk with concrete correctness
+risk at shaping/segmentation seams. Owners Core and Editor; Project Control owns
+this plan/evidence record. No separate rooms or main integration authorized by
+this plan. Reuse current development branches, pinned font/WASM and corpus.
+
+1. Design/admission: reuse existing certified local-window machinery where
+   possible; specify separate shaping and segmentation ownership, bounded
+   candidate search, counters, fallback, and deletion across a moving boundary.
+2. Core implementation: tail insertion/deletion only; preserve receipts,
+   revisions, atomic publication, cancellation and metered work. Compare retained
+   output with cold reconstruction including unsafe flags and boundary metadata.
+3. Editor integration: build/verify the matching WASM, preserve live drafts,
+   test fixed three-copy corpus plus 1,800-grapheme baseline, capture identical
+   event/stage metrics and confirm actual optimized route use.
+4. Physical acceptance: owner held typing/Backspace, switching nodes and content
+   integrity; no increasing repeat backlog or second-scale stalls in the target
+   case. Automated tests alone cannot close this criterion. Main integration
+   remains conditional on owner usability acceptance.
+
+Scope excludes general middle-edit acceleration, multi-node scalability, Enter,
+pagination, resize and broad rich-text behavior. Existing operations must not
+regress. Proof budget: targeted admission/cold-oracle tests, affected Rust/WASM
+and adapter tests, type-checks, one controlled instrumented browser comparison,
+then owner physical trial; expand only for a concrete failure or coverage gap.
+Document budget: this existing record and local raw results, no new Work/report
+tree. Return to owner with implemented scope, evidence and remaining limits.
+
+Implementation-entry inspection found existing local_window.rs already has a
+space/context certificate and tree splice publication. commands.rs currently
+dispatches it only for range/middle edits, not plain tail insertion. Its backward
+search is capped at 24 units and its source-work reservation stays within 512
+units including repeated scans; the ~52-unit fixture window can exceed this
+reservation before provider execution. Therefore changing dispatch/search alone
+is insufficient. Next implementation must either reduce repeated source reads
+and tighten justified reservations or explicitly review a bounded tail budget;
+do not silently weaken global meter guarantees. No production behavior changed
+at this checkpoint. Plan task 1 remains in progress; tasks 2–4 pending.
