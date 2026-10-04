@@ -2138,3 +2138,88 @@ were inspected. No runtime mutation, build or timing experiment in this design
 step. The remaining unknown is performance of the specified authored-only path;
 neither safety of an implementation nor physical usability is established by
 this specification. Written implementation breakdown follows design review.
+
+### Authored-only implementation in progress (2026-10-05)
+
+Owner authorized implementation after design discussion. Product Implementation
+Agent, inline execution IDs N/A, routine risk, bounded Core/Editor trial;
+physical acceptance remains NOT PASSED. Core base 0ef3a78, isolated branch
+codex/authored-typing-20261005 at FlowDoc-dev/20261004/flowdoc-authored-core.
+The failed 4022 trial and its drafts remain untouched.
+
+Implementation breakdown and proof budget:
+1. Factor shared authored validation from retained derivation. Test identical
+   text admission, grapheme/span checks and absence of line/shard shaping work.
+2. Add a separate authored runtime with private validated context, replacement,
+   structural and composition support; preserve atomic candidate publication.
+3. Reuse exact display/layout through an opt-in adapter; compare complete
+   frames and rejection behavior on the recorded long Thai sequence.
+4. One whole-change review, targeted affected tests/typechecks, then a separate
+   production trial for owner physical typing. No automatic usability PASS.
+
+Document budget: this existing record only. Evidence: named source tests,
+recorded test results and separate browser trial; no map promotion. Provider
+configuration is immutable; scalar/grapheme validation remains O(n). No retained
+fact reconstruction, export, persistence, tables or default-runtime replacement.
+Pre-flight: validator returns source/spans/graphemes to authored runtime; runtime
+projects the same display-source contract but versioned authored work reports.
+Display consumers must not require legacy receipts or coldSummary. Existing
+bridge prepared-commit boundary remains the publication boundary.
+
+### Authored-only fixed-width candidate (2026-10-05)
+
+Implemented opt-in Core authored runtime and isolated Editor trial; not promoted
+as the default and physical acceptance remains UNKNOWN / NOT PASSED.
+
+- Shared authored validator performs scalar/script/font-route/coverage and ICU
+  grapheme admission without retained shaping, line-break derivation or shards.
+- Private validated context and separate authored handle namespace; replacement,
+  provisional composition and direct split/join preserve candidate publication.
+- Existing display shaping/layout remains exact. No native-text overlay or
+  asynchronous old-frame publication. Report namespace states retained facts
+  absent; validation counters cover validation, not total allocation cost.
+- Flat source/span reconstruction, full grapheme scan, source binding encoding,
+  layout and painting remain. This is not a constant-time typing claim.
+
+Proof: 135 Rust release tests passed. Initial debug-suite run was stopped after
+long-running stress tests; it is not counted as PASS. The complete release run
+replaces that attempt. Five final authored WASM tests passed, including the
+3848-UTF16 corpus at the trial's 432pt width, 92 appended Thai characters and 76
+Backspaces with exact visible-frame parity after all 168 edits. Reference
+fixture and no-legacy-dependency checks passed. The six-file TS acceptance run
+passed 65 tests (including those five before the final width alignment), with
+60 unchanged bridge/reference/reuse/width checks. Core, WASM package and Editor
+typechecks and production trial build passed. These are correctness evidence,
+not physical responsiveness evidence.
+
+Fresh reviewer found composition admission still consulting shaping-cluster
+carets: added failing `ffi` boundary-2 composition test, removed that gate, and
+verified green. Authored grapheme endpoints now govern composition admission.
+No atomic publication or retained-recovery defect was found in that review.
+
+Ruling: the 432pt physical candidate is bounded to fixed-width typing; do not
+claim the entire design complete. Existing bridge resize and some structural
+paths recreate line sessions, revalidating context and replacing source
+bindings. Width-only context reuse is an open design gap before broader
+integration, not a prerequisite for testing the fixed-width typing hypothesis.
+Cost if deferred incorrectly: expensive resize/structural operations and binding
+changes outside this trial's ordinary typing path. No default promotion.
+
+Browser smoke: separate 4023 page loaded A=3848/B=25 UTF16 without alerts;
+Thai/Latin typing, Enter, Backspace and A/B switching succeeded. Automated input
+is not physical held-key evidence. Reset only this agent-created candidate page
+to the fixed corpus after smoke; failed 4022 user draft untouched.
+
+Candidate URL: http://127.0.0.1:4023/text-block-authored.local.html .
+WASM SHA-256: 13da11941a04ba84c1576f35407ee4a5b6637d76e21fae24934d0ce1e4b068d2.
+Build command: Core package `npm run wasm:build:authored-session` (verified).
+Screenshots/logs live under FlowDoc-dev/20261004/profiling; retained source tests
+and isolated commits are the durable correctness locators. No system-map update,
+new registry, persistence, export, table or pagination claim.
+Next acceptance: owner physical held typing and Backspace in the new page.
+
+Candidate commits: Core `12e5fe3` on `codex/authored-typing-20261005`;
+Editor `9b0fe6f` on `codex/authored-typing-trial-20261005`. Both isolated
+checkouts clean after moving this run's logs to `profiling/authored-20261005`.
+Neither candidate was merged or pushed. Broader design remains partial;
+fixed-width physical-trial preparation is complete.
