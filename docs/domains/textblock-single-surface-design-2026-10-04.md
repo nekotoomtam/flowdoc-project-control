@@ -601,3 +601,40 @@ PASS only for this offset repair and stated correctness coverage. Frame build,
 fingerprint, SVG cost, physical IME, and document persistence remain open;
 continue one measured contributor at a time rather than declaring the long
 freeze fixed.
+
+### Next contributor: frame and fingerprint breakdown (2026-10-04)
+
+Owner authorized inspecting the next contributor, one item at a time. Inline
+Core discovery at `bb12386`, execution IDs N/A; no runtime modification or browser
+interaction in this step. Local probe `tests/frameStageCurrent.local.test.ts`
+uses the current release WASM and saved article at 900/1,800/2,592 graphemes,
+six sequential append edits per size. Existing stage instrumentation separates
+layout, fingerprint, freeze and Rust edit. A second, separately timed canonical
+serialization + actual WASM SHA-256 of each resulting frame verifies its digest
+against the published fingerprint. All 18 digest comparisons passed (one Vitest
+test). Local numeric evidence: `profiling/frame-stage-current.json` under
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/`.
+
+Median stage milliseconds for 900/1,800/2,592 graphemes respectively:
+layout 21.59/41.67/58.26; fingerprint 13.08/24.29/36.84; freeze
+0.41/0.85/1.23; complete frame build 36.20/68.49/96.65. These stages are nested;
+do not sum frame build with its children. Independent reserialization medians
+were 10.33/23.52/27.83 ms, with actual WASM hash 2.94/6.46/8.95 ms. Separate
+calls and medians need not sum to the original fingerprint stage. This is Node
+WASM profiling, not browser or physical-input timing, with six samples per size.
+
+For the first append at 1,800 graphemes, frame identity serialization contains
+966,384 UTF-16 units, 28 visual lines and 3,604 caret records. Layout invokes
+shaping 56 times covering 6,479 UTF-16 input units and segmentation once. The
+large serialization is geometry-rich frame identity, not the authored string
+alone. Source projection is under 0.1 ms median in these cases; freeze is also
+small. Raw Rust edit timings vary by size/path, so this breakdown does not prove
+all Core work is linear or explain all of the user's original stall.
+
+Finding: layout and fingerprint both remain substantial; serialization is a
+larger measured fingerprint contributor than hashing. Next bounded experiment
+should evaluate canonical serialization allocation/key traversal with exact
+byte-for-byte output parity. Do not remove fingerprint, omit identity fields,
+change hash semantics, or skip required line-final shaping to improve timings.
+No fix, new performance acceptance, map promotion, main integration or user
+retest request in this discovery step.
