@@ -1416,3 +1416,34 @@ Next narrow investigation: inspect and split the Rust-edit roundtrip boundary
 before another optimization; its name alone does not prove all 52.9 ms is Rust
 computation. No product changes or acceptance promotion. Owner need not repeat
 this captured case merely to recover evidence.
+
+### Apply-boundary reproduction on fixed corpus (2026-10-04)
+
+Read-only runtime investigation with untracked Core diagnostic
+`tests/ownerApplyBoundary.local.test.ts`; no runtime or WASM changes. Actual
+pinned WASM, owner three-copy text, separate sessions for six tail insertions
+then six deletions of Thai ก and Latin x. Mirrors candidate branching, checks
+every accepted response and exact projected text, disposes sessions. One test
+passed. Raw result: existing local `profiling/owner-apply-boundary.json`.
+
+Thai: all 12 edits return full-context-required / uncertified-seam; wrapper
+call durations 49.06–67.09 ms. Cold-rebuild counters show shaping the entire
+3,848–3,854 UTF-16 source, plus segmentation and facts construction. Latin:
+first insertion returns full-context-required / budget-exhaustion (50.60 ms);
+remaining 11 use retained-command (1.00–2.53 ms). JS command encoding around
+0.01 ms and response JSON parsing 0.03–0.26 ms are small in this probe.
+Wrapper measurement includes JS/WASM transfer and return conversion; it is
+not Rust-only time and Node timings do not replace physical browser evidence.
+
+Source chain: productSessionV1.ts editCandidate measures stringify + exported
+apply + parse. Rust cold_session/product.rs apply first attempts rt.apply,
+then fallback on uncertified-seam (among other conservative rejection reasons).
+Fallback materializes source/spans and calls runtime.rs create_product_fallback,
+which constructs a new session without warmed shaping plans. Thus the fixed
+Thai reproduction identifies full-context fallback as a concrete large-work
+path, consistent with but not retrospectively proving the unlogged execution
+reason of each physical capture event. Exact internal fallback stage timing
+and which seam certification condition rejects this tail remain unresolved.
+Next inspect that certification boundary before proposing a repair; do not
+bypass it merely for speed. Existing correctness and physical acceptance stay
+open. No product main merge/push or map promotion.
