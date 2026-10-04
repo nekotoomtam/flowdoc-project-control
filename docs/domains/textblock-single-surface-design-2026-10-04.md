@@ -1557,3 +1557,32 @@ including edits beyond this new boundary and source-tree/shard publication,
 remain unimplemented. Safe shaping flags alone do not certify ICU line-break
 locality. The result supports continuing design but does not establish general
 Thai correctness or remove conservative fallback.
+
+### Automatic fixture candidate and dictionary context inspection (2026-10-04)
+
+Local-only suffix_auto_probe.local.rs chooses a preceding ASCII space within
+128 UTF-16 units of the tail edit, then searches retained glyph metadata backward
+for a grapheme boundary with safe concat/break flags before that separator.
+No hard-coded offset: insertions and initial deletions choose 3,796; deletions
+past the old separator choose 3,794 automatically. All eight native retained
+provider comparisons match cold glyphs, concat flags, line breaks and grapheme
+boundaries, with old/new start concat flags false. Result assertions checked
+all eight after the native diagnostic. Raw: profiling/retained-suffix-auto.json.
+Diagnostic uses pre-collected full oracle arrays, not a production bounded tree
+lookup; repeated scans and publication costs are not optimized or measured.
+
+Inspected installed/pinned ICU segmenter 2.2.0 src/line.rs,
+line_handle_complex_language_utf8: it collects contiguous complex-language
+input until use_complex_breaking returns false or EOF, then invokes the complex
+segmenter. This supports preserving complete affected complex-language input,
+not treating arbitrary old line breaks as dictionary reset points. It does not
+prove all outer Unicode line-break rules local. The shaping candidate can start
+inside an earlier complex-language sequence; its guard-area segmentation must
+not automatically replace retained prefix segmentation just because sampled
+arrays match. A production design needs separately owned shaping and segmentation
+boundaries and explicit unchanged-prefix guarantees.
+
+Temporary cfg(test) hook removed; product.rs unchanged. No WASM build or browser
+edits. Automatic selection is demonstrated only on these fixtures; admission
+certificate, indexed search/publication, wider script/mark edge coverage and
+runtime integration remain pending. No physical improvement or readiness claim.
