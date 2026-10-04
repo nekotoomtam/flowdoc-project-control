@@ -1888,3 +1888,60 @@ the failed baseline available and inspect timing separately from subjective
 smoothness. If the owner still observes stutter, acceptance remains NOT PASSED
 even when automated measurements improve. Current checkpoint changes only this
 record; no product source, WASM, live page or drafts changed, and no tests rerun.
+
+### One isolated prototype: no demonstrated input-path gain (2026-10-04)
+
+Owner explicitly authorized starting the bounded investigation/prototype. Role:
+Core discovery/prototype, Project Control Steward for this record; execution
+IDs N/A. Existing candidate and user page remain untouched. Isolated detached
+checkout `C:/Users/nekot/Documents/FlowDoc-dev/20261004/typing-prototype-core`
+at base `0ef3a78` retains the uncommitted experiment for inspection.
+
+Source inspection rules out blindly sharing glyph arrays: retained derivation
+explicitly sets script/language/direction/features and unsafe-concat flags,
+whereas product display shaping uses its own buffer/features path and actual
+line-end requests. These are not established interchangeable providers. No
+admission check, segmentation certificate or visible layout was removed.
+
+One current actual-WASM diagnostic (`tests/typingPathAudit.local.test.ts` in
+the existing Core development checkout) measured the fixed corpus plus 16 or
+92 repeated Thai characters, four rounds of three appends. After the first
+round, nine samples per case show retained edit roundtrip median 2.01 ms versus
+fallback 52.50 ms; frame build medians 16.38 / 16.44 ms. Both use existing lazy
+frame fingerprints and exact-input shape reuse. Source checks pass. These are
+Node observations, not a physical responsiveness claim. Raw artifact:
+`profiling/typing-path-audit.json`.
+
+Chosen disposable prototype targets cold retained-fact encoding, distinct from
+the already optimized product-frame fingerprint. `runtime.rs` calls a new local
+`facts_encode_probe.rs` serializer that writes shard/glyph fields in canonical
+key order directly, avoiding the temporary serde_json Value tree. Exact bytes,
+fact hashes, validations, segmentation, receipts and frame provider remain;
+work counters honestly omit the eliminated Value pass. No global budget raised.
+
+Native focused parity test passes empty, 1/129/4000-glyph fixtures including
+negative offsets and unsafe flags. Matching prototype WASM built successfully.
+Paired actual-WASM comparison alternates baseline/candidate order over eight
+rounds on the original corpus plus 92 Thai characters, inserting a consonant,
+adding a mark, then deleting their complete grapheme. All 24 paired operations
+match projected text/spans, complete display shape facts, retained facts digest
+and execution route. Initial probe incorrectly tried deleting only the mark;
+unchanged baseline rejected invalid-grapheme-range, so the probe was corrected
+to remove the whole grapheme. No product boundary was weakened.
+
+After two warmup rounds, 18 calls per variant: apply median baseline 92.68 ms,
+prototype 103.68 ms. These paired-run absolute times differ from the preceding
+diagnostic and must not be compared across runs as a regression percentage.
+The measured allocation count in bytes decreased, but no useful timing gain was
+demonstrated. Do not claim the prototype definitively slows all workloads or
+that encoding is costless; this experiment simply fails the adoption criterion.
+Evidence: Core local `tests/factsEncodingPrototype.local.test.ts` and
+`profiling/facts-encoding-prototype.json`. Native parity and paired comparison
+are correctness/diagnostic evidence, not owner usability acceptance.
+
+Decision: stop this prototype and do not deploy it or request another owner
+trial. No new test page is ready. Retain the failed physical baseline; overall
+TextBlock typing remains NOT PASSED. Further implementation is not silently
+added to this one-prototype budget. Next review must distinguish reducing the
+cold reconstruction obligation itself from optimizing its representation;
+no revised admission/state contract is approved by this negative experiment.
