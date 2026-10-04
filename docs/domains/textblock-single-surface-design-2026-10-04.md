@@ -825,3 +825,60 @@ deletion and wrapping changes. Fingerprint cost remains a separate open target.
 Local evidence: `profiling/core-browser-stages-after-svg.json` and `.png` under
 `C:/Users/nekot/Documents/FlowDoc-dev/20261004/`. Diagnostic tab closed; existing
 user tabs remain. No runtime change, main merge/push, map or readiness promotion.
+
+### Bounded raw shape reuse across edits (2026-10-04)
+
+Owner authorized the next bounded optimization. Inline Core implementation,
+execution IDs N/A; routine risk, existing isolated development checkout. Scope:
+exact-input raw shape reuse only; frame geometry, line-end shaping, fingerprint
+contract, Rust/WASM and Editor behavior unchanged. Acceptance: cold frame parity
+across editing/structural/composition cases, bounded retention and disposal,
+reduced shaping calls, browser measurement. One existing record is the document
+budget; targeted Core/Editor checks and the existing corpus are the proof budget.
+
+`productShapeCacheV1.ts` retains immutable raw facts per product session. Keys
+include the entire provider binding (font, provider revision, policy) and exact
+requested text. Rust `product.rs::shape` uses the session font and request text;
+it does not shape against surrounding stored paragraph text. Contextual prefixes
+are never copied into changed requests. Existing per-build reuse and unchanged
+paragraph layout reuse remain. Work counters count actual provider misses.
+
+LRU retention is limited to 256 entries, 65,536 combined key/text UTF-16 units
+and 32,768 glyph facts. Oversized requests are measured without retention; this
+is not a text input cap. Disposal clears the cache. Failed measurements are not
+stored. Valid raw facts from a subsequently rejected frame may remain as bounded
+performance-only data; they cannot publish a frame or bypass edit validation.
+These structural budgets are not a measured browser heap limit. Multiple active
+sessions and many-node memory remain unverified.
+
+Tests first failed because the cache module did not exist. New tests cover exact
+text/provider isolation, frozen facts, entry/volume eviction, oversized bypass,
+clear and failed measurement retry. Actual-WASM frame comparison covers append,
+middle replacement, deletion, growth and shrink/reflow; existing checks cover
+split/join, IME cancellation, blocked edits and golden fingerprints. All 74
+targeted Core tests pass after correcting an old width-test expectation from
+one segmentation call to zero (cluster-fit removal predates this change).
+Core type-check passed; Editor surface/session/input/pointer/SVG tests: 13 passed.
+No assertion on geometry or fingerprint was weakened.
+
+Saved-article probe at 900/1,800/2,592 graphemes, six append revisions each:
+provider calls per revision reduced from 28/56/80 to 2/2/2. Current layout upper
+middle sample of six: 4.31/7.84/10.92 ms, versus prior saved 10.48/17.17/25.70 ms.
+This is sequential Node evidence, not a same-run speedup guarantee. Eighteen
+reference canonical fingerprint comparisons passed. Local probe:
+`tests/shapeStage.local.test.ts`, output `profiling/shape-cache-stage.json`.
+
+Browser same 1,800-grapheme prefix plus `xyz`: frame layout 16.5/22.0/19.6 ms;
+fingerprint 38.7/46.8/40.0 ms; Core edit 84.3/94.6/79.5 ms; input-to-DOM-commit
+115.2/135.7/117.1 ms. Exact displayed text matched, no alerts. Prior stage probe
+layout was 80.2/39.5/43.9 ms. Three DEV automation samples with instrumentation
+do not prove physical held-key performance, presented-pixel latency or all-edit
+speed. Whole affected-text cluster preparation/reflow and full-frame identity
+work remain; fingerprint is the next measured contributor to investigate.
+
+Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`shape-cache-stage.json`, `shape-cache-browser-after.json` and `.png`.
+Core implementation commit: `16dce19` (development branch only).
+Saved drafts in `before-shape-cache-drafts.json`, restored A/B after HMR reset
+and verified exact equality. Diagnostic tab closed. No product main merge/push,
+Backend/persistence, DOCUMENT_MAP or readiness promotion.
