@@ -2010,3 +2010,131 @@ new admission contract can meet physical responsiveness while preserving all
 required semantics. Physical owner acceptance remains NOT PASSED. The table
 and obligations complete this discovery request; the architectural design is
 the next reviewable deliverable, not another minor optimization or ready trial.
+
+### Authored-state typing path: reviewable design (2026-10-05)
+
+Owner requested starting the detailed design after the dependency audit. This
+section is the proposed architectural contract, not implemented behavior or
+performance evidence. Single-room Planning Partner, Core/Editor owners,
+execution IDs N/A. Scope is the existing plain TextBlock profile and same
+visible painter/geometry, with physical held typing and deletion as acceptance.
+DOC, tables, nested nodes, new pagination behavior and persistence are outside
+this slice. Keep the failed candidate and user drafts available for comparison.
+
+#### Decision and state ownership
+
+Introduce an isolated product editing path, rather than teaching legacy
+`cold_session::Session` to pretend missing shards are complete. The old retained
+runtime and its cold/structural/QA contracts remain intact as reference code.
+Do not reuse its `derived_missing` switch for this path. Do not merge or replace
+the public default until compatibility and physical acceptance are satisfied.
+
+The proposed product state has three separately owned components:
+
+1. ValidatedContext: privately created by full font/policy validation, with an
+   immutable owned configuration and exact identity. Sharing this internal
+   object reuses validation; accepting a caller-supplied digest does not.
+   Font/script/language/feature/profile changes create a new context. Mutable
+   shaping-plan caches cannot change the validated configuration.
+2. AuthoredRevision: owned source text, authored span IDs/ranges, paragraph
+   defaults, scalar-to-UTF16 offsets, grapheme boundaries, revision and source
+   binding. This contains enough information to validate/edit without retained
+   glyph shards. An owned flat source is acceptable for the bounded prototype;
+   account for copies and O(n) scans explicitly rather than adding another tree.
+3. DisplayFrame: exact layout, glyph geometry, caret/selection and source for
+   that authored revision and width. Existing display shaping and line-end
+   layout remain the reference. Existing exact-input shape reuse can assist;
+   it is never required for correctness. No stale frame is published with new
+   text and no optimistic native-text rendering is introduced.
+
+Retained optimization facts are absent in the first prototype. They are not
+rebuilt in the background or before the next edit. Any later optional cache
+needs its own source/context validity proof. This deliberate baseline tests
+whether the product editing path can stand without the previous obligation.
+
+#### One replacement transaction, without retained derivation
+
+1. Check live session/candidate ownership, exact expected revision, composition
+   state, safe integer limits, valid range and anchor ownership. Check both edit
+   endpoints against the current authored grapheme index, not display carets.
+2. Construct candidate text and spans, preserving owner IDs/remapping rules.
+   Build a scalar/byte/UTF16 index in one pass. Retain the existing 8,192 UTF16
+   product source cap for comparability; do not truncate user input or change it
+   into a new product promise.
+3. Validate candidate span order/coverage/identity, allowed Unicode/scripts,
+   controls, defaults, resolved language/style/font routes and font coverage.
+   Run the same ICU grapheme semantics over candidate source and validate span
+   boundaries. Initially scan the whole candidate where context can propagate;
+   no unproven local grapheme shortcut. Text-dependent validation still runs.
+4. Build the exact display frame with the existing display provider, width and
+   line-final shaping checks; reject missing glyphs, invalid facts or layout
+   failure. No retained unsafe-concat flag generation, ICU line-break array,
+   shard construction, retained-fact serialization/hash or cold-session rebuild
+   is performed merely to prepare future edits.
+5. Return a prepared candidate, not a visible commit. The TextBlock bridge
+   validates the complete node and IDs. At commit recheck the base revision;
+   publish source, frame, caret mapping and history together. On error or stale
+   commit dispose candidate and retain original source/frame. No partial state.
+
+This is not O(1) or fully incremental: whole-source copying/grapheme checks,
+changed-paragraph display shaping/layout, frame allocation and painting remain.
+The hypothesis is removal of an entire retained reconstruction obligation,
+not elimination of all work proportional to text length. If remaining costs
+still fail held input, this design has not met product acceptance.
+
+#### Operations and identity when no retained facts exist
+
+| Operation | Required behavior |
+| --- | --- |
+| Insert/delete/replace/paste | Use the replacement transaction; commands never invoke retained recovery. Multi-line paste stages all affected explicit paragraphs under one bridge commit. |
+| Enter/join/range across explicit lines | Split/combine authored ranges and preserve/remap IDs under existing bridge rules; validate affected authored candidates and frames atomically. Do not delegate to legacy shard-dependent split/join. |
+| Composition | Keep base authored revision/frame; each provisional replacement derives from that base, not the previous provisional text. Commit once; cancellation restores base. Preserve current node-switch resolution. |
+| Move/select/hit-test | Query only the published matching frame. Validate returned offsets against the authored coordinate contract; do not use an old frame after revision change. |
+| No-op/reject/dispose | Preserve documented wrapper revision semantics; rejection publishes nothing. Dispose releases candidates/resources; old immutable frames remain readable where currently promised. |
+| Width change | Rebuild display frame; do not pretend authored text changed or revalidate unchanged provider bytes. |
+
+Session identity is independent of the numerical revision; old-session commands
+cannot become valid after another session starts at zero. Use a separate opaque
+handle domain for the new path, checked safe integer counters and explicit
+candidate lifecycle. Do not manufacture legacy Rust receipts. Retain a
+versioned source-binding derivation for the journal (initial source identity,
+then prior binding plus exact command/revision); document its namespace and
+never present a chained binding as a raw-text hash. No new persistence or Undo
+claim. Prototype integration uses a separately named runtime adapter through
+the existing Core adapter boundary, not an in-place public ABI substitution.
+
+Report the new execution mode and actual scans/copies/provider work honestly.
+Legacy coldSummary/factsDigest are not fabricated as zero or cached success.
+They belong to the old API; a versioned new report states retained facts absent.
+This reporting/handle separation is part of the architectural change to review.
+
+#### Correctness and stopping proof
+
+Reuse current display functions and reference frames. For commands admitted by
+both paths compare text/spans, exact glyphs, line ends, placement, caret and
+selection, excluding only declared identity/work namespace differences. Keep
+known expected fixtures so reference agreement is not the sole oracle.
+Test stale revisions, ambiguous ownership, invalid scalars/scripts, font
+coverage, combining marks, cross-span boundaries, rejection rollback, compound
+edits and composition. Legacy rejection caused solely by inability to construct
+retained shards is NOT automatically a text-invalid result: classify it
+explicitly under the new contract; do not silently expand script/style support.
+
+Assert the new path never calls legacy apply/fallback/derive/recovery, including
+after many consecutive edits and structural operations. Forced empty optional
+caches must preserve correctness. No permissive 'always valid' test adapter.
+Before physical comparison, verify full-frame parity and failure atomicity on
+the fixed failed corpus and sequence, without a new broad benchmark campaign.
+
+Then supply a separate production trial with matching font/width/corpus and
+minimal optional recording. Owner held input and Backspace remain decisive.
+No queue-growth or responsiveness PASS may come from Node parity tests. If the
+baseline is still visibly slow, stop this design for review; do not silently add
+Worker batching, stale pictures, extra cache projects or broaden the scope.
+
+Design-source checks: current product fallback/source checks, derive validation,
+frame provider/layout, wrapper prepared commit and TextBlock bridge node commit
+were inspected. No runtime mutation, build or timing experiment in this design
+step. The remaining unknown is performance of the specified authored-only path;
+neither safety of an implementation nor physical usability is established by
+this specification. Written implementation breakdown follows design review.
