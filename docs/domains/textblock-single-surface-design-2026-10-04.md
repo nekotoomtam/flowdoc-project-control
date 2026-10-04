@@ -2395,3 +2395,45 @@ for continued comparison. No push or branch/worktree deletion. Existing physical
 assessment remains usable improvement, insufficient final quality. No system map
 promotion. Next work remains bounded layout/frame and pre-input cost discovery.
 `Editor main terminal commit: 191a4eb; Core main terminal commit: 12e5fe3.`
+
+### Bounded layout discovery and rejected freeze experiment (2026-10-05)
+
+Owner requested continuation of the recommended layout/frame discovery after
+main integration. Inline discovery, then bounded reversible experiment; Core
+owner, execution IDs N/A, routine risk. Main baseline remains Core 12e5fe3 and
+Editor 191a4eb. Existing isolated Core checkout reused on new branch
+codex/frame-freeze-cost-20261005; no changes to main or the physical browser.
+Scope excluded layout-policy changes, stale frames, pagination and export.
+
+Reproduced 80 authored edits (40 Thai insertions, 40 deletions) on the same
+3848-UTF16 corpus and 432pt width using Node CPU sampling at 100 microseconds.
+This is instrumented CPU discovery, not browser latency or physical acceptance.
+Initial stage medians: layout 12.58ms, freeze 3.59ms, frame-build 17.84ms.
+Sampled inclusive totals: prepareWrappedLines 963.9ms, shapeClusters 868.7ms,
+shape provider/cache path 741.8ms; self totals freeze 287.9ms, shapeClusters
+126.3ms, garbage collection 171.1ms. Nested totals overlap. Evidence points to
+provider shaping/conversion as the larger layout cost, not line-fit iteration
+alone. The full-paragraph request changes on each edit; existing exact-text
+shape cache cannot reuse that request. Reusing shaped prefixes would require
+separate correctness investigation and must not be assumed safe for Thai.
+
+Tested one smaller hypothesis: replace recursive Object.values allocation in
+freeze with own-property traversal while keeping recursive freezing. Four
+suites including the probe passed 13 checks, but freeze median was 3.94ms
+versus 3.59ms, frame-build 17.55ms versus 17.84ms. This single noisy instrumented
+comparison does not support a useful improvement. Rejected and reverted the
+entire source change; isolated Core is clean and identical to main. No new
+physical trial requested and no performance fix promoted.
+
+Local reusable evidence under FlowDoc-dev/20261004/profiling:
+layout-freeze-before-20261005.json, layout-freeze-after-20261005.json,
+layout-discovery-summary-20261005.json (initial sampled attribution),
+layout-freeze-after-20261005.cpuprofile, frame-freeze-rejected-20261005.patch,
+and layoutDiscovery.local.test.ts. The probe source was moved out of candidate
+tests after the experiment. No persistent product or test changes remain.
+
+Next bounded investigation: split the authored shape-provider roundtrip into
+actual shaping, serialization and JS decoding costs before selecting any
+contract-preserving optimization. Avoid another freeze micro-optimization or
+new cross-edit cache without evidence. Discovery complete; implementation
+improvement not established. Physical baseline and remaining acceptance unchanged.
