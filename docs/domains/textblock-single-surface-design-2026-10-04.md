@@ -2269,3 +2269,54 @@ Verification: parsed complete capture; checked input-ID coverage, operation and
 route counts, per-burst timestamp intervals and long-task containment; source
 inspection confirms Core stage ends before the React/DOM commit marker. No
 runtime test suite rerun was needed for this read-only evidence assessment.
+
+### Bounded SVG commit-cost trial (2026-10-05)
+
+Owner authorized risk-controlled measurement after the physical failure above.
+Inline Product Implementation Agent / Evidence Reviewer; execution IDs N/A.
+Owner: Editor. Scope: identify one remaining measured cost, opt-in paint change,
+and separate physical trial. Core, layout contracts, persistence, pagination,
+tables and export excluded. Routine risk; physical acceptance remains pending.
+Existing record is the work authority and sole documentation update; no map
+promotion or new registry. Original 4023 user draft and capture preserved.
+
+Discovery on separate 4024/4025 diagnostic pages found same-color commands joined
+into one SVG path, forcing native path parsing for the entire paragraph on each
+edit. After 40 appended characters, both pages had 3888 UTF16 source units and
+identical viewBox, color, concatenated path length 6117763 and FNV32 signature
+2661428956; baseline had one path, candidate 49. These signatures establish
+ordered path-data agreement, not raster equivalence.
+
+Change: Editor c703581 adds preserveCommandPaths opt-in to svgFrameCache; default
+behavior stays unchanged. Trial 4026 enables it, retaining separate command
+paths so unchanged lines need no new path attribute. Source, selection and Core
+remain on the previous authored candidate 12e5fe3. Diagnostic entrypoints record
+native SVG path setter and React timing; the physical entrypoint excludes that
+extra instrumentation and uses the existing physical capture only.
+
+Paired automated 20-character repeated comparison (milliseconds, medians):
+SVG path setter 14.6 before / 0.1 after; input-to-commit 38.5 / 25.9; Core edit
+18.8 / 22.2. Input-to-commit p95 48.0 / 32.6. The first pair had substantial
+warmup/environment variation, so retain both pairs and do not generalize these
+numbers into a physical held-key PASS. Raw captures: profiling/svg-detail-before,
+svg-detail-after, svg-detail-before-repeat and svg-detail-after-repeat, all with
+suffix -20261005.json under FlowDoc-dev/20261004.
+
+Proof: regression test failed with one merged path, then passed after the
+opt-in change. Four affected suites passed 13 tests (SVG cache, paint fingerprint,
+surface input and surface session). Editor typecheck and physical production
+build passed; staged diff check passed. Separate 4026 browser loaded, one Thai
+character changed A length 3848 to 3849 and Backspace restored 3848. Automated
+input is smoke evidence only. Source review found no isolated-trial blocker.
+Review risk before broader promotion: splitting overlapping contours into
+separate paths may affect fill/antialiasing; geometry concatenation is not pixel
+proof. Inspect Thai marks and line boundaries during physical use; broader
+raster coverage is deferred, not passed. Existing resize/structural reuse gap
+remains outside this fixed-width trial.
+
+Candidate: http://127.0.0.1:4026/text-block-paint.local.html . Screenshot and
+logs: profiling/paint-ready-20261005.png, svg-command-tests.local.log,
+paint-typecheck.local.log and paint-build.local.log. Editor isolated commit
+c703581 is not merged or pushed. Next: owner presses Start, holds Thai input and
+Backspace in A, then Stop; inspect captured event backlog and perceived behavior.
+Status: preparation PASS; physical responsiveness UNKNOWN / NOT PASSED.
