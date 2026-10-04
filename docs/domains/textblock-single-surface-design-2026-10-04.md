@@ -638,3 +638,45 @@ byte-for-byte output parity. Do not remove fingerprint, omit identity fields,
 change hash semantics, or skip required line-final shaping to improve timings.
 No fix, new performance acceptance, map promotion, main integration or user
 retest request in this discovery step.
+
+### Product frame canonical serialization repair (2026-10-04)
+
+Owner authorized continuing the fingerprint item. Inline Core implementation,
+execution IDs N/A, scope limited to product-session frame serialization. Added
+`productFrameCanonicalV1.ts`: direct traversal avoids intermediate mapped arrays
+and reuses escaped field-name strings within one invocation. It retains ordinal
+key ordering, finite-number/string encoding and all identity fields. No data is
+cached across invocations; generic canonical JSON and WASM/hash are unchanged.
+The input contract is plain acyclic frame JSON, not arbitrary JS objects.
+
+New tests first failed on the missing module, then verified nested geometry,
+ordinal numeric-looking keys, escaping/lone surrogates, negative zero, numeric
+extremes, unsupported values and mutation between calls. Actual release-WASM
+frames for three corpora across three revisions match reference canonical bytes
+and reference-derived fingerprints. Core serializer/session/bridge tests passed
+50 tests, plus one local benchmark; Editor input/session/pointer tests passed
+10 tests. Core type-check passed. Staged diff check found CRLF-related whitespace
+in the newly written test; normalized that test before the final amended commit
+and confirmed the staged check clean (no semantic code change).
+
+The local benchmark alternates old/new order, discards two warmups and measures
+ten calls per encoder on the same frame. Medians old/new at 900, 1,800 and 2,592
+graphemes are 13.55/5.07, 24.72/8.82 and 30.54/12.32 ms respectively. Exact output
+equality passed for each frame. Evidence: Core untracked
+`tests/serializeCandidate.local.test.ts` and local
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/serialize-candidate.json`.
+These isolate serialization, not complete fingerprint or typing latency.
+
+After adoption, the same separate instrumented browser trial at 1,800 graphemes
+plus `xyz` reports Core edit 166.4/202.7/186.0 ms and input-to-DOM-commit
+291.3/289.4/321.1 ms, excluding initial fill. These overlap the prior browser
+samples; no clear end-to-end improvement or physical-input acceptance is claimed.
+Logs/screenshot: `profiling/fingerprint-browser-after.json` and `.png`, relative
+to the directory above. Native value retained all appended characters.
+
+Saved the user's latest drafts to `profiling/before-fingerprint-drafts.json`;
+HMR reset the trial, so restored A/B through ordinary input and verified exact
+equality. Kept user tab open and closed the measurement tab. No SVG, layout,
+Backend, persistence, main merge or push. This serialization item is complete
+within the stated proof; long-text performance remains open, with layout and
+SVG costs still pending.
