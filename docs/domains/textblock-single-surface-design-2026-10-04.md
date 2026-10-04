@@ -1945,3 +1945,68 @@ TextBlock typing remains NOT PASSED. Further implementation is not silently
 added to this one-prototype budget. Next review must distinguish reducing the
 cold reconstruction obligation itself from optimizing its representation;
 no revised admission/state contract is approved by this negative experiment.
+
+### Validation dependency audit: proposed separation (2026-10-04)
+
+Owner chose option 1: inspect what each check depends on, what invalidates it,
+and who consumes it before changing product behavior. Inline discovery,
+execution IDs N/A; Core owns validation/state, Editor owns input/publication,
+Project Control owns this table. Acceptance for this audit is a source-backed
+dependency map and explicit safe/unsafe separation boundaries, not faster typing.
+Current source inspected at Core `0ef3a78`, with no tracked changes. Existing
+negative prototype remains isolated and is not the candidate for this audit.
+
+Paths below are relative to Core. Rust prefix R is
+`packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/`;
+wrapper W is `packages/text-engine-rust-wasm/src/productSessionV1.ts`.
+
+| Check/data | Dependencies and invalidation | Current consumers | Separation ruling |
+| --- | --- | --- | --- |
+| Provider/font validation | Exact font bytes, policy, versions, routes and features; changing any invalidates validation | R/policy.rs:38 validates; R/runtime.rs:197 calls it on construction; derive resolves coverage/routes | Candidate for once-per-validated-context reuse, with a private validated identity bound to exact immutable configuration. A digest supplied by a caller is not proof. Shaping-plan cache state is separate. |
+| Command authority | Live receipt, expected revision, composition, range and ownership; each command changes the relevant state | R/commands.rs:353 onward; R/product.rs apply/fallback; W check/prepare/commit | Must remain checked for each command and again at prepared commit where required. No stale-revision or ownership bypass. |
+| Text validity and editing boundaries | Authored spans, Unicode scalars, grapheme boundaries, scripts, font coverage and neighboring context | R/derive.rs build; R/product.rs boundary/fallback; R/commands.rs range checks | Changed text needs validation before acceptance. Font validity does not prove glyph coverage for new text. A frame caret boundary cannot silently replace a grapheme boundary. Reuse requires an explicit context/offset proof. |
+| Retained runs/shards | Source revision, script/language/style/font/features, shaping flags, grapheme and line segmentation | R/commands.rs, local_window.rs, thai_tail.rs, structural.rs, maintenance.rs | Needed by the current retained editing algorithms; not directly consumed as the display glyph stream. Invalid facts must be unavailable, never treated as current. Making them optional requires a new explicit state contract and a complete edit path that does not immediately rebuild them. |
+| Display layout and caret geometry | Current source, actual display provider/font, width, line-end shaping, placement and revision | W frameFor; src/creatorPreview/productFrameV1.ts:38 and caret/hitTest/selection/move at 107 onward | Must be correct for the published revision. Source-stable layout may reuse existing caches; changed text cannot use stale geometry. Retained glyphs and display glyphs have different shaping setup, so direct substitution is unproven. |
+| Identity and reports | Source identity, receipt binding, descriptors/facts, immutable frame | R/runtime.rs construct; R/commands.rs:788 finish_candidate; W publication journal; coldSessionStage3.ts ColdSummary | Source bindings/receipts participate in history and authority, so preserve them. Cold facts/descriptor digests are exposed report contracts; absence of a display consumer does not authorize deletion. Frame fingerprint is already lazy. |
+
+Important implementation facts:
+- `Session` already stores its provider under Arc, but the configuration is not
+  represented by a dedicated validated-context type. Product fallback clones
+  provider configuration and starts cold construction/validation again
+  (R/runtime.rs:118). Reusing trusted configuration is a proposed invariant,
+  not an existing public guarantee or a measured solution to the full stall.
+- `derive::build` constructs both grapheme and line boundaries across source
+  (R/derive.rs:143 onward). Product display's cluster-fit path does not use ICU
+  line boundaries to choose wraps (`layoutFactsV1.ts`), yet retained seam checks
+  compare them. This explains why rendering and retained-admission requirements
+  differ; it does not make retained segmentation safe to discard today.
+- `derived_missing` is not an existing fast typing mode: commands reject it
+  with recovery-required, structural operations also guard it, and maintenance
+  recovery has a bounded profile. Simply evicting shards or ignoring the flag
+  cannot implement the proposed separation.
+- W stages candidate edit, complete frame, then explicit commit. SourceBinding
+  enters the journal. The publish boundary must continue to prevent exposing
+  new text with old frame/caret state and preserve the old state on failure.
+
+Audit outcome: there are two distinct separation scopes. Reusing validated
+configuration is narrower but leaves full changed-text derivation intact, so
+it must not be sold as the typing fix. The substantive design direction is to
+separate accepted authored state from optional retained-optimization facts,
+while deriving/validating the exact visible frame before atomic publication.
+That is an architectural contract proposal, not approval to skip validation.
+
+Required design obligations before implementation: define proof of valid new
+text and grapheme/ownership boundaries without requiring all retained shards;
+bind each derived set to source/provider revision; specify every ordinary,
+structural and composition command when retained facts are absent; preserve
+rejection/rollback, source binding and receipt semantics; define honest report
+semantics; and demonstrate that this path does not rebuild the same full facts
+under another name. Repeated missing-facts recovery per key is a failed design.
+
+No product edits, builds, benchmarks or browser interaction in this audit.
+Verification is targeted producer/consumer source inspection and document diff
+review; no new timing or correctness PASS claim. Unknown: whether the proposed
+new admission contract can meet physical responsiveness while preserving all
+required semantics. Physical owner acceptance remains NOT PASSED. The table
+and obligations complete this discovery request; the architectural design is
+the next reviewable deliverable, not another minor optimization or ready trial.
