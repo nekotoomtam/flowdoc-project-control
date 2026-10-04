@@ -6,7 +6,10 @@ Owner: FlowDoc Project Control. This is a proposed cross-repository design
 derived from the owner's approved discussion on 2026-10-04, including the
 multi-node rendering constraint. It is not implementation Evidence, a passed
 WYSIWYG gate, a DOCUMENT_MAP update, or permission to merge product main.
-Written design review is pending. Historical cancelled execution stays closed.
+Written design approved by the owner in this conversation on 2026-10-04,
+explicitly confirming the 300/900/1,800-character and 1/20/100-node matrices.
+This approval authorizes implementation planning, not a claim of runtime PASS.
+Historical cancelled execution stays closed.
 
 ## Context and scope
 
