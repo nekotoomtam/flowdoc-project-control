@@ -206,3 +206,42 @@ no product main merge or push. Existing local profiling files were preserved.
 This does not establish browser typing speed, long-term process memory, or
 1,800-character acceptance. The next bounded step is bridge caret/selection
 and composition support before connecting the single-surface Editor.
+
+## Implementation slice: bridge geometry queries (2026-10-04)
+
+Owner requested continuing the implementation and parking further cost analysis.
+Inline Product Implementation, Core owner, execution IDs N/A. Bounded scope:
+read-only caret, hit testing, movement and selection queries on existing retained
+frames. Composition remains the next slice; no browser input or draft mutation
+was added here. Existing isolated Core branch and local files were preserved.
+
+PASS for this geometry prerequisite: Core commit `229b249`. Implementation is
+in `src/authoring/textBlockGeometryV1.ts`, exposed by the existing bridge and
+verified by `tests/textBlockProductBridgeV1.test.ts`.
+
+- Every new query requires the current bridge revision and rejects disposed
+  bridges. Core caret validation preserves shaping-cluster boundaries.
+- Position lineIndex identifies an explicit-break segment; geometry lineIndex
+  identifies a wrapped visual line inside that segment's frame. Coordinates and
+  page indexes stay frame-local, including frame margins; they are not yet a
+  unified node-local layout. The painter must apply the same placement transform
+  to glyphs, pointer input and overlays.
+- Movement traverses explicit breaks and empty lines, while wrapped-line
+  movement delegates to Core. Up/down crossing chooses the closest x coordinate
+  on the adjacent segment's boundary visual line. Persistent preferred-column
+  behavior across multiple key presses is not provided by this stateless API.
+- Selection returns per-frame rectangles and explicit following-break flags,
+  preserving anchor/focus direction. Break markers have no invented glyph width.
+- Queries consume existing frames; they do not publish edits or create sessions.
+
+Proof: four new tests initially failed because the query API was absent. Final
+Core bridge/session/integration suites passed 41 tests, including wrapped-line,
+empty-line, cross-break, reverse-selection, stale-revision and disposal cases.
+Editor geometry binding and editing trial suites passed 10 tests. Core and
+Editor type-checks and Core diff whitespace check passed.
+
+Remaining: composition lifecycle and atomic rejection, cross-break replacement,
+single-surface browser placement/input, drafts and physical input acceptance.
+No UI parity, typing performance, 1,800-character admission or product-main
+readiness claim is made. No Backend, Editor source, Rust or WASM binary changed;
+no product main merge or push and no map promotion.
