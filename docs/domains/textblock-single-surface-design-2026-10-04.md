@@ -1628,3 +1628,115 @@ is insufficient. Next implementation must either reduce repeated source reads
 and tighten justified reservations or explicitly review a bounded tail budget;
 do not silently weaken global meter guarantees. No production behavior changed
 at this checkpoint. Plan task 1 remains in progress; tasks 2–4 pending.
+
+### Thai tail continuation: bounded implementation design (2026-10-04)
+
+Owner requested continuation in the current chat. Single-room work, execution
+IDs N/A; Product Implementation Agent for Core/Editor, Project Control Steward
+for this canonical record. Existing development worktrees retained: Core base
+`195a0e3`, Editor base `da0ead2`; pre-existing local probes/drafts are preserved.
+Markdown pre-action gate: existing canonical record, same approved scope and
+document budget, no new Work/registry/map or separate-room execution.
+
+Task 1 design: use a bounded source-tree window (96 UTF-16 lookbehind), select
+an authentic retained concat/break-safe grapheme cluster before an unchanged
+ASCII space, and require the new shaping output to certify the same cut.
+Shaping publication starts at that cluster; line-break publication starts only
+after the unchanged space. Retain guard segmentation through the space so a
+truncated earlier dictionary segment never replaces the unchanged prefix.
+Admit only Thai SA/SP in the shaped suffix, with an SA predecessor to the
+separator; exclude arbitrary Unicode context, script/style boundaries, oversized
+edits/windows and unsafe cuts. Keep the global 512 source/property and 1024
+provider budgets; charge executed lookups, scans, copies and provider work.
+Fallback remains available when this certificate cannot be established.
+
+Ruling: the previous diagnostic's old/new full suffix replay is test evidence,
+not an extra production provider pass. Production uses retained safe-concat
+facts plus a new safe-concat witness and the separately owned segmentation
+boundary. Cold-oracle tests must compare all glyphs, flags and semantic
+boundaries, including repeated edits and moving cuts; a mismatch blocks this
+certificate. This avoids repeated scans without raising any meter limit.
+
+Task 2 in progress: the initial native regression first failed with
+NotAdmissible/budget-exhaustion; the bounded candidate now passes the five
+consonant/mark/vowel/space insertion cases against full cold reconstruction.
+Repeated deletion, negative contexts, faults, affected-suite and actual WASM
+checks remain pending. Task 3 awaits the matching verified artifact; task 4
+still requires the owner's physical trial. No main integration or readiness
+claim. This record is the continuation ledger under the existing document
+budget instead of generic skill plan/ledger artifacts.
+
+### Thai tail candidate implemented; physical acceptance pending (2026-10-04)
+
+Core development commit `0ef3a78` implements `cold_session/thai_tail.rs`,
+dispatches eligible long-Thai EOF edits through it, and adds five native test
+groups. No global work cap, receipt, cancellation or publication contract was
+relaxed. Runtime and test files only; no product main integration or map
+promotion. The implementation remains bounded to the certified Thai-SA/space
+suffix profile; numbers, punctuation, opposite scripts, missing safe cuts and
+excessive windows can still require full-context fallback.
+
+One read-only fresh-context code review found a real endpoint bug: preserving
+the old line break AT the space endpoint could preserve an obsolete EOF break
+when appending another space. A new cold-oracle regression failed, then passed
+after publication was corrected to retain breaks strictly BEFORE that endpoint
+and use new segmentation AT/AFTER it. This corrects the preceding design note's
+"through the space" wording. Tests cover repeated spaces and suffix replacement
+beginning with a space. Appending a combining mark after a trailing space can
+invalidate the shaping witness; this remains an atomic conservative rejection,
+not an obligation to admit unsafe shaping. No deferred minor review findings.
+
+Verification: final `cargo test --release --lib --features product-session`
+passed all 132 tests. Coverage includes complete cold parity (glyphs, concat
+flags, grapheme/line boundaries and run/shard integrity), 48 sequential edits,
+24 deletions across spaces, cumulative meters, negatives, cancellation/failure
+retry, and existing sustained/structural suites. Initial debug run exposed three
+pre-existing assertions fixed at 95 fields although HEAD already had 100; those
+tests now validate the current field inventory and still compare every field.
+The final release suite passed after this repair. During verification one
+premature overlapping native build hit a Windows executable lock; it was not a
+passing result. Subsequent native verification waited for the running binary.
+
+Matching local WASM SHA-256:
+`35b8994039fffcb510f26a97bccf37e24bd0ff25cc22ede0b84f969a7654cf44`.
+Built with the existing wasm-pack product-session command into
+`packages/text-engine-rust-wasm/pkg-thai-tail-local`; local
+`productSessionThaiTail.local.ts` differs from the production wrapper only in
+artifact paths/checksum. Candidate Core adapter/frame tests: 44 passed in seven
+files; Editor surface/input/painter/assets/pointer tests: 16 passed in six files.
+Core and Editor type-checks passed. Standard tracked WASM/pin remains unchanged
+(`eeec2a5e...`), so existing live tabs and drafts are not hot-reloaded. Regular
+package artifact promotion is pending owner trial acceptance; only the isolated
+candidate trial currently consumes the new binary.
+
+Controlled static production browser comparison used the same recorder, font,
+three-copy corpus and six Thai insertions/six Backspaces. Original used full
+fallback 12/12; final candidate used retained-command 12/12. Median Rust-edit
+roundtrip: 163.0 → 6.3 ms; Core edit: 215.5 → 54.4 ms; input-handler to DOM commit:
+249.1 → 111.9 ms. Exact text restored, zero alerts; A/B edited drafts survived
+switching. These are sequential automated samples, not held-key backlog or
+presented-pixel proof. Frame layout/painting still costs material time.
+
+Additional 1,800-grapheme baseline (first 1,800 graphemes of the fixed corpus)
+ends near numbers and stays on fallback 12/12 in both versions. Initial separate
+tab timings varied strongly; one same-tab follow-up found median Core edit
+116.5 → 116.2 ms and DOM commit 152.7 → 157.3 ms. Text remained exact. This is
+no demonstrated speedup for that context, nor a universal regression-free timing
+guarantee. Do not extend admission merely to make this sample faster.
+
+Local raw results under the existing `profiling/` directory:
+`thai-tail-apply-boundary.json`, `thai-tail-1800-boundary.json`,
+`thai-tail-browser-final.json`, `thai-tail-browser-1800.json`,
+`thai-tail-browser-1800-same-tab.json`, `thai-tail-draft-switching.json`, and
+`thai-tail-{wasm-build,adapter-tests,editor-tests,core-typecheck,editor-typecheck}.log`.
+Native final log: Core `packages/text-engine-rust-wasm/rust-live-draft-engine/`
+`thai-tail-final-suite.local.log`. Existing probes were preserved; new trial
+wrappers/configs and raw artifacts remain local, not shared product authority.
+
+Tasks 1–2 complete for the bounded candidate; task 3's isolated browser
+integration/automated checks complete, normal artifact promotion held. Task 4
+is OPEN: owner must hold typing/Backspace and assess stalls, repeat backlog,
+switching and content integrity. Candidate URL:
+`http://127.0.0.1:4022/text-block-thai-tail.local.html`.
+Keep development worktrees and source commit; do not merge/push product main,
+replace old live drafts, or claim physical usability acceptance yet.
