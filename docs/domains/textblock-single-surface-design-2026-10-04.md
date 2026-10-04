@@ -882,3 +882,53 @@ Core implementation commit: `16dce19` (development branch only).
 Saved drafts in `before-shape-cache-drafts.json`, restored A/B after HMR reset
 and verified exact equality. Diagnostic tab closed. No product main merge/push,
 Backend/persistence, DOCUMENT_MAP or readiness promotion.
+
+### Fingerprint investigation, step 1: serialization only (2026-10-04)
+
+Owner requested the two fingerprint stages be examined one at a time. This
+bounded inline discovery measures only frame-to-canonical-text conversion;
+WASM transfer/hash investigation is deferred. Core candidate remains 16dce19.
+Execution IDs N/A; acceptance is isolated current-serializer timing and exact
+output parity on the established corpus, with one existing-record update.
+
+Local `tests/serializationOnly.local.test.ts` creates actual current-WASM frames
+from saved article prefixes of 900/1,800/2,592 graphemes, each after appending x.
+Frame creation/editing, reference serialization, comparison and reporting are
+outside the measured region. Each case has two warmups and ten measured calls
+to `stringifyProductFrameIdentityV1`. All 36 outputs match the independent
+canonical serializer byte-for-byte as JavaScript strings. Diagnostic test passed.
+
+The probe generates a standalone local browser page using the production
+serializer transpiled by TypeScript, with prebuilt identity fixtures and exact
+reference strings. Source SHA-256:
+`8d79565846a3379c61bcaaf486933d4daa6c20ba571b4252248b8aa033feade0`.
+Browser runs the same two-warmup/ten-sample protocol; all cases match reference.
+No Core runtime file, Editor import graph or live user tab was changed.
+
+| Prefix graphemes | Canonical UTF-16 units | UTF-8 bytes | Node median ms | Browser median ms |
+| --- | ---: | ---: | ---: | ---: |
+| 900 | 481,112 | 485,120 | 3.71 | 7.80 |
+| 1,800 | 966,404 | 974,492 | 10.69 | 17.75 |
+| 2,592 | 1,394,014 | 1,405,494 | 11.68 | 23.85 |
+
+At 1,800, browser samples range 14.9–29.2 ms. Serialized section sizes:
+carets 490,414 units (~50.7%), spans 263,245 (~27.2%), pages/paint 205,217
+(~21.2%); paragraph source is only 3,148 units. These are data-volume shares,
+not measured CPU-time shares. The current serializer walks every nested object,
+sorts its keys and concatenates the complete canonical representation. Reusing
+raw shaping facts does not remove this work. This establishes substantial
+serialization cost without proving that sorting or concatenation individually
+dominates it.
+
+Limits: isolated repeated serialization of a fixed prebuilt frame differs from
+interactive editing, allocation pressure and physical input. The timed call ends
+when the JS string is returned; any lazy string flattening during later use is
+not isolated here. Do not subtract this median from earlier fingerprint timings
+to infer WASM/hash cost. No serializer optimization or fingerprint contract
+change was made. Step 2 remains unmeasured in this round, per owner sequencing.
+
+Evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`serialization-only-node.json`, `serialization-only-browser.json` and `.png`.
+Reproduction page: Editor-local untracked `serialization-only.local.html`;
+contains private local corpus fixtures and must not be committed or published.
+Measurement tab closed. No product main merge/push or readiness promotion.
