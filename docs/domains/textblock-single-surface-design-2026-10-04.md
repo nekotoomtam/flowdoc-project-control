@@ -1501,3 +1501,31 @@ grapheme boundaries, run ownership and persistence must be certified separately.
 No caret/layout/session integration or physical improvement is proven. No claim
 that every space or 128-unit window is safe. Runtime unchanged; next stage is a
 retained-provider certificate/oracle probe before production implementation.
+
+### Retained-provider suffix oracle findings (2026-10-04)
+
+Native Rust test-only probe calls commands::facts with the real retained run,
+language/features/font/provider and compares merged old prefix plus local suffix
+against newly constructed sessions. Three insertion cases (Thai consonant,
+tone mark, vowel) plus 50 successive final-grapheme deletion variants: 53 rows.
+40 candidates remain within the chosen boundary; all 40 match glyph records,
+line breaks and grapheme boundaries after semantic boundary deduplication.
+39 match concat flags; one does not. 13 cross the candidate boundary and are
+explicitly classified must-expand-or-fallback, not accepted.
+
+Crucially, the original chosen seam immediately after the space carries
+unsafe-to-concat=true in both retained and local provider facts. Matching sample
+output does not grant a valid safe-concat certificate. Therefore this candidate
+must not be admitted with the existing safety predicate. This refines the earlier
+public-provider feasibility result rather than promoting it to implementation.
+Next candidate investigation must include more left context and inspect the
+actual concat-safe boundary; shrinking a suffix to empty also needs explicit
+retained endpoint/flag handling. No safety flags are to be overwritten.
+
+Probe: untracked cold_session/suffix_probe.local.rs; temporary cfg(test) hook in
+product.rs removed after the run, verified zero diff in that file. Native test
+completed in 126.55 seconds; it asserts case count and records comparisons,
+not universal equivalence. Initial probe itself failed on a UTF-8 byte slice;
+corrected its space lookup before the completed run. No WASM rebuild, browser
+reload, product behavior change or main integration. Raw results saved at
+existing local profiling/retained-suffix-probe.json. Physical acceptance pending.
