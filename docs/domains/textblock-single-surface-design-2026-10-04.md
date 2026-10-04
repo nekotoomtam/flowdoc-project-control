@@ -333,3 +333,23 @@ Result: PASS for bounded connection/smoke, UNKNOWN for physical composition and
 full document-route readiness. Next: owner physical input observations, resolve
 any event-order failures, then cross-break editing and the actual document
 draft/save integration. No DOCUMENT_MAP or global WYSIWYG promotion.
+
+### Owner observation and composition adapter checks
+
+Owner reported A/B typing behaved alike and completed the requested switching
+exercise. Read-only browser inspection showed both nodes in display mode with
+the owner's Thai text retained; both composition counters remained zero. This
+supports the observed ordinary-input trial only, not physical IME acceptance.
+
+At the owner's request to continue checking, Editor test-only commit `0cb91e1`
+extends the actual-WASM surface-session tests with finalization without an
+intermediate update, a changed final payload, rejection/recovery/cancel, duplicate
+end notifications and committed-draft teardown/reopening independently of node B.
+The input/session suites passed 8 tests and Editor type-check/diff check passed.
+No runtime files, browser input or user drafts changed in this check.
+
+These are controlled adapter calls, not dispatched DOM events or physical IME
+events. Actual browser ordering, focus switching during composition and the
+empty-end-as-cancel policy remain unverified. Do not ask the owner to repeat
+ordinary Thai typing as proof of those paths. Cross-break replacement remains
+the next implementation prerequisite for the real document surface.
