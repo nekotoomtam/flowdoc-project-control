@@ -1389,3 +1389,30 @@ Saved `profiling/physical-timing-smoke.json` under the existing local evidence
 directory. Reloaded only this diagnostic tab to discard smoke input/results;
 verified exact original three-copy corpus and ready status. Physical trial is
 pending. No main product integration or readiness promotion.
+
+### Owner held-key capture: repeat backlog (2026-10-04)
+
+Read the owner's completed capture from tab 39 without changing the page.
+Saved raw data to existing local evidence directory as
+`profiling/physical-timing-owner-68.json`. 68 inputs (33 insertText, 35
+deleteContentBackward), 66 repeat keydowns, zero dropped rows; final A length
+3,846 UTF-16 units. Each input has a Core edit, DOM commit and second-rAF record.
+Adjacent repeat keydown event timestamps have median spacing 30.1 ms (derived
+as at minus event age; not hardware timestamps). Keydown age grows through each
+held burst, reaching 2,240.3 ms. This supports input backlog in this instrumented
+run, rather than treating the nearly immediate beforeinput/input delivery as
+proof that no queue exists.
+
+Medians: Rust-edit roundtrip 52.9 ms, total Core edit 67.8 ms, frame build
+12.3 ms (nested in Core edit), SVG build 3.0 ms, input-to-DOM-commit 86.4 ms.
+Second-rAF callbacks bunch together: median delay 1,700.3 ms, max 3,242.8 ms;
+12 observed long tasks, max 1,884 ms. These are scheduling signals, not a
+presented-pixel measurement. Zero fingerprint timing events. The measured
+per-input work exceeds the repeat timestamp spacing, supporting accumulated
+work and delayed rendering opportunities. Instrumentation overhead and exact
+internal attribution within Rust-edit roundtrip remain unmeasured.
+
+Next narrow investigation: inspect and split the Rust-edit roundtrip boundary
+before another optimization; its name alone does not prove all 52.9 ms is Rust
+computation. No product changes or acceptance promotion. Owner need not repeat
+this captured case merely to recover evidence.
