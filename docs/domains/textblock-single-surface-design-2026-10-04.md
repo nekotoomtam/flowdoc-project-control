@@ -1342,3 +1342,21 @@ their owner repositories. Live tab contained the default A/B texts on entry;
 saved `before-lazy-fingerprint-drafts.json` and verified these exact values
 unchanged at exit. Did not restore older backups over current state. Measurement
 tab closed; live tab retained. No product main merge/push or map promotion.
+
+### Owner physical-input follow-up (2026-10-04)
+
+Owner reports the live single-surface trial still feels unchanged after the
+demand-computed fingerprint change. Treat the visible typing symptom as unresolved;
+the earlier measured stage reductions do not establish physical-input acceptance.
+Read-only inspection of retained live tab 21 found A at 3,935 UTF-16 code units
+and B at 25. These are final DOM text lengths, not a measured input workload or
+grapheme counts; this is not a controlled comparison with the earlier 1,800-
+grapheme sample. No SURFACE_COST entries were returned by the live tab log query,
+so this run cannot locate the delay within event delivery, processing or paint.
+No draft edits, reloads or product changes were made for this follow-up.
+
+Inline Project Control Steward update to this existing record; execution IDs N/A.
+Next bounded diagnostic should capture the remaining end-to-end cost on the same
+retained corpus before selecting another optimization. Root cause remains unknown;
+do not infer that the prior optimization failed to reduce its measured work, or
+that it resolved the owner-visible symptom. No readiness/map promotion.
