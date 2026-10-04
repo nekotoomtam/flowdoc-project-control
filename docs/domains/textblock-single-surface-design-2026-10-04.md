@@ -511,3 +511,39 @@ browser tab was closed. No runtime repair, product commit, main integration or
 readiness promotion occurred. Next repair should address measured Core
 frame/layout work first, with SVG reconstruction as a second measured contributor;
 preserve exact shaping, wraps, selection, atomic edits and frame identity rules.
+
+### First suspect: repeated UTF-16 prefix counting (2026-10-04)
+
+Owner requested proceeding carefully one item at a time. This step is inline
+Core discovery (execution IDs N/A), limited to offset conversion; no product
+runtime edits, WASM replacement or browser reload. Inspection at Core `51e7477`
+finds repeated `text[..byte].encode_utf16().count()` in product shaping per glyph
+and product segmentation per break. The former revisits increasingly long
+prefixes; with a number of positions proportional to text length, cumulative
+scanning is quadratic. This is a concrete repeated-work finding, not yet an
+attribution of the measured whole-edit browser latency.
+
+A standalone optimized native Rust probe compares that expression with a
+byte-boundary-to-UTF-16 table built in one pass. It checks exact mapping equality
+at every scalar boundary for actual article prefixes of 300, 900, 1,800 and
+3,118 Unicode scalars (equal UTF-16 counts for this corpus), plus Thai combining
+marks, Latin combining marks, astral characters, CR/LF and the end boundary.
+Invalid interior-byte entries retain a sentinel. All assertions passed.
+This experiment does not expand supported shaping scripts.
+
+Local source/results are `profiling/offset-profile.rs` and
+`profiling/offset-profile-result.txt` under
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/`. Each case repeats 1,000 times
+with black-box inputs/outputs, including table allocation in the candidate.
+Observed mean milliseconds for prefix scanning/table respectively: 300 scalars
+0.0855/0.0008; 900 0.6023/0.0029; 1,800 2.6684/0.0677; 3,118 19.6333/0.0699.
+Only one process/sample batch was run, native optimized execution rather than
+WASM, using all scalar boundaries rather than actual glyph/break arrays. Do not
+derive browser speedup percentages or a main-bottleneck claim from these numbers.
+
+Result: repeated prefix work and candidate mapping equivalence are established
+for the tested corpus. The production path remains unchanged. Next within this
+same item: test equivalent actual shaping/segmentation outputs, integrate the
+bounded mapping change if those checks pass, then compare the actual WASM edit
+path with the same corpus before moving to fingerprint or SVG work. Full
+long-text performance acceptance remains open.
