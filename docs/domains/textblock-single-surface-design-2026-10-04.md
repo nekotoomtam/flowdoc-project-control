@@ -2223,3 +2223,49 @@ Editor `9b0fe6f` on `codex/authored-typing-trial-20261005`. Both isolated
 checkouts clean after moving this run's logs to `profiling/authored-20261005`.
 Neither candidate was merged or pushed. Broader design remains partial;
 fixed-width physical-trial preparation is complete.
+
+### Owner physical authored-path capture: responsiveness fails (2026-10-05)
+
+Owner performed the new 4023 trial and requested inspection; no repeat needed
+for data completeness. Evidence Reviewer, inline IDs N/A. Captured the result
+read-only from the existing page without reload, typing or draft mutation.
+Saved full 478777-character JSON to
+`FlowDoc-dev/20261004/profiling/authored-owner-physical-20261005.json` and computed
+`authored-owner-analysis-20261005.json` beside it. No product edits or promotion.
+
+Capture integrity: 237 inputs (101 insertText, 136 deleteContentBackward), 235
+repeat keydowns, 3591 rows, zero dropped rows. Each input ID has one Rust edit,
+Core edit, commit and second-rAF measurement. All 238 route marks (initial
+activation plus 237 edits) are authored-only/1. No old fallback route appears.
+Page reports no alerts; final A/B lengths 3813/25 match capture metadata.
+
+Measured results (milliseconds): Rust edit median 1.2/p95 1.6/max 3.5; complete
+Core edit median 14.7/p95 21.3; input-to-commit median 33.6/p95 43.8. Repeated
+keydown event timestamps advance about 30.1ms, while delivered events are
+47.1ms apart during insertion and 45.7ms during deletion (medians, excluding
+initial repeat delay). Keydown age rises to 1876.4ms for insertion and 2282.3ms
+for deletion. This shows processing falls behind this held-input stream even
+though authored editing itself is now small.
+
+Second-rAF median 2057.1/max 4128.8ms is a scheduling-delay signal, not proof of
+pixel presentation time. Long tasks reach 1795ms; that interval contains 38
+inputs, and the 1740ms interval contains 36. Do not misattribute either to a
+single Rust edit or one frame rebuild. Keydown-to-input-entry median 8.3ms and
+input-to-commit minus Core-edit median 18.5ms show material work outside the
+Rust command; these gaps do not alone identify React, browser layout, SVG,
+garbage collection, or input-host work as the root cause.
+
+Decision: fixed-width candidate does NOT meet held-typing responsiveness
+acceptance. Data is usable and sufficient to retain this failure; do not ask
+owner to repeat merely to obtain the same evidence. Removing retained
+reconstruction succeeded as a mechanism, but did not achieve product readiness.
+As the design's stopping rule requires, stop this prototype for review rather
+than silently adding batching, stale frames or a new architecture. Next bounded
+discovery should identify the remaining input/event/commit cost and presentation
+starvation before choosing another change. Physical feedback on perceived
+behavior can supplement these measurements but is not required to see backlog.
+
+Verification: parsed complete capture; checked input-ID coverage, operation and
+route counts, per-burst timestamp intervals and long-task containment; source
+inspection confirms Core stage ends before the React/DOM commit marker. No
+runtime test suite rerun was needed for this read-only evidence assessment.
