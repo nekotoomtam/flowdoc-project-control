@@ -2320,3 +2320,49 @@ paint-typecheck.local.log and paint-build.local.log. Editor isolated commit
 c703581 is not merged or pushed. Next: owner presses Start, holds Thai input and
 Backspace in A, then Stop; inspect captured event backlog and perceived behavior.
 Status: preparation PASS; physical responsiveness UNKNOWN / NOT PASSED.
+
+### Owner physical paint trial: usable improvement, not final acceptance (2026-10-05)
+
+Owner tested 4026 and reports typing is now smooth enough to use, but still not
+at the desired quality. Preserve this as partial acceptance of improvement;
+not product readiness or full typing acceptance. Inline Evidence Reviewer,
+execution IDs N/A. No product changes, map promotion or additional test request.
+Existing canonical record remains the sole status update.
+
+Read captured UI without reload or draft mutation. Saved complete 768992-character
+JSON, 5754 rows, to FlowDoc-dev/20261004/profiling/paint-owner-physical-20261005.json;
+computed paint-owner-analysis-20261005.json beside it. Capture has 382 inputs:
+190 insertText, 192 deleteContentBackward; 379 repeat keydowns, zero dropped
+measurement rows. Each input ID has exactly one Rust edit, Core edit, commit and
+second-rAF record. All 383 route marks remain authored-only/1. Final A/B UTF16
+lengths 3846/25 agree with the net two deletions from the initial corpus.
+
+Physical comparison against previous 4023 capture (milliseconds):
+- Input-to-commit median 33.6 -> 18.1; p95 43.8 -> 23.2; current max 33.5.
+- Maximum keydown event age 2282.3 -> 48.7; current median 2.9, p95 29.4.
+- Long-task maximum 1795 -> 70; current capture contains 11 long tasks.
+- Second-rAF median 2057.1 -> 76.2; current p95 131, max 228.5. This measures
+  scheduling delay, not presented-pixel latency.
+
+Three physical bursts contain 108 and 82 insertion events, then 192 deletions.
+Generated repeat cadence median 30.1ms in all bursts; delivered medians 29.4,
+29.3 and 30.0ms, excluding the initial repeat delay. Burst maximum event ages
+38.9, 48.7 and 18.6ms; final ages 18.2, 0.5 and 7.9ms. Thus this capture does
+not show the prior accumulating seconds-long input queue. It still shows short
+stalls and scheduling variability; this is one physical run, not a universal
+latency guarantee. No dropped measurement rows is not independent proof of all
+possible hardware events or source correctness.
+
+Remaining measured cost: Core edit median 14.8ms, frame-build 12.8ms (including
+layout 9.7 and freeze 2.4), Rust edit 1.1ms. Commit minus Core median is now
+3.1ms versus 18.5ms previously; keydown-to-input entry remains 8.4ms versus
+8.3ms. Nested stages overlap and must not be summed. Next bounded discovery
+should examine layout/frame preparation and the pre-input gap before selecting
+another change. Do not remove correctness checks or defer visible truth solely
+to improve these numbers. Thai raster overlap and broader structural/resize
+coverage remain unverified as recorded above.
+
+Verification: parsed full capture, checked per-input stage coverage, operations,
+route count, burst cadence and age recovery; preserved user feedback verbatim in
+meaning. No runtime suite rerun for read-only capture analysis. Status: measured
+improvement supported; owner says usable but insufficient; full acceptance open.
