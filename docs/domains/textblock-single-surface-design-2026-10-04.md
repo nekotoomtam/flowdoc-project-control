@@ -1529,3 +1529,31 @@ not universal equivalence. Initial probe itself failed on a UTF-8 byte slice;
 corrected its space lookup before the completed run. No WASM rebuild, browser
 reload, product behavior change or main integration. Raw results saved at
 existing local profiling/retained-suffix-probe.json. Physical acceptance pending.
+
+### Expanding left context to an observed safe shaping boundary (2026-10-04)
+
+Owner requested continuation of the bounded probe. Including the last space
+(offset 3,801) repairs the prior empty-tail concat-flag mismatch in sampled
+deletions, but both old and new starting concat flags remain unsafe for normal
+insertions. Native retained-provider probe: seven within-boundary cases match
+all compared arrays; one crossing case requires expansion/fallback. Evidence:
+local `profiling/retained-suffix-left-context.json`.
+
+Inspected retained glyph flags within the last 128 UTF-16 units; found actual
+safe shaping candidates, not a uniformly unsafe tail. Selected observed offset
+3,796, which is also a retained grapheme and line-break boundary, before the
+last space. This leaves 52 units of context before insertion. Eight comparisons
+(consonant/tone/vowel insertion and deletion of 1/36/37/38/39 final graphemes)
+match full cold-session glyphs, concat flags, grapheme and line-break arrays.
+Both retained and local first concat flags are false in all eight. Evidence:
+`profiling/retained-safe-boundaries.json` and `retained-suffix-safe-left.json`.
+Native diagnostic completed; a separate result check asserts all eight matches
+and safe flags. Temporary test-only inclusion removed; product.rs zero diff.
+No WASM rebuild, runtime edits, user-page reload or physical acceptance claim.
+
+Offset 3,796 is a discovered fixture candidate, not a hard-coded production
+algorithm. An automatic bounded finder and dictionary-context certificate,
+including edits beyond this new boundary and source-tree/shard publication,
+remain unimplemented. Safe shaping flags alone do not certify ICU line-break
+locality. The result supports continuing design but does not establish general
+Thai correctness or remove conservative fallback.
