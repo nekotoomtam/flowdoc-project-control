@@ -143,4 +143,111 @@ node หลายตัวใช้ข้อความเหมือนกั
 ไม่อ้างว่า100nodeหรือ1,800ตัวอักษรพิมพ์ลื่นจาก paint-only probe
 การต่อ input, physical-key tests, draft retention และ Columns ยังเป็นงานถัดไป
 
-สถานะ: แผนพร้อมตรวจ; ยังไม่ได้เริ่ม probe หรือเลือก painter
+สถานะ: ปิด probe แบบมีข้อจำกัดตามผลด้านล่าง 2026-10-04; execution inline
+
+## Execution ledger
+
+- Task 1 complete: Editor a8b20ca; corpus 7 tests RED (missing module) -> GREEN.
+- Task 2 complete: Editor 35b9317; combined corpus/painter 9 tests GREEN,
+  type-check PASS. Baseline glyph/assets 3 tests PASS. Painter test RED captured.
+- Task 3 complete with documented coverage limits: runner tests RED -> 11 combined tests GREEN; browser probe
+  separate HTML on existing isolated Editor worktree, no imports from live app.
+- Ruling: reuse existing isolated checkout; new probe-only modules cannot change
+  the user's document route. Native managed worktree tool targets Project Control,
+  so no unrelated checkout was created. User tab/document remains untouched.
+- Ruling: share existing asset loader (not trial controller or render loop).
+  Probe remains development-only; normal production build keeps trial gate closed.
+- Ruling: Canvas and SVG use a common outline-to-path compiler to avoid a geometry
+  confound. Timings include path construction and full visible-window remount,
+  not incremental active-node updates. Do not extrapolate them to typing latency.
+- Ruling: run 20 full traversals only for mixed/1800/100 per backend; other matrix
+  cases one traversal. LRU test additionally covers20x100 accesses. Initial broader
+  traversal attempt discarded; retained partial files are not final evidence.
+- Known difference: window traversal uses known equal-height fixtures, not native
+  scroll/variable-height placeholders. Cache8 is an experimental capacity, not an
+  empirically accepted product byte budget. Memory bytes unavailable.
+- Core raw session fixture check: empty text and Thai/combining marks create frames;
+  emoji and raw newlines reject unsupported-font-script. This is not a claim that
+  the TextBlock explicit-break bridge is unsupported; that path is outside probe.
+- No subagents: approved plan explicitly uses inline execution without dispatch.
+- Owner decision 2026-10-04: reduce full-node traversals to one for all36cases;
+  retain20x100 pure cache test and explicitly leave long-run native memory
+  unverified. Owner approved after measured cold1800frame cost about0.3s made
+  repeated traversals disproportionate. Sixteen completed cases retained in
+  profiling/textblock-render-probe/resume.json; remaining cases continue without
+  rerunning unchanged measurements. Interrupted stress case is not counted.
+
+## ผลปิดรอบ 2026-10-04
+
+Task1–4 ปิดในขอบเขต probe ที่ปรับตาม owner decision แล้ว ข้อจำกัดด้าน
+native scrolling และหน่วยความจำจริงยังไม่ใช่ PASS และไม่ได้ถูกยกเลิกไป
+รายการ checklist ด้านบนเป็นขั้นตอนแผนต้นฉบับ; ledger และผลส่วนนี้เป็นสถานะจริง
+
+**ตัวเลือกถัดไป: SVG รวม path ตามสี** เป็นตัวตั้งต้นสำหรับ Paragraph slice
+ผล median paint-submission ต่ำกว่า Canvas15จาก18คู่ ไม่ใช่เร็วกว่าเสมอ
+ใช้ painter interface เดิมเพื่อเปลี่ยน backend ได้หากงานจริงให้ผลต่าง
+ห้ามนำตัวเลข full-window remount นี้ไปอ้างเป็นเวลาพิมพ์หรือ screen-paint latency
+
+**ขอบเขต cache ตั้งต้น: 8 frame ต่อ view ของการทดลอง** จากการแสดงสูงสุด6node
+รวม overscan ในชุดนี้ เหลือ2ช่องสำหรับการเลื่อนช่วงใกล้เคียง เป็นขอบเขตจำนวน
+ไม่ใช่งบbytesที่ผ่านการพิสูจน์ การใช้งานจริงต้องเพิ่ม active-node pin และ
+การเก็บ path/ภาพของ node ที่ไม่เปลี่ยน เพื่อไม่สร้าง path ทุกครั้งเหมือน probe
+
+| ชุดข้อความผสม | node | Canvas median ms | SVG median ms |
+| --- | ---: | ---: | ---: |
+| 300 | 1 | 9.75 | 10.25 |
+| 900 | 1 | 40.55 | 34.80 |
+| 1800 | 1 | 82.40 | 58.50 |
+| 1800 | 100 (แสดงพร้อมกัน4) | 315.65 | 231.70 |
+
+ค่าด้านบนรวมการสร้าง path และ remount ช่วงที่แสดง ไม่รวม Core layout
+ใน warm loop; 100node ไม่ได้หมายถึงวาด100พร้อมกัน ผลทั้งหมดใน summary.json
+มี3คู่ที่Canvasต่ำกว่า รวมกรณีunbroken300/100ที่ต่างมาก จึงไม่อ้างอันดับสากล
+หรือผลproductionจากการทดลองบน Vite development mode นี้
+
+### หลักฐานและ coverage
+
+- Editor commits: a8b20ca,35b9317,d02445b,e462da4 บน codex/core-editor-trial-20261004
+- Core unchanged a47cd4b26c3fcc22dc798406d574680871427ab5; Backend unchanged
+- Focused tests11 PASS; baseline glyph/assets3 PASS; type-check PASS
+- Application build PASS (existing chunk warning); probe entry compilation PASS
+  แต่ production runtime gate ยังปิดตามเดิม ไม่อ้างว่า probe ใช้ใน production ได้
+- Browser:36 uniquecases = 2corpora x3sizes x3nodecounts x2painters,
+  3warmups+10samples, one forward/back traversal percase, viewport1280x900
+- ทุกกรณี warmExtraLayouts=0, overlayExtraLayouts=0, cachePeak<=8,
+  cacheAfterCleanup=0, mountedAfterCleanup=0; maximum mounted6
+- LRU unit test20x100 accesses PASS; ไม่ใช่หลักฐานว่าไม่มี native/WASM/GPU leak
+- Visual100%/125% inspected: matching line breaks/positions for300mixed;
+  visual inspection ไม่ใช่ pixel-exact equivalence สำหรับทุกfixture
+- Browser console error sample empty; emoji/raw newline limitations retained
+- Byte memory, long-task observer, real variable-height scroll anchoring,
+  active typing/IME and end-to-end save are unverified/outside this probe
+
+Artifacts (local, outside source repos):
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/textblock-render-probe/`
+
+- results.json: raw36case results including full corpus and samples
+- summary.json: completeness/invariant checks and18paired medians
+- identity.json: commits/WASM/font/environment/reuse boundaries
+- correctness.json: actual raw-session capability checks
+- compare-100.png,compare-125.png: browser comparison screenshots
+- resume.json: first16cases reused after owner-approved traversal reduction
+
+No product-main merge/push, document mutation, service restart or map promotion.
+Only separate probe tab used; user document tab not explicitly reloaded/edited.
+
+## งานถัดไปที่เตรียมไว้จากผลนี้
+
+1. Core retained TextBlock bridge: expose caret/hit-test/selection/composition
+   while preserving inline IDs and explicit line breaks. First prove that a local
+   replacement does not recreate every line session; rejection is atomic.
+2. Editor Paragraph view: use retained grouped SVG paths and a separate caret/
+   selection overlay. Focus/blur changes no text geometry and no path compilation.
+   Pin the active view; idle visible nodes reuse frames and paths.
+3. Connect browser input to that bridge, then per-node drafts/save acknowledgement
+   handling. Keep native input/composition acceptance separate from painter tests.
+4. Recheck300/900/1800 and1/20/100 on the actual editing path before Columns.
+
+These are next implementation boundaries, not completed code or a reopened
+historical WYSIWYG gate. No additional renderer comparison is required absent a
+new correctness or product-performance finding.
