@@ -780,3 +780,48 @@ verified exact equality. User tab retained; measurement tab closed. No product
 main merge/push, Backend/persistence or Core changes. SVG preparation reuse is
 bounded progress; long-text overall performance and multi-node memory remain
 open. Original general-purpose probe painter is unchanged as the cold reference.
+
+### Browser Core stage diagnosis after SVG reuse (2026-10-04)
+
+Owner authorized measurement before selecting the next optimization. Inline
+discovery, execution IDs N/A; Core 08d3005 / Editor 5776acd unchanged. Separate
+local diagnostic entry `text-block-stages.local.html` uses a copy of the current
+instrumented surface and subscribes to the existing public product timing hook.
+No edits to imported runtime files or live user drafts were required.
+
+Same saved article prefix (1,800 graphemes / 2,167 UTF-16 units), then append
+`xyz` through browser input. Exact displayed text matched; no visible alerts.
+Milliseconds for x / y / z, excluding initial fill:
+
+| Stage | x | y | z |
+| --- | ---: | ---: | ---: |
+| Rust edit roundtrip | 13.0 | 4.1 | 3.6 |
+| Frame layout | 80.2 | 39.5 | 43.9 |
+| Frame fingerprint | 62.8 | 41.2 | 30.8 |
+| Frame freeze | 1.9 | 2.7 | 2.0 |
+| Frame build (includes the three frame stages above) | 153.3 | 91.9 | 79.0 |
+| Core edit total | 175.0 | 103.6 | 89.9 |
+| SVG preparation | 7.2 | 7.7 | 5.8 |
+| Input handler to DOM commit | 213.5 | 138.5 | 124.5 |
+
+Do not sum parent/child timings. Three DEV samples with synchronous diagnostic
+logging are a stage-selection probe, not a regression verdict against earlier
+runs, physical held-key proof, or presented-pixel latency. Layout and fingerprint
+dominate this run; their relative ranking varies. Source projection was at most
+0.7 ms. Whole-frame reconstruction remains a measured contributor.
+
+Source inspection: `productFrameV1.ts` retains raw shape facts only within one
+build. `layoutFactsV1.ts` shapes the whole text for boundaries, prepares per-inline
+clusters, then reshapes candidate line ranges with their actual line ends. The
+single-inline product case repeats cluster preparation despite raw-fact reuse.
+Next bounded candidate: retain exact-input shape facts across adjacent edits,
+scoped to the same font/provider and session, with bounded retirement. This can
+reuse unchanged candidate line text; it does not justify copying a shaped prefix
+across changed contextual text, skipping line-end shaping, or promising complete
+incremental layout. Measure hit rate and cost before adopting; compare full frame
+geometry/fingerprints against cold construction for append, middle replacement,
+deletion and wrapping changes. Fingerprint cost remains a separate open target.
+
+Local evidence: `profiling/core-browser-stages-after-svg.json` and `.png` under
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/`. Diagnostic tab closed; existing
+user tabs remain. No runtime change, main merge/push, map or readiness promotion.
