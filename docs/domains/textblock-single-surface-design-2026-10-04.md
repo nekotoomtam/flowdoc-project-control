@@ -1740,3 +1740,50 @@ switching and content integrity. Candidate URL:
 `http://127.0.0.1:4022/text-block-thai-tail.local.html`.
 Keep development worktrees and source commit; do not merge/push product main,
 replace old live drafts, or claim physical usability acceptance yet.
+
+### Owner physical trial: NOT PASSED (2026-10-04)
+
+Owner tried the candidate and explicitly requested that acceptance remain not
+passed. Task 4 is FAIL / OPEN for repair, not completed or cancelled. Earlier
+automated correctness checks remain evidence for their tested scope; they do
+not override this physical usability result. Main integration and normal
+artifact promotion remain held.
+
+Read-only inspection of the existing candidate tab captured 168 inputs over
+17.85 seconds: 92 insertText and 76 deleteContentBackward; 165 of 168 keydown
+events were repeats. Recorder dropped zero rows; no rendered alerts. Final
+reported A/B lengths are 3,864 / 25 UTF-16 units. The page and user drafts were
+left unchanged. Raw recorder JSON is saved locally at
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/thai-tail-owner-physical-20261004.json`.
+
+Observed failure evidence:
+
+- Keydown event age grew from about 1–2 ms initially to 7,025.6 ms at the end;
+  median 3,385.3 ms. This measures event timestamp age, not hardware latency.
+- Twelve long tasks were captured, with the longest lasting 6,123 ms.
+- Input-to-second-rAF median 4,916.5 ms, maximum 12,326.6 ms. This is delayed
+  callback evidence, not proof of when pixels were actually presented.
+- Retained-command handled 69/168 inputs; full-context-required handled 99/168,
+  including a continuous fallback stretch at input IDs 44–140.
+- Grouped by matching input ID, retained Rust roundtrip median was 2.3 ms and
+  Core edit 18.1 ms; fallback medians were 54.3 ms and 69.4 ms respectively.
+- Across all inputs, input-handler-to-DOM-commit median was 77.4 ms, maximum
+  148.6 ms. This shorter per-input metric does not include the already queued
+  keydown delay and must not be presented as proof of responsive held typing.
+
+Conclusion: the bounded optimization works for some edits but does not meet
+the approved no-increasing-repeat-backlog/no-second-scale-stalls criterion.
+Fallback cost and the remaining per-edit work are investigation targets;
+these timing markers alone do not identify the exact admission rejection or
+attribute every long task. Keydown rows use input ID zero, so no per-input
+keydown association is claimed. Content integrity was not independently
+reconstructed from this trial; absence of alerts does not establish it.
+
+Next bounded repair investigation: reproduce the held insertion/deletion
+sequence, identify why the sustained fallback stretch begins, and account for
+remaining synchronous work even on retained edits. Preserve admission safety
+and work budgets; do not weaken certificates to improve timing. Reuse this
+failed trial as the acceptance regression, then request owner physical
+acceptance only after a corrected candidate demonstrates bounded backlog.
+This checkpoint changes only the existing canonical record; no product source,
+runtime artifact, Evidence index or system map was changed.
