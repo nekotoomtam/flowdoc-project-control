@@ -353,3 +353,38 @@ events. Actual browser ordering, focus switching during composition and the
 empty-end-as-cancel policy remain unverified. Do not ask the owner to repeat
 ordinary Thai typing as proof of those paths. Cross-break replacement remains
 the next implementation prerequisite for the real document surface.
+
+### Cross-break replacement connection (2026-10-04)
+
+Owner approved implementing range replacement, multiline paste and Enter over a
+selection now. Inline Product Implementation, Core semantics / Editor adapter,
+execution IDs N/A. Core `51e7477` adds atomic replaceRange: Core-valid endpoints,
+ordered ranges, fresh affected-line candidates and whole-node validation before
+publication. Unaffected line sessions, surviving inline IDs and external breaks
+are retained; splitting one inline allocates a new ID for its second fragment.
+Inserted text/breaks receive fresh IDs. Structural edits rebuild affected lines;
+this does not promise retained per-line history across structural replacement.
+Single-line typing still uses the retained replace path. Composition-active
+structural replacement remains blocked by the existing command boundary.
+
+Editor `fbb0c26` connects the new operation in the local surface session. Core
+bridge/integration suites passed 24 tests; Editor input/session suites passed
+8 tests. Both type-checks and diff checks passed. New tests first failed on the
+missing range API/old adapter rejection. Coverage includes cross-break
+replacement, same-inline splitting, empty lines, complete deletion, unchanged
+tail-frame identity and atomic rejection after unsupported shaping.
+
+In a separate browser test tab: pasted ABC/DEF/GHI on three lines, selected from
+offset 1 with Shift+Down and typed X, yielding AXEF/GHI. Enter over the next
+cross-line selection yielded A/HI with collapsed native selection at UTF-16
+offset 2 (start of the second line). Select-all and Backspace cleared the node.
+This is browser automation evidence, not a physical held-key/IME performance
+claim. Mouse dragging remains unimplemented and is explicitly stated in the UI.
+
+Before HMR, saved the owner's two visible drafts to
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/before-range-user-drafts.json`.
+HMR reset the trial; restored both via its input path and verified exact visible
+text equality to the backup. Screenshot:
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/textblock-range-ready.png`.
+No Backend, original document-route, main merge, physical IME or global WYSIWYG
+acceptance changes. Next bounded interaction gap is pointer-drag selection.
