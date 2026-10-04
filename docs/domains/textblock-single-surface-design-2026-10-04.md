@@ -388,3 +388,29 @@ text equality to the backup. Screenshot:
 `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/textblock-range-ready.png`.
 No Backend, original document-route, main merge, physical IME or global WYSIWYG
 acceptance changes. Next bounded interaction gap is pointer-drag selection.
+
+### Pointer selection trial (2026-10-04)
+
+Owner authorized the proposed mouse selection slice. Inline Editor implementation,
+execution IDs N/A; Core geometry is unchanged. Editor commit `1ce804a` introduces
+a pointer gesture helper and connects capture/move/up/cancel to the existing Core
+hit-test and native textarea selection. Anchor/focus direction survives reversed
+dragging, and activation can resolve a gesture begun on an inactive node. Text
+layout and the visible painter remain the same. Composition-active pointer starts
+do not initiate a selection gesture. No auto-scroll, touch or physical IME claim.
+
+Verification: pointer helper, input diff and actual-WASM surface session suites
+passed 10 tests; type-check and staged diff check passed. Helper tests cover
+anchor reversal, deferred activation, pointer identity and cancellation.
+In a separate browser tab, dragging across ABC/DEF/GHI selected offsets 1..10
+(`BC\nDEF\nGH`); clipboard text matched exactly. Reverse dragging preserved
+offsets with backward direction, and typing yielded `AแทนI`. Starting the same
+drag from an inactive node and pressing Backspace yielded `AI`.
+Screenshot: `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/textblock-drag-selection.png`.
+
+HMR reset the owner's test tab; restored both texts from
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/before-drag-user-drafts.json`
+and verified exact equality. Kept that tab open. No original document-route,
+Backend, Core source or product-main changes. PASS is limited to the bounded
+mouse interaction and stated checks; actual IME and document persistence remain
+pending as previously recorded.
