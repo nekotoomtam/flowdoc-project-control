@@ -986,3 +986,62 @@ Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
 `hash-only-browser.json` and `.png`. Reproduction test/page remain untracked,
 with private local corpus fixtures; do not publish them. Diagnostic tab closed;
 live drafts untouched. No product main merge/push or readiness promotion.
+
+### Transfer-boundary alternatives: no adoption (2026-10-04)
+
+Owner authorized further exploration. Bounded inline discovery, execution IDs
+N/A, Core candidate unchanged at 16dce19. Scope: compare transfer strategies
+with exact canonical bytes and the same WASM SHA-256; no production mutation.
+Local `tests/transferBoundary.local.test.ts` generates a separate browser page
+from the step-2 artifact. Generator check passed. User drafts/import graph remain
+untouched. Evidence target is this existing record, not a new Work or map.
+
+Source inspection: generated `passStringToWasm0` first allocates by string length
+and copies ASCII via a JS loop, then slices at the first non-ASCII character,
+expands the allocation, encodes the suffix with TextEncoder.encodeInto, and
+shrinks to the actual byte count. Two diagnostic alternatives were measured:
+the glue's existing no-realloc branch (encode entire string into a temporary
+Uint8Array, allocate exact bytes and copy); and direct encodeInto into a
+three-times-length WASM allocation followed by shrink-to-written-size.
+All strategies call the same original WASM function and decode/free its result.
+No alternate hash, omitted identity field, or reusable mutable buffer was used.
+
+The first two-method probe showed full encoding slower at every corpus size;
+this motivated the direct-write variant to check the temporary-copy hypothesis.
+Final same-run experiment rotates three-method order, with two warmups and ten
+samples per method/size. Each call freshly serializes before transfer. Timing
+covers serialization, transfer, hash/return and their complete combined duration.
+Actual transferred bytes were checked separately against TextEncoder(reference)
+for all nine size/method pairs. All fingerprints match the independent reference
+(108 timed/warmup calls plus nine byte-check calls). No parity failures.
+
+| Graphemes | Transfer method | Median transfer ms | Median serialize-through-hash ms |
+| --- | --- | ---: | ---: |
+| 900 | Original | 5.85 | 19.30 |
+| 900 | Encode whole then copy | 7.20 | 19.95 |
+| 900 | Direct encodeInto | 5.70 | 19.05 |
+| 1,800 | Original | 11.00 | 35.85 |
+| 1,800 | Encode whole then copy | 15.85 | 39.25 |
+| 1,800 | Direct encodeInto | 13.05 | 36.00 |
+| 2,592 | Original | 16.95 | 50.55 |
+| 2,592 | Encode whole then copy | 24.95 | 60.50 |
+| 2,592 | Direct encodeInto | 19.30 | 53.15 |
+
+Decision: retain original transfer implementation. Neither alternative shows a
+useful improvement at the 1,800 target; the tiny 900 direct-write difference is
+insufficient evidence of benefit. ASCII scanning alone is not established as
+the bottleneck. Fresh-string representation, allocator behavior and GC remain
+unisolated; this probe does not establish their individual costs. Fixed-frame
+DEV measurements do not prove live input performance or heap behavior.
+
+Next candidate, if authorized: investigate canonical serialization's repeated
+object/key work with exact-output checks; do not keep tuning transfer merely
+because it has measurable cost. Direct frame-to-byte serialization would be a
+larger separate design change, not an accepted outcome of this experiment.
+
+Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling/`:
+`transfer-boundary-browser.json` (first two-method run),
+`transfer-boundary-three-browser.json` and corresponding `.png` files.
+Untracked reproduction: `tests/transferBoundary.local.test.ts`, Editor
+`transfer-boundary.local.html` (private local fixtures, do not publish).
+Diagnostic tab closed. No runtime optimization adopted or main merge/push.
