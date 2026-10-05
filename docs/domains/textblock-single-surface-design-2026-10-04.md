@@ -2966,3 +2966,32 @@ Separate build `profiling/document-timing-browser`, preview session 41481:
 http://127.0.0.1:4036/documents/blank-authoring-trial/design?textTiming=1
 Await one owner held-input capture near the first three lines before choosing
 an optimization; keep 4035 and accepted 4034 baseline intact.
+
+Owner document capture (2026-10-05), retained as
+`profiling/document-timing-owner-20261005.json` and derived
+`profiling/document-timing-owner-analysis-20261005.json`: 174 inputs (87 insert,
+87 delete), zero drops, visible. Median keydown age 129.5ms, Core 15ms,
+input-to-commit 18.7ms, second-rAF 406.4ms. Edited surface rendered 353 times;
+inactive surface 176 times. Direct draft-state and scroll timings are small;
+counts do not establish the dominant cost. Owner approved a bounded three-step
+approach: trace redundant renders, skip unchanged work, verify correctness and
+physical responsiveness; if ineffective, return to the preserved baseline.
+
+Implemented stable composition/activation callbacks, memoized document surfaces
+with full source equality plus all callback identities, and equal-endpoint
+selection state reuse. External source changes, cancellation, active-state or
+handler changes must still render; no stale handler comparator shortcut.
+No draft dispatch delay, queue batching, scroll changes or painter changes.
+Tests added first and observed failing, then passing. Typecheck/build and six
+affected suites / 29 tests PASS; corrected the new style test to a valid source
+property and reran its three cases successfully.
+
+Browser smoke: three edits produce three edited-surface renders, zero inactive
+surface renders, correct text and cancellation. Draft survives B-A-B selection;
+B save/readback after reload succeeds, and its original saved text is restored.
+Evidence: `profiling/document-render-smoke-20261005.json`. This confirms redundant
+work is removed in the smoke, not improved physical responsiveness. User must
+repeat held typing; no performance acceptance yet. Existing baseline and 4036
+owner capture remain intact. Separate build `profiling/document-render-browser`,
+preview session 8428:
+http://127.0.0.1:4037/documents/blank-authoring-trial/design?textTiming=1
