@@ -3279,3 +3279,34 @@ run. Document budget: this appendix and a bounded result update. Preserve main
 typing baseline and live owner page; isolate implementation once its exact
 scope is resolved. Multi-node/nested/pagination behavior is not to be claimed
 passing from the single-node trial. Stop at first-slice acceptance.
+
+Implementation-entry discovery (2026-10-05): owner approved starting the plan.
+The first contract check finds `TextBlockPropsV4TargetSchema` is strict and
+contains only optional `textStyleId` and `box`; `BoxStyleV4TargetSchema` has
+fill/padding/borders, not a persisted fixed-height mode. New Editor TextBlocks
+currently use `props: {}`. Thus the earlier phrase "retain fixed-size mode"
+described an assumed feature, not verified existing behavior. Core's internal
+auto-height label is a geometry contract, not a selectable authoring mode.
+
+Current Editor `documentSurface.css` gives content flow containing a document
+surface `overflow:auto`, while the paper remains fixed-height. This explains
+the existing internal scrolling boundary but does not establish a fixed-height
+node. No product edits made at this discovery checkpoint.
+
+Two concrete scopes require owner selection before changing persistence:
+- View-only overflow mode: retain existing internal paper scrolling as one
+  workspace view and add a content-expanding view that exposes vertical overflow
+  with reachable scroll extent. No per-node mode is saved; cannot claim the
+  approved new-node/default/persisted-mode requirement is delivered.
+- Persisted per-node sizing (recommended if the approved meaning stands): add
+  optional explicit sizing semantics to Core, preserve missing-field legacy
+  behavior, create new nodes with content sizing, and supply fixed-height units
+  for explicitly fixed nodes. Editor controls and Backend save/validation must
+  carry this through. Frame size derives from text extent in content mode;
+  fixed mode needs an explicit overflow policy. This is a cross-repository
+  contract extension, not an Editor-only frame patch. Verify schema roundtrip,
+  mutation compatibility, old documents, and browser behavior before adoption.
+
+The approved plan explicitly requires escalation of a schema/Backend contract
+change. Resolve this distinction rather than silently adding a strict-schema
+field or presenting temporary UI state as persisted node behavior.
