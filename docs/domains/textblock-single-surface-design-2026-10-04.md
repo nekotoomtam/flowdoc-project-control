@@ -3023,3 +3023,30 @@ Still not a held-physical-input acceptance claim. Separate build
 `profiling/document-selection-browser`, preview session 67678:
 http://127.0.0.1:4039/documents/blank-authoring-trial/design?textTiming=1
 Await owner held-input comparison before further tuning.
+
+Owner selection-gate capture (2026-10-05): 761 inputs (399 insert, 362 delete),
+761 edited-surface renders and commits, 762 duplicate selection events skipped,
+no inactive-surface renders and no diagnostic drops. Raw/derived evidence:
+`profiling/document-selection-owner-20261005.json` and
+`profiling/document-selection-owner-analysis-20261005.json`. Duplicate work is
+removed in physical input, but responsiveness is not established: median
+keydown age 163.5ms; first 133 inputs 132.6ms, versus 101.2ms in the previous
+133-input run. Both start at offset 186, but different sequences/run lengths
+prevent a controlled regression ratio. Median Core 15.1ms, commit 18.9ms,
+second-rAF 529ms. Stop optimizing render counts and return to baseline as agreed.
+
+Next bounded read-only discriminator reuses the existing 4034 build without
+code changes: standalone glyph/readback trial with its original hidden native
+host and direct glyph-surface interaction, without the visible-input probe.
+This separates the previously accepted visible-host baseline from the input
+style used in documents before attributing the gap solely to paper. It is not
+an exact host/style/width match and does not independently isolate zoom,
+scroll-follow or Editor state publication. Observed document ancestors include
+85% transform, zoom will-change hints and nested scrolling; those are candidates,
+not established causes. No baseline overwrite or new performance fix.
+
+Browser smoke confirms direct pointer activation, correct Thai insertion and
+willReadFrequently=true in both canvases; collector result retained as
+`profiling/hidden-readback-control-smoke-20261005.json`. Agent smoke reset only
+in its own new tab. Await owner physical early-insertion comparison:
+http://127.0.0.1:4034/text-block-shape.local.html?painter=glyphs&raster=readback&detail=frames
