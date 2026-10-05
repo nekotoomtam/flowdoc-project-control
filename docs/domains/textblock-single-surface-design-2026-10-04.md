@@ -2827,3 +2827,24 @@ Off: http://127.0.0.1:4032/text-block-shape.local.html?probe=paint-off&detail=fr
 On: http://127.0.0.1:4032/text-block-shape.local.html?probe=paint-on&detail=frames
 Proof budget: typecheck/build and paired browser smoke, then owner physical
 comparison. Await results before adding further diagnostics.
+
+Owner usability correction (2026-10-05): the 4032 hidden input and lower read-only
+preview made it unclear where typing occurred. Capture contained 54 inputs,
+zero dropped rows; retained as `profiling/paint-off-obscured-owner-20261005.json`.
+Do not treat that trial as responsiveness acceptance. Editor commit `13d808d`
+corrects both probes to use the same visible, directly editable native textarea
+above the render area, with caret and click-to-refocus. Removed the separate
+read-only preview and excess instructions. This changes native-host geometry in
+BOTH modes; the pair isolates drawing under a visible host, not the original
+hidden-host interaction. Core edits, scene preparation and selection geometry
+remain active. No production input architecture or scheduling changed.
+
+Typecheck/build/whitespace and paired browser smoke PASS: visible 150px input,
+opacity 1, focused offset 180 on Start, three inserted characters yielding
+length 3851 and offset 183; three Core edits in each mode, canvas calls only in
+On. Off click-to-refocus retains text. Evidence:
+`profiling/paint-visible-smoke-20261005.json`. Separate build directory
+`profiling/paint-visible-browser`, preview session 64949 on port 4033;
+4032 and owner result preserved. Physical comparison remains pending.
+Off: http://127.0.0.1:4033/text-block-shape.local.html?probe=paint-off&detail=frames
+On: http://127.0.0.1:4033/text-block-shape.local.html?probe=paint-on&detail=frames
