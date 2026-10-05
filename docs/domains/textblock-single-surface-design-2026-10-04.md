@@ -2647,3 +2647,65 @@ Next: owner tries held typing/deletion, A-B-A and Save/Cancel in the document
 surface. Stop optimization until that feedback; no automatic main promotion.
 Project Control record checks: source-docs:text-block 4 files / 18 tests PASS;
 diff whitespace check PASS. No generated record projection changed.
+
+### Early insertion owner feedback and reusable glyph trial (2026-10-05)
+
+The owner rejected early insertion responsiveness in document preview 4028:
+position remained correct, but insertion in the first three lines stalled.
+Returning to unchanged standalone 4027 reproduced the failure with physical
+typing. Capture `FlowDoc-dev/20261004/profiling/shape-early-insert-owner-20261005.json`
+contains 302 inputs (163 insert, 139 backward-delete), no dropped diagnostic
+rows. Median repeat timestamp spacing was 30.1ms, input-to-commit 59.5ms,
+SVG build 38.2ms, Core edit 13.3ms. Keydown timestamp age peaked at 5616ms;
+long tasks peaked at 4711ms. Timestamp age and second-rAF are diagnostic signals,
+not hardware-to-pixel latency. Earlier tail-typing acceptance does not establish
+early-insertion acceptance. Both owner drafts and the full capture were saved
+locally; neither existing browser tab was reloaded or edited by the agent.
+
+Owner approved step 1 only: reuse glyph outlines and change placements in the
+standalone trial before returning to document integration. Inline owner: Editor;
+role: Product Implementation Agent; execution IDs not applicable. Routine,
+bounded scope: painter/cache, opt-in trial and separate build, related tests,
+this existing record. Core, Backend, document surface, input queue/scheduling,
+save lifecycle, and main integration are outside this correction. Acceptance:
+unchanged Core geometry/text/caret semantics, affected checks and browser
+inspection, then owner physical insertion/deletion feedback. Proof budget:
+focused renderer/input/session tests, typecheck, trial build, bounded browser
+inspection, one fresh review and repairs. No new Work or map promotion.
+
+An initial SVG-use implementation reused 68 outlines for 3681 placed glyphs,
+but per-glyph DOM work remained expensive. It was replaced before delivery.
+The candidate retains only currently used raw outlines and Path2D objects,
+draws Core placements into one device-pixel-scaled canvas per surface, and keeps
+the existing SVG selection/caret/hit geometry and input/session logic. Trial-only
+opt-in: `?painter=glyphs`. The document surface remains unchanged.
+
+Fresh review found short-block canvas stretching at narrow widths and selection
+layer ordering. Repairs bind canvas aspect ratio to the SVG viewBox and place
+glyphs above selection as before. At a 480x700 browser viewport, A canvas/SVG
+bounds both measured 389.600006 x 856.650024; B both 389.600006 x 32.462502,
+independent of the body's minimum height. Viewport override was reset.
+Reviewer confirmed both repairs with no remaining scoped finding.
+
+Checks: 5 affected suites / 16 tests PASS; typecheck PASS; separate production
+trial build PASS; whitespace check PASS. Build warnings concern config import
+extension and mixed static/dynamic import. Core WASM SHA256 remains
+`a737deb8cdab6b2402a0cff3f7308170a94f3fe32302e1557e1690995ac2bac5`.
+Browser insertion at offset 160 of `กิ้` produced the expected complete text,
+selection 163, matching SVG accessible text, and no alert.
+
+Automation-only sample: scene preparation median 0.6ms, canvas command issue
+3.8ms, input-to-commit 40.1ms. The sequential-input tool hit its deadline after
+17 inputs; second-rAF remained high. These observations neither establish
+physical throughput nor a controlled comparison with the owner's prior run;
+canvas command issue does not measure completed raster/presentation.
+Evidence: `glyph-canvas-browser-sequential-20261005.json` and
+`glyph-canvas-narrow-geometry-20261005.json` in the same profiling directory.
+Status: candidate checks PASS, owner physical acceptance UNKNOWN. Next: owner
+tests early/middle/tail insertion and held deletion on standalone 4029. Do not
+advance to queue/scheduling work or document integration without that result.
+Candidate Editor commit: `b9d729e`. Trial URL:
+http://127.0.0.1:4029/text-block-shape.local.html?painter=glyphs
+Preview process session: 3875. Original 4027 baseline and 4028 document drafts
+remain open. Project Control text-block source-doc checks: 4 files / 18 tests
+PASS; no generated projection or document map changed.
