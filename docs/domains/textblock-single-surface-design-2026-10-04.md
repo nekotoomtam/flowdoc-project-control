@@ -2995,3 +2995,31 @@ repeat held typing; no performance acceptance yet. Existing baseline and 4036
 owner capture remain intact. Separate build `profiling/document-render-browser`,
 preview session 8428:
 http://127.0.0.1:4037/documents/blank-authoring-trial/design?textTiming=1
+
+Owner physical result after render reduction (2026-10-05): improved but still
+stutters. Raw/derived `profiling/document-render-owner-20261005.json` and
+`profiling/document-render-owner-analysis-20261005.json`. 133 inputs (66 insert,
+67 delete), no drops. Median/max keydown age 101.2/136.4ms; median commit 18.2ms,
+second-rAF 341.2ms; max long task 162ms. Inactive surface never rendered, but
+edited surface rendered 266 times: the earlier short automation did not prove
+physical duplicate elimination. Start offset 186 differs from previous offset
+0; no identical-replay or precise improvement-ratio claim. Performance remains
+unaccepted. Baseline remains unchanged.
+
+Follow-up authorized: duplicate physical render appears after commit without
+scene/canvas work. Previous equality check occurred inside the React state
+updater. Added a selection request gate before calling that updater, tracking
+all requested endpoints synchronously; changed selections still dispatch
+immediately. Added native-select, selection-update/skip and surface-commit
+markers to distinguish component invocation from committed updates. No draft,
+Core, painter or scheduling policy change beyond avoiding identical selections.
+
+Regression test observed failing before implementation, then passing. Typecheck,
+build, whitespace and four suites / 22 tests PASS. Browser key-event smoke:
+three keydowns and inputs, three native-select echoes skipped, three renders
+and commits, correct text. Shift+Left replacement and cancellation restore
+expected content. Evidence: `profiling/document-selection-smoke-20261005.json`.
+Still not a held-physical-input acceptance claim. Separate build
+`profiling/document-selection-browser`, preview session 67678:
+http://127.0.0.1:4039/documents/blank-authoring-trial/design?textTiming=1
+Await owner held-input comparison before further tuning.
