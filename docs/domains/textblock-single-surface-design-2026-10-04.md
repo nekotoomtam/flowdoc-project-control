@@ -3418,3 +3418,26 @@ Trial URLs use
 Opened 30/start for the owner; one article plus 29 short sibling TextBlocks.
 Prior 4047 and 4042 retained. No main merge or remote push. No stress-test,
 nested-node, mixed-mode, page-fragment or export claim.
+
+Accepted local main integration (2026-10-05): owner reported the 4049 trial
+felt smooth, then explicitly requested main integration before starting further
+work. Accepted scope is content-height frames and same-parent content-sized
+TextBlock siblings in the tested matrix. Nested nodes and mixed modes are a
+separate additional design task; pagination remains deferred. This supersedes
+the pending owner-trial state above without expanding its evidence scope.
+
+All three primary main checkouts were clean at their recorded bases. Scope
+manifests and ancestry passed; integration used fast-forward only:
+- Core: `2762bb9` -> `fa76c74`.
+- Backend: `a1745c4` -> `3a3f755` (includes `f44db46`; final commit removes
+  one trailing blank line from the fixture, with its focused test rerun PASS).
+- Editor: `dbaed83` -> `d6475bf`.
+
+Existing passing targeted tests, typechecks, production build and browser
+matrix evidence were reused for unchanged tested content and dependency
+commits. No conflicts or behavior edits at integration. No remote push.
+Keep the clean merged worktrees for now because live trial servers use them;
+do not interrupt or discard the owner's trial state for cleanup. Main contains
+the accepted source, while existing preview processes retain their current
+runtime. Future work starts from these integrated commits and first reviews
+the existing node contracts rather than presuming nested/mixed behavior works.
