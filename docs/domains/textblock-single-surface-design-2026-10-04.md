@@ -3050,3 +3050,65 @@ willReadFrequently=true in both canvases; collector result retained as
 `profiling/hidden-readback-control-smoke-20261005.json`. Agent smoke reset only
 in its own new tab. Await owner physical early-insertion comparison:
 http://127.0.0.1:4034/text-block-shape.local.html?painter=glyphs&raster=readback&detail=frames
+
+Owner asks for a consolidated solution-finding effort (2026-10-05), with the
+accepted 4034 baseline as the reference and the document as the target. Inline
+Editor investigation/implementation, routine risk; no registered execution IDs.
+Core and Backend behavior, persistence and accepted baseline remain unchanged.
+
+Read-only local raster probes exposed a gap in the prior paint metric: issuing
+3681 glyph fills took about 1.6ms in the first probe, while the following full
+pixel read cost 21.5ms versus 1.6ms for a second read of the same image. This
+supports deferred raster cost; it is not a measurement of actual presentation
+latency during physical typing or proof of one exclusive root cause. Timing
+varied substantially across runs, so only within-run comparisons are used.
+
+Three disposable renderer probes were evaluated without changing user tabs:
+- Exact-phase per-glyph raster cache: rejected. Cold cost about 960ms, warm
+  cost about 66ms, 3681 distinct entries, and pixel differences. No adoption.
+- Worker vector raster: image matched in the tested full scene. Paired probe
+  reduced occupied main-thread work but increased total completion latency;
+  no worker integration or asynchronous presentation contract adopted.
+- Visible-region raster: document DOM showed roughly 412 of 1346 vertical
+  raster pixels actually visible. Restricting drawing with overscan reduced
+  work. A crop/translated-origin variant was rejected after multi-position
+  image comparisons found antialias differences; final variant keeps the
+  original full raster coordinate system and clips drawing instead.
+
+Editor candidate `e63dd90` enables viewport clipping for DocumentTextSurface.
+It intersects the browser viewport and nested scrolling/clipping ancestors,
+adds 64 CSS pixels of overscan, and retains the original Core geometry, full
+visible-canvas resolution and SVG caret/selection coordinates. Offscreen
+canvases release their backing bitmap. Scroll/resize/zoom update the region;
+unchanged regions skip repaint, hidden-textarea scroll is ignored, and pending
+scroll callbacks are cancelled on teardown. Input and draft dispatch remain
+synchronous. Standalone rendering defaults to its existing full-scene path.
+
+Final paired raster probe: 16 alternating samples, first two warm-ups excluded;
+upper-median full/readback completion 72.5ms versus clipped 39.7ms (~45% lower).
+Both include forced pixel readback, which changes execution; this is a raster
+microbenchmark, not a physical input benchmark. Final pixel comparison used
+three raster widths and top/middle/end windows: zero differing channels in the
+visible region for all nine cases with overscan. Edge antialias differences
+remain outside that region. This is bounded font/corpus/browser evidence, not
+a universal pixel-equality guarantee.
+
+Typecheck, production build, whitespace and four suites / 13 tests PASS.
+Browser smoke: exact Thai insertion plus newline, selection replacement,
+end navigation, B edit/cancel, 50/85/125% zoom, and restoring original text.
+Canvas/SVG bounds agree at inspected zooms. Final six input events produced six
+surface renders and six paints. Long automatic input bursts hit tool timeouts;
+those runs are not performance acceptance. Physical responsiveness remains
+UNKNOWN and awaits owner comparison, including early insertion/held input.
+No baseline promotion, product-main integration, or push.
+
+Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling`:
+`raster-cost-20261005.json`, `raster-cache-prototype-20261005.json`,
+`raster-paired-prototype-20261005.json`, `raster-clip-cost-20261005.json`,
+`document-viewport-guarded-pixels-20261005.json`,
+`document-viewport-smoke-20261005.json`, and
+`document-viewport-ready-20261005.png`. Disposable probe sources retained in
+`raster-investigation-source-20261005/`; no product dependency added.
+Candidate build `document-viewport-browser`, preview session 45821:
+http://127.0.0.1:4041/documents/blank-authoring-trial/design?textTiming=1
+Original owner tabs and Backend 4038 preserved; agent edits cancelled/restored.
