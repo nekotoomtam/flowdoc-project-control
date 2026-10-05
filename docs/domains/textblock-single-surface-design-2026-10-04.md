@@ -3487,3 +3487,20 @@ does not globally prohibit creating deeper nodes. Child sizing controls and
 nested drag reorder are not newly exposed here. Pagination, export fidelity,
 capacity limits and all-style coverage remain deferred. Existing 4049 baseline
 is retained. Implementation checks PASS; user typing acceptance PENDING.
+
+Edit-control layout correction (2026-10-05): owner reported the Columns trial
+looked good, then explicitly requested no paper movement when entering editing.
+Inline Editor-owned correction on the existing isolated branch; IDs N/A,
+routine risk. Save/cancel and sizing controls now portal outside the paper to
+a fixed lower-left control area. Inactive save status no longer occupies node
+height; workspace save status remains. Existing document content and save/IME
+handlers are retained. Core/Backend, pagination and document semantics unchanged.
+
+Verification: Editor typecheck, 2 focused files / 13 tests, production build and
+diff check PASS. Browser 4052: activation, switching children, cancel and
+activation of an outside TextBlock retained node/body height and relative
+positions within 0.001 displayed px. Saving a short edit caused zero measured
+layout displacement; test text was restored. Final toolbar was confirmed outside
+paper both in DOM and visible bounds. Screenshot: local content-height directory,
+columns-controls-ready.png. Existing 4051 trial state preserved; 4052 uses the
+same Backend 4050 saved documents. Physical owner review pending; no main merge.
