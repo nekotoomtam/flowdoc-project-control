@@ -2773,3 +2773,23 @@ discriminator: compare the current full-text input host against ordinary native
 typing controls under the same environment, separating input-host geometry from
 Core/painter work before altering the product queue. Acceptance remains pending;
 no product changes or readiness promotion made in this readout.
+
+Native input discriminator prepared (2026-10-05), standalone 4031:
+http://127.0.0.1:4031/text-input-host.local.html
+Two native textarea modes share the same 3848-character corpus, initial
+grapheme-boundary offset 180, preview textContent update and timing collector.
+A is a visible full-width textarea; B is a 2px by 20px near-transparent host
+with overflow hidden. No Core, React, or glyph renderer is loaded. B approximates
+the small input-host geometry; it does not reproduce the product caret-following
+position or every native style. This is a diagnostic discriminator, not a
+candidate product implementation or final attribution of unexplained delay.
+
+Start focuses input and restores the same corpus/offset; Stop preserves each
+mode's independent result. Buttons prohibit switching while capturing; run
+tokens prevent delayed frame callbacks from entering a subsequent capture.
+Typecheck/build/whitespace PASS. Browser smoke: both modes started at offset
+180, inserted three characters correctly, captured three inputs each, and
+retained both result fields; frame timing supported. Evidence:
+`profiling/input-host-control-smoke-20261005.json`. Separate build directory
+`profiling/input-host-browser`, preview session 58693. Await physical A/B runs:
+hold insertion 3–5 seconds and backward deletion, Stop, then repeat in B.
