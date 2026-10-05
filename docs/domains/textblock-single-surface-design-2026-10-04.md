@@ -3375,3 +3375,46 @@ was 7.48 displayed px below text-surface bottom at 85% (existing padding and
 border), versus 36.38 before. Owner physical acceptance remains pending.
 Trial: `http://127.0.0.1:4047/documents/blank-authoring-trial/design?textTiming=1`.
 Screenshot: `C:/Users/nekot/Documents/FlowDoc-dev/content-height/frame-follow-fixed.png`.
+
+Owner acceptance and next slice (2026-10-05): owner confirmed 4047 works after
+the frame correction. Acceptance is bounded to the observed single-node frame
+behavior, not general latency limits. Owner then approved sibling-flow work
+with 3/10/30 nodes and exactly one long article per document; other nodes carry
+short text. Article positions: start, middle, end. This is correctness coverage,
+not capacity or limit testing. Nested containers and pagination remain deferred.
+
+Inline scope: Editor Product Implementation Agent, routine bounded change;
+Backend owns opt-in test fixtures only, Core unchanged. Execution IDs N/A.
+Existing isolated worktrees reused. Proof budget: focused flow/selection tests,
+nine browser cases, save/reload and one physical owner trial. Document budget:
+this existing ledger. No separate room or main integration.
+
+Discovery: native same-page grid already moves following nodes by actual
+height. Estimated preview pagination inserted approximately 162 displayed px
+between some siblings instead of the normal 10.2px at 85% zoom. Editor
+`d6475bf` now presents one continuous authoring flow when all projected nodes
+are supported content-sized TextBlocks in the same parent/section. It retains
+node identity and existing text layout; paper size is unchanged and overflow
+is temporary. Legacy/mixed modes, different parents and non-text nodes retain
+their existing projection. This bounded eligibility is not a general mixed-node
+layout solution. Backend `f44db46` adds opt-in `FLOWDOC_SIBLING_FLOW_TRIAL=1`
+fixtures through normal migration/mutation services, with nine distinct IDs.
+
+Checks: Editor flow/render partition/selection/paper-editor tests 27 PASS,
+typecheck and production build PASS; Backend fixture tests 2 PASS and typecheck
+PASS. The new flow regression initially failed before implementation.
+Browser on 4049/Backend 4048: all nine cases passed growth, shrink, restoration,
+ordered node count and constant sibling gap checks. Preceding node positions
+remained stable; every following node moved by the article height delta within
+1 CSS px tolerance. All nine save/reloads retained text and spacing. The last
+node in the 30-node start case was reachable and its input selectable.
+Reusable local evidence:
+`C:/Users/nekot/Documents/FlowDoc-dev/content-height/sibling-flow-browser-results.json`
+and `sibling-flow-ready.png` in the same directory. These correctness checks do
+not establish physical typing latency, which remains owner-trial PENDING.
+
+Trial URLs use
+`http://127.0.0.1:4049/documents/sibling-flow-{3|10|30}-{start|middle|end}/design?textTiming=1`.
+Opened 30/start for the owner; one article plus 29 short sibling TextBlocks.
+Prior 4047 and 4042 retained. No main merge or remote push. No stress-test,
+nested-node, mixed-mode, page-fragment or export claim.
