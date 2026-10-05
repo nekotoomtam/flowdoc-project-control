@@ -3189,3 +3189,30 @@ maps changed. Raw/derived evidence under the existing local profiling root:
 `document-clear-owner-analysis-20261005.json`. Prior correctness verification
 for unchanged `a797bf5` is retained; this appendix records physical performance
 and owner feedback only.
+
+Owner integration decision (2026-10-05): accepts this improvement for main and
+asks to continue from it. Inline integration, no registered execution IDs;
+Editor owns the document surface and Core supplies the already-tested authored
+shape serializer. Scope is the existing 4042 candidate and its prerequisites,
+not new tuning, pagination, nested nodes, tables, or export readiness.
+
+Local main integration completed: Core `12e5fe3` fast-forwarded to `2762bb9`;
+Editor `191a4eb` merged candidate `a797bf5` as `dbaed83`. Editor main's existing
+package-export trial adapter fix is retained; it is the only source difference
+from the accepted candidate. No merge conflicts. Main working trees are clean.
+No remote push, backend restart, preview reload, or worktree deletion performed.
+The accepted 4034 reference and live 4042 trial remain available.
+
+Verification: affected Editor suites pass on both candidate and merged main
+(10 files / 45 tests); Core authored shape-wire test passes (1 file / 1 test).
+Merged-main typecheck, production build and whitespace check pass. The build's
+authored WASM SHA256 is
+`a737deb8cdab6b2402a0cff3f7308170a94f3fe32302e1557e1690995ac2bac5`, matching
+the physically tested candidate. Main's older installed Vite/Vitest versions
+were exercised by the fresh build/tests; prior browser correctness and owner
+physical evidence are reused for unchanged runtime sources. Existing large-chunk
+and mixed static/dynamic-import build warnings remain. Build output is retained
+outside the repositories at `profiling/main-merged-4042`. An earlier build made
+before the Editor merge at `profiling/main-integration-4042` is not integration
+evidence. Residual delay is accepted for moving forward; this does not claim
+complete TextBlock, pagination, or multi-node readiness. No map promotion.
