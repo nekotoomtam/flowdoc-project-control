@@ -2936,3 +2936,33 @@ http://127.0.0.1:4035/documents/blank-authoring-trial/design
 Backend 4038 reused without restart. Original 4028 document build and 4034
 baseline preserved. Owner should check held typing at the tail and insertion
 near the first three lines; document responsiveness remains pending that check.
+
+Owner document follow-up (2026-10-05): subjectively 20–30% slower than the
+standalone baseline even while editing one node. This percentage is owner
+feedback, not a measured regression ratio. Owner authorizes further tests on
+the disposable document trial. Existing 4035 drafts retained in
+`profiling/document-owner-drafts-20261005.json`; no reload or changes to that
+owner tab. Baseline drawing configuration remains frozen.
+
+Read-only diagnosis found draft publication enters the Editor state updater on
+each edit and scrollIntoView is called for active snapshot/selection changes.
+Neither is established as the dominant cost. Added opt-in `textTiming=1`
+instrumentation: Core edits, draft dispatch and state updater separately,
+scene preparation, canvas paint, caret scroll, input-to-commit/second-rAF,
+keydown timestamp age, render counts by surface, and bounded long-frame/task
+capture. Nested durations overlap; zero-ms render marks are counts, not cost.
+The control preserves input focus, checks a document input before starting,
+bounds rows to 20000 with drop counts, and guards delayed callbacks by run.
+No text/key contents captured. No scheduling, drawing or draft policy change.
+
+Typecheck/build/whitespace and 3 affected suites / 22 tests PASS. Browser smoke
+captured three edits, each expected stage, zero dropped rows; Start preserved
+focus and offset 0. Both document surfaces rendered three times, but only the
+edited scene and canvas rebuilt three times. This is wiring evidence, not a
+physical typing benchmark or proof that inactive-node rendering dominates.
+Temporary inserted text cancelled. Evidence:
+`profiling/document-timing-smoke-20261005.json`.
+Separate build `profiling/document-timing-browser`, preview session 41481:
+http://127.0.0.1:4036/documents/blank-authoring-trial/design?textTiming=1
+Await one owner held-input capture near the first three lines before choosing
+an optimization; keep 4035 and accepted 4034 baseline intact.
