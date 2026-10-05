@@ -3504,3 +3504,23 @@ layout displacement; test text was restored. Final toolbar was confirmed outside
 paper both in DOM and visible bounds. Screenshot: local content-height directory,
 columns-controls-ready.png. Existing 4051 trial state preserved; 4052 uses the
 same Backend 4050 saved documents. Physical owner review pending; no main merge.
+
+Accepted Columns/control main integration (2026-10-05): owner accepted the
+4052 result and explicitly requested main integration. This closes the pending
+physical owner-review status for the observed one-layer Columns and stable
+edit-control layout only. Deeper nesting, Table, pagination and removal of
+Paragraph/Columns labels or editor-added gaps remain deferred.
+
+Clean primary checkouts and candidate worktrees, ancestry and diff checks
+passed. Fast-forward integration completed without source repairs:
+- Editor main: `d6475bf` -> `68900ca` (includes `a02c0dc`).
+- Backend main: `3a3f755` -> `376d298`.
+- Core unchanged at `fa76c74` in primary and dependency worktree.
+
+Reused the recorded passing focused tests, typechecks, production build and
+browser coverage for unchanged candidate content, relevant base, dependencies,
+configuration and environment. Integrated HEADs equal the tested candidate
+commits; both main checkouts are clean. No remote push. Retain the worktrees
+because the current trial servers use them; preserve the owner's browser state.
+Next proposed work is top-level TextBlock page continuation, requiring its own
+bounded design before implementation. This integration does not start it.
