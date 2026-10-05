@@ -2848,3 +2848,33 @@ On. Off click-to-refocus retains text. Evidence:
 4032 and owner result preserved. Physical comparison remains pending.
 Off: http://127.0.0.1:4033/text-block-shape.local.html?probe=paint-off&detail=frames
 On: http://127.0.0.1:4033/text-block-shape.local.html?probe=paint-on&detail=frames
+
+Owner paired visible-host results (2026-10-05): raw
+`profiling/paint-visible-owner-20261005.json`, derived
+`profiling/paint-visible-owner-analysis-20261005.json`. Off: 98 inputs (49 insert,
+49 delete), median keydown age 0.7ms, max 6.4ms, Core 16ms, commit 16.7ms,
+second-rAF 18.1ms. On: 164 inputs (78 insert, 86 delete), median keydown age
+474ms, max 898.4ms, Core 12.5ms, commit 14.6ms, second-rAF 506.8ms. Repeat
+timestamp spacing about 30ms in both; visible, zero row/frame/script drops.
+One long animation frame in Off versus nine in On. Different run lengths
+prevent identical-replay claims, but delay reappears with glyph-canvas drawing
+enabled despite comparable synchronous edit cost. Exact browser/driver cause
+remains unassigned; do not label the unexplained interval GPU time.
+
+Next authorized bounded diagnostic keeps the same paths, placements, clear/fill
+operations and visible host, requesting `willReadFrequently:true` only with
+`raster=readback`. The WHATWG canvas standard describes this as a hint favoring
+software canvas, not proof of which processor incurred the previous delay:
+https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently
+No pixel readbacks or global browser settings changes are performed. Default
+context behavior remains unchanged. A context-mode change remounts the canvas;
+result metadata records the requested mode and actual context attributes.
+
+Typecheck/build, glyph painter/scene suites (4 tests), whitespace and browser
+smoke PASS. New mode focuses offset 180, accepts three inputs (length 3851,
+offset 183), draws glyphs, drops no rows, and reports willReadFrequently=true
+for both canvases. Smoke timing is not physical responsiveness evidence.
+Evidence: `profiling/paint-readback-smoke-20261005.json`. Build directory
+`profiling/paint-readback-browser`, preview session 98402 on port 4034.
+Owner physical follow-up remains pending, no product fix or acceptance claimed:
+http://127.0.0.1:4034/text-block-shape.local.html?probe=paint-on&detail=frames&raster=readback
