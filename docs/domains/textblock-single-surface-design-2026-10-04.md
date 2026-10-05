@@ -3160,3 +3160,32 @@ outstanding visual work, revision-matched text and caret, stale-result disposal,
 and explicit IME/selection/undo/save behavior. Worker placement alone is not an
 accepted solution; prior prototype increased total completion latency. No such
 architecture or Core/Backend contract change is implemented in this round.
+
+Owner full-clear result (2026-10-05, preview 4042 / Editor `a797bf5`):
+reports immediately visible improvement. Capture has 314 inputs (157 insert /
+157 backward delete), 302 repeated keys, initial offset 186, visible at start
+and stop, and zero dropped timing rows, animation frames or script records.
+Median keydown age is 48.5ms, p95 70.4ms, max 83.8ms, versus the prior
+viewport run's 595.1ms / 1047.8ms / 1101.7ms. Runs differ in length and physical
+sequence (314 versus 618 inputs); this is descriptive evidence, not a controlled
+speedup ratio or proof of indefinitely sustained responsiveness.
+
+Paint-command median remains 1.6ms but p95 falls from 24.4ms to 2.2ms and max
+is 3.2ms: zero commands exceed 10ms, versus 171 previously. Core median is
+14.5ms, input-to-commit 18.1ms. All 314 inputs have 314 surface renders,
+commits and paints. Second-rAF median is 192.5ms, max 337.7ms; this does not
+measure pixel presentation. Long-task max is 103ms and longest observed
+animation frame is 187.5ms, so residual scheduling delays remain. Keydown-age
+medians for successive groups of 100 are 35.8, 59.8 and 52.1ms, with no
+prior-run-sized accumulation in this capture.
+
+This physical evidence supports the bounded full-clear correction and agrees
+with the owner's experience. Preserve this candidate and evidence; no further
+tuning or scheduling-architecture expansion in this result-review step. The
+owner has not yet declared blanket product readiness or promoted this as a
+replacement baseline. No product code, main integration, backend state, or
+maps changed. Raw/derived evidence under the existing local profiling root:
+`document-clear-owner-20261005.json` and
+`document-clear-owner-analysis-20261005.json`. Prior correctness verification
+for unchanged `a797bf5` is retained; this appendix records physical performance
+and owner feedback only.
