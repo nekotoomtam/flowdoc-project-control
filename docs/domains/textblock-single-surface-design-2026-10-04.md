@@ -2724,3 +2724,30 @@ and final draft text were saved locally without modifying the trial page.
 Next investigation should distinguish browser drawing/event scheduling and
 remaining Core work before selecting another change. No queue/scheduling code,
 document-surface migration, or readiness promotion has been performed.
+
+Follow-up diagnostic (2026-10-05): the longest recorded task contains 31 inputs
+but only about 512.4ms of measured input-to-commit work within 1644ms. After
+input 7 committed at 6915.3ms, the next keydown reached its handler at 7818.5ms;
+the existing capture cannot attribute that approximately 903ms gap. No product
+scheduling change is justified by that gap alone.
+
+Added opt-in `detail=frames` diagnostics to the standalone timing controls using
+Long Animation Frames entries (Chrome API reference:
+https://developer.chrome.com/docs/web-platform/long-animation-frames).
+Capture retains render/style-layout timestamps and bounded script timing
+metadata, without text/key values or script bodies. Limits: 200 frames and
+100 attributed scripts per frame, with explicit drop counters; unsupported
+browsers report that state. Entries do not cover presentation time or all
+external work, and unassigned duration must not be labelled GPU/browser cost.
+Renderer, Core, input handling and queue/scheduling remain unchanged.
+
+Typecheck, separate diagnostic build and whitespace check PASS. Browser smoke
+accepted five inserted characters and captured three long frames with support
+true, visible page and zero drops. Evidence:
+`profiling/browser-frame-diagnostic-smoke-20261005.json`. Automation is only
+collector verification, not an owner typing result. Ready for owner repeat at
+http://127.0.0.1:4030/text-block-shape.local.html?painter=glyphs&detail=frames
+using the same Start / early insertion / held deletion / Stop procedure.
+Preview session 6461; build directory `profiling/frame-detail-browser` is
+separate from 4029. Owner responsiveness remains NOT ACCEPTED; diagnosis of
+the unexplained delay remains pending this physical capture.
