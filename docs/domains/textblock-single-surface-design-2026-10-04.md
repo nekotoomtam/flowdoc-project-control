@@ -3356,3 +3356,22 @@ The trial contains one top-level plain TextBlock. Following siblings, nested
 containers, page fragmentation, export parity and general multi-node overflow
 are deferred, not claimed passing. Next action is owner growth/shrink and held
 typing/early insertion trial against 4042 before considering integration.
+
+Owner correction (2026-10-05, after 4046 trial): height grows, but a second
+outline remains at the earlier height and trailing space is excessive. This
+keeps acceptance pending and corrects the previous browser coverage gap.
+Editor-only inline repair, same candidate worktree and feature authorization.
+The selection overlay watched saved render-model/viewport changes, not the
+selected element's live draft size. A selected-element ResizeObserver now
+synchronizes it on size changes and disconnects on selection/unmount. Editing
+actions were a 30px trailing grid row; moving them above the text removes that
+non-content extent from the bottom. Text line metrics and paper size unchanged.
+
+Evidence: regression first failed, then selection/paper-editor/sizing checks
+passed (21 tests); typecheck and production build passed. Browser copied the
+owner's draft into a new unsaved trial without modifying 4046. Growth and
+shrink both aligned outline and block bottom within 0.01 CSS px; block bottom
+was 7.48 displayed px below text-surface bottom at 85% (existing padding and
+border), versus 36.38 before. Owner physical acceptance remains pending.
+Trial: `http://127.0.0.1:4047/documents/blank-authoring-trial/design?textTiming=1`.
+Screenshot: `C:/Users/nekot/Documents/FlowDoc-dev/content-height/frame-follow-fixed.png`.
