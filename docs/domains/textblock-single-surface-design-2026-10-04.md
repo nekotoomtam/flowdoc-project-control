@@ -2709,3 +2709,18 @@ http://127.0.0.1:4029/text-block-shape.local.html?painter=glyphs
 Preview process session: 3875. Original 4027 baseline and 4028 document drafts
 remain open. Project Control text-block source-doc checks: 4 files / 18 tests
 PASS; no generated projection or document map changed.
+
+Owner physical follow-up on 4029 (2026-10-05): improved, explicitly NOT ACCEPTED.
+Capture `profiling/glyph-canvas-owner-20261005.json` under the same FlowDoc-dev
+directory has 358 inputs (177 insert, 181 backward-delete), no dropped diagnostic
+rows. Median scene preparation 0.2ms, canvas command issue 1.7ms, Core edit
+12.8ms, input-to-commit 15ms (p95 21.4ms). Keydown timestamp age median 410.6ms,
+max 911.2ms; second-rAF median 792.5ms, max 3071.8ms; longest task 1644ms.
+Repeat timestamp spacing remains about 30.1ms. These two owner sessions are not
+an identical replay, and canvas command issue is not completed rasterization.
+The owner's reported improvement agrees with lower measured synchronous cost;
+remaining queue/render delay prevents acceptance. Raw rows, derived analysis,
+and final draft text were saved locally without modifying the trial page.
+Next investigation should distinguish browser drawing/event scheduling and
+remaining Core work before selecting another change. No queue/scheduling code,
+document-surface migration, or readiness promotion has been performed.
