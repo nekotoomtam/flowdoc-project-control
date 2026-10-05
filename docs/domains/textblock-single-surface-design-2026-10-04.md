@@ -2878,3 +2878,34 @@ Evidence: `profiling/paint-readback-smoke-20261005.json`. Build directory
 `profiling/paint-readback-browser`, preview session 98402 on port 4034.
 Owner physical follow-up remains pending, no product fix or acceptance claimed:
 http://127.0.0.1:4034/text-block-shape.local.html?probe=paint-on&detail=frames&raster=readback
+
+### Owner-accepted responsiveness baseline — visible host / readback Canvas
+
+Owner decision, 2026-10-05: mark this trial as the baseline. Subjective result:
+usable, with a small perceptible delay; not fully smooth. Further tuning is
+optional, not required for this bounded trial acceptance. Preserve this result
+as the comparison point rather than overwriting it with later experiments.
+
+Baseline Editor commit: `e33bf1b7c5dee022f158a1d317e877049772bf25`
+on `codex/textblock-document-drafts-20261005`, clean when recorded. Configuration:
+port 4034, `probe=paint-on&detail=frames&raster=readback`, visible native input,
+corpus length 3848, initial insertion offset 180; actual Canvas context reports
+`willReadFrequently=true`. Existing build: `profiling/paint-readback-browser`.
+
+Owner capture: `profiling/paint-readback-owner-20261005.json`; derived metrics:
+`profiling/paint-readback-owner-analysis-20261005.json` under the existing
+`C:/Users/nekot/Documents/FlowDoc-dev/20261004` evidence directory. 196 inputs:
+98 insertions and 98 backward deletions, 190 repeat keydowns, median repeat
+spacing 30.1ms. Zero diagnostic row/frame/script drops; visible throughout.
+Median/max keydown timestamp age: 30.3/74.6ms; median Core edit 12.8ms;
+median input-to-commit 14.7ms; second-rAF median/max 153.4/266ms. Long-task
+maximum 81ms; longest animation frame 128.4ms. Callback timing is not pixel
+presentation latency. Owner feedback, not those timings alone, establishes
+this scoped acceptance.
+
+Acceptance boundary: the visible-input standalone trial only. This does not
+accept the original hidden input host, document-surface integration, full
+TextBlock readiness, or a main-branch product change. Residual delay is an
+owner-accepted limitation here. No further performance tuning in this baseline
+recording task; any next candidate must retain this reference and be compared
+before replacing it. No product files or maps changed by this decision.
