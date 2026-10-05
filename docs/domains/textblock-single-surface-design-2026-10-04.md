@@ -2542,3 +2542,108 @@ No automatic default rollout, merge, push or wider readiness/map promotion.
 Verification: full JSON parse, per-ID coverage, operation/route counts, burst
 cadence and recovery, long-task timing; no runtime suite rerun for read-only
 assessment. Owner feedback and evidence now agree on provisional usability.
+
+### Document integration and draft lifecycle (2026-10-05, in progress)
+
+Owner approved continuing the real-document connection and per-node drafts.
+Inline Product Implementation Agent; Editor owns changes, Core 2762bb9 is the
+unchanged accepted dependency. Execution IDs N/A; routine risk, bounded medium
+work. Existing document is sole plan/ledger; no map promotion. Implementation
+uses existing isolated Editor checkout on codex/textblock-document-drafts-20261005
+from 74ba3b6. Original 4027 built trial and user capture remain untouched.
+
+Goal: reuse the accepted painter/input on eligible plain paragraph TextBlocks in
+the document surface, retaining node drafts through focus changes and safe saves.
+Existing Backend rich-inline mutation and revision gate remain authoritative.
+No schema, Backend semantics, pagination, Columns, rich inline flattening,
+durable unsaved recovery, export, or further typing optimization changes.
+
+Architecture: retain drafts keyed by node within the document runtime; only one
+active editing session. Route replies by pending request identity, not focus.
+Preserve newer draft revisions and current selection. Compare saved node content
+before rebasing unaffected drafts after an accepted local mutation; changed
+remote content remains a conflict. Shared SVG surface uses authored Core assets
+through coreAdapter, with exact Core-produced children sent to existing save.
+
+Implementation sequence (executed inline, user already authorized):
+- [x] Draft lifecycle: activeTextBlockIsland.ts, commit runner, runtime mutation
+  apply and useActiveTextBlockEditing.ts; regressions in existing hook/runner
+  suites for A-B-A, late ack while B selected, newer A typing, rejected/thrown
+  saves, conflict, duplicate save and Cancel while pending.
+- [x] Document surface: extract reusable input/painter from accepted trial into
+  textBlockSurface; connect PaperBlock/PaperTextBlockEditor to unchanged Core
+  frame/children. Eligible plain paragraphs only; explicit unsupported boundary.
+  Preserve frame on deactivation and use measured layout width. Test source
+  admission and rendering boundary; typecheck/build plus browser interaction.
+- [x] Review affected changes once, resolve correctness blockers, retain checks
+  and commit candidate. Physical typing acceptance remains with the owner.
+
+Proof budget: targeted lifecycle/adapter/render suites, typecheck/build, one
+fresh whole-change review, browser A-B-A/save and physical handoff. No full
+cross-repository suites or new timing campaign absent an affected-area reason.
+Review focus: document identity change; ack after focus switch; rejection and
+retry; unsupported styled/atomic content; composition during focus/save. These
+are correctness boundaries, not evidence of broad readiness.
+
+Candidate result: Editor fa874cf on the isolated branch above, clean after commit.
+Core remains 2762bb9. The production build contains the exact accepted authored
+WASM SHA-256 a737deb8cdab6b2402a0cff3f7308170a94f3fe32302e1557e1690995ac2bac5.
+No Core/Backend source edits, main integration or push in this slice.
+
+Implemented per-node retained drafts, request-correlated replies, newer-draft
+preservation, unchanged-node base advancement after accepted local mutations,
+conflict retention, failed/thrown/invalid-response pending release, pending-save
+Cancel/duplicate-save guards, and composition gating. Paragraph input publishes
+Core-produced inline children with their IDs rather than rebuilding from text.
+Plain standalone paragraphs use the same SVG surface active and inactive;
+unsupported roles/styles/atomic content and embedded descendants keep existing
+behavior. Browser width uses untransformed ResizeObserver content measurements.
+Only the active surface retains a Core editing session; inactive painted frames
+are retained. Inactive dirty nodes show Unsaved. This is not many-node evidence.
+
+Fresh review identified an acknowledgement clearing a still-active composition
+and loss of keyboard activation/reordering in the new block wrapper. Both were
+reproduced with failing regressions and fixed. Expanded affected checks caught
+an over-broad selection preservation change: generic rich-inline mutations still
+select their targets; only replies to pending drafts preserve current selection.
+
+Ruling: the existing paper flow clips long content. Local browser proof showed
+1443px content in a 936px viewport with overflow hidden. The bounded integration
+now permits scrolling inside paper flow containing the new surface and follows
+the active caret. This prevents clipping without claiming automatic page
+continuation. Afterward 1467px content was reachable with overflow auto; typing
+at offset 3848 advanced to 3852 and scrolled to the caret. Actual pagination,
+page count, nested layout and export alignment remain deferred.
+
+Verification PASS: 18 affected Editor suites / 90 tests, typecheck, production
+build, diff whitespace check. Suites cover island/hook/commit lifecycle,
+draft rebase/source admission, paper rendering, surface session/input/SVG cache,
+render partition, Backend integration, v4 reads, compatibility and boundaries.
+Build retains non-blocking large-chunk/static-and-dynamic-import warnings.
+Dependencies were installed in this isolated Editor checkout (no longer sharing
+the experiment node_modules junction) and bound locally to the accepted Core;
+Vite/Vitest resolve the installed Core real path. Observed tooling: Vite 8.3.2,
+Vitest 4.1.11. Package/lockfile dependency declarations were not changed.
+
+Browser proof uses an isolated unchanged local Backend process on 4038 with its
+opt-in blank-authoring seed, not an owner's existing document. Created two plain
+blocks, typed Thai plus explicit break, switched A-B-A preserving both drafts,
+saved A, cancelled only B, saved B, and reloaded to read both saved values back.
+Keyboard Enter activated an inactive block; sequential input appended correctly.
+Long-corpus check used 3848 characters from the accepted trial corpus. This
+confirms lifecycle/visible integration, not physical held-key responsiveness.
+
+Prepared production preview (no hot reload):
+http://127.0.0.1:4028/documents/blank-authoring-trial/design
+Preview session 43056; isolated Backend session 67442. A contains the unchanged
+3848-character corpus, B a short saved sample. Screenshot:
+FlowDoc-dev/20261004/profiling/document-surface-ready-20261005.png.
+The trial Backend stores packages in memory: reload can retrieve saved content
+while that process lives; restart durability is not claimed. Unsaved drafts stay
+in the current document runtime only. Original 4027 built trial/capture untouched.
+
+Status: bounded implementation/checks PASS; owner physical acceptance UNKNOWN.
+Next: owner tries held typing/deletion, A-B-A and Save/Cancel in the document
+surface. Stop optimization until that feedback; no automatic main promotion.
+Project Control record checks: source-docs:text-block 4 files / 18 tests PASS;
+diff whitespace check PASS. No generated record projection changed.
