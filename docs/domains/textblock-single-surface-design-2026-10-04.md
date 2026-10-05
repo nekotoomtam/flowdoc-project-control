@@ -3112,3 +3112,51 @@ Local evidence under `C:/Users/nekot/Documents/FlowDoc-dev/20261004/profiling`:
 Candidate build `document-viewport-browser`, preview session 45821:
 http://127.0.0.1:4041/documents/blank-authoring-trial/design?textTiming=1
 Original owner tabs and Backend 4038 preserved; agent edits cancelled/restored.
+
+Owner viewport result (2026-10-05): feels improved but still far from usable;
+performance acceptance FAIL, not a promoted baseline. Capture contains 618
+inputs (317 insert / 301 delete), 616 repeat keys at about 30.1ms intervals,
+start offset 186, visible, no dropped rows/frames/scripts. Median keydown age
+595.1ms, max 1101.7ms; Core 14.7ms; commit 21.9ms; second-rAF 1597.6ms, max
+3915.1ms. Six hundred eighteen paints, but 171 exceed 10ms; paint p95 24.4ms.
+The longest animation frame is 2131.4ms with 65 attributed scripts totaling
+1669ms and 13ms forced layout. This supports work accumulation; it neither
+proves an exclusive GPU cause nor permits a controlled regression ratio
+against different earlier physical runs. Raw/analysis:
+`profiling/document-viewport-owner-20261005.json` and
+`profiling/document-viewport-owner-analysis-20261005.json`.
+
+Focused throwaway probe reproduced a viewport-candidate side effect: batches
+of 30 synchronous paints with the partial clear inside the clip took about
+752-1068ms across three runs, versus 149-220ms with a full clear before clipped
+drawing. The previous forced-readback-per-image benchmark hid accumulation;
+its ~45% result must not be treated as sustained-typing success. No single-frame
+paint timing is an end-to-end input or presentation measurement.
+
+Bounded repair `a797bf5`: clear the full bitmap before applying the visible
+clip, preserving the glyph transforms and visible-region drawing. Regression
+ordering test failed first, then passed. Typecheck/build/whitespace and two
+changed/affected suites / 6 tests PASS; prior unchanged source/scene coverage
+retained. A second probe uses the actual repaired painter against an immutable
+copy of the prior painter: current batches 50.6-200.8ms versus partial-clear
+299.9-1264.9ms; environment variability remains, no physical speedup claim.
+Nine guarded visible-region pixel comparisons have zero differing channels.
+Browser smoke restores all text after six edits, reaches offset 3848 at the
+end with visible text, and checks 50/125/85% zoom. Owner page 4041 and unsaved
+text/results remain untouched. Physical performance of the repair is UNKNOWN.
+
+Evidence: `profiling/document-viewport-queue-probe-20261005.json`,
+`profiling/document-clear-queue-verification-20261005.json`,
+`profiling/document-clear-pixels-20261005.json`,
+`profiling/document-clear-smoke-20261005.json`,
+`profiling/document-clear-ready-20261005.png`; reproducible probe sources in
+`profiling/raster-queue-source-20261005/`. New build `document-clear-browser`,
+preview session 4412:
+http://127.0.0.1:4042/documents/blank-authoring-trial/design?textTiming=1
+
+If this bounded repair remains insufficient, proposed scope expansion is an
+input/compute/presentation scheduling contract: ordered lossless edits, bounded
+outstanding visual work, revision-matched text and caret, stale-result disposal,
+and explicit IME/selection/undo/save behavior. Worker placement alone is not an
+accepted solution; prior prototype increased total completion latency. No such
+architecture or Core/Backend contract change is implemented in this round.
