@@ -3524,3 +3524,62 @@ commits; both main checkouts are clean. No remote push. Retain the worktrees
 because the current trial servers use them; preserve the owner's browser state.
 Next proposed work is top-level TextBlock page continuation, requiring its own
 bounded design before implementation. This integration does not start it.
+
+### Top-level TextBlock continuation: design for review (2026-10-05)
+
+Status: proposed architecture, not implementation evidence. Owner requested
+step 2 after integrating Columns/control work. Role: Planning Partner; inline
+execution IDs N/A. Product owner: Editor; Core semantics and Backend persistence
+remain unchanged unless discovery proves an interface prerequisite. Base:
+Editor `68900ca`, Backend `376d298`, Core `fa76c74`. Medium-size, routine-risk
+work; principal risks are input/session remount, caret drift and typing latency.
+
+Scope: content-sized plain TextBlocks directly in one page-body zone, equal
+page content width, one article plus short following TextBlocks. Initially
+exclude Columns, Table, mixed fixed sizing, rich inline content, explicit page
+breaks, widow/orphan policy and export fidelity. Unsupported structures retain
+the accepted path. This is not a persisted per-page document model.
+
+Selected approach: one source node and one editing session, with page fragments
+as derived presentation. Do not split source TextBlocks at page boundaries or
+create independent text editors per fragment. Those alternatives would turn
+ordinary reflow into identity/history changes or require competing input states.
+Use shaped line extents as the only text measurement source. A fragment records
+node identity, source revision, source-line range, page index, source origin and
+page-local destination. Stable line order partitions each displayed line exactly
+once; a line that does not fit the remaining height starts on the next page.
+Blank lines consume their measured line extent. A line taller than an entire
+content area must surface an explicit unsupported condition, never loop or clip.
+
+A page-flow coordinator uses actual content bounds and remaining page height,
+not the current preview estimates or a node's character count. Page margins
+and authored spacing consume capacity; page labels and editing controls do not.
+Current editor-added labels/padding must be accounted for or kept outside the
+fragment geometry, without silently treating them as authored paragraph spacing.
+A following node begins after the final fragment and continues onto later pages
+as needed. Deletion pulls content back and removes empty trailing pages.
+
+Keep the active input/session mounted while fragments move. Paint, caret,
+selection and hit testing consume the same revision-stamped fragment mapping;
+page-local clicks map back to existing source positions. One selection may span
+pages. Preserve composition and native input ownership through reflow. A stale
+fragment plan must never replace a newer source revision. Cache shaping by the
+existing source/width identity; page movement alone must not reshape unchanged
+text. Recompute placement from the first affected node, reuse unaffected work.
+
+Delivery sequence: (1) line-to-page placement and inverse-coordinate contract;
+(2) single TextBlock fragmented rendering with one input/session; (3) following
+nodes and shrink/reflow. Before production edits, the implementation plan must
+verify available Core line geometry and boundary navigation; a missing primitive
+requires an explicit scope/ownership revision, not an Editor approximation.
+
+Acceptance/proof budget: focused partition/coordinate tests covering exact-fit,
+one-line overflow, blank lines, multi-page growth/shrink and oversized-line
+termination; browser clicks and selection across page boundaries, insertion and
+Backspace at the seam, paste, composition, save/reload; then one article with
+3/10/30 short siblings in start/middle/end positions. Verify stable IDs, complete
+text, no overlap/duplication/clipping and correct frames/follower positions.
+Reuse existing typing baseline; instrument the affected path and request one
+physical owner trial. Automated correctness is not physical latency acceptance.
+No full-suite expansion without a new affected area. Document budget: this
+ledger; no new registry, report or product-repository planning documents.
