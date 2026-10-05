@@ -3216,3 +3216,66 @@ outside the repositories at `profiling/main-merged-4042`. An earlier build made
 before the Editor merge at `profiling/main-integration-4042` is not integration
 evidence. Residual delay is accepted for moving forward; this does not claim
 complete TextBlock, pagination, or multi-node readiness. No map promotion.
+
+## Content-height mode: staged plan (2026-10-05)
+
+Owner requests planning first: the TextBlock frame must contain the actual
+text. First slice may overflow below the paper; page splitting is deferred.
+Separate content-height and fixed-size modes; content-height is the default
+for newly created nodes, while existing nodes retain their prior behavior.
+Width follows the containing available space. This is proposed work, not
+implemented behavior or a new acceptance claim.
+
+Single-room Planning Partner; execution/Phase/Checklist IDs N/A. Editor owns
+frame rendering, authoring controls and creation defaults; Core owns persisted
+size semantics and measured text geometry. Backend's existing validation/save
+path is a compatibility consumer, not a new persistence architecture. Medium
+size, bounded risk (clipping, draft loss, resize feedback and typing regression).
+Use this existing ledger only; no new Work or map records for planning.
+
+Observed starting points: DocumentTextSurface already derives painted height
+from Core frame line geometry. Paper page and content-flow CSS currently clip
+overflow. Core also has internal auto-height/fixed-height geometry policies;
+these do not by themselves establish a persisted authoring-mode contract.
+
+1. Resolve the existing node size schema, creation defaults, mode controls and
+   save/read path before choosing a field. Reuse the existing representation
+   if suitable; do not invent a second competing height policy. Missing-mode
+   compatibility must preserve old documents. Escalate a required schema or
+   Backend contract change explicitly before implementation.
+2. Bind frame height to the same layout result/revision that paints text,
+   including relevant content extent and padding/border once. An empty block
+   retains an editable minimum height. Do not write a measured height into the
+   document on every keystroke. Width is an input; measured height is an output,
+   avoiding observer-driven width/height feedback loops.
+3. Add the bounded mode choice and new-node default through that resolved
+   contract. Fixed mode retains its existing behavior. Changing focus, saving
+   and reopening must retain the chosen mode and consistent frame size.
+4. Permit vertical overflow in this authoring slice while retaining the real
+   paper boundary. Ensure the scrollable workspace reaches the last line and
+   caret; merely setting overflow visible is insufficient. Account for the
+   viewport painter's ancestor clipping calculation. Do not pretend the paper
+   itself became longer or add page fragments in this slice.
+5. Verify one top-level TextBlock: growth/shrink, wrapping, newline, paste,
+   deletion to empty, focus change, save/reopen, and zoom. Frame encloses text
+   at each inspected state, including the final line below the paper. Check
+   mode defaults and old-document fallback. Reuse 4042 as typing reference;
+   physical held input/early insertion remains owner acceptance, not replaced
+   by synthetic performance tests.
+
+Future sub-slices, deliberately outside first acceptance:
+- Following siblings: the changed node contributes its effective height to
+  parent flow; following nodes move down/up without overlap, retaining gaps
+  and avoiding unnecessary text layout for unchanged siblings.
+- Nested nodes: resolve width from each immediate parent; propagate changed
+  extent up the ancestor chain and reposition affected following siblings at
+  each level. Fixed/clipped parents need explicit policy, not implicit growth.
+- Pagination: consume those same layout extents to produce page fragments of
+  one logical node, with continuous editing/selection and matching box pieces.
+
+First-slice proof budget: focused contract/frame tests and browser correctness
+checks plus one owner physical trial; no broad audit or speculative full-suite
+run. Document budget: this appendix and a bounded result update. Preserve main
+typing baseline and live owner page; isolate implementation once its exact
+scope is resolved. Multi-node/nested/pagination behavior is not to be claimed
+passing from the single-node trial. Stop at first-slice acceptance.
