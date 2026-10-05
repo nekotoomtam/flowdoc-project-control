@@ -3310,3 +3310,49 @@ Two concrete scopes require owner selection before changing persistence:
 The approved plan explicitly requires escalation of a schema/Backend contract
 change. Resolve this distinction rather than silently adding a strict-schema
 field or presenting temporary UI state as persisted node behavior.
+
+Implementation candidate (2026-10-05): the owner explicitly selected persisted
+per-node sizing and authorized proceeding without further approval within this
+feature. Single-room inline implementation; execution/Phase/Checklist IDs are
+not applicable. The scope includes the necessary Core and Backend contract.
+
+- Core `fa76c74`: optional v4 TextBlock `sizing` is either content or fixed with
+  a positive finite `heightPt`. Missing mode retains legacy behavior. The
+  revision-guarded rich-inline commit carries text and sizing atomically;
+  changing sizing additionally requires style override permission.
+- Backend `a9f7b02`, following local trial dependency `ca48a0a`: validates and
+  preserves sizing on insertion and commit, advertises support, and rejects
+  the field for legacy package insertion rather than silently dropping it.
+- Editor `a6eae8f`: capable v4 new-node creation defaults to content mode;
+  bounded controls select content or fixed height. Content frame height uses
+  the existing painted layout extent, never persisted per keystroke. Fixed
+  height describes the text viewport in points and uses internal scrolling.
+  Draft/rebase guards include sizing. Workspace scroll extent expands while
+  paper dimensions remain fixed. Resize observation avoids caret-only work.
+
+Candidate worktrees are under
+`C:/Users/nekot/Documents/FlowDoc-dev/content-height/`, each on
+`codex/textblock-content-height-20261005`. No main integration or remote push.
+The accepted 4042 page and its Backend remain unchanged.
+
+Verification evidence: Core sizing and rich-inline tests (13 tests) and Core
+typecheck passed. Backend targeted sizing/contract/mutation/capability checks
+(21 tests), prior unchanged blank-trial coverage, and typecheck passed.
+Editor affected-area checks (10 files, 50 tests) passed; after the final
+clean-state/observer refinement the hook/commit checks (15 tests), typecheck,
+and production build passed. Existing build chunk warnings remain.
+
+Browser correctness checks on the isolated candidate covered new-node default,
+45-line growth below the paper with reachable caret, deletion to empty,
+fixed-height scrolling, content/fixed mode save and reload, and 50/85/125%
+zoom. Save/reload means the running trial Backend; persistence across a
+Backend process restart was not tested. Final build is open at
+`http://127.0.0.1:4046/documents/blank-authoring-trial/design?textTiming=1`
+using Backend 4043. Local screenshot:
+`C:/Users/nekot/Documents/FlowDoc-dev/content-height/content-height-ready.png`.
+
+Status: implementation checks PASS; owner physical typing acceptance PENDING.
+The trial contains one top-level plain TextBlock. Following siblings, nested
+containers, page fragmentation, export parity and general multi-node overflow
+are deferred, not claimed passing. Next action is owner growth/shrink and held
+typing/early insertion trial against 4042 before considering integration.
