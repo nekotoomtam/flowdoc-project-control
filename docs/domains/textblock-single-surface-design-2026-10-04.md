@@ -2751,3 +2751,25 @@ using the same Start / early insertion / held deletion / Stop procedure.
 Preview session 6461; build directory `profiling/frame-detail-browser` is
 separate from 4029. Owner responsiveness remains NOT ACCEPTED; diagnosis of
 the unexplained delay remains pending this physical capture.
+
+Owner frame-detail capture received (2026-10-05): 342 inputs, 23 long animation
+frames, supported/visible, zero row/frame/script drops. Saved raw capture and
+drafts as `profiling/browser-frame-owner-20261005.json` and
+`profiling/browser-frame-owner-drafts-20261005.json`; derived frame breakdown is
+`profiling/browser-frame-owner-analysis-20261005.json`. Median input-to-commit
+remains 15ms, Core 12.7ms, canvas command issue 1.6ms. Keydown timestamp age
+peaks at 895.8ms; second-rAF peaks at 2799ms.
+
+The longest animation frame lasts 2146.9ms, containing 55 input callbacks with
+827ms attributed script duration, 5.6ms forced style/layout within those scripts,
+and 2.8ms after renderStart (1.4ms after styleAndLayoutStart). These intervals
+overlap and must not be summed. There is a 915.2ms interval between attributed
+input callbacks at 11606.9–12522.1ms. Other long frames also show short measured
+render tails. This narrows the problem to work/waiting before render but does
+not attribute the unexplained interval to a particular browser/native/GPU or
+external subsystem; script attribution and presentation coverage remain limited.
+No renderer or scheduling fix follows from this capture alone. Next bounded
+discriminator: compare the current full-text input host against ordinary native
+typing controls under the same environment, separating input-host geometry from
+Core/painter work before altering the product queue. Acceptance remains pending;
+no product changes or readiness promotion made in this readout.
