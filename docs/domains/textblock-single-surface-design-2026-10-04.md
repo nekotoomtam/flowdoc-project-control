@@ -3441,3 +3441,49 @@ do not interrupt or discard the owner's trial state for cleanup. Main contains
 the accepted source, while existing preview processes retain their current
 runtime. Future work starts from these integrated commits and first reviews
 the existing node contracts rather than presuming nested/mixed behavior works.
+
+One-level Columns trial (2026-10-05): owner approved retaining the existing
+node model and implementing one container layer first. Inline Product
+Implementation Agent; execution IDs N/A. Scope: top-level Columns with direct
+content-sized TextBlock children, child siblings and three followers outside
+the parent. Routine risk; no Core/schema change. Reuse the isolated worktrees
+from the integrated bases above on `codex/columns-one-level-20261005`.
+Proof budget: focused eligibility, existing surface/selection/zoom tests,
+six browser cases and save/reload; physical typing remains owner acceptance.
+Document budget: this ledger only. No separate room, main merge or remote push.
+
+Editor `a02c0dc` reads eligible Columns from the authored package, renders
+each child through the existing DocumentTextSurface and uses native grid flow
+to size the parent to its tallest column. Child identity and ownership remain
+unchanged. Text activation uses the existing canvas-text-descendant selection
+route so a child remains selected instead of being redirected to its parent.
+Supported Columns join the same continuous authoring flow as content-sized
+TextBlock followers; overflow below paper remains temporary. Backend `376d298`
+adds opt-in `FLOWDOC_COLUMNS_FLOW_TRIAL=1` fixtures through existing services.
+
+Coverage: Editor 8 focused files / 45 tests PASS, typecheck and production build
+PASS. Backend 2 fixture tests and typecheck PASS. Browser 4051 / Backend 4050:
+all six combinations of 3/10/30 children and left/right article passed growth,
+shrink, column ordering, no overlap, stable opposite-column positions and
+outside-follower displacement. All six save/reloads retained the edited text
+and expected child count. Growing a short child by 61.2 displayed px while its
+column remained shorter left the parent height and outside followers unchanged.
+One captured input emitted core-edit / scene-build / surface-render only for
+the article; this is isolation evidence, not a latency benchmark. Zoom controls
+50/125/85 were exercised; physical smoothness remains PENDING owner trial.
+
+Local browser readout:
+`C:/Users/nekot/Documents/FlowDoc-dev/content-height/columns-flow-browser-results.json`.
+Trial screenshot: `columns-flow-ready.png` in that directory. Tracked tests in
+the commits above are reusable correctness evidence; no system-map promotion.
+Trial URLs:
+`http://127.0.0.1:4051/documents/columns-flow-{3|10|30}-{left|right}/design?textTiming=1`.
+Prepared 10/left with one article, nine short children and three outside nodes.
+The trial repository is in-memory; process restart persistence is not claimed.
+
+Boundary: deeper Columns/Table nesting, boxed columns, unsupported rich text
+and mixed fixed-height children retain the existing rendering path. This slice
+does not globally prohibit creating deeper nodes. Child sizing controls and
+nested drag reorder are not newly exposed here. Pagination, export fidelity,
+capacity limits and all-style coverage remain deferred. Existing 4049 baseline
+is retained. Implementation checks PASS; user typing acceptance PENDING.
