@@ -2793,3 +2793,37 @@ retained both result fields; frame timing supported. Evidence:
 `profiling/input-host-control-smoke-20261005.json`. Separate build directory
 `profiling/input-host-browser`, preview session 58693. Await physical A/B runs:
 hold insertion 3–5 seconds and backward deletion, Stop, then repeat in B.
+
+Owner native-input A/B result (2026-10-05): both felt responsive. Raw and derived
+results: `profiling/input-host-owner-20261005.json` and
+`profiling/input-host-owner-analysis-20261005.json`. A: 161 inputs (80 insert,
+81 backward-delete); B: 112 inputs (55 insert, 57 backward-delete). No diagnostic
+row/frame/script drops; visible throughout. Median keydown timestamp age A
+1.3ms / B 0.7ms; second-rAF A 6.2ms / B 7.2ms. Neither run recorded a long
+animation frame. Small native-host geometry alone did not reproduce the lag in
+this control; interactions with the product pipeline remain unknown. This is
+not TextBlock acceptance.
+
+Owner authorized the next bounded isolation probe. Single-room Editor-owned
+local diagnostic, routine risk; role Product Implementation Agent; execution
+IDs not applicable. Existing isolated candidate and record reused. No Core,
+Backend, production behavior, scheduling, or maps changed. Editor commit
+`ffc2a4e` adds `probe=paint-off` and matched `probe=paint-on`. Original input,
+Core edit, scene preparation, geometry and selection/caret paths remain; only
+glyph-canvas mounting/drawing is disabled in Off. Both probes add the same
+native text preview and reset/focus on Start at corpus offset 180. The preview
+adds browser work to both modes: compare the paired probes rather than claim
+an identical replay of 4030. Each page retains its own result until Start or
+reload, with probe metadata.
+
+Typecheck, separate build and whitespace checks PASS. Paired browser smoke:
+corpus length 3848, focused offset 180, three correct inserted characters,
+three Core edits per mode, zero dropped rows. Off retains scene preparation
+with zero canvas-paint marks; On retains canvas drawing. Evidence:
+`profiling/paint-isolation-smoke-20261005.json`. This verifies wiring only;
+physical held-input results remain pending, no fix claimed. Build directory
+`profiling/paint-isolation-browser`, preview session 75630 on port 4032.
+Off: http://127.0.0.1:4032/text-block-shape.local.html?probe=paint-off&detail=frames
+On: http://127.0.0.1:4032/text-block-shape.local.html?probe=paint-on&detail=frames
+Proof budget: typecheck/build and paired browser smoke, then owner physical
+comparison. Await results before adding further diagnostics.
