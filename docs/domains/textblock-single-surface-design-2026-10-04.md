@@ -2909,3 +2909,30 @@ TextBlock readiness, or a main-branch product change. Residual delay is an
 owner-accepted limitation here. No further performance tuning in this baseline
 recording task; any next candidate must retain this reference and be compared
 before replacing it. No product files or maps changed by this decision.
+
+Owner authorized returning the accepted drawing approach to the real document
+surface (2026-10-05). Bounded inline Editor implementation, routine risk;
+execution IDs not applicable. Commit `7a6e219` replaces DocumentTextSurface's
+rebuilt SVG glyph paths with the shared cached glyph scene and readback Canvas.
+Core geometry, SVG selection/caret, input, draft publication and persistence
+paths are unchanged. The original hidden caret-following input is used here,
+so the visible-input baseline does not establish physical acceptance of this
+integration. No further tuning or main-branch product integration performed.
+
+Verification: typecheck, separate production build, whitespace, 8 affected
+Editor suites / 32 tests PASS (glyph scene/painter, paper admission, document
+source, surface session, pointer selection, commit runner and draft rebase).
+Browser checks on the existing isolated Backend document: both canvases report
+willReadFrequently=true; zero SVG glyph paths. Three characters inserted at
+the start and two at the tail matched expected text; cancel restored the
+original 3848-character draft. Pointer insertion at offset 2148 of Thai
+combining text matched expected text and was cancelled. No alerts. Canvas/SVG
+bounds agree at 100% zoom for both long and short blocks. No saved text was
+overwritten in these checks. Save lifecycle relies on the affected passing
+tests and unchanged prior integration evidence; no fresh save durability claim.
+
+Separate build `profiling/document-readback-browser`, preview session 29362:
+http://127.0.0.1:4035/documents/blank-authoring-trial/design
+Backend 4038 reused without restart. Original 4028 document build and 4034
+baseline preserved. Owner should check held typing at the tail and insertion
+near the first three lines; document responsiveness remains pending that check.
