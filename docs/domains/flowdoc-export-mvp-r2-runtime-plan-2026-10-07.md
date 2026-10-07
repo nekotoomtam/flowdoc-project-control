@@ -8,7 +8,8 @@
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 Authority: owner's request to continue toward starting the MVP, 2026-10-07.
-Status: proposed plan for review; no tasks executed under this plan.
+Status: owner authorized inline execution on 2026-10-07. Task 1 started;
+blocked on host Virtual Machine Platform prerequisite. Tasks 2–4 not run.
 Registered execution IDs: not applicable. Work Size: small; Risk Tier: routine.
 Work authority for this first slice: discovery. The old Core is read-only input.
 No product-repo scaffolding, migration or map/Evidence promotion is authorized
@@ -59,9 +60,9 @@ and [locked MVP](flowdoc-export-mvp-v1-2026-10-07.md).
 **Outputs:** actual source commit/hashes, Linux engine readiness, pinned candidate
 runtime versions and image digests used by Task 2.
 
-- [ ] Read owner Core AGENTS.md and confirm current commit/status before copying.
+- [x] Read owner Core AGENTS.md and confirm current commit/status before copying.
       Preserve existing changes; record them rather than assuming old HEAD is current.
-- [ ] Inspect Docker context and engine with `docker version` / `docker info`.
+- [x] Inspect Docker context and engine with `docker version` / `docker info`.
       If Docker Desktop is stopped, start the existing application without installing
       a replacement. If a Windows prompt, WSL setup or restart is required, report
       the exact prerequisite and ask the owner for that action; do not reset Docker.
@@ -162,3 +163,23 @@ duplicating tasks. Proof records are scratch JSON/output, not new Work registrie
 The runtime/PDF success from Windows is reusable background only. Database
 readiness remains unresolved until R3. A one-day MVP is the owner's planning
 target, not an acceptance waiver or a completion estimate established by this plan.
+
+## Execution checkpoint — 2026-10-07
+
+- Core input: `fa76c74356e5cfc9296f6a86c0bfac690e8416f6`, clean working tree;
+  source inspected only, no copy or modification made. About 195 GB free on C:.
+- Docker client 28.1.1, Windows/amd64, context `desktop-linux`. Initial engine
+  connection failed because the named pipe was unavailable. Started the existing
+  Docker Desktop application; no installer, reset or feature change was run.
+- BLOCKER: Docker Desktop backend reported `Virtual Machine Platform not enabled`
+  at 2026-10-07T12:51:49Z in
+  `C:/Users/nekot/AppData/Local/Docker/log/host/com.docker.backend.exe.log`.
+  Its error dialog requires enabling the Windows optional feature with administrator
+  rights and restarting the computer before Docker Desktop can start.
+- Interrupted the pending read-only engine status command after identifying the
+  blocker. No image build, container, volume, PostgreSQL or Linux PDF was created.
+- Resume: owner enables VirtualMachinePlatform and restarts at a suitable time;
+  reopen Docker Desktop, verify engine and Linux/amd64, then continue Task 1.
+  Do not treat startup of the desktop UI as proof the Linux engine is healthy.
+  [Microsoft prerequisite instructions](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature)
+  describe the feature enablement and restart. No Windows restart is initiated by this task.
