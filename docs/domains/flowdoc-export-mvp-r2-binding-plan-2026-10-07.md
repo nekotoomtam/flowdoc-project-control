@@ -245,6 +245,10 @@ not applicable. No separate WORK dispatch, shared map promotion or full MVP clai
   Commits: `1f702a6` schema/data checks, `5ff0dec` composition,
   `3a99ec4` installed dev.3 integration and review repairs.
   Retained on that branch; no merge or push in this request.
+  Automatic approval policy rejected cleanup of the untracked
+  `.superpowers/sdd/binding/` scratch directory (reported only as blocked by
+  policy). Scratch logs remain; no alternative deletion was attempted. Product
+  changes are committed and the packed artifact excludes this directory.
 - Public operations: `validateTemplate`, `prepareGeneration`, `composeDocument`.
   Template registration checks raw decoded duplicate keys, supported schemas,
   defaults, graph references/scopes/styles and examples; validated definitions
