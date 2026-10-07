@@ -572,5 +572,7 @@ their original form. This is not table, binding, Service or full MVP acceptance.
   implementation using R1 global/local/item policies, then table flow. Preserve
   this engine's public resolved-graph boundary; no new editor/import scope or
   shared map/MVP readiness promotion from this result.
-  The reviewable next slice is the
-  [binding and composition plan](flowdoc-export-mvp-r2-binding-plan-2026-10-07.md).
+  That subsequent slice is now implemented and verified in the
+  [binding and composition result](flowdoc-export-mvp-r2-binding-plan-2026-10-07.md#b1b4-execution-and-result--2026-10-07).
+  This does not alter the historical P4 boundary above; simple table PDF layout
+  remains the next unimplemented Core slice.

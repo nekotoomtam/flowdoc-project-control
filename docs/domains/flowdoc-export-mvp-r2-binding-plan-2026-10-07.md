@@ -1,7 +1,8 @@
 # FlowDoc Export MVP R2 — Binding and composition implementation plan
 
 > For agentic workers: use `superpowers:executing-plans` for inline execution
-> after owner review. This is a proposed implementation plan, not a result.
+> after owner review. Owner authorized continuous inline execution; the bounded
+> B1–B4 result and evidence are recorded below. Original task lists retain the plan.
 
 ## Authority Boundary
 
@@ -231,3 +232,94 @@ modify consumer Dockerfile/script, package exports/tests, README/AGENTS and vers
 - [ ] Commit passing code, update this plan and the R2 next-step link, and stop.
   No merge/push or MVP completion claim is implied. Next work is simple table
   layout and row continuation using the now-bound graph, before Service/DB work.
+
+## B1–B4 execution and result — 2026-10-07
+
+**PASS for this bounded binding/composition slice.** Owner authorized continuous
+inline implementation in this conversation. Product Implementation Agent worked
+in Core, then Documentation Synthesizer recorded this result. Execution IDs remain
+not applicable. No separate WORK dispatch, shared map promotion or full MVP claim.
+
+- Core branch: `codex/template-binding`, base
+  `04d7a1e7ec985f0b0e8a87d038f95f80a35eb623`.
+  Commits: `1f702a6` schema/data checks, `5ff0dec` composition,
+  `3a99ec4` installed dev.3 integration and review repairs.
+  Retained on that branch; no merge or push in this request.
+- Public operations: `validateTemplate`, `prepareGeneration`, `composeDocument`.
+  Template registration checks raw decoded duplicate keys, supported schemas,
+  defaults, graph references/scopes/styles and examples; validated definitions
+  are detached/frozen with deterministic fingerprints. Preparation applies the
+  agreed missing/type/unknown policies. Composition accepts a validated persisted
+  snapshot, expands independent fragments/rows and records complete source maps.
+- Existing native/font/PDF algorithms unchanged. Shared book/style validation
+  was extracted; textFlow explicitly narrows supported node types. Simple tables
+  are composable but still return LAYOUT_FAILED at the PDF capability boundary.
+
+### Acceptance coverage
+
+| Criteria | Durable proof |
+| --- | --- |
+| Raw JSON, graph, schemas/defaults/examples, prototype keys | Core `tests/template/` and `tests/data/prepareGeneration.test.ts` |
+| Presence/type/unknown policy, independent defaults, diagnostics | Core `tests/data/prepareGeneration.test.ts` |
+| A/B/A order, zero/one/many rows, scopes, newlines, source maps | Core `tests/composition/composeDocument.test.ts`, `tests/binding/bindInlines.test.ts` |
+| Persisted snapshot pin, completeness and index integrity | Core `tests/composition/composeDocument.test.ts` |
+| Non-JSON arrays, deep JSON and no getter execution | Core `tests/data/jsonBoundary.test.ts` |
+| Installed public APIs, actual binding to PDF, table rejection | Core `tests/consumer/checkBinding.mjs`, `scripts/checkPackedConsumer.mjs` |
+
+Observed RED before implementation, then focused GREEN for B1/B2 and B3.
+Final `npm run build` passed and `npm test` passed **111 tests in 13 files**.
+`npm run check:package` passed on the repaired final candidate. Checks cover the
+shared validation and existing layout/PDF consumers as well as the new binding.
+No load/throughput benchmark or Service test was run or claimed.
+
+One fresh-context read-only review found two P2 issues: sparse arrays with named
+properties could produce an uncomposable prepared result, and deep ordinary JSON
+could exhaust the recursive guard's stack. Three failing reproductions were
+observed, then fixed with exact array-index validation and an iterative JSON
+walk. Both public data boundaries now pass those tests; the complete suite and
+installed consumer were rerun after the repair. No minor findings were reported.
+
+### Installed artifact and PDF evidence
+
+Final artifact directory in Core: `artifacts/1791387642523/`.
+
+- Package: `@flowdoc/core@0.1.0-dev.3`, `flowdoc-core-0.1.0-dev.3.tgz`.
+  SHA-256 `9b6fe96d205c3b51f1e9ad6940887e606836f95bd6a9f3c3676b3d4eadfd2e38`.
+- Consumer image:
+  `sha256:3ac74973855ca57ede4d1fe200f1a46f8f128377379f6f3e1a188edc90249bf0`.
+  Linux/amd64, Node v24.21.0, pinned Python/fontTools; non-root execution with
+  network disabled and no host source mounts. Final tar inventory: 68 entries,
+  no source, tests, fixtures or scratch workspace shipped.
+- `result.json`, `binding-result.json`, `host-checks.json`, `inventory.txt`,
+  `consumer-package-lock.json`, `binding.prepared.json`, `srs.composed.json` retain
+  package/runtime/graph evidence and inspectable output.
+- `bound-text.pdf`: one page, 27575 bytes, SHA-256
+  `70cc16b281c72a67196727a70b7439c60af4182cdc6500eefc2e8fb30f9878ec`.
+  Generated from raw template + request through installed root APIs, not a
+  pre-bound fixture. Contains global/local values, default and explicit newline
+  in A/B/A order; unknown-variable warning remains outside document text.
+- Host pdftotext matched the independent expected text exactly ignoring only
+  whitespace; pdffonts showed the embedded subset font and Unicode mapping.
+  Inspected the rendered page: expected Thai/English lines, no overlap or clipping.
+  Final bytes exactly match the visually checked candidate in
+  `artifacts/1791387452622/`, so those checks were reused after the guard repair.
+  Rendered PNG, text and font reports are copied into the final artifact directory.
+- P4 `four-styles.pdf` and `overflow.pdf` remain byte-identical to the previous
+  dev.2 acceptance hashes. Existing font/render evidence remains applicable.
+  Completed consumer containers were removed after output retrieval; dev.2
+  artifacts and unrelated Docker state were preserved.
+
+### Rulings and remaining scope
+
+- Reviewer deferred independent Docker/PDF execution to the implementing room;
+  this room performed installed, extracted-text, font and visual checks. No
+  unverified substitution was accepted. Reuse is limited to identical PDF bytes.
+- Table rendering, Service persistence and broad resource/load limits remain
+  outside this slice as originally agreed. Cost of that boundary: a composed
+  table is not yet an exportable table PDF, and this is not API/MVP readiness.
+- Parsed-object registration cannot recover duplicate keys discarded upstream;
+  future Service registration must call the raw-text boundary. Fingerprints and
+  prepared validation detect structural mismatch, not malicious authenticated edits.
+- **Next bounded work:** simple table layout/row continuation using the composed
+  graph. Then Service/DB integration within the locked MVP. No frontend, DOCX,
+  image processing or queue-capacity expansion was added here.
