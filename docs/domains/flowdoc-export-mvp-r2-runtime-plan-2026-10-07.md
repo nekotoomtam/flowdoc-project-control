@@ -298,12 +298,12 @@ Files to create: `tests/consumer/package.json`, `tests/consumer/package-lock.jso
 - [ ] Stop this slice when package/resource criteria pass; record it as foundation
   only. This slice deliberately does not satisfy the R1 public PDF engine gate.
 
-Next slice after P3: implement validate/prepare/compose and the generic measured
-layout/PdfEngine contract from R1, including TextBlock/table fixtures. Its consumer
-must produce PDF through the installed public package; the discovery loader must
-not become the consumer test. Scope that implementation separately using the actual
-new module boundaries. No fake generatePdf stub or extra public low-level renderer
-API is introduced merely to claim the package gate passed.
+Next slice after P3: first close R1 section 8.4's public PDF engine prerequisite
+using resolved TextBlocks as specified in P4 below, then implement
+validate/prepare/compose and table fixtures. The earlier summary grouped those
+steps too broadly; it did not waive the PDF package prerequisite. No fake
+generatePdf stub or extra public low-level renderer API is introduced merely to
+claim the package gate passed.
 
 ### P1–P3 result — 2026-10-07
 
@@ -349,3 +349,139 @@ above, not the public PDF engine, R2 as a whole, or the MVP.
 - No shared map or MVP checkbox promoted. HTTP/DB, binding/layout/table behavior,
   public PdfEngine export, complete document generation and full Service Docker
   acceptance remain future slices. Stop this foundation at its passing boundary.
+
+## P4 — Public PDF engine implementation plan
+
+> For agentic workers: use `superpowers:executing-plans` for inline execution
+> after written-plan review. This section is proposed, not implemented.
+
+**Goal:** An installed Core tarball generates a PDF from resolved TextBlocks
+through `createPdfEngine(...).generatePdf(...)`, without source-repo access.
+
+**Architecture:** Preserve the graph-based R1 boundary. Build a small text-only
+resolved document fixture directly for this prerequisite; later composeDocument
+will produce that same graph. Native adapters measure and break text, a private
+layout produces draw commands, and extracted PDF primitives emit bytes. Do not
+make callers construct glyph runs or reuse the old probe's fixed draw commands.
+
+**Spec:** R1 sections 3, 6, 7 and 8.1–8.4; the locked MVP remains unchanged.
+**Stack:** Existing pinned Node/TypeScript, Rustybuzz/ICU, Python/fontTools and
+Sarabun resources. Reuse the existing PDF writer, not jsPDF or a new PDF library.
+
+### Scope, authority and acceptance
+
+- Owner: flowdoc-core. Planning Partner prepares this plan; Product Implementation
+  Agent implements only after review. Medium work size, routine risk. Work/Phase/
+  Checklist/registered execution IDs are not applicable to this inline slice.
+- Base: Core `9256ab695ec067ee070cb7898d6ffa2de3b1ae14`. Inspect current status before
+  execution and isolate if concurrent work appears. Old Core stays read-only.
+- Allowed: Core composition types, runtime adapters, text layout, PDF writer,
+  tests/fixtures, package metadata and consumer scripts; this PC plan for status.
+- Forbidden: Service/DB/API/frontend, actual template/data binding, table layout,
+  DOCX/images, queue/load work, public publishing or copying the old app wholesale.
+- P4 accepts real PDF bytes from the public package, four embedded Sarabun styles,
+  correct Thai text extraction and visual appearance, generic text flow over a
+  page boundary, structured failure and cleanup. Table support remains mandatory
+  for the eventual MVP, but unsupported table input must fail explicitly in P4.
+- Reuse P1–P3 resources/native proof. Proof budget: focused adapter/layout/engine
+  tests, one final tarball consumer run with bounded failure repairs, one four-style
+  PDF and one overflow PDF inspected for text/fonts/visuals. No full old-repo suite.
+- Document budget: this existing plan plus Core code-adjacent README/API notes.
+  Return in this chat; no dispatch/registry or additional report artifacts.
+- Blocking unknown: extracting the generic writer may reveal hidden dependencies
+  on old proof profiles. Read its bounded dependency closure first; stop and report
+  if preserving rendering requires a contract or algorithm redesign. Performance
+  claims, other platforms and table seams are deferred, not prerequisites here.
+
+### P4.1 — Resolve the public input and private writer boundary
+
+Files: create `src/composition/resolvedDocument.ts`, `src/pdf/drawContract.ts`,
+`src/pdf/writePdf.ts`, `tests/pdf/writePdf.test.ts`,
+`fixtures/pdf/four-styles.resolved.json`; modify `src/index.ts` only as needed.
+
+- [ ] Define the text slice of ResolvedDocument: `schemaVersion:1`,
+  `nodeModelVersion:4`, template identity `{templateId,docKey,version}`, R1 `book`,
+  `styles`, ordered `rootIds`, `nodes` map and `sourceMap`. Retain R1 text-block
+  shape (`id`, `type`, `role`, `props.textStyleId`, optional content sizing,
+  inline text/line-break children). No tags, repeats or format invocation remain.
+  Source entries contain contentIndex/format/sourceId and optional itemIndex.
+  No coordinates or glyph arrays appear in this public document.
+- [ ] Validate this supported resolved shape at the engine boundary: finite
+  positive page/font/line metrics, usable margins, unique IDs, complete references,
+  known styles and no unsupported node. Return LAYOUT_FAILED with nodeId when
+  available; never silently omit a node. Runtime inputs can arrive from JSON.
+- [ ] Inspect the private dependency closure of old
+  `packages/pdf-renderer-pilot/src/index.ts` at input commit fa76c74, especially
+  font validation, glyph cluster mapping, ToUnicode/ActualText, PDF objects/xref
+  and page drawing used by renderFlowDocLocalMeasuredDocumentPdf. Extract only
+  text/font/multipage logic behind `writePdf(draw, fontResources): Uint8Array`.
+  Keep glyph positions and Unicode semantics unchanged. Do not copy report
+  markers, image modes, proof IDs, fixed fingerprints or old public imports.
+- [ ] Write failing tests for generated PDF structure, mixed font resources,
+  missing font mapping and glyph offsets before implementation. Run
+  `npx vitest run tests/pdf/writePdf.test.ts`, implement and require PASS.
+  The fixture is resolved content, not the old measured request.
+
+### P4.2 — Measure, flow and manage one generation
+
+Files: create `src/runtime/textRuntime.ts`, `src/runtime/subsetFonts.ts`,
+`src/layout/textFlow.ts`, `src/pdf/createPdfEngine.ts`,
+`tests/layout/textFlow.test.ts`, `tests/pdf/createPdfEngine.test.ts`.
+
+- [ ] Define public `PdfArtifact = {bytes:Uint8Array; mediaType:'application/pdf';
+  pageCount:number}`, `PdfEngine.generatePdf(document:ResolvedDocument):
+  Promise<Result<PdfArtifact>>` and `createPdfEngine(resources:ExportResources):
+  Promise<Result<PdfEngine>>`. Export these types and factory at the package root.
+  Extend Issue with optional nodeId/contentIndex/format without breaking P1.
+- [ ] Write failing layout tests: explicit newline and empty block, several
+  inline leaves forming one paragraph, Thai marks, non-BMP characters, exact-fit
+  line, narrow line/long word and a page overflow. Require all text retained in
+  order and glyph bounds within printable area. Never wrap by character count.
+- [ ] Implement native shaping and ICU break adapters using async execFile,
+  argument arrays, 30-second timeout and 16-MiB output cap per child. Verify byte
+  offsets are UTF-8 scalar boundaries, convert clusters to UTF-16 safely and
+  reject glyph zero. Select fonts from explicit weight/style, never fallback.
+- [ ] Implement text flow: convert mm to pt with 72/25.4; traverse root order,
+  resolve styles and measure candidate lines at ICU boundaries. Re-shape each
+  final line rather than slicing paragraph glyphs. If no break fits, try complete
+  grapheme boundaries and measure; if no whole grapheme fits, return LAYOUT_FAILED.
+  Explicit line-break creates a line, including blank lines. Empty TextBlock
+  consumes one line height. Page transition retains the entire overflowing line.
+  Unsupported styling/node geometry fails instead of being ignored.
+- [ ] Engine allocates mkdtemp under resources.tempRoot per generation, subsets
+  only used fonts with retained glyph IDs and distinct derivative names, then
+  invokes the private writer. Cleanup belongs in finally for success/failure;
+  concurrent calls use separate directories. No package/font file is modified.
+- [ ] Test two overlapping generations and inject native/subset/writer failure:
+  no shared temp state, no false success, no leaked outputs. Map resource failures
+  to RESOURCE_UNAVAILABLE, layout failures to LAYOUT_FAILED and writer failures
+  to PDF_RENDER_FAILED without stack traces/internal paths in public messages.
+- [ ] Run `npm run build` and focused/full Core tests (small current suite),
+  review the diff and retain passing results. Do not optimize without a failure.
+
+### P4.3 — Prove the installed public API
+
+Files: create `tests/consumer/checkPdf.mjs`,
+`fixtures/pdf/overflow.resolved.json`; modify `Dockerfile.consumer`,
+`scripts/checkPackedConsumer.mjs`, `tests/packageContract.test.ts`,
+`package.json`, `package-lock.json` and `README.md`.
+
+- [ ] Bump delivered prerelease to `0.1.0-dev.2`; remove hardcoded dev.1 values
+  in packaging/consumer scripts by reading the package metadata. Keep the dev.1
+  artifact/checksum unchanged. Verify only intended root exports and packed files.
+- [ ] Consumer installs the new exact tarball and calls loadBundledResources,
+  createPdfEngine and generatePdf on the two JSON fixtures. It receives fixtures
+  as test inputs, never source modules or precomputed glyph/draw commands.
+- [ ] Run as non-root with network none and no host mounts. Retrieve generated
+  PDFs, expected text and result JSON from the completed consumer for inspection;
+  do not delete the container until evidence retrieval succeeds.
+- [ ] Verify four embedded subset fonts/Unicode mappings with pdffonts and exact
+  extracted text with pdftotext (ignore layout whitespace only). Render and inspect
+  all pages of the bounded fixtures with pdftoppm. Require no clipped glyphs,
+  misplaced marks, overlap or missing/duplicated text at the page seam.
+- [ ] Verify missing resource and failed generation do not report an artifact;
+  temp root is empty afterwards. Record tarball SHA-256, image identity, versions,
+  page counts, PDF hashes and check results beside the artifact.
+- [ ] Review coverage and commit passing Core changes; update this plan with
+  exact evidence. Stop at P4 acceptance. Next plan is schema/prepare/compose and
+  simple table flow, preserving this public API rather than adding a second path.
