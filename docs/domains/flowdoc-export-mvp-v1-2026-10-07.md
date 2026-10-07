@@ -12,9 +12,15 @@ API, relational DB relationships, one SRS template, PDF output and serial job
 processing. Implementation has not started under this document. The owner's
 instruction is: "งันร่างแล้วล็อกเอกสารกัน".
 
+Owner-authorized clarification, 2026-10-07: template means a book structure
+with creator-defined one-level subtemplates, inline variables and ordered
+invocations. Includes versioned caller examples/contract access and warnings
+for unknown format names. This replaces the fixed-body interpretation in the
+initial draft; all unrelated exclusions remain. R1 records unresolved type details.
+
 Active role: Planning Partner / Documentation Synthesizer. Authority: the
 current conversation. Registered Work/Phase/Checklist/Evidence IDs: not
-applicable. Document budget: this one scope document. Verification budget:
+applicable. Document budget: this scope document and its linked R1 design. Verification budget:
 scope/consistency review and Markdown diff checks; no product tests for prose.
 
 The generated snapshot inspected on 2026-10-07 still describes the older
@@ -23,14 +29,15 @@ Existing product history and evidence remain unchanged.
 
 ## เป้าหมายและจุดจบ
 
-ผู้พัฒนาสร้างโครงเอกสารหนึ่งแบบ แล้วส่งข้อมูล JSON แยกจากโครงนั้น
-ระบบตรวจข้อมูล ผูกข้อมูลลง node และสร้าง PDF ที่อ่านใช้งานได้
+ผู้พัฒนาสร้างหนึ่ง template ที่มีโครงเล่มและโครงย่อยที่นิยามเอง
+ผู้เรียกส่งข้อมูลส่วนกลางและลำดับการใช้โครงย่อยพร้อมข้อมูลของแต่ละรายการ
+ระบบตรวจข้อมูล ประกอบ node แทน inline tags และสร้าง PDF ที่อ่านใช้งานได้
 เปลี่ยนข้อมูลแล้วใช้โครงเดิมสร้างไฟล์ใหม่ได้โดยไม่แก้โค้ดจัดหน้าเฉพาะชุดข้อมูล
 
 MVP รอบนี้จบที่ API และ DB จริงที่รันและทดสอบในเครื่อง:
 
 เตรียมไฟล์โครง → ลงทะเบียนโครงใน DB → เรียก API ด้วย `docKey` และ JSON
-→ ตรวจข้อมูล → บันทึกงานพร้อมเวอร์ชัน → ผูกข้อมูล → จัดหน้า → สร้าง PDF
+→ ตรวจข้อมูล → บันทึกงานพร้อมเวอร์ชัน/คำเตือน → ประกอบโครงย่อยและผูกข้อมูล → จัดหน้า → สร้าง PDF
 → เช็กสถานะและดาวน์โหลดผ่าน API
 
 ไม่มีหน้าบ้าน การเตรียมโครงทำผ่านไฟล์และคำสั่งสำหรับผู้พัฒนา
@@ -38,13 +45,17 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
 
 ## ขอบเขตที่ทำ
 
-1. โครงเอกสารตัวอย่างหนึ่งแบบ อิงส่วนเนื้อหา SRS: ชื่อเอกสาร ข้อมูลโครงการ
-   ข้อความอธิบาย และตารางรายการ requirements ไม่จำเป็นต้องทำ SRS ทั้งเล่ม
+1. template ตัวอย่างหนึ่งชุดอิง SRS: โครงเล่มและ custom subtemplates อย่างน้อย
+   สองแบบที่ประกอบจากข้อความ/ตาราง ผู้เรียกใช้ซ้ำและสลับลำดับได้
+   ชื่อรูปแบบกำหนดโดยผู้สร้าง template ไม่ hardcode เป็นชนิด node ของระบบ
+   โครงย่อยเรียกโครงย่อยอื่นไม่ได้ใน MVP; ไม่จำเป็นต้องทำ SRS ทั้งเล่ม
 2. โครงมี `templateId`, `version` และ `nodeId` ที่คงที่สำหรับอ้างอิง
-3. นิยามตัวแปรแยกจากข้อมูลจริง: ชื่อ ชนิด และการบังคับกรอก
-   รองรับข้อความกับรายการ object ซ้ำเท่าที่ตัวอย่างต้องใช้
-4. Binding ระบุว่าค่าลง node/ช่องใด และรายการซ้ำสร้างแถวตารางอย่างไร
-   ไม่อ้างตำแหน่งด้วยชื่อที่แสดง และไม่รันโค้ดที่มากับข้อมูล
+3. นิยามตัวแปรแยกจากข้อมูลจริง: key, label/description, ชนิด, required,
+   default ถ้ามี; รองรับ string, data object และรายการ object ซ้ำ
+   แยกข้อมูลส่วนกลาง/แต่ละ invocation/item; ยังไม่มี form runtime
+4. Binding ใช้ tag ภายใน TextBlock ร่วมกับข้อความปกติและกำหนดแถวทำซ้ำในตาราง
+   ประกอบสำเนาโครงย่อยตามลำดับ content ที่ส่งมาโดย ID/ค่าของแต่ละครั้งไม่ปนกัน
+   ไม่อ้างตำแหน่งด้วย label และไม่รันโค้ดที่มากับข้อมูล
 5. รองรับ TextBlock และตารางธรรมดาหัวหนึ่งชั้น ไม่มีตารางซ้อนหรือช่องรวม
    ใน fixture แรก คอลัมน์ตัวอย่างคือรหัส รายละเอียด และหมายเหตุ
 6. ใช้การจัดข้อความภาษาไทยและการสร้าง PDF ที่นำกลับมาใช้ได้จากระบบเดิม
@@ -52,12 +63,20 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
 7. รองรับเนื้อหาหลายหน้าในขอบเขต fixture: ข้อความต้องไม่หายหรือทับกัน
    แถวที่ยาวข้ามหน้าให้ส่วนที่เกินต่อหน้าถัดไป ยังคงเป็นรายการเดิม
    และแสดงหัวตารางซ้ำ การทำส่วนนี้เป็นงาน export ไม่รวม editor ข้ามหน้า
-8. ข้อมูลผิดชนิด ขาดค่าบังคับ binding หา node ไม่พบ หรือใช้ node ที่ไม่รองรับ
-   ต้องแจ้งข้อผิดพลาดระบุตำแหน่ง ห้ามละทิ้งข้อมูลเงียบ ๆ
+8. ขาด required ให้คืน key/path ที่ขาดทั้งหมดและไม่สร้างงาน แม้มี default;
+   optional ที่หายใช้ default ก่อน แล้ว string="" หรือ array=[]
+   null เป็นค่าผิดชนิด; tag/default/graph ที่ผิดต้องปฏิเสธตอนลงทะเบียน template
+   variable key ที่ไม่รู้จักและค่าผิดชนิดอื่นยังต้องปิดนโยบายใน R1 ก่อนลงมือ
+   ห้ามถือว่านโยบายข้าม unknown format อนุญาตให้ข้ามค่าบังคับหรือแปลงชนิดเงียบ ๆ
 9. มี API สร้างงาน อ่านสถานะ และดาวน์โหลดผลลัพธ์ โดยใช้ DB จริงเก็บ
    template, version, job และ output metadata; ไฟล์ PDF เก็บในเครื่อง
 10. ประมวลผลเอกสารทีละงานใน service process เดียว งานที่รออยู่มีสถานะ
     ชัดเจน ไม่เพิ่ม distributed queue หรือ worker service แยกในรอบนี้
+11. ชื่อโครงย่อยที่ไม่พบให้ข้าม invocation นั้นพร้อม warning ที่ระบุ original
+    content index/name; ถ้าไม่มี invocation ที่ยอมรับเหลือให้ไม่สร้างงาน
+    คำเตือนเก็บกับ job และคืนทาง API ไม่พิมพ์ placeholder ลง PDF
+12. มี API อ่าน contract และ normal request examples ตาม template version
+    ที่ใช้จริง ตัวอย่างต้องตรวจด้วย validator เดียวกับ generation ตอนลงทะเบียน
 
 ชื่อ field ข้างต้นใช้กำหนดความหมายในขอบเขตนี้ รูปแบบสัญญา JSON ที่แน่นอน
 ต้องกำหนดในแผนลงมือ โดยต้องไม่เพิ่มความสามารถเกินรายการนี้
@@ -82,13 +101,15 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
 | ส่วน | ข้อมูลหลักและข้อกำหนด |
 | --- | --- |
 | `templates` | `id`, `docKey` ที่ไม่ซ้ำ และชื่อที่แสดง |
-| `template_versions` | `id`, `template_id` เป็น FK, `version`, โครง node, นิยามตัวแปร และ binding เป็น JSON; คู่ template/version ต้องไม่ซ้ำ |
-| `generation_jobs` | `id`, `template_version_id` เป็น FK, ข้อมูล JSON ที่รับ, สถานะ, ข้อผิดพลาด และเวลาเริ่ม/จบ |
+| `template_versions` | `id`, `template_id` เป็น FK, `version`, JSON รวมโครงเล่ม/โครงย่อย, scopes/types/tags/repeats, styles และ normal examples; คู่ template/version ต้องไม่ซ้ำ |
+| `generation_jobs` | `id`, `template_version_id` เป็น FK, original/prepared input, สถานะ, คำเตือน/รายการที่ข้าม, ข้อผิดพลาด และเวลาเริ่ม/จบ |
 | `document_outputs` | `id`, `job_id` เป็น FK แบบ unique, ตำแหน่งไฟล์, ชนิดไฟล์และขนาด; MVP มี PDF สำเร็จได้หนึ่งไฟล์ต่อ job |
 
 ความสัมพันธ์: Template 1:N Version; Version 1:N Job; Job 1:0..1 Output
 
 - node และ binding อยู่ใน JSON ของเวอร์ชัน ไม่แตกทุก node เป็นตาราง DB
+- โครงย่อย ตัวแปร และ examples เปลี่ยนพร้อม template version ไม่แยก version
+  หรือเพิ่มตารางของตนใน MVP; เปลี่ยนสิ่งเหล่านี้ต้องลง version ใหม่
 - เวอร์ชันที่ลงทะเบียนแล้วห้ามเขียนทับ การแก้โครงสร้างเป็นเวอร์ชันใหม่
 - งานเลือกเวอร์ชันครั้งเดียวตอนรับงานและบันทึก FK นั้นไว้ตลอด
   ห้ามโหลดเวอร์ชันล่าสุดใหม่ระหว่างประมวลผล
@@ -105,15 +126,21 @@ DB ต้องมี migration และวิธีเริ่มฐานข
 
 สัญญาความสามารถที่ต้องมี โดยชื่อ route ที่แน่นอนกำหนดในแผนลงมือ:
 
-1. สร้างงาน: รับ `docKey`, version ถ้าระบุ และ `data`; ตรวจโครง/ข้อมูลก่อน
-   รับเข้าคิว ตอบ `jobId`, version ที่ใช้ และสถานะเริ่มต้น
-2. อ่านงาน: รับ `jobId`; ตอบสถานะ เวอร์ชัน ข้อผิดพลาดถ้ามี
+1. สร้างงาน: รับ `docKey`, version ถ้าระบุ, `data` ส่วนกลาง และ `content[]`
+   ที่มี format/data; ตรวจโครง/ข้อมูลก่อนรับเข้าคิว ตอบ `jobId`, version,
+   สถานะเริ่มต้น, hasWarnings, warnings และ skipped content indices
+2. อ่านงาน: รับ `jobId`; ตอบสถานะ เวอร์ชัน คำเตือนที่เก็บไว้ ข้อผิดพลาดถ้ามี
    และช่องทางดาวน์โหลดเมื่อสำเร็จ
 3. ดาวน์โหลด: รับ `jobId`; ส่ง PDF ของงานสำเร็จเท่านั้น
    งานไม่พบ งานยังไม่เสร็จ หรือไฟล์ไม่พบต้องตอบข้อผิดพลาดชัดเจน
+4. อ่านสัญญา template: รับ docKey/version คืน version ที่เลือก, global schema,
+   รายชื่อ/label/input schema ของโครงย่อย และ normal examples ของ version นั้น
+   ไม่คืนรายละเอียด graph node และไม่เพิ่มหน้าบ้านสำหรับอ่านสัญญา
 
 สถานะพื้นฐาน: `queued` → `running` → `succeeded` หรือ `failed`
-การตรวจข้อมูลไม่ผ่านให้ตอบข้อผิดพลาดโดยไม่สร้างงาน render
+การตรวจข้อมูลมี error ให้ตอบข้อผิดพลาดโดยไม่สร้างงาน render
+warning-only รับงานได้เมื่อมี known invocation; succeeded พร้อม warnings
+หมายถึงสร้างส่วนที่ยอมรับแล้ว ไม่ได้หมายความว่าทุก content item ถูกนำไปใช้
 ไม่มีเปอร์เซ็นต์ความคืบหน้า เวลาเสร็จประมาณการ หรือ retry อัตโนมัติ
 
 service ประมวลผลได้ครั้งละหนึ่ง job และดึงงานที่รอจาก DB ตามลำดับรับ
@@ -131,6 +158,10 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
       และการลงทะเบียนโครงตัวอย่าง โดยไม่มีหน้าบ้าน
 - [ ] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน เรียก API ด้วย docKey/JSON
       แล้วได้ jobId ตรวจสถานะ และดาวน์โหลด PDF ได้ครบ flow
+- [ ] ผู้สร้างนิยามโครงย่อยอย่างน้อยสองแบบ; เรียก A/B/A และสลับลำดับได้
+      ข้อมูลและ ID แต่ละครั้งไม่ปน; ปฏิเสธโครงย่อยเรียกซ้อนโครงย่อย
+- [ ] tag อยู่กลางข้อความปกติได้; global/local/item อ้างถูก scope
+      แทนค่าก่อนวัดและแบ่งหน้า ไม่มี placeholder ที่ผิดหลุดลง PDF
 - [ ] DB บังคับ docKey ไม่ซ้ำ, template/version ไม่ซ้ำ และ FK ถูกต้อง
       งานเดิมยังอ้างเวอร์ชันเดิมเมื่อลงทะเบียนเวอร์ชันใหม่
 - [ ] ข้อความเดี่ยวและทุกรายการในตารางลงถูก node ถูกลำดับ ครบ ไม่ซ้ำ
@@ -140,6 +171,12 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 - [ ] ตรวจ PDF จริงทั้งเนื้อหาและภาพ: ภาษาไทยอ่านได้ ข้อความไม่ล้นคอลัมน์
       ไม่ทับกัน ไม่หายที่รอยต่อหน้า และหัวตารางต่อหน้าถัดไปได้
 - [ ] ตัวอย่างข้อมูลผิดและ binding ผิดให้ข้อผิดพลาดที่ระบุ field/node ได้
+- [ ] required ที่หายหลายจุดคืนครบและไม่ใช้ default ข้าม required;
+      optional ที่หายใช้ default/ค่าว่างตรง type; template/default/tag ผิดถูกจับตอนลงทะเบียน
+- [ ] unknown format ปน known สร้างเฉพาะ known พร้อม warning/index ที่คงอยู่
+      ตอนอ่าน status/restart; unknown ทั้งหมดหรือ content ว่างไม่สร้าง job
+- [ ] API contract/examples ผูก version ถูกต้อง normal example ผ่านตัวตรวจเดียว
+      กับ generation และเรียกได้จริง; version ใหม่ไม่เปลี่ยนตัวอย่าง/งานของ version เก่า
 - [ ] docKey/version/job ที่ไม่พบให้ข้อผิดพลาดชัดเจน งาน render ล้มเหลว
       แสดง failed และไม่แสดงผลลัพธ์สำเร็จปลอม
 - [ ] ส่งงานที่ถูกต้องสามงานติดกันแล้วทุกงานได้ผลลัพธ์ตรงกับข้อมูลของตน
@@ -160,7 +197,8 @@ Roadmap นี้เป็นลำดับผลลัพธ์ ไม่ใ�
 
 สถานะอัปเดต 2026-10-07: R0 ตรวจ source รอบแรกแล้ว (ยังไม่รัน export ใหม่);
 R1 มี [ร่างการออกแบบสำหรับ review](flowdoc-export-mvp-r1-design-2026-10-07.md)
-ซึ่งบันทึกแหล่งอ้างอิง R0 และข้อจำกัดไว้ด้วย R2–R5 ยังไม่เริ่ม
+ซึ่งบันทึกแหล่งอ้างอิง R0 และข้อจำกัดไว้ด้วย ปรับตามนิยามโครงย่อย/tag ล่าสุดแล้ว
+ยังมีนโยบาย type บางข้อให้สรุปใน R1; R2–R5 ยังไม่เริ่ม
 
 ### R0 — ตรวจของเดิมและกำหนดขอบเขตการย้าย
 
@@ -175,7 +213,8 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
 
 ### R1 — ออกแบบสัญญาข้อมูลและขอบเขตสอง repo
 
-- ออกแบบไฟล์ template, นิยามตัวแปร, binding, ข้อมูลตัวอย่าง และผลหลัง binding
+- ออกแบบโครงเล่ม/custom formats, scoped variables/inline tags, ordered invocations,
+  request examples และผลหลัง compose/binding
   โดยใช้ชนิด node เท่าที่ MVP ต้องใช้
 - ระบุชื่อ/รูปแบบ ID และ version, การอ้าง node, รายการซ้ำ, optional/required,
   ข้อผิดพลาด และ interface ที่ Service ใช้เรียก Core
@@ -188,7 +227,7 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
 
 ### R2 — ทำ Core ให้สร้าง PDF จากโครงและข้อมูลได้
 
-- ออกแบบแล้วลงมือเฉพาะเส้นทาง validate → bind → layout → PDF
+- ออกแบบแล้วลงมือเฉพาะเส้นทาง validate/prepare → compose/bind → layout → PDF
   เริ่มข้อความและตารางสั้นให้ทำงานครบเส้นทาง ก่อนเพิ่มกรณีว่างและหลายหน้า
 - ใช้การจัดข้อความเดิมตามผล R0; ออกแบบตารางข้ามหน้าและแถวต่อหน้า
   เฉพาะขอบเขต MVP พร้อมรักษา identity ของรายการและหัวตาราง
@@ -213,7 +252,7 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
 ### R4 — ต่อ API และวงจรงานให้ครบ
 
 - ออกแบบ request/response, route, status/error และการเก็บไฟล์ก่อนลงมือ
-- ต่อ API สร้างงาน/อ่านสถานะ/ดาวน์โหลดเข้ากับ DB และ Core ที่ผ่าน R2
+- ต่อ API อ่าน contract/examples, สร้างงาน/อ่านสถานะ/ดาวน์โหลดเข้ากับ DB และ Core ที่ผ่าน R2
 - ทำการดึง queued ทีละงาน เปลี่ยนสถานะตามผลจริง และจัดการ restart
   ตามกติกาในหัวข้อ API และสถานะงาน
 - ผลที่ต้องได้: เรียกผ่าน localhost ตั้งแต่ docKey/JSON จนดาวน์โหลด PDF ได้
@@ -254,7 +293,8 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 - DOCX export/import, LibreOffice integration หรือการวิจัยให้ wrap เหมือน Word
 - รูปภาพและระบบ crop/resize/แปลงชนิดไฟล์
 - ตารางซ้อน หัวหลายชั้น ช่องรวม คอลัมน์ซ้อน และการจัดหน้าแบบซับซ้อน
-- สารบัญอัตโนมัติ ระบบ template ทั่วไป และการจำลองหน้ารอบพิเศษเพื่อแจ้งจำนวนหน้า
+- สารบัญอัตโนมัติ ภาษา script/expression ทั่วไป การเรียกโครงย่อยซ้อนกัน
+  และการจำลองหน้ารอบพิเศษเพื่อแจ้งจำนวนหน้า
 - authentication/API key, ระบบสมาชิก/คิดเงิน, deployment สาธารณะ,
   external queue/worker infrastructure, ETA, distributed processing,
   load test และการปรับประสิทธิภาพเผื่อโหลดอนาคต
@@ -286,6 +326,10 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 
 ## บันทึกการล็อกขอบเขต
 
+- 2026-10-07 (หลัง review R1): เจ้าของอนุมัติแก้นิยามจาก fixed-body เป็น
+  โครงเล่ม + โครงย่อยผู้สร้างกำหนดเองหนึ่งชั้น, inline tags, ลำดับจากผู้เรียก,
+  กฎ missing/default, unknown-format warnings, versioned examples และ DB JSON
+  ที่เก็บองค์ประกอบเหล่านี้ร่วมกัน รายละเอียดอยู่ R1; ไม่ใช่การขยายงานโดย agent เอง
 - 2026-10-07: เจ้าของยืนยันให้ร่างและล็อกตามข้อตกลงล่าสุด
   เพิ่ม local API, DB relationships, job status/download และ serial processing
   แทนร่างก่อนหน้าที่จำกัดแค่การเรียกในเครื่องโดยไม่มี API/DB
