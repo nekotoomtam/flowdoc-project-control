@@ -16,7 +16,8 @@ Owner-authorized clarification, 2026-10-07: template means a book structure
 with creator-defined one-level subtemplates, inline variables and ordered
 invocations. Includes versioned caller examples/contract access and warnings
 for unknown format names. This replaces the fixed-body interpretation in the
-initial draft; all unrelated exclusions remain. R1 records unresolved type details.
+initial draft; all unrelated exclusions remain. Subsequent owner confirmation
+sets unknown variable keys to ignore-with-warning and wrong known types to error.
 
 Active role: Planning Partner / Documentation Synthesizer. Authority: the
 current conversation. Registered Work/Phase/Checklist/Evidence IDs: not
@@ -66,7 +67,8 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
 8. ขาด required ให้คืน key/path ที่ขาดทั้งหมดและไม่สร้างงาน แม้มี default;
    optional ที่หายใช้ default ก่อน แล้ว string="" หรือ array=[]
    null เป็นค่าผิดชนิด; tag/default/graph ที่ผิดต้องปฏิเสธตอนลงทะเบียน template
-   variable key ที่ไม่รู้จักและค่าผิดชนิดอื่นยังต้องปิดนโยบายใน R1 ก่อนลงมือ
+   variable key ที่ไม่รู้จักให้ข้ามพร้อม warning; key ที่รู้จักแต่ค่าผิด type
+   ไม่สร้างงานแม้ optional/มี default และแจ้ง path/expectedType/actualType
    ห้ามถือว่านโยบายข้าม unknown format อนุญาตให้ข้ามค่าบังคับหรือแปลงชนิดเงียบ ๆ
 9. มี API สร้างงาน อ่านสถานะ และดาวน์โหลดผลลัพธ์ โดยใช้ DB จริงเก็บ
    template, version, job และ output metadata; ไฟล์ PDF เก็บในเครื่อง
@@ -173,6 +175,9 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 - [ ] ตัวอย่างข้อมูลผิดและ binding ผิดให้ข้อผิดพลาดที่ระบุ field/node ได้
 - [ ] required ที่หายหลายจุดคืนครบและไม่ใช้ default ข้าม required;
       optional ที่หายใช้ default/ค่าว่างตรง type; template/default/tag ผิดถูกจับตอนลงทะเบียน
+- [ ] unknown variable ข้ามพร้อม warning แต่ required ที่หายยังเป็น error;
+      known variable ผิดชนิดไม่ใช้ default กลบ แม้ optional ต้องไม่สร้างงาน
+      รวม errors/warnings ที่ตรวจได้ในคำตอบเดียวและเก็บ warnings กับงานที่รับ
 - [ ] unknown format ปน known สร้างเฉพาะ known พร้อม warning/index ที่คงอยู่
       ตอนอ่าน status/restart; unknown ทั้งหมดหรือ content ว่างไม่สร้าง job
 - [ ] API contract/examples ผูก version ถูกต้อง normal example ผ่านตัวตรวจเดียว
@@ -198,7 +203,7 @@ Roadmap นี้เป็นลำดับผลลัพธ์ ไม่ใ�
 สถานะอัปเดต 2026-10-07: R0 ตรวจ source รอบแรกแล้ว (ยังไม่รัน export ใหม่);
 R1 มี [ร่างการออกแบบสำหรับ review](flowdoc-export-mvp-r1-design-2026-10-07.md)
 ซึ่งบันทึกแหล่งอ้างอิง R0 และข้อจำกัดไว้ด้วย ปรับตามนิยามโครงย่อย/tag ล่าสุดแล้ว
-ยังมีนโยบาย type บางข้อให้สรุปใน R1; R2–R5 ยังไม่เริ่ม
+นโยบาย unknown variable/wrong type ยืนยันและบันทึกใน R1 แล้ว; R2–R5 ยังไม่เริ่ม
 
 ### R0 — ตรวจของเดิมและกำหนดขอบเขตการย้าย
 
@@ -326,6 +331,9 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 
 ## บันทึกการล็อกขอบเขต
 
+- 2026-10-07 (ยืนยัน type): unknown variable key ข้ามพร้อม warning;
+  known key ผิด type ปฏิเสธงาน ไม่ใช้ default กลบ รวมทุก issue ที่ตรวจได้
+  เป็นการปิดสองประเด็นที่เคยค้าง ไม่เปลี่ยนนโยบาย unknown format
 - 2026-10-07 (หลัง review R1): เจ้าของอนุมัติแก้นิยามจาก fixed-body เป็น
   โครงเล่ม + โครงย่อยผู้สร้างกำหนดเองหนึ่งชั้น, inline tags, ลำดับจากผู้เรียก,
   กฎ missing/default, unknown-format warnings, versioned examples และ DB JSON

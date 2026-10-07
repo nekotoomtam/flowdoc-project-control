@@ -5,7 +5,8 @@
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 Status: revised design, 2026-10-07, following owner agreement on one-level
 subtemplates, inline variables, versioned examples and DB relationships.
-Detailed contract remains for review; unresolved type policies are listed below.
+Detailed contract remains for review; unknown variable key and wrong-type
+policies were subsequently confirmed by the owner and are recorded below.
 No implementation started.
 Authority: the owner's request to continue R1 in this conversation.
 Registered execution IDs: not applicable. Scope authority:
@@ -111,6 +112,8 @@ label/description ที่เป็น metadata และกฎ allowEmpty ส�
 | ส่งค่าถูกชนิดมาแล้ว | ใช้ค่าที่ส่ง ไม่ทับด้วย default |
 | string ว่างหรือมีแต่ช่องว่าง | required ตรวจการมี key; ถ้า allowEmpty = false ให้ error โดยไม่แก้ข้อความ |
 | null | ผิดชนิดสำหรับ type ของ MVP ไม่พิมพ์ "null" ลง PDF |
+| มี key ที่รู้จักแต่ค่าผิดชนิด | TYPE_MISMATCH; ไม่สร้าง job แม้เป็น optional หรือมี default |
+| key ตัวแปรที่ไม่ได้ประกาศ | UNKNOWN_VARIABLE warning; ตัดออกจาก prepared data ไม่ใช้ในเอกสาร |
 
 required/default ตรวจเมื่อไม่มี key จริง ๆ ไม่ใช้ truthiness; [] กับ "" ไม่ใช่ key ที่หาย
 ค่า default ของ array/object ต้อง clone ต่อ invocation ไม่แชร์ mutable state
@@ -123,15 +126,32 @@ MVP ใช้ object เป็น data envelope และ array item ไม่�
 ถ้าชุดข้อมูลที่ต้องการหาย ต้องแจ้ง path ของชุดและ required children ที่ตรวจได้
 ไม่สร้าง object ว่างเพื่อหลบ required validation
 
-### เรื่องที่ยังไม่ตัดสินใจ — ไม่ใช้ข้อเสนอที่เกิดจากความเข้าใจผิดเป็นข้อตกลง
+### นโยบายตัวแปรที่เจ้าของยืนยันหลังแยกจากชื่อ format
 
-1. key ตัวแปรที่ไม่ได้ประกาศ: reject หรือ ignore พร้อม warning ยังไม่ได้ยืนยัน
-2. key ถูกแต่ค่าผิดชนิดที่ไม่ใช่ null: reject หรือปฏิบัติเหมือน missing
-   ยังไม่ได้ยืนยัน; ห้ามแปลงชนิดหรือใช้ default กลบโดยอัตโนมัติ
+ใช้กับข้อมูลส่วนกลาง ข้อมูล local ของ known invocation และ object item
+ในรายการที่ schema รู้จัก ไม่ใช่การยอมรับ unknown property ใน template หรือ
+request envelope ซึ่งยังตรวจ strict ตามสัญญาของส่วนเหล่านั้น
 
-ข้อเสนอ conservative สำหรับ review คือ reject ทั้งสองกรณีพร้อม path
-แต่ยังไม่เป็นกฎที่ล็อก ต้องสรุปก่อนเขียน data validator ใน R2
-นโยบายข้ามชื่อ format ที่ไม่พบด้านล่างไม่ครอบคลุมสองกรณีนี้
+- key ตัวแปรไม่รู้จัก: ข้ามค่านั้นโดยไม่เดาชื่อหรือจับคู่ใกล้เคียง คืน warning
+  code UNKNOWN_VARIABLE พร้อม path/action=ignored และเก็บไว้กับ job ถ้างานถูกรับ
+  original input เก็บตามที่รับ แต่ prepared input ไม่มี key นั้น
+- key รู้จักแต่ค่าผิด type รวม null: คืน TYPE_MISMATCH พร้อม path,
+  expectedType และ actualType ไม่ใช้ default แทน ไม่แปลงชนิดให้อัตโนมัติ
+  งานถูกปฏิเสธแม้ field เป็น optional; optional อนุญาตให้ไม่ส่ง ไม่ได้อนุญาตให้ส่งผิดชนิด
+- ถ้า container ผิดชนิด ให้แจ้งที่ container แล้วตรวจ sibling อื่นต่อ
+  ไม่สร้าง errors ของ children สมมติ; รวมทุก error/warning ที่ตรวจได้ในคำตอบเดียว
+- warnings อย่างเดียวสร้างงานได้เมื่อผ่านเงื่อนไข content เดิม;
+  มี error อย่างน้อยหนึ่งข้อไม่สร้าง job และคืน warnings ที่พบร่วมด้วย
+
+ตัวอย่าง: ส่ง projectNmae โดยไม่มี projectName ที่ required ให้คืน
+UNKNOWN_VARIABLE ที่ data.projectNmae และ MISSING_REQUIRED ที่ data.projectName
+พร้อมกัน ส่วน projectName=123 ให้ TYPE_MISMATCH expectedType=string,
+actualType=number; ไม่คืน MISSING_REQUIRED ซ้ำเพราะ key มีอยู่แล้ว
+actualType ใช้ชื่อชนิด JSON: string, number, boolean, object, array, null
+ไม่ต้องสะท้อนค่าจริงที่ผิดกลับใน error
+
+การไม่มี key จึงใช้ required/default/empty policy ส่วน key ที่มีอยู่ใช้ type
+และ value validation ก่อน คำเตือนทั้งหมดอยู่ใน API/job ไม่พิมพ์ลง PDF
 
 ## 5. สัญญา template และตัวอย่างประกอบเล่ม
 
@@ -333,6 +353,9 @@ negative examples สำหรับแสดง errors/warnings อยู่ใ
 | items/ข้อความยาว | table และ row ข้ามหน้า ข้อมูลครบ |
 | required หายหลายที่ | คืนทุก path ไม่สร้าง job แม้มี default |
 | optional หาย มี/ไม่มี default | default หรือค่าว่างตาม type |
+| unknown variable ปนค่าที่ถูกต้อง | warning และไม่อยู่ใน prepared data; งานสร้างได้ถ้าไม่มี error |
+| สะกด variable ผิดจน required หาย | warning ของ key ผิด + error ของ key ที่ขาด ไม่สร้าง job |
+| known variable ผิดชนิด/null แม้ optional มี default | TYPE_MISMATCH พร้อม expected/actual; ไม่แทนค่า ไม่สร้าง job |
 | unknown format ปน known | PDF เฉพาะ known, warning/path/index คงอยู่ |
 | unknown ทั้งหมดหรือ content=[] | EMPTY_CONTENT ไม่สร้าง job |
 | contract lookup version เก่า/ใหม่ | schema/example และ generation pin version เดียวกัน |
@@ -357,7 +380,8 @@ warnings และ version ใน transaction เดียวเพื่อไ�
 processor ตรวจ persisted shape/reference ก่อน compose แต่ไม่เลือก latest ใหม่
 Core ไม่รู้ DB/HTTP/job state; Service ไม่คัดลอกกฎ type/binding มาตรวจเองคนละชุด
 
-Core errors รวม INVALID_TEMPLATE, INVALID_DATA, UNKNOWN_FORMAT (warning),
+Core errors รวม INVALID_TEMPLATE, INVALID_DATA, MISSING_REQUIRED, TYPE_MISMATCH,
+UNKNOWN_VARIABLE (warning), UNKNOWN_FORMAT (warning),
 EMPTY_CONTENT, RESOURCE_UNAVAILABLE, LAYOUT_FAILED, PDF_RENDER_FAILED
 Service เพิ่ม TEMPLATE_NOT_FOUND, VERSION_NOT_FOUND, JOB_NOT_FOUND,
 OUTPUT_NOT_READY, OUTPUT_NOT_FOUND, STORAGE_FAILED, PROCESS_INTERRUPTED
@@ -470,8 +494,8 @@ R2 ต้องทดลอง font/Thai wrapping/row seams บนเส้น�
 
 R1 พร้อมให้ review เมื่อ: template/request/examples สอดคล้อง, tags/format references
 ชัดเจน, array ว่าง/ยาวและ missing-value policy ครบ, ไม่มีข้อกำหนดนอก MVP
-และ ownership ชัดเจน ต้องปิดสองประเด็น type ที่ยังไม่ตัดสินใจก่อน implementation
-ของ validator เกณฑ์นี้ไม่เท่ากับ R2 runtime ผ่าน
+และ ownership ชัดเจน นโยบาย unknown variable และ wrong type ได้รับการยืนยันแล้ว
+เกณฑ์นี้ไม่เท่ากับ R2 runtime ผ่าน
 
 Next decision: เจ้าของ review สัญญา template/binding และขอบเขต repo นี้
 จากนั้นจึงทำ implementation plan สำหรับ R2 ที่มี prerequisite probe ชัดเจน
@@ -484,5 +508,9 @@ Next decision: เจ้าของ review สัญญา template/binding แ
   Adds versioned caller contracts/examples and warning persistence without new DB tables.
 - Prior proposal at commit 85af94f retained in Git history; its fixed-body JSON,
   ban on field-ref and whole-TextBlock replacement are no longer current design.
-- Unknown variable key/wrong-type handling remains explicitly unresolved; the
-  earlier discussion based on confusing variable keys with format names is not approval.
+- Initial revision left unknown variable key/wrong-type handling unresolved
+  because the earlier discussion confused variable keys with format names.
+- Subsequent owner confirmation on 2026-10-07 closes those two decisions:
+  unknown variable keys are ignored with warnings; known keys with wrong types
+  are errors, even when optional or defaulted. This preserves the earlier
+  clarification history rather than treating that misunderstanding as approval.
