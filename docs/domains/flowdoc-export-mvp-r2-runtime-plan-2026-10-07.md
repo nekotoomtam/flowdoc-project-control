@@ -574,5 +574,6 @@ their original form. This is not table, binding, Service or full MVP acceptance.
   shared map/MVP readiness promotion from this result.
   That subsequent slice is now implemented and verified in the
   [binding and composition result](flowdoc-export-mvp-r2-binding-plan-2026-10-07.md#b1b4-execution-and-result--2026-10-07).
-  This does not alter the historical P4 boundary above; simple table PDF layout
-  remains the next unimplemented Core slice.
+  This does not alter the historical P4 boundary above. The subsequent
+  [simple table PDF slice](flowdoc-export-mvp-r2-table-plan-2026-10-07.md) now has
+  its own bounded result; Service/DB integration remains subsequent work.

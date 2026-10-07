@@ -327,3 +327,5 @@ Final artifact directory in Core: `artifacts/1791387642523/`.
 - **Next bounded work:** simple table layout/row continuation using the composed
   graph. Then Service/DB integration within the locked MVP. No frontend, DOCX,
   image processing or queue-capacity expansion was added here.
+  Subsequent table work is now recorded in the
+  [simple-table result](flowdoc-export-mvp-r2-table-plan-2026-10-07.md).
