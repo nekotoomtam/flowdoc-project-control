@@ -187,7 +187,7 @@ styles เป็น registry ของ MVP, lineHeightPt ไม่ใช่ prop
     }
   },
   "styles": {
-    "body": { "fontFamilyKey": "ibm-plex-sans-thai", "fontWeight": "normal", "fontSize": { "value": 12, "unit": "pt" }, "lineHeightPt": 18 }
+    "body": { "fontFamilyKey": "sarabun", "fontWeight": "normal", "fontSize": { "value": 12, "unit": "pt" }, "lineHeightPt": 18 }
   },
   "formats": {
     "section-note": {
@@ -469,8 +469,9 @@ flowdoc-service/
 - Tests: Vitest; ตรวจ PDF จริงเพิ่มเติมตาม MVP ไม่ใช้ unit test แทนการตรวจภาพ
 - Text/PDF: คัด Rust shaping/segmentation และ measured PDF renderer เดิม
   font subset ใช้ Python tool เดิมผ่าน adapter ถ้าการทดลอง R2 ยืนยันว่าใช้ได้
-- ฟอนต์เริ่มต้น IBM Plex Sans Thai regular ตามเส้นทาง export ที่ตรวจพบ
-  จัดเก็บไฟล์และ license ที่นำมาใช้; ไม่อ้าง parity กับ Sarabun ใน editor
+- ฟอนต์สำหรับ MVP เปลี่ยนตามการทดลองและการยอมรับของเจ้าของเป็น Sarabun
+  Regular/Bold/Italic/BoldItalic พร้อม OFL.txt; ตัวอย่างเดิม IBM Plex เป็นแหล่งอ้างอิง
+  ไม่ใช่ default ใหม่ การยอมรับหน้าทดลองไม่พิสูจน์ table/pagination หรือ Linux runtime
 - Rust build เป็นขั้นเตรียม runtime ไม่ build ระหว่างรับ request;
   เริ่ม service ต้องตรวจ prerequisite และรายงานสิ่งที่ขาดชัดเจน
 - ไม่ติดตั้งหรือเลือกเลขเวอร์ชัน dependency ใน R1; pin เวอร์ชันที่ตรวจร่วมกัน
@@ -479,6 +480,127 @@ flowdoc-service/
 นี่เป็นตัวเลือกการออกแบบ ไม่ใช่ผลพิสูจน์ว่า runtime รวมนี้พร้อมแล้ว
 R2 ต้องทดลอง font/Thai wrapping/row seams บนเส้นทางที่เลือกก่อนย้ายส่วนใหญ่
 หากไม่ผ่านให้กลับมาระบุข้อจำกัดเฉพาะ adapter ไม่เปลี่ยน engine หรือขยาย scope เงียบ ๆ
+
+### 8.1 แบบส่งมอบ Core package
+
+สถานะ: ข้อเสนอรายละเอียดสำหรับ review ตามคำขอเจ้าของ ไม่ใช่ implementation
+หรือผลตรวจแพ็กเกจ; ขอบเขตหลักยึด MVP ที่ล็อกไว้
+
+เลือกแพ็กเกจเดียวก่อน แทนการ link source ระหว่าง repo หรือแตกหลายแพ็กเกจ
+native ตาม platform ตั้งแต่แรก ชื่อภายในเสนอ `@flowdoc/core` (ยังไม่จองชื่อ registry),
+ESM + TypeScript declarations, รุ่นพัฒนาแรก `0.1.0-dev.1`; รุ่นแรกที่ผ่านเกณฑ์ `0.1.0`
+Core/Service เพิ่มรุ่นแยกกัน รุ่น dev ที่ส่งมอบเปลี่ยนเนื้อหาต้องเพิ่มเลขด้วย
+ช่วง 0.x ให้ patch สำหรับแก้ที่รักษาสัญญา และ minor สำหรับเพิ่มความสามารถ/เปลี่ยน
+สัญญา โดยบันทึก breaking change ชัด; ไม่สมมติว่าผู้ใช้รับ breaking change ได้เงียบ ๆ
+
+| สิ่งที่แพ็ก | หน้าที่ |
+| --- | --- |
+| `dist/` | JavaScript ที่ build แล้วและ `.d.ts`; root export เฉพาะ interface ในหัวข้อ 6 |
+| `runtime/linux-x64/` | native shaper/segmenter ที่ build และตรวจสำหรับ Linux amd64/glibc |
+| `runtime/python/` | subset helper กับข้อกำหนด Python/fontTools ที่ตรึงสำหรับ release |
+| `assets/fonts/` | Sarabun สี่แบบและ license; ไม่อ่านจาก Downloads ของผู้พัฒนา |
+| `resources.json` | resource IDs, relative paths, hashes, platform และ runtime requirements |
+| package metadata/usage/license notices | version, exports, engines และข้อจำกัด platform |
+
+ไม่แพ็ก source/tests/ตัวอย่างเอกสารลูกค้า/.env/cache หรือ runtime ของ editor
+กำหนดรายการไฟล์ที่อนุญาตใน package metadata และตรวจรายการ tarball ก่อนทดสอบ
+package ไม่มี postinstall ที่ download หรือ compile native tools
+Python interpreter และ Node ไม่อยู่ใน tarball; Service image เป็นผู้จัดเตรียม
+Core build ใช้ container เป้าหมายเดียวกับ runtime family และเก็บ Cargo.lock/toolchain
+ที่ตรึงไว้; ไม่คัด executable จากเครื่อง Windows
+
+เพิ่ม public Node-only helper `loadBundledResources({ pythonExecutable, tempRoot })`
+เพื่ออ่าน manifest และ resolve paths สัมพัทธ์กับตำแหน่ง package ไม่ใช่ cwd ของ caller
+คืน `Result<ExportResources>` ให้ `createPdfEngine` เดิม; ไม่เปิด internal paths
+เป็น public subpath exports และไม่ให้ schema/binding เรียก filesystem เอง
+engine initialization ตรวจ platform, resources/hash, executable และ Python/fontTools
+ที่ต้องใช้ ถ้าขาดคืน RESOURCE_UNAVAILABLE พร้อมรายละเอียดสำหรับ log ภายใน
+Service ไม่เปิดรับ generation เมื่อ prerequisite ไม่ผ่าน
+
+PDF engine สร้าง temporary directory แยกต่อการเรียก เก็บ subset ชั่วคราวไว้ที่นั่น
+และ cleanup เมื่อสำเร็จ/ผิดพลาด; ไม่เขียนใน package directory หรือแก้ TTF ต้นฉบับ
+native/Python subprocess ใช้ argument array และ asynchronous invocation
+ไม่ build tools และไม่ใช้ synchronous subprocess ที่ล็อก API ระหว่างรอ process
+ขอบเขต timeout/cleanup/error mapping ระบุในแผน R2; ยังไม่เพิ่ม worker service
+
+### 8.2 Service ติดตั้งและเรียก Core
+
+Service เป็น private application ชื่อ `flowdoc-service`; เสนอรุ่นพัฒนาแรก
+`0.1.0-dev.1` และรุ่นรับงานแรก `0.1.0` โดยไม่ได้บังคับขึ้นรุ่นพร้อม Core
+Core tarball ที่ผ่านการตรวจถูกนำเข้า build context ที่กำหนดเป็นไฟล์ input
+พร้อม checksum; dependency ระบุ tarball รุ่นแน่นอนใน staging context
+และ Service lockfile บันทึก integrity ไม่ใช้ npm link, workspace link หรือ `../core/src`
+ห้ามแก้ lockfile ระหว่าง verification เพื่อให้แพ็กเกจคนละรุ่นติดตั้งผ่าน
+
+การเรียกตามขอบเขตเดิม:
+
+1. bootstrap อ่าน config → โหลด bundled resources → สร้าง PdfEngine ครั้งเดียว
+   ตรวจ DB/schema readiness ก่อนเริ่มรับงาน; runtime ไม่พร้อมต้องหยุดพร้อมเหตุผล
+2. registration เรียก validateTemplate และตรวจ examples ด้วยกฎ prepare เดียวกัน
+3. API เลือก template version → prepareGeneration → บันทึก queued และ warnings
+4. serial processor โหลดข้อมูลที่ pin แล้ว → composeDocument → generatePdf
+5. Service เป็นผู้เขียน PDF/DB/status; Core คืน bytes/pageCount หรือ structured issues
+
+Service ไม่ทำ binding/layout ซ้ำและไม่ส่ง internal path/stack trace ผ่าน API
+รายละเอียด result/error envelope เดิมยังใช้; route/transaction/HTTP mapping อยู่ R3/R4
+การรัน synchronous layout ใน JS ต้องประเมินในการทดสอบ API ระหว่างงานจริง
+ไม่อ้างว่า Promise หรือ async subprocess อย่างเดียวพิสูจน์การตอบสนองทั้งหมด
+
+### 8.3 ชุดรัน local และข้อมูล release
+
+เป้าหมายแรกเสนอ Linux/amd64 แบบ glibc ใน Docker Desktop บน Windows x64
+เป็น target ที่ต้องทดสอบ ไม่ใช่ platform ที่พิสูจน์แล้ว; ไม่รองรับ Alpine/musl,
+ARM หรือ Windows-native package ใน acceptance รอบนี้
+รุ่น OS/base image/Node/PostgreSQL/Python/fontTools/Rust ที่แน่นอนและ digest
+ต้องเลือกและตรึงในแผนลงมือก่อน build ไม่เติม latest เป็นค่าแทน
+
+Service repo เป็นเจ้าของ Dockerfile, Compose, config example, migration/run commands
+และ release manifest ใช้ multi-stage build แยก compiler/build dependencies ออกจาก
+final runtime ซึ่งมี Service + Core artifact + Node/Python/fontTools และ native shared
+libraries ที่ตรวจว่าต้องใช้ รันด้วยผู้ใช้ที่ไม่ใช่ root และตรวจสิทธิ์ temp/output volume
+
+Compose มี service process หนึ่งตัวและ PostgreSQL หนึ่งตัว; migration/registration
+เป็น one-shot commands จาก Service image เดียวกัน ไม่เพิ่ม daemon หรือ queue service
+รอ DB health ก่อน migration และต้อง migration สำเร็จก่อนรับงาน ไม่ใช้แค่ลำดับ start
+publish API บน 127.0.0.1; DB อยู่ internal network เป็นค่าเริ่มต้น หากเปิดพอร์ต debug
+ต้อง bind 127.0.0.1; config ตัวอย่างไม่มี secret จริง
+ใช้ named volumes แยกสำหรับ DB และ PDF และ temporary storage ที่ไม่ใช้เก็บผลถาวร
+ขั้นตอน restart ไม่ลบ volumes; การทดสอบ fresh ใช้ project/volume ชุดใหม่
+
+release manifest ระบุ Service/Core versions, commits, tarball checksum,
+target/runtime versions, base image digests, resource manifest hash,
+schema/contract versions และ migration head ที่รองรับ
+หลัง build บันทึก final image ID (local) หรือ digest (เมื่อมี registry) ใน manifest
+ภายนอก image เพื่อไม่เกิดการอ้าง hash ของตัวเอง; เก็บ manifest/ขั้นตอน/checks คู่ artifact
+ไม่รวม secret และไม่สร้าง API สำหรับ release management เพิ่ม
+
+### 8.4 จุดตรวจแรกและขอบเขตหลักฐาน
+
+ก่อนย้ายส่วนใหญ่ ให้สร้าง Core tarball ที่เปิด public PDF path ได้ใน consumer
+container ว่าง ซึ่งติดตั้งจาก tarball + dependency lock และ runtime ที่ประกาศเท่านั้น
+consumer ไม่เห็น repo ต้นทาง ไม่ mount source/runtime/font จาก host
+ใช้ข้อความ Sarabun สี่แบบสร้าง PDF ผ่าน public engine ตรวจ embedded fonts,
+ข้อความที่ดึงกลับ และภาพจริง แล้วจึงต่อ fixture schema/binding/table ตาม R2
+นี่เป็น prerequisite ของแพ็กเกจ ไม่ใช้แทนการรับงาน R2 หรือ MVP
+
+| จุดตรวจ | หลักฐานที่ต้องได้ |
+| --- | --- |
+| Package | tarball inventory, version/integrity, public import และ PDF probe ใน consumer |
+| Missing resource | เอาทรัพยากรออกเฉพาะสำเนาทดสอบแล้ว initialization ปฏิเสธชัดเจน |
+| Service integration | ใช้ artifact รุ่นเดียวกับที่ทดสอบ และ structured errors ผ่านขอบเขตเดิม |
+| Local release | จาก DB ว่าง → migration/register → API/status/download → restart ยังอ่านงาน/ไฟล์ได้ |
+
+สถานะปัจจุบัน: หน้าทดลอง Sarabun บน Windows ผ่านการดูของเจ้าของ แต่ไม่ได้มาจาก
+Core package ใหม่; Docker engine ยังไม่ทำงานในการตรวจล่าสุด และยังไม่ยืนยัน
+PostgreSQL connection/Linux runtime ดังนั้นช่องตรวจข้างต้นยังไม่ใช่ PASS
+การติดตั้ง runtime อาจใช้ network ในขั้น build; ไม่อ้าง offline installation
+CI บนเครื่องอื่นยังเลื่อนตาม MVP ไม่เพิ่มเป็นเงื่อนไขของจุดตรวจนี้
+
+อ้างอิงเครื่องมือสำหรับแบบนี้:
+[npm package metadata](https://docs.npmjs.com/cli/v11/configuring-npm/package-json/),
+[Docker multi-stage build](https://docs.docker.com/build/building/multi-stage/),
+[Compose startup/health ordering](https://docs.docker.com/compose/how-tos/startup-order/)
+อ้างอิงเหล่านี้อธิบายกลไกเครื่องมือ ไม่ใช่หลักฐานว่า FlowDoc ทำผ่านแล้ว
 
 ## 9. ส่งต่อแต่ละช่วงและเกณฑ์ review R1
 
@@ -520,6 +642,10 @@ Next decision: เจ้าของ review สัญญา template/binding แ
 
 ## Revision history
 
+- 2026-10-07: adds reviewable package contents/public resource loading, Service
+  consumption, Linux amd64 local run and artifact-first proof design in 8.1–8.4.
+  Sarabun four-style selection replaces the initial IBM Plex default proposal;
+  Windows probe acceptance does not establish package/Linux/table readiness.
 - 2026-10-07: owner adds package/release and isolated local Docker acceptance
   to MVP. R1 references that single scope authority and assigns follow-through
   to R2–R5; no implementation, CI or deployment readiness is claimed.
