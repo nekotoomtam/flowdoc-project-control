@@ -2,13 +2,15 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. This document records the proposed export-only
+Owner: FlowDoc Project Control. This document records the agreed export-only
 MVP scope and the owner's scope-freeze instruction dated 2026-10-07. It is a
 scope specification, not implementation Evidence, a product readiness claim,
 or authorization to resume historical execution rounds.
 
-Status: written scope for owner review; implementation has not started under
-this document. The scope-freeze rule is already requested by the owner.
+Status: scope locked by the owner on 2026-10-07 following agreement on local
+API, relational DB relationships, one SRS template, PDF output and serial job
+processing. Implementation has not started under this document. The owner's
+instruction is: "งันร่างแล้วล็อกเอกสารกัน".
 
 Active role: Planning Partner / Documentation Synthesizer. Authority: the
 current conversation. Registered Work/Phase/Checklist/Evidence IDs: not
@@ -25,8 +27,14 @@ Existing product history and evidence remain unchanged.
 ระบบตรวจข้อมูล ผูกข้อมูลลง node และสร้าง PDF ที่อ่านใช้งานได้
 เปลี่ยนข้อมูลแล้วใช้โครงเดิมสร้างไฟล์ใหม่ได้โดยไม่แก้โค้ดจัดหน้าเฉพาะชุดข้อมูล
 
-MVP รอบนี้จบที่การเรียกผ่านโปรแกรมหรือคำสั่งในเครื่องและได้ไฟล์ PDF
-ยังไม่ใช่บริการ API ที่เปิดให้ลูกค้าใช้งาน และไม่อ้างว่าพร้อมรองรับโหลดจริง
+MVP รอบนี้จบที่ API และ DB จริงที่รันและทดสอบในเครื่อง:
+
+เตรียมไฟล์โครง → ลงทะเบียนโครงใน DB → เรียก API ด้วย `docKey` และ JSON
+→ ตรวจข้อมูล → บันทึกงานพร้อมเวอร์ชัน → ผูกข้อมูล → จัดหน้า → สร้าง PDF
+→ เช็กสถานะและดาวน์โหลดผ่าน API
+
+ไม่มีหน้าบ้าน การเตรียมโครงทำผ่านไฟล์และคำสั่งสำหรับผู้พัฒนา
+ยังไม่เปิดบริการสาธารณะและไม่อ้างว่าพร้อมรองรับโหลดจริง
 
 ## ขอบเขตที่ทำ
 
@@ -46,6 +54,10 @@ MVP รอบนี้จบที่การเรียกผ่านโป�
    และแสดงหัวตารางซ้ำ การทำส่วนนี้เป็นงาน export ไม่รวม editor ข้ามหน้า
 8. ข้อมูลผิดชนิด ขาดค่าบังคับ binding หา node ไม่พบ หรือใช้ node ที่ไม่รองรับ
    ต้องแจ้งข้อผิดพลาดระบุตำแหน่ง ห้ามละทิ้งข้อมูลเงียบ ๆ
+9. มี API สร้างงาน อ่านสถานะ และดาวน์โหลดผลลัพธ์ โดยใช้ DB จริงเก็บ
+   template, version, job และ output metadata; ไฟล์ PDF เก็บในเครื่อง
+10. ประมวลผลเอกสารทีละงานใน service process เดียว งานที่รออยู่มีสถานะ
+    ชัดเจน ไม่เพิ่ม distributed queue หรือ worker service แยกในรอบนี้
 
 ชื่อ field ข้างต้นใช้กำหนดความหมายในขอบเขตนี้ รูปแบบสัญญา JSON ที่แน่นอน
 ต้องกำหนดในแผนลงมือ โดยต้องไม่เพิ่มความสามารถเกินรายการนี้
@@ -55,15 +67,72 @@ MVP รอบนี้จบที่การเรียกผ่านโป�
 ใช้โครงสร้าง node เดิมเป็นจุดตั้งต้นและย้ายเฉพาะ dependency ที่ต้องใช้จริง
 ไม่ clone ทั้งระบบ ไม่ย้ายหน้าบ้าน และไม่ปรับโครงสร้างทุกชนิดเผื่ออนาคต
 
-เจ้าของ implementation ที่เสนอคือ `flowdoc-core`: schema, validation,
-binding, layout และ PDF export โดยแบ่งหน้าที่ภายในให้ชัด
-`flowdoc-service` ยังไม่ต้องเริ่มใน MVP นี้
+เจ้าของ implementation:
+
+- `flowdoc-core`: schema, validation ของโครง/ข้อมูล, binding, layout และ
+  PDF export; ไม่ขึ้นกับ HTTP หรือ DB
+- `flowdoc-service`: API, ลงทะเบียน/โหลดโครง, DB, วงจรงานแบบทีละงาน,
+  เก็บไฟล์และให้ดาวน์โหลด; เรียก Core ผ่าน public interface
+
 การใช้งาน renderer แบบไม่มี browser UI ต้องตรวจเป็น prerequisite แรก
 หากพบว่า reuse ไม่ได้ตามขอบเขต ต้องรายงานข้อจำกัดก่อนเปลี่ยนแนวทาง
 
+## ความสัมพันธ์ DB ที่ล็อกไว้
+
+| ส่วน | ข้อมูลหลักและข้อกำหนด |
+| --- | --- |
+| `templates` | `id`, `docKey` ที่ไม่ซ้ำ และชื่อที่แสดง |
+| `template_versions` | `id`, `template_id` เป็น FK, `version`, โครง node, นิยามตัวแปร และ binding เป็น JSON; คู่ template/version ต้องไม่ซ้ำ |
+| `generation_jobs` | `id`, `template_version_id` เป็น FK, ข้อมูล JSON ที่รับ, สถานะ, ข้อผิดพลาด และเวลาเริ่ม/จบ |
+| `document_outputs` | `id`, `job_id` เป็น FK แบบ unique, ตำแหน่งไฟล์, ชนิดไฟล์และขนาด; MVP มี PDF สำเร็จได้หนึ่งไฟล์ต่อ job |
+
+ความสัมพันธ์: Template 1:N Version; Version 1:N Job; Job 1:0..1 Output
+
+- node และ binding อยู่ใน JSON ของเวอร์ชัน ไม่แตกทุก node เป็นตาราง DB
+- เวอร์ชันที่ลงทะเบียนแล้วห้ามเขียนทับ การแก้โครงสร้างเป็นเวอร์ชันใหม่
+- งานเลือกเวอร์ชันครั้งเดียวตอนรับงานและบันทึก FK นั้นไว้ตลอด
+  ห้ามโหลดเวอร์ชันล่าสุดใหม่ระหว่างประมวลผล
+- รับ `docKey` และ version แบบระบุได้ หากไม่ระบุ ให้เลือกเวอร์ชันล่าสุด
+  ที่ลงทะเบียนสำเร็จ ณ เวลารับงาน แล้วบันทึกเวอร์ชันที่เลือกให้ชัดเจน
+- การเปลี่ยน template ภายหลังต้องไม่เปลี่ยนความสัมพันธ์หรือผลของ job เดิม
+- ไม่มีการลบ template/version ที่ job อ้างอิงใน MVP; ไม่ทำระบบ cleanup อัตโนมัติ
+
+DB ต้องมี migration และวิธีเริ่มฐานข้อมูลในเครื่องที่ทำซ้ำได้
+รายละเอียดชนิดคอลัมน์ ดัชนี และเครื่องมือที่ใช้ให้กำหนดในแผนลงมือ
+ภายใต้ความสัมพันธ์นี้ ไม่ใช่ช่องให้เพิ่ม entity หรือความสามารถใหม่
+
+## API และสถานะงาน
+
+สัญญาความสามารถที่ต้องมี โดยชื่อ route ที่แน่นอนกำหนดในแผนลงมือ:
+
+1. สร้างงาน: รับ `docKey`, version ถ้าระบุ และ `data`; ตรวจโครง/ข้อมูลก่อน
+   รับเข้าคิว ตอบ `jobId`, version ที่ใช้ และสถานะเริ่มต้น
+2. อ่านงาน: รับ `jobId`; ตอบสถานะ เวอร์ชัน ข้อผิดพลาดถ้ามี
+   และช่องทางดาวน์โหลดเมื่อสำเร็จ
+3. ดาวน์โหลด: รับ `jobId`; ส่ง PDF ของงานสำเร็จเท่านั้น
+   งานไม่พบ งานยังไม่เสร็จ หรือไฟล์ไม่พบต้องตอบข้อผิดพลาดชัดเจน
+
+สถานะพื้นฐาน: `queued` → `running` → `succeeded` หรือ `failed`
+การตรวจข้อมูลไม่ผ่านให้ตอบข้อผิดพลาดโดยไม่สร้างงาน render
+ไม่มีเปอร์เซ็นต์ความคืบหน้า เวลาเสร็จประมาณการ หรือ retry อัตโนมัติ
+
+service ประมวลผลได้ครั้งละหนึ่ง job และดึงงานที่รอจาก DB ตามลำดับรับ
+เมื่อ process เริ่มใหม่ งาน queued ต้องยังทำต่อได้ ส่วนงาน running
+ที่ค้างจาก process ก่อนให้เปลี่ยนเป็น failed พร้อมเหตุผลการหยุดกลางทาง
+เมื่อเก็บไฟล์และ output metadata สำเร็จจึงเปลี่ยนสถานะเป็น succeeded
+ไม่อ้างการรับประกัน exactly-once หรือการรองรับหลาย service instance
+
+การทดสอบใช้ localhost เท่านั้น ไม่มีบัญชีผู้ใช้หรือ API key ในรอบนี้
+`docKey` เป็นตัวระบุโครงเอกสาร ไม่ใช่ข้อมูลยืนยันสิทธิ์
+
 ## เกณฑ์รับงาน
 
-- [ ] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน และสั่งสร้าง PDF ได้โดยไม่มีหน้าบ้าน
+- [ ] เริ่ม service และ DB ในเครื่องจากขั้นตอนที่ให้ไว้ได้ รวม migration
+      และการลงทะเบียนโครงตัวอย่าง โดยไม่มีหน้าบ้าน
+- [ ] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน เรียก API ด้วย docKey/JSON
+      แล้วได้ jobId ตรวจสถานะ และดาวน์โหลด PDF ได้ครบ flow
+- [ ] DB บังคับ docKey ไม่ซ้ำ, template/version ไม่ซ้ำ และ FK ถูกต้อง
+      งานเดิมยังอ้างเวอร์ชันเดิมเมื่อลงทะเบียนเวอร์ชันใหม่
 - [ ] ข้อความเดี่ยวและทุกรายการในตารางลงถูก node ถูกลำดับ ครบ ไม่ซ้ำ
 - [ ] ใช้โครงเดิมกับข้อมูลอย่างน้อยสามชุด: ปกติ, รายการว่าง,
       และยาวพอให้มีทั้งตารางข้ามหน้าและแถวเดียวข้ามหน้า
@@ -71,6 +140,12 @@ binding, layout และ PDF export โดยแบ่งหน้าที่�
 - [ ] ตรวจ PDF จริงทั้งเนื้อหาและภาพ: ภาษาไทยอ่านได้ ข้อความไม่ล้นคอลัมน์
       ไม่ทับกัน ไม่หายที่รอยต่อหน้า และหัวตารางต่อหน้าถัดไปได้
 - [ ] ตัวอย่างข้อมูลผิดและ binding ผิดให้ข้อผิดพลาดที่ระบุ field/node ได้
+- [ ] docKey/version/job ที่ไม่พบให้ข้อผิดพลาดชัดเจน งาน render ล้มเหลว
+      แสดง failed และไม่แสดงผลลัพธ์สำเร็จปลอม
+- [ ] ส่งงานที่ถูกต้องสามงานติดกันแล้วทุกงานได้ผลลัพธ์ตรงกับข้อมูลของตน
+      และมีงาน running ไม่เกินหนึ่งงาน เป็นการตรวจลำดับ ไม่ใช่ load test
+- [ ] restart แล้ว template, version, ประวัติ job และไฟล์สำเร็จยังเข้าถึงได้
+      queued ทำต่อได้ และ running ที่ถูกขัดจังหวะกลายเป็น failed ตามกติกา
 - [ ] มีวิธีเรียกซ้ำที่ชัดเจน พร้อมไฟล์ตัวอย่างให้เจ้าของตรวจผล
 - [ ] เจ้าของตรวจ PDF ตัวอย่างและยอมรับว่าเพียงพอสำหรับ MVP นี้
 
@@ -84,8 +159,9 @@ binding, layout และ PDF export โดยแบ่งหน้าที่�
 - รูปภาพและระบบ crop/resize/แปลงชนิดไฟล์
 - ตารางซ้อน หัวหลายชั้น ช่องรวม คอลัมน์ซ้อน และการจัดหน้าแบบซับซ้อน
 - สารบัญอัตโนมัติ ระบบ template ทั่วไป และการจำลองหน้ารอบพิเศษเพื่อแจ้งจำนวนหน้า
-- API, DB, authentication/API key, queue/worker infrastructure, ETA,
-  distributed processing, load test และการปรับประสิทธิภาพเผื่อโหลดอนาคต
+- authentication/API key, ระบบสมาชิก/คิดเงิน, deployment สาธารณะ,
+  external queue/worker infrastructure, ETA, distributed processing,
+  load test และการปรับประสิทธิภาพเผื่อโหลดอนาคต
 
 ข้อเหล่านี้เป็นงานเลื่อนออกจาก MVP ไม่ใช่ความต้องการที่ยกเลิก
 
@@ -107,6 +183,17 @@ binding, layout และ PDF export โดยแบ่งหน้าที่�
 
 ## หลัง MVP
 
-ความต้องการที่คงไว้: บริการ API รับ docKey/ข้อมูล, เก็บโครงใน DB,
-คิวงานและสถานะ, รูปภาพ, DOCX และการรองรับเอกสาร/โหลดที่หลากหลาย
+ความต้องการที่คงไว้: บริการสำหรับผู้ใช้ภายนอกและ API key,
+คิวรองรับโหลดหนัก/หลาย worker, ความคืบหน้าแบบละเอียด, รูปภาพ, DOCX
+และการรองรับเอกสารที่หลากหลาย
 รายการนี้ไม่มีลำดับดำเนินงานและไม่เป็น acceptance ของ MVP
+
+## บันทึกการล็อกขอบเขต
+
+- 2026-10-07: เจ้าของยืนยันให้ร่างและล็อกตามข้อตกลงล่าสุด
+  เพิ่ม local API, DB relationships, job status/download และ serial processing
+  แทนร่างก่อนหน้าที่จำกัดแค่การเรียกในเครื่องโดยไม่มี API/DB
+- เอกสารนี้เป็นขอบเขตเดียวสำหรับ Export MVP v1 ไม่ใช้บทสนทนาเรื่องอนาคต
+  หรือแผน frontend เดิมมาเพิ่ม acceptance ให้รอบนี้
+- รอบการเขียนนี้เปลี่ยนเฉพาะเอกสารใน Project Control; ไม่เปลี่ยน product,
+  ไม่อ้างว่า implementation ผ่าน และไม่ปรับ system map หรือ Evidence
