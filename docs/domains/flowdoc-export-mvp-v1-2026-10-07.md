@@ -19,6 +19,10 @@ for unknown format names. This replaces the fixed-body interpretation in the
 initial draft; all unrelated exclusions remain. Subsequent owner confirmation
 sets unknown variable keys to ignore-with-warning and wrong known types to error.
 
+Owner-authorized addition, 2026-10-07: versioned Core packages, Service releases
+and an isolated local Docker run are MVP requirements. CI confirmation remains
+deferred; this does not authorize public deployment or a full release platform.
+
 Active role: Planning Partner / Documentation Synthesizer. Authority: the
 current conversation. Registered Work/Phase/Checklist/Evidence IDs: not
 applicable. Document budget: this scope document and its linked R1 design. Verification budget:
@@ -79,6 +83,8 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
     คำเตือนเก็บกับ job และคืนทาง API ไม่พิมพ์ placeholder ลง PDF
 12. มี API อ่าน contract และ normal request examples ตาม template version
     ที่ใช้จริง ตัวอย่างต้องตรวจด้วย validator เดียวกับ generation ตอนลงทะเบียน
+13. มี Core package และ Service release ที่ระบุรุ่น พร้อมชุดรัน Docker ในเครื่อง
+    และวิธีตรวจจากสภาพแวดล้อมแยกตามหัวข้อด้านล่าง ไม่ต้องมีเซิร์ฟเวอร์จริง
 
 ชื่อ field ข้างต้นใช้กำหนดความหมายในขอบเขตนี้ รูปแบบสัญญา JSON ที่แน่นอน
 ต้องกำหนดในแผนลงมือ โดยต้องไม่เพิ่มความสามารถเกินรายการนี้
@@ -97,6 +103,48 @@ MVP รอบนี้จบที่ API และ DB จริงที่ร�
 
 การใช้งาน renderer แบบไม่มี browser UI ต้องตรวจเป็น prerequisite แรก
 หากพบว่า reuse ไม่ได้ตามขอบเขต ต้องรายงานข้อจำกัดก่อนเปลี่ยนแนวทาง
+
+## แพ็กเกจ รุ่น และชุดรัน local
+
+เพิ่มตามคำสั่งเจ้าของวันที่ 2026-10-07 เพื่อป้องกันการผูกระบบกับเครื่องพัฒนา
+เป็นข้อกำหนดที่ยังต้องทำและพิสูจน์ ไม่ใช่ผลตรวจว่าชุด deploy พร้อมแล้ว
+
+- Core ต้องมีชื่อแพ็กเกจ เวอร์ชัน public exports และรายการไฟล์ที่ส่งมอบชัดเจน
+  build และแพ็กเป็น artifact จริง; Service ติดตั้งและทดสอบ artifact นั้น
+  ไม่ deep import หรืออาศัย source checkout ของ Core/ระบบเก่าข้าง ๆ
+  ช่วง local ใช้ไฟล์แพ็กเกจได้ ไม่บังคับเปิด package registry
+- Core และ Service มีเวอร์ชันอิสระ; Service ตรึง Core รุ่นแน่นอน
+  รุ่นที่ปล่อยแล้วไม่เขียนทับ เปลี่ยนเนื้อหาต้องออกรุ่นใหม่
+  รุ่นซอฟต์แวร์แยกจาก schema/contract version, template version และ DB migration
+  เลขเริ่มต้นและกติกาการเพิ่มรุ่นกำหนดในแผนลงมือก่อนออกรุ่นแรก
+- เก็บ lockfiles ของ dependency ที่ใช้ พร้อมข้อมูล release ที่ตรวจย้อนกลับได้:
+  Service/Core version, source commits, artifact checksums/image digest,
+  runtime versions และฟอนต์พร้อม hash/license ที่รวมมา
+  ตรึง base image ด้วย digest; ไม่ใช้ latest เป็นตัวระบุรุ่นที่รับงาน
+- ชุดรันเป็น Service image กับ PostgreSQL และพื้นที่ข้อมูล/ไฟล์ PDF ที่คงอยู่
+  แยก configuration และ secrets ออกจาก image; มีตัวอย่างค่าที่ไม่ใช่ secret จริง
+  เปิด API/DB สำหรับการทดลองเฉพาะ localhost ตามขอบเขต MVP
+- ชุด runtime ต้องรวม Node, native text executables, Python/fontTools และฟอนต์
+  ที่ export ต้องใช้พร้อมวิธีตรวจ prerequisite; build native executables ให้ตรง
+  OS/architecture เป้าหมายในขั้น build ไม่ build ระหว่างรับงาน
+  ไม่ใช้ Windows executable เป็นหลักฐานว่ารันใน Linux image ได้
+  รองรับเป้าหมาย container หนึ่งชุดที่ระบุในแผนก่อน ไม่เพิ่ม multi-platform matrix
+- มีขั้นตอน build/package → เริ่ม DB → migration → ลงทะเบียน template
+  → เริ่ม Service → เรียก API/อ่านสถานะ/ดาวน์โหลด PDF และวิธีหยุด/เริ่มใหม่
+  ทดสอบ release image เดียวกันตลอด ไม่ build ใหม่ระหว่างขั้นรับงาน
+  ระบุ migration compatibility ของ release; ไม่อ้างว่า rollback image แล้ว
+  DB จะย้อนกลับเอง และไม่เพิ่มระบบ rollback อัตโนมัติใน MVP
+
+การตรวจขั้นต่ำทำบนเครื่องปัจจุบันผ่าน container ที่สร้างใหม่และข้อมูลทดสอบใหม่:
+ใช้ Core artifact กับชุดรันที่กำหนด ไม่ mount source เก่าหรือ runtime/font จาก host
+เข้า container; ไม่อาศัย Rust/Python/ฟอนต์ที่ติดตั้งบน Windows
+ใช้ DB และ output volume แยกชื่อจากงานเดิม ห้ามล้างข้อมูลเดิมเพื่อทำให้ผลผ่าน
+ตรวจทั้งเริ่มจากข้อมูลว่างและ restart โดยใช้ข้อมูลชุดเดิมเพื่อพิสูจน์ persistence
+เก็บขั้นตอน รุ่น และผลตรวจให้ทำซ้ำได้ ไม่รับประกัน PDF bytes เหมือนกันทุก byte
+
+ผลนี้เรียกว่า isolated local verification ไม่อ้างว่าพิสูจน์บนเครื่องอื่นจริงแล้ว
+เครื่องชั่วคราวของ CI เป็นขั้นยืนยันภายหลังเมื่อพร้อมและตรวจสิทธิ์/ค่าใช้จ่ายแล้ว
+ไม่เป็นเงื่อนไขปิด MVP และยังไม่ติดตั้ง workflow, registry หรือ deploy สาธารณะ
 
 ## ความสัมพันธ์ DB ที่ล็อกไว้
 
@@ -156,6 +204,11 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 
 ## เกณฑ์รับงาน
 
+- [ ] Service ติดตั้ง Core artifact รุ่นที่ตรึงไว้และเรียก public exports ได้
+      โดยไม่เข้าถึง source repo เดิม; release ระบุส่วนประกอบ/รุ่นตามข้อกำหนด
+- [ ] ชุดรัน Docker ผ่าน isolated local verification จากข้อมูลทดสอบว่าง
+      จนดาวน์โหลด PDF โดยใช้ runtime/font ใน image และขั้นตอนที่บันทึกไว้
+      ไม่ mount source/runtime เดิม; ใช้ข้อมูลชุดเดิมทดสอบ restart ได้
 - [ ] เริ่ม service และ DB ในเครื่องจากขั้นตอนที่ให้ไว้ได้ รวม migration
       และการลงทะเบียนโครงตัวอย่าง โดยไม่มีหน้าบ้าน
 - [ ] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน เรียก API ด้วย docKey/JSON
@@ -197,7 +250,7 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 ## Roadmap ภายใน MVP
 
 เพิ่มตามคำขอเจ้าของวันที่ 2026-10-07 เพื่อแตกการออกแบบโดยอ้างอิงขอบเขต
-ที่ล็อกแล้ว ไม่เพิ่ม feature หรือเกณฑ์รับงานใหม่
+ที่ล็อกแล้ว รวมข้อเพิ่มเรื่องแพ็กเกจ/ชุดรันที่เจ้าของอนุมัติภายหลัง
 Roadmap นี้เป็นลำดับผลลัพธ์ ไม่ใช่ implementation plan หรือหลักฐานว่าทำได้แล้ว
 
 สถานะอัปเดต 2026-10-07: R0 ตรวจ source รอบแรกแล้ว (ยังไม่รัน export ใหม่);
@@ -225,6 +278,8 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
   ข้อผิดพลาด และ interface ที่ Service ใช้เรียก Core
 - กำหนดโครงสร้างโฟลเดอร์ การตั้งชื่อ และความรับผิดชอบของแต่ละส่วน
   พร้อมเลือก stack/runtime ที่จำเป็นตามผล R0; ไม่สร้าง framework เผื่ออนาคต
+- กำหนด package boundary, release identity, dependency/runtime pinning
+  และเป้าหมาย container หนึ่งชุดก่อนลงมือ โดยอ้างข้อกำหนดชุดรันในเอกสารนี้
 - ผลที่ต้องได้: สัญญาที่อ่านแล้วตามได้จาก input ไปถึง output พร้อม SRS
   หนึ่งโครงและตัวอย่างข้อมูลปกติ ว่าง ยาว และผิดชนิด
 - จุดจบ: อธิบายได้ว่าทุก field ลงที่ใดและใครเป็นผู้ตรวจ โดย Core ไม่ผูกกับ DB/HTTP
@@ -238,6 +293,8 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
   เฉพาะขอบเขต MVP พร้อมรักษา identity ของรายการและหัวตาราง
 - ผลที่ต้องได้: เรียก Core ในเครื่องด้วยโครงและข้อมูลแล้วได้ PDF จริง
   และข้อผิดพลาดที่ระบุ field/node ได้
+- แพ็ก Core และทดสอบ public entrypoint จาก artifact พร้อม runtime resources
+  ที่ประกาศไว้ ไม่ใช้การเรียก source ตรงเป็นหลักฐานว่าแพ็กเกจครบ
 - จุดจบ: ตรวจข้อมูลและภาพของ PDF ทั้งสามชุด ข้อความครบ ไม่ซ้ำ ไม่ทับ
   ไม่หายตามรอยต่อ และรายการว่างไม่สร้างข้อมูลปลอม
 - รองรับเกณฑ์: ความถูกต้องของข้อความ/ตาราง/PDF และ validation
@@ -249,6 +306,7 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
   การเลือก version และขอบเขต transaction ที่จำเป็น
 - ทำวิธีเริ่ม DB และลงทะเบียน template จากไฟล์ในเครื่อง
   เตรียมการบันทึก job/output สำหรับช่วง R4
+- เตรียม PostgreSQL ในชุดรัน local พร้อม migration และพื้นที่ข้อมูลแยก
 - ผลที่ต้องได้: โครงที่ลงทะเบียนแล้วโหลดกลับได้ และ job ผูก version ที่แน่นอน
 - จุดจบ: ตรวจข้อบังคับ DB, ลง version ใหม่โดยไม่เขียนทับเก่า,
   และเปิด DB กลับมาแล้วยังอ่านข้อมูลเดิมได้
@@ -261,6 +319,8 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
 - ทำการดึง queued ทีละงาน เปลี่ยนสถานะตามผลจริง และจัดการ restart
   ตามกติกาในหัวข้อ API และสถานะงาน
 - ผลที่ต้องได้: เรียกผ่าน localhost ตั้งแต่ docKey/JSON จนดาวน์โหลด PDF ได้
+- ประกอบ Service release image ที่ติดตั้ง Core รุ่นแน่นอน พร้อม runtime
+  และ configuration โดยไม่พึ่งเครื่องมือหรือ source บน host
 - จุดจบ: สามงานติดกันไม่ปนข้อมูลและ running ไม่เกินหนึ่งงาน;
   validation/not-found/render failure/file missing และ restart ให้ผลตามสัญญา
 - รองรับเกณฑ์: API ครบ flow, errors, serial processing และ restart recovery
@@ -270,6 +330,8 @@ R1 มี [ร่างการออกแบบสำหรับ review](flo
 - ใช้ขั้นตอน setup และตัวอย่างที่เก็บไว้เดิน flow ผ่าน API กับ DB จริง
   นำผลตรวจ R2–R4 มาใช้ซ้ำเมื่อยังตรงกับ candidate; ไม่เพิ่มชุดทดสอบซ้ำโดยไม่มีเหตุ
 - ตรวจความครอบคลุมกับ checklist เกณฑ์รับงานทุกข้อ พร้อมตรวจ PDF จริงกับเจ้าของ
+- ทำ isolated local verification ด้วยชุด release ที่ระบุรุ่นและข้อมูลทดสอบใหม่
+  รวม restart/persistence; การยืนยันบน CI ยังเป็นงานภายหลัง ไม่ใช่ acceptance นี้
 - ผลที่ต้องได้: วิธีรัน/เรียกที่ทำซ้ำได้ ผลตรวจที่ผูกกับเกณฑ์ และ PDF ที่เจ้าของยอมรับ
 - จุดจบ: ผ่านเกณฑ์ทั้งหมดแล้วปิด MVP ข้อที่ยังไม่ตรวจต้องระบุว่ายังไม่ผ่าน
   ไม่นำการยอมรับข้อจำกัดมาแทนข้อบังคับใน checklist
@@ -303,6 +365,8 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 - authentication/API key, ระบบสมาชิก/คิดเงิน, deployment สาธารณะ,
   external queue/worker infrastructure, ETA, distributed processing,
   load test และการปรับประสิทธิภาพเผื่อโหลดอนาคต
+- public package/image registry, CI verification และ automated deployment/release
+  platform; ข้อนี้ไม่ตัด Core artifact, Service image และชุดรัน local ที่กำหนดไว้
 
 ข้อเหล่านี้เป็นงานเลื่อนออกจาก MVP ไม่ใช่ความต้องการที่ยกเลิก
 
@@ -331,6 +395,10 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 
 ## บันทึกการล็อกขอบเขต
 
+- 2026-10-07 (แพ็กเกจและรุ่น): เจ้าของสั่งเพิ่ม Core package, Service release,
+  runtime/dependency identity และ isolated local Docker verification ลง MVP
+  พร้อมกระจายงานเข้า R1–R5; ไม่ต้องจัดหาเครื่องใหม่หรือเซิร์ฟเวอร์ก่อนเริ่ม
+  CI เป็นการยืนยันภายหลัง ไม่ใช่ข้อบังคับรับงาน และยังไม่ทำ public deployment
 - 2026-10-07 (ยืนยัน type): unknown variable key ข้ามพร้อม warning;
   known key ผิด type ปฏิเสธงาน ไม่ใช้ default กลบ รวมทุก issue ที่ตรวจได้
   เป็นการปิดสองประเด็นที่เคยค้าง ไม่เปลี่ยนนโยบาย unknown format

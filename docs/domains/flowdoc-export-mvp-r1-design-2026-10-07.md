@@ -482,6 +482,23 @@ R2 ต้องทดลอง font/Thai wrapping/row seams บนเส้น�
 
 ## 9. ส่งต่อแต่ละช่วงและเกณฑ์ review R1
 
+### ข้อเพิ่มเรื่อง package/release ที่เจ้าของอนุมัติ
+
+ข้อกำหนด canonical อยู่ที่หัวข้อ
+[แพ็กเกจ รุ่น และชุดรัน local ใน MVP](flowdoc-export-mvp-v1-2026-10-07.md#แพ็กเกจ-รุ่น-และชุดรัน-local)
+เพิ่มตามคำสั่งเจ้าของ 2026-10-07; เป็นงานออกแบบ/implementation ที่ยังไม่ผ่านการตรวจ
+
+- R1 ต้องระบุชื่อ package, public exports, packaged files, กติกา version/release
+  และ container OS/architecture เป้าหมายหนึ่งชุดในแผนลงมือก่อนออกรุ่นแรก
+- R2 ต้องทดสอบ Core ที่แพ็กแล้ว; R3 เตรียม local PostgreSQL/migration;
+  R4 ประกอบ Service image ที่ใช้ Core รุ่นแน่นอนและมี runtime/font ครบ
+- R5 ตรวจ isolated local run ตั้งแต่ข้อมูลว่างถึง PDF และ restart/persistence
+  โดยไม่ mount source เก่าหรือ runtime/font จาก host
+- แยก software/schema/template/migration versions และเก็บ release identity
+  ตาม MVP; การยืนยันบน CI และ public deployment ยังเลื่อนออกไป
+
+### การส่งต่องาน
+
 - R2 รับ template/data/binding นี้ไปออกแบบ adapter, line/layout contract,
   empty-line behavior, pagination และ font preparation; ต้องให้ template
   เป็นตัวกำหนดโครง ไม่ hardcode SRS เป็น renderer ตัวใหม่
@@ -503,6 +520,9 @@ Next decision: เจ้าของ review สัญญา template/binding แ
 
 ## Revision history
 
+- 2026-10-07: owner adds package/release and isolated local Docker acceptance
+  to MVP. R1 references that single scope authority and assigns follow-through
+  to R2–R5; no implementation, CI or deployment readiness is claimed.
 - 2026-10-07: owner-authorized correction from fixed document/whole-block binding
   to creator-defined one-level subtemplates, inline tags and ordered invocations.
   Adds versioned caller contracts/examples and warning persistence without new DB tables.
