@@ -10,7 +10,9 @@ Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 Authority: owner's request to continue toward starting the MVP, 2026-10-07.
 Status: owner authorized inline execution on 2026-10-07. Runtime discovery
 Tasks 1–3 passed after restart and bounded Docker socket recovery. Task 4
-records the result and next package-foundation plan below; no product implementation.
+records the result. The owner subsequently authorized P1–P3 inline implementation;
+that package/resource foundation passed as recorded below. The public PDF engine
+and remaining R2 work are still open.
 Registered execution IDs: not applicable. Work Size: small; Risk Tier: routine.
 Work authority for this first slice: discovery. The old Core is read-only input.
 No product-repo scaffolding, migration or map/Evidence promotion is authorized
@@ -236,7 +238,8 @@ the task-level completion record. No product or map state is promoted.
 
 ## Next implementation slice — Core package and resource boundary
 
-Proposed for review, not executed. Owner repository: `flowdoc-core`; Core owner
+Authorized inline by the owner's request to continue on 2026-10-07; P1–P3
+implemented and verified below. Owner repository: `flowdoc-core`; Core owner
 AGENTS.md must be read or established from Project Control before writing product
 code in the currently empty repository. No edits to old Core or Service in this slice.
 Use inline work and an isolated checkout if concurrent work exists. Do not create
@@ -301,3 +304,48 @@ must produce PDF through the installed public package; the discovery loader must
 not become the consumer test. Scope that implementation separately using the actual
 new module boundaries. No fake generatePdf stub or extra public low-level renderer
 API is introduced merely to claim the package gate passed.
+
+### P1–P3 result — 2026-10-07
+
+PASS for package/resource foundation only. This result closes P1–P3 criteria
+above, not the public PDF engine, R2 as a whole, or the MVP.
+
+- Core commit: `9256ab695ec067ee070cb7898d6ffa2de3b1ae14` on
+  `codex/core-package-foundation`; original empty checkout used because there was
+  no concurrent work. No merge/push, old Core changes or Service changes.
+- P1: root ESM resource API and Result/Issue contracts, declarations, locked build
+  dependencies, explicit package file list and private subpath restrictions.
+  No PDF stub, install hooks, editor or database dependency. README/AGENTS describe
+  only repo-owned boundaries. Declaration presence checked, not standalone consumer
+  TypeScript compilation.
+- P2: bundled Sarabun four styles/OFL, locked native source and portable Python
+  helper. Installed-module-relative paths, SHA-256 resource checks, actual native
+  and Python probes, writable-temp validation and structured RESOURCE_UNAVAILABLE.
+  Subsetting selects glyphs per font and rejects identical input/output paths.
+- P3: `npm run check:package` completed with exit 0. Linux build/type-check and
+  15 focused tests passed. Installed the actual tarball using a generated exact
+  integrity lock; consumer executed as 10001:10001, network none, no mounts.
+  Node 24.21.0, Python 3.11.17/fontTools 4.58.2, pinned Bookworm image digests.
+- Consumer proof: root import, internal import rejection, declaration presence,
+  excluded source/tests/native source/node_modules/secrets, different cwd, four
+  font shaping/subsetting, valid UTF-8 boundaries, unchanged source fonts,
+  missing font/executable/Python, changed hash, unwritable temp and cleanup.
+  Tarball inventory inspected: 24 intended files, about 1.3 MB compressed.
+- Artifact directory:
+  `C:/Users/nekot/Documents/GitHub/flowdoc-core/artifacts/1791381845724/`.
+  Contains `flowdoc-core-0.1.0-dev.1.tgz`, `consumer-package-lock.json`, `result.json`.
+  Tarball SHA-256:
+  `c12ed3d13787c84f5e590be90c21c8688eb5c5735d4c632ddb2e40f9809be4e6`.
+  Consumer image:
+  `sha256:1d286595ef5f68495171168cfcdfd032e09f22f9c760e616713804c930b8c2b1`.
+- Ruling: consumer lock is generated beside the specific tarball, not committed
+  under tests/consumer, because its integrity binds the produced artifact. Build
+  and consumer scripts are committed; generated artifacts remain ignored locally.
+- Read-only code review found no critical/important issues. Staged whitespace
+  check passed excluding untouched upstream OFL.txt's original trailing space;
+  license bytes retained. Added Git attributes to preserve font/license bytes and
+  source LF endings; this metadata is not packaged and does not invalidate the
+  passing artifact/runtime proof. No additional runtime change after verification.
+- No shared map or MVP checkbox promoted. HTTP/DB, binding/layout/table behavior,
+  public PdfEngine export, complete document generation and full Service Docker
+  acceptance remain future slices. Stop this foundation at its passing boundary.
