@@ -247,3 +247,8 @@ media/permissions/node master เป็น deferred ไม่ใช่ prerequis
 
 รายการนี้เป็นเกณฑ์ออกแบบ ไม่ใช่ผลทดสอบที่รันแล้ว ไม่มี runtime PASS ใหม่
 หลังอ่านร่างและปิดรายละเอียดที่ระบุ ค่อยทำ implementation plan ก่อน R4
+
+เจ้าของแจ้งอ่านแบบรวมแล้วและให้กางแผนต่อ วันที่ 2026-10-08:
+[แผนลงมือ current/version](flowdoc-export-mvp-current-version-plan-2026-10-08.md)
+เริ่มด้วยการปิด compatibility/migration mapping ก่อนแก้ product code;
+การอ่านแบบไม่ใช่หลักฐานว่า migration หรือคำสั่งใหม่ถูกทำแล้ว
