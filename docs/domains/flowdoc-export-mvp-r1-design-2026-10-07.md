@@ -641,8 +641,10 @@ R1 พร้อมให้ review เมื่อ: template/request/examples �
 Next step: [แผน R2-A ตรวจ Linux runtime ก่อนย้ายแพ็กเกจ](flowdoc-export-mvp-r2-runtime-plan-2026-10-07.md)
 แยก discovery จาก implementation; Linux runtime discovery ผ่านแล้ว มีผล/ข้อจำกัด
 และผล package/resource foundation P1–P3 ที่ผ่านแล้วอยู่ในเอกสารเดียวกัน
-Core commit `9256ab695ec067ee070cb7898d6ffa2de3b1ae14`; ยังไม่ถือว่า public PDF engine,
-งาน binding/layout/table หรือ R2 ทั้งหมดผ่าน
+Foundation commit `9256ab695ec067ee070cb7898d6ffa2de3b1ae14` และ P4 public PDF engine
+สำหรับ resolved TextBlock ผ่านแล้วที่ `04d7a1e7ec985f0b0e8a87d038f95f80a35eb623`
+พร้อมแพ็กเกจ `0.1.0-dev.2` และผลตรวจ PDF จริงตามแผน R2-A
+ยังไม่ถือว่างาน binding/table, Service หรือ R2 ทั้งหมดผ่าน
 
 
 ## Revision history

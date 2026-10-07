@@ -353,7 +353,8 @@ above, not the public PDF engine, R2 as a whole, or the MVP.
 ## P4 — Public PDF engine implementation plan
 
 > For agentic workers: use `superpowers:executing-plans` for inline execution
-> after written-plan review. This section is proposed, not implemented.
+> after written-plan review. Owner approved this plan with "ok โคตามนี่เลยนะ";
+> execution and final evidence are recorded below.
 
 **Goal:** An installed Core tarball generates a PDF from resolved TextBlocks
 through `createPdfEngine(...).generatePdf(...)`, without source-repo access.
@@ -485,3 +486,89 @@ Files: create `tests/consumer/checkPdf.mjs`,
 - [ ] Review coverage and commit passing Core changes; update this plan with
   exact evidence. Stop at P4 acceptance. Next plan is schema/prepare/compose and
   simple table flow, preserving this public API rather than adding a second path.
+
+### P4 execution ledger — 2026-10-07
+
+- Owner authorized inline execution of the written P4 plan. Core started clean
+  from 9256ab6 on a new `codex/public-pdf-engine` branch in the existing checkout;
+  no concurrent work or real separate WORK dispatch. A fresh read-only code
+  reviewer covered the whole candidate as required by executing-plans.
+- Ruling: retain extracted PDF primitives as private JavaScript behind a typed
+  TypeScript writer facade — avoids rewriting existing font/Unicode/PDF-object
+  algorithms solely for strict array indexing — cost is no static type checking
+  inside that private extracted module; writer and actual PDF tests cover it.
+  Old report markers, proof profiles, image code and source imports are excluded.
+- Ruling: add glyph ink boxes and face ascent/descent to native JSON while keeping
+  Rustybuzz invocation and Cargo.lock unchanged — actual ink extents are needed
+  to reject clipping/overlap — native ABI consumers retain all old fields.
+- Ruling: use explicit A4 text-only resolved graph with strict unsupported-node/
+  style rejection; no public glyph-command escape hatch and no generatePdf stub.
+  Earlier foundation helper remains public; tables and binding stay future work.
+- TDD: writer, layout/validation, runtime decoding and engine tests first failed
+  on absent implementation, then passed. Engine tests cover isolated overlapping
+  generations, partial-output cleanup, native/subset/writer failures and immutable
+  input. Native decoder tests include UTF-8/non-BMP boundaries and invalid glyphs.
+- Runtime finding: 12-pt overflow sample needs 18.36 pt of actual Thai ink; initial
+  18-pt lineHeight correctly returned LAYOUT_FAILED. The fixture now requests
+  20 pt rather than weakening the no-overlap check. R1's illustrative 12/18 style
+  is not a guarantee for every input; template/layout acceptance must account for
+  real ink when binding is implemented. Four-style body remains 14/25 pt.
+- Review found one Important issue: non-string textStyleId could be coerced or
+  throw during validation. Added a string guard and red-to-green array/object/null
+  regressions, including the engine JSON boundary. Minor offset-test weakness was
+  corrected by asserting the exact PDF text matrix. No other Critical/Important
+  finding was reported; the reviewer did not self-promote runtime evidence.
+- Host build and six test files passed 46 tests before the final packed run.
+  Final package/visual acceptance and commit identity are recorded in the result
+  below rather than treating this execution ledger as product Evidence.
+
+### P4 result — 2026-10-07
+
+PASS for the public resolved-TextBlock PDF engine/package prerequisite. All
+P4.1–P4.3 criteria are covered by the following result; plan checkboxes retain
+their original form. This is not table, binding, Service or full MVP acceptance.
+
+- Core commit `04d7a1e7ec985f0b0e8a87d038f95f80a35eb623` on
+  `codex/public-pdf-engine`, clean after commit. No merge or push performed.
+- Package `@flowdoc/core@0.1.0-dev.2`; 42 allowed files inspected. Native resource
+  JSON adds real ink metrics; font bytes/license and dependency lock versions
+  retained. Public engine returns PDF bytes/pageCount through the R1 Result envelope.
+- Final `npm run build`, `npm test`: PASS, six files / 46 tests. Final Linux
+  package build ran the same checks, built native tools and generated manifest.
+  Installed exact tarball in an isolated Node 24.21.0 Linux/amd64 consumer,
+  user 10001, network none, mounts empty; consumer exit 0.
+- Consumer: root resources/engine import; four styles; two-page flow; unsupported
+  table rejection; concurrent calls; missing resource rejection; no artifact on
+  failure; empty temp directory after calls; unchanged input and source fonts.
+- Artifacts:
+  `C:/Users/nekot/Documents/GitHub/flowdoc-core/artifacts/1791383680551/` contains
+  exact tarball/consumer lock, result JSON, host-checks.json, inventory.txt,
+  generated PDFs, expected/extracted text, font reports and rendered PNGs.
+  Tarball SHA-256:
+  `8cc546db34eb8e3b8186b155d80d1443cf219c8c6054347b4c681fb7efeb92d5`.
+  Consumer image:
+  `sha256:5a3f32ffa8578e137c05c6237aa3c08f942cb1b5091fd2fc338818f57d109904`.
+- `four-styles.pdf`: one page, 143131 bytes,
+  SHA-256 `d614f99db9f2155de1832f7e638d84c8637341c84c3db2c73c80e67f3bb011f5`.
+  `overflow.pdf`: two pages, 133288 bytes,
+  SHA-256 `b1d820a605af6830361f4bc32b89e501b55b5b70ca6c3a43c61c0fc5903f760d`.
+- Host pdftotext matched expected text exactly ignoring whitespace only;
+  pdffonts confirmed four / one embedded subset fonts with Unicode maps. Inspected
+  all three pdftoppm-rendered pages: no clipping, line overlap, displaced Thai marks
+  or missing text; page seam keeps entries 036 then 037. Final PDF bytes exactly
+  match the visually checked candidate from artifacts/1791383480379, so visual,
+  font and text checks were reused for those identical PDFs after validation repair.
+- Verification-only inventory helper initially treated Windows CRLF as part of
+  filenames; corrected its line splitting and confirmed 42 allowed entries.
+  No source repair or artifact rebuild was needed for that helper correction.
+- Completed consumer containers removed by the script after output retrieval.
+  Failed diagnostic container b426f88bd53422fde50f5b76523035d0722ff707622202e79f3b073993b983de
+  is retained with the initial line-height failure; no broad Docker cleanup.
+- Known limits: text-only graph, fixed supported styles, no font fallback,
+  line-height too small for actual ink fails, 65535 CIDs/font/document limit,
+  30-second/16-MiB child-process limits. These are explicit failures rather than
+  claims of arbitrary document capacity. No performance or API responsiveness gate.
+- Next: a separately scoped validateTemplate/prepareGeneration/composeDocument
+  implementation using R1 global/local/item policies, then table flow. Preserve
+  this engine's public resolved-graph boundary; no new editor/import scope or
+  shared map/MVP readiness promotion from this result.
