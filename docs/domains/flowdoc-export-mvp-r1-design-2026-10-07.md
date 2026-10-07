@@ -21,6 +21,11 @@ and diff checks; no product tests or scaffolding in this design task.
 
 ## 1. ทางเลือกและข้อเสนอ
 
+Design follow-up 2026-10-08: เจ้าของให้แยก current/version และนิยามรายตัวตาม
+[ร่าง DB ฉบับใหม่](flowdoc-export-mvp-current-version-design-2026-10-08.md)
+ส่วนนี้ปรับแนวทาง persistence เดิม ไม่ได้เปิด type ใหม่หรือเปลี่ยน Core contract
+ยังไม่มี migration; อ่านร่างใหม่ก่อนนำข้อจำกัดตารางของ R1 ไปวางแผน R4
+
 เสนอให้ใช้ node v4 เฉพาะส่วนที่ MVP ต้องใช้ พร้อม template envelope และ binding
 ขนาดเล็ก แล้วเรียกกลไกข้อความ/ตาราง/PDF ที่คัดจากของเดิมผ่าน adapter ภายใน
 

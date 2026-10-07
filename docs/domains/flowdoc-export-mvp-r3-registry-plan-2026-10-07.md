@@ -118,3 +118,12 @@ not evidence of queued PDF execution. HTTP, worker state transitions, output
 download, resource limits and end-to-end generation remain R4/subsequent locked
 MVP work. Next: accept API input through Core, pin and store a queued job, execute
 it with the packaged renderer, then expose status and the resulting PDF.
+
+### Owner follow-up — 2026-10-08
+
+R3 acceptance above remains complete for its original scope. Before R4 the owner
+requested a revised persistence design separating mutable current records from
+cloned version tables, variable definitions and a shared type master. See the
+[current/version design](flowdoc-export-mvp-current-version-design-2026-10-08.md).
+This is additional design work, not a reopened R3 implementation or a claim that
+its database has changed. Review the draft and migration plan before R4 work.
