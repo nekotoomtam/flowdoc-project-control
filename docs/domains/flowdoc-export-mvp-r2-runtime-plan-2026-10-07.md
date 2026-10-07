@@ -572,3 +572,5 @@ their original form. This is not table, binding, Service or full MVP acceptance.
   implementation using R1 global/local/item policies, then table flow. Preserve
   this engine's public resolved-graph boundary; no new editor/import scope or
   shared map/MVP readiness promotion from this result.
+  The reviewable next slice is the
+  [binding and composition plan](flowdoc-export-mvp-r2-binding-plan-2026-10-07.md).
