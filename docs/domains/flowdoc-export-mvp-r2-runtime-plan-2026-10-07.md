@@ -8,8 +8,9 @@
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 Authority: owner's request to continue toward starting the MVP, 2026-10-07.
-Status: owner authorized inline execution on 2026-10-07. Task 1 started;
-blocked on host Virtual Machine Platform prerequisite. Tasks 2–4 not run.
+Status: owner authorized inline execution on 2026-10-07. Runtime discovery
+Tasks 1–3 passed after restart and bounded Docker socket recovery. Task 4
+records the result and next package-foundation plan below; no product implementation.
 Registered execution IDs: not applicable. Work Size: small; Risk Tier: routine.
 Work authority for this first slice: discovery. The old Core is read-only input.
 No product-repo scaffolding, migration or map/Evidence promotion is authorized
@@ -166,6 +167,8 @@ target, not an acceptance waiver or a completion estimate established by this pl
 
 ## Execution checkpoint — 2026-10-07
 
+Historical checkpoint; superseded by the successful resumed run below.
+
 - Core input: `fa76c74356e5cfc9296f6a86c0bfac690e8416f6`, clean working tree;
   source inspected only, no copy or modification made. About 195 GB free on C:.
 - Docker client 28.1.1, Windows/amd64, context `desktop-linux`. Initial engine
@@ -183,3 +186,118 @@ target, not an acceptance waiver or a completion estimate established by this pl
   Do not treat startup of the desktop UI as proof the Linux engine is healthy.
   [Microsoft prerequisite instructions](https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-3---enable-virtual-machine-feature)
   describe the feature enablement and restart. No Windows restart is initiated by this task.
+
+## Resumed result — 2026-10-07
+
+PASS for the bounded Linux runtime probe, not Core package/R2/MVP acceptance.
+Task checkboxes above preserve the pre-execution plan; the following result is
+the task-level completion record. No product or map state is promoted.
+
+- Task 1: host reboot observed at 20:38:42 local time; WSL 2 responded. Docker
+  then crashed on inaccessible temporary `dockerInference` socket. After normal
+  stop failed, stopped only this attempt's Docker processes and renamed the
+  two-socket directory to
+  `C:/Users/nekot/AppData/Local/Docker/run-before-flowdoc-20261007-2045`.
+  Backup retained; no factory reset, images, volumes or Docker settings changed.
+  Restarted Desktop; engine confirmed `linux/x86_64`, server 28.1.1.
+- Task 2: built native tools from unchanged Core source and Cargo.lock; retained
+  source commit `fa76c74356e5cfc9296f6a86c0bfac690e8416f6`. Core working tree remained
+  clean. Scratch build context was about 489 KB, excluding node_modules/target/editor.
+- Exact tested runtime: Node 24.21.0, Python 3.11.17, fontTools 4.58.2,
+  rustc 1.99.0; Rustybuzz 0.20.1 and ICU segmenter/data 2.2.0 via original lock.
+  Base images pinned to digests in archived Dockerfile; these are tested candidates,
+  not a promise to support every release of these version families.
+- Ruling: retained only Zod's existing 4.4.3 resolved URL/integrity in a minimal
+  scratch npm lock, rather than install the old application's entire dependency
+  tree. Original lock untouched. Three TypeScript source modules were invoked via
+  Node type stripping, not the old index barrel/Vite or a new Core package.
+- Scratch-only adaptations: relative contract import, subset helper path metadata,
+  Linux executable paths and explicit missing-executable diagnostics. Added scalar
+  boundary assertions before final build. No text/PDF algorithm repair was needed.
+- Task 3: final image
+  `sha256:0097d4d06a86291ee97ea5fa15f7e101d810d5c851aad8a939b64ca8c7320e36`
+  generated one A4 page, 20 glyph runs, 983 glyphs, 4 embedded subset fonts,
+  143987 bytes. Ran as `10001:10001`, network `none`, mounts `[]`, exit 0.
+- Positive: extracted text matches all 20 lines ignoring layout whitespace;
+  visual inspection found no clipping/overlap/displaced Thai marks. Final PDF
+  hash equals the visually inspected output:
+  `c01bceb9ce706bdb0817d81843c6de885c24648dd556a9a84168329943316f01`.
+  Source font/license hashes remained unchanged. No generic layout/table claim.
+- Negative copies: missing Regular font fails ENOENT naming its path; missing
+  shaper fails RESOURCE_UNAVAILABLE naming executable. Both exit 2, no PDF success.
+  These are probe diagnostics; public product error normalization is still future work.
+- Artifacts: `C:/Users/nekot/Downloads/flowdoc-linux-runtime-2026-10-07/`
+  contains PDF, checks.json, inputs.json, result.json and disposable-probe-source.zip.
+  Source archive makes the declared build inputs retrievable beyond temporary storage.
+- Scratch: `C:/Users/nekot/AppData/Local/Temp/flowdoc-linux-5b12c7cc7e484287a2f6000eea37515d`.
+  Images retained for reuse; only named completed probe containers may be removed.
+- Task 4: proceed to the package-foundation implementation slice below. API/DB,
+  generic binding/layout/table export and isolated full Service acceptance remain open.
+
+## Next implementation slice — Core package and resource boundary
+
+Proposed for review, not executed. Owner repository: `flowdoc-core`; Core owner
+AGENTS.md must be read or established from Project Control before writing product
+code in the currently empty repository. No edits to old Core or Service in this slice.
+Use inline work and an isolated checkout if concurrent work exists. Do not create
+separate execution rooms or registry records merely for this package foundation.
+
+### P1 — Package skeleton and shared result contract
+
+Files to create: `package.json`, `package-lock.json`, `tsconfig.json`, `.gitignore`,
+`src/index.ts`, `src/result.ts`, `tests/packageContract.test.ts`,
+`scripts/checkPackedConsumer.mjs`. Package: `@flowdoc/core@0.1.0-dev.1`, ESM.
+
+- [ ] Define `Issue = {code: string; path: string; message: string}` and
+  `Result<T> = {ok:true; value:T; warnings:Issue[]} | {ok:false; issues:Issue[]; warnings:Issue[]}`.
+  This is the base envelope; later binding tasks add the R1 source context fields.
+- [ ] Write failing package consumer checks: root import/type declarations exist,
+  unlisted internal subpaths cannot be imported, and packed files exclude source,
+  tests, secrets and editor artifacts. Do not assert the complete PDF API exists yet.
+- [ ] Implement build/exports/files boundaries and runnable `npm run build`,
+  `npm test`, `npm run check:package` commands. Pin exact tool versions in the
+  initial lock after checking Node 24.21.0 compatibility; no unbounded latest.
+- [ ] Run the focused checks, review packaged contents and commit passing foundation.
+
+### P2 — Bundled resources and native runtime build
+
+Files to create: `src/runtime/exportResources.ts`, `src/runtime/loadBundledResources.ts`,
+`runtime/python/fontSubset.py`, `runtime/requirements.txt`, `assets/fonts/*`,
+`scripts/buildNative.mjs`, `scripts/buildResourceManifest.mjs`,
+`tests/resources.test.ts`, plus minimal native crate source/Cargo.lock and
+`Dockerfile.package` for Linux build. Native output goes to `runtime/linux-x64/`.
+
+- [ ] Define `loadBundledResources({pythonExecutable,tempRoot}): Promise<Result<ExportResources>>`;
+  ExportResources contains explicit shaper/segmenter/helper paths, tempRoot and
+  the four font IDs/paths/hashes. Resolve bundled paths relative to the installed
+  module location, not process.cwd() or a caller repository.
+- [ ] Write failing tests for missing font/executable, hash mismatch, wrong platform,
+  unavailable Python/fontTools and an unwritable temp location. Assert stable
+  RESOURCE_UNAVAILABLE issues; no silent fallback or source-font modification.
+- [ ] Reuse only the now-proven native source/subset helper and Sarabun licenses;
+  build under the tested glibc target and generate a deterministic resource manifest.
+  Preserve Cargo.lock. Do not put a compiler or download/build postinstall in package.
+- [ ] Test successful resolution from a different cwd and failure cases in disposable
+  package copies; check resources match generated hashes, then commit.
+
+### P3 — Install the actual tarball in an isolated consumer
+
+Files to create: `tests/consumer/package.json`, `tests/consumer/package-lock.json`,
+`tests/consumer/checkResources.mjs`, `Dockerfile.consumer`; extend P1 package script.
+
+- [ ] Pack once from the passing Linux build. Stage that exact tarball and checksum
+  into the consumer build context and install using its recorded lock/integrity.
+- [ ] Consumer receives no Core source checkout. Import the root package, load all
+  resources, and execute bundled shaper/segmenter on Thai text using an explicitly
+  provided Python runtime. Run without network, mounts or root privileges.
+- [ ] Require no missing glyphs, UTF-8-aligned break offsets, correct font hashes,
+  stable resource errors and no source-file mutation; retain tarball/version/checks.
+- [ ] Stop this slice when package/resource criteria pass; record it as foundation
+  only. This slice deliberately does not satisfy the R1 public PDF engine gate.
+
+Next slice after P3: implement validate/prepare/compose and the generic measured
+layout/PdfEngine contract from R1, including TextBlock/table fixtures. Its consumer
+must produce PDF through the installed public package; the discovery loader must
+not become the consumer test. Scope that implementation separately using the actual
+new module boundaries. No fake generatePdf stub or extra public low-level renderer
+API is introduced merely to claim the package gate passed.

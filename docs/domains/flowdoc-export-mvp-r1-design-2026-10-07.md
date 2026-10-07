@@ -590,9 +590,11 @@ consumer ไม่เห็น repo ต้นทาง ไม่ mount source/ru
 | Service integration | ใช้ artifact รุ่นเดียวกับที่ทดสอบ และ structured errors ผ่านขอบเขตเดิม |
 | Local release | จาก DB ว่าง → migration/register → API/status/download → restart ยังอ่านงาน/ไฟล์ได้ |
 
-สถานะปัจจุบัน: หน้าทดลอง Sarabun บน Windows ผ่านการดูของเจ้าของ แต่ไม่ได้มาจาก
-Core package ใหม่; Docker engine ยังไม่ทำงานในการตรวจล่าสุด และยังไม่ยืนยัน
-PostgreSQL connection/Linux runtime ดังนั้นช่องตรวจข้างต้นยังไม่ใช่ PASS
+สถานะอัปเดต 2026-10-07: Windows probe ผ่านการดูของเจ้าของ และ Linux runtime
+probe ผ่านการสร้าง/ตรวจ PDF Sarabun สี่แบบแล้วตามผลในแผน R2-A ที่ลิงก์ด้านล่าง
+Docker engine ใช้งานได้หลัง restart และแก้ socket ชั่วคราว; PostgreSQL ยังไม่ตรวจ
+probe เรียก source ที่คัดมา ไม่ใช่ Core package ใหม่ ดังนั้น package/Service gates
+ในตารางข้างต้นยังไม่ใช่ PASS
 การติดตั้ง runtime อาจใช้ network ในขั้น build; ไม่อ้าง offline installation
 CI บนเครื่องอื่นยังเลื่อนตาม MVP ไม่เพิ่มเป็นเงื่อนไขของจุดตรวจนี้
 
@@ -637,8 +639,8 @@ R1 พร้อมให้ review เมื่อ: template/request/examples �
 เกณฑ์นี้ไม่เท่ากับ R2 runtime ผ่าน
 
 Next step: [แผน R2-A ตรวจ Linux runtime ก่อนย้ายแพ็กเกจ](flowdoc-export-mvp-r2-runtime-plan-2026-10-07.md)
-แยก discovery จาก implementation เพราะ Windows probe ยังไม่พิสูจน์ Linux
-แผนนี้รอ review และยังไม่เริ่ม; เมื่อได้ผลจึงล็อกแผน Core package และงาน R2 ที่เหลือ
+แยก discovery จาก implementation; Linux runtime discovery ผ่านแล้ว มีผล/ข้อจำกัด
+และแผน package foundation สำหรับ review อยู่ในเอกสารเดียวกัน งานผลิตภัณฑ์ยังไม่เริ่ม
 
 
 ## Revision history
