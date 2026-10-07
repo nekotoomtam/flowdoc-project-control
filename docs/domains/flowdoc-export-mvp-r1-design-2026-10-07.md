@@ -636,8 +636,9 @@ R1 พร้อมให้ review เมื่อ: template/request/examples �
 และ ownership ชัดเจน นโยบาย unknown variable และ wrong type ได้รับการยืนยันแล้ว
 เกณฑ์นี้ไม่เท่ากับ R2 runtime ผ่าน
 
-Next decision: เจ้าของ review สัญญา template/binding และขอบเขต repo นี้
-จากนั้นจึงทำ implementation plan สำหรับ R2 ที่มี prerequisite probe ชัดเจน
+Next step: [แผน R2-A ตรวจ Linux runtime ก่อนย้ายแพ็กเกจ](flowdoc-export-mvp-r2-runtime-plan-2026-10-07.md)
+แยก discovery จาก implementation เพราะ Windows probe ยังไม่พิสูจน์ Linux
+แผนนี้รอ review และยังไม่เริ่ม; เมื่อได้ผลจึงล็อกแผน Core package และงาน R2 ที่เหลือ
 
 
 ## Revision history
