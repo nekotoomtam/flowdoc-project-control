@@ -148,3 +148,7 @@ Completed consumer containers removed after retrieval; no broad Docker cleanup.
 - Next: owner review of the sample PDF, then R3 DB/template registration and R4
   API/job lifecycle within locked MVP. No frontend/DOCX/images added. This result
   does not itself complete the end-to-end MVP or promote shared system maps.
+
+Owner subsequently accepted the PDF result and authorized continuation. R3
+implementation and acceptance are recorded in the
+[R3 registry record](flowdoc-export-mvp-r3-registry-plan-2026-10-07.md).
