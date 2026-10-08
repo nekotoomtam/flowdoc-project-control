@@ -24,7 +24,7 @@ No separate agent rooms. Record progress here, not in product plans or maps.
   Prove landscape/portrait, alpha, orientation, corrupt/unsupported/oversized input,
   small-image warning, invalid frame, cancellation and timeout cleanup. Test module
   first for missing capability, then implement and verify local and Linux package.
-- [ ] B / I0+I3: Core image field/block validation, binding, prepared resource map,
+- [x] B / I0+I3: Core image field/block validation, binding, prepared resource map,
   layout and PDF JPEG/RGB-alpha objects. Preserve old snapshots; image frame moves
   intact across pages and over-page frame fails validation. Tests cover missing
   bindings/resources, malicious lengths, deduplication and non-image regressions.
@@ -124,3 +124,50 @@ SharedArrayBuffer views. All final diff checks passed. Package metadata remains
 development 0.1.0; diagnostic tarballs are not published or used to replace the
 accepted Service vendor artifact. Core release/tag still equal `1aeacd0`; no push,
 tag or release changes. No maps updated. Next: image variable/binding, then C/D.
+
+## Stage B2 and image master result — 2026-10-08
+
+Owner confirmed adding the image variable master. Core commit `e457f1b` and
+Service commit `9644a11` complete B on development branches. Inline execution IDs
+remain N/A. This update records bounded results, not whole-release readiness.
+
+Service migration `005_image_variable_type.sql` adds `110004 image` to the existing
+variable type master. Current and version variables reference the same master;
+publication creates independent version variable IDs and preserves their types
+after current variables are removed. No node master tables are introduced.
+URL and uploaded-file sources remain resource source kinds, not variable types.
+
+Core model 5 templates bind global/local image fields to root image blocks using
+resource UUID strings. The node owns width/height. Optional omitted images bind
+to an empty value; required and supplied values are validated. URL/Base64 values,
+image fields in array items, table-cell images and model 4 image templates remain
+unsupported. Existing non-image contracts are preserved.
+
+Evidence and coverage:
+
+- Core `tests/binding/imageFields.test.ts` covers scoped binding, invalid values,
+  legacy/array rejection and optional images. `artifacts/image-binding-all.log`
+  records 139 passing tests; build passed.
+- Core `artifacts/1791453902993/result.json` records the passing Linux/amd64 packed
+  consumer. `tests/consumer/checkImages.mjs` also exercises the public template to
+  bound-image PDF path, producing `bound-image.pdf` in that artifact directory.
+- Service `tests/image-master.test.mjs` covers master mapping, publication isolation,
+  master FK protection and admission guarding. Upgrade coverage confirms migration
+  005 preserves existing domain rows. Final packaged database run
+  `artifacts/1791454119696/result.json`: 81 passed, zero failed/skipped, including
+  existing export and persistence regressions.
+- Service pins Core 0.1.1 from commit `e457f1b7698c3ff944082371d47f8e3db29be557`;
+  SHA-256 `a61f7040c039ee214abe5b06651f4e869bdc3b79e89a02e15f254cf0c2d52db8`.
+  Vendor verification passed. Service stays development 0.1.1.
+
+Failing checks exposed an old non-string-to-array mapping fallback and admission
+of image jobs before resources were connected. Both were corrected. Until C is
+implemented, selected image templates return `IMAGE_JOBS_UNAVAILABLE` (HTTP 422)
+before job insertion, avoiding a successful export with silently missing images.
+Bounded independent review found no remaining actionable defects.
+
+Product working trees were clean after commits; final diff checks passed and test
+containers were stopped. Release/tag refs remain Core `1aeacd0` and Service
+`ec51ce5`; no push, release promotion or map update. C/D remain pending, including
+resource claims, preparation-to-job wiring, actual-size legibility and constrained
+memory acceptance. These results do not establish end-to-end API image support.
