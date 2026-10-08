@@ -275,6 +275,132 @@ Service เป็นเจ้าของการดึง/พัก/เตร�
 ถ้าพบ scope เพิ่ม ให้ทบทวนขอบเขตและเกณฑ์จบของรุ่นก่อนขยาย ไม่เลื่อนงานเข้าไปเงียบ ๆ
 ไม่มี ETA หรือคำรับรองโหลดหนักจาก roadmap นี้ และไม่มีการเปิดห้องงานเพิ่มโดยอัตโนมัติ
 
+## U0 — ผลตรวจของเดิมและแบบสัญญาสำหรับทบทวน
+
+ตรวจ source Service บน branch พัฒนา 2026-10-08 แบบ read-only:
+
+| จุดตรวจ | ข้อเท็จจริงจาก source | ผลต่อแบบใหม่ |
+| --- | --- | --- |
+| `src/http/server.ts`, `src/server.ts` | JSON body limit เริ่มต้น 2 MiB, ไม่มี upload routes | ไม่ยกเพดานทุก route เพื่อรับรูป; แยก binary stream กับ Base64 ขนาดเล็ก |
+| `src/jobs/admission.ts` | เก็บ original_input และ prepared_input เป็น JSON ทั้งคู่ | อย่าส่ง Base64 ผ่านเส้นนี้; job ใช้ resource references เมื่อเชื่อมใน 0.1.2 |
+| `src/storage/pdf-files.ts` | ชื่อและ cleanup เป็นของ PDF โดยเฉพาะ มี active-file protection ใน process | แยก resource storage และสถานะ DB; ไม่ปน cleanup กับ PDF |
+| `src/jobs/processor.ts` | coordinator เดียวด้วย advisory lock; running ที่ขัดจังหวะเป็น failed | ไม่เพิ่ม worker cluster; ใช้ขอบเขต single-instance เดิมและวาง recovery ของ uploads แยก |
+| `src/db/migrate.ts` | migration เรียงลำดับและตรวจ checksum | เพิ่ม migration ใหม่หลัง 003 ไม่แก้ของเดิม |
+| `compose.yaml` | มี volume DB/output และ private network แบบ internal | เพิ่ม volume staging; URL fetch จริงใน 0.1.2 ต้องตัดสินใจ outbound access ก่อน ไม่อ้างว่ารับ URL แล้วดึงได้ในชุดเดิม |
+
+ผลตรวจนี้เป็นการอ่าน implementation ไม่ใช่ผลทดสอบพฤติกรรมใหม่
+แบบต่อไปนี้เป็นข้อเสนอ U0 เพื่อ review; U1 ยังไม่เริ่มและ schema/API ยังไม่ปล่อย
+
+### สัญญา API ที่เสนอ
+
+ใช้ Result envelope เดิม `{ok,value,warnings}` / `{ok:false,issues,warnings}`
+โดยไม่คืน filesystem path, credential หรือ raw URL ที่มีข้อมูลลับใน error/log
+
+| Endpoint เสนอ | หน้าที่และผล |
+| --- | --- |
+| `POST /uploads` | รับ manifest ของรายการทั้งหมด; ตอบ 201 พร้อม uploadId, resourceId ต่อ item, limits และ expiresAt; รองรับ requestKey สำหรับ retry การสร้างชุด |
+| `PUT /uploads/:uploadId/items/:resourceId/content` | ส่ง binary JPEG/PNG ของรายการหนึ่งเป็น stream; บันทึกครบจึงตอบ receipt; ไม่ใช้ filename ของผู้เรียกเป็น path |
+| `PUT /uploads/:uploadId/items/:resourceId/base64` | ส่ง JSON `{data: base64}` สำหรับภาพเล็ก; ตรวจเพดานทั้ง encoded/decoded และรูปแบบ Base64 ก่อนประกาศว่ารับครบ |
+| `GET /uploads/:uploadId` | คืนสถานะชุดและราย item, bytes/counts ที่รับจริง, warnings, expiresAt; อ่านอย่างเดียวไม่ต่ออายุ |
+| `POST /uploads/:uploadId/finalize` | เปลี่ยน open → ready เมื่อ binary items รับครบและ URL descriptors ผ่านกฎ; เรียกซ้ำคืนผลเดิม ไม่สร้าง job |
+
+manifest ตัวอย่าง (ชื่อ field ยังรอรับแบบ):
+
+```json
+{
+  "requestKey": "document-batch-001",
+  "items": [
+    {"key": "cover", "source": "upload", "mediaType": "image/jpeg", "byteSize": 524288},
+    {"key": "diagram", "source": "url", "url": "https://example.org/diagram.png"}
+  ]
+}
+```
+
+key ไม่ซ้ำภายในชุด และ resourceId เป็น UUIDv7 แยกจาก key; manifest ถูกตรึงหลังสร้าง
+เปลี่ยนรายการสร้างชุดใหม่ ห้าม finalize ขณะที่รายการยัง receiving หรือ incomplete
+binary retry ใช้ item เดิม: completed content ที่ hash/size ตรงกันคืน receipt เดิม
+ถ้าต่างกันให้ conflict; attempt ที่ขาด/ผิดล้างไฟล์บางส่วนก่อนรับใหม่
+requestKey เดิมกับ manifest เดิมคืนชุดเดิม; payload ต่างกันเป็น conflict
+หลังหมดอายุ key เดิมไม่ฟื้นชุด ให้ใช้ key ใหม่
+
+URL item ใช้สถานะ declared ไม่ใช้ received: ready หมายถึงคำขอและ upload bytes
+ครบพร้อมส่งต่อ ไม่ใช่รูปทุกใบใช้งานได้หรือถูกดาวน์โหลดแล้ว
+ใน 0.1.1 ตรวจรูปแบบ URL เท่านั้น ไม่ fetch; 0.1.2 fetch ภายใต้กฎ DNS/IP/redirect,
+ขนาดและ timeout ก่อน renderer ใช้งาน เสนออนุญาต HTTPS ไม่มี embedded credentials
+และไม่มี custom authentication headers; สิทธิ์ภายนอกใช้ผู้เรียกส่งไฟล์เอง
+
+สถานะผิดเสนอ: 400 รูปแบบคำขอผิด, 404 ไม่พบชุด/item, 409 สถานะหรือ retry ขัดกัน,
+410 หมดอายุ, 413 เกินขนาด, 422 manifest/ข้อมูลไม่ผ่านกฎ, 503 พื้นที่/ระบบไม่พร้อม
+ชนิดภาพจริงและการ decode ที่หนักอยู่ 0.1.2; การยอมรับ MIME ตอนรับไม่ใช่หลักฐานว่า
+ภาพ valid ใน PDF transport error ตอน upload ต้องแก้ให้ครบก่อน finalize ไม่ใช่
+image warning ที่ renderer ข้ามได้
+
+### DB และไฟล์ที่เสนอ
+
+เพิ่ม `upload_sessions` และ `upload_items` ใน migration ใหม่ (ชื่อเสนอ
+`004_upload_staging.sql`); ยังไม่เพิ่มตาราง library หรือแก้ template snapshot
+
+- sessions: id, request_key unique ในขอบเขต local service ปัจจุบัน,
+  manifest_digest, status, created_at, updated_at, last_progress_at, ready_at,
+  expires_at, absolute_expires_at และ revision; ภายหลังมี tenant ต้อง scope key ใหม่
+- items: id, upload_id FK, key, source_kind, declared_media_type,
+  expected_bytes, received_bytes, checksum, internal storage key หรือ URL,
+  status, attempt_id, error code, created_at, updated_at; unique(upload_id,key)
+- ความสัมพันธ์หนึ่งชุดมีหลายรายการ; byte payload อยู่ volume staging ไม่อยู่ JSONB
+  DB เก็บ metadata และ reference เท่านั้น; ห้ามใช้ URL/path เป็น id หรือ path ดิสก์
+- จัดไฟล์ตาม session/item/attempt ที่ระบบสร้าง เขียน `.part` แล้วปิด/rename ก่อน
+  commit receipt; ถ้า DB commit ไม่ชัดเจนให้ reconcile ห้ามรายงานสำเร็จจาก rename อย่างเดียว
+- restart ทำ receiving attempt ที่ไม่จบเป็น incomplete และ reconcile orphan;
+  ready files ที่มี receipt ต้องตรวจได้ ไม่ถือว่าแค่แถว DB อยู่แปลว่าไฟล์อยู่
+
+state ชุด U1–U4: open → ready → expired (terminal); incomplete item ส่งใหม่ได้ใน open
+ไม่ให้เปลี่ยน manifest/bytes หลัง ready การลบจริงมีขั้น retiring/retry ภายใน
+เพื่อไม่ลืมลบเมื่อ DB/ดิสก์ผิดพลาด โดยไม่เพิ่มรายละเอียดนี้เป็นสถานะ UX ที่จำเป็น
+
+เสนอหนึ่งชุดต่อหนึ่ง job ใน 0.1.2 เพื่อลดความกำกวมของ TTL/reuse:
+เพิ่ม job linkage และ claimed เมื่อเชื่อม consumer จริง ไม่เปิด claim endpoint จำลอง
+ใน 0.1.1 การ claim กับ admit job ต้อง atomic และใช้ lock/expiry predicate เดียวกับ cleanup
+หลัง job terminal เก็บอีก 1 ชั่วโมง; ทดสอบการปกป้อง job จริงใน I1
+ใน 0.1.1 ทดสอบ finalize แข่ง cleanup ได้ แต่ยังไม่อ้างว่า job lease ผ่านแล้ว
+ข้อมูลสถานะที่หมดอายุเก็บแบบไม่มี bytes/Base64; อายุ metadata และ requestKey tombstone
+ต้องกำหนดใน implementation plan เพื่อไม่ให้เกิดข้อมูลสะสมถาวรโดยไม่ได้ตั้งใจ
+
+### เพดานตั้งต้นสำหรับทดลอง — ยังไม่ใช่ capacity ที่รับรอง
+
+เสนอ limits จาก config และแสดงให้ผู้เรียกรู้ก่อนอัปโหลด:
+
+| รายการ | ค่าเสนอให้ทดลอง |
+| --- | --- |
+| รูปต่อชุด | 20 รายการ |
+| binary ต่อรูป / รวมต่อชุด | 10 MiB / 50 MiB |
+| Base64 ต่อรูป | decoded ไม่เกิน 1 MiB, JSON body ไม่เกิน 2 MiB |
+| upload streams พร้อมกันใน instance | 2; เกินให้ 429 พร้อมแนวทาง retry ไม่พัก body ไม่จำกัด |
+| staging รวม / ชุดที่ยังไม่หมดอายุ | 512 MiB / 100 ชุด; จองโควตาก่อนรับ bytes |
+| ชุด open ไม่คืบหน้า / ชุด ready ยังไม่ใช้ | 1 ชั่วโมง |
+| อายุ open สูงสุด | 4 ชั่วโมง แม้มีความคืบหน้า; hard cap ต้องแจ้งผู้เรียก |
+| request รับไฟล์ | idle 60 วินาที, สูงสุด 10 นาทีต่อ attempt; retry รายไฟล์ได้ |
+
+expected_bytes ต้องนับตรวจจริง ไม่เชื่อ Content-Length อย่างเดียว; จองโควตาแบบ atomic
+และคืนเมื่อ attempt จบ/ผิดพลาด/restart ไม่ต่ออายุจาก polling
+ค่า pixel/decode/ความละเอียด PDF เป็นงาน I0–I2 ไม่แต่งค่ารับรองขึ้นจาก byte limit
+ต้องวัด near-limit, concurrent stream และ disk-full ใน U1/U4 ก่อนยืนยันค่าเริ่มต้น
+503/429/413 ต้องไม่ทิ้งชุดหรือไฟล์ที่ระบบคิดว่าสำเร็จทั้งที่รับไม่ครบ
+
+### ขอบเขตไฟล์ลงมือที่คาดไว้และจุดรับแบบ
+
+Service: กลุ่ม `src/uploads/` รับผิดชอบ contracts/repository/service,
+storage แยกใน `src/storage/`, routes แยกจาก server factory,
+migration ใหม่, startup/recovery/cleanup wiring และ Compose staging volume
+tests ครอบคลุม stream, DB transitions, expiry และ HTTP end-to-end;
+Core ไม่เปลี่ยนใน U0/0.1.1 ตามผลตรวจนี้
+
+ไม่เพิ่ม framework/queue ภายนอกในการร่างนี้ การเลือก Fastify stream parser
+และ enforcement ของ timeout ต้องตรวจ API ของรุ่นที่ติดตั้งตอนทำ implementation plan
+U0 discovery เสร็จในขอบเขตอ่าน source และร่างสัญญา; ขั้นรับแบบยัง pending
+จุดขอเจ้าของทบทวนคือ API แบบสองช่วง, ready ที่ยังไม่ fetch URL,
+หนึ่งชุดต่อหนึ่ง job และ limits ที่เป็นค่าเริ่มทดลอง ไม่ใช่คำถามเปิดทั้งหมดใหม่
+เมื่อรับแบบแล้วจึงแตกแผน U1–U4 พร้อม test cases; ยังไม่เปลี่ยนโค้ดหรือ release
+
 ## จุดที่ต้องลงรายละเอียดก่อนลงมือ
 
 1. 0.1.1: รูปแบบ upload session, รายการไฟล์, finalize, retry และคำขอ JSON/Base64
