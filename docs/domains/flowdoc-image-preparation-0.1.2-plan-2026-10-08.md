@@ -310,3 +310,47 @@ runtime content stayed unchanged. Current-turn containers/networks cleaned up;
 volumes and artifacts retained. No push, release/tag promotion or map update.
 Stage C is complete within the stated bounds. D remains pending for broader
 quality/near-limit acceptance and final version metadata; do not call 0.1.2 released.
+
+## Image frame alignment follow-up — kickoff
+
+Owner approved optional `align: left | center | right` on image blocks, default
+left. Only the frame's horizontal placement in printable page space changes;
+the proportional image remains centered inside its frame. No text wrap, internal
+image alignment, DB migration or media preparation changes. Inline Core owner
+with Service package consumer update; execution IDs N/A, routine bounded change.
+Acceptance: validate enum, retain through binding, preserve omitted/default-left
+geometry, center/right positions including page breaks, reject invalid values.
+Proof budget: focused layout/binding tests, Core suite/build/packed consumer,
+Service pin verification and affected image/database regression. Update this
+record; do not promote release or maps.
+
+### Alignment result — PASS
+
+Core commit `1790f26e14abe234037a037cbb266178575eba08` adds the optional enum,
+retains it through binding and positions the frame within printable page width.
+Service commit `77c2eac` pins the verified Core 0.1.2 development package and
+checks right alignment through upload, preparation, job processing and PDF output.
+Service itself remains development 0.1.1; this is not a release promotion.
+
+Acceptance coverage:
+
+- Core focused tests failed before implementation; the final suite passes all
+  142 tests. Binding checks cover all three values and invalid-value rejection;
+  layout checks cover omitted/left compatibility, center/right geometry, image
+  centering within frames and whole-frame page breaks. Build passes.
+- Core packed Linux/amd64 consumer passes in
+  `flowdoc-core/artifacts/1791456704159/result.json`, including public template
+  composition to real PDF for all three alignments. Non-image fixture hashes
+  remain unchanged. Package SHA256:
+  `607527197f2cae507c19147a7f7675731802f506b617ea98d7085599720ee2ba`.
+- Service vendor verification and build pass. Packaged database regression in
+  `flowdoc-service/artifacts/1791456839722/result.json` passes 94 tests, zero
+  failures/skips, including the image placement assertion after preparation.
+- Read-only review found no actionable defect. Final diffs pass whitespace checks.
+  Only README version references changed after the Service run; runtime and
+  tested content are unchanged. Current test containers/network were removed;
+  volumes and artifacts are retained.
+
+No DB schema, media preparation, text wrapping, release branches, tags or maps
+changed. No push. Alignment follow-up is complete; Stage D remains pending as
+recorded above, including broader image quality and near-limit acceptance.
