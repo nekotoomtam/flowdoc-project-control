@@ -416,6 +416,83 @@ against implementation; no product behavior is claimed by the plan.
 
 ## จุดที่ต้องลงรายละเอียดก่อนลงมือ
 
+### I0 design proposal — 2026-10-08
+
+Status: proposed for owner review, not an implemented contract. Bounded discovery
+after accepted local upload staging; Planning Partner role, execution IDs N/A.
+Owners: Service for resource lifecycle/preparation; Core for typed binding, layout
+and PDF objects. Scope/document budget: this existing draft only until the design
+is reviewed; no product edits, dependency installation or release changes.
+
+Inspection: Core `composition/resolvedDocument.ts` and `template/types.ts` currently
+allow text/table nodes only; `pdf/drawContract.ts` and `pdf/writePdf.ts` draw text
+and borders, with no image resource interface. Service `jobs/processor.ts` calls
+render directly, and `jobs/repository.ts` marks interrupted running jobs failed.
+Therefore this requires an explicit cross-repository interface, not simply adding
+a decoder dependency. Baseline branches are `codex/template-binding` (Core) and
+`codex/template-registry` (Service, upload proof `f7610f7`).
+
+Proposed decisions:
+
+1. Add a separate `image` block with a required width/height in existing Length
+   units and an image-field binding. The image variable carries only a resource ID;
+   it may occur in global or format-local scope. No URL/Base64/host path goes inside
+   the composed document. Table cells and inline images remain excluded. Preserve
+   old text/table contracts and snapshots; explicitly version any widened contract.
+2. A job request may reference one finalized uploadId. Validate every bound resource
+   against that set, then claim the set and insert the job in one transaction under
+   the session lock. An identical retry of that claim returns its original job;
+   different template/version/input is a conflict. One set serves one job initially.
+   Queue/running jobs pin original and prepared files; terminal jobs retain them
+   for one hour before cleanup. Restart preserves queued claims; interrupted running
+   jobs keep the existing failed-job policy and release only on terminal lifetime.
+3. Prepare once before layout. Proposed default 200 DPI, no pixel upscaling,
+   proportional inside fit, centered in the fixed frame, EXIF orientation applied.
+   JPEG remains JPEG at quality 90; PNG stays lossless with alpha. Convert colour
+   to sRGB and remove unrelated metadata. Repeated use at different frame sizes
+   gets a per-job derivative keyed by source checksum and target pixel dimensions.
+4. Recommend Sharp in Service, pinned after the Linux/amd64 package probe. Its
+   documented constructor exposes orientation and input-pixel limits; resize offers
+   inside-fit and withoutEnlargement. Alternatives considered: Python Pillow would
+   add a second orchestration boundary; decoding in Core would mix untrusted-input
+   preparation with the renderer. Neither is selected for this slice.
+5. Core receives only bounded prepared resources: dimensions plus encoded JPEG,
+   or normalized RGB/alpha planes for PNG. PDF embeds JPEG as an image object;
+   PNG uses compressed RGB plus an alpha soft mask. Core validates buffer lengths,
+   references and bounds; it never fetches URLs or reads arbitrary client paths.
+   The internal binary map is separate from persisted JSON and immutable job input.
+6. A frame that fits a page but not the remaining space moves intact to the next
+   page. A frame larger than the printable page is a template error; never silently
+   clip or shrink the authored frame. Missing/invalid image bytes leave the frame
+   blank with a resource-specific warning; an invalid binding/request is rejected.
+7. Proposed preparation budgets to verify: 40 megapixels/input, 8 megapixels/output,
+   one decode process at a time, 30 seconds/image and 5 minutes preparation/job;
+   uploaded byte/count limits remain 0.1.1 limits. Decode in a killable child process;
+   a timeout must actually terminate work. Validate memory under a fixed container
+   budget before accepting these defaults; pixel metadata alone is not isolation.
+8. URL policy: HTTPS public destinations only, no credentials, no forwarded user
+   authentication, bounded redirects (three), 50 MiB/body and 30 seconds/download.
+   Validate all resolved addresses and pin the validated address for each connection;
+   revalidate every redirect. Private/loopback/link-local destinations are rejected.
+   URL failures become image warnings; no refetch during layout or PDF painting.
+9. Polling adds actual stages `preparing-resources` and `rendering`, with completed,
+   total and warning counts for preparation; no fabricated overall percentage/ETA.
+   Processing warnings must be persisted separately from immutable accepted-input
+   warnings and combined in the public result without rewriting accepted snapshots.
+
+Acceptance examples: landscape/portrait, transparent PNG, EXIF JPEG, small image,
+4K downsample, repeated source at two sizes, broken image, blocked URL/redirect,
+mixed good/bad images, page boundary, expired/wrong-set references, claim retry,
+queued/running restart and terminal cleanup. Inspect rendered PDF pages and embedded
+pixel dimensions; then test packed Core in Service with baseline text/table PDFs.
+No DOCX, crop editor, shared media library, nested image cells or release promotion.
+
+Primary dependency references (reviewed 2026-10-08):
+[Sharp constructor](https://sharp.pixelplumbing.com/api-constructor/) and
+[Sharp resizing](https://sharp.pixelplumbing.com/api-resize/).
+These support API suitability only; no native-runtime, image-quality or memory
+acceptance is claimed before the implementation/package probe.
+
 1. 0.1.1: รูปแบบ upload session, รายการไฟล์, finalize, retry และคำขอ JSON/Base64
    รวมจังหวะรับ job เมื่อใช้ URL; ไม่ล็อก endpoint/DB schema จากร่างนี้ทันที
 2. 0.1.1: เพดาน bytes/จำนวนรายการ/เวลา อายุกลางสูงสุด และการวัดยืนยันค่าจริง
