@@ -493,6 +493,12 @@ Primary dependency references (reviewed 2026-10-08):
 These support API suitability only; no native-runtime, image-quality or memory
 acceptance is claimed before the implementation/package probe.
 
+Owner accepted I0 and confirmed 200 DPI as the starting density, conditional on
+actual-size legibility. Execution is tracked in the
+[0.1.2 implementation plan](flowdoc-image-preparation-0.1.2-plan-2026-10-08.md).
+Its Stage A internal preparer is implemented and tested; job/PDF integration and
+visual acceptance remain pending. No release promotion is implied.
+
 1. 0.1.1: รูปแบบ upload session, รายการไฟล์, finalize, retry และคำขอ JSON/Base64
    รวมจังหวะรับ job เมื่อใช้ URL; ไม่ล็อก endpoint/DB schema จากร่างนี้ทันที
 2. 0.1.1: เพดาน bytes/จำนวนรายการ/เวลา อายุกลางสูงสุด และการวัดยืนยันค่าจริง
