@@ -266,7 +266,13 @@ of both DB and disk cannot guarantee persistence of delivery acknowledgement.
 Next: R5 owner review of generated PDF and bounded overall MVP acceptance.
 Do not add UI, permission, media or heavy-load work as part of closing R4.
 
-## R5 data preparation — 2026-10-08 (owner review pending)
+## R5 data preparation — 2026-10-08 (historical preparation state)
+
+Current disposition: owner accepted the reviewed PDF as within criteria; R5
+coverage reconciliation and local MVP closure are recorded in the existing
+[MVP scope/checklist](flowdoc-export-mvp-v1-2026-10-07.md#r5-closure--2026-10-08).
+No separate PDF acceptance record was created, per owner instruction. The pending
+language and artifact status below describe the preparation time, not current status.
 
 Owner requested longer mock data before PDF acceptance. Bounded inline scope:
 Service-owned test data and export review only, no runtime/layout changes and no

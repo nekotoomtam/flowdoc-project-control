@@ -7,10 +7,10 @@ MVP scope and the owner's scope-freeze instruction dated 2026-10-07. It is a
 scope specification, not implementation Evidence, a product readiness claim,
 or authorization to resume historical execution rounds.
 
-Status: scope locked by the owner on 2026-10-07 following agreement on local
-API, relational DB relationships, one SRS template, PDF output and serial job
-processing. Implementation has not started under this document. The owner's
-instruction is: "งันร่างแล้วล็อกเอกสารกัน".
+Status: local Export MVP accepted and R5 closed on 2026-10-08 after checklist
+coverage reconciliation below. Scope was locked on 2026-10-07. This is bounded
+local acceptance, not public deployment or load-capacity readiness. Product
+development branches remain unmerged; no release branch or push is implied.
 
 Owner-authorized clarification, 2026-10-07: template means a book structure
 with creator-defined one-level subtemplates, inline variables and ordered
@@ -210,45 +210,45 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 
 ## เกณฑ์รับงาน
 
-- [ ] Service ติดตั้ง Core artifact รุ่นที่ตรึงไว้และเรียก public exports ได้
+- [x] Service ติดตั้ง Core artifact รุ่นที่ตรึงไว้และเรียก public exports ได้
       โดยไม่เข้าถึง source repo เดิม; release ระบุส่วนประกอบ/รุ่นตามข้อกำหนด
-- [ ] ชุดรัน Docker ผ่าน isolated local verification จากข้อมูลทดสอบว่าง
+- [x] ชุดรัน Docker ผ่าน isolated local verification จากข้อมูลทดสอบว่าง
       จนดาวน์โหลด PDF โดยใช้ runtime/font ใน image และขั้นตอนที่บันทึกไว้
       ไม่ mount source/runtime เดิม; ใช้ข้อมูลชุดเดิมทดสอบ restart ได้
-- [ ] เริ่ม service และ DB ในเครื่องจากขั้นตอนที่ให้ไว้ได้ รวม migration
+- [x] เริ่ม service และ DB ในเครื่องจากขั้นตอนที่ให้ไว้ได้ รวม migration
       และการลงทะเบียนโครงตัวอย่าง โดยไม่มีหน้าบ้าน
-- [ ] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน เรียก API ด้วย docKey/JSON
+- [x] โครงตัวอย่างกับชุดข้อมูลถูกเก็บแยกกัน เรียก API ด้วย docKey/JSON
       แล้วได้ jobId ตรวจสถานะ และดาวน์โหลด PDF ได้ครบ flow
-- [ ] ผู้สร้างนิยามโครงย่อยอย่างน้อยสองแบบ; เรียก A/B/A และสลับลำดับได้
+- [x] ผู้สร้างนิยามโครงย่อยอย่างน้อยสองแบบ; เรียก A/B/A และสลับลำดับได้
       ข้อมูลและ ID แต่ละครั้งไม่ปน; ปฏิเสธโครงย่อยเรียกซ้อนโครงย่อย
-- [ ] tag อยู่กลางข้อความปกติได้; global/local/item อ้างถูก scope
+- [x] tag อยู่กลางข้อความปกติได้; global/local/item อ้างถูก scope
       แทนค่าก่อนวัดและแบ่งหน้า ไม่มี placeholder ที่ผิดหลุดลง PDF
-- [ ] DB บังคับ docKey ไม่ซ้ำ, template/version ไม่ซ้ำ และ FK ถูกต้อง
+- [x] DB บังคับ docKey ไม่ซ้ำ, template/version ไม่ซ้ำ และ FK ถูกต้อง
       งานเดิมยังอ้างเวอร์ชันเดิมเมื่อลงทะเบียนเวอร์ชันใหม่
-- [ ] ข้อความเดี่ยวและทุกรายการในตารางลงถูก node ถูกลำดับ ครบ ไม่ซ้ำ
-- [ ] ใช้โครงเดิมกับข้อมูลอย่างน้อยสามชุด: ปกติ, รายการว่าง,
+- [x] ข้อความเดี่ยวและทุกรายการในตารางลงถูก node ถูกลำดับ ครบ ไม่ซ้ำ
+- [x] ใช้โครงเดิมกับข้อมูลอย่างน้อยสามชุด: ปกติ, รายการว่าง,
       และยาวพอให้มีทั้งตารางข้ามหน้าและแถวเดียวข้ามหน้า
-- [ ] กรณีรายการว่างแสดงหัวตารางโดยไม่มีแถวข้อมูลปลอม
-- [ ] ตรวจ PDF จริงทั้งเนื้อหาและภาพ: ภาษาไทยอ่านได้ ข้อความไม่ล้นคอลัมน์
+- [x] กรณีรายการว่างแสดงหัวตารางโดยไม่มีแถวข้อมูลปลอม
+- [x] ตรวจ PDF จริงทั้งเนื้อหาและภาพ: ภาษาไทยอ่านได้ ข้อความไม่ล้นคอลัมน์
       ไม่ทับกัน ไม่หายที่รอยต่อหน้า และหัวตารางต่อหน้าถัดไปได้
-- [ ] ตัวอย่างข้อมูลผิดและ binding ผิดให้ข้อผิดพลาดที่ระบุ field/node ได้
-- [ ] required ที่หายหลายจุดคืนครบและไม่ใช้ default ข้าม required;
+- [x] ตัวอย่างข้อมูลผิดและ binding ผิดให้ข้อผิดพลาดที่ระบุ field/node ได้
+- [x] required ที่หายหลายจุดคืนครบและไม่ใช้ default ข้าม required;
       optional ที่หายใช้ default/ค่าว่างตรง type; template/default/tag ผิดถูกจับตอนลงทะเบียน
-- [ ] unknown variable ข้ามพร้อม warning แต่ required ที่หายยังเป็น error;
+- [x] unknown variable ข้ามพร้อม warning แต่ required ที่หายยังเป็น error;
       known variable ผิดชนิดไม่ใช้ default กลบ แม้ optional ต้องไม่สร้างงาน
       รวม errors/warnings ที่ตรวจได้ในคำตอบเดียวและเก็บ warnings กับงานที่รับ
-- [ ] unknown format ปน known สร้างเฉพาะ known พร้อม warning/index ที่คงอยู่
+- [x] unknown format ปน known สร้างเฉพาะ known พร้อม warning/index ที่คงอยู่
       ตอนอ่าน status/restart; unknown ทั้งหมดหรือ content ว่างไม่สร้าง job
-- [ ] API contract/examples ผูก version ถูกต้อง normal example ผ่านตัวตรวจเดียว
+- [x] API contract/examples ผูก version ถูกต้อง normal example ผ่านตัวตรวจเดียว
       กับ generation และเรียกได้จริง; version ใหม่ไม่เปลี่ยนตัวอย่าง/งานของ version เก่า
-- [ ] docKey/version/job ที่ไม่พบให้ข้อผิดพลาดชัดเจน งาน render ล้มเหลว
+- [x] docKey/version/job ที่ไม่พบให้ข้อผิดพลาดชัดเจน งาน render ล้มเหลว
       แสดง failed และไม่แสดงผลลัพธ์สำเร็จปลอม
-- [ ] ส่งงานที่ถูกต้องสามงานติดกันแล้วทุกงานได้ผลลัพธ์ตรงกับข้อมูลของตน
+- [x] ส่งงานที่ถูกต้องสามงานติดกันแล้วทุกงานได้ผลลัพธ์ตรงกับข้อมูลของตน
       และมีงาน running ไม่เกินหนึ่งงาน เป็นการตรวจลำดับ ไม่ใช่ load test
-- [ ] restart แล้ว template, version, ประวัติ job และไฟล์สำเร็จยังเข้าถึงได้
+- [x] restart แล้ว template, version, ประวัติ job และไฟล์สำเร็จยังเข้าถึงได้
       queued ทำต่อได้ และ running ที่ถูกขัดจังหวะกลายเป็น failed ตามกติกา
-- [ ] มีวิธีเรียกซ้ำที่ชัดเจน พร้อมไฟล์ตัวอย่างให้เจ้าของตรวจผล
-- [ ] เจ้าของตรวจ PDF ตัวอย่างและยอมรับว่าเพียงพอสำหรับ MVP นี้
+- [x] มีวิธีเรียกซ้ำที่ชัดเจน พร้อมไฟล์ตัวอย่างให้เจ้าของตรวจผล
+- [x] เจ้าของตรวจ PDF ตัวอย่างและยอมรับว่าเพียงพอสำหรับ MVP นี้
 
 จำนวนหน้าและตำแหน่งตัดบรรทัดไม่ต้องเหมือน Word หรือ PDF จากระบบเก่าทุกจุด
 ตัวอย่าง SRS ใช้อ้างอิงความหมายและโครง ไม่ใช่เกณฑ์เทียบภาพระดับ pixel
@@ -259,10 +259,9 @@ service ประมวลผลได้ครั้งละหนึ่ง jo
 ที่ล็อกแล้ว รวมข้อเพิ่มเรื่องแพ็กเกจ/ชุดรันที่เจ้าของอนุมัติภายหลัง
 Roadmap นี้เป็นลำดับผลลัพธ์ ไม่ใช่ implementation plan หรือหลักฐานว่าทำได้แล้ว
 
-สถานะอัปเดต 2026-10-07: R0 ตรวจ source รอบแรกแล้ว (ยังไม่รัน export ใหม่);
-R1 มี [ร่างการออกแบบสำหรับ review](flowdoc-export-mvp-r1-design-2026-10-07.md)
-ซึ่งบันทึกแหล่งอ้างอิง R0 และข้อจำกัดไว้ด้วย ปรับตามนิยามโครงย่อย/tag ล่าสุดแล้ว
-นโยบาย unknown variable/wrong type ยืนยันและบันทึกใน R1 แล้ว; R2–R5 ยังไม่เริ่ม
+สถานะอัปเดต 2026-10-08: R0–R5 ครบตามขอบเขต local Export MVP
+การออกแบบอยู่ใน [R1](flowdoc-export-mvp-r1-design-2026-10-07.md)
+หลักฐานและชุดส่งมอบที่รับอยู่ในส่วน R5 closure ด้านล่าง
 
 ### R0 — ตรวจของเดิมและกำหนดขอบเขตการย้าย
 
@@ -391,6 +390,56 @@ repo เจ้าของตามนโยบายเอกสาร ไม�
 ห้ามขยายโดยเงียบ ๆ หรือผ่อนเกณฑ์ให้ผลทดสอบผ่าน
 
 ผ่านเกณฑ์ครบแล้วให้หยุด สรุปผล และปิด MVP ก่อนพิจารณารอบถัดไป
+
+## R5 closure — 2026-10-08
+
+Bounded inline reconciliation, owned by Project Control as Evidence Reviewer /
+Documentation Synthesizer. Execution IDs are not applicable. Scope: this existing
+checklist and the R4 plan status; no runtime change, map promotion, new acceptance
+report, release branch or Docker project. Owner accepted the reviewed PDF as within
+the MVP criteria and explicitly declined a separate PDF acceptance record.
+
+Evidence locators below are repository-relative to the named owner. Existing
+results were inspected, not represented as newly executed tests. Service HEAD
+`16003d1` differs from tested runtime `b091b02` only by the mock-data generator;
+runtime, dependencies and configuration remain unchanged. Core HEAD `a2fcce4`
+and its vendor checksum match the tested dev.4 artifact. Unrelated untracked
+Core `.superpowers/` content was left untouched.
+
+| Acceptance coverage | Evidence inspected |
+| --- | --- |
+| Public package, bundled fonts/runtime, isolated execution | Core `artifacts/1791389246204/result.json`: installed public APIs, no mounts/network, resources, PDF, binding and table consumers PASS; Service `scripts/verifyVendor.mjs` rerun PASS |
+| Inline tags, A/B/A, independent IDs and global/local/item scopes, validation/default/type/unknown policies | Core installed binding consumer above; focused `npx vitest run tests/data tests/template tests/composition tests/binding` executed for closure: 7 files, 65 tests passed, zero failures |
+| DB constraints, immutable versions/examples, current publication, migration and persistence | Service `artifacts/1791429756893/result.json`: 45 tests passed, zero failed/skipped; includes version-boundary, version-render and jobs tests, CLI publication and restart |
+| Local API flow, safe errors, warnings, serial jobs, failed jobs, download and restart | Service `artifacts/1791429767605/result.json`, backed by committed HTTP, processor, outputs, API-flow and restart tests; three distinct real PDF jobs and recovery PASS |
+| Normal/empty/long input, same template, correct order and multi-page row/header behavior | Service `artifacts/r5-long-review/review-result.json`, `text-check.json`, `layout-check.json`: 1/1/18 pages, 33 long-document rows, all 110 markers once/in order, repeated headers 18/18; rendered review and owner feedback |
+| Repeatable setup and caller examples | Service `README.md`, `compose.yaml`, `.env.example`, `examples/srs-template.json`, `examples/srs-request.json`, `examples/createSrsReviewRequests.mjs`; the recorded isolated API run used the packaged setup |
+
+Delivery identity: `@flowdoc/core` 0.1.0-dev.4, source `a2fcce4`, tarball SHA256
+`96be5988714e44a95f2aa67c84c1be86ec7ba1c6b2ab2a7fe54d02d361cb5878`;
+`@flowdoc/service` 0.1.0-dev.3, runtime source `b091b02`, fixture source `16003d1`.
+Accepted local API image: `flowdoc-service:r4-1791429767605`, digest
+`sha256:68c2e8e252977fd6d4e4281a6207e50d08ddad2eced666ed18df5b6ef27c250b`.
+Runtime: Linux x64 glibc, Node24, Python3.11, fontTools4.58.2, bundled Sarabun;
+database proof used PostgreSQL18.6. Rebuilding later creates a new image identity.
+
+Repeat use: follow Service README local setup (configure local `.env`, build,
+start DB, migrate, import/publish template, start API), then POST
+`examples/srs-request.json` to `/jobs`, poll `/jobs/:id`, and download
+`/jobs/:id/pdf`. `node examples/createSrsReviewRequests.mjs` reproduces the three
+review inputs. `npm run check:database` and `npm run check:api` reproduce isolated
+acceptance when needed; not rerun merely for this status closure. Do not distribute
+generated `compose.env` credentials. Stop the local Compose project after use.
+
+Boundaries: restart availability means unconsumed/unexpired outputs under the
+later owner-approved retention policy, not permanent PDF storage. Consumed or
+expired outputs correctly return 410. Thai extraction can reorder combining marks;
+normalized character counts complement visual/marker checks, not exact text-order
+proof. No Word-identical wrapping or general arbitrary-document guarantee is made.
+The R4 deferred minor findings remain deferred. No mandatory MVP coverage gap was
+identified within the stated fixture and local runtime scope. Stop here; future
+features require a new scope. The older generated cockpit describes frontend work
+and is not promoted or rewritten by this export-only closure.
 
 ## หลัง MVP
 
