@@ -33,7 +33,7 @@ No separate agent rooms. Record progress here, not in product plans or maps.
   and pins public destinations at each redirect. Compose once; no re-download in
   layout/paint. Prove duplicate/conflicting claims, expired/wrong-set IDs, restart,
   URL failures, queued/running retention and one-hour terminal cleanup.
-- [ ] D / I4: Pack Core, pin/checksum in Service, run upload-to-PDF fixtures and
+- [x] D / I4: Pack Core, pin/checksum in Service, run upload-to-PDF fixtures and
   baseline exports in isolated Docker projects. Inspect actual PDF pages at intended
   size and embedded image dimensions. Measure decode under fixed memory constraints.
   Prepare version metadata only after integration is demonstrated; leave release alone.
@@ -354,3 +354,47 @@ Acceptance coverage:
 No DB schema, media preparation, text wrapping, release branches, tags or maps
 changed. No push. Alignment follow-up is complete; Stage D remains pending as
 recorded above, including broader image quality and near-limit acceptance.
+
+## Stage D result — bounded local acceptance, 2026-10-08
+
+Owner authorized closing remaining quality/limit checks and version metadata.
+Inline scope: Service acceptance fixture, package metadata and repo-owned README;
+Project Control maintains this existing plan and roadmap. Execution IDs N/A,
+routine risk; no product algorithm changes, separate rooms or release promotion.
+Reused A/B/C, upload lifecycle, Core packed consumer and image alignment evidence
+above rather than repeating unchanged areas. New proof addresses the missing
+near-limit decode case and final Service package identity.
+
+Service commit `1fc97fa` adds `tests/image-limits-trial.mjs` and sets Service 0.1.2
+with lockfile metadata; Core remains the pinned 0.1.2 package at `1790f26e`.
+
+- `flowdoc-service/artifacts/image-limits-final/result.json`: 40,000,000-pixel
+  patterned JPEG and alpha PNG each prepare successfully to 2000x3200 (6.4 MP)
+  using the maximum 8 MP target-box budget. Alpha survives; no warnings. Observed
+  preparation times were 847 ms and 1595 ms, not a latency SLA.
+- The same probe skips 40,005,000-pixel input, leaves no partial files, and rejects
+  an over-8-MP target before decode. It ran serially, network disabled, 512 MiB
+  memory/no extra swap, against unchanged packaged processing code from
+  `artifacts/1791456839722`. Cgroup peak including fixture generation was
+  343,965,696 bytes (about 328 MiB); zero OOM events. `container-state.json`
+  records exit 0 / OOMKilled false. This proves these patterned fixtures, not
+  all compression complexity, worst-case RSS or concurrent production capacity.
+- Reinspected both retained UAT page renders from `artifacts/1791455973261/uat`:
+  intact landscape/portrait frames, readable large screenshot, retained alpha.
+  Poppler image inventory in `image-limits-final/uat-embedded-images.txt` confirms
+  all embedded images at 200 DPI, including the 1306x735 and 653x367 derivatives.
+  The small frame has physically smaller text; no promise that DPI restores its
+  reading size. Existing owner approval of this UAT example is retained. No
+  physical print or every-image quality claim; initial 200 DPI remains the policy.
+- Final Service 0.1.2 packaged Linux/amd64 check:
+  `artifacts/1791457233926/result.json`, build/migration/persistence and all 94
+  regression tests PASS, zero failures/skips, with verified Core checksum.
+  Runtime image `sha256:60b3afeb827a5b15e92925a0e92f048dba49aff5b2336a430da634d1ae0feb8c`.
+  The near-limit probe is separately invoked, not included in that count.
+
+All Stage D criteria have bounded supporting evidence; development acceptance is
+complete. Current-turn containers/networks removed, volumes/artifacts retained.
+README and roadmap now distinguish development 0.1.2 from unchanged release/tag
+0.1.0. No push, tags, release or map changes. Next product topic: merged table
+cells; image-in-cell, text wrapping and production concurrency remain outside
+this completed scope.

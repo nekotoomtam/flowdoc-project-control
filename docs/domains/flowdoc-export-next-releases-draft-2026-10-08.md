@@ -496,8 +496,10 @@ acceptance is claimed before the implementation/package probe.
 Owner accepted I0 and confirmed 200 DPI as the starting density, conditional on
 actual-size legibility. Execution is tracked in the
 [0.1.2 implementation plan](flowdoc-image-preparation-0.1.2-plan-2026-10-08.md).
-Its Stage A internal preparer is implemented and tested; job/PDF integration and
-visual acceptance remain pending. No release promotion is implied.
+Stages A–D now have bounded local development acceptance, including job/PDF
+integration, UAT visual inspection and a 40 MP constrained-memory probe. See the
+implementation plan's Stage D result for coverage and limits. Service/Core are
+development 0.1.2; no release promotion is implied.
 
 1. 0.1.1: รูปแบบ upload session, รายการไฟล์, finalize, retry และคำขอ JSON/Base64
    รวมจังหวะรับ job เมื่อใช้ URL; ไม่ล็อก endpoint/DB schema จากร่างนี้ทันที
@@ -517,6 +519,8 @@ Service `9f9712c` และชุดตรวจเพิ่มเติม `f76
 ปิด acceptance สำหรับ upload staging ใน local ด้วย 69 tests และการรับภาพใหญ่
 ภายใต้เพดานหน่วยความจำจริง ตาม
 [Follow-up acceptance](flowdoc-upload-staging-0.1.1-plan-2026-10-08.md#follow-up-acceptance--2026-10-08)
-ขั้นถัดไปที่เสนอคือแผน 0.1.2 สำหรับเตรียมภาพ โดยยังไม่ได้เริ่ม;
+ต่อมาแผน 0.1.2 สำหรับเตรียมภาพผ่านการตรวจรับในขอบเขต local แล้ว ตาม
+[Stage D result](flowdoc-image-preparation-0.1.2-plan-2026-10-08.md#stage-d-result--bounded-local-acceptance-2026-10-08)
+Service และ Core ฝั่งพัฒนาเป็น 0.1.2; หัวข้อถัดไปคือตารางรวมเซลล์
 release/tag 0.1.0 คงเดิมตามคำสั่งเจ้าของ และค่า limits ด้านบนเป็นประวัติข้อเสนอ U0
 ให้ดูค่า staging ปัจจุบันกับขอบเขตหลักฐานจากแผนดังกล่าว ไม่ใช่ข้อรับรอง production
