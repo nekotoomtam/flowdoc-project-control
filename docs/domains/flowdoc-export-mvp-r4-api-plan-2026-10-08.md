@@ -11,7 +11,8 @@ Inline work, execution/Phase/Checklist IDs not applicable. Medium size, routine
 risk. No old execution context is reopened. No code/migration change in this plan.
 
 **Goal:** localhost API accepts document data, persists a pinned queued job,
-processes one job at a time, and serves its status and PDF after restart.
+processes one job at a time, and serves status and unexpired, unconsumed PDFs
+after restart. Output retention is opt-in, not a permanent document archive.
 **Spec:** [MVP API/state contract](flowdoc-export-mvp-v1-2026-10-07.md#api-และสถานะงาน),
 [R1 Service/Core boundary](flowdoc-export-mvp-r1-design-2026-10-07.md).
 **Baseline:** Service `138269c` / dev.2, installed Core dev.4; current/version
@@ -41,7 +42,7 @@ filesystem path, stack trace or native process output returned to callers.
 | GET /health | 200 readiness; DB/runtime/processor initialized | 503 unavailable |
 | GET /templates/:docKey/contract?version=N | 200 selected version, globalSchema, format key/label/description/inputSchema and examples | 400 invalid version, 404 missing key/version |
 | POST /jobs | 202 jobId, selected version, queued, hasWarnings, warnings, skippedContentIndices | 400 malformed JSON/shape, 413 body bound, 404 template/version, 422 Core input validation, 503 storage/runtime unavailable |
-| GET /jobs/:jobId | 200 persisted status/version/warnings/skips/errors, download URL only on success | 400 malformed UUID, 404 absent |
+| GET /jobs/:jobId | 200 persisted status/version/warnings/skips/errors, download URL only while output is available | 400 malformed UUID, 404 absent |
 | GET /jobs/:jobId/pdf | 200 application/pdf attachment stream | 400 malformed UUID, 404 absent job, 409 not succeeded, 410 output file missing, 503 storage failure |
 
 No graph, host file path or full internal prepared input in contract/status output.
@@ -77,8 +78,36 @@ to a server-generated job filename. In a DB transaction insert output metadata
 and transition running→succeeded. Only then expose a download. On write/metadata
 failure report failed if DB is available; uncertain DB outcome must be reconciled
 on restart, never overwritten blindly from succeeded to failed. Crashes may leave
-unreferenced files, which are not downloadable; no general cleanup feature added.
+unreferenced files, which are not downloadable and require bounded stale-file cleanup.
 Output directory is a persistent named volume and paths never come from requests.
+
+### Owner-approved output lifetime — 2026-10-08
+
+Files are temporary export results by default. The owner approved keeping an
+optional retention mode behind environment configuration:
+
+- `EXPORT_RETAIN_FILES=false` by default: after a complete successful HTTP stream,
+  retire the output and delete its file. An interrupted stream leaves the file
+  available for another attempt until expiry. HTTP completion is a server-side
+  observation, not proof that the client saved the document.
+- `EXPORT_RETAIN_FILES=true`: successful downloads do not consume the output;
+  `EXPORT_FILE_TTL_HOURS=24` defaults its lifetime from output completion.
+- `EXPORT_TEMP_FILE_TTL_HOURS=24`: bounds unclaimed/aborted-transfer outputs in
+  default mode and stale temporary/orphan files. Never delete an active render
+  or stream. Validate positive finite bounded configuration at startup.
+
+Persist each output's selected retention policy and expiry when it is created;
+later environment changes affect new outputs. Keep generation success separate
+from file availability (available, consumed or expired), with 410 after retirement
+and no download URL. Persist retirement before unlinking so deletion failure or
+restart cannot expose a consumed file again; retry cleanup safely. Scope deletion
+to Service-owned generated paths only. Coordinate concurrent downloads and cleanup
+so no active stream is removed, and do not accept new streams after retirement.
+Run cleanup on startup and periodically; this is bounded export lifecycle cleanup,
+not a media library, archive UI or general filesystem cleaner.
+
+This owner decision supersedes the original plan's no-cleanup exclusion. It adds
+forward-only lifecycle metadata where needed, without changing applied migrations.
 
 Graceful shutdown stops admission/claiming and lets the active child finish within
 the shutdown bound; forced exit leaves running for startup recovery. Queued jobs
@@ -117,6 +146,9 @@ writePdf(jobId,bytes): Promise<OutputMetadata>; openPdf(metadata): Readable.
   reuse Core public loadBundledResources/createPdfEngine/composeDocument.
 - [ ] Implement generated filenames, temp/rename, output transaction and safe
   failure reconciliation. Never accept a caller-supplied download path.
+- [ ] Implement the approved retention configuration, persisted expiry/availability,
+  and bounded cleanup. Test both modes, expiry, stale orphan removal, active-file
+  exclusion and failed-unlink/restart recovery without touching unrelated files.
 - [ ] Prove HTTP event-loop work can progress while rendering; process failure
   does not silently hang the next queued job. Run focused tests and commit.
 
@@ -131,6 +163,8 @@ for deterministic route failures, plus real integration in Task 4.
   above, JSON limits, malformed UUID/version and safe diagnostic assertions.
 - [ ] Implement contract projection without graph leakage, admission, job view,
   PDF streaming and readiness. Disable framework/internal error details in responses.
+- [ ] Test default successful-stream retirement, aborted-stream retry, concurrent
+  downloads, retained repeat downloads and 410/no URL after consumption or expiry.
 - [ ] Wire startup/shutdown with the processor and persistent DB/file configuration.
   Keep migration/registration explicit setup commands, not per-request work.
 - [ ] Run build, route tests and affected CLI/repository tests; commit.
@@ -148,7 +182,8 @@ Add API/output-volume without removing registry commands or old DB checks.
 - [ ] Test malformed/type/missing input without new jobs, unknown job/version,
   download-before-success, forced render/storage failure and file-missing response.
 - [ ] Restart same image with queued/running/succeeded fixtures: queued processes,
-  running becomes failed, succeeded PDF and warnings remain downloadable. Do not
+  running becomes failed, unconsumed/unexpired PDF and warnings remain available;
+  consumed/expired files stay unavailable and retained files permit repeat reads. Do not
   depend on accidental render timing to create recovery fixtures.
 - [ ] Verify PDF content/page result through existing Core proof or output text/
   visual inspection where changed; record artifact hashes and image/version.
