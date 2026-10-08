@@ -10,7 +10,8 @@ or authorization to resume historical execution rounds.
 Status: local Export MVP accepted and R5 closed on 2026-10-08 after checklist
 coverage reconciliation below. Scope was locked on 2026-10-07. This is bounded
 local acceptance, not public deployment or load-capacity readiness. Product
-development branches remain unmerged; no release branch or push is implied.
+development histories remain separate. Later local release promotion is recorded
+below; no remote push or deployment is implied.
 
 Owner-authorized clarification, 2026-10-07: template means a book structure
 with creator-defined one-level subtemplates, inline variables and ordered
@@ -442,6 +443,52 @@ features require a new scope. The older generated cockpit describes frontend wor
 and is not promoted or rewritten by this export-only closure.
 
 ## หลัง MVP
+
+### Local release promotion — owner authorized 2026-10-08
+
+Follow-on packaging scope after MVP closure: Core and Service each get one local
+`release` branch, one snapshot commit per version and immutable annotated tags.
+Initial version: 0.1.0 for each; future versions are independent. Service pins the
+exact Core tarball/checksum. First release history starts at the accepted tree;
+later release commits parent the prior release. Preserve development history and
+record source commit provenance. No remote push or public deployment is included.
+
+Inline owners: Core package metadata and README; Service metadata, lockfile, vendor
+artifact/manifest and README; Project Control this existing record. Routine risk,
+bounded packaging work; no layout, binding, HTTP, DB or migration behavior changes.
+Use current development checkouts, preserving unrelated files. Acceptance: packed
+Core consumer checks, Service integration using that exact package, matching release
+trees/tags and reproducible version identities. Reuse unchanged MVP proof; rerun
+package/consumer checks for changed artifacts. Document budget: this record and
+existing owner READMEs only. Stop if behavior changes are needed. Execution IDs N/A.
+
+Completed locally on 2026-10-08:
+
+| Repository | Development source | Release commit | Annotated tag |
+| --- | --- | --- | --- |
+| Core | `f5b1df9463f11b580690be288304703c7f2699cc` | `1aeacd045c4e1ab1c048edb27d4ddbe9267a3b75` | `v0.1.0` |
+| Service | `5141622bc73ec8839f6c2fc4bbd1b4343cf0d4ea` | `ec51ce5f50be2e5aa37ebe4f72ba9f0000fe0cc7` | `v0.1.0` |
+
+Both `release` branches contain exactly one root snapshot commit, have trees equal
+to their tested development source, and annotated tags resolve to those commits.
+Working directories stay on the development branches; no remote push. Core's
+unrelated untracked `.superpowers/` remains outside release. Subsequent release
+commits must parent the previous release instead of creating another root.
+
+Core final packed-consumer result: `flowdoc-core/artifacts/1791433882549/result.json`,
+resources/PDF/binding/table PASS; packed README checked against committed source.
+An earlier package build preceded the final README organization and was not selected.
+Accepted tarball SHA256:
+`9decf3e2f53c79d5e2b6a4a26d313d89c9205141943492f0b89fdf675613ce3f`.
+Service vendors that exact Core 0.1.0 artifact; checksum/lockfile checks and local
+build passed. `flowdoc-service/artifacts/1791433938187/result.json` verifies the new
+image's real API exports, temporary/retained downloads and restart. All three PDF
+hashes match the prior accepted MVP run. Runtime image `flowdoc-service:0.1.0`:
+`sha256:50f49b132e89d8f7fa014072109b245c8b5702b83fbd8ab3c65de2ea99f276f7`.
+The dedicated test project is stopped; its inspection artifacts/volumes are retained.
+Unchanged DB/validation proof from R5 is reused, not claimed as rerun. Changes are
+package metadata, pinned artifact, Compose default image names and release guidance;
+no product behavior or migration changes. Public distribution remains out of scope.
 
 ความต้องการที่คงไว้: บริการสำหรับผู้ใช้ภายนอกและ API key,
 คิวรองรับโหลดหนัก/หลาย worker, ความคืบหน้าแบบละเอียด, รูปภาพ, DOCX
