@@ -142,6 +142,9 @@ recorded below; this plan does not assert release readiness.
 
 ## Development checkpoint — 2026-10-08
 
+Historical checkpoint; the follow-up acceptance section below supersedes its
+remaining-work status without erasing the original coverage gaps.
+
 Service candidate: `9f9712c3ed33fdeb146509813f99ae15dd9b9359` on
 `codex/template-registry`, package 0.1.1. Core remains pinned to 0.1.0.
 U1–U3 behavior is implemented; U4 and fault-path acceptance are incomplete.
@@ -215,3 +218,45 @@ to `ec51ce5f50be2e5aa37ebe4f72ba9f0000fe0cc7`, matching `v0.1.0`.
 The resulting development tree equals the tested implementation tree. No remote
 push or tag mutation occurred. This was an execution error, not an authorized
 release promotion; check the actual branch before future edits and commits.
+
+## Follow-up acceptance — 2026-10-08
+
+PASS for bounded local upload staging. Service development commit `f7610f7`
+adds proof only (two test files and the constrained large-input harness); runtime
+implementation remains `9f9712c`. Owner explicitly required keeping unfinished
+work off `release`; no release/tag/push occurred in this follow-up. Execution IDs
+remain N/A. Scope is U1–U4 acceptance, not image preparation or production scale.
+
+| Previously open criterion | Closing evidence in Service |
+| --- | --- |
+| Disk failure and file/DB split | `tests/upload-acceptance.test.mjs`: injected ENOSPC at storage boundary, transaction failure before COMMIT after rename, COMMIT applied with acknowledgement lost, restart reconciliation of renamed orphan; retry and stored-file consistency assertions |
+| Real network failure and limits | `tests/upload-network.test.mjs`: live HTTP receiving-state polling, extra-stream 429/Retry-After, client disconnect, idle/absolute timers, short/oversized chunked bodies and successful retry after each failure |
+| Lifetimes | Same acceptance test: absolute-open boundary, ready expiry, concurrent finalize/cleanup at expiry equality, retained expired request key and metadata purge followed by new identity |
+| Existing database upgrade | Same acceptance test: migrations 001–003, real template registration and prepared job, apply only 004, compare every existing domain table before/after and reload template/job |
+| Hard memory boundary | `artifacts/1791449637499/result.json`, generated `memory.yaml`, and asserted `/sys/fs/cgroup/memory.max` in `tests/upload-large-live.mjs`: fixed 768 MiB memory/swap ceiling including fixture client and server; same two large valid PNG sizes, two concurrent streams, finalize/restart; server peak RSS 122,417,152 bytes |
+
+Final packaged database run: `artifacts/1791449701255/result.json`, 69 passed,
+zero failed/skipped; runtime image
+`sha256:bf83b122c7d67fb19d1b7f8b047252f7c6412357194366d11ad25bbe6b632ead`.
+This includes existing PDF/API tests and migration/restart checks. The prior
+standalone API result `1791448092185` remains reusable because product code,
+dependencies and runtime configuration did not change in this follow-up.
+Build within the packaged check, new test syntax and diff whitespace checks passed.
+The first run had one invalid upgrade fixture (prepared job lacked its required
+version pin); corrected with Core's `prepareGeneration`, then reran successfully.
+All test containers from this follow-up were stopped; volumes were retained.
+
+Rulings: ENOSPC is injected at the storage API boundary, not by filling the host
+disk. COMMIT ambiguity is injected around a real PostgreSQL transaction. Timeout
+tests use shorter configured durations to exercise the same paths. These prove
+the scoped failure handling, not every operating-system crash mode. The hard
+container limit includes image-fixture generation, hence 768 MiB, while the server
+RSS budget remains 256 MiB. No throughput, decoder-safety or production-capacity
+claim is made. Existing implementation review is reused for this test-only change.
+
+The original procedural checklist remains as planning history (including its
+unmet test-first/per-stage-commit sequence); this criterion-to-evidence matrix
+closes the functional acceptance gaps instead of retroactively claiming that
+sequence occurred. Local 0.1.1 staging is accepted; release integration is not
+performed. Next proposed development is 0.1.2 image preparation, under its own
+bounded plan. Core and system maps remain unchanged.

@@ -430,9 +430,10 @@ against implementation; no product behavior is claimed by the plan.
 เรื่องลิงก์ภายนอก หัวข้อสารบัญ และพฤติกรรมเซลล์รวมคงเป็นคำถามของหัวข้อนั้น
 ไม่ต้องแก้ทุกประเด็นก่อนเริ่มรูปภาพ แต่ต้องไม่เปลี่ยนสัญญาร่วมแบบเงียบ ๆ
 สถานะล่าสุด 2026-10-08: U0 และแผน U1–U4 นำไปสู่ implementation candidate
-Service `9f9712c` บน branch พัฒนาแล้ว แต่ยังไม่ปิด acceptance ของ 0.1.1
-ผลทดสอบและช่องว่างที่เหลืออยู่ใน
-[Development checkpoint](flowdoc-upload-staging-0.1.1-plan-2026-10-08.md#development-checkpoint--2026-10-08)
-ขั้นถัดไปคือเก็บ proof ที่ยังขาดตามแผนดังกล่าวก่อนเริ่ม 0.1.2;
-release/tag 0.1.0 คงเดิม และค่า limits ด้านบนเป็นประวัติข้อเสนอ U0
-ให้ดูค่า candidate ปัจจุบันจาก checkpoint โดยยังไม่ถือว่า accepted defaults
+Service `9f9712c` และชุดตรวจเพิ่มเติม `f7610f7` บน branch พัฒนาแล้ว
+ปิด acceptance สำหรับ upload staging ใน local ด้วย 69 tests และการรับภาพใหญ่
+ภายใต้เพดานหน่วยความจำจริง ตาม
+[Follow-up acceptance](flowdoc-upload-staging-0.1.1-plan-2026-10-08.md#follow-up-acceptance--2026-10-08)
+ขั้นถัดไปที่เสนอคือแผน 0.1.2 สำหรับเตรียมภาพ โดยยังไม่ได้เริ่ม;
+release/tag 0.1.0 คงเดิมตามคำสั่งเจ้าของ และค่า limits ด้านบนเป็นประวัติข้อเสนอ U0
+ให้ดูค่า staging ปัจจุบันกับขอบเขตหลักฐานจากแผนดังกล่าว ไม่ใช่ข้อรับรอง production
