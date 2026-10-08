@@ -2,11 +2,13 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Written plan for review, not implementation Evidence.
+Owner: FlowDoc Project Control. Implementation plan and bounded execution status;
+the referenced Service tests/artifacts supply evidence, not this prose alone.
 Spec: [next export releases, U0 contract](flowdoc-export-next-releases-draft-2026-10-08.md).
 Owner authorized continuation on the normal development branch; release 0.1.0 stays
 unchanged. Inline Product Implementation role applies when execution begins;
-current task is Planning Partner. Execution IDs N/A. No separate room dispatch.
+execution used Product Implementation Agent; this status update is Project Control
+Steward work. Execution IDs N/A. No separate room dispatch.
 Scope is Service `codex/template-registry`, based on `5141622`; Core stays pinned
 to 0.1.0. Confirm clean candidate before editing. No image decode/resize/PDF changes,
 URL fetching, public deployment, authentication, media library or byte-resume.
@@ -134,5 +136,82 @@ expectations in `scripts/checkDatabase.mjs` and affected tests after migration 0
 Critical cases have owners: U1 handles byte-limit bypass and concurrent overwrite;
 U2 handles misleading URL-ready state and finalize races; U3 handles disk/DB split
 and restart; U4 handles real streaming/memory and upgrade evidence. No new test
-counts are promised. All tasks pending; defaults and metadata lifetime are design
-choices to validate before release. This plan does not assert readiness.
+counts are promised. Checklist groups above remain unchecked when any named proof
+is outstanding. Implementation exists, but release acceptance remains pending as
+recorded below; this plan does not assert release readiness.
+
+## Development checkpoint — 2026-10-08
+
+Service candidate: `9f9712c3ed33fdeb146509813f99ae15dd9b9359` on
+`codex/template-registry`, package 0.1.1. Core remains pinned to 0.1.0.
+U1–U3 behavior is implemented; U4 and fault-path acceptance are incomplete.
+No tag, push, release promotion, system map or DOCUMENT_MAP update occurred.
+
+Implemented: upload manifests and reservations, binary streaming, bounded Base64,
+item retry, finalize, observational polling, expiry, startup reconciliation,
+staging volume and configuration. URL entries remain declarations. Image fetching,
+decode/resize, PDF image rendering and job claims remain outside this candidate.
+The implementation keeps DB operations in `src/uploads/service.ts` rather than
+creating separate `repository.ts`/`types.ts` files; the live experiment is
+`tests/upload-large-live.mjs`. U1–U4 implementation was committed together, not as
+separate per-stage commits. Test-first proof is partial, not claimed for every case.
+
+Candidate defaults: 50 MiB/file, 200 MiB/set, 20 items, 1 GiB staging reservation,
+100 sets, two receiving streams, Base64 1 MiB decoded / 2 MiB JSON; idle/open-ready
+lifetime one hour, absolute open cap four hours, request idle 60 seconds / absolute
+10 minutes, metadata tombstones 24 hours. Large-file intake measurements support
+the candidate byte bounds, but disk-full and timeout proof still block final
+acceptance of the limits. No image decoding safety claim follows from intake.
+
+### Verified coverage
+
+All locators below are relative to sibling repository `flowdoc-service`.
+
+| Evidence | Bounded result |
+| --- | --- |
+| `artifacts/1791448081189/result.json` | Final 0.1.1 DB suite: 59 passed, zero failed/skipped; fresh migration/replay, SQL constraints/concurrency and existing persistence regression |
+| `artifacts/1791448092185/result.json` | Final 0.1.1 API regression: three real PDFs, consumption/retention and queued/running/succeeded restart |
+| `artifacts/1791447997454/result.json` | Valid PNG 3840×2160 / 24,893,018 bytes and 5120×3200 / 49,170,268 bytes; two parallel files, finalize, server restart with receipts retained |
+| `tests/resource-files.test.mjs`, `tests/upload-contract.test.mjs`, `tests/uploads.test.mjs`, `tests/upload-http.test.mjs`, `tests/upload-recovery.test.mjs` at candidate | Reproducible focused storage, contract, state, HTTP and recovery checks included in final suite |
+
+Large experiment peak server RSS was 124,780,544 bytes, below its 256 MiB assertion
+budget. This measured process RSS, not a container hard memory limit or general
+capacity certification. That experiment preceded the package metadata bump; the
+final 0.1.1 DB/API packaged runs above followed it. Final Compose environment
+forwarding passed `docker compose config --quiet`; runtime defaults were unchanged.
+Build, script syntax and `git diff --check` passed. Test containers were stopped;
+retained volumes and unrelated projects were not removed.
+
+Review identified two corrected issues: deletion failure previously discarded
+attempt ownership too early, and late progress could renew an already expired
+session. Final recovery tests cover retained ownership/quota on unlink failure and
+late arrival at expiry equality. The review itself is not a second execution proof.
+
+### Remaining acceptance work
+
+Before accepting 0.1.1, close the unchecked criteria with focused evidence:
+
+- Actual or faithfully injected ENOSPC, rename-before-DB failure and uncertain
+  COMMIT outcomes; generic write/unlink failure does not prove all these cases.
+- Real HTTP slow/disconnected clients, idle/absolute timeout, extra-stream 429 and
+  declaration mismatch, with status polling during reception. Existing real HTTP
+  coverage proves chunked large intake/retry, not this entire matrix.
+- Explicit expiry/finalize races, absolute-open lifetime and tombstone purge cases
+  beyond the expiry/recovery cases currently tested.
+- A populated 0.1.0 database upgraded through migration 004 with templates/jobs
+  preserved; fresh/replay and older legacy-upgrade tests are not a substitute.
+- The planned fixed-container-memory experiment (or an explicit accepted change
+  to that criterion). The RSS observation above does not silently replace it.
+
+Do not start image preparation as though this checkpoint closed upload acceptance.
+Next work remains the bounded missing proof and any repairs it reveals.
+
+### Branch correction
+
+The implementation was accidentally committed on local `release` as `4762939`.
+After confirming a clean checkout and identical pre-change development/release
+trees, it was cherry-picked to development as `9f9712c`; local `release` was restored
+to `ec51ce5f50be2e5aa37ebe4f72ba9f0000fe0cc7`, matching `v0.1.0`.
+The resulting development tree equals the tested implementation tree. No remote
+push or tag mutation occurred. This was an execution error, not an authorized
+release promotion; check the actual branch before future edits and commits.
