@@ -171,3 +171,61 @@ containers were stopped. Release/tag refs remain Core `1aeacd0` and Service
 `ec51ce5`; no push, release promotion or map update. C/D remain pending, including
 resource claims, preparation-to-job wiring, actual-size legibility and constrained
 memory acceptance. These results do not establish end-to-end API image support.
+
+## Stage C1 kickoff — 2026-10-08
+
+Owner authorized the next step. Service owns this inline implementation on
+`codex/template-registry`, base `9644a11`; Project Control Steward records results
+here. Execution IDs N/A. Routine risk, bounded scope: internal atomic set/job claim
+and original-file lifetime only. Core, release and public image admission remain
+unchanged. C2 will connect preparation, URL retrieval, progress and rendering.
+
+Ruling: establish and test the transaction/lifetime boundary before removing the
+image admission guard. This prevents partially integrated API jobs from producing
+blank images. Existing upload recovery deletes unreferenced files, so prepared
+derivatives must get explicit ownership in C2 before using that storage.
+
+C1 acceptance: ready/nonexpired set only; all referenced resources belong to it;
+one set per job; concurrent identical retries return one job; changed input/version
+conflicts; failed insertion rolls back the claim; queued/running claims survive
+expiry/recovery; terminal claims retain originals for one hour then release bytes.
+Proof: focused real PostgreSQL tests, existing upload regressions, one packaged
+database check and a bounded review. Document budget remains this plan and local
+README. No new execution registry or product map update.
+
+## Stage C1 result — 2026-10-08
+
+Service development commit `58999c1` adds migration 006 and internal
+`src/uploads/claims.ts`. The session row lock serializes claims and cleanup;
+job insertion and ownership commit together. JSONB equality checks the original
+request, prepared input, selected version and normalized resource IDs on retry.
+Only references belonging to the finalized set can enter a new claim. A failed
+job insert rolls back without consuming the set. The caller must derive resource
+IDs from composed nodes; this internal function is not an HTTP input validator.
+
+Upload polling exposes `claimed` with no expiry during queued/running work.
+Cleanup protects originals through recovery and retains them until terminal
+finished_at plus one hour; then existing deletion/quota cleanup applies. Prepared
+derivative ownership and public image admission remain C2 work. Stage C remains
+unchecked; no end-to-end API image support is claimed.
+
+Verification:
+
+- New `tests/upload-claims.test.mjs` first failed all four tests because the claim
+  function was absent. It now verifies concurrent retries, changed input/version,
+  open/expired/wrong-set references, insertion rollback and original-file lifetime
+  across queued/running recovery and interrupted-job failure.
+- Focused claim/upload/recovery suite: 12 passed. Packaged database run
+  `flowdoc-service/artifacts/1791454877554/result.json`: 85 passed, zero failed or
+  skipped, migration replay, populated upgrade preservation and existing export
+  regressions included. Build and final diff checks passed.
+- First packaged run caught two old fixed migration/table inventories, updated to
+  include migration 006 and its table. A subsequent infrastructure attempt failed
+  before tests because Docker's address pool was exhausted. Removed only inactive
+  current-turn test containers/networks, retained volumes, and reran successfully.
+- Bounded read-only review found no actionable correctness/security findings.
+
+Core and its vendor pin remain unchanged. Service release and peeled v0.1.0 remain
+`ec51ce5`; no push or release promotion. Existing plan updated only; no maps or
+execution records created. Next C2: resource preparation/URL retrieval, derivative
+ownership, persisted progress/warnings and rendering integration, then D acceptance.
