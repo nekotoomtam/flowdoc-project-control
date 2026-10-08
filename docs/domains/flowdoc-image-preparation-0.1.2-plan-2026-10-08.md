@@ -28,7 +28,7 @@ No separate agent rooms. Record progress here, not in product plans or maps.
   layout and PDF JPEG/RGB-alpha objects. Preserve old snapshots; image frame moves
   intact across pages and over-page frame fails validation. Tests cover missing
   bindings/resources, malicious lengths, deduplication and non-image regressions.
-- [ ] C / I1: Service additive migration for atomic upload/job claim and processing
+- [x] C / I1: Service additive migration for atomic upload/job claim and processing
   progress/warnings, resource pinning and terminal cleanup. URL retrieval validates
   and pins public destinations at each redirect. Compose once; no re-download in
   layout/paint. Prove duplicate/conflicting claims, expired/wrong-set IDs, restart,
@@ -229,3 +229,84 @@ Core and its vendor pin remain unchanged. Service release and peeled v0.1.0 rema
 `ec51ce5`; no push or release promotion. Existing plan updated only; no maps or
 execution records created. Next C2: resource preparation/URL retrieval, derivative
 ownership, persisted progress/warnings and rendering integration, then D acceptance.
+
+## Stage C2 kickoff — 2026-10-08
+
+Owner authorized preparation/progress/PDF integration and a mock UAT flow based
+on the old report. Inline Service implementation from `58999c1`; IDs N/A, routine
+risk with explicit network and resource bounds. Existing plan is the authority;
+Core's public package contract stays unchanged. Scope: admission, processor,
+prepared-file ownership, safe URL retrieval, persisted processing feedback and
+HTTP-to-PDF fixtures. No release promotion, DOCX or image-in-table support.
+
+Ruling: store job-owned derivatives/downloads in a UUID directory separate from
+original upload files. Original cleanup must remove that directory only after
+terminal retention; startup keeps queued claims and expires interrupted work by
+the same lifetime. Reserve shared staging capacity before new disk writes.
+Renderer receives the composed document and trusted prepared-file descriptors,
+never client paths. Image failures become bounded warnings; cancellation stops
+the job. Render-time PNG conversion stays inside the killable renderer child.
+
+Proof budget: focused policy/integration tests, one affected packaged regression
+run, one mock UAT PDF/visual check, bounded review. Use synthetic screenshots and
+the old report's structure; do not retrieve protected historical image URLs.
+Actual production load and broad media formats remain outside this slice.
+
+## Stage C2 result and bounded UAT proof — 2026-10-08
+
+Service development commit `eec46a7` connects finalized upload admission, image
+preparation, composed-document rendering and persisted feedback. Migration 007
+stores processing stages/counts/warnings separately from immutable accepted input.
+Retry receipts report the current job status. The configured server enables image
+jobs; factory users must explicitly provide the image pipeline and enable admission.
+Core and its pinned 0.1.1 package are unchanged; Service remains development 0.1.1.
+
+Downloads require public-unicast HTTPS destinations, validate every redirect and
+pin the selected address. Bounds are three redirects, 50 MiB, 30 seconds/download;
+no caller credentials are forwarded. `ipaddr.js` 2.5.0 is now a direct pinned
+dependency (previously transitive). Compose gives only API an egress network;
+database remains internal. Original and derived files share staging reservations.
+Downloads/derivatives live under job-owned UUID directories and follow C1 retention.
+PNG normalization occurs inside the killable render child; JPEG stays compressed.
+Same source/target dimensions reuse a derivative. Failed images keep blank frames
+with warnings, while cancellation/deadline ends the job.
+
+Verification and acceptance coverage:
+
+- New missing-capability tests failed before implementation. Follow-up retry test
+  exposed a receipt reporting queued after completion; fixed and verified. A test
+  fixture missing its required data object was corrected without widening the API.
+- `flowdoc-service/artifacts/1791455973261/result.json`: packaged Linux/amd64 build,
+  migration/upgrade/persistence and regression suite PASS, 94 passed, zero failures
+  or skips. Image route tests cover JPEG/PNG alpha, repeated sizes, blocked URL,
+  missing/wrong-set IDs, warnings, immutable inputs, capacity failure and exact
+  retained-byte accounting. URL transport fixtures cover pinning, private redirect,
+  redirect cap, streamed overflow, deadline and in-flight cancellation cleanup.
+- Bounded read-only review found no confirmed code defects and requested extra
+  lifetime/quota/cancellation coverage. Those checks were added. Strengthened
+  `tests/upload-claims.test.mjs` preserves derivatives through queued/running recovery
+  and removes them after terminal retention: four passing tests in
+  `artifacts/1791455973261/uat/retention-final.log`, using the unchanged packaged image.
+- `tests/uat-image-trial.mjs` exercises live HTTP upload/finalize/job/poll/download
+  with synthetic screenshots, following the old UAT report's related-images section.
+  Output: `artifacts/1791455973261/uat/uat-image-trial.pdf`, two A4 pages;
+  `result.json` records real preparation/rendering stages and four derivatives.
+  Landscape 3840x2160 becomes 1306x735 and 653x367 at two frame sizes; portrait and
+  alpha PNG also pass. No customer data or protected historical URLs were fetched.
+- First visual inspection caught missing fonts in the synthetic screenshot generator,
+  not the PDF engine. Fixture now uses bundled Sarabun via its own Fontconfig file.
+  Reran the fixture, rendered both final PDF pages with Poppler and inspected them:
+  text is present, proportions/alpha preserved, portrait frame moves intact to page 2.
+  Small-frame screenshot text is physically smaller; DPI alone cannot restore its
+  reading size. This is a fixture observation, not owner acceptance of every layout.
+- `uat/container-proof.json`: same verification image, 512 MiB enforced limit,
+  exit 0, OOMKilled false. Proves this 4K UAT fixture only, not the full 40 MP input
+  limit or concurrent production capacity. URL success uses controlled transport
+  tests; no external public-host availability claim is made.
+
+Build/diff checks passed. Only fixture font configuration, strengthened retention
+test and prose changed after the packaged run; affected fixture/tests were rerun,
+runtime content stayed unchanged. Current-turn containers/networks cleaned up;
+volumes and artifacts retained. No push, release/tag promotion or map update.
+Stage C is complete within the stated bounds. D remains pending for broader
+quality/near-limit acceptance and final version metadata; do not call 0.1.2 released.
