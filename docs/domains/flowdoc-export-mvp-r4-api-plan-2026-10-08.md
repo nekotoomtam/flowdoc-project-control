@@ -6,7 +6,7 @@
 
 Owner: Project Control for this plan; Service for implementation. Role: Planning
 Partner / Documentation Synthesizer. Owner requested continuation after current/
-version acceptance. This is the detailed R4 plan for review, not runtime evidence.
+version acceptance. This is the R4 plan with implementation acceptance recorded below; the plan itself is not runtime evidence.
 Inline work, execution/Phase/Checklist IDs not applicable. Medium size, routine
 risk. No old execution context is reopened. No code/migration change in this plan.
 
@@ -124,13 +124,13 @@ Interfaces: submitJob(pool,input): Promise<Result<JobReceipt>>;
 getJob(pool,id): Promise<Result<JobView>>; claimNextJob(client): Promise<Job|null>;
 failInterruptedJobs(client): Promise<void>. JobView excludes internal data/paths.
 
-- [ ] Write failing tests for invalid/no-job, warning persistence, selected version
+- [x] Write failing tests for invalid/no-job, warning persistence, selected version
   pin, FIFO claim, conditional state transitions and interrupted-running recovery.
-- [ ] Implement parameterized transactional admission and lifecycle operations.
+- [x] Implement parameterized transactional admission and lifecycle operations.
   Check update row counts to prevent double completion or terminal-state overwrite.
-- [ ] Test later template publication cannot change accepted prepared input;
+- [x] Test later template publication cannot change accepted prepared input;
   missing/invalid IDs and unknown-format-only requests follow Core contract.
-- [ ] Run build and focused real-DB tests; inspect diff and commit.
+- [x] Run build and focused real-DB tests; inspect diff and commit.
 
 ## Task 2 — Renderer process and durable output
 
@@ -140,16 +140,16 @@ Interfaces: startProcessor(dependencies): Promise<{stop():Promise<void>}>;
 renderPinnedJob(job,template): Promise<Result<PdfArtifact>>;
 writePdf(jobId,bytes): Promise<OutputMetadata>; openPdf(metadata): Readable.
 
-- [ ] Write failing tests for exactly one active render in a three-job sequence,
+- [x] Write failing tests for exactly one active render in a three-job sequence,
   child crash/timeout, file write failure, output metadata failure and missing file.
-- [ ] Implement coordinator lock, startup recovery and isolated render child;
+- [x] Implement coordinator lock, startup recovery and isolated render child;
   reuse Core public loadBundledResources/createPdfEngine/composeDocument.
-- [ ] Implement generated filenames, temp/rename, output transaction and safe
+- [x] Implement generated filenames, temp/rename, output transaction and safe
   failure reconciliation. Never accept a caller-supplied download path.
-- [ ] Implement the approved retention configuration, persisted expiry/availability,
+- [x] Implement the approved retention configuration, persisted expiry/availability,
   and bounded cleanup. Test both modes, expiry, stale orphan removal, active-file
   exclusion and failed-unlink/restart recovery without touching unrelated files.
-- [ ] Prove HTTP event-loop work can progress while rendering; process failure
+- [x] Prove HTTP event-loop work can progress while rendering; process failure
   does not silently hang the next queued job. Run focused tests and commit.
 
 ## Task 3 — Fastify routes and local server
@@ -159,15 +159,15 @@ tests/http.test.mjs; update package/lock and CLI serve entrypoint if used.
 Interface: createServer(dependencies): FastifyInstance; injectable processor/files
 for deterministic route failures, plus real integration in Task 4.
 
-- [ ] Pin Fastify version; write route tests before handlers with exact status codes
+- [x] Pin Fastify version; write route tests before handlers with exact status codes
   above, JSON limits, malformed UUID/version and safe diagnostic assertions.
-- [ ] Implement contract projection without graph leakage, admission, job view,
+- [x] Implement contract projection without graph leakage, admission, job view,
   PDF streaming and readiness. Disable framework/internal error details in responses.
-- [ ] Test default successful-stream retirement, aborted-stream retry, concurrent
+- [x] Test default successful-stream retirement, aborted-stream retry, concurrent
   downloads, retained repeat downloads and 410/no URL after consumption or expiry.
-- [ ] Wire startup/shutdown with the processor and persistent DB/file configuration.
+- [x] Wire startup/shutdown with the processor and persistent DB/file configuration.
   Keep migration/registration explicit setup commands, not per-request work.
-- [ ] Run build, route tests and affected CLI/repository tests; commit.
+- [x] Run build, route tests and affected CLI/repository tests; commit.
 
 ## Task 4 — Isolated localhost acceptance and release
 
@@ -175,21 +175,21 @@ Files: compose.yaml, Dockerfile as required, scripts/checkApi.mjs,
 tests/api-restart.mjs, README/AGENTS, package/lock Service dev.3.
 Add API/output-volume without removing registry commands or old DB checks.
 
-- [ ] Start fresh isolated DB/runtime, migrate and register example solely from
+- [x] Start fresh isolated DB/runtime, migrate and register example solely from
   packaged files; call real HTTP for contract, submit, poll and download PDF.
-- [ ] Submit three distinguishable jobs; prove each result belongs to its input,
+- [x] Submit three distinguishable jobs; prove each result belongs to its input,
   serial processing and responsive status; include success-with-warning behavior.
-- [ ] Test malformed/type/missing input without new jobs, unknown job/version,
+- [x] Test malformed/type/missing input without new jobs, unknown job/version,
   download-before-success, forced render/storage failure and file-missing response.
-- [ ] Restart same image with queued/running/succeeded fixtures: queued processes,
+- [x] Restart same image with queued/running/succeeded fixtures: queued processes,
   running becomes failed, unconsumed/unexpired PDF and warnings remain available;
   consumed/expired files stay unavailable and retained files permit repeat reads. Do not
   depend on accidental render timing to create recovery fixtures.
-- [ ] Verify PDF content/page result through existing Core proof or output text/
+- [x] Verify PDF content/page result through existing Core proof or output text/
   visual inspection where changed; record artifact hashes and image/version.
-- [ ] Run affected current/version regression checks once for final candidate.
+- [x] Run affected current/version regression checks once for final candidate.
   One fresh review, fix concrete findings, rerun affected proof, then commit.
-- [ ] Record result/coverage in this plan; stop at R4. R5 owner PDF acceptance and
+- [x] Record result/coverage in this plan; stop at R4. R5 owner PDF acceptance and
   overall MVP checklist closure remain separate; do not mark full MVP complete.
 
 ## Review focus
@@ -199,5 +199,69 @@ orphan file (Tasks 2/4); exposure of graph/path/child stderr (Task 3); admission
 while processor unavailable (Tasks 2/3); lost warning/skipped indices after restart
 (Tasks 1/4). Each must have an owning test rather than another audit document.
 
-Plan verification: mapped routes/states to existing MVP/R1; checked baseline Service
-and current/version acceptance. No runtime results claimed in this planning file.
+Original plan verification: mapped routes/states to existing MVP/R1; checked baseline Service
+and current/version acceptance. Later runtime results are recorded separately below.
+
+## Implementation acceptance — 2026-10-08
+
+PASS for the bounded local R4 slice. Service commits `d7df582` (admission/queue)
+and `b091b02` (renderer, output lifecycle, HTTP and acceptance), package dev.3,
+remain on `codex/template-registry`; no merge/push. Core dev.4 is unchanged.
+No registered execution/Phase/Checklist IDs apply. No map or full MVP promotion.
+
+Evidence (Service-owned, ignored local artifacts plus committed reproducible tests):
+
+- `flowdoc-service/artifacts/1791429756893/result.json`: final full regression,
+  45 passed, zero failed/skipped, fresh migration, legacy upgrade, CLI and restart.
+  Runtime image `sha256:68820f3f526ae1be8ea88a776c704783ae6ae533e8f8dd54284f2fab04432bd4`.
+- `flowdoc-service/artifacts/1791429767605/result.json`: real Compose/API exports,
+  three distinct PDF results, default consumption, retained repeated download,
+  queued/running/succeeded restart, warning/skipped-index persistence and orphan
+  cleanup. Runtime image `sha256:68c2e8e252977fd6d4e4281a6207e50d08ddad2eced666ed18df5b6ef27c250b`.
+- `tests/jobs.test.mjs`: invalid input/no job, immutable pin, warning persistence,
+  FIFO and conditional failure. `tests/processor.test.mjs`: serial processing,
+  write/metadata failure, uncertain COMMIT preserving success and lock loss.
+- `tests/outputs.test.mjs`, `tests/pdf-files.test.mjs`: both file policies,
+  expiry, concurrent leases, abort/retry, DB/unlink failure recovery, active final
+  file protection through publication and unrelated-file exclusion.
+- `tests/render.test.mjs`: real PDF, deadline/output bounds and parent-owned temp
+  cleanup on forced termination. `tests/http.test.mjs`: safe errors, unavailable
+  admission, size limits and shutdown waiting for active lease finalization.
+  `tests/server-startup.test.mjs`: invalid configuration exits with a usable DB.
+- `tests/api-flow.test.mjs` and `tests/api-restart.mjs`: real HTTP/child rendering
+  and deterministic restart fixtures. Existing source/snapshot PDF equivalence
+  remains covered. Distinct PDF hashes alone do not prove visual correctness.
+
+One fresh read-only review identified five Important findings. The single repair
+pass added durable retirement markers/reconciliation, validated configuration
+before resources, drained HTTP leases before pool shutdown, moved render-temp
+ownership to the parent with startup recovery under coordinator lock, protected
+renamed files until publication, and filled the named failure/restart proof gaps.
+Regression tests exposed a further close-event ordering issue within that pass;
+tracking leases from acquisition fixed it. Final proof above includes all fixes.
+Migration 003 was normalized to LF before final acceptance to match committed
+migration checksums. Test environments are stopped; retained volumes are untouched.
+
+Execution decisions and accepted boundaries:
+
+- Reused the clean development checkout per owner preference. Used ignored
+  `artifacts/r4` for the Windows inline ledger instead of shell workspace helpers;
+  equivalent progress was recorded manually (cost: manual bookkeeping).
+- Ran DB proof in Docker's network after host-to-container connections timed out.
+  Ran test files sequentially because the coordinator lock is database-wide;
+  cost is longer tests, with no parallel-capacity claim.
+- Kept rendering adapter output to bytes/media type instead of inventing page
+  counts across the child boundary; consumers do not receive page-count metadata.
+- Tasks 2–4 share one final commit after lifecycle integration; cost is a larger
+  commit. No extra review pass was added after covering fixes with tests.
+- Review exclusions stand: authentication, public deployment, auto retry and
+  multi-instance operation are outside this slice. R5 owns visual PDF acceptance.
+  Primary agent read the supplied runtime reports; reviewer did not rerun them.
+
+Deferred Minor findings: status can still advertise an externally deleted file
+until download returns 410; implementation formatting is compact and can be made
+more readable later. Neither is silently treated as fixed. Simultaneous failure
+of both DB and disk cannot guarantee persistence of delivery acknowledgement.
+
+Next: R5 owner review of generated PDF and bounded overall MVP acceptance.
+Do not add UI, permission, media or heavy-load work as part of closing R4.
