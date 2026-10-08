@@ -252,3 +252,32 @@ media/permissions/node master เป็น deferred ไม่ใช่ prerequis
 [แผนลงมือ current/version](flowdoc-export-mvp-current-version-plan-2026-10-08.md)
 เริ่มด้วยการปิด compatibility/migration mapping ก่อนแก้ product code;
 การอ่านแบบไม่ใช่หลักฐานว่า migration หรือคำสั่งใหม่ถูกทำแล้ว
+
+## Execution decisions — 2026-10-08
+
+Task 0 resolved against installed Core dev.4 declarations and R3 SQL. Existing
+`templates.id` remains text to preserve envelope templateId and all old refs;
+new template identities may be UUID v7 encoded into that compatible text column.
+Do not add a second identity that would require rewriting old fingerprints.
+Current payload lives in a template_current row; templates remains stable identity.
+Old version headers and definition_json remain immutable; the full JSON becomes a
+compatibility witness, not editable authority. New relational snapshots assemble
+the same envelope and must match its fingerprint on load. Backfill is transactional.
+All current/version child IDs are new UUIDs. Preserve original format insertion
+order with position and use Core canonical fingerprint checks for JSONB key order.
+Raw import accepts existing Core contract; editable current records carry IDs.
+Use proposed type seed IDs and current ownership deletion from the reviewed plan.
+This work remains on the user-requested existing clean development branch;
+no concurrent product lane was found. Apply executing-plans and TDD inline.
+
+## Implementation follow-through — 2026-10-08
+
+The approved design was implemented in Service `138269c` / dev.2 with bounded
+compatibility choices and 27 passing real-container tests plus CLI/restart proof.
+See the [plan acceptance](flowdoc-export-mvp-current-version-plan-2026-10-08.md#acceptance--2026-10-08-completed)
+for source tests, artifact/image identities and limitations. Earlier proposal
+sections remain the design history; final storage uses template_current and a
+separate template_snapshots header to preserve R3 immutable version headers.
+Legacy child provenance is NULL, not synthetic source IDs. Existing text template
+identities remain unchanged. These are implementation resolutions of Section 7,
+not a claim that R4 or the whole MVP is complete.

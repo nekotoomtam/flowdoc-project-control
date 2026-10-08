@@ -127,3 +127,7 @@ cloned version tables, variable definitions and a shared type master. See the
 [current/version design](flowdoc-export-mvp-current-version-design-2026-10-08.md).
 This is additional design work, not a reopened R3 implementation or a claim that
 its database has changed. Review the draft and migration plan before R4 work.
+
+Follow-through: the additional current/version slice completed in Service
+`138269c` / dev.2. See [acceptance and remaining scope](flowdoc-export-mvp-current-version-plan-2026-10-08.md#acceptance--2026-10-08-completed).
+Original R3 result is unchanged; R4 remains the next unimplemented slice.
