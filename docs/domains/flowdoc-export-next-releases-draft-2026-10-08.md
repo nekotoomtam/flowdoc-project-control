@@ -380,6 +380,14 @@ state ชุด U1–U4: open → ready → expired (terminal); incomplete item 
 | อายุ open สูงสุด | 4 ชั่วโมง แม้มีความคืบหน้า; hard cap ต้องแจ้งผู้เรียก |
 | request รับไฟล์ | idle 60 วินาที, สูงสุด 10 นาทีต่อ attempt; retry รายไฟล์ได้ |
 
+Owner clarification after U0: callers may send large originals and expect the
+service to prepare them, rather than routinely resizing before upload. The 10 MiB
+draft value above is not an accepted default. Separate intake byte limits from
+prepared-image pixel/quality limits. Test large JPEG/PNG originals, including
+files above 10 MiB, through streaming intake before choosing defaults; image
+decoding/downsampling remains 0.1.2. A successful upload alone proves neither
+that decoding is safe nor that the image fits the eventual PDF quality budget.
+
 expected_bytes ต้องนับตรวจจริง ไม่เชื่อ Content-Length อย่างเดียว; จองโควตาแบบ atomic
 และคืนเมื่อ attempt จบ/ผิดพลาด/restart ไม่ต่ออายุจาก polling
 ค่า pixel/decode/ความละเอียด PDF เป็นงาน I0–I2 ไม่แต่งค่ารับรองขึ้นจาก byte limit
@@ -400,6 +408,11 @@ U0 discovery เสร็จในขอบเขตอ่าน source แล�
 จุดขอเจ้าของทบทวนคือ API แบบสองช่วง, ready ที่ยังไม่ fetch URL,
 หนึ่งชุดต่อหนึ่ง job และ limits ที่เป็นค่าเริ่มทดลอง ไม่ใช่คำถามเปิดทั้งหมดใหม่
 เมื่อรับแบบแล้วจึงแตกแผน U1–U4 พร้อม test cases; ยังไม่เปลี่ยนโค้ดหรือ release
+
+Owner instructed proceeding after clarifying large-original handling. The bounded
+[U1–U4 implementation plan](flowdoc-upload-staging-0.1.1-plan-2026-10-08.md)
+now records the next steps. API/DB choices below remain design decisions to check
+against implementation; no product behavior is claimed by the plan.
 
 ## จุดที่ต้องลงรายละเอียดก่อนลงมือ
 
