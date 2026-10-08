@@ -265,3 +265,43 @@ of both DB and disk cannot guarantee persistence of delivery acknowledgement.
 
 Next: R5 owner review of generated PDF and bounded overall MVP acceptance.
 Do not add UI, permission, media or heavy-load work as part of closing R4.
+
+## R5 data preparation — 2026-10-08 (owner review pending)
+
+Owner requested longer mock data before PDF acceptance. Bounded inline scope:
+Service-owned test data and export review only, no runtime/layout changes and no
+full R5/MVP closure. Service commit `16003d1` adds
+`examples/createSrsReviewRequests.mjs`: deterministic fictional SRS requirements,
+not customer records or new approved product requirements. It validates all
+requests against the packaged Core contract and generates normal/empty/long JSON.
+
+Using unchanged Service `b091b02` / Core dev.4, generated via the existing dedicated
+Compose API project `flowdoc-r4-api-1791429767605`, then stopped it. No additional
+persistent Compose project was created. Runtime remains
+`sha256:68c2e8e252977fd6d4e4281a6207e50d08ddad2eced666ed18df5b6ef27c250b`.
+Local artifact folder: `flowdoc-service/artifacts/r5-long-review/`.
+
+- normal.pdf: 1 A4 page, 3 rows, 1,570 input characters, 8 markers.
+- empty.pdf: 1 A4 page, no data rows, 144 input characters, 2 markers; header remains.
+- long.pdf: 18 A4 pages, 33 rows (32 normal plus one long), 31,735 input characters,
+  110 markers. The single long row spans pages 2 through 11 within this document.
+- `review-result.json`, `text-check.json`, `layout-check.json`: markers appear once
+  in source order, all 18 pages have table headers, no glyph bounds outside page,
+  and all 33 detail fields have matching NFKD-normalized character counts excluding
+  whitespace. Extraction reorders Thai combining marks; character counts are not
+  an exact logical-order claim. Marker order and visual review complement them.
+- Visual inspection: normal/empty pages, contact sheets covering all 18 long pages,
+  enlarged long pages 2/3/11/18. No observed clipping/overlap; owner acceptance is
+  still required. Last page contains the final row continuation and closing note.
+
+Test-driver incident retained in the artifact folder: two initial long submissions
+were corrupted because the ignored helper decoded stdin byte chunks separately,
+producing replacement characters at a Thai UTF-8 boundary. Comparison of source
+and DB-prepared data identified that exact mutation. Streaming UTF-8 decoding in
+that helper fixed the issue; unchanged long input then exported successfully via
+unchanged API/Core. These failures are not evidence of a product pagination defect.
+
+Checks: generator syntax, Core validation for all three requests, real API export,
+PDF marker/character checks and rendered inspection above, scoped Git diff check.
+Full regression was not repeated for a fixture-only change. Next: owner PDF review
+and remaining R5 checklist coverage reconciliation; MVP stays open.
