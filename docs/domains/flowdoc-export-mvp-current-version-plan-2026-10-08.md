@@ -278,3 +278,6 @@ Execution rulings/limitations:
 
 No mandatory acceptance gap remains for the delivered slice. No permission/media/
 node-master/HTTP functionality added. Next work is the separate R4 API/job plan.
+
+Owner requested continuation; [R4 API/job plan](flowdoc-export-mvp-r4-api-plan-2026-10-08.md)
+now records routes, serial processing, file completion and restart acceptance.
