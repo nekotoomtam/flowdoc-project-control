@@ -444,6 +444,10 @@ and is not promoted or rewritten by this export-only closure.
 
 ## หลัง MVP
 
+ร่างหัวข้อพัฒนาถัดไปอยู่ใน
+[Export next releases draft](flowdoc-export-next-releases-draft-2026-10-08.md)
+แยกจาก MVP ที่ปิดแล้ว; เป็นร่างหารือ ไม่ใช่ขอบเขต implementation ที่ล็อกแล้ว
+
 ### Local release promotion — owner authorized 2026-10-08
 
 Follow-on packaging scope after MVP closure: Core and Service each get one local
