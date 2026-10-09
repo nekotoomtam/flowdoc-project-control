@@ -44,6 +44,14 @@ check links/meaning and Project Control data. No product code, migration or map 
 โครงปัจจุบันจึงไม่ได้จำกัดหนึ่งเซลล์ต่อหนึ่ง TextBlock สิ่งที่ต้องตัดสินเพิ่ม
 คือชนิดลูกที่ยอมรับ กติกาวางลูกหลายชนิด และผลต่อการแบ่งหน้า
 
+### Development baseline update — 2026-10-09
+
+ตารางด้านบนเป็นฐาน release 0.1.5 ณ เริ่มร่าง ไม่ใช่สถานะ development ล่าสุด
+ชุด direct-cell ผ่านและรวมเป็น Core/Service 0.1.6 แล้ว: Core `4546a18`, Service
+`eb41b69`; model 9 รับ TextBlock/Image โดยตรงใน cell พร้อม padding รายด้าน
+อ้างผลตรวจและขอบเขตที่รับใน [Cell Content closeout](flowdoc-cell-content-plan-2026-10-09.md#development-closeout--2026-10-09)
+release ยังเป็น 0.1.5; array image items และ cell repeats ยังไม่รองรับ
+
 ## หลักที่ตกลงใช้เป็นทิศทาง
 
 1. ออกแบบเผื่อหน้าบ้าน แต่ยังไม่สร้างหน้าบ้านในรอบออกแบบนี้
@@ -148,6 +156,144 @@ Columns ที่เคยทดลองในระบบหน้ากระ
 เจ้าของให้เก็บบทสนทนาเรื่องรายการภาพ/โครงย่อยไว้ในพาร์ต 5 และตรวจผลต่อ
 ความเข้ากันได้ในพาร์ต 6 ไม่ย้ายมาทำก่อนหรือเป็น prerequisite ของ cell slice
 ต่อไปนี้เป็นทิศทางออกแบบที่ตกลงแล้ว ยังไม่ใช่ schema/API ที่รองรับใน runtime
+
+### ช่วงถัดไป: array ทำซ้ำชุดลูกในเซลล์
+
+Owner accepted the conversational direction on 2026-10-09: start with one array
+repeating a fixed TextBlock/Image sequence inside a cell, then revisit area.
+Role: Planning Partner; bounded cross-repository design, routine risk; execution
+IDs N/A. This section is the written design for review, not implementation approval
+of the new wire fields below. Document budget: this existing draft only. Proof for
+this design: inspect Core 4546a18 and Service eb41b69; diff and check:data.
+No code, package version, release, migration or map change in this design step.
+
+**เจตนาที่ตกลง:** ผู้สร้างกำหนดรูปแบบครั้งเดียว ผู้เรียกส่งรายการข้อมูลตามจำนวนจริง
+array บอกข้อมูลต่อรายการ; แม่แบบบอกชุดเนื้อหาที่ทำซ้ำ ไม่ให้ผู้เรียกส่ง node graph
+image ยังเป็นภาพเดียว ใช้ array ที่มีตัวแปรลูก image และ caption แทน multiple image
+ไม่ทำ array ซ้อน array หรือ area ในช่วงนี้
+
+**สิ่งที่ตรวจพบในโค้ดปัจจุบัน:**
+
+- `src/template/types.ts` และ `validateSchemas.ts`: array items รับ string/link;
+  image source รับเฉพาะ global/local; repeats ระบุ tableId/rowTemplateId เท่านั้น
+- `src/binding/expandRows.ts`: ทำซ้ำแถวและ clone ลูกตาม itemIndex ได้แล้ว
+  แต่ image ยังอ่าน global/local และไม่มีจุดทำซ้ำเฉพาะ cell children
+- `src/data/validateValues.ts`: มี required/default, array item path และ image UUID
+  validation แล้ว; `prepareGeneration.ts` คืน failure เมื่อข้อมูลที่ตรวจมี error
+  จึงใช้กฎนี้ต่อ ไม่ข้าม array item ที่ผิดแบบ area
+- Service `src/templates/assembly.ts`: บันทึกตัวแปรลูกผ่าน parentId ได้แล้ว แต่
+  checkRecord จำกัดลูก array เป็น type 110001/110005 ต้องเพิ่ม 110004 แบบมี model gate
+  master image และ FK มีอยู่แล้ว ไม่พบเหตุให้เพิ่มตารางหรือ master ใหม่จากงานนี้
+- Service admission compose ก่อน claim images และ `src/images/job.ts` อ่าน image
+  nodes ทั้ง graph หลัง compose; น่าจะใช้ทางเดิมได้ ต้องพิสูจน์ผ่าน real-DB/API
+
+**ทางเลือกการวางจุดทำซ้ำ:** ทำซ้ำทั้ง cell ง่ายแต่หัวข้อคงที่จะถูกทำซ้ำด้วย;
+เพิ่ม repeat/container node จะกระทบ graph/layout มากกว่าความต้องการชุดแรก;
+ข้อเสนอที่เลือกใช้ร่างนี้คือประกาศชุดลูกต่อเนื่องแยกใน Format แล้วขยายเป็นลูกปกติ
+ก่อน layout จึงใช้ paginator 0.1.6 ต่อได้โดยไม่เพิ่ม runtime container
+
+#### สัญญาแม่แบบที่เสนอ
+
+เพิ่ม optional `Format.cellRepeats` ใน node model 10; รุ่น 4–9 ใช้สัญญาเดิม
+`Format.repeats` สำหรับแถวคงรูปเดิม ไม่เปลี่ยนเป็น union ที่ทำให้ของเดิมต้องย้าย
+ตัวอย่างเฉพาะส่วนของแม่แบบ (ชื่อ field ใหม่เป็นข้อเสนอ):
+
+```json
+{
+  "cellRepeats": [{
+    "id": "repeat-001",
+    "cellId": "node-010",
+    "childTemplateIds": ["node-012", "node-013"],
+    "source": {"scope": "local", "key": "evidenceList"}
+  }]
+}
+```
+
+cell `node-010` เดิมมี childIds `[node-011, node-012, node-013, node-014]`:
+หัวข้อคงที่ → รูปต้นแบบ → คำบรรยายต้นแบบ → หมายเหตุคงที่
+การประกอบแทนที่ช่วง node-012/013 ด้วยชุดต่อรายการ; ไม่วาดต้นแบบเพิ่มอีกหนึ่งชุด
+ใน Image source ใช้ `{scope:"item", key:"photo"}` และ caption ใช้ field-ref
+`{scope:"item", key:"caption"}`; global/local ยังต้องระบุชัด ไม่ fallback ข้าม scope
+
+- เริ่มหนึ่ง cellRepeat ต่อ cell; หลาย cell มี declaration ของตนเองได้
+- childTemplateIds ต้องไม่ว่าง เป็นลูกโดยตรงที่ติดกันตามลำดับ childIds และเป็น
+  TextBlock/Image เท่านั้น; ID หาย ซ้ำ ผิดแม่ หรือลำดับผิดทำให้แม่แบบไม่ผ่าน
+- source ต้องชี้ array ใน global/local; items ต้องประกาศลูกอย่างน้อยหนึ่งตัว
+  รุ่น 10 รับ string/link/image ต่อ item ไม่รับ array/object field ซ้อน
+- ไม่อนุญาต cellRepeat อยู่ใต้ row repeat หรือในหัวตารางใน slice นี้;
+  ไม่ปิด row repeats เดิมในบริเวณอื่น และไม่สร้าง item scope ซ้อนโดยปริยาย
+- image item bindings ใช้ได้เฉพาะขอบเขต repeat ที่ตรวจ schema ได้จริง;
+  เมื่อขยายการรับ image items ใน model 10 ต้องตรวจ row-repeat เดิมด้วย
+- พิกัด/ขนาด/padding มาจากแม่แบบเดิม ไม่มากับข้อมูลรายการ
+- Core serialized template เดิมอ้างตัวแปรด้วย scope/key ส่วน Service เก็บ variable
+  IDs/parent IDs แยกอยู่แล้ว ร่างนี้ไม่เปลี่ยน binding ทั้งระบบเป็น variableId;
+  references ของชุด node ใช้ ID จริงเสมอ และ key อ่านตามเวอร์ชันแม่แบบที่ล็อกไว้
+
+#### สิ่งที่ผู้เรียก API ส่ง
+
+ตัวอย่าง envelope ตามทิศ API เดิม โดย UUID ด้านล่างสมมติว่าอยู่ใน upload ที่ finalize
+แล้วและของเวอร์ชันนี้มี format `evidence`; ไม่ใช่ fixture ที่เรียกได้ทันที:
+
+```json
+{
+  "docKey": "uat-report",
+  "version": 1,
+  "uploadId": "11111111-1111-4111-8111-111111111111",
+  "data": {},
+  "content": [{
+    "format": "evidence",
+    "data": {
+      "evidenceList": [
+        {"photo": "22222222-2222-4222-8222-222222222222", "caption": "ก่อนทดสอบ"},
+        {"photo": "33333333-3333-4333-8333-333333333333", "caption": "หลังทดสอบ"}
+      ]
+    }
+  }]
+}
+```
+
+นิยาม local array มี `items: {type:"object", fields:{photo:{type:"image",
+required:true}, caption:{type:"string"}}}`; ผู้ใช้ไม่ส่ง childIds หรือคำสั่งทำซ้ำ
+URL/base64 ยังคงเข้ากระบวนการ upload/เตรียมภาพเดิม แล้วอ้าง resource ID
+ไม่เพิ่มรูปแบบส่งภาพดิบใน generation request
+
+#### ผลหลังประกอบและกฎความผิดพลาด
+
+- ได้หัวข้อครั้งเดียว → รูป/คำบรรยายรายการ 0 → รูป/คำบรรยายรายการ 1 → หมายเหตุ
+- `[]` ลบเฉพาะช่วงทำซ้ำ ไม่สร้างช่องว่าง/กรอบของชุด; cell, padding และข้อความ
+  คงที่ยังอยู่ หากทั้ง cell ว่างใช้กฎ empty-cell เดิม ไม่ลบ cell/แถวเอง
+- ไม่ส่ง key: required มาก่อน default; ถ้า optional ไม่มี default ใช้ []
+  default ต้องผ่าน schema เดียวกัน; ส่ง null หรือชนิดผิดไม่แปลงเงียบ ๆ
+- item ผิดชนิด/ขาด required ทำให้ request ไม่ผ่าน พร้อม path เช่น
+  `content[0].data.evidenceList[1].photo`; unknown keys ใช้ warning/ignore เดิม
+  ไม่เพิ่มกฎข้าม item ใน slice นี้ ส่วนภาพอ้างถูกชนิดแต่เตรียมไม่ได้ใช้ image
+  warning/กรอบว่างเดิม รวมถึง upload ownership/resource checks เดิม
+- clone แต่ละ node/inline ต้องมี ID ไม่ชนกับ static nodes, row repeats หรือ cell
+  repeats อื่น โดยอาศัย content instance, repeat ID, item index และ source ID
+  sourceMap คง sourceId/contentIndex/format/itemIndex พร้อม repeatId สำหรับชุดใหม่
+  ไม่แก้ต้นฉบับ; index เป็นตำแหน่งการสร้างครั้งนี้ ไม่สัญญา identity คงเดิมเมื่อ reorder
+- ขยายเป็น TextBlock/Image ปกติก่อนจัดหน้า; ไม่มีกรอบกลุ่ม ไม่มี gap เพิ่ม
+  ข้อความแบ่งที่บรรทัด รูปย้ายทั้งกรอบ และ allowBreak/oversize/padding ใช้กฎเดิม
+  ไม่บังคับรูปกับ caption อยู่หน้าเดียวกัน และไม่ขยาย schema สำหรับ frontend
+
+#### เกณฑ์สำหรับแผนลงมือถัดไป
+
+1. Core contract: model 10/nonempty item schema/item image/cell repeat ownership
+   และปฏิเสธ nesting; รุ่น 4–9 ไม่เปลี่ยนการรับ/ปฏิเสธข้อมูลเดิม
+2. Binding: 0/1/หลายรายการ, static siblings, หลาย cell/หลาย content instances,
+   global/local/item ชื่อซ้ำ, defaults/errors, IDs/sourceMap และ input immutability
+3. Export: ข้อความไทยยาว หลายรูปและหลายหน้าใน ordinary/merged cell,
+   ไม่มีหาย/ซ้ำ; ของเดิม row repeats, links, TOC และ headers ยังผ่าน
+4. Service: current→version→load เก็บ image child และ cellRepeats ครบ,
+   เปลี่ยน draft แล้ว version เก่ายังคงเดิม; finalized upload→job→PDF
+   และ resource reuse/error paths ผ่าน real DB ไม่มี skip
+5. ส่งมอบ: ใช้ packed Core ใน Linux/amd64, PDF ตัวอย่างหนึ่งชุดให้เจ้าของดู;
+   ค่อยเพิ่มรุ่นเมื่อใช้ได้และตรวจผ่าน ไม่เลื่อน release อัตโนมัติ
+
+นี่เป็นลำดับผลตรวจที่แผนลงมือต้องครอบคลุม ยังไม่ใช่ task execution plan
+ก่อนลงมือให้ตรวจว่าข้อเสนอ childTemplateIds, ขอบเขตหนึ่ง repeat/cell และการกัน
+repeat ซ้อนตรงความต้องการ แล้วแตกงาน Core contract/binding → Service/PDF proof
+อยู่ในห้องนี้ได้ ไม่ต้องสร้างห้อง/ทะเบียนเพียงเพื่อพัฒนา
 
 ### Array และ Area ทำหน้าที่ต่างกัน
 
