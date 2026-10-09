@@ -162,8 +162,8 @@ Columns ที่เคยทดลองในระบบหน้ากระ
 Owner accepted the conversational direction on 2026-10-09: start with one array
 repeating a fixed TextBlock/Image sequence inside a cell, then revisit area.
 Role: Planning Partner; bounded cross-repository design, routine risk; execution
-IDs N/A. This section is the written design for review, not implementation approval
-of the new wire fields below. Document budget: this existing draft only. Proof for
+IDs N/A. Written design accepted by owner on 2026-10-09 for implementation planning;
+new wire fields below are not implemented yet. Document budget: this existing draft only. Proof for
 this design: inspect Core 4546a18 and Service eb41b69; diff and check:data.
 No code, package version, release, migration or map change in this design step.
 
@@ -294,6 +294,10 @@ URL/base64 ยังคงเข้ากระบวนการ upload/เต�
 ก่อนลงมือให้ตรวจว่าข้อเสนอ childTemplateIds, ขอบเขตหนึ่ง repeat/cell และการกัน
 repeat ซ้อนตรงความต้องการ แล้วแตกงาน Core contract/binding → Service/PDF proof
 อยู่ในห้องนี้ได้ ไม่ต้องสร้างห้อง/ทะเบียนเพียงเพื่อพัฒนา
+
+แผนลงมือจาก written design ที่เจ้าของรับแล้ว:
+[Array-driven cell content implementation plan](flowdoc-cell-array-plan-2026-10-09.md)
+แผนนี้รอตรวจ ยังไม่มี runtime หรือการเพิ่มรุ่นจากงานออกแบบนี้
 
 ### Array และ Area ทำหน้าที่ต่างกัน
 
