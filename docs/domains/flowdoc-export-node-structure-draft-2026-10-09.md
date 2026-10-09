@@ -389,6 +389,38 @@ format เป็น key ของโครงย่อยภายใต้ area
 ข้อตกลงนี้ล็อกหน้าตาข้อมูลและพฤติกรรมระดับออกแบบ ยังต้องเทียบ schema จริง
 และการเก็บ/เตรียมข้อมูลปัจจุบันก่อน implementation ไม่เพิ่มความลึกโดยปริยาย
 
+### กระบวนการประกอบ — เจ้าของรับแล้ว 2026-10-09
+
+โหลดแม่แบบเวอร์ชันที่เลือก ตรวจรายการ area/เติม default/เก็บ warning และ index
+เดิม เตรียมเฉพาะทรัพยากรของรายการที่ผ่าน แล้วจัดเนื้อหาตามตำแหน่ง area
+ผ่านเส้นทางจัดหน้าและ PDF เดิม; [] ไม่สร้างเนื้อหาหรือช่องว่างจาก area เอง
+หากรายการ area ใช้ไม่ได้ทั้งหมด ยังทำเอกสารส่วนอื่นต่อพร้อม warning ครบ
+required บังคับการส่ง key ไม่ใช่จำนวนรายการที่ผ่าน; ไม่เพิ่ม minItems โดยปริยาย
+กฎนี้ไม่เปลี่ยนความผิดพลาดของแม่แบบหรือ layout ให้เป็น warning
+
+### จุดเชื่อมที่ตรวจจากโค้ด — discovery ก่อนสเปกลงมือ
+
+อ่าน Core2037655 และ Serviceb908b37 แบบ read-only ไม่มีการแก้ runtime:
+- Core src/template/types.ts ใช้ formats keyed by name และ schema fields keyed
+  by name; ต้องกำหนด identity สำหรับ area/โครงย่อยให้ชัดก่อนใช้ตัวอย่าง ID จริง
+- Service src/templates/assembly.ts และ migrations/002_current_version.sql
+  บังคับ format key ไม่ซ้ำทั้งเอกสาร ขณะที่โครงย่อยใหม่ต้อง unique ภายใต้ area
+  เท่านั้น ต้องออกแบบการเก็บและ migration เพิ่ม ไม่ใช่เปิด type อย่างเดียว
+- Service src/templates/storage.ts clone ID ของ format/schema/variable ตอน
+  writeSnapshot; ความสัมพันธ์เจ้าของใหม่ต้อง remap ภายในเวอร์ชันเดียวกัน
+  ไม่เหลือการอ้างกลับไปยังแถวฉบับแก้ไขเพื่อใช้ตอน render
+- Service src/jobs/processor.ts ประกอบ resolved nodes ก่อน prepareJobImages
+  เพื่อรู้ภาพที่ใช้งานจริง สามารถคงลำดับเชิง implementation นี้ได้: validate/filter
+  -> compose in-memory -> claim/prepare used resources -> layout/PDF ไม่ได้ทำ
+  layout สองรอบ และไม่เตรียมรูปจากรายการที่ข้าม
+- Core src/data/prepareGeneration.ts ยังมี EMPTY_CONTENT สำหรับ top-level content
+  ทั้งก้อน; การยอม area ว่างไม่ใช่การยกเลิกกฎ outer content เดิม
+
+คำถามที่ยังรอเจ้าของ: หนึ่งจุดวางของ area หมายถึงหนึ่งจุดต่อ occurrence ของ
+โครงหลักที่มีข้อมูล local ของตัวเอง หรือจำกัดนิยามเดียวห้ามปรากฏซ้ำทั้งเล่ม
+เมื่อผู้เรียกใช้โครงหลักเดิมหลายรายการ? ห้ามสรุปเองว่าการวางซ้ำกับการใช้
+โครงหลักซ้ำเป็นอย่างเดียวกัน สเปก identity/placement รอคำตอบข้อนี้
+
 ### ข้อเสนอและเรื่องที่ยังเปิดอยู่
 
 งานอนาคตที่เจ้าของขอเก็บไว้ (2026-10-09): แยกนิยามโครงย่อยเป็นชุดกลาง
