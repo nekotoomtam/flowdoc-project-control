@@ -99,6 +99,35 @@ existing fields and binding. Service must roundtrip the model 8 graph and metada
 through current and immutable published versions and export through the job API.
 Proposed next development version: Core/Service 0.1.5, confirmed at planning time.
 
+## Resource budget and deferred architecture review
+
+Owner accepted adding a bounded complexity/resource budget and deferred the
+broader architecture, storage and retrieval discussion until after release.
+This is a follow-up topic, not permission to redesign DB/storage or add a capacity
+benchmark project to the contents slice.
+
+Design targets, not measured performance claims:
+
+- N nodes, L positioned lines, H selected headings, P physical pages and T total
+  heading-title characters. Collect headings in one ordered graph traversal:
+  O(N + T), including title extraction/normalization; no unnecessary sorting.
+- Build/reuse a destination index in O(L), with average O(1) lookup per heading.
+  Do not scan all nodes or positioned lines again for each heading.
+- Shape/wrap contents titles with the existing engine. Its cost is dependent on
+  text and the shaping/break algorithm; do not label it O(T) without evidence.
+- Fill H reserved number slots and paint P page numbers once, including the cost
+  of shaping their digits. Neither step may trigger full-document relayout.
+- Extra contents bookkeeping: O(H) records plus O(T) title storage and generated
+  contents draw data. Do not clone the whole document solely for the contents.
+  This is not a claim about total renderer or concurrent-job memory consumption.
+
+Implementation proof should include a bounded increase in heading count, elapsed
+layout/export time and peak memory in the same runtime, plus inspection or
+instrumentation for repeated graph scans and full-layout invocations. Record
+fixture sizes and separate the contents overhead from existing text/image work.
+No production throughput target is inferred; whole-system capacity and storage
+architecture remain the explicitly deferred post-release discussion.
+
 ## Acceptance and limits
 
 - Explicit selection, reading order, three levels, repeated formats, duplicate
