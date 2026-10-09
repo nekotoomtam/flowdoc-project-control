@@ -29,7 +29,20 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
    โดยแยกหลักที่เจ้าของยืนยันจากกติกาทำงานที่ยังเป็นร่าง
 5. ก่อนแก้ Core/Service อ่าน AGENTS ของ repo เจ้าของ ไม่เริ่มจากห้อง/ทะเบียนเก่า
 
-## สถานะล่าสุด — array ในเซลล์ 0.1.7 ผ่านแล้ว
+## สถานะล่าสุด — Area 0.1.8 ผ่านแล้ว
+
+เจ้าของรับ PDF Area 5 หน้าแล้ว ตาม [แผน Area](flowdoc-area-plan-2026-10-09.md)
+Core `97a0985` รวมเข้า codex/template-binding; Service `0419718` รวมเข้า
+codex/template-registry ทั้งสองเป็น0.1.8 ส่วน release ยังคง0.1.5
+Core317 tests และ packed Linux consumer ผ่าน; Service51 real-DB/API tests ผ่าน
+ไม่มี skip ผู้ตรวจพบ2จุดสำคัญ แก้แล้วพร้อม RED/GREEN: diagnostic ของรายการ
+ผิดประเภท และการตรวจ prepared input เทียบคำขอต้นฉบับก่อนเริ่มประมวลผล
+PDF หลังเพิ่มเวอร์ชันเหมือนชุดที่เจ้าของรับทุกไบต์ ดูหลักฐานและการเก็บกวาด
+ใน Development closeout ของแผน Area ไม่เริ่ม implementation ชุดนี้ซ้ำ
+ขั้นถัดไปคือทบทวนพาร์ต6 compatibility และรายการที่เหลือก่อนพิจารณา release
+ยังไม่รวม area ซ้อน, โครงย่อยกลางใช้ร่วมหลาย area, Columns ใน cell หรือ DOCX
+
+## ผลก่อนหน้า — array ในเซลล์ 0.1.7
 
 เจ้าของรับ PDF ตัวอย่าง5หน้าแล้ว และ independent review ผ่าน ไม่มี findings
 ตาม [แผน Array-driven cell content](flowdoc-cell-array-plan-2026-10-09.md)
@@ -41,9 +54,9 @@ Core287 tests และ packed Linux consumer ผ่าน; Service35 real-DB/AP
 artifacts/worktree-archive/flowdoc-service-cell-array ใน repo หลักแต่ละตัว
 ตรวจ checksum แล้ว ลบเฉพาะ worktree/branch ชั่วคราวที่ clean และ merged แล้ว
 ดู Development closeout ในแผนสำหรับรายละเอียด ไม่เริ่มงานชุดนี้ซ้ำ
-ยังไม่เริ่ม area, nested arrays, Columns ใน cell หรือ DOCX
+ในรอบ0.1.7 ยังไม่เริ่ม area; ผล Area รอบถัดไปอยู่ด้านบน
 
-## งานออกแบบถัดไป — Area (ยังไม่ลงโค้ด)
+## ขอบเขต Area ที่นำไปทำแล้ว
 
 เจ้าของยืนยัน area เป็นตัวแปร วางได้หนึ่งจุดต่อตัว รองรับหลายรูปแบบโครงย่อย
 และหลายรายการได้ รอบแรกโครงย่อยเป็นลูกของ area เดียว; ไม่มีตัวแปรก็ได้
@@ -51,8 +64,8 @@ artifacts/worktree-archive/flowdoc-service-cell-array ใน repo หลัก�
 นิยามและข้อจำกัดอยู่พาร์ต 5 หัวข้อกฎที่ตกลงแล้วในร่างโครงสร้างหกพาร์ต
 เจ้าของขอเก็บแนวคิดโครงย่อยกลางใช้ร่วมหลาย area ไว้ทำภายหลังโดยชัดเจน
 อย่าสับสนหนึ่งจุดวางกับหนึ่งรูปแบบ และอย่าเริ่มระบบแชร์ในรอบนี้
-ร่างสเปกลงมือเสนอแล้วใน [Area design](flowdoc-area-design-2026-10-09.md)
-เจ้าของรับสเปกแล้ว มี [แผนลงมือ Area](flowdoc-area-plan-2026-10-09.md) รอตรวจแผน
+สเปกที่เจ้าของรับอยู่ใน [Area design](flowdoc-area-design-2026-10-09.md)
+ผล implementation และข้อจำกัดอยู่ใน [แผนลงมือ Area](flowdoc-area-plan-2026-10-09.md)
 ใช้วิธีทำในห้องนี้ ยังไม่ลงโค้ดหรือเปลี่ยนเวอร์ชัน
 
 ## บริบทชุดก่อนหน้า — 0.1.6
@@ -75,8 +88,8 @@ artifacts/worktree-archive/flowdoc-service-cell-array ใน repo หลัก�
 
 - Cell รับ TextBlock/Image หลายชิ้นเรียงแนวตั้งตาม childIds; childIds เป็น ID
   ของ node ไม่ใช่ชื่อตัวแปร แต่ละภาพเป็น node แยก แม้ใช้ resource ภาพเดียวกันได้
-- ยังไม่เพิ่ม Columns, ตารางซ้อน, container หรือ area; image item binding
-  เพิ่มแล้วใน model10/0.1.7 ตามแผน array และคงความสามารถรวมเซลล์เดิม
+- ยังไม่เพิ่ม Columns, ตารางซ้อน หรือ container; image item binding เพิ่มแล้ว
+  ใน model10/0.1.7 และ area ชั้นเดียวเพิ่มใน model11/0.1.8 คงเซลล์รวมเดิม
 - Padding ให้ผู้สร้างตั้งในแม่แบบ ค่า 0 ต้องไม่ถูกแทนด้วย default; ไม่ระบุจึงใช้
   ค่าเริ่มต้น 4pt ต่อด้าน ผลวัดและการแบ่งหน้าต้องใช้ค่าเดียวกัน
 - การเตรียมแผนผังเซลล์รวมเป็นหนึ่งครั้งต่อ table instance ต่อ layout pass
@@ -87,7 +100,7 @@ artifacts/worktree-archive/flowdoc-service-cell-array ใน repo หลัก�
 - เรื่อง array ของภาพและ area มีความต้องการจริง แต่เจ้าของย้ายไปพาร์ต 5
   และ compatibility พาร์ต 6 แล้ว ไม่ดึงกลับมาเป็นเงื่อนไขก่อนทำ cell
 - Area ที่นิยามผิดทำเอกสารไม่ได้; รายการข้อมูล area ใช้ไม่ได้ให้ข้ามพร้อม warning
-  และทำส่วนที่เหลือต่อ; [] ใช้ได้ นี่เป็นข้อตกลงอนาคต ไม่ใช่พฤติกรรมที่ทำแล้ว
+  และทำส่วนที่เหลือต่อ; [] ใช้ได้ ตามหลักฐานรอบ0.1.8 ข้างต้น
 - Frontend อนาคตใช้ Adapter แปลงไป–กลับได้โดยไม่เสียความหมาย; พรีวิวที่ต้องตรง
   กับ PDF ใช้ Core wrap/layout ร่วมกัน ไม่เริ่มสร้าง editor/adapter ในงานนี้
 
