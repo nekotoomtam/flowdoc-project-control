@@ -19,10 +19,10 @@ Service and isolated Linux/amd64 Docker consumer. No new runtime dependency.
 ## Authority Boundary and execution scope
 
 Project Control owns this plan/status; Core owns model/layout/PDF, Service owns
-consumer integration. Active role Planning Partner. Single-room execution IDs N/A.
+consumer integration. Active role Product Implementation Agent; final acceptance recorded inline. Single-room execution IDs N/A.
 Work size multi-step; risk routine. Written design accepted for planning by the
-owner's instruction to proceed using the existing document. This implementation
-plan still requires review before product edits. Core base e51ee7b, Service base
+owner's instruction to proceed using the existing document. The owner accepted this implementation
+plan, with three levels as an initial supported limit, not a permanent ceiling. Core base e51ee7b, Service base
 b7bf7d9; both development checkouts inspected clean. Use an isolated Core worktree
 at execution; Service changes limited to examples/tests/package pin/README unless
 inspection demonstrates a necessary model guard. No DB redesign or new migration.
@@ -36,7 +36,7 @@ prior artifacts and release/tag 0.1.0; no push, map promotion or unrelated clean
 ## Global constraints
 
 - nodeModelVersion 8; preserve 4–7, images, merged tables and links.
-- TextBlock props.toc is `{level:1|2|3}` and requires a valid unique anchorId.
+- TextBlock props.toc is `{level:number}` (validated to 1–3 initially) and requires a valid unique anchorId.
 - One root `table-of-contents` node maximum, shape `{id,type,props:{textStyleId}}`.
 - Titles use bound visible text, whitespace normalized; empty selected title fails.
   Reading order is roots, authored rows/cells/children. No font-size inference.
@@ -68,7 +68,7 @@ src/binding/expandRows.ts, src/layout/linkGeometry.ts and src/index.ts.
 Create src/composition/contents.ts and tests/template/contents.test.ts.
 
 Interfaces: export `ContentsBlock` through the public node union; `ContentsEntry`
-is `{nodeId:string,anchorId:string,level:1|2|3,title:string}`.
+is `{nodeId:string,anchorId:string,level:number,title:string}`.
 `collectContents(document:ResolvedDocument):ContentsEntry[]` traverses reachable
 nodes once in authored order and uses linkLabel for link text. Runtime failures
 use existing LayoutError/source context; graph-invalid metadata uses Issue paths.
@@ -76,14 +76,14 @@ Template/bound graph both accept the new root; expansion prefixes its ID and
 retains props/sourceMap without treating it as a table cell. Enable links for
 models >=7, contents only >=8, with supported-version validation still exact.
 
-- [ ] Write tests for literal/bound title collection, CRLF/whitespace normalization,
+- [x] Write tests for literal/bound title collection, CRLF/whitespace normalization,
   levels 1/2/3, repeated formats with distinct anchors, duplicate title names,
   cell headings/repeated-header single entry, empty list and empty selected title.
   Reject missing anchors, invalid levels, unknown props, nested/multiple contents
   and pre-model-8 use. Assert model 8 preserves image/merged/link contracts.
-- [ ] Run `npx vitest run tests/template/contents.test.ts`; observe missing support.
-- [ ] Implement the interfaces above. No sorting or scan of all nodes per entry.
-- [ ] Run focused tests, existing template/binding tests and `npm run build`;
+- [x] Run `npx vitest run tests/template/contents.test.ts`; observe missing support.
+- [x] Implement the interfaces above. No sorting or scan of all nodes per entry.
+- [x] Run focused tests, existing template/binding tests and `npm run build`;
   review diff and commit only on PASS.
 
 ## Task 2 — single-pass placement with reserved page-number slots
@@ -99,18 +99,18 @@ types with the module; `DrawDocument.contentsSlots?` holds placed
 `{nodeId,anchorId,pageIndex,xPt,yPt,widthPt,style}` records for Task 3.
 No empty placeholder glyphs or new public graph nodes are required.
 
-- [ ] Write failing layout tests: exact 12/12/36 geometry, three indent levels,
+- [x] Write failing layout tests: exact 12/12/36 geometry, three indent levels,
   short/long Thai+English titles, several contents pages, entries crossing pages,
   a contents node following normal content and an empty list consuming zero height.
   Assert title wrap width excludes reserved number/gap, one slot per entry on
   first positioned title line, and failure when remaining title width is invalid.
-- [ ] Run `npx vitest run tests/layout/contentsFlow.test.ts`; observe failures.
-- [ ] Measure titles with existing measureText; generate reference spans using
+- [x] Run `npx vitest run tests/layout/contentsFlow.test.ts`; observe failures.
+- [x] Measure titles with existing measureText; generate reference spans using
   existing typed link data, never reshape fragments to estimate rectangles.
   Add a contents-root branch to documentFlow using the same page cursor/break
   rules as text. Collect once per document; no pagination recursion. Preserve
   unique draw-run/link IDs without inserting generated nodes into document.nodes.
-- [ ] Run focused plus text/table/merged layout suites and build; review/commit.
+- [x] Run focused plus text/table/merged layout suites and build; review/commit.
 
 ## Task 3 — final destinations, number filling and footer painting
 
@@ -128,17 +128,17 @@ runtime:TextRuntime):Promise<void>` shapes actual pageIndex+1 in every slot.
 runtime:TextRuntime):Promise<void>` adds the temporary footers only when enabled.
 Both emit glyph runs before font subsetting, reusing measured ink-aware geometry.
 
-- [ ] Write failing tests asserting correct page digits/links after added/removed
+- [x] Write failing tests asserting correct page digits/links after added/removed
   content, forward/back headings and repeated headers; unchanged title/heading
   geometry before/after filling; first-line number when title spans pages;
   excessive number width/ink, too-small bottom margin and line-height errors.
   Check page numbers 1..N, right alignment, no overlap and no legacy footer.
-- [ ] Run `npx vitest run tests/layout/contentsNumbers.test.ts`; observe failures.
-- [ ] Wire engine order: documentFlow once -> indexDestinations once -> fill slots
+- [x] Run `npx vitest run tests/layout/contentsNumbers.test.ts`; observe failures.
+- [x] Wire engine order: documentFlow once -> indexDestinations once -> fill slots
   -> append footer numbers -> resolveLinkGeometry using index -> subset -> writer.
   Remove private slot metadata once consumed. Invalid generated geometry returns
   LAYOUT_FAILED with the contents node's source context. No new PDF action format.
-- [ ] Instrument/mock layout invocation in an engine regression and assert exactly
+- [x] Instrument/mock layout invocation in an engine regression and assert exactly
   one invocation. Run layout/engine/writer suites and build; review and commit.
 
 ## Task 4 — packed PDF, resource budget and Service acceptance
@@ -150,26 +150,26 @@ Service: create examples/contents-template.json and tests/contents-api.test.mjs;
 modify package files, vendor artifact/manifest and README.md. Inspect existing
 model checks before deciding whether any Service source change is actually needed.
 
-- [ ] Add installed-package fixtures for short/empty/long contents, contents after
+- [x] Add installed-package fixtures for short/empty/long contents, contents after
   content, repeated-format and table-cell headings, long wrapped titles and
   source content growth causing target page shifts. Compare displayed numbers
   and PDF destinations to actual heading pages, not fixture guesses alone.
-- [ ] Add a bounded 10/50/100-heading resource probe with a matched no-contents
+- [x] Add a bounded 10/50/100-heading resource probe with a matched no-contents
   control, same runtime/title length/style. Run each variant in its own child
   process; record wall time and OS peak RSS with units. Include full Core child
   shaping process overhead or explicitly report that RSS excludes descendants.
   Record N/H/T/pages and deterministic traversal/layout counts; do not claim
   linear shaping, production capacity or hard latency guarantees from timings.
-- [ ] Run full Core tests/build, then `npm run check:package`. Compare legacy PDF
+- [x] Run full Core tests/build, then `npm run check:package`. Compare legacy PDF
   fixture results, render bounded representative pages and inspect actual links.
   Ask for the owner's focused click check if controllable viewer is unavailable.
-- [ ] Add Service tests for current/published metadata roundtrip, old snapshot
+- [x] Add Service tests for current/published metadata roundtrip, old snapshot
   loading, model-8 job/download and invalid metadata rejection. Pin exact verified
   Core tarball/commit/checksum; run vendor verification/build/check:database.
-- [ ] One final fresh read-only review of the branch; repair substantive findings
+- [x] One final fresh read-only review of the branch; repair substantive findings
   with regression tests and affected verification. Record Core/Service commits,
   artifacts, owner visual/click result and resource limitations in this plan.
-- [ ] After acceptance, integrate unchanged development candidate using valid
+- [x] After acceptance, integrate unchanged development candidate using valid
   proof reuse, preserve evidence, clean only current-run disposable containers,
   leave release/tag untouched and update the existing roadmap locator.
 
@@ -181,4 +181,78 @@ Task 4. No storage architecture or generic footer work is hidden in these tasks.
 Placement and filling use one shared reserved-column contract, so visible numbers
 cannot affect title wrapping; implementation must prove this with tests.
 Recommended execution is inline in this same chat, with one final fresh reviewer.
-Written-plan review remains the next step; no implementation has started.
+Written-plan review accepted; inline implementation and bounded local acceptance completed.
+
+
+## Execution ledger
+
+- Owner clarification: three levels now, with future 5–7 levels anticipated.
+  Keep numeric level in the data contract, one versioned validation ceiling and
+  arithmetic indentation. Do not implement extra levels or level-specific branches.
+- Core worktree: flowdoc-core-contents, branch codex/contents, base e51ee7b.
+  Native worktree tool targets the Project Control checkout and cannot choose
+  Core; Git fallback used for this separate owner repository.
+- Task 1 PASS: 2d32415, 191 Core tests and build.
+- Task 2 PASS: 38392f0, affected layout suite 49 tests and build.
+- Task 3 PASS: faf12cc; affected layout/PDF suite 81 tests and build.
+  Number filling retains prior line geometry; engine regression asserts one layout.
+- Task 4 PASS: Core d95701f and Service 2a69fd6; details below. No release changes.
+
+
+## Acceptance and development integration — 2026-10-09
+
+PASS within the approved local contents slice. Execution IDs N/A (inline).
+
+- Core 202 tests/build PASS; installed Linux package consumer PASS at
+  `flowdoc-core-contents/artifacts/1791516319251/result.json`.
+  Final source commit `d95701f496e86c20837ea2b6d8094d8bef8523f4`.
+- Consumer PDFs: short/empty, 50 entries across six pages, content growth/reflow,
+  contents after content, a title spanning multiple pages, and a repeated table
+  header source. All seven files pass `tests/consumer/checkContentsPdf.py` using
+  actual extracted PDF text, annotation rectangles and referenced physical pages.
+  Report: `contents-pdf-verification.json` beside the package result. It also
+  checks first heading occurrence and temporary footer numbers/placement.
+- Representative page renders inspected: long contents pages 1/2, table page 1,
+  wrapped contents page 2. No clipping or content/footer overlap observed.
+- Owner explicitly confirmed title and number clicks reach the right headings
+  (H010/H040) in `artifacts/1791516093898/contents-long.pdf`. Byte equality with
+  the final artifact was verified; interactive acceptance applies to that file.
+- Prior PDF, binding, table, image, merged-table and link result groups equal the
+  accepted 0.1.4 artifact `flowdoc-core-links/artifacts/1791513405642/result.json`.
+- One final read-only reviewer found an installed-PDF equality/table-case proof
+  gap, not a demonstrated runtime defect. Closed with the PDF proof helper and
+  installed table fixture above; no additional review round requested.
+- Service vendor verification/build and real database check PASS, 101 tests,
+  zero failures/skips: `flowdoc-service/artifacts/1791516437265/result.json`.
+  Current/published model-8 metadata isolation, legacy model-4 load, API job/PDF
+  and invalid level rejection covered. Service commit `2a69fd674e79ddb728859f306545338d76e1242b`.
+- Both development packages are 0.1.5. Vendor SHA256
+  `65e2e9213ea90966ad0e26f6312e7039f3174689e32592b7a935760c853eb2f9`.
+  Core fast-forwarded unchanged into `codex/template-binding`; Service remains
+  on `codex/template-registry`. Passing candidate proof reused on unchanged FF.
+- Current-run Service containers/network removed after PASS, DB volume retained.
+  Core consumer containers removed by the check. Evidence worktree retained;
+  no old worktrees/artifacts removed. Release/tag 0.1.0 and remotes untouched.
+
+### Bounded resource result and limits
+
+`contents-resources.json` records separate installed Linux Node processes with
+matched title lengths/styles and no-contents controls:
+
+| Headings | No contents / contents wall ms | No contents / contents peak RSS KiB |
+| --- | --- | --- |
+| 10 | 514 / 688 | 62880 / 66332 |
+| 50 | 1301 / 2102 | 81092 / 89676 |
+| 100 | 2416 / 3709 | 92552 / 108040 |
+
+RSS measures the Node parent and excludes native/Python descendant processes.
+Single samples are observations, not production capacity or latency guarantees.
+One-layout engine regression plus implementation inspection supports one ordered
+collection, one destination index, H slot fills and P footer paints; no per-heading
+node/line rescans or full-layout retry. Existing shaping costs are not claimed
+linear. Broader architecture/storage/capacity remains deferred until after release.
+
+Coverage maps to Tasks 1–4 above. No open blocker in this slice. Initial levels
+remain 1–3 with a numeric contract; 5–7 is future scope. No frontend, DOCX,
+image-in-cell, generic header/footer, DB redesign, map promotion or release update.
+Next: owner chooses the next bounded scope; do not automatically expand contents.

@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: accepted for implementation planning in the current conversation.
+Owner: FlowDoc Project Control. Status: implemented and accepted in the bounded local slice; proof is linked from the implementation plan.
 Active role: Planning Partner. Single-room design work; execution IDs N/A.
 Core owns document contracts, layout and PDF; Service consumes the checked Core
 package and retains template versions. This document does not prove implementation.
@@ -29,7 +29,9 @@ Accepted baseline: links slice Core e51ee7b and Service b7bf7d9, development 0.1
 Introduce the next node model (8), preserving models 4–7 and their fixtures.
 Add optional TextBlock metadata `toc: {level: 1|2|3}` in props, alongside its
 existing unique anchorId. Only explicitly marked blocks participate; never infer
-headings from font size. Three levels are an initial proposed limit.
+headings from font size. Three levels are the accepted initial limit, not a permanent ceiling; the owner
+expects a future need for 5–7. Keep the numeric data shape and compute indentation
+from the level, with the current supported ceiling centralized in validation.
 
 Use the bound TextBlock's visible text as its entry title, including resolved
 string/link labels. Normalize line breaks and whitespace to spaces for the entry;

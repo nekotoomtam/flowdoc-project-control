@@ -542,3 +542,11 @@ release/tag 0.1.0 คงเดิมตามคำสั่งเจ้าข�
 ปิดการตรวจรับหัวข้อลิงก์ 0.1.4 ในขอบเขต local และรวม Core เข้ากิ่งพัฒนาแล้ว
 ตาม [Owner acceptance](flowdoc-links-plan-2026-10-09.md#owner-acceptance-and-development-integration--2026-10-09)
 หัวข้อถัดไปคือสารบัญอัตโนมัติ; release/tag 0.1.0 ยังคงเดิม
+
+
+อัปเดตสารบัญ 2026-10-09: ตรวจรับในขอบเขต local แล้ว Core/Service ฝั่งพัฒนา
+เป็น 0.1.5 รองรับหัวข้อ TextBlock 3 ระดับเริ่มต้น เก็บระดับเป็นตัวเลขเพื่อขยายภายหลัง
+เลขหน้าและลิงก์ตรงกับ PDF จริง เจ้าของลองกดทั้งชื่อและเลขหน้าแล้วผ่าน
+ตาม [Contents acceptance](flowdoc-toc-plan-2026-10-09.md#acceptance-and-development-integration--2026-10-09)
+รวมผลตรวจแพ็กเกจ/API และข้อจำกัดการวัดทรัพยากรไว้ที่แผนเดิม
+release/tag 0.1.0 ยังคงเดิม; ยังไม่ขยายไป DOCX หรือ header/footer ทั่วไป
