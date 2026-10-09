@@ -29,7 +29,21 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
    โดยแยกหลักที่เจ้าของยืนยันจากกติกาทำงานที่ยังเป็นร่าง
 5. ก่อนแก้ Core/Service อ่าน AGENTS ของ repo เจ้าของ ไม่เริ่มจากห้อง/ทะเบียนเก่า
 
-## จุดที่คุยค้างและสถานะจริง ณ ตอนส่งต่อ
+## สถานะล่าสุด — array ในเซลล์ 0.1.7 ผ่านแล้ว
+
+เจ้าของรับ PDF ตัวอย่าง5หน้าแล้ว และ independent review ผ่าน ไม่มี findings
+ตาม [แผน Array-driven cell content](flowdoc-cell-array-plan-2026-10-09.md)
+Core `2037655` รวมเข้า codex/template-binding; Service `b908b37` รวมเข้า
+codex/template-registry ทั้งสองเป็น0.1.7 ส่วน release ยังคง0.1.5
+Core287 tests และ packed Linux consumer ผ่าน; Service35 real-DB/API tests ผ่าน
+ไม่มี skip PDF หลังเพิ่มเวอร์ชันเหมือนชุดที่เจ้าของรับทุกไบต์
+หลักฐานอยู่ artifacts/worktree-archive/flowdoc-core-cell-array และ
+artifacts/worktree-archive/flowdoc-service-cell-array ใน repo หลักแต่ละตัว
+ตรวจ checksum แล้ว ลบเฉพาะ worktree/branch ชั่วคราวที่ clean และ merged แล้ว
+ดู Development closeout ในแผนสำหรับรายละเอียด ไม่เริ่มงานชุดนี้ซ้ำ
+ยังไม่เริ่ม area, nested arrays, Columns ใน cell หรือ DOCX
+
+## บริบทชุดก่อนหน้า — 0.1.6
 
 - Cell Content ผ่านและรวมเข้าฝั่งพัฒนา Core/Service 0.1.6 แล้ว เจ้าของรับ PDF ตัวอย่าง
   ดู commit และ archive หลักฐานในหัวข้อ Development closeout ของแผน Cell Content
@@ -49,8 +63,8 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
 
 - Cell รับ TextBlock/Image หลายชิ้นเรียงแนวตั้งตาม childIds; childIds เป็น ID
   ของ node ไม่ใช่ชื่อตัวแปร แต่ละภาพเป็น node แยก แม้ใช้ resource ภาพเดียวกันได้
-- ยังไม่เพิ่ม Columns, ตารางซ้อน, container, area หรือ image item binding ใหม่
-  ใน slice นี้; คงความสามารถรวมเซลล์เดิม
+- ยังไม่เพิ่ม Columns, ตารางซ้อน, container หรือ area; image item binding
+  เพิ่มแล้วใน model10/0.1.7 ตามแผน array และคงความสามารถรวมเซลล์เดิม
 - Padding ให้ผู้สร้างตั้งในแม่แบบ ค่า 0 ต้องไม่ถูกแทนด้วย default; ไม่ระบุจึงใช้
   ค่าเริ่มต้น 4pt ต่อด้าน ผลวัดและการแบ่งหน้าต้องใช้ค่าเดียวกัน
 - การเตรียมแผนผังเซลล์รวมเป็นหนึ่งครั้งต่อ table instance ต่อ layout pass

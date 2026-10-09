@@ -17,8 +17,8 @@ item scope; ขยายรายการก่อน layout เป็นลู
 ## Authority Boundary / kickoff
 
 Owner: Project Control; product owners: flowdoc-core and flowdoc-service.
-Role: Planning Partner. Status: implementation plan ready for owner review;
-written design approved in this conversation on 2026-10-09. No runtime work yet.
+Role: Planning Partner. Status: implementation authorized; technical checks passed, final review and owner visual acceptance pending;
+Written design and plan approved in this conversation on 2026-10-09.
 Single-room inline; Work/Phase/Checklist IDs N/A. Work Size medium, Risk routine.
 Base Core `4546a1899bcdf2defe2a0c9976cdf90250c309d1` (`codex/template-binding`),
 Service `eb41b697085a66a7123313572024285436e0acde` (`codex/template-registry`), both0.1.6.
@@ -92,23 +92,23 @@ flag; thread it recursively and require nonempty item fields only for this flag.
 SourceEntry gains optional repeatId (model10 only; requires valid itemIndex).
 These are declarations/validation, not a promise Task1 alone can compose new repeats.
 
-- [ ] RED tests: accept model10 local/global array with image+caption and valid range;
+- [x] RED tests: accept model10 local/global array with image+caption and valid range;
   reject empty item schema, nested array/object, image item/source in models4–9,
   cellRepeats even [] in models4–9, duplicate/invalid repeat ID and duplicate cell.
-- [ ] RED ownership cases: empty/reversed/noncontiguous/duplicate child range,
+- [x] RED ownership cases: empty/reversed/noncontiguous/duplicate child range,
   wrong-parent/missing/non-content child, missing/non-array source; cell under row
   repeat or header rejects. Item reference outside the range rejects; static siblings
   cannot see item scope. Same named global/local/item fields remain distinct.
-- [ ] Add model10 gates and carry features forward with >= gates. Validate repeat
+- [x] Add model10 gates and carry features forward with >= gates. Validate repeat
   ancestry from graph relationships, not node naming. Validate item image source
   using the resolved traversal scope like text bindings, before composition.
-- [ ] RED/GREEN value cases via validateTemplate→prepareGeneration: []/one/many,
+- [x] RED/GREEN value cases via validateTemplate→prepareGeneration: []/one/many,
   required overrides default, valid/invalid defaults, null/type mismatch and missing
   photo return exact item paths; unknown item key warns. Preserve old empty schema
   behavior for old models rather than applying the new rule retroactively.
-- [ ] SourceMap validation rejects repeatId on old models and repeatId without
+- [x] SourceMap validation rejects repeatId on old models and repeatId without
   itemIndex; supports JSON round-trip of valid model10 resolved metadata.
-- [ ] Run `npm test -- tests/template tests/data tests/composition tests/binding`
+- [x] Run `npm test -- tests/template tests/data tests/composition tests/binding`
   and `npm run build`; inspect diff and commit after PASS. Existing tests plus new
   rejection cases prove old model contract, not an unsupported global compatibility claim.
 
@@ -129,25 +129,25 @@ old row repeats and static nodes. bindInlines keeps its signature; feed the new
 prefix and origin.repeatId so newline-expanded leaves get the same provenance.
 Output remains existing ResolvedDocument nodes, with repeatId metadata only.
 
-- [ ] RED tests with static heading/photo/caption/footer: [] yields heading/footer;
+- [x] RED tests with static heading/photo/caption/footer: [] yields heading/footer;
   1 and3 items yield exactly2+2*n children in order. No template-only orphan nodes.
-- [ ] RED tests: two cells share array, two content instances share Format; all node
+- [x] RED tests: two cells share array, two content instances share Format; all node
   and inline IDs unique, all emitted leaves carry correct sourceId/contentIndex/
   format/itemIndex/repeatId. Same request twice produces equivalent graph. Inputs
   and prepared snapshots unchanged; resource reuse does not share node IDs.
-- [ ] Implement range replacement when cloning a cell, binding global/local/item
+- [x] Implement range replacement when cloning a cell, binding global/local/item
   explicitly. Image source selects the named scope including item. Existing model10
   row image repeat works independently; never overwrite outer item silently.
-- [ ] Verify string/newline/link item binding, unique item-bound anchors and internal
+- [x] Verify string/newline/link item binding, unique item-bound anchors and internal
   references. Duplicate authored anchor values still fail existing destination checks;
   do not rewrite external anchor semantics merely to avoid an error.
-- [ ] Persist prepared input to JSON and compose again; malformed image values and
+- [x] Persist prepared input to JSON and compose again; malformed image values and
   altered template fingerprint still reject. No new shortcut bypasses prepared validation.
-- [ ] Layout tests: ordinary/merged cells with repeated children and Thai text longer
+- [x] Layout tests: ordinary/merged cells with repeated children and Thai text longer
   than a page; images remain whole, body instances appear once, static siblings retain
   order, zero/default padding and row allowBreak rules still hold. Header outside
   repeated body cell remains repeated normally; no template re-expansion per page.
-- [ ] Run `npm test -- tests/binding tests/composition tests/layout tests/template`
+- [x] Run `npm test -- tests/binding tests/composition tests/layout tests/template`
   and build; review diff and commit after PASS. Do not add benchmarks or caching here.
 
 ## Task 3 — Immutable versions, resource/API and packed PDF proof
@@ -164,32 +164,32 @@ Allow child variable type110004 only when record.payload.nodeModelVersion>=10;
 retain string/link and same-schema/parent/cycle rules. Format payload carries
 cellRepeats without a new table. Use published Core root exports, never source imports.
 
-- [ ] Core packed fixture: 0/1/many cases with static markers, Thai long captions,
+- [x] Core packed fixture: 0/1/many cases with static markers, Thai long captions,
   images of three distinct resources reused across items, ordinary and merged cells,
   two content instances, link/TOC to a heading after the table. Count output instances
   from sourceMap; do not guess page count. Preserve generated PDF/result for review.
-- [ ] Run final Core `npm test`, build, `npm run check:package`; Linux/amd64 consumer
+- [x] Run final Core `npm test`, build, `npm run check:package`; Linux/amd64 consumer
   installed solely from tarball and without network at rendering. Test legacy package
   consumers already wired by the script; new model must preserve links/TOC/page numbers.
-- [ ] Pin unique candidate tarball/checksum in Service. RED assembly tests: image
+- [x] Pin unique candidate tarball/checksum in Service. RED assembly tests: image
   child round-trip with schema/parent IDs, reject old-model image child, cross-schema
   parent and nested array. Implement only the required parent type gate.
-- [ ] Real-DB tests: import model10→publish v1→load; modify current caption/default/
+- [x] Real-DB tests: import model10→publish v1→load; modify current caption/default/
   repetition→publish v2; v1 keeps its own variables, references, cellRepeats and content.
   New version IDs and source document ref follow current behavior; do not alter migrations.
-- [ ] API tests finalize upload→submit data array→job→download PDF with actual images;
+- [x] API tests finalize upload→submit data array→job→download PDF with actual images;
   verify repeated resource reuse and original_input unchanged. Invalid required/type
   item fails admission without creating a job; wrong-upload resource still rejects;
   corrupt image bytes retain IMAGE_UNUSABLE behavior. Empty array with only static
   text needs no image upload when no other image nodes remain.
-- [ ] New checkCellRepeats script follows checkCellContent isolation/cleanup pattern.
+- [x] New checkCellRepeats script follows checkCellContent isolation/cleanup pattern.
   Select cell-repeat-assembly, cell-repeat-api, assembly, current, version-render,
   cell-content-api, image-api, contents-api, link-api, processor, render suites with
   real DB. Docker build must pass and zero skipped tests; cleanup own project only.
-- [ ] Render all pages of the new PDF; verify text/image order, no prototypes/duplicates,
+- [x] Render all pages of the new PDF; verify text/image order, no prototypes/duplicates,
   continuation borders and destinations. Have owner review one sample. If package
   version only changes later and PDF is byte-identical, reuse visual review by SHA256.
-- [ ] On acceptance, version deliverable (proposed0.1.7), rebuild immutable package and
+- [x] On acceptance, version deliverable (proposed0.1.7), rebuild immutable package and
   refresh Service pin/proof for changed artifact. Commit then integrate development
   per owner authority; no release/push/tag implicitly. Preserve ignored evidence
   with checksum before removing only clean merged current-slice lanes/branches.
@@ -206,5 +206,76 @@ regression, real PDF and versioned API/resource behavior; skipped checks are not
 Record commits/artifact paths/checks/owner acceptance here and refresh existing
 handoff. No DOCUMENT_MAP promotion without separately registered Evidence.
 
-Status: PLAN READY FOR REVIEW, not started. Next: owner reviews this written plan;
-execution approach proposed sequential inline, preserving current collaboration.
+Status at plan handoff: plan reviewed and inline execution authorized. See ledger
+below for current technical/owner acceptance; execution stays in this chat.
+
+## Inline execution ledger
+
+Owner authorized inline execution. Initial bases: Core4546a18; Service eb41b69.
+Worktrees: ../flowdoc-core-cell-array and ../flowdoc-service-cell-array, codex/cell-array.
+Task1 contract feeds Task2 clone scope; Task2 resolved graph feeds Task3 existing image jobs.
+Ruling: use manual cross-repository worktrees because native tool targets Project Control.
+Ruling: retain ledger here, not product-local scratch Markdown, per documentation authority.
+WORK runs in current host session; no model switch claimed. Final fresh review uses host gpt-6-astra/medium.
+
+Task 1 complete: observed 4 expected model10 RED failures, then 152/152 focused tests and build PASS. Contract includes model10 nonempty item schemas/image scope and cell range ownership; no expansion yet.
+Task 2 complete: 7 binding failures observed RED then GREEN; 220/220 impacted tests and build PASS. Multiple cells/content instances, static siblings, empty lists and persisted input covered.
+Ruling: protected-row test targets the ending row of a rowspan, matching existing geometry; protecting its starting row does not promise the spanning cell is indivisible. No pagination change.
+Task 3 execution history: Service image-child assembly reproduced RED then 2/2 GREEN after bounded type gate. Core full suite 287/287 PASS. Packed fixture check corrected to inspect canonical hex-encoded PDF URI (existing serializer), not literal URL bytes; no runtime defect/change. Shared JSON fixture added in Core fixtures and Service examples to exercise the same authored envelope.
+Ruling: fixture lineHeight18pt could not contain the new Thai sample (measured ascent14.4+descent3.984=18.384pt at font12). Set this new fixture to22pt, keeping runtime fit checks unchanged. Cost: fixture is not a proof of arbitrary authored line heights. Diagnostic stored in Core artifacts/diagnose-ink.mjs; actual runtime metrics observed in isolated Linux consumer.
+
+Task 3 technical checks PASS: Core full287/287, build, packed Linux/amd64 consumer
+(ef9d937, artifacts/1791537994245); Service35/35 real-DB/API tests, zero skipped,
+build and vendor check (8851c1e, artifacts/1791538084761). Isolated Docker project
+cleaned by script. No runtime pagination or DB migration change.
+Three PDFs: empty1page, one1page, long5pages (5items/cell, two content instances,
+10image placements, 3resources). All rendered pages inspected; 20 BEGIN/END markers
+appear exactly once. Owner visual acceptance and independent review were pending at this candidate checkpoint;
+both are completed in the closeout below. SourceMap proofs include node/inline identity, persisted prepared inputs,
+explicit scopes, independent cell/row repeats and bad input; Service proves version
+isolation, finalized resource claims, wrong-upload rejection, empty no-upload job,
+bad-image warnings and unchanged original request.
+Candidate tarball metadata0.1.6 is isolated and uniquely named
+flowdoc-core-0.1.6-cell-array-candidate.tgz, SHA256
+9b62ff4694146733a8921dc9c175451a1a4f9e5c8802c384bff7d10eb34b608f.
+Do not deliver it as release0.1.6 or overwrite its existing artifact. Primary
+branches remain0.1.6, release0.1.5; no new version, merge, push or tag yet.
+Ruling: shared DB suites require running existing migrations before tests; isolated
+checkCellRepeats does this explicitly so result does not depend on test file order.
+
+
+## Development closeout — 0.1.7
+
+PASS, 2026-10-09. Owner accepted the five-page PDF: “รูปแบบนี้ใช้ได้”.
+Fresh independent review of Core4546a18..ef9d937 and Serviceeb41b69..8851c1e
+returned PASS with no Critical, Important or Minor findings; no repairs required.
+The documented row protection, line-height and image/caption limitations remain.
+
+Final Core commit `203765599ee6e310b8c7553c1cebce4418c05c15` is integrated by
+unchanged fast-forward into `codex/template-binding`. Service commit
+`b908b374d55257936b54cedba0e71d41456438bb` is integrated by unchanged fast-forward
+into `codex/template-registry`. Both package versions are0.1.7. No release, push
+or tag; release remains0.1.5 in both repositories.
+
+Coverage and durable local evidence:
+- Core287/287 tests cover contract, expansion, scope/identity/provenance, prepared
+  input and layout regressions. Runtime code unchanged after the passing suite.
+- Rebuilt0.1.7 package/build and isolated Linux/amd64 packed consumers PASS:
+  `flowdoc-core/artifacts/worktree-archive/flowdoc-core-cell-array/1791538416586/result.json`.
+  Tarball SHA256 `b637ba643b6d361baa8a606fd55a47ac6df54cdec0917c3157e3160f7e04e248`.
+- Final Service Docker/build/vendor and real-DB/API checks35/35, zero failed/skipped:
+  `flowdoc-service/artifacts/worktree-archive/flowdoc-service-cell-array/1791538501618/result.json`.
+  This covers immutable version clones, item images, finalized resources, warnings,
+  empty data, admission validation and prior API consumers.
+- Final five-page PDF is byte-identical to the owner-accepted candidate: SHA256
+  `274f31e98e703305acbcb4e7ae3cd57cdad3d67a5e8330a71ebd6a9af622cf68`.
+  `1791538416586/visual-review.json` records accepted visual-proof reuse; automated
+  result's pending visual field is a generation-time observation, not final status.
+- Evidence archived and every file hash verified:167 Core files and16 Service
+  files, manifests at each archive root. Only clean merged current-slice worktrees
+  and their `codex/cell-array` branches were removed. Isolated Docker cleanup passed.
+
+Execution IDs N/A for this inline work. Existing plan/handoff updated, no map
+promotion or new registry. Acceptance and impact coverage complete. Nested arrays,
+area, Columns in cells, DOCX and new pagination policies remain outside this slice;
+next work is an owner-selected remaining design part, not another tuning pass here.
