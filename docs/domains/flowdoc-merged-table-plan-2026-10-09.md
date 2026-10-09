@@ -157,3 +157,59 @@ internal and have a single owner. No new dependency or public HTTP API is needed
 If legal pagination cannot preserve the agreed height/line rules, report the
 specific failing fixture before changing the design. Do not silently fall back
 to moving an entire merged group or flattening cells.
+
+## Execution ledger — 2026-10-09
+
+Owner approved this plan and inline execution. Core isolated checkout:
+`C:/Users/nekot/Documents/GitHub/flowdoc-core-merged-table`, branch
+`codex/merged-table`, base `1790f26e`. Native worktree tool cannot select the
+other owner repository from this Project Control chat, so used Git worktree.
+Service remains on its development checkout; release refs are excluded.
+
+Preflight: Task 1 grid feeds Task 2; Task 2 emits the existing draw contract to
+Task 3; Task 3 artifact/checksum feeds Task 4. No interface conflicts found.
+Project Control ledger overrides generic product-local skill ledger location.
+
+- Task 1 complete: `fc19cd2`; tests first had 5 failures/14 passes, then all 19
+  focused tests and build pass. Model 6, grid coverage, binding/repeat checks.
+- Task 2 candidate: `6878bb9` plus pending header-boundary fix. Initial layout
+  cases had 3 failures/3 passes. Added mixed-height matrix and header/body gap
+  regression; found/fixed duplicate shared header edge and header-only page.
+  Current Core suite: 169 tests pass, build passes; fresh review in progress.
+- Ruling: line continuation can insert whitespace at a page boundary inside a
+  cell; recompute only the ending-row deficit, preserving the accepted height
+  rule and each whole line. A common cut forced on all unequal line grids can
+  otherwise prevent progress. Tests exercise unequal line heights.
+- Task 3 in progress: real installed-consumer fixtures and package 0.1.3 prepared.
+  First Docker attempt failed before build because Linux engine was offline;
+  startup requested. No Linux/package/PDF acceptance claimed yet.
+- Task 4 test fixture prepared on Service; existing 0.1.2 Core correctly rejects
+  model 6 (observed failing prerequisite). Pin/version unchanged pending artifact.
+
+Remaining: independent review/fixes, packed Core and visual PDF, Service full
+integration check, final evidence coverage and commits. No release/push/tag.
+
+### Local implementation checkpoint — Docker prerequisite pending
+
+Task 2 local implementation is committed at `e1b7fb3` after fresh independent
+read-only review. Two confirmed findings received failing regressions and fixes:
+nonrepeating headers no longer reduce the capacity available to future protected
+rows/lines; a trailing-padding continuation carries the final body line with it
+instead of producing a header-only page. Final local suite is 171 passed across
+18 files, build and diff checks pass. Evidence:
+`flowdoc-core-merged-table/artifacts/merged-development/final-local.log`, with
+red/green logs in that directory. This is not packed/visual acceptance.
+
+Task 3 pending changes: Core package metadata 0.1.3, installed-consumer script,
+short/long Thai-English fixture, Docker consumer wiring and README. These remain
+uncommitted until required package checks are possible. Task 4 pending changes:
+Service examples/merged-template.json and tests/merged-table-api.test.mjs;
+Service package/pin remain 0.1.2. No DB-backed test result is claimed.
+
+Docker Linux engine pipe is unavailable. `check:package` failed before build;
+`docker desktop start` was attempted and Docker shows an error dialog. Asked
+owner for its error text while completing independent local work. Do not reset
+Docker, delete its data or change system virtualization settings to force tests.
+Resume with Docker readiness, then the final packed consumer, PDF visual/token
+coverage and Service integration checks. Existing dirty candidate files and the
+unmerged Core worktree must be preserved. release/tag/push untouched.
