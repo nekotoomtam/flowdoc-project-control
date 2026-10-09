@@ -31,21 +31,19 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
 
 ## จุดที่คุยค้างและสถานะจริง ณ ตอนส่งต่อ
 
-- งาน runtime ชุด Cell Content ลงมือแล้วใน worktree แยกของ Core/Service;
-  ดู commit และผลตรวจล่าสุดจาก Inline execution ledger ในแผน Cell Content
-- Core tests 250/250 และ packed consumer ผ่าน; Service real-DB/API checks 16/16 ผ่าน
-  มี PDF ทดลอง 15 หน้า รอเจ้าของตรวจ ยังไม่ integrate หรือเพิ่มเวอร์ชัน/release
-- ฐานที่แผนเคยตรวจคือ Core/Service 0.1.5; commit และ release provenance อยู่ใน
-  เอกสารที่อ้าง ไม่ต้องสร้าง release ใหม่เพราะเข้ามารับงาน
+- Cell Content ผ่านและรวมเข้าฝั่งพัฒนา Core/Service 0.1.6 แล้ว เจ้าของรับ PDF ตัวอย่าง
+  ดู commit และ archive หลักฐานในหัวข้อ Development closeout ของแผน Cell Content
+- Core tests 250/250, build และ packed Linux consumer ผ่าน; Service real-DB/API
+  checks 16/16 ผ่าน ไม่มี skip; PDF 15 หน้าเหมือนชุดที่เจ้าของตรวจทุกไบต์
+- worktree/branch ชั่วคราวของชุดนี้เก็บกวาดแล้ว หลักฐานย้ายไป artifacts/worktree-archive
+  ของ repo หลักพร้อมตรวจ SHA256; release คง 0.1.5 ไม่มี push หรือ tag ใหม่
 - พาร์ต 1–2 คุยหน้าที่ node, childIds และ identity แล้ว; พาร์ต 3–4 คุยขนาด
   padding และการแบ่งหน้า รวมการเตรียมความสัมพันธ์เซลล์รวมครั้งเดียวต่อ layout pass
 - แผนมี Task 1–4 สำหรับ implementation ซึ่งคนละชุดเลขกับพาร์ตออกแบบ 1–6
 - เจ้าของยืนยัน padding รายด้านเป็น Length หน่วย pt/mm แล้ว: ไม่ระบุใช้ 4pt
   เฉพาะด้านที่ขาด ค่า 0 ต้องรักษาไว้ รายละเอียดและเกณฑ์ตรวจอยู่ในแผน Cell Content
-- ขั้นถัดไปคือให้เจ้าของตรวจ PDF ตาม artifact ที่ระบุใน ledger แล้วจึงจัดการ
-  รุ่นส่งมอบ การตรวจแพ็กเกจ/consumer ที่เปลี่ยน และ integration ตามอำนาจที่มี
-  อย่าเริ่มทำ implementation ซ้ำหรือเอา area มารวม; candidate ยังใช้ metadata
-  รุ่นเก่าใน lane ทดลองเท่านั้น ต้องไม่ปะปนกับ release 0.1.5
+- ชุด direct-cell จบแล้ว ขั้นถัดไปคือเลือกพาร์ตออกแบบที่ยังเหลือตามคำขอเจ้าของ
+  ไม่ทำ implementation ซ้ำ ไม่ดึง area มารวมเอง และไม่ตีว่า roadmap ทั้งหมดเสร็จ
 
 ## ประเด็นสำคัญที่ห้องใหม่ต้องไม่ตีความคลาด
 

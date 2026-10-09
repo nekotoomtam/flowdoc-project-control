@@ -18,7 +18,8 @@ PostgreSQL, Sharp และระบบ upload/job เดิม
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: PROPOSED implementation plan, 2026-10-09; not implementation Evidence.
+Status: implemented and accepted for development 0.1.6, 2026-10-09.
+Original proposal and execution history retained below; this plan is not runtime Evidence.
 ขอบเขตลูกโดยตรงได้รับการยอมรับแล้ว แต่กติกาละเอียดด้านล่างเป็นข้อเสนอให้ตรวจรอบนี้
 ไม่ได้หมายความว่าร่างสถาปัตยกรรมทั้งหกพาร์ตผ่านแล้ว
 Current work: inline planning; execution/Phase/Checklist IDs N/A.
@@ -101,16 +102,16 @@ Files (Core): `src/composition/resolvedDocument.ts`, `src/template/types.ts`,
 `src/binding/expandRows.ts`; ทบทวน feature gates ใน `src/layout/pageNumbers.ts` ด้วย
 แก้เฉพาะไฟล์ที่จำเป็นจากผลทดสอบ
 
-- [ ] เพิ่ม failing tests ใน `tests/template/cellContent.test.ts` และ
+- [x] เพิ่ม failing tests ใน `tests/template/cellContent.test.ts` และ
   `tests/composition/cellContent.test.ts`: รับลูกหลายชนิดใน model 9,
   รุ่นเก่ายังปฏิเสธ image child, ปฏิเสธ nested table/container และ ID อ้างไม่ถึง
-- [ ] เพิ่ม model 9 โดยไม่เพิ่ม node type หรือเก็บพิกัดจัดหน้าลงต้นฉบับ
-- [ ] เพิ่มสัญญา padding ตามที่เจ้าของยืนยันข้างต้น พร้อม tests: ไม่ระบุทั้งชุด,
+- [x] เพิ่ม model 9 โดยไม่เพิ่ม node type หรือเก็บพิกัดจัดหน้าลงต้นฉบับ
+- [x] เพิ่มสัญญา padding ตามที่เจ้าของยืนยันข้างต้น พร้อม tests: ไม่ระบุทั้งชุด,
   ระบุบางด้าน, explicit 0, pt/mm, ค่าผิด และพื้นที่เนื้อหาไม่เหลือ
   ทดสอบว่าค่าเริ่มต้นรักษาผลตารางเดิม และระบุขอบเขตรุ่นโมเดลที่รับ field ใหม่
-- [ ] พิสูจน์ global/local image binding, แถวซ้ำตามข้อจำกัดเดิม,
+- [x] พิสูจน์ global/local image binding, แถวซ้ำตามข้อจำกัดเดิม,
   sourceMap/instance IDs และลำดับ childIds; ไม่ขยายชนิดตัวแปรในงานนี้
-- [ ] รัน `npm test -- tests/template tests/composition tests/binding` และ
+- [x] รัน `npm test -- tests/template tests/composition tests/binding` และ
   `npm run build`; ตรวจ diff แล้ว commit เฉพาะงานนี้
 
 **Done:** โครงแบบใหม่ประกอบสำเร็จและตรวจข้อมูลผิดได้ก่อนจัดหน้า
@@ -128,14 +129,14 @@ Files (Core): ใหม่ `src/layout/measureCellContent.ts`, แก้ `src/la
 การวาดใช้หน่วยและ geometry เดียวกับการวัด; unit สูงเท่ากรอบ ไม่ใช่แค่พื้นที่ภาพจริง
 ไม่ export สัญญาชั่วคราวนี้เป็น API หน้าบ้าน
 
-- [ ] เขียน red tests สำหรับ text→image→text, หลายภาพ, align ทั้งสาม,
+- [x] เขียน red tests สำหรับ text→image→text, หลายภาพ, align ทั้งสาม,
   missing resource, ข้อความไทย และภาพใกล้ท้ายหน้า
-- [ ] เพิ่ม shared measurement และการวาด frame แบบ contain โดยคง root image behavior
-- [ ] ปรับ cursor ของ cell ให้กินหน่วยข้อความหรือภาพได้; ย้ายภาพทั้งกรอบ
+- [x] เพิ่ม shared measurement และการวาด frame แบบ contain โดยคง root image behavior
+- [x] ปรับ cursor ของ cell ให้กินหน่วยข้อความหรือภาพได้; ย้ายภาพทั้งกรอบ
   ตรวจ no-progress และ oversize ก่อนเกิดหน้าว่างต่อเนื่อง
-- [ ] ทดสอบ nodeId เดิมบนทุกหน้า, ต้นฉบับไม่ถูกแก้, เส้นกรอบครอบเนื้อหา,
+- [x] ทดสอบ nodeId เดิมบนทุกหน้า, ต้นฉบับไม่ถูกแก้, เส้นกรอบครอบเนื้อหา,
   legacy text-only positions ไม่เปลี่ยน และ allowBreak=false
-- [ ] รัน `npm test -- tests/layout/cellContentFlow.test.ts tests/layout/documentFlow.test.ts tests/layout/textFlow.test.ts tests/pdf/images.test.ts`
+- [x] รัน `npm test -- tests/layout/cellContentFlow.test.ts tests/layout/documentFlow.test.ts tests/layout/textFlow.test.ts tests/pdf/images.test.ts`
   ตามด้วย build, diff review และ commit
 
 **Done:** ตารางธรรมดาวัดและวาดลูกหลายชนิดถูกต้อง รวมกรณี error ที่จบได้แน่นอน
@@ -153,35 +154,35 @@ Files (Core): `src/layout/mergedTableFlow.ts`, `src/layout/documentFlow.ts`,
 
 ### 3A — เตรียมความสัมพันธ์ตาราง
 
-- [ ] อ่านตัว resolve grid เดิมก่อนแก้ แล้วเตรียมแผนผังเซลล์รวมหนึ่งครั้งต่อ
+- [x] อ่านตัว resolve grid เดิมก่อนแก้ แล้วเตรียมแผนผังเซลล์รวมหนึ่งครั้งต่อ
   table instance ต่อการจัดหน้าหนึ่งรอบ: owner cell, ช่วงแถว/คอลัมน์ และความกว้าง
-- [ ] ตรวจ span ทับกัน/อ้างผิดก่อนแบ่งหน้า ตำแหน่งที่ถูกครอบอ้างเซลล์หลัก
+- [x] ตรวจ span ทับกัน/อ้างผิดก่อนแบ่งหน้า ตำแหน่งที่ถูกครอบอ้างเซลล์หลัก
   ไม่กลายเป็นเจ้าของเนื้อหาอีกชุด; ไม่เพิ่ม cache ข้ามรอบ
-- [ ] ตรวจด้วยตัวนับการเรียกที่ขอบเขตเตรียมตาราง: ตารางเดียวหลายหน้าต้องเตรียม
+- [x] ตรวจด้วยตัวนับการเรียกที่ขอบเขตเตรียมตาราง: ตารางเดียวหลายหน้าต้องเตรียม
   ครั้งเดียว สอง table instances ต้องเตรียม instance ละครั้ง ไม่ใช้ผลผิดตัว
   ขอบเขตนี้คือ layout pass; ไม่อ้างว่าต้องตัด validation ในขั้นรับแม่แบบออก
 
 ### 3B — วัดเนื้อหาเซลล์หลัก
 
-- [ ] วัดเฉพาะ owner cell ด้วยความกว้างหลังหัก padding แล้วเก็บหน่วยเนื้อหาไว้ใช้
+- [x] วัดเฉพาะ owner cell ด้วยความกว้างหลังหัก padding แล้วเก็บหน่วยเนื้อหาไว้ใช้
   ตลอด layout pass; covered positions ไม่วัดซ้ำและไม่คัดลอกเนื้อหา
-- [ ] ตรวจหลายเซลล์รวมในตารางเดียว ทั้ง colspan/rowspan และเพื่อนข้างกันสูงต่างกัน
+- [x] ตรวจหลายเซลล์รวมในตารางเดียว ทั้ง colspan/rowspan และเพื่อนข้างกันสูงต่างกัน
   รวม padding 0, ค่าเริ่มต้น และค่ากำหนดเอง; repeated header ใช้ผลวัดเดิม
-- [ ] ตรวจทั้งจำนวนการวัดและผล geometry/ลำดับเนื้อหา ไม่ใช้เพียงตัวนับเป็นหลักฐาน
+- [x] ตรวจทั้งจำนวนการวัดและผล geometry/ลำดับเนื้อหา ไม่ใช้เพียงตัวนับเป็นหลักฐาน
 
 ### 3C — แบ่งหน้า วาด และใช้ผลเตรียมซ้ำ
 
-- [ ] pagination อ่านแผนผังและหน่วยที่วัดแล้ว; ยังคำนวณพื้นที่คงเหลือ จุดตัด
+- [x] pagination อ่านแผนผังและหน่วยที่วัดแล้ว; ยังคำนวณพื้นที่คงเหลือ จุดตัด
   และ offset ต่อหน้าได้ แต่ไม่สร้างความสัมพันธ์เซลล์รวม/วัดข้อความใหม่ทุกหน้า
-- [ ] ใช้ชุดกรณีด้านล่างตรวจเส้นกรอบและเนื้อหาทุกส่วน รวมกรณีไม่มีความคืบหน้า
+- [x] ใช้ชุดกรณีด้านล่างตรวจเส้นกรอบและเนื้อหาทุกส่วน รวมกรณีไม่มีความคืบหน้า
   ไม่เพิ่มชุด stress/benchmark แยกในรอบนี้
 
-- [ ] เริ่มด้วย red tests: colspan, rowspan ข้ามหลายหน้า, cell ข้างกันยาวไม่เท่ากัน,
+- [x] เริ่มด้วย red tests: colspan, rowspan ข้ามหลายหน้า, cell ข้างกันยาวไม่เท่ากัน,
   ภาพใน repeat header และภาพที่พอดี/ใหญ่กว่าพื้นที่หลังหัก header
-- [ ] เปลี่ยนการคำนวณ cut/row heights ให้ใช้ความสูงทั้งกรอบภาพอย่างสอดคล้องกัน
-- [ ] พิสูจน์ว่ารูป body วาดครั้งเดียวต่อ instance; รูป header ซ้ำเฉพาะหน้าที่มีหัวตาราง
+- [x] เปลี่ยนการคำนวณ cut/row heights ให้ใช้ความสูงทั้งกรอบภาพอย่างสอดคล้องกัน
+- [x] พิสูจน์ว่ารูป body วาดครั้งเดียวต่อ instance; รูป header ซ้ำเฉพาะหน้าที่มีหัวตาราง
   ไม่มีเนื้อหาหาย วาดทะลุกรอบ หรือ pagination วนไม่จบ
-- [ ] รัน `npm test -- tests/layout/mergedTableFlow.test.ts tests/layout/mergedCellContent.test.ts tests/layout/cellContentFlow.test.ts`
+- [x] รัน `npm test -- tests/layout/mergedTableFlow.test.ts tests/layout/mergedCellContent.test.ts tests/layout/cellContentFlow.test.ts`
   ตามด้วย build, diff review และ commit
 
 **Done:** ตารางที่มีความสามารถรวมเซลล์เดิมใช้ลูกแบบใหม่ได้ด้วยกติกาเดียวกัน
@@ -197,20 +198,20 @@ Files (Service): ใหม่ `tests/cell-content-api.test.mjs`, package/lock/ve
 จาก discovery admission และ prepareJobImages ใช้ image nodes จากทั้ง graph แล้ว
 จึงคาดว่าไม่ต้องเพิ่ม DB/API แต่ต้องพิสูจน์ผ่านแพ็กเกจจริง ไม่ถือว่าผ่านจากการอ่านโค้ด
 
-- [ ] สร้าง fixture ประมาณ 12 แถว ใช้ภาพ 3 แหล่งร่วมกัน พร้อมข้อความไทยยาว,
+- [x] สร้าง fixture ประมาณ 12 แถว ใช้ภาพ 3 แหล่งร่วมกัน พร้อมข้อความไทยยาว,
   cell หลายลูก, merged cell, repeat header, ลิงก์และสารบัญไปหัวข้อหลังตาราง
   จำนวนหน้าเป็นผล layout ไม่เดาจำนวนตายตัวก่อนสร้าง
-- [ ] ตรวจ PDF ที่ render แล้วทุกหน้าของ fixture: ขอบเซลล์ ตำแหน่ง/สัดส่วนภาพ
+- [x] ตรวจ PDF ที่ render แล้วทุกหน้าของ fixture: ขอบเซลล์ ตำแหน่ง/สัดส่วนภาพ
   ลำดับข้อความ หน้าเป้าหมายลิงก์/สารบัญ; เก็บ PDF และผลตรวจไว้ใช้ซ้ำ
-- [ ] รัน Core `npm test`, `npm run build`, `npm run check:package`
+- [x] รัน Core `npm test`, `npm run build`, `npm run check:package`
   หนึ่งรอบก่อนส่งแพ็กเกจ เนื่องจากสัญญารุ่นโมเดลกระทบ consumers ทั้งหมด
-- [ ] Service ใช้ tarball ที่สร้างจาก candidate เท่านั้น; เพิ่ม real-DB API test
+- [x] Service ใช้ tarball ที่สร้างจาก candidate เท่านั้น; เพิ่ม real-DB API test
   สำหรับ publish template→finalized upload→job→download PDF และ missing image warning
-- [ ] รัน Service build และ tests ที่กระทบ: cell-content-api, image-api,
+- [x] รัน Service build และ tests ที่กระทบ: cell-content-api, image-api,
   merged-table-api, contents-api, version-boundary, processor พร้อมฐานข้อมูลทดสอบ
   ห้ามนับ test ที่ skip หรือไม่มี DB เป็น PASS
-- [ ] เจ้าของตรวจ PDF ตัวอย่างหนึ่งชุด; ไม่ต้องให้ลองซ้ำทุก unit case
-- [ ] บันทึกผลในแผนนี้และหลักฐานเดิมที่เกี่ยวข้องก่อน commit/integrate ชุดพัฒนา
+- [x] เจ้าของตรวจ PDF ตัวอย่างหนึ่งชุด; ไม่ต้องให้ลองซ้ำทุก unit case
+- [x] บันทึกผลในแผนนี้และหลักฐานเดิมที่เกี่ยวข้องก่อน commit/integrate ชุดพัฒนา
   เก็บ release ไว้เดิม และเก็บกวาดเฉพาะ lane งานนี้ที่ clean/merged ตาม policy
 
 **Done:** API เดิมสร้าง PDF ที่มีข้อความและภาพร่วมในเซลล์ได้จริงจาก package candidate
@@ -224,13 +225,53 @@ Service impacted real-DB tests หนึ่งรอบ, fixture PDF หนึ�
 การตรวจแผนรอบนี้: self-review coverage + links/diff + Project Control check:data
 ไม่อ้างผลทดสอบ runtime ใหม่จากการเขียนเอกสาร
 
-Blocking before implementation: เจ้าของ review กติกาขนาดภาพ/การข้ามหน้าในแผนนี้
+Original prerequisite (now satisfied): เจ้าของ review กติกาขนาดภาพ/การข้ามหน้าในแผนนี้
 Deferred: arbitrary nesting, cell subformats, frontend editing API, keep-with-next,
 image arrays, stress/concurrency redesign และ DOCX
 เมื่อ acceptance ของสี่ task ผ่านให้จบ slice; ไม่ต่อหกพาร์ตหรือ performance tuning เอง
 ถ้าต้องเปลี่ยน public binding, schema DB หรือกติกาตารางเดิม ให้หยุดเสนอผลกระทบก่อนขยาย
 
 ## สถานะ
+
+### Development closeout — 2026-10-09
+
+Owner reviewed the sample as acceptable and authorized continuing the proposed
+0.1.6 closeout. All four implementation tasks are accepted within the direct-cell
+scope. This supersedes the pending-delivery status in the historical ledger below;
+its previous candidate results and acceptance history are retained.
+
+- Core development `codex/template-binding`: `4546a1899bcdf2defe2a0c9976cdf90250c309d1`,
+  package 0.1.6. Service development `codex/template-registry`:
+  `eb41b697085a66a7123313572024285436e0acde`, package 0.1.6.
+- Core versioned candidate: fresh 250/250 tests, build and isolated Linux/amd64
+  packed consumer PASS. Service versioned consumer: Docker build/vendor identity
+  and 16 real-DB/API tests PASS, zero failed/skipped. No runtime repair in closeout.
+- Core tarball SHA256:
+  `e24ef044ea68a6d36694759cd1a7a39fbc1a1fe8ae77e265e22c38671c988981`.
+  Service package/lock/manifest pin this exact artifact and Core source commit.
+  Retired the temporary candidate vendor filename; released 0.1.5 remains intact.
+- Final PDF remains byte-identical to the owner-reviewed 15-page fixture,
+  SHA256 `fcb7cca72ba05065f0272bab2c7cbaeee1d32ad1a55d98896c5f827b6d12d27d`.
+  Visual proof reused; no additional owner trial required for metadata-only changes.
+- Local fast-forward integration preserved the exact tested commits. Proof reused
+  after integration; no conflict, source, dependency or configuration changes.
+- Both current-round worktrees and their `codex/cell-content` branches were removed
+  only after clean/merged checks. All ignored artifact files were copied and
+  SHA256-verified before removal; archive manifests record every retained file.
+- Core artifact root: `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-cell-content/`.
+  Final package/PDF/proof: `1791536347578/`; previous `1791535765151/` and visual
+  rendering in `1791535582773/` remain under that same archive root.
+- Service artifact root: `../flowdoc-service/artifacts/worktree-archive/flowdoc-service-cell-content/`.
+  Final consumer proof: `1791536451120/result.json`; previous proof `1791535841549/`.
+  Historical paths below resolve through these archive roots after cleanup.
+- Release branches unchanged: Core `9ee6526263368ce18bf139d70adce1f000a3ccba`,
+  Service `3293a0519824ade1919da8857a017dd1c2224e07`. No push, tag, release promotion,
+  DB migration or DOCUMENT_MAP promotion. Project Control records this bounded
+  development delivery; it does not certify the entire six-part roadmap.
+
+Limits remain: synthetic image fixture, direct TextBlock/Image cell children only;
+no Columns/nested tables/area/image-array extension, DOCX or stress admission.
+Next work is an owner-selected remaining design part; do not expand automatically.
 
 ### Inline execution ledger — 2026-10-09
 
