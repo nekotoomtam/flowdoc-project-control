@@ -256,3 +256,26 @@ Coverage maps to Tasks 1–4 above. No open blocker in this slice. Initial level
 remain 1–3 with a numeric contract; 5–7 is future scope. No frontend, DOCX,
 image-in-cell, generic header/footer, DB redesign, map promotion or release update.
 Next: owner chooses the next bounded scope; do not automatically expand contents.
+
+
+## Owner-authorized release snapshot — 2026-10-09
+
+Owner subsequently requested release 0.1.5 for both repositories, as one new
+commit on each existing release branch plus an annotated v0.1.5 tag. This
+supersedes the earlier no-release instruction for this bounded promotion only.
+Inline integration role; execution IDs N/A. No runtime/source changes or push.
+
+- Core release: `9ee6526263368ce18bf139d70adce1f000a3ccba`, parent
+  `1aeacd045c4e1ab1c048edb27d4ddbe9267a3b75` (0.1.0).
+- Service release: `3293a0519824ade1919da8857a017dd1c2224e07`, parent
+  `ec51ce5f50be2e5aa37ebe4f72ba9f0000fe0cc7` (0.1.0).
+- Each annotated `v0.1.5` resolves to its new release commit; both v0.1.0 tags
+  retain their previous targets. Release history has one new version snapshot.
+- Index tree equality before committing and zero full-tree diff afterward prove
+  release contents exactly equal accepted development d95701f / 2a69fd6.
+  Existing Linux package/PDF and Service database evidence above applies to those
+  identical files, dependencies and configuration; no runtime behavior changed.
+- Fresh checks: Core 202 tests/build; Service vendor checksum/build; both staged
+  diff checks, full-tree equality, tag targets and clean workspaces PASS.
+- Main checkouts returned to their original development branches. Release refs
+  and tags remain local; remotes, data volumes and evidence worktrees untouched.

@@ -550,3 +550,9 @@ release/tag 0.1.0 คงเดิมตามคำสั่งเจ้าข�
 ตาม [Contents acceptance](flowdoc-toc-plan-2026-10-09.md#acceptance-and-development-integration--2026-10-09)
 รวมผลตรวจแพ็กเกจ/API และข้อจำกัดการวัดทรัพยากรไว้ที่แผนเดิม
 release/tag 0.1.0 ยังคงเดิม; ยังไม่ขยายไป DOCX หรือ header/footer ทั่วไป
+
+
+ต่อมาเจ้าของอนุมัติขึ้น release 0.1.5 ทั้งสอง repo แล้วในวันที่ 2026-10-09
+เก็บเป็น commit ใหม่บน release และ annotated tag v0.1.5 โดยคง v0.1.0 เดิม
+ตาม [Release snapshot](flowdoc-toc-plan-2026-10-09.md#owner-authorized-release-snapshot--2026-10-09)
+เนื้อหาตรงกับชุดพัฒนาที่ตรวจรับแล้วทุกไฟล์; ยังไม่ได้ push ไป remote
