@@ -1,0 +1,185 @@
+# FlowDoc: ข้อความและรูปหลายชิ้นในเซลล์ — Implementation Plan
+
+> For agentic workers: execute sequentially inline using executing-plans after
+> owner review. This plan does not dispatch another room or reopen a closed round.
+
+**Goal:** หนึ่งเซลล์เรียง TextBlock และ Image หลายชิ้นได้ ส่งข้อมูลผ่าน API เดิม
+แล้วได้ PDF ที่ไม่ทับกัน ไม่หาย และข้ามหน้าได้ตามกติกาที่ระบุด้านล่าง
+
+**Architecture:** ใช้ `TableCell.childIds` และชนิด node เดิม เพิ่มการวัดเนื้อหา
+เซลล์เป็นลำดับบรรทัดข้อความ/กรอบภาพ แล้วให้ทางจัดหน้าตารางทั้งธรรมดาและรวมเซลล์ใช้ร่วมกัน
+Service ใช้ขั้นเตรียมภาพเดิม ไม่ย้ายหน้าที่จัดหน้าออกจาก Core
+
+**Tech Stack:** TypeScript, Vitest, Core PDF runtime เดิม; Service/Fastify,
+PostgreSQL, Sharp และระบบ upload/job เดิม
+
+**Spec:** [ร่างโครงสร้างและขอบเขตพาร์ต 1](flowdoc-export-node-structure-draft-2026-10-09.md)
+
+## Authority Boundary
+
+Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
+Status: PROPOSED implementation plan, 2026-10-09; not implementation Evidence.
+ขอบเขตลูกโดยตรงได้รับการยอมรับแล้ว แต่กติกาละเอียดด้านล่างเป็นข้อเสนอให้ตรวจรอบนี้
+ไม่ได้หมายความว่าร่างสถาปัตยกรรมทั้งหกพาร์ตผ่านแล้ว
+Current work: inline planning; execution/Phase/Checklist IDs N/A.
+Work Size: medium implementation, split into four sequential tasks. Risk: routine.
+Product owners: Core (contract/layout/PDF), Service (consumer/resource/job proof).
+ฐานที่ตรวจ: Core `d95701f`, Service `2a69fd6`, ทั้งสองเป็นชุดพัฒนา 0.1.5
+ไม่มีการแก้ product, DB, release, tag หรือ DOCUMENT_MAP ในงานร่างแผนนี้
+
+## Global Constraints
+
+- เนื้อหาใน cell เป็น TextBlock/Image โดยตรงตามลำดับ `childIds` เท่านั้น
+- ไม่เพิ่ม container, ตารางซ้อน, การเรียกโครงย่อยซ้อนใน cell, ตัวแปรกลุ่ม
+  หรือ array ภาพแบบใหม่; โครงย่อย/แถวซ้ำที่มีอยู่ยังใช้ขอบเขต binding เดิม
+- ไม่ทำ frontend, DOCX, DB migration, queue redesign หรือ image API ใหม่
+- authored node ไม่เปลี่ยน ID เพราะขึ้นหน้าใหม่; ผลวาดรักษา node ID/source mapping เดิม
+- ใช้ฐานพัฒนา; ไม่แตะ `release` จนกว่างานผ่านและเจ้าของสั่งเลื่อนรุ่น
+- เสนอ model version 9 เพื่อแยกความสามารถใหม่จาก 4–8; ต้องรักษา feature gate
+  ของภาพ ลิงก์ สารบัญ และเลขหน้า ไม่ใช้เงื่อนไข `=== 8` จนรุ่นใหม่ปิดของเดิม
+- รุ่นซอฟต์แวร์เสนอเป็น 0.1.6 ของสอง repo ตอนส่งมอบ ไม่ใช่การอนุมัติ release ในเอกสารนี้
+- ก่อนเริ่ม code อ่าน AGENTS ของ owner ตรวจ base/สถานะปัจจุบัน และแยก worktree
+  หากมีงานอื่นชน; ไม่ต้องสร้างห้องหรือทะเบียน execution เพียงเพื่อทำงานนี้
+- Model สำหรับ WORK ต้องเลือกแยกจาก PLAN ตาม host availability ตอนเริ่มจริง;
+  ไม่มี WORK ถูก dispatch และไม่มีการอ้างว่าเปลี่ยนโมเดลของห้องนี้แล้ว
+
+## กติกาที่เสนอให้ใช้ในชุดแรก
+
+| เรื่อง | กติกา |
+| --- | --- |
+| ลำดับ | ข้อความ → รูป → คำบรรยาย หรือหลายชิ้นต่อกันตาม childIds; คำบรรยายเป็น TextBlock |
+| ความสูง | วัดข้อความจริงรวมกับความสูงกรอบภาพ และ padding เซลล์เดิม 4pt บน/ล่าง |
+| ความกว้าง | พื้นที่เซลล์หรือเซลล์รวม หัก padding ซ้าย/ขวาอย่างละ 4pt |
+| ภาพ | ใช้กรอบ width/height เดิม รักษาสัดส่วนแบบ contain และ align ซ้าย/กลาง/ขวาภายในพื้นที่เซลล์ |
+| ระยะระหว่างลูก | ไม่เพิ่ม gap อัตโนมัติ; รักษาความสูงบรรทัด/บรรทัดว่างตามข้อความ |
+| ข้ามหน้า | ข้อความแยกที่บรรทัด; กรอบภาพไม่ผ่า ถ้าไม่พอพื้นที่คงเหลือให้ไปหน้าถัดไป |
+| ภาพใหญ่เกิน | ถ้ากรอบกว้างเกินเซลล์ หรือสูงเกินหน้าว่างหลังหักหัวตารางและ padding ให้ error ระบุ node; ไม่ย่อกรอบเงียบ ๆ |
+| ภาพหาย/โหลดไม่สำเร็จ | ใช้ warning และกรอบว่างตามนโยบายเดิม ไม่ทำให้ตำแหน่งเนื้อหาถัดไปเปลี่ยน |
+| แถวห้ามแยก | รักษา allowBreak=false; แถวที่ใหญ่กว่าพื้นที่หน้าให้ error ตามเดิม |
+| หัวตารางซ้ำ | วาดลูกซ้ำตามหัวตาราง ใช้ทรัพยากรภาพที่เตรียมแล้วร่วมกัน |
+| คำบรรยาย | ยังไม่บังคับติดภาพข้ามหน้า; keep-with-next/กลุ่มภาพกับคำบรรยายเป็นงานถัดไป |
+
+ตัวอย่าง fixture: cell มี `childIds: [description, evidenceImage, caption]`
+โดย description/caption เป็น text-block และ evidenceImage เป็น image ที่ผูก
+ตัวแปรภาพ global/local เดิมเข้ากับ resourceId จาก upload; ไม่สร้าง source kind ใหม่
+สร้างแถวหลายรายการด้วยวิธีประกอบเดิม พร้อมข้อความยาวและรูปแนวตั้ง/แนวนอน
+
+## Review Focus
+
+1. สัญญารุ่นใหม่ทำให้เอกสารเก่าหรือสารบัญหาย — พิสูจน์ใน Task 1 และ 4
+2. วัดกรอบภาพกับพื้นที่วาดไม่ตรง ทำให้ทับ/เว้นผิด — Task 2
+3. rowspan/header ข้ามหน้าแล้วรูปซ้ำ หาย หรือวนไม่จบ — Task 3
+4. ผูกข้อมูล/เตรียมภาพเห็นเฉพาะรูปที่ราก — Task 1 และ 4
+5. ส่วนต่อเนื่องสูญเสีย node identity หรือเปลี่ยนต้นฉบับ — Task 2–4
+
+## Task 1 — สัญญาข้อมูลและการประกอบ
+
+Files (Core): `src/composition/resolvedDocument.ts`, `src/template/types.ts`,
+`src/template/validateTemplate.ts`, `src/template/validateGraph.ts`,
+`src/composition/validateResolvedDocument.ts`, `src/composition/composeDocument.ts`,
+`src/binding/expandRows.ts`; ทบทวน feature gates ใน `src/layout/pageNumbers.ts` ด้วย
+แก้เฉพาะไฟล์ที่จำเป็นจากผลทดสอบ
+
+- [ ] เพิ่ม failing tests ใน `tests/template/cellContent.test.ts` และ
+  `tests/composition/cellContent.test.ts`: รับลูกหลายชนิดใน model 9,
+  รุ่นเก่ายังปฏิเสธ image child, ปฏิเสธ nested table/container และ ID อ้างไม่ถึง
+- [ ] เพิ่ม model 9 โดยไม่เพิ่ม node type หรือเก็บพิกัดจัดหน้าลงต้นฉบับ
+- [ ] พิสูจน์ global/local image binding, แถวซ้ำตามข้อจำกัดเดิม,
+  sourceMap/instance IDs และลำดับ childIds; ไม่ขยายชนิดตัวแปรในงานนี้
+- [ ] รัน `npm test -- tests/template tests/composition tests/binding` และ
+  `npm run build`; ตรวจ diff แล้ว commit เฉพาะงานนี้
+
+**Done:** โครงแบบใหม่ประกอบสำเร็จและตรวจข้อมูลผิดได้ก่อนจัดหน้า
+ยังไม่ถือว่า export ภาพในเซลล์ผ่านจน Task 2–4 จบ
+
+## Task 2 — วัดและวางในตารางธรรมดา
+
+Files (Core): ใหม่ `src/layout/measureCellContent.ts`, แก้ `src/layout/documentFlow.ts`;
+ใหม่ `tests/layout/cellContentFlow.test.ts` และ reuse `tests/layout/documentFlow.test.ts`
+
+สัญญาภายในที่เสนอ: `MeasuredCellItem` เป็น union
+`{kind:'text-line', nodeId, height, line:MeasuredLine}` กับ
+`{kind:'image-frame', nodeId, height, frameWidth, align, resourceId}`.
+`measureCellContent(document, childIds, contentWidth, runtime)` คืนลำดับหน่วยเหล่านี้
+การวาดใช้หน่วยและ geometry เดียวกับการวัด; unit สูงเท่ากรอบ ไม่ใช่แค่พื้นที่ภาพจริง
+ไม่ export สัญญาชั่วคราวนี้เป็น API หน้าบ้าน
+
+- [ ] เขียน red tests สำหรับ text→image→text, หลายภาพ, align ทั้งสาม,
+  missing resource, ข้อความไทย และภาพใกล้ท้ายหน้า
+- [ ] เพิ่ม shared measurement และการวาด frame แบบ contain โดยคง root image behavior
+- [ ] ปรับ cursor ของ cell ให้กินหน่วยข้อความหรือภาพได้; ย้ายภาพทั้งกรอบ
+  ตรวจ no-progress และ oversize ก่อนเกิดหน้าว่างต่อเนื่อง
+- [ ] ทดสอบ nodeId เดิมบนทุกหน้า, ต้นฉบับไม่ถูกแก้, เส้นกรอบครอบเนื้อหา,
+  legacy text-only positions ไม่เปลี่ยน และ allowBreak=false
+- [ ] รัน `npm test -- tests/layout/cellContentFlow.test.ts tests/layout/documentFlow.test.ts tests/layout/textFlow.test.ts tests/pdf/images.test.ts`
+  ตามด้วย build, diff review และ commit
+
+**Done:** ตารางธรรมดาวัดและวาดลูกหลายชนิดถูกต้อง รวมกรณี error ที่จบได้แน่นอน
+
+## Task 3 — เซลล์รวมและหัวตารางซ้ำ
+
+Files (Core): `src/layout/mergedTableFlow.ts`, `src/layout/documentFlow.ts`,
+`tests/layout/mergedTableFlow.test.ts`, ใหม่ `tests/layout/mergedCellContent.test.ts`
+
+ปรับ `TablePageSink` ให้ส่งหน่วยภาพได้ พร้อมคงทาง emitLine สำหรับข้อความ
+ใช้ MeasuredCellItem จาก Task 2 และ offset/drawn tracking เดิมเป็นหลัก
+ไม่สร้าง paginator อีกชุดสำหรับภาพ
+
+- [ ] เริ่มด้วย red tests: colspan, rowspan ข้ามหลายหน้า, cell ข้างกันยาวไม่เท่ากัน,
+  ภาพใน repeat header และภาพที่พอดี/ใหญ่กว่าพื้นที่หลังหัก header
+- [ ] เปลี่ยนการคำนวณ cut/row heights ให้ใช้ความสูงทั้งกรอบภาพอย่างสอดคล้องกัน
+- [ ] พิสูจน์ว่ารูป body วาดครั้งเดียวต่อ instance; รูป header ซ้ำเฉพาะหน้าที่มีหัวตาราง
+  ไม่มีเนื้อหาหาย วาดทะลุกรอบ หรือ pagination วนไม่จบ
+- [ ] รัน `npm test -- tests/layout/mergedTableFlow.test.ts tests/layout/mergedCellContent.test.ts tests/layout/cellContentFlow.test.ts`
+  ตามด้วย build, diff review และ commit
+
+**Done:** ตารางที่มีความสามารถรวมเซลล์เดิมใช้ลูกแบบใหม่ได้ด้วยกติกาเดียวกัน
+
+## Task 4 — PDF จริงและการเรียกผ่าน Service
+
+Files (Core): ใหม่ `tests/consumer/checkCellContent.mjs`,
+เชื่อมกับ `scripts/checkPackedConsumer.mjs`; package metadata เมื่อยืนยันรุ่นแล้ว
+Files (Service): ใหม่ `tests/cell-content-api.test.mjs`, package/lock/vendor manifest;
+ตรวจ consumers `src/jobs/admission.ts`, `src/images/job.ts`, `src/jobs/processor.ts`
+และ renderer ที่เรียกอยู่จริงก่อนแก้ มีปัญหาค่อยแก้เฉพาะทางที่เกี่ยวข้อง
+
+จาก discovery admission และ prepareJobImages ใช้ image nodes จากทั้ง graph แล้ว
+จึงคาดว่าไม่ต้องเพิ่ม DB/API แต่ต้องพิสูจน์ผ่านแพ็กเกจจริง ไม่ถือว่าผ่านจากการอ่านโค้ด
+
+- [ ] สร้าง fixture ประมาณ 12 แถว ใช้ภาพ 3 แหล่งร่วมกัน พร้อมข้อความไทยยาว,
+  cell หลายลูก, merged cell, repeat header, ลิงก์และสารบัญไปหัวข้อหลังตาราง
+  จำนวนหน้าเป็นผล layout ไม่เดาจำนวนตายตัวก่อนสร้าง
+- [ ] ตรวจ PDF ที่ render แล้วทุกหน้าของ fixture: ขอบเซลล์ ตำแหน่ง/สัดส่วนภาพ
+  ลำดับข้อความ หน้าเป้าหมายลิงก์/สารบัญ; เก็บ PDF และผลตรวจไว้ใช้ซ้ำ
+- [ ] รัน Core `npm test`, `npm run build`, `npm run check:package`
+  หนึ่งรอบก่อนส่งแพ็กเกจ เนื่องจากสัญญารุ่นโมเดลกระทบ consumers ทั้งหมด
+- [ ] Service ใช้ tarball ที่สร้างจาก candidate เท่านั้น; เพิ่ม real-DB API test
+  สำหรับ publish template→finalized upload→job→download PDF และ missing image warning
+- [ ] รัน Service build และ tests ที่กระทบ: cell-content-api, image-api,
+  merged-table-api, contents-api, version-boundary, processor พร้อมฐานข้อมูลทดสอบ
+  ห้ามนับ test ที่ skip หรือไม่มี DB เป็น PASS
+- [ ] เจ้าของตรวจ PDF ตัวอย่างหนึ่งชุด; ไม่ต้องให้ลองซ้ำทุก unit case
+- [ ] บันทึกผลในแผนนี้และหลักฐานเดิมที่เกี่ยวข้องก่อน commit/integrate ชุดพัฒนา
+  เก็บ release ไว้เดิม และเก็บกวาดเฉพาะ lane งานนี้ที่ clean/merged ตาม policy
+
+**Done:** API เดิมสร้าง PDF ที่มีข้อความและภาพร่วมในเซลล์ได้จริงจาก package candidate
+
+## Proof / Document Budget และจุดหยุด
+
+Document Budget: แผนนี้หนึ่งไฟล์และ link/status ในร่างเดิม ไม่สร้างรายงานราย task
+Proof Budget: focused red/green tests ต่อ task, Core package verification หนึ่งรอบ,
+Service impacted real-DB tests หนึ่งรอบ, fixture PDF หนึ่งชุดและ visual review หนึ่งรอบ
+ใช้ผลเดิมซ้ำเมื่อ candidate/สิ่งแวดล้อมที่เกี่ยวข้องไม่เปลี่ยน; เพิ่มรอบเมื่อพบ failure จริง
+การตรวจแผนรอบนี้: self-review coverage + links/diff + Project Control check:data
+ไม่อ้างผลทดสอบ runtime ใหม่จากการเขียนเอกสาร
+
+Blocking before implementation: เจ้าของ review กติกาขนาดภาพ/การข้ามหน้าในแผนนี้
+Deferred: arbitrary nesting, cell subformats, frontend editing API, keep-with-next,
+image arrays, stress/concurrency redesign และ DOCX
+เมื่อ acceptance ของสี่ task ผ่านให้จบ slice; ไม่ต่อหกพาร์ตหรือ performance tuning เอง
+ถ้าต้องเปลี่ยน public binding, schema DB หรือกติกาตารางเดิม ให้หยุดเสนอผลกระทบก่อนขยาย
+
+## สถานะ
+
+2026-10-09: ร่างแผนจากการตรวจ source ของฐาน 0.1.5; ยังไม่เริ่มสี่ task
+Return route: สรุปในห้องนี้ ไม่มี separate-room return หรือการแก้ทะเบียนเก่า
