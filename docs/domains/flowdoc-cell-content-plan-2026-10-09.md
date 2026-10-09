@@ -221,6 +221,11 @@ image arrays, stress/concurrency redesign และ DOCX
 
 ## สถานะ
 
+กติกาจุดออกรุ่นและการเลื่อนเข้า release ร่างไว้ที่
+[Export working/release rules](flowdoc-export-working-release-rules-draft-2026-10-09.md)
+จบ Task หรือพาร์ตไม่เท่ากับต้องเพิ่มเวอร์ชัน: ต้องมีการเปลี่ยนโค้ดที่ใช้ได้จริง
+และตรวจผ่านก่อน ส่วน release รอครบเกณฑ์ roadmap; ยังไม่มีการออกรุ่นจากงานเอกสารนี้
+
 2026-10-09: ร่างแผนจากการตรวจ source ของฐาน 0.1.5; ยังไม่เริ่มสี่ task
 อัปเดตจากการคุยต่อ: ยืนยัน direct-cell scope และแยก area/array extension ไปท้าย
 ลำดับออกแบบหกพาร์ตตามร่างหลัก บันทึกทิศทาง Adapter ไว้สำหรับอนาคต
