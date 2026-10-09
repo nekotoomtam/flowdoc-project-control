@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: proposed written design for owner review.
+Owner: FlowDoc Project Control. Status: accepted for implementation planning in the current conversation.
 Active role: Planning Partner. Single-room design work; execution IDs N/A.
 Core owns document contracts, layout and PDF; Service consumes the checked Core
 package and retains template versions. This document does not prove implementation.
@@ -146,5 +146,6 @@ architecture remain the explicitly deferred post-release discussion.
 
 No generalized headers/footers, alternate numbering, multi-contents lists,
 non-TextBlock sources, DOCX, frontend, image-in-cell or release promotion.
-The proposed details above need written-design review before the implementation
-plan. No product implementation is authorized by this document alone.
+Owner confirmed proceeding with this existing design after the resource-budget
+addition. The next artifact is [the implementation plan](flowdoc-toc-plan-2026-10-09.md);
+its review precedes product implementation.
