@@ -53,7 +53,15 @@ Owner clarification หลังร่างแผน: คง slice นี้เ
 
 Owner clarification: padding กำหนดในแม่แบบได้ ค่า 0 ต้องรักษาเป็น 0
 ใช้ค่าเริ่มต้น 4pt ต่อด้านเฉพาะเมื่อไม่ได้ระบุ ไม่ใช้ truthy fallback แทนค่า 0
-รูปแบบ field/หน่วย/การระบุรายด้านต้องสรุปใน Task 1 ก่อน implementation
+เจ้าของยืนยันสัญญา: `TableCell.props.padding` เป็น object ที่มี top/right/bottom/left
+แต่ละด้านเป็น Length `{value:number, unit:'pt'|'mm'}` และละด้านได้
+ไม่ระบุ padding ทั้งชุดใช้ 4pt ทุกด้าน; ไม่ระบุบางด้านใช้ 4pt เฉพาะด้านที่ขาด
+ระบุ 0 ใช้ศูนย์จริง ไม่มี shorthand เพิ่มในชุดแรก
+ปฏิเสธค่าที่ไม่ใช่จำนวน finite ค่าติดลบ หน่วยไม่รองรับ หรือรูปข้อมูลผิด
+เมื่อทราบความกว้าง cell/เซลล์รวม ถ้าหัก padding ซ้าย–ขวาแล้วไม่เหลือพื้นที่เนื้อหา
+ให้แจ้งข้อผิดพลาดก่อนจัดวาง แปลงเป็น pt และเติม default ครั้งเดียวต่อ cell ต่อ
+layout pass แล้วใช้ผลเดียวกันตลอดการวัด วางภาพ และแบ่งหน้า
+นี่เป็นค่าของแม่แบบ ไม่ใช่ค่าที่ผู้เรียก generation API ต้องส่ง
 ข้อความ 4pt ในตารางด้านล่างหมายถึงค่าเริ่มต้น ไม่ใช่ระยะตายตัว
 Task 1 ต้องตรวจค่าที่ไม่ถูกต้องและความเข้ากันได้; Task 2–3 ต้องใช้ padding
 ที่ resolve แล้วชุดเดียวกันในการวัด ความกว้าง การแบ่งหน้า และวาดกรอบ
@@ -97,6 +105,9 @@ Files (Core): `src/composition/resolvedDocument.ts`, `src/template/types.ts`,
   `tests/composition/cellContent.test.ts`: รับลูกหลายชนิดใน model 9,
   รุ่นเก่ายังปฏิเสธ image child, ปฏิเสธ nested table/container และ ID อ้างไม่ถึง
 - [ ] เพิ่ม model 9 โดยไม่เพิ่ม node type หรือเก็บพิกัดจัดหน้าลงต้นฉบับ
+- [ ] เพิ่มสัญญา padding ตามที่เจ้าของยืนยันข้างต้น พร้อม tests: ไม่ระบุทั้งชุด,
+  ระบุบางด้าน, explicit 0, pt/mm, ค่าผิด และพื้นที่เนื้อหาไม่เหลือ
+  ทดสอบว่าค่าเริ่มต้นรักษาผลตารางเดิม และระบุขอบเขตรุ่นโมเดลที่รับ field ใหม่
 - [ ] พิสูจน์ global/local image binding, แถวซ้ำตามข้อจำกัดเดิม,
   sourceMap/instance IDs และลำดับ childIds; ไม่ขยายชนิดตัวแปรในงานนี้
 - [ ] รัน `npm test -- tests/template tests/composition tests/binding` และ
