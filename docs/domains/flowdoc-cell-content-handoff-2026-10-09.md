@@ -31,7 +31,10 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
 
 ## จุดที่คุยค้างและสถานะจริง ณ ตอนส่งต่อ
 
-- งาน runtime ชุด Cell Content ยังไม่เริ่ม; การ commit ล่าสุดในช่วงนี้เป็นงานเอกสาร
+- งาน runtime ชุด Cell Content ลงมือแล้วใน worktree แยกของ Core/Service;
+  ดู commit และผลตรวจล่าสุดจาก Inline execution ledger ในแผน Cell Content
+- Core tests 250/250 และ packed consumer ผ่าน; Service real-DB/API checks 16/16 ผ่าน
+  มี PDF ทดลอง 15 หน้า รอเจ้าของตรวจ ยังไม่ integrate หรือเพิ่มเวอร์ชัน/release
 - ฐานที่แผนเคยตรวจคือ Core/Service 0.1.5; commit และ release provenance อยู่ใน
   เอกสารที่อ้าง ไม่ต้องสร้าง release ใหม่เพราะเข้ามารับงาน
 - พาร์ต 1–2 คุยหน้าที่ node, childIds และ identity แล้ว; พาร์ต 3–4 คุยขนาด
@@ -39,9 +42,10 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
 - แผนมี Task 1–4 สำหรับ implementation ซึ่งคนละชุดเลขกับพาร์ตออกแบบ 1–6
 - เจ้าของยืนยัน padding รายด้านเป็น Length หน่วย pt/mm แล้ว: ไม่ระบุใช้ 4pt
   เฉพาะด้านที่ขาด ค่า 0 ต้องรักษาไว้ รายละเอียดและเกณฑ์ตรวจอยู่ในแผน Cell Content
-- ขั้นถัดไปคือทบทวนสัญญาและ coverage ที่เหลือของ direct-cell slice ก่อนเริ่ม
-  implementation ตามคำสั่งเจ้าของ ไม่เปิดคำถาม padding ที่ตกลงแล้วซ้ำ
-  อย่าถือว่าการยอมรับแต่ละแนวคิดเท่ากับอนุมัติรายละเอียด schema ทั้งหมด
+- ขั้นถัดไปคือให้เจ้าของตรวจ PDF ตาม artifact ที่ระบุใน ledger แล้วจึงจัดการ
+  รุ่นส่งมอบ การตรวจแพ็กเกจ/consumer ที่เปลี่ยน และ integration ตามอำนาจที่มี
+  อย่าเริ่มทำ implementation ซ้ำหรือเอา area มารวม; candidate ยังใช้ metadata
+  รุ่นเก่าใน lane ทดลองเท่านั้น ต้องไม่ปะปนกับ release 0.1.5
 
 ## ประเด็นสำคัญที่ห้องใหม่ต้องไม่ตีความคลาด
 

@@ -232,6 +232,67 @@ image arrays, stress/concurrency redesign และ DOCX
 
 ## สถานะ
 
+### Inline execution ledger — 2026-10-09
+
+Owner authorized implementation in this conversation. Role: Product Implementation
+Agent (Core), with Project Control maintaining this existing ledger. No registered
+execution IDs or separate WORK room. Core lane: `../flowdoc-core-cell-content`,
+branch `codex/cell-content`, base `d95701f`. Core primary/release remain untouched.
+Native worktree tool targets the chat's Project Control repo, not Core; use manual
+Core worktree for this cross-repository lane. This ledger replaces product-local
+skill scratch Markdown to retain Project Control documentation ownership.
+
+Pre-flight: Task 1 model/padding feeds Task 2 measurement; Task 2 measured units feed
+Task 3 pagination; Task 4 consumes packed Core, not source checkout imports.
+Ruling: model 9 uses a shared table-content paginator based on the existing merged
+algorithm, while model 4–8 keep their layout paths. This avoids two new padding/image
+implementations and preserves old behavior; cost is maintaining a legacy path until
+a separately verified consolidation. Grid preparation remains once per table/layout
+pass; validation may independently validate topology before layout.
+Task 1: contract/template/composition tests RED (7 unsupported-feature failures),
+then GREEN 106/106 targeted tests plus build. Added padding-width RED→GREEN and
+global image repeat/source-identity checks. No version bump or release promotion.
+Task 1 committed `a0235d9`; composition proof is consolidated in
+`tests/template/cellContent.test.ts` instead of duplicating fixtures in a separate
+composition file. Task 2–3 implemented in `db900d2`, with model-9 shared
+`src/layout/cellTableFlow.ts` plus `measureCellContent.ts`; legacy paginator retained.
+Task 2 observed RED (6 unsupported cell-image failures) then GREEN. Task 3 verifies
+multiple table instances, repeated-header resource reuse and one measurement per
+owner cell, with ordinary/merged padding and pagination tests.
+
+Fresh reviewer found two Important issues: huge empty-cell padding could create
+unbounded blank pages; zero-height body could omit its header. Both reproduced with
+RED tests and fixed in `e6b7de4`. Ruling: also fix oversized-image diagnostic node ID
+in this correction pass: the reviewer marked it minor, but naming the offending
+node is an explicit acceptance requirement; cost if left is ambiguous user feedback.
+That diagnostic fix has its own RED→GREEN test. No deferred reviewer findings remain.
+Final Core verification: 250/250 tests and build PASS; packed Linux/amd64 consumer
+PASS from source `e6b7de4`, artifact `../flowdoc-core-cell-content/artifacts/1791535765151/result.json`.
+PDF fixture: 12 rows, 12 image placements, 3 resources, 15 pages. Assistant reviewed
+all rendered pages and confirmed each BEGIN/END marker appears once. Final PDF is
+byte-identical to the reviewed pre-fix fixture; visual proof reused by SHA256.
+See `visual-review.json` in that artifact directory; owner visual acceptance pending.
+
+Service lane: `../flowdoc-service-cell-content`, branch `codex/cell-content`, base
+`2a69fd6`, candidate commit `c3abf54`. No Service runtime/DB code change required.
+Real PostgreSQL/API consumer checks: 16 passed / 0 failed / 0 skipped, covering
+publication, upload, image preparation, jobs, PDF download, bad-image warnings and
+affected legacy consumers. Build and vendor identity checks PASS. Result:
+`../flowdoc-service-cell-content/artifacts/1791535841549/result.json`.
+Its isolated Docker project was removed by the verification script after checks.
+
+Task 4 technical checks PASS; owner visual acceptance/integration remain pending.
+Do not mark the full slice accepted or change maps yet. No version bump, release
+promotion, push or tag. Candidate package retains 0.1.5 metadata ONLY inside the
+isolated test lanes, named `flowdoc-core-0.1.5-cell-content-candidate.tgz` with checksum
+`46e2c86d179a4ad2577aa637f2fa512327af83abf09dbf561980572e4a6a4c7b`; it is not released
+0.1.5 and must not replace that immutable artifact. Before development delivery,
+assign the accepted next version, rebuild/package and refresh the consumer pin/proof.
+Keep these clean unmerged worktrees until owner acceptance and integration; do not
+delete pending work under the cleanup rule. The following original draft checklist
+is the planned acceptance set; this ledger distinguishes technical PASS from pending
+owner acceptance and delivery.
+
 กติกาจุดออกรุ่นและการเลื่อนเข้า release ร่างไว้ที่
 [Export working/release rules](flowdoc-export-working-release-rules-draft-2026-10-09.md)
 จบ Task หรือพาร์ตไม่เท่ากับต้องเพิ่มเวอร์ชัน: ต้องมีการเปลี่ยนโค้ดที่ใช้ได้จริง
