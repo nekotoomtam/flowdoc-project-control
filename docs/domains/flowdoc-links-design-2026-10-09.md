@@ -9,6 +9,8 @@ approved three distinct commands in conversation and requested starting. This
 document is for written design review, not implemented capability or release
 readiness. Existing baseline: Core 7313fd2 / Service 6415dcb, development 0.1.3.
 No release/tag/push, frontend, DOCX, automatic TOC or page-number substitution.
+Owner approved this written design on 2026-10-09. Execution planning:
+[implementation plan](flowdoc-links-plan-2026-10-09.md).
 
 ## Intent
 
