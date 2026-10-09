@@ -19,9 +19,9 @@ Node24/Linux Docker acceptance and an available interactive PDF viewer.
 ## Authority Boundary
 
 Project Control owns this plan, Core/Service own implementation. Active role:
-Planning Partner; execution IDs N/A. Multi-step, routine risk; untrusted URLs and
+Product Implementation Agent / Documentation Synthesizer; execution IDs N/A. Multi-step, routine risk; untrusted URLs and
 PDF action serialization require specific validation. Work authority: owner
-approved design and requested starting; written implementation plan awaits review.
+approved design and written implementation plan; owner authorized execution in this chat.
 Recommend same-room inline execution; preserve this method from the current flow.
 Core base 7313fd2, Service base 6415dcb; both inspected clean. Use isolated Core
 worktree for range/layout changes; Service consumer changes remain separately
@@ -76,13 +76,13 @@ Graph validation maps boolean failures to existing Issue paths; retain source
 mapping for every expanded link leaf. Binding resolves command scalar refs and
 anchors before layout, then checks document-wide anchor uniqueness/target presence.
 
-- [ ] Write failing tests for all three literal/bound variants, global/local/item
+- [x] Write failing tests for all three literal/bound variants, global/local/item
   scope, valid defaults, optional omission, invalid supplied types/defaults,
   unknown fields, URL scheme/credentials/controls, duplicate and missing anchors.
   Assert legacy-model rejection and model 7 image/merged-table preservation.
-- [ ] Run `npx vitest run tests/binding/linkFields.test.ts`; observe missing
+- [x] Run `npx vitest run tests/binding/linkFields.test.ts`; observe missing
   capability failures before implementing the contract and binding above.
-- [ ] Preserve display/target identity across newline normalization. Do not turn
+- [x] Preserve display/target identity across newline normalization. Do not turn
   arbitrary strings into links or stringify objects. Run focused tests/build,
   review diff and commit when passing.
 
@@ -100,17 +100,17 @@ mapping ID to zero-based page index and top-left line coordinates.
 placement and before subsetting/writing. The engine owns this one invocation.
 No extra optional fields are emitted into legacy draw data, preserving hashes.
 
-- [ ] Write failing tests asserting literal display text equals measured text;
+- [x] Write failing tests asserting literal display text equals measured text;
   wrapped URLs/labels yield one hit area per visible line, across page and table
   fragments. Check surrounding text has no clickable area.
-- [ ] Add cluster-boundary tests with Thai marks, ligatures, ink bearings and
+- [x] Add cluster-boundary tests with Thai marks, ligatures, ink bearings and
   adjacent links. Reject conflicting link ownership of a cluster explicitly.
-- [ ] Add forward/backward reference, leading blank lines, fully empty target,
+- [x] Add forward/backward reference, leading blank lines, fully empty target,
   reflowed target, multi-page target and repeated-header-first-copy tests.
-- [ ] Run `npx vitest run tests/layout/linkGeometry.test.ts`; observe failure.
+- [x] Run `npx vitest run tests/layout/linkGeometry.test.ts`; observe failure.
   Implement ranges alongside existing line shaping, deriving horizontal extents
   from positioned glyphs rather than reshaping slices or counting characters.
-- [ ] Run focused and existing text/table/image layout suites plus build. Verify
+- [x] Run focused and existing text/table/image layout suites plus build. Verify
   every target has an actual nonempty line; commit after diff review.
 
 ## Task 3 — safe PDF actions, packaging and click evidence
@@ -126,19 +126,19 @@ Link annotations use external URI actions or internal destinations, never raw
 caller PDF fragments. Keep shared string/number escaping and finite rectangle
 checks at the writer boundary; retain existing page/font/image object references.
 
-- [ ] Write failing writer tests for page-object destinations, per-page rectangles,
+- [x] Write failing writer tests for page-object destinations, per-page rectangles,
   Unicode labels/IDs and URLs containing PDF delimiters. Assert malicious schemes
   and invalid geometry cannot create actions or arbitrary objects.
-- [ ] Run focused tests, implement PDF action serialization and confirm green.
-- [ ] Run Core full tests/build, then `npm run check:package`. Inspect installed
+- [x] Run focused tests, implement PDF action serialization and confirm green.
+- [x] Run Core full tests/build, then `npm run check:package`. Inspect installed
   consumer outputs and compare legacy PDF hashes. Record artifact checksum/commit.
-- [ ] Render the bounded linked-document fixture and inspect wrapped labels and
+- [x] Render the bounded linked-document fixture and inspect wrapped labels and
   unchanged text geometry. Inspect annotations programmatically for every page.
 - [ ] In an available controllable PDF viewer, activate a controlled external
   example URL and forward/back internal links, including after reflow. Record
   actual observed destination/page. If viewer control is unavailable, request the
   owner's bounded click check; keep interactive acceptance pending, not PASS.
-- [ ] Commit verified Core package changes; do not promote release or tag.
+- [x] Commit verified Core package changes; do not promote release or tag.
 
 ## Task 4 — Service master, immutable versions and API export
 
@@ -152,15 +152,15 @@ Interfaces: master 110005 maps to schema code link. Assembly preserves object
 defaults and new graph props in current and published snapshots. Service imports
 Core validation from the pinned root; never forks link validation or PDF logic.
 
-- [ ] Add failing tests for master/type roundtrip, link defaults/array items,
+- [x] Add failing tests for master/type roundtrip, link defaults/array items,
   publication isolation, old snapshot loads and invalid publication rejection.
-- [ ] Add API job/download test for a document with all three commands and a
+- [x] Add API job/download test for a document with all three commands and a
   repeated-format destination; check output annotations and target mapping.
-- [ ] Add migration and assembly mapping; pin the exact checked Core artifact.
+- [x] Add migration and assembly mapping; pin the exact checked Core artifact.
   Update Service to 0.1.4. Verify vendor identity/build and `npm run check:database`.
-- [ ] Review changes and coverage; commit only after affected checks pass.
+- [x] Review changes and coverage; commit only after affected checks pass.
   Remove current-run test containers/network, retain evidence/volumes.
-- [ ] Record commits, proof and interactive result in this plan, update the existing
+- [x] Record commits, proof and interactive result in this plan, update the existing
   roadmap, and stop. Automatic TOC and general styling remain separate work.
 
 ## Self-review and handoff
@@ -172,4 +172,52 @@ Task 2 placed annotations; Task 4 consumes Task 3 verified artifact. No conflict
 owners. High-impact unknown is cluster ownership: tests and explicit rejection
 must prevent ambiguous clicks, not an unreviewed wrapping rewrite.
 Recommended execution remains inline in this chat with one final fresh review;
-written-plan review is the next required step before product edits.
+written-plan review was accepted before implementation.
+
+## Execution result — 2026-10-09
+
+Status: automated checks PASS; interactive activation UNKNOWN/pending. This is a
+local development candidate, not completed release acceptance. No registered
+execution IDs apply. Core remains in the isolated links worktree pending the
+owner's click check; Service consumes that exact committed artifact.
+
+- Core commits: `15d0db0` (contract/binding), `18d66be` (positioned geometry),
+  `0b119d9` (PDF actions/package), `e51ee7b` (ink-bearing review repair).
+- Service commit: `b7bf7d9` (master 110005, migration 008, assembly, API tests/pin).
+- Core version 0.1.4, Service version 0.1.4. Core source commit:
+  `e51ee7b9b164c4e92d0bfa625eb4d39a5f386b18`.
+- Checked tarball SHA-256:
+  `c25c4d35c1ddb7a38dc5418de6c3bd1305e760ad004f49e0aa6338ce51a30e98`.
+- Core tests/build: 186 passed. Final packed Linux consumer:
+  `../flowdoc-core-links/artifacts/1791513405642/result.json`.
+  `legacy-comparison.json` compares all previous text, binding, table, image and
+  merged-table result groups with the accepted 0.1.3 artifact; all unchanged.
+- Final PDF fixtures: `links-short.pdf` (1 page) and `links-reflow.pdf` (2 pages)
+  in that artifact directory. All three pages rendered and visually inspected.
+  `annotation-inspection.json` records parsed hit rectangles and destinations:
+  external example.com URLs, short-document same-page targets, forward to page 2
+  and backward to page 1 after reflow. Each fixture has eight annotations because
+  internal labels wrap. Annotation inspection is not activation evidence.
+- Service final database/container check:
+  `../flowdoc-service/artifacts/1791513529496/result.json`: 99 passed, zero failed
+  or skipped; real API job/download, publication isolation, master mapping,
+  migration/replay and prior populated database preservation.
+- Initial package attempt encountered a transient Docker context-file lock;
+  retry succeeded. Initial Service check found an old migration-list expectation;
+  added migration 008 and its expected master delta, then final check passed.
+- Fresh read-only review found missing glyph ink bearings in hit rectangles.
+  Added a failing deterministic reproduction; repaired geometry using the real
+  per-glyph ink bounds, while omitting new metadata from legacy draw contracts.
+  Tests, package and Service consumer were rerun after the repair.
+- Current-round Service containers/networks from both checks removed; volumes and
+  evidence retained. Core worktree retained for pending click review.
+- Both release branches and v0.1.0 tags unchanged. No map promotion, frontend,
+  automatic contents list, DOCX behavior or push.
+
+Remaining acceptance: Windows Computer Use stopped because it could not establish
+the browser URL confidently enough for policy enforcement. No automated PDF link
+was clicked. Ask the owner to open links-reflow.pdf: click the first section's
+internal label to reach the last heading on page 2, click its internal label to
+return to page 1, and click the URL and labeled website link to example.com.
+The written plan explicitly allows this bounded owner check when viewer control
+is unavailable. Do not mark interactive acceptance PASS until observed/reported.
