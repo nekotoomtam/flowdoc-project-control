@@ -1,0 +1,266 @@
+# Single-level Area Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task inline. Steps use checkbox syntax. No parallel implementation lanes.
+
+**Goal:** Export ordered, variable-backed subformats at one area placement per occurrence, preserving version ownership and useful warnings.
+
+**Architecture:** Model11 adds authored area identity and an owned areaFormats collection. Preparation filters entries, composition emits ordinary nodes, and existing image/layout/PDF stages consume them. Service persists ownership in current/version rows and exposes an input-only contract.
+
+**Tech Stack:** Existing TypeScript/Node24, PostgreSQL, Fastify, Vitest and Linux/amd64 packaged PDF runtime. No new rendering dependency.
+
+**Spec:** [Area design](flowdoc-area-design-2026-10-09.md), owner accepted before this plan.
+
+## Authority Boundary / kickoff
+
+Owner: Project Control for plan/status; Core and Service for their implementation.
+Role: Planning Partner now; Product Implementation Agent during execution.
+Work Size medium; Risk routine. Single-room, execution/Phase/Checklist IDs N/A.
+Bases: Core203765599ee6e310b8c7553c1cebce4418c05c15;
+Serviceb908b374d55257936b54cedba0e71d41456438bb. Recheck before editing.
+Use separate clean sibling worktrees for Core and Service, codex/area, and preserve
+primary branches. Native worktree tool may target only Project Control; use manual
+cross-repo worktrees if required as in prior slice. No release/push/tag authority.
+
+Proof budget: focused RED/GREEN per task, one final Core suite/packed check, one
+isolated Service DB/API suite, one fresh final reviewer, one owner PDF review.
+Document budget: spec, this plan/inline ledger, existing handoff only. No maps or
+new execution registry. WORK uses current configured host session; no model override
+or model identity inferred. Final review follows executing-plans model selection.
+Return here with coverage, commits, local artifacts and remaining limitations.
+
+## Global Constraints
+
+- Model11 preserves model4–10; schemaVersion1 stays. Area cannot nest or be shared.
+- One placement per local occurrence; one realized occurrence for a global area.
+- Place at format root or ordinary body cell; not header or existing repeat range.
+- Only existing cell-compatible roots inside a cell. No new layout/pagination rules.
+- Static subformat inputSchema may be empty; data object mandatory per entry.
+- Invalid area entries skip with original-index warning; outer type/required fail.
+- Empty/all-skipped area allowed; do not waive outer EMPTY_CONTENT or layout errors.
+- Explicit global/local/item scope; no host-local fallback inside subformat.
+- Both authored identity and DB row UUID exist; version row links point to clones.
+- No image I/O for skipped entries. Existing resource ownership checks still fail.
+- Raw duplicate keys rejected before parser loses them; binary uploads unaffected.
+- New migration only; never rewrite old snapshots/fingerprints/applied migrations.
+
+## Review Focus
+
+1. Equal area/subformat keys across owners or repeated outer content must never cross-bind data (Tasks1–2 tests).
+2. Deleting/renaming current owners must not strand node/schema links or alter published versions (Task3 tests).
+3. Forged persisted prepared entries must not reintroduce skipped data or substitute subformats (Task2 tests).
+4. Area inside a merged cell cannot smuggle tables, headers or repeat ancestry into unsupported layout (Tasks1/5 tests).
+5. Escaped duplicate JSON keys and rejected entries containing resources must not bypass admission or trigger downloads (Tasks1/4 tests).
+
+## Task 1 — Authored contract and strict JSON boundary
+
+**Files Core:** modify src/template/types.ts, validateTemplate.ts, validateSchemas.ts,
+validateGraph.ts, readTemplateJson.ts, src/composition/resolvedDocument.ts,
+validateResolvedDocument.ts, src/index.ts. Create src/template/areas.ts,
+src/data/readGenerationJson.ts, src/json/readUniqueJson.ts,
+tests/helpers/areas.ts, tests/template/areas.test.ts, tests/data/readGenerationJson.test.ts.
+
+**Interfaces:** AreaField={type:'area';areaId:string;required?:boolean;
+default?:AreaEntry[];label?:string;description?:string}; AreaEntry={format:string;
+data:Record<string,unknown>}. AreaFormat extends Format with key and ownerAreaId.
+TemplateDefinition.areaFormats?:Record<string,AreaFormat>, allowed onlymodel11.
+TemplateArea={id:string;type:'area';props:{areaId:string}} exists only before compose.
+Expose readGenerationJson(raw:string):Result<unknown>; readTemplateJson keeps its
+signature and INVALID_TEMPLATE errors. Shared readUniqueJson(raw:string):unknown
+throws for syntax/duplicate decoded property names, uses existing walker factored
+without changing the template caller's error semantics.
+
+areas.ts exports buildAreaIndex(t:TemplateDefinition):AreaIndex after validation,
+with byId mapping to {scope:'global'|'local',hostFormat?:string,key:string,
+field:AreaField,formatsByKey:Map<string,{id:string,format:AreaFormat}>}.
+validateAreas(t:TemplateDefinition):Issue[] verifies ownership/placement separately
+from individual graph structure; use maps once per call, no repeated global scans.
+
+- [ ] Add fixture with two local areas using same subformat key and static subformat.
+  RED: model10 rejects additions; model11 succeeds; duplicate authored area IDs,
+  duplicate subformat keys within owner, missing owner and empty format set fail.
+- [ ] Add RED placement assertions: 0/2 placements fail; wrong host, header, repeated
+  ancestry, nested area, cell subformat with table roots fail. Root table succeeds.
+  Area types in array item schemas fail. Existing scalar binding to area fails.
+- [ ] Add RED raw JSON cases: ordinary/escaped-equivalent duplicate names reject,
+  equal keys in different objects pass; malformed JSON rejects and template error
+  shape stays unchanged. Preserve prototype handling; no raw payload in errors.
+- [ ] Run npm test -- tests/template/areas.test.ts tests/data/readGenerationJson.test.ts
+  and retain expected RED. Implement types/validators/index/reader with exact above
+  signatures. Register default validation using selected subformat schema; invalid
+  default is INVALID_TEMPLATE, not request warning.
+- [ ] Run npm test -- tests/template tests/data and npm run build. Review diff,
+  commit only after PASS. This task does not claim full compose/PDF support yet.
+
+## Task 2 — Prepared area entries and in-place composition
+
+**Files Core:** modify src/data/types.ts, validateValues.ts, prepareGeneration.ts,
+src/composition/validatePreparedInput.ts, composeDocument.ts, resolvedDocument.ts,
+validateResolvedDocument.ts, src/binding/expandRows.ts, bindInlines.ts as necessary.
+Create src/data/prepareAreas.ts, src/binding/expandAreas.ts,
+tests/data/areas.test.ts, tests/binding/areas.test.ts.
+
+**Interfaces:** PreparedAreaValue={kind:'area';originalCount:number;
+entries:{originalIndex:number;format:string;formatId:string;data:PreparedData}[];
+skippedIndices:number[]}. Extend PreparedData values with this tagged object;
+subformat data cannot contain another PreparedAreaValue. SourceEntry adds areaId,
+areaEntryIndex and areaFormatId onlymodel11, all-or-none; existing itemIndex and
+repeatId remain independent. Reject incomplete/out-of-range metadata.
+
+prepareAreas exports prepareAreaValue(index:AreaIndex,areaId:string,value:unknown,
+path:string,issues:Issue[],warnings:Issue[],missing:boolean):PreparedAreaValue.
+Reuse scalar/array validateValues for subformat schemas with temporary issues;
+convert only entry validation errors into skipped warnings preserving paths.
+Existing entry unknown-key warnings stay warnings, not reasons to skip.
+
+expandAreas exports expandArea(context:AreaExpansionContext):string[]; context
+carries validated index, authored area ID, prepared value, global data, outer
+content identity, output nodes/sourceMap. Refactor clone context minimally to
+allow a subformat instance prefix and provenance; preserve legacy prefixes byte
+for byte. New prefix includes content index, area ID, original entry index and
+subformat ID using IDs validated to exclude the reserved '~' separator.
+
+- [ ] RED tests assert required overrides default; optional missing->default/[];
+  [] and all-invalid are accepted, wrong outer type fails, non-object entry/missing
+  format/data/invalid required or type skips with original path. Data:{} static works.
+- [ ] RED tests: two outer occurrences bind distinct local data; global area host
+  selected twice fails. Same names in two areas stay separate; explicit global
+  references work, absent host-local fallback fails entry validation.
+- [ ] RED tests: area replacement preserves siblings and position; no orphan
+  placeholders; empty adds no node/spacing; repeated entries generate unique
+  node/inline IDs, sourceMap, existing inner array image repeats and links work.
+- [ ] RED persistence tests JSON-roundtrip prepared input, modify accepted IDs,
+  original indices/counts/skips/data/fingerprint/warnings and reject inconsistency.
+  Follow existing validation trust boundary; never merely accept tagged objects.
+- [ ] Run focused new tests, retain RED, implement normalizing/filtering/expansion.
+  Ensure warnings survive compose and no resource work is done here.
+- [ ] Run npm test -- tests/data tests/binding tests/composition tests/template
+  and npm run build; diff review and commit after PASS.
+
+## Task 3 — Relational ownership and immutable versions
+
+**Files Service:** new migrations/009_area_ownership.sql (verify next unused name),
+modify src/templates/assembly.ts, storage.ts, current.ts, publish.ts only if required.
+Create tests/area-assembly.test.mjs, tests/area-version.test.mjs.
+Use isolated uniquely named DB; existing tests helpers and migration CLI.
+
+**Interfaces:** FormatRow adds ownerAreaVariableId:string|null and
+sourceDefinitionId:string|null. Top-level rows use both null; subformats require
+both. sourceDefinitionId stores authored areaFormats map key, not current-row ID.
+Keep assemble/decompose/checkRecord signatures; assembled old definitions must
+remain identical including omission of areaFormats for old models.
+
+Migration adds variable_types110006/area after collision check, nullable
+owner_area_variable_id and source_definition_id to formats, and corresponding
+owner_area_variable_version_id/source_definition_id to format_versions.
+Replace old full key UNIQUE constraints with partial unique indexes for null-owned
+(template,key)/(version,key) and owned(owner variable,key). Add per-template/version
+unique non-null source_definition_id. Preserve existing null rows without rewriting.
+Owner FK references variables/variable_versions, DEFERRABLE INITIALLY DEFERRED;
+current delete cascade, version delete restrict. A deferred constraint trigger
+checks owner type110006 and same template/version via schema joins. Run guards
+on both owner-bearing formats and variable/schema updates so SQL cannot move an
+owner across templates. Existing immutable version triggers stay.
+
+Write ordering: replace current graph within transaction; delete formats first
+(cascades schemas/variables and owned formats); insert all formats, then schemas,
+then variables, with owner FK deferred. Existing schema->format FKs remain satisfied
+at schema insert. Snapshot allocates maps for all rows, inserts formats with mapped
+owner references, then schemas/variables. Resolve all references before commit.
+
+Normalization interface in assembly.ts:
+normalizeAreaDeletions(existing:CurrentRecord,incoming:CurrentRecord):CurrentRecord.
+Only a previously existing removed area triggers pruning of its owned subformats,
+owned schemas/variables and placements in incoming fragments. New dangling owners
+still fail. Call under template lock after revision check, before checkRecord/write.
+Protect format ownership like existing variable/schema owner checks; key rename
+retains authored and row identities. Last subformat removal alone remains an
+invalid area for publish, not silent deletion of the area.
+
+- [ ] Install packed candidate Core only; no source imports. RED assembly tests
+  roundtrip/static empty schema, equal keys under distinct owners, id rename,
+  wrong-template/type/owner, forbidden nested area and nonarea stale old contracts.
+- [ ] RED real-DB tests run migration on prior schema populated with model10;
+  old definition fingerprints unchanged. Constraints reject cross-owner corruption
+  even through direct SQL. Verify isolated failed transaction leaves no partial rows.
+- [ ] RED publish v1/edit current/publish v2: all clone UUIDs new, owner refs point
+  only to version rows, authored IDs stable, v1 content intact. Retry requestId
+  returns same publication; concurrent publish retains existing serialization.
+- [ ] RED deletion tests remove area only from ID-bearing current input; owned
+  graph/placements pruned, unrelated globals and versions unchanged. Remove last
+  subformat alone->publication fails. Key rename keeps references and creation time.
+- [ ] Implement migration/assembly/storage/normalization; run focused real-DB tests
+  plus current, version-boundary, version-render and assembly. Build and commit PASS.
+
+## Task 4 — Input contract, raw admission and resources
+
+**Files Service:** modify src/http/server.ts, src/cli.ts, src/jobs/admission.ts only
+where required; add src/templates/areaContract.ts, tests/area-api.test.mjs and
+scripts/checkAreas.mjs. Preserve src/uploads/claims.ts resource enforcement.
+
+**Interfaces:** buildAreaContract(t:TemplateDefinition) returns additive areaFormats
+indexed by authored subformat ID with only ownerAreaId,key,label,description,
+inputSchema. Add this field to contract response onlymodel11; no fragment graph.
+Register application/json parser through existing Fastify API before routes,
+readGenerationJson at raw body boundary, keep prototype restrictions/bodyLimit and
+binary upload content-type overrides. Existing CLI draft-save parses through the
+same reader, translates Result errors to existing INVALID_DATA boundary.
+
+- [ ] RED API contract displays area subformats and empty schemas, pins version
+  after current edits, unchanged old contract output. No internal fragment leakage.
+- [ ] RED raw /jobs tests reject duplicate/escaped-equivalent keys before enqueue;
+  separate objects with same keys pass. Malformed/oversize JSON and __proto__/
+  constructor protections hold; normal upload JSON and binary image stream still work.
+- [ ] RED jobs with accepted/bad/accepted entries preserve original warning indices
+  and original_input. Required area absent or wrong outer type fails before job;
+  all skipped/static-only area succeeds with surrounding static content.
+- [ ] RED image tests use existing finalized upload and request resources: collect
+  accepted instances only, skipped unavailable resources do not trigger preparation,
+  accepted wrong-upload resource fails, bad bytes retain existing IMAGE_UNUSABLE.
+- [ ] Implement wiring without changing worker scheduling/layout. Script follows
+  checkCellRepeats isolation/cleanup pattern, runs explicit migrations before tests.
+- [ ] Docker build plus new tests and prior assembly/current/version-render,
+  version-boundary/cell-repeat-api/cell-content-api/image-api/link-api/contents-api/
+  upload-contract/processor/render tests; zero failed/skipped, commit after PASS.
+
+## Task 5 — Packed PDF, review and development closeout
+
+**Files Core:** new fixtures/areas/template.json, tests/consumer/checkAreas.mjs,
+tests/layout/areaFlow.test.ts; modify scripts/checkPackedConsumer.mjs,
+Dockerfile.consumer. Service examples/area-template.json shares authored fixture.
+Package/lock/vendor manifest changes only for candidate and final delivery.
+
+- [ ] RED layout tests exercise two areas with repeated outer content, ordinary and
+  merged cells, long Thai text, static notice, empty/all-skipped and images; check
+  emitted order/identity and no residual area nodes. Links/TOC keep destinations.
+- [ ] Implement fixture/consumer wiring, no new pagination policy. Run final Core
+  npm test, npm run build, npm run check:package. Retain all PDF/result/log outputs.
+- [ ] Pin unique candidate tarball in Service with SHA/source commit; run checkAreas
+  against actual package in isolated DB/API, retain result with zero skips.
+- [ ] Render all pages, inspect order/borders/no lost or duplicated content; ask
+  owner to accept one real PDF with clear limits. No claim of DOCX/frontend support.
+- [ ] One fresh final whole-branch reviewer follows executing-plans. Review Focus
+  above supplied verbatim; repair material findings in one observed RED/GREEN pass.
+- [ ] On acceptance, assign next unused development version (proposed0.1.8 for both),
+  rebuild Core artifact and refresh Service pin/proof. Reuse owner visual acceptance
+  only when PDF SHA is identical; changed visuals require review.
+- [ ] Commit and fast-forward development branches under owner authority, never
+  release/push/tag implicitly. Archive ignored evidence with per-file hashes before
+  deleting only clean merged current worktrees/branches. Update this ledger/handoff.
+
+## Stop / unresolved impact
+
+If current DDL cannot preserve constraints/immutable versions with the planned
+ownership extension, stop before migration edits and revise that task with evidence.
+Do not weaken validation to fit an example. If raw parser change impacts unrelated
+HTTP consumers, repair/verify the affected boundary before acceptance. Additional
+nesting, shared subformats and new pagination behavior require a scope amendment.
+Model gates, resource safety, version integrity and owner PDF review are mandatory;
+no extra benchmark or broad workflow registry is required.
+
+## Plan self-review / execution status
+
+Spec coverage: contract/scope->Task1; filtering/identity/persistence->Task2;
+DB/delete/publication->Task3; raw API/contract/resources->Task4; PDF/version/cleanup
+->Task5. Review Focus has tests in each responsible task. No product edits yet.
+Owner approved specification; written plan prepared for review. Preserve requested
+inline execution method after review; no separate implementation room dispatched.

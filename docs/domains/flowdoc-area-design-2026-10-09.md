@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Cross-Repo Boundary Reviewer.
-Status: written design proposed for owner review, 2026-10-09. This is not runtime
+Status: written design accepted by owner, 2026-10-09. This is not runtime
 Evidence or implementation authorization. Governing decisions: part5 of
 flowdoc-export-node-structure-draft-2026-10-09.md. Core2037655 and Serviceb908b37
 are the inspected development bases (both0.1.7); release0.1.5 is unchanged.
@@ -174,7 +174,7 @@ and one fresh final review. Reuse proofs after unchanged development fast-forwar
 3. Service master/migration/current-version assembly, contract and HTTP admission.
 4. Cross-repo API/PDF acceptance, versioned development delivery and cleanup.
 
-Detailed implementation plan follows owner review of this written design. These
+Implementation plan: [Area plan](flowdoc-area-plan-2026-10-09.md), prepared for review. These
 are sequencing proposals, not dispatched tasks. No release/push/tag or software
 version increment for this documentation. New code only increments development
 version after it is usable and verified under the existing release rules.
