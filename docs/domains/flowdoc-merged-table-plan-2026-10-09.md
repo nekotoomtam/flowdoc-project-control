@@ -197,7 +197,7 @@ nonrepeating headers no longer reduce the capacity available to future protected
 rows/lines; a trailing-padding continuation carries the final body line with it
 instead of producing a header-only page. Final local suite is 171 passed across
 18 files, build and diff checks pass. Evidence:
-`flowdoc-core-merged-table/artifacts/merged-development/final-local.log`, with
+`flowdoc-core/artifacts/worktree-archive/flowdoc-core-merged-table/merged-development/final-local.log`, with
 red/green logs in that directory. This is not packed/visual acceptance.
 
 Task 3 pending changes: Core package metadata 0.1.3, installed-consumer script,
@@ -234,7 +234,7 @@ Acceptance coverage:
   tests/layout/mergedTableFlow.test.ts. Existing documentFlow tests retain ordinary
   table and neighboring content coverage. Core full suite/build PASS: 171 tests.
 - Installed Linux/amd64 consumer, network disabled and no source mounts:
-  `flowdoc-core-merged-table/artifacts/1791511590168/result.json`. Packed SHA256
+  `flowdoc-core/artifacts/worktree-archive/flowdoc-core-merged-table/1791511590168/result.json`. Packed SHA256
   `acd8f89dd1f0037d30769f5d8041425aaf73874094df8b09208abc8753d7db3b`.
   The consumer produces merged-short.pdf (one page), merged-long.pdf (three).
 - All four rendered pages visually inspected: Thai/English text, horizontal and
@@ -254,3 +254,24 @@ or production capacity. Images/general block containers in cells remain deferred
 until after 0.2.0, as requested. Current-run containers/network removed; volumes
 and artifacts retained. release/tag 0.1.0 unchanged in both repos, no push/maps.
 Next product topic is links and document destinations; no implementation started.
+
+
+## Owner-authorized worktree cleanup — 2026-10-09
+
+The owner requested removal of unused worktrees. The completed contents, links
+and merged-table worktrees were clean and their HEAD commits were ancestors of
+`codex/template-binding`. Removed only those three Git worktrees using normal
+`git worktree remove` without force; branches, commits and release tags retained.
+Primary Core/Service checkouts were not removed or switched.
+
+Before removal, all ignored artifacts were copied to
+`flowdoc-core/artifacts/worktree-archive/<former-worktree-name>/` and every file
+was checked by SHA256 and file count: contents 124, links 99, merged-table 54.
+Per-worktree hash manifests sit beside those archive directories. The artifact
+locators above now point to the preserved copies. Embedded historical paths in
+immutable result/vendor manifests retain their original provenance; resolve them
+through this relocation mapping. Generated dist/node_modules were disposable.
+No product code changed; Git status/ancestry, archive hashes and remaining
+worktree inventory are the impact-scoped checks. Only primary checkouts remain
+for Core and Service. This supersedes earlier worktree-retention notes, not the
+recorded acceptance or release history.

@@ -188,7 +188,7 @@ execution IDs apply. The following owner acceptance closes that pending check.
 - Checked tarball SHA-256:
   `c25c4d35c1ddb7a38dc5418de6c3bd1305e760ad004f49e0aa6338ce51a30e98`.
 - Core tests/build: 186 passed. Final packed Linux consumer:
-  `../flowdoc-core-links/artifacts/1791513405642/result.json`.
+  `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-links/1791513405642/result.json`.
   `legacy-comparison.json` compares all previous text, binding, table, image and
   merged-table result groups with the accepted 0.1.3 artifact; all unchanged.
 - Final PDF fixtures: `links-short.pdf` (1 page) and `links-reflow.pdf` (2 pages)
@@ -241,3 +241,24 @@ and branch retained because referenced PDF/evidence artifacts live there. Releas
 branches and v0.1.0 tags remain untouched; no push, map promotion or automatic
 contents-list implementation. This slice is closed; automatic contents lists are
 next in the agreed scope, requiring their own bounded design before work.
+
+
+## Owner-authorized worktree cleanup — 2026-10-09
+
+The owner requested removal of unused worktrees. The completed contents, links
+and merged-table worktrees were clean and their HEAD commits were ancestors of
+`codex/template-binding`. Removed only those three Git worktrees using normal
+`git worktree remove` without force; branches, commits and release tags retained.
+Primary Core/Service checkouts were not removed or switched.
+
+Before removal, all ignored artifacts were copied to
+`flowdoc-core/artifacts/worktree-archive/<former-worktree-name>/` and every file
+was checked by SHA256 and file count: contents 124, links 99, merged-table 54.
+Per-worktree hash manifests sit beside those archive directories. The artifact
+locators above now point to the preserved copies. Embedded historical paths in
+immutable result/vendor manifests retain their original provenance; resolve them
+through this relocation mapping. Generated dist/node_modules were disposable.
+No product code changed; Git status/ancestry, archive hashes and remaining
+worktree inventory are the impact-scoped checks. Only primary checkouts remain
+for Core and Service. This supersedes earlier worktree-retention notes, not the
+recorded acceptance or release history.

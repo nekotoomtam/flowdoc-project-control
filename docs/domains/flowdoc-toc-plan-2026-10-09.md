@@ -204,7 +204,7 @@ Written-plan review accepted; inline implementation and bounded local acceptance
 PASS within the approved local contents slice. Execution IDs N/A (inline).
 
 - Core 202 tests/build PASS; installed Linux package consumer PASS at
-  `flowdoc-core-contents/artifacts/1791516319251/result.json`.
+  `flowdoc-core/artifacts/worktree-archive/flowdoc-core-contents/1791516319251/result.json`.
   Final source commit `d95701f496e86c20837ea2b6d8094d8bef8523f4`.
 - Consumer PDFs: short/empty, 50 entries across six pages, content growth/reflow,
   contents after content, a title spanning multiple pages, and a repeated table
@@ -218,7 +218,7 @@ PASS within the approved local contents slice. Execution IDs N/A (inline).
   (H010/H040) in `artifacts/1791516093898/contents-long.pdf`. Byte equality with
   the final artifact was verified; interactive acceptance applies to that file.
 - Prior PDF, binding, table, image, merged-table and link result groups equal the
-  accepted 0.1.4 artifact `flowdoc-core-links/artifacts/1791513405642/result.json`.
+  accepted 0.1.4 artifact `flowdoc-core/artifacts/worktree-archive/flowdoc-core-links/1791513405642/result.json`.
 - One final read-only reviewer found an installed-PDF equality/table-case proof
   gap, not a demonstrated runtime defect. Closed with the PDF proof helper and
   installed table fixture above; no additional review round requested.
@@ -279,3 +279,24 @@ Inline integration role; execution IDs N/A. No runtime/source changes or push.
   diff checks, full-tree equality, tag targets and clean workspaces PASS.
 - Main checkouts returned to their original development branches. Release refs
   and tags remain local; remotes, data volumes and evidence worktrees untouched.
+
+
+## Owner-authorized worktree cleanup — 2026-10-09
+
+The owner requested removal of unused worktrees. The completed contents, links
+and merged-table worktrees were clean and their HEAD commits were ancestors of
+`codex/template-binding`. Removed only those three Git worktrees using normal
+`git worktree remove` without force; branches, commits and release tags retained.
+Primary Core/Service checkouts were not removed or switched.
+
+Before removal, all ignored artifacts were copied to
+`flowdoc-core/artifacts/worktree-archive/<former-worktree-name>/` and every file
+was checked by SHA256 and file count: contents 124, links 99, merged-table 54.
+Per-worktree hash manifests sit beside those archive directories. The artifact
+locators above now point to the preserved copies. Embedded historical paths in
+immutable result/vendor manifests retain their original provenance; resolve them
+through this relocation mapping. Generated dist/node_modules were disposable.
+No product code changed; Git status/ancestry, archive hashes and remaining
+worktree inventory are the impact-scoped checks. Only primary checkouts remain
+for Core and Service. This supersedes earlier worktree-retention notes, not the
+recorded acceptance or release history.
