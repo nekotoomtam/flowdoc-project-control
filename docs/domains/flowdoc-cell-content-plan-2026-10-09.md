@@ -29,8 +29,14 @@ Product owners: Core (contract/layout/PDF), Service (consumer/resource/job proof
 
 ## Global Constraints
 
+Owner clarification หลังร่างแผน: คง slice นี้เป็นลูก TextBlock/Image โดยตรง
+เรื่อง array ภาพตามรายการและ area รับโครงย่อยเก็บไว้พาร์ต 5 ของ
+[ร่างหลัก](flowdoc-export-node-structure-draft-2026-10-09.md) และ compatibility พาร์ต 6
+ไม่ต้องทำ area ก่อน Task 1 และไม่ถือว่าการรับแนวคิด area อนุมัติขยาย scope แผนนี้
+กฎข้ามรายการผิดพร้อม warning ที่ตกลงสำหรับ area ไม่เปลี่ยน validation ของ slice นี้
+
 - เนื้อหาใน cell เป็น TextBlock/Image โดยตรงตามลำดับ `childIds` เท่านั้น
-- ไม่เพิ่ม container, ตารางซ้อน, การเรียกโครงย่อยซ้อนใน cell, ตัวแปรกลุ่ม
+- ไม่เพิ่ม Columns, container, ตารางซ้อน, area, การเรียกโครงย่อยซ้อนใน cell, ตัวแปรกลุ่ม
   หรือ array ภาพแบบใหม่; โครงย่อย/แถวซ้ำที่มีอยู่ยังใช้ขอบเขต binding เดิม
 - ไม่ทำ frontend, DOCX, DB migration, queue redesign หรือ image API ใหม่
 - authored node ไม่เปลี่ยน ID เพราะขึ้นหน้าใหม่; ผลวาดรักษา node ID/source mapping เดิม
@@ -182,4 +188,7 @@ image arrays, stress/concurrency redesign และ DOCX
 ## สถานะ
 
 2026-10-09: ร่างแผนจากการตรวจ source ของฐาน 0.1.5; ยังไม่เริ่มสี่ task
+อัปเดตจากการคุยต่อ: ยืนยัน direct-cell scope และแยก area/array extension ไปท้าย
+ลำดับออกแบบหกพาร์ตตามร่างหลัก บันทึกทิศทาง Adapter ไว้สำหรับอนาคต
+ยังไม่เริ่ม runtime หรือประกาศว่า proposed sizing/pagination ทั้งหมดผ่านแล้ว
 Return route: สรุปในห้องนี้ ไม่มี separate-room return หรือการแก้ทะเบียนเก่า
