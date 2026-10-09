@@ -71,16 +71,16 @@ node shapes, then maps grid errors into its existing Issue contract. Layout
 consumes the same checked grid. Repeat-boundary validation remains contextual
 to validateGraph, since resolved graphs no longer contain repeat declarations.
 
-- [ ] Write failing cases for mixed spans, omitted span=1, overlap/hole, null/string/
+- [x] Write failing cases for mixed spans, omitted span=1, overlap/hole, null/string/
   zero/unsafe-integer spans, bad column, mixed implicit/explicit cells, fully
   covered rows, header crossing and all repeat-touching rowspan positions.
-- [ ] Add binding cases: repeated colspan with 0/1/3 items, props and unique source
+- [x] Add binding cases: repeated colspan with 0/1/3 items, props and unique source
   IDs retained, model 4/5 rejection of new props, model 6 image support retained.
-- [ ] Run `npx vitest run tests/template/mergedTable.test.ts`; confirm missing
+- [x] Run `npx vitest run tests/template/mergedTable.test.ts`; confirm missing
   capability failures before changing production code.
-- [ ] Implement model 6 and grid validation. Bound work using actual rows/columns,
+- [x] Implement model 6 and grid validation. Bound work using actual rows/columns,
   never the submitted span. Preserve legacy validation for old models.
-- [ ] Rerun focused tests and `npm run build`; review diff and commit when passing.
+- [x] Rerun focused tests and `npm run build`; review diff and commit when passing.
 
 ## Task 2 — logical measurement and merged pagination
 
@@ -96,20 +96,20 @@ TablePageSink exposes `top`, `bottom`, `left`, `availableWidth`, current `y`,
 `border(x1:number,y1:number,x2:number,y2:number,nodeId:string): void`.
 documentFlow owns pages/run IDs; the helper updates sink.y and emits commands.
 
-- [ ] Write failing geometry tests: merged-width wrapping, deficit added only to
+- [x] Write failing geometry tests: merged-width wrapping, deficit added only to
   ending row, order-independent anchors, empty/fully covered rows and combined spans.
-- [ ] Add pagination tests with body-line identity assertions, unequal line heights,
+- [x] Add pagination tests with body-line identity assertions, unequal line heights,
   exact page ends, multi-page rowspan, repeated/nonrepeated colspan header,
   allowBreak=false fit/failure and text/image/table neighbors.
-- [ ] Run `npx vitest run tests/layout/mergedTableFlow.test.ts` and observe failure.
-- [ ] Implement measurement via Task 1 grid. Measure once, initialize normal row
+- [x] Run `npx vitest run tests/layout/mergedTableFlow.test.ts` and observe failure.
+- [x] Implement measurement via Task 1 grid. Measure once, initialize normal row
   minima, process spans by ending row/start row/column and add ending-row deficits.
-- [ ] Implement page fragments with independent pending cell-line cursors. Legal
+- [x] Implement page fragments with independent pending cell-line cursors. Legal
   cuts cannot bisect lines or protected rows; merge border segments so shared
   edges are drawn once and interior row separators exclude rowspan regions.
   Emit closed page fragments and continued empty regions for exhausted content.
   Require body progress with each repeated header; fail explicitly when impossible.
-- [ ] Run focused tests and existing tests/layout/documentFlow.test.ts; inspect
+- [x] Run focused tests and existing tests/layout/documentFlow.test.ts; inspect
   final diff, then `npm test` and `npm run build`. Commit passing Core behavior.
 
 ## Task 3 — real PDF and installed Core consumer
@@ -119,15 +119,15 @@ extend scripts/checkPackedConsumer.mjs using its existing invocation pattern.
 Update Core package.json/package-lock.json and README.md for the new capability.
 Target Core development 0.1.3; do not create tags.
 
-- [ ] Exercise public validate/prepare/compose/PDF APIs with a short mixed-span
+- [x] Exercise public validate/prepare/compose/PDF APIs with a short mixed-span
   fixture and long Thai/English multi-page fixture. Assert required tokens once
   per body occurrence, header repetition, page bounds and source-aware failures.
-- [ ] Run `npm run check:package` after final build; require passing Linux/amd64
+- [x] Run `npm run check:package` after final build; require passing Linux/amd64
   installed consumer and existing text/image/ordinary-table checks.
-- [ ] Render every page of the bounded fixture set and inspect border junctions,
+- [x] Render every page of the bounded fixture set and inspect border junctions,
   cell continuations, wrapping and neighbors. Reuse artifacts; only failures or
   changes justify reruns. Record package SHA256 and source commit.
-- [ ] Commit checked package/consumer changes. A successful file write alone is
+- [x] Commit checked package/consumer changes. A successful file write alone is
   not visual acceptance.
 
 ## Task 4 — Service integration and closeout
@@ -136,16 +136,16 @@ Files: Service vendor/flowdoc-core-0.1.3.tgz, vendor/manifest.json,
 package.json/package-lock.json, README.md and tests/merged-table-api.test.mjs.
 Use existing current/version and HTTP test helpers; no schema migration.
 
-- [ ] Add a test registering/publishing a model 6 template, submitting data and
+- [x] Add a test registering/publishing a model 6 template, submitting data and
   downloading a merged-table PDF. Reject a malformed grid before job creation;
   prove old published templates remain loadable. Run first against old pin to
   observe the new capability failure.
-- [ ] Pin the Task 3 artifact/checksum and set Service development version 0.1.3.
-- [ ] Run `node scripts/verifyVendor.mjs`, build and `npm run check:database`;
+- [x] Pin the Task 3 artifact/checksum and set Service development version 0.1.3.
+- [x] Run `node scripts/verifyVendor.mjs`, build and `npm run check:database`;
   inspect actual results and fixture output. Do not count skipped tests as passing.
-- [ ] Commit after final diff/impact review. Remove only current-run stopped test
+- [x] Commit after final diff/impact review. Remove only current-run stopped test
   containers/networks; preserve volumes, evidence and unrelated worktrees.
-- [ ] Update this plan with criteria-to-proof coverage, commits and limits;
+- [x] Update this plan with criteria-to-proof coverage, commits and limits;
   keep release/tag unchanged. Stop when the defined acceptance passes.
 
 ## Self-review and stop conditions
