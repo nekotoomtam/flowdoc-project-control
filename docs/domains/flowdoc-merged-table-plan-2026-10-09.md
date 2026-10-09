@@ -213,3 +213,44 @@ Docker, delete its data or change system virtualization settings to force tests.
 Resume with Docker readiness, then the final packed consumer, PDF visual/token
 coverage and Service integration checks. Existing dirty candidate files and the
 unmerged Core worktree must be preserved. release/tag/push untouched.
+
+### Final acceptance — PASS, 2026-10-09
+
+Owner updated Docker; Linux engine became available and the blocked checks
+completed. Tasks 1–4 are complete for the approved scope. Core final commit
+`7313fd21db46c2d87405af91bbe0b5a945f85927`; Service `6415dcb`. Both development
+package versions are 0.1.3. Core development branch `codex/template-binding`
+fast-forwarded unchanged to the tested candidate; no conflicts or content changes.
+Reuse of checks is valid for that identical tree. The clean merged worktree is
+retained because its ignored artifacts are referenced below; do not remove it
+without preserving those artifacts and updating locators.
+
+Acceptance coverage:
+
+- Model 6 placement, complete coverage, numeric/bounds/overlap/legacy rejection,
+  repeat binding and source identity: tests/template/mergedTable.test.ts.
+- Combined-width measurement, ending-row deficit, long spans, mixed heights,
+  protected-row fit/failure, shared borders and header/body boundary regressions:
+  tests/layout/mergedTableFlow.test.ts. Existing documentFlow tests retain ordinary
+  table and neighboring content coverage. Core full suite/build PASS: 171 tests.
+- Installed Linux/amd64 consumer, network disabled and no source mounts:
+  `flowdoc-core-merged-table/artifacts/1791511590168/result.json`. Packed SHA256
+  `acd8f89dd1f0037d30769f5d8041425aaf73874094df8b09208abc8753d7db3b`.
+  The consumer produces merged-short.pdf (one page), merged-long.pdf (three).
+- All four rendered pages visually inspected: Thai/English text, horizontal and
+  vertical spans, continuous boundaries and repeated headers. Extracted long PDF
+  contains A000–A099 once each in order, three headers and B/C/E once each;
+  `text-coverage.json` records those checks. Existing text, binding and ordinary
+  table PDF result objects/hashes equal the prior 0.1.2 artifact exactly.
+- Service publication/load/model 6 job/download and malformed-grid rejection:
+  tests/merged-table-api.test.mjs. Packaged build/vendor/migration/persistence and
+  regression check PASS in `flowdoc-service/artifacts/1791511705564/result.json`:
+  96 passed, zero failed/skipped. Runtime image
+  `sha256:ca3e774feac680ed7dc4053bafd3b6720ebb685e29d25fcaf15a059d4f32089f`.
+
+No mandatory acceptance prerequisite remains open for this bounded scope. The
+fixtures do not establish all possible table shapes, Word-equivalent pagination,
+or production capacity. Images/general block containers in cells remain deferred
+until after 0.2.0, as requested. Current-run containers/network removed; volumes
+and artifacts retained. release/tag 0.1.0 unchanged in both repos, no push/maps.
+Next product topic is links and document destinations; no implementation started.
