@@ -8,7 +8,9 @@ and layout design, not implementation evidence or release readiness.
 Active role: Planning Partner. Bounded explicit owner request; execution IDs N/A.
 The owner approved the cell representation and height rule in conversation and
 authorized starting. This document consolidates them with the compatibility and
-pagination details discovered in current code, for written design review.
+pagination details discovered in current code. Owner approved this written design
+on 2026-10-09. Implementation is tracked in
+[the implementation plan](flowdoc-merged-table-plan-2026-10-09.md).
 Routine risk, multi-step scope. No separate rooms, release, tags, push or maps.
 
 ## Goal and accepted decisions
