@@ -182,6 +182,21 @@ Stop when acceptance and the selected impact coverage pass. A repeat or broader
 check needs a reason tied to a new change, failure, stale prerequisite, or
 unresolved affected area, within the existing stopping rules.
 
+### Closeout cleanup
+
+Owner preference (2026-10-09): include cleanup in normal completion. After
+accepted integration, remove task-scoped temporary worktrees and local task
+branches whose work is fully integrated and no longer active, without requiring
+another routine cleanup request. First preserve needed ignored evidence/output,
+verify copied bytes and update its locators; confirm clean status, integration
+and absence of another active owner. Use normal Git removal, not force deletion.
+Keep primary/development branches, release branches, version tags, and any dirty,
+unmerged, unresolved or still-owned work. A codex/ prefix alone does not make a
+branch temporary. Report what was removed and why anything relevant remains.
+Remote branch deletion needs explicit remote scope. Do not sweep unrelated
+historical work or create extra workflow records solely for cleanup; update the
+existing record. Existing registered-round ownership controls still apply.
+
 ### Evidence coverage before completion
 
 Before verification, briefly connect acceptance criteria and affected behavior

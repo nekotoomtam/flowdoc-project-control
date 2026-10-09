@@ -300,3 +300,24 @@ No product code changed; Git status/ancestry, archive hashes and remaining
 worktree inventory are the impact-scoped checks. Only primary checkouts remain
 for Core and Service. This supersedes earlier worktree-retention notes, not the
 recorded acceptance or release history.
+
+
+### Follow-up branch cleanup — 2026-10-09
+
+Owner requested cleanup of temporary branches as well as worktrees, and asked
+for this to be a normal closeout step. Recorded the standing preference in the
+workflow economy policy's Closeout cleanup section (canonical policy owner:
+Project Control; inline maintenance IDs N/A).
+
+Removed five local Core branches with normal `git branch -d`, after each HEAD
+was verified as an ancestor of the retained development branch:
+`codex/contents` (d95701f), `codex/core-package-foundation` (9256ab6),
+`codex/links` (e51ee7b), `codex/merged-table` (7313fd2),
+`codex/public-pdf-engine` (04d7a1e).
+Core retains `codex/template-binding` and `release`; Service retains
+`codex/template-registry` and `release`. These are the existing development and
+release lanes, not disposable task branches. Core checkout returned to its
+retained development branch. No commits, evidence, tags or remote refs removed.
+Unrelated Project Control historical branches were outside this product cleanup.
+Checks: clean status, ancestor proof, normal deletion, remaining branch inventory
+and unchanged release/tag targets. No product source change or runtime re-test.
