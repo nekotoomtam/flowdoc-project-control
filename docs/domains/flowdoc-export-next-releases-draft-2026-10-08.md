@@ -556,3 +556,8 @@ release/tag 0.1.0 ยังคงเดิม; ยังไม่ขยายไ
 เก็บเป็น commit ใหม่บน release และ annotated tag v0.1.5 โดยคง v0.1.0 เดิม
 ตาม [Release snapshot](flowdoc-toc-plan-2026-10-09.md#owner-authorized-release-snapshot--2026-10-09)
 เนื้อหาตรงกับชุดพัฒนาที่ตรวจรับแล้วทุกไฟล์; ยังไม่ได้ push ไป remote
+
+
+หลัง release 0.1.5 เจ้าของเลือกคุยโครงสร้าง node ก่อน โดยแบ่งรายละเอียดเป็นพาร์ต
+และออกแบบเผื่อหน้าบ้าน อ่าน [ร่างโครงสร้างเอกสาร](flowdoc-export-node-structure-draft-2026-10-09.md)
+ซึ่งยังเป็นร่างสนทนา ไม่ใช่ roadmap หรือการอนุมัติเปลี่ยน Core/Service
