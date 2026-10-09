@@ -134,7 +134,7 @@ checks at the writer boundary; retain existing page/font/image object references
   consumer outputs and compare legacy PDF hashes. Record artifact checksum/commit.
 - [x] Render the bounded linked-document fixture and inspect wrapped labels and
   unchanged text geometry. Inspect annotations programmatically for every page.
-- [ ] In an available controllable PDF viewer, activate a controlled external
+- [x] In an available controllable PDF viewer, activate a controlled external
   example URL and forward/back internal links, including after reflow. Record
   actual observed destination/page. If viewer control is unavailable, request the
   owner's bounded click check; keep interactive acceptance pending, not PASS.
@@ -176,10 +176,9 @@ written-plan review was accepted before implementation.
 
 ## Execution result — 2026-10-09
 
-Status: automated checks PASS; interactive activation UNKNOWN/pending. This is a
-local development candidate, not completed release acceptance. No registered
-execution IDs apply. Core remains in the isolated links worktree pending the
-owner's click check; Service consumes that exact committed artifact.
+Status at initial handoff: automated checks PASS; interactive activation UNKNOWN/pending. This was a
+local development candidate, not completed acceptance at that point. No registered
+execution IDs apply. The following owner acceptance closes that pending check.
 
 - Core commits: `15d0db0` (contract/binding), `18d66be` (positioned geometry),
   `0b119d9` (PDF actions/package), `e51ee7b` (ink-bearing review repair).
@@ -214,10 +213,31 @@ owner's click check; Service consumes that exact committed artifact.
 - Both release branches and v0.1.0 tags unchanged. No map promotion, frontend,
   automatic contents list, DOCX behavior or push.
 
-Remaining acceptance: Windows Computer Use stopped because it could not establish
+Initial remaining acceptance: Windows Computer Use stopped because it could not establish
 the browser URL confidently enough for policy enforcement. No automated PDF link
 was clicked. Ask the owner to open links-reflow.pdf: click the first section's
 internal label to reach the last heading on page 2, click its internal label to
 return to page 1, and click the URL and labeled website link to example.com.
 The written plan explicitly allows this bounded owner check when viewer control
 is unavailable. Do not mark interactive acceptance PASS until observed/reported.
+
+
+## Owner acceptance and development integration — 2026-10-09
+
+PASS for the bounded links slice. In response to the requested PDF click check,
+the owner reported: “เราลองแล้วโคใช้งานได้นะ”. This is owner-reported interactive
+acceptance of the supplied fixture, not automated browser evidence or a claim
+about every PDF viewer. No additional defect was reported.
+
+Core `codex/template-binding` was fast-forwarded from `7313fd2` to the exact
+verified `e51ee7b9b164c4e92d0bfa625eb4d39a5f386b18`; clean before/after and tree
+identity confirmed. Reuse the preceding 186-test/build/packed results: no code,
+dependency, configuration or relevant execution environment changed. Service
+remains at verified `b7bf7d9`, with the same pinned Core checksum and 99-test
+container result. No extra product testing was needed for this status closure.
+
+The existing plan and roadmap are the only shared documents updated. Worktree
+and branch retained because referenced PDF/evidence artifacts live there. Release
+branches and v0.1.0 tags remain untouched; no push, map promotion or automatic
+contents-list implementation. This slice is closed; automatic contents lists are
+next in the agreed scope, requiring their own bounded design before work.
