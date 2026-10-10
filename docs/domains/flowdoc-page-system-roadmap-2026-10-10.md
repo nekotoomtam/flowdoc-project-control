@@ -290,4 +290,9 @@ releaseยัง0.1.8; migration004 baseline test debt ยังค้างก�
 [ข้อตกลงและผลกระทบก่อนลงมือ](flowdoc-section-ownership-decision-2026-10-10.md)
 เป็นทิศทางใหม่สำหรับรุ่นโครงสร้างถัดไป; บันทึก R0–R3 ข้างต้นยังอธิบาย
 สัญญาที่ส่งมอบแล้วของรุ่นเดิม ไม่ใช้ข้อจำกัด data/content เดิมปฏิเสธทิศทางใหม่นี้.
-ยังไม่เปลี่ยน runtime หรือผลรับ R3 และยังไม่เดิน R4 ก่อนปิด contract/DB รอบนี้.
+ไม่เปลี่ยนผลรับ R3 และยังไม่เดิน R4 ก่อนปิด contract/DB รอบนี้.
+
+Checkpoint0.1.12: Core399 tests + packed Linux consumer และ Service56 affected
+tests ผ่านแล้วบน candidate แยก; รอเจ้าของรับ PDF10หน้า ก่อนรวมฝั่งพัฒนา.
+[ผลตรวจและขอบเขตหลักฐาน](flowdoc-section-ownership-plan-2026-10-10.md#delivery-checkpoint--2026-10-10).
+releaseยัง0.1.8 ไม่ได้เปลี่ยนในรอบนี้.

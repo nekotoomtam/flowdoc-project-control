@@ -11,7 +11,8 @@
 ## Authority Boundary
 
 Owner: Project Control; Planning Partner, then inline Product Implementation in Core/Service.
-Status: written implementation plan for owner review; product implementation not started.
+Status: owner-approved implementation executed; verified development candidates0.1.12,
+awaiting owner PDF acceptance before integration. See delivery checkpoint below.
 Bases inspected: Core d7533c1 / Service 55f7aad, development0.1.11.
 Work size medium per dependent task, overall multi-part; risk routine. No registered execution IDs.
 Document budget: this plan and existing decision/roadmap; owner-local guides at delivery.
@@ -219,6 +220,42 @@ Review Focus items map respectively to Tasks2,3,3,1+4,1+5.
 No added feature beyond scoped owners except explicit section content support needed
 for existing top-level formats to remain usable under their new Section owner.
 
-Implementation must start only after the owner reviews this written plan;
-inline method is already selected by conversation, no new execution-method question.
-Product work has not started. R4/release remain held while this plan is reviewed/executed.
+Owner approved this plan and inline implementation in this conversation.
+R4/release remain held until this round is accepted and integrated.
+
+## Delivery checkpoint — 2026-10-10
+
+Tasks1–4 are implemented; Task5 packaging and technical verification pass.
+The original task lists above preserve the planned sequence; this checkpoint
+records actual execution and outstanding acceptance, not a new Work registry.
+
+- Core candidate `b0657ee190a65ae10fb7f8b3be757ac03efcc942`, version0.1.12.
+  Full suite399 tests/46files and build passed after two review regressions:
+  duplicate global Area placement in prepared data and invalid Area defaults.
+  One fresh whole-change review completed; both Important findings fixed.
+- Core packed Linux/amd64 consumer passed, including model15 sample10 pages.
+  Artifact directory: `flowdoc-core-section-ownership/artifacts/1791628720586`.
+  Tarball SHA256: `bf1720e9f23d41e1907938191007ba4d49eb9b3ffa683692e1aa66b00fcfe74a`.
+  `result.json` and `section-ownership-result.json` contain consumer results.
+- Service candidate `672996411f8ec657344ec7938868ea6f5da85b8e`, version0.1.12,
+  pins that exact tarball and source commit. Build and56 affected tests passed
+  on fresh isolated Docker DB:50 across14files plus page-band API6.
+  Coverage includes populated010→011 migration, IDs/fingerprints, scoped
+  contracts, unknown/required keys, direct/staged resources, worker reload,
+  forged data rejection, current/version ownership and legacy band behavior.
+  This is not a full Service-suite claim; migration004 baseline debt remains.
+- Legacy model14 page-bands short/long/empty PDFs match the R3 archived
+  baseline byte-for-byte. Existing fixture/request files are unchanged.
+- All10 new PDF pages rendered and visually reviewed: cover without bands,
+  distinct same-width contents/closing headers, landscape table continuation,
+  local Area/image, portrait closing and deliberate blank page9.
+  This human-readable fixture uses synthetic images. Owner PDF acceptance
+  remains pending; the async question links `section-ownership.pdf` above.
+
+Execution rulings: Task2 long-table fixture/consumer proof was performed in
+Task5; safe contract projection moved with Task3 assembly to satisfy model15
+types. Existing migration expectation was extended to011. No new runtime
+scope, external DB rewrite, release promotion, frontend or R4 change.
+
+Pending: owner PDF acceptance, development fast-forward, artifact archival and
+clean merged-lane/Docker cleanup. Do not mark the delivery accepted yet.
