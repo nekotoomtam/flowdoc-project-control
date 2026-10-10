@@ -293,6 +293,10 @@ releaseยัง0.1.8; migration004 baseline test debt ยังค้างก�
 ไม่เปลี่ยนผลรับ R3 และยังไม่เดิน R4 ก่อนปิด contract/DB รอบนี้.
 
 Checkpoint0.1.12: Core399 tests + packed Linux consumer และ Service56 affected
-tests ผ่านแล้วบน candidate แยก; รอเจ้าของรับ PDF10หน้า ก่อนรวมฝั่งพัฒนา.
+tests ผ่านแล้ว เจ้าของรับ PDF10หน้าและรวมฝั่งพัฒนา0.1.12 แล้ว.
 [ผลตรวจและขอบเขตหลักฐาน](flowdoc-section-ownership-plan-2026-10-10.md#delivery-checkpoint--2026-10-10).
 releaseยัง0.1.8 ไม่ได้เปลี่ยนในรอบนี้.
+
+Core `b0657ee` / Service `6729964`; เก็บหลักฐานและล้าง lane/Docker ทดลองแล้ว.
+[ผลรับและตำแหน่งหลักฐานหลัง cleanup](flowdoc-section-ownership-plan-2026-10-10.md#accepted-delivery--2026-10-10).
+ขั้นถัดไป R4 นโยบายเลขหน้าอย่างเป็นทางการ; migration004 test debt ยังอยู่ก่อน releaseรวม.

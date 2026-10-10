@@ -11,8 +11,8 @@
 ## Authority Boundary
 
 Owner: Project Control; Planning Partner, then inline Product Implementation in Core/Service.
-Status: owner-approved implementation executed; verified development candidates0.1.12,
-awaiting owner PDF acceptance before integration. See delivery checkpoint below.
+Status: accepted and integrated development0.1.12. Owner accepted the PDF;
+delivery checkpoint and completion below retain the verification history.
 Bases inspected: Core d7533c1 / Service 55f7aad, development0.1.11.
 Work size medium per dependent task, overall multi-part; risk routine. No registered execution IDs.
 Document budget: this plan and existing decision/roadmap; owner-local guides at delivery.
@@ -259,3 +259,30 @@ scope, external DB rewrite, release promotion, frontend or R4 change.
 
 Pending: owner PDF acceptance, development fast-forward, artifact archival and
 clean merged-lane/Docker cleanup. Do not mark the delivery accepted yet.
+
+## Accepted delivery — 2026-10-10
+
+The checkpoint above is superseded by this completion: owner accepted the10-page
+sample after clarifying that intentional-blank is an authored blank Section,
+not pagination overflow. Tasks1–5 are complete within the stated scope.
+
+Fast-forward integrated unchanged verified commits into Core codex/template-binding
+`b0657ee190a65ae10fb7f8b3be757ac03efcc942` and Service codex/template-registry
+`672996411f8ec657344ec7938868ea6f5da85b8e`. Both development versions are0.1.12.
+Proof reused under Project Control policy: tested content/base unchanged;
+no conflicts, dependency, configuration or verification-environment changes.
+
+Artifacts and logs copied with per-file SHA256 verification to:
+- Core `artifacts/worktree-archive/flowdoc-core-section-ownership/`
+  (112 files); sample/package/result under `1791628720586/`.
+- Service `artifacts/worktree-archive/flowdoc-service-section-ownership/`
+  (15 files); test/build logs under `section-ownership-logs/`.
+
+Removed only clean merged codex/section-ownership worktrees/branches in both
+repositories. Removed this round's Docker projects flowdoc-section-ownership
+and flowdoc-section-ownership-final with their disposable databases/networks.
+Both primary checkouts are clean. Release refs remain Core `7b5161c` and
+Service `78c9491` (0.1.8); no push/deploy. No map promotion.
+
+Remaining work: R4 formal page-number policy; migration004 baseline test debt
+before combined release. Neither is included in this delivery's PASS claim.

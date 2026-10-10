@@ -3,8 +3,8 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: owner-accepted direction, recorded 2026-10-10; implementation candidates
-verified, awaiting owner PDF acceptance and development integration.
+Status: owner-accepted direction and PDF, recorded 2026-10-10; implemented and
+integrated in development0.1.12. See the plan's Accepted delivery for evidence.
 Scope: บันทึกข้อตกลงก่อนออกแบบลงมือ Core/Service หลัง R3 และก่อน R4.
 Inline documentation, small/routine; execution/Phase/Checklist IDs not applicable.
 Authority: คำยืนยันเจ้าของในบทสนทนาว่าให้ยึดแนวทาง sections และเก็บความสัมพันธ์ DB ก่อนเริ่ม.
@@ -337,4 +337,4 @@ Section id เป็นตัวตนคงที่, key สำหรับ AP
 
 แผนลงมือสำหรับตรวจ: [Section ownership implementation plan](flowdoc-section-ownership-plan-2026-10-10.md).
 เจ้าของอนุมัติแผนแล้ว; ผลตรวจ candidate0.1.12 และสิ่งที่ยังรออยู่บันทึกใน
-Delivery checkpoint ของแผน ยังไม่ใช่ผลรับรวมเข้าฝั่งพัฒนาหรือ release.
+Delivery checkpoint และ Accepted delivery ของแผน รวมฝั่งพัฒนาแล้ว แต่ยังไม่ขึ้น release.
