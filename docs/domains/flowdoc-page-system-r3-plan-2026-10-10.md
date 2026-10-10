@@ -14,7 +14,7 @@ Service persists scoped schemas and prepares images through the existing pipelin
 
 Project Control owns this plan. Inline Planning Partner/Product Implementation
 roles; no registry execution IDs. Medium/routine cross-repository implementation.
-User approved the written design to proceed; this plan is for review before code.
+User approved design and inline implementation; accepted delivery is recorded below.
 Bases: Core3e85fd2 / Service7ea6150. Read owner guides before changing each repo.
 Retain current inline session; no separate WORK dispatch or synthetic records.
 Use isolated sibling worktrees for implementation; do not change release.
@@ -68,12 +68,12 @@ Request/prepared header/footer optional scoped objects. Resolved bands contain
 rootIds, independently prefixed nodes/sourceMap, baseTextStyleId and sizing/gap.
 Band Columns type is {id,type:'columns',props:{gap?},columns:{weight,childIds}[]}.
 
-- [ ] Write RED tests for scope isolation, defaults/required/types, old gates,
+- [x] Write RED tests for scope isolation, defaults/required/types, old gates,
   duplicate/cyclic graph, unsupported band nodes and nested Columns.
-- [ ] Implement validation and composition, reuse field rules; scalar image/link
+- [x] Implement validation and composition, reuse field rules; scalar image/link
   handling must retain scoped diagnostic paths and resource references.
-- [ ] Test prepared/resolved JSON round-trip and forged prepared/resolved data.
-- [ ] Run build + affected data/template/composition tests, inspect diff, commit.
+- [x] Test prepared/resolved JSON round-trip and forged prepared/resolved data.
+- [x] Run build + affected data/template/composition tests, inspect diff, commit.
 
 ## Task2 — Measure bands and Columns
 
@@ -83,12 +83,12 @@ Export measurePageBand(band,styles,widthPt,runtime,images) -> measured height an
 local drawing commands; export selectPageBands(modes,role,sectionPageIndex).
 Measurements key on band identity/style/width/resources; no cross-job cache.
 
-- [ ] Write RED tests for Thai wrapping, one-line minimum, empty/image-only,
+- [x] Write RED tests for Thai wrapping, one-line minimum, empty/image-only,
   columns weights/gaps, long column, fixed overflow, min/max and bad combinations.
-- [ ] Implement shared measureText/image contain behavior, no new wrapping engine.
+- [x] Implement shared measureText/image contain behavior, no new wrapping engine.
   Clone/translate local commands on placement, never mutate reusable measurements.
-- [ ] Check exact and over-boundary sizes and image missing behavior per old policy.
-- [ ] Run build + focused layout/image tests and commit.
+- [x] Check exact and over-boundary sizes and image missing behavior per old policy.
+- [x] Run build + focused layout/image tests and commit.
 
 ## Task3 — Per-page available area and repeated paint
 
@@ -98,13 +98,13 @@ Page geometry computes contentTop/contentBottom from selected bands + gaps.
 Pass top/bottom as live getters to table continuation sinks, not captured numbers.
 Placement uses page-local unique draw IDs; anchor/TOC collection excludes bands.
 
-- [ ] RED tests all/first/continuation/none in portrait/landscape; cover/blank/empty.
-- [ ] Test 40% aggregate exact/overflow, hidden gaps and no overlap with legacy
+- [x] RED tests all/first/continuation/none in portrait/landscape; cover/blank/empty.
+- [x] Test 40% aggregate exact/overflow, hidden gaps and no overlap with legacy
   temporary page numbers; footer ends at inner bottom edge.
-- [ ] Test row/cell spans and repeated table header across changing page budgets,
+- [x] Test row/cell spans and repeated table header across changing page budgets,
   first-page-too-short but next-page-fits; impossible row terminates with error.
-- [ ] Implement next-page geometry before new-page y; keep old-model branches.
-- [ ] Run affected table/image/contents/link/page-section regressions and commit.
+- [x] Implement next-page geometry before new-page y; keep old-model branches.
+- [x] Run affected table/image/contents/link/page-section regressions and commit.
 
 ## Task4 — Service scoped schema persistence and API resources
 
@@ -119,35 +119,73 @@ Version table mirrors scope with format_version_id. Unique owners include scope;
 retain same-template composite FK. Backfill existing null references global and
 nonnull format. Legacy record inputs infer omitted scope; validate canonical form.
 
-- [ ] RED round-trip test: identical key across three scopes; separate IDs/values.
-- [ ] Forward migration test populated009 ->010; freshDB ->010; preserve snapshot
+- [x] RED round-trip test: identical key across three scopes; separate IDs/values.
+- [x] Forward migration test populated009 ->010; freshDB ->010; preserve snapshot
   rendering and IDs; constraints reject bad owner/duplicate schema.
-- [ ] Implement decomposition/assembly/storage/publish/load with cloned scoped rows.
+- [x] Implement decomposition/assembly/storage/publish/load with cloned scoped rows.
   Keep band graph payload but extract inputSchema into normalized schema rows.
-- [ ] Propagate header/footer through direct and staged jobs, request hash/idempotency,
+- [x] Propagate header/footer through direct and staged jobs, request hash/idempotency,
   bounded uploads and image discovery; same key in separate scopes stays isolated.
-- [ ] Real API import/save/publish/generate/download; missing variable/overflow fails
+- [x] Real API import/save/publish/generate/download; missing variable/overflow fails
   with scoped diagnostics and no partial output; current edits leave snapshot intact.
-- [ ] Build + affected current/version/Area/resource/job tests on disposable DB.
+- [x] Build + affected current/version/Area/resource/job tests on disposable DB.
 
 ## Task5 — Packed delivery, acceptance and cleanup
 
 Core fixtures/page-bands/{template,request}.json, tests/consumer/checkPageBands.mjs,
 scripts/checkPackedConsumer.mjs; Service examples and vendor package/manifest/lock.
 
-- [ ] Build sample: cover -> portrait first/continuation bands -> landscape merged
+- [x] Build sample: cover -> portrait first/continuation bands -> landscape merged
   table + images -> explicit blank -> closing section. Include long Thai fields,
   same key different values, image+Columns and missing/overflow negative cases.
-- [ ] Final review/fix, Core affected suite, commit runtime and pack Linux consumer.
-- [ ] Install verified0.1.11 artifact in Service, verify SHA/sourceCommit/integrity,
+- [x] Final review/fix, Core affected suite, commit runtime and pack Linux consumer.
+- [x] Install verified0.1.11 artifact in Service, verify SHA/sourceCommit/integrity,
   run freshDB affected API suite with real image inputs and record exact counts.
-- [ ] Render/inspect sample and request owner PDF acceptance for position/continuation.
-- [ ] Only after passing: commit/fast-forward development; reuse unchanged proof,
+- [x] Render/inspect sample and request owner PDF acceptance for position/continuation.
+- [x] Only after passing: commit/fast-forward development; reuse unchanged proof,
   archive artifacts, remove clean merged worktrees/branches and disposable Docker.
-- [ ] Update design/roadmap status and limitations; keep release0.1.8 untouched.
+- [x] Update design/roadmap status and limitations; keep release0.1.8 untouched.
 
 ## Stop conditions
 
 Return to design for any scope expansion or incompatible API/storage semantics.
 Do not implement band repeats/Area or body Columns to make a test fixture easier.
 End when coverage passes; no full-system claims from scoped tests.
+
+
+## Accepted delivery — 2026-10-10
+
+R3 accepted in development 0.1.11. Core `d7533c1`, Service `55f7aad`;
+packed runtime source `a3ac83450c5814afccdc1c6d6c7f2129a9bbd7a9`.
+Owner accepted the short/long PDF. Final packed PDFs are byte-identical to that set.
+
+- Core full suite: 386 passed, 43 files; build passed.
+- Packed Linux/amd64 consumer: PASS, including legacy groups and page bands.
+  Archive: `flowdoc-core/artifacts/worktree-archive/flowdoc-core-page-bands/1791623860781/result.json`.
+  SHA256: `81c46dd09fb921b38f379c10004d6b9feacbdfe5c79a4972a6932fd7453d1912`.
+  Short10/long11/empty2 pages; overflow fails with header/section diagnostic.
+- Service affected coverage: 68 distinct tests. Initial final run passed67/68;
+  the remaining old Area upgrade assertion expected only migration009. Updated
+  that assertion to include010; all3 tests in its file then passed. Other67 results
+  reused without runtime changes. No skipped checks counted as PASS.
+  Archive: `flowdoc-service/artifacts/worktree-archive/flowdoc-service-page-bands/page-bands-r3/result.json`,
+  `final-tests.json` and `area-upgrade-recheck.json` preserve both outcomes.
+- Migration010 checked populated current and published schemas, existing IDs,
+  scoped owner constraints, and restored immutable snapshot protection.
+- Whole-change review found four issues: immutable snapshot backfill, completed
+  protected table rows checked against later page capacity, schema scope identity
+  moves, and model14 Area deletion. All fixed with regression evidence.
+- PDF/API proof covers scoped values and images, defaults/required fields,
+  section modes, portrait/landscape, cover/blank exclusion, variable page capacity,
+  overflow rejection, save/publish/load and old-model consumers.
+
+Integration: fast-forwarded existing development branches; build and vendor
+identity passed in primary checkouts. Archived182 Core and16 Service artifact files
+with matching hashes before removing clean merged page-bands worktrees/branches.
+Removed only Docker project flowdoc-page-bands-r3 and its disposable volumes.
+Release refs unchanged: Core7b5161c / Service78c9491 (0.1.8); no push/deploy.
+Local template/API guides updated. No maps or shared runtime claims promoted.
+
+Known limitation: R1 migration004 baseline test debt remains before combined
+release. This result is not a full Service suite, clean-machine or load acceptance.
+Next: R4 formal page numbering under the roadmap; no automatic scope expansion.

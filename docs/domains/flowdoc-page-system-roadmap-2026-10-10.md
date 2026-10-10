@@ -269,3 +269,15 @@ packed Linux consumer ผ่าน และ Service affected59ข้อผ่�
 [ผลรับ หลักฐาน และข้อจำกัด](flowdoc-page-system-r2-plan-2026-10-10.md#accepted-delivery--2026-10-10).
 R1 migration004 baseline test debt ยังต้องเก็บก่อน releaseรวม ไม่รวมในผล PASS นี้.
 ขั้นถัดไป R3: คุยรายละเอียดหัวท้ายตามที่เจ้าของขอไว้ ไม่เริ่มโดยเดาข้อกำหนด.
+
+
+## ผลรับ R3 — 2026-10-10
+
+หัวท้ายแยกตัวแปร API พร้อมข้อความ ภาพ และ Columns หนึ่งชั้น ผ่านในรุ่นพัฒนา0.1.11
+Core `d7533c1` / Service `55f7aad`; เจ้าของรับ PDF แล้ว.
+Core386ข้อและ packed Linux consumer ผ่าน; Serviceครอบคลุม68ข้อ โดยแก้
+รายการ migration ที่คาดหวังใน testเก่าแล้วตรวจไฟล์นั้นซ้ำ3ข้อผ่าน.
+[ผลรับและหลักฐาน](flowdoc-page-system-r3-plan-2026-10-10.md#accepted-delivery--2026-10-10).
+รวมเข้าฝั่งพัฒนา เก็บ artifacts และล้าง worktree/branch/Docker ทดลองแล้ว.
+releaseยัง0.1.8; migration004 baseline test debt ยังค้างก่อน releaseรวม.
+ขั้นถัดไป R4: นโยบายเลขหน้าอย่างเป็นทางการตามขอบเขต roadmap.

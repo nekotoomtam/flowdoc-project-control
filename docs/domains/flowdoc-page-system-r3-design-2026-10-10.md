@@ -3,9 +3,10 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Cross-Repo Boundary Reviewer.
-Status: written design accepted to proceed by owner; implementation planning, 2026-10-10.
-This is design intent, not implementation Evidence or release approval.
-Current work: inline documentation, small/routine, execution IDs not applicable.
+Status: implemented and owner-accepted in development 0.1.11, 2026-10-10.
+This is the accepted contract; implementation evidence is in the R3 plan delivery section.
+It does not approve release.
+Delivery: inline Core/Service implementation, medium/routine; execution IDs not applicable.
 Runtime owners: Core for contracts, binding, measurement/layout/PDF; Service for
 API, resource preparation, persisted current/version schemas and package integration.
 Authority: [page-system roadmap](flowdoc-page-system-roadmap-2026-10-10.md).
@@ -182,3 +183,6 @@ page fails without a loop. Repeated table headers count against the same budget.
 
 These decisions close the seams recorded above; exact tasks and verification are
 in the R3 plan. They are proposed implementation details, not runtime evidence.
+
+
+Delivery and limits: [R3 accepted delivery](flowdoc-page-system-r3-plan-2026-10-10.md#accepted-delivery--2026-10-10).
