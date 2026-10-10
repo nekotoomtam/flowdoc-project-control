@@ -580,3 +580,70 @@ content. Screenshot references are not downloaded or inserted. Unrelated project
 fields are not copied into generation input. The CID writer blocker remains open;
 raw input resolves the extraction-related line-break ambiguity for mapped text,
 not the export capacity issue or full acceptance.
+
+### SRS CID repair — 2026-10-10
+
+Owner narrowed acceptance to the supplied SRS first; 300–700-page acceptance and
+layout fidelity remain deferred. New inline implementation scope, Core owner,
+Product Implementation Agent; bounded/routine, IDs N/A. Base7aff2f1 in isolated
+flowdoc-core-srs-cid/codex/srs-cid (primary Core checkout is on release; preserve
+that checkout). Native worktree tool targets PC, so use the established manual
+Core sibling-worktree route. Allowed: writer CID reuse, focused regressions,
+development patch version and isolated packed-consumer/SRS proof. No release,
+DB, template-contract, layout or font-sharding changes.
+
+Acceptance/proof budget: repeated-glyph regression RED then GREEN, identity and
+positioning tests, affected PDF/package consumers, full raw SRS rendering plus
+text and representative visual checks. One fresh read-only code review required
+by review skill; no synthetic separate-room registry. Document budget: this
+existing record. Artifacts stay ignored; raw business data stays outside Git.
+Per-font mapping key is glyph ID + rounded PDF advance + Unicode assignment;
+horizontal offsets stay occurrence-specific. Retain controlled failure above
+65535 distinct mappings. No claim of unlimited document support.
+
+Result: bounded CID repair PASS. Core development commit43f8f26 reuses identical
+per-font mappings, version0.2.1. Three new regressions failed before the fix;
+affected PDF tests31/31, full packaged build419/419 and packed consumer groups
+passed. Existing four-style/overflow PDFs remain pixel-identical on3/3 pages.
+The synthetic700-page repeated-glyph test is a writer regression, not acceptance
+of real700-page documents. Read-only review found no actionable runtime issue.
+
+The supplied raw SRS now renders through the public Core API:90 pages,240 unique
+requirements,32 headings, zero warnings,100.104 seconds. All requirement details,
+headings and source paragraphs pass whitespace-insensitive extraction checks;
+requirements occur exactly once. Actual font maps use225 regular and122 bold
+CIDs. Representative visual review covers pages1–7,45,89,90, not all90 pages.
+Output is not claimed equivalent to the source93-page layout.
+
+One additional input issue was isolated: the single tab in REQ0188 produces an
+unsupported glyph-metrics error. The trial maps that tab to one space and records
+the normalization; original raw input remains unchanged. General tab handling is
+still unresolved. No other source text was rewritten for this repair.
+
+Service dependency propagation is included as the affected consumer, without
+runtime/API/DB behavior changes: development commit10271f7, version0.2.1, vendored
+Core SHA256 ffc7585d0749fadaa79b672e2e84b17b69fa79c764927144a32a12a75ffdee68.
+Vendor identity, Docker verification build and isolated render tests2/2 passed.
+Dependency review found matching versions and hashes; its pending archive-locator
+concern was resolved by checking the completed archive and matching SHA256.
+Full SRS HTTP/job execution was not tested; the standalone100-second measurement
+does not establish production performance or concurrent-job capacity.
+
+Durable local evidence (ignored; business data is not committed):
+
+- ../flowdoc-service/artifacts/srs-cid-021/srs-trial.pdf;
+  srs-trial-result.json, verification.json, verify.py, trial.mjs,
+  input-normalizations.json and representative rendered pages in the same folder.
+- ../flowdoc-core/artifacts/worktree-archive/flowdoc-core-srs-cid/1791642171251/:
+  package, result.json, package-check.log and pixel-comparison.json;112 archived
+  files verified against their original SHA256 hashes before lane removal.
+- ../flowdoc-service/artifacts/worktree-archive/flowdoc-service-srs-cid/srs-cid/:
+  build and render-check logs; both archived files hash-verified.
+
+Development refs were fast-forwarded with exact old-ref guards to the tested
+commits. Primary checkouts and release refs remain on0.2.0 (Core c17f197,
+Service edd9a7e); no tag, push or release promotion. Clean merged temporary lanes
+and their two branches were removed after evidence archival; three task-only
+Docker image tags removed. Unchanged tested content permits proof reuse.
+Deferred: source-layout fidelity, general tab handling, full-book HTTP acceptance,
+five-dataset acceptance,300–700-page capacity and font sharding.
