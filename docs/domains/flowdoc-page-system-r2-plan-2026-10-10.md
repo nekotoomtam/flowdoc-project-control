@@ -62,17 +62,17 @@ TextBlock props add heightMode?:'content'|'fixed', height?:Length,
 verticalAlign?:'top'|'center'|'bottom'; validation enforces the discriminated constraints.
 Existing prepareGeneration/composeDocument signatures stay unchanged.
 
-- [ ] Write tests: accept model13 cover/blank; reject duplicate/misplaced cover,
+- [x] Write tests: accept model13 cover/blank; reject duplicate/misplaced cover,
   invalid source, wrong fixed location/units/height; model12 rejects new fields.
   Assert empty cover and blank compose with rootIds=[] but explicit sections; empty
   body alone still EMPTY_CONTENT; missing/wrong content and required data still fail.
   Assert Area origin cannot masquerade as a directly authored fixed TextBlock.
-- [ ] Run `npm test -- tests/template/coverPages.test.ts tests/composition/coverPages.test.ts`;
+- [x] Run `npm test -- tests/template/coverPages.test.ts tests/composition/coverPages.test.ts`;
   confirm failures are missing intended behavior, not broken fixture setup.
-- [ ] Implement model gates and normalized section metadata, preserve sources/IDs and
+- [x] Implement model gates and normalized section metadata, preserve sources/IDs and
   JSON round-trip. Do not add fabricated nodes to make empty-page commands pass.
   Review every `nodeModelVersion===12`/`!==12` consumer before changing it.
-- [ ] Run build and the new tests plus template/pageSections, composition/pageSections,
+- [x] Run build and the new tests plus template/pageSections, composition/pageSections,
   preparation/Area validation affected by changed gates; review diff then commit.
 
 ## Task 2 — Fixed boxes and one-page cover layout
@@ -87,17 +87,17 @@ lines:MeasuredLine[];heightPt:number;offsetPt:number}>. Consumes validated fixed
 It uses measureText once, reserves height, and returns offset for the same measured lines.
 LayoutError may add optional sectionId/path context; existing calls remain valid.
 
-- [ ] Write tests asserting following-node y is identical for 1-line/multiline/fitting
+- [x] Write tests asserting following-node y is identical for 1-line/multiline/fitting
   title; excess fails; top/center/bottom offsets exact within existing epsilon1e-6.
   Test empty text with a small positive frame, explicit newline, mm/pt, existing
   content-height behavior, total cover overflow, table/image continuation rejection.
   Test empty cover/blank/body distinctions and exact previous-page boundary.
-- [ ] Run `npm test -- tests/layout/coverPages.test.ts` and observe intended failures.
-- [ ] Implement fixed measurement without changing wrap. A cover-internal nextPage
+- [x] Run `npm test -- tests/layout/coverPages.test.ts` and observe intended failures.
+- [x] Implement fixed measurement without changing wrap. A cover-internal nextPage
   attempt throws with actual failing node/section; entering a new section remains legal.
   Blank creates exactly one empty DrawPage. Reject before returning successful PDF;
   no partially successful document when any box or total cover overflows.
-- [ ] Run build/new tests and existing pageSections/table/image layout tests affected
+- [x] Run build/new tests and existing pageSections/table/image layout tests affected
   by nextPage handling; confirm source diagnostics through engine and commit.
 
 ## Task 3 — Counted numbers, TOC and packed PDF
@@ -115,13 +115,13 @@ Cover gets null; others consecutive1…N. Legacy absence falls back to physical 
 collectContents keeps its signature and excludes cover roots before traversal,
 including descendant headings; anchor collection does not use that filter.
 
-- [ ] Tests: cover/TOC/body display1 after cover, blank increments but has no ink,
+- [x] Tests: cover/TOC/body display1 after cover, blank increments but has no ink,
   TOC numbers agree with footer, destinations use physical index, cover references
   work and cover headings (including in cells) are excluded; model12 unchanged.
-- [ ] Run `npm test -- tests/layout/coverNumbers.test.ts`, confirm intended failures.
-- [ ] Implement shared counted metadata and consumers. Build section indexes once
+- [x] Run `npm test -- tests/layout/coverNumbers.test.ts`, confirm intended failures.
+- [x] Implement shared counted metadata and consumers. Build section indexes once
   where needed; avoid per-heading scans of every section. Do not introduce numbering options.
-- [ ] Run build, new tests and existing contents/link/pageSections/PDF regressions.
+- [x] Run build, new tests and existing contents/link/pageSections/PDF regressions.
   Add real Thai title short/long/overflow and blank fixtures with known expected page
   sequence and compare next-node positions, not merely page counts. Commit runtime
   candidate at0.1.10, run `npm run check:package` on Linux/amd64, retain artifact/hash/PDF.
@@ -137,21 +137,21 @@ Docs: Core guide/README, Service usage/README and Project Control existing R2/ro
 Interfaces: import only @flowdoc/core root; HTTP/DB shapes unchanged unless a concrete
 storage failure requires returning to design. No speculative migration.
 
-- [ ] Before changing production dependency, add model13 assembly/API tests and
+- [x] Before changing production dependency, add model13 assembly/API tests and
   observe rejection with0.1.9. Import/save/publish/load must preserve fixed and blank
   metadata; renaming current leaves old snapshot unchanged. Cover Area deletion
   follows existing owned-row behavior. API contract exposes fields, not graph.
-- [ ] Install the verified0.1.10 artifact, record checksum/source commit and update
+- [x] Install the verified0.1.10 artifact, record checksum/source commit and update
   Service version. Make only proven integration repairs; no copied Core validation.
-- [ ] Build and run `npm test -- tests/cover-pages-api.test.mjs tests/page-sections-api.test.mjs tests/page-sections-assembly.test.mjs`
+- [x] Build and run `npm test -- tests/cover-pages-api.test.mjs tests/page-sections-api.test.mjs tests/page-sections-assembly.test.mjs`
   in the existing test container setup against a fresh isolated named DB, then affected
   current/version/Area/image/contents/link API regressions on that same fresh candidate.
   Test successful download plus a long real variable causing failed job with source
   diagnostic and no downloadable partial PDF. Preserve evidence outside disposable volume.
-- [ ] Review final diff and acceptance coverage, obtain one whole-change code review,
+- [x] Review final diff and acceptance coverage, obtain one whole-change code review,
   fix in-scope findings with targeted rechecks. Report old migration004 failure separately;
   never label a failing full suite PASS. Await required user PDF acceptance if pending.
-- [ ] Commit/integrate verified development work only, reuse unchanged fast-forward
+- [x] Commit/integrate verified development work only, reuse unchanged fast-forward
   proof, update roadmap with exact evidence and remaining scope. Archive outputs and
   remove clean merged temporary branches/worktrees/disposable DB. Leave release untouched.
 
@@ -161,3 +161,54 @@ R2 passes only with runtime, real packed consumer, Service integration and visua
 acceptance. Planning complete does not check roadmap implementation boxes.
 R3 header/footer details stay with the user; R4/R5 remain open beyond the minimal
 numbering/TOC bridge here. Stop after covered acceptance; no performance redesign.
+
+
+## Accepted delivery — 2026-10-10
+
+PASS: inline R2 implementation; execution IDs not applicable. Core development
+`3e85fd2`, runtime/package source `8cb76ff`; Service development `7ea6150`.
+Both packages are 0.1.10. Fast-forward integration preserved the tested candidate.
+Release stays at Core `7b5161c` / Service `78c9491` (0.1.8); no push/deploy.
+
+Acceptance coverage:
+- Model13 cover/blank contracts, provenance and legacy gates: contract/composition
+  regressions and final Core suite, 364 passing tests across 40 files.
+- Fixed height, alignment, empty versus newline, cover overflow and normal flow:
+  layout tests; two final boundary/mm/blank tests added afterward, targeted group
+  10/10 passing. This is not a claim of a rerun full 366-test suite.
+- Page count/TOC/physical destinations and nested cover heading exclusion: layout
+  regressions plus final Linux/amd64 packed consumer, all consumer groups PASS.
+- Save/publish/snapshot/Area deletion, successful PDF download and rejected overflow
+  without partial PDF: final Service affected suite 59 PASS, 0 FAIL, 0 SKIP on
+  fresh disposable database `flowdoc_r2_final`; build and vendor identity passed.
+- User accepted short/long cover placement and format. Final short/long/empty PDFs
+  are byte-identical to the accepted artifact generation. No second visual request.
+
+Durable local evidence, preserved with matching file hashes before cleanup:
+- `flowdoc-core/artifacts/worktree-archive/flowdoc-core-cover-pages/1791620292943/result.json`
+- Same directory: `cover-pages-result.json`, cover-pages-short/long/empty PDFs and tarball.
+- `flowdoc-service/artifacts/worktree-archive/flowdoc-service-cover-pages/cover-r2/result.json`
+- Same directory: `final-tests.json`, `final-build.log`, API PDF outputs and failing/passing diagnostics.
+
+Whole-change review found explicit content heightMode rejected in formats/Area;
+fixed with RED/GREEN tests. Added nested-cover-heading coverage from review.
+Real API testing exposed discarded layout diagnostics: bounded LAYOUT_FAILED
+issues now cross the render-child boundary; unrelated failures remain generic.
+This is a proven integration repair within Task4, not a new API or DB contract.
+
+Rulings: sibling Git worktrees provide isolation where native creation targets only
+Project Control; cover validation uses the shared resolved validator; related tests
+are grouped in existing/new cover files rather than one file per planned label.
+Scoped passing verification replaces generic full-suite ceremony. Existing Service
+migration004 test failure documented in R1 remains outside R2, to resolve before
+combined release. No full Service-suite PASS claim. Failed optional PDF text
+extraction was not used as evidence; rendered inspection and owner acceptance were.
+
+R3 header/footer remains next and requires the owner's details. R4/R5 are open
+beyond the minimal counting/TOC bridge delivered here. No wrap-engine redesign,
+DOCX, frontend, migration, or release promotion.
+
+Integration/cleanup complete: both development builds passed after unchanged
+fast-forward. Archived 174 Core and 13 Service artifact files with matching hashes.
+Removed clean merged cover-pages worktrees/branches in both repositories and
+only the disposable flowdoc-cover-r2 containers, network and database/evidence volumes.
