@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: R1–R2 accepted for development; R3–R6 pending, 2026-10-10.
+Status: R1–R3 accepted in development0.1.11; Section ownership design before R4, 2026-10-10.
 Spec: [ร่างระบบหน้ากระดาษและส่วนของเล่ม](flowdoc-page-system-draft-2026-10-10.md)
 เริ่มจากคำขอกาง roadmap; ต่อมาเจ้าของอนุญาตให้เริ่ม R1 หลังรับข้อสรุป R0 แล้ว
 เอกสารนี้เป็นลำดับผลส่งมอบ ไม่ใช่แผนลงโค้ดรายไฟล์ที่ให้ executor เดาสัญญาเอง
@@ -25,9 +25,9 @@ document budget สองไฟล์; ไม่สร้าง Work/ห้อ�
 ของเดิมยังอ่านได้ ไม่แก้ snapshot ที่ publish ไปแล้ว และไม่มีเนื้อหาหาย/ซ้ำจากการแบ่งหน้า
 Core เป็นผู้จัดหน้า; Service ไม่สร้าง layout engine อีกชุด
 
-ลำดับหลัก: R0 → R1 → R2 → R3 → R4 → R5 → R6
+ลำดับปัจจุบัน: R0 → R1 → R2 → R3 → ปรับเจ้าของข้อมูลตาม Section → R4 → R5 → R6
 R0 ปิดข้อกำหนดที่มีผลข้ามพาร์ตก่อน ส่วนรายละเอียดเฉพาะพาร์ตคุยก่อนเริ่มพาร์ตนั้น
-สถานะ: **R0–R2 ปิดแล้วในชุดพัฒนา0.1.10**; R3–R6 ยังไม่เริ่ม implementation
+สถานะ: **R0–R3 ปิดแล้วในชุดพัฒนา0.1.11**; งาน Section ownership ยังออกแบบ และ R4–R6 ยังไม่เริ่ม implementation
 รายละเอียดสัญญาเป้าหมาย ตัวอย่าง และ task ลงมืออยู่ใน
 [R0 contract / R1 tasks](flowdoc-page-system-r0-contract-2026-10-10.md)
 การปิด R0 เป็นผลออกแบบ ไม่ใช่หลักฐานว่า runtime รองรับแล้ว
@@ -119,7 +119,7 @@ Core `3e85fd2` / Service `7ea6150`, รุ่นพัฒนา0.1.10; release �
 2026-10-10: เจ้าของรับกติกาแยก data/header/footer, cover/blank ไม่ใช้หัวท้าย,
 ขั้นต่ำหนึ่งบรรทัด และเพดานรวม40%.
 [ร่าง R3](flowdoc-page-system-r3-design-2026-10-10.md) บันทึกขอบเขตและจุดต่อ
-Columns/schema ownership ที่ออกแบบต่อในร่างแล้ว; ยังไม่เริ่ม runtime.
+Columns/schema ownership ตามสัญญาเดิมส่งมอบแล้ว ดูผลรับ R3 ท้ายเอกสาร.
 [แผนลงมือ R3](flowdoc-page-system-r3-plan-2026-10-10.md) แบ่ง5งาน พร้อมตรวจ.
 
 เจ้าของย้ำเมื่อ2026-10-10 ว่าอาจมีข้อกำหนดเพิ่ม ให้คุยรายละเอียดในพาร์ตนี้
@@ -281,3 +281,13 @@ Core386ข้อและ packed Linux consumer ผ่าน; Serviceครอ�
 รวมเข้าฝั่งพัฒนา เก็บ artifacts และล้าง worktree/branch/Docker ทดลองแล้ว.
 releaseยัง0.1.8; migration004 baseline test debt ยังค้างก่อน releaseรวม.
 ขั้นถัดไป R4: นโยบายเลขหน้าอย่างเป็นทางการตามขอบเขต roadmap.
+
+
+## ข้อตกลงเพิ่มหลัง R3 — Section ownership ก่อน R4
+
+เจ้าของรับให้ Document มี Sections ที่เป็นเจ้าของข้อมูลเนื้อหาและหัวท้ายแยกกัน
+พร้อม data ร่วมระดับเล่ม และให้ DB มี sections/section_versions จริง.
+[ข้อตกลงและผลกระทบก่อนลงมือ](flowdoc-section-ownership-decision-2026-10-10.md)
+เป็นทิศทางใหม่สำหรับรุ่นโครงสร้างถัดไป; บันทึก R0–R3 ข้างต้นยังอธิบาย
+สัญญาที่ส่งมอบแล้วของรุ่นเดิม ไม่ใช้ข้อจำกัด data/content เดิมปฏิเสธทิศทางใหม่นี้.
+ยังไม่เปลี่ยน runtime หรือผลรับ R3 และยังไม่เดิน R4 ก่อนปิด contract/DB รอบนี้.
