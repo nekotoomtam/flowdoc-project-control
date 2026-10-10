@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: owner-approved functional direction; written design for review, not implemented.
+Status: written design approved by owner; implementation plan for review, not implemented.
 Authority: เจ้าของให้เริ่มร่างหลังยืนยันว่า current/total ไม่ต้องส่งผ่าน API.
 Scope: R4 under [page-system roadmap](flowdoc-page-system-roadmap-2026-10-10.md).
 Bases inspected: Core b0657ee / Service6729964, development0.1.12; release0.1.8 untouched.
@@ -123,7 +123,7 @@ PDF ตัวอย่าง: ปก → ส่วนแรกนับต่อ
 
 ## Review boundary
 
-Functional direction ด้านบนได้รับการยืนยันในบทสนทนา. รายละเอียดจองความกว้าง,
-hide ทั้ง TextBlock ที่มี token และ diagnostic ของ excluded TOC เป็นข้อเสนอ
-ในร่างนี้ ต้องรับก่อนล็อกแผน implementation. ยังไม่มี product code เปลี่ยน.
-หลังรับร่างจึงกางไฟล์/ลำดับงาน/RED–GREEN/proof budget ในแผนลงมือ R4.
+เจ้าของรับร่างนี้แล้ว รวมการจองความกว้าง hide ทั้ง TextBlock ที่มี token
+และ diagnostic ของ excluded TOC. ยังไม่มี product code เปลี่ยน.
+[แผนลงมือ R4](flowdoc-page-system-r4-plan-2026-10-10.md) ระบุ interfaces,
+ลำดับงาน RED–GREEN และหลักฐานที่ต้องผ่าน พร้อมให้ตรวจแผนก่อน implementation.
