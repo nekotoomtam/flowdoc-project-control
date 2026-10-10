@@ -29,7 +29,34 @@ FlowDoc ให้ผู้เรียกจัดข้อมูลและล
    โดยแยกหลักที่เจ้าของยืนยันจากกติกาทำงานที่ยังเป็นร่าง
 5. ก่อนแก้ Core/Service อ่าน AGENTS ของ repo เจ้าของ ไม่เริ่มจากห้อง/ทะเบียนเก่า
 
-## สถานะล่าสุด — Area 0.1.8 ผ่านแล้ว
+## สถานะล่าสุด — release 0.1.8 แล้วเมื่อ 2026-10-10
+
+เจ้าของอนุญาตขึ้น release หลังรับคู่มือแล้วในห้องนี้ ทำแบบ local snapshot
+ทั้งสอง repo โดยไม่เปลี่ยน runtime หรือเพิ่มเลขรุ่นใหม่ และไม่มี push/deploy
+
+| Repository | Development source | Release snapshot | Annotated tag |
+| --- | --- | --- | --- |
+| Core | e8fa7361e0b52d74b110662a0cb1db4379f3f0f5 | 7b5161c7ff684aee479a66fdf6170e1e73aa2f9e | v0.1.8 |
+| Service | 5bf0620b094d0d7145f409bea6a90bc1713c6fb9 | 78c94914cba42179e296c23e0e1cb113df70d543 | v0.1.8 |
+
+แต่ละ snapshot มี parent เป็น release0.1.5 ของ repo นั้น และ tree ตรงกับ
+development source ทุกไฟล์ เก็บที่มาและหลักฐานใน commit message
+Service ยังคงตรึง Core0.1.8 จาก runtime source `97a0985` SHA256
+`48241590350d22ddac983f8b5296bd5559646b76a4803510874dddde60d90a0d`
+ใช้ tarball เดิมที่ผ่านแล้ว ไม่ pack ทับรุ่นเดิม; คู่มือใหม่อยู่ใน source repositories
+จึงไม่อ้างว่าคู่มือที่เพิ่งเพิ่มถูกบรรจุลง tarball เดิมด้วย
+
+งานนี้เป็น inline release integration ตามคำขอเจ้าของ ไม่มี execution IDs
+ขอบเขตคือ refs/tags ของสอง repo และบันทึกนี้ ไม่แก้ product tree
+ตรวจ runtime/dependencies เทียบ source ที่ผ่านแล้วพบเปลี่ยนเฉพาะ Markdown
+จึง reuse ผล Core packaged consumer ทั้ง12กลุ่ม PASS และ Service51checks
+0failed/0skipped ร่วมกับ walkthrough Docker/API สดของคู่มือที่ผ่านในวันเดียวกัน
+ตรวจ vendor checksum, clean checkout, parent, annotated tags และ exact tree equality
+สำหรับ candidate/release โดยไม่รัน runtime regression ซ้ำเมื่อไม่มี runtime change
+คง branch พัฒนาและ release; รอบนี้ไม่ได้สร้าง worktree/branch ทดลองให้ต้องลบ
+งานหลังจากนี้ให้เลือกจากขอบเขตหลัง release ที่เจ้าของเก็บไว้ ไม่เริ่มเองจากบันทึกนี้
+
+## ผลก่อน release — Area 0.1.8 ผ่านแล้ว
 
 เจ้าของรับ PDF Area 5 หน้าแล้ว ตาม [แผน Area](flowdoc-area-plan-2026-10-09.md)
 Core `97a0985` รวมเข้า codex/template-binding; Service `0419718` รวมเข้า
@@ -42,7 +69,7 @@ PDF หลังเพิ่มเวอร์ชันเหมือนชุ�
 พาร์ต6 compatibility และการปรับสถานะเอกสารปิดแล้วเมื่อ2026-10-10 ใน
 [ร่างโครงสร้าง พาร์ต6](flowdoc-export-node-structure-draft-2026-10-09.md#พาร์ต-6--การใช้กับของเดิมและขอบเขตส่งมอบ-018)
 เจ้าของให้ทำคู่มือก่อน release เมื่อ2026-10-10 ผลอยู่หัวข้อคู่มือด้านล่าง
-จากนั้นจึงเลือกชุดส่งมอบและเลขรุ่นเพื่อพิจารณา release ตามคำสั่งเจ้าของ
+จากนั้นเจ้าของอนุญาต release0.1.8 แล้ว ผลอยู่หัวข้อสถานะล่าสุดด้านบน
 ยังไม่รวม area ซ้อน, โครงย่อยกลางใช้ร่วมหลาย area, Columns ใน cell หรือ DOCX
 เจ้าของเพิ่มงานหลัง release เมื่อ2026-10-10: ระบบหน้ากระดาษเต็มรูปแบบ หน้าปก
 หน้าเฉพาะและการเว้นหน้า เก็บในหัวข้อเรื่องที่เลื่อนไว้ของร่างโครงสร้างแล้ว
