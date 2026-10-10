@@ -3,14 +3,14 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: proposed roadmap for owner review, 2026-10-10.
+Status: R1 accepted for development; R2–R6 pending, 2026-10-10.
 Spec: [ร่างระบบหน้ากระดาษและส่วนของเล่ม](flowdoc-page-system-draft-2026-10-10.md)
-เจ้าของให้กาง roadmap จากร่างที่อ่านแล้ว ไม่ใช่คำสั่งเริ่ม product implementation
+เริ่มจากคำขอกาง roadmap; ต่อมาเจ้าของอนุญาตให้เริ่ม R1 หลังรับข้อสรุป R0 แล้ว
 เอกสารนี้เป็นลำดับผลส่งมอบ ไม่ใช่แผนลงโค้ดรายไฟล์ที่ให้ executor เดาสัญญาเอง
 คำถามที่ยังเปิดต้องปิดก่อนพาร์ตที่เกี่ยวข้อง แล้วเติมแผนลงมือเฉพาะพาร์ตนั้น
 ไม่เขียน signature/ชื่อ field ที่ยังไม่ตกลงให้ดูเหมือนเป็น contract ที่ใช้แล้ว
 
-งานเอกสาร inline, small/routine, execution IDs ไม่ applicable; authority คือ
+การร่างเดิมเป็นงานเอกสาร inline, small/routine, execution IDs ไม่ applicable; authority คือ
 คำขอเจ้าของและร่างที่อ้าง ใช้ workflow economy policy ของ Project Control
 scope: roadmap นี้และลิงก์ในร่างเดิม; ห้ามแก้ runtime, DB, package, release หรือ map
 proof budget: coverage ของร่าง, dependency/acceptance review, links/diff และ check:data
@@ -27,7 +27,7 @@ Core เป็นผู้จัดหน้า; Service ไม่สร้า�
 
 ลำดับหลัก: R0 → R1 → R2 → R3 → R4 → R5 → R6
 R0 ปิดข้อกำหนดที่มีผลข้ามพาร์ตก่อน ส่วนรายละเอียดเฉพาะพาร์ตคุยก่อนเริ่มพาร์ตนั้น
-สถานะ: **R0 ตรวจและสรุปทางเทคนิคแล้ว**; R1–R6 ยังไม่เริ่ม implementation
+สถานะ: **R0 และ R1 ปิดแล้วในชุดพัฒนา0.1.9**; R2–R6 ยังไม่เริ่ม implementation
 รายละเอียดสัญญาเป้าหมาย ตัวอย่าง และ task ลงมืออยู่ใน
 [R0 contract / R1 tasks](flowdoc-page-system-r0-contract-2026-10-10.md)
 การปิด R0 เป็นผลออกแบบ ไม่ใช่หลักฐานว่า runtime รองรับแล้ว
@@ -75,10 +75,10 @@ architecture/ownership ที่ปล่อยให้ implementation เด�
 
 Owner: Core; Service รับสัญญาใหม่เฉพาะส่วนที่จำเป็น พึ่ง R0
 
-- [ ] ทำ validation/binding/composition ของสามส่วนตามสัญญาที่ล็อก
-- [ ] จัดเนื้อหาหลายหน้าโดยรักษาส่วนของเล่มและต้นทางของ node
-- [ ] รองรับเส้นทางแม่แบบเดิมโดยไม่เปลี่ยนข้อมูลที่เผยแพร่แล้ว
-- [ ] ต่อ import/save/publish/contract และออก PDF ผ่าน Service ถ้าสัญญากระทบส่วนนี้
+- [x] ทำ validation/binding/composition ของสามส่วนตามสัญญาที่ล็อก
+- [x] จัดเนื้อหาหลายหน้าโดยรักษาส่วนของเล่มและต้นทางของ node
+- [x] รองรับเส้นทางแม่แบบเดิมโดยไม่เปลี่ยนข้อมูลที่เผยแพร่แล้ว
+- [x] ต่อ import/save/publish/contract และออก PDF ผ่าน Service ถ้าสัญญากระทบส่วนนี้
 
 ผลส่งมอบ: เล่มที่มีหลายส่วนใช้รูปแบบหน้าตามที่กำหนด และมี PDF ผ่าน API ให้ตรวจ
 เกณฑ์: ข้อมูลสั้น/ยาว, ส่วนว่างตามกติกา R0, reference ผิด, defaults/override,
@@ -196,3 +196,52 @@ multi-worker/โหลดหนัก, ETA และ performance overhaul
 ตามความเสี่ยงจริงก่อนแก้ product ไม่มีการเปิดรอบแยกหรือสร้างงานใหม่โดยอัตโนมัติ
 R1 ส่งมอบส่วนของเล่มทั่วไปก่อน; cover/fixed-height อยู่ R2 และรายละเอียดหัวท้ายอยู่ R3
 ถ้าพบข้อจำกัดที่เปลี่ยนสัญญาหรือ scope ต้องกลับมา resolve ไม่แก้โดยเงียบ ๆ
+
+
+## ผลรับ R1 — 2026-10-10
+
+Owner Core/Service; inline implementation ตาม R0 Tasks1–4, risk routine,
+execution IDs ไม่ applicable. เจ้าของยืนยัน PDF8หน้าและลิงก์สารบัญใช้ได้
+Core runtime commit `62e50bf`, เพิ่ม exact-boundary test `7134894`;
+Service `27e7a3b`; ทั้งคู่เป็น0.1.9 ใน branch พัฒนา ไม่ขึ้น release
+
+- Core build/339 tests ผ่าน; เพิ่ม exact-boundary regression อีก1ข้อและรันกลุ่ม
+  pageSections5ข้อผ่านหลัง commit runtime โดยไม่มีการเปลี่ยน runtime เพิ่ม
+- Packed Linux consumer ผ่านทุกกลุ่มเดิมและ page-sections: long8หน้า/static2หน้า
+  `flowdoc-core/artifacts/worktree-archive/flowdoc-core-page-sections/1791618157602/result.json`
+  แพ็กเกจ SHA256 `2a07fdd8682f433fb79f419cc83892db8147322247079504f80d6c6cbe0329fd`
+- Service final affected51 tests ผ่าน0fail/0skip บน DBใหม่แยกชื่อ flowdoc_r1_final
+  ใน projectทดลอง; หลักฐาน
+  `flowdoc-service/artifacts/worktree-archive/flowdoc-service-page-sections/page-sections-r1/result.json`
+  รวม import/save/publish/load, rename identity, Area deletion พร้อม owned DB rows,
+  pinned snapshot ไม่เปลี่ยน, schema-only contract และรูป authored ผ่าน HTTP PDF
+- ตรวจภาพ8หน้าด้วย Poppler และเจ้าของรับรูปแบบ/ลิงก์แล้ว; หลังแก้ diagnostic
+  PDFมี SHA256 เดิม `4ba086aa9bd2453cb8bcf0f85faba6519b6e9f1864a78c40ad6c40fc73247ffc`
+- Fresh reviewer พบ margin diagnostic ชี้ส่วนสารบัญผิด แก้และพิสูจน์ RED→GREEN
+  ใน tests/pdf/createPdfEngine.test.ts; ไม่มี runtime defect อื่นที่ reviewer ระบุ
+
+ข้อจำกัดที่เปิดเผย: การรัน Service ทั้งชุดครั้งแรกได้125/127 โดยอีก2ข้อคือ
+สิทธิ์โฟลเดอร์หลักฐานทดลอง (แก้แล้ว) และ upload-acceptance migration004
+ซึ่งทดลองบน release0.1.8 แล้วล้มตำแหน่งเดียวกัน จึงเป็น baseline failure
+ไม่อ้างว่า full suiteผ่าน และไม่แก้ migration/fixture เก่านอก R1
+ก่อน releaseรวมควรแยกเก็บ test migrationเก่านี้: มันใช้ register ปัจจุบันกับ DB001–003
+แล้วคาดชุด migrationจบ008 ทั้งที่ระบบมี009 แล้ว
+การรันทวน current บน DBทดลองเดิมเจอ CURRENT_EXISTS จากข้อมูลรอบก่อน;
+ผลรับใช้ DBใหม่ที่51ข้อผ่าน ไม่ใช้การลบข้อมูลผู้ใช้
+
+Rulings: section ว่างตัดสินจาก root หลัง expansion; table root แม้ไม่มีแถวยังคง
+พฤติกรรมเดิมเหมือน blank TextBlock ไม่เพิ่มกฎตัด node จากหมึกที่มองเห็น
+validation/prepared tests รวมอยู่ใน tests/template/pageSections.test.ts;
+ไม่สร้าง helper sectionFlow เพราะใช้ page context ร่วมใน documentFlow ได้ตรงกว่า
+และยังรวบรวมสารบัญ/anchors ทั้งเล่มครั้งเดียว
+
+ขั้นต่อไป R2: ปกหน้าเดียวและกล่องจองความสูงตามสัญญาที่รับแล้ว
+หัวท้าย/เลขแสดงอยู่ R3/R4; ไม่มี DOCX/frontend/DB redesign ในงานนี้
+
+
+Integration/cleanup: fast-forward เข้า Core codex/template-binding (`7134894`)
+และ Service codex/template-registry (`27e7a3b`) แล้ว เนื้อหาที่ตรวจไม่เปลี่ยน
+เก็บ PDF/tarball/result/log ไว้ใน artifacts/worktree-archive ตาม path ด้านบน
+ลบ worktree/branch codex/page-sections ที่ clean/merged ของทั้งสอง repo แล้ว
+และลบ container/network/volume เฉพาะ projectทดลอง flowdoc-page-sections-r1
+release refs คง Core `7b5161c` / Service `78c9491`; ไม่มี push หรือ deploy

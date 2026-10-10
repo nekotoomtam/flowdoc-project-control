@@ -243,9 +243,10 @@ SLA/เปอร์เซ็นต์รวม/ETA หรือ performance over
 [Roadmap R0–R6](flowdoc-page-system-roadmap-2026-10-10.md)
 ร่างนี้ยังเป็นฐานข้อกำหนด ส่วน roadmap เป็นลำดับผลส่งมอบและการตรวจรับ
 ปัจจุบัน R0 ตรวจแบบ read-only และสรุปสัญญาเป้าหมาย/แผน R1 แล้วใน
-[R0 contract](flowdoc-page-system-r0-contract-2026-10-10.md) ยังไม่มี implementation
+[R0 contract](flowdoc-page-system-r0-contract-2026-10-10.md); ต่อมา R1 ทำและตรวจรับแล้วใน0.1.9
+ดูผลจริงและข้อจำกัดใน roadmap ส่วนผลรับ R1
 
-ขั้นถัดไปใช้ R0 contract และ roadmap ลงรายละเอียด/ลงมือ R1 ตาม task ที่ระบุ
+ขั้นถัดไปหลังรับ R1 ใช้ R0 contract และ roadmap ลงรายละเอียด/ลงมือ R2 เรื่องปกและกล่องจองความสูง
 พร้อม acceptance และ proof ของพาร์ตที่กำลังจะทำ
 ไม่ต้องล็อกคำตอบรายละเอียดทุกพาร์ตเพื่อรับทิศทางร่วม แต่ห้ามลงมือส่วนที่ยังมี
 คำถามเปลี่ยน architecture/contract โดยไม่ resolve ก่อน
