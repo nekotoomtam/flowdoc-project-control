@@ -3,8 +3,7 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-Status: R1–R3 and Section ownership accepted; development0.1.12, 2026-10-10.
-R4 requirements/design starting; no R4 implementation accepted yet.
+Status: R0–R6 accepted; Core/Service local release0.2.0 completed, 2026-10-10.
 Spec: [ร่างระบบหน้ากระดาษและส่วนของเล่ม](flowdoc-page-system-draft-2026-10-10.md)
 เริ่มจากคำขอกาง roadmap; ต่อมาเจ้าของอนุญาตให้เริ่ม R1 หลังรับข้อสรุป R0 แล้ว
 เอกสารนี้เป็นลำดับผลส่งมอบ ไม่ใช่แผนลงโค้ดรายไฟล์ที่ให้ executor เดาสัญญาเอง
@@ -28,7 +27,8 @@ Core เป็นผู้จัดหน้า; Service ไม่สร้า�
 
 ลำดับปัจจุบัน: R0 → R1 → R2 → R3 → ปรับเจ้าของข้อมูลตาม Section → R4 → R5 → R6
 R0 ปิดข้อกำหนดที่มีผลข้ามพาร์ตก่อน ส่วนรายละเอียดเฉพาะพาร์ตคุยก่อนเริ่มพาร์ตนั้น
-สถานะ: **R0–R5 และ Section ownership ปิดแล้วในชุดพัฒนา0.1.14**; ขั้นถัดไป R6 ตรวจรวมและเตรียม release
+สถานะ: **R0–R6 และ Section ownership ปิดแล้ว; ทั้งสอง repo ขึ้น release0.2.0**.
+ผลรับ/หลักฐานอยู่ท้ายเอกสาร; รอบถัดไปออกแบบเลขหัวข้อตามระดับตามที่เจ้าของรับไว้
 รายละเอียดสัญญาเป้าหมาย ตัวอย่าง และ task ลงมืออยู่ใน
 [R0 contract / R1 tasks](flowdoc-page-system-r0-contract-2026-10-10.md)
 การปิด R0 เป็นผลออกแบบ ไม่ใช่หลักฐานว่า runtime รองรับแล้ว
@@ -147,7 +147,7 @@ Owner: Core พึ่ง R2–R3 และข้อมูลหน้าจร�
 totalรวมหน้าที่ร่วมการนับทั้งเล่ม และ continue เป็นค่าเริ่มต้น.
 [ร่างสัญญา R4 และเกณฑ์ทดสอบ](flowdoc-page-system-r4-design-2026-10-10.md)
 เจ้าของรับแล้ว; [แผนลงมือ R4](flowdoc-page-system-r4-plan-2026-10-10.md)
-พร้อมตรวจ ยังไม่มี R4 runtime ที่ส่งมอบแล้ว.
+ดำเนินการและรับงานแล้วตามผลรับ R4 ด้านล่าง.
 
 - [x] ล็อกรูปแบบเลขเริ่มต้น การเริ่มใหม่/ต่อเนื่อง และความหมายของการซ่อนกับไม่นับ
 - [x] ทำเลขแสดงโดยไม่เปลี่ยน identity หรือลำดับหน้าจริงใน PDF
@@ -179,13 +179,13 @@ Owner: Core; Service ตรวจ fixture/request ตาม contract พึ่�
 
 Owner: Core/Service สำหรับผลตรวจ, Project Control สำหรับการรับชุดส่งมอบ พึ่ง R1–R5
 
-- [ ] ใช้ fixture ร่วม: ปก → สารบัญ → เนื้อหามีตารางเซลล์รวม/ภาพ/Area → ส่วนปิดท้าย
-- [ ] ออก PDF ข้อมูลสั้นและยาวผ่าน API จาก template version ที่ล็อก
-- [ ] ตรวจของเดิมตามพื้นที่ผลกระทบ และ migration upgrade หากรอบนี้มี migration
-- [ ] ตรวจแพ็กเกจ Core จริงและ Service ที่ตรึง checksum เดียวกัน
-- [ ] ให้เจ้าของดู PDF และลองลิงก์ที่ใช้จริง; บันทึกข้อจำกัดที่ยอมรับ/เลื่อน
-- [ ] ปรับคู่มือและบันทึก compatibility เลือกเลขรุ่น แล้วรับอนุมัติ release ชุดที่ตรวจแล้ว
-- [ ] ทำ snapshot/tag ตามกติกาเดิม และเก็บกวาดเฉพาะงานชั่วคราวที่จบ/clean
+- [x] ใช้ fixture ร่วม: ปก → สารบัญ → เนื้อหามีตารางเซลล์รวม/ภาพ/Area → ส่วนปิดท้าย
+- [x] ออก PDF ข้อมูลสั้นและยาวผ่าน API จาก template version ที่ล็อก
+- [x] ตรวจของเดิมตามพื้นที่ผลกระทบ และ migration upgrade หากรอบนี้มี migration
+- [x] ตรวจแพ็กเกจ Core จริงและ Service ที่ตรึง checksum เดียวกัน
+- [x] ให้เจ้าของดู PDF และลองลิงก์ที่ใช้จริง; บันทึกข้อจำกัดที่ยอมรับ/เลื่อน
+- [x] ปรับคู่มือและบันทึก compatibility เลือกเลขรุ่น แล้วรับอนุมัติ release ชุดที่ตรวจแล้ว
+- [x] ทำ snapshot/tag ตามกติกาเดิม และเก็บกวาดเฉพาะงานชั่วคราวที่จบ/clean
 
 ผ่านเมื่อเกณฑ์ของทุกพาร์ตครบ ตัวอย่างทั้งเล่มรับได้ ไม่มีปัญหาความถูกต้องค้าง
 ผลตรวจผูกกับ source/artifact ที่จะส่งมอบ และ skipped ไม่ถูกนับเป็น PASS
@@ -209,7 +209,7 @@ multi-worker/โหลดหนัก, ETA และ performance overhaul
 เจ้าของรับเป้าหมาย release0.2.0 แล้ว ไม่ผูกหมายเลข R กับเลขรุ่น
 และไม่ย้ายเข้า release ระหว่างพาร์ต
 
-## จุดเริ่มถัดไป
+## จุดเริ่ม R1 (บันทึกเดิมก่อนลงมือ)
 
 เริ่ม R1 ตาม Task1–4 ใน R0 contract โดยตรวจฐาน/สัญญาที่อ้างและเลือก isolation
 ตามความเสี่ยงจริงก่อนแก้ product ไม่มีการเปิดรอบแยกหรือสร้างงานใหม่โดยอัตโนมัติ
@@ -390,3 +390,97 @@ Docker project flowdoc-contents-r5พร้อมvolume/network/imageทดล�
 Releaseคง Core7b5161c / Service78c9491 (0.1.8); ไม่มี push/deploy/map promotion.
 R6ยังไม่เริ่ม: ตรวจทั้งเล่ม/คู่มือ/release และเก็บ migration004 baseline test debt.
 ไม่อ้าง full Service-suite PASS จากชุดตรวจเฉพาะพื้นที่นี้.
+
+## R6 inline release scope — 2026-10-10
+
+Owner authorized finishing R6 and local release of both repositories, target0.2.0.
+Role: Product Implementation Agent then Evidence Reviewer / Project Control Steward.
+Medium size, routine risk, execution IDs N/A. Authority: this roadmap and current
+owner request. Bases Core d72408c / Service308ee81; isolated sibling page-release
+lanes (native worktree tool applies to Project Control only). No runtime feature
+expansion, new migration, remote push, deployment or map promotion.
+
+- [x] Repair migration-test fixtures against their historical schema; keep all
+  released SQL immutable. Run Service full Docker suite for combined release
+  (includes upgrades, pinned snapshots, jobs, uploads and rendering).
+- [x] Update existing Core template guide/README and Service usage/README for
+  model16 and release0.2.0; preserve legacy model4–15. Align package manifests,
+  repack Core Linux consumer, pin exact checksum/source in Service.
+- [x] Reuse R5 complete-book short/long fixtures through real HTTP on isolated
+  Docker DB after import/publish. Check images, contents links and numbering;
+  compare accepted R5 PDF geometry where applicable. Preserve PDF/log artifacts.
+- [x] Review changes, verify impact coverage, integrate unchanged development
+  candidates, create release snapshot commits and immutable v0.2.0 tags using
+  existing release convention. Keep development branches. Clean only this lane.
+
+Proof budget: Core build/tests/package once for final artifact; Service full
+container suite once plus bounded repairs; API short/long outputs and PDF
+inspection, one final review. No production-load or clean-machine claim.
+Document budget: this roadmap, existing product guides/README only. Shared status
+stays here. Open prerequisite: migration004 old fixture uses current registrar
+against001–003; inspect/fix fixture, not production SQL. PDF approval from R5 may
+be reused only if final output matches its accepted rendering/link semantics.
+
+Deferred owner-approved next round: optional automatic hierarchical heading
+numbers (1,1.1,1.1.1), shared by body headings and TOC; no caller-supplied numbers.
+Detailed depth/reset rules remain to be designed after this release.
+
+
+## ผลรับ R6 และ release0.2.0 — 2026-10-10
+
+เจ้าของอนุญาตเก็บงานก่อนขึ้น release แล้วค่อยเริ่มเลขหัวข้อตามระดับ.
+Core development `7aff2f178ff701acbe7f407c8bca22951db8f6d6`, Service development
+`f89225cd0b5871108b4763f5692e6625c93973e6`. รวมแบบ fast-forward โดย tree ไม่เปลี่ยน.
+Release snapshot parent เป็น release0.1.8 เดิม และ tree เท่ากับ candidateที่ตรวจ:
+
+- Core release `c17f1973d0206e9d45c3db3c0abb03ac442fceb0`
+- Service release `edd9a7ef115dfcd80fe8994c258bb1ee796c7d3c`
+- Annotated tag `v0.2.0` ทั้งสอง repo ชี้ snapshot ของตน ตรวจตรงกับ releaseแล้ว.
+- Core tarball SHA256 `d6a3d6bb612263b92d2d09d847372c71da5cd8dcc664a9cd681fdcf5d20aaa07`
+  ตรง vendor/manifest และ lock ของ Service; sourceCommitเป็น Core7aff2f1.
+
+ขอบเขตที่เปลี่ยน R6: package versions/pin, คู่มือและตัวอย่างทั้งเล่ม,
+สคริปต์ HTTP acceptance, แก้ historical DB test fixtures/expectations.
+ไม่มีการแก้ production runtime หรือ migrations ใน R6. ของเดิม model4–15ยังใช้
+สัญญาของตน; model15/16ใช้ dataร่วมและ sections. ไม่แปลงแม่แบบเก่าอัตโนมัติ.
+
+ผลตรวจ/coverage:
+- Core build+416 tests/50files PASS; packed Linux consumerทุกกลุ่ม PASS.
+  PDF8/17หน้าตรง accepted R5ทุกไบต์; checkerของลิงก์/เลขหน้าผ่าน.
+- Service buildและvendor integrity PASS. Full Docker runแรก160/162; สองข้อ
+  ไม่ผ่านเพราะ expected migrationไม่มี012และ expected tablesไม่มี Section.
+  หลังแก้ expectationตาม schemaจริง รันทั้งสองไฟล์ใหม่บน DBใหม่11/11 PASS.
+  ครอบคลุม162 unique casesด้วยผลรวมดังกล่าว ไม่อ้างว่ามี full rerun162/162ครั้งใหม่.
+- migration004 baseline debt ปิดแล้ว: seed normalized rowsด้วย columns001–003
+  แทนการเรียก registrarปัจจุบันบน schemaเก่า. พิสูจน์004ไม่เปลี่ยนแถวเก่า,
+  อัปเกรดถึง012รักษา historical columns/IDs และโหลด published snapshotได้.
+  REDของ fixtureเก่าและ GREEN7ข้อรวม section migrationเก็บในlogs.
+- Whole-book APIใช้ DBแยก `flowdoc_r6_api`: import → publish version1 → upload
+  PNG → finalize → POST/jobs → status → download → repeat download410 PASS.
+  Short8/long17หน้า, สารบัญ1/3หน้า, number links8/75และ title links15/82ผ่าน.
+- Renderเทียบทั้ง25หน้า pixel-identicalกับ R5ที่เจ้าของรับแล้ว; PDF drawing
+  commandsต่างเพียงชื่อ image-resource (/Im1 กับ /Im2). ตรวจ contact sheetด้วย.
+  จึงใช้ผลรับภาพ/การคลิกเดิมได้ ไม่ขอให้เจ้าของตรวจเอกสารเดิมซ้ำ.
+- Fixtureภาพสี2×1pxจงใจให้2 low-resolution warnings และไม่ส่ง optional logos
+  จึงมี7 unavailable warnings. HTTP scriptตรวจชุดนี้ตรง ๆ ไม่กลบ warningอื่น.
+  ภาพนี้พิสูจน์ตำแหน่ง; testsภาพจริง/APIอื่นใน Serviceผ่านตามขอบเขตเดิม.
+- One fresh read-only review + bounded delta review: แก้คำอธิบาย model15ใน
+  คู่มือหนึ่งจุดแล้ว ไม่มี actionable findingค้าง. Source/guide diffตรวจแล้ว.
+
+หลักฐานหลังเก็บกวาด:
+- `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-page-release/1791636533011/`
+  tarball, consumer PDFs และ result.json; logsและaccepted comparisonอยู่ข้างกันในr6.
+- `../flowdoc-service/artifacts/worktree-archive/flowdoc-service-page-release/r6/`
+  baseline/fix/full/repaired test logs, builds, API logs. `api/` มี PDFทั้งสอง,
+  job/result/contract JSON, comparison.json, PNGเทียบและcontact.png.
+- Copyแล้วเทียบhash Core109/Service78ไฟล์ก่อนล้าง. Release commit messages
+  บันทึก source/artifact/evidenceเพิ่มไว้ในarchive parent.
+- ล้าง clean/merged worktreeและbranch codex/page-releaseของทั้งสอง repoแล้ว.
+  ล้าง Docker project flowdoc-page-r6 รวม containers/network/volumes และ
+  สามimage tagsเฉพาะรอบ; ไม่แตะ development/release branchesหรือtagsเดิม.
+
+ใช้ผลตรวจซ้ำหลัง unchanged fast-forward/snapshotตาม policy; ไม่รันกว้างเพิ่ม
+เมื่อ coverageครบ. ไม่มี push, registry publication, deploy หรือ map promotion.
+ไม่รับรอง clean-machineหรือproduction concurrency; งานนี้ local Linux Docker.
+DOCX/frontend, TOCระดับ4ขึ้นไป, Roman numerals และงานหลังreleaseอื่นยังเลื่อน.
+ขั้นถัดไปคือออกแบบ hierarchical heading numberingตามข้อตกลงด้านบน ไม่เริ่มโค้ดในR6.
