@@ -240,5 +240,60 @@ Publish อ่าน revision เดียวกันใน transaction แล�
 - ข้อมูล/หัวท้าย/ภาพของ Sections ที่ความกว้างเท่ากันไม่ปะปน.
 
 รายละเอียดที่ยังต้องปิดใน Core/API contract: วิธี map authored Section ID กับ
-DB ID, syntax อ้างค่าร่วม/ค่า Section และพฤติกรรม omitted/unknown Section.
+DB ID, syntax อ้างค่าร่วม/ค่า Section ส่วนพฤติกรรม omitted/unknown Section ปิดแล้วตามข้อตกลง API ด้านล่าง.
 ไม่ถือว่าการปิดแบบ DB นี้ปิด API contract หรือพิสูจน์ implementation แล้ว.
+
+
+## ข้อตกลง API ที่เจ้าของรับต่อ — 2026-10-10
+
+ตัวอย่างรูปทรงคำขอสำหรับรุ่นใหม่ (ยังไม่ใช่ endpoint ที่รองรับแล้ว):
+
+```json
+{
+  "docKey": "project-report",
+  "version": 2,
+  "data": { "projectName": "โครงการ A" },
+  "sections": {
+    "overview": {
+      "data": { "description": "ภาพรวมโครงการ" },
+      "header": { "title": "ภาพรวม" },
+      "footer": {}
+    },
+    "requirements": {
+      "data": { "items": [] },
+      "header": { "title": "ข้อกำหนด" },
+      "footer": {}
+    }
+  }
+}
+```
+
+- ผู้สร้างแม่แบบประกาศ Section ID/key, ลำดับ, หน้าและ schemas ไว้ก่อน.
+  ผู้เรียกใช้ key ไม่ส่ง ID ภายใน DB หรือ node graph.
+- ลำดับ key ใน request ไม่กำหนดลำดับเอกสาร; ยึดลำดับแม่แบบ.
+- ไม่ส่ง Section ไม่ได้แปลว่าตัด Section นั้นออก. ถือเป็นข้อมูลว่าง แล้วใช้
+  default และ required ตาม schemas ที่ประกาศ รวมเนื้อหา/หัว/ท้าย.
+  เมื่อมี required ขาดให้ตอบตำแหน่งที่ขาด ไม่เริ่ม job.
+- ไม่ส่งค่าไม่เหมือนส่งชนิดผิด; object หรือค่าที่ชนิดผิดยังถูกตรวจตามสัญญา.
+- ปกเป็น Section role cover; อ้างค่าเฉพาะ Section หรือค่าร่วมได้
+  และยังไม่แสดงหัวท้ายตามกฎเดิม. ทางอ่านรุ่นเก่าไม่เปลี่ยน.
+- การอ้างค่าร่วม/ค่าเฉพาะต้องระบุขอบเขตชัด ไม่ค้นข้ามอัตโนมัติ.
+  syntax field reference ที่แน่นอนยังต้องกางใน Core contract.
+
+### ชื่อ Section ที่ไม่รู้จัก: strict เป็นค่าเริ่มต้น
+
+เจ้าของเลือกตามคำแนะนำหลังอภิปรายการข้ามบางส่วน:
+ถ้ามี key ใน request.sections ที่ไม่มีในแม่แบบเวอร์ชันที่เลือก
+ให้ปฏิเสธทั้งคำขอก่อนสร้าง job และก่อนเริ่ม render.
+แจ้ง key/path ที่ผิด พร้อม Section keys ที่รองรับของแม่แบบนั้น.
+ใช้กฎเดียวไม่ว่ามี Section เดียว หลาย Section หรือถูก/ผิดปนกัน.
+ห้ามรายงานสำเร็จพร้อมข้าม Section ที่ไม่รู้จักเงียบ ๆ.
+
+การข้าม Section ผิดเพื่อออกเอกสารบางส่วนเป็นแนวคิด mode ในอนาคตเท่านั้น
+ยังไม่เพิ่ม field/flag/branch พฤติกรรมในรอบนี้.
+กฎนี้เจาะจง Section key ไม่เปลี่ยนนโยบาย unknown variable/unknown area format เดิม.
+
+Acceptance เพิ่ม: unknown key เดี่ยว/ปน known/ผิดทั้งหมดต้องไม่สร้าง job;
+response ชี้ key ถูกต้อง; omitted Section ใช้ default หรือแจ้ง required;
+request เรียง keys ต่างกันยังได้ลำดับแม่แบบเดิม.
+นี่เป็นผลรับ contract ไม่ใช่ผลทดสอบ runtime.
