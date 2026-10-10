@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Cross-Repo Boundary Reviewer.
-Status: product decisions accepted in conversation; written design for review.
+Status: written design accepted to proceed by owner; implementation planning, 2026-10-10.
 This is design intent, not implementation Evidence or release approval.
 Current work: inline documentation, small/routine, execution IDs not applicable.
 Runtime owners: Core for contracts, binding, measurement/layout/PDF; Service for
@@ -136,3 +136,49 @@ No implementation plan is considered ready merely from this design file.
 - Packed Core Linux consumer + Service isolated DB/API test + owner PDF review.
 - Do not declare migration004 baseline test debt resolved without separate proof;
   retain the R1/R2 limitation until repaired before combined release.
+
+
+## Technical decisions for the implementation plan
+
+Use a model14 gate; models4–13 remain unchanged. Add optional template header/footer
+as band definitions, each with inputSchema, fragment, baseTextStyleId, sizing and gap.
+Bindings marked global inside a band resolve against that band's inputSchema/data,
+never document data; local/item binding is unavailable without repeat contexts.
+Band schema starts with scalar string/image/link, using existing field semantics.
+Arrays/Area require repeat support and remain outside this band scope.
+
+Sizing: content mode default, optional minHeight/maxHeight; fixed mode requires
+height and rejects minHeight/maxHeight to avoid contradictory settings. Missing
+min resolves to one base-style line; explicit min below that line is invalid.
+Base style is required and references an existing style. Gap defaults to 0pt;
+explicit nonnegative gap is allowed. Top-align contents inside reserved height.
+No implicit padding. Content/max and fixed heights obey the aggregate40% ceiling.
+
+Columns is a band-only node, one level: props contains nonnegative gap (default0),
+columns contains ordered {weight, childIds}; positive finite weights split usable
+width after gaps. Each column stacks TextBlock/Image only, top-aligned. Height is
+maximum column height. Columns cannot be a child of Columns or enter body/cells.
+A regular band root sequence may contain TextBlock/Image/Columns. Disallow TOC
+membership and anchor definitions on repeated band nodes; references to body
+anchors retain existing resolution. Node identities are isolated by band prefix.
+
+Section headerMode/footerMode enums: all, first, continuation, none. Defaults all
+when corresponding definition exists; cover/blank override none. Footer is drawn
+inside bottom content margin, ending at the inner bottom edge; temporary page
+numbers remain in the outer bottom margin, preserving the existing18pt requirement.
+This prevents overlap without introducing R4 page-number fields.
+
+Service schema rows gain scope global|format|header|footer, with format reference
+required only for format. Missing scope in legacy current-record API input is
+normalized from formatId; outputs can expose scope. New rows and snapshots carry
+scope. Migration010 backfills both current and version tables, replaces owner
+uniqueness constraints, and preserves every existing schema/variable identity.
+No new variable-type master, no duplicate header/footer schemas hidden in JSON.
+
+Continuation tables must read live page top/bottom through getters after nextPage.
+A row that cannot fit the first-page region but fits the next-page region must
+advance once before rejecting; a row impossible on any applicable continuation
+page fails without a loop. Repeated table headers count against the same budget.
+
+These decisions close the seams recorded above; exact tasks and verification are
+in the R3 plan. They are proposed implementation details, not runtime evidence.
