@@ -668,3 +668,40 @@ time to download readiness, with input size, page count and machine context.
 Collect measurements before choosing a performance threshold; concurrent-load
 testing and performance tuning are not implicitly included. Recheck source
 normalization needs against this new input when execution resumes.
+
+### SRS legacy generator sizing reference — 2026-10-10
+
+Owner requested a read-only comparison before future layout adjustment. Reference:
+`C:/Users/nekot/.codex/attachments/dd9bf4e6-e50b-4889-9fa3-a61a84106c27/ข้อความที่วาง.txt`,
+SHA256 `1f34716e782ee7593eed5674ba792ce028d9416a7472fe19251224ab71afdb64`.
+Compared source constants/helpers against the existing ignored
+`../flowdoc-service/artifacts/srs-cid-021/trial.mjs`; no generator execution,
+network requests, product edits, template changes or new PDF this round.
+
+Source reference values (geometry in mm; font sizes in pt):
+
+| Item | Legacy generator | Existing FlowDoc trial |
+| --- | --- | --- |
+| Paper | A4 portrait210x297 | A4 portrait |
+| Body side margins | 10 each; usable190 | 28.35pt each, approximately10mm |
+| Requirement columns | 16/64/20%;30.4/121.6/38mm | 65/393.5/80pt;approximately22.9/138.8/28.2mm |
+| Body text | 16pt | 12pt |
+| Heading | 18pt in requirements | 16pt |
+| Main cover title | 29pt | 24pt |
+| Requirement line step | 7mm, approximately19.84pt | 22pt, approximately7.76mm |
+| Requirement wrap width | Column width minus3mm | Column width minus10pt, approximately3.53mm |
+| Banner | x0,y0,width211,height27mm | 538.5x62.4pt, approximately190x22mm, within margins |
+| Footer | 13pt; page baseline275mm, rule277mm, copyright/version281mm | 9pt, three columns in flowing footer band |
+
+The legacy file registers only THSarabunNew through Get_font_pdf_th2 and selects
+the bold alias; actual font bytes are external and were not supplied here.
+Trial uses bundled Sarabun normal/bold. Font equivalence is unverified and must
+be resolved before attributing wrap differences solely to size. Body continuation
+resets y to38mm and uses endpage260mm with additional per-row break guards;
+these are baseline/flow rules, not directly interchangeable with page margins.
+Legacy rows also reserve a minimum two line slots, icon space and2mm trailing
+space; trial currently uses4pt top/bottom cell padding and a prepared icon strip.
+Do not translate these into one universal padding value or promise identical
+pagination. Future layout work should use the source's sizing intent with the
+reference PDF for visual acceptance, retaining FlowDoc's text shaping/wrapping.
+The earlier tab/API/timing work remains pending and precedes major layout work.
