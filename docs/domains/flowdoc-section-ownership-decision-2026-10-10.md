@@ -297,3 +297,38 @@ Acceptance เพิ่ม: unknown key เดี่ยว/ปน known/ผิ�
 response ชี้ key ถูกต้อง; omitted Section ใช้ default หรือแจ้ง required;
 request เรียง keys ต่างกันยังได้ลำดับแม่แบบเดิม.
 นี่เป็นผลรับ contract ไม่ใช่ผลทดสอบ runtime.
+
+
+## ขอบเขตการอ้างตัวแปรที่เจ้าของรับ — 2026-10-10
+
+ผู้ใช้เห็นด้วยกับ ID/key/label แยกหน้าที่และ scopes ต่อไปนี้สำหรับรุ่นใหม่:
+
+| scope | แหล่งข้อมูล |
+| --- | --- |
+| global | request.data ร่วมทั้งเล่ม |
+| section | request.sections.<key>.data ของ Section ปัจจุบัน |
+| header | request.sections.<key>.header ของ Section ปัจจุบัน |
+| footer | request.sections.<key>.footer ของ Section ปัจจุบัน |
+| local | ข้อมูลของโครงย่อยที่กำลังประกอบ ตามหลักเดิม |
+| item | ข้อมูลรายการที่กำลังวน ตามหลักเดิม |
+
+Binding ระบุ scope และ key ชัดเจน เช่นหัวกระดาษอ้าง
+{scope:'global',key:'projectName'} ร่วมกับ {scope:'header',key:'title'} ได้.
+ไม่มี fallback ค้นชื่อใน scope อื่นเมื่อหาไม่เจอ.
+รายชื่อ scopes ไม่ได้เปิดทุก scope ในทุกชนิด node; แผนลงมือต้องระบุ legality
+ตามบริบทที่มีข้อมูลจริง โดยไม่เพิ่ม repeats/Area ในหัวท้ายเกิน R3.
+
+ไม่เปิดการอ้างค่าของ Section อื่นโดยตรงในระยะนี้.
+ค่าที่ต้องใช้หลาย Section ให้ใช้ global; ไม่เพิ่ม cross-section reference syntax.
+กฎนี้ไม่เปลี่ยนลิงก์/anchor ข้ามหน้าเดิม ซึ่งเป็นคนละเรื่องกับการอ่านตัวแปร.
+การอ่าน model14/เก่าคงความหมายเดิม รวม global ภายใน band ตามสัญญาเก่า;
+ห้ามตีความ band เก่าด้วย scope ใหม่โดยอัตโนมัติ.
+
+Section id เป็นตัวตนคงที่, key สำหรับ API, label สำหรับแสดงผล.
+เมื่อ publish สร้าง ID ของแถวเวอร์ชันใหม่และ map references ภายในชุดนั้น
+โดยคัดลอก key/label ณ เวลาที่ publish; ผู้เรียกไม่ต้องส่ง DB IDs.
+รายละเอียด mapping authored identity กับแถว DB ยังคงเป็นจุดที่ต้องระบุ
+ในแผนลงมือให้แน่นอน ไม่อนุมานว่าผลรับนี้อนุญาตสร้าง ID ใหม่ทุกครั้งที่ save.
+
+ผลรับนี้เป็นขอบเขตออกแบบ ไม่ใช่ผล implementation. ขั้นต่อไปกางแผน Core
+และ Service พร้อมตัวอย่างแม่แบบ/request คู่กันและเกณฑ์ทดสอบที่บันทึกไว้.
