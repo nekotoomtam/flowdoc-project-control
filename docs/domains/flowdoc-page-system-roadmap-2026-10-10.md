@@ -647,3 +647,24 @@ and their two branches were removed after evidence archival; three task-only
 Docker image tags removed. Unchanged tested content permits proof reuse.
 Deferred: source-layout fidelity, general tab handling, full-book HTTP acceptance,
 five-dataset acceptance,300–700-page capacity and font sharding.
+
+### Replacement SRS input and paused next steps — 2026-10-10
+
+Owner supplied a replacement JSON for all subsequent SRS trials:
+`C:/Users/nekot/.codex/attachments/1489b53b-c835-4069-b346-d52c27a73eec/ข้อความที่วาง.txt`.
+Source size3989716 bytes; SHA256
+`8c8c6cdf91e6dfa4e6032a1b09a6f336e96430e267f81e386d068cc79e2f82ea`.
+JSON syntax parses successfully. This supersedes the earlier attachment as the
+next input, without replacing prior artifacts or transferring their acceptance
+to this dataset. No normalization, export or runtime changes have been run for
+the replacement; source business data remains outside Git.
+
+Inline Project Control Steward maintenance only, routine, execution IDs N/A;
+scope is this existing checkpoint and source identity verification. Owner has
+explicitly paused implementation. Before major layout work, the agreed pending
+items are general tab handling and full SRS API/queue/download acceptance.
+During that future test, record queue wait, preparation, PDF generation and total
+time to download readiness, with input size, page count and machine context.
+Collect measurements before choosing a performance threshold; concurrent-load
+testing and performance tuning are not implicitly included. Recheck source
+normalization needs against this new input when execution resumes.
