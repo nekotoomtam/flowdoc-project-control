@@ -555,3 +555,28 @@ PDF and rendered pages/contact sheet; check-trial.py reproduces presence/render
 checks. Product tracked files unchanged; no version bump or release changes.
 Next recommended scope: fix and verify CID allocation for long documents, then
 rerun this full SRS before pursuing layout fidelity or five-dataset acceptance.
+
+### Raw SRS input normalization — 2026-10-10
+
+Owner supplied the original JSON attachment and requested restructuring. Inline
+Service-owned ignored artifact work, routine; execution IDs N/A. No runtime or
+release edits. Use `unit2` for the current ordered body, not the empty `srs` field
+or historical `version.versionlist[].dv_data`. Preserve historical snapshots in
+the original attachment; do not concatenate them into current requirements.
+
+`artifacts/srs-source-020/normalize-raw.py` creates srs-values-from-raw.json and
+srs-request-from-raw.json; raw-normalization-check.json records source SHA and
+mapping limits.32 headings,240 unique source IDs/REQ codes, all240 requirement
+details match the PDF extraction ignoring whitespace; category sequences match.
+Raw detail strings are preserved exactly, including their1088 newline characters,
+instead of1798 from physical PDF extraction. Input array order is retained.
+Core0.2.0 public validation/preparation/composition PASS, zero warnings; no render.
+
+Body text now comes from raw data. Front matter remains explicitly PDF-derived:
+outer version.name is not assumed to be the document author, and snapshot dates
+do not silently replace printed dates. Element master has10 entries versus9 in
+the PDF legend (Minutes of Meeting is extra); preserve inventory without adding
+content. Screenshot references are not downloaded or inserted. Unrelated project
+fields are not copied into generation input. The CID writer blocker remains open;
+raw input resolves the extraction-related line-break ambiguity for mapped text,
+not the export capacity issue or full acceptance.
