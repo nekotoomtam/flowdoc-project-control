@@ -484,3 +484,31 @@ Release snapshot parent เป็น release0.1.8 เดิม และ tree �
 ไม่รับรอง clean-machineหรือproduction concurrency; งานนี้ local Linux Docker.
 DOCX/frontend, TOCระดับ4ขึ้นไป, Roman numerals และงานหลังreleaseอื่นยังเลื่อน.
 ขั้นถัดไปคือออกแบบ hierarchical heading numberingตามข้อตกลงด้านบน ไม่เริ่มโค้ดในR6.
+
+## Post-release SRS extraction checkpoint — 2026-10-10
+
+Owner reprioritized real-document acceptance before hierarchical heading numbers,
+then supplied `C:/Users/nekot/Downloads/69C_REQ_SRS.pdf` as the sole source.
+This is a new bounded extraction scope, not a reopening of R6 or release changes.
+Owner Service for ignored local artifacts; role Evidence Reviewer / Planning Partner,
+execution IDs N/A. No runtime, template contract or DB edits. Source SHA256
+`59239549d484d79b1ded120a16528b4e90eceae0f1fb67c0f4e1e2231c6553a4`.
+The supplied file is document revision2.0, distinct from earlier `(1).pdf` revision3.0.
+
+Local outputs: `../flowdoc-service/artifacts/srs-source-020/` contains
+srs-template-outline.json (explicitly non-executable), srs-values.json,
+srs-data.json with page/row provenance, source-extraction.json, assets.json,
+nine extracted images, extraction scripts and extraction-check.json.
+93 A4 portrait pages;32 numbered headings,240 unique consecutive requirements
+REQ0001–REQ0240,68 multi-page requirements rejoined,6 explicit empty tables.
+All309 body category-icon placements mapped to requirement segments;8 legend
+icons and repeated banner preserved as assets. Source headings/requirement IDs
+match extraction; no unresolved table continuation detected. This proves
+structural extraction, not word-perfect semantic recovery or export readiness.
+
+Before executable mapping: source TOC has4 levels versus Core1–3; physical PDF
+line breaks do not establish author paragraph boundaries; source total counts
+cover while current Core excludes it; full-bleed banner and horizontal category
+icons need explicit layout mapping. No silent omission or Core expansion approved.
+Next: resolve these bounded mappings and build an executable SRS template/request,
+then real-document acceptance. Hierarchical numbering stays deferred.
