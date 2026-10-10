@@ -61,7 +61,8 @@ Document
 คงความสัมพันธ์ variable_schemas → variables และ area → โครงย่อยเดิม
 พร้อมเพิ่มบริบท Section; ไม่ใส่ section_id ซ้ำทุกตารางถ้าตามเจ้าของได้แน่นอน.
 Node graph ภายในยังเก็บ JSON ได้ ไม่เพิ่ม table tree node ในรอบนี้.
-ชื่อตาราง/คอลัมน์ในข้อความนี้เป็นทิศทาง ยังไม่ใช่ DDL ลงมือที่ล็อกแล้ว.
+เจ้าของยืนยันต่อมาให้คง template_id และเพิ่ม section_id คู่กันเฉพาะตารางเจ้าของ.
+รายละเอียดด้านล่างเป็นแบบ DB สำหรับนำไปทำ implementation plan ไม่ใช่ migration ที่รันแล้ว.
 
 ## เวอร์ชันและความเข้ากันได้
 
@@ -101,8 +102,8 @@ Node graph ภายในยังเก็บ JSON ได้ ไม่เพ�
 1. กาง contract คู่แม่แบบ/request พร้อม mapping ID/key และ scopes
    รวมวิธีอ้างค่าร่วมจากหัวท้าย/โครงย่อย, การไม่ส่ง Section, key ที่ไม่รู้จัก,
    และการอ่านค่าปกในรุ่นใหม่โดยไม่เปลี่ยนรุ่นเดิม.
-2. กาง DB current/version: keys/FKs/uniqueness/delete policy, ownership ของ formats
-   ที่ไม่ผ่าน area และทางอัปเกรดข้อมูลเดิม. ยังไม่อนุมาน cascade การลบทุกกรณี.
+2. ใช้รายละเอียด DB ด้านล่างกาง migration/transactions และ tests; ปิด mapping
+   ตัวตน Section เดิมกับ ID แถวใหม่พร้อม Core contract ก่อนเขียน DDL จริง.
 3. ทำ Core ตามสัญญาที่รับ แล้ว Service DB/API/แพ็กเกจ พร้อมหลักฐานทั้งเส้นทาง.
 
 Acceptance ที่ต้องใช้ในแผนลงมือ: หลาย Sections ที่ key ตัวแปรซ้ำแต่ข้อมูลต่าง,
@@ -113,3 +114,131 @@ Acceptance ที่ต้องใช้ในแผนลงมือ: หล�
 R4 ระบบเลขหน้ารอปิดจุดต่อ Section รอบนี้ก่อน; DOCX/frontend/formulas/
 ขนาดกระดาษอื่น/DB node tree/การซ้อนเพิ่มยังอยู่นอกขอบเขต.
 R1 migration004 test debt ยังคงรายการเดิมก่อน release รวม.
+
+
+## รายละเอียด DB หลังยืนยัน ID คู่ — 2026-10-10
+
+ข้อตกลงเจ้าของ: คง template_id คู่กับ section_id ไม่เพิ่ม section_id ทุกตาราง.
+ส่วนต่อไปเป็นข้อกำหนดออกแบบที่โคจัดให้ตามคำขอเก็บรายละเอียดก่อนเริ่ม;
+ยังต้องพิสูจน์ด้วย migration และ API tests เมื่อ implementation.
+
+### ตารางและแหล่งข้อมูลหลัก
+
+| ตาราง | คอลัมน์/หน้าที่เพิ่มหรือคงไว้ |
+| --- | --- |
+| sections | id, template_id, key, label, position, payload, created_at, updated_at |
+| formats | คง template_id และ owner_area_variable_id; เพิ่ม section_id nullable เพื่อรองรับข้อมูลร่วม/รุ่นเดิม |
+| variable_schemas | คง template_id, scope, format_id; เพิ่ม section_id nullable |
+| variables | คง schema_id, parent_id และ type_id; ไม่เพิ่ม template_id/section_id ซ้ำ |
+| section_versions | id ใหม่, template_version_id, source_section_id, key, label, position, payload, created_at |
+| format_versions / variable_schema_versions | คง template_version_id และเพิ่ม section_version_id |
+| variable_versions | ตาม schema_version_id เหมือนเดิม ไม่เพิ่มเจ้าของซ้ำ |
+
+sections.template_id อ้าง template_current.template_id; section_versions อ้าง
+ชุด template_snapshots ของ template_version_id เหมือนตารางเวอร์ชันเดิม.
+เลขเวอร์ชันอยู่ที่ template_versions ไม่เพิ่มเลขอิสระให้แต่ละ Section.
+payload ของ Section เก็บโครงเนื้อหา/หัวท้ายและค่าหรือ reference หน้ากระดาษ
+โดยเลือก source of truth เพียงจุดเดียวใน contract ไม่เก็บ graph เดียวซ้ำทั้ง
+Section row และ template_current.payload. Schema ตัวแปรยังแยกเป็นแถวตามเดิม.
+source_section_id ใช้ระบุที่มา ไม่ทำ FK แบบ cascade ไปชุด current ที่แก้/ลบได้.
+
+### กติกา NULL ของชุดตัวแปร
+
+เพิ่ม scope section สำหรับชุดเนื้อหา โดยไม่เปลี่ยนความหมาย global/format เดิม.
+
+| scope | section_id ในแม่แบบรุ่นใหม่ | format_id |
+| --- | --- | --- |
+| global | NULL: ข้อมูลร่วมทั้งเล่ม | NULL |
+| section | ต้องมี: เนื้อหาของ Section | NULL |
+| header / footer | ต้องมี: หัว/ท้ายของ Section | NULL |
+| format | ต้องตรงกับเจ้าของ format รวมกรณี NULL | ต้องมี |
+
+แบบเก่าถึง model14 ยังคง header/footer ระดับเล่มและ section_id NULL ได้.
+NULL จึงไม่ใช่หลักฐานว่าแถวผิดหรือจำเป็นต้องย้าย; ต้องพิจารณารุ่นแม่แบบด้วย.
+กฎที่อาศัยรุ่นใน parent ใช้ validation และ constraint trigger ตามความจำเป็น
+ไม่พยายามเขียน CHECK ธรรมดาให้อ่านข้อมูลอีกตาราง.
+
+formats ที่ไม่ได้อยู่ใต้ area ในรุ่นใหม่มี Section เป็นเจ้าของโดยตรง.
+formats ใต้ area รับ section_id จาก schema เจ้าของ area (หรือ format เจ้าของ schema)
+และต้องตรงกันทั้ง document/section. หากเป็น area ใน globalSchema เดิม
+เจ้าของยังเป็นระดับเล่มและ section_id NULL; ตำแหน่งวางใน Section ไม่เปลี่ยนเจ้าของ
+โดยอัตโนมัติ. คงกฎ area หนึ่งตำแหน่งและไม่ซ้อนตามเดิม ไม่เปิดให้ reuse หลาย Section.
+
+### FK และความเป็นเอกสารเดียวกัน
+
+- sections มี UNIQUE(id, template_id); ตารางที่อ้างใช้ FK คู่
+  (section_id, template_id) → sections(id, template_id).
+- ทุก owner row ยังต้องมี template_id ที่ถูกต้อง แม้ section_id เป็น NULL.
+- schema ของ format ต้องอยู่ document และ section เดียวกับ format.
+  FK คู่เดิม (format_id, template_id) กันข้ามเล่มได้ แต่ยังไม่กันข้าม Section.
+  ต้องมีการตรวจ section ด้วย NULL-safe equality (`IS NOT DISTINCT FROM`)
+  ผ่าน constraint trigger หรือกลไกเทียบเท่าที่พิสูจน์แล้ว ไม่พึ่ง composite FK
+  สามช่องเพียงอย่างเดียว เพราะ NULL อาจทำให้ FK ไม่ตรวจคู่ที่เหลือ.
+- constraint ของ area ตรวจชนิดตัวแปร เจ้าของ Document และ Section ให้ตรง
+  รวมถึงตรวจการเปลี่ยน owner schema ไม่ใช่ตรวจตอน insert format อย่างเดียว.
+- เวอร์ชันใช้กฎเดียวกันแต่ทุก reference ชี้ไปชุดเวอร์ชันเดียวกัน.
+  master variable_types ยังใช้ร่วม ไม่ clone.
+
+### ชื่อซ้ำ ลำดับ และตัวตน
+
+- Section key ต้องไม่ซ้ำภายใน Document: UNIQUE(template_id, key).
+  Section label ซ้ำได้; label ไม่ใช่ key/reference.
+- Section position เป็นจำนวนเต็มไม่ติดลบและไม่ซ้ำในเล่ม; การสลับลำดับต้อง
+  สำเร็จใน transaction เดียว รองรับ deferred uniqueness หรือการย้ายลำดับที่ปลอดภัย.
+- Schema หนึ่งชุดต่อเจ้าของ/scope ใช้ uniqueness ที่รวม template_id, section_id,
+  scope, format_id และถือ NULL เป็นค่าเดียวกัน (`NULLS NOT DISTINCT`).
+- Top-level format key ไม่ซ้ำภายใน document/section; แถวรุ่นเดิมหรือเจ้าของ
+  ระดับเล่มที่ section_id NULL ยังคง uniqueness ระดับเล่ม.
+- Area-format key ไม่ซ้ำภายใต้ owner_area_variable_id ตามเดิม.
+- Variable key ไม่ซ้ำภายใน schema_id + parent_id ตามเดิม;
+  ชื่อเดียวกันต่าง Section/หัว/ท้ายจึงเป็นคนละตัวได้.
+- คง source_definition_id ของ area-format ไม่ซ้ำใน Document ตามเดิม
+  จนกว่า Core contract จะเปลี่ยน identifier นี้อย่างชัดเจน.
+- ห้ามย้าย ID เดิมไปเป็นเจ้าของคนละ Document/Section/scope โดยเงียบ ๆ.
+  เปลี่ยน label ได้; เปลี่ยน key เป็นการเปลี่ยน API ของ current และต้อง publish
+  เวอร์ชันใหม่ก่อนผู้เรียกเวอร์ชันใหม่นำไปใช้. เวอร์ชันเก่าไม่เปลี่ยน.
+
+### การลบและ publish
+
+ไม่เพิ่ม cascade จาก Section ไปทุกตารางโดยอัตโนมัติ.
+ใช้ RESTRICT/NO ACTION ที่ขอบ Section กับแถวเจ้าของ และให้คำสั่งแก้ current
+ลบชุดที่เป็นเจ้าของจริงใน transaction เดียว ตรวจ references ที่เหลือก่อน commit.
+Cascade เดิมภายใน schema → variables/area-owned formats ใช้ต่อได้ตามกฎเดิม.
+ถ้ามี reference จากส่วนอื่นที่ยังไม่จัดการ ให้ปฏิเสธพร้อมระบุจุดอ้าง
+แทนลบข้อมูลร่วม/อีก Section ให้เอง. ขั้นตอน SQL ต้องรองรับการ save แบบ replace
+ของ storage.ts เดิม โดยไม่ลบ Section แล้วสร้าง ID ใหม่ทุกครั้ง.
+
+Publish อ่าน revision เดียวกันใน transaction แล้ว clone Sections ก่อนลูก,
+สร้าง mapping current ID → version ID และต่อ owner references ของ schema/format
+ไปชุดใหม่ทั้งหมด. ตรวจไม่ให้ version row อ้าง current row เพื่อใช้ render.
+แถว version immutable ตามเดิม; การลบ current ไม่ลบ version.
+
+### การย้ายข้อมูล: แยก DB migration ออกจากการแปลงแม่แบบ
+
+1. เพิ่มตาราง/คอลัมน์ nullable และปรับ constraints/indexes แบบ forward migration.
+   แถวเก่าคง section_id NULL; ไม่สร้าง section สมมติหรือแจก format ไป section แรก.
+2. ไม่ UPDATE payload, definition_json, fingerprint หรือแถว published เดิม
+   เพื่อแปลงเป็น model ใหม่. การเพิ่มคอลัมน์ nullable ไม่ต้องปิด immutable trigger
+   เพื่อ backfill Section ให้ snapshot เก่า.
+3. เส้นทางอ่าน/assemble รุ่นเดิมละ field ใหม่ที่ไม่เกี่ยวข้อง ไม่เติม field NULL
+   ลง definition จนทำให้ fingerprint เดิมเปลี่ยน. ตรวจทั้ง fresh DB และ DB มีข้อมูล.
+4. การอัปเกรด current เป็นคำสั่งแยกจาก schema migration ต้องระบุ mapping ชัดว่า
+   format/area/ข้อมูล/หัวท้ายเดิมเป็นของ Section ไหน; ไม่เดาเมื่อหลายส่วนใช้ร่วม.
+   จัดการ Section identity เดิมและ DB row ID พร้อม mapping references ใน transaction.
+5. ถ้า mapping ขาดหรือ validation ไม่ผ่าน rollback ทั้งชุด; เก็บ current เดิมไว้.
+   เมื่อแปลงผ่านจึง publish เวอร์ชันใหม่; request และ jobs ที่ pin เวอร์ชันเดิม
+   ใช้สัญญาเดิมต่อไป ไม่ rewrite งานที่เข้าคิวแล้ว.
+
+### หลักฐานที่ต้องเพิ่มตอนลงมือ
+
+- ชื่อซ้ำข้าม Section ผ่าน แต่ซ้ำภายในเจ้าของเดียวกันถูกปฏิเสธ.
+- FK กันข้าม Document; owner check กันข้าม Section รวมกรณี NULL/ไม่ NULL.
+- ลำดับสลับได้ใน transaction; ID/created_at เดิมอยู่เมื่อ save/rename.
+- ลบ current Section ไม่กระทบค่าร่วม อีก Section หรือ published version.
+- Clone แล้ว references/IDs อยู่ใน version เดียวกัน ไม่กลับไปอ่าน current.
+- DB เก่าผ่าน migration แล้ว fingerprint และผล PDF ของแม่แบบเดิมคงเดิม.
+- ข้อมูล/หัวท้าย/ภาพของ Sections ที่ความกว้างเท่ากันไม่ปะปน.
+
+รายละเอียดที่ยังต้องปิดใน Core/API contract: วิธี map authored Section ID กับ
+DB ID, syntax อ้างค่าร่วม/ค่า Section และพฤติกรรม omitted/unknown Section.
+ไม่ถือว่าการปิดแบบ DB นี้ปิด API contract หรือพิสูจน์ implementation แล้ว.
