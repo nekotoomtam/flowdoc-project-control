@@ -28,7 +28,7 @@ Core เป็นผู้จัดหน้า; Service ไม่สร้า�
 
 ลำดับปัจจุบัน: R0 → R1 → R2 → R3 → ปรับเจ้าของข้อมูลตาม Section → R4 → R5 → R6
 R0 ปิดข้อกำหนดที่มีผลข้ามพาร์ตก่อน ส่วนรายละเอียดเฉพาะพาร์ตคุยก่อนเริ่มพาร์ตนั้น
-สถานะ: **R0–R4 และ Section ownership ปิดแล้วในชุดพัฒนา0.1.13**; ขั้นถัดไป R5 แล้ว R6
+สถานะ: **R0–R5 และ Section ownership ปิดแล้วในชุดพัฒนา0.1.14**; ขั้นถัดไป R6 ตรวจรวมและเตรียม release
 รายละเอียดสัญญาเป้าหมาย ตัวอย่าง และ task ลงมืออยู่ใน
 [R0 contract / R1 tasks](flowdoc-page-system-r0-contract-2026-10-10.md)
 การปิด R0 เป็นผลออกแบบ ไม่ใช่หลักฐานว่า runtime รองรับแล้ว
@@ -163,10 +163,10 @@ totalรวมหน้าที่ร่วมการนับทั้งเ
 
 Owner: Core; Service ตรวจ fixture/request ตาม contract พึ่ง R4
 
-- [ ] ล็อกการเลือกหัวข้อและเลขที่แสดง รวมกรณีหัวข้อบนหน้าที่ซ่อนเลข
-- [ ] ให้ชื่อ/เลขสารบัญอ้างจุดหมายจริง แม้เลขแสดงของต่างส่วนซ้ำกัน
-- [ ] ตรวจผลเมื่อสารบัญยาวหลายหน้าและทำให้หน้าเนื้อหาขยับ
-- [ ] รักษากติกาหัวข้อในตาราง/Area และ destination ที่ข้ามหน้า
+- [x] ล็อกการเลือกหัวข้อและเลขที่แสดง รวมกรณีหัวข้อบนหน้าที่ซ่อนเลข
+- [x] ให้ชื่อ/เลขสารบัญอ้างจุดหมายจริง แม้เลขแสดงของต่างส่วนซ้ำกัน
+- [x] ตรวจผลเมื่อสารบัญยาวหลายหน้าและทำให้หน้าเนื้อหาขยับ
+- [x] รักษากติกาหัวข้อในตาราง/Area และ destination ที่ข้ามหน้า
 
 ผลส่งมอบ: สารบัญแสดงเลขตามกติกาเล่มและทั้งชื่อ/เลขกดไปหัวข้อถูก
 เกณฑ์: สารบัญหลายหน้า, ชื่อยาว wrap, หัวข้อที่ต่อหน้า, เริ่มเลขใหม่หลายส่วน,
@@ -323,3 +323,70 @@ R5/R6 และ migration004 test debt ยังอยู่ตามแผน�
 ที่เนื้อหาไม่เปลี่ยน. เก็บหลักฐานพร้อมตรวจ hash และล้าง lane/branch/Docker ทดลองแล้ว.
 [ผลรับและตำแหน่งหลักฐาน](flowdoc-page-system-r4-plan-2026-10-10.md#accepted-delivery--2026-10-10).
 ขั้นถัดไป R5 สารบัญสัมพันธ์กับระบบหน้า; releaseคง0.1.8จนผ่าน R5/R6.
+
+## R5 bounded inline scope — 2026-10-10
+
+Owner approved proceeding and chose: selected headings on excluded pages remain
+clickable by title with no page number; cover remains absent. Hidden counted
+pages retain TOC numbers. This supersedes only R4's temporary excluded-target
+error, not its historical acceptance. Keep the36pt slot/geometry, no new layout
+pass, API fields, DB migration, levels beyond1–3 or release changes.
+
+Owners Core implementation / Service package and API consumer; role Product
+Implementation Agent inline, routine risk, medium scope; execution IDs not
+applicable. Bases Core53baa9f/Servicee6fb28f. Development target0.1.14.
+Use isolated sibling contents-pages lanes (native worktree tool targets only
+Project Control). Existing package/runtime remains authoritative.
+
+Sequence: RED excluded-title behavior and missing metadata distinction; implement
+narrow fill rule; test long/multipage contents, Thai title wrapping, repeated
+headers/Area and repeated displayed numbers against physical anchors; packLinux;
+pin Service artifact and check real API; owner PDF acceptance before integration.
+Acceptance: no false page numbers or missing title links, stable geometry,
+invalid/missing/duplicate anchors still rejected, legacy behavior retained.
+Evidence: targeted layout/template tests, installed package PDFs/annotations,
+Service API test and owner visual check. Reuse R4 proof where unchanged.
+Proof budget: affected tests/build, one final review, packed consumer, one API
+round plus repairs for actual failures; no load benchmark. Documentation budget:
+this roadmap plus local usage entries, no separate plan or synthetic records.
+Main unknown resolved by owner choice above; fixed-slot overflow continues to
+fail explicitly. Stop for contract expansion; stop when acceptance passes.
+
+## ผลรับ R5 — 2026-10-10
+
+เจ้าของรับ PDF17หน้าและลิงก์ H900/H901/H998 แล้ว. หัวข้อบนหน้าไม่นับเลข
+แสดงชื่อที่กดได้โดยช่องเลขว่าง; หน้าซ่อนเลขยังแสดงเลขในสารบัญ. ปกไม่เข้าสารบัญ.
+Core `d72408c` / Service `308ee81` รวมแบบ fast-forward เข้าฝั่งพัฒนา0.1.14แล้ว.
+
+หลักฐานและขอบเขต:
+- Core build+416 tests/50files PASS. RED4ข้อก่อนแก้ fill rule แล้ว GREEN.
+  ครอบคลุมหลายหน้า/ชื่อยาว/เลขซ้ำ/metadataหาย และคงเส้นทาง legacy.
+- One read-only final review: no actionable findings. No architecture/DB/API redesign.
+- Packed Linux consumer PASS. Actual PDF check: ชุดสั้น8หน้า สารบัญ1หน้า
+  (8 number links/15 title links); ชุดยาว17หน้า สารบัญ3หน้า
+  (75 number links/82 title links). ตรวจ destinations ตรงบรรทัดแรกจริง,
+  หัวตารางซ้ำไม่เลือกครั้งถัดไป, Area, hidden และ excluded title-only.
+  Render/inspectครบ17หน้า และเจ้าของรับการคลิกจริง.
+- Legacy model8 contents-long.pdf เท่าชุด0.1.13ทุกไบต์ SHA256
+  `0d5aeb7f9d8d2668fc8e035180892e98d262d63564c55ca85a6ab2293e04b265`.
+- Service build+14 affected DB/API tests PASS บน Dockerฐานข้อมูลแยก.
+  Published snapshot ยังเป็น excludeหลังแก้ current; PDFมี3title links+2number links.
+- Exact Core artifact SHA256
+  `2e8aaf13c03c5df8a5520c73e2d0e768fa0cf431312fbd3491df31f0cc8fae8e`;
+  sourceCommit d72408c ใน Service vendor/manifest.json.
+
+หลักฐานหลัง cleanup:
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-contents-pages/1791635593361/`
+มี PDFสั้น/ยาว, template/requestตัวอย่าง, tarball/resultและภาพตรวจ.
+ไฟล์ tests/consumer/checkContentsSectionsPdf.py ตรวจ PDFแบบ read-only.
+logs Coreอยู่ใต้ `.../flowdoc-core-contents-pages/r5/`; Serviceอยู่ใต้
+`../flowdoc-service/artifacts/worktree-archive/flowdoc-service-contents-pages/r5/`.
+Copyและเทียบhashครบ Core130/Service4ไฟล์ก่อนล้าง; primary build/install logs
+เพิ่มไว้ข้างโฟลเดอร์r5. Primaryทั้งคู่buildผ่านหลังรวม.
+
+ใช้ผลตรวจเดิมหลัง fast-forwardที่เนื้อหา/base/configไม่เปลี่ยน. ล้างเฉพาะ
+worktree/branch codex/contents-pagesที่ clean/merged ของทั้งสองrepo และ
+Docker project flowdoc-contents-r5พร้อมvolume/network/imageทดลองที่ระบุ.
+Releaseคง Core7b5161c / Service78c9491 (0.1.8); ไม่มี push/deploy/map promotion.
+R6ยังไม่เริ่ม: ตรวจทั้งเล่ม/คู่มือ/release และเก็บ migration004 baseline test debt.
+ไม่อ้าง full Service-suite PASS จากชุดตรวจเฉพาะพื้นที่นี้.
