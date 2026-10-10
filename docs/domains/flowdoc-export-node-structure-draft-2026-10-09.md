@@ -2,13 +2,15 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: DRAFT for owner discussion, 2026-10-09.
+Owner: FlowDoc Project Control. Status: design history plus bounded compatibility
+closeout, updated 2026-10-10. Current delivery status is stated below; historical
+discovery/proposals remain historical and do not override accepted slice closeouts.
 Active role: Planning Partner / Documentation Synthesizer. This is an architectural
 conversation draft, not an approved schema, roadmap, implementation plan or Evidence.
 Core owns document semantics/layout/export; Service owns persistence and jobs.
 Future frontend responsibilities are proposed here, not assigned to an old Editor round.
 Single-room documentation scope; execution/Phase/Checklist IDs N/A. Risk routine.
-Document budget for this follow-up: this draft and its existing cell-content plan. Proof:
+Document budget for this follow-up: this draft, existing cell-content plan and handoff. Proof:
 compare the agreed intent with current model/source and accepted 0.1.5 records,
 check links/meaning and Project Control data. No product code, migration or map edits.
 
@@ -21,7 +23,8 @@ check links/meaning and Project Control data. No product code, migration or map 
 
 โจทย์ที่ต้องเผื่อคือเอกสาร UAT หรือเอกสารเล่มยาวที่ผู้สร้างกำหนดรูปแบบไว้
 แต่ผู้ใช้ส่งข้อมูลและลำดับโครงย่อยได้ ภายในเซลล์อาจต้องมีข้อความหลายส่วน
-และรูปภาพร่วมกัน รูปแบบนี้เป็นเป้าหมายที่จะออกแบบ ไม่ใช่ความสามารถที่รองรับแล้ว
+และรูปภาพร่วมกัน เป้าหมายนี้นำไปทำตามขอบเขต direct-cell, array และ area แล้ว
+ส่วนหน้าบ้านและโครงซ้อนที่เลื่อนไว้ยังเป็นแนวคิด ไม่ใช่ความสามารถที่ส่งมอบ
 
 ## ฐานที่ใช้ต่อ
 
@@ -44,13 +47,18 @@ check links/meaning and Project Control data. No product code, migration or map 
 โครงปัจจุบันจึงไม่ได้จำกัดหนึ่งเซลล์ต่อหนึ่ง TextBlock สิ่งที่ต้องตัดสินเพิ่ม
 คือชนิดลูกที่ยอมรับ กติกาวางลูกหลายชนิด และผลต่อการแบ่งหน้า
 
-### Development baseline update — 2026-10-09
+### Development baseline update — 2026-10-10
 
 ตารางด้านบนเป็นฐาน release 0.1.5 ณ เริ่มร่าง ไม่ใช่สถานะ development ล่าสุด
 ชุด direct-cell ผ่านและรวมเป็น Core/Service 0.1.6 แล้ว: Core `4546a18`, Service
 `eb41b69`; model 9 รับ TextBlock/Image โดยตรงใน cell พร้อม padding รายด้าน
 อ้างผลตรวจและขอบเขตที่รับใน [Cell Content closeout](flowdoc-cell-content-plan-2026-10-09.md#development-closeout--2026-10-09)
-release ยังเป็น 0.1.5; array image items และ cell repeats ยังไม่รองรับ
+ต่อมา array image items/cell repeats ผ่านเป็น0.1.7 และ area ชั้นเดียวผ่านเป็น0.1.8
+ปัจจุบัน Core `97a0985` / Service `0419718` เป็น0.1.8; release ยังคง0.1.5
+ผลตรวจอยู่ใน [Array plan](flowdoc-cell-array-plan-2026-10-09.md) และ
+[Area closeout](flowdoc-area-plan-2026-10-09.md#development-closeout--018)
+สถานะปัจจุบันและวิธีใช้กับของเดิมให้ยึดพาร์ต6ด้านล่าง ส่วนข้อความ discovery
+และคำว่า “ยังไม่ทำ” ที่ระบุฐานเก่าเป็นประวัติการออกแบบ ไม่ใช่รายการงานค้างปัจจุบัน
 
 ## หลักที่ตกลงใช้เป็นทิศทาง
 
@@ -120,8 +128,7 @@ release ยังเป็น 0.1.5; array image items และ cell repeats �
 เจ้าของยืนยันให้ค่อยเป็นค่อยไป: ออกแบบให้หนึ่ง cell มี TextBlock และ Image
 หลายชิ้นเรียงจากบนลงล่างเป็นลูกโดยตรงก่อน แต่ละชิ้นเป็น node ของตัวเอง
 ตัวอย่างคือ “ข้อความอธิบาย → รูปหลักฐาน → คำบรรยาย” โดยคำบรรยายใช้ TextBlock
-ข้อนี้เป็นขอบเขตการออกแบบที่ยอมรับแล้ว ยังไม่ใช่การรองรับภาพในเซลล์ของรุ่นปัจจุบัน
-หรือการอนุมัติ schema และ implementation ทั้งชุด
+ข้อนี้เป็นขอบเขตที่ยอมรับและส่งมอบใน0.1.6 แล้ว ไม่ใช่การอนุมัติส่วนขยายทุกชนิด
 
 ยืนยันเพิ่มเติม: cell ชุดแรกไม่รับ Columns ตารางซ้อน หรือกลุ่มซ้อน
 ยังรักษาการรวมเซลล์เดิม ชนิดลูกและจำนวนช่องกำหนดในแม่แบบก่อน
@@ -151,11 +158,12 @@ Columns ที่เคยทดลองในระบบหน้ากระ
 และการแบ่งหน้า โดยใช้ตัวอย่างลูกหลายชิ้นข้างต้นเป็นโจทย์หลัก
 ไม่ถือว่าพาร์ต 1 ทั้งหมดเสร็จเพียงเพราะเลือกขอบเขตเริ่มต้นนี้
 
-## พาร์ต 5 — ข้อตกลงที่เก็บไว้ทำภายหลัง
+## พาร์ต 5 — ข้อตกลงและประวัติการออกแบบ array/area
 
 เจ้าของให้เก็บบทสนทนาเรื่องรายการภาพ/โครงย่อยไว้ในพาร์ต 5 และตรวจผลต่อ
 ความเข้ากันได้ในพาร์ต 6 ไม่ย้ายมาทำก่อนหรือเป็น prerequisite ของ cell slice
-ต่อไปนี้เป็นทิศทางออกแบบที่ตกลงแล้ว ยังไม่ใช่ schema/API ที่รองรับใน runtime
+ส่วนต่อไปเก็บลำดับการตกลงก่อน implementation; array ส่งมอบใน0.1.7 และ area
+ชั้นเดียวส่งมอบใน0.1.8 แล้ว ให้ดูแผนปิดงานสำหรับสัญญาที่ใช้จริงและผลตรวจ
 
 ### ช่วงถัดไป: array ทำซ้ำชุดลูกในเซลล์
 
@@ -172,7 +180,7 @@ array บอกข้อมูลต่อรายการ; แม่แบบ
 image ยังเป็นภาพเดียว ใช้ array ที่มีตัวแปรลูก image และ caption แทน multiple image
 ไม่ทำ array ซ้อน array หรือ area ในช่วงนี้
 
-**สิ่งที่ตรวจพบในโค้ดปัจจุบัน:**
+**สิ่งที่ตรวจพบในฐาน0.1.6ก่อนเริ่ม array (ประวัติ):**
 
 - `src/template/types.ts` และ `validateSchemas.ts`: array items รับ string/link;
   image source รับเฉพาะ global/local; repeats ระบุ tableId/rowTemplateId เท่านั้น
@@ -430,16 +438,81 @@ object เดียวให้แจ้งผิด ไม่ใช้ first/la
 แล้วเชื่อมใช้กับหลาย area ได้ รอบนี้เจ้าของเลือกให้เป็นลูกของ area เดียวก่อน
 เมื่อเปิดงานใช้ร่วม ต้องทบทวน ownership และการลบให้ลบความสัมพันธ์โดยไม่ลบ
 นิยามที่ area อื่นยังใช้; ไม่สร้างระบบแชร์หรือเพิ่มความสัมพันธ์นี้ล่วงหน้าในรอบแรก
-ยังต้องออกแบบ schema จริง การอ้าง ID/key จุดทำซ้ำ และขอบเขต instance ให้ครบ
-พร้อมตัวอย่างแม่แบบ → request → โครงหลังประกอบ และกรณีข้ามรายการพร้อม warning
+schema, ID/key, instance และ warning ของ area ชั้นเดียวออกแบบและตรวจแล้วใน
+แผน Area; การเปลี่ยนเป็นโครงย่อยกลางใช้ร่วมต้องออกแบบความสัมพันธ์เพิ่มเติม
 การประเมินพื้นที่ไม่พอ การย่อ/ปฏิเสธ/ข้ามเมื่อวางไม่ลง และภาพร่าง feedback บน
 หน้าบ้านถูกพักไว้ ยังไม่มีนโยบายที่อนุมัติสำหรับ area; ไม่ตีความกฎข้อมูลผิด
 เป็นคำสั่งให้ข้าม layout error และไม่ยกเลิกข้อเสนอ oversize ของ direct-cell slice
 
-## เรื่องที่ยังไม่ล็อกและเกณฑ์ก่อนกาง roadmap
+## พาร์ต 6 — การใช้กับของเดิมและขอบเขตส่งมอบ 0.1.8
 
-ยังเปิดอยู่ในชุดแรก: รายละเอียดสัญญาลูก TextBlock/Image ภายในเซลล์ กติกาขนาด
-และภาพที่ใหญ่กว่าพื้นที่หน้า ส่วนผลจัดหน้าสำหรับ frontend/คำสั่งแก้ไขเลื่อนไปงานหน้าบ้าน
+เจ้าของอนุมัติให้ปิด compatibility และปรับสถานะเอกสารเมื่อ2026-10-10
+งานนี้สรุปพฤติกรรมและหลักฐานที่มีแล้ว ไม่เพิ่ม runtime หรืออนุมัติ release
+Role: Project Control Steward / Evidence Reviewer; single-room IDs N/A,
+ขนาด small, risk routine ใช้ checkout เดิมที่ clean ขอบเขตเฉพาะเอกสารสามไฟล์
+ตรวจความตรงของแหล่งอ้างอิง, diff และ check:data; ไม่รันทดสอบผลิตภัณฑ์ซ้ำ
+เมื่อไม่มีการเปลี่ยนโค้ดหรือหลักฐานเสื่อม ไม่อ้างว่าพิสูจน์เอกสารทุกแบบ
+
+### รุ่นและแม่แบบที่รับ
+
+`schemaVersion` ยังคง1; `nodeModelVersion` เลือกสัญญาโครงเอกสาร ส่วน
+`version` ของแม่แบบคือรุ่นที่ publish ใน DB ไม่ใช่เลขรุ่น Core/Service
+
+| โมเดลแม่แบบ | วิธีใช้กับ Core/Service0.1.8 |
+| --- | --- |
+| 4–8 | อ่านตามสัญญาเดิม ใช้แม่แบบและ request เดิมที่ถูกต้อง ไม่ต้องเปลี่ยนเลขโมเดลอัตโนมัติ |
+| 9 | เพิ่ม TextBlock/Image ใน cell และ padding รายด้าน ตั้งแต่ชุด0.1.6 |
+| 10 | เพิ่ม image item binding และ cellRepeats ตั้งแต่ชุด0.1.7 |
+| 11 | เพิ่มตัวแปร/placement Area และ areaFormats ที่มีเจ้าของ ตั้งแต่ชุด0.1.8 |
+
+แม่แบบเก่าที่เพิ่มฟิลด์ของโมเดลใหม่โดยไม่ปรับโมเดลจะถูกปฏิเสธ ไม่ถูกลดทอน
+เงียบ ๆ และไม่ใช่เพียงเปลี่ยนตัวเลขแล้วจะผ่าน ต้องผ่าน validation ทั้งสัญญา
+ต้องการใช้ความสามารถใหม่ให้แก้ฉบับ current ตรวจ แล้ว publish เวอร์ชันใหม่
+ไม่แก้ definition/fingerprint ของเวอร์ชันที่เผยแพร่แล้ว
+Core0.1.8 อ่าน4–11 ได้ ไม่รับรองให้ Core0.1.5 อ่านโมเดล9–11
+และไม่สัญญาว่าการยกโมเดลเก่าขึ้นใหม่จะได้จุดแบ่งหน้าเดิมทุกจุด
+
+### API และข้อมูลที่เก็บ
+
+- ผู้เรียกยังส่งข้อมูลกับชื่อ format ไม่ต้องส่ง node graph; area เพิ่มรายการ
+  `{format,data}` ภายใต้ key ที่ผู้สร้างประกาศ สัญญารุ่น11เปิดเผย areaFormats
+  โดยไม่มี fragment ส่วน contract แม่แบบเดิมไม่เพิ่มส่วนนี้
+- ระบุ version ใน request เพื่อเลือกแม่แบบที่ล็อกไว้ การอัปเกรดซอฟต์แวร์
+  ไม่เท่ากับการ publish แม่แบบ และ Service ตรึง Core ด้วย tarball/checksum
+- พฤติกรรมที่ต้องแจ้งผู้ใช้ API: raw JSON ที่มี key ซ้ำใน object เดียว
+  ถูกปฏิเสธด้วย400 รวมชื่อที่เขียนผ่าน Unicode escape แล้วตรงกัน ไม่เลือก
+  ค่าแรก/ท้าย ชื่อเดียวกันคนละ object ยังใช้ได้; ใช้กับ JSON admission ทั้งระบบ
+  ไม่ใช่เฉพาะ area การส่ง object ที่ parse มาแล้วไม่สามารถกู้ key ที่หายไปได้
+- area ผิดชนิดทั้งก้อนหรือขาด required ทำให้งานไม่เข้า; รายการย่อยใช้ไม่ได้
+  ข้ามพร้อม warning ที่ระบุดัชนีเดิม แต่ไม่กลบ resource/layout/destination error
+- migration009 เพิ่ม master/ownership ใน current และ version โดยรักษา
+  snapshot เก่า มีการตรวจอัปเกรด schema001–008 ที่มีข้อมูลไป009แล้ว
+  ไม่ได้ทดสอบการย้อน DB ลงรุ่นเก่า และไม่มี down migration ในขอบเขตนี้
+
+### หลักฐานและขอบเขตคำรับรอง
+
+ฐานตรวจตรงกับ Core97a0985 / Service0419718 และไม่มี source เปลี่ยนหลังปิดงาน:
+
+| สิ่งที่ตรวจ | หลักฐานที่ใช้ซ้ำ |
+| --- | --- |
+| model gates และสัญญาเก่า | Core tests/template/cellContent.test.ts, cellRepeats.test.ts, areas.test.ts; tests317ข้อผ่านในแพ็กเกจสุดท้าย |
+| เส้นทาง PDF เดิมและส่วนขยาย | packed result1791544490198: resources/PDF/binding/table/images/merged/links/contents/cellContent/cellRepeat/area ผ่าน |
+| DB upgrade และ version isolation | Service tests/area-version.test.mjs รวม schema001–008→009 และการแก้/ลบ current ไม่เปลี่ยน published version |
+| API, upload, renderer และ prepared input | Service result1791544583916:51ผ่าน,0fail,0skip |
+| หน้าตา Area | owner รับ5หน้า; PDF final SHA ตรงกับไฟล์ที่รับทุกไบต์ |
+
+หลักฐานสอง result อยู่ใน artifacts/worktree-archive/flowdoc-core-area และ
+flowdoc-service-area ของ repo หลักตามลำดับ รายละเอียด hash และ commit อยู่ใน
+Area closeout; รอบนี้ตรวจการมีอยู่/เนื้อหาหลักฐาน ไม่สร้างผล PASS runtime ใหม่
+ไม่ได้อ้างว่า PDF ทุกแม่แบบเก่าจะเหมือน0.1.5ทุกไบต์ หรือทดสอบ downgrade/โหลดหนักแล้ว
+
+พาร์ต6ปิดในขอบเขตนี้ได้ ส่วนขั้น release ยังต้องเลือกชุดส่งมอบ/เลขรุ่นและ
+มีคำสั่งอนุมัติที่ครอบคลุมการเลื่อน branch; ไม่มีการ merge release/push/tag รอบนี้
+
+## เรื่องที่เลื่อนไว้หลังขอบเขตปัจจุบัน
+
+สัญญาลูก TextBlock/Image ภายในเซลล์ ขนาด และกรณีวางไม่ลงปิดตาม Cell Content แล้ว
+ส่วนผลจัดหน้าสำหรับ frontend/คำสั่งแก้ไขเลื่อนไปงานหน้าบ้าน
 ส่วน node กลุ่มและความลึกของโครงย่อยซ้อนเลื่อนไว้ตามขอบเขตพาร์ต 1
 เรื่องเหล่านี้ไม่ขัดขวางการร่าง แต่ต้องตัดสินเฉพาะส่วนที่จะลงมือก่อนวางแผนพัฒนา
 
@@ -453,7 +526,6 @@ DB การจัดคิวหลายงานพร้อมกัน ห�
 และตัวอย่างผลที่ถือว่าผ่าน ส่วนที่ยังไม่เลือกให้ระบุว่าเลื่อนไว้ ไม่บังคับแก้
 ทุกพาร์ตจนสมบูรณ์เพื่อเริ่มงานชุดเล็ก
 
-สถานะปัจจุบัน: ร่างที่บันทึกขอบเขตเริ่มต้นของพาร์ต 1 แล้ว และมี
-[แผนชุดข้อความกับรูปหลายชิ้นในเซลล์](flowdoc-cell-content-plan-2026-10-09.md)
-ให้ตรวจรายละเอียดก่อนเริ่ม แผนนั้นเสนอเฉพาะกติกาที่จำเป็นสำหรับ slice แรก
-ยังไม่ถือว่าร่างทั้งหกพาร์ตผ่าน หรือมีคำสั่งให้เปลี่ยนพฤติกรรมผลิตภัณฑ์จากเอกสารนี้
+สถานะปัจจุบัน2026-10-10: direct-cell, array และ area ชั้นเดียวผ่านตามแผนแยก
+และพาร์ต6สรุป compatibility ข้างต้นแล้ว ส่วนแนวคิดอนาคตในร่างไม่ถูกนับว่าทำเสร็จ
+เอกสารนี้ไม่สั่งให้เริ่มฟีเจอร์ใหม่หรือเลื่อน release อัตโนมัติ

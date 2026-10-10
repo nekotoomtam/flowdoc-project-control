@@ -273,7 +273,11 @@ Limits remain: synthetic image fixture, direct TextBlock/Image cell children onl
 no Columns/nested tables/area/image-array extension, DOCX or stress admission.
 Next work is an owner-selected remaining design part; do not expand automatically.
 
-### Inline execution ledger — 2026-10-09
+### Historical inline execution ledger — 2026-10-09
+
+บันทึกต่อไปนี้เก็บสถานะตามเวลาที่ทำงาน รวมคำว่า pending/ยังไม่เริ่ม
+สถานะเหล่านั้นถูกแทนด้วย Development closeout ด้านบนแล้ว ไม่ใช่งานค้าง
+ส่วนความสามารถที่เพิ่มหลัง0.1.6ดู [สถานะและ compatibility ปัจจุบัน](flowdoc-export-node-structure-draft-2026-10-09.md#พาร์ต-6--การใช้กับของเดิมและขอบเขตส่งมอบ-018)
 
 Owner authorized implementation in this conversation. Role: Product Implementation
 Agent (Core), with Project Control maintaining this existing ledger. No registered
