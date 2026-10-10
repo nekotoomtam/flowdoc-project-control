@@ -41,11 +41,44 @@ PDF หลังเพิ่มเวอร์ชันเหมือนชุ�
 ใน Development closeout ของแผน Area ไม่เริ่ม implementation ชุดนี้ซ้ำ
 พาร์ต6 compatibility และการปรับสถานะเอกสารปิดแล้วเมื่อ2026-10-10 ใน
 [ร่างโครงสร้าง พาร์ต6](flowdoc-export-node-structure-draft-2026-10-09.md#พาร์ต-6--การใช้กับของเดิมและขอบเขตส่งมอบ-018)
-ขั้นถัดไปคือเลือกชุดส่งมอบและเลขรุ่นเพื่อพิจารณา release ตามคำสั่งเจ้าของ
+เจ้าของให้ทำคู่มือก่อน release เมื่อ2026-10-10 ผลอยู่หัวข้อคู่มือด้านล่าง
+จากนั้นจึงเลือกชุดส่งมอบและเลขรุ่นเพื่อพิจารณา release ตามคำสั่งเจ้าของ
 ยังไม่รวม area ซ้อน, โครงย่อยกลางใช้ร่วมหลาย area, Columns ใน cell หรือ DOCX
 เจ้าของเพิ่มงานหลัง release เมื่อ2026-10-10: ระบบหน้ากระดาษเต็มรูปแบบ หน้าปก
 หน้าเฉพาะและการเว้นหน้า เก็บในหัวข้อเรื่องที่เลื่อนไว้ของร่างโครงสร้างแล้ว
 ต้องออกแบบกติกาอีกครั้งก่อนลงมือ ไม่ดึงกลับมาเป็นเงื่อนไขปล่อยชุดปัจจุบัน
+
+## คู่มือก่อน release — 2026-10-10
+
+งาน inline ขนาดเล็ก/routine ตามคำขอเจ้าของ; execution IDs ไม่ applicable
+เจ้าของคู่มือการใช้งานคือ Core/Service ส่วนบันทึกสถานะนี้เป็น Project Control
+ขอบเขตแก้เฉพาะ Markdown ไม่เปลี่ยน runtime, package version, DB contract หรือ release
+เอกสารใหม่สองไฟล์เพื่อป้องกันผู้ใช้ทำตาม README เก่าที่อธิบายความสามารถไม่ครบ:
+
+- Core `docs/template-guide.md`: แม่แบบ/model, ตัวแปรและ scope, ตาราง/ภาพ,
+  array/cellRepeats, area, ลิงก์/สารบัญ และข้อจำกัด พร้อม fixture ที่เปิดใช้ได้
+- Service `docs/usage.md`: Docker local, PDF แรก, draft/save/publish,
+  API contract, upload/Area request, status/warnings และอายุข้อมูล
+- README ของแต่ละ repo ชี้เข้าคู่มือและแก้ข้อความที่ล้าสมัยตามโค้ด0.1.8
+
+เกณฑ์รับคือเส้นทางเริ่มใช้งานทำตามได้ ตัวอย่างตรง contract ลิงก์มีปลายทาง
+และไม่อ้างความสามารถที่ยังไม่ได้ทำ ใช้ proof เดิมของ runtime เป็นบริบท
+ไม่รัน regression ทั้งหมดซ้ำเพื่อแก้ Markdown
+ทดสอบสดบน Docker29.8.2 ใน project/volumes `flowdoc-manual-20261010` แยกจากข้อมูลเดิม:
+fresh migrations001–009, SRS import/publish v1, draft read/save/publish v2,
+contract, PDF download แล้วได้410เมื่อเรียกซ้ำ, upload JPEG/finalize,
+Area notice+image PDF, warning เมื่อ format ย่อยไม่รู้จักโดยส่วนที่เหลือยังสำเร็จ,
+และ duplicate JSON key400 ผ่าน ภาพ fixture ขนาดเล็กได้ IMAGE_LOW_RESOLUTION
+ตามจริง ไม่ตีว่าไร้ warning หรือใช้แทนการรับคุณภาพภาพทุกขนาด
+ตรวจลิงก์15รายการ, JSON snippets10ชุด, fixtures5ชุด และ bind/compose
+request ตัวอย่างในคู่มือผ่าน หลักฐาน local อยู่ Service
+`artifacts/manual-20261010/result.json`, `first.pdf`, `area.pdf` และ job/receipt JSON
+ไฟล์ compose.env ในบริเวณเดียวกันมีรหัสผ่านทดลอง ห้ามแนบไปกับคู่มือ
+การทดลองนี้ไม่ใช่การทดสอบเครื่องสะอาดใหม่/production load หรือการอนุมัติ release
+ไม่เพิ่มรุ่นเพราะไม่มีการเปลี่ยนโค้ด ขั้นถัดไปยังเป็นพิจารณาชุด release
+คู่มือ commit Core `e8fa736` และ Service `5bf0620`; Markdown diff checks และ
+Project Control `check:data` ผ่าน เก็บ PDF/รายงานไว้แล้ว และลบเฉพาะ containers,
+networks และ volumes ของ project ทดลองข้างต้นเรียบร้อย ไม่แตะชุดใช้งานอื่น
 
 ## ผลก่อนหน้า — array ในเซลล์ 0.1.7
 
