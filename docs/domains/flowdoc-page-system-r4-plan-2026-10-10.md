@@ -13,7 +13,7 @@ Service preserves the authored structure and never accepts system values as inpu
 ## Authority Boundary
 
 Owner: Project Control, Planning Partner; implementation owners Core and Service.
-Status: written implementation plan for owner review; no R4 code changed.
+Status: owner-approved implementation; technical checks complete, owner PDF acceptance pending.
 Owner accepted written design, including its three technical proposals, in this chat.
 Bases: Core b0657ee / Service6729964, development0.1.12. Release0.1.8 stays unchanged.
 Medium overall, routine risk; inline, no registered execution IDs or separate rooms.
@@ -87,14 +87,14 @@ src/binding/bindInlines.ts; src/data/{prepareGeneration,prepareSections}.ts; src
 Create src/template/pageNumbering.ts for policy/token checks;
 tests/template/pageNumbering.test.ts and tests/composition/pageNumbering.test.ts.
 
-- [ ] RED: model16 policy/token accepted only in bands; model15 token rejected;
+- [x] RED: model16 policy/token accepted only in bands; model15 token rejected;
   malformed width/startAt, unknown fields, body token, current-on-exclude fail.
   Run `npm test -- tests/template/pageNumbering.test.ts tests/composition/pageNumbering.test.ts`.
-- [ ] Implement types above and model gates; share scoped15 paths without mutating
+- [x] Implement types above and model gates; share scoped15 paths without mutating
   the incoming template/model or recomputing fingerprints from a downgraded copy.
-- [ ] Preserve token identity/width/sourceMap through composition/prepared reload;
+- [x] Preserve token identity/width/sourceMap through composition/prepared reload;
   examples normalize without requesting page fields. User data current/total stays separate.
-- [ ] Run build plus template/data/composition suites; inspect diff and commit when PASS.
+- [x] Run build plus template/data/composition suites; inspect diff and commit when PASS.
 
 ## Task2 — Counting metadata independent of rendering
 
@@ -102,14 +102,14 @@ Files: create Core src/layout/systemPageCounting.ts, tests/layout/systemPageCoun
 modify src/pdf/drawContract.ts and src/layout/documentFlow.ts.
 Consumes normalized Section16 policy; produces per-page metadata through helper above.
 
-- [ ] RED numeric assertions: cover +2body +blank +hidden2 +excluded2 +restart10(2pages)
+- [x] RED numeric assertions: cover +2body +blank +hidden2 +excluded2 +restart10(2pages)
   +continue1 gives currents null,1,2,3,4,5,null,null,10,11,12; total8 on every page.
   Physical order/sectionPageIndex unchanged. A Section with no physical pages cannot reset.
-- [ ] Implement one ordered page traversal and total accumulation; no repeated Section
+- [x] Implement one ordered page traversal and total accumulation; no repeated Section
   scans per page (index policy once). Check safe-integer overflow before increment.
-- [ ] Test default, restart1, start10, all-excluded total0, invalid unresolved owner,
+- [x] Test default, restart1, start10, all-excluded total0, invalid unresolved owner,
   no-TOC/no-token documents and legacy counting unchanged.
-- [ ] Run `npm run build` and `npm test -- tests/layout/systemPageCounting.test.ts tests/layout`;
+- [x] Run `npm run build` and `npm test -- tests/layout/systemPageCounting.test.ts tests/layout`;
   inspect diff and commit independent counting behavior when PASS.
 
 ## Task3 — Measure slots, fill numbers and keep links correct
@@ -118,24 +118,24 @@ Files: create Core src/layout/{measurePageFieldText,fillPageFields}.ts;
 tests/layout/pageFields.test.ts; modify src/layout/{pageBands,documentFlow,pageNumbers,fillContentsNumbers}.ts,
 src/pdf/createPdfEngine.ts and src/composition/linkContract.ts where token traversal requires it.
 
-- [ ] RED: mixed literal/text-variable/system-token band, two tokens on one line,
+- [x] RED: mixed literal/text-variable/system-token band, two tokens on one line,
   Thai text, explicit newline, wrap around atomic slot, Columns and font variants.
   `measurePageFieldText(node,style,width,runtime)` returns lines/static runs and
   relative token slots; preserve existing measureText path for blocks without tokens.
-- [ ] Implement token-aware line measurement using existing runtime.breaks/shape and
+- [x] Implement token-aware line measurement using existing runtime.breaks/shape and
   grapheme-safe fallback for text; atomic slots occupy declared widths and normal line height.
   Shape adjacent text together within a text run; do not split Thai into individual glyph requests.
   Preserve link offsets/rectangles, literal spacing and source IDs across slots.
-- [ ] Cache measured static runs/relative slots, copy/offset per page. Hide token blocks'
+- [x] Cache measured static runs/relative slots, copy/offset per page. Hide token blocks'
   text, links and slots while retaining measured height; other blocks still render.
-- [ ] Fill real numbers after pagination/counting and before subset/write, right aligned
+- [x] Fill real numbers after pagination/counting and before subset/write, right aligned
   in slots; check ink and height with existing measureNumber. Legacy automatic footer
   runs only for models4–15; model16 never inserts a number not authored by the creator.
-- [ ] Pin 9→10/99→100, slot overflow, same-width Sections, per-page cache isolation,
+- [x] Pin 9→10/99→100, slot overflow, same-width Sections, per-page cache isolation,
   blank/cover exclusion, unchanged body pagination show vs hide and exactly one layout.
-- [ ] For model16 TOC use current even when hidden; null destination gives LayoutError,
+- [x] For model16 TOC use current even when hidden; null destination gives LayoutError,
   not physical fallback. Repeated displayed numbers must keep distinct physical links.
-- [ ] Run build and layout/pdf/composition tests; inspect diff and commit on PASS.
+- [x] Run build and layout/pdf/composition tests; inspect diff and commit on PASS.
 
 ## Task4 — Service persistence and unchanged caller contract
 
@@ -143,15 +143,15 @@ Files: Service src/templates/{assembly,current,contract}.ts and impacted model g
 tests/page-numbering-{assembly,api}.test.mjs; examples/page-numbering-{template,request}.json.
 Use interim Core artifact only until Task5 final pin. No product implementation copied into Service.
 
-- [ ] RED: decompose/assemble model16 keeps section numbering and inline tokens;
+- [x] RED: decompose/assemble model16 keeps section numbering and inline tokens;
   schemas contain no system fields, no DB IDs change on save, old published version stable.
-- [ ] Extend explicit scoped model gates to16; preserve policy/token JSON in existing
+- [x] Extend explicit scoped model gates to16; preserve policy/token JSON in existing
   section payload. Audit migration011 owner triggers for15-only assumptions; if16
   requires schema behavior change, report contract impact before adding migration.
-- [ ] API test import/publish/contract → POST jobs using data/sections only → worker
+- [x] API test import/publish/contract → POST jobs using data/sections only → worker
   reload → PDF download. Inject same-named user data and prove page fields remain computed.
   Required validation should never ask for page.current or page.total.
-- [ ] Verify overflow yields failed job/no PDF, unknown Section still rejected, and
+- [x] Verify overflow yields failed job/no PDF, unknown Section still rejected, and
   legacy15 request/current/version paths unchanged. Run build and affected suites on
   isolated Docker database; preserve migration004 debt outside this scope. Commit on PASS.
 
@@ -162,12 +162,12 @@ tests/consumer/checkPageNumbering.mjs, scripts/checkPackedConsumer.mjs, Dockerfi
 both package versions/local guides, Service vendor artifact/manifest/lock;
 this plan and existing roadmap delivery records.
 
-- [ ] One fresh whole-change review; fix correctness findings with targeted regressions.
+- [x] One fresh whole-change review; fix correctness findings with targeted regressions.
   Final Core full suite/build and Service impacted tests cover changed areas, not test count alone.
-- [ ] Set candidate0.1.13 after usable behavior; packed Linux consumer creates cases
+- [x] Set candidate0.1.13 after usable behavior; packed Linux consumer creates cases
   with/without TOC and without tokens. PDF includes cover, mixed orientations,
   continued/hidden/blank/excluded/restart sections, current/total beside normal text.
-- [ ] Assert actual counting, links, absence of auto-numbering and no leaked placeholders;
+- [x] Assert actual counting, links, absence of auto-numbering and no leaked placeholders;
   compare old model15 output with archived0.1.12. Pin exact final tarball SHA/source commit
   in Service and rerun affected real DB/API checks against that installed package.
 - [ ] Render/inspect all sample pages and ask owner to inspect PDF. Only after acceptance,
@@ -181,5 +181,40 @@ this plan and existing roadmap delivery records.
 Coverage: authored/API boundary Task1+4; counting Task2; geometry/cache/visibility
 and minimum TOC compatibility Task3; runtime/package/legacy/owner sample Task5.
 Review Focus is covered by named assertions above. No design requirement unassigned.
-Remaining prerequisite: owner reviews this written plan before inline implementation.
-No product source edits, dependency installation or worktree creation in planning.
+Owner approved implementation in this chat. Work proceeded inline in isolated Core/Service lanes.
+
+## Technical checkpoint — 2026-10-10
+
+Core candidate `53baa9f` (runtime/package source `0ee703a`), Service `e6fb28f`;
+both development candidates0.1.13. Owner PDF acceptance and integration remain pending.
+Release refs remain Core7b5161c / Service78c9491 (0.1.8); no push/deploy.
+
+- Core build/full49 files410 tests PASS, then new diagnostic/Columns/font test
+  passed within pageFields8 and counting boundaries passed3. These later edits
+  are test-only; packed runtime source is unchanged. Unique covered tests412.
+- One fresh review found right ink overhang before slots and missing artifact/API
+  assertions. Overhang RED expected12/actual5, then GREEN. Geometry now advances
+  by occupied ink extent. Field diagnostic suffix survives Section wrapping.
+- Packed Linux/amd64 consumer PASS with four numbering PDFs and explicit excluded
+  TOC failure. `tests/consumer/checkPageNumberingPdf.py` PASS: real values99–104,
+  total10, cover/blank/hide/exclude, no-field/no-TOC behavior, repeated displayed104
+  pointing to distinct physical destinations8/12. Main12 pages rendered/inspected.
+- Legacy model15 section-ownership PDF matches archived0.1.12 byte-for-byte,
+  SHA256 `9daccdc08679a23d52ae1ecfb0e2aadb5141f5e59ffeaf3905469cfea7ff23c9`.
+- Service exact artifact build and affected33 unique DB/API tests PASS. First run
+  32/33 exposed a test using authored rather than persisted section payload;
+  fixture access corrected, entire affected page-numbering API file5/5 PASS.
+  Caller forged current/total yields identical PDF bytes; narrow slots fail with
+  no downloadable PDF. Populated migration011→012 preserves old current/snapshots.
+- Migration012 was necessary because011 owner guards recognized only15. It replaces
+  only two guards to accept15/16, without rewriting old migrations/data.
+- Service pin SHA256 `387ac64440433cb01ed2fa24783033aebddace106863904147877dd46110c1f0`.
+
+Evidence locations (retained until accepted integration):
+Core `../flowdoc-core-page-numbering/artifacts/1791633904440/` contains final
+PDFs/tarball/result and rendered pages; logs in `artifacts/page-numbering-logs/`.
+Service `../flowdoc-service-page-numbering/artifacts/page-numbering-logs/`
+contains final-docker, final-api and final-api-repair logs. Exact pin in vendor/manifest.json.
+Owner sample sent: page-numbering-long.pdf (12 physical pages; counted total10).
+No automatic acceptance or worktree cleanup before owner reply. R5/R6 and known
+migration004 baseline test debt remain outside this delivery; no full Service-suite claim.

@@ -307,3 +307,11 @@ releaseยัง0.1.8 ไม่ได้เปลี่ยนในรอบน�
 Core `b0657ee` / Service `6729964`; เก็บหลักฐานและล้าง lane/Docker ทดลองแล้ว.
 [ผลรับและตำแหน่งหลักฐานหลัง cleanup](flowdoc-section-ownership-plan-2026-10-10.md#accepted-delivery--2026-10-10).
 ขั้นถัดไป R4 นโยบายเลขหน้าอย่างเป็นทางการ; migration004 test debt ยังอยู่ก่อน releaseรวม.
+
+## R4 technical checkpoint — 2026-10-10
+
+เลขหน้า current/total ที่ผู้สร้างวางในหัวท้าย และนโยบายต่อเนื่อง/เริ่มใหม่/ไม่นับ
+ตรวจทางเทคนิคผ่านใน candidate0.1.13 ของทั้งสอง repo แล้ว รอเจ้าของรับ PDF12หน้า.
+Core53baa9f / Servicee6fb28f; ยังไม่รวม development และไม่เปลี่ยน release0.1.8.
+[ผลตรวจและข้อจำกัด](flowdoc-page-system-r4-plan-2026-10-10.md#technical-checkpoint--2026-10-10).
+R5/R6 และ migration004 test debt ยังอยู่ตามแผนเดิม.
