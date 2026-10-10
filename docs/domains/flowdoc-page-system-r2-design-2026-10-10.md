@@ -3,11 +3,12 @@
 ## Authority Boundary
 
 Owner: Project Control. Role: Planning Partner / Cross-Repo Boundary Reviewer.
-Status: proposed design for review, 2026-10-10; not implementation evidence.
+Status: design accepted for implementation planning, 2026-10-10; not implementation evidence.
 ต่อจาก [Roadmap](flowdoc-page-system-roadmap-2026-10-10.md) และ
 [R0 contract](flowdoc-page-system-r0-contract-2026-10-10.md).
 คำขอรอบนี้คือไปต่อหลังรับ R1; ข้อตกลงปกและ fixed-height เดิมคงไว้
-รายละเอียดใหม่ด้านล่างเป็นข้อเสนอให้ตรวจ ไม่ใช่สิ่งที่ผู้ใช้รับไว้แล้วทั้งหมด
+เจ้าของยืนยันว่าข้อมูลบนปกไม่เข้าสารบัญ แล้วตอบ ok ให้เร่งไปต่อ
+ใช้ร่างนี้เป็นฐานแผนลงมือ; ยังไม่ใช่ผลทดสอบหรือการอนุมัติ release
 
 งาน inline ไม่มี registered execution; Work/Phase/Checklist IDs ไม่ applicable.
 ขนาด bounded cross-repository design, risk routine. Core owns validation,
