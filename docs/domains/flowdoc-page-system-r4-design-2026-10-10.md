@@ -124,6 +124,6 @@ PDF ตัวอย่าง: ปก → ส่วนแรกนับต่อ
 ## Review boundary
 
 เจ้าของรับร่างนี้แล้ว รวมการจองความกว้าง hide ทั้ง TextBlock ที่มี token
-และ diagnostic ของ excluded TOC. ลงมือและตรวจทางเทคนิคแล้ว รอเจ้าของรับ PDF.
+และ diagnostic ของ excluded TOC. เจ้าของรับ PDF แล้วและรวมเข้าฝั่งพัฒนา0.1.13.
 [แผนลงมือ R4](flowdoc-page-system-r4-plan-2026-10-10.md) ระบุ interfaces,
 ลำดับงาน RED–GREEN และผลตรวจล่าสุดก่อนรวมเข้าฝั่งพัฒนา.

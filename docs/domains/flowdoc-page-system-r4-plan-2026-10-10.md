@@ -13,7 +13,7 @@ Service preserves the authored structure and never accepts system values as inpu
 ## Authority Boundary
 
 Owner: Project Control, Planning Partner; implementation owners Core and Service.
-Status: owner-approved implementation; technical checks complete, owner PDF acceptance pending.
+Status: accepted and integrated development delivery0.1.13; release unchanged.
 Owner accepted written design, including its three technical proposals, in this chat.
 Bases: Core b0657ee / Service6729964, development0.1.12. Release0.1.8 stays unchanged.
 Medium overall, routine risk; inline, no registered execution IDs or separate rooms.
@@ -170,10 +170,10 @@ this plan and existing roadmap delivery records.
 - [x] Assert actual counting, links, absence of auto-numbering and no leaked placeholders;
   compare old model15 output with archived0.1.12. Pin exact final tarball SHA/source commit
   in Service and rerun affected real DB/API checks against that installed package.
-- [ ] Render/inspect all sample pages and ask owner to inspect PDF. Only after acceptance,
+- [x] Render/inspect all sample pages and ask owner to inspect PDF. Only after acceptance,
   fast-forward development branches, reuse unchanged proof, archive verified artifacts,
   remove clean merged current-round lanes/branches and disposable Docker.
-- [ ] Record exact results/commits/remaining R5/R6 work. Never claim release readiness
+- [x] Record exact results/commits/remaining R5/R6 work. Never claim release readiness
   or full Service-suite PASS while old migration004 debt remains.
 
 ## Self-review and handoff
@@ -218,3 +218,25 @@ contains final-docker, final-api and final-api-repair logs. Exact pin in vendor/
 Owner sample sent: page-numbering-long.pdf (12 physical pages; counted total10).
 No automatic acceptance or worktree cleanup before owner reply. R5/R6 and known
 migration004 baseline test debt remain outside this delivery; no full Service-suite claim.
+
+## Accepted delivery — 2026-10-10
+
+Owner accepted the PDF after clarifying that99 is an intentional restart fixture,
+while total10 counts participating physical pages. Default numbering starts at1.
+Fast-forward integration completed with identical checked content:
+Core `codex/template-binding` at53baa9f; Service `codex/template-registry` ate6fb28f.
+Reused passing scoped proof because base/candidate/dependencies/configuration were
+unchanged. Primary Core build and Service locked install/build also passed.
+
+Archived artifacts were copied and SHA256-verified (Core229 files, Service16):
+- `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-page-numbering/1791633904440/`
+  holds accepted PDF, tarball, runtime results and renders.
+- Both primary repos retain `artifacts/worktree-archive/<repo>-page-numbering/`
+  with page-numbering-logs; primary install/build logs are alongside them.
+
+Removed only clean merged codex/page-numbering worktrees/branches for these two
+repos, after checking exact resolved paths and ancestry. Removed disposable Docker
+projects flowdoc-page-numbering and flowdoc-page-numbering-final, including their
+own DB volumes/networks. Release refs unchanged; no push/deploy or map promotion.
+Next: R5 contents/page-system contract, then R6 combined acceptance/release.
+Known migration004 test debt remains for the combined release checks.
