@@ -332,3 +332,7 @@ Section id เป็นตัวตนคงที่, key สำหรับ AP
 
 ผลรับนี้เป็นขอบเขตออกแบบ ไม่ใช่ผล implementation. ขั้นต่อไปกางแผน Core
 และ Service พร้อมตัวอย่างแม่แบบ/request คู่กันและเกณฑ์ทดสอบที่บันทึกไว้.
+
+
+แผนลงมือสำหรับตรวจ: [Section ownership implementation plan](flowdoc-section-ownership-plan-2026-10-10.md).
+รายละเอียด interface ในแผนยังรอการตรวจแผน ไม่ใช่ runtime ที่ส่งมอบแล้ว.
