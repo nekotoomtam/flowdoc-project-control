@@ -512,3 +512,46 @@ cover while current Core excludes it; full-bleed banner and horizontal category
 icons need explicit layout mapping. No silent omission or Core expansion approved.
 Next: resolve these bounded mappings and build an executable SRS template/request,
 then real-document acceptance. Hierarchical numbering stays deferred.
+
+### First executable SRS trial — 2026-10-10
+
+Owner authorized trying the existing engine first, then improving fidelity from
+the resulting PDF. Inline, bounded/routine; Service owns ignored trial artifacts,
+active role Product Implementation Agent / Evidence Reviewer, execution IDs N/A.
+Scope: map the extracted source into a model16 template/request and render with
+the released Core0.2.0 package; no engine, DB, release, or production API changes.
+Proof budget: schema/input/composition validation, one successful full-book render,
+requirement/heading presence and representative page inspection. Document budget:
+this existing checkpoint only. This is not the five-dataset real-document acceptance.
+
+Trial mappings are explicitly provisional: level4 headings remain present but
+use TOC level3; counted total follows existing cover-exclusion policy; banner fits
+content width; category icons are composed into prepared image strips; physical
+source line breaks remain. Signature spacing, table colors and footer placement
+are still fidelity work. These choices do not change the target/source definition.
+Fixed-height text is restricted to authored cover roots by the existing contract;
+the trial uses that path for cover spacing and normal flow for approval content.
+
+Result: full-book export FAIL, not accepted. Public package rendering failed at
+PDF writing. A diagnostic rerun used the same installed writer/layout/subsetter
+through an internal logging wrapper, with no package edits: `Font CID capacity
+exceeded`; layout87 pages, regular117576 glyph occurrences, bold3573. Existing
+writer allocates a CID per occurrence and rejects above65535 per font. This is
+a demonstrated export blocker, not merely visual template fidelity. Diagnostic
+internal imports are trial-only and must not become a Service integration API.
+
+Partial sample `../flowdoc-service/artifacts/srs-source-020/srs-sample.pdf` uses
+the public Core0.2.0 API unmodified:10 pages, first12 requirements and2 headings,
+zero warnings,11.428s generation in the local container. Source lines checked120,
+all present after whitespace normalization; REQ0001–0012 present. Rendered and
+visually inspected contact sheet pages1–8 and10 plus detailed page6. This is
+partial evidence only, not full-document or HTTP acceptance; page9 not visually
+reviewed. Table header color, cover/approval spacing, footer placement and source
+line-break treatment remain provisional. No claim of source93-page equivalence.
+
+Artifacts in that directory: trial.mjs, trial-template/request.json (full input),
+srs-sample-template/request/result/check.json, full-render-failure.json, sample
+PDF and rendered pages/contact sheet; check-trial.py reproduces presence/render
+checks. Product tracked files unchanged; no version bump or release changes.
+Next recommended scope: fix and verify CID allocation for long documents, then
+rerun this full SRS before pursuing layout fidelity or five-dataset acceptance.
