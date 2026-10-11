@@ -1553,3 +1553,35 @@ all85 pages' extracted text is identical. Owner visual acceptance pending.
 Core package/logs retained under `../flowdoc-core/artifacts/table-empty-fragment/`.
 Task containers/volumes, images, credentials, clean worktrees and integrated task
 branch removed; prior artifacts retained. No shared system map promotion.
+
+#### L6 ten-run sequential real API benchmark — 2026-10-11
+
+Owner requested5–10 repeated trials and standard deviation. Bounded inline
+Service verification using immutable devd206d37/Core6c0a8c3, both packaged0.2.9;
+execution IDs N/A. Ran10 serial jobs on one prepared isolated Compose server,
+fresh17-image upload/finalize per run, same full version2.0 source request and
+accepted SRS template. No builds or PDF content verification during timed runs.
+Timing starts before upload and ends after PDF download; excludes Docker build,
+DB migration, template registration and post-download cleanup check. Client uses
+real HTTP loopback inside API container; public-network latency not represented.
+
+Evidence: `../flowdoc-service/artifacts/srs-api-benchmark-10/` contains input and
+environment hashes, runner/client,10 PDFs and per-job reports, summarize.py,
+timings.csv and summary.json. Host i9-13900H,20 logical CPUs; Docker20 CPUs,
+8,169,648,128 bytes memory. No explicit claim of idle host or dedicated hardware.
+Totals in seconds:87.682,91.834,88.029,87.835,91.827,93.923,91.929,92.756,
+91.238,99.520. All runs retained, including first and slowest. Mean91.6573s,
+sample SD3.52845s (n-1), median91.8305s, min87.682s,max99.520s,CV3.8496%.
+Summed timed duration916.573s. Mean upload0.4676s, admission0.1757s,
+observed job90.8911s, download0.1024s; small remainder is client overhead.
+DB worker mean90.6943s. These are descriptive sample statistics, not an SLA,
+concurrent capacity, population bound or explanation of slowest-run cause.
+
+All10 jobs succeeded,85 pages each, every page's extracted text exactly matches
+the accepted empty-fragment correction PDF. Same8 low-resolution warnings each.
+All10 one-shot cleanup checks passed (second download410, no output/render-temp
+files left). Task staging follows expiry policy and isolated volume was removed
+at end. Containers, volumes, image, temporary credentials and clean detached
+checkout removed; evidence/PDFs retained. No product edits, version bump, branch
+promotion or release changes. This repeated baseline is complete; further load
+or performance optimization work is outside the current request.
