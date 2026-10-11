@@ -1258,3 +1258,30 @@ Temporary detached Service checkout and this round's Docker image removed after
 checks; all outputs created directly in the retained ignored artifact directory.
 No DB was needed. Both development packages remain0.2.6, release unchanged.
 Next: owner review of pages2–5, then L6 full latest-data API acceptance/timing.
+
+#### L5 Element pairing correction — 2026-10-11
+
+Owner clarified that the left side must contain icon plus category label, with
+only its description on the right. After discussing Columns versus paired rows,
+owner approved a two-column table. Inline routine template correction; Service
+ignored artifacts only, same public Core0.2.6; no product/DB/API contract changes.
+The existing Columns support is band-only; no body Columns expansion is implied.
+
+Candidate `../flowdoc-service/artifacts/srs-l5-element/element-refined.pdf`
+supersedes the prior L5 sample for visual review. Paired cells use145pt left and
+remaining width right, invisible white borders, shared row height and unbreakable
+rows. Each image precedes its label within the left cell. Nine labels/descriptions
+preserved, eight source icons retained; Agreement has no invented icon. Split the
+existing label separator into template-local label/text fields in both sample and
+full request, asserting reconstruction equals original source. No non-legend data
+changed. Files: refine-element.mjs, element-template.json,
+element-sample-request.json, element-full-request.json, result.json, verify.py,
+verification.json and page5 raster. These template/request outputs are the next
+L6 inputs, subject to owner review.
+
+Validation/preparation/render passed,8 pages, no renderer warnings. All nine pairs
+checked against extracted text; page5 visually reviewed. The other seven page
+rasters are pixel-identical at1000px to the prior L5 candidate. Raw originals and
+prior artifacts preserved. Temporary clean detached checkout and this task's
+Docker image removed; packages remain0.2.6 and release unchanged. L5 visual
+acceptance remains pending; full-book API/timing stays L6.
