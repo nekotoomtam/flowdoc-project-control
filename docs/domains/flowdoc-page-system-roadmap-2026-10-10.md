@@ -1171,3 +1171,45 @@ Artifacts hash-verified before cleanup. Tested commits fast-forwarded to existin
 development branches unchanged; temporary clean lanes/branches and this round's
 Docker image/database/volume/network/password removed. Release untouched.
 Next: owner review of L4 sample, then the next bounded layout roadmap item.
+
+#### L4 follow-up: line alignment and reference cover — 2026-10-11
+
+Owner accepted L4 and requested left/center/right line alignment plus a cover
+closer to the supplied69C_REQ_SRS.pdf. New bounded inline scope; no registered
+execution IDs. Core owns optional align (default left); Service consumes0.2.6.
+Use the existing flow, preserve old geometry when omitted, test body and bands,
+invalid align and snapshot persistence, packed Linux consumer, then inspect
+reference/candidate cover and unchanged subsequent pages. Reference uses one
+long rule below a single-line title. Keep Sarabun; approximate components and
+placement rather than original font or pagination. Template-only cover changes
+may reuse fixed-height spacing and a white-border metadata table. No general
+text alignment, new columns contract or release promotion. Existing roadmap is
+the sole record; raw documents/artifacts stay ignored. Risk routine; owner
+visual approval remains separate from engine checks. Current host model retained
+for this bounded inline implementation; no delegated lanes or new room.
+
+Follow-up delivered: Core41ec0ab / Service10a59c1, development0.2.6. Optional
+`Line.props.align` supports left/center/right relative to its immediate available
+width; omitted remains left. New alignment regression observed RED then GREEN;
+all439 Core tests, build and packed Linux consumer passed. Two targeted Service
+snapshot/band persistence tests passed; package checksum verified. No DB/API
+runtime changes. Core proof archived under
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-line-align/1791708082814/`.
+
+Candidate `../flowdoc-service/artifacts/srs-cover-line-align/cover-aligned.pdf`
+and cover-aligned-template.json preserve the request's variable values. The
+cover uses normal Sarabun20pt title/project,11pt metadata and10pt contacts;
+original margins/line endpoints are reproduced, with a single-line title and
+white-border table for metadata positioning. cover-sample.mjs and
+cover-verification.json record reproduction/checks. The rule endpoints match
+reference coordinates within0.001pt; pages2–5 are pixel-identical at1000px raster
+to accepted L4 output. Five pages retained; final cover raster visually reviewed.
+Reference font is intentionally not reused. Fixed cover spacing is tuned to the
+sample; unusually long project/author/address values may need template changes.
+Owner visual acceptance of this cover remains pending.
+
+This follow-up did not change L5/L6 scope or release. Clean tested development
+commits fast-forwarded unchanged. Core archive hashes checked, Service test logs
+copied and hash-checked, current temporary worktrees/branches and Docker resources
+removed. Existing copied L4 files in the sample folder remain comparison inputs;
+cover-result.json and cover-verification.json describe this follow-up.
