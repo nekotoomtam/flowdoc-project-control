@@ -705,3 +705,38 @@ Do not translate these into one universal padding value or promise identical
 pagination. Future layout work should use the source's sizing intent with the
 reference PDF for visual acceptance, retaining FlowDoc's text shaping/wrapping.
 The earlier tab/API/timing work remains pending and precedes major layout work.
+
+### Tab display handling — 2026-10-11
+
+Owner resumed item1 only and explicitly chose one display space per TAB, with
+original source unchanged; Word-style tab stops are outside scope. Inline Core
+implementation, bounded/routine, IDs N/A; role Product Implementation Agent.
+Base43f8f26, isolated flowdoc-core-tabs/codex/srs-tabs; preserve primary release.
+Change shared text measurement before segmentation/shaping, retaining one-to-one
+UTF-16 offsets for tabs and existing CRLF handling. No API, DB, font or layout
+styling changes. Full SRS API acceptance and timing remain subsequent work.
+Proof budget: failing tab regression, space-equivalent layout/link geometry and
+input immutability tests, affected shared-layout coverage via packaged build and
+real Linux PDF consumer, one bounded read-only review. Existing checkpoint only;
+no additional process records. New JSON still has one TAB in unit2; historical
+version data has another, and is not merged into current document input.
+
+Item1 PASS: Core36065e1, development0.2.2. Two regressions demonstrated the
+previous tab behavior; focused layout/link tests9/9 and packaged build421/421
+passed. The complete isolated Linux packed-consumer check passed, including a
+new public-API tab PDF in four font styles with input immutability asserted.
+Extraction confirms eight fixture text leaves retain consecutive display spaces
+and contain no tabs. The first extraction assertion assumed four leaves; the
+fixture has eight, so the checker was corrected to derive the count from the
+fixture (PDF/product unchanged). Bounded read-only review found no actionable
+issue. Shared measurement covers body, cells, page bands and contents paths.
+
+Evidence/package archived with per-file SHA256 comparison at
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-tabs/1791700712494/`:
+result.json, package-check.log, tabs.pdf and tab-extraction.json. Package SHA256
+`c6f3fad0d02cc83bbff0cfc766e7b09786c520cf81a31527a49f20ceb0a2e963`.
+Development ref fast-forwarded with exact base guard; unchanged verified content
+reuses passing checks. Clean merged worktree/temporary branch and task image
+removed. Core release unchanged. Service remains development0.2.1 pending the
+explicit next API integration step; no claim that Service already applies this
+fix. Items2–3 (new JSON full SRS API/queue/download and timing) remain not started.
