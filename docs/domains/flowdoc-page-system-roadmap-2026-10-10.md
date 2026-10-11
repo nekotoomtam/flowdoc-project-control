@@ -2005,3 +2005,48 @@ build log). Core artifact copy verified144files by SHA256 before removing clean
 merged task worktrees/branches. Only task Docker resources/images and credential
 removed; evidence retained. Stop here: requested comparison and exact-output
 acceptance pass. No DOCUMENT_MAP promotion or additional optimization in this work.
+
+## Supplementary SpaceShip SRS template trial — 2026-10-11
+
+Owner request: create this full SRS using FlowDoc's existing template model and
+the latest supplied raw JSON. Inline Product Implementation/Evidence Reviewer;
+execution IDs not applicable. Scope: dataset-specific template, adapter and
+local PDF proof in Service artifacts; no Engine, API, DB, package or release
+change. Routine risk. Existing accepted SRS template reused; no new Node model.
+
+Artifacts: `flowdoc-service/artifacts/srs-spaceship-0211/` contains `build.py`,
+`template.json`, source-preserving `request.json`, `display-request.json`,
+`mapping-check.json`, image uploads/manifest, `render.mjs`, `verify.py`,
+`render-result.json`, `pdf-text-check.json`, and `spaceship-srs.pdf`.
+The adapter references the supplied attachment externally; raw private database
+metadata is not copied into the generated request. Base template/assets are
+the retained `srs-subset-compact` artifacts. These are local ignored artifacts,
+not a shipped example or published API template.
+
+Result: 97 pages from Core/Service package 0.2.11; one direct Core render took
+18.509 seconds including image loading/validation/composition. This is not an
+API benchmark, concurrency test or memory result. Template, input and composition
+validation passed; render returned no warnings. All 363 requirement records
+and 183 system headings retained, with 12 introductory entries, 15 meetings and
+94 participant entries. Both missing requirement codes stay empty. Source
+requirement detail strings match the generated input exactly. All 1,457 checked
+intro/body values were found in extracted PDF text after whitespace normalization,
+approved emoji substitution and removal of repeated page/table headers.
+396 internal link annotations resolve to pages in the PDF; destination existence
+does not replace human click/visual acceptance. Visual sample: cover, approval,
+contents, definitions, meeting continuation and final requirement page.
+
+Data authority is JSON version3, while the supplied reference PDF shows version4.
+Revision/signature dates use source timestamps in Bangkok; cover Updated Date
+uses the latest revision date because a document-specific updated date is absent.
+Source screenshot histories are not part of the supplied SRS PDF and remain
+outside this template. Historical snapshots and operational database metadata
+are not document content. All ten element definitions are retained, including
+the empty Minutes of Meeting description. Empty introductory headings remain.
+Owner explicitly approved display-only replacement of U+1F680 with the Thai word
+for rocket; original normalized request retains U+1F680. No fallback-font change.
+
+Remaining: user visual acceptance; optional actual API integration for this new
+dataset. Different page count is expected under FlowDoc font/wrapping; no claim
+of exact reference pagination, full-API readiness, or 600-page capacity. Task
+container auto-removed and task image removed; no worktree/branch created.
