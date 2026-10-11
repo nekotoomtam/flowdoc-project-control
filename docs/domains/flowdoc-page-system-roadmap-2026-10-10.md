@@ -2050,3 +2050,24 @@ Remaining: user visual acceptance; optional actual API integration for this new
 dataset. Different page count is expected under FlowDoc font/wrapping; no claim
 of exact reference pagination, full-API readiness, or 600-page capacity. Task
 container auto-removed and task image removed; no worktree/branch created.
+
+### Meeting table correction — 2026-10-11
+
+Owner-approved inline correction to the supplementary template only. New local
+artifacts `flowdoc-service/artifacts/srs-spaceship-meetings-0211/` preserve the
+previous trial unchanged. Each meeting now uses one three-column table
+(50/25/25); company labels span all columns, participant position spans the last
+two. Existing row repeats bind participants separately for each company slot.
+The dataset adapter generates formats for the company counts present in the
+source. This is not a new arbitrary nested-group repeat contract: changing the
+number of company groups requires a corresponding template shape. No Core,
+Service runtime, package, release, autoLink, indentation or page-break change.
+
+`check-meetings.mjs` verifies composed cell order/values against every meeting's
+input: 15 tables, 29 company groups, 94 participants. `verify.py` passes all1,457
+intro/body text values, exact363 requirement detail strings and396 resolvable
+internal links. New PDF98pages, no render warnings; single direct Core generation
+15.178s (not an API/performance comparison). Visual review of pages17–18 confirms
+merged company rows, half-width participant columns and repeated meeting title
+on continuation. User visual acceptance remains separate. Task container/image
+removed; no branch/worktree created. Evidence is local ignored trial output.
