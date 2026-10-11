@@ -1585,3 +1585,36 @@ at end. Containers, volumes, image, temporary credentials and clean detached
 checkout removed; evidence/PDFs retained. No product edits, version bump, branch
 promotion or release changes. This repeated baseline is complete; further load
 or performance optimization work is outside the current request.
+
+#### Local release0.2.9 — 2026-10-11
+
+Owner authorized matching guides followed by release0.2.9 in both repositories.
+Bounded inline release maintenance; execution IDs N/A. Core README/template guide
+and Service README/usage guide now describe0.2.9, existing model gates, counted
+hidden covers, independent page bands, lines/colors, alignment/compact fields,
+tab/CID handling and empty-fragment UX. Service guide records the10-run local
+baseline and explicitly distinguishes300s trial override from120s server default.
+Compose default runtime/verification image tags now0.2.9; no engine/API/DB change.
+
+Core candidate0b8058e, Service candidate1c02c4a. Rebuilt Core tarball differs from
+previous tested0.2.9 candidate only in package/README.md; all runtime/native/font
+entries identical. This is the first released0.2.9, not overwriting a release.
+Final SHA256f18a8e0d4ea8db0fab1787e115a4c8261a25fea633ffcb33bb7f4425b279ab10.
+Service vendor manifest/lock pin this tarball. Core Linux build452 tests PASS;
+Service Docker runtime build and checksum PASS. Fresh isolated DB guide exercise
+migrate -> draft-import -> publish -> show -> contract -> HTTP job -> PDF ->410
+PASS, no warnings. Reuse10-run full-book evidence because runtime is identical.
+No broad Service suite rerun claimed for this docs/config/package-metadata delta.
+Evidence: Core artifacts/release-029 and release-029-build.log; Service
+artifacts/release-029 (manual-result, logs, PDF, promotion.json) plus benchmark.
+
+Release snapshots parent previous release commits and exactly match reviewed
+candidate trees. Annotated v0.2.9 tags created locally:
+- Core release d06cd8a1b8365a6c0a7735706165c3b670704d80 (source0b8058e).
+- Service release7563151fe5870adf3d3574ca4ad2139535e7f9c6 (source1c02c4a).
+Primary checkouts were on development branches at promotion preflight, so those
+branches were fast-forwarded and preserved; separate release checkouts were used.
+No push, remote release publication or deployment. Scoped containers/volumes,
+image, temporary credential, clean worktrees and integrated task branches removed.
+Evidence retained. Known image-resolution warnings, long-cover overflow and
+unproven concurrent/300–700page capacity remain explicit limitations.
