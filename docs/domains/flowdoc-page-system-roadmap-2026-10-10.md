@@ -1484,3 +1484,40 @@ review rejected the scoped deletion command with 'blocked by policy' and no
 specific reason. No files were deleted, and no alternate deletion route was used.
 No runtime, package, release or template behavior change. Inline maintenance;
 execution IDs N/A. Retained approval/current folders confirmed present.
+
+#### L6 current full-data real API trial — 2026-10-11
+
+Owner requested the latest source JSON (document version "2") through the real
+API using the accepted signature-brackets template. Bounded inline verification,
+Service-owned trial with Core consumer; execution IDs N/A. No product changes,
+package bump or release promotion. Service dev4318bf2 consumes Core0.2.8; clean
+isolated detached checkout and private task Compose database were used.
+
+Evidence: `../flowdoc-service/artifacts/srs-l6-real-api/` retains template,
+full/submitted requests,17 upload assets, runner/client, PDF, input-check,
+api-result, verification, links-pages-verification, resource samples and rasters.
+Raw SHA2568c8c6cdf91e6dfa4e6032a1b09a6f336e96430e267f81e386d068cc79e2f82ea;
+all240 raw sm_comment values match request details whitespace-insensitively.
+Source document version2.0 is distinct from registry template version1.
+
+Actual HTTP upload/finalize -> job -> poll -> download passed:85 pages,
+2,763,039 bytes; upload845ms, admission250ms, observed job95,806ms,
+download127ms, total97,068ms. DB running95,694ms, queue105ms. Task renderer
+limit300s; this one local run is not a concurrency or300–700page capacity claim.
+13 container samples, maximum observed409.6MiB; not exact peak RSS.
+Eight IMAGE_LOW_RESOLUTION warnings retained for authored requirement icons;
+these do not block output and do not prove image print quality.
+
+All240 requirement codes appear once with complete details; all mapped headings
+and paragraphs retained. All70 TOC annotations checked against target pages and
+headings, all84 visible page fields correct, no text outside physical pages,
+cover has no repeated band. Five cropped Thai link labels differed in glyph
+ordering between extractors; canonical request headings confirm target text.
+Ten representative pages rasterized and visually reviewed, including cover,
+approval, TOC, Element, first/middle/final body pages. Full-book owner visual
+acceptance remains pending; no claim of exact source-PDF layout equivalence.
+Second download410 and empty output/render-temp directories confirm one-shot
+cleanup. Staged resources follow expiry policy. Task Compose containers/volumes,
+image, temporary credential and clean detached checkout removed; retained local
+PDF/evidence preserved. Release branches unchanged. Existing deferred cover-long-
+title and other layout limitations remain outside this trial.
