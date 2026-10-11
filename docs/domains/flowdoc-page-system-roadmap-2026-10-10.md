@@ -1521,3 +1521,35 @@ cleanup. Staged resources follow expiry policy. Task Compose containers/volumes,
 image, temporary credential and clean detached checkout removed; retained local
 PDF/evidence preserved. Release branches unchanged. Existing deferred cover-long-
 title and other layout limitations remain outside this trial.
+
+#### L6 empty trailing table fragment UX correction — 2026-10-11
+
+Owner accepted pagination behavior and requested only removal of the empty table
+strip at page49. Bounded inline Core rendering fix, Service package consumer;
+execution IDs N/A. No new pagination mode or template workaround. Core paint
+clips a trailing newly-started nonempty row when none of its items fit this
+fragment. Layout cursor/cut, next-page offsets and contents remain unchanged.
+Explicitly authored empty rows, partial content and crossing rowspans retain
+existing geometry. Borders and fills use the same shortened paint extent.
+
+Regression reproduced first: border extended to40pt rather than26pt with no
+second-row content. Added regression and authored-empty-row preservation tests.
+Relevant local layout/PDF tests167 pass; TypeScript build passes. Linux package
+build runs452 tests successfully. Core0.2.9 commit6c0a8c3; Service0.2.9 commit
+d206d37 consumes checksum-verified package, Docker runtime build and isolated
+network-disabled packed consumer render8-page sample pass. Integrated into
+existing development branches only; release unchanged.
+
+Evidence in `../flowdoc-service/artifacts/srs-empty-fragment/`: real full API
+trial using tested Core dist, comparison.json, page49.png, srs-api.pdf,
+packed-consumer.json/packed-short.pdf, requests, uploads and logs. Full trial
+85pages; all page text and glyph coordinates exactly equal previous L6 PDF.
+Page49 line count15->14; raster confirms the empty strip removed and table closes
+at the last populated row. Same8 low-resolution warnings; no layout/content
+change claimed. Full API trial used dist mount; separate8-page Linux smoke used
+the actual packed0.2.9 artifact. Timing105.8s is not a performance comparison
+because package build ran concurrently. Existing content checks reused because
+all85 pages' extracted text is identical. Owner visual acceptance pending.
+Core package/logs retained under `../flowdoc-core/artifacts/table-empty-fragment/`.
+Task containers/volumes, images, credentials, clean worktrees and integrated task
+branch removed; prior artifacts retained. No shared system map promotion.
