@@ -1450,3 +1450,25 @@ unchanged, other7 pages extracted text unchanged. All3 page2 rasters reviewed.
 Full request validates but full-book render remains L6. Clean temporary detached
 checkout and task Docker image removed; no branch created. Use this template/full
 request after owner visual review; previous approval artifacts preserved.
+
+#### L5 signature bracket correction — 2026-10-11
+
+Owner clarified and rejected the preceding bracket placement: name must be above
+one literal `(................................................................)`
+line, not parenthesized separately. Current bounded inline Service template
+correction removes bracket text from all4 name blocks and puts both parentheses
+in the same text run as the64 dots. Explicit empty names retain their reserved
+line height. No Core/API change, version bump, or release promotion; execution
+IDs N/A. Prior signature-lines candidate remains unaccepted history.
+
+New candidate `../flowdoc-service/artifacts/srs-signature-brackets/` retains
+signature-{blank,short,long}.pdf/requests, signature-template.json,
+signature-full-request.json, generator, verifier, results and page2 rasters.
+All3 public validation/preparation/renders pass,8 pages each, no warnings.
+All4 bracket/dot runs share the same baseline; dots retain width>=60mm, full
+bracketed run65.054mm. Names appear above, dates below, all mock values retained.
+Date/stamp coordinates and other7 pages' extracted text unchanged. All3 page2
+rasters visually reviewed. Full request validates; full-book render still L6.
+Clean temporary detached checkout and task image removed. Packages remain0.2.8.
+Use this candidate after owner visual acceptance; it supersedes the previous
+signature-lines template/full request for the next trial.
