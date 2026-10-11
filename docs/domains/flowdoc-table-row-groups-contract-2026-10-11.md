@@ -4,7 +4,7 @@
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 เอกสารนี้เป็น **นิยามสำหรับพัฒนา ยังไม่ใช่ความสามารถที่ API ใช้ได้แล้ว**
-ส่วน 1–7 เก็บสถานะและนิยามเมื่อจบพาร์ต 1; ผล implementation ล่าสุดอยู่ส่วน 8–9.
+ส่วน 1–7 เก็บสถานะและนิยามเมื่อจบพาร์ต 1; ผล implementation ล่าสุดอยู่ส่วน 8–10.
 ผู้ใช้อนุมัติแนวทางและให้เริ่มพาร์ตนิยามในบทสนทนาวันที่ 2026-10-11
 Core เป็นเจ้าของ schema, binding, composition และ pagination;
 Service เป็นเจ้าของการบันทึกแม่แบบ/เวอร์ชันและ API integration.
@@ -440,3 +440,117 @@ Cleanup completed: removed only this round's clean merged package/Service
 worktrees and temporary branches. The isolated Docker projects removed their
 containers, volumes and task images. Both development checkouts are clean;
 release refs were verified unchanged after fast-forward integration.
+
+## 10. Part 4 kickoff — pagination and real SRS (2026-10-11)
+
+User authorized continuation; inline Product Implementation Agent, execution
+IDs N/A. Owner Core; Service consumes the verified package and API diagnostics.
+Base Core d11d7ce, Service 7a91db3. Size medium, risk routine. Existing contract
+is authority; no registered separate WORK. Current snapshot concerns frontend;
+this explicit export request and sections 4/6 govern the bounded scope.
+Use isolated Core lane `../flowdoc-core-row-groups-pagination` (native worktree
+tool is bound to Project Control); isolate Service consumer updates separately.
+
+Plan: measure table once using existing text/image measurement; index group
+row positions once. Before committing a page cut, reserve full prefix height
+plus the first legal member/empty-row fragment (full row for allowBreak=false).
+Use actual current/next page capacity, bands, table header and cell padding.
+If it fits the next page, cut before the group; if neither remaining current
+space nor next page fits, relax once per instance and retain existing flow.
+No wrapping or shaping changes, forced authored breaks or repeated company titles.
+
+Warning wire: `ROW_GROUP_KEEP_START_RELAXED`, nodeId=resolved table ID,
+path=`nodes.<tableId>.rowGroups[<metadata index>]`, groupId and groupIndex,
+message explaining that the start exceeds usable capacity; preserve source
+section/content/format context. Optional DrawDocument warnings flow into the
+existing PdfEngine Result warnings and Service job warnings. Resolved metadata
+from Part 2 is unchanged. No new node model or DB migration.
+
+Proof: focused RED/GREEN for page-end prefix, empty company, long member,
+protected row/image, repeated headers, changing page bands, oversized fallback,
+exact legacy/no-policy draw equality and no repeated grid/measurement. Then
+packed Linux PDF consumer, Service API propagation, and the retained real SRS
+15 meetings/29 groups/94 people converted to generic rowGroups; inspect PDF,
+check text/order/links, measure wall time and container peak memory. Preserve
+source input and approved display-only emoji substitution. One final review.
+Package increments only after runnable proof; target 0.2.13 development in both
+repos. Reuse unchanged passing evidence; no release/tags, live DB, autoLink,
+frontend, DOCX, nested Area or unrelated layout features. Update this record
+only; no map promotion. Risk: current/next page capacities differ with bands;
+unknown real-SRS timing is measured evidence, not a production guarantee.
+
+### Part 4 result — PASS for bounded pagination and local real-SRS proof
+
+Core `a60d663afcbe51e6fc07a88c8430fd81825c83e9` and Service
+`cdab3314c64bc08747ef02fc8bef921e62188958` integrated unchanged by fast-forward
+into the existing development branches. Both packages are 0.2.13. No released
+migration changed; no new migration, release update or tag was required.
+
+Core measures the table once and uses indexed group row boundaries to protect
+full prefixes plus the first legal fragment. Remaining members can paginate.
+Oversized starts relax once per instance with structured warning context;
+impossible indivisible content still errors. Existing text measurement,
+wrapping, padding, image containment and table-grid preparation are reused.
+New optional DrawDocument warnings feed the existing Result warning channel
+and Service job status. No API request flag is required: template
+pagination policy owns it.
+
+| Criterion / impact | Evidence |
+| --- | --- |
+| Prefix and first member, empty row, long member, whole protected row, first image | Core `tests/layout/rowGroupFlow.test.ts` |
+| Changed current/next capacities, real first-page band, repeated/non-repeated table header | Same tests; non-repeated-header regression proved RED then GREEN |
+| Oversized fallback once, no loss/progress, impossible image errors, no-policy equality | Same tests; 13 focused scenarios |
+| One grid preparation, existing cells/spans/empty-fragment/bands/PDF engine | Focused affected 53-test pass, then full packed suite |
+| Installed public PDF API warnings and native runtime | Core `tests/consumer/checkRowGroups.mjs`; fallback PDF with two contextual warnings |
+| Service job status and published model-17 template | Service `tests/row-groups-api.test.mjs`; old 0.2.12 package reproduced LAYOUT_FAILED, new package succeeds and exposes both warnings |
+| Real SRS generic format, source preservation, values and order | Private retained adapter/checks listed below |
+
+Final Core package build: **497 tests, 62 files PASS**, native checks and
+network-disabled non-root packed consumer PASS. Final Service build and isolated
+PostgreSQL/container suite: **175 passed, 0 failed, 0 skipped**. Fresh read-only
+Core review found no actionable or minor findings. Service consumer diff is
+limited to dependency/version/example and tested warning acceptance. Final diff
+checks passed; fast-forward reuse preserves tested source/dependency/config.
+Core archive SHA-256:
+`35c102a7da326be583df66448c00c33585a7b0f98dc668d1a313bfb2caf39d6f`.
+
+Evidence retained locally (ignored; private data not checked into Git):
+- `flowdoc-core/artifacts/1791732987199/`: package, native/consumer results,
+  `row-groups-fallback.pdf`, `package-check.log`.
+- `flowdoc-service/artifacts/1791733154316/`: final 175-test DB/API result/logs.
+- `flowdoc-service/artifacts/1791733043682/`: old-package API RED proof.
+- `flowdoc-service/artifacts/srs-row-groups-0213/`: `build.py`, generic
+  `template.json`, original-value `request.json`, `display-request.json`,
+  `adapter-check.json`, `meeting-check.json`, `render.mjs`, `render-result.json`,
+  `verify.py`, `pdf-text-check.json`, `check-group-pages.py`,
+  `group-page-check.json`, `spaceship-srs.pdf`, and visual samples17–19.
+
+Real SRS result: **98 pages**, one generic meeting format for **15 meetings,
+29 company groups, 94 participants**. Reverse envelope conversion equals the
+previous source request exactly; no source strings/order changed. Display-only
+rocket substitution remains the prior owner-approved rule. Composition cell
+order/values exactly match the request. All **1,457** checked intro/body text
+values found, all **363** requirement detail strings unchanged, **396** internal
+link destinations valid. PDF text checks place all 29 company labels and first
+members on the same page. Visual samples17–19 confirm table continuation and
+header repetition; human visual approval remains distinct from this inspection.
+No warnings in this real-SRS run.
+
+One direct Core measurement (not a before/after performance or API-load claim):
+**21.832s** through preparation/images/PDF, including **19.243s** generatePdf;
+Linux x64 Node24.21.0, isolated task runtime image, network disabled.
+Container cgroup memory.peak **417,988,608 bytes (398.625 MiB)** includes Node,
+native shaping and font subsetting. Node resourceUsage maxRSS separately reports
+**450,056 KiB**; these counters use different accounting and must not be treated
+as interchangeable. No claim about worker count, 600-page capacity or concurrency.
+
+152 evidence files were copied and hash/byte-checked before cleanup; temporary
+DB credentials excluded. Old SRS trial and original attachments are unchanged.
+No DOCUMENT_MAP/shared readiness promotion. Remaining owner review can use the
+retained PDF; subsequent release acceptance and broader load measurements are
+separate work, not implied by this local result.
+
+Cleanup: removed only this round's clean merged Core/Service lanes and temporary
+branches, plus the SRS and package-consumer images. DB/API test runner removed
+its isolated project/volumes. Development checkouts remain clean; verified
+release refs are unchanged (Core d06cd8a, Service 7563151). No remote push/tag.
