@@ -2071,3 +2071,16 @@ internal links. New PDF98pages, no render warnings; single direct Core generatio
 merged company rows, half-width participant columns and repeated meeting title
 on continuation. User visual acceptance remains separate. Task container/image
 removed; no branch/worktree created. Evidence is local ignored trial output.
+
+### Row-group follow-up: Part 1 definition — 2026-10-11
+
+Owner authorized the two-level array and row-group definition after reviewing
+the meeting-template limitation. Canonical design:
+[array สองระดับและกลุ่มแถวตาราง](flowdoc-table-row-groups-contract-2026-10-11.md).
+Part 1 defines request/schema examples, group vs member scope, contiguous row
+prototypes, empty-array behavior, version boundaries and explicit keepStart
+semantics. Document review and JSON example checks are definition proof only.
+Parts 2–4 (Core composition, Service persistence/API, pagination/real-document
+verification) remain unimplemented. No runtime/package/release readiness claim.
+Deferred implementation decisions and tests are listed in the contract; no
+new Work registry, DOCUMENT_MAP update, runtime change or release change.
