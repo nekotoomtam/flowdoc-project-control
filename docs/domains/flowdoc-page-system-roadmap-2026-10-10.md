@@ -920,11 +920,11 @@ stays here; no synthetic room records. Keep release unchanged throughout.
 | Slice | Deliverable | Exit evidence | Status |
 | --- | --- | --- | --- |
 | SRS-L0 | Existing capability inventory and owner boundaries | Source paths against development base; requirements/gaps separated | Complete |
-| SRS-L1 | Small representative SRS sample using existing fonts, regular default, tuned sizes, spacing and16/64/20 table proportions | Short PDF, preserved text, owner visual comparison; record chosen template settings | Next |
-| SRS-L2 | Cover counting option preserving old default | Cover hidden but counted when selected; next page2, total includes cover, TOC labels consistent; old templates unchanged | Pending contract |
-| SRS-L3 | Independent header/footer horizontal regions | Full-width banner and inset footer with body margins unchanged; bounds and vertical reservation tests | Pending contract |
-| SRS-L4 | Minimal horizontal Line and bounded table color subtask | Body/band separators and needed header/cell fills/border colors; merged and continued table checks | Pending contract |
-| SRS-L5 | Complete SRS template styling across all seven groups | Cover/approval/contents/bands/images assembled with chosen typography; known deferrals listed and representative pages reviewed | Pending |
+| SRS-L1 | Small representative SRS sample using existing fonts, regular default, tuned sizes, spacing and16/64/20 table proportions | Short PDF, preserved text, owner visual comparison; record chosen template settings | Complete; owner accepted |
+| SRS-L2 | Cover counting option preserving old default | Cover hidden but counted when selected; next page2, total includes cover, TOC labels consistent; old templates unchanged | Complete; owner accepted |
+| SRS-L3 | Independent header/footer horizontal regions | Full-width banner and inset footer with body margins unchanged; bounds and vertical reservation tests | Complete; owner accepted |
+| SRS-L4 | Minimal horizontal Line and bounded table color subtask | Body/band separators and needed header/cell fills/border colors; merged and continued table checks | Complete; owner accepted |
+| SRS-L5 | Complete SRS template styling across all seven groups | Cover/approval/contents/bands/images assembled with chosen typography; known deferrals listed and representative pages reviewed | Candidate verified; owner review pending |
 | SRS-L6 | Full latest-data API acceptance and refreshed timing | Complete requirements/headings, page labels/links, download/cleanup, timing/resource baseline and owner visual acceptance | Pending |
 
 SRS-L1 deliberately precedes engine additions: it establishes whether existing
@@ -1213,3 +1213,48 @@ commits fast-forwarded unchanged. Core archive hashes checked, Service test logs
 copied and hash-checked, current temporary worktrees/branches and Docker resources
 removed. Existing copied L4 files in the sample folder remain comparison inputs;
 cover-result.json and cover-verification.json describe this follow-up.
+
+
+#### L5 assembled SRS template candidate — 2026-10-11
+
+Owner accepted the aligned-line cover, then authorized L5. Bounded inline,
+routine, Product Implementation Agent / Evidence Reviewer; execution IDs N/A.
+Service owns ignored template/sample artifacts using public Core0.2.6; no product
+source, architecture, API, database or package-version change. Existing Core
+capabilities suffice. Proof budget: focused sample validation/render, complete
+sample text, links/page labels and visual review; full latest-data API/timing
+remains L6. Shared record stays here. No release promotion.
+
+Candidate at `../flowdoc-service/artifacts/srs-l5/srs-l5.pdf` is8 pages: accepted
+cover, approval, revisions, contents, legend and three body pages. Reuses the
+accepted typography, margins, full-width banner, footer and16/64/20 body table.
+Approval has four open signing/date areas and two stamp areas; it does not imply
+actual signatures/approval. A white-border table supplies template spacing.
+Revision columns use19/16/21/44 with a light-blue header; legend uses existing
+image-in-cell support to put icons beside descriptions. TOC now includes revision,
+contents and legend headings. No new general text alignment was introduced.
+
+Files: build-sample.mjs, l5-template.json, l5-sample-request.json,
+l5-full-request.json, result.json, verify-l5.py and l5-verification.json.
+Latest-data baseline is the retained srs-api-300 request; its full body/data
+remain equal in l5-full-request.json and pass preparation validation. The sample
+uses the previously selected seven REQs only; full-book generation is not claimed.
+Renderer returned no warnings;8 pages in6.903s is one sample observation, not an
+API or performance acceptance threshold. Verified31 source strings, all7 REQ
+codes, twelve TOC annotations targeting3/4/5/6/6/8 twice, and displayed page fields.
+Initial extraction assertion included repeated page/table headers; verification
+was corrected to remove those known decorations, then all source strings passed.
+All eight final page rasters visually reviewed; cover template unchanged.
+
+Seven-group coverage: typography/spacing and body area reuse accepted L1–L3;
+tables reuse L4 with revision styling; cover/approval assembled; bands reuse
+accepted geometry; contents/legend images assembled and links checked. Owner
+visual judgment remains pending. Known limitations: template padding approximates
+centering for this data, unusual long title/approval data may need adaptation;
+TOC depth4 maps to3, continued REQ IDs are not repeated, and scaling cannot recover
+source icon detail. No new image-quality guarantee or source-page-count match.
+
+Temporary detached Service checkout and this round's Docker image removed after
+checks; all outputs created directly in the retained ignored artifact directory.
+No DB was needed. Both development packages remain0.2.6, release unchanged.
+Next: owner review of pages2–5, then L6 full latest-data API acceptance/timing.
