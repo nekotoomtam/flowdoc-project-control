@@ -285,3 +285,40 @@ admitting jobs. No second export was run merely to demonstrate the guard.
 Acceptance coverage: R0 identities, measurements, time boundaries and output
 oracle are established. Safe host headroom for repeated/concurrent runs remains
 blocking. Project Control owns this result; no map or runtime-readiness promotion.
+
+## 8. R1A single-worker attempt — blocked before admission
+
+Owner cleared applications, then authorized only R1A:5 sequential measured jobs
+in the same API instance, host guard enabled, release unchanged. Preflight
+free RAM was approximately4GiB. This is a new discovery attempt, not a revival
+of the completed R0 execution. Evidence Reviewer, Service task-local ignored
+harness; execution IDs N/A. No product source/config/package changes.
+
+Evidence: `flowdoc-service/artifacts/capacity-030/r1a-20261011/`. Input hashes
+and installed Core file hashes match R0; verifyVendor passes. Same API1GiB/2CPU
+and DB256MiB/0.5CPU, no swap. Harness prepared to run one excluded warm-up in
+the fresh API and5 measured jobs; this additional warm-up is necessary because
+the R0 API was removed, and is not added to measured statistics.
+
+The host guard is now integrated and its stop branch exercised: before any
+document job, injected low-reserve samples caused it to stop only the named
+task API container. Docker confirmed that container stopped. It was restarted
+before the intended warm-up. `host-stop-proof.json` records PASS; live memory
+samples are separately retained and never replaced by injected values.
+
+**R1A did not start document generation:0/5 measured jobs,0warm-ups.**
+The mandatory live host-reserve check immediately before the first job failed
+the1.5GiB requirement. Host observer samples during setup ranged from3957.48
+to1528.56MiB; the synchronous pre-admission check triggered the failure but its
+exact value was not retained. Do not attribute the difference solely to the
+API, a leak, Docker or another application. No latency/RAM benchmark result is
+claimed from this attempt. The synthetic stop probe is proof of guard operation,
+not an actual low-memory export failure.
+
+Cleanup PASS: task containers, volumes, networks, image and temporary credentials
+removed. Host free RAM after cleanup was about1.75GiB. Raw failures and harness
+remain local/ignored for diagnosis. Core/Service development and release refs
+unchanged. R1B/R1C were not attempted. Next attempt requires fresh host headroom
+checks after build/start and before admission; do not lower the agreed reserve
+or silently rerun while near its boundary. Record the exact pre-admission
+memory value in the next harness before asserting its threshold.
