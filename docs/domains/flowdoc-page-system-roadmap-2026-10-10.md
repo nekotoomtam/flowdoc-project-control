@@ -1618,3 +1618,43 @@ No push, remote release publication or deployment. Scoped containers/volumes,
 image, temporary credential, clean worktrees and integrated task branches removed.
 Evidence retained. Known image-resolution warnings, long-cover overflow and
 unproven concurrent/300–700page capacity remain explicit limitations.
+
+#### Worker-time diagnosis — 2026-10-11
+
+Owner requested diagnosis of long workerSeconds before further features/load work.
+Bounded inline discovery, Service processor plus Core text runtime; execution IDs
+N/A. Release0.2.9 and product source unchanged. Temporary instrumented copies of
+installed Core createPdfEngine.js/textRuntime.js were mounted in an isolated API
+trial; no candidate/runtime optimization or public telemetry contract introduced.
+Evidence `../flowdoc-service/artifacts/srs-worker-profile/` retains instrumentation,
+inputs, stage/native counters, API result, PDF and diagnosis.json.
+
+workerSeconds is DB finished_at-started_at: after claim, including pinned-input
+validation/composition, resource preparation, render child, PDF persistence and
+success transition. Upload/queue time is outside it. Profile run worker87.304s:
+layout81.727s (93.61%), TOC numbers0.085s, final page text1.434s, font subset1.210s,
+PDF writing0.295s. Resource preparation approximately2.03s from250ms polling.
+Inclusive native counters:28,859 shaping subprocesses75.305s;1,810 segmentation
+subprocesses4.815s. JS decodeShape0.704s inside these rendering stages. Do not sum
+inclusive counters with stage times. Native elapsed includes startup, font read/
+parse, shaping, JSON serialization and transport; their costs are not separated.
+Shaper returned149,200,780 bytes of JSON in total.6,604 shape calls (22.88%) and327
+segment calls repeat executable/arguments within this job. One profile includes
+instrumentation overhead and does not replace the10-run baseline.
+
+Code explains call amplification: measureText grows each candidate line through
+word boundaries and shapes each candidate; its cache lives only within one block.
+textRuntime starts a fresh native process on every cache miss. Native main reads
+and parses the font on every shaping invocation. Layout runs once in this profile;
+whole-book double pagination is not the measured source of cost. The native-call
+family is the established bottleneck; process-start overhead alone is not yet
+isolated. Output85pages; every page's extracted text matches benchmark. PDF bytes
+differ, so byte-identical output is not claimed.
+
+Next options for owner decision: bounded per-job cache (simple, duplicate-call
+coverage measured but speedup unproven), then batching/persistent native process
+(font reuse, cancellation/time/memory boundaries required), then fewer wrapping
+probes with exact Thai/ink/layout regression coverage. No change to wrapping rules
+or replacement of ICU/Rustybuzz justified by this evidence alone. No promised
+speedup. Scoped containers/volumes, image, credential and clean detached checkout
+removed; local evidence retained. No release/version/map changes.
