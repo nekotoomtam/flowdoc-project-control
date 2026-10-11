@@ -970,3 +970,27 @@ No repeat of the long book per cosmetic change. Document budget: this roadmap
 plus existing evidence checkpoints. R0 proves code observations only, not the
 planned feature behavior. Defer REQ repetition and unrelated nesting/TOC depth
 expansion unless separately bounded and accepted. Next executable slice: L1.
+
+#### L1 sample delivery — 2026-10-11
+
+Owner authorized starting L1. Service-owned ignored template experiment at74fc8c7,
+Core0.2.2 public API; no product changes. Separate clean lane used and removed
+after hash-verified artifact archival. Sample: REQ0001–0006 and REQ0188 with its
+original TAB, associated headings and existing bands/icons. Baseline and candidate
+both3 pages; all7 full requirement strings present by whitespace-insensitive
+extraction and each code appears once. PDF page1 comparison visually inspected;
+remaining pages rendered for owner review. Public render durations5.200s and5.245s
+are small-sample measurements, not whole-book performance claims.
+
+Candidate settings: Sarabun body11pt/line19.84pt, normal-weight table header,
+heading13pt/line24pt bold; requirement columns16/64/20% of538.5pt; cell padding
+top/bottom3pt,left/right1.5mm. These are proposed visual settings, not accepted
+final values. Existing cover/header/footer/color capabilities unchanged, no
+cover sample or complete seven-group layout claim. L1 pending owner comparison.
+
+Evidence at `../flowdoc-service/artifacts/srs-layout-l1/`: baseline.pdf,
+candidate.pdf, compare.png, rendered pages, sample-request.json, both template
+variants, result.json and verification.json. Raw business artifacts remain
+ignored; engine/version/release unchanged. Task Docker image and clean temporary
+worktree/branch removed. Next: owner selects or adjusts typography/proportions,
+then L2 cover-counting contract. Do not silently treat sample delivery as approval.
