@@ -1117,3 +1117,57 @@ left0, top gap below0.00001pt, full page width and unchanged image aspect ratio;
 five pages retained. Page3 rendered and visually inspected. These corrected
 files supersede the prior L3 candidate for owner review; copied older comparison
 logs remain historical. Temporary detached checkout/image removed; release unchanged.
+
+#### L3 acceptance and L4 kickoff — 2026-10-11
+
+Owner accepted L3 after opening the PDF outside the chat viewer. The remaining
+one-pixel border was absent in the external viewer and direct raster; do not
+change document geometry to compensate for the chat preview. Exact viewer cause
+is unverified; no application feedback submission is claimed.
+
+Owner approved the L4 bounded design: horizontal Line in body/header/footer,
+optional width (default parent width), thickness, color and before/after space;
+table header fill, per-cell fill and one border color per table. Explicit cell
+fill wins over header fill. No per-edge colors, lines in cells, theme system,
+vertical/diagonal lines or new nesting. Defaults preserve old output.
+
+Inline routine implementation, execution IDs N/A. Core owns graph validation,
+binding, flow and PDF primitives; Service consumes the package and verifies
+storage/version round trips. Proof budget: invalid-contract/flow tests, repeated
+header and row/column-span continuation fills, packed Linux consumer, targeted
+Service checks and a short SRS PDF. One existing record; no new registry/report.
+Keep raw sample data ignored, release unchanged and defer whole-book rerun to L6.
+
+#### L4 implementation and verification — 2026-10-11
+
+Core development 5e77cf6 and Service development a108df3 are version0.2.5;
+release remains0.2.0. Horizontal `line` accepts optional Length width,
+thickness, spaceBefore and spaceAfter, and six-digit hex color without `#`.
+Defaults: parent width,0.5pt black, zero spacing. It occupies flow height and
+moves intact to the next page; excessive width/height fails layout. Body and
+page bands support it; cells do not. Available with nodeModelVersion13+.
+Table `headerFillColor`/`borderColor` and cell `fillColor` are optional (model9+).
+Explicit cell fill wins; absent fill stays transparent and border stays black.
+Merged/repeated/continued cells reuse their prepared color per page fragment.
+
+Evidence: all437 Core tests (including6 new L4 cases), build and isolated packed
+Linux consumers passed. Service9 targeted storage/version/API/assembly checks
+passed in a disposable database. No runtime Service change or migration needed.
+Package identity checked against its SHA256 manifest. Core proof archived at
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-srs-l4/1791707393060/`.
+Service proof and sample at `../flowdoc-service/artifacts/srs-l4/`: tests.log,
+line-colors.pdf, line-colors-template.json, l4-sample.mjs, l4-result.json and
+verification.json. Initial sample attempt lacked copied upload files; corrected
+artifact preparation and reran successfully, without changing product code.
+
+Short SRS candidate retains5 pages and7 unique requirement codes. Page3 raster
+visually reviewed: shaded header, visible text/images and footer rule. Fill
+operators precede text. Omitting new options reproduces the accepted L3 PDF
+byte-for-byte. Individual generation timings5.497s baseline/5.934s candidate are
+observations, not a performance threshold. Whole-book testing remains in L6.
+Owner visual acceptance pending; no claim of final SRS layout acceptance.
+
+Artifacts hash-verified before cleanup. Tested commits fast-forwarded to existing
+development branches unchanged; temporary clean lanes/branches and this round's
+Docker image/database/volume/network/password removed. Release untouched.
+Next: owner review of L4 sample, then the next bounded layout roadmap item.
