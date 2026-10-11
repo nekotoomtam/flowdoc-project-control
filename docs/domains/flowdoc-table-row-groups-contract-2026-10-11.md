@@ -554,3 +554,80 @@ Cleanup: removed only this round's clean merged Core/Service lanes and temporary
 branches, plus the SRS and package-consumer images. DB/API test runner removed
 its isolated project/volumes. Development checkouts remain clean; verified
 release refs are unchanged (Core d06cd8a, Service 7563151). No remote push/tag.
+
+## 11. Release 0.2.13 preparation — owner authorized
+
+User approved three-step closeout: current manuals, real full-SRS API trial,
+then matching local release snapshots. Inline Documentation Synthesizer /
+Evidence Reviewer; execution IDs N/A. Owners Core (README/template guide,
+package) and Service (README/usage/check script/vendor); PC owns this record
+and roadmap status correction. Size medium, routine risk. Bases Core a60d663,
+Service cdab331; isolated release-0213 lanes. No new product feature or live DB.
+
+Documentation gate: existing product guides are repository-owned operational
+contracts with Authority Boundaries; shared status remains here. Document budget
+four existing product files plus this record and roadmap. Proof budget: example
+validation, packed artifact comparison/consumer, real isolated API full SRS,
+migration/CLI check, final diff and release tree equality. Prior unchanged 497
+Core / 175 Service checks remain reusable. Discovered stale checkDatabase
+expected migrations001–008; repair only its expected list after reproducing the
+failure, then verify its documented command including current CLI/replay.
+
+Retain source data. Trial uses published template, real HTTP upload/job/download
+and validates PDF values/links; no load/concurrency claim. Package metadata may
+change with README but runtime entries must remain identical. After passing,
+use previous release as parent of a new snapshot whose tree equals reviewed
+candidate; local annotated v0.2.13 in both repos as prior release convention.
+No remote push, deployment, production-readiness claim, unrelated cleanup or
+map promotion. Preserve artifacts, then remove only clean integrated lanes and
+this run's isolated containers/volumes/images/temporary credentials.
+
+### Release closeout result — PASS
+
+Core candidate `e88939344861b5f8987ce09f44edb3c47b1b5b70` and Service candidate
+`a73afae3267f9fd254ac00062eeb334f0065303c` integrated unchanged into development.
+Local release snapshots (one new commit with the previous release as parent):
+Core `e63f0c45bfd8626ad3ff985f6673df6b21580613`, Service
+`4bc1b845e6d009ba199b2cfee3a7fb8136ca6aaa`. Both package versions and annotated
+tags are `0.2.13` / `v0.2.13`; each release tree equals its tested candidate.
+No remote push or deployment.
+
+| Acceptance / impact | Verification and retained local evidence |
+| --- | --- |
+| Current operational manuals | Core README/template guide and Service README/usage updated for model17, nested arrays, row groups, keepStart, diagnostics, migration013 and upgrade commands; fresh read-only review found no blockers |
+| Final Core package | `flowdoc-core/artifacts/1791734029070/`: 497 tests / 62 files, native build and packed consumer PASS; README is the only changed archive entry versus Part4 |
+| Service dependency integrity | Manifest SHA256 and lock SHA512 match final archive; Docker npm ci/build and `verifyVendor` PASS |
+| Documented DB check | `flowdoc-service/artifacts/1791733856850/` reproduces stale expected001–008 failure; `1791734144747/` passes after expected009–013 added: 175 tests, CLI import/save/publish, migration replay, restart and pinned-version persistence |
+| Full real HTTP SRS | `flowdoc-service/artifacts/release-0213-srs/`: fresh migrations, template import/publish, 13 streamed PNG uploads, queued export, PDF download and repeat-download410 under default limits |
+| Document content / pagination | Same trial: 98 pages, all1,457 checked values found, all363 requirement details exact, all396 internal links valid; all29 company labels share a page with their first member; rendered pages17–19 inspected |
+| Release identity | Same trial `promotion.json`: candidate/release/parent/tree/tag recorded; exact tree equality checked |
+
+Final Core archive SHA256:
+`bf997cdb09b9606c5e67e3e50e8cf333c1db90f0cf7029e0fb87e577d5d4238c`.
+The real HTTP sample took 16.473s from job submission to completion, 16.890s
+including upload and polling; this is one observation, not a throughput or
+before/after benchmark. Four `IMAGE_LOW_RESOLUTION` warnings identify source
+images below requested density; export succeeds. No claim about production
+worker capacity or 600-page documents. Source values remain unchanged apart
+from the previously approved display-only rocket substitution.
+
+Ruling: initial API start failed because Docker default network address pools
+were exhausted. Remove only this round's completed DB test network/volume and
+retry; no Docker-wide prune or product network change. Retry passed. Cost if
+insufficient: the environment remains blocked; unrelated resources stay intact.
+
+Final review: minor (deferred): Service usage guide historical0.2.11 subsection
+still says it was not yet released. Current0.2.13 status is stated at the top;
+the historical wording does not change supported commands or behavior.
+
+174 artifact files were copied and hash-checked before lane cleanup, with
+temporary DB credentials excluded. Evidence remains local/ignored because the
+SRS contains private source data. No DOCUMENT_MAP, new feature, migration content,
+live database, frontend, DOCX, worker-count or concurrency change. Human visual
+acceptance is distinct from the automated and agent visual checks above.
+
+Cleanup complete: only clean merged release-0213 worktrees and temporary
+branches removed. This round's isolated DB/API containers, volumes, networks,
+consumer/runtime images and credentials were removed. Both development
+checkouts are clean. Project Control `git diff --check` and `npm run check:data`
+passed; no canonical data or generated projection changed.

@@ -2084,3 +2084,14 @@ Parts 2–4 (Core composition, Service persistence/API, pagination/real-document
 verification) remain unimplemented. No runtime/package/release readiness claim.
 Deferred implementation decisions and tests are listed in the contract; no
 new Work registry, DOCUMENT_MAP update, runtime change or release change.
+
+### Row-group follow-up: Parts 2–4 and release closeout — 2026-10-11
+
+The Part1 paragraph above records its historical definition-only state.
+Parts2–4 are now implemented and verified; see sections8–10 of the
+[row-group contract](flowdoc-table-row-groups-contract-2026-10-11.md).
+Section11 records updated manuals, full98-page SRS through real HTTP API,
+content/link checks, remaining image-resolution warnings, and local matching
+Core/Service `release` snapshots and annotated `v0.2.13` tags. No remote push,
+deployment or production/concurrency readiness claim. That bounded evidence
+does not complete unrelated roadmap items or promote DOCUMENT_MAP.
