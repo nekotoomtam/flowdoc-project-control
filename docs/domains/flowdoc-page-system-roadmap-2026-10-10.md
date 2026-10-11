@@ -1472,3 +1472,15 @@ rasters visually reviewed. Full request validates; full-book render still L6.
 Clean temporary detached checkout and task image removed. Packages remain0.2.8.
 Use this candidate after owner visual acceptance; it supersedes the previous
 signature-lines template/full request for the next trial.
+
+#### Owner artifact retention decision — 2026-10-11
+
+Owner accepted srs-signature-brackets as the current visual candidate. Preserve
+srs-approval in full as a reusable no-underline alternative. Owner requested
+removal of the superseded srs-signature-lines variant (parentheses around name,
+dots below); inventory40 ignored local artifact files, no symlinks. That variant
+is retired from future use. Physical removal is NOT completed: automatic approval
+review rejected the scoped deletion command with 'blocked by policy' and no
+specific reason. No files were deleted, and no alternate deletion route was used.
+No runtime, package, release or template behavior change. Inline maintenance;
+execution IDs N/A. Retained approval/current folders confirmed present.
