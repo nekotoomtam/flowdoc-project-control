@@ -4,7 +4,7 @@
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 เอกสารนี้เป็น **นิยามสำหรับพัฒนา ยังไม่ใช่ความสามารถที่ API ใช้ได้แล้ว**
-ส่วน 1–7 เก็บสถานะและนิยามเมื่อจบพาร์ต 1; ผล implementation ล่าสุดอยู่ส่วน 8.
+ส่วน 1–7 เก็บสถานะและนิยามเมื่อจบพาร์ต 1; ผล implementation ล่าสุดอยู่ส่วน 8–9.
 ผู้ใช้อนุมัติแนวทางและให้เริ่มพาร์ตนิยามในบทสนทนาวันที่ 2026-10-11
 Core เป็นเจ้าของ schema, binding, composition และ pagination;
 Service เป็นเจ้าของการบันทึกแม่แบบ/เวอร์ชันและ API integration.
@@ -358,3 +358,85 @@ Remaining: Part 3 Service schema persistence/publish/clone/API and nested media
 handling; Part 4 keepStart pagination and the real SRS acceptance/performance run.
 Until Part 4, keepStart=true fails layout explicitly. False/omitted works with
 the existing flow. No claim yet about real SRS group pagination or load capacity.
+
+## 9. พาร์ต 3 — Service/DB/API kickoff
+
+User authorized Part 3 in the same conversation. Inline implementation;
+execution IDs N/A. Owner: Service; Core owns only package version/artifact.
+Role: Product Implementation Agent; size medium, risk routine. No separate
+WORK dispatch. Existing contract is the work authority and document budget.
+Service base `a07b953`, Core base `93fabbc`; isolated lanes
+`../flowdoc-service-row-groups` and `../flowdoc-core-row-groups-package`.
+
+Plan / allowed scope:
+1. Package the verified Core changes as 0.2.12, consume that immutable tarball
+   with checksum/provenance; align Service development version to 0.2.12.
+2. Extend model-17 Section routing and record validation for two array levels.
+   Keep rowGroups in format/source payloads, and preserve the existing parent
+   relationship and current/version clone remapping. No new tables required.
+3. Add forward-only migration 013 for model-17 Section ownership. Do not edit
+   migrations 001–012. Verify upgrade from populated 012 and replay/immutability.
+4. Test registration/current save/publish/reload, nested parent remapping,
+   pinned versions, malformed schema/data, contract response, real API jobs,
+   nested member image/link and prepared snapshot integrity.
+
+Proof budget: targeted RED/GREEN then Service build and affected real database /
+API tests in an isolated named Docker project, final diff review. Core runtime
+tests from Part 2 are reusable for unchanged source; verify the repackaged
+consumer through Service. No shared map promotion or new report artifacts.
+Forbidden: release/tags, live user DB, Core rendering changes, Part-4 keepStart
+implementation. keepStart=true remains explicit layout failure; baseline API
+fixtures use false. Unknown: DB constraints and consumer version routing must
+be proved by the checks above; no production concurrency claim.
+
+### ผลพาร์ต 3 — PASS เฉพาะ Service/DB/API integration
+
+Core package commit `d11d7ce8afc6e48341d571d0d3d49f74d49dfdfe` and Service
+commit `7a91db3fd020e63db880f7496a446999d4a79ead` integrate unchanged into
+`codex/template-binding` and `codex/template-registry`. Both development
+packages are 0.2.12. Core runtime source is unchanged from Part 2.
+
+| Acceptance / impact | Durable evidence in Service |
+| --- | --- |
+| Two-level schema roundtrip; malformed depth, cycles, cross-schema parents; old-model gates | `tests/row-groups-assembly.test.mjs` |
+| Populated migration 012 → 013 and replay; old current/version preserved | `tests/row-groups-version.test.mjs` |
+| Every nested parent remapped into each immutable version; pinned v1 unaffected by current/v2 edits | Same version test, including SQL mutation rejection and failed-save rollback |
+| API contract exposes nested input fields without internal table graphs; invalid nested data rejected before enqueue | `tests/row-groups-api.test.mjs` |
+| Direct/staged input, nested member image/link, real worker PDF, empty outer/inner arrays | Same API test, using HTTP handler injection with isolated PostgreSQL and native PDF child process |
+| Forged prepared data rejected on reload; expansion limit returns 422 without job creation | Same API test |
+| Repeatable isolated build/DB/API proof and cleanup | `scripts/checkRowGroups.mjs`; run with no arguments for the complete Service suite |
+
+Final check: Service TypeScript build PASS; isolated Linux Docker suite
+**174 passed, 0 failed, 0 skipped**. Core packaging build ran **484 tests in
+61 files** and native checks successfully. Archive SHA-256:
+`30e37e0bb38fd520f5d14e6d42e9766ae5bdd691e427a0edc4b947ae5d542ff4`.
+New migration 013 only extends Section ownership to model 17; migrations
+001–012 remain unchanged. Existing parent foreign keys and clone remapping
+support the additional array level; no new tables or master types were needed.
+
+RED/GREEN: old Service routing failed the new model-17 assembly tests before
+integration. A new API test then reproduced EXPANSION_LIMIT incorrectly mapped
+to 503; it now receives 422 and creates no job. Initial complete suite had 173
+passing tests; the final suite includes this additional regression test.
+Fresh read-only final review found no actionable or deferred minor findings.
+Only removal of a trailing blank line in the API test followed the final test
+run; candidate runtime/configuration remained identical. Staged diff check PASS.
+
+Local evidence retained (ignored, not portable CI records):
+- `flowdoc-core/artifacts/row-groups-0212/`: tarball and package build log.
+- `flowdoc-service/artifacts/1791732320813/`: final result/build/test/cleanup logs.
+- `flowdoc-service/artifacts/1791732135359/`: targeted expansion-limit RED proof.
+
+Ten Service evidence files were copied and hash-checked; temporary DB
+credentials were excluded. The package hash was checked after preservation.
+Embedded worktree paths in logs are provenance. These are proof candidates
+supported by committed tests, not DOCUMENT_MAP or product-readiness promotion.
+
+Remaining: Part 4 keepStart pagination, then real SRS acceptance/performance.
+No claim of large-document or production concurrency readiness. Release and
+tags remain unchanged: Core `d06cd8a`, Service `7563151`.
+
+Cleanup completed: removed only this round's clean merged package/Service
+worktrees and temporary branches. The isolated Docker projects removed their
+containers, volumes and task images. Both development checkouts are clean;
+release refs were verified unchanged after fast-forward integration.
