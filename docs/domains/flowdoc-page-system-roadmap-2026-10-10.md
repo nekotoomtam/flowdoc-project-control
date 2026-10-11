@@ -1658,3 +1658,76 @@ probes with exact Thai/ink/layout regression coverage. No change to wrapping rul
 or replacement of ICU/Rustybuzz justified by this evidence alone. No promised
 speedup. Scoped containers/volumes, image, credential and clean detached checkout
 removed; local evidence retained. No release/version/map changes.
+
+#### Text runtime optimization0.2.10 — 2026-10-11
+
+Owner authorized a first target of layout/measurement <=60s (half of81.727s was
+aspirational), preserving wrapping and document geometry. Bounded inline product
+implementation: Core runtime/native transport plus Service package consumption;
+execution IDs N/A. Routine risk, medium work size. Existing roadmap is the work
+and result authority; no additional room/registry/map promotion. Accepted design:
+per-document bounded cache first, persistent native font session if insufficient.
+No changes to measureText, ICU boundaries, Rustybuzz revision, template or API/DB
+contracts. Proof budget: targeted lifecycle/cache tests, Linux package checks,
+real85-page SRS timing and exact output comparisons. No concurrent/300–700page
+capacity claim. Local available model retained; no agent dispatch or model switch.
+
+Core commit c35c9cc adds a per-generation LRU (32MiB serialized UTF-16 key/value
+payload and8192entries; not a total heap bound) and one lazily opened native
+shaper per used font. Length-prefixed UTF-8 input and JSON-line responses preserve
+native shaping output. Input/output bounded16MiB, request timeout30s; process
+failure/timeout closes the session, finally closes all sessions on engine success
+or failure. Native EOF also exits when the rendering parent disappears. Fonts
+are loaded once per session. One-shot CLI remains compatible for runtime probes.
+Sessions/cache are not shared across documents. Service commit55e1a60 pins Core
+artifact f666ce7206709ccf67a0fcadc334bc253bfc82de4332aeae753b74a2be79a9c6.
+Both development packages are0.2.10; release/tag0.2.9 is unchanged. No remote push.
+
+Cache-only trial reduced shape calls28859->23738 but layout82.555s failed60s.
+Persistent-session diagnostic trial with the whole package mounted from Windows
+achieved33.369s layout/41.087s total; this mount-dependent result is not the final
+packaged benchmark. Final Docker image installs the actual versioned tarball;
+only a copy of createPdfEngine with five stage timing wrappers is mounted.
+No algorithm or runtime logic differs in that copy. Five serial local actual API
+jobs each upload17resources, finalize, submit, poll, download and check410/cleanup.
+Same raw data/template and85-page baseline as the earlier10-run benchmark.
+
+| Measure (seconds) | Mean | Sample SD (n-1) | Min | Max |
+| --- | ---: | ---: | ---: | ---: |
+| Layout/measurement | 11.8620 | 0.5716 | 11.1241 | 12.4904 |
+| DB worker duration | 16.2588 | 0.7376 | 15.3335 | 17.1104 |
+| Upload through download | 17.3718 | 0.7929 | 16.3350 | 18.2940 |
+
+All5 satisfy60s. Original profiled layout81.727s was one instrumented run;
+original full API mean91.6573s was10runs. These are local descriptive observations,
+not an SLA or a dedicated-host guarantee. A200ms /proc sampler observed peak
+summed RSS476.55MiB across render child and sampled native/subset processes;
+shared pages may be counted more than once, short peaks can be missed, and no
+matching old memory baseline exists. No total-memory improvement is claimed.
+
+Acceptance proof: every one of the5 PDFs has85pages, identical decompressed page
+drawing streams, page boxes, decoded font/image resources and link destinations/
+annotations to baseline run01. Thus line positions/wrapping and artwork are
+preserved, beyond extracted-text-only checks. PDF metadata/whole-file hashes need
+not match. All jobs succeeded with the existing low-resolution image warnings;
+second download410 and empty output/render-temp directories passed each time.
+After jobs the container process list contained only the API server, no shapers.
+
+Core Linux build464 tests/59files PASS, including cache isolation/eviction,
+Unicode/concurrent transport, malformed response, timeout, cancellation, process
+exit and engine-session cleanup. Native check compares16 complete raw one-shot
+and persistent responses across four fonts and checks invalid/truncated frames
+and EOF. Service image build, tarball checksum and real API consumption PASS.
+No DB/schema change; no new migration or broad database-suite rerun claimed.
+Development branches fast-forwarded unchanged, so passing proof reused.
+
+Evidence: Core artifacts/performance-0210 (tarball/build logs); Service
+artifacts/srs-performance-cache and artifacts/srs-performance-session
+(summary.json, verify.py, repeated-results.json, run-01..05 PDFs/API/stage records,
+memory.json, stage wrappers, inputs and runner). Guides describe the new runtime.
+Only current-task Docker containers/volumes/images, temporary credentials and
+clean merged task worktrees/branches removed; evidence retained. The failed
+new-network attempt was resolved by reusing this task's existing Docker project;
+its unused volume was also removed. No unrelated Docker state was pruned.
+Stop optimization here: requested timing and geometry criteria pass. Further
+memory/concurrency/large-book work remains a separate scope.
