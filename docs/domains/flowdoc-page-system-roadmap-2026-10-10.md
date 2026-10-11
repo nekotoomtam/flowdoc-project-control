@@ -1731,3 +1731,71 @@ new-network attempt was resolved by reusing this task's existing Docker project;
 its unused volume was also removed. No unrelated Docker state was pruned.
 Stop optimization here: requested timing and geometry criteria pass. Further
 memory/concurrency/large-book work remains a separate scope.
+
+#### Memory and parallel-render capacity trial — 2026-10-11
+
+Owner approved measurement of one job, followed by1/2/4 simultaneous renders;
+release explicitly excluded. Bounded inline discovery/evidence review owned by
+Service, using unchanged Core0.2.10 c35c9cc and Service0.2.10 55e1a60. Execution
+IDs N/A; routine risk/medium scope. Existing roadmap remains the authority.
+Proof budget:5 complete API jobs, then3 waves each at1/2/4 render slots (21jobs),
+exact PDF regression, memory/CPU/cleanup observations. Document budget: this
+existing record and ignored reproducible trial artifacts, no new Work registry.
+No product-source, DB-schema, package-version, worker-setting or release change.
+
+The current processor retains its singleton DB advisory lock and serial loop.
+Parallel trials therefore invoke the existing renderPinnedJob pipeline directly,
+with the exact template/prepared document and images captured from a bootstrap
+API job. Images are preprepared; admission, queue, DB and image-preparation
+concurrency are excluded. A temporary capture copy was mounted only for bootstrap;
+all measured runs verify the installed render.js equals the unmodified original.
+No shared shaper/cache or new production worker mechanism was introduced.
+
+Same explicit budget at every level: API/render container4 CPU,4GiB RAM,no swap;
+DB1 CPU,512MiB,no swap. Docker host reports20 CPUs and8,169,631,744 bytes RAM;
+this is not dedicated hardware. Container memory.current, memory.stat, CPU quota
+counters and process RSS sampled about200ms; DB Docker stats sampled separately.
+Working set here = memory.current - inactive_file. Peaks are observed samples,
+not exact lifetime maxima. Aggregate cgroup memory avoids summing shared RSS.
+
+Five sequential actual API jobs (17uploads each) succeeded. Mean upload-through-
+download17.398s, sample SD2.069s, min15.744/max20.914; mean DB worker16.174s.
+Peak API/render working set831.30MiB. Working set two seconds after each job:
+177.11,225.59,270.10,305.37,307.88MiB. API RSS increased initially; memory later
+fell from352.70 to219.17MiB during parallel trials without restarting the API.
+This shows memory was reclaimed in this run, not proof of leak freedom or a
+long-duration steady state. Render/shaper processes were absent after every wave.
+DB observed peak83.96MiB, separate from the API/render values; DB OOM events zero.
+
+| Concurrent render slots | Jobs / waves | Mean seconds per job | Documents/minute | Peak working set MiB |
+| --- | --- | ---: | ---: | ---: |
+| 1 | 3 / 3 | 14.130 | 4.222 | 806.38 |
+| 2 | 6 / 3 | 14.645 | 8.145 | 1256.96 |
+| 4 | 12 / 3 | 20.588 | 11.550 | 2040.84 |
+
+Throughput is completed jobs divided by summed active batch duration; upload,
+setup, between-wave idle time and prepared-image creation are excluded. Samples
+within one parallel wave are correlated; these are descriptive small-sample
+results, not an SLA. Observed simultaneous render counts reached1/2/4 as intended.
+CPU throttled periods were0/0/613 across the respective three-wave groups: four
+slots encounter the4-CPU quota. Four slots gain about42% throughput over two but
+increase mean per-job latency about41%. Memory alone is not the observed limit.
+
+Recommendation: use2 concurrent slots as the initial candidate for real queue
+integration;4 remains a measured render option for this fixture/budget when
+throughput is preferred. Neither is enabled yet. Before enabling, integrate
+bounded slots under the existing coordinator and prove queue ownership, shutdown,
+resource preparation, output isolation and restart/recovery with real API jobs.
+No recommendation beyond4 and no300–700page or mixed-document capacity claim.
+
+All26 measured PDFs have85pages and identical decompressed drawing streams,
+page boxes, decoded font/image resources and link annotations/destinations to
+accepted SRS baseline. All API second downloads410 and output/render-temp cleanup
+passed. No OOM kills; only API server remained at final process inspection.
+No source regression suite rerun: candidate unchanged, direct package use and
+26-job evidence cover this discovery scope. Evidence:
+../flowdoc-service/artifacts/srs-capacity-0210/ (summary.json, measurements.json,
+per-wave measurements/PDFs, environment.json, db-samples.json, input hashes,
+setup/measurement/verification scripts and build logs). Exact-output verifier
+PASS. Task containers, volumes, image, credential and clean detached worktree
+removed; inputs/results retained. No unrelated cleanup and release0.2.9 unchanged.
