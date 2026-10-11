@@ -9,7 +9,8 @@ User requested the draft on 2026-10-11: start with RAM and concurrency, then
 a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
-R1C two-render trial passed; four-render exploration and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
+is active; R2 implementation and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -564,3 +565,88 @@ pending, not automatically started. R2 should weigh the measured23% batch-time
 benefit against higher aggregate memory and real worker ownership/recovery work.
 Keep the existing serial service until that decision. Six API callers remain
 scheduled for R3's small local test page, not this experiment.
+
+## 12. R2 plan — serial admission and failure handling, 2026-10-12
+
+Owner decision: defer four-render exploration; retain one processor and plan R2.
+This supersedes only the pending-four next-step status, not measured R1C results.
+Six near-simultaneous API callers stay in R3. No release or implementation is
+currently authorized by this planning request. Inline Planning Partner, IDs N/A;
+Service owns implementation, Core remains unchanged. Routine risk; evidence
+sources are the inspected files below, not newly executed tests. Document budget
+is this existing roadmap; no new registry, map or architecture required.
+
+### Current code findings and evidence boundary
+
+Read `src/jobs/admission.ts`, `src/uploads/claims.ts`, `src/jobs/processor.ts`,
+`src/jobs/repository.ts`, `src/jobs/render.ts`, `src/http/server.ts` and existing
+processor/render/http tests. No admission count limit was found. Existing code
+serializes processing with its DB advisory lock; renderer timeout120s and output
+limit50MiB exist. A render failure marks that job failed; startup marks interrupted
+running jobs PROCESS_INTERRUPTED, while queued jobs remain eligible. Lost lock
+makes readiness false. Tests already cover serial processing, a middle-job
+failure, metadata/storage failure, lock loss, render timeout and temp cleanup.
+These are read-only findings; no tests rerun and no recovery PASS claimed here.
+
+Upload-backed identical submission can return the existing job; upload-free
+submission currently inserts a new job. Do not promise universal idempotency or
+introduce automatic POST retries. Upload concurrency2/UPLOAD_BUSY429 is separate
+from document queue capacity.
+
+### Proposed bounded implementation parts
+
+1. Admission contract/configuration: propose `JOB_MAX_OUTSTANDING=10`, counting
+   queued+running jobs in this service DB (not ten waiting plus one running).
+   With one active processor that means at most one running and nine waiting.
+   This is a configurable local trial policy reflecting the owner target, not
+   demonstrated ten-job capacity or latency. Invalid config fails startup.
+   Existing body/upload/render limits remain unchanged. A count limit bounds
+   backlog, not per-document memory or request preparation CPU.
+2. Atomic admission: serialize the count-and-insert decision transactionally
+   across image and non-image paths using a dedicated admission lock, distinct
+   from processor ownership. Select one consistent lock order. Existing identical
+   upload-backed jobs return before a new-capacity decision; conflicting requests
+   remain conflicts. Rejected requests create no job/claim and leave finalized
+   uploads available until normal expiry. Failed/succeeded jobs release capacity
+   automatically by falling outside the counted statuses. No counter table,
+   distributed queue, worker pool or schema redesign unless a concrete need is
+   discovered. An early count may be an optimization only, never the authority.
+3. Feedback: propose503 + stable `QUEUE_FULL` for shared-service saturation,
+   distinct from503 `UNAVAILABLE` and upload429 `UPLOAD_BUSY`. Response states no
+   new job accepted; no fabricated jobId, queue rank or completion estimate.
+   Preserve the existing error envelope. Do not add Retry-After timing without
+   a defined policy. A known QUEUE_FULL response can be retried later, but a
+   lost/ambiguous POST response must not trigger blind retries or imply no job.
+4. Failure/recovery: retain existing render timeout/defaults, failure codes and
+   explicit resubmission behavior. Verify that a failed job does not stall later
+   jobs, interrupted running jobs become failed on restart, queued jobs resume,
+   and readiness/503 blocks new admission after processor failure. Inspect
+   preparation/upload expiry and output cleanup across waiting/restart too.
+   Repair only demonstrated gaps. Do not add automatic job retry, cancellation,
+   queue-wait timeout, new progress percentages or expanded error taxonomy now.
+
+### Acceptance and proof budget
+
+- Focused real-DB admission tests with a deliberately tiny configured cap:
+  simultaneous submissions never exceed it; cover mixed image/non-image paths,
+  existing-job replay at capacity, rejection without upload consumption, and
+  capacity reopening after terminal status. These are invariant tests, not the
+  deferred six-document capacity/UX trial.
+- Reuse/extend existing processor/render tests for failure followed by success,
+  forced render stop/temp cleanup, restart with running+queued records, lost
+  coordinator readiness and unavailable admission. Use short test deadlines;
+  do not increase production deadlines or manufacture real host OOM.
+- HTTP checks prove status/error envelope/no receipt on rejection, valid accepted
+ 202/status/download behavior, and correct distinction from upload saturation.
+- After an approved implementation, run affected build/tests and one real
+ 98-page SRS API export with existing PDF/wrap/content parity. Keep RAM guard
+ enabled for the export. Broader capacity profiling remains out of scope.
+- Review actual impact before finalizing checks. DB coordination and resource
+ claiming are the key risks; input memory and shared-worker architecture remain
+ deferred. Stop after criteria pass; no repeated benchmark sweep or new agent.
+
+Suggested implementation order: contract/configuration and atomic admission,
+then focused failure/recovery gaps, then real API regression and concise manual
+updates for R3. Numeric default10 and503 QUEUE_FULL above are recommendations
+pending owner agreement, not current API behavior. No source files, package
+versions, DB schema or release refs changed by this plan.
