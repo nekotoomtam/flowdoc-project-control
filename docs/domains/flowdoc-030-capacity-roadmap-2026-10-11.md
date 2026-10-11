@@ -8,8 +8,8 @@ of capacity, production readiness, or authorization to publish a release.
 User requested the draft on 2026-10-11: start with RAM and concurrency, then
 a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
-preparation and one reference run, then R1A serial measurement. R1A has passed;
-R1B/R1C and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
+R1C and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -141,12 +141,12 @@ No output contains credentials. Keep service/database separation intact.
 
 ### R1B: Concurrent callers using the existing queue
 
-- [ ] Submit bursts of1,2,4 jobs to one API/DB,3 measured batches per level;
+- [x] Submit bursts of1,2,4 jobs to one API/DB,3 measured batches per level;
   retain its single processor. Label as queue concurrency, not worker scaling.
-- [ ] Check each job has one terminal outcome, pinned version and matching
+- [x] Check each job has one terminal outcome, pinned version and matching
   output; record queue delay, completion order and batch makespan. Do not
   assume HTTP submission order is a strict FIFO contract without evidence.
-- [ ] Check the API remains responsive while rendering; no cross-job inputs,
+- [x] Check the API remains responsive while rendering; no cross-job inputs,
   upload IDs or outputs become mixed. Download each produced PDF normally.
 
 ### R1C: Isolated parallel rendering experiment
@@ -389,3 +389,83 @@ Decision: R1A complete. Next bounded work is R1B queue bursts1/2/4 with the
 existing serial processor, subject to a new host preflight; R1C independent
 parallel stacks remain later and require a fixed aggregate memory budget.
 Do not infer four-worker support by multiplying this single-worker result.
+
+## 10. R1B queue bursts — PASS, completed 2026-10-12
+
+Owner authorized only queue concurrency1/2/4 with the existing serial processor,
+RAM guards enabled, no release change. Discovery role/scope unchanged. Accepted
+measurement matrix:3 batches per level,21 successful measured jobs. Same pinned
+0.2.13 source/package/input identities and API1GiB/2CPU, DB256MiB/0.5CPU budgets.
+No runtime code, configuration default, schema, package or version change.
+
+Artifacts under `flowdoc-service/artifacts/capacity-030/`:
+- `r1b-20261011/`: accepted level1, raw ambiguous-process-count failure in first
+  level2 batch (both PDFs passed but that batch excluded from statistics).
+- `r1b-retry-20261012/`: accepted level2, PPID-aware observer, aborted level4
+  upload preparation with429 UPLOAD_BUSY; no level4 job admitted in that attempt.
+- `r1b-four-20261012/`: accepted level4 after sequential upload preparation;
+  `summary.json` / `summarize.mjs` combine the three accepted blocks explicitly.
+
+Each folder retains manifest, installed hashes, effective budgets, raw samples,
+host guard samples, per-batch/job timing, original input comparisons, PDF checks,
+progress/failures and cleanup. Data/PDFs remain private and ignored by Git.
+Each fresh API instance had one excluded warm-up (3 total); no instance restart
+within an accepted level. This is a blocked-order descriptive trial, not a
+causal comparison controlling cache/order effects across concurrency levels.
+
+| Concurrent queued jobs | Batches / jobs | Batch makespan mean (sample SD), seconds | Worst sampled API working set, MiB | Longest queue wait, seconds |
+| --- | --- | ---: | ---: | ---: |
+| 1 | 3 /3 | 13.882 (0.275) | 482.64 | 0.106 |
+| 2 | 3 /6 | 26.975 (0.533) | 520.61 | 13.315 |
+| 4 | 3 /12 | 54.844 (0.813) | 608.94 | 40.957 |
+
+Makespan starts when the barrier releases all job requests after successful
+uploads and ends at the final PDF download; excludes preparation/idle/verification.
+Submission spread at most12ms. DB start/finish intervals do not overlap; one
+direct API renderer was observed. Worker means by level13.337/13.056/13.404s.
+All sampled health requests succeeded, maximum observed latency292ms; this is
+limited health-probe evidence, not an API latency SLA. Concurrent caller index
+does not dictate completion order; no strict HTTP-arrival FIFO promise added.
+
+All21 accepted PDFs:98pages, exact decoded drawings/resources/geometry/link
+destinations,1,457values/363details/396links and29group starts pass. All records
+match their submitted original inputs exactly; job IDs and upload sessions are
+distinct, published version IDs pinned. Same4image warnings; second download410;
+output/render-temp cleanup and child-process cleanup pass. Because corpus content
+is identical, visual comparison cannot distinguish exchange of byte-equivalent
+outputs; unique input/resource association is checked in DB, not overclaimed.
+
+API totals include observer and client processes, so increased concurrent client
+RSS is included; do not interpret these as pure server-memory scaling. Max
+sampled memory.current for level4 was649.73MiB, whole-instance lifetime peak
+685.53MiB, with post-batch idle204.04/213.29/221.99MiB. No OOM or live guard
+trigger. Lowest host free memory across setups/runs2227.87MiB. No supported
+multi-worker capacity or long-term leak conclusion follows from this result.
+
+### Measurement corrections and bounded extra proof
+
+1. Initial observer classified render processes by argv substring only and
+   saw2 during one level2 sample despite non-overlapping DB jobs. Stop preserved
+   that attempt. Added PPID/executable/argv evidence and counted only direct API
+   children as workers. Later level4 sample reproduced a render-like descendant:
+   PID20191 had PPID17963 (the active renderer), not API PID1. It was not a second
+   API worker. Exact purpose of the transient descendant was not inferred.
+   Product processor remained unchanged. Old failed batch excluded; level1
+   accepted data retained. This necessary observer correction used the retry.
+2. The next level4 setup failed before its barrier because four upload clients
+   exceeded default2 upload streams. Actual response429 UPLOAD_BUSY matches
+   `src/uploads/config.ts` and service.ts. This was a harness prerequisite
+   mismatch, not a queue failure. An additional bounded level4-only attempt was
+   justified to complete the authorized queue test: upload sequentially first,
+   then release4job requests simultaneously. No upload limit raised, no automatic
+   endpoint retries introduced, no unrelated tests repeated. Failed setup kept.
+
+Implication for R3 client: respect upload-stream concurrency and surface429;
+choose a bounded retry/backoff policy separately if needed. Do not require the
+caller to infer that4queued export jobs permit4simultaneous uploads.
+
+Decision: R1B complete; keep serial processor behavior. R1C remains a separate
+authorized-next scope with aggregate resource budget and host preflight, not
+automatic continuation. All task containers/volumes/networks/images/credentials
+cleaned; no worktree/branch created. Project Control diff/data checks cover this
+record; product trees and release refs unchanged. No DOCUMENT_MAP promotion.
