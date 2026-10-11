@@ -1285,3 +1285,22 @@ rasters are pixel-identical at1000px to the prior L5 candidate. Raw originals an
 prior artifacts preserved. Temporary clean detached checkout and this task's
 Docker image removed; packages remain0.2.6 and release unchanged. L5 visual
 acceptance remains pending; full-book API/timing stays L6.
+
+#### L5 Element inline-icon correction — 2026-10-11
+
+Owner rejected the vertically stacked icon/label candidate: the left group must
+contain separate horizontal icon and label slots, with a smaller icon. Bounded
+inline template correction uses three physical table cells (22pt icon,123pt
+label, remaining description), representing the two logical groups. This avoids
+new nested Columns or engine behavior. Icons reduced20pt to12pt; Agreement keeps
+an empty icon slot so labels align. No label or description changes.
+
+Candidate `../flowdoc-service/artifacts/srs-l5-element-inline/element-refined.pdf`
+supersedes the previous Element candidate, which remains unaccepted history.
+Same folder holds generator, template, sample/full requests, result.json and
+verification.json. All nine pairs/eight images retained, public validation and
+render passed with8 pages; final page5 visually inspected. Other seven pages are
+pixel-identical at1000px to the original L5 sample. Full non-legend data unchanged.
+Use this folder's element-template.json and element-full-request.json for L6
+only after owner review. L5 remains pending visual acceptance. No product change,
+version bump or release promotion; temporary clean checkout and image removed.
