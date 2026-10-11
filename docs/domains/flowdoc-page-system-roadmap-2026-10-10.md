@@ -1799,3 +1799,59 @@ per-wave measurements/PDFs, environment.json, db-samples.json, input hashes,
 setup/measurement/verification scripts and build logs). Exact-output verifier
 PASS. Task containers, volumes, image, credential and clean detached worktree
 removed; inputs/results retained. No unrelated cleanup and release0.2.9 unchanged.
+
+#### Document-cache memory sweep — 2026-10-11
+
+Owner paused worker expansion and approved measurement of cache off/8/16/32MiB,
+with unchanged wrapping. Inline discovery/evidence review, Service trial using
+unchanged Core0.2.10/Service0.2.10; execution IDs N/A, routine risk/medium scope.
+This existing roadmap is the record; no product implementation or release work.
+Proof budget:3 complete API jobs per setting (12total), memory/time samples,
+exact PDF comparisons, cleanup. No additional agents or synthetic records.
+
+Only the new per-document cache varies. A temporary mounted copy of installed
+cacheTextRuntime.js reads the trial budget; off returns the base runtime directly
+without cache serialization.8/16/32MiB set maxBytes, retaining8192entry cap and
+identical eviction logic. Original per-TextBlock measurement cache and persistent
+native font sessions remain unchanged. This is not an all-caches-off experiment.
+Production source/default32MiB and packages remain untouched.
+
+Fixed4CPU/4GiB/no-swap API budget, separate1CPU/512MiB DB. Fresh API container for
+each measured job, shared isolated test DB. Order0/8/16/32,32/16/8/0,8/32/0/16
+reduces order bias; host is not dedicated. Every job uploads the same17images and
+uses the same85-page SRS inputs. Working set sampled about200ms as memory.current
+minus inactive_file, including API/render/test observer but excluding DB. Cache
+budget denotes serialized key/value payload, not total heap or RSS.
+
+| Cache MiB | API seconds mean (sample SD) | Worker seconds mean | Mean of per-run peak MiB | Highest observed MiB |
+| --- | ---: | ---: | ---: | ---: |
+| Off | 17.557 (0.277) | 16.286 | 539.70 | 550.82 |
+| 8 | 17.729 (1.104) | 16.522 | 615.22 | 618.68 |
+| 16 | 16.430 (0.790) | 15.492 | 638.96 | 653.87 |
+| 32 | 16.795 (1.305) | 15.800 | 665.52 | 674.18 |
+
+Off reduced mean per-run peak working set125.82MiB (18.91%) relative to32MiB;
+observed API mean increased0.762s. All whole-API times below19s, within the60s
+budget. Three samples/setting are insufficient to confidently rank timing;
+16MiB's lowest sample mean is not proof it is universally fastest. Memory
+separation is clearer in this fixture. Secondary mean peak summed render/native
+RSS388.58/477.08/493.68/515.20MiB; shared RSS may be counted more than once.
+No heap allocation profile separates retained cache payload from allocation/GC
+or other effects, so the125.82MiB delta is not claimed as live cache bytes.
+
+Recommendation for this SRS workload: bypassing the added document cache is a
+promising lower-memory candidate while preserving persistent shaping. Do not
+infer that every document benefits: repetition patterns and larger workloads
+remain untested. No actual default has been changed. Remaining ~540MiB sampled
+whole-container peak shows other allocations still matter; their cause is not
+established by this sweep. Worker work remains deferred.
+
+All12 PDFs exactly match85page baseline drawing streams, page boxes, decoded
+font/image resources and link annotations/destinations. All jobs succeeded,
+second download410, empty output/render-temp storage, no OOM kills and no
+render/shaper processes after completion. Exact-output verifier PASS. No source
+suite rerun because product candidate unchanged. Evidence:
+../flowdoc-service/artifacts/srs-cache-sweep/ (summary.json, per-run measurements,
+PDFs, original/trial cache modules, scripts, environment and build/setup logs).
+Task containers/volumes/image/credential removed; evidence retained. Both product
+repositories remain clean at previous commits; release0.2.9 unchanged.
