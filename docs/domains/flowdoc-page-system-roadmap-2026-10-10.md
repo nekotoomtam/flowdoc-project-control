@@ -1426,3 +1426,27 @@ exceeds one page' at contact-fax. Failure log retained. Final long case exercise
 signer names, full Thai dates and customer organization; it does not claim the
 cover supports arbitrary project-title length. Footer design accepted by owner;
 this approval-page visual candidate awaits owner review.
+
+#### L5 signature dotted baselines — 2026-10-11
+
+Owner approved a separate dotted baseline under each parenthesized signer name,
+with a minimum width independent of supplied name length. Bounded inline template
+change only, Service-owned SRS artifact, execution IDs N/A. Reused current Core
+0.2.8 public renderer; no engine/API property, package bump or release change.
+Four centered TextBlocks containing64 Sarabun11 dots follow the name blocks.
+Their measured width62.586mm exceeds the60mm target and fits each padded cell.
+This is a fixed authored baseline in this SRS template, not a general minWidth
+contract. Long names wrap above it. Missing names now default to empty text;
+explicit empty strings tested. Reduced existing bottom padding by20pt absorbs
+the added line, preserving dates and stamp positions.
+
+Evidence retained in `../flowdoc-service/artifacts/srs-signature-lines/`:
+signature-{blank,short,long}.pdf and request.json, signature-template.json,
+signature-full-request.json, generate.mjs, verify.py, verification.json and
+page2 rasters. Public validation/preparation/render passed for all3 cases,
+8 pages each, no warnings. All4 baselines verified centered, >=60mm, below final
+name line and above Date. All supplied names retained, date/stamp coordinates
+unchanged, other7 pages extracted text unchanged. All3 page2 rasters reviewed.
+Full request validates but full-book render remains L6. Clean temporary detached
+checkout and task Docker image removed; no branch created. Use this template/full
+request after owner visual review; previous approval artifacts preserved.
