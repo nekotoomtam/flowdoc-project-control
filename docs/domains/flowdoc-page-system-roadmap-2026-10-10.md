@@ -740,3 +740,48 @@ reuses passing checks. Clean merged worktree/temporary branch and task image
 removed. Core release unchanged. Service remains development0.2.1 pending the
 explicit next API integration step; no claim that Service already applies this
 fix. Items2–3 (new JSON full SRS API/queue/download and timing) remain not started.
+
+### Full SRS API and timing trial — 2026-10-11
+
+Owner resumed items2–3. Inline Service dependency integration and isolated trial,
+bounded/routine, IDs N/A, Product Implementation Agent. Base10271f7, isolated
+flowdoc-service-srs-api/codex/srs-api. Allowed tracked changes: Core0.2.2 vendor
+and Service patch metadata; trial scripts/data/results remain ignored. No layout,
+font, DB migration, release or performance redesign. Proof: isolated PostgreSQL,
+real HTTP upload/admission/queue/render/download, text completeness, consumed
+output/temp cleanup and stage timing with measurement limits stated. Reuse Core
+packaged proof; build Service and run affected render tests. New JSON parses
+identically to prior JSON by each top-level value; preserve the new source as
+input authority and original tabs. Stop on an architectural or capacity finding
+that requires scope expansion. One existing checkpoint, no extra Work records.
+
+Result: dependency integration PASS, full SRS API acceptance FAIL. Service74fc8c7
+development0.2.2 consumes tested Core0.2.2; Docker build, vendor verification,
+isolated renderer tests2/2 and bounded dependency review passed. No runtime
+source changes. User-supplied replacement JSON is deep-equal to the previous
+source; trial reuses its validated body mapping and retains the TAB in submitted
+data.17 PNG resources uploaded through HTTP, finalized, and submitted with the
+full240-requirement request.254 image-node occurrences prepared, no content
+indices skipped.13 low-resolution warnings surfaced; they did not stop the job.
+
+Default120000ms render limit was unchanged. Job failed with RENDER_FAILED after
+the rendering-stage observation interval120078ms; total client time124633ms.
+Database queue101.669ms, running123262.448ms; observed resource preparation3066ms.
+Stage observations poll every250ms and are not precise internal stage timings.
+Docker reports20 CPUs and8169644032 bytes memory, linux/x86_64, Node24.21.0.
+Single local job only; no concurrency or production performance claim. No PDF
+was produced: download, full text completeness and completed page count remain
+unverified. Earlier90-page standalone Core acceptance does not satisfy this gate.
+
+Post-failure health200, output directory empty, actual render temp directory
+`/app/temp/flowdoc-job-renders` empty. Upload resources remain under expiry policy;
+one-hour expiry was not waited out. Isolated trial containers/networks/volumes
+and task image removed; generated DB-password env file removed before archival.
+Artifacts hash-verified into `../flowdoc-service/artifacts/srs-api-022/`, including
+submitted-request.json, api-failure.json, timing-result.json, failure-cleanup.json,
+build/render-test logs, scripts and cleanup.log. Raw data stays ignored.
+Development ref fast-forwarded to dependency-only tested commit; clean temporary
+lane/branch removed, release unchanged. Item3 has a failed-run timing baseline,
+not an end-to-end successful timing. Recommended next decision: one isolated
+longer-deadline diagnostic to measure completion before changing the default
+deadline or optimizing. Do not call item2 complete or proceed to layout acceptance.
