@@ -10,7 +10,7 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is active; R2 implementation and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is active; R2 part1 passed, parts2–3 and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -650,3 +650,49 @@ then focused failure/recovery gaps, then real API regression and concise manual
 updates for R3. Numeric default10 and503 QUEUE_FULL above are recommendations
 pending owner agreement, not current API behavior. No source files, package
 versions, DB schema or release refs changed by this plan.
+
+### R2 part1 — PASS, 2026-10-12
+
+Owner approved default10 outstanding jobs and503 QUEUE_FULL, implementation of
+part1 only. Service commit `cffd8b30fff39ef00f5bbd0dafbe2e1eccc4607f` is integrated
+by unchanged fast-forward into `codex/template-registry`. Core and both release
+refs/package versions remain unchanged. This approval resolves the numeric/status
+recommendations above; it does not authorize parts2–3 or release promotion.
+
+Implementation: `src/jobs/config.ts` validates a positive safe integer before
+server resources start. `src/jobs/capacity.ts` uses dedicated transaction-scoped
+advisory lock60430405 and a fresh queued+running count before insertion, shared
+by text-only and upload-backed admission. Upload-session locks precede capacity
+locks; replay/conflict decisions precede new-slot admission. Processor ownership
+lock60430404 is unchanged. HTTP/server/Compose wiring and `.env.example` expose
+JOB_MAX_OUTSTANDING default10; README documents behavior and limitations.
+No migration, shared counter, worker pool, automatic retry or renderer change.
+
+Coverage: `tests/queue-admission.test.mjs` covers default/invalid configuration,
+HTTP eleven simultaneous admissions accepting exactly ten, mixed upload/plain
+content competing for two remaining slots with an existing running job,
+QUEUE_FULL503 without receipt/claim, ready-upload reuse, identical replay at
+capacity, conflicting replay and capacity reopening after failed/succeeded jobs.
+The eleven admissions use small fixtures without rendering; they are invariant
+checks, not a replacement for R3 six-caller feedback or a ten-job capacity claim.
+
+Verification: TypeScript build; focused host real-DB15tests across5files; pinned
+Linux real-DB/API consumer67tests across20files, including real PDF generation,
+images, sections, area, row groups, links and contents. All final checks passed.
+Tests were observed failing before implementation (all six competitors accepted),
+then passing after atomic admission. Early test setup upload saturation and
+shared test-state issues were corrected in the test harness; one initial5s test
+wait timed out, with subsequent focused default-timeout and Linux runs passing.
+Raw runs, Linux build/test logs and cleanup are preserved under ignored
+`flowdoc-service/artifacts/r2-admission/`; credentials removed. No blanket
+full-suite or98-page parity claim: the full SRS API check remains part3.
+
+Reviewed changed/affected paths and reused passing checks after the identical
+fast-forward. Isolated task DB/container/image removed, ignored evidence copied
+and hashes verified, clean merged worktree and task branch removed. No unrelated
+resources touched. Project Control roadmap passes diff/data checks; no map update.
+
+Remaining: part2 failure/restart/expiry gap verification, then part3 real SRS
+parity and client-facing integration closeout. Existing focused failure tests
+passing here do not mark the additional part2 recovery scope complete. Keep
+serial processing and defer four-render exploration; no automatic continuation.
