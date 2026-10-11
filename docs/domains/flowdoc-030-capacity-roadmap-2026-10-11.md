@@ -7,8 +7,8 @@ This is the single planning authority for this bounded roadmap, not evidence
 of capacity, production readiness, or authorization to publish a release.
 User requested the draft on 2026-10-11: start with RAM and concurrency, then
 a small API client and large documents; **do not touch release**.
-Current action is documentation only. All measurement and implementation steps
-below are pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+Initial approval covered documentation only; owner subsequently authorized R0
+preparation and one reference run. R1–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -108,21 +108,21 @@ No output contains credentials. Keep service/database separation intact.
 
 ### R0: Make each measurement interpretable
 
-- [ ] Verify development/release identities and clean state, input/template/font
+- [x] Verify development/release identities and clean state, input/template/font
   hashes, installed Core archive, Node/native/Python versions and cache settings.
-- [ ] Record host RAM/CPU, Docker VM limit, current available memory and other
+- [x] Record host RAM/CPU, Docker VM limit, current available memory and other
   load. Select a finite CPU/memory budget with host reserve before running.
   Keep that total budget constant when comparing1/2/4; don't give4workers four
   times the memory then claim better capacity. Record any swap policy.
-- [ ] Define timestamps: request/upload start/end, admission, queued, claim,
+- [x] Define timestamps: request/upload start/end, admission, queued, claim,
   preparation, rendering, terminal state, download end. Report queue wait,
   worker time, API elapsed and batch makespan separately.
-- [ ] Capture container memory.current/peak, working set, CPU and memory.events
+- [x] Capture container memory.current/peak, working set, CPU and memory.events
   plus Node/native child RSS where available; sample at200ms initially.
   Mark unavailable or sampled peaks honestly. DB and host counters are separate.
-- [ ] Validate collection with one excluded warm-up/reference run. Do not add
+- [x] Validate collection with one excluded warm-up/reference run. Do not add
   production logging or force GC to manufacture memory release.
-- [ ] Compare PDFs using decoded page drawing/resources/geometry and link
+- [x] Compare PDFs using decoded page drawing/resources/geometry and link
   destinations, ignoring only known volatile metadata/IDs. Reuse text/order/
   group-start checks. File-byte hash alone is not a layout/wrap oracle.
 
@@ -222,3 +222,66 @@ specific R0/R1 matrix, controlled resource stop rules, outputs and owner boundar
 are explicit. Review links and final diff, run Project Control check:data and
 commit this document. Product tests/benchmarks are not run for this draft.
 No product map or generated projection is promoted by writing this plan.
+
+## 7. R0 preparation result — 2026-10-11
+
+Owner authorized R0 only. Inline Evidence Reviewer/discovery, routine risk,
+no registered execution IDs. Service owns the task-local measurement harness;
+Core and Service product source/configuration/packages are unchanged. Existing
+checkout used only for ignored artifacts; no worktree or branch required.
+Proof budget consumed: one excluded warm-up, PDF checks, observer sanity checks
+and documentation validation. No R1 measured jobs or release changes.
+
+Evidence: local ignored `flowdoc-service/artifacts/capacity-030/r0-20261011/`.
+Includes manifest.json (source/input/archive hashes and environment),
+installed-identities.log (installed package files including fonts/native tools,
+cache and engine sources), effective-container-limits.ndjson, host snapshots,
+samples.ndjson, job-times.log, api-result.json, measurement.json, parity.json,
+pdf-text-check.json, group-page-check.json, cleanup.json and reproducible scripts.
+Private source remains local. verifyVendor passed. Package0.2.13/commits and
+release refs match section1. Cache inspected at its actual callsite/default:
+per-generation32MiB /8192entries; no cache override or GC forcing.
+
+| R0 criterion | Observed evidence / boundary |
+| --- | --- |
+| Resource budget | API1GiB /2CPU; DB256MiB /0.5CPU; swap disabled; effective Docker settings captured. Docker VM limit7.61GiB/20CPU; Windows physical15.71GiB |
+| Collection | 251 samples across50.37s; target200ms, maximum gap224.87ms, maximum observer collection3.43ms; API/render/native children classified separately |
+| Memory counters | API sampled peak working set402.48MiB; sampled memory.current422.70MiB; cgroup lifetime peak438.33MiB (different counters, not interchangeable) |
+| Post-job observation | API working set44.36MiB before,158.23MiB after30s; final10s range158.22–158.48MiB. No persistent render/shaper/segmenter child or OOM. One warm-up cannot establish a leak or steady-state ceiling |
+| DB boundary | Separate lifetime peak143.27MiB, no OOM; CPU counters recorded. DB sampled per-process RSS not collected; no claim of a full DB memory profile |
+| Time | DB queue0.102525s, worker16.366440s; HTTP upload-through-download observation17.413s. Stage transitions polled250ms, not exact internal stage durations |
+| Output parity | 98pages; decoded drawing/resources/geometry/link equality to accepted API PDF; all1,457values,363details,396links and29group starts pass; same4low-resolution warnings |
+| Lifetime | Second download410; output/render-temp empty; staging follows existing expiration policy; task containers/volumes/networks/image/credential file removed |
+
+Observer and Node client run inside API cgroup. Their separately labelled RSS
+does not permit exact subtraction from aggregate usage. Warm-up values above
+are setup diagnostics, not an R1 statistical sample or performance improvement
+claim. No production runtime instrumentation was added. Content check initially
+needed missing mapping-check.json copied from the existing baseline; rerun of
+that check passed without repeating the export or changing its data.
+
+### Host reserve finding and R1 prerequisite
+
+Host free RAM fell from roughly2.8GiB before setup to465MiB during the run,
+then recovered to about1.1GiB after cleanup. Container ceilings protected their
+own scope but did not guarantee host reserve. This is a concrete R1 blocker,
+not evidence of a FlowDoc leak. Other load / Docker VM retention was not
+attributed and must not be guessed or resolved by stopping unrelated programs.
+
+R0 collection/parity preparation is complete; **R1 is not cleared to run yet**.
+Before any further jobs, require at least1.5GiB host free at start, and monitor
+free RAM every1s alongside container counters. Three consecutive samples below
+1GiB stop this task's API and mark the measurement invalid. Check again after
+image build and before starting a workload. Reassess the fixed total test budget
+before parallel cells; don't multiply1GiB by4 without an explicit host budget.
+
+`host-guard.ps1` is prepared with task-name restriction and threshold/reset
+self-test PASS. Its live integration and Docker-stop branch are **not yet
+exercised**; they are a prerequisite at R1 setup, not claimed PASS here.
+The original run.mjs is retained as the exact executed R0 harness and does not
+silently acquire that later guard. Wire it into a fresh R1 run directory before
+admitting jobs. No second export was run merely to demonstrate the guard.
+
+Acceptance coverage: R0 identities, measurements, time boundaries and output
+oracle are established. Safe host headroom for repeated/concurrent runs remains
+blocking. Project Control owns this result; no map or runtime-readiness promotion.
