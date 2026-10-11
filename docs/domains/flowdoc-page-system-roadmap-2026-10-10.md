@@ -1052,3 +1052,53 @@ Artifacts archived with matching hashes before clean worktree/branch removal.
 Isolated database/volume/network, task images and temporary password file removed.
 No custom fonts, full-book rerun, timeout changes, or release promotion.
 Next: owner sample review, then L3 independent header/footer horizontal regions.
+
+#### L2 acceptance and L3 scope clarification — 2026-10-11
+
+Owner accepted the L2 sample and authorized L3. L3 means page-relative bands,
+not only horizontal overrides: each header/footer may ignore body margins and
+set its own left/right inset and offset from its corresponding physical edge
+(top for header, bottom for footer). Zero is allowed. The physical page remains
+the boundary; body margins remain intact and actual band overlap plus gap must
+reserve body space. Cover/blank suppression and the existing40% cap remain.
+
+Inline routine implementation; execution IDs N/A. Core owns optional band
+`placement:{mode:'page',left:Length,right:Length,offset:Length}` carried through
+validation/composition/layout. Omission preserves the established body-relative
+placement. Reuse existing sizing/gap; no second page model or DB migration.
+Service owns package consumption and current/version round-trip proof. Test
+portrait/landscape, independent bands, zero insets, repeats, number slots/images,
+overlap and invalid bounds; packed Linux and targeted Service checks plus a
+short SRS comparison. No Line/color/L4, release or full-book performance work.
+
+#### L3 delivery — 2026-10-11
+
+Core development df4dfe0 and Service development f5765b3 now0.2.4, release
+unchanged. Optional placement is validated, preserved by composition and section
+storage, and used for band measurement and text/image/page-field positioning.
+Body reservation uses actual overlap plus gap; physical bounds and the40% cap
+prevent unusable regions. Existing band modes and cover suppression remain.
+
+Evidence: Core focused32 checks passed before the additional repeated-page test;
+all4 new placement tests and package build/full431 tests/isolated Linux consumers
+passed. Service existing8 targeted storage/API checks passed; new placement
+version test passed after correcting its missing-footer fixture. No Service
+runtime repair or migration was needed. The original failed fixture run is
+retained and is not reported as a passing run. Vendor identity verified.
+
+Core artifacts:
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-srs-bands/1791705826939/`.
+Package SHA256 `2c8f29436676b3274f733c26a83d4a957c437febe66dddc30c7c23735769b12e`.
+SRS comparison: `../flowdoc-service/artifacts/srs-bands-l3/` with baseline.pdf,
+page-bands.pdf, both template variants, band-sample.mjs, band-result.json,
+band-verification.json, current-service-tests.log and placement-retest.log.
+Both PDFs have5 pages and7 REQ codes; labels and TOC destinations3/3/5 match.
+The baseline PDF is byte-identical to the retained L2 output. Candidate page3
+and baseline page3 visually inspected: full-width header, independent inset
+footer, body horizontal margins retained. Cover still has no drawn image.
+Sample durations4.512s/6.743s are individual measurements, not a performance claim.
+
+Owner visual acceptance pending. Artifacts hash-verified before clean temporary
+worktree/branch removal; isolated Docker DB/volume/network, images and temporary
+password removed. Fast-forwarded tested content unchanged; no duplicate checks.
+Next: owner review, then L4 horizontal Line and bounded table colors.
