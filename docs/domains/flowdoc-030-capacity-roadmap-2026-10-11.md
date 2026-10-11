@@ -9,7 +9,7 @@ User requested the draft on 2026-10-11: start with RAM and concurrency, then
 a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
-R1C and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+R1C two-render trial passed; four-render exploration and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -89,7 +89,7 @@ Hosting size and public authentication are deferred; this round is local only.
 | R0 — Measurement setup | Service harness; Core inspected read-only | Input/package/environment fixed; counters and time boundaries defined; reference PDF verified; isolated limits and stop rules recorded |
 | R1 — RAM and concurrency discovery | Service-led, unchanged Core package | Single-job baseline, queue bursts1/2/4 and safe isolated render overlap1/2/4 measured or explicitly stopped; post-job memory and output parity checked; recommendation with limits and unknowns |
 | R2 — Apply only necessary limits/remedies | Service; Core only if evidence assigns a Core issue | Chosen queue/worker/input limits actually enforced; focused failure/recovery tests; same PDF/wrap; exact implementation scope decided from R1 first |
-| R3 — Small API client | Service examples/client | Upload → submit → status → download works using public API only; validation failure, expired resource, failed job and download lifetime understandable without Core internals |
+| R3 — Small API test page | Service examples/client | Upload → submit → status → download works using public API only; validation failure, expired resource, failed job and download lifetime understandable without Core internals |
 | R4 — Large-document envelope | Service harness + Core output verification | Approximately300/500/700 actual pages attempted progressively within safety budget; successful outputs preserve content/order/links; failures bounded and supported maximum documented |
 | R5 — 0.3.0 acceptance | Project Control + both owners | Manuals/configuration match evidence, relevant regression/package checks pass, reproducible example and known limits recorded; separate owner instruction required before release promotion |
 
@@ -192,9 +192,12 @@ workers. If a shared worker pool becomes necessary, explicitly design job
 claim ownership, cancellation, crash recovery and process/cache isolation;
 do not infer those are solved by the R1C isolated experiment.
 
-R3 is a small script/CLI example, not an Editor or SDK platform. User supplies
+R3 is a small local API test page, not an Editor or SDK platform. User supplies
 data, never an internal composed Core tree. Report remaining integration
 friction; a developer-authored client is not proof of external customer demand.
+Owner clarification2026-10-12: show upload, queue, preparation, rendering,
+download and errors using actual API feedback. Defer the six-near-simultaneous
+request trial to this page; do not run it during R1C. No invented progress or ETA.
 
 R4 first expands the existing representative corpus with unique IDs and known
 expected counts. Preserve image/text/table diversity and name synthetic data
@@ -469,3 +472,95 @@ authorized-next scope with aggregate resource budget and host preflight, not
 automatic continuation. All task containers/volumes/networks/images/credentials
 cleaned; no worktree/branch created. Project Control diff/data checks cover this
 record; product trees and release refs unchanged. No DOCUMENT_MAP promotion.
+
+## 11. R1C two-render kickoff — 2026-10-12
+
+Owner authorized two simultaneous renders only, RAM guards enabled, no release.
+Inline discovery/Evidence Reviewer; execution IDs N/A. Service owns ignored
+harness outputs; Project Control owns this existing record. Routine risk, small
+bounded experiment. No product candidate mutation, package bump or map update.
+
+Reuse R1A/R1B baseline identities and PDF verification. Two independent API/DB
+stacks preserve job locking; total API budget remains1GiB/2CPU, split512MiB/1CPU
+each, DB total256MiB/0.5CPU split128MiB/0.25CPU each; swap disabled. Per-lane
+85% RAM guard for three samples plus host1GiB reserve guard; a stopped lane stops
+further work in both. Three paired measured batches after warm-up if safe.
+Independent-stack overhead differs from one shared worker pool; do not claim
+production multi-worker support. Stop without escalating to four.
+
+Proof: synchronized submissions after uploads, overlapping DB processing windows
+and observed render children, memory/time/raw samples, exact PDF parity and
+existing content/link checks; task-only cleanup and unchanged product refs.
+Document budget: update this record only; focused data/diff checks. Unknown safe
+parallel capacity is the finding sought, not a prerequisite assumed satisfied.
+
+### R1C two-render result — PASS within measured scope
+
+Accepted artifacts: `flowdoc-service/artifacts/capacity-030/r1c-two-ready-20261012/`.
+`summary.json` / `summarize.py`, per-lane manifests, limits, raw200ms samples,
+DB timing/input associations, all PDF checks and cleanup are retained privately.
+Three measured pairs/six jobs, plus one excluded warm-up pair/two jobs. Both
+lanes exited0. Source/package hashes unchanged from the baseline above.
+
+| Pair | Submit-to-last-download seconds | Processing overlap seconds | Aggregate sampled working set MiB | Aggregate sampled memory.current MiB |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 21.412 | 19.473 | 738.49 | 755.44 |
+| 2 | 20.286 | 19.123 | 743.93 | 767.71 |
+| 3 | 20.876 | 19.227 | 758.27 | 788.75 |
+
+Mean makespan20.858s, sample SD0.563s. Submissions within10ms; each paired
+window has80–81 matched samples with two direct API render children, supporting
+actual overlap rather than merely simultaneous admission. DB intervals cover
+whole job processing, not a precise renderer-only stage. Aggregate counters use
+nearest samples within300ms; actual maximum pair skew115.85ms. These sampled
+sums are not an exact simultaneous kernel peak. Lane lifetime peaks438.17 and
+414.46MiB are separate, not added as a simultaneous peak.
+
+All8 PDFs passed98-page exact decoded layout/resources/link parity plus the
+1,457values/363details/396links/29group-start checks. Same4image-density warnings,
+unique job/upload IDs and original-input association, second download410,
+output/temp and child-process cleanup passed. No host/container guard stop,
+OOM or failed job. Host free minimum1841.21MiB. All health probes succeeded;
+measured maximum305ms (excluded warm-up592ms). DB final current89.40/91.38MiB;
+DB peaks102.91/104.21MiB, separate from API counters, no DB OOM.
+
+Post30s idle working sets by lane, warm-up then three measured pairs:
+140.84→155.52→169.62→171.21MiB and100.68→139.05→142.96→148.65MiB.
+Short-run retention remains; no claim of leak absence. API counters include
+clients/observers, and independent stacks duplicate API/DB overhead. CPU usage
+was recorded; full pair-plus-idle windows consume about41.9–43.2 CPU-seconds
+summed across lanes, including clients/monitoring. No pure-render CPU claim.
+
+Compared descriptively with R1B two queued jobs mean26.975s, paired completion
+is about23% shorter under the same aggregate CPU/RAM limits. Each individual
+worker now takes19.18–20.35s versus R1B mean13.06s: splitting the CPU budget and
+running two isolated stacks does not yield a2x gain. Different run order, stack
+layout, network setup and current host load prevent a controlled causal claim.
+This does not establish shared-queue multi-worker support or a ten-job SLA.
+
+### Preserved setup failures and bounded corrections
+
+- `r1c-two-20261012/`: Docker default address pools exhausted before API start;
+  zero jobs. Both stacks cleaned. No unrelated network was deleted.
+- `r1c-two-retry-20261012/`: task-local Compose uses one internal network per
+  stack, no egress network. Uploaded-image corpus needs no external fetch;
+  external-image access is deliberately untested. A fixed2s observer startup
+  assertion fired before its first sample became visible; later samples were
+  present. Zero jobs. Cleanup passed. This was a readiness prerequisite failure,
+  not a renderer or RAM failure.
+- The additional `r1c-two-ready-20261012/` attempt was necessary to obtain a valid
+  measurement: wait for a nonempty observer sample, bounded15s, before jobs.
+  Failed attempts remain excluded; no source/default/timeout or RAM limit was
+  raised. This extra bounded retry is recorded beyond the original one-retry
+  budget because an unresolved measurement prerequisite prevented any job trial.
+
+All three attempts' task containers, volumes, networks, images and credentials
+removed; verified by task project labels. Product checkouts/release refs remain
+unchanged. No worktree/branch created. Roadmap/data/diff verification only for
+this documentation update; no product/map promotion.
+
+Decision: authorized two-render trial complete; stop. Four-render trial remains
+pending, not automatically started. R2 should weigh the measured23% batch-time
+benefit against higher aggregate memory and real worker ownership/recovery work.
+Keep the existing serial service until that decision. Six API callers remain
+scheduled for R3's small local test page, not this experiment.
