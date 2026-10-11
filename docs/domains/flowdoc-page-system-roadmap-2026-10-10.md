@@ -1931,3 +1931,77 @@ instrumented modules, fontSubset-observed.py, setup/run/analyze/verification and
 instrumentation-check scripts, environment.json). Task Docker containers, networks,
 volumes, image and temporary credential removed; evidence retained. No worktree
 created or unrelated cleanup. Existing roadmap only; no map promotion.
+
+#### Compact font-subset handoff — 2026-10-11
+
+Owner approved a bounded implementation following the stage attribution above:
+send only required font/glyph data, compare RAM/time and preserve exact wrapping
+and layout; release excluded. Inline Product Implementation Agent then Evidence
+Reviewer; Core owns the helper/handoff, Service owns package consumption. Routine
+risk, medium scope, execution IDs N/A. Existing roadmap is authority; no separate
+agents/registry. Proof budget: Core tests, four-font installed-package parity and
+failure cases, three interleaved old/new full API pairs, exact PDF verifier and
+cleanup. Document budget: existing guides/usage and this record. Cache changes,
+new workers, layout/shaping changes and release are forbidden for this scope.
+
+Core0.2.11 commit1d4f71c collects unique sorted glyph IDs (including0) per font in
+first-use order and sends requestVersion1/fonts with fontId, SHA256 and glyphIds.
+No text, geometry or complete paintCommands cross the subset boundary. Python
+validates the compact form and uses the same fontTools configuration/retained IDs;
+legacy draw requests remain supported for existing internal callers. Native
+shaping, cache32MiB default, layout and PDF writer are unchanged. Collection cost
+is O(G + sum(Uf log Uf)), where G is glyph occurrences and Uf distinct IDs/font;
+request size depends on unique glyphs rather than all drawing occurrences.
+Service0.2.11 commita07b953 consumes the package through its root and records
+SHA256942c0d7054dabd16ad5362f85cbf92910a29d7dae6c4ba020ac94a53c36114d6.
+
+Tests: two new handoff tests observed failing before implementation, then passed
+(deduplication, font isolation/order, no input mutation, empty/missing-font cases).
+Python compact probe failed on the old missing-fontAssets path, then passed;
+initial Windows attempt lacked fontTools and was replaced by pinned Linux runtime.
+Linux Core build and466tests/60files PASS; native16-case comparison also PASS.
+Installed-package resource check PASS across all four fonts: legacy vs compact
+subset bytes and retained glyph IDs identical, wrong version/missing font/bool
+ID/hash rejected, source font immutable, resource/private-import/cleanup checks.
+Service image build/vendor verification and real database-backed API jobs PASS.
+No separate DB migration suite: DB/schema/processor code unchanged.
+
+Same85page SRS/17images. Three runs per variant, order old/new,new/old,old/new;
+fresh API container each run,4CPU/4GiB/no swap, separate1CPU/512MiB DB. Both use
+unchanged32MiB document cache. Installed engine/cache module hashes match between
+images. Temporary boundary observers are identical and do not alter layout;
+request byte size uses file metadata, not another payload read.200ms container
+working-set sampling includes API/render/observer, excludes DB. Python RSS is a
+separate sampled metric, not additive allocation ownership.
+
+| Metric | Old0.2.10 mean (sample SD) | New0.2.11 mean (sample SD) |
+| --- | ---: | ---: |
+| Peak container working set MiB | 643.14 (2.65) | 571.02 (18.80) |
+| API upload through download seconds | 19.104 (1.769) | 17.230 (0.427) |
+| Worker seconds | 17.654 (1.124) | 15.897 (0.344) |
+| Subset stage seconds | 1.232 (0.101) | 0.527 (0.040) |
+| Subset-stage container peak MiB | 633.86 (11.80) | 531.56 (7.26) |
+| Python sampled peak RSS MiB | 103.04 (0.71) | 29.73 (5.62) |
+| Subset request bytes | 14,702,414 | 1,231 |
+
+Observed overall peak reduction72.13MiB/11.2%; new range549.34–582.95MiB vs old
+640.09–644.71. API observed mean improvement1.87s; subset stage0.705s/57.2% faster.
+Three samples on a shared host are descriptive, not an SLA or proof all timing
+difference comes from this change. Short-lived Python peaks may be undersampled.
+Do not combine these values with the previous cache-off sweep as if jointly
+measured. Other renderer allocations remain; no300–700page or concurrency claim.
+
+All6PDFs exactly match the accepted85page baseline: decompressed drawing streams,
+MediaBoxes, decoded font/image resources and link annotations/destinations. All
+jobs succeeded, second download410, empty output/render-temp paths, no OOM or
+remaining render/shaper children. Source/consumer diff reviewed; unchanged
+fast-forward integration reuses these checks. Both development repositories clean;
+release refs remain Core d06cd8a and Service7563151 at0.2.9, with no push/tag change.
+
+Evidence: Core artifacts/subset-compact-0211 (packed artifact, build log, installed
+resource check and probe); Service artifacts/srs-subset-compact (comparison.json,
+summary.json, raw per-run memory/stage/PDFs, installed-identities.json, scripts and
+build log). Core artifact copy verified144files by SHA256 before removing clean
+merged task worktrees/branches. Only task Docker resources/images and credential
+removed; evidence retained. Stop here: requested comparison and exact-output
+acceptance pass. No DOCUMENT_MAP promotion or additional optimization in this work.
