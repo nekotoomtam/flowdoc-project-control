@@ -1368,3 +1368,61 @@ Archive copies hash-verified before deleting clean merged task worktrees and
 branches; task DB volume and Docker images removed. No release promotion.
 Owner visual review of this footer remains pending; use its template/full request
 for L6 only after review. Full-book API/timing remains deferred until discussion.
+
+#### L5 approval-page completion — inline scope, 2026-10-11
+
+Owner approved three bounded changes after inspecting page2: section-scoped
+signer name/date variables, actual centering inside existing table cells, and
+more spacing below Company Stamp. Core owns cell text alignment; Service consumes
+the package and the SRS template. Routine inline implementation, execution IDs
+N/A. Existing artifact srs-footer is the immutable baseline. No release, full-book
+L6, arbitrary XY, body-root text alignment, or new node model. Names/dates may be
+empty for later paper signing; short/long values are explicitly mock data.
+Acceptance/proof budget: focused alignment validation/layout tests including
+padding/ink and continuation, packed Linux consumer, affected persistence check,
+and blank/short/long public-engine PDFs with complete text, centered lines and
+no approval/footer overlap. Reuse this record and retained artifact folder;
+no additional report or execution records.
+
+Delivered Core `386afe1` / Service `4318bf2`, dev packages0.2.8. Core admits
+textAlign left/center/right for direct table-cell TextBlocks in model9+ and
+positions each measured line using occupied ink width inside cell padding.
+Existing header/footer behavior retained; body-root alignment remains rejected.
+No new node model or XY contract. The SRS approval template removes asymmetric
+horizontal padding and centers titles, names/dates and company information.
+Nine optional string fields live under sections.approval.data: preparedName,
+preparedDate, verifiedName, verifiedDate, approvedName, approvedDate,
+customerApprovedName, customerApprovedDate, customerOrganization. Omitted values
+use dotted placeholders; supplied empty strings remain empty. Global projectName
+and organization bindings retained. Dates are display strings, no new date type.
+
+Approval-only text lineHeight increased17pt to20pt after full Thai date text
+exposed insufficient vertical ink capacity. Company Stamp label uses25pt line
+height. Reduced excess vertical padding before stamp group provides space for
+long names without changing page/footer positioning or shrinking text.
+
+Proof: four failing focused assertions before implementation;5 new focused tests
+pass, packed Linux build450 tests and isolated consumer pass. Service container
+build/vendor verification and6 affected real-DB/API tests pass. Blank, short and
+long signer/date/company public-engine PDFs each8 pages with no warnings;
+render times6.049s/7.114s/8.493s are sample measurements only. All requested mock
+values extracted from page2; measured maximum column center error0.244pt,
+stamp label gap11.555pt and minimum body-to-page-number gap36.501pt for long case.
+All three page2 rasters visually reviewed. Other seven pages' extracted text
+unchanged; baseline template still produces byte-identical PDF. Incorrect types
+rejected for all nine variables. No full-book L6 or production-scale claim.
+
+Retained `../flowdoc-service/artifacts/srs-approval/`: approval-template.json,
+approval-{blank,short,long}-request.json/PDFs, approval-full-request.json (no
+fabricated signer names), generator, verifier, logs and page2 rasters. Use the
+new template/full request for the later full-book trial after visual review.
+Core package proof: `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-approval/1791711938157`.
+Hash-verified archives, fast-forwarded dev branches, removed clean merged task
+lanes/branches and task Docker resources. Release remains c17f197 / edd9a7e.
+
+Separate discovered limitation, deferred rather than hidden: testing an unusually
+long global projectName caused the existing cover to fail safely with 'Cover
+exceeds one page' at contact-fax. Failure log retained. Final long case exercises
+signer names, full Thai dates and customer organization; it does not claim the
+cover supports arbitrary project-title length. Footer design accepted by owner;
+this approval-page visual candidate awaits owner review.
