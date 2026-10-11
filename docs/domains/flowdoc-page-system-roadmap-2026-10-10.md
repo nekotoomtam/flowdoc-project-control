@@ -994,3 +994,61 @@ variants, result.json and verification.json. Raw business artifacts remain
 ignored; engine/version/release unchanged. Task Docker image and clean temporary
 worktree/branch removed. Next: owner selects or adjusts typography/proportions,
 then L2 cover-counting contract. Do not silently treat sample delivery as approval.
+
+#### L1 acceptance and L2 kickoff — 2026-10-11
+
+Owner accepted L1: retain Google Fonts Sarabun, body11pt and the candidate
+settings above; custom fonts are out of scope. This supersedes the pending
+selection status, not the historical sample-delivery result.
+
+Owner authorized L2 and requested investigation of apparent cover bands.
+Inspection of the retained SRS template and90-page API PDF found an authored
+banner image in the cover body (`cover.source.fragment.nodes.n13`), not an
+enabled cover header. Cover has no header/footer definition; extracted page1
+has no repeating footer text. Remove that authored banner from the SRS candidate.
+
+Inline implementation, routine, execution IDs N/A. Core owns the compatible
+nodeModelVersion16 extension: an explicit cover numbering policy may count
+using existing continue/restart modes; default remains exclude, visibility
+remains hidden and explicit show remains invalid. Bands remain suppressed.
+Service consumes the new package; existing section JSON payload must preserve
+numbering through decomposition/assembly and version storage. No new DB field,
+node model, custom font, release promotion or L3 horizontal band changes.
+
+Acceptance: counted cover1, body2, total includes cover, TOC uses counted labels;
+omitted/excluded cover retains prior numbering; cover bands absent; SRS authored
+banner removed in a focused candidate. Proof: focused regression, packed Linux
+consumer, Service contract round trip and short real PDF. Reuse prior full-book
+proof and defer the next full-book run to L6. One existing roadmap update only.
+
+#### L2 delivery — 2026-10-11
+
+Core development `codex/template-binding` at5d44da5 and Service development
+`codex/template-registry` atc04aa37 now0.2.3. Release checkouts unchanged.
+Core validation/normalization accepts explicit counted covers while retaining
+hidden bands/labels and omitted-policy exclusion. No layout rewrite or migration.
+Service version-storage regression proves policy persists and changing current
+to excluded does not mutate the previously published counted version.
+
+Checks: new regression RED3 before fix; affected Core21 tests passed; package
+build/full427 tests and isolated Linux consumers passed. Service8 targeted tests
+passed, including real PostgreSQL current/version storage and existing numbering
+HTTP/direct/staged render tests. Vendor checksum verified. Passing content was
+fast-forwarded unchanged, so no duplicate suite run.
+
+Core package evidence:
+`../flowdoc-core/artifacts/worktree-archive/flowdoc-core-srs-cover/1791704984343/`;
+tarball SHA256 `b01c5f762274a838e5ac61d00999fe32256f7e75a76eb57b23b2bcb6cc3d5489`.
+SRS sample evidence: `../flowdoc-service/artifacts/srs-cover-l2/cover-counted.pdf`,
+`cover-template.json`, `cover-request.json`, `cover-sample.mjs`,
+`cover-result.json`, `cover-verification.json`, `service-tests.log`.
+The five-page sample has zero drawn cover images and no repeating cover footer;
+following labels2–5,total5; TOC destinations3/3/5 match displayed labels. Seven
+REQ codes retained. Cover rendered and visually inspected; owner visual review
+of this sample remains pending. Render5.610s is a short sample, not full-book timing.
+Cover styling beyond banner removal remains L5; L2 does not claim final cover design.
+
+Artifacts archived with matching hashes before clean worktree/branch removal.
+Isolated database/volume/network, task images and temporary password file removed.
+No custom fonts, full-book rerun, timeout changes, or release promotion.
+Next: owner sample review, then L3 independent header/footer horizontal regions.
