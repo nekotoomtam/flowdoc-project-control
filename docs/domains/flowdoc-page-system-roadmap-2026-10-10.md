@@ -908,3 +908,65 @@ plus full-data correctness; approximately90% does not excuse missing content.
 Design approach: challenge necessity and compare simpler alternatives before
 Architecture/DB/Contract additions; separate evidence, assumptions and decisions.
 Do not add process or agents merely to enforce that approach.
+
+### SRS layout execution roadmap — 2026-10-11
+
+Owner requested the roadmap and readiness to execute. Use the seven-group draft
+above as scope. Inline Planning Partner, routine; execution IDs N/A. This update
+completes discovery R0 only, with no product mutation. Each implementation slice
+gets its bounded contract and affected-area checks before edits. Shared roadmap
+stays here; no synthetic room records. Keep release unchanged throughout.
+
+| Slice | Deliverable | Exit evidence | Status |
+| --- | --- | --- | --- |
+| SRS-L0 | Existing capability inventory and owner boundaries | Source paths against development base; requirements/gaps separated | Complete |
+| SRS-L1 | Small representative SRS sample using existing fonts, regular default, tuned sizes, spacing and16/64/20 table proportions | Short PDF, preserved text, owner visual comparison; record chosen template settings | Next |
+| SRS-L2 | Cover counting option preserving old default | Cover hidden but counted when selected; next page2, total includes cover, TOC labels consistent; old templates unchanged | Pending contract |
+| SRS-L3 | Independent header/footer horizontal regions | Full-width banner and inset footer with body margins unchanged; bounds and vertical reservation tests | Pending contract |
+| SRS-L4 | Minimal horizontal Line and bounded table color subtask | Body/band separators and needed header/cell fills/border colors; merged and continued table checks | Pending contract |
+| SRS-L5 | Complete SRS template styling across all seven groups | Cover/approval/contents/bands/images assembled with chosen typography; known deferrals listed and representative pages reviewed | Pending |
+| SRS-L6 | Full latest-data API acceptance and refreshed timing | Complete requirements/headings, page labels/links, download/cleanup, timing/resource baseline and owner visual acceptance | Pending |
+
+SRS-L1 deliberately precedes engine additions: it establishes whether existing
+fonts can achieve the desired proportions and avoids rewriting layout before
+the visual target is understood. Build a focused sample from the retained SRS
+template/request, not a new product fixture containing private business data.
+Keep full-book baseline untouched; use ignored separate sample artifacts. Start
+with current font family, normal weight, existing size values and reference
+column ratios, then tune from visual comparison rather than blindly switching
+body12pt to legacy16pt. Color remains optional until L4 necessity is assessed.
+
+#### L0 findings and implementation boundaries
+
+Inspected Core development base36065e1; the following inspected files have no
+release-to-development differences (primary checkout remains release):
+
+- `src/template/types.ts`, `src/composition/resolvedDocument.ts`: font styles,
+  column widths and cell padding exist. Page bands have sizing/gap but no
+  horizontal margin override. Public node union has no Line; cells have no fill
+  or border-color setting.
+- `src/template/pageNumbering.ts`: cover normalizes to exclude/hide and validator
+  rejects counting it. Existing PageNumbering modes may be reusable; prefer a
+  compatible extension of that contract over a second competing numbering mode.
+- `src/layout/systemPageCounting.ts`: numbering is distinct from visible cover
+  labels, providing an existing place to preserve hidden cover rendering.
+- `src/layout/documentFlow.ts`: bands measured at body available width; table
+  borders emitted with fixed0.5pt/black values.
+- `src/pdf/drawContract.ts`: border drawing primitive exists and may underpin
+  Line, but an authored Line contract and flow placement still need design.
+  Cell backgrounds need an explicit draw-order/bounds design, not a theme system.
+
+Core owns validation/composition/layout/draw additions and their tests; Service
+owns consumed package, template persistence compatibility and HTTP verification.
+Before L2–L4, inspect Service current/version assembly and storage for each exact
+contract; do not assume fields survive persistence or that no migration is needed.
+Keep capability patches independent and usable before patch-version increments;
+do not preassign a release version or promote release from roadmap completion.
+
+Proof budget: focused unit/regression tests for each changed boundary, packaged
+Linux consumer when claiming package capability, Service persistence/API tests
+when contracts affect it; one final whole-book run after styling stabilizes.
+No repeat of the long book per cosmetic change. Document budget: this roadmap
+plus existing evidence checkpoints. R0 proves code observations only, not the
+planned feature behavior. Defer REQ repetition and unrelated nesting/TOC depth
+expansion unless separately bounded and accepted. Next executable slice: L1.
