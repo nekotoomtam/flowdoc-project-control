@@ -4,6 +4,7 @@
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 เอกสารนี้เป็น **นิยามสำหรับพัฒนา ยังไม่ใช่ความสามารถที่ API ใช้ได้แล้ว**
+ส่วน 1–7 เก็บสถานะและนิยามเมื่อจบพาร์ต 1; ผล implementation ล่าสุดอยู่ส่วน 8.
 ผู้ใช้อนุมัติแนวทางและให้เริ่มพาร์ตนิยามในบทสนทนาวันที่ 2026-10-11
 Core เป็นเจ้าของ schema, binding, composition และ pagination;
 Service เป็นเจ้าของการบันทึกแม่แบบ/เวอร์ชันและ API integration.
@@ -271,3 +272,89 @@ PASS. พาร์ต 2 ต้องวางแผนไฟล์/types/tests �
 เลข model version, resolved metadata/warning wire shape และ expanded-node budget
 เป็น implementation decisions ของพาร์ตที่ระบุ ไม่ใช่หลักฐานว่าพร้อมใช้งาน.
 หากต้องเปลี่ยนขอบเขตความลึกหรือเปิดวงซ้อนทั่วไป ให้กลับมาทบทวนกับเจ้าของก่อน.
+
+## 8. พาร์ต 2 — implementation kickoff (2026-10-11)
+
+Owner: Core; role: Product Implementation Agent. User authorized implementation
+in this conversation; single-room inline, execution IDs N/A. Size: medium;
+risk: routine. Base: `1d4f71c`; branch `codex/row-groups-part2`, isolated checkout
+`../flowdoc-core-row-groups`. Native worktree tool is bound to Project Control,
+so the Core lane uses Git directly. No separate WORK dispatch/model change.
+
+Allowed: Core template/data/binding/composition, version-routing consumers,
+targeted tests and package consumer; this existing contract for progress/results.
+Forbidden: Service/DB, release, rendering/wrap algorithm changes, input datasets.
+Document budget: this existing record. Proof budget: focused red/green tests,
+type build, affected legacy suite, packed Linux consumer, one final review.
+
+Implementation order:
+1. Add model 17 and recursive item types bounded to two arrays in schema
+   validation; cover defaults, bad values, prepared round-trip and old models.
+2. Add `rowGroups` declaration validation in `validateGraph` with a dedicated
+   helper; add group scope, contiguous row ownership and span/repeat guards.
+   Expand in `expandRows`, retaining ordered boundaries and source identity.
+3. Validate resolved metadata, route model 17 through existing section/numbering
+   consumers, test multiple groups/instances, authored/Area contexts, image/link,
+   old IDs and an expansion budget. Review diff, run affected checks, integrate
+   only into development when passing and clean up this task's lane.
+
+Ruling: model 17 is free at the inspected base. No package version or Service
+dependency update until this Core-only slice is proved.
+Ruling: resolved table metadata will retain declaration ID, group index,
+ordered rows, prefix rows, first member/empty row and keepStart. Exact pagination
+warning/fallback remains Part 4. Until then, layout must explicitly reject
+keepStart=true rather than silently ignore it; false/omitted uses existing flow.
+Ruling: cap model-17 expansion at 100,000 node/inline identities per document,
+shared across sections and Areas; reject without returning a partial document.
+This is an initial safety ceiling, not a performance or production guarantee.
+
+Acceptance: the Part-2 rows in section 6 plus preserved keepStart and explicit
+pending-layout behavior; all old model tests retain acceptance and output.
+### ผลพาร์ต 2 — PASS เฉพาะ Core
+
+Implemented at Core `93fabbcfb8c0054e2e247d867607a3c4b96a7549`, integrated by
+unchanged fast-forward into `codex/template-binding`. Model 17 accepts bounded
+two-level arrays and rowGroups; models 4–16 retain their existing gates.
+Package version remains 0.2.11 in this development-only slice; no package
+promotion, Service dependency change, tag or release update. Part 3 must choose
+the integrated package version before updating the Service consumer.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Two levels, order, empty/default/required, indexed errors, unknown keys, prepared tampering | `tests/composition/rowGroups.test.ts` |
+| Disjoint groups, repeated instances/sections, authored/global/section/Area context, image/link scope | Same test file; unique IDs, exact row values and sourceMap assertions |
+| Invalid declarations, scope misuse, overlap, colSpan and rowSpan boundary | Same test file; valid colSpan and otherwise-valid crossing span cases |
+| Preserved boundaries/policy; explicit pending keepStart behavior | `validateRowGroupMetadata.ts`, composition tests and packed consumer |
+| 100,000 identities across body, Areas, sections and page bands | `expansionBudget.ts`; body-instance and combined header/footer budget tests |
+| Legacy section numbering, bands, layout/wrap | Exact draw equality for model-16 fixture upgraded to 17; affected legacy tests |
+| Package / native / PDF consumer | Final `npm run check:package`: Linux/amd64, build + 484 tests in 61 files, native session check, installed package in network-disabled non-root consumer |
+
+Paths in the table are relative to `flowdoc-core`. Durable tests/fixtures at the
+commit are implementation evidence; this prose is a result record, not a map
+promotion. No DOCUMENT_MAP/shared product readiness change.
+
+Final local artifact directory (ignored, preserved before worktree removal):
+`C:/Users/nekot/Documents/GitHub/flowdoc-core/artifacts/1791731449519/`.
+`row-groups-result.json` reports PASS: two groups, nine rows, one PDF page;
+`row-groups.pdf` and `result.json` retain package-consumer results;
+`package-check.log` includes the full final build/test/consumer output.
+107 artifact files were copied and hash-compared. Embedded original worktree
+paths in result/log files are provenance; use this retained directory to open them.
+
+Review found that page bands bypassed the first budget implementation. A failing
+combined header/footer test reproduced it; the shared budget now reaches band
+leaves and Columns. A separate failing forged-resolved-span case was also fixed.
+Both pass in the final 484-test run. A TypeScript index guard error during an
+intermediate package build was corrected before the final passing build.
+Final diff/whitespace check passed. Only a trailing test-file blank line changed
+after the passing package run; runtime/package contents remained identical.
+
+Cleanup: removed the clean merged `codex/row-groups-part2` branch/worktree and
+both task consumer images. Kept only the final artifact evidence; intermediate
+package attempts were superseded. Service checkout remained unchanged.
+Core release stays `d06cd8a`; Service release stays `7563151`.
+
+Remaining: Part 3 Service schema persistence/publish/clone/API and nested media
+handling; Part 4 keepStart pagination and the real SRS acceptance/performance run.
+Until Part 4, keepStart=true fails layout explicitly. False/omitted works with
+the existing flow. No claim yet about real SRS group pagination or load capacity.
