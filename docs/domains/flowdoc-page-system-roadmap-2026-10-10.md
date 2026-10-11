@@ -1304,3 +1304,21 @@ pixel-identical at1000px to the original L5 sample. Full non-legend data unchang
 Use this folder's element-template.json and element-full-request.json for L6
 only after owner review. L5 remains pending visual acceptance. No product change,
 version bump or release promotion; temporary clean checkout and image removed.
+
+#### L5 Element natural wrapping — 2026-10-11
+
+Owner accepted the inline small-icon/label arrangement and requested engine-led
+wrapping instead of reference line breaks. Bounded inline template-data mapping:
+replace extracted newline breaks with one space in Element descriptions only,
+for both sample and full request. Preserve raw inputs and all other sections;
+this is not a global newline removal or Core wrapping-policy change.
+
+New candidate `../flowdoc-service/artifacts/srs-l5-element-wrap/element-refined.pdf`;
+its element-template.json / element-full-request.json supersede prior L5 inputs
+for the next full-book trial. Public preparation/render passed,8 pages. Verified
+nine labels/descriptions, unchanged non-whitespace source text, no remaining
+hard breaks in those descriptions, eight icons, and seven other page rasters
+unchanged at1000px. Page5 visually reviewed with naturally wrapped descriptions.
+Generator/results/verification retained in the same ignored directory. Temporary
+clean checkout and Docker image removed. Packages0.2.6 and release unchanged.
+L6 remains full-data API/timing work; no full-book acceptance claimed here.
