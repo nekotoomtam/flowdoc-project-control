@@ -1855,3 +1855,79 @@ suite rerun because product candidate unchanged. Evidence:
 PDFs, original/trial cache modules, scripts, environment and build/setup logs).
 Task containers/volumes/image/credential removed; evidence retained. Both product
 repositories remain clean at previous commits; release0.2.9 unchanged.
+
+#### RAM attribution by pipeline stage — 2026-10-11
+
+Owner approved measurement before choosing further fixes; preserve wrapping and
+exclude release. Inline discovery, Service-owned trial with Core observations;
+active role Evidence Reviewer, execution IDs N/A, routine risk/bounded scope.
+Authority remains this roadmap and the explicit request. Proof budget: six full
+API jobs (cache off/32MiB, three each), boundary memory marks and existing200ms
+sampler, exact PDF equivalence, scoped cleanup. Document budget: this record and
+ignored reproducible artifacts. No product-source/default/package/DB changes.
+Existing candidate Core c35c9cc / Service55e1a60 and release0.2.9 remain unchanged.
+
+Fresh API container each job,4CPU/4GiB/no swap; separate1CPU/512MiB DB. Same85page
+SRS,17images, order off/32,32/off,off/32. Temporary mounted installed-JS copies add
+only observations before/after pipeline boundaries; stripping observations
+reproduces original token content. Cache bypass is the same experimental setting
+as the prior sweep, not a production default. No forced GC, heap snapshot, global
+shaper pool, new worker, wrap or document change. Boundary marks record Node RSS,
+heapUsed/heapTotal/external/arrayBuffers and cgroup working set. External observer
+samples cgroup and per-process RSS during synchronous work as well.
+
+Mean of per-run observed stage peaks, MiB (container working set, including API,
+render and observer, excluding DB; columns are NOT allocations exclusive to each
+stage and must not be added):
+
+| Stage | Cache off | Cache32MiB |
+| --- | ---: | ---: |
+| Prepare image resources in API | 207.8 | 212.6 |
+| Decode prepared images in render child | 243.1 | 235.4 |
+| Validate/snapshot document and images | 290.3 | 283.9 |
+| Layout and text measurement | 411.4 | 503.3 |
+| Resolve contents/page fields/links | 413.6 | 504.6 |
+| Font subsetting | 535.5 | 635.5 |
+| Write PDF | 536.6 | 600.5 |
+
+Overall sampled peaks average545.35MiB off /635.48MiB32, ranges530.46–562.56 /
+610.97–670.60. The overall sampled maximum lands in subsetting in5/6jobs and PDF
+writing in1/6. API duration averages17.820s /17.734s (sample SD0.263/1.219), worker
+16.399/16.795s. Small samples plus observation overhead do not establish a speed
+ranking; this trial attributes memory stages, not a new timing SLA.
+
+Observations: off-cache render RSS grows from144.5MiB at layout entry to257.9MiB
+at exit;32MiB cache grows144.4 to352.6MiB. These are RSS footprints, not retained
+live-object measurements. Image decode grows render RSS only about5.5–5.7MiB in
+this fixture; this does not cover image-heavy books. Snapshot-stage RSS growth
+about44MiB includes validation and copies, not a measured clone-only cost.
+
+Source-supported next candidate: subsetFonts serializes all paintCommands from
+the whole book into request.json, then starts Python separately for each used
+font. fontSubset.py loads the complete JSON before filtering commands by fontId
+and collecting glyph IDs. Thus full drawing objects overlap with serialization
+and Python's decoded objects. At subset-peaking samples, Python RSS is about
+95–104MiB while native shapers are about6MiB combined. This makes a compact
+font/glyph-ID handoff worth a separately scoped trial before changing wrapping.
+It does not prove all Python RSS is avoidable: fontTools and font data contribute.
+The writer also retains resolved glyph runs and serializes draw for fingerprint;
+its independent contribution and the layout's live-object retention remain
+unprofiled. Do not label allocated-but-unused heap/RSS a leak or promise a byte
+reduction. No optimization implemented in this measurement scope.
+
+Acceptance: all6PDFs have85pages and identical decompressed page drawing streams,
+page boxes, decoded font/image resources and annotations/destinations to accepted
+baseline. Thus wrap and positioning remain exact, beyond text-only comparisons.
+All jobs succeeded; second download410, empty output/render-temp paths, no OOM or
+remaining render/shaper child. Instrumentation-only checker and exact verifier
+PASS. Product regression suites not rerun because candidate remains unchanged;
+actual installed-package API jobs cover this discovery boundary.200ms sampling can
+miss brief peaks; boundary observations supplement it but are not allocation
+ownership or heap-retention proof.300–700pages and concurrent workers stay deferred.
+
+Evidence: ../flowdoc-service/artifacts/srs-ram-stages/ (summary.json,
+stage-summary.json, per-run stages.ndjson and measurement.json/PDF, original and
+instrumented modules, fontSubset-observed.py, setup/run/analyze/verification and
+instrumentation-check scripts, environment.json). Task Docker containers, networks,
+volumes, image and temporary credential removed; evidence retained. No worktree
+created or unrelated cleanup. Existing roadmap only; no map promotion.
