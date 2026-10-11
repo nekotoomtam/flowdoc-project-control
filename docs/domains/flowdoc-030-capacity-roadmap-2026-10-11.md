@@ -8,7 +8,8 @@ of capacity, production readiness, or authorization to publish a release.
 User requested the draft on 2026-10-11: start with RAM and concurrency, then
 a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
-preparation and one reference run. R1–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+preparation and one reference run, then R1A serial measurement. R1A has passed;
+R1B/R1C and R2–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -128,14 +129,14 @@ No output contains credentials. Keep service/database separation intact.
 
 ### R1A: One worker, sequential jobs
 
-- [ ] Run5 measured jobs serially in the same API instance after warm-up, fresh
+- [x] Run5 measured jobs serially in the same API instance after warm-up, fresh
   upload session per job. Keep the processor alive to reveal retained growth.
-- [ ] Measure idle before first job and30seconds after each terminal/download
+- [x] Measure idle before first job and30seconds after each terminal/download
   cleanup. If still declining, extend once to120seconds and report it.
-- [ ] Record peak and post-idle memory per job, leftover child processes,
+- [x] Record peak and post-idle memory per job, leftover child processes,
   output/temp/staging lifetime according to policy. Allocator retention alone
   is not proof of a leak; persistent upward trend is a follow-up question.
-- [ ] Report every sample, mean, sample SD, min/max and median. Five runs are
+- [x] Report every sample, mean, sample SD, min/max and median. Five runs are
   descriptive, not sufficient for a claimed p95/p99 or universal SLA.
 
 ### R1B: Concurrent callers using the existing queue
@@ -322,3 +323,69 @@ unchanged. R1B/R1C were not attempted. Next attempt requires fresh host headroom
 checks after build/start and before admission; do not lower the agreed reserve
 or silently rerun while near its boundary. Record the exact pre-admission
 memory value in the next harness before asserting its threshold.
+
+## 9. R1A authorized retry — PASS, serial scope only
+
+Owner requested a fresh RAM check and continuation if safe. Same discovery scope,
+product baselines, input hashes and container budgets; no runtime fix or version
+bump. Prior failed attempt retained in section8. This retry consumes the bounded
+retry allowance and completed one excluded warm-up plus5 measured jobs, with the
+same API process throughout those6jobs and a fresh upload set per job.
+
+Evidence: local ignored
+`flowdoc-service/artifacts/capacity-030/r1a-retry-20261011/`. Key files:
+manifest.json, host-memory-phases.json, host-samples.ndjson, samples.ndjson,
+results.json, summary.json, completion.json, cleanup.json, run.mjs,
+summarize.mjs and warmup/run-1…run-5 directories with individual reports/PDFs.
+Private content remains uncommitted. Installed package hashes equal R0 exactly.
+
+Live host guard was enabled across setup and all jobs; reuse of section8's
+synthetic Docker-stop proof is explicitly recorded. Free host RAM before build
+3629.57MiB, after build3579.55MiB, after DB start3490.71MiB, after API start
+3398.93MiB; before warm-up3380.13MiB. Lowest observed across the whole attempt
+2806.71MiB. Every pre-admission check exceeded1536MiB. No guard stop or OOM.
+These checkpoints show this attempt's changes; they do not explain the earlier
+attempt's much larger drop or attribute host allocations to a single process.
+
+| Run | DB worker seconds | Observed API cycle seconds | API sampled peak working set MiB | After30s idle MiB |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 13.588 | 14.375 | 432.18 | 199.50 |
+| 2 | 13.079 | 13.997 | 474.46 | 221.65 |
+| 3 | 15.324 | 16.389 | 464.52 | 223.14 |
+| 4 | 13.493 | 14.393 | 459.17 | 223.56 |
+| 5 | 13.621 | 14.388 | 454.86 | 223.75 |
+
+Worker mean13.821s, sample SD0.868s, median13.588s, range13.079–15.324s.
+Observed API cycle mean14.708s, sample SD0.954s, median14.388s,
+range13.997–16.389s. API cycle includes upload, polling, download and the
+client's repeat-download check; it is not pure renderer duration. Queue mean
+0.101985s from database timestamps. All raw samples and statistics retained.
+
+Peak working-set mean457.04MiB, sample SD15.71MiB, max474.46MiB. Sampled
+memory.current max488.22MiB; whole-container lifetime memory.peak516.43MiB
+spans warm-up and all jobs. These counters have different definitions and are
+not interchangeable. API cgroup includes the client and observer. DB counters
+remain separate. Container sampling max gap247.94ms versus200ms target;
+host sampling max gap1493ms includes the PowerShell/CIM collection overhead.
+
+Idle memory rose from warm-up166.22MiB to199.50/221.65MiB, then changed by only
+about0.61MiB across the last three measured endpoints223.14→223.75MiB. API RSS
+at those last endpoints was241.70/241.52/241.33MiB. This small sample is consistent
+with retention approaching a plateau, not proof of its cause or absence of a
+slow leak. No forced GC or restart; source uploads retain their normal expiry.
+All idle windows stayed30s: no measured decline exceeded the harness's1MiB
+last-window extension trigger. Longer-term retention remains outside this pass.
+
+Acceptance checks for all6PDFs:98pages; decoded drawing, resources, geometry
+and link destinations exactly match reference;1,457values/363details/396links
+and29group starts pass. Same4image-density warnings; no new warning class.
+All jobs succeeded; second downloads410; output/render-temp directories empty;
+no render/shaper/segmenter descendants remained after idle. Host and container
+guards stayed enabled. Task containers, volumes, networks, image and credentials
+removed after evidence collection. Both product checkouts and release refs are
+unchanged; no production-readiness, parallelism, throughput or SLA promotion.
+
+Decision: R1A complete. Next bounded work is R1B queue bursts1/2/4 with the
+existing serial processor, subject to a new host preflight; R1C independent
+parallel stacks remain later and require a fixed aggregate memory budget.
+Do not infer four-worker support by multiplying this single-worker result.
