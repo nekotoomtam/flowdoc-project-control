@@ -822,3 +822,89 @@ resource-summary.json, samples, scripts, PDF and rendered pages). Clean no-chang
 lane/branch removed. No product commit/version/default/release change. Items2–3
 now have one full successful trial and measured baseline under the explicitly
 extended test deadline; choosing default timeout/headroom remains a decision.
+
+### SRS layout draft — 2026-10-11
+
+Status: owner-agreed scope, draft for implementation discovery; no product code
+changes authorized by this record alone. Inline Project Control planning/prose
+maintenance, routine, execution IDs N/A. This existing checkpoint owns shared
+scope; Core owns engine behavior and Service owns package consumption/trials.
+Document/proof budget for this update: this section, agreement coverage and
+Project Control data validation only. No new agents, execution records or maps.
+
+#### Goal and references
+
+Match the reference SRS's elements and proportions approximately90% by owner
+visual judgment, not a computed similarity score. Do not require matching line
+breaks, page breaks or total page count. Use the previously supplied PDF and
+legacy generator sizing reference above, latest JSON attachment as input, and
+the successful srs-api-300 PDF as the current baseline. Keep current FlowDoc
+fonts; adjust size, weight and spacing rather than acquire the legacy font.
+Legacy pt values are starting references, not required replacements across font
+families. Use regular weight by default and bold only where emphasis is intended.
+
+#### Seven layout groups
+
+| Group | Intended work | Acceptance focus |
+| --- | --- | --- |
+| 1. Font and weight | Existing FlowDoc font family, regular default, selective emphasis | Overall visual density and hierarchy near reference; Thai marks remain legible |
+| 2. Text size and spacing | Body/title/heading sizes, line spacing, paragraph and heading gaps | Readability and proportional similarity without enforcing source line breaks |
+| 3. Page area | A4 portrait, body margins and start/end positions; configurable cover counting | Body remains inside its region; numbering mode consistent throughout book |
+| 4. Tables | Column proportions, cell spacing, borders, header appearance, icons and repeated headers | Readable continuation, no missing text, correct column boundaries |
+| 5. Cover and approval | Title/project metadata, version/author details, signature and stamp areas | Required elements present with similar placement and useful whitespace |
+| 6. Header and footer | Independent horizontal margins, banner, page fields, copyright/version, separator | Full-width header possible without changing body margins; no body overlap |
+| 7. Contents and images | Hierarchy/indentation, links and page labels, image size/clarity | Destinations and displayed page labels agree; image limitations explicit |
+
+Within every group distinguish template-only settings, engine capability gaps,
+and unresolved decisions. Inspect existing contracts before proposing new ones;
+prefer existing settings when sufficient. Do not change Core merely to style SRS.
+
+Table color is an owner-requested subtask in group4, subject to proportional
+implementation judgment: consider header fill, cell fill and border color only
+as needed for SRS. Reuse existing support; no full table theme system. Repeating
+the REQ identifier when its row continues to another page is desirable but
+explicitly deferrable. Current TOC level4-to-level3 mapping remains a known
+limitation to assess, not silent approval to redesign heading depth.
+
+#### Capability candidates, pending code discovery
+
+- Cover counting: template option for count-cover versus exclude-cover. SRS
+  chooses count-cover with no visible number on the cover; next page is2 and
+  total includes cover. Preserve existing exclude-cover behavior as the default
+  for unchanged templates. Contents page labels follow the selected numbering;
+  callers do not supply current/total fields through API.
+- Header/footer horizontal margins: inherit body margins or explicitly set
+  left/right, including zero. Header and footer can differ. SRS banner may span
+  page width while footer remains inset. Preserve vertical space reservation;
+  expanding horizontal area must not move body margins or cause overlap.
+- Line: horizontal standalone separator, color/thickness/width and before/after
+  spacing; default width follows its containing region. Intended placements:
+  body/header/footer. Keep table borders distinct. Vertical/diagonal/free-position
+  lines and unrelated nesting support are outside scope. Existing rendering
+  primitives may be reusable; public node/API shape is not yet decided.
+
+These candidates are requirements, not proof they are missing or implemented.
+Any engine additions need bounded contracts and backward compatibility checks.
+
+#### Sequence and proof
+
+First inspect existing capability and identify the narrow owner changes. Tune
+font/weight, text sizes, body width and table proportions before polishing cover,
+contents and bands, since they affect wrapping throughout the book. Implement
+necessary capability dependencies in the order revealed by discovery. Review
+representative pages with the owner, then full-book API output using the latest
+JSON: verify all requirements/headings, links/page labels, clipping/overlap and
+download cleanup, and record timing against the current baseline. Reuse stable
+checks; do not rerun a whole book for every minor styling edit when a focused
+sample resolves the question. Finish with one complete candidate verification.
+
+Use300s only as the agreed local trial allowance; production/default timeout
+remains undecided. No performance optimization,300–700-page/concurrency promise,
+DOCX/frontend work or release promotion in this layout scope. Low-resolution
+image warnings require review; do not claim that resizing recovers source detail.
+Completion is owner acceptance of the seven groups with recorded deferrals,
+plus full-data correctness; approximately90% does not excuse missing content.
+
+Design approach: challenge necessity and compare simpler alternatives before
+Architecture/DB/Contract additions; separate evidence, assumptions and decisions.
+Do not add process or agents merely to enforce that approach.
