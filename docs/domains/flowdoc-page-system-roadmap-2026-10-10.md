@@ -1102,3 +1102,18 @@ Owner visual acceptance pending. Artifacts hash-verified before clean temporary
 worktree/branch removal; isolated Docker DB/volume/network, images and temporary
 password removed. Fast-forwarded tested content unchanged; no duplicate checks.
 Next: owner review, then L4 horizontal Line and bounded table colors.
+
+#### L3 banner frame correction — 2026-10-11
+
+Owner observed the remaining white top gap and authorized matching the SRS
+banner frame to the image aspect ratio. The previous27mm frame centered a
+4144x480 image at210mm width, leaving letterbox space. Corrected the sample
+generator to calculate height from the loaded image dimensions:24.324324mm.
+This is template-only; no engine/API change or patch version increment.
+
+Corrected candidate at `../flowdoc-service/artifacts/srs-bands-l3-fit/page-bands.pdf`,
+with generator, template and `fit-verification.json`. PDF drawing matrix verifies
+left0, top gap below0.00001pt, full page width and unchanged image aspect ratio;
+five pages retained. Page3 rendered and visually inspected. These corrected
+files supersede the prior L3 candidate for owner review; copied older comparison
+logs remain historical. Temporary detached checkout/image removed; release unchanged.
