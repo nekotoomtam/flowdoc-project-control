@@ -785,3 +785,40 @@ lane/branch removed, release unchanged. Item3 has a failed-run timing baseline,
 not an end-to-end successful timing. Recommended next decision: one isolated
 longer-deadline diagnostic to measure completion before changing the default
 deadline or optimizing. Do not call item2 complete or proceed to layout acceptance.
+
+### SRS extended-deadline diagnostic — 2026-10-11
+
+Owner authorized one repeat with300000ms render deadline in an isolated test
+environment. Discovery-only inline Service trial at74fc8c7, routine, IDs N/A;
+no tracked product mutation. Reuse exact template/request/images from prior
+trial, measure completion and sampled container resources, then inspect PDF
+completeness/download cleanup if successful. Default120000ms remains unchanged.
+Isolated lane flowdoc-service-srs-diagnostic/codex/srs-diagnostic; evidence in
+ignored artifacts/srs-api-300. No additional optimization or layout changes.
+
+Diagnostic PASS under300s test configuration: full HTTP upload/job/download
+produced90 pages,240 unique requirements occurring exactly once,32 headings and
+all mapped paragraphs/details present by whitespace-insensitive extraction.
+Sampled page contact sheet1–7,45,89,90 visually inspected; no source-layout
+equivalence or all-page visual acceptance claimed.13 low-resolution image
+warnings remain. Download2611227 bytes, SHA256
+`dc566082a6e07102e4143e4069926d3d8f94ec20a3d1337570422d7c3ad76e4e`.
+
+Upload1129ms, admission400ms, DB queue107.356ms, DB running117233.936ms;
+observed resource preparation2801ms, rendering-to-complete114410ms, download107ms,
+total119187ms. Stage polling250ms; timings include local variation and do not
+isolate internal layout/shaping/subsetting/writing.21 container samples at roughly
+6–7s intervals, maximum observed527.1MiB and127.6% CPU (Docker convention, not
+percent of all20 CPUs). These are sampled maxima, not exact peaks or leak proof.
+One successful run after a timeout does not prove120s reliability, explain the
+variation, or establish production/concurrent performance. Increasing the test
+deadline did not establish a speed improvement.
+
+Second download410 as expected; output and actual render-temp directories empty.
+Upload expiry not waited out. Trial containers/networks/volumes/image and generated
+password env removed; ignored evidence hash-archived to
+`../flowdoc-service/artifacts/srs-api-300/` (api-result.json, verification.json,
+resource-summary.json, samples, scripts, PDF and rendered pages). Clean no-change
+lane/branch removed. No product commit/version/default/release change. Items2–3
+now have one full successful trial and measured baseline under the explicitly
+extended test deadline; choosing default timeout/headroom remains a decision.
