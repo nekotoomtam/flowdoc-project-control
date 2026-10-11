@@ -1322,3 +1322,49 @@ unchanged at1000px. Page5 visually reviewed with naturally wrapped descriptions.
 Generator/results/verification retained in the same ignored directory. Temporary
 clean checkout and Docker image removed. Packages0.2.6 and release unchanged.
 L6 remains full-data API/timing work; no full-book acceptance claimed here.
+
+#### L5 footer finishing — inline scope, 2026-10-11
+
+Owner approved finishing footer before L6. Core owns optional band text alignment
+and compact final page-field text; Service consumes the packed package and owns
+the SRS template adjustment. Routine inline implementation; execution IDs N/A.
+No separate room or registered round. Acceptance: natural Page N of Total spacing,
+whole-line centering above the rule, Copyright/Version below; 1–3 digit coverage,
+legacy defaults retained, no arbitrary XY positioning. Overflow must fail without
+changing already-computed pagination. No body/cell alignment expansion, full-book
+L6, release promotion, or custom fonts. Evidence budget: focused layout/contract
+checks, packed Linux consumer, affected Service persistence/API checks and an
+8-page visual sample. Reuse accepted Element sample/full request; update this
+record with results and retained artifacts only.
+
+Footer implementation delivered in Core `b8a7017` / Service `30e0644`, both dev
+packages0.2.7; fast-forwarded into codex/template-binding and
+codex/template-registry. Primary release checkouts remain c17f197 / edd9a7e.
+Optional band-only textAlign left/center/right and pageFieldLayout compact; the
+latter shapes the whole final label after page counting and reserves one line
+before pagination. Declared field width remains a capacity limit. Compact text
+that needs multiple lines fails; non-left page-field alignment requires compact
+mode. Omitted options preserve legacy output. Body/cell text remains unchanged.
+
+Proof: focused RED before implementation, then14 focused tests; packed Linux
+build445 tests passed plus isolated consumer checks. Service container build,
+vendor integrity and6 affected real-DB/API tests passed (including immutable
+published band settings). Public-engine sample8 pages, no warnings,5.718s for
+this render only; not a full-book timing claim. Separate restarted numbering
+fixture Page103of8 tests3-digit current alignment; its total8 is intentional.
+Unit cases also cover total240. All eight page rasters reviewed; no footer/body
+collision. New footer height causes natural table continuation changes on final
+three pages; first five body/header glyph sequences unchanged, all-page
+non-whitespace body/header glyph counts unchanged. Legacy template PDF remains
+byte-identical. Automated center/order checks passed for all seven body pages;
+link annotation counts unchanged (no new manual click acceptance claimed).
+
+Retained candidate and reproducible generator/checks:
+`../flowdoc-service/artifacts/srs-footer/footer.pdf`, footer-template.json,
+footer-sample-request.json, footer-full-request.json, generate.mjs, verify.py,
+verification.json, result.json, container/API logs and rasters. Core package
+proof archived at `../flowdoc-core/artifacts/worktree-archive/flowdoc-core-footer/1791711058663`.
+Archive copies hash-verified before deleting clean merged task worktrees and
+branches; task DB volume and Docker images removed. No release promotion.
+Owner visual review of this footer remains pending; use its template/full request
+for L6 only after review. Full-book API/timing remains deferred until discussion.
