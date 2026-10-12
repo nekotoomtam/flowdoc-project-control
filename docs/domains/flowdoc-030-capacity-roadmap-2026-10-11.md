@@ -10,7 +10,7 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is active; R2 parts1–2 passed; part3 and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is active; R2 parts1–3 passed; R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -769,3 +769,38 @@ do not reduce thresholds, stop unrelated applications or touch release.
 Documentation diff review and Project Control data check cover this update.
 No worktree or temporary infrastructure requires cleanup; prepared evidence stays
 ignored for continuation. Part3 and overall R2 remain incomplete.
+
+### R2 part3 resumed — PASS / R2 complete, 2026-10-12
+
+Owner requested fresh readiness check and continuation. Host free4536.53MiB and
+Docker29.8.2 passed preflight; prior blocked preflight retained as history.
+Service3798caa (runtime unchanged from6903ec1) and pinned Core0.2.13/input hashes
+recorded in `artifacts/capacity-030/r2-srs-20261012/manifest.json`. One cold API
+export, no warm-up or repeated benchmark. API1GiB/2CPU and DB256MiB/0.5CPU,
+swap disabled, host/container guards enabled; test-local internal network only.
+
+`results.json`, `summary.json`, raw host/cgroup samples and per-job checks prove:
+- 98 pages, exact decoded drawings/resources/geometry/link destinations match
+ reference;1,457values,363exact requirement details,396internal links and29
+ company/first-member page associations pass. Existing approved display-only
+ rocket substitution unchanged. No PDF/wrap regression detected by these checks.
+- worker12.116569s, queue0.100732s, HTTP job observation12.613877s; upload-through-
+ download/repeat-check12.971755s. Single observation, no new performance SLA.
+- sampled working-set peak389.54MiB; sampled memory.current401.13MiB; whole API
+ container lifetime peak423.96MiB;30s idle working set151.41MiB. API counters
+ include observer/client and exclude separate DB; counters are not interchangeable.
+ Host minimum free2351.37MiB; no OOM, host stop or container guard trigger.
+- same4image-density warnings, normal PDF download successful, second download410;
+ output/render-temp and native-child cleanup passed. Task container/volume/network/
+ image removed and compose credentials deleted. No source/candidate changes.
+
+Client documentation was completed in Service3798caa before the blocked attempt:
+`docs/usage.md` explains development-only capacity, QUEUE_FULL, readiness failure,
+interrupted jobs, replay semantics, polling/download and ambiguous POST behavior.
+Together with parts1–2's focused passing tests, this closes R2 acceptance within
+local serial-processor scope. Four-render exploration remains explicitly deferred,
+not passed. Ten-job throughput and six-caller UX are not proven by this one export.
+
+Project Control diff/data checks cover this result; release refs, package versions
+and Core unchanged. No new worktree/branch or map promotion. Next is R3 small local
+API test page, with six near-simultaneous callers as agreed; not started here.
