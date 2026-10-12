@@ -741,3 +741,31 @@ Control diff/data checks cover this record; no map or release promotion.
 Next: R2 part3, one real98-page SRS API regression with RAM guard, exact PDF/wrap
 parity and client-facing closeout. Not run in part2; do not mark all R2 complete.
 Four-render and R3 six-caller trials retain their previously agreed deferral.
+
+### R2 part3 started — host preflight blocked, 2026-10-12
+
+Owner authorized part3: one98-page real API SRS regression and client-facing
+closeout, no release. Reused unchanged Core and source corpus; Service runtime
+base6903ec1. One cold job only, API1GiB/2CPU and DB256MiB/0.5CPU with prior RAM
+guards; no benchmark sweep. Test-local internal-only network avoids exhausted
+Docker address pools for this uploaded-image corpus. Existing files/hashes,
+PDF decoded parity/content/links, warnings, download lifetime and cleanup checks
+remain the acceptance criteria. Execution IDs N/A, inline Evidence Reviewer.
+
+Updated repository-owned Thai usage guide with development-only outstanding-job
+limit, QUEUE_FULL versus UNAVAILABLE/UPLOAD_BUSY, interrupted/failed jobs,
+monitoring/download lifecycle and ambiguous POST retry caveats. No runtime change.
+Prepared ignored harness at `flowdoc-service/artifacts/capacity-030/r2-srs-20261012/`;
+syntax check passed. Guard readiness uses bounded nonempty samples, reused from
+R1C; no warm-up/repeated measurements,30s post-job observation planned.
+
+Preflight observed free RAM1244.38,1474.80 and1505.21MiB, all below the agreed
+1536MiB start reserve. Docker responds, but no task container was created and no
+job submitted. `preflight.json` records BLOCKED. Do not mark PDF parity, runtime
+measurement or R2 completion passed. Existing R2 part1/2 results remain valid
+within their own scope. Resume with a fresh host preflight after memory is freed;
+do not reduce thresholds, stop unrelated applications or touch release.
+
+Documentation diff review and Project Control data check cover this update.
+No worktree or temporary infrastructure requires cleanup; prepared evidence stays
+ignored for continuation. Part3 and overall R2 remain incomplete.
