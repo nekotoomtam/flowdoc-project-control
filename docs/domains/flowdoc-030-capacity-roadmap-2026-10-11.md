@@ -10,7 +10,7 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is active; R2 parts1–3 passed; R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is complete; R2 parts1–3 and R3 passed; R4–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -804,3 +804,84 @@ not passed. Ten-job throughput and six-caller UX are not proven by this one expo
 Project Control diff/data checks cover this result; release refs, package versions
 and Core unchanged. No new worktree/branch or map promotion. Next is R3 small local
 API test page, with six near-simultaneous callers as agreed; not started here.
+
+### R3 kickoff — local API caller, 2026-10-12
+
+Owner authorized R3. Inline Product Implementation Agent, Service owner; medium
+bounded work, routine risk, execution IDs N/A. Existing public upload/job flow
+is the interface; no Core, DB, runtime route, version or release change. Extend
+the example caller into a local page under `examples/api-client`, with focused
+tests and repository-owned usage instructions. Worktree `flowdoc-service-r3-client`,
+branch `codex/r3-api-client`, base3798caa. Single-room, no dispatch/return ceremony.
+
+Read JSON and optional PNG/JPEG files, read public Contract, bind only image
+schema fields, pin version, prepare independent uploads serially, then submit
+1/2/6 requests together. Show actual per-job state, API warnings/errors, resumable
+GET monitoring and explicit download. No synthetic ETA, editor, automatic POST
+retry, browser persistence or custom Core tree. A loopback-only example helper
+serves explicit assets and streams allowlisted API calls to a fixed loopback
+target; this avoids production CORS/static-route changes and adds no dependency.
+
+Proof budget: focused client/transport tests, existing TypeScript build, one
+browser six-request SRS trial with existing guards, PDF parity on downloaded
+outputs, and bounded failure/lifetime checks. Reuse unchanged R2 recovery and
+capacity evidence; do not repeat worker experiments. UI and API evidence may
+complement one another; distinguish simulated failures from live API results.
+Known risks: ambiguous POST connection failure, one-use output, expired uploads,
+private corpus accidentally committed. Preserve source data; approved rocket
+display substitution stays in test input only. Document budget: this record and
+existing Service usage guide only. Stop or report if RAM guards fire. R4 and
+release remain outside authorization.
+
+### R3 result — PASS, 2026-10-12
+
+Service `dd72849` adds the dependency-free example client/helper and7focused
+tests; `docs/usage.md` documents startup, payload/image mapping, independent
+uploads, monitoring and file lifetime. Core, API routes, DB and package versions
+unchanged. Browser reads public Contract and uses public HTTP only; no internal
+Core imports or DB access in client/helper. The test harness alone sets up the
+isolated DB, collects timing and seeds explicitly labelled failure fixtures.
+
+Acceptance coverage:
+- Live browser selected real SRS JSON plus13images, prepared6independent upload
+  sessions serially, then submitted6requests together. Six distinct jobs admitted
+  within1.250s, all succeeded with98pages and the same4accepted image warnings.
+  Browser displayed queued/running/rendering/complete and explicit PDF downloads.
+- All6browser-downloaded files pass exact decoded drawings/resources/geometry/
+  link parity,1,457values,363requirement details,396internal links and29group
+  associations. Download replay returns410OUTPUT_GONE for all6. Existing approved
+  display-only rocket substitution retained; original source preserved separately.
+- Browser shows real422TYPE_MISMATCH/MISSING_REQUIRED with paths,410UPLOAD_GONE
+  for a test-expired session, seeded failed/PROCESS_INTERRUPTED instructions, and
+  successful-but-consumed output with no download button. Expiry/failure fixtures
+  were seeded only in isolated DB; this is UI/API feedback evidence, not another
+  process-recovery claim. R2's actual recovery tests remain the supporting proof.
+- Client/transport7tests pass; TypeScript build, module syntax and diff checks
+  pass. Read-only review of3798caa..dd72849 found no actionable issue within
+  local-development scope. No heavy/redundant suite or worker experiment added.
+
+Measured one burst, not an SLA: first admission to last completion79.617s;
+worker mean13.139s (12.005–15.343s), maximum queue wait66.363s. Sampled API
+working-set peak409.53MiB, memory.current peak441.92MiB, lifetime peak460.20MiB;
+last observed idle working set145.24MiB. API cgroup includes observer and excludes
+browser/helper and separate DB; these are not direct comparisons with R1's
+in-container client measurements. Host minimum free1237.33MiB, no guard trigger
+or OOM. One serial processor remains the supported choice for this round.
+
+Evidence preserved under ignored Service
+`artifacts/capacity-030/r3-client-20261012-b/`: browser queue/error screenshots,
+browser jobs/download paths, six PDFs/check logs, pdf-acceptance.json, job-timings.log,
+summary.json, raw RAM samples, test/build logs and cleanup.json. Initial attempt
+`r3-client-20261012/` failed setup: internal-only/published-port trial returned
+`invalid IP:0`; no jobs submitted. Replacement isolated network and explicit
+loopback4353 worked. A verification-harness GET after synchronous PDF checks
+encountered ECONNRESET; retained passing PDF checks and repeated read-only GET
+with fresh connections passed. No unsupported runtime remedy or POST replay.
+
+Copied evidence with hash verification before cleanup. Both trial stacks/images/
+volumes/networks and credentials removed; local helper/browser stopped. Candidate
+fast-forwarded unchanged into `codex/template-registry`; tests reused for identical
+content. Clean merged task worktree/branch removed. Core and both release refs
+remain unchanged; no push, version bump, map promotion or synthetic execution IDs.
+Project Control diff/data checks cover this status update. Next: plan R4 progressive
+large-document trial; no300–700-page capacity claim and no R4 execution yet.
