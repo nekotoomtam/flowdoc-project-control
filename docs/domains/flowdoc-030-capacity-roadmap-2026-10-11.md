@@ -10,7 +10,7 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is active; R2 part1 passed, parts2–3 and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is active; R2 parts1–2 passed; part3 and R3–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -696,3 +696,48 @@ Remaining: part2 failure/restart/expiry gap verification, then part3 real SRS
 parity and client-facing integration closeout. Existing focused failure tests
 passing here do not mark the additional part2 recovery scope complete. Keep
 serial processing and defer four-render exploration; no automatic continuation.
+
+### R2 part2 — PASS on pinned Linux runtime, 2026-10-12
+
+Owner authorized failure/recovery verification with bounded repairs only if
+needed, no release. Single-room scope/IDs N/A; Service owns tests, Evidence
+Reviewer role, routine risk. Added recovery coverage at Service commit
+`6903ec188315f4082a64f34eae6256f37bda7382`, unchanged fast-forward into development.
+No runtime source, migration, Core, package version or release ref changed.
+
+New `tests/recovery.test.mjs` and `tests/fixtures/recovery-worker.mjs` cover:
+- actual processor subprocess SIGKILL after a rendering-stage barrier, then a new
+  processor: interrupted job becomes failed/PROCESS_INTERRUPTED with failed
+  processing stage and no output; the queued job succeeds with a real PDF;
+- claimed upload bytes survive a two-hour simulated expiry while jobs are
+  running/queued and startup upload recovery; this uses claimed source fixtures,
+  not a new image-decoding test;
+- actual renderer forced timeout with a1ms test-only deadline, followed by a
+  successful job using the normal deadline; no failed-job output metadata or
+  renderer temporary files remain;
+- actual termination of this test's PostgreSQL coordinator backend: readiness
+  becomes false, health and admission return503/UNAVAILABLE, job count unchanged.
+
+Build and syntax/diff checks passed. Pinned Linux selected7files/21tests passed,
+including existing serial failure isolation, write/metadata failure, bounded
+renderer output, upload expiry, output lifecycle, HTTP and admission tests.
+No runtime defect was demonstrated, so no speculative fix or automatic retry
+was added. Existing supported single-processor behavior remains unchanged.
+
+Initial Docker startup was unavailable; started Docker Desktop through its CLI.
+The preliminary Windows-host admission test then exceeded its5s test deadline;
+that run is retained as failed, not counted as acceptance. The same admission
+suite and the new recovery suite passed on pinned Linux. Windows-host timing
+reliability remains unproven; no application timeout was raised. Linux is the
+runtime scope of this acceptance. No machine-wide outage, full Docker-daemon
+crash or universal recovery claim follows from these focused process tests.
+
+Evidence: ignored `flowdoc-service/artifacts/r2-recovery/` contains test logs,
+Linux build/results, harness and cleanup. Task DB/container/image and credentials
+removed. Evidence copied with hashes checked before removing clean merged task
+worktree/branch. Passing proof reused after identical fast-forward. Project
+Control diff/data checks cover this record; no map or release promotion.
+
+Next: R2 part3, one real98-page SRS API regression with RAM guard, exact PDF/wrap
+parity and client-facing closeout. Not run in part2; do not mark all R2 complete.
+Four-render and R3 six-caller trials retain their previously agreed deferral.
