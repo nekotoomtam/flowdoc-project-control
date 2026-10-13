@@ -10,7 +10,8 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is complete; R2 parts1–3 and R3 passed; R4–R5 remain pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is complete; R2 parts1–3 and R3 passed; R4 has one passing synthetic292-page trial,
+with human review and larger targets pending; R5 remains pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -988,3 +989,58 @@ All task containers, network, volumes, image and credentials removed. Product
 repos clean, versions and release refs unchanged. No render/wrap behavior changed;
 no R4 large-document execution. Project Control diff/data checks cover this
 result. Stop at this evidence; discuss the next bounded investigation with owner.
+
+### R4 approximately300-page kickoff — 2026-10-13
+
+Owner authorized one synthetic approximately300-page trial, existing RAM guards,
+full content verification and no release change. Inline discovery/Evidence
+Reviewer; Service owns ignored test harness, Core unchanged. Execution IDs N/A.
+Scope is one cold job with unchanged default limits;500/700-page trials and
+optimizations are not authorized here. Stop on memory guards or bounded rejection.
+
+Service `artifacts/capacity-030/r4-300-20261013/` expands the existing introduction
+and body threefold:1,089requirement rows,585unique heading anchors,87company
+groups. Unique requirement markers/codes and company labels distinguish copies;
+original varied prose/images/tables retained, original input unchanged. Payload
+906395bytes before fresh upload binding. Synthetic source provenance and expected
+counts retained in `expected.json`; page count is measured, not assumed.
+Acceptance checks all mapped text, unique markers and detail order, valid links,
+company/first-member page associations, file lifetime and cleanup. Reuse prior
+unchanged-runtime wrap evidence; this expanded document has no exact drawing
+baseline. Human review remains separate. Proof budget: one guarded API job and
+bounded output inspection; this existing roadmap is the only document update.
+
+### R4 first synthetic trial — automated PASS, actual292pages, 2026-10-13
+
+One cold API job with unchanged Service `dd72849`, Core `e889393`, default runtime
+limits and serial processor produced292pages (6,360,474bytes). Worker37.449878s,
+queue0.101410s, client-observed job completion38.50s. Sampled API cgroup peak
+working set659.96 MiB, current675.41 MiB; host minimum free2403.48 MiB.
+No guard trigger/OOM; retained1 GiB API limit,2CPU and separate256 MiB DB.
+Working set includes in-container client/observer and excludes DB; not a direct
+comparison to browser R3 and not a production or repeated-benchmark claim.
+
+Verification covers4,371mapped text values with none missing; all1,089complete
+uniquely marked requirement details present exactly once and in source order;
+1,176internal links target existing pages;87company labels remain with their
+first member. Four expected IMAGE_LOW_RESOLUTION warnings only. Download replay
+410, output/temp cleanup and absence of remaining render/shaper children pass.
+Visual samples100and292show readable table continuation, headings/icons and
+footer without evident clipping; this is not full-book human visual acceptance.
+Human review remains pending, as do500/700-page targets; no automatic escalation.
+
+The first verifier failed a test-harness assumption: whitespace normalization
+joined marker `MOCK-1-363-6` with detail starting `1. Test Case Summary`, so a
+negative-digit marker boundary rejected a present item. Preserved original
+verifier/failure, corrected only ignored `verify-v2.py` to compare each complete
+marked detail exactly once plus order, and reran affected PDF checks on the same
+file. No product repair or repeat export. Original runner failure is retained;
+`summary.json` explicitly records recovered automated acceptance and limitations.
+
+Evidence: ignored Service `artifacts/capacity-030/r4-300-20261013/` includes mock
+generator/expected counts, source hashes, raw RAM samples, timing, PDF/text/group
+results, corrected verifier, sampled page images, summary and evidence hashes.
+All trial containers/volumes/network/image and credentials removed; inventory
+confirms cleanup. Product repos remain clean; release/version refs unchanged.
+Project Control diff/data checks cover this record. Next: owner review of the
+292-page trial and decision on next size or a bounded RAM investigation.
