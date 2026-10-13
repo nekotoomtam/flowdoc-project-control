@@ -10,8 +10,9 @@ a small API client and large documents; **do not touch release**.
 Initial approval covered documentation only; owner subsequently authorized R0
 preparation and one reference run, then R1A and R1B measurements. R1A/R1B passed;
 R1C two-render trial passed; four-render exploration is owner-deferred. R2 planning
-is complete; R2 parts1–3 and R3 passed; R4 has one passing synthetic292-page trial,
-with human review and larger targets pending; R5 remains pending. Work/Phase/Checklist execution IDs: N/A (single-room,
+is complete; R2 parts1–3 and R3 passed; R4 has passing synthetic292/483-page trials,
+with292-page owner review accepted and483-page human review/700-page target
+pending; R5 remains pending. Work/Phase/Checklist execution IDs: N/A (single-room,
 unregistered planning); R0–R5 below are local roadmap labels, not registry IDs.
 
 Goal: establish a measured operating envelope for the existing PDF service,
@@ -1044,3 +1045,46 @@ All trial containers/volumes/network/image and credentials removed; inventory
 confirms cleanup. Product repos remain clean; release/version refs unchanged.
 Project Control diff/data checks cover this record. Next: owner review of the
 292-page trial and decision on next size or a bounded RAM investigation.
+
+### R4 approximately500-page kickoff — 2026-10-13
+
+Owner reviewed292-page output and accepted its format, then authorized one
+approximately500-page mock with unchanged RAM guards/full data checks and no
+release change. Same inline discovery role, owners and proof budget;700pages
+not authorized. New ignored Service folder `artifacts/capacity-030/r4-500-20261013/`
+uses five corpus copies:1,815requirement rows,975unique anchors,145company groups;
+payload1,505,827bytes before upload binding. Reuses corrected full-detail
+uniqueness/order verifier from292-page trial. Existing1 GiB API memory cap,
+85% sustained container stop threshold, host1536 MiB admission/1024 MiB stop
+guard and default120s render timeout remain unchanged. Record a guarded stop or
+default-limit rejection as a boundary; do not silently increase limits.
+
+### R4 second synthetic trial — automated PASS, actual483pages, 2026-10-13
+
+Five-copy mock produced483pages (10,031,736bytes) via one cold API job. Worker
+62.496297s, queue0.206950s, client-observed completion63.98s. API cgroup peak
+working set871.44 MiB, current874.89 MiB; last idle working set221.72 MiB.
+Host minimum free2194.25 MiB. No OOM or guard stop; current briefly exceeded
+85% of1 GiB but not for the three consecutive samples required to stop.
+This margin is narrow: recommend pause before700pages and discuss capacity or
+memory work. A successful single483-page job is not a safe universal500-page
+limit; document shape, images and input size affect resource use.
+
+All7,285mapped text values found. All1,815complete uniquely marked details occur
+exactly once and in source order;1,956internal links point to existing pages;
+145company/first-member associations pass. Four known low-resolution warnings,
+download replay410, empty output/render temporary directories, and no remaining
+render/shaper children pass. Visual samples250/483show readable table
+continuation and footer; final page contains the remaining last-row text rather
+than a blank page. Owner visual review still pending. Corrected prior full-detail
+verifier reused; no runtime repair, limit changes or extra export performed.
+
+Evidence under ignored Service `artifacts/capacity-030/r4-500-20261013/`: generator,
+expected counts/provenance, raw RAM samples, timing, verification logs, PDF,
+sample images, `summary.json`, `guard-margin.json` and evidence hashes. Same
+candidate/package identities as292-page trial. Cgroup includes client/observer,
+excludes DB; single synthetic trial, no exact expanded-document drawing baseline.
+Task containers/network/volumes/image and credentials removed and inventory
+confirmed. Product repos clean, versions/release unchanged. Project Control
+diff/data checks cover the record.700pages remains unexecuted and requires
+owner decision; do not automatically expand or raise the memory ceiling.
