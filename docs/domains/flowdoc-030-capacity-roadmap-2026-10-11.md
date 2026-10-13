@@ -1574,3 +1574,80 @@ networks, volumes, images and generated credentials were removed. The clean
 integrated temporary worktree and branch were removed; primary Service is clean.
 Project Control diff/data checks cover this record. Acceptance and affected-area
 coverage pass. No API/layout/limit/release/map changes or remote push; stop here.
+
+### Owner pause and 0.2.14 release preparation — 2026-10-13
+
+Owner paused further memory investigation and requested current manuals plus
+promotion into `release`. No additional optimization or repeated capacity
+comparison is in scope. New single-room release preparation, Core/Service owners,
+Product Implementation Agent and Cross-Repo Boundary Reviewer, medium/routine;
+execution IDs N/A. Current development bases Core `bb6e21c` and Service `62583e2`;
+previous local release tips Core `e63f0c4`, Service `4bc1b84`, both0.2.13.
+
+Prepare0.2.14 in isolated `flowdoc-core-release-0214` and
+`flowdoc-service-release-0214`. Update existing READMEs, Thai template/usage
+guides, package versions/locks, Service image defaults and exact Core vendor
+identity. Manuals distinguish included local API client/queue/failure behavior
+from older historical sections, explain the memory fix and measured limits,
+and preserve upgrade data/volumes and published template versions. No new
+migration or runtime source change. Existing guides retain owner Authority
+Boundaries; no new shared document or map promotion.
+
+Use the accepted Core runtime archive, verify fresh compiled dist equality, and
+replace only package metadata/README for0.2.14 while preserving resource bytes
+and executable modes. Proof: Core build/suite, guide meaning/link review,
+Linux packed Service build/install/all tests, fresh98-page PDF parity/content/
+links/lifetime, and prior483-page evidence by unchanged runtime identity.
+Record exact source/tree/package identities. After acceptance, fast-forward
+development branches; create one release snapshot each parented by its previous
+release and annotated `v0.2.14`, with tree equality checked. Existing release
+history/tags remain immutable; local promotion does not deploy or publish images.
+Evidence stays in existing ignored Core/Service `artifacts/release-0214/`;
+document budget this record. Clean only current-round resources after preservation.
+
+### 0.2.14 manuals and local release result — 2026-10-13
+
+PASS. Core development `a330011c7e2cedfa0cb840cbe75310537892daaa` and
+Service development `d071cbfb5cb7ca0689abe8b9039f7069ee15f17f` contain the
+updated existing README/template/usage guides and release metadata. Core and
+Service are version0.2.14; Service pins `vendor/flowdoc-core-0.2.14.tgz`, SHA256
+`dadd33fea7c4091fa67f58662746245718f71c8a0a9ef00644a40c5f5e2cf7f2`.
+No runtime source, migrations, template/API contract or limits changed in this
+release-preparation step. Further memory optimization is paused by the owner.
+
+Local release snapshots, each with annotated `v0.2.14`:
+
+| Repository | Release commit | Previous release parent |
+| --- | --- | --- |
+| Core | `ce6ff2802a5984ed90af26547f5168f22fc257c8` | `e63f0c45bfd8626ad3ff985f6673df6b21580613` |
+| Service | `4de27a5fa38d6561d62066f86de3f16e488acf29` | `4bc1b845e6d009ba199b2cfee3a7fb8136ca6aaa` |
+
+Release trees equal the tested development candidates exactly; prior release
+parents and `v0.2.13` tags are unchanged. Development branches were fast-forwarded
+without conflicts. This is local promotion only: no remote push, deployed
+service, registry image publication or package-registry publication.
+
+Acceptance coverage: Core fresh build and499tests pass; all190Service tests
+pass in a fresh isolated Linux packed consumer with PostgreSQL and no source
+mounts. Installed Core hashes equal the verified0.2.14 archive. Only archive
+package metadata/README differ from the accepted prior package; compiled dist,
+runtime/resources/licenses and executable modes remain identical. Primary
+installs/builds/vendor checks and installed Core identities also pass.
+All30guide links and the four retained Authority Boundaries pass review.
+
+Fresh98-page API PDF passes exact decoded drawings/resources/page geometry/
+links against the reference, all1,457values,363details,396links and29company
+associations. Expected four image warnings, replay410, output/temp cleanup and
+renderer/shaper exit pass; no OOM or guard stop. Prior483-page evidence is reused
+by unchanged runtime identity; no new483-page trial or RAM comparison is claimed.
+The reused client has a hardcoded0.2.13 result label and its raw manifest records
+the pre-commit base; preserve those raw records with the explicit version/source
+attribution in `98-pages/version-attribution.json`, not as API-reported versions.
+
+Evidence: Core/Service ignored `artifacts/release-0214/` holds package proof,
+build/test/identity logs, fresh PDF checks, release identities, closeout and
+SHA256 inventories. All current-round test/API containers, networks, volumes,
+images and generated credentials were removed; clean integrated temporary
+worktrees/branches were removed. Primary Core/Service checkouts are clean.
+Project Control diff/data checks cover this existing record; no maps promoted.
+Acceptance and affected-area coverage pass; stop after closing this record.
