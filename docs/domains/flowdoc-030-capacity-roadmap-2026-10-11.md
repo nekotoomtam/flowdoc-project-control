@@ -1321,3 +1321,65 @@ Acceptance and scoped impact coverage pass. Remaining limits: one run per
 condition, no production/concurrency guarantee, no700-page execution and no
 new Core optimization. Stop here; any later Core/writer work needs its own
 bounded reason and comparable measurements.
+
+### Granular memory diagnosis — 2026-10-13
+
+Owner requested splitting the pipeline into smaller measured stages to locate
+the pressure before deciding on a storage redesign. Single-room Evidence
+Reviewer, Service/Core ownership, execution IDs N/A, routine risk. Bounded
+discovery only: one cold98-page job, observer copies in ignored artifacts and
+this existing record; no product edit,483-page trial, heap snapshot, forced GC,
+dependency or limit change. Service remains `b1ef18e`, Core remains `e889393`.
+
+Seven compiled observer copies cover API composition/images, child input
+read/parse/resources, Core validation/snapshots/layout/finishing, table
+measurement/pagination, text-cache counters and PDF writer substeps. Original
+source hashes match the fresh pinned Linux image; reversing observer edits
+restores each original. Existing host/container guards remain unchanged.
+Evidence is Service ignored `artifacts/capacity-030/granular-20261013/`, including
+preparation/source checks, raw samples/stages, summary, table phases, output
+checks and SHA256 inventory. `analysis.log` is a convenience copy excluded from
+that inventory because it is written while analysis runs.
+
+| Boundary in the observed98-page run | Observed memory change | Interpretation |
+| --- | --- | --- |
+| Core document validation | Container235.80→287.18MiB; child heap14.50→30.40MiB | Pressure is already present before document copying; inspect validation allocations separately |
+| Core document copy | Container287.43→285.03MiB; child heap30.43→26.66MiB | Collection overlaps the interval; a negative delta does not mean copying is free |
+| Layout | Child heap27.36→62.24MiB | Retained draw data and text processing deserve separate lifetime investigation |
+| Writer glyph mapping | Child heap59.98→80.40MiB | Additional resolved glyph records are a concrete allocation candidate |
+| Whole-draw JSON for fingerprint | Container347.48→378.54MiB; child heap80.42→103.61MiB | Creates12,202,211UTF-8 bytes of text before hashing; strongest immediate writer candidate |
+| Final PDF buffer concatenation | External12.91→15.37MiB | Final PDF2,584,681bytes; smaller observed increment than draw serialization |
+
+Highest observed working set378.59MiB occurs at page-content start immediately
+after whole-draw serialization; current peak390.10MiB. These include fine
+boundary snapshots as well as periodic samples and cannot be compared directly
+with the earlier338.02MiB periodic peak as a regression. This is container
+pressure, not exclusive ownership by the marked function. Heap deltas are
+boundary observations affected by collection, not retained sizes or guaranteed
+savings. External includes ArrayBuffers; counters must not be added together.
+
+Timing is materially perturbed: worker30.827936s, layout26.006896s, versus the
+earlier less-instrumented12.435588s worker. The numerous synchronous boundary
+log writes are inside measured intervals. Table measurement10.275932s and
+pagination4.709842s each cover200calls; these are nested in layout and are not
+clean production timings. Do not rank true CPU cost or claim a slowdown from
+this run. Text-cache counters show5,598hits/15,313misses and a last snapshot of
+5,195entries with33,549,156bytes of existing estimated UTF-16 payload accounting.
+That estimate excludes object overhead and does not prove the cache remains
+live afterward. Cache load timers also include serialization. Parent input
+stringify/stdout concatenation remain inside the inclusive render interval.
+
+Output acceptance PASS:98pages exactly match reference decoded drawing,
+resources, geometry and links; all1,457values,363details,396link destinations and
+29company associations pass. Expected image warnings, replay410, empty output
+and temporary folders, no remaining renderer/shaper children, no OOM/guard stop
+and trial cleanup pass. Minimum sampled host reserve2151.61MiB. Product
+checkouts remain clean and unchanged; no new product test-suite pass is claimed.
+
+Scoped diagnostic acceptance is complete. Recommended next bounded experiment:
+inspect replacing whole-draw fingerprint serialization with incremental hashing
+that preserves the fingerprint contract, then compare one unchanged98-page
+workload with lightweight equivalent observation and exact output checks.
+Validation and resolved-glyph lifetime are separate later candidates. Actual
+savings and483-page attribution remain unproven; no storage redesign or
+whole-system streaming is authorized or required by these observations alone.
