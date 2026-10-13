@@ -918,3 +918,25 @@ be checked again after startup against the existing1536 MiB threshold. Do not
 lower guards. Next: verify container sources, run one guarded instrumented job,
 check exact PDF parity, then analyze stage samples. No new RAM result, R4 start,
 release change, or capacity claim follows from this preparation.
+
+### Pre-R4 live attempt — prerequisite blocked, 2026-10-13
+
+After owner opened Docker and authorized conditional execution, Docker29.8.2
+was available. Host reserve was2160 MiB before build,1854 MiB after build,
+1732 MiB after DB startup,1604 MiB after API startup, and1518 MiB immediately
+before the job. The existing1536 MiB start threshold stopped the trial before
+submission. Zero document jobs completed or submitted; no stage RAM result or
+PDF parity result exists for this attempt. This is a host prerequisite stop,
+not a document-engine failure or a capacity conclusion. Do not lower the guard.
+
+Fresh pinned image source hashes match all three prepared originals. Installed
+Core identity check passes with only the expected observation copy substituted.
+The ignored trial folder now also contains adapted setup/run harnesses,
+`original-source-check.json`, `host-memory-phases.json`, failure and cleanup
+records, and a prepared analyzer (not validated against live stage data yet).
+Task containers, volumes, network, image and credential file were removed;
+container inventory confirms none of this trial remains. Product repos remain
+clean and release unchanged. Next attempt needs additional host reserve and a
+fresh output folder preserving this stopped attempt; rerun the same one-job
+measurement and PDF checks once prerequisites pass. Project Control diff/data
+checks cover this status-only update.
