@@ -1088,3 +1088,119 @@ Task containers/network/volumes/image and credentials removed and inventory
 confirmed. Product repos clean, versions/release unchanged. Project Control
 diff/data checks cover the record.700pages remains unexecuted and requires
 owner decision; do not automatically expand or raise the memory ceiling.
+
+### Post-R4 memory discovery — 2026-10-13
+
+Owner requested follow-up inspection of four candidates: API/render duplication,
+Core copies, retained layout state, and PDF output buffers. Single-room discovery;
+role Evidence Reviewer / Cross-Repo Boundary Reviewer. Service owns transport,
+image preparation and storage; Core owns validation, layout and PDF assembly.
+Work Size medium, Risk Tier routine; execution IDs N/A. Use this request and
+existing roadmap as authority, not another room's closed execution context.
+Current generated snapshot was inspected but describes the older frontend
+roadmap; the bounded export request and this current canonical record resolve
+this scope. No snapshot or unrelated Work correction is included.
+
+Acceptance: trace all four lifetimes to current source, distinguish necessary
+copies from candidates, reuse original measurements with their limitations,
+and identify a bounded next change with its proof requirements. Proof budget:
+source inspection, one offline payload-size probe and existing raw-stage
+analysis; no new PDF job, capacity escalation or runtime benchmark. Document
+budget: this existing roadmap only. No product implementation, API change,
+streaming redesign, release/version change or map promotion in this discovery.
+The current chat handles inspection inline; no model override or registered
+WORK model decision is claimed.
+
+Identity: clean Service `dd728496451c650f1cfa6797bb5a293acaa7fc2f`, Core
+`e88939344861b5f8987ce09f44edb3c47b1b5b70`, same as the483-page trial. Vendor
+Core0.2.13 SHA256 remains
+`bf997cdb09b9606c5e67e3e50e8cf333c1db90f0cf7029e0fb87e577d5d4238c`.
+Local Service `node_modules/@flowdoc/core` is stale0.1.14: the first offline
+template probe correctly rejected nodeModel17. No dependency repair performed.
+The successful probe imported the pinned vendor archive extracted under ignored
+`flowdoc-service/artifacts/capacity-030/memory-discovery-20261013/`; its
+`inspect.mjs` and `payload-summary.json` retain reproducible sizing, input hashes
+and limitations. This local dependency discrepancy does not invalidate the
+previous pinned-container trial; future local checks must select the right package.
+
+1. **API/render duplication confirmed, saving unknown.** Service
+   `src/jobs/processor.ts` retains job inputs while composing and awaiting render;
+   `src/images/job.ts:prepareJobImages` clones the composed document to rewrite
+   image resource IDs. `src/jobs/render.ts` serializes template, prepared input
+   and the prepared-image document together. `render-child.ts` validates the
+   template but, when `imageInput` exists, renders its document without consuming
+   prepared input for composition. The standard processor always supplies that
+   document, including the image-free path. Child input also passes through a
+   chunk array, `Buffer.concat`, UTF-8 text and parsed objects; `Buffer.from(chunk)`
+   explicitly copies each incoming chunk. Exact live retention requires measurement;
+   lexical scope alone does not establish garbage-collector reachability.
+   The offline483-page source contains27,270nodes and45,132source-map entries.
+   Its document JSON is16,892,228bytes; template75,608bytes and prepared input
+   1,097,536bytes. Current-shaped envelope18,065,436bytes versus a hypothetical
+   document-only envelope16,892,268bytes removes1,173,168bytes (6.49%). The probe
+   uses an empty image-path map and unrebound source IDs; it measures envelope
+   duplication only, not a render-ready payload or RAM reduction.
+
+2. **Core snapshots are intentional isolation.** In
+   `src/pdf/createPdfEngine.ts`, validation precedes `structuredClone(input)`;
+   `imageResources.ts` copies exact image byte views before the first await.
+   The public caller can mutate its inputs after invocation; removing this
+   isolation would change the contract. `tests/pdf/images.test.ts` already
+   specifies detached snapshots including shared backing storage (test inspected,
+   not rerun in this discovery). Composition also validates/copies prepared data.
+   Previous `core.snapshot` instrumentation spans resolved-document validation,
+   document clone, image validation and image clone together. Original98-page
+   samples show working-set+51.71MiB, renderer RSS+50.91MiB, heap-used+8.21MiB
+   and external-2.79MiB across that interval. These are different counters, not
+   an allocation breakdown or proof that cloning alone costs52MiB. Split these
+   four boundaries before choosing a Core copy optimization.
+
+3. **Some layout state is already released; table retention is bounded by each
+   table.** `fillContentsNumbers.ts` deletes `contentsSlots`; `fillPageFields.ts`
+   deletes `pageTexts` and `pageFieldSlots` after filling. `cellTableFlow.ts`
+   measures all cells before pagination and keeps measured line wrappers through
+   the table; emitted runs shallow-share glyph arrays, so this is not two full
+   independent glyph copies. The483-page input has936tables, maximum30rows per
+   table, weakening a single-huge-table explanation for this corpus. Entire-book
+   positioned runs remain in `DrawDocument` for destinations, fields, font subset
+   and writer. Link spans/ink bounds remain after annotation resolution and are
+   candidates for lifetime review, but writer fingerprinting serializes the
+   entire draw object, so removing fields can change PDF identity. Text-runtime
+   cache is per generation and capped at32MiB of estimated UTF-16 payload and
+   8,192entries; object overhead is extra. It may overlap subset/writer work;
+   early-release benefit is unmeasured, not an established leak.
+
+4. **PDF assembly has multiple allocations; HTTP download already streams.**
+   Core `src/pdf/writePdf.ts` builds resolved glyph occurrences in `runs`, hashes
+   `JSON.stringify(draw)` as a whole-document temporary string, then builds all
+   page-content buffers. `src/pdf/primitives.js:streamObject` copies each stream
+   into an object buffer and `assemblePdf` finally concatenates all parts.
+   The object map and parts array share those object buffers, not another full
+   byte copy. Service collects stdout chunks then concatenates one final PDF;
+   the existing483-page PDF is10,031,736bytes (9.57MiB), so that final concat
+   alone adds one PDF-sized allocation, not hundreds of MiB. Storage writes the
+   returned buffer to a temporary file and atomically renames it;
+   `src/storage/pdf-files.ts:openPdf` already returns a file read stream.
+   Whole-draw JSON and per-glyph writer objects deserve finer sampling; the old
+   200ms writer peak cannot attribute their individual cost.
+
+**Discovery conclusion / next bounded slice:** start in Service with the standard
+prepared-document transport: avoid sending unused prepared/template data and
+unnecessary child input-byte copies, while preserving the fallback composition
+path, document validation, diagnostics, deadlines, aborts, output size limit and
+cleanup. This requires an explicit internal message variant and a decision on
+where pinned-template validation remains; do not silently remove validation.
+Keep Core's public snapshots intact. Before claiming a memory improvement,
+compare the same pinned98-page workload before/after with separate parse,
+validation, document-copy, image-copy and writer boundaries, same counters and
+guards; check decoded PDF drawing/resources/geometry/links, source data and file
+lifetime. Then use483pages only as a bounded confirmation if the first comparison
+supports it. Measure whole-draw hashing and resolved-glyph allocations before
+deciding whether writer work outranks layout changes. Actual savings, peak-live
+object attribution and483-page human review remain unknown/pending.700pages and
+whole-system streaming remain deferred. No claim of871MiB reduced is made.
+
+Discovery coverage is complete for source ownership/lifetimes and envelope
+sizes, not runtime improvement. Product candidates remain unchanged; only this
+record and ignored probe artifacts were added. Project Control diff/data checks
+cover the documentation update; no product regression pass is claimed.
