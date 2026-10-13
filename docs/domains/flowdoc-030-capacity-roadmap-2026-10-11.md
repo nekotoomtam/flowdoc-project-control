@@ -1204,3 +1204,120 @@ Discovery coverage is complete for source ownership/lifetimes and envelope
 sizes, not runtime improvement. Product candidates remain unchanged; only this
 record and ignored probe artifacts were added. Project Control diff/data checks
 cover the documentation update; no product regression pass is claimed.
+
+### Service transport implementation kickoff — 2026-10-13
+
+Owner explicitly approved the proposed Service fix, fresh98-page before/after
+RAM measurement and exact PDF parity, then483pages only after98-page acceptance.
+Single-room Product Implementation Agent, Service owner; Work Size small,
+Risk Tier routine, execution IDs N/A. Isolated checkout
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-memory-20261013`, branch
+`codex/service-memory-20261013`, base `dd728496451c650f1cfa6797bb5a293acaa7fc2f`.
+Native worktree creation targets this chat's Project Control repository, so the
+sibling Service checkout uses Git worktree creation. Existing owner guidance
+authorizes isolation for experiments. No separate room or delegation.
+
+Allowed: Service render transport/child reader and focused regression tests;
+ignored measurement harness; this existing Project Control record. Core, public
+API, image preparation, PDF writer, dependencies, limits and release remain fixed.
+Use explicit internal document/compose messages: the processor's pinned-template
+validation remains before composition; the document child still passes through
+Core document validation/snapshot. Direct composition callers retain child
+template validation. Decode UTF-8 incrementally in a scoped reader, removing the
+input chunk-copy/concat buffers. Preserve errors, abort/deadline, output ceiling
+and parent temporary-directory cleanup. No blanket snapshot removal.
+
+Proof budget: a regression that fails on unnecessary input serialization, real
+Linux render/guard/fallback tests, build and affected database/storage consumers,
+one guarded cold98-page run each side under identical pinned runtime and
+instrumentation, then one guarded483-page confirmation if acceptance passes.
+Repeat only for a concrete inconclusive comparison or failed prerequisite.
+Counters: API-container working set/current, child boundary heap/external/RSS,
+worker timing and host reserve; overlapping counters never summed. Existing
+1536MiB admission,1024MiB host stop,85%-for-three-samples container guard,1GiB API,
+2CPU and256MiB DB remain. Exact decoded drawing/resource/geometry/link parity,
+full mapped text/order/group checks, expected warnings, replay410 and cleanup
+cover output correctness. Retain raw evidence under Service ignored
+`artifacts/capacity-030/memory-optimization-20261013/`; document budget this record.
+
+### Service transport result — PASS within measured scope, 2026-10-13
+
+Service commit `b1ef18ef33db4683dd5bd6101c3cdac0cb3d169d` changes only
+`src/jobs/render.ts`, `src/jobs/render-child.ts`, `tests/render.test.mjs`.
+The standard prepared-document path sends an explicit document message without
+unused template/prepared inputs. The child uses Node's UTF-8 stream decoder and
+a function-scoped JSON string instead of retained copied byte chunks plus a
+concatenated byte buffer. The fallback compose message keeps template validation.
+Processor pinned-template validation, Core validation/snapshot, image handling,
+PDF writer, public API, dependency package and configured limits are unchanged.
+
+Fresh measurements, one instrumented cold job per condition:
+
+| Workload | Worker seconds | Peak API working set MiB | Peak API current MiB | Minimum host free MiB |
+| --- | ---: | ---: | ---: | ---: |
+| 98pages before | 13.234549 | 377.32 | 384.09 | 2479.22 |
+| 98pages after | 12.435588 | 338.02 | 341.43 | 2401.21 |
+| 483pages after | 53.845381 | 777.39 | 780.91 | 1698.86 |
+
+The matched98-page comparison observed39.30MiB (10.42%) lower sampled peak
+working set and0.799s lower worker time. This is one pair, not a statistically
+established speedup or universal savings guarantee. Cgroup includes client and
+observer, excludes DB; native descendants are included, RSS is not summed.
+Original source hashes were checked against each built image before observation
+mounts; Core hashes match the pinned package except the declared observer module.
+The baseline focused regression run ended before the baseline measured worker
+started; no concurrent test suite ran during either measured worker interval.
+No OOM or guard stop occurred. All original host/container guard thresholds and
+limits remained in force. The older871.44MiB/62.496s483-page trial is historical
+context, not a fresh matched before measurement for this change.
+
+Both98-page exports exactly match the original reference's decoded drawing
+streams, resources (including image/font data), page geometry and link targets.
+The new483-page export also passes that exact comparison against the retained
+original483-page PDF. Fresh upload/resource identities can change whole-file
+fingerprints; byte-identical PDF files are not the acceptance claim.98-page
+checks found all1,457mapped values,363exact requirement details,396valid internal
+links and29company/first-member associations.483-page checks found all7,285values,
+all1,815complete uniquely marked details exactly once/in order,1,956valid internal
+links and145associations. Four expected low-resolution image warnings only;
+download replay410, empty output/temp folders and no remaining renderer/shaper
+children pass. Rendered final pages98and483 were visually sampled and readable;
+this is not full-book human review.483-page owner review remains separately pending.
+
+Verification: the new regression failed on the baseline because unused inputs
+were serialized, then passed after the transport fix. Focused real Linux render
+tests cover document/fallback byte parity on a deterministic fixture, invalid
+document/template rejection, timeout, output cap and forced-abort cleanup.
+Build passed. All190Service tests passed with zero failures/skips using the
+pinned Linux runtime, current compiled candidate and isolated PostgreSQL,
+covering processor, storage, admission, images and registry consumers.
+No Core runtime edit or Core regression-pass claim is made.
+
+The split observer clarifies the old snapshot-stage ambiguity: in the fresh
+baseline98-page run, validation boundaries rose247.59→291.17MiB; document-copy
+boundaries294.42→302.22MiB. These remain observed container changes, not allocated
+bytes attributable to one function. They do not justify deleting public snapshots.
+
+Evidence: Service ignored `artifacts/capacity-030/memory-optimization-20261013/`
+contains `before-98/`, `after-98/`, `after-483/`, `summary.json`, source identities,
+raw counters/stages, PDFs, parity/content/group checks, sample images, retained
+`checks/` (red/green/full-suite/build logs), candidate files and SHA256 inventory.
+The483-page verifier needed its existing `expected.json`; it was copied before
+verification, with no export rerun or acceptance-rule change. Updated preparation
+script now includes it. This was a harness prerequisite, not a product failure.
+
+Integrated by unchanged fast-forward into the existing Service development
+branch `codex/template-registry` (not a release branch). Tested source/tree,
+Core artifact and test environment remain the proof identity; passing checks
+were reused without an unnecessary rerun. Primary Service local `node_modules`
+still has preexisting0.1.14 and was not used for acceptance; local execution must
+install the pinned0.2.13 dependency graph. Versions, release refs, Core and maps
+remain unchanged. Needed worktree evidence was copied and hash-verified before
+removing the clean integrated temporary worktree and task branch. All three
+trial projects/volumes/networks/images and the verification project/test image
+were removed; generated credentials removed. No remote push performed.
+
+Acceptance and scoped impact coverage pass. Remaining limits: one run per
+condition, no production/concurrency guarantee, no700-page execution and no
+new Core optimization. Stop here; any later Core/writer work needs its own
+bounded reason and comparable measurements.
