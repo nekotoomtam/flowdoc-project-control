@@ -1383,3 +1383,126 @@ workload with lightweight equivalent observation and exact output checks.
 Validation and resolved-glyph lifetime are separate later candidates. Actual
 savings and483-page attribution remain unproven; no storage redesign or
 whole-system streaming is authorized or required by these observations alone.
+
+### Incremental draw fingerprint kickoff — 2026-10-13
+
+Owner explicitly authorized reducing temporary draw JSON, a fresh98-page
+before/after RAM comparison with lightweight observation, exact PDF acceptance,
+then483pages only after98pages pass. New bounded single-room implementation
+scope, not reactivation of an old execution: Core owner, Product Implementation
+Agent, medium size/routine risk, execution IDs N/A. Core base `e889393` in
+isolated `flowdoc-core-json-memory-20261013` / `codex/core-json-memory-20261013`;
+Service base `b1ef18e` remains fixed. Native worktree tools target this chat's
+Project Control repo; sibling Core isolation uses Git under owner guidance.
+
+Design: hash internal plain DrawDocument JSON incrementally in existing key
+order, serializing each top-level array item (including each page) separately.
+Keep native JSON escaping, omitted optional values, exact fingerprint bytes,
+image hashing and PDF output. This bounds the largest temporary page-array
+serialization by an item; a single unusually large page or non-array metadata
+value is not split further. No general JSON serializer or public contract change.
+Allowed product files: Core private writer and focused writer tests. No layout,
+validation, cache, buffer assembly, native runtime, limits or release changes.
+
+Proof budget: failure-first allocation regression plus legacy fingerprint oracle;
+build and affected writer/image tests, Core suite, and packed Linux Service
+consumer using unchanged native/resource files. Fresh cold98-page before and
+after with identical external200ms sampler and original guards; no in-process
+observers. Record kernel current-memory high-water mark as well as sampled
+working set. Then one483-page candidate confirmation if98-page PDF and memory
+acceptance support it. Exact decoded drawing/resources/geometry/links, complete
+text/order/groups, warning/file-lifetime checks and cleanup remain mandatory.
+One pair establishes an observation, not statistical savings or concurrency.
+
+Evidence goes to Service ignored `artifacts/capacity-030/json-hash-20261013/`
+and Core ignored `artifacts/json-memory-20261013/`; document budget this record.
+The isolated Service build consumes an experimental re-packed Core artifact
+whose only runtime-file difference is `dist/pdf/writePdf.js`; primary Service's
+versioned vendor artifact remains intact. Publishing/version bump and upgrading
+the primary Service dependency are outside this experiment. Stop on passing
+bounded acceptance; repeat only for a concrete failure or inconclusive result.
+
+### Incremental draw fingerprint result — PASS within experimental scope
+
+Core commit `bb6e21c2db19546a6d83bd46d9f129a637e34d36` changes only
+`src/pdf/writePdf.ts` and `tests/pdf/writePdf.test.ts`. The private writer feeds
+the same JSON bytes into SHA256 one top-level array item at a time, preserving
+property order, optional-field omission, Unicode escaping and the subsequent
+image-byte hashes. It no longer creates one JSON string for the entire draw or
+page list. A single large page or non-array metadata value can still create a
+large temporary string; this is not a general streaming PDF implementation.
+
+Fresh lightweight measurements, one cold job per condition:
+
+| Workload | Worker seconds | Sampled peak working set MiB | Sampled peak current MiB | Kernel peak current MiB | Minimum host free MiB |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 98pages before | 11.171265 | 362.29 | 383.67 | 421.17 | 2870.76 |
+| 98pages after | 11.641886 | 357.12 | 360.53 | 360.78 | 1856.68 |
+| 483pages after | 56.071421 | 642.90 | 646.46 | 674.45 | 1687.21 |
+
+The98-page pair observed5.17MiB (1.43%) lower sampled peak working set and
+60.39MiB lower kernel peak current memory. Current memory includes file cache;
+the latter difference is not60.39MiB of proven reclaimable application RAM.
+The200ms sampler can miss short-lived peaks; kernel current peak and sampled
+working set are distinct metrics and cannot be substituted or added. Kernel
+peaks before each job were67.40/50.00/48.77MiB, below the subsequent recorded
+peaks. The after worker was0.471s slower in this pair; no speedup is claimed.
+Host reserve differed between runs. One pair is not statistical proof, a
+production guarantee or an allocation-ownership analysis. The older483-page
+777.39MiB observation used different instrumentation; do not present the
+642.90MiB result as a fresh matched483-page before/after saving.
+
+No runtime boundary logging, heap snapshots or forced GC were used. Identical
+external200ms observation/guards were retained. Before/after98-page collection
+timer medians0.81/0.86ms and p95s1.64/1.75ms exclude writing/flushing the sample;
+actual interval medians201.23/201.31ms and p95s207.35/208.35ms are recorded.
+This is a lightweight observation method, not a zero-overhead claim. Original
+1GiB/2CPU API,256MiB DB,1536MiB admission and1024MiB/85% guards remain. No OOM
+or guard stop. No test/build ran concurrently with a measured worker.
+
+Correctness: both98-page exports and the483-page candidate exactly match their
+reference decoded drawing streams, resources, page geometry and links.98-page
+checks cover1,457values,363details,396links and29company associations;483-page
+checks cover7,285values,1,815complete uniquely ordered details,1,956links and
+145associations. Four expected image warnings, replay410, empty output/temp
+directories and no surviving renderer/shaper children pass. Fresh upload IDs
+can change whole-file fingerprints in these API runs, so whole-file byte parity
+is separately established against the old writer on four identical-input cases:
+empty, Unicode/metadata,98-page glyph fixture and image-alpha/internal-link
+fixture. All four PDFs match every byte. No new full-book human review claim.
+
+The allocation regression failed against the old writer with
+`Whole document JSON allocation`, then passed after the change. Focused
+writer/image tests23/23 and the Core suite499/499 across62files passed, as did
+TypeScript build. A focused read-only review found no blocking issue in plain
+DrawDocument JSON semantics. Packed Linux API trials cover the public consumer;
+no new all-Service-test-suite pass is claimed. The candidate tarball SHA256 is
+`1394367225d20ca161d2a04cb316bf9569dc4416533fecea3fa26dabb28829e3`.
+Archive validation proves all member names, modes, owners and other file bytes
+match the pinned package; only `dist/pdf/writePdf.js` differs. Installed package
+hashes are checked inside each trial container.
+
+One setup attempt (`after-98/`) failed before any measured job: Windows npm
+repacking changed the two Linux executables from0755 to0644, so API startup
+failed. Preserve that failed attempt; do not count it as a measured run or PASS.
+The harness now copies original archive metadata and replaces only the compiled
+writer entry. Metadata/byte comparison passes; `after-98-fixed/` is the accepted
+after run. No product-code change was needed for this packaging repair.
+
+Evidence: Service ignored `artifacts/capacity-030/json-hash-20261013/` contains
+all three accepted runs, the failed setup, fixed experimental package, package
+identity checks, full-byte writer oracle, raw counters, PDFs/content/parity,
+`summary.json`, copied and hash-verified Core red/green/build/suite logs/source,
+`closeout.json` and a SHA256 inventory. Core was integrated by unchanged
+fast-forward into `codex/template-binding`; tested content identity was checked
+and passing proof reused. Clean temporary worktree/branch were removed after
+evidence preservation. All four trial projects, volumes, networks, images and
+generated credentials were removed. Primary Core and Service checkouts are clean.
+
+Acceptance is complete for the requested Core optimization experiment and
+bounded measurements. Primary Service still pins original Core0.2.13 artifact
+`bf997cdb...`; it does not yet consume this candidate. The isolated consumer
+does. No version bump, release tag, remote push or primary Service dependency
+upgrade is claimed. Maps and unrelated product areas remain unchanged. Further
+optimization, repeated/concurrent measurements and a versioned Service upgrade
+are later scopes; stop here.
