@@ -1506,3 +1506,71 @@ does. No version bump, release tag, remote push or primary Service dependency
 upgrade is claimed. Maps and unrelated product areas remain unchanged. Further
 optimization, repeated/concurrent measurements and a versioned Service upgrade
 are later scopes; stop here.
+
+### Main Service Core-package upgrade kickoff — 2026-10-13
+
+Owner now explicitly authorizes the primary Service to consume the verified
+Core fingerprint fix and requires unchanged PDF output. New bounded single-room
+Product Implementation Agent scope, Service owner, small/routine, execution IDs
+N/A. Base `b1ef18e`, isolated `flowdoc-service-core-json-20261013` on
+`codex/service-core-json-20261013`. Core source remains accepted `bb6e21c`.
+
+Pin the exact previously verified package SHA256 `13943672...` under distinct
+filename `flowdoc-core-0.2.13-bb6e21c.tgz`, retain the original0.2.13 archive,
+and update Service package/lock/vendor manifest together. Package metadata stays
+0.2.13; artifact filename, checksum and source commit identify this development
+revision. This does not republish or retag0.2.13. Allowed product changes are
+those four dependency files and the README's matching package-boundary text;
+no renderer, API, migrations or limit changes. README is repository-owned
+code-adjacent guidance with its existing Authority Boundary retained.
+
+Proof budget: vendor integrity, fresh Linux build/install with exact installed
+Core-file identities, Service tests with isolated PostgreSQL, one fresh98-page
+API export with existing exact reference/content/link/group/lifetime checks,
+and clean integration followed by local dependency/build refresh. Reuse the
+passed483-page and fixed-input byte-parity evidence only if package/runtime
+identity remains unchanged; no new RAM comparison or483-page run is required.
+Document budget this existing record; raw outputs stay in Service ignored
+`artifacts/capacity-030/service-core-upgrade-20261013/`. Stop after acceptance,
+preserve evidence, and remove clean integrated temporary worktree/resources.
+
+### Main Service Core-package upgrade result — PASS, 2026-10-13
+
+Service commit `62583e2939920878264a3ddae53b7cef4b2a8d10` is integrated by
+unchanged fast-forward into primary development branch `codex/template-registry`.
+Changed files: `package.json`, `package-lock.json`, `vendor/manifest.json`, new
+`vendor/flowdoc-core-0.2.13-bb6e21c.tgz` and the README package-boundary paragraph.
+Primary Service now pins Core source `bb6e21c2db19546a6d83bd46d9f129a637e34d36`;
+the earlier statement that primary Service still pins the original package is
+historical and superseded by this accepted upgrade. No Core source change.
+
+The new archive is byte-identical to the accepted candidate:
+SHA256 `1394367225d20ca161d2a04cb316bf9569dc4416533fecea3fa26dabb28829e3`.
+The original archive remains unchanged at SHA256 `bf997cdb...`. The new filename
+and source/checksum metadata distinguish the development revision while package
+metadata stays0.2.13. No existing released artifact/tag was replaced.
+
+Fresh Linux build and install passed; every installed Core file hash equals the
+previously verified candidate. All190Service tests passed with zero failures
+or skipped tests against isolated PostgreSQL, using the built image without
+source mounts. One fresh98-page API export passes exact decoded drawing,
+image/font resources, page geometry and link comparison against the reference:
+all1,457values,363details,396valid links and29company associations pass.
+Expected four image warnings, download replay410, output/temp cleanup and no
+remaining renderer/shaper processes pass; no OOM or guard stop occurred.
+
+After integration, primary `npm ci --ignore-scripts --no-audit --no-fund`, local
+TypeScript build and vendor checksum verification passed. The former stale
+local Core installation is replaced; all local installed Core file hashes match
+the accepted candidate too. Tested content/base and runtime identity support
+proof reuse across the unchanged fast-forward. The483-page acceptance and four
+identical-input whole-PDF byte-parity cases from the previous experiment are
+reused by exact package identity; no new483-page or RAM comparison is claimed.
+
+Evidence is Service ignored `artifacts/capacity-030/service-core-upgrade-20261013/`:
+build/test/install logs, installed identities, fresh98-page PDF and checks,
+`closeout.json` and SHA256 inventory. All verification/API trial containers,
+networks, volumes, images and generated credentials were removed. The clean
+integrated temporary worktree and branch were removed; primary Service is clean.
+Project Control diff/data checks cover this record. Acceptance and affected-area
+coverage pass. No API/layout/limit/release/map changes or remote push; stop here.
