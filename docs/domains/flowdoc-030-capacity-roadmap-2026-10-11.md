@@ -885,3 +885,36 @@ content. Clean merged task worktree/branch removed. Core and both release refs
 remain unchanged; no push, version bump, map promotion or synthetic execution IDs.
 Project Control diff/data checks cover this status update. Next: plan R4 progressive
 large-document trial; no300–700-page capacity claim and no R4 execution yet.
+
+### Pre-R4 stage RAM observation — preparation, 2026-10-13
+
+Owner authorized stage-level RAM/timing inspection before R4. Bounded inline
+discovery, Evidence Reviewer, Service-owned experiment; execution IDs not
+applicable. No product behavior, wrapping, release, or worker-count changes.
+Reuse R3's 98-page input and exact PDF acceptance baseline for one initial job.
+Acceptance requires stage timestamps and cgroup samples, PDF parity, existing
+host/container guards, and a report distinguishing observations from attribution.
+Layout and text measurement remain one measured phase; no claim to separate them.
+
+Prepared ignored Service `artifacts/capacity-030/stages-20261013/prepare.mjs`,
+source copies, observed copies, and `preparation.json`. Markers cover composition,
+image preparation/decode, resource loading, layout, page fields/TOC, font subsets,
+PDF writing, and child transfer boundaries. Output enqueue is not pipe-flush time.
+All three observed modules pass syntax checks and removal of inserted markers
+restores their source byte-for-byte. This is offline preparation, not runtime or
+rendering proof. Instrumentation overhead and missed transient peaks must be
+disclosed; process RSS values cannot be summed as cgroup usage.
+
+Core copy was extracted from the pinned vendor package and matches SHA256
+`89795f5d9e8fb2cd2ecbbd8c99e6a43ba2bae8f2de3effd13e4a3ead2755195d`.
+Local installed Core was stale and was not used. Service compiled source copies
+must match the pinned trial container before mounting; mismatch requires new
+copies and rerunning preparation. Product candidates remain Service `dd72849`
+and Core `e889393`.
+
+Live trial not started: Docker engine unavailable. Initial host free RAM was
+1022 MiB; later recheck was1624 MiB before Docker startup, so eligibility must
+be checked again after startup against the existing1536 MiB threshold. Do not
+lower guards. Next: verify container sources, run one guarded instrumented job,
+check exact PDF parity, then analyze stage samples. No new RAM result, R4 start,
+release change, or capacity claim follows from this preparation.
