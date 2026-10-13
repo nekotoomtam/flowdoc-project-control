@@ -940,3 +940,51 @@ clean and release unchanged. Next attempt needs additional host reserve and a
 fresh output folder preserving this stopped attempt; rerun the same one-job
 measurement and PDF checks once prerequisites pass. Project Control diff/data
 checks cover this status-only update.
+
+### Pre-R4 stage measurement — PASS, 2026-10-13
+
+Owner requested another check. Fresh attempt in ignored Service
+`artifacts/capacity-030/stages-20261013-b/` retained the stopped attempt above.
+Docker available; reserve before submission1558 MiB passed1536 MiB threshold.
+One instrumented cold98-page job completed in13.226128 worker seconds.
+Host minimum free1227.38 MiB; no guard trigger or OOM kill. Existing API1 GiB,
+2CPU and DB256 MiB limits, serial processor and stop thresholds unchanged.
+
+Observed phase results (RAM is the shared API-container working set during the
+phase, not allocations owned by that phase):
+
+| Phase | Seconds | Observed peak MiB |
+| --- | ---: | ---: |
+| Compose | 0.246 | 182.51 |
+| Prepare images | 1.716 | 193.76 |
+| Core validation/snapshot | 0.258 | 296.46 |
+| Layout and text measurement | 9.024 | 346.10 |
+| Fields, TOC and links | 0.352 | 346.42 |
+| Font subset | 0.620 | 374.71 |
+| Write PDF | 0.312 | 375.03 |
+
+Container sampled peak working set375.03 MiB, current385.16 MiB. Core snapshot
+boundaries rose244.75→296.46 MiB; layout boundaries295.25→344.67 MiB.
+These are observed changes, not allocation attribution: retained objects, GC,
+other container processes and overlapping lifetimes contribute. Writer-time peak
+does not establish writer as the root cause. Layout is the dominant measured
+time; snapshot and retained layout state are reasonable next inspection targets,
+not authorized optimizations or proven leaks. Cgroup includes in-container client
+and observer, excludes DB; do not compare directly with R3 browser-run RAM.
+Process RSS is non-additive. One run with observation overhead and200ms sampling
+is not a repeated benchmark; short phases can hide transient peaks.
+
+Acceptance: all98pages match exact decoded drawing/resource/geometry/link
+reference;1,457text values present,363source details exact,396internal links
+valid,29company/first-member associations pass. Accepted image warnings unchanged;
+download replay410 and output/child temporary cleanup pass. Source hashes match
+fresh pinned image before instrumentation; generated module syntax and exact
+removal/restoration checks pass. Analyzer pairs recorded starts/ends and retains
+raw stage samples, periodic process/cgroup samples, timing, PDF and check logs.
+Evidence includes `stage-summary.json`, `stages.ndjson`, `samples.ndjson`,
+`run-1/`, original identity checks, completion and cleanup records.
+
+All task containers, network, volumes, image and credentials removed. Product
+repos clean, versions and release refs unchanged. No render/wrap behavior changed;
+no R4 large-document execution. Project Control diff/data checks cover this
+result. Stop at this evidence; discuss the next bounded investigation with owner.
