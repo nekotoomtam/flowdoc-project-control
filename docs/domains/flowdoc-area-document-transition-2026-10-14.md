@@ -438,3 +438,53 @@ layout retention together: lower the base carried into both font-subset and
 writer peaks, preserving admission errors, persisted-input integrity, image
 claims and caller snapshot isolation. Do not infer an achievable MiB saving from
 boundary differences, or treat final TOC filling as the principal cause.
+
+### Service render ownership optimization and three-run result
+
+Owner authorized reducing pre-render retained data, followed by three latest-Area
+98-page measurements and unchanged PDF acceptance. Bounded implementation owner:
+Service; Core area.2 remains unchanged. Inline IDs N/A; routine risk, with explicit
+input-integrity, image-claim, abort/timeout and serial-worker acceptance. No old
+variant run, release promotion, heap snapshot, forced GC or cache-budget change.
+
+Service isolated branch commit `e9af0c1` changes only five ownership/transport test
+and source files. The worker's claim/validation/composition/preparation frame now
+ends after starting transport; the coordinator awaits only job ID plus result
+promise. `prepareOwnedJobImages` rewrites the freshly composed graph in place,
+removing the previous whole-document clone; its name/comment require exclusive
+ownership. No obsolete wrapper remains. Synchronous serialization wrappers pass
+only text into the asynchronous transport, which clears its local text binding
+after stdin.end. Node may retain pending pipe bytes until they are written.
+Serialization errors still return rejected promises, preserving previous behavior.
+Admission checks, original/prepared integrity comparison, child validation and
+Core caller snapshot isolation remain intact. This establishes reference lifetime
+and copy changes, not proof of immediate GC or OS memory release.
+
+Proof:194 Linux Service tests passed including new real-child snapshot parity.
+Focused review found no blocking issue; its serialization-error compatibility
+note was corrected afterward. Final build and two ownership/error tests passed;
+three API/PDF runs use the final rebuilt image. Full194-test result predates only
+the final rejected-Promise error correction; do not present it as a rerun of all
+tests on that exact final source. Evidence/source hashes are under primary Service
+`artifacts/area-ownership-20261014/` (`tests-result.json`, `ownership-tests.json`,
+`source-checkpoint.json`, `summary.json`, per-round checks). Other pre-existing
+Area migration edits remain uncommitted in their isolated worktrees.
+
+| Round | Worker seconds | Peak container working MiB |
+| --- | ---: | ---: |
+| 1 | 11.167761 | 372.55859375 |
+| 2 | 11.274672 | 367.34765625 |
+| 3 | 11.446108 | 347.28906250 |
+
+Mean11.29618s and362.39844MiB; median11.274672s and367.34766MiB. All98-page PDFs
+have exact decoded drawing/resource/geometry/link parity;1457 text values,
+363 requirements,396 links and29 groups pass per run. Zero OOM/guard stops;
+minimum host free RAM1957.64453MiB. Cleanup passes for all stacks.
+
+The peak remains broadly in the prior observed range: these results do not
+establish a meaningful peak RAM reduction. Do not count the ownership change as
+solving the RAM objective or infer retained-live-data size from process RSS.
+Container figures include the API client/observer; shared host and three samples
+limit inference. Preserve the candidate and evidence; stop this bounded three-run
+experiment. Larger architecture changes or further diagnostics need their own
+bounded rationale.483-page acceptance and release remain open.
