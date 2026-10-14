@@ -123,7 +123,7 @@ update this record rather than spawning report copies.
 - [x] Owner confirmed named Area variable with ordered entry array.
 - [x] Seven-step plan recorded; scope includes retirement and post-cleanup checks.
 - [x] Current behavior inventory and isolated conversion probe.
-- [ ] New template and concrete gap decisions.
+- [x] New template and concrete gap decisions (candidate; not active cutover).
 - [ ] Runtime/Service gaps implemented and tested.
 - [ ] Full PDF acceptance.
 - [ ] Matched performance acceptance.
@@ -156,3 +156,38 @@ to avoid unrelated API renaming. Core worktree `flowdoc-core-area-v18` and Servi
 `flowdoc-service-area-v18`, branch `codex/area-document-v18`, start at the release
 snapshots above. Runtime authority now implementation for these isolated lanes;
 review actual version feature gates individually and retain old-model tests.
+
+Implementation checkpoint, 2026-10-14: Core build and 508 tests in 63 files pass.
+Review found two defects, now repaired and independently rechecked: prepared
+Area validation lost strict policy through a legacy proxy; a page break before
+an empty TOC created a trailing blank page. Regression tests cover both.
+Service build and 192 tests pass in a fresh Linux verification image with an
+isolated PostgreSQL database, including model18 snapshot round-trip and HTTP
+rejection before enqueue. UNKNOWN_FORMAT now maps to HTTP422. Migration014 is
+forward-only; prior migration tests assert the added step and preserved data.
+
+Candidate package is `0.2.15-area.1`, built from the uncommitted isolated Core
+tree with existing native/resources preserved. Its manifest explicitly marks
+the uncommitted state; it is not a release artifact. Installed package hashes
+match `flowdoc-core/artifacts/area-transition-20261014/expected-identities.json`.
+Service evidence: `flowdoc-service/artifacts/area-transition-20261014/`
+`tests-result.json`, `installed-identities.json`, `tests.log`, `cleanup.json`.
+
+Fresh model18 SRS PDFs pass exact decoded drawings/resources/geometry/link
+comparison for all98 pages. A second candidate consolidates six identical
+paper/header/footer sections into one body section with explicit page-break
+nodes; cover remains separate. It also passes the same98-page comparison.
+Evidence: `model18/parity.json` and `consolidated/parity.json` beneath that
+Service artifact directory. Unused direct formats in the authored contents
+section were inventoried in `model18/retired-unused-formats.json` and removed
+from the candidate. Topic-level heading breaks are still pending; these results
+prove preservation, not acceptance of that intentional pagination change.
+
+Performance acceptance is BLOCKED before the first measured job: the host had
+941.57MiB free, below the unchanged1536MiB start guard. Evidence:
+`before-98-1/host-memory-phases.json`. Three alternating98-page before/after
+pairs are prepared with the same external200ms sampler, but none has a measured
+PASS. Do not infer a RAM reduction, attempt483 pages, lower guards, or promote
+the candidate from these functional results. Resume after host memory permits;
+primary release checkouts and published templates remain unchanged. Active
+cutover, final packaging, docs/retirement and final acceptance remain open.
