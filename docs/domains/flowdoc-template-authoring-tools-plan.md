@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: local candidate implemented and automated checks passed; host/model trial pending.
+Owner: FlowDoc Project Control. Status: local candidate implemented; local MCP and full preview verified as recorded below. Cross-room full-task completion after guide clarification remains pending.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.
@@ -19,8 +19,9 @@ primitives. Preview has its own immutable input snapshot and output lifecycle;
 it never creates a template_versions row. No new renderer or deployment required.
 
 Tech stack: existing TypeScript/Node24/Fastify/PostgreSQL and packed Core Area18;
-MCP transport dependency/version selected and locked during adapter work after
-checking host support. Do not claim an MCP connection exists yet.
+MCP transport dependency/version is locked. Local Codex MCP connection has been
+verified; each consuming room must verify its own tool availability with a real
+contract call. Connection success alone does not prove full authoring-task completion.
 
 Working arrangement: single-room implementation; execution IDs N/A. Active role
 Product Implementation Agent, owner Service with Project Control documentation. Size medium,
@@ -481,3 +482,18 @@ This proves rendering of the unchanged supplied revision3 request, not fidelity 
 the98-page reference. Many sparse pages remain from every-six-lines page breaks;
 blank cells and out-of-table requirements are inherited authoring choices. No
 publication, release promotion, global readiness or new performance claim.
+
+## Full-document completion guide clarification — 2026-10-14
+
+Owner requested a documentation-only inline correction after two rooms stopped
+at intermediate draft milestones. Updated the authoring guide to distinguish
+Area18 schema version from task scope, require full-data preview/download/all-page
+inspection before successful completion, and reserve owner approval for publish.
+Small samples are intermediate checks, not an implicit stop. Progress reports must
+not claim background activity after ending a turn. Genuine blockers and host limits
+must be reported with evidence and remaining work. Removed stale proposal-only and
+unconnected-host statements; corrected existing-draft and expectedRevision steps.
+Implementation/tests/runtime unchanged. Review covers scope, intermediate steps,
+error handling, completion checklist, starter instructions and publication boundary.
+Cross-room behavior with this revised guide is NOT RUN; owner will retry separately.
+This clarification does not guarantee model persistence or certify reference fidelity.
