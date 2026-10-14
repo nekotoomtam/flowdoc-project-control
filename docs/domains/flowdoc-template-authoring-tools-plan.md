@@ -548,3 +548,15 @@ chapter, with links from layout/workflow guidance. Source inspection of Core
 pageBands.ts and validateGraph.ts supports column geometry, stack order and
 property boundaries. Checks cover arithmetic, local links, diff and Markdown
 fences. No user template/runtime changes, new PDF render or publish in this update.
+
+## Document-family routing — 2026-10-14
+
+Owner approved three layers: shared principles, layout family and observed cases.
+Moved the existing case-selection table into document-families/flowing-book.md,
+retaining shared alignment/border/data/check rules in reference-mapping.md.
+Added a compact observation-to-choice mapping and links from the developer index
+and workflow guide. Business document names are examples, not automatic layout
+rules; other families remain future scope until real differing requirements arise.
+Inline documentation maintenance only. Verification covers preserved case rows,
+local links, Markdown fences and final diff; no runtime or draft changes and no
+new rendering/model trial claimed.
