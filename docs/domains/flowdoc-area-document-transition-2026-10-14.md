@@ -488,3 +488,59 @@ Container figures include the API client/observer; shared host and three samples
 limit inference. Preserve the candidate and evidence; stop this bounded three-run
 experiment. Larger architecture changes or further diagnostics need their own
 bounded rationale.483-page acceptance and release remain open.
+
+### Forced-GC and heap-snapshot attribution
+
+Owner explicitly requested separate Service/renderer memory measurements and
+forced GC on latest Area98, followed by snapshots only if live heap remained
+substantial. Discovery-only diagnostic overlays preserve product source and
+normal benchmark results. Service candidate e9af0c1 and Core area.2 remain
+unchanged. Seven checkpoints collect each process before/after synchronous major
+GC, RSS/PSS/private pages, heap/external/ArrayBuffer counters and V8 space stats.
+The renderer requests Service collection through a diagnostic-only signal/ack,
+then collects itself. Values are sequential pairs, not simultaneous process sums.
+
+Evidence in primary Service: `artifacts/area-gc-20261014/summary.json`, probe,
+preparation/overlay manifests, `trial-2/gc.ndjson` and complete PDF/cleanup checks.
+Initial `trial/` failed in Docker bake before generation; it is excluded and
+preserved. No normal-performance timing/savings claim is made from forced GC.
+Diagnostic awaits alter the isolated renderer's scheduling only; the production
+snapshot-before-await contract and artifact remain unchanged.
+
+Selected process values (MiB): Service after parse heap45.39->24.97 while RSS
+190.96->190.11; renderer after validation heap32.13->15.40 while RSS141.31->137.71;
+renderer after layout heap61.97->51.73 while RSS186.05->186.20. Before writer,
+Service heap remains24.69 and renderer52.04 after GC. This separates reclaimable
+JS allocations from remaining reachable heap, but RSS beyond heap is not all
+reclaimable: native allocations, mappings and allocator capacity also contribute.
+Earlier collections affect later checkpoints; this is one diagnostic trajectory.
+
+Because the renderer still held about52MiB after GC, a separate snapshot run
+captured both processes before writing PDF. Evidence:
+`artifacts/area-gc-snapshot-20261014/trial/{service,renderer}.heapsnapshot`,
+`*.analysis.json`, `inspect.mjs`, `trace.mjs`, overlays and PDF checks. Snapshots
+contain private document data and stay in ignored local artifacts; summaries
+suppress string contents. Direct retaining-edge inspection found:
+
+- Service: a10,210,176-byte string (9.737MiB) remains through
+  `renderSerializedJob`'s suspended async frame -> parameters_and_registers[0].
+  This is concrete evidence that clearing the local serialized binding did not
+  release the original async argument. It corrects the prior lifetime hypothesis;
+  lexical scope/source review alone was insufficient.
+- Renderer: cacheTextRuntime's context.entries -> Map.table has10,390 directly
+  referenced string nodes with17,189,968 bytes of combined self size (16.394MiB),
+  plus a458,792-byte backing table. These are reachable before the writer. Shared
+  string references and other heap objects mean this is not a dominator retained
+  size or a guaranteed RSS saving.
+
+Both completed diagnostic PDFs preserve98 pages and exact decoded drawing,
+resource, geometry and link parity. Each passes1457 text values,363 requirements,
+396 links and29 groups; no OOM and cleanup PASS. Minimum host reserve2607.25MiB
+for GC-only and1719.125MiB for snapshots. Temporary preflight image removed.
+
+Next bounded fixes can now target demonstrated retainers: avoid passing the large
+JSON string as a suspended async parameter (for example an explicitly cleared
+payload holder), and provide a lifetime boundary for the text cache after its
+last layout/page-field use. They require independent behavior tests and normal
+three-run evidence; no production GC, snapshot hooks or further fixes are part
+of this diagnostic request. Do not predict peak reduction from adding self sizes.
