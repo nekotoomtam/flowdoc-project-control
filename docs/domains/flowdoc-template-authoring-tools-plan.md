@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: proposed implementation plan, not implemented.
+Owner: FlowDoc Project Control. Status: local candidate implemented and automated checks passed; host/model trial pending.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.
@@ -22,11 +22,10 @@ Tech stack: existing TypeScript/Node24/Fastify/PostgreSQL and packed Core Area18
 MCP transport dependency/version selected and locked during adapter work after
 checking host support. Do not claim an MCP connection exists yet.
 
-Working arrangement: single-room planning only; execution IDs N/A. Active role
-Planning Partner, owner Service with Project Control documentation. Size medium,
+Working arrangement: single-room implementation; execution IDs N/A. Active role
+Product Implementation Agent, owner Service with Project Control documentation. Size medium,
 risk routine; concrete risks are draft loss, unauthorized publication, stale
-preview, unbounded input and duplicate work after retries. This plan does not
-dispatch rooms, authorize publication, or begin product implementation.
+preview, unbounded input and duplicate work after retries. This plan authorizes bounded inline implementation, not publication or deployment.
 Use inline implementation in the existing suitable isolated Area lane only after
 checking current ownership/status. Preserve all pre-existing Area migration work.
 No model/session switch is requested; resolve the implementation model against
@@ -38,7 +37,11 @@ host availability when starting execution, without inventing another room.
   verify against the exact packed candidate; do not switch the production branch.
 - Phase1 ends at draft preview. There is no publish tool or publish route in the
   model's allowlist. Existing admin CLI remains outside the model's permissions.
-- Model sends complete valid Template definitions, not SQL, shell commands,
+- Owner refinement: first create an empty identity from name/docKey and receive
+  server-generated templateId with revision0. Then submit a complete definition
+  (including global/section/Format variable schemas) under that identity. An empty
+  identity cannot preview. Incremental node/Section authoring is deferred.
+- Model sends complete valid Template definitions after identity creation, not SQL, shell commands,
   filesystem paths, internal CurrentRecord IDs or arbitrary JSON patches.
 - create is create-only. update replaces a whole definition atomically with
   expectedRevision; unknown fields and unintended omissions must be visible in diff.
@@ -58,7 +61,7 @@ host availability when starting execution, without inventing another room.
 
 ## Proposed tool and HTTP contract
 
-Names/routes below are planned, not currently callable. All authoring routes use
+Names/routes below are implemented on the local candidate, verified as recorded below. All authoring routes use
 the same server-side principal and allowed-template check, including reads and
 preview download. Never trust actor/tenant fields supplied by the model.
 
@@ -66,7 +69,7 @@ preview download. Never trust actor/tenant fields supplied by the model.
 | --- | --- | --- |
 | get_authoring_contract | GET /authoring/contract | supported models, schema, limits, known examples, capabilities |
 | validate_template | POST /authoring/validate | definition, optional sampleRequest; issues/warnings and fingerprint; no writes |
-| create_template_draft | POST /authoring/drafts | definition, idempotencyKey; templateId, revision, canonical definition |
+| create_template_draft | POST /authoring/drafts | name, docKey, idempotencyKey; server-generated templateId, revision0, empty state |
 | get_template_draft | GET /authoring/drafts/:id | definition, revision, fingerprint, editable identity contract |
 | update_template_draft | PUT /authoring/drafts/:id | definition, expectedRevision, idempotencyKey; revision and explicit added/removed/changed diff |
 | preview_template_draft | POST /authoring/drafts/:id/previews | expectedRevision, sampleRequest, optional supported upload handle, idempotencyKey; jobId/revision/fingerprint |
@@ -145,8 +148,10 @@ assembly.ts and storage.ts only where the adapter/transaction boundary requires.
 Add a forward-only migration after014 (tentatively015_authoring_previews.sql;
 recheck unused sequence before creating it). Do not rewrite014 or released migrations.
 
-- [ ] Add create-only flow using importCurrent semantics; return stable identity
-  and revision. Reserve template identity and receipt atomically.
+- [ ] Add create-only identity flow; return server-generated templateId and
+  revision0. Reserve template identity, ownership and receipt atomically. First
+  complete definition save creates normalized current/schema/variable records;
+  do not import a dummy document to manufacture an empty draft.
 - [ ] Implement definition round-trip and identity reconciliation, then validate
   assembled output before save. Ensure full-definition update doesn't erase
   retained normalized IDs or bypass existing ownership/deletion controls.
@@ -257,3 +262,77 @@ channel, reference PDF and choice of model for the usability trial. They do not
 block writing this plan; runtime exposure and model acceptance must not be claimed
 until resolved. Package candidate is not yet release-integrated. No production
 DB write, release merge, publication or new task creation is authorized by this plan.
+
+## Execution result — 2026-10-14
+
+The checklist above retains the original detailed proof intentions; the following
+coverage is the executed result, not a blanket claim that every listed scenario
+or the future model trial ran. No Work/Phase/Checklist execution IDs apply.
+
+- Implemented identity-first create/read/full-definition update, Core validation,
+  revision-pinned previews, authenticated HTTP and an official MCP stdio adapter.
+  Definition/schema storage reuses the normalized CurrentRecord model. New
+  migration015 stores ownership, atomic retry receipts/audit and preview pins.
+- Preview uses generation_jobs with a distinct immutable source, the same serial
+  advisory lock and admission capacity, and no template_versions insertion.
+  Status/PDF/uploads require the configured principal. Preview downloads repeat
+  until existing output TTL; receipts/audit persist until administrative cleanup.
+- Auth is a host-configured local token/principal, not a new multi-tenant login
+  system. No host connection/credential installation or remote exposure performed.
+- Contract includes complete Area18 definition/request examples and effective
+  limits. Core remains the exhaustive validator; no claim of an independently
+  complete JSON Schema. Adapter inputs are strict envelopes, with Core validating
+  the nested definition. Relevant operations are grouped in service.ts and
+  adapter.ts rather than the tentative per-operation filenames above.
+
+Evidence:
+
+- Service build PASS. Fresh Linux image + isolated PostgreSQL: 206 passed,
+  0 failed, 0 pending; installed Core hashes match verified area.4 exactly.
+  Local artifact: flowdoc-service/artifacts/authoring-tools-final-20261014/
+  tests-result.json; cleanup.json confirms disposable DB/image cleanup.
+- tests/authoring.test.mjs: create identity0, save schemas, stable IDs, invalid/stale
+  update, retry/conflict, principal denial, edit-after-enqueue pin, zero published
+  versions, actual renderer preview bytes equal direct pinned renderer bytes,
+  repeated download, PDF expiry, concurrent writers, validation without writes,
+  malformed/duplicate/prototype/oversized JSON, owned upload receipt/replay,
+  cross-owner/public upload denial and expired-resource admission.
+- tests/authoring-adapter.test.mjs and authoring-diff.test.mjs cover retained IDs,
+  ambiguous group rename rejection, nested Section removals and diff truncation.
+  Both review findings reproduced RED then fixed GREEN. Whole candidate reviewed
+  once by a fresh reviewer; no remaining reported important findings.
+- tests/authoring-tools.test.mjs uses an MCP client/transport: tool discovery,
+  configured credentials, PDF resource reads, arbitrary file URI rejection and
+  absent publish/shell/SQL tools. This is protocol testing, not a connected host trial.
+- Existing migration/publication, scheduler, renderer, image failure/recovery and
+  upload tests passed in the same 206-test run. Authoring image tests exercise
+  upload ownership/admission, not a new full visual image-layout acceptance run.
+- Project Control example checker passed requirements/grouped, long Thai/changed
+  rows, empty Area/group and invalid inputs. That checker does not render PDFs.
+  Preview byte parity reuses the unchanged renderer baseline; no new visual
+  similarity claim against an owner-supplied PDF is made.
+
+Ruling: preserve normalized variable identities only for unchanged keys/owners;
+reject same-type replacement in the same schema or same-key moves as ambiguous,
+including groups. This avoids silently reassigning IDs; the cost is that an
+intentional simultaneous remove/add may need separate explicit edits. No rename
+operation is introduced in this phase.
+
+Ruling: reuse existing representative renderer/image failure evidence plus new
+preview byte parity and ownership tests. Do not repeat the whole Core rendering
+matrix or RAM benchmark. Cost: no fresh authoring-specific visual image-layout
+comparison; actual PDF/model usability remains an explicit prerequisite below.
+
+Area18 Service storage/migration/examples and exact area.4 packed dependency are
+required by this feature. Preserve their existing contents in the candidate
+snapshot so the authoring commit is reproducible; do not promote Core source or
+release. Older area.1–3 local tarballs and the Core worktree are not modified.
+
+Remaining NOT RUN: real Luna/Terra host connection, PDF display in that host,
+owner-supplied reference reconstruction and its visual acceptance. Required input:
+reference PDF and selected model/host with authoring-only permissions. These are
+usability acceptance prerequisites, not automated implementation PASS claims.
+Publication is deliberately absent and awaits a separate owner-confirmed flow.
+No release merge/push, public deployment or production database changes occurred.
+
+Service candidate commit: 2b1ab0f (codex/area-document-v18). Core packed source remains a candidate with sourceCommit=null; no release provenance is claimed.

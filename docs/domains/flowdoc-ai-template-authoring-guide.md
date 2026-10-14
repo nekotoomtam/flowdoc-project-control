@@ -206,59 +206,62 @@ members[] อยู่ในกลุ่ม, name สมาชิกอ่าน
 ข้อจำกัดถูกเปิดเผย และผู้ใช้รับรองสำหรับขั้น publish ไม่ใช้คำว่า PASS แทนขั้นที่ยังไม่รัน
 ไม่แก้ไฟล์โค้ด/validator เพื่อให้โครงที่ผิดของตนผ่าน
 
-## 9. ข้อเสนอ: ช่องทางให้ AI สร้างโครงโดยไม่แก้ไฟล์ตรง
+## 9. ช่องทางสร้างโครงผ่าน tool (candidate Area18)
 
-### สิ่งที่มีอยู่แล้ว (ตรวจจาก candidate Service)
+แผนและหลักฐานอยู่ใน [Template authoring tools plan](flowdoc-template-authoring-tools-plan.md)
+วิธีตั้งค่าท้องถิ่นอยู่ใน README ของ Service Area18 ชุดนี้ยังไม่ใช่ release และ
+ยังไม่ได้เชื่อมบัญชี/ห้อง Luna หรือ Terra จริง
 
-HTTP มี GET /templates/:docKey/contract, POST /jobs, GET /jobs/:jobId,
-GET /jobs/:jobId/pdf และเส้นทาง uploads ตามระบบ ไม่พบ HTTP เขียน draft ใน server นี้
-Service ภายในมี importCurrent/loadCurrent/saveCurrent และ publishCurrent รวมถึง
-CLI งาน draft/publication แล้ว `saveCurrent` รับ CurrentRecord ที่มี identity
-และ expectedRevision ไม่ใช่ Template JSON ธรรมดา อย่านำ JSON ในบท7ไปส่งให้
-saveCurrent โดยตรง `importCurrent` ใช้สำหรับสร้าง draft ครั้งแรกและปฏิเสธ CURRENT_EXISTS
-publish มี requestId สำหรับ retry และสร้าง immutable version
+ลำดับที่ต้องใช้:
 
-### แบบที่แนะนำ (ยังไม่ได้ทำ)
+1. เรียก get_authoring_contract เพื่ออ่านตัวอย่างและข้อจำกัดที่ตรงกับ Service
+2. เรียก create_template_draft ด้วย name, docKey, idempotencyKey ก่อนเสมอ
+   จะได้ templateId จาก server, revision0 และ definition=null ยัง preview ไม่ได้
+3. ประกอบ definition ทั้งชุด ใส่ templateId/docKey ที่ได้รับและ version=1
+   พร้อม globalSchema และ schema ของ Section/Format ตามเจ้าของข้อมูล
+4. เรียก update_template_draft ด้วย templateId, expectedRevision:0,
+   definition, idempotencyKey ระบบแยกโครง/ชุดตัวแปรลง storage และสร้าง IDs ภายใน
+5. เรียก validate_template ด้วย definition และ sampleRequest เพื่อตรวจข้อมูล
+   จากนั้น preview_template_draft ด้วย templateId, revision ที่บันทึกแล้ว,
+   sampleRequest และ idempotencyKey
+6. ใช้ get_preview_status แล้ว get_preview_pdf และอ่าน MCP resource ที่คืนมา
+   เพื่อตรวจ PDF แก้ draft แล้ว preview ใหม่จนพอใจ ก่อนรอเจ้าของรับรอง
 
-แผนลงมือและเกณฑ์ตรวจอยู่ใน [Template authoring tools plan](flowdoc-template-authoring-tools-plan.md)
-ระยะแรกสิ้นสุดที่ preview และไม่เปิด publish tool ให้โมเดล
-
-เพิ่มชั้น authoring service/tool ที่รับ structured JSON และเรียก validator/storage
-เดิม ไม่ต้องสร้างฐานข้อมูลหรือ renderer อีกชุด และไม่ให้โมเดลเข้าถึง SQL, shell,
-repository write หรือ path ของเครื่อง ถ้ารันใน process เดียวกันเรียกฟังก์ชันภายในได้
-ถ้า AI อยู่คนละระบบจึงเปิด authenticated HTTP แล้วให้ tool adapter เรียก HTTP นั้น
-จึง **ไม่จำเป็นต้องแยก deployment ใหม่** แต่ควรแยกหน้าที่ authoring จาก generation
-
-ชุด tool ที่เสนอ ชื่อเหล่านี้ไม่ใช่ชื่อ tool ที่มีให้เรียกตอนนี้:
-
-| Tool ที่เสนอ | รับ | คืน / ผลข้างเคียง |
+| Tool | รับ | คืน / ผลข้างเคียง |
 | --- | --- | --- |
-| get_authoring_contract | supported version | schema, capabilities, limits, ตัวอย่างที่ตรงรุ่น |
-| validate_template | definition, sampleRequest | errors/warnings/fingerprint; ไม่บันทึก |
-| create_template_draft | definition, idempotencyKey | templateId, revision, canonical definition; บันทึก draft |
-| get_template_draft | templateId | revision, definition และ contract |
-| update_template_draft | templateId, expectedRevision, definition, idempotencyKey | revision ใหม่และ diff; ปฏิเสธ conflict |
-| preview_template_draft | templateId, expectedRevision, sampleRequest | preview jobId, draft fingerprint, artifact handle; ไม่ publish |
-| publish_template_draft | templateId, expectedRevision, requestId | version/fingerprint; ต้องมีสิทธิ์และการอนุมัติจากผู้ใช้ |
+| get_authoring_contract | ไม่มี | capabilities, limits, definition/request ตัวอย่าง; validator ของ Core เป็นผู้ตัดสิน |
+| create_template_draft | name, docKey, idempotencyKey | templateId, revision0; สร้าง identity เปล่า |
+| get_template_draft | templateId | revision, definition, fingerprint |
+| update_template_draft | templateId, expectedRevision, definition, idempotencyKey | revision ใหม่, diff, diffTruncated; บันทึกทั้งชุด |
+| validate_template | definition, sampleRequest (ไม่บังคับ) | issues/warnings/fingerprint; ไม่บันทึกและยังไม่ตรวจการจัดหน้า |
+| preview_template_draft | templateId, expectedRevision, sampleRequest, idempotencyKey | jobId, revision, fingerprint; ไม่ publish |
+| get_preview_status | jobId | สถานะงานและ outputAvailable |
+| get_preview_pdf | jobId | resource link สำหรับอ่าน PDF; ต้องใช้ host ที่รองรับ resource |
 
-ชั้น update ต้องมีตัวแปลง Template definition ↔ CurrentRecord ที่รักษา IDs/ownership
-และตรวจ deletion; ไม่ใช้การ import ใหม่แทน update ไม่ส่ง internal DB IDs ให้โมเดลแต่ง
-preview ต้องตรึง draft revision/fingerprint และใช้ Core validation/prepare/compose/
-renderer เดียวกับ generation แต่เก็บ preview แยกจาก published version
-ปัจจุบันยังไม่มี draft-preview API นี้ ห้าม publish ชั่วคราวเพื่อทำเสมือน preview
-publish ต้องตรวจ expectedRevision ภายใน transaction เดียวกับ publication เพื่อไม่ให้
-เผยแพร่ draft ที่เปลี่ยนหลังผู้ใช้ดู preview (ฟังก์ชันปัจจุบันยังต้องเพิ่ม guard นี้)
+ภาพใช้ create_preview_upload → upload_preview_image → finalize_preview_upload
+แล้วใส่ uploadId และ resource IDs ใน sampleRequest ใช้ upload ใหม่เมื่อเปลี่ยน
+preview; MCP รับ PNG/JPEG แบบ base64 ตามขนาดที่ contract แจ้ง
 
-บังคับสิทธิ์ template/tenant, ขนาด payload และ resource budget, revision conflict,
-idempotency ของการเขียน, audit ผู้กระทำ/ความต่าง, อายุไฟล์ preview และ error ที่ไม่เผย
-ข้อมูลลับในฝั่ง server คำสั่งในคู่มืออย่างเดียวไม่สามารถห้าม agent ที่ยังมีสิทธิ์ shell
-แก้ไฟล์ได้ ห้องที่ให้ AI ทำงานจริงจึงต้องให้เฉพาะ tool ที่จำเป็นและไฟล์อ้างอิงแบบอ่านได้
-ห้ามคิดว่าการเพิ่ม API จะยกเลิกสิทธิ์ไฟล์ที่มีอยู่แล้วโดยอัตโนมัติ
+revision เป็นเลขแก้ไข draft แยกจาก definition.version=1 ซึ่งยังไม่ใช่ published
+version การบันทึกแทนทั้งชุดอาจลบสิ่งที่ไม่ได้ส่งมา ต้องตรวจ diff โดยเฉพาะ removed
+หาก diffTruncated=true ให้โหลด draft เปรียบเทียบทั้งชุด การเปลี่ยนชื่อ/ย้ายกลุ่ม
+ตัวแปรที่จับคู่ IDs ไม่ชัดเจนจะถูกปฏิเสธ ไม่เดาว่าเป็นการลบแล้วสร้างใหม่
 
-เริ่ม implementation จาก contract + validate + create/get/update draft + preview
-แล้วค่อยเชื่อม publish ที่มีการอนุมัติ ไม่เปิด low-level add-node ทีละคำสั่งเป็นทางหลัก
-เพราะโครงจะอยู่ในสถานะไม่ครบระหว่างทาง ใช้ whole definition แบบ atomic สำหรับงาน
-ขนาดเล็ก และพิจารณา atomic patch แบบมี revision เมื่อมีหลักฐานว่าเอกสารใหญ่เกินจริง
+คำขอเขียนใช้ idempotencyKey เดิมเฉพาะเมื่อลองคำขอเดิมซ้ำ ข้อมูลต่างกันต้องใช้ key
+ใหม่ และเมื่อ STALE_CURRENT ให้โหลด revision ล่าสุดก่อน ไม่เขียนทับแบบเดา
+preview ตรึงโครง/ข้อมูลไว้ ณ revision ที่รับงาน ใช้คิวและ renderer เดียวกับ generation
+ดาวน์โหลดซ้ำได้จนหมดอายุ PDF โดยไม่มี template_versions row ใหม่
+receipt/audit เก็บจนผู้ดูแลล้างฐานข้อมูลเอง; retry preview หลัง PDF หมดอายุยังได้
+งานเดิม จึงต้องใช้ key ใหม่หากต้องการสร้าง PDF อีกครั้ง
+
+**ไม่มี publish tool หรือ authoring publish route ในระยะนี้** การเผยแพร่ภายหลัง
+ต้องมีการยืนยันจากเจ้าของและตรวจ revision/fingerprint ตรงกับ preview ที่รับรอง
+ก่อนเรียก publication ภายใน transaction เดียวกัน
+
+Service รับสิทธิ์จาก token/principal ใน configuration ของ host ไม่รับจากโมเดล
+เจ้าของเห็นเฉพาะ draft/preview/upload ของตนเอง ใช้แบบ local principal เดียวก่อน
+การเพิ่ม API ไม่ได้ถอนสิทธิ์ shell/SQL/ไฟล์ที่ห้อง AI มีอยู่แล้ว ต้องตั้งห้องให้
+เหลือเฉพาะ authoring tools และไฟล์อ้างอิงที่อ่านได้ ไม่เปิด admin CLI ให้โมเดล
 
 ## 10. คำสั่งเริ่มงานสำหรับห้อง Luna/Terra
 
