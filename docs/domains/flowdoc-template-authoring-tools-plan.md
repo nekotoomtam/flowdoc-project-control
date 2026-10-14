@@ -517,3 +517,17 @@ pairs pass their original checker. Detailed sources, commands and untested
 combinations are recorded in the reference verification chapter. No user draft,
 runtime, source data or publication was changed. Model behavior and the reported
 Sol continuation-layout issue are not certified or repaired by this work.
+
+## Reference mapping guidance — 2026-10-14
+
+Owner requested general guidance after reviewing the Sol revision 5 PDF, including
+borderless alignment for symbol/description and term/definition lists. Added
+reference-mapping.md and links from the developer index, layout and workflow guide.
+Guidance preserves source rules, signature space, lines, assets and data provenance;
+it separates data completeness, runtime behavior and visual fidelity. Candidate
+Core validateGraph.ts permits borderColor but no border-disable property, and
+documentFlow.ts emits 0.5pt strokes. White borders are therefore documented only
+as a visual workaround on a uniform white background, not true borderless support.
+Scope is inline documentation synthesis; no runtime, draft or publication changes.
+Checks: property/source inspection, local links, JSON fragment parsing and diff
+review. No new render or cross-model trial is claimed by this documentation update.
