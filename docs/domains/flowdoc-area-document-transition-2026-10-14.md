@@ -249,3 +249,80 @@ larger RAM gap does not justify discarding it; all five pairs are included.
 This closes only the requested98-page five-pair check.483-page verification,
 intentional heading breaks, active cutover, final packaging and retirement stay
 open. Earlier blocked/diagnostic attempts remain preserved and excluded.
+
+### Read-only memory ownership survey
+
+Owner requested a source-led survey of suspected retained/copying structures.
+Scope is discovery only over the existing Core/Service candidates and retained
+benchmark samples; no runtime changes, heap snapshots, new render benchmark or
+release promotion. Inline execution IDs remain not applicable. Outputs:
+`flowdoc-service/artifacts/area-transition-20261014/source-audit-counts.json`
+and `source-audit-peak-processes.json`. A local validation/composition pass only
+counted the actual98-page fixture; serialized lengths are not heap measurements.
+
+Measurement qualification: the benchmark client runs via `docker exec` inside
+the API container, alongside the sampler. At sampled container peaks its RSS
+is87.1–88.2MiB; API RSS170.3–203.4MiB and render RSS185.3–213.2MiB. RSS includes
+shared pages: do not add these figures or subtract client RSS from cgroup working
+set. The reported355.1/368.8MiB means remain valid for the matched complete
+test-container setup, not isolated production-Service or renderer memory.
+Both variants used the same arrangement. Production-only attribution remains
+unknown without a client-outside-container measurement.
+
+Confirmed source findings and bounded next experiments:
+
+1. **Validation builds discarded results.** `Core/src/data/prepareSections.ts`
+   uses model14 proxy validators which clone scoped prepared inputs, then clones
+   the entire prepared input at the end. Model18 strictAreas calls
+   `prepareAreaValue` but discards its return; prepared-mode implementation still
+   clones the Area. `validateValues` likewise constructs arrays/maps even when
+   callers only need issues. First candidate: separate allocation-free internal
+   validation from the public detached-snapshot return, preserving strict
+   rejection, defaults, warning integrity and mutation isolation. This is a
+   concrete extra-allocation path introduced in the model18 strict recheck,
+   not proof that it accounts for the measured RAM delta.
+2. **Whole-document ownership crosses layers.** Service admission composes to
+   validate output/claim images, worker prepares original input again to check
+   persisted integrity, then composes again. `Service/src/images/job.ts` clones
+   the composed document to rewrite resource IDs; `jobs/render.ts` serializes it
+   across a process boundary. Child parses it and Core `createPdfEngine.ts`
+   snapshots document and image bytes before its first await. Explore an explicit
+   internal ownership transfer or a separate resource-ID mapping; do not remove
+   the public snapshot guarantee or stored-input tamper checks. Lexical scope is
+   not evidence that every old object remains live until render completion.
+3. **Text cache persists through generation.** `cacheTextRuntime.ts` retains JSON
+   strings with a32MiB UTF-16 payload budget/8192-entry cap; hits parse new objects.
+   Cache payload limit is not an actual heap cap or measured occupancy. Smaller
+   bounds are a focused RAM/time tradeoff experiment; preserve independent
+   results or prove consumers cannot mutate shared entries.
+4. **Layout retains the book.** `documentFlow.ts` accumulates all DrawPages while
+   the resolved graph remains available. `cellTableFlow.ts` premeasures each whole
+   table; drawn flags do not release measured lines until that table ends.
+   Actual fixture:5627 nodes,457 roots,200 tables,933 rows,largest table30 rows,
+   198 TOC headings,371 body image nodes. Thus table-at-a-time work already exists;
+   changing it alone does not remove full-book graph/draw retention. `emitLine`
+   shallow-copies runs and shares glyph arrays: not every representation is a
+   full independent glyph copy. Incremental book processing is a larger change
+   requiring row-span/group, numbering, links, TOC and font-subset preservation.
+5. **TOC is not a second full pagination pass.** `composition/contents.ts` stores
+   heading metadata; fixed number slots are filled after layout. Other consumers
+   also need the final draw tree (links, page fields, font subset, writer).
+6. **Writer creates another glyph representation and page streams.** `writePdf.ts`
+   retains resolved glyph runs while building content buffers for all pages.
+   Service collects output chunks then concatenates. Actual PDF is2583938 bytes
+   in both variants, so final-buffer concatenation alone is not a plausible
+   explanation for hundreds of MiB, though intermediate glyph structures may be.
+7. **Images have both reuse and copies.** Service deduplicates derivatives by
+   source/frame size. Actual PDF has13 top-level image objects, about1.343MiB of
+   RGBA-equivalent pixels, despite371 body placements. Child PNG conversion and
+   Core image snapshots allocate copies; original-image decoding/native-library
+   overhead are separate and not bounded by that final-pixel estimate.
+
+Prepared/composed compact JSON sizes are228502/5173567 bytes. This demonstrates
+representation expansion, not proportional heap cost or a retained-live-set
+measurement. Recommended experiment order: discarded validation allocations,
+document ownership/copies, then text-cache tradeoff; defer table streaming and
+writer redesign until evidence justifies their wider correctness surface.
+No estimated MiB saving is accepted from this static survey. Future comparison
+must preserve PDF/content tests and distinguish allocation churn from peak
+live data and runtime-retained capacity.
