@@ -101,6 +101,9 @@ body bottom=min(innerBottom,footerTop-gap).
 Columns แบ่งพื้นที่ที่เหลือหลังหัก gap ตามสัดส่วน weight.
 เช่น weights1/2/1 และ gap0 → 25%/50%/25% ของ band.
 สูงเท่ากับคอลัมน์ที่สูงที่สุด; child ภายในแต่ละคอลัมน์เรียงแนวตั้ง.
+textAlign:center คือกลางคอลัมน์ที่ได้รับ ไม่ใช่กลาง band หรือกลางกระดาษเสมอ.
+ดู [หลักการจัดแนวและตำแหน่งเลขหน้า](reference-mapping.md#4-การจัดแนวต้องระบุพื้นที่อ้างอิง)
+ก่อนเลือก weight และลำดับเส้น/ข้อความใน footer.
 คำว่า weight ไม่ใช่ pt. ระบุ image frame ให้ไม่เกินความกว้างคอลัมน์นั้น.
 
 ## 5. Header/footer mode กับ cover

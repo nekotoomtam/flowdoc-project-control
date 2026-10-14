@@ -531,3 +531,20 @@ as a visual workaround on a uniform white background, not true borderless suppor
 Scope is inline documentation synthesis; no runtime, draft or publication changes.
 Checks: property/source inspection, local links, JSON fragment parsing and diff
 review. No new render or cross-model trial is claimed by this documentation update.
+
+## Alignment and footer clarification — 2026-10-14
+
+Read-only inspection of Sol template 3b65e476-12bd-4294-b833-ff1131f38403,
+live revision 5, confirms approval title has no textAlign while role/person cell
+blocks use center. Both approval/main footers order line before columns, with
+weights 4:2:2, gap 8pt and a centered compact page-field block in column two.
+This centers within that column, not the page. With a 190mm band its center is
+about 23.04mm right of the page center. This corrects the earlier conversational
+claim that the page label was horizontally centered on the page; it does not
+infer the model's intent or change previous acceptance records.
+
+Added general alignment-reference-area and footer-order guidance to the mapping
+chapter, with links from layout/workflow guidance. Source inspection of Core
+pageBands.ts and validateGraph.ts supports column geometry, stack order and
+property boundaries. Checks cover arithmetic, local links, diff and Markdown
+fences. No user template/runtime changes, new PDF render or publish in this update.
