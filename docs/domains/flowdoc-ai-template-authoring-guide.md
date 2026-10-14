@@ -234,7 +234,13 @@ members[] อยู่ในกลุ่ม, name สมาชิกอ่าน
 5. เรียก validate_template ด้วย definition และ sampleRequest เพื่อตรวจข้อมูล
    จากนั้น preview_template_draft ด้วย templateId, revision ที่บันทึกแล้ว,
    sampleRequest และ idempotencyKey
-6. ใช้ get_preview_status แล้ว get_preview_pdf และอ่าน MCP resource ที่คืนมา
+6. ใช้ get_preview_status แล้ว save_preview_pdf({jobId}) เพื่อบันทึก PDF ลงเครื่อง MCP host
+   โดยตรง แล้วเปิดไฟล์จาก value.path ตรวจทุกหน้า ไม่คัดข้อความ base64 มาประกอบไฟล์เอง
+   tool คืน byteSize และ sha256 สำหรับตรวจความครบถ้วนด้วย
+   ค่าเริ่มต้นอยู่ใน Downloads/FlowDoc-previews ของผู้ใช้ที่รัน MCP; ผู้ดูแลตั้ง
+   AUTHORING_PREVIEW_DIR ได้ แต่โมเดลส่งพาธปลายทางเองไม่ได้ แต่ละครั้งสร้างไฟล์แยก
+   หากใช้ MCP บนเครื่องอื่น พาธนี้อยู่บนเครื่องนั้น ไม่ใช่เครื่องของผู้เปิดแชต
+   get_preview_pdf และ MCP resource ยังใช้ได้กับ client ที่จัดการ binary โดยตรง
    เพื่อตรวจ PDF แก้ draft แล้ว preview ใหม่จนพอใจ ก่อนรอเจ้าของรับรอง
 
 | Tool | รับ | คืน / ผลข้างเคียง |
@@ -247,6 +253,7 @@ members[] อยู่ในกลุ่ม, name สมาชิกอ่าน
 | preview_template_draft | templateId, expectedRevision, sampleRequest, idempotencyKey | jobId, revision, fingerprint; ไม่ publish |
 | get_preview_status | jobId | สถานะงานและ outputAvailable |
 | get_preview_pdf | jobId | resource link สำหรับอ่าน PDF; ต้องใช้ host ที่รองรับ resource |
+| save_preview_pdf | jobId | บันทึก PDF บน MCP host; คืน path, byteSize, sha256 โดยไม่ส่ง base64 เข้าโมเดล |
 
 ภาพใช้ create_preview_upload → upload_preview_image → finalize_preview_upload
 แล้วใส่ uploadId และ resource IDs ใน sampleRequest ใช้ upload ใหม่เมื่อเปลี่ยน

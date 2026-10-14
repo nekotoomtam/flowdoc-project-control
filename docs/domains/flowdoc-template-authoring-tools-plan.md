@@ -416,3 +416,27 @@ criteria. No publish or release promotion. Existing Core worktree has unrelated
 uncommitted Area migration work; do not delete it or unmerged candidate lanes.
 No additional worktree was created for this correction. Cleanup after integration
 remains required under the owner's instruction and the worktree safety boundary.
+
+## Direct PDF save correction — 2026-10-14
+
+Bounded owner-requested inline correction; Service implementation, execution IDs
+not applicable. The MCP host now offers `save_preview_pdf(jobId)`, downloading
+through the existing authenticated preview endpoint and saving bytes directly.
+It returns an absolute host path, byte size and SHA-256; model-supplied output
+paths are rejected. Default directory is the MCP user's Downloads/FlowDoc-previews,
+overridable by operator-only AUTHORING_PREVIEW_DIR. Each call creates a separate
+file and local copies remain until the user removes them. Existing resource reads
+remain supported. Restart the registered MCP process to load the new tool.
+
+Evidence: Service tests/authoring-save-pdf.test.mjs observed missing-tool failure
+before implementation, then passed with tests/authoring-tools.test.mjs (2 tests).
+TypeScript build and diff whitespace checks passed. Coverage includes exact binary
+bytes, digest, repeated saves preserving prior files, denied downloads leaving no
+file, and rejecting arbitrary output paths. No HTTP/database/rendering changes.
+Real stdio MCP call against retained job 01a139a1-ee4b-70b2-9a75-0d843aacee8d
+saved 77341 bytes with SHA-256
+325c8b275f6a340f9845c57e571334bcc3200ffbf7c996840df0ab00560ada66.
+Poppler parsed/rendered both pages; both page images were inspected. Evidence
+scripts/results remain in Service artifacts/pdf-resource-check-20261014.
+No new preview, draft mutation, publication, release promotion or database changes.
+Other-room live tool discovery after MCP restart remains unverified here.
