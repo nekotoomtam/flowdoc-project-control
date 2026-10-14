@@ -326,3 +326,35 @@ writer redesign until evidence justifies their wider correctness surface.
 No estimated MiB saving is accepted from this static survey. Future comparison
 must preserve PDF/content tests and distinguish allocation churn from peak
 live data and runtime-retained capacity.
+
+### Validation-copy candidate and Area-only measurement attempt
+
+Owner narrowed the requested run to latest Area only, three 98-page API runs;
+no old variant and no before/after performance claim. The approved implementation
+scope is discarded prepared-validation copies. Core internal checks now borrow
+validated input synchronously; the outer validation boundary still returns a
+detached snapshot and independent warnings. Prepared nested arrays and Areas
+are checked without rebuilding their discarded results. Request normalization,
+strict rejection and Service integrity checks remain intact.
+
+Candidate remains in the existing isolated Core/Service worktrees, not release.
+Core tests:509 passed; focused Area tests include snapshot isolation and two
+boundary clone calls instead of intermediate clones. Core and Service builds
+pass. The packed0.2.15-area.2 candidate passed192 Service tests in a fresh Linux
+image with isolated PostgreSQL; installed file hashes match the archive manifest.
+This demonstrates functional checks, not a measured RAM reduction.
+
+Evidence: Core worktree `artifacts/area-validation-tests.json`; primary Core
+`artifacts/area-validation-20261014/expected-identities.json`; primary Service
+`artifacts/area-validation-20261014/` contains package-consumer checks and the
+three-run harness. First measurement attempt stopped before generation because
+host reserve was1462.40MiB, below the existing1536MiB start threshold. Zero of
+three measured rounds completed; no new PDF parity result or peak measurement
+is claimed. Cleanup passed and no test containers remain. Preserve this stopped
+attempt; any retry needs a new output directory. The same200ms observer and
+client-inside-container qualification apply. Latest observed reserve after
+cleanup was1662.15MiB, insufficient margin to repeat setup reliably.
+
+Remaining acceptance: complete three Area-only rounds when host reserve allows,
+including exact decoded PDF drawing/resource/geometry/link parity and content
+checks.483-page work, release promotion and remaining migration steps stay open.
