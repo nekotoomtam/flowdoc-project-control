@@ -201,3 +201,22 @@ prepared. The fresh first-run attempt again stopped before setup:949.625MiB
 free versus1536MiB required. `benchmark-five/status.json` records BLOCKED and
 zero completed measurements. No performance comparison is available yet;
 resume when host memory meets the original guard without closing user apps.
+
+Retry after owner requested a fresh check: host initially had3923.60MiB free.
+One baseline API job completed (14.534233s,98 pages), but its direct-Core PDF
+oracle was inappropriate: Service image normalization resizes images (banner
+4144x480 became1654x192), changing image placement relative to the full-size
+direct-render oracle. No product source repair was made. Baseline API content
+checks pass1457 text values,363 requirements,396 valid links and29 groups.
+That diagnostic run is excluded from the five-pair performance comparison.
+
+The corrected harness under `benchmark-five-api` uses that verified baseline
+API PDF, the same API route for both variants, and compares warning codes
+(expected low-resolution image warnings retain different source node paths).
+Two attempts stopped before submitting any measured job: host reserve fell to
+1513.94MiB and1356.14MiB respectively. Both isolated stacks were cleaned up;
+Docker reports no running containers. `series-progress.json` is STOPPED with
+zero completed comparison measurements. Preserve the first stopped attempt in
+`before-98-1-memory-blocked` and the latest in `before-98-1`. A fresh untouched
+trial directory is required on resume. Do not present the diagnostic baseline
+time as a paired performance result or relax the1536MiB guard.
