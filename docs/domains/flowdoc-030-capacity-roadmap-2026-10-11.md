@@ -1651,3 +1651,28 @@ images and generated credentials were removed; clean integrated temporary
 worktrees/branches were removed. Primary Core/Service checkouts are clean.
 Project Control diff/data checks cover this existing record; no maps promoted.
 Acceptance and affected-area coverage pass; stop after closing this record.
+
+### SRS table alignment candidate — 2026-10-14
+
+Owner requested horizontal centering in the existing document template: all
+table headings and first-column data, with no API-layer change. Bounded inline
+template implementation, Service-local private corpus owner, routine risk;
+execution IDs N/A. Use the accepted `artifacts/release-0214/98-pages/template.json`
+as input and preserve it. Candidate is Service ignored
+`artifacts/table-center-20261014/template.json`; no private corpus committed.
+
+Changed26text-block `props.textAlign` values only. Covers data-table headings,
+first-column text, and the inner meeting participant heading row. Cover/signature
+layout grids and full-width body labels are retained; images are unchanged.
+`prepare.py`/`changes.json` prove all other template properties are identical.
+Current installed Core validates the candidate and accepts the unchanged request.
+Core/Service source, API payload, published templates and release refs unchanged.
+
+PDF verification is BLOCKED, not PASS: Docker Desktop fails startup while binding
+its local Secrets Engine socket (`engine.sock` cannot be accessed/renamed).
+No test containers or new PDFs were created. Do not reset Docker data as part of
+this template task. Before final visual acceptance, run the prepared direct-Core
+before/after renderer after Docker recovers, then verify98pages, unchanged text/
+links/vertical geometry, and visually inspect centered headings/first-column text.
+Further memory optimization remains paused. Project Control diff/data checks
+cover this status record only; no product or map acceptance is promoted.
