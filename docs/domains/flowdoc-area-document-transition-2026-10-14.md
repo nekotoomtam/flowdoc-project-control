@@ -670,3 +670,10 @@ an identity-preserving definition adapter and revision-pinned draft preview,
 and restrict the agent's write access at the host/tool boundary. Existing runtime
 and API are unchanged; suggested tool names are not implemented endpoints.
 No new rooms, publication, release integration or memory optimization were run.
+
+Owner subsequently requested planning for create/update/validate/preview, with
+human confirmation before publication. The proposed bounded implementation is
+[template authoring tools plan](flowdoc-template-authoring-tools-plan.md).
+It reuses Service storage/Core, adds revision-pinned unpublished preview and a
+restricted tool adapter; phase1 exposes no publish tool. Planning is complete;
+implementation, host connection and actual Luna/Terra PDF trial are not started.

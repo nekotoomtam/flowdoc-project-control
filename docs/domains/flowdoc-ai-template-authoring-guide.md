@@ -220,6 +220,9 @@ publish มี requestId สำหรับ retry และสร้าง immut
 
 ### แบบที่แนะนำ (ยังไม่ได้ทำ)
 
+แผนลงมือและเกณฑ์ตรวจอยู่ใน [Template authoring tools plan](flowdoc-template-authoring-tools-plan.md)
+ระยะแรกสิ้นสุดที่ preview และไม่เปิด publish tool ให้โมเดล
+
 เพิ่มชั้น authoring service/tool ที่รับ structured JSON และเรียก validator/storage
 เดิม ไม่ต้องสร้างฐานข้อมูลหรือ renderer อีกชุด และไม่ให้โมเดลเข้าถึง SQL, shell,
 repository write หรือ path ของเครื่อง ถ้ารันใน process เดียวกันเรียกฟังก์ชันภายในได้
