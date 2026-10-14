@@ -191,3 +191,13 @@ PASS. Do not infer a RAM reduction, attempt483 pages, lower guards, or promote
 the candidate from these functional results. Resume after host memory permits;
 primary release checkouts and published templates remain unchanged. Active
 cutover, final packaging, docs/retirement and final acceptance remain open.
+
+Owner follow-up: compare five runs of each variant. The98-page proof budget is
+now five alternating before/after pairs (ten fresh-process measurements),
+superseding the proposed three pairs. Verification-only outputs are isolated in
+`flowdoc-service/artifacts/area-transition-20261014/benchmark-five`; candidate
+source and prior evidence were not changed. All ten trial directories are
+prepared. The fresh first-run attempt again stopped before setup:949.625MiB
+free versus1536MiB required. `benchmark-five/status.json` records BLOCKED and
+zero completed measurements. No performance comparison is available yet;
+resume when host memory meets the original guard without closing user apps.
