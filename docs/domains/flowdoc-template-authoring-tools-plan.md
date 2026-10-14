@@ -497,3 +497,23 @@ Implementation/tests/runtime unchanged. Review covers scope, intermediate steps,
 error handling, completion checklist, starter instructions and publication boundary.
 Cross-room behavior with this revised guide is NOT RUN; owner will retry separately.
 This clarification does not guarantee model persistence or certify reference fidelity.
+
+## Developer reference split — 2026-10-14
+
+Owner requested a detailed standalone developer reference after Sol produced a
+static contents table and independently sized image/table frames. Added
+[Developer Documentation](../developer/authoring/README.md) with structure/data,
+node/property, layout/defaults, contents/repetition, API, examples and verification
+chapters; the authoring guide now routes readers to the relevant chapter.
+Authority is bounded to candidate Area18 and installed Core area.5. This is inline
+documentation synthesis, not a registered execution or release promotion.
+
+Added a reusable reference definition/request and checks. Installed-package
+validate/prepare/compose and six negative cases pass. Native PDF render produces
+2-page baseline and 4-page expanded data; PDF checks verify TOC page2→4, actual
+internal destinations, external URI, global version bindings, and aligned190mm
+header/table widths. All6 rendered pages visually inspected. Existing two example
+pairs pass their original checker. Detailed sources, commands and untested
+combinations are recorded in the reference verification chapter. No user draft,
+runtime, source data or publication was changed. Model behavior and the reported
+Sol continuation-layout issue are not certified or repaired by this work.

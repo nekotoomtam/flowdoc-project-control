@@ -12,6 +12,24 @@ Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญ
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ draft/publication/API
 ตัวอย่างใช้ข้อมูลสมมติ ไม่มีข้อมูล SRS ส่วนตัว
 
+## Developer Documentation ที่ต้องเปิดตามงาน
+
+คู่มือนี้อธิบายขั้นตอนทำงาน ส่วนสัญญาโดยละเอียดอยู่ใน
+[Developer Documentation](../developer/authoring/README.md).
+ก่อนประกาศหรือเปลี่ยนความสามารถ ให้เปิดบทที่เกี่ยวข้อง ไม่เดาจากตัวอย่างอย่างเดียว:
+
+- [Template / Section / Area / Format และตัวแปรทุกชนิด](../developer/authoring/structure-and-data.md)
+- [Node, inline และ property พร้อมตำแหน่งที่ใช้ได้](../developer/authoring/nodes.md)
+- [ค่าเริ่มต้น การคำนวณพื้นที่ ตาราง ภาพ หัวท้ายและเลขหน้า](../developer/authoring/layout.md)
+- [สารบัญจริง ลิงก์ repeats / cellRepeats / rowGroups](../developer/authoring/contents-and-repetition.md)
+- [API / MCP arguments, response, upload และ retry](../developer/authoring/api.md)
+- [ตัวอย่างเต็มที่ตรวจได้และผลที่ควรเห็น](../developer/authoring/examples.md)
+
+สารบัญต้องใช้ nodeระบบและheading anchors ไม่ใช่ตารางรายชื่อไม่มีเลขหน้า.
+ภาพwidth/heightคือกรอบ; ภายในรักษาสัดส่วนไม่ยืดเต็มอัตโนมัติ.
+ตารางต้องคำนวณผลรวมคอลัมน์และpadding ไม่คาดว่าเต็มพื้นที่เอง.
+รายละเอียดและข้อจำกัดอยู่ในreferenceข้างต้น; ตรวจผลภาพ/ลิงก์จริงก่อนรับงาน.
+
 ## 1. เป้าหมายและสิ่งที่ต้องส่งมอบ
 
 อ่านคู่มือนี้และ PDF ต้นแบบ แล้วสร้าง **โครงที่เปลี่ยนข้อมูลและสร้างใหม่ได้**
@@ -180,6 +198,8 @@ continue/restart/exclude พร้อม visibility ตามสัญญา ห
 ใน band ต้องใช้ pageFieldLayout=compact ตามตัวอย่าง footer
 
 สารบัญใช้ table-of-contents และหัวข้อที่มี anchorId กับ toc.level
+ดู [สูตรประกอบและตัวอย่างสารบัญ](../developer/authoring/contents-and-repetition.md)
+และ [ตัวอย่างครบชุด](../developer/authoring/examples.md) สำหรับdefinition/request/PDF checks.
 อย่าใส่เลขหน้าจาก PDF เดิมเป็นข้อความถาวร เมื่อข้อมูลเปลี่ยนเลขหน้าต้องคำนวณใหม่
 ลิงก์ภายในต้องมีปลายทางจริง และ anchor ของรายการซ้ำต้องไม่ชนกัน
 
