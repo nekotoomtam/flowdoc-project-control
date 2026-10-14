@@ -590,3 +590,65 @@ estimate. Sampling is200ms and the container includes the API client/observer.
 The concrete success is the verified missing retainer and unchanged output;
 peak saving remains variable. Text-cache work,483-page acceptance and release
 integration remain open and outside this request.
+
+### Two bounded text-cache experiments (owner stop boundary)
+
+Owner authorized at most two further changes to document-generation memory,
+each with three normal Area98 runs and unchanged PDF. Queue/concurrency design,
+483-page testing and release integration are excluded. Inline implementation
+owner is Core, with Service consuming private candidate packages; execution IDs
+are not applicable. Core commit `fdcb9fc` contains only the cache changes/tests;
+the pre-existing uncommitted Area migration remains separate in the worktree.
+
+Attempt1 adds idempotent cache disposal after appendPageNumbers, the final text
+consumer, before font subsetting/writing, and in failure cleanup. Pending misses
+cannot refill a disposed cache. Core512 tests pass (including disposal/pending
+request and success/failure lifecycle checks); the packed area.3 consumer passes
+195 Linux Service tests. Separate renderer snapshot before writing confirms the
+cache Map has zero directly referenced strings and a152-byte table, versus the
+earlier16.394MiB of direct string self sizes. The diagnostic PDF remains identical.
+Normal generation has no forced GC or snapshot instrumentation.
+
+Attempt2 retains disposal and reduces the internal UTF-16 cache payload budget
+from32 to8MiB, keeping8192 as the entry limit. This bounds accumulation during
+layout; evicted entries can be computed again. Core512 tests and Service build
+pass; packed area.4 runs the real Linux API/PDF path three times. The195-test
+Service suite belongs to area.3 and was not rerun for area.4; unchanged Service
+behavior plus the area.4 real API runs are the scoped consumer proof.
+
+| Candidate | Worker seconds (3 runs) | Peak working set MiB (3 runs) | Mean MiB |
+| --- | --- | --- | ---: |
+| area.3: disposal | 11.126988 / 11.259346 / 11.311507 | 349.687500 / 340.722656 / 354.160156 | 348.190104 |
+| area.4: disposal +8MiB | 11.424370 / 11.542929 / 11.470918 | 309.644531 / 333.664063 / 349.164063 | 330.824219 |
+
+Prior JSON-holder baseline mean was350.954427MiB. Attempt1 changes that by only
+2.764323MiB; attempt2 is20.130208MiB lower (5.74%) with mean worker11.479406s
+versus baseline11.452354s. These are observational shared-host sets, not a
+controlled causal reduction or a guaranteed per-job budget. The final set spans
+39.52MiB; host pressure and Docker/WSL restart before its last run limit comparison.
+Its cgroup kernel peak current values are318.22/347.05/370.22MiB: these include
+reclaimable memory and differ from sampled working set, so do not advertise a
+hard330MiB peak ceiling or reliable reduction of total peak current.
+
+All six completed normal PDFs retain98 pages and exact decoded drawing,
+resources, geometry and links; each checks1457 text values,363 requirements,
+396 links and29 groups. Zero OOM kills or runtime guard stops. Minimum host free
+RAM1911.91MiB for attempt1 and1282.84MiB for attempt2; the1536MiB start gate and
+1024MiB runtime reserve remain unchanged. All completed stacks were cleaned up;
+Docker Desktop stopped and WSL shut down afterward.
+
+Evidence under primary Service:
+`artifacts/area-cache-release-20261014/summary.json`, tests and normal trials;
+`artifacts/area-cache-release-snapshot-20261014/trial-3/` snapshot/analysis/parity;
+`artifacts/area-cache-budget-20261014/summary.json`, `after-98-1`,
+`after-98-2-retry` and `after-98-3-retry`. Core artifact directories of matching
+names contain pack recipes/full expected file identities. Failed pre-generation
+attempts are preserved/excluded: diagnostic trial had low host reserve; trial-2
+used an old expected-package locator (corrected for trial-3); final normal
+attempts2 and3 initially failed host reserve before generation. No failed
+generation or PDF mismatch was hidden by these retries.
+
+Keep area.4 as the tested private candidate, not release evidence. The two-change
+budget is exhausted; stop optimization here. The upper250MiB target is not met,
+and these results do not establish that it is impossible. Further redesign or
+additional tuning requires a new owner decision.
