@@ -1676,3 +1676,25 @@ before/after renderer after Docker recovers, then verify98pages, unchanged text/
 links/vertical geometry, and visually inspect centered headings/first-column text.
 Further memory optimization remains paused. Project Control diff/data checks
 cover this status record only; no product or map acceptance is promoted.
+
+### SRS table alignment verification — 2026-10-14
+
+PASS after owner requested retry and Docker Linux became available. The prior
+startup blocker is resolved for this run. Built the unchanged Service runtime
+and rendered the original/candidate templates directly through packaged Core,
+without API or DB changes. Both PDFs have98pages and identical warnings.
+`artifacts/table-center-20261014/check-layout.py` compares every page: text/order,
+fonts/images/resources, geometry and396link annotations are identical; only
+the horizontal translation of1,091text drawing runs changes. No vertical
+position, wrapping, borders or other drawing operators change.
+
+The reused content check initially lacked its mapping-check.json input; copied
+the unchanged reference mapping and reran successfully:1,457values,363details,
+396valid links, plus29company/group associations pass. Visual inspection of
+pages3,12,17,45 confirms revision, definition, participant and requirement table
+alignment. Candidate remains the same26-property template edit; request unchanged.
+Final local PDF is `artifacts/table-center-20261014/spaceship-srs.pdf`, alongside
+`template.json`, before.pdf, render/layout/content checks and page previews.
+The temporary renderer container and image were removed. No release/tag or
+published template changed. Project Control diff/data checks cover this update;
+template acceptance is complete and memory optimization remains paused.
