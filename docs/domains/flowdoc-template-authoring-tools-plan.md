@@ -560,3 +560,94 @@ rules; other families remain future scope until real differing requirements aris
 Inline documentation maintenance only. Verification covers preserved case rows,
 local links, Markdown fences and final diff; no runtime or draft changes and no
 new rendering/model trial claimed.
+
+## flowdocmake package proposal — 2026-10-14
+
+Status: planned, not installed or implemented. Owner requested planning for a
+single discoverable entrypoint combining authoring tools and routed documentation.
+Scope of this update is Project Control planning prose, inline Documentation
+Synthesizer; execution IDs are not applicable. Product implementation ownership
+must be resolved against current owner guides before changing those repositories.
+No new chat, configuration, runtime or draft mutation is part of this planning step.
+
+### Intended experience and boundaries
+
+User invokes flowdocmake with a source PDF/data or existing template ID. The
+entrypoint checks connection and compatibility, loads only relevant guidance,
+creates an empty draft identity first for new work (or reads the current revision
+for existing work), then composes, validates, previews, saves and reviews the PDF.
+It continues through authorized repairs until review-ready or a genuine blocker;
+a saved revision/job ID is not completion. Publish remains separately authorized.
+Keep publication absent from the default tool surface; do not add direct database
+or file mutation as a fallback for unavailable authoring tools.
+
+### Delivery sequence
+
+1. **Package/discovery prototype.** Inspect host-supported plugin packaging and
+   existing MCP installation. Prefer one local package with a flowdocmake skill,
+   MCP configuration and versioned references. Reuse existing authoring tools.
+   Prove discovery in a fresh chat before committing to the installation format;
+   a standalone skill alone does not install or connect its tool dependencies.
+   Keep machine credentials outside the package and avoid temporary worktree paths.
+2. **Versioned guide routing.** Keep maintained documentation in Project Control.
+   Package a reproducible, read-only snapshot with source commit and content hashes,
+   preserving relative links. Do not maintain a second editable manual or silently
+   read a moving latest revision during an existing run. Route shared principles
+   → document family → cases → needed schema/API reference. Start with flowing books.
+3. **Read-only preflight.** Check tool availability, successful authenticated
+   get_authoring_contract, required tool schemas, compatible documentation and
+   available local PDF saving/rendering/inspection capabilities. Distinguish
+   missing installation, unreachable Service, authorization failure, incompatible
+   contract and missing PDF reader. A reachable container is not readiness proof.
+   Do not create a draft as a connection probe. Bound retries; return an actionable
+   blocker rather than looping, reinstalling or restarting unrelated services.
+4. **Authoring workflow.** Record source authority and observed layout cases;
+   use existing draft lifecycle, expectedRevision and idempotency rules. Preserve
+   input and identity across retries. Record template ID/revision/fingerprint,
+   job ID, source locations, output path/hash and remaining checks in the working
+   result so an interrupted run can resume without duplicating drafts. Read fresh
+   state before updates. No claim of background work after the turn ends.
+5. **Review delivery.** Save PDF directly, inspect every output page, reconcile
+   unresolved source values, and verify applicable TOC links/alignment/tables/assets.
+   Report data, behavior and visual results separately, with known differences.
+   A render failure keeps its exact failing input; no shortening source text to pass.
+6. **Acceptance trials.** Test a fresh chat invocation with no manual guide-path
+   coaching; missing Service/tools; authorization failure; incompatible version;
+   create and existing-draft workflows; interruption/retry; image and direct PDF
+   saving; and a flowing-book fixture with TOC, alignment, border workaround and
+   variable rows. Then run the owner's full reference case through review without
+   publishing. Any separate chat dispatch requires explicit authorization and the
+   applicable coordination route. Model persistence is measured, not guaranteed.
+
+### Version contract proposal
+
+Track independently: flowdocmake package version, documentation source commit/hash,
+authoring contract version/capabilities, supported schemaVersion/nodeModelVersion,
+Service/Core build identifiers, and template revision/fingerprint. Package version
+must never substitute for schema version or draft revision. Use an explicit tested
+compatibility set; a newer number is not assumed compatible. Missing runtime
+identity is unknown, not evidence that the installed Core matches a guide.
+
+Live get_authoring_contract on 2026-10-14 succeeded and advertises node model 18,
+draftDefinitionVersion 1 and publicationEnabled false. This does not prove an
+exact Service/Core build. Before implementing version enforcement, inventory the
+full current response and add narrowly scoped contract/build/capability metadata
+only where absent, through the Service owner. Proposed metadata names are not
+current callable API fields. Unsupported versions stop dependent mutations and
+identify the needed compatible package; no automatic migration or upgrade.
+
+### Acceptance and proof budget
+
+Success means a fresh room can discover both skill and tools, retrieve the correct
+reference snapshot, diagnose connection failures before mutation, and produce a
+reviewable saved PDF with traceable versions and complete scoped checks. Publish
+must remain unavailable without a distinct authorized path. Validate package links,
+snapshot freshness, credentials exclusion and compatibility tests, then focused
+workflow fixtures and one full-document trial. Broaden checks only for a new failure
+or affected behavior. Do not claim model equivalence from one successful trial.
+
+Packaging references inspected for this proposal:
+[skills](https://learn.chatgpt.com/docs/build-skills) and
+[MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+Host-specific single-package installation and exact metadata extensions remain
+implementation discovery items, not verified features of flowdocmake.
