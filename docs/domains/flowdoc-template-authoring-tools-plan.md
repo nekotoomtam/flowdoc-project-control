@@ -440,3 +440,44 @@ Poppler parsed/rendered both pages; both page images were inspected. Evidence
 scripts/results remain in Service artifacts/pdf-resource-check-20261014.
 No new preview, draft mutation, publication, release promotion or database changes.
 Other-room live tool discovery after MCP restart remains unverified here.
+
+## Stacked Thai marks renderer correction — 2026-10-14
+
+Owner authorized renderer correction with original data retained, full revision3
+preview verification and no publish. Inline scope: Core measureText and regression
+tests, Service packed dependency, existing Project Control guide/record. IDs N/A.
+Core fde34a9 now reserves max(configured leading, shaped ascent + descent) per
+ordinary text line. Width and page/frame limits remain enforced; no normalization,
+character removal, schema mutation or draft changes. Native Sarabun12 probe measured
+21.528pt for the original duplicate-mark text versus configured20pt.
+
+Core build and 210 layout/PDF tests passed (31 files), including RED->GREEN tall-ink
+regression, unchanged text, pagination/no overlap and oversized-page rejection.
+Service decec4a consumes Linux-packed area.5 SHA256
+8cdb4c692d2066583f2626d5c86009c039e3fe3e3106099b6bfa0243b315926f.
+Package comparison against area.4 proved only package.json and
+ dist/layout/measureText.js changed; all other file hashes/modes unchanged.
+Initial Windows repack lost executable permission and failed native probe; it was
+replaced by the verified Linux pack before runtime rollout. Linux native original
+marks check and 3 affected Service tests passed. Local API rebuilt/recreated only;
+DB preserved. Existing candidate worktrees remain unmerged with unrelated changes.
+
+Full preview job 01a139cf-9dde-7f20-be19-70a0c6ff3fc5 succeeded with no warnings or
+skipped indices, template d7771add-58b3-4765-ab64-530a02e54b92 revision3. Database
+JSONB comparison proves original_input and preview_definition identical to failed
+job 01a139c8-bba6-7c9a-89f6-d231953dac5d. Direct save tool produced128 pages,
+1109585 bytes, PDF SHA256
+7eb8eee6104de9756d73a6d15db0a9264fa1a981ddce465b201c0d08f4fd1efd.
+All128 pages rendered and visually reviewed in16 contact sheets; page108 inspected
+separately for original stacked marks. No visible clipping/overlap observed.
+Text extraction verified1229 nonempty data values,361 unique nonempty requirement
+codes exactly once in payload order, original duplicate marks and all page numbers.
+363 requirement entries include2 empty-code rows already in the payload. Extraction
+check ignores whitespace and repeated page/table headers for cross-page values;
+it does not normalize Thai marks. Evidence: Service artifacts/stacked-mark-fix-20261014
+(original.json, check-native.mjs, verify.py, verification.json, page images).
+
+This proves rendering of the unchanged supplied revision3 request, not fidelity to
+the98-page reference. Many sparse pages remain from every-six-lines page breaks;
+blank cells and out-of-table requirements are inherited authoring choices. No
+publication, release promotion, global readiness or new performance claim.
