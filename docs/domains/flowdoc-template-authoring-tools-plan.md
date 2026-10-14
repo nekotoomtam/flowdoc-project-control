@@ -372,3 +372,47 @@ The disposable DB/containers/image and credential file were removed afterward.
 No product source changed. Next bounded work should diagnose the preserved
 full-content layout failure before the actual Luna/Terra/reference-PDF trial.
 This trial does not prove native host tool installation or reference reconstruction.
+
+## Full Thai layout diagnosis and correction — 2026-10-14
+
+The prior hands-on trial's unresolved layout issue is resolved for its exact full
+input. Owner asked to retain all text and inspect every PDF page. Inline role:
+Product Implementation Agent, owner Service examples and Project Control guide;
+Core inspected read-only. Execution IDs N/A. This is a template configuration fix,
+not a change to Core text shaping, wrapping, layout guards or Service runtime.
+
+Native shaping of the original fixture measured body12 ink/font height18.984pt
+against configured lineHeightPt18; bold16 chapter text required26.032pt against24.
+Core correctly rejected the line's vertical fit. Length was correlated with
+encountering the affected glyphs, not the direct cause. The Service's bounded
+LAYOUT_FAILED message hid this distinction, so the prior trial could not diagnose
+it from the public error alone. No diagnostic/API expansion in this scope.
+
+Correction: body line height20pt and heading28pt; original font sizes, text,
+Section/Area structure and page-break position unchanged. Service's advertised
+Area example and both guide templates use the corrected spacing. Added Service
+examples/thai-authoring-{template,request}.json from the preserved full trial and
+tests/thai-authoring-layout.test.mjs, which executes the real isolated renderer.
+Watched the new test fail at section-main~intro with the original spacing before
+changing it; the corrected test passes.
+
+Evidence: flowdoc-service/artifacts/thai-layout-fix-20261014/diagnostic.json,
+metrics.json, pdf-verification.json, full-thai.pdf, full-page-{1,2}.png and
+check-service.mjs/tests-result.json. Fresh Linux packed candidate verification:
+10 affected authoring/Area/Thai tests PASS, no failed or pending tests; unchanged
+Core area.4 installed hashes verified. Guide example checker PASS. No full Core
+suite or new RAM benchmark required for these style-only changes.
+
+PDF inspected visually on both A4 pages: no clipped/overlapping glyphs, centered
+column headers/codes, second chapter starts page2, correct1/2 and2/2 footers.
+Text extraction verifies32 values and14 requirement codes exactly once. Request
+object equals the preserved original; restoring only the two line-height values
+makes the corrected definition equal the original. Full PDF SHA256:
+3a7156e758e8108648aef885b7150db93c5e808ff76752dbff4249ec4e7ef42e.
+All original content is retained; the shortened control is not used for acceptance.
+
+Actual Luna/Terra and owner-reference reconstruction remain separate NOT RUN
+criteria. No publish or release promotion. Existing Core worktree has unrelated
+uncommitted Area migration work; do not delete it or unmerged candidate lanes.
+No additional worktree was created for this correction. Cleanup after integration
+remains required under the owner's instruction and the worktree safety boundary.
