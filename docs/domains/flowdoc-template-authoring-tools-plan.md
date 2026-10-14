@@ -336,3 +336,39 @@ Publication is deliberately absent and awaits a separate owner-confirmed flow.
 No release merge/push, public deployment or production database changes occurred.
 
 Service candidate commit: 2b1ab0f (codex/area-document-v18). Core packed source remains a candidate with sourceCommit=null; no release provenance is claimed.
+
+## Codex hands-on trial — 2026-10-14
+
+Owner requested testing by this assistant before a Luna/Terra trial. Result:
+**PARTIAL / RISK**, not full authoring usability acceptance. The prior 206-test
+result remains valid; this new scenario exposes a gap outside that fixture set.
+
+A real MCP stdio client launched the shipped tool server and called the isolated
+HTTP Service (candidate2b1ab0f), with real PostgreSQL and renderer. Codex assembled
+a Thai SRS from the guide's requirements structure, received a fresh identity,
+saved definition/schemas, validated, corrected missing required title, edited to
+revision2, observed stale-revision rejection and replayed the same preview job.
+No direct storage writes substituted for authoring tools. Template_versions count
+was0 after the trial; no publication occurred.
+
+Original full Thai introduction failed preview with LAYOUT_FAILED at
+section-main~intro although validate/compose succeeded. Adding a newline while
+retaining the introduction also failed. A short introduction moved failure to
+the original Thai chapter heading. Shortening both produced a control PDF:
+2 A4 pages,14 unique REQ codes, correct explicit page break and page numbering.
+Both pages were visually inspected: Thai glyphs legible, labels and first-column
+codes centered, no visible clipping. MCP resource retrieval and repeated download
+were byte-identical. **The shortened control is not an equivalent repaired output
+of the original full content.** Root cause of the layout failures is unresolved;
+do not infer that Thai text in general is unsupported or that the tool is ready
+for arbitrary SRS documents.
+
+Local reproducible requests, MCP responses, PNGs, extracted text and result.json:
+flowdoc-service/artifacts/authoring-self-trial-20261014/. Full-content input is
+preview.json; shortened control is preview-short-headings.json. The final PDF is
+preview-short-thai.pdf (SHA256
+7ed3dacaf30ae42b04e2ba30ef92208a2b93eb49bbaa84f1d27197a52e923577).
+The disposable DB/containers/image and credential file were removed afterward.
+No product source changed. Next bounded work should diagnose the preserved
+full-content layout failure before the actual Luna/Terra/reference-PDF trial.
+This trial does not prove native host tool installation or reference reconstruction.
