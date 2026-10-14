@@ -544,3 +544,49 @@ payload holder), and provide a lifetime boundary for the text cache after its
 last layout/page-field use. They require independent behavior tests and normal
 three-run evidence; no production GC, snapshot hooks or further fixes are part
 of this diagnostic request. Do not predict peak reduction from adding self sizes.
+
+### Service transport JSON holder fix and three normal runs
+
+Owner authorized only the demonstrated Service JSON retainer fix, separate
+release verification, then three normal Area98 runs with unchanged PDF. Inline
+Service implementation and evidence review; execution IDs not applicable.
+Service candidate commit `54c7a4a` replaces the async string argument with a
+mutable payload holder and clears its text after handing it to stdin. Public
+serialization errors remain rejected promises. Core area.2, text cache and
+renderer behavior are unchanged; no production GC or snapshot hooks were added.
+
+Evidence in primary Service:
+`artifacts/area-json-holder-20261014/` contains the 195-pass Linux Service suite,
+three normal runs, input/package identities, cleanup checks and `summary.json`.
+`artifacts/area-json-holder-snapshot-20261014/` contains the diagnostic overlay,
+retainer checker and successful `trial-3/`. The same checker fails the original
+snapshot on its 10,210,176-byte transport string, then passes the new snapshot:
+the suspended renderSerializedJob argument is an object with empty text and no
+matching large transport JSON string remains. Service heap after forced GC
+before writer is 15,681,896 bytes (14.96MiB), compared with the earlier diagnostic
+24.69MiB. This establishes release at that checkpoint, not immediate OS memory
+return or a guaranteed normal peak saving. Diagnostic PDF parity passes.
+
+The two preceding diagnostic attempts stopped before generation for insufficient
+host reserve (1523.05 and1333.43MiB versus1536MiB). They are preserved, excluded
+from results and cleaned up. After host memory recovered, trial-3 and all normal
+runs passed the unchanged guards. Normal runs use no forced GC or snapshots.
+
+| Normal run | Worker seconds | Peak container working set MiB |
+| --- | ---: | ---: |
+| 1 | 11.574254 | 358.652344 |
+| 2 | 11.391249 | 352.726563 |
+| 3 | 11.391558 | 341.484375 |
+| Mean | 11.452354 | 350.954427 |
+
+All three PDFs retain98 pages and exact decoded drawing/resources/geometry/link
+parity with the accepted baseline, with1457 text values,363 requirements,
+396 internal links and29 groups checked per run. Zero OOM kills or guard stops;
+minimum host free RAM1680.64MiB; all trial cleanup checks pass.
+
+The previous normal set averaged362.398438MiB, so this set is11.444011MiB lower
+(3.16%). These are separate shared-host samples, not a controlled paired causal
+estimate. Sampling is200ms and the container includes the API client/observer.
+The concrete success is the verified missing retainer and unchanged output;
+peak saving remains variable. Text-cache work,483-page acceptance and release
+integration remain open and outside this request.
