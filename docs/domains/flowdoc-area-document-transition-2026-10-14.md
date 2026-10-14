@@ -391,3 +391,50 @@ Acceptance for this bounded request passes. RAM describes the complete test
 container including API client and observer, not isolated Core memory; do not
 infer a RAM reduction without a controlled comparison.483-page verification,
 remaining migration acceptance and release promotion remain outside this request.
+
+### Boundary memory attribution on latest Area
+
+Owner authorized continuing root-cause investigation after the three-run result.
+Scope: discovery only; one98-page diagnostic run using area.2 with28 boundary
+probes in generated JavaScript inside an isolated diagnostic Docker stage.
+Core/Service source and packed candidate were not changed. Roles: Evidence
+Reviewer/Cross-Repo Boundary Reviewer; inline execution IDs N/A, routine risk.
+Proof budget: one instrumented API render plus existing PDF/content/group oracle;
+no heap snapshot, forced GC, per-node logs or performance improvement claim.
+
+Evidence: `flowdoc-service/artifacts/area-stages-20261014/summary.json`,
+`prepare.py`, `overlay-manifest.json`, `overlay/`, and `trial/` contain the exact
+instrumentation, hash-checked Core overlay,28 phase records, external200ms
+samples, parity and cleanup. Diagnostic-only file hashes are deliberately
+distinct from the normal package; do not publish or reuse this image as release.
+
+Observed complete-container working set at boundaries (MiB): admission before
+composition98.61, after170.86; worker after composition192.11; before render199.41;
+child after parsing265.71; before Core resolved validation264.03, after305.56;
+after snapshot306.23; layout start305.00/end354.82; contents-number fill start
+354.82/end354.05; font-subset start357.00/end365.14; writer end375.48. The maximum
+external sample375.91MiB occurs within font subsetting, with an additional Python
+process RSS29.84MiB. The writer boundary is nearly as high: fixing only one tail
+peak can leave the other. API RSS at sampled peak194.74MiB, renderer186.36MiB,
+client88.16MiB; shared RSS cannot be added or subtracted as private memory.
+
+Layout took8.181s; contents-number filling29ms; subset587ms; writer245ms. The
+contents marker covers final number filling only, not initial TOC row layout.
+Worker total12.045938s is diagnostic timing, not a regression comparison. The
+28 memory/cgroup reads sum6.18ms excluding JSON serialization/file appends; total
+probe overhead was not independently benchmarked. One run establishes observed
+phase attribution, not repeatable savings or a complete live-object ownership map.
+
+All98 pages pass exact decoded drawing/resource/geometry/link parity,1457 text
+values,363 requirements,396 links and29 groups. No OOM/guard stop; cleanup PASS.
+Source confirms composition calls resolved validation, and the render boundary
+validates again; graph maps and descriptor traversal allocate temporary values.
+The observed validation RSS rise is not proof that all of it remains live or can
+be eliminated. Snapshot boundary had GC activity (heapUsed fell), so its small
+RSS delta does not mean snapshots are free. No defensive validation was removed.
+
+Next implementation hypothesis should target pre-render allocation/ownership and
+layout retention together: lower the base carried into both font-subset and
+writer peaks, preserving admission errors, persisted-input integrity, image
+claims and caller snapshot isolation. Do not infer an achievable MiB saving from
+boundary differences, or treat final TOC filling as the principal cause.
