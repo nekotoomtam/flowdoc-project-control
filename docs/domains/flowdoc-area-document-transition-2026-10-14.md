@@ -358,3 +358,36 @@ cleanup was1662.15MiB, insufficient margin to repeat setup reliably.
 Remaining acceptance: complete three Area-only rounds when host reserve allows,
 including exact decoded PDF drawing/resource/geometry/link parity and content
 checks.483-page work, release promotion and remaining migration steps stay open.
+
+### Area-only three-run acceptance after Docker reset
+
+Owner requested rebuilding the test environment after clearing Docker data and
+measuring latest Area only. Reused unchanged area.2 candidate and accepted
+98-page consolidated inputs, with fresh isolated databases and cold API
+processes for all three rounds. Each runtime's installed Core file hashes matched
+`flowdoc-core/artifacts/area-validation-20261014/expected-identities.json`.
+No product source changed and no old performance variant was run.
+
+Evidence: `flowdoc-service/artifacts/area-validation-retry-20261014/summary.json`,
+per-round measurements,200ms samples, PDF parity/content/group checks and cleanup
+records. This successful series supersedes the pending three-run acceptance;
+the earlier pre-generation memory stop remains preserved as a separate attempt.
+
+| Round | Worker seconds | Peak container working MiB |
+| --- | ---: | ---: |
+| 1 | 11.575831 | 377.36328125 |
+| 2 | 11.610380 | 355.69531250 |
+| 3 | 11.195217 | 357.25000000 |
+
+Mean worker11.460476s; median11.575831s. Mean peak363.4362MiB;
+median357.25MiB. Kernel raw memory.current peaks were403.293,359.348 and363.152MiB;
+these are distinct from sampled working-set peaks. Zero OOM kills and guard
+stops; minimum host free RAM1693.039MiB. All three PDFs have98 pages and exact
+decoded drawing/resource/geometry/link parity with the accepted API oracle.
+Each passes1457 text values,363 requirements,396 internal links and29 groups.
+Expected warning-code sequences also match. All test stacks cleaned up.
+
+Acceptance for this bounded request passes. RAM describes the complete test
+container including API client and observer, not isolated Core memory; do not
+infer a RAM reduction without a controlled comparison.483-page verification,
+remaining migration acceptance and release promotion remain outside this request.
