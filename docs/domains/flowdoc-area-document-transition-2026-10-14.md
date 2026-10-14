@@ -220,3 +220,32 @@ zero completed comparison measurements. Preserve the first stopped attempt in
 `before-98-1-memory-blocked` and the latest in `before-98-1`. A fresh untouched
 trial directory is required on resume. Do not present the diagnostic baseline
 time as a paired performance result or relax the1536MiB guard.
+
+Five-pair98-page acceptance completed after the next owner retry. Evidence:
+`flowdoc-service/artifacts/area-transition-20261014/benchmark-five-api-retry2/summary.json`,
+`series-progress.json`, and each trial's `run-1/measurement.json`, `parity.json`,
+`pdf-text-check.json`, `group-page-check.json`, `cleanup.json` and samples.
+All ten cold-process API runs passed, alternating before/after, with unchanged
+guards and200ms external sampling. Every PDF has98 pages and identical decoded
+drawings/resources/geometry/links to the verified old-Service API oracle; each
+also passes1457 text values,363 requirements,396 links and29 groups. Zero OOM
+kills or guard stops; minimum host reserve2948.30MiB. All isolated stacks were
+cleaned up and no containers remain running. No product source was modified.
+
+| Round | Old worker s | New worker s | Old peak working MiB | New peak working MiB |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 11.335439 | 11.144848 | 345.0508 | 385.7305 |
+| 2 | 11.901398 | 11.631685 | 377.4063 | 373.2969 |
+| 3 | 11.456819 | 11.481250 | 352.9922 | 356.5781 |
+| 4 | 11.375388 | 11.329646 | 349.0469 | 363.0313 |
+| 5 | 11.826896 | 11.526954 | 351.0078 | 365.3008 |
+
+Old/new mean worker time11.5792/11.4229s(-1.35%); median11.4568/11.4813s(+0.21%).
+Old/new mean peak working set355.1008/368.7875MiB(+3.85%); median351.0078/
+365.3008MiB(+4.07%). Treat speed as broadly unchanged on this small shared-host
+sample; the new structure does not demonstrate a RAM reduction. Aggregate
+changes do not exceed the proposed10% investigation trigger. The first pair's
+larger RAM gap does not justify discarding it; all five pairs are included.
+This closes only the requested98-page five-pair check.483-page verification,
+intentional heading breaks, active cutover, final packaging and retirement stay
+open. Earlier blocked/diagnostic attempts remain preserved and excluded.
