@@ -652,3 +652,21 @@ Keep area.4 as the tested private candidate, not release evidence. The two-chang
 budget is exhausted; stop optimization here. The upper250MiB target is not met,
 and these results do not establish that it is impossible. Further redesign or
 additional tuning requires a new owner decision.
+
+### AI authoring guide (documentation only)
+
+Owner requested a guide for Luna/Terra to interpret a reference PDF into reusable
+semantic templates, plus a proposal to avoid direct file edits. The bounded
+documentation work is [AI template authoring guide](flowdoc-ai-template-authoring-guide.md),
+with two complete synthetic template/request pairs under
+`docs/examples/ai-template-authoring/` and the repeatable checker
+`tools/check-ai-authoring-examples.mjs`. Public area.4 validation/preparation/
+composition checks pass, including changed long data, empty groups/Areas and
+invalid/missing Area input. No new PDF visual parity claim or actual Luna/Terra
+trial is made. No PDF reference was supplied for this documentation task.
+
+The proposed authoring tools reuse Service current/publication storage, require
+an identity-preserving definition adapter and revision-pinned draft preview,
+and restrict the agent's write access at the host/tool boundary. Existing runtime
+and API are unchanged; suggested tool names are not implemented endpoints.
+No new rooms, publication, release integration or memory optimization were run.
