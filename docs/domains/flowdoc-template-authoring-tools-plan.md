@@ -879,3 +879,37 @@ acceptance. Proof budget: focused package tests, installed preflight/skill check
 Goal activation evidence and one continued consumer trial. No broad release/RAM
 test or new Work/room records are needed. Remaining risk: declared review evidence
 does not itself prove honest visual inspection; parent reviews the actual result.
+
+Package implementation is installed as 0.1.4 (0.1.3 introduced task progress;
+0.1.4 repairs a consumer-exposed image alias ordering defect). Twelve focused
+tests pass, including stale task writers, retained part notes, exact-artifact
+review binding, invalidated prior passes, incomplete-delivery rejection, error
+categories and upload/finalize before sample validation. Installed preflight
+confirms 16 tools, ready=true, guide integrity and exact Service/Core 0.3.0.
+Skill validation passes. Source changes: `a53666a`, snapshot `3c164b4`, image
+repair `2191b2b`, snapshot `b68cbb5`. The pinned guide snapshot precedes this
+observed-outcome note intentionally; consumer instructions remain immutable.
+
+The existing consumer room activated its own unbudgeted Goal on the owner's
+explicit request. Its raw session records an active Goal and a subsequent turn
+with trigger `goal` immediately after a status final, without another parent
+continuation prompt. Thus automatic continuation is observed, not promised.
+It called `manage_document_task` over a fresh MCP client; its native MCP process
+still exposed older behavior, so discovery and fresh-client invocation remain
+distinct evidence. It independently uploaded the embedded original header image,
+advanced its target to revision 11, and began replacing flattened approval and
+revision pages with native editable tables. No parent draft/candidate/plan writes
+occurred. Parent changes were confined to package code/guidance and read-only
+review; package-update notices and concrete source-review feedback were sent.
+
+Consumer acceptance remains IN PROGRESS, not PASS. Parent reviewed output pages
+1-3 from `work/run-15/preview.pdf` (revision 11, SHA-256
+`0439aad419f976b33332a3e3c3702e467188c398fe8370f952150e020de2c675`).
+Header width, cover placement, approval borders/spacing, native TOC and other
+parts are unfinished. Its source-part notes also misidentified the cover title
+alignment and grouped distinct feature/requirement layouts; parent returned
+these observations for the room to verify and repair itself. Task progress stays
+incomplete and the Goal stays active. This proves continued execution and some
+independent repairs, not complete autonomous reconstruction or visual equivalence.
+No publication occurred. Full output inspection and delivery acceptance remain
+required before the consumer Goal can be completed.
