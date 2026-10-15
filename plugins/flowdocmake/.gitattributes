@@ -1,2 +1,2 @@
 # Hash-pinned reference snapshots retain exact source bytes on every platform.
-skills/flowdocmake/references/** -text
+skills/flowdocmake/references/** -text whitespace=cr-at-eol
