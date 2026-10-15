@@ -6,6 +6,7 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {assess} from './compatibility.mjs';
+import {runCandidatePlan} from './candidate-workflow.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const packageVersion=JSON.parse(readFileSync(join(root,'.codex-plugin/plugin.json'),'utf8')).version;
 const config=JSON.parse(readFileSync(process.env.FLOWDOCMAKE_CONFIG??join(homedir(),'.codex','flowdocmake.local.json'),'utf8'));
@@ -39,6 +40,14 @@ async function preflight(){
 }
 serveStdio(()=>{
  const server=createAuthoringTools({baseUrl:config.url,token,previewDirectory:config.previewDirectory});
+ server.registerTool('run_candidate_preview',{
+  description:'Run or resume draft-only authoring mechanics from an absolute local plan JSON path. First use mode=check. Requires completed source inventory/coverage and explicit draftPolicy: new, preserve, or replace-if-conflict (only with owner-authorized replacement). Saves validation, exact mutation receipts, image uploads, preview and PDF in a checkpoint. Pending means call this same tool/plan again. pdf-ready still requires full visual/data/source comparison; never publishes or certifies completion.',
+  inputSchema:z.object({planPath:z.string().min(1),mode:z.enum(['check','run']),waitMs:z.number().int().min(0).max(20000).optional()}).strict(),
+  annotations:{readOnlyHint:false,destructiveHint:true,openWorldHint:false,idempotentHint:true}
+ },async({planPath,mode,waitMs})=>{
+  try{return {content:[{type:'text',text:JSON.stringify(await runCandidatePlan(planPath,{checkOnly:mode==='check',waitMs,configPath:process.env.FLOWDOCMAKE_CONFIG}))}]};}
+  catch(e){return {isError:true,content:[{type:'text',text:JSON.stringify({ok:false,code:e.code??'CANDIDATE_WORKFLOW_FAILED',step:e.step,checkpoint:e.checkpoint,jobId:e.jobId,issues:e.issues,nextAction:e.nextAction??'Read the plan and checkpoint. Preserve receipts; do not change a pending mutation or publish.'})}]};}
+ });
  server.registerTool('upload_preview_image_file',{description:'Upload an original local PNG/JPEG file directly as binary to an owned preview upload item. Use after create_preview_upload; preserves bytes and avoids base64 limits. No publication.',inputSchema:z.object({uploadId:z.string().uuid(),resourceId:z.string().uuid(),path:z.string().min(1)}).strict(),annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false}},async({uploadId,resourceId,path})=>{
   try{
    const {statSync}=await import('node:fs');

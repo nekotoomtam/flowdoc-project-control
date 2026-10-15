@@ -13,7 +13,9 @@ test('preflight distinguishes authentication, unavailable Service and reader; im
  async function check(overrides,expected){
   const path=join(dir,'config.json');writeFileSync(path,JSON.stringify({...config,...overrides}));
   const client=new Client({name:'negative-check',version:'1'}),transport=new StdioClientTransport({command:process.execPath,args:[resolve('plugins/flowdocmake/scripts/server.mjs')],env:{...process.env,FLOWDOCMAKE_CONFIG:path},stderr:'pipe'});
-  try{await client.connect(transport);const r=await client.callTool({name:'get_flowdocmake_context',arguments:{}});assert.equal(JSON.parse(r.content[0].text).code,expected);
+  try{await client.connect(transport);const listed=(await client.listTools()).tools;assert(listed.some(t=>t.name==='run_candidate_preview'));assert(!listed.some(t=>/publish/.test(t.name)));
+   const invalid=await client.callTool({name:'run_candidate_preview',arguments:{planPath:join(dir,'missing-plan.json'),mode:'check'}});assert.equal(invalid.isError,true);
+   const r=await client.callTool({name:'get_flowdocmake_context',arguments:{}});assert.equal(JSON.parse(r.content[0].text).code,expected);
    const bad=await client.callTool({name:'upload_preview_image_file',arguments:{uploadId:'00000000-0000-4000-8000-000000000001',resourceId:'00000000-0000-4000-8000-000000000002',path}});assert.equal(bad.isError,true);
   }finally{await client.close();await transport.close();}
  }

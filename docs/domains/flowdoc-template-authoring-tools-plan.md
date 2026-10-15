@@ -778,3 +778,32 @@ Verification: five focused package/coverage/MCP tests pass; the installed
 manifest exposes 14 tools with ready=true against Service/Core 0.3.0; skill
 validation and guide integrity pass. Source-check dry run passed without mutation;
 the real helper and its checkpoint resume succeeded. Core/Service code unchanged.
+
+### Draft policy and independent retry — current bounded request
+
+Owner now requests explicit draft selection plus a directly callable mechanical
+tool, then one fresh chat repeating the original PDF/data assignment without
+parent-created or parent-repaired drafts. Publication remains prohibited.
+Owner repository: Project Control, implementation/documentation and reviewer;
+single-room execution IDs not applicable. This consumer trial is not a separate
+product-code WORK lane; it may author isolated unpublished document drafts only.
+Scope: package scripts, versioned guidance, focused tests and a fresh consumer
+trial. Core/Service schema, guards, release and unrelated drafts stay unchanged.
+
+Package candidate 0.1.2 adds `run_candidate_preview` over the checkpointed MCP
+mechanics. Draft policy is explicit: new, preserve, replace-if-conflict. Only a
+real ownership conflict can take an owner-authorized replacement branch. Pending
+returns the same plan/tool; PDF-ready requires visual/data review. Reuse candidate
+and target identity are separate concepts. Existing guidance is corrected at its
+canonical source and packaged as a fresh pinned snapshot.
+
+Acceptance/proof budget: focused workflow tests for source gate, policy/fallback,
+unchanged retries and continuation, stale conflicts and retained intent; MCP
+discovery/negative checks without real parent draft mutations; installed package
+and guide integrity; one fresh user-owned consumer chat, source/output inspection
+and declared delivery coverage reviewed by parent. The parent may observe and
+review but must not create, save, or prepare that chat's candidate or plan. A
+successful assisted output from the previous round is not independent success.
+Model setting for the consumer chat uses the user's configured default (no new
+override requested); it is an artifact-use trial, not the registered PLAN/WORK
+model-selection process. Outcome remains pending until the fresh chat finishes.

@@ -9,7 +9,7 @@ description: Create or revise FlowDoc document templates from PDFs and structure
 
 Owner: FlowDoc Project Control. This package routes authoring instructions and
 existing Service tools; it does not change Core behavior or authorize publication.
-Package 0.1.1 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
+Package 0.1.2 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
 definition.version 1. These are distinct from a draft revision.
 
 ## Start and continue
@@ -42,8 +42,12 @@ definition.version 1. These are distinct from a draft revision.
    Use native TOC/anchors, declared Area formats,
    repeatable rows and proper alignment containers. Check observed lines, borders,
    header image fit and page-number reference area; do not invent properties.
-4. New template: `create_template_draft` first to obtain an empty identity.
-   Existing template: `get_template_draft` and preserve its identity. Save the
+4. Read [draft selection](references/docs/developer/authoring/draft-selection.md).
+   Distinguish a reuse candidate from the target. New-template tasks obtain a new
+   empty ID first; an old candidate does not impose its ID. Repair a specified
+   target under its ID unless the user authorized a replacement. Only an actual
+   ownership conflict may trigger that authorized replacement branch; stale
+   revisions, validation or render errors require their own repair. Save the
    complete definition with declared global/Section/Format schemas. Read fresh
    revision before updates; never guess `expectedRevision` or overwrite a conflict.
 5. Maintain a local task checkpoint (not template storage): source paths/hashes,
@@ -57,13 +61,14 @@ definition.version 1. These are distinct from a draft revision.
    It calls the registered MCP tool, persists its exact response and prints small
    metadata. Read receipts before retrying; do not copy base64/JSON chunks through
    the model or confuse local argument files with direct template storage edits.
-   For a selected file-based candidate with template.json/request.json and optional
-   upload-files.json, `scripts/preview_candidate.mjs <plan.json>` automates the
-   draft-only mechanical calls. The plan names candidateDirectory, inventoryPath,
-   coveragePath, workDirectory, name and a fresh docKey; optional exact
-   replacements require PDF evidence. Run `--check` first. It creates an empty ID
-   before saving, preserves checkpoints and outputs a PDF requiring review.
-   It does not migrate existing ownership or certify a source comparison.
+   Prefer `run_candidate_preview` for a prepared candidate: first mode=check,
+   then mode=run with the same absolute planPath. Plan schema and explicit
+   draftPolicy are in draft selection. This tool saves receipts and continues
+   validation/save/image upload/preview/PDF download through authoring MCP.
+   `pending` returns the same tool/plan as nextAction: call it again yourself.
+   `pdf-ready` still requires full PDF review. Repair changed inputs in a new
+   workDirectory with preserve and the returned target ID; do not create another
+   identity for every visual fix. The CLI is a fallback, not an additional task.
 6. Validate with sample data, resolve errors without truncating source, save,
    preview the exact revision, poll status until succeeded/failed. Use bounded
    waits and progress updates; a job ID or saved revision is not completion.
