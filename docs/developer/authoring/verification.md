@@ -9,15 +9,14 @@ Execution IDsไม่เกี่ยวข้องกับงานinlineน�
 
 ## 1. Implementation baseline
 
-- Core package `@flowdoc/core@0.2.15-area.5` ที่ติดตั้งใน Service candidate.
-- Artifact SHA256 `8cdb4c692d2066583f2626d5c86009c039e3fe3e3106099b6bfa0243b315926f`.
-- Core source checkout `flowdoc-core-area-v18`, HEAD
-  `fde34a991ccc7d6acfc8cfbb84e692246c64a7d6` **มีงานArea migrationค้างในcheckout**;
-  HEADอย่างเดียวจึงไม่ใช่digestของcandidateทั้งหมด. ทดสอบด้วยinstalledpackageจริง.
-- Service source `flowdoc-service-area-v18`, HEAD
-  `decec4a26b139eb7a9c9c53d11d4925f8d8316f6`.
-- local authoring contractยืนยันnodeModelVersions:[18], publicationEnabled:false;
-  deployment limitsต้องอ่านใหม่เมื่อเปลี่ยนhost.
+- Core `0.3.0`, release `6d2a9b7`, verified source `f21ab6a`; Service `0.3.0`, release `0c57eec`, source `57d9fd2`.
+- Core artifact SHA256 `d2f2d23ea42072f0f5fe1f702445c4384c686a371ea76fbcc7b96c5a77594380`; Service pins this exact archive.
+- Only nodeModelVersion18 is accepted. Use primary `flowdoc-core` / `flowdoc-service` checkouts; Area worktrees are retired after integration.
+- Core533 tests and packed Linux consumer pass; Service222 tests pass without skips. PDF numbering/destination checks pass. Visual review covered247 consumer pages; the final package's48 PDF files are byte-identical to the reviewed outputs.
+- Full SRS98-page comparison preserves all page resources, geometry and links. 96 pages retain identical drawing commands. Pages36/42 intentionally remove an orphan repeated table header; all body text is unchanged. The fixture contains361 distinct explicit REQ codes, all matched; do not substitute a count from another dataset.
+- Live MCP contract reports versions:[18], publicationEnabled:false. Direct PDF file saving was verified after moving the launcher to the primary Service checkout.
+- Durable local evidence: `flowdoc-core/artifacts/release030/worktree-evidence/1792046442725`, `flowdoc-service/artifacts/release030/worktree-evidence/release030-tests-final.json`, and `flowdoc-service/artifacts/release030/area98/parity.json`.
+- Prior candidate area.5 baseline is historical. This cutover makes no new RAM/capacity claim and does not publish user templates.
 
 ## 2. Source index
 

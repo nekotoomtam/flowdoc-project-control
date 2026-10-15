@@ -120,6 +120,106 @@ update this record rather than spawning report copies.
 
 ## Progress
 
+### Release 0.3.0 acceptance — 2026-10-15
+
+Owner resumed the paused task and authorized complete verification, release and cleanup.
+Core release6d2a9b7 (sourcef21ab6a) and Service release0c57eec (source57d9fd2)
+were pushed with annotated v0.3.0 tags. Release trees equal the verified candidate
+trees; integration ancestry retains source commits for clean worktree removal.
+Core533 tests/73 suites and installed Linux package consumers passed. Service222
+tests/75 suites passed with zero skips. Read-only Core contract review found no
+blocking issue. PDF consumer visual review covered247 pages, with48 final-package
+PDF files byte-identical to the reviewed outputs. Actual PDF TOC destinations and
+authored numbering were checked independently.
+
+SRS98 pages passed full comparison against the previously running area.5 renderer:
+96 pages have identical drawing commands; pages36/42 only remove an orphan repeated
+Features List header at the page bottom. All body text, page resources, geometry
+and links remain equal. All361 explicit REQ codes in this fixture match source.
+This is document correctness evidence, not a new RAM or483-page capacity result.
+
+The live DB was backed up before cutover; two existing drafts and zero published
+versions remain. Migration014 originally deployed CRLF bytes; Git normalization
+had changed checkout bytes. An exact-file -text rule now preserves the original
+applied bytes (SHA256c17b4d2d8740a1790503c515d5ef55ca69e88721cbc1416a7b2f4f7522b7157b).
+No SQL semantics or stored migration history was changed. Final live migration
+check returned applied:[], and MCP contract/direct PDF saving passed from primary
+Service. Local authoring remains available; publication remains disabled.
+
+Retired artifacts: unused model4–17 runtime branches, automatic legacy page footer,
+unused table flow and old vendored tarballs. Meaningful feature tests migrated;
+historical SQL and model4 rejection fixtures retained. Old vendor files and all
+worktree artifacts are preserved under primary artifacts/release030. Manuals now
+point to Area18/0.3.0 and the detailed developer reference rather than old models.
+Both clean merged Area worktrees and their integrated branches were removed.
+After cleanup, MCP contract and direct PDF saving passed again from primary
+Service. The disposable test DB/debug containers were removed; local authoring
+API and its preserved DB remain running. Detailed authoring reference and guide
+examples pass against the installed0.3.0 package.
+
+### Owner pause — 2026-10-15
+
+Owner explicitly paused the release cutover; do not resume until asked. All active
+subagents interrupted. No running test process found at pause. Changes remain
+uncommitted in the two Area worktrees; neither release branch/tag was updated,
+and no worktree or user template was published/removed.
+
+Checkpoint: Core build and 533 tests / 73 suites passed after Area18-only runtime,
+fixture and test migration. Legacy dead table/page-number paths removed. Local
+Core package/lock set to0.3.0. Linux build/native packaging completed but packed
+consumer FAILED in checkPdf.mjs: parent-migrated fixtures/pdf resolved snapshots
+lack explicit headerMode/footerMode and inline sourceMap entries. Fix fixture
+migration and rerun consumer; this is not release acceptance. Log:
+flowdoc-core-area-v18/artifacts/release030-packed.log; package build artifact:
+artifacts/1791997169396. Other consumer assertions remain unverified.
+
+Service runtime/tests/examples migration is in progress. Installed node_modules
+contains a provisional0.3.0 Core package for non-render tests only; it lacks native
+resources and is NOT the final vendored release. Service package/lock/vendor still
+need final update. Service agent reported33 targeted tests passing; migration
+agent verification/review was interrupted and must be checked on resume.
+Core README/template-guide legacy instructions were consolidated into current
+Area18 entrypoints, retaining API/build/resource guidance and links to detailed
+Project Control Developer Documentation. Obsolete version instructions remain
+recoverable in Git history, not current guidance.
+
+Remaining: finish/review Service migration tests, packed Linux/PDF acceptance,
+final vendor/version/checksum and documentation alignment, release snapshot/tag
+integration following repository conventions, switch live MCP launcher off Area
+worktree, then remove only clean merged worktrees. Live authoring service/DB remain
+untouched. Isolated disposable test DB container: flowdoc-release030-test-db
+(local port55432), stopped on pause; restart only for further tests.
+
+### Release 0.3.0 cutover request — 2026-10-14
+
+Owner now authorizes release integration, retirement and worktree cleanup,
+superseding the earlier no-release/no-primary-checkout-change scope for this work.
+Owner explicitly confirmed: accept only Area model18; retire models4–17, including
+their older Area variants. Preserve authored/static/cover nodes valid in model18.
+Target Core and Service package versions are 0.3.0 on release. No user template
+publication, historical snapshot rewrite, unrelated worktree deletion or npm
+publication is implied. flowdocmake remains a separate planned task.
+
+Single-room implementation/evidence review in existing candidate worktrees;
+execution IDs N/A. Preserve immutable historical migrations and data. Inventory
+legacy paths/fixtures and transfer relevant feature coverage before deleting them.
+Acceptance requires Core/Service build and affected suites, packed Linux consumer,
+Area PDF content/layout/link checks, vendor checksum/version agreement, active
+tool connection moved off candidate paths, and clean merged worktrees before
+removal. Prior 483-page Area acceptance is still open; do not mark it passed from
+the older non-Area capacity run. No performance improvement claim in this release.
+
+Initial inspection: local DB has two model18 currents, no template_versions and
+no queued/running jobs. Core baseline build and 514 tests pass. Its previously
+uncommitted Area migration was preserved as commit932b88c before retirement edits.
+Service MCP launcher still points to service-area-v18; migrate it and verify the
+connection before removing that worktree. Service vendor archives include old
+packages; archive necessary local evidence outside Git before retiring unused ones.
+New rejection tests demonstrate two previously valid legacy templates are accepted
+by the old validator; the Area18-only entrypoint rejects them. This is interim
+proof, not completion: old internal branches/types, fixtures, consumers, manuals,
+packaging and final release checks remain to be completed.
+
 - [x] Owner confirmed named Area variable with ordered entry array.
 - [x] Seven-step plan recorded; scope includes retirement and post-cleanup checks.
 - [x] Current behavior inventory and isolated conversion probe.

@@ -3,10 +3,10 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ
-ผู้สร้างโครง อิง candidate Area `nodeModelVersion:18`, Core package
-`0.2.15-area.5` และ Service worktree `flowdoc-service-area-v18` ณ 2026-10-14
+ผู้สร้างโครง อิง Area `nodeModelVersion:18`, Core และ Service
+`0.3.0` บน branch `release` ในโฟลเดอร์หลัก ณ 2026-10-15
 ไม่ใช่คำรับรองว่ารุ่น release รองรับ Area18 แล้ว ไม่ใช่การอนุญาตให้ publish
-หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้งานได้บน local candidate ที่ตรวจแล้ว
+หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้งานได้บน local release ที่ตรวจแล้ว
 แต่แต่ละห้องต้องตรวจการเชื่อมต่อจริงก่อนเริ่ม ไม่ถือว่าทุก host มีเครื่องมือพร้อม
 สถานะการย้ายรุ่นอยู่ใน [transition record](flowdoc-area-document-transition-2026-10-14.md)
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ draft/publication/API
