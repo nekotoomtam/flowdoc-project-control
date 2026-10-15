@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake 0.1.1 packaging and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
+Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake packaging through 0.1.2 and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.
@@ -806,7 +806,7 @@ review but must not create, save, or prepare that chat's candidate or plan. A
 successful assisted output from the previous round is not independent success.
 Model setting for the consumer chat uses the user's configured default (no new
 override requested); it is an artifact-use trial, not the registered PLAN/WORK
-model-selection process. Outcome remains pending until the fresh chat finishes.
+model-selection process. The observed trial outcome follows below.
 
 #### Observed trial result: independent completion FAIL
 
@@ -847,6 +847,10 @@ whole-output comparison or passing delivery coverage is accepted. Repeated
 status finals are the remaining observed execution boundary. No external Core
 rendering limitation has been established. Source coverage is declared evidence
 coverage, not proof of correct part classification or visual reconstruction.
+Parent verified the saved PDF's 94 pages and SHA-256
+`33a3979b8f18e1daf9bb2b1e2754a70b91c051eeb383ab0d3fb92dede651962a` at
+the chat's `work/run-9/preview.pdf`. This identity check is not whole-document
+visual acceptance.
 
 This is a FAIL of the requested independent end-to-end trial, alongside passing
 package mechanics. Do not reuse it as proof that another room completes full
