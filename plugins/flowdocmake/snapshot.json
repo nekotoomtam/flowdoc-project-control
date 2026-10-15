@@ -1,12 +1,12 @@
 {
-  "packageVersion": "0.1.3",
+  "packageVersion": "0.1.4",
   "guideRelease": "0.3.0",
-  "sourceCommit": "a53666aec5f35a2218fd2e6130db9f09074f5d6f",
+  "sourceCommit": "2191b2b7d577a4b3de0561bd048d6feebdff3045",
   "files": {
     "skills/flowdocmake/references/docs/developer/authoring/api.md": "8ad4b23e482329aec56b40e9dccd8a651de215c8d9ed7a54335c4cc911cbc909",
     "skills/flowdocmake/references/docs/developer/authoring/contents-and-repetition.md": "679fc949c627a1a39d40b4770d0468a3a122916dedaf28512cff5c2f69e4be27",
     "skills/flowdocmake/references/docs/developer/authoring/document-families/flowing-book.md": "92990633ed4f05f11bedc49031034d01b86d46410b40622d70a9e5a0ff42c664",
-    "skills/flowdocmake/references/docs/developer/authoring/draft-selection.md": "6180f88865a3362095841e21e02ee52dbd7bd33bea13489992ae007d68802c86",
+    "skills/flowdocmake/references/docs/developer/authoring/draft-selection.md": "c91753dd588342705dfd15e116d17a815fd4ddd52c1e73c552677f54c9a6b2a1",
     "skills/flowdocmake/references/docs/developer/authoring/examples.md": "66155597264b488aa893c1f49307a7ca885c574b90914dd0ba32a964d2d1ffba",
     "skills/flowdocmake/references/docs/developer/authoring/layout.md": "ca8f2ed0ff091459e63fa88d50165db118e8eeb06b068309da17d4d2c0e7d120",
     "skills/flowdocmake/references/docs/developer/authoring/nodes.md": "5831d6d6fb0bbb7a219c4d7b18eee2c0650b8cdcee28d454934bcc6d930c854d",
