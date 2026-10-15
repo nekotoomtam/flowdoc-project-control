@@ -9,7 +9,7 @@ description: Create or revise FlowDoc document templates from PDFs and structure
 
 Owner: FlowDoc Project Control. This package routes authoring instructions and
 existing Service tools; it does not change Core behavior or authorize publication.
-Package 0.1.3 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
+Package 0.1.4 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
 definition.version 1. These are distinct from a draft revision.
 
 ## Start and continue

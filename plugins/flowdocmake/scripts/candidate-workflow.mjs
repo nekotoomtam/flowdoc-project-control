@@ -77,6 +77,15 @@ export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,in
   let draft;
   if(plan.draftPolicy==='new')draft=await create('create');
   else draft=await call('original','get_template_draft',{templateId:plan.existingTemplateId});
+  // Core's image scalar requires a resource ID, not the candidate's local alias.
+  // Persist upload receipts before validating the exact sample used for preview.
+  let upload;
+  if(assets.length){
+   upload=await call('upload','create_preview_upload',{requestKey:state.key+'-images',items:assets.map((a,i)=>({key:'asset'+i,source:'upload',mediaType:a.file.toLowerCase().endsWith('.png')?'image/png':'image/jpeg',byteSize:readFileSync(resolve(directory,a.file)).length}))});
+   for(let i=0;i<assets.length;i++)await call('image'+i,'upload_preview_image_file',{uploadId:upload.uploadId,resourceId:upload.items[i].resourceId,path:resolve(directory,assets[i].file)});
+   await call('finalize','finalize_preview_upload',{uploadId:upload.uploadId});
+   for(let i=0;i<assets.length;i++)request=substitute(request,assets[i].id,upload.items[i].resourceId);
+  }
   async function saveDraft(selected,prefix){
    definition.templateId=selected.templateId;definition.docKey=request.docKey=selected.docKey;definition.version=1;
    await call(prefix+'validate','validate_template',{definition,sampleRequest:request});
@@ -87,13 +96,6 @@ export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,in
   else try{saved=await saveDraft(draft,'');}catch(e){
    if(e.code!=='OWNERSHIP_CONFLICT'||plan.draftPolicy!=='replace-if-conflict')throw e;
    state.replacesTemplateId=draft.templateId;save();draft=await create('replacement');saved=await saveDraft(draft,'replacement-');
-  }
-  let upload;
-  if(assets.length){
-   upload=await call('upload','create_preview_upload',{requestKey:state.key+'-images',items:assets.map((a,i)=>({key:'asset'+i,source:'upload',mediaType:a.file.toLowerCase().endsWith('.png')?'image/png':'image/jpeg',byteSize:readFileSync(resolve(directory,a.file)).length}))});
-   for(let i=0;i<assets.length;i++)await call('image'+i,'upload_preview_image_file',{uploadId:upload.uploadId,resourceId:upload.items[i].resourceId,path:resolve(directory,assets[i].file)});
-   await call('finalize','finalize_preview_upload',{uploadId:upload.uploadId});
-   for(let i=0;i<assets.length;i++)request=substitute(request,assets[i].id,upload.items[i].resourceId);
   }
   const job=await call('preview','preview_template_draft',{templateId:draft.templateId,expectedRevision:saved.revision,sampleRequest:{...request,...(upload?{uploadId:upload.uploadId}:{})},idempotencyKey:state.key+'-preview'});
   const deadline=Date.now()+Math.min(Math.max(waitMs,0),20000);

@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.3 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.4 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
@@ -137,6 +137,13 @@ Workflow errors return `category` and `nextAction`:
 Core grammar is validated in run. `pending` needs polling; `pdf-ready` needs
 comparison. Neither is completion. A render failure alone does not establish
 an unfixable renderer defect: preserve and diagnose its input before escalating.
+
+Package 0.1.4 fixes image alias ordering: after obtaining the target ID, the
+helper uploads/finalizes original assets and substitutes resource IDs before
+Core validates sample data. A failed validation can therefore leave an owned
+upload, retained in checkpoint receipts for unchanged retries. When upgrading
+from an older failed alias run, preserve that run and start a fresh run directory;
+do not rewrite its recorded validation intent.
 
 When the user authorizes Goal, call the host's `create_goal` in the authoring
 thread with the full PDF-and-review objective. Do not invent a token budget.

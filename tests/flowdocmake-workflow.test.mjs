@@ -62,3 +62,16 @@ test('stale revisions do not trigger replacement and exact substitutions preserv
  await assert.rejects(runCandidatePlan(f.planPath,{invoke}),e=>e.code==='STALE_CURRENT');assert(!f.calls.some(c=>c.name==='create_template_draft'));
  assert.equal(f.calls.find(c=>c.name==='validate_template').args.sampleRequest.data.text,'new "value"');
 });
+
+test('image aliases are replaced by uploaded resource IDs before sample validation',async t=>{
+ const f=fixture(t);const image=join(f.plan.candidateDirectory,'banner.png');writeFileSync(image,'test image');
+ writeFileSync(join(f.plan.candidateDirectory,'upload-files.json'),JSON.stringify([{id:'HEADER_BANNER',file:'banner.png'}]));
+ writeFileSync(join(f.plan.candidateDirectory,'request.json'),JSON.stringify({docKey:'source',data:{banner:'HEADER_BANNER'}}));
+ const invoke=async(name,args)=>{
+  if(name==='create_preview_upload'){f.calls.push({name,args});return {ok:true,value:{uploadId:'upload',items:[{resourceId:'valid-resource-id'}]}};}
+  if(name==='validate_template')assert.equal(args.sampleRequest.data.banner,'valid-resource-id');
+  return f.invoke(name,args);
+ };
+ await runCandidatePlan(f.planPath,{invoke});
+ assert(f.calls.findIndex(c=>c.name==='finalize_preview_upload')<f.calls.findIndex(c=>c.name==='validate_template'));
+});
