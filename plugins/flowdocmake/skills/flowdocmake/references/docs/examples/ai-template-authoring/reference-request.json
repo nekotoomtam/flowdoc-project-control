@@ -1,0 +1,56 @@
+{
+  "docKey": "developer-reference",
+  "data": {
+    "projectName": "Example inventory system",
+    "documentVersion": "1.0",
+    "headerBanner": "11111111-1111-4111-8111-111111111111",
+    "manual": {
+      "type": "link",
+      "text": "External documentation",
+      "url": "https://example.com/manual"
+    }
+  },
+  "sections": {
+    "main": {
+      "data": {
+        "introduction": "Purpose and scope of the system.",
+        "details": [
+          {
+            "format": "chapter",
+            "data": {
+              "title": "1 Overview",
+              "requirements": [
+                {
+                  "code": "REQ-001",
+                  "description": "The user can view inventory."
+                }
+              ],
+              "anchor": "chapter-0"
+            }
+          },
+          {
+            "format": "new-page",
+            "data": {}
+          },
+          {
+            "format": "chapter",
+            "data": {
+              "title": "2 Operations",
+              "requirements": [
+                {
+                  "code": "REQ-002",
+                  "description": "The user can receive stock."
+                },
+                {
+                  "code": "REQ-003",
+                  "description": "The user can issue stock."
+                }
+              ],
+              "anchor": "chapter-2"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

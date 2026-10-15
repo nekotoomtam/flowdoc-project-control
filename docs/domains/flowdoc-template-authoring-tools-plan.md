@@ -563,7 +563,8 @@ new rendering/model trial claimed.
 
 ## flowdocmake package proposal — 2026-10-14
 
-Status: planned, not installed or implemented. Owner requested planning for a
+Historical proposal status (2026-10-14): planned, not installed or implemented.
+See the 2026-10-15 implementation entry below for current status. Owner requested planning for a
 single discoverable entrypoint combining authoring tools and routed documentation.
 Scope of this update is Project Control planning prose, inline Documentation
 Synthesizer; execution IDs are not applicable. Product implementation ownership
@@ -651,3 +652,52 @@ Packaging references inspected for this proposal:
 [MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 Host-specific single-package installation and exact metadata extensions remain
 implementation discovery items, not verified features of flowdocmake.
+
+## flowdocmake local implementation — 2026-10-15
+
+Owner authorized implementation for released Service/Core 0.3.0. Single-room
+Project Control implementation/documentation scope; execution IDs not applicable.
+Sources are `plugins/flowdocmake`, `.agents/plugins/marketplace.json`, the snapshot
+builder, focused tests and trial/check scripts. Core/Service release commits and
+tags are unchanged. Package version 0.1.0 is independent of runtime 0.3.0.
+
+Installed locally through Codex marketplace/installation commands. It bundles
+the skill, 21 hash-pinned reference/example/checker files from source commit
+5b4b7696f81e6d2074de973f31fac178c8ffd1b5, and existing draft-only authoring tools.
+Added read-only `get_flowdocmake_context` and binary `upload_preview_image_file`.
+Machine configuration/credential references are outside the package. No publish
+tool or direct database mutation fallback exists.
+
+Implementation decision: retain released HTTP contract unchanged. Exact local
+runtime checks use Docker port association, image ID and installed package
+versions; a remote deployment without this evidence stops as unknown. This is
+local attestation, not a new Service contract/build field. Auth failure, unreachable
+Service, incompatible contract/runtime, tampered guide and missing PDF reader
+are distinguished before instructed authoring mutations.
+
+Evidence: focused tests pass (3 tests, including real MCP negative preflight);
+installed manifest launcher exposes 14 tools and ready=true against Service/Core
+0.3.0. Skill validator passes. Snapshot links resolve. Reference trial created
+draft f3b789af-9bce-4456-906e-7f87eb72783f revision 1 and a visually reviewed 2-page
+PDF with TOC/table/header/footer. Create/save/preview identical-key retries retain
+the same identity/revision/job. Full trial created a4317979-b681-4d38-80bd-dab235de52c0
+revision 1, uploaded original images through binary transport, and saved 98 pages.
+All page text and all non-image drawing commands match the release fixture;
+all 98 pages were rendered and inspected via nine review sheets. The existing
+Service image preparation slightly changes header image dimensions/resampling
+versus direct-Core baseline (page 2 width 593.983 versus 595.276 pt); pixel parity
+is NOT claimed. The release fixture's existing rocket-to-Thai substitution was
+reused explicitly, not introduced as a workaround by this package.
+
+Local evidence remains under `artifacts/flowdocmake`: preflight.json, per-trial
+checkpoint.json, full/pdf-check.json and review sheets. Private source data and
+PDFs are not distributed in the package. No user draft was changed or published.
+
+Fresh-chat discovery remains an acceptance gap: user-authorized test chat
+01a13e71-8c93-7621-9928-8f6533ed7fbc discovers the installed skill but its tool
+catalog did not expose the new MCP tools. The initial unsupported plugin-root
+placeholder was replaced with a machine-configured launcher and that exact
+manifest is tested successfully through a fresh MCP client. The desktop chat
+catalog must still be refreshed and verified; do not call cross-chat readiness
+PASS until the context tool is callable there. This is not evidence of model
+equivalence or of a fresh model reconstructing the entire reference document.

@@ -1,0 +1,1 @@
+{"name":"flowdoc-local","interface":{"displayName":"FlowDoc Local"},"plugins":[{"name":"flowdocmake","source":{"source":"local","path":"./plugins/flowdocmake"},"policy":{"installation":"AVAILABLE","authentication":"ON_INSTALL"},"category":"Productivity"}]}

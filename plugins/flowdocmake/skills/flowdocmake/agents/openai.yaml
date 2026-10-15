@@ -1,0 +1,6 @@
+interface:
+  display_name: "FlowDoc Make"
+  short_description: "Create Area18 templates and review PDF previews"
+  default_prompt: "Use $flowdocmake to create a complete document and inspect its PDF before review; do not publish."
+policy:
+  allow_implicit_invocation: true

@@ -8,3 +8,4 @@ generated/*.sqlite
 .flowdoc.local.json
 .superpowers/
 .worktrees/
+artifacts/flowdocmake/
