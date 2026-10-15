@@ -701,3 +701,33 @@ manifest is tested successfully through a fresh MCP client. The desktop chat
 catalog must still be refreshed and verified; do not call cross-chat readiness
 PASS until the context tool is callable there. This is not evidence of model
 equivalence or of a fresh model reconstructing the entire reference document.
+
+## Source coverage correction — 2026-10-15
+
+Owner requested flowdocmake changes after the first full model trial: inspect all
+source PDF parts before reusing an old template, then retry the same draft through
+actual complete comparison, without publication. Discovery after desktop reload
+passed in the test chat (skill plus 14 tools; Service/Core 0.3.0).
+
+The first model output is a 64-page draft, not accepted visual reconstruction.
+Read-only diagnosis found an unchanged copy of the earlier Sol revision-5
+definition except identity/name, omitted PDF-only Element and menu sections,
+8pt requirement-table text versus predominantly 11pt in the source, and blank
+duplicated metadata/signatory tables. All 361 explicit REQ codes being present
+did not establish full-document completeness. The mapping and acceptance process
+is the demonstrated failure boundary; no renderer repair is authorized here.
+
+Package 0.1.1 adds source-first inventory and coverage guidance plus scripts for
+page text/font/image observations, rendered pages, and declared evidence coverage.
+Source hashes and page coverage are checked before reuse; delivery also requires
+per-part content/layout comparison, all output pages, TOC/link/page-label/value
+checks and no unresolved differences. The checker is not a semantic/visual oracle;
+the trial room and parent review must verify its claims against the actual PDF.
+The existing full trial is the observed failing baseline for this correction.
+
+Owner repository and active role: Project Control implementation/documentation;
+single-room execution IDs not applicable. Acceptance requires focused script
+checks, installed package integrity, and the authorized test room repairing draft
+6e9478b3-a3bf-45d8-9afa-a4909d4a865f with complete source/output comparison.
+Retain the first output as evidence. Retry outcome remains pending until reviewed;
+do not label it passed from a generated receipt or coverage JSON alone.
