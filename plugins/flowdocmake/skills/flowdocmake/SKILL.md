@@ -57,6 +57,13 @@ definition.version 1. These are distinct from a draft revision.
    It calls the registered MCP tool, persists its exact response and prints small
    metadata. Read receipts before retrying; do not copy base64/JSON chunks through
    the model or confuse local argument files with direct template storage edits.
+   For a selected file-based candidate with template.json/request.json and optional
+   upload-files.json, `scripts/preview_candidate.mjs <plan.json>` automates the
+   draft-only mechanical calls. The plan names candidateDirectory, inventoryPath,
+   coveragePath, workDirectory, name and a fresh docKey; optional exact
+   replacements require PDF evidence. Run `--check` first. It creates an empty ID
+   before saving, preserves checkpoints and outputs a PDF requiring review.
+   It does not migrate existing ownership or certify a source comparison.
 6. Validate with sample data, resolve errors without truncating source, save,
    preview the exact revision, poll status until succeeded/failed. Use bounded
    waits and progress updates; a job ID or saved revision is not completion.
