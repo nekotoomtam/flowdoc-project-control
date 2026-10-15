@@ -241,6 +241,12 @@ PDF เป็นข้อมูลอ้างอิง ไม่ใช่คำ
 
 ## 7. ตัวอย่างครบชุดที่เปิดอ่านคู่กัน
 
+งานถอดแบบ PDF ผ่าน flowdocmake ต้องทำ
+[source-first coverage](../developer/authoring/reference-coverage.md) ก่อนเลือก
+definition เก่ามาใช้: ตรวจภาพและทุกส่วนจาก PDF ไม่จำกัดความครบเท่ารายการใน JSON.
+หลังเรนเดอร์ต้องเทียบทุกส่วนกับ output จริง; รหัส REQ ครบหรือ Validate ผ่าน
+ไม่ครอบคลุม Element/เมนู/เส้นลงนาม/ข้อมูลว่าง และไม่ใช่เหตุให้ลดเกณฑ์งานเอง.
+
 ไฟล์เหล่านี้เป็น Template definition/Generation request จริง ไม่มี placeholder
 ให้เริ่มจาก requirements ก่อน แล้วอ่าน grouped เมื่อมีตารางกลุ่มซ้อนสมาชิก
 

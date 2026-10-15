@@ -16,5 +16,6 @@ function copy(path){
  files[target]=createHash('sha256').update(readFileSync(abs)).digest('hex');
 }
 for(const root of roots)copy(root);
-writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion:'0.1.0',guideRelease:'0.3.0',sourceCommit,files},null,2)+'\n');
+const packageVersion=JSON.parse(readFileSync(join(plugin,'.codex-plugin/plugin.json'),'utf8')).version;
+writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.3.0',sourceCommit,files},null,2)+'\n');
 console.log(JSON.stringify({sourceCommit,files:Object.keys(files).length}));

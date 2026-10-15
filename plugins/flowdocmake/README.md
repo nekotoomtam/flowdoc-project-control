@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.1.0** targets **Service/Core 0.3.0 / Area18**. Invoke
+Package **0.1.1** targets **Service/Core 0.3.0 / Area18**. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context` and `upload_preview_image_file`. There is no publish tool.
@@ -44,6 +44,12 @@ does not expose exact build identity; remote runtime identity remains unsupporte
 It does not change or reissue the released 0.3.0 packages.
 
 ## Verification and limits
+
+For reference reconstruction, first render the source using
+`scripts/reference_inventory.py` and complete source/part coverage before reading
+an old template. `scripts/reference-coverage.mjs` validates the source and
+delivery evidence records; its checks establish declared coverage and identity,
+not visual correctness. See the packaged `reference-coverage.md` chapter.
 
 `node --test tests/flowdocmake.test.mjs tests/flowdocmake-integration.test.mjs`
 checks compatibility and negative preflights without draft mutation.

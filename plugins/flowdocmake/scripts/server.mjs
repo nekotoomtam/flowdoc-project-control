@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {assess} from './compatibility.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
+const packageVersion=JSON.parse(readFileSync(join(root,'.codex-plugin/plugin.json'),'utf8')).version;
 const config=JSON.parse(readFileSync(process.env.FLOWDOCMAKE_CONFIG??join(homedir(),'.codex','flowdocmake.local.json'),'utf8'));
 const token=readFileSync(config.credentialFile,'utf8').match(/^AUTHORING_TOKEN=(.+)$/m)?.[1].trim();
 if(!token) throw Error('FlowDoc authoring credential missing');
@@ -33,7 +34,7 @@ async function preflight(){
    runtime={...versions,port,imageId:inspect.Image,identitySource:'local Docker container inspection, not HTTP contract'};
   }catch{}
   try{run(config.python,['-c','from pypdf import PdfReader; from PIL import Image']);run('pdftoppm',['-v']);pdf=true;}catch{}
-  return {...assess({contract,runtime,pdf}),packageVersion:'0.1.0',documentation:manifest,runtime,contract:{nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
+  return {...assess({contract,runtime,pdf}),packageVersion,documentation:manifest,runtime,contract:{nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
  } catch{return {ready:false,code:'LOCAL_CONFIGURATION_OR_GUIDE_ERROR'};}
 }
 serveStdio(()=>{

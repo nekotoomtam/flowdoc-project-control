@@ -4,7 +4,8 @@ import {readFileSync,mkdirSync,writeFileSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {homedir} from 'node:os';
 import assert from 'node:assert/strict';
-const plugin=process.argv[2]??join(homedir(),'.codex/plugins/cache/flowdoc-local/flowdocmake/0.1.0');
+const plugin=process.argv[2]??JSON.parse(readFileSync(join(homedir(),'.codex/flowdocmake.local.json'),'utf8')).pluginRoot;
+const manifest=JSON.parse(readFileSync(join(plugin,'.codex-plugin/plugin.json'),'utf8'));
 const client=new Client({name:'flowdocmake-verification',version:'0.1.0'});
 const wiring=JSON.parse(readFileSync(join(plugin,'.mcp.json'),'utf8')).mcpServers.flowdocmake;
 const transport=new StdioClientTransport({...wiring,command:process.execPath,stderr:'pipe'});
@@ -18,5 +19,7 @@ try{
  const output=resolve('artifacts/flowdocmake');mkdirSync(output,{recursive:true});
  writeFileSync(join(output,'preflight.json'),JSON.stringify(context,null,2));
  assert(context.ready,JSON.stringify(context));
- console.log(JSON.stringify({ready:context.ready,runtime:context.runtime,toolCount:tools.length,guide:context.guide}));
+ assert.equal(context.packageVersion,manifest.version,'Installed manifest and running package differ');
+ assert.equal(context.documentation.packageVersion,manifest.version,'Guide snapshot is from another package');
+ console.log(JSON.stringify({ready:context.ready,packageVersion:context.packageVersion,runtime:context.runtime,toolCount:tools.length,guide:context.guide}));
 }finally{await client.close();await transport.close();}
