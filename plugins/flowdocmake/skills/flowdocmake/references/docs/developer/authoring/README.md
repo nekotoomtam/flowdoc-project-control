@@ -33,6 +33,7 @@ Baseline: `nodeModelVersion:18`, `schemaVersion:1`, Service ที่ใช้
 | --- | --- |
 | อ่านต้นแบบแล้วเลือกโครง รักษาเส้น กรอบ ภาพ และข้อมูล | [แนวทางถอดแบบ](reference-mapping.md) |
 | ตรวจทุกส่วนจาก PDF ก่อนเลือกโครงเก่า และเก็บหลักฐานเทียบก่อนส่งงาน | [Source-first coverage](reference-coverage.md) |
+| เลือก draft ใหม่/ซ่อม ID เดิม/ทดแทนเมื่ออนุญาต และใช้ tool ทำ preview ต่อเนื่อง | [Draft selection และ workflow tool](draft-selection.md) |
 | เข้าใจโครงทั้งเล่มและประกาศ Section/Area/Format | [โครงสร้างและตัวแปร](structure-and-data.md) |
 | เลือก node และ property ที่เขียนได้ | [Node reference](nodes.md) |
 | คำนวณพื้นที่ ตาราง ภาพ หัวท้าย และเลขหน้า | [Layout reference](layout.md) |

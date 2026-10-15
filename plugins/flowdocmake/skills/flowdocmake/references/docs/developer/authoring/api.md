@@ -12,6 +12,12 @@ Revision0 เป็น empty ไม่ preview; saveครั้งแรกไ�
 `state:"ready"` แปลว่ามี definition ไม่ได้แปลว่า PDFผ่านreview.
 Draft definition.version คง1 ขณะที่ revisionเพิ่มตามการบันทึก.
 
+เลือก target แยกจาก candidate ตาม [กติกา draft](draft-selection.md): งานสร้างใหม่
+ไม่ต้องรักษา ID ของตัวอย่างเก่า; งานซ่อม ID เดิมรักษา ID เว้นแต่ผู้ใช้อนุญาตตัวแทน.
+flowdocmake 0.1.2 เพิ่ม `run_candidate_preview({planPath,mode,waitMs?})` สำหรับ
+ขั้นตอนเชิงกลพร้อม checkpoint ผ่าน MCP; ไม่ใช่ HTTP endpoint ใหม่ของ Service.
+อ่านรูปแบบ plan และทางเดิน ownership/stale/pending ในกติกาข้างต้นก่อนใช้.
+
 ## 2. Common transport
 
 HTTPใช้ Bearer credential ของ principalที่มีสิทธิ์; MCPจัดการ credentialฝั่งserver.

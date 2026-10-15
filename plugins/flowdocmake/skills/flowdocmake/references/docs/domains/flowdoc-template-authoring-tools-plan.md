@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Candidate-specific entries below are historical evidence; flowdocmake packaging remains planned.
+Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake 0.1.1 packaging and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.
@@ -727,7 +727,83 @@ The existing full trial is the observed failing baseline for this correction.
 
 Owner repository and active role: Project Control implementation/documentation;
 single-room execution IDs not applicable. Acceptance requires focused script
-checks, installed package integrity, and the authorized test room repairing draft
-6e9478b3-a3bf-45d8-9afa-a4909d4a865f with complete source/output comparison.
-Retain the first output as evidence. Retry outcome remains pending until reviewed;
-do not label it passed from a generated receipt or coverage JSON alone.
+checks, installed package integrity, and the authorized source-first retry with
+complete source/output comparison. The initial repair used draft
+6e9478b3-a3bf-45d8-9afa-a4909d4a865f; the later identity decision is recorded below.
+Retain the first output as evidence. A generated receipt or coverage JSON alone
+cannot establish reconstruction acceptance.
+
+### Source-reviewed retry outcome
+
+The test room completed the source inventory (98 pages, nine logical parts)
+before retrieving a reuse candidate. Its repaired old draft reached 95 pages,
+but cover and approval still differed. Whole-candidate replacement encountered
+the existing variable-ownership guard; preserving that ID was a parent-selected
+constraint, not an owner requirement. The parent withdrew that constraint. The
+room nevertheless requested confirmation again and stopped. This is evidence of
+an unresolved autonomous-execution limitation, not a Service failure.
+
+The parent then used the installed draft-only MCP pipeline to create a new empty
+identity and save the complete source-reviewed Area18 candidate. The new helper
+`preview_candidate.mjs` checks source inspection first, saves exact checkpointed
+calls and receipts, uploads original assets, polls the exact revision, and saves
+the PDF. A repeat invocation reused the same identity/revision/job/PDF. The helper
+does not certify fidelity and contains no publication path.
+
+Draft `008980f5-dd0d-4f7d-86be-2fc3f300e08d`, revision 1, job
+`01a14008-adb0-7567-a505-b853adc461ae` produced 98 pages. PDF SHA-256:
+`230718afdae269a2d6be9408bb14a4dfa66f66a6f40c0950a00353cd128e5c64`.
+The room independently reviewed all nine output sheets and representative full
+pages after the parent created the preview. Parent review also inspected all
+output sheets and reconciled every page's extracted text, all 361 explicit REQ
+codes, all 396 internal-link destination pages and page labels against the source.
+All link targets and labels match. Text matches after whitespace normalization
+except source pages 36 and 42: an orphan `Features List` header remains with its
+table on the following page in the candidate. This is an observed layout
+difference, not lost requirement content. Service image preparation also changes
+image geometry/resampling; four original inline icons retain low-resolution
+warnings. Exact pixel identity and strict reconstruction acceptance are not PASS.
+
+Review artifacts: test-room `work/native-full-011/preview.pdf`,
+`candidate-checkpoint.json`, `review.md`, `coverage.json`, and rendered `review/`; parent
+`artifacts/flowdocmake/native-comparison.json` and `native-links.json` preserve
+per-page text differences and destination checks. This assisted retry proves
+source-first candidate selection and complete comparison, not an independent
+model reconstructing the reference from scratch. The final delivery checker
+correctly remains FAIL for feature-catalogue layout, strict all-values equality,
+and unresolved differences; source inspection and output-page coverage are
+complete. No publication occurred.
+
+Verification: five focused package/coverage/MCP tests pass; the installed
+manifest exposes 14 tools with ready=true against Service/Core 0.3.0; skill
+validation and guide integrity pass. Source-check dry run passed without mutation;
+the real helper and its checkpoint resume succeeded. Core/Service code unchanged.
+
+### Draft policy and independent retry — current bounded request
+
+Owner now requests explicit draft selection plus a directly callable mechanical
+tool, then one fresh chat repeating the original PDF/data assignment without
+parent-created or parent-repaired drafts. Publication remains prohibited.
+Owner repository: Project Control, implementation/documentation and reviewer;
+single-room execution IDs not applicable. This consumer trial is not a separate
+product-code WORK lane; it may author isolated unpublished document drafts only.
+Scope: package scripts, versioned guidance, focused tests and a fresh consumer
+trial. Core/Service schema, guards, release and unrelated drafts stay unchanged.
+
+Package candidate 0.1.2 adds `run_candidate_preview` over the checkpointed MCP
+mechanics. Draft policy is explicit: new, preserve, replace-if-conflict. Only a
+real ownership conflict can take an owner-authorized replacement branch. Pending
+returns the same plan/tool; PDF-ready requires visual/data review. Reuse candidate
+and target identity are separate concepts. Existing guidance is corrected at its
+canonical source and packaged as a fresh pinned snapshot.
+
+Acceptance/proof budget: focused workflow tests for source gate, policy/fallback,
+unchanged retries and continuation, stale conflicts and retained intent; MCP
+discovery/negative checks without real parent draft mutations; installed package
+and guide integrity; one fresh user-owned consumer chat, source/output inspection
+and declared delivery coverage reviewed by parent. The parent may observe and
+review but must not create, save, or prepare that chat's candidate or plan. A
+successful assisted output from the previous round is not independent success.
+Model setting for the consumer chat uses the user's configured default (no new
+override requested); it is an artifact-use trial, not the registered PLAN/WORK
+model-selection process. Outcome remains pending until the fresh chat finishes.

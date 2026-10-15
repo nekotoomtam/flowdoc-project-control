@@ -4,7 +4,7 @@
 
 Owner: FlowDoc Project Control. Scope: reference-reconstruction workflow in
 flowdocmake; this record does not add Core schema or certify visual fidelity.
-Package 0.1.1 uses Service/Core 0.3.0 and the existing draft-only tool contract.
+Package 0.1.2 uses Service/Core 0.3.0 and the draft-only tool contract.
 
 ## Inspect the PDF before selecting a template
 
@@ -53,7 +53,9 @@ After the source inventory passes, an old template is a candidate only. Add
 comparison per part; decision is reuse/adapt/replace/new. A successful old preview
 does not establish matching geometry or data coverage. Adapt the definition to
 the observed PDF instead of forcing missing/different JSON formats into it.
-Preserve draft identity when repairing an existing draft.
+Separate the reuse candidate from the target draft. Preserve a specified repair
+target unless the user permits replacement; new-template tasks can reuse a
+candidate under a fresh identity. Follow [draft selection](draft-selection.md).
 
 ## Reconcile the entire document before delivery
 
