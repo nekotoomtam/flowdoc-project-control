@@ -52,6 +52,11 @@ definition.version 1. These are distinct from a draft revision.
    saved PDF path/hash, checked pages, remaining work. Save intent before a
    mutation and its receipt afterward. Retry uncertain requests with identical
    payload/key; changed payload needs a new key. Resume existing IDs/jobs first.
+   For large JSON, prepare an arguments JSON file programmatically and run
+   `node <package>/scripts/call_tool_file.mjs <tool> <arguments.json> <new-result.json>`.
+   It calls the registered MCP tool, persists its exact response and prints small
+   metadata. Read receipts before retrying; do not copy base64/JSON chunks through
+   the model or confuse local argument files with direct template storage edits.
 6. Validate with sample data, resolve errors without truncating source, save,
    preview the exact revision, poll status until succeeded/failed. Use bounded
    waits and progress updates; a job ID or saved revision is not completion.
