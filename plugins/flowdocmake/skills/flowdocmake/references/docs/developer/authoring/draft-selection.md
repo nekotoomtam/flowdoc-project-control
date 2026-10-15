@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.2 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.3 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
@@ -88,3 +88,67 @@ delete an active lock. An interrupted process with a genuinely abandoned lock
 requires reconciliation before resuming. Errors include a code and checkpoint;
 inspect them instead of treating every error as permission to fork. No helper
 can guarantee that an agent continues after it ends its own turn.
+
+## Task progress and continuation
+
+Package 0.1.3 adds `manage_document_task`. Its local progress file is independent
+of immutable preview checkpoints and never writes template storage. Keep it in
+the authoring workspace, separate from template, plan and coverage files.
+
+1. `init`: absolute `taskPath`, `inventoryPath`, `coveragePath` after source
+   inspection. Every part begins pending. Refuses an existing file. Correct
+   wrongly classified parts first; a changed inventory needs a new task file.
+2. `read`: `taskPath` on resumption. Returns `revision`, `pendingParts`, notes,
+   PDF identity and `complete`.
+3. `update`: `taskPath`, `expectedRevision`, `partId`, `status`, concrete `note`
+   naming the next repair/check. Writable statuses: pending, authoring,
+   needs-repair, needs-review. Read again after a revision conflict. Callers
+   cannot set pass or complete directly.
+4. `review`: `taskPath`, `expectedRevision`, `coveragePath`, succeeded run's
+   `checkpointPath`. Verifies PDF bytes/page count, source identity, unchanged
+   part mapping and delivery coverage. Only comparisons for that exact PDF
+   path/hash/template/revision can pass. Every new artifact re-evaluates all
+   parts; old passes never carry over implicitly. Bind/review each new PDF before
+   claiming completion. Local progress cannot detect an unrelated newer Service
+   revision until given that revision's checkpoint.
+
+Example initialization:
+
+```json
+{"action":"init","taskPath":"C:/work/task.json","inventoryPath":"C:/work/source/inventory.json","coveragePath":"C:/work/coverage.json"}
+```
+
+This checks declared evidence, not visual truth. Actually inspect pages before
+entering pass evidence. Identify meaningful native parts: rows/columns, TOC,
+assets, alignment and PDF-only content. A whole page wrapped in a table cell
+does not demonstrate a reconstructed table. Keep omissions/mismatches as repairs
+until fixed or explicitly accepted by the owner; never invent an acceptance.
+
+Workflow errors return `category` and `nextAction`:
+
+| Category | Meaning and continuation |
+| --- | --- |
+| needs-repair | Own JSON/grammar/layout/render input or unfinished comparison. Diagnose, repair and continue, preserving source and receipts. |
+| retry | Busy/transient Service or stale revision. Read current state; retry uncertain mutations unchanged, use a fresh run for changed input. |
+| needs-diagnosis | Unclear preflight/unreadable response. Inspect evidence before claiming an external blocker. |
+| blocked | Credentials, ownership or essential owner choice missing. State the exact external requirement; do not bypass it. |
+
+`check` reports `validation: local-input-only`, `coreValidationRun: false`;
+Core grammar is validated in run. `pending` needs polling; `pdf-ready` needs
+comparison. Neither is completion. A render failure alone does not establish
+an unfixable renderer defect: preserve and diagnose its input before escalating.
+
+When the user authorizes Goal, call the host's `create_goal` in the authoring
+thread with the full PDF-and-review objective. Do not invent a token budget.
+If a Goal is already active, inspect it and continue within its authorized scope.
+Maintain per-part progress across Goal continuations. Complete the Goal only
+after actual full-PDF inspection, passing comparison and review-ready delivery.
+Follow host blocker, budget and pause rules; repairable template errors are not
+external blockers. Goal does not authorize publication. Without Goal support,
+report the limitation honestly; this MCP tool cannot schedule future turns.
+
+If an existing room's native catalogue is stale after an upgrade, packaged
+`call_tool_file.mjs` opens a fresh MCP client to the installed server and can call
+`manage_document_task` with argument/result files. This is a real fresh MCP call,
+not evidence that the native catalogue refreshed. Never bypass tools with direct
+database/template-storage writes.

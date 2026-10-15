@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake 0.1.1 packaging and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
+Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake packaging through 0.1.2 and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.
@@ -806,4 +806,76 @@ review but must not create, save, or prepare that chat's candidate or plan. A
 successful assisted output from the previous round is not independent success.
 Model setting for the consumer chat uses the user's configured default (no new
 override requested); it is an artifact-use trial, not the registered PLAN/WORK
-model-selection process. Outcome remains pending until the fresh chat finishes.
+model-selection process. The observed trial outcome follows below.
+
+#### Observed trial result: independent completion FAIL
+
+Installed package 0.1.2 preflight returned ready=true, 15 tools and exact
+Service/Core 0.3.0. The fresh chat is
+`01a1401a-642f-77d0-b0ff-88d35f5f89a4`, titled
+`ทดสอบ flowdocmake 0.1.2 จบเอกสารเอง`, with its own directory
+`C:/Users/nekot/Documents/Codex/2026-10-15/flowdocmake-independent-012-trial`.
+It received the original PDF/payload paths and explicit initial permission for
+new drafts and an ownership-conflict replacement. No prepared candidate, plan,
+fixture ID or corrected definition was supplied by the parent.
+
+Actual MCP history proves discovery and use of `run_candidate_preview`, including
+check/run, validation failures, successful saves, previews and local PDFs. The
+chat created draft `080d97df-ce22-45bc-8c9d-3a97da168bab` itself, then repaired it
+through revision 7 under the same ID. Parent actions were read-only observation,
+review feedback and continuation messages; no parent draft creation/update or
+candidate/request/plan editing occurred. Nine focused tests pass, including
+source/policy guards, replacement only on an authorized ownership conflict,
+pending-job resume, exact mutation-intent retention and MCP discovery/negative
+checks. Installed guide integrity and skill validation pass.
+
+The full-document acceptance still fails. The initial turn stopped at
+agent-authored `INVALID_TEMPLATE` errors. After review it repaired the grammar
+and produced a 62-page partial PDF, but stopped again while naming missing
+parts. Subsequent previews reached 94 pages. The chat first flattened 26 source
+pages into paragraphs, then wrapped some complete-page text in a single table
+cell. Parent image review rejected this: approval/revision did not retain their
+row/column semantics, copied TOC text separated names from page numbers, and
+`Recovered source page` labels were added. The room later introduced separate
+cover fields and system footer numbering itself, but still identified approval,
+revision, TOC and header/banner fidelity as unfinished.
+
+Five turns ended before full acceptance, despite four explicit continuation
+reviews and two additional in-progress artifact reviews. The latest result is
+revision 7, 94 pages; the room does not claim successful full delivery and no
+whole-output comparison or passing delivery coverage is accepted. Repeated
+status finals are the remaining observed execution boundary. No external Core
+rendering limitation has been established. Source coverage is declared evidence
+coverage, not proof of correct part classification or visual reconstruction.
+Parent verified the saved PDF's 94 pages and SHA-256
+`33a3979b8f18e1daf9bb2b1e2754a70b91c051eeb383ab0d3fb92dede651962a` at
+the chat's `work/run-9/preview.pdf`. This identity check is not whole-document
+visual acceptance.
+
+This is a FAIL of the requested independent end-to-end trial, alongside passing
+package mechanics. Do not reuse it as proof that another room completes full
+reconstruction autonomously. Further repeating the same continuation prompt is
+not additional acceptance evidence; improving model workflow/part-level authoring
+needs a separate bounded design. Do not rescue the result by having the parent
+author the missing document. No publication occurred.
+
+### Owner-authorized per-part progress and Goal trial, 2026-10-15
+
+Owner request: add persistent unfinished-part status and distinguish errors,
+then have the existing consumer room use a host Goal to complete the full PDF
+and actual comparison itself. Parent must not author its draft/candidate/plan;
+publication stays prohibited. Owner: Project Control; implementation and evidence
+review inline, execution IDs not applicable. Scope: package 0.1.3 scripts,
+canonical authoring guidance, focused tests and the existing consumer trial.
+Core/Service 0.3.0 and template schema remain unchanged.
+
+Acceptance: persisted/CAS-protected progress; passes bound to actual saved PDF
+and declared complete coverage; changed artifacts invalidate earlier reviews;
+repairable errors are separated from retry, diagnosis and external blockers;
+installed MCP discovery and guide integrity pass. Consumer must activate its own
+Goal, complete the document without parent draft repairs and inspect all output
+pages/data against source. Passing package tests alone does not satisfy consumer
+acceptance. Proof budget: focused package tests, installed preflight/skill check,
+Goal activation evidence and one continued consumer trial. No broad release/RAM
+test or new Work/room records are needed. Remaining risk: declared review evidence
+does not itself prove honest visual inspection; parent reviews the actual result.
