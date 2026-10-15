@@ -858,3 +858,24 @@ reconstruction autonomously. Further repeating the same continuation prompt is
 not additional acceptance evidence; improving model workflow/part-level authoring
 needs a separate bounded design. Do not rescue the result by having the parent
 author the missing document. No publication occurred.
+
+### Owner-authorized per-part progress and Goal trial, 2026-10-15
+
+Owner request: add persistent unfinished-part status and distinguish errors,
+then have the existing consumer room use a host Goal to complete the full PDF
+and actual comparison itself. Parent must not author its draft/candidate/plan;
+publication stays prohibited. Owner: Project Control; implementation and evidence
+review inline, execution IDs not applicable. Scope: package 0.1.3 scripts,
+canonical authoring guidance, focused tests and the existing consumer trial.
+Core/Service 0.3.0 and template schema remain unchanged.
+
+Acceptance: persisted/CAS-protected progress; passes bound to actual saved PDF
+and declared complete coverage; changed artifacts invalidate earlier reviews;
+repairable errors are separated from retry, diagnosis and external blockers;
+installed MCP discovery and guide integrity pass. Consumer must activate its own
+Goal, complete the document without parent draft repairs and inspect all output
+pages/data against source. Passing package tests alone does not satisfy consumer
+acceptance. Proof budget: focused package tests, installed preflight/skill check,
+Goal activation evidence and one continued consumer trial. No broad release/RAM
+test or new Work/room records are needed. Remaining risk: declared review evidence
+does not itself prove honest visual inspection; parent reviews the actual result.

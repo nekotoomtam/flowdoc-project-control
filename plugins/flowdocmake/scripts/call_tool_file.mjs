@@ -3,7 +3,7 @@ import {readFileSync,writeFileSync,existsSync} from 'node:fs';
 import {join,resolve} from 'node:path';
 import {homedir} from 'node:os';
 import {pathToFileURL} from 'node:url';
-const allowed=new Set(['get_flowdocmake_context','get_authoring_contract','create_template_draft','get_template_draft','update_template_draft','validate_template','preview_template_draft','get_preview_status','save_preview_pdf','get_preview_pdf','create_preview_upload','upload_preview_image','upload_preview_image_file','finalize_preview_upload','run_candidate_preview']);
+const allowed=new Set(['manage_document_task','get_flowdocmake_context','get_authoring_contract','create_template_draft','get_template_draft','update_template_draft','validate_template','preview_template_draft','get_preview_status','save_preview_pdf','get_preview_pdf','create_preview_upload','upload_preview_image','upload_preview_image_file','finalize_preview_upload','run_candidate_preview']);
 const [tool,input,output]=process.argv.slice(2);
 if(!allowed.has(tool)||!input||!output){console.error('Usage: node call_tool_file.mjs <draft-only tool name> <arguments.json> <new-result.json>');process.exit(1);}
 const resultPath=resolve(output);

@@ -13,6 +13,7 @@ try{
  await client.connect(transport);
  const tools=(await client.listTools()).tools;
  assert(!tools.some(t=>/publish/.test(t.name)));
+ assert(tools.some(t=>t.name==='manage_document_task'));
  for(const name of ['get_flowdocmake_context','get_authoring_contract','create_template_draft','update_template_draft','validate_template','preview_template_draft','get_preview_status','save_preview_pdf','create_preview_upload','upload_preview_image','finalize_preview_upload','run_candidate_preview'])assert(tools.some(t=>t.name===name),name);
  const result=await client.callTool({name:'get_flowdocmake_context',arguments:{}});
  const context=JSON.parse(result.content[0].text);

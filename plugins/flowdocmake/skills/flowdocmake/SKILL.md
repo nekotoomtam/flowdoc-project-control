@@ -9,7 +9,7 @@ description: Create or revise FlowDoc document templates from PDFs and structure
 
 Owner: FlowDoc Project Control. This package routes authoring instructions and
 existing Service tools; it does not change Core behavior or authorize publication.
-Package 0.1.2 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
+Package 0.1.3 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
 definition.version 1. These are distinct from a draft revision.
 
 ## Start and continue
@@ -50,7 +50,14 @@ definition.version 1. These are distinct from a draft revision.
    revisions, validation or render errors require their own repair. Save the
    complete definition with declared global/Section/Format schemas. Read fresh
    revision before updates; never guess `expectedRevision` or overwrite a conflict.
-5. Maintain a local task checkpoint (not template storage): source paths/hashes,
+5. Read [task progress](references/docs/developer/authoring/draft-selection.md#task-progress-and-continuation).
+   Use `manage_document_task` to persist unfinished parts independently of preview
+   runs. Read it on resumption; keep known mismatches in needs-repair. A saved PDF
+   is needs-review, not completion. Only evidence for the current PDF can pass.
+   When the user explicitly requests Goal, activate a Goal in this thread for
+   the full PDF and review; do not merely mention Goal in prose. Follow the host
+   Goal lifecycle, including blocker/pause rules. Task state does not schedule turns.
+   Maintain a local mutation checkpoint (not template storage): source paths/hashes,
    package and guide hashes, runtime identity, template ID/docKey/revision/
    fingerprint, exact mutation payloads and idempotency keys, preview job ID,
    saved PDF path/hash, checked pages, remaining work. Save intent before a
@@ -66,6 +73,7 @@ definition.version 1. These are distinct from a draft revision.
    draftPolicy are in draft selection. This tool saves receipts and continues
    validation/save/image upload/preview/PDF download through authoring MCP.
    `pending` returns the same tool/plan as nextAction: call it again yourself.
+   `check` is local input checking only; Core grammar validation happens in run.
    `pdf-ready` still requires full PDF review. Repair changed inputs in a new
    workDirectory with preserve and the returned target ID; do not create another
    identity for every visual fix. The CLI is a fallback, not an additional task.

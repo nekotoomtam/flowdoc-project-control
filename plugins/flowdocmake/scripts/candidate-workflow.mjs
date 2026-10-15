@@ -46,7 +46,7 @@ export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,in
  if(typeof planPath!=='string'||!isAbsolute(planPath))throw failure('ABSOLUTE_PLAN_PATH_REQUIRED');
  const prepared=prepare(resolve(planPath)),{plan,inventory,coverage,directory,definition,assets,identity}=prepared;
  let request=prepared.request;
- if(checkOnly)return {ok:true,status:'checked',sourcePages:inventory.source.pageCount,parts:coverage.parts.length,assets:assets.length,draftPolicy:plan.draftPolicy,planHash:identity,mutated:false};
+ if(checkOnly)return {ok:true,status:'checked',validation:'local-input-only',coreValidationRun:false,complete:false,nextAction:'Run mode=run for Core validation. Local checks do not establish template grammar correctness.',sourcePages:inventory.source.pageCount,parts:coverage.parts.length,assets:assets.length,draftPolicy:plan.draftPolicy,planHash:identity,mutated:false};
  const out=resolve(plan.workDirectory);mkdirSync(out,{recursive:true});const checkpoint=join(out,'candidate-checkpoint.json'),lockPath=join(out,'candidate.lock');
  let lock;try{lock=openSync(lockPath,'wx');}catch{throw failure('WORKFLOW_BUSY',{checkpoint,nextAction:'Wait for the active call; do not remove its lock.'});}
  let connection;
