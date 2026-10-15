@@ -765,11 +765,14 @@ image geometry/resampling; four original inline icons retain low-resolution
 warnings. Exact pixel identity and strict reconstruction acceptance are not PASS.
 
 Review artifacts: test-room `work/native-full-011/preview.pdf`,
-`candidate-checkpoint.json`, `review.md`, and rendered `review/`; parent
+`candidate-checkpoint.json`, `review.md`, `coverage.json`, and rendered `review/`; parent
 `artifacts/flowdocmake/native-comparison.json` and `native-links.json` preserve
 per-page text differences and destination checks. This assisted retry proves
 source-first candidate selection and complete comparison, not an independent
-model reconstructing the reference from scratch. No publication occurred.
+model reconstructing the reference from scratch. The final delivery checker
+correctly remains FAIL for feature-catalogue layout, strict all-values equality,
+and unresolved differences; source inspection and output-page coverage are
+complete. No publication occurred.
 
 Verification: five focused package/coverage/MCP tests pass; the installed
 manifest exposes 14 tools with ready=true against Service/Core 0.3.0; skill
