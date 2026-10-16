@@ -149,3 +149,19 @@ POST /authoring/drafts/:id/clone; ใช้สิทธิ์จากต้น�
 save สำเร็จแยกจาก fontReadiness ready/blocked/incomplete; stale ต้องอ่านใหม่ก่อนแก้.
 ขั้นเลือกฟอนต์อยู่ใน [TextStyle](layout.md#2-textstyle-และความสูงข้อความ).
 ผู้ดูแลใช้ Service CLI/API ด้วย credential แยก; FlowDocMake ไม่ได้เครื่องมือนำเข้า/ออกใช้.
+
+## ตัวช่วยความสูงฟอนต์ (development candidate หลัง 0.4.0)
+
+ใช้ pt จริงตามปกติ; เปลี่ยนฟอนต์ธรรมดาคง pt เดิม. ถ้าเจ้าของเลือกปรับความสูง ให้เรียก
+`propose_font_height_adjustment({templateId,expectedRevision,styleId,targetFont,idempotencyKey})`
+โดย targetFont เป็น `{kind:'library',releaseId,weight,style}` จากคลังที่มีสิทธิ์.
+ข้อเสนอไม่แก้ draft: แสดง proposedFontSizePt กับ `layoutCheck:'not_checked'` ให้ผู้ใช้เลือกก่อน.
+เมื่อเลือกใช้แล้วจึงเรียก `confirm_font_height_adjustment({templateId,proposalId,expectedRevision,idempotencyKey})`.
+Service เปลี่ยน font+pt พร้อมกัน คง lineHeightPt และทุก node ที่ใช้ shared style เดียวกันได้รับผล.
+
+ข้อเสนออายุ 15 นาที; stale/expired/profile เปลี่ยนต้องอ่านใหม่และขอเสนอใหม่. Retry คำขอเดิม
+ใช้ key/body เดิมและได้ผลเดิม; key เดิมต่าง body ถูกปฏิเสธ. ยกเลิกคือไม่ confirm.
+ไม่มี profile ใช้ pt ปกติต่อได้; schema1 Sarabun คืน unavailable ไม่แปลง schema อัตโนมัติ.
+รุ่น retired ใช้ได้เฉพาะ exact tuple ที่ draft สืบทอดมา ไม่ให้สิทธิ์จาก family หรือ JSON ผู้ใช้.
+Catalog heightProfile บอกผล review เบื้องต้น; availability จริงต้องผ่าน propose/confirm อีกครั้ง.
+หลังยืนยันตรวจ readiness/preview ตามเดิม; ผลบันทึกไม่ใช่หลักฐาน PDF/ความเหมือนทางภาพ.
