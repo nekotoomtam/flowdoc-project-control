@@ -1,7 +1,7 @@
 {
-  "packageVersion": "0.2.2-dev.font-height.1",
+  "packageVersion": "0.2.2",
   "guideRelease": "0.4.0",
-  "sourceCommit": "d93999e979ff93dc29b98a8e6c976f90f2c1ab22",
+  "sourceCommit": "c250cbcd9d4974d55ed91005c0bccf5aaaf81f7a",
   "files": {
     "skills/flowdocmake/references/docs/developer/authoring/api.md": "412005e595f3fa74f9ac1153f1a524788fe4c35d40d5a4c84dcd8c729efd8d19",
     "skills/flowdocmake/references/docs/developer/authoring/contents-and-repetition.md": "679fc949c627a1a39d40b4770d0468a3a122916dedaf28512cff5c2f69e4be27",

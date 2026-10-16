@@ -590,3 +590,45 @@ IBM, Pridi และ Noto ทั้งสองตระกูลไม่มี
 ลบเฉพาะสี่ container ทดสอบช่วงนี้ เก็บ branches/worktrees ที่ยังไม่รวม.
 ผลเป็น development candidate ที่ตรวจแล้ว ไม่ใช่การรวม branch หรือ release/tag/push/install.
 ขั้นถัดไปต้องมีคำสั่งแยกสำหรับการรวมงานและออก release ตามกฎเดิม.
+
+## 12 รวมเข้าชุดพัฒนาและเพิ่มเวอร์ชัน — 2026-10-17
+
+เจ้าของสั่งรวมงานที่ผ่านแล้วเข้าชุดหลัก เคลียร์ lanes ที่รวมครบ และเพิ่มเวอร์ชัน;
+ยืนยันคงชื่อ branch หลัก Core `codex/template-binding`, Service
+`codex/template-registry`, Project Control `main`. ไม่อนุญาตเลื่อนเข้า release.
+ใช้ authority ของคำขอนี้แบบ inline; execution IDs ไม่เกี่ยวข้อง.
+
+- Core `0.4.1` source `6cd25cac1ea7d4b5cd4b8df29d2c151dd3e409c0`
+  รวมแบบ fast-forward. Service `0.4.1` candidate `ba099f1` รวมเป็น
+  `ee11ae80332bdf6e81a948bc35be98adfc79b7d3`.
+- Service development เดิมมี tree เท่าฐาน release 0.4.0 ของ candidate แต่คนละ ancestry;
+  เก็บทั้งสอง parents และใช้ tree ของ candidate ที่ตรวจแล้วอย่างตรงตัว.
+  tree ของ merge กับ candidate เท่ากัน `d6d6dae227d807a428e4e22b57272fc8a6f8d257`.
+  ไม่แก้ conflict รายไฟล์จนทำให้ runtime เปลี่ยนโดยไม่ตรวจ.
+- Core tarball ใหม่ SHA256
+  `2504be5859057d64c5adae3778d190df7f8ffc71a456fcada2fd48ff4d7575bc`;
+  Service manifest/dependency/lock และ FlowDocMake `0.2.2` ตรึงคู่ใหม่นี้.
+  เป็นเลขรุ่นบนชุดพัฒนา ยังไม่มี release snapshot/tag หรือการติดตั้ง.
+- Core official packaging ผ่าน 69 files / 604 tests และ isolated Linux packed consumer.
+  เทียบ tarball 146 files ต่างเฉพาะ package.json/README; runtime/native/font/resources
+  ตรงไบต์กับ candidate ช่วง 4 จึง reuse ผลตรวจ PDF ทุกหน้าของช่วง 4 ได้.
+- Service build/runtime, vendor checks ผ่าน. ชุด affected 20 files ได้ 84 PASS/2 skipped
+  เพราะรอบแรกขาด FONT_FIXTURE_DIR/FLOWDOCMAKE_PLUGIN_ROOT;
+  รัน proposal file ใหม่พร้อม prerequisites ครบได้ 20/20 ไม่มี skip
+  จึงครอบคลุม 86 tests เดิมครบ. Guard tests ใหม่ 4/4 และ plugin focused 6/6 ผ่าน.
+- Native candidate preflight ready:true กับคู่รุ่นใหม่; restore ตรวจ 11 drafts /
+  14 PDF bindings, profile และ confirm receipt; preview Sarabun ตรง SHA256 เดิม
+  `029f0635e755fbb37e5a9d1c741ff0fa8aa44ff3ed3fd51f1b33a201d09ce57a`.
+- หลักฐาน/backup refs และ Git bundles ก่อนรวมอยู่
+  `C:/Users/nekot/Documents/Codex/2026-10-17/font-height-main-integration/`.
+  ชุดส่งมอบ dev ของช่วง 4 คงเดิมเป็นประวัติ ไม่เขียนทับให้ดูเป็นรุ่นใหม่.
+  ตรวจ refs/tags release ก่อน–หลังแยกจากผล merge และเก็บ cleanup receipt ที่นี่.
+
+Cleanup จำกัด branches/worktrees ของงานฟอนต์ที่ clean และเป็น ancestor ของชุดหลัก;
+เก็บ ignored evidence ก่อนนำ worktree ออก. Branch งานอื่นที่ยังไม่รวมคงไว้.
+ไม่เปลี่ยน release/tag, installed plugin, live containers หรือฐาน/คลังผู้ใช้.
+
+ข้อเสนอเรื่องแจ้งผลกระทบหลังเปลี่ยนฟอนต์พักไว้ตามคำขอเจ้าของ:
+แนวคิดคือเทียบผลจัดหน้าก่อน–หลังด้วยข้อมูลเดียวกัน และชี้ผลต่อช่อง/แถว/ตาราง/หน้า
+โดยไม่ปรับ layout อัตโนมัติ. ยังไม่ใช่สัญญาที่อนุมัติหรือคำสั่งพัฒนา;
+กลับมานิยามรายละเอียดภายหลัง ไม่เพิ่ม prerequisite ให้การรวมงานรอบนี้.
