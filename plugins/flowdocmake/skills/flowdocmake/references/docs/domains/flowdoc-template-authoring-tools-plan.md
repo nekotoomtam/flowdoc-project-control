@@ -1067,3 +1067,33 @@ not a claim that a new full-PDF reconstruction succeeded. Sixteen focused
 compatibility/coverage/representative/task/workflow/transport tests pass, as do
 46 checked canonical local links/anchors and whitespace checks. Package
 references are regenerated from committed canonical sources before installation.
+
+### Fixed-form feedback without more reading, 2026-10-16
+
+Owner requested guidance repairs after the PDF-only ศ.บ.1 trial. Bounded inline
+Project Control canonical/package documentation; Documentation Synthesizer,
+routine risk; execution/Phase/Checklist IDs not applicable. Markdown authority
+gate passed under the existing boundary. No runtime, draft, source PDF, map,
+new Work/Evidence or new reference file is changed. The existing local trial
+`C:/Users/nekot/Documents/Codex/2026-10-16/flowdocmake-sb1-trial/checks.json`
+supplies feedback, not product-wide capability or successful delivery evidence.
+
+Package 0.1.9 replaces redundant mapping prose with current-version evidence
+classification: directly supported, fallback, confirmed limitation, and repair/
+unknown. Missing parts stay pending; one failed attempt or absent property
+does not rule out another valid composition. Fixed forms/mixed documents route
+by part; font substitution requires measurements rather than a universal size
+multiplier; original image transforms and graphics-only omissions are explicit.
+Preflight allows the existing fresh packaged MCP client for stale chat wiring,
+still requiring its actual ready:true. No new schema, gate or approval step.
+
+Proof/document budget: existing entry, mapping, index, preflight and package
+metadata only; this maintenance note is not startup reading. Entry stays 104
+lines and shrinks 7112 to 7108 characters; mapping shrinks 147 to 134 lines and
+7816 to 7604 characters. These are source-text counts, not measured AI tokens.
+Four read-only before/after scenarios exposed the prior ambiguity and passed
+revised routing without lost safety rules. Sixteen focused compatibility,
+coverage, representative, task, workflow and read-only transport tests pass;
+63 authoring local links/anchors, check:data and diff whitespace checks pass.
+Pinned references are generated from committed canonical inputs and verified
+before local installation; no new document reconstruction is claimed.

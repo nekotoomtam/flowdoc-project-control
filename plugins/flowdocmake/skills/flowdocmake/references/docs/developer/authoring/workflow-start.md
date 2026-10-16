@@ -3,7 +3,7 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. หน้านี้เป็นทางเข้าสั้นสำหรับเลือกช่วงอ่านของ
-คู่มือ authoring 0.1.8; ไม่เพิ่ม schema, runtime capability หรือสิทธิ์เผยแพร่.
+คู่มือ authoring 0.1.9; ไม่เพิ่ม schema, runtime capability หรือสิทธิ์เผยแพร่.
 รายละเอียดผลลัพธ์อยู่ในคู่มือหลัก เปิดเฉพาะเมื่อมีคำถามเรื่องขอบเขต.
 
 ## เริ่มด้วยเป้าหมาย
@@ -19,7 +19,7 @@ PDF อย่างเดียวเริ่มได้. ถ้ามี JSON
 | --- | --- | --- |
 | 0 กำหนดโจทย์ | หน้านี้; [นิยามเป้าหมาย](../../domains/flowdoc-ai-template-authoring-guide.md#เลือกเป้าหมายก่อนเลือกขั้นตอน) เฉพาะเมื่อขอบเขตยังไม่ชัด | รู้ไฟล์ ขอบเขต ผลส่งมอบ แหล่งหลักและข้อจำกัดเวลาที่มีจริง |
 | 1 แกะข้อมูลดิบ | เฉพาะ [Extract source data](reference-coverage.md#extract-source-data-before-designing-a-template) | ข้อความ รายการ แถว/ช่อง กลุ่ม รูปและความสัมพันธ์ แยกเก็บพร้อมหน้า/ตำแหน่งและจุดไม่แน่ใจ |
-| 2 สำรวจ/จับคู่รูปแบบ | เฉพาะ [Inspect the PDF](reference-coverage.md#inspect-the-pdf-before-selecting-a-template); [mapping](reference-mapping.md) เฉพาะหัวข้อที่พบจริง | รูปแบบที่พบและการวัดผูกกับข้อมูลดิบครบ; ยังไม่แปลงข้อมูลให้พอดีกับโครงเก่า |
+| 2 สำรวจ/จับคู่รูปแบบ | [Inspect the PDF](reference-coverage.md#inspect-the-pdf-before-selecting-a-template); [กรณี](reference-mapping.md#2-เลือกหมวดตามลักษณะการจัดหน้า) | วัดแบบผูกข้อมูล; แยกรองรับ/ทดแทน/ข้อจำกัดมีหลักฐาน/งานค้าง ก่อน draft |
 | 3 วางโครง/แปลงข้อมูล | [developer index](README.md) เพื่อเลือกเฉพาะบท schema/node/layout ที่ต้องใช้ | native Section/Area/Format และ request ที่ย้อนกลับข้อมูลดิบได้; ไม่เขียนทับข้อมูลดิบ |
 | 4 ทดลองตัวอย่าง | [preflight](draft-selection.md#authoring-preflight), [เลือก target](draft-selection.md#separate-the-candidate-from-the-target), [mechanics](draft-selection.md#mechanical-steps-through-the-tool); เปิด progress/representative ตาม prerequisite ของ tool | ตัวอย่างจริงที่ตรวจข้อมูล โครง พฤติกรรมและภาพตามเป้าหมาย; งานโครงส่งตรวจรับตัวอย่างได้ |
 | 5 ขยายเมื่อขอ | เฉพาะ [representative gate](draft-selection.md#representative-pages-before-expansion) และ mechanics ที่ยังต้องใช้ | ทุก family ผ่านก่อนขยาย; ใส่ข้อมูลครบและได้ succeeded PDF ของ revision จริง |

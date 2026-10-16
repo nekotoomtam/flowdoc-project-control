@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.8 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.9 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
@@ -12,10 +12,10 @@ Read this section only when entering draft authoring. Require the actual
 `get_flowdocmake_context` result `ready:true`, then read the live authoring
 contract and tool schemas. Readiness checks connection/authentication, pinned
 guide hashes, exact local Docker Service/Core identity and PDF-reader support;
-a running container or a guide saying 0.3.0 is not version proof. Remote runtime
-identity without that evidence is unsupported. Missing tools are a discovery
-blocker; report other returned codes and retry a transient read once. Do not
-create a probe draft, reinstall/restart services or bypass authoring tools.
+a running container/version label is not proof; remote identity is unsupported.
+Missing tools block discovery. For a stale chat connection, try the packaged
+file-client fallback below; require its fresh ready:true and retain the receipt.
+Report codes, retry transient reads once; no probe drafts, restart/reinstall or bypass.
 
 Select target policy and preserve unrelated drafts. Read fresh expectedRevision
 before updating; retain schema keys/owners. Keep a local checkpoint with source
