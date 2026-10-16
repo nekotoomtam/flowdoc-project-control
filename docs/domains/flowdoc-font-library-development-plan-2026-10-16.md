@@ -540,11 +540,11 @@ independent code review ไม่พบ Important/Critical. `git diff --check` �
 ต่อ Core package ที่พิสูจน์แล้วเข้ากับ Service authoring และ job pipeline.
 ไม่ลดกฎสิทธิ์ identity ownership stale revision หรือ idempotency เดิม.
 
-- [ ] เพิ่ม failing tests ให้โครงสร้างผิด/สิทธิ์ผิดปฏิเสธแบบไม่เขียนบางส่วนหรือเพิ่ม revision;
+- [x] เพิ่ม failing tests ให้โครงสร้างผิด/สิทธิ์ผิดปฏิเสธแบบไม่เขียนบางส่วนหรือเพิ่ม revision;
   font reference ที่ผิดความพร้อมแต่โครงสร้างถูกต้องต้อง save/read กลับได้.
-- [ ] ส่ง save receipt แยกจาก readiness พร้อม issue code/path/reason/remedy;
+- [x] ส่ง save receipt แยกจาก readiness พร้อม issue code/path/reason/remedy;
   รวมปัญหาระดับ style และตำแหน่งอักษรอย่างมีขอบเขต ไม่เปิดเผย filesystem path/credentials.
-- [ ] preview/generation ตรวจ revision และข้อความจริงก่อนรับงาน แล้ว pin font snapshot
+- [x] preview/generation ตรวจ revision และข้อความจริงก่อนรับงาน แล้ว pin font snapshot
   ให้ worker ใช้ชุดเดียวกัน; ตรวจ bytes อีกครั้งเมื่อใช้จริงและไม่ resolve latest ระหว่างงาน.
   บันทึกตัวสร้าง/ไฟล์ที่ใช้ รวม recovery/retry โดยไม่ย้ายไปฟอนต์อื่น;
   issue ของฟอนต์ต้องผ่าน render-child/render กลับมาถึง client โดยไม่ถูกกลืนเป็น error ทั่วไป.
@@ -553,6 +553,38 @@ independent code review ไม่พบ Important/Critical. `git diff --check` �
 ผลเก่าไม่รับรอง revision/ข้อมูลใหม่, preview กับ generation ใช้กฎเดียวกัน,
 activation/default/retirement ที่เกิดระหว่าง queue ไม่เปลี่ยนไฟล์ของงาน,
 ไฟล์หายหลังรับงานต้องล้มอย่างชัดเจน. Legacy draft/version/identity ยังอ่านและทำงานตามข้อยืนยันเดิม.
+
+**ผลช่วง 3 — PASS (2026-10-16, single-room):** Service candidate `codex/font-library-stage3`
+commit `c572d73` จาก base `912e155`; checkout
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage3/flowdoc-service`.
+ใช้ Core 0.4.0 artifact/hash ที่ผ่านช่วง 2 โดยไม่แก้ Core หรือ compatibility ของ FlowDocMake.
+save/get/validate แยก `fontReadiness` จาก saved revision; malformed font grammar, สิทธิ์ผิด และ stale
+ยัง reject แบบ atomic. unselected/รุ่นไม่พบ/ยังไม่เปิดใช้/ไม่มี face/ไฟล์หายเก็บ draft ได้พร้อมผล blocked/incomplete.
+reference set ผูก revision/version และ fingerprint; clone ตรวจเจ้าของ/receipt/lineage ใน transaction;
+ถอด tuple แล้วเลือก retired ใหม่จาก JSON ไม่ได้สิทธิ์คืน. เก็บ legacy สี่ hash แบบ verified_legacy
+และ backfill เฉพาะ v1 ที่ Core ตรวจได้ โดยไม่แก้ definition, IDs, revision หรือ fingerprint เดิม.
+งานตรึง definition/input/renderer/font/license identities และ hash พร้อม job/receipt ใน transaction;
+worker อ่าน binding ที่ตรึง ไม่ resolve catalog/latest/default ใหม่ และตรวจ bytes ก่อนวัด/ฝังผ่าน Core.
+
+หลักฐานใน checkout: `artifacts/1792139713747/result.json`, `tests.log`, `job-restart-result.json`,
+`pdf-verification.json`, `visual/`; คำสั่ง `npm run build`, `node scripts/verifyVendor.mjs`,
+`node scripts/checkFontJobs.mjs` โดยตั้ง `FONT_FIXTURE_DIR` เป็นโฟลเดอร์สามตระกูลของเจ้าของ และ `git diff --check` ผ่าน.
+ครบ **250 tests / 0 failed / 0 skipped** ใน PostgreSQL/Linux runtime แยก ไม่มี published ports.
+ครอบคลุม save/read/retry, glyph จาก input จริง, missing provenance, hash ผิด/ไฟล์หายหลังเข้าคิว,
+ordinary/published jobs และ preview, immutable snapshots และ receipt ของ upload ที่ส่งซ้ำหลังไฟล์หาย.
+งาน preview ใช้ Pridi ไทย–อังกฤษสำเร็จหลัง DB restart/retire แม้ draft ใหม่เปลี่ยนเป็น unselected;
+snapshot เดิมไม่เปลี่ยน. ตรวจเส้นอักษรและ metrics ใน PDF กับ Pridi source จริงผ่าน.
+PDF ตัวอย่าง **4 ไฟล์ / 6 หน้า** ตรวจภาพครบ; Sarabun legacy 2 fixtures / 4 หน้าตรงทุกไบต์/ข้อความ
+กับ runtime ก่อนเปลี่ยน Core (`artifacts/font-stage3/legacy-baseline`); ใช้หลักฐานสี่รูปแบบของ Core ช่วง 2 ร่วมด้วย.
+
+การตัดสินใจ: ใช้ temporary Core font specimen สำหรับ actual-input readiness เพื่อไม่ให้ layout error
+เดิมถูกปฏิเสธที่ admission; pagination จริงยังอยู่ worker. แก้ specimen empty text/sourceMap,
+คืน Core data warnings เดิม และแก้ upload replay ตาม independent review ด้วย RED→GREEN/full suite.
+migration 017 เพิ่มที่เก็บสถานะเพื่อเป็น prerequisite; ไม่มี admin activation/default API ในช่วงนี้.
+intake trial ตรวจ 29 face ในสถานะ preparing โดยไม่ได้อนุมัติออกใช้;
+active/retired ของ Pridi เป็น fixture ในฐานทดสอบเท่านั้น.
+วงจรเปลี่ยน default/activation ผ่านคำสั่งจริงตรวจในช่วง 4; ไม่อ้างว่าพิสูจน์ lifecycle ที่ยังไม่มีแล้ว.
+ไม่ merge release, deploy, แก้ฐาน/draft จริง หรือปรับคู่มือเริ่มต้นเพิ่ม. ขั้นถัดไปคือช่วง 4.
 
 ### ช่วง 4 ทำการตรวจและออกใช้หกสถานะ
 
@@ -653,7 +685,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–2 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 3 ของ Service ตามขอบเขตที่ระบุ.
-การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–2 รับรองช่วง 3–6.
+ช่วง 1–3 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 4 ของ Service ตามขอบเขตที่ระบุ.
+การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–3 รับรองช่วง 4–6.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
