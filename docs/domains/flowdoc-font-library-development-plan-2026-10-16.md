@@ -857,6 +857,10 @@ Service `9c433fa`, tree ของรุ่นเดิมไม่เปลี�
 repo, ตรวจ diff/ลิงก์และ Project Control `check:data` ผ่าน; ตรวจ remote refs และ
 8 tagged commits ทั้งสอง release ซ้ำแล้วไม่เปลี่ยน. เป็นการตรวจเอกสาร/ประวัติ Git
 ไม่ใช่ผลทดสอบผลิตภัณฑ์หรือการรับรอง deploy เพิ่ม.
+คู่มือประจำ repo ต้องเตรียมด้วย: Core README/template-guide และ Service
+README/usage อธิบายชุดพัฒนา 0.4.0, คู่ Core artifact, static-TTF/schema 2,
+admin CLI/readiness/retired, migrations 018 และการสำรอง/ตรวจหลังติดตั้ง;
+การตรวจข้อความ ตัวอย่างคำสั่งและ configuration ไม่ใช่การสั่ง deploy รอบใหม่.
 ข้อค้างการใช้งานที่บันทึกไว้ยังต้องตรวจตามบริบท: reload Codex เพื่อใช้ native
 connection ใหม่; ใช้ fresh MCP/file-client ได้ตามหลักฐานเดิม.
 การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.

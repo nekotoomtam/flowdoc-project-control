@@ -12,7 +12,7 @@ This records owner-agreed version/release principles and proposed working rules;
 not product Evidence, release approval, or a change to runtime/DB/branches/tags.
 Single-room documentation work; execution/Phase/Checklist IDs N/A. Size small,
 risk routine. Current documentation maintenance covers this guide, the existing
-font plan, and the Core/Service README and AGENTS entrypoints; no new guide.
+font plan, Core README/template-guide/AGENTS and Service README/usage/AGENTS; no new guide.
 Proof budget: live Git refs/tag/snapshot checks, diff/link review and Project
 Control check:data. No separate execution or review room is requested.
 
@@ -95,6 +95,8 @@ candidate ที่จะใช้ให้ตรงกัน. การเป�
 1. **เตรียมบน development:** ระบุ source commit, ขอบเขต, คู่ Service/Core และ
    ข้อจำกัดในบันทึกเดิม. อัปเดต README/คู่มือใช้งาน คำสั่ง setup/migration และ
    วิธี deploy/ตรวจหลังติดตั้ง/กู้คืนที่ตรงกับรุ่นนั้นก่อนตรึง candidate.
+   คู่มือประจำ repo ที่ต้องตรวจคือ Core `README.md` + `docs/template-guide.md`
+   และ Service `README.md` + `docs/usage.md`; คู่มือกติกากลางนี้แทนไฟล์เหล่านั้นไม่ได้.
    แยกขั้นตอนที่ตรวจจริงกับที่ยังไม่ได้ตรวจ; ไม่คัดลอกค่าลับลงเอกสาร.
 2. **ตรวจชุดส่งมอบ:** version ใน package/lock/คู่มือและแพ็กเกจต้องสอดคล้อง;
    Service ตรึง Core tarball พร้อม checksum/source provenance. ตรวจ artifact ที่
