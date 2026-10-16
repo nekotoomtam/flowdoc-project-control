@@ -2,11 +2,19 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.6 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.7 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
 ## Separate the candidate from the target
+
+Choose the goal and stage route in the workflow guide before using this chapter.
+Raw-data extraction stops before draft creation. A reusable-template/sample
+request uses representative previews and reports structure, content, behavior
+and visual differences separately; it does not require full expansion. Only a
+requested full reconstruction proceeds through the full-stage gate and strict
+whole-document delivery review. Structural acceptance alone never accepts
+visual differences for that route.
 
 A candidate supplies reusable structure. The target is the draft being edited.
 Reading an old candidate does not require editing that candidate or retaining
@@ -120,6 +128,14 @@ the authoring workspace, separate from template, plan and coverage files.
    claiming completion. Local progress cannot detect an unrelated newer Service
    revision until given that revision's checkpoint.
 
+`review` and the progress file's `complete` currently implement strict
+full-document coverage; they have no structural-sample or extraction goal mode.
+Use a scoped result to accept the requested sample/data deliverable, and report
+the tool's narrower applicability honestly. Do not set `complete:true` yourself,
+invent full-document evidence, or turn that field into a requirement to expand
+a sample the user did not request. Full-reconstruction completion still requires
+the actual strict review.
+
 Example initialization:
 
 ```json
@@ -154,10 +170,15 @@ from an older failed alias run, preserve that run and start a fresh run director
 do not rewrite its recorded validation intent.
 
 When the user authorizes Goal, call the host's `create_goal` in the authoring
-thread with the full PDF-and-review objective. Do not invent a token budget.
+thread with the selected deliverable and its review objective. For full
+reconstruction this means the full PDF and whole-book review; for a structural
+sample it means the checked reusable structure/sample with disclosed differences.
+Do not invent a token budget.
 If a Goal is already active, inspect it and continue within its authorized scope.
 Maintain per-part progress across Goal continuations. Complete the Goal only
-after actual full-PDF inspection, passing comparison and review-ready delivery.
+after verification and delivery at that selected scope. A full-reconstruction
+Goal requires actual full-PDF inspection and passing comparison; sample/data
+completion never satisfies that larger Goal.
 Follow host blocker, budget and pause rules; repairable template errors are not
 external blockers. Goal does not authorize publication. Without Goal support,
 report the limitation honestly; this MCP tool cannot schedule future turns.
@@ -170,6 +191,15 @@ database/template-storage writes.
 
 ## Representative pages before expansion
 
+This gate applies when expanding a reconstruction to the full source document;
+it is not the completion contract for extraction-only or structural-sample work.
+Do not fabricate passing comparisons to fit a different goal. The current
+helper still requires source coverage, stage/taskPath and a bounded task even
+for representative runs; these are tool prerequisites, not proof that every
+user request needs a full reconstruction. Documentation does not relax them.
+Choose and disclose a compatible authoring path before mutation if the tool's
+prerequisites conflict with the requested scope or time arrangement.
+
 In package 0.1.5, every candidate plan requires `stage` (representatives or full)
 and `taskPath`. Initialize a fresh task with `timeLimitMinutes` matching the
 owner's bounded trial (default 20). The deadline starts at task initialization,
@@ -181,6 +211,11 @@ local deadline, so do not bypass it through them. The supervising room must also
 pause the Goal at the agreed deadline. `TRIAL_TIME_LIMIT` has category `stop`:
 call `update_goal` paused under the owner's time-limit authorization. Never label
 an expired trial complete, reset the clock, or extend it without owner approval.
+
+The 20-minute default is a helper limit, not a universal deadline for finishing
+every document. Establish the applicable time arrangement in stage 0 before
+initializing authoring state; do not silently impose a short trial on an
+ordinary finish-the-document request or imply this guide removed the limit.
 
 Use the whole-source inventory to classify distinct visual/semantic families,
 not only broad chapter names. Add `layoutFamilies: ["family-name"]` to every

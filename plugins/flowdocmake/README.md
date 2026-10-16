@@ -8,10 +8,18 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.1.1** targets **Service/Core 0.3.0 / Area18**. Invoke
+Package **0.1.7** targets **Service/Core 0.3.0 / Area18**. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
-`get_flowdocmake_context` and `upload_preview_image_file`. There is no publish tool.
+`get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
+and `manage_document_task` (16 tools). There is no publish tool.
+
+Choose the requested endpoint before authoring: checked source data, reusable
+structure with a sample, or full reconstruction. Extract source data separately,
+then map observed layouts, design native structures and derive request data.
+Use only stages needed for that endpoint and continue between them without
+inventing approval stops. Package 0.1.7 changes guidance only; helper gates,
+deadlines and Service/Core contracts are unchanged.
 
 ## Local installation
 

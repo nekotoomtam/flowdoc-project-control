@@ -1,6 +1,6 @@
 ---
 name: flowdocmake
-description: Create or revise FlowDoc document templates from PDFs and structured data, using Area18 tools and versioned 0.3.0 developer guidance. Use when the user asks for flowdocmake or a reusable FlowDoc template and PDF preview; not for generic PDF editing.
+description: Use when the user asks for flowdocmake, PDF source-data extraction for FlowDoc, or a reusable FlowDoc template and PDF preview; not for generic PDF editing.
 ---
 
 # FlowDoc Make
@@ -9,10 +9,46 @@ description: Create or revise FlowDoc document templates from PDFs and structure
 
 Owner: FlowDoc Project Control. This package routes authoring instructions and
 existing Service tools; it does not change Core behavior or authorize publication.
-Package 0.1.6 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
+Package 0.1.7 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
 definition.version 1. These are distinct from a draft revision.
 
+## Choose the deliverable, then work in stages
+
+Read the [goal/stage workflow](references/docs/domains/flowdoc-ai-template-authoring-guide.md#1-เป้าหมาย-ช่วงงาน-และสิ่งที่ต้องส่งมอบ)
+first. This skill is not a command to perform every operation for every request.
+State the requested endpoint and current stage; reuse the user's already clear
+scope rather than asking for approval again.
+
+| Requested endpoint | Route and stopping rule |
+| --- | --- |
+| Source-data extraction | Stages 0–1: inspect source, save separate raw data with page/location provenance and unresolved readings. No draft, Service preflight or output PDF required. |
+| Reusable structure with a sample | Stages 0–4, then sample acceptance in 6: checked raw data, mapping, definition/request and validated/rendered sample. Report visual differences separately; do not expand the whole book. |
+| Full reconstruction | Stages 0–6: source data, layout inventory, structure/request, representative review, full expansion, whole-book acceptance. A sample never replaces the full deliverable. |
+
+Use stages in order: **0 scope → 1 extract raw data → 2 inspect/map layouts →
+3 design native structure and derive request → 4 verify representatives →
+5 expand if requested → 6 accept/deliver at the requested scope**.
+Finish and check each stage's output before depending on it. These are internal
+checkpoints, not permission requests or final-answer boundaries. Continue through
+applicable stages until the requested deliverable is complete or a real blocker
+or applicable owner stop/time boundary requires stopping.
+
+PDF-only input is sufficient: extract the document's data first, without waiting
+for supplied JSON. With PDF+JSON, preserve both and reconcile missing, empty and
+conflicting values; a supplied Format name does not determine the new structure.
+Keep raw data distinct from the layout mapping and FlowDoc definition/request.
+Do not read/copy an old template before source extraction and mapping are checked.
+Never rewrite raw data during layout tuning. A correction returns to its earliest
+responsible stage and invalidates only affected downstream inputs/evidence.
+Report data, structure/behavior and visual fidelity separately. Structural
+acceptance does not silently accept a reconstruction's visual differences.
+
 ## Start and continue
+
+Use the following mechanics only when the selected route reaches authoring.
+Extraction-only work uses source-reading tools and ends with the source-data
+deliverable. Existing helper gates and deadlines remain unchanged; do not invent
+passing evidence or bypass them to fit a narrower goal.
 
 1. Discover and call `get_flowdocmake_context` before any draft mutation. Require
    `ready:true`. Read `get_authoring_contract` and actual tool schemas. A running
@@ -31,8 +67,10 @@ definition.version 1. These are distinct from a draft revision.
    references are a generated snapshot: do not substitute a moving latest guide.
 3. Before reading/copying ANY old template, read
    [source-first coverage](references/docs/developer/authoring/reference-coverage.md),
-   render and inspect every source page, inventory every logical part and record
-   measured layout plus data origins in coverage.json. Run the source coverage
+   render and inspect every source page in scope. First save checked raw text,
+   records, cells, groups and assets with source locations; then inventory layout
+   families and record measured layout plus data origins in coverage.json.
+   A machine page inventory alone is not checked semantic data. Run the source coverage
    checker before selecting an old template. PDF-only parts remain required even
    when the supplied JSON omits them. Empty supplied values need recovery from
    the PDF or a documented conflict, not blank rows certified as complete.
@@ -51,11 +89,11 @@ definition.version 1. These are distinct from a draft revision.
    complete definition with declared global/Section/Format schemas. Read fresh
    revision before updates; never guess `expectedRevision` or overwrite a conflict.
 5. Read [task progress](references/docs/developer/authoring/draft-selection.md#task-progress-and-continuation).
-   Before full reconstruction, follow
+   Before full reconstruction expansion, follow
    [representative pages](references/docs/developer/authoring/draft-selection.md#representative-pages-before-expansion).
    Identify every distinct layout family, render a small representative set and
    inspect paired source/output images with measured comparisons. Use native
-   structure, not flattened text or whole-page table cells. Do not expand until
+   structure, not flattened text or whole-page table cells. For full reconstruction, do not expand until
    every family passes; a claimed pass is evidence to inspect, not a visual oracle.
    Set the owner's explicit trial deadline when initializing task state. Respect
    the same deadline across runs/Goal turns; never reset it to gain more time.
@@ -63,7 +101,8 @@ definition.version 1. These are distinct from a draft revision.
    runs. Read it on resumption; keep known mismatches in needs-repair. A saved PDF
    is needs-review, not completion. Only evidence for the current PDF can pass.
    When the user explicitly requests Goal, activate a Goal in this thread for
-   the full PDF and review; do not merely mention Goal in prose. Follow the host
+   the selected deliverable and its review; full reconstruction requires the
+   full PDF and whole-book review. Do not merely mention Goal in prose. Follow the host
    Goal lifecycle, including blocker/pause rules. Task state does not schedule turns.
    Maintain a local mutation checkpoint (not template storage): source paths/hashes,
    package and guide hashes, runtime identity, template ID/docKey/revision/
@@ -94,21 +133,26 @@ definition.version 1. These are distinct from a draft revision.
    smaller base64 transport limit, not validation or upload ownership.
    Use `save_preview_pdf` to save
    bytes directly; never hand-copy PDF base64.
-7. Open the returned local PDF. Render and inspect EVERY page, reconcile data
+7. Open the returned local PDF. Render and inspect EVERY output page in scope, reconcile data
    counts/values, check TOC links/page labels, tables, headers and alignment.
    Validate success does not prove layout or visual fidelity. Repair authorized
    template errors and repeat affected checks. Complete per-part content/layout
    comparisons, output-page coverage, TOC/link/page-label/value checks in
-   coverage.json and run the delivery checker. Requirement IDs or JSON entry
-   counts alone cannot certify the complete PDF. Record differences as unfinished
-   work until fixed or explicitly accepted by the owner; do not lower a full
+   coverage.json and, for full reconstruction, run the delivery checker. A structural
+   sample ends with its own scoped review and disclosed differences; never claim
+   unperformed full-document checks passed. Requirement IDs or JSON entry
+   counts alone cannot certify the complete PDF. Keep failures of the selected
+   acceptance criteria unfinished until fixed or explicitly accepted by the owner.
+   Disclose visual differences outside a structural goal without adding full
+   reconstruction to its scope; do not lower a full
    reconstruction request to a structural draft. Preserve failing inputs for a
    renderer blocker; do not shorten text, hide content or silently change layout.
-8. Continue until the requested full PDF is ready for review or a real blocker
+8. Continue until the requested deliverable is ready for review or a real blocker
    requires user input. Use commentary for progress, not a progress-only final.
    If interrupted, the checkpoint enables resumption; never claim background
-   work after ending the turn. Deliver PDF link, template/revision, versions,
-   data/behavior/visual check results, intentional differences and remaining issues.
+   work after ending the turn. Deliver applicable source-data/structure/PDF links,
+   template/revision and versions when created, separate data/behavior/visual
+   check results, intentional differences and remaining issues.
 
 ## Publication boundary
 
