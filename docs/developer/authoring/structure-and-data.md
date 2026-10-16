@@ -1,15 +1,19 @@
 # โครงสร้าง Template และตัวแปร
 
-Candidate Section19 (`0.4.2-dev.1`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
+Candidate Section19 (`0.4.2-dev.2`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
 `nameBase`; ไม่มี Section.key/formats. Request ส่ง `sections:[{id,data,header?,footer?}]`
 ครบทุก saved ID และพิมพ์ตาม definition order. เปลี่ยนชื่อ/ลำดับคง ID;
 clone/import/แยกสำเนาสร้างใหม่ก่อนบันทึก ไม่ต่อโครงใน generation request.
 รายละเอียดเฉพาะนี้ดู [สัญญา Section–Area](../../domains/flowdoc-area-document-transition-2026-10-14.md).
-ส่วนที่เหลือด้านล่างอธิบาย baseline model18; model19 ช่วง1 ยังไม่มีปกใน Area หรือ
-TOC scope ใหม่. อย่านำ target fixtures ของช่วง0 ไปอ้างว่ารันครบแล้ว.
+ช่วง2 ให้ text-block `heightMode:fixed` ใน Format ของ Area ที่วางตรง flow หลัก
+ของ Section ได้; ห้ามใน cell/repeat/Area ซ้อน. ข้อความต้องพอดีกรอบและกรอบต้องพอดี
+พื้นที่ body ที่เหลือ; overflow ล้มเหลว ไม่ตัด/ย่อ/เลื่อนหน้าให้กรอบอัตโนมัติ.
+ปกเป็นองค์ประกอบภายใน Section; ตั้ง headerMode/footerMode `continuation` เพื่อ
+ซ่อนหัว–ท้ายหน้าแรก แต่ยังนับหน้านั้น. Area เปลี่ยน pageLayout/หัว–ท้ายไม่ได้.
+ส่วนที่เหลือด้านล่างอธิบาย baseline model18; scoped TOC ยังเป็นช่วง3.
 
 Authority Boundary: Project Control document-authoring reference ของ Area18 และ
-Section19 Stage1 เฉพาะส่วนเพิ่มเติมด้านบน;
+Section19 Stage2 เฉพาะส่วนเพิ่มเติมด้านบน;
 ข้อกำหนดมาจาก Core/Service ตาม [baseline](README.md) ไม่ใช่ contract ของรุ่นอื่น.
 
 ## 1. Template root
