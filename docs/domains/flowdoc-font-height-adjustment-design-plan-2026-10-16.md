@@ -54,12 +54,12 @@ Python/fontTools ที่มีอยู่; FlowDocMake MCP. ตรวจร�
 
 | เจ้าของข้อมูล | ต้องเก็บ | ข้อกำหนด |
 | --- | --- | --- |
-| คลังเดิม | family/release/face/asset IDs, checksum, license, แหล่งที่มา และน้ำหนักสามค่า | ใช้ข้อมูลเดิม ไม่สร้างคลังซ้ำ; sourceIdentity ปัจจุบันรับ google-fonts ต้องปิดสัญญา custom ในช่วง 0 |
+| คลังเดิม | family/release/face/asset IDs, checksum, license, แหล่งที่มา และน้ำหนักสามค่า | ใช้ข้อมูลเดิม ไม่สร้างคลังซ้ำ; sourceIdentity ปัจจุบันรับ google-fonts ส่วน custom ที่จะเพิ่มกำหนดในข้อ 7.4 |
 | ชุดฐานเปรียบเทียบ | reference ID/version, Regular face/asset/hash ของ TH Sarabun New 1.35 | ตรึงไฟล์ ไม่ใช้ชื่อ family อย่างเดียว และไม่เปลี่ยนฐานเงียบ ๆ |
 | ผลวัดของฟอนต์แต่ละรุ่น | Regular face/asset/hash, `unitsPerEm`, U+0E1A, ตำแหน่ง baseline และ top, ความสูงที่วัด, method version, tool version, เวลาและผลตรวจ/เหตุผลที่วัดไม่ได้ | ผูกกับ bytes จริง; ผลอนุพันธ์มีรุ่น ไม่แก้ทับผลที่ยืนยันไว้ |
 | ค่าอนุพันธ์/แคช | อัตราความสูงและตัวคูณเทียบฐาน ถ้าจำเป็น | สร้างใหม่ได้จากผลวัด; ไม่เป็น authority แยกจาก hash/method |
 | เอกสาร | font selection ที่ตรึงรุ่น, pt จริงที่ยืนยัน และ lineHeightPt | ไม่ต้องมี scale mode, reference size หรือ multiplier ที่ต้องตีความใหม่ตอน render |
-| ผลเสนอจากตัวช่วย | selection เดิม/ใหม่, pt เดิม/ใหม่, profile IDs/hash/method, revision/fingerprint ของข้อมูลที่ใช้เสนอ | ใช้ยืนยันกับ candidate เดิม; รายละเอียด field/API ปิดในช่วง 0 ไม่ใช่ runtime contract ที่มีแล้ว |
+| ผลเสนอจากตัวช่วย | selection เดิม/ใหม่, pt เดิม/ใหม่, profile IDs/hash/method, revision/fingerprint ของข้อมูลที่ใช้เสนอ | ใช้ยืนยันกับ candidate เดิม; รายละเอียด field/API ปิดในข้อ 7.5 ไม่ใช่ runtime contract ที่มีแล้ว |
 
 การไม่มีผลวัดตัวช่วยไม่ใช่เหตุใหม่ที่ห้ามบันทึก draft หรือสร้าง PDF ด้วย pt ปกติ
 หากฟอนต์และข้อความผ่านกฎเดิม. หากไม่มี “บ”, Regular ที่ยืนยัน หรือผลวัดไม่ถูกต้อง
@@ -82,8 +82,8 @@ scale_to_reference = r_reference / r_font   # คำนวณประกอบ 
 
 ตัวอย่างจากไฟล์ Regular ที่ตรวจ: TH Sarabun New มี r=400/1000;
 Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 pt`.
-แสดงผลประมาณ 10.92 ได้ แต่ความละเอียดที่บันทึก/ส่ง API ต้องปิดในช่วง 0
-ตามสัญญา Core จริง ไม่ปัดเป็นจำนวนเต็ม ไม่คำนวณจากตัวเลขแสดงผลซ้ำ.
+แสดงผลประมาณ 10.92 ได้ แต่ค่าจริงบันทึก/ส่ง API ปัด half-up หกตำแหน่งตามข้อ 7
+ไม่ปัดเป็นจำนวนเต็ม ไม่คำนวณจากตัวเลขแสดงผลซ้ำ.
 ตรวจ NaN/Infinity, ศูนย์/ค่าติดลบ, ratio ที่ใช้ไม่ได้ และผลเกินช่วงขนาดที่ Core รับ;
 ไม่ clamp หรือย่อให้พอดีกล่องโดยเงียบ ๆ.
 
@@ -125,17 +125,17 @@ Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 p
 
 ### ช่วง 0 — ปิดสัญญาและ dependency (discovery-only ต่อ product)
 
-- [ ] ตรวจ `flowdoc-service/src/fonts/{types,inspection,repository,review,catalog}.ts`,
+- [x] ตรวจ `flowdoc-service/src/fonts/{types,inspection,repository,review,catalog}.ts`,
   `runtime/python/inspectFont.py`, CLI/routes และ Core `src/fonts/{types,selection}.ts`.
   ปิด owner ของ extractor/shared metrics และ arithmetic โดยไม่คัด renderer เข้าฝั่ง Service.
-- [ ] ปิด schema ผลวัด/proposal/error, precision/tolerance, stale confirmation และ legacy
+- [x] ปิด schema ผลวัด/proposal/error, precision/tolerance, stale confirmation และ legacy
   Sarabun mapping ที่ยืนยัน hash ได้; ระบุไฟล์ migration/test ใหม่ก่อนลงมือช่วงถัดไป.
-- [ ] ปิด custom sourceIdentity ของ TH Sarabun New: ผู้ดูแลเท่านั้น, ที่มา/ใบอนุญาตจริง,
+- [x] ปิด custom sourceIdentity ของ TH Sarabun New: ผู้ดูแลเท่านั้น, ที่มา/ใบอนุญาตจริง,
   dedup, legacy google-fonts compatibility และกฎ immutable release เดิม.
-- [ ] ปิดวิธีแนบผลวัดให้รุ่นที่ออกใช้แล้วโดยไม่แก้สมาชิก/ไฟล์: เสนอ versioned derived
+- [x] ปิดวิธีแนบผลวัดให้รุ่นที่ออกใช้แล้วโดยไม่แก้สมาชิก/ไฟล์: ใช้ versioned derived
   record ที่ผูก digest เดิม; ยังไม่เปลี่ยนชุด immutable หรือบังคับออกฟอนต์ทุกรุ่นใหม่.
-- [ ] ตรวจรับ: ตัวอย่างรับ–ส่ง success/unavailable/stale/out-of-range ชัดเจน,
-  ordinary pt และ PDF ที่ไม่มี profile ยังทำงาน; ไม่มี unresolved contract ที่บล็อกช่วง 1.
+- [x] ตรวจรับสัญญา: ตัวอย่างรับ–ส่ง success/unavailable/stale/out-of-range ชัดเจน,
+  ไม่เพิ่มข้อบังคับ profile ให้ ordinary pt/PDF; การพิสูจน์ runtime อยู่ช่วง 1–4.
 
 ### ช่วง 1 — วัดและจัดเก็บผล (Service ร่วม Core ตาม owner ที่ปิดในช่วง 0)
 
@@ -194,6 +194,179 @@ flow ที่จำเป็น ให้ระบุ dependency และแ�
 ใช้ ordinary pt เป็นทางเลือกเมื่อ helper ใช้ไม่ได้. อย่าขยายเป็นระบบ scale runtime
 หรือย้าย pt เอกสารเดิมเพื่อให้ fixture ผ่าน.
 
-สถานะขณะบันทึก: ข้อตกลงบันทึกแล้ว; ช่วง 0–4 ยังไม่เริ่มลงมือ.
-ความละเอียดตัวเลข, custom intake contract และ derived-profile attachment
-เป็น prerequisite ช่วง 0. ผลสำรวจ Chromium ไม่ใช่การรับรอง PDF.
+สถานะล่าสุด: ช่วง 0 ปิดสัญญาแล้วตามข้อ 7; ช่วง 1–4 ยังไม่ลงมือ.
+ผลสำรวจ Chromium และ numeric oracle ไม่ใช่การรับรอง runtime/PDF.
+
+## 7 ผลช่วง 0 — สัญญาที่ปิดก่อนพัฒนา
+
+### 7.1 ฐานตรวจและ ownership
+
+ตรวจ discovery-only: Core 0.4.0 `e652a9e969b4fb53aec191929a5f72caa794acac`,
+Service 0.4.0 `bfd5c293d70d4ff9e9149af1ae1c246db878219f` และ FlowDocMake
+ใน Project Control. งานนี้แก้เอกสารฉบับเดิมเท่านั้น ไม่เปลี่ยน product/DB/คลังจริง.
+
+| Source ที่ตรวจ | ข้อสรุป |
+| --- | --- |
+| Core `src/composition/validateResolvedDocument.ts` | pt/lineHeight ต้อง finite >0 ไม่มีเพดาน pt; คง validator เดิม ไม่เพิ่มช่วงสมมติ 1–72 หรือ 1–1000 |
+| Service `runtime/python/inspectFont.py`, `src/fonts/inspection.ts` | ต่อ extractor เดิมใน Service; Core เป็นเจ้าของ method contract/สูตรและ public types ไม่เรียก Python/DB |
+| Service `src/fonts/{types,service,client}.ts`, migration 016–018 | ปัจจุบันรับ google-fonts เท่านั้น; เพิ่ม custom branch และ forward migration ไม่แก้ migration เก่า |
+| Service `src/fonts/{retention,catalog,legacy}.ts` | retired ใช้เฉพาะ tuple ที่ draft retained; legacy เป็น hash binding ไม่ใช่ชื่อหรือ default |
+| Service `src/authoring/service.ts`, `src/errors.ts` | ยืนยันด้วย transaction/CAS/idempotency และ envelope เดิม ไม่บันทึก selection กับ pt สองครั้ง |
+| FlowDocMake `scripts/server.mjs` | เพิ่ม thin client tools ที่นี่ ไม่ทำสูตรซ้ำหรือเปิดหน้า Editor ใหม่ |
+
+### 7.2 วิธีวัดและ derived profiles
+
+Method ID `thai-bo-baseline-top-v1`: ใช้ fontTools BoundsPen วัด U+0E1A จาก Unicode
+cmap ของ Regular approvedWeight=400/style=normal. baseline=0 ใน design coordinates;
+top เป็นขอบบนเส้นโค้งจริงหลังรวม composite/transform ไม่ใช่ control-point bbox,
+font-wide bbox, advance หรือ ascender. วัด unhinted ไม่ใช้ raster/pixel rounding.
+UPM integer 16–16384; top finite >0 และ glyph มี contour ไม่ใช่ .notdef.
+คง parser timeout/size limits เดิม. ไม่มี metric ไม่ใช่ 0; malformed font ยัง reject
+ตาม intake เดิม ไม่ใช้ helper unavailable ซ่อนไฟล์เสีย.
+
+เพิ่ม `font_height_profiles` เป็น derived append-only table แยกจาก parsed_metadata,
+faces และ release manifest: schemaVersion=1, id, releaseId/releaseManifestDigest,
+regularFaceId/assetId/sha256, methodId/toolVersion, referenceCodePoint=3610,
+unitsPerEm, baselineDesign='0', topDesign เป็น canonical decimal string,
+outcome (`measured`/`unavailable`), reason, measuredAt และ profileDigest.
+top ไม่บังคับเป็น integer; ใช้ decimal representation ของค่าจาก BoundsPen
+โดย normalize exponent ไม่มีการปัดให้เป็น pixel. Core รับ trusted metric จาก Service
+ไม่รับ hash/ratio ที่ผู้เขียนอ้างเอง.
+
+profileDigest ใช้ canonical sorted-key JSON แบบ `src/fonts/repository.ts` ผูก
+binding/hash/method/tool/ค่าผลวัด ไม่รวม id/measuredAt. retry ผลเดียวกัน reuse แถว;
+ผล/tool/method เปลี่ยนสร้างแถวใหม่. เพิ่ม `font_height_profile_reviews` เป็น
+append-only ยืนยัน/ถอนใช้งานพร้อม digest/reviewer/reason/time และ
+`font_height_profile_assignments` เป็น current pointer ต่อ release/method พร้อม revision.
+admin เปลี่ยน pointer ด้วย CAS/audit; ต้อง measured+reviewed และ digest ตรงจึงเสนอได้.
+active/retired เดิมแนบผลได้โดยไม่แก้สมาชิก/manifest/สถานะฟอนต์; preparing เปลี่ยน
+manifest แล้ว binding เก่าใช้ไม่ได้. การตรวจ geometry ไม่แทน lifecycle review เดิม.
+
+reference record ตรึง TH Regular/hash ตามข้อ 4 และ method ID นี้; ใช้ตรวจ fixture
+ไม่ใช่ default font. การคำนวณคู่ฟอนต์อื่นไม่ต้องโหลด TH เพราะใช้ r_source/r_target ตรง ๆ.
+
+### 7.3 สูตรและการปัดเศษที่แน่นอน
+
+Core เพิ่ม package-root export `calculateFontHeightAdjustment({fontSizePt,
+sourceMetric,targetMetric})`; metric มี methodId, unitsPerEm, topDesign.
+คืน `{ok:true,value:{fontSizePt,methodId}} | {ok:false,code}`.
+Service resolve profile/face/สิทธิ์; Core คำนวณ pure function ไม่รับ filesystem path.
+
+- ตรวจ input pt finite >0, metric ใช้ได้และ method ตรงกัน. ใช้ Regular ของรุ่นตระกูล
+  เป็นสัดส่วนเดียวกับ Bold/Italic แต่ target face ต้องมีจริงตามกฎเดิม.
+- แปลง JSON number เป็น shortest round-trip decimal; คำนวณ decimal/rational
+  arithmetic กับ topDesign/UPM ไม่ปัด intermediate ratios.
+- หาก r_source=r_target คืน pt เดิมทุกหลัก; มิฉะนั้น round-half-up ผลสุดท้าย
+  6 ตำแหน่ง เช่น TH16→Sarabun = 10.921502 pt. ไม่ใช้ Math.round(raw*1e6)
+  ที่อาจผิดจุดครึ่งจาก binary float. รูปแบบ decimal/exponent ต้องมี tests.
+- บันทึก/ส่ง JSON number จริง ไม่เก็บข้อความ '10.92'. แสดงสั้น 2 ตำแหน่งได้
+  แต่ค่าที่ให้ยืนยันต้องเรียกดูตัวเลขจริงได้. ห้ามคำนวณจากตัวเลขแสดงผลซ้ำ.
+- ไม่มี clamp/auto-fit; ปัดเป็น 0, overflow หรือ conversion ไม่รักษาความแม่นยำ
+  ให้ NUMERIC_RANGE. ไม่เพิ่มขอบบน pt ใหม่ให้ ordinary save/render.
+- ความคลาดหลังปัดไม่เกิน 0.0000005 pt + `1e-12*max(1,abs(result))` สำหรับ
+  representation error. รอบไป–กลับมีขอบเขต
+  `0.0000005*(1+r_target/r_source)` + representation tolerance;
+  ไม่อ้างว่าสลับหลายรอบไม่มี drift. ใช้ pt ที่บันทึกเป็นต้นทางครั้งใหม่.
+- renderer ไม่รู้จัก helper method/profile และไม่คำนวณใหม่เมื่อ reopen/export;
+  lineHeightPt คงเดิม ผลเสนอยังไม่รับรอง actual-input PDF/line fit.
+
+### 7.4 Custom font และใบอนุญาต
+
+เพิ่ม provider discriminator `google-fonts | custom` โดยคง Google shape/ความหมายเดิม.
+custom family ใช้ `{provider:'custom',providerFamilyKey:'thsarabunnew'}` เพื่อ reuse
+unique index ใน 016. key เป็น lowercase ASCII `[a-z0-9][a-z0-9_-]{0,99}`,
+admin เท่านั้นกำหนด; ชื่อเหมือนกันคนละที่มาใช้คนละ key ไม่ merge จากชื่อเอง.
+
+custom SourceEvidence คง clientKey/retrievedAt/metadataHash/fileHashBinding/
+sourceWeight/licenseClientKeys; เพิ่ม provenance `{sourceName,sourceVersion,
+obtainedFrom,rightsNote}` เป็นข้อความไม่ว่าง. locator เป็น HTTPS ที่มาจริงหรือ
+`urn:flowdoc:custom:thsarabunnew`; ไม่เก็บ local path/credentials ใน public metadata
+และไม่ fetch ตอน intake/render. custom metadataHash ต้องตรง SHA-256 canonical
+provenance และ fileHashBinding ตรง bytes. Google metadataHash ยังใช้กฎเดิม.
+sourceWeight ไม่ทราบใช้ null แล้วผ่าน conflictResolution/reviewer ก่อนออกใช้;
+เก็บน้ำหนักสามค่า ไม่เดาจาก filename. ต้องตรวจ source provider/family key ของ evidence
+ตรง family ตอน stage/edit ด้วย ไม่ให้ Google family รับ custom evidence สลับกัน.
+
+TH สี่ face ผ่าน static inspector เดิมและมี name ID 13 ระบุ GPL พร้อม embedding
+exception; โฟลเดอร์ที่ได้รับไม่มี license text แยก. ก่อน intake จริง admin ต้องแนบ
+UTF-8 license จริง ถ้าถอดจาก name ID 13 ให้รักษาข้อความครบและบันทึก source hash
+ใน rightsNote ไม่ใส่ OFL ของ Google แทน. ไม่อ้างว่าการพบ license text พิสูจน์สิทธิ์ทุกอย่าง.
+dedup bytes ใช้ asset hash เดิมได้ แต่ sourceEvidence/license binding ไม่ถูกรวมทิ้ง.
+custom ยังผ่าน preparing/review/approve/active ตามเดิม ไม่เปิด upload ให้ author.
+
+### 7.5 Proposal, confirmation และ legacy
+
+Endpoints ต่อไปนี้เป็นสัญญาใหม่ที่จะพัฒนา ยังไม่มีใน runtime:
+
+1. `POST /authoring/drafts/:id/font-height-adjustments` สำหรับ authenticated owner,
+   body `{expectedRevision,styleId,targetFont,idempotencyKey}`. อ่าน sourceFont/pt/
+   lineHeight จาก draft จริง ไม่รับ ratio/profile/pt ใหม่จาก caller.
+2. สำเร็จ envelope `{ok:true,value,warnings:[]}`; value มี status='proposed',
+   proposalId, expiresAt, expectedRevision, definitionFingerprint, styleId,
+   sourceFont/targetFont, sourceFontSizePt/proposedFontSizePt, lineHeightPt,
+   sourceProfileId/targetProfileId, methodId, precisionDecimals=6,
+   layoutCheck='not_checked'. ตัวอย่างคู่ TH16→Sarabun ให้ proposedFontSizePt=10.921502.
+3. เก็บ `font_height_adjustment_proposals` ผูก principal/template/revision/fingerprint/
+   style/source/target/profile IDs+digests/result, createdAt และ TTL 15 นาที.
+   idempotent retry คืน proposal เดิมไม่ยืดอายุ; propose ไม่เพิ่ม draft revision.
+4. `POST /authoring/drafts/:id/font-height-adjustments/:proposalId/confirm`
+   body `{expectedRevision,idempotencyKey}` เท่านั้น. ตรวจ principal, TTL,
+   revision/fingerprint/source, profile review/assignment/digest และ target permission
+   อีกครั้งใน transaction เดียว; เปลี่ยนเฉพาะ style.font และ style.fontSize.value.
+   lineHeightPt และส่วนอื่นต้องเท่าเดิม. ไม่เรียก public save นอก transaction;
+   ใช้ shared write/reference/audit path และ release lock ร่วม lifecycle/retention.
+5. active target หรือ exact tuple ที่ draft retained เท่านั้น; ไม่ให้ retired เพิ่มสิทธิ์
+   เพราะ family เดียวกัน. source ที่ใช้ไม่ได้ไม่เสนอ. confirm คืน draft result แบบ save
+   พร้อม proposalId/appliedFontSizePt. receipt retry key เดิมคืนผลเดิมก่อนตรวจ TTL/stale
+   แต่หลังตรวจ owner โดยไม่เพิ่ม revision; key เดิมต่าง payload เป็น IDEMPOTENCY_CONFLICT.
+6. ยกเลิกคือไม่ confirm ไม่มี draft write. Shared style เปลี่ยนทุก node ที่อ้าง styleId
+   นั้นตาม semantics เดิม; ไม่ clone style หรือเปลี่ยนเฉพาะ node โดยเงียบ ๆ.
+7. schema1 helper unavailable: LEGACY_STYLE_UNSUPPORTED เพราะไม่มี library selection;
+   ordinary pt/preview/clone เดิมยังใช้ได้. ห้ามเปลี่ยน schema ทั้งเอกสารอัตโนมัติ.
+   hash mapping ใน legacy.ts ใช้รักษา ordinary legacy เท่านั้นไม่ใช่สิทธิ์ migrate.
+
+FlowDocMake เพิ่ม `propose_font_height_adjustment`/`confirm_font_height_adjustment`
+ใน scripts/server.mjs เป็น thin clients; แสดง actual pt และ layout-not-checked,
+ยืนยันเฉพาะเมื่อผู้ใช้เลือกใช้. preview ต่อด้วย native schema2 tools ที่รองรับ;
+ถ้า schema2 helper bug เดิมบล็อก delivery จริงให้แยกแก้ dependency ไม่ bypass guard.
+
+### 7.6 กรณีใช้ไม่ได้และตัวอย่างรับ–ส่ง
+
+| กรณี | ผลสัญญา | ผลต่อเอกสาร |
+| --- | --- | --- |
+| ไม่มี profile/ยังไม่ review/ไม่มี บ หรือ Regular/method ต่าง | ok:true; status='unavailable'; reason PROFILE_MISSING / PROFILE_UNREVIEWED / GLYPH_MISSING / REGULAR_MISSING / METHOD_UNSUPPORTED | ไม่มี proposalId/pt ใหม่; ใช้ pt ปกติได้ถ้าผ่านกฎเดิม |
+| schema1 หรือ source unselected | unavailable; LEGACY_STYLE_UNSUPPORTED / FONT_NOT_SELECTED | ไม่ migrate/default; unselected ยังติดกฎ PDF เดิม |
+| profile binding ผิด/ไฟล์อ่านไม่ได้ | unavailable; PROFILE_BINDING_INVALID / RESOURCE_UNAVAILABLE | ไม่เดา; asset เสียยังมี readiness issue ตามเดิม |
+| ปัดเป็น 0/overflow/precision ใช้ไม่ได้ | unavailable; NUMERIC_RANGE | ไม่ clamp/ไม่เขียน draft |
+| request/field/styleId/pt ต้นทางผิด | ok:false INVALID_FONT_INPUT; HTTP 422 | ไม่เขียนบางส่วน |
+| ไม่ใช่ owner หรือไม่พบ draft/proposal | ok:false NOT_FOUND; HTTP 404 | ไม่เปิดเผยข้อมูลของคนอื่น |
+| target ไม่ active/ไม่ retained/ไม่มี face | ok:false FONT_TARGET_UNAVAILABLE; HTTP 422 | ไม่ให้ helper เพิ่มสิทธิ์หรือสร้าง selection ที่ใช้ไม่ได้ |
+| หมดอายุ หรือ profile/assignment/review เปลี่ยน | ok:false FONT_HEIGHT_PROPOSAL_EXPIRED / FONT_HEIGHT_PROFILE_CHANGED; HTTP 409 | ขอเสนอใหม่ |
+| revision/fingerprint/source เปลี่ยน | ok:false STALE_CURRENT; HTTP 409 | โหลดใหม่และขอเสนอใหม่ |
+| DB/Service ใช้ไม่ได้ | ok:false UNAVAILABLE; HTTP 503 | retry ไม่สร้าง receipt สำเร็จปลอม |
+
+ตัวอย่าง unavailable:
+`{ok:true,value:{status:'unavailable',reason:'PROFILE_MISSING'},warnings:[]}`.
+ตัวอย่าง stale: `{ok:false,issues:[{code:'STALE_CURRENT',path:'expectedRevision',
+message:'Reload draft and request a new font height proposal'}],warnings:[]}`.
+ใช้ safe messages ไม่เปิดพาธไฟล์/DB. ไม่มี helper profile ไม่เพิ่ม font-readiness blocker
+ใหม่; actual_input glyph/layout และฟอนต์หายยังใช้กฎเดิมหลังยืนยัน.
+
+### 7.7 ไฟล์เป้าหมายและเกณฑ์รับงานถัดไป
+
+| ช่วง | ไฟล์เพิ่ม/เปลี่ยนที่กำหนด (ยังไม่ลงมือ) | จุดตรวจ |
+| --- | --- | --- |
+| 1 | Service runtime/python/inspectFont.py, src/fonts/{types,inspection,service,client}.ts; ใหม่ src/fonts/heightProfiles.ts และ migrations/019_font_height_profiles.sql ถ้าเลขยังว่าง; tests/fonts-height-profiles.test.mjs และขยาย intake/repository tests | custom/Google compatibility, license/hash/dedup/admin, missing metric ไม่ reject valid font, profile CAS/immutability/restart และ schema ใหม่บนฐานเก่า |
+| 2 | Core ใหม่ src/fonts/heightAdjustment.ts, types และ src/index.ts export; tests/fonts/heightAdjustment.test.ts; Service packed dependency ที่ pin ใหม่ | decimal/exponent/half-up, identity, UPM ต่าง, numeric range, roundtrip bound และ packed consumer ไม่เปลี่ยน renderer |
+| 3 | Service ใหม่ src/fonts/heightProposals.ts, migration ถัดไปสำหรับ proposals; src/authoring/service.ts, src/http/authoring.ts และ src/http/fonts-authoring.ts สำหรับ profile availability; FlowDocMake scripts/server.mjs; tests/fonts-height-proposals.test.mjs และ FlowDocMake focused tests | real DB auth/CAS/receipt/TTL/retired/race, shared style และ lineHeight unchanged, native MCP; legacy unavailable ไม่ปิด ordinary route |
+| 4 | fixture/check scripts ของ owners และผลตรวจ PDF สั้น | เจ็ดตระกูล custom จริง default/retired/legacy regression และตรวจทุกหน้า ไม่เรียก Chromium ว่า PDF PASS |
+
+ผลตรวจ discovery: `C:/Users/nekot/Documents/Codex/2026-10-16/font-size-comparison/stage0-contract-check.json`
+ผ่าน 44 checks: สูตร/half-up/exponent/overflow/invalid inputs/roundtrip, geometry เจ็ด Regular,
+reference checksum และรัน Service inspector เดิมกับ TH สี่ face.
+นี่ไม่ใช่ tests ของ API/profile/migration ที่ยังไม่มี. ขอบเขตพิสูจน์ช่วง 0 คือ source
+inspection + numeric oracle + document checks ไม่ใช่ integration/production readiness.
+ตรวจลิงก์/Authority Boundary/coverage ในเอกสาร, `git diff --check` และ
+`npm run check:data` ผ่าน; ไม่เพิ่ม mandatory AI reading หรือ canonical data records.
+ไม่มี unresolved contract blocker ของช่วง 0; ก่อน intake ช่วง 1 ยังต้องเตรียม custom
+provenance/license จริง และก่อน implementation ตรวจเลข migration/base อีกครั้ง.
