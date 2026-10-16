@@ -884,6 +884,11 @@ persistence witnesses เดิมแก้ให้ตรงสัญญาแ�
 และ `delivery/delivery.json`. รอบนี้เป็น Git release/ชุดส่งมอบ ไม่ใช่ deploy ใหม่;
 การติดตั้งครั้งถัดไปต้องใช้คู่ Core/Service 0.4.0 + FlowDocMake 0.2.1 และตรวจตาม
 คู่มือ Service ก่อนสรุปใช้งานจริง.
+Cleanup รอบออกรุ่น: เก็บหลักฐาน Core 117 ไฟล์/Service 244 ไฟล์และตรวจ hash ตรง
+ก่อนลบ worktree/branch เตรียมรุ่นที่ clean/รวมครบแล้ว 2 ชุด. เก็บใต้ `core-evidence`
+และ `service-evidence` ในโฟลเดอร์หลักฐานรอบนี้; ใช้ `evidence-preservation.json`
+แปลง prefix `core-prep/artifacts` / `service-prep/artifacts` เก่า. ลบเฉพาะ container/
+network ทดสอบ 7 project ของรอบนี้โดยเก็บ volumes; user runtime และ branch หลักคงอยู่.
 ข้อค้างการใช้งานที่บันทึกไว้ยังต้องตรวจตามบริบท: reload Codex เพื่อใช้ native
 connection ใหม่; ใช้ fresh MCP/file-client ได้ตามหลักฐานเดิม.
 การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.
