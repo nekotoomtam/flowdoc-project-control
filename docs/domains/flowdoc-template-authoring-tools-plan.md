@@ -913,3 +913,30 @@ incomplete and the Goal stays active. This proves continued execution and some
 independent repairs, not complete autonomous reconstruction or visual equivalence.
 No publication occurred. Full output inspection and delivery acceptance remain
 required before the consumer Goal can be completed.
+
+### Representative-first bounded retry, 2026-10-16
+
+Owner approves representative layout checks before full expansion, another
+independent consumer trial, a clear time break, no parent draft repairs and no
+publication. Previous Goal was paused on owner request after about 33 minutes,
+revision 20 / 86 pages, still incomplete; continuation alone was not acceptance.
+This is a bounded inline Project Control package/guidance change, not a new
+registered product WORK lane; execution IDs are not applicable. Core/Service
+remain 0.3.0. Scope: package 0.1.5, canonical guide, focused regression tests and
+the same consumer room with a fresh task clock. Parent never writes its candidate,
+plan, request, coverage or draft; inspection/review and stopping the trial remain
+allowed. Reuse the existing paused room; no new room requested.
+
+Acceptance: full-stage helper rejects absent/stale representative evidence for
+every declared source layout family, binds comparisons to exact definition and
+succeeded PDF, checks paired PNG files and page bounds. Representative passing
+does not establish visual truth; inspect images before expanding. All native
+formats must be demonstrated on representative real data before full data repeat.
+Deadline is 20 minutes from trial task initialization, same across runs/turns;
+parent pauses Goal at expiry or when further progress cannot meet the checkpoint.
+The clock is not reset for repairs. Stop is unsuccessful acceptance if the
+requested full PDF and whole-book review are not complete. No token budget was
+requested. Proof budget: focused tests (including rejection before mutation),
+installed guide/tool preflight, paired-image review and one bounded trial.
+Limits: local helper cannot police direct atomic-tool calls or certify semantic
+classification; instructions and supervising review cover those boundaries.

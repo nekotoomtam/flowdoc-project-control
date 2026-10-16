@@ -9,7 +9,7 @@ description: Create or revise FlowDoc document templates from PDFs and structure
 
 Owner: FlowDoc Project Control. This package routes authoring instructions and
 existing Service tools; it does not change Core behavior or authorize publication.
-Package 0.1.4 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
+Package 0.1.5 targets Service/Core 0.3.0, nodeModelVersion 18, schemaVersion 1,
 definition.version 1. These are distinct from a draft revision.
 
 ## Start and continue
@@ -51,6 +51,14 @@ definition.version 1. These are distinct from a draft revision.
    complete definition with declared global/Section/Format schemas. Read fresh
    revision before updates; never guess `expectedRevision` or overwrite a conflict.
 5. Read [task progress](references/docs/developer/authoring/draft-selection.md#task-progress-and-continuation).
+   Before full reconstruction, follow
+   [representative pages](references/docs/developer/authoring/draft-selection.md#representative-pages-before-expansion).
+   Identify every distinct layout family, render a small representative set and
+   inspect paired source/output images with measured comparisons. Use native
+   structure, not flattened text or whole-page table cells. Do not expand until
+   every family passes; a claimed pass is evidence to inspect, not a visual oracle.
+   Set the owner's explicit trial deadline when initializing task state. Respect
+   the same deadline across runs/Goal turns; never reset it to gain more time.
    Use `manage_document_task` to persist unfinished parts independently of preview
    runs. Read it on resumption; keep known mismatches in needs-repair. A saved PDF
    is needs-review, not completion. Only evidence for the current PDF can pass.

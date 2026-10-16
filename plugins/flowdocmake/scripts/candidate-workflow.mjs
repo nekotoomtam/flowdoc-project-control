@@ -5,6 +5,8 @@ import {homedir} from 'node:os';
 import {pathToFileURL} from 'node:url';
 import {createHash,randomUUID} from 'node:crypto';
 import {checkCoverage} from './reference-coverage.mjs';
+import {checkDeadline,checkRepresentatives} from './representative-review.mjs';
+import {execFileSync} from 'node:child_process';
 const read=p=>JSON.parse(readFileSync(p,'utf8'));
 const hash=v=>createHash('sha256').update(v).digest('hex');
 function failure(code,details={}){return Object.assign(new Error(code),{code,...details});}
@@ -14,13 +16,22 @@ function substitute(value,from,to){
  if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([k,v])=>[k,substitute(v,from,to)]));
  return value;
 }
-function prepare(planPath){
+function prepare(planPath,countPages){
  const plan=read(planPath),inventory=read(plan.inventoryPath),coverage=read(plan.coveragePath);
  if(!checkCoverage(coverage,inventory.source,'source').ok||hash(readFileSync(inventory.source.path))!==inventory.source.sha256)throw failure('SOURCE_INSPECTION_REQUIRED');
+ if(!['representatives','full'].includes(plan.stage))throw failure('PLAN_STAGE_REQUIRED');
+ if(!plan.taskPath)throw failure('TRIAL_DEADLINE_REQUIRED');
+ const task=read(plan.taskPath);checkDeadline(task);
+ if(task.source?.sha256!==inventory.source.sha256)throw failure('TASK_SOURCE_PARTS_CHANGED');
  if(!['new','preserve','replace-if-conflict'].includes(plan.draftPolicy))throw failure('DRAFT_POLICY_REQUIRED');
  if(plan.draftPolicy!=='new'&&!plan.existingTemplateId)throw failure('EXISTING_TEMPLATE_ID_REQUIRED');
  for(const key of ['docKey','name','workDirectory','candidateDirectory'])if(!plan[key])throw failure('PLAN_FIELD_REQUIRED',{field:key});
  const directory=resolve(plan.candidateDirectory),definition=read(join(directory,'template.json'));
+ if(plan.stage==='full'){
+  if(!plan.representativeReviewPath)throw failure('REPRESENTATIVES_REQUIRED');
+  const gate=checkRepresentatives(read(plan.representativeReviewPath),coverage,inventory.source,readFileSync(join(directory,'template.json')),{countPages});
+  if(!gate.ok)throw failure('REPRESENTATIVES_REQUIRED',{issues:gate.errors});
+ }
  let request=read(join(directory,'request.json'));
  if(definition.schemaVersion!==1||definition.nodeModelVersion!==18)throw failure('AREA18_REQUIRED');
  for(const change of plan.replacements??[]){
@@ -42,9 +53,10 @@ async function connect(configPath){
  try{await client.connect(transport);}catch(e){await transport.close();throw e;}
  return {invoke:(name,args)=>client.callTool({name,arguments:args}),close:async()=>{await client.close();await transport.close();}};
 }
-export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,invoke,configPath,log=()=>{}}={}){
+export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,invoke,configPath,countPages,log=()=>{}}={}){
  if(typeof planPath!=='string'||!isAbsolute(planPath))throw failure('ABSOLUTE_PLAN_PATH_REQUIRED');
- const prepared=prepare(resolve(planPath)),{plan,inventory,coverage,directory,definition,assets,identity}=prepared;
+ const pdfPages=countPages??(path=>{const cfg=read(configPath??process.env.FLOWDOCMAKE_CONFIG??join(homedir(),'.codex/flowdocmake.local.json'));return Number(execFileSync(cfg.python,['-c','from pypdf import PdfReader; import sys; print(len(PdfReader(sys.argv[1]).pages))',path],{encoding:'utf8',windowsHide:true,timeout:15000}));});
+ const prepared=prepare(resolve(planPath),pdfPages),{plan,inventory,coverage,directory,definition,assets,identity}=prepared;
  let request=prepared.request;
  if(checkOnly)return {ok:true,status:'checked',validation:'local-input-only',coreValidationRun:false,complete:false,nextAction:'Run mode=run for Core validation. Local checks do not establish template grammar correctness.',sourcePages:inventory.source.pageCount,parts:coverage.parts.length,assets:assets.length,draftPolicy:plan.draftPolicy,planHash:identity,mutated:false};
  const out=resolve(plan.workDirectory);mkdirSync(out,{recursive:true});const checkpoint=join(out,'candidate-checkpoint.json'),lockPath=join(out,'candidate.lock');
@@ -56,6 +68,7 @@ export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,in
   const save=()=>writeFileSync(checkpoint,JSON.stringify(state,null,2)+'\n',{mode:0o600});save();
   if(!invoke){connection=await connect(configPath);invoke=connection.invoke;}
   async function call(step,tool,args,cache=true){
+   checkDeadline(read(plan.taskPath));
    const old=state.calls[step];
    if(cache){
     if(old&&JSON.stringify(old.args)!==JSON.stringify(args))throw failure('MUTATION_PAYLOAD_CHANGED',{step,checkpoint});

@@ -14,7 +14,8 @@ function fixture(t,policy='new'){
  const coverage={source:{sha256:sha(readFileSync(source)),pageCount:1},reviewedSourcePages:[1],parts:[{id:'body',title:'Body',sourcePages:[1],dataSource:'source PDF',layout}]};
  const inventoryPath=json('inventory.json',{source:{...coverage.source,path:source}}),coveragePath=json('coverage.json',coverage);
  const candidateDirectory=join(dir,'candidate');mkdirSync(candidateDirectory);writeFileSync(join(candidateDirectory,'template.json'),JSON.stringify({schemaVersion:1,nodeModelVersion:18,templateId:'source',docKey:'source',version:1}));writeFileSync(join(candidateDirectory,'request.json'),JSON.stringify({docKey:'source',data:{text:'quoted "text"'}}));
- const plan={candidateDirectory,inventoryPath,coveragePath,workDirectory:join(dir,'output'),name:'Test',docKey:'fresh-test',draftPolicy:policy,...(policy==='new'?{}:{existingTemplateId:'old'})};
+ const taskPath=json('task.json',{source:coverage.source,deadlineAt:new Date(Date.now()+1200000).toISOString()});
+ const plan={stage:'representatives',taskPath,candidateDirectory,inventoryPath,coveragePath,workDirectory:join(dir,'output'),name:'Test',docKey:'fresh-test',draftPolicy:policy,...(policy==='new'?{}:{existingTemplateId:'old'})};
  const planPath=json('plan.json',plan),pdf=join(dir,'saved.pdf');writeFileSync(pdf,'%PDF-complete');
  const calls=[];let ownership=false,pending=false;
  const invoke=async(name,args)=>{calls.push({name,args});let value;
@@ -74,4 +75,18 @@ test('image aliases are replaced by uploaded resource IDs before sample validati
  };
  await runCandidatePlan(f.planPath,{invoke});
  assert(f.calls.findIndex(c=>c.name==='finalize_preview_upload')<f.calls.findIndex(c=>c.name==='validate_template'));
+});
+
+test('full expansion without representative proof and expired trials cannot mutate',async t=>{
+ const f=fixture(t);f.plan.stage='full';f.json('plan.json',f.plan);
+ await assert.rejects(runCandidatePlan(f.planPath,{invoke:f.invoke}),e=>e.code==='REPRESENTATIVES_REQUIRED');assert.equal(f.calls.length,0);
+ f.plan.stage='representatives';f.json('plan.json',f.plan);f.json('task.json',{source:f.coverage.source,deadlineAt:'2000-01-01T00:00:00Z'});
+ await assert.rejects(runCandidatePlan(f.planPath,{invoke:f.invoke}),e=>e.code==='TRIAL_TIME_LIMIT');assert.equal(f.calls.length,0);
+});
+
+test('deadline is rechecked between external tool steps',async t=>{
+ const f=fixture(t);
+ const invoke=async(name,args)=>{const result=await f.invoke(name,args);if(name==='get_flowdocmake_context')f.json('task.json',{source:f.coverage.source,deadlineAt:'2000-01-01T00:00:00Z'});return result;};
+ await assert.rejects(runCandidatePlan(f.planPath,{invoke}),e=>e.code==='TRIAL_TIME_LIMIT');
+ assert.deepEqual(f.calls.map(c=>c.name),['get_flowdocmake_context']);
 });

@@ -1,0 +1,33 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,writeFileSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {createHash} from 'node:crypto';
+import {checkRepresentatives,checkDeadline} from '../plugins/flowdocmake/scripts/representative-review.mjs';
+test('full expansion requires every observed family, current definition and real evidence files',t=>{
+ const dir=mkdtempSync(join(tmpdir(),'flowdoc-reps-'));t.after(()=>rmSync(dir,{recursive:true,force:true}));
+ const hash=b=>createHash('sha256').update(b).digest('hex');
+ const file=(n,b)=>{const p=join(dir,n);writeFileSync(p,b);return p;};
+ const pdf=file('rep.pdf','pdf'),png=Buffer.from([137,80,78,71,13,10,26,10]);
+ const sourceImage=file('source.png',png),outputImage=file('output.png',png),definition={templateId:'target',docKey:'sample',version:1},templateBytes=Buffer.from(JSON.stringify(definition));
+ const source={sha256:'a'.repeat(64),pageCount:3};
+ const coverage={parts:[{sourcePages:[1],layoutFamilies:['cover']},{sourcePages:[2,3],layoutFamilies:['table','text']}]};
+ const checkpointPath=file('checkpoint.json',JSON.stringify({calls:{validate:{args:{definition}}},status:{status:'succeeded'},output:{path:pdf,sha256:hash('pdf'),templateId:'target',revision:1}}));
+ const observations=Object.fromEntries(['font','columns','borders','spacing','pageRules','assets','alignment','headerFooter','content','structure'].map(k=>[k,{source:'measured source',output:'measured output',verdict:'pass'}]));
+ const report={sourceSha256:source.sha256,definitionSha256:hash(templateBytes),checkpointPath,representatives:['cover','table','text'].map((family,i)=>({family,sourcePage:i+1,outputPages:[1],sourceImage,outputImage,observations,differences:[]}))};
+ const options={countPages:()=>1};
+ assert.equal(checkRepresentatives(report,coverage,source,templateBytes,options).ok,true);
+ const partial={...report,representatives:report.representatives.slice(0,2)};
+ assert.equal(checkRepresentatives(partial,coverage,source,templateBytes,options).ok,false);
+ assert.equal(checkRepresentatives(report,coverage,source,Buffer.from('changed'),options).ok,false);
+ report.representatives[0].observations.borders.verdict='fail';
+ assert.equal(checkRepresentatives(report,coverage,source,templateBytes,options).ok,false);
+ report.representatives[0].observations.borders.verdict='pass';writeFileSync(pdf,'changed bytes');
+ assert.equal(checkRepresentatives(report,coverage,source,templateBytes,options).ok,false);
+});
+test('deadline is a hard stop, not a repairable rendering error',()=>{
+ assert.throws(()=>checkDeadline({deadlineAt:'2026-10-16T00:20:00Z'},Date.parse('2026-10-16T00:20:00Z')),e=>e.code==='TRIAL_TIME_LIMIT');
+ assert.doesNotThrow(()=>checkDeadline({deadlineAt:'2026-10-16T00:20:00Z'},Date.parse('2026-10-16T00:19:59Z')));
+ assert.throws(()=>checkDeadline({}),/TRIAL_DEADLINE_REQUIRED/);
+});

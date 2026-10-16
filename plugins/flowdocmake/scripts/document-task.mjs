@@ -8,6 +8,7 @@ const hash=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
 const fail=code=>{throw Object.assign(new Error(code),{code});};
 const identity=o=>JSON.stringify([o?.sha256,o?.templateId,o?.revision,o?.path,o?.pageCount]);
 export function classifyFailure(code){
+ if(code==='TRIAL_TIME_LIMIT')return {category:'stop',nextAction:'The owner-authorized trial deadline expired. Pause the thread Goal and stop authoring now; retain drafts and evidence. Do not publish.'};
  if(['AUTHORIZATION_FAILED','EXISTING_TEMPLATE_ID_REQUIRED','OWNERSHIP_CONFLICT'].includes(code))return {category:'blocked',nextAction:'Resolve credentials, target ownership or missing owner choice. Do not bypass permissions or publish.'};
  if(['WORKFLOW_BUSY','STALE_CURRENT','REVISION_CONFLICT','TASK_REVISION_CONFLICT','SERVICE_UNREACHABLE','SERVICE_ERROR'].includes(code))return {category:'retry',nextAction:'Read current state and receipts; retry safely. An uncertain mutation keeps identical arguments/key; stale candidates need a fresh run.'};
  if(['PREFLIGHT_NOT_READY','LOCAL_CONFIGURATION_OR_GUIDE_ERROR','GUIDE_INTEGRITY_FAILURE','TOOL_RESPONSE_UNREADABLE'].includes(code))return {category:'needs-diagnosis',nextAction:'Inspect the failing prerequisite/receipt before deciding whether external help is necessary.'};
@@ -30,7 +31,8 @@ export function documentTask(args,{countPages}={}){
    if(existsSync(taskPath))fail('TASK_ALREADY_EXISTS');
    const inventory=read(args.inventoryPath),coverage=read(args.coveragePath);
    if(!checkCoverage(coverage,inventory.source,'source').ok||hash(inventory.source.path)!==inventory.source.sha256)fail('SOURCE_INSPECTION_REQUIRED');
-   state={version:1,revision:0,source:inventory.source,complete:false,parts:coverage.parts.map(p=>({id:p.id,title:p.title,sourcePages:p.sourcePages,status:'pending',note:'Not yet implemented and compared'}))};
+   const minutes=args.timeLimitMinutes??20;if(!Number.isInteger(minutes)||minutes<1||minutes>120)fail('INVALID_TIME_LIMIT');
+   state={version:1,revision:0,startedAt:new Date().toISOString(),deadlineAt:new Date(Date.now()+minutes*60000).toISOString(),source:inventory.source,complete:false,parts:coverage.parts.map(p=>({id:p.id,title:p.title,sourcePages:p.sourcePages,status:'pending',note:'Not yet implemented and compared'}))};
   }else{
    state=read(taskPath);
    if(args.expectedRevision!==state.revision)fail('TASK_REVISION_CONFLICT');
