@@ -977,11 +977,11 @@ Owner Core; Service ตรวจ consumer จากแพ็กเกจจร�
 composition/validateResolvedDocument.ts, binding/expandAreas.ts,
 layout/documentFlow.ts, pageBands.ts และ tests ของ cover/Area/page flow.
 
-- [ ] เขียน failing case ของปกที่ติด fixed-height ใน Area แล้วเพิ่มความสามารถ
+- [x] เขียน failing case ของปกที่ติด fixed-height ใน Area แล้วเพิ่มความสามารถ
   ภายใต้กฎ layout ที่ปิดไว้; ไม่ให้ Area ยึดการตั้งหน้าหรือหัว–ท้ายแทน Section.
-- [ ] สร้าง fixture สั้น Section เดียวที่แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา
+- [x] สร้าง fixture สั้น Section เดียวที่แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา
   พร้อม page breaks และ band mode เดิม; ใช้ native nodes ไม่ทำภาพเต็มหน้า.
-- [ ] ตรวจ first/continuation bands, cover overflow, ไทย/รูปภาพ/ตาราง, เนื้อหา
+- [x] ตรวจ first/continuation bands, cover overflow, ไทย/รูปภาพ/ตาราง, เนื้อหา
   หลายหน้า และ leading/repeated/trailing break. ข้อห้าม Area ซ้อนยังคงชัดเจน.
 
 **ผลส่งมอบ:** PDF สั้นที่แสดงการประกอบตาม docx concept ได้จริง ตรวจทุกหน้า
