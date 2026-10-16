@@ -1370,3 +1370,6 @@ Core `codex/template-binding` → `aabbb69`, Service `codex/template-registry` �
 release/tags และหลักฐานไว้. Packaged FlowDocMake snapshot คง sourceCommit ที่ผ่าน
 การตรวจของ candidate เดิม; บันทึกสถานะการรวมนี้ไม่เปลี่ยน package/runtime contract.
 ยังไม่ push, tag, release, deploy, เปลี่ยน live drafts หรือเริ่มช่วง2.
+ผล cleanup: ลบ worktrees/local task branches ของทั้งสาม repo ครบแล้ว;
+Project Control lane เก็บ recoverable archived snapshot ผ่านเครื่องมือของแอป.
+แต่ละ repo เหลือ primary checkout ที่สะอาด; Core/Service คง release branch เดิม.
