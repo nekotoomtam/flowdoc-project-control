@@ -1346,3 +1346,27 @@ FlowDocMake Node checks **22 PASS / 0 FAIL / 4 SKIP**; skipped ต้องใ�
 หรือ published history. ไม่ทำ Area cover/scoped TOC/ปรับแม่แบบ/ระบบภาพ หรือ
 เครื่องมือ conversion18→19ในช่วงนี้. Candidate อยู่บน task branches เพื่อทบทวน;
 ยังไม่ merge/push/deploy. ขั้นถัดไปตามแผนคือช่วง2เมื่อเจ้าของสั่ง.
+
+### รวม branch หลักและปิด lane — 2026-10-17
+
+เจ้าของสั่งรวมช่วง1เข้าตัวหลักและเคลียร์ก่อนข้อถัดไป. Role Lane Reconciliation
+Reviewer / Project Control Steward; single-room inline, execution IDs N/A.
+รวมแบบ fast-forward ตรงกับ candidate ที่ตรวจแล้ว ไม่มี conflict/แก้ product เพิ่ม:
+Core `codex/template-binding` → `aabbb69`, Service `codex/template-registry` →
+`4f834be`, Project Control `main` → `3b652ef` ก่อนเพิ่มบันทึกปิด lane นี้.
+คงชื่อ branch หลักเดิมตามข้อตกลง ไม่ใช่การเปลี่ยนชื่อเป็น main ทั้งหมด.
+
+ตรวจ HEAD/tree, clean status และ vendored Core SHA256 ตรงกับชุดเดิม;
+ใช้ผล Core617, packed consumer, Service307/6skip + affected20 และ native MCP/PDF
+ข้างบนซ้ำตามกฎ unchanged fast-forward. ไม่ถือ skipped ว่า PASS และไม่ rebuild
+ตัวเชื่อมที่ติดตั้งเพียงเพื่อรวม source. บันทึก identity/reuse ใน
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage1/main-integration.json`.
+เก็บ ignored Core artifacts จาก lane ไว้ที่ `preserved-core-artifacts/`
+ใต้โฟลเดอร์หลักฐานเดียวกัน พร้อมตรวจ hash รายไฟล์ใน `preserved-core-artifacts.json`.
+ตำแหน่ง worktree ใน logs เก่าเป็น provenance; ใช้สำเนาที่เก็บนี้หลัง cleanup.
+
+ขอบเขต cleanup คือ worktrees และ local task branch `codex/section-area-stage1`
+ของทั้งสาม repo หลังยืนยันว่า clean/merged/ไม่มีผู้ทำงานค้าง; เก็บ primary branches,
+release/tags และหลักฐานไว้. Packaged FlowDocMake snapshot คง sourceCommit ที่ผ่าน
+การตรวจของ candidate เดิม; บันทึกสถานะการรวมนี้ไม่เปลี่ยน package/runtime contract.
+ยังไม่ push, tag, release, deploy, เปลี่ยน live drafts หรือเริ่มช่วง2.
