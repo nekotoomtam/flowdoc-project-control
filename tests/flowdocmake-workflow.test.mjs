@@ -37,6 +37,14 @@ test('source inspection blocks mutations and draft policy must be explicit',asyn
  f.coverage.reviewedSourcePages=[1];f.json('coverage.json',f.coverage);delete f.plan.draftPolicy;f.json('plan.json',f.plan);
  await assert.rejects(runCandidatePlan(f.planPath,{invoke:f.invoke}),/DRAFT_POLICY_REQUIRED/);assert.equal(f.calls.length,0);
 });
+test('Section19 candidate preserves the ID-addressed array without name or position conversion',async t=>{
+ const f=fixture(t),id='10000000-0000-4000-8000-000000000001';
+ writeFileSync(join(f.plan.candidateDirectory,'template.json'),JSON.stringify({schemaVersion:2,nodeModelVersion:19,templateId:'source',docKey:'source',version:1,sections:[{id,label:'Same name',nameBase:'SRS'}]}));
+ writeFileSync(join(f.plan.candidateDirectory,'request.json'),JSON.stringify({docKey:'source',data:{},sections:[{id,data:{name:'Alpha'}}]}));
+ await runCandidatePlan(f.planPath,{invoke:f.invoke});
+ assert.deepEqual(f.calls.find(c=>c.name==='validate_template').args.sampleRequest.sections,[{id,data:{name:'Alpha'}}]);
+ assert.equal(f.calls.find(c=>c.name==='update_template_draft').args.definition.sections[0].id,id);
+});
 test('preserve never forks on ownership conflict; authorized replacement forks exactly once',async t=>{
  const preserve=fixture(t,'preserve');preserve.setOwnership(true);
  await assert.rejects(runCandidatePlan(preserve.planPath,{invoke:preserve.invoke}),e=>e.code==='OWNERSHIP_CONFLICT');

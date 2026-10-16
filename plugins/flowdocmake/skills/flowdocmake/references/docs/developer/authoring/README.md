@@ -13,6 +13,11 @@ Baseline: `nodeModelVersion:18`, `schemaVersion:1/2`, Service ที่ใช้
 `@flowdoc/core@0.4.0` และ Service candidate `0.4.0`; ต้องผ่าน preflight ของ package/runtime จริง.
 อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md) ก่อนนำไปใช้กับรุ่นอื่น.
 
+Candidate Service/Core `0.4.2-dev.1` เพิ่ม Section19 ช่วง1 คู่กับ18:
+อ่านข้อยกเว้นสั้นที่ต้น [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
+[API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:1`.
+ไม่เปลี่ยน baseline ที่ติดตั้งและไม่อ้างว่าช่วง2–3พร้อม.
+
 ## อ่านจากตรงไหน
 
 เริ่มจาก [ทางเข้าแบบอ่านตามช่วง](workflow-start.md) แล้วเปิดเฉพาะหัวข้อของช่วงที่ทำ.

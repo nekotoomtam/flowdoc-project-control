@@ -3,7 +3,7 @@ import {resolve,join,dirname,relative} from 'node:path';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const repo=resolve(import.meta.dirname,'..'),plugin=join(repo,'plugins/flowdocmake');
-const roots=['docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
+const roots=['docs/examples/section-area-contract-20261017','docs/developer/authoring','docs/examples/ai-template-authoring','docs/domains/flowdoc-ai-template-authoring-guide.md','docs/domains/flowdoc-area-document-transition-2026-10-14.md','docs/domains/flowdoc-template-authoring-tools-plan.md','tools/check-developer-authoring.mjs','tools/check-developer-authoring-pdf.py'];
 const sourceCommit=execFileSync('git',['rev-parse','HEAD'],{cwd:repo,encoding:'utf8'}).trim();
 const dirty=execFileSync('git',['status','--porcelain','--',...roots],{cwd:repo,encoding:'utf8'}).trim();
 if(dirty)throw Error('Commit canonical guide sources before snapshotting');

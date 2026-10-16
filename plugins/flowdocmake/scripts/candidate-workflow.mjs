@@ -33,7 +33,7 @@ function prepare(planPath,countPages){
   if(!gate.ok)throw failure('REPRESENTATIVES_REQUIRED',{issues:gate.errors});
  }
  let request=read(join(directory,'request.json'));
- if(definition.schemaVersion!==1||definition.nodeModelVersion!==18)throw failure('AREA18_REQUIRED');
+ if(![1,2].includes(definition.schemaVersion)||![18,19].includes(definition.nodeModelVersion))throw failure('SUPPORTED_MODEL_REQUIRED');
  for(const change of plan.replacements??[]){
   if(!change.from||!change.to||!change.evidence)throw failure('REPLACEMENT_EVIDENCE_REQUIRED');
   const replaced=substitute(request,change.from,change.to);

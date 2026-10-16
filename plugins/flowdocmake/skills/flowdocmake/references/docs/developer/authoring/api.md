@@ -1,6 +1,15 @@
 # Authoring API และ MCP tools
 
-Authority Boundary: Project Control reference ของ local Area18 authoring Service.
+Candidate Section19 เพิ่ม `create_draft_section` → `POST /authoring/drafts/:id/sections`
+รับ expectedRevision/pageLayoutId/idempotencyKey และ `import_draft_sections` →
+`POST /authoring/drafts/:id/sections/import` รับ sourceTemplateId/sourceRevision/
+sourceSectionIds/expectedRevision/beforeSectionId/idempotencyKey กับ globalFieldRenames
+เมื่อชื่อชน. ต้องเป็นเจ้าของทั้งสอง draft; ปลายทาง revision0 ใช้ split-copy ได้.
+ผลคืน sectionIdMap/inserted และ revision ใหม่; source ไม่ถูกลบ. Whole clone ของ19
+คืน ID ใหม่เช่นกัน;18 คง semantics เดิม. ดู capabilities จาก contract ก่อนใช้:
+ช่วง1 ยังไม่เปิดปกใน Area/scoped TOC และยังไม่มีเครื่องมือแปลง18→19อัตโนมัติ.
+
+Authority Boundary: Project Control reference ของ local Area18 และ Section19 Stage1 authoring Service.
 ไม่มีการอนุญาต publish จากเอกสารนี้; ตรวจ live get_authoring_contract ก่อนใช้งาน.
 
 ## 1. วงจรชีวิต

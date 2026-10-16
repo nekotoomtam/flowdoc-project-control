@@ -1,6 +1,15 @@
 # โครงสร้าง Template และตัวแปร
 
-Authority Boundary: Project Control document-authoring reference ของ Area18;
+Candidate Section19 (`0.4.2-dev.1`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
+`nameBase`; ไม่มี Section.key/formats. Request ส่ง `sections:[{id,data,header?,footer?}]`
+ครบทุก saved ID และพิมพ์ตาม definition order. เปลี่ยนชื่อ/ลำดับคง ID;
+clone/import/แยกสำเนาสร้างใหม่ก่อนบันทึก ไม่ต่อโครงใน generation request.
+รายละเอียดเฉพาะนี้ดู [สัญญา Section–Area](../../domains/flowdoc-area-document-transition-2026-10-14.md).
+ส่วนที่เหลือด้านล่างอธิบาย baseline model18; model19 ช่วง1 ยังไม่มีปกใน Area หรือ
+TOC scope ใหม่. อย่านำ target fixtures ของช่วง0 ไปอ้างว่ารันครบแล้ว.
+
+Authority Boundary: Project Control document-authoring reference ของ Area18 และ
+Section19 Stage1 เฉพาะส่วนเพิ่มเติมด้านบน;
 ข้อกำหนดมาจาก Core/Service ตาม [baseline](README.md) ไม่ใช่ contract ของรุ่นอื่น.
 
 ## 1. Template root
