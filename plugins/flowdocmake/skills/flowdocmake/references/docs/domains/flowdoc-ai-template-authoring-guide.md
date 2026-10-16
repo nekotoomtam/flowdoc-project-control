@@ -4,7 +4,7 @@
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ
 ผู้สร้างโครง อิง Area `nodeModelVersion:18`, Core และ Service
-`0.3.0` บน branch `release` ในโฟลเดอร์หลัก ณ 2026-10-15
+candidate `0.4.0` ตาม package preflight ที่ตรวจจริง
 ไม่ใช่คำรับรองว่ารุ่น release รองรับ Area18 แล้ว ไม่ใช่การอนุญาตให้ publish
 หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้งานได้บน local release ที่ตรวจแล้ว
 แต่แต่ละห้องต้องตรวจการเชื่อมต่อจริงก่อนเริ่ม ไม่ถือว่าทุก host มีเครื่องมือพร้อม
@@ -227,7 +227,7 @@ warning บางประเภท เช่นตัวแปรไม่ร�
 
 ## 4. กฎการประกอบโครง
 
-- ใช้ schemaVersion=1 และ nodeModelVersion ที่ตรงกับ capability ของระบบ
+- ใช้ schemaVersion=2 สำหรับคลังฟอนต์ใหม่; schemaVersion=1 สำหรับ Sarabun เดิม และ nodeModelVersion ตาม capability
   คู่มือนี้เลือก18 อย่าลดเลขรุ่นเพื่อเลี่ยง validation
 - Section body ใช้ source.kind=authored, fragment และ repeats; `formats:{}`
   ตามตัวอย่าง Area18 ข้อมูลไหลผ่าน Area ไม่ส่ง sections.*.content แบบรุ่นเก่า

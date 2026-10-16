@@ -12,10 +12,11 @@ function copy(path){
  const abs=join(repo,path);
  if(!/\.(md|json|mjs|py)$/.test(path)){for(const entry of readdirSync(abs,{withFileTypes:true}))copy(path+'/'+entry.name);return;}
  const target='skills/flowdocmake/references/'+path;
- mkdirSync(dirname(join(plugin,target)),{recursive:true});copyFileSync(abs,join(plugin,target));
- files[target]=createHash('sha256').update(readFileSync(abs)).digest('hex');
+ const bytes=Buffer.from(readFileSync(abs,'utf8').replace(/\r\n/g,'\n'),'utf8');
+ mkdirSync(dirname(join(plugin,target)),{recursive:true});writeFileSync(join(plugin,target),bytes);
+ files[target]=createHash('sha256').update(bytes).digest('hex');
 }
 for(const root of roots)copy(root);
 const packageVersion=JSON.parse(readFileSync(join(plugin,'.codex-plugin/plugin.json'),'utf8')).version;
-writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.3.0',sourceCommit,files},null,2)+'\n');
+writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.4.0',sourceCommit,files},null,2)+'\n');
 console.log(JSON.stringify({sourceCommit,files:Object.keys(files).length}));

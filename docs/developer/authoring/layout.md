@@ -27,6 +27,18 @@ Margin ไม่ใช่ padding ของ cell และไม่ใช่ช�
 
 ## 2. TextStyle และความสูงข้อความ
 
+เอกสารใหม่ใช้ schemaVersion=2: style ระบุ
+`font:{kind:"library",releaseId:"UUID",weight:400,style:"normal"}` จาก `get_font_catalog`.
+เลือก weight/style ที่มีจริงเท่านั้น; catalog คืน active และ default เป็นข้อมูลแนะนำ
+ไม่แทน releaseId ที่บันทึกไว้. ใช้ `font:{kind:"unselected"}` เพื่อบันทึกค้างได้;
+ต้องแก้ readiness ก่อน PDF. ฟอนต์ขาด/ตัวอักษรขาดไม่มี fallback หรือตัวหนา/เอียงสังเคราะห์.
+`get_draft_font_readiness` ผูก expectedRevision และ sampleRequest เมื่อตรวจข้อความจริง;
+ผลมี status, checkedScope, issues/path/styleIds/occurrences/remedy และ total/truncated.
+คัดลอกเอกสาร retired ผ่าน `clone_template_draft` เพื่อคงสิทธิ์ tuple เดิมจาก Service;
+นำ JSON มาเองไม่ได้สิทธิ์นั้น. schemaVersion=2 ไม่ใช้ฟิลด์ fontFamilyKey/fontWeight/fontStyle.
+
+ตารางถัดไปสำหรับ schemaVersion=1 ของ Sarabun เดิม; fontSize/lineHeightPt ใช้ร่วมทั้งสอง schema.
+
 | Field | ค่าที่รับ / Required |
 | --- | --- |
 | fontFamilyKey | `sarabun`, Required |

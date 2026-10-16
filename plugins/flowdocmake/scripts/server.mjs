@@ -32,11 +32,11 @@ async function preflight(){
    const inspect=JSON.parse(run('docker',['inspect',config.container]))[0];
    const ports=Object.values(inspect.NetworkSettings.Ports).flat().filter(Boolean);
    const port=ports.find(p=>p.HostIp==='127.0.0.1'&&p.HostPort===new URL(config.url).port)?.HostPort;
-   const versions=JSON.parse(run('docker',['exec',config.container,'node','-e',"console.log(JSON.stringify({service:require('./package.json').version,core:require('./node_modules/@flowdoc/core/package.json').version}))"]));
+   const versions=JSON.parse(run('docker',['exec',config.container,'node','-e',"const fs=require('fs'),m=require('./vendor/manifest.json');if(!/^[a-zA-Z0-9_.-]+[.]tgz$/.test(m.file))throw Error('artifact');const actual=require('crypto').createHash('sha256').update(fs.readFileSync('./vendor/'+m.file)).digest('hex');if(actual!==m.sha256)throw Error('artifact');console.log(JSON.stringify({service:require('./package.json').version,core:require('./node_modules/@flowdoc/core/package.json').version,coreArtifactSha256:actual}))"]));
    runtime={...versions,port,imageId:inspect.Image,identitySource:'local Docker container inspection, not HTTP contract'};
   }catch{}
   try{run(config.python,['-c','from pypdf import PdfReader; from PIL import Image']);run('pdftoppm',['-v']);pdf=true;}catch{}
-  return {...assess({contract,runtime,pdf}),packageVersion,documentation:manifest,runtime,contract:{nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
+  return {...assess({contract,runtime,pdf,expectedPort:new URL(config.url).port}),packageVersion,documentation:manifest,runtime,contract:{nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
  } catch{return {ready:false,code:'LOCAL_CONFIGURATION_OR_GUIDE_ERROR'};}
 }
 serveStdio(()=>{
@@ -69,6 +69,6 @@ serveStdio(()=>{
    const result=await response.json();return {content:[{type:'text',text:JSON.stringify(result)}],isError:!response.ok||result.ok===false};
   }catch{return {content:[{type:'text',text:JSON.stringify({ok:false,code:'IMAGE_FILE_UPLOAD_FAILED'})}],isError:true};}
  });
- server.registerTool('get_flowdocmake_context',{description:'First call for flowdocmake: read-only connection, authentication, pinned guide integrity, exact local Service/Core 0.3.0 and PDF-reader preflight. Returns local guide paths. Do not mutate drafts unless ready=true.',annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},async()=>({content:[{type:'text',text:JSON.stringify(await preflight())}]}));
+ server.registerTool('get_flowdocmake_context',{description:'First call for flowdocmake: read-only connection, authentication, pinned guide integrity, exact local Service/Core 0.4.0 and pinned Core artifact and PDF-reader preflight. Returns local guide paths. Do not mutate drafts unless ready=true.',annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},async()=>({content:[{type:'text',text:JSON.stringify(await preflight())}]}));
  return server;
 });
