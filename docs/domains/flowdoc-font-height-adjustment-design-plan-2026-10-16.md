@@ -151,13 +151,13 @@ Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 p
 
 ### ช่วง 2 — สูตรและผลเสนอ (Core; Service transport ใช้ package export)
 
-- [ ] เพิ่ม pure calculation API, types และ focused tests ใน `src/fonts/`/`tests/fonts/`;
+- [x] เพิ่ม pure calculation API, types และ focused tests ใน `src/fonts/`/`tests/fonts/`;
   รายละเอียดชื่อไฟล์และ signature ยึดช่วง 0. ไม่เพิ่ม font-size mode ลง template schema.
-- [ ] ทดสอบ same-font identity, TH16→Sarabun, คู่กลับและสลับซ้ำใน tolerance ที่กำหนด,
+- [x] ทดสอบ same-font identity, TH16→Sarabun, คู่กลับและสลับซ้ำใน tolerance ที่กำหนด,
   UPM ต่างกัน, ขนาดทศนิยม, missing/invalid profile, non-finite และผลนอกช่วง.
-- [ ] ทดสอบ Regular/Bold/Italic ใช้สัดส่วนตระกูลเดียว ไม่สังเคราะห์ face ที่ขาด;
+- [x] ทดสอบ Regular/Bold/Italic ใช้สัดส่วนตระกูลเดียว ไม่สังเคราะห์ face ที่ขาด;
   missing target face ยังใช้กฎเดิม และไม่เปลี่ยนการวัด/ฝังของ ordinary pt.
-- [ ] ตรวจรับ: ไม่มีสูตรซ้ำใน clients; packed Core consumer คำนวณตรงผลทดสอบ.
+- [x] ตรวจรับ: ไม่มีสูตรซ้ำใน clients; packed Core consumer คำนวณตรงผลทดสอบ.
 
 ### ช่วง 3 — เชื่อมตัวช่วยและการยืนยัน (Service + FlowDocMake)
 
@@ -195,7 +195,7 @@ flow ที่จำเป็น ให้ระบุ dependency และแ�
 ใช้ ordinary pt เป็นทางเลือกเมื่อ helper ใช้ไม่ได้. อย่าขยายเป็นระบบ scale runtime
 หรือย้าย pt เอกสารเดิมเพื่อให้ fixture ผ่าน.
 
-สถานะล่าสุด: ช่วง 0–1 เสร็จตามขอบเขตข้อ 7–8; ช่วง 2–4 ยังไม่ลงมือ.
+สถานะล่าสุด: ช่วง 0–2 เสร็จตามขอบเขตข้อ 7–9; ช่วง 3–4 ยังไม่ลงมือ.
 ผลสำรวจ Chromium และ numeric oracle ไม่ใช่การรับรอง runtime/PDF.
 
 ## 7 ผลช่วง 0 — สัญญาที่ปิดก่อนพัฒนา
@@ -422,3 +422,48 @@ atomic/idempotent/CAS, custom source/weight conflict, geometry และข้�
 ช่วง 3, หน้า UI, auto fallback หรือ release/install. ผล 52 tests รวม regression
 การสร้าง PDF เดิม ไม่ใช่การรับรอง PDF หลังปรับขนาดซึ่งยังไม่มีในช่วงนี้.
 ขั้นต่อไป: ช่วง 2 pure calculation API ตามข้อ 7.3 และ packed consumer.
+
+## 9 ผลช่วง 2 — สูตรใน Core และ packed Service consumer
+
+Owner: Core และ Service consumer; role Product Implementation Agent / Evidence Reviewer.
+ใช้คำขอเจ้าของและแผนฉบับนี้เป็น authority แบบ inline; execution IDs ไม่เกี่ยวข้อง.
+Core commit `b8abb8d405b5711f364ec2ac22baea7d7669a453`; Service commit
+`553ee00` บน branch `codex/font-height-stage2` ใน worktree ของแต่ละ repository ที่
+`C:/Users/nekot/Documents/Codex/worktrees/font-height-stage2/`.
+ไม่แก้ branch หลัก/release, ไม่ tag/push/install และไม่เปลี่ยนคลังหรือฐานข้อมูลจริง.
+
+- Core เพิ่ม src/fonts/heightAdjustment.ts และ root exports ของ function, method constant
+  และ types ตามข้อ 7.3. คำนวณด้วย BigInt rational จาก decimal/exponent; ปัด half-up
+  หกตำแหน่งเฉพาะผลสุดท้าย. สัดส่วนเท่ากันคืน pt เดิมทุกหลัก รวม MIN/MAX.
+- input/metric/method ผิดหรือผลปัดเป็นศูนย์/overflow/แทนค่าไม่ได้ คืน error ตามสัญญา;
+  ไม่ clamp, lookup, เปลี่ยน selection, lineHeight หรือ renderer และไม่ mutate input.
+- สูตรใช้ profile Regular ของตระกูล ไม่มี weight/style ใน input จึงใช้สัดส่วนเดียวกับ
+  Regular/Bold/Italic. Core selection/legacy regression ตรวจ exact face และปฏิเสธ face
+  ที่ขาด; ไม่มี synthetic bold/italic หรือการใช้ helper เพิ่มสิทธิ์เลือก face.
+- Service ตรึง tarball Core `0.4.1-dev.font-height.1` ใน vendor/package-lock/manifest;
+  production heightProfiles ใช้ method constant จาก package root. ไม่มีสูตรซ้ำใน Service.
+  vendor SHA256 `26b1dcae3ed34bd60db2cbe1f088d06ce2ad1309941657c029ac47844ca231c4`.
+- tests/fonts-height-supplied.test.mjs นำเข้าฟอนต์จริงผ่านคลังทดสอบ วัด/approve/assign
+  แล้วส่ง metric เข้า API จากแพ็กเกจจริง: TH16→TH16, Sarabun10.921502,
+  IBM11.721612, Pridi11.764706, Noto Sans Looped11.3879, Noto Serif11.552347,
+  Prompt11.962617 pt. TH custom มีสี่ face; release manifest ไม่เปลี่ยนจากการผูก profile.
+
+หลักฐาน: Core official Docker packaging ผ่าน build, 69 files/604 tests, native build,
+resources และ native session check. ชุดสูตรมี 60 cases พร้อม roundtrip 245 คู่/ขนาด;
+focused calculation/selection/legacy ผ่าน 67 tests. Service build, verifyVendor,
+root runtime consumer และ TypeScript consumer ของ .d.ts จาก tarball ผ่าน.
+Linux Service ชุด 14 files/53 tests ผ่านด้วยการ reuse 13 files ที่ไม่เปลี่ยนและ
+pipeline recheck 3 tests หลังแก้ expected renderer version จาก 0.4.0 เป็นรุ่นที่ตรึง.
+รอบแรก 52 ผ่าน/1 ไม่ผ่านเฉพาะ expected version นี้; ไม่ใช่การเปลี่ยน renderer logic.
+ครอบคลุม custom/admin/profile, active/retired/default, draft readiness, migration
+ข้อมูลเดิม, pinned job และ PDF/legacy regression เดิม. ไม่อ้างเป็น PDF ที่ปรับ pt แล้ว.
+ผู้ตรวจอิสระไม่พบประเด็นสำคัญ; numeric edge probes เพิ่มอีกเจ็ดกรณีผ่าน.
+
+หลักฐานถาวรท้องถิ่น: `C:/Users/nekot/Documents/Codex/2026-10-16/font-height-stage2/`
+มี result.json, package build log, Service logs, typed consumer และ tarball/hash.
+ลบเฉพาะ container ฐานทดสอบของรอบนี้; worktree ยังมีงานที่ไม่ได้รวมจึงเก็บไว้.
+แก้คู่มือเดิมของ owners แบบสั้น ไม่เพิ่ม mandatory AI reading.
+
+ข้อจำกัดที่คงไว้: ยังไม่มี proposal/confirm, เครื่องมือ FlowDocMake หรือ PDF หลังปรับ pt;
+สิทธิ์/profile availability ระดับ draft จะตรวจในช่วง 3 ตามข้อ 7.5–7.6.
+ขั้นต่อไปคือช่วง 3 ไม่ใช่ release/install. ข้อ 8 เป็นผลช่วง 1 ในเวลานั้นและคงไว้เป็นประวัติ.
