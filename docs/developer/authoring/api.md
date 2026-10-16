@@ -136,3 +136,16 @@ Authoring MCPไม่มีpublish toolและpublicationEnabled:falseในc
 งานเต็มจบเมื่อได้PDFและตรวจcoverage/ข้อความ/ภาพ/สารบัญ/ลิงก์ตามขอบเขตจริง.
 การเผยแพร่ต้องผู้ใช้ยืนยันแยกต่างหากผ่านเส้นทางที่ได้รับอนุญาต.
 อย่าส่งfinalว่ากำลังทำต่อเมื่อturnจบ; ใช้progressระหว่างทำและรายงานblockerจริง.
+
+## คลังฟอนต์ของ candidate 0.4.0
+
+`get_font_catalog({cursor?,limit?:1..100,familyId?})` → GET /authoring/fonts;
+คืน releases/nextCursor และ faces จริงพร้อมน้ำหนักสามค่า; retired ไม่เปิดเลือกเพิ่ม.
+`get_draft_font_readiness({templateId,expectedRevision,sampleRequest?})` →
+POST /authoring/drafts/:id/font-readiness ตรวจ draft ของเจ้าของใน revision เดียว;
+ไม่มี sampleRequest ตรวจ styles; มี sampleRequest ตรวจ actual_input.
+`clone_template_draft({templateId,sourceRevision,name,docKey,idempotencyKey})` →
+POST /authoring/drafts/:id/clone; ใช้สิทธิ์จากต้นฉบับที่ Service ตรวจ ไม่ส่ง grant เอง.
+save สำเร็จแยกจาก fontReadiness ready/blocked/incomplete; stale ต้องอ่านใหม่ก่อนแก้.
+ขั้นเลือกฟอนต์อยู่ใน [TextStyle](layout.md#2-textstyle-และความสูงข้อความ).
+ผู้ดูแลใช้ Service CLI/API ด้วย credential แยก; FlowDocMake ไม่ได้เครื่องมือนำเข้า/ออกใช้.

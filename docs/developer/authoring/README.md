@@ -4,13 +4,13 @@
 
 เจ้าของเอกสาร: FlowDoc Project Control; บทบาท Documentation Synthesizer.
 ขอบเขต: เอกสารอ้างอิงสำหรับผู้เขียน Template และผู้เรียก authoring API ของ
-Area18 รุ่น 0.3.0 ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
+Area18 candidate รุ่น 0.4.0 ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ storage/transport.
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
-Baseline: `nodeModelVersion:18`, `schemaVersion:1`, Service ที่ใช้
-`@flowdoc/core@0.3.0` และ Service `0.3.0` บน `release`; ตรวจวันที่ 2026-10-15.
+Baseline: `nodeModelVersion:18`, `schemaVersion:1/2`, Service ที่ใช้
+`@flowdoc/core@0.4.0` และ Service candidate `0.4.0`; ต้องผ่าน preflight ของ package/runtime จริง.
 อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md) ก่อนนำไปใช้กับรุ่นอื่น.
 
 ## อ่านจากตรงไหน
