@@ -591,17 +591,56 @@ active/retired ของ Pridi เป็น fixture ในฐานทดสอ�
 Service เพิ่มคำสั่งผู้ดูแล/transport ที่ตกลง โดยใช้ Core จากช่วง 2 และ snapshot จากช่วง 3.
 เพิ่มกลไก review/activate ใน `src/fonts/` และ tests ของ authorization/transaction.
 
-- [ ] บังคับ transition, revision ของชุด และผลตรวจที่ตรงกับ manifest/hash ปัจจุบัน;
+- [x] บังคับ transition, revision ของชุด และผลตรวจที่ตรงกับ manifest/hash ปัจจุบัน;
   เตรียม PDF ทดสอบได้เฉพาะทางผู้ดูแล ไม่เปิด normal generation ให้รุ่นเตรียม.
-- [ ] ตรวจปกติ 400 และทุก face ก่อน activate ทั้งชุด; เปิดใช้/ตั้ง default แบบ atomic.
+- [x] ตรวจปกติ 400 และทุก face ก่อน activate ทั้งชุด; เปิดใช้/ตั้ง default แบบ atomic.
   แก้ชุดเตรียมให้ invalidate ผลที่ได้รับผล ไม่อนุมัติด้วยผลจากชุดเก่า.
-- [ ] ทำ retirement/reactivation, default replacement/clear, audit และ deletion guards;
+- [x] ทำ retirement/reactivation, default replacement/clear, audit และ deletion guards;
   รุ่นออกใช้แล้วแก้สมาชิกไม่ได้ ไฟล์ร่วม/ข้อมูลอ้างอิงเดิมไม่ถูกลบตามรุ่น.
 
 **ตรวจ:** ทั้งหกสถานะและ transition ที่ห้าม; user ปกติ activate/import ไม่ได้;
 review ชนกับการแก้ชุดต้องไม่ผ่านผิดชุด, เปิดใช้สองครั้งไม่สร้างสองรุ่น,
 ไม่มีปกติ 400 หรือมี face ไม่ผ่านทั้งชุดยังออกใช้ไม่ได้;
 retire ไม่เปลี่ยนเอกสารเดิมและต้องจัดการ default ชัดเจน, restore ไม่เปิดให้แก้รุ่นเดิม.
+
+**ผลช่วง 4 — PASS ในขอบเขตฟีเจอร์ (2026-10-16, single-room):** Service candidate
+`codex/font-library-stage4`, commit `1826e02` จาก base `c572d73`; checkout
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage4/flowdoc-service`.
+execution IDs ไม่ใช้ในงาน inline นี้. เพิ่ม migration 018 และ admin HTTP; Core/vendor/dependencies คงเดิม.
+
+| เกณฑ์ | หลักฐานใน Service candidate |
+| --- | --- |
+| หกสถานะ, revision/digest, ถอน/แก้/ส่งตรวจใหม่, retry และ race | `tests/fonts-lifecycle.test.mjs`, `tests/fonts-stage4-contract.test.mjs` |
+| token ผู้เขียนเรียก admin ไม่ได้, actor มาจาก auth, binary/JSON limits | `tests/fonts-admin.test.mjs` ใช้ routes จริงกับ PostgreSQL; admin ปิดเมื่อไม่ตั้งค่า |
+| ทุก face ต้องผ่าน, normal 400/น้ำหนักชัดก่อนส่งตรวจ, เปลี่ยน bytes แล้ว activate ไม่ผ่าน | lifecycle/contract tests, `src/fonts/review.ts`; ผลรันไม่ auto approve/activate |
+| default เฉพาะ active ใน family เดียวกัน; retire ต้อง replace/clear พร้อม audit ก่อน–หลัง | lifecycle tests; revision ของ family แยกจาก release และแก้ใน transaction เดียว |
+| retired ยัง save/read/clone/preview ตามสิทธิ์เดิม; reactivation ไม่เปิดแก้สมาชิก | lifecycle tests และ `tests/checkFontLifecyclePersisted.mjs` ใช้คำสั่งจริง |
+| ลบชุดเตรียมไม่ลบไฟล์ร่วม; นำ bytes เดิมไปสร้างรุ่นใหม่ได้ | deletion-reuse regression; เลขรุ่นที่ลบยังสงวนและ audit ยังอยู่ |
+
+หลักฐานรอบสุดท้าย: `artifacts/1792141646410/result.json`, `tests.log`, `tests-summary.json`,
+`job-restart-result.json`, `pdf-verification.json`, `visual/`. `npm run build`,
+`node scripts/verifyVendor.mjs`, `node scripts/checkFontLifecycle.mjs` พร้อมโฟลเดอร์ฟอนต์เจ้าของ
+ผ่าน **264 tests / 0 failed / 0 skipped**, fresh migration/replay และ DB restart ในพื้นที่แยก.
+งาน queued ตรึง snapshot เดิม; retire พร้อม clear default หลัง restart แล้ว worker สร้าง PDF Pridi ได้จริง.
+ตรวจ PDF **6 ไฟล์ / 8 หน้า** ครบภาพ; outline/metrics ของ Sarabun ปกติ/หนาและ Pridi ตรง source.
+Sarabun legacy 2 fixtures / 4 หน้าตรง baseline ทุกไบต์. ไม่ใช้ผลนี้รับรอง PDF ครบทั้ง 29 face;
+การทดลองชุดผู้ใช้ครบและการส่งมอบยังเป็นช่วง 6.
+
+`npm run check:api` ผ่าน (`artifacts/1792141485068/result.json`); ใช้ผล API เดิมร่วมหลังซ่อม
+เฉพาะ index สำหรับ tombstone โดย consumer/fixtures/dependencies/config ไม่เปลี่ยน และ suite สุดท้าย
+ตรวจ migration/admin routes ใหม่ครบ. `npm run check:database` **ยัง FAIL** ที่กรณี CLI เดิม
+`tests/checkCurrentCli.mjs:11` (`INVALID_DATA`, invalid section document), หลัง suite 264 ข้อผ่าน
+(`artifacts/1792141434231/tests.log`, `current-cli.log`). ไม่ปิดบังหรือ bypass ข้อผิดพลาดนี้;
+หลักฐานฐานข้อมูลของฟีเจอร์ใช้ migration/replay/restart จริงจากรอบสุดท้ายข้างต้น.
+
+การตัดสินใจ: ลบแบบ tombstone เพื่อรักษา audit/ไฟล์ร่วม จึงสงวนเลขรุ่นเก่า; manifest ของชุดที่ลบ
+ไม่ขวางรุ่นใหม่. เก็บข้อสรุปน้ำหนักที่ face/manifest พร้อม reviewer เพื่อไม่เขียนทับ source evidence;
+consumer ต้องอ่านข้อสรุปคู่กับต้นทาง. Independent review พบ manifest ของ run/approve และเกณฑ์
+ก่อน submit ไม่ตรงสัญญา; แก้พร้อม audit/HTTP status และ regression RED→GREEN/full suite.
+การเก็บ/เปลี่ยน default ก่อน–หลังและ deletion reuse มี regression RED→GREEN; ไม่มี minor ค้าง.
+คงหลักฐานในพื้นที่ทดสอบและหยุด containers ของรอบ; ไม่เปลี่ยนฐาน/draft/default จริงหรือ deploy.
+แก้ README เดิมเฉพาะสัญญา Service และอัปเดตแผนนี้ ไม่เพิ่มคู่มือที่ AI ต้องอ่าน.
+ขั้นถัดไปคือช่วง 5 เครื่องมือผู้ดูแล/authoring catalog/FlowDocMake adapter ตามแผน.
 
 ### ช่วง 5 เชื่อมเครื่องมือผู้ดูแลและผู้เขียนเอกสาร
 
@@ -685,7 +724,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–3 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 4 ของ Service ตามขอบเขตที่ระบุ.
-การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–3 รับรองช่วง 4–6.
+ช่วง 1–4 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 5 ตามขอบเขตที่ระบุ.
+การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–4 รับรองช่วง 5–6.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
