@@ -13,10 +13,10 @@ Baseline: `nodeModelVersion:18`, `schemaVersion:1/2`, Service ที่ใช้
 `@flowdoc/core@0.4.0` และ Service candidate `0.4.0`; ต้องผ่าน preflight ของ package/runtime จริง.
 อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md) ก่อนนำไปใช้กับรุ่นอื่น.
 
-Candidate Service/Core `0.4.2-dev.2` เพิ่ม Section19 ช่วง2 คู่กับ18:
+Candidate Service/Core `0.4.2-dev.3` เพิ่ม Section19 ช่วง3 คู่กับ18:
 อ่านข้อยกเว้นสั้นที่ต้น [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
-[API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:2`, `coverArea:true`.
-ไม่เปลี่ยน baseline ที่ติดตั้ง; scoped TOC ช่วง3ยังไม่พร้อม.
+[API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:3`, `scopedToc:true`.
+TOC ของ19ต้องระบุ scope;18คงเดิม. ไม่เปลี่ยน baseline ที่ติดตั้ง.
 
 ## อ่านจากตรงไหน
 

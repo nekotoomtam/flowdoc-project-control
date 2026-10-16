@@ -7,9 +7,9 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Candidate 0.2.3-dev.2 routes draft-only tools;
+Owner: FlowDoc Project Control. Candidate 0.2.3-dev.3 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
-Service/Core 0.4.2-dev.2, nodeModelVersions18/19 (Section19 Stage2; scoped TOC deferred), schemaVersion 1/2, definition.version 1.
+Service/Core 0.4.2-dev.3, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
 
 ## Read only the current stage

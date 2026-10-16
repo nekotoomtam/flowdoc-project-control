@@ -1,6 +1,6 @@
 # โครงสร้าง Template และตัวแปร
 
-Candidate Section19 (`0.4.2-dev.2`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
+Candidate Section19 (`0.4.2-dev.3`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
 `nameBase`; ไม่มี Section.key/formats. Request ส่ง `sections:[{id,data,header?,footer?}]`
 ครบทุก saved ID และพิมพ์ตาม definition order. เปลี่ยนชื่อ/ลำดับคง ID;
 clone/import/แยกสำเนาสร้างใหม่ก่อนบันทึก ไม่ต่อโครงใน generation request.
@@ -10,10 +10,14 @@ clone/import/แยกสำเนาสร้างใหม่ก่อนบ�
 พื้นที่ body ที่เหลือ; overflow ล้มเหลว ไม่ตัด/ย่อ/เลื่อนหน้าให้กรอบอัตโนมัติ.
 ปกเป็นองค์ประกอบภายใน Section; ตั้ง headerMode/footerMode `continuation` เพื่อ
 ซ่อนหัว–ท้ายหน้าแรก แต่ยังนับหน้านั้น. Area เปลี่ยน pageLayout/หัว–ท้ายไม่ได้.
-ส่วนที่เหลือด้านล่างอธิบาย baseline model18; scoped TOC ยังเป็นช่วง3.
+ช่วง3 ให้ TOC ระบุ `props.scope:{kind:"section"}` (Section เจ้าของ node) หรือ
+`{kind:"document"}`; หนึ่งต่อ Section และหนึ่งต่อเอกสารอยู่ร่วมกันได้.
+scope ซ้ำหลังขยาย Area ไม่ผ่าน; scope ว่างไม่สร้างหน้าว่าง.
+เลขและลิงก์ตาม numbering ของหน้าเป้าหมายจริง ไม่กรอกเลขใน data.
+ส่วนที่เหลือด้านล่างอธิบาย baseline model18;18ไม่ใส่ scope และคงสัญญาเดิม.
 
 Authority Boundary: Project Control document-authoring reference ของ Area18 และ
-Section19 Stage2 เฉพาะส่วนเพิ่มเติมด้านบน;
+Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้านบน;
 ข้อกำหนดมาจาก Core/Service ตาม [baseline](README.md) ไม่ใช่ contract ของรุ่นอื่น.
 
 ## 1. Template root

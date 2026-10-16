@@ -1,7 +1,16 @@
 # สารบัญ ลิงก์ และการทำซ้ำ
 
-Authority Boundary: Project Control reference สำหรับ Area18 ตาม [baseline](README.md).
+Authority Boundary: Project Control reference สำหรับ Area18 และ Section19 Stage3 ตาม [baseline](README.md).
 บทนี้อธิบายการประกอบความสามารถ ไม่ใช่การสร้างข้อมูลหน้าคงที่จาก PDF.
+
+Candidate19ช่วง3: TOC ต้องเพิ่ม `props.scope:{kind:"section"}` หรือ
+`{kind:"document"}`. section หมายถึงเจ้าของ node; หนึ่งต่อ Section และหนึ่งต่อ
+เอกสารอยู่ร่วมกันได้ แต่ scope ซ้ำหลังเลือก Format/ขยาย Area ไม่ผ่าน.
+Clone ใช้ Section ID ใหม่และคง scope ตามเจ้าของใหม่. Scope ว่างไม่เพิ่มหน้า;
+ถ้าทั้งเอกสารไม่มีเนื้อหาจัดหน้าให้ error ไม่สร้าง PDF ว่าง.
+เลขตาม continue/restart/exclude ของหน้าเป้าหมาย: hide ยังมีเลขใน TOC,
+exclude คงลิงก์ชื่อโดยไม่มีเลข. จัดหน้าเพียงหนึ่ง pass เพราะกันช่องเลขกว้างคงที่
+แล้วเติมภายหลังโดยไม่ reflow; เลขล้นช่องให้ error. ตัวอย่างด้านล่างเป็น baseline18.
 
 ## 1. สารบัญอัตโนมัติต้องมีสามส่วน
 
@@ -21,7 +30,8 @@ Authority Boundary: Project Control reference สำหรับ Area18 ตา�
 
 Format.inputSchema ต้องประกาศ `anchor` และ `title` เป็น string Required;
 request แต่ละ entry ส่ง anchor คนละค่า เช่น chapter-overview, chapter-requirements.
-การ clone node ID ของระบบไม่ใช่ใบอนุญาตให้ anchorId จากข้อมูลซ้ำกัน.
+การ clone node ID ของระบบไม่ใช่ใบอนุญาตให้ anchorId จากข้อมูลซ้ำภายใน Section19
+เดียวกัน (model18ตรวจทั้งเอกสาร). คนละ Section19 ใช้ anchor ท้องถิ่นชื่อเดียวกันได้.
 Anchor เป็น identity ปลายทาง ไม่ใช่ชื่อ heading ที่เปลี่ยนตามภาษา.
 
 ระบบเก็บ heading ตามลำดับเนื้อหาที่ compose แล้ว รวม heading ที่อยู่ใน cell;

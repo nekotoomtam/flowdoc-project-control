@@ -148,6 +148,8 @@ Frame กว้างเกินพื้นที่ cell/band เป็น la
   วางก่อนหัวบทใน Format หรือเลือก new-page Format ใน request.
 - area: `{id,type:"area",props:{areaId}}`; ไม่มี width/height หรือ data ใน node.
 - table-of-contents: `{id,type:"table-of-contents",props:{textStyleId}}`;
+  candidate19ช่วง3เพิ่ม required `props.scope:{kind:"section"|"document"}`;
+  kind section อ้าง Section เจ้าของ ไม่รับ Section ID ใน scope. Model18ใช้รูปเดิม.
   ไม่รับ items/pageNumbers/title/maxLevel. ชื่อ “สารบัญ” เป็น text-block แยก.
   ดู [สารบัญ](contents-and-repetition.md) เรื่องระดับและลิงก์.
 - columns: band-only node มี props:{gap?:Length>=0} และ
