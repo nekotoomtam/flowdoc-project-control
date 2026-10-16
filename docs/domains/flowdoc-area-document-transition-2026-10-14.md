@@ -777,3 +777,96 @@ human confirmation before publication. The proposed bounded implementation is
 It reuses Service storage/Core, adds revision-pinned unpublished preview and a
 restricted tool adapter; phase1 exposes no publish tool. Planning is complete;
 implementation, host connection and actual Luna/Terra PDF trial are not started.
+
+## Section–Area clarification and read-only inspection — 2026-10-17
+
+Authority: owner's current request to retain six questions and inspect existing
+behavior before any implementation. Role: Planning Partner / Cross-Repo Boundary
+Reviewer; owners Core (model/layout), Service (transport/storage/clone), Project
+Control (this shared record). Single-room inline; execution IDs N/A. Risk routine;
+scope is read-only product discovery plus this existing document. Proof budget:
+source trace, bounded synthetic probes/focused tests, and metadata from the two
+retained live drafts; no new drafts, PDF generation, runtime/DB changes, release
+or installation. This is a new clarification, not a reopened historical round.
+The earlier request-object approval above remains a historical decision;
+do not silently rewrite it to imply the newly clarified intent was implemented.
+
+Owner's conceptual reference is the supplied docx generator: `sections[]` owns
+paper properties, header/footer and ordered children. One Section can flow over
+many pages; a page break does not create a new Section. Area resembles insertion
+of separately authored content (`...tableHistory`, `...dataunit`) with its own
+input values and owned Formats. Cover/approval/history/contents/introduction may
+be assembled inside one Section rather than becoming Sections just by name.
+The owner expects ordered Section instances with independent data and fresh
+instance IDs on split/clone; default display names derive from the template name
+plus 1/2/etc. Implementation support must be checked rather than inferred.
+
+Questions retained for later decisions (not implementation approval):
+
+1. Separate instance ID, source-template/definition ID, data lookup key, display
+   name and array order; names must not accidentally become shared data identity.
+2. Define the Area insertion boundary: content expansion versus authority to
+   change page dimensions, margins or the owning Section's header/footer.
+3. Define cover/first-page header/footer behavior within one flowing Section.
+4. Separate authored page breaks from Section transitions and their page starts.
+5. Define page-number continuation/restart and whole-book versus Section TOC scope.
+6. Define shared Format editing versus independent copied content on clone/reuse.
+
+### Observed current behavior
+
+Inspected Core `6cd25cac1ea7d4b5cd4b8df29d2c151dd3e409c0` (0.4.1), Service
+`ee11ae80332bdf6e81a948bc35be98adfc79b7d3` (0.4.1), and the two retained live
+drafts. Installed Service/Core remain 0.4.0 and FlowDocMake 0.2.1; relevant Core
+template/data/binding/composition/layout paths and Service assembly/adapter are
+byte-identical in Git to v0.4.0. No runtime upgrade was performed for inspection.
+
+| Question / boundary | Observed result and source |
+| --- | --- |
+| Section model and request | Definition already has `sections: AreaSection[]`; each has id/key/optional label, page layout, source graph, input schema and own bands. Request is a map keyed by Section.key, not an instance array. Prepared data is mapped by definition Section.id. Source: Core template/types.ts, data/prepareSections.ts, composition/composeSections.ts. |
+| Data collisions | Same variable names in different Sections are scoped separately; synthetic FIRST/SECOND values remain distinct and definition order wins over request-key order. Duplicate Section keys and Area IDs are rejected rather than silently sharing data. Combining unchanged copies therefore needs remapping; merely changing a display name does not suffice. |
+| Identity and clone | Service sections.id is a fresh normalized UUID, while source_definition_id preserves the definition's s.id. Whole-draft clone deep-copies the definition and changes templateId/docKey/name; it generates new normalized rows but retains definition Section IDs/keys/Area IDs. No automatic template-name-plus-1 Section label is implemented in the inspected path. Sources: Service authoring/service.ts cloneDraft, authoring/adapter.ts, templates/assembly.ts, migration 011. This is not yet an explicit split/clone Section-instance composition contract. |
+| Area insertion | An Area node expands ordered owned Format fragments into ordinary content with generated node IDs. Paragraphs/tables/images and authored page-break/TOC can be inserted. It does not carry page layout or header/footer settings; these belong to its Section. Area IDs are unique across the definition and each Area must be placed exactly once. Area inputs inside Format input schemas are rejected, so recursive function-call semantics are not supported. Sources: binding/expandAreas.ts, template/sectionOwnership.ts and validateSchemas.ts. |
+| Cover / first page | Bands already support all/first/continuation/none; continuation suppresses the first page within a flowing body Section. Existing special role:cover is only permitted as the first Section and suppresses bands. Fixed-height cover blocks are restricted to authored root blocks of that cover Section; the same fixed-height block in an Area Format is rejected. A flowing cover-like content fragment can be inserted, but exact existing cover behavior cannot be claimed from that alone. Sources: template/pageSections.ts, validateGraph.ts, composition/validateResolvedDocument.ts, layout/pageBands.ts. |
+| Page transitions | An authored break inside an Area makes another page within the same Section; repeated/leading/trailing breaks are covered by existing tests. Each nonempty normal Section currently starts a fresh page; no continuous mid-page Section transition is exposed in the inspected model. Source: layout/documentFlow.ts. |
+| Numbering and TOC | Section numbering supports continue/restart/exclude and visibility. A TOC can be inserted through Area. Contents collection spans non-cover Sections globally; current graph validation permits at most one TOC in the resolved document, so independent per-Section/per-document TOCs are not implemented. Sources: template/pageNumbering.ts, composition/contents.ts, template/validateGraph.ts. |
+| Shared/copy editing | Whole-draft clone is a deep copy with independent normalized rows. Within one Area, multiple entries use its owned Format definition; changing that definition affects its subsequent expansion. Formats have one ownerAreaId rather than a reusable externally referenced shared-library identity. Cross-template composition must also address document-wide styles/pageLayouts/Area IDs/anchors; variable scopes alone do not complete that contract. |
+
+### Retained live templates
+
+- SRS 98-page draft `008980f5-dd0d-4f7d-86be-2fc3f300e08d`, revision 1,
+  fingerprint `ffcde8736980748a950fb56c2c786b66ef0f52d482ac383a7e31a91ef0a62f02`,
+  has seven Sections: cover/approval/revisions/contents/legend/introduction/body.
+  Four contain Areas; cover/approval/contents are authored directly. Section
+  labels are absent. This is the current template's seven-part construction,
+  not proof that these semantic parts must be separate Sections. Consolidation
+  has not been tested and must preserve page/band/cover behavior explicitly.
+- Latest two-page SB1 draft `af9015b7-df78-4af7-9444-15bd56a05f11`, revision 3,
+  fingerprint `a9b666153d72ea23b216d473521a9e2d43050f2905c263b5d5e10ebfb89ccc00`,
+  has declaration/cargo Sections and no Area nodes. Their different labels and
+  page content alone do not establish whether the boundary is necessary; do
+  not classify the two-section form as invalid without its layout requirements.
+
+### Evidence and outcome boundary
+
+Core focused tests passed 12 files / 95 tests, zero skips. Ten separate synthetic
+observations exercised array-request rejection, duplicate keys/Area IDs, isolated
+same-name variables, order/page starts, Area breaks, Area TOC, two-TOC rejection,
+nested-Area rejection, fixed-height-in-Area rejection, and clone decomposition.
+The clone probe executes the pure adapter path, not an actual new live clone;
+layout probes use fake text metrics. Script fixture syntax was corrected before
+the successful probe run; this was not a product defect or a relaxed assertion.
+No new PDF or visual parity claim follows from these checks.
+
+Local evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/section-area-inspection/`
+contains probe.mts, probe-result.json, core-focused-tests.log and
+live-template-summary.json. Product source and live data are unchanged.
+No system map, product Evidence registry, closed execution context or installed
+guide snapshot was promoted/rewritten. This appendix is supporting context only,
+not another mandatory AI startup document.
+
+Conclusion: the Section/Area foundation partly matches the clarified model;
+the current SRS template, request identity/instance composition, full cover
+insertion and independent TOC scopes still need decisions or bounded work.
+Do not declare wholesale foundation failure, claim the new design already
+passes, or silently migrate the retained templates. Return to the owner for
+scope selection; implementation is not authorized by this inspection request.
