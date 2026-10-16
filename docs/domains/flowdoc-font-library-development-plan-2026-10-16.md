@@ -783,6 +783,15 @@ locator ปัจจุบันคือ `C:/Users/nekot/Documents/Codex/2026-1
 paths checkout ในผลช่วง 1–5 ข้างต้นเป็นประวัติเท่านั้น. Primary main/release และระบบที่ติดตั้งยังอยู่;
 branch งานอื่นที่ยังไม่ยืนยันว่าเลิกใช้/ยังไม่รวม และ remote branches ไม่ถูกลบ.
 
+ตามคำขอ audit branch ที่เหลือภายหลัง: ตรวจครบ 8 local task branches ในสาม repo;
+ลบเพิ่ม **5 branches** ที่เป็น ancestor ของ main และ scoped fix/phase/round จบแล้ว
+(Core Editor trial เดิมเป็น cancelled/superseded ไม่ใช่ completed; successor work ไม่ถูกปิด).
+เก็บ `codex/b1-stage5-plan` ใน Project Control (1 unique commit), `codex/template-binding`
+ใน Core (79), `codex/template-registry` ใน Service (54) เพราะยังไม่อยู่ใน main/release;
+จำนวนนี้เป็น unique history ไม่ใช่จำนวน defect หรืองานค้าง. ไม่มี worktree ของทั้งสาม branch.
+รายละเอียดราย branch และเหตุผลอยู่ `cleanup-preservation.json` ช่อง `remainingBranchAudit`;
+เหลือ primary main/release กับสาม divergent branches นี้ โดยไม่แก้ runtime/remote/tag/งานต่อเนื่อง.
+
 ## จุดในโค้ดและคำสั่งตรวจสำหรับเติมงานย่อย
 
 เส้นทางอ้างจาก Project Control; ไฟล์ใหม่ของช่วงหลังต้องยืนยันในช่วง 0.
