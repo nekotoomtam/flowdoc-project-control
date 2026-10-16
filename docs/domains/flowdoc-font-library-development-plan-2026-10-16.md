@@ -753,6 +753,26 @@ fresh independent evidence review ไม่พบ critical/important; ชุด�
 ไม่รับรอง full-system release readiness. PDF flowing specimen ยอมแบ่ง paragraph ข้ามหน้าและมีบรรทัดท้าย
 ในหน้า 5; ไม่ใช้ผลนี้รับรอง keep-together/orphan policy. คู่มือ AI คงจำนวน reference files เดิม.
 
+ผลรวมและติดตั้งตามคำอนุญาตเจ้าของ (2026-10-16): **INSTALLED / VERIFIED WITH LIMITATIONS**.
+Core release fast-forward เป็น `3123fcf`, Service release เป็น `841e39a`; Project Control main
+รวม candidate ที่ `22b4f6f`. ติดตั้ง FlowDocMake **0.2.0** กับ Service/Core **0.4.0** ที่ port 3018
+โดยใช้ image และ Core artifact เดียวกับที่ผ่านช่วง 6. สำรองฐาน/ไฟล์/config ก่อน forward migrations;
+ทดลอง restore ลงฐานแยกและเทียบ current/section/format/schema/variable/version graph เดิมตรงกัน.
+เปิด draft เดิมทั้ง **9 รายการ** ได้; ตรวจซ้ำหลัง restart API ว่า revision/fingerprint ไม่เปลี่ยนและ font ready.
+คลังจริงมี **3 active families / 29 faces** ที่นำเข้า ตรวจ PDF แล้วออกใช้; ไม่ตั้ง default โดยปริยาย.
+ทดสอบ default/retired/clone/restore ในตระกูลทดสอบเฉพาะแล้ว retire ทุกรุ่นของตระกูลนั้นไว้.
+ตรวจ real MCP save/readiness/PDF rejection/repair/glyph/สิทธิ์ และเอกสารรวมครบทุก face ผ่าน.
+ตรวจ PDF **39 ไฟล์ / 44 หน้า** ทุกหน้า (สร้างใหม่ 38 ไฟล์/42 หน้า รวม baseline เดิม 1 ไฟล์/2 หน้า);
+legacy schema1 control ให้ PDF ตรง baseline 0.3.0 ทุกไบต์.
+หลักฐาน `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/deployment-result.json`
+อ้าง receipts, backup-restore proof, post-restart, PDF/source checks และ visual coverage.
+ข้อจำกัด: sample เดิมที่ลอง preview ติด `UPLOAD_GONE` เพราะ temporary image upload หมดอายุ;
+ไม่ได้แก้ draft หรือข้าม guard. การเชื่อมต่อ native เก่าของแชตยังคืน `LOCAL_CONFIGURATION_OR_GUIDE_ERROR`;
+fresh installed MCP และ file-client พร้อมครบ **19 tools** ต้อง reload Codex เพื่อเปลี่ยน native connection.
+merged PC regressions 18 ผ่าน/4 isolated-only cases skipped; ใช้ผล isolated 22/22 เดิมกับ candidate เดิม
+ประกอบ ไม่เรียก skipped ว่า PASS. Service build/vendor identity, check:data และ installed preflight ผ่านใหม่.
+ข้อค้าง CLI เดิมยังคงอยู่; ไม่อ้างว่าตรวจ full-system/Editor/UI ผ่าน. ไม่มี publish, remote push หรือแก้ draft เดิม.
+
 ## จุดในโค้ดและคำสั่งตรวจสำหรับเติมงานย่อย
 
 เส้นทางอ้างจาก Project Control; ไฟล์ใหม่ของช่วงหลังต้องยืนยันในช่วง 0.
@@ -798,8 +818,8 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–6 ผ่านตามขอบเขต candidate และเตรียมชุดส่งมอบแล้ว; ขั้นถัดไปคือเจ้าของตัดสินใจรวม release
-และติดตั้งรุ่นที่เข้าคู่กัน. การรวม branch/deploy/นำเข้าฟอนต์หรือตั้ง default ในระบบจริงแยกจากผลทดสอบนี้;
-runtime ที่แชตเชื่อมอยู่ยังเป็น FlowDocMake 0.1.9 กับ Service/Core 0.3.0.
+ช่วง 1–6 และการรวม/ติดตั้งรุ่นที่เข้าคู่กันเสร็จแล้วตามขอบเขตข้างต้น.
+ขั้นถัดไปคือ reload Codex เพื่อใช้ native connection ใหม่; ใช้ fresh MCP/file-client ได้แล้ว.
+การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
