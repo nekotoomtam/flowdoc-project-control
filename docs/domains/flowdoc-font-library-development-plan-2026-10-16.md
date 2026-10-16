@@ -894,3 +894,52 @@ connection ใหม่; ใช้ fresh MCP/file-client ได้ตามห�
 การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
+
+## ผลติดตั้งชุด release ที่เจ้าของอนุมัติ — 2026-10-16
+
+สถานะ **INSTALLED / VERIFIED WITH OPEN GAPS**. คำสั่งเจ้าของรอบนี้อนุมัติการ
+สำรองและติดตั้งจริง Core/Service **0.4.0** คู่ FlowDocMake **0.2.1** แล้วตรวจ
+เอกสารเดิม; เป็น single-room installation โดย Steward / Evidence Reviewer,
+execution/Phase/Checklist IDs ไม่เกี่ยวข้อง. ผลนี้แยกจากการออกรุ่นข้อ 2–3 ข้างต้น.
+ใช้ image ที่ตรวจในชุดส่งมอบจริง `sha256:3e85cc7a794d4668bedf2ae26f822592c4660c5bce2a1a4727bf5a2c8eb10429`
+ที่ `http://127.0.0.1:3018`; Core artifact ตรง `6e8b7197…36d7e8`.
+ติดตั้ง plugin 0.2.1 ผ่านเครื่องมือผู้ดูแล Codex และเปลี่ยนเฉพาะ pluginRoot
+ใน configuration เดิม. เก็บ credentials เดิม; ไม่มี migration ใหม่หรือแก้ Git refs.
+
+ก่อนติดตั้งหยุด API หลังไม่มีงานค้าง สำรองฐานข้อมูลและ staging/output แล้วทดลอง
+กู้คืนแยก: ข้อมูลครบ 38 public tables เทียบ count/digest ตรง และไฟล์ 145 รายการ
+เทียบ bytes/hash ตรง. เก็บ dump, archive, configuration, image เดิมและสำเนากู้คืน
+ไว้ใน `C:/Users/nekot/Documents/Codex/2026-10-16/font-release-040-install/`.
+หลัง migration และก่อนเปิด API ข้อมูลทั้ง 38 ตารางยังตรงก่อนติดตั้ง.
+
+ตรวจผ่าน fresh MCP 19 tools และ file-client ของแพ็กเกจที่ติดตั้งจริง ทั้งก่อน/หลัง
+restart: draft เดิม 14 ฉบับมี definition/revision/fingerprint/readiness ตรงฐานก่อน
+ติดตั้งทุกฉบับ; 13 ready และ 1 negative case ที่ blocked อยู่เดิม. คลัง 3 families /
+29 faces และ default ตรงเดิม. สร้าง PDF ของเดิมได้ **7 ฉบับ 34 หน้า**: 4 ฉบับ
+byte-identical; อีก 3 ฉบับนำภาพต้นฉบับที่ SHA ตรงกลับเข้า upload ผ่าน API ใหม่
+โดยเปลี่ยนเฉพาะ sample resource IDs ไม่แก้ draft — ข้อความและภาพ render 96 dpi
+ตรง PDF ก่อนติดตั้งทุกหน้า. ผลนี้พิสูจน์ความคงเดิมของ candidate ไม่รับรองความเหมือน
+เอกสารต้นฉบับที่ยังมีข้อจำกัดจากรอบสร้าง template.
+
+ตรวจ draft ใหม่ที่ไม่เผยแพร่ 2 ฉบับ: บันทึก unselected ได้แต่สร้าง PDF ไม่ได้,
+แก้เป็น active แล้วสร้างได้, invalid font ถูกปฏิเสธโดย revision ไม่เพิ่ม,
+missing glyph ถูกบล็อก, สำเนาจาก retired สืบทอดแล้ว PDF ตรงเดิม,
+forged retired reference สร้าง PDF ไม่ได้ และแยกสิทธิ์ author/admin ผ่าน.
+งานที่สำเร็จ 9 งานมี immutable font snapshots พร้อม asset references ตามชนิด
+library/legacy และ renderer checksum รุ่นใหม่ครบ หลัง restart ยังอ่านคืนได้.
+render และตรวจภาพ PDF ใหม่รวม **36 หน้า** ครบ (ของเดิม 34 + verification 2).
+
+**ยังไม่ผ่านเกณฑ์สร้าง PDF ของเดิมครบทุกฉบับ**: อีก 6 ready drafts มี upload
+ต้นฉบับหมดอายุ/ไม่พบ และหาไฟล์ที่ยืนยัน hash กับ metadata ได้ไม่ครบ จึงหยุดที่
+ช่องว่างนี้โดยคงต้นฉบับทุกฉบับ ไม่ bypass expiry หรือแทนภาพโดยเดา. ต้องกู้คืนภาพ
+และ metadata ต้นฉบับก่อนตรวจ PDF 6 ฉบับนี้ต่อ. อีกจุดคือ native connection
+ของแชตปัจจุบันยังคืน `LOCAL_CONFIGURATION_OR_GUIDE_ERROR` จาก connection เก่า;
+ต้อง reload/reopen Codex แล้วตรวจ context ready=true ก่อนใช้งาน native ต่อ.
+fresh MCP และ file-client ของ installed 0.2.1 ready=true แล้ว จึงไม่ปะปนผลสองช่องทาง.
+
+หลักฐานผลรวม `font-release-040-install/deployment-result.json`; backup/restore:
+`backup-result.json`, `storage-restore-proof.json`; เอกสารเดิม/PDF:
+`original-drafts-readback.json`, `original-pdf-coverage.json`,
+`pdf-structural-visual-comparison.json`; พฤติกรรมจริง/หลัง restart:
+`usage-proof.json`, `post-restart.json`. สถานะตรวจครบยังเปิดตามสองช่องว่างข้างต้น;
+ไม่ถือ skipped/unavailable เป็น PASS และไม่ได้เผยแพร่ template ใด.
