@@ -475,7 +475,7 @@ TTF ปลอม/variable/OTF ถูกปฏิเสธ, retry/concurrent impo
 คำสั่งส่งมอบ: ตั้ง `FONT_FIXTURE_DIR` เป็นโฟลเดอร์สามตระกูลที่เจ้าของให้ แล้วรัน
 `npm run check:fonts` ในพื้นที่งานข้างบน. build และ Service suite **234 ผ่าน / 0 ล้ม / 0 ข้าม**;
 ผลรวมและ image IDs อยู่ใน
-[result.json](../../../../Codex/2026-10-16/font-library-stage1/flowdoc-service/artifacts/1792135193162/result.json).
+[result.json](../../../../Codex/2026-10-16/font-library-deployment/preserved-evidence/stage1-service/artifacts/1792135193162/result.json).
 ตรวจโค้ดแยกบริบทแล้ว แก้ manifest ที่เคยรวม retrieval time และ deadline ที่เคยถูก caller signal แทน;
 ทั้งคู่มี regression ที่เห็นล้มก่อนแก้แล้วผ่าน. แก้ตัวเปรียบเทียบ persistence ให้เทียบ getRelease เหมือนกันก่อน/หลัง restart.
 ทุก container ทดสอบของงานนี้หยุดแล้ว; เก็บ volumes/หลักฐานไว้ ไม่เปลี่ยนระบบที่ใช้งานอยู่.
@@ -483,7 +483,7 @@ TTF ปลอม/variable/OTF ถูกปฏิเสธ, retry/concurrent impo
 **ข้อค้างเดิมที่แยกจากผลช่วง 1:** `npm run check:database` ผ่าน suite ก่อนแก้ review 233 รายการ
 แต่หยุดที่ `tests/checkCurrentCli.mjs` ซึ่งคาดให้ save โครงสร้าง Area18 ที่ไม่สมบูรณ์ผ่าน;
 ฐาน `0c57eec` ให้ `INVALID_DATA` ที่จุดเดียวกัน ยืนยันใน schema แยกแล้ว
-([baseline proof](../../../../Codex/2026-10-16/font-library-stage1/flowdoc-service/artifacts/font-stage1/base-cli.json)).
+([baseline proof](../../../../Codex/2026-10-16/font-library-deployment/preserved-evidence/stage1-service/artifacts/font-stage1/base-cli.json)).
 ไม่รายงานสคริปต์นั้นเป็น PASS และไม่ซ่อม expectation เก่านอกขอบเขต;
 หลักฐาน acceptance ช่วง 1 ใช้ `check:fonts` ที่ผ่านทั้ง suite/upgrade/runtime persistence จริงข้างบน.
 ไม่มีการอัปเดต system map หรือ FlowDocMake compatibility จาก candidate นี้.
@@ -772,6 +772,16 @@ fresh installed MCP และ file-client พร้อมครบ **19 tools** 
 merged PC regressions 18 ผ่าน/4 isolated-only cases skipped; ใช้ผล isolated 22/22 เดิมกับ candidate เดิม
 ประกอบ ไม่เรียก skipped ว่า PASS. Service build/vendor identity, check:data และ installed preflight ผ่านใหม่.
 ข้อค้าง CLI เดิมยังคงอยู่; ไม่อ้างว่าตรวจ full-system/Editor/UI ผ่าน. ไม่มี publish, remote push หรือแก้ draft เดิม.
+
+Cleanup ตามคำขอเจ้าของ: ลบ worktrees และ local branches งานฟอนต์ที่รวมครบแล้ว **6 ชุด**;
+managed Project Control worktree archive ผ่านแอปและนำ checkout ออกแล้ว.
+ก่อนลบยืนยัน clean/merged และคัดลอก ignored evidence **925 ไฟล์** พร้อมเทียบ SHA-256 ทุกไฟล์.
+locator ปัจจุบันคือ `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/preserved-evidence/`:
+ใช้ `stage1-service`, `stage2-core`, `stage3-service`, `stage4-service`, `stage5-service`
+หรือ `stage5-project-control` แทน prefix worktree เดิม แล้วต่อ path `artifacts/...` เดิม.
+`cleanup-preservation.json` และ preservation manifests ระบุ old/new paths กับ hashes;
+paths checkout ในผลช่วง 1–5 ข้างต้นเป็นประวัติเท่านั้น. Primary main/release และระบบที่ติดตั้งยังอยู่;
+branch งานอื่นที่ยังไม่ยืนยันว่าเลิกใช้/ยังไม่รวม และ remote branches ไม่ถูกลบ.
 
 ## จุดในโค้ดและคำสั่งตรวจสำหรับเติมงานย่อย
 
