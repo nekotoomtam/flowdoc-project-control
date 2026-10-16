@@ -4,11 +4,13 @@ import {createServer} from 'node:http';
 import {mkdtempSync,readFileSync,writeFileSync,rmSync} from 'node:fs';
 import {tmpdir,homedir} from 'node:os';
 import {join,resolve} from 'node:path';
-import {Client} from '../../flowdoc-service/node_modules/@modelcontextprotocol/client/dist/index.mjs';
-import {StdioClientTransport} from '../../flowdoc-service/node_modules/@modelcontextprotocol/client/dist/stdio.mjs';
+import {pathToFileURL} from 'node:url';
+const service=process.env.FLOWDOCMAKE_SERVICE_ROOT??JSON.parse(readFileSync(process.env.FLOWDOCMAKE_CONFIG??join(homedir(),'.codex/flowdocmake.local.json'),'utf8')).serviceRoot;
+const {Client}=await import(pathToFileURL(join(service,'node_modules/@modelcontextprotocol/client/dist/index.mjs')).href);
+const {StdioClientTransport}=await import(pathToFileURL(join(service,'node_modules/@modelcontextprotocol/client/dist/stdio.mjs')).href);
 test('preflight distinguishes authentication, unavailable Service and reader; image rejects nonimage files',async()=>{
  const dir=mkdtempSync(join(tmpdir(),'flowdocmake-test-'));
- const config=JSON.parse(readFileSync(join(homedir(),'.codex/flowdocmake.local.json'),'utf8'));
+ const config=JSON.parse(readFileSync(process.env.FLOWDOCMAKE_CONFIG??join(homedir(),'.codex/flowdocmake.local.json'),'utf8'));
  let requests=0;const mock=createServer((req,res)=>{requests++;res.writeHead(403);res.end('{}');});await new Promise(r=>mock.listen(0,'127.0.0.1',r));
  async function check(overrides,expected){
   const path=join(dir,'config.json');writeFileSync(path,JSON.stringify({...config,...overrides}));

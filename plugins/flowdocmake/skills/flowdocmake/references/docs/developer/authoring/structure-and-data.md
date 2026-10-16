@@ -7,7 +7,7 @@ Authority Boundary: Project Control document-authoring reference ของ Area1
 
 | Field | ชนิด / Required | ความหมายและผลเมื่อละ |
 | --- | --- | --- |
-| schemaVersion | integer `1`, Required | รุ่น envelope |
+| schemaVersion | integer `1` หรือ `2`, Required | 1 ใช้ Sarabun เดิม; 2 ใช้คลังฟอนต์ตาม [TextStyle](layout.md#2-textstyle-และความสูงข้อความ) |
 | nodeModelVersion | integer `18`, Required | authoring service รอบนี้รับ Area18 เท่านั้น |
 | templateId | string, Required | ใช้ ID ที่ create คืนมา ห้ามสร้างเองสำหรับ save |
 | docKey | string, Required | key ที่สร้างไว้ ต้องตรงกับ request และ identity |

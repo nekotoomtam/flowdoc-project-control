@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.1.9** targets **Service/Core 0.3.0 / Area18**. Invoke
+Package **0.2.0** targets **Service/Core 0.4.0 / Area18**. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
@@ -20,19 +20,19 @@ then map observed layouts, design native structures and derive request data.
 Use only stages needed for that endpoint and continue between them without
 inventing approval stops. Package 0.1.7 changes guidance only; helper gates,
 deadlines and Service/Core contracts are unchanged.
-Package 0.1.9 keeps stage-based reading and classifies fixed-form limitations,
+Package 0.2.0 adds active-font catalog, draft readiness and retained cloning; it keeps stage-based reading and classifies fixed-form limitations,
 fallbacks and unfinished repairs in existing references; no extra startup reading.
 
 ## Local installation
 
-Requires Node, an installed Service 0.3.0 checkout with built `dist` and dependencies,
-the authenticated local Service container on `127.0.0.1:3018`, Docker CLI, Poppler
+Requires Node, an installed Service 0.4.0 checkout with built `dist` and dependencies,
+the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This first package is for that local
 deployment, not a remote or public plugin distribution.
 
 1. Build the documentation snapshot from committed canonical inputs with
    `node tools/build-flowdocmake.mjs` in Project Control. `snapshot.json` records
-   the source commit and each copied file hash. Preserve the full relative tree.
+   the source commit and each copied file hash, using UTF-8 LF bytes across host platforms. Preserve the full relative tree.
 2. Register this repository with `codex plugin marketplace add <repository-path>`;
    install with `codex plugin add flowdocmake@flowdoc-local`.
 3. Create machine-local `~/.codex/flowdocmake.local.json` using these keys:
@@ -49,8 +49,8 @@ deployment, not a remote or public plugin distribution.
    authoring while context is missing or `ready` is false.
 
 The context tool uses read-only Docker inspection to associate the loopback port
-with its running image ID and Service/Core package versions. HTTP contract 0.3.0
-does not expose exact build identity; remote runtime identity remains unsupported.
+with its running image ID and Service/Core package versions. HTTP font capability and the pinned Core artifact must match; Docker inspection
+supplies the runtime identity; remote runtime identity remains unsupported.
 It does not change or reissue the released 0.3.0 packages.
 
 ## Verification and limits
