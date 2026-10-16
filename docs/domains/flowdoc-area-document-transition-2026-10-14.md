@@ -1465,7 +1465,7 @@ Core `c340c4f` เพิ่ม required props.scope kind section/document เฉ
 Section scope ใช้เจ้าของ node จาก membership/sourceMap ที่ตรวจแล้ว ไม่รับ ID
 ที่ caller เลือก. เก็บ headings ตามขอบเขตและลำดับจริง; หนึ่ง TOC ต่อ Section
 กับหนึ่ง document-wide อยู่ร่วมกันได้. ตรวจซ้ำหลังเลือก Format/ขยาย Area;
-Format ที่ยังไม่ได้เลือกไม่ทำให้เกิด scope ซ้ำล่วงหน้า. Clone ไม่ต้อง rewrite
+ไม่นับ TOC ข้ามคนละ Format มารวมกันก่อนเลือกใช้. Clone ไม่ต้อง rewrite
 scope kind เพราะอ่านจาก Section เจ้าของใหม่; anchors ยัง namespace ตาม ID.
 Scope ว่างไม่เพิ่มหน้า; ถ้าทั้งเอกสารไม่มีเนื้อหาจัดหน้า คืน layout error ไม่ออก
 PDF ว่าง. Model18 ไม่รับ scope และคงสัญญา single/global TOC เดิม.
@@ -1496,7 +1496,8 @@ plugin pin ตรงกัน. Contract ประกาศ `stage:3`, `coverArea
 - PDF ที่มีอยู่ใน packed regression ช่วง2จำนวน57ไฟล์ byte-identical กับรอบนี้
   รวมกรณี model18 TOC/page numbering; ไม่อ้างว่าเป็นการตรวจภาพใหม่ทั้ง57ไฟล์.
 - Service311 tests ผ่าน/6external checks ข้าม ไม่ถือว่า PASS (`service-full.json`).
-  Native MCP tool clone ผ่าน real HTTP adapter/PostgreSQL และ packaged rendering;
+  MCP tool clone ผ่าน in-memory transport → Service HTTP injection → PostgreSQL
+  และ packaged rendering (ไม่อ้างว่า clone กรณีนี้ผ่าน TCP/stdio);
   ตรวจ Section IDs ใหม่, reorder, ข้อมูลแก้เฉพาะสำเนา, scoped preview pin schema2,
   source revision/PDF เดิมไม่เปลี่ยน และปฏิเสธ scope ซ้ำหลังขยายข้อมูล.
 - FlowDocMake22 tests ผ่าน/4optional configuration checks ข้าม; native stdio
