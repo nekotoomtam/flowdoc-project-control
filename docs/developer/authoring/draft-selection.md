@@ -2,9 +2,26 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.7 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.8 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
+
+## Authoring preflight
+
+Read this section only when entering draft authoring. Require the actual
+`get_flowdocmake_context` result `ready:true`, then read the live authoring
+contract and tool schemas. Readiness checks connection/authentication, pinned
+guide hashes, exact local Docker Service/Core identity and PDF-reader support;
+a running container or a guide saying 0.3.0 is not version proof. Remote runtime
+identity without that evidence is unsupported. Missing tools are a discovery
+blocker; report other returned codes and retry a transient read once. Do not
+create a probe draft, reinstall/restart services or bypass authoring tools.
+
+Select target policy and preserve unrelated drafts. Read fresh expectedRevision
+before updating; retain schema keys/owners. Keep a local checkpoint with source
+and package hashes, runtime identity, target/docKey/revision/fingerprint,
+payload/key intents before mutation, receipts afterward, preview job and saved
+PDF identity, checked pages and remaining work. This is not template storage.
 
 ## Separate the candidate from the target
 
@@ -93,6 +110,11 @@ license to abbreviate, invent, remove or make source text render-friendly.
    labels, then finish the delivery coverage record. A saved PDF is not approval.
 
 The checkpoint saves intent before a mutation and the receipt afterward.
+For large tool arguments, prepare an absolute UTF-8 arguments JSON file and run
+`node <package>/scripts/call_tool_file.mjs <tool> <arguments.json> <new-result.json>`.
+It calls the registered MCP tool and saves its exact response; read the receipt
+before retrying. Never hand-copy JSON/base64 chunks or write template storage.
+The CLI is a fallback for the same operation, not an extra draft/preview task.
 Uncertain retries use the same plan, directory and keys. Changed candidate,
 request, assets or plan are rejected as `CHECKPOINT_INPUT_CHANGED`: preserve the
 old run and use a new workDirectory for the repair. To repair the same target,
