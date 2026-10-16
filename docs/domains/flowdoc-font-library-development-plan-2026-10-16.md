@@ -713,11 +713,11 @@ fault-injection preflight tests; ลบเฉพาะ containers/networks ข�
 
 Authority: verification ต่อ candidate ที่ตรึงแล้ว; ซ่อม source กลับเจ้าของช่วงที่เกี่ยวข้อง.
 
-- [ ] ทดสอบรับเข้าจากโฟลเดอร์ผู้ใช้ในพื้นที่ทดสอบ ตรวจซ้ำ ยืนยันน้ำหนักที่ขัดกัน
+- [x] ทดสอบรับเข้าจากโฟลเดอร์ผู้ใช้ในพื้นที่ทดสอบ ตรวจซ้ำ ยืนยันน้ำหนักที่ขัดกัน
   ตรวจทุก face ในชุดที่เลือกออกใช้ แล้วสร้าง PDF ไทย/อังกฤษจากหลายตระกูลในเอกสารเดียว.
-- [ ] ทดสอบวงจรเพิ่มรูปแบบเป็นรุ่นใหม่ เปลี่ยน default, retire/restore, retry/restart,
+- [x] ทดสอบวงจรเพิ่มรูปแบบเป็นรุ่นใหม่ เปลี่ยน default, retire/restore, retry/restart,
   ไฟล์หาย/hash ผิด และเอกสาร Sarabun เดิม; ไม่มีการแก้ฐานหรือ draft ผู้ใช้จริง.
-- [ ] ตรวจทุกหน้าใน PDF ตัวอย่าง พร้อมข้อความ/อักษรซ้อน/เส้นฐาน/การตัดบรรทัด/ไฟล์ที่ฝัง;
+- [x] ตรวจทุกหน้าใน PDF ตัวอย่าง พร้อมข้อความ/อักษรซ้อน/เส้นฐาน/การตัดบรรทัด/ไฟล์ที่ฝัง;
   เชื่อมเกณฑ์ spec กับผลตรวจและขอบเขตที่ยังไม่ผ่าน ก่อนส่งเจ้าของตัดสินใจใช้รุ่นใหม่.
 
 **ตรวจรับ:** เป็นวงจรจริงตั้งแต่ admin ถึง saved draft/job/PDF พร้อม immutable font identity;
@@ -725,6 +725,33 @@ Authority: verification ต่อ candidate ที่ตรึงแล้ว; �
 รายงานแยกจำนวนรับเข้า จำนวนออกใช้ และจำนวนที่ตรวจ PDF แล้ว.
 ตรวจ packed Core, real DB/API และ actual FlowDocMake preflight ของ release ที่จะส่งมอบ.
 การทดสอบผ่านไม่อนุญาต deploy/เปลี่ยน default ของระบบใช้งานจริงโดยอัตโนมัติ.
+
+ผลช่วง 6 (2026-10-16): **PASS เฉพาะ candidate ที่ตรวจ** — Service `841e39a`,
+Core 0.4.0 artifact SHA เดิม และ FlowDocMake `2cd8b81`/0.2.0; source ทั้งสอง checkout คงเดิมและ clean.
+หลักฐานอยู่ `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage6/`:
+`handoff.json` เชื่อมเกณฑ์กับหลักฐาน, `inventory.json`, `dedup-proof.json`, `integration-proof.json`,
+`restart-proof.json`, `fault-proof.json`, `identity-proof.json`, `reactivation-proof.json`,
+`candidate-preflight-final.json`, `pdf-verification.json`, `visual-final.json` และ receipts ที่อ้างไว้.
+นำเข้า/ออกใช้ในระบบทดสอบ **29 ไฟล์ไม่ซ้ำ / 3 ตระกูล / 6 release sets** (v1 Regular-only และ v2 ครบชุด);
+ตรวจ PDF ครบ **29 faces**, รวม artifacts **42 PDF / 68 หน้า**, เปิดตรวจภาพทุกหน้าและเทียบ outlines/metrics
+กับต้นฉบับ รวมข้อความทั้งเอกสารตามลำดับและ marker แต่ละ face ครบครั้งเดียว. น้ำหนักขัดกัน 5 ไฟล์
+บันทึกค่าดิบ/ต้นทาง/อนุมัติแยกกันพร้อมเหตุผล. ไฟล์ผู้ใช้เป็นต้นฉบับ authoritative;
+metadata จาก Google Fonts ที่ตรึง commit เป็นข้อมูลน้ำหนักอ้างอิงแยก ไม่รับรองว่าไบต์ตรง upstream รุ่นปัจจุบัน.
+นำเข้าซ้ำด้วย request ใหม่ใช้ asset IDs เดิมครบ 29 ไฟล์. เปลี่ยน default ทั้งสามตระกูล, retire รุ่นเต็ม,
+เอกสารเดิม/clone และ JSON ปลอมผ่านเกณฑ์; PDF ก่อน/หลังเปลี่ยน default/retire/clone ตรงทุกไบต์.
+งานจาก draft ที่บันทึกผ่าน MCP ถูก queue ด้วย public Service domain fixture ขณะ worker หยุด;
+หลัง restart PostgreSQL แล้ว clear default/retire ยังใช้ snapshot เดิมและให้ PDF เดิม.
+worker ปฏิเสธไฟล์หาย/hash ผิด; คืนไบต์เดิมแล้วงานใหม่สำเร็จ ส่วนงานที่ล้มเหลวยังคง failed.
+Sarabun v1 ต้อง fresh review ก่อน restore, manifest/members เดิมและไม่ตั้ง default อัตโนมัติ;
+legacy 2 fixtures/4 หน้าตรง baseline ทุกไบต์ พร้อม schema1 draft ผ่าน MCP จริง.
+ตรวจ packed Core และ actual candidate preflight ผ่าน; ใช้ผล Service 268/268 และ FlowDocMake 22/22
+จากช่วง 5 ซ้ำตาม source/dependency/config/image ที่ไม่เปลี่ยน ไม่อ้างว่าเป็นการรัน suite ใหม่ช่วง 6.
+fresh independent evidence review ไม่พบ critical/important; ชุดส่งมอบ
+`delivery/font-library-candidate.zip` มี packages, ฟอนต์พร้อม OFL, PDF และหลักฐานพร้อม checksums
+โดยไม่มี credential/config ส่วนตัว. เก็บ named test volumes และลบเฉพาะ containers/networks รอบนี้แล้ว.
+ข้อค้าง CLI เดิม `checkCurrentCli.mjs:11 INVALID_DATA` ยังไม่แก้และไม่จัดเป็น PASS;
+ไม่รับรอง full-system release readiness. PDF flowing specimen ยอมแบ่ง paragraph ข้ามหน้าและมีบรรทัดท้าย
+ในหน้า 5; ไม่ใช้ผลนี้รับรอง keep-together/orphan policy. คู่มือ AI คงจำนวน reference files เดิม.
 
 ## จุดในโค้ดและคำสั่งตรวจสำหรับเติมงานย่อย
 
@@ -771,7 +798,8 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–5 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 6 ตามขอบเขตที่ระบุ.
-การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–5 รับรองช่วง 6.
+ช่วง 1–6 ผ่านตามขอบเขต candidate และเตรียมชุดส่งมอบแล้ว; ขั้นถัดไปคือเจ้าของตัดสินใจรวม release
+และติดตั้งรุ่นที่เข้าคู่กัน. การรวม branch/deploy/นำเข้าฟอนต์หรือตั้ง default ในระบบจริงแยกจากผลทดสอบนี้;
+runtime ที่แชตเชื่อมอยู่ยังเป็น FlowDocMake 0.1.9 กับ Service/Core 0.3.0.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
