@@ -6,7 +6,7 @@ Owner: FlowDoc Project Control. บทบาท Planning Partner / Documentation
 อ้างอิง [ข้อตกลงที่เจ้าของอนุมัติ](flowdoc-font-library-design-2026-10-16.md).
 เอกสารนี้กำหนดลำดับ ผลส่งมอบ และการตรวจ ไม่ใช่หลักฐานว่าพัฒนาแล้วหรือสิทธิ์ deploy.
 การจัดทำแผนเป็น single-room; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
-ยังไม่แก้ product code, migration, ฐานจริง, user draft หรือแพ็กเกจ FlowDocMake.
+ผลลงมือและขอบเขตที่ตรวจแล้วบันทึกแยกไว้ใต้แต่ละช่วง; ไม่แก้ฐานจริงหรือ user draft.
 ช่วง 0 ต้องจบก่อนทำช่วง 1–6 เพราะข้อค้นพบอาจเปลี่ยนสัญญาและเจ้าของส่วนเชื่อมต่อ.
 รายละเอียดงานย่อยและ interface ของช่วงหลังต้องเติมจากผลช่วง 0 ก่อนส่งลงมือ.
 
@@ -493,11 +493,11 @@ TTF ปลอม/variable/OTF ถูกปฏิเสธ, retry/concurrent impo
 แก้ contract/validator, resource adapter, text measurement/cache และ subset ตามสัญญาช่วง 0.
 Service ส่ง resource ที่ resolve แล้ว; Core ไม่ค้น DB, Google Fonts หรือ system fonts เอง.
 
-- [ ] เพิ่ม failing tests สำหรับ style อ้างรุ่น/น้ำหนัก/รูปแบบ และ legacy mapping
+- [x] เพิ่ม failing tests สำหรับ style อ้างรุ่น/น้ำหนัก/รูปแบบ และ legacy mapping
   รวม body, table, header/footer, TOC และเลขหน้า ไม่แก้เฉพาะทางข้อความธรรมดา.
-- [ ] ส่ง resource identity ที่แยกไฟล์/รุ่นได้ถึง shaper, cache และ PDF;
+- [x] ส่ง resource identity ที่แยกไฟล์/รุ่นได้ถึง shaper, cache และ PDF;
   ป้องกัน font-regular ของคนละตระกูล/รุ่นชนกัน และตรวจ hash ก่อนใช้.
-- [ ] ขยาย loader/subset metadata ให้ใช้ตัวตนและ license ของไฟล์จริง;
+- [x] ขยาย loader/subset metadata ให้ใช้ตัวตนและ license ของไฟล์จริง;
   รักษาเส้นทาง bundled Sarabun เดิมตาม hash ไม่แทนไฟล์หรือแก้เนื้อเอกสารเก่า.
 
 **ตรวจ:** font เดียวกันถูกใช้วัดและฝัง; เปลี่ยน default ไม่เปลี่ยนงานที่ pin;
@@ -506,6 +506,34 @@ Service ส่ง resource ที่ resolve แล้ว; Core ไม่ค้�
 เปรียบเทียบ Sarabun เดิมกับ baseline ด้านข้อความ ตัดบรรทัด ตำแหน่ง และหน้า;
 การทดสอบเฉพาะ hash ไฟล์ไม่ใช่หลักฐาน layout parity.
 build และตรวจ packed consumer Linux/amd64 ก่อน Service เปลี่ยน dependency.
+
+**ผลช่วง 2 — PASS (2026-10-16, single-room):** Core candidate `codex/font-library-stage2`
+commit `3123fcf`; owner checkout
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage2/flowdoc-core` จาก base `6d2a9b7`.
+เพิ่ม schema 2 และ exact release/weight/style selection, verified private font/license snapshot
+ร่วมกันระหว่างวัดและ subset, identity แยก cache, metadata/license จริง และ `fontUsage` ไม่มี path.
+ปฏิเสธ face/glyph ที่ขาด, unselected และ hash ผิด; ไม่มีการแทนฟอนต์หรือสังเคราะห์รูปแบบ.
+legacy schema 1/fingerprint คงเดิม. รุ่น candidate เป็น Core **0.4.0** ตาม public contract ใหม่;
+ยังไม่ publish, merge release, เปลี่ยน Service dependency หรือ FlowDocMake compatibility.
+
+หลักฐานอยู่ใน owner checkout: `artifacts/1792136859866/result.json`, `fonts-result.json`,
+`pdf-verification.json`, `visual/` และ `artifacts/font-stage2/package-check-final.log`.
+`npm run build`, `npm test` ผ่าน **544 tests / 68 files**; `npm run check:package`
+ผ่าน consumer Linux/amd64 แบบ network none / mounts ว่าง ด้วยไฟล์ผู้ใช้จริง 29 face จาก 3 ตระกูล.
+tarball `flowdoc-core-0.4.0.tgz` SHA-256
+`9acd7cc36f698b45c3a3a753e38fa9dd3e1f5b1510ad3ac433138d0b66fad0ca`.
+PDF ใหม่ **33 ไฟล์ / 39 หน้า**: ทุก face, หลายตระกูล/สองรุ่น, body/table/header/footer/TOC/เลขหน้า,
+English-only และ 29 face ในเอกสารเดียว. ตรวจเส้นอักษรและ hmtx ของ glyph ที่ฝังเทียบ source จริงผ่าน;
+ตรวจภาพครบทุกหน้า ไม่พบ clipping/อักษรซ้อนหรือ glyph หายในการทดสอบนี้.
+Sarabun เดิม **48 PDF / 242 หน้า** เทียบ baseline packed 0.3.0 ที่
+`C:/Users/nekot/Documents/GitHub/flowdoc-core/artifacts/1792135611620` ตรงกันทุกไบต์/ข้อความ/จำนวนหน้า;
+Sarabun schema 2 ชุดสี่รูปแบบตรงข้อความและภาพ baseline ที่ 100 dpi (ต่าง 0 pixels).
+แก้ probe ให้รับ English-only และ subset prefix เกิน 26 face โดยเก็บชื่อ legacy เดิม;
+independent code review ไม่พบ Important/Critical. `git diff --check` ผ่าน.
+น้ำหนักใน fixture ผูกจาก raw แบบ test-only ไม่ใช่การอนุมัติ catalog; glyph coverage รับรองเฉพาะข้อความทดสอบ.
+การดึงข้อความไทยมี whitespace แทรกระหว่าง combining glyph บางคำ จึงตรวจข้อความแบบตัด whitespace
+ร่วมกับเส้นอักษร/metrics และภาพจริง; ไม่อ้างว่าแก้ลำดับข้อความ extraction แล้ว.
+ขั้นถัดไปเป็นช่วง 3 ของ Service; ยังไม่รับรอง activation หรือวงจร draft/job จริงช่วง 3–6.
 
 ### ช่วง 3 แยกการบันทึก draft ออกจากความพร้อม PDF
 
@@ -625,7 +653,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 2 ของ Core ตามขอบเขตที่ระบุ.
-การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1 รับรองช่วง 2–6.
+ช่วง 1–2 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 3 ของ Service ตามขอบเขตที่ระบุ.
+การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–2 รับรองช่วง 3–6.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
