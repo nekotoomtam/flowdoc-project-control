@@ -1019,13 +1019,16 @@ Owner ผู้จัดทำแม่แบบผ่าน FlowDocMake; ไม
 - [x] สำหรับแบบ ศบ.1 ตรวจว่าหน้าทั้งสองต้องใช้ page/band settings ต่างกันจริงไหม;
   รวม Section หากใช้กติกาเดียวกันได้ หรือบันทึกเหตุผลที่ยังต้องแยก. ส่วนเนื้อหา
   ที่ต้องแทรก/ใช้ซ้ำให้จัดเป็น Area/Format ไม่บังคับทุก static node ให้เป็น Area.
-- [ ] ตรวจ values/order/ตาราง/ภาพ/links/ตัวแปรครบและไม่ซ้ำ ก่อน preview;
+- [x] ตรวจ values/order/ตาราง/ภาพ/links/ตัวแปรครบและไม่ซ้ำ ก่อน preview;
   ตรวจ PDF ทุกหน้าเทียบต้นทางและ baseline: เริ่มด้วย 98 หน้าและ 2 หน้าที่มีอยู่.
   จำนวนหน้าต่างต้องอธิบายเหตุและให้เจ้าของรับ ไม่ลดฟอนต์/ย่อ/ตัดข้อมูลเพื่อให้ครบเลข.
 
 **ผลส่งมอบ:** definition + request ของ candidate ทั้งสอง, mapping รายส่วน,
 PDF/path/hash/render ทุกหน้าและรายการความต่าง; structural pass ไม่แทน visual acceptance.
 ถ้าติด engine gap ให้ย้อนกลับ owner/ช่วงที่เกี่ยวข้อง ไม่แก้ด้วยโครงที่ขัดนิยาม.
+
+ช่วง4ปิดงานปรับโครงพร้อมความต่างเดิมตามคำตัดสินเจ้าของท้ายผลช่วง4;
+checkbox แสดงการตรวจและส่งมอบตามขอบเขตที่รับ ไม่ได้หมายถึง strict source fidelity ผ่าน.
 
 ### ช่วง 5 — ตรวจร่วมและเตรียมส่งมอบ
 
@@ -1597,3 +1600,29 @@ worktree ยังจำเป็นต่อ fresh MCP config จึงคง�
 ไม่เปลี่ยน release/tags, ไม่ push/publish/install และไม่เริ่มช่วง5. Exact preview request
 อ้าง owned upload ที่หมดอายุได้; สำหรับ preview ใหม่ใช้ portable request และ original
 assets ผ่าน upload tools ตาม manifest ไม่ใช้ resource IDs เก่าโดยไม่มี upload ใหม่.
+
+### ปิดช่วง 4 ตามขอบเขตที่เจ้าของรับ — 2026-10-17
+
+เจ้าของเลือก **“ปิดงานปรับโครง พร้อมบันทึกความต่างเดิมไว้”** จากผลส่งตรวจเดิม
+98+2หน้า. สถานะช่วง4คือ **accepted with documented limitations** เฉพาะโครง/
+ข้อมูล/แม่แบบใหม่และชุดส่งมอบ; ไม่ใช่การรับว่าเหมือน source ทุกส่วน. เจ้าของยืนยัน
+SRS ปกหน้า1/เนื้อหาหน้า2–98 แยกได้ตามความจำเป็น และให้ใช้ Section เท่าที่จำเป็นจริง.
+
+ตรวจปิดงาน: fresh candidate MCP ยัง ready:true; draft SRS revision4/ศบ.1 revision1
+และ fingerprint ตรงชุดที่ตรวจ, PDF/backup SHA256 ตรง manifest, definition กับ
+request sections array จับ IDs ครบ และ original assets อยู่ครบ. Live originals
+ยัง revision1/revision3 พร้อม fingerprint เดิมจาก native MCP read รอบปิดงาน.
+ใช้หลักฐานตรวจภาพ100หน้า/198TOC rows/396destinations ที่ผูกกับไฟล์เดิมซ้ำ;
+ไม่มี template/request/font/runtime เปลี่ยน จึงไม่สร้างหรือเรนเดอร์ PDF ซ้ำ.
+
+คงรายการความต่าง SRS/ศบ.1 และ strict coverage/task `complete:false` ตามผลจริง;
+การปิด workflow ไม่เปลี่ยน checker ให้ PASS. `delivery/manifest.json` กับ review
+เดิมแนบ owner acceptance แยกจาก source-fidelity result. ชุดทดสอบและข้อมูลสำรอง
+ยังเก็บไว้; ไม่ release/push/install และยังไม่เริ่มช่วง5.
+
+**พักหลังจบกระบวนเดิมตามคำสั่งเจ้าของ:** Area คุมพื้นที่และค่าเริ่มต้น auto,
+Format กำหนดจุดแบ่งและส่วนที่ต้องอยู่ด้วยกัน; จัดการ overflow โดยไม่ทิ้งข้อมูล.
+ยังไม่ปิดสัญญารายละเอียดหรือพัฒนาในช่วง4/5อัตโนมัติ. ศบ.1 รุ่นนี้ตรวจผ่านเฉพาะ
+ข้อมูลตัวอย่างเดิมสองหน้า; ข้อมูลคำสำแดงที่ยาวกว่านั้นยังไหลต่อได้ และ footer mode
+continuation อาจแสดงลายเซ็นผู้รับของก่อนถึง cargo. ไม่รับรองว่าเป็นแบบฟอร์มจำกัด
+พื้นที่หรือรองรับข้อมูลยาวทั่วไป; ต้องนำกรณีนี้เข้าทดสอบเมื่อเริ่มงานที่พักไว้.
