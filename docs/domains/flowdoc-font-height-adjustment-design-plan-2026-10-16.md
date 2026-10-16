@@ -8,8 +8,8 @@ Owner: FlowDoc Project Control; บทบาท Planning Partner / Documentation
 เอกสารนี้เป็นข้อตกลงและแผนร่วม ต่อจาก
 [ข้อตกลงคลังฟอนต์](flowdoc-font-library-design-2026-10-16.md).
 ไม่ใช่หลักฐานว่าตัวช่วย การรับ custom font หรือ migration พัฒนาและออกใช้แล้ว.
-คำขอเริ่มต้นเป็นงานเอกสาร; ต่อมาเจ้าของอนุญาตช่วง 0 และช่วง 1 ตามลำดับ.
-ช่วง 1 เปลี่ยน Service candidate และตรวจในฐานแยกตามข้อ 8 ไม่อนุญาต release/deploy.
+คำขอเริ่มต้นเป็นงานเอกสาร; ต่อมาเจ้าของอนุญาตพัฒนาช่วง 0–3 ตามลำดับ.
+ช่วง 1–3 เปลี่ยน candidates และตรวจในฐานแยกตามข้อ 8–10 ไม่อนุญาต release/deploy.
 เป็น single-room inline; Work/Phase/Checklist/execution IDs
 ไม่เกี่ยวข้อง ไม่เปิดหรือรื้อฟื้น execution เก่า และไม่เปลี่ยน product map.
 Current Truth Snapshot ที่อ่านยังชี้งาน frontend; ใช้คำขอเฉพาะและข้อตกลงคลังฟอนต์
@@ -161,13 +161,13 @@ Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 p
 
 ### ช่วง 3 — เชื่อมตัวช่วยและการยืนยัน (Service + FlowDocMake)
 
-- [ ] Service เปิดข้อเสนอผ่าน API ตาม auth/catalog เดิม; FlowDocMake เพิ่มการขอเสนอ
+- [x] Service เปิดข้อเสนอผ่าน API ตาม auth/catalog เดิม; FlowDocMake เพิ่มการขอเสนอ
   และยืนยันบันทึกผ่าน native draft tools. แก้คู่มือเดิมแบบสั้น ไม่ทำหน้า Editor ใหม่.
-- [ ] ตรวจ normal change คง pt, helper เป็น opt-in, ยกเลิกไม่เปลี่ยน draft,
+- [x] ตรวจ normal change คง pt, helper เป็น opt-in, ยกเลิกไม่เปลี่ยน draft,
   ยืนยันแก้ selection+pt พร้อมกัน, stale revision/selection ไม่เขียนบางส่วน.
-- [ ] ตรวจ unselected/missing profile, legacy mapping, unauthorized caller และ
+- [x] ตรวจ unselected/missing profile, legacy mapping, unauthorized caller และ
   target retired ตามสิทธิ์เดิม รวมทั้ง read/clone เอกสารเดิม.
-- [ ] ตรวจรับ: save/open ใช้ pt ที่ยืนยัน, lineHeightPt ไม่เปลี่ยน,
+- [x] ตรวจรับ: save/open ใช้ pt ที่ยืนยัน, lineHeightPt ไม่เปลี่ยน,
   updated profile ไม่เปลี่ยน draft/PDF เอง, helper unavailable ไม่สร้าง readiness blocker ใหม่.
 
 ### ช่วง 4 — ตรวจร่วมใน PDF และเตรียมส่งมอบ
@@ -195,7 +195,7 @@ flow ที่จำเป็น ให้ระบุ dependency และแ�
 ใช้ ordinary pt เป็นทางเลือกเมื่อ helper ใช้ไม่ได้. อย่าขยายเป็นระบบ scale runtime
 หรือย้าย pt เอกสารเดิมเพื่อให้ fixture ผ่าน.
 
-สถานะล่าสุด: ช่วง 0–2 เสร็จตามขอบเขตข้อ 7–9; ช่วง 3–4 ยังไม่ลงมือ.
+สถานะล่าสุด: ช่วง 0–3 เสร็จตามขอบเขตข้อ 7–10; ช่วง 4 ยังไม่ลงมือ.
 ผลสำรวจ Chromium และ numeric oracle ไม่ใช่การรับรอง runtime/PDF.
 
 ## 7 ผลช่วง 0 — สัญญาที่ปิดก่อนพัฒนา
@@ -297,7 +297,7 @@ custom ยังผ่าน preparing/review/approve/active ตามเดิ�
 
 ### 7.5 Proposal, confirmation และ legacy
 
-Endpoints ต่อไปนี้เป็นสัญญาใหม่ที่จะพัฒนา ยังไม่มีใน runtime:
+Endpoints ต่อไปนี้ปิดสัญญาในช่วง 0; ผล implementation candidate ของช่วง 3 ดูข้อ 10:
 
 1. `POST /authoring/drafts/:id/font-height-adjustments` สำหรับ authenticated owner,
    body `{expectedRevision,styleId,targetFont,idempotencyKey}`. อ่าน sourceFont/pt/
@@ -467,3 +467,65 @@ pipeline recheck 3 tests หลังแก้ expected renderer version จา�
 ข้อจำกัดที่คงไว้: ยังไม่มี proposal/confirm, เครื่องมือ FlowDocMake หรือ PDF หลังปรับ pt;
 สิทธิ์/profile availability ระดับ draft จะตรวจในช่วง 3 ตามข้อ 7.5–7.6.
 ขั้นต่อไปคือช่วง 3 ไม่ใช่ release/install. ข้อ 8 เป็นผลช่วง 1 ในเวลานั้นและคงไว้เป็นประวัติ.
+
+## 10 ผลช่วง 3 — ข้อเสนอและการยืนยันผ่าน Service / FlowDocMake
+
+คำขอเจ้าของเป็น authority ของ single-room inline implementation; execution IDs
+ไม่เกี่ยวข้อง. Owner: Service สำหรับข้อมูล/สิทธิ์/transaction; Project Control สำหรับ
+FlowDocMake และบันทึกร่วม. Role: Product Implementation Agent / Evidence Reviewer.
+Scope/risk: medium / routine; proof budget เป็น focused PostgreSQL/native MCP กับ
+regression ส่วนที่เปลี่ยนและได้รับผล. ใช้ Core package ของช่วง 2 เดิม ไม่มีสูตรใน clients.
+
+Candidates บน branch `codex/font-height-stage3`:
+
+- Service `d66463eda69ad8d7e67cda8e61157166da0a16e6` รุ่น `0.4.1-dev.font-height.1`;
+  reuse worktree แยกเดิมที่ `C:/Users/nekot/Documents/Codex/worktrees/font-height-stage2/flowdoc-service`.
+  ชื่อโฟลเดอร์เดิมไม่ใช่สถานะช่วงงาน; branch/commit ข้างต้นคือตัวช่วง 3.
+- FlowDocMake `6896acf1f14595ef2a5773b953d2a373473145b4` รุ่น `0.2.2-dev.font-height.1`
+  ที่ `C:/Users/nekot/.codex/worktrees/font-height-stage3/flowdoc-project-control`.
+  Canonical API guide commit `d93999e`; copied references สร้างด้วย builder เดิม,
+  snapshot ครบ 24 hashes. ไม่เปลี่ยน source ใน installed plugin cache.
+
+ผลพัฒนาและจุดพิสูจน์:
+
+| พฤติกรรม | Implementation / evidence |
+| --- | --- |
+| propose อ่าน pt/font/profile จาก draft จริง ไม่เขียน draft | src/fonts/heightProposals.ts; tests/fonts-height-proposals.test.mjs |
+| เก็บข้อเสนอ/revision/fingerprint/bindings/TTL 15 นาที | migrations/020_font_height_proposals.sql; ไม่มีการแก้ migrations 001–019 |
+| confirm เปลี่ยน font+pt พร้อมกัน คง lineHeight/ส่วนอื่น | shared writeDraft ใน authoring/service.ts → writeCurrent/reference/audit ใน transaction เดียวกับ receipt |
+| owner-only HTTP, safe unavailable/404/409/422/503 | http/authoring.ts; authenticated HTTP test และ closed-DB test |
+| stale, expiry หลังรอ lock, retry/concurrent confirm, review revoke/reapprove และ assignment revision | proposal tests; release locks ลำดับเดียวกับ retention/lifecycle; receipt ตรวจ owner ก่อน replay และไม่เพิ่ม revision ซ้ำ |
+| active หรือ exact retained retired tuple เท่านั้น | propose/confirm/clone tests; ไม่มีสิทธิ์เพิ่มจาก family/JSON หรือ face ที่ขาด |
+| schema1 Sarabun ใช้ ordinary save/open/clone/preview เดิม | helper คืน LEGACY_STYLE_UNSUPPORTED ไม่ migrate; authoring/pipeline/legacy regression |
+| catalog แสดง review เบื้องต้น แยก availability จริง | fonts/catalog.ts heightProfile; propose ตรวจ binding และไฟล์ซ้ำ ไม่ใช้ catalog เป็น grant |
+| native MCP ใช้ Service จริง | plugin font-height-tools.mjs; stdio → authenticated HTTP → PostgreSQL ใน proposal test ไม่ใช่ mock-only |
+| tool schema ไม่รับ pt/profile override; explicit user choice ก่อน confirm | strict native MCP transport test + descriptions; call_tool_file allowlist รองรับทั้งสอง tools |
+
+การตรวจสุดท้าย: Service Docker build และ vendor checksum ผ่าน;
+Linux affected suite **20 files / 86 tests ผ่าน ไม่มี skip** รวมฟอนต์จริงเจ็ดตระกูล,
+custom intake/admin, profile, 015/018 upgrade/replay, readiness, default/retired,
+shared write adapter/diff, pinned job/PDF และ authoring tools.
+คู่ Sarabun16→Pridi ได้ 17.235294 pt; save/open คงค่าใหม่และส่วนอื่นตรงเดิมทั้งหมด.
+FlowDocMake **19 tests ผ่าน ไม่มี skip**: native stdio strict schema/transport,
+exact candidate compatibility, snapshot, workflow/coverage/representatives/task regression.
+check:data, git diff --check และ snapshot hash check ผ่าน.
+
+รอบแรก migration regression ไม่ผ่านสองจุดเพราะ expected list ยังจบที่ 019;
+เพิ่ม 020 ในค่าคาดหวังและตรวจตารางข้อเสนอเริ่มว่าง ข้อมูลเดิมยังเท่าเดิม.
+ผู้ตรวจอิสระพบ P2 หนึ่งข้อ: ผลวัดที่ยังไม่ assigned ถูกยุบเป็น PROFILE_MISSING.
+เพิ่มสอง reproducer ที่ล้มเหลว แล้วแก้ให้เลือก diagnostic จาก profile ของ manifest/method
+ปัจจุบันเท่านั้น; คืน PROFILE_UNREVIEWED/GLYPH_MISSING ตามจริง และไม่ใช้ metric ที่ยังไม่ผูก.
+full affected suite หลังแก้ผ่านตามข้างต้น. ไม่มี deferred minors หรือประเด็นที่ผู้ตรวจเว้นวินิจฉัย.
+
+การตัดสิน implementation: ใช้ candidate version เพื่อแยกจากของติดตั้ง (จับคู่ผิดให้
+preflight ปฏิเสธ), template_id ของ 020 ใช้ text ตาม PK จริง (ไม่เปลี่ยน identity/schema เดิม),
+fixture ใช้ isAbsolute เพื่อรองรับ temp paths Windows (ไม่มีผลต่อ runtime product).
+ไม่เปลี่ยน contract/ขอบเขตจากข้อ 7. คู่มือเพิ่มเฉพาะ API/usage เดิมและแก้ metadata รุ่น;
+ไม่มีเอกสารอ่านบังคับเพิ่มหรือการอ้างว่า skill instruction พิสูจน์พฤติกรรม AI ในอนาคต.
+
+หลักฐานท้องถิ่นถาวร: `C:/Users/nekot/Documents/Codex/2026-10-16/font-height-stage3/`
+มี result.json, Service build/RED/GREEN logs, plugin logs และ ledger.
+ลบเฉพาะ container/volume ฐานทดสอบรอบนี้; เก็บ worktrees/branches ที่ยังไม่รวม.
+ผลนี้เป็น candidate ที่ตรวจแล้ว ไม่ใช่ release/tag/push/install หรือการเปลี่ยนฐาน/คลังจริง.
+ข้อ 8–9 คงผลตามเวลาเดิม. ขั้นต่อไปคือช่วง 4 ตรวจ PDF หลังปรับ pt ทุกหน้าและเตรียมส่งมอบ;
+ผล PDF regression เดิมในช่วงนี้ไม่ใช่ visual acceptance ของเอกสารหลังปรับความสูง.
