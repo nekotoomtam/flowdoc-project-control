@@ -20,10 +20,11 @@ Owner: FlowDoc Project Control. บทบาท Planning Partner / Documentation
 **Architecture:** เสนอให้ Service เป็นเจ้าของคลัง ไฟล์ สิทธิ์ สถานะ และงานสร้าง PDF;
 Core เป็นเจ้าของสัญญาโครงสร้าง การเลือก/วัด/จัดอักษร และฝังฟอนต์จากชุดที่ยืนยันแล้ว.
 FlowDocMake และส่วนติดต่อใช้ API เดียวกัน ไม่สร้างคลังหรือกฎอนุมัติซ้ำในแต่ละ client.
-ขอบเขต UI/Editor และ Backend อีกสายต้องตัดสินจากช่วง 0 ไม่ถือว่าต่อกันได้อยู่แล้ว.
+เจ้าของเลือกเครื่องมือผู้ดูแลก่อน; ไม่มีหน้า admin ในรอบแรกและไม่แก้ Editor/Backend อีกสาย.
+Service เป็นเจ้าของ API/เครื่องมือผู้ดูแล; FlowDocMake เป็น client สำหรับผู้เขียนเอกสาร.
 
 **Tech Stack ที่พบ:** Core/Service 0.3.0, TypeScript/Node 24, PostgreSQL,
-Python/fontTools, ตัวจัดอักษรของ Core และ MCP draft-only; frontend ยังไม่กำหนดในแผนนี้.
+Python/fontTools, ตัวจัดอักษรของ Core และ MCP draft-only; frontend เลื่อนไปภายหลัง.
 
 ## ขอบเขตและวิธีทำงาน
 
@@ -68,7 +69,7 @@ Python/fontTools, ตัวจัดอักษรของ Core และ MCP 
 | 2 Core ใช้ชุดฟอนต์ที่ระบุ | Core | วัดและฝังด้วยไฟล์ที่ตรงกัน พร้อมทาง Sarabun เดิม |
 | 3 Draft readiness และงาน PDF | Service ร่วม Core | บันทึกค้างได้ แต่ PDF ใช้ snapshot ที่ตรวจแล้วเท่านั้น |
 | 4 ตรวจและออกใช้คลังครบวงจร | Service | หกสถานะ สิทธิ์ ค่าเริ่มต้น และประวัติทำงานจริง |
-| 5 เชื่อมเครื่องมือและส่วนติดต่อ | FlowDocMake และเจ้าของ UI ที่ยืนยัน | ผู้ดูแล/ผู้เขียนใช้ API จริงและเข้าใจปัญหาได้ |
+| 5 เชื่อมเครื่องมือ | Service และ FlowDocMake | ผู้ดูแล/ผู้เขียนใช้ API จริงและเข้าใจปัญหาได้; UI เลื่อนไปภายหลัง |
 | 6 ตรวจร่วมและเตรียมส่งมอบ | verification ตามเจ้าของส่วน | วงจรจริงผ่าน มีหลักฐานความครบและข้อค้างชัดเจน |
 
 ### ช่วง 0 ปิดสัญญาก่อนเปลี่ยนระบบ
@@ -93,6 +94,202 @@ Authority: discovery-only ต่อ product; บันทึกการตั�
 ไม่มีสัญญาหรือ owner สำคัญที่ผู้ลงมือต้องเดา. ผลใหม่ที่เปลี่ยนข้อตกลงกลับให้เจ้าของทบทวน.
 เติม exact interface, รายชื่อไฟล์ใหม่และคำสั่ง test ของช่วง 1–5 ในแผนก่อนอนุญาต implementation.
 ไม่ใช้การเขียน API ตัวอย่างหรือ migration ทดลองเป็นวิธีข้ามช่วง discovery.
+
+#### ผลเริ่มช่วง 0 — 2026-10-16
+
+สถานะ: ตรวจทางเชื่อมและร่างสัญญาด้านล่างแล้ว; เหลือทบทวนสัญญารอบสุดท้ายก่อนปิดช่วง 0.
+เป็นข้อเสนอทางเทคนิคสำหรับพัฒนา ไม่ใช่ API ที่เรียกใช้ได้ใน 0.3.0.
+ข้อตกลงเพิ่มที่เจ้าของยืนยัน: เครื่องมือผู้ดูแลก่อน UI และสำเนาคงรุ่นเลิกให้เลือกได้.
+ยังไม่เปลี่ยน product code/ฐาน/ไฟล์ฟอนต์ และไม่เพิ่มเอกสารบังคับให้ AI อ่าน.
+
+**ขอบเขตเจ้าของ:** Service ดูแล catalog, bytes, provenance, admin authorization,
+retained references, review และ job snapshot; Core ดูแล JSON grammar, การวัด/จัดอักษร/
+subset/ฝัง PDF. การตรวจชนิด draft อยู่ Core และไม่ต้องต่อ DB; การตรวจว่ารุ่นมีจริงอยู่ Service.
+เครื่องมือผู้ดูแลเรียก Service API ไม่ต่อ DB โดยตรง; credential แยกจาก AUTHORING_TOKEN.
+ไม่เพิ่ม font-admin MCP ลง FlowDocMake ซึ่งเป็นช่องทางผู้เขียนเอกสาร.
+
+**ข้อค้นพบที่ต้องรักษา:** `sectionOwnership.ts` ตรวจ schemaVersion=1 แบบ strict;
+`assembly.ts` เก็บ styles ใน payload และประกอบกลับก่อน Core ตรวจ. ดังนั้นต้องทดสอบ
+round-trip ทั้ง current และ published snapshot ไม่เปลี่ยนเพียง type ของ TextStyle.
+`render-child.ts` โหลด bundled resources เองและกรอง error เหลือ LAYOUT_FAILED;
+ต้องส่ง font snapshot เข้ากระบวนการลูกและรักษา font issue ทั้งขา child และ parent.
+
+**ร่างสัญญาเอกสาร:** ใช้ schemaVersion=2 สำหรับโครงสร้างใหม่ แต่คง nodeModelVersion=18
+เพราะไม่ได้เปลี่ยน ownership/Area model. อ่าน schemaVersion=1 ตาม grammar เดิมต่อ;
+ห้ามผสม field ฟอนต์เดิม/ใหม่ใน style เดียวกันหรือเปลี่ยน fingerprint ของ v1 ตอนอ่าน.
+ขอบเขตการเปลี่ยนนี้รวม TemplateDefinition และ ResolvedDocument ของ Core.
+
+```ts
+type FontSelection = {kind:'unselected'} | {
+  kind:'library'; releaseId:string; weight:number; style:'normal'|'italic'
+};
+type TextStyleV2 = {
+  font:FontSelection; fontSize:{value:number;unit:'pt'}; lineHeightPt:number
+};
+```
+
+`releaseId` เป็น UUID รูปแบบ canonical ที่ Service สร้าง; `weight` เป็นจำนวนเต็ม 1–1000.
+ไม่รับ path/URL, string น้ำหนัก, null, field ส่วนเกิน หรือ library ที่ขาดรหัส;
+unselected ไม่มี releaseId/weight/style. เกณฑ์ขนาดและระยะบรรทัดยังใช้ validator เดิม.
+draft v2 ที่มี unselected เก็บได้ แต่การส่งเข้า layout/PDF ต้องคืน FONT_NOT_SELECTED.
+read-only v1 ใช้ legacy binding ที่ผูก hash ของ Sarabun สี่ไฟล์ ไม่แก้ payload;
+คำสั่งแปลงเป็น v2 ต้องสร้าง revision ใหม่และยังคงตัวตน template ตามกติกา Service.
+
+**ร่างข้อมูลคลัง:** รหัส entity เป็น UUID; hash เป็น SHA-256 ของ bytes; เวลาเป็น UTC.
+ทุก entity มี createdAt; รายการแก้ได้มี updatedAt/revision; event เป็น append-only.
+
+| Entity | field หลัก/ข้อบังคับ |
+| --- | --- |
+| FontFamily | id, displayName, internalNames, sourceIdentity, defaultReleaseId nullable; ชื่อไม่ unique key |
+| FontAsset | id, sha256 unique, byteLength, format='ttf-static', storageKey, parsedMetadata, coverageDigest; bytes immutable |
+| FontRelease | id, familyId, version, state, revision, manifestDigest, everActivatedAt nullable; unique(familyId,version) |
+| FontFace | id, releaseId, assetId, rawWeight, sourceWeight nullable, approvedWeight, style, sourceEvidenceId; unique(releaseId,approvedWeight,style) |
+| FontSourceEvidence | id, provider, locator, retrievedAt, metadataHash, fileHashBinding, licenseAssetIds, conflictResolution; ตรวจสิทธิ์/ที่มาแยกจาก dedup |
+| FontReview | id, releaseId, manifestDigest, rendererIdentity, testSuiteDigest, results, reviewedBy, reviewedAt; ผลผูก input ที่ตรวจจริง |
+| FontAuditEvent | id, actor, at, action, reason, releaseId nullable, requestId, before/after digest, outcome; ไม่เก็บ credential |
+
+state codes: preparing / in_review / needs_changes / ready / active / retired ตามหกสถานะใน spec.
+approvedWeight ต้องกำหนดก่อนส่ง review; ข้อมูลขัดกันคง preparing/needs_changes.
+manifest ครอบคลุม face bindings, hashes, ที่มา/ใบอนุญาต และขอบเขตภาษา;
+activated content แก้ไม่ได้ แม้เปลี่ยนสถานะกลับมา. เก็บ asset license แยก ไม่ใช้ OFL ของ Sarabun แทนทุกไฟล์.
+
+**ร่าง interface:** ชื่อด้านล่างเป็น service/domain methods; route/CLI adapter ต้องเรียกกฎชุดเดียวกัน.
+admin mutation รับ requestId และ expectedRevision เมื่อมีเป้าหมายเดิม;
+authoring รักษาชื่อ idempotencyKey/expectedRevision เดิม ไม่เปลี่ยนชื่อเพื่อให้ตรงกับ admin.
+retry payload เดิมคืน receipt เดิม, payload ต่างปฏิเสธ, stale ไม่เขียนบางส่วน.
+
+| Method | Input → Output / สิทธิ์ |
+| --- | --- |
+| inspectFont | bounded bytes + source evidence → parsed metadata/hash/coverage/conflicts; admin, ไม่เปิดใช้ |
+| stageFontRelease | familyId + version + inspected assets/face bindings → releaseId/revision/manifestDigest; admin |
+| submitFontReview | releaseId + expectedRevision → frozen reviewId/manifestDigest; admin |
+| reviewFontRelease | reviewId + exact runtime/test inputs → persisted result; admin runner, ทดสอบทุก face |
+| activateFontRelease | releaseId + reviewId + manifestDigest → active receipt; admin, ตรวจ snapshot ใน transaction |
+| retireFontRelease / setFamilyDefault | exact IDs + reason → audited receipt; admin, ห้ามเดา default แทน |
+| listSelectableFonts | active catalog → release IDs/face choices; authoring, ไม่มี storage path |
+| checkFontReadiness | exact definition/revision + optional sample input → FontReadiness; authoring |
+| resolveJobFonts | exact composed content + server-held retention → FontSnapshot หรือ issues; internal |
+| cloneDraft | authorized sourceId + sourceRevision + target identity → new draft + inherited bindings; authoring |
+
+admin credential เป็นค่ากำหนดเฉพาะใน Service และปิด admin routes หากไม่ตั้งค่า;
+token ผู้เขียนใช้แทนไม่ได้. CLI ส่ง bytes/JSON ไป API และรับ diagnostics ที่ไม่มี local server paths.
+ข้อจำกัด file bytes/count/parse timeout ต้องกำหนดตัวเลขและ negative tests ก่อนเริ่ม intake implementation.
+
+**ร่าง readiness:** save receipt ยืนยัน saved revision แยกจาก
+`{status:'ready'|'blocked'|'incomplete', definitionFingerprint, inputFingerprint?, issues}`.
+ready ที่ไม่มี input เป็นผลเฉพาะโครงสร้าง/style ไม่ใช่รับรองข้อความจริง; PDF ตรวจ actual input เสมอ.
+issues ใช้ `{code,path,message,remedy,styleIds,occurrences,samples}`; จำกัดรายการและแจ้ง total/truncated.
+path ใช้ JSON Pointer เช่น `/styles/body/font`; ไม่ส่งข้อความทั้งเอกสารหรือ server path ใน error.
+
+| รหัส | ผล |
+| --- | --- |
+| INVALID_FONT_SELECTION | โครงสร้างผิด → save ปฏิเสธโดยไม่ขยับ revision |
+| FONT_NOT_SELECTED / FONT_RELEASE_NOT_FOUND / FONT_RELEASE_NOT_ACTIVE | save ได้, blocked |
+| FONT_REFERENCE_NOT_RETAINED | รุ่น retired ที่ไม่มีต้นฉบับอ้างอิงยืนยัน → save ได้, blocked |
+| FONT_FACE_UNAVAILABLE / FONT_GLYPH_MISSING / FONT_SHAPING_FAILED | save ได้, blocked |
+| FONT_ASSET_UNAVAILABLE / FONT_ASSET_HASH_MISMATCH / FONT_CHECK_UNAVAILABLE | save ได้, incomplete; หยุด PDF |
+
+revision/สิทธิ์/idempotency failure ยังเป็น operation error เดิมและไม่คืน saved receipt.
+หาก catalog ล่มหลังบันทึก ให้คืน saved + incomplete ไม่ rollback สิ่งที่บันทึกสำเร็จแล้ว.
+
+**ร่าง snapshot/retention:** FontSnapshot มี version=1, definition/input fingerprints,
+rendererIdentity, manifestDigest และ bindings `{styleId,releaseId,faceId,assetId,sha256,weight,style}`.
+Service เติม path ภายในจาก storageKey เท่านั้นและตรวจ bytes เมื่อ worker ใช้; Core รับ FontResource
+ที่มี identity/hash/license ชัดเจน ไม่ค้นคลัง/HTTP. ใช้ asset hash เป็นส่วนหนึ่งของ runtime font ID/cache key.
+การเปลี่ยน default หรือ retire ระหว่างรอคิวไม่เปลี่ยน snapshot; bytes หาย/เสียยัง fail.
+admin trial มี purpose='font-review', reviewId/digest และสิทธิ์เฉพาะ แยกจาก ordinary preview.
+
+สำเนาที่สร้างผ่าน cloneDraft สืบทอดชุด `(releaseId,weight,style)` จาก revision ต้นฉบับที่ตรวจสิทธิ์แล้ว;
+ผู้ใช้ส่ง retained=true เองไม่ได้. การเปิด/บันทึกต่อในเอกสารเดิมคง bindings เดิมได้;
+การเลือก retired ใหม่ที่ไม่มี lineage เก็บ draft ได้พร้อม issue แต่สร้าง PDF ไม่ได้.
+restore ต้องคืน bytes hash เดิมพร้อม metadata/lineage; ขาดส่วนใดให้ incomplete ไม่เลือกตัวแทน.
+
+**กรณีตรวจรับสัญญา:** ทุกกรณีต้องทดสอบผ่าน public Core exports และ Service adapter จริง.
+
+| กรณี | save / PDF / activate ที่ต้องได้ |
+| --- | --- |
+| Sarabun v1 เดิม | อ่าน/บันทึกตาม grammar เดิม; PDF ใช้สี่ hash ที่ยืนยัน, เทียบ layout baseline |
+| v2 unselected หรือ UUID ถูกแต่ไม่พบ | save ได้ + blocked; PDF หยุด |
+| weight='400', 0, 1001, URL หรือ mixed v1/v2 | atomic reject; ไม่ขยับ revision |
+| IBM/Pridi ไม่มี italic | normal ที่มีจริงใช้ได้; ขอ italic save ได้แต่ PDF หยุด |
+| raw/source weight ขัดกัน | stage ได้; activate ไม่ได้จน admin resolve และตรวจใหม่ |
+| ขาด glyph/จัดอักษรไม่ได้ใน actual input | save ได้; PDF หยุดพร้อมตำแหน่งและตัวอย่าง |
+| retired ที่เดิมอ้าง/สำเนายืนยันต้นฉบับ | ใช้ต่อได้; การอ้างเพิ่มที่ไม่มี lineage ถูก blocked |
+| stale revision / authoring token เรียก admin | ปฏิเสธ; catalog/draft/audit ไม่แสดงความสำเร็จปลอม |
+| review digest เก่า / เพิ่ม face ภายหลัง | activate ปฏิเสธ; รุ่นที่ออกใช้แล้วต้องสร้างรุ่นใหม่ |
+| queued job แล้ว default เปลี่ยน/ไฟล์เสีย | default ไม่เปลี่ยนผล; hash ผิดหยุดก่อนส่ง PDF |
+
+**ขอบเขต transport ที่เสนอ:** `/admin/fonts` ตรวจ FONT_ADMIN_TOKEN/FONT_ADMIN_PRINCIPAL
+ต่างจาก authoring; ห้ามตั้ง token เท่ากัน. actor มาจาก credential ไม่รับจาก request.
+ทุก JSON route ใช้ duplicate-aware reader เดิม; action mutation รับ
+`{requestId,expectedRevision,reason,...actionFields}` และคืน `{receipt,release,revision}`.
+POST สร้าง family/import ไม่ต้อง expectedRevision เมื่อยังไม่มี entity; การแก้ entity เดิมต้องมี.
+
+| เส้นทางที่วางไว้ | หน้าที่และ actionFields |
+| --- | --- |
+| POST /admin/fonts/imports | สร้าง bounded intake session: files[{clientKey,byteLength,sha256}], sourceEvidence |
+| PUT /admin/fonts/imports/:id/files/:clientKey | binary bytes ทีละไฟล์; ตรวจ session/size/hash, retry ไฟล์เดิมได้ |
+| POST /admin/fonts/imports/:id/inspect | finalize และ parse ครบชุด → inspection receipt; ไม่มี auto activate |
+| POST /admin/fonts/families | displayName, internalNames, sourceIdentity → familyId |
+| POST /admin/fonts/releases | familyId, version, importId, faceBindings, languageScope → preparing |
+| PATCH /admin/fonts/releases/:id | candidate fields เดียวกับตอนสร้าง; เฉพาะ preparing/needs_changes |
+| POST /admin/fonts/releases/:id/submit-review | manifestDigest → in_review + reviewId |
+| POST /admin/fonts/releases/:id/withdraw-review | reviewId → preparing; invalidate review result |
+| POST /admin/fonts/reviews/:id/run | runner ตรวจ snapshot จริง → needs_changes หรือ ready สำหรับรุ่นใหม่; reactivation คง retired และเก็บผล review แยก; client ส่ง PASS แทนไม่ได้ |
+| POST /admin/fonts/releases/:id/activate | reviewId, manifestDigest → active |
+| POST /admin/fonts/releases/:id/retire | replacementDefaultReleaseId หรือ clearDefault=true เมื่อเป็น default → retired |
+| POST /admin/fonts/releases/:id/reactivation-review | retired คง retired ระหว่างตรวจ; ชุดเดิม immutable → review ใหม่ก่อน activate |
+| PUT /admin/fonts/families/:id/default | releaseId หรือ null; active ของ family เดียวกันเท่านั้น |
+| DELETE /admin/fonts/releases/:id | เฉพาะ preparing ที่ไม่เคย active/ไม่มี review หรือ reference; ไม่ลบ shared bytes |
+| GET /admin/fonts/releases/:id และ /imports/:id | metadata, review/audit summary; ไม่คืน server paths/token |
+| GET /authoring/fonts | selectable active families/releases/faces |
+| POST /authoring/drafts/:id/clone | sourceRevision, idempotencyKey, target docKey/name → server-created identity + inherited bindings |
+
+readiness อยู่ใน save/validate/preview ของ authoring เดิม; ไม่สร้าง font validation กฎอีกชุดใน client.
+preview ของ review ใช้ `/admin/fonts/reviews/:id/previews` และ job purpose เฉพาะ;
+ordinary preview ไม่ยอมใช้ preparing/in_review/ready. การ reactivate ไม่เปลี่ยน retained eligibility
+ของรุ่น retired ระหว่างตรวจ. การ reopen ready เพื่อแก้ชุดใช้ withdraw-review และยกเลิกผลเดิม.
+
+CLI ใหม่ `node dist/fonts/cli.js <command> --request <json-file>` ใช้ FONT_ADMIN_BASE_URL/TOKEN;
+commands: import, family-create, release-stage, release-edit, review-submit, review-withdraw,
+review-run, activate, retire, reactivation-review, default-set, release-delete, show.
+import request ระบุ local files; CLI อ่านแล้วส่ง bytes แต่ Service ไม่รับ client filesystem path เป็น resource.
+receipt และสถานะเป็น JSON; ไม่มี credential ใน argument/log. `show` ใช้ id จาก request และไม่เขียนข้อมูล.
+
+ค่าจำกัดเริ่มต้นที่เสนอและต้องมี boundary tests: 10 MiB/TTF, 64 TTF/import,
+128 MiB/import, metadata JSON 1 MiB, session 24 ชั่วโมง, parse 30 วินาที/ไฟล์ และครั้งละหนึ่ง parser.
+เก็บ upload แบบ streaming; ไม่เพิ่ม body limit JSON ของทั้ง Service เพื่อรับ font bytes.
+diagnostics สูงสุด 100 issues, 20 occurrence/issue, 3 sample/issue, sample 80 code points;
+ส่ง total/truncated และไม่ถือว่ารายการที่ตัดออกผ่าน. readiness blocked มีลำดับเหนือ incomplete
+เมื่อพบทั้งสองประเภท; เก็บ issue ครบตามขีดจำกัดและ PDF หยุดทั้งคู่.
+manifest ใช้ canonical JSON แบบ sorted keys, face เรียงตาม weight/style/asset hash;
+ไม่รวม state/default/review result/เวลา เพื่อไม่ให้การ retire เปลี่ยนตัวตนชุด.
+
+**รายละเอียดงานย่อยสำหรับลงมือ:** เส้นทางใหม่เป็นเป้าหมายที่เสนอ ไม่ใช่ไฟล์ที่มีอยู่แล้ว;
+ก่อนเริ่มแต่ละช่วงตรวจ base และเลข migration ที่ยังว่างอีกครั้ง. ไม่จอง migration 016 ล่วงหน้า.
+
+| ช่วง | ไฟล์ใหม่ที่กำหนด / การตรวจเฉพาะ |
+| --- | --- |
+| 1 | Service `src/fonts/types.ts`, `repository.ts`, `files.ts`, `inspection.ts`, `service.ts`, `runtime/python/inspectFont.py`, migration ใหม่; `tests/fonts-intake.test.mjs`, `fonts-repository.test.mjs` |
+| 2 | Core `src/fonts/types.ts`, `selection.ts`, `validateSelection.ts`, `tests/fonts/selection.test.ts`, `tests/fonts/legacy.test.ts`; แก้ contract/runtime/layout/subset ตามตารางเดิม และ export จาก root |
+| 3 | Service `src/fonts/readiness.ts`, `snapshot.ts`, `retention.ts`, `tests/fonts-readiness.test.mjs`, `fonts-jobs.test.mjs`, `fonts-retention.test.mjs`; เปลี่ยน save/assembly/job transport เดิม |
+| 4 | Service `src/fonts/review.ts`, `lifecycle.ts`, `src/http/fonts-admin.ts`, `tests/fonts-lifecycle.test.mjs`, `fonts-admin.test.mjs`; authorization/snapshot CAS/real review runner |
+| 5 | Service `src/fonts/cli.ts`, `src/http/fonts-authoring.ts`, `tests/fonts-cli.test.mjs`; FlowDocMake เพิ่ม catalog/readiness tools ใน server และ focused tests เดิม; ไม่มี Editor/UI |
+
+แต่ละแถว Service ตรวจ `npm run build` แล้ว `npm test -- tests/<ชื่อไฟล์ในแถวนั้น>`
+โดยส่งทุก path แยกจริง ไม่ส่ง placeholder. ตัวอย่างช่วง 1:
+`npm test -- tests/fonts-intake.test.mjs tests/fonts-repository.test.mjs` ใน isolated DB.
+ช่วง 2: `npm run build`, `npm test -- tests/fonts/selection.test.ts tests/fonts/legacy.test.ts`
+ร่วม tests เดิม resources/subset/cache/template/pageBands/PDF ที่ได้รับผล และ `npm run check:package`.
+ช่วง 3 ต้องรวม `authoring.test.mjs`, `authoring-adapter.test.mjs`, `jobs.test.mjs`, `processor.test.mjs`;
+ช่วง 4 รวม `npm run check:database`/`npm run check:api` หลัง build และพร้อม prerequisites.
+parser dependency ต้อง pin ใน Service image ตอน build และ COPY helper; ไม่ติดตั้งตอน import/render.
+
+**จุดทบทวนก่อนปิดช่วง 0:** ตรวจว่าการเพิ่ม schemaVersion=2 ไม่ทำให้ strict validator,
+assembled current/version snapshot หรือ packed public API รับเพียงครึ่งทาง; ทบทวน
+clone authorization/idempotency + inherited binding transaction ว่าต้อง persist อะไรเพิ่ม;
+และทำ field-level request/response fixtures ของ transport ด้านบนก่อน implementation.
+ตารางนี้กำหนดขอบเขตแล้ว แต่ยังไม่ทำเครื่องหมาย checklist ว่าผ่านแทนการทบทวนดังกล่าว.
 
 ### ช่วง 1 สร้างคลังและรับเข้าเป็นชุดเตรียม
 
@@ -167,24 +364,25 @@ review ชนกับการแก้ชุดต้องไม่ผ่า�
 ไม่มีปกติ 400 หรือมี face ไม่ผ่านทั้งชุดยังออกใช้ไม่ได้;
 retire ไม่เปลี่ยนเอกสารเดิมและต้องจัดการ default ชัดเจน, restore ไม่เปิดให้แก้รุ่นเดิม.
 
-### ช่วง 5 เชื่อมเครื่องมือและส่วนติดต่อที่ยืนยันแล้ว
+### ช่วง 5 เชื่อมเครื่องมือผู้ดูแลและผู้เขียนเอกสาร
 
 FlowDocMake ใช้ catalog/readiness API จาก Service; ไม่ทำสิทธิ์ admin ผ่าน token authoring โดยปริยาย.
-เจ้าของ UI/Editor และไฟล์ที่จะเปลี่ยนต้องมาจากช่วง 0 ก่อนเริ่มช่วงนี้.
+Service เป็นเจ้าของ CLI/API ผู้ดูแล; Project Control เป็นเจ้าของ FlowDocMake adapter.
+หน้าจอ admin และการเชื่อม Editor อีกสายเลื่อนไปภายหลังตามเจ้าของยืนยัน.
 
 - [ ] เพิ่มการอ่าน catalog และ readiness ผ่าน HTTP/MCP adapter และ schemas ที่ตรงสัญญา;
   ทดสอบจริงกับ Service พร้อมแยกสิทธิ์อ่าน/นำเข้า/ออกใช้.
-- [ ] ส่วนผู้ดูแลแสดงชุดเตรียม ความต่างน้ำหนักสามค่า ผลตรวจ และหกสถานะ;
-  ส่วนเขียนเอกสารเลือกเฉพาะรุ่นที่มีสิทธิ์เลือก บันทึกรุ่นจริง และแสดง save/readiness แยกกัน.
-- [ ] เพิ่มการนำทางไปตำแหน่งปัญหา/เลือกแก้ และทดสอบ retained reference ตามกติกาช่วง 0;
+- [ ] เครื่องมือผู้ดูแลคืนชุดเตรียม ความต่างน้ำหนักสามค่า ผลตรวจ และหกสถานะ;
+  เครื่องมือผู้เขียนอ่านรุ่นที่มีสิทธิ์เลือก บันทึกรุ่นจริง และคืน save/readiness แยกกัน.
+- [ ] คืนตำแหน่งปัญหาและคำแนะนำเลือกแก้ และทดสอบ retained reference ตามกติกาช่วง 0;
   ไม่ผูก preview font จากเครื่องผู้ใช้แทนไฟล์ที่ Core ใช้.
 
-**ตรวจ:** API/เครื่องมือ/หน้าจอให้ผลตรงกัน; ไม่มี italic/bold-italic ให้เลือกปลอม;
-ปัญหาซ้ำไม่ท่วมหน้าจอและ draft กลับมาแก้ได้; stale revision ไม่ถูกเขียนทับ.
+**ตรวจ:** API/CLI/MCP ให้ผลตรงกัน; ไม่มี italic/bold-italic ให้เลือกปลอม;
+ปัญหาซ้ำไม่ท่วมผลตอบกลับและ draft กลับมาแก้ได้; stale revision ไม่ถูกเขียนทับ.
 ทดสอบ user flow กับ runtime จริง ไม่ใช้ mock เป็นหลักฐานจบการเชื่อมต่อ.
 ปรับ package compatibility และคู่มือ FlowDocMake ตามรุ่น Core/Service ที่สร้างจริง
 พร้อมรักษาการอ่านตามช่วง; ห้ามแก้เลขรุ่นเพื่อหลอก preflight โดยไม่มี proof.
-ถ้าช่วง 0 เลือกส่งมอบเฉพาะ CLI/API ต้องระบุขอบเขต UI ที่เลื่อนไว้อย่างชัดเจนก่อนตรวจรับ.
+ตรวจรับ CLI/API/MCP ตามขอบเขตนี้; ไม่ใช้ผลผ่านแทนหลักฐานว่ามีหน้าจอจัดการคลังแล้ว.
 
 ### ช่วง 6 ตรวจร่วมและเตรียมส่งมอบ
 
