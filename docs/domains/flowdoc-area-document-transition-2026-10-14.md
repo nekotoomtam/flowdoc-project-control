@@ -1009,14 +1009,14 @@ Owner ผู้จัดทำแม่แบบผ่าน FlowDocMake; ไม
 ขึ้นกับช่วง 1–3 ที่เกี่ยวข้องผ่านแล้ว. สร้าง unpublished drafts ใหม่แยกจากต้นฉบับ
 สองตัวที่เจ้าของให้เก็บ ไม่ overwrite/migrate live โดยอัตโนมัติ.
 
-- [ ] ทำ mapping ของ SRS ทั้งเจ็ดส่วนลงโครงตามภาพอ้างอิง: เป้าหมายเริ่มต้นเป็น
+- [x] ทำ mapping ของ SRS ทั้งเจ็ดส่วนลงโครงตามภาพอ้างอิง: เป้าหมายเริ่มต้นเป็น
   Section เดียว แทรกปก/ผู้อนุมัติ/ประวัติ/สารบัญ/คำอธิบาย/บทนำ/เนื้อหาผ่าน Area
   และเลือก Format. Section เพิ่มได้เฉพาะเหตุผลจริงเรื่อง paper/band/data instance
   ที่ตกลง ไม่ใช่เพราะเป็นหัวข้อหรือขึ้นหน้าใหม่.
-- [ ] แยกค่ากลางที่ตั้งใจใช้ร่วมกับค่าของแต่ละ Section/Format; ข้อมูลไม่ต้องส่ง
+- [x] แยกค่ากลางที่ตั้งใจใช้ร่วมกับค่าของแต่ละ Section/Format; ข้อมูลไม่ต้องส่ง
   node graph หรือ page coordinates. ยังใช้ `{format,data}` ตามสัญญา Area ที่มีอยู่
   ไม่เพิ่ม business-data adapter หรือระบบรับภาพลูกค้าแฝงในงานนี้.
-- [ ] สำหรับแบบ ศบ.1 ตรวจว่าหน้าทั้งสองต้องใช้ page/band settings ต่างกันจริงไหม;
+- [x] สำหรับแบบ ศบ.1 ตรวจว่าหน้าทั้งสองต้องใช้ page/band settings ต่างกันจริงไหม;
   รวม Section หากใช้กติกาเดียวกันได้ หรือบันทึกเหตุผลที่ยังต้องแยก. ส่วนเนื้อหา
   ที่ต้องแทรก/ใช้ซ้ำให้จัดเป็น Area/Format ไม่บังคับทุก static node ให้เป็น Area.
 - [ ] ตรวจ values/order/ตาราง/ภาพ/links/ตัวแปรครบและไม่ซ้ำ ก่อน preview;
@@ -1537,3 +1537,63 @@ archive ของแอป. เหลือ primary checkout ของแต่�
 release และ tags เดิมไว้. ไม่ push/tag/release/deploy/แก้ live drafts หรือเริ่มช่วง4.
 FlowDocMake snapshot คง canonical sourceCommit ของ candidate ที่ตรวจแล้ว;
 บันทึกการรวมนี้ไม่เปลี่ยน guidance/runtime contract ของแพ็กเกจ.
+
+## ผลช่วง 4 — แม่แบบใหม่ในชุดทดสอบแยก (2026-10-17)
+
+**Authority Boundary:** Owner ผู้จัดทำแม่แบบผ่าน FlowDocMake; role Product
+Implementation Agent → Evidence Reviewer / Project Control Steward. Single-room
+inline, execution IDs N/A. เจ้าของอนุมัติชุดทดสอบแยกหลังพบว่า native chat ยังเป็น
+FlowDocMake0.2.1/Core–Service0.4.0 model18. รอบนี้ใช้ fresh MCP file client ของ
+candidate0.2.3-dev.3/Core–Service0.4.2-dev.3 ที่ผ่าน `ready:true`, live contract
+และ tool schemas; ไม่เปลี่ยน engine, installed plugin หรือ published history.
+
+หลักฐานและไฟล์ส่งตรวจอยู่ที่
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage4/`;
+`delivery/manifest.json` เชื่อม definition/request/assets, PDF/hash, IDs, การสำรอง
+และขอบเขต. บันทึกนี้เป็นผลตรวจแม่แบบ ไม่เลื่อน DOCUMENT_MAP หรือรับรอง release.
+
+- SRS draft ใหม่ `1fa6edd4-cdb0-4c49-be8a-69842b970959`, revision4,
+  docKey `section19-srs-stage4`, PDF98หน้า SHA256
+  `9f5f24d8a64574f5ee564ebfc9bcabdc131fe692480043c83d476cb254637133`.
+  ใช้สอง Section เพราะปกมีระยะขอบ194.488/62.362/51.024/20pt ต่างจากหน้าวิ่ง
+  12/28.35/28.35/22pt จริง. การทดลอง Section เดียวติด line/nested-table ใน cell
+  ที่ไม่รองรับ; ไม่เพิ่ม engine หรือแต่ง Area paper override. ปกอยู่ใน Area ของ
+  Section แรก อีกหกส่วนเป็น Areas ใน Section เนื้อหาเดียว; TOC scope=section.
+- ศบ.1 draft ใหม่ `12588ad1-73f5-42ab-b722-4e7000f85f95`, revision1,
+  docKey `section19-sb1-stage4`, PDF2หน้า SHA256
+  `f4b44d7fd9c5ca9e54ac2834434f70575c886d9faf5c5b3d243ef5bfa1a8166e`.
+  ใช้ Section เดียว: declaration/cargo Areas, explicit break และ footer เฉพาะ
+  continuation. Sarabun300 release เดิมถูกตรึง; ภาพทั้งสองหน้าตรง baseline ทุก
+  พิกเซลที่96DPI และข้อความแต่ละหน้าตรงเดิม. ไม่อ้าง pixel identity ที่ความละเอียดอื่น.
+- ข้อมูล component/global ย้ายโดยตรวจย้อนกลับเท่ากันทุกค่า รวมค่าว่าง; request
+  เป็น sections array จับด้วย UUID. แก้ alignment หัวตาราง/เลข REQ/ค่าบางช่อง/
+  ข้อมูลประชุมจาก center เป็น left ตาม source โดยไม่เปลี่ยนค่า ฟอนต์ หรือขนาด.
+  Draft mutations/uploads/preview/save PDF ทั้งหมดผ่าน MCP จริงเท่านั้น.
+- ตรวจภาพ source/output ครบ98+2หน้า พร้อมตัวแทนและหน้าที่ต่างแบบเต็มหน้า;
+  `pdf-verification.json` ตรวจ bounds, bands/เลขหน้า และ198TOC rows/396title-and-number
+  destinations รวมพิกัด/ข้อความเป้าหมาย. SRS ข้อความ normalized ตรง baseline ทุกหน้า,
+  ตรง source96/98หน้า; REQ361รหัสตรงทั้งสามชุด. เมื่อแยก known footer และหัว
+  Features List ที่ซ้ำ ข้อความ normalized ทั้งเล่มเรียงตรง source. ศบ.1 ตรวจ54ค่า
+  จาก source พร้อมค่าว่างเดิม. Readiness แบบ actual_input ของสอง draft เป็น ready.
+
+**ผลแยกขอบเขต:** โครง/การย้ายข้อมูล/การสร้างและตรวจ PDF มีหลักฐานครบข้างต้น;
+การรับว่าตรง source ทุกส่วนยังไม่ผ่าน. ไม่เช็กข้อสุดท้ายของช่วง4หรือเริ่มช่วง5:
+
+- SRS ไม่สร้างหัว Features List ที่ค้างซ้ำท้ายหน้า36/42 จำนวนสอง occurrence;
+  ข้อมูลธุรกิจไม่ถูกตัด แต่ strict static-text fidelity ยังต่าง. มี IMAGE_LOW_RESOLUTION
+  จากภาพต้นฉบับ4จุดและยังไม่รับรอง native image/drawing ว่าเหมือนทุกพิกเซล.
+- ศบ.1 คงความต่างเดิม: คลังชุดนี้ใช้ Sarabun300 แทน THSarabunNew; จุดแทนเส้นประ
+  และเส้นใต้ค่าที่กรอก, grid0.5pt แทน0.70866pt และระยะบางจุด. ฟอนต์เป็นการเลือก
+  ในแม่แบบ/คลังปัจจุบัน; dash/grid style เป็น capability gap ที่ตรวจได้; ระยะที่เหลือ
+  ยังเป็นงานปรับแม่แบบ ไม่เหมารวมว่าเป็นข้อจำกัด renderer.
+- `coverage-delivery.json` และผล `manage_document_task review` ของทั้งสองชุดคง
+  `complete:false` พร้อม failing criteria; ไม่ยอมรับความต่างแทนเจ้าของและไม่แต่ง PASS.
+
+สำรอง live DB/staging/output แบบอ่านก่อนเริ่มไว้ `backup/` และสำรองชุด candidate
+หลังตรวจไว้ `backup-after/` พร้อม SHA256. เก็บ containers `flowdoc-section4-db`
+กับ `flowdoc-section4-api` บน127.0.0.1:3024/volumes แยก; host-service detached
+worktree ยังจำเป็นต่อ fresh MCP config จึงคงไว้ ไม่ใช่ lane งานค้างที่ลบทิ้งได้.
+สอง live originals ยัง revision1/revision3 และ fingerprint เดิมจาก native read หลังทำ.
+ไม่เปลี่ยน release/tags, ไม่ push/publish/install และไม่เริ่มช่วง5. Exact preview request
+อ้าง owned upload ที่หมดอายุได้; สำหรับ preview ใหม่ใช้ portable request และ original
+assets ผ่าน upload tools ตาม manifest ไม่ใช้ resource IDs เก่าโดยไม่มี upload ใหม่.
