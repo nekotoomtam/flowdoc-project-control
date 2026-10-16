@@ -1034,3 +1034,36 @@ end-to-end PDF success. Fifteen focused compatibility, coverage, representative,
 task and candidate-workflow regressions plus the read-only transport integration
 test pass (16 total); `npm run check:data` passes. Final instruction review
 confirmed the Goal and strict task-review wording respects the selected scope.
+
+### Read documentation by stage, 2026-10-16
+
+Owner requested smaller reading units when FlowDocMake documentation is large.
+This continues bounded inline Project Control documentation maintenance under
+the same role and authority boundary above; execution IDs remain not applicable.
+The retained detailed reference set is not removed or promoted as runtime proof.
+
+Package 0.1.8 reduces the skill to active cross-stage rules and one short entry
+page, `docs/developer/authoring/workflow-start.md`. Its stage table names the
+sections to read now, their output and exit condition. A section link means
+only that section through its next peer heading; a file link means locate the
+relevant topic, not recursively load that file and every linked reference.
+Full workflow/index/history/schema reading is deferred until actually needed.
+Detailed authoring preflight/checkpoint and large-argument transport instructions
+remain in draft-selection.md and are required on entering authoring.
+
+The former skill/main-guide/index/mapping startup bundle was about 870 lines.
+The new skill is 65 lines and workflow entry 39: 104 startup lines, followed by
+only the current stage's reference section. This counts FlowDocMake entry text,
+not total context, tokens, global guidance, task inputs or measured future cost.
+One new short routing page is justified to prevent eager whole-reference loads;
+other detail remains in existing chapters rather than duplicated phase files.
+
+A read-only instruction probe using just the new entry selected only
+reference-coverage.md's Extract source data section for a clearly scoped PDF-only
+extraction request. It found no forced startup loading of full workflow, index,
+mapping, schema, history or authoring preflight, and retained automatic stage
+continuation plus the existing safety requirements. This is a routing probe,
+not a claim that a new full-PDF reconstruction succeeded. Sixteen focused
+compatibility/coverage/representative/task/workflow/transport tests pass, as do
+46 checked canonical local links/anchors and whitespace checks. Package
+references are regenerated from committed canonical sources before installation.
