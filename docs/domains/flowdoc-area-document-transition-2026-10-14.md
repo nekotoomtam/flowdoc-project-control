@@ -1510,3 +1510,30 @@ PASS เฉพาะช่วง3. Candidate อยู่บน task branches/wo
 เก็บ PDF/JSON/request/ผลตรวจนอก worktree ไว้แล้ว. ไม่เปลี่ยน primary branches,
 release/tags, installed runtime/plugin, สอง live drafts หรือ published history.
 ไม่เริ่มปรับแม่แบบช่วง4 และไม่รวม/ติดตั้งต่ออัตโนมัติ. ขั้นถัดไปตามคำสั่งเจ้าของ.
+
+### รวมช่วง 3 เข้าตัวหลักและปิด lane — 2026-10-17
+
+เจ้าของสั่งรวมและ cleanup ก่อนช่วง4 โดยยังไม่ขึ้น release. Role Lane
+Reconciliation Reviewer / Project Control Steward; small inline maintenance,
+execution IDs N/A. รวมแบบ fast-forward ตรงกับ candidate ที่ตรวจแล้ว ไม่มี
+conflict หรือ product changes เพิ่ม: Core `codex/template-binding` → `c340c4f`,
+Service `codex/template-registry` → `08a7131`, Project Control `main` → `b679f0e`
+ก่อน commit บันทึกปิดงานนี้. คงชื่อ development branches เดิมและเลขรุ่น
+Core/Service `0.4.2-dev.3`, FlowDocMake `0.2.3-dev.3`.
+
+ตรวจ clean status, HEAD/tree เท่ากับ candidate, vendor checksum และ protected
+release/tag/remote refs ไม่เปลี่ยน. ใช้ผล Core637/packed consumer, Service311
+ผ่าน/6skip, FlowDocMake22ผ่าน/4skip, PDF20หน้า/168แถว/336destinations และ
+legacy PDF57ไฟล์ที่ hash ตรงเดิมซ้ำตามกฎ unchanged fast-forward.
+Skipped ยังไม่ใช่ PASS. บันทึก identity/proof reuse/cleanup ใน
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage3/main-integration.json`.
+
+สำรอง ignored artifacts 130ไฟล์ไว้ที่ `preserved-artifacts/` ใต้โฟลเดอร์หลักฐาน
+เดียวกัน พร้อมตรวจ SHA256 ต้นทาง/สำเนารายไฟล์ก่อนนำ worktree ออก.
+Path worktree ใน logs เก่าเป็น provenance; ใช้สำเนานี้หลัง cleanup.
+ลบ worktrees และ local task branch `codex/section-area-stage3` ทั้งสาม repo
+หลังยืนยัน clean/merged/ไม่มี active owner; Project Control ใช้ recoverable
+archive ของแอป. เหลือ primary checkout ของแต่ละ repo; เก็บ development branches,
+release และ tags เดิมไว้. ไม่ push/tag/release/deploy/แก้ live drafts หรือเริ่มช่วง4.
+FlowDocMake snapshot คง canonical sourceCommit ของ candidate ที่ตรวจแล้ว;
+บันทึกการรวมนี้ไม่เปลี่ยน guidance/runtime contract ของแพ็กเกจ.
