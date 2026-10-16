@@ -8,8 +8,9 @@ Owner: FlowDoc Project Control; บทบาท Planning Partner / Documentation
 เอกสารนี้เป็นข้อตกลงและแผนร่วม ต่อจาก
 [ข้อตกลงคลังฟอนต์](flowdoc-font-library-design-2026-10-16.md).
 ไม่ใช่หลักฐานว่าตัวช่วย การรับ custom font หรือ migration พัฒนาและออกใช้แล้ว.
-คำขอครั้งนี้อนุญาตงานเอกสารและวางแผน ไม่อนุญาตเปลี่ยน runtime/ฐานข้อมูล/คลังจริง
-หรือ release/deploy. เป็น single-room inline; Work/Phase/Checklist/execution IDs
+คำขอเริ่มต้นเป็นงานเอกสาร; ต่อมาเจ้าของอนุญาตช่วง 0 และช่วง 1 ตามลำดับ.
+ช่วง 1 เปลี่ยน Service candidate และตรวจในฐานแยกตามข้อ 8 ไม่อนุญาต release/deploy.
+เป็น single-room inline; Work/Phase/Checklist/execution IDs
 ไม่เกี่ยวข้อง ไม่เปิดหรือรื้อฟื้น execution เก่า และไม่เปลี่ยน product map.
 Current Truth Snapshot ที่อ่านยังชี้งาน frontend; ใช้คำขอเฉพาะและข้อตกลงคลังฟอนต์
 เป็นบริบทของงานนี้ ไม่อ้างว่างาน frontend ครอบคลุมตัวช่วยนี้.
@@ -139,13 +140,13 @@ Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 p
 
 ### ช่วง 1 — วัดและจัดเก็บผล (Service ร่วม Core ตาม owner ที่ปิดในช่วง 0)
 
-- [ ] เพิ่ม extractor ในเส้นทาง inspection, typed profile/repository และ forward migration
+- [x] เพิ่ม extractor ในเส้นทาง inspection, typed profile/repository และ forward migration
   ใหม่; นำชุดฐานผ่านเครื่องมือผู้ดูแล ไม่เขียน DB/storage ตรงหรือแก้ migration เก่า.
-- [ ] ตรวจ fixture static TTF จริง: baseline/top/UPM, composite, missing บ, malformed
+- [x] ตรวจ fixture static TTF จริง: baseline/top/UPM, composite, missing บ, malformed
   font, hash mismatch, retry/idempotency และ method version; variable/OTF ยังปฏิเสธ.
-- [ ] ตรวจฐานใหม่และอัปเกรดฐานทดสอบ: ข้อมูลฟอนต์/draft เก่าครบ, restart อ่านกลับได้,
+- [x] ตรวจฐานใหม่และอัปเกรดฐานทดสอบ: ข้อมูลฟอนต์/draft เก่าครบ, restart อ่านกลับได้,
   ผลวัดผิดไม่ออกสถานะ verified และ custom intake ไม่เปิดสิทธิ์ผู้เขียน.
-- [ ] ตรวจรับ: ค่าตารางสำรวจคำนวณซ้ำได้จากไฟล์; reference/profile อ้าง hash จริง,
+- [x] ตรวจรับ: ค่าตารางสำรวจคำนวณซ้ำได้จากไฟล์; reference/profile อ้าง hash จริง,
   ไม่กระทบ release เดิมและ ordinary font readiness.
 
 ### ช่วง 2 — สูตรและผลเสนอ (Core; Service transport ใช้ package export)
@@ -194,7 +195,7 @@ flow ที่จำเป็น ให้ระบุ dependency และแ�
 ใช้ ordinary pt เป็นทางเลือกเมื่อ helper ใช้ไม่ได้. อย่าขยายเป็นระบบ scale runtime
 หรือย้าย pt เอกสารเดิมเพื่อให้ fixture ผ่าน.
 
-สถานะล่าสุด: ช่วง 0 ปิดสัญญาแล้วตามข้อ 7; ช่วง 1–4 ยังไม่ลงมือ.
+สถานะล่าสุด: ช่วง 0–1 เสร็จตามขอบเขตข้อ 7–8; ช่วง 2–4 ยังไม่ลงมือ.
 ผลสำรวจ Chromium และ numeric oracle ไม่ใช่การรับรอง runtime/PDF.
 
 ## 7 ผลช่วง 0 — สัญญาที่ปิดก่อนพัฒนา
@@ -354,7 +355,7 @@ message:'Reload draft and request a new font height proposal'}],warnings:[]}`.
 
 ### 7.7 ไฟล์เป้าหมายและเกณฑ์รับงานถัดไป
 
-| ช่วง | ไฟล์เพิ่ม/เปลี่ยนที่กำหนด (ยังไม่ลงมือ) | จุดตรวจ |
+| ช่วง | ไฟล์เพิ่ม/เปลี่ยนที่กำหนด ณ ปิดช่วง 0 (ผลล่าสุดดูข้อ 8) | จุดตรวจ |
 | --- | --- | --- |
 | 1 | Service runtime/python/inspectFont.py, src/fonts/{types,inspection,service,client}.ts; ใหม่ src/fonts/heightProfiles.ts และ migrations/019_font_height_profiles.sql ถ้าเลขยังว่าง; tests/fonts-height-profiles.test.mjs และขยาย intake/repository tests | custom/Google compatibility, license/hash/dedup/admin, missing metric ไม่ reject valid font, profile CAS/immutability/restart และ schema ใหม่บนฐานเก่า |
 | 2 | Core ใหม่ src/fonts/heightAdjustment.ts, types และ src/index.ts export; tests/fonts/heightAdjustment.test.ts; Service packed dependency ที่ pin ใหม่ | decimal/exponent/half-up, identity, UPM ต่าง, numeric range, roundtrip bound และ packed consumer ไม่เปลี่ยน renderer |
@@ -370,3 +371,54 @@ inspection + numeric oracle + document checks ไม่ใช่ integration/pro
 `npm run check:data` ผ่าน; ไม่เพิ่ม mandatory AI reading หรือ canonical data records.
 ไม่มี unresolved contract blocker ของช่วง 0; ก่อน intake ช่วง 1 ยังต้องเตรียม custom
 provenance/license จริง และก่อน implementation ตรวจเลข migration/base อีกครั้ง.
+
+## 8 ผลช่วง 1 — วัด เก็บ และตรวจรับ custom font
+
+Service candidate commit `5280079b7ea29cd3ba24bd9006fe6e271b0e138b` อยู่ branch
+`codex/font-height-stage1` ที่
+`C:/Users/nekot/Documents/Codex/worktrees/font-height-stage1/flowdoc-service`.
+ฐาน release 0.4.0 เดิมยังแยกจาก candidate; ไม่อ้างว่าติดตั้งหรือออกใช้แล้ว.
+Owner: Service; role Product Implementation Agent ร่วม Evidence Reviewer ของขอบเขตนี้.
+ไม่มี execution IDs/dispatch room จำลอง; ใช้คำขอเจ้าของและแผนฉบับนี้เป็น authority.
+
+| ผลที่ได้ | หลักฐานใน Service candidate |
+| --- | --- |
+| วัด U+0E1A จาก outline จริง รวม quadratic extrema/composite และ missing glyph | runtime/python/inspectFont.py, src/fonts/inspection.ts; tests/fonts-height-profiles.test.mjs |
+| derived profile/hash/method/tool/time, review/revoke append-only, assignment CAS/audit | migrations/019_font_height_profiles.sql, src/fonts/heightProfiles.ts; profiles tests |
+| custom provenance/license/hash/dedup และ source identity แยก Google | src/fonts/provenance.ts, service.ts, types.ts; profiles/supplied/intake/repository tests |
+| admin-only measure/show/approve/revoke/assign ทั้ง HTTP และ CLI client | src/http/fonts-admin.ts, src/fonts/client.ts; route/CLI integration ใน profiles tests และ fonts-admin.test.mjs |
+| รักษา ordinary metadata ที่มีผลต่อ legacy review/re-activation | inspectFont เรียก includeHeightMetric:true เฉพาะตอนวัด; default inspection shape เดิมไม่เปลี่ยน; lifecycle/pipeline tests |
+| upgrade 015/018, replay checksum, draft/fingerprint/asset/release เดิมครบ | fonts-repository.test.mjs และ profiles tests; migration 001–018 ไม่แก้ |
+| อ่านกลับหลัง DB และ process restart จริง | tests/checkFontHeightPersisted.mjs seed/verify ใน container แยกหลัง restart PostgreSQL ของชุดทดสอบ |
+
+รายละเอียดที่ตัดสินระหว่างลงมือเพื่อรักษาสัญญา:
+
+- custom SourceEvidence เพิ่ม providerFamilyKey แบบบังคับ เพื่อผูก family ได้แม้ locator
+  เป็น HTTPS; Google input shape เดิมไม่เปลี่ยน. key ต้องตรง family ก่อน stage/edit.
+- ไม่เพิ่ม heightMetric เข้า immutable asset metadata ปกติ เพราะ runReview เทียบ metadata
+  ทั้งชุด. วัดเป็น opt-in แล้วเก็บผลแยก เพื่อไม่ทำให้ asset เก่า review ซ้ำไม่ผ่าน.
+- regularFaceId เป็น historical UUID ไม่ใช้ FK ที่ SET NULL ตอน preparing edit
+  เพราะจะเปลี่ยน append-only profile; profile เก่าคงครบและปฏิเสธ stale binding.
+- profile unavailable อาจไม่มี regular face/asset/UPM; outcome/reason ชัดและ approve ไม่ได้.
+- referenceId ที่เก็บผูกกับ TH Regular checksum ที่ตรึง ไม่ match จากชื่อ/version อย่างเดียว.
+- migration 019 ใช้ LF ให้ bytes ตรง Git attributes/checksum; ไม่เปลี่ยน migration เก่า.
+
+ฟอนต์จริงที่ตรวจ: TH Sarabun New 1.35 custom สี่ face และ Google Regular
+Sarabun, IBM Plex Sans Thai, Pridi, Noto Sans Thai Looped, Noto Serif Thai, Prompt.
+ค่า top/UPM=1000 ที่อ่านได้ตามลำดับ: TH=400, Sarabun=586, IBM=546, Pridi=544,
+Noto Sans Looped=562, Noto Serif=554, Prompt=535. นำเข้าผ่าน API ภายในฐานทดสอบ
+พร้อม provenance/license (TH ใช้ข้อความ name ID 13 จริง) ไม่ใช่นำเข้าคลังผู้ใช้.
+
+การตรวจ: build, verifyVendor, Linux focused suite 13 files/52 tests และ restart
+seed/verify ผ่าน. ครอบคลุม active/retired, สิทธิ์ writer/unknown/disabled admin,
+atomic/idempotent/CAS, custom source/weight conflict, geometry และข้อมูลเดิม.
+ผู้ตรวจอิสระพบ P2 เรื่องพาธใน provenance; เพิ่ม reproducer ที่ล้มเหลวแล้วแก้
+ให้ปฏิเสธ absolute Unix/embedded Windows paths และ credential URLs; suite หลังแก้ผ่าน.
+หลักฐานท้องถิ่นอยู่ `artifacts/font-height-stage1/` ใน worktree และสำเนา
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-height-stage1/`.
+เพิ่มคำสั่งเฉพาะส่วนใน Service docs/usage.md 8.1 ไม่เพิ่ม mandatory reading ของ AI.
+
+ข้อจำกัดที่คงไว้: ยังไม่มีสูตรเปลี่ยน pt/Core export ของช่วง 2, proposal/confirm ของ
+ช่วง 3, หน้า UI, auto fallback หรือ release/install. ผล 52 tests รวม regression
+การสร้าง PDF เดิม ไม่ใช่การรับรอง PDF หลังปรับขนาดซึ่งยังไม่มีในช่วงนี้.
+ขั้นต่อไป: ช่วง 2 pure calculation API ตามข้อ 7.3 และ packed consumer.
