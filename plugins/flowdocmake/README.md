@@ -8,11 +8,11 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.2.0** targets **Service/Core 0.4.0 / Area18**. Invoke
+Package **0.2.1** targets **Service/Core 0.4.0 / Area18**. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
-and `manage_document_task` (16 tools). There is no publish tool.
+and `manage_document_task` plus the three font tools (19 tools total). There is no publish tool.
 
 Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,
@@ -22,6 +22,12 @@ inventing approval stops. Package 0.1.7 changes guidance only; helper gates,
 deadlines and Service/Core contracts are unchanged.
 Package 0.2.0 adds active-font catalog, draft readiness and retained cloning; it keeps stage-based reading and classifies fixed-form limitations,
 fallbacks and unfinished repairs in existing references; no extra startup reading.
+
+
+Package 0.2.1 pins the Core 0.4.0 delivery artifact with updated package documentation
+(SHA-256 `6e8b71976de35456eed8cdb88a3c42305947e20e900944e3108cb0cc5c36d7e8`).
+Use the matched Service 0.4.0 image containing that exact artifact; package 0.2.0
+continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
