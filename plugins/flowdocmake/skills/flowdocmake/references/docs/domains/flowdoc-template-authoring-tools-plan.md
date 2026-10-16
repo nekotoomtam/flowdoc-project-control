@@ -986,3 +986,51 @@ Documentation maintenance 0.1.6 corrects the older plan example's missing stage
 and taskPath and the obsolete upload ordering in the step list. Runtime gate
 logic is unchanged from tested 0.1.5; the trial's pinned snapshot is preserved as
 historical input. Do not count this trial as an autonomous full-PDF success.
+
+### Goal-scoped staged authoring guidance, 2026-10-16
+
+Owner requested explicit guide rules after the two-file consumer trial: work
+may continue to completion, but source extraction, layout discovery, structure
+design and verification must proceed in distinct appropriate stages rather
+than being interleaved or all required for every request. PDF-only input must
+first produce separate source data; supplied JSON does not dictate the template.
+
+Bounded inline documentation maintenance; owner Project Control, active role
+Documentation Synthesizer. Execution/Phase/Checklist IDs are not applicable.
+Markdown Authority Pre-Action Gate: these are existing Project Control canonical
+authoring documents and the repository-owned packaged skill/installation guide;
+their Authority Boundaries remain. No new Work/Evidence/map, runtime behavior,
+user draft mutation or publication is part of this change. Risk is routine:
+conflicting old full-PDF wording or stale packaged references could defeat routing.
+
+Package 0.1.7 distinguishes extraction, reusable structure/sample and full
+reconstruction endpoints, with stage outputs and progression conditions:
+0 scope; 1 checked raw source data; 2 observed layout inventory/mapping;
+3 native structure and derived request; 4 representative verification;
+5 full expansion only when requested; 6 acceptance at the selected scope.
+Stage boundaries are internal checks, not approval/turn stops. Repairs return
+to their earliest responsible stage and refresh affected downstream evidence.
+Raw data stays separate and unchanged by layout tuning. Missing sequence numbers
+are not fabricated; repeated titles retain source locations. Data completeness,
+structure/behavior and visual fidelity remain separately reported.
+
+The current helper still enforces source coverage, stage/taskPath, bounded
+deadline, strict representative evidence before full expansion, and strict
+full-document progress review. It has no extraction/sample goal mode. This
+guidance does not claim to add one, remove a deadline or relax a gate; a scoped
+sample result does not fabricate full-document `complete:true` evidence.
+
+Proof and document budget: update existing workflow, source-coverage,
+draft-selection and developer entrypoint, plus skill/package metadata and this
+record; regenerate pinned references from committed sources. Reuse the observed
+consumer failure as context, then compare the same three read-only routing
+scenarios before/after: PDF-only extraction, structural sample with visual
+differences, and full reconstruction with incomplete JSON. Baseline lacked the
+first two endpoints and distinct source/mapping/request stages. Revised routing
+passed those scenarios; the remaining Goal wording was corrected to respect
+the selected endpoint. The same review also checked automatic continuation and
+unchanged tool prerequisites. This is instruction review, not a new model
+end-to-end PDF success. Fifteen focused compatibility, coverage, representative,
+task and candidate-workflow regressions plus the read-only transport integration
+test pass (16 total); `npm run check:data` passes. Final instruction review
+confirmed the Goal and strict task-review wording respects the selected scope.
