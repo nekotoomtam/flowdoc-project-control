@@ -1,9 +1,13 @@
 # Area-based document structure transition
 
-Current reading route for Section–Area work: read the final two dated sections,
-`Section–Area clarification and read-only inspection — 2026-10-17` and
-`แผนปรับ Section–Area ตามภาพอ้างอิง — 2026-10-17`. Earlier sections retain
-historical decisions/results; do not load the full history as startup context.
+Current reading route for Section–Area work: start with `สัญญาช่วง 0 — Section
+instance และ Area — 2026-10-17` at the end, then the immediately preceding
+`แผนปรับ Section–Area ตามภาพอ้างอิง — 2026-10-17` when sequencing work.
+Read linked JSON only for the operation needed. Earlier sections retain
+historical decisions/results, including the old object-map request; the current
+Stage 0 target contract governs new development. Do not load the full history
+as startup context; use the dated inspection only when implementation evidence
+is needed.
 
 ## Authority Boundary
 
@@ -878,7 +882,7 @@ scope selection; implementation is not authorized by this inspection request.
 
 ## แผนปรับ Section–Area ตามภาพอ้างอิง — 2026-10-17
 
-**สถานะ: แผนเสนอให้ทบทวน ยังไม่อนุญาตพัฒนา.** เจ้าของขอแยกงานระบบกับงานแม่แบบ
+**สถานะ: เจ้าของอนุญาตช่วง 0 เฉพาะปิดสัญญา/ตัวอย่าง; ยังไม่อนุญาตแก้ runtime.** เจ้าของขอแยกงานระบบกับงานแม่แบบ
 และเรียงลำดับก่อนหลัง. ใช้ผลสำรวจด้านบนเป็นฐาน ไม่เปิด execution เก่า.
 Role Planning Partner / Cross-Repo Boundary Reviewer; owners Core, Service และ
 Project Control/FlowDocMake ตามตาราง. Single-room planning; execution IDs N/A.
@@ -916,26 +920,26 @@ Product implementation ต้องใช้ lane แยกเมื่อเร
 Owner Project Control ร่วม Core/Service; ผลส่งมอบเป็นข้อกำหนดในเอกสารนี้กับ
 ตัวอย่าง JSON ขนาดเล็กสำหรับหนึ่งโครงและโครงเดิมสองสำเนา ไม่ใช่โค้ดผลิตภัณฑ์.
 
-- [ ] แยก public Section instance ID, source identity, normalized DB ID, display
+- [x] แยก public Section instance ID, source identity, normalized DB ID, display
   name และลำดับ array. clone/แยกเป็น instance ใหม่; เปลี่ยนชื่อ/เรียงใหม่ต้องไม่
   เปลี่ยน identity. กำหนดชื่อเริ่มต้น `<ชื่อโครง>1`, `<ชื่อโครง>2` และขอบเขตการนับ.
-- [ ] ปิดรูปแบบ request array และตัวจับคู่ด้วย instance ID. ข้อเสนอเริ่มต้นคือ
+- [x] ปิดรูปแบบ request array และตัวจับคู่ด้วย instance ID. เจ้าของยืนยันว่า
   สร้าง/ต่อ instance ในแม่แบบก่อน แล้ว request ส่งค่าของ instance ที่มีอยู่;
   ไม่เปิดให้ payload สร้าง graph/clone ใหม่ระหว่าง render โดยปริยาย.
   ต้องตกลงลำดับที่เป็น authority, instance ที่ขาด/ซ้ำ/เกิน, data/header/footer
   และกฎเมื่อ request ไม่เรียงตรงแม่แบบก่อนเขียน code.
-- [ ] ปิดการ remap ตาม ownership จริง รวม Section/Area IDs, Format definitions,
+- [x] ปิดการ remap ตาม ownership จริง รวม Section/Area IDs, Format definitions,
   bindings, styles/pageLayouts, anchors และ references ที่เกี่ยวข้อง. ห้ามสุ่ม ID
   ของ external font releases/assets หรือเปลี่ยนสิทธิ์ทรัพยากรตามไปด้วย.
-- [ ] ปิดขอบเขต Area: รับ local data และขยาย content; ไม่เปลี่ยน paper/margins/
+- [x] ปิดขอบเขต Area: รับ local data และขยาย content; ไม่เปลี่ยน paper/margins/
   bands ของ Section. ยังไม่ทำ Area ซ้อน Area หรือ shared Format library ในรอบนี้.
-- [ ] ปิดกรณีปกภายใน Section: หน้าแรกซ่อน band, หน้าเนื้อหาต่อใช้ band เดิม,
+- [x] ปิดกรณีปกภายใน Section: หน้าแรกซ่อน band, หน้าเนื้อหาต่อใช้ band เดิม,
   ความสูงคงที่/overflow/page break และการนับหน้าต้องชัด; ไม่ย่อเนื้อหาหรือสร้าง
   blank page เพื่อเลียนผลเดิม. ไม่ขยายเป็นระบบ absolute positioning ทั้งหมด.
-- [ ] ปิด TOC scope/เลขหน้า: whole document หรือ current Section, anchor namespace,
+- [x] ปิด TOC scope/เลขหน้า: whole document หรือ current Section, anchor namespace,
   continue/restart/exclude และกรณีหลายสารบัญ/ไม่มี heading; แยก logical page number
   จาก PDF page index. ไม่เพิ่มสารบัญภาพ/ตารางโดยอาศัยตัวอย่าง docx เพียงอย่างเดียว.
-- [ ] ปิด version boundary ของ definition/request/prepared snapshots ที่เปลี่ยนจริง
+- [x] ปิด version boundary ของ definition/request/prepared snapshots ที่เปลี่ยนจริง
   แยกจาก font schemaVersion และ package version. ระบุทางอ่าน/แปลงโครงเก่า,
   ผลต่อ stored fingerprint และ reader/runtime ที่ต้องใช้; reject แบบผิดรุ่นชัดเจน.
   ไม่ใช้ model/version เดิมแล้วเปลี่ยนความหมายเงียบ ๆ หรือ rewrite published history.
@@ -1050,3 +1054,218 @@ image ingestion, auto-fit หรือระบบรายงานผลกร
 หลังช่วง 0 แต่ไม่อ้างผ่านหรือย้าย live จนกว่าความสามารถที่ใช้จริงพร้อม.
 การอนุมัติแผนไม่ใช่อำนาจเริ่มพัฒนาอัตโนมัติ และไม่อนุญาต release/deploy.
 รอบนี้แก้เฉพาะแผนนี้; หลักฐานเดิมและผลรับงานเก่าคงตามเวลาของมัน.
+
+## สัญญาช่วง 0 — Section instance และ Area — 2026-10-17
+
+**Authority Boundary:** เจ้าของสั่งปิดสัญญาช่วง 0 และยืนยันให้ต่อ/clone ในแม่แบบ
+แล้วบันทึกก่อนสร้าง PDF. Owner Project Control; role Planning Partner / Cross-Repo
+Boundary Reviewer; single-room inline, execution IDs N/A. เป็น target contract
+สำหรับช่วงพัฒนาถัดไป ไม่ใช่ API/รุ่นที่เปิดใช้แล้ว. Core/Service runtime, live
+drafts, installed FlowDocMake และ published history ไม่เปลี่ยนในช่วงนี้.
+หลักฐานคือเอกสารและการตรวจความสอดคล้องของ JSON; ไม่อ้างผ่าน Core/PDF รุ่นใหม่.
+
+### 0.1 ตัวตนและชื่อ
+
+| ค่า | สัญญา |
+| --- | --- |
+| `Section.id` | Public instance ID รูป UUID; สร้างตอน authoring/new/clone/import ไม่สร้างตอน render. ไม่ใช้ตำแหน่ง array หรือชื่อเป็น identity. Tool สร้าง UUID ได้ตอนประกอบ definition; Service ตรวจรูป/ความไม่ซ้ำและสิทธิ์ของ draft. UUID เพียงอย่างเดียวไม่ให้สิทธิ์เข้าถึงข้อมูล. |
+| normalized DB Section ID | identity ภายใน storage แยกจาก public id; ไม่ส่งให้ generation client และไม่ใช้แทน public id. |
+| `origin` | optional metadata ที่ Service ตรวจได้จากการ copy: `{templateId,revision,sectionId}` ของต้นทางทันที. ไม่ dereference ตอน render และไม่เป็น shared live link. ต้นทางถูกลบก็ไม่ทำให้สำเนาหาย. Initial authored section ไม่มี origin; client ห้ามแต่ง origin เพื่ออ้างสิทธิ์. |
+| `label` | ชื่อกำกับ nonblank; ใช้แสดงผลและแก้ชื่อได้ ไม่จับคู่ข้อมูล ไม่บังคับ unique. |
+| `nameBase` | ฐานชื่อที่เก็บตอนสร้าง Section จากชื่อโครง ณ เวลานั้น; clone/import เก็บฐานเดิม ไม่ตัดเลขจาก label และไม่เปลี่ยนตามการ rename ต้นทางภายหลัง. |
+| default label | `<nameBase><N>` โดย N เป็นจำนวนเต็มบวกน้อยที่สุดที่ label นี้ยังไม่ถูกใช้ในแม่แบบปลายทาง นับแยกตาม nameBase. เช่น SRS1 → SRS2; split ไปโครงว่างเริ่ม SRS1. ผู้ใช้เปลี่ยน label เองได้ การเปลี่ยนชื่อ/ลบอาจทำให้เลขว่างถูกใช้ใหม่ แต่ห้ามนำ ID เก่ากลับมาใช้. |
+| ลำดับ | `definition.sections[]` คือ authority ของลำดับพิมพ์; `request.sections[]` เป็นชุดข้อมูลที่จับด้วย id. การสลับรายการข้อมูลใน request ไม่สลับการพิมพ์. |
+
+New/import/split-copy ให้ public id ใหม่ทุก Section instance. Rename, reorder,
+แก้ข้อมูลหรือย้ายตำแหน่งในแม่แบบเดิมคง id. Whole-draft clone ของ model ใหม่ต้อง
+สร้าง public Section IDs ใหม่ด้วย ไม่ใช่เปลี่ยนเฉพาะ templateId/DB rows.
+`Section.key` ไม่อยู่ใน definition/request รุ่นใหม่; label ใช้แทนหน้าที่ชื่อกำกับ
+ส่วน data lookup ใช้ id เท่านั้น. Section IDs ต้องไม่ซ้ำใน definition เดียวกัน.
+
+### 0.2 Definition, input และลำดับ
+
+Definition เก็บ `sections[]` ของ instance ที่บันทึกแล้ว พร้อม inputSchema,
+pageLayoutId, source fragment, header/footer schemas/fragments และ numbering.
+Style/page layout ถูกอ้างจาก registry ของ definition ตามเดิม. AreaFormats อยู่
+ใน registry ของ definition และผูก ownerAreaId; ไม่ต้องย้าย registry ตามรูป JSON
+เพื่อเปลี่ยนความเป็นเจ้าของ. ไม่มี Section.formats ที่ใช้วางเนื้อหาข้าม Area.
+
+Generation request ของ model ใหม่:
+
+```json
+{
+  "docKey": "section-array-example",
+  "data": {},
+  "sections": [
+    {
+      "id": "10000000-0000-4000-8000-000000000011",
+      "data": {"projectName": "Project A", "details": []},
+      "header": {"title": "Header A"},
+      "footer": {"note": "Footer A"}
+    }
+  ]
+}
+```
+
+- ต้องมี entry ของทุก saved Section รวมถึง Section ที่ไม่มีตัวแปร โดยส่ง `data:{}`.
+  id หาย/ซ้ำ/ไม่รู้จักเป็น error ไม่เดา id จากชื่อ และไม่ข้าม Section เงียบ ๆ.
+- entry รับเฉพาะ id/data/header/footer. Header/footer เป็นค่าตรงตาม band schema
+  ไม่ซ้อน `.data`; เมื่อละจะใช้ `{}` แล้วตรวจ required/default ตาม schema.
+  ถ้า Section ไม่มี band นั้น ห้ามส่ง header/footer แม้เป็น `{}`.
+- ข้อมูลใน data/header/footer ต้องตรง schema; รุ่นใหม่นี้ปฏิเสธ unknown fields
+  แทนการทิ้งค่าเงียบ ๆ. ตัวแปรชื่อเดียวกันใน Section คนละ id รับค่าต่างกันได้.
+- root data มีไว้เฉพาะ globalSchema ที่ตั้งใจใช้ร่วมทั้งแม่แบบ. ห้ามอ่านค่า
+  ข้าม Section อัตโนมัติหรือ fallback จาก label/array index.
+- Request ไม่ส่ง node graph, label, origin, layout หรือคำสั่ง clone/import;
+  ไม่เพิ่ม instance ขณะสร้าง PDF. แก้ลำดับจริงผ่านการบันทึก definition พร้อม revision.
+
+### 0.3 Clone, import/ต่อ และแยกโครง
+
+การนำ Section มาซ้ำในโครงเดิมหรือมาต่อในอีกโครงใช้ operation เดียว:
+`POST /authoring/drafts/{targetTemplateId}/sections/import` (target endpoint
+ยังไม่ implemented). Body ระบุ sourceTemplateId, sourceRevision,
+sourceSectionIds เป็น array ไม่ซ้ำเรียงตามลำดับที่จะนำเข้า, expectedRevision ของ
+ปลายทาง, beforeSectionId หรือ null=ต่อท้าย และ idempotencyKey.
+Optional `globalFieldRenames` เป็น map จาก sourceSectionId → source global key →
+ชื่อ field ใหม่ใน Section ใช้แก้กรณีชื่อชนตามกฎด้านล่างเท่านั้น.
+sourceSectionIds ต้องไม่ว่างและทุก id ต้องอยู่ในต้นทาง; beforeSectionId ที่ไม่ใช่
+null ต้องอยู่ในปลายทางปัจจุบัน. ปฏิเสธค่าไม่รู้จัก ไม่ fallback เป็น append.
+
+- ตรวจ owner ของต้นทางและปลายทางก่อนอ่าน/คืนผล; รอบแรก owner ต้องเป็น principal
+  เดียวกัน. ไม่มี cross-owner sharing โดยอาศัย JSON/UUID.
+- อ่านต้นทางตาม sourceRevision และตรวจ target revision; ทั้งสองต้องตรงปัจจุบัน
+  ใน transaction. ถ้า source=target sourceRevision ต้องเท่ากับ expectedRevision.
+  ล็อก draft IDs ตามลำดับเดียวกันก่อนตรวจซ้ำ ป้องกัน stale/การ import สวนทาง.
+- Clone/import จัดสรร public Section IDs ใหม่และ normalized IDs ใหม่; remap
+  Area IDs, owned Format definition IDs, binding ownership และทุก reference
+  ภายในชุดที่ copy. Clone แต่ละ instance มี styles/pageLayouts ที่อ้างใช้อยู่
+  เป็นสำเนา identity ใหม่ แม้ bytes เท่ากัน เพื่อไม่ให้แก้ style ของสำเนาแล้วกระทบ
+  ต้นทาง. ตั้ง explicit pageLayoutId จาก effective layout ของต้นทาง ไม่เปลี่ยน
+  default layout ของปลายทาง. Format.key เช่น paragraph ซ้ำข้าม Area ได้.
+- Anchor ใช้ตัวตน `(Section.id, localAnchor)`; ชื่อ intro ในสองสำเนาไม่ชนกัน.
+  reference ภายใน Section ใช้ local target; cross-Section reference ต้องระบุ
+  `targetSectionId` ชัดและ remap เมื่อ Section เป้าหมายอยู่ในชุด copy.
+  หาก dependency อ้าง Section นอกชุดที่เลือก ให้ปฏิเสธทั้งหมดด้วย
+  SECTION_DEPENDENCY_OUTSIDE_SELECTION ไม่ทิ้ง link หรือชี้กลับต้นทางเงียบ ๆ.
+- global field ที่ส่วนที่นำเข้าใช้อยู่ ให้ copy schema/default เข้าสู่ inputSchema
+  ของ Section ใหม่ และ rewrite scope global→section เฉพาะ references นั้น;
+  ไม่รวมเข้ากับ global ของปลายทางเอง. ถ้าชน field เดิมใน Section ให้ปฏิเสธ
+  IMPORT_BINDING_COLLISION จนมี globalFieldRenames ที่ valid/ไม่ชน. Rename map
+  ต้องอ้าง key ที่ใช้อยู่จริง ห้ามทับ field/ตัด required data หรือแปลงชนิดค่า.
+  root globals ใน whole-draft clone คงเป็น globals ของโครงใหม่ที่แยกอิสระได้.
+- external font release/asset IDs ไม่ remap; คง exact selection และตรวจ retained
+  rights จากต้นทางที่ Service ยืนยัน ไม่ให้สิทธิ์เพิ่มจาก payload. Image resource
+  IDs ไม่แปลว่าได้อายุ/สิทธิ์อัปโหลดใหม่; ยังใช้กฎเดิม ไม่แก้ image ingestion ในรอบนี้.
+- การ "แยกโครง" รอบแรกคือ copy Section ที่เลือกลง draft ปลายทางซึ่งสร้างไว้แล้ว;
+  ไม่ลบต้นทาง. การย้ายแบบตัดต้นทางเป็นคนละคำสั่ง ไม่รวมใน import นี้.
+  ปลายทางที่มี identity แต่ยังไม่มี definition (revision 0) รับ import ได้โดย
+  beforeSectionId ต้องเป็น null; operation สร้าง envelope model 19 ครั้งแรกจาก
+  identity/name/docKey ปลายทางและ schemaVersion ต้นทาง พร้อม registry เฉพาะที่
+  Section ที่เลือกใช้. globalSchema เริ่มว่างเพราะ globals ที่ใช้อยู่ถูกย้ายเข้า
+  Section ตามกฎข้างบน; default layout เป็น private layout ของ Section แรกที่นำเข้า.
+  บันทึกเป็น revision 1 แบบ atomic ไม่สร้าง Section ตัวหลอกหรือคัดทั้งโครงต้นทาง.
+- append/import เปลี่ยน revision ปลายทางครั้งเดียว; ต้นทางไม่เปลี่ยน
+  (กรณี source=target มีเพียง target write ครั้งเดียว). ล้มเหลว rollback ทั้งหมด.
+  retry key+body เดิมคืน receipt และ IDs เดิม ไม่สร้างสำเนาซ้ำ; body ต่าง key เดิม
+  คืน IDEMPOTENCY_CONFLICT หลังตรวจสิทธิ์. source/target ที่คนละ model ต้องแปลงก่อน.
+  ตรวจ receipt หลังสิทธิ์และก่อน stale revision เพื่อให้ retry ของคำสั่งที่สำเร็จ
+  แล้วไม่ติด revision ที่คำสั่งนั้นเพิ่งเปลี่ยนเอง; คำสั่งใหม่ยังตรวจ revision ครบ.
+
+Whole-draft clone ใช้ route clone เดิม แต่ model 19 จัดสรร Section/owned IDs ใหม่
+และคืน sectionIdMap; label จัด default ตาม nameBase ในโครงใหม่. ไม่สร้าง shared link.
+การสร้าง Section ว่างในโครงที่บันทึกแล้วใช้ target `POST .../sections` พร้อม
+expectedRevision, pageLayoutId ต้นแบบและ idempotencyKey; คืน Section id/label ใหม่
+พร้อม private layout copy. source เป็น authored fragment ว่าง ไม่ใช่คำสั่งพิมพ์
+blank page. Initial full-definition authoring อาจจัดสรร UUID ก่อน save ได้;
+generation client ไม่จัดสรรหรือเพิ่ม Section. Full save ต้องรักษา origin ที่ server
+ยืนยันของ instance เดิม และตรวจ identity/owner ไม่เชื่อ origin ที่ client เพิ่มเอง.
+
+### 0.4 Area, ปก, การขึ้นหน้า และสารบัญ
+
+Area คือ node ของพื้นที่และเป็นตัวแปร รับ array ของ `{format,data}` ตามลำดับ.
+Format เป็น fragment ที่อยู่ใต้ ownerAreaId เดียว; รับ local schema และขยาย
+เป็น nodes ภายใต้ Section เจ้าของ. ไม่ใช่ Section ใหม่ ไม่เปลี่ยน paper/margins/
+bands/numbering. รอบนี้ไม่เพิ่ม recursive Area หรือ shared external Format library.
+
+- ปก/ผู้อนุมัติ/ประวัติ/สารบัญ/บทนำเป็น Format ที่ใส่ผ่าน Area ได้ตามการออกแบบ
+  ไม่ให้ engine ตีความชื่อเหล่านี้พิเศษ. Static nodes ยังใช้ได้ ไม่บังคับห่อทุก node.
+- fixed-height block ผ่าน Area ใช้ได้เฉพาะ top-level flow block ของ Section
+  ไม่อยู่ใน table cell/row repeat. เนื้อหาต้องพอดีกับความสูงที่กำหนดและ body space
+  ของหน้าที่วาง; หากไม่พอดีคืน layout error ไม่มีการตัด/บีบ/ลด pt/ขยายกรอบเอง.
+- หน้าปกภายใน Section ใช้ headerMode/footerMode=continuation เมื่อต้องซ่อน
+  หน้าแรก; mode all/first/none ยังใช้ตามความหมายเดิม. การซ่อน band ไม่ได้เปลี่ยน
+  การนับหน้า และไม่ได้เปลี่ยนตัว Section เป็น special role:cover.
+- page-break ใน Area เปลี่ยนหน้าใน Section เดิม. Leading/repeated/trailing break
+  ไม่เพิ่มหน้าว่างโดยไม่ได้ตั้งใจ; empty normal Section ไม่สร้างหน้าเอง.
+  Section ใหม่ที่มีเนื้อหาเริ่มหน้าใหม่ รอบนี้ยังไม่มี continuous Section กลางหน้า.
+- numbering ของ Section ใช้ continue/restart(startAt)/exclude กับ visibility.
+  หน้าปกที่ซ่อน band ยังนับตาม policy นี้ ไม่มี implicit exclude หน้าแรก.
+- TOC node ระบุ `props.scope:{kind:"section"}` หรือ `{kind:"document"}` ชัดเจน.
+  section หมายถึง Section เจ้าของ node; document คือทั้งชุดที่บันทึก. อนุญาต
+  หนึ่ง TOC ต่อขอบเขต: หนึ่งต่อ Section และหนึ่ง document-wide อยู่ร่วมกันได้.
+  ไม่เกินหนึ่งในขอบเขตเดียวกันในรุ่นนี้; สารบัญภาพ/ตารางยังนอกขอบเขต.
+- TOC เก็บ headings ของ scope นั้นเท่านั้น ใช้ numbering ของหน้าเป้าหมายจริง
+  และ PDF destination ที่ระบุ Section ถูกต้อง. anchor ซ้ำใน Section เดียวเป็น error.
+  scope ว่างให้สารบัญว่าง ไม่สร้างหน้าว่างจากมัน; pagination ต้อง converge ภายใน
+  bound ที่ engine ประกาศ มิฉะนั้นคืน error ไม่ใช้เลขหน้าที่เดาหรือ loop ไม่สิ้นสุด.
+
+### 0.5 Version และข้อมูลเดิม
+
+สงวน **nodeModelVersion 19** สำหรับ target definition/semantics ชุดนี้;
+18 คงสัญญาเก่า. schemaVersion 1/2 ของ font selection และ package versions เป็น
+คนละแกน ไม่เพิ่มเลขให้เหมือนกันเพียงเพราะเป็นช่วง 0. ยังไม่สร้าง package/tag รุ่นใหม่.
+
+- definition 19 ใช้ Section.id/label/nameBase/origin ตามด้านบน ไม่มี Section.key
+  หรือ Section.formats; Area formats ใช้ registry ที่ผูก ownerAreaId.
+- prepare/compose ของ 19 ใช้ request array และเก็บ prepared.sections เป็น array
+  `{id,data,header?,footer?}` ใน definition order; ไม่มีการเก็บชื่อเป็น authority.
+  PreparedInput.schemaVersion ของเส้นทางนี้เป็น 2; snapshot ต้องมี model/fingerprint
+  ของ definition ที่แน่นอนเพื่อเลือก reader และปฏิเสธข้อมูลข้ามรุ่น.
+- เส้นทาง 18 ยังคงอ่าน/save/open/preview ด้วย definition/request/prepared เดิม;
+  ไม่เปลี่ยน object-map เป็น array ให้เองใน render. ก่อนเปิดรุ่นใหม่ต้องพิสูจน์
+  regression ที่เกี่ยวข้องครบ จึงประกาศ support 18/19 ใน contract ได้.
+- แปลง 18→19 เป็น explicit export/conversion ไป unpublished draft ใหม่เท่านั้น;
+  คืน mapping old definition id/key → new Section id และ schema changes ทั้งหมด.
+  แปลง request ตาม mapping ไม่เดาตาม label; คงจำนวนและลำดับ Section เดิมในขั้นแปลง.
+  การรวมเจ็ดส่วน SRS เป็น Section เดียวเป็นงานปรับแม่แบบช่วง 4 ไม่ใช่ migration แอบทำ.
+- ห้าม rewrite published snapshot, historical fingerprint/job หรือเปลี่ยน reader
+  ของงานที่ตรึงไว้. Job ใหม่ตรึง definition 19 + input contract + font/resource
+  bindings ของรอบนั้น. Existing clone ของ 18 ยังเป็น legacy path ไม่อ้างว่าตรง
+  กติกา instance ใหม่จนผ่าน explicit conversion.
+
+### 0.6 JSON รับ–ส่งและผลตรวจเอกสาร
+
+ตัวอย่างทั้งหมดเป็น **target-contract fixtures** ใช้ UUID/font release สังเคราะห์
+ไม่ใช่ payload ที่ส่งให้ runtime 0.4.0/0.4.1 ปัจจุบันได้. ไม่ได้สร้าง template จริง.
+
+| ตัวอย่าง | จุดที่แสดง |
+| --- | --- |
+| [single-section.definition.json](../examples/section-area-contract-20261017/single-section.definition.json) | Section เดียวที่มี Area, ปก, สารบัญ และเนื้อหา |
+| [single-section.preview-body.json](../examples/section-area-contract-20261017/single-section.preview-body.json) | expectedRevision + idempotencyKey + request array/data/header/footer |
+| [two-section.definition.json](../examples/section-area-contract-20261017/two-section.definition.json) | SRS1/SRS2, IDs/layout/style/Area ต่างกัน แต่ Format.key/ชื่อตัวแปรซ้ำได้ |
+| [two-section.preview-body.json](../examples/section-area-contract-20261017/two-section.preview-body.json) | Project A/B แยกกัน; จงใจส่ง SRS2 ก่อน SRS1 เพื่อยืนยันว่าพิมพ์ตาม definition |
+| [operations.json](../examples/section-area-contract-20261017/operations.json) | target create/import/append/split-copy/whole-clone/preview requests และ responses; แต่ละ scenario เป็นอิสระ ไม่ใช่ลำดับคำสั่งให้ยิงจริง |
+| [legacy-conversion.json](../examples/section-area-contract-20261017/legacy-conversion.json) | mapping explicit จาก old key/object request ไป new instance IDs/array |
+
+Responses ใช้ envelope ok/value/warnings หรือ ok:false/issues/warnings ตามเดิม.
+ตัวอย่าง response แสดงเฉพาะ fields ที่เกี่ยวกับสัญญานี้ ไม่ใช่ schema response
+ครบทุก field; fingerprint/resource snapshot ที่เส้นทางเดิมต้องมีต้องคงไว้ด้วย.
+Identity/revision/schema failures เป็น error ไม่คืน queued job; กรณี target errors
+ที่ปิดชื่อไว้คือ SECTION_INPUT_SHAPE/MISSING/DUPLICATE/UNKNOWN และ
+SECTION_DEPENDENCY_OUTSIDE_SELECTION/IMPORT_BINDING_COLLISION.
+ID หายภายใน entry ใช้ SECTION_ID_REQUIRED; unknown entry field ใช้ INVALID_DATA;
+รูปแบบ/reader ข้ามรุ่นใช้ VERSION_MISMATCH. เจ้าของไม่ตรงคืน not-found โดยไม่เปิด
+รายละเอียดต้นทาง; stale ใช้ STALE_CURRENT และ retry conflict ใช้ IDEMPOTENCY_CONFLICT.
+
+ช่วง 0 ตรวจ JSON syntax, schema/ID/reference relationships, ค่าอิสระของสองสำเนา,
+ลำดับ/rename semantics, mapping ของ clone/split และ negative input classes เท่านั้น.
+ผลตรวจเอกสารไม่ใช่ runtime acceptance. ช่วง 0 จัดทำครบเพื่อทบทวนก่อนช่วง 1;
+ช่วง 1–5 ยังไม่เริ่มและต้องมีคำสั่งต่อจากเจ้าของก่อนเปลี่ยนผลิตภัณฑ์.
+
+ผลตรวจช่วง 0: JSON 6 ไฟล์ผ่าน consistency checks 123 จุด (รวม 7 negative input
+variants), links ครบ, `git diff --check` และ `npm run check:data` ผ่าน.
+หลักฐาน/ตัวตรวจเฉพาะเอกสารเก็บที่
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-contract-stage0/`:
+`check-examples.py` และ `example-check.json`. ตัวตรวจตรวจเฉพาะสัญญาและ references
+ในตัวอย่าง ไม่ใช่ full Core schema validator, Service integration หรือ PDF test.
+ไม่มีการแก้ product code, live templates, DB, package versions หรือ DOCUMENT_MAP.
