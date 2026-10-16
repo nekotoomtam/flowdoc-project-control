@@ -97,7 +97,7 @@ Authority: discovery-only ต่อ product; บันทึกการตั�
 
 #### ผลปิดช่วง 0 — 2026-10-16
 
-สถานะ: ปิด discovery/รายละเอียดสัญญาตามคำขอเจ้าของแล้ว; งานถัดไปคือช่วง 1.
+สถานะ: ปิด discovery/รายละเอียดสัญญาตามคำขอเจ้าของแล้ว; ผลช่วง 1 อยู่ในหัวข้อช่วง 1.
 สัญญาด้านล่างเป็นเป้าหมายสำหรับพัฒนา ไม่ใช่ API ที่เรียกใช้ได้ใน 0.3.0.
 ข้อตกลงเพิ่มที่เจ้าของยืนยัน: เครื่องมือผู้ดูแลก่อน UI และสำเนาคงรุ่นเลิกให้เลือกได้.
 ยังไม่เปลี่ยน product code/ฐาน/ไฟล์ฟอนต์ และไม่เพิ่มเอกสารบังคับให้ AI อ่าน.
@@ -446,17 +446,47 @@ Scope ที่เสนอ: เพิ่ม module `flowdoc-service/src/fonts/`
 เพิ่ม forward migration ใหม่ และ tests ใน `tests/fonts-*.test.mjs` ตามสัญญาช่วง 0.
 ใช้รูปแบบจัดเก็บจาก `src/storage/resource-files.ts` เป็นบริบท ไม่ใช้ image-upload contract แทนฟอนต์.
 
-- [ ] เพิ่ม failing tests แล้วทำ migration/repository สำหรับตัวตนรุ่น น้ำหนักสามค่า
+- [x] เพิ่ม failing tests แล้วทำ migration/repository สำหรับตัวตนรุ่น น้ำหนักสามค่า
   รูปแบบ ไฟล์ และประวัติ พร้อมข้อบังคับ unique/reference/เวลา.
-- [ ] ทำการรับ TTF คงที่และอ่าน metadata โดยจำกัดขนาด/เวลา ตรวจ bytes/hash จริง
+- [x] ทำการรับ TTF คงที่และอ่าน metadata โดยจำกัดขนาด/เวลา ตรวจ bytes/hash จริง
   แยกต้นฉบับ ค่าต้นทาง และค่าที่อนุมัติ ไม่ใช้ filename ตัดสินหรือแก้ bytes อัตโนมัติ.
-- [ ] ทำ dedup/idempotency และการเก็บไฟล์ร่วมกัน รวม cleanup เมื่อ transaction/การเก็บไฟล์ล้ม.
+- [x] ทำ dedup/idempotency และการเก็บไฟล์ร่วมกัน รวม cleanup เมื่อ transaction/การเก็บไฟล์ล้ม.
   ยังไม่เปิดให้สถานะออกใช้ผ่านก่อนมีผลตรวจจากช่วง 2–4.
 
 **ตรวจ:** ทั้ง 29 ไฟล์อ่านเป็นชุดเตรียมได้; Sarabun สี่ไฟล์หลัก reuse ได้;
 เปลี่ยนชื่อไฟล์ไม่ทำให้ซ้ำ, same slot/different hash ไม่ทับของเดิม, metadata ขัดกันค้างให้ยืนยัน,
 TTF ปลอม/variable/OTF ถูกปฏิเสธ, retry/concurrent import ไม่สร้างซ้ำหรือทิ้งไฟล์ผิดสถานะ.
 ทดสอบฐานใหม่และฐานที่มีข้อมูลเดิมใน environment แยก ไม่แก้เลข migration เก่า.
+
+**ผลช่วง 1 — PASS เฉพาะ candidate ที่ตรวจ 2026-10-16:** Service commit `912e155`
+บน branch `codex/font-library-stage1` จาก base `0c57eec`; checkout สะอาดหลัง commit.
+พื้นที่งาน `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage1/flowdoc-service`;
+ยังไม่ merge เข้า `release`, deploy หรือเปิด font-admin HTTP/CLI. Owner: Service;
+บทบาท Product Implementation Agent ในแชตเดียว; registered execution IDs ไม่เกี่ยวข้อง.
+
+| เกณฑ์ | หลักฐาน/ผลที่ตรวจ |
+| --- | --- |
+| คลัง/น้ำหนักสามค่า/เวลา/ประวัติ | migration `016_font_library_staging.sql`, `src/fonts/types.ts`, `repository.ts`, `service.ts`; preparing-only DB guard และ immutable asset/evidence/audit |
+| TTF จริง/ขนาด/เวลา/hash | `tests/fonts-intake.test.mjs`: static TTF, malformed/OTF/variable rejection, incomplete/hash mismatch, abort/deadline แม้มี caller signal |
+| dedup/ไม่ทับ/ธุรกรรม | `tests/fonts-repository.test.mjs`: concurrent imports/retries, renamed file, เปลี่ยนเวลารับแล้วยังคงชุดเดิม, conflict ไม่ทับ, รุ่นใหม่แยกไฟล์, SQL rollback และ orphan/staging recovery |
+| ข้อมูลจริงของเจ้าของ | รับ 29 TTF/3 ตระกูลเป็น preparing ในฐานทดสอบ; Sarabun สี่ไฟล์ reuse หนึ่ง asset/hash; source/approved weights ที่ยังไม่ยืนยันเป็น null และค้าง review ไม่เดาจาก filename; ไม่มี PDF ฟอนต์ใหม่ |
+| ฐานเดิม/การอ่านกลับ | fresh DB + populated 015 upgrade รักษา template เดิม, checksum replay, `tests/checkFontPersisted.mjs` ตรวจ release/face/manifest และ bytes/license หลัง restart ด้วย runtime image เดิม |
+
+คำสั่งส่งมอบ: ตั้ง `FONT_FIXTURE_DIR` เป็นโฟลเดอร์สามตระกูลที่เจ้าของให้ แล้วรัน
+`npm run check:fonts` ในพื้นที่งานข้างบน. build และ Service suite **234 ผ่าน / 0 ล้ม / 0 ข้าม**;
+ผลรวมและ image IDs อยู่ใน
+[result.json](../../../../Codex/2026-10-16/font-library-stage1/flowdoc-service/artifacts/1792135193162/result.json).
+ตรวจโค้ดแยกบริบทแล้ว แก้ manifest ที่เคยรวม retrieval time และ deadline ที่เคยถูก caller signal แทน;
+ทั้งคู่มี regression ที่เห็นล้มก่อนแก้แล้วผ่าน. แก้ตัวเปรียบเทียบ persistence ให้เทียบ getRelease เหมือนกันก่อน/หลัง restart.
+ทุก container ทดสอบของงานนี้หยุดแล้ว; เก็บ volumes/หลักฐานไว้ ไม่เปลี่ยนระบบที่ใช้งานอยู่.
+
+**ข้อค้างเดิมที่แยกจากผลช่วง 1:** `npm run check:database` ผ่าน suite ก่อนแก้ review 233 รายการ
+แต่หยุดที่ `tests/checkCurrentCli.mjs` ซึ่งคาดให้ save โครงสร้าง Area18 ที่ไม่สมบูรณ์ผ่าน;
+ฐาน `0c57eec` ให้ `INVALID_DATA` ที่จุดเดียวกัน ยืนยันใน schema แยกแล้ว
+([baseline proof](../../../../Codex/2026-10-16/font-library-stage1/flowdoc-service/artifacts/font-stage1/base-cli.json)).
+ไม่รายงานสคริปต์นั้นเป็น PASS และไม่ซ่อม expectation เก่านอกขอบเขต;
+หลักฐาน acceptance ช่วง 1 ใช้ `check:fonts` ที่ผ่านทั้ง suite/upgrade/runtime persistence จริงข้างบน.
+ไม่มีการอัปเดต system map หรือ FlowDocMake compatibility จาก candidate นี้.
 
 ### ช่วง 2 ให้ Core เลือก วัด และฝังฟอนต์จากชุดที่ยืนยันแล้ว
 
@@ -595,7 +625,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 0 ปิดรายละเอียดแล้ว; เริ่มช่วง 1 ใน Service ตาม acceptance/ขอบเขตที่ระบุเมื่อเดินงานพัฒนาต่อ.
-การปิดช่วง 0 ไม่ใช่ผลตรวจรับ runtime หรือเหตุให้ข้าม tests ของช่วง 1–6.
+ช่วง 1 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 2 ของ Core ตามขอบเขตที่ระบุ.
+การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1 รับรองช่วง 2–6.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
