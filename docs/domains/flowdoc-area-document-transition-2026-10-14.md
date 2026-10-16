@@ -993,11 +993,11 @@ Owner Core; Service/FlowDocMake ตรวจสัญญาและ pinned prev
 ไฟล์หลัก: composition/contents.ts, resolvedDocument.ts, template/validateGraph.ts,
 pageNumbering.ts, layout/documentFlow.ts, systemPageCounting.ts และ link destinations.
 
-- [ ] เพิ่ม failing cases ของสอง Section ที่มีสารบัญอิสระ แล้วทำ scope ตามช่วง 0;
+- [x] เพิ่ม failing cases ของสอง Section ที่มีสารบัญอิสระ แล้วทำ scope ตามช่วง 0;
   ไม่เพียงปล่อยสอง TOC ให้ผ่านขณะที่ยังรวบรวม heading ทั้งเอกสารเหมือนเดิม.
-- [ ] ตรวจหัวข้อ/anchor ชื่อเดียวกันในสำเนาไม่ชน, ลิงก์ไปถูกหน้า/Section,
+- [x] ตรวจหัวข้อ/anchor ชื่อเดียวกันในสำเนาไม่ชน, ลิงก์ไปถูกหน้า/Section,
   whole-document TOC, Section TOC, เนื้อหาว่าง และเลขหน้า continue/restart/exclude.
-- [ ] ตรวจ pagination ที่สารบัญเองกินหลายหน้า และผลหลัง clone/reorder/แก้เนื้อหา;
+- [x] ตรวจ pagination ที่สารบัญเองกินหลายหน้า และผลหลัง clone/reorder/แก้เนื้อหา;
   ต้องคำนวณจากเอกสารจริง ไม่กรอกเลขหน้าคงที่ใน payload.
 
 **ผลส่งมอบ:** PDF สังเคราะห์สองชุดต่อกันที่สารบัญและเลขหน้าถูกขอบเขต;
@@ -1451,3 +1451,61 @@ archive ของแอป. เหลือ primary checkout ของแต่�
 release และ tags เดิมไว้. ไม่ push/tag/release/deploy/แก้ live drafts หรือเริ่มช่วง3.
 FlowDocMake snapshot คง canonical sourceCommit ของ candidate ที่ตรวจแล้ว;
 บันทึกการรวมนี้ไม่เปลี่ยน guidance/runtime contract ของแพ็กเกจ.
+
+## ผลช่วง 3 — สารบัญตามขอบเขตและเลขหน้า (2026-10-17)
+
+คำสั่งเจ้าของคือทำช่วง3และตรวจ PDF ทุกหน้า; single-room inline, execution IDs
+N/A. Role Product Implementation Agent → Evidence Reviewer. Owner Core สำหรับ
+validation/collection/layout, Service สำหรับ packaged consumer/pinned preview,
+Project Control สำหรับ guidance/FlowDocMake compatibility/ผลร่วม.
+แยก lane `codex/section-area-stage3` จาก Core `5947536`, Service `8b7c8d2`,
+Project Control `1666bc4`; ไม่เปิด registered execution หรือเริ่มช่วง4.
+
+Core `c340c4f` เพิ่ม required props.scope kind section/document เฉพาะ19.
+Section scope ใช้เจ้าของ node จาก membership/sourceMap ที่ตรวจแล้ว ไม่รับ ID
+ที่ caller เลือก. เก็บ headings ตามขอบเขตและลำดับจริง; หนึ่ง TOC ต่อ Section
+กับหนึ่ง document-wide อยู่ร่วมกันได้. ตรวจซ้ำหลังเลือก Format/ขยาย Area;
+Format ที่ยังไม่ได้เลือกไม่ทำให้เกิด scope ซ้ำล่วงหน้า. Clone ไม่ต้อง rewrite
+scope kind เพราะอ่านจาก Section เจ้าของใหม่; anchors ยัง namespace ตาม ID.
+Scope ว่างไม่เพิ่มหน้า; ถ้าทั้งเอกสารไม่มีเนื้อหาจัดหน้า คืน layout error ไม่ออก
+PDF ว่าง. Model18 ไม่รับ scope และคงสัญญา single/global TOC เดิม.
+
+Pagination bound คือหนึ่ง layout pass: กันช่องเลขกว้างคงที่36pt จากนั้นเติมเลข
+ด้วย numbering ของหน้าเป้าหมายจริงและ resolve PDF destinations โดยไม่ reflow.
+เลขล้นช่องให้ error แทนการเดา/ย่อ/วน retry. continue/restart/exclude/visibility
+คง semantics เดิม: hide ยังมีเลขใน TOC, exclude คงลิงก์ชื่อแต่ไม่แสดงเลข.
+19จาก development candidate เก่าที่ใช้ TOC ไม่มี scope ต้องกำหนดชัดเจน;
+ไม่ migrate/แก้เอกสารจริงอัตโนมัติ และไม่เปลี่ยน18เพื่อรับ contract ใหม่.
+
+ชุด candidate: Core/Service `0.4.2-dev.3`, FlowDocMake `0.2.3-dev.3`.
+Service ตรึง Core SHA256
+`d6af816202a83817bb981325af791790accf07a8d9bdf49093eb8f93badd931e`;
+plugin pin ตรงกัน. Contract ประกาศ `stage:3`, `coverArea:true`, `scopedToc:true`.
+ไม่มี migration ใหม่; ยังใช้001–021. ปรับทางเข้าสั้นและบทที่เกี่ยวข้องเดิม
+โดยไม่เพิ่ม startup document; Markdown ผ่าน authority gate และไม่เลื่อน map truth.
+
+หลักฐาน `C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage3/`:
+
+- Core637 tests และ Linux/amd64 packed consumer ผ่าน. มี red ก่อนแก้และ9tests
+  ใหม่ ครอบคลุมสอง scopes+document, malformed/duplicate scopes, Area expansion,
+  empty scope, reorder, multipage TOC, continue/restart/exclude และ hide.
+- ชุด PDF ที่ส่งตรวจครบ20หน้า: short5, long9, clone5 และ legacy representative1.
+  ตรวจภาพทุกหน้าและตรวจ168TOC rows/336title-and-number destinations จาก PDF
+  จริง ทั้ง label/Section เป้าหมาย, พิกัดปลายทาง, เลขที่พิมพ์เทียบเลขหน้าเป้าหมาย,
+  ลำดับ/ความครบของหัวข้อ และกรอบหน้า (`pdf-review.json`). ไม่ใช้เลขหน้าที่กรอกเอง.
+- PDF ที่มีอยู่ใน packed regression ช่วง2จำนวน57ไฟล์ byte-identical กับรอบนี้
+  รวมกรณี model18 TOC/page numbering; ไม่อ้างว่าเป็นการตรวจภาพใหม่ทั้ง57ไฟล์.
+- Service311 tests ผ่าน/6external checks ข้าม ไม่ถือว่า PASS (`service-full.json`).
+  Native MCP tool clone ผ่าน real HTTP adapter/PostgreSQL และ packaged rendering;
+  ตรวจ Section IDs ใหม่, reorder, ข้อมูลแก้เฉพาะสำเนา, scoped preview pin schema2,
+  source revision/PDF เดิมไม่เปลี่ยน และปฏิเสธ scope ซ้ำหลังขยายข้อมูล.
+- FlowDocMake22 tests ผ่าน/4optional configuration checks ข้าม; native stdio
+  context ready:true กับ candidate API/DB แยกอีกฐาน actual Docker package/hash/
+  port61736 และ23tools (`native-context.json`). ไม่ใช่สถานะของ plugin ที่ติดตั้ง.
+- Fresh-context read-only review ไม่พบ Critical/Important; reviewer รัน9tests
+  ใหม่และตรวจ Service vendor identity ผ่านอิสระ. ไม่ขยาย review ไปช่วง4/release.
+
+PASS เฉพาะช่วง3. Candidate อยู่บน task branches/worktrees ที่สะอาดเพื่อรวมภายหลัง;
+เก็บ PDF/JSON/request/ผลตรวจนอก worktree ไว้แล้ว. ไม่เปลี่ยน primary branches,
+release/tags, installed runtime/plugin, สอง live drafts หรือ published history.
+ไม่เริ่มปรับแม่แบบช่วง4 และไม่รวม/ติดตั้งต่ออัตโนมัติ. ขั้นถัดไปตามคำสั่งเจ้าของ.
