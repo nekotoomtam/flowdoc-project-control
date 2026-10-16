@@ -648,11 +648,11 @@ FlowDocMake ใช้ catalog/readiness API จาก Service; ไม่ทำ�
 Service เป็นเจ้าของ CLI/API ผู้ดูแล; Project Control เป็นเจ้าของ FlowDocMake adapter.
 หน้าจอ admin และการเชื่อม Editor อีกสายเลื่อนไปภายหลังตามเจ้าของยืนยัน.
 
-- [ ] เพิ่มการอ่าน catalog และ readiness ผ่าน HTTP/MCP adapter และ schemas ที่ตรงสัญญา;
+- [x] เพิ่มการอ่าน catalog และ readiness ผ่าน HTTP/MCP adapter และ schemas ที่ตรงสัญญา;
   ทดสอบจริงกับ Service พร้อมแยกสิทธิ์อ่าน/นำเข้า/ออกใช้.
-- [ ] เครื่องมือผู้ดูแลคืนชุดเตรียม ความต่างน้ำหนักสามค่า ผลตรวจ และหกสถานะ;
+- [x] เครื่องมือผู้ดูแลคืนชุดเตรียม ความต่างน้ำหนักสามค่า ผลตรวจ และหกสถานะ;
   เครื่องมือผู้เขียนอ่านรุ่นที่มีสิทธิ์เลือก บันทึกรุ่นจริง และคืน save/readiness แยกกัน.
-- [ ] คืนตำแหน่งปัญหาและคำแนะนำเลือกแก้ และทดสอบ retained reference ตามกติกาช่วง 0;
+- [x] คืนตำแหน่งปัญหาและคำแนะนำเลือกแก้ และทดสอบ retained reference ตามกติกาช่วง 0;
   ไม่ผูก preview font จากเครื่องผู้ใช้แทนไฟล์ที่ Core ใช้.
 
 **ตรวจ:** API/CLI/MCP ให้ผลตรงกัน; ไม่มี italic/bold-italic ให้เลือกปลอม;
@@ -661,6 +661,53 @@ Service เป็นเจ้าของ CLI/API ผู้ดูแล; Project
 ปรับ package compatibility และคู่มือ FlowDocMake ตามรุ่น Core/Service ที่สร้างจริง
 พร้อมรักษาการอ่านตามช่วง; ห้ามแก้เลขรุ่นเพื่อหลอก preflight โดยไม่มี proof.
 ตรวจรับ CLI/API/MCP ตามขอบเขตนี้; ไม่ใช้ผลผ่านแทนหลักฐานว่ามีหน้าจอจัดการคลังแล้ว.
+
+**ผลช่วง 5 — PASS ในขอบเขต candidate (2026-10-16, single-room):**
+Service `codex/font-library-stage5` commit `841e39a` จาก `1826e02`, รุ่น `0.4.0`;
+checkout `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-stage5/flowdoc-service`.
+Project Control/FlowDocMake candidate `codex/font-library-stage5` commit `2cd8b81`
+(รวม guide commits `031811b`/`c39507d` จาก base `8f7a622`), package `0.2.0`;
+checkout `C:/Users/nekot/.codex/worktrees/font-library-stage5/flowdoc-project-control`.
+Core artifact `0.4.0` และ hash จากช่วง 2 คงเดิม; ไม่มี Core/Editor/UI changes.
+execution IDs ไม่ใช้ในงาน inline นี้; owner คือ Service สำหรับ CLI/API และ Project Control สำหรับ adapter/คู่มือ.
+
+| เกณฑ์ | หลักฐานและผล |
+| --- | --- |
+| ผู้ดูแลแยกจาก authoring | CLI รับ credential ทาง environment; author token นำเข้า/ออกใช้ไม่ได้; FlowDocMake มี 19 tools และไม่มีคำสั่ง admin/publish |
+| catalog และ schema ตรง Service | active-only GET /authoring/fonts มี pagination, family/default และ faces จริงพร้อมน้ำหนักสามค่า; get_font_catalog ผ่าน HTTP เดียวกัน |
+| readiness แยก saved state | get_draft_font_readiness ผูก owned draft/expectedRevision; styles หรือ actual_input; draft blocked บันทึก/เปิดกลับ/แก้แล้วพร้อมได้; stale ไม่เขียนทับ |
+| ข้อมูลปัญหาใช้งานได้ | ทดลอง face italic ที่ไม่มี, glyph U+1F984, ตำแหน่ง/style/path/remedy และ total/truncated ที่จำกัด; ไม่มี fallback/face สังเคราะห์ |
+| retired และการเปลี่ยน default | รุ่นเดิมหายจาก catalog ใหม่ แต่ draft เดิมและ clone ที่ Service รับรองยัง ready/preview ได้; JSON ที่ส่งเองไม่ให้สิทธิ์สืบทอด |
+| เครื่องมือผู้ดูแลครบหกสถานะ | CLI import/inspect/retry/stage/show/review/approve/activate/retire ผ่าน API จริง; fault injection เฉพาะไฟล์ใน volume ทดสอบให้ needs_changes แล้วคืน bytes เดิม |
+| package และ preflight | Service/Core 0.4.0 จริงใน Docker, capability/schema 1/2 และ SHA ของ tarball จริงตรง manifest/pin; tampered artifact ไม่ผ่าน; selected config และ file-client fallback ใช้งานได้ |
+
+หลักฐาน Service: `artifacts/1792144175236/result.json`, `tests.log`, `font-tools-proof.json`,
+`flowdocmake-receipts.json`, `preflight.log`, `preflight-final.json`, `flowdocmake-regressions-final.log`,
+`pdf-verification.json`, `visual/`. `npm run build`, `node scripts/verifyVendor.mjs`,
+`node scripts/checkFontTools.mjs` ผ่าน; full isolated PostgreSQL suite **268/268**, ไม่มี failed/skipped.
+FlowDocMake regressions สุดท้าย **22/22**, ไม่มี skipped; ใช้ candidate ที่ติดตั้งแยกและ MCP stdio จริง.
+หลังแก้เฉพาะ file-client wrapper ใช้ runtime/image/DB เดิมตรวจ affected PC tests ทั้งชุดซ้ำ;
+ผล Service suite ใช้ซ้ำเพราะ Service code/dependencies/config ที่ทดสอบไม่เปลี่ยน.
+ตรวจ canonical examples ผ่าน public Core (`check-developer-authoring.mjs`), `npm run check:data`,
+canonical/package hash checks และ `git diff --check` ผ่าน.
+
+PDF **9 ไฟล์ / 11 หน้า** ตรวจภาพครบและเทียบ embedded glyph outlines/metrics กับ source ผ่าน.
+PDF ก่อน retire/หลัง retire/สำเนาตรงกันทุกไบต์ แม้ default เปลี่ยนไปอีกรุ่น.
+Sarabun legacy 2 fixtures / 4 หน้าตรง baseline ก่อนเปลี่ยน Core ทุกไบต์.
+ชุดนี้พิสูจน์เครื่องมือและ fixtures ที่ระบุ; การตรวจ PDF ครบชุดฟอนต์ผู้ใช้/หลายตระกูลยังอยู่ช่วง 6.
+
+Independent review แก้ actual-artifact hashing และ selected-config checker ด้วย RED→GREEN;
+พบ file-client allowlist/config เพิ่มเติมและแก้พร้อมตรวจ fallback จริง. ไม่มี minor ค้าง.
+แก้ลำดับ harness ให้หยุด test API ก่อนรัน suite ที่ใช้ coordinator lock ของฐานเดียวกัน และ serialize
+fault-injection preflight tests; ลบเฉพาะ containers/networks ของรอบ โดยเก็บ named volumes/หลักฐาน.
+คู่มือปรับในไฟล์เดิมและ snapshot ยังคง **24 reference files**; normalize UTF-8 LF เพื่อให้ hash คงที่
+ข้าม checkout Windows มีบาง packaged files เปลี่ยนเฉพาะ line endings.
+
+การตัดสินใจ: ติดตั้งและรัน package ใหม่ในพื้นที่ทดสอบแยก เพื่อรักษา runtime/draft เดิมของเจ้าของ;
+การติดตั้งใช้งานจริงจึงยังเป็นขั้นส่งมอบ. ตรวจ read-only ยืนยันตัวที่แชตเชื่อมอยู่ยังเป็น FlowDocMake 0.1.9
+กับ Service/Core 0.3.0 บน image เดิม ไม่อ้างว่าตัวใหม่ถูก deploy แล้ว.
+ไม่ใช้ผลช่วงนี้ปิดข้อค้าง CLI เดิมของช่วง 4 หรือรับรอง Editor/UI/การเผยแพร่.
+ขั้นถัดไปคือช่วง 6 ตรวจร่วมกับชุดผู้ใช้และเตรียมส่งมอบตามขอบเขตที่ระบุ.
 
 ### ช่วง 6 ตรวจร่วมและเตรียมส่งมอบ
 
@@ -724,7 +771,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–4 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 5 ตามขอบเขตที่ระบุ.
-การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–4 รับรองช่วง 5–6.
+ช่วง 1–5 เสร็จใน branch candidate ที่ตรวจแล้ว; ขั้นถัดไปคือช่วง 6 ตามขอบเขตที่ระบุ.
+การรวม branch เข้า release และ deploy แยกจากผลทดสอบนี้; ไม่ใช้ผลช่วง 1–5 รับรองช่วง 6.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.
