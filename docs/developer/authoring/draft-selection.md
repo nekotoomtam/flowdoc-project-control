@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.5 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.6 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
@@ -38,9 +38,17 @@ is a local package tool. `planPath` is an absolute UTF-8 JSON file path. Prepare
 the complete candidate using the developer schemas; this tool does not design
 the document or read the PDF visually. Local candidate/argument files are input
 and checkpoint files; all persisted template changes go through authoring MCP.
+Initialize the time-bounded task first (see Task progress and Representative
+pages below). The first candidate is a small representative request; full data
+expansion requires the representative gate and uses stage full.
+Package 0.1.6 corrects the earlier plan example to include the required stage
+and task path, and aligns the mechanical step list with image alias ordering;
+the representative/deadline implementation is unchanged from 0.1.5.
 
 ```json
 {
+  "stage":"representatives",
+  "taskPath":"C:/task/task.json",
   "candidateDirectory":"C:/task/candidate",
   "inventoryPath":"C:/task/source-review/inventory.json",
   "coveragePath":"C:/task/coverage.json",
@@ -66,7 +74,7 @@ license to abbreviate, invent, remove or make source text render-friendly.
 1. Call `mode:"check"`. It validates source coverage/hash, policy, candidate and
    asset inputs without creating a draft or checkpoint.
 2. Call `mode:"run"` with the same path. It checks live readiness, chooses the
-   target, validates, saves, uploads/finalizes images, queues the exact revision,
+   target, uploads/finalizes images and resolves aliases, validates, saves, queues the exact revision,
    and saves the PDF after success. It never publishes or deletes drafts.
 3. A `pending` result contains `nextAction` naming the same tool and plan. Call
    it again; this is continuing the current work, not asking the user to restart.
