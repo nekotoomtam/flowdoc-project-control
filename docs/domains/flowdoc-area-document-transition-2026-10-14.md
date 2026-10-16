@@ -1034,14 +1034,14 @@ checkbox แสดงการตรวจและส่งมอบตาม�
 
 Owner Core/Service/Project Control ตามผลกระทบ; ใช้ acceptance ของเจ้าของ.
 
-- [ ] ทดสอบโครงเดิมสองสำเนาต่อกันและ SRS + แบบฟอร์มในชุดเดียว: ข้อมูล/ชื่อ/ID/
+- [x] ทดสอบโครงเดิมสองสำเนาต่อกันและ SRS + แบบฟอร์มในชุดเดียว: ข้อมูล/ชื่อ/ID/
   styles/pageLayouts/Area/anchors ไม่ชน; หัว–ท้ายและ TOC ไม่รั่วข้าม Section.
-- [ ] ตรวจ packed Core → Service → native FlowDocMake, save/open/clone,
+- [x] ตรวจ packed Core → Service → native FlowDocMake, save/open/clone,
   readiness และ pinned jobs, ข้อมูลเก่า/สิทธิ์, fonts/default/retired ตามผลกระทบ;
   สำรอง/กู้คืนในฐานแยก. ตรวจ PDF ทุกหน้าของชุดตรวจที่ใช้รับงาน.
-- [ ] ทบทวน coverage ว่าเกณฑ์ใดมี source/test/PDF รองรับ; skipped/unverified
+- [x] ทบทวน coverage ว่าเกณฑ์ใดมี source/test/PDF รองรับ; skipped/unverified
   ไม่ใช่ PASS. ใช้ซ้ำผลเดิมเฉพาะเมื่อพิสูจน์ identity; ไม่รัน full suite ซ้ำไร้เหตุ.
-- [ ] อัปเดตคู่มือเดิมและ compatibility/package versions ตามความเปลี่ยนแปลงจริง
+- [x] อัปเดตคู่มือเดิมและ compatibility/package versions ตามความเปลี่ยนแปลงจริง
   เตรียม candidate ที่ตามกลับได้. ไม่เพิ่ม mandatory AI reading หรือแทน plugin
   ที่ติดตั้งจนกว่าจะมีคำสั่ง. ส่งผลให้เจ้าของก่อน merge/release/tag/push/install.
 
@@ -1170,7 +1170,8 @@ null ต้องอยู่ในปลายทางปัจจุบัน
 - append/import เปลี่ยน revision ปลายทางครั้งเดียว; ต้นทางไม่เปลี่ยน
   (กรณี source=target มีเพียง target write ครั้งเดียว). ล้มเหลว rollback ทั้งหมด.
   retry key+body เดิมคืน receipt และ IDs เดิม ไม่สร้างสำเนาซ้ำ; body ต่าง key เดิม
-  คืน IDEMPOTENCY_CONFLICT หลังตรวจสิทธิ์. source/target ที่คนละ model ต้องแปลงก่อน.
+  คืน IDEMPOTENCY_CONFLICT หลังตรวจสิทธิ์. source/target ต้องตรงทั้ง model และ
+  font schemaVersion; ถ้าต่างต้องแปลงสำเนาให้เข้ากันก่อน ไม่แปลงต้นฉบับอัตโนมัติ.
   ตรวจ receipt หลังสิทธิ์และก่อน stale revision เพื่อให้ retry ของคำสั่งที่สำเร็จ
   แล้วไม่ติด revision ที่คำสั่งนั้นเพิ่งเปลี่ยนเอง; คำสั่งใหม่ยังตรวจ revision ครบ.
 
@@ -1626,3 +1627,84 @@ Format กำหนดจุดแบ่งและส่วนที่ต้�
 ข้อมูลตัวอย่างเดิมสองหน้า; ข้อมูลคำสำแดงที่ยาวกว่านั้นยังไหลต่อได้ และ footer mode
 continuation อาจแสดงลายเซ็นผู้รับของก่อนถึง cargo. ไม่รับรองว่าเป็นแบบฟอร์มจำกัด
 พื้นที่หรือรองรับข้อมูลยาวทั่วไป; ต้องนำกรณีนี้เข้าทดสอบเมื่อเริ่มงานที่พักไว้.
+
+## ผลช่วง 5 — ตรวจร่วมและชุดส่งมอบ candidate (2026-10-17)
+
+**Authority Boundary:** Project Control owns this bounded cross-repository result;
+role Evidence Reviewer / Project Control Steward. เจ้าของอนุมัติช่วง5ในห้องเดิม;
+single-room inline, execution IDs N/A. ตรวจ candidate กับ draft ทดสอบใหม่เท่านั้น
+ไม่เปลี่ยน product source, ไม่เลื่อน DOCUMENT_MAP และไม่รับรอง release/install.
+Phase/Checklist/Evidence target คือรายการช่วง5ด้านบนกับหลักฐานจริงด้านล่าง;
+ไม่สร้าง registered execution หรือ Work record เพิ่มเพื่อปิดงาน.
+
+หลักฐานอยู่ `C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage5/`;
+`delivery/manifest.json` รวม identity, definition, request, assets, PDFs และ coverage;
+`delivery/checksums.json` ตรวจไฟล์ส่งมอบรายไฟล์. ใช้ fresh real MCP stdio client
+ของ candidate → TCP Service3025 → packed Core ใน Docker image
+`sha256:7cdfa5abc9c55109a043098d9bf6a26022c8702df20cebc908d58f6793c5621b`.
+ไม่อ้างว่า native chat plugin0.2.1/Core–Service0.4.0 ถูกอัปเกรดแล้ว.
+
+ชุดตรวจ PDF ใหม่ทั้งสามชุดสร้างผ่าน MCP, สำเร็จและบันทึกไฟล์ก่อนตรวจ:
+
+| ชุด | draft / rendered revision | หน้า | SHA256 |
+| --- | --- | ---: | --- |
+| SRS สองสำเนา | `cfe69add-4c13-48bb-a95f-29119043c38c` / 2 | 196 | `70c002625446dd042db881d89579cc7b760b44ef7694f9e343c6d016ef8116c3` |
+| ศบ.1 สองสำเนา | `2063390c-e24e-4e91-be2a-bbcd58578ca6` / 2 | 4 | `2396b1ce755ec1019d5531e233d9d75d86cdf035e946e296220397971756f778` |
+| SRS + ศบ.1 | `8c74ba13-9518-4f52-932b-99378981f56a` / 2 | 100 | `e946aaf29b805e56c02e269315230253f842c24b46586c4cc7b2239903ccadaf` |
+
+- ตรวจภาพครบ300หน้าใน numbered contact sheets ที่96DPI พร้อม machine checks
+  ทุกหน้า: ลำดับข้อความเทียบ Stage4 baseline, ข้อมูลสำเนา, bounds, bands และเลขหน้า.
+  ไม่พบหน้าว่างผิดคาด ข้อมูลหาย หรือหัว–ท้ายรั่วในชุดตรวจนี้. `*.verification.json`
+  ระบุ reviewed pages ครบ; ภาพยังอยู่ `*-review/` ไม่อ้าง pixel identity กับ source.
+- SRS A01/A.0 กับ B02/B.0 และ ศบ.1 ALPHA/11111 กับ BETAA/22222 แยกกันจริง.
+  ตรวจ Section IDs/labels, used style references, pageLayouts และ Areas ไม่ชน;
+  import retry ทั้งสามชุดคืนผลเดิมไม่เพิ่ม revision. Request sections ถูกกลับลำดับ
+  โดยเจตนา แต่ PDF ใช้ลำดับ Section ที่บันทึกไว้ ไม่ใช่ลำดับ request.
+- สารบัญ594แถว ตรวจ title-and-number destinations1,188จุดจาก PDF จริง รวมเลข
+  หน้าที่แสดง พิกัดและข้อความปลายทาง และไม่ชี้ข้ามสำเนา. SRS twin เปลี่ยนผ่าน
+  หน้า98→ปก99→เนื้อหา100ได้; mixed มี SRS1–98 แล้ว ศบ.1หน้า99–100ไม่มี SRS bands.
+  ศบ.1 twin ไม่มีลายเซ็น footer หน้า1/3 และมีเฉพาะ cargo หน้า2/4 ตามข้อมูลที่ตรวจ.
+- พบ prerequisite ที่มีอยู่แล้ว: import ต้องตรงทั้ง model และ font schemaVersion.
+  SRS schema1 กับ ศบ.1 schema2 จึงต่อโดยตรงไม่ได้. แปลง SRS เฉพาะ draft สำเนาใหม่
+  `15c87efc-6f54-41d9-9946-111a144cacde` เป็น schema2 ก่อนต่อ โดย SHA256 ของไฟล์
+  Sarabunทั้ง4facesตรง bundled Core ทุกตัว และคง pt/line height เดิม. ไม่เพิ่ม fallback
+  หรือเปลี่ยนต้นฉบับ. `font-byte-identity.json` กับ conversion record แสดงหลักฐาน.
+- Actual-input readiness ผ่านทั้งสามชุด, model18 SRS/ศบ.1 เดิมยัง ready;
+  real MCP clone/import ที่ไม่มีสิทธิ์ถูกปฏิเสธ UNAUTHORIZED ทั้งสองคำสั่ง.
+  ใช้ official admin tool เปลี่ยน default และ retire Sarabun เฉพาะฐานทดสอบ3025.
+  Clone/import ศบ.1หลัง retired และ readiness รุ่นเดิมผ่านโดยคง allowed tuple เดิม.
+  Job font snapshots ก่อน/หลังตรงกัน. แก้ metadata mixed เป็น revision3หลัง queue2;
+  PDF ยังตรึง revision2 และส่ง expectedRevision2 ใหม่ถูกปฏิเสธ STALE_CURRENT.
+- สำรอง database/staging/outputs ก่อนเริ่ม และสำรองหลังตรวจเพื่อ restore ในฐานแยก
+  บน3035. ตรวจ SHA256 สำรองทั้ง6ไฟล์; fresh MCP หลัง restore อ่าน draft/readiness
+  และดาวน์โหลด PDF ทั้งสามได้ byte-identical. `restore-verification.json` เป็นหลักฐาน;
+  ไม่ใช่การรับรอง backup สำหรับ production migration. คลัง retired เป็น test state.
+- อ่าน Stage4 sources สดผ่าน MCP3024หลังทำ: SRS revision4/ศบ.1 revision1 และ
+  fingerprintsเดิม. Native chat read ยืนยัน live originals revision1/revision3
+  และ fingerprintsเดิม (`live-originals-final.json`). ไม่แก้ published history.
+
+**Coverage และ proof reuse:** Source Core `c340c4f`, Service `08a7131` ยัง clean
+และตรงกับผลช่วง3ที่รวมแล้ว; artifact SHA256
+`d6af816202a83817bb981325af791790accf07a8d9bdf49093eb8f93badd931e` ตรงเดิม.
+ใช้ซ้ำ Core637/packed Linux consumer, Service311ผ่าน/6external skip,
+FlowDocMake22ผ่าน/4optional skip ตาม unchanged source/package identity;
+รวม reorder, Area insertion/overflow, empty scope และ model18 regression ของช่วงก่อน.
+รอบนี้เพิ่ม actual MCP/PDF/restore proof ตามรายการข้างบน ไม่รัน full suite ซ้ำ.
+Skipped ไม่ใช่ PASS; actual saved-definition reorder เป็นผลเดิม ไม่อ้างทดสอบใหม่.
+
+**ผล:** PASS เฉพาะ acceptance ช่วง5และข้อมูลชุดนี้ พร้อมความต่าง Stage4ที่เจ้าของรับไว้.
+Strict source fidelity ยังไม่ผ่าน: SRSหัว Features Listท้ายหน้า36/42, original low-res
+image warnings; ศบ.1ฟอนต์/จุดแทนเส้นประ/grid/ระยะยังต่าง. ไม่เปลี่ยน strict checker
+หรือ `complete:false` ของ source-fidelity task เดิมเป็น PASS. ศบ.1ข้อมูลยาวและ footer
+continuation ก่อน cargo ยังคงเป็นงาน Area/Format ที่พักไว้ ไม่รวมในชุดตรวจนี้.
+
+ทบทวนทางเข้า/คู่มือและ compatibility เดิมแล้ว: runtime/API ไม่เปลี่ยน จึงคง
+Core/Service0.4.2-dev.3 และ FlowDocMake0.2.3-dev.3 ไม่ bump/repack โดยไม่มีการเปลี่ยน.
+เพิ่มคำชี้แจง schema prerequisite ในสัญญาเดิมนี้เท่านั้น ไม่เพิ่ม mandatory AI reading.
+Portable requests พร้อม original assets ใช้ upload ใหม่ก่อน preview; exact requests
+เก็บไว้เป็น provenance เพราะ image IDs หมดอายุได้. Mixed current revision3ต่างจาก
+rendered revision2เฉพาะ metadata ที่ใช้ตรวจ pinning. ชุดส่งมอบไม่รวม credentials/config.
+
+ยังเก็บชุดทดสอบ3025/3035และ backupเพื่อ review; host-service worktreeของช่วง4ยังจำเป็น
+ต่อ fresh MCP. ไม่มี lane ใหม่ให้รวม/ลบในช่วง5. ไม่ merge product branches, release,
+tag, push, publish หรือ install. หยุดที่ชุดส่งมอบให้เจ้าของตรวจตามขอบเขตที่อนุมัติ.
