@@ -837,7 +837,7 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–6 และการติดตั้งทดสอบรุ่นที่เข้าคู่กันเสร็จตามขอบเขตข้างต้น แต่ยังไม่ได้
+ช่วง 1–6 และการติดตั้งทดสอบรุ่นที่เข้าคู่กันเสร็จตามขอบเขตข้างต้น; ณ จุดนั้นยังไม่ได้
 ออกรุ่น `0.4.0` ตามกฎ release. ผลรวม/ติดตั้งและ cleanup ข้างต้นเป็นบันทึกเหตุการณ์เดิม;
 การกล่าวว่า “รวมและติดตั้งเสร็จ” ไม่ยืนยันว่าปิดรุ่นใน Git ครบ.
 
@@ -845,14 +845,15 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 `codex/template-binding` และ Service `codex/template-registry`; `release` ถูกจัดใหม่
 ให้มีเฉพาะ 8 commit ที่มี tag. จุด `v0.3.0` ปัจจุบันคือ Core `57d1554` และ
 Service `9c433fa`, tree ของรุ่นเดิมไม่เปลี่ยน. ประวัติที่ใช้เป็นฐานก่อนแก้และงานฟอนต์
-ยังอยู่ใน branch หลักและ verified backups. `v0.4.0` ยังไม่มี.
+ยังอยู่ใน branch หลักและ verified backups. ณ จุดจบข้อ 1 ยังไม่มี `v0.4.0`.
 หลักฐานการรวม branch หลัก: `default-branch-integration.json`; หลักฐานจัด release:
 `release-history-backup-25691016-182954/step1-result.json`, ทั้งคู่ใต้
 `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/`.
 
 อ่าน [กฎ release และลำดับตรวจปัจจุบัน](flowdoc-export-working-release-rules-draft-2026-10-09.md)
-ก่อนเตรียมเอกสาร deploy/ชุดส่งมอบและออกรุ่น. คำสั่งปัจจุบันให้ปรับคู่มือเท่านั้น;
-หยุดก่อนนำ candidate ใหม่เข้า `release`, สร้าง tag รุ่นใหม่ หรือ deploy เพิ่ม.
+ก่อนเตรียมเอกสาร deploy/ชุดส่งมอบและออกรุ่น. คำสั่งปรับคู่มือก่อนหน้านี้ให้หยุด
+ก่อนนำ candidate ใหม่เข้า `release`, สร้าง tag รุ่นใหม่ หรือ deploy เพิ่ม;
+คำสั่งออกรุ่นถัดมาและผลจริงบันทึกแยกด้านล่าง.
 ผลปรับคู่มือ: ใช้คู่มือ release เดิมเป็นทางอ่านร่วมจาก README/AGENTS ของทั้งสอง
 repo, ตรวจ diff/ลิงก์และ Project Control `check:data` ผ่าน; ตรวจ remote refs และ
 8 tagged commits ทั้งสอง release ซ้ำแล้วไม่เปลี่ยน. เป็นการตรวจเอกสาร/ประวัติ Git
@@ -861,6 +862,28 @@ repo, ตรวจ diff/ลิงก์และ Project Control `check:data` �
 README/usage อธิบายชุดพัฒนา 0.4.0, คู่ Core artifact, static-TTF/schema 2,
 admin CLI/readiness/retired, migrations 018 และการสำรอง/ตรวจหลังติดตั้ง;
 การตรวจข้อความ ตัวอย่างคำสั่งและ configuration ไม่ใช่การสั่ง deploy รอบใหม่.
+
+ผลข้อ 2–3 ตามคำสั่งเจ้าของ: **RELEASED / REMOTE VERIFIED**.
+Core `v0.4.0` / release `53e349e` (source `e652a9e`), Service `v0.4.0` /
+release `bfd5c29` (source `bd4823c`) ส่ง GitHub แบบ atomic ต่อ repo พร้อม development
+branch ที่อัปเดตแล้ว. แต่ละ snapshot มี parent เดียวเป็นรุ่นก่อน, tree เท่าต้นทาง,
+ทั้งสายมี 9 tagged commits และไม่มี commit ไร้ tag; tag เก่าไม่เปลี่ยน.
+README/template-guide ของ Core และ README/usage ของ Service อยู่ใน source ที่ตรึง.
+Core artifact ใหม่ SHA-256 `6e8b71976de35456eed8cdb88a3c42305947e20e900944e3108cb0cc5c36d7e8`;
+ไฟล์แพ็กเกจ 144 รายการต่างเพียง README. Service manifest/lock ตรึงไฟล์นี้จริง.
+เจ้าของอนุมัติเพิ่ม FlowDocMake `0.2.1` ให้ตรง checksum ใหม่; เตรียมในชุดส่งมอบ
+โดยคง 0.2.0 ที่ติดตั้งเดิมและ guard การตรวจไว้.
+
+Fresh checks: Core 544 + Linux packed consumer, Service 268 + CLI/restart/persistence,
+FlowDocMake 22/22 ไม่มี skipped/context พร้อม 19 tools ผ่าน. CLI harness และ
+persistence witnesses เดิมแก้ให้ตรงสัญญาและ isolated test schemas แล้วตรวจผ่าน;
+ไม่เปลี่ยน product runtime/validation. ตรวจภาพ PDF ใหม่ Core 13 หน้าและ Service
+7 หน้าครบ; อีก 49 Core PDF และ 2 legacy PDF เทียบ byte identity กับหลักฐานเดิม.
+ชุด 29 faces/หลาย family/default/retired เดิมใช้ซ้ำตาม runtime/font identity.
+หลักฐาน: `C:/Users/nekot/Documents/Codex/2026-10-16/font-release-040/release-result.json`
+และ `delivery/delivery.json`. รอบนี้เป็น Git release/ชุดส่งมอบ ไม่ใช่ deploy ใหม่;
+การติดตั้งครั้งถัดไปต้องใช้คู่ Core/Service 0.4.0 + FlowDocMake 0.2.1 และตรวจตาม
+คู่มือ Service ก่อนสรุปใช้งานจริง.
 ข้อค้างการใช้งานที่บันทึกไว้ยังต้องตรวจตามบริบท: reload Codex เพื่อใช้ native
 connection ใหม่; ใช้ fresh MCP/file-client ได้ตามหลักฐานเดิม.
 การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.

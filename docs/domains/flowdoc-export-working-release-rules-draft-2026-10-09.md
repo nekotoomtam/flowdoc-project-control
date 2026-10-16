@@ -116,9 +116,10 @@ candidate ที่จะใช้ให้ตรงกัน. การเป�
 
 หยุดก่อนแตะ `release` เมื่อคู่มือ/deploy prerequisites ยังไม่ครบ, source หรือ
 รุ่นไม่ชัด, mandatory checks ยังไม่ผ่าน หรือคำอนุญาตไม่ครอบคลุม.
-การแก้คู่มือครั้งนี้ไม่อนุญาตขั้น 3–4 หรือ deploy รุ่นถัดไป.
+การอนุญาตแก้คู่มือก่อนหน้านี้ไม่ใช่อำนาจออกรุ่น; รอบออกรุ่นด้านล่างใช้คำสั่งใหม่
+ของเจ้าของที่ระบุให้ทำข้อ 2–3 และส่ง GitHub. การ deploy ยังคงเป็นคนละขอบเขต.
 
-## สถานะที่ตรวจแล้วและข้อยกเว้นวันที่ 2026-10-16
+## ประวัติหลังจัด release ข้อ 1 และข้อยกเว้นวันที่ 2026-10-16
 
 | Repo | Development/default branch | release และ tag v0.3.0 |
 | --- | --- | --- |
@@ -127,8 +128,8 @@ candidate ที่จะใช้ให้ตรงกัน. การเป�
 
 ทั้งสอง `release` มี 8 commit/8 annotated tags ตั้งแต่ `v0.1.0` ถึง `v0.3.0`
 (ไม่ใช่ทุกเลขเวอร์ชันระหว่างนั้น); ไม่มี commit ไม่มี tag ใน ancestry.
-ชุดพัฒนาฟอนต์มี package version `0.4.0` อยู่บน development แต่ยังไม่มี release/tag
-`v0.4.0`. การติดตั้งทดสอบก่อนหน้านี้ไม่ใช่การออกรุ่น 0.4.0 ตามกฎนี้.
+ณ จุดจบข้อ 1 ชุดพัฒนาฟอนต์มี package version `0.4.0` อยู่บน development แต่ยังไม่มี
+release/tag `v0.4.0`. การติดตั้งทดสอบก่อนหน้านั้นไม่ใช่การออกรุ่นตามกฎนี้.
 
 เจ้าของอนุมัติเฉพาะครั้งให้จัดประวัติ `release` ใหม่และย้าย tag `v0.3.0` เพื่อ
 ตัดประวัติพัฒนาที่เคยรวมผิดออก; tree ของ 0.3.0 เดิมเท่าเดิม, อีก 7 tag ไม่เปลี่ยน,
@@ -138,6 +139,35 @@ branch หลักและงานล่าสุดคงครบ. มี v
 `C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/release-history-backup-25691016-182954/`.
 การแก้ปัญหาลักษณะนี้ในอนาคตต้องสำรอง เสนอผลกระทบและ old/new refs แล้วรับ
 คำอนุมัติเฉพาะจากเจ้าของก่อนเปลี่ยนประวัติ/tag ที่เผยแพร่; ห้ามทำอัตโนมัติ.
+
+## ผลออกรุ่น 0.4.0 ตามคำสั่งข้อ 2–3
+
+ตรวจ remote แล้ว: Core `release` / annotated `v0.4.0` ที่ `53e349e` จาก source
+`e652a9e`; Service ที่ `bfd5c29` จาก source `bd4823c`. Snapshot แต่ละ repo
+มี parent เดียวเป็น `v0.3.0` ในตารางข้างต้น และ tree เท่าต้นทางทุกไฟล์.
+ทั้งสายมี 9 commit/9 annotated tags บน GitHub; tag เก่าทั้ง 8 ไม่เปลี่ยน.
+Development/default branches เก็บต้นทางใหม่และประวัติเดิมครบ.
+
+ชุดส่งมอบใช้ Core/Service `0.4.0` และ FlowDocMake `0.2.1`. Core tarball SHA-256
+`6e8b71976de35456eed8cdb88a3c42305947e20e900944e3108cb0cc5c36d7e8`
+ตรึงใน Service manifest/lock และ client. เทียบแพ็กเกจเก่าครบ 144 ไฟล์ พบต่าง
+เฉพาะ README; runtime/font bytes เหมือนเดิม. เจ้าของอนุมัติเพิ่ม client 0.2.1
+หลังพบว่า 0.2.0 ตรึง checksum เก่า; ไม่ผ่อน compatibility guard หรือเขียนทับ client เก่า.
+
+ผลตรวจ: Core 544 tests + isolated Linux packed consumer ผ่าน, Service 268 tests
+และ CLI/persistence/restart ผ่าน, FlowDocMake 22/22 ไม่มี skipped และ context พร้อม
+19 tools. แก้เฉพาะตัวตรวจ CLI ที่คาดให้บันทึกข้อมูลผิด และสร้าง persistence witnesses
+ของตัวตรวจเองก่อน restart แทนการอ้าง Vitest schemas ที่ถูกลบหลังทดสอบ;
+ไม่มีการเปลี่ยน product validation เพื่อให้ผ่าน. ข้อผิดพลาดก่อนแก้ยังเก็บในหลักฐาน.
+PDF 49 ไฟล์ของ Core ตรงไบต์กับชุดตรวจเดิม; ตรวจภาพใหม่ 7 PDF/13 หน้า Core และ
+7 PDF/7 หน้า Service ครบ; legacy อีก 2 PDF ตรงไบต์กับชุด Phase 6 ที่ตรวจภาพแล้ว.
+หลักฐานชุด 29 faces เดิมใช้ซ้ำด้วย runtime/font identity ที่พิสูจน์ข้างต้น.
+
+หลักฐานและชุดส่งมอบอยู่ `C:/Users/nekot/Documents/Codex/2026-10-16/font-release-040/`:
+`release-result.json`, `delivery/delivery.json`, `core-artifact-identity.json` และ
+ผลตรวจ DB/tools/ภาพ. รอบนี้ส่ง branch/tag ของ Core/Service ขึ้น GitHub และเตรียม
+client 0.2.1 ในชุดส่งมอบ; ไม่ deploy หรือเปลี่ยน user DB/drafts/config/cache ที่ติดตั้ง.
+ก่อน deploy ครั้งถัดไปใช้คู่แพ็กเกจนี้และขั้นตอนในคู่มือ Service.
 
 ## ตัวอย่างสำหรับงาน cell ปัจจุบัน
 
@@ -150,6 +180,7 @@ branch หลักและงานล่าสุดคงครบ. มี v
 ## สถานะและสิ่งที่ยังไม่ทำ
 
 หลักเวอร์ชันและกฎ release ข้างต้นเป็นข้อตกลงที่เจ้าของยืนยัน; กติกาทำงานทั่วไป
-ที่ยังเป็นข้อเสนอไม่ได้กลายเป็นอำนาจอัตโนมัติ. การปรับคู่มือรอบนี้ไม่เพิ่ม
-automated release pipeline, ไม่เปลี่ยนชื่อ branch, ไม่ออกเวอร์ชันหรือ tag
+ที่ยังเป็นข้อเสนอไม่ได้กลายเป็นอำนาจอัตโนมัติ. รอบปรับคู่มือก่อนหน้านี้ไม่ใช่
+คำสั่งออกรุ่น; ผลออกรุ่นตามคำสั่งถัดมาบันทึกแยกข้างต้น. ไม่เพิ่ม automated
+release pipeline, ไม่เปลี่ยนชื่อ branch
 และไม่เลื่อนงาน area/array กลับมาเป็น prerequisite ของ cell slice
