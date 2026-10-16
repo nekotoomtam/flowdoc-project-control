@@ -4,6 +4,10 @@
 
 ลำดับงานและเกณฑ์ตรวจอยู่ใน [แผนพัฒนาตามช่วง](flowdoc-font-library-development-plan-2026-10-16.md).
 
+ข้อตกลงเพิ่มเติมเรื่อง pt จริง ตัวช่วยปรับความสูง และ custom TH Sarabun New 1.35
+อยู่ใน [ข้อตกลงและแผนสเกลฟอนต์](flowdoc-font-height-adjustment-design-plan-2026-10-16.md).
+เป็นขอบเขตงานถัดไป ไม่เปลี่ยนผลส่งมอบคลังฟอนต์รอบเดิมหรืออ้างว่า runtime รองรับแล้ว.
+
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. บทบาท Planning Partner / Documentation Synthesizer.
