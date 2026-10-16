@@ -1373,3 +1373,54 @@ release/tags และหลักฐานไว้. Packaged FlowDocMake snaps
 ผล cleanup: ลบ worktrees/local task branches ของทั้งสาม repo ครบแล้ว;
 Project Control lane เก็บ recoverable archived snapshot ผ่านเครื่องมือของแอป.
 แต่ละ repo เหลือ primary checkout ที่สะอาด; Core/Service คง release branch เดิม.
+
+## ผลช่วง 2 — Area cover ภายใน Section (2026-10-17)
+
+ขอบเขตตามคำสั่งเจ้าของ: Core implementation / Service packaged consumer /
+Project Control guidance และ FlowDocMake compatibility; single-room inline,
+execution IDs N/A. Role Product Implementation Agent → Evidence Reviewer.
+Markdown เป็น repo-owned code-adjacent guidance หรือ canonical Project Control
+ตามตำแหน่งเดิม; ไม่สร้างเอกสาร startup ใหม่หรือเลื่อน DOCUMENT_MAP.
+แยก lane `codex/section-area-stage2` ใต้
+`C:/Users/nekot/.codex/worktrees/section-area-stage2/` จาก Core `aabbb69`,
+Service `4f834be`, Project Control `7a54b13`.
+
+Core `5947536` เปิด fixed-height text เฉพาะ model19 authored Section flow roots
+และ Format ของ Area ที่วางเป็น root. ตรวจทั้ง authored graph และ resolved graph;
+parent/ownership checks กัน cell/repeat หลุดเข้าทาง root. ไม่แก้ตัวจัดหน้าเพราะ
+การวัดกรอบ/overflow/page breaks/bands เดิมรองรับสัญญาที่ปิดไว้แล้ว.
+fixed frame ต้องพอดีข้อความและ body ที่เหลือ; ล้มเหลวโดยไม่ตัด/ย่อ/เลื่อนกรอบ.
+Section ยังคุม pageLayout/header/footer; Area ซ้อนและ fixed ใน cell/repeat ยังห้าม.
+model18 คงสิทธิ์ปกและพฤติกรรมเดิม. ไม่มี logic ผูกชื่อ cover/approval/Format.
+
+Core/Service `0.4.2-dev.2`, FlowDocMake `0.2.3-dev.2`; development candidates
+ยังไม่ติดตั้ง/ออก tag. Core artifact SHA256
+`aa9a0923b174eccd86cac1571570f0dc2e1f8627e30fff844b020b14a9305da6`
+ตรง vendor manifest และ plugin pin. Contract ประกาศ `stage:2`, `coverArea:true`,
+`scopedToc:false`. คู่มือแก้ข้อยกเว้นสั้นในทางเข้าเดิมและ snapshot จาก canonical
+sources ที่ commit แล้ว ไม่เพิ่มเอกสารที่ AI ต้องอ่านก่อนเริ่ม.
+
+หลักฐาน `C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage2/`:
+
+- Core628 tests ผ่าน และ Linux/amd64 packed consumer ผ่าน รวม baseline18.
+  มี red ของ fixed Area ก่อนเปิด validation; tests ใหม่11 กรณีครอบคลุมกรอบ,
+  overflow, exact boundary, Section bands ทุก mode, page breaks และข้อห้าม.
+- `area-cover.pdf` 6 หน้า: Section เดียว แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา;
+  text/table/image เป็น native nodes. ตรวจภาพครบหน้า1–6 และ text/geometry:
+  42 บรรทัดตามลำดับครั้งเดียว, ไม่มีหน้าว่างแทรก, ปกไม่มีหัว–ท้าย,
+  หน้าต่อมีหัว–ท้าย, ภาพหน้า4 และไม่มีเนื้อหาชนขอบ/หัว–ท้าย (`pdf-review.json`).
+- Service309 tests ผ่าน/6 external checks ข้าม ไม่ถือว่า PASS. ตรวจบน DB แยก
+  ที่ migrate001–021 แล้ว (`service-accepted.json`); preview19 ตรึง schema2,
+  ส่ง overflow เป็น LAYOUT_FAILED และ PDF revision เดิมยังดาวน์โหลดได้.
+  แก้ assertion รุ่น renderer เก่าเป็น dev.2; ใช้ timeout15s ให้ CLI invalid URL
+  แทน5s ที่รอ DNS เกินเวลา. ไม่แก้ runtime เพื่อกลบ failure ของชุดตรวจ.
+- FlowDocMake22 tests ผ่าน/4 optional configuration checks ข้าม; native stdio
+  context ready:true จาก candidate API/DB แยกอีกฐาน ตรวจ actual Docker package
+  checksum/versions/port และ23 tools (`native-context.json`). ไม่ใช่ live install.
+- Fresh-context read-only review ไม่พบ Critical/Important/Minor; reviewer ตรวจ
+  fixed roots/cell/repeat/ownership/model18 และรัน11 tests ใหม่ผ่านอิสระ.
+
+PASS เฉพาะช่วง2ตามขอบเขตนี้. เก็บ task branches/worktrees ไว้ตรวจและรวมภายหลัง;
+ไม่เปลี่ยน primary branches, release/tags, installed plugin/runtime, สอง live drafts
+หรือ published history. ไม่ทำ scoped TOC ช่วง3/ปรับแม่แบบช่วง4/ระบบภาพใหม่.
+ขั้นถัดไปคือรอเจ้าของสั่งรวมงานหรือเริ่มช่วง3; ไม่เริ่มต่ออัตโนมัติ.
