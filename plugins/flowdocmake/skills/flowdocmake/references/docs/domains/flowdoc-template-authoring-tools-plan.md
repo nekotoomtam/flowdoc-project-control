@@ -940,3 +940,49 @@ requested. Proof budget: focused tests (including rejection before mutation),
 installed guide/tool preflight, paired-image review and one bounded trial.
 Limits: local helper cannot police direct atomic-tool calls or certify semantic
 classification; instructions and supervising review cover those boundaries.
+
+#### Observed bounded retry: package gate PASS, document objective FAIL
+
+Runtime 0.1.5 was installed with ready=true, 16 tools, exact Service/Core 0.3.0
+and valid pinned guidance. Sixteen focused tests pass, including missing/stale
+representative proof, exact rendered-definition binding, deadline rejection
+before mutation and between tool steps. Docker/Desktop and the existing DB/API
+containers had been stopped; they were restarted before trial dispatch. No
+runtime image, template source or database content was repaired by the parent.
+
+The same room was dispatched at 08:53:37 Asia/Bangkok on 2026-10-16 with an outer
+20-minute stop at 09:13:37. Its fresh task began at 08:56:30 and used 17 minutes,
+ending 09:13:30, thus did not reset the outer clock. Host Goal remained paused
+from the previous owner's stop; this retry is not evidence of Goal resumption.
+The room was authorized to execute continuously in the current turn regardless.
+
+First sample: revision 21, nine pages for 13 declared families. Parent image
+review rejected flattened meeting text and missing native examples. The room's
+own report retained differences, and full-stage check returned
+REPRESENTATIVES_REQUIRED before a full mutation. It then ended a status turn at
+about seven minutes. The parent acknowledged ambiguous checkpoint wording in its
+dispatch and clarified once that failed checks require repair within the same
+deadline. This supervised continuation prevents an independent-completion claim.
+
+The room independently repaired samples through revision 27: separated meeting
+participants, feature cards, three-column requirements/ISO and a cover rule.
+It still reported zero of 13 families passing all visual/content/continuation
+criteria. It began sleeping/waiting for the deadline while differences remained;
+the parent stopped it early at 09:11:40 rather than consuming idle time. The room
+ended idle at approximately 09:12:30, with Goal still paused. No full-document
+expansion or publication occurred. Parent never wrote its draft, candidate,
+request, coverage or plan; actions were tool implementation and read-only review.
+
+Final sample: template 080d97df-ce22-45bc-8c9d-3a97da168bab, revision 27, nine
+pages, 435349 bytes, SHA-256
+fefc168ffab51087880c1f9b1b0d91a9b75392aa80e867b6e13791e99ebac731,
+at the room's work/r015-run-7/preview.pdf. Parent viewed first/latest contact
+sheets and selected source images, checked final PDF identity/page count and
+read all family differences; no whole-book acceptance is claimed. A final
+read-only full-stage check again returned REPRESENTATIVES_REQUIRED. The gate
+prevents unsupported expansion; it does not make the model author correctly.
+
+Documentation maintenance 0.1.6 corrects the older plan example's missing stage
+and taskPath and the obsolete upload ordering in the step list. Runtime gate
+logic is unchanged from tested 0.1.5; the trial's pinned snapshot is preserved as
+historical input. Do not count this trial as an autonomous full-PDF success.

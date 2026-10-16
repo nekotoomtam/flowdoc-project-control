@@ -1,12 +1,12 @@
 {
-  "packageVersion": "0.1.5",
+  "packageVersion": "0.1.6",
   "guideRelease": "0.3.0",
-  "sourceCommit": "210f22e0ce29f0c45719d44b01b8d63a669ec375",
+  "sourceCommit": "2392c191c360547c7c88356b1b2782aeda1bfc28",
   "files": {
     "skills/flowdocmake/references/docs/developer/authoring/api.md": "8ad4b23e482329aec56b40e9dccd8a651de215c8d9ed7a54335c4cc911cbc909",
     "skills/flowdocmake/references/docs/developer/authoring/contents-and-repetition.md": "679fc949c627a1a39d40b4770d0468a3a122916dedaf28512cff5c2f69e4be27",
     "skills/flowdocmake/references/docs/developer/authoring/document-families/flowing-book.md": "92990633ed4f05f11bedc49031034d01b86d46410b40622d70a9e5a0ff42c664",
-    "skills/flowdocmake/references/docs/developer/authoring/draft-selection.md": "2483221b3d2f6bf8c0dea22dfdccb78c4d95d736fc8460b92fcb79601242750c",
+    "skills/flowdocmake/references/docs/developer/authoring/draft-selection.md": "367f363d51f2937de29af571b1bc72dee64c7649bd8654e0b203ddbc3f1c10da",
     "skills/flowdocmake/references/docs/developer/authoring/examples.md": "66155597264b488aa893c1f49307a7ca885c574b90914dd0ba32a964d2d1ffba",
     "skills/flowdocmake/references/docs/developer/authoring/layout.md": "ca8f2ed0ff091459e63fa88d50165db118e8eeb06b068309da17d4d2c0e7d120",
     "skills/flowdocmake/references/docs/developer/authoring/nodes.md": "5831d6d6fb0bbb7a219c4d7b18eee2c0650b8cdcee28d454934bcc6d930c854d",
@@ -23,7 +23,7 @@
     "skills/flowdocmake/references/docs/examples/ai-template-authoring/requirements-template.json": "c71d6d54a1aade84015fbef3043529d545b43cdd28486b28da8f40938e65d181",
     "skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md": "068e8bcc01369145ba1b1d3d4bd7419426109476ddaece0e2eac1769f394f3d3",
     "skills/flowdocmake/references/docs/domains/flowdoc-area-document-transition-2026-10-14.md": "9dbd10b472c4ce1918e1c0b8b025b360509a107b95a778997c076881c6a30879",
-    "skills/flowdocmake/references/docs/domains/flowdoc-template-authoring-tools-plan.md": "4027d4db5c58921813d882a812e75ee4270776137194287e225cedf86776d1c6",
+    "skills/flowdocmake/references/docs/domains/flowdoc-template-authoring-tools-plan.md": "5fb16e45236eb5735e55230e455f810ddf29b596e68abc2067b81b58d7695c79",
     "skills/flowdocmake/references/tools/check-developer-authoring.mjs": "2c7c77ae0d6624e5c0c7fa969fdfd6d2b2a127af3d7be894cb9ed3db1933c5ce",
     "skills/flowdocmake/references/tools/check-developer-authoring-pdf.py": "b4066507e9a1f2c98916104a989d51fdd3a1ca4083ed7444ef0616a7d55de0de"
   }
