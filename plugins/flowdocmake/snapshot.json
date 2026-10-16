@@ -1,9 +1,9 @@
 {
-  "packageVersion": "0.2.1",
+  "packageVersion": "0.2.2-dev.font-height.1",
   "guideRelease": "0.4.0",
-  "sourceCommit": "5695afeed5a3624c02f7bd108f2185ddb7e3fcfe",
+  "sourceCommit": "d93999e979ff93dc29b98a8e6c976f90f2c1ab22",
   "files": {
-    "skills/flowdocmake/references/docs/developer/authoring/api.md": "270b9b6fb64b720dbf9289406bf9e67abcebe167c4eaf4bf2ef96489533f06a6",
+    "skills/flowdocmake/references/docs/developer/authoring/api.md": "412005e595f3fa74f9ac1153f1a524788fe4c35d40d5a4c84dcd8c729efd8d19",
     "skills/flowdocmake/references/docs/developer/authoring/contents-and-repetition.md": "679fc949c627a1a39d40b4770d0468a3a122916dedaf28512cff5c2f69e4be27",
     "skills/flowdocmake/references/docs/developer/authoring/document-families/flowing-book.md": "0857275d08f9254c19c737698d63f022084a862206711c77ea0d28bf3d323cbc",
     "skills/flowdocmake/references/docs/developer/authoring/draft-selection.md": "f66b0a6d6f8823b890e67b5f04c2e23eb2c09dd059a5d4a83bc1e100b1a49724",

@@ -1,3 +1,4 @@
+import {registerFontHeightTools} from './font-height-tools.mjs';
 import {readFileSync} from 'node:fs';
 import {homedir} from 'node:os';
 import {join,resolve} from 'node:path';
@@ -41,6 +42,7 @@ async function preflight(){
 }
 serveStdio(()=>{
  const server=createAuthoringTools({baseUrl:config.url,token,previewDirectory:config.previewDirectory});
+ registerFontHeightTools(server,{z,config,token});
  server.registerTool('manage_document_task',{
   description:'Persist per-part unfinished authoring/review work separately from immutable preview runs. init from completed source inventory and coverage; read on resumption; update one part with expectedRevision; review binds coverage to a succeeded preview checkpoint and the real PDF. Only review can mark pass/complete. Does not mutate drafts or certify visual truth. A changed PDF requires fresh comparison. Use a thread Goal only when authorized by the user; this tool does not schedule work.',
   inputSchema:z.object({action:z.enum(['init','read','update','review']),taskPath:z.string().min(1),timeLimitMinutes:z.number().int().min(1).max(120).optional(),expectedRevision:z.number().int().min(0).optional(),inventoryPath:z.string().optional(),coveragePath:z.string().optional(),checkpointPath:z.string().optional(),partId:z.string().optional(),status:z.enum(['pending','authoring','needs-repair','needs-review']).optional(),note:z.string().optional()}).strict(),
@@ -69,6 +71,6 @@ serveStdio(()=>{
    const result=await response.json();return {content:[{type:'text',text:JSON.stringify(result)}],isError:!response.ok||result.ok===false};
   }catch{return {content:[{type:'text',text:JSON.stringify({ok:false,code:'IMAGE_FILE_UPLOAD_FAILED'})}],isError:true};}
  });
- server.registerTool('get_flowdocmake_context',{description:'First call for flowdocmake: read-only connection, authentication, pinned guide integrity, exact local Service/Core 0.4.0 and pinned Core artifact and PDF-reader preflight. Returns local guide paths. Do not mutate drafts unless ready=true.',annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},async()=>({content:[{type:'text',text:JSON.stringify(await preflight())}]}));
+ server.registerTool('get_flowdocmake_context',{description:'First call for flowdocmake: read-only connection, authentication, pinned guide integrity, exact configured candidate Service/Core and pinned Core artifact and PDF-reader preflight. Returns local guide paths. Do not mutate drafts unless ready=true.',annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},async()=>({content:[{type:'text',text:JSON.stringify(await preflight())}]}));
  return server;
 });

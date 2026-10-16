@@ -8,11 +8,11 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.2.1** targets **Service/Core 0.4.0 / Area18**. Invoke
+Candidate **0.2.2-dev.font-height.1** targets **Service/Core 0.4.1-dev.font-height.1 / Area18**; untagged and not installed. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
-and `manage_document_task` plus the three font tools (19 tools total). There is no publish tool.
+and `manage_document_task` plus the three font tools and two opt-in height tools (21 tools total). There is no publish tool.
 
 Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,
