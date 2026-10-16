@@ -837,8 +837,28 @@ Spec ข้อ 1–5 ครอบคลุมในช่วง 0–1/4; ข้�
 
 ## จุดเริ่มถัดไป
 
-ช่วง 1–6 และการรวม/ติดตั้งรุ่นที่เข้าคู่กันเสร็จแล้วตามขอบเขตข้างต้น.
-ขั้นถัดไปคือ reload Codex เพื่อใช้ native connection ใหม่; ใช้ fresh MCP/file-client ได้แล้ว.
+ช่วง 1–6 และการติดตั้งทดสอบรุ่นที่เข้าคู่กันเสร็จตามขอบเขตข้างต้น แต่ยังไม่ได้
+ออกรุ่น `0.4.0` ตามกฎ release. ผลรวม/ติดตั้งและ cleanup ข้างต้นเป็นบันทึกเหตุการณ์เดิม;
+การกล่าวว่า “รวมและติดตั้งเสร็จ” ไม่ยืนยันว่าปิดรุ่นใน Git ครบ.
+
+สถานะแก้ไขตามคำสั่งเจ้าของ 2026-10-16: งานล่าสุดอยู่ครบใน branch หลัก Core
+`codex/template-binding` และ Service `codex/template-registry`; `release` ถูกจัดใหม่
+ให้มีเฉพาะ 8 commit ที่มี tag. จุด `v0.3.0` ปัจจุบันคือ Core `57d1554` และ
+Service `9c433fa`, tree ของรุ่นเดิมไม่เปลี่ยน. ประวัติที่ใช้เป็นฐานก่อนแก้และงานฟอนต์
+ยังอยู่ใน branch หลักและ verified backups. `v0.4.0` ยังไม่มี.
+หลักฐานการรวม branch หลัก: `default-branch-integration.json`; หลักฐานจัด release:
+`release-history-backup-25691016-182954/step1-result.json`, ทั้งคู่ใต้
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/`.
+
+อ่าน [กฎ release และลำดับตรวจปัจจุบัน](flowdoc-export-working-release-rules-draft-2026-10-09.md)
+ก่อนเตรียมเอกสาร deploy/ชุดส่งมอบและออกรุ่น. คำสั่งปัจจุบันให้ปรับคู่มือเท่านั้น;
+หยุดก่อนนำ candidate ใหม่เข้า `release`, สร้าง tag รุ่นใหม่ หรือ deploy เพิ่ม.
+ผลปรับคู่มือ: ใช้คู่มือ release เดิมเป็นทางอ่านร่วมจาก README/AGENTS ของทั้งสอง
+repo, ตรวจ diff/ลิงก์และ Project Control `check:data` ผ่าน; ตรวจ remote refs และ
+8 tagged commits ทั้งสอง release ซ้ำแล้วไม่เปลี่ยน. เป็นการตรวจเอกสาร/ประวัติ Git
+ไม่ใช่ผลทดสอบผลิตภัณฑ์หรือการรับรอง deploy เพิ่ม.
+ข้อค้างการใช้งานที่บันทึกไว้ยังต้องตรวจตามบริบท: reload Codex เพื่อใช้ native
+connection ใหม่; ใช้ fresh MCP/file-client ได้ตามหลักฐานเดิม.
 การสร้าง PDF ของ sample เก่าที่รูปหมดอายุต้องนำต้นฉบับรูปเข้าใหม่ก่อน ไม่ใช่เปลี่ยนการอ้างฟอนต์ใน draft.
 ถ้าจะใช้ห้อง WORK แยกจริง ต้องตั้งรอบและ return controls ตาม Project Control ก่อนส่งงาน;
 แผนนี้ไม่สร้าง registry/locator/สิทธิ์ส่งข้อความแทนผู้ใช้.

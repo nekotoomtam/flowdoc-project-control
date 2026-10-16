@@ -1,23 +1,28 @@
-# FlowDoc Export — ร่างกติกาทำงานและออกรุ่น
+# FlowDoc Export — กติกาทำงานและออกรุ่น
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: DRAFT for owner review, 2026-10-09.
+Owner: FlowDoc Project Control. Created 2026-10-09; release rules confirmed and
+updated by owner instruction, 2026-10-16. Other proposed working rules retain
+their stated proposal scope. The existing filename is retained for incoming links.
 Role: Planning Partner / Documentation Synthesizer. Scope: Core/Service export
 development and delivery conventions; not a replacement workflow authority.
 Governed by [Workflow economy policy](flowdoc-workflow-economy-policy.md).
-This records owner-agreed version principles and proposed working rules; it is
+This records owner-agreed version/release principles and proposed working rules; it is
 not product Evidence, release approval, or a change to runtime/DB/branches/tags.
 Single-room documentation work; execution/Phase/Checklist IDs N/A. Size small,
-risk routine. Document budget: this draft and a link in the existing cell plan.
-Proof budget: consistency with current export conventions, diff/link review and
-Project Control check:data. No separate execution or review room is requested.
+risk routine. Current documentation maintenance covers this guide, the existing
+font plan, and the Core/Service README and AGENTS entrypoints; no new guide.
+Proof budget: live Git refs/tag/snapshot checks, diff/link review and Project
+Control check:data. No separate execution or review room is requested.
 
 ## ใช้เอกสารนี้อย่างไร
 
 สำหรับห้องที่มารับต่องาน ให้เริ่มจาก
 [จุดเริ่มอ่าน Cell Content](flowdoc-cell-content-handoff-2026-10-09.md)
-ก่อน เอกสารนั้นเชื่อมเป้าหมาย สถานะ ข้อตกลง และขั้นถัดไป; ไฟล์นี้เป็นเฉพาะ
+เมื่องานเป็น Cell Content; เอกสารนั้นเชื่อมเป้าหมาย สถานะ ข้อตกลง และขั้นถัดไป.
+สำหรับการออกรุ่น Core/Service อ่านกติกาและลำดับตรวจในไฟล์นี้ แล้วใช้แผนของงานที่จะส่งมอบ;
+ไม่ต้องอ่านแผน cell เพื่อออกรุ่นอื่น. ไฟล์นี้เป็นเฉพาะ
 กติกาทำงาน/ออกรุ่น ไม่ใช่บริบทส่งต่องานครบชุด
 
 เก็บกติกาเฉพาะงาน export ไว้ที่ Project Control เพื่อให้แต่ละรอบทำงานต่อกันได้
@@ -69,6 +74,69 @@ Core พร้อม checksum/source provenance ให้ตรวจได้�
    หลังรับงานและ integrate ให้ cleanup เฉพาะ worktree/branch ชั่วคราวที่ clean/merged
    ตามนโยบายหลัก เก็บ development/release และสถานะที่ยังไม่จบไว้
 
+## กฎของ branch release ที่เจ้าของยืนยัน
+
+`release` เก็บ snapshot หนึ่ง commit ต่อรุ่นที่รับแล้ว ทุก commit ที่เข้าถึงได้จาก
+branch ต้องมี annotated tag `v<version>` ของรุ่นนั้นบน GitHub ด้วย ไม่ตรวจเพียง
+first-parent เพราะ merge parent สามารถพาประวัติพัฒนาที่ไม่มี tag เข้ามาได้.
+รุ่นแรกมี root ของตนเอง; รุ่นถัดไปมี parent เดียวเป็น release รุ่นก่อนหน้า.
+ห้าม merge หรือ fast-forward ประวัติ development เข้า `release` โดยตรง รวมถึง
+merge commit ที่พาอีกสายประวัติเข้ามา. เก็บรายละเอียดงานไว้บน development branch.
+Snapshot ใช้ไฟล์ครบจาก candidate ที่ตรวจแล้ว และระบุ source commit ในข้อความ commit;
+ต้องตรวจว่า tree ของ candidate กับ snapshot ตรงกันทุกไฟล์.
+
+ก่อนเริ่มต้องตรวจ default branch จาก GitHub จริง ไม่อนุมานจากชื่อ `main` หรือ
+`release`. ตรวจ working tree, local/remote tips, รุ่น release ล่าสุด, tag และ
+candidate ที่จะใช้ให้ตรงกัน. การเปลี่ยน package version หรือการติดตั้งทดสอบ
+ไม่ถือว่าออกรุ่นแล้ว และคำอนุญาตติดตั้งไม่ข้ามขั้นเอกสาร/แพ็กเกจ/อนุมัติออกรุ่น.
+
+## ลำดับตรวจและจุดหยุดก่อนออกรุ่น
+
+1. **เตรียมบน development:** ระบุ source commit, ขอบเขต, คู่ Service/Core และ
+   ข้อจำกัดในบันทึกเดิม. อัปเดต README/คู่มือใช้งาน คำสั่ง setup/migration และ
+   วิธี deploy/ตรวจหลังติดตั้ง/กู้คืนที่ตรงกับรุ่นนั้นก่อนตรึง candidate.
+   แยกขั้นตอนที่ตรวจจริงกับที่ยังไม่ได้ตรวจ; ไม่คัดลอกค่าลับลงเอกสาร.
+2. **ตรวจชุดส่งมอบ:** version ใน package/lock/คู่มือและแพ็กเกจต้องสอดคล้อง;
+   Service ตรึง Core tarball พร้อม checksum/source provenance. ตรวจ artifact ที่
+   จะส่งจริงและ affected consumers; งาน PDF ตรวจผลทุกหน้าตามขอบเขต. ผลเดิมใช้ซ้ำ
+   ได้ตาม workflow policy เท่านั้น; FAIL/skipped/unverified ต้องแสดงและไม่ใช้ปิด gate.
+3. **ตรวจสิทธิ์และสร้าง snapshot:** แก้ prerequisite ที่ยังค้างหรือรับ owner decision
+   ตามอำนาจก่อน; ใช้คำอนุญาตออกรุ่นที่ครอบคลุม. สร้าง snapshot จาก tree ที่ตรึงไว้
+   ต่อจาก release รุ่นก่อน ตรวจ tree equality, parent เดียว และ source commit.
+   การมีโค้ดพร้อมบน development ไม่อนุญาตขั้นนี้เอง.
+4. **tag และส่ง:** สร้าง annotated tag ให้ snapshot รุ่นนั้น ตรวจทั้งสายว่าแต่ละ
+   commit มี tag แล้วจึงส่ง branch กับ tag ที่จำเป็นพร้อมกันด้วย atomic push.
+   ตรวจ remote tips/tag targets หลังส่งก่อนรายงานว่าออกรุ่นแล้ว. GitHub Release,
+   การ publish package/image และการ deploy เป็นคนละขั้น ต้องมี scope/สิทธิ์ของตน.
+5. **ปิดงาน:** บันทึก development source, snapshot/tag, คู่รุ่น/checksum, ผลตรวจ
+   และข้อจำกัดแยกกัน. หลัง deploy ตรวจรุ่นที่รันจริงและผลใช้งานตามแผนก่อนเรียก
+   ว่าติดตั้งผ่าน. หากข้อมูลเปลี่ยนกลับไปตรวจ affected areas ตามนโยบายหลัก.
+
+หยุดก่อนแตะ `release` เมื่อคู่มือ/deploy prerequisites ยังไม่ครบ, source หรือ
+รุ่นไม่ชัด, mandatory checks ยังไม่ผ่าน หรือคำอนุญาตไม่ครอบคลุม.
+การแก้คู่มือครั้งนี้ไม่อนุญาตขั้น 3–4 หรือ deploy รุ่นถัดไป.
+
+## สถานะที่ตรวจแล้วและข้อยกเว้นวันที่ 2026-10-16
+
+| Repo | Development/default branch | release และ tag v0.3.0 |
+| --- | --- | --- |
+| Core | `codex/template-binding` | `57d1554` |
+| Service | `codex/template-registry` | `9c433fa` |
+
+ทั้งสอง `release` มี 8 commit/8 annotated tags ตั้งแต่ `v0.1.0` ถึง `v0.3.0`
+(ไม่ใช่ทุกเลขเวอร์ชันระหว่างนั้น); ไม่มี commit ไม่มี tag ใน ancestry.
+ชุดพัฒนาฟอนต์มี package version `0.4.0` อยู่บน development แต่ยังไม่มี release/tag
+`v0.4.0`. การติดตั้งทดสอบก่อนหน้านี้ไม่ใช่การออกรุ่น 0.4.0 ตามกฎนี้.
+
+เจ้าของอนุมัติเฉพาะครั้งให้จัดประวัติ `release` ใหม่และย้าย tag `v0.3.0` เพื่อ
+ตัดประวัติพัฒนาที่เคยรวมผิดออก; tree ของ 0.3.0 เดิมเท่าเดิม, อีก 7 tag ไม่เปลี่ยน,
+branch หลักและงานล่าสุดคงครบ. มี verified Git bundles ก่อนแก้ทั้งสอง repo.
+นี่ไม่ยกเลิกกฎห้ามย้าย tag/เขียนทับ artifact สำหรับการออกรุ่นปกติ.
+หลักฐาน: `step1-result.json` และ `prepared-step1.json` ใน
+`C:/Users/nekot/Documents/Codex/2026-10-16/font-library-deployment/release-history-backup-25691016-182954/`.
+การแก้ปัญหาลักษณะนี้ในอนาคตต้องสำรอง เสนอผลกระทบและ old/new refs แล้วรับ
+คำอนุมัติเฉพาะจากเจ้าของก่อนเปลี่ยนประวัติ/tag ที่เผยแพร่; ห้ามทำอัตโนมัติ.
+
 ## ตัวอย่างสำหรับงาน cell ปัจจุบัน
 
 เตรียมแผนผังเซลล์รวมเสร็จแต่ยังไม่ต่อกับ layout → commit ก่อน
@@ -79,6 +147,7 @@ Core พร้อม checksum/source provenance ให้ตรวจได้�
 
 ## สถานะและสิ่งที่ยังไม่ทำ
 
-ร่างนี้บันทึกหลักที่ตกลงไว้และเสนอวิธีใช้ ยังรอ owner review ของกติกาทำงาน
-ไม่เพิ่ม automated release pipeline, ไม่เปลี่ยนชื่อ branch, ไม่ออกเวอร์ชันหรือ tag
+หลักเวอร์ชันและกฎ release ข้างต้นเป็นข้อตกลงที่เจ้าของยืนยัน; กติกาทำงานทั่วไป
+ที่ยังเป็นข้อเสนอไม่ได้กลายเป็นอำนาจอัตโนมัติ. การปรับคู่มือรอบนี้ไม่เพิ่ม
+automated release pipeline, ไม่เปลี่ยนชื่อ branch, ไม่ออกเวอร์ชันหรือ tag
 และไม่เลื่อนงาน area/array กลับมาเป็น prerequisite ของ cell slice
