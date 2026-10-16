@@ -172,19 +172,19 @@ Sarabun มี r=586/1000 จึงได้ `16 × 0.4 / 0.586 ≈ 10.9215017 p
 
 ### ช่วง 4 — ตรวจร่วมใน PDF และเตรียมส่งมอบ
 
-- [ ] ใช้ static ความกว้างปกติของเจ็ดตระกูลที่มี: ฐาน TH, Sarabun, IBM Plex Sans Thai,
+- [x] ใช้ static ความกว้างปกติของเจ็ดตระกูลที่มี: ฐาน TH, Sarabun, IBM Plex Sans Thai,
   Pridi และสามตระกูลใหม่. ทดสอบหลายขนาด เช่น 10/16/24 pt พร้อม face ที่มีจริง;
   Pridi/Noto ที่ไม่มี italic ต้องรายงานตามจริง ไม่ถือว่า PASS กรณีที่ไม่มี.
-- [ ] สร้างเอกสารทดสอบสั้น แยก same-pt และ height-adjusted; ไทย/อังกฤษ/ตัวเลข,
+- [x] สร้างเอกสารทดสอบสั้น แยก same-pt และ height-adjusted; ไทย/อังกฤษ/ตัวเลข,
   สระบนล่าง/วรรณยุกต์, หลายบรรทัด, ช่องแคบ และตาราง. รักษาเอกสารเดิมด้วย draft ใหม่.
-- [ ] validate/save/open/preview ผ่าน consumer จริง; เก็บ PDF/path/hash/render ทุกหน้า,
+- [x] validate/save/open/preview ผ่าน consumer จริง; เก็บ PDF/path/hash/render ทุกหน้า,
   ตรวจข้อความครบ ฟอนต์ฝังตรง selection การใช้ pt และ lineHeightPt เดิม.
   ยอมให้ความกว้าง/จุดตัดบรรทัดต่าง แต่ห้ามข้อความหายหรือสระถูกตัดโดยไม่รายงาน.
-- [ ] ยืนยันนิยามการวัดตรงกันใน runtime; ไม่ตัดสินผ่านจากภาพหน้าจออย่างเดียว
+- [x] ยืนยันนิยามการวัดตรงกันใน runtime; ไม่ตัดสินผ่านจากภาพหน้าจออย่างเดียว
   และไม่บังคับ bounding box ของทุกคำเท่ากันเพราะเทียบเฉพาะยอด บ.
-- [ ] ตรวจ ordinary pt/legacy Sarabun, profile absent, retired, default change และ
+- [x] ตรวจ ordinary pt/legacy Sarabun, profile absent, retired, default change และ
   save/reopen/clone regression ตามผลกระทบจริง. ทบทวนผลครบตามเกณฑ์ข้างต้น.
-- [ ] เตรียมเอกสาร/แพ็กเกจ/compatibility ตาม release rules ก่อนเสนอส่งมอบ;
+- [x] เตรียมเอกสาร/แพ็กเกจ/compatibility ตาม release rules ก่อนเสนอส่งมอบ;
   การวางแผนนี้ยังไม่อนุญาต tag/push/install/deploy.
 
 ## 6 ขอบเขตที่ยังไม่ทำและเงื่อนไขหยุด
@@ -195,7 +195,8 @@ flow ที่จำเป็น ให้ระบุ dependency และแ�
 ใช้ ordinary pt เป็นทางเลือกเมื่อ helper ใช้ไม่ได้. อย่าขยายเป็นระบบ scale runtime
 หรือย้าย pt เอกสารเดิมเพื่อให้ fixture ผ่าน.
 
-สถานะล่าสุด: ช่วง 0–3 เสร็จตามขอบเขตข้อ 7–10; ช่วง 4 ยังไม่ลงมือ.
+สถานะล่าสุด: ช่วง 0–4 เสร็จตามขอบเขตข้อ 7–11; เป็น candidate ที่ตรวจแล้ว
+ยังไม่รวม branch, ออก release/tag, push หรือติดตั้ง.
 ผลสำรวจ Chromium และ numeric oracle ไม่ใช่การรับรอง runtime/PDF.
 
 ## 7 ผลช่วง 0 — สัญญาที่ปิดก่อนพัฒนา
@@ -529,3 +530,63 @@ fixture ใช้ isAbsolute เพื่อรองรับ temp paths Window
 ผลนี้เป็น candidate ที่ตรวจแล้ว ไม่ใช่ release/tag/push/install หรือการเปลี่ยนฐาน/คลังจริง.
 ข้อ 8–9 คงผลตามเวลาเดิม. ขั้นต่อไปคือช่วง 4 ตรวจ PDF หลังปรับ pt ทุกหน้าและเตรียมส่งมอบ;
 ผล PDF regression เดิมในช่วงนี้ไม่ใช่ visual acceptance ของเอกสารหลังปรับความสูง.
+
+## 11 ผลช่วง 4 — ตรวจ PDF ทุกหน้าและเตรียมชุดส่งมอบ
+
+Authority คือคำขอเจ้าของและแผนช่วง 4 แบบ single-room inline; execution IDs
+ไม่เกี่ยวข้อง. Owners: Service สำหรับ fixtures/checkers และคู่มือ; Project Control
+สำหรับบันทึกและ FlowDocMake. Role Product Implementation Agent / Evidence Reviewer.
+Scope/risk medium / routine. ไม่เปลี่ยน product runtime; ใช้แผนและ README/usage เดิม
+ไม่เพิ่ม mandatory AI reading. Branch candidates คือ `codex/font-height-stage4`.
+
+Service commit `216960acef2ddda693d6df882d0fa7329b5c8f2b` ใน worktree เดิมของช่วง 2.
+Core คง `b8abb8d405b5711f364ec2ac22baea7d7669a453` กับ vendor SHA256
+`26b1dcae3ed34bd60db2cbe1f088d06ce2ad1309941657c029ac47844ca231c4`.
+FlowDocMake code คง `6896acf1f14595ef2a5773b953d2a373473145b4`;
+source archive จาก Project Control `b83d0259e927bba3d9644464fc00cce24c2917db`.
+Candidate versions: Service/Core `0.4.1-dev.font-height.1`, FlowDocMake
+`0.2.2-dev.font-height.1`. ไม่แก้ installed cache หรือคลัง/เอกสารจริง.
+
+| เกณฑ์ | ผลและหลักฐาน |
+| --- | --- |
+| เจ็ดตระกูล / 20 faces จริง | TH Sarabun New 1.35 custom, Sarabun, IBM Plex Sans Thai, Pridi, Noto Sans Thai Looped, Noto Serif Thai, Prompt; admin API intake/review/profile ในฐานแยก |
+| review ก่อน activate | 21 review PDFs / 21 หน้า รวม Sarabun default รุ่นสอง; render และตรวจภาพทุกหน้าก่อน approve/activate |
+| same-pt / adjusted | native MCP → Service → PDF; เจ็ด specimen สองหน้าต่อตระกูล ที่ 10/16/24 pt พร้อม face จริง ไทย/อังกฤษ/เลข สระบนล่าง วรรณยุกต์ หลายบรรทัด ช่องแคบและ native table |
+| ข้อความ/face/pt/geometry | checkFontHeightPdf.py ตรวจทุก text span และ embedded subset outlines เทียบ source hash; Regular บ baseline-to-top ตรงฐาน 21 กรณี ภายใน 0.00001 pt; lineHeight และ definition ส่วนอื่นไม่เปลี่ยน |
+| visual ทุกหน้า | 14 author PDFs / 25 หน้า รวม regression; รวม review เป็น 35 PDFs / 46 หน้า ผ่านภาพและ automated checks ไม่มีข้อความหาย สระตัด กล่องแทนอักษร หรือ overflow ที่พบ |
+| default change | draft เดิมคง definition/fingerprint และ PDF byte-identical; default ใหม่เลือกได้ รุ่นไม่มี profile ใช้ ordinary pt/PDF ได้ helper คืน PROFILE_MISSING |
+| retired | เอกสาร/สำเนาคง exact tuple และ PDF byte-identical; helper ใช้ retained rights เดิม ขณะที่ fresh JSON ถูก readiness/helper ปฏิเสธ |
+| Sarabun เดิม | schema1 save/open/clone/preview คงเดิม PDF สำเนา byte-identical; helper คืน LEGACY_STYLE_UNSUPPORTED |
+| backup/restore | DB/files คืนสู่ฐานใหม่ ตรวจ 11 drafts / 14 PDF bindings และ profile/receipt; confirm replay ไม่เพิ่ม revision, propose ใหม่ได้, preview byte-identical; migration replay applied[] |
+| runtime จริง | restore/preview ผ่าน production target ไม่มี dev dependencies; image sha256:776d970ffe749fa1f83f1ce033731e1688f1c398fcbfc907137fe2c0f4dfd0f4 |
+
+Checks ใหม่: guard suite 4/4, FlowDocMake focused 6/6 ไม่มี skip, node syntax,
+vendor pin และ diff checks ผ่าน. Reuse Service ช่วง 3 จำนวน 86 tests โดยตรวจ identity
+ของ src/package/lock/vendor/runtime/migrations/Dockerfile ที่ไม่เปลี่ยน;
+ไม่อ้างว่ารัน 86 tests ใหม่. Project Control check:data ผ่านหลังบันทึกผล.
+
+ผู้ตรวจอิสระพบ P2 สองข้อ แก้ด้วย reproducer RED → GREEN: prepare/activate ต้องผ่าน
+Docker-backed native preflight ก่อน admin action เพื่อปฏิเสธ URL ที่ไม่ตรง container;
+และ README ต้องตรง Core tarball/image/migration 020 ปัจจุบัน. ไม่มี deferred minors.
+ผู้ตรวจเว้นวินิจฉัย final commit-bound bundle ให้ผู้ทำตรวจ และ production release/install
+อยู่นอกขอบเขต. Fixture แรกใช้ Area18 shape ผิด และ glob checker นับ clone ซ้ำ;
+แก้เฉพาะ verification input/checker เก็บ failure logs ไม่ผ่อนเกณฑ์หรือเปลี่ยน runtime.
+
+หลักฐานถาวร: `C:/Users/nekot/Documents/Codex/2026-10-16/font-height-stage4/`
+มี state/receipts, PDF hashes, renders ทุกหน้า, pdf-verification.json,
+specimen-visual.json, review-visual.json, restore proof และ scoped logs.
+`flowdoc-font-height-candidate.zip` รวม Service/FlowDocMake source archives,
+Core tarball, PDF หลักฐาน, original license texts เจ็ดตระกูล และ font inventory.
+delivery.json ตรึง commits/versions/checksums; delivery-check.json ตรวจ Git objects
+และ raw migration bytes; delivery-archive.json เก็บ SHA256 ของ bundle.
+ชุดส่งมอบ 6,832,907 bytes; SHA256
+`789fe7c0b8d9fe96c676c57d68331f19d4318c1a1f23b7007111fb1fa41166f2`.
+ตรวจ 71 files ใน manifest ผ่าน. ไม่รวม token/config, DB dump หรือ full font source files
+ในชุดแจกจ่าย; backup ฐานทดสอบเก็บแยก ไม่ใช่ backup ข้อมูลผู้ใช้จริง.
+
+ข้อจำกัดตามสัญญา: เทียบยอด บ เท่านั้น ความกว้าง/การตัดบรรทัด/สระต่างได้.
+IBM, Pridi และ Noto ทั้งสองตระกูลไม่มี italic ที่ส่งมา จึงตรวจการปฏิเสธทั้งสี่กรณี
+ไม่สร้าง synthetic face. ordinary pt ยังคงเป็นหลัก ไม่มี auto-fit/fallback.
+ลบเฉพาะสี่ container ทดสอบช่วงนี้ เก็บ branches/worktrees ที่ยังไม่รวม.
+ผลเป็น development candidate ที่ตรวจแล้ว ไม่ใช่การรวม branch หรือ release/tag/push/install.
+ขั้นถัดไปต้องมีคำสั่งแยกสำหรับการรวมงานและออก release ตามกฎเดิม.
