@@ -632,3 +632,24 @@ Cleanup จำกัด branches/worktrees ของงานฟอนต์ท�
 แนวคิดคือเทียบผลจัดหน้าก่อน–หลังด้วยข้อมูลเดียวกัน และชี้ผลต่อช่อง/แถว/ตาราง/หน้า
 โดยไม่ปรับ layout อัตโนมัติ. ยังไม่ใช่สัญญาที่อนุมัติหรือคำสั่งพัฒนา;
 กลับมานิยามรายละเอียดภายหลัง ไม่เพิ่ม prerequisite ให้การรวมงานรอบนี้.
+
+### ตรวจ branch ที่เก็บไว้หลัง cleanup — 2026-10-17
+
+ตามคำขอเจ้าของ ตรวจ `codex/b1-stage5-plan` ที่ commit
+`b8bed03ea66c3ff7832d97e7121637579e40b41f` แล้วเป็นรอบ B1 เก่าที่ cancelled
+ก่อน discovery: มีเพียง blocker records, generated projection และ queue test adjustment;
+ไม่มี product code หรือ WORK ที่กำลังดำเนินการ. ไม่มี worktree ของ PLAN/WORK เดิมแล้ว.
+ไม่ใช่งานฟอนต์ และไม่ใช่ Stage 6 ที่ยังมีขอบเขตค้างแยกต่างหาก.
+
+คุณค่าที่ต้องเก็บคือ diagnostic ของสอง prerequisite เดิม. บน main มี prerequisite
+repair `59f5aa8a73c38b379f354bea21f63f732b824a23`, fresh B1 discovery/implementation
+และ Evidence `evidence-core-private-stage5-20260927` ที่ตรึง Core `17d8986` แล้ว.
+จึงไม่ใช้ blocked Work เก่าเปิดงานซ้ำหรือแทนสถานะรอบใหม่.
+
+ตัดสิน retire ชื่อ branch โดยเก็บ commit/history เดิมเป็น parent ของ archival merge
+บน main ด้วย ours strategy; current records/tests/generated tree คงของ main ทั้งหมด
+เพิ่มเฉพาะบันทึกการ reconciliation นี้. ไม่ถือเป็น acceptance หรือการเปิดรอบเก่าใหม่.
+สำรอง Git bundle ที่ verify แล้วและ zip ของ diagnostic records ที่
+`C:/Users/nekot/Documents/Codex/2026-10-17/b1-stage5-branch-cleanup/`.
+ลบ branch หลังเป็น ancestor ของ main และ check:data/diff ผ่าน;
+ไม่มี remote branch ชื่อนี้ จึงไม่มี remote deletion. ไม่เปลี่ยน product/release/tag.
