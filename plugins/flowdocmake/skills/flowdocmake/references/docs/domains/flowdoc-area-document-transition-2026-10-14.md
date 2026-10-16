@@ -977,11 +977,11 @@ Owner Core; Service ตรวจ consumer จากแพ็กเกจจร�
 composition/validateResolvedDocument.ts, binding/expandAreas.ts,
 layout/documentFlow.ts, pageBands.ts และ tests ของ cover/Area/page flow.
 
-- [ ] เขียน failing case ของปกที่ติด fixed-height ใน Area แล้วเพิ่มความสามารถ
+- [x] เขียน failing case ของปกที่ติด fixed-height ใน Area แล้วเพิ่มความสามารถ
   ภายใต้กฎ layout ที่ปิดไว้; ไม่ให้ Area ยึดการตั้งหน้าหรือหัว–ท้ายแทน Section.
-- [ ] สร้าง fixture สั้น Section เดียวที่แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา
+- [x] สร้าง fixture สั้น Section เดียวที่แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา
   พร้อม page breaks และ band mode เดิม; ใช้ native nodes ไม่ทำภาพเต็มหน้า.
-- [ ] ตรวจ first/continuation bands, cover overflow, ไทย/รูปภาพ/ตาราง, เนื้อหา
+- [x] ตรวจ first/continuation bands, cover overflow, ไทย/รูปภาพ/ตาราง, เนื้อหา
   หลายหน้า และ leading/repeated/trailing break. ข้อห้าม Area ซ้อนยังคงชัดเจน.
 
 **ผลส่งมอบ:** PDF สั้นที่แสดงการประกอบตาม docx concept ได้จริง ตรวจทุกหน้า
@@ -1346,3 +1346,81 @@ FlowDocMake Node checks **22 PASS / 0 FAIL / 4 SKIP**; skipped ต้องใ�
 หรือ published history. ไม่ทำ Area cover/scoped TOC/ปรับแม่แบบ/ระบบภาพ หรือ
 เครื่องมือ conversion18→19ในช่วงนี้. Candidate อยู่บน task branches เพื่อทบทวน;
 ยังไม่ merge/push/deploy. ขั้นถัดไปตามแผนคือช่วง2เมื่อเจ้าของสั่ง.
+
+### รวม branch หลักและปิด lane — 2026-10-17
+
+เจ้าของสั่งรวมช่วง1เข้าตัวหลักและเคลียร์ก่อนข้อถัดไป. Role Lane Reconciliation
+Reviewer / Project Control Steward; single-room inline, execution IDs N/A.
+รวมแบบ fast-forward ตรงกับ candidate ที่ตรวจแล้ว ไม่มี conflict/แก้ product เพิ่ม:
+Core `codex/template-binding` → `aabbb69`, Service `codex/template-registry` →
+`4f834be`, Project Control `main` → `3b652ef` ก่อนเพิ่มบันทึกปิด lane นี้.
+คงชื่อ branch หลักเดิมตามข้อตกลง ไม่ใช่การเปลี่ยนชื่อเป็น main ทั้งหมด.
+
+ตรวจ HEAD/tree, clean status และ vendored Core SHA256 ตรงกับชุดเดิม;
+ใช้ผล Core617, packed consumer, Service307/6skip + affected20 และ native MCP/PDF
+ข้างบนซ้ำตามกฎ unchanged fast-forward. ไม่ถือ skipped ว่า PASS และไม่ rebuild
+ตัวเชื่อมที่ติดตั้งเพียงเพื่อรวม source. บันทึก identity/reuse ใน
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage1/main-integration.json`.
+เก็บ ignored Core artifacts จาก lane ไว้ที่ `preserved-core-artifacts/`
+ใต้โฟลเดอร์หลักฐานเดียวกัน พร้อมตรวจ hash รายไฟล์ใน `preserved-core-artifacts.json`.
+ตำแหน่ง worktree ใน logs เก่าเป็น provenance; ใช้สำเนาที่เก็บนี้หลัง cleanup.
+
+ขอบเขต cleanup คือ worktrees และ local task branch `codex/section-area-stage1`
+ของทั้งสาม repo หลังยืนยันว่า clean/merged/ไม่มีผู้ทำงานค้าง; เก็บ primary branches,
+release/tags และหลักฐานไว้. Packaged FlowDocMake snapshot คง sourceCommit ที่ผ่าน
+การตรวจของ candidate เดิม; บันทึกสถานะการรวมนี้ไม่เปลี่ยน package/runtime contract.
+ยังไม่ push, tag, release, deploy, เปลี่ยน live drafts หรือเริ่มช่วง2.
+ผล cleanup: ลบ worktrees/local task branches ของทั้งสาม repo ครบแล้ว;
+Project Control lane เก็บ recoverable archived snapshot ผ่านเครื่องมือของแอป.
+แต่ละ repo เหลือ primary checkout ที่สะอาด; Core/Service คง release branch เดิม.
+
+## ผลช่วง 2 — Area cover ภายใน Section (2026-10-17)
+
+ขอบเขตตามคำสั่งเจ้าของ: Core implementation / Service packaged consumer /
+Project Control guidance และ FlowDocMake compatibility; single-room inline,
+execution IDs N/A. Role Product Implementation Agent → Evidence Reviewer.
+Markdown เป็น repo-owned code-adjacent guidance หรือ canonical Project Control
+ตามตำแหน่งเดิม; ไม่สร้างเอกสาร startup ใหม่หรือเลื่อน DOCUMENT_MAP.
+แยก lane `codex/section-area-stage2` ใต้
+`C:/Users/nekot/.codex/worktrees/section-area-stage2/` จาก Core `aabbb69`,
+Service `4f834be`, Project Control `7a54b13`.
+
+Core `5947536` เปิด fixed-height text เฉพาะ model19 authored Section flow roots
+และ Format ของ Area ที่วางเป็น root. ตรวจทั้ง authored graph และ resolved graph;
+parent/ownership checks กัน cell/repeat หลุดเข้าทาง root. ไม่แก้ตัวจัดหน้าเพราะ
+การวัดกรอบ/overflow/page breaks/bands เดิมรองรับสัญญาที่ปิดไว้แล้ว.
+fixed frame ต้องพอดีข้อความและ body ที่เหลือ; ล้มเหลวโดยไม่ตัด/ย่อ/เลื่อนกรอบ.
+Section ยังคุม pageLayout/header/footer; Area ซ้อนและ fixed ใน cell/repeat ยังห้าม.
+model18 คงสิทธิ์ปกและพฤติกรรมเดิม. ไม่มี logic ผูกชื่อ cover/approval/Format.
+
+Core/Service `0.4.2-dev.2`, FlowDocMake `0.2.3-dev.2`; development candidates
+ยังไม่ติดตั้ง/ออก tag. Core artifact SHA256
+`aa9a0923b174eccd86cac1571570f0dc2e1f8627e30fff844b020b14a9305da6`
+ตรง vendor manifest และ plugin pin. Contract ประกาศ `stage:2`, `coverArea:true`,
+`scopedToc:false`. คู่มือแก้ข้อยกเว้นสั้นในทางเข้าเดิมและ snapshot จาก canonical
+sources ที่ commit แล้ว ไม่เพิ่มเอกสารที่ AI ต้องอ่านก่อนเริ่ม.
+
+หลักฐาน `C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage2/`:
+
+- Core628 tests ผ่าน และ Linux/amd64 packed consumer ผ่าน รวม baseline18.
+  มี red ของ fixed Area ก่อนเปิด validation; tests ใหม่11 กรณีครอบคลุมกรอบ,
+  overflow, exact boundary, Section bands ทุก mode, page breaks และข้อห้าม.
+- `area-cover.pdf` 6 หน้า: Section เดียว แทรกปก/ผู้อนุมัติ/ประวัติ/บทนำ/เนื้อหา;
+  text/table/image เป็น native nodes. ตรวจภาพครบหน้า1–6 และ text/geometry:
+  42 บรรทัดตามลำดับครั้งเดียว, ไม่มีหน้าว่างแทรก, ปกไม่มีหัว–ท้าย,
+  หน้าต่อมีหัว–ท้าย, ภาพหน้า4 และไม่มีเนื้อหาชนขอบ/หัว–ท้าย (`pdf-review.json`).
+- Service309 tests ผ่าน/6 external checks ข้าม ไม่ถือว่า PASS. ตรวจบน DB แยก
+  ที่ migrate001–021 แล้ว (`service-accepted.json`); preview19 ตรึง schema2,
+  ส่ง overflow เป็น LAYOUT_FAILED และ PDF revision เดิมยังดาวน์โหลดได้.
+  แก้ assertion รุ่น renderer เก่าเป็น dev.2; ใช้ timeout15s ให้ CLI invalid URL
+  แทน5s ที่รอ DNS เกินเวลา. ไม่แก้ runtime เพื่อกลบ failure ของชุดตรวจ.
+- FlowDocMake22 tests ผ่าน/4 optional configuration checks ข้าม; native stdio
+  context ready:true จาก candidate API/DB แยกอีกฐาน ตรวจ actual Docker package
+  checksum/versions/port และ23 tools (`native-context.json`). ไม่ใช่ live install.
+- Fresh-context read-only review ไม่พบ Critical/Important/Minor; reviewer ตรวจ
+  fixed roots/cell/repeat/ownership/model18 และรัน11 tests ใหม่ผ่านอิสระ.
+
+PASS เฉพาะช่วง2ตามขอบเขตนี้. เก็บ task branches/worktrees ไว้ตรวจและรวมภายหลัง;
+ไม่เปลี่ยน primary branches, release/tags, installed plugin/runtime, สอง live drafts
+หรือ published history. ไม่ทำ scoped TOC ช่วง3/ปรับแม่แบบช่วง4/ระบบภาพใหม่.
+ขั้นถัดไปคือรอเจ้าของสั่งรวมงานหรือเริ่มช่วง3; ไม่เริ่มต่ออัตโนมัติ.

@@ -7,9 +7,11 @@ sourceSectionIds/expectedRevision/beforeSectionId/idempotencyKey กับ globa
 เมื่อชื่อชน. ต้องเป็นเจ้าของทั้งสอง draft; ปลายทาง revision0 ใช้ split-copy ได้.
 ผลคืน sectionIdMap/inserted และ revision ใหม่; source ไม่ถูกลบ. Whole clone ของ19
 คืน ID ใหม่เช่นกัน;18 คง semantics เดิม. ดู capabilities จาก contract ก่อนใช้:
-ช่วง1 ยังไม่เปิดปกใน Area/scoped TOC และยังไม่มีเครื่องมือแปลง18→19อัตโนมัติ.
+ช่วง2 ประกาศ `stage:2`, `coverArea:true`, `scopedToc:false`: ปกใน Area ใช้ fixed
+text roots ได้เฉพาะ flow หลักของ Section; preview เป็นผู้ตรวจ overflow จริง.
+ยังไม่มี scoped TOC หรือเครื่องมือแปลง18→19อัตโนมัติ.
 
-Authority Boundary: Project Control reference ของ local Area18 และ Section19 Stage1 authoring Service.
+Authority Boundary: Project Control reference ของ local Area18 และ Section19 Stage2 authoring Service.
 ไม่มีการอนุญาต publish จากเอกสารนี้; ตรวจ live get_authoring_contract ก่อนใช้งาน.
 
 ## 1. วงจรชีวิต
