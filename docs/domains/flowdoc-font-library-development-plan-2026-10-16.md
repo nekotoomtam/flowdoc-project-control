@@ -943,3 +943,14 @@ fresh MCP และ file-client ของ installed 0.2.1 ready=true แล้�
 `pdf-structural-visual-comparison.json`; พฤติกรรมจริง/หลัง restart:
 `usage-proof.json`, `post-restart.json`. สถานะตรวจครบยังเปิดตามสองช่องว่างข้างต้น;
 ไม่ถือ skipped/unavailable เป็น PASS และไม่ได้เผยแพร่ template ใด.
+
+ผลตรวจ native connection หลัง full restart: **PASS**. ยืนยัน old app/server
+PID 20072/21484 หยุด และ app/server ใหม่ PID 22196/9192 เริ่มจริง. ตัวช่วยรอบแรก
+เปรียบเทียบ DateTime ผิดและไม่ได้หยุดตัวเก่า; รอบแก้ใช้ UTC ticks และตรวจโปรเซส
+ใหม่หลังเวลา launch. หลังเปิด Docker และเจ้าของเปิด container เดิมสองตัวแล้ว
+เรียกผ่านแชตจริงได้ `ready=true`, FlowDocMake 0.2.1 / Core-Service 0.4.0 / SHA
+ตรงชุดติดตั้ง, tools 19, schema 1/2, คลัง 3 families/29 faces. Native readback
+เอกสารเดิมทั้ง 14 ฉบับ revision/fingerprint/readiness ตรงเดิม; retired readiness
+และสถานะ preview หลายฟอนต์เดิมผ่าน โดยไม่แก้ draft. ปิดเฉพาะข้อค้าง native
+connection; ข้อค้างรูปต้นฉบับ 6 ฉบับคงอยู่. หลักฐาน:
+`font-release-040-install/connection-diagnostics/native-chat-final.json`.
