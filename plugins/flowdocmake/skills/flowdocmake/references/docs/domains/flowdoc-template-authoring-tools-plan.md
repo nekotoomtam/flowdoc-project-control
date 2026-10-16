@@ -879,3 +879,64 @@ acceptance. Proof budget: focused package tests, installed preflight/skill check
 Goal activation evidence and one continued consumer trial. No broad release/RAM
 test or new Work/room records are needed. Remaining risk: declared review evidence
 does not itself prove honest visual inspection; parent reviews the actual result.
+
+Package implementation is installed as 0.1.4 (0.1.3 introduced task progress;
+0.1.4 repairs a consumer-exposed image alias ordering defect). Twelve focused
+tests pass, including stale task writers, retained part notes, exact-artifact
+review binding, invalidated prior passes, incomplete-delivery rejection, error
+categories and upload/finalize before sample validation. Installed preflight
+confirms 16 tools, ready=true, guide integrity and exact Service/Core 0.3.0.
+Skill validation passes. Source changes: `a53666a`, snapshot `3c164b4`, image
+repair `2191b2b`, snapshot `b68cbb5`. The pinned guide snapshot precedes this
+observed-outcome note intentionally; consumer instructions remain immutable.
+
+The existing consumer room activated its own unbudgeted Goal on the owner's
+explicit request. Its raw session records an active Goal and a subsequent turn
+with trigger `goal` immediately after a status final, without another parent
+continuation prompt. Thus automatic continuation is observed, not promised.
+It called `manage_document_task` over a fresh MCP client; its native MCP process
+still exposed older behavior, so discovery and fresh-client invocation remain
+distinct evidence. It independently uploaded the embedded original header image,
+advanced its target to revision 11, and began replacing flattened approval and
+revision pages with native editable tables. No parent draft/candidate/plan writes
+occurred. Parent changes were confined to package code/guidance and read-only
+review; package-update notices and concrete source-review feedback were sent.
+
+Consumer acceptance remains IN PROGRESS, not PASS. Parent reviewed output pages
+1-3 from `work/run-15/preview.pdf` (revision 11, SHA-256
+`0439aad419f976b33332a3e3c3702e467188c398fe8370f952150e020de2c675`).
+Header width, cover placement, approval borders/spacing, native TOC and other
+parts are unfinished. Its source-part notes also misidentified the cover title
+alignment and grouped distinct feature/requirement layouts; parent returned
+these observations for the room to verify and repair itself. Task progress stays
+incomplete and the Goal stays active. This proves continued execution and some
+independent repairs, not complete autonomous reconstruction or visual equivalence.
+No publication occurred. Full output inspection and delivery acceptance remain
+required before the consumer Goal can be completed.
+
+### Representative-first bounded retry, 2026-10-16
+
+Owner approves representative layout checks before full expansion, another
+independent consumer trial, a clear time break, no parent draft repairs and no
+publication. Previous Goal was paused on owner request after about 33 minutes,
+revision 20 / 86 pages, still incomplete; continuation alone was not acceptance.
+This is a bounded inline Project Control package/guidance change, not a new
+registered product WORK lane; execution IDs are not applicable. Core/Service
+remain 0.3.0. Scope: package 0.1.5, canonical guide, focused regression tests and
+the same consumer room with a fresh task clock. Parent never writes its candidate,
+plan, request, coverage or draft; inspection/review and stopping the trial remain
+allowed. Reuse the existing paused room; no new room requested.
+
+Acceptance: full-stage helper rejects absent/stale representative evidence for
+every declared source layout family, binds comparisons to exact definition and
+succeeded PDF, checks paired PNG files and page bounds. Representative passing
+does not establish visual truth; inspect images before expanding. All native
+formats must be demonstrated on representative real data before full data repeat.
+Deadline is 20 minutes from trial task initialization, same across runs/turns;
+parent pauses Goal at expiry or when further progress cannot meet the checkpoint.
+The clock is not reset for repairs. Stop is unsuccessful acceptance if the
+requested full PDF and whole-book review are not complete. No token budget was
+requested. Proof budget: focused tests (including rejection before mutation),
+installed guide/tool preflight, paired-image review and one bounded trial.
+Limits: local helper cannot police direct atomic-tool calls or certify semantic
+classification; instructions and supervising review cover those boundaries.

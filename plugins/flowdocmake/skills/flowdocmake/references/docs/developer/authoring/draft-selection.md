@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.4 client workflow over
+Owner: FlowDoc Project Control. Scope: flowdocmake 0.1.5 client workflow over
 Service/Core 0.3.0 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
@@ -159,3 +159,76 @@ If an existing room's native catalogue is stale after an upgrade, packaged
 `manage_document_task` with argument/result files. This is a real fresh MCP call,
 not evidence that the native catalogue refreshed. Never bypass tools with direct
 database/template-storage writes.
+
+## Representative pages before expansion
+
+In package 0.1.5, every candidate plan requires `stage` (representatives or full)
+and `taskPath`. Initialize a fresh task with `timeLimitMinutes` matching the
+owner's bounded trial (default 20). The deadline starts at task initialization,
+not at package installation. Keep the same task/deadline across all candidate
+runs and Goal turns. Read-only investigation and evidence retention can continue
+after expiry, but authoring must stop. The helper checks before every tool step;
+an already-running external call may finish. Atomic tools do not enforce this
+local deadline, so do not bypass it through them. The supervising room must also
+pause the Goal at the agreed deadline. `TRIAL_TIME_LIMIT` has category `stop`:
+call `update_goal` paused under the owner's time-limit authorization. Never label
+an expired trial complete, reset the clock, or extend it without owner approval.
+
+Use the whole-source inventory to classify distinct visual/semantic families,
+not only broad chapter names. Add `layoutFamilies: ["family-name"]` to every
+coverage part; use multiple entries or split parts when layouts differ. Examples
+across documents include cover, signatures, revision table, linked TOC, borderless
+definitions, narrative, grouped records, feature cards and requirement tables.
+These are examples, not a fixed SRS-only list. Inspect difficult cases too:
+long rows/text, continuation pages, mixed alignment, missing borders and differing
+header/footer rules. A layout family is not accepted merely by assigning a name.
+
+Build a representative request with real unshortened selected data, small enough
+to inspect before repeating it across the book. Declare the complete native
+formats needed for the eventual document in this definition. Use
+`stage: "representatives"` for those sample previews. This is a prerequisite,
+not a substitute for the requested full document. Keep the representative PDF
+and checkpoint. Render source and output pages to paired PNGs and open them.
+Compare measured font sizes, widths, borders, spacing, page rules, assets,
+alignment, header/footer, content and native semantics. Explicitly check that
+observations agree with the source, rather than copying earlier assumptions.
+
+Write a representative report locally, using this shape:
+
+```json
+{
+  "sourceSha256": "<source PDF hash from inventory>",
+  "definitionSha256": "<SHA-256 of exact candidate template.json bytes>",
+  "checkpointPath": "C:/work/reps/candidate-checkpoint.json",
+  "representatives": [{
+    "family": "borderless-definitions", "sourcePage": 10, "outputPages": [3],
+    "sourceImage": "C:/work/source/page-10.png",
+    "outputImage": "C:/work/reps/page-03.png",
+    "observations": {
+      "borders": {"source": "No rules around entries", "output": "No rules around native rows", "verdict": "pass"}
+    },
+    "differences": []
+  }]
+}
+```
+
+Include every observed family exactly once. `observations` requires all ten
+keys: font, columns, borders, spacing, pageRules, assets, alignment, headerFooter,
+content, structure. Each needs concrete source/output descriptions and verdict
+pass; do not write generic "matches" without actually measuring/looking. A
+non-applicable feature still needs a concrete explanation. Keep real differences
+open until repaired; never clear them to make the checker pass.
+
+For expansion, use `stage: "full"`, `representativeReviewPath` pointing to that
+report and the same `taskPath`. First run mode=check. The helper verifies family
+coverage, PDF identity/page bounds, PNG evidence files, comparisons, source and
+exact definition hash, and the definition recorded in the render checkpoint.
+It returns REPRESENTATIVES_REQUIRED with reasons when proof is missing/stale.
+Once it passes, expand the request data using those verified formats. A changed
+definition requires fresh representative inspection/report; changing only request
+data does not waive the eventual whole-book pagination/data/visual checks.
+
+This gate validates declared evidence and mechanics, not visual correctness.
+An independent reviewer should inspect the paired images before accepting the
+trial. If source classification or comparisons are wrong, reject the gate and
+repair the representative set before expanding, even if the tool returns checked.
