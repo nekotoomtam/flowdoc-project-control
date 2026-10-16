@@ -957,13 +957,13 @@ authoring/adapter.ts, authoring/service.ts, http/authoring.ts, tools/server.ts;
 migration ใหม่ถ้าผลช่วง 0 ต้องเพิ่ม storage contract. FlowDocMake scripts/schema
 และ compatibility ต้องสะท้อน contract จริง ไม่แปลงข้อมูลเองคนละกติกา.
 
-- [ ] เพิ่ม failing tests ตามสัญญาช่วง 0 แล้วทำ request identity/instance path
+- [x] เพิ่ม failing tests ตามสัญญาช่วง 0 แล้วทำ request identity/instance path
   ให้ผ่าน; ใช้ public Core validation และ packed artifact ใน Service.
-- [ ] ทำ clone/แยก/ต่อด้วย mapping ที่ตรวจครบ; clone เป็นข้อมูลอิสระ ชื่อกำกับไม่ใช่
+- [x] ทำ clone/แยก/ต่อด้วย mapping ที่ตรวจครบ; clone เป็นข้อมูลอิสระ ชื่อกำกับไม่ใช่
   data key. รักษา stable identities เมื่อแก้ข้อมูล/rename/reorder instance เดิม.
-- [ ] ตรวจ clone โครงเดิมซ้ำ, ชื่อซ้ำ, ID ซ้ำ/หาย/ไม่รู้จัก, request สลับลำดับ,
+- [x] ตรวจ clone โครงเดิมซ้ำ, ชื่อซ้ำ, ID ซ้ำ/หาย/ไม่รู้จัก, request สลับลำดับ,
   ข้อมูลต่าง owner, stale revision, retry และ rollback เมื่อ remap ไม่ครบ.
-- [ ] ตรวจ header/footer/local/global scopes, style/pageLayout/anchor references,
+- [x] ตรวจ header/footer/local/global scopes, style/pageLayout/anchor references,
   retained retired-font rights และการอ่านข้อมูลเก่าตาม version boundary.
 
 **ผลส่งมอบ:** โครงสังเคราะห์สอง Section instances ที่ข้อมูลไม่ปนกันผ่าน Core →
@@ -1269,3 +1269,80 @@ variants), links ครบ, `git diff --check` และ `npm run check:data` �
 `check-examples.py` และ `example-check.json`. ตัวตรวจตรวจเฉพาะสัญญาและ references
 ในตัวอย่าง ไม่ใช่ full Core schema validator, Service integration หรือ PDF test.
 ไม่มีการแก้ product code, live templates, DB, package versions หรือ DOCUMENT_MAP.
+
+## ผลช่วง 1 — Section identity และ API — 2026-10-17
+
+**Authority Boundary:** ผล candidate ของช่วง1 ที่เจ้าของสั่งต่อจากช่วง0;
+ไม่ใช่ release/installation หรือผลช่วง2–5. ส่วน “ยังไม่เริ่มช่วง1” ด้านบนบันทึก
+สถานะ ณ จบช่วง0 เท่านั้น. Active role Product Implementation Agent ตามด้วย
+Evidence Reviewer; owners Core/Service และ Project Control สำหรับ FlowDocMake.
+Single-room inline; execution/Phase/Checklist IDs N/A; ใช้ checklist ช่วง1 ในเอกสารนี้.
+
+ขอบเขต/แผนปฏิบัติ: Work Size large, Risk routine พร้อมความเสี่ยง ID reuse,
+scope collision, migration และ retained-resource rights. แยก worktrees ที่
+`C:/Users/nekot/.codex/worktrees/section-area-stage1/` จาก Core `6cd25ca`,
+Service `ee11ae8` และ Project Control `7acbd88`. ใช้ inline implementation
+ตามแผนเดิม ไม่เปิด execution เก่าหรือ WORK room. ใช้โมเดลที่ host ตั้งให้ห้องนี้
+โดยไม่ override; availability อ้าง tool catalog ของ host รอบนี้. Proof budget:
+Core identity/legacy tests + packed consumer, Service SQL/API/MCP/retained-font
+tests และ review เฉพาะ diff. Document budget: อัปเดต record/คู่มือเดิมและสร้าง
+snapshot ตาม generator; ไม่มีคู่มือเริ่มอ่านหรือ DOCUMENT_MAP ใหม่.
+
+### พฤติกรรม candidate
+
+- Core/Service `0.4.2-dev.1`, FlowDocMake `0.2.3-dev.1`; model19 ช่วง1 คู่กับ18.
+  รับ array ตาม public Section IDs; ลำดับ definition เป็น authority; ชื่อซ้ำได้.
+  prepared schema2 ตรึง model19/fingerprint;18ยังใช้ object input/schema1 เดิม.
+- Create Section, import/append และ split-copy ผ่าน HTTP/MCP; whole19 clone คืน
+  sectionIdMap ใหม่. Remap Section/Area/Format/style/layout และ references;
+  แยกค่าระดับ section/header/footer/local และ promote เฉพาะ globals ที่นำเข้าใช้.
+  Whole clone คง globals ของหนังสือใหม่. Origin มาจาก server; font/assets คง external IDs.
+- ตรวจทั้งสอง owner/revisions, lock ตามลำดับเดียว, atomic rollback และ retry receipt.
+  Migration021 เพิ่ม ledger กันใช้ public ID ที่ลบกลับมาใหม่ (`SECTION_ID_REUSED`),
+  รองรับ model19 ใน ownership/job pin โดยคงเงื่อนไข immutable input และ pin18 เดิม.
+  Full save ห้ามสลับ18↔19ทับ draft เดิม (`VERSION_MISMATCH`).
+- Retired fonts สืบทอดได้เฉพาะ exact tuple จาก reference set ที่ตรวจแล้วของ
+  ต้นทาง/ปลายทาง; ไม่เพิ่มสิทธิ์จาก JSON. Namespace ของ anchors แยกตาม Section ID.
+- FlowDocMake ใช้สัญญาเดียวกับ Service ไม่แปลง array เป็นชื่อ/index; helper รับ
+  schema1/2 กับ models18/19 และ preflight ตรวจ version/artifact/capabilities ตรงชุด.
+  ประกาศ `sectionInstances.stage:1`, `coverArea:false`, `scopedToc:false` ชัดเจน.
+
+### หลักฐานและขอบเขตผลตรวจ
+
+- Core commit `aabbb69`: build + unit **617 PASS**, packed Linux/amd64 consumer
+  PASS. Tarball SHA256 `2542b11c6b5350aeb2833f97ca5e8e28013ceedbd971da181d7587038377cc3a`.
+  Service commit `4f834be` ตรึงแพ็กเกจนี้พร้อม full source commit ใน manifest.
+- Service full Linux suite **307 PASS / 0 FAIL / 6 SKIP** (`--testTimeout=15000`);
+  หลังเพิ่ม guard ห้าม downgrade model ทับเดิม ตรวจ affected suite ใหม่
+  **20 PASS / 0 FAIL / 0 SKIP** รวม native API/processor, legacy authoring และ CLI.
+  Full result ใช้ซ้ำเฉพาะส่วนที่ guard นี้ไม่กระทบ; ไม่อ้างว่า rerun ทั้งหมดหลัง guard.
+  6 skipped เป็น external font/height delivery fixtures/config ไม่ใช่เกณฑ์ช่วง1.
+- Regression tests ครอบคลุม request IDs/ลำดับ/ชื่อซ้ำ, clone/import/split,
+  normalized identity ตอน rename/reorder, late-write rollback, retry/concurrency,
+  forged origin, deleted-ID reuse, model boundaries, scope values และ retired-font inheritance.
+- Native FlowDocMake stdio → isolated Docker HTTP → PostgreSQL → processor/PDF
+  PASS: 23 tools, save/open/copy/retry/clone/split และ pinned preview.
+  PDFสังเคราะห์2หน้า ตรวจข้อความได้ Alpha body/header/footer เฉพาะหน้า1 และ
+  Beta body/header/footer เฉพาะหน้า2 แม้ request ส่งย้อนลำดับ. เป็น text/order proof
+  ไม่ใช่ visual fidelity review หรือการรับงาน PDF ต้นฉบับ98/2หน้า.
+- Fresh-context review พบ getter-before-JSON-check และ deleted-ID reuse;
+  เพิ่ม failing regressions แล้วแก้ ตรวจ targeted review ยืนยันครบ.
+  การตรวจจริงพบ SQL pin18 และ processor map assumptions เพิ่มเติม;
+  แก้พร้อม regression ที่ queue/process model19 เป็น PDF จริง.
+- เก็บ failed probes ไว้ด้วย: Service artifact รอบแรกขาด runtime resources;
+  เปลี่ยนเป็น Docker-built artifact ที่ผ่าน packed consumer. แยก native API ไปอีก
+  test database เพราะ processor advisory lock เป็นระดับ database. CLI default
+  5s เคย timeout; targeted CLI ผ่าน และ full run ใช้ harness timeout15s โดยไม่แก้ CLI.
+
+หลักฐานถาวร:
+`C:/Users/nekot/Documents/Codex/2026-10-17/section-area-stage1/`:
+`core-final-tests.log`, `core-packed-final.log`, `core-package/`,
+`service-final-verification.json`, `service-affected-accepted.json`,
+`native-result.json`, `native-pdf-text-check.json`, `flowdocmake-checks.log`.
+FlowDocMake Node checks **22 PASS / 0 FAIL / 4 SKIP**; skipped ต้องใช้ config
+เฉพาะรอบอื่น. Positive real stdio/HTTP proof ใช้ native-result แทน ไม่เรียก skipped ว่า PASS.
+
+ไม่เปลี่ยนสอง live drafts, installed runtime/plugin, default branches, release/tags,
+หรือ published history. ไม่ทำ Area cover/scoped TOC/ปรับแม่แบบ/ระบบภาพ หรือ
+เครื่องมือ conversion18→19ในช่วงนี้. Candidate อยู่บน task branches เพื่อทบทวน;
+ยังไม่ merge/push/deploy. ขั้นถัดไปตามแผนคือช่วง2เมื่อเจ้าของสั่ง.
