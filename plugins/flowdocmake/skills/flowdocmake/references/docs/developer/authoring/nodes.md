@@ -41,12 +41,15 @@ Table/cell ไม่มี arbitrary x/y, flex, percentage หรือ nested t
 | props.anchorId | string หรือ ScalarBinding | Optional; anchor หลัง compose ต้องไม่ซ้ำและไม่ว่าง |
 | props.toc | `{level:1..3}` integer | Optional; ต้องมี anchorId; ไม่รับใน band |
 | props.heightMode | content/fixed | Optional; content เมื่อไม่ fixed |
-| props.height | Length positive | ต้องมีเมื่อ fixed; ใช้ได้เฉพาะ authored root ของ cover |
-| props.verticalAlign | top/center/bottom | Optional default top ใน fixed cover block |
+| props.height | Length positive | ต้องมีเมื่อ fixed; authored root ของ cover หรือ flow root ของ Section19 รวม root ใน Area Format ที่วางตรง flow |
+| props.verticalAlign | top/center/bottom | Optional default top ใน fixed text block |
 | props.pageFieldLayout | `compact` | Optional; band เท่านั้นและต้องมี system-page-field |
 
 fixed ไม่ใช่กล่องตัดข้อความทิ้ง ถ้าไม่พอให้แก้ขนาด/โครงและตรวจ preview.
 fixed ห้ามใช้ร่วม sizing; height/verticalAlign ห้ามใส่เมื่อไม่ fixed.
+นี่คือกรอบ text-block `props.heightMode` ไม่ใช่ Area Format `sizing.mode`:
+Format fixed ใช้เพดานความสูงและแจ้งส่วนที่ไม่แสดงตาม layout.md;
+text-block fixed ยังต้องวางเนื้อหาครบกรอบ มิฉะนั้นล้มเหลว.
 root textAlign:center ในเนื้อหาทั่วไปจะถูกปฏิเสธ แม้ interface ของ TextBlock
 แสดง property นี้อยู่. ไม่มี direct bold/color/fontSize ใน children;
 เลือกรูปแบบด้วย TextStyle ที่ block อ้าง.
