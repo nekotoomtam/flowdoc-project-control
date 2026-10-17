@@ -4,7 +4,8 @@ Current reading route for Format sizing work: read only `Format auto/fixed —
 นิยาม กติกา และแผนพัฒนา (2026-10-17)` at the end first. It supersedes the
 Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format sizing v2` and
 `แผนแก้ v2 — fixed เป็นเพดานความสูง` for the maximum-height correction.
-Candidate v1 was implemented, but v2 remains documentation-only and unimplemented.
+Candidate v1 was implemented. Maximum-height v2 stage1 is now verified in Core
+source only; component review, packaged consumers and full MCP handoff remain pending.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
@@ -1751,8 +1752,10 @@ Current design is the owner's maximum-height correction (v2) below; candidate
 0.4.3-dev.1 / FlowDocMake0.2.4-dev.1 still implements the earlier v1 gate.
 Role Planning Partner / Cross-Repo Boundary Reviewer / Documentation Synthesizer;
 single-room inline, execution/Phase/Checklist registry IDs N/A. Current authority
-is documentation only: no runtime edits, live drafts, DB writes, release, tags,
-push or installation. Completed Section–Area stages0–5 keep their original results.
+for the original planning revision was documentation only. The later owner
+authorization covers Core source stage1 as recorded below, without live drafts,
+DB writes, merge, release, tags, push or installation. Completed Section–Area
+stages0–5 keep their original results.
 
 ### การเปลี่ยนข้อตกลงและสถานะ
 
@@ -2065,8 +2068,8 @@ affected; Project Control existing FlowDocMake capability/guidance/package.
 
 **Current state (2026-10-17, after owner PDF review):** v1 stages1–5 remain a
 verified historical candidate, but its whole-frame gate does not meet the newly
-confirmed maximum-height v2 definition. Runtime remains v1; only this definition
-and correction plan are updated. No new runtime, integration or install acceptance.
+confirmed maximum-height v2 definition. The retained packages remain v1. Core source stage1 is now separately verified
+below; stages2–4 and integration/install acceptance remain pending.
 
 ### สัญญาช่วง 0 — Format sizing v2: maximum height (owner correction 2026-10-17)
 
@@ -2454,7 +2457,7 @@ instruction; this plan does not dispatch agents or authorize execution now.
 - [x] **แก้0 — นิยาม/ตัวอย่าง:** maximum formula; effective reservation retained
   even for short/empty content; positive-space first-unit stop versus zero-space
   frame omission; tables/images/breaks/links keep their existing whole-unit rules.
-- [ ] **แก้1 — Core capacity (owner Core):** RED cases in
+- [x] **แก้1 — Core capacity (owner Core):** RED cases in
   `tests/layout/formatSizing.test.ts` and `formatTable.test.ts`:300/120 with20pt
   lines,180/100 followed by60/0, declared height above page height, empty call,
   no-entry, exact fit and margins/bands. Change `src/layout/documentFlow.ts` to
@@ -2490,7 +2493,46 @@ reserve130pt, not300pt. A table has less text room after header/padding/stroke;
 use measured units, not a universal row count. This is a geometry example, not
 a claim that every A4 page has730pt usable height.
 
-**Validation boundary:** this update supersedes incompatible design examples and
-plans only. The retained Core/Service0.4.3-dev.1 and FlowDocMake0.2.4-dev.1
-candidates, their old PDFs and runtime behavior are unchanged and do not yet
-satisfy maximum-height v2. No executable verification of v2 is claimed.
+**Validation boundary of design-only revision a21b0a8:** that revision changed
+definition/plan only. The retained packed Core/Service0.4.3-dev.1 and
+FlowDocMake0.2.4-dev.1 still implement v1. The newly authorized Core source
+stage1 below is separate evidence; it does not update those artifacts or consumers.
+
+
+### ผลแก้ v2 ช่วง1 — Core capacity (2026-10-17)
+
+Scope: owner explicitly authorized stage1 only after maximum-height clarification.
+Role Product Implementation Agent / Evidence Reviewer / Project Control Steward;
+single-room inline, execution IDs N/A; small work, routine risk. Existing clean
+linked worktrees reused on codex/format-sizing. Core base53b57dc; PC basea21b0a8.
+No historical execution registry was reopened. No new plan/startup document.
+
+Core source commit `e97cba15e43031dcc4734869e0285ebfae0f6ce7` implements the small documentFlow change:
+positive page remainder always supplies a bounded frame ending at
+min(cursor+declaredHeight,bodyBottom). Only zero remaining body space omits the
+whole frame. Keep full effective-height reservation and existing stop/cursor
+logic. No cellTableFlow rewrite, schema/JSON change or new Area behavior.
+Local README/template-guide distinguish this unpackaged source from retained v1.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Three fixed300 calls with120pt remaining after two calls | Third shows6whole20pt lines, stops at cursor6 and stays on page;119.99999pt shows5 without clipping. Input/definition unchanged. |
+| Reservation and later instances | Short/empty call reserves the effective height; absent invocation reserves nothing.180/100 shows5lines; next fixed60 receives zero-space warning; subsequent auto moves to its own next page. Positive10pt with first20pt line gets content warning, not whole-frame skip. |
+| Margins, bands, table consumer | Body capacity deducts selected header/footer and gaps. Existing table sink receives48.5pt from a declared300pt, draws2whole20pt lines plus padding/closure and then warns; no table-sink change. |
+| Source checks | RED9fail/18pass -> GREEN27focused; TypeScript build PASS; full Core684PASS/75files, no skips. Schema/model18 and existing auto regressions included. Fresh scope reviewer PASS, no Critical/Important finding. |
+| Native source PDF review |3PDFs/4pages, public PDF engine on Linux/amd64 with read-only current dist over the existing verified resource image. All pages rendered and visually inspected; expected text, unchanged source request and repeatable PDF bytes checked. This is source-layout evidence, not a new package or MCP delivery. |
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage1/`:
+red.log, green.log, build.log, core-suite.log, native-result.json, pdf-review.json
+and rendered pages/contact.png. PDF examples: three-fixed.pdf,
+empty-reservation.pdf (first blank page is the intentional reservation),
+reduced-table.pdf. Review initially read the pre-visual evidence status; the primary
+agent's subsequent four-page inspection and current pdf-review.json establish
+visual PASS. No reviewer assertion substitutes for that visual review.
+
+**Remaining:** stages2–4 stay unchecked: deeper bounded-component/diagnostic
+matrix, exact packed artifacts/capability version2 in Service/FlowDocMake, and
+whole-document MCP handoff. Existing v1 archives, Service/plugin pins, capability,
+installed/live targets, original drafts/data and primary/release refs remain
+unchanged. No version bump, pack, merge, release, tag, push or installation.
+Stop at stage1 review as requested; do not infer authorization for stage2.
