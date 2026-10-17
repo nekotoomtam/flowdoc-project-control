@@ -2478,7 +2478,7 @@ instruction; this plan does not dispatch agents or authorize execution now.
   and immutable admission inputs. Test old/new capability mismatch, pinned jobs,
   clone/import, permissions and actual MCP status/save. Development version bump
   belongs to this implemented change, never this documentation-only revision.
-- [ ] **แก้4 — native PDF handoff:** new isolated unpublished drafts: change the
+- [x] **แก้4 — native PDF handoff:** new isolated unpublished drafts: change the
   third meeting Format to fixed300pt too; it must render its fitting prefix in
   the current remainder rather than disappear. Check subsequent fixed/auto calls
   at zero space, SB1, schema1/2 fonts, source data and original drafts. Save/hash,
@@ -2644,3 +2644,56 @@ JSON and service-result.json; skipped fixture scenarios remain explicitly unveri
 **Remaining:** stage4 stays pending. Development lanes remain unmerged; primary
 branches, release, tags, remotes, installed plugin/runtime and original drafts
 are unchanged. Isolated test containers may be stopped with their state retained.
+
+### ผลแก้ v2 ช่วง4 — native PDF handoff (2026-10-17)
+
+Owner authorized stage4 PDF verification only, with no integration/release.
+Roles Evidence Reviewer / Project Control Steward; single-room inline, execution
+IDs N/A, routine risk. Candidate remains Corea878709 / Servicedffea2d /
+FlowDocMake0.2.4-dev.2 at PC429ec93 before this status update. No runtime/package
+changes or version bump. Existing source and acceptance fixtures are inputs;
+verification did not repair the candidate or author directly into SQL/storage.
+
+Restored the retained baseline backup only into fresh isolated stage4 DB/storage,
+after verifying all three recorded SHA256 hashes. New API uses the exact stage3
+image and Core archive SHA256
+`8583805ff51223183ce68cbd2be3de2753dc1c6b70d9d1ff31d7fa3d964bc82f`.
+Fresh actual MCP context ready:true, capability2 and23tool schemas captured
+before mutations. All new drafts/clone/upload/readiness/preview/save operations
+went through candidate FlowDocMake. Original drafts in both the restored and
+earlier baseline environments were checked unchanged by read-only calls.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Three fixed300 calls and following entries | Genuine meeting Format, independent Area calls; starts at12/312/612pt. Usable body807.88976378pt, so third receives207.88976378pt and paints its fitting prefix on page1. All three stop with content warnings; third retains two unfinished cell cursors for member index1. Following fixed60 receives zero-space frame warning at entry3; auto renders normally on page2. No remainder retry or input deletion. |
+| Whole table units / closure | PDF vector geometry verifies the three frame starts and every stroke extent within the page remainder. Visual inspection confirms closed bottom/sides, no clipped lines or stranded group prefix. Unused height in first two frames is the agreed reservation, not missing automatic flow. |
+| Schema1/2 fonts | Same meeting case generated with bundled legacy Sarabun and exact-library Sarabun400/700; unchanged sizes/line heights and identical pixels, text and links on both pages. Retained byte-identity evidence is referenced, not a new font intake claim. |
+| SB1 | Unchanged schema2 auto clone remains2pages, pixel/text/link identical to accepted baseline. Separate declaration fixed300 clone deliberately omits its remainder with one content warning; cargo page2 remains identical. Both full original request payloads remain stored. Partial fixed form is a behavior example, not complete-source acceptance. |
+| Existing SRS | Unchanged full98page clone, same13 source assets, all98pages pixel/text/link identical to accepted v1 baseline at1100px. TOC destinations, numbers, headers/footers and original source inputs retained. Existing4IMAGE_LOW_RESOLUTION warnings remain. |
+| Pin / source preservation | Read-only5job verification proves original_input equality, pinned definition equality, renderer checksum and persisted warnings. Prepared input is checked for empty skippedContentIndices/skippedIndices; complete prepared-input equality is not asserted by this check. Original SRSrevision4 and SB1revision1 remain unchanged in both environments. |
+| Every-page review |5PDFs/106pages saved/hash checked and rendered. All10contact sheets inspected;3independent changed pages additionally inspected individually.103pages also pixel/text/link match their accepted baseline or freshly reviewed schema1 equivalent. No visual page left unreviewed in this scope. |
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage4/`:
+setup-proof.json, context.json, contract.json, tool-schemas.json, results.json,
+all per-call inputs/receipts, pinned-proof.json, live-originals-proof.json,
+pdf-review.json and rendered/. New PDFs: three-fixed300.pdf,
+three-fixed300-schema2.pdf, sb1-auto.pdf, sb1-fixed300.pdf, srs98-auto.pdf.
+Per-page coverage and hashes are in pdf-review.json, not inferred from job success.
+
+Fresh scoped reviewer PASS: no Critical/Important/Minor finding. Reviewer confirms
+the original-input/prepared-index attribution above. Declined scope is retained
+explicitly: fresh full-source fidelity repair, seven-family intake, historical
+optional font fixtures, release/install readiness and unperformed integration.
+These are not newly accepted; they need their own evidence/authorization before
+such claims. The exact correction-stage4 requirement is schema1/2 and the existing
+documents, not re-execution of earlier font-library delivery work. SRS empty
+Features List values, prior table-header differences and SB1 font/line fidelity
+remain as in the accepted structural baseline. Four existing SRS image warnings
+are not hidden or treated as new failures. Prior stage3 cosmetic guide-heading
+nit remains unchanged to preserve the immutable artifact.
+
+**Owner-review checkpoint:** correction stages0–4 complete within their recorded
+scopes. No main/release/tag/remote refs or installed runtime/plugin changed.
+Development lanes and isolated evidence/state are retained; integration, release
+and installation remain separate owner decisions. This status-only update does
+not regenerate or overwrite the immutable stage3 plugin guide snapshot.
