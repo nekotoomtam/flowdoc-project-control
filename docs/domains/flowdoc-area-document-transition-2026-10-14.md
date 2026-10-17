@@ -1,11 +1,15 @@
 # Area-based document structure transition
 
-Current reading route for Section–Area work: start with `สัญญาช่วง 0 — Section
+Current reading route for Area sizing work: read only `Area auto/fixed — ข้อตกลง
+และแผนพัฒนา (2026-10-17)` at the end first. It records agreed intent and an
+unimplemented plan; Stage 0 must close remaining contracts before runtime edits.
+For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
 `แผนปรับ Section–Area ตามภาพอ้างอิง — 2026-10-17` when sequencing work.
 Read linked JSON only for the operation needed. Earlier sections retain
 historical decisions/results, including the old object-map request; the current
-Stage 0 target contract governs new development. Do not load the full history
+Section-instance Stage 0 contract governs that foundation; the Area sizing
+section governs the new sizing scope. Do not load the full history
 as startup context; use the dated inspection only when implementation evidence
 is needed.
 
@@ -1734,3 +1738,214 @@ config ของช่วง4/5และ restore ทั้งสามไฟล�
 รอบนี้เปลี่ยนเพียงบันทึกสถานะเดิมใน Project Control; คง Core/Service0.4.2-dev.3
 และ FlowDocMake0.2.3-dev.3. ไม่เปลี่ยน release/tag/remote refs, ไม่ push/install.
 พร้อมกลับมานิยามงาน Area/Format ที่พักไว้เป็นขอบเขตถัดไป; ยังไม่เริ่มพัฒนาอัตโนมัติ.
+
+## Area auto/fixed — ข้อตกลงและแผนพัฒนา (2026-10-17)
+
+**Authority Boundary:** Project Control owns this shared design/plan. This is a
+new scope after completed Section–Area stages0–5, not a reopened execution or
+implementation evidence. User authorized documentation only; runtime/template
+changes, release/tag/push/install remain unauthorized in this round.
+Role Planning Partner / Cross-Repo Boundary Reviewer / Documentation Synthesizer;
+single-room inline, execution/Phase/Checklist registry IDs N/A. Core owns sizing,
+composition/layout and rendering diagnostics; Service owns saved contracts,
+pinned jobs and transport; Project Control owns guidance and FlowDocMake package.
+
+**Goal:** แยก Area `auto`/`fixed` ชัดเจน; fixed จองกรอบใน flow และแสดงเฉพาะส่วน
+ที่พอดี พร้อมปิดตาราง/รายงานส่วนที่ไม่ได้แสดง โดยไม่แก้หรือลบข้อมูลต้นฉบับ.
+**Architecture:** เก็บ Area boundary ให้ตัวจัดหน้ารับรู้หลังขยาย Format; reuse
+ตัววัดบรรทัด/ภาพและ table fragmentation เดิม. Format ยังคงเป็นโครงย่อยครบชุด
+เช่นหนึ่งการประชุม ไม่แตกเป็น Format ย่อยเพื่อหลบข้อจำกัดพื้นที่.
+**Tech Stack:** Existing TypeScript Core, packed Core consumer in Service,
+PostgreSQL draft/job persistence and FlowDocMake MCP. No new runtime dependency.
+**Spec:** Agreed behavior below in this same section; exact JSON/diagnostic
+contract is the deliverable of Stage0. No product code before that checkpoint.
+Later execution uses the applicable executing-plans workflow, with the user's
+chosen room arrangement; this document does not dispatch subagents or new tasks.
+
+### ข้อตกลงที่เจ้าของยืนยัน
+
+| เรื่อง | `auto` | `fixed` |
+| --- | --- | --- |
+| พื้นที่ | ขยาย/ไหลตามเนื้อหาเหมือนเดิม | จองกรอบขนาดที่กำหนดใน flow ไม่ใช่ absolute placement |
+| บรรทัดถัดไปไม่พอ | ไปต่อหน้าถัดไปใน Section เดิม | หยุดที่กรอบ ไม่มีการต่อหน้าเอง |
+| ตาราง | วางส่วนที่พอดี ปิดเส้นส่วนปัจจุบัน แล้วต่อส่วนค้าง | วางส่วนที่พอดี ปิดเส้น แล้วหยุด |
+| ภาพไม่พอในพื้นที่ที่เหลือ | ยกกรอบภาพทั้งชิ้นไปหน้าถัดไป | ไม่แสดงภาพที่วางไม่พอ |
+
+- Check before placement: complete measured line height plus applicable padding,
+  spacing and border allowance. Exact fit must work; never cut a glyph or text
+  line halfway. Do not shrink text/image automatically to conceal overflow.
+- ตารางต้องใช้ขอบตัดร่วมกันของเซลล์ใน fragment; แถว allowBreak:false คงข้อห้ามแบ่ง.
+  ไม่วางหัวตารางลอยเมื่อไม่มี body ที่วางได้ และไม่เพิ่มเส้นซ้ำทับกัน.
+  การปิดเส้นหมายถึงปิด fragment ที่แสดง ไม่ได้แปลว่าข้อมูลทั้งหมดสิ้นสุด.
+- ภาพใช้ขนาดกรอบที่กำหนด ไม่ใช่ pixel dimensions ต้นฉบับ. ไม่แบ่งภาพเป็นสองหน้า.
+  ภาพที่ใหญ่เกินเต็มพื้นที่เป็นกรณีขอบ: เจ้าของเลือกไม่แสดงพร้อมแจ้งผลไว้;
+  ต้องปิดสัญญาขอบเขตของข้อยกเว้นนี้ใน Stage0 ไม่แอบเปลี่ยน legacy rendering.
+- Area value ยังเป็น ordered array `{format,data}`; ไม่เปลี่ยนเป็น object-valued
+  input. Format registry/owner/local data, Section paper/bands/numbering คงหน้าที่เดิม.
+- Draft/request เก็บข้อมูลครบ แม้ fixed PDF แสดงไม่ครบ; diagnostics ต้องระบุว่า
+  มีส่วนไม่แสดง ห้ามรายงาน full-content/source-fidelity PASS จาก PDF ที่หยุดแล้ว.
+
+### สิ่งที่มีแล้วและขอบเขตที่ยังขาด
+
+Baseline inspection: Core `c340c4f`, Service `08a7131`, candidate Core/Service
+0.4.2-dev.3, FlowDocMake0.2.3-dev.3. This is read-only source inspection, not new
+test execution or evidence that auto/fixed has been implemented.
+
+- `Core/src/binding/expandAreas.ts` flat-maps entries to node sequences with
+  sourceMap provenance; `src/composition/composeSections.ts` assembles Section flow.
+  `src/template/types.ts` Area props currently only carry areaId; no sizing mode.
+- `src/layout/documentFlow.ts` already flows lines/tables/images and reserves
+  Section bands; fixed text is a text-block feature, not a whole-Area frame.
+- `src/layout/cellTableFlow.ts` already measures cell content/padding, respects
+  protected rows/group starts, draws fragments and continues them. Existing
+  `tests/layout/areaFlow.test.ts`, `areaCover.test.ts`, `mergedTableFlow.test.ts`
+  and `cellContentFlow.test.ts` are reuse targets, not work to reimplement.
+- Missing work: an Area boundary/capacity visible to layout, fixed stop semantics,
+  stable diagnostic provenance, and consumer handling of intentional omission.
+  ห้ามสรุปว่า table closure/auto pagination ขาดทั้งหมดจากการเพิ่ม mode ครั้งนี้.
+
+### ขอบเขตและการตรวจรับ
+
+Work Size large; Risk Tier routine, with explicit risks of silent omissions,
+partial multi-cell rows, numbering/TOC drift and legacy compatibility. Current
+authority is documentation only. Retain the user-selected room/model for this
+inline planning request; no model switch or registered execution is claimed.
+Reassess the implementation model against current host availability when work
+is authorized; do not inherit PLAN's model implicitly into a separate WORK.
+
+Document budget: this existing canonical section plus later code-adjacent guide
+updates only; no additional mandatory startup file. Proof budget: affected unit
+and packed consumer tests, targeted Service/MCP integration and bounded PDF
+fixtures inspected on every page. Reuse unchanged legacy/source evidence by
+identity; full suites only for a concrete affected-area need. No benchmark,
+production data migration or release ceremony merely to finish this feature.
+
+Allowed later paths by owner: Core template/binding/composition/layout/PDF result
+types and affected tests; Service template/job/MCP contracts and affected tests;
+Project Control this record and relevant existing FlowDocMake guidance/package.
+No unrelated refactor, free-position Areas, recursive Areas, shared Format
+library, auto-fit, image ingestion, UI or font-scale work. No live-draft rewrite.
+
+Acceptance: unchanged default auto flow; fixed frame constrains every rendered
+item and reserves its full space; complete-line selection includes closing
+geometry; table fragments close correctly; image behavior matches mode; input
+is intact and every omission is traceable; Section/clone/TOC/fonts/legacy behavior
+has impact coverage. Unknowns below block only their dependent implementation,
+not writing this plan. Their resolution must be recorded here before code.
+
+### ช่วง 0 — ปิดสัญญา Area sizing และผลส่วนที่ไม่แสดง
+
+Owner Core/Service/Project Control; discovery/design only.
+
+- [ ] กำหนด exact JSON บน Area placement, mode default=auto, fixed dimensions/
+  units and validation. Proposed location is Area props; do not put policy in
+  each data entry or change the `{format,data}` array. Decide supported placement
+  contexts (Section root versus cell/repeat) against actual implementation.
+- [ ] ปิด geometry: width in flow, fixed height, whether empty Area reserves
+  space, padding/border ownership and counting, exact-fit epsilon; if whole fixed
+  frame does not fit remaining page, choose placement behavior explicitly.
+  Never silently shrink it, exceed Section body or invent absolute coordinates.
+- [ ] ปิด stop cursor and report shape: Section ID, Area ID, entry index/Format,
+  node/row/line identity, reason and omitted range when known, tied to revision.
+  No raw private text in diagnostic messages; do not guess omitted counts.
+- [ ] Resolve blocking ambiguity: fixed image omission skips that image then
+  continues later content, or terminates remaining Area; distinguish from normal
+  fixed text stop. Define standalone image versus image inside a table row.
+- [ ] ปิด policy ของ explicit page-break ภายใน fixed, unbreakable rows/groups,
+  rowspan/colspan, empty Area/table and frame too small for one line plus closure.
+  Fixed may not call nextPage to spill; preserve existing allowBreak/keepStart
+  unless an explicit reviewed contract defines otherwise.
+- [ ] ระบุ model/schema compatibility and exact diagnostic success/warning/error
+  categories. Old templates without mode must retain behavior; invalid geometry
+  and malformed data remain errors. Partial fixed rendering is not a data loss
+  mutation and must not silently look complete. Add small receiving/sending JSON
+  examples here, not another guide. Stop at owner review before implementation.
+- [ ] ปิด TOC/reference handling เมื่อหัวข้อหรือ anchor อยู่ในส่วนที่ไม่ได้แสดง:
+  ต้องไม่สร้างลิงก์ปลายทางหายหรือเลขหน้าเดา. Resolve this before choosing the
+  composition/layout interface, not after delivering the final PDF fixtures.
+
+### ช่วง 1 — Core contract, validation และขอบเขต Area
+
+Depends on Stage0 closed. Files: `src/template/types.ts`, relevant validators,
+`src/binding/expandAreas.ts`, `src/composition/composeSections.ts`,
+`src/composition/resolvedDocument.ts`; affected area/template/composition tests.
+
+- [ ] Write failing tests for omitted/explicit auto, valid/invalid fixed values,
+  placement restrictions and clone/import remapping; then implement only the
+  agreed representation. Carry Area boundaries and original provenance through
+  expansion without merging entries or replacing a whole Format with one block.
+- [ ] Run targeted template/binding/composition tests; compare old resolved
+  semantics and input immutability. If representation changes serialized prepared
+  input/fingerprints, exercise version/pin rejection before approving the lane.
+- [ ] Deliver validated contracts and boundary representation, not yet a claim
+  that fixed PDFs work. Review diff/checks and commit the bounded Core change.
+
+### ช่วง 2 — จำกัด flow ของข้อความและภาพ
+
+Files: `src/layout/documentFlow.ts`, `fixedTextBlock.ts` only if affected,
+`src/pdf/drawContract.ts`/result types as required by Stage0; targeted layout tests.
+
+- [ ] Write red cases for exact fit/one-line overflow, empty/multiple entries,
+  image fit/move/omission, full reserved height and next sibling placement.
+  Implement fixed capacity/stop using measured items; auto uses the existing flow.
+- [ ] Record pending content without modifying source; prevent empty-page loops
+  and ensure neighboring nodes begin after the reserved frame. Exercise frame
+  placement at page bottom and reduced body capacity from headers/footers.
+- [ ] Run selected layout tests and inspect every page of a small text/image
+  fixture. Boundary assertions must include draw geometry, not text alone.
+  Review/commit only after scope and omission reporting pass.
+
+### ช่วง 3 — ตาราง: บรรทัดเต็มและเส้นปิด fragment
+
+Files: `src/layout/cellTableFlow.ts` and affected cell measurement/fragment sinks;
+tests `cellContentFlow`, `mergedTableFlow`, `pageBandFlow`, `rowGroupFlow` and new
+Area-mode cases in the existing test layout convention.
+
+- [ ] Add red cases for fit threshold including top/bottom padding and borders,
+  unequal cell heights, allowed/protected rows, repeated headers, group starts,
+  spans, cell images and no-room-for-body. Reuse current fragmentation logic;
+  separate stop from page continuation instead of clipping draw commands.
+- [ ] Implement only missing frame-capacity/stop/closure behavior. No glyph/image
+  cuts, duplicate runs/edges, dangling borders or false completed-row accounting.
+  Auto continuation emits remaining content exactly once; fixed reports the
+  remaining range and never moves it into a following Area or creates a new page.
+- [ ] Verify all emitted bounds and border positions, then inspect every page of
+  short auto/fixed tables and a meeting Format with companies/members. Verify
+  original nested arrays remain unchanged; run impacted table regressions.
+
+### ช่วง 4 — Service และ FlowDocMake consumer
+
+Files: Service `src/templates/areaContract.ts`, contract/assembly/storage and
+draft/job/MCP consumers affected by Stage0; `src/jobs/render.ts`, processor/result
+storage only where required. Project Control existing FlowDocMake package/guides.
+
+- [ ] Consume an actual newly packed Core with exact artifact checksum; update
+  dev versions/compatibility for the real behavior change under release rules.
+  No fabricated final version number or checksum in this pre-development plan.
+- [ ] Test save/open/clone/import and revision-pinned jobs for both modes; preserve
+  full request values even when PDF is partial. Round-trip omission diagnostics
+  through actual MCP status/save outputs, including restart/retrieval.
+- [ ] Keep readiness/font/security validation effective on original inputs.
+  Preview success with an omission warning must not become complete source
+  coverage. Test unauthorized mutations and stale revision behavior, and verify
+  model18/old model19 defaults. Update existing guides without extra startup docs.
+
+### ช่วง 5 — ตรวจร่วมและส่งมอบก่อนตัดสินใจรวม/ออกรุ่น
+
+- [ ] Create new unpublished test drafts: meeting Format with variable members,
+  SB1 declaration/cargo and short text/image/table boundaries in auto/fixed.
+  Keep accepted Stage4/5 sources and originals unchanged; backup before writes.
+- [ ] Check multiple Areas/entries, two cloned instances and a mixed document:
+  independent limits/data/IDs; no unintended band, numbering or TOC destination
+  drift. Omitted headings must not create dangling TOC/reference destinations;
+  the concrete handling must be defined before this check can pass.
+- [ ] Save/hash each acceptance PDF, render and inspect every page, connect source
+  ranges to displayed/omitted ranges and warning receipts. Keep fidelity limits
+  explicit, including SB1's previously documented differences; no silent omissions.
+- [ ] Record coverage/reused evidence/skips and candidate identities here;
+  stop at owner review. Merge/cleanup, release/tag/push/install each require the
+  applicable authorization; this documentation request grants none of them.
+
+**State:** Plan recorded; all Stage0–5 work remains unchecked/unimplemented.
+The older completed Section–Area checklist/results remain completed with their
+original accepted limitations. No existing evidence is rewritten as mode proof.
