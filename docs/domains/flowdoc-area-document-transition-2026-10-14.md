@@ -1980,12 +1980,12 @@ Owner Core. Files: `src/template/types.ts`, relevant validators including
 `src/binding/expandAreas.ts`, `src/binding/expandRows.ts`,
 `src/composition/resolvedDocument.ts` and composition/validation consumers.
 
-- [ ] Red tests for omitted/explicit auto, fixed validation, correct ownership and
+- [x] Red tests for omitted/explicit auto, fixed validation, correct ownership and
   unsupported contexts; implement definition-level sizing without new Area props.
-- [ ] Preserve per-entry boundary/provenance through expansion, including repeated
+- [x] Preserve per-entry boundary/provenance through expansion, including repeated
   members; two instances of one key must have independent frames/IDs/cursors.
   Do not turn the whole semantic Format into an indivisible layout item.
-- [ ] Verify clone/import maps, prepared/fingerprint compatibility and input
+- [x] Verify clone/import maps, prepared/fingerprint compatibility and input
   immutability; run affected template/binding/composition tests and review diff
   before committing. Boundary delivery alone is not fixed-PDF acceptance.
 
@@ -1996,12 +1996,12 @@ Files: `src/layout/documentFlow.ts`, existing measurement helpers,
 result/provenance types needed by the closed Stage0 contract; destination
 consumers `src/layout/linkGeometry.ts` and `src/layout/fillContentsNumbers.ts`.
 
-- [ ] Red tests for exact fit, one-line overflow, valid empty invocation, no entry,
+- [x] Red tests for exact fit, one-line overflow, valid empty invocation, no entry,
   multiple calls of the same Format and mixed auto/fixed in one Area.
-- [ ] Implement capacity per instance: fitting frames reserve full height;
+- [x] Implement capacity per instance: fitting frames reserve full height;
   non-fitting frames do not move to the next page or consume space. Content stop
   skips only the remainder of that instance; subsequent entries are evaluated.
-- [ ] Test image frame fit/move/stop and invalid resources, Section bands/page
+- [x] Test image frame fit/move/stop and invalid resources, Section bands/page
   remainder, child fixed-height behavior and no-progress termination. Compare
   omitted/default auto to existing behavior, then inspect every page of small
   text/image fixtures. No production template or source-data mutation.
@@ -2012,12 +2012,12 @@ Files: `src/layout/cellTableFlow.ts`, affected measurement/fragment sinks and
 tests `cellContentFlow`, `mergedTableFlow`, `pageBandFlow`, `rowGroupFlow` plus
 Format-instance boundary cases in the existing layout test convention.
 
-- [ ] Red cases for padding/border exact fit, unequal cells, allowBreak:false,
+- [x] Red cases for padding/border exact fit, unequal cells, allowBreak:false,
   group starts, spans, repeated headers, cell images and no-room-for-body.
-- [ ] Reuse fragment measurement/painting; fixed stops and closes the current
+- [x] Reuse fragment measurement/painting; fixed stops and closes the current
   instance without swallowing later entries. Auto continues every unit once;
   no glyph/image clipping, stranded headers, duplicated edges or fake empty rows.
-- [ ] Inspect every page of short auto/fixed tables and a whole meeting Format;
+- [x] Inspect every page of short auto/fixed tables and a whole meeting Format;
   assert physical draw/border bounds, accurate per-cell pending state, unchanged
   nested input arrays and independent results for two calls of the same Format.
 
@@ -2027,35 +2027,34 @@ Files: Service `src/templates/areaContract.ts` (exposes Format definitions despi
 its filename), template/storage/job/MCP consumers and `src/jobs/render.ts` as
 affected; Project Control existing FlowDocMake capability/guidance/package.
 
-- [ ] Consume a real newly packed Core with exact SHA256; expose `formatSizing`
+- [x] Consume a real newly packed Core with exact SHA256; expose `formatSizing`
   and definition sizing, never `areaSizing`. Update development versions only
-  for actual implemented behavior; this documentation revision bumps none.
-- [ ] Verify save/open/clone/import, permissions, stale revisions, pinned jobs,
+  for actual implemented behavior; the earlier planning-only revision bumped none.
+- [x] Verify save/open/clone/import, permissions, stale revisions, pinned jobs,
   default auto/legacy templates and full source input preservation after omission.
-- [ ] Persist/retrieve instance diagnostics through processor restart and actual
+- [x] Persist/retrieve instance diagnostics through processor restart and actual
   MCP status/save responses. PDF succeeded with warnings must not become source
   complete; keep original readiness/font/security checks and explain partial output.
-- [ ] Update existing code-adjacent guides and compatibility; no extra startup
+- [x] Update existing code-adjacent guides and compatibility; no extra startup
   guide, installed plugin replacement or live cutover without authorization.
 
 ### ช่วง 5 — ตรวจร่วมและส่งมอบตามนิยาม Format
 
-- [ ] Use new isolated unpublished drafts for meeting Formats, SB1 and boundary
+- [x] Use new isolated unpublished drafts for meeting Formats, SB1 and boundary
   fixtures; back up before mutations and preserve accepted originals/Stage4–5 PDFs.
-- [ ] Test auto/fixed mixed within one Area, two/three repeated calls of one key,
+- [x] Test auto/fixed mixed within one Area, two/three repeated calls of one key,
   first partial or wholly omitted then later instances, and clone/mixed Sections.
   Verify independent limits/data/IDs, bands/numbering, TOC/link outcomes and fonts.
-- [ ] Save/hash each PDF, render and inspect every page; connect visible/omitted
+- [x] Save/hash each PDF, render and inspect every page; connect visible/omitted
   content to the specific Format call and warning. Input must remain byte/value
   equivalent as appropriate; retain prior source-fidelity limitations explicitly.
-- [ ] Review coverage/reused evidence/skips and candidate identity in this same
+- [x] Review coverage/reused evidence/skips and candidate identity in this same
   record; stop at owner review. Merge/cleanup/release/tag/push/install follow
   their actual authorization and are not granted by this documentation request.
 
-**Current state:** Format behavior agreed and documentation/plan revised;
-technical Stage0 is closed by the design contract below. Stages1–5 are
-unimplemented. Prior Area-stage0 remains superseded and supplies no runtime
-acceptance. No product or template was changed; Stage1 needs its own instruction.
+**Current state (2026-10-17):** Format stages1–5 implemented and verified on
+isolated development candidates as recorded below. Prior Area-stage0 remains
+superseded. This is an owner-review handoff, not main/release/install acceptance.
 
 ### สัญญาช่วง 0 — Format sizing v1 (2026-10-17)
 
@@ -2315,3 +2314,81 @@ example consistency, scope/identity and authority; it is not schema/runtime/PDF
 acceptance. No Core/Service source, live data, generated map, package version,
 release/tag or installed plugin is changed. Stop here for owner review before
 Stage1; no further runtime authorization is inferred from Stage0 completion.
+
+
+### ผลดำเนินงาน Format stages1–5 — 2026-10-17
+
+Authority: owner authorized continuous stages1–5 through verified handoff while
+absent. Single-room inline; registered execution/Phase/Checklist IDs N/A.
+Roles: Product Implementation Agent, Evidence Reviewer, Project Control Steward.
+Scope: Format definition sizing, independent instance layout, structured omission
+warnings and packed Service/FlowDocMake consumers. Area remains the ordered list.
+Risk routine; large work. Existing contract/record and affected local guides only;
+no extra AI startup document. Stop before merge/release/tag/push/publish/install.
+
+**Candidate identity (development only):**
+
+- Core `0.4.3-dev.1`, commit `53b57dc` (includes `f782d8b`, `4efd8dc`).
+  Actual Linux/amd64 archive from `artifacts/1792234391075`:
+  SHA256 `c12466b2e897dd80a8d8d1311eb76f0f7da104b90123649254d23cc5d9c78b58`.
+- Service `0.4.3-dev.1`, commit `1769773`; vendor manifest and npm lock pin
+  those exact archive bytes. No new migration. Rendering warnings are appended
+  atomically to job_processing; immutable admission input/warnings stay unchanged.
+- FlowDocMake `0.2.4-dev.1`, candidate in this record's development worktree;
+  exact runtime/artifact check and `formatSizing` v1 required. Installed package
+  and live Service configuration were not replaced.
+- All three lanes retained under
+  `C:/Users/nekot/.codex/worktrees/format-sizing`, branch `codex/format-sizing`.
+  Primary bases remain PC `64b4d6f`, Core `c340c4f`, Service `08a7131`.
+
+| Acceptance / impact | Durable evidence and outcome |
+| --- | --- |
+| Stage1 definition, context, provenance | Core `tests/template/formatSizing.test.ts`, helpers and composition validators; explicit/omitted auto, fixed units/context, empty calls, model18, immutable input, independent boundaries and invalid boundary ordering. Initial RED6 then GREEN; final full Core676PASS. |
+| Stage2 text/image frames and destinations | Core `tests/layout/formatSizing.test.ts`, packed `tests/consumer/checkFormatSizing.mjs`; full reservation, unplaced frame without page move, next entry, explicit breaks, image/legacy behavior and omitted reference. Small native PDFs5files/9pages reviewed. |
+| Stage3 tables / whole meeting Format | Core `tests/layout/formatTable.test.ts`: exact padding/stroke fit, unequal cells, protected rows/groups, merged spans, per-cell pending positions and header/body images. Whole semantic meeting tested through native MCP; auto/fixed content boundaries do not split the Format definition into tiny data chunks. |
+| Stage4 consumer / persistence | Service `tests/format-sizing.test.mjs`, `format-sizing-unit.test.mjs`, `authoring-save-pdf.test.mjs`; actual packed Core, authenticated contract, save/open/clone/import, stale/foreign access, pinned old revision, unchanged input, successful partial and failed-reference diagnostics. Actual MCP status/save return the same warnings and fingerprint after isolated API restart. |
+| Stage5 source / visual / legacy | New isolated unpublished drafts, final6PDFs/106pages. SRS98 + SB1auto2 pages pixel-identical at1100px to the accepted Stage4 PDFs; reuse prior every-page visual review by this equality. Meeting1, cloned/imported Sections2, fixedSB1two and image-boundary1: all6new pages freshly visually inspected. Final original/prepared/pin and restart checks8cases PASS, including failed reference and TOC jobs with no PDF exposed. |
+
+Evidence directory (private inputs/config remain local):
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing`.
+Reusable summaries: `handoff.json`, `core-pdf-regression.json`,
+`final-pages/comparison.json`, `pinned-input-proof.json`,
+`final-restart-result.json`; actual MCP receipts and request/checkpoint files
+are retained there. Backup-before contains the preserved isolated baseline DB,
+staging and outputs with hashes. No authoring SQL/storage bypass was used;
+SQL inspection for pin equality was read-only.
+
+Final PDF examples: `final-meeting.pdf`, `final-two.pdf`,
+`final-sb1-auto.pdf`, `final-sb1-fixed.pdf`, `final-srs.pdf`, `final-images.pdf`.
+These deliberately partial fixed examples demonstrate omission, not source
+reconstruction acceptance. Source-field arrays remain complete. SRS keeps the
+existing4IMAGE_LOW_RESOLUTION warnings. Existing source differences in header
+rows, SB1 font/line fidelity and source layout are not accepted as newly fixed.
+
+**Review, repairs and test limits:** one fresh whole-branch reviewer found3
+Important Core defects and1Minor boundary gap. All were reproduced failing and
+repaired in one pass: oversized auto header image, already-processed empty anchor,
+and unfinished later-row cell of a rowspan; boundary ordering now rejects the
+forged case. Final packed Core full676tests PASS and all64consumer PDFs unchanged
+from the pre-review candidate; the native table/reference cases remain checked.
+
+Final Service full run:316PASS, one unchanged CLI invalid-argument test exceeded
+its test window under concurrent native rendering (8515ms), six existing optional
+font-height/intake tests SKIPPED. The exact final candidate's targeted CLI rerun
+passed all3tests unchanged. This provides passing evidence for all317executed
+cases across the full run and narrow rerun; it is **not** a one-shot full-suite
+PASS. The6skips need their separate font-height/intake fixture environments and
+are not recorded as PASS or new Format gaps. Final plugin suite23PASS/4optional
+fixture SKIP. Actual candidate MCP preflight and native Service/DB paths passed.
+Earlier superseded attempts (shared coordinator DB, stale local archive lock,
+and test-harness upload alias reuse) remain in local logs; they were corrected
+without changing acceptance, disabling immutability or relaxing upload ownership.
+
+**Remaining / owner review:** fixed remains restricted to Section flow-root
+placements and cannot contain a TOC. No absolute-position mode, cell fixed mode,
+Area sizing, invocation override, resume API, automatic shrink or new border-style
+API was added. Auto uses existing whole-line/image flow and legacy failures remain.
+The unchanged CLI test timing sensitivity and optional fixture skips are recorded
+execution limitations, not claims of source completeness. Main/release/remote/tag
+refs and installed/live targets remain unchanged. Keep these clean unmerged lanes
+and isolated evidence for review; integration needs the owner's next instruction.
