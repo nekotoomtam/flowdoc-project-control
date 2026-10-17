@@ -2,8 +2,9 @@
 
 Current reading route for Format sizing work: read only `Format auto/fixed —
 นิยาม กติกา และแผนพัฒนา (2026-10-17)` at the end first. It supersedes the
-Area-sizing proposal; technical Stage 0 must be rechecked for Format instances
-before runtime edits. Area remains the ordered list receiver.
+Area-sizing proposal. The `สัญญาช่วง 0 — Format sizing v1` subsection closes the
+design contract for implementation review; runtime stages remain unimplemented.
+Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
 `แผนปรับ Section–Area ตามภาพอ้างอิง — 2026-10-17` when sequencing work.
@@ -1761,8 +1762,8 @@ push or installation. Completed Section–Area stages0–5 keep their original r
 Location นี้เป็น revision evidence เท่านั้น ไม่ใช่คู่มือเริ่มงานอีกไฟล์.
 
 Previous Area-stage0 checkmarks do not prove Format sizing. ข้อตกลงพฤติกรรมด้านล่าง
-ได้รับความเห็นชอบในแชตแล้ว; exact JSON/capability/diagnostics ที่เสนอเป็นงานช่วง0
-ของขอบเขตใหม่ ต้องตรวจความสอดคล้องก่อน runtime. ยังไม่ถือว่าช่วง1–5เริ่มหรือผ่าน.
+ได้รับความเห็นชอบในแชตแล้ว; exact JSON/capability/diagnostics ปิดในสัญญาช่วง0
+ท้ายส่วนนี้ภายใต้คำสั่งให้ทวนสัญญา. ยังไม่ถือว่าช่วง1–5เริ่มหรือผ่าน.
 Read this section for the new sizing scope; do not implement the superseded
 Area sizing property, Area stop scope or Area-prefixed omission diagnostics.
 
@@ -1772,7 +1773,7 @@ Area sizing property, Area stop scope or Area-prefixed omission diagnostics.
 reuse ตัววัดข้อความ/ภาพและ table fragmentation เดิม. Area ไม่จองกรอบเพิ่ม.
 **Tech Stack:** Existing TypeScript Core, packed Core consumer in Service,
 PostgreSQL draft/job persistence and FlowDocMake MCP; no new runtime dependency.
-**Spec:** Agreed behavior below plus Stage0 technical proposals in this section.
+**Spec:** Agreed behavior below plus the closed Stage0 contract in this section.
 Future execution uses the applicable executing-plans workflow after authorization;
 this documentation does not dispatch subagents, new tasks or separate rooms.
 
@@ -1839,9 +1840,9 @@ input เมื่อเต็ม. การทำ fixed ไม่ได้ย�
   ไม่แสดงภาพที่ใหญ่เกินพื้นที่ แต่ต้องไม่เปลี่ยน legacy failures แบบเงียบหรือใช้
   omission หลบ malformed input, missing resource, readiness หรือ security checks.
 
-### ข้อเสนอรูปข้อมูลสำหรับปิดช่วง 0
+### รูปข้อมูลที่ปิดในช่วง 0
 
-Technical proposal, not today's accepted runtime JSON: optional `sizing` อยู่บน
+Closed design contract, not today's accepted runtime JSON: optional `sizing` อยู่บน
 Format definition; omitted means existing implicit auto. Explicit auto has only
 mode; fixed requires finite positive height in pt/mm. ค่ามีผลกับทุก instance ที่
 เรียก definition นั้น ไม่เพิ่ม sizing override ใน `{format,data}` สำหรับรอบแรก.
@@ -1892,7 +1893,7 @@ stops after some content, the second still runs after its reserved180pt. If the
 first whole frame cannot fit, it consumes no flow space; the second is still
 evaluated (it may also fail to fit). Different Format keys/modes may be mixed.
 
-Proposed warnings use the existing Result/Issue channel: FORMAT_CONTENT_OMITTED
+Contract warnings use the existing Result/Issue channel: FORMAT_CONTENT_OMITTED
 for a partly shown instance and FORMAT_FRAME_NOT_SHOWN for a missing whole frame.
 There is no Area-level stop or omitted range extending through later entries.
 An illustrative partial-result warning, not an executed receipt:
@@ -1924,7 +1925,8 @@ Do not put visibility omissions in PreparedAreaValue.skippedIndices, remove
 input entries, include raw private text in warnings, or infer total omitted
 lines/rows from an entry index. PDF success with warnings is not full coverage.
 Exact cursor shape, atomic rows/images, warning persistence and omission-related
-TOC/reference handling must be checked in Stage0 before implementation.
+TOC/reference handling are specified in the Stage0 contract below; they remain
+implementation requirements, not current capabilities.
 
 ### ขอบเขต การตรวจ และลำดับงานที่ปรับแล้ว
 
@@ -1952,23 +1954,23 @@ Format library, UI, auto-fit, new image ingestion or font-scale features.
 - [x] บันทึกเจ้าของและขอบเขต: definition กำหนด mode; instance จองพื้นที่/หยุด
   เฉพาะตน; Area รับรายการเดิมและไม่หยุดทั้งชุด. Owner-approved chat summary
   supersedes the old Area contract; it is not old Stage0 proof reuse.
-- [ ] ตรวจ exact sizing JSON, default/units/validation และ capability `formatSizing`
+- [x] ตรวจ exact sizing JSON, default/units/validation และ capability `formatSizing`
   กับ model19/font schema1/2; ระบุ explicit auto/legacy impossible-image policy.
-  Placement restrictions must follow actual context: propose fixed initially only
+  Placement restrictions follow actual context: fixed initially only
   when the owning Area is a Section flow root; do not assume fixed in cells works.
-- [ ] ปิด geometry ของ instance: inherit width, empty invocation, full reservation,
+- [x] ปิด geometry ของ instance: inherit width, empty invocation, full reservation,
   no double-counting, exact-fit tolerance and non-placement without page move.
   Separate absent entry from an invoked Format whose rendered content is empty.
-- [ ] ทวน full stop/skip semantics through rootIds, repeats and rowGroups, explicit
+- [x] ทวน full stop/skip semantics through rootIds, repeats and rowGroups, explicit
   page-break, nested table-cell images and child fixed text; preserve existing
   child errors rather than blindly replacing them with omissions.
-- [ ] ปิด exact FORMAT_* warning/cursor/envelope contract and instance identity;
+- [x] ปิด exact FORMAT_* warning/cursor/envelope contract and instance identity;
   frame omission must identify the same single entry even when it shares a key
   with later entries. No Area-wide entryRange or replacement of valid input.
-- [ ] ปิด TOC/anchor/reference behavior if a stopped Format hides a destination:
+- [x] ปิด TOC/anchor/reference behavior if a stopped Format hides a destination:
   no guessed page or dangling link. Reassess the prior Area-specific TOC ban/error
   choices rather than silently carrying them into this different contract.
-- [ ] Review receiving/sending JSON and compatibility with Core/Service/FlowDocMake;
+- [x] Review receiving/sending JSON and compatibility with Core/Service/FlowDocMake;
   record exact decisions here. Stop for contract review before runtime work.
 
 ### ช่วง 1 — Core: definition และ Format-instance boundary
@@ -1991,7 +1993,8 @@ Owner Core. Files: `src/template/types.ts`, relevant validators including
 
 Files: `src/layout/documentFlow.ts`, existing measurement helpers,
 `src/layout/fixedTextBlock.ts` only if affected, `src/pdf/drawContract.ts` and
-result/provenance types needed by the closed Stage0 contract.
+result/provenance types needed by the closed Stage0 contract; destination
+consumers `src/layout/linkGeometry.ts` and `src/layout/fillContentsNumbers.ts`.
 
 - [ ] Red tests for exact fit, one-line overflow, valid empty invocation, no entry,
   multiple calls of the same Format and mixed auto/fixed in one Area.
@@ -2050,6 +2053,265 @@ affected; Project Control existing FlowDocMake capability/guidance/package.
   their actual authorization and are not granted by this documentation request.
 
 **Current state:** Format behavior agreed and documentation/plan revised;
-technical Stage0 checks above remain open for the changed Format contract.
-Stages1–5 are unimplemented. Prior Area-stage0 design is superseded, not runtime
-acceptance and not a completed Format-stage0. No product or template was changed.
+technical Stage0 is closed by the design contract below. Stages1–5 are
+unimplemented. Prior Area-stage0 remains superseded and supplies no runtime
+acceptance. No product or template was changed; Stage1 needs its own instruction.
+
+### สัญญาช่วง 0 — Format sizing v1 (2026-10-17)
+
+**Authority Boundary:** Project Control design contract for future Core/Service/
+FlowDocMake implementation. User authorized closing this Format-stage0 contract
+only. Role Planning Partner / Cross-Repo Boundary Reviewer; single-room inline,
+execution IDs N/A. The exact technical choices below close the approved behavior;
+they are not assertions that the current runtime accepts these fields/warnings.
+Current source remains Core `c340c4f` / Service `08a7131`; package versions remain
+Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No repack, migration or install.
+
+#### 0A. Exact definition and compatibility
+
+- `AreaFormat.sizing` is optional and is the only new definition property.
+  Allowed shapes are exactly `{"mode":"auto"}` or
+  `{"mode":"fixed","height":{"value":180,"unit":"pt"}}` (example height).
+  Fixed height value must be a finite number strictly greater than0; units are
+  pt/mm, with pt=value for pt or value*72/25.4 for mm. Unknown keys/modes, null,
+  an auto height, absent fixed height and invalid numbers/units are INVALID_TEMPLATE.
+- New explicit sizing is supported only by nodeModelVersion19, with existing
+  font schemaVersion1/2. No model20/font-schema change is introduced. Model18
+  rejects sizing. Omitted sizing preserves legacy implicit auto behavior and
+  old fingerprints; no draft or published definition is rewritten. Literal
+  explicit auto may have a different fingerprint from omitted sizing.
+- Explicit auto has existing ordinary text/table flow. Its opt-in oversized-image
+  exception is specified in0C; omitted sizing preserves historical impossible-
+  image errors. This compatibility distinction is deliberate, not a silent
+  migration. Existing valid default-auto content must retain output semantics.
+- Explicit fixed is valid only when its owning Area placement is an authored
+  Section flow root. Fixed inside table cells/repeats, recursive Area/Format
+  nesting and fixed TOC nodes are unsupported/INVALID_TEMPLATE in v1. Auto keeps
+  existing placement rules. Reject a fixed definition whose fragment contains
+  table-of-contents, even if that Format is not selected in the sample request.
+- Sizing is not allowed on Area props, field schema, Section or `{format,data}`
+  entries. No per-call override. Two calls of one definition share the same
+  sizing policy but get distinct capacity/cursors. To author different policies,
+  use different owned Format definitions. Clone/import copies sizing literally,
+  remaps ordinary IDs/references and never merges independent instances.
+- Prepared request data stays unchanged: no new skipped input entries or partial
+  source payload. Existing template fingerprint/revision and packed renderer/font
+  identities pin the sizing used by a job; a later definition edit cannot change
+  the output/warnings of an already queued job.
+- The future capability object is exactly the following (not currently exposed):
+
+```json
+{
+  "formatSizing": {
+    "version": 1,
+    "nodeModelVersions": [19],
+    "fontSchemaVersions": [1, 2],
+    "modes": ["auto", "fixed"],
+    "fixedContexts": ["section-flow-root"],
+    "diagnosticsVersion": 1
+  }
+}
+```
+
+Older consumers must reject unsupported explicit sizing, never strip it and save
+auto instead. No `areaSizing` capability or Area-prefixed omission schema is added.
+
+#### 0B. Frame geometry, instance progress and stop
+
+- Fixed width is the current Section flow width after margins/band constraints;
+  v1 adds no Format width, absolute x/y, internal padding or visible outer border.
+  Child table/cell/image geometry is measured within that width. A visible frame
+  is not automatically painted; authored children retain their own drawing.
+- Before rendering an instance, compare its whole fixed height with current-page
+  remaining body space. Exact-fit comparison uses1e-6pt tolerance, once per
+  comparison, not an accumulating allowance. If it cannot fit, emit
+  FORMAT_FRAME_NOT_SHOWN, render none of this instance and consume no space.
+  Do not shrink/move/retry its rectangle on another page. A valid height larger
+  than a full printable page is also this non-placement case, not a new page.
+- A placed fixed frame reserves its full height, including when the invoked
+  Format renders empty or stops before the bottom. No entry means no invocation
+  and no reservation. Its children consume that one budget, not a second copy.
+  Following entries are evaluated at the end of the reserved frame, or at the
+  unchanged cursor when the entire frame was not placed.
+- Process rootIds and expanded members in order. At the first item that cannot
+  fit, stop only this instance's remaining content; later entries in the same
+  Area still run. There is no shared budget or Area-wide stop. Do not fill gaps
+  by jumping ahead to later children of the stopped Format.
+- Fit includes complete measured line/frame height and applicable spacing,
+  cell padding and closing stroke extent. Do not count allowances twice.
+  All visible stroke bounds, including half-stroke extents, stay within the
+  frame. Never crop glyphs, text lines or images; never lower font size or change
+  the requested image frame to conceal overflow.
+- Text lines and image frames are atomic. A line/rule node includes all its
+  before/after spacing and stroke. Existing child fixed-height text is atomic
+  with its reserved height: if valid but it does not fit the parent remainder,
+  stop before it; if its text violates its own fixed-frame contract, retain the
+  existing layout error. Do not inherit partial parent behavior into that child.
+- An explicit page-break reached in fixed stops the current instance before the
+  break with reason explicit-page-break and creates no page. Subsequent entries
+  may create pages only under their own ordinary flow or explicit authored break.
+  Auto preserves current leading/repeated/trailing-break behavior.
+- Source validation/readiness/security still covers full input. Declared invalid
+  geometry, invalid data or missing resources are not turned into omissions.
+  No requirement is introduced to fully lay out a stopped remainder merely to
+  count its height/lines; diagnostics must not claim that hidden layout was tested.
+
+#### 0C. Tables, groups and images
+
+- Reuse the measured table grid/cell-content fragment logic. With allowBreak:true,
+  select a safe shared slice containing complete text lines/image frames in
+  every participating cell; unequal cells may have different logical stop cursors.
+  Include repeated header height, padding and closure before accepting the slice.
+- Close the bottom and sides of the rendered fragment with shared edges drawn
+  once. Rowspan/colspan keeps grid topology and no separator crosses a merged
+  cell. Keep the existing border geometry (currently0.5pt); no style API is added.
+  Close at the real visible fragment end, not by painting pretend empty rows to
+  fill the reserved Format height. The outer budget is still fully reserved.
+- If a header fits but no body unit fits, do not leave a stranded header: auto
+  moves the fragment, fixed stops before it. Genuinely empty authored tables
+  retain their existing behavior and are not falsely called overflow.
+- allowBreak:false protects a whole logical row. Row-group keepStart protects
+  its prefix plus first member unit as currently defined. If that unit cannot
+  fit fixed, stop before it; do not relax protection just to fill the frame.
+  Auto keeps current group-start relaxation/warnings. A spanning cell alone
+  does not make the whole span indivisible. Track unfinished cells separately.
+- Ordinary auto images use the configured whole frame, moving to the next page
+  if it fits a fresh applicable body region. For explicit sizing:auto only, an
+  image too tall for any applicable fresh region is omitted with
+  FORMAT_IMAGE_NOT_SHOWN and processing continues after that image. No blank-page
+  loop. In cells account for table headers/padding and remeasure cell layout
+  after the omission, preserving other text and protected-row/group policies.
+  Implicit legacy auto retains its former impossible-image error behavior.
+- In fixed, an image that cannot fit the remaining frame stops the instance,
+  including a table-cell image. Emit FORMAT_CONTENT_OMITTED once; do not also
+  emit an image warning, skip ahead within the same instance or split the image.
+  Pixel dimensions are irrelevant to frame fit; existing contain behavior inside
+  the declared frame is retained. Excessive declared width remains a layout error.
+- If no unit fits a valid placed fixed frame, reserve the frame and report the
+  stopped instance; continue to the next entry without retries or extra pages.
+
+#### 0D. Exact diagnostic channel and identity
+
+Use existing Result/Issue.warnings, with action:skipped and a fixed generic
+message. Successful partial rendering remains ok:true and job status:succeeded;
+Service sets hasWarnings:true. It is not full-content/source-fidelity PASS.
+On a later layout error return ok:false with collected warnings, and expose no
+new succeeded PDF. Prior successful artifacts remain independently valid.
+
+Each warning requires path to the Format definition sizing, sectionId, and one
+structured object as follows; ordinary optional Issue.nodeId may name the active
+resolved node. No new public instance ID or client resume API is introduced.
+
+| code | detail key | reason |
+| --- | --- | --- |
+| FORMAT_CONTENT_OMITTED | formatOmission | height-limit / image-does-not-fit / unbreakable-item-does-not-fit / explicit-page-break |
+| FORMAT_FRAME_NOT_SHOWN | formatFrameOmission | insufficient-page-space |
+| FORMAT_IMAGE_NOT_SHOWN | formatImageOmission | image-exceeds-page |
+
+All three detail objects require version:1, areaId, areaEntryIndex (original
+zero-based index), areaFormatId and format (key). Together with sectionId this
+is the instance identity; retain original indices even when earlier calls were
+omitted. Original clone/import origin remains separate provenance.
+
+- formatOmission requires a nonempty pending array. Text cursor: kind:text,
+  nodeId, sourceNodeId, lineIndex (zero-based measured line index), with optional
+  sourceOffset (zero-based UTF-16 offset when known). Image cursor: kind:image,
+  nodeId and sourceNodeId, without lineIndex. A wholly unshown atomic node uses
+  kind:node plus nodeType. All indices/offsets are nonnegative safe integers.
+- A pending cursor inside a table also supplies tableId, rowId, cellId when
+  applicable, plus groupId/groupIndex/itemIndex/repeatId from actual expansion.
+  For a partially shown row include one cursor per unfinished active cell;
+  later untouched roots/rows of this same instance are implicitly omitted.
+  No cursor, omitted range or skipped status extends to a later Area entry.
+- formatFrameOmission requires sectionPageIndex (zero-based), requiredHeightPt
+  and availableHeightPt (finite nonnegative measured lengths). No invented line
+  cursor/page number for an unplaced frame. Emit one frame warning, not one per
+  descendant. Even an empty invoked Format can have an unplaced frame.
+- formatImageOmission requires pending containing exactly the omitted image
+  cursor. It reports that image only; it does not stop this auto instance or
+  claim later content was omitted. Image warnings from independent instances
+  retain separate identity. Existing unrelated warnings stay intact.
+- Keep originalInput/PreparedInput, arrays, full text and asset references intact.
+  Do not put rendering omissions into skippedContentIndices or
+  PreparedAreaValue.skippedIndices, which represent preparation semantics.
+  No guessed aggregate line/row counts or raw private values, image bytes,
+  credentials, tokens or DB/storage paths appear in diagnostic messages.
+- Preview/job envelopes identify templateId, saved revision, definitionFingerprint
+  and already pinned renderer/font identity. A measured cursor is scoped to that
+  exact render, never reused after changing fonts, data or definition. Persist
+  warnings through child-render transport, restart, status read and PDF save.
+
+The earlier example warning demonstrates the content case. Whole-frame example
+for a second call of that Format (illustrative, not a runtime receipt):
+
+```json
+{
+  "code": "FORMAT_FRAME_NOT_SHOWN",
+  "path": "areaFormats.meeting-format.sizing",
+  "message": "Format instance frame did not fit the current page and was not shown",
+  "action": "skipped",
+  "sectionId": "10000000-0000-4000-8000-000000000001",
+  "formatFrameOmission": {
+    "version": 1,
+    "areaId": "meetings-area",
+    "areaEntryIndex": 1,
+    "areaFormatId": "meeting-format",
+    "format": "meeting",
+    "reason": "insufficient-page-space",
+    "sectionPageIndex": 0,
+    "requiredHeightPt": 180,
+    "availableHeightPt": 100
+  }
+}
+```
+
+#### 0E. TOC, anchors and legacy boundary
+
+- Fixed Format definitions may contain headings/anchors, but not a TOC node in
+  v1 as specified in0A. Auto TOCs retain their existing scoped behavior.
+- Destination indexing must distinguish deliberately omitted nodes from visible
+  nodes. A visible heading with a positioned line keeps its actual destination;
+  an omitted heading never acquires a guessed page. If no visible reference or
+  generated TOC row targets an omitted anchor, omission may succeed with warning.
+- If a surviving reference or TOC row targets that omitted anchor, fail
+  LAYOUT_FAILED with reason omitted-destination; do not erase a reference,
+  silently prune TOC rows or add reflow passes. A partial heading with at least
+  one positioned nonempty line follows the existing first-line anchor rule.
+  The pre-omission title/schema remains subject to normal validation.
+- Current `src/layout/linkGeometry.ts` rejects every unpositioned anchor and
+  `fillContentsNumbers.ts` rejects missing TOC destinations. Omission-aware
+  indexing for explicit sizing is therefore necessary product work, not a
+  capability already available. Add these consumers to Stage2/5 impact checks;
+  omitted sizing preserves the existing destination validation behavior.
+
+#### 0F. Contract review cases and stopping point
+
+Expected results below are future acceptance cases, not runtime tests run now:
+
+| Input/case | Required result |
+| --- | --- |
+| Existing no-sizing template/request | Unchanged implicit auto behavior and input |
+| Explicit auto declaration | No height; old normal flow plus explicit image exception |
+| Fixed100pt with ten20pt text lines | Five lines; cursor lineIndex5; next call still processed |
+| Two fitting calls of fixed180pt | Two separate180pt reservations, no shared budget |
+| Invoked empty fixed180pt versus [] | One reservation versus no invocation/reservation |
+| First fixed call stops mid-table, second call fits | Closed first fragment; accurate cursor; second rendered |
+| First180pt frame cannot fit100pt remaining, later60pt call | First omitted without page/cursor move; later call evaluated at same position |
+| Valid fixed height larger than full page body | Frame warning only; no retry/shrink or hidden validation bypass |
+| Invalid height or unsupported fixed placement | INVALID_TEMPLATE, not an omission warning |
+| Two20pt table lines plus8pt total padding and0.5pt outer stroke allowance in48.5pt | Exact fit; complete lines and border |
+| Same table in48.4999pt | Fitting complete lines only; closed fragment and pending cursors |
+| Header fits without first body unit | No stranded header; auto moves / fixed stops |
+| Fixed protected row/group does not fit | Stop before protected unit; no relaxation |
+| Image20pt with fixed remainder10pt | Stop this instance before image; later entries continue |
+| Explicit fixed page-break reached | Stop this instance, no continuation page |
+| Omitted heading with/without visible inbound reference or TOC row | Error with surviving target use / warning-only allowed without it |
+| Same Format key in cloned Sections | Independent identity, limits, warnings and pinned output |
+
+Review coverage maps exact JSON/compatibility to0A, frame/stop to0B, table/image
+behavior to0C, diagnostics to0D and links to0E. All seven Format-stage0 checklist
+items are closed as design. Documentation verification covers JSON parsing,
+example consistency, scope/identity and authority; it is not schema/runtime/PDF
+acceptance. No Core/Service source, live data, generated map, package version,
+release/tag or installed plugin is changed. Stop here for owner review before
+Stage1; no further runtime authorization is inferred from Stage0 completion.
