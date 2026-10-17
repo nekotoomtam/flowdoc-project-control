@@ -184,3 +184,31 @@ client 0.2.1 ในชุดส่งมอบ; ไม่ deploy หรือเ
 คำสั่งออกรุ่น; ผลออกรุ่นตามคำสั่งถัดมาบันทึกแยกข้างต้น. ไม่เพิ่ม automated
 release pipeline, ไม่เปลี่ยนชื่อ branch
 และไม่เลื่อนงาน area/array กลับมาเป็น prerequisite ของ cell slice
+
+## ผลออกรุ่น 0.4.3 และ FlowDocMake 0.2.4 — 2026-10-17
+
+Owner authorized Git snapshots/tags/push only, excluding installation. Exact
+source and proof are in the existing
+[Format sizing result](flowdoc-area-document-transition-2026-10-14.md), final
+release subsection. Core `release` / annotated `v0.4.3` is `5c34f84` from source
+`559b126`; Service is `be90f69` from source `92e7ff1`. Each has the preceding
+`v0.4.0` as its only parent, exact candidate-tree equality, and10tagged commits
+in the full release ancestry. Prior9tags were not moved. Development history
+remains complete on the existing default branches, now updated on GitHub.
+
+FlowDocMake lives inside Project Control. This first component release uses
+`release/flowdocmake` with annotated `flowdocmake-v0.2.4` at root snapshot
+`a1cfbed`, full-tree identical to frozen PCsource `732a2bf`. The namespace
+distinguishes the plugin manifest version from Project Control's independent
+workspace version; it does not create a Core/Service-style unqualified PCrelease.
+The component chain follows the same snapshot/tag isolation principle.
+
+All three source/snapshot/tag ref sets were dry-run checked and sent atomically
+per repository, then read back from GitHub including peeled tag targets. Core
+tarball SHA256 remains
+`64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+Readiness includes the prior passing suites and newly completed6Service/4plugin
+fixture cases, with no remaining skips in those targeted runs. Delivery bytes
+are unchanged; no repack, package/image publication, GitHub Release-page creation
+or installation was part of this Git release. Evidence and backup bundles:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-release-043/`.

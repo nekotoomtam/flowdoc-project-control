@@ -7,7 +7,8 @@ Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format
 Candidate v1 and correction v2 stages0–4 are complete within the recorded scope.
 Maximum-height v2 is integrated into the existing primary development branches;
 read the final integration section for checks, retained evidence and cleanup.
-Release and installation remain pending separate owner authorization.
+Core/Service0.4.3 and FlowDocMake0.2.4 are released on the recorded snapshot
+branches/tags; installation remains pending separate owner authorization.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
@@ -2895,3 +2896,47 @@ delivery record; immutable delivery archives are not replaced. Remaining steps
 are owner-authorized snapshot/tree/parent checks, annotated tags and atomic push,
 then separately authorized installation/live-data/installed-chat verification.
 No release/tag/remote refs or installation were changed in this round.
+
+#### ออกรุ่น Core/Service0.4.3 และ FlowDocMake0.2.4 — 2026-10-17
+
+Owner explicitly authorized Git release snapshots, annotated tags, exact-tree
+checks and GitHub push, excluding installation. Single-room inline; execution
+IDs N/A, routine risk; roles Evidence Reviewer / Project Control Steward.
+Existing readiness and all10fixture-case proof remain valid: no candidate product,
+dependency, configuration or artifact changes. No new mandatory documentation.
+
+| Component | Frozen development source | Release snapshot / annotated tag |
+| --- | --- | --- |
+| Core0.4.3 | `559b126c51073c31a2d42b3963d5d95a9b87757f` | `5c34f8496b698e06dc90be9e98ddf0fd756f067d` / `v0.4.3` |
+| Service0.4.3 | `92e7ff1cc902eddc6a53a1222abd7550cdeb89e5` | `be90f69774342c010e635d52ff48ad6e64cb2640` / `v0.4.3` |
+| FlowDocMake0.2.4 | PC`732a2bffdb17e5c0ee5e6e20e4974b81cd86fe13` | `a1cfbedd85544c33649319bed749ff50d3009ea7` / `flowdocmake-v0.2.4` |
+
+Core/Service `release` each gains exactly one snapshot, whose only parent is its
+previous0.4.0 snapshot; each full ancestry now has10commits with annotated tags
+on GitHub. Old tags are unchanged. Each snapshot tree equals its frozen source
+tree exactly. Development branches retain their full histories and were pushed
+alongside the corresponding snapshot/tag in one atomic push per repository.
+
+FlowDocMake is a component inside Project Control, not a standalone repository
+or Project Control workspace version. Its first release uses the separate
+`release/flowdocmake` branch and namespaced annotated `flowdocmake-v0.2.4` tag,
+with its own root snapshot. Full repository tree equals frozen PCsource732a2bf;
+component version is read from `plugins/flowdocmake/.codex-plugin/plugin.json`.
+This does not label the independent PCpackage as version0.2.4. Later status-only
+updates on PCmain do not rewrite that frozen source, snapshot or plugin guide.
+
+Verified GitHub symbolic default HEAD before publication, clean working trees,
+development ancestry, exact versions/Core checksum,9delivery archive/manual
+hashes, prior readiness and all10supplemental tests. Verified all3Git bundles
+before ref changes, then all3atomic dry-runs. Actual atomic pushes succeeded;
+read back remote development heads, snapshot heads, annotated tag objects and
+peeled targets; all equal their prepared identities. Core archive remains SHA256
+`64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-release-043/`:
+before.json, verified pre-change Git bundles, prepared.json, per-repository
+dry-run/push logs, release-result.json and final-check.json. Existing immutable
+delivery and remaining-test supplements retain their original hashes/locators.
+No installation/deployment, user-data changes, package/image publication or
+GitHub Release-page creation was performed. Next is separately authorized
+backup/install/live-data/installed-chat verification against this exact release.
