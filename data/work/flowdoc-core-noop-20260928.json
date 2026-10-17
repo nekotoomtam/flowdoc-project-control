@@ -1,0 +1,478 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-noop-20260928",
+  "title": "Core exact committed EOF no-op implementation",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "No-op implementation, verification and bounded truth promotion complete. PLAN accepted clean Core ccfce0669f17634b3f9e3d2d308a21fe4bd135df via Scope Lock; main fast-forward integrated and fresh Core check passed441files3035tests/1existing skip. Native107/107 and actualWASM static75ordinary+15NoOp pass; identity/revision/accepted-ledger preserved and95-field exact family accounting verified. PC final records lane/main gates and managed PLAN archive are reported in terminal-report.json after execution.",
+  "contextDocumentIds": [
+    "doc-core-stage6-noop-lifecycle-contract-20260927",
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Verified private NoOp and exact accounting/identity/fixed-row diagnostic; no Stage6/performance/UX PASS.",
+  "riskSummary": "No Stage6/performance/UX PASS. Full180burst/11271 NOT_RUN; static15 does not mean fullburst. Native overflow only, no WASM injected overflow claim. New QA NoOpCompletion is not hostcancelcomplete. Missing private host-control envelope/operation identity is exact lifecycle dependency. Recommended option: implement existing retained-source recovery/eviction and bounded synchronous pre-entry/too-late control in a fresh authorized lifecycle round before item4. Alternative: defer item4; cooperative/shared-atomic in-flight design remains out of scope. Core unchanged view/edit geometry including transients and downstream Editor/Backend remain required.",
+  "requiredEvidence": [
+    "evidence-core-stage6-ordinary-complete-20260927",
+    "evidence-core-noop-20260928"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 6,
+    "round": {
+      "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+      "roundId": "core-noop-20260928-01a0e59b",
+      "workId": "flowdoc-core-noop-20260928",
+      "scopeId": "core-exact-eof-noop",
+      "scopeKeys": [
+        "core:exact-eof-noop"
+      ],
+      "allowedFiles": [
+        "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+        "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+        "scripts/stage6/applicability.mjs",
+        "scripts/stage6/preflight.mjs",
+        "scripts/stage6/verify.mjs",
+        "tests/coldSessionStage3.test.ts",
+        "tests/coldSessionStage4.test.ts",
+        "tests/coldSessionStage5.test.ts",
+        "tests/coldSessionNoOp.test.ts",
+        "tests/stage6Preflight.test.ts"
+      ],
+      "state": "released",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "local-noop-20260928",
+        "hostId": "local",
+        "source": "Current collaboration.spawn_agent tool model/effort schema",
+        "observedAt": "2026-09-28T01:27:27.559Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-sol",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          },
+          {
+            "modelId": "gpt-6-luna",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-core",
+        "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+        "baseCommit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+        "state": "released",
+        "roundId": "core-noop-20260928-01a0e59b"
+      },
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+        "baseCommit": "ff1f069028b4952c7011a375811cc8f505136770",
+        "state": "released",
+        "roundId": "core-noop-20260928-01a0e59b"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [
+      {
+        "roomRunId": "noop-work-01",
+        "dispatchSetId": "noop-dispatch-01",
+        "laneId": "core-noop",
+        "workType": "implementation",
+        "ownerRepositoryId": "repo-core",
+        "activeRole": "product-implementation-agent",
+        "phaseId": "phase-flowdoc-core-noop-20260928",
+        "checklistId": "checklist-flowdoc-core-noop-20260928",
+        "evidenceTarget": "evidence-core-noop-20260928",
+        "revisionAttempt": 0,
+        "expectedHandoffId": "noop-handoff-0",
+        "status": "closed",
+        "locator": {
+          "threadId": "/root/noop_work",
+          "hostId": "local",
+          "worktree": "C:/Users/nekot/.codex/worktrees/core-noop-work/flowdoc-vnext-core",
+          "branch": "codex/core-noop-work-20260928",
+          "handoffPath": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/work-handoff.json"
+        },
+        "contextAcknowledgement": {
+          "status": "acknowledged",
+          "acknowledgedAt": "2026-09-28T01:28:43.8044197Z"
+        },
+        "returnRoute": {
+          "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+          "automaticChannel": "collaboration.send_message",
+          "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator",
+          "monitorOwner": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+          "livenessDeadline": "2026-09-28T02:12:14.0847549Z",
+          "maxSendAttempts": 3
+        },
+        "modelDecision": {
+          "capabilityClass": "workhorse",
+          "modelId": "gpt-6-sol",
+          "reasoningEffort": "medium",
+          "reason": "Settled private Rust/TS no-op contract with deterministic native/WASM acceptance; medium bounded implementation.",
+          "smallerOptionAssessment": "Luna medium insufficient for cross-language opaque identity, checked family accounting and inverse-sibling semantics.",
+          "availabilitySnapshotRef": "local-noop-20260928",
+          "escalationTriggers": [
+            "Two bounded revisions fail for same reasoning limitation after correcting context."
+          ]
+        },
+        "ux": {
+          "visibleChange": false,
+          "applicability": "not-applicable",
+          "reason": "Private Core mechanism only. Geometry/Editor/Backend/UX including transient parity remain downstream and unclaimed."
+        },
+        "requiredEvidence": [
+          "evidence-core-noop-20260928"
+        ],
+        "roundId": "core-noop-20260928-01a0e59b",
+        "packet": {
+          "policyId": "flowdoc-workflow-economy-v2",
+          "goal": "Implement approved exact committed EOF no-op only; finish item2 and identify lifecycle dependency before item4.",
+          "ownerRepositoryId": "repo-core",
+          "workAuthority": "implementation",
+          "workSize": "medium",
+          "risk": {
+            "tier": "bounded"
+          },
+          "allowedScope": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/preflight.mjs",
+            "scripts/stage6/verify.mjs",
+            "tests/coldSessionStage3.test.ts",
+            "tests/coldSessionStage4.test.ts",
+            "tests/coldSessionStage5.test.ts",
+            "tests/coldSessionNoOp.test.ts",
+            "tests/stage6Preflight.test.ts"
+          ],
+          "forbiddenScope": [
+            "docs/",
+            "src/",
+            "scripts/stage6/corpus.mjs",
+            "tests/fixtures/",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.toml",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/Cargo.lock"
+          ],
+          "acceptanceCriteria": [
+            "Exact committed EOF empty replacement, including empty session, returns NoOp same TS object/Rust token/revision and unchanged source/facts/defaults/origins/binding/siblings/accepted ledger; no shaping/segmentation/fullscan/hash/mint/publication.",
+            "Preserve schema/auth/family-overflow/revision/composition/range/shape precedence; optional anchor validated if supplied; actual work charged once per family attempt; checked noOpEvents without acceptedEvents or rejectedAttempts; overflow unaccumulated work honest.",
+            "Native and actual WASM meaningful mixed edit/noop/retry/empty/invalid/stale/overflow/anchor/Stage5 inverse tests; QA cancellation completion checkpoints distinct from actual host semantics. If real host-control dependency absent, report exact limitation/options without full lifecycle expansion or claiming host complete.",
+            "Private result union/adapters/verifier separate outcome and live content revision; immutable generator and IDs all180/11271. ActualWASM static diagnostic all15 NoOp plus75ordinary Accepted/coldEqual; 15static is not full180 burst, fullperformance NOT_RUN.",
+            "Focused native/WASM and stable candidate Core npm run check pass; clean exact commit, full changed-file manifest and retrievable evidence; public/Editor/Backend/geometry/full lifecycle untouched. Downstream unchanged view/edit geometry including transients remains required."
+          ],
+          "relevantEvidenceIds": [
+            "evidence-core-stage6-ordinary-complete-20260927"
+          ],
+          "proofBudget": {
+            "maxNewEvidence": 1,
+            "maxDurableDocuments": 0,
+            "maxReviewCycles": 1,
+            "closeForm": "acceptance-summary",
+            "authorizedArtifacts": [
+              {
+                "kind": "evidence",
+                "failurePrevented": "Prevent promoting unverified no-op identity/accounting behavior.",
+                "existingProofInsufficient": "Existing ordinary Evidence explicitly states no-op unsupported; update narrow new behavior with executable tests."
+              }
+            ]
+          },
+          "unknowns": [
+            {
+              "id": "host-control",
+              "summary": "Real host execution-control may be absent. No-op QA cancellation must not be promoted as host cancellation completion.",
+              "disposition": "deferred",
+              "returnTrigger": "Lifecycle implementation before item4; report exact source dependency in this round."
+            }
+          ],
+          "ownerDecisions": [
+            {
+              "id": "scope",
+              "kind": "freeze-scope",
+              "reason": "User approved no-op only, one direct WORK, no verifier/audit/full measurement/lifecycle expansion.",
+              "decidedBy": "user",
+              "decidedAt": "2026-09-28T01:27:27.559Z"
+            }
+          ],
+          "modelDecision": {
+            "capabilityClass": "workhorse",
+            "modelId": "gpt-6-sol",
+            "reasoningEffort": "medium",
+            "reason": "Settled private Rust/TS no-op contract with deterministic native/WASM acceptance; medium bounded implementation.",
+            "smallerOptionAssessment": "Luna medium insufficient for cross-language opaque identity, checked family accounting and inverse-sibling semantics.",
+            "availabilitySnapshotRef": "local-noop-20260928",
+            "escalationTriggers": [
+              "Two bounded revisions fail for same reasoning limitation after correcting context."
+            ]
+          },
+          "scopeLock": {
+            "version": 1,
+            "enforcement": "git-worktree",
+            "baseCommit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+            "worktree": "C:/Users/nekot/.codex/worktrees/core-noop-work/flowdoc-vnext-core"
+          },
+          "escalationTriggers": [
+            "New contract choice",
+            "Missing prerequisite prevents honest no-op acceptance",
+            "Scope escape",
+            "Safety/correctness blocker"
+          ],
+          "returnRoute": {
+            "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+            "automaticChannel": "collaboration.send_message",
+            "activeCommand": "collaboration.send_message target=/root with stable handoff ID and durable payload locator"
+          }
+        },
+        "packetDigest": "9a29be98333d889529435cffc7ad8757939a7d37ffe2681b1002bddb0103109b"
+      }
+    ],
+    "handoffs": [
+      {
+        "handoffId": "noop-handoff-0",
+        "payloadDigest": "96668a5d648179fc867177225708cf1eebd159854a06c10aa20dbdead688bc8e",
+        "payload": {
+          "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+          "roomRunId": "noop-work-01",
+          "laneId": "core-noop",
+          "ownerRepositoryId": "repo-core",
+          "revisionAttempt": 0,
+          "status": "PASS",
+          "behaviorChanged": true,
+          "behaviorSummary": "Exact committed EOF empty replacement returns private NoOp with unchanged Rust receipt, identical TS handle and live content revision. It charges a unique family attempt and checked noOpEvents without publishing source, facts, siblings or accepted mutation state.",
+          "exactCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+          "changedFiles": [
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+            "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+            "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+            "scripts/stage6/applicability.mjs",
+            "scripts/stage6/verify.mjs",
+            "tests/coldSessionNoOp.test.ts",
+            "tests/coldSessionStage4.test.ts"
+          ],
+          "tests": [
+            "cargo test --release --features cold-session-qa cold_session --no-default-features --lib: 107 passed",
+            "npx vitest run tests/coldSessionNoOp.test.ts tests/stage6Preflight.test.ts: 6 passed, 1 existing conditional skip",
+            "npm run check: 441 files, 3035 passed, 1 existing skip",
+            "Static actualWASM diagnostic: 75 ordinary Accepted/cold Equal, 15 no-ops NoOp/unchanged cold Equal"
+          ],
+          "evidenceIds": [],
+          "risks": [
+            "Real host execution-control semantics remain deferred to lifecycle implementation.",
+            "Full Stage6 performance and complete burst measurement NOT_RUN."
+          ],
+          "unknowns": [
+            "host-control"
+          ],
+          "roundId": "core-noop-20260928-01a0e59b",
+          "completion": {
+            "behaviorChanged": "Exact committed EOF empty replacement returns private NoOp with unchanged Rust receipt, identical TS handle and live content revision. It charges a unique family attempt and checked noOpEvents without publishing source, facts, siblings or accepted mutation state.",
+            "proof": [
+              {
+                "kind": "test",
+                "reference": "native-check.summary.txt: release cold_session 107/107, including five new no-op tests",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "focused-wasm.summary.txt: actual WASM no-op and verifier focused suite 6 passed, 1 existing conditional skip",
+                "criterionRefs": [
+                  "AC-1",
+                  "AC-2",
+                  "AC-3",
+                  "AC-4"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "static-applicability.json: exact ccfce0669f17634b3f9e3d2d308a21fe4bd135df, 75/75 ordinary Accepted/cold Equal, 15/15 NoOp/unchanged cold Equal, rawCallsSha256 fbe3f06bb8a6a3487a6f5c6de96d866df3f2e32fd19a50911d8b01ab8e0e7c78",
+                "criterionRefs": [
+                  "AC-4"
+                ]
+              },
+              {
+                "kind": "test",
+                "reference": "core-check.log: npm run check 441 files, 3035 passed, 1 existing skip; exact clean commit ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+                "criterionRefs": [
+                  "AC-5"
+                ]
+              }
+            ],
+            "remainingUnknowns": [
+              {
+                "id": "host-control",
+                "summary": "Core private coldSessionStage3.ts and cold_session/mod.rs expose synchronous QA faults but no host execution-control envelope, fresh operation identity or real AbortController delivery. The new no-op-completion point is QA-only. Real host cancellation completion is unproven.",
+                "disposition": "deferred",
+                "returnTrigger": "Implement the settled lifecycle and synchronous host-control contract before Stage6 item4 admission."
+              }
+            ],
+            "downstreamInformation": "Stage6 item4 remains gated by lifecycle/host-control implementation. Full 180-row burst, 11271 obligations, timing, heap, scaling, geometry and downstream Editor/Backend/UX including transient parity were NOT_RUN and remain separately required. No public API or generator IDs changed.",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/verify.mjs",
+              "tests/coldSessionNoOp.test.ts",
+              "tests/coldSessionStage4.test.ts"
+            ],
+            "createdEvidenceIds": [],
+            "createdDocumentIds": [],
+            "reviewCyclesUsed": 1,
+            "implementationCommitCount": 1
+          }
+        },
+        "transport": {
+          "status": "sent",
+          "attempts": 1,
+          "attemptHistory": [
+            {
+              "attemptedAt": "2026-09-28T02:06:53.897Z",
+              "outcome": "sent"
+            }
+          ],
+          "lastAttemptAt": "2026-09-28T02:06:53.897Z"
+        },
+        "receipt": {
+          "status": "received",
+          "receivedAt": "2026-09-28T02:06:53.897Z",
+          "senderThreadId": "/root/noop_work",
+          "channel": "collaboration.send_message",
+          "arrivalSequence": 1,
+          "acknowledgedAt": "2026-09-28T02:06:53.897Z"
+        },
+        "acceptance": {
+          "status": "accepted",
+          "reviewer": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+          "reviewedAt": "2026-09-28T02:06:53.897Z",
+          "evidenceIds": [
+            "evidence-core-noop-20260928"
+          ],
+          "requiredChecks": [
+            {
+              "name": "native107",
+              "status": "passed"
+            },
+            {
+              "name": "actualWASM-focused-and-static75+15",
+              "status": "passed"
+            },
+            {
+              "name": "Core npm run check441files3035tests",
+              "status": "passed"
+            },
+            {
+              "name": "PLAN-source-manifest-accounting-review",
+              "status": "passed"
+            }
+          ],
+          "remainingScope": [
+            "Lifecycle/host-control before item4",
+            "Fullmeasurement NOT_RUN",
+            "Core geometry including transients and downstream UX remain required"
+          ],
+          "scopeLockVerification": {
+            "version": 1,
+            "status": "passed",
+            "baseCommit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+            "terminalCommit": "ccfce0669f17634b3f9e3d2d308a21fe4bd135df",
+            "packetDigest": "9a29be98333d889529435cffc7ad8757939a7d37ffe2681b1002bddb0103109b",
+            "manifestDigest": "d396d685a9bd75f755bdd2123597f2c6d9976a79ede37823efe33fdda803a48d",
+            "changedFiles": [
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+              "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+              "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+              "scripts/stage6/applicability.mjs",
+              "scripts/stage6/verify.mjs",
+              "tests/coldSessionNoOp.test.ts",
+              "tests/coldSessionStage4.test.ts"
+            ],
+            "verifiedAt": "2026-09-28T02:06:53.897Z",
+            "clean": true
+          }
+        }
+      }
+    ],
+    "completionQueue": [],
+    "cleanup": [
+      {
+        "repositoryId": "repo-core",
+        "worktreePath": "C:/Users/nekot/.codex/worktrees/core-noop-work/flowdoc-vnext-core",
+        "branch": "codex/core-noop-work-20260928",
+        "planTaskId": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+        "executor": "01a0e59b-e81a-7ac2-9f83-2feabad41b08",
+        "preflightEvidenceIds": [
+          "evidence-core-noop-20260928"
+        ],
+        "preflightSources": {
+          "cleanliness": "Exact ccfce066 clean tracked/untracked; git worktree cleanup preflight in terminal.",
+          "merge": "Core main fast-forward ccfce066; ancestry checked.",
+          "worktreeGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/core-check.log",
+          "mainGate": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/core-main-check.log",
+          "liveProcess": "WORK terminal returned; no process needs Core lane."
+        },
+        "currentRound": true,
+        "worktreeClean": true,
+        "merged": true,
+        "worktreeGate": "passed",
+        "mainGate": "passed",
+        "liveProcessClear": true,
+        "disposition": "removed",
+        "roundId": "core-noop-20260928-01a0e59b"
+      }
+    ]
+  },
+  "createdAt": "2026-09-28T01:27:27.559Z",
+  "updatedAt": "2026-09-28T02:13:58.063Z"
+}

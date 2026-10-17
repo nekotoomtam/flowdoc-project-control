@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-columns-authoring-boundary",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Columns Authoring Boundary",
+  "phaseState": "done",
+  "order": 180,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Selected Columns surfaces produce text-block insert placements against the Columns columnIds list instead of a concrete Column child container.",
+    "Selected text inside a Column produces add actions outside its same Column parent without an explicit blocked reason.",
+    "Cross-column sibling placement is treated as ready or silently retargeted.",
+    "Structure add actions hide the real container id needed to verify where Text will be inserted.",
+    "The slice changes Core or Backend insert semantics instead of staying within the Editor-owned readiness boundary.",
+    "The slice enables Table authoring, nested Columns insertion claims, WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring beyond existing bounded text-block editing, durable drafts, collaboration, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor exposes bounded Columns authoring readiness facts so visible Text add actions target concrete Column child containers, selected text inside Columns inserts beside same-parent text only, cross-column placement remains blocked, and Structure/Paper surfaces expose container evidence without enabling broader authoring.",
+  "summary": "Done: Editor merge commit d9cc21fe2472bd1a611eb6f971b102f69d5dbc3e adds bounded columns authoring readiness. columnsAuthoringReadiness resolves selected Columns surfaces to the first concrete Column child for Text append, resolves selected Column containers directly, and resolves selected text inside Columns to same-column before/after placements. createColumnTextSiblingPlacement blocks cross-column sibling placement with an explicit reason. addNodeVisibleActions now routes visible Text actions in Columns context to the concrete Column container while keeping Columns insert actions only where the broader sibling placement is still valid. OutlinePanel exposes data-outline-add-container, and PaperBlock/render projection expose data-canvas-column-id plus data-canvas-columns-id for represented text descendants. This does not enable Core or Backend document v4 insert semantics, Table authoring, a user-facing column picker, nested Columns insertion proof inside columns, WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring beyond the existing bounded text-block editor, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T09:10:00.000Z",
+  "updatedAt": "2026-08-31T09:10:00.000Z"
+}

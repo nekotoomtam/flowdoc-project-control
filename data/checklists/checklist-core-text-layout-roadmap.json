@@ -1,0 +1,122 @@
+{
+  "kind": "checklist",
+  "id": "checklist-core-text-layout-roadmap",
+  "phaseId": "phase-core-text-layout-roadmap",
+  "title": "เกณฑ์แผน Core Text/Layout",
+  "items": [
+    {
+      "id": "capability-inventory",
+      "label": "สำรวจความสามารถและผู้ใช้ API",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-capability-inventory",
+      "evidenceIds": [
+        "evidence-core-capability-inventory"
+      ]
+    },
+    {
+      "id": "text-policy-decision",
+      "label": "เลือกกฎจากตัวอย่างระหว่างพิมพ์",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-text-policy-decision",
+      "evidenceIds": [
+        "evidence-core-text-policy-decision"
+      ]
+    },
+    {
+      "id": "core-text-policy",
+      "label": "แก้ Core ตามกฎที่เลือก",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-text-policy-implementation",
+      "evidenceIds": [
+        "evidence-core-text-policy-implementation"
+      ]
+    },
+    {
+      "id": "paper-integration",
+      "label": "ตรวจ Preview แล้ว Build แยกกัน",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-paper-integration",
+      "evidenceIds": []
+    },
+    {
+      "id": "incremental-admission",
+      "label": "ประเมิน incremental ก่อนเปิดใช้งาน",
+      "state": "blocked",
+      "evidenceTarget": "evidence-core-incremental-admission",
+      "evidenceIds": [
+        "evidence-core-incremental-admission"
+      ]
+    },
+    {
+      "id": "incremental-boundary-admission",
+      "label": "พิสูจน์ retained text และ bounded window ก่อน line/geometry",
+      "state": "blocked",
+      "evidenceTarget": "evidence-core-incremental-boundary-admission",
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-admission"
+      ]
+    },
+    {
+      "id": "incremental-boundary-lifecycle-admission",
+      "label": "พิสูจน์ preparation และ input-facing lifecycle ของ Gate 2A",
+      "state": "blocked",
+      "evidenceTarget": "evidence-core-incremental-boundary-lifecycle-admission",
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-lifecycle-admission",
+        "evidence-core-incremental-boundary-preparation-attribution"
+      ]
+    },
+    {
+      "id": "incremental-boundary-redesign-options",
+      "label": "ออกแบบ Core ใหม่ 3 แนวทางก่อนรัน Gate 2 อีกครั้ง",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-incremental-boundary-redesign-options",
+      "evidenceIds": [
+        "evidence-core-incremental-boundary-redesign-options"
+      ]
+    },
+    {
+      "id": "incremental-boundary-rust-session-feasibility",
+      "label": "พิสูจน์ Gate 2B: Rust-owned paragraph session สำหรับ readiness, Enter และ fallback แบบ bounded",
+      "state": "blocked",
+      "evidenceTarget": "evidence-core-rust-paragraph-session-feasibility",
+      "evidenceIds": [
+        "evidence-core-rust-paragraph-session-feasibility"
+      ]
+    },
+    {
+      "id": "complex-flow",
+      "label": "ตรวจรูป layout และ30nodesข้ามหน้า",
+      "state": "pending",
+      "evidenceTarget": "evidence-editor-complex-flow",
+      "evidenceIds": []
+    },
+    {
+      "id": "preview-field-typing",
+      "label": "Work4A พิมพ์ค่าฟิลด์และแสดงผลต่อเนื่อง",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-preview-core-b",
+      "evidenceIds": [
+        "evidence-editor-preview-core-b"
+      ]
+    },
+    {
+      "id": "preview-keyboard-contract",
+      "label": "กำหนดและตรวจ Enter กับปุ่มแก้ข้อความเป็นขั้นถัดไป",
+      "state": "pending",
+      "evidenceTarget": "evidence-preview-keyboard-contract",
+      "evidenceIds": []
+    },
+    {
+      "id": "preview-undo-grouping",
+      "label": "Preview Undo/Redo แยกตามช่วงพิมพ์",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-undo-grouping",
+      "evidenceIds": [
+        "evidence-preview-undo-grouping"
+      ]
+    }
+  ],
+  "createdAt": "2026-09-07T07:16:11.8621317Z",
+  "updatedAt": "2026-09-14T03:09:21.7250683Z"
+}

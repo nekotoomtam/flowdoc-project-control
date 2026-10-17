@@ -1,0 +1,21 @@
+{
+  "verificationTarget": "checklist-preview-integration-assessment; evidence-preview-integration-assessment-2026-09-05; automatic WORK return and PLAN review",
+  "summary": "Assessment complete with automatic return accepted; recommended scoped content/occurrence prerequisite then Core/Backend/Editor lanes. Implementation contract and product behavior remain unaccepted.",
+  "updatedAt": "2026-09-05T16:27:17.3110615Z",
+  "createdAt": "2026-09-05T16:15:46.4169788Z",
+  "phaseState": "done",
+  "id": "phase-preview-integration-assessment",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-editor"
+  ],
+  "activeRole": "planning-partner",
+  "title": "ตรวจทางเชื่อม Preview แบบโต้ตอบก่อนกำหนดงานพัฒนา",
+  "order": 56,
+  "kind": "phase",
+  "stopConditions": [
+    "Read-only product assessment; do not implement or change Node/PDF policy",
+    "Require explicit mapping from current Build draft; no QA-only completion"
+  ]
+}

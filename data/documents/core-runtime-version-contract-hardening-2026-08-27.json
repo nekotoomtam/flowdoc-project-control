@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-core-runtime-version-contract-hardening-2026-08-27",
+  "title": "Core Runtime Version Contract Hardening - 2026-08-27",
+  "path": "docs/domains/core-runtime-version-contract-hardening-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped Core runtime version contract hardening review for the local Core head; records the version-surface retirement inventory, tests, risks, and unknowns without promoting Core, Backend, or FlowDoc truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "da215940f7b95760f6ad3c488af3b024691c81e5",
+      "pathOrContractId": "data/work/core-runtime-version-contract-hardening.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+      "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+      "pathOrContractId": "tests/versionCapability.test.ts"
+    }
+  ]
+}

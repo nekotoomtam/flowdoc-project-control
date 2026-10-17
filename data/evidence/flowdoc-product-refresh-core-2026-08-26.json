@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-product-refresh-core-2026-08-26",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-core",
+  "commit": "501caec1fe3317309d0f6c18c2dec118fb6994e7",
+  "pathOrContractId": "package.json#scripts.type-check,test",
+  "verificationSummary": "Clean Core main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 458 test files and 2,938 tests. This supports only the bounded local Core gate status for product resumption.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

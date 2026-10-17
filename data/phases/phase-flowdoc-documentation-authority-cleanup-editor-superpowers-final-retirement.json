@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Editor Superpowers Docs Final Retirement",
+  "phaseState": "done",
+  "order": 60,
+  "repositoryIds": ["repo-editor", "repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, Editor owner repository, active role, Checklist target, or Evidence target before editing Editor Markdown.",
+    "The slice would delete remaining Overview, History, Structure, or WYSIWYG source value before Project Control evidence or Editor code contracts preserve the retained boundary.",
+    "The slice would change Editor UI behavior while acting as documentation cleanup.",
+    "The slice would leave Editor docs/superpowers Markdown after claiming final retirement.",
+    "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor docs/superpowers is absent after retiring the three remaining Overview/History and WYSIWYG plan/spec files, WYSIWYG boundary guard lives in the Editor code contract, retained shared context points to Project Control evidence, Editor worktree and main gates pass, residual cleanup risk is recorded, and Project Control records work-scoped evidence without promoting product truth.",
+  "summary": "Done: Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 retired the remaining three Editor docs/superpowers files without changing Editor UI behavior. The Overview/History/Structure planning value is already recorded in Project Control evidence-editor-overview-history-ux-plan-2026-08-31, and the WYSIWYG boundary guard now lives in src/editor/draft/textBlockAuthoringBoundary.ts with src/tests/wysiwygGate.test.ts coverage.",
+  "createdAt": "2026-08-31T17:29:00.000Z",
+  "updatedAt": "2026-08-31T17:29:00.000Z"
+}

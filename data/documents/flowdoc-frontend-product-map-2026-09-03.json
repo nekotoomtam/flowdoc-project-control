@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-frontend-product-map-2026-09-03",
+  "title": "FlowDoc Frontend Product Map v1",
+  "path": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md",
+  "nodeIds": ["flowdoc"],
+  "role": "decision",
+  "authority": "Project Control Frontend Product Map v1 for bounded Library, Document Detail, Design, Preview, Publish, screen state, action inventory, truth-boundary planning, and the lane-design-workspace-usability kickoff package.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c8bfd84bcb794692c5fbbe091d042ef9680339c6",
+      "pathOrContractId": "docs/domains/flowdoc-frontend-product-map-2026-09-03.md; data/work/flowdoc-frontend-product-map.json; data/phases/phase-flowdoc-frontend-product-map-v1.json; data/checklists/checklist-flowdoc-frontend-product-map-v1.json; data/evidence/flowdoc-frontend-product-map-2026-09-03.json; tests/flowdoc-frontend-product-map.test.ts; npm run check"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "text-block",
+  "title": "Text Block",
+  "parentId": "core",
+  "summary": "Text Block documentation synthesis is complete across three bounded leaves and one family overview; family truth remains unknown pending migration coverage, reference repair, publication review, and family promotion, while migration execution, product activation, input surfaces, collaboration, persistence, mixed composition, renderer and export integration, cross-page editing, and general performance readiness remain unknown.",
+  "truthState": "unknown",
+  "order": 50,
+  "documentIds": ["doc-text-block-v1-grammar-migration", "doc-text-block-v4-authoring-inline", "doc-text-block-v4-measurement-pagination", "doc-text-block-overview"],
+  "evidenceIds": ["evidence-text-block-v1-version-policy", "evidence-text-block-v1-producer-alignment", "evidence-text-block-v4-authoring-contract", "evidence-text-block-v4-rich-inline-replacement", "evidence-text-block-v4-measurement-pagination", "evidence-text-block-v4-close-audit"],
+  "repositoryIds": ["repo-core", "repo-project-control"]
+}

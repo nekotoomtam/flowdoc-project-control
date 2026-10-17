@@ -1,0 +1,89 @@
+{
+  "kind": "work",
+  "id": "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+  "title": "Core Stage6 no-op and lifecycle contract",
+  "nodeId": "core",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control",
+    "repo-core"
+  ],
+  "workState": "in-review",
+  "summary": "Design complete: exact NoOp preserves capability/revision; user-selected retained-source bounded recovery and real provider-plan eviction; host cancellation reuses bounded synchronous pre-entry/too-late semantics, with no in-flight claim. Contract lane gate passed364records/189source-docs/68app/6e2e plus build. Final closure candidate and main integration checks are reported externally after execution. Product implementation, Stage6 performance and UX remain unproven.",
+  "contextDocumentIds": [
+    "doc-core-stage6-noop-lifecycle-contract-20260927",
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-core-run-owned-property-semantic-contract-2026-09-14",
+    "doc-core-run-owned-property-implementation-plan-2026-09-14",
+    "doc-flowdoc-b1-empty-side-contract-20260926"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Implementation-ready no-op and recovery/eviction/host-cancellation addendum with exact existing authority, decision table, delta and acceptance. No product Evidence or map promotion.",
+  "riskSummary": "Existing architecture permits bounded synchronous work; no new interruptibility gate. Real provider-plan cache, bounded witnesses, host execution-control and focused acceptance require future Core implementation. All180/11271 rows and caps/thresholds retained. Observer reporting awaits direct user authorization.",
+  "requiredEvidence": [
+    "evidence-core-stage6-seam-repair-20260927"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 1,
+    "round": {
+      "planTaskId": "01a0e20c-5d02-7463-b748-b8bacba461c9",
+      "roundId": "stage6-noop-lifecycle-20260927-01a0e20c",
+      "workId": "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+      "scopeId": "stage6-noop-lifecycle-contract",
+      "scopeKeys": [
+        "project-control:stage6-noop-lifecycle-contract"
+      ],
+      "allowedFiles": [
+        "docs/domains/flowdoc-core-stage6-noop-lifecycle-contract-2026-09-27.md",
+        "data/work/flowdoc-core-stage6-noop-lifecycle-contract-20260927.json",
+        "data/phases/phase-flowdoc-core-stage6-noop-lifecycle-contract-20260927.json",
+        "data/checklists/checklist-flowdoc-core-stage6-noop-lifecycle-contract-20260927.json",
+        "data/documents/core-stage6-noop-lifecycle-contract-20260927.json",
+        "generated/project-index.json",
+        "tests/project-roadmap-work-queue.test.ts"
+      ],
+      "state": "released",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "noop-lifecycle-local-20260927",
+        "hostId": "local",
+        "source": "Current create_thread tool schema exposes Astra medium and Sol medium; inline PLAN only, no WORK model inherited.",
+        "observedAt": "2026-09-27T08:57:37.9444031Z",
+        "availableModelEfforts": [
+          {
+            "reasoningEfforts": [
+              "medium"
+            ],
+            "modelId": "gpt-6-astra"
+          },
+          {
+            "reasoningEfforts": [
+              "medium"
+            ],
+            "modelId": "gpt-6-sol"
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0e20c-5d02-7463-b748-b8bacba461c9",
+        "roundId": "stage6-noop-lifecycle-20260927-01a0e20c",
+        "baseCommit": "d84a20da381c87ba17fa3965c3fc921ffa0f8474",
+        "state": "released"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-27T08:57:37.9444031Z",
+  "updatedAt": "2026-09-27T09:07:19.6835932Z"
+}

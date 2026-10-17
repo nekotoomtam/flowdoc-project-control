@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-project-control-design",
+  "nodeIds": ["project-control"],
+  "repositoryId": "repo-project-control",
+  "commit": "bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444",
+  "pathOrContractId": "docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md",
+  "verificationSummary": "Verified that the approved design object exists at this exact Project Control commit; this supports only the Project Control design claim.",
+  "verifiedAt": "2026-08-12T14:37:25.000Z"
+}

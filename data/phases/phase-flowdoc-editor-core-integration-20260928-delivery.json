@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-editor-core-integration-20260928-delivery",
+  "workId": "flowdoc-editor-core-integration-20260928",
+  "title": "Deliver real retained Core editing in Editor",
+  "phaseState": "blocked",
+  "order": 1,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-core"
+  ],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "verificationTarget": "checklist-flowdoc-editor-core-integration-20260928-delivery",
+  "summary": "The retained Core editing engine has no product export/build or revision-bound render/geometry result for Editor consumption. Current Creator Preview uses a different Core shaping/layout path and suppresses Enter. A Core-to-Editor result contract and authored-paragraph versus simulated-field mapping must be resolved before claiming this is retained-session integration; simply enabling Enter or reshaping from browser text would not meet the request.",
+  "stopConditions": [
+    "Concrete contract or ownership change",
+    "Acceptance criteria satisfied; no additional proof"
+  ],
+  "createdAt": "2026-09-28T08:58:26.917Z",
+  "updatedAt": "2026-09-28T08:58:26.917Z"
+}

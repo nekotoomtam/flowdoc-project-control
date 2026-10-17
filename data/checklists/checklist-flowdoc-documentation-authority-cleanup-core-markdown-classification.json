@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification",
+  "title": "Core Markdown Classification Checklist",
+  "items": [
+    {
+      "id": "capture-core-source-snapshot",
+      "label": "Capture the Core source snapshot and read-only boundary.",
+      "state": "passed",
+      "evidenceTarget": "Core source commit, Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Project Control records.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner edit repo-project-control, source repo-core at commit 6c1b53796802772467bf715b83764ac1ef613e52, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-markdown-classification, checklist target checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification, and evidence target evidence-core-repository-markdown-classification-2026-09-01."
+    },
+    {
+      "id": "distinguish-hidden-superpowers",
+      "label": "Distinguish visible Markdown from tracked hidden Markdown.",
+      "state": "passed",
+      "evidenceTarget": "The classification records both the visible rg scan and the tracked git scan so hidden .superpowers/sdd Markdown is not missed.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "git ls-files '*.md' found 348 tracked Markdown files, while rg --files -g '*.md' found 343 visible Markdown files. The difference is five tracked hidden .superpowers/sdd execution artifacts."
+    },
+    {
+      "id": "classify-core-authority-buckets",
+      "label": "Classify Core Markdown authority buckets.",
+      "state": "passed",
+      "evidenceTarget": "Core Markdown is bucketed as hidden execution artifacts, project-state/planning docs, code-adjacent contracts, historical evidence, generated navigation/version/glossary docs, and repo/package entrypoints.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "The Project Control classification records location counts, suffix signal counts, Authority/Project Control signal count 4, and 344 tracked Core Markdown files without Authority Boundary or Project Control signal."
+    },
+    {
+      "id": "mark-project-state-migration-candidates",
+      "label": "Mark Core project-state and planning docs as migration candidates.",
+      "state": "passed",
+      "evidenceTarget": "Core project-state/status/roadmap/planning docs are not treated as FlowDoc-wide truth while Project Control owns Work, Phase, Checklist, Risk, Unknown, and Evidence records.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "The classification marks docs/project, CURRENT_STATUS, NEXT_PHASE_POINTER, progress indexes, roadmaps, broad PLAN docs, and PLANNING signal docs as migration or synthesis candidates before retirement."
+    },
+    {
+      "id": "preserve-core-read-only-boundary",
+      "label": "Preserve the Core read-only boundary for this phase.",
+      "state": "passed",
+      "evidenceTarget": "No Core Markdown or runtime behavior is edited during the classification phase.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "Core repository status remained clean and this phase changed only Project Control records."
+    },
+    {
+      "id": "verify-project-control-records",
+      "label": "Verify Project Control records and generated read model.",
+      "state": "passed",
+      "evidenceTarget": "Focused documentation authority tests, seed tests, npm run generate, and npm run check:data pass after the classification record is registered.",
+      "evidenceIds": ["evidence-core-repository-markdown-classification-2026-09-01"],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/documentation-authority-policy.test.ts tests/seed-project.test.ts --maxWorkers=1 with 2 files and 17 tests, npm run generate, npm run check:data, and the full npm run check worktree gate with 60 unit test files, 340 unit tests, build, and 6 e2e tests after Project Control record registration."
+    }
+  ],
+  "createdAt": "2026-09-01T02:35:00.000Z",
+  "updatedAt": "2026-09-01T02:35:00.000Z"
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-private-stage5-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "17d898696d6df412b2d73d487f106939b890568a",
+  "pathOrContractId": "core-private-stage5-enter-inverse/1",
+  "verificationSummary": "Private opt-in Stage5 Enter at head/middle/tail/empty and exact ordered unchanged-sibling inverse at pinned Core commit. Covers source/authored-origin/default metadata preservation, provider equality under the bounded private admission profile, atomic capability publication, combined 512/512/1024 caps and additive accepted/family accounting. No Stage6/Gate2 timing, geometry, renderer, Editor, Backend, public binding, UX or map admission. PLAN-owned inline acceptance review, independent of implementation WORK, followed by PLAN reproduction at clean terminal commit: 74 native cold-session tests and 165 actual-WASM/reference Stage2/3/4/5 tests. WORK full Core npm run check passed type-check and 439 files/3013 tests; default wasm artifact had 17 exports and excluded private Stage3/4/5. Scope Lock acceptance independently verifies exact base, packet digest, clean terminal commit and actual 23-file manifest. Review resolved provenance-comparison, external line-break context, lifecycle overflow/disposal and scalar-accounting findings before terminal. Acceptance uses the fixed criteria and stops here; no separate verification room or tooling expansion. PLAN alone accepts/integrates this private candidate. No Stage6 timing, Gate2, Core geometry, renderer, section4a consumer parity, Editor, Backend, public API or map admission. Producer/consumer: private TS opaque handles -> stage5_apply -> authenticated Runtime Session source/spans/default metadata/provider policy/resources -> persistent source/tree partition and bounded commands::facts -> fresh child/inverse receipts; stage5_verify independently cold-reconstructs only in QA. Explicit defaults are validated document metadata, not a new cascade: absent authored styleKey still rejects; existing provider policy supplies effective language exactly as before. Outside reuse is narrower than a run/style boundary: affected run <=32 UTF16, pure ASCII alphabetic AL, both nonempty child portions retain AL, and each actual outer neighbor is inspected Thai consonant U+0E01..U+0E2E (SA). ICU segmenter2.2 line.rs line_handle_complex_language_utf8 stops dictionary input at first non-SA; AL/AL Keep and unchanged adjacent SA/AL properties preserve those exact external dictionary inputs. Certificate records inspected edges, source/context bindings and independent fact digests; existing shard facts are verified before reuse. Other outside contexts (including AกขB cut2) reject uncertified-seam unchanged; long seam rejects budget-exhaustion. Current private Sarabun profile rejects empty RTL, A+ZWJ+B and A😀B at creation (unsupported-font-script), so no live surrogate/ZWJ cut support is claimed. Cold cost is retained once per family; accepted ancestry excludes rejected attempts, while family attempts include accepted/rejected/disposal deltas once. On accumulator/counter exhaustion, typed non-publishing rejection reports actual per-attempt work and reported-not-accumulated-overflow explicitly, with frozen prior totals; no panic/wrap or lost host capability. Logical disposal sizes are gauges, actual reclamation is allocator work. OOM/process traps remain outside retry atomicity.",
+  "verifiedAt": "2026-09-26T19:36:12.077Z",
+  "validity": {
+    "claim": "Private opt-in Stage5 Enter at head/middle/tail/empty and exact ordered unchanged-sibling inverse at pinned Core commit. Covers source/authored-origin/default metadata preservation, provider equality under the bounded private admission profile, atomic capability publication, combined 512/512/1024 caps and additive accepted/family accounting. No Stage6/Gate2 timing, geometry, renderer, Editor, Backend, public binding, UX or map admission.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+      "src/layout/runOwnedSemanticOracleStage2.ts",
+      "tests/coldSessionStage4.test.ts",
+      "tests/coldSessionStage5.test.ts",
+      "tests/runOwnedSemanticOracleStage2.test.ts"
+    ],
+    "sourceRevision": "17d898696d6df412b2d73d487f106939b890568a",
+    "verificationMethod": "PLAN-owned inline acceptance review, independent of implementation WORK, followed by PLAN reproduction at clean terminal commit: 74 native cold-session tests and 165 actual-WASM/reference Stage2/3/4/5 tests. WORK full Core npm run check passed type-check and 439 files/3013 tests; default wasm artifact had 17 exports and excluded private Stage3/4/5. Scope Lock acceptance independently verifies exact base, packet digest, clean terminal commit and actual 23-file manifest. Review resolved provenance-comparison, external line-break context, lifecycle overflow/disposal and scalar-accounting findings before terminal. Acceptance uses the fixed criteria and stops here; no separate verification room or tooling expansion.",
+    "freshnessTriggers": [
+      "A different Core revision or changes to structural admission, source/origin/default semantics, provider policy/resources, persistent sharing, receipts, atomic publication, disposal or cumulative accounting require revalidation.",
+      "Changes to the independent oracle, native/WASM tests or fixed work caps require revalidation of affected claims.",
+      "Stage6/Gate2, geometry and Editor admission require separately authorized downstream proof; this record cannot establish those claims."
+    ]
+  }
+}

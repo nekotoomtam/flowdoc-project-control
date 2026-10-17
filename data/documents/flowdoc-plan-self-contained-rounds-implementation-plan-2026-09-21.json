@@ -1,0 +1,19 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-plan-self-contained-rounds-implementation-plan-2026-09-21",
+  "title": "FlowDoc PLAN Self-Contained Rounds Implementation Plan",
+  "path": "docs/domains/flowdoc-plan-self-contained-rounds-implementation-plan-2026-09-21.md",
+  "nodeIds": [
+    "project-control"
+  ],
+  "role": "decision",
+  "authority": "Implementation sequencing for Project Control self-contained PLAN coordination only; not implementation evidence, product behavior, or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "84debacc335572889142e1ae8d9d0285934b43a9",
+      "pathOrContractId": "evidence-flowdoc-plan-self-contained-rounds-2026-09-21"
+    }
+  ]
+}

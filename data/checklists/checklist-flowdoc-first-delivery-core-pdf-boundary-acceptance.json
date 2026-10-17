@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-first-delivery-core-pdf-boundary-acceptance",
+  "phaseId": "phase-flowdoc-first-delivery-core-pdf-boundary-acceptance",
+  "title": "First Delivery Core PDF Boundary Acceptance Checklist",
+  "items": [
+    {
+      "id": "stage-core-handoff-inbox-candidate",
+      "label": "Stage the returned Core WORK handoff in the PLAN handoff inbox.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "The PLAN room records the Core terminal handoff as handoffInbox input before acceptance.",
+      "verificationNote": "The user-provided Terminal Handoff for lane-core-document-pdf-boundary was treated as a handoffInbox candidate after the Core WORK room did not automatically push its final result back to PLAN."
+    },
+    {
+      "id": "verify-core-room-run-locator",
+      "label": "Verify the Core room locator.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "PLAN can retrieve the returned work by exact Core worktree, branch, and commit.",
+      "verificationNote": "Verified Core locator C:\\Users\\nekot\\.codex\\worktrees\\d63e\\flowdoc-vnext-core, branch codex/core-document-pdf-boundary, and commit da5011ceeac6e0b72b152a9a5029d684af978581 before merge; after merge, Core main points at the same commit."
+    },
+    {
+      "id": "run-core-owner-repository-gates",
+      "label": "Run Core owner-repository verification.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "Fresh Core focused and full gates pass before PLAN accepts the product implementation handoff.",
+      "verificationNote": "Focused Core verification passed for tests/publishedStructurePdfBoundaryV1.test.ts with 1 file / 3 tests; git diff --check main...HEAD passed; npm run check passed in the WORK worktree and again on Core main with 462 files / 2,957 tests."
+    },
+    {
+      "id": "accept-core-pdf-boundary-handoff",
+      "label": "Accept the bounded Core PDF boundary handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "acceptanceGate accepts only the additive Core boundary plan and rejects broader Backend, Editor, renderer, storage, and gateway claims.",
+      "verificationNote": "Accepted createVNextPublishedStructurePdfBoundaryPlanV1 as an additive Core-owned Published Structure PDF boundary plan; no Contract Change Request was required because Backend routes, API key exposure, storage writes, PDF bytes, and renderer execution stayed closed."
+    },
+    {
+      "id": "record-core-acceptance-evidence",
+      "label": "Record Project Control evidence for the accepted Core lane.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "Project Control records the accepted Core commit, changed files, tests, risks, unknowns, and unpromoted claims.",
+      "verificationNote": "Registered evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02 and doc-flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02 without linking them to map-truth nodes."
+    },
+    {
+      "id": "preserve-first-delivery-map-boundary",
+      "label": "Preserve the first delivery map boundary.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "The accepted Core lane does not update system maps or promote FlowDoc product truth.",
+      "verificationNote": "No system map or DOCUMENT_MAP record was changed; Backend adoption, Editor adoption, gateway behavior, product database behavior, PDF bytes, renderer execution, release readiness, and frontend readiness remain unknown."
+    },
+    {
+      "id": "verify-project-control-acceptance-records",
+      "label": "Verify the Project Control acceptance records.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after acceptance records are registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-first-delivery-core-boundary-acceptance.test.ts, related first delivery and routing guards, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T11:20:00.000+07:00",
+  "updatedAt": "2026-09-02T11:20:00.000+07:00"
+}

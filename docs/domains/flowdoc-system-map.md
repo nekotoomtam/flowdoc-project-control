@@ -1,0 +1,69 @@
+# FlowDoc System Map
+
+## Purpose
+
+This is the product-wide entry map for the FlowDoc system as known by Project
+Control. It summarizes registered systems and points to their canonical maps or
+overview documents. It is not a work plan and does not claim product readiness.
+
+This map should change only when Project Control has a reviewed document,
+Evidence record, or deliberately bounded registry update to point at.
+
+## System inventory
+
+| System | Repository | Current registry state | Canonical reference |
+| --- | --- | --- | --- |
+| FlowDoc Product Terminology | `repo-project-control` | `current` as a terminology and workflow-control boundary for overloaded Project Control, Core, Backend, Editor, and frontend redesign terms. This does not promote product readiness, Core truth, Backend truth, Editor truth, compatibility, or frontend design readiness. | [FlowDoc Product Terminology](flowdoc-product-terminology.md); [Thai Companion](flowdoc-product-terminology-th.md) |
+| FlowDoc Product Domain Relationship | `repo-project-control` | `planned` as a product-domain relationship map and reading router for future domain work. This does not promote database schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Product Domain Relationship](flowdoc-product-domain-relationship-2026-09-04.md) |
+| FlowDoc Creator UX Contract | `repo-project-control` | `planned` as a creator-facing flow contract for Document Structure Library, Build, Preview, Versions, and Published/API. This is not frontend implementation evidence and does not promote frontend readiness, Editor truth, Backend truth, Core truth, product readiness, publish readiness, PDF readiness, or map truth. | [FlowDoc Creator UX Contract v0](flowdoc-creator-ux-contract-v0-2026-09-04.md) |
+| FlowDoc Document Structure Database Model | `repo-project-control` | `planned` as a structure-only database relationship decision for document definitions, drafts, sections, Structure Patterns, Structure Pattern Slots, frozen versions, publication pointers, field type master scope, slot repeat policy, layout boundaries, and runtime Structure Pattern Entry exclusion. This is not a SQL migration, not a product database implementation, and does not promote schema completeness, product readiness, Core truth, Backend truth, Editor truth, runtime submission readiness, renderer readiness, generated artifact readiness, permission readiness, workflow readiness, billing readiness, audit readiness, activity readiness, or integration readiness. | [FlowDoc Document Structure Database Model v0.0.2](flowdoc-document-structure-database-model-v0-0-2-2026-09-04.md); [v0.0.1 baseline](flowdoc-document-structure-database-model-2026-09-04.md) |
+| FlowDoc Fast Delivery Risk Register | `repo-project-control` | `planned` as a fast-delivery risk register for future PLAN room Kickoff Packets. This records terminology, database drift, UX scope, truth promotion, speed, automatic return, acceptanceGate, and dependency warning risks without promoting product implementation, frontend readiness, product database readiness, API readiness, PDF readiness, or map truth. | [FlowDoc Fast Delivery Risk Register](flowdoc-fast-delivery-risk-register-2026-09-04.md) |
+| Project Control | `repo-project-control` | `current` for the file-first registry, generated read model, and read-only control GUI boundary. | [Project Control Overview](project-control.md) |
+| FlowDoc Browser Backend Compatibility | `repo-editor`, `repo-backend`, `repo-core` | `current` only for bounded local loopback headless Chrome evidence where rendered Editor product routes reach a live Backend server: one product-report minimal smoke covers read, migration, and one UI reorder mutation, and one default Backend corpus smoke covers library/design-route read plus UI migration for the four default seeds. This does not promote product readiness, deployed Backend compatibility, cross-browser coverage, non-default or broad production corpus coverage, accessibility, visual regression, or broad repository truth. | [Bounded Browser Compatibility Promotion](flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md); [Editor Browser Live Backend Corpus Smoke](editor-browser-live-backend-corpus-smoke-2026-08-27.md) |
+| Core | `repo-core` | `unknown` for broader Core. The bounded `core-route` child is current; Text Engine, Template Builder, Live Draft, and Text Block documentation syntheses are registered but their families remain unknown. Core also has a registered Project Control entrypoint pointer in `AGENTS.md`; this does not promote runtime state. | [Core Document Map](../versions/V0_1_0a_1/core/DOCUMENT_MAP.md) |
+| Editor | `repo-editor` | `unknown` for broad Editor runtime and UI state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local product-route smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Editor truth. | No product-wide Editor map is registered yet. |
+| Backend | `repo-backend` | `unknown` for broad Backend service and production state. A registered `AGENTS.md` entrypoint pointer routes broad FlowDoc work through Project Control, and the bounded browser compatibility child records local live Backend smoke coverage for one mutation path and the default loopback corpus read/migration path without promoting product-wide Backend truth. | No product-wide Backend map is registered yet. |
+
+## Core registered families
+
+Core currently has one active document map for the `V0_1_0a_1` release line.
+That map is the canonical Core-level reference and remains partial until
+broader Core synthesis, coverage, reference repair, publication review, and
+authorized cleanup are complete.
+
+The registered Core families are:
+
+- `core-route`: current bounded family closure with cleanup Evidence.
+- `text-engine`: documentation synthesis complete; family truth remains
+  unknown.
+- `template-builder`: documentation synthesis complete; family truth remains
+  unknown.
+- `live-draft`: documentation synthesis complete; family truth remains
+  unknown.
+- `text-block`: documentation synthesis complete; family truth remains
+  unknown.
+
+## Work and truth boundary
+
+Plan / Work records intent. They describe what a round is trying to do and what
+must be checked.
+
+System maps record verified or deliberately bounded registry truth. A planned
+task does not enter this map as completed system state. After work finishes,
+Project Control should register documents, Evidence, and node changes first;
+then the appropriate system map can be updated to point at that reviewed state.
+
+## Update rule
+
+When new product work completes:
+
+1. Keep the work plan in Work, spec, or implementation-plan documents.
+2. Verify the owning repository with fresh tests or durable Evidence.
+3. Register or update the bounded Project Control document and Evidence
+   records.
+4. Update the narrowest map that changed first, such as a Core family map.
+5. Update this FlowDoc system map only when the product-wide inventory or
+   canonical reference list changes.
+
+This keeps plans from becoming truth and keeps maps useful as stable entry
+points for future work.

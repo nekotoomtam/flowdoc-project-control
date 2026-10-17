@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-editor-creator-flow-audit-2026-09-05",
+  "title": "Editor Creator Flow Audit and Toolbar Reflow",
+  "path": "docs/domains/editor-creator-flow-audit-2026-09-05.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Bounded local creator-flow observations, toolbar repair evidence, and recommended next work. Does not promote product or map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [{"repositoryId": "repo-editor", "commit": "493fd8c90fdc2283e7cc2d0f18436a671a60b952", "pathOrContractId": "src/components/shell/WorkspaceToolbar.tsx; src/styles/app.css; src/styles/workspace.css"}]
+}

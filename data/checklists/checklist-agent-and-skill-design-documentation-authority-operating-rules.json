@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-documentation-authority-operating-rules",
+  "phaseId": "phase-agent-and-skill-design-documentation-authority-operating-rules",
+  "title": "Documentation Authority Operating Rules Checklist",
+  "items": [
+    {
+      "id": "capture-agent-doc-root-cause",
+      "label": "Capture the root cause and current Project Control lane.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, and the root causes of Markdown drift are identified before edits.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with documentation-synthesizer prose responsibility, phase target phase-agent-and-skill-design-documentation-authority-operating-rules, checklist target checklist-agent-and-skill-design-documentation-authority-operating-rules, and evidence target evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01. Root cause included the generic writing-plans docs/superpowers default, late policy and guard coverage, older product AGENTS gaps, hidden tracked Markdown, and plan/evidence/map wording drift."
+    },
+    {
+      "id": "write-red-agent-doc-authority-guard",
+      "label": "Write a failing Project Control guard for agent documentation authority.",
+      "state": "passed",
+      "evidenceTarget": "The focused Project Control tests fail before the new agent operating doc, Work links, entrypoint pointers, role overlays, and evidence records exist.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "RED evidence: npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 failed because agent-and-skill-design was not yet a child Work under flowdoc-product-development-resumption, the operating rules document did not exist, role overlays were absent, and agent entrypoints did not reference the new rules."
+    },
+    {
+      "id": "draft-agent-documentation-authority-rules",
+      "label": "Draft the Project Control agent documentation authority operating rules.",
+      "state": "passed",
+      "evidenceTarget": "The new Project Control document explains why drift happened, defines the Markdown Authority Pre-Action Gate, and states the FlowDoc Project Control override over generic docs/superpowers plan paths.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "docs/domains/flowdoc-agent-documentation-authority-operating-rules.md records the root cause, gate, role overlays, handoff requirement, and boundary that the document is not product evidence."
+    },
+    {
+      "id": "update-agent-entrypoints-and-role-catalog",
+      "label": "Route future agents through the new rules.",
+      "state": "passed",
+      "evidenceTarget": "Project Control AGENTS.md, global Codex guidance, agent operating model, and role catalog all point future FlowDoc Markdown work to the operating rules.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "AGENTS.md and docs/domains/flowdoc-global-codex-guidance.md reference docs/domains/flowdoc-agent-documentation-authority-operating-rules.md before broad Markdown work. docs/domains/agent-and-skill-operating-model.md records that agent role revisions are now captured. docs/domains/flowdoc-role-catalog.md defines Documentation Authority Steward, Repo Documentation Curator, Evidence Registrar, and Documentation Cleanup Reviewer as role overlays."
+    },
+    {
+      "id": "record-agent-doc-operating-evidence",
+      "label": "Record Project Control evidence for the agent operating rules.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the Document, Work, Phase, Checklist, Evidence, and Project Control Node links without promoting product truth.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "Project Control records doc-flowdoc-agent-documentation-authority-operating-rules, the agent-and-skill-design Work update, phase-agent-and-skill-design-documentation-authority-operating-rules, checklist-agent-and-skill-design-documentation-authority-operating-rules, and evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01."
+    },
+    {
+      "id": "verify-agent-doc-rule-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceTarget": "Focused agent documentation authority tests, generation, data validation, and full Project Control gate pass before handoff.",
+      "evidenceIds": ["evidence-flowdoc-agent-documentation-authority-operating-rules-2026-09-01"],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/agent-documentation-authority-operating-rules.test.ts tests/documentation-authority-policy.test.ts tests/project-roadmap-work-queue.test.ts --maxWorkers=1 with 3 files and 24 tests, npm run generate, npm run check:data, and npm run check with 61 unit test files and 352 tests, build, and 6 e2e tests."
+    }
+  ],
+  "createdAt": "2026-09-01T09:45:00.000Z",
+  "updatedAt": "2026-09-01T09:45:00.000Z"
+}

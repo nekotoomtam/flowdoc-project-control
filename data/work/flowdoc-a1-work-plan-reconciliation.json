@@ -1,0 +1,79 @@
+{
+  "kind": "work",
+  "id": "flowdoc-a1-work-plan-reconciliation",
+  "title": "A1 Work/Plan Reconciliation",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "Reconcile 60 baseline Work records: 55 operational closures, 3 retained obligations/containers and 2 documentation discoveries. Product and historical execution truth unchanged.",
+  "contextDocumentIds": [
+    "doc-flowdoc-a1-work-plan-reconciliation-2026-09-26",
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "project-control-steward",
+  "expectedOutput": "One traceable disposition set; B1 Stage 5 current product pointer and deferred A2 locator.",
+  "riskSummary": "Operational completion is not product readiness. Historical inventories and residual filesystem/process state require later discovery.",
+  "requiredEvidence": [
+    "evidence-core-rust-stage4-multispan-cumulative-2026-09-21"
+  ],
+  "coordination": {
+    "version": 3,
+    "revision": 0,
+    "round": {
+      "planTaskId": "01a0dd9d-8204-7fd1-9515-15517905e70e",
+      "roundId": "round-a1-2026-09-26",
+      "workId": "flowdoc-a1-work-plan-reconciliation",
+      "scopeId": "a1-reconciliation",
+      "scopeKeys": [
+        "project-control:a1-reconciliation"
+      ],
+      "allowedFiles": [
+        "docs/domains/flowdoc-a1-work-plan-reconciliation-2026-09-26.md",
+        "data/documents/flowdoc-a1-work-plan-reconciliation-2026-09-26.json",
+        "data/work/flowdoc-a1-work-plan-reconciliation.json",
+        "data/phases/phase-flowdoc-a1-work-plan-reconciliation.json",
+        "data/checklists/checklist-flowdoc-a1-work-plan-reconciliation.json",
+        "tests/project-roadmap-work-queue.test.ts",
+        "generated/project-index.json"
+      ],
+      "state": "released",
+      "policyId": "flowdoc-workflow-economy-v2"
+    },
+    "modelAvailabilitySnapshots": [
+      {
+        "id": "a1-local-host-2026-09-26",
+        "hostId": "local",
+        "source": "Local create_thread tool schema; inline PLAN selection only",
+        "observedAt": "2026-09-26T12:12:15.162Z",
+        "availableModelEfforts": [
+          {
+            "modelId": "gpt-6-astra",
+            "reasoningEfforts": [
+              "medium"
+            ]
+          }
+        ]
+      }
+    ],
+    "integrationClaims": [
+      {
+        "repositoryId": "repo-project-control",
+        "planTaskId": "01a0dd9d-8204-7fd1-9515-15517905e70e",
+        "roundId": "round-a1-2026-09-26",
+        "baseCommit": "98a3bad66ca56ad7de3780b106060c42f03c73ec",
+        "state": "released"
+      }
+    ],
+    "returnOrderPolicy": "severity-then-arrival",
+    "roomRuns": [],
+    "handoffs": [],
+    "completionQueue": [],
+    "cleanup": []
+  },
+  "createdAt": "2026-09-26T12:12:15.162Z",
+  "updatedAt": "2026-09-26T12:12:15.162Z"
+}

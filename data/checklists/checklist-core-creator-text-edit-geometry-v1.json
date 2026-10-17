@@ -1,0 +1,55 @@
+{
+  "title": "เกณฑ์ทดลองข้อมูลการแก้ข้อความ",
+  "kind": "checklist",
+  "id": "checklist-core-creator-text-edit-geometry-v1",
+  "createdAt": "2026-09-06T11:34:16.1954232Z",
+  "phaseId": "phase-core-creator-text-edit-geometry-v1",
+  "updatedAt": "2026-09-06T12:29:28.0094923Z",
+  "items": [
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "source-layout-identity",
+      "evidenceIds": [
+        "evidence-core-creator-text-edit-geometry-v1"
+      ],
+      "id": "source-layout-identity",
+      "state": "passed"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "caret-boundary-semantics",
+      "evidenceIds": [
+        "evidence-core-creator-text-edit-geometry-v1"
+      ],
+      "id": "caret-boundary-semantics",
+      "state": "passed"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "hit-selection-geometry",
+      "evidenceIds": [
+        "evidence-core-creator-text-edit-geometry-v1"
+      ],
+      "id": "hit-selection-geometry",
+      "state": "passed"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "empty-wrap-page",
+      "evidenceIds": [
+        "evidence-core-creator-text-edit-geometry-v1"
+      ],
+      "id": "empty-wrap-page",
+      "state": "passed"
+    },
+    {
+      "evidenceTarget": "evidence-core-creator-text-edit-geometry-v1",
+      "label": "regression-provenance",
+      "evidenceIds": [
+        "evidence-core-creator-text-edit-geometry-v1"
+      ],
+      "id": "regression-provenance",
+      "state": "passed"
+    }
+  ]
+}

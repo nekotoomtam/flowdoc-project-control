@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-wysiwyg-gate-definition",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-wysiwyg-gate-definition",
+  "title": "Editor WYSIWYG Gate Definition Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor owner, and old roadmap context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, active role, current phase, checklist target, evidence target, terminology docs, Editor AGENTS.md, and old roadmap Task 11 are identified before editing.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, Project Control record owner repo-project-control, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-wysiwyg-gate-definition, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-wysiwyg-gate-definition, and evidence target evidence-editor-wysiwyg-gate-definition-2026-08-31."
+    },
+    {
+      "id": "write-red-wysiwyg-tests",
+      "label": "Write failing WYSIWYG gate tests before accepting the definition.",
+      "state": "passed",
+      "evidenceTarget": "The focused Editor WYSIWYG gate test fails before the spec and exported gate decision exist.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included npm run test -- src/tests/wysiwygGate.test.ts failing because docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md did not exist and the WYSIWYG gate exports were undefined."
+    },
+    {
+      "id": "define-flowdoc-wysiwyg",
+      "label": "Define what FlowDoc WYSIWYG means and what is out of scope.",
+      "state": "passed",
+      "evidenceTarget": "The spec defines FlowDoc WYSIWYG as managed document-surface authoring and separates it from textarea fallback, Overview, History, Structure, and Preview.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "The spec states FlowDoc WYSIWYG means managed document-surface authoring, keeps Hybrid Managed Cards + one Active Text-Block Island as the accepted direction, and states that the bounded textarea active text-block island is not WYSIWYG."
+    },
+    {
+      "id": "add-boundary-gate-decision",
+      "label": "Add an Editor-owned WYSIWYG gate decision to the text-block authoring boundary.",
+      "state": "passed",
+      "evidenceTarget": "The boundary exports WYSIWYG behavior categories, non-WYSIWYG behaviors, required prerequisites, and a decision function.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "resolveWysiwygGateDecision reports canStartWysiwyg false until every prerequisite is approved and keeps the activeTextInputBinding value as textarea."
+    },
+    {
+      "id": "guard-blocked-inputs-and-packages",
+      "label": "Keep contenteditable and common rich editor engines blocked.",
+      "state": "passed",
+      "evidenceTarget": "Tests prove contenteditable remains blocked and package metadata does not include Slate, ProseMirror, or TipTap.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "wysiwygGate.test.ts blocks contenteditable, slate, prosemirror-state, and @tiptap/core at the gate. boundary.test.ts also keeps blocked editor dependencies out of package metadata and source."
+    },
+    {
+      "id": "verify-merged-main",
+      "label": "Verify focused gates, full Editor worktree gate, and merged Editor main gate.",
+      "state": "passed",
+      "evidenceTarget": "Focused WYSIWYG and boundary tests pass, Editor worktree npm run check passes, and merged Editor main npm run check passes.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "Editor passed npm run test -- src/tests/wysiwygGate.test.ts src/tests/textBlockAuthoringBoundary.test.ts with 2 files and 7 tests, then passed a related 5-file gate with 23 tests. Editor worktree and merged main both passed npm run check with 109 test files, 395 tests, and build."
+    },
+    {
+      "id": "record-project-control",
+      "label": "Record the bounded WYSIWYG gate definition in Project Control without promoting readiness.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the phase, checklist, and evidence target for the WYSIWYG gate definition while preserving readiness and map-truth boundaries.",
+      "evidenceIds": [
+        "evidence-editor-wysiwyg-gate-definition-2026-08-31"
+      ],
+      "verificationNote": "Project Control record tests require the phase, checklist, evidence, Editor merge commit, FlowDoc WYSIWYG definition wording, bounded textarea non-WYSIWYG wording, 395-test verification, and WYSIWYG nonactivation statement before the record can pass. The Project Control worktree passed the focused roadmap test with 1 file and 2 tests. The combined npm run check repeated the known Vitest fork worker timeout in app-jsdom, so the worktree used the split gate: check:data, type-check, node Vitest 52 files with 276 tests, app-jsdom Vitest 7 files with 54 tests, build, and 6 Playwright e2e tests."
+    }
+  ],
+  "createdAt": "2026-08-31T12:25:00.000Z",
+  "updatedAt": "2026-08-31T12:25:00.000Z"
+}

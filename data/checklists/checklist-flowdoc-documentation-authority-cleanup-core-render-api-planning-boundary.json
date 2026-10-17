@@ -1,0 +1,70 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary",
+  "title": "Core Render API Planning Boundary Checklist",
+  "items": [
+    {
+      "id": "capture-core-render-api-planning-source-snapshot",
+      "label": "Capture the Core Render API planning source snapshot and owner.",
+      "state": "passed",
+      "evidenceTarget": "Core source commit, Core Render API planning Markdown paths, Work path, owner repositories, active role, Phase target, Checklist target, and Evidence target are identified before demotion.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repos repo-core and repo-project-control, source Core commit 2057a7458b1055785a516752e21d8edaa558388f, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary, checklist target checklist-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary, and evidence target evidence-core-render-api-planning-boundary-2026-09-01."
+    },
+    {
+      "id": "record-render-api-planning-retained-value",
+      "label": "Record retained value before Core demotion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records retained value and boundary rationale for the three Core Render API planning docs before Core edits.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "Project Control commit d89c84a7cfbf41ea96223c75bfb5a6e0c902d874 added docs/domains/core-render-api-planning-boundary-2026-09-01.md before Core commit 360ea384ba609dcceab502a5ea1ef55daf2b151a."
+    },
+    {
+      "id": "write-red-core-render-api-planning-boundary-guard",
+      "label": "Write failing Core guard for Render API planning boundaries.",
+      "state": "passed",
+      "evidenceTarget": "Focused Core documentation authority guard fails before Authority Boundary wording is added.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "RED evidence: npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 failed because docs/RENDER_API_CONTRACT_PLANNING_GATE.md lacked Authority Boundary wording, with expected text to contain Authority Boundary."
+    },
+    {
+      "id": "bound-surviving-render-api-planning-docs",
+      "label": "Add Authority Boundary wording to surviving Core Render API planning docs.",
+      "state": "passed",
+      "evidenceTarget": "The three Core Render API planning docs identify Core as owner, retain only Core-local implementation context, and point FlowDoc-wide status and cleanup authority back to Project Control.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "Core commit 360ea384ba609dcceab502a5ea1ef55daf2b151a added Authority Boundary sections to docs/RENDER_API_CONTRACT_PLANNING_GATE.md, docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md, and docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md without changing runtime behavior."
+    },
+    {
+      "id": "verify-core-main",
+      "label": "Verify Core worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Core focused guard, docs:check, diff check, worktree full gate, merged main focused guard, merged main docs:check, merged main full gate, and post-merge Markdown counts pass.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "GREEN evidence passed npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 in the Core worktree with 1 file and 5 tests, npm run docs:check, git diff --check, npm run check in the Core worktree with 461 test files and 2951 tests, npm run docs:check on merged Core main, npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1 on merged Core main with 1 file and 5 tests, npm run check on merged Core main with 461 test files and 2951 tests, and post-merge counts showing tracked and visible Core Markdown both equal 339 files."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record Project Control evidence without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the retained-value commit, Core boundary commit, verification, cleanup blocker, and unpromoted claims.",
+      "evidenceIds": [
+        "evidence-core-render-api-planning-boundary-2026-09-01"
+      ],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. The retained Render API planning meanings remain bounded by Project Control doc-core-render-api-planning-boundary-2026-09-01 and surviving Core-local Authority Boundary wording. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-render-api-plan-boundary-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-render-api-plan-boundary-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch."
+    }
+  ],
+  "createdAt": "2026-09-01T05:45:00.000Z",
+  "updatedAt": "2026-09-01T05:45:00.000Z"
+}

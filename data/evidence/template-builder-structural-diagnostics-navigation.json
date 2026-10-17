@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-structural-diagnostics-navigation",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts",
+  "verificationSummary": "The Core boundary advertises node-linked diagnostics navigation as wired through the node-aware selection path; this anchor alone does not establish behavior for document-level, missing, or unknown node IDs or provide persistent navigation authority.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

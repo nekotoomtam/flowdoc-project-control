@@ -1,0 +1,9 @@
+{
+  "kind": "repository",
+  "id": "repo-editor",
+  "name": "Flowdoc VNext Editor",
+  "remote": "https://github.com/nekotoomtam/flowdoc-vnext-editor.git",
+  "checkoutAlias": "editor",
+  "defaultBranch": "main",
+  "ownershipSummary": "Editor product repository; its state remains unknown here until evidence is recorded."
+}

@@ -1,0 +1,35 @@
+{
+  "kind": "work",
+  "id": "flowdoc-frontend-product-map",
+  "title": "FlowDoc Frontend Product Map",
+  "nodeId": "flowdoc",
+  "parentWorkId": "flowdoc-frontend-expert-roadmap",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "workState": "in-progress",
+  "summary": "Expand the accepted Frontend Expert Roadmap into a Project Control-owned screen and action map for Library, Document Detail, Design, Preview, Publish, shared states, the first Editor implementation lane package, and the bounded Preview Confidence Probe follow-up route.",
+  "contextDocumentIds": [
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-role-catalog",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-workflow-economy-policy",
+    "doc-flowdoc-documentation-authority-policy",
+    "doc-flowdoc-agent-documentation-authority-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-frontend-expert-roadmap-2026-09-03",
+    "doc-flowdoc-frontend-continuation-dispatch-registry-2026-09-03",
+    "doc-flowdoc-preview-confidence-probe-2026-09-03"
+  ],
+  "activeRole": "planning-partner",
+  "expectedOutput": "Frontend Product Map v1 in Project Control, with screen inventory, action inventory, truth boundaries, a lane-ready package for lane-design-workspace-usability, and a Preview Confidence Probe handoff that recommends lane-preview-confidence-validation before any Preview readiness claim.",
+  "riskSummary": "The map is planning context, and the Preview probe is planning and evidence-review context. They may be mistaken for frontend readiness or current product behavior, so they intentionally do not promote Editor, Backend, Core, WYSIWYG, Preview, Publish, production, compatibility, FlowDoc product truth, or map truth.",
+  "requiredEvidence": [
+    "evidence-flowdoc-frontend-product-map-2026-09-03",
+    "evidence-flowdoc-preview-confidence-probe-2026-09-03"
+  ],
+  "createdAt": "2026-09-03T10:00:00.000Z",
+  "updatedAt": "2026-09-03T10:00:00.000Z"
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-v1-closeout-scope-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+  "pathOrContractId": "src/layout; packages/text-engine-rust-wasm; WORK 01a0714c-efdf-7dd0-b6ad-61d80b01bd13; PC docs/domains/core-v1-closeout-scope-return-2026-09-05.md",
+  "verificationSummary": "PLAN received automatic handoff-core-v1-closeout-scope-2026-09-05-01, queue arrival 1, no manual recovery. Read-only scope accepted: conditional nine-file RootV1/SceneV1/wrapper retirement with V2 test fixture/parity migration and shared-type extraction. Missing 59 table: 24 retain/recover, 27 historical retention, 8 metadata choices. PLAN accepts D1/D2 retirement under user-approved v1-only closeout while preserving V2 evidence; D3 preserve existing bundle metadata/original historical bundle. Same-checkout recovery still requires explicit exception; no source edits or runtime verification claimed.",
+  "verifiedAt": "2026-09-05T11:33:23.359Z"
+}

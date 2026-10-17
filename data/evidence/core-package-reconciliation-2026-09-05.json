@@ -1,0 +1,11 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-package-reconciliation-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "e3b9888b25fe963ef4316fe8066d086bae55db47",
+  "pathOrContractId": "packages/text-engine-rust-wasm; PC docs/domains/core-package-reconciliation-return-2026-09-05.md",
+  "verificationSummary": "PLAN accepted automatic returns 01 and revision 02 (arrival 3/4). Exactly 59 user-approved absent paths restored from baseline; all filtered blobs equal recorded inventory, 1,427 index entries preserved, no source commit. Package type-check and all 3 pinned WASM digests pass. Revision really-refresh resolved stale stat-only flags without source rewriting or semantic staging. PLAN independently verified clean canonical tracked status and working/cached diffs before Core retirement merge. No wider integration readiness asserted; original deletion cause unknown.",
+  "verifiedAt": "2026-09-05T12:35:50.308Z"
+}
+

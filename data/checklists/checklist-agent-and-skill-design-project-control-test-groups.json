@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-project-control-test-groups",
+  "phaseId": "phase-agent-and-skill-design-project-control-test-groups",
+  "title": "Project Control Test Groups Stable Gate Checklist",
+  "items": [
+    {
+      "id": "capture-test-gate-timeout-context",
+      "label": "Capture the Project Control test gate timeout context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Record why Project Control needs a grouped default gate after the previous default parallel full unit run timed out under load.",
+      "verificationNote": "The final Lean Dispatch smoke merge showed npm run check on main failing from default parallel full Project Control unit test timeouts, while the same gate passed when split into check:data, type-check, serial unit tests, build, and e2e."
+    },
+    {
+      "id": "write-red-test-group-guard",
+      "label": "Write a failing Project Control grouped gate guard.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Focused guard fails before grouped scripts and test group assignments exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/project-control-test-groups.test.ts --maxWorkers=1 failed because package.json lacked test:unit:parallel/test:unit/test group scripts and tools/lib/test-groups.ts did not exist."
+    },
+    {
+      "id": "add-grouped-unit-test-scripts",
+      "label": "Add grouped unit test scripts.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Project Control has records, source-docs, app, test:unit, check:fast, check:grouped, and check scripts wired to the grouped runner.",
+      "verificationNote": "package.json now maps test to npm run test:unit, test:unit to tsx tools/run-test-groups.ts --all, test:records/source-docs/app to one explicit group each, check:fast to data/type/records, check:grouped to data/type/grouped-unit/build/e2e, and check to npm run check:grouped."
+    },
+    {
+      "id": "preserve-parallel-fast-path",
+      "label": "Preserve the parallel unit fast path.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "The previous parallel unit command remains available without being the default closure gate.",
+      "verificationNote": "package.json preserves test:unit:parallel as vitest run --exclude \"tests/e2e/**\" for quick exploratory checks while keeping check on the stable grouped path."
+    },
+    {
+      "id": "verify-grouped-unit-gate",
+      "label": "Verify the grouped unit gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Focused grouped gate guard and each grouped unit script pass with every non-e2e unit file assigned to exactly one group.",
+      "verificationNote": "GREEN evidence: tests/project-control-test-groups.test.ts passed; npm run type-check passed; npm run test:records passed 49 files / 135 tests; npm run test:source-docs passed 21 files / 182 tests; npm run test:app passed 9 files / 60 tests; npm run test:unit passed 79 files / 377 tests."
+    },
+    {
+      "id": "record-test-group-evidence",
+      "label": "Record Project Control grouped gate evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, and Work required evidence for grouped gate stability.",
+      "verificationNote": "Registered phase-agent-and-skill-design-project-control-test-groups, checklist-agent-and-skill-design-project-control-test-groups, evidence-flowdoc-project-control-test-groups-2026-09-02, and updated agent-and-skill-design requiredEvidence, summary, expectedOutput, and riskSummary."
+    },
+    {
+      "id": "verify-test-group-evidence",
+      "label": "Verify the grouped gate evidence guard.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-project-control-test-groups-2026-09-02"],
+      "evidenceTarget": "Focused evidence guard, generated read model, data validation, grouped Project Control gate, build, and e2e pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-project-control-test-groups-evidence.test.ts, npm run generate, npm run check:data, and npm run check passed in the worktree after Project Control records were updated."
+    }
+  ],
+  "createdAt": "2026-09-02T21:32:00.000+07:00",
+  "updatedAt": "2026-09-02T21:32:00.000+07:00"
+}

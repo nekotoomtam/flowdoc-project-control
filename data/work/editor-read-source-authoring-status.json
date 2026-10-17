@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-read-source-authoring-status",
+  "title": "Editor Read Source Authoring Status",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Clarify the Editor shell so a backend-backed document visibly separates Backend read source from limited authoring status and disabled authoring controls.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-workspace-status-strip-foundation-2026-08-28",
+    "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
+    "doc-editor-read-source-authoring-status-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit b34fa44a25113359004706f32ecdd1d694dbf3e3 adds visible Workspace status facts `Source: Backend read` and `Authoring: limited`, plus disabled editing command aria/tooltip copy such as `Insert block: authoring not enabled`. Live Backend mode browser evidence observed Backend capability, library, and document read requests while the UI showed the new honesty labels. Target evidence id: evidence-editor-read-source-authoring-status-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command readiness, full authoring, Backend persistence readiness, deployed Backend compatibility, production readiness, or broad Editor, Backend, Core, or FlowDoc truth.",
+  "requiredEvidence": ["evidence-editor-read-source-authoring-status-2026-08-29"],
+  "createdAt": "2026-08-29T06:26:00.000Z",
+  "updatedAt": "2026-08-29T06:26:00.000Z"
+}

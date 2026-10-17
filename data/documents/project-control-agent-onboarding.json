@@ -1,0 +1,52 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-agent-onboarding",
+  "title": "Project Control Agent Onboarding",
+  "path": "AGENTS.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Repository entry contract for new agents and future FlowDoc rooms that must start from Project Control before broad FlowDoc work.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "87e1092e4113c18b9e4107c0362bad13e94a05d4",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
+      "pathOrContractId": "AGENTS.md; tests/flowdoc-work-room-return-liveness.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
+      "pathOrContractId": "AGENTS.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b3851c15547e5adda77719887c4574d2ba8489c9",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-automatic-work-return-contract.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-active-return-channel-hardening.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
+    }
+  ]
+}

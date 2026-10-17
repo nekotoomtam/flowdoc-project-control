@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-source-authority-transaction-internals",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts",
+  "verificationSummary": "The private Source-commit internals prepare and apply the exact identity-bound Source-stage transaction plans; this does not establish a generic transaction facility, public API, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

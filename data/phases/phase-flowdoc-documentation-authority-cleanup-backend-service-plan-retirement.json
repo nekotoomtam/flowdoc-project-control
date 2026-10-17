@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Backend Service Plan Docs Retirement",
+  "phaseState": "done",
+  "order": 40,
+  "repositoryIds": ["repo-backend", "repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, Backend owner repository, active role, Checklist target, or Evidence target before editing Backend Markdown.",
+    "The slice would delete Backend readiness boundary content before retained value or discard rationale is recorded.",
+    "The slice would change Backend service runtime behavior while acting as documentation cleanup.",
+    "The slice would leave docs/superpowers Markdown in Backend after claiming retirement.",
+    "The slice would promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Backend docs/superpowers is empty after retiring the one backend service hardening plan, Backend AGENTS.md points future FlowDoc-wide docs work to Project Control, docs/BACKEND_SERVICE_READINESS_BOUNDARY.md carries Authority Boundary wording, Backend worktree and main gates pass, and Project Control records work-scoped evidence without promoting product truth.",
+  "summary": "Done: Backend commit c24f7f000a8b8e9a181434dd95d7611afa026a75 retired the one Backend docs/superpowers plan, docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md, without changing Backend service behavior. Backend AGENTS.md now points FlowDoc-wide Markdown cleanup work to Project Control documentation authority, and docs/BACKEND_SERVICE_READINESS_BOUNDARY.md preserves the retained readiness boundary with explicit Authority Boundary wording.",
+  "createdAt": "2026-08-31T16:15:00.000Z",
+  "updatedAt": "2026-08-31T16:15:00.000Z"
+}

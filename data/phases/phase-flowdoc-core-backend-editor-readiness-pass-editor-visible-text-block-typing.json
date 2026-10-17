@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-visible-text-block-typing",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Visible Text Block Typing",
+  "phaseState": "done",
+  "order": 110,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Editor treats fixture, local-draft, package 2/document 3, malformed inline children, or non-text-block selections as editable text-block source.",
+    "Editor commits a visible text-block edit without explicit Save or Ctrl+Enter user intent.",
+    "Editor commits while a node mutation, add-node mutation, document migration, or text-block commit is pending.",
+    "The canvas textarea or editor buttons start selection/reorder drag sessions.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, multi-run rich-inline editing, field-chip editing, table/media/columns authoring, durable draft persistence, collaboration, production readiness, broad frontend readiness, or map truth.",
+    "Focused, worktree, merged-main, or live Backend browser gates fail after visible typing changes."
+  ],
+  "verificationTarget": "Editor exposes a bounded visible textarea island for the selected ready text block, keeps local draft edits in the active text-block island, commits only by explicit Save/Ctrl+Enter through text-block.rich-inline.replace, reloads the committed text from a live local Backend read envelope, and preserves existing add-node, migration, and reorder gates.",
+  "summary": "Done: Editor commit 6f59f7269322abfe3428d4df6f4ba0ee6ab0078f adds a bounded visible text-block textarea island. The slice stores Backend source package snapshots for api and mutation-result reads, reads and replaces only the first text inline run of a package 3/document 4 text-block, wires explicit Save/Cancel and pending-mutation gates through the existing active island commit runner, protects canvas selection/reorder from textarea and editor button events, and extends the live browser smoke to type, save, reload, and then reorder through a local Backend server. The slice intentionally keeps WYSIWYG behavior, contenteditable runtime, multi-run rich-inline editing, field-chip editing, table/media/columns authoring, durable draft persistence, production readiness, broad frontend readiness, and map truth closed.",
+  "createdAt": "2026-08-30T16:37:00.000Z",
+  "updatedAt": "2026-08-30T16:37:00.000Z"
+}

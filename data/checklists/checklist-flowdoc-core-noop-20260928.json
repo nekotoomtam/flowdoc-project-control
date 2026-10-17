@@ -1,0 +1,60 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-noop-20260928",
+  "phaseId": "phase-flowdoc-core-noop-20260928",
+  "title": "Exact EOF no-op acceptance",
+  "items": [
+    {
+      "id": "ac-1",
+      "label": "Exact committed EOF empty replacement, including empty session, returns NoOp same TS object/Rust token/revision and unchanged source/facts/defaults/origins/binding/siblings/accepted ledger; no shaping/segmentation/fullscan/hash/mint/publication.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-noop-20260928",
+      "evidenceIds": [
+        "evidence-core-noop-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json; exactcommit native/WASM/Core gate and ScopeLock. AC3 explicitly permits reported deferred host-control prerequisite; no host cancellation completion claimed."
+    },
+    {
+      "id": "ac-2",
+      "label": "Preserve schema/auth/family-overflow/revision/composition/range/shape precedence; optional anchor validated if supplied; actual work charged once per family attempt; checked noOpEvents without acceptedEvents or rejectedAttempts; overflow unaccumulated work honest.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-noop-20260928",
+      "evidenceIds": [
+        "evidence-core-noop-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json; exactcommit native/WASM/Core gate and ScopeLock. AC3 explicitly permits reported deferred host-control prerequisite; no host cancellation completion claimed."
+    },
+    {
+      "id": "ac-3",
+      "label": "Native and actual WASM meaningful mixed edit/noop/retry/empty/invalid/stale/overflow/anchor/Stage5 inverse tests; QA cancellation completion checkpoints distinct from actual host semantics. If real host-control dependency absent, report exact limitation/options without full lifecycle expansion or claiming host complete.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-noop-20260928",
+      "evidenceIds": [
+        "evidence-core-noop-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json; exactcommit native/WASM/Core gate and ScopeLock. AC3 explicitly permits reported deferred host-control prerequisite; no host cancellation completion claimed."
+    },
+    {
+      "id": "ac-4",
+      "label": "Private result union/adapters/verifier separate outcome and live content revision; immutable generator and IDs all180/11271. ActualWASM static diagnostic all15 NoOp plus75ordinary Accepted/coldEqual; 15static is not full180 burst, fullperformance NOT_RUN.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-noop-20260928",
+      "evidenceIds": [
+        "evidence-core-noop-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json; exactcommit native/WASM/Core gate and ScopeLock. AC3 explicitly permits reported deferred host-control prerequisite; no host cancellation completion claimed."
+    },
+    {
+      "id": "ac-5",
+      "label": "Focused native/WASM and stable candidate Core npm run check pass; clean exact commit, full changed-file manifest and retrievable evidence; public/Editor/Backend/geometry/full lifecycle untouched. Downstream unchanged view/edit geometry including transients remains required.",
+      "state": "passed",
+      "evidenceTarget": "evidence-core-noop-20260928",
+      "evidenceIds": [
+        "evidence-core-noop-20260928"
+      ],
+      "verificationNote": "PLAN acceptance C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e59b-e81a-7ac2-9f83-2feabad41b08/plan-acceptance.json; exactcommit native/WASM/Core gate and ScopeLock. AC3 explicitly permits reported deferred host-control prerequisite; no host cancellation completion claimed."
+    }
+  ],
+  "createdAt": "2026-09-28T01:27:27.559Z",
+  "updatedAt": "2026-09-28T02:13:58.063Z"
+}

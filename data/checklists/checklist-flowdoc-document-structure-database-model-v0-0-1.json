@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-document-structure-database-model-v0-0-1",
+  "phaseId": "phase-flowdoc-document-structure-database-model-v0-0-1",
+  "title": "FlowDoc Document Structure Database Model v0.0.1 Checklist",
+  "items": [
+    {
+      "id": "capture-document-structure-database-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The database model record identifies Project Control ownership before writing structure database framing.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-document-structure-database-model, owner repo-project-control, active role planning-partner with documentation-authority-steward and evidence-registrar responsibilities, phase target phase-flowdoc-document-structure-database-model-v0-0-1, checklist target checklist-flowdoc-document-structure-database-model-v0-0-1, and evidence target evidence-flowdoc-document-structure-database-model-2026-09-04."
+    },
+    {
+      "id": "write-red-document-structure-database-guard",
+      "label": "Write a failing Project Control guard before adding the database model records.",
+      "state": "passed",
+      "evidenceTarget": "A focused records test fails before Project Control contains the document-structure database model Work, document, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "RED evidence: npm run test:records failed with tests/flowdoc-document-structure-database-model.test.ts because flowdoc-product-development-resumption did not yet include flowdoc-document-structure-database-model as a child Work."
+    },
+    {
+      "id": "define-draft-and-component-library-tables",
+      "label": "Define the draft document, section, component draft, and component field table relationships.",
+      "state": "passed",
+      "evidenceTarget": "The document defines document_definitions, document_drafts, draft_sections, draft_component_instances, component_definitions, component_drafts, component_fields, component_versions, and component_version_fields.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-document-structure-database-model-2026-09-04.md defines draft and component library table groups while keeping component nesting prepared but inactive."
+    },
+    {
+      "id": "define-version-freeze-tables",
+      "label": "Define document version freeze tables as full resolved structure, not delta-only truth.",
+      "state": "passed",
+      "evidenceTarget": "The document defines document_versions, document_version_sections, document_version_component_instances, document_version_fields, and document_version_bindings.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "The version model freezes resolved sections, section tree, component version instances, field occurrences, binding expectations, page settings, and style snapshots."
+    },
+    {
+      "id": "define-publication-pointer-and-cache-boundary",
+      "label": "Define publication as a pointer to a frozen document version and keep cache derived.",
+      "state": "passed",
+      "evidenceTarget": "The document defines document_publications as the real-use pointer and keeps any published snapshot/cache optional and derived.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "Publication is a pointer to a selected DocumentVersion. The optional published snapshot/cache is not canonical truth."
+    },
+    {
+      "id": "define-field-type-master-boundary",
+      "label": "Define the v0.0.1 field_types master and defer format and validation masters.",
+      "state": "passed",
+      "evidenceTarget": "The document limits field_types to text, number, date, and boolean, with field_type_id on draft fields and field_type_id plus field_type_snapshot on version fields.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "The model states no format_types and no validation_rule_types in v0.0.1; currency, email, phone, percent, URL, and similar details are deferred."
+    },
+    {
+      "id": "exclude-runtime-and-implementation-scope",
+      "label": "Exclude runtime submissions, generated files, permissions, audit, workflow, billing, integrations, and product implementation.",
+      "state": "passed",
+      "evidenceTarget": "The document keeps actual submitted values and non-structure domains outside the v0.0.1 structure database model.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "The out-of-scope section excludes Runtime Submission records, generated PDF files, renderer jobs, permissions, workflow, activity feed, audit, billing, integrations, dataset seeding, and SQL migrations."
+    },
+    {
+      "id": "verify-document-structure-database-model-records",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused records guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-database-model-2026-09-04"],
+      "verificationNote": "GREEN evidence target: npm run test:records, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

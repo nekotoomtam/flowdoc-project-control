@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-core-package-reconciliation",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "คืนเฉพาะ package ที่ยังใช้ตามข้อยกเว้นผู้ใช้",
+  "phaseState": "done",
+  "order": 52,
+  "repositoryIds": [
+    "repo-core"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Exactly 59 previously inventoried missing paths only",
+    "Stop on changed HEAD/index/list or existing target",
+    "No source edits, regeneration, links, untracked content or main merge"
+  ],
+  "verificationTarget": "evidence-core-package-reconciliation-2026-09-05; exact blob equality and canonical clean tracked state",
+  "summary": "Exact 59 approved baseline files restored; semantic index unchanged. Revision 02 resolves stale status metadata; PLAN verifies clean canonical checkout and accepts before retirement integration.",
+  "createdAt": "2026-09-05T12:22:40.963Z",
+  "updatedAt": "2026-09-05T12:35:23.7525625Z"
+}

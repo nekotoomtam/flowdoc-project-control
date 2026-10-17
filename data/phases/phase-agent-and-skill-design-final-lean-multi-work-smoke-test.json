@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-final-lean-multi-work-smoke-test",
+  "workId": "agent-and-skill-design",
+  "title": "Final Lean Multi-WORK Smoke Test",
+  "phaseState": "done",
+  "order": 105,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the final Lean Dispatch smoke result.",
+    "Either WORK room does not actively push a Terminal Handoff back to the PLAN task/chat ID.",
+    "The PLAN room cannot assign returned handoffs to completionQueue arrivals before running acceptanceGate one at a time.",
+    "The beta WORK room cannot receive a Revision Packet in the same Codex task/chat or cannot push the revised Terminal Handoff back to PLAN.",
+    "The smoke result is treated as proof of product WORK implementation, multi-product-WORK close-together return, queued clientThreadId dispatch, product truth, map truth, readiness, or release status."
+  ],
+  "verificationTarget": "two projectless Lean Dispatch WORK rooms return to PLAN automatically, PLAN marks the beta first handoff needs-revision for a missing tests/checks field, sends a Revision Packet back to the same WORK room, receives a revised PASS handoff, and preserves product truth unknowns.",
+  "summary": "Done: recorded the final bounded Lean Dispatch multi-WORK smoke test. PLAN opened alpha WORK task 01a061ef-080d-7842-895b-81e553d2a522 and beta WORK task 01a061ef-12a4-7612-8461-e3bf381e1ec4 under dispatch-final-lean-multi-work-smoke-2026-09-02-01 with parallelLimit 2. Alpha returned PASS automatically to PLAN. Beta returned an intentional RISK needs-revision probe, PLAN sent Revision Packet revision-final-lean-beta-revision-smoke-2026-09-02-01 back to the same beta task, and beta returned a revised PASS handoff. The result proves only local projectless no-edit Lean Dispatch automatic return, completionQueue handling, and same-room revision loop behavior.",
+  "createdAt": "2026-09-02T18:55:00.000+07:00",
+  "updatedAt": "2026-09-02T18:55:00.000+07:00"
+}

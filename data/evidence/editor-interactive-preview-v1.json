@@ -1,0 +1,10 @@
+{
+  "repositoryId": "repo-editor",
+  "verifiedAt": "2026-09-06T08:12:19.0432539Z",
+  "id": "evidence-editor-interactive-preview-v1",
+  "nodeIds": [],
+  "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts; src/editor/structures/creatorPreviewSource.ts; src/editor/structures/creatorPreviewPaint.ts; src/components/structures/StructurePreviewPage.tsx; src/tests/creatorPreviewRuntime.test.ts; scripts/run-creator-preview-browser-evidence.mjs",
+  "verificationSummary": "PLAN accepted automatic candidate02/main03 after source/paint/input/transition/tests and browser08 JSON/screenshot review plus independent3files16tests15.65s. Full original worktree/main117files452tests and type-check/build passed, main49.4110316s; exact before/after106 dependency entries/source/assets, Core1a18601/Backend a1745c4 unchanged. Actual browser08 proves saved-source/no Preview POST/PDF, empty edit, Thai/Latin,2pages76fragments7820glyphs, suffix reflow, immutable outline transforms,150percent DPR2, stable input/caret, synthetic composition/history/reset/recovery, stale success/errors, missing/tampered assets retry, direct URL/capability/legacy preservation. External C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/editor-interactive-preview contains candidate.json/full-check02.log/browser08 and main03 result/before/after/full-check. Failed harness histories retained. Real OS Thai IME UNKNOWN, existing large chunk RISK; only first A4/one-field profile, no full R3/R4/general/frozen/repeated/map claims.",
+  "commit": "a036105daa4c8625ff2d8074df8d210ca8d98ba1",
+  "kind": "evidence"
+}

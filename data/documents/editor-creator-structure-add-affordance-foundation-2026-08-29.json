@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-editor-creator-structure-add-affordance-foundation-2026-08-29",
+  "title": "Editor Creator Structure Add Affordance Foundation",
+  "path": "docs/domains/editor-creator-structure-add-affordance-foundation-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for an Editor Structure panel add-block affordance presentation layer without promoting Editor product truth or authoring readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+      "pathOrContractId": "src/components/outline/OutlinePanel.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "2538c2af02f2bda7aa6eafb8d621eec33bc28cc0",
+      "pathOrContractId": "src/tests/outlineScannability.test.ts"
+    }
+  ]
+}

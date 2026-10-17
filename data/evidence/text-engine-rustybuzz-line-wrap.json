@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-engine-rustybuzz-line-wrap",
+  "nodeIds": ["text-engine"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts",
+  "verificationSummary": "Focused seeded multi-line Evidence was verified for ascending in-range cluster-safe breaks, exact non-overlapping glyph coverage, and passage through existing structural Evidence Acceptance and draft-handoff contracts; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.",
+  "verifiedAt": "2026-08-20T00:00:00.000Z"
+}

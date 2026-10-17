@@ -1,0 +1,57 @@
+{
+  "kind": "document",
+  "id": "doc-core-route-retained-contracts",
+  "title": "Core Route Ownership and Retained Contracts",
+  "path": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md",
+  "nodeIds": ["core-route"],
+  "role": "contract",
+  "authority": "Canonical contract for the reviewed Core route ownership boundary and retained generation behavior.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/apiRoute.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactApiRoute.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactJob.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/artifactManifest.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/generation/runtime.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "src/index.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/artifactRetainedContract.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/coreRouteRetainedContractRewrite.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+      "pathOrContractId": "tests/generationRuntimeRetainedContract.test.ts"
+    }
+  ]
+}

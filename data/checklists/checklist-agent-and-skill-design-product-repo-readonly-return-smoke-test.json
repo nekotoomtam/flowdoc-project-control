@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-product-repo-readonly-return-smoke-test",
+  "phaseId": "phase-agent-and-skill-design-product-repo-readonly-return-smoke-test",
+  "title": "Product Repo Read-Only Return Smoke Test Checklist",
+  "items": [
+    {
+      "id": "dispatch-core-worktree-readonly-smoke",
+      "label": "Dispatch the Core worktree read-only smoke room.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN opens a real Core project WORK task with worktree environment and read-only/no-op scope.",
+      "verificationNote": "PLAN created a Core worktree WORK room for lane-core-readonly-return-smoke under dispatch-product-repo-readonly-return-smoke-2026-09-02-01. The create call first returned clientThreadId client-new-thread:a8a7a22f-152e-46d3-9ab9-d45482469c47."
+    },
+    {
+      "id": "resolve-client-thread-to-task",
+      "label": "Resolve clientThreadId to a real task.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "The queued worktree creation produces a monitorable WORK task/chat ID before acceptance.",
+      "verificationNote": "The worktree-created Core task resolved to monitorable WORK task 01a06146-4c7a-7ca3-9f36-475df0f7ba99 and became visible through the active return event before PLAN acceptance."
+    },
+    {
+      "id": "receive-core-worktree-active-return",
+      "label": "Receive the Core worktree active return.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "The Core worktree WORK room pushes its Terminal Handoff back to PLAN without user copy/paste.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-core-readonly-return-smoke-2026-09-02-01 from WORK task 01a06146-4c7a-7ca3-9f36-475df0f7ba99 through mcp__codex_app.send_message_to_thread."
+    },
+    {
+      "id": "run-product-repo-readonly-acceptance-gate",
+      "label": "Run product-repo read-only acceptance.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "PLAN accepts only active return and product-repository context, not product behavior.",
+      "verificationNote": "The Core worktree handoff included PASS, lane ID, Work Type, owner repository, Context Acknowledgement, Active Return Command, retrievable task ID, worktree path, detached HEAD commit, no file changes, no behavior changes, read-only checks only, no product behavior evidence, and no promoted claims."
+    },
+    {
+      "id": "record-local-fallback-diagnostic",
+      "label": "Record the local fallback diagnostic.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "The separately opened local fallback task is recorded without replacing the primary worktree proof.",
+      "verificationNote": "Fallback task 01a06147-82e3-71e1-add6-d7d702b6c406 returned handoff-core-readonly-return-smoke-local-2026-09-02-01 from the saved Core checkout on main. PLAN treats it as diagnostic because the worktree-created task had already returned and the fallback context preserved a stale unknown about the first attempt."
+    },
+    {
+      "id": "preserve-product-implementation-unknowns",
+      "label": "Preserve product implementation unknowns.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "The read-only product-repository smoke proof does not promote actual product edits, multi-product-WORK return, or product truth.",
+      "verificationNote": "The evidence and governing documents state that this smoke supports only product-repository read-only active return on this local host. It does not prove product WORK implementation return with actual edits, multi-product-WORK return, Core truth, Backend truth, Editor truth, FlowDoc product truth, map truth, readiness, release status, or product evidence promotion."
+    },
+    {
+      "id": "record-product-repo-readonly-smoke-evidence",
+      "label": "Record Project Control product-repo read-only smoke evidence.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "Project Control records the Phase, Checklist, Evidence, Work required evidence, and document refs for the product-repository read-only smoke result.",
+      "verificationNote": "Registered phase-agent-and-skill-design-product-repo-readonly-return-smoke-test, checklist-agent-and-skill-design-product-repo-readonly-return-smoke-test, evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02, updated agent-and-skill-design requiredEvidence, and added repository refs for the touched Project Control documents."
+    },
+    {
+      "id": "verify-product-repo-readonly-smoke-evidence",
+      "label": "Verify the product-repo read-only smoke evidence gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-product-repo-readonly-return-smoke-test-2026-09-02"],
+      "evidenceTarget": "Focused product-repo read-only smoke guard, generated read model, data validation, and full Project Control gate pass.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-product-repo-readonly-return-smoke-evidence.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-02T15:47:00.000+07:00",
+  "updatedAt": "2026-09-02T15:47:00.000+07:00"
+}

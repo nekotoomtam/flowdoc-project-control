@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-creator-draft-r1-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "a639dadb82d674360992ce085960989bc9cf2656",
+  "pathOrContractId": "src/tests/documentStructureLibrary.test.ts; src/routes/documentStructureLibraryRoute.ts; src/server.ts",
+  "verificationSummary": "R1 accepted for local workspace: paginated workspace-scoped listing and SQLite local runner persistence. Worktree and main type-check, full test run with maxWorkers=1 (95 passed/1 skipped files; 354 passed/27 skipped tests), and build passed. Initial default-worker run lost a worker; full serial retry passed without reducing coverage. New tests cover HTTP queries and process restart. Not production auth/database readiness.",
+  "verifiedAt": "2026-09-05T10:00:50.163Z"
+}

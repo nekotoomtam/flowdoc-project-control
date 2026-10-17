@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-project-control-product-evidence-refresh-path-2026-08-26",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-project-control",
+  "commit": "3cfab24a85d1335033105b3d8c12d9a84ae88509",
+  "pathOrContractId": "data/work/flowdoc-product-evidence-refresh.json",
+  "verificationSummary": "Project Control contains an active FlowDoc Product Evidence Refresh Work task with Phase and Checklist targets before product-wide truth promotion.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

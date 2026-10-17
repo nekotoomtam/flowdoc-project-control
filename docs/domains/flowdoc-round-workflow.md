@@ -1,0 +1,229 @@
+# FlowDoc Round Workflow
+
+## Purpose
+
+This workflow defines the shared shape of one FlowDoc work round. It keeps
+scope, repository ownership, evidence, and remaining uncertainty visible while
+Project Control reconstructs and maintains system truth across Project Control,
+Core, Editor, and Backend.
+
+Project Control is the governing entrypoint for FlowDoc work rounds. Future
+Codex rooms and agents should start here before treating any FlowDoc repository
+state as current, selecting a role, promoting a map, or opening a broad product
+implementation round.
+
+If a FlowDoc request starts in another repository or chat, first check Project
+Control for the relevant Work path, Phase, Checklist target, Evidence target,
+Node, Document, and Repository records, then continue in the owning repository
+only after scope and evidence targets are clear.
+
+Use this workflow before broad work, cross-repository work, evidence
+registration, lane cleanup, documentation synthesis, or product implementation.
+It is a coordination contract. It does not by itself prove that a product
+system is current.
+
+The current policy for deciding size, risk, authority, scope, proof, documents,
+context, completion, and stopping is
+`docs/domains/flowdoc-workflow-economy-policy.md`. This round workflow is a
+supporting execution summary and does not create a second authority.
+
+## PLAN round identity
+
+A single-room request may proceed inline, including code changes, using the
+explicit request and relevant canonical context. Size and risk still determine
+proof, authority, scope, and escalation; they do not require separate rooms or
+a registry. Absent execution IDs are not applicable. Worktree isolation remains
+independent of room arrangement. See the workflow economy policy for the
+single-room and registered-execution routes.
+
+The following identity rules apply when PLAN registers and dispatches a separate
+execution round. One PLAN task owns exactly one registered round. A new PLAN
+execution task creates fresh Work and version 3 registry identities before
+dispatch: round, room, handoff, WORK task, worktree-or-branch, and Return-Channel.
+Returning to a conversation for explanation or review does not reopen a closed
+round. Registry versions 1 and 2 are historical and read-only. Cross-PLAN
+ownership transfer is not supported. The current PLAN must not send, wait,
+revise, resume, or hand off through an older PLAN or WORK task.
+
+Prior accepted commits, Evidence, and Project Control records may be referenced
+as immutable input. Older tasks may be inspected for relevant explanation,
+review, audit, or evidence recovery; inspection never restores execution
+authority. Missing execution history is recovered read-only. New execution after
+a closed round or changed PLAN task requires fresh identities for the new scope.
+
+## 1. Round intake
+
+Before work starts, name the round in plain terms:
+
+- Lane or Work item: the Project Control Work record or explicit user request.
+- Work path: the parent Work chain from the broad topic to the executable task,
+  when a task exists.
+- Owner repository: Project Control, Core, Editor, Backend, or a bounded set of
+  repositories.
+- Active role: Planning Partner, Project Control Steward, Evidence Reviewer,
+  Lane Reconciliation Reviewer, Cross-Repo Boundary Reviewer, Documentation
+  Synthesizer, or Product Implementation Agent.
+- Current Phase: the active or next Phase for an executable Work task.
+- Checklist target: the Checklist item or Checklist group that will be reported
+  at handoff.
+- Evidence target: the command, path, contract, document, or Evidence record
+  that would support the bounded claim.
+- Expected output: commit, evidence packet, map update, recommendation,
+  cleanup decision, health report, or another explicit deliverable.
+- Stop condition: only a safety/correctness blocker, authority violation,
+  missing prerequisite, or scope escape.
+
+## 2. Context check
+
+Read the local context for the owner repository before editing:
+
+- the owner repository's `AGENTS.md`;
+- related Work, Node, Document, Repository, and Evidence records;
+- current Phase, Checklist target, and Evidence target for executable Work;
+- current git branch, local changes, and untracked files;
+- whether the checkout is `main` or a dedicated worktree for the current
+  round;
+- the boundary between plan, truth, evidence, risk, and unknown state.
+- `docs/domains/flowdoc-product-terminology.md` and its Thai companion before
+  Editor, frontend, product behavior, cross-repository contract, or ambiguous
+  terminology work.
+
+If the working tree is dirty, classify the changes before continuing:
+
+- work that belongs in the current round;
+- user or previous-agent work that must be preserved but not touched;
+- work that should be split to another branch, cleanup review, or later round.
+
+## 3. Scope decision
+
+Before implementation or record edits, state:
+
+- which repository owns the change;
+- which repositories are intentionally not being edited;
+- which dedicated worktree will hold the work, or why the user explicitly
+  approved same-checkout maintenance;
+- which claims must remain unpromoted;
+- which overloaded terms have been resolved through canonical terminology or
+  classified as `define`, `split`, `rename`, `deprecated`, `context-only`, or
+  `blocked`;
+- which check, path, test, contract, commit, or Evidence record would be enough
+  to close the round.
+
+This decision keeps Project Control from becoming product implementation and
+keeps planned outcomes out of system truth maps.
+
+## 4. Execute
+
+Work only inside the approved scope:
+
+- Product behavior changes belong in the owning product repository.
+- Project Control changes should edit canonical sources under `data/` and
+  `docs/`.
+- Small documentation/status maintenance may use the existing checkout when
+  scope is separable and no other work conflicts. Use an isolated worktree when
+  concurrent work, experiments, or change risk requires separation.
+- Wait for prerequisite commands to finish, review the final diff, and verify
+  the changed and affected areas before committing or merging.
+- `generated/project-index.json` is deterministic output and should be
+  regenerated, not hand-edited.
+- Work records can track intent, but they do not prove truth.
+- Maps should change only after implementation, verification, and Project
+  Control registration support the new state.
+
+## 5. Verification
+
+Identify the changed area and all affected dependencies and consumers, including
+other repositories when needed. Choose checks covering those effects and record
+commands and results. Investigate unclear impact first. A full suite is optional
+and requires a concrete task-specific reason; it is not mandatory for every task.
+
+After an unchanged fast-forward, reuse passing results if tested content,
+relevant base, dependencies, configuration, and environment are unchanged.
+Confirm that identity; do not automatically repeat checks on `main`. Conflicts,
+additional changes, or relevant environment changes require verification of the
+changed and affected areas. Separate-room Scope Lock preflights still apply.
+
+After verification or valid proof reuse, remove only clean merged current-round
+lanes. Do not remove a dirty worktree, an unmerged branch, or a lane whose unique
+patches are not understood. Stop when acceptance and impact coverage pass;
+additional checks need a new change, failure, stale prerequisite, or unresolved
+affected area.
+
+If a claim is strong enough to affect a Node, Document map, or system map, it
+needs durable support such as:
+
+- repository id;
+- exact commit;
+- file path, test path, contract id, or Evidence record;
+- verification summary;
+- remaining unknowns or explicitly excluded authority.
+
+If that support is missing, report `UNKNOWN`, `RISK`, or `BLOCKER` instead of
+promoting the claim.
+
+## 6. Evidence packet
+
+When a round produces evidence, return or record a bounded evidence packet:
+
+- repository id;
+- commit SHA;
+- relevant files, paths, tests, or contracts;
+- commands run and results;
+- related Work, Node, Document, or map records;
+- supported claims;
+- terminology decisions, if ambiguous product words were defined, split,
+  renamed, deprecated, kept context-only, or blocked;
+- claims intentionally left unknown or unpromoted.
+
+Evidence packets are narrow by design. They should not promote parent nodes or
+unreviewed repository areas by implication.
+
+## 7. Project Control update
+
+If the round changes Project Control's shared knowledge:
+
+- add or update Evidence records;
+- add or update Document records;
+- update Node links or Work state when supported;
+- update the narrowest map that changed;
+- regenerate `generated/project-index.json`;
+- run the impact-scoped Project Control checks.
+
+Do not update `docs/domains/flowdoc-system-map.md` merely because work started
+or because a plan expects success. Update maps after reviewed evidence exists.
+
+## 8. Handoff
+
+For small inline maintenance, update the existing record with the result,
+supporting checks, and remaining issues. Do not create Work/Phase/Checklist or
+report artifacts solely to close status. Preserve completed, cancelled, and
+superseded dispositions. Broad work uses the context below.
+
+End broad work with:
+
+- PASS: what is verified and by which command or evidence.
+- FAIL / BLOCKER: what prevents continuation.
+- RISK: known hazards that did not block the current phase.
+- UNKNOWN: what remains unverified.
+- Work ID, Phase ID, and Checklist item IDs: the execution context being
+  reported.
+- Files changed: grouped by repository.
+- Behavior changed: user-facing, contract-facing, or record-facing effects.
+- Tests run: command and result.
+- Evidence or map updates: what changed and what supports it.
+- Intentionally not changed: boundaries preserved by design.
+- Worktree cleanup: merged, retained, blocked, or intentionally not applicable.
+- Next recommended work: the smallest useful next round.
+
+This handoff keeps reconstructed history honest while letting FlowDoc move
+forward one verified round at a time.
+
+## Coordination control gate
+
+Before new dispatch, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, round and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

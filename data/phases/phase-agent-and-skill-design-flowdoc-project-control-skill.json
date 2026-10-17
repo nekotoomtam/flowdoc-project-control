@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-flowdoc-project-control-skill",
+  "workId": "agent-and-skill-design",
+  "title": "FlowDoc Project Control Skill",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The skill conflicts with Project Control AGENTS.md or the documentation authority operating rules.",
+    "The skill directs FlowDoc-wide Markdown into product-repository docs/superpowers paths.",
+    "The phase edits Core, Backend, or Editor product behavior.",
+    "The phase promotes Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
+    "Skill validation or bounded pressure validation cannot be completed."
+  ],
+  "verificationTarget": "FlowDoc Project Control Codex skill is installed locally, validates structurally, routes FlowDoc work through Project Control before generic planning paths, has bounded pressure validation, and is recorded by Project Control Work/Phase/Checklist/Document/Evidence without product truth promotion.",
+  "summary": "Done: installed the local flowdoc-project-control Codex skill, validated its structure, recorded bounded pressure validation against the generic docs/superpowers planning path, and registered Project Control records without editing product behavior or promoting map truth.",
+  "createdAt": "2026-09-01T10:30:00.000Z",
+  "updatedAt": "2026-09-01T10:30:00.000Z"
+}

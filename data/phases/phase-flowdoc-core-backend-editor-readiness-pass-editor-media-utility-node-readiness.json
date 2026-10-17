@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-media-utility-node-readiness",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Media And Utility Node Readiness",
+  "phaseState": "done",
+  "order": 200,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Media and utility add-node readiness cannot be derived from both Core placement facts and Backend advertised mutation operation kinds.",
+    "Unsupported image, page-break, spacer, divider, or toc insertion appears as a ready visible add action.",
+    "Unsupported media or utility insert contracts lack an exact Core/Backend blocked reason.",
+    "Utility paper preview blocks gain editing controls before a repository-owned mutation and authoring contract exists.",
+    "The slice enables Core or Backend media/utility insertion semantics before those repositories advertise owned operations.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct image/page-break/spacer/divider/toc authoring, durable drafts, collaboration, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor exposes bounded media and utility node readiness facts for image, page-break, spacer, divider, and toc using Core placement and Backend operation capability inputs, keeps unsupported contracts and visible add actions blocked, and marks utility paper surfaces without enabling mutation transport or WYSIWYG behavior.",
+  "summary": "Done: Editor merge commit 80a46f03cc05a929ab0f67a8615236bf0908b8bc adds a bounded media and utility node readiness classifier. utilityNodeReadiness builds readiness facts for image, page-break, spacer, divider, and toc from Core placement allowed child types, Backend mutationOperations for the current active package/document pair, and the Editor add-node contract builder. image stays blocked when the Core runtime container cannot accept image children; page-break, spacer, divider, and toc stay blocked because the Editor contract does not expose Core/Backend insert operations for those node kinds and Backend does not advertise page-break.insert, spacer.insert, divider.insert, toc.insert, or image.insert. Visible add-node actions do not expose unsupported media or utility buttons, and PaperBlock marks utility preview surfaces with data-utility-node-kind/data-utility-node-readiness without adding textarea or contenteditable controls. This does not enable Core or Backend media/utility mutation transport, document v4 insert semantics, direct image/page-break/spacer/divider/toc editing, WYSIWYG behavior, contenteditable runtime, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T10:10:00.000Z",
+  "updatedAt": "2026-08-31T10:10:00.000Z"
+}

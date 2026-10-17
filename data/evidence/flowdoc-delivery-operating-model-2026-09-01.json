@@ -1,0 +1,11 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-delivery-operating-model-2026-09-01",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "8dcb483f99ffa5e6c7195b5ac16774f155ca77dc",
+  "pathOrContractId": "docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; data/work/agent-and-skill-design.json; tests/flowdoc-delivery-operating-model.test.ts; npm run check",
+  "verificationSummary": "Project Control commit 8dcb483f99ffa5e6c7195b5ac16774f155ca77dc records the FlowDoc Delivery Operating Model as a Project Control PLAN and WORK room delivery operating contract. The document defines Collaboration Identity for ตูม and โค, Agent Shared Understanding for future rooms, the Room Mode Model for PLAN rooms and real separate WORK rooms, Delivery Round Model, First Delivery Slice, Gateway Boundary, Product Database Boundary, Project Control Reference ID Contract, Lane Card Template, WORK Room Kickoff Rule, Handoff Rule, Contract Change Request, and Stop Conditions. RED evidence: npx vitest run tests/flowdoc-delivery-operating-model.test.ts --maxWorkers=1 failed before doc-flowdoc-delivery-operating-model and entrypoint references existed. GREEN evidence before this evidence record passed npx vitest run tests/flowdoc-delivery-operating-model.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check with 63 unit test files and 356 tests, build, and 6 e2e tests. This evidence does not edit Core, Backend, or Editor behavior, does not prove gateway behavior, product database behavior, API key behavior, PDF generation, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-01T21:15:00.000Z"
+}
+

@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-paper-smooth-zoom-surface",
+  "phaseId": "phase-editor-paper-smooth-zoom-surface",
+  "title": "Editor Paper Smooth Zoom Surface Checklist",
+  "items": [
+    {
+      "id": "capture-smooth-zoom-context",
+      "label": "Capture Project Control, terminology, Editor agreement, prior toolbar/status context, and Backend/Core local-loopback boundaries before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the exact Editor commit, live Backend mode boundary, and dependency context used for this bounded lane.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, local loopback runner records, toolbar foundation records, status honesty records, and Core/Backend boundary context were read before implementation."
+    },
+    {
+      "id": "define-viewport-only-zoom-boundary",
+      "label": "Define smooth zoom as viewport-only presentation, not document content, Core package truth, Backend persistence, or authoring readiness.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 cites the terminology and status boundary used in the UI.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "The lane document defines smooth viewport zoom, viewport-only zoom, paper zoom presets, and post-transition selection overlay sync while preserving Source: Backend read and Authoring: limited honesty."
+    },
+    {
+      "id": "add-paper-zoom-control-surface",
+      "label": "Add paper zoom controls with fixed presets and clear viewport-only labeling.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 points to src/components/shell/PaperZoomControls.tsx, src/components/shell/EditorToolbar.tsx, and src/tests/paperSmoothZoomSurface.test.ts.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "Editor commit 58f3002363b29662bb02042fdb1021236844cbc1 adds Zoom out, current zoom, presets for 50%, 85%, 100%, and 125%, and Zoom in, with the toolbar label Canvas zoom (viewport only)."
+    },
+    {
+      "id": "add-smooth-paper-motion",
+      "label": "Animate paper transform during viewport zoom while honoring reduced-motion users.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 points to src/components/paper/PaperPage.tsx and src/styles/editor.css.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "PaperPage marks the paper as smooth zoom motion and viewport-only, while CSS transitions transform for 160ms and disables that transition under prefers-reduced-motion: reduce."
+    },
+    {
+      "id": "keep-selection-overlay-aligned-after-motion",
+      "label": "Keep the selected-node overlay aligned after smooth zoom motion settles.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the focused overlay regression and browser overlay measurement.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "A browser check first exposed stale overlay geometry after smooth zoom; the final code schedules post-transition overlay sync, and the final browser check measured the selected title overlay within near-zero deltas after zoom settled."
+    },
+    {
+      "id": "verify-live-backend-mode-zoom-path",
+      "label": "Verify the rendered Editor in live Backend mode changes viewport zoom without Backend mutation requests.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records the worktree loopback smoke and browser zoom-path check.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "The browser check opened the design route through live Backend mode, observed only Backend read/capability requests, clicked Zoom in from 85% to 95%, and found no Backend mutation request."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this viewport UI lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "prepare-editor-gate",
+      "label": "Run RED/GREEN focused tests, full Editor gates in worktree and merged main, and bounded loopback/browser checks.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-paper-smooth-zoom-surface-2026-08-29 records focused, worktree, main, smoke, and browser verification results.",
+      "evidenceIds": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+      "verificationNote": "Focused RED failed for missing viewport-only zoom labels/markers and missing post-transition overlay sync, focused GREEN passed, Editor worktree npm run check passed, live Backend mode smoke/browser checks passed, and merged Editor main npm run check passed."
+    }
+  ],
+  "createdAt": "2026-08-29T07:20:00.000Z",
+  "updatedAt": "2026-08-29T07:20:00.000Z"
+}

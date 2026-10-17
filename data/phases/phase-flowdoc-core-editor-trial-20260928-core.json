@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-editor-trial-20260928-core",
+  "workId": "flowdoc-core-editor-trial-20260928",
+  "title": "Deliver Core and Editor trial with independent frozen measurement",
+  "phaseState": "in-progress",
+  "order": 0,
+  "repositoryIds": [
+    "repo-core"
+  ],
+  "activeRole": "product-implementation-agent",
+  "verificationTarget": "checklist-flowdoc-core-editor-trial-20260928-core",
+  "summary": "Bounded owner-authorized delivery; exact packet in current round. Stop when criteria pass.",
+  "stopConditions": [
+    "Acceptance complete",
+    "Safety/correctness blocker or scope escape"
+  ],
+  "createdAt": "2026-09-28T10:24:31.546Z",
+  "updatedAt": "2026-09-28T10:24:31.546Z"
+}

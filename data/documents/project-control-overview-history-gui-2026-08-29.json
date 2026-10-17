@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-overview-history-gui-2026-08-29",
+  "title": "Project Control Overview and History GUI Implementation",
+  "path": "docs/domains/project-control-overview-history-gui-2026-08-29.md",
+  "nodeIds": ["project-control"],
+  "role": "verification",
+  "authority": "Bounded verification document for the implemented Project Control read-only GUI Overview and Work History surfaces at the cited Project Control commit.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+      "pathOrContractId": "app/src/components/ControlRoom.tsx"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+      "pathOrContractId": "app/src/App.test.tsx"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+      "pathOrContractId": "app/src/accessibility.test.tsx"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+      "pathOrContractId": "tests/vite-server.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+      "pathOrContractId": "tests/e2e/project-control.spec.ts"
+    }
+  ]
+}

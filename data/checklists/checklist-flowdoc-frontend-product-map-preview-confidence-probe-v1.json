@@ -1,0 +1,50 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+  "phaseId": "phase-flowdoc-frontend-product-map-preview-confidence-probe-v1",
+  "title": "Frontend Product Map Preview Confidence Probe v1 Checklist",
+  "items": [
+    {
+      "id": "stage-preview-probe-handoff",
+      "label": "Stage the Preview probe WORK room handoff in PLAN handoffInbox and completionQueue.",
+      "state": "passed",
+      "evidenceTarget": "PLAN receives handoff-preview-confidence-probe-2026-09-03-01 through the automatic Return Channel.",
+      "evidenceIds": ["evidence-flowdoc-preview-confidence-probe-2026-09-03"],
+      "verificationNote": "The WORK room pushed the terminal handoff to PLAN task/chat 01a0637c-bc37-7cb1-8655-362695c4c6f7 using send_message_to_thread from WORK task/chat 01a06786-7d05-7be3-b939-8ff6e7917e61. PLAN queued it as arrivalSequence 1."
+    },
+    {
+      "id": "confirm-preview-probe-no-product-edits",
+      "label": "Confirm the Preview probe did not edit product behavior.",
+      "state": "passed",
+      "evidenceTarget": "The probe remains read-only and returns evidence requirements rather than implementation.",
+      "evidenceIds": ["evidence-flowdoc-preview-confidence-probe-2026-09-03"],
+      "verificationNote": "The handoff reports no files changed, no behavior changed, and no product edits in Editor, Backend, or Core."
+    },
+    {
+      "id": "record-preview-vocabulary-and-gaps",
+      "label": "Record Preview vocabulary and evidence gaps without promoting readiness.",
+      "state": "passed",
+      "evidenceTarget": "Draft Preview, stale preview, failed preview, unavailable preview, blocked preview, and Published Preview remain definitions for the next validation lane.",
+      "evidenceIds": ["evidence-flowdoc-preview-confidence-probe-2026-09-03"],
+      "verificationNote": "The acceptance document keeps Preview separate from WYSIWYG and Publish readiness and names missing Editor, Backend, Core, renderer, artifact, and production-route evidence."
+    },
+    {
+      "id": "recommend-preview-validation-lane",
+      "label": "Recommend the next Preview validation lane.",
+      "state": "passed",
+      "evidenceTarget": "The next lane is lane-preview-confidence-validation with parallelLimit 1.",
+      "evidenceIds": ["evidence-flowdoc-preview-confidence-probe-2026-09-03"],
+      "verificationNote": "The probe recommends starting as evidence-review and allowing Editor product edits only after PLAN explicitly approves a later lane."
+    },
+    {
+      "id": "preserve-progressive-authoring-boundary",
+      "label": "Preserve Progressive Authoring independence boundary.",
+      "state": "passed",
+      "evidenceTarget": "Progressive Authoring may proceed independently only while bounded to managed cards/text islands and treating Preview as unavailable or diagnostic-only.",
+      "evidenceIds": ["evidence-flowdoc-preview-confidence-probe-2026-09-03"],
+      "verificationNote": "If Progressive Authoring relies on Preview freshness, PDF artifacts, or Published Preview parity, it should wait for Preview validation evidence."
+    }
+  ],
+  "createdAt": "2026-09-03T21:45:00.000+07:00",
+  "updatedAt": "2026-09-03T21:45:00.000+07:00"
+}

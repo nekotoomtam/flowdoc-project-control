@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-sandbox-package-boundary",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "examples/template-builder-sandbox/package.json",
+  "verificationSummary": "The sandbox package declares @flowdoc/vnext-core through its public package boundary; this does not establish production editor readiness or wider product integration.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

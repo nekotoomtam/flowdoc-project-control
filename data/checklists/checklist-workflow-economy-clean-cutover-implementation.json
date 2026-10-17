@@ -1,0 +1,52 @@
+{
+  "kind": "checklist",
+  "id": "checklist-workflow-economy-clean-cutover-implementation",
+  "phaseId": "phase-workflow-economy-clean-cutover-implementation",
+  "title": "Workflow economy clean authority cutover implementation",
+  "items": [
+    {
+      "id": "packet-contract",
+      "label": "Version 3 Minimal Packet and compact completion contract are typed and schema-validated without changing current authority.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-schema.test.ts",
+      "verificationNote": "RED: the complete V3 packet, exact Safety Kernel field diagnostics, large Work rejection, independent size/risk axes, critical reason, default routine proof, and mandatory completion tests failed before the V3 schema and types existed. GREEN: 17 focused tests and TypeScript type-check passed on 2026-09-24."
+    },
+    {
+      "id": "workflow-enforcement",
+      "label": "PLAN and WORK authority, proof economy, unknown disposition, owner decisions, and stopping are enforced by behavior tests.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-lifecycle.test.ts",
+      "verificationNote": "RED: lifecycle and CLI suites failed because version 3 validation and transitions did not exist. GREEN: 63 focused lifecycle, CLI, and semantic tests plus 273 records tests passed on 2026-09-24; TypeScript type-check also passed."
+    },
+    {
+      "id": "context-supersession",
+      "label": "Evidence validity, context routing, and document supersession are deterministic and reject conflicting authority.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-context-routing.test.ts",
+      "verificationNote": "RED: context routing module, schema fields, browser validation, SQLite projection, V3 Evidence validity, and supersession context classification were absent or rejected. GREEN: 37 focused routing, projection, source-loading, schema, and browser-loader tests plus TypeScript type-check passed on 2026-09-24."
+    },
+    {
+      "id": "current-truth-cockpit",
+      "label": "Completion milestones, Current Truth Snapshot, governance metrics, and compact Cockpit are generated from canonical records.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-current-truth-snapshot.test.ts",
+      "verificationNote": "RED: snapshot module and Cockpit region were absent; SQLite omitted snapshot tables; browser validation accepted ambiguous milestones and negative metrics; governance context initially included another Work. GREEN: focused snapshot, projection, loader, App, accessibility, build, and browser checks passed on 2026-09-24."
+    },
+    {
+      "id": "atomic-authority-cutover",
+      "label": "All current entrypoints switch to one workflow-economy authority while replaced rules remain readable history.",
+      "state": "passed",
+      "evidenceTarget": "tests/flowdoc-workflow-economy-cutover.test.ts",
+      "verificationNote": "RED: all five cutover checks failed before the policy, supersession records, Work context migration, and v3-only mutation boundary existed. GREEN: the focused Task 5 suite passed 123 tests, check:data passed, and the full Project Control gate passed 83/297 records, 21/189 source-docs, 10/68 app, production build, and 6/6 browser tests on 2026-09-24."
+    },
+    {
+      "id": "evidence-main-gate",
+      "label": "Bounded Evidence, final worktree gate, main gate, machine guidance sync, and cleanup complete without product-repository changes.",
+      "state": "passed",
+      "evidenceTarget": "npm run check in the worktree and on main; evidence-flowdoc-workflow-economy-clean-cutover-2026-09-23",
+      "verificationNote": "The final worktree gate passed at 90c37e177e3ca38e33005d2107b03a950ba0f170. Main fast-forwarded to the same reviewed commit and the unchanged full main gate passed 83/297 records, 21/189 source-docs, 10/68 app, production build, and 6/6 Chromium tests after one diagnosed environment-sensitive timeout retry. Canonical global guidance and the installed FlowDoc skill were synchronized and validated. The clean merged workflow-economy worktree and branch were removed; no product repository changed."
+    }
+  ],
+  "createdAt": "2026-09-24T00:00:00.0000000+07:00",
+  "updatedAt": "2026-09-24T11:46:55.1300650+07:00"
+}

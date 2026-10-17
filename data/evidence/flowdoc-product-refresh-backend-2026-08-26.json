@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-product-refresh-backend-2026-08-26",
+  "nodeIds": ["flowdoc"],
+  "repositoryId": "repo-backend",
+  "commit": "7ebb973b07962c35c627fb5bc2f2f7eafda2ea8a",
+  "pathOrContractId": "package.json#scripts.type-check,test",
+  "verificationSummary": "Clean Backend main/origin main head: npm run type-check --silent passed; npm run test --silent passed with 88 test files, 312 tests, 1 skipped file, and 24 skipped tests. This supports only the bounded local Backend gate status for product resumption.",
+  "verifiedAt": "2026-08-26T00:00:00.000Z"
+}

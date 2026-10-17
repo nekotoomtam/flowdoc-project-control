@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-renderer-no-relayout",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/renderer/textFlowDisplayListV1.ts",
+  "verificationSummary": "The display-list projector converts complete accepted pagination into deterministic text-line commands without measuring text or relaying out fragments; this does not establish product activation, renderer or export parity, cross-runtime pixel parity, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

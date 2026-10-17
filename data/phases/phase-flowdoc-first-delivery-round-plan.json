@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-first-delivery-round-plan",
+  "workId": "flowdoc-first-delivery-round",
+  "title": "First Delivery Round Plan",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the first delivery round Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The First Delivery Round Plan is treated as product truth, map truth, Core truth, Backend truth, Editor truth, API key behavior, product database behavior, or PDF generation evidence.",
+    "The plan opens real WORK rooms without explicit user approval for a specific lane.",
+    "A lane lacks owner repository, allowed scope, forbidden scope, evidence target, stop condition, or handoff format.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "First Delivery Round Plan document, Project Control Work, Phase, Checklist, Document record, FlowDoc Node link, focused guard, generated read model, and full Project Control gate pass without product repository edits.",
+  "summary": "Done: recorded the first FlowDoc delivery round plan with Lane Cards, WORK room Kickoff Packets, terminology decisions, stop conditions, and evidence targets while keeping product implementation for later owner-repository WORK rooms.",
+  "createdAt": "2026-09-01T22:00:00.000Z",
+  "updatedAt": "2026-09-01T22:00:00.000Z"
+}

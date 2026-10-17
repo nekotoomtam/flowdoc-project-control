@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-cross-repo-compatibility-core-gate-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "969a21a4e888d836ae62164b206cb2dd34d5d702",
+  "pathOrContractId": "package.json#scripts.check",
+  "verificationSummary": "Core main commit 969a21a4e888d836ae62164b206cb2dd34d5d702 was clean and npm run check was executed for the cross-repository compatibility review. Type-check passed, but the default full Vitest run failed with one timeout: tests/textBlockUnifiedLayoutTextStyleSourceV1.test.ts > 5B-2 text/style Source path copy > commits exact Evidence-backed geometry 'insertion' through Plan A timed out at 5000ms. The full-suite summary was 1 failed and 458 passed test files, 1 failed and 2940 passed tests, duration 227.23s. A focused rerun of the exact Evidence-backed geometry block passed with 3 passed and 59 skipped tests, duration 17.71s, and an isolated full-file rerun passed with 62 tests, duration 74.20s. This evidence blocks accepted default-gate compatibility promotion while indicating the failing symptom is suite-load or timeout instability rather than a reproduced assertion mismatch.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

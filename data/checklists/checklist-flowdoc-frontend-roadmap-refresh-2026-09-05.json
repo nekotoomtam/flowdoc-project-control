@@ -1,0 +1,40 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-frontend-roadmap-refresh-2026-09-05",
+  "phaseId": "phase-flowdoc-frontend-roadmap-refresh-2026-09-05",
+  "title": "เกณฑ์ตรวจ roadmap ฉบับปรับลำดับ",
+  "items": [
+    {
+      "state": "passed",
+      "verificationNote": "ตรวจคำชี้แจงผู้ใช้และขอบเขต current/historical; ไม่มีคำสั่งลบ repo เดิม",
+      "evidenceIds": [
+        "evidence-flowdoc-frontend-roadmap-refresh-2026-09-05"
+      ],
+      "label": "ยึด 4 repo ปัจจุบันและเก็บ v1 เป็นประวัติ",
+      "id": "reconcile-current-scope",
+      "evidenceTarget": "Roadmap current section and historical boundary"
+    },
+    {
+      "state": "passed",
+      "verificationNote": "R0 แก้ unknown ด้าน mapping ก่อน R1–R2; แยก R6 publication pointer จาก R7 runtime/PDF",
+      "evidenceIds": [
+        "evidence-flowdoc-frontend-roadmap-refresh-2026-09-05"
+      ],
+      "label": "กำหนด R0–R7 พร้อมเจ้าของ dependencies และเกณฑ์ผ่าน",
+      "id": "sequence-creator-milestones",
+      "evidenceTarget": "Roadmap milestone table and first delivery goal"
+    },
+    {
+      "state": "passed",
+      "verificationNote": "ไม่เปลี่ยน system map หรือ product repos; focused roadmap guard และ generate ผ่าน; full gates ต้องผ่านก่อนปิดรอบ",
+      "evidenceIds": [
+        "evidence-flowdoc-frontend-roadmap-refresh-2026-09-05"
+      ],
+      "label": "แยก roadmap completion จาก product completion",
+      "id": "preserve-plan-evidence-boundary",
+      "evidenceTarget": "Authority Boundary and source-pinned observations"
+    }
+  ],
+  "createdAt": "2026-09-05T09:00:00.000Z",
+  "updatedAt": "2026-09-05T09:00:00.000Z"
+}

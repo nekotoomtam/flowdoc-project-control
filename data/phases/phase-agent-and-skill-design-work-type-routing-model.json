@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-work-type-routing-model",
+  "workId": "agent-and-skill-design",
+  "title": "Work Type Routing Model",
+  "phaseState": "done",
+  "order": 50,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The Work Type Routing Model is treated as product evidence, map truth, Core truth, Backend truth, or Editor truth.",
+    "A Work Type is treated as a packaged Codex skill before repeated workflow validation.",
+    "A UX design artifact is treated as frontend readiness or product truth.",
+    "A returned product behavior handoff is accepted without an exact owner-repository commit and fresh verification when behavior changed.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "Work Type Routing Model document, Project Control Document record, Work context, Phase, Checklist, agent onboarding, global guidance, agent operating model, delivery model, PLAN room orchestration rules, and first delivery round plan route future lane cards and Kickoff Packets through Work Type, Context Capsule, Context Acknowledgement, retrievable locator, exact commit, and skill candidate rules; focused guard and Project Control gate pass.",
+  "summary": "Done: recorded a Project Control Work Type Routing Model that classifies lane outputs, requires lane-specific Context Capsules and Context Acknowledgement before WORK room edits, keeps locators separate from evidence, and leaves packaged reusable skills as candidates until repeated workflows prove them.",
+  "createdAt": "2026-09-02T08:20:00.000+07:00",
+  "updatedAt": "2026-09-02T08:20:00.000+07:00"
+}

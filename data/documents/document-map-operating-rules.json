@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-document-map-operating-rules",
+  "title": "Document Map Operating Rules",
+  "path": "docs/domains/document-map-operating-rules.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control operating rule for separating planning documents from verified system truth maps.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

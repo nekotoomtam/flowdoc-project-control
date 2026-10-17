@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-project-control-overview-history-gui",
+  "workId": "project-control-overview-history-gui",
+  "title": "Implement Project Control Overview and History GUI",
+  "phaseState": "done",
+  "order": 80,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Home would render a raw Work tree, Project Control Node tree, Evidence list, Checklist list, or full relationship graph before the user chooses a repository or area.",
+    "History would be treated as Evidence or used to promote a Project Control Node to current truth.",
+    "Project Control GUI navigation would change without updating agent-facing guidance in the same round.",
+    "The bounded Project Control GUI claim would be used to promote Core, Backend, Editor, compatibility, or product readiness truth."
+  ],
+  "verificationTarget": "Project Control records the bounded GUI implementation with checklist target checklist-project-control-overview-history-gui and evidence target evidence-project-control-overview-history-gui-2026-08-29.",
+  "summary": "Implemented the repo-first Project Control Home Overview, separate Work History surface, focused area return flow, and matching agent guidance records.",
+  "createdAt": "2026-08-29T00:00:00.000Z",
+  "updatedAt": "2026-08-29T04:53:09.000Z"
+}

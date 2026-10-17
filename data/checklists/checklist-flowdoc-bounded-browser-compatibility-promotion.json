@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-bounded-browser-compatibility-promotion",
+  "phaseId": "phase-flowdoc-bounded-browser-compatibility-promotion",
+  "title": "FlowDoc Bounded Browser Compatibility Promotion Checklist",
+  "items": [
+    {
+      "id": "capture-current-map-state",
+      "label": "Capture current FlowDoc, Core, Editor, Backend, and Project Control map/evidence state before promotion.",
+      "state": "passed",
+      "evidenceTarget": "Current node truth states, FlowDoc system map wording, and accepted browser smoke evidence are reviewed before edits.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "Reviewed FlowDoc system map, document-map operating rules, role catalog, round workflow, work-tree rules, Project Control overview, node records, and accepted Editor browser smoke packet at Project Control commit 739d19d452bdb5151ec030db96a9247da0a29ae5 before editing."
+    },
+    {
+      "id": "validate-supporting-evidence",
+      "label": "Validate that the existing browser smoke evidence supports only a bounded local loopback compatibility claim.",
+      "state": "passed",
+      "evidenceTarget": "The supporting Project Control evidence packet cites exact Editor, Backend, and Core commits plus owner checks and remaining risks.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "Used doc-editor-browser-live-backend-smoke-2026-08-27 and evidence-editor-browser-live-backend-smoke-2026-08-27, which cite Editor ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4, Backend 42cc1040c959a16647b7e797929358c401ccfa38, Core 77b9e181d1fb43bf69d725108ede664578a07a45, browser smoke output, focused retained evidence, and Editor owner gates."
+    },
+    {
+      "id": "classify-promotion-scope",
+      "label": "Classify the narrowest safe promotion scope and explicitly preserve broader unknowns.",
+      "state": "passed",
+      "evidenceTarget": "The promotion target is a bounded child node, not the FlowDoc parent or broad Core, Editor, or Backend nodes.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "Created the flowdoc-browser-compatibility child node as current only for the accepted local loopback browser smoke path; left FlowDoc planned and Core, Editor, and Backend unknown."
+    },
+    {
+      "id": "update-bounded-map-and-node-links",
+      "label": "Update only the bounded compatibility node, document/evidence links, and FlowDoc system map entry.",
+      "state": "passed",
+      "evidenceTarget": "Canonical records and the FlowDoc system map point to the bounded claim without attaching it to broad repository nodes.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "Added flowdoc-browser-compatibility node, current-state document, promotion evidence, Work/Phase/Checklist records, and a FlowDoc system-map inventory row. No Editor, Backend, Core, or FlowDoc parent truthState was promoted."
+    },
+    {
+      "id": "verify-project-control-gates",
+      "label": "Run focused and full Project Control gates after the map promotion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control generated index, semantic checks, focused roadmap test, and full gate pass in the worktree and merged main.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "This checklist item is satisfied only after npm run generate, npm run check:data, focused project-roadmap-work-queue test, and npm run check pass in the worktree and merged main."
+    },
+    {
+      "id": "record-promotion-evidence",
+      "label": "Record the promotion evidence and remaining risks without changing product behavior.",
+      "state": "passed",
+      "evidenceTarget": "Evidence target evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27 records the supported claim, exclusions, checks, and intentionally unchanged truth.",
+      "evidenceIds": ["evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27"],
+      "verificationNote": "Recorded a Project Control-owned evidence summary that points back to the accepted browser smoke packet and states deployed, cross-browser, broad-corpus, accessibility, visual-regression, npm-audit, bundle-size, and product-readiness claims remain unpromoted."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

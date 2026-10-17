@@ -1,0 +1,19 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-core-retirement-verification",
+  "phaseId": "phase-editor-core-retirement-verification",
+  "title": "เกณฑ์ปิด Editor หลังถอด Core V1",
+  "items": [
+    {
+      "id": "ordinary-dependencies-and-creator",
+      "label": "ติดตั้ง dependency ปกติ ตรวจ Editor และ Creator โดยไม่ใช้ snapshot override",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-core-retirement-verification-2026-09-05",
+      "evidenceIds": [
+        "evidence-editor-core-retirement-verification-2026-09-05"
+      ]
+    }
+  ],
+  "createdAt": "2026-09-05T12:35:50.308Z",
+  "updatedAt": "2026-09-05T12:56:45.7116334Z"
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-delivery-operating-model",
+  "workId": "agent-and-skill-design",
+  "title": "Delivery Operating Model",
+  "phaseState": "done",
+  "order": 30,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The delivery operating model is treated as product evidence, map truth, Core truth, Backend truth, or Editor truth.",
+    "The room-mode wording blurs real separate Codex task/chat rooms with internal subagents.",
+    "The first delivery slice is treated as the definition of all future FlowDoc delivery.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "Delivery Operating Model document, Project Control Document record, Work context, Phase, Checklist, agent onboarding, global guidance, and agent operating model route future FlowDoc rooms through the PLAN/WORK room contract; focused guard and Project Control gate pass.",
+  "summary": "Done: recorded a Project Control delivery operating model that distinguishes PLAN rooms, real WORK rooms, lane cards, Kickoff Packets, handoff requirements, Contract Change Requests, first delivery slice boundaries, and Project Control versus generated SQLite authority.",
+  "createdAt": "2026-09-01T21:00:00.000Z",
+  "updatedAt": "2026-09-01T21:00:00.000Z"
+}
+

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-capability-inventory",
+  "repositoryId": "repo-core",
+  "commit": "d4bd081766abd76326b4ad08c80cfea649efb7ca",
+  "pathOrContractId": "src/index.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-07T08:10:26.2212642Z",
+  "verificationSummary": "PLAN accepted automatic handoff-core-capability-inventory-05 after four needs-revision returns. Bounded source/consumer inventory,45 capability rows11 families; independent validator execution159 accepted refs0invalid. References check exact file path/line/text/SHA256,43 existing test-source refs are not fresh test passes. 13 rows have verified external calls;26 have internal/no-verified-external-consumer status,4 QA/experimental and2 unconnected library capabilities. Availability separately records35 public exports with readiness unverified,4 QA,3 internal,2 installed-library-only and1 compatibility. Preview actual session/assets/layout/paint/geometry chain traced with alias evidence; Build navigation is not authored Build readiness. DOCX/PDF source distinctions and specific unified-root inputAuthority/incremental acceptance production guards retained. Core d4bd081,Editor67c3647,Backend a1745c4 tracked-clean and unchanged per before/after snapshots. External root C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517 retains capability-inventory-v05.json, validate-inventory-v05.mjs/.json/.log and v01-v04 revision history. PLAN independently validated refs and inspected actual alias/call/QA/source text. Unknowns: complete consumer map, actual Build authoring/OS IME, complex layout/performance and Thai syllable oracle. Direct-name source searches are bounded, not dead-code proof. No product edits, installs, builds, suites, demos, policy choice or map promotion. Work1 passes only inventory; Work2 not dispatched."
+}

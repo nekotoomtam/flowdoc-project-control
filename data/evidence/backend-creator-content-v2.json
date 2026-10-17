@@ -1,0 +1,10 @@
+{
+  "repositoryId": "repo-backend",
+  "verifiedAt": "2026-09-06T05:24:11.6091386Z",
+  "nodeIds": [],
+  "commit": "a1745c4c030466bb326c53e93de4146bb11700ed",
+  "kind": "evidence",
+  "id": "evidence-backend-creator-content-v2",
+  "pathOrContractId": "src/documentStructure/documentStructureContentV2.ts; src/documentStructure/documentStructureRepository.ts; src/documentStructure/documentStructureSqliteRepository.ts; src/routes/documentStructureRoute.ts; src/tests/documentStructureContentV2.test.ts",
+  "verificationSummary": "PLAN accepted automatic candidate02 and main03 after exact diff/log review and independent31-case run. Full original npm run check worktree59.52s and main90.33s:96files/385tests passed,1file/27tests pre-existing skipped, type-check/build pass. Tests cover bounded V2 admission/private empty simulation, authored-only HTTP and SQLite reopen, CAS/downgrade/future-data preservation, cross-definition ID collision, freeze direct/reread/snapshot guards and late projection rollback. Main/Core358e14a unchanged identities and lock LF-normalized bytes verified; no versions/config/timeouts/skips changed. Logs in C:/Users/nekot/.codex/visualizations/2026/09/06/01a07514-581b-7dd3-89a5-b6d23e68c5d2; registry docs/domains/flowdoc-backend-content-dispatch-2026-09-06.md retains initial BLOCKER and fixture-path failure. Limited one-section/A4/text-field profile, V2 freeze rejected, scaling unmeasured; no Editor/browser/IME/full R3/R4 or maps accepted."
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-backend-core-version-contract-consumer-hardening-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "6c3331217b509fc635ad25b71fba503ff066cd72",
+  "pathOrContractId": "src/contracts/versionCapability.ts#BACKEND_CORE_VERSION_CONSUMER_INVENTORY",
+  "verificationSummary": "Backend commit 6c3331217b509fc635ad25b71fba503ff066cd72 wraps the Core-owned version capability contract and Core version-surface retirement inventory, exposes BACKEND_CORE_VERSION_CONSUMER_INVENTORY with imported, wrapped, retained, deleted, and blocked classifications, and routes migration result target reporting through a Core-derived helper instead of a standalone target literal. Backend revision gates, migration persistence, source snapshot retention, request-id replay/conflict behavior, stale rejection, HTTP response status, and package repository version guards remain Backend-owned. RED focused tests failed before implementation because the retirement inventory wrapper and migration target helper were missing. Focused Backend tests passed 4 files and 12 tests. Backend worktree npm run check passed after restoring the expected sibling Core fixture path for the nested worktree verification layout: 89 files passed, 1 skipped, 312 tests passed, 27 skipped, and build passed. Merged Backend main npm run check passed 89 files, 1 skipped, 315 tests passed, 24 skipped, and build passed. This supports only the bounded Backend Core-version consumer-hardening result and does not promote broad Backend readiness, Editor compatibility, Core truth, production service readiness, or FlowDoc map truth.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

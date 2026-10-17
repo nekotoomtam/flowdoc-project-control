@@ -1,0 +1,42 @@
+{
+  "kind": "document",
+  "id": "doc-text-block-v4-authoring-inline",
+  "title": "Text Block V4 Authoring and Inline",
+  "path": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md",
+  "nodeIds": ["text-block"],
+  "role": "contract",
+  "authority": "Canonical contract limited to the verified V4 flat-inline grammar, canonical selection, explicit atomic and field command planning, and single-user policy/pin-aware whole-rich-inline replacement; DOM/IME/clipboard ownership, collaboration-safe deltas, persistence, measurement, pagination, renderer/export, cross-page editing, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV4Contract.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV4Contract.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV4InlineCommands.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV4InlineCommands.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/textBlockV4RichInlineReplace.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textBlockV4RichInlineReplace.test.ts"
+    }
+  ]
+}

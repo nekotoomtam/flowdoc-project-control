@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-plan-room-orchestration-rules",
+  "phaseId": "phase-agent-and-skill-design-plan-room-orchestration-rules",
+  "title": "PLAN Room Orchestration Rules Checklist",
+  "items": [
+    {
+      "id": "capture-plan-orchestration-context",
+      "label": "Capture the PLAN room orchestration context.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before editing.",
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with planning-partner and documentation-authority-steward responsibilities, phase target phase-agent-and-skill-design-plan-room-orchestration-rules, checklist target checklist-agent-and-skill-design-plan-room-orchestration-rules, and evidence target evidence-flowdoc-plan-room-orchestration-rules-2026-09-02."
+    },
+    {
+      "id": "write-red-plan-orchestration-guard",
+      "label": "Write a failing Project Control guard for PLAN room orchestration.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "The focused Project Control test fails before the PLAN Room Orchestration Rules document, records, and entrypoint references exist.",
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-plan-room-orchestration-rules.test.ts --maxWorkers=1 failed because doc-flowdoc-plan-room-orchestration-rules was not linked from the project-control node and Project Control entrypoints did not reference docs/domains/flowdoc-plan-room-orchestration-rules.md."
+    },
+    {
+      "id": "define-n-work-room-assessment",
+      "label": "Define how PLAN assesses N WORK rooms.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "The rules define N WORK rooms, laneDependencyGraph, dispatch sets, parallelLimit, held-back lanes, and safe fallback to one room when ownership or dependencies are unclear.",
+      "verificationNote": "docs/domains/flowdoc-plan-room-orchestration-rules.md defines N WORK room assessment and requires the PLAN room to record why the selected parallelLimit is safe before opening new WORK rooms."
+    },
+    {
+      "id": "define-room-run-registry",
+      "label": "Define the Room Run Registry.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "The rules define minimum roomRunId, Codex task/chat reference, lane, owner, phase/checklist/evidence, worktree/branch, status, handoff, and next PLAN action fields.",
+      "verificationNote": "docs/domains/flowdoc-plan-room-orchestration-rules.md records the Room Run Registry and states that until a dedicated schema exists it may live in bounded PLAN handoff notes or Work/Checklist records."
+    },
+    {
+      "id": "define-handoff-inbox-and-completion-queue",
+      "label": "Define handoff inbox and completion queue processing.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "The rules define handoffInbox, completionQueue, pull review for rooms that do not push handoffs, and acceptanceGate sequencing before evidence registration or dependent lane dispatch.",
+      "verificationNote": "docs/domains/flowdoc-plan-room-orchestration-rules.md records pull review, handoffInbox, completionQueue, and acceptanceGate rules, including one-at-a-time PLAN processing when multiple WORK rooms finish together."
+    },
+    {
+      "id": "route-plan-orchestration-entrypoints",
+      "label": "Route future PLAN rooms to the orchestration rules.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "Project Control AGENTS.md, global Codex guidance, agent operating model, delivery operating model, and first delivery round plan reference the PLAN Room Orchestration Rules.",
+      "verificationNote": "AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, docs/domains/agent-and-skill-operating-model.md, docs/domains/flowdoc-delivery-operating-model.md, and docs/domains/flowdoc-first-delivery-round-plan.md reference docs/domains/flowdoc-plan-room-orchestration-rules.md."
+    },
+    {
+      "id": "record-plan-orchestration-records",
+      "label": "Record Project Control records for PLAN room orchestration.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "Project Control records the Document, Work context update, Phase, Checklist, Evidence, and Project Control Node link without product truth promotion.",
+      "verificationNote": "Registered doc-flowdoc-plan-room-orchestration-rules, phase-agent-and-skill-design-plan-room-orchestration-rules, checklist-agent-and-skill-design-plan-room-orchestration-rules, evidence-flowdoc-plan-room-orchestration-rules-2026-09-02, and the project-control node document link; product repositories and map truth were intentionally not changed."
+    },
+    {
+      "id": "verify-plan-orchestration-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-plan-room-orchestration-rules-2026-09-02"],
+      "evidenceTarget": "Focused PLAN Room Orchestration guard, generation, data validation, and full Project Control gate pass before handoff.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-plan-room-orchestration-rules.test.ts, npm run generate, npm run check:data, and npm run check pass after Project Control records are registered."
+    }
+  ],
+  "createdAt": "2026-09-02T00:10:00.000+07:00",
+  "updatedAt": "2026-09-02T00:10:00.000+07:00"
+}

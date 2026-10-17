@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-system-map",
+  "title": "FlowDoc System Map",
+  "path": "docs/domains/flowdoc-system-map.md",
+  "nodeIds": ["flowdoc"],
+  "role": "current-state",
+  "authority": "Product-wide Project Control inventory of registered FlowDoc systems and canonical map entry points; it does not claim product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

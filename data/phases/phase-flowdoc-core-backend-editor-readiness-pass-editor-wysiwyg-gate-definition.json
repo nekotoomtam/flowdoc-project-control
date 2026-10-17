@@ -1,0 +1,26 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-wysiwyg-gate-definition",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor WYSIWYG Gate Definition",
+  "phaseState": "done",
+  "order": 230,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing.",
+    "WYSIWYG remains ambiguous or inherits a general Word/Google Docs/editor-framework meaning instead of a FlowDoc-specific definition.",
+    "The bounded textarea active text-block island is treated as WYSIWYG instead of a controlled fallback authoring surface.",
+    "Contenteditable, DOM innerHTML document truth, ProseMirror, Slate, TipTap, or another rich editor engine becomes approved before a separate entry decision.",
+    "The slice changes visible Editor UI behavior or copy instead of only adding a gate definition and boundary decision.",
+    "Any WYSIWYG runtime starts before all entry prerequisites are recorded as approved.",
+    "The slice promotes product readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor defines FlowDoc-specific WYSIWYG entry criteria, keeps the active text input path textarea-only, blocks contenteditable and common rich editor engines, and records that WYSIWYG work may start only after all explicit prerequisites are approved.",
+  "summary": "Done: Editor merge commit 4f12a87b5f1e5e440fdf1bf1231450002657fba9 adds the bounded WYSIWYG gate definition. The spec defines FlowDoc WYSIWYG as managed document-surface authoring and preserves the accepted direction Hybrid Managed Cards + one Active Text-Block Island. The boundary decision records WYSIWYG behavior categories, non-WYSIWYG behaviors, required entry prerequisites, blocked DOM-editable bindings, and blocked rich editor engine package names or prefixes. The current bounded textarea active text-block island remains allowed and explicitly not WYSIWYG. This does not enable WYSIWYG behavior, contenteditable runtime, ProseMirror, Slate, TipTap, visible UI changes, broad frontend readiness, product truth, or map truth.",
+  "createdAt": "2026-08-31T12:25:00.000Z",
+  "updatedAt": "2026-08-31T12:25:00.000Z"
+}

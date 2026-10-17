@@ -1,0 +1,11 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-v1-runtime-retirement-2026-09-05",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "f4f4425dcd7b370d165d2a0d7383aa14cf88b586",
+  "pathOrContractId": "src/layout; tests; docs/CORE_LAYOUT_RUNTIME_RETIREMENT.md; PC docs/domains/core-v1-retirement-return-2026-09-05.md",
+  "verificationSummary": "Automatic WORK handoff arrival 2 accepted after PLAN review. Exact nine obsolete RootV1/SceneV1/wrapper sources removed; shared Flow types extracted unchanged, four retained import paths adjusted only, V2/evidence tests migrated with replacement matrix. Historical fixture and entire packages/fixtures paths unchanged against e3b9888. Owner full gate 430 files/2739 tests PASS; PLAN focused 3 files/31 tests PASS. Fast-forward main integrated f4f4425; fresh canonical main npm run check exit 0, type-check and 430 files/2739 tests PASS (229.80s). No claim for arbitrary external deep consumers, all V1-named files, Editor readiness or R3.",
+  "verifiedAt": "2026-09-05T12:40:41.439Z"
+}
+

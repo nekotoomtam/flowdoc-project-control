@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement",
+  "title": "Core Text Block Superpowers Docs Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-core-owner",
+      "label": "Capture the Project Control cleanup path and Core owner before editing.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Core Markdown.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-core, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement, and evidence target evidence-core-superpowers-text-block-docs-retired-2026-09-01."
+    },
+    {
+      "id": "write-red-core-doc-authority-test",
+      "label": "Write a failing Core documentation authority guard before deleting the historical sources.",
+      "state": "passed",
+      "evidenceTarget": "The focused Core documentation authority test fails before the docs/superpowers plan/spec files are retired.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "RED evidence included npx vitest run tests/coreDocumentationAuthority.test.ts --config vitest.config.ts failing because docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md still existed."
+    },
+    {
+      "id": "preserve-core-text-block-live-draft-context",
+      "label": "Preserve retained Text Block and Live Draft source context in Project Control syntheses.",
+      "state": "passed",
+      "evidenceTarget": "Core active references point to Project Control Text Block and Live Draft synthesis documents instead of retired docs/superpowers sources.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md and related Core tests now point to docs/versions/V0_1_0a_1/core/text-block/OVERVIEW.md, docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md, and docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md."
+    },
+    {
+      "id": "retire-core-superpowers-sources",
+      "label": "Retire the four Core docs/superpowers Text Block and Live Draft source files.",
+      "state": "passed",
+      "evidenceTarget": "Core commit deletes the four historical plan/spec files and leaves Core docs/superpowers absent.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "Core commit 6c1b53796802772467bf715b83764ac1ef613e52 deletes docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md, docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md, docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md, and docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md; rg --files -g '*.md' docs/superpowers on Core main reports the path is absent."
+    },
+    {
+      "id": "verify-core-main",
+      "label": "Verify Core worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused docs tests, Core worktree npm run check, and merged Core main npm run check pass after cleanup.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "Focused Core docs/reference gate passed 4 files and 25 tests. Core worktree npm run type-check passed. Core worktree npm run check passed 461 files and 2946 tests. Merged Core main npm run check passed 461 files and 2946 tests."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record the Core cleanup in Project Control without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the Core commit, files, verification, deleted paths, residual worktree-folder risk, and boundaries intentionally not promoted.",
+      "evidenceIds": ["evidence-core-superpowers-text-block-docs-retired-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. Git deregistered the cleanup worktree and deleted the merged branch, but the folder remains on disk after Filename too long; safe recursive deletion was blocked by policy."
+    }
+  ],
+  "createdAt": "2026-08-31T17:07:10.000Z",
+  "updatedAt": "2026-08-31T17:07:10.000Z"
+}

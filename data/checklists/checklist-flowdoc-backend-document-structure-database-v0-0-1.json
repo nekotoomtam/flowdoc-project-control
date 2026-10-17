@@ -1,0 +1,82 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-backend-document-structure-database-v0-0-1",
+  "phaseId": "phase-flowdoc-backend-document-structure-database-v0-0-1",
+  "title": "Backend Document Structure Database v0.0.1 Acceptance Checklist",
+  "items": [
+    {
+      "id": "stage-backend-document-structure-handoff",
+      "label": "Stage the automatically returned Backend document-structure handoff in the PLAN inbox.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "The PLAN room receives the Backend terminal handoff through the active return channel before acceptance.",
+      "verificationNote": "PLAN received WORK RETURN EVENT handoff-backend-document-structure-database-v0-0-1-2026-09-04-01 from WORK task 01a06a8a-8e11-74c3-9b42-c94afd60ae3a through mcp__codex_app.send_message_to_thread without a user copy/paste bridge."
+    },
+    {
+      "id": "review-and-return-backend-document-structure-revision",
+      "label": "Review the first Backend handoff and return bounded revision feedback to the same WORK room.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "PLAN does not patch Backend product files after dispatch and sends repair work back to the same WORK room.",
+      "verificationNote": "PLAN rejected the first handoff as needs-revision because draft section parent validation and component version create-or-select behavior were incomplete, then sent Revision Packet 1 back to WORK task 01a06a8a-8e11-74c3-9b42-c94afd60ae3a."
+    },
+    {
+      "id": "verify-backend-document-structure-locator",
+      "label": "Verify the Backend room locator and revised commit.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "PLAN can retrieve the revised Backend work by exact task, worktree, and commit.",
+      "verificationNote": "Verified WORK task 01a06a8a-8e11-74c3-9b42-c94afd60ae3a, worktree C:\\Users\\nekot\\.codex\\worktrees\\4939\\flowdoc-vnext-backend, and revised commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3 before merge; after merge, Backend main points at the same commit."
+    },
+    {
+      "id": "run-backend-document-structure-owner-gates",
+      "label": "Run Backend owner-repository verification.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "Fresh Backend worktree and main gates pass before PLAN accepts the product implementation handoff.",
+      "verificationNote": "WORK reported focused document-structure tests passing with 10 tests, and npm run check passing. PLAN reran npm run check in the Backend worktree and again on Backend main; both passed with 93 passed / 1 skipped test file, 343 passed / 27 skipped tests, and build passed."
+    },
+    {
+      "id": "accept-backend-document-structure-database-handoff",
+      "label": "Accept the bounded Backend document-structure database handoff.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "acceptanceGate accepts only Backend repository/service/schema foundations for document structure database v0.0.1.",
+      "verificationNote": "Accepted Backend document-structure database v0.0.1 foundations covering pure field type seeding, draft persistence, version freeze, publication pointer behavior, section parent tree validation, and component version create-or-select behavior. No Contract Change Request was needed."
+    },
+    {
+      "id": "record-backend-document-structure-evidence",
+      "label": "Record Project Control evidence for the accepted Backend document-structure lane.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "Project Control records the accepted Backend commit, changed files, tests, revision loop, risks, unknowns, and unpromoted claims.",
+      "verificationNote": "Registered evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04 and doc-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04 without linking them to map-truth nodes."
+    },
+    {
+      "id": "preserve-backend-document-structure-boundaries",
+      "label": "Preserve the runtime, gateway, PDF, and product truth boundaries.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "The accepted Backend foundation does not promote broader FlowDoc readiness or map truth.",
+      "verificationNote": "No system map or DOCUMENT_MAP record was changed. HTTP gateway routes, external callers, runtime submission values, generated PDF files, renderer jobs, artifact storage, permission, workflow, billing, audit, activity, integrations, Core adoption, Editor adoption, production readiness, and map truth remain unknown."
+    },
+    {
+      "id": "record-backend-document-structure-cleanup-risk",
+      "label": "Record the residual WORK worktree cleanup risk.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "PLAN records cleanup status separately from product acceptance.",
+      "verificationNote": "git worktree remove removed the Backend WORK tree from git registry, but Windows reported Filename too long while deleting C:\\Users\\nekot\\.codex\\worktrees\\4939\\flowdoc-vnext-backend. Follow-up cleanup may remove the residual directory with an approved long-path-safe filesystem action."
+    },
+    {
+      "id": "verify-project-control-backend-document-structure-records",
+      "label": "Verify the Project Control Backend document-structure records.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-backend-document-structure-database-v0-0-1-2026-09-04"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after acceptance records are registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-backend-document-structure-database-acceptance.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T11:40:00.000+07:00",
+  "updatedAt": "2026-09-04T11:40:00.000+07:00"
+}

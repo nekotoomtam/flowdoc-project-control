@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-structural-packet-projection",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "tests/structuralPacket.test.ts",
+  "verificationSummary": "Focused structural packet checks verify packet-v1 construction and validation as local non-public, non-durable foundation transport; they do not establish a public API, storage, history, replay, collaboration protocol, or mutable projection authority.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

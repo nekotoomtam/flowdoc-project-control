@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-project-control-repo-first-overview-history-2026-08-28",
+  "title": "Project Control Repo-First Overview and History Direction",
+  "path": "docs/domains/project-control-repo-first-overview-history-2026-08-28.md",
+  "nodeIds": ["project-control"],
+  "role": "decision",
+  "authority": "Approved Project Control GUI information architecture direction for separating repo-first Overview, Work History, focused repository views, Detail, and agent-facing update rules without claiming implementation completion.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

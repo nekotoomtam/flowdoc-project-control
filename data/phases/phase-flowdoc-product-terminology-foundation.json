@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-product-terminology-foundation",
+  "workId": "flowdoc-product-terminology-foundation",
+  "title": "Define Product Terminology Foundation",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, or Evidence target before editing.",
+    "The terminology document would claim Core, Backend, Editor, compatibility, or product readiness as current without evidence.",
+    "A term remains ambiguous across Project Control, Core, Backend, or Editor and cannot be classified as define, split, rename, deprecated, context-only, or blocked.",
+    "The change would require editing product behavior in Core, Backend, or Editor.",
+    "Project Control checks cannot validate the new documents, records, generated index, or guidance contract."
+  ],
+  "verificationTarget": "Project Control records product terminology documents, Work, Phase, Checklist, Evidence target, and FlowDoc guidance rules that future product/frontend rounds must read before resolving overloaded terms, while product repositories remain unchanged and FlowDoc truth remains planned.",
+  "summary": "Done: Project Control now has a product terminology foundation and terminology discipline rule for future Editor/frontend and cross-repository product work without promoting product readiness.",
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

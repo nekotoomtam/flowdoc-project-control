@@ -1,0 +1,22 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-paper-smooth-zoom-anchor-fix",
+  "workId": "editor-paper-smooth-zoom-anchor-fix",
+  "title": "Fix Editor Smooth Zoom Anchor Footprint",
+  "phaseState": "done",
+  "order": 102,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The fix treats viewport-only zoom as document content, Backend persistence, Core package truth, or a durable document mutation.",
+    "The UI claims Backend, Core, Editor, FlowDoc, production, accessibility, visual regression, or product readiness from this local loopback evidence.",
+    "The paper stack or shell footprint changes instantly while the paper transform remains smooth, leaving the zoom anchor visibly late or jumpy.",
+    "The reduced-motion fallback no longer disables paper, shell, and stack zoom motion together.",
+    "The implementation enables WYSIWYG, free text input, command authoring readiness, or Backend mutation behavior.",
+    "Project Control promotes Editor node truth from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor smooth zoom anchor bugfix with checklist target checklist-editor-paper-smooth-zoom-anchor-fix and evidence target evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Synchronized the Editor paper shell and stack footprint transitions with the existing smooth paper transform so viewport-only zoom changes anchor more cleanly.",
+  "createdAt": "2026-08-29T08:20:00.000Z",
+  "updatedAt": "2026-08-29T08:20:00.000Z"
+}

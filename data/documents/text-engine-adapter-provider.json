@@ -1,0 +1,57 @@
+{
+  "kind": "document",
+  "id": "doc-text-engine-adapter-provider",
+  "title": "Text Engine Adapter and Provider",
+  "path": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md",
+  "nodeIds": ["text-engine"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified adapter request, Evidence Acceptance, measurement-draft handoff, and optional renderer-backed provider contracts; Core engine execution, production binding, real production Evidence, parity, default replacement, production readiness, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/renderer/textEngineAdapterSpi.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/renderer/textEngineEvidenceAcceptance.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/renderer/textEngineMeasurementDraftHandoff.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/rendererBackedProvider.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineAdapterSpi.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineEvidenceAcceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineMeasurementDraftHandoff.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/textEngineAdapterPackageScaffold.test.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/rendererBackedTextEngineProvider.test.ts"
+    }
+  ]
+}

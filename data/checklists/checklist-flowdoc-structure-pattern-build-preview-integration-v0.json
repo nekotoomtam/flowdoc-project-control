@@ -1,0 +1,74 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-structure-pattern-build-preview-integration-v0",
+  "phaseId": "phase-flowdoc-structure-pattern-build-preview-integration-v0",
+  "title": "Structure Pattern Build/Preview Integration v0 Acceptance Checklist",
+  "items": [
+    {
+      "id": "stage-structure-pattern-work-returns",
+      "label": "Stage the automatically returned Core, Backend, and Editor WORK handoffs.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "PLAN receives the three terminal WORK returns through the active Return Channel.",
+      "verificationNote": "PLAN received handoff-editor-build-preview-structure-pattern-v0-2026-09-04-01, handoff-backend-structure-pattern-v0-0-2-alignment-2026-09-04-01, and handoff-core-structure-pattern-boundary-probe-2026-09-04-01 through send_message_to_thread without a user copy/paste bridge."
+    },
+    {
+      "id": "accept-structure-pattern-work-returns",
+      "label": "Run acceptanceGate for the returned Structure Pattern lanes.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "PLAN accepts only the bounded lane outputs and records locator risks.",
+      "verificationNote": "Accepted Editor, Backend, and Core lane outputs as bounded owner-repository evidence. PLAN recorded the Editor locator correction and Backend/Core detached commit integration risk without asking the user to copy/paste handoffs."
+    },
+    {
+      "id": "merge-core-main-and-run-gate",
+      "label": "Merge Core main to the accepted Structure Pattern Slot boundary commit and run the Core main gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "Core main points at the accepted commit and the fresh Core main gate passes.",
+      "verificationNote": "Fast-forward merged flowdoc-vnext-core main to 8411f26763d81743ba9d44a59fd5ad4942e5601a. Ran npm run check on Core main with 432 passed test files and 2791 passed tests."
+    },
+    {
+      "id": "merge-backend-main-and-run-gate",
+      "label": "Merge Backend main to the accepted v0.0.2 Structure Pattern slot alignment commit and run the Backend main gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "Backend main points at the accepted commit and the fresh Backend main gate passes.",
+      "verificationNote": "Fast-forward merged flowdoc-vnext-backend main to 9da58214e087d2f15afd43855bfd1febec882037. Ran npm run check on Backend main with 93 passed / 1 skipped test file, 346 passed / 27 skipped tests, and build passed."
+    },
+    {
+      "id": "merge-editor-main-and-run-gate",
+      "label": "Merge Editor main to the accepted Build/Preview Structure Pattern foundation commit and run the Editor main gate.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "Editor main points at the accepted commit and the fresh Editor main gate passes.",
+      "verificationNote": "Fast-forward merged FlowDocEditor main to 65ab5b149c5aad10b36bbaa23650b9fce7070dff. Ran npm run review:gate on Editor main with Core package tests 54 files / 837 passed / 6 skipped, app tests 129 files / 1155 passed, and production build passed."
+    },
+    {
+      "id": "record-structure-pattern-integration-evidence",
+      "label": "Record Project Control evidence for the accepted and merged Structure Pattern lanes.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "Project Control records the dispatch set, room returns, commits, changed files, tests, risks, unknowns, and accepted boundaries.",
+      "verificationNote": "Registered evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04 and doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04 without linking them to map-truth nodes."
+    },
+    {
+      "id": "preserve-structure-pattern-product-boundaries",
+      "label": "Preserve runtime, gateway, PDF, publication, permission, and map-truth boundaries.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "The accepted integration does not promote broader FlowDoc readiness or map truth.",
+      "verificationNote": "No DOCUMENT_MAP or FlowDoc system map truth state changed. Runtime Structure Pattern Entry persistence, submitted values, HTTP gateway exposure, generated PDF files, renderer jobs, artifact storage, permission, workflow, billing, audit, activity, integrations, deployment, release readiness, production readiness, and map truth remain unproven."
+    },
+    {
+      "id": "verify-project-control-structure-pattern-integration-records",
+      "label": "Verify the Project Control Structure Pattern integration records.",
+      "state": "passed",
+      "evidenceIds": ["evidence-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04"],
+      "evidenceTarget": "Focused Project Control guard, generation, data validation, and full Project Control gate pass after records are registered.",
+      "verificationNote": "GREEN evidence target: tests/flowdoc-structure-pattern-build-preview-integration.test.ts, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T18:10:00.000+07:00",
+  "updatedAt": "2026-09-04T18:10:00.000+07:00"
+}

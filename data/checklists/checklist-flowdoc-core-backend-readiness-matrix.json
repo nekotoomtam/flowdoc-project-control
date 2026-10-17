@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-readiness-matrix",
+  "phaseId": "phase-flowdoc-core-backend-readiness-matrix",
+  "title": "FlowDoc Core Backend Readiness Matrix Checklist",
+  "items": [
+    {
+      "id": "capture-work-context",
+      "label": "Capture the Work path, owner repository, active role, Phase, Checklist, and Evidence target before editing.",
+      "state": "passed",
+      "evidenceTarget": "The readiness matrix records the current FlowDoc Work context and remains owned by Project Control.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "The matrix records work path flowdoc-product-development-resumption > flowdoc-core-backend-readiness-matrix, owner repo-project-control, active role cross-repo-boundary-reviewer, phase-flowdoc-core-backend-readiness-matrix, checklist-flowdoc-core-backend-readiness-matrix, and evidence-flowdoc-core-backend-readiness-matrix-2026-08-27."
+    },
+    {
+      "id": "reconcile-existing-evidence",
+      "label": "Reconcile accepted Core, Backend, Editor, compatibility, and terminology evidence before deciding readiness.",
+      "state": "passed",
+      "evidenceTarget": "The matrix cites existing evidence records instead of reinterpreting repository heads without proof.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "Reviewed accepted evidence for Core default gate stability, Core runtime version contract, Core public export boundary, Backend Core-version consumer hardening, Backend service readiness boundary, Editor live harness, Editor browser smoke, Editor browser corpus smoke, bounded browser compatibility promotion, and product terminology."
+    },
+    {
+      "id": "classify-core-readiness",
+      "label": "Classify Core readiness into bounded passes, no-go boundaries, risks, and unknowns.",
+      "state": "passed",
+      "evidenceTarget": "Core rows distinguish stable owner gates and version inventory from unresolved public consumer surface readiness.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "The matrix treats Core default gate and runtime version inventory as bounded passes while keeping the broad root export boundary unresolved for future consumer-surface freeze work."
+    },
+    {
+      "id": "classify-backend-readiness",
+      "label": "Classify Backend readiness without confusing local development readiness with production service readiness.",
+      "state": "passed",
+      "evidenceTarget": "Backend rows distinguish Core-version consumer wrapping and local development readiness from production blockers.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "The matrix records Backend Core-version consumer hardening as bounded pass and Backend service readiness as blocked for production until auth, tenancy, storage providers, export mounting, workers, renderer/provider binding, deployment, TLS/proxy, rate limits, telemetry, backup, and rollback are owned."
+    },
+    {
+      "id": "set-frontend-redesign-decision",
+      "label": "State the frontend redesign decision before implementation starts.",
+      "state": "passed",
+      "evidenceTarget": "The matrix permits frontend architecture planning and adapter design, but blocks implementation that assumes production Backend readiness.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "The matrix records GO for architecture planning and contract hardening, plus NO-GO for frontend implementation that assumes production Backend readiness or broad FlowDoc product readiness."
+    },
+    {
+      "id": "verify-project-control-registration",
+      "label": "Register Project Control records and verify the generated read model without truth promotion.",
+      "state": "passed",
+      "evidenceTarget": "Work, Phase, Checklist, Document, Evidence, node links, tests, and generated index validate while FlowDoc remains planned and Core, Backend, and Editor remain unknown.",
+      "evidenceIds": ["evidence-flowdoc-core-backend-readiness-matrix-2026-08-27"],
+      "verificationNote": "This item is satisfied only after the focused readiness matrix test, npm run generate, npm run check:data, focused roadmap/seed tests, and npm run check pass in the worktree and merged main."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-outline-scannability-foundation",
+  "workId": "editor-outline-scannability-foundation",
+  "title": "Add Editor Outline Scannability",
+  "phaseState": "done",
+  "order": 106,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The Outline treats Editor draft outline items, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+    "The Outline summary claims WYSIWYG, free text input, command authoring readiness, Backend mutation or persistence readiness, production readiness, accessibility readiness, or visual regression readiness.",
+    "The Outline imports Backend, Core, or Editor runtime behavior instead of rendering the bounded EditorOutlineItem display model it already receives.",
+    "The Outline hides existing items, breaks selection from the Outline to the canvas/Inspector path, or changes document data semantics.",
+    "The UI exposes raw Node terminology as a user-facing Outline label for this presentation lane.",
+    "Browser verification cannot show the summary and selection state on the live Backend mode design route.",
+    "Project Control promotes the broad Editor node from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor Outline scannability foundation with checklist target checklist-editor-outline-scannability-foundation and evidence target evidence-editor-outline-scannability-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added a compact Outline summary and row cues so users can scan the document structure before opening deeper details.",
+  "createdAt": "2026-08-29T14:15:00.000Z",
+  "updatedAt": "2026-08-29T14:15:00.000Z"
+}

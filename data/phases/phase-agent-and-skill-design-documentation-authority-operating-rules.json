@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-documentation-authority-operating-rules",
+  "workId": "agent-and-skill-design",
+  "title": "Documentation Authority Operating Rules",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The agent guidance follows a generic docs/superpowers planning path instead of the FlowDoc Project Control override.",
+    "The new role wording replaces existing role ownership instead of acting as a documentation-authority overlay.",
+    "The round edits Core, Backend, or Editor product behavior.",
+    "The round promotes Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Markdown Authority Pre-Action Gate, role overlays, Work/Phase/Checklist/Evidence records, agent onboarding, global guidance, and the agent operating model all route future FlowDoc Markdown work through Project Control; focused guard and Project Control gate pass.",
+  "summary": "Done: captured the root cause of product-repository Markdown drift, added a Project Control override for generic planning-skill output paths, defined the Markdown Authority Pre-Action Gate, and added documentation authority role overlays without editing product behavior or promoting map truth.",
+  "createdAt": "2026-09-01T09:45:00.000Z",
+  "updatedAt": "2026-09-01T09:45:00.000Z"
+}

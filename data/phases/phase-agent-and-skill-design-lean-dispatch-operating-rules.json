@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-lean-dispatch-operating-rules",
+  "workId": "agent-and-skill-design",
+  "title": "Lean Dispatch Operating Rules",
+  "phaseState": "done",
+  "order": 100,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "Lean Dispatch is treated as permission to remove automatic WORK-to-PLAN return, liveness tracking, retrievable locators, or acceptanceGate.",
+    "A low verification tier is used to accept changed Core, Backend, or Editor behavior without exact owner-repository commit and fresh verification evidence.",
+    "A compact packet omits required owner repository, allowed scope, forbidden scope, evidence target, stop condition, Return Channel, Active Return Command, or handoff ID.",
+    "This phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "Lean Dispatch Operating Rules document, Project Control Document record, Work context, Phase, Checklist, agent onboarding, agent operating model, delivery model, PLAN Room Orchestration Rules, Work Type Routing Model, and first delivery round plan route future lean dispatch through Resource Budget, Lean Kickoff Packet, Reference Pack, verification tiers, evidence batching, escalation triggers, compact Terminal Handoff, automatic return, liveness, completionQueue, and acceptanceGate rules; focused guard and Project Control gate pass.",
+  "summary": "Done: recorded Project Control Lean Dispatch Operating Rules for reducing PLAN/WORK context, token, verification, review, evidence, and handoff cost without weakening automatic return, liveness, retrievable locator, completionQueue, or acceptanceGate obligations.",
+  "createdAt": "2026-09-02T18:00:00.000+07:00",
+  "updatedAt": "2026-09-02T18:00:00.000+07:00"
+}

@@ -1,0 +1,12 @@
+/** Thin authenticated Service clients. No metrics, font files or formula in MCP. */
+export function registerFontHeightTools(server,{z,config,token}){
+ const id=z.string().uuid(),key=z.string().min(1).max(200),revision=z.number().int().nonnegative();
+ const register=(name,description,shape,route)=>server.registerTool(name,{description,inputSchema:z.object(shape).strict(),annotations:{readOnlyHint:false,destructiveHint:name==='confirm_font_height_adjustment',idempotentHint:true,openWorldHint:false}},async args=>{
+  try{const {templateId,proposalId,...body}=args,response=await fetch(new URL(route(templateId,proposalId),config.url),{method:'POST',headers:{authorization:'Bearer '+token,'content-type':'application/json'},body:JSON.stringify(body),redirect:'error',signal:AbortSignal.timeout(30000)});
+   const reader=response.body?.getReader(),chunks=[];let size=0;try{if(reader)for(;;){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>4194304){await reader.cancel();throw Error();}chunks.push(value);}}finally{reader?.releaseLock();}
+   const result=JSON.parse(Buffer.concat(chunks).toString('utf8'));return {content:[{type:'text',text:JSON.stringify(result)}],isError:!response.ok||result.ok===false};
+  }catch{return {content:[{type:'text',text:JSON.stringify({ok:false,issues:[{code:'UNAVAILABLE',path:'fontHeightAdjustment',message:'Font height service unavailable; retry the identical request'}],warnings:[]})}],isError:true};}
+ });
+ register('propose_font_height_adjustment','Opt-in: propose actual pt from an owned style and target font. Does not change the draft. Show proposedFontSizePt and layoutCheck=not_checked; request explicit user choice before confirm. Unavailable allows ordinary pt.',{templateId:id,expectedRevision:revision,styleId:z.string().min(1),targetFont:z.object({kind:z.literal('library'),releaseId:id,weight:z.number().int().min(1).max(1000),style:z.enum(['normal','italic'])}).strict(),idempotencyKey:key},id=>`/authoring/drafts/${id}/font-height-adjustments`);
+ register('confirm_font_height_adjustment','Apply a proposal only after explicit user choice to adjust height. Atomically saves exact font and actual pt, preserves lineHeightPt; layout is not checked. Stale/expired/profile changes require a fresh proposal. Never auto-confirm.',{templateId:id,proposalId:id,expectedRevision:revision,idempotencyKey:key},(id,p)=>`/authoring/drafts/${id}/font-height-adjustments/${p}/confirm`);
+}

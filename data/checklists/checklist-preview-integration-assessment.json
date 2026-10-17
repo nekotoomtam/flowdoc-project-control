@@ -1,0 +1,30 @@
+{
+  "createdAt": "2026-09-05T16:15:46.4169788Z",
+  "title": "เกณฑ์ตรวจทางเชื่อม Preview",
+  "kind": "checklist",
+  "updatedAt": "2026-09-05T16:27:17.3110615Z",
+  "phaseId": "phase-preview-integration-assessment",
+  "id": "checklist-preview-integration-assessment",
+  "items": [
+    {
+      "id": "contract-and-reuse",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-integration-assessment-2026-09-05",
+      "label": "WORK ตรวจ Live Draft และตัวระบุจุดแก้ พร้อม return อัตโนมัติ",
+      "evidenceIds": [
+        "evidence-preview-integration-assessment-2026-09-05"
+      ],
+      "verificationNote": "Automatic source-only WORK return accepted and compared with PLAN inspection; missing prerequisites and proposed first lane documented. No product/browser acceptance."
+    },
+    {
+      "id": "creator-path-and-lane",
+      "state": "passed",
+      "evidenceTarget": "evidence-preview-integration-assessment-2026-09-05",
+      "label": "PLAN ตรวจทางจาก Build และกำหนดขอบเขตงานแรกที่ไม่แปลงข้อมูลหาย",
+      "evidenceIds": [
+        "evidence-preview-integration-assessment-2026-09-05"
+      ],
+      "verificationNote": "Automatic source-only WORK return accepted and compared with PLAN inspection; missing prerequisites and proposed first lane documented. No product/browser acceptance."
+    }
+  ]
+}

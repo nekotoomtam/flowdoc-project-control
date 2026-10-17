@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+  "title": "FlowDoc Bounded Browser Compatibility Promotion - 2026-08-27",
+  "path": "docs/domains/flowdoc-bounded-browser-compatibility-promotion-2026-08-27.md",
+  "nodeIds": ["flowdoc-browser-compatibility"],
+  "role": "current-state",
+  "authority": "Current only for the bounded local loopback browser compatibility child claim supported by the accepted Editor browser smoke packet; excludes FlowDoc product readiness, deployed Backend compatibility, cross-browser coverage, broader document corpus, accessibility, visual regression, npm audit remediation, bundle-size readiness, and broad Core/Editor/Backend current-state promotion.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "739d19d452bdb5151ec030db96a9247da0a29ae5",
+      "pathOrContractId": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4",
+      "pathOrContractId": "src/fixtures/editor-browser-live-backend-smoke.v1.json"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "src/http/server.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+    }
+  ]
+}

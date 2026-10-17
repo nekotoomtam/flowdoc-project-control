@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-product-domain-relationship-v0",
+  "phaseId": "phase-flowdoc-product-domain-relationship-v0",
+  "title": "FlowDoc Product Domain Relationship v0 Checklist",
+  "items": [
+    {
+      "id": "capture-product-domain-relationship-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The domain relationship record identifies Project Control ownership before writing product-wide domain framing.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-product-domain-relationship, owner repo-project-control, active role planning-partner with documentation-authority-steward responsibility, phase target phase-flowdoc-product-domain-relationship-v0, checklist target checklist-flowdoc-product-domain-relationship-v0, and evidence target evidence-flowdoc-product-domain-relationship-2026-09-04."
+    },
+    {
+      "id": "write-red-product-domain-relationship-guard",
+      "label": "Write a failing Project Control guard before adding the product-domain relationship records.",
+      "state": "passed",
+      "evidenceTarget": "A focused test fails before Project Control contains the product-domain relationship Work, document, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-product-domain-relationship as a child Work."
+    },
+    {
+      "id": "define-domain-map-boundary",
+      "label": "Define FlowDoc Product Domain Relationship as a domain-level map and reading router.",
+      "state": "passed",
+      "evidenceTarget": "The document states it is a domain-level relationship map and reading router, not a full database schema.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-product-domain-relationship-2026-09-04.md defines the map boundary and keeps schema work in follow-up domain documents."
+    },
+    {
+      "id": "list-major-product-domains",
+      "label": "List the major product domains that future FlowDoc work must recognize.",
+      "state": "passed",
+      "evidenceTarget": "The document lists document structure, component library, dataset/data contract, version/publication, runtime submission, rendering, artifacts, workflow, permission, audit, activity, billing, and integration domains.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "The domain list is intentionally high-level and does not define detailed tables, foreign keys, indexes, migrations, or schema validation."
+    },
+    {
+      "id": "define-cross-domain-reading-rules",
+      "label": "Define high-level cross-domain relationships and reading rules.",
+      "state": "passed",
+      "evidenceTarget": "The document records domain relationships and names follow-up domain documents that must be read before detailed design.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "The high-level relationship section and follow-up domain document table route future rooms to narrower domain documents instead of forcing all-domain schema design here."
+    },
+    {
+      "id": "route-document-structure-next",
+      "label": "Route the next detailed database design back to document structure.",
+      "state": "passed",
+      "evidenceTarget": "The document points the next recommended work to Document Structure Relationship Database v0.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "The next recommended work says to return to Document Structure Relationship Database v0 while keeping broader domain dependencies visible."
+    },
+    {
+      "id": "verify-product-domain-relationship-records",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused product-domain relationship guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-product-domain-relationship-2026-09-04"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-product-domain-relationship.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

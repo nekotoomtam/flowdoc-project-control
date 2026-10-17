@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-selection-context-summary-foundation-2026-08-29",
+  "title": "Editor Selection Context Summary Foundation",
+  "path": "docs/domains/editor-selection-context-summary-foundation-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for an Editor Inspector selected-block context summary without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "011debfbcf55891ff142302bbfdf301cee5160b5",
+      "pathOrContractId": "src/components/inspector/SelectionContextSummary.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "011debfbcf55891ff142302bbfdf301cee5160b5",
+      "pathOrContractId": "src/components/inspector/InspectorPanel.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "011debfbcf55891ff142302bbfdf301cee5160b5",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "011debfbcf55891ff142302bbfdf301cee5160b5",
+      "pathOrContractId": "src/tests/selectionContextSummary.test.ts"
+    }
+  ]
+}

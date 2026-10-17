@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-canvas-text-descendant-selection",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Canvas Text Descendant Selection",
+  "phaseState": "done",
+  "order": 140,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Canvas preview text descendant clicks cannot select the exact editable text-block descendant represented inside a columns or table surface.",
+    "Structure or Outline highlight still shows only the owning columns or table surface after clicking a represented child text block in the paper preview.",
+    "Ordinary canvas selection, drag, reorder, keyboard, inspector, delete, duplicate, or structural commands stop resolving internal nodes through their owning operation surface.",
+    "The new canvas text descendant selection source leaks into Backend mutation request sources or add-node mutation source contracts.",
+    "The live Backend browser smoke cannot prove preview text descendant selection and persisted selectedOutlineNodeIds after reload.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact cell/column layout authoring, arbitrary rich-inline authoring, field-ref editing, durable drafts, collaboration, production readiness, broad frontend readiness, or map truth."
+  ],
+  "verificationTarget": "Editor adds a selection-only canvas preview text-descendant hit target so clicking text represented inside columns/table preview surfaces selects the exact editable text-block descendant and visibly highlights the matching Structure/Outline item, while ordinary canvas and structural mutation behavior remain surface-based and Backend mutation sources remain guarded.",
+  "summary": "Done: Editor commit 940b4dfc5f61fa551993c9c853c5c8aed0a986c5 adds bounded canvas text descendant selection. Paper preview text cells represented inside columns/table surfaces now expose a selection-only data-canvas-text-descendant-id marker. PaperPageStack checks that marker before ordinary canvas hit testing and routes selection through the canvas-text-descendant source, so Structure/Outline can highlight exact editable text-block descendants such as summary-left-text after clicking the represented preview text. Ordinary canvas selection, drag/reorder, and structural mutation paths remain surface-based, and Backend mutation request building rejects canvas-text-descendant as a mutation source. The live local Backend browser smoke now selects summary-left-text through the paper preview, records selectedOutlineNodeIds and reloadedSelectedOutlineNodeIds as summary-left-text, and still keeps WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table/column layout authoring, arbitrary rich-inline authoring, field-ref editing, durable drafts, broad frontend readiness, and map truth closed.",
+  "createdAt": "2026-08-31T03:55:00.000Z",
+  "updatedAt": "2026-08-31T03:55:00.000Z"
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-add-node-activation-harness",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-activation-harness",
+  "title": "Editor Add Node Activation Harness Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor, Backend, and Core boundary context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Work record, Editor AGENTS.md, Backend AGENTS.md, Core AGENTS.md, Core cross-repo map, Editor add-node contract, Backend mutation transport, and Editor runtime mutation apply paths are reviewed.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor with bounded repo-backend/repo-core boundary references, phase-flowdoc-core-backend-editor-readiness-pass-editor-add-node-activation-harness, checklist-flowdoc-core-backend-editor-readiness-pass-editor-add-node-activation-harness, and evidence target before edits."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline in an isolated worktree before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-anah-0830 is created from main and passes npm run check before add-node activation harness changes.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "Created branch editor-add-node-activation-harness-20260830 from Editor main 623d91f204803cb9ac8d7ab7a71246326b77ef78. Baseline npm run check passed type-check, Vitest with 96 passed test files and 332 tests, and build. Editor npm install reported 5 high severity audit findings that were not remediated in this lane; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write the failing Editor add-node activation harness test before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "A focused Editor test fails before the activation request helper exists.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "npm test -- src/tests/addNodeActivationHarness.test.ts failed before implementation with TypeError: createBackendAddNodeMutationRequest is not a function."
+    },
+    {
+      "id": "implement-editor-activation-harness",
+      "label": "Implement bounded Editor add-node request activation and transport typing.",
+      "state": "passed",
+      "evidenceTarget": "Editor BackendMutationOperation typing includes active columns.insert and text-block.insert requests, and the activation helper returns a BackendMutationRequest only when the current package/document pair advertises the requested operation.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "Editor commit ae6978e3646e6ac4bbedc6ec15e6e38343bf0585 updates src/editor/backend/backendTransport.ts and src/editor/backend/backendMutationRunner.ts. createBackendAddNodeMutationRequest blocks non-fresh envelopes, blocked add-node contracts, contract document/revision mismatch, and missing Backend mutation operation support before commitMutation can be called."
+    },
+    {
+      "id": "prove-live-backend-harness",
+      "label": "Prove the add-node activation runner against a live local Backend server.",
+      "state": "passed",
+      "evidenceTarget": "Editor starts a real Backend loopback server, reads capabilities and the active document, runs columns.insert and text-block.insert through commitMutation, and applies returned read envelopes into Editor runtime state.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "src/tests/addNodeActivationHarness.test.ts seeds flowdoc-vnext-backend with product-report-vnext-minimal, confirms compatible capabilities, runs columns.insert at zone-cover-body index 1, applies revision 4 into Editor state, then runs text-block.insert into summary-left and applies revision 5 into Editor state."
+    },
+    {
+      "id": "verify-owner-gates",
+      "label": "Run focused, worktree, and merged-main Editor gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused add-node activation harness tests and both worktree and merged-main Editor npm run check pass.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "Focused GREEN passed npm test -- src/tests/addNodeActivationHarness.test.ts with 1 file and 2 tests. Editor worktree npm run check and merged Editor main npm run check both passed type-check, Vitest with 97 passed test files and 334 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup blocker and unpromoted product claims honestly.",
+      "state": "passed",
+      "evidenceTarget": "Merged branch is deleted, worktree metadata status is recorded, leftover folder and unresolved product claims are recorded as risk instead of hidden.",
+      "evidenceIds": ["evidence-editor-add-node-activation-harness-2026-08-30"],
+      "verificationNote": "Editor main was fast-forwarded to ae6978e3646e6ac4bbedc6ec15e6e38343bf0585 and branch editor-add-node-activation-harness-20260830 was deleted after merge. Git worktree metadata for C:/Users/nekot/Documents/GitHub/fd-ed-anah-0830 is no longer registered, but the folder remains on disk after git worktree remove failed with Filename too long and direct recursive deletion was blocked by local tool policy. The cleanup attempt produced tracked Core deletions under packages/text-engine-rust-wasm; those exact paths were restored from HEAD and Core status returned clean. The older C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 worktree remains intentionally retained detached at d2290b47a37adc8aee2067ed4e094c6f39350b6c."
+    }
+  ],
+  "createdAt": "2026-08-30T12:37:29.481Z",
+  "updatedAt": "2026-08-30T12:37:29.481Z"
+}

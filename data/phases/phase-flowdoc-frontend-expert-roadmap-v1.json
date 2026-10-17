@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-frontend-expert-roadmap-v1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "Frontend Expert Roadmap v1",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The roadmap would edit Core, Backend, or Editor product behavior before lane approval.",
+    "The roadmap would claim frontend readiness, WYSIWYG readiness, publish readiness, production readiness, FlowDoc product truth, or map truth from planning alone.",
+    "The roadmap would require the user to carry PLAN-owned handoff or truth-promotion responsibilities."
+  ],
+  "verificationTarget": "Project Control records Frontend Expert Roadmap v1 as lane-ready planning for Library, Design, Preview, Publish, preserves the WYSIWYG gate decision boundary, and keeps product implementation out of this phase.",
+  "summary": "Done: Project Control now records a bounded Frontend Expert Roadmap v1 that names the product north star, missing frontend surfaces, first lane sequence, acceptance expectations, and truth boundaries before product implementation begins.",
+  "createdAt": "2026-09-03T09:00:00.000Z",
+  "updatedAt": "2026-09-03T09:00:00.000Z"
+}

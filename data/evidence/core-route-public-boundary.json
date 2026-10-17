@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-route-public-boundary",
+  "nodeIds": ["core-route"],
+  "repositoryId": "repo-core",
+  "commit": "76a2f2311a898e781f53773390d47b05812911e4",
+  "pathOrContractId": "src/index.ts",
+  "verificationSummary": "The public entrypoint omits route-shaped modules while retained generation runtime, artifact manifest, and artifact job modules remain exported.",
+  "verifiedAt": "2026-08-13T00:00:00.000Z"
+}

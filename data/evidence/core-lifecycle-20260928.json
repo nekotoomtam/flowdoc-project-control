@@ -1,0 +1,45 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-lifecycle-20260928",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "cbca90f347c4328e5a335f78ef879ce24d6b9d07",
+  "pathOrContractId": "core-private-retained-source-lifecycle/1",
+  "verificationSummary": "Private retained-source lifecycle now supports actual unpinned derived-shard and used Rustybuzz ShapePlan eviction plus explicit bounded recovery, preserving content capability/revision/family and structural inverse semantics. Capacity2 FIFO unpinned plans are genuinely reused by shaping. Positive shard recovery is limited to a complete isolated admitted short run with authentic source/provider witnesses; plan recovery is source-independent provider setup.\n\nPLAN reviewed source ownership, payload/root aliases, witness bindings, checked cache and family counters, actual lookup/TreeWork accounting, and conservative source release labeling. Native54/54 and focused actualWASM8/8 pass. Stable candidate Core check442 files3039 pass1 existing skip. Committed-source static actualWASM75 ordinary Accepted/cold Equal and15 NoOp unchanged/cold Equal; PLAN independently recomputed probe counts/caps and inspected360 rawcalls:90 Created,75 Accepted,15 NoOp,90 Equal,90 Disposed. Max source/property/provider475/139/260 within512/512/1024. RawCalls SHA256478b02a7ed56423f6d235bcc18e7f20558df0ae86298b96892019d1fa6844d88. Clean22-file allowed actual manifest at cbca90f347c4328e5a335f78ef879ce24d6b9d07. Proof locators C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-handoff.json, lifecycle-native.log, lifecycle-focused-wasm.log, lifecycle-core-check-final.log, lifecycle-static-applicability.json, lifecycle-plan-static-verification.json and plan-acceptance.json.\n\nExact shape-plan-cache-eviction mixed2048 [500,500)+A remains Ready uncertified-seam, actual used-plan Evict recovery-required, then Recover restores the same uncertified-seam unchanged/cold Equal. Separate admitted positive edit proves recovery. Contract-change request optionB resolved by PLAN without expansion; no fake exact-row admission. Seam certificate is a separate prerequisite before full measurement/item4. ReleasedSourceBytes is explicitly a conservative-owned-tree-lower-bound for partly shared source; allocator release counts remain exact. Real host cancellation is next packet, QA is distinct. Full180/11271 performance, timing8ms/16.7ms/1.50, heap/GC/scaling, all-context recovery, geometry/view-edit/transients/UX and Stage6/Gate2 are unproven. No map promotion.",
+  "verifiedAt": "2026-09-28T03:47:28.250Z",
+  "validity": {
+    "claim": "Private retained-source lifecycle now supports actual unpinned derived-shard and used Rustybuzz ShapePlan eviction plus explicit bounded recovery, preserving content capability/revision/family and structural inverse semantics. Capacity2 FIFO unpinned plans are genuinely reused by shaping. Positive shard recovery is limited to a complete isolated admitted short run with authentic source/provider witnesses; plan recovery is source-independent provider setup.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/derive.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/faults.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ledger.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/lifecycle.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/model.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/provider_plans.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/runtime.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+      "scripts/stage6/applicability.mjs",
+      "scripts/stage6/preflight.mjs",
+      "tests/coldSessionLifecycle.test.ts",
+      "tests/coldSessionStage4.test.ts",
+      "tests/stage6Preflight.test.ts"
+    ],
+    "sourceRevision": "cbca90f347c4328e5a335f78ef879ce24d6b9d07",
+    "verificationMethod": "PLAN reviewed source ownership, payload/root aliases, witness bindings, checked cache and family counters, actual lookup/TreeWork accounting, and conservative source release labeling. Native54/54 and focused actualWASM8/8 pass. Stable candidate Core check442 files3039 pass1 existing skip. Committed-source static actualWASM75 ordinary Accepted/cold Equal and15 NoOp unchanged/cold Equal; PLAN independently recomputed probe counts/caps and inspected360 rawcalls:90 Created,75 Accepted,15 NoOp,90 Equal,90 Disposed. Max source/property/provider475/139/260 within512/512/1024. RawCalls SHA256478b02a7ed56423f6d235bcc18e7f20558df0ae86298b96892019d1fa6844d88. Clean22-file allowed actual manifest at cbca90f347c4328e5a335f78ef879ce24d6b9d07. Proof locators C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/lifecycle-handoff.json, lifecycle-native.log, lifecycle-focused-wasm.log, lifecycle-core-check-final.log, lifecycle-static-applicability.json, lifecycle-plan-static-verification.json and plan-acceptance.json.",
+    "freshnessTriggers": [
+      "Changes to lifecycle/source/provider/cache ownership, witnesses, identity, disposal or accounting require affected native/WASM revalidation.",
+      "Host slice may reuse75+15 only while shaping/classification behavior is unchanged; changed dispatch/auth/control paths and maximum-work representatives require focused actualWASM checks.",
+      "Named-row seam admission, full measurement and geometry require separate scope and proof."
+    ]
+  }
+}

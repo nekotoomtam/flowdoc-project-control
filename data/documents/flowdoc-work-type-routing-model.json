@@ -1,0 +1,44 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-work-type-routing-model",
+  "title": "FlowDoc Work Type Routing Model",
+  "path": "docs/domains/flowdoc-work-type-routing-model.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control Work Type routing contract for assigning lane Work Type, writing Context Capsules, requiring Context Acknowledgement, preserving retrievable locators, selecting skill candidates, and accepting returned handoffs by output shape.",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "87e1092e4113c18b9e4107c0362bad13e94a05d4",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-work-type-routing-model.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-room-return-liveness.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b3851c15547e5adda77719887c4574d2ba8489c9",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-automatic-work-return-contract.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; tests/flowdoc-active-return-channel-hardening.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
+      "pathOrContractId": "docs/domains/flowdoc-work-type-routing-model.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    }
+  ]
+}

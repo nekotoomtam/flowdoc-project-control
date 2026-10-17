@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
+  "title": "Editor Text Block Insert To Edit Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor roadmap, and owner repository context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, Work path, owner repository, terminology, Editor AGENTS.md, and the old Editor node authoring roadmap Task 5 are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit, and evidence target evidence-editor-text-block-insert-to-edit-2026-08-31 before record edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting insert-to-edit handoff readiness.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests fail before the insert-to-edit resolver and focus notification exist; Project Control tests fail before this phase/evidence is registered.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "After correcting the test fixture to use Core document v4 canonical empty children: [], RED evidence included npm run test -- src/tests/activeTextBlockInsertToEdit.test.ts failing because resolveTextBlockInsertToEditTarget was not a function, and npx vitest run tests/project-roadmap-work-queue.test.ts --reporter verbose failing because the Work 8h phase list did not contain this phase."
+    },
+    {
+      "id": "resolve-insert-to-edit-target",
+      "label": "Resolve only applied text-block insert results into ready bounded text editor focus targets.",
+      "state": "passed",
+      "evidenceTarget": "The resolver requires text-block.insert, applied status, selected inserted target, and text-block.rich-inline.replace support on the returned document pair.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "resolveTextBlockInsertToEditTarget returns ready with canvasFocusNodeId/textBlockId for a selected inserted package 3/document 4 text-block only when Backend capabilities advertise text-block.rich-inline.replace for that returned pair."
+    },
+    {
+      "id": "support-empty-text-block-draft",
+      "label": "Support Core document v4 canonical empty text blocks as clean bounded textarea drafts.",
+      "state": "passed",
+      "evidenceTarget": "A text-block with children: [] opens as a clean empty textarea surface and creates the first text run only when the user types text.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "textBlockInlineDraftAdapter now reads children: [] as a ready empty draft and uses the existing replaceEditableTextBlockText path to create the first text run after non-empty text input, while preserving existing non-empty and blocked inline behavior."
+    },
+    {
+      "id": "preserve-columns-and-boundaries",
+      "label": "Keep Columns insert, unavailable save operations, WYSIWYG, and contenteditable blocked.",
+      "state": "passed",
+      "evidenceTarget": "Columns insert results do not request text editor focus, and returned pairs without text-block.rich-inline.replace remain blocked from insert-to-edit.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "activeTextBlockInsertToEdit tests prove columns.insert returns not-text-block-insert and package/document pairs without text-block.rich-inline.replace return text-edit-operation-unavailable. No Core or Backend files changed."
+    },
+    {
+      "id": "verify-editor-main",
+      "label": "Run Editor worktree and merged-main gates plus live Backend smoke without rewriting evidence fixtures.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests, full Editor check, and no-write live Backend smoke pass in both the worktree and merged main.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree passed focused 5-file/23-test gate, npm run check with 103 test files and 370 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Merged Editor main passed the same focused 5-file/23-test gate, npm run check with 103 test files and 370 tests plus build, and the same no-write live Backend smoke."
+    },
+    {
+      "id": "record-project-control",
+      "label": "Register the bounded lane in Project Control without promoting map truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the phase, checklist, evidence, risks, and cleanup status while leaving maps unchanged.",
+      "evidenceIds": [
+        "evidence-editor-text-block-insert-to-edit-2026-08-31"
+      ],
+      "verificationNote": "Project Control records were added after the Editor merge and Project Control RED test. This lane leaves document v4 insert semantics, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, and map truth unpromoted."
+    }
+  ],
+  "createdAt": "2026-08-31T08:35:00.000Z",
+  "updatedAt": "2026-08-31T08:35:00.000Z"
+}

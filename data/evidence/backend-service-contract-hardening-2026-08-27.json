@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-backend-service-contract-hardening-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-backend",
+  "commit": "6d18bd381b77becd33b4ac9785a4b6ba6422191a",
+  "pathOrContractId": "src/contracts/serviceReadiness.ts#BACKEND_SERVICE_PRODUCTION_REQUIRED_CAPABILITY_IDS",
+  "verificationSummary": "Backend main commit 6d18bd381b77becd33b4ac9785a4b6ba6422191a hardens the service readiness contract by adding stable production required capability IDs, machine-readable production blockerDetails, and frontendIntegration.status planning-only with implementationReady false while preserving the existing top-level /health status ready and grouped production.blockers prose for compatibility. Focused Backend tests passed src/tests/serviceReadiness.test.ts and src/tests/httpServer.test.ts with 4 tests; Backend worktree npm run check and merged main npm run check both passed type-check, 89 passed test files, 1 skipped file, 316 passed tests, 24 skipped tests, and build. This evidence supports only the Backend service contract hardening lane and does not promote production Backend readiness, deployed compatibility, auth, tenancy, selected storage providers, PDF export production mounting, worker orchestration, renderer/provider binding, deployment, telemetry, backup, rollback, broader Backend truth, or FlowDoc map truth.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

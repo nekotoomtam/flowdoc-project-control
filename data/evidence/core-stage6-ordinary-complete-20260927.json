@@ -1,0 +1,39 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-stage6-ordinary-complete-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+  "pathOrContractId": "core-private-stage6-ordinary-complete/1",
+  "verificationSummary": "Complete fixed initial ordinary applicability: all75 requests Accepted and independent cold Equal to edited source atcf54a700, plus48 meaningful live committed mutations across3languages. General unsupported contexts remain conservative typed rejections; no Stage6 timing/UX admission.\n\nFull native cold_session release-profile102/102 PASS with unchanged explicit assertions; frozen Core npm run check440 files3031 passed/1 existing artifact-only skip. Immutable terminal-commit actualWASM diagnostic executes90 requests:75ordinary Accepted/edited-source Equal and15true-noops unsupported/unchanged-source Equal;360rawcalls SHA2564b6924c8a84b44e42aaf4cc4f14c5542721cc42b92483ae1e810548db878f5ec. PLAN independently verified rawcalls hash, exact commit, all75+15 rows and every source/property/provider cap. Max475/139/260 within512/512/1024. Native and actualWASM48 committed stream revisions cover3languages, stale checks, defaults/absent language and structural-after-ordinary endpoint split/inverse; native arbitrary offsets, leading neutrals, fragmented budgets/faults and old A+B/Stage4/5/92fields pass. PLAN source review resolved old-first routing, fault placement, complete actual SA/global segmentation and old/new concat witnesses, conservative one-resource font fallback, source/cache/copy/coordinate accounting and pre-reservation. Clean cumulative17paths and slice9paths reviewed; Scope Lock acceptance and main integration recorded in active round. Core main fast-forward integratedcf54a700 and fresh npm run check passed440 files3031 tests1 existing skip; core-ordinary-complete-main-check.log.\n\nNew multi-run profile is bounded long-session, one authored span, one font resource per route and actual ASCII AL/SP or Thai SA context. Named Common/Inherited policy unchanged; ambiguous/unbounded contexts reject atomically. Source views, lazy run ranks and strict partition-independent oracle retain exact source/default/origin/font/run/glyph/line/grapheme/concat semantics. No corpus/generator/Cargo/public/docs/maps changes.\n\nMinimal PLAN-owned exactcommit Evidence required by registry acceptance, reusing existing tests and diagnostic; WORK creates no Evidence/docs. No-op specified but not implemented; lifecycle design remains a downstream prerequisite. Full180/11271 measurement NOT_RUN;8ms/16.7ms/1.50 unchanged; geometry/Editor/Backend/public UX unproven.",
+  "verifiedAt": "2026-09-27T13:26:53.449Z",
+  "validity": {
+    "claim": "Complete fixed initial ordinary applicability: all75 requests Accepted and independent cold Equal to edited source atcf54a700, plus48 meaningful live committed mutations across3languages. General unsupported contexts remain conservative typed rejections; no Stage6 timing/UX admission.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/analysis_transition.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/local_window_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "scripts/stage6/applicability.mjs",
+      "tests/coldSessionStage4.test.ts"
+    ],
+    "sourceRevision": "cf54a700c54e6b1c5838ebef07b36c1466649a83",
+    "verificationMethod": "Full native cold_session release-profile102/102 PASS with unchanged explicit assertions; frozen Core npm run check440 files3031 passed/1 existing artifact-only skip. Immutable terminal-commit actualWASM diagnostic executes90 requests:75ordinary Accepted/edited-source Equal and15true-noops unsupported/unchanged-source Equal;360rawcalls SHA2564b6924c8a84b44e42aaf4cc4f14c5542721cc42b92483ae1e810548db878f5ec. PLAN independently verified rawcalls hash, exact commit, all75+15 rows and every source/property/provider cap. Max475/139/260 within512/512/1024. Native and actualWASM48 committed stream revisions cover3languages, stale checks, defaults/absent language and structural-after-ordinary endpoint split/inverse; native arbitrary offsets, leading neutrals, fragmented budgets/faults and old A+B/Stage4/5/92fields pass. PLAN source review resolved old-first routing, fault placement, complete actual SA/global segmentation and old/new concat witnesses, conservative one-resource font fallback, source/cache/copy/coordinate accounting and pre-reservation. Clean cumulative17paths and slice9paths reviewed; Scope Lock acceptance and main integration recorded in active round. Core main fast-forward integratedcf54a700 and fresh npm run check passed440 files3031 tests1 existing skip; core-ordinary-complete-main-check.log.",
+    "freshnessTriggers": [
+      "Changes to source/property/run/window/provider/rank/accounting or fixed generator require affected revalidation.",
+      "No-op/lifecycle, full180/11271 timing and geometry/UX require separate downstream proof; fixed75 and bounded streams do not discharge them."
+    ]
+  }
+}

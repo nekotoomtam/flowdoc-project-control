@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-preview-core-b",
+  "repositoryId": "repo-editor",
+  "commit": "236a3ac894b3f947e7994fcb90ee21a0889670de",
+  "pathOrContractId": "src/editor/structures/creatorPreviewSession.ts",
+  "nodeIds": [],
+  "verifiedAt": "2026-09-07T20:09:43.9262916Z",
+  "verificationSummary": "Work4A bounded Preview field-value typing accepted by user, reaffirmed with Enter/keyboard completeness explicitly excluded. PLAN reviewed candidate diff and automatic handoffs01/02, real Core607bb20 integration, display-only paperDisplay vs current edit authority, pending Backspace/point rejection and error/reset clear test. WORK gate118files460tests/build passed; PLAN independently ran npm run check on merged Editor main exit0 (log C:/Users/nekot/AppData/Local/Temp/editor-work4a-main.log). Browser evidence root C:/Users/nekot/.codex/visualizations/2026/09/06/01a0757e-98ba-79c2-96d1-3aa690ead2a1/work4a retains handoff01/02, focused RED/GREEN, full-check-final.log, browser-candidate and held-main67/held-candidate traces. Strict first-to-last repeated keydown windows show35 distinct displayed lengths per Thai/Latin trace; full sequences retain37 seed+36 values. Retained glyph/caret share completed geometry; form may contain newer input while layout pending. User trial on59348 passed bounded typing/continuous display, not complete WYSIWYG. OS IME, broad latency/accessibility, Enter/newline and complete keyboard behavior, Build remain unverified. Core/Backend/assets/deps unchanged, maps unchanged. e4a worktree/merged branch retained intentionally to preserve active user demo; held eflick3fc61e3 remains untouched pending reconciliation."
+}

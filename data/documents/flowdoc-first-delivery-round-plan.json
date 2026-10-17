@@ -1,0 +1,77 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-first-delivery-round-plan",
+  "title": "FlowDoc First Delivery Round Plan",
+  "path": "docs/domains/flowdoc-first-delivery-round-plan.md",
+  "nodeIds": ["flowdoc"],
+  "role": "contract",
+  "authority": "Project Control first delivery round plan for Lane Cards, WORK room Kickoff Packets, terminology decisions, stop conditions, handoff requirements, and evidence targets.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "99488f37bc590af57819c3beab823936e8dd2038",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-delivery-operating-model.md; data/work/flowdoc-first-delivery-round.json; tests/flowdoc-first-delivery-round-plan.test.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "87e1092e4113c18b9e4107c0362bad13e94a05d4",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-work-room-return-liveness.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "ba0d2ca7622d9053384720e014d09238c172743c",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md; data/work/flowdoc-first-delivery-round.json; tests/flowdoc-first-delivery-core-boundary-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b3851c15547e5adda77719887c4574d2ba8489c9",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-automatic-work-return-contract.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-active-return-channel-hardening.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0e852ff86ea627add5e1f12dfb6b4a5a85368232",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-return-channel-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "1eeb1053e4cc7b9559d5060668f4ba467384850e",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-multi-work-queue-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6b50473a3edf60402bf05e460ddb7b1d1df4fadb",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-product-repo-readonly-return-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-backend-pdf-boundary-pre-admission-smoke-2026-09-02.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "750458c6f1dc2e13930403b8062705399fcb7fd9",
+      "pathOrContractId": "docs/domains/flowdoc-first-delivery-round-plan.md; docs/domains/flowdoc-first-delivery-owner-lanes-acceptance-2026-09-03.md; tests/flowdoc-first-delivery-owner-lanes-acceptance.test.ts"
+    }
+  ]
+}

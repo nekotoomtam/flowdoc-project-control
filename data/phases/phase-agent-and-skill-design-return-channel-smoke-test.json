@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-return-channel-smoke-test",
+  "workId": "agent-and-skill-design",
+  "title": "Return Channel Smoke Test",
+  "phaseState": "done",
+  "order": 90,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before recording the smoke result.",
+    "The WORK room does not actively push a Terminal Handoff back to the PLAN task/chat ID.",
+    "The smoke result is treated as proof of multi-WORK close-together return, product WORK return, queued clientThreadId dispatch, product behavior, or FlowDoc product truth.",
+    "The phase edits Core, Backend, or Editor product behavior or promotes map truth."
+  ],
+  "verificationTarget": "single-room active Return Channel smoke evidence is recorded for one projectless WORK task that pushed its Terminal Handoff to PLAN with mcp__codex_app.send_message_to_thread; multi-WORK active return, product WORK return, queued clientThreadId dispatch, and product evidence promotion remain unknown.",
+  "summary": "Done: recorded the first bounded single-room active WORK-to-PLAN return smoke test. WORK task 01a0610f-d236-73e1-a4ff-d79fb9f2bd3e sent handoff-return-channel-smoke-2026-09-02-01 back to PLAN task 01a05e34-5b16-7493-ac31-9baf8ba71454 using mcp__codex_app.send_message_to_thread. The result proves only the local single-room return path and does not prove multi-WORK or product WORK dispatch.",
+  "createdAt": "2026-09-02T14:50:00.000+07:00",
+  "updatedAt": "2026-09-02T14:50:00.000+07:00"
+}

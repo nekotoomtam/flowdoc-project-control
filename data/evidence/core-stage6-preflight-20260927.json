@@ -1,0 +1,28 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-stage6-preflight-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "b48f19454a8b1d9587bb0834d0ac261746fcc4f6",
+  "pathOrContractId": "core-stage6-fixed-corpus-preflight/1",
+  "verificationSummary": "Stage6/Gate2 is BLOCKER at the first required retained common case prepared-first-thai-256-append on current private run-owned API. Harness and immutable evidence establish a required unsupported command with unchanged state, not admission timing or complete lifecycle readiness. At Core b48f19454a8b1d9587bb0834d0ac261746fcc4f6, the original Thai256 seed ends in Latin A; committed insertion of ก at [256,256) returns NotAdmissible(uncertified-seam), expected revision1/actual0, same live receipt. Independent full cold-provider QA returns Equal against original source and disposal succeeds. Attempt reports sourceFactsUtf16=6, propertyFactsUtf16=1, shapingSegmentationInputUtf16=0; all91 additive accepted slots remain zero. This is a missing bounded script-transition certificate path, not a exceeded work cap. PLAN independently reproduced the same raw outcome and checked committed source hashes, exact historical corpus and generator/policy equality. Original corpus/generator authority is d5031b6151a0a6aba2fbe2c3320f122a935470a3; that old paragraph-owned implementation is not reused as current runtime/oracle. All11271 final obligations remain unexecuted: preparation825, prepared-first4950, sustained4950, burst180, adversarial6, cold360. The single preflight probe consumes none of5 warmups/50 repetitions. p95<=8ms, maximum<=16.7ms, scaling<=1.50, source/property<=512 and shaping+segmentation<=1024 remain unchanged. No-anchor recovery, eviction, cancellation, full disposal/receipt matrix, continuous ordinary+structural stream, host heap/GC, full phase latency and family cumulative admission remain unmeasured. Active composition is not made canonical; legacy composition-named committed request generators retain their exact edits, including the empty composition-commit request requiring future compatibility resolution. No runtime, public/default export, geometry, renderer, Editor, Backend or map change. Recommended fresh bounded Core repair: provider-backed adjacent-run/script-transition certificate for exact retained requests, plus explicit no-op committed-request compatibility and lifecycle applicability before any final admission run; do not waive required cases or weaken caps. Raw authoritative artifact C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/stage6-preflight-b48f194.json SHA256 cca0ed7d5e91a87ece03d59bb77da1283442494df02d84ddd25c1656b99598d3; PLAN reproduction C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-preflight/plan-reproduction-b48f194.json SHA256 67239c46e2ddc7c06ec4a9fcb8d3cc2db1dd02a4c45689521954f0c2fa00cef6. Retained preliminary fffc5f0 artifact is non-authoritative after verifier field-count correction (95 total work fields,91 additive slots); both raw results are preserved. Environment Node24.15.0, Windows x64, i9-13900H20logical CPUs, Rust1.96.0/cargo1.96.0/wasm-pack0.15.0; exact WASM retained with environment record at C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df53-6cd4-79f2-8a4c-0b6b0338385b/stage6-plan/. No final timing run occurred.",
+  "verifiedAt": "2026-09-26T20:30:21.979Z",
+  "validity": {
+    "claim": "Stage6/Gate2 is BLOCKER at the first required retained common case prepared-first-thai-256-append on current private run-owned API. Harness and immutable evidence establish a required unsupported command with unchanged state, not admission timing or complete lifecycle readiness.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "scripts/stage6/corpus.mjs",
+      "scripts/stage6/preflight.mjs",
+      "scripts/stage6/verify.mjs",
+      "tests/fixtures/stage6/gate2a.v2.json",
+      "tests/stage6Preflight.test.ts"
+    ],
+    "sourceRevision": "b48f19454a8b1d9587bb0834d0ac261746fcc4f6",
+    "verificationMethod": "PLAN-owned independent inline review, exact old/new corpus and generator comparison, raw JSON round-trip/verifier and tracked Git source manifests, plus PLAN live reproduction of the first required case on actual QA WASM. Captured request/response/diagnostic Rust ABI counters and independent full cold reconstruction. This proves a rejection blocker only; required full Core/main and PC gates are recorded in acceptance and terminal report.",
+    "freshnessTriggers": [
+      "Any change to command admission, provider/policy/resources, run derivation, seam certificate, receipts or accounting requires current-API revalidation.",
+      "Any change to retained corpus/generator/thresholds, harness/verifier or built QA WASM invalidates this exact preflight evidence.",
+      "A later remedy must retain the fixed denominator and establish missing lifecycle/structural/host accounting before final measurement; this evidence cannot grant Stage6/Gate2 PASS or downstream geometry/Editor admission."
+    ]
+  }
+}

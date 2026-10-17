@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-project-control-overview-history-gui-2026-08-29",
+  "nodeIds": ["project-control"],
+  "repositoryId": "repo-project-control",
+  "commit": "97e9d234d2bb1e2d294463a395604d5f0ec75348",
+  "pathOrContractId": "app/src/components/ControlRoom.tsx; app/src/App.test.tsx; app/src/accessibility.test.tsx; tests/vite-server.test.ts; tests/e2e/project-control.spec.ts",
+  "verificationSummary": "Worktree npm run check passed on 2026-08-29: 48 unit test files / 319 unit tests passed, production build passed, and 6 e2e tests passed. This supports bounded Project Control GUI behavior for Repo Directory Overview and Work History View and does not promote Core, Backend, or Editor truth.",
+  "verifiedAt": "2026-08-29T04:53:09.000Z"
+}

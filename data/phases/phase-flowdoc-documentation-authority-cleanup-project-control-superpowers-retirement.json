@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Project Control Superpowers Docs Retirement",
+  "phaseState": "done",
+  "order": 80,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "A Project Control docs/superpowers file is still an active Document path without a canonical replacement.",
+    "The cleanup would remove retained source value before recording source evidence or discard rationale.",
+    "The cleanup would edit Core, Backend, or Editor product behavior or claim product readiness."
+  ],
+  "verificationTarget": "Project Control docs/superpowers is absent after moving the active Project Control design document to docs/domains, recording retained value and discard rationale for all 21 files, verifying focused guards, regenerating the Project Control read model, and recording work-scoped evidence without promoting product truth.",
+  "summary": "Done: Project Control commit 89d68b571ff4f815a99a5e53efc09252258c08e1 retired all 21 Project Control docs/superpowers Markdown files. The active Project Control design moved from docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md to docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md, and docs/domains/project-control-superpowers-retirement-2026-09-01.md records retained value, source snapshot, and discard rationale for the historical execution traces.",
+  "createdAt": "2026-09-01T01:55:00.000Z",
+  "updatedAt": "2026-09-01T01:55:00.000Z"
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "checklist",
+  "id": "checklist-creator-draft-r0",
+  "phaseId": "phase-creator-draft-r0",
+  "title": "R0 ต้นทางข้อมูลและขอบเขต Build",
+  "items": [
+    {
+      "id": "verify-creator-draft-r0",
+      "state": "passed",
+      "evidenceTarget": "evidence-creator-draft-r0-2026-09-05",
+      "label": "R0 ต้นทางข้อมูลและขอบเขต Build",
+      "evidenceIds": [
+        "evidence-creator-draft-r0-2026-09-05"
+      ],
+      "verificationNote": "R0 resolved: Backend DocumentDefinition draft is canonical for creator Build; no lossy Package conversion. Minimal handler save/read/edit/stale probe passed at eddf727. R1/R2 evidence verifies subsequent integration; no Core semantics or map promotion."
+    }
+  ],
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "work",
+  "id": "cockpit-active-work-reconciliation",
+  "title": "Cockpit Active Work Reconciliation",
+  "nodeId": "project-control",
+  "parentWorkId": "agent-and-skill-design",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "PLAN Lite bounded routine round: reconcile the generated Current Truth Snapshot so operationally complete legacy Work and phase-less containers stay out of Active Work, while a blocked Phase on the primary executable Work becomes the current blocker. The round is inline, Project Control-only, and uses focused snapshot tests plus one full gate with no new Markdown or Evidence artifact.",
+  "contextDocumentIds": [
+    "doc-flowdoc-workflow-economy-policy"
+  ],
+  "activeRole": "project-control-steward",
+  "expectedOutput": "The generated Cockpit lists only executable Work with unfinished Phase or Checklist obligations, surfaces the primary Work's blocked Phase, preserves the accepted absence of live cross-repository E2E proof, and leaves product repositories and product/map truth unchanged.",
+  "riskSummary": "Risk Tier routine. The read-model rule relies on Phase and Checklist state as the executable-work boundary; legacy containers without Phase are excluded rather than rewritten. Stop on schema conflict, accidental product truth promotion, or a snapshot result that hides unfinished executable Work.",
+  "requiredEvidence": [],
+  "createdAt": "2026-09-26T17:26:00.0000000+07:00",
+  "updatedAt": "2026-09-26T17:28:00.0000000+07:00"
+}

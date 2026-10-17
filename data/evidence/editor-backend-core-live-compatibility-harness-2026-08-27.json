@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-backend-core-live-compatibility-harness-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+  "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts",
+  "verificationSummary": "Editor commit 16a8fde628b887624249d50a162241ef2d96a415 provides an accepted live Editor client to Backend server to Core harness. The test starts createFlowDocBackendServer(...) on a loopback random port, seeds createInMemoryPackageRepository(...) with the Core-backed product-report minimal fixture, reads /capabilities/versions through createFlowDocBackendClient(...), reads the document, binds it into Editor runtime, builds an explicit migration request, posts it to Backend, reads the migrated target, applies the migration into Editor runtime, builds and commits a v4 node.reorder mutation, and applies the Core-backed mutation envelope back into Editor runtime. TDD RED failed before resolver wiring because flowdoc-vnext-backend/fixtures/productReportMinimal could not resolve; the focused harness then passed. Editor worktree npm run check passed type-check, 78 test files, 284 tests, and build; merged Editor main npm run check passed the same gate. Setup also added .worktrees/ to Editor .gitignore at e93414e0246c2177c29d5c5b6215fa1f7afcf5c6 so linked worktrees remain local. This supports only the bounded Node loopback live harness claim; it does not promote FlowDoc/product readiness truth, browser-app E2E readiness, deployed Backend compatibility, or broader document-corpus coverage.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

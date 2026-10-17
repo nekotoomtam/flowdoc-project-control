@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Define Text Block Authoring Boundary",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-editor", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, Checklist target, and Evidence target before editing Editor.",
+    "The boundary enables visible WYSIWYG or active text input before the written gate is approved.",
+    "The boundary makes DOM HTML, draft buffer state, or a React component the canonical document truth.",
+    "The boundary bypasses the Backend mutation request, Backend revision gate, Core mutation result, or Editor stale-gated runtime apply path.",
+    "The boundary introduces a rich editor framework or a full-document editing model.",
+    "Focused or full Editor gates fail after the boundary is added.",
+    "Cleanup side effects leave Core, Backend, Editor, or Project Control dirty or unverified."
+  ],
+  "verificationTarget": "Editor defines a tested text-block authoring boundary that keeps the current rich-inline path intent-only, blocks active-island entry until an explicit gate is approved, blocks unsafe DOM-editable binding, guards IME composition during draft commit, and records the result without frontend readiness promotion.",
+  "summary": "Done: Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 defines the text-block authoring boundary in code and docs, passes focused and full Editor gates on worktree and main, and leaves broad WYSIWYG/frontend readiness unpromoted.",
+  "createdAt": "2026-08-30T06:46:02.000Z",
+  "updatedAt": "2026-08-30T06:46:02.000Z"
+}

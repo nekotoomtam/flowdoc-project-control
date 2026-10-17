@@ -1,0 +1,27 @@
+{
+  "kind": "work",
+  "id": "editor-toolbar-reflow-audit",
+  "title": "Editor Creator Flow Audit and Toolbar Reflow",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": [
+    "repo-editor",
+    "repo-project-control"
+  ],
+  "workState": "in-review",
+  "summary": "Inspect the current creator flow against the Creator UX Contract and repair the reproduced Build toolbar overlap without activating missing product capabilities.",
+  "activeRole": "product-implementation-agent",
+  "contextDocumentIds": [
+    "doc-flowdoc-creator-ux-contract-v0-2026-09-04",
+    "doc-editor-workspace-toolbar-foundation-2026-08-28",
+    "doc-editor-creator-flow-audit-2026-09-05"
+  ],
+  "expectedOutput": "A bounded toolbar layout fix, current browser observations, owner-repository gates, and prioritized flow gaps in Project Control.",
+  "riskSummary": "Library creation, document-structure persistence adoption, Versions, Preview service integration, Published/API, and full accessibility remain separate work. Legacy worktrees and Core evidence-reference mismatch remain untouched.",
+  "requiredEvidence": [
+    "evidence-editor-toolbar-reflow-audit-2026-09-05"
+  ],
+  "createdAt": "2026-09-05T00:00:00Z",
+  "updatedAt": "2026-09-05T00:00:00Z"
+}

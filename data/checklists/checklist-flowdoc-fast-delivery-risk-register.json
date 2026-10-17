@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-fast-delivery-risk-register",
+  "phaseId": "phase-flowdoc-fast-delivery-risk-register",
+  "title": "FlowDoc Fast Delivery Risk Register Checklist",
+  "items": [
+    {
+      "id": "capture-fast-delivery-risk-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The risk register record identifies Project Control ownership before writing fast-delivery risk framing.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-fast-delivery-risk-register, owner repo-project-control, active role planning-partner with documentation-authority-steward and evidence-registrar responsibilities, phase target phase-flowdoc-fast-delivery-risk-register, checklist target checklist-flowdoc-fast-delivery-risk-register, and evidence target evidence-flowdoc-fast-delivery-risk-register-2026-09-04."
+    },
+    {
+      "id": "write-red-fast-delivery-risk-guard",
+      "label": "Write a failing Project Control guard before adding the fast-delivery risk records.",
+      "state": "passed",
+      "evidenceTarget": "A focused records test fails before Project Control contains the fast-delivery risk Work, document, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-fast-delivery-risk-register as a child Work."
+    },
+    {
+      "id": "record-terminology-and-db-drift-risks",
+      "label": "Record terminology and database drift risks around Structure Pattern terms and legacy component_* names.",
+      "state": "passed",
+      "evidenceTarget": "The risk register records RISK-FD-001 and RISK-FD-002.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-fast-delivery-risk-register-2026-09-04.md records terminology risk and database drift risk."
+    },
+    {
+      "id": "record-ux-scope-and-truth-promotion-risks",
+      "label": "Record UX scope and truth promotion risks before faster Editor, Backend, or Core lanes.",
+      "state": "passed",
+      "evidenceTarget": "The risk register records RISK-FD-003 and RISK-FD-004.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "The register states that Build and Preview must remain separate and that planning docs must not be treated as product implementation evidence."
+    },
+    {
+      "id": "record-speed-and-dependency-risks",
+      "label": "Record speed and dependency risks for Lean Dispatch and worktree dependency warnings.",
+      "state": "passed",
+      "evidenceTarget": "The risk register records RISK-FD-005 and RISK-FD-006.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "The register preserves automatic return, liveness, retrievable locator, acceptanceGate, and dependency warning boundaries."
+    },
+    {
+      "id": "define-kickoff-risk-gate",
+      "label": "Define a compact Kickoff Packet risk gate for fast future lanes.",
+      "state": "passed",
+      "evidenceTarget": "The risk register includes a fast Kickoff risk gate for future PLAN rooms.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "The fast Kickoff risk gate lists terminology, legacy component_*, Build/Preview split, planning truth, automatic return, liveness, retrievable locator, acceptanceGate, and dependency checks."
+    },
+    {
+      "id": "verify-fast-delivery-risk-register",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused records guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-fast-delivery-risk-register-2026-09-04"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-fast-delivery-risk-register.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T16:30:00.000+07:00",
+  "updatedAt": "2026-09-04T16:30:00.000+07:00"
+}

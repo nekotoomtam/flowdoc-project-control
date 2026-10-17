@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-agent-documentation-authority-operating-rules",
+  "title": "FlowDoc Agent Documentation Authority Operating Rules",
+  "path": "docs/domains/flowdoc-agent-documentation-authority-operating-rules.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control agent-facing FlowDoc documentation authority operating rules for preventing future Markdown authority drift.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "807ea854868b3ac35d5ac5bfdc09074345318928",
+      "pathOrContractId": "AGENTS.md; docs/domains/flowdoc-documentation-authority-policy.md; docs/domains/flowdoc-role-catalog.md; docs/domains/agent-and-skill-operating-model.md; tests/agent-documentation-authority-operating-rules.test.ts"
+    }
+  ]
+}

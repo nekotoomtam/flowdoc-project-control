@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-stage4-ordinary-commands-continuation-2026-09-20",
+  "title": "Core Stage 4 ordinary commands continuation",
+  "path": "docs/domains/flowdoc-core-stage4-ordinary-commands-continuation-2026-09-20.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "PLAN continuation and dispatch boundary for a Core-private Stage 4 ordinary-command proof. It does not prove command behavior, accept Gate 2 or Gate 3, authorize public or production binding, establish Editor UX or Node-count readiness, or promote map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "1c810bcab48a9d4df7a758ccbd29a4824389e349",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "1c810bcab48a9d4df7a758ccbd29a4824389e349",
+      "pathOrContractId": "tests/coldSessionStage3.test.ts"
+    }
+  ]
+}

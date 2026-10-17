@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-default-gate-stability-review-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+  "pathOrContractId": "package.json#scripts.check",
+  "verificationSummary": "Core default gate-stability lane reproduced the baseline npm run check failure at 969a21a4e888d836ae62164b206cb2dd34d5d702 with two failing tests: textBlockUnifiedLayoutTextStyleSourceV1 geometry insertion timed out at the default 5000ms limit, and corePackageLaneRetirementGuard resolved Backend under the linked Core worktree instead of the canonical sibling checkout. Core commit 77b9e181d1fb43bf69d725108ede664578a07a45 made test-only fixes: resolving the Backend sibling from git common-dir and giving the load-sensitive 5B-2 geometry block a local 60000ms timeout. Focused guards passed, the full Source V1 file passed with 62 tests, worktree npm run check passed 459 test files and 2941 tests in 223.28s, and merged Core main npm run check passed 459 test files and 2941 tests in 227.15s. This supports only the bounded Core default owner gate result and does not promote cross-repository live compatibility.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

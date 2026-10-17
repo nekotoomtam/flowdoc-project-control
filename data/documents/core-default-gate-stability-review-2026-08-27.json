@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-default-gate-stability-review-2026-08-27",
+  "title": "Core Default Gate Stability Review - 2026-08-27",
+  "path": "docs/domains/core-default-gate-stability-review-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped Core default gate-stability review for the current local Core head; records reproduced failures, test-only fixes, gate results, risks, and unknowns without promoting Core or FlowDoc truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "8bd85dab04110e453f7ac88d571cb40dca2a9b8b",
+      "pathOrContractId": "data/work/core-default-gate-stability-review.json"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "package.json#scripts.check"
+    }
+  ]
+}

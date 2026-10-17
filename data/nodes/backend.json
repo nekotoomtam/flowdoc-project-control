@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "backend",
+  "title": "Backend",
+  "parentId": "flowdoc",
+  "summary": "Backend state is not yet verified by Project Control evidence.",
+  "truthState": "unknown",
+  "order": 10,
+  "documentIds": [],
+  "evidenceIds": [],
+  "repositoryIds": ["repo-backend"]
+}

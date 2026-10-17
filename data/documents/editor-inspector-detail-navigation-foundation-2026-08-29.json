@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+  "title": "Editor Inspector Detail Navigation Foundation",
+  "path": "docs/domains/editor-inspector-detail-navigation-foundation-2026-08-29.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Bounded implementation evidence for an Editor Inspector Details disclosure layer without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+      "pathOrContractId": "src/components/inspector/InspectorPanel.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+      "pathOrContractId": "src/styles/editor.css"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "6ae950600949ec5c868b86cd0db140c9a9bb5780",
+      "pathOrContractId": "src/tests/selectionContextSummary.test.ts"
+    }
+  ]
+}

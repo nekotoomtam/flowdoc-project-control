@@ -1,0 +1,1122 @@
+{
+  "kind": "core-document-wave-a-orientation",
+  "schemaVersion": 1,
+  "releaseLine": "V0_1_0a_1",
+  "repositoryId": "repo-core",
+  "sourceCommit": "76a2f2311a898e781f53773390d47b05812911e4",
+  "inventoryDigest": "36f54f2302d51895615a81767c92c0ccba18563703471c33169b3816b63e5f5b",
+  "reviewState": "reviewed",
+  "families": [
+    {
+      "familyId": "template-builder",
+      "sourceCount": 73,
+      "reviewState": "mapped",
+      "orientationSources": [
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md",
+          "rationale": "Sets the WYSIWYG editor direction and its intentionally deferred richer-editing boundary."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_CLOSE_AUDIT.md",
+          "rationale": "Records the stable browser-local editing foundation and its unfinished production scope."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_WYSIWYG_EXECUTION_CLOSE_AUDIT.md",
+          "rationale": "Summarizes the post-120 rich-inline and contenteditable execution foundation."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_STRUCTURAL_RUNTIME_CLOSE_AUDIT.md",
+          "rationale": "Defines the completed structural-runtime lane and the risks carried into later work."
+        },
+        {
+          "path": "docs/TEMPLATE_BUILDER_VIEWPORT_LARGE_DOCUMENT_AUDIT.md",
+          "rationale": "Establishes the bounded large-document viewport and virtualization behavior."
+        },
+        {
+          "path": "examples/template-builder-sandbox/README.md",
+          "rationale": "Explains the sandbox's extractable repository boundary and its Core package relationship."
+        }
+      ],
+      "provisionalModel": "Template Builder is an extractable browser sandbox around public vNext Core contracts. Its browser-local runtime turns canonical package snapshots and accepted change packets into a normalized render/store model, then supports bounded structural editing, WYSIWYG drafts, rich-inline commit and replay, and virtualized viewport rendering. Canonical package changes continue through vNext-native mutation and transaction bridges; browser-local drafts, DOM state, caches, and layout summaries are not canonical truth.",
+      "subgroups": [
+        {
+          "subgroupId": "sandbox-runtime-and-store",
+          "title": "Sandbox Runtime, Mutation Packets, and Store-backed Render Model",
+          "responsibility": "Define the extractable sandbox boundary and turn accepted Core mutations into browser cache, store, and render-model state, including bounded plain-text history and live-layout summaries.",
+          "boundary": "Owns sandbox/package separation, snapshot-to-runtime normalization, mutation/change packets, cache/store application, plain-text actions/history, and store-backed render facts. It does not own structural packet semantics, viewport windowing, active WYSIWYG input, rich-inline commits, durable persistence, or renderer output.",
+          "sourcePaths": [
+            "docs/TEMPLATE_BUILDER_BROWSER_CACHE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DELTA_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_HISTORY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_INTERACTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_LIVE_LAYOUT_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_MUTATION_BRIDGE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_NORMALIZED_EDITOR_VIEW_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RUNTIME_CACHE_MODULE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RUNTIME_STORE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_SANDBOX_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STORE_BACKED_RENDER_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_TEXT_ACTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_TEXT_PACKET_STORE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_UNDO_REDO_BOUNDARY.md",
+            "examples/template-builder-sandbox/README.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/sandbox-runtime-and-store.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "template-builder/structural-runtime-and-navigation",
+            "template-builder/viewport-and-virtualized-rendering",
+            "template-builder/wysiwyg-draft-input-and-guards",
+            "template-builder/rich-inline-commit-and-session-lifecycle"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do sandbox sources import only the public Core package without adding a root runtime dependency?",
+              "anchors": [
+                "examples/template-builder-sandbox/package.json",
+                "docs/TEMPLATE_BUILDER_SANDBOX_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do accepted packets update the cache and store while preserving the documented snapshot-staleness boundary?",
+              "anchors": [
+                "examples/template-builder-sandbox/src/coreBoundary.ts",
+                "docs/TEMPLATE_BUILDER_RUNTIME_STORE_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do plain-text history and live-layout summaries remain grounded in the vNext helpers rather than historical phase narrative?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_HISTORY_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_LIVE_LAYOUT_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "viewport-and-virtualized-rendering",
+          "title": "Viewport, Scheduler, and Virtualized Rendering",
+          "responsibility": "Convert bounded render-model facts and browser measurements into visible ranges, render windows, scheduler decisions, virtual stacks, lazy-detail plans, and resilient viewport/node anchors.",
+          "boundary": "Owns viewport prediction and rendering-window behavior after a store-backed model exists. It does not own the underlying runtime store, structural mutation packet apply, DOM recycling or performance timing claims, contenteditable caret mapping, or production renderer output.",
+          "sourcePaths": [
+            "docs/TEMPLATE_BUILDER_RENDER_SHELL_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RENDER_WINDOW_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_SECTION_OFFSET_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_SECTION_SPACER_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_ANCHOR_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_APPLY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_LARGE_DOCUMENT_AUDIT.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_LAZY_DETAIL_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_MEASUREMENT_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_NODE_ANCHOR_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_REQUEST_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_APPLY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_AUTOMATION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_CANDIDATE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_RUNTIME_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_SCROLL_CONTROLLER_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VIEWPORT_VIRTUAL_STACK_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VISIBLE_RANGE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_VISIBLE_RANGE_REQUEST_BOUNDARY.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md",
+          "dependsOn": ["template-builder/sandbox-runtime-and-store"],
+          "crossReferences": [
+            "template-builder/structural-runtime-and-navigation",
+            "template-builder/wysiwyg-draft-input-and-guards"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the bounded viewport assertions preserve the 72-section, 936-node shape, spacers, and far-node anchor restoration?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_VIEWPORT_LARGE_DOCUMENT_AUDIT.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Do scheduler sequence, request-id, and stale-candidate guards remain shape evidence rather than wall-clock performance claims?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_RUNTIME_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_VIEWPORT_SCHEDULER_AUTOMATION_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "structural-runtime-and-navigation",
+          "title": "Structural Runtime, Commands, and Navigation",
+          "responsibility": "Define the structural projection and packet-v1 path from accepted Core structural operations through sandbox bridge/store application, inspector commands, outline jumps, and diagnostics navigation.",
+          "boundary": "Owns structural-tree semantics and packet-v1 application constraints. It does not make packet v1 a durable or public API, own generic runtime-cache rules, implement persistence or collaboration, or claim production editor integration.",
+          "sourcePaths": [
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_COMMAND_POLICY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_COMMAND_UI_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_DIAGNOSTICS_NAVIGATION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_MUTATION_BRIDGE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_OUTLINE_JUMP_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_PACKET_CONTRACT_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_PACKET_STORE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_PROJECTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STRUCTURAL_RUNTIME_CLOSE_AUDIT.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/structural-runtime-and-navigation.md",
+          "dependsOn": ["template-builder/sandbox-runtime-and-store"],
+          "crossReferences": [
+            "template-builder/viewport-and-virtualized-rendering",
+            "template-builder/wysiwyg-draft-input-and-guards"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Does structural projection remain read-only while packet v1 updates lookup indexes, leaves the boot snapshot stale, and routes through accepted Core operations?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_PROJECTION_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_PACKET_CONTRACT_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_MUTATION_BRIDGE_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Does diagnostics navigation reject issues without a nodeId?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_STRUCTURAL_DIAGNOSTICS_NAVIGATION_BOUNDARY.md",
+                "examples/template-builder-sandbox/src/coreBoundary.ts",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "wysiwyg-draft-input-and-guards",
+          "title": "WYSIWYG Draft Input, Selection, and Browser Guards",
+          "responsibility": "Define safe browser-local WYSIWYG draft activation, selection/caret/text-command/IME handling, pre-commit layout summaries, and planning-only toolbar, field, and history affordances.",
+          "boundary": "Owns local active-draft behavior and guard outcomes before rich-inline execution. It does not own canonical rich-inline mutation, contenteditable segment capture or range mapping, durable history or persistence, actual renderer/layout output, or a production primary-input replacement.",
+          "sourcePaths": [
+            "docs/TEMPLATE_BUILDER_DRAFT_COMMAND_CONTEXT_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_COMPOSITION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_IME_HARDENING_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_RUNTIME_MODULE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_SELECTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_SELECTION_CARET_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_DRAFT_TEXT_COMMAND_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_FIELD_CHIP_INLINE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_STYLE_PATCH_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_STYLE_AWARE_HISTORY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_TEXT_DRAFT_LAYOUT_PUSH_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_TOOLBAR_STATE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_CLOSE_AUDIT.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/wysiwyg-draft-input-and-guards.md",
+          "dependsOn": ["template-builder/sandbox-runtime-and-store"],
+          "crossReferences": [
+            "template-builder/rich-inline-commit-and-session-lifecycle",
+            "template-builder/viewport-and-virtualized-rendering"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the design-lock truth layers and safe eligibility keep draft state browser-local until bridge commit?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_DESIGN_LOCK.md",
+                "docs/TEMPLATE_BUILDER_WYSIWYG_DRAFT_BOUNDARY.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Does IME composition block command, range, and commit actions while the Phase 81-84 affordances remain planning states?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_DRAFT_IME_HARDENING_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_WYSIWYG_CLOSE_AUDIT.md",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "rich-inline-commit-and-session-lifecycle",
+          "title": "Rich Inline Capture, Commit, Replay, and Session Lifecycle",
+          "responsibility": "Carry rich-inline facts from contenteditable-like segment/range capture and local style/chip state through commit planning, vNext-native commit, undo/redo replay, session-record preparation, and live/exact stale signaling.",
+          "boundary": "Owns rich-inline lifecycle contracts and their explicit deferred states. It does not claim renderer artifact generation, storage-adapter writes, collaboration merge, WASM measurement replacement, or that the hardened contenteditable surface is the primary editor input.",
+          "sourcePaths": [
+            "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_RANGE_MAPPING_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SEGMENT_CAPTURE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SURFACE_HARDENING_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_FIELD_CHIP_INSERT_EXECUTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_COMMIT_BRIDGE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_COMMIT_PLANNING_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_LIVE_EXACT_PARITY_AUDIT.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_PATCH_EXECUTION_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_SESSION_PERSISTENCE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_STATE_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_RICH_INLINE_UNDO_REDO_REPLAY_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_TOOLBAR_COMMAND_DISPATCH_BOUNDARY.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_EXECUTION_CLOSE_AUDIT.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_EXECUTION_REBASELINE_AUDIT.md",
+            "docs/TEMPLATE_BUILDER_WYSIWYG_REENTRY_AUDIT.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
+          "dependsOn": [
+            "template-builder/wysiwyg-draft-input-and-guards",
+            "template-builder/sandbox-runtime-and-store"
+          ],
+          "crossReferences": [
+            "template-builder/viewport-and-virtualized-rendering",
+            "template-builder/structural-runtime-and-navigation"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do local segment, range, and hardening layers use FlowDoc UTF-16 offsets without mutating packages?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_RANGE_MAPPING_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SEGMENT_CAPTURE_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_CONTENTEDITABLE_SURFACE_HARDENING_BOUNDARY.md"
+              ]
+            },
+            {
+              "question": "Does rich-inline execution mutate only accepted plans, reject stale plans, preserve fields and styles, and replay through the vNext-native helper?",
+              "anchors": [
+                "src/authoring/richInlineCommit.ts",
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_COMMIT_BRIDGE_BOUNDARY.md",
+                "tests/richInlineCommit.test.ts",
+                "tests/templateBuilderSandboxBoundary.test.ts"
+              ]
+            },
+            {
+              "question": "Are session records JSON-safe preparation that excludes layout and artifact truth, with Phase 130 reporting invalidation rather than rendering?",
+              "anchors": [
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_SESSION_PERSISTENCE_BOUNDARY.md",
+                "docs/TEMPLATE_BUILDER_RICH_INLINE_LIVE_EXACT_PARITY_AUDIT.md",
+                "tests/richInlineLiveExactParityAudit.test.ts"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "TB-C1",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
+          "summary": "Earlier range and execution cards describe future work while later cards describe bounded implementation; neither chronology nor PASS language establishes production readiness.",
+          "evidenceNeeds": "Inspect current browser modules and focused sandbox/rich-inline tests; distinguish bounded implementation, primary-input status, and production readiness."
+        },
+        {
+          "id": "TB-C2",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
+          "summary": "The active sandbox draft remains textarea-first even though a contenteditable hardening boundary exists.",
+          "evidenceNeeds": "Inspect public/app.js, draftContenteditableSurfaceHardening.js, event wiring, and browser tests for the active input path."
+        },
+        {
+          "id": "TB-C3",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
+          "summary": "The session record is storage-ready but the boundary expressly excludes storage-adapter writes.",
+          "evidenceNeeds": "Inspect src/authoring/richInlineSessionPersistence.ts, exports, callers, and tests for record construction versus adapter writes."
+        },
+        {
+          "id": "TB-C4",
+          "owningSubgroupId": "rich-inline-commit-and-session-lifecycle",
+          "summary": "Live/exact parity proves stale invalidation, not exact renderer or export parity.",
+          "evidenceNeeds": "Inspect src/authoring/richInlineCommit.ts, mutation bridge/core boundary, and tests/richInlineLiveExactParityAudit.test.ts for invalidation-only behavior."
+        },
+        {
+          "id": "TB-C5",
+          "owningSubgroupId": "structural-runtime-and-navigation",
+          "summary": "Structural packet v1 is reliable enough as a sandbox foundation transport while remaining non-durable and non-public.",
+          "evidenceNeeds": "Verify structural packet consumers, routes, and focused tests; retain the sandbox-foundation boundary unless executable integration evidence proves more."
+        },
+        {
+          "id": "TB-C6",
+          "owningSubgroupId": "viewport-and-virtualized-rendering",
+          "summary": "The viewport audit proves bounded composition with synthetic shape assertions, not browser timing, recycled-DOM pools, or production performance.",
+          "evidenceNeeds": "Re-run or inspect focused shape tests and require separate performance evidence for any latency claim."
+        }
+      ]
+    },
+    {
+      "familyId": "live-draft",
+      "sourceCount": 64,
+      "reviewState": "mapped",
+      "orientationSources": [
+        {
+          "path": "docs/superpowers/specs/2026-07-28-unified-incremental-live-draft-product-readiness-design.md",
+          "rationale": "Provides the approved Phase 5 product-readiness architecture direction."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_UNIFIED_INCREMENTAL_ROOT_5B.md",
+          "rationale": "Defines the closed 5B-1 Root V2 incremental transition boundary."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_UNIFIED_TEXT_BLOCK_ROOT_5A.md",
+          "rationale": "Captures the accepted 5A unified text-block retained-root checkpoint."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_MR1_PERSISTENT_FLOW_FOUNDATION.md",
+          "rationale": "Explains the immutable persistent-flow tree and exact structural-reuse policy."
+        },
+        {
+          "path": "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md",
+          "rationale": "Frames the cross-runtime handoff and its non-activation limits."
+        },
+        {
+          "path": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-review-verdict.md",
+          "rationale": "Records the final scoped review verdict and the reviewed 5B-1 V3 boundaries."
+        },
+        {
+          "path": ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md",
+          "rationale": "Verifies the sole active Root V2 policy and its bounded source envelope."
+        },
+        {
+          "path": "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md",
+          "rationale": "Orients the reviewed source-commit transaction seam amendment and its active terminology."
+        }
+      ],
+      "provisionalModel": "Live Draft retains the Core-owned, process-local TextBlock layout route and its product-boundary history: renderer limits, geometry and scene projection, persistent-flow/range foundations, the 5A/5B root transition, later source-authority and source-commit transaction work, and scoped corrective evidence. Product handoffs, plans, and corrective reports keep their distinct authority; none alone establishes browser Worker, Editor, Backend, or broad product activation as current Core truth.",
+      "subgroups": [
+        {
+          "subgroupId": "product-readiness-and-renderer-boundaries",
+          "title": "Product Readiness and Renderer Boundaries",
+          "responsibility": "Capture cross-repository product ownership and the renderer-consumption, no-relayout boundary.",
+          "boundary": "Owns intended product and renderer limits, not Core implementation truth, activation claims, or retained incremental internals.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md",
+            "docs/LIVE_DRAFT_MR1_MULTI_BLOCK_COMPOSITION.md",
+            "docs/superpowers/specs/2026-07-28-unified-incremental-live-draft-product-readiness-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/product-readiness-and-renderer-boundaries.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "live-draft/geometry-and-scene-projection",
+            "live-draft/root-and-v3-transition-contracts"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the display-list implementation and tests preserve renderer consumption without measurement or relayout?",
+              "anchors": [
+                "src/renderer/textFlowDisplayListV1.ts",
+                "tests/textFlowDisplayListV1.test.ts"
+              ]
+            },
+            {
+              "question": "Do public exports avoid turning the handoff into unintended product activation?",
+              "anchors": [
+                "src/index.ts",
+                "docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "geometry-and-scene-projection",
+          "title": "Geometry and Scene Projection",
+          "responsibility": "Own bounded Phase 3/4 geometry, producer facts, display-list projection, and authored-box and inline-image layout records.",
+          "boundary": "Excludes retained incremental-root transitions, source-commit authority, Canvas layout authority, and cross-runtime pixel-parity claims.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_AUTHORED_BOX_GEOMETRY_4A.md",
+            "docs/LIVE_DRAFT_MR1_COMPLETE_GEOMETRY_BOUNDARY.md",
+            "docs/LIVE_DRAFT_MR1_ENGINE_FACTS.md",
+            "docs/LIVE_DRAFT_MR1_FRAGMENT_DISPLAY_LIST.md",
+            "docs/LIVE_DRAFT_MR1_INLINE_IMAGE_GEOMETRY_4B.md",
+            "docs/LIVE_DRAFT_MR1_LAYOUT_UNIT_POLICY.md",
+            "docs/LIVE_DRAFT_MR1_MULTI_RUN_LAYOUT_CONTRACT.md",
+            "docs/LIVE_DRAFT_MR1_SPATIAL_WRAPPING_3A.md",
+            "docs/LIVE_DRAFT_XR4_TEXT_FLOW_DISPLAY_LIST.md",
+            "docs/LIVE_DRAFT_XR5_SOURCE_SEGMENTS_AND_FORCED_BREAKS.md",
+            "docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md",
+            "docs/superpowers/plans/2026-07-27-core-spatial-wrapping-3a.md",
+            "docs/superpowers/plans/2026-07-27-initial-text-block-authored-box-geometry-4a.md",
+            "docs/superpowers/plans/2026-07-27-inline-image-line-box-geometry-4b.md",
+            "docs/superpowers/specs/2026-07-27-initial-text-block-authored-box-geometry-design.md",
+            "docs/superpowers/specs/2026-07-27-inline-image-line-box-geometry-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/geometry-and-scene-projection.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "live-draft/persistent-flow-and-range-foundations",
+            "live-draft/root-and-v3-transition-contracts",
+            "live-draft/product-readiness-and-renderer-boundaries"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do persistent layout contracts and display-list projection keep geometry producer-owned?",
+              "anchors": [
+                "src/layout/textBlockPersistentFlowContractV1.ts",
+                "src/renderer/textFlowDisplayListV1.ts",
+                "tests/textFlowDisplayListV1.test.ts"
+              ]
+            },
+            {
+              "question": "Do Phase 3/4 tests preserve authored-box, inline-image, and spatial-wrapping gates?",
+              "anchors": [
+                "tests/liveDraftMr1SpatialWrapping3a.test.ts",
+                "tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts",
+                "tests/liveDraftMr1InlineImageGeometry4b.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "persistent-flow-and-range-foundations",
+          "title": "Persistent Flow and Range Foundations",
+          "responsibility": "Own persistent flow-tree, contextual range, semantic checkpoint, affected-line, and oracle-comparison foundations.",
+          "boundary": "Excludes 5B Root V2 admission and work-policy changes, product-speed claims, and using complete-oracle work as an incremental execution input.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_COMPOSITIONAL_SEMANTIC_CHECKPOINTS.md",
+            "docs/LIVE_DRAFT_MR1_CONTEXTUAL_RANGE_FACTS.md",
+            "docs/LIVE_DRAFT_MR1_INCREMENTAL_CORE_COMPOSITION.md",
+            "docs/LIVE_DRAFT_MR1_INCREMENTAL_REFLOW_ANALYSIS.md",
+            "docs/LIVE_DRAFT_MR1_ORACLE_INDEPENDENT_CORE_EXECUTION.md",
+            "docs/LIVE_DRAFT_MR1_PERSISTENT_FLOW_FOUNDATION.md",
+            "docs/LIVE_DRAFT_MR1_RANGE_EXECUTION_AND_AFFECTED_LINES.md",
+            "docs/LIVE_DRAFT_MR1_RETAINED_RANGE_PLANNER.md",
+            "docs/superpowers/plans/2026-07-22-persistent-text-block-flow-tree-foundation.md",
+            "docs/superpowers/specs/2026-07-21-persistent-text-block-spatial-flow-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/persistent-flow-and-range-foundations.md",
+          "dependsOn": ["live-draft/geometry-and-scene-projection"],
+          "crossReferences": ["live-draft/root-and-v3-transition-contracts"],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do persistent flow structures and updates prove bounded structural reuse independently from product-speed claims?",
+              "anchors": [
+                "src/layout/textBlockPersistentFlowTreeV1.ts",
+                "src/layout/textBlockPersistentFlowUpdateV1.ts",
+                "tests/liveDraftMr1PersistentFlowFoundation.test.ts",
+                "tests/textBlockPersistentFlowTreeV1.test.ts",
+                "tests/textBlockPersistentFlowUpdateV1.test.ts"
+              ]
+            },
+            {
+              "question": "Does the line tree keep complete-oracle work separate from incremental execution input?",
+              "anchors": [
+                "src/layout/textBlockPersistentLayoutLineTreeV1.ts",
+                "docs/LIVE_DRAFT_MR1_ORACLE_INDEPENDENT_CORE_EXECUTION.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "root-and-v3-transition-contracts",
+          "title": "Root and V3 Transition Contracts",
+          "responsibility": "Own the 5A/5B unified root, V3 corrective/source-envelope contract, and their related plan/spec evolution.",
+          "boundary": "Excludes later 5B-2 source-authority and source-commit transaction internals; keeps V3-only policy and inactive capability rows scoped to their named evidence.",
+          "sourcePaths": [
+            "docs/LIVE_DRAFT_MR1_UNIFIED_INCREMENTAL_ROOT_5B.md",
+            "docs/LIVE_DRAFT_MR1_UNIFIED_TEXT_BLOCK_ROOT_5A.md",
+            "docs/superpowers/plans/2026-07-28-unified-text-block-retained-root-5a.md",
+            "docs/superpowers/plans/2026-07-30-unified-incremental-root-transition-5b.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-corrective.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-prebinding-source-envelope-amendment.md",
+            "docs/superpowers/plans/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective.md",
+            "docs/superpowers/specs/2026-07-30-unified-incremental-root-transition-5b-design.md",
+            "docs/superpowers/specs/2026-07-31-unified-incremental-root-transition-5b-1-corrective-design.md",
+            "docs/superpowers/specs/2026-07-31-unified-incremental-root-transition-5b-1-prebinding-source-envelope-amendment-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/root-and-v3-transition-contracts.md",
+          "dependsOn": [
+            "live-draft/geometry-and-scene-projection",
+            "live-draft/persistent-flow-and-range-foundations"
+          ],
+          "crossReferences": [
+            "live-draft/corrective-evidence",
+            "live-draft/source-authority-and-commit-transaction"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do Root V2, scene, delivery, and work-policy code preserve the named 5A/5B capability boundaries?",
+              "anchors": [
+                "src/layout/textBlockUnifiedLayoutRootV2.ts",
+                "src/layout/textBlockPersistentSceneV2.ts",
+                "src/layout/textBlockSceneDeliveryV2.ts",
+                "src/layout/textBlockUnifiedLayoutWorkPolicyV1.ts"
+              ]
+            },
+            {
+              "question": "Do the focused root and calibration tests distinguish 5A acceptance from V3-only policy claims?",
+              "anchors": [
+                "tests/liveDraftMr1UnifiedLayoutRoot5a.test.ts",
+                "tests/liveDraftMr1UnifiedIncrementalRoot5b.test.ts",
+                "tests/textBlockUnifiedLayoutRootV2.test.ts",
+                "tests/textBlockUnifiedLayoutWorkCalibrationV3.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "source-authority-and-commit-transaction",
+          "title": "Source Authority and Commit Transaction",
+          "responsibility": "Own 5B-2 source topology, producer invocation, evidence/work ownership, and the exact source-commit transaction seam.",
+          "boundary": "Excludes generic product activation and older V3 root policy except as dependency context; retains superseded plans as history and preserves Thai/English companion parity work.",
+          "sourcePaths": [
+            "docs/superpowers/plans/2026-08-01-unified-incremental-root-transition-5b-2-v3.md",
+            "docs/superpowers/plans/2026-08-02-unified-incremental-root-transition-5b-2-evidence-v2.md",
+            "docs/superpowers/plans/2026-08-03-producer-invocation-authority-boundary.md",
+            "docs/superpowers/plans/2026-08-03-unified-incremental-root-transition-5b-2-rebaseline-review-th.md",
+            "docs/superpowers/plans/2026-08-03-unified-incremental-root-transition-5b-2-rebaseline.md",
+            "docs/superpowers/plans/2026-08-09-unified-incremental-root-transition-5b2-plan-a-review-th.md",
+            "docs/superpowers/plans/2026-08-09-unified-incremental-root-transition-5b2-plan-a-source-authority.md",
+            "docs/superpowers/plans/2026-08-11-source-commit-transaction-seam-revised.md",
+            "docs/superpowers/plans/2026-08-11-source-commit-transaction-seam.md",
+            "docs/superpowers/specs/2026-08-01-unified-incremental-root-transition-5b-2-v3-amendment-design.md",
+            "docs/superpowers/specs/2026-08-02-unified-incremental-source-topology-and-fallback-target-design-correction.md",
+            "docs/superpowers/specs/2026-08-02-unified-incremental-transition-evidence-v2-design-correction.md",
+            "docs/superpowers/specs/2026-08-03-producer-invocation-authority-boundary-design.md",
+            "docs/superpowers/specs/2026-08-03-unified-incremental-root-transition-5b-2-plan-lock-design-correction-review-th.md",
+            "docs/superpowers/specs/2026-08-03-unified-incremental-root-transition-5b-2-plan-lock-design-correction.md",
+            "docs/superpowers/specs/2026-08-09-unified-incremental-root-transition-5b2-continuation-rebaseline-design.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-glossary-th.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-glossary.md",
+            "docs/superpowers/specs/2026-08-10-source-commit-transaction-seam-design.md",
+            "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/source-authority-and-commit-transaction.md",
+          "dependsOn": ["live-draft/root-and-v3-transition-contracts"],
+          "crossReferences": [
+            "live-draft/corrective-evidence",
+            "live-draft/product-readiness-and-renderer-boundaries"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the source-authority and transaction internals preserve producer, evidence/work-owner, and source-commit seams?",
+              "anchors": [
+                "src/layout/textBlockUnifiedLayoutProducerInvocationAuthorityV2.ts",
+                "src/layout/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.ts",
+                "src/layout/textBlockUnifiedLayoutSourceAuthorityInternalsV1.ts",
+                "src/layout/textBlockUnifiedLayoutSourceCommitTransactionInternalsV1.ts"
+              ]
+            },
+            {
+              "question": "Do focused tests establish current code evidence while the amendment remains normative pending its named proof?",
+              "anchors": [
+                "tests/textBlockUnifiedLayoutProducerInvocationAuthorityV2.test.ts",
+                "tests/textBlockUnifiedLayoutEvidenceWorkOwnerRegistryV2.test.ts",
+                "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts",
+                "docs/superpowers/specs/2026-08-11-source-commit-transaction-seam-review-amendment-design.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "corrective-evidence",
+          "title": "Corrective Evidence",
+          "responsibility": "Own five scoped repair, review, and verification records as evidence and residual-risk history.",
+          "boundary": "Does not silently become a normative implementation contract or extend a scoped PASS beyond its reviewed code and test range.",
+          "sourcePaths": [
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/collision-fix-report.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-review-verdict.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-verification.md",
+            ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/source-envelope-verification.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/live-draft/corrective-evidence.md",
+          "dependsOn": ["live-draft/root-and-v3-transition-contracts"],
+          "crossReferences": ["live-draft/source-authority-and-commit-transaction"],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the named adversarial and scene-delivery tests support the corrective reports only within their stated ranges?",
+              "anchors": [
+                "tests/textBlockUnifiedLayoutAdversarialV2.test.ts",
+                "tests/textBlockSceneDeliveryV2.test.ts"
+              ]
+            },
+            {
+              "question": "Do report ranges preserve both the earlier type-check concern and the later scoped verification rather than resolving by chronology?",
+              "anchors": [
+                ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-corrective/delivery-fix-report.md",
+                ".superpowers/sdd/2026-07-31-unified-incremental-root-transition-5b-1-v3-corrective/final-verification.md"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "LD-C1",
+          "owningSubgroupId": "product-readiness-and-renderer-boundaries",
+          "summary": "The handoff's dated current-baseline prose retains older Phase 3/4 history and explicit NO-GO areas.",
+          "evidenceNeeds": "Establish the frozen implementation/test baseline before current-state synthesis and preserve historical labels."
+        },
+        {
+          "id": "LD-C2",
+          "owningSubgroupId": "geometry-and-scene-projection",
+          "summary": "XR-4/XR-5 prove renderer-consumption geometry and selected cross-runtime rows, not Canvas/PDF glyph-pixel parity or production binding.",
+          "evidenceNeeds": "Inspect projection contract/tests and external evidence references; retain no-relayout and QA-only limits."
+        },
+        {
+          "id": "LD-C3",
+          "owningSubgroupId": "persistent-flow-and-range-foundations",
+          "summary": "Range/oracle records can be misread as per-keystroke performance proof even where they describe complete QA materialization.",
+          "evidenceNeeds": "Compare planner and line-tree tests with work ledgers; require measurements for performance claims."
+        },
+        {
+          "id": "LD-C4",
+          "owningSubgroupId": "root-and-v3-transition-contracts",
+          "summary": "V3 records a scoped PASS and V3-only active policy with a 5B-2 stop, while later documents describe subsequent replanning.",
+          "evidenceNeeds": "Resolve exact frozen policy, export, and test state; apply plan/spec precedence only where implementation evidence confirms it."
+        },
+        {
+          "id": "LD-C5",
+          "owningSubgroupId": "source-authority-and-commit-transaction",
+          "summary": "The 2026-08-10 seam design is partly superseded by the 2026-08-11 approved amendment, and Thai companion documents must not drift.",
+          "evidenceNeeds": "Compare amendment, earlier seam design, glossary pair, transaction internals, and focused transaction tests."
+        },
+        {
+          "id": "LD-C6",
+          "owningSubgroupId": "corrective-evidence",
+          "summary": "An earlier blocked type-check concern and later passing verification cover different ranges, so chronology alone is insufficient.",
+          "evidenceNeeds": "Verify cited frozen blobs and exact test names; retain the local repair concern without treating it as a persistent family failure."
+        }
+      ]
+    },
+    {
+      "familyId": "text-engine",
+      "sourceCount": 26,
+      "reviewState": "mapped",
+      "orientationSources": [
+        {
+          "path": "docs/TEXT_ENGINE_ADAPTER_LANE_CLOSE_AUDIT.md",
+          "rationale": "Closes the adapter and evidence foundation while naming external-engine work still excluded."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_ADAPTER_SPI_BOUNDARY.md",
+          "rationale": "Defines the adapter service-provider interface and evidence-only shaping boundary."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_RUNTIME_IDENTITY_BOUNDARY.md",
+          "rationale": "Pins the runtime identity facts needed before parity or production measurement claims."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_EVIDENCE_ACCEPTANCE_BOUNDARY.md",
+          "rationale": "Defines validation for adapter evidence before any pagination measurement handoff."
+        },
+        {
+          "path": "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_GATE.md",
+          "rationale": "States the WASM artifact readiness gate and currently missing toolchain prerequisites."
+        },
+        {
+          "path": "packages/text-engine-rust-wasm/README.md",
+          "rationale": "Describes the package-local Rust/WASM adapter boundary and its QA-only smoke scope."
+        }
+      ],
+      "provisionalModel": "Text Engine owns the evidence-first boundary between Core text-measurement consumers and an external Rust/WASM shaping implementation: Core defines and accepts deterministic request/evidence contracts, package code turns bounded native/WASM work into that evidence, and package-local WASM tooling/artifact records must not be promoted into a production measurement claim without executable evidence.",
+      "subgroups": [
+        {
+          "subgroupId": "adapter-and-provider",
+          "title": "Adapter and Provider",
+          "responsibility": "Define the Core SPI, accept independently produced glyph and line evidence, derive the existing measurement draft after acceptance, and provide an optional renderer-backed bridge without replacing default measurement.",
+          "boundary": "Owns Core-side request/evidence validation and bridge contracts; excludes Rust/WASM execution, runtime/digest provenance, raw shaping mapping, and any default-measurer or production-binding replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_ADAPTER_LANE_CLOSE_AUDIT.md",
+            "docs/TEXT_ENGINE_ADAPTER_PACKAGE_SCAFFOLD.md",
+            "docs/TEXT_ENGINE_ADAPTER_SPI_BOUNDARY.md",
+            "docs/TEXT_ENGINE_EVIDENCE_ACCEPTANCE_BOUNDARY.md",
+            "docs/TEXT_ENGINE_MEASUREMENT_DRAFT_HANDOFF_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RENDERER_BACKED_PROVIDER_BOUNDARY.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/adapter-and-provider.md",
+          "dependsOn": [
+            "text-engine/runtime-identity-and-evidence"
+          ],
+          "crossReferences": [
+            "text-engine/wasm-toolchain-and-artifacts",
+            "text-engine/rustybuzz-shaping",
+            "text-block/v4-measurement-and-pagination"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do the frozen Core SPI, evidence acceptance, and measurement draft handoff remain covered by their focused implementation and tests?",
+              "anchors": [
+                "src/renderer/textEngineAdapterSpi.ts",
+                "src/renderer/textEngineEvidenceAcceptance.ts",
+                "src/renderer/textEngineMeasurementDraftHandoff.ts",
+                "tests/textEngineAdapterSpi.test.ts",
+                "tests/textEngineEvidenceAcceptance.test.ts",
+                "tests/textEngineMeasurementDraftHandoff.test.ts"
+              ]
+            },
+            {
+              "question": "Does the package renderer-backed provider remain optional while measureVNextText(...) stays the default path and the package import boundary stays type/public-contract only?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/rendererBackedProvider.ts",
+                "tests/rendererBackedTextEngineProvider.test.ts",
+                "src/renderer/textEngineAdapterSpi.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "runtime-identity-and-evidence",
+          "title": "Runtime Identity and Evidence",
+          "responsibility": "Define the JSON-safe runtime identity/digest evidence shape and the status rules for building and populating it before any parity or production claim.",
+          "boundary": "Owns identity ingredients, digest status, and root-safe summaries; excludes creating/loading a WASM artifact, raw native/WASM output, parity proof, drift thresholds, and Core production measurement binding.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_DIGEST_EVIDENCE_BUILDER_GATE.md",
+            "docs/TEXT_ENGINE_RUNTIME_IDENTITY_DIGEST_EVIDENCE_POPULATION_GATE.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/runtime-identity-and-evidence.md",
+          "dependsOn": [
+            "text-engine/wasm-toolchain-and-artifacts"
+          ],
+          "crossReferences": [
+            "text-engine/adapter-and-provider",
+            "text-engine/rustybuzz-shaping",
+            "live-draft/corrective-evidence"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do runtime identity records preserve the JSON-safe ingredients and parity-ready requirement for every pinned ingredient?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/runtimeIdentity.ts",
+                "packages/text-engine-rust-wasm/fixtures/text-engine-runtime-identity.v1.json",
+                "tests/textEngineRuntimeIdentity.test.ts"
+              ]
+            },
+            {
+              "question": "Is pending or pinned digest evidence read from executable fixtures or artifacts rather than copied from a gate narrative?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/runtimeIdentityDigestEvidenceBuilder.ts",
+                "packages/text-engine-rust-wasm/fixtures",
+                "tests/textEngineRuntimeIdentityDigestEvidenceBuilderGate.test.ts",
+                "tests/textEngineRuntimeIdentityDigestEvidencePopulationGate.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "rustybuzz-shaping",
+          "title": "Rustybuzz Shaping",
+          "responsibility": "Convert bounded package-local Rustybuzz smoke output into FlowDoc UTF-16 evidence, expand corpus coverage, and derive multi-line wrap evidence while preserving the separate accepted-evidence lane.",
+          "boundary": "Owns byte-cluster-to-UTF-16 mapping and bounded smoke/wrap evidence; excludes native/WASM parity, general ICU4X qualification, production engine selection, pagination placement, and renderer replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_LINE_WRAP_EVIDENCE_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_RAW_MAPPING_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_SMOKE_CORPUS_BOUNDARY.md",
+            "docs/TEXT_ENGINE_RUSTYBUZZ_SMOKE_PACKAGE_BOUNDARY.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/rustybuzz-shaping.md",
+          "dependsOn": [
+            "text-engine/adapter-and-provider"
+          ],
+          "crossReferences": [
+            "text-engine/runtime-identity-and-evidence",
+            "text-engine/wasm-toolchain-and-artifacts",
+            "text-block/v4-measurement-and-pagination"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen Rustybuzz mapping, corpus, and line-wrap sources preserve safe UTF-8 byte-cluster to UTF-16 range conversion?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts",
+                "packages/text-engine-rust-wasm/src/rustybuzzSmokeCorpus.ts",
+                "packages/text-engine-rust-wasm/src/lineWrapEvidence.ts",
+                "tests/textEngineRustybuzzRawMapping.test.ts"
+              ]
+            },
+            {
+              "question": "Does accepted line evidence retain complete, non-overlapping glyph coverage across the native smoke corpus and wrap cases?",
+              "anchors": [
+                "tests/textEngineRustybuzzSmokeCorpus.test.ts",
+                "tests/textEngineRustybuzzSmokePackage.test.ts",
+                "tests/textEngineLineWrapEvidence.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "wasm-toolchain-and-artifacts",
+          "title": "WASM Toolchain and Artifacts",
+          "responsibility": "Preserve the package-local operational boundary and document the toolchain acquisition/provisioning, build, bindgen, artifact-production, and digest-gating chronology needed to establish an executable WASM artifact fact.",
+          "boundary": "Owns package-local delivery/environment evidence and README operations; excludes treating historical gates as current parity or production measurement readiness, and excludes Core default-measurer replacement.",
+          "sourcePaths": [
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_BUILD_OUTPUT_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_DIGEST_PINNING_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_ARTIFACT_PRODUCTION_RETRY_GATE.md",
+            "docs/TEXT_ENGINE_WASM_BINDGEN_EXPORT_DEPENDENCY_GATE.md",
+            "docs/TEXT_ENGINE_WASM_BUILD_TOOLCHAIN_READINESS_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_ACQUISITION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_OPTIONAL_READINESS_SMOKE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_PROVISIONING_BOOTSTRAP_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_PROVISIONING_EXECUTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_RUST_UPGRADE_EXECUTION_GATE.md",
+            "docs/TEXT_ENGINE_WASM_TOOLCHAIN_VERSION_COMPATIBILITY_GATE.md",
+            "packages/text-engine-rust-wasm/README.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-engine/wasm-toolchain-and-artifacts.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "text-engine/runtime-identity-and-evidence",
+            "text-engine/rustybuzz-shaping",
+            "live-draft/root-and-v3-transition-contracts",
+            "live-draft/corrective-evidence"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen package scripts, manifests, and fixtures establish toolchain and artifact facts without treating chronological gate prose as current readiness?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/package.json",
+                "packages/text-engine-rust-wasm/rust-shaper/Cargo.toml",
+                "packages/text-engine-rust-wasm/scripts/check-wasm-toolchain.mjs",
+                "packages/text-engine-rust-wasm/fixtures"
+              ]
+            },
+            {
+              "question": "Can any claimed SHA-256 be recomputed over exact frozen artifact bytes and matched to its owning fixture or identity record?",
+              "anchors": [
+                "packages/text-engine-rust-wasm",
+                "packages/text-engine-rust-wasm/fixtures",
+                "packages/text-engine-rust-wasm/src/runtimeIdentity.ts"
+              ]
+            },
+            {
+              "question": "Does the package README remain a repo-local operational README under its existing family-map disposition?",
+              "anchors": [
+                "packages/text-engine-rust-wasm/README.md",
+                "migrations/V0_1_0a_1/core/family-map.json"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "TE-C1",
+          "owningSubgroupId": "wasm-toolchain-and-artifacts",
+          "summary": "Chronological toolchain gates disagree about artifact status, so phase/date alone must not establish current production readiness.",
+          "evidenceNeeds": "Verify exact frozen artifact bytes, runtime identity/digest fixtures, package scripts, and corresponding tests before drawing an artifact or production conclusion."
+        },
+        {
+          "id": "TE-C2",
+          "owningSubgroupId": "wasm-toolchain-and-artifacts",
+          "summary": "The package README mixes historical adapter/gate narrative, package commands, and QA-only boundaries.",
+          "evidenceNeeds": "Retain its package-local operational role and migrate family-level explanation only after confirming it is not command, layout, or package-boundary documentation."
+        },
+        {
+          "id": "TE-C3",
+          "owningSubgroupId": "adapter-and-provider",
+          "summary": "Accepted evidence does not bind a production measurer because the default measureVNextText(...) path remains independent.",
+          "evidenceNeeds": "Inspect renderer/Core call sites and focused tests to confirm that the default measurement path remains independent of the optional provider."
+        },
+        {
+          "id": "TE-C4",
+          "owningSubgroupId": "rustybuzz-shaping",
+          "summary": "Bounded Rustybuzz mapping, corpus, and wrap evidence does not prove native/WASM parity or general production measurement readiness.",
+          "evidenceNeeds": "Compare source corpus, summary manifests, parity/drift records outside this family, and executable tests while retaining the bounded smoke scope."
+        }
+      ]
+    },
+    {
+      "familyId": "text-block",
+      "sourceCount": 10,
+      "reviewState": "mapped",
+      "orientationSources": [
+        {
+          "path": "docs/TEXT_BLOCK_V1_VERSION_MIGRATION_DECISION.md",
+          "rationale": "Sets the version and migration decision for the next canonical authored document shape."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_AUTHORING_CONTRACT.md",
+          "rationale": "Defines the v4 canonical text-block grammar, projection, and selection boundary."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md",
+          "rationale": "Records the retained core semantics ready for columns and table-split planning."
+        },
+        {
+          "path": "docs/TEXT_BLOCK_V4_MEASUREMENT_SOURCE_RANGES.md",
+          "rationale": "Defines the measurement source packet and accepted line-range boundary."
+        }
+      ],
+      "provisionalModel": "Text Block owns authored inline grammar and deterministic selection/commit semantics, then produces resolved measurement source ranges and isolated page fragments. The v1 documents are historical grammar/migration evidence for a v3-to-v4 transition; the v4 documents describe the later bounded contract and must be verified against frozen code/tests before being represented as a current claim.",
+      "subgroups": [
+        {
+          "subgroupId": "v1-grammar-and-migration",
+          "title": "V1 Grammar and Migration History",
+          "responsibility": "Preserve the v1 target grammar, pure validator/normalizer, producer alignment, and explicit v3-to-v4 copy-forward migration decision as historical transition evidence.",
+          "boundary": "Owns historical grammar/migration reasoning and accepted-write alignment; does not restate v1 as the current v4 contract, activate a parser/migration executor, or claim editor/backend/pagination readiness.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V1_GRAMMAR_LOCK.md",
+            "docs/TEXT_BLOCK_V1_GRAMMAR_VALIDATOR.md",
+            "docs/TEXT_BLOCK_V1_PRODUCER_ALIGNMENT.md",
+            "docs/TEXT_BLOCK_V1_VERSION_MIGRATION_DECISION.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v1-grammar-and-migration-history.md",
+          "dependsOn": [],
+          "crossReferences": [
+            "text-block/v4-authoring-and-inline",
+            "text-block/v4-measurement-and-pagination",
+            "live-draft/product-readiness-and-renderer-boundaries"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Did the frozen v1 grammar and version-policy tests preserve active package v2/document v3 acceptance while blocking v4 parser/migration activation?",
+              "anchors": [
+                "src/authoring/textBlockV1Grammar.ts",
+                "src/schema/documentVersionPolicy.ts",
+                "tests/textBlockV1Grammar.test.ts",
+                "tests/textBlockV1VersionMigrationDecision.test.ts"
+              ]
+            },
+            {
+              "question": "Do frozen accepted-write producers emit canonical empty text-blocks without making package-read normalization authoritative?",
+              "anchors": [
+                "src/operations/documentOperations.ts",
+                "tests/textBlockV1GrammarFixtures.test.ts",
+                "tests/textBlockV1LayoutCompatibility.test.ts",
+                "docs/TEXT_BLOCK_V1_PRODUCER_ALIGNMENT.md"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "v4-authoring-and-inline",
+          "title": "V4 Authoring and Inline Commands",
+          "responsibility": "Define and apply the v4-native flat-inline grammar, canonical selection, explicit atomic/field command planning, and policy-aware whole-rich-inline replacement.",
+          "boundary": "Owns authored v4 content contract and single-user, policy/pin-aware commit preparation/application; excludes DOM/IME/clipboard input, granular collaboration-safe deltas, backend route/persistence, line measurement, pagination, renderer output, and cross-page editing.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V4_AUTHORING_CONTRACT.md",
+            "docs/TEXT_BLOCK_V4_INLINE_COMMANDS.md",
+            "docs/TEXT_BLOCK_V4_RICH_INLINE_REPLACE.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v4-authoring-and-inline.md",
+          "dependsOn": [
+            "text-block/v1-grammar-and-migration"
+          ],
+          "crossReferences": [
+            "text-block/v4-measurement-and-pagination",
+            "live-draft/root-and-v3-transition-contracts",
+            "text-engine/adapter-and-provider"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen v4 contract and command tests preserve canonical selection, explicit atomic identity allocation, and whole-rich-inline replacement semantics?",
+              "anchors": [
+                "src/authoring/textBlockV4Contract.ts",
+                "src/authoring/textBlockV4InlineCommands.ts",
+                "src/authoring/textBlockV4RichInlineReplace.ts",
+                "tests/textBlockV4Contract.test.ts",
+                "tests/textBlockV4InlineCommands.test.ts",
+                "tests/textBlockV4RichInlineReplace.test.ts"
+              ]
+            },
+            {
+              "question": "Does the frozen replacement boundary require exact artifact, policy, field-contract, and session pins while remaining single-user and non-collaboration-safe?",
+              "anchors": [
+                "docs/TEXT_BLOCK_V4_RICH_INLINE_REPLACE.md",
+                "src/authoring/textBlockV4RichInlineReplace.ts",
+                "tests/textBlockV4RichInlineReplace.test.ts"
+              ]
+            }
+          ]
+        },
+        {
+          "subgroupId": "v4-measurement-and-pagination",
+          "title": "V4 Measurement and Pagination",
+          "responsibility": "Define the resolved measurement source packet and safe complete line ranges, consume already accepted lines into isolated deterministic page fragments, and bound the close-audit claim.",
+          "boundary": "Owns measurement request/accepted-result and isolated text-line pagination; excludes choosing/executing a shaper, generated page-number expansion, mixed-node document composition, renderer/export, backend jobs, and cross-page DOM/caret behavior.",
+          "sourcePaths": [
+            "docs/TEXT_BLOCK_V4_LINE_PAGINATION.md",
+            "docs/TEXT_BLOCK_V4_MEASUREMENT_SOURCE_RANGES.md",
+            "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md"
+          ],
+          "proposedLeafPath": "docs/versions/V0_1_0a_1/core/text-block/v4-measurement-and-pagination.md",
+          "dependsOn": [
+            "text-block/v4-authoring-and-inline"
+          ],
+          "crossReferences": [
+            "text-engine/adapter-and-provider",
+            "text-engine/rustybuzz-shaping",
+            "live-draft/geometry-and-scene-projection",
+            "template-builder/viewport-and-virtualized-rendering"
+          ],
+          "oversizedCohesionRationale": null,
+          "evidenceChecks": [
+            {
+              "question": "Do frozen measurement and pagination tests preserve complete gap-free safe ranges, authored/resolved source points, and isolated deterministic fragments?",
+              "anchors": [
+                "src/resolution/resolvedDocument.ts",
+                "src/pagination/textBlockV4Measurement.ts",
+                "src/pagination/textBlockV4Pagination.ts",
+                "tests/textBlockV4Measurement.test.ts",
+                "tests/textBlockV4Pagination.test.ts"
+              ]
+            },
+            {
+              "question": "Does the frozen close audit keep the 6,000-line/250-page threshold bounded to isolated text while excluding engine execution, mixed composition, renderer, backend, and cross-page selection claims?",
+              "anchors": [
+                "docs/TEXT_BLOCK_V4_READINESS_CLOSE_AUDIT.md",
+                "tests/textBlockV4ReadinessCloseAudit.test.ts",
+                "tests/textBlockV4Pagination.test.ts"
+              ]
+            }
+          ]
+        }
+      ],
+      "conflicts": [
+        {
+          "id": "TBL-C1",
+          "owningSubgroupId": "v1-grammar-and-migration",
+          "summary": "V1 target/history versus V4 implementation: Phase 251 says v4 parser/migration activation was absent and blocked, while Phase 275–280 later record a bounded v4 contract. Preserve both rather than resolving the discrepancy merely by choosing the newer prose.",
+          "evidenceNeeds": "Verify the frozen version-policy, parser, grammar, and v4 tests; distinguish historical transition evidence from bounded current v4 behavior."
+        },
+        {
+          "id": "TBL-C2",
+          "owningSubgroupId": "v4-measurement-and-pagination",
+          "summary": "The V4 close audit unblocks columns/table split planning but explicitly excludes browser input, backend lifecycle execution, concrete engine execution in layout, mixed composition, renderer/export, and cross-page UX.",
+          "evidenceNeeds": "Inspect the frozen close audit, measurement/pagination modules, and direct tests before making any readiness claim."
+        },
+        {
+          "id": "TBL-C3",
+          "owningSubgroupId": "v4-measurement-and-pagination",
+          "summary": "Resolved field values can produce multiple ranges from one atomic authored slot, so measurement source points must not become editor caret offsets.",
+          "evidenceNeeds": "Verify frozen resolved-document and measurement source-range behavior together with the v4 authoring selection contract."
+        },
+        {
+          "id": "TBL-C4",
+          "owningSubgroupId": "v4-authoring-and-inline",
+          "summary": "Whole rich-inline replacement is history/revision-gate-ready but is expressly not a concurrency, CRDT, or offline-merge primitive.",
+          "evidenceNeeds": "Verify frozen rich-inline replacement source and tests; verify downstream backend/editor claims separately."
+        }
+      ]
+    }
+  ],
+  "synthesisOrder": [
+    "text-engine/wasm-toolchain-and-artifacts",
+    "text-engine/runtime-identity-and-evidence",
+    "text-engine/adapter-and-provider",
+    "text-engine/rustybuzz-shaping",
+    "template-builder/sandbox-runtime-and-store",
+    "template-builder/structural-runtime-and-navigation",
+    "template-builder/viewport-and-virtualized-rendering",
+    "template-builder/wysiwyg-draft-input-and-guards",
+    "template-builder/rich-inline-commit-and-session-lifecycle",
+    "live-draft/product-readiness-and-renderer-boundaries",
+    "live-draft/geometry-and-scene-projection",
+    "live-draft/persistent-flow-and-range-foundations",
+    "live-draft/root-and-v3-transition-contracts",
+    "live-draft/source-authority-and-commit-transaction",
+    "live-draft/corrective-evidence",
+    "text-block/v1-grammar-and-migration",
+    "text-block/v4-authoring-and-inline",
+    "text-block/v4-measurement-and-pagination"
+  ]
+}

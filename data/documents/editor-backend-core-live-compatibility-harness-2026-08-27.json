@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-editor-backend-core-live-compatibility-harness-2026-08-27",
+  "title": "Editor Backend Core Live Compatibility Harness - 2026-08-27",
+  "path": "docs/domains/editor-backend-core-live-compatibility-harness-2026-08-27.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Work-scoped live compatibility harness evidence for the current local Editor, Backend, and Core heads; records the accepted Node loopback harness, owner gate results, risks, and unknowns without promoting FlowDoc or repository truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "bf987f72820d7a7eb8cfc0f84840808758cc201d",
+      "pathOrContractId": "data/work/editor-backend-core-live-compatibility-harness.json"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "16a8fde628b887624249d50a162241ef2d96a415",
+      "pathOrContractId": "src/tests/liveCompatibilityHarness.test.ts"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "42cc1040c959a16647b7e797929358c401ccfa38",
+      "pathOrContractId": "src/http/server.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "77b9e181d1fb43bf69d725108ede664578a07a45",
+      "pathOrContractId": "fixtures/product-report-vnext-minimal.flowdoc.json"
+    }
+  ]
+}

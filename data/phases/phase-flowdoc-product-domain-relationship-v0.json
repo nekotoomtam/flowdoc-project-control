@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-product-domain-relationship-v0",
+  "workId": "flowdoc-product-domain-relationship",
+  "title": "FlowDoc Product Domain Relationship v0",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The domain relationship map would require Core, Backend, or Editor product repository edits.",
+    "The domain relationship map would claim product readiness, schema completeness, renderer readiness, workflow readiness, permission readiness, billing readiness, integration readiness, or production readiness from planning alone.",
+    "The domain relationship map would replace detailed follow-up domain documents with an oversized all-domain schema design."
+  ],
+  "verificationTarget": "Project Control records a domain-level relationship map and follow-up domain documents without turning FlowDoc Product Domain Relationship v0 into a full database schema or product readiness claim.",
+  "summary": "Done: Project Control now records FlowDoc Product Domain Relationship v0 as a product-domain reading router that names the major product domains, their high-level relationships, and the narrower documents future rooms should read before detailed database or implementation work.",
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

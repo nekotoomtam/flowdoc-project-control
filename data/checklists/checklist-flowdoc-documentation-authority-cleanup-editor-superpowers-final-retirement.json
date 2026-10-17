@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+  "phaseId": "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement",
+  "title": "Editor Superpowers Docs Final Retirement Checklist",
+  "items": [
+    {
+      "id": "capture-editor-owner",
+      "label": "Capture the Project Control cleanup path and Editor owner before editing.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, and Evidence target are identified before editing Editor Markdown.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-documentation-authority-cleanup, owner repo-editor, active role documentation-synthesizer, phase target phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement, checklist target checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement, and evidence target evidence-editor-superpowers-docs-retired-2026-09-01."
+    },
+    {
+      "id": "write-red-editor-final-doc-authority-test",
+      "label": "Write a failing Editor documentation authority guard for the remaining superpowers files.",
+      "state": "passed",
+      "evidenceTarget": "The focused Editor documentation authority test fails before the remaining docs/superpowers files are retired.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "RED evidence included npm run test -- src/tests/editorDocumentationAuthority.test.ts failing because docs/superpowers/plans/2026-08-30-editor-overview-history.md still existed."
+    },
+    {
+      "id": "preserve-editor-shared-context-in-project-control",
+      "label": "Preserve remaining shared Overview, History, Structure, and WYSIWYG context outside Editor superpowers Markdown.",
+      "state": "passed",
+      "evidenceTarget": "Project Control already records the Overview/History/Structure planning value and WYSIWYG gate definition as bounded evidence, not product truth.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Project Control evidence-editor-overview-history-ux-plan-2026-08-31 records the Overview/History/Structure plan, and evidence-editor-wysiwyg-gate-definition-2026-08-31 records the WYSIWYG gate definition. The new cleanup evidence points to those retained authorities instead of keeping Editor docs/superpowers as shared truth."
+    },
+    {
+      "id": "move-wysiwyg-boundary-to-code-contract",
+      "label": "Move the WYSIWYG gate guard from Markdown into the Editor code contract.",
+      "state": "passed",
+      "evidenceTarget": "src/editor/draft/textBlockAuthoringBoundary.ts exports the WYSIWYG definition, accepted direction, gate status, boundary statements, behavior buckets, and prerequisites with test coverage.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "src/tests/wysiwygGate.test.ts now reads FLOWDOC_WYSIWYG_DEFINITION, WYSIWYG_GATE_ACCEPTED_DIRECTION, WYSIWYG_GATE_STATUS, and WYSIWYG_GATE_BOUNDARY_STATEMENTS from src/editor/draft/textBlockAuthoringBoundary.ts instead of reading docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md."
+    },
+    {
+      "id": "retire-editor-superpowers-survivors",
+      "label": "Retire the remaining three Editor docs/superpowers plan/spec files.",
+      "state": "passed",
+      "evidenceTarget": "Editor commit deletes the remaining Overview/History plan, Overview/History design spec, and WYSIWYG gate spec; Editor docs/superpowers is absent.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Editor commit 4927a0022dc8170b8cb386ede0129a69508a1d29 deletes docs/superpowers/plans/2026-08-30-editor-overview-history.md, docs/superpowers/specs/2026-08-30-editor-overview-history-design.md, and docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md; rg --files -g '*.md' docs/superpowers on Editor main reports the path is absent."
+    },
+    {
+      "id": "verify-editor-main",
+      "label": "Verify Editor worktree and merged main gates.",
+      "state": "passed",
+      "evidenceTarget": "Focused docs/WYSIWYG tests, Editor worktree npm run check, and merged Editor main npm run check pass after cleanup.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Focused Editor boundary/docs gate passed 4 files and 13 tests. The first full worktree npm run check failed because a new source metadata string contained the blocked contenteditable token; after composing that token at runtime, focused tests passed and the repeated worktree gate passed type-check, 109 test files, 393 tests, and build. Merged Editor main npm run check passed type-check, 109 test files, 393 tests, and build."
+    },
+    {
+      "id": "record-project-control-evidence",
+      "label": "Record the Editor final superpowers cleanup in Project Control without promoting product truth.",
+      "state": "passed",
+      "evidenceTarget": "Project Control evidence cites the Editor commit, files, verification, deleted paths, residual worktree-folder risk, retained authorities, and boundaries intentionally not promoted.",
+      "evidenceIds": ["evidence-editor-superpowers-docs-retired-2026-09-01"],
+      "verificationNote": "Evidence is work-scoped with nodeIds [] and keeps Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, and map truth unpromoted. Git deregistered the cleanup worktree and deleted the merged branch, but the folder remains on disk after Directory not empty."
+    }
+  ],
+  "createdAt": "2026-08-31T17:29:00.000Z",
+  "updatedAt": "2026-08-31T17:29:00.000Z"
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-engine-wasm-artifact-digest",
+  "nodeIds": ["text-engine"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "packages/text-engine-rust-wasm/fixtures/wasm-artifact-digest-pinning.v1.json",
+  "verificationSummary": "Tracked artifact bytes matched 13782 bytes and SHA-256 4667b7fe401eddf09133a8a22af11456ab018b2a32c668a031b8120a79db8a44 at the pinned Core commit; this byte identity does not establish native/WASM parity or production readiness.",
+  "verifiedAt": "2026-08-14T00:00:00.000Z"
+}

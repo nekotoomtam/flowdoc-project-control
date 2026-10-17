@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-text-block-authoring-boundary",
+  "title": "Text Block Authoring Boundary Checklist",
+  "items": [
+    {
+      "id": "capture-authoring-boundary-context",
+      "label": "Capture the current Editor authoring, WYSIWYG, rich-inline, and terminology boundaries before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, terminology, Editor AGENTS.md, Product Editor Plan, Runtime Ownership, and Version Capability Reporting are reviewed.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "Reviewed the FlowDoc terminology docs, Editor AGENTS.md, docs/PRODUCT_EDITOR_PLAN.md Phase 8.5 through Phase 10, docs/RUNTIME_OWNERSHIP.md draft/input ownership, and docs/VERSION_CAPABILITY_REPORTING.md before adding the boundary."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline before adding the boundary.",
+      "state": "passed",
+      "evidenceTarget": "A clean Editor worktree passes npm run check before implementation.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "The short sibling Editor worktree fd-editor-tb-20260830 installed dependencies with npm ci and the baseline npm run check passed type-check, 90 test files with 313 tests, and build; npm audit reported 5 existing high severity vulnerabilities and Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write a focused failing test for the text-block authoring boundary contract.",
+      "state": "passed",
+      "evidenceTarget": "The focused test fails because the boundary module does not exist yet.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "The first RED exposed a syntax error in the new test and was corrected; the accepted RED then failed because ../editor/draft/textBlockAuthoringBoundary could not be found."
+    },
+    {
+      "id": "implement-boundary-contract",
+      "label": "Implement only the tested Editor text-block authoring boundary and companion docs.",
+      "state": "passed",
+      "evidenceTarget": "The implementation adds a code contract and documentation without enabling visible typing or WYSIWYG behavior.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "Editor commit e67a67f8c7dfa703ada43428a366d0db56bd4393 adds src/editor/draft/textBlockAuthoringBoundary.ts, src/tests/textBlockAuthoringBoundary.test.ts, and docs/TEXT_BLOCK_AUTHORING_BOUNDARY.md; no React component, text input UI, Backend file, or Core file was changed."
+    },
+    {
+      "id": "prove-focused-green",
+      "label": "Prove the boundary behavior with the focused tests and existing source guard.",
+      "state": "passed",
+      "evidenceTarget": "The focused boundary test and existing source boundary guard both pass.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/textBlockAuthoringBoundary.test.ts src/tests/boundary.test.ts passed 2 test files and 8 tests."
+    },
+    {
+      "id": "verify-editor-owner-gates",
+      "label": "Run full Editor gates in the worktree and after merging to main.",
+      "state": "passed",
+      "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 91 test files with 316 tests, and build; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup side effects and verify repository status before Project Control registration.",
+      "state": "passed",
+      "evidenceTarget": "Core cleanup side effects are restored and verified; residual cleanup risk is recorded instead of hidden.",
+      "evidenceIds": ["evidence-editor-text-block-authoring-boundary-2026-08-30"],
+      "verificationNote": "git worktree remove deregistered the short Editor worktree and the feature branch was deleted, but Windows reported Filename too long and left C:/Users/nekot/Documents/GitHub/fd-editor-tb-20260830 on disk. The cleanup also caused Core tracked deletions under packages/text-engine-rust-wasm through dependency links; that path was restored from Core HEAD, Core status returned clean, and Core npm run check passed 460 test files with 2,945 tests. No manual residual-folder delete was attempted after this repeat link risk."
+    }
+  ],
+  "createdAt": "2026-08-30T06:46:02.000Z",
+  "updatedAt": "2026-08-30T06:46:02.000Z"
+}

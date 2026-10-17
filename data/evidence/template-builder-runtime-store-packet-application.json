@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-template-builder-runtime-store-packet-application",
+  "nodeIds": ["template-builder"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "examples/template-builder-sandbox/src/coreBoundary.ts",
+  "verificationSummary": "Focused boundary checks verify bounded packet-only mutation responses and browser-local cache/store application; the derived runtime state is not canonical storage, durable persistence, collaboration, or renderer output.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

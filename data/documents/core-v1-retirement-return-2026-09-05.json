@@ -1,0 +1,18 @@
+{
+  "kind": "document",
+  "id": "doc-core-v1-retirement-return-2026-09-05",
+  "title": "WORK ผลถอด Core V1 และรักษา V2",
+  "path": "docs/domains/core-v1-retirement-return-2026-09-05.md",
+  "nodeIds": [],
+  "role": "contract",
+  "authority": "Preserved automatic WORK evidence candidate returns; PLAN acceptance and integration gates remain separate",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "f4f4425dcd7b370d165d2a0d7383aa14cf88b586",
+      "pathOrContractId": "src/layout; tests; docs/CORE_LAYOUT_RUNTIME_RETIREMENT.md"
+    }
+  ]
+}
+

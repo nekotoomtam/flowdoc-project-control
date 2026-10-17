@@ -1,0 +1,333 @@
+# FlowDoc Role Catalog
+
+## Purpose
+
+This catalog explains the working roles used when Codex helps with FlowDoc.
+It is meant to be readable before a task starts, so the user and agent can
+agree who is doing what, which repository owns the work, and what must be
+reported back.
+
+Roles are not job titles or permanent people. One agent can wear more than one
+role in a small task, but broad work should name the active role so scope stays
+clear.
+
+## How to read a role
+
+Each role answers four questions:
+
+- Responsibility: what the role is allowed to own.
+- Must not do: boundaries the role must preserve.
+- Read first: local context the role should inspect before acting.
+- Handoff: what the role must report when it stops.
+
+## Documentation Authority For Roles
+
+Small inline documentation/status maintenance follows
+`docs/domains/flowdoc-workflow-economy-policy.md`: use the explicit request and
+existing canonical record, mark absent execution IDs not applicable, and return
+the result, supporting checks, and remaining issues briefly. The execution
+context fields below apply to broad or separate-room work; do not create new
+Work/Phase/Checklist records merely to close status.
+
+These rules apply before any role creates, updates, migrates, or deletes
+FlowDoc Markdown.
+
+Use these role overlays when Markdown authority is in scope. They do not
+replace the active role; they narrow the active role's first decision.
+
+- Documentation Authority Steward decides where a Markdown change belongs
+  before the file exists. It applies the Markdown Authority Pre-Action Gate and
+  treats Project Control as the override when a generic skill points to a
+  product-repository `docs/superpowers` path.
+- Repo Documentation Curator keeps repo-local Markdown code-adjacent,
+  repository-owned, or historical after Project Control identifies the owner
+  repository. It must report the Authority Boundary and guard coverage for any
+  retained file.
+- Evidence Registrar records documentation-authority outcomes as Project
+  Control Evidence, Document, Work, Phase, and Checklist records without using a
+  plan, glossary, or cleanup intention as product proof.
+- Documentation Cleanup Reviewer reviews inventory, classification, retained
+  value, source evidence, and discard rationale before Markdown retirement or
+  deletion.
+
+- Project Control Steward owns shared Work, Phase, Checklist, Evidence,
+  Document, Repository, and Node records. The steward keeps shared truth in
+  Project Control and regenerates the read model from canonical sources.
+- Documentation Synthesizer writes shared summaries in Project Control, not in
+  product-repository superpowers files. It may retire repo-local Markdown only
+  after retained value, source evidence, or discard rationale is recorded.
+- Product Implementation Agent must not create product-repository
+  `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide
+  truth. Repo-local Markdown may remain only when it is code-adjacent,
+  repository-owned, or historical, and surviving repo-local Markdown should
+  carry an Authority Boundary.
+- Planning Partner must put broad plans in Project Control Work, Phase,
+  Checklist, and Evidence targets before implementation. A plan is not
+  evidence and must not be used as proof that a feature is current.
+- Evidence Reviewer checks whether a claim has a repository id, exact commit,
+  path or contract id, verification summary, and unresolved-risk boundary
+  before recommending any truth-state change.
+- Cross-Repo Boundary Reviewer rejects documentation that blends Project
+  Control Node truth, Core runtime truth, Backend service truth, and Editor UI
+  truth into one unqualified claim.
+- Lane Reconciliation Reviewer records retain, merge, discard, or cleanup
+  rationale before removing old worktrees or branches.
+- Every agent handoff must name the Work path, owner repository, active role,
+  Phase target, Checklist target, Evidence target, risks, and unknown state.
+
+## Project Control Steward
+
+Responsibility:
+
+- Maintain Project Control canonical records in `data/`.
+- Maintain Project Control documents in `docs/`.
+- Regenerate `generated/project-index.json` from canonical sources.
+- Keep Work, Document, Repository, Evidence, and Node records separate.
+- Keep the read-only GUI honest about current, planned, risk, and unknown
+  states.
+
+Must not do:
+
+- Claim product repository truth without recorded Evidence.
+- Edit Core, Editor, or Backend implementation while acting only as steward.
+- Treat a Work record as proof that a feature exists.
+- Hand-edit `generated/project-index.json`.
+
+Read first:
+
+- `README.md`
+- `OPERATIONS.md`
+- `docs/domains/project-control.md`
+- Relevant `data/nodes/`, `data/work/`, `data/documents/`, and
+  `data/evidence/` records
+
+Handoff:
+
+- Records changed.
+- Generated index status.
+- Checks run.
+- Truth claims intentionally unchanged.
+- Any follow-up Evidence needed.
+
+## Evidence Reviewer
+
+Responsibility:
+
+- Decide whether a strong claim has durable support.
+- Check repository ID, exact commit, path or contract ID, verification summary,
+  and node linkage.
+- Recommend whether a node should remain `unknown`, `risk`, `planned`, or move
+  toward `current`.
+
+Must not do:
+
+- Accept screenshots, notes, or memory as durable evidence by themselves.
+- Promote a parent node because a child node has evidence.
+- Hide uncertainty by writing a broad current-state summary.
+- Replace repository-owned tests or contracts with Project Control wording.
+
+Read first:
+
+- The target Node record.
+- Linked Document records.
+- Linked Evidence records.
+- The owning repository working agreement.
+- The cited file, test, or contract when available locally.
+
+Handoff:
+
+- PASS claims with exact evidence.
+- FAIL/BLOCKER claims with missing evidence.
+- RISK claims that are partially supported.
+- UNKNOWN claims that should stay unpromoted.
+- Suggested Evidence records, if the claim is ready.
+
+## Lane Reconciliation Reviewer
+
+Responsibility:
+
+- Review old worktrees and lane branches before cleanup.
+- Identify unique commits and changed files.
+- Check whether the unique patches are already represented in `main`.
+- Preserve branch refs or record discard rationale before removing checkouts.
+
+Must not do:
+
+- Delete a dirty worktree.
+- Delete historical or unresolved branch refs without a recorded owner decision.
+  Approved current-round cleanup follows flowdoc-coordination-controls.md;
+  clean merged branches may be removed after integration verification or valid
+  proof reuse under the Workflow Economy Policy without asking again.
+- Remove a lane whose unique patch is not understood.
+- Treat hash difference as useful work if patch-equivalence says otherwise.
+
+Read first:
+
+- Related Work record.
+- `git worktree list`
+- Unique commits with `git log main..branch`
+- Patch-equivalence result with `git cherry -v main branch`
+- Final tree diff if patch-equivalence is ambiguous.
+
+Handoff:
+
+- Worktrees reviewed.
+- Unique commits found.
+- Retain, merge, discard, or already-in-main decision for each lane.
+- Cleanup action taken.
+- Branch refs intentionally retained or removed.
+
+## Cross-Repo Boundary Reviewer
+
+Responsibility:
+
+- Keep Core, Editor, Backend, and Project Control ownership separate.
+- Catch direct imports, copied semantics, bypassed backend gates, and local-only
+  shortcuts that look like product truth.
+- Review whether an integration follows the documented cross-repo operating
+  flow.
+
+Must not do:
+
+- Move HTTP, React state, DOM state, or concrete storage into Core.
+- Let Editor import Core internals outside its adapter boundary.
+- Let Backend copy Core operation semantics instead of calling Core contracts.
+- Treat local preview, QA, or development-only routes as production activation.
+
+Read first:
+
+- `../flowdoc-vnext-core/AGENTS.md`
+- `../flowdoc-vnext-core/docs/CROSS_REPO_OPERATING_MAP.md`
+- `../flowdoc-vnext-editor/AGENTS.md`
+- `../flowdoc-vnext-backend/AGENTS.md`
+- Tests that guard the touched boundary.
+
+Handoff:
+
+- Boundary PASS/FAIL/RISK/UNKNOWN.
+- Files or imports reviewed.
+- Checks run in each repository.
+- Responsibilities intentionally kept closed.
+- Decisions that need user approval.
+
+## Documentation Synthesizer
+
+Responsibility:
+
+- Convert repository-owned source documents into bounded Project Control
+  documents.
+- Preserve authority limits, source commit references, and remaining unknowns.
+- Keep family overview documents separate from leaf contracts and evidence.
+- Add tests when wording must not accidentally promote truth.
+
+Must not do:
+
+- Rewrite source repository history.
+- Turn a summary into migration coverage.
+- Claim cleanup before a separate cleanup review.
+- Promote a family or parent node without evidence for that exact claim.
+
+Read first:
+
+- Source inventory or family map.
+- Source repository commit.
+- Existing Project Control document records for the same node.
+- Tests that protect the family being synthesized.
+
+Handoff:
+
+- Documents added or changed.
+- Source authority used.
+- Claims intentionally limited.
+- Tests protecting the summary.
+- Cleanup or evidence work still open.
+
+## Product Implementation Agent
+
+Responsibility:
+
+- Implement behavior in the owning product repository.
+- Follow the repository working agreement.
+- Keep changes small enough to verify.
+- Return evidence that Project Control can later record.
+
+Must not do:
+
+- Use Project Control as the place to implement product behavior.
+- Cross repository boundaries without reading the operating map.
+- Commit unrelated dirty changes.
+- Claim completion without fresh verification.
+
+Read first:
+
+- Owning repository `AGENTS.md`.
+- The relevant source and tests.
+- Project Control Work and Document records that explain the requested lane.
+- Cross-repo operating map when more than one repository is involved.
+
+Handoff:
+
+- Behavior changed.
+- Files changed.
+- Tests run.
+- Risks left.
+- Evidence candidates for Project Control.
+- Intentionally not changed.
+
+## Planning Partner
+
+Responsibility:
+
+- Turn broad user intent into a staged plan.
+- Identify the right owning repository and role before implementation.
+- Break large work into phases that can be verified.
+- Keep user decisions explicit.
+
+Must not do:
+
+- Start broad implementation from a vague request.
+- Hide tradeoffs when there are several plausible routes.
+- Write a plan that crosses repository ownership without stop conditions.
+- Treat a plan as proof that the work is done.
+
+Read first:
+
+- Current Project Control Work queue.
+- Related node documents.
+- Known risks and unknowns.
+- Repository health baseline if the work is cross-repo.
+
+Handoff:
+
+- Recommended first phase.
+- Alternatives considered.
+- Required decisions.
+- Stop conditions.
+- Verification target for the phase.
+
+## Default role selection
+
+Use this quick route before starting:
+
+| If the task says... | Start as... |
+| --- | --- |
+| "What is the status?" | Project Control Steward |
+| "Can we trust this claim?" | Evidence Reviewer |
+| "Clean up old branches/worktrees" | Lane Reconciliation Reviewer |
+| "This touches Core, Editor, and Backend" | Cross-Repo Boundary Reviewer |
+| "Summarize or publish docs" | Documentation Synthesizer |
+| "Build/fix this feature" | Product Implementation Agent |
+| "Help us decide what to do" | Planning Partner |
+
+When unsure, start with Project Control Steward plus Planning Partner, then
+switch roles after the owner and evidence target are clear.
+
+## Coordination control gate
+
+Before new dispatch, ownership transfer, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, generation and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

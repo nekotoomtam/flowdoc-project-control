@@ -1,0 +1,10 @@
+{
+  "id": "evidence-preview-definition-correction-2026-09-05",
+  "pathOrContractId": "docs/domains/flowdoc-preview-definition-correction-2026-09-05.md; docs/domains/flowdoc-product-terminology.md; docs/domains/flowdoc-product-terminology-th.md; docs/domains/flowdoc-creator-ux-contract-v0-2026-09-04.md; docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md",
+  "nodeIds": [],
+  "verificationSummary": "Documentation decision evidence only. User clarification recorded as interactive on-document simulation, distinct from Build structure authoring and PDF output inspection. Reviewed English/Thai definitions, Creator contract, R4 acceptance, historical notices and paused PDF/Node proposal. generate/check:data and four existing planning contract tests passed before source commit. This is not browser evidence or implementation acceptance. Full worktree/main gates remain required for integration; no product files or system maps changed.",
+  "commit": "5cbfb1c8ddc906b8847eeba374d15cac7280ab92",
+  "kind": "evidence",
+  "verifiedAt": "2026-09-05T15:27:06.3004459Z",
+  "repositoryId": "repo-project-control"
+}

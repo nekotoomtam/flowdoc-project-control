@@ -1,0 +1,10 @@
+{
+  "id": "evidence-core-creator-text-edit-geometry-v1",
+  "verifiedAt": "2026-09-06T12:29:28.0094923Z",
+  "pathOrContractId": "src/creatorPreview/textEditGeometryV1.ts; src/creatorPreview/textEditFactsV1.ts; tests/creatorTextEditGeometryV1.test.ts",
+  "repositoryId": "repo-core",
+  "verificationSummary": "PLAN accepted automatic candidate01/main02 with independent code/policy review and fresh11tests15.82s. Worktree focused47tests15.35s, full434files2821tests732.14s; main same2821tests938.71s plus adapter type-check PASS original serial command/timeouts. Main before/after HEAD/status/9 package-lock-asset hashes and48 installed entries byte-identical; clean46ccc1a. Evidence root C:/Users/nekot/.codex/visualizations/2026/09/06/01a07584-49dc-7602-b662-6033c1469517/text-edit-geometry retains all RED/focused/full/main/provenance logs. Approved cluster-edge-only caret/hit/selection bound to authentic immutable layout, exact stale identity checks, empty/zero-advance/coincident/line-page/reversed cases. Thai intra-cluster offsets unsupported, no grapheme-complete/OS/UX/latency/general layout or broad incremental claims. Editor/Backend/pins/schema unchanged; no maps.",
+  "nodeIds": [],
+  "commit": "46ccc1a0569df84bfaafa29b159dc1f277eb8208",
+  "kind": "evidence"
+}

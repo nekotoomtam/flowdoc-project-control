@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+  "workId": "flowdoc-core-stage6-noop-lifecycle-contract-20260927",
+  "title": "Resolve no-op and lifecycle contracts",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "verificationTarget": "checklist-flowdoc-core-stage6-noop-lifecycle-contract-20260927; bounded source reconciliation and PC lane/main npm run check",
+  "summary": "Contract acceptance complete, not product implementation. Exact no-op and retained-state lifecycle target settled; bounded synchronous host cancellation uses existing authority. Worktree gate passed; final closure/main checks and commits recorded in terminal after execution.",
+  "stopConditions": [
+    "No product mutation or new performance/geometry work.",
+    "Ask only for genuine architecture/user-visible semantic choices.",
+    "Do not waive corpus rows, caps, thresholds or promote design as product Evidence."
+  ],
+  "createdAt": "2026-09-27T08:57:37.9444031Z",
+  "updatedAt": "2026-09-27T09:07:19.6835932Z"
+}

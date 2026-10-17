@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-editing-ux",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Text Block Editing UX",
+  "phaseState": "done",
+  "order": 120,
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Editor stores raw CR/LF characters inside document v4 text inline children instead of Core v4 line-break atomics.",
+    "Editor leaves a draft marked dirty or Save-enabled after the user returns the draft to the Backend value.",
+    "Editor keeps a save rejection visible after the user edits again.",
+    "The paper textarea fails to reflect hard line breaks through bounded rows/status state.",
+    "The live Backend browser smoke cannot type, save, reload, and reconstruct multiline text through Backend api transport.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, field-chip editing, arbitrary rich-inline authoring, table/media/columns authoring, durable draft persistence, collaboration, production readiness, broad frontend readiness, or map truth."
+  ],
+  "verificationTarget": "Editor hardens the bounded visible text-block textarea island by normalizing textarea CR/LF into Core document v4 line-break inline atomics, clearing dirty/rejected UI state when appropriate, showing bounded multiline textarea rows, and proving save/reload through the live local Backend browser smoke without broad WYSIWYG activation.",
+  "summary": "Done: Editor commit a42409a31cb855331e5114a52bc3d07d75cb67e6 hardens the bounded visible text-block textarea island. The slice normalizes textarea hard line breaks into Core document v4 line-break inline atomics before text-block.rich-inline.replace, reconstructs multiline draft text from text and line-break inline children, disables Save again when a draft returns to the Backend value, clears a save rejection after the user edits again, exposes bounded dirty/pending/status and multiline row state on the paper textarea, and updates the live Backend browser smoke to type/save/reload multiline text. The slice intentionally keeps WYSIWYG behavior, contenteditable runtime, field-chip editing, arbitrary rich-inline authoring, table/media/columns authoring, durable draft persistence, collaboration, production readiness, broad frontend readiness, and map truth closed.",
+  "createdAt": "2026-08-30T17:41:00.000Z",
+  "updatedAt": "2026-08-30T17:41:00.000Z"
+}

@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-active-text-block-island-commit-runner",
+  "title": "Active Text Block Island Commit Runner Checklist",
+  "items": [
+    {
+      "id": "capture-runner-context",
+      "label": "Capture Project Control, terminology, Editor, Core, Backend, and runtime mutation context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, FlowDoc terminology, Editor AGENTS.md, Core cross-repo map, Backend AGENTS.md, active-island state, runtime Backend apply, Backend transport, and live compatibility harness are reviewed.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "Reviewed Project Control AGENTS.md, required Project Control operating docs, FlowDoc product terminology EN/TH, flowdoc-core-backend-editor-readiness-pass-8h Work record, Editor AGENTS.md, Core AGENTS.md and CROSS_REPO_OPERATING_MAP.md, Backend AGENTS.md, src/editor/draft/activeTextBlockIsland.ts, src/editor/runtime/runtimeBackendMutation.ts, src/editor/backend/backendMutationRunner.ts, src/editor/backend/backendTransport.ts, and src/tests/liveCompatibilityHarness.test.ts before editing."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor baseline in an isolated worktree before adding the runner.",
+      "state": "passed",
+      "evidenceTarget": "A clean Editor linked worktree on a new branch passes npm run check before implementation.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "Reused the clean retained linked worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 to avoid adding another dependency-linked checkout, switched it to branch editor-active-text-island-commit-runner-20260830 from main, deleted the already-merged prior lifecycle branch ref, and baseline npm run check passed type-check, 93 test files with 323 tests, and build. Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write a focused failing runner test before production implementation.",
+      "state": "passed",
+      "evidenceTarget": "The focused runner test fails because activeTextBlockIslandCommitRunner does not exist yet.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/activeTextBlockIslandCommitRunner.test.ts failed with Cannot find module ../editor/draft/activeTextBlockIslandCommitRunner imported from the new test file."
+    },
+    {
+      "id": "implement-runner",
+      "label": "Implement only the Editor-owned active-island commit runner.",
+      "state": "passed",
+      "evidenceTarget": "The runner composes existing active-island resolver, Backend client commit, latest-state read hook, and stale-gated runtime apply path without adding visible input UI.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "Editor commit 747a7269838d457b940251be33cd275d80f9c3b4 adds src/editor/draft/activeTextBlockIslandCommitRunner.ts and src/tests/activeTextBlockIslandCommitRunner.test.ts, and extends src/tests/liveCompatibilityHarness.test.ts."
+    },
+    {
+      "id": "prove-focused-green",
+      "label": "Prove runner behavior with focused unit and regression tests.",
+      "state": "passed",
+      "evidenceTarget": "Focused tests pass for successful commit/apply, IME-composition blocking before Backend, newer local draft preservation, live Backend harness use, lifecycle, active-island state, boundary, v4 apply, and source guard behavior.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/activeTextBlockIslandCommitRunner.test.ts passed 1 file and 3 tests. npx vitest run src/tests/liveCompatibilityHarness.test.ts src/tests/activeTextBlockIslandCommitRunner.test.ts passed 2 files and 4 tests. Focused regression npx vitest run src/tests/activeTextBlockIslandCommitRunner.test.ts src/tests/liveCompatibilityHarness.test.ts src/tests/activeTextBlockIslandLifecycle.test.ts src/tests/activeTextBlockIsland.test.ts src/tests/textBlockAuthoringBoundary.test.ts src/tests/v4ReadOnly.test.ts src/tests/boundary.test.ts passed 7 files and 23 tests."
+    },
+    {
+      "id": "verify-editor-owner-gates",
+      "label": "Run full Editor gates in the worktree and after merging to main.",
+      "state": "passed",
+      "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 94 test files with 326 tests, and build; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "register-cleanup-risk",
+      "label": "Record cleanup and Project Control gate risks without hiding them.",
+      "state": "passed",
+      "evidenceTarget": "Editor, Core, and Backend status are clean; the retained Editor linked worktree and Project Control worktree unit-worker timeout are reported as risks.",
+      "evidenceIds": ["evidence-editor-active-text-block-island-commit-runner-2026-08-30"],
+      "verificationNote": "Editor main, Core, and Backend status were clean after the Editor main gate. The linked Editor worktree C:/Users/nekot/Documents/GitHub/fd-ed-ati-0830 remains intentionally retained on branch editor-active-text-island-commit-runner-20260830 because its node_modules contains junctions to Core and previous recursive cleanup exposed dependency-link side effects. Project Control worktree baseline npm run check hit Vitest fork worker start timeouts before record edits, while npm test -- --maxWorkers=1, npm run build, and npm run test:e2e passed."
+    }
+  ],
+  "createdAt": "2026-08-30T08:20:00.000Z",
+  "updatedAt": "2026-08-30T08:20:00.000Z"
+}

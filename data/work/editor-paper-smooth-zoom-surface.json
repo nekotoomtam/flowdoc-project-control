@@ -1,0 +1,32 @@
+{
+  "kind": "work",
+  "id": "editor-paper-smooth-zoom-surface",
+  "title": "Editor Paper Smooth Zoom Surface",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Editor paper zoom surface with smooth viewport-only motion, fixed zoom presets, and selection overlay resync after zoom motion.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-workspace-toolbar-foundation-2026-08-28",
+    "doc-editor-workspace-status-strip-foundation-2026-08-28",
+    "doc-editor-read-source-authoring-status-2026-08-29",
+    "doc-editor-paper-smooth-zoom-surface-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit 58f3002363b29662bb02042fdb1021236844cbc1 adds smooth viewport zoom through PaperZoomControls with presets 50%, 85%, 100%, and 125%, marks paper zoom as viewport-only, animates paper transform for 160ms with reduced-motion fallback, and schedules selection overlay resync after zoom motion. Browser live Backend mode evidence confirmed 85% to 95%, Source: Backend read, Authoring: limited, no Backend mutation requests, and aligned selected title overlay. Target evidence id: evidence-editor-paper-smooth-zoom-surface-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+  "requiredEvidence": ["evidence-editor-paper-smooth-zoom-surface-2026-08-29"],
+  "createdAt": "2026-08-29T07:20:00.000Z",
+  "updatedAt": "2026-08-29T07:20:00.000Z"
+}

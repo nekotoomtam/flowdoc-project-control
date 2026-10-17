@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-project-control-overview-history-gui",
+  "phaseId": "phase-project-control-overview-history-gui",
+  "title": "Project Control Overview and History GUI Checklist",
+  "items": [
+    {
+      "id": "confirm-project-control-entrypoint",
+      "label": "Read Project Control entrypoint, system map, operating rules, and terminology before changing GUI behavior.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 records the Project Control entrypoint and terminology documents used for the bounded GUI round.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, system map, document map rules, round workflow, role catalog, work tree rules, agent operating model, global guidance, and English/Thai terminology documents were read before implementation."
+    },
+    {
+      "id": "implement-repo-directory-overview",
+      "label": "Replace the Home raw record surface with a repo-first Repo Directory Overview.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 points to the ControlRoom implementation and GUI tests.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "Home now renders direct repository or area entry cards with compact state counts before Work, Project Control Node, Evidence, or Checklist detail."
+    },
+    {
+      "id": "implement-work-history-view",
+      "label": "Add a separate Work History View for time-ordered recorded work.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 covers the History surface and return flow tests.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "History sorts Work records by updatedAt and returns selected rows to a focused Overview without treating the row as Evidence."
+    },
+    {
+      "id": "preserve-focused-detail-boundary",
+      "label": "Keep focused repository or area views and Detail inspection behind selection.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 covers focused branch, URL, overlay, and desktop readability tests.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "Focused branch views keep existing Work tree and Detail behavior after an area is selected; full detail remains in the View all overlay."
+    },
+    {
+      "id": "update-agent-guidance",
+      "label": "Update Project Control agent-facing guidance so future rooms follow the Overview, History, and Detail split.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 references the implementation document and updated guidance documents.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "Project Control overview, approved direction, agent operating model, and global Codex guidance now reference the implemented GUI behavior and Home boundary."
+    },
+    {
+      "id": "verify-and-record-evidence",
+      "label": "Run the full Project Control gate and register bounded evidence without promoting product repository truth.",
+      "state": "passed",
+      "evidenceTarget": "evidence-project-control-overview-history-gui-2026-08-29 cites npm run check and exact Project Control commit 97e9d234d2bb1e2d294463a395604d5f0ec75348.",
+      "evidenceIds": ["evidence-project-control-overview-history-gui-2026-08-29"],
+      "verificationNote": "The worktree gate passed with 319 unit tests, production build, and 6 Playwright e2e tests before evidence registration."
+    }
+  ],
+  "createdAt": "2026-08-29T00:00:00.000Z",
+  "updatedAt": "2026-08-29T04:53:09.000Z"
+}

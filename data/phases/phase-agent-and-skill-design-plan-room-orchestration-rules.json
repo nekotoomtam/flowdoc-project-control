@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-plan-room-orchestration-rules",
+  "workId": "agent-and-skill-design",
+  "title": "PLAN Room Orchestration Rules",
+  "phaseState": "done",
+  "order": 40,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The PLAN Room Orchestration Rules are treated as product evidence, map truth, Core truth, Backend truth, or Editor truth.",
+    "The rules imply that every future WORK room can automatically push completion back to the PLAN room without a pull review fallback.",
+    "The rules set N WORK rooms without requiring lane dependency, owner, handoff, and review-capacity assessment.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "PLAN Room Orchestration Rules document, Project Control Document record, Work context, Phase, Checklist, agent onboarding, global guidance, agent operating model, delivery model, and first delivery round plan route future multi-room work through N WORK room assessment, dispatch sets, Room Run Registry, handoff inbox, completion queue, and acceptanceGate rules; focused guard and Project Control gate pass.",
+  "summary": "Done: recorded Project Control PLAN room orchestration rules for selecting N WORK rooms, defining dispatch sets and parallelLimit, tracking real WORK rooms, pulling missing handoffs, queueing simultaneous completions, and accepting lane results before Project Control records change.",
+  "createdAt": "2026-09-02T00:10:00.000+07:00",
+  "updatedAt": "2026-09-02T00:10:00.000+07:00"
+}

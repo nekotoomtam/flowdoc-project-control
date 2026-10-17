@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-first-delivery-core-pdf-boundary-acceptance",
+  "workId": "flowdoc-first-delivery-round",
+  "title": "First Delivery Core PDF Boundary Acceptance",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": ["repo-project-control", "repo-core"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the first delivery round Work path, owner repository, active role, Checklist target, or Evidence target before accepting the handoff.",
+    "The Core WORK room result lacks lane ID, Work Type, owner repository, Context Acknowledgement, terminal status, retrievable locator, exact commit, files changed, behavior changed, tests run, risks, unknowns, or PR Summary Draft.",
+    "The Core handoff changes Backend routes, API key behavior, product database storage, Editor browser UI, PDF bytes, renderer execution, or Project Control truth without an accepted Contract Change Request.",
+    "PLAN accepts the Core lane without fresh Core verification from the owner repository.",
+    "The accepted Core lane is promoted to FlowDoc product truth, map truth, Backend adoption, Editor adoption, gateway behavior, release readiness, or frontend readiness."
+  ],
+  "verificationTarget": "Core WORK room handoff for lane-core-document-pdf-boundary is staged in handoffInbox, checked through acceptanceGate, verified against Core commit da5011ceeac6e0b72b152a9a5029d684af978581 and fresh Core gates, recorded as accepted Project Control evidence, and kept out of product truth and map truth.",
+  "summary": "Done: PLAN pulled the Core WORK room handoff that did not automatically push back to this room, staged it in handoffInbox, ran acceptanceGate, accepted lane-core-document-pdf-boundary at Core commit da5011ceeac6e0b72b152a9a5029d684af978581, merged it into Core main after owner-repository verification, and recorded the remaining Backend, Editor, renderer, storage, gateway, and map-truth unknowns.",
+  "createdAt": "2026-09-02T11:20:00.000+07:00",
+  "updatedAt": "2026-09-02T11:20:00.000+07:00"
+}

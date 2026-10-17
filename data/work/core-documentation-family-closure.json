@@ -1,0 +1,12 @@
+{
+  "kind": "work",
+  "id": "core-documentation-family-closure",
+  "title": "Core Documentation Family Closure",
+  "nodeId": "core",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "in-progress",
+  "summary": "Close migration coverage, repair references, review publication readiness, and decide cleanup for the four synthesized Core documentation families.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-24T00:00:00.000Z",
+  "updatedAt": "2026-08-24T00:00:00.000Z"
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "checklist",
+  "id": "checklist-creator-core-readiness-review",
+  "phaseId": "phase-creator-core-readiness-review",
+  "title": "เกณฑ์รับผลตรวจ Core",
+  "items": [
+    {
+      "id": "review-core-deletions",
+      "label": "ตรวจไฟล์หาย แหล่งคืนค่าและความเสี่ยงโดยไม่แก้ checkout",
+      "state": "passed",
+      "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05",
+      "evidenceIds": [
+        "evidence-creator-core-readiness-review-2026-09-05"
+      ],
+      "verificationNote": "PLAN accepted bounded read-only facts from automatic handoff with exact inventory. Does not authorize repair or prove readiness."
+    },
+    {
+      "id": "accept-automatic-return",
+      "label": "PLAN ตรวจรับ automatic return และข้อเสนอคืนความพร้อม",
+      "state": "passed",
+      "evidenceTarget": "evidence-creator-core-readiness-review-2026-09-05",
+      "evidenceIds": [
+        "evidence-creator-core-readiness-review-2026-09-05"
+      ],
+      "verificationNote": "PLAN accepted bounded read-only facts from automatic handoff with exact inventory. Does not authorize repair or prove readiness."
+    }
+  ],
+  "createdAt": "2026-09-05T10:33:18.927Z",
+  "updatedAt": "2026-09-05T10:40:31.267Z"
+}

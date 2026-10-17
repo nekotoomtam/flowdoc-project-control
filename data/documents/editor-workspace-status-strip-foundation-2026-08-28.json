@@ -1,0 +1,47 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-status-strip-foundation-2026-08-28",
+  "title": "Editor WorkspaceStatusStrip Foundation - 2026-08-28",
+  "path": "docs/domains/editor-workspace-status-strip-foundation-2026-08-28.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Work-scoped planning decision and evidence summary for the fourth component-by-component Editor frontend redesign lane; defines WorkspaceStatusStrip vocabulary, ownership boundaries, checklist target, and evidence target without promoting Editor truth or product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "79b077a1b910bbcce6c19ced7333467bf08dbab5",
+      "pathOrContractId": "docs/domains/flowdoc-product-terminology.md"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "79b077a1b910bbcce6c19ced7333467bf08dbab5",
+      "pathOrContractId": "docs/domains/editor-workspace-header-foundation-2026-08-28.md"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
+      "pathOrContractId": "src/components/shell/WorkspaceStatusStrip.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
+      "pathOrContractId": "src/components/shell/StatusBar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
+      "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
+      "pathOrContractId": "src/tests/layoutQaConfig.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "a20f83a2e9c9bfb76aea4b724c91b5964cf6e3c1",
+      "pathOrContractId": "src/tests/selectionHitTest.test.ts"
+    }
+  ]
+}

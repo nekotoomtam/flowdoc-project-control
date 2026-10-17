@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-frontend-roadmap-refresh-2026-09-05",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "จัด roadmap ตาม flow ผู้สร้างและผลตรวจล่าสุด",
+  "phaseState": "done",
+  "order": 20,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "ห้ามถือว่าการจัด roadmap เสร็จคือ product readiness หรือเปิด WORK rooms แล้ว",
+    "ห้ามใช้ FlowDocEditor ที่เลิกใช้งานเป็น dependency โดยไม่มีเหตุเรื่องการย้ายที่ชัดเจน"
+  ],
+  "verificationTarget": "ตรวจลำดับ R0–R7, เจ้าของ, dependencies, เกณฑ์จบ, ขอบเขตข้อมูลและประวัติ v1; npm run check ใน worktree และ main ก่อนปิดรอบ",
+  "summary": "จัดแผนปัจจุบันภาษาไทยแล้ว เป้าหมายแรกคือ R0–R2; ทุกช่วงพัฒนายังเป็นแผน ไม่มี product repository changes หรือ map truth promotion",
+  "createdAt": "2026-09-05T09:00:00.000Z",
+  "updatedAt": "2026-09-05T09:00:00.000Z"
+}

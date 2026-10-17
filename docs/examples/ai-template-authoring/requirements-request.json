@@ -1,0 +1,47 @@
+{
+  "docKey": "ai-srs-example",
+  "data": {
+    "projectName": "Example inventory system"
+  },
+  "sections": {
+    "main": {
+      "data": {
+        "introduction": "Purpose and scope of the system.",
+        "details": [
+          {
+            "format": "chapter",
+            "data": {
+              "title": "1 Overview",
+              "requirements": [
+                {
+                  "code": "REQ-001",
+                  "description": "The user can view inventory."
+                }
+              ]
+            }
+          },
+          {
+            "format": "new-page",
+            "data": {}
+          },
+          {
+            "format": "chapter",
+            "data": {
+              "title": "2 Operations",
+              "requirements": [
+                {
+                  "code": "REQ-002",
+                  "description": "The user can receive stock."
+                },
+                {
+                  "code": "REQ-003",
+                  "description": "The user can issue stock."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

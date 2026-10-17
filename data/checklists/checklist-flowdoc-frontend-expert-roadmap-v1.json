@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-frontend-expert-roadmap-v1",
+  "phaseId": "phase-flowdoc-frontend-expert-roadmap-v1",
+  "title": "Frontend Expert Roadmap v1 Checklist",
+  "items": [
+    {
+      "id": "capture-frontend-roadmap-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The roadmap record identifies Project Control ownership before writing a frontend roadmap.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-frontend-expert-roadmap, owner repo-project-control, active role planning-partner, phase target phase-flowdoc-frontend-expert-roadmap-v1, checklist target checklist-flowdoc-frontend-expert-roadmap-v1, and evidence target evidence-flowdoc-frontend-expert-roadmap-2026-09-03."
+    },
+    {
+      "id": "write-red-frontend-roadmap-guard",
+      "label": "Write a failing Project Control guard before adding the roadmap records.",
+      "state": "passed",
+      "evidenceTarget": "A focused test fails before Project Control contains the frontend roadmap Work, document, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-frontend-expert-roadmap.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-frontend-expert-roadmap as a child Work."
+    },
+    {
+      "id": "define-frontend-north-star",
+      "label": "Define the expert frontend north star without claiming implementation readiness.",
+      "state": "passed",
+      "evidenceTarget": "The roadmap states the Library, Design, Preview, and Publish product direction and marks the design artifact as non-truth.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "docs/domains/flowdoc-frontend-expert-roadmap-2026-09-03.md defines the North Star and states that the design artifact is not product truth."
+    },
+    {
+      "id": "map-frontend-phases",
+      "label": "Map the frontend phases from product map through WYSIWYG gate decision.",
+      "state": "passed",
+      "evidenceTarget": "The roadmap names each frontend phase, lane ID, expected output, and acceptance boundary.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "The roadmap defines seven lanes: product map, design workspace usability, progressive authoring, preview confidence, publish flow binding, polish and accessibility, and WYSIWYG gate decision."
+    },
+    {
+      "id": "define-first-lane-sequence",
+      "label": "Define the first lane sequence before opening implementation rooms.",
+      "state": "passed",
+      "evidenceTarget": "The roadmap recommends which lane to run first and what must stay out of implementation.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "The recommended sequence starts with lane-frontend-product-map as a Project Control lane before any Editor implementation lane."
+    },
+    {
+      "id": "preserve-frontend-truth-boundary",
+      "label": "Preserve frontend truth boundaries and planned state.",
+      "state": "passed",
+      "evidenceTarget": "The roadmap does not promote frontend readiness, map truth, WYSIWYG readiness, publish readiness, or production readiness.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "The roadmap explicitly keeps product repository behavior unchanged, keeps FlowDoc truthState planned, and blocks current-state wording for frontend readiness."
+    },
+    {
+      "id": "verify-frontend-roadmap-records",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused roadmap guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-frontend-expert-roadmap-2026-09-03"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-frontend-expert-roadmap.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-03T09:00:00.000Z",
+  "updatedAt": "2026-09-03T09:00:00.000Z"
+}

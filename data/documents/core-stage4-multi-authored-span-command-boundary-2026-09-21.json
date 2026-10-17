@@ -1,0 +1,22 @@
+{
+  "kind": "document",
+  "id": "doc-core-stage4-multi-authored-span-command-boundary-2026-09-21",
+  "title": "Core Stage 4 multi-authored-span command boundary",
+  "path": "docs/domains/flowdoc-core-stage4-multi-authored-span-command-boundary-2026-09-21.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Project Control design decision that distinguishes a multi-AuthoredSpan paragraph session from a command that actually crosses AuthoredSpan boundaries. It narrows the next private Core Stage 4 repair but does not prove implementation, accept Stage 4 or Gate 2, authorize public or product binding, establish Pattern or Editor behavior, or promote map truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "7c918010e51100db14bc7b5e45bf0f91752034d6",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "7c918010e51100db14bc7b5e45bf0f91752034d6",
+      "pathOrContractId": "core-stage4-private-rust-owned-ordinary-commands/1"
+    }
+  ]
+}

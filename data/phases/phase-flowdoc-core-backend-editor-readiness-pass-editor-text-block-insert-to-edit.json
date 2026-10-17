@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-text-block-insert-to-edit",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Text Block Insert To Edit",
+  "phaseState": "done",
+  "order": 170,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "A successful text-block.insert result for a returned editable package/document pair does not resolve to the inserted text-block focus target.",
+    "Columns insert results enter text editing or request text editor focus.",
+    "Core document v4 canonical empty text blocks using children: [] remain blocked from the bounded textarea draft.",
+    "The handoff offers editing when the returned document pair does not advertise text-block.rich-inline.replace support.",
+    "The slice changes Core or Backend insert semantics instead of staying within the Editor-owned handoff readiness boundary.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table cell editing UI, exact column layout editing UI, arbitrary rich-inline authoring, field-ref editing, durable drafts, collaboration, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor resolves applied text-block.insert results for returned editable document pairs into a bounded text editor focus handoff, supports Core document v4 empty text-block drafts, and keeps Columns insert plus WYSIWYG/contenteditable behavior blocked.",
+  "summary": "Done: Editor merge commit 5f7b0c0064b4a6d70bdc2d121138dd3fae7aba12 adds bounded text-block insert-to-edit handoff readiness. useBackendAddNodeMutation now exposes resolveTextBlockInsertToEditTarget and notifyTextBlockInsertToEditTarget, requiring an applied text-block.insert result, the selected inserted target, and Backend capability support for text-block.rich-inline.replace on the returned package/document pair before any canvas focus handoff is emitted. EditorApp passes that ready target to the existing canvas focus path. textBlockInlineDraftAdapter now treats Core document v4 canonical empty text blocks as children: [] clean drafts and creates the first text run only when text is entered through the existing bounded textarea path. Columns insert and unavailable text-save operation pairs remain blocked. This does not enable current Backend document v4 insert semantics, WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table/cell/column authoring, arbitrary rich-inline authoring, field-ref editing, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T08:35:00.000Z",
+  "updatedAt": "2026-08-31T08:35:00.000Z"
+}

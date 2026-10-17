@@ -1,0 +1,42 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-b1-certified-seam-discovery-20260926",
+  "phaseId": "phase-flowdoc-b1-certified-seam-discovery-20260926",
+  "title": "B1 discovery acceptance",
+  "items": [
+    {
+      "id": "ac-1",
+      "label": "Identify current source owners and certified seam implementation with exact source references at pinned Core base.",
+      "state": "passed",
+      "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "evidenceIds": [],
+      "verificationNote": "Rust cold_session owns mutable state; Stage2 oracle owns the accepted two-sided certificate checks. See exact source citations in b1-seam-discovery-0."
+    },
+    {
+      "id": "ac-2",
+      "label": "Resolve Enter head/middle/tail, inverse join, same-property, Thai/Latin, off|ice, empty-child and RTL-sensitive admissibility from contract/source.",
+      "state": "passed",
+      "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "evidenceIds": [],
+      "verificationNote": "Existing fixture expectations classified, including deliberate RTL/non-LTR rejection. Head/tail cannot satisfy current two-sided oracle. Tests were read only."
+    },
+    {
+      "id": "ac-3",
+      "label": "Determine bounded property-changing certificate and atomic publication/cumulative accounting feasibility under unchanged 512/512/1024 caps; explicitly return blocking contract/architecture/scope changes.",
+      "state": "passed",
+      "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "evidenceIds": [],
+      "verificationNote": "Discovery identified the endpoint contract gap and returned a narrow Contract Change Request. This passes gap discovery, not Stage5 implementation or measured cost proof."
+    },
+    {
+      "id": "ac-4",
+      "label": "Return read-only findings and exact base with zero file changes; preserve Stage 4 validity and all excluded scope.",
+      "state": "passed",
+      "evidenceTarget": "b1-seam-discovery-0 source return at a39e91fd671706d8217d58f4668ed45afa0d0e67",
+      "evidenceIds": [],
+      "verificationNote": "PLAN actual Git Scope Lock passed: exact base and terminal a39e91fd671706d8217d58f4668ed45afa0d0e67, clean, zero changed files; packet and manifest digests persisted in acceptance reviewNote."
+    }
+  ],
+  "createdAt": "2026-09-26T14:12:08.747Z",
+  "updatedAt": "2026-09-26T14:18:50.918Z"
+}

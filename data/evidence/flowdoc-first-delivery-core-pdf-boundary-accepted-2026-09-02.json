@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-first-delivery-core-pdf-boundary-accepted-2026-09-02",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "da5011ceeac6e0b72b152a9a5029d684af978581",
+  "pathOrContractId": "src/generation/publishedStructurePdfBoundaryV1.ts; src/index.ts; tests/publishedStructurePdfBoundaryV1.test.ts; docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md; npx vitest run --config vitest.config.ts tests/publishedStructurePdfBoundaryV1.test.ts --maxWorkers=1; npm run check",
+  "verificationSummary": "PLAN acceptanceGate accepted the returned WORK room handoff for lane-core-document-pdf-boundary after pulling the missing PLAN-room push by the retrievable Core locator. Core commit da5011ceeac6e0b72b152a9a5029d684af978581 adds the public createVNextPublishedStructurePdfBoundaryPlanV1 contract and tests for a deterministic, content-free Published Structure PDF boundary plan from accepted generation runtime facts and a pinned Published Structure fingerprint. PLAN verified the reported worktree/branch and commit, ran the focused Core test with 1 file / 3 tests passed, ran git diff --check main...HEAD, merged the Core branch into Core main by fast-forward, and reran npm run check on Core main with 462 files / 2,957 tests passed. This accepted evidence is bounded to the additive Core contract only: it does not prove Backend or Editor adoption, gateway behavior, API key exposure, product database behavior, storage writes, PDF bytes, renderer execution, release readiness, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-02T11:20:00.000+07:00"
+}

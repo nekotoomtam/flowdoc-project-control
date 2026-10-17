@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-outline-scannability-foundation",
+  "phaseId": "phase-editor-outline-scannability-foundation",
+  "title": "Editor Outline Scannability Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-outline-scannability-scope",
+      "label": "Capture Project Control, terminology, Editor agreement, prior Inspector evidence, and live Backend mode boundary before implementation.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records the exact Editor commit, checked routes, and bounded live Backend mode boundary used for this UI lane.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "Project Control AGENTS.md, product terminology, Editor AGENTS.md, and the prior local loopback and Inspector detail navigation records were used before implementation."
+    },
+    {
+      "id": "define-outline-presentation-boundary",
+      "label": "Define the Outline summary as an Editor presentation layer, not Core semantics, Backend storage truth, Project Control overview, or readiness evidence.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 cites the terminology and scope boundary used in the implementation.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "The lane document defines Outline summary, Outline type cue, and Outline depth cue as context-only Editor UI terms."
+    },
+    {
+      "id": "add-outline-scannability-red-tests",
+      "label": "Add RED tests requiring an Outline summary, type/depth attributes, selected-state preservation, bounded dependencies, and no user-facing Node terminology.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records the focused RED failures.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "Focused RED first failed because OutlinePanel had no Outline summary or type/depth cues."
+    },
+    {
+      "id": "add-outline-summary-and-cues",
+      "label": "Add the Outline summary, icons, type labels, depth data attributes, selected-state attributes, and accessibility labels without changing selection semantics.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 points to OutlinePanel.tsx, editor.css, and outlineScannability.test.ts.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "OutlinePanel now renders a compact summary, semantic row cues, icon affordances, and better accessible names while preserving onSelectNode behavior."
+    },
+    {
+      "id": "verify-editor-live-backend-outline-path",
+      "label": "Verify the rendered Editor main live Backend mode design route shows the summary and updates selected state after choosing Columns from the Outline.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records focused, worktree, main, and browser verification.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "Focused GREEN passed, worktree npm run check passed, merged main npm run check passed, and main browser evidence confirmed Outline summary, 3 items, Text 1, Columns 1, Table 1, summary-columns selection, type/depth attributes, accessible row labels, and no browser errors."
+    },
+    {
+      "id": "keep-map-truth-unpromoted",
+      "label": "Keep Editor, Backend, Core, and FlowDoc broad truth states unchanged by this Outline presentation lane.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 remains work-scoped with nodeIds empty.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "The Editor Project Control Node remains truthState unknown with empty documentIds and evidenceIds."
+    },
+    {
+      "id": "record-risk-and-unknowns",
+      "label": "Record dependency audit, chunk-size, Project Control baseline retry, and residual Editor worktree cleanup risks separately from product behavior.",
+      "state": "passed",
+      "evidenceTarget": "evidence-editor-outline-scannability-foundation-2026-08-29 records risks and unknowns without using them as readiness claims.",
+      "evidenceIds": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+      "verificationNote": "The lane records Editor npm audit risk, Vite chunk warning, the transient Project Control baseline worker timeout, and the residual .worktrees/editor-outline-scannability-foundation folder separately from the UI behavior."
+    }
+  ],
+  "createdAt": "2026-08-29T14:15:00.000Z",
+  "updatedAt": "2026-08-29T14:15:00.000Z"
+}

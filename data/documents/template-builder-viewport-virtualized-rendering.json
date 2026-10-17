@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-template-builder-viewport-virtualized-rendering",
+  "title": "Template Builder Viewport and Virtualized Rendering",
+  "path": "docs/versions/V0_1_0a_1/core/template-builder/viewport-and-virtualized-rendering.md",
+  "nodeIds": ["template-builder"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified viewport requests, browser-local measurement, guarded scheduling, render windows, section shells, virtual stacks, lazy-detail plans, anchors, and the bounded synthetic 72-section/936-node shape; wall-clock performance, DOM recycling, production rendering, persistence, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "tests/templateBuilderSandboxBoundary.test.ts"
+    }
+  ]
+}

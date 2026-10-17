@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-live-draft-source-authority-amendment-tests",
+  "nodeIds": ["live-draft"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "tests/textBlockUnifiedLayoutSourceCommitTransactionV1.test.ts",
+  "verificationSummary": "The focused Source-commit suite verifies the bounded 2026-08-11 amendment-backed transaction seam and exact identity rules; this does not turn earlier plans or bilingual companions into stronger authority or establish generic integration, product activation, Editor or Backend binding, browser Worker adoption, or performance readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

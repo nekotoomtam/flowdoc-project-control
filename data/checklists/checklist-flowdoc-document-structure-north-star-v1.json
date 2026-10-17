@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-document-structure-north-star-v1",
+  "phaseId": "phase-flowdoc-document-structure-north-star-v1",
+  "title": "Document Structure North Star v1 Checklist",
+  "items": [
+    {
+      "id": "capture-document-structure-context",
+      "label": "Capture the Work path, owner repository, role, phase, checklist, evidence target, risks, and unknown state.",
+      "state": "passed",
+      "evidenceTarget": "The north star record identifies Project Control ownership before writing product-wide structure framing.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-document-structure-north-star, owner repo-project-control, active role planning-partner with documentation-authority-steward responsibility, phase target phase-flowdoc-document-structure-north-star-v1, checklist target checklist-flowdoc-document-structure-north-star-v1, and evidence target evidence-flowdoc-document-structure-north-star-2026-09-04."
+    },
+    {
+      "id": "write-red-document-structure-north-star-guard",
+      "label": "Write a failing Project Control guard before adding the north star records.",
+      "state": "passed",
+      "evidenceTarget": "A focused test fails before Project Control contains the document-structure north star Work, document, checklist, and evidence records.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1 failed because flowdoc-product-development-resumption did not yet include flowdoc-document-structure-north-star as a child Work."
+    },
+    {
+      "id": "define-document-structure-north-star",
+      "label": "Define FlowDoc as document-structure definition without claiming implementation readiness.",
+      "state": "passed",
+      "evidenceTarget": "The document states FlowDoc is a document-structure definition system, not a Word or Google Docs style editor, and not a PDF-only system.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "docs/domains/flowdoc-document-structure-north-star-2026-09-04.md defines the product north star and keeps it bounded to planning and terminology."
+    },
+    {
+      "id": "define-structure-relationship-boundary",
+      "label": "Define the v0 structure relationship boundary for document, section, component, field, style, page profile, and data binding.",
+      "state": "passed",
+      "evidenceTarget": "The document records Structure Relationship Model v0 and the no-recursive-component rule while preserving future relation-table compatibility.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "The north star names DocumentDefinition, Section, ComponentDefinition, ComponentInstance, FieldDefinition, DataBinding, PageProfile, and StyleDefaults, and states components do not contain active child components in v0."
+    },
+    {
+      "id": "define-draft-version-publication-boundary",
+      "label": "Define Draft, Version, and Publication as separate responsibilities.",
+      "state": "passed",
+      "evidenceTarget": "The document says Draft is editable, DocumentVersion is a frozen baseline, and Publication is a pointer to the selected frozen version.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "The north star requires publishing through a frozen document version and keeps publication separate from version mutation."
+    },
+    {
+      "id": "exclude-runtime-data-and-log-scope",
+      "label": "Exclude runtime data, logs, audit trails, generated files, permissions, submissions, and implementation from the structure model.",
+      "state": "passed",
+      "evidenceTarget": "The document keeps the next database design scoped to document structure only.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "The north star explicitly states runtime data, submissions, logs, audit trails, generated files, and permissions are out of scope for this document-structure model."
+    },
+    {
+      "id": "verify-document-structure-north-star-records",
+      "label": "Verify Project Control records, generated read model, and checks.",
+      "state": "passed",
+      "evidenceTarget": "Focused north star guard, generated read model, Project Control data validation, and full Project Control checks pass.",
+      "evidenceIds": ["evidence-flowdoc-document-structure-north-star-2026-09-04"],
+      "verificationNote": "GREEN evidence target: npx vitest run tests/flowdoc-document-structure-north-star.test.ts --maxWorkers=1, npm run generate, npm run check:data, and npm run check."
+    }
+  ],
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

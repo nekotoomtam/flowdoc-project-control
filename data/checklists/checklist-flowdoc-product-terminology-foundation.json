@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-product-terminology-foundation",
+  "phaseId": "phase-flowdoc-product-terminology-foundation",
+  "title": "FlowDoc Product Terminology Foundation Checklist",
+  "items": [
+    {
+      "id": "capture-existing-glossary-boundary",
+      "label": "Review existing Project Control glossary scope before creating product terminology.",
+      "state": "passed",
+      "evidenceTarget": "Existing glossary records and docs are checked so product terminology does not duplicate Project Control GUI terms.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "Reviewed docs/GLOSSARY.md, docs/GLOSSARY_TH.md, data/documents/glossary-en.json, data/documents/glossary-th.json, and data/nodes/flowdoc.json before editing; existing glossary authority remains Project Control records and read-only GUI terminology."
+    },
+    {
+      "id": "define-product-terminology",
+      "label": "Define product terms that split Project Control, Core, Backend, Editor, and frontend meanings.",
+      "state": "passed",
+      "evidenceTarget": "Product terminology doc includes ambiguity disposition plus qualified terms for Project Control Node, Core runtime node, Document package, Backend document record, Editor draft, Preview, and cross-repository claims.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "Added docs/domains/flowdoc-product-terminology.md with owner-qualified vocabulary and explicit non-promotion boundaries."
+    },
+    {
+      "id": "publish-thai-companion",
+      "label": "Publish a Thai companion without creating a second authority source.",
+      "state": "passed",
+      "evidenceTarget": "Thai companion explains the same English canonical term IDs and states English IDs remain authoritative for records, code, tests, contracts, and evidence.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "Added docs/domains/flowdoc-product-terminology-th.md as a coordination companion, not a separate product authority."
+    },
+    {
+      "id": "add-flowdoc-terminology-rule",
+      "label": "Add terminology discipline to FlowDoc agent rules before product/frontend work.",
+      "state": "passed",
+      "evidenceTarget": "AGENTS.md, global guidance, and round workflow direct agents to read product terminology before Editor/frontend/product work or ambiguous terms.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "Updated Project Control AGENTS.md, docs/domains/flowdoc-global-codex-guidance.md, and docs/domains/flowdoc-round-workflow.md to require terminology discipline and ambiguity disposition."
+    },
+    {
+      "id": "register-project-control-records",
+      "label": "Register documents, Work, Phase, Checklist, node links, and evidence without product truth promotion.",
+      "state": "passed",
+      "evidenceTarget": "Project Control data records link the terminology foundation to FlowDoc while FlowDoc remains planned and Core, Backend, and Editor remain unknown.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "Added document, Work, Phase, Checklist, and Evidence records, and linked the product terminology docs/evidence to the planned FlowDoc node without changing Core, Backend, Editor, or product behavior."
+    },
+    {
+      "id": "verify-project-control-gates",
+      "label": "Run focused and full Project Control gates in the worktree and merged main.",
+      "state": "passed",
+      "evidenceTarget": "Product terminology focused test, generated index check, semantic check, and full Project Control gate pass in the worktree and after merge to main.",
+      "evidenceIds": ["evidence-flowdoc-product-terminology-foundation-2026-08-27"],
+      "verificationNote": "This item is satisfied only after the focused terminology test, npm run generate, npm run check:data, focused roadmap/seed tests, and npm run check pass in the worktree and merged main."
+    }
+  ],
+  "createdAt": "2026-08-27T00:00:00.000Z",
+  "updatedAt": "2026-08-27T00:00:00.000Z"
+}

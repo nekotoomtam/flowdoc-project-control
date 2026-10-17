@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-block-v1-producer-alignment",
+  "nodeIds": ["text-block"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "src/operations/documentOperations.ts",
+  "verificationSummary": "The document operation producers emit canonical empty text blocks for accepted table row and column insertion paths; this does not make package-read normalization authoritative or establish migration, editor, persistence, layout, or product readiness.",
+  "verifiedAt": "2026-08-21T00:00:00.000Z"
+}

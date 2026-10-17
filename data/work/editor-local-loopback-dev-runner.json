@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-local-loopback-dev-runner",
+  "title": "Editor Local Loopback Dev Runner",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Editor-owned local loopback development runner that starts the Backend loopback server and Editor Vite server from one command while treating Core as dependency-only.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-backend-core-live-compatibility-harness-2026-08-27",
+    "doc-editor-browser-live-backend-smoke-2026-08-27",
+    "doc-editor-browser-live-backend-corpus-smoke-2026-08-27",
+    "doc-editor-local-loopback-dev-runner-2026-08-28"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit a007817b0f21de758e93a7c0b63873ca0414d5a7 adds npm scripts `dev:local-loopback` and `dev:local-loopback:smoke`, plus `scripts/run-local-loopback-dev.mjs`, so one command can start live Backend mode for local development while Core remains dependency-only. Target evidence id: evidence-editor-local-loopback-dev-runner-2026-08-28.",
+  "riskSummary": "This lane is local loopback only and does not prove product readiness, deployed Backend compatibility, cross-browser behavior, accessibility readiness, visual regression readiness, durable storage readiness, PDF export readiness, npm audit remediation, or broad Editor, Backend, Core, or FlowDoc truth.",
+  "requiredEvidence": ["evidence-editor-local-loopback-dev-runner-2026-08-28"],
+  "createdAt": "2026-08-28T00:00:00.000Z",
+  "updatedAt": "2026-08-28T00:00:00.000Z"
+}

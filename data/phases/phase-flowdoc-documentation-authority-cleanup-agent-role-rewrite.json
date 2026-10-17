@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Agent Role Documentation Authority Rewrite",
+  "phaseState": "done",
+  "order": 70,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, role catalog document, active role, Checklist target, or Evidence target before editing role guidance.",
+    "The rewrite would authorize product-repository docs/superpowers plans or specs as FlowDoc-wide truth.",
+    "The rewrite would blur Project Control records, Core runtime truth, Backend service truth, and Editor UI truth.",
+    "The rewrite would claim product readiness, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "The role catalog contains Documentation Authority For Roles, product-repository docs/superpowers truth drift is blocked by test, Project Control records the role rewrite evidence, and no product or map truth is promoted.",
+  "summary": "Done: Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe adds Documentation Authority For Roles to docs/domains/flowdoc-role-catalog.md. The role catalog now states that Product Implementation Agent must not create product-repository docs/superpowers plans or specs for FlowDoc-wide truth, Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation, Documentation Synthesizer writes shared summaries in Project Control rather than product-repository superpowers files, and every agent handoff must name Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state.",
+  "createdAt": "2026-08-31T17:42:00.000Z",
+  "updatedAt": "2026-08-31T17:42:00.000Z"
+}

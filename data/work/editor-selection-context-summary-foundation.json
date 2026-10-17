@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-selection-context-summary-foundation",
+  "title": "Editor Selection Context Summary Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Inspector selection context summary so the selected block identity, user-facing kind, surface, child count, and edit capabilities are visible before raw Inspector facts.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-workspace-shell-foundation-2026-08-28",
+    "doc-editor-read-source-authoring-status-2026-08-29",
+    "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29",
+    "doc-editor-selection-context-summary-foundation-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit 011debfbcf55891ff142302bbfdf301cee5160b5 adds the bounded selection context summary above Inspector node actions and raw facts. The summary shows Selected block context with the selected label, a role-first user-facing kind such as Heading, Type: text-block when a role refines the raw type, Surface, Children, and capability badges for Duplicate, Delete, and Reorder. Main browser evidence in live Backend mode confirmed Source: Backend read, Authoring: limited, the title selection summary for Product Report for Customer, and a selection change to Columns when selecting summary-columns. Target evidence id: evidence-editor-selection-context-summary-foundation-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+  "requiredEvidence": ["evidence-editor-selection-context-summary-foundation-2026-08-29"],
+  "createdAt": "2026-08-29T10:30:00.000Z",
+  "updatedAt": "2026-08-29T10:30:00.000Z"
+}

@@ -1,0 +1,17 @@
+{
+  "kind": "document",
+  "id": "doc-core-route-migration-review",
+  "title": "Core Route Migration Readiness Review",
+  "path": "docs/versions/V0_1_0a_1/core/core-route/MIGRATION_REVIEW.md",
+  "nodeIds": ["core-route"],
+  "role": "verification",
+  "authority": "Independent deletion-readiness review for the exact four captured Core route documents.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "bd588e336bd466e3c49e0d593ec6296293ef28bb",
+      "pathOrContractId": "docs/versions/V0_1_0a_1/core/core-route/route-ownership-and-retained-contracts.md"
+    }
+  ]
+}

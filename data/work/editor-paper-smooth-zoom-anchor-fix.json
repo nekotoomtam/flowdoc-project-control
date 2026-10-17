@@ -1,0 +1,30 @@
+{
+  "kind": "work",
+  "id": "editor-paper-smooth-zoom-anchor-fix",
+  "title": "Editor Paper Smooth Zoom Anchor Fix",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Fix the visible Editor paper zoom anchor lag by synchronizing the scaled paper footprint motion with the paper transform.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+    "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit 7a2a62579a02074e7fdf391f4c56a558740dfbf0 fixes the viewport-only zoom anchor by marking the paper stack and shell with smooth zoom motion, transitioning shell width/height and stack gap/min-height for 0.16s/ease alongside the paper transform, and preserving reduced-motion fallback. Main browser evidence confirmed 85% to 95%, shell/paper footprintDelta 0, 0 console errors, and authoring controls still disabled. Target evidence id: evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+  "requiredEvidence": ["evidence-editor-paper-smooth-zoom-anchor-fix-2026-08-29"],
+  "createdAt": "2026-08-29T08:20:00.000Z",
+  "updatedAt": "2026-08-29T08:20:00.000Z"
+}

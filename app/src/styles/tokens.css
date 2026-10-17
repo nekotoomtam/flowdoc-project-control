@@ -1,0 +1,22 @@
+:root {
+  color-scheme: light;
+  --surface-canvas: #f6f8fb;
+  --surface-raised: #ffffff;
+  --surface-subtle: #edf2f7;
+  --text-strong: #172033;
+  --text-default: #344054;
+  --text-muted: #5e6b7b;
+  --border-subtle: #d5dce6;
+  --border-strong: #8290a3;
+  --focus-ring: #075fc7;
+  --shadow-raised: 0 0.75rem 2rem rgb(23 32 51 / 0.08);
+
+  --truth-current: #09683d;
+  --truth-planned: #2457a6;
+  --truth-risk: #af2538;
+  --truth-unknown: #8a550d;
+  --work-queued: #315a9a;
+  --work-in-progress: #7047a5;
+  --work-blocked: #a82a3d;
+  --work-in-review: #8a550d;
+}

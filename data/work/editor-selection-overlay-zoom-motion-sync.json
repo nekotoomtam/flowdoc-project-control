@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "editor-selection-overlay-zoom-motion-sync",
+  "title": "Editor Selection Overlay Zoom Motion Sync",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Fix the visible Editor selection overlay lag during viewport-only smooth zoom by tracking selected-node geometry across zoom-motion frames.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-paper-smooth-zoom-surface-2026-08-29",
+    "doc-editor-paper-smooth-zoom-anchor-fix-2026-08-29",
+    "doc-editor-selection-overlay-zoom-motion-sync-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit a11db59634873d309a0fb469a6479a099705a28e fixes the bounded selection overlay zoom motion lag by scheduling frame-by-frame selection rect syncs during smooth viewport zoom and applying measured overlay CSS variables directly to the existing outline element before React's next render. Browser evidence confirmed 85% to 95% on main with max overlay delta 0.011px, down from the pre-fix stale overlay delta of about 60.47px. Target evidence id: evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth.",
+  "requiredEvidence": ["evidence-editor-selection-overlay-zoom-motion-sync-2026-08-29"],
+  "createdAt": "2026-08-29T09:40:00.000Z",
+  "updatedAt": "2026-08-29T09:40:00.000Z"
+}

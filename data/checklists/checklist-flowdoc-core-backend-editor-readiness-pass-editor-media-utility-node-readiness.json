@@ -1,0 +1,80 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-core-backend-editor-readiness-pass-editor-media-utility-node-readiness",
+  "phaseId": "phase-flowdoc-core-backend-editor-readiness-pass-editor-media-utility-node-readiness",
+  "title": "Editor Media And Utility Node Readiness Checklist",
+  "items": [
+    {
+      "id": "capture-context",
+      "label": "Capture Project Control, terminology, Editor roadmap, and owner repository context before implementation.",
+      "state": "passed",
+      "evidenceTarget": "Project Control entrypoint, product terminology, Editor AGENTS.md, and old Editor roadmap Task 8 are reviewed before implementation.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > flowdoc-core-backend-editor-readiness-pass-8h, owner repository repo-editor, phase target phase-flowdoc-core-backend-editor-readiness-pass-editor-media-utility-node-readiness, checklist target checklist-flowdoc-core-backend-editor-readiness-pass-editor-media-utility-node-readiness, and evidence target evidence-editor-media-utility-node-readiness-2026-08-31 before record edits."
+    },
+    {
+      "id": "write-red-tests",
+      "label": "Write failing Editor and Project Control tests before accepting media and utility readiness.",
+      "state": "passed",
+      "evidenceTarget": "Utility readiness matrix, blocked unsupported contracts, hidden visible actions, utility Paper markup, and Project Control registration fail before implementation or record edits.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "RED evidence included utilityNodeReadiness failing because the module did not exist, addNodeContract failing because unsupported contracts still used the older Core-only reason, addNodeVisibleActions requiring unsupported media/utility buttons to remain absent, and Project Control Work Queue failing because this phase was not registered."
+    },
+    {
+      "id": "classify-readiness",
+      "label": "Classify media and utility readiness from Core placement facts and Backend operation capabilities.",
+      "state": "passed",
+      "evidenceTarget": "image, page-break, spacer, divider, and toc expose status, contractStatus, coreContainerStatus, backendOperationKind, backendOperationStatus, and reason facts.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "utilityNodeReadiness tests prove the matrix contains image, page-break, spacer, divider, and toc facts derived from Core placement and Backend mutationOperations for the active package/document pair."
+    },
+    {
+      "id": "block-unsupported-contracts",
+      "label": "Keep unsupported media and utility add-node contracts blocked before Backend requests can be used.",
+      "state": "passed",
+      "evidenceTarget": "Unsupported media/utility contracts return null requests and exact Core/Backend blocked reasons.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "addNodeContract tests prove page-break remains blocked with request null and the exact Core/Backend insert operation reason. Related readiness facts keep image blocked by Core container rules and page-break/spacer/divider/toc blocked by contract support."
+    },
+    {
+      "id": "hide-visible-actions",
+      "label": "Do not create visible add buttons for unsupported media or utility operations.",
+      "state": "passed",
+      "evidenceTarget": "Visible Outline add actions do not serialize image.insert, page-break.insert, spacer.insert, divider.insert, or toc.insert.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "addNodeVisibleActions tests prove unsupported media and utility operation kinds are not exposed as visible add buttons while Text and Columns readiness remains independently gated."
+    },
+    {
+      "id": "mark-paper-surfaces",
+      "label": "Mark utility Paper preview surfaces without adding editing controls.",
+      "state": "passed",
+      "evidenceTarget": "Utility Paper markup exposes data-utility-node-kind and data-utility-node-readiness=blocked while omitting textarea and contenteditable controls.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "PaperBlock tests prove page-break preview markup exposes blocked readiness facts and does not introduce textarea or contenteditable authoring controls."
+    },
+    {
+      "id": "verify-and-record",
+      "label": "Run Editor worktree and merged-main gates, record Project Control evidence, and keep maps unchanged.",
+      "state": "passed",
+      "evidenceTarget": "Focused Editor tests, full Editor check, no-write live Backend smoke, and Project Control record tests support the bounded evidence record.",
+      "evidenceIds": [
+        "evidence-editor-media-utility-node-readiness-2026-08-31"
+      ],
+      "verificationNote": "Editor worktree and merged main passed focused 10-file/50-test gate, npm run check with 106 test files and 385 tests plus build, and FLOWDOC_EVIDENCE_WRITE=0 npm run evidence:editor-browser-live-backend-smoke. Project Control records are added without map promotion."
+    }
+  ],
+  "createdAt": "2026-08-31T10:10:00.000Z",
+  "updatedAt": "2026-08-31T10:10:00.000Z"
+}

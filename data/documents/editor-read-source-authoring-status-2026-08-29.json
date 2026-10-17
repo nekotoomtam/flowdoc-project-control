@@ -1,0 +1,37 @@
+{
+  "kind": "document",
+  "id": "doc-editor-read-source-authoring-status-2026-08-29",
+  "title": "Editor Read Source Authoring Status",
+  "path": "docs/domains/editor-read-source-authoring-status-2026-08-29.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Bounded implementation evidence and UI honesty decision for separating Editor Backend read source from limited authoring status without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/components/shell/StatusBar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/components/shell/WorkspaceEditingCommandGroup.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/tests/workspaceStatusStrip.test.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "b34fa44a25113359004706f32ecdd1d694dbf3e3",
+      "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts"
+    }
+  ]
+}

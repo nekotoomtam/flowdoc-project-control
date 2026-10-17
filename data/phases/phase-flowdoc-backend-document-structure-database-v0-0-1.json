@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-backend-document-structure-database-v0-0-1",
+  "workId": "flowdoc-backend-document-structure-database-v0-0-1",
+  "title": "Backend Document Structure Database v0.0.1 Acceptance",
+  "phaseState": "done",
+  "order": 12,
+  "repositoryIds": ["repo-project-control", "repo-backend"],
+  "activeRole": "evidence-reviewer",
+  "stopConditions": [
+    "The Backend WORK room does not return through the active WORK-to-PLAN channel.",
+    "The Backend handoff lacks lane ID, Work Type, owner repository, Context Acknowledgement, retrievable locator, exact commit, files changed, behavior changed, verification, risks, unknowns, or PR Summary Draft.",
+    "The Backend implementation changes Core, Editor, Project Control truth, HTTP gateway routes, runtime submission values, generated PDFs, permissions, workflow, billing, audit, activity, integrations, or a new gateway repo without an accepted Contract Change Request.",
+    "PLAN accepts the Backend lane without independently reviewing the output and running fresh Backend main verification."
+  ],
+  "verificationTarget": "PLAN accepts Backend commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3 only after automatic return, same-room revision, document-structure database v0.0.1 scope review, fresh Backend worktree and main gates, and evidence that section parent tree validation plus component version create-or-select behavior are covered.",
+  "summary": "Done: PLAN received the Backend WORK handoff automatically, returned it to the same WORK room as needs-revision, received a revised automatic handoff, verified Backend commit 619dd32decf68ec7f1c3d1e68b64619beeb702c3, fast-forward merged Backend main, reran Backend main verification, and recorded the accepted scope and remaining unknowns.",
+  "createdAt": "2026-09-04T11:40:00.000+07:00",
+  "updatedAt": "2026-09-04T11:40:00.000+07:00"
+}

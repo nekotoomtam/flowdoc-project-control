@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-creator-draft-r0",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "R0 ต้นทางข้อมูลและขอบเขต Build",
+  "phaseState": "done",
+  "order": 30,
+  "repositoryIds": [
+    "repo-project-control"
+  ],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "ขอบเขตเปลี่ยน Core semantics หรือทำข้อมูล draft หาย",
+    "ห้ามอ้างผลิตภัณฑ์พร้อมใช้จากแผนหรือการตรวจบางส่วน"
+  ],
+  "verificationTarget": "docs/domains/flowdoc-creator-draft-first-delivery-2026-09-05.md; evidence-creator-draft-r0-2026-09-05; owner worktree/main gates",
+  "summary": "R0 resolved: Backend DocumentDefinition draft is canonical for creator Build; no lossy Package conversion. Minimal handler save/read/edit/stale probe passed at eddf727. R1/R2 evidence verifies subsequent integration; no Core semantics or map promotion.",
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-bounded-browser-compatibility-promotion-2026-08-27",
+  "nodeIds": ["flowdoc-browser-compatibility"],
+  "repositoryId": "repo-project-control",
+  "commit": "739d19d452bdb5151ec030db96a9247da0a29ae5",
+  "pathOrContractId": "docs/domains/editor-browser-live-backend-smoke-2026-08-27.md",
+  "verificationSummary": "Project Control commit 739d19d452bdb5151ec030db96a9247da0a29ae5 records the accepted Editor browser live Backend smoke packet and promotes only the bounded local loopback browser compatibility child claim. The supporting packet cites Editor commit ad0dbf7b81f483cb73c19ed28c3fd8fcbd68c6e4, whose retained fixture shows headless Chrome opening /documents and /documents/product-report-vnext-minimal/design against a live loopback Backend, observing Core: api r3, clicking Upgrade to Core: api r4 partial mode, clicking Move selected node down to Core: mutation-result r5, and retaining final outline order summary-columns > title > detail-table. It also records Backend request paths and 200/204 statuses for library, capabilities, document read, migration, and mutation routes, plus Editor worktree and merged main owner gates. This promotion creates a current child node only for that bounded smoke. It leaves FlowDoc planned and Core, Editor, and Backend unknown, and does not promote deployed Backend compatibility, cross-browser behavior, broad document-corpus coverage, accessibility, visual regression, npm audit remediation, bundle-size readiness, or product readiness.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

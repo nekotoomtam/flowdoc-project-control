@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-editor-workspace-editing-command-group-foundation-2026-08-29",
+  "title": "Editor WorkspaceEditingCommandGroup Foundation",
+  "path": "docs/domains/editor-workspace-editing-command-group-foundation-2026-08-29.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Bounded implementation evidence and boundary decision for the Editor WorkspaceEditingCommandGroup UI component split without promoting Editor product truth.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+      "pathOrContractId": "src/components/shell/WorkspaceEditingCommandGroup.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+      "pathOrContractId": "src/components/shell/EditorToolbar.tsx"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "aca56f18b4e3e41ca514684fdf47478ce0e9ea00",
+      "pathOrContractId": "src/tests/workspaceEditingCommandGroup.test.ts"
+    }
+  ]
+}

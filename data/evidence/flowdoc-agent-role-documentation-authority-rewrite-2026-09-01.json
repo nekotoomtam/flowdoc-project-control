@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "be0729767ba3e86a828e4f133edf17380ab77fbe",
+  "pathOrContractId": "docs/domains/flowdoc-role-catalog.md; tests/documentation-authority-policy.test.ts",
+  "verificationSummary": "Project Control commit be0729767ba3e86a828e4f133edf17380ab77fbe records the agent-role documentation authority rewrite after product-repository docs/superpowers cleanup. docs/domains/flowdoc-role-catalog.md now includes Documentation Authority For Roles. The new role rules state that Product Implementation Agent must not create product-repository docs/superpowers plans or specs for FlowDoc-wide truth, Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation, Documentation Synthesizer writes shared summaries in Project Control rather than product-repository superpowers files, Evidence Reviewer checks repository id, exact commit, path or contract id, verification summary, and unresolved-risk boundary before recommending truth-state changes, Cross-Repo Boundary Reviewer rejects blended unqualified truth claims, Lane Reconciliation Reviewer records cleanup rationale before removing old lanes, and every agent handoff must name Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 failed because the role catalog did not yet contain Documentation Authority For Roles. GREEN evidence after the role catalog update passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 file and 6 tests, npm run generate, and npm run check:data. This evidence does not clean remaining Project Control docs/superpowers, does not edit Core, Backend, or Editor behavior, and does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-08-31T17:42:00.000Z"
+}

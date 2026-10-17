@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-editor-workspace-shell-foundation-2026-08-28",
+  "nodeIds": [],
+  "repositoryId": "repo-editor",
+  "commit": "aef34d9b0b38521dac361abd95d61db7a1c061ee",
+  "pathOrContractId": "src/tests/workspaceFrame.test.ts",
+  "verificationSummary": "Editor commit aef34d9b0b38521dac361abd95d61db7a1c061ee implements the first bounded Editor Workspace Shell foundation slice by adding WorkspaceFrame as a UI component for shell frame and tabpanel retention, refactoring EditorShell to delegate frame rendering while keeping runtime derivation and intent wiring, and updating the E.5.2 tabs guard to read the new boundary. RED failed before implementation because WorkspaceFrame did not exist; focused tests then passed for src/tests/workspaceFrame.test.ts plus shell-adjacent tabs, backend-unavailable, render partition, and boundary tests. Editor worktree npm run check passed type-check, 81 passed test files, 287 passed tests, and build; merged Editor main npm run check also passed type-check, 81 passed test files, 287 passed tests, and build. This supports only the bounded shell frame component split; it does not promote broad Editor truth, frontend design completion, Preview lifecycle ownership, Backend readiness, Core truth, production readiness, accessibility, visual regression, bundle-size readiness, or FlowDoc product readiness.",
+  "verifiedAt": "2026-08-28T00:00:00.000Z"
+}

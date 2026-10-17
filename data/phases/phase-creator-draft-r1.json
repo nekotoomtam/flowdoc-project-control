@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-creator-draft-r1",
+  "workId": "flowdoc-frontend-expert-roadmap",
+  "title": "R1 คลังโครงสร้างและการเก็บข้อมูล",
+  "phaseState": "done",
+  "order": 31,
+  "repositoryIds": [
+    "repo-backend"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "ขอบเขตเปลี่ยน Core semantics หรือทำข้อมูล draft หาย",
+    "ห้ามอ้างผลิตภัณฑ์พร้อมใช้จากแผนหรือการตรวจบางส่วน"
+  ],
+  "verificationTarget": "docs/domains/flowdoc-creator-draft-first-delivery-2026-09-05.md; evidence-creator-draft-r1-2026-09-05; owner worktree/main gates",
+  "summary": "R1 accepted for local workspace: paginated workspace-scoped listing and SQLite local runner persistence. Worktree and main type-check, full test run with maxWorkers=1 (95 passed/1 skipped files; 354 passed/27 skipped tests), and build passed. Initial default-worker run lost a worker; full serial retry passed without reducing coverage. New tests cover HTTP queries and process restart. Not production auth/database readiness.",
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

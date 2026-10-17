@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-glossary-th",
+  "title": "อภิธานศัพท์ Flowdoc",
+  "path": "docs/GLOSSARY_TH.md",
+  "nodeIds": ["flowdoc"],
+  "role": "glossary",
+  "authority": "Canonical Thai explanations for the same Project Control term IDs.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

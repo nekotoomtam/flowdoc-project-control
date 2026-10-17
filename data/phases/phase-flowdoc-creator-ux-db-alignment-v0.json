@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-creator-ux-db-alignment-v0",
+  "workId": "flowdoc-creator-ux-db-alignment-v0",
+  "title": "FlowDoc Creator UX and Database Alignment v0",
+  "phaseState": "done",
+  "order": 12,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The alignment would require Core, Backend, or Editor product repository edits.",
+    "The alignment would claim product database implementation, SQL migration completeness, frontend readiness, API readiness, renderer readiness, PDF readiness, or production readiness from planning alone.",
+    "The alignment would treat Structure Pattern Slot as the same thing as Structure Pattern Entry or would store runtime submitted values in structure tables."
+  ],
+  "verificationTarget": "Project Control records the Creator UX Contract v0 and Document Structure Database Model v0.0.2 with clear Structure Pattern Slot versus Structure Pattern Entry boundaries, slot repeat policy, layout boundary fields, slot-driven freeze, and implementation exclusions.",
+  "summary": "Done: Project Control now records the creator-facing flow and v0.0.2 structure relationship model that keeps Build as draft authoring, Preview as simulation, Structure Pattern Slots as author-time relationships, and Structure Pattern Entries as Preview or runtime occurrences outside the document-structure model.",
+  "createdAt": "2026-09-04T15:00:00.000+07:00",
+  "updatedAt": "2026-09-04T15:00:00.000+07:00"
+}

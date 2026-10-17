@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31",
+  "nodeIds": [],
+  "repositoryId": "repo-project-control",
+  "commit": "98bcec99d905c95feb765c1d630bda2f225bd998",
+  "pathOrContractId": "docs/domains/flowdoc-documentation-authority-policy.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
+  "verificationSummary": "Project Control commit 98bcec99d905c95feb765c1d630bda2f225bd998 adds the FlowDoc documentation authority policy foundation, the policy document record, cleanup Work, Phase, Checklist, Project Control node document link, agent onboarding pointer, copy-ready global guidance pointer, agent operating model boundary, roadmap guard, generated read model update, and focused documentation authority policy test. RED evidence: npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 first failed before the Work record existed, then failed again before requiredEvidence and this Evidence record existed. GREEN evidence before evidence registration passed npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1 with 1 test, npx vitest run tests/project-roadmap-work-queue.test.ts tests/documentation-authority-policy.test.ts --maxWorkers=1 with 2 files and 3 tests, npm run generate, and npm run check:data. This evidence is work-scoped with nodeIds [] and does not delete product-repository Markdown, does not clean Core, Backend, or Editor source documents, does not revise final agent roles, and does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth.",
+  "verifiedAt": "2026-08-31T14:30:00.000Z"
+}

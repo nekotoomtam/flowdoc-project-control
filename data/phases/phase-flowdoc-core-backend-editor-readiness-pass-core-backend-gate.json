@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-core-backend-gate",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Reconcile Core Fixture State and Verify Backend Gate",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control", "repo-core", "repo-backend"],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "Core fixture restoration would touch paths outside packages/pdf-renderer-pilot/fixtures or hide unrelated local changes.",
+    "Backend npm run check still fails after Core fixture state is reconciled.",
+    "The evidence wording would promote broad Core, Backend, Editor, FlowDoc, production, deployed, or frontend readiness.",
+    "Project Control validation cannot regenerate the deterministic read model from canonical records."
+  ],
+  "verificationTarget": "Core and Backend repository gates prove that the missing Core PDF fixture local-state blocker has been removed for the current sibling checkout layout, without promoting broad repository readiness.",
+  "summary": "Done: Core tracked PDF fixture deletions were restored from HEAD after explicit user approval; Core npm run check and Backend npm run check passed; broad FlowDoc, Core, Backend, Editor, and frontend readiness remain unpromoted.",
+  "createdAt": "2026-08-30T05:38:00.000Z",
+  "updatedAt": "2026-08-30T05:38:00.000Z"
+}

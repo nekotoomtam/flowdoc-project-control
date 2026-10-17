@@ -1,0 +1,29 @@
+{
+  "kind": "work",
+  "id": "editor-live-backend-rich-inline-harness",
+  "title": "Editor Live Backend Rich Inline Harness",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-backend", "repo-core", "repo-project-control"],
+  "workState": "in-review",
+  "summary": "Add bounded Editor evidence that rich-inline text-block replacement can travel through the live loopback Backend mutation path, return as a Core-backed mutation result, and be applied through Editor runtime stale-gate handling.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-flowdoc-core-backend-readiness-matrix-2026-08-27",
+    "doc-editor-backend-core-live-compatibility-harness-2026-08-27"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds runBackendRichInlineMutation and extends the live compatibility harness so capability, read, migration, reorder, rich-inline replacement, runtime apply, and stale replay blocking are verified against a real loopback Backend client path.",
+  "riskSummary": "This Work is evidence for a bounded Editor harness only. It does not enable WYSIWYG or text input UI, does not prove full frontend readiness, does not prove production Backend or deployed compatibility, does not cover the broad document corpus, and does not promote Editor, Backend, Core, FlowDoc, or map truth. Editor npm install reported existing high-severity audit findings and Vite retained the existing chunk-size warning; neither was remediated in this lane.",
+  "requiredEvidence": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+  "createdAt": "2026-08-30T06:15:42.000Z",
+  "updatedAt": "2026-08-30T06:15:42.000Z"
+}

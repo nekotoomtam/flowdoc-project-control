@@ -1,0 +1,60 @@
+{
+  "createdAt": "2026-09-05T18:03:13.0024307Z",
+  "title": "เกณฑ์ Core Creator Preview",
+  "kind": "checklist",
+  "updatedAt": "2026-09-05T20:35:50.4245446Z",
+  "phaseId": "phase-core-creator-text-preview-v1",
+  "id": "checklist-core-creator-text-preview-v1",
+  "items": [
+    {
+      "label": "schema-admission",
+      "evidenceIds": [
+        "evidence-core-creator-text-preview-v1"
+      ],
+      "id": "schema-admission",
+      "evidenceTarget": "evidence-core-creator-text-preview-v1",
+      "state": "passed",
+      "verificationNote": "PLAN reviewed Core7194009 implementation and358e14a test-only R1;432files/2797tests plus type-check pass on both worktree and main using approved maxWorkers=1 at unchanged timeouts. Default parallel schedule and frontend acceptance not claimed."
+    },
+    {
+      "label": "product-authority",
+      "evidenceIds": [
+        "evidence-core-creator-text-preview-v1"
+      ],
+      "id": "product-authority",
+      "evidenceTarget": "evidence-core-creator-text-preview-v1",
+      "state": "passed",
+      "verificationNote": "PLAN reviewed Core7194009 implementation and358e14a test-only R1;432files/2797tests plus type-check pass on both worktree and main using approved maxWorkers=1 at unchanged timeouts. Default parallel schedule and frontend acceptance not claimed."
+    },
+    {
+      "label": "occurrence-geometry",
+      "evidenceIds": [
+        "evidence-core-creator-text-preview-v1"
+      ],
+      "id": "occurrence-geometry",
+      "evidenceTarget": "evidence-core-creator-text-preview-v1",
+      "state": "passed",
+      "verificationNote": "PLAN reviewed Core7194009 implementation and358e14a test-only R1;432files/2797tests plus type-check pass on both worktree and main using approved maxWorkers=1 at unchanged timeouts. Default parallel schedule and frontend acceptance not claimed."
+    },
+    {
+      "label": "deterministic-layout",
+      "evidenceIds": [
+        "evidence-core-creator-text-preview-v1"
+      ],
+      "id": "deterministic-layout",
+      "evidenceTarget": "evidence-core-creator-text-preview-v1",
+      "state": "passed",
+      "verificationNote": "PLAN reviewed Core7194009 implementation and358e14a test-only R1;432files/2797tests plus type-check pass on both worktree and main using approved maxWorkers=1 at unchanged timeouts. Default parallel schedule and frontend acceptance not claimed."
+    },
+    {
+      "label": "negative-regression",
+      "evidenceIds": [
+        "evidence-core-creator-text-preview-v1"
+      ],
+      "id": "negative-regression",
+      "evidenceTarget": "evidence-core-creator-text-preview-v1",
+      "state": "passed",
+      "verificationNote": "PLAN reviewed Core7194009 implementation and358e14a test-only R1;432files/2797tests plus type-check pass on both worktree and main using approved maxWorkers=1 at unchanged timeouts. Default parallel schedule and frontend acceptance not claimed."
+    }
+  ]
+}

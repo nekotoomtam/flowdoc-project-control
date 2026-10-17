@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary",
+  "workId": "flowdoc-documentation-authority-cleanup",
+  "title": "Core Render API Contract Boundary",
+  "phaseState": "done",
+  "order": 140,
+  "repositoryIds": [
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "documentation-synthesizer",
+  "stopConditions": [
+    "Project Control cannot identify the documentation cleanup Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The Core Render API contract retained value has not been recorded in Project Control before Core demotion.",
+    "The cleanup would delete Core Render API contract docs that are still pinned by Core tests or README references without replacement evidence.",
+    "The cleanup would promote Core runtime readiness, Backend readiness, Editor readiness, compatibility, frontend readiness, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "The six surviving Core Render API contract docs carry Authority Boundary wording that points FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state back to Project Control; Core worktree plus merged main gates pass.",
+  "summary": "Done: Project Control commit c64d6bf733ec7ea8e4707b35635732537b83797e recorded retained value for six Core Render API contract docs before Core demotion. Core commit b4992a70091d9e829b7c9f023ac7f0d90250e827 added Authority Boundary wording to docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md, docs/RENDER_API_REQUEST_ENVELOPE_CONTRACT_GATE.md, docs/RENDER_READINESS_VALIDATION_POLICY_GATE.md, docs/ARTIFACT_POINTER_JOB_STATUS_PLACEHOLDER_POLICY_GATE.md, docs/RENDER_API_ERROR_BLOCKER_VOCABULARY_GATE.md, and docs/RENDER_API_CONTRACT_CLOSE_AUDIT.md, plus a Core guard. The docs survive as Core-local implementation context without deleting Core Render API contract docs or changing runtime behavior. Core tracked and visible Markdown remain 339 files, with 21 Authority/Project Control signal matches and 318 tracked Core Markdown files without Authority Boundary or Project Control signal. Cleanup housekeeping leaves C:/Users/nekot/Documents/GitHub/fd-core-render-contract-0901 remains on disk; Git no longer lists it as a Core worktree and branch fd-core-render-contract-0901 was deleted, but git worktree remove failed with Filename too long. The folder is a cleanup blocker only, not an active worktree or unmerged branch.",
+  "createdAt": "2026-09-01T07:20:00.000Z",
+  "updatedAt": "2026-09-01T07:20:00.000Z"
+}

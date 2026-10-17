@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-cross-repo-compatibility-core-gate-refresh-2026-09-03",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "8de9e5082f3462e42fdff368d0cb380159da3713",
+  "pathOrContractId": "package.json#scripts.check",
+  "verificationSummary": "Core main commit 8de9e5082f3462e42fdff368d0cb380159da3713 was clean and npm run check was executed for the cross-repository compatibility Core gate refresh after the PDF renderer pilot fixture output retirement. Type-check passed, and the default full Vitest run passed with 431 passed test files and 2,789 passed tests in 286.13s. This refresh supersedes the stale 2026-08-27 default-gate timeout blocker for the current Core head only. It does not prove live Editor-to-Backend-to-Core integration, Backend or Editor current-head gates, product readiness, release readiness, FlowDoc product truth, or map truth.",
+  "verifiedAt": "2026-09-03T00:09:01.720+07:00"
+}

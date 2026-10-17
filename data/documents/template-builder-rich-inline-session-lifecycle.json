@@ -1,0 +1,27 @@
+{
+  "kind": "document",
+  "id": "doc-template-builder-rich-inline-session-lifecycle",
+  "title": "Template Builder Rich Inline Commit and Session Lifecycle",
+  "path": "docs/versions/V0_1_0a_1/core/template-builder/rich-inline-commit-and-session-lifecycle.md",
+  "nodeIds": ["template-builder"],
+  "role": "contract",
+  "authority": "Canonical contract limited to verified local segment/range hardening, accepted-fresh-plan rich-inline commit, in-memory replay, live/exact stale invalidation, and JSON-safe rich-inline replay-patch validation/history-ready facts; the validation helper creates no package snapshot, persisted session record, or storage record, performs no storage write, and executes no replay, while production contenteditable input, collaboration merge, renderer/export output, and family-wide authority remain excluded.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "examples/template-builder-sandbox/public/draftContenteditableSurfaceHardening.js"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/richInlineCommit.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+      "pathOrContractId": "src/authoring/richInlineSessionPersistence.ts"
+    }
+  ]
+}

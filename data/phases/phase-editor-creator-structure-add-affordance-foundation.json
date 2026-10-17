@@ -1,0 +1,23 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-creator-structure-add-affordance-foundation",
+  "workId": "editor-creator-structure-add-affordance-foundation",
+  "title": "Add Editor Creator Structure Add Affordance Foundation",
+  "phaseState": "done",
+  "order": 107,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The Structure panel treats Editor draft outline items, Core runtime node facts, Backend document records, or Project Control Node truth as the same authority.",
+    "The add-block affordance creates, mutates, persists, or routes through Backend/Core behavior before the mutation contract is verified.",
+    "The Structure panel exposes user-facing Node terminology instead of Add block or Structure terminology.",
+    "The selected-row add affordance renders once for every row in large outlines, making the panel heavier as structure count grows.",
+    "The implementation imports Backend or Core directly into the presentation component.",
+    "Browser verification cannot keep the existing live Backend mode design route and selection/mutation smoke path working.",
+    "Project Control promotes the broad Editor node from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor creator Structure add affordance foundation with checklist target checklist-editor-creator-structure-add-affordance-foundation and evidence target evidence-editor-creator-structure-add-affordance-foundation-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added disabled add-block affordances to the Editor left Structure panel and guarded the selected-row affordance count for larger outline structures.",
+  "createdAt": "2026-08-29T15:57:00.000Z",
+  "updatedAt": "2026-08-29T15:57:00.000Z"
+}

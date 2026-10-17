@@ -1,0 +1,66 @@
+{
+  "kind": "checklist",
+  "id": "checklist-editor-live-backend-rich-inline-harness",
+  "phaseId": "phase-editor-live-backend-rich-inline-harness",
+  "title": "Editor Live Backend Rich Inline Harness Checklist",
+  "items": [
+    {
+      "id": "capture-current-boundaries",
+      "label": "Capture Project Control, Core, Backend, and Editor boundaries before changing Editor.",
+      "state": "passed",
+      "evidenceTarget": "Project Control Work path, terminology rules, owner repository instructions, current heads, and known risks are reviewed before implementation.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "Reviewed Project Control entrypoint, Work tree rules, FlowDoc terminology, Core AGENTS.md, Backend AGENTS.md, and Editor AGENTS.md before implementation; owner repository for the harness is Editor and the Work path remains flowdoc-product-development-resumption > editor-live-backend-rich-inline-harness."
+    },
+    {
+      "id": "verify-editor-baseline",
+      "label": "Verify the Editor owner gate before adding the harness.",
+      "state": "passed",
+      "evidenceTarget": "A clean Editor worktree baseline gate proves the starting point is usable.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "After creating the sibling Editor worktree and installing dependencies, npm run check passed type-check, 90 test files with 313 tests, and build; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "write-focused-red",
+      "label": "Write a focused failing test for the live Backend rich-inline path.",
+      "state": "passed",
+      "evidenceTarget": "The focused test fails for the missing Editor helper before implementation.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "Focused RED initially exposed a test setup issue around package payload source; after correcting the test to use the read envelope package payload, the expected RED was TypeError: runBackendRichInlineMutation is not a function."
+    },
+    {
+      "id": "implement-bounded-runner",
+      "label": "Implement the minimal Editor runner boundary for Backend rich-inline mutation requests.",
+      "state": "passed",
+      "evidenceTarget": "Editor production changes stay limited to the existing backend mutation runner boundary.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "Editor commit 3b592b48765337efdbd6da539130d2daae1349bc adds runBackendRichInlineMutation in src/editor/backend/backendMutationRunner.ts, reusing createBackendRichInlineMutationRequest, the live Backend mutation client, and runtimeBackendMutationApply without UI or Core semantic drift."
+    },
+    {
+      "id": "prove-focused-green",
+      "label": "Prove the live Backend rich-inline harness on the focused test.",
+      "state": "passed",
+      "evidenceTarget": "The focused live compatibility test passes with the rich-inline mutation included.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "npx vitest run src/tests/liveCompatibilityHarness.test.ts passed 1 test after the harness verified capability/read/migration/reorder/rich-inline mutation/runtime apply/stale replay blocking through the loopback Backend path."
+    },
+    {
+      "id": "verify-owner-and-main-gates",
+      "label": "Run full Editor gates in the worktree and after merging to main.",
+      "state": "passed",
+      "evidenceTarget": "Both the feature worktree and merged Editor main pass npm run check.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "Editor worktree npm run check and merged Editor main npm run check both passed type-check, 90 test files with 313 tests, and build; Vite retained the existing chunk-size warning."
+    },
+    {
+      "id": "verify-cleanup-and-register-evidence",
+      "label": "Verify cleanup side effects and register only the bounded Project Control evidence.",
+      "state": "passed",
+      "evidenceTarget": "Core cleanup side effects are restored and reverified; Project Control records the evidence without truth promotion.",
+      "evidenceIds": ["evidence-editor-live-backend-rich-inline-harness-2026-08-30"],
+      "verificationNote": "A manual cleanup attempt on the external sibling Editor worktree caused Core tracked deletions under packages/text-engine-rust-wasm through npm file-dependency links; the Core path was restored from HEAD, Core git status returned clean, Core npm run check passed 460 test files with 2,945 tests, and this Project Control record keeps the claim bounded."
+    }
+  ],
+  "createdAt": "2026-08-30T06:15:42.000Z",
+  "updatedAt": "2026-08-30T06:15:42.000Z"
+}

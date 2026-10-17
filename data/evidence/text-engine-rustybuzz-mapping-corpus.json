@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-engine-rustybuzz-mapping-corpus",
+  "nodeIds": ["text-engine"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "packages/text-engine-rust-wasm/src/rustybuzzRawMapping.ts",
+  "verificationSummary": "Focused package-local native smoke, strict UTF-8-byte-cluster-to-UTF-16 and font-unit mapping, the complete four-case corpus, fail-closed behavior, and the missing-WASM-digest warning were verified; this does not establish production readiness, default binding, native/WASM parity, real or generated ICU4X evidence, or general renderer authority.",
+  "verifiedAt": "2026-08-20T00:00:00.000Z"
+}

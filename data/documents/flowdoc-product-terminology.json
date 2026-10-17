@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-product-terminology",
+  "title": "FlowDoc Product Terminology",
+  "path": "docs/domains/flowdoc-product-terminology.md",
+  "nodeIds": ["flowdoc"],
+  "role": "glossary",
+  "authority": "Product terminology boundary for FlowDoc Core, Backend, Editor, frontend redesign, and cross-repository coordination; it defines terms and ambiguity disposition only, without proving product readiness.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

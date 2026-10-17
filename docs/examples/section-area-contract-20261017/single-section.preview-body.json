@@ -1,0 +1,53 @@
+{
+  "expectedRevision": 1,
+  "idempotencyKey": "example-single-preview",
+  "sampleRequest": {
+    "docKey": "section-array-example",
+    "data": {},
+    "sections": [
+      {
+        "id": "10000000-0000-4000-8000-000000000011",
+        "data": {
+          "projectName": "Project A",
+          "details": [
+            {
+              "format": "cover",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "contents",
+              "data": {}
+            },
+            {
+              "format": "new-page",
+              "data": {}
+            },
+            {
+              "format": "heading",
+              "data": {
+                "text": "Introduction",
+                "anchor": "intro"
+              }
+            },
+            {
+              "format": "paragraph",
+              "data": {
+                "text": "Independent content 1"
+              }
+            }
+          ]
+        },
+        "header": {
+          "title": "Header A"
+        },
+        "footer": {
+          "note": "Footer A"
+        }
+      }
+    ]
+  }
+}

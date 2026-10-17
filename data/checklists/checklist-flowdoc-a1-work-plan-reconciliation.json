@@ -1,0 +1,34 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-a1-work-plan-reconciliation",
+  "phaseId": "phase-flowdoc-a1-work-plan-reconciliation",
+  "title": "A1 acceptance",
+  "items": [
+    {
+      "id": "baseline-coverage",
+      "label": "All 60 baseline Work have traceable dispositions.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-a1-work-plan-reconciliation-2026-09-26.md",
+      "evidenceIds": [],
+      "verificationNote": "55 operational closures, 3 retain, 2 needs-discovery; all referenced Evidence resolves."
+    },
+    {
+      "id": "unphased-dispositions",
+      "label": "Decide all four unphased Work without inventing proof.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-a1-work-plan-reconciliation-2026-09-26.md",
+      "evidenceIds": [],
+      "verificationNote": "Two documentation discoveries, two retained containers."
+    },
+    {
+      "id": "current-continuation",
+      "label": "Reuse accepted Stage 4 and preserve unresolved historical obligations.",
+      "state": "passed",
+      "evidenceTarget": "docs/domains/flowdoc-a1-work-plan-reconciliation-2026-09-26.md",
+      "evidenceIds": [],
+      "verificationNote": "B1 Stage 5 pointer; twelve unresolved items preserved; A2 historical locator deferred."
+    }
+  ],
+  "createdAt": "2026-09-26T12:12:15.162Z",
+  "updatedAt": "2026-09-26T12:12:15.162Z"
+}

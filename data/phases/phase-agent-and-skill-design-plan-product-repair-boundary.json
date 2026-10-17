@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-plan-product-repair-boundary",
+  "workId": "agent-and-skill-design",
+  "title": "PLAN Product Repository Repair Boundary",
+  "phaseState": "done",
+  "order": 170,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The phase edits Core, Backend, or Editor product behavior while tightening PLAN room responsibilities.",
+    "The wording allows PLAN to patch product repositories directly after dispatch when a same-room WORK Revision Packet is possible.",
+    "The wording treats PLAN diagnosis, merge, verification, Project Control records, or cleanup as permission to change product repository files.",
+    "The new boundary hides the first-delivery Backend PLAN-side repair as acceptable practice instead of recording it as a boundary breach risk."
+  ],
+  "verificationTarget": "PLAN must not patch Core, Backend, or Editor product repositories after dispatch; if product-repository repair is needed, PLAN may diagnose and attach failure evidence, then product-repository repair goes back to the same WORK room as a Revision Packet when the original retrievable locator remains usable; only merge, verification, Project Control records, and cleanup that do not change product repository files or product behavior remain PLAN-owned exceptions.",
+  "summary": "Done: tightened the PLAN/WORK operating contract after the first-delivery Backend verification repair showed that PLAN can over-carry product repository repair. Future PLAN rooms must send product-repository repair back to the same WORK room as a Revision Packet instead of patching Core, Backend, or Editor directly after dispatch.",
+  "createdAt": "2026-09-03T11:00:00.000+07:00",
+  "updatedAt": "2026-09-03T11:00:00.000+07:00"
+}

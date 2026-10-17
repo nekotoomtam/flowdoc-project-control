@@ -1,0 +1,33 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-host-control-20260928",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+  "pathOrContractId": "core-private-synchronous-host-control/1",
+  "verificationSummary": "Private host control on the existing synchronous WASM boundary authenticates live capabilities/revisions and exact recovery operation/target/provider before observing real pre-entry cancellation. It preserves unchanged cancellation state and reports late delivery with the actual completed Accepted, NoOp, Recovered or failed result; no in-flight interruptibility. Fixed compact host/Rust family accounting separates queue/control/serialization/ABI costs and late control, with checked overflow/unaccumulated reporting.\n\nPLAN one bounded source review and focused repair verification covered exact target binding, normal validation precedence, all new auth lookups and ABI bytes including early rejection, two controlled host JSON encodes, no duplicate timing components, late AbortSignal result preservation, callback cleanup/compact retention, checked host sums, independent cold equality and unique mixed family sums. ActualWASM host13/13, native host binding1/1, serial accounting18/18, faults8/8 and structural14/14 passed; raw serial native outputs retained in host-native-final.log. Candidate Core check in host-core-check-final.log passed before commit. Direct QA status regression was fixed; inherited native fixed-slot expectations were updated only from95 to100 Meter fields. PLAN independently verified12 delivery observations:6 pre-entry Cancelled and4 too-late preserving Accepted/NoOp/Recovered/NotAdmissible, including actual AbortSignal after completed NoOp. ArtifactSHA25647ee1afcd1e8ee897e1f0624134ace00c2c87637e06fabfad9c1b94fddffd22a. Host delta does not change source/provider/classification shaping behavior; reuse exact cbca90f static75Accepted+15NoOp Evidence. Controlled mixed1024 replacement independently cold Equal with max source/property/provider475/139/260 within512/512/1024. Proof locators C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-handoff.json, host-focused-wasm.log, host-native-final.log, host-order-accounting.json, host-plan-delivery-verification.json, host-core-check-final.log and plan-acceptance.json.\n\nExact shape-plan-cache-eviction row still has pre-existing Ready uncertified-seam despite proven real cache miss and recovery. Separate seam certificate remains prerequisite before full measurement/item4. Full180/11271 timing8ms/16.7ms/1.50, heap/GC/scaling, all-context recovery, geometry/view-edit/transients, Editor/Backend, Stage6/Gate2/UX remain unproven. QA-build diagnostic timings are not performance admission. No public exports, product Markdown or map changes.",
+  "verifiedAt": "2026-09-28T04:29:18.048Z",
+  "validity": {
+    "claim": "Private host control on the existing synchronous WASM boundary authenticates live capabilities/revisions and exact recovery operation/target/provider before observing real pre-entry cancellation. It preserves unchanged cancellation state and reports late delivery with the actual completed Accepted, NoOp, Recovered or failed result; no in-flight interruptibility. Fixed compact host/Rust family accounting separates queue/control/serialization/ABI costs and late control, with checked overflow/unaccumulated reporting.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/host_control.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/maintenance.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+      "packages/text-engine-rust-wasm/src/coldSessionHostControl.ts",
+      "packages/text-engine-rust-wasm/src/coldSessionStage3.ts",
+      "tests/coldSessionHostControl.test.ts"
+    ],
+    "sourceRevision": "60258d9e8196bf6439ccb5c888e321fa5aad2def",
+    "verificationMethod": "PLAN one bounded source review and focused repair verification covered exact target binding, normal validation precedence, all new auth lookups and ABI bytes including early rejection, two controlled host JSON encodes, no duplicate timing components, late AbortSignal result preservation, callback cleanup/compact retention, checked host sums, independent cold equality and unique mixed family sums. ActualWASM host13/13, native host binding1/1, serial accounting18/18, faults8/8 and structural14/14 passed; raw serial native outputs retained in host-native-final.log. Candidate Core check in host-core-check-final.log passed before commit. Direct QA status regression was fixed; inherited native fixed-slot expectations were updated only from95 to100 Meter fields. PLAN independently verified12 delivery observations:6 pre-entry Cancelled and4 too-late preserving Accepted/NoOp/Recovered/NotAdmissible, including actual AbortSignal after completed NoOp. ArtifactSHA25647ee1afcd1e8ee897e1f0624134ace00c2c87637e06fabfad9c1b94fddffd22a. Host delta does not change source/provider/classification shaping behavior; reuse exact cbca90f static75Accepted+15NoOp Evidence. Controlled mixed1024 replacement independently cold Equal with max source/property/provider475/139/260 within512/512/1024. Proof locators C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e5da-e9da-7f21-8d17-763389517c98/host-handoff.json, host-focused-wasm.log, host-native-final.log, host-order-accounting.json, host-plan-delivery-verification.json, host-core-check-final.log and plan-acceptance.json.",
+    "freshnessTriggers": [
+      "Changes to dispatch/authentication/control identity, event delivery, host/Rust accounting or disposal require affected native/actualWASM revalidation.",
+      "Changes to source/provider/classification invalidate the reused static75+15 proof and require its revalidation.",
+      "Full performance and remaining seam/all-context/geometry readiness require separate authorization and proof."
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "work",
+  "id": "editor-outline-scannability-foundation",
+  "title": "Editor Outline Scannability Foundation",
+  "nodeId": "editor",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-editor", "repo-project-control", "repo-backend", "repo-core"],
+  "workState": "in-review",
+  "summary": "Add a bounded Outline summary and type/depth cues so the Editor left outline is easier to scan before deeper frontend redesign work.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-editor-local-loopback-dev-runner-2026-08-28",
+    "doc-editor-inspector-detail-navigation-foundation-2026-08-29",
+    "doc-editor-outline-scannability-foundation-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Editor merge commit f45512f2667d066553b7ffaedfdc85d2c6e1392f adds a bounded Outline summary plus icon, type, depth, selected-state, and accessibility cues. The live Backend mode design route shows Outline summary, 3 items, Text 1, Columns 1, Table 1, data-outline-type/depth attributes, and selecting summary-columns from the Outline updates the selected state. Target evidence id: evidence-editor-outline-scannability-foundation-2026-08-29.",
+  "riskSummary": "This lane does not enable WYSIWYG, text input, command authoring readiness, Backend mutation or persistence readiness, deployed Backend compatibility, production readiness, accessibility readiness, visual regression readiness, broad Editor truth, Core truth, Backend truth, or FlowDoc product truth. The residual .worktrees/editor-outline-scannability-foundation folder could not be removed after git deregistered the worktree because ignored files remained in the physical folder.",
+  "requiredEvidence": ["evidence-editor-outline-scannability-foundation-2026-08-29"],
+  "createdAt": "2026-08-29T14:15:00.000Z",
+  "updatedAt": "2026-08-29T14:15:00.000Z"
+}

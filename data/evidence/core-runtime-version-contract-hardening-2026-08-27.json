@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-runtime-version-contract-hardening-2026-08-27",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "992dbbbd6b6ac8f921d3dd98bd3515b77728868f",
+  "pathOrContractId": "src/schema/versionCapability.ts#VNEXT_CORE_VERSION_SURFACE_RETIREMENT_INVENTORY",
+  "verificationSummary": "Core runtime version contract hardening added a JSON-safe version-surface retirement inventory beside the existing capability contract. The inventory classifies active package v2/document v3 runtime authority as active-runtime, package v3/document v4 target parser/read-only runtime and package v2-to-v3 planner as retained-for-migration, Phase 258 consumer evidence as retained-for-evidence, and silent read normalization or compatibility adapters as blocked. No version surface was classified as deleted in this lane because none was proven unused in scope. RED versionCapability test failed before implementation; focused version/parser/migration suite passed 24 tests; docs:check passed; Core worktree npm run check passed 459 files and 2942 tests in 250.00s; merged Core main npm run check passed 459 files and 2942 tests in 263.94s. This supports only the bounded Core version-surface retirement inventory result and does not promote broad Core, Backend, or FlowDoc truth.",
+  "verifiedAt": "2026-08-27T00:00:00.000Z"
+}

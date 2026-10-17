@@ -1,0 +1,1502 @@
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { describe, expect, it } from "vitest";
+import { buildProjectReadModel } from "../tools/lib/build-read-model.js";
+import { loadAndValidateProject } from "../tools/lib/validate-semantics.js";
+
+const WORK_ID = "flowdoc-documentation-authority-cleanup";
+const PHASE_ID = "phase-flowdoc-documentation-authority-policy-foundation";
+const CHECKLIST_ID = "checklist-flowdoc-documentation-authority-policy-foundation";
+const POLICY_DOC_ID = "doc-flowdoc-documentation-authority-policy";
+const EVIDENCE_ID = "evidence-flowdoc-documentation-authority-policy-foundation-2026-08-31";
+const POLICY_FOUNDATION_COMMIT = "98bcec99d905c95feb765c1d630bda2f225bd998";
+const EDITOR_ROADMAP_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement";
+const EDITOR_ROADMAP_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-editor-node-authoring-roadmap-retirement";
+const EDITOR_ROADMAP_RETIRE_EVIDENCE_ID = "evidence-editor-node-authoring-roadmap-docs-retired-2026-08-31";
+const EDITOR_ROADMAP_RETIRE_COMMIT = "04daeeaaac04317508b5cf8e93de61249255d477";
+const MARKDOWN_INVENTORY_DOC_ID = "doc-flowdoc-repository-markdown-inventory-2026-08-31";
+const MARKDOWN_INVENTORY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-repository-markdown-inventory";
+const MARKDOWN_INVENTORY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-repository-markdown-inventory";
+const MARKDOWN_INVENTORY_EVIDENCE_ID = "evidence-flowdoc-repository-markdown-inventory-2026-08-31";
+const MARKDOWN_INVENTORY_RECORD_COMMIT = "e11ce1a9989eb7c46c6e8a2cd8ef3640cecd339c";
+const MARKDOWN_INVENTORY_PROJECT_CONTROL_SOURCE_COMMIT = "d2f2a6ed22d90639c19e103c9bcc6fa5b82a2541";
+const MARKDOWN_INVENTORY_CORE_SOURCE_COMMIT = "5892df6e542a02b25ae3b18ee02a55842b83d48f";
+const MARKDOWN_INVENTORY_BACKEND_SOURCE_COMMIT = "fd6bd6a2c35c2f0bc7a0245b17beadf86ce39e08";
+const MARKDOWN_INVENTORY_EDITOR_SOURCE_COMMIT = "04daeeaaac04317508b5cf8e93de61249255d477";
+const BACKEND_SERVICE_PLAN_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement";
+const BACKEND_SERVICE_PLAN_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-backend-service-plan-retirement";
+const BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID = "evidence-backend-service-plan-doc-retired-2026-08-31";
+const BACKEND_SERVICE_PLAN_RETIRE_COMMIT = "c24f7f000a8b8e9a181434dd95d7611afa026a75";
+const CORE_SUPERPOWERS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement";
+const CORE_SUPERPOWERS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-superpowers-text-block-retirement";
+const CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID = "evidence-core-superpowers-text-block-docs-retired-2026-09-01";
+const CORE_SUPERPOWERS_RETIRE_COMMIT = "6c1b53796802772467bf715b83764ac1ef613e52";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-editor-superpowers-final-retirement";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID = "evidence-editor-superpowers-docs-retired-2026-09-01";
+const EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT = "4927a0022dc8170b8cb386ede0129a69508a1d29";
+const AGENT_ROLE_REWRITE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-agent-role-rewrite";
+const AGENT_ROLE_REWRITE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-agent-role-rewrite";
+const AGENT_ROLE_REWRITE_EVIDENCE_ID = "evidence-flowdoc-agent-role-documentation-authority-rewrite-2026-09-01";
+const AGENT_ROLE_REWRITE_COMMIT = "be0729767ba3e86a828e4f133edf17380ab77fbe";
+const PROJECT_CONTROL_DESIGN_CANONICAL_PATH = "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_ID = "doc-project-control-superpowers-retirement-2026-09-01";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_PATH = "docs/domains/project-control-superpowers-retirement-2026-09-01.md";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-project-control-superpowers-retirement";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID = "evidence-project-control-superpowers-docs-retired-2026-09-01";
+const PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT = "89d68b571ff4f815a99a5e53efc09252258c08e1";
+const CORE_MARKDOWN_CLASSIFICATION_DOC_ID = "doc-core-repository-markdown-classification-2026-09-01";
+const CORE_MARKDOWN_CLASSIFICATION_DOC_PATH = "docs/domains/core-repository-markdown-classification-2026-09-01.md";
+const CORE_MARKDOWN_CLASSIFICATION_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-markdown-classification";
+const CORE_MARKDOWN_CLASSIFICATION_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-markdown-classification";
+const CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID = "evidence-core-repository-markdown-classification-2026-09-01";
+const CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT = "6c1b53796802772467bf715b83764ac1ef613e52";
+const CORE_HIDDEN_SDD_RETIRE_DOC_ID = "doc-core-hidden-superpowers-sdd-retirement-2026-09-01";
+const CORE_HIDDEN_SDD_RETIRE_DOC_PATH = "docs/domains/core-hidden-superpowers-sdd-retirement-2026-09-01.md";
+const CORE_HIDDEN_SDD_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement";
+const CORE_HIDDEN_SDD_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-hidden-superpowers-sdd-retirement";
+const CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID = "evidence-core-hidden-superpowers-sdd-retired-2026-09-01";
+const CORE_HIDDEN_SDD_RETIRE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
+const CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT = "3d92761e2978e61c938822d10ee00a1769e42110";
+const CORE_PROJECT_DOCS_RETIRE_DOC_ID = "doc-core-project-docs-retirement-2026-09-01";
+const CORE_PROJECT_DOCS_RETIRE_DOC_PATH = "docs/domains/core-project-docs-retirement-2026-09-01.md";
+const CORE_PROJECT_DOCS_SOURCE_COMMIT = "68e7ad7180b2eb9afb0adff14bacaefcecbb4f08";
+const CORE_PROJECT_DOCS_RETIRE_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-project-docs-retirement";
+const CORE_PROJECT_DOCS_RETIRE_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-project-docs-retirement";
+const CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID = "evidence-core-project-docs-retired-2026-09-01";
+const CORE_PROJECT_DOCS_RETIRE_COMMIT = "3edd2fe81cf5d9554187cebbe67535204b87a72a";
+const CORE_PROJECT_DOCS_RETAINED_VALUE_COMMIT = "4118b3e1be0d6df9764ae0237ba0869228b60893";
+const CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID = "doc-core-runtime-plan-boundary-2026-09-01";
+const CORE_RUNTIME_PLAN_BOUNDARY_DOC_PATH = "docs/domains/core-runtime-plan-boundary-2026-09-01.md";
+const CORE_RUNTIME_PLAN_BOUNDARY_SOURCE_COMMIT = "3edd2fe81cf5d9554187cebbe67535204b87a72a";
+const CORE_RUNTIME_PLAN_BOUNDARY_COMMIT = "2057a7458b1055785a516752e21d8edaa558388f";
+const CORE_RUNTIME_PLAN_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
+const CORE_RUNTIME_PLAN_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-runtime-plan-boundary";
+const CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID = "evidence-core-runtime-plan-doc-boundary-2026-09-01";
+const CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID = "doc-core-render-api-planning-boundary-2026-09-01";
+const CORE_RENDER_API_PLANNING_BOUNDARY_DOC_PATH = "docs/domains/core-render-api-planning-boundary-2026-09-01.md";
+const CORE_RENDER_API_PLANNING_BOUNDARY_SOURCE_COMMIT = "2057a7458b1055785a516752e21d8edaa558388f";
+const CORE_RENDER_API_PLANNING_BOUNDARY_COMMIT = "360ea384ba609dcceab502a5ea1ef55daf2b151a";
+const CORE_RENDER_API_PLANNING_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary";
+const CORE_RENDER_API_PLANNING_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-render-api-planning-boundary";
+const CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID = "evidence-core-render-api-planning-boundary-2026-09-01";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_ID = "doc-core-render-api-contract-boundary-2026-09-01";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_PATH = "docs/domains/core-render-api-contract-boundary-2026-09-01.md";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_SOURCE_COMMIT = "360ea384ba609dcceab502a5ea1ef55daf2b151a";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_COMMIT = "b4992a70091d9e829b7c9f023ac7f0d90250e827";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-render-api-contract-boundary";
+const CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID = "evidence-core-render-api-contract-boundary-2026-09-01";
+const CORE_GENERATED_DOCS_BOUNDARY_DOC_ID = "doc-core-generated-docs-boundary-2026-09-01";
+const CORE_GENERATED_DOCS_BOUNDARY_DOC_PATH = "docs/domains/core-generated-docs-boundary-2026-09-01.md";
+const CORE_GENERATED_DOCS_BOUNDARY_SOURCE_COMMIT = "b4992a70091d9e829b7c9f023ac7f0d90250e827";
+const CORE_GENERATED_DOCS_BOUNDARY_COMMIT = "661d0bb214db4c68b9403c3e5783e40123944d4a";
+const CORE_GENERATED_DOCS_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
+const CORE_GENERATED_DOCS_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-core-generated-docs-boundary";
+const CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID = "evidence-core-generated-docs-boundary-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID = "doc-product-repo-markdown-boundary-completion-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_PATH = "docs/domains/product-repo-markdown-boundary-completion-2026-09-01.md";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_PHASE_ID = "phase-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_CHECKLIST_ID = "checklist-flowdoc-documentation-authority-cleanup-product-markdown-boundary-completion";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID = "evidence-product-repo-markdown-boundary-completion-2026-09-01";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT = "b36daa212bd94ceb66b1a6d70bd75c19831065df";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_CORE_COMMIT = "87fab8061852a9a1c1c8886dfa029f72e15bf211";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_BACKEND_COMMIT = "d7b417451eac4b64cd68403290ead7e466102648";
+const PRODUCT_REPO_MARKDOWN_BOUNDARY_EDITOR_COMMIT = "9936d3ff052df45826eb8bfc089a62de46c3d645";
+
+const normalize = (value: string | undefined) => (value ?? "").replace(/\s+/gu, " ");
+
+const markdownFilesUnder = (directory: string): string[] => {
+  if (!existsSync(directory)) {
+    return [];
+  }
+
+  return readdirSync(directory, { recursive: true, withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".md"))
+    .map((entry) => join(entry.parentPath, entry.name).replace(process.cwd() + "\\", "").replace(/\\/gu, "/"))
+    .sort();
+};
+
+describe("FlowDoc documentation authority policy", () => {
+  it("starts cleanup from Project Control before product-repo Markdown changes", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CHECKLIST_ID);
+
+    expect(work).toMatchObject({
+      activeRole: "project-control-steward",
+      nodeId: "project-control",
+      parentWorkId: "flowdoc-product-development-resumption",
+      repositoryIds: ["repo-project-control", "repo-core", "repo-backend", "repo-editor"],
+      workKind: "task",
+      workPathIds: ["flowdoc-product-development-resumption", WORK_ID],
+      workState: "in-review",
+      requiredEvidence: expect.arrayContaining([EVIDENCE_ID]),
+    });
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
+      "doc-project-control-agent-onboarding",
+      "doc-flowdoc-system-map",
+      "doc-document-map-operating-rules",
+      "doc-agent-skill-operating-model",
+      "doc-flowdoc-round-workflow",
+      "doc-work-tree-operating-rules",
+      POLICY_DOC_ID,
+    ]));
+    expect(work?.expectedOutput).toContain("Project Control documentation authority policy");
+    expect(work?.expectedOutput).toContain("Authority Boundary");
+    expect(work?.riskSummary).toContain("Repo-local Markdown is not deleted wholesale by this cleanup Work");
+
+    expect(phase).toMatchObject({
+      activeRole: "project-control-steward",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("policy document");
+    expect(phase?.summary).toContain("without deleting product-repository Markdown");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-current-inventory",
+      "define-authority-boundary",
+      "separate-allowed-repo-docs",
+      "define-cleanup-sequence",
+      "guard-future-agents",
+      "verify-project-control-records",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) => item.verificationNote !== undefined)).toBe(true);
+    expect(checklist?.items.every((item) => item.evidenceIds?.includes(EVIDENCE_ID))).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(POLICY_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(EVIDENCE_ID);
+
+    const policy = documents.get(POLICY_DOC_ID);
+    expect(policy).toMatchObject({
+      path: "docs/domains/flowdoc-documentation-authority-policy.md",
+      nodeIds: ["project-control"],
+      role: "contract",
+      lifecycle: "active",
+    });
+    expect(policy?.authority).toContain("canonical FlowDoc documentation authority");
+    expect(policy?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: POLICY_FOUNDATION_COMMIT,
+        pathOrContractId: "docs/domains/flowdoc-documentation-authority-policy.md",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: POLICY_FOUNDATION_COMMIT,
+        pathOrContractId: "AGENTS.md",
+      }),
+    ]));
+
+    const policyText = normalize(policy?.content);
+    expect(policyText).toContain("Project Control is the canonical home for FlowDoc-wide shared understanding");
+    expect(policyText).toContain("Repo-local Markdown may remain only when it is code-adjacent, repository-owned, or historical");
+    expect(policyText).toContain("Every repo-local Markdown file that survives cleanup must declare an Authority Boundary");
+    expect(policyText).toContain("Do not create product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide truth");
+    expect(policyText).toContain("Inventory -> classify -> summarize or register -> retire");
+    expect(policyText).toContain("Agent role revisions now live in `docs/domains/flowdoc-agent-documentation-authority-operating-rules.md`");
+    expect(policyText).toContain("Markdown Authority Pre-Action Gate");
+    expect(policyText).toContain("This policy does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
+
+    const agentOnboarding = normalize(documents.get("doc-project-control-agent-onboarding")?.content);
+    expect(agentOnboarding).toContain("docs/domains/flowdoc-documentation-authority-policy.md");
+    expect(agentOnboarding).toContain("Do not create product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide truth");
+
+    const globalGuidance = normalize(documents.get("doc-flowdoc-global-codex-guidance")?.content);
+    expect(globalGuidance).toContain("flowdoc-documentation-authority-policy.md");
+    expect(globalGuidance).toContain("Every repo-local Markdown file that survives cleanup must carry an Authority Boundary");
+
+    const operatingModel = normalize(documents.get("doc-agent-skill-operating-model")?.content);
+    expect(operatingModel).toContain("Documentation authority boundary");
+    expect(operatingModel).toContain("Project Control remains the canonical home for FlowDoc-wide shared understanding");
+
+    const roleCatalog = normalize(documents.get("doc-flowdoc-role-catalog")?.content);
+    expect(roleCatalog).toContain("Documentation Authority For Roles");
+    expect(roleCatalog).toContain("Product Implementation Agent must not create product-repository `docs/superpowers/plans` or `docs/superpowers/specs` files for FlowDoc-wide truth");
+    expect(roleCatalog).toContain("Planning Partner must put broad plans in Project Control Work, Phase, Checklist, and Evidence targets before implementation");
+    expect(roleCatalog).toContain("Documentation Synthesizer writes shared summaries in Project Control, not in product-repository superpowers files");
+    expect(roleCatalog).toContain("agent handoff must name the Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknown state");
+
+    expect(evidence.get(EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: POLICY_FOUNDATION_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-documentation-authority-policy.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npm run check:data");
+    expect(verificationSummary).toContain("does not delete product-repository Markdown");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
+  });
+
+  it("records the Editor node-authoring roadmap docs retirement as work-scoped cleanup evidence", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === EDITOR_ROADMAP_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === EDITOR_ROADMAP_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      EVIDENCE_ID,
+      EDITOR_ROADMAP_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(EDITOR_ROADMAP_RETIRE_COMMIT);
+    expect(work?.riskSummary).toContain("fd-ed-doc-retire-0831");
+    expect(work?.riskSummary).toContain("tracked Core deletions under packages/text-engine-rust-wasm were restored from Core HEAD");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.summary).toContain("retired exactly two Editor docs/superpowers node-authoring roadmap files");
+    expect(phase?.summary).toContain("without deleting WYSIWYG or Overview/History docs");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-authority-and-owner",
+      "write-red-editor-doc-authority-test",
+      "retire-node-authoring-roadmap-pair",
+      "bound-surviving-superpowers-docs",
+      "verify-editor-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: EDITOR_ROADMAP_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; src/tests/editorDocumentationAuthority.test.ts; docs/superpowers/plans/2026-08-30-editor-overview-history.md; docs/superpowers/specs/2026-08-30-editor-wysiwyg-gate-design.md",
+    });
+    const verificationSummary = evidence.get(EDITOR_ROADMAP_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("retired exactly two Editor docs/superpowers node-authoring roadmap files");
+    expect(verificationSummary).toContain("3 files and 8 tests");
+    expect(verificationSummary).toContain("110 test files, 396 tests");
+    expect(verificationSummary).toContain("Filename too long");
+    expect(verificationSummary).toContain("tracked Core deletions under packages/text-engine-rust-wasm");
+    expect(verificationSummary).toContain("Core status returned clean");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, or FlowDoc product truth");
+  });
+
+  it("records the repository-wide Markdown inventory before broader cleanup", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === MARKDOWN_INVENTORY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === MARKDOWN_INVENTORY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      EVIDENCE_ID,
+      EDITOR_ROADMAP_RETIRE_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([MARKDOWN_INVENTORY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("repository Markdown inventory snapshot");
+    expect(work?.expectedOutput).toContain("Project Control 92, Core 347, Backend 40, Editor 57");
+    expect(work?.riskSummary).toContain("Core docs/superpowers");
+    expect(work?.riskSummary).toContain("Backend docs/superpowers");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("repository Markdown inventory snapshot");
+    expect(phase?.summary).toContain("Project Control 92, Core 347, Backend 40, Editor 57");
+    expect(phase?.summary).toContain("without deleting product-repository Markdown");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-source-commits",
+      "scan-tracked-markdown",
+      "classify-authority-buckets",
+      "identify-product-repo-superpowers-risk",
+      "preserve-no-delete-boundary",
+      "verify-project-control-records",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(MARKDOWN_INVENTORY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(MARKDOWN_INVENTORY_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(MARKDOWN_INVENTORY_EVIDENCE_ID);
+
+    const inventory = documents.get(MARKDOWN_INVENTORY_DOC_ID);
+    expect(inventory).toMatchObject({
+      path: "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md",
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(inventory?.authority).toContain("Project Control canonical Markdown inventory snapshot");
+    expect(inventory?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: MARKDOWN_INVENTORY_PROJECT_CONTROL_SOURCE_COMMIT,
+        pathOrContractId: "rg --files -g '*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: MARKDOWN_INVENTORY_CORE_SOURCE_COMMIT,
+        pathOrContractId: "rg --files -g '*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-backend",
+        commit: MARKDOWN_INVENTORY_BACKEND_SOURCE_COMMIT,
+        pathOrContractId: "rg --files -g '*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-editor",
+        commit: MARKDOWN_INVENTORY_EDITOR_SOURCE_COMMIT,
+        pathOrContractId: "rg --files -g '*.md'",
+      }),
+    ]));
+
+    const inventoryText = normalize(inventory?.content);
+    expect(inventoryText).toContain("Source Snapshot");
+    expect(inventoryText).toContain("Project Control 92 tracked Markdown files");
+    expect(inventoryText).toContain("Core 347 tracked Markdown files");
+    expect(inventoryText).toContain("Backend 40 tracked Markdown files");
+    expect(inventoryText).toContain("Editor 57 tracked Markdown files");
+    expect(inventoryText).toContain("Project Control docs/superpowers: 21");
+    expect(inventoryText).toContain("Core docs/superpowers: 4");
+    expect(inventoryText).toContain("Backend docs/superpowers: 1");
+    expect(inventoryText).toContain("Editor docs/superpowers: 3");
+    expect(inventoryText).toContain("Product repositories were read-only in this inventory phase");
+    expect(inventoryText).toContain("No product-repository Markdown is deleted by this inventory");
+    expect(inventoryText).toContain("docs/superpowers files in Core and Backend do not yet carry Authority Boundary wording");
+    expect(inventoryText).toContain("not product evidence");
+    expect(inventoryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(MARKDOWN_INVENTORY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: MARKDOWN_INVENTORY_RECORD_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-repository-markdown-inventory-2026-08-31.md; data/work/flowdoc-documentation-authority-cleanup.json; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(MARKDOWN_INVENTORY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("repository Markdown inventory snapshot");
+    expect(verificationSummary).toContain("rg --files -g '*.md'");
+    expect(verificationSummary).toContain("Project Control 92, Core 347, Backend 40, Editor 57");
+    expect(verificationSummary).toContain("Product repositories were read-only");
+    expect(verificationSummary).toContain("Core and Backend docs/superpowers Authority Boundary gap");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Backend service hardening plan docs/superpowers retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === BACKEND_SERVICE_PLAN_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === BACKEND_SERVICE_PLAN_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(BACKEND_SERVICE_PLAN_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Backend docs/superpowers is now empty");
+    expect(work?.riskSummary).toContain("Core docs/superpowers cleanup is recorded");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers final cleanup is recorded");
+    expect(work?.riskSummary).toContain("Backend docs/superpowers cleanup is recorded");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-backend", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Backend docs/superpowers is empty");
+    expect(phase?.summary).toContain("retired the one Backend docs/superpowers plan");
+    expect(phase?.summary).toContain("without changing Backend service behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-backend-owner",
+      "write-red-backend-doc-authority-test",
+      "retire-backend-service-plan",
+      "preserve-backend-readiness-boundary",
+      "verify-backend-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-backend",
+      commit: BACKEND_SERVICE_PLAN_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; docs/BACKEND_SERVICE_READINESS_BOUNDARY.md; src/tests/backendDocumentationAuthority.test.ts",
+    });
+    const verificationSummary = evidence.get(BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/superpowers/plans/2026-08-27-backend-service-contract-hardening.md still existed");
+    expect(verificationSummary).toContain("Backend docs/superpowers is empty");
+    expect(verificationSummary).toContain("3 files and 7 tests");
+    expect(verificationSummary).toContain("90 passed test files, 1 skipped file, 325 passed tests, 24 skipped tests");
+    expect(verificationSummary).toContain("temporary Core junction");
+    expect(verificationSummary).toContain("removed before the accepted main gate");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core text block docs/superpowers retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_SUPERPOWERS_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_SUPERPOWERS_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      BACKEND_SERVICE_PLAN_RETIRE_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(CORE_SUPERPOWERS_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Core docs/superpowers is now absent");
+    expect(work?.riskSummary).toContain("Core docs/superpowers cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-doc-superpowers-retire-0831");
+    expect(work?.riskSummary).toContain("Filename too long");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core docs/superpowers is absent");
+    expect(phase?.summary).toContain("retired all four Core docs/superpowers plan/spec files");
+    expect(phase?.summary).toContain("without changing Core runtime behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-owner",
+      "write-red-core-doc-authority-test",
+      "preserve-core-text-block-live-draft-context",
+      "retire-core-superpowers-sources",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_SUPERPOWERS_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; docs/LIVE_DRAFT_CROSS_RUNTIME_PARITY_HANDOFF.md; tests/coreDocumentationAuthority.test.ts; tests/liveDraftMr1CompleteGeometryBoundary.test.ts; tests/liveDraftMr1AuthoredBoxGeometry4a.test.ts; tests/liveDraftMr1InlineImageGeometry4b.test.ts",
+    });
+    const verificationSummary = evidence.get(CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/superpowers/plans/2026-07-21-text-block-complete-geometry-boundary.md still existed");
+    expect(verificationSummary).toContain("Core docs/superpowers is absent");
+    expect(verificationSummary).toContain("4 files and 25 tests");
+    expect(verificationSummary).toContain("461 files and 2946 tests");
+    expect(verificationSummary).toContain("Filename too long");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the remaining Editor docs/superpowers retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === EDITOR_SUPERPOWERS_FINAL_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === EDITOR_SUPERPOWERS_FINAL_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      EDITOR_ROADMAP_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Editor docs/superpowers is now absent");
+    expect(work?.riskSummary).toContain("Editor docs/superpowers final cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-ed-superpowers-retire-0901");
+    expect(work?.riskSummary).toContain("Directory not empty");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Editor docs/superpowers is absent");
+    expect(phase?.summary).toContain("retired the remaining three Editor docs/superpowers files");
+    expect(phase?.summary).toContain("without changing Editor UI behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-editor-owner",
+      "write-red-editor-final-doc-authority-test",
+      "preserve-editor-shared-context-in-project-control",
+      "move-wysiwyg-boundary-to-code-contract",
+      "retire-editor-superpowers-survivors",
+      "verify-editor-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-editor",
+      commit: EDITOR_SUPERPOWERS_FINAL_RETIRE_COMMIT,
+      pathOrContractId: "AGENTS.md; src/editor/draft/textBlockAuthoringBoundary.ts; src/tests/editorDocumentationAuthority.test.ts; src/tests/wysiwygGate.test.ts",
+    });
+    const verificationSummary = evidence.get(EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/superpowers/plans/2026-08-30-editor-overview-history.md still existed");
+    expect(verificationSummary).toContain("Editor docs/superpowers is absent");
+    expect(verificationSummary).toContain("4 files and 13 tests");
+    expect(verificationSummary).toContain("109 test files and 393 tests");
+    expect(verificationSummary).toContain("Directory not empty");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the agent role rewrite that prevents product-repo superpowers truth drift", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === AGENT_ROLE_REWRITE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === AGENT_ROLE_REWRITE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      AGENT_ROLE_REWRITE_EVIDENCE_ID,
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(AGENT_ROLE_REWRITE_COMMIT);
+    expect(work?.expectedOutput).toContain("agent-role rewrite");
+    expect(work?.riskSummary).toContain("Final agent-role rewrite is recorded");
+
+    expect(phase).toMatchObject({
+      activeRole: "project-control-steward",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("role catalog");
+    expect(phase?.summary).toContain("Documentation Authority For Roles");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-role-rewrite-scope",
+      "write-red-role-catalog-guard",
+      "update-role-catalog-authority-rules",
+      "verify-project-control-role-guard",
+      "record-role-rewrite-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(AGENT_ROLE_REWRITE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(AGENT_ROLE_REWRITE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: AGENT_ROLE_REWRITE_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-role-catalog.md; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(AGENT_ROLE_REWRITE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Documentation Authority For Roles");
+    expect(verificationSummary).toContain("Product Implementation Agent must not create product-repository");
+    expect(verificationSummary).toContain("6 tests");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("retires Project Control docs/superpowers after registering retained control value", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+
+    expect(markdownFilesUnder(join(process.cwd(), "docs", "superpowers"))).toEqual([]);
+
+    const projectControlDesign = documents.get("doc-project-control-design");
+    expect(projectControlDesign).toMatchObject({
+      path: PROJECT_CONTROL_DESIGN_CANONICAL_PATH,
+      nodeIds: ["project-control"],
+      role: "decision",
+      lifecycle: "active",
+    });
+    expect(normalize(projectControlDesign?.content)).toContain("FlowDoc Project Control");
+    expect(normalize(projectControlDesign?.content)).toContain("File-first");
+
+    const retirementSummary = documents.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_ID);
+    expect(retirementSummary).toMatchObject({
+      path: PROJECT_CONTROL_SUPERPOWERS_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirementSummary?.authority).toContain("Project Control docs/superpowers retirement record");
+
+    const retirementText = normalize(retirementSummary?.content);
+    expect(retirementText).toContain("docs/superpowers contains no Markdown files after this cleanup");
+    expect(retirementText).toContain("docs/superpowers/specs/2026-08-12-flowdoc-project-control-design.md");
+    expect(retirementText).toContain(PROJECT_CONTROL_DESIGN_CANONICAL_PATH);
+    expect(retirementText).toContain("historical execution traces");
+    expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Project Control docs/superpowers retirement evidence", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === PROJECT_CONTROL_SUPERPOWERS_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === PROJECT_CONTROL_SUPERPOWERS_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      AGENT_ROLE_REWRITE_EVIDENCE_ID,
+      EDITOR_SUPERPOWERS_FINAL_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Project Control docs/superpowers is now absent");
+    expect(work?.riskSummary).toContain("Project Control docs/superpowers cleanup is recorded");
+    expect(work?.riskSummary).toContain("historical source paths remain valid only when commit-pinned");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Project Control docs/superpowers is absent");
+    expect(phase?.summary).toContain("retired all 21 Project Control docs/superpowers Markdown files");
+    expect(phase?.summary).toContain(PROJECT_CONTROL_DESIGN_CANONICAL_PATH);
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-project-control-owner",
+      "write-red-project-control-doc-authority-test",
+      "move-active-project-control-design",
+      "record-retained-value-and-discard-rationale",
+      "retire-project-control-superpowers-sources",
+      "verify-project-control-worktree",
+      "record-project-control-superpowers-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: PROJECT_CONTROL_SUPERPOWERS_RETIRE_COMMIT,
+      pathOrContractId: "docs/domains/flowdoc-project-control-architecture-and-gui-design-2026-08-12.md; docs/domains/project-control-superpowers-retirement-2026-09-01.md; data/documents/project-control-design.json; data/documents/project-control-superpowers-retirement-2026-09-01.json; data/nodes/project-control.json; tests/documentation-authority-policy.test.ts",
+    });
+    const verificationSummary = evidence.get(PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("21 Markdown files");
+    expect(verificationSummary).toContain("Project Control docs/superpowers is absent");
+    expect(verificationSummary).toContain("2 files and 15 tests");
+    expect(verificationSummary).toContain("2 files and 16 tests");
+    expect(verificationSummary).toContain("npm run generate");
+    expect(verificationSummary).toContain("npm run check:data");
+    expect(verificationSummary).toContain("does not delete product-repository Markdown");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core repo-local Markdown classification before broader Core cleanup", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_MARKDOWN_CLASSIFICATION_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_MARKDOWN_CLASSIFICATION_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+      PROJECT_CONTROL_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_MARKDOWN_CLASSIFICATION_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core repo-local Markdown classification");
+    expect(work?.expectedOutput).toContain("Core 348 tracked Markdown files");
+    expect(work?.riskSummary).toContain("hidden Core .superpowers/sdd Markdown");
+    expect(work?.riskSummary).toContain("344 tracked Core Markdown files without Authority Boundary or Project Control signal");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core 348 tracked Markdown files");
+    expect(phase?.verificationTarget).toContain("Core repository remains read-only");
+    expect(phase?.summary).toContain("docs/superpowers is absent");
+    expect(phase?.summary).toContain(".superpowers/sdd");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-source-snapshot",
+      "distinguish-hidden-superpowers",
+      "classify-core-authority-buckets",
+      "mark-project-state-migration-candidates",
+      "preserve-core-read-only-boundary",
+      "verify-project-control-records",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_MARKDOWN_CLASSIFICATION_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID);
+
+    const classification = documents.get(CORE_MARKDOWN_CLASSIFICATION_DOC_ID);
+    expect(classification).toMatchObject({
+      path: CORE_MARKDOWN_CLASSIFICATION_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(classification?.authority).toContain("Core repo-local Markdown classification snapshot");
+    expect(classification?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: "git ls-files '*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: ".superpowers/sdd",
+      }),
+    ]));
+
+    const classificationText = normalize(classification?.content);
+    expect(classificationText).toContain("Core source commit `6c1b53796802772467bf715b83764ac1ef613e52`");
+    expect(classificationText).toContain("348 tracked Markdown files");
+    expect(classificationText).toContain("343 visible Markdown files");
+    expect(classificationText).toContain("5 hidden `.superpowers/sdd` Markdown files");
+    expect(classificationText).toContain("docs/superpowers: 0");
+    expect(classificationText).toContain("Authority / Project Control signal: 4");
+    expect(classificationText).toContain("344 tracked Core Markdown files without Authority Boundary or Project Control signal");
+    expect(classificationText).toContain("Core repository was read-only in this classification phase");
+    expect(classificationText).toContain("No Core Markdown is deleted by this classification");
+    expect(classificationText).toContain("First cleanup lane: hidden `.superpowers/sdd` execution artifacts");
+    expect(classificationText).toContain("Second cleanup lane: Core project-state, status, roadmap, and planning docs");
+    expect(classificationText).toContain("code-adjacent Core contracts, boundaries, gates, and architecture locks are retention candidates");
+    expect(classificationText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+      pathOrContractId: "git ls-files '*.md'; rg --files -g '*.md'; .superpowers/sdd; docs/project; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/versions/0_1; docs/coordination/BOUNDARY.md",
+    });
+    const verificationSummary = evidence.get(CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core repo-local Markdown classification");
+    expect(verificationSummary).toContain("348 tracked Markdown files");
+    expect(verificationSummary).toContain("343 visible Markdown files");
+    expect(verificationSummary).toContain("hidden .superpowers/sdd Markdown");
+    expect(verificationSummary).toContain("docs/superpowers is absent");
+    expect(verificationSummary).toContain("Core repository was read-only");
+    expect(verificationSummary).toContain("npx vitest run tests/documentation-authority-policy.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npm run generate");
+    expect(verificationSummary).toContain("npm run check:data");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the hidden Core superpowers SDD retirement after preserving retained value", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_HIDDEN_SDD_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_HIDDEN_SDD_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+      CORE_SUPERPOWERS_RETIRE_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_HIDDEN_SDD_RETIRE_DOC_ID]));
+    expect(work?.expectedOutput).toContain(CORE_HIDDEN_SDD_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Core hidden .superpowers/sdd Markdown is now absent");
+    expect(work?.riskSummary).toContain("Core hidden .superpowers/sdd cleanup is recorded");
+    expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
+    expect(work?.riskSummary).toContain("fd-core-hidden-sdd-0901 on disk");
+    expect(work?.riskSummary).toContain("cleanup blocker only, not an active worktree");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core hidden .superpowers/sdd Markdown is absent");
+    expect(phase?.summary).toContain("retired five hidden Core .superpowers/sdd Markdown files");
+    expect(phase?.summary).toContain("without changing Core runtime behavior");
+    expect(phase?.summary).toContain("fd-core-hidden-sdd-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-hidden-sdd-source-snapshot",
+      "record-retained-value-before-core-delete",
+      "write-red-core-hidden-sdd-guard",
+      "retire-hidden-sdd-markdown",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_HIDDEN_SDD_RETIRE_DOC_ID);
+    expect(projectControl?.evidenceIds).not.toContain(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID);
+
+    const retirement = documents.get(CORE_HIDDEN_SDD_RETIRE_DOC_ID);
+    expect(retirement).toMatchObject({
+      path: CORE_HIDDEN_SDD_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirement?.authority).toContain("hidden Core .superpowers/sdd Markdown");
+    expect(retirement?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_MARKDOWN_CLASSIFICATION_SOURCE_COMMIT,
+        pathOrContractId: "git ls-files '.superpowers/*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_HIDDEN_SDD_RETIRE_COMMIT,
+        pathOrContractId: "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: CORE_HIDDEN_SDD_RETAINED_VALUE_COMMIT,
+        pathOrContractId: CORE_HIDDEN_SDD_RETIRE_DOC_PATH,
+      }),
+    ]));
+
+    const retirementText = normalize(retirement?.content);
+    expect(retirementText).toContain("five tracked Markdown files");
+    expect(retirementText).toContain("No active Core source, test, README, or `docs/` path references these hidden file paths by name");
+    expect(retirementText).toContain("Core cleanup commit `68e7ad7180b2eb9afb0adff14bacaefcecbb4f08`");
+    expect(retirementText).toContain("`git ls-files '.superpowers/*.md'` returns 0");
+    expect(retirementText).toContain("tracked and visible Core Markdown counts both report 343 files");
+    expect(retirementText).toContain("`fd-core-hidden-sdd-0901` remains on disk");
+    expect(retirementText).toContain("`git worktree list` no longer lists");
+    expect(retirementText).toContain("cleanup blocker only");
+    expect(retirementText).toContain("does not claim that the 5B-1 V3 runtime area, Live Draft, Text Block, Core, Editor, Backend, or FlowDoc product is ready");
+
+    expect(evidence.get(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_HIDDEN_SDD_RETIRE_COMMIT,
+      pathOrContractId: "tests/coreDocumentationAuthority.test.ts; git ls-files '.superpowers/*.md'; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("keeps hidden superpowers SDD Markdown retired from Core");
+    expect(verificationSummary).toContain("expected true to be false");
+    expect(verificationSummary).toContain("Core hidden .superpowers/sdd Markdown is now absent");
+    expect(verificationSummary).toContain("2 tests");
+    expect(verificationSummary).toContain("461 test files and 2947 tests");
+    expect(verificationSummary).toContain("Core tracked Markdown now matches visible Markdown at 343 files");
+    expect(verificationSummary).toContain("fd-core-hidden-sdd-0901 remains on disk");
+    expect(verificationSummary).toContain("git worktree list no longer lists");
+    expect(verificationSummary).toContain("Remove-Item -Recurse attempts were blocked");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core project docs retained value before retirement", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([
+      CORE_PROJECT_DOCS_RETIRE_DOC_ID,
+      CORE_MARKDOWN_CLASSIFICATION_DOC_ID,
+    ]));
+    expect(work?.expectedOutput).toContain("Project Control records retained value and discard rationale for Core docs/project");
+    expect(work?.riskSummary).toContain("doc-core-project-docs-retirement-2026-09-01");
+
+    expect(projectControl?.documentIds).toContain(CORE_PROJECT_DOCS_RETIRE_DOC_ID);
+
+    const retirement = documents.get(CORE_PROJECT_DOCS_RETIRE_DOC_ID);
+    expect(retirement).toMatchObject({
+      path: CORE_PROJECT_DOCS_RETIRE_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(retirement?.authority).toContain("Core docs/project retained-value and discard-rationale record");
+    expect(retirement?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_PROJECT_DOCS_SOURCE_COMMIT,
+        pathOrContractId: "docs/project/CURRENT_STATE.md; docs/project/ROADMAP.md; docs/project/RISK_REGISTER.md; docs/project/KNOWN_UNKNOWNS.md",
+      }),
+    ]));
+
+    const retirementText = normalize(retirement?.content);
+    expect(retirementText).toContain("Core `docs/project`");
+    expect(retirementText).toContain("four Core project documents");
+    expect(retirementText).toContain("No alpha release has been authorized");
+    expect(retirementText).toContain("Production activation remains false");
+    expect(retirementText).toContain("WORK-CORE-LAYOUT-CUTOVER-001");
+    expect(retirementText).toContain("RISK-CORE-DOCUMENTATION-DUAL-TRUTH-001");
+    expect(retirementText).toContain("UNKNOWN-CORE-DOCUMENTATION-CONTRACT-INVENTORY-001");
+    expect(retirementText).toContain("Core may retain package-local documentation mechanics, but Project Control owns FlowDoc-wide Work, Risk, Unknown, Roadmap, and cleanup sequencing");
+    expect(retirementText).toContain("does not delete Core Markdown by itself");
+    expect(retirementText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core project docs retirement evidence after Core cleanup", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_PROJECT_DOCS_RETIRE_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_PROJECT_DOCS_RETIRE_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID,
+      CORE_HIDDEN_SDD_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.expectedOutput).toContain(CORE_PROJECT_DOCS_RETIRE_COMMIT);
+    expect(work?.expectedOutput).toContain("Core docs/project Markdown is now absent");
+    expect(work?.riskSummary).toContain("Core docs/project cleanup is recorded");
+    expect(work?.riskSummary).toContain("Core tracked Markdown now matches visible Markdown at 339 files");
+    expect(work?.riskSummary).toContain("fd-core-project-docs-retire-0901 on disk");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Core docs/project Markdown is absent");
+    expect(phase?.summary).toContain("retired four Core docs/project Markdown files");
+    expect(phase?.summary).toContain("manifest canonicalRoots no longer includes docs/project");
+    expect(phase?.summary).toContain("fd-core-project-docs-retire-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-project-docs-source-snapshot",
+      "record-retained-value-before-core-delete",
+      "write-red-core-project-docs-guard",
+      "retire-core-project-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID),
+    )).toBe(true);
+
+    expect(evidence.get(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_PROJECT_DOCS_RETIRE_COMMIT,
+      pathOrContractId: "docs/manifest.json; docs/DOCUMENT_MAP.md; docs/CURRENT_STATUS.md; docs/NEXT_PHASE_POINTER.md; docs/PHASE_LEDGER.md; docs/CROSS_REPO_OPERATING_MAP.md; docs/PHASE_18_IMPLEMENTATION_ROADMAP.md; scripts/documentation/canonical-docs-model.mjs; tests/coreDocumentationAuthority.test.ts; tests/canonicalDocumentationSpine.test.ts",
+    });
+    const verificationSummary = evidence.get(CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("Project Control commit 4118b3e1be0d6df9764ae0237ba0869228b60893 recorded retained value and discard rationale before Core deletion");
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("docs/project/CURRENT_STATE.md");
+    expect(verificationSummary).toContain("regenerates document map after retiring legacy project docs");
+    expect(verificationSummary).toContain("Core commit 3edd2fe81cf5d9554187cebbe67535204b87a72a");
+    expect(verificationSummary).toContain("docs/project Markdown is now absent");
+    expect(verificationSummary).toContain("canonicalRoots [docs/coordination, docs/versions/0_1]");
+    expect(verificationSummary).toContain("projectRows=0");
+    expect(verificationSummary).toContain("tracked and visible Markdown both equal 339 files");
+    expect(verificationSummary).toContain("fd-core-project-docs-retire-0901 remains on disk");
+    expect(verificationSummary).toContain("Remove-Item -LiteralPath");
+    expect(verificationSummary).toContain("npx vitest run tests/coreDocumentationAuthority.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npx vitest run tests/canonicalDocumentationSpine.test.ts --maxWorkers=1");
+    expect(verificationSummary).toContain("npm run docs:check");
+    expect(verificationSummary).toContain("npm run check");
+    expect(verificationSummary).toContain("461 test files and 2949 tests");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core runtime plan docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_RUNTIME_PLAN_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_RUNTIME_PLAN_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID,
+      CORE_PROJECT_DOCS_RETIRE_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core runtime plan docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core runtime plan docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-runtime-plan-boundary-0901 remains on disk");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without deleting Core runtime plan docs");
+    expect(phase?.summary).toContain("fd-core-runtime-plan-boundary-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-runtime-plan-source-snapshot",
+      "record-runtime-plan-retained-value",
+      "write-red-core-runtime-plan-boundary-guard",
+      "bound-surviving-runtime-plan-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_RUNTIME_PLAN_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_RUNTIME_PLAN_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core runtime plan retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_RUNTIME_PLAN_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core runtime plan docs boundary");
+    expect(boundaryText).toContain("Backend Generation Runtime Plan");
+    expect(boundaryText).toContain("Frontend Authoring Runtime Plan");
+    expect(boundaryText).toContain("Key Registry Binding Plan");
+    expect(boundaryText).toContain("Live Layout And Exact Generation Plan");
+    expect(boundaryText).toContain("survive cleanup as Core-local implementation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_RUNTIME_PLAN_BOUNDARY_COMMIT,
+      pathOrContractId: "docs/BACKEND_GENERATION_RUNTIME_PLAN.md; docs/FRONTEND_AUTHORING_RUNTIME_PLAN.md; docs/KEY_REGISTRY_BINDING_PLAN.md; docs/LIVE_LAYOUT_AND_EXACT_GENERATION_PLAN.md; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core runtime plan docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core runtime plan docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
+    expect(verificationSummary).toContain("branch fd-core-runtime-plan-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core Render API planning docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_RENDER_API_PLANNING_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_RENDER_API_PLANNING_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID,
+      CORE_RUNTIME_PLAN_BOUNDARY_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core Render API planning docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core Render API planning docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-render-api-plan-boundary-0901 remains on disk");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without deleting Core Render API planning docs");
+    expect(phase?.summary).toContain("fd-core-render-api-plan-boundary-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-render-api-planning-source-snapshot",
+      "record-render-api-planning-retained-value",
+      "write-red-core-render-api-planning-boundary-guard",
+      "bound-surviving-render-api-planning-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_RENDER_API_PLANNING_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_RENDER_API_PLANNING_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core Render API planning retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_RENDER_API_PLANNING_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core Render API planning docs boundary");
+    expect(boundaryText).toContain("Render API Contract Planning Gate");
+    expect(boundaryText).toContain("Render API Response / Status Contract Gate");
+    expect(boundaryText).toContain("Runtime Binding / Implementation Planning Gate");
+    expect(boundaryText).toContain("survive cleanup as Core-local implementation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_RENDER_API_PLANNING_BOUNDARY_COMMIT,
+      pathOrContractId: "docs/RENDER_API_CONTRACT_PLANNING_GATE.md; docs/RENDER_API_RESPONSE_STATUS_CONTRACT_GATE.md; docs/RUNTIME_BINDING_IMPLEMENTATION_PLANNING_GATE.md; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core Render API planning docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core Render API planning docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
+    expect(verificationSummary).toContain("branch fd-core-render-api-plan-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core Render API contract docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_RENDER_API_CONTRACT_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_RENDER_API_CONTRACT_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID,
+      CORE_RENDER_API_PLANNING_BOUNDARY_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core Render API contract docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core Render API contract docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("fd-core-render-contract-0901 remains on disk");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without deleting Core Render API contract docs");
+    expect(phase?.summary).toContain("fd-core-render-contract-0901 remains on disk");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-render-api-contract-source-snapshot",
+      "record-render-api-contract-retained-value",
+      "write-red-core-render-api-contract-boundary-guard",
+      "bound-surviving-render-api-contract-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_RENDER_API_CONTRACT_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core Render API contract retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_RENDER_API_CONTRACT_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md; docs/RENDER_API_REQUEST_ENVELOPE_CONTRACT_GATE.md; docs/RENDER_READINESS_VALIDATION_POLICY_GATE.md; docs/ARTIFACT_POINTER_JOB_STATUS_PLACEHOLDER_POLICY_GATE.md; docs/RENDER_API_ERROR_BLOCKER_VOCABULARY_GATE.md; docs/RENDER_API_CONTRACT_CLOSE_AUDIT.md",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core Render API contract docs boundary");
+    expect(boundaryText).toContain("Template Publish / Variable Schema / Render API Planning Gate");
+    expect(boundaryText).toContain("Render API Request Envelope Contract Gate");
+    expect(boundaryText).toContain("Render-Readiness Validation Policy Gate");
+    expect(boundaryText).toContain("Artifact Pointer / Job Status Placeholder Policy Gate");
+    expect(boundaryText).toContain("Render API Error / Blocker Vocabulary Gate");
+    expect(boundaryText).toContain("Render API Contract Close Audit");
+    expect(boundaryText).toContain("survive cleanup as Core-local implementation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+
+    expect(evidence.get(CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_RENDER_API_CONTRACT_BOUNDARY_COMMIT,
+      pathOrContractId: "docs/TEMPLATE_VARIABLE_RENDER_API_PLANNING_GATE.md; docs/RENDER_API_REQUEST_ENVELOPE_CONTRACT_GATE.md; docs/RENDER_READINESS_VALIDATION_POLICY_GATE.md; docs/ARTIFACT_POINTER_JOB_STATUS_PLACEHOLDER_POLICY_GATE.md; docs/RENDER_API_ERROR_BLOCKER_VOCABULARY_GATE.md; docs/RENDER_API_CONTRACT_CLOSE_AUDIT.md; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core Render API contract docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core Render API contract docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("git worktree remove failed with Filename too long");
+    expect(verificationSummary).toContain("branch fd-core-render-contract-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, frontend readiness, FlowDoc product truth, or map truth");
+  });
+
+  it("records the Core generated canonical docs boundary without promoting shared status", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === CORE_GENERATED_DOCS_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === CORE_GENERATED_DOCS_BOUNDARY_CHECKLIST_ID);
+
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID,
+      CORE_RENDER_API_CONTRACT_BOUNDARY_EVIDENCE_ID,
+      CORE_MARKDOWN_CLASSIFICATION_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([CORE_GENERATED_DOCS_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core generated canonical docs now carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Core generated canonical docs boundary cleanup is recorded");
+    expect(work?.riskSummary).toContain("Authority/Project Control signal scan reports 27 matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("Authority Boundary");
+    expect(phase?.summary).toContain("without hand-editing generated Markdown");
+    expect(phase?.summary).toContain("without promoting release readiness or compatibility");
+    expect(phase?.summary).toContain("C:/w/fd-core-gendocs-0901 was removed");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-core-generated-docs-source-snapshot",
+      "record-core-generated-docs-retained-value",
+      "write-red-core-generated-docs-boundary-guard",
+      "bound-surviving-core-generated-docs",
+      "verify-core-main",
+      "record-project-control-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(CORE_GENERATED_DOCS_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(CORE_GENERATED_DOCS_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: CORE_GENERATED_DOCS_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Core generated canonical docs retained-value and Authority Boundary record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_GENERATED_DOCS_BOUNDARY_SOURCE_COMMIT,
+        pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: CORE_GENERATED_DOCS_BOUNDARY_COMMIT,
+        pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md; tests/canonicalDocumentationSpine.test.ts; tests/coreDocumentationAuthority.test.ts",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Core generated canonical docs boundary");
+    expect(boundaryText).toContain("Canonical document map");
+    expect(boundaryText).toContain("Technical glossary");
+    expect(boundaryText).toContain("Thai glossary");
+    expect(boundaryText).toContain("Core 0.1 version overview");
+    expect(boundaryText).toContain("Core 0.1 capability set");
+    expect(boundaryText).toContain("Core 0.1 compatibility record");
+    expect(boundaryText).toContain("survive cleanup as Core-owned generated or authored documentation context");
+    expect(boundaryText).toContain("Project Control owns FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, documentation authority, product terminology, compatibility promotion, and cleanup state");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+
+    expect(evidence.get(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-core",
+      commit: CORE_GENERATED_DOCS_BOUNDARY_COMMIT,
+      pathOrContractId: "scripts/documentation/canonical-docs-render.mjs; docs/DOCUMENT_MAP.md; docs/GLOSSARY.md; docs/GLOSSARY_TH.md; docs/versions/0_1/VERSION_OVERVIEW.md; docs/versions/0_1/CAPABILITY_SET.md; docs/versions/0_1/COMPATIBILITY.md; tests/canonicalDocumentationSpine.test.ts; tests/coreDocumentationAuthority.test.ts; npm run check",
+    });
+    const verificationSummary = evidence.get(CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core generated canonical docs now carry Authority Boundary wording");
+    expect(verificationSummary).toContain("does not delete Core generated canonical docs");
+    expect(verificationSummary).toContain("does not edit Core runtime behavior");
+    expect(verificationSummary).toContain("without hand-editing generated Markdown");
+    expect(verificationSummary).toContain("Authority/Project Control signal scan reports 27 matches and 312 tracked Core Markdown files without Authority Boundary or Project Control signal");
+    expect(verificationSummary).toContain("C:/w/fd-core-gendocs-0901 was removed");
+    expect(verificationSummary).toContain("branch fd-core-gendocs-boundary-0901 was deleted");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+  });
+
+  it("records product repository Markdown boundary completion without promoting shared truth", async () => {
+    const model = await buildProjectReadModel(await loadAndValidateProject(process.cwd()));
+    const documents = new Map(model.documents.map((document) => [document.id, document]));
+    const evidence = new Map(model.evidence.map((entry) => [entry.id, entry]));
+    const work = model.work.find((item) => item.id === WORK_ID);
+    const phase = model.phases.find((item) => item.id === PRODUCT_REPO_MARKDOWN_BOUNDARY_PHASE_ID);
+    const checklist = model.checklists.find((item) => item.id === PRODUCT_REPO_MARKDOWN_BOUNDARY_CHECKLIST_ID);
+
+    expect(work).toMatchObject({
+      activeRole: "project-control-steward",
+      workState: "in-review",
+    });
+    expect(work?.requiredEvidence).toEqual(expect.arrayContaining([
+      PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID,
+      CORE_GENERATED_DOCS_BOUNDARY_EVIDENCE_ID,
+      MARKDOWN_INVENTORY_EVIDENCE_ID,
+    ]));
+    expect(work?.contextDocumentIds).toEqual(expect.arrayContaining([PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID]));
+    expect(work?.expectedOutput).toContain("Core, Backend, and Editor tracked Markdown now all carry Authority Boundary wording");
+    expect(work?.riskSummary).toContain("Product repository Markdown boundary completion is recorded");
+    expect(work?.riskSummary).toContain("strict product Markdown boundary scan reports Core missing=0, Backend missing=0, and Editor missing=0");
+    expect(work?.riskSummary).toContain("Project Control Markdown remains canonical source material");
+
+    expect(phase).toMatchObject({
+      activeRole: "documentation-synthesizer",
+      phaseState: "done",
+      repositoryIds: ["repo-core", "repo-backend", "repo-editor", "repo-project-control"],
+      workId: WORK_ID,
+    });
+    expect(phase?.verificationTarget).toContain("strict product Markdown boundary scan");
+    expect(phase?.summary).toContain("Core: 339 tracked Markdown, 319 newly bounded, missing=0");
+    expect(phase?.summary).toContain("Backend: 39 tracked Markdown, 38 newly bounded, missing=0");
+    expect(phase?.summary).toContain("Editor: 54 tracked Markdown, 54 newly bounded, missing=0");
+    expect(phase?.summary).toContain("without changing product runtime behavior");
+
+    expect(checklist?.items.map((item) => item.id)).toEqual([
+      "capture-product-markdown-boundary-inventory",
+      "write-red-product-markdown-boundary-guards",
+      "bound-core-markdown",
+      "bound-backend-markdown",
+      "bound-editor-markdown",
+      "verify-product-main-gates",
+      "record-project-control-product-boundary-evidence",
+    ]);
+    expect(checklist?.items.every((item) => item.state === "passed")).toBe(true);
+    expect(checklist?.items.every((item) =>
+      item.evidenceIds?.includes(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID),
+    )).toBe(true);
+
+    const projectControl = model.nodes.find((node) => node.id === "project-control");
+    expect(projectControl?.documentIds).toContain(PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID);
+
+    const boundary = documents.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_ID);
+    expect(boundary).toMatchObject({
+      path: PRODUCT_REPO_MARKDOWN_BOUNDARY_DOC_PATH,
+      nodeIds: ["project-control"],
+      role: "verification",
+      lifecycle: "active",
+    });
+    expect(boundary?.authority).toContain("Product repository Markdown Authority Boundary completion record");
+    expect(boundary?.repositoryRefs).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        repositoryId: "repo-project-control",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT,
+        pathOrContractId: "data/work/flowdoc-documentation-authority-cleanup.json; docs/domains/flowdoc-documentation-authority-policy.md; tests/documentation-authority-policy.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-core",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_CORE_COMMIT,
+        pathOrContractId: "AGENTS.md; README.md; docs/**/*.md; examples/**/*.md; packages/**/README.md; tests/coreDocumentationAuthority.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-backend",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_BACKEND_COMMIT,
+        pathOrContractId: "AGENTS.md; README.md; docs/**/*.md; src/tests/backendDocumentationAuthority.test.ts",
+      }),
+      expect.objectContaining({
+        repositoryId: "repo-editor",
+        commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_EDITOR_COMMIT,
+        pathOrContractId: "AGENTS.md; docs/**/*.md; src/tests/editorDocumentationAuthority.test.ts",
+      }),
+    ]));
+
+    const boundaryText = normalize(boundary?.content);
+    expect(boundaryText).toContain("Product repository Markdown boundary completion");
+    expect(boundaryText).toContain("Core: 339 tracked Markdown files; 319 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Backend: 39 tracked Markdown files; 38 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Editor: 54 tracked Markdown files; 54 newly bounded; strict missing count 0");
+    expect(boundaryText).toContain("Project Control remains the canonical home for FlowDoc-wide Work, Phase, Checklist, Evidence, Risk, Unknown, Roadmap, documentation authority, product terminology, compatibility promotion, and map truth");
+    expect(boundaryText).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+
+    expect(evidence.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID)).toMatchObject({
+      nodeIds: [],
+      repositoryId: "repo-project-control",
+      commit: PRODUCT_REPO_MARKDOWN_BOUNDARY_PROJECT_CONTROL_SOURCE_COMMIT,
+      pathOrContractId: "docs/domains/product-repo-markdown-boundary-completion-2026-09-01.md; data/work/flowdoc-documentation-authority-cleanup.json; product repository boundary commits; merged main gates",
+    });
+    const verificationSummary = evidence.get(PRODUCT_REPO_MARKDOWN_BOUNDARY_EVIDENCE_ID)?.verificationSummary ?? "";
+    expect(verificationSummary).toContain("RED evidence");
+    expect(verificationSummary).toContain("Core, Backend, and Editor tracked Markdown now all carry Authority Boundary wording");
+    expect(verificationSummary).toContain("strict product Markdown boundary scan reports Core missing=0, Backend missing=0, and Editor missing=0");
+    expect(verificationSummary).toContain("does not edit Core, Backend, or Editor runtime behavior");
+    expect(verificationSummary).toContain("Work is ready for review");
+    expect(verificationSummary).toContain("does not promote Core, Backend, Editor, compatibility, release readiness, frontend readiness, FlowDoc product truth, Project Control terminology authority, or map truth");
+  });
+});

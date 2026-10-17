@@ -1,0 +1,34 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-stage6-ordinary-foundation-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+  "pathOrContractId": "core-private-stage6-ordinary-foundation/1",
+  "verificationSummary": "Private persistent source views, bounded multi-piece access, balanced range splice/lazy shard run ranks and strict partition-independent cold QA preserve existing admitted semantics. Foundation only: no new certificate predicates or complete ordinary/Stage6/UX admission.\n\nWORK full native cold-session suite passed92 tests with unchanged production, followed by one added focused55-piece command regression PASS (not a claimed full93 run). WORK Core npm run check passed440 files,3027 tests,1 artifact-only skip with default lane-local Cargo target. Initial shared-target environment failure is superseded. PLAN independently reproduced8 foundation native tests and one actualWASM cross-piece edit sequence at clean8c09107. Source/tree/oracle review verified real index/copy/lookup charges, per-read source allowance, AVL height bounds, shared backing, exact cold semantic/concat equality and negative partition/identity cases. Core main fast-forward integrated8c09107 and fresh npm run check passed440 files,3027 tests,1 artifact-only skip (core-foundation-main-check.log).\n\nAll92 additive accepted/attempt/family slots remain. Example actual source cost AB append20 versus prior24; XY replacement52 with2 indexed UTF16 and12 offset lookups, copies14 versus20.55 one-character pieces plus append:Accepted,Equal,source448/property2/provider333. No whole-source foreground scan or new authoritative host facts. New QA compares exact independent source, authored identity/defaults/origins, runs/providerRunId, glyphs/line/grapheme/concat facts and requires valid coverage/run membership/safe edges; physical shard partitions may differ as the semantic contract permits.\n\nPLAN-owned minimal exact-commit Evidence record is required for current coordination acceptance/integration identity; it references existing tests instead of adding a proof gate. WORK created no Evidence or Markdown. Baseline actual75 remains pinned to f339c674:24Accepted/51rejected, with15separate no-ops; no fresh all75 support claim for this foundation. Provider window and analysis-transition slices remain in this round. No-op/lifecycle remain later prerequisites; full180/11271 measurement NOT_RUN; caps512/512/1024 and8ms/16.7ms/1.50 unchanged; geometry/Editor/Backend/public binding/maps and UX unproven.",
+  "verifiedAt": "2026-09-27T11:52:44.572Z",
+  "validity": {
+    "claim": "Private persistent source views, bounded multi-piece access, balanced range splice/lazy shard run ranks and strict partition-independent cold QA preserve existing admitted semantics. Foundation only: no new certificate predicates or complete ordinary/Stage6/UX admission.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/ownership.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/position.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/qa_compare.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "tests/coldSessionStage4.test.ts"
+    ],
+    "sourceRevision": "8c09107d2ae6234d49f3882c91868bb2f463f8b7",
+    "verificationMethod": "WORK full native cold-session suite passed92 tests with unchanged production, followed by one added focused55-piece command regression PASS (not a claimed full93 run). WORK Core npm run check passed440 files,3027 tests,1 artifact-only skip with default lane-local Cargo target. Initial shared-target environment failure is superseded. PLAN independently reproduced8 foundation native tests and one actualWASM cross-piece edit sequence at clean8c09107. Source/tree/oracle review verified real index/copy/lookup charges, per-read source allowance, AVL height bounds, shared backing, exact cold semantic/concat equality and negative partition/identity cases. Core main fast-forward integrated8c09107 and fresh npm run check passed440 files,3027 tests,1 artifact-only skip (core-foundation-main-check.log).",
+    "freshnessTriggers": [
+      "Source/tree/rank/oracle/accounting or provider changes require affected revalidation.",
+      "New certificate admission, complete75 applicability, no-op/lifecycle, full measurement and UX require separate proof; this foundation cannot substitute."
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "document",
+  "id": "doc-core-stage6-noop-lifecycle-contract-20260927",
+  "title": "Core Stage6 no-op and lifecycle contract",
+  "path": "docs/domains/flowdoc-core-stage6-noop-lifecycle-contract-2026-09-27.md",
+  "nodeIds": [],
+  "role": "decision",
+  "authority": "Project Control implementation-target addendum: exact nonpublishing NoOp; user-selected retained-source bounded recovery and real derived/provider-plan eviction; existing bounded synchronous pre-entry/too-late host cancellation. No in-flight host interruption claim or new gate. Design does not prove implementation, Stage6/Gate2, performance, UX, production or map truth.",
+  "lifecycle": "active",
+  "contextClass": "current",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "pathOrContractId": "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "commit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff"
+    },
+    {
+      "repositoryId": "repo-core",
+      "pathOrContractId": "scripts/stage6/corpus.mjs",
+      "commit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff"
+    }
+  ]
+}

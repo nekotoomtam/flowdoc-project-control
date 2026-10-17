@@ -1,0 +1,28 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-core-backend-editor-readiness-pass-editor-structure-large-document-navigation-performance",
+  "workId": "flowdoc-core-backend-editor-readiness-pass-8h",
+  "title": "Editor Structure Large Document Navigation Performance",
+  "phaseState": "done",
+  "order": 160,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-backend",
+    "repo-core",
+    "repo-project-control"
+  ],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository set, Checklist target, or Evidence target before editing.",
+    "The Structure panel continues rendering every Outline item for large structures instead of bounding the visible row window.",
+    "The selected Outline item can be windowed out, hidden behind a collapsed ancestor, or fail to scroll into view after selection changes.",
+    "Columns/table/text-block hierarchy collapse hides the selected descendant without a forced-open selected path.",
+    "The retained live Backend smoke shows small active documents being incorrectly windowed, losing rows, or losing group toggles.",
+    "Outline descendant metadata is derived with per-row forward scans that can grow poorly with deeply nested structures.",
+    "The slice enables WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table cell editing UI, exact column layout editing UI, arbitrary rich-inline authoring, field-ref editing, durable drafts, collaboration, production readiness, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth."
+  ],
+  "verificationTarget": "Editor bounds Structure panel rendering for large Outline lists, adds collapse/expand and forced-open selected descendant behavior, and proves small live Backend documents retain all rows and toggles without promoting broad frontend or large-document readiness.",
+  "summary": "Done: Editor commit e1a2a9dc2d5b2a1557aa8838dc03aecece26d102 adds bounded Structure panel navigation safeguards. OutlinePanel now builds hierarchy facts, exposes group collapse/expand toggles, keeps a collapsed ancestor forced open when its selected descendant is active, auto-scrolls the selected row into view, and windows large visible Structure lists around the selected Outline item with before/after hidden-count markers. The hierarchy metadata was changed from per-row forward scanning to a bounded reverse stack walk, with a source guard test preventing the old cursor = index + 1 pattern from returning. The retained live local Backend browser smoke now records Structure navigation metadata before and after mutation and proves the small active document is not windowed, keeps every row rendered, keeps two group toggles, and has no hidden or forced-open markers. This does not enable WYSIWYG behavior, contenteditable runtime, direct click-to-type authoring, exact table/cell/column authoring, arbitrary rich-inline authoring, durable drafts, broad frontend readiness, Core truth, Backend truth, Editor truth, FlowDoc product truth, or map truth.",
+  "createdAt": "2026-08-31T07:35:00.000Z",
+  "updatedAt": "2026-08-31T07:35:00.000Z"
+}

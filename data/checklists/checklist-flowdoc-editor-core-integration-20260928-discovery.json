@@ -1,0 +1,31 @@
+{
+  "kind": "checklist",
+  "id": "checklist-flowdoc-editor-core-integration-20260928-discovery",
+  "phaseId": "phase-flowdoc-editor-core-integration-20260928-discovery",
+  "title": "Resolve actual Editor/Core integration boundary",
+  "items": [
+    {
+      "id": "discovery-path",
+      "state": "passed",
+      "label": "Resolve actual path and ownership",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "Editor coreAdapter.ts and creatorPreviewSession.ts; Core coldSessionStage3.ts and QA-only Rust feature at exact commits."
+    },
+    {
+      "id": "discovery-baseline",
+      "state": "passed",
+      "label": "Inspect unmodified real UI baseline",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json:14/14 sampled equal page/glyph frames; actual insert/delete; Enter suppressed; zero browser exceptions."
+    },
+    {
+      "id": "discovery-decision",
+      "state": "passed",
+      "label": "Record current owner deferrals and contract impact",
+      "evidenceTarget": "C:/Users/nekot/.codex/visualizations/2026/09/28/01a0e735-73d9-7f20-b68e-3cccf1b94176/baseline-corrected/baseline.json",
+      "verificationNote": "This Work and inline-discovery-packet.json override old blanket Gate2 prerequisite for this round without mutating closed contexts."
+    }
+  ],
+  "createdAt": "2026-09-28T08:58:26.917Z",
+  "updatedAt": "2026-09-28T08:58:26.917Z"
+}

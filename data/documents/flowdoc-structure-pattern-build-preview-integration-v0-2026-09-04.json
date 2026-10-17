@@ -1,0 +1,32 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04",
+  "title": "FlowDoc Structure Pattern Build/Preview Integration v0 Acceptance",
+  "path": "docs/domains/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.md",
+  "nodeIds": [],
+  "role": "verification",
+  "authority": "Project Control PLAN integration acceptance record for the automatically returned Core, Backend, and Editor Structure Pattern Build/Preview WORK room handoffs.",
+  "lifecycle": "active",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-editor",
+      "commit": "65ab5b149c5aad10b36bbaa23650b9fce7070dff",
+      "pathOrContractId": "src/app/editor/_components/AddPanel.tsx; src/app/editor/_components/EditorShell.tsx; src/app/editor/_components/FillingPanel.tsx; src/app/editor/_components/PagePanel.tsx; src/app/editor/_components/__tests__/structurePatternWorkflow.test.ts; src/app/editor/_components/shell/editorWorkflowNav.ts; npm run review:gate"
+    },
+    {
+      "repositoryId": "repo-backend",
+      "commit": "9da58214e087d2f15afd43855bfd1febec882037",
+      "pathOrContractId": "src/documentStructure/documentStructureRepository.ts; src/documentStructure/documentStructureSqliteRepository.ts; src/tests/documentStructureRepository.test.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "8411f26763d81743ba9d44a59fd5ad4942e5601a",
+      "pathOrContractId": "src/lifecycle/structurePatternSlots.ts; tests/structurePatternSlotBoundary.test.ts; src/index.ts; docs/CORE_PUBLIC_EXPORT_BOUNDARY_REVIEW.md; tests/corePublicExportBoundaryReview.test.ts; npm run check"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "3cb5ee9a573002d2b90fa7cfa3612b3e55426e1a",
+      "pathOrContractId": "docs/domains/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.md; data/work/flowdoc-structure-pattern-build-preview-integration-v0.json; data/phases/phase-flowdoc-structure-pattern-build-preview-integration-v0.json; data/checklists/checklist-flowdoc-structure-pattern-build-preview-integration-v0.json; data/evidence/flowdoc-structure-pattern-build-preview-integration-v0-2026-09-04.json; tests/flowdoc-structure-pattern-build-preview-integration.test.ts"
+    }
+  ]
+}

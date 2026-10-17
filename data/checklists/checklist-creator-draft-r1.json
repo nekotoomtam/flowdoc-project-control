@@ -1,0 +1,20 @@
+{
+  "kind": "checklist",
+  "id": "checklist-creator-draft-r1",
+  "phaseId": "phase-creator-draft-r1",
+  "title": "R1 คลังโครงสร้างและการเก็บข้อมูล",
+  "items": [
+    {
+      "id": "verify-creator-draft-r1",
+      "state": "passed",
+      "evidenceTarget": "evidence-creator-draft-r1-2026-09-05",
+      "label": "R1 คลังโครงสร้างและการเก็บข้อมูล",
+      "evidenceIds": [
+        "evidence-creator-draft-r1-2026-09-05"
+      ],
+      "verificationNote": "R1 accepted for local workspace: paginated workspace-scoped listing and SQLite local runner persistence. Worktree and main type-check, full test run with maxWorkers=1 (95 passed/1 skipped files; 354 passed/27 skipped tests), and build passed. Initial default-worker run lost a worker; full serial retry passed without reducing coverage. New tests cover HTTP queries and process restart. Not production auth/database readiness."
+    }
+  ],
+  "createdAt": "2026-09-05T09:30:00.000Z",
+  "updatedAt": "2026-09-05T10:00:50.163Z"
+}

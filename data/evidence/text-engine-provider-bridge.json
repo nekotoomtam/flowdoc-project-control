@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-text-engine-provider-bridge",
+  "nodeIds": ["text-engine"],
+  "repositoryId": "repo-core",
+  "commit": "c503a45c03e0ce3b7a6efba2b029ca842017faa0",
+  "pathOrContractId": "packages/text-engine-rust-wasm/src/rendererBackedProvider.ts",
+  "verificationSummary": "Optional renderer-backed provider/profile/drift/default-independence checks passed in seeded, smoke-bounded Evidence; this does not establish real production Evidence, parity, default replacement, or production readiness.",
+  "verifiedAt": "2026-08-15T00:00:00.000Z"
+}

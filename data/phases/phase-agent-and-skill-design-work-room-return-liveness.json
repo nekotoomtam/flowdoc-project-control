@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-work-room-return-liveness",
+  "workId": "agent-and-skill-design",
+  "title": "WORK Room Return Liveness Contract",
+  "phaseState": "done",
+  "order": 60,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The WORK room return liveness contract is treated as product evidence, map truth, Core truth, Backend truth, or Editor truth.",
+    "A silent WORK room is accepted without a terminal return, retrievable locator pull review, or explicit RISK/UNKNOWN/blocked state.",
+    "A PLAN room opens dependent lanes from a WORK room that disappeared or lacks terminal return.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "WORK Room Return Liveness Contract wording in the Work Type Routing Model, PLAN Room Orchestration Rules, First Delivery Round Plan, global Codex guidance, and Project Control agent entrypoint requires mandatory WORK room return, liveness signal, death signal, silent room handling, terminal return status, and no acceptance without return; focused guard and Project Control gate pass.",
+  "summary": "Done: recorded a Project Control WORK room return and liveness contract so every WORK room must return PASS, FAIL, BLOCKER, RISK, or UNKNOWN to PLAN, while silent or disappeared rooms become PLAN-visible needs-attention, RISK, UNKNOWN, returned-silent, or blocked states rather than accepted work.",
+  "createdAt": "2026-09-02T08:55:00.000+07:00",
+  "updatedAt": "2026-09-02T08:55:00.000+07:00"
+}

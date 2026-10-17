@@ -1,0 +1,167 @@
+{
+  "status": "TARGET_CONTRACT_ONLY_NOT_IMPLEMENTED",
+  "idValues": "Synthetic UUIDs; font release is illustrative, not a live catalog ID",
+  "generationOrder": [
+    "10000000-0000-4000-8000-000000000011",
+    "10000000-0000-4000-8000-000000000012"
+  ],
+  "reversedInputOrder": "two-section.preview-body.json intentionally sends SRS2 before SRS1; output still follows saved definition order",
+  "createBlank": {
+    "method": "POST",
+    "path": "/authoring/drafts/10000000-0000-4000-8000-000000000001/sections",
+    "request": {
+      "expectedRevision": 1,
+      "idempotencyKey": "example-create-section",
+      "pageLayoutId": "10000000-0000-4000-8000-000000000041"
+    },
+    "response": {
+      "ok": true,
+      "value": {
+        "templateId": "10000000-0000-4000-8000-000000000001",
+        "revision": 2,
+        "section": {
+          "id": "10000000-0000-4000-8000-000000000013",
+          "label": "SRS2",
+          "nameBase": "SRS",
+          "pageLayoutId": "10000000-0000-4000-8000-000000000043"
+        },
+        "definitionEndpoint": "/authoring/drafts/10000000-0000-4000-8000-000000000001"
+      },
+      "warnings": []
+    },
+    "note": "Creates an empty authored Section in an existing saved definition; copies the selected page layout to a private layout identity. It does not create an intentional blank page."
+  },
+  "copyAppend": {
+    "method": "POST",
+    "path": "/authoring/drafts/10000000-0000-4000-8000-000000000001/sections/import",
+    "request": {
+      "sourceTemplateId": "10000000-0000-4000-8000-000000000001",
+      "sourceRevision": 1,
+      "sourceSectionIds": [
+        "10000000-0000-4000-8000-000000000011"
+      ],
+      "expectedRevision": 1,
+      "beforeSectionId": null,
+      "idempotencyKey": "example-copy-append"
+    },
+    "response": {
+      "ok": true,
+      "value": {
+        "templateId": "10000000-0000-4000-8000-000000000001",
+        "revision": 2,
+        "inserted": [
+          {
+            "sourceSectionId": "10000000-0000-4000-8000-000000000011",
+            "sectionId": "10000000-0000-4000-8000-000000000012",
+            "label": "SRS2"
+          }
+        ],
+        "sectionIdMap": {
+          "10000000-0000-4000-8000-000000000011": "10000000-0000-4000-8000-000000000012"
+        },
+        "definitionEndpoint": "/authoring/drafts/10000000-0000-4000-8000-000000000001"
+      },
+      "warnings": []
+    }
+  },
+  "splitIntoExistingDraft": {
+    "method": "POST",
+    "path": "/authoring/drafts/10000000-0000-4000-8000-000000000002/sections/import",
+    "request": {
+      "sourceTemplateId": "10000000-0000-4000-8000-000000000001",
+      "sourceRevision": 2,
+      "sourceSectionIds": [
+        "10000000-0000-4000-8000-000000000012"
+      ],
+      "expectedRevision": 0,
+      "beforeSectionId": null,
+      "idempotencyKey": "example-split-copy"
+    },
+    "response": {
+      "ok": true,
+      "value": {
+        "templateId": "10000000-0000-4000-8000-000000000002",
+        "revision": 1,
+        "inserted": [
+          {
+            "sourceSectionId": "10000000-0000-4000-8000-000000000012",
+            "sectionId": "10000000-0000-4000-8000-000000000013",
+            "label": "SRS1"
+          }
+        ],
+        "sectionIdMap": {
+          "10000000-0000-4000-8000-000000000012": "10000000-0000-4000-8000-000000000013"
+        }
+      },
+      "warnings": []
+    },
+    "sourceUnchanged": true
+  },
+  "preview": {
+    "method": "POST",
+    "path": "/authoring/drafts/10000000-0000-4000-8000-000000000001/previews",
+    "requestFile": "two-section.preview-body.json",
+    "response": {
+      "ok": true,
+      "value": {
+        "jobId": "10000000-0000-4000-8000-000000000500",
+        "templateId": "10000000-0000-4000-8000-000000000001",
+        "revision": 2,
+        "nodeModelVersion": 19,
+        "status": "queued"
+      },
+      "warnings": []
+    }
+  },
+  "negativeInputs": [
+    {
+      "case": "duplicate Section ID",
+      "expectedCode": "SECTION_INPUT_DUPLICATE"
+    },
+    {
+      "case": "missing saved Section instance",
+      "expectedCode": "SECTION_INPUT_MISSING"
+    },
+    {
+      "case": "unknown Section ID",
+      "expectedCode": "SECTION_INPUT_UNKNOWN"
+    },
+    {
+      "case": "object map supplied to model19",
+      "expectedCode": "SECTION_INPUT_SHAPE"
+    },
+    {
+      "case": "client places label in generation Section input",
+      "expectedCode": "INVALID_DATA"
+    },
+    {
+      "case": "source dependency outside imported selection",
+      "expectedCode": "SECTION_DEPENDENCY_OUTSIDE_SELECTION"
+    }
+  ],
+  "examplesAreIndependent": true,
+  "wholeDraftClone": {
+    "method": "POST",
+    "path": "/authoring/drafts/10000000-0000-4000-8000-000000000001/clone",
+    "request": {
+      "sourceRevision": 2,
+      "name": "SRS Copy",
+      "docKey": "section-array-copy",
+      "idempotencyKey": "example-whole-clone"
+    },
+    "response": {
+      "ok": true,
+      "value": {
+        "templateId": "10000000-0000-4000-8000-000000000003",
+        "docKey": "section-array-copy",
+        "revision": 1,
+        "nodeModelVersion": 19,
+        "sectionIdMap": {
+          "10000000-0000-4000-8000-000000000011": "10000000-0000-4000-8000-000000000014",
+          "10000000-0000-4000-8000-000000000012": "10000000-0000-4000-8000-000000000015"
+        }
+      },
+      "warnings": []
+    }
+  }
+}

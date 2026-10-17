@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-editor-core-integration-20260928-discovery",
+  "workId": "flowdoc-editor-core-integration-20260928",
+  "title": "Resolve actual Editor/Core integration boundary",
+  "phaseState": "done",
+  "order": 0,
+  "repositoryIds": [
+    "repo-editor",
+    "repo-core"
+  ],
+  "activeRole": "cross-repo-boundary-reviewer",
+  "verificationTarget": "checklist-flowdoc-editor-core-integration-20260928-discovery",
+  "summary": "Bounded inline discovery, actual browser baseline and source inspection completed. Missing product result boundary changes contract and scope; no implementation lane dispatched.",
+  "stopConditions": [
+    "Concrete contract or ownership change",
+    "Acceptance criteria satisfied; no additional proof"
+  ],
+  "createdAt": "2026-09-28T08:58:26.917Z",
+  "updatedAt": "2026-09-28T08:58:26.917Z"
+}

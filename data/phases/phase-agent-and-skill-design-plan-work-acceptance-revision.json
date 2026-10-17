@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-plan-work-acceptance-revision",
+  "workId": "agent-and-skill-design",
+  "title": "PLAN WORK Acceptance Revision Loop",
+  "phaseState": "done",
+  "order": 70,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "A product WORK room writes or accepts Project Control truth for its own lane output.",
+    "PLAN accepts a returned handoff before acceptanceGate passes.",
+    "A needs-revision result opens dependent lanes instead of sending a bounded Revision Packet or recording a fallback state.",
+    "The phase edits Core, Backend, or Editor product behavior."
+  ],
+  "verificationTarget": "PLAN-owned reporting and Revision Packet wording in the Delivery Operating Model, Work Type Routing Model, PLAN Room Orchestration Rules, First Delivery Round Plan, global Codex guidance, and Project Control agent entrypoint keeps product WORK rooms limited to evidence candidates, keeps Project Control reporting PLAN-owned, and routes needs-revision results back to the same WORK room when the original locator remains usable; focused guard and Project Control data checks pass.",
+  "summary": "Done: recorded PLAN-owned reporting for Project Control so product WORK rooms return evidence candidates without self-promoting truth, and recorded a Revision Packet loop for needs-revision handoffs that return to the same WORK room when the original retrievable locator remains usable.",
+  "createdAt": "2026-09-02T10:30:00.000+07:00",
+  "updatedAt": "2026-09-02T10:30:00.000+07:00"
+}

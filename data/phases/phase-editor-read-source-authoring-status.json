@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-editor-read-source-authoring-status",
+  "workId": "editor-read-source-authoring-status",
+  "title": "Clarify Editor Read Source And Authoring Status",
+  "phaseState": "done",
+  "order": 100,
+  "repositoryIds": ["repo-project-control", "repo-editor", "repo-backend", "repo-core"],
+  "activeRole": "product-implementation-agent",
+  "stopConditions": [
+    "The lane enables WYSIWYG, free text input, or full authoring behavior instead of only clarifying status.",
+    "The UI claims Backend, Core, Editor, FlowDoc, command, production, visual regression, accessibility, or product readiness from local loopback evidence.",
+    "The status copy uses unqualified live, ready, source, runtime, or authoring terms that conflict with product terminology.",
+    "The implementation bypasses Backend-owned transport, revision, migration, mutation, or persistence boundaries.",
+    "Project Control promotes Editor node truth from this work-scoped evidence."
+  ],
+  "verificationTarget": "Project Control records the bounded Editor read source and limited authoring status lane with checklist target checklist-editor-read-source-authoring-status and evidence target evidence-editor-read-source-authoring-status-2026-08-29 while keeping Editor truth unpromoted.",
+  "summary": "Added visible Editor shell status for Backend read source and limited authoring, plus disabled authoring control reasons, without enabling authoring behavior or promoting product truth.",
+  "createdAt": "2026-08-29T06:26:00.000Z",
+  "updatedAt": "2026-08-29T06:26:00.000Z"
+}

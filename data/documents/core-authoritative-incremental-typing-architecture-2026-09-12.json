@@ -1,0 +1,42 @@
+{
+  "kind": "document",
+  "id": "doc-core-authoritative-incremental-typing-architecture-2026-09-12",
+  "title": "สถาปัตยกรรมการพิมพ์แบบ Core-authoritative และ Incremental",
+  "path": "docs/domains/flowdoc-core-authoritative-incremental-typing-architecture-2026-09-12.md",
+  "role": "contract",
+  "authority": "Project Control approved cross-repository architecture intent based on the FlowDoc vNext Text Engine; no incremental production readiness, UX acceptance, dispatch, or map promotion.",
+  "lifecycle": "active",
+  "nodeIds": [],
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "src/creatorPreview/engineV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "src/creatorPreview/nativeTailExperimentV1.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "src/layout/textBlockUnifiedLayoutRootContractV2.ts"
+    },
+    {
+      "repositoryId": "repo-core",
+      "commit": "4e3b0c9aa4a4d916c78ea5da8e9bac4cffdc4224",
+      "pathOrContractId": "packages/text-engine-rust-wasm/src/runtimeMr1Range.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "59412e6beb834a96c3c113e03a857de8ffd4efe9",
+      "pathOrContractId": "src/editor/structures/creatorPreviewEngine.worker.ts"
+    },
+    {
+      "repositoryId": "repo-editor",
+      "commit": "59412e6beb834a96c3c113e03a857de8ffd4efe9",
+      "pathOrContractId": "src/editor/structures/creatorPreviewWorkerClient.ts"
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+# FlowDoc Core Run-Owned Property Semantic Contract
+
+## Authority Boundary
+
+Owner repository: `repo-core`.
+
+Work: `flowdoc-frontend-expert-roadmap`.
+
+Phase: `phase-core-text-layout-roadmap`.
+
+Checklist: `checklist-core-text-layout-roadmap`.
+
+Evidence target: `evidence-core-rust-paragraph-session-feasibility`.
+
+This is the approved Core-only semantic contract for replacing the blocked
+paragraph-wide property candidate. It defines the future private session's
+meaning and proof obligations. It is not implementation evidence, Gate 2
+admission, a public API, Editor/Backend work, production binding, UX
+acceptance, or map truth.
+
+## Decision
+
+The old model derives one script/direction/language tuple from a paragraph or
+child paragraph's first strong character. That tuple is no longer a valid
+semantic authority for the redesign. It remains historical blocker evidence
+only.
+
+The new model separates authored meaning, derived analysis, and bounded layout
+facts:
+
+```text
+ParagraphContext
+       │
+AuthoredSpan tree ── derive ──> AnalysisRun tree ── certify ──> LayoutShard tree
+```
+
+No layer may silently substitute for the layer above it.
+
+### Decision Confirmation — 2026-09-14
+
+After the read-only semantic characterization returned `UNKNOWN`, the user
+confirmed this contract as the selected direction: run-owned analysis is the
+new semantic authority, but a command may publish only with a provider-backed
+bounded `SeamCertificate`. A missing proof is never an invitation to infer a
+boundary or fall back to whole-paragraph repair. It returns a typed,
+non-publishing result with the previous revision and receipt intact.
+
+This is deliberately neither a blanket permanent rejection of run-owned edits
+nor an immediate claim that every run boundary is exact. Stage 2 must first
+provide an independent reference oracle and fixtures for Thai/Latin property
+changes, arbitrary Latin splits such as `off|ice`, grapheme and composition
+boundaries, and RTL-sensitive direction behavior. Until each fixture has a
+provider-backed rule, that case remains `not-admissible`.
+
+### Stage 3 Provider Input Decision — 2026-09-19
+
+Stage 3 source review found that `ParagraphContext` and `AuthoredSpan[]` do not
+contain the font resources or provider policy needed for Rust to derive the
+required glyph, cluster, break and unsafe-boundary facts. Passing the Stage 2
+fact bundle into the session would make caller-supplied derived facts a second
+authority. The private construction protocol therefore adds one immutable,
+versioned `ProviderContext` input and keeps all derived facts inside Rust.
+
+`ProviderContext` is configuration, not a run or fact tree. It contains:
+
+- provider identity and revision;
+- immutable font resources with stable IDs and verified content digests;
+- authored-style-to-font and shaping-feature bindings;
+- the script, bidi, shaping and segmentation policy revisions used by Core;
+  and
+- validation policy for unsupported language, feature, font and writing-mode
+  combinations.
+
+It must not contain provider run boundaries, glyphs, clusters, line breaks,
+unsafe-boundary results, seam certificates or mutable session state. Rust
+validates the configuration, imports the required immutable resources, derives
+the analysis runs and raw facts, then owns the only session copies. The Stage 2
+oracle remains an independent expected-result reference; its caller-supplied
+provider facts are never imported as live session authority.
+
+### Stage 3 Executable Resolution Policy Decision — 2026-09-20
+
+The first `ProviderContext` implementation attempt stopped before retaining
+code because revision identifiers and one authored-style-to-font mapping do
+not define how Rust must resolve script, language, direction, font fallback or
+shaping features. Rust would have had to invent those meanings locally. The
+configuration boundary is therefore completed with one immutable,
+digest-bound `ResolutionPolicyBundle` that Rust validates and interprets.
+
+`ResolutionPolicyBundle` is canonical declarative configuration. Its first
+private schema contains:
+
+- `schemaVersion`, `unicodeVersion`, and exact script, bidi, grapheme, line
+  segmentation and shaping implementation revisions;
+- ordered `languageRules` that match authored language plus resolved script
+  and either return one canonical language or reject;
+- ordered `fontRouteRules` that match authored style, resolved language,
+  script, direction and writing mode, then select an ordered list of verified
+  font resource IDs and a fail-closed coverage policy;
+- ordered `featureRules` that resolve a canonical feature set for the same
+  key; and
+- one named `runBoundaryPolicy` that defines how Common and Inherited scalars
+  attach to neighbouring strong-script runs and where an analysis-key change
+  creates a new run.
+
+The bundle is executable only through the reviewed Rust interpreter. It cannot
+contain source text, paragraph or span IDs, UTF-16 offsets, provider run
+boundaries, glyph IDs, clusters, break opportunities, unsafe-boundary results,
+seam certificates, callbacks, bytecode or mutable state. Rule matching depends
+only on authored properties, paragraph context, Unicode/provider analysis and
+verified resource metadata. Consequently the bundle remains provider
+configuration rather than a per-session result tree.
+
+The first admitted policy profile is deliberately bounded to the verified
+Thai/Latin resources already owned by Core. It must reproduce the accepted
+Stage 2 Thai/Latin and Latin descriptor meanings, including `und` resolving to
+`th` for Thai and `en` for Latin, script-specific logical font selection and
+the canonical feature list. A script/font combination without a verified
+coverage resource returns `NotCreated(unsupported-font-script)` before a
+session is published. In particular, the Stage 2 RTL fixture remains semantic
+oracle evidence, but it is not claimed as a live-shaping success until a
+verified Hebrew-capable resource and matching policy row exist. This typed
+rejection preserves the RTL meaning without fabricating glyph evidence or
+silently substituting a font.
+
+Rust must hash the canonical bundle and include the digest in the cold summary
+and receipt binding. Reordered, overlapping, unreachable, ambiguous or
+unsupported rules are invalid configuration. Tests must prove that changing a
+rule or digest changes the binding, that per-session fact-shaped fields are
+rejected, and that no implicit fallback runs outside the selected policy.
+
+## 1. Semantic Ownership
+
+### ProviderContext
+
+`ProviderContext` owns the immutable provider capability required to construct
+a session. It binds provider and implementation revisions, verified font
+resources, authored style mappings and one canonical `ResolutionPolicyBundle`
+plus its digest. It does not own document text or derived per-session runs and
+facts. TypeScript may retain independent immutable application font assets and
+the provider policy configuration, but it must not retain a session's derived
+run tree, shard tree or raw fact copy.
+
+### ParagraphContext
+
+`ParagraphContext` owns only paragraph-wide facts:
+
+- base direction and writing mode;
+- paragraph-level defaults explicitly supplied by the document model; and
+- stable paragraph identity used to bind an opaque session receipt.
+
+It does not own script, language, font choice, glyph facts, break facts, or a
+first-strong result that relabels the whole paragraph.
+
+### AuthoredSpan
+
+`AuthoredSpan` is the canonical committed document input. Each span owns:
+
+- an immutable UTF-16 source slice;
+- explicitly authored inline style and language values, when supplied;
+- source order and safe structural boundaries; and
+- a stable identity independent of its current tree offset.
+
+Adjacent spans may be coalesced only when their authored meaning is identical.
+An analysis or layout optimization never changes authored spans.
+
+### AnalysisRun
+
+`AnalysisRun` is a derived contiguous slice. It owns the resolved analysis key
+required for text analysis and shaping, including script, applicable direction,
+language, font selection, shaping features, and the exact context provenance
+used to resolve them.
+
+An analysis run is neither a word nor the user's authored formatting range. A
+single `AuthoredSpan` may yield several analysis runs, and a run may be split at
+an arbitrary certified source boundary such as `off|ice`.
+
+### LayoutShard
+
+`LayoutShard` is the bounded cached unit. It owns:
+
+- a reference to immutable source inside one analysis run;
+- raw glyph, cluster, break, and unsafe-boundary facts;
+- the analysis-key and context provenance that certified those facts; and
+- edge summaries used by a seam certificate.
+
+Shards are implementation-sized and may change without changing authored or
+analysis semantics. Rust owns all mutable trees and shard facts. TypeScript
+must not retain a second mutable source, run tree, or raw-fact copy.
+
+## 2. Boundary Rules
+
+Every edit and Enter caret is first classified as one of:
+
+- `scalar-safe` — it does not split a UTF-16 surrogate pair;
+- `grapheme-safe` — it does not split a certified grapheme cluster;
+- `composition-safe` — no uncommitted composition is being made canonical; or
+- `not-admissible`.
+
+The Gate 2 session accepts only committed source edits. A command marked as an
+active or incomplete composition returns `not-admissible(composition-active)`
+with unchanged revision and receipt. A later composition transaction contract
+may add committed replacement semantics, but cannot make an uncommitted preedit
+the canonical source by implication.
+
+Thai, combining marks, ZWJ sequences, surrogate pairs, RTL-sensitive text, and
+property changes require fixture-backed rules. The absence of a rule is not a
+license to split; it is `not-admissible(uncertified-boundary)`.
+
+## 3. Seam Certificate
+
+A split or join that changes a run edge requires a `SeamCertificate` before
+publication. The certificate names:
+
+- left and right source ranges inspected;
+- the analysis keys and paragraph context used;
+- the repaired glyph, cluster, break, and unsafe-boundary facts;
+- the edge summaries before and after the command; and
+- proof that facts outside those ranges remain valid for the new revision.
+
+The certificate must stay within the fixed Gate 2 budget: no more than 512
+UTF-16 units of source facts, no more than 512 UTF-16 units of property facts,
+and no more than 1,024 combined UTF-16 units of shaping plus segmentation
+input. It must account for all work performed, including deferred work.
+
+Core must not claim that contextual shaping is local without a provider-backed
+certificate. If a provider cannot supply one at a particular boundary, Core
+returns `not-admissible(uncertified-seam)`.
+
+## 4. Private Session Protocol
+
+The private Rust/WASM boundary carries immutable provider configuration,
+semantic input and compact results only:
+
+```text
+CreateSession(ProviderContext, ParagraphContext, AuthoredSpan[])
+  -> Created(receipt, revision = 0, coldSummary)
+  | NotCreated(reason)
+Apply(receipt, EditCommand)
+  -> Accepted(nextReceipt, revision, affectedSummary)
+  | NotAdmissible(reason, unchangedReceipt)
+Dispose(receipt)
+  -> Disposed(disposalSummary)
+  | UnknownReceipt
+```
+
+`CreateSession` validates all IDs, digests, ranges, the complete resolution
+policy and every referenced resource before publication. Rust resolves
+language, script, direction, font route and shaping features through the named
+policy, then derives `AnalysisRun` and `LayoutShard` state through the named
+providers; caller-supplied provider runs and raw facts are rejected. A missing
+or ambiguous rule and a font without required script coverage are typed
+`NotCreated` results, never implicit fallback.
+The receipt is a Rust-created opaque capability bound to one live session and
+revision. A caller-created or disposed receipt cannot inspect, mutate or
+dispose a session.
+
+`coldSummary` is a compact QA result. It may report exact source and descriptor
+digests plus counters for ABI transfer, source/span traversal, provider input,
+shaping, segmentation, allocation and tree construction. It cannot expose the
+authoritative source, run tree, shard tree or raw facts. Provider setup and all
+deferred work performed for construction are charged to the same cold report;
+no setup cost may be hidden in an unreported warm cache.
+
+`Dispose` removes the Rust-owned session and reports compact released-resource
+counters. Tests must prove that the live-session count returns to its prior
+value and that subsequent use of the old receipt fails without state change.
+
+`EditCommand` names the expected receipt/revision, committed replacement or
+Enter caret, and any supplied authored-span change. It never supplies a caller
+invented script, first-strong tuple, raw fact set, or mutable tree snapshot.
+
+`affectedSummary` may identify bounded ranges and counters for QA. It cannot
+contain a second authoritative text store, full layout facts, or a public
+rendering contract.
+
+## 5. Atomicity
+
+Core plans an edit against the authentic receipt, validates source and seam
+rules, creates any path-copied span/run/shard descriptors, and publishes one
+new revision only after all checks succeed.
+
+`NotAdmissible`, stale receipt, cancelled work, budget exhaustion, unsafe
+boundary, missing anchor, or failed property proof leaves source, trees, raw
+facts, revision, and receipt unchanged. Enter either publishes both children
+from the same planned revision or publishes neither child.
+
+No fallback may show a parent property temporarily, schedule hidden
+whole-paragraph repair, or create a later revision without a fresh explicit
+command.
+
+## 6. Oracle and Required Fixtures
+
+The exact oracle is defined by committed text, authored spans, paragraph
+context, and the reviewed Unicode/shaping provider result. The old
+paragraph-wide first-strong tuple is a negative-control fixture, not the new
+oracle.
+
+For Stage 3, every capability-declared supported fixture result is reproduced
+from a reviewed `ProviderContext` and compared with the Stage 2 oracle. The
+first profile must cover the accepted Latin and Thai/Latin rows. An accepted
+Stage 2 semantic row outside the provider's verified resource coverage must
+return the exact typed unsupported result defined by the profile and remains a
+required future capability; it cannot be reported as live-provider equality.
+The oracle fact bundle is comparison evidence only and is never passed to
+`CreateSession`.
+
+Before implementation claims semantic readiness, Core must carry fixtures for:
+
+| Fixture | Required decision |
+| --- | --- |
+| Same-property Enter | exact two-child source/facts and atomic publication |
+| Thai-left / Latin-right Enter | separate run facts; no child-wide relabel |
+| `off|ice` | exact recombination with a certified local seam |
+| Thai base + combining marks | reject unsafe split or prove a safe boundary |
+| Active composition | non-publishing unchanged receipt |
+| RTL and first-strong changes | paragraph direction is distinct from script facts |
+| Missing seam certificate | typed non-publishing fallback with full atomicity |
+
+Every fixture must state whether it proves accepted behavior or rejection. A
+passing eventual full-paragraph reconstruction cannot replace a bounded seam
+proof.
+
+## 7. Migration Boundary
+
+This is a new private session model. The blocked candidate is retained for
+diagnosis and comparison only. It must not be wrapped with a compatibility shim
+that preserves a paragraph-wide property authority behind a run-shaped API.
+
+The implementation may reuse independent provider primitives only after a test
+proves they preserve this contract. It may not reuse the blocked child-property
+derivation as source truth.
+
+Editor, Backend, persistence, renderer geometry, public exports, production
+binding, Gate 3, Node-count claims, thresholds, corpus, and map updates remain
+outside this contract.
+
+## 8. Admission Sequence
+
+1. Build the semantic reference oracle and fixtures.
+2. Prove run derivation and boundary classification without mutable session
+   publication.
+3. Build cold Rust-owned session construction with complete accounting.
+4. Prove ordinary edits and structural Enter with atomic receipts.
+5. Prove recovery, cancellation, disposal and the fixed 180-revision corpus.
+6. Apply unchanged Gate 2 latency, scaling, window and cumulative-work limits.
+
+A failed step returns evidence and stops. It cannot relax a bound, skip an
+earlier semantic fixture, or advance to Gate 3.

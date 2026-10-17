@@ -1,0 +1,10 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-rust-paragraph-session-feasibility",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "c70b3e00416e38d2fd5757b9e80ee0339f60fce3",
+  "pathOrContractId": "core-stage2-run-owned-semantic-oracle/2",
+  "verificationSummary": "Stage 2 PASS establishes a deterministic Core-private oracle for the approved run-owned property semantic contract. At exact clean Core commit c70b3e00416e38d2fd5757b9e80ee0339f60fce3, the oracle derives ordered AnalysisRun descriptors and returns exactly certified(seam facts) or not-admissible(reason). Certification is bound to exact committed text, authored-property spans, fixed paragraph context, provider identity and revision, provider runs, grapheme-safe caret, non-empty exact seam partitions, derived immediate and deferred work accounting, typed before/after edge summaries, and exact outside-range validity coverage. The fixed suite covers same-property Enter, Thai-left/Latin-right Enter, off|ice, Thai combining marks, surrogate and ZWJ boundaries, active composition, fixed-context first-strong changes, and missing or malformed proof. WORK and PLAN independently passed the focused 39-test suite, TypeScript type-check, and the full Core gate of 436 files and 2,887 tests; an independent reviewer reported no actionable findings. The result is a proof tool and fixture authority only: it has no public export, mutable session, production binding or user-visible behavior. It validates reviewed provider evidence structure, identity, coverage and accounting, but it does not execute or authenticate a live provider. Mutable-session atomicity, revisions and receipts, live provider integration, Gate2 latency and scaling, Gate3, Editor, Backend and map promotion remain held. The prior blocked paragraph-session candidate at 1540b7d71154e40b793c3c5ee0fffa90aa2569fc remains historical negative-control evidence and was not merged by this acceptance.",
+  "verifiedAt": "2026-09-14T15:43:22.4997908Z"
+}

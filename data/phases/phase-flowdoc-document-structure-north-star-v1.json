@@ -1,0 +1,20 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-document-structure-north-star-v1",
+  "workId": "flowdoc-document-structure-north-star",
+  "title": "Document Structure North Star v1",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The north star would require Core, Backend, or Editor product repository edits.",
+    "The north star would claim product readiness, frontend readiness, publish readiness, PDF generation readiness, production readiness, FlowDoc product truth, or map truth from planning alone.",
+    "The document-structure scope would mix runtime data, submissions, logs, audit trails, generated files, permissions, or product database implementation into the same phase."
+  ],
+  "verificationTarget": "Project Control records the document structure relationship north star, Draft, Version, and Publication boundary, PDF-first renderer boundary, and structure-only database planning scope without product truth promotion.",
+  "summary": "Done: Project Control now records a bounded Document Structure North Star v1 that frames FlowDoc as a document-structure definition system, keeps PDF as the first renderer target rather than the product identity, and prepares the next database relationship design round.",
+  "createdAt": "2026-09-04T00:00:00.000Z",
+  "updatedAt": "2026-09-04T00:00:00.000Z"
+}

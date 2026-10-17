@@ -1,0 +1,58 @@
+{
+  "kind": "checklist",
+  "id": "checklist-agent-and-skill-design-flowdoc-project-control-skill",
+  "phaseId": "phase-agent-and-skill-design-flowdoc-project-control-skill",
+  "title": "FlowDoc Project Control Skill Checklist",
+  "items": [
+    {
+      "id": "capture-flowdoc-skill-context",
+      "label": "Capture the FlowDoc Project Control skill lane context.",
+      "state": "passed",
+      "evidenceTarget": "Work path, owner repository, active role, Phase target, Checklist target, Evidence target, risks, and unknowns are identified before installing or recording the skill.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "Identified Work path flowdoc-product-development-resumption > agent-and-skill-design, owner repo-project-control, active role project-control-steward with Documentation Authority Steward and Evidence Registrar responsibilities, phase target phase-agent-and-skill-design-flowdoc-project-control-skill, checklist target checklist-agent-and-skill-design-flowdoc-project-control-skill, and evidence target evidence-flowdoc-project-control-skill-2026-09-01."
+    },
+    {
+      "id": "record-flowdoc-skill-red-pressure",
+      "label": "Record RED evidence for the missing skill package.",
+      "state": "passed",
+      "evidenceTarget": "Focused Project Control tests fail before the skill packaging Phase, required Evidence, and installation document exist; historical Markdown drift remains the root pressure case.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "RED evidence: npx vitest run tests/flowdoc-project-control-skill.test.ts tests/agent-documentation-authority-operating-rules.test.ts --maxWorkers=1 failed because agent-and-skill-design lacked phase-agent-and-skill-design-flowdoc-project-control-skill, evidence-flowdoc-project-control-skill-2026-09-01, and doc-flowdoc-project-control-skill-installation-2026-09-01. Historical pressure remains the earlier generic docs/superpowers planning default that contributed to product-repository Markdown drift before Project Control authority rules were explicit."
+    },
+    {
+      "id": "install-flowdoc-project-control-skill",
+      "label": "Install the local FlowDoc Project Control Codex skill.",
+      "state": "passed",
+      "evidenceTarget": "C:\\Users\\nekot\\.codex\\skills\\flowdoc-project-control\\SKILL.md exists, has a FlowDoc trigger description, and routes FlowDoc work through Project Control before generic planning paths.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "Installed local personal skill flowdoc-project-control under C:\\Users\\nekot\\.codex\\skills. The skill triggers on FlowDoc, Project Control, Core, Backend, Editor, document maps, evidence, Work records, product terminology, and flowdoc-* repositories; it requires Project Control context fields and the Project Control unresolved blocker before editing."
+    },
+    {
+      "id": "register-flowdoc-skill-evidence",
+      "label": "Register Project Control records for the installed skill.",
+      "state": "passed",
+      "evidenceTarget": "Project Control records the Document, Work update, Phase, Checklist, and Evidence record for the skill installation without attaching product truth to Core, Backend, Editor, or FlowDoc maps.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "Registered doc-flowdoc-project-control-skill-installation-2026-09-01, phase-agent-and-skill-design-flowdoc-project-control-skill, checklist-agent-and-skill-design-flowdoc-project-control-skill, and evidence-flowdoc-project-control-skill-2026-09-01; the evidence is work-scoped with nodeIds [] and the project-control node evidenceIds remain unchanged."
+    },
+    {
+      "id": "validate-flowdoc-project-control-skill",
+      "label": "Validate the skill package and pressure behavior.",
+      "state": "passed",
+      "evidenceTarget": "The skill package validator passes, and bounded pressure validation shows the attached skill routes FlowDoc-wide planning to Project Control rather than product-repository docs/superpowers.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "python C:\\Users\\nekot\\.codex\\skills\\.system\\skill-creator\\scripts\\quick_validate.py C:\\Users\\nekot\\.codex\\skills\\flowdoc-project-control passed. Bounded GREEN pressure validation with the skill attached chose Project Control Work/Phase/Checklist/Evidence first, listed the required pre-action fields, rejected generic docs/superpowers/plans for FlowDoc-wide truth, and returned the Project Control unresolved blocker phrase."
+    },
+    {
+      "id": "verify-flowdoc-skill-gate",
+      "label": "Verify the focused guard and Project Control gate.",
+      "state": "passed",
+      "evidenceTarget": "Focused FlowDoc skill tests, generation, data validation, and full Project Control gate pass before handoff.",
+      "evidenceIds": ["evidence-flowdoc-project-control-skill-2026-09-01"],
+      "verificationNote": "GREEN evidence target: tests/flowdoc-project-control-skill.test.ts, tests/agent-documentation-authority-operating-rules.test.ts, npm run generate, npm run check:data, and npm run check pass after Project Control records are registered."
+    }
+  ],
+  "createdAt": "2026-09-01T10:30:00.000Z",
+  "updatedAt": "2026-09-01T10:30:00.000Z"
+}

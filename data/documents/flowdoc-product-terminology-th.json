@@ -1,0 +1,11 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-product-terminology-th",
+  "title": "FlowDoc Product Terminology Thai Companion",
+  "path": "docs/domains/flowdoc-product-terminology-th.md",
+  "nodeIds": ["flowdoc"],
+  "role": "glossary",
+  "authority": "Thai companion for FlowDoc product terminology coordination; English term IDs remain canonical for records, code, tests, contracts, and evidence.",
+  "lifecycle": "active",
+  "repositoryRefs": []
+}

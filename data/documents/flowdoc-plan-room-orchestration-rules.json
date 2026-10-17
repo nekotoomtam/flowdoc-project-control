@@ -1,0 +1,84 @@
+{
+  "kind": "document",
+  "id": "doc-flowdoc-plan-room-orchestration-rules",
+  "title": "FlowDoc PLAN Room Orchestration Rules",
+  "path": "docs/domains/flowdoc-plan-room-orchestration-rules.md",
+  "nodeIds": ["project-control"],
+  "role": "contract",
+  "authority": "Project Control PLAN room orchestration contract for decomposing delivery understanding into N WORK rooms, dispatch sets, room run tracking, handoff inbox processing, completion queue sequencing, acceptance gates, and source-of-truth boundaries.",
+  "lifecycle": "superseded",
+  "contextClass": "historical",
+  "supersededBy": "doc-flowdoc-workflow-economy-policy",
+  "repositoryRefs": [
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0796796ededc47a2f71e4ee32f0d0a8cd27c54d3",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/agent-and-skill-operating-model.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-plan-room-orchestration-rules.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "87e1092e4113c18b9e4107c0362bad13e94a05d4",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-work-type-routing-model.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "96a51d31355acee9afa2f38cab311c8764fe3f6d",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-work-room-return-liveness.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "c6805d815a50a01c7cb7e607cf9c7ffbb55c129d",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; tests/flowdoc-plan-work-acceptance-revision.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "ba0d2ca7622d9053384720e014d09238c172743c",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-core-pdf-boundary-acceptance-2026-09-02.md; tests/flowdoc-first-delivery-core-boundary-acceptance.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "b3851c15547e5adda77719887c4574d2ba8489c9",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-automatic-work-return-contract.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "27be42bd60d19245bba9ba2e8703eee2c2ba4503",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; docs/domains/flowdoc-work-type-routing-model.md; tests/flowdoc-active-return-channel-hardening.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "0e852ff86ea627add5e1f12dfb6b4a5a85368232",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-return-channel-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "1eeb1053e4cc7b9559d5060668f4ba467384850e",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-multi-work-queue-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "6b50473a3edf60402bf05e460ddb7b1d1df4fadb",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-product-repo-readonly-return-smoke-evidence.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "f42a272e85f1f749edb0e4f33f47a54c75b54ca0",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-first-delivery-round-plan.md; tests/flowdoc-first-delivery-backend-pre-admission-smoke.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "44fb3e3ad66f2e95ebbd3711eb749b14ec9164fe",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-lean-dispatch-operating-rules.md; tests/flowdoc-lean-dispatch-operating-rules.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "d75aa6e0c97f4caa9e50e8f103aebc2bf6fb44b7",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; docs/domains/flowdoc-delivery-operating-model.md; AGENTS.md; tests/flowdoc-plan-product-repair-boundary.test.ts"
+    },
+    {
+      "repositoryId": "repo-project-control",
+      "commit": "86500bb9f9c6114f855937300e3a3c376d2f02b4",
+      "pathOrContractId": "docs/domains/flowdoc-plan-room-orchestration-rules.md; AGENTS.md; docs/domains/flowdoc-global-codex-guidance.md; docs/domains/flowdoc-plan-work-continuation-guardrails-2026-09-03.md; tests/flowdoc-plan-work-continuation-guardrails.test.ts"
+    }
+  ]
+}

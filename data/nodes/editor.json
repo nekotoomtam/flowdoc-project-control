@@ -1,0 +1,12 @@
+{
+  "kind": "node",
+  "id": "editor",
+  "title": "Editor",
+  "parentId": "flowdoc",
+  "summary": "Editor state is not yet verified by Project Control evidence.",
+  "truthState": "unknown",
+  "order": 30,
+  "documentIds": [],
+  "evidenceIds": [],
+  "repositoryIds": ["repo-editor"]
+}

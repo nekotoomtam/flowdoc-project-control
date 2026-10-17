@@ -1,0 +1,852 @@
+import { StrictMode } from "react";
+import { render, screen, within } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
+import { describe, expect, it, vi } from "vitest";
+import type { IndexNode, IndexWork, RepositoryRecord } from "../../src/model/types.js";
+import { App } from "./App.js";
+import { DiagnosticView } from "./components/DiagnosticView.js";
+import { loadProjectState } from "./data/loadProjectState.js";
+import { makeProjectReadModel } from "./test/projectModel.js";
+
+const model = makeProjectReadModel();
+
+describe("App", () => {
+  it("shows a diagnostic instead of a partial map when the index is invalid", async () => {
+    vi.stubGlobal("fetch", vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ schemaVersion: 99 }),
+      }));
+
+    render(<App />);
+
+    expect(await screen.findByRole("heading", { name: "Project data needs attention" }))
+      .toBeVisible();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
+  });
+
+  it("reports a network failure without rendering the map", async () => {
+    vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("offline")));
+
+    render(<App />);
+
+    expect(await screen.findByText(/Could not load project data/)).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
+  });
+
+  it("prefers source diagnostics and does not fetch the retained old index", async () => {
+    const fetcher = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => ({
+        schemaVersion: 1,
+        diagnostics: [{
+          code: "NODE_CYCLE",
+          message: "cycle",
+          file: "data/nodes/a.json",
+          hint: "Break the cycle.",
+        }],
+      }),
+    });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({ kind: "diagnostic" });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it("classifies malformed received diagnostics as invalid without fetching the index", async () => {
+    const fetcher = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => {
+        throw new SyntaxError("Unexpected token");
+      },
+    });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_DIAGNOSTICS_INVALID" })],
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it("classifies an empty received diagnostics body as invalid without fetching the index", async () => {
+    const fetcher = vi.fn().mockResolvedValue({
+      ok: true,
+      status: 200,
+      json: async () => {
+        throw new SyntaxError("Unexpected end of JSON input");
+      },
+    });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_DIAGNOSTICS_INVALID" })],
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it("reports a non-404 diagnostics response as unavailable without fetching the index", async () => {
+    const fetcher = vi.fn().mockResolvedValue({ ok: false, status: 500 });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_DATA_UNAVAILABLE" })],
+    });
+    expect(fetcher).toHaveBeenCalledTimes(1);
+  });
+
+  it("loads the index after a valid empty diagnostics response", async () => {
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        status: 200,
+        json: async () => ({ schemaVersion: 1, diagnostics: [] }),
+      })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => model });
+
+    await expect(loadProjectState(fetcher)).resolves.toEqual({ kind: "ready", model });
+    expect(fetcher).toHaveBeenCalledTimes(2);
+  });
+
+  it("loads the valid index after diagnostics return 404", async () => {
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => model });
+
+    await expect(loadProjectState(fetcher)).resolves.toEqual({ kind: "ready", model });
+  });
+
+  it("loads a valid index with Work-scoped evidence that is not attached to a Node", async () => {
+    const evidenceModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [appNode("flowdoc", "FlowDoc", null, [], ["execution-task"])],
+      repositories: [appRepository("repo-project-control", "Flowdoc Project Control")],
+      work: [{
+        ...appWork("execution-task", "Execution Task", "flowdoc", "in-review", "Review scoped evidence."),
+        requiredEvidence: ["evidence-work-scoped"],
+      }],
+      evidence: [{
+        kind: "evidence",
+        id: "evidence-work-scoped",
+        nodeIds: [],
+        repositoryId: "repo-project-control",
+        commit: "bc2e1efb60c7391b2d4b0978cf7c4b1105ef7444",
+        pathOrContractId: "docs/scoped-evidence.md",
+        verificationSummary: "Work-scoped evidence supports a checklist without promoting node truth.",
+        verifiedAt: "2026-08-26T00:00:00.000Z",
+      }],
+    });
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => evidenceModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toEqual({ kind: "ready", model: evidenceModel });
+  });
+
+  it("rejects an index with duplicate node IDs", async () => {
+    const duplicateNodeModel = makeProjectReadModel({
+      nodes: [model.nodes[0]!, { ...model.nodes[0]! }],
+    });
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => duplicateNodeModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
+  it("rejects an index whose root node ID does not exist", async () => {
+    const missingRootModel = makeProjectReadModel({ rootNodeIds: ["missing"] });
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => missingRootModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
+  it("rejects an index with an incomplete node instead of rendering a partial map", async () => {
+    const incompleteNodeModel = {
+      ...model,
+      nodes: [{ id: "flowdoc" }],
+    };
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => incompleteNodeModel });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
+  it("rejects an index that omits execution read-model fields", async () => {
+    const legacyIndex = {
+      ...model,
+      phases: undefined,
+      checklists: undefined,
+      work: [
+        {
+          kind: "work",
+          id: "legacy-work",
+          title: "Legacy Work",
+          nodeId: "flowdoc",
+          repositoryIds: [],
+          workState: "queued",
+          summary: "Missing read-model execution indexes.",
+          requiredEvidence: [],
+          createdAt: "2026-08-24T00:00:00.000Z",
+          updatedAt: "2026-08-24T00:00:00.000Z",
+        },
+      ],
+    };
+    const fetcher = vi.fn()
+      .mockResolvedValueOnce({ ok: false, status: 404 })
+      .mockResolvedValueOnce({ ok: true, status: 200, json: async () => legacyIndex });
+
+    await expect(loadProjectState(fetcher)).resolves.toMatchObject({
+      kind: "diagnostic",
+      diagnostics: [expect.objectContaining({ code: "PROJECT_INDEX_INVALID" })],
+    });
+  });
+
+  it("renders the shell from a valid injected read model", () => {
+    render(<App initialModel={model} />);
+
+    expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
+    expect(screen.getByRole("searchbox", { name: "Search Nodes" })).toBeVisible();
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+    expect(screen.queryByRole("navigation", { name: "System tree" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("complementary", { name: "Control detail" })).not.toBeInTheDocument();
+  });
+
+  it("keeps closed unresolved obligations visible separately from active Work", () => {
+    const closed = makeProjectReadModel();
+    closed.currentSnapshot.unresolvedWork = [{ workId: "closed-round", title: "Closed dependency", roundState: "released" }];
+    render(<App initialModel={closed} />);
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(within(cockpit).getByText("Closed rounds with unresolved obligations (1)")).toBeVisible();
+    expect(within(cockpit).getByText("Closed dependency — released")).toBeInTheDocument();
+  });
+
+  it("renders a compact Current Truth Cockpit without a generic Done label", () => {
+    const cockpitModel = makeProjectReadModel({
+      currentSnapshot: {
+        generatedAt: "2026-09-24T01:00:00.000Z",
+        currentGoal: "Ship the workflow economy cutover.",
+        currentBlocker: null,
+        activeWork: [{
+          workId: "workflow-economy",
+          title: "Workflow Economy",
+          milestones: {
+            planning: "complete",
+            implementation: "pending",
+            verification: "not-required",
+            truthPromotion: "pending",
+          },
+        }],
+        acceptedTruth: [{ nodeId: "flowdoc", evidenceIds: ["evidence-current"] }],
+        criticalUnknowns: [],
+        deferredWork: [],
+        nextDecision: "Complete implementation.",
+        repositoryIds: ["repo-project-control"],
+        authorityDocumentIds: ["doc-current"],
+      },
+      governanceCost: {
+        approximateContextTokens: 10,
+        contextDocumentCount: 1,
+        evidenceCreated: 0,
+        durableDocumentsCreated: 0,
+        implementationCommitCount: 0,
+        reviewCycleCount: 0,
+        reopenCount: 0,
+      },
+    });
+
+    render(<App initialModel={cockpitModel} />);
+
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(cockpit).toHaveTextContent("Ship the workflow economy cutover.");
+    expect(cockpit).toHaveTextContent("PlanningComplete");
+    expect(cockpit).toHaveTextContent("ImplementationPending");
+    expect(cockpit).toHaveTextContent("VerificationNot required");
+    expect(cockpit).toHaveTextContent("Truth promotionPending");
+    expect(cockpit).not.toHaveTextContent(/\bDone\b/);
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+  });
+
+  it("keeps the root Cockpit compact when many Work records are active", () => {
+    const activeWork = ["One", "Two", "Three", "Four"].map((title, index) => ({
+      workId: `work-${index + 1}`,
+      title,
+      milestones: {
+        planning: "complete" as const,
+        implementation: "pending" as const,
+        verification: "not-required" as const,
+        truthPromotion: "pending" as const,
+      },
+    }));
+    const compactModel = makeProjectReadModel({
+      currentSnapshot: {
+        ...model.currentSnapshot,
+        currentGoal: "Keep the cockpit compact.",
+        activeWork,
+      },
+    });
+
+    render(<App initialModel={compactModel} />);
+
+    const cockpit = screen.getByRole("region", { name: "Current Truth Cockpit" });
+    expect(within(cockpit).getByText("One")).toBeVisible();
+    expect(within(cockpit).getByText("Three")).toBeVisible();
+    expect(within(cockpit).queryByText("Four")).not.toBeInTheDocument();
+    expect(within(cockpit).getByText("1 more active Work item")).toBeVisible();
+  });
+
+  it("shows task phase and checklist context without GUI editing", () => {
+    const executionModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], [
+          "project-control-hardening",
+          "work-tree-phase-checklist-sqlite-contract",
+        ]),
+      ],
+      work: [
+        {
+          ...appWork(
+            "project-control-hardening",
+            "Project Control Hardening",
+            "project-control",
+            "in-progress",
+            "Harden Project Control.",
+          ),
+          workKind: "topic",
+          childWorkIds: ["work-tree-phase-checklist-sqlite-contract"],
+          phaseIds: [],
+          workPathIds: ["project-control-hardening"],
+        },
+        {
+          ...appWork(
+            "work-tree-phase-checklist-sqlite-contract",
+            "Work Tree Contract",
+            "project-control",
+            "in-progress",
+            "Implement execution contract.",
+          ),
+          parentWorkId: "project-control-hardening",
+          workKind: "task",
+          activeRole: "planning-partner",
+          expectedOutput: "Readable execution contract.",
+          contextDocumentIds: ["doc-work-tree-operating-rules"],
+          childWorkIds: [],
+          phaseIds: ["phase-contract"],
+          workPathIds: [
+            "project-control-hardening",
+            "work-tree-phase-checklist-sqlite-contract",
+          ],
+        },
+      ],
+      phases: [{
+        kind: "phase",
+        id: "phase-contract",
+        workId: "work-tree-phase-checklist-sqlite-contract",
+        title: "Define Contract",
+        phaseState: "in-progress",
+        order: 10,
+        repositoryIds: ["project-control"],
+        activeRole: "planning-partner",
+        stopConditions: ["Contract conflict."],
+        verificationTarget: "The task has visible phase context.",
+        summary: "Define contract.",
+        createdAt: "2026-08-25T00:00:00.000Z",
+        updatedAt: "2026-08-25T00:00:00.000Z",
+      }],
+      checklists: [{
+        kind: "checklist",
+        id: "checklist-contract",
+        phaseId: "phase-contract",
+        title: "Contract Checklist",
+        items: [{
+          id: "define-contract",
+          label: "Define contract.",
+          state: "pending",
+          evidenceTarget: "Evidence target is visible.",
+        }],
+        createdAt: "2026-08-25T00:00:00.000Z",
+        updatedAt: "2026-08-25T00:00:00.000Z",
+      }],
+    });
+
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={executionModel} />);
+
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Project Control Hardening")).toBeVisible();
+    expect(within(workTree).getByText("Topic")).toBeVisible();
+    expect(within(workTree).getByText("Work Tree Contract")).toBeVisible();
+    expect(within(
+      within(workTree).getByRole("list", { name: "Project Control Hardening child work" }),
+    ).getByText("Work Tree Contract")).toBeVisible();
+    expect(within(workTree).getByText("Task")).toBeVisible();
+    expect(within(workTree).getByText("Define Contract")).toBeVisible();
+    expect(within(workTree).getByText("1 checklist item")).toBeVisible();
+    expect(within(workTree).queryByRole("button", { name: /edit/i })).not.toBeInTheDocument();
+  });
+
+  it("shows checklist evidence support risks in task phase context", () => {
+    const riskModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], ["execution-task"]),
+      ],
+      work: [{
+        ...appWork("execution-task", "Execution Task", "project-control", "in-progress", "Review execution risks."),
+        workKind: "task",
+        activeRole: "planning-partner",
+        expectedOutput: "Readable risk labels.",
+        contextDocumentIds: ["doc-work-tree-operating-rules"],
+        childWorkIds: [],
+        phaseIds: ["phase-missing-target", "phase-unsupported-pass"],
+        workPathIds: ["execution-task"],
+      }],
+      phases: [
+        {
+          kind: "phase",
+          id: "phase-missing-target",
+          workId: "execution-task",
+          title: "Missing Target",
+          phaseState: "in-review",
+          order: 10,
+          repositoryIds: ["project-control"],
+          activeRole: "planning-partner",
+          stopConditions: ["Evidence target stays blank."],
+          verificationTarget: "The phase shows a missing target risk.",
+          summary: "Review target coverage.",
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          kind: "phase",
+          id: "phase-unsupported-pass",
+          workId: "execution-task",
+          title: "Unsupported Pass",
+          phaseState: "in-review",
+          order: 20,
+          repositoryIds: ["project-control"],
+          activeRole: "planning-partner",
+          stopConditions: ["Passed item lacks support."],
+          verificationTarget: "The phase shows a passed-without-support risk.",
+          summary: "Review support coverage.",
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+      ],
+      checklists: [
+        {
+          kind: "checklist",
+          id: "checklist-missing-target",
+          phaseId: "phase-missing-target",
+          title: "Missing Target Checklist",
+          items: [{
+            id: "target",
+            label: "Record evidence target.",
+            state: "pending",
+            evidenceTarget: "",
+          }],
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          kind: "checklist",
+          id: "checklist-unsupported-pass",
+          phaseId: "phase-unsupported-pass",
+          title: "Unsupported Pass Checklist",
+          items: [{
+            id: "support",
+            label: "Support passed item.",
+            state: "passed",
+            evidenceTarget: "Evidence or a bounded verification note supports the passed item.",
+          }],
+          createdAt: "2026-08-25T00:00:00.000Z",
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={riskModel} />);
+
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Evidence target missing")).toBeVisible();
+    expect(within(workTree).getByText("Passed item lacks support")).toBeVisible();
+  });
+
+  it("routes node search selections through the shared control room navigation", async () => {
+    const user = userEvent.setup();
+    const routeModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], []),
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={routeModel} />);
+
+    await user.type(screen.getByRole("searchbox", { name: "Search Nodes" }), "project con");
+    await user.click(screen.getByRole("option", { name: "Project Control" }));
+
+    expect(window.location.search).toBe("?node=project-control");
+    expect(screen.getByRole("button", { name: /Project Control, selected branch/ })).toBeVisible();
+  });
+
+  it("starts at a repo directory overview before showing branch work detail", async () => {
+    const user = userEvent.setup();
+    const flowdocNode = appNode("flowdoc", "FlowDoc", null, ["core", "editor"], []);
+    const coreNode = {
+      ...appNode("core", "Core", "flowdoc", [], ["core-docs"]),
+      repositoryIds: ["repo-core"],
+    };
+    const editorNode = {
+      ...appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]),
+      repositoryIds: ["repo-editor"],
+    };
+    const controlModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [flowdocNode, coreNode, editorNode],
+      work: [
+        {
+          ...appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
+          repositoryIds: ["repo-core"],
+        },
+        {
+          ...appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+          repositoryIds: ["repo-editor"],
+        },
+      ],
+      repositories: [
+        appRepository("repo-core", "Flowdoc VNext Core"),
+        appRepository("repo-editor", "Flowdoc VNext Editor"),
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={controlModel} />);
+
+    expect(screen.getByRole("heading", { name: "FlowDoc control room" })).toBeVisible();
+    const status = screen.getByRole("region", { name: "Overall work status" });
+    expect(status).toHaveTextContent("Blocked1");
+    expect(status).toHaveTextContent("In progress1");
+
+    const overview = screen.getByRole("region", { name: "Repo Directory Overview" });
+    expect(within(overview).getByRole("button", { name: "Core overview" })).toBeVisible();
+    expect(within(overview).getByRole("button", { name: "Editor overview" })).toBeVisible();
+    expect(within(overview).getByText("Flowdoc VNext Core")).toBeVisible();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+    expect(screen.queryByText("Core Documentation Closure")).not.toBeInTheDocument();
+    expect(screen.queryByText("Editor Polish")).not.toBeInTheDocument();
+
+    await user.click(within(overview).getByRole("button", { name: "Core overview" }));
+
+    expect(window.location.search).toBe("?node=core");
+    const workTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(workTree).getByText("Core Documentation Closure")).toBeVisible();
+    const coreChecklist = within(workTree).getByRole("list", { name: "Core Documentation Closure checklist" });
+    expect(within(coreChecklist).getAllByText("Ready")).toHaveLength(2);
+    expect(within(coreChecklist).getAllByText("Review")).toHaveLength(1);
+    expect(within(coreChecklist).getByText("Flowdoc VNext Core")).toBeVisible();
+    expect(within(coreChecklist).getByText("Evidence requirement needed")).toBeVisible();
+    expect(within(coreChecklist).queryByText("OK")).not.toBeInTheDocument();
+    expect(within(coreChecklist).queryByText("!")).not.toBeInTheDocument();
+    expect(within(workTree).queryByText("Editor Polish")).not.toBeInTheDocument();
+  });
+
+  it("shows work history separately and returns entries to the focused overview", async () => {
+    const user = userEvent.setup();
+    const historyModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["core", "editor"], []),
+        {
+          ...appNode("core", "Core", "flowdoc", [], ["core-docs"]),
+          repositoryIds: ["repo-core"],
+        },
+        {
+          ...appNode("editor", "Editor", "flowdoc", [], ["editor-polish"]),
+          repositoryIds: ["repo-editor"],
+        },
+      ],
+      repositories: [
+        appRepository("repo-core", "Flowdoc VNext Core"),
+        appRepository("repo-editor", "Flowdoc VNext Editor"),
+      ],
+      work: [
+        {
+          ...appWork("core-docs", "Core Documentation Closure", "core", "blocked", "Core docs need final evidence."),
+          repositoryIds: ["repo-core"],
+          requiredEvidence: ["evidence-core-docs"],
+          updatedAt: "2026-08-25T00:00:00.000Z",
+        },
+        {
+          ...appWork("editor-polish", "Editor Polish", "editor", "in-progress", "Editor shell is being refined."),
+          repositoryIds: ["repo-editor"],
+          updatedAt: "2026-08-27T00:00:00.000Z",
+        },
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=flowdoc");
+    render(<App initialModel={historyModel} />);
+
+    await user.click(screen.getByRole("button", { name: "Work History" }));
+
+    const historyView = screen.getByRole("region", { name: "Work History View" });
+    const historyItems = within(historyView).getAllByRole("listitem");
+    expect(historyItems).toHaveLength(2);
+    expect(historyItems[0]).toHaveTextContent("Editor Polish");
+    expect(historyItems[0]).toHaveTextContent("Editor");
+    expect(historyItems[0]).toHaveTextContent("Flowdoc VNext Editor");
+    expect(historyItems[1]).toHaveTextContent("Core Documentation Closure");
+    expect(historyItems[1]).toHaveTextContent("Core");
+    expect(historyItems[1]).toHaveTextContent("Flowdoc VNext Core");
+    expect(within(historyView).queryByText("Evidence requirement needed")).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work tree" })).not.toBeInTheDocument();
+
+    await user.click(within(historyView).getByRole("button", { name: "Focus Core in Overview" }));
+
+    expect(within(screen.getByRole("complementary", { name: "Control detail" })).getByRole("heading", { name: "Core" }))
+      .toBeVisible();
+    expect(window.location.search).toBe("?node=core");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: "Work History View" })).not.toBeInTheDocument();
+    const filteredWorkTree = screen.getByRole("region", { name: "Work tree" });
+    expect(within(filteredWorkTree).getByText("Core Documentation Closure")).toBeVisible();
+    expect(within(filteredWorkTree).queryByText("Editor Polish")).not.toBeInTheDocument();
+  });
+
+  it("summarizes multiple linked repositories in work cards without repeating every repository name", () => {
+    const repositoryModel = makeProjectReadModel({
+      rootNodeIds: ["flowdoc"],
+      nodes: [
+        appNode("flowdoc", "FlowDoc", null, ["project-control"], []),
+        appNode("project-control", "Project Control", "flowdoc", [], ["multi-repo-work"]),
+      ],
+      work: [{
+        ...appWork("multi-repo-work", "Multi Repo Work", "project-control", "queued", "Coordinate the repo set."),
+        repositoryIds: ["project-control", "core", "editor"],
+      }],
+      repositories: [
+        appRepository("project-control", "Flowdoc Project Control"),
+        appRepository("core", "Flowdoc VNext Core"),
+        appRepository("editor", "Flowdoc VNext Editor"),
+      ],
+    });
+
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={repositoryModel} />);
+
+    const checklist = screen.getByRole("list", { name: "Multi Repo Work checklist" });
+    expect(within(checklist).getByText("3 repositories linked")).toBeVisible();
+    expect(within(checklist).queryByText(/Flowdoc Project Control/)).not.toBeInTheDocument();
+    expect(within(checklist).queryByText(/Flowdoc VNext Core/)).not.toBeInTheDocument();
+    expect(within(checklist).queryByText(/Flowdoc VNext Editor/)).not.toBeInTheDocument();
+  });
+
+  it("opens details without changing the selected node and restores focus on close", async () => {
+    const user = userEvent.setup();
+    const detailModel = makeProjectReadModel({
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+      rootNodeIds: ["flowdoc"],
+    });
+    history.replaceState(null, "", "/?node=project-control");
+    render(<App initialModel={detailModel} />);
+
+    const trigger = screen.getByRole("button", { name: "View all" });
+    await user.click(trigger);
+    expect(screen.getByRole("dialog", { name: "Project Control details" })).toBeVisible();
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
+    expect(window.location.search).toBe("?node=project-control");
+  });
+
+  it("falls back honestly from an unknown URL and follows popstate", async () => {
+    const routeModel = makeProjectReadModel({
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    render(<App initialModel={routeModel} />);
+
+    expect(screen.getByText(/Node “missing” was not found/)).toBeVisible();
+    expect(screen.getByRole("region", { name: "Repo Directory Overview" })).toBeVisible();
+
+    history.pushState(null, "", "/?node=project-control");
+    dispatchEvent(new PopStateEvent("popstate"));
+
+    expect(await screen.findByRole("button", { name: /Project Control, selected branch/ })).toBeVisible();
+  });
+
+  it("replaces an invalid deep-link with the canonical root URL while retaining the diagnostic", async () => {
+    history.replaceState(null, "", "/?node=missing");
+    const replaceState = vi.spyOn(history, "replaceState");
+    render(<App initialModel={model} />);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    expect(replaceState).toHaveBeenCalledWith(
+      expect.objectContaining({
+        flowdocRouteDiagnostic: expect.objectContaining({ nodeId: "flowdoc" }),
+      }),
+      "",
+      "?node=flowdoc",
+    );
+    expect(window.location.search).toBe("?node=flowdoc");
+  });
+
+  it("retains an invalid-route diagnostic through StrictMode canonical replacement", async () => {
+    history.replaceState(null, "", "/?node=missing");
+    render(<StrictMode><App initialModel={model} /></StrictMode>);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    expect(window.location.search).toBe("?node=flowdoc");
+  });
+
+  it("reports no usable root when the declared fallback root has an invalid ancestry", async () => {
+    const unusableRootModel = makeProjectReadModel({
+      nodes: [{ ...model.nodes[0]!, parentId: "missing-parent" }],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    render(<App initialModel={unusableRootModel} />);
+
+    expect(await screen.findByText("The project map has no usable root node.")).toBeVisible();
+    expect(screen.queryByRole("heading", { name: "FlowDoc control room" })).not.toBeInTheDocument();
+  });
+
+  it("pushes user navigation into history without pushing browser history changes again", async () => {
+    const routeModel = makeProjectReadModel({
+      nodes: [
+        { ...model.nodes[0]!, childIds: ["project-control"] },
+        {
+          ...model.nodes[0]!,
+          id: "project-control",
+          title: "Project Control",
+          parentId: "flowdoc",
+          childIds: [],
+        },
+      ],
+    });
+    history.replaceState(null, "", "/?node=missing");
+    const pushState = vi.spyOn(history, "pushState");
+    const user = (await import("@testing-library/user-event")).userEvent.setup();
+    render(<App initialModel={routeModel} />);
+
+    expect(await screen.findByText(/Node “missing” was not found/)).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Project Control overview" }));
+    expect(pushState).toHaveBeenCalledWith(null, "", "?node=project-control");
+    expect(screen.queryByText(/Node “missing” was not found/)).not.toBeInTheDocument();
+
+    pushState.mockClear();
+    history.pushState(null, "", "/?node=flowdoc");
+    pushState.mockClear();
+    dispatchEvent(new PopStateEvent("popstate"));
+    expect(pushState).not.toHaveBeenCalled();
+  });
+
+  it("keeps the generate and data-check command visible for source diagnostics", () => {
+    render(<DiagnosticView diagnostics={[{
+      code: "NODE_CYCLE",
+      message: "cycle",
+      file: "data/nodes/a.json",
+      recordId: "node-a",
+      hint: "Break the cycle.",
+    }]} />);
+
+    expect(screen.getByText("Run npm run generate, then npm run check:data.")).toBeVisible();
+  });
+});
+
+function appNode(
+  id: string,
+  title: string,
+  parentId: string | null,
+  childIds: string[],
+  workIds: string[],
+): IndexNode {
+  return {
+    kind: "node",
+    id,
+    title,
+    parentId,
+    summary: `${title} summary.`,
+    truthState: id === "flowdoc" ? "planned" : "current",
+    order: id === "flowdoc" ? 0 : id === "core" ? 1 : 2,
+    documentIds: [],
+    evidenceIds: [],
+    repositoryIds: [],
+    childIds,
+    workIds,
+  };
+}
+
+function appWork(
+  id: string,
+  title: string,
+  nodeId: string,
+  workState: IndexWork["workState"],
+  summary: string,
+): IndexWork {
+  return {
+    kind: "work",
+    id,
+    title,
+    nodeId,
+    repositoryIds: [],
+    workState,
+    summary,
+    requiredEvidence: [],
+    createdAt: "2026-08-24T00:00:00.000Z",
+    updatedAt: "2026-08-24T00:00:00.000Z",
+    childWorkIds: [],
+    phaseIds: [],
+    workPathIds: [id],
+  };
+}
+
+function appRepository(id: string, name: string): RepositoryRecord {
+  return {
+    kind: "repository",
+    id,
+    name,
+    remote: `https://example.test/${id}.git`,
+    checkoutAlias: id,
+    defaultBranch: "main",
+    ownershipSummary: `${name} owner.`,
+  };
+}

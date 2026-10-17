@@ -1,0 +1,58 @@
+{
+  "status": "TARGET_CONVERSION_EXAMPLE_ONLY",
+  "old": {
+    "nodeModelVersion": 18,
+    "sectionDefinition": {
+      "id": "old-section",
+      "key": "body"
+    },
+    "request": {
+      "docKey": "legacy-sample",
+      "data": {},
+      "sections": {
+        "body": {
+          "data": {
+            "projectName": "A"
+          },
+          "header": {},
+          "footer": {}
+        }
+      }
+    }
+  },
+  "conversionReceipt": {
+    "oldTemplateId": "10000000-0000-4000-8000-000000000700",
+    "oldRevision": 3,
+    "newTemplateId": "10000000-0000-4000-8000-000000000701",
+    "newNodeModelVersion": 19,
+    "sectionMap": [
+      {
+        "oldDefinitionId": "old-section",
+        "oldKey": "body",
+        "newSectionId": "10000000-0000-4000-8000-000000000702",
+        "label": "Legacy sample1"
+      }
+    ],
+    "sourceUnchanged": true,
+    "publishedHistoryUnchanged": true
+  },
+  "newRequest": {
+    "docKey": "converted-sample",
+    "data": {},
+    "sections": [
+      {
+        "id": "10000000-0000-4000-8000-000000000702",
+        "data": {
+          "projectName": "A"
+        },
+        "header": {},
+        "footer": {}
+      }
+    ]
+  },
+  "limits": [
+    "This example omits full definitions; it illustrates the explicit mapping only",
+    "Conversion preserves old section count/order; seven SRS parts are not silently consolidated",
+    "New IDs are allocated by conversion; callers never infer them from names"
+  ]
+}

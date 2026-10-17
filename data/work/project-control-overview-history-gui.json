@@ -1,0 +1,31 @@
+{
+  "kind": "work",
+  "id": "project-control-overview-history-gui",
+  "title": "Project Control Overview and History GUI",
+  "nodeId": "project-control",
+  "parentWorkId": "flowdoc-product-development-resumption",
+  "workKind": "task",
+  "repositoryIds": ["repo-project-control"],
+  "workState": "in-review",
+  "summary": "Implement the repo-first Project Control GUI entry surface and separate Work History surface so users can orient by repository or area before opening detailed records.",
+  "contextDocumentIds": [
+    "doc-project-control-agent-onboarding",
+    "doc-flowdoc-system-map",
+    "doc-document-map-operating-rules",
+    "doc-flowdoc-round-workflow",
+    "doc-flowdoc-role-catalog",
+    "doc-work-tree-operating-rules",
+    "doc-flowdoc-product-terminology",
+    "doc-flowdoc-product-terminology-th",
+    "doc-project-control-repo-first-overview-history-2026-08-28",
+    "doc-agent-skill-operating-model",
+    "doc-flowdoc-global-codex-guidance",
+    "doc-project-control-overview-history-gui-2026-08-29"
+  ],
+  "activeRole": "product-implementation-agent",
+  "expectedOutput": "Project Control commit 97e9d234d2bb1e2d294463a395604d5f0ec75348 adds a Home Repo Directory Overview, a separate Work History View, and focused repository or area navigation while preserving Detail behind selection. Target evidence id: evidence-project-control-overview-history-gui-2026-08-29.",
+  "riskSummary": "History list still renders all Work records and may need grouping, pagination, or virtualization after record volume grows. The focused repository or area view still uses the existing branch-detail layout and is not the final frontend redesign.",
+  "requiredEvidence": ["evidence-project-control-overview-history-gui-2026-08-29"],
+  "createdAt": "2026-08-29T00:00:00.000Z",
+  "updatedAt": "2026-08-29T04:53:09.000Z"
+}

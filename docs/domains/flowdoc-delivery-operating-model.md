@@ -1,0 +1,411 @@
+# FlowDoc Delivery Operating Model
+
+## Authority Boundary
+
+This document defines the long-term delivery operating model for FlowDoc
+planning, real multi-room execution, lane handoff, evidence registration, and
+cross-repository coordination.
+
+It is owned by Project Control under
+`flowdoc-product-development-resumption > agent-and-skill-design`.
+
+This is a Project Control coordination contract. It does not prove Core,
+Backend, Editor, API, product database, PDF generation, compatibility, release
+readiness, frontend readiness, FlowDoc product truth, or map truth.
+
+Project Control owns shared FlowDoc understanding. Product repositories own
+product behavior, tests, runtime contracts, local setup, and implementation
+evidence.
+
+## Work Context
+
+- Work path: `flowdoc-product-development-resumption > agent-and-skill-design`
+- Owner repository: `repo-project-control`
+- Active role: `project-control-steward`, with `planning-partner` and
+  `documentation-authority-steward` responsibilities for the prose
+- Current Phase: `phase-agent-and-skill-design-delivery-operating-model`
+- Checklist target: `checklist-agent-and-skill-design-delivery-operating-model`
+- Evidence target: focused Project Control guard for this document, generated
+  Project Control read model, and full Project Control gate
+- Known risks: future rooms may treat conversation memory as enough context,
+  WORK rooms may redefine shared scope, product-repository Markdown may become
+  duplicate authority, and generated SQLite may be mistaken for canonical truth
+- Unknown state: this document does not inspect current Core, Backend, or Editor
+  implementation readiness for the first delivery slice
+
+## Collaboration Identity
+
+- User name: `ตูม`.
+- Assistant name: `โค`.
+- FlowDoc rooms should address the user as `ตูม`.
+- FlowDoc assistant rooms may refer to themselves as `โค`.
+- This identity rule is collaboration context, not product evidence.
+
+## Agent Shared Understanding
+
+This document is not private context for one PLAN room. It is a shared
+operating contract for future Codex rooms, WORK rooms, agents, and reviewers
+participating in FlowDoc.
+
+Every FlowDoc room must understand:
+
+- Project Control is the shared source of truth.
+- PLAN rooms define round intent, lane boundaries, owner repositories, and
+  evidence targets.
+- WORK rooms execute one approved lane only.
+- WORK rooms do not redefine delivery scope, role authority, source-of-truth
+  rules, or cross-repository contracts.
+- If a room finds unclear ownership, missing evidence, or contract conflict, it
+  reports `RISK`, `UNKNOWN`, `BLOCKED`, or a `Contract Change Request` back to
+  the PLAN room.
+
+## Room Mode Model
+
+FlowDoc uses two room modes.
+
+`PLAN` room coordinates work. It defines delivery rounds, splits lanes, prepares
+Kickoff Packets, reviews handoffs, resolves conflicts, and decides what can be
+promoted into Project Control.
+
+`WORK` room executes one lane. It reads the Kickoff Packet, works only inside
+the allowed scope, produces evidence, and returns a structured handoff.
+
+A real opened room means a separate Codex task/chat visible to `ตูม`. It is not
+the same thing as an internal subagent.
+
+## Delivery Round Model
+
+A delivery round is a bounded push toward a usable FlowDoc outcome.
+
+Each round should define:
+
+- Round ID
+- Goal
+- Lanes
+- Owner repository per lane
+- Allowed scope
+- Forbidden scope
+- Evidence targets
+- Stop conditions
+- Handoff requirements
+
+Round planning records intent. It must not be promoted as product truth until
+supported by repository-owned evidence.
+
+## New PLAN Round Isolation
+
+One PLAN task owns exactly one execution round. New PLAN task means a new
+delivery round and a fresh execution context. A new PLAN creates a new Work
+execution record and version 2 registry with fresh round, dispatch-set,
+room-run, handoff, WORK-task, worktree-or-branch, and Return-Channel identities.
+Version 1 coordination is historical and read-only. Cross-PLAN ownership
+transfer is not supported. The current PLAN must not send, wait, revise,
+resume, or hand off through an older PLAN or WORK task. Missing history is
+recovered through separate read-only Historical Recovery Work; it never
+reactivates the inspected PLAN or WORK task.
+
+The same WORK room is reusable only while the same PLAN task and delivery round
+remain active. A correction started from a new PLAN task is a new lane attempt
+with a new WORK task and execution context, not a continuation of the old
+Revision Packet loop. Prior accepted commits, Evidence, and Project Control
+records may be referenced only as immutable input. Older conversations,
+registries, liveness state, handoff IDs, Return Channels, dirty worktrees, and
+unmerged branches remain historical until separately reconciled.
+
+An older task may be inspected only for an explicit audit or evidence-recovery
+request and never regains execution authority. A stale PLAN ID, monitor owner,
+Return Channel, WORK locator, or round ID is a pre-dispatch stop condition.
+
+## PLAN Room Orchestration
+
+Use `docs/domains/flowdoc-plan-room-orchestration-rules.md` whenever a PLAN
+room may open or coordinate more than one real WORK room.
+
+The PLAN Room Orchestration Rules define how the PLAN room chooses
+`N WORK rooms`, records `parallelLimit`, builds `laneDependencyGraph`, creates
+a dispatch set, tracks Room Run Registry entries, requires automatic
+WORK-to-PLAN return, uses manual recovery fallback for missed returns, stages
+returned work in `handoffInbox`, processes `completionQueue` with
+`returnOrderPolicy` and `arrivalSequence`, and runs `acceptanceGate` before
+accepting lane output or opening dependent lanes.
+
+Those rules extend this Delivery Operating Model. They do not open WORK rooms
+by themselves and do not prove product behavior or map truth.
+
+Use the Work Type Routing Model at
+`docs/domains/flowdoc-work-type-routing-model.md` before assigning Work Type to
+lane cards, writing a lane Context Capsule, requiring Context Acknowledgement,
+choosing reusable skill candidates, or accepting a returned handoff by Work
+Type. Work Type routing extends the Delivery Operating Model without creating
+packaged Codex skills or product evidence by itself.
+
+Use the Lean Dispatch Operating Rules at
+`docs/domains/flowdoc-lean-dispatch-operating-rules.md` before a PLAN room
+marks a dispatch set or Kickoff Packet as Lean Dispatch, sets Resource Budget
+fields, uses Reference Packs, chooses compact handoff detail, batches evidence,
+or lowers verification/review scope for a lane. Lean Dispatch extends this
+delivery model as a budget profile, not a weaker orchestration mode. It must
+not remove automatic return, liveness, retrievable locator, or acceptanceGate.
+
+## Automatic WORK-to-PLAN Return Rule
+
+Automatic WORK-to-PLAN return is mandatory for real WORK rooms. A WORK room is
+not considered delivery-orchestration-ready unless its Kickoff Packet names a
+direct Return Channel that can deliver the terminal handoff back to the PLAN
+room or a PLAN-owned monitor without requiring `ตูม` to copy/paste Terminal
+Handoffs. It must not require `ตูม` to copy/paste Terminal Handoffs.
+
+Automatic return means an active WORK-to-PLAN return push, not only a final
+answer inside the WORK room. A Kickoff Packet must give the WORK room the PLAN
+task/chat ID, Return Event ID or handoff ID, and Active Return Command; when
+Codex thread tools expose `send_message_to_thread`, the WORK room uses that
+command to send the Terminal Handoff to PLAN before or with its local final
+answer. `clientThreadId` alone is not a monitorable retrievable locator; until
+PLAN resolves a real task/chat ID or other monitorable locator, the room run
+remains queued or `needs-attention` and PLAN must not open a scalable
+multi-WORK dispatch set from it. If PLAN later recovers the result by task,
+thread, session, worktree, branch, or handoff location, record
+`return-channel-failed-then-recovered` or `manual-recovered`; that recovery
+does not satisfy automatic return.
+
+A dispatch set is not accepted as scalable until every active WORK room has a
+direct Return Channel, a retrievable locator, a liveness signal, and a death
+signal. PLAN may use a manual recovery fallback only after the Return Channel
+misses its deadline or fails. Manual recovery can preserve product work by
+pulling the task, thread, worktree, branch, commit, or handoff locator, but it
+must be recorded as `manual-recovered` or `return-channel-failed` and does not
+satisfy automatic return.
+
+PLAN must be able to hold multiple active WORK rooms at once when
+`parallelLimit` is greater than 1. When multiple active WORK rooms return close
+together, PLAN records every terminal return in `completionQueue`, assigns an
+`arrivalSequence`, applies the dispatch set's `returnOrderPolicy`, deduplicates
+any duplicate handoff by handoff ID or room run ID, and processes one queued
+handoff at a time through `acceptanceGate`.
+
+## First Delivery Slice
+
+The first delivery slice is:
+
+```text
+Structure creation -> API/key exposure -> data input -> PDF output
+```
+
+The target outcome is:
+
+- A user can create or define a real document structure.
+- That structure can be exposed through an API-facing surface.
+- The system can provide the API key and required input-data shape.
+- A caller can submit the required data.
+- The system can produce a PDF document from that structure and data.
+
+This first slice is not the definition of the whole operating model. It is the
+first use of the operating model.
+
+## Gateway Boundary
+
+The gateway lane must define the delivery API surface before product
+implementation starts:
+
+- Authentication or API key behavior.
+- Endpoint shape.
+- Required request body.
+- Validation and error shape.
+- Job or synchronous response behavior.
+- PDF download or artifact retrieval behavior.
+
+This document does not prove that any gateway behavior exists.
+
+## Product Database Boundary
+
+The product database is separate from Project Control SQLite.
+
+The first delivery slice may need product database records for:
+
+- Published structure reference.
+- API key hash or credential reference.
+- Required input schema.
+- Generation job status.
+- PDF artifact pointer.
+- Minimal audit metadata.
+
+Project Control JSON and Markdown remain canonical for Project Control truth.
+generated SQLite is only a local projection for lookup and reference.
+
+## Project Control Reference ID Contract
+
+FlowDoc rooms should coordinate with stable IDs:
+
+- `roundId`
+- `laneId`
+- `workId`
+- `phaseId`
+- `checklistId`
+- `evidenceTargetId`
+- `documentId`
+- `ownerRepoId`
+- `handoffId`
+- `prSummaryDraftId`
+
+These IDs let PLAN and WORK rooms refer to the same object without rewriting
+shared meaning.
+
+## Lane Card Template
+
+Each lane should define:
+
+- Lane ID
+- Work Type
+- Goal
+- Owner repository
+- Active role
+- Allowed scope
+- Forbidden scope
+- Inputs
+- Context Capsule
+- Expected output
+- Evidence target
+- Stop condition
+- Handoff format
+- PLAN task/chat ID or PLAN-owned monitor locator
+- Active Return Command
+- Return Event ID or handoff ID
+
+## WORK Room Kickoff Rule
+
+A WORK room must receive a Kickoff Packet before it starts.
+
+The Kickoff Packet must include:
+
+- Room Mode: `WORK`
+- Lane ID
+- Work Type
+- Source of truth
+- Owner repository
+- Allowed scope
+- Forbidden scope
+- Required reading
+- Context Capsule
+- Expected Context Acknowledgement
+- Expected output
+- Evidence target
+- Stop condition
+- Handoff format
+
+A WORK room prompt must not say only "build FlowDoc" or "build the MVP". It
+must assign one bounded lane.
+
+## First Delivery Slice Lane Draft
+
+The first delivery slice should be split into candidate lanes before any WORK
+room is opened. This section is a planning draft, not execution authority.
+
+- Project Control delivery round lane: records the round, lane cards, kickoff
+  packets, checklist targets, and evidence targets in Project Control.
+- Editor structure lane: inspects and implements only the Editor-owned path for
+  creating or publishing the document structure required by the slice.
+- Backend gateway and product database lane: inspects and implements only the
+  Backend-owned API key, endpoint, persistence, job, and artifact boundary.
+- Core document and PDF boundary lane: inspects and implements only the
+  Core-owned document semantics and any Core contract needed by PDF generation.
+- Integration evidence lane: runs the narrow cross-repository proof after the
+  owner lanes return handoffs.
+
+Each lane becomes executable only after the PLAN room creates a specific Lane
+Card and Kickoff Packet.
+
+The first concrete Project Control round plan for this slice is
+`docs/domains/flowdoc-first-delivery-round-plan.md`. That plan is dispatch
+coordination only; it does not prove product behavior or open WORK rooms by
+itself.
+
+## Handoff Rule
+
+Each WORK room returns:
+
+- PASS / FAIL / BLOCKER / RISK / UNKNOWN
+- Lane ID
+- Work Type
+- Context Acknowledgement result
+- Work ID / Phase ID / Checklist item IDs, if assigned
+- Files changed
+- Behavior changed
+- Tests run
+- Evidence produced
+- Claims not promoted
+- Open risks
+- PR Summary Draft
+
+The PR Summary Draft is handoff material. It is not a separate source of
+product truth.
+
+## PLAN-owned reporting
+
+Product WORK rooms return evidence candidate handoffs and must not
+self-promote Project Control truth, map truth, accepted lane status, or round
+status. PLAN receives returned handoffs through the mandatory automatic Return
+Channel, stages them in `handoffInbox`, runs `acceptanceGate`, and writes
+Project Control records itself or delegates that reporting after acceptance.
+PLAN may pull by retrievable locator only to recover or classify a failed or
+missed Return Channel; that manual recovery fallback does not satisfy
+automatic return and must not require `ตูม` to copy/paste Terminal Handoffs for
+ordinary progress.
+
+If accepted work needs Project Control record writing, PLAN may use a Project
+Control records lane. If returned work is incomplete but still inside the
+original lane, PLAN marks it `needs-revision` and sends a Revision Packet back
+to the same WORK room only while the same PLAN task and delivery round remain
+active and the original retrievable locator remains usable. The same WORK room
+may repair only the original lane in that round. A new PLAN task creates a new
+round and fresh WORK context even for repair. If repair needs a
+different owner, source-of-truth rule, evidence target, or cross-repository
+contract, the WORK room returns a Contract Change Request.
+
+PLAN must not patch Core, Backend, or Editor product repositories after
+dispatch. If acceptance review, merge, or main-gate verification reveals a
+product-repository problem, even a test-only, fixture-only, or
+configuration-only repair, PLAN may diagnose and attach failure evidence but
+must not commit a product repository repair directly. The
+product-repository repair goes back to the same WORK room as a Revision Packet
+only while the same PLAN task and delivery round remain active and the original
+retrievable locator remains usable. A new PLAN task creates a new repair lane
+and WORK context. PLAN-owned
+exceptions are merge, verification, Project Control records, and cleanup that
+do not change product repository files or product behavior.
+
+## Contract Change Request
+
+A WORK room must stop and send a Contract Change Request when it needs to
+change:
+
+- Delivery scope
+- Gateway behavior
+- Product database boundary
+- Cross-repository contract
+- Source-of-truth rule
+- Role responsibility
+- Evidence requirement
+
+The PLAN room decides whether to accept, revise, split, or reject the change.
+
+## Stop Conditions
+
+Stop and return to the PLAN room when:
+
+- Owner repository is unclear.
+- Evidence target is missing.
+- Work path, Phase, or Checklist target cannot be resolved before edits.
+- A lane needs another lane's contract to change.
+- Product behavior claim lacks repository-owned evidence.
+- A room would need to write FlowDoc-wide truth into a product repository.
+
+
+## Coordination control gate
+
+Before new dispatch, return acceptance, UX acceptance,
+model selection or cleanup, apply [FlowDoc coordination controls](flowdoc-coordination-controls.md).
+That contract owns exclusive PLAN/integration authority, round and attempt
+checks, sent/received/accepted receipts, typed durable registry, UX criteria,
+current-round cleanup authority and per-WORK model/effort rationale. PLAN may
+retain GPT-6; each WORK needs an explicit task-based selection. Legacy records
+do not gain validated status automatically.

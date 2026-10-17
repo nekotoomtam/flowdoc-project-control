@@ -1,0 +1,12 @@
+{
+  "kind": "work",
+  "id": "core-remaining-documentation-synthesis",
+  "title": "Remaining Core Documentation Synthesis",
+  "nodeId": "core",
+  "repositoryIds": ["repo-core", "repo-project-control"],
+  "workState": "queued",
+  "summary": "Synthesize the remaining 293 Core source documents by identifying overview groups before producing bounded subject documents.",
+  "requiredEvidence": [],
+  "createdAt": "2026-08-24T00:00:00.000Z",
+  "updatedAt": "2026-08-24T00:00:00.000Z"
+}

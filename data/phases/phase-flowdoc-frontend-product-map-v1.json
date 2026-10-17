@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-flowdoc-frontend-product-map-v1",
+  "workId": "flowdoc-frontend-product-map",
+  "title": "Frontend Product Map v1",
+  "phaseState": "done",
+  "order": 10,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "planning-partner",
+  "stopConditions": [
+    "Project Control cannot identify the Work path, owner repository, active role, Checklist target, Evidence target, risks, or unknown state.",
+    "The product map would require Core, Backend, or Editor product repository edits.",
+    "The product map would claim frontend readiness, WYSIWYG readiness, publish readiness, production readiness, compatibility, FlowDoc product truth, or map truth from planning alone.",
+    "The next Editor implementation lane would need product implementation, a different owner, map-truth changes, WYSIWYG acceptance, publish/Backend/Core behavior decisions, or broader evidence than this lane owns.",
+    "The room cannot send its terminal handoff automatically to PLAN."
+  ],
+  "verificationTarget": "Project Control records Frontend Product Map v1 as a Library, Design, Preview, Publish, document detail, shared-state, screen and action map with a lane-ready package for lane-design-workspace-usability and no product truth promotion.",
+  "summary": "Done: Project Control now records a bounded Frontend Product Map v1 that expands the roadmap into screen states, actions, truth boundaries, and the next Editor lane package before product implementation begins.",
+  "createdAt": "2026-09-03T10:00:00.000Z",
+  "updatedAt": "2026-09-03T10:00:00.000Z"
+}

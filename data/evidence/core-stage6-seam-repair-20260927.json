@@ -1,0 +1,42 @@
+{
+  "kind": "evidence",
+  "id": "evidence-core-stage6-seam-repair-20260927",
+  "nodeIds": [],
+  "repositoryId": "repo-core",
+  "commit": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+  "pathOrContractId": "core-private-stage6-tail-seam-repair/1",
+  "verificationSummary": "Private bounded opposite-script tail certificate resolves exact retained prepared-first-thai-256-append with independent cold equality and19/5/10 source/property/provider work. This is repair acceptance only; Stage6/Gate2 and UX are not admitted. At 8997f4c14b1a5a2487ea990c5c6f35bd4da54aff, full old run<=32 UTF16 and inserted opposite alphabet<=8 UTF16, pure ASCII letters/Thai consonants U+0E01..U+0E2E, require paragraph start or actual opposite-class outer neighbor. Existing ICU2.2 dictionary input stops at non-SA; old/new full bounded provider facts plus combined segmentation certify retained outside facts and new seam. Authored source/default/origin semantics, authentic atomic receipt/revision,92 additive accepted/attempt/family slots and persistent prefix sharing preserved. No whole-paragraph fallback or guessed style/run fence. PLAN-owned independent inline code/accounting review, followed by actual-WASM retained preflight reproduction and109 focused Stage4/5/harness tests (one artifact-only test then separately enabled:3/3 passed including source hashes/tamper controls). WORK native79 tests and Core npm run check440 files/3025 tests pass,1 artifact-only skip; separate artifact3/3 pass; default WASM17 exports excludes private Stage3/4/5. Review corrected overwritten payload counters, unmetered boundary comparisons, cancellation ordering and cumulative pre-read budget before terminal commit. Existing policy limits fallback resources to2; admitted32+8 bound estimates source<=207/property<=58/provider<=200. Current19-file actual Git manifest and clean exact terminal are independently checked by Scope Lock acceptance. Applicability:90 static first-request shapes and18 size256 diagnostic probes;2 Accepted (Thai append and mixed backspace),16 NotAdmissible ({\"Accepted\":2,\"uncertified-seam\":4,\"budget-exhaustion\":6,\"unsupported-command-shape\":3,\"uncertified-boundary\":3}), all18 independent cold Equal to their actual edited/unchanged source. No blanket corpus support: Thai/Latin backspace, interior/long-window/script/mark transitions and true no-op still have recorded rejections. composition-update is a committed replacement; composition-commit is [n,n)+empty and returns unsupported-command-shape; active composition stays composition-active. Required next decisions: explicit no-op receipt/revision semantics, source-backed certificates for remaining required rows, and lifecycle mapping for recovery/eviction/host cancellation. Missing-anchor rejection is not recovery; disposal is not eviction; injected cancellation is not a host cancellation contract. Recommend a separately scoped prerequisite/contract decision, then unchanged measurement; do not lower corpus or caps. All11271 final obligations remain unexecuted:825 preparation,4950 prepared-first,4950 sustained,180 burst,6 adversarial,360 cold; p95<=8ms/max<=16.7ms/scaling<=1.50 remain. No geometry/renderer/Editor/Backend/public/production/map admission; owner unchanged view/edit appearance, positions and line division including transient frames remains mandatory downstream. Old unmerged b48f194 lane/raw remain immutable; five-file harness reviewed byte-equivalent at fresh c8c3320 provenance before repair. Raw root C:/Users/nekot/.codex/visualizations/2026/09/26/01a0df93-c2e2-71f1-b879-92ee62ec8e6b; SHA256 {\"seam-repair-red.json\":\"87ceff8412ae719a6a07ac4790d69ad21a2957f431f7abdd17d24d1d53b897af\",\"seam-repair-green.json\":\"992b3353d477d68787235e7625016252c4cc45ed917fa0472ae7b211803be650\",\"plan-independent-preflight.json\":\"99f5270ac99f1c7f5f0331bf0eff2a89445cfa0d43d9fa5ac17e0d2a714d6cd4\",\"seam-applicability.json\":\"1906eedb771e045ea380febb3c4b17a60193794318737dc5329d07be2e39a32c\"}. Required Core main npm run check passed after clean fast-forward integration at the same8997f4c commit; current clean merged Core lane/branch removed after process inspection. PC closure gate/main and PLAN-lane cleanup are workflow results in terminal report, not expanded product claims.",
+  "verifiedAt": "2026-09-26T21:45:34.582Z",
+  "validity": {
+    "claim": "Private bounded opposite-script tail certificate resolves exact retained prepared-first-thai-256-append with independent cold equality and19/5/10 source/property/provider work. This is repair acceptance only; Stage6/Gate2 and UX are not admitted.",
+    "repositoryId": "repo-core",
+    "pathScope": [
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/accounting_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/command_work.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/commands.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/fault_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/mod.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/source.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/structural_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/sustained_tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tail_seam.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tests.rs",
+      "packages/text-engine-rust-wasm/rust-live-draft-engine/src/cold_session/tree.rs",
+      "scripts/stage6/applicability.mjs",
+      "scripts/stage6/corpus.mjs",
+      "scripts/stage6/preflight.mjs",
+      "scripts/stage6/verify.mjs",
+      "tests/coldSessionStage4.test.ts",
+      "tests/fixtures/stage6/gate2a.v2.json",
+      "tests/stage6Preflight.test.ts"
+    ],
+    "sourceRevision": "8997f4c14b1a5a2487ea990c5c6f35bd4da54aff",
+    "verificationMethod": "PLAN-owned independent inline code/accounting review, followed by actual-WASM retained preflight reproduction and109 focused Stage4/5/harness tests (one artifact-only test then separately enabled:3/3 passed including source hashes/tamper controls). WORK native79 tests and Core npm run check440 files/3025 tests pass,1 artifact-only skip; separate artifact3/3 pass; default WASM17 exports excludes private Stage3/4/5. Review corrected overwritten payload counters, unmetered boundary comparisons, cancellation ordering and cumulative pre-read budget before terminal commit. Existing policy limits fallback resources to2; admitted32+8 bound estimates source<=207/property<=58/provider<=200. Current19-file actual Git manifest and clean exact terminal are independently checked by Scope Lock acceptance.",
+    "freshnessTriggers": [
+      "Any change to admitted alphabets/window/witness, provider policy/resources, source/run/shard derivation, receipts, cancellation or accounting requires affected revalidation.",
+      "Any change to corpus/generator/harness/QA oracle/WASM invalidates these exact raw results;11271 denominator and original thresholds remain immutable.",
+      "This narrow repair cannot grant Stage6/Gate2 or downstream Core geometry/Editor/UX admission; remaining rejected rows and lifecycle contract prerequisites must be resolved first."
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind": "phase",
+  "id": "phase-agent-and-skill-design-source-docs-subgroups",
+  "workId": "agent-and-skill-design",
+  "title": "Source Docs Subgroup Gates",
+  "phaseState": "done",
+  "order": 115,
+  "repositoryIds": ["repo-project-control"],
+  "activeRole": "project-control-steward",
+  "stopConditions": [
+    "Project Control cannot identify the agent-and-skill-design Work path, owner repository, active role, Checklist target, or Evidence target before editing.",
+    "The source-docs umbrella no longer runs every source-docs unit test file.",
+    "A source-docs unit test file is assigned to zero or more than one focused source-docs subgroup.",
+    "The source-docs subgroup split removes the records, source-docs, app, build, or e2e coverage from the default Project Control check gate.",
+    "This phase is treated as proof of Core, Backend, Editor, product behavior, readiness, release status, or product-repository test strategy."
+  ],
+  "verificationTarget": "Project Control exposes focused source-docs subgroup scripts for source-docs:core-migration, source-docs:live-draft, source-docs:template-builder, source-docs:text-block, and source-docs:text-engine; keeps source-docs as an umbrella group; keeps test:unit and check on their full grouped gates; and verifies each subgroup plus source-docs umbrella before records are accepted.",
+  "summary": "Done: split the Project Control source-docs group into semantic source-docs subgroups so PLAN and WORK lanes can run focused source-document checks without paying the whole source-docs gate unless the lane crosses subgroup boundaries.",
+  "createdAt": "2026-09-03T08:36:00.000+07:00",
+  "updatedAt": "2026-09-03T08:36:00.000+07:00"
+}
