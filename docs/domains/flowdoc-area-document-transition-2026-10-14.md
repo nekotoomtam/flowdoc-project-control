@@ -2759,3 +2759,18 @@ development ancestry. Historical configs pointing at removed worktrees remain
 historical; use the integration config for current replay. Existing development
 branches and Core/Service release branches remain. No release/tag, remote push,
 deployment, user-data mutation or installed-plugin replacement occurred.
+
+### เตรียมคู่มือและชุดผู้สมัคร release (2026-10-17)
+
+Owner request: audit and prepare manuals/delivery before release; no snapshot,
+tag, push or installation. Single-room inline; roles Documentation Synthesizer /
+Evidence Reviewer, execution IDs N/A, routine risk. Existing record owns status;
+Core README/template-guide and Service README/usage remain repo-owned operation
+contracts, plugin metadata/guides remain Project Control-owned. Scope is documentation,
+package identity and immutable delivery preparation only; product runtime and SQL
+stay unchanged. Prepare Core/Service0.4.3 and FlowDocMake0.2.4 as untagged candidates,
+retain dev.2 archives. Check exact package bytes/pins, Linux consumers, relevant
+Service/plugin checks, source-to-package identity and guide snapshot. Existing
+106page evidence may be reused only after proving executable/resource identity.
+Unknowns: stale guide wording and deployment versions must be resolved; optional
+font fixtures remain unverified. Release/install authority remains absent.

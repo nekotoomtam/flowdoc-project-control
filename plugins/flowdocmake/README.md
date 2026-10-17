@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.4-dev.2** targets **Service/Core 0.4.3-dev.2 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
+Candidate **0.2.4** targets **Service/Core 0.4.3 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
@@ -37,9 +37,9 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, an installed Service 0.4.0 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.4.3 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
-`pdftoppm`, and Python with pypdf/Pillow. This first package is for that local
+`pdftoppm`, and Python with pypdf/Pillow. This candidate package is for that local
 deployment, not a remote or public plugin distribution.
 
 1. Build the documentation snapshot from committed canonical inputs with
