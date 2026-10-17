@@ -8,7 +8,8 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.3-dev.3** targets **Service/Core 0.4.2-dev.3 / models18,19 Stage3**; untagged and not installed. Invoke
+Candidate **0.2.4-dev.1** targets **Service/Core 0.4.3-dev.1 / models18,19 Stage3**; untagged and not installed. Format sizing v1 is optional per definition; inspect
+FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
