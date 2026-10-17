@@ -4,8 +4,10 @@ Current reading route for Format sizing work: read only `Format auto/fixed —
 นิยาม กติกา และแผนพัฒนา (2026-10-17)` at the end first. It supersedes the
 Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format sizing v2` and
 `แผนแก้ v2 — fixed เป็นเพดานความสูง` for the maximum-height correction.
-Candidate v1 was implemented. Maximum-height v2 stage1 is now verified in Core
-source only; component review, packaged consumers and full MCP handoff remain pending.
+Candidate v1 and correction v2 stages0–4 are complete within the recorded scope.
+Maximum-height v2 is integrated into the existing primary development branches;
+read the final integration section for checks, retained evidence and cleanup.
+Release and installation remain pending separate owner authorization.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
@@ -2697,3 +2699,63 @@ scopes. No main/release/tag/remote refs or installed runtime/plugin changed.
 Development lanes and isolated evidence/state are retained; integration, release
 and installation remain separate owner decisions. This status-only update does
 not regenerate or overwrite the immutable stage3 plugin guide snapshot.
+
+### รวมตัวหลักและเคลียร์ชุดงาน — Format sizing v2 (2026-10-17)
+
+Owner authorized local development integration and unused-lane cleanup, explicitly
+excluding release and installation. Roles: Evidence Reviewer / Project Control
+Steward. Single-room inline, execution/Phase/Checklist IDs N/A; routine risk.
+Documentation gate: this existing Project Control canonical plan/status record
+owns the cross-repository result; no new mandatory guide, product change, map
+promotion or registered execution is needed.
+
+Fast-forwarded unchanged tested candidates: Core `codex/template-binding` to
+`a87870977d6b49fc45bc242bfc399724909afa11`, Service `codex/template-registry` to
+`dffea2d09d5f357360120a847457512132db2c37`, and Project Control `main` to
+`18647de9f7decc843d3483e9f65e249fed109c4f` before this status-only update.
+Versions remain Core/Service0.4.3-dev.2 and FlowDocMake0.2.4-dev.2.
+
+Fresh post-integration checks: Core build and700tests PASS/0skips; Service build
+and4targeted contract/clone/warning/guide tests PASS,3optional legacy fixture
+skips; plugin23PASS/0FAIL/4optional legacy fixture skips; all30snapshot hashes
+and vendored/retained Core archive hashes match. Read-only stdio MCP from the
+primary Service/plugin paths returns ready:true, capability2 and23tools; all5
+retained preview jobs remain succeeded. All5saved PDF hashes match stage4.
+Project Control check:data and diff checks PASS. Local development dependencies
+were refreshed for the Service build; deployed runtime and installed plugin
+configuration were not changed.
+
+The first plugin test invocation inherited the installed environment URL and
+failed its missing-reader case with SERVICE_UNREACHABLE. The same unchanged test
+suite passed after explicitly selecting the isolated integration configuration;
+both logs are retained. No candidate repair was made. Optional fixture skips
+remain unverified, not PASS.
+
+Proof reuse: unchanged fast-forwards preserve the exact tested trees and Core
+archive. Reuse the standalone Linux Service318PASS/6fixture-skips, native Core
+package/22consumer-family results and stage4 all106page review rather than
+claiming a fresh full suite or fresh visual review. Their prior limitations and
+source-fidelity differences above remain unchanged.
+
+Integration evidence and replay configuration:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-main-integration/`.
+Files: before.json, retained-hashes.json, core-tests.json, service-tests.json,
+plugin-tests-selected-config.log, verification.json, cleanup.json and final.json.
+Private config.json selects primary source paths and the existing isolated API;
+it does not replace the installed configuration. Before removing task worktrees,
+copied and SHA256-verified all573ignored evidence files. Previous Core artifact
+locators under `format-sizing/flowdoc-core/artifacts/` now resolve to this
+directory's `retained/flowdoc-core/artifacts/`; the final archive remains in
+subdirectory1792238382286 with SHA256
+`8583805ff51223183ce68cbd2be3de2753dc1c6b70d9d1ff31d7fa3d964bc82f`.
+Original external stage1–4 evidence and PDFs remain at their recorded locations.
+
+Removed clean merged Core/Service Format worktrees and their temporary branches;
+archived the managed Project Control Format worktree with a recoverable snapshot
+and removed its merged branch. Also removed the clean detached
+`section-area-stage4/host-service` helper at08a7131: no unique ignored data beyond
+reproducible dependencies/build outputs; its source commit remains in Service
+development ancestry. Historical configs pointing at removed worktrees remain
+historical; use the integration config for current replay. Existing development
+branches and Core/Service release branches remain. No release/tag, remote push,
+deployment, user-data mutation or installed-plugin replacement occurred.
