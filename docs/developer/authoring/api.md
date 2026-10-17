@@ -178,3 +178,25 @@ Service เปลี่ยน font+pt พร้อมกัน คง lineHeight
 รุ่น retired ใช้ได้เฉพาะ exact tuple ที่ draft สืบทอดมา ไม่ให้สิทธิ์จาก family หรือ JSON ผู้ใช้.
 Catalog heightProfile บอกผล review เบื้องต้น; availability จริงต้องผ่าน propose/confirm อีกครั้ง.
 หลังยืนยันตรวจ readiness/preview ตามเดิม; ผลบันทึกไม่ใช่หลักฐาน PDF/ความเหมือนทางภาพ.
+
+## Format sizing v1 (development candidate)
+
+Use `areaFormats[id].sizing`, never Area props or invocation data: omitted retains
+legacy auto; `{mode:"auto"}` opts in; `{mode:"fixed",height:{value:100,unit:"pt"}}`
+uses pt/mm. Model19, font schema1/2 only. Fixed requires a Section flow-root Area
+and cannot contain TOC. Each `{format,data}` call owns an independent frame.
+A fitting frame reserves its full height, including empty content. A frame that
+does not fit the current page is not shown, consumes no space and is not moved.
+Content stops at a whole line/image or protected table unit; tables close the
+visible fragment. Later calls still run. Auto flows to the next page; explicit
+auto can omit an image too tall for a fresh page, while legacy auto keeps its
+existing failure. No automatic text/image shrink.
+
+Inspect `formatSizing` in the live authoring contract before using this feature.
+Partial success carries `FORMAT_CONTENT_OMITTED`, `FORMAT_FRAME_NOT_SHOWN` or
+`FORMAT_IMAGE_NOT_SHOWN`, with Section/Area/Format and original entry index.
+These are rendering warnings, not removed input: request/draft arrays remain
+complete. Status and `save_preview_pdf` retain warnings, saved revision and
+fingerprint. Successful partial PDF is not a complete reconstruction. A visible
+reference/TOC to omitted content fails `LAYOUT_FAILED` with reason
+`omitted-destination`; do not erase links or retry on guessed pages.
