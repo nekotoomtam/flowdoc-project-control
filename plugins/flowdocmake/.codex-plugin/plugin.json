@@ -1,6 +1,6 @@
 {
   "name": "flowdocmake",
-  "version": "0.2.4-dev.1",
+  "version": "0.2.4-dev.2",
   "description": "Create reviewable FlowDoc Area18 PDFs with pinned 0.4.0 guidance, font catalog/readiness and draft-only tools.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"

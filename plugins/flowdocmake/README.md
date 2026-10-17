@@ -8,12 +8,17 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.4-dev.1** targets **Service/Core 0.4.3-dev.1 / models18,19 Stage3**; untagged and not installed. Format sizing v1 is optional per definition; inspect
+Candidate **0.2.4-dev.2** targets **Service/Core 0.4.3-dev.2 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
 and `manage_document_task` plus the three font tools and two opt-in height tools (23 tools total; including create_draft_section/import_draft_sections). There is no publish tool.
+
+The exact new Core artifact and `formatSizing.version:2` are required; v1 or
+unknown capabilities fail preflight. Fixed caps the current page remainder,
+reserving that effective height; only zero space skips the whole frame.
+Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
 Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,

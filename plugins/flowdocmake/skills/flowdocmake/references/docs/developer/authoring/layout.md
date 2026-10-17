@@ -176,20 +176,22 @@ Page-break ต้องมาจากความหมาย เช่นเ�
 หัวตารางซ้ำไหม, บทขึ้นหน้าใหม่ตามกฎไหม, เลขหน้าตรงสารบัญ/ลิงก์ไหม.
 ระบุความต่างที่ตั้งใจและข้อจำกัดแยกกัน. Renderสำเร็จไม่ได้แปลว่ารูปแบบผ่าน.
 
-## Format sizing v1 (development candidate)
+## Format sizing v2 (development candidate)
 
 Use `areaFormats[id].sizing`, never Area props or invocation data: omitted retains
 legacy auto; `{mode:"auto"}` opts in; `{mode:"fixed",height:{value:100,unit:"pt"}}`
 uses pt/mm. Model19, font schema1/2 only. Fixed requires a Section flow-root Area
 and cannot contain TOC. Each `{format,data}` call owns an independent frame.
-A fitting frame reserves its full height, including empty content. A frame that
-does not fit the current page is not shown, consumes no space and is not moved.
+Each fixed call reserves min(declared maximum, current page remainder), even
+when empty. Positive space renders fitting whole units; only zero remaining
+space omits the frame. Fixed never moves or retries its omitted remainder.
 Content stops at a whole line/image or protected table unit; tables close the
 visible fragment. Later calls still run. Auto flows to the next page; explicit
 auto can omit an image too tall for a fresh page, while legacy auto keeps its
 existing failure. No automatic text/image shrink.
 
-Inspect `formatSizing` in the live authoring contract before using this feature.
+Require `formatSizing.version:2` and `diagnosticsVersion:1` in the live contract.
+Version1 uses the prior whole-frame gate and is incompatible with this candidate.
 Partial success carries `FORMAT_CONTENT_OMITTED`, `FORMAT_FRAME_NOT_SHOWN` or
 `FORMAT_IMAGE_NOT_SHOWN`, with Section/Area/Format and original entry index.
 These are rendering warnings, not removed input: request/draft arrays remain

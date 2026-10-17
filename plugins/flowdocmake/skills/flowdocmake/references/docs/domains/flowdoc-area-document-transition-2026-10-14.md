@@ -2,8 +2,10 @@
 
 Current reading route for Format sizing work: read only `Format auto/fixed —
 นิยาม กติกา และแผนพัฒนา (2026-10-17)` at the end first. It supersedes the
-Area-sizing proposal. The `สัญญาช่วง 0 — Format sizing v1` subsection closes the
-design contract for implementation review; runtime stages remain unimplemented.
+Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format sizing v2` and
+`แผนแก้ v2 — fixed เป็นเพดานความสูง` for the maximum-height correction.
+Candidate v1 was implemented. Maximum-height v2 stage1 is now verified in Core
+source only; component review, packaged consumers and full MCP handoff remain pending.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
@@ -1746,11 +1748,14 @@ config ของช่วง4/5และ restore ทั้งสามไฟล�
 **Authority Boundary:** Project Control owns this shared design/plan. Core owns
 Format validation, expansion/layout and rendering diagnostics; Service owns saved
 contracts, pinned jobs and transport; Project Control owns FlowDocMake guidance.
-This section records the user's revised design, not implemented runtime behavior.
+Current design is the owner's maximum-height correction (v2) below; candidate
+0.4.3-dev.1 / FlowDocMake0.2.4-dev.1 still implements the earlier v1 gate.
 Role Planning Partner / Cross-Repo Boundary Reviewer / Documentation Synthesizer;
 single-room inline, execution/Phase/Checklist registry IDs N/A. Current authority
-is documentation only: no runtime edits, live drafts, DB writes, release, tags,
-push or installation. Completed Section–Area stages0–5 keep their original results.
+for the original planning revision was documentation only. The later owner
+authorization covers Core source stage1 as recorded below, without live drafts,
+DB writes, merge, release, tags, push or installation. Completed Section–Area
+stages0–5 keep their original results.
 
 ### การเปลี่ยนข้อตกลงและสถานะ
 
@@ -1763,12 +1768,13 @@ Location นี้เป็น revision evidence เท่านั้น ไม
 
 Previous Area-stage0 checkmarks do not prove Format sizing. ข้อตกลงพฤติกรรมด้านล่าง
 ได้รับความเห็นชอบในแชตแล้ว; exact JSON/capability/diagnostics ปิดในสัญญาช่วง0
-ท้ายส่วนนี้ภายใต้คำสั่งให้ทวนสัญญา. ยังไม่ถือว่าช่วง1–5เริ่มหรือผ่าน.
+ท้ายส่วนนี้. แผนช่วง0–5และผลเดิมที่เก็บไว้เป็นประวัติของv1; งานแก้v2ยังไม่พัฒนา.
 Read this section for the new sizing scope; do not implement the superseded
 Area sizing property, Area stop scope or Area-prefixed omission diagnostics.
 
 **Goal:** ให้แต่ละรายการที่เรียก Format เลือกพฤติกรรมตาม definition: auto ไหล
-ตามเนื้อหา หรือ fixed จองกรอบของรายการนั้นและหยุดเมื่อเต็ม พร้อมรายงานส่วนที่ไม่แสดง.
+ตามเนื้อหา หรือ fixed จำกัดความสูงสูงสุดของรายการนั้นด้วยพื้นที่หน้าเหลือ
+แล้วแสดงส่วนที่วางได้ พร้อมรายงานส่วนที่ไม่แสดง.
 **Architecture:** รักษาขอบเขต Format instance หลัง expansion ให้ layout รับรู้;
 reuse ตัววัดข้อความ/ภาพและ table fragmentation เดิม. Area ไม่จองกรอบเพิ่ม.
 **Tech Stack:** Existing TypeScript Core, packed Core consumer in Service,
@@ -1777,7 +1783,7 @@ PostgreSQL draft/job persistence and FlowDocMake MCP; no new runtime dependency.
 Future execution uses the applicable executing-plans workflow after authorization;
 this documentation does not dispatch subagents, new tasks or separate rooms.
 
-### ของเดิมที่มีอยู่จริง กับสิ่งที่ต้องเพิ่ม
+### ฐานก่อนพัฒนา v1 (ประวัติ; ดูช่องว่าง v2 ในแผนแก้ด้านท้าย)
 
 Read-only source baseline: Core `c340c4f`, Service `08a7131`, candidate
 Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No product tests were rerun
@@ -1814,16 +1820,18 @@ input เมื่อเต็ม. การทำ fixed ไม่ได้ย�
 
 | กรณี | auto | fixed |
 | --- | --- | --- |
-| พื้นที่ | ใช้ตามเนื้อหาและไหลต่อได้ | กรอบของ instance ขนาดตาม definition |
+| พื้นที่ | ใช้ตามเนื้อหาและไหลต่อได้ | effectiveHeight=min(ความสูงสูงสุดใน definition, พื้นที่หน้าเหลือ) |
 | บรรทัดถัดไปไม่พอ | ต่อหน้าใน Section เดิม | ปิดส่วนที่แสดงแล้วหยุด instance นี้ |
 | ตารางถึงขอบ | ปิดเส้น fragment แล้วต่อส่วนค้าง | ปิดเส้น fragment แล้วหยุด instance นี้ |
 | ภาพไม่พอพื้นที่ที่เหลือ | ยกทั้งภาพไปหน้าถัดไป | หยุดก่อนภาพ รวมส่วนที่เหลือใน instance นี้ |
-| กรอบทั้งชุดไม่พอหน้าปัจจุบัน | จัดตามองค์ประกอบตามปกติ | ไม่แสดง instance นี้ ไม่ยกกรอบไปหน้าใหม่ |
+| ความสูงที่กำหนดมากกว่าพื้นที่หน้าเหลือ | จัดตามองค์ประกอบตามปกติ | ใช้พื้นที่หน้าเหลือ วางส่วนที่พอ แล้วหยุดโดยไม่ขึ้นหน้าใหม่ |
 | จบ/หยุด/ไม่แสดง instance | ทำรายการถัดไปตามลำดับ | ทำรายการถัดไปตามลำดับ ไม่หยุดทั้ง Area |
 
-- Fixed ที่วางกรอบได้จองความสูงเต็ม แม้ข้อมูลว่างหรือจบก่อนเต็ม. ถ้า Area ส่ง []
-  ไม่มี instance จึงไม่มีกรอบให้จอง. Fixed ที่วางกรอบไม่ได้ไม่แสดงและไม่กิน flow
-  space; instance ถัดไปเริ่มพิจารณาจากตำแหน่งเดิม. ไม่ retry รายการที่ข้ามไปหน้าอื่น.
+- Fixed ใช้ effectiveHeight=min(declaredHeight, remainingBodyHeight) ของแต่ละ
+  instance. จอง effectiveHeight แม้ข้อมูลว่างหรือจบก่อนเต็ม ตามกติกาจองพื้นที่เดิม;
+  ไม่เปลี่ยนเป็นยุบกรอบตามเนื้อหาในรอบนี้. ถ้าส่ง [] ไม่มี instance/กรอบ.
+  หน้าเหลือ0จึงไม่วางกรอบ; ถ้ามีพื้นที่แต่หน่วยแรกไม่พอ ให้หยุดเนื้อหาของ instance
+  และแจ้ง cursor. ไม่ข้ามทั้งรายการเพียงเพราะ declaredHeight มากกว่าพื้นที่หน้าเหลือ.
 - พื้นที่ของลูกเป็นส่วนหนึ่งของกรอบรวม ไม่บวกกรอบซ้ำ: fixed180pt ที่มีกล่อง30pt
   ใช้30ptจาก180pt. ไม่อ่านความสูงรวมของเนื้อหาทั้งหมดเพื่อกำหนด declared height.
 - Fixed เป็นกรอบใน flow ไม่ใช่ absolute x/y; เนื้อหาก่อนหน้าที่ขยายทำให้จุดเริ่ม
@@ -1888,13 +1896,14 @@ real SRS schema or a standalone validated template. Existing data syntax stays:
 }
 ```
 
-If both frames fit, each instance independently reserves180pt. If the first
-stops after some content, the second still runs after its reserved180pt. If the
-first whole frame cannot fit, it consumes no flow space; the second is still
-evaluated (it may also fail to fit). Different Format keys/modes may be mixed.
+Each call independently uses min(180pt,current remaining body space). With100pt
+remaining, the first gets100pt and renders its fitting prefix; it is not skipped.
+It reserves that100pt, so later fixed calls see no space unless another authored
+flow action changes the page. Different Format keys/modes may still be mixed.
 
 Contract warnings use the existing Result/Issue channel: FORMAT_CONTENT_OMITTED
-for a partly shown instance and FORMAT_FRAME_NOT_SHOWN for a missing whole frame.
+for stopped content (including when its first unit cannot fit a positive frame);
+FORMAT_FRAME_NOT_SHOWN is only for zero available body space.
 There is no Area-level stop or omitted range extending through later entries.
 An illustrative partial-result warning, not an executed receipt:
 
@@ -1948,6 +1957,11 @@ and affected tests; Service template/job/MCP contracts and consumers; Project
 Control this record and existing FlowDocMake package/guidance. Not in scope:
 Area sizing, absolute placement, recursive Format/Area nesting, shared external
 Format library, UI, auto-fit, new image ingestion or font-scale features.
+
+### แผนช่วง0–5เดิม — ประวัติ v1 ที่ส่งมอบแล้ว
+
+Checkmarks below certify the v1 candidate only. The maximum-height v2 correction
+has a separate bounded plan at the end of this same document.
 
 ### ช่วง 0 — ทวนสัญญา Format sizing หลังเปลี่ยนเจ้าของพฤติกรรม
 
@@ -2052,19 +2066,25 @@ affected; Project Control existing FlowDocMake capability/guidance/package.
   record; stop at owner review. Merge/cleanup/release/tag/push/install follow
   their actual authorization and are not granted by this documentation request.
 
-**Current state (2026-10-17):** Format stages1–5 implemented and verified on
-isolated development candidates as recorded below. Prior Area-stage0 remains
-superseded. This is an owner-review handoff, not main/release/install acceptance.
+**Current state (2026-10-17, after owner PDF review):** v1 stages1–5 remain a
+verified historical candidate, but its whole-frame gate does not meet the newly
+confirmed maximum-height v2 definition. The retained packages remain v1. Core source stage1 is now separately verified
+below; stages2–4 and integration/install acceptance remain pending.
 
-### สัญญาช่วง 0 — Format sizing v1 (2026-10-17)
+### สัญญาช่วง 0 — Format sizing v2: maximum height (owner correction 2026-10-17)
 
 **Authority Boundary:** Project Control design contract for future Core/Service/
 FlowDocMake implementation. User authorized closing this Format-stage0 contract
 only. Role Planning Partner / Cross-Repo Boundary Reviewer; single-room inline,
 execution IDs N/A. The exact technical choices below close the approved behavior;
 they are not assertions that the current runtime accepts these fields/warnings.
-Current source remains Core `c340c4f` / Service `08a7131`; package versions remain
-Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No repack, migration or install.
+Current retained v1 candidate is Core `53b57dc` / Service `1769773`,
+Core/Service0.4.3-dev.1 and FlowDocMake0.2.4-dev.1. This request changes only
+this document; no runtime/package edits, repack, migration or installation.
+
+This current design supersedes only the incompatible v1 whole-frame admission
+rule and its dependent examples. Original v1 design/results remain retrievable
+in commit5bf5f70 and the historical delivery section below. No runtime is changed.
 
 #### 0A. Exact definition and compatibility
 
@@ -2085,7 +2105,7 @@ Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No repack, migration or inst
   migration. Existing valid default-auto content must retain output semantics.
 - Explicit fixed is valid only when its owning Area placement is an authored
   Section flow root. Fixed inside table cells/repeats, recursive Area/Format
-  nesting and fixed TOC nodes are unsupported/INVALID_TEMPLATE in v1. Auto keeps
+  nesting and fixed TOC nodes are unsupported/INVALID_TEMPLATE in v2. Auto keeps
   existing placement rules. Reject a fixed definition whose fragment contains
   table-of-contents, even if that Format is not selected in the sample request.
 - Sizing is not allowed on Area props, field schema, Section or `{format,data}`
@@ -2102,7 +2122,7 @@ Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No repack, migration or inst
 ```json
 {
   "formatSizing": {
-    "version": 1,
+    "version": 2,
     "nodeModelVersions": [19],
     "fontSchemaVersions": [1, 2],
     "modes": ["auto", "fixed"],
@@ -2113,25 +2133,32 @@ Core/Service0.4.2-dev.3 and FlowDocMake0.2.3-dev.3. No repack, migration or inst
 ```
 
 Older consumers must reject unsupported explicit sizing, never strip it and save
-auto instead. No `areaSizing` capability or Area-prefixed omission schema is added.
+auto instead. The next consumer must require formatSizing.version2; current
+version1 advertises the old whole-frame gate and cannot certify v2. Keep
+diagnosticsVersion1 because envelope shapes are unchanged. No `areaSizing` capability or Area-prefixed omission schema is added.
 
 #### 0B. Frame geometry, instance progress and stop
 
 - Fixed width is the current Section flow width after margins/band constraints;
-  v1 adds no Format width, absolute x/y, internal padding or visible outer border.
+  v2 adds no Format width, absolute x/y, internal padding or visible outer border.
   Child table/cell/image geometry is measured within that width. A visible frame
   is not automatically painted; authored children retain their own drawing.
-- Before rendering an instance, compare its whole fixed height with current-page
-  remaining body space. Exact-fit comparison uses1e-6pt tolerance, once per
-  comparison, not an accumulating allowance. If it cannot fit, emit
-  FORMAT_FRAME_NOT_SHOWN, render none of this instance and consume no space.
-  Do not shrink/move/retry its rectangle on another page. A valid height larger
-  than a full printable page is also this non-placement case, not a new page.
-- A placed fixed frame reserves its full height, including when the invoked
-  Format renders empty or stops before the bottom. No entry means no invocation
-  and no reservation. Its children consume that one budget, not a second copy.
-  Following entries are evaluated at the end of the reserved frame, or at the
-  unchanged cursor when the entire frame was not placed.
+- At the current cursor compute remainingBodyHeight=max(0,bodyBottom-cursorY)
+  after margins, selected bands and preceding content; then
+  effectiveHeight=min(declaredHeight,remainingBodyHeight). Declared height is a
+  maximum, not a requirement to fit a whole rectangle. A positive page remainder
+  is usable even if the declaration exceeds a full page. Do not advance pages
+  or scale text/images to make the declaration fit. Exact unit fit retains the
+  existing1e-6pt comparison tolerance; it does not add capacity.
+- Reserve effectiveHeight, including an empty invoked Format or content that
+  ends/stops early. This preserves reservation behavior within the smaller
+  effective frame, not natural-content shrink-to-fit. No entry means no frame.
+  Children share this one budget; following entries start at its end.
+- With zero remaining body space, no positive frame exists: consume no space
+  and emit FORMAT_FRAME_NOT_SHOWN. With a positive frame but a first whole unit
+  too tall, render no content and emit FORMAT_CONTENT_OMITTED with its actual
+  pending cursor; reserve effectiveHeight. Never discard the entry solely for
+  declaredHeight>remainingBodyHeight. Never retry its remainder on another page.
 - Process rootIds and expanded members in order. At the first item that cannot
   fit, stop only this instance's remaining content; later entries in the same
   Area still run. There is no shared budget or Area-wide stop. Do not fill gaps
@@ -2165,7 +2192,7 @@ auto instead. No `areaSizing` capability or Area-prefixed omission schema is add
   once. Rowspan/colspan keeps grid topology and no separator crosses a merged
   cell. Keep the existing border geometry (currently0.5pt); no style API is added.
   Close at the real visible fragment end, not by painting pretend empty rows to
-  fill the reserved Format height. The outer budget is still fully reserved.
+  fill the reserved Format height. The effective outer budget is still reserved, not the larger declared maximum.
 - If a header fits but no body unit fits, do not leave a stranded header: auto
   moves the fragment, fixed stops before it. Genuinely empty authored tables
   retain their existing behavior and are not falsely called overflow.
@@ -2225,7 +2252,9 @@ omitted. Original clone/import origin remains separate provenance.
 - formatFrameOmission requires sectionPageIndex (zero-based), requiredHeightPt
   and availableHeightPt (finite nonnegative measured lengths). No invented line
   cursor/page number for an unplaced frame. Emit one frame warning, not one per
-  descendant. Even an empty invoked Format can have an unplaced frame.
+  descendant. This code is limited to zero remaining body height, including empty invocations.
+  requiredHeightPt is the declared maximum; availableHeightPt is0. Positive
+  remainder with stopped content uses formatOmission, not this whole-frame code.
 - formatImageOmission requires pending containing exactly the omitted image
   cursor. It reports that image only; it does not stop this auto instance or
   claim later content was omitted. Image warnings from independent instances
@@ -2240,8 +2269,8 @@ omitted. Original clone/import origin remains separate provenance.
   exact render, never reused after changing fonts, data or definition. Persist
   warnings through child-render transport, restart, status read and PDF save.
 
-The earlier example warning demonstrates the content case. Whole-frame example
-for a second call of that Format (illustrative, not a runtime receipt):
+The earlier example warning demonstrates the content case. Zero-space example
+for a later call of that Format (illustrative v2 design, not a runtime receipt):
 
 ```json
 {
@@ -2259,7 +2288,7 @@ for a second call of that Format (illustrative, not a runtime receipt):
     "reason": "insufficient-page-space",
     "sectionPageIndex": 0,
     "requiredHeightPt": 180,
-    "availableHeightPt": 100
+    "availableHeightPt": 0
   }
 }
 ```
@@ -2267,7 +2296,7 @@ for a second call of that Format (illustrative, not a runtime receipt):
 #### 0E. TOC, anchors and legacy boundary
 
 - Fixed Format definitions may contain headings/anchors, but not a TOC node in
-  v1 as specified in0A. Auto TOCs retain their existing scoped behavior.
+  v2 as specified in0A. Auto TOCs retain their existing scoped behavior.
 - Destination indexing must distinguish deliberately omitted nodes from visible
   nodes. A visible heading with a positioned line keeps its actual destination;
   an omitted heading never acquires a guessed page. If no visible reference or
@@ -2292,11 +2321,14 @@ Expected results below are future acceptance cases, not runtime tests run now:
 | Existing no-sizing template/request | Unchanged implicit auto behavior and input |
 | Explicit auto declaration | No height; old normal flow plus explicit image exception |
 | Fixed100pt with ten20pt text lines | Five lines; cursor lineIndex5; next call still processed |
-| Two fitting calls of fixed180pt | Two separate180pt reservations, no shared budget |
-| Invoked empty fixed180pt versus [] | One reservation versus no invocation/reservation |
+| Two calls of fixed180pt with at least360pt left | Two separate180pt reservations, no shared budget |
+| Invoked empty fixed180pt with100pt left versus [] | Reserve100pt versus no reservation; no omission if empty content ends normally |
 | First fixed call stops mid-table, second call fits | Closed first fragment; accurate cursor; second rendered |
-| First180pt frame cannot fit100pt remaining, later60pt call | First omitted without page/cursor move; later call evaluated at same position |
-| Valid fixed height larger than full page body | Frame warning only; no retry/shrink or hidden validation bypass |
+| First180pt call with100pt remaining, then fixed60pt call | First gets100pt and renders fitting prefix; next sees0pt and gets frame warning, no new page |
+| Valid fixed maximum larger than full page body | Use full current remainder; render fitting prefix, no page move or shrink |
+| Fixed300pt with120pt left and20pt text lines | Six whole lines; pending cursor if text remains; reserve120pt, no continuation page |
+| Positive10pt frame with20pt first line/image | No content, content warning and cursor; reserve10pt, no page move |
+| Zero body remainder | No frame; one frame warning with availableHeightPt0 |
 | Invalid height or unsupported fixed placement | INVALID_TEMPLATE, not an omission warning |
 | Two20pt table lines plus8pt total padding and0.5pt outer stroke allowance in48.5pt | Exact fit; complete lines and border |
 | Same table in48.4999pt | Fitting complete lines only; closed fragment and pending cursors |
@@ -2308,15 +2340,15 @@ Expected results below are future acceptance cases, not runtime tests run now:
 | Same Format key in cloned Sections | Independent identity, limits, warnings and pinned output |
 
 Review coverage maps exact JSON/compatibility to0A, frame/stop to0B, table/image
-behavior to0C, diagnostics to0D and links to0E. All seven Format-stage0 checklist
-items are closed as design. Documentation verification covers JSON parsing,
+behavior to0C, diagnostics to0D and links to0E. The original seven v1 Stage0 checklist
+items remain historical; this owner-approved geometry correction is design only. Documentation verification covers JSON parsing,
 example consistency, scope/identity and authority; it is not schema/runtime/PDF
 acceptance. No Core/Service source, live data, generated map, package version,
-release/tag or installed plugin is changed. Stop here for owner review before
-Stage1; no further runtime authorization is inferred from Stage0 completion.
+release/tag or installed plugin is changed. Only the correction plan below may govern future work after authorization;
+this design update does not authorize runtime implementation.
 
 
-### ผลดำเนินงาน Format stages1–5 — 2026-10-17
+### ผลดำเนินงาน Format stages1–5 v1 — ประวัติส่งมอบ 2026-10-17
 
 Authority: owner authorized continuous stages1–5 through verified handoff while
 absent. Single-room inline; registered execution/Phase/Checklist IDs N/A.
@@ -2392,3 +2424,223 @@ The unchanged CLI test timing sensitivity and optional fixture skips are recorde
 execution limitations, not claims of source completeness. Main/release/remote/tag
 refs and installed/live targets remain unchanged. Keep these clean unmerged lanes
 and isolated evidence for review; integration needs the owner's next instruction.
+
+
+### แผนแก้ v2 — fixed เป็นเพดานความสูง (ยังไม่แก้ runtime)
+
+Owner instruction: after reviewing the300pt example, the owner confirmed that
+fixed must show the fitting prefix in remaining page space. This supersedes the
+v1 all-or-nothing frame gate, not the validity of its historical test results.
+Owner repository for this request: Project Control; roles Planning Partner /
+Documentation Synthesizer. Single-room inline, execution IDs N/A; work size small,
+risk routine for documentation. One existing canonical file only. Proof budget:
+JSON/example consistency, geometry case review, diff and Project Control checks.
+No product code/tests, drafts, stored data, generated maps, package/version pins,
+snapshot regeneration, merge, release, tag, push or installation in this request.
+
+**Goal:** show all whole units that fit min(declared maximum,page remainder), stop
+only this instance, preserve source input and diagnostics.
+**Architecture:** retain per-entry boundary and bounded table sink; change frame
+capacity calculation only, then verify affected warnings/consumers. No Area policy.
+**Spec:** current0A–0F above. Tech stack and width/font/border behavior unchanged.
+Future implementation may use the executing-plans skill after a fresh explicit
+instruction; this plan does not dispatch agents or authorize execution now.
+
+| ของที่มีอยู่แล้วใน v1 | ต้องแก้/ตรวจเพิ่มสำหรับ v2 |
+| --- | --- |
+| Format sizing JSON, model19 contexts and independent calls | Keep JSON shape; declared height now caps current remainder |
+| Whole-line/image stop, table padding/borders and per-cell cursors | Feed effective height into the same bounded layout; test newly reachable short remainder |
+| Input retention, cloned IDs, pinned jobs and persistent warnings | Reuse within scope; rerun for a positive but reduced frame and zero remaining space |
+| Core676tests, prior PDFs and consumer checks | Historical evidence only for unchanged paths; old frame-skip assertions/PDFs are not v2 proof |
+| Capability version1 and exact package pin | Advertise/require version2 with real new artifact/version only after implementation |
+
+- [x] **แก้0 — นิยาม/ตัวอย่าง:** maximum formula; effective reservation retained
+  even for short/empty content; positive-space first-unit stop versus zero-space
+  frame omission; tables/images/breaks/links keep their existing whole-unit rules.
+- [x] **แก้1 — Core capacity (owner Core):** RED cases in
+  `tests/layout/formatSizing.test.ts` and `formatTable.test.ts`:300/120 with20pt
+  lines,180/100 followed by60/0, declared height above page height, empty call,
+  no-entry, exact fit and margins/bands. Change `src/layout/documentFlow.ts` to
+  remove the positive-remainder whole-frame skip and reserve effectiveHeight.
+  Keep schema/model18 validation, no page move/retry and input immutability.
+- [x] **แก้2 — bounded components / diagnostics (owner Core):** test table
+  padding+closing stroke at reduced capacity, protected rows/group start, merged
+  active-cell cursors, header without body, image too tall for the remaining
+  frame, atomic fixed-height child and explicit break. Change `cellTableFlow.ts`
+  only for a demonstrated sink issue. Check existing anchor/TOC errors against
+  newly rendered/omitted content. Audit `formatLayout.ts` warning conditions;
+  positive frame => content stop, zero space => frame omission. Do not alter
+  diagnostic shape or hide invalid child geometry, resources or font errors.
+- [x] **แก้3 — packed consumers (owner Service and PC/FlowDocMake):** pack the
+  verified Core artifact and exact checksum; expose formatSizing.version2 in
+  `src/http/authoring.ts`, require it in plugin `scripts/compatibility.mjs` and
+  update affected examples/tests/guides. Keep already-correct warning persistence
+  and immutable admission inputs. Test old/new capability mismatch, pinned jobs,
+  clone/import, permissions and actual MCP status/save. Development version bump
+  belongs to this implemented change, never this documentation-only revision.
+- [ ] **แก้4 — native PDF handoff:** new isolated unpublished drafts: change the
+  third meeting Format to fixed300pt too; it must render its fitting prefix in
+  the current remainder rather than disappear. Check subsequent fixed/auto calls
+  at zero space, SB1, schema1/2 fonts, source data and original drafts. Save/hash,
+  inspect every new page, compare unchanged legacy SRS98/SB1two with accepted
+  evidence and retain source-fidelity limits. Record changed/affected checks and
+  any skips honestly. Stop at owner review; integration/release/install separate.
+
+Worked example: if usable body height is730pt, the first two fixed300pt calls
+reserve300+300pt. The third declared300pt receives130pt, so with20pt text lines
+and no other allowances it shows6whole lines and stops before the seventh;
+reserve130pt, not300pt. A table has less text room after header/padding/stroke;
+use measured units, not a universal row count. This is a geometry example, not
+a claim that every A4 page has730pt usable height.
+
+**Validation boundary of design-only revision a21b0a8:** that revision changed
+definition/plan only. The retained packed Core/Service0.4.3-dev.1 and
+FlowDocMake0.2.4-dev.1 still implement v1. The newly authorized Core source
+stage1 below is separate evidence; it does not update those artifacts or consumers.
+
+
+### ผลแก้ v2 ช่วง1 — Core capacity (2026-10-17)
+
+Scope: owner explicitly authorized stage1 only after maximum-height clarification.
+Role Product Implementation Agent / Evidence Reviewer / Project Control Steward;
+single-room inline, execution IDs N/A; small work, routine risk. Existing clean
+linked worktrees reused on codex/format-sizing. Core base53b57dc; PC basea21b0a8.
+No historical execution registry was reopened. No new plan/startup document.
+
+Core source commit `e97cba15e43031dcc4734869e0285ebfae0f6ce7` implements the small documentFlow change:
+positive page remainder always supplies a bounded frame ending at
+min(cursor+declaredHeight,bodyBottom). Only zero remaining body space omits the
+whole frame. Keep full effective-height reservation and existing stop/cursor
+logic. No cellTableFlow rewrite, schema/JSON change or new Area behavior.
+Local README/template-guide distinguish this unpackaged source from retained v1.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Three fixed300 calls with120pt remaining after two calls | Third shows6whole20pt lines, stops at cursor6 and stays on page;119.99999pt shows5 without clipping. Input/definition unchanged. |
+| Reservation and later instances | Short/empty call reserves the effective height; absent invocation reserves nothing.180/100 shows5lines; next fixed60 receives zero-space warning; subsequent auto moves to its own next page. Positive10pt with first20pt line gets content warning, not whole-frame skip. |
+| Margins, bands, table consumer | Body capacity deducts selected header/footer and gaps. Existing table sink receives48.5pt from a declared300pt, draws2whole20pt lines plus padding/closure and then warns; no table-sink change. |
+| Source checks | RED9fail/18pass -> GREEN27focused; TypeScript build PASS; full Core684PASS/75files, no skips. Schema/model18 and existing auto regressions included. Fresh scope reviewer PASS, no Critical/Important finding. |
+| Native source PDF review |3PDFs/4pages, public PDF engine on Linux/amd64 with read-only current dist over the existing verified resource image. All pages rendered and visually inspected; expected text, unchanged source request and repeatable PDF bytes checked. This is source-layout evidence, not a new package or MCP delivery. |
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage1/`:
+red.log, green.log, build.log, core-suite.log, native-result.json, pdf-review.json
+and rendered pages/contact.png. PDF examples: three-fixed.pdf,
+empty-reservation.pdf (first blank page is the intentional reservation),
+reduced-table.pdf. Review initially read the pre-visual evidence status; the primary
+agent's subsequent four-page inspection and current pdf-review.json establish
+visual PASS. No reviewer assertion substitutes for that visual review.
+
+**Remaining:** stages2–4 stay unchecked: deeper bounded-component/diagnostic
+matrix, exact packed artifacts/capability version2 in Service/FlowDocMake, and
+whole-document MCP handoff. Existing v1 archives, Service/plugin pins, capability,
+installed/live targets, original drafts/data and primary/release refs remain
+unchanged. No version bump, pack, merge, release, tag, push or installation.
+Stop at stage1 review as requested; do not infer authorization for stage2.
+
+### ผลแก้ v2 ช่วง2 — bounded components / diagnostics (2026-10-17)
+
+Scope: the owner's next instruction authorized stage2 only. Owner Core; roles
+Product Implementation Agent / Evidence Reviewer / Project Control Steward.
+Single-room inline, execution IDs N/A; routine risk. Reuse clean linked
+codex/format-sizing lanes; Core basee97cba1 and PC basefe500ee. Existing canonical
+record only, no new shared plan or map promotion. Stage1's stop remains historical.
+
+Core commit `ebc782a00253238e7741850fa9db84e90d0b9504` added
+`tests/layout/formatReducedComponents.test.ts`:16 acceptance cases using
+declared fixed300 with smaller available body regions. Existing bounded runtime
+already satisfies these cases; no production-code rewrite was needed. Initial
+test failures identified fixture mistakes (missing child heightMode, Section
+anchor namespace, invalid width rejected before layout), not runtime defects.
+No runtime RED/GREEN claim is made for correcting those fixtures.
+
+| Acceptance / impact | Current evidence |
+| --- | --- |
+| Reduced table capacity, padding and closure |48.5pt fits2whole20pt lines;48.4999pt fits1; positive0.1pt fits none and emits content omission. Closing sides/bottom plus half-stroke remain inside the effective frame. Next fixed call at zero gets frame omission. |
+| Protected rows, headers and group starts | Earlier fitting rows remain, later protected row stops whole; no isolated header without body; keepStart prefix stays with first member without relaxation. |
+| Merged cells | Rowspan/colspan fragments close correctly; separate active unfinished cells retain independent line cursors and table/row/cell identity. |
+| Images, atomic child and break | Root/cell image cannot split or skip ahead in fixed; later auto entry still flows. Valid fixed-height child stops whole, invalid child text retains layout failure. Explicit break stops without advancing the fixed instance. Invalid cell width is rejected during template validation. |
+| Links / contents / warnings | Visible heading remains on its actual page and TOC number/internal annotations point there. Deliberately omitted unreferenced destinations stay absent; surviving reference or TOC fails with omitted-destination and preserves collected omission warnings. No new successful PDF is produced on failure. |
+| Input / source regressions | Composed inputs unchanged by layout; public native runs retain request/template and empty skippedContentIndices. Full Core700PASS/76files, no skips; TypeScript build PASS. Existing auto/model18 and schema/resource regressions included. |
+| Native source PDF review |5PDFs/8pages generated through public engine in Linux/amd64 with current read-only dist over existing verified resource image. Every page rendered and visually inspected; text, whole-image paint operations, page counts, internal targets and repeatable PDF bytes checked. Auto image case intentionally uses3pages: fixed prefix, auto text, whole auto image. This is source-layout evidence, not a new package or MCP proof. |
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage2/` contains
+core-suite.log, build.log, native-check.mjs, native-result.json, review_pdf.py,
+pdf-review.json, original acceptance inputs and rendered/contact.png.
+PDF cases: reduced-table, merged-table, protected-row, whole-image, visible-links.
+Negative reference/TOC cases preserve issues/warnings in native-result.json.
+Fresh scoped review PASS: no Critical/Important finding; declined-to-judge list
+empty. Deferred minor: native omitted-reference fixture contains both reference
+and TOC, so the recorded native error reaches TOC first. Reference-only failure
+is independently verified by the new unit test, but not by a separate native
+negative fixture. This limits evidence attribution, not Stage2 acceptance.
+
+**Remaining:** stages3–4 remain pending: new packed artifact and exact consumer
+pin/capability version2, Service/FlowDocMake checks and whole-document MCP handoff.
+Retained v1 archives, installed/live targets, source drafts/data, primary branches,
+release/tags and remotes are unchanged. No pack/version bump, merge, release,
+tag, push or installation. Keep the unmerged lanes for the next owner decision.
+
+### ผลแก้ v2 ช่วง3 — packed consumers (2026-10-17)
+
+Owner authorized stage3 only: Core package, Service and FlowDocMake integration.
+Roles Product Implementation Agent / Evidence Reviewer / Project Control Steward;
+single-room inline, execution IDs N/A, routine risk. Existing linked development
+lanes retained. Bases Coreebc782a, Service1769773, PCb4ea45c. No live installation,
+primary integration, release/tag/push or stage4 whole-document authoring.
+
+- Core `0.4.3-dev.2`, source commit `a87870977d6b49fc45bc242bfc399724909afa11`.
+  Final artifact: Core `artifacts/1792238382286/flowdoc-core-0.4.3-dev.2.tgz`;
+  SHA256 `8583805ff51223183ce68cbd2be3de2753dc1c6b70d9d1ff31d7fa3d964bc82f`.
+  Earlier provisional dev.2 build is not the delivery artifact; final README
+  version headers were refreshed before creating this exact archive.
+- Service `0.4.3-dev.2`, commit `dffea2d09d5f357360120a847457512132db2c37`;
+  vendor manifest, dependency and lock pin that exact new archive. Old v1 archive
+  remains unchanged. Contract advertises formatSizing.version2, diagnostic
+  envelopes remain version1. No migration or persistence schema change.
+- FlowDocMake `0.2.4-dev.2` requires the exact Service/Core versions and checksum,
+  capability2 and diagnostics1. Old/unknown capability and wrong runtime/hash
+  fail closed. Updated existing API/layout chapters and generated plugin snapshot;
+  no new mandatory startup reading. Candidate is untagged and not installed.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Capability old/new | Plugin RED4fail/2pass against v1 -> GREEN6; rejects missing/v1/v3 capability, wrong contexts/diagnostic version and wrong artifact. Service RED2fail/2pass against v1 demonstrates old whole-frame skip; all4 Format tests pass with new package/capability. |
+| Real package boundary | Linux/amd64 package build: Core700PASS/76files, build/native session and22 consumer families PASS. Exact installed tarball, no source mounts, networknone. New packed300/120 text and300/48.5 table cases verify fitting prefixes and zero-space warning. |
+| Pinned jobs / clone / import / permissions | Actual PostgreSQL and packaged Core: full original/prepared input and preview definition remain pinned after a later sizing edit. Original, clone and imported Section previews retain maximum sizing with independent IDs, correct warning identity and no skipped input. Wrong-owner read/import fails; stale revision rejected. Restart keeps warnings and saved PDF bytes. |
+| Failure and warning channels | Surviving reference to omitted content fails with omitted-destination and retained warnings, no downloadable partial PDF. Actual stdio MCP context is ready for candidate; clone/import/save/preview/status and save_preview_pdf retain revision1, fingerprint, both omission warnings and matching PDF hash after draft advances to revision2. |
+| Service / plugin checks | Standalone Service suite success:true,318PASS/0FAIL/6fixture skips; host build and final README delivery guard PASS. Plugin23PASS/0FAIL/4fixture skips; changed capability cases included. Skips are listed below, not relabelled PASS. |
+| Scoped PDF review | Final packed Format cases plus actual MCP saved PDF:8files/12pages rendered, text/page checked and visually inspected. Expected partial prefixes, closed table edges and ordinary auto/legacy flow retained. This is stage3 consumer proof, not stage4 whole-document or installed-chat readiness. |
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage3/`:
+core-identity.json, core-package-final.log, service-red.log, service-suite.log,
+service-result.json, plugin-red.log, plugin-green.log, plugin-suite.log,
+mcp-result.json, pdf-review.json and rendered/contact.png. Core consumer results
+remain in its final artifact directory. Original v1 source artifacts are retained.
+
+Verification incident: the first full Service run collided with a concurrently
+started test API because processor advisory locks are database-wide, not per
+schema. Stopped only the new API, reran the unchanged image alone, and verified
+318PASS/0FAIL. service-concurrent.log preserves the failed harness run. The final
+reviewer saw that earlier log before standalone completion; primary verification
+read the final successful JSON. No product repair was inferred from that incident.
+The isolated API also needed a bridge attachment for its loopback published port;
+its private database and all user deployments/data stayed separate.
+
+Coverage boundary: six Service skips require prior height-delivery configuration,
+supplied Sarabun/Pridi metrics/native height-helper fixtures or seven-family intake;
+four plugin skips require the legacy font-tools0.2.1 fixture environment. Those
+font delivery/intake scenarios were not rerun or accepted here. Current Format
+capability, package pin, job/clone/import ownership and warning criteria have
+separate passing evidence above; seven-family/whole-document work remains stage4.
+
+Fresh scoped review: no Critical/Important finding; declined-to-judge list empty.
+Deferred minor: two Core guide headings have a duplicate literal `##`; cosmetic
+only, keep the immutable verified package instead of repacking for that nit.
+Review's pending standalone test prerequisite is satisfied by final service-suite
+JSON and service-result.json; skipped fixture scenarios remain explicitly unverified.
+
+**Remaining:** stage4 stays pending. Development lanes remain unmerged; primary
+branches, release, tags, remotes, installed plugin/runtime and original drafts
+are unchanged. Isolated test containers may be stopped with their state retained.
