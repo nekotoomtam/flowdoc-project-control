@@ -2774,3 +2774,66 @@ Service/plugin checks, source-to-package identity and guide snapshot. Existing
 106page evidence may be reused only after proving executable/resource identity.
 Unknowns: stale guide wording and deployment versions must be resolved; optional
 font fixtures remain unverified. Release/install authority remains absent.
+
+#### ผลเตรียมชุดผู้สมัคร — ยังไม่ออก release
+
+Prepared Core0.4.3 source `559b126`, Service0.4.3 source `92e7ff1`, and
+FlowDocMake0.2.4 source PC`9af5575`; plugin guide snapshot source `7bdddd9`.
+These are local development candidates, not tagged releases or installed builds.
+Runtime source, SQL, native tools and font binaries are unchanged from integrated
+dev.2. Updated Core README/template-guide, Service README/usage, explicit image
+defaults in Compose/.env.example, plugin manifest/README/skill and exact pins.
+Distinguished text-block `props.heightMode:fixed` overflow errors from Format
+maximum-height omission; corrected model18 example scope, helper availability
+and upgrade instructions through migration021. No new startup guide was added.
+
+Final Core tarball `flowdoc-core-0.4.3.tgz` SHA256:
+`64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+Service package/lock/vendor manifest and FlowDocMake compatibility pin agree.
+Old dev.2 archives remain unchanged. Compared all154packed files: changes are
+package.json version, README, OFL.txt line endings and its resource-manifest hash.
+License text normalizes identically; executable/font bytes are identical.
+All66matching native consumer PDFs are byte-identical to dev.2; this supports
+reuse of the prior106page review within its original scope and limitations,
+not a new source-fidelity or new seven-family intake claim.
+
+Checks: Linux Core700PASS and22consumer families PASS; Service build and full
+Linux/PostgreSQL318PASS/0FAIL/6optional fixture skips; host4PASS/3fixture skips;
+FlowDocMake23PASS/0FAIL/4optional legacy fixture skips; focused compatibility/
+snapshot7PASS. Actual candidate stdio preflight ready:true,23tools, exact image/
+versions/hash; all30guide hashes pass. Runtime-only Service image independently
+loads resources and generates a native one-page fixture PDF with networknone,
+no source mounts. This is runtime smoke proof, not a new visual-review claim.
+Project Control data/diff checks pass. Remote default branches confirmed by
+GitHub symbolic HEAD; existing release histories each retain9annotated versions.
+
+Verification incidents retained: first full suite ran before migrating its new
+base database (317PASS/1STORAGE_FAILED); migrated only that isolated database and
+reran unchanged candidate to318PASS/0FAIL. Initial preflight was invoked before
+its configuration existed; final preflight after prerequisites passed. The
+runtime image intentionally omits build-only verifyVendor.mjs; replaced that
+invalid checker invocation with in-container archive hashing and public Core
+native rendering, without adding build scripts to the runtime image.
+
+Delivery and evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-release-preparation/`.
+`delivery/delivery.json` binds source commits, versions, archive hashes and image
+IDs; delivery contains Core tarball, Core/Service source ZIPs, plugin ZIP including
+marketplace wiring and the five existing manuals/rules. No credentials, DB dumps,
+private source-document PDFs or installed configuration were added to delivery.
+Core consumer artifacts remain in primary Core `artifacts/1792242597324/`.
+Logs, package-comparison.json, service-result.json, context.json, runtime-check.json
+and final-check.json preserve scoped results. The temporary candidate API is
+stopped/removed after checks; isolated test DB and test images remain as evidence.
+
+Remaining before release: owner authorization, freeze exact final source trees,
+construct single-parent snapshots, verify tree equality, annotated version tags
+and atomic push with remote confirmation. None was performed here. Six Service
+and four plugin legacy fixture cases remain unverified in this round; their names
+are retained in service-result.json/plugin-tests.log, with earlier font-height
+evidence under the existing font-height plan. Do not report them as fresh PASS
+or waive a mandatory prerequisite if later release scope requires those cases.
+Existing SRS/SB1 source-fidelity differences remain deferred as above. Live-data
+backup/upgrade/restore and fresh installed-chat checks belong to separately
+authorized installation, not this preparation. No release/tag/remote refs,
+installed runtime/plugin/configuration or user DB/drafts changed.
