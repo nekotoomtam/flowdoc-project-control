@@ -2940,3 +2940,56 @@ delivery and remaining-test supplements retain their original hashes/locators.
 No installation/deployment, user-data changes, package/image publication or
 GitHub Release-page creation was performed. Next is separately authorized
 backup/install/live-data/installed-chat verification against this exact release.
+
+#### ติดตั้งและตรวจข้อมูลจริง — 2026-10-17 (รอเปิด Codex ใหม่)
+
+Owner authorized backup and installation of Core/Service0.4.3 and FlowDocMake0.2.4,
+including original-document and native-chat checks. Single-room inline operator /
+Evidence Reviewer / Project Control Steward; execution IDs N/A. This existing
+canonical status is updated without changing product contracts or release refs.
+
+Before installation, backed up the quiescent live PostgreSQL database, staging,
+output, local configuration, launcher and previous plugin cache;58files have
+recorded hashes. Restored the actual backup into an isolated database/storage,
+applied migrations019–021, verified replay applied nothing, and regenerated both
+original PDFs successfully before changing the live API. Backup contains private
+credentials and is retained locally outside delivery.
+
+Live endpoint remains `http://127.0.0.1:3018`, using the original database and
+volumes. API now runs `flowdoc-service:0.4.3`, image
+`sha256:04b95ce9eb94d5ebb10e6a53b8b4352b164edf1e2436e0331139ab5bcec24190`.
+Core checksum is still `64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+Installed plugin0.2.4 through the supported local marketplace installation;
+all47installed files match the released component source and its30guide snapshot
+hashes pass. Local configuration and the existing MCP launcher now select0.2.4.
+
+Actual live original drafts remain model18: SRS revision1 and ศบ.1 revision3,
+with unchanged definitions and fingerprints. Regenerated SRS98pages and ศบ.1
+2pages through the installed plugin. All100pages match previous output in
+rendered pixels at1100px, extracted text and normalized PDF links; reviewed all
+10contact sheets. The restored rehearsal also passed the same100page comparison.
+This proves installation regression coverage, not new source-fidelity acceptance:
+existing SRS missing-input/layout differences and ศบ.1 font/line differences
+remain. SRS retains4low-resolution image warnings; ศบ.1 has none.
+
+Live authorization checks return401without credentials,403for author credentials
+on the admin route, and200for administrator credentials. Restarted only the live
+API with no queued/running jobs; readiness recovered and both draft definitions,
+font catalog and saved PDF hashes persisted unchanged. Removed only this round's
+temporary rehearsal API; retained restored database/storage and backups.
+
+Native chat can call the new Service contract (models18/19, Format sizingv2), but
+this already-running chat still exposes15old tools. A fresh installed-plugin
+client is ready with23tools and exact0.2.4/Core–Service0.4.3 identity. This is not
+yet proof of the complete new native-chat catalog. Owner explicitly chose to
+close/reopen Codex themselves; no app or other-chat process was stopped.
+Installation remains **pending native-chat reload verification**, not complete.
+After reopening, discover and call `get_flowdocmake_context` through this chat,
+confirm ready/version/checksum and the23tool catalog, then close this checkpoint.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-install-043/`:
+`installation-checkpoint.json`, `backup-manifest.json`, `restore-proof.json`,
+`installed.json`, `live-pdf-review.json`, `live-permissions.json`,
+`persistence-proof.json`, `post-restart-context.json`, and `native-chat-contract.json`.
+Live PDFs are `live/srs.pdf` and `live/sb1.pdf`. No draft publication, original
+template migration, release/tag rewriting or package/image registry publication.
