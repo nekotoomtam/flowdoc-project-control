@@ -2471,7 +2471,7 @@ instruction; this plan does not dispatch agents or authorize execution now.
   newly rendered/omitted content. Audit `formatLayout.ts` warning conditions;
   positive frame => content stop, zero space => frame omission. Do not alter
   diagnostic shape or hide invalid child geometry, resources or font errors.
-- [ ] **แก้3 — packed consumers (owner Service and PC/FlowDocMake):** pack the
+- [x] **แก้3 — packed consumers (owner Service and PC/FlowDocMake):** pack the
   verified Core artifact and exact checksum; expose formatSizing.version2 in
   `src/http/authoring.ts`, require it in plugin `scripts/compatibility.mjs` and
   update affected examples/tests/guides. Keep already-correct warning persistence
@@ -2580,3 +2580,67 @@ pin/capability version2, Service/FlowDocMake checks and whole-document MCP hando
 Retained v1 archives, installed/live targets, source drafts/data, primary branches,
 release/tags and remotes are unchanged. No pack/version bump, merge, release,
 tag, push or installation. Keep the unmerged lanes for the next owner decision.
+
+### ผลแก้ v2 ช่วง3 — packed consumers (2026-10-17)
+
+Owner authorized stage3 only: Core package, Service and FlowDocMake integration.
+Roles Product Implementation Agent / Evidence Reviewer / Project Control Steward;
+single-room inline, execution IDs N/A, routine risk. Existing linked development
+lanes retained. Bases Coreebc782a, Service1769773, PCb4ea45c. No live installation,
+primary integration, release/tag/push or stage4 whole-document authoring.
+
+- Core `0.4.3-dev.2`, source commit `a87870977d6b49fc45bc242bfc399724909afa11`.
+  Final artifact: Core `artifacts/1792238382286/flowdoc-core-0.4.3-dev.2.tgz`;
+  SHA256 `8583805ff51223183ce68cbd2be3de2753dc1c6b70d9d1ff31d7fa3d964bc82f`.
+  Earlier provisional dev.2 build is not the delivery artifact; final README
+  version headers were refreshed before creating this exact archive.
+- Service `0.4.3-dev.2`, commit `dffea2d09d5f357360120a847457512132db2c37`;
+  vendor manifest, dependency and lock pin that exact new archive. Old v1 archive
+  remains unchanged. Contract advertises formatSizing.version2, diagnostic
+  envelopes remain version1. No migration or persistence schema change.
+- FlowDocMake `0.2.4-dev.2` requires the exact Service/Core versions and checksum,
+  capability2 and diagnostics1. Old/unknown capability and wrong runtime/hash
+  fail closed. Updated existing API/layout chapters and generated plugin snapshot;
+  no new mandatory startup reading. Candidate is untagged and not installed.
+
+| Acceptance / impact | Evidence |
+| --- | --- |
+| Capability old/new | Plugin RED4fail/2pass against v1 -> GREEN6; rejects missing/v1/v3 capability, wrong contexts/diagnostic version and wrong artifact. Service RED2fail/2pass against v1 demonstrates old whole-frame skip; all4 Format tests pass with new package/capability. |
+| Real package boundary | Linux/amd64 package build: Core700PASS/76files, build/native session and22 consumer families PASS. Exact installed tarball, no source mounts, networknone. New packed300/120 text and300/48.5 table cases verify fitting prefixes and zero-space warning. |
+| Pinned jobs / clone / import / permissions | Actual PostgreSQL and packaged Core: full original/prepared input and preview definition remain pinned after a later sizing edit. Original, clone and imported Section previews retain maximum sizing with independent IDs, correct warning identity and no skipped input. Wrong-owner read/import fails; stale revision rejected. Restart keeps warnings and saved PDF bytes. |
+| Failure and warning channels | Surviving reference to omitted content fails with omitted-destination and retained warnings, no downloadable partial PDF. Actual stdio MCP context is ready for candidate; clone/import/save/preview/status and save_preview_pdf retain revision1, fingerprint, both omission warnings and matching PDF hash after draft advances to revision2. |
+| Service / plugin checks | Standalone Service suite success:true,318PASS/0FAIL/6fixture skips; host build and final README delivery guard PASS. Plugin23PASS/0FAIL/4fixture skips; changed capability cases included. Skips are listed below, not relabelled PASS. |
+| Scoped PDF review | Final packed Format cases plus actual MCP saved PDF:8files/12pages rendered, text/page checked and visually inspected. Expected partial prefixes, closed table edges and ordinary auto/legacy flow retained. This is stage3 consumer proof, not stage4 whole-document or installed-chat readiness. |
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage3/`:
+core-identity.json, core-package-final.log, service-red.log, service-suite.log,
+service-result.json, plugin-red.log, plugin-green.log, plugin-suite.log,
+mcp-result.json, pdf-review.json and rendered/contact.png. Core consumer results
+remain in its final artifact directory. Original v1 source artifacts are retained.
+
+Verification incident: the first full Service run collided with a concurrently
+started test API because processor advisory locks are database-wide, not per
+schema. Stopped only the new API, reran the unchanged image alone, and verified
+318PASS/0FAIL. service-concurrent.log preserves the failed harness run. The final
+reviewer saw that earlier log before standalone completion; primary verification
+read the final successful JSON. No product repair was inferred from that incident.
+The isolated API also needed a bridge attachment for its loopback published port;
+its private database and all user deployments/data stayed separate.
+
+Coverage boundary: six Service skips require prior height-delivery configuration,
+supplied Sarabun/Pridi metrics/native height-helper fixtures or seven-family intake;
+four plugin skips require the legacy font-tools0.2.1 fixture environment. Those
+font delivery/intake scenarios were not rerun or accepted here. Current Format
+capability, package pin, job/clone/import ownership and warning criteria have
+separate passing evidence above; seven-family/whole-document work remains stage4.
+
+Fresh scoped review: no Critical/Important finding; declined-to-judge list empty.
+Deferred minor: two Core guide headings have a duplicate literal `##`; cosmetic
+only, keep the immutable verified package instead of repacking for that nit.
+Review's pending standalone test prerequisite is satisfied by final service-suite
+JSON and service-result.json; skipped fixture scenarios remain explicitly unverified.
+
+**Remaining:** stage4 stays pending. Development lanes remain unmerged; primary
+branches, release, tags, remotes, installed plugin/runtime and original drafts
+are unchanged. Isolated test containers may be stopped with their state retained.
