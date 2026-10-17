@@ -1837,7 +1837,7 @@ not writing this plan. Their resolution must be recorded here before code.
 
 Owner Core/Service/Project Control; discovery/design only.
 
-- [ ] กำหนด exact JSON บน Area placement, mode default=auto, fixed dimensions/
+- [x] กำหนด exact JSON บน Area placement, mode default=auto, fixed dimensions/
   units and validation. Proposed location is Area props; do not put policy in
   each data entry or change the `{format,data}` array. Decide supported placement
   contexts (Section root versus cell/repeat) against actual implementation.
@@ -1845,22 +1845,22 @@ Owner Core/Service/Project Control; discovery/design only.
   space, padding/border ownership and counting, exact-fit epsilon; if whole fixed
   frame does not fit remaining page, choose placement behavior explicitly.
   Never silently shrink it, exceed Section body or invent absolute coordinates.
-- [ ] ปิด stop cursor and report shape: Section ID, Area ID, entry index/Format,
+- [x] ปิด stop cursor and report shape: Section ID, Area ID, entry index/Format,
   node/row/line identity, reason and omitted range when known, tied to revision.
   No raw private text in diagnostic messages; do not guess omitted counts.
-- [ ] Resolve blocking ambiguity: fixed image omission skips that image then
+- [x] Resolve blocking ambiguity: fixed image omission skips that image then
   continues later content, or terminates remaining Area; distinguish from normal
   fixed text stop. Define standalone image versus image inside a table row.
-- [ ] ปิด policy ของ explicit page-break ภายใน fixed, unbreakable rows/groups,
+- [x] ปิด policy ของ explicit page-break ภายใน fixed, unbreakable rows/groups,
   rowspan/colspan, empty Area/table and frame too small for one line plus closure.
   Fixed may not call nextPage to spill; preserve existing allowBreak/keepStart
   unless an explicit reviewed contract defines otherwise.
-- [ ] ระบุ model/schema compatibility and exact diagnostic success/warning/error
+- [x] ระบุ model/schema compatibility and exact diagnostic success/warning/error
   categories. Old templates without mode must retain behavior; invalid geometry
   and malformed data remain errors. Partial fixed rendering is not a data loss
   mutation and must not silently look complete. Add small receiving/sending JSON
   examples here, not another guide. Stop at owner review before implementation.
-- [ ] ปิด TOC/reference handling เมื่อหัวข้อหรือ anchor อยู่ในส่วนที่ไม่ได้แสดง:
+- [x] ปิด TOC/reference handling เมื่อหัวข้อหรือ anchor อยู่ในส่วนที่ไม่ได้แสดง:
   ต้องไม่สร้างลิงก์ปลายทางหายหรือเลขหน้าเดา. Resolve this before choosing the
   composition/layout interface, not after delivering the final PDF fixtures.
 
@@ -1946,6 +1946,302 @@ storage only where required. Project Control existing FlowDocMake package/guides
   stop at owner review. Merge/cleanup, release/tag/push/install each require the
   applicable authorization; this documentation request grants none of them.
 
-**State:** Plan recorded; all Stage0–5 work remains unchecked/unimplemented.
+**State at plan recording:** All Stage0–5 work was unchecked/unimplemented.
 The older completed Section–Area checklist/results remain completed with their
 original accepted limitations. No existing evidence is rewritten as mode proof.
+
+### สัญญาช่วง 0 — Area sizing v1 (2026-10-17)
+
+**Authority Boundary:** This section defines a future Core/Service/FlowDocMake
+contract under the preceding plan. User authorized Stage0 documentation/design
+only; none of its JSON or diagnostics is supported by the current runtime yet.
+Single-room inline; role Planning Partner / Cross-Repo Boundary Reviewer.
+Execution IDs N/A. This does not change accepted Section–Area evidence or maps.
+The choices explicitly attributed to the owner come from this conversation;
+the remaining technical rules below are the Stage0 design decisions for review.
+
+#### 0A. Definition, placement and compatibility
+
+Sizing belongs to the Area placement node, not to Format definitions, data
+entries, font styles or Section paper settings. The v1 shape is exactly:
+
+```json
+{
+  "id": "place-meetings",
+  "type": "area",
+  "props": {
+    "areaId": "meetings-area",
+    "sizing": {
+      "mode": "fixed",
+      "height": { "value": 180, "unit": "pt" }
+    }
+  }
+}
+```
+
+- New explicit modes apply to nodeModelVersion19, with font schemaVersion1 or2.
+  `sizing` absent retains existing implicit auto/legacy behavior; no stored JSON
+  is automatically rewritten. Explicit auto is `sizing:{"mode":"auto"}` and
+  accepts no height. Fixed requires finite positive height, unit pt or mm;
+  conversion is pt=value for pt, pt=value*72/25.4 for mm. Unknown props/modes,
+  null, zero/negative heights and wrong units return INVALID_TEMPLATE.
+- Fixed placement is allowed only at an authored Section flow root. Auto may
+  still occur in any previously supported Area placement. Fixed inside table
+  cells/repeats, nested Areas, absolute positioning, Area width overrides and
+  Area-specific paper/band/numbering overrides are unsupported/invalid in v1.
+- Fixed width inherits the current Section body flow width after margins/bands.
+  It reserves its full declared height even with empty entries or early stop.
+  The following sibling begins after that reserved rectangle; it may naturally
+  move to a later page. No continuation rectangle is created for omitted data.
+- V1 adds no Area padding or visible Area border. Existing child spacing,
+  cell padding and table border geometry must fit inside the rectangle. A box
+  outline, if wanted by a template, is not implicitly painted by this mode.
+- Fixed height greater than a fresh applicable body region is LAYOUT_FAILED,
+  not an omission warning. Invalid child geometry or invalid/missing data stays
+  an error even if that child would later be omitted; no validation bypass.
+- Existing model18 and existing model19 without sizing preserve their old
+  behavior, including impossible-image errors. Explicit sizing opts into v1;
+  its normal auto line/table flow reuses existing behavior, while the oversized
+  image exception in0D is new and explicit. Model18 rejects the new sizing prop.
+- Template fingerprints include literal sizing; omitted sizing and explicit
+  auto may have different fingerprints despite equivalent ordinary flow. Clone/
+  import preserves sizing exactly while remapping IDs. No font schema bump,
+  model20, request wrapper or published-template migration is introduced.
+- Future authoring capability is `areaSizing:{version:1,modes:["auto","fixed"],
+  fixedPlacements:["section-root"],omissionWarningVersion:1}`. An older service
+  must reject unsupported sizing; callers must not strip it to make a save pass.
+  Capability/package updates occur only in the later implementation stages.
+
+#### 0B. Fit and stop rules
+
+- Measure before emitting. Use the existing shaped line height, child spacing,
+  top/bottom padding and required closing-stroke extent. Do not count padding
+  or border allowance twice when the measured slice already includes it.
+  All emitted geometry, including half a centered border stroke, must remain
+  inside the usable rectangle. Comparison tolerance is1e-6pt, applied once to
+  boundary comparisons, not repeatedly added as extra available space.
+- Auto continues whole lines to the next Section page as today. Fixed emits
+  only the longest prefix that fits the available geometry; at the first unit
+  that cannot fit it stops the entire Area. Later Format entries do not jump
+  ahead to fill gaps. Other sibling content outside this Area is unaffected.
+- Owner confirmed that an image that cannot fit fixed also stops the whole
+  Area at that image; do not skip it and render later entries. Source data is
+  retained in full. This stop rule is not a generic crop/clip operation.
+- A text line is atomic. An image frame is atomic. A root fixed-height text
+  block retains its own atomic reserved-frame contract: if valid but too tall
+  for the Area remainder, stop before it; text exceeding its own declared child
+  height is still an error, not silently converted to partial text.
+- A line/rule node is atomic together with its declared before/after spacing
+  and stroke extent; if it cannot fit fixed, stop before the node. Do not emit
+  half a decorative rule or borrow space reserved for another sibling.
+- An explicit page-break reached inside fixed stops that Area with reason
+  `explicit-page-break` and emits no page. Leading/repeated/trailing breaks in
+  auto retain current behavior. Unreached later break nodes are simply part of
+  the omitted remainder; they cannot affect following siblings.
+- If no next line/item fits an empty valid fixed frame, report that Area as
+  omitted, reserve the frame and continue outside it. Never spin through blank
+  pages or mark a protected row as partly emitted when it was not emitted.
+
+#### 0C. Tables and closure
+
+- Reuse existing row/cell measurement and the shared table-fragment painter.
+  With allowBreak:true, choose a vertical slice containing complete measured
+  text lines/image frames in each cell; unequal cell contents may end at
+  different logical positions. Do not cut a line, glyph or image at the boundary.
+- Account for header height, top/bottom padding and closing border before
+  accepting the next slice. If a header fits but no body unit fits, do not paint
+  a stranded header; auto moves that fragment, fixed stops before that table
+  fragment. A genuinely empty authored table follows its existing empty-table
+  behavior; it is not falsely diagnosed as body overflow.
+- Paint a closing bottom edge across the visible fragment and close its cell
+  sides. Shared edges are stroked once; rowspan/colspan retains the grid
+  topology and does not gain separators through merged cells. In v1 borders
+  retain the renderer's existing0.5pt geometry; this is not a new border-style API.
+- Auto reopens the continuation fragment and repeats headers only when the
+  table requests it. Every content unit appears once. Fixed closes the last
+  emitted fragment and stops; it does not paint pretend empty rows down to the
+  Area bottom, nor append closing text that was not in the source.
+- allowBreak:false means a whole logical row. Group keepStart means its existing
+  protected prefix plus first member unit. If it cannot fit fixed, stop before
+  that protected unit; do not relax the rule merely to fill a fixed rectangle.
+  Existing auto keepStart relaxation/warnings remain as implemented.
+- A spanning cell does not automatically make the entire span indivisible;
+  explicit row/group restrictions still govern. Per-cell pending cursors must
+  preserve row/group/member identity when only part of a logical row was shown.
+
+#### 0D. Images and visible links
+
+- Fit uses the configured image frame width/height, not source pixel dimensions.
+  Existing contain behavior within that frame remains; sizing mode never changes
+  the requested frame to hide overflow. Oversized width remains a layout error.
+- Explicit auto v1: if height fits a fresh printable region, move the whole
+  image when necessary. If height cannot fit any applicable fresh page region,
+  omit that whole image with warning IMAGE_NOT_SHOWN and continue in source
+  order, without a blank-page loop. Implicit legacy auto retains its old error.
+  For cell images, include table headers and padding in usable height; remeasure
+  the affected cell after omission, respecting remaining text and row policies.
+- Fixed: an image that does not fit remaining height is the stop unit, including
+  images in a table cell. Do not split it, skip past it, or draw it outside the
+  closed table slice. Stop warning is AREA_CONTENT_OMITTED, not two warnings for
+  the same image. Malformed resource/geometry remains an error in both modes.
+- A TOC node inside fixed is unsupported in v1 (INVALID_TEMPLATE); auto scoped
+  TOCs retain their current contract. Headings/anchors may exist inside fixed.
+  If an omitted anchor is still targeted by a visible reference or generated
+  TOC row, fail LAYOUT_FAILED with reason omitted-destination. Do not guess a
+  page, erase the reference, silently prune TOC rows or add reflow iterations.
+  Omission with no surviving reference to the hidden target may succeed.
+
+#### 0E. Result and omission diagnostics
+
+Use the existing Result/Issue warnings channel; do not add a second PDF status
+or put layout omissions into PreparedAreaValue.skippedIndices. Those indices
+describe input preparation, not visibility. Full original input and prepared
+entries remain intact; a diagnostic cursor is not a public resume/render API.
+
+- Successful partial PDF remains ok:true / job status:succeeded, with
+  hasWarnings:true in Service. One AREA_CONTENT_OMITTED issue per stopped Area
+  has action:skipped and structured `areaOmission` v1 below. It means only the
+  renderer finished; it is not full content coverage or source-fidelity PASS.
+- A standalone image omitted under explicit auto emits IMAGE_NOT_SHOWN with
+  the same source identity and a structured image cursor, but no claim that
+  the whole Area stopped. Other legacy warnings are preserved independently.
+- Stable identity: sectionId, placementNodeId, areaId, original zero-based
+  areaEntryIndex, areaFormatId and format key; nodeId is the resolved unique
+  node, sourceNodeId is the authored fragment node. Original indices are never
+  renumbered after partial rendering. Clone/import diagnostics use destination
+  IDs and retain ordinary origin metadata separately.
+- The warning path points to the saved definition placement. Each pending
+  cursor names the active resolved/source node and next undisplayed unit:
+  text uses zero-based measured lineIndex plus UTF-16 sourceOffset when known;
+  image uses kind:image without a line index. An entirely unshown atomic node
+  uses kind:node and nodeType (its authored type); protected groups also include
+  groupId/groupIndex. For example a reached break uses kind:node,nodeType:page-break.
+  This is a cursor descriptor, not a new document node type. Inside a table also supply rowId,
+  cellId and applicable groupId/groupIndex/itemIndex/repeatId. Include one cursor
+  per unfinished active cell, then traverse later nodes in original order.
+- Remaining entry range is [current entry index, originalCount), inclusive of
+  the partial entry. It is not a count of wholly omitted entries; the cursors
+  distinguish partial from untouched content. Do not invent aggregate row/line
+  counts. If no content is omitted there is no omission warning.
+- Bind warnings to templateId, revision and definitionFingerprint in the job/
+  preview envelope, plus the already pinned renderer/font identities. Line
+  cursors are meaningful only for that render. No private text, image bytes,
+  credential, DB/storage path or token appears in diagnostic messages.
+- Preserve warnings through processor restart, status reads and saved PDF
+  receipts. If layout later fails (for example omitted-destination), retain
+  diagnostics already collected as warnings, return the error, and expose no
+  newly succeeded PDF. Old successful job artifacts remain independently valid.
+
+Receiving data stays unchanged; this is a partial request example, not a full
+definition or a payload accepted by today's runtime with the new sizing prop:
+
+```json
+{
+  "docKey": "meeting-example",
+  "data": {},
+  "sections": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "data": {
+        "meetings": [
+          { "format": "meeting", "data": { "title": "Meeting 1", "companies": [] } }
+        ]
+      }
+    }
+  ]
+}
+```
+
+The miniature Format in this example declares only title/companies, not the
+larger real SRS meeting schema. Future successful partial-render response
+excerpt (IDs/fingerprint are illustrative; not an executed job receipt):
+
+```json
+{
+  "ok": true,
+  "value": {
+    "templateId": "20000000-0000-4000-8000-000000000001",
+    "revision": 2,
+    "definitionFingerprint": "example-only",
+    "status": "succeeded",
+    "hasWarnings": true
+  },
+  "warnings": [
+    {
+      "code": "AREA_CONTENT_OMITTED",
+      "path": "sections[0].source.fragment.nodes.place-meetings.props.sizing",
+      "message": "Area content exceeds its fixed frame; remaining content was not shown",
+      "action": "skipped",
+      "sectionId": "10000000-0000-4000-8000-000000000001",
+      "nodeId": "section-instance~meeting-text",
+      "areaOmission": {
+        "version": 1,
+        "reason": "height-limit",
+        "placementNodeId": "place-meetings",
+        "areaId": "meetings-area",
+        "areaEntryIndex": 0,
+        "areaFormatId": "meeting-format",
+        "format": "meeting",
+        "entryRange": { "start": 0, "endExclusive": 1 },
+        "pending": [
+          {
+            "kind": "text",
+            "nodeId": "section-instance~meeting-text",
+            "sourceNodeId": "meeting-text",
+            "lineIndex": 3,
+            "sourceOffset": 48
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+Reason enum for fixed is height-limit, image-does-not-fit,
+unbreakable-item-does-not-fit, or explicit-page-break. IMAGE_NOT_SHOWN uses
+reason image-exceeds-page and source identity/cursor in `areaImageOmission`
+version1, with fields version, reason, placementNodeId, areaId, areaEntryIndex,
+areaFormatId, format and pending exactly as above (pending contains the omitted
+image cursor); it does not carry an entryRange implying Area termination.
+Malformed definitions/data use existing validation error classes; impossible
+frame placement, width or referenced destination use LAYOUT_FAILED. No
+partial-success warning may conceal those errors.
+
+#### 0F. Placement decision pending owner reply
+
+Owner has confirmed fixed stops at an image that does not fit. The separate
+question about moving an entire fixed rectangle to the next page remains
+pending: move it intact when it fits there, or fail without moving. Until the
+owner answers, that branch is not closed and dependent runtime work must not
+start. An unanswered question is not approval. Other rules above are drafted
+for review; this record does not claim all Stage0 criteria have passed yet.
+
+#### 0G. Contract acceptance examples for later runtime tests
+
+These are expected results, not tests run against the current engine:
+
+| Case | Expected contract result |
+| --- | --- |
+| No sizing on an existing valid template | Legacy auto output preserved; no rewrite |
+| Explicit auto with many lines | Continue each line exactly once; no new Area/Section |
+| Fixed height100pt with ten20pt lines, no padding/borders | Five lines shown, stop before line index5, reserve100pt |
+| Same fixed frame with one20pt line or no entries | Reserve100pt, no omission warning |
+| Two20pt table lines, total vertical padding8pt, total outer stroke allowance0.5pt, frame48.5pt | Both lines fit; no omission |
+| Same geometry with48.4999pt frame | Only complete fitting lines; closed border and accurate pending cursor |
+| Table header fits but its first body unit does not | No isolated header; auto moves, fixed stops |
+| Protected row or group start does not fit fixed | Stop before protected unit, do not relax merely to fit |
+| Fixed table with unequal cells/spans | No partial glyph/image; closed shared slice and per-cell cursors |
+| Fixed remaining10pt before an image frame20pt | Stop before image and all later Area entries; other siblings continue |
+| Explicit auto image exceeds every applicable fresh-page capacity | Omit image with warning; no infinite page loop |
+| Existing implicit legacy auto with same impossible image | Preserve existing error behavior |
+| Explicit break reached inside fixed | Stop Area, do not create continuation page |
+| Hidden anchor targeted by a visible TOC/reference | LAYOUT_FAILED, no guessed destination or succeeded PDF |
+| Fixed frame exceeds full fresh-page capacity | LAYOUT_FAILED; no source mutation or frame shrink |
+| Fixed frame fits a new page but not the current remainder | Await owner placement answer in0F |
+
+Stage0 evidence budget is source/contract trace review, parsed JSON examples and
+documentation checks. No product test run, preview/PDF, DB mutation or installed
+plugin refresh is needed to verify this documentation-only work. Stage1–5 remain
+unchecked/unimplemented. Completion of Stage0 requires the placement answer,
+consistent checklist/contract updates and passing scoped documentation checks.
