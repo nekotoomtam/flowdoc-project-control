@@ -2463,7 +2463,7 @@ instruction; this plan does not dispatch agents or authorize execution now.
   no-entry, exact fit and margins/bands. Change `src/layout/documentFlow.ts` to
   remove the positive-remainder whole-frame skip and reserve effectiveHeight.
   Keep schema/model18 validation, no page move/retry and input immutability.
-- [ ] **แก้2 — bounded components / diagnostics (owner Core):** test table
+- [x] **แก้2 — bounded components / diagnostics (owner Core):** test table
   padding+closing stroke at reduced capacity, protected rows/group start, merged
   active-cell cursors, header without body, image too tall for the remaining
   frame, atomic fixed-height child and explicit break. Change `cellTableFlow.ts`
@@ -2536,3 +2536,47 @@ whole-document MCP handoff. Existing v1 archives, Service/plugin pins, capabilit
 installed/live targets, original drafts/data and primary/release refs remain
 unchanged. No version bump, pack, merge, release, tag, push or installation.
 Stop at stage1 review as requested; do not infer authorization for stage2.
+
+### ผลแก้ v2 ช่วง2 — bounded components / diagnostics (2026-10-17)
+
+Scope: the owner's next instruction authorized stage2 only. Owner Core; roles
+Product Implementation Agent / Evidence Reviewer / Project Control Steward.
+Single-room inline, execution IDs N/A; routine risk. Reuse clean linked
+codex/format-sizing lanes; Core basee97cba1 and PC basefe500ee. Existing canonical
+record only, no new shared plan or map promotion. Stage1's stop remains historical.
+
+Core commit `ebc782a00253238e7741850fa9db84e90d0b9504` added
+`tests/layout/formatReducedComponents.test.ts`:16 acceptance cases using
+declared fixed300 with smaller available body regions. Existing bounded runtime
+already satisfies these cases; no production-code rewrite was needed. Initial
+test failures identified fixture mistakes (missing child heightMode, Section
+anchor namespace, invalid width rejected before layout), not runtime defects.
+No runtime RED/GREEN claim is made for correcting those fixtures.
+
+| Acceptance / impact | Current evidence |
+| --- | --- |
+| Reduced table capacity, padding and closure |48.5pt fits2whole20pt lines;48.4999pt fits1; positive0.1pt fits none and emits content omission. Closing sides/bottom plus half-stroke remain inside the effective frame. Next fixed call at zero gets frame omission. |
+| Protected rows, headers and group starts | Earlier fitting rows remain, later protected row stops whole; no isolated header without body; keepStart prefix stays with first member without relaxation. |
+| Merged cells | Rowspan/colspan fragments close correctly; separate active unfinished cells retain independent line cursors and table/row/cell identity. |
+| Images, atomic child and break | Root/cell image cannot split or skip ahead in fixed; later auto entry still flows. Valid fixed-height child stops whole, invalid child text retains layout failure. Explicit break stops without advancing the fixed instance. Invalid cell width is rejected during template validation. |
+| Links / contents / warnings | Visible heading remains on its actual page and TOC number/internal annotations point there. Deliberately omitted unreferenced destinations stay absent; surviving reference or TOC fails with omitted-destination and preserves collected omission warnings. No new successful PDF is produced on failure. |
+| Input / source regressions | Composed inputs unchanged by layout; public native runs retain request/template and empty skippedContentIndices. Full Core700PASS/76files, no skips; TypeScript build PASS. Existing auto/model18 and schema/resource regressions included. |
+| Native source PDF review |5PDFs/8pages generated through public engine in Linux/amd64 with current read-only dist over existing verified resource image. Every page rendered and visually inspected; text, whole-image paint operations, page counts, internal targets and repeatable PDF bytes checked. Auto image case intentionally uses3pages: fixed prefix, auto text, whole auto image. This is source-layout evidence, not a new package or MCP proof. |
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-sizing-v2-stage2/` contains
+core-suite.log, build.log, native-check.mjs, native-result.json, review_pdf.py,
+pdf-review.json, original acceptance inputs and rendered/contact.png.
+PDF cases: reduced-table, merged-table, protected-row, whole-image, visible-links.
+Negative reference/TOC cases preserve issues/warnings in native-result.json.
+Fresh scoped review PASS: no Critical/Important finding; declined-to-judge list
+empty. Deferred minor: native omitted-reference fixture contains both reference
+and TOC, so the recorded native error reaches TOC first. Reference-only failure
+is independently verified by the new unit test, but not by a separate native
+negative fixture. This limits evidence attribution, not Stage2 acceptance.
+
+**Remaining:** stages3–4 remain pending: new packed artifact and exact consumer
+pin/capability version2, Service/FlowDocMake checks and whole-document MCP handoff.
+Retained v1 archives, installed/live targets, source drafts/data, primary branches,
+release/tags and remotes are unchanged. No pack/version bump, merge, release,
+tag, push or installation. Keep the unmerged lanes for the next owner decision.
