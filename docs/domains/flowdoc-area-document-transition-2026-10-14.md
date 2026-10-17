@@ -1708,3 +1708,29 @@ rendered revision2เฉพาะ metadata ที่ใช้ตรวจ pinnin
 ยังเก็บชุดทดสอบ3025/3035และ backupเพื่อ review; host-service worktreeของช่วง4ยังจำเป็น
 ต่อ fresh MCP. ไม่มี lane ใหม่ให้รวม/ลบในช่วง5. ไม่ merge product branches, release,
 tag, push, publish หรือ install. หยุดที่ชุดส่งมอบให้เจ้าของตรวจตามขอบเขตที่อนุมัติ.
+
+### ยืนยันตัวหลักและ cleanup หลังช่วง 5 — 2026-10-17
+
+เจ้าของสั่งรวมตัวหลักและเคลียร์ส่วนที่ไม่ใช้ก่อนกลับมาคุย Area/Format โดยไม่ขึ้น release.
+Role Lane Reconciliation Reviewer / Project Control Steward; bounded inline maintenance,
+execution IDs N/A. ตรวจสดแล้ว product changes รวมอยู่บนตัวหลักครบก่อนคำสั่งนี้:
+Core `codex/template-binding` ที่ `c340c4f`, Service `codex/template-registry`
+ที่ `08a7131`; ผลช่วง4/5อยู่บน Project Control `main` ที่ `bbf418d` ก่อนบันทึกนี้.
+ไม่มี task branch หรือ commit รอ merge จึงไม่สร้าง merge commit ซ้ำ.
+
+ทั้งสาม primary checkouts สะอาด; Core/Service package identity และ vendored artifact
+ตรงชุดที่ตรวจแล้ว. ตรวจ checksum ชุดส่งมอบ107ไฟล์ตรงทั้งหมดและใช้ผลช่วง5เดิมซ้ำ;
+ไม่เปลี่ยน template/request/runtime/dependencies หรือรัน PDF300หน้าซ้ำ.
+หลักฐาน `section-area-stage5/main-integration-before.json` บันทึก refs/branches/
+worktrees และ identity; `main-integration.json` เก็บผลหลังปิดงาน.
+
+ไม่มี local task branch หรือ worktree ที่หมดหน้าที่เหลือให้ลบในสาม repo นี้.
+คง development branches เดิม, release และ tags. Detached worktree
+`section-area-stage4/host-service` ยัง clean และอยู่ที่ Service commit เดียวกับตัวหลัก;
+config ของช่วง4/5และ restore ทั้งสามไฟล์ยังอ้าง compiled Service/SDK ที่นี่ จึงยังใช้งาน
+และต้องเก็บไว้. Archived managed worktrees ไม่ใช่ active lanes ที่ต้องคืนมาลบซ้ำ.
+ไม่ลบหลักฐาน/backup/ชุดทดสอบ และไม่ sweep งานอื่นนอกขอบเขต.
+
+รอบนี้เปลี่ยนเพียงบันทึกสถานะเดิมใน Project Control; คง Core/Service0.4.2-dev.3
+และ FlowDocMake0.2.3-dev.3. ไม่เปลี่ยน release/tag/remote refs, ไม่ push/install.
+พร้อมกลับมานิยามงาน Area/Format ที่พักไว้เป็นขอบเขตถัดไป; ยังไม่เริ่มพัฒนาอัตโนมัติ.
