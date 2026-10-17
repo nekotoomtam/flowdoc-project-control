@@ -2837,3 +2837,61 @@ Existing SRS/SB1 source-fidelity differences remain deferred as above. Live-data
 backup/upgrade/restore and fresh installed-chat checks belong to separately
 authorized installation, not this preparation. No release/tag/remote refs,
 installed runtime/plugin/configuration or user DB/drafts changed.
+
+#### ปิดข้อทดสอบที่ข้ามก่อน release — 2026-10-17
+
+Owner authorized completing the six Service and four FlowDocMake fixture cases,
+with cause classification and no release/install. Single-room inline verification
+with bounded test maintenance; execution IDs N/A, routine risk. PC owns this
+status and two plugin test assertions; Service owns its unchanged integration
+tests. Existing record is canonical; no new mandatory reading or guide snapshot.
+
+All10previously skipped cases now PASS. Service's targeted proposal/supplied-font
+and delivery-guard files:26PASS/0FAIL/0SKIP, including all6identified skipped
+names. The earlier318passing Service cases are reused for the unchanged candidate;
+this is not one fresh324test invocation. FlowDocMake's complete suite now runs
+27PASS/0FAIL/0SKIP, including all4previously disabled cases. Core/Service0.4.3,
+FlowDocMake0.2.4, Core checksum and delivered plugin bytes remain unchanged.
+
+Evidence coverage: real seven-family input includes TH Sarabun New custom and
+six supplied Google families; measured non-identity Sarabun/Pridi size adjustment;
+native stdio proposal/confirmation through authenticated Service/PostgreSQL;
+two unrelated-port guard rejections before admin mutations; real inspected binding
+accepted without repeating intake. Plugin checks use a new cloned draft whose
+font release was retired only in an isolated restored database, with readiness
+still ready. A deliberately corrupted archive fails preflight and is restored;
+final native preflight is ready with the original checksum. Both launcher/checker
+use the selected configuration even with an empty simulated home directory.
+
+Cause classification:
+- Environment: explicit HEIGHT_DELIVERY_CONFIG, FONT_FIXTURE_DIR,
+  HEIGHT_SUPPLIED_DIR, FLOWDOCMAKE_PLUGIN_ROOT, FONT_TEST_CONTAINER and FONT_PROOF_DIR
+  were absent. Original supplied files and retained review state were available.
+  Two test APIs initially competed for the same database worker lock; reran one
+  at a time. A host-only attempt to read Docker-internal DB DNS was corrected to
+  a read-only database inspection through Docker. These are test setup issues.
+- Test harness: two assertions hardcoded plugin0.2.1. With the complete fixture,
+  unmodified tests give2PASS/2version failures; amended only those assertions to
+  require the exact selected plugin manifest version, then all27PASS. No checksum,
+  authentication, ownership or compatibility condition was weakened.
+- Reporting: the previous external report filtered status `pending`, while Vitest
+  used `skipped`, so its name list was empty despite the recorded6skip count.
+  New readiness.json recovers all6names from the original JSON and maps each to
+  a fresh passing assertion. The original report/logs remain historical.
+- Product runtime: no defect found in these10cases and no runtime/SQL/package
+  repair needed. Existing unrelated source-fidelity limitations remain unchanged.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-remaining-tests/`:
+readiness.json, service-fonts.log, service-guards-final.json, plugin-red-complete-
+fixture.log, plugin-green.log, font-tools-proof.json and final-preflight.json.
+Earlier setup failures remain in separate logs. Private dump/config/credentials
+stay outside delivery. Original source environment's font release remains active;
+retirement affected only its restored test copy. Temporary APIs are stopped and
+removed after checks; isolated DB/staging evidence is retained. No user drafts,
+installed environment or original font library were mutated.
+
+This supplement closes the six/four fixture prerequisites listed in the previous
+delivery record; immutable delivery archives are not replaced. Remaining steps
+are owner-authorized snapshot/tree/parent checks, annotated tags and atomic push,
+then separately authorized installation/live-data/installed-chat verification.
+No release/tag/remote refs or installation were changed in this round.
