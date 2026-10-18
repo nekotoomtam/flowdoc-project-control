@@ -1,4 +1,4 @@
-export const supported={service:'0.4.3',core:'0.4.3',coreArtifactSha256:'9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06'};
+export const supported={service:'0.4.4',core:'0.4.4',coreArtifactSha256:'dc65df98e1a605236e0c2e4f13dc1595b1b9924709ceed9ab276ee0a6006a529'};
 export function usesGroupLabels(definition){
  // Only declaration owners: never traverse schemas/defaults or sample business data.
  const formats=definition?.areaFormats;

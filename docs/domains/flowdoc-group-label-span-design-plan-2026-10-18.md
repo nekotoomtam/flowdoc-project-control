@@ -3,9 +3,11 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0–4 ผ่านตามขอบเขต candidate เมื่อ 2026-10-18**.
+สถานะ: **ช่วง 0–5 ผ่านตามขอบเขตเซลล์ชื่อกลุ่มและเตรียมส่งมอบ เมื่อ 2026-10-18**.
 Core candidate รับ declaration ขยายข้อมูลและจัดหน้า; Service/FlowDocMake เชื่อมแล้ว.
-ช่วง 5 ยังไม่ทำ. งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง.
+ชุดพัฒนา Core/Service 0.4.4 และ FlowDocMake 0.2.5 พร้อม checkpoint รวมงาน.
+งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง;
+หก external font-height checks ยังไม่ยืนยัน จึงไม่อ้าง readiness ครอบคลุมทุกฟีเจอร์.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -706,14 +708,82 @@ Core SHA `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`
 
 ### ช่วง 5 — ตรวจร่วมและเตรียมส่งมอบ
 
-- [ ] สรุป acceptance-to-evidence coverage ของช่วง 0–4 พร้อมรายการที่ไม่ผ่าน
+เริ่ม 2026-10-18 ตามคำสั่งให้ต่อช่วง 5: single-room inline, role Evidence Reviewer /
+Documentation Synthesizer; IDs N/A. ไม่เปิด execution เก่า. ขอบเขตเพิ่มเฉพาะ
+คู่มือเดิม Core README/template-guide, Service README/usage, plugin README/skill,
+version manifests/locks/pins และ generated plugin snapshot; ไม่แก้พฤติกรรม runtime.
+เตรียม development candidate Core/Service 0.4.4 และ FlowDocMake 0.2.5
+เพื่อแยกจาก installed 0.4.3/0.2.4; release approval ยังไม่รวมในคำสั่งนี้.
+Proof budget: ทวน G01–G20 กับ evidence เดิมที่ฐานยังตรง, ตรวจ packed Linux consumer
+ของ archive ใหม่, byte identity ของ renderer/resources เทียบช่วง 4, native API/MCP
+เฉพาะผลกระทบ version/pin และตรวจ snapshot/ตัวอย่าง; ไม่ตรวจทุก suite ซ้ำโดยไม่มีเหตุ.
+Document budget: แก้ entrypoints เดิมและแผนนี้ ไม่เพิ่ม startup reading.
+หก external font-height checks ยังคงเป็น unverified จนมี proof จริง;
+ไม่ใช่การลด group-label acceptance หรืออนุญาต release.
+
+- [x] สรุป acceptance-to-evidence coverage ของช่วง 0–4 พร้อมรายการที่ไม่ผ่าน
   หรือไม่ได้ตรวจ; skipped ไม่เท่ากับ PASS.
-- [ ] ตรวจคู่มือ เวอร์ชัน package/checksum capability และตัวอย่างรับ–ส่งให้ตรงกัน.
-- [ ] เก็บชุดส่งมอบและความต่างที่ยอมรับไว้ในจุดอ้างอิงเดียว; เสนอ checkpoint
+- [x] ตรวจคู่มือ เวอร์ชัน package/checksum capability และตัวอย่างรับ–ส่งให้ตรงกัน.
+- [x] เก็บชุดส่งมอบและความต่างที่ยอมรับไว้ในจุดอ้างอิงเดียว; เสนอ checkpoint
   การรวมงานและ cleanup เฉพาะงานสะอาดที่รวมแล้วตามการอนุมัติในตอนนั้น.
 
 ผ่านเมื่อไม่มีช่องว่างใน mandatory acceptance และแยกข้อจำกัดเดิมได้.
 **หยุดก่อน release/tag/push และติดตั้ง** จนมีคำสั่งอนุมัติขั้นนั้นโดยชัดเจน.
+
+ผลช่วง 5 — **PASS เฉพาะ feature scope และชุดพัฒนาเตรียมส่งมอบ**:
+
+- ทวน G01–G20 กับหลักฐานช่วง 0–4: declaration/composition 52 cases,
+  layout 25 cases, clone/import/rights/job pin และ capability/readiness ผ่าน API/MCP,
+  UAT mock เดิมกับกรณีเพิ่มและ regression SRS/ศบ.1 ครบ.
+  G14 พื้นที่ศูนย์ใช้ admission guard ของ Format ก่อนเรียก renderer ร่วมกับ
+  label-specific positive-frame omission; G18 ใช้ shared omitted-destination guard
+  และ group-label anchor/TOC tests. ไม่สร้างชุดตรวจซ้ำสำหรับ guard ที่ไม่เปลี่ยน.
+- เพิ่มคู่มือ groupLabel ใน Core README/template-guide เดิม ครอบคลุม field เดียวกัน,
+  empty row ที่แบ่งไม่ได้, members/empty, suffix, fixed, errors และข้อจำกัด;
+  ไม่เพิ่มเอกสารเริ่มอ่านของ FlowDocMake. Service README/usage และ plugin entrypoint
+  ระบุคู่รุ่นและ checksum ตรงกัน; snapshot สร้างจาก canonical inputs 30 ไฟล์.
+- Core commit `e1a65178815f1657ebe464aca23a8a0a4219938c`, Service
+  `e605d9370d887ecbac835cd65d264c1607f1bba7`; FlowDocMake อยู่ PC branch
+  `codex/group-label-stage3-20261018` (terminal commit อยู่ใน delivery manifest).
+  คู่รุ่น Core/Service **0.4.4**, FlowDocMake **0.2.5**; models18/19 และ schema1/2
+  ไม่เพิ่มรุ่นโมเดล. Core archive `flowdoc-core-0.4.4.tgz` SHA-256
+  `dc65df98e1a605236e0c2e4f13dc1595b1b9924709ceed9ab276ee0a6006a529`
+  ตรง vendor manifest, SHA512 ของ lockfile และ plugin compatibility pin.
+  เก็บ archive รุ่นก่อนครบ ไม่เขียนทับของที่ออกใช้แล้ว.
+- Core packed Linux/amd64 build: **778 tests/78 files**, native consumer
+  **23 กลุ่มตรวจ** ผ่าน. ใน archive ใหม่ต่างเฉพาะ README/package.json;
+  renderer/resources/native runtime อีก **154 ไฟล์ byte-identical** กับช่วง 4.
+  PDF จาก consumer **72 ไฟล์/306 หน้า byte-identical** กับผลช่วง 2
+  (รวมกลุ่มใหม่ 6 PDF/19 หน้า ซึ่งตรวจ raster identity เพิ่ม).
+  จึงใช้ visual proof ของ UAT/SRS/ศบ.1 ช่วง 4 รวม 210 หน้าต่อได้โดยไม่อ้าง
+  ว่ารันเอกสารธุรกิจทั้งหมดซ้ำด้วย engine ที่ต่างจากเดิม.
+- คู่แพ็กเกจใหม่ผ่าน Service native **7/7** และ FlowDocMake **24/24**, ไม่มี skipped;
+  actual stdio context ready, packageVersion 0.2.5, runtime Core/Service0.4.4,
+  groupLabelSpans v1 และ formatSizing v2 ตรงสัญญา. PDF API/MCP **5 ไฟล์/8 หน้า**
+  ตรวจ strict parsing/ข้อมูล/คำเตือนและภาพทุกหน้าผ่าน.
+- การลอง host plugin tests โดยไม่ตั้ง candidate environment ครั้งแรก fail/skip
+  เพราะใช้ runtime ที่ติดตั้งเดิมและไม่มี test config ไม่ใช่เหตุให้แก้ compatibility
+  ให้รับ checksum ผิด; ใช้ isolated runner ที่ตั้ง environment ครบแล้วผ่าน 24/24.
+  independent review หนึ่งรอบพบคู่มือ Service ยังระบุ FlowDocMake0.2.4 สองจุด;
+  เพิ่ม assertion ให้เห็น fail แล้วแก้เป็น0.2.5 และผ่าน. ไม่มีข้อพบสำคัญค้าง.
+- จุดอ้างอิงชุดส่งมอบเดียว:
+  `C:/Users/nekot/Documents/Codex/2026-10-18/group-label-stage5/delivery/manifest.json`.
+  มี Core archive, Service source archive, plugin archive, สำเนาแม่แบบ/input เจ็ดกรณี,
+  ภาพ 17 ชิ้น, PDF และ receipts, acceptance coverage และรายการความต่างช่วง 4.
+  `group-label-stage5/acceptance.json`, `pdf-review/core-comparison.json`,
+  `pdf-review/service-checks.json` และ native proof
+  `flowdoc-service-worktrees/group-label-stage3/artifacts/1792329754223/`
+  เป็นหลักฐานตรวจ; Core consumer อยู่ `artifacts/1792329618482/`.
+- **ไม่ใช่ผลผ่านของหก external font-height checks** ที่ข้ามในชุดเต็มช่วง 3:
+  height-delivery guard3, proposals2, supplied-fonts1 ยัง unverified.
+  เก็บรายละเอียดใน acceptance.json; ต้องจัด fixture/หลักฐานให้ครบก่อนอ้าง
+  release-wide verification. PC check:data ที่เริ่มไม่ได้เพราะไม่มี tsx ยังคง
+  not-run; รอบนี้ตรวจแผน/ลิงก์/snapshot/hash ตามผลกระทบ ไม่มี canonical data เปลี่ยน.
+- ไม่มี runtime feature code หรือ migration เปลี่ยนในช่วง 5. ระบบเดิม/ต้นฉบับคงเดิม;
+  native test containers ของรอบนี้หยุดและเก็บกวาดโดย runner แล้ว.
+  เก็บ worktree/branch ที่ยังไม่รวมพร้อม backup ช่วง 4; ไม่ลบ unmerged lane.
+  ขั้นถัดไปคือขออนุมัติรวมเข้าตัวหลักและ cleanup เฉพาะ lane ที่สะอาดรวมแล้ว;
+  ไม่รวม ไม่ push/tag/release หรือติดตั้งในรอบนี้.
 
 ## 6. ขอบเขตที่พักไว้และความเสี่ยง
 
