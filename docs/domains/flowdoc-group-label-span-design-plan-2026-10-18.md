@@ -3,8 +3,9 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0 ปิดสัญญาแล้วเมื่อ 2026-10-18; ช่วง 1–5 ยังไม่พัฒนา**.
-JSON ใหม่ด้านล่างเป็นสัญญาสำหรับ implementation ไม่ใช่สิ่งที่ runtime ปัจจุบันรับได้.
+สถานะ: **ช่วง 0 ปิดสัญญา และช่วง 1 ผ่านเฉพาะ Core candidate เมื่อ 2026-10-18**.
+ช่วง 2–5 ยังไม่พัฒนา. Core candidate รับ declaration และขยายข้อมูลตาม JSON ใหม่แล้ว;
+ยังไม่พร้อมอ้างผล PDF ตามสัญญาเต็ม และยังไม่รวม branch หลัก/release/ติดตั้ง.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -12,10 +13,11 @@ Service เป็นเจ้าของ persistence, API และงาน PD
 FlowDocMake เป็นเจ้าของเครื่องมือและคำแนะนำการสร้างแม่แบบผ่าน Service.
 
 Work size: medium; risk: routine สำหรับเอกสารรอบนี้.
-Document budget ช่วง 0: ปรับฉบับนี้ฉบับเดียว ใช้ลิงก์จาก contract เดิมที่มีแล้ว.
-Proof budget: เทียบข้อตกลงกับโค้ด/การทดสอบเดิม ตรวจตัวอย่าง JSON,
-ลิงก์และความครอบคลุมของแผน แล้วตรวจ diff; ไม่สร้าง runtime proof ของฟีเจอร์ใหม่.
-ไม่แก้ runtime, DB, draft, package, release, การติดตั้ง หรือ DOCUMENT_MAP.
+Document budget: ปรับฉบับนี้ฉบับเดียว ใช้ลิงก์จาก contract เดิมที่มีแล้ว.
+Proof budget ช่วง 0: ตรวจสัญญา/JSON/ลิงก์; ช่วง 1: focused/full Core tests,
+build, packed consumer และ independent review หนึ่งรอบพร้อม regression ของข้อพบ.
+ช่วง 0 ไม่แก้ runtime; ช่วง 1 แก้เฉพาะ Core declaration/composition และ tests
+ใน worktree แยก. ไม่แก้ DB, draft, release, การติดตั้ง หรือ DOCUMENT_MAP.
 ไม่เปิด execution เก่าหรือถือว่าได้เปลี่ยนโมเดลของห้อง.
 เมื่อเริ่มพัฒนาให้เลือกโมเดลและฐานงานตาม workflow ปัจจุบันอีกครั้ง.
 
@@ -402,7 +404,8 @@ G14 ทดสอบทั้งศูนย์และค่าบวกที�
 Service baseline ที่สำรวจ: `92e7ff1cc902eddc6a53a1222abd7550cdeb89e5`;
 FlowDocMake source อยู่ใน Project Control `plugins/flowdocmake` รุ่น 0.2.4.
 ต้องตรวจฐานใหม่ก่อนช่วง 3; ถ้าเปลี่ยนให้ระบุผลกระทบและตรึงใหม่ ไม่อ้าง proof เดิมข้ามการเปลี่ยน.
-ยังไม่มี Core package/checksum สำหรับ feature นี้; เป็นผลผลิตช่วง 3 ไม่ใช่สิ่งที่ค้างปิดสัญญา.
+เมื่อปิดช่วง 0 ยังไม่มี Core package/checksum สำหรับ feature นี้;
+แพ็กเกจสำหรับ integration เป็นผลผลิตช่วง 3 ไม่ใช่สิ่งที่ค้างปิดสัญญา.
 
 Owner paths เพิ่มที่ยืนยันแล้ว: Core `src/template/validateTemplate.ts`,
 `src/composition/validateResolvedDocument.ts`, `src/layout/documentFlow.ts`,
@@ -451,17 +454,53 @@ FlowDocMake จุดเชื่อมคือ `plugins/flowdocmake/scripts/se
 
 ### ช่วง 1 — Core: declaration, validation และขยายข้อมูล
 
-- [ ] เพิ่มสัญญาใน `src/template/types.ts` / `src/template/rowGroups.ts`
+- [x] เพิ่มสัญญาใน `src/template/types.ts` / `src/template/rowGroups.ts`
   และเจ้าของ validation ที่ช่วง 0 ยืนยัน ใช้ grid เดิมตรวจตำแหน่งและข้อห้าม.
-- [ ] เชื่อม `src/binding/expandRows.ts` และ composition/resolved model
+- [x] เชื่อม `src/binding/expandRows.ts` และ composition/resolved model
   ให้สร้างขอบเขต span จากสมาชิกจริง พร้อม scope/source mapping.
-- [ ] คง schema/model เก่าและ repeat/rowGroups ที่ไม่ใช้ฟีเจอร์นี้.
+- [x] คง schema/model เก่าและ repeat/rowGroups ที่ไม่ใช้ฟีเจอร์นี้.
 
 ตรวจ: 0/1/2/หลายสมาชิก หลายกลุ่มชื่อเหมือนกัน กลุ่มว่าง outer array ว่าง
 ลำดับข้อมูล clone สองสำเนา ชน ID และ declaration ผิด.
 ต่อยอด `tests/template/mergedTable.test.ts`, `tests/composition/rowGroups.test.ts`;
 ตรวจ forbidden cross-group span ยังถูกปฏิเสธ. ผ่านเมื่อ expanded grid ถูกต้อง
 โดยไม่ต้องส่ง rowSpan จากข้อมูลธุรกิจ และ old model 18/19 ที่ยังรองรับไม่เปลี่ยน.
+
+ผลช่วง 1 — **PASS เฉพาะ declaration/composition ของ Core candidate**:
+
+- Branch `codex/group-label-stage1-20261018`, commit
+  `4a36cc5f59f2a00d8c3ef8e55b1f4ded75eface0`, base `293c293` ตามช่วง 0.
+  Worktree: `C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/group-label-stage1`.
+- เพิ่ม validation model19 ทั้ง AreaFormat และ authored Section, default keepStart,
+  prefix ที่ไม่บังคับเฉพาะ feature ใหม่, label span ตามสมาชิก และ resolved metadata
+  `{cellId,sourceCellId,memberCount}`. label subtree มี groupIndex แต่ไม่มี itemIndex;
+  สมาชิกจริงยังมี itemIndex. ตรวจ forged span/provenance และกริดด้วยกลไกเดิม.
+- `tests/composition/groupLabels.test.ts` **52 tests PASS**: สมาชิก 0/1/2/5,
+  outer ว่าง, ชื่อซ้ำ, empty fallback, prefix, colSpan/คอลัมน์อื่น, schema1/2,
+  authored global/section sources, สอง Section สำเนาและ Format instance ซ้ำ,
+  invalid declaration/data, forged resolved metadata และ model18/19 เดิม.
+  การ clone/import ผ่าน Service จริงยังอยู่ช่วง 3; รอบนี้ตรวจ instance isolation ใน Core.
+- TDD: ก่อนเพิ่ม feature ชุดใหม่ fail ตาม declaration ที่ยังไม่รองรับ;
+  เพิ่ม authored-source regression ก่อนแก้ทางเข้า validation.
+  independent review พบ P2 ชื่อหลายบรรทัดถูกปฏิเสธหลัง bindInlines;
+  เพิ่ม 8 cases LF/CRLF/CR/ขึ้นบรรทัดต้น–ท้าย ทั้งกลุ่มมีสมาชิกและกลุ่มว่าง
+  ให้ fail ก่อนแก้ แล้วผ่าน. รักษา text/line-break และ provenance ทุก leaf;
+  ไม่มี Critical/Important finding ที่ยังไม่แก้ และไม่มี deferred minor.
+- Final Core build PASS; ทั้งชุด **753 tests / 77 files PASS**.
+  packed Linux/amd64 consumer แบบ non-root, network none, mounts []:
+  **23 กลุ่มตรวจ PASS**, รวม public composition ของ groupLabel แบบชื่อหลายบรรทัด.
+  `tests/consumer/checkRowGroups.mjs` เก็บผล `groupLabelSpans.stage:1`,
+  `composition:PASS`, `multiline:true`, `layout:not_checked` โดยชัดเจน.
+- Candidate tarball SHA-256:
+  `843056281473430dd8d0b9f934e0dd06ea35067040b7f4a3349a16b240466293`.
+  หลักฐานใน worktree: `artifacts/stage1/` (RED/GREEN/full/package logs) และ
+  `artifacts/1792318244362/result.json`, `row-groups-result.json`, `group-labels.resolved.json`.
+  แพ็กเกจนี้เป็น test candidate รุ่นฐาน 0.4.3 ไม่ใช่ release artifact ที่นำไปแทนของเดิม.
+- Coverage: G01–G06, G16 และ Core model guard ของ G17;
+  G19 เฉพาะ public packed composition. capability/job pin/สิทธิ์อยู่ช่วง 3.
+  ยังไม่ตรวจชื่อ “(ต่อ)” ใน PDF, fixed ของ label ใหม่ หรือ PDF UAT จริง (ช่วง 2/4).
+  ไม่เปลี่ยน layout, Service, FlowDocMake, DB, draft, รุ่นแพ็กเกจ, tag หรือการติดตั้ง;
+  เก็บ branch/worktree นี้ไว้ ไม่รวมตัวหลักและไม่ลบงานที่ยังไม่รวม.
 
 ### ช่วง 2 — Core: layout, หน้าต่อ และ PDF
 
