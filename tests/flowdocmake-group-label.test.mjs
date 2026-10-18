@@ -6,6 +6,16 @@ import {mkdtempSync,writeFileSync,rmSync,readFileSync} from 'node:fs';
 import {join,resolve} from 'node:path';import {tmpdir,homedir} from 'node:os';import {pathToFileURL} from 'node:url';
 const capability={version:1,nodeModelVersions:[19],schemaVersions:[1,2],continuationSuffix:' (ต่อ)',fixed:'formatSizing-v2',diagnosticsVersion:1};
 const definition={nodeModelVersion:19,schemaVersion:1,areaFormats:{meeting:{rowGroups:[{groupLabel:{cellTemplateId:'label',emptyCellTemplateId:'empty'}}]}}};
+test('detects declarations on a Format named examples and authored Section sources',()=>{
+ const t={...definition,areaFormats:{examples:definition.areaFormats.meeting}};
+ assert.equal(api.usesGroupLabels(t),true);assert.equal(api.checkGroupLabelCapability(t,{}).code,'GROUP_LABEL_SPANS_UNSUPPORTED');
+ const section={...definition,areaFormats:{},sections:[{source:{kind:'authored',rowGroups:definition.areaFormats.meeting.rowGroups}}]};
+ assert.equal(api.usesGroupLabels(section),true);assert.equal(api.checkGroupLabelCapability(section,{}).code,'GROUP_LABEL_SPANS_UNSUPPORTED');
+});
+test('does not infer a feature from schema defaults or sample business data',()=>{
+ const t={schemaVersion:1,nodeModelVersion:19,areaFormats:{ordinary:{inputSchema:{fields:{business:{type:'array',default:[{rowGroups:[{groupLabel:'business-data'}]}]}}}}},examples:[definition]};
+ assert.equal(api.usesGroupLabels(t),false);assert.deepEqual(api.checkGroupLabelCapability(t,{}),{ok:true});
+});
 test('group label preflight rejects missing/unknown capabilities without changing payload; old definitions stay usable',()=>{
  assert.equal(typeof api.checkGroupLabelCapability,'function');
  const before=JSON.stringify(definition),contract={groupLabelSpans:capability,formatSizing:{version:2}};
@@ -39,7 +49,10 @@ test('actual stdio guards validate/save before sending definitions to an old or 
    const r=await client.callTool({name,arguments:args});assert.equal(r.isError,true);assert.equal(JSON.parse(r.content[0].text).code,'GROUP_LABEL_SPANS_UNSUPPORTED');
   }
   assert.equal(calls.length,0);
-  const legacy={nodeModelVersion:18,schemaVersion:1};await client.callTool({name:'validate_template',arguments:{definition:legacy}});assert.deepEqual(calls[0].body.definition,legacy);
+  const legacy={nodeModelVersion:18,schemaVersion:1,globalSchema:{fields:{business:{type:'array',default:[{rowGroups:[{groupLabel:'business-data'}]}]}}}};
+  const old=await client.callTool({name:'validate_template',arguments:{definition:legacy}});assert(!old.isError);assert.deepEqual(calls[0].body.definition,legacy);
+  const namedExamples={...definition,areaFormats:{examples:definition.areaFormats.meeting}};
+  cap=undefined;const denied=await client.callTool({name:'validate_template',arguments:{definition:namedExamples}});assert.equal(JSON.parse(denied.content[0].text).code,'GROUP_LABEL_SPANS_UNSUPPORTED');assert.equal(calls.length,1);
   cap=capability;const r=await client.callTool({name:'validate_template',arguments:{definition}});assert(!r.isError);assert.deepEqual(calls[1].body.definition,definition);
  }finally{await client.close();await transport.close();await new Promise(r=>http.close(r));rmSync(dir,{recursive:true,force:true});}
 });

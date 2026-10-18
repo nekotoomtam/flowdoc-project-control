@@ -13,6 +13,7 @@ try{
  const tools=(await client.listTools()).tools;assert(!tools.some(t=>/publish|activate|retire|import_font/.test(t.name)));
  for(const [name,options] of [['auto',{height:160,members:8}],['fixed',{fixed:true,height:120,members:12}],['impossible',{height:100,members:0,name:Array(9).fill('NAME').join('\n')}]]){
   const {t,q}=fixture(options),draft=await invoke('create_template_draft',{name:'Group trial',docKey:'group-trial-'+randomUUID(),idempotencyKey:randomUUID()});Object.assign(t,{templateId:draft.templateId,docKey:draft.docKey});q.docKey=draft.docKey;
+  if(name==='auto'){const f=t.areaFormats.meeting;f.key='examples';t.areaFormats={examples:f};q.sections[0].data.content[0].format='examples';}
   const validated=await invoke('validate_template',{definition:t,sampleRequest:q});assert.equal(validated.fontReadiness.status,'ready');
   await invoke('update_template_draft',{templateId:t.templateId,definition:t,expectedRevision:0,idempotencyKey:randomUUID()});assert.deepEqual((await invoke('get_template_draft',{templateId:t.templateId})).definition,t);
   const job=await invoke('preview_template_draft',{templateId:t.templateId,expectedRevision:1,sampleRequest:q,idempotencyKey:randomUUID()});let status;

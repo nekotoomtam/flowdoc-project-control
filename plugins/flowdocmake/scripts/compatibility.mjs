@@ -1,8 +1,10 @@
 export const supported={service:'0.4.3',core:'0.4.3',coreArtifactSha256:'9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06'};
 export function usesGroupLabels(definition){
- // Declarations can live in Formats or authored Section fragments. Do not inspect user input data.
- const visit=v=>!!v&&typeof v==='object'&&(Array.isArray(v.rowGroups)&&v.rowGroups.some(g=>g&&Object.hasOwn(g,'groupLabel'))||Object.entries(v).some(([k,x])=>k!=='examples'&&x&&typeof x==='object'&&(Array.isArray(x)?x.some(visit):visit(x))));
- return visit(definition);
+ // Only declaration owners: never traverse schemas/defaults or sample business data.
+ const formats=definition?.areaFormats;
+ const owners=[...(formats&&typeof formats==='object'&&!Array.isArray(formats)?Object.values(formats):[]),
+  ...(Array.isArray(definition?.sections)?definition.sections.filter(s=>s?.source?.kind==='authored').map(s=>s.source):[])];
+ return owners.some(owner=>Array.isArray(owner?.rowGroups)&&owner.rowGroups.some(g=>g&&Object.hasOwn(g,'groupLabel')));
 }
 export function checkGroupLabelCapability(definition,contract){
  if(!usesGroupLabels(definition))return {ok:true};

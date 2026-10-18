@@ -46,7 +46,7 @@ test('Section19 candidate preserves the ID-addressed array without name or posit
  assert.equal(f.calls.find(c=>c.name==='update_template_draft').args.definition.sections[0].id,id);
 });
 test('candidate checks optional group-label capability before creating a draft or uploading',async t=>{
- const f=fixture(t);writeFileSync(join(f.plan.candidateDirectory,'template.json'),JSON.stringify({schemaVersion:1,nodeModelVersion:19,areaFormats:{f:{rowGroups:[{groupLabel:{cellTemplateId:'label',emptyCellTemplateId:'empty'}}]}}}));
+ const f=fixture(t);writeFileSync(join(f.plan.candidateDirectory,'template.json'),JSON.stringify({schemaVersion:1,nodeModelVersion:19,areaFormats:{examples:{rowGroups:[{groupLabel:{cellTemplateId:'label',emptyCellTemplateId:'empty'}}]}}}));
  await assert.rejects(runCandidatePlan(f.planPath,{invoke:f.invoke}),e=>e.code==='GROUP_LABEL_SPANS_UNSUPPORTED');
  assert.deepEqual(f.calls.map(c=>c.name),['get_flowdocmake_context']);
 });
