@@ -136,13 +136,34 @@ childเป็น text-block/image. แต่ละ item ขยายชุด c
 | memberRepeat.emptyRowTemplateId | Required; แถวสำรองเมื่อสมาชิกว่าง |
 | pagination.keepStart | Optional boolean; ตั้ง true เมื่อต้องรักษาชื่อกลุ่มกับจุดเริ่มสมาชิก |
 
-ต้องมีอย่างน้อย3แถวในrowTemplateIds; memberต้องเป็นแถวรองสุดท้ายและemptyแถวสุดท้าย.
+แบบเดิมต้องมีอย่างน้อย3แถวในrowTemplateIds; memberต้องเป็นแถวรองสุดท้ายและemptyแถวสุดท้าย.
 ต้องมี member และ empty template ในกลุ่ม; อย่าใส่แถวเดียวกันทั้ง repeats และ rowGroups.
 Empty group ยังแสดงชื่อบริษัทและempty row ไม่ใช่หายทั้งกลุ่ม.
 keepStart ไม่ใช่ keepTogetherทั้งกลุ่ม และไม่มี recursive groupไม่จำกัดระดับ.
 ใช้ [ตัวอย่าง grouped](../../examples/ai-template-authoring/grouped-template.json)
 คู่กับ [request](../../examples/ai-template-authoring/grouped-request.json) ซึ่งผ่าน
 validatorจริงเป็นฐาน แทนการเดาลำดับ rowTemplateIds.
+
+**Candidate เซลล์ชื่อกลุ่ม (model19, schema1/2):** ตรวจ
+`get_flowdocmake_context.contract.groupLabelSpans.version === 1` ก่อนใช้;
+ถ้าไม่มีหรือไม่รู้จัก ให้หยุดโดยคง declaration เดิม ไม่สร้าง rowSpan ตายตัวแทน.
+เพิ่มลง rowGroups ที่มี member/empty template:
+
+```json
+{"rowTemplateIds":["member-row","empty-row"],
+ "groupLabel":{"cellTemplateId":"member-group","emptyCellTemplateId":"empty-group"}}
+```
+
+สอง cell อยู่คอลัมน์/colSpan เดียวกันและไม่มี rowSpan; ภายในแต่ละ cell มี
+text-block เดียวซึ่งผูก string ชื่อด้วย field-ref scope:group ที่ required และ
+allowEmpty:false. ไม่ใส่ anchor/link/TOC/ภาพในชื่อ. prefix ไม่บังคับในแบบนี้;
+keepStart เป็น true เสมอ. span คำนวณจาก members.length; ว่างใช้ empty row
+พร้อมชื่อหนึ่งแถว. groups:[] ไม่สร้างกลุ่ม; ชื่อเหมือนกันยังเป็นคนละกลุ่ม.
+auto ข้ามหน้าซ้ำชื่อพร้อม ` (ต่อ)` โดยสมาชิกไม่ซ้ำ; fixed ใช้ Format sizing v2
+และไม่ต่อหน้า. ตรวจ warning `FORMAT_CONTENT_OMITTED.formatOmission.pending`
+ที่มี groupId/groupIndex/itemIndex เพื่อรายงานส่วนไม่แสดง. ถ้า auto ใส่ชื่อเต็ม
+รวม suffix ไม่ได้ ให้ `LAYOUT_FAILED` reason `group-label-does-not-fit`.
+ตรวจ readiness ของ suffix ในฟอนต์ชื่อด้วย; การ save ผ่านไม่ได้รับรอง PDF ครบ.
 
 ## 8. เลือกโครงข้อมูลให้แก้ต่อได้
 
