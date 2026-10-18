@@ -59,6 +59,10 @@ runtime development or establish unmeasured capacity.
 - An unsuccessful task can retain its data only until the original expiry. Keep
   task identity, terminal outcome and diagnostics after file deletion as a lasting
   record for possible future billing. Billing rules/charges are not defined here.
+- Image intake decision: optional `assetKey`, assets owned by their Section only,
+  and recoverable image failures skipped with durable reasons. Error-level selection
+  is deferred. This replaces earlier proposals for task-wide image sharing and
+  unconditional task failure on missing images; historical trial results stay intact.
 
 Expiry must stop accepting/processing/sending and revoke further writes; cleanup
 waits until owned workers/readers have stopped. Do not extend the expiry to avoid
@@ -152,7 +156,8 @@ still identify the exact definition, including any owned snapshot file needed.
 
 ### Five proposed new tables
 
-These are logical field groups, not executable SQL. UUID identifiers, bigint
+These are logical field groups, not executable SQL. New task/file IDs use UUID;
+Section references follow the validated template's identity contract. Use bigint
 byte/count values with nonnegative checks, timestamptz lifecycle times and bounded
 text/JSON metadata are proposed. Every table has `created_at`; mutable rows also
 have `updated_at`. No source/PDF blob or unbounded diagnostic array lives here.
@@ -160,7 +165,7 @@ have `updated_at`. No source/PDF blob or unbounded diagnostic array lives here.
 | Table | Proposed fields | Invariants and lifetime |
 | --- | --- | --- |
 | `tasks` | `id` (public `taskId`), server-bound `owner_key` and `created_by_principal`, optional `client_actor_ref`, `request_kind` (export/authoring preview), optional server-bound `billing_subject_key`, bounded external reference, exact template source reference/fingerprint, `status`, `state_version`, `created_at`, `updated_at`, immutable `expires_at`, receive/queue/process/send/terminal timestamps, `last_progress_at`, input/normalized digest, completeness summary, terminal reason/stage, `cleanup_status`, `cleanup_completed_at`, worker lease token/deadline | Main permanent record; no raw document fields. Server actor/owner, client actor attribution, template and deadline are fixed at opening. `expires_at = created_at + 3 hours`; one terminal outcome, no reset by status reads. Execution lease is not task lifetime |
-| `task_files` | `id`, `task_id`, role (payload/original image/normalized part/prepared image), client asset key where needed, logical part order, media type, declared/received/stored bytes, checksum, internal storage key, receive attempt, file state, published/deleted timestamps | Server-controlled paths; bounded paginated inventory, unique logical key/order in its declared scope. Store partial files safely; sealed input immutable. After removal retain only bounded metadata/tombstone and clear content-bearing/internal locator fields. Output bytes remain owned through `document_outputs`, not registered/counting twice here |
+| `task_files` | `id`, `task_id`, `section_id` for image assets, role (payload/original image/normalized part/prepared image), optional client `assetKey`, generated internal asset identity, logical data locator/order, media type, declared/received/stored bytes, checksum, internal storage key, receive attempt, file state, published/deleted timestamps | Server-controlled paths; image ownership and resolution use task + Section + asset identity, never task-wide key alone. Envelope files may have no Section. Store partial files safely; sealed input immutable. After removal retain bounded metadata/tombstone and clear locators. Output remains in `document_outputs`, not counted twice |
 | `task_resource_reservations` | `task_id` PK, `storage_held_bytes`, `storage_used_bytes`, `queue_slot_held`, reservation policy version, `released_at` | Durable quota accounting, one row per task; used bytes are included in held bytes, never add both. Require `0 <= used <= held`. Reserve bytes before writing, shrink/release after actual deletion. Terminal failure can release its queue slot while retaining storage until expiry; unfinished cleanup still consumes storage |
 | `task_events` | `id`, `task_id`, task-local sequence, optional job reference, event type, previous/new state, observed/recorded times, server actor, bounded safe reason/details, unique event key | Append-only durable lifecycle/delivery/cleanup history; sequence/key uniqueness prevents duplicate transition records. Do not emit one permanent event per uploaded chunk or poll. Progress counters can change without ledger growth. No tokens, raw values, full URLs or filesystem paths |
 | `task_usage` | `task_id`, `revision`, `measurement_version`, finalization time, ownership/request/template snapshot, measured counters, generation/delivery outcomes and evidence references, optional superseded revision/reason | Append-only fact snapshot for future billing; unique `(task_id, revision)`, revision 1 written once with the terminal transition. Corrections append a new revision with rationale; no overwrite/double counting. Keep indefinitely in this scope. No price, invoice, charged flag or automatic charge rule yet |
@@ -212,7 +217,7 @@ records must not depend on continued availability of temporary file rows/bytes.
 | `validating` | Full receipt sealed; checking/normalizing structured values and references | `queued` |
 | `queued` | Valid input admitted, waiting for processing resources | `processing` |
 | `processing` | Preparing resources, composing, laying out and generating PDF | `sending` |
-| `sending` | Complete acceptable PDF is being streamed on the same payload response | `succeeded` |
+| `sending` | PDF under the agreed skip-and-record policy is streamed on the same payload response; skipped-image findings remain visible in the task | `succeeded` |
 | `succeeded` | Server send completed according to the agreed boundary | Terminal |
 | `failed` | Receive/validation/process/delivery failure or interruption confirmed | Terminal |
 | `expired` | Nonterminal task reached its original absolute deadline | Terminal |
@@ -222,6 +227,10 @@ means PDF generation completed, not that `tasks.succeeded` can be set early.
 Render progress is exposed under task progress, without inventing a global percent
 across stages whose total work is unknown. Task responses include `taskId`, state,
 stage progress, `createdAt`, `expiresAt`, bounded warnings/error and file availability.
+Successful sending may have skipped images: preserve separate content completeness
+(`partial` when omissions exist), exact skip counts and paginated findings. The
+response remains PDF; do not inject a JSON report into it. Task success is server
+send completion, not a claim of complete source reproduction or zero warnings.
 Terminal task status may remain queryable after `expiresAt`; that timestamp controls
 temporary data/execution, not expiry of the permanent task identity.
 
@@ -262,7 +271,8 @@ retry remains an unresolved Stage 0 decision; safe initial proposal is a new tas
 - Proposed indexes: `tasks(owner_key, created_at, id)` for history;
   `tasks(expires_at, id)` partial on nonterminal states; pending cleanup/deadline
   index; unique nullable `generation_jobs(task_id)`; `task_files(task_id, role,
-  part_order, id)` plus scoped unique client keys; `task_events(task_id, sequence)`;
+  part_order, id)` plus canonical image-key uniqueness within `(task_id, section_id,
+  assetKey)` when present; `task_events(task_id, sequence)`;
   `task_usage(task_id, revision)` and owner/finalization history where measured need
   justifies it. Expiry cleanup also scans terminal failed tasks retaining files,
   not only the nonterminal expiry index. Queue/disk limits use integer bytes and
@@ -284,15 +294,19 @@ server-send result, and output/input digests where applicable. Unknown/unmeasure
 counts stay NULL with a measurement status/reason, not fabricated zeros. Wall time
 is not CPU time; optional measured memory/CPU values need their own units/method.
 Capture terminal facts before deleting files. Cleanup events can follow without
-rewriting the terminal usage snapshot. Preview/test work remains distinguishable
-from customer export, without deciding which is chargeable. Future invoices must
+rewriting the terminal usage snapshot. Skipped-image codes/counts, Section/field
+locations and content completeness remain recorded even when task sending succeeds;
+no automatic discount or charge follows from the default skip policy. Preview/test
+work remains distinguishable from customer export, without deciding which is
+chargeable. Future invoices must
 use explicit pricing and usage-revision rules; neither success nor failure creates
 a charge by itself. Persistent history will need access control, indexing and
 storage monitoring even though automatic record deletion is out of scope.
 
 ### Remaining decisions and proof before SQL/runtime work
 
-Close exact API examples, payload encoding, principal/billing-subject mapping,
+Close exact API examples and multipart binary-to-image-field binding,
+principal/billing-subject mapping,
 GB byte units, reservation estimates, per-record limits, receive retry and timeout
 values. Prove concurrent opening/upload, no double reservation, exact old/new input
 mode constraints, owner access, all state transitions, expiry at every phase,
@@ -306,11 +320,12 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
 
 1. Open an owned task with bounded size/template metadata; reserve capacity and
    return `taskId` as described above. Record the associated internal dataset.
-2. Send the entire dataset on one task-bound request. A single structured-data
-   body or a streamed multipart envelope for JSON plus binary images are proposed
-   representations to close in Stage 0; separate image API calls are not mandatory.
-   Client asset keys identify image references within the dataset; Service maps
-   them to internal identities. Clients do not discover other users' DB IDs.
+2. Send the entire dataset on one task-bound `multipart/form-data` request: one
+   `payload` JSON part and binary image parts. JSON may be delivered as a JSON file.
+   The server streams, extracts and registers assets; callers need not create an
+   internal asset manifest, storage path or DB image IDs. Binary parts still need
+   an unambiguous association with image fields in the payload; the exact binding
+   syntax/examples remain Stage 0 work, not inferred from file order or filename.
 3. Count bytes and hash while writing. Limit active streams, per-item bytes,
    per-dataset storage, aggregate storage, idle time and absolute lifetime.
    Transport buffering must apply backpressure and enforce limits on actual bytes.
@@ -318,9 +333,12 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
    renewal. A task accepts one payload attempt at a time and becomes immutable
    after complete receipt. Failed-transfer retry within the same task needs an
    explicit Stage 0 rule; no byte-offset resume or retained-PDF replay is promised.
-5. Seal only after all declared originals exist and checksums/counts match.
-   URL images, if supported here, must be retrieved under existing network guards
-   and stored before sealing; a URL declaration is not a pinned original.
+5. Seal after complete transport receipt with validated sizes/checksums for stored
+   originals. A truncated/malformed body is not complete receipt. A missing image
+   reference becomes a recorded image omission, not a requirement to invent a file
+   or fail the whole task. URL image sources, if supported, must be retrieved under
+   existing network guards and pinned or marked unusable before rendering; no
+   mutable URL is treated as a stored original. URL support is not added by this plan.
 6. Validate structured content and cross-file references after receipt using a
    bounded reader. Sealed/received-complete is distinct from schema-valid and
    admitted-to-process. No rendering starts against an incomplete dataset.
@@ -334,8 +352,57 @@ or invalid. The public task additionally tracks awaiting-payload, queue, process
 sending and terminal outcomes, with immutable dataset and output identities.
 Exact public names and JSON are Stage 0 decisions. Input validation remains distinct
 from complete receipt; cleanup state is distinct from task outcome.
-An oversized or invalid item can be rejected while receiving; storing first never
-means accepting unlimited bytes or skipping input validation.
+Transport/overall-capacity violations and unreadable structured input can be
+rejected while receiving; storing first never accepts unlimited bytes. Isolatable
+image failures follow the skip-and-record policy below instead of this fatal path.
+
+## Section-owned image forms and omission policy — owner decision 2026-10-18
+
+Image recognition follows Core's typed template/binding contract, not guesses about
+arbitrary text or a duplicate Service schema implementation. Service traverses
+Section/Area/Format values using that contract and a bounded reader, extracts image
+sources and builds the internal registry. `image` below denotes the image
+source representation; these are logical shapes, not executable endpoint examples.
+
+| Client form | Meaning |
+| --- | --- |
+| Image field contains `{ "image": ... }`, no `assetKey` | Generate a fresh internal asset identity for each image occurrence; do not auto-merge equal bytes, names or checksums |
+| Image field contains `{ "assetKey": "photo-001", "image": ... }` | Define an optional named image inline; other image fields in the same Section may use `{ "assetKey": "photo-001" }` |
+| `sections[i].assets` contains `[{ "assetKey": "photo-001", "image": ... }]` | Optional Section-local array; image fields in that Section reference its keys. `assets` is a sibling of that Section's `data`, not a root/document asset list |
+
+Resolve explicit keys only inside `(taskId, sectionId, assetKey)`. The same key in
+another Section denotes a different image. No cross-Section lookup, implicit
+fallback, doc-level assets or new image-scope selector is included. Inline named
+images and array declarations share the Section registry; declaration order is
+irrelevant after full receipt. References alone without any source cannot create
+an image. Contradictory sources for the same Section/key are ambiguous: do not
+select the first/last definition or borrow from another Section. Skip affected
+references and record the conflict; unrelated content continues. Repeated names
+do not require duplicate canonical DB entries. Unkeyed assets remain distinct.
+
+Initial behavior is fixed: skip recoverable image failures and record reasons.
+This includes an unresolved/mismatched key, conflicting definitions, a missing
+source, and an individually invalid/unsupported image that can be isolated safely.
+Skip only the affected image placements, not the surrounding data or Section.
+Keep existing image-frame/layout behavior; this policy does not redesign flow,
+fixed bounds or blank-space handling. Record omission in the resource registry so
+later rendering does not silently retry or duplicate the same diagnostic.
+
+Persist safe reason code, Section ID, logical field/Format/item locator and optional
+assetKey/internal asset ID, with skip counts and bounded paginated detail available
+through task feedback/events. Preserve these facts in terminal usage history before
+file cleanup. Do not require callers to assemble diagnostic manifests. Final PDF
+bytes contain no JSON error report. No selectable `errorLevel`, report/strict mode,
+or collect-all-then-stop implementation is part of this round; leave selection
+for a separately scoped future decision.
+
+Skip applies to isolatable image/content issues, not task authorization, unreadable
+JSON/multipart, global capacity exhaustion, cancellation, deadline or inability to
+write a valid PDF. Those still stop/reject the task safely. Existing privacy/network
+guards remain enforced; skipping does not grant access to a forbidden resource.
+Keep content completeness separate from transport success. Valid full-source UAT
+input still must render every expected image to pass full-source acceptance; the
+historical capacity-caused missing-image trial is not reclassified as a pass.
 
 ## Structured-data boundary
 
@@ -366,9 +433,10 @@ claiming large structured-document support; image-only success is insufficient.
 
 - Retain originals under dataset ownership; pin their identities, not mutable URLs
   or caller filesystem paths. Keep legacy immutability guarantees across awaits.
-- Prepare images serially initially. Deduplicate within the job using content
-  identity, frame/target parameters and transform-contract version. Distinct
-  placements remain distinct even when their bytes are shared.
+- Prepare images serially initially. Reuse only an explicitly shared Section-local
+  asset, with derivatives keyed by that asset's identity, target parameters and
+  transform-contract version. Checksums verify bytes; they do not auto-merge
+  unkeyed images or images from different Sections. Distinct placements remain.
 - Keep only image dimensions, format, identity and availability in Core layout.
   Materialize JPEG or compressed RGB/alpha embedding streams to job-owned files,
   one image at a time. Preserve orientation, color, transparency and current
@@ -407,9 +475,10 @@ claiming large structured-document support; image-only success is insufficient.
 - Distinguish corrupt/missing images, resource exhaustion, timeout and intentional
   fixed-format omissions. Report required images not rendered with bounded detail
   and paginated diagnostics. Low-resolution warnings alone do not mean missing.
-- For complete-source acceptance, missing required resources fails acceptance.
-  Exact preview partial-result and final-job status behavior is a contract decision;
-  do not silently change old succeeded-with-warning semantics.
+- Initial new-task behavior skips isolatable image failures and records omissions,
+  with partial content completeness even if sending succeeds. Error-level selection
+  is deferred. Full-source fidelity acceptance still requires all expected valid
+  images; old API behavior is not silently changed by this new-path design.
 - Dataset re-use versus one-job ownership, quotas across owners, expiry while jobs
   are queued/running, cancellation and same-task receive retry must be explicit
   within the owner decisions above. Do not introduce cross-task dataset re-use or
@@ -423,12 +492,12 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: review the task DB/state proposal above, two-call examples, single large upload/PDF response, ownership, expiry, permanent usage facts and budgets | Table reuse/new-table boundaries, transition/cleanup races and usage revisions, payload encoding, declared/actual bytes, reservation estimates, GB byte units, same-task retry and long-connection contract; no runtime changes |
+| 0: close contracts and budgets | Project Control + Service/Core: task DB/states, two-call multipart examples with optional Section-local keys, fixed image skip policy, ownership, expiry, usage and budgets | Binary-field binding, inline/array/unkeyed forms, no cross-Section reuse, skip reasons versus fatal errors, table/cleanup races, declared/actual bytes, reservation estimates, GB units, same-task retry and long connection; error-level selection deferred; no runtime changes |
 | 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
-| 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters | The single HTTP payload is not buffered/parsed whole or copied into giant job JSON; exact values/order, duplicate-key/depth limits, cross-part references and bounded expansion; old model 18/19 paths remain compatible |
+| 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
 | 4: Service processing integration | Service: claim sealed dataset, pin contracts/template/fonts, prepare files, stream final PDF on the original payload request, retain terminal record | Packed Core consumed for real; complete server send, disconnect before/after headers, no whole-PDF parent buffer, absolute expiry/cancellation, stale worker writes, disk-full and crash gaps; successful-send cleanup and failed-task expiry preserve records and release quota |
-| 5: FlowDocMake/legacy integration | FlowDocMake and Service: task opening, single payload/PDF exchange, feedback, capabilities and lasting records | Auth/ownership, client/proxy/server timeout limits, legacy small requests, mixed versions, clone/import mapping, streamed save/hash, lost task ID creates new task, no required requestKey or later-download assumption |
+| 5: FlowDocMake/legacy integration | FlowDocMake and Service: task opening, single multipart/PDF exchange, skip feedback, capabilities and lasting records | Auth, timeout limits, legacy/mixed versions, clone/import Section image isolation, streamed save/hash, partial-content feedback with successful send, lost task ID creates new task; no required requestKey, client assetKey, later download or error-level selector |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
 
 Do not remove the existing count protections until their replacement is active
