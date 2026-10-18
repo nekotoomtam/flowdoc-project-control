@@ -6,14 +6,14 @@ Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
 Active role: Product Implementation Agent / Cross-Repo Boundary Reviewer for
-the isolated Stage1 ledger below. Work/Phase/Checklist execution IDs: not applicable.
+the isolated Stage1–2 ledgers below. Work/Phase/Checklist execution IDs: not applicable.
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
-Stage1 is complete only in the isolated intake scope recorded below; stages2–6
-remain unstarted. Stage0 closure alone is not implementation authorization, measured
+Stage1–2 are complete only in their isolated scopes below; stages3–6 remain
+unstarted. Stage0 closure alone is not implementation authorization, measured
 capacity, installed capability or a release claim.
-Stage0 changed no product code/data/configuration; Stage1 changes only the isolated
-Service candidate. No installed configuration, release, tag or deployment changes.
+Stage0 changed no product code/data/configuration; Stage1–2 change isolated
+Core/Service candidates only. No installed configuration, release, tag or deployment changes.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
 one dataset intake-to-output plan. The completed historical image and group-label
@@ -1034,15 +1034,102 @@ installation is accepted here. Execution IDs remain N/A; no product map promoted
 
 ## Phased plan and acceptance
 
-Stage0 specification and isolated Stage1 receipt/storage are complete;
-stages2–6 are not started.
+### Stage2 execution ledger — 2026-10-19
+
+Owner authorizes isolated validation/normalization, Section-local named/unnamed
+images and recorded omissions, with model18/19 regressions. Product Implementation
+Agent / Cross-Repo Boundary Reviewer, single-room inline, execution IDs N/A;
+routine risk, medium work size. Core owns typed bounded reader/normalization;
+Service owns file-backed reader, image metadata/resolution and durable findings.
+Bases: Core `e1a6517`, Service `0eb192f`, PC `bb99456`. Core isolated worktree:
+`C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/task-normalization-stage2`.
+Reuse the clean Stage1 Service/PC worktrees on new branches
+`codex/task-normalization-stage2-20261019` / `codex/task-stage2-record-20261019`.
+No registered room dispatch; current configured model implements inline.
+
+Bounded sequence: [1] Core reader/typed image omission tests RED then implementation;
+[2] Service file-backed traversal and Section image collection/resolution tests;
+[3] pinned packed-Core integration, findings/quota/stop persistence; [4] affected
+legacy regressions, one independent review and isolated commits. Proof budget:
+targeted checks per change, one final affected-suite run per owner plus packed
+Linux consumer; repeat only on failure/change. Document budget: this existing
+ledger and concise code-adjacent notices, no new AI startup guide or product map.
+
+Ruling: Core accepts storage-neutral value handles and writes canonical normalized
+input incrementally; Service supplies byte-range file handles. This preserves
+property-order independence without buffering a Section/Area entry or full JSON.
+Two bounded passes collect image definitions then resolve forward references;
+metadata must stay within the existing index budget. Unsupported images become
+explicit typed unavailable resources, not missing required fields. The existing
+object-based prepareGeneration and legacy endpoints retain their contracts.
+Normalization success remains internal at validating with a sealed normalized
+artifact; queue/job/public route and incremental PDF remain later stages. Cost if
+wrong: Stage3 reader adaptation, not a silent change to legacy prepared snapshots.
+
+Acceptance: optional assetKey, key-only/inline/Section assets, unkeyed separation,
+same key across Sections, identical/conflicting definitions, malformed/missing/
+unused parts, image signature/dimensions, exact counts/reasons, scalar/record order,
+escaped/Thai pointers, unknown fields/defaults and model18/19 shape; no whole-file
+JSON parse, giant DB payload, resource leak or new PDF/API exposure. Preserve pins,
+original expiry, owner checks and global-capacity-fatal behavior. No main merge,
+push, release/tag or installation.
+
+Result: PASS within isolated Stage2 normalization scope. Core/Service development
+candidates are0.4.5; previous0.4.4 artifacts and main/release refs are not rewritten.
+Core commit `e2935eb34634607eb9c38b72e5bcdfaa6ba8b4a3`; Service commit
+`32a25fc42f62a12736337c0c5d68dd3bb323d6d3`. Service vendors the verified Linux
+tarball by checksum and that exact Core source commit, not source-path imports.
+Migration023 adds normalization pins, validation start and immutable findings;
+populated022 task history/files survive unchanged. No released migration changed.
+
+Evidence coverage and limits:
+
+- Core `tests/data/taskInput.test.ts`:15 passing cases, including model18 defaults,
+  model19 identities/property order, required unavailable images, typed/escaped Thai
+  slots,100,001-record rejection, complete oversized parent record rejection,
+  placement budget, long valid links and lazy collection traversal. Full Linux
+  Core suite793/793 plus packed consumer PASS; its artifact/result is under
+  `C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/task-normalization-stage2/artifacts/1792349087833/`.
+- Service tests: `task-image-index.test.mjs`11, `task-json-reader.test.mjs`2 and
+  `task-normalization.test.mjs`16, all passing. They cover optional/inline/key-only
+  assets, Section isolation, identical/unverifiable conflicts, invalid/missing/
+  unbound images and counts, actual image metadata/signatures, Unicode pointers,
+  persisted reasons/owner paging, unknown/default values, model18/19, quota/write
+  batching, stop/concurrent fencing, changed input, expiry and022→023 preservation.
+- Final Linux Service:102 files,386 passed,0 failed,6 skipped of392. This includes
+  the unchanged32 Stage1 task tests and legacy queue/upload/font/Section/model/PDF
+  generation regressions. The six externally gated font tests remain unverified
+  as listed in Stage1; no installed-runtime or FlowDocMake connection claim.
+- All three Important review findings have reproducing RED→GREEN checks: link
+  limits now follow64 KiB scalars/256 KiB records; record/source/placement/output
+  counters enforce the agreed ceilings; validation stops at15 minutes or original
+  expiry, with a DB-time write/publication fence. No Critical or Minor findings.
+  An additional reproduced long-diagnostic SQL failure is fixed by a bounded
+  displayed pointer plus stable full-locator hash. Finding detail retention is
+  capped at10,000 with exact aggregates and detailsTruncated beyond the cap.
+  One independent review; fix verification is by the parent and tests, no re-review.
+- Proof directory `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage2/` retains
+  `native-accepted.json`, `core-package-receipt.json`, `review-receipt.json` and
+  final `receipt.json`. Source diff/whitespace, package identity, authority and
+  local documentation links checked. Temporary DB/containers/credentials are
+  removed after verification; all unmerged candidate branches/worktrees remain.
+
+Review exclusions stand: full decoding/preparation, incremental PDF, public task
+API/feedback, FlowDocMake integration and whole-group capacity certification are
+Stages3–6. Normalization summaries are historical facts, not PDF readiness; image
+probing does not certify full raster decoding. Cost of that boundary: no claim
+that a complete real UAT task can render yet. No source/schema/map promotion,
+main merge, push, release/tag or installation. Next is separately authorized Stage3.
+
+Stage0 specification and isolated Stage1–2 candidates are complete;
+stages3–6 are not started.
 Runtime authorization remains separate. Each stage stops at its verified checkpoint.
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
 | 0: contract specified 2026-10-19 | Project Control: v1 API/JSON/binary binding, identity, events, reservation and trial profile above | Documentation examples, arithmetic, transition/exception coverage and legacy boundary checked; runtime/capacity proof remains in stages 1–6 |
 | 1: dataset intake/storage — isolated candidate complete | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Evidence and unverified external cases are listed in the Stage1 ledger above; receipt is not runnable proof |
-| 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
+| 2: bounded validation and normalization — isolated candidate complete | Core typed reader; Service file/image adapters and Section asset resolution | Stage2 ledger above connects cases, limits, commits and verification; public task processing remains later scope |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
 | 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
 | 5: FlowDocMake/legacy integration | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
