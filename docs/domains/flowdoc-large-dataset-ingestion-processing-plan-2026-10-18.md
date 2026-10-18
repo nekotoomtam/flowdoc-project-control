@@ -5,13 +5,15 @@
 Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
-Active role: Planning Partner / Cross-Repo Boundary Reviewer, inline discovery
-and documentation only. Work/Phase/Checklist execution IDs: not applicable.
+Active role: Product Implementation Agent / Cross-Repo Boundary Reviewer for
+the isolated Stage1 ledger below. Work/Phase/Checklist execution IDs: not applicable.
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
-Stages 1–6 remain unstarted. This is not implementation authorization, measured
+Stage1 is complete only in the isolated intake scope recorded below; stages2–6
+remain unstarted. Stage0 closure alone is not implementation authorization, measured
 capacity, installed capability or a release claim.
-No product code, data, installed configuration, release, tag or deployment changes.
+Stage0 changed no product code/data/configuration; Stage1 changes only the isolated
+Service candidate. No installed configuration, release, tag or deployment changes.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
 one dataset intake-to-output plan. The completed historical image and group-label
@@ -345,7 +347,8 @@ Core/Service integration and branch/worktree reconciliation completed 2026-10-19
 see the integration/cleanup section of the
 [group-label plan](flowdoc-group-label-span-design-plan-2026-10-18.md).
 Stage 0 is now specified; each implementation stage still requires its own bounded
-authorization and checks. No SQL/runtime changes are authorized by this document.
+authorization and checks. SQL/runtime changes require the owner's stage-specific
+instruction; the current Stage1 authorization is recorded below.
 
 ## Intake contract and template header
 
@@ -540,7 +543,8 @@ default image skip cannot turn the old incomplete UAT trial into a pass.
 This section closes the remaining design choices under the owner's current request.
 It governs future implementation; values marked trial are conservative starting
 guards selected for this plan, not measured production capacity. Existing owner
-decisions above remain binding. No runtime, migration, configuration or data changes.
+decisions above remain binding. Closing Stage0 itself changed no runtime,
+migration, configuration or data.
 Specification checks use this document only; execution/Phase/Checklist IDs N/A.
 
 ### A. API and payload
@@ -952,15 +956,92 @@ run or claimed. The one-document budget is retained; duplicated earlier intake
 proposals were replaced by references to this contract. Next is separately
 authorized Stage1 intake/storage implementation, not release or installation.
 
+### Stage1 execution ledger — 2026-10-19
+
+Owner instruction in this chat authorizes internal task foundation/intake and its
+permission, concurrent quota, file, expiry and restart checks. Single-room inline;
+role Product Implementation Agent / Cross-Repo Boundary Reviewer; execution IDs N/A.
+Routine risk; source owner Service. Base `e605d93`, branch
+`codex/task-intake-stage1-20261019`, workspace
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/task-intake-stage1`.
+PC record branch `codex/task-stage1-record-20261019` in its managed worktree.
+Use current configured model inline; no separate implementer WORK room or model
+inheritance claim. This existing plan is the authority and progress ledger.
+
+Bounded steps: [1] migration/pinned identity/atomic admission; [2] streaming
+multipart receipt + bounded transport JSON checks; [3] safe stop, expiry, retained
+originals and recovery; [4] impacted regression, independent review and candidate
+commits. Tests must first fail for absent task functionality, then pass. Document
+budget: this plan plus code-adjacent usage notice only; no new startup guide/map.
+Acceptance is receipt/seal, not Core schema-valid input or runnable PDF. Core
+normalization/signatures/Section binding and processing remain stages2–4.
+
+Preflight: quota/create consumes the same60430405 lock as legacy queue/uploads;
+receipt writes consume reservation before I/O; cleanup releases only removed bytes.
+Ruling: serialize one receive writer per task; use bounded64 KiB writes below the
+8 MiB maximum window. Recovery refuses to delete files of a still-live or foreign-
+host writer; a local dead process can be recovered. Cross-host orchestration is not
+silently assumed. Public `POST /documents` stays absent until stages2–5 are ready.
+Legacy published output accounting is observed; complete legacy render-scratch/
+PDF pre-write reservation integration remains a Stage4 prerequisite before enabling
+the new public route. No broad whole-runtime disk/RAM guarantee is claimed here.
+
+Result: PASS within Stage1 receipt/storage scope. Service candidate commit
+`0eb192f58f9816017fe4d1e7e1c41a9c44a6a5df`; clean isolated worktree, not merged.
+Migration022 adds five tables and a nullable job/task link explicitly gated to
+NULL until Stage4; no released migration bytes or Core package pin changed.
+Identity/template/policy pins and creation-based three-hour expiry are immutable.
+Task events and terminal usage facts are retained; unmeasured crash byte counts
+remain NULL. Internal open/receive/inspect plus startup/ten-second maintenance
+are implemented; public HTTP/CLI wiring is intentionally absent.
+
+Coverage and reusable proof (Service tests are durable candidate evidence):
+
+- `tests/task-intake.test.mjs`: 32 passing cases cover trusted identity, owner and
+  creator permissions, atomic shared queue/storage admission, incremental growth,
+  physical unused promises and mixed-policy floor, multipart/UTF-8/JSON budgets,
+  filenames, complete-file retention, disconnect, deadline, disk failure, deletion
+  retry, actual killed-child recovery, receiver token/process fencing, stale-state
+  CAS, and automatic startup/periodic expiry. Image receipt fixtures do not claim
+  decoded-image validity, semantic Section binding or PDF readiness.
+- Host build passed; task/database/resource-file checks passed42/42 in
+  `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage1/host-accepted.log`.
+- Latest isolated Linux verification image: 99 files,357 passed,0 failed,
+  6 skipped of363 tests, including old migration upgrades, queue, uploads,
+  model18/19 and PDF-generation regressions. Root test schema was migrated first;
+  invocation used60s test/hook timeouts under a1 GiB/2 CPU test-container limit.
+  No test assertions were weakened. The initial run's README migration mismatch
+  was corrected; absent root schema and default5s timing failures were rerun.
+  The Windows FONT_CHECK_UNAVAILABLE cases passed in Linux. This is not a peak
+  RAM/capacity measurement or every-page visual PDF acceptance.
+- Six skips remain explicitly unverified: three installed-binding delivery guards,
+  two real-profile/native-FlowDocMake proposal cases, and one supplied-font import
+  case, all gated by external fixture/configuration. No live font or installed
+  runtime check is claimed. They remain later integration/release proof needs.
+- Independent bounded review PASS after fixing receiver ownership/stale recovery,
+  physical quota propagation and mixed-policy accounting, unknown byte counts,
+  and maintenance. Regression failures were observed before the fixes; no remaining
+  Critical/Important findings in the reviewed scope. Receipt: `review-receipt.json`.
+- Complete logs and compact final receipt: local proof directory
+  `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage1/`; native report
+  `native-accepted.json`. Candidate diff/whitespace and this plan's authority/local
+  links checked. Original main/release refs retained. Test containers/credential
+  files are removed after verification; unmerged candidate branches/worktrees stay.
+
+Next is separately authorized Stage2 bounded validation/normalization. No task PDF,
+public route, giant-data capacity claim, main integration, push, release, tag or
+installation is accepted here. Execution IDs remain N/A; no product map promoted.
+
 ## Phased plan and acceptance
 
-Stage 0 specification is complete for review; stages 1–6 are not started.
+Stage0 specification and isolated Stage1 receipt/storage are complete;
+stages2–6 are not started.
 Runtime authorization remains separate. Each stage stops at its verified checkpoint.
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
 | 0: contract specified 2026-10-19 | Project Control: v1 API/JSON/binary binding, identity, events, reservation and trial profile above | Documentation examples, arithmetic, transition/exception coverage and legacy boundary checked; runtime/capacity proof remains in stages 1–6 |
-| 1: dataset intake/storage | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Header-only template selection and duplicate rejection, no declared size, growth/exhaustion races, bounded backpressure, no write over reservation, retained/removed byte accounting, disconnect, disk full, seal race, expiry and restart; receipt is not runnable proof |
+| 1: dataset intake/storage — isolated candidate complete | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Evidence and unverified external cases are listed in the Stage1 ledger above; receipt is not runnable proof |
 | 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
 | 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
@@ -980,8 +1061,9 @@ placement coverage, PDF syntax/link/page checks, every-page visual comparison an
 resource measurements by phase. Keep unresolved Thai extraction and known source
 font/page-layout differences separate; do not erase them to pass image acceptance.
 
-Current change is this single Project Control document. Check its authority,
-source locators, stage dependencies, unresolved decisions, scope and final diff;
-do not run product suites to imply that a design is implemented. No product map,
-Work acceptance, package pin or mandatory AI entrypoint change. End this round at
-the revised-plan review checkpoint; no merge, release or installation.
+For planning-only changes, check this document's authority, source locators,
+dependencies, unresolved decisions, scope and final diff; product suites cannot
+prove an unimplemented design. Stage1 implementation proof is recorded in its
+execution ledger above. No product map, registered Work acceptance, Core package
+pin or mandatory AI entrypoint change. Stop at the authorized stage checkpoint;
+no merge, release or installation.
