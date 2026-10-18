@@ -3,9 +3,9 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0–3 ผ่านตามขอบเขต candidate เมื่อ 2026-10-18**.
+สถานะ: **ช่วง 0–4 ผ่านตามขอบเขต candidate เมื่อ 2026-10-18**.
 Core candidate รับ declaration ขยายข้อมูลและจัดหน้า; Service/FlowDocMake เชื่อมแล้ว.
-ช่วง 4–5 ยังไม่ทำ. งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง.
+ช่วง 5 ยังไม่ทำ. งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -635,11 +635,11 @@ PC tests `flowdocmake-group-label.test.mjs`, `flowdocmake-workflow.test.mjs`,
 
 ### ช่วง 4 — แม่แบบ UAT และตรวจ PDF ทั้งชุด
 
-- [ ] สร้างสำเนา draft UAT แยกจากต้นฉบับ ใช้ mock เดิมเป็นฐาน
+- [x] สร้างสำเนา draft UAT แยกจากต้นฉบับ ใช้ mock เดิมเป็นฐาน
   เปลี่ยนเฉพาะตารางชื่อกลุ่มจาก scalar/rowSpan ตายตัวเป็น groups/members.
-- [ ] เพิ่ม case mock 0/1/หลายสมาชิก ชื่อเหมือนคนละกลุ่ม กลุ่มยาวหลายหน้า
+- [x] เพิ่ม case mock 0/1/หลายสมาชิก ชื่อเหมือนคนละกลุ่ม กลุ่มยาวหลายหน้า
   สมาชิกยาวข้ามหน้า กลุ่มว่าง และ fixed; ระบุค่าที่เพิ่มเพื่อทดสอบแยกจาก mock เดิม.
-- [ ] สร้าง PDF ทุก case เก็บ revision/package/hash และตรวจทุกหน้าของผลทดสอบ.
+- [x] สร้าง PDF ทุก case เก็บ revision/package/hash และตรวจทุกหน้าของผลทดสอบ.
 
 ตรวจ: จำนวน/ลำดับ/ค่าข้อมูล span และชื่อ “(ต่อ)” ตรง fragment;
 ไม่มีชื่อโดด ไม่มีสมาชิกหายหรือซ้ำ เส้นและหัวตารางถูก แถวรวมเดิมแสดงครั้งเดียว
@@ -648,6 +648,61 @@ PC tests `flowdocmake-group-label.test.mjs`, `flowdocmake-workflow.test.mjs`,
 จำนวนหน้าของ case ใหม่เปลี่ยนได้ตามเนื้อหา ไม่บังคับให้เท่าเดิมด้วยการย่อฟอนต์.
 เทียบ UAT กับต้นฉบับและผลรอบก่อน แยกความต่างเดิมออกจาก regression ใหม่.
 ผ่านเมื่อครอบคลุม PDF ทุกหน้าที่สร้าง และ fixed omission ถูกแจ้งครบ.
+
+ผลช่วง 4 (2026-10-18): **PASS ตามขอบเขตแม่แบบและ regression**.
+ใช้ candidate ของช่วง 3 ในระบบทดลองแยก; ไม่เปลี่ยน runtime code หรือระบบที่ติดตั้ง.
+สำเนา UAT `3c9f0379-3e04-4742-8774-74e5b978c2ff` revision 4 ใช้ Format
+`summary-dynamic` กับ rowGroups/groupLabel แทน scalar และ rowSpan ตายตัว.
+หนึ่งกลุ่มใช้หนึ่งรายการ Format ใน Area เดิม เพื่อคงยอดรวมแต่ละกลุ่มผ่าน repeat
+ของแถวท้ายที่มีอยู่แล้ว ไม่เพิ่ม group-footer hook หรือ Section.
+
+| ชุด PDF | หน้า | ผลที่ตรวจ |
+| --- | ---: | --- |
+| baseline normal / long บน candidate เดียวกัน | 11 / 13 | แยกผลของแม่แบบออกจากแพ็กเกจ |
+| mock normal / long เดิม | 11 / 13 | ค่าและลำดับเดิมครบ ยอดรวมครั้งเดียว เปลี่ยนภาพเฉพาะหน้าสรุป 5 |
+| groups ว่าง / สมาชิก 0, 1, 5 | 11 / 11 | ไม่มีสมาชิกปลอม; empty fallback เฉพาะกลุ่มว่าง |
+| สองกลุ่มชื่อเหมือน กลุ่มละ 26 สมาชิก | 15 | แยก instance; กลุ่มละสาม fragment รวม “(ต่อ)” สี่ครั้ง |
+| สมาชิกหนึ่งรายการ 80 บรรทัด | 13 | ไหลสามหน้า ชื่อกลุ่มซ้ำพร้อม “(ต่อ)” สองครั้ง ไม่มีข้อมูลซ้ำ/หาย |
+| fixed สูงสุด 300 pt แต่หน้าเหลือ 120 pt | 12 | แสดงสองจาก 24 สมาชิก ปิดเส้น แจ้ง 22 สมาชิกและแถวรวมที่ไม่แสดง; Format ถัดไปยังทำงาน |
+| SRS เดิม / ศบ.1 free-flow ล่าสุด | 98 / 2 | ข้อความ ลิงก์ และภาพทุกหน้าตรง baseline |
+
+รวม 11 PDF / 210 หน้า: ตรวจโครงสร้าง ข้อมูล เลขหน้า สารบัญ ลิงก์
+และ Poppler render ทุกหน้า ไม่พบ PDF syntax error; ตรวจภาพ 162 หน้าที่ต่างกัน
+ผ่าน 27 sheets และใช้ผลภาพที่มี pixel hash ตรงกันทุกจุดสำหรับอีก 48 หน้า.
+ผู้ตรวจอิสระหนึ่งรอบตรวจ hash/revision/fingerprint และ coverage ไม่พบ
+Critical/Important finding. คำเตือนภาพความละเอียดต่ำเดิมยังอยู่
+(UAT ชุดละ 10, SRS 4, ศบ.1 ไม่มี) ไม่ถูกซ่อนหรือถือว่าแก้แล้ว.
+
+ความต่างที่ต้องแยกให้ชัด: หัวคอลัมน์ซ้ำเมื่อเริ่มแต่ละกลุ่ม เพราะเป็นคนละรายการ
+Format; เนื้อหาสมาชิกและยอดรวมไม่ซ้ำ. เทียบกับ PDF UAT จากแพ็กเกจก่อนหน้า
+ยังมี pixel difference ของภาพแนวตั้งสุดท้ายที่หน้า 11/13
+(กรอบ 282,103–313,301 ที่ 72 dpi) แต่ข้อความ/ลิงก์ตรงกัน;
+เมื่อเทียบ old/new template บน candidate เดียวกันต่างเฉพาะหน้าสรุป.
+นี่ไม่ใช่การรับรองความเหมือนทั้งหมดกับต้นฉบับ UAT 72 หน้า:
+mock เดิมเป็นชุดย่อ 11/13 หน้า มีภาพ/ข้อความ mock และข้อแตกต่างด้านฟอนต์/เส้นเดิม.
+SRS ใช้ baseline ที่เก็บไว้ ไม่ได้ปิดข้อแตกต่างจากเอกสารต้นทางในงานเก่า.
+
+ระหว่างทดลองแก้สองจุดในแม่แบบ/fixture: ใช้ supported authoring flow เพิ่ม
+Format ใหม่แล้วลบ Format เก่าที่เลิกใช้ แทนการฝืนเปลี่ยนเจ้าของ schema เดิม;
+และคำนวณพื้นที่ fixed จากตำแหน่งหัว–ท้ายจริงให้เหลือ 120 pt.
+ศบ.1 เปลี่ยน input ทดสอบจากสำเนา revision เก่าไปเป็น free-flow revision 4
+ก่อนตรวจรับ; ผลก่อนแก้เก็บแยก `superseded-r1/` ไม่ใช้เป็น PASS.
+
+Evidence local root:
+`C:/Users/nekot/Documents/Codex/2026-10-18/group-label-stage4/`.
+`review/verification.json`, `review/visual-index.json`, `prepared/composition-checks.json`
+ผูกเกณฑ์กับผลตรวจ; `delivery/` มี PDF ทั้ง 11 ชุดพร้อม receipt definition/request,
+revision/job/package/hash; `template/` มีแม่แบบ revision 4, input เจ็ดกรณี
+และไฟล์ภาพ 17 ชิ้นพร้อม checksum (alias ต้องอัปโหลดใหม่ก่อนใช้งาน).
+`checkpoint.json` เก็บ authoring receipts; `scope.json` เก็บฐาน/ขอบเขต.
+Core SHA `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`
+ตรงกับช่วง 3. ตรวจต้นฉบับ live UAT revision 9, SRS revision 1 และ ศบ.1 revision 4
+ทั้งก่อนและหลัง พบ fingerprint/definition ตรงกันครบ.
+สำรอง DB/ไฟล์ก่อนทดลองและหลังทดลอง; หยุดเฉพาะ containers ของชุดทดลอง
+และเก็บ volumes/dumps ไว้ต่อช่วง 5. ไม่รวมตัวหลัก ไม่ push/tag/release/ติดตั้ง.
+ตรวจ diff/ลิงก์แผนและ checksum ของชุดแม่แบบผ่าน (`review/handoff-checks.json`).
+`npm run check:data` เริ่มไม่ได้เพราะ worktree นี้ไม่มี `tsx`; ไม่อ้างเป็น PASS.
+รอบนี้ไม่เปลี่ยน canonical data หรือ generated records จึงใช้การตรวจแผนเฉพาะส่วน.
 
 ### ช่วง 5 — ตรวจร่วมและเตรียมส่งมอบ
 
