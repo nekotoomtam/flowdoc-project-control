@@ -3019,3 +3019,41 @@ above. The latter now reports PASS_INSTALLATION_AND_NATIVE_CHAT with no pending
 check. This closes the installation/native-chat acceptance; existing source-
 fidelity differences and4SRS image warnings remain unchanged. No user draft,
 font default, release/tag or remote ref was changed in this follow-up.
+
+#### ศบ.1 สำเนา Section–Area / Format fixed — 2026-10-18
+
+Owner authorized a separate copy, original preservation, fixed/overflow warning
+checks and both-page comparison. Single-room inline template authoring / Evidence
+Reviewer; execution IDs N/A. Scope is the saved template and original sample,
+not product runtime changes or renewed source-PDF reconstruction. Created fresh
+conversion identity because model18 cannot change models in place; source
+`af9015b7-df78-4af7-9444-15bd56a05f11` revision3 remains byte-structure/fingerprint
+unchanged. New unpublished draft `68277691-1427-4b28-88af-535601ee18f1`, docKey
+`sb1-section-area-fixed-20261018`, revision1 has one model19 Section, two root
+Areas and declaration/cargo Formats fixed720/700pt, with an explicit page break.
+Styles, schema2 font tuples, original input and native fragments are preserved;
+Section bindings inside Formats become local. Continuation footer stays on page2.
+
+Normal input: succeeded2pages, no warnings, all extracted text and horizontal
+text coordinates equal baseline. Overflow cargo30rows: four fit, table closes
+at616.11pt, remaining input retained; FORMAT_CONTENT_OMITTED identifies cargo,
+entry0 and pending item4. Long owner160lines: protected source row cannot fit,
+so it and following declaration content are not painted; one declaration omission
+warning, rather than silently deleting input. Each test remains2pages, other
+page pixels stay unchanged, and cargo footer coordinates remain fixed. Warnings
+match status and saved-PDF receipts. All6output pages and2baseline pages viewed.
+
+Visual comparison is **not identical**: fixed table stroke allowance adds.25pt
+before/after each table and insets border edges. Measured vertical text shift is
+.25–10.75pt on page1 and0–1.75pt on page2; footer coordinates do not shift. This
+is traced to existing Core documentFlow.ts fixed-table handling, not font/data
+changes. No compensation hacks or runtime edits were made. Functional acceptance
+passes with this disclosed visual difference; owner has not accepted exact-layout
+fidelity. Existing source-form font/line differences also remain out of scope.
+
+Evidence/output: `C:/Users/nekot/Documents/Codex/2026-10-18/sb1-format-fixed/`:
+`results.json`, `conversion.json`, `pdf-review.json`, source/target final reads,
+complete preview input/status/PDF receipts and rendered pages. `normal.pdf` is
+the normal-data deliverable; `cargo-overflow-fresh.pdf` and
+`declaration-overflow-fresh.pdf` are explicitly incomplete overflow demonstrations.
+Only this new draft was saved; no publication, deployment, release or font change.
