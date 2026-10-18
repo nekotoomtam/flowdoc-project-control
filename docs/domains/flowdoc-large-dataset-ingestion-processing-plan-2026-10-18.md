@@ -34,14 +34,21 @@ plan. The architecture remains planning-only; these decisions do not authorize
 runtime development or establish unmeasured capacity.
 
 - Check and atomically reserve queue/storage capacity while creating `taskId`.
-  Reject if unavailable before inviting the large body. Record server `createdAt`
+  Use bounded admission metadata before accepting/storing the large body; no
+  separate task-opening call is mandatory. Record server `createdAt`
   and `expiresAt = createdAt + 3 hours` durably. A capacity check without a
   reservation cannot protect against concurrent over-admission.
-- Two calls: a small task-opening call returns `taskId`, status and expiry; a
-  second call sends the complete payload once and receives the final PDF on that
-  same second HTTP response. Do not require the client to split content into
-  separate per-image requests, submit a third processing call, or fetch the PDF
-  later. Internal parsing/chunking is the server's responsibility.
+- One public API: a new request without `taskId` reserves capacity, creates a
+  parent task, receives the full dataset, then streams feedback and a final PDF
+  on that request's response. `taskId` is returned in the first task metadata
+  event. A supplied `taskId` means inspect that existing task's latest state,
+  not create, resume, rerender or download it. This replaces the earlier two-call
+  opening/upload proposal. Internal parsing/chunking remains server-owned.
+- `taskId` owns the full lifecycle; internal `jobId` identifies its PDF execution.
+  First scope is zero/one generation job per task. Customers need no `jobId`.
+  The new generation response is a versioned `multipart/mixed` stream: bounded
+  JSON feedback parts followed by the binary `application/pdf` part on success.
+  It is not a plain PDF response or multiple independent HTTP responses.
 - If the client loses/does not keep `taskId` and opens another task, it is a new
   task even if content matches. Do not require a client idempotency key or dedupe
   task creation by content. Same-task upload conflicts still need protection.
@@ -52,7 +59,8 @@ runtime development or establish unmeasured capacity.
 - Three-hour expiry is absolute from task creation, not refreshed by polling,
   receiving more data, restarting, or failing later. This replaces the earlier
   proposal to retain failed inputs for three hours after failure.
-- Success is exposed with the final PDF response. No client save acknowledgment
+- Success is exposed through the final PDF part and complete response framing;
+  durable terminal success follows server-side response completion. No client save acknowledgment
   and no retained download/re-delivery promise. After server-side sending finishes,
   delete originals, intermediates and temporary output; keep the task record.
   Client-side save failure after a correctly completed send is outside this promise.
@@ -78,9 +86,10 @@ that the client saved the file. A disconnect is recorded as failed/indeterminate
 delivery with observed cause; do not automatically blame the client. HTTP status
 cannot be replaced with a JSON error once PDF response bytes have begun.
 
-Long upload + queue + generation + response occurs within the second connection.
+Long upload + queue + generation + feedback/PDF occurs within one connection.
 Client, proxy and server timeout/size constraints therefore require end-to-end
-tests; task status polling is feedback, not a substitute PDF download channel.
+tests; an existing-task lookup supports returning to the client page, not mandatory
+polling or a substitute PDF download/replay channel.
 This chosen path does not inherit an asynchronous-download timeout advantage.
 Persistent records retain bounded owner/identity, template/contract version,
 timestamps, byte/page counters, outcome, delivery and cleanup events as needed;
@@ -124,7 +133,7 @@ These source observations are not an installed-version or live-chat capability c
 
 Design proposal for review, not applied schema. The public noun stays `task` and
 the only client tracking identity is `taskId`. A task orchestrates intake through
-delivery; an existing generation job is its internal PDF execution. First scope
+delivery; an existing `jobId` is its internal PDF execution. First scope
 has zero or one generation job per task, no automatic rerender/retry attempts.
 Existing tasks/jobs outside this new path keep their current contract.
 
@@ -212,12 +221,12 @@ records must not depend on continued availability of temporary file rows/bytes.
 
 | State | Meaning | Normal next state |
 | --- | --- | --- |
-| `awaiting_input` | Capacity reserved; identity returned; no body accepted yet | `receiving` |
+| `awaiting_input` | Task created and capacity reserved inside the incoming request before accepting its large payload; no separate opening round trip required | `receiving` |
 | `receiving` | One task-bound payload request is being stored | `validating` |
 | `validating` | Full receipt sealed; checking/normalizing structured values and references | `queued` |
 | `queued` | Valid input admitted, waiting for processing resources | `processing` |
 | `processing` | Preparing resources, composing, laying out and generating PDF | `sending` |
-| `sending` | PDF under the agreed skip-and-record policy is streamed on the same payload response; skipped-image findings remain visible in the task | `succeeded` |
+| `sending` | Final binary PDF part is streamed after feedback in the same multipart response; skipped-image findings remain recorded | `succeeded` |
 | `succeeded` | Server send completed according to the agreed boundary | Terminal |
 | `failed` | Receive/validation/process/delivery failure or interruption confirmed | Terminal |
 | `expired` | Nonterminal task reached its original absolute deadline | Terminal |
@@ -229,8 +238,9 @@ across stages whose total work is unknown. Task responses include `taskId`, stat
 stage progress, `createdAt`, `expiresAt`, bounded warnings/error and file availability.
 Successful sending may have skipped images: preserve separate content completeness
 (`partial` when omissions exist), exact skip counts and paginated findings. The
-response remains PDF; do not inject a JSON report into it. Task success is server
-send completion, not a claim of complete source reproduction or zero warnings.
+response separates JSON feedback from binary PDF; do not inject JSON into the PDF
+part. Task success is server send completion, not a claim of complete source
+reproduction or zero warnings.
 Terminal task status may remain queryable after `expiresAt`; that timestamp controls
 temporary data/execution, not expiry of the permanent task identity.
 
@@ -241,13 +251,14 @@ owned handles/workers, then delete files. A task already `failed` remains failed
 when its retained files expire; a succeeded task is never relabeled expired.
 After restart, a lost HTTP payload/response connection cannot be resumed by changing
 status: reconcile interrupted nonterminal tasks to failed or expired as appropriate.
-No automatic rerender or delivery replay is introduced. Failed same-task receive
-retry remains an unresolved Stage 0 decision; safe initial proposal is a new task.
+No automatic rerender, same-task payload retry or delivery replay is introduced.
+An existing identity retrieves state only; a fresh generation opens a new task.
 
 ### Atomicity, indexes and failure boundaries
 
 - Capacity reservation, task creation and opening event commit together before
-  returning an identity. Existing legacy admission/storage operations must share
+  emitting the task metadata event. Existing legacy admission/storage operations
+  must share
   the applicable lock/budget accounting with the new path. Count task-backed jobs
   once, not once as a reserved task and again as a legacy queued job. RAM concurrency
   is scheduled at processing time; reserving disk is not reserving RAM for 3 hours.
@@ -266,8 +277,10 @@ retry remains an unresolved Stage 0 decision; safe initial proposal is a new tas
   actual operations stop; expiry cannot admit replacement work on a false free slot.
 - SQL and filesystem writes are not atomic together. Publish owned file metadata
   after safe file completion, reconcile orphan files/records on recovery, and mark
-  deletion/release only after verifying removal. Partial response errors use task
-  status/events because HTTP headers/body cannot be replaced after PDF starts.
+  deletion/release only after verifying removal. After stream headers are sent,
+  application failure is a typed error event when the connection/framing is usable,
+  plus persisted task state. Do not replace started HTTP headers or append JSON
+  inside a partially transmitted PDF part; close incomplete output on send failure.
 - Proposed indexes: `tasks(owner_key, created_at, id)` for history;
   `tasks(expires_at, id)` partial on nonterminal states; pending cleanup/deadline
   index; unique nullable `generation_jobs(task_id)`; `task_files(task_id, role,
@@ -307,7 +320,7 @@ storage monitoring even though automatic record deletion is out of scope.
 
 Close exact API examples and multipart binary-to-image-field binding,
 principal/billing-subject mapping,
-GB byte units, reservation estimates, per-record limits, receive retry and timeout
+GB byte units, reservation estimates, per-record limits and timeout
 values. Prove concurrent opening/upload, no double reservation, exact old/new input
 mode constraints, owner access, all state transitions, expiry at every phase,
 restart/stale worker, success versus disconnect/deadline race, missing required
@@ -318,9 +331,11 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
 
 ## Proposed intake contract
 
-1. Open an owned task with bounded size/template metadata; reserve capacity and
-   return `taskId` as described above. Record the associated internal dataset.
-2. Send the entire dataset on one task-bound `multipart/form-data` request: one
+1. Receive a new generation request without `taskId`. Authenticate and check
+   bounded size/template admission metadata before consuming/storing large input;
+   reserve queue/storage and create its parent task atomically. The exact control
+   header/initial bounded-part syntax is Stage 0 work. No previous call is required.
+2. Receive the entire dataset on this `multipart/form-data` request: one
    `payload` JSON part and binary image parts. JSON may be delivered as a JSON file.
    The server streams, extracts and registers assets; callers need not create an
    internal asset manifest, storage path or DB image IDs. Binary parts still need
@@ -329,10 +344,11 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
 3. Count bytes and hash while writing. Limit active streams, per-item bytes,
    per-dataset storage, aggregate storage, idle time and absolute lifetime.
    Transport buffering must apply backpressure and enforce limits on actual bytes.
-4. Expose bounded/paginated task feedback. Do not treat status polling as expiry
-   renewal. A task accepts one payload attempt at a time and becomes immutable
-   after complete receipt. Failed-transfer retry within the same task needs an
-   explicit Stage 0 rule; no byte-offset resume or retained-PDF replay is promised.
+4. Stream bounded task feedback on the generation response, with paginated stored
+   diagnostics available on later task lookup. Looking up a task does not renew
+   expiry or attach a new connection to its old output. One task receives one
+   dataset; after interruption a new generation requires a new task. No byte-offset
+   resume, upload overwrite or retained-PDF replay is promised in first scope.
 5. Seal after complete transport receipt with validated sizes/checksums for stored
    originals. A truncated/malformed body is not complete receipt. A missing image
    reference becomes a recorded image omission, not a requirement to invent a file
@@ -344,7 +360,7 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
    admitted-to-process. No rendering starts against an incomplete dataset.
 7. Internally admit the sealed dataset for processing using its identity/digest.
    Pin the template, fonts, normalized input digest and processing contract. Keep
-   the second request open for the PDF response; no third client call is needed.
+   this request open for feedback and the final PDF part; no extra client call is needed.
    Never rebuild the complete large JSON HTTP body or job JSON for admission.
 
 Internal dataset lifecycle proposal: receiving -> sealed -> validating -> ready,
@@ -355,6 +371,70 @@ from complete receipt; cleanup state is distinct from task outcome.
 Transport/overall-capacity violations and unreadable structured input can be
 rejected while receiving; storing first never accepts unlimited bytes. Isolatable
 image failures follow the skip-and-record policy below instead of this fatal path.
+
+## Parent task and single-API response stream — owner decision 2026-10-18
+
+One logical public endpoint supports new generation and existing-task inspection.
+The route name and exact `taskId` carrier remain Stage 0 examples, not implemented
+routes. New requests use the multipart dataset; existing-task inspection supplies
+only the identity and receives bounded JSON status, not a replayed PDF stream.
+
+| Request | Behavior |
+| --- | --- |
+| No `taskId`, complete generation payload and bounded admission metadata | Reserve/create parent task; receive/validate; create zero/one internal generation job; stream feedback then PDF |
+| Existing `taskId`, no new generation payload | Authenticate owner and return the latest persisted state of that exact task, including terminal outcome/expiry and omission summary |
+| Supplied identity not found or not authorized | Return a bounded error; never silently open a new task |
+| Existing identity plus another payload | Reject/conflict; do not overwrite, start a duplicate job or revive terminal work |
+
+New generation has one response envelope with separate JSON parts and one final
+binary PDF part. Proposed media type is `multipart/mixed`, whose mixed parts are
+defined by [RFC 2046 section 5.1.3](https://www.rfc-editor.org/rfc/rfc2046.html#section-5.1.3)
+and HTTP multipart semantics by [RFC 9110 section 8.3.3](https://www.rfc-editor.org/rfc/rfc9110.html#section-8.3.3).
+Application event names/schema are our own versioned contract, not an RFC API.
+
+- First metadata event: protocol version, `taskId`, current state, `createdAt`,
+  `expiresAt`. Emit only after task reservation/creation commits. Make no guarantee
+  that a browser exposes an early response before its request upload finishes;
+  baseline progress after full receipt must work, and earlier visibility is tested.
+- Progress events: task state/stage, known completed/total units, bounded warning
+  summary and sequence. Relay the internal job's existing progress through Service,
+  not by sending raw child-process output to the client. Do not invent a global
+  percentage or create a new permanent record for each heartbeat/poll/chunk.
+- Error event: safe reason/stage plus task identity if created. Recoverable image
+  issues remain skip findings. Fatal error before stream starts can use normal HTTP
+  error JSON/status; after it starts, HTTP 200 alone is never evidence of task success.
+- On generation success, send artifact metadata (media type, expected byte size,
+  digest and omission summary), then the raw PDF part and closing envelope boundary.
+  No base64 of the whole PDF, no extra download URL and no JSON appended inside PDF
+  bytes. Record `tasks.succeeded` only after the server finishes the response and
+  wins the existing deadline/state race. The client verifies complete framing and
+  PDF size/digest rather than treating an earlier progress event as success.
+
+Core need not know this HTTP envelope: it produces the bounded output artifact;
+Service owns the response stream, task/job mapping and progress projection.
+Use bounded queues/coalesced progress and backpressure for slow clients. A heartbeat
+can show a live connection but does not renew the three-hour task lifetime or
+guarantee that proxies will not buffer/time out. First implementation keeps one
+generation response per task; no subscription/replay/SSE/WebSocket subsystem.
+
+Additional recommendation pending Stage 0 review: when the original generation
+connection is confirmed lost, cancel remaining work safely and record failed or
+expired with the observed delivery/connection reason. Retain unsuccessful input
+only until original expiry. It cannot be delivered on a closed connection, and a
+later `taskId` lookup only reports state, not resume/upload/download. Do not blame
+client-side handling without evidence. Exact cancellation grace and detection
+timeouts still require review/tests, not an assumption that a browser navigation
+is immediately observable by the server. Persist safe connection/send events,
+not live socket objects, in the existing proposed task records.
+
+Frontend/API consumers must read the response incrementally and separate JSON
+parts from the PDF; ordinary whole-response `json()`, `blob()` or a direct download
+alone cannot display periodic feedback. Validate client/proxy/server behavior,
+stream chunk splitting, binary boundaries, slow readers, cancellation, incomplete
+framing and delivery races in the actual supported environment before promising
+interoperability. Recommend a small reference consumer/helper to reduce caller
+framing work; no new SDK project is authorized here. Existing `/jobs` behavior remains legacy
+compatibility; do not silently change its media type or claim this is installed.
 
 ## Section-owned image forms and omission policy — owner decision 2026-10-18
 
@@ -391,8 +471,9 @@ later rendering does not silently retry or duplicate the same diagnostic.
 Persist safe reason code, Section ID, logical field/Format/item locator and optional
 assetKey/internal asset ID, with skip counts and bounded paginated detail available
 through task feedback/events. Preserve these facts in terminal usage history before
-file cleanup. Do not require callers to assemble diagnostic manifests. Final PDF
-bytes contain no JSON error report. No selectable `errorLevel`, report/strict mode,
+file cleanup. Do not require callers to assemble diagnostic manifests. The final
+PDF part contains no JSON error report; feedback parts carry the reports separately.
+No selectable `errorLevel`, report/strict mode,
 or collect-all-then-stop implementation is part of this round; leave selection
 for a separately scoped future decision.
 
@@ -453,7 +534,8 @@ claiming large structured-document support; image-only success is insufficient.
   in memory. Preserve deterministic identity, fonts, alpha masks, links and geometry.
 - Service's child writes through a Service-owned output target; parent receives a
   bounded completion descriptor and verifies the resulting owned artifact. Commit
-  output visibility only after completion. Handle crash gaps between file and DB
+  the artifact-ready event only after completion, then stream the PDF part on the
+  parent's original response. Handle crash gaps between file and DB
   operations using recovery; filesystem and DB are not one atomic transaction.
 - Preserve legacy byte-return APIs under their explicit limits. New large jobs
   require capability negotiation and the new path; no silent fallback to whole-file
@@ -479,9 +561,9 @@ claiming large structured-document support; image-only success is insufficient.
   with partial content completeness even if sending succeeds. Error-level selection
   is deferred. Full-source fidelity acceptance still requires all expected valid
   images; old API behavior is not silently changed by this new-path design.
-- Dataset re-use versus one-job ownership, quotas across owners, expiry while jobs
-  are queued/running, cancellation and same-task receive retry must be explicit
-  within the owner decisions above. Do not introduce cross-task dataset re-use or
+- One-job ownership, quotas across owners, expiry while jobs are queued/running
+  and disconnect cancellation details must follow the owner decisions above.
+  Existing-task lookup is not payload retry. Do not introduce cross-task re-use or
   automatic retry by implication. Cleanup failure does not turn successful delivery
   into a failed document; record and retry cleanup while retaining quota accounting.
 
@@ -492,12 +574,12 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: task DB/states, two-call multipart examples with optional Section-local keys, fixed image skip policy, ownership, expiry, usage and budgets | Binary-field binding, inline/array/unkeyed forms, no cross-Section reuse, skip reasons versus fatal errors, table/cleanup races, declared/actual bytes, reservation estimates, GB units, same-task retry and long connection; error-level selection deferred; no runtime changes |
+| 0: close contracts and budgets | Project Control + Service/Core: parent task/zero-or-one job, single-endpoint new/lookup examples, multipart feedback/PDF protocol, Section assets, ownership, expiry, usage and budgets | Admission metadata before body, taskId lookup semantics, versioned event/framing schema, binary binding, image skip/fatal boundaries, disconnect recommendation, deadline races and limits; error-level selection deferred; no runtime changes |
 | 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
 | 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
-| 4: Service processing integration | Service: claim sealed dataset, pin contracts/template/fonts, prepare files, stream final PDF on the original payload request, retain terminal record | Packed Core consumed for real; complete server send, disconnect before/after headers, no whole-PDF parent buffer, absolute expiry/cancellation, stale worker writes, disk-full and crash gaps; successful-send cleanup and failed-task expiry preserve records and release quota |
-| 5: FlowDocMake/legacy integration | FlowDocMake and Service: task opening, single multipart/PDF exchange, skip feedback, capabilities and lasting records | Auth, timeout limits, legacy/mixed versions, clone/import Section image isolation, streamed save/hash, partial-content feedback with successful send, lost task ID creates new task; no required requestKey, client assetKey, later download or error-level selector |
+| 4: Service processing integration | Service: parent task/job projection, typed feedback stream, prepare artifact and stream final PDF part on the original request | Packed Core, metadata committed before events, progress bounded under slow reads, errors before/after headers/PDF start, HTTP 200 not success alone, incomplete framing, disconnect/deadline/cancellation, stale writes, crash gaps and safe cleanup; no whole-PDF parent buffer |
+| 5: FlowDocMake/legacy integration | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
 
 Do not remove the existing count protections until their replacement is active
