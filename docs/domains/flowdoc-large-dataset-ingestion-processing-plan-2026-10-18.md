@@ -116,6 +116,160 @@ Read-only product references, inspected 2026-10-18:
 
 These source observations are not an installed-version or live-chat capability claim.
 
+## Proposed task DB and state design — 2026-10-18
+
+Design proposal for review, not applied schema. The public noun stays `task` and
+the only client tracking identity is `taskId`. A task orchestrates intake through
+delivery; an existing generation job is its internal PDF execution. First scope
+has zero or one generation job per task, no automatic rerender/retry attempts.
+Existing tasks/jobs outside this new path keep their current contract.
+
+### Existing tables and explicit changes
+
+| Table | Reuse | Required change/boundary |
+| --- | --- | --- |
+| `templates`, `template_versions` and existing draft/font reference tables | Template identity, immutable version/revision and font ownership | Keep current authority and retention; pin exact source for the task, not whatever is current later |
+| `generation_jobs` | Queued/running PDF execution, existing source pin and errors | Add nullable unique `task_id` FK to `tasks`; introduce an explicit task-backed input representation instead of giant `original_input`/`prepared_input` JSON |
+| `job_processing` | Live preparation/render progress | Keep as execution progress, extend stages only as needed; it is not the public task state or permanent usage ledger |
+| `document_outputs` | Output metadata, bytes, ownership and deleted marker | Task-backed output is transient, sent through the payload response and not offered by the legacy download route; mark deleted after confirmed removal |
+| `job_font_snapshots`, `job_font_assets` | Exact admitted-job font snapshot | Preserve current immutability and references; task expiry does not remove shared font assets |
+| `upload_sessions`, `upload_items`, `upload_job_claims` | Keep legacy image upload behavior and reuse streaming/ownership helpers | Do not reuse unchanged for all task input: items currently restrict upload media to JPEG/PNG, sessions can be removed, request key is mandatory and data parts are unsupported. New task file inventory is separate; no double accounting or duplicate physical storage |
+| `authoring_receipts`, `authoring_audit` | Existing authoring operations | Do not repurpose as customer task/billing history or require their request-key model on new task creation |
+
+Schema evidence: Service migrations `001_initial.sql`, `003_output_lifetime.sql`,
+`004_upload_staging.sql`, `006_upload_job_claims.sql`, `007_job_processing.sql`,
+`015_authoring_previews.sql`, `017_font_references_jobs.sql` at the inspected
+candidate above. These already contain timestamps; this design is not based on
+an assumption that all existing tables lack them.
+
+For `generation_jobs`, propose `input_kind = inline | task_dataset`. Legacy inline
+rows keep exact current JSON/pin validation. Task-backed rows reference the sealed
+input and normalized manifests/digests and do not also carry whole payload JSON.
+Update input/preview/font integrity checks and processor paths explicitly in a
+future forward-only migration; empty JSON placeholders or bypassed immutable-input
+triggers are not an acceptable compatibility shortcut. Draft preview pins must
+still identify the exact definition, including any owned snapshot file needed.
+
+### Five proposed new tables
+
+These are logical field groups, not executable SQL. UUID identifiers, bigint
+byte/count values with nonnegative checks, timestamptz lifecycle times and bounded
+text/JSON metadata are proposed. Every table has `created_at`; mutable rows also
+have `updated_at`. No source/PDF blob or unbounded diagnostic array lives here.
+
+| Table | Proposed fields | Invariants and lifetime |
+| --- | --- | --- |
+| `tasks` | `id` (public `taskId`), server-bound `owner_key`, `request_kind` (export/authoring preview), optional server-bound `billing_subject_key`, bounded external reference, exact template source reference/fingerprint, `status`, `state_version`, `created_at`, immutable `expires_at`, receive/queue/process/send/terminal timestamps, `last_progress_at`, input/normalized digest, completeness summary, terminal reason/stage, `cleanup_status`, `cleanup_completed_at`, worker lease token/deadline | Main permanent record; no raw document fields. Owner/template/deadline immutable after opening. `expires_at = created_at + 3 hours`; one terminal outcome, no reset by status reads. Execution lease is not task lifetime |
+| `task_files` | `id`, `task_id`, role (payload/original image/normalized part/prepared image), client asset key where needed, logical part order, media type, declared/received/stored bytes, checksum, internal storage key, receive attempt, file state, published/deleted timestamps | Server-controlled paths; bounded paginated inventory, unique logical key/order in its declared scope. Store partial files safely; sealed input immutable. After removal retain only bounded metadata/tombstone and clear content-bearing/internal locator fields. Output bytes remain owned through `document_outputs`, not registered/counting twice here |
+| `task_resource_reservations` | `task_id` PK, `storage_held_bytes`, `storage_used_bytes`, `queue_slot_held`, reservation policy version, `released_at` | Durable quota accounting, one row per task; used bytes are included in held bytes, never add both. Require `0 <= used <= held`. Reserve bytes before writing, shrink/release after actual deletion. Terminal failure can release its queue slot while retaining storage until expiry; unfinished cleanup still consumes storage |
+| `task_events` | `id`, `task_id`, task-local sequence, optional job reference, event type, previous/new state, observed/recorded times, server actor, bounded safe reason/details, unique event key | Append-only durable lifecycle/delivery/cleanup history; sequence/key uniqueness prevents duplicate transition records. Do not emit one permanent event per uploaded chunk or poll. Progress counters can change without ledger growth. No tokens, raw values, full URLs or filesystem paths |
+| `task_usage` | `task_id`, `revision`, `measurement_version`, finalization time, ownership/request/template snapshot, measured counters, generation/delivery outcomes and evidence references, optional superseded revision/reason | Append-only fact snapshot for future billing; unique `(task_id, revision)`, revision 1 written once with the terminal transition. Corrections append a new revision with rationale; no overwrite/double counting. Keep indefinitely in this scope. No price, invoice, charged flag or automatic charge rule yet |
+
+Relations: one task has many files/events and one reservation; zero/one linked
+generation job; that job keeps zero/one output and its existing font snapshot.
+A task has one terminal usage snapshot plus explicitly versioned corrections.
+No cascaded file cleanup may delete the task, events or usage records. Permanent
+records must not depend on continued availability of temporary file rows/bytes.
+
+### Public states and transitions
+
+| State | Meaning | Normal next state |
+| --- | --- | --- |
+| `awaiting_input` | Capacity reserved; identity returned; no body accepted yet | `receiving` |
+| `receiving` | One task-bound payload request is being stored | `validating` |
+| `validating` | Full receipt sealed; checking/normalizing structured values and references | `queued` |
+| `queued` | Valid input admitted, waiting for processing resources | `processing` |
+| `processing` | Preparing resources, composing, laying out and generating PDF | `sending` |
+| `sending` | Complete acceptable PDF is being streamed on the same payload response | `succeeded` |
+| `succeeded` | Server send completed according to the agreed boundary | Terminal |
+| `failed` | Receive/validation/process/delivery failure or interruption confirmed | Terminal |
+| `expired` | Nonterminal task reached its original absolute deadline | Terminal |
+
+All nonterminal states can fail or expire. Internal `generation_jobs.succeeded`
+means PDF generation completed, not that `tasks.succeeded` can be set early.
+Render progress is exposed under task progress, without inventing a global percent
+across stages whose total work is unknown. Task responses include `taskId`, state,
+stage progress, `createdAt`, `expiresAt`, bounded warnings/error and file availability.
+Terminal task status may remain queryable after `expiresAt`; that timestamp controls
+temporary data/execution, not expiry of the permanent task identity.
+
+Cleanup is orthogonal: `not_due | pending | running | done | retry_needed`.
+Task success is unchanged if cleanup fails; keep its reservation and retry cleanup.
+At the deadline stop nonterminal work with a fenced lease, record `expired`, close
+owned handles/workers, then delete files. A task already `failed` remains failed
+when its retained files expire; a succeeded task is never relabeled expired.
+After restart, a lost HTTP payload/response connection cannot be resumed by changing
+status: reconcile interrupted nonterminal tasks to failed or expired as appropriate.
+No automatic rerender or delivery replay is introduced. Failed same-task receive
+retry remains an unresolved Stage 0 decision; safe initial proposal is a new task.
+
+### Atomicity, indexes and failure boundaries
+
+- Capacity reservation, task creation and opening event commit together before
+  returning an identity. Existing legacy admission/storage operations must share
+  the applicable lock/budget accounting with the new path. Count task-backed jobs
+  once, not once as a reserved task and again as a legacy queued job. RAM concurrency
+  is scheduled at processing time; reserving disk is not reserving RAM for 3 hours.
+- Claim one receive/worker per task via row lock/compare-and-swap and fenced lease
+  token. State transition, event and terminal usage snapshot commit together.
+  Reject writes/results from expired leases and terminal tasks. On terminalization,
+  release queue capacity exactly once; do not release retained file capacity early.
+- Deadline versus send-completion race uses one conditional terminal transition
+  against database time and state version. Exactly one outcome wins; sending that
+  has not completed before expiry is not retroactively successful. Never pretend a
+  client saved a file because the server emitted its final bytes. Persist observed
+  bytes/events and unknown delivery outcome on crash; a missing receipt is not
+  reconstructed as success for billing.
+- Releasing a logical queue reservation does not release a live worker's RAM or
+  file handles. Processing/receive/send concurrency permits stay held until their
+  actual operations stop; expiry cannot admit replacement work on a false free slot.
+- SQL and filesystem writes are not atomic together. Publish owned file metadata
+  after safe file completion, reconcile orphan files/records on recovery, and mark
+  deletion/release only after verifying removal. Partial response errors use task
+  status/events because HTTP headers/body cannot be replaced after PDF starts.
+- Proposed indexes: `tasks(owner_key, created_at, id)` for history;
+  `tasks(expires_at, id)` partial on nonterminal states; pending cleanup/deadline
+  index; unique nullable `generation_jobs(task_id)`; `task_files(task_id, role,
+  part_order, id)` plus scoped unique client keys; `task_events(task_id, sequence)`;
+  `task_usage(task_id, revision)` and owner/finalization history where measured need
+  justifies it. Expiry cleanup also scans terminal failed tasks retaining files,
+  not only the nonterminal expiry index. Queue/disk limits use integer bytes and
+  ordered locking with unchanged legacy operations to avoid races/deadlocks.
+
+### Facts retained for future billing
+
+Record distinct measurements: actual request-body bytes received, sealed original
+file bytes, prepared/intermediate peak bytes, PDF bytes generated, bytes written
+to the response, generated page count, source image item count, rendered image
+placements, required resources missing and warning/omission counts. Request bytes
+and extracted file bytes describe different things and must not be summed as one
+usage amount. Generated pages and delivered pages are not interchangeable; partial
+PDF byte delivery does not establish a number of usable delivered pages.
+
+Retain task owner/request kind, exact template/processing/measurement versions,
+stage timestamps and defined wall durations, terminal reason, generation result,
+server-send result, and output/input digests where applicable. Unknown/unmeasured
+counts stay NULL with a measurement status/reason, not fabricated zeros. Wall time
+is not CPU time; optional measured memory/CPU values need their own units/method.
+Capture terminal facts before deleting files. Cleanup events can follow without
+rewriting the terminal usage snapshot. Preview/test work remains distinguishable
+from customer export, without deciding which is chargeable. Future invoices must
+use explicit pricing and usage-revision rules; neither success nor failure creates
+a charge by itself. Persistent history will need access control, indexing and
+storage monitoring even though automatic record deletion is out of scope.
+
+### Remaining decisions and proof before SQL/runtime work
+
+Close exact API examples, payload encoding, principal/billing-subject mapping,
+GB byte units, reservation estimates, per-record limits, receive retry and timeout
+values. Prove concurrent opening/upload, no double reservation, exact old/new input
+mode constraints, owner access, all state transitions, expiry at every phase,
+restart/stale worker, success versus disconnect/deadline race, missing required
+images, deletion failure, and exactly-once terminal facts/events. Assert file
+deletion preserves task/usage/event history and no giant payload remains in DB/logs.
+Core/Service integration and current branch/worktree reconciliation are prerequisites
+before runtime implementation; cleanup of the unmerged candidate lanes is not done.
+
 ## Proposed intake contract
 
 1. Open an owned task with bounded size/template metadata; reserve capacity and
@@ -237,7 +391,7 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: two-call examples, single large upload/PDF response, identity, absolute expiry, persistent records and measured-test budgets | Payload encoding, declared/actual bytes, reservation estimates, GB byte units, interruption, same-task retry, expiry during each phase and long-connection contract; no runtime changes |
+| 0: close contracts and budgets | Project Control + Service/Core: review the task DB/state proposal above, two-call examples, single large upload/PDF response, ownership, expiry, permanent usage facts and budgets | Table reuse/new-table boundaries, transition/cleanup races and usage revisions, payload encoding, declared/actual bytes, reservation estimates, GB byte units, same-task retry and long-connection contract; no runtime changes |
 | 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
 | 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters | The single HTTP payload is not buffered/parsed whole or copied into giant job JSON; exact values/order, duplicate-key/depth limits, cross-part references and bounded expansion; old model 18/19 paths remain compatible |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
