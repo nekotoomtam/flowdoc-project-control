@@ -3,20 +3,21 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0 ปิดสัญญา และช่วง 1 ผ่านเฉพาะ Core candidate เมื่อ 2026-10-18**.
-ช่วง 2–5 ยังไม่พัฒนา. Core candidate รับ declaration และขยายข้อมูลตาม JSON ใหม่แล้ว;
-ยังไม่พร้อมอ้างผล PDF ตามสัญญาเต็ม และยังไม่รวม branch หลัก/release/ติดตั้ง.
+สถานะ: **ช่วง 0 ปิดสัญญา และช่วง 1–2 ผ่านเฉพาะ Core candidate เมื่อ 2026-10-18**.
+ช่วง 3–5 ยังไม่พัฒนา. Core candidate รับ declaration ขยายข้อมูลและจัดหน้าแล้ว;
+ยังไม่เชื่อม Service/FlowDocMake สำหรับฟีเจอร์นี้ ไม่รวม branch หลัก/release/ติดตั้ง.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
 Service เป็นเจ้าของ persistence, API และงาน PDF;
 FlowDocMake เป็นเจ้าของเครื่องมือและคำแนะนำการสร้างแม่แบบผ่าน Service.
 
-Work size: medium; risk: routine สำหรับเอกสารรอบนี้.
+Work size: medium; risk: routine สำหรับงานตามสัญญาในรอบนี้.
 Document budget: ปรับฉบับนี้ฉบับเดียว ใช้ลิงก์จาก contract เดิมที่มีแล้ว.
 Proof budget ช่วง 0: ตรวจสัญญา/JSON/ลิงก์; ช่วง 1: focused/full Core tests,
-build, packed consumer และ independent review หนึ่งรอบพร้อม regression ของข้อพบ.
-ช่วง 0 ไม่แก้ runtime; ช่วง 1 แก้เฉพาะ Core declaration/composition และ tests
+build, packed consumer และ independent review หนึ่งรอบพร้อม regression ของข้อพบ;
+ช่วง 2 เพิ่ม layout/PDF tests และตรวจภาพทุกหน้าของ PDF ทดสอบใหม่.
+ช่วง 0 ไม่แก้ runtime; ช่วง 1–2 แก้เฉพาะ Core declaration/composition/layout และ tests
 ใน worktree แยก. ไม่แก้ DB, draft, release, การติดตั้ง หรือ DOCUMENT_MAP.
 ไม่เปิด execution เก่าหรือถือว่าได้เปลี่ยนโมเดลของห้อง.
 เมื่อเริ่มพัฒนาให้เลือกโมเดลและฐานงานตาม workflow ปัจจุบันอีกครั้ง.
@@ -504,11 +505,11 @@ FlowDocMake จุดเชื่อมคือ `plugins/flowdocmake/scripts/se
 
 ### ช่วง 2 — Core: layout, หน้าต่อ และ PDF
 
-- [ ] ต่อกลไกที่ `src/layout/cellTableFlow.ts` ให้แบ่ง span ตาม fragment จริง
+- [x] ต่อกลไกที่ `src/layout/cellTableFlow.ts` ให้แบ่ง span ตาม fragment จริง
   วัดชื่อในแต่ละหน้า รักษา keepStart, repeated header และนโยบาย row break.
-- [ ] ส่งชื่อ “(ต่อ)” เป็นผล layout ไปยัง draw/PDF พร้อม provenance ที่แยกได้;
+- [x] ส่งชื่อ “(ต่อ)” เป็นผล layout ไปยัง draw/PDF พร้อม provenance ที่แยกได้;
   ใช้เส้นขอบและการวัดเดิม ไม่แก้ข้อมูลสมาชิกเพื่อให้วาดง่าย.
-- [ ] เชื่อม diagnostics ของ fixed/impossible layout และรักษาลิงก์/anchor.
+- [x] เชื่อม diagnostics ของ fixed/impossible layout และรักษาลิงก์/anchor.
 
 ตรวจ: ชื่อยาวหลายบรรทัด ชื่อพร้อม suffix สูงขึ้น พื้นที่ท้ายหน้าเหลือน้อย
 header/footer ต่างหน้า padding/เส้น ตารางหลายหน้า สมาชิกเดียวไหลหลายหน้า
@@ -517,6 +518,47 @@ protected row ภาพสูง ขอบก่อนกลุ่มถัด�
 และ PDF/link tests ที่ได้รับผลกระทบ ตรวจค่าข้อมูลทุกตัวครั้งเดียวตามลำดับ
 แยกชื่อที่ตั้งใจซ้ำออกจากข้อมูลซ้ำผิดพลาด.
 ผ่านเมื่อชื่อมีทุก fragment เส้นปิดถูก และกรณีเป็นไปไม่ได้แจ้งปัญหาถูกจุด.
+
+ผลช่วง 2 — **PASS เฉพาะ Core layout/PDF candidate**:
+
+- ต่อบน worktree/branch ช่วง 1 เดิม; base `4a36cc5`, terminal commit
+  `885e36ead5e7d86778cfdbd975b42d1743c4f25f`.
+  เปลี่ยน `src/layout/cellTableFlow.ts`, `src/pdf/createPdfEngine.ts`,
+  `tests/layout/groupLabelFlow.test.ts`, `tests/consumer/checkRowGroups.mjs` เท่านั้น.
+- ชื่อเต็มอยู่ครบในแต่ละ page fragment; suffix วัดเมื่อมีหน้าต่อจริงและ cache
+  แยกจากชื่อแรก ไม่แก้ nodes/sourceMap/data. ความสูง fragment รวมชื่อสูงและ
+  สมาชิกที่วางได้; เส้นกริดใช้การรวมขอบเดิมและไม่วาดแถวเริ่มว่างหลอกที่ท้ายหน้า.
+  fixed ยังคงจองกรอบจริง หยุดพร้อม pending cursor และไม่สร้างหน้าต่อของ Format นั้น.
+- `groupLabelFlow.test.ts` **25 cases PASS**: กลุ่มหลายหน้า สมาชิกยาว ชื่อซ้ำ
+  หลายบรรทัด/suffix ทำให้ wrap สูงขึ้น, prefix/keepStart, header/next capacity,
+  protected/blank rows, ภาพใหญ่, fixed ทั้งเต็มกรอบและกรอบเหลือน้อย,
+  Format ถัดไป, ลิงก์และสารบัญ. ชุดที่ได้รับผลกระทบรวม **63 tests PASS**;
+  build PASS และทั้งชุด **778 tests / 78 files PASS**.
+- independent review หนึ่งรอบพบ P1 ชื่อสูงกับหลายแถว protected:
+  พื้นที่พอแต่ cut ที่ขอบแถวทำให้ auto ไม่ก้าวหน้า/fixed หยุดเร็ว.
+  เพิ่ม 4 regressions ให้ fail ก่อนแก้ แล้วเว้นพื้นที่ในแถวสุดท้ายที่ลงได้เพื่อรักษา
+  max(label, legal member fragment); auto 70/72/75 pt และ fixed ผ่าน.
+  ตรวจภาพพบส่วนต้นแถวว่างท้ายหน้า เพิ่ม RED/GREEN อีกหนึ่งกรณีแล้วแก้เส้นปิด.
+  ไม่มี Critical/Important ค้าง และไม่มี deferred minor.
+- Final packed Linux/amd64 consumer แบบ non-root, network none, mounts []:
+  **23 กลุ่มตรวจ PASS**. Native feature cases 7 กรณี: 6 PDF และ expected
+  impossible-label failure ที่มี LAYOUT_FAILED/reason/groupId/groupIndex ถูกต้อง.
+  Candidate SHA-256 `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`.
+  ยังเป็น test candidate รุ่นฐาน 0.4.3 ไม่ใช่ release/install artifact.
+- PDF ใหม่ 6 ไฟล์: groups 5 หน้า, long 4, multiline 4, fixed 1,
+  protected 4, fixed-protected 1 — **ตรวจภาพครบ 19 หน้า** ในพื้นที่เขียนทั้งหมด
+  และเก็บ full-page PNG. ตรวจ text tokens ยืนยัน auto ครบครั้งเดียวตามลำดับ;
+  fixed แสดง prefix สมาชิก 3/12 และ 2/6 ตามกรอบ พร้อม cursor จุดเริ่มส่วนที่เหลือ.
+  ไม่มี PDF Syntax Error. ชื่อที่ซ้ำเพื่อแสดงหน้าต่อไม่ถูกนับเป็นสมาชิกซ้ำ.
+- หลักฐานใน worktree: `artifacts/stage2/` (RED/GREEN/full/package logs),
+  `artifacts/stage2/pdf-review/checks.json`, `visual-review.json`, PNGs;
+  native package/PDF/results ที่ `artifacts/1792319551096/`.
+  ระหว่างเตรียม consumer เคยพบ syntax ใน test band fixture แล้วแก้;
+  ผลข้างต้นอ้าง final passing package เท่านั้น ไม่อ้าง run ที่ fail เป็น PASS.
+- Coverage: G07–G15/G18 ในขอบเขต Core และ regression G01–G06/G16/G17.
+  Service allowlist/readiness/capability และ API pin/clone ยังอยู่ช่วง 3;
+  UAT/SRS/ศบ.1 จริงยังตรวจร่วมในช่วง 4. ไม่แก้ Service, FlowDocMake, DB, draft,
+  รุ่นแพ็กเกจหรือ DOCUMENT_MAP; ไม่รวมตัวหลัก ไม่ push/tag/release/ติดตั้ง.
 
 ### ช่วง 3 — แพ็กเกจจริง, Service และ FlowDocMake
 
