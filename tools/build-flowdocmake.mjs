@@ -18,5 +18,5 @@ function copy(path){
 }
 for(const root of roots)copy(root);
 const packageVersion=JSON.parse(readFileSync(join(plugin,'.codex-plugin/plugin.json'),'utf8')).version;
-writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.4.3',sourceCommit,files},null,2)+'\n');
+writeFileSync(join(plugin,'snapshot.json'),JSON.stringify({packageVersion,guideRelease:'0.4.4',sourceCommit,files},null,2)+'\n');
 console.log(JSON.stringify({sourceCommit,files:Object.keys(files).length}));

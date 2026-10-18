@@ -3,9 +3,11 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0 ปิดสัญญา และช่วง 1–2 ผ่านเฉพาะ Core candidate เมื่อ 2026-10-18**.
-ช่วง 3–5 ยังไม่พัฒนา. Core candidate รับ declaration ขยายข้อมูลและจัดหน้าแล้ว;
-ยังไม่เชื่อม Service/FlowDocMake สำหรับฟีเจอร์นี้ ไม่รวม branch หลัก/release/ติดตั้ง.
+สถานะ: **ช่วง 0–5 ผ่านตามขอบเขตเซลล์ชื่อกลุ่มและเตรียมส่งมอบ เมื่อ 2026-10-18**.
+Core candidate รับ declaration ขยายข้อมูลและจัดหน้า; Service/FlowDocMake เชื่อมแล้ว.
+ชุดพัฒนา Core/Service 0.4.4 และ FlowDocMake 0.2.5 พร้อม checkpoint รวมงาน.
+งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง;
+หก external font-height checks ยังไม่ยืนยัน จึงไม่อ้าง readiness ครอบคลุมทุกฟีเจอร์.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -562,11 +564,11 @@ protected row ภาพสูง ขอบก่อนกลุ่มถัด�
 
 ### ช่วง 3 — แพ็กเกจจริง, Service และ FlowDocMake
 
-- [ ] แพ็ก Core candidate แล้วให้ Service ใช้ไฟล์แพ็กเกจจริงพร้อม checksum;
+- [x] แพ็ก Core candidate แล้วให้ Service ใช้ไฟล์แพ็กเกจจริงพร้อม checksum;
   ตรวจ consumer/native runtime ของสภาพแวดล้อมส่งมอบ.
-- [ ] เชื่อม save/read, draft validation/readiness, snapshot ของงาน PDF,
+- [x] เชื่อม save/read, draft validation/readiness, snapshot ของงาน PDF,
   clone/import และการส่ง diagnostics ตามสัญญาที่ปิดแล้ว.
-- [ ] เพิ่ม capability/schema/context ของ FlowDocMake และตัวอย่างสั้นในคู่มือ
+- [x] เพิ่ม capability/schema/context ของ FlowDocMake และตัวอย่างสั้นในคู่มือ
   จุดเดิม เพื่อให้ AI เลือกกลไกใหม่แทน hard-code จำนวนสมาชิก.
 
 ตรวจ: สิทธิ์ผู้ดูแล/ผู้เขียน/ผู้ไม่มีสิทธิ์ตามขอบเขต API จริง; client เก่า–ใหม่,
@@ -578,13 +580,68 @@ engine ที่ไม่รองรับ, round-trip ไม่ทิ้ง fi
 แล้วเพิ่ม Service/FlowDocMake tests ใน owner paths ที่ยืนยันในช่วง 0.
 ผ่านเมื่อเรียกผ่านเครื่องมือและ Service ได้จริง ไม่ใช่ผ่านเฉพาะ direct Core.
 
+ผลตรวจช่วง 3 (single-room implementation; execution IDs N/A):
+
+- Service branch `codex/group-label-stage3-20261018`, commit `6054037`;
+  FlowDocMake source บน Project Control branch ชื่อเดียวกัน:
+  `93db697` (คู่มือ), `8bc87f8` (integration), `0ee44a7` (review fix).
+  Core `885e36e` ไม่แก้เพิ่ม; ใช้ archive ที่ตรวจช่วง 2 แล้วแบบ byte-identical
+  เป็น `vendor/flowdoc-core-0.4.3-group-label-stage2.tgz`, SHA-256
+  `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`.
+  เก็บ archive release เดิมไว้; รุ่นภายในยังเป็น 0.4.3/0.2.4 และใช้ checksum
+  แยก candidate จนเตรียมรุ่นช่วง 5 ไม่อ้างว่าเป็น installed package ใหม่.
+- capability ตรง 4.4; context ส่ง groupLabelSpans/formatSizing.
+  validate/save ผ่าน stdio และ candidate workflow ปฏิเสธ capability ที่ขาด/unknown/
+  ชนิดข้อมูลผิดโดยไม่ส่ง definition ต่อ. นิยามไม่มีฟีเจอร์ใช้ทางเดิม;
+  engine/package pin ผิดปฏิเสธชัดเจน. ของเดิม model18/19 ผ่านชุด regression.
+- API/MCP save/read คง field; clone/import สอง Section ใช้ ID และ Area/Format
+  เจ้าของใหม่ ชื่อเหมือนกันแต่ข้อมูล COPY-A/COPY-B แยกกัน. งานที่ queued ก่อน
+  แก้ draft ยังใช้ revision/definition/input เดิม; immutable font snapshot
+  ตรึง renderer SHA และ Sarabun เดิมครบสี่ face, engine อื่นใช้ snapshot ไม่ได้.
+  เจ้าของอื่นรับ 404, ไม่ยืนยันตัวตนรับ 401; ไม่มี admin/publish tool เพิ่ม.
+- auto readiness ใช้ชื่อรวม ` (ต่อ)` ใน face เดียวกัน; fixed ไม่ตรวจ suffix.
+  ทดสอบ schema2 ด้วยไฟล์ subset ที่ตัด U+0E15: auto blocked พร้อมตำแหน่งอักษร
+  และไม่ enqueue, fixed ready. ไม่มี synthetic face/fallback เพิ่ม.
+- fixed 300 เหลือ 120 แสดง ROW0–ROW2 แล้วเตือน cursor ของสมาชิกค้าง;
+  auto ส่งชื่อพร้อม suffix ในหน้าต่อและสมาชิกครั้งเดียว. ชื่อสูงเกินหน้าส่ง
+  LAYOUT_FAILED/group-label-does-not-fit พร้อม bounded groupId/groupIndex/nodeId
+  ผ่าน child/Service/MCP และดาวน์โหลด partial PDF ไม่ได้.
+- ชุด native/API ที่เกี่ยวข้อง 22/22 ผ่านก่อนตรวจเต็ม. ชุดเต็ม PostgreSQL/Linux
+  100 files: **325 ผ่าน, 0 ล้มเหลว, 6 ข้าม**; ไม่เรียกว่า 331 ผ่าน.
+  หกข้อเดิมเป็น height-delivery guard 3, proposal fixture 2, supplied fonts 1
+  ที่ต้องใช้ external fixture; **ยังไม่รับรองผลหกข้อนี้ในรอบนี้**.
+  harness รอบเต็มหยุดที่ zero-skips assertion (ไม่ใช่ product test ล้มเหลว);
+  runner ใหม่แสดงรายการ skipped โดยเปิดเผยและไม่ยอมให้ group-label acceptance ข้าม.
+- หลัง review fix: ทดสอบ Service กลุ่มใหม่ **7/7**, FlowDocMake ที่ได้รับผลกระทบ
+  **24/24**, ไม่มี skipped; เรียก stdio จริงกับ native API รวม Format ชื่อ examples.
+  PDF **5 ไฟล์/8 หน้า** ตรวจ strict parsing, จำนวน/ลำดับข้อความ, render และภาพทุกหน้า
+  ผ่าน. fixed เป็น partial output ตามคำเตือน ไม่อ้างว่าข้อมูลครบ.
+- independent review หนึ่งรอบพบ detector มองข้าม Format ชื่อ examples และอ่าน
+  business defaults ผิดเป็น declaration. เพิ่ม regression ให้เห็น RED 3 ข้อก่อนแก้
+  แล้ว GREEN; ตรวจเฉพาะ declaration owners ของ Format/authored Section แทน recursive scan.
+  ไม่มีข้อพบค้าง. Core layout ใช้หลักฐานช่วง 2; visual acceptance ตรวจเองครบ;
+  UAT/SRS/ศบ.1 เป็นช่วง 4 และหก external height checks ยังไม่ใช่หลักฐานผ่านรอบนี้.
+- คู่มือเพิ่มเฉพาะบท contents-and-repetition เดิม, startup reading ไม่เพิ่ม;
+  snapshot สร้างด้วย build-flowdocmake จาก canonical inputs รวม reference เดิมที่ล้าหลัง.
+  ไม่แก้ installed cache/DB จริง, ไม่เพิ่ม migration, ไม่เปลี่ยน DOCUMENT_MAP.
+
+Evidence: Service tests `group-label-api.test.mjs`, `group-label-unit.test.mjs`,
+`checkGroupLabelPdf.py` และ runner `scripts/checkGroupLabels.mjs` ที่ commit ข้างต้น;
+PC tests `flowdocmake-group-label.test.mjs`, `flowdocmake-workflow.test.mjs`,
+`checkFlowdocmakeGroupLabels.mjs`. หลักฐาน local อยู่ที่ Service worktree
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/group-label-stage3/artifacts/`:
+`1792321128017/tests.log` (ชุดเต็ม), `1792321717476/result.json`,
+`1792321717476/plugin-tests.log`, `1792321717476/pdf-review/checks.json` และ
+`1792321717476/pdf-review/all-pages.png`; coverage/RED–GREEN/review notes ใน `stage3/`.
+เก็บ lanes/evidence ไว้ใช้ช่วง 4; ไม่รวมตัวหลัก ไม่ push/tag/release/ติดตั้ง.
+
 ### ช่วง 4 — แม่แบบ UAT และตรวจ PDF ทั้งชุด
 
-- [ ] สร้างสำเนา draft UAT แยกจากต้นฉบับ ใช้ mock เดิมเป็นฐาน
+- [x] สร้างสำเนา draft UAT แยกจากต้นฉบับ ใช้ mock เดิมเป็นฐาน
   เปลี่ยนเฉพาะตารางชื่อกลุ่มจาก scalar/rowSpan ตายตัวเป็น groups/members.
-- [ ] เพิ่ม case mock 0/1/หลายสมาชิก ชื่อเหมือนคนละกลุ่ม กลุ่มยาวหลายหน้า
+- [x] เพิ่ม case mock 0/1/หลายสมาชิก ชื่อเหมือนคนละกลุ่ม กลุ่มยาวหลายหน้า
   สมาชิกยาวข้ามหน้า กลุ่มว่าง และ fixed; ระบุค่าที่เพิ่มเพื่อทดสอบแยกจาก mock เดิม.
-- [ ] สร้าง PDF ทุก case เก็บ revision/package/hash และตรวจทุกหน้าของผลทดสอบ.
+- [x] สร้าง PDF ทุก case เก็บ revision/package/hash และตรวจทุกหน้าของผลทดสอบ.
 
 ตรวจ: จำนวน/ลำดับ/ค่าข้อมูล span และชื่อ “(ต่อ)” ตรง fragment;
 ไม่มีชื่อโดด ไม่มีสมาชิกหายหรือซ้ำ เส้นและหัวตารางถูก แถวรวมเดิมแสดงครั้งเดียว
@@ -594,16 +651,139 @@ engine ที่ไม่รองรับ, round-trip ไม่ทิ้ง fi
 เทียบ UAT กับต้นฉบับและผลรอบก่อน แยกความต่างเดิมออกจาก regression ใหม่.
 ผ่านเมื่อครอบคลุม PDF ทุกหน้าที่สร้าง และ fixed omission ถูกแจ้งครบ.
 
+ผลช่วง 4 (2026-10-18): **PASS ตามขอบเขตแม่แบบและ regression**.
+ใช้ candidate ของช่วง 3 ในระบบทดลองแยก; ไม่เปลี่ยน runtime code หรือระบบที่ติดตั้ง.
+สำเนา UAT `3c9f0379-3e04-4742-8774-74e5b978c2ff` revision 4 ใช้ Format
+`summary-dynamic` กับ rowGroups/groupLabel แทน scalar และ rowSpan ตายตัว.
+หนึ่งกลุ่มใช้หนึ่งรายการ Format ใน Area เดิม เพื่อคงยอดรวมแต่ละกลุ่มผ่าน repeat
+ของแถวท้ายที่มีอยู่แล้ว ไม่เพิ่ม group-footer hook หรือ Section.
+
+| ชุด PDF | หน้า | ผลที่ตรวจ |
+| --- | ---: | --- |
+| baseline normal / long บน candidate เดียวกัน | 11 / 13 | แยกผลของแม่แบบออกจากแพ็กเกจ |
+| mock normal / long เดิม | 11 / 13 | ค่าและลำดับเดิมครบ ยอดรวมครั้งเดียว เปลี่ยนภาพเฉพาะหน้าสรุป 5 |
+| groups ว่าง / สมาชิก 0, 1, 5 | 11 / 11 | ไม่มีสมาชิกปลอม; empty fallback เฉพาะกลุ่มว่าง |
+| สองกลุ่มชื่อเหมือน กลุ่มละ 26 สมาชิก | 15 | แยก instance; กลุ่มละสาม fragment รวม “(ต่อ)” สี่ครั้ง |
+| สมาชิกหนึ่งรายการ 80 บรรทัด | 13 | ไหลสามหน้า ชื่อกลุ่มซ้ำพร้อม “(ต่อ)” สองครั้ง ไม่มีข้อมูลซ้ำ/หาย |
+| fixed สูงสุด 300 pt แต่หน้าเหลือ 120 pt | 12 | แสดงสองจาก 24 สมาชิก ปิดเส้น แจ้ง 22 สมาชิกและแถวรวมที่ไม่แสดง; Format ถัดไปยังทำงาน |
+| SRS เดิม / ศบ.1 free-flow ล่าสุด | 98 / 2 | ข้อความ ลิงก์ และภาพทุกหน้าตรง baseline |
+
+รวม 11 PDF / 210 หน้า: ตรวจโครงสร้าง ข้อมูล เลขหน้า สารบัญ ลิงก์
+และ Poppler render ทุกหน้า ไม่พบ PDF syntax error; ตรวจภาพ 162 หน้าที่ต่างกัน
+ผ่าน 27 sheets และใช้ผลภาพที่มี pixel hash ตรงกันทุกจุดสำหรับอีก 48 หน้า.
+ผู้ตรวจอิสระหนึ่งรอบตรวจ hash/revision/fingerprint และ coverage ไม่พบ
+Critical/Important finding. คำเตือนภาพความละเอียดต่ำเดิมยังอยู่
+(UAT ชุดละ 10, SRS 4, ศบ.1 ไม่มี) ไม่ถูกซ่อนหรือถือว่าแก้แล้ว.
+
+ความต่างที่ต้องแยกให้ชัด: หัวคอลัมน์ซ้ำเมื่อเริ่มแต่ละกลุ่ม เพราะเป็นคนละรายการ
+Format; เนื้อหาสมาชิกและยอดรวมไม่ซ้ำ. เทียบกับ PDF UAT จากแพ็กเกจก่อนหน้า
+ยังมี pixel difference ของภาพแนวตั้งสุดท้ายที่หน้า 11/13
+(กรอบ 282,103–313,301 ที่ 72 dpi) แต่ข้อความ/ลิงก์ตรงกัน;
+เมื่อเทียบ old/new template บน candidate เดียวกันต่างเฉพาะหน้าสรุป.
+นี่ไม่ใช่การรับรองความเหมือนทั้งหมดกับต้นฉบับ UAT 72 หน้า:
+mock เดิมเป็นชุดย่อ 11/13 หน้า มีภาพ/ข้อความ mock และข้อแตกต่างด้านฟอนต์/เส้นเดิม.
+SRS ใช้ baseline ที่เก็บไว้ ไม่ได้ปิดข้อแตกต่างจากเอกสารต้นทางในงานเก่า.
+
+ระหว่างทดลองแก้สองจุดในแม่แบบ/fixture: ใช้ supported authoring flow เพิ่ม
+Format ใหม่แล้วลบ Format เก่าที่เลิกใช้ แทนการฝืนเปลี่ยนเจ้าของ schema เดิม;
+และคำนวณพื้นที่ fixed จากตำแหน่งหัว–ท้ายจริงให้เหลือ 120 pt.
+ศบ.1 เปลี่ยน input ทดสอบจากสำเนา revision เก่าไปเป็น free-flow revision 4
+ก่อนตรวจรับ; ผลก่อนแก้เก็บแยก `superseded-r1/` ไม่ใช้เป็น PASS.
+
+Evidence local root:
+`C:/Users/nekot/Documents/Codex/2026-10-18/group-label-stage4/`.
+`review/verification.json`, `review/visual-index.json`, `prepared/composition-checks.json`
+ผูกเกณฑ์กับผลตรวจ; `delivery/` มี PDF ทั้ง 11 ชุดพร้อม receipt definition/request,
+revision/job/package/hash; `template/` มีแม่แบบ revision 4, input เจ็ดกรณี
+และไฟล์ภาพ 17 ชิ้นพร้อม checksum (alias ต้องอัปโหลดใหม่ก่อนใช้งาน).
+`checkpoint.json` เก็บ authoring receipts; `scope.json` เก็บฐาน/ขอบเขต.
+Core SHA `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`
+ตรงกับช่วง 3. ตรวจต้นฉบับ live UAT revision 9, SRS revision 1 และ ศบ.1 revision 4
+ทั้งก่อนและหลัง พบ fingerprint/definition ตรงกันครบ.
+สำรอง DB/ไฟล์ก่อนทดลองและหลังทดลอง; หยุดเฉพาะ containers ของชุดทดลอง
+และเก็บ volumes/dumps ไว้ต่อช่วง 5. ไม่รวมตัวหลัก ไม่ push/tag/release/ติดตั้ง.
+ตรวจ diff/ลิงก์แผนและ checksum ของชุดแม่แบบผ่าน (`review/handoff-checks.json`).
+`npm run check:data` เริ่มไม่ได้เพราะ worktree นี้ไม่มี `tsx`; ไม่อ้างเป็น PASS.
+รอบนี้ไม่เปลี่ยน canonical data หรือ generated records จึงใช้การตรวจแผนเฉพาะส่วน.
+
 ### ช่วง 5 — ตรวจร่วมและเตรียมส่งมอบ
 
-- [ ] สรุป acceptance-to-evidence coverage ของช่วง 0–4 พร้อมรายการที่ไม่ผ่าน
+เริ่ม 2026-10-18 ตามคำสั่งให้ต่อช่วง 5: single-room inline, role Evidence Reviewer /
+Documentation Synthesizer; IDs N/A. ไม่เปิด execution เก่า. ขอบเขตเพิ่มเฉพาะ
+คู่มือเดิม Core README/template-guide, Service README/usage, plugin README/skill,
+version manifests/locks/pins และ generated plugin snapshot; ไม่แก้พฤติกรรม runtime.
+เตรียม development candidate Core/Service 0.4.4 และ FlowDocMake 0.2.5
+เพื่อแยกจาก installed 0.4.3/0.2.4; release approval ยังไม่รวมในคำสั่งนี้.
+Proof budget: ทวน G01–G20 กับ evidence เดิมที่ฐานยังตรง, ตรวจ packed Linux consumer
+ของ archive ใหม่, byte identity ของ renderer/resources เทียบช่วง 4, native API/MCP
+เฉพาะผลกระทบ version/pin และตรวจ snapshot/ตัวอย่าง; ไม่ตรวจทุก suite ซ้ำโดยไม่มีเหตุ.
+Document budget: แก้ entrypoints เดิมและแผนนี้ ไม่เพิ่ม startup reading.
+หก external font-height checks ยังคงเป็น unverified จนมี proof จริง;
+ไม่ใช่การลด group-label acceptance หรืออนุญาต release.
+
+- [x] สรุป acceptance-to-evidence coverage ของช่วง 0–4 พร้อมรายการที่ไม่ผ่าน
   หรือไม่ได้ตรวจ; skipped ไม่เท่ากับ PASS.
-- [ ] ตรวจคู่มือ เวอร์ชัน package/checksum capability และตัวอย่างรับ–ส่งให้ตรงกัน.
-- [ ] เก็บชุดส่งมอบและความต่างที่ยอมรับไว้ในจุดอ้างอิงเดียว; เสนอ checkpoint
+- [x] ตรวจคู่มือ เวอร์ชัน package/checksum capability และตัวอย่างรับ–ส่งให้ตรงกัน.
+- [x] เก็บชุดส่งมอบและความต่างที่ยอมรับไว้ในจุดอ้างอิงเดียว; เสนอ checkpoint
   การรวมงานและ cleanup เฉพาะงานสะอาดที่รวมแล้วตามการอนุมัติในตอนนั้น.
 
 ผ่านเมื่อไม่มีช่องว่างใน mandatory acceptance และแยกข้อจำกัดเดิมได้.
 **หยุดก่อน release/tag/push และติดตั้ง** จนมีคำสั่งอนุมัติขั้นนั้นโดยชัดเจน.
+
+ผลช่วง 5 — **PASS เฉพาะ feature scope และชุดพัฒนาเตรียมส่งมอบ**:
+
+- ทวน G01–G20 กับหลักฐานช่วง 0–4: declaration/composition 52 cases,
+  layout 25 cases, clone/import/rights/job pin และ capability/readiness ผ่าน API/MCP,
+  UAT mock เดิมกับกรณีเพิ่มและ regression SRS/ศบ.1 ครบ.
+  G14 พื้นที่ศูนย์ใช้ admission guard ของ Format ก่อนเรียก renderer ร่วมกับ
+  label-specific positive-frame omission; G18 ใช้ shared omitted-destination guard
+  และ group-label anchor/TOC tests. ไม่สร้างชุดตรวจซ้ำสำหรับ guard ที่ไม่เปลี่ยน.
+- เพิ่มคู่มือ groupLabel ใน Core README/template-guide เดิม ครอบคลุม field เดียวกัน,
+  empty row ที่แบ่งไม่ได้, members/empty, suffix, fixed, errors และข้อจำกัด;
+  ไม่เพิ่มเอกสารเริ่มอ่านของ FlowDocMake. Service README/usage และ plugin entrypoint
+  ระบุคู่รุ่นและ checksum ตรงกัน; snapshot สร้างจาก canonical inputs 30 ไฟล์.
+- Core commit `e1a65178815f1657ebe464aca23a8a0a4219938c`, Service
+  `e605d9370d887ecbac835cd65d264c1607f1bba7`; FlowDocMake อยู่ PC branch
+  `codex/group-label-stage3-20261018` (terminal commit อยู่ใน delivery manifest).
+  คู่รุ่น Core/Service **0.4.4**, FlowDocMake **0.2.5**; models18/19 และ schema1/2
+  ไม่เพิ่มรุ่นโมเดล. Core archive `flowdoc-core-0.4.4.tgz` SHA-256
+  `dc65df98e1a605236e0c2e4f13dc1595b1b9924709ceed9ab276ee0a6006a529`
+  ตรง vendor manifest, SHA512 ของ lockfile และ plugin compatibility pin.
+  เก็บ archive รุ่นก่อนครบ ไม่เขียนทับของที่ออกใช้แล้ว.
+- Core packed Linux/amd64 build: **778 tests/78 files**, native consumer
+  **23 กลุ่มตรวจ** ผ่าน. ใน archive ใหม่ต่างเฉพาะ README/package.json;
+  renderer/resources/native runtime อีก **154 ไฟล์ byte-identical** กับช่วง 4.
+  PDF จาก consumer **72 ไฟล์/306 หน้า byte-identical** กับผลช่วง 2
+  (รวมกลุ่มใหม่ 6 PDF/19 หน้า ซึ่งตรวจ raster identity เพิ่ม).
+  จึงใช้ visual proof ของ UAT/SRS/ศบ.1 ช่วง 4 รวม 210 หน้าต่อได้โดยไม่อ้าง
+  ว่ารันเอกสารธุรกิจทั้งหมดซ้ำด้วย engine ที่ต่างจากเดิม.
+- คู่แพ็กเกจใหม่ผ่าน Service native **7/7** และ FlowDocMake **24/24**, ไม่มี skipped;
+  actual stdio context ready, packageVersion 0.2.5, runtime Core/Service0.4.4,
+  groupLabelSpans v1 และ formatSizing v2 ตรงสัญญา. PDF API/MCP **5 ไฟล์/8 หน้า**
+  ตรวจ strict parsing/ข้อมูล/คำเตือนและภาพทุกหน้าผ่าน.
+- การลอง host plugin tests โดยไม่ตั้ง candidate environment ครั้งแรก fail/skip
+  เพราะใช้ runtime ที่ติดตั้งเดิมและไม่มี test config ไม่ใช่เหตุให้แก้ compatibility
+  ให้รับ checksum ผิด; ใช้ isolated runner ที่ตั้ง environment ครบแล้วผ่าน 24/24.
+  independent review หนึ่งรอบพบคู่มือ Service ยังระบุ FlowDocMake0.2.4 สองจุด;
+  เพิ่ม assertion ให้เห็น fail แล้วแก้เป็น0.2.5 และผ่าน. ไม่มีข้อพบสำคัญค้าง.
+- จุดอ้างอิงชุดส่งมอบเดียว:
+  `C:/Users/nekot/Documents/Codex/2026-10-18/group-label-stage5/delivery/manifest.json`.
+  มี Core archive, Service source archive, plugin archive, สำเนาแม่แบบ/input เจ็ดกรณี,
+  ภาพ 17 ชิ้น, PDF และ receipts, acceptance coverage และรายการความต่างช่วง 4.
+  `group-label-stage5/acceptance.json`, `pdf-review/core-comparison.json`,
+  `pdf-review/service-checks.json` และ native proof
+  `flowdoc-service-worktrees/group-label-stage3/artifacts/1792329754223/`
+  เป็นหลักฐานตรวจ; Core consumer อยู่ `artifacts/1792329618482/`.
+- **ไม่ใช่ผลผ่านของหก external font-height checks** ที่ข้ามในชุดเต็มช่วง 3:
+  height-delivery guard3, proposals2, supplied-fonts1 ยัง unverified.
+  เก็บรายละเอียดใน acceptance.json; ต้องจัด fixture/หลักฐานให้ครบก่อนอ้าง
+  release-wide verification. PC check:data ที่เริ่มไม่ได้เพราะไม่มี tsx ยังคง
+  not-run; รอบนี้ตรวจแผน/ลิงก์/snapshot/hash ตามผลกระทบ ไม่มี canonical data เปลี่ยน.
+- ไม่มี runtime feature code หรือ migration เปลี่ยนในช่วง 5. ระบบเดิม/ต้นฉบับคงเดิม;
+  native test containers ของรอบนี้หยุดและเก็บกวาดโดย runner แล้ว.
+  เก็บ worktree/branch ที่ยังไม่รวมพร้อม backup ช่วง 4; ไม่ลบ unmerged lane.
+  ขั้นถัดไปคือขออนุมัติรวมเข้าตัวหลักและ cleanup เฉพาะ lane ที่สะอาดรวมแล้ว;
+  ไม่รวม ไม่ push/tag/release หรือติดตั้งในรอบนี้.
 
 ## 6. ขอบเขตที่พักไว้และความเสี่ยง
 
