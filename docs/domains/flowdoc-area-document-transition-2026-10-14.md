@@ -3076,3 +3076,23 @@ Current evidence/PDFs: `sb1-format-fixed/flow-text/` under the same external
 workspace, especially `results.json`, `review.json`, `normal-expanded.pdf` and
 `long-name-expanded.pdf`. This supersedes the candidate's earlier720pt cap only;
 no runtime, source draft or publication changes.
+
+Further owner-authorized whole-form line-break inspection on2026-10-18 saved
+the same candidate at revision4. Inspected both Format fragments, footer and
+sample input. Removed17unnecessary template word-wrap breaks: one inside the
+Thai title phrase and16inside table-header phrases. Retained meaningful
+Thai/English boundaries, the statute-reference line, copy-choice separation and
+signature/label blocks. Cleaned6embedded sample newlines across packages,
+consignee and consignor into spaces, recording before/after values. This changes
+the supplied sample only; it does not strip future caller-provided newlines or
+change Service/Core behavior. Original source/request files remain retained.
+
+Normal and extended cargo-field previews both succeed in2pages without warnings;
+all normalized text is preserved (with the explicit extended-field substitutions),
+page bounds pass and page2footer coordinates remain unchanged. Viewed all4output
+pages. Natural header wrapping and cargo row height now follow their text rather
+than old line segmentation. Original model18 draft remains revision3 with its
+original fingerprint. Existing fixed805/700pt limits and publication state are
+unchanged. Current evidence and PDFs are in `sb1-format-fixed/flow-all/` under
+the external2026-10-18 workspace: `changes.json`, `definition.json`, `request.json`,
+`results.json`, `review.json`, `normal.pdf`, `long-fields.pdf` and full receipts.
