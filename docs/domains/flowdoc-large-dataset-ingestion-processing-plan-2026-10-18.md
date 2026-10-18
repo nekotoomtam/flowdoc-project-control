@@ -64,9 +64,11 @@ runtime development or establish unmeasured capacity.
   and no retained download/re-delivery promise. After server-side sending finishes,
   delete originals, intermediates and temporary output; keep the task record.
   Client-side save failure after a correctly completed send is outside this promise.
-- An unsuccessful task can retain its data only until the original expiry. Keep
-  task identity, terminal outcome and diagnostics after file deletion as a lasting
-  record for possible future billing. Billing rules/charges are not defined here.
+- On confirmed connection loss, request a safe job stop immediately. Retain only
+  fully received originals until the original expiry; delete partial inputs,
+  intermediate files and unsuccessfully sent PDF after their operations stop.
+  Keep task identity, terminal outcome and diagnostics after file deletion as a
+  lasting record for possible future billing. Billing rules/charges are not defined here.
 - Image intake decision: optional `assetKey`, assets owned by their Section only,
   and recoverable image failures skipped with durable reasons. Error-level selection
   is deferred. This replaces earlier proposals for task-wide image sharing and
@@ -251,6 +253,12 @@ owned handles/workers, then delete files. A task already `failed` remains failed
 when its retained files expire; a succeeded task is never relabeled expired.
 After restart, a lost HTTP payload/response connection cannot be resumed by changing
 status: reconcile interrupted nonterminal tasks to failed or expired as appropriate.
+During controlled cancellation expose progress stage `stopping`, not a new terminal
+task state. Persist stop request/reason, stop deadline and confirmed stop time in
+task lifecycle metadata. Do not claim stopped workers or free RAM from a cancel
+signal alone. Already completed generation jobs keep their actual result even if
+task delivery fails. Retained originals keep overall cleanup incomplete until
+their expiry; scratch-file removal alone is not `cleanup_status = done`.
 No automatic rerender, same-task payload retry or delivery replay is introduced.
 An existing identity retrieves state only; a fresh generation opens a new task.
 
@@ -417,15 +425,48 @@ can show a live connection but does not renew the three-hour task lifetime or
 guarantee that proxies will not buffer/time out. First implementation keeps one
 generation response per task; no subscription/replay/SSE/WebSocket subsystem.
 
-Additional recommendation pending Stage 0 review: when the original generation
-connection is confirmed lost, cancel remaining work safely and record failed or
-expired with the observed delivery/connection reason. Retain unsuccessful input
-only until original expiry. It cannot be delivered on a closed connection, and a
-later `taskId` lookup only reports state, not resume/upload/download. Do not blame
-client-side handling without evidence. Exact cancellation grace and detection
-timeouts still require review/tests, not an assumption that a browser navigation
-is immediately observable by the server. Persist safe connection/send events,
-not live socket objects, in the existing proposed task records.
+Confirmed connection-loss policy is now owner-approved for planning; it is not
+implemented. Detect loss of the caller-to-Service generation response, not merely
+a changed browser page, a quiet progress stage or temporary slow reading. Do not
+attribute fault to the customer without evidence. Detection/idle/write timeouts
+remain Stage 0/environment tests, not proof that every disconnect is immediately
+observable. On confirmed loss use these rules:
+
+| Phase at confirmed loss | Job action | Task outcome |
+| --- | --- | --- |
+| Receiving or validating, before a job exists | Stop intake/validation; do not create a dummy job | `failed` after stopping, with receive/connection interruption reason |
+| Queued | Fence/dequeue so a worker cannot start it; mark that job failed | `failed` with connection interruption reason |
+| Processing | Request cancellation immediately; revoke stale result authority, stop owned child work and await bounded shutdown | Expose `stopping`, then `failed` after confirmed stop; expiry wins if its absolute deadline is reached first |
+| Sending PDF | Stop its reader/writer; no further generation/delivery retry | `failed` for delivery; a generation job already succeeded remains succeeded |
+| Complete server send already committed | Do not cancel or rewrite historical outcome | Keep `succeeded`; normal immediate file cleanup continues |
+
+Use a short bounded graceful-stop period, initially 5 seconds for isolated trials,
+then terminate only the task's owned process tree if still running. This trial
+value is not a measured production SLA. Keep RAM/concurrency permits and active
+file protection until those operations have actually stopped. A later worker
+result cannot turn failed/expired task delivery into success. Deadline/finish/close
+races use the existing conditional terminal transition and durable event rules.
+
+After handles/workers stop, delete partial/incomplete payload files, normalized
+parts, prepared-image/embedding files and a PDF not sent successfully. Keep fully
+received original data/image files only until `tasks.expires_at`; no new three-hour
+clock starts on disconnect. At expiry remove remaining task-owned originals.
+Shared font/template files are not task scratch. Confirm each physical deletion
+before marking its metadata deleted and reducing storage reservations; retained
+originals or failed removals continue to count against the quota. Queue reservation
+can be released after safe stop independently from retained disk. On cleanup error
+keep `retry_needed`, reason and reservation; retry without changing task outcome.
+When immediate scratch removal succeeds and only unexpired originals remain,
+cleanup may return to `not_due`; it becomes due at the original expiry. Mark
+`done` only once all task-owned temporary files are confirmed removed.
+
+After restart reconcile interrupted nonterminal work: `failed` if its connection
+is gone and deadline remains, otherwise `expired` when due. Keep prior terminal
+success/failure; do not infer a successful send from a generated PDF or HTTP 200.
+Persist safe phase, stop/delivery events, observed reason and known usage counters
+before removal; unknown values remain unknown. The task/event/usage records remain
+after deletion. Later `taskId` inspection reports their latest state only, with
+no reconnect-to-stream, rerun or retained-file download; new generation is a new task.
 
 Frontend/API consumers must read the response incrementally and separate JSON
 parts from the PDF; ordinary whole-response `json()`, `blob()` or a direct download
@@ -574,11 +615,11 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: parent task/zero-or-one job, single-endpoint new/lookup examples, multipart feedback/PDF protocol, Section assets, ownership, expiry, usage and budgets | Admission metadata before body, taskId lookup semantics, versioned event/framing schema, binary binding, image skip/fatal boundaries, disconnect recommendation, deadline races and limits; error-level selection deferred; no runtime changes |
+| 0: close contracts and budgets | Project Control + Service/Core: parent task/zero-or-one job, single-endpoint new/lookup examples, multipart feedback/PDF protocol, Section assets, ownership, expiry, usage and budgets | Admission metadata, lookup/event/framing schema, binary binding, image skip/fatal boundaries, confirmed-disconnect stop policy and trial shutdown timing, deadline races and limits; error-level selection deferred; no runtime changes |
 | 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
 | 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
-| 4: Service processing integration | Service: parent task/job projection, typed feedback stream, prepare artifact and stream final PDF part on the original request | Packed Core, metadata committed before events, progress bounded under slow reads, errors before/after headers/PDF start, HTTP 200 not success alone, incomplete framing, disconnect/deadline/cancellation, stale writes, crash gaps and safe cleanup; no whole-PDF parent buffer |
+| 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
 | 5: FlowDocMake/legacy integration | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
 
