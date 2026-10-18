@@ -3057,3 +3057,22 @@ complete preview input/status/PDF receipts and rendered pages. `normal.pdf` is
 the normal-data deliverable; `cargo-overflow-fresh.pdf` and
 `declaration-overflow-fresh.pdf` are explicitly incomplete overflow demonstrations.
 Only this new draft was saved; no publication, deployment, release or font change.
+
+Owner follow-up on2026-10-18 authorized natural wrapping of the declaration
+starting “ข้าพเจ้า ( นาม )”. Same candidate is now revision3: combined f73/f80
+into one paragraph, replaced its explicit line breaks with spaces, removed the
+extra wrapper table and allowed that paragraph's row to split at whole lines.
+Text values and owner binding remain intact. Aligned the paragraph with the
+existing continuation text's left inset; first-line indentation is no longer
+separately imposed. The initial revision2 repair showed that the earlier720pt
+cap omitted the last signature-date row with a realistic long owner name.
+Expanded declaration maximum to805pt within the805.8898pt printable page1;
+cargo stays fixed700pt and the explicit break keeps cargo on page2. Final
+normal and long-name previews both succeed in2pages without warnings, with all
+normalized text preserved and page2 pixel-identical to revision1. Viewed all4
+pages. Original model18 draft stays revision3 with its original fingerprint.
+Earlier revision1/2 artifacts remain historical rather than overwritten.
+Current evidence/PDFs: `sb1-format-fixed/flow-text/` under the same external
+workspace, especially `results.json`, `review.json`, `normal-expanded.pdf` and
+`long-name-expanded.pdf`. This supersedes the candidate's earlier720pt cap only;
+no runtime, source draft or publication changes.
