@@ -3,7 +3,8 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ข้อตกลงพฤติกรรมและแผนพัฒนา ยังไม่ได้พัฒนาความสามารถใหม่นี้**.
+สถานะ: **ช่วง 0 ปิดสัญญาแล้วเมื่อ 2026-10-18; ช่วง 1–5 ยังไม่พัฒนา**.
+JSON ใหม่ด้านล่างเป็นสัญญาสำหรับ implementation ไม่ใช่สิ่งที่ runtime ปัจจุบันรับได้.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -11,7 +12,7 @@ Service เป็นเจ้าของ persistence, API และงาน PD
 FlowDocMake เป็นเจ้าของเครื่องมือและคำแนะนำการสร้างแม่แบบผ่าน Service.
 
 Work size: medium; risk: routine สำหรับเอกสารรอบนี้.
-Document budget: ฉบับนี้หนึ่งฉบับและลิงก์จาก contract กลุ่มแถวเดิมหนึ่งจุด.
+Document budget ช่วง 0: ปรับฉบับนี้ฉบับเดียว ใช้ลิงก์จาก contract เดิมที่มีแล้ว.
 Proof budget: เทียบข้อตกลงกับโค้ด/การทดสอบเดิม ตรวจตัวอย่าง JSON,
 ลิงก์และความครอบคลุมของแผน แล้วตรวจ diff; ไม่สร้าง runtime proof ของฟีเจอร์ใหม่.
 ไม่แก้ runtime, DB, draft, package, release, การติดตั้ง หรือ DOCUMENT_MAP.
@@ -110,25 +111,323 @@ ID และ source mapping ต้องอ้างกลุ่ม/สมาช
 กลุ่ม สมาชิก หรือ ID และไม่เพิ่มรายการสารบัญ/ปลายทางลิงก์ซ้ำ.
 ไม่เปลี่ยนพฤติกรรมสารบัญที่ผู้ใช้เลือกใช้อยู่.
 
-## 4. จุดที่ต้องปิดสัญญาก่อนแก้โค้ด
+## 4. สัญญาช่วง 0 — groupLabelSpans v1
 
-พฤติกรรมข้างต้นตกลงแล้ว แต่ชื่อ field และ API syntax ของการประกาศเซลล์ชื่อกลุ่ม
-**ยังไม่ตกลงและยังไม่ใช่ความสามารถที่ส่งเข้า API ได้**. ช่วง 0 ต้องปิดให้ครบ:
+### 4.1 Declaration และกริด
 
-- ใช้ declaration ของ rowGroups อ้าง cell template ที่ชัดเจนอย่างไร;
-  จำกัดหนึ่งเซลล์ชื่อกลุ่มต่อกลุ่มในรุ่นแรก และกำหนดตำแหน่งกริดที่ไม่ชน member cell.
-- เส้นทางข้อมูลชื่อกลุ่ม ข้อกำหนดชนิดข้อความ ค่าว่าง/ค่าหาย การ wrap และ style;
-  ห้ามตีความ label เป็น rich text/link โดยอัตโนมัติ.
-- รูปแบบ continuation declaration และ suffix ค่าเริ่มต้น ` (ต่อ)`;
-  ขอบเขต customization ต้องระบุชัด ไม่ขยายเป็นระบบ localization ทั้งชุด.
-- expansion และ source map แยก logical member, generated span และ page fragment;
-  clone/import เปลี่ยน reference ที่ต้องเปลี่ยนโดยไม่ชนอีกสำเนา.
-- validation สำหรับ cell/column ที่อ้างไม่พบ กริดชน span ข้ามกลุ่ม declaration ซ้ำ
-  และการใช้ rowSpan ธรรมดาร่วมกับกลไกใหม่ที่ขัดกัน.
-- คำเตือน/ข้อผิดพลาดใช้รหัสและ path ใด; แยก invalid template,
-  impossible layout และ fixed omission ไม่รายงาน omission เป็น success เงียบ ๆ.
-- capability และ model/version compatibility ต้องเปลี่ยนหรือไม่;
-  รุ่นเก่าต้องปฏิเสธฟีเจอร์ที่ไม่รองรับอย่างระบุสาเหตุ ไม่ทิ้ง field เงียบ ๆ.
+เพิ่ม optional `groupLabel` ใน rowGroups แต่ละ declaration:
+`{cellTemplateId, emptyCellTemplateId}`. ไม่ใส่ field นี้ใช้พฤติกรรมเดิมทุกประการ.
+เซลล์แรกเป็นต้นแบบชื่อข้างสมาชิก เซลล์ที่สองเป็นต้นแบบชื่อข้าง emptyRow.
+ชื่อมาจาก field-ref เดิมในเซลล์ ไม่เพิ่ม source อีกชุดที่อาจขัดกับ binding เดิม.
+
+ตัวอย่าง AreaFormat **เฉพาะส่วน** สำหรับ model19; parent ต้องมี Area `uat-body`,
+style `body`, page layout และ identity ที่ถูกต้องตามสัญญาเดิม:
+
+```json
+{
+  "key": "grouped-results",
+  "ownerAreaId": "uat-body",
+  "sizing": { "mode": "auto" },
+  "inputSchema": {
+    "type": "object",
+    "fields": {
+      "groups": {
+        "type": "array", "required": true,
+        "items": {
+          "type": "object",
+          "fields": {
+            "name": { "type": "string", "required": true, "allowEmpty": false },
+            "members": {
+              "type": "array", "required": true,
+              "items": {
+                "type": "object",
+                "fields": { "requirement": { "type": "string", "required": true } }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "fragment": {
+    "rootIds": ["results-table"],
+    "nodes": {
+      "results-table": { "id": "results-table", "type": "table", "props": { "headerRowCount": 0, "repeatHeaderRows": false }, "columns": [{ "width": { "value": 100, "unit": "pt" } }, { "width": { "value": 300, "unit": "pt" } }], "rowIds": ["member-row", "empty-row"] },
+      "member-row": { "id": "member-row", "type": "table-row", "props": { "allowBreak": true }, "cellIds": ["member-group", "member-value"] },
+      "member-group": { "id": "member-group", "type": "table-cell", "props": { "columnIndex": 0 }, "childIds": ["member-label"] },
+      "member-label": { "id": "member-label", "type": "text-block", "role": { "role": "paragraph" }, "props": { "textStyleId": "body" }, "children": [{ "id": "member-name-ref", "type": "field-ref", "scope": "group", "key": "name" }] },
+      "member-value": { "id": "member-value", "type": "table-cell", "props": { "columnIndex": 1 }, "childIds": ["requirement-text"] },
+      "requirement-text": { "id": "requirement-text", "type": "text-block", "role": { "role": "paragraph" }, "props": { "textStyleId": "body" }, "children": [{ "id": "requirement-ref", "type": "field-ref", "scope": "item", "key": "requirement" }] },
+      "empty-row": { "id": "empty-row", "type": "table-row", "props": { "allowBreak": false }, "cellIds": ["empty-group", "empty-value"] },
+      "empty-group": { "id": "empty-group", "type": "table-cell", "props": { "columnIndex": 0 }, "childIds": ["empty-label"] },
+      "empty-label": { "id": "empty-label", "type": "text-block", "role": { "role": "paragraph" }, "props": { "textStyleId": "body" }, "children": [{ "id": "empty-name-ref", "type": "field-ref", "scope": "group", "key": "name" }] },
+      "empty-value": { "id": "empty-value", "type": "table-cell", "props": { "columnIndex": 1 }, "childIds": ["empty-text"] },
+      "empty-text": { "id": "empty-text", "type": "text-block", "role": { "role": "paragraph" }, "props": { "textStyleId": "body" }, "children": [{ "id": "empty-leaf", "type": "text", "text": "ไม่มีรายการ" }] }
+    }
+  },
+  "repeats": [],
+  "rowGroups": [{
+    "id": "requirement-groups",
+    "tableId": "results-table",
+    "rowTemplateIds": ["member-row", "empty-row"],
+    "source": { "scope": "local", "key": "groups" },
+    "memberRepeat": { "rowTemplateId": "member-row", "source": { "scope": "group", "key": "members" }, "emptyRowTemplateId": "empty-row" },
+    "pagination": { "keepStart": true },
+    "groupLabel": { "cellTemplateId": "member-group", "emptyCellTemplateId": "empty-group" }
+  }]
+}
+```
+
+กฎ validation ที่เพิ่ม:
+
+- หนึ่ง groupLabel ต่อ declaration; cell ทั้งสองต้องอยู่ใน member/empty row
+  ที่ระบุจริง คนละ ID แต่อยู่ `columnIndex` เดียวกัน มี `colSpan` เท่ากัน
+  (ละไว้เท่ากับ 1) และอยู่ในขอบตาราง ไม่บังคับให้เป็นคอลัมน์แรก.
+- cell แต่ละตัวมี text-block หนึ่งตัวและ field-ref หนึ่งตัวเท่านั้น;
+  ทั้งคู่ `scope:group` และ `key` เดียวกัน อ้าง string schema ที่
+  `required:true, allowEmpty:false`. ไม่อนุญาต link, anchor, toc, page field,
+  image, cellRepeats หรือ fixed-height text-block ในเซลล์ชื่อนี้ใน v1.
+  ใช้ style/wrap/padding/fill และ textAlign เดิม; ไม่เพิ่ม vertical alignment API.
+- ห้ามกำหนด `rowSpan` เองในเซลล์ชื่อทั้งสอง แม้ค่า 1; engine คำนวณเท่านั้น.
+  ห้าม span อื่นกินช่องชื่อหรือข้ามขอบกลุ่ม และห้ามเซลล์ถูกใช้ซ้ำต่าง declaration.
+- เมื่อมี groupLabel เท่านั้น `rowTemplateIds` ยอมให้เหลือ member + empty
+  สองแถวได้ หรือมี prefix ตามเดิม; member ยังเป็นรองสุดท้าย empty ยังเป็นสุดท้าย.
+  แถวต้องติดกันและไม่ทับ header/repeat/group อื่นเหมือนเดิม.
+- ต้องใช้ `pagination.keepStart:true`; ละไว้มีค่า true สำหรับ declaration นี้
+  แต่ระบุ false ถือว่า INVALID_TEMPLATE. declaration เดิมที่ไม่มี groupLabel
+  ยังคง default และข้อกำหนด prefix เดิม ไม่แปลงข้อมูลเดิมอัตโนมัติ.
+- คีย์ที่ไม่รู้จักใน groupLabel เป็น INVALID_TEMPLATE; ไม่มี field suffix ใน v1.
+  suffix เป็น literal ` (ต่อ)` คงที่และรวมอยู่ใน capability.
+
+### 4.2 Request, จำนวนสมาชิก และตัวตน
+
+request ใช้ envelope model19 เดิม ไม่มี rowSpan, continuation flag หรือ page index
+ในข้อมูลธุรกิจ. ตัวอย่างนี้ใช้ Section ID สมมติ; งานจริงใช้ ID ในแม่แบบที่บันทึกแล้ว:
+
+```json
+{
+  "docKey": "group-label-example",
+  "data": {},
+  "sections": [{
+    "id": "10000000-0000-4000-8000-000000000011",
+    "data": {
+      "body": [{ "format": "grouped-results", "data": {
+        "groups": [
+          { "name": "Module A", "members": [{ "requirement": "R1" }, { "requirement": "R2" }] },
+          { "name": "Module B", "members": [] },
+          { "name": "Module A", "members": [{ "requirement": "R3" }] }
+        ]
+      }}]
+    }
+  }]
+}
+```
+
+parent Section ต้องประกาศ `body` เป็น Area `uat-body` และจับคู่ format นี้.
+ตัวอย่างส่งออกเป็น 3 กลุ่ม ตาม index 0,1,2; สมาชิกจริง 3 รายการ
+และ empty placeholder 1 แถว. span เชิงตรรกะของแต่ละกลุ่ม = 2,1,1 แถว
+แต่ memberCount = 2,0,1. outer `groups:[]` ให้ศูนย์กลุ่มและศูนย์ placeholder.
+prefix/header/total ไม่รวมใน span หรือ memberCount.
+
+สำหรับ n > 0: ขยาย member row n แถว ให้เซลล์ชื่ออยู่แถวแรกและครอบ n แถว;
+แถวที่เหลือไม่สร้างสำเนาเซลล์ชื่อนั้นมาทับกริด. สำหรับ n = 0: ใช้ empty row
+กับ emptyCellTemplateId เพียงครั้งเดียว ห้ามสร้างสมาชิกปลอมและห้ามใช้ item scope.
+missing/null/wrong-type ไม่เท่ากับ []; ใช้ required/default/unknown-key rules เดิม.
+ชื่อหายใช้ MISSING_REQUIRED; ชื่อไม่ใช่ string ใช้ TYPE_MISMATCH;
+ชื่อว่างหรือมีแต่ช่องว่างใช้ INVALID_DATA ตาม validator เดิม.
+ไม่ trim, sort, deduplicate หรือรวมชื่อที่ตรงกัน; ถ้ามีช่องว่างข้างชื่อก็เก็บและแสดงเดิม.
+
+identity ของหนึ่งกลุ่มประกอบจาก source location ของ Format instance,
+declaration ID และ groupIndex; member เพิ่ม itemIndex. `groupId` ใน sourceMap คือ declaration ID
+ไม่ใช่ชื่อกลุ่มหรือ ID จากลูกค้า. label/empty มี groupIndex และไม่มี itemIndex;
+member จริงมี itemIndex ตามเดิม. span ที่ได้จาก composition ต้องมี provenance
+ให้ validateResolvedDocument แยกจาก rowSpan ที่ผู้ใช้ปลอมเข้ามาได้.
+
+clone/import ใช้การสร้าง Section/Area/Format identity ตามเดิม.
+ID ภายใน fragment/declaration อยู่ใน local scope ของตนและคงค่าได้;
+หาก importer remap local ID ต้อง remap tableId, rowTemplateIds,
+memberRepeat และ groupLabel references ทั้งคู่พร้อมกัน. ห้าม remap จากชื่อแสดง.
+สองสำเนาใช้คนละ instance identity จึงไม่ชน แม้ local IDs และชื่อกลุ่มเท่ากัน.
+
+### 4.3 ข้ามหน้า ชื่อยาว และ fixed
+
+auto วางชื่อเต็มพร้อมชิ้นแรกที่ถูกกติกาของสมาชิกใน fragment เดียวกัน.
+ความสูงขั้นต่ำของ fragment = ค่าสูงสุดระหว่างชื่อเต็มรวม padding/border
+กับชิ้นสมาชิกที่ลงได้; ไม่บวกความสูงสองคอลัมน์เข้าด้วยกัน.
+ถ้าชื่อสูงกว่าสมาชิก ให้ fragment มีความสูงพอชื่อโดยไม่ทำข้อมูลสมาชิกซ้ำ.
+breakable member ใช้ safe line breaks เดิม; protected row ต้องลงได้ทั้งแถว.
+prefix ไม่เป็นส่วนของ span; ถ้า prefix ใหญ่จน keepStart ต้องผ่อน ให้ใช้คำเตือนเดิม
+แต่ยังรักษาชื่อกับ member fragment เป็นคู่ที่แยกไม่ได้.
+
+แต่ละ page fragment แสดงชื่อเต็มหนึ่งครั้งภายในเซลล์ ไม่ตัดชื่อแบ่งไปหน้าถัดไป:
+หน้าแรกใช้ชื่อต้นทาง หน้าต่อทุกหน้าใช้ชื่อต้นทาง + ` (ต่อ)` หนึ่งครั้ง.
+ไม่ตรวจแล้วลบ suffix ที่มีอยู่ในชื่อธุรกิจ เช่นชื่อจริง “A (ต่อ)” หน้าต่อเป็น
+“A (ต่อ) (ต่อ)” ตามสูตร; คำว่าไม่สะสมในข้อ 3.4 หมายถึงห้ามนำผลหน้าก่อนมาต่อซ้ำ.
+ถ้าทั้งกลุ่มเลื่อนไปหน้าใหม่แต่ยังไม่เคยแสดง ให้ใช้ชื่อเดิม ไม่มี suffix.
+เมื่อจบกลุ่มแล้วเริ่มกลุ่มใหม่ชื่อเหมือนกัน ให้เริ่มนับหน้าต่อใหม่ของกลุ่มนั้น.
+empty row เป็น protected row ของ feature นี้ ต้องแสดงชื่อและข้อความว่างครบคู่
+หาก template ระบุ allowBreak:true สำหรับ empty row ให้ปฏิเสธ.
+
+วัดพื้นที่หลัง repeated header และ page bands จริงของแต่ละหน้า.
+ถ้ายังเริ่มไม่ได้ให้เลื่อนไปหน้าที่จุได้ตาม geometry เดิม และตรวจ no-progress;
+ถ้าไม่มีหน้าใช้งานเต็มใดวางชื่อ/ชิ้นที่จำเป็นได้ ให้ LAYOUT_FAILED พร้อม
+reason `group-label-does-not-fit` และ node/group context. ห้ามตัดชื่อ/ย่อฟอนต์.
+TOC passes ต้องให้ชื่อและ fragment ตรงกันหลังเลขหน้าคงตัว.
+ชื่อที่ซ้ำเป็น draw content เท่านั้น ไม่เพิ่ม sourceMap member/anchor/TOC entry;
+draw commands มี ID เฉพาะของตนได้ แต่ไม่กลายเป็น business node ใหม่.
+
+fixed อยู่ที่ Format เท่านั้น ตัวอย่างเปลี่ยนเพียง:
+
+```json
+{ "sizing": { "mode": "fixed", "height": { "value": 300, "unit": "pt" } } }
+```
+
+กรอบใช้ได้ = min(300 pt, พื้นที่หน้าที่เหลือ) ตาม sizing v2 เดิม;
+จองความสูงกรอบที่ใช้ได้แม้เนื้อหาน้อยกว่า ไม่รอรวบรวมทั้งกลุ่มก่อนวาง.
+วางสมาชิก/ชิ้นแถวที่พอ พร้อมชื่อเต็มและเส้นปิด; หากแถวถัดไปลงไม่ได้
+หยุด Format ตรงนั้น ไม่ข้ามไปกลุ่มอื่น ไม่ขึ้นหน้าเพื่อส่วนที่เหลือ.
+Format ถัดไปเริ่มหลังกรอบตาม flow เดิมและใช้นโยบายของมันเอง.
+ไม่มี suffix ใน fixed เพราะไม่มี page fragment ต่อของ instance เดียวกัน.
+ถ้าพื้นที่ไม่พอชื่อเต็มกับชิ้นแรก ให้ไม่แสดงกลุ่มนั้นเลย และแจ้งส่วนที่เหลือ;
+อย่าวาดชื่อโดดหรือแสดงชื่อบางบรรทัด. กรอบศูนย์ใช้ FORMAT_FRAME_NOT_SHOWN เดิม.
+fixed ที่วางชื่อไม่ได้ใช้ warning omission ไม่เปลี่ยนเป็น auto layout error.
+
+### 4.4 ผลแจ้งปัญหาและ capability
+
+ใช้ Result/Issue และช่องทาง warning/job status เดิม ไม่เพิ่ม API generate endpoint.
+template ผิดใช้ INVALID_TEMPLATE พร้อม path ลงไปที่ groupLabel/เซลล์/field ที่ผิด;
+ข้อมูลผิดใช้ MISSING_REQUIRED/TYPE_MISMATCH/INVALID_DATA พร้อม indexed data path.
+auto ที่วางไม่ได้ใช้ LAYOUT_FAILED กับ reason ข้างต้น; ความผิดของ protected row,
+image หรือ link ใช้เหตุผลเดิมของมัน ไม่เหมารวมเป็นชื่อกลุ่มผิด.
+
+fixed ใช้ FORMAT_CONTENT_OMITTED, formatOmission.version:1 และ pending cursor เดิม.
+reason ใช้ height-limit หรือ unbreakable-item-does-not-fit ตามชิ้นที่หยุด;
+pending ต้องมี groupId, groupIndex และ itemIndex สำหรับสมาชิกจริง
+(ไม่มี itemIndex สำหรับชื่อ/empty). lineIndex/sourceOffset ใช้ความหมายเดิมเมื่อหยุดกลางแถว.
+cursor เป็นจุดเริ่มอ่านต่อเพื่อรายงาน ไม่ใช่คำสั่งให้รันต่อหน้าถัดไป.
+ตัวอย่าง warning เมื่อ R1 วางครบ แต่ R2 ยังไม่เริ่ม (IDs resolved เป็นตัวอย่าง):
+
+```json
+{
+  "code": "FORMAT_CONTENT_OMITTED",
+  "path": "areaFormats.grouped-results.sizing",
+  "message": "Format instance exceeded its fixed frame; remaining content was not shown",
+  "sectionId": "10000000-0000-4000-8000-000000000011",
+  "action": "skipped",
+  "formatOmission": {
+    "version": 1,
+    "areaId": "uat-body", "areaEntryIndex": 0,
+    "areaFormatId": "grouped-results", "format": "grouped-results",
+    "reason": "height-limit",
+    "pending": [{
+      "kind": "node", "nodeId": "resolved-member-row-1", "sourceNodeId": "member-row",
+      "nodeType": "table-row", "tableId": "resolved-results-table",
+      "rowId": "resolved-member-row-1",
+      "groupId": "requirement-groups", "groupIndex": 0, "itemIndex": 1
+    }]
+  }
+}
+```
+
+pending เป็นรายการจุดค้างตามกลไกเดิม ไม่ต้องแจกทุกสมาชิกที่เหลือ.
+ผู้รายงานเทียบ cursor กับข้อมูลต้นทางจึงต้องระบุได้ว่า R2 และกลุ่มถัดไปไม่แสดง;
+ผล PDF มีคำเตือนนี้ต้องรายงานว่าไม่ครบ ไม่สรุปว่าเอกสารครบจาก job succeeded อย่างเดียว.
+
+กำหนด capability เพิ่มใน `/authoring/contract` และ context ของ FlowDocMake ดังนี้
+(เป็นส่วนเพิ่มใน response ไม่ใช่ response ทั้งก้อน):
+
+```json
+{
+  "groupLabelSpans": {
+    "version": 1,
+    "nodeModelVersions": [19],
+    "schemaVersions": [1, 2],
+    "continuationSuffix": " (ต่อ)",
+    "fixed": "formatSizing-v2",
+    "diagnosticsVersion": 1
+  }
+}
+```
+
+ไม่เพิ่ม nodeModelVersion หรือ schemaVersion ใหม่: feature เป็น optional declaration
+บน model19 เท่านั้น. model18 รับของเดิมและปฏิเสธ groupLabel ด้วย INVALID_TEMPLATE.
+Core ใหม่ต้องตรวจ declaration นี้แม้ผู้เรียกไม่ผ่าน Service; รุ่นเก่าต้องไม่ถูกคาดหวังให้รองรับ.
+FlowDocMake ตรวจ capability.version = 1 และ model/schema ที่ตรงก่อนส่ง definition
+ที่มี groupLabel; เมื่อไม่มี/ไม่รู้จัก capability ให้หยุด preflight พร้อมบอกว่าไม่รองรับ
+โดยไม่ตัด field หรือแปลงเป็น rowSpan ตายตัวเอง. definition ที่ไม่มี groupLabel
+ใช้ทางเดิมได้. fixed ต้องมี formatSizing.version = 2 ร่วมด้วย.
+Service บันทึก/read-back/clone ต้องคง field นี้ และตรึง definition/revision,
+Core package checksum, fonts/resources ของ job เหมือนเดิม.
+
+### 4.5 ชุดตรวจรับที่ตรึงไว้สำหรับช่วงถัดไป
+
+| ID | ข้อมูล/เงื่อนไข | ผลที่ต้องได้ | ช่วงตรวจ runtime |
+| --- | --- | --- | --- |
+| G01 | groups:[] | ไม่มีกลุ่ม/placeholder; static table parts คงเดิม | 1,2 |
+| G02 | กลุ่มเดียว members:[] | ชื่อกับ “ไม่มีรายการ” 1 แถว; memberCount 0 | 1,2 |
+| G03 | สมาชิก 1,2,5 | span 1,2,5 ตามลำดับ ไม่รวม prefix/header | 1 |
+| G04 | request 4.2 | กลุ่ม 0/1/2; counts 2/0/1; ชื่อ Module A ไม่รวมกัน | 1,4 |
+| G05 | missing/null/wrong-type/ชื่อว่าง | แยก [] ออกจาก invalid; indexed paths ถูก | 1,3 |
+| G06 | clone/import สองสำเนา | local references อยู่ครบ; instance IDs/ข้อมูลไม่ชน | 1,3 |
+| G07 | กลุ่มเดียว 3 หน้า | ชื่อเดิม, ชื่อ (ต่อ), ชื่อ (ต่อ); สมาชิกครั้งเดียว | 2,4 |
+| G08 | สมาชิกเดียวไหล 3 หน้า | memberCount 1; ชื่อซ้ำ 3 fragments; ข้อความต่อโดยไม่ซ้ำ | 2,4 |
+| G09 | ท้ายหน้าไม่พอเริ่ม | ย้ายจุดเริ่ม; ไม่มีชื่อโดด ไม่มี suffix ก่อนเคยแสดง | 2 |
+| G10 | สองกลุ่มชื่อเหมือนกัน ต่างกลุ่มต่างข้ามหน้า | ลำดับ/ขอบแยก; suffix reset ต่อกลุ่ม | 2,4 |
+| G11 | ชื่อยาวรวม suffix, bands/header/padding/border | วัดชื่อเต็ม; ถ้า full page ใส่ไม่ได้ error ระบุเหตุ | 2 |
+| G12 | protected row/empty row/ภาพ | ใช้ indivisible rules; ไม่ผ่อนเพราะเป็น label span | 2 |
+| G13 | fixed 300 เหลือ 120; ลงได้ R1 แต่ R2 ไม่พอ | จอง 120 ปิดเส้น เตือน cursor R2; ไม่มีหน้าต่อ | 2,4 |
+| G14 | fixed เหลือ 0 หรือไม่พอชื่อ+member | เตือน frame/content ตามกรณี; ไม่มีชื่อบางส่วน | 2,4 |
+| G15 | fixed เต็ม 300 แต่ข้อมูลน้อย; Format ถัดไป | คง reservation 300/พื้นที่จริง; ถัดไปเริ่มหลังกรอบ | 2,4 |
+| G16 | invalid IDs/grid/span/prefix/member/empty/scope | INVALID_TEMPLATE ไม่สร้าง partial resolved document | 1 |
+| G17 | capability เก่า/ขาด/unknown, model18 กับ feature | ปฏิเสธอย่างชัดเจน; ของเดิม model18/19 ผ่านเดิม | 1,3 |
+| G18 | anchors/TOC/ยอดรวมและ fixed omitted destination | ไม่สร้าง target ซ้ำ; ใช้ omitted-destination guard เดิม | 2,4 |
+| G19 | save/read/job pin/สิทธิ์/Core packed consumer | ไม่ทิ้ง field ไม่หลุดสิทธิ์ job ไม่เปลี่ยนตาม draft ใหม่ | 3 |
+| G20 | UAT mock เดิม + cases ใหม่, SRS, ศบ.1 | ตรวจ PDF ทุกหน้าที่สร้าง แยก regression จากความต่างเดิม | 4,5 |
+
+ตารางนี้เป็น expected results ไม่ใช่ผลทดสอบ runtime ใหม่ที่ผ่านแล้ว.
+fixture อ้างอิง G07 ใช้สมาชิก index 0–4 โดยจัดพื้นที่ให้หน้า P ลง 0,1;
+P+1 ลง 2,3; P+2 ลง 4: memberCount ต้องคง 5 และชื่อแสดง 3 ครั้ง.
+G08 ใช้ itemIndex 0 ตลอดทั้งสามหน้าและแบ่งช่วงข้อความต่อเนื่องไม่ทับกัน.
+G13 ให้ความสูงรวมเส้น/padding ของชื่อ 20 pt, R1 60 pt และบรรทัดแรกที่แบ่งไม่ได้
+ของ R2 80 pt: กรอบ 120 ลง R1 ได้แต่ R2 ลงในส่วนที่เหลือไม่ได้;
+สงวนทั้ง 120 และ pending เริ่ม R2 โดยไม่แสดงชื่อของกลุ่มถัดไป.
+G14 ทดสอบทั้งศูนย์และค่าบวกที่น้อยกว่าความสูงขั้นต่ำ ไม่รวมสองเหตุเป็นกรณีเดียว.
+
+### 4.6 ฐานงาน ขอบเขต และผลปิดช่วง 0
+
+ฐานสำหรับเตรียมช่วง 1: Core `293c293eb331666868c7b24e6ff6038ede6e6eb9`
+บน `codex/pdf-image-numbers-20261018`; รวม numeric PDF fix ที่มีอยู่เป็น prerequisite
+โดยไม่อ้างว่างานนั้นถูก merge/release/install แล้ว. ช่วง 1 ต้องแยก diff ฟีเจอร์ใหม่
+จาก prerequisite และเก็บ base ที่เลือกนี้ ไม่ล้าง/เขียนทับงานแก้ PDF.
+Service baseline ที่สำรวจ: `92e7ff1cc902eddc6a53a1222abd7550cdeb89e5`;
+FlowDocMake source อยู่ใน Project Control `plugins/flowdocmake` รุ่น 0.2.4.
+ต้องตรวจฐานใหม่ก่อนช่วง 3; ถ้าเปลี่ยนให้ระบุผลกระทบและตรึงใหม่ ไม่อ้าง proof เดิมข้ามการเปลี่ยน.
+ยังไม่มี Core package/checksum สำหรับ feature นี้; เป็นผลผลิตช่วง 3 ไม่ใช่สิ่งที่ค้างปิดสัญญา.
+
+Owner paths เพิ่มที่ยืนยันแล้ว: Core `src/template/validateTemplate.ts`,
+`src/composition/validateResolvedDocument.ts`, `src/layout/documentFlow.ts`,
+`src/layout/formatLayout.ts`, `src/result.ts`, `src/pdf/drawContract.ts`;
+Service `src/http/authoring.ts`, `src/authoring/service.ts`,
+`src/authoring/sectionInstances.ts`, `src/templates/assembly.ts`, `src/templates/contract.ts`;
+FlowDocMake `plugins/flowdocmake` และ reference snapshot ที่สร้างจาก canonical inputs.
+ไม่แก้ snapshot/installed cache ด้วยมือ และไม่สร้าง DB migration หาก persistence เดิมเก็บได้ครบ.
+
+ปิดทางเลือกเชิงสัญญาแล้ว: optional groupLabel, ชื่อมาจาก cell binding,
+prefix ไม่บังคับเฉพาะ feature ใหม่, ชื่อใน empty แยก cell, suffix คงที่,
+model19 + capability v1 และ fixed ใช้ sizing v2 เดิม.
+unknown ที่ deferred มีเพียง build/package version/checksum และผล runtime
+ของช่วงถัดไป; ไม่ถือว่าการปิดเอกสารเป็น implementation acceptance.
+รอบนี้ตรวจรูป JSON, references/grid ของตัวอย่าง, acceptance coverage และกฎเอกสาร;
+ไม่ส่ง declaration ใหม่ไป runtime เก่า ไม่แก้ product code หรือ draft.
+
+ผลสำรวจที่ต้องเพิ่มในช่วง 3: `Service src/jobs/render.ts` ปัจจุบันอนุญาต
+reason เฉพาะ omitted-destination จึงต้องเพิ่ม allowlist สำหรับ
+group-label-does-not-fit และส่ง bounded groupId/groupIndex จาก Core ด้วย
+ไม่เช่นนั้นผลหน้าจอจะเหลือเพียง LAYOUT_FAILED ทั่วไป.
+FlowDocMake จุดเชื่อมคือ `plugins/flowdocmake/scripts/server.mjs`,
+`scripts/compatibility.mjs` และ `scripts/candidate-workflow.mjs`.
+ตรวจ font readiness และ shaping รวม suffix ที่ engine สร้างด้วย font/style ของ label
+เพื่อไม่ให้ผ่านเพราะตรวจเฉพาะข้อมูลธุรกิจแล้วตกตอนวาด “(ต่อ)”; ไม่เพิ่ม fallback font.
 
 ## 5. แผนพัฒนาและการตรวจรับ
 
@@ -139,11 +438,11 @@ ID และ source mapping ต้องอ้างกลุ่ม/สมาช
 
 ### ช่วง 0 — ปิดสัญญาและชุดตัวอย่าง
 
-- [ ] สำรวจ owner paths ปัจจุบันและปิดทุกรายการในส่วน 4 พร้อม JSON
+- [x] สำรวจ owner paths ปัจจุบันและปิดทุกรายการในส่วน 4 พร้อม JSON
   declaration/data/result ที่เข้าคู่กัน แยก syntax ใหม่จาก request เดิม.
-- [ ] ทำตาราง acceptance สำหรับกลุ่ม 0/1/N สมาชิก ชื่อซ้ำ และกลุ่มว่าง;
+- [x] ทำตาราง acceptance สำหรับกลุ่ม 0/1/N สมาชิก ชื่อซ้ำ และกลุ่มว่าง;
   ระบุ expected page fragments, diagnostics และข้อมูลที่ต้องไม่เปลี่ยน.
-- [ ] ระบุฐาน Core ที่จะใช้และผลต่อ Service/FlowDocMake รวม model/capability;
+- [x] ระบุฐาน Core ที่จะใช้และผลต่อ Service/FlowDocMake รวม model/capability;
   ไม่ถือว่างานแก้ PDF ที่ยังไม่รวม/ติดตั้งรวมเข้ามาแล้วโดยปริยาย.
 
 ตรวจ: ทบทวน JSON รับ–ส่ง อ้างอิง ID/clone กริดและ scope; ทุกกติกาในส่วน 3
@@ -192,6 +491,8 @@ protected row ภาพสูง ขอบก่อนกลุ่มถัด�
 ตรวจ: สิทธิ์ผู้ดูแล/ผู้เขียน/ผู้ไม่มีสิทธิ์ตามขอบเขต API จริง; client เก่า–ใหม่,
 engine ที่ไม่รองรับ, round-trip ไม่ทิ้ง field, clone สองชุดข้อมูลไม่ชน,
 แก้ draft หลังเริ่มงานแล้ว job ยังตรึงชุดเดิม และ warning/error ถึงผู้เรียกครบ.
+ตรวจ reason/context ผ่าน render-child และ Service allowlist จริง รวม readiness
+ของข้อความชื่อพร้อม suffix ที่สร้างใน layout.
 ใช้ `tests/consumer/checkRowGroups.mjs`, `checkMergedTable.mjs` เป็นฐาน
 แล้วเพิ่ม Service/FlowDocMake tests ใน owner paths ที่ยืนยันในช่วง 0.
 ผ่านเมื่อเรียกผ่านเครื่องมือและ Service ได้จริง ไม่ใช่ผ่านเฉพาะ direct Core.
