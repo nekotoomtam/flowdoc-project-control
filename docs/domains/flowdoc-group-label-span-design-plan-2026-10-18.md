@@ -3,9 +3,9 @@
 ## Authority Boundary และสถานะ
 
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
-สถานะ: **ช่วง 0 ปิดสัญญา และช่วง 1–2 ผ่านเฉพาะ Core candidate เมื่อ 2026-10-18**.
-ช่วง 3–5 ยังไม่พัฒนา. Core candidate รับ declaration ขยายข้อมูลและจัดหน้าแล้ว;
-ยังไม่เชื่อม Service/FlowDocMake สำหรับฟีเจอร์นี้ ไม่รวม branch หลัก/release/ติดตั้ง.
+สถานะ: **ช่วง 0–3 ผ่านตามขอบเขต candidate เมื่อ 2026-10-18**.
+Core candidate รับ declaration ขยายข้อมูลและจัดหน้า; Service/FlowDocMake เชื่อมแล้ว.
+ช่วง 4–5 ยังไม่ทำ. งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
 Core เป็นเจ้าของ schema, binding, composition, layout และ PDF;
@@ -562,11 +562,11 @@ protected row ภาพสูง ขอบก่อนกลุ่มถัด�
 
 ### ช่วง 3 — แพ็กเกจจริง, Service และ FlowDocMake
 
-- [ ] แพ็ก Core candidate แล้วให้ Service ใช้ไฟล์แพ็กเกจจริงพร้อม checksum;
+- [x] แพ็ก Core candidate แล้วให้ Service ใช้ไฟล์แพ็กเกจจริงพร้อม checksum;
   ตรวจ consumer/native runtime ของสภาพแวดล้อมส่งมอบ.
-- [ ] เชื่อม save/read, draft validation/readiness, snapshot ของงาน PDF,
+- [x] เชื่อม save/read, draft validation/readiness, snapshot ของงาน PDF,
   clone/import และการส่ง diagnostics ตามสัญญาที่ปิดแล้ว.
-- [ ] เพิ่ม capability/schema/context ของ FlowDocMake และตัวอย่างสั้นในคู่มือ
+- [x] เพิ่ม capability/schema/context ของ FlowDocMake และตัวอย่างสั้นในคู่มือ
   จุดเดิม เพื่อให้ AI เลือกกลไกใหม่แทน hard-code จำนวนสมาชิก.
 
 ตรวจ: สิทธิ์ผู้ดูแล/ผู้เขียน/ผู้ไม่มีสิทธิ์ตามขอบเขต API จริง; client เก่า–ใหม่,
@@ -577,6 +577,61 @@ engine ที่ไม่รองรับ, round-trip ไม่ทิ้ง fi
 ใช้ `tests/consumer/checkRowGroups.mjs`, `checkMergedTable.mjs` เป็นฐาน
 แล้วเพิ่ม Service/FlowDocMake tests ใน owner paths ที่ยืนยันในช่วง 0.
 ผ่านเมื่อเรียกผ่านเครื่องมือและ Service ได้จริง ไม่ใช่ผ่านเฉพาะ direct Core.
+
+ผลตรวจช่วง 3 (single-room implementation; execution IDs N/A):
+
+- Service branch `codex/group-label-stage3-20261018`, commit `6054037`;
+  FlowDocMake source บน Project Control branch ชื่อเดียวกัน:
+  `93db697` (คู่มือ), `8bc87f8` (integration), `0ee44a7` (review fix).
+  Core `885e36e` ไม่แก้เพิ่ม; ใช้ archive ที่ตรวจช่วง 2 แล้วแบบ byte-identical
+  เป็น `vendor/flowdoc-core-0.4.3-group-label-stage2.tgz`, SHA-256
+  `9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`.
+  เก็บ archive release เดิมไว้; รุ่นภายในยังเป็น 0.4.3/0.2.4 และใช้ checksum
+  แยก candidate จนเตรียมรุ่นช่วง 5 ไม่อ้างว่าเป็น installed package ใหม่.
+- capability ตรง 4.4; context ส่ง groupLabelSpans/formatSizing.
+  validate/save ผ่าน stdio และ candidate workflow ปฏิเสธ capability ที่ขาด/unknown/
+  ชนิดข้อมูลผิดโดยไม่ส่ง definition ต่อ. นิยามไม่มีฟีเจอร์ใช้ทางเดิม;
+  engine/package pin ผิดปฏิเสธชัดเจน. ของเดิม model18/19 ผ่านชุด regression.
+- API/MCP save/read คง field; clone/import สอง Section ใช้ ID และ Area/Format
+  เจ้าของใหม่ ชื่อเหมือนกันแต่ข้อมูล COPY-A/COPY-B แยกกัน. งานที่ queued ก่อน
+  แก้ draft ยังใช้ revision/definition/input เดิม; immutable font snapshot
+  ตรึง renderer SHA และ Sarabun เดิมครบสี่ face, engine อื่นใช้ snapshot ไม่ได้.
+  เจ้าของอื่นรับ 404, ไม่ยืนยันตัวตนรับ 401; ไม่มี admin/publish tool เพิ่ม.
+- auto readiness ใช้ชื่อรวม ` (ต่อ)` ใน face เดียวกัน; fixed ไม่ตรวจ suffix.
+  ทดสอบ schema2 ด้วยไฟล์ subset ที่ตัด U+0E15: auto blocked พร้อมตำแหน่งอักษร
+  และไม่ enqueue, fixed ready. ไม่มี synthetic face/fallback เพิ่ม.
+- fixed 300 เหลือ 120 แสดง ROW0–ROW2 แล้วเตือน cursor ของสมาชิกค้าง;
+  auto ส่งชื่อพร้อม suffix ในหน้าต่อและสมาชิกครั้งเดียว. ชื่อสูงเกินหน้าส่ง
+  LAYOUT_FAILED/group-label-does-not-fit พร้อม bounded groupId/groupIndex/nodeId
+  ผ่าน child/Service/MCP และดาวน์โหลด partial PDF ไม่ได้.
+- ชุด native/API ที่เกี่ยวข้อง 22/22 ผ่านก่อนตรวจเต็ม. ชุดเต็ม PostgreSQL/Linux
+  100 files: **325 ผ่าน, 0 ล้มเหลว, 6 ข้าม**; ไม่เรียกว่า 331 ผ่าน.
+  หกข้อเดิมเป็น height-delivery guard 3, proposal fixture 2, supplied fonts 1
+  ที่ต้องใช้ external fixture; **ยังไม่รับรองผลหกข้อนี้ในรอบนี้**.
+  harness รอบเต็มหยุดที่ zero-skips assertion (ไม่ใช่ product test ล้มเหลว);
+  runner ใหม่แสดงรายการ skipped โดยเปิดเผยและไม่ยอมให้ group-label acceptance ข้าม.
+- หลัง review fix: ทดสอบ Service กลุ่มใหม่ **7/7**, FlowDocMake ที่ได้รับผลกระทบ
+  **24/24**, ไม่มี skipped; เรียก stdio จริงกับ native API รวม Format ชื่อ examples.
+  PDF **5 ไฟล์/8 หน้า** ตรวจ strict parsing, จำนวน/ลำดับข้อความ, render และภาพทุกหน้า
+  ผ่าน. fixed เป็น partial output ตามคำเตือน ไม่อ้างว่าข้อมูลครบ.
+- independent review หนึ่งรอบพบ detector มองข้าม Format ชื่อ examples และอ่าน
+  business defaults ผิดเป็น declaration. เพิ่ม regression ให้เห็น RED 3 ข้อก่อนแก้
+  แล้ว GREEN; ตรวจเฉพาะ declaration owners ของ Format/authored Section แทน recursive scan.
+  ไม่มีข้อพบค้าง. Core layout ใช้หลักฐานช่วง 2; visual acceptance ตรวจเองครบ;
+  UAT/SRS/ศบ.1 เป็นช่วง 4 และหก external height checks ยังไม่ใช่หลักฐานผ่านรอบนี้.
+- คู่มือเพิ่มเฉพาะบท contents-and-repetition เดิม, startup reading ไม่เพิ่ม;
+  snapshot สร้างด้วย build-flowdocmake จาก canonical inputs รวม reference เดิมที่ล้าหลัง.
+  ไม่แก้ installed cache/DB จริง, ไม่เพิ่ม migration, ไม่เปลี่ยน DOCUMENT_MAP.
+
+Evidence: Service tests `group-label-api.test.mjs`, `group-label-unit.test.mjs`,
+`checkGroupLabelPdf.py` และ runner `scripts/checkGroupLabels.mjs` ที่ commit ข้างต้น;
+PC tests `flowdocmake-group-label.test.mjs`, `flowdocmake-workflow.test.mjs`,
+`checkFlowdocmakeGroupLabels.mjs`. หลักฐาน local อยู่ที่ Service worktree
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/group-label-stage3/artifacts/`:
+`1792321128017/tests.log` (ชุดเต็ม), `1792321717476/result.json`,
+`1792321717476/plugin-tests.log`, `1792321717476/pdf-review/checks.json` และ
+`1792321717476/pdf-review/all-pages.png`; coverage/RED–GREEN/review notes ใน `stage3/`.
+เก็บ lanes/evidence ไว้ใช้ช่วง 4; ไม่รวมตัวหลัก ไม่ push/tag/release/ติดตั้ง.
 
 ### ช่วง 4 — แม่แบบ UAT และตรวจ PDF ทั้งชุด
 
