@@ -34,7 +34,8 @@ plan. The architecture remains planning-only; these decisions do not authorize
 runtime development or establish unmeasured capacity.
 
 - Check and atomically reserve queue/storage capacity while creating `taskId`.
-  Use bounded admission metadata before accepting/storing the large body; no
+  Use `Doc-Key` plus authenticated identity and a server-selected initial storage
+  allowance before accepting/storing the large body; no caller size is required. No
   separate task-opening call is mandatory. Record server `createdAt`
   and `expiresAt = createdAt + 3 hours` durably. A capacity check without a
   reservation cannot protect against concurrent over-admission.
@@ -339,10 +340,10 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
 
 ## Proposed intake contract
 
-1. Receive a new generation request without `taskId`. Authenticate and check
-   bounded size/template admission metadata before consuming/storing large input;
-   reserve queue/storage and create its parent task atomically. The exact control
-   header/initial bounded-part syntax is Stage 0 work. No previous call is required.
+1. Receive a new generation request without `taskId`. Authenticate and select the
+   template only from the short `Doc-Key` request header, not a duplicate payload
+   `docKey`. Reserve queue capacity and a server-selected initial storage allowance,
+   then create the task atomically. No declared size or previous call is required.
 2. Receive the entire dataset on this `multipart/form-data` request: one
    `payload` JSON part and binary image parts. JSON may be delivered as a JSON file.
    The server streams, extracts and registers assets; callers need not create an
@@ -351,7 +352,9 @@ before runtime implementation; cleanup of the unmerged candidate lanes is not do
    syntax/examples remain Stage 0 work, not inferred from file order or filename.
 3. Count bytes and hash while writing. Limit active streams, per-item bytes,
    per-dataset storage, aggregate storage, idle time and absolute lifetime.
-   Transport buffering must apply backpressure and enforce limits on actual bytes.
+   Reserve additional bytes atomically before a write would exceed the held
+   allowance; stop with a capacity reason if growth is unavailable. Apply
+   backpressure and actual-byte limits rather than relying on a declared size.
 4. Stream bounded task feedback on the generation response, with paginated stored
    diagnostics available on later task lookup. Looking up a task does not renew
    expiry or attach a new connection to its old output. One task receives one
@@ -379,6 +382,52 @@ from complete receipt; cleanup state is distinct from task outcome.
 Transport/overall-capacity violations and unreadable structured input can be
 rejected while receiving; storing first never accepts unlimited bytes. Isolatable
 image failures follow the skip-and-record policy below instead of this fatal path.
+
+## Short template header and unknown-size intake — owner decision 2026-10-19
+
+Proposed short public header is `Doc-Key`, carrying the existing `docKey` meaning:
+
+```http
+POST /documents
+Doc-Key: inspection-report
+Content-Type: multipart/form-data; boundary=...
+Accept: multipart/mixed
+```
+
+The endpoint path remains illustrative; the header choice is a design decision,
+not an installed feature. Header names follow HTTP case-insensitive matching.
+For new generation, require the key here only. The `payload` root contains `data`
+and `sections`, not another `docKey`; reject a duplicate root selector rather than
+choose precedence. Business fields inside `data` are governed by their schema.
+Do not introduce `X-FlowDoc-Template`/`X-FlowDoc-Doc-Key` aliases or body fallback
+for this new path. Service injects the validated/pinned selection into the internal
+Core input adapter as needed; legacy APIs retain their existing `docKey` contract.
+Existing-task inspection needs its `taskId` and owner authentication, not a new
+template selector; use the task's already pinned template.
+
+No custom declared-size header or size field is required. In particular,
+`X-FlowDoc-Declared-Max-Bytes` from the earlier chat example is not a requirement
+or a new renamed size parameter. Automatically supplied transport size metadata,
+if present, can inform admission but never replaces counting/enforcing actual bytes.
+Unknown declared file/body sizes are NULL in metadata until measured, not zero.
+
+Initial reservation, growth chunk size, per-task maximum and processing headroom
+are server policy values to close through bounded trials. Used bytes are inside
+held bytes. Before each additional write, obtain any required increase under the
+same quota lock/accounting used by concurrent tasks and legacy intake. The
+1.5 GB trial / 10 GB target budgets still cover reserved and stored originals,
+intermediates and outputs, not each category independently. Keep input queues
+bounded while waiting for disk; do not buffer the remainder in RAM.
+
+If initial capacity is unavailable, reject without creating a task. If later growth
+is unavailable, stop intake/work with a recorded storage-capacity reason: before
+stream headers use a normal error response, after headers use a typed error event
+when framing/connection permits. Never turn this into an image omission and claim
+success. Safely remove incomplete files, retain completed originals until original
+expiry, and keep retained bytes charged; release only verified removed/unused
+reservation. Check/reserve processing/intermediate/output allowance before starting
+the job as well. Initial intake acceptance cannot guarantee complete receipt or
+render success when the total size/work is unknown.
 
 ## Parent task and single-API response stream — owner decision 2026-10-18
 
@@ -615,8 +664,8 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: parent task/zero-or-one job, single-endpoint new/lookup examples, multipart feedback/PDF protocol, Section assets, ownership, expiry, usage and budgets | Admission metadata, lookup/event/framing schema, binary binding, image skip/fatal boundaries, confirmed-disconnect stop policy and trial shutdown timing, deadline races and limits; error-level selection deferred; no runtime changes |
-| 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
+| 0: close contracts and budgets | Project Control + Service/Core: parent task/zero-or-one job, one API with `Doc-Key` only, unknown-size growth policy, feedback/PDF protocol, Section assets, ownership and lifecycle | Lookup/event/framing schema, binary binding, image skip/fatal boundaries, safe-stop timing, deadline races, initial/growth/processing reservations and limits; no required caller size, error-level selection deferred; no runtime changes |
+| 1: dataset intake/storage | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Header-only template selection and duplicate rejection, no declared size, growth/exhaustion races, bounded backpressure, no write over reservation, retained/removed byte accounting, disconnect, disk full, seal race, expiry and restart; receipt is not runnable proof |
 | 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters and automatic Section asset extraction | No whole-payload buffering or giant job JSON; values/order, duplicate JSON keys/depth, unkeyed images distinct, same keys in different Sections isolated, missing/conflicting refs skipped with reasons, no client manifest requirement; model 18/19 compatibility |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
 | 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
