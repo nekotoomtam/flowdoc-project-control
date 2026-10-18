@@ -1,4 +1,16 @@
-export const supported={service:'0.4.3',core:'0.4.3',coreArtifactSha256:'64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2'};
+export const supported={service:'0.4.3',core:'0.4.3',coreArtifactSha256:'9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06'};
+export function usesGroupLabels(definition){
+ // Declarations can live in Formats or authored Section fragments. Do not inspect user input data.
+ const visit=v=>!!v&&typeof v==='object'&&(Array.isArray(v.rowGroups)&&v.rowGroups.some(g=>g&&Object.hasOwn(g,'groupLabel'))||Object.entries(v).some(([k,x])=>k!=='examples'&&x&&typeof x==='object'&&(Array.isArray(x)?x.some(visit):visit(x))));
+ return visit(definition);
+}
+export function checkGroupLabelCapability(definition,contract){
+ if(!usesGroupLabels(definition))return {ok:true};
+ const c=contract?.groupLabelSpans;
+ if(c?.version!==1||definition.nodeModelVersion!==19||(!Array.isArray(c.nodeModelVersions)||!c.nodeModelVersions.includes(19))||![1,2].includes(definition.schemaVersion)||(!Array.isArray(c.schemaVersions)||!c.schemaVersions.includes(definition.schemaVersion))||c.continuationSuffix!==' (ต่อ)'||c.fixed!=='formatSizing-v2'||c.diagnosticsVersion!==1||contract?.formatSizing?.version!==2)
+  return {ok:false,code:'GROUP_LABEL_SPANS_UNSUPPORTED',issues:[{code:'GROUP_LABEL_SPANS_UNSUPPORTED',path:'groupLabel',message:'This Service does not advertise the required groupLabelSpans v1 contract; keep the definition intact and use a compatible candidate.'}],warnings:[]};
+ return {ok:true};
+}
 export function assess({contract,runtime,pdf,expectedPort='3018'}) {
  if(!contract||JSON.stringify(contract.nodeModelVersions)!=='[18,19]'||contract.sectionInstances?.model!==19||contract.sectionInstances.input!=='array-by-id'||contract.sectionInstances.assembly!=='saved-definition'||contract.sectionInstances.stage!==3||contract.sectionInstances.coverArea!==true||contract.sectionInstances.scopedToc!==true||contract.draftDefinitionVersion!==1||contract.publicationEnabled!==false||JSON.stringify(contract.schemaVersions)!=='[1,2]'||contract.fonts?.selection!=='exact-release-weight-style'||contract.fonts.syntheticFaces!==false||contract.fonts.automaticFallback!==false||contract.fonts.adminSeparate!==true||contract.fonts.heightAdjustment?.methodId!=='thai-bo-baseline-top-v1'||contract.fonts.heightAdjustment.optIn!==true||contract.fonts.heightAdjustment.proposalTtlSeconds!==900||contract.fonts.heightAdjustment.precisionDecimals!==6||contract.fonts.heightAdjustment.layoutCheck!=='not_checked')return {ready:false,code:'INCOMPATIBLE_CONTRACT'};
  if(!contract.formatSizing||contract.formatSizing.version!==2||JSON.stringify(contract.formatSizing.nodeModelVersions)!=='[19]'||JSON.stringify(contract.formatSizing.fontSchemaVersions)!=='[1,2]'||JSON.stringify(contract.formatSizing.modes)!=='["auto","fixed"]'||JSON.stringify(contract.formatSizing.fixedContexts)!=='["section-flow-root"]'||contract.formatSizing.diagnosticsVersion!==1)return {ready:false,code:'INCOMPATIBLE_CONTRACT'};

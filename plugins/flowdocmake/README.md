@@ -20,6 +20,14 @@ unknown capabilities fail preflight. Fixed caps the current page remainder,
 reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
+Group-label candidate: Core commit `885e36e`, artifact SHA-256
+`9d0db0231fdf98e4b0806a6f4b422f620ffcc119b7193ddf2ad0a43f0b4bfe06`.
+Internal versions stay 0.4.3/0.2.4 until delivery preparation; this source
+candidate differs from installed 0.2.4. Context returns `groupLabelSpans` v1.
+Definitions using groupLabel require its exact model/schema/suffix contract;
+validate/save and candidate runs reject unsupported engines without stripping
+fields. Existing definitions keep their path. See the existing repetition chapter.
+
 Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,
 then map observed layouts, design native structures and derive request data.

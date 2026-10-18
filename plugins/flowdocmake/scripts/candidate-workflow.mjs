@@ -7,6 +7,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import {checkCoverage} from './reference-coverage.mjs';
 import {checkDeadline,checkRepresentatives} from './representative-review.mjs';
 import {execFileSync} from 'node:child_process';
+import {checkGroupLabelCapability} from './compatibility.mjs';
 const read=p=>JSON.parse(readFileSync(p,'utf8'));
 const hash=v=>createHash('sha256').update(v).digest('hex');
 function failure(code,details={}){return Object.assign(new Error(code),{code,...details});}
@@ -85,7 +86,8 @@ export async function runCandidatePlan(planPath,{checkOnly=false,waitMs=15000,in
    const value=parsed.value??parsed;if(cache){state.calls[step].value=value;delete state.failure;save();}
    log({step,ok:true,templateId:value.templateId,revision:value.revision,jobId:value.jobId,status:value.status});return value;
   }
-  const context=await call('context','get_flowdocmake_context',{},false);if(!context.ready)throw failure(context.code??'PREFLIGHT_NOT_READY',{checkpoint});state.context=context;save();
+  const context=await call('context','get_flowdocmake_context',{},false);if(!context.ready)throw failure(context.code??'PREFLIGHT_NOT_READY',{checkpoint});
+  const capability=checkGroupLabelCapability(definition,context.contract);if(!capability.ok)throw failure(capability.code,{checkpoint,issues:capability.issues});state.context=context;save();
   async function create(step){return call(step,'create_template_draft',{name:plan.name,docKey:plan.docKey,idempotencyKey:state.key+'-'+step});}
   let draft;
   if(plan.draftPolicy==='new')draft=await create('create');

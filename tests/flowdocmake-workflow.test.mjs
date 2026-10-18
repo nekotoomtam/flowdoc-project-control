@@ -45,6 +45,11 @@ test('Section19 candidate preserves the ID-addressed array without name or posit
  assert.deepEqual(f.calls.find(c=>c.name==='validate_template').args.sampleRequest.sections,[{id,data:{name:'Alpha'}}]);
  assert.equal(f.calls.find(c=>c.name==='update_template_draft').args.definition.sections[0].id,id);
 });
+test('candidate checks optional group-label capability before creating a draft or uploading',async t=>{
+ const f=fixture(t);writeFileSync(join(f.plan.candidateDirectory,'template.json'),JSON.stringify({schemaVersion:1,nodeModelVersion:19,areaFormats:{f:{rowGroups:[{groupLabel:{cellTemplateId:'label',emptyCellTemplateId:'empty'}}]}}}));
+ await assert.rejects(runCandidatePlan(f.planPath,{invoke:f.invoke}),e=>e.code==='GROUP_LABEL_SPANS_UNSUPPORTED');
+ assert.deepEqual(f.calls.map(c=>c.name),['get_flowdocmake_context']);
+});
 test('preserve never forks on ownership conflict; authorized replacement forks exactly once',async t=>{
  const preserve=fixture(t,'preserve');preserve.setOwnership(true);
  await assert.rejects(runCandidatePlan(preserve.planPath,{invoke:preserve.invoke}),e=>e.code==='OWNERSHIP_CONFLICT');
