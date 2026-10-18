@@ -27,6 +27,62 @@ time and work-size budgets. A dataset can contain structured document values and
 many original images. Large stored bytes must not imply loading all bytes into RAM.
 Neither receipt nor creation of a PDF proves complete document delivery.
 
+## Owner decisions — 2026-10-18
+
+The following intake/lifecycle decisions replace earlier alternatives in this
+plan. The architecture remains planning-only; these decisions do not authorize
+runtime development or establish unmeasured capacity.
+
+- Check and atomically reserve queue/storage capacity while creating `taskId`.
+  Reject if unavailable before inviting the large body. Record server `createdAt`
+  and `expiresAt = createdAt + 3 hours` durably. A capacity check without a
+  reservation cannot protect against concurrent over-admission.
+- Two calls: a small task-opening call returns `taskId`, status and expiry; a
+  second call sends the complete payload once and receives the final PDF on that
+  same second HTTP response. Do not require the client to split content into
+  separate per-image requests, submit a third processing call, or fetch the PDF
+  later. Internal parsing/chunking is the server's responsibility.
+- If the client loses/does not keep `taskId` and opens another task, it is a new
+  task even if content matches. Do not require a client idempotency key or dedupe
+  task creation by content. Same-task upload conflicts still need protection.
+- Storage quota: 1.5 GB for trials, 10 GB target for operation; these are temporary
+  storage budgets, not RAM or accepted per-request sizes. Includes reservations,
+  originals, intermediates and output while being sent. Exact byte representation,
+  per-task bounds and processing-space estimates remain Stage 0/test decisions.
+- Three-hour expiry is absolute from task creation, not refreshed by polling,
+  receiving more data, restarting, or failing later. This replaces the earlier
+  proposal to retain failed inputs for three hours after failure.
+- Success is exposed with the final PDF response. No client save acknowledgment
+  and no retained download/re-delivery promise. After server-side sending finishes,
+  delete originals, intermediates and temporary output; keep the task record.
+  Client-side save failure after a correctly completed send is outside this promise.
+- An unsuccessful task can retain its data only until the original expiry. Keep
+  task identity, terminal outcome and diagnostics after file deletion as a lasting
+  record for possible future billing. Billing rules/charges are not defined here.
+
+Expiry must stop accepting/processing/sending and revoke further writes; cleanup
+waits until owned workers/readers have stopped. Do not extend the expiry to avoid
+handling an active task. A periodic internal expiry/recovery worker, optionally
+invoked through a protected internal maintenance endpoint, must work without
+client polling. A crashed process cannot rely on an in-memory timer; startup
+reconciles persisted deadlines and unfinished tasks. Exact interval, cancellation
+grace and failure codes are Stage 0 details. Expiry does not rewrite prior success.
+
+Distinguish generated output, sending, and completed server send in durable events.
+Terminal success uses the agreed server response-completion boundary, not proof
+that the client saved the file. A disconnect is recorded as failed/indeterminate
+delivery with observed cause; do not automatically blame the client. HTTP status
+cannot be replaced with a JSON error once PDF response bytes have begun.
+
+Long upload + queue + generation + response occurs within the second connection.
+Client, proxy and server timeout/size constraints therefore require end-to-end
+tests; task status polling is feedback, not a substitute PDF download channel.
+This chosen path does not inherit an asynchronous-download timeout advantage.
+Persistent records retain bounded owner/identity, template/contract version,
+timestamps, byte/page counters, outcome, delivery and cleanup events as needed;
+do not retain the full input/PDF inside logs. Persistent record storage is managed
+separately from the temporary-file quota and has no automatic deletion in this scope.
+
 Do not promise arbitrary JSON size, unlimited images, constant total document RAM,
 or a production SLA. Keep explicit bounds on individual values, logical records,
 expansion, pages, resource counts and metadata as well as byte budgets. Structure,
@@ -62,30 +118,36 @@ These source observations are not an installed-version or live-chat capability c
 
 ## Proposed intake contract
 
-1. Open an owned dataset with an idempotency key and bounded control metadata.
-   Declare/paginate item metadata rather than require one unbounded manifest.
-2. Upload structured-data files and image files separately as binary streams.
-   Client asset keys identify image references inside this dataset; Service maps
-   those keys to internal identities. Clients do not discover another user's DB IDs.
+1. Open an owned task with bounded size/template metadata; reserve capacity and
+   return `taskId` as described above. Record the associated internal dataset.
+2. Send the entire dataset on one task-bound request. A single structured-data
+   body or a streamed multipart envelope for JSON plus binary images are proposed
+   representations to close in Stage 0; separate image API calls are not mandatory.
+   Client asset keys identify image references within the dataset; Service maps
+   them to internal identities. Clients do not discover other users' DB IDs.
 3. Count bytes and hash while writing. Limit active streams, per-item bytes,
    per-dataset storage, aggregate storage, idle time and absolute lifetime.
    Transport buffering must apply backpressure and enforce limits on actual bytes.
-4. Query paginated item status and resend missing/incomplete items. First scope
-   proposes complete-item retransmission, reusing existing semantics. Byte-offset
-   resumability is a separate decision, not a claim about current functionality.
+4. Expose bounded/paginated task feedback. Do not treat status polling as expiry
+   renewal. A task accepts one payload attempt at a time and becomes immutable
+   after complete receipt. Failed-transfer retry within the same task needs an
+   explicit Stage 0 rule; no byte-offset resume or retained-PDF replay is promised.
 5. Seal only after all declared originals exist and checksums/counts match.
    URL images, if supported here, must be retrieved under existing network guards
    and stored before sealing; a URL declaration is not a pinned original.
 6. Validate structured content and cross-file references after receipt using a
    bounded reader. Sealed/received-complete is distinct from schema-valid and
    admitted-to-process. No rendering starts against an incomplete dataset.
-7. Submit a small request containing dataset identity/digest and selected template
-   identity/revision. Pin the template, fonts, normalized input digest and processing
-   contract. Never rebuild the complete large JSON HTTP request for this submission.
+7. Internally admit the sealed dataset for processing using its identity/digest.
+   Pin the template, fonts, normalized input digest and processing contract. Keep
+   the second request open for the PDF response; no third client call is needed.
+   Never rebuild the complete large JSON HTTP body or job JSON for admission.
 
-Dataset lifecycle proposal: receiving -> sealed -> validating -> ready, or invalid;
-expiry/deletion is a separate availability concern. Job lifecycle is separate and
-references the immutable dataset. Exact public names and JSON are Stage 0 decisions.
+Internal dataset lifecycle proposal: receiving -> sealed -> validating -> ready,
+or invalid. The public task additionally tracks awaiting-payload, queue, processing,
+sending and terminal outcomes, with immutable dataset and output identities.
+Exact public names and JSON are Stage 0 decisions. Input validation remains distinct
+from complete receipt; cleanup state is distinct from task outcome.
 An oversized or invalid item can be rejected while receiving; storing first never
 means accepting unlimited bytes or skipping input validation.
 
@@ -97,8 +159,10 @@ Service owns transport/storage; Core remains the schema and composition authorit
 
 Proposed large-data representation: a bounded manifest plus ordered data parts at
 declared logical record boundaries, with explicit Section/Area ownership and stable
-ordering. Keep the business Section/Area/Format semantics unchanged; transport
-parts are not new pages, Sections or Formats. Single JSON file import can use a
+ordering, produced internally from the single client payload where necessary.
+This does not require the client to split uploads. Keep Section/Area/Format
+semantics unchanged; transport parts are not new pages, Sections or Formats.
+Single JSON file import can use a
 bounded parser/normalizer; do not use whole-file read plus JSON.parse as the large
 path. A single huge scalar/record needs its own limit or a separately designed
 representation. Duplicate keys, nesting, reference validity, duplicate/missing
@@ -161,7 +225,10 @@ claiming large structured-document support; image-only success is insufficient.
   Exact preview partial-result and final-job status behavior is a contract decision;
   do not silently change old succeeded-with-warning semantics.
 - Dataset re-use versus one-job ownership, quotas across owners, expiry while jobs
-  are queued/running, cancellation, replay and retry lifetime must be explicit.
+  are queued/running, cancellation and same-task receive retry must be explicit
+  within the owner decisions above. Do not introduce cross-task dataset re-use or
+  automatic retry by implication. Cleanup failure does not turn successful delivery
+  into a failed document; record and retry cleanup while retaining quota accounting.
 
 ## Phased plan and acceptance
 
@@ -170,12 +237,12 @@ runtime authorization. Each implementation stage stops at its own verified check
 
 | Stage | Owner and output | Required proof |
 | --- | --- | --- |
-| 0: close contracts and budgets | Project Control + Service/Core: public examples, transport part boundaries, states, identity, retry, retention, capabilities, completeness and measured-test budgets | Trace small and large paths; malformed/oversized scalar, interrupted item, wrong-owner reference, missing part, changed source, URL snapshot and mixed-version examples; no runtime changes |
-| 1: dataset intake/storage | Service: stream original JSON/data parts and images into owned staging; item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, full-item retry, conflicting replay, concurrent quotas, disk full, seal race, expiry and restart; complete receipt does not imply runnable |
-| 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters | Large structured data does not become a single HTTP body or giant stored job JSON; exact values/order, duplicate-key/depth limits, cross-part references and bounded expansion; old model 18/19 paths remain compatible |
+| 0: close contracts and budgets | Project Control + Service/Core: two-call examples, single large upload/PDF response, identity, absolute expiry, persistent records and measured-test budgets | Payload encoding, declared/actual bytes, reservation estimates, GB byte units, interruption, same-task retry, expiry during each phase and long-connection contract; no runtime changes |
+| 1: dataset intake/storage | Service: reserve/create task atomically, stream one whole dataset into owned staging, internal item status, seal and recovery | Actual bytes over limit, backpressure, disconnect, concurrent uploads to one task, concurrent quota reservations, disk full, seal race, absolute expiry and restart; complete receipt does not imply runnable |
+| 2: bounded validation and normalization | Core defines validation/reader semantics; Service provides storage/index adapters | The single HTTP payload is not buffered/parsed whole or copied into giant job JSON; exact values/order, duplicate-key/depth limits, cross-part references and bounded expansion; old model 18/19 paths remain compatible |
 | 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
-| 4: Service processing integration | Service: claim sealed dataset, pin contracts/template/fonts, schedule bounded work, prepare/embed files, publish completed output | Packed Core consumed for real; safe rejection before excess allocation, cancellation/timeouts, disk-full and child failure, recovery across file/DB gaps, retention and released reservations; no whole-PDF parent buffer |
-| 5: FlowDocMake/legacy integration | FlowDocMake and Service: dataset controls, paginated status, capabilities, file streaming and result completeness | Auth/ownership, legacy small requests, mixed versions, clone/import reference mapping, streamed save and incremental hash/copy, clear incomplete output and retry receipts |
+| 4: Service processing integration | Service: claim sealed dataset, pin contracts/template/fonts, prepare files, stream final PDF on the original payload request, retain terminal record | Packed Core consumed for real; complete server send, disconnect before/after headers, no whole-PDF parent buffer, absolute expiry/cancellation, stale worker writes, disk-full and crash gaps; successful-send cleanup and failed-task expiry preserve records and release quota |
+| 5: FlowDocMake/legacy integration | FlowDocMake and Service: task opening, single payload/PDF exchange, feedback, capabilities and lasting records | Auth/ownership, client/proxy/server timeout limits, legacy small requests, mixed versions, clone/import mapping, streamed save/hash, lost task ID creates new task, no required requestKey or later-download assumption |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
 
 Do not remove the existing count protections until their replacement is active
