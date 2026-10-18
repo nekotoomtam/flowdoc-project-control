@@ -2993,3 +2993,29 @@ Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-install-043/`:
 `persistence-proof.json`, `post-restart-context.json`, and `native-chat-contract.json`.
 Live PDFs are `live/srs.pdf` and `live/sb1.pdf`. No draft publication, original
 template migration, release/tag rewriting or package/image registry publication.
+
+#### ยืนยัน native chat หลังเปิด Codex ใหม่ — 2026-10-18
+
+Owner returned after restarting Codex and authorized continuing the outstanding
+connection checks. Native `mcp__flowdocmake` now exposes all23tools. Initial
+preflight returned SERVICE_UNREACHABLE because both existing live containers
+were stopped (exit255); started the original database, confirmed readiness, then
+started the original API. No container recreation, configuration/data repair or
+application restart was needed. The exit code alone does not establish why the
+containers had stopped; startup policy/root-cause investigation is outside this
+bounded connection acceptance.
+
+Actual native-chat `get_flowdocmake_context` now returns ready:true,
+packageVersion0.2.4, Service/Core0.4.3, exact released Core checksum and image
+identity. Native contract confirms models18/19 and Format sizingv2. Native reads
+of both original drafts confirm the same revisions1/3, fingerprints and ready
+font status. Native `save_preview_pdf` downloads both persisted PDFs; SHA256s
+match the previously reviewed98+2page outputs exactly, so that unchanged whole-
+document review is reused rather than rendering the same bytes again.
+
+Evidence: `format-install-043/native-chat-final.json` and updated
+`installation-checkpoint.json` at the external installation evidence directory
+above. The latter now reports PASS_INSTALLATION_AND_NATIVE_CHAT with no pending
+check. This closes the installation/native-chat acceptance; existing source-
+fidelity differences and4SRS image warnings remain unchanged. No user draft,
+font default, release/tag or remote ref was changed in this follow-up.
