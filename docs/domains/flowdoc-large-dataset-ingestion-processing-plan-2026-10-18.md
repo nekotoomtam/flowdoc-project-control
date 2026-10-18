@@ -109,9 +109,11 @@ layout, font and TOC metadata can still grow with document complexity.
 Read-only product references, inspected 2026-10-18:
 
 - Service candidate `e605d9370d887ecbac835cd65d264c1607f1bba7` at
-  `C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/group-label-stage3`.
+  `C:/Users/nekot/Documents/GitHub/flowdoc-service` (`codex/template-registry`,
+  integrated 2026-10-19; former temporary worktree removed).
 - Core candidate `e1a65178815f1657ebe464aca23a8a0a4219938c` at
-  `C:/Users/nekot/Documents/GitHub/flowdoc-core-worktrees/group-label-stage1`.
+  `C:/Users/nekot/Documents/GitHub/flowdoc-core` (`codex/template-binding`,
+  integrated 2026-10-19; former temporary worktree removed).
 - Local full UAT trial `C:/Users/nekot/Documents/Codex/2026-10-18/uat-full-source/feedback.json`
   and `review/verification.json`: 135 uploaded assets, 60 requirements, 64 figure
   placements, partial 70-page output; 61 figure placements missing. This is failure
@@ -335,8 +337,11 @@ mode constraints, owner access, all state transitions, expiry at every phase,
 restart/stale worker, success versus disconnect/deadline race, missing required
 images, deletion failure, and exactly-once terminal facts/events. Assert file
 deletion preserves task/usage/event history and no giant payload remains in DB/logs.
-Core/Service integration and current branch/worktree reconciliation are prerequisites
-before runtime implementation; cleanup of the unmerged candidate lanes is not done.
+Core/Service integration and branch/worktree reconciliation completed 2026-10-19;
+see the integration/cleanup section of the
+[group-label plan](flowdoc-group-label-span-design-plan-2026-10-18.md).
+Stage 0 contract closure above remains required before runtime implementation;
+this baseline update does not close those decisions or authorize runtime changes.
 
 ## Proposed intake contract
 

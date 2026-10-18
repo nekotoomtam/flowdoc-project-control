@@ -5,8 +5,8 @@
 Owner: Project Control. Role: Planning Partner / Documentation Synthesizer.
 สถานะ: **ช่วง 0–5 ผ่านตามขอบเขตเซลล์ชื่อกลุ่มและเตรียมส่งมอบ เมื่อ 2026-10-18**.
 Core candidate รับ declaration ขยายข้อมูลและจัดหน้า; Service/FlowDocMake เชื่อมแล้ว.
-ชุดพัฒนา Core/Service 0.4.4 และ FlowDocMake 0.2.5 พร้อม checkpoint รวมงาน.
-งานยังอยู่ branch แยก ไม่รวม branch หลัก/release/ติดตั้ง;
+ชุดพัฒนา Core/Service 0.4.4 และ FlowDocMake 0.2.5 รวมเข้าตัวหลักแล้วเมื่อ 2026-10-19.
+เก็บกวาด branch/worktree ชั่วคราวที่รวมครบแล้ว; ยังไม่ขึ้น release/push/tag/ติดตั้ง.
 หก external font-height checks ยังไม่ยืนยัน จึงไม่อ้าง readiness ครอบคลุมทุกฟีเจอร์.
 คำขอผู้ใช้วันที่ 2026-10-18 เป็น authority สำหรับงานเอกสารในห้องนี้;
 Work/Phase/Checklist/execution IDs: N/A (single-room inline).
@@ -784,6 +784,41 @@ Document budget: แก้ entrypoints เดิมและแผนนี้ �
   เก็บ worktree/branch ที่ยังไม่รวมพร้อม backup ช่วง 4; ไม่ลบ unmerged lane.
   ขั้นถัดไปคือขออนุมัติรวมเข้าตัวหลักและ cleanup เฉพาะ lane ที่สะอาดรวมแล้ว;
   ไม่รวม ไม่ push/tag/release หรือติดตั้งในรอบนี้.
+
+### รวมตัวหลักและ cleanup — 2026-10-19
+
+คำสั่งเจ้าของในแชตนี้อนุมัติเฉพาะรวมงานเซลล์ชื่อกลุ่ม ตรวจหลังรวม และ cleanup;
+ไม่ขึ้น release หรือติดตั้ง และยังไม่เริ่ม runtime ของ task. Single-room inline,
+role Lane Reconciliation Reviewer / Project Control Steward; execution IDs N/A.
+ใช้แผนและ acceptance เดิม ไม่เปิด execution เก่าหรือแก้ผลช่วง 5 ย้อนหลัง.
+
+- Core `codex/template-binding` fast-forward เป็น `e1a6517` และ Service
+  `codex/template-registry` เป็น `e605d93`; tree ตรง candidate ที่ตรวจทุกไฟล์.
+  PC `main` merge เป็น `aa72144` ไม่มี conflict; ส่วน plugin/tests/คู่มือที่รวม
+  ตรง candidate `008e43c`, เก็บแผน task ที่เพิ่มใน main ไว้ครบ.
+- ตรวจใหม่: Core 778/778 และ build ผ่าน; isolated Service API/unit 7/7 และ
+  actual FlowDocMake stdio/API 24/24 ไม่มี skipped. หลังรวม Service build และ
+  unit 3/3 ผ่าน; plugin snapshot test ผ่านและ canonical/snapshot hashes 30 ไฟล์ตรง.
+  รุ่น 0.4.4/0.4.4/0.2.5, vendor checksum และ Core source pin ตรงกัน.
+- ใช้ packed Linux consumer/PDF proof ช่วง 4–5 ต่อได้เพราะ fast-forward ไม่เปลี่ยน
+  source, package bytes, dependencies หรือ configuration ของชุดที่ตรวจ.
+  ตรวจซ้ำ checksum/ขนาดของไฟล์ส่งมอบเดิมครบ 69 ไฟล์; ไม่อ้างว่ารันหรือดู PDF
+  ทั้งหมดซ้ำ. หก external font-height checks ยัง unverified นอก feature scope.
+- เก็บ ignored artifacts ที่ต้องใช้ต่อจากทั้งสาม worktree รวม 1,756 ไฟล์
+  65,894,211 bytes พร้อมตรวจ SHA-256 ต้นทาง/สำเนาทุกไฟล์ก่อนลบ.
+  จุดอ้างอิงใหม่คือ `C:/Users/nekot/Documents/Codex/2026-10-19/group-label-integration/`:
+  `preservation.json` เก็บ mapping เดิม→ใหม่; artifacts ของ Core, Service และ PC
+  อยู่ใต้ `preserved/core`, `preserved/service`, `preserved/projectControl` ตามลำดับ.
+  ตัวอย่าง consumer `preserved/core/1792329618482/result.json`; native ล่าสุด
+  `preserved/service/1792343664758/result.json`. Delivery manifest เดิมอยู่นอก
+  worktree และยังคงใช้ได้. ไม่เขียนทับ historical receipts หรือ source provenance.
+- ลบ clean merged worktree 3 ตัวและ local branch `codex/group-label-stage1-20261018`,
+  `codex/group-label-stage3-20261018` ของ Service/PC และ
+  `codex/pdf-image-numbers-20261018` ของ Core ที่รวมครบแล้ว.
+  ทุก repo เหลือ primary checkout, development branch และ release branch เดิม.
+  ไม่ลบ remote branch, ไม่เปลี่ยน release refs/tags, ไม่ push และไม่ติดตั้ง.
+- ขั้นถัดไป: ปิดสัญญาช่วง 0 ในแผน large-dataset/task เดิมก่อนเริ่ม runtime.
+  การรวมงานนี้ไม่ใช่ release-wide readiness หรือการอนุมัติพัฒนา task ทุกช่วง.
 
 ## 6. ขอบเขตที่พักไว้และความเสี่ยง
 
