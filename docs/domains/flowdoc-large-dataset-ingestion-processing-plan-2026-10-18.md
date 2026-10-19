@@ -2190,3 +2190,145 @@ by the final receipt. No Work/map/generated projection promotion. Baseline packa
 number0.4.8 stays unchanged during this isolated source experiment; its terminal
 commit distinguishes the candidate. Delivery version/pins must be settled before
 any later promotion/install; no baseline-numbered artifact is published here.
+
+## Read-optimization Stage2 — field-position index contract and execution ledger
+
+Authority Boundary: Project Control owns this bounded plan and acceptance ledger;
+Service owns implementation. This extends the isolated Stage1 candidate only.
+Owner/role: Service / Product Implementation Agent, inline implementation;
+execution IDs not applicable. Base: Service `005c6c0`, PC `70141fd`.
+Scope: reader-local numeric property offsets, parent-owned index credits and
+private render-child delegation; no Core/public API, model, delivery pin, main,
+release, tag, install, database schema or document-data changes.
+
+- Ruling: add at most 256 KiB/task and 1 MiB/Service of index backing, separate
+  from Stage1's raw-window credits. Reuse the same atomic parent grant and
+  reader-close/confirmed-child-exit release. Descriptor count is bounded to 64
+  per fully credited reader; no decoded values/keys or negative-field cache.
+  Cost if wrong: bounded extra memory without useful speedup; measured below.
+- Each slot is one 4 KiB numeric offset table (256 entries of four uint32
+  offsets). At most 64 slots; metadata remains bounded. Build lazily at object
+  enumeration, preserve original key order and duplicate keys. Objects exceeding
+  256 fields and unavailable slots fall back to the unchanged scanner. LRU may
+  reuse only unpinned slots; held iterators pin their own slot. Close invalidates
+  iterators and drops all tables, including after cancellation or parse failure.
+- A complete table may be reused across newly created TaskValue cursors for the
+  same object in this reader only. No cross-task/file/attempt sharing. Abort,
+  identity checks, scalar/depth/key limits, validation and checksums stay active.
+- Ruling: benchmark `FLOWDOC_TASK_FIELD_INDEX=off/on` with Stage1 raw-window
+  cache ON in both arms. Three alternating pairs, same frozen inputs, Core,
+  2 CPU/1 GiB and separate DB. The Stage1 75% raw-read gate is inapplicable
+  because those reads are already reduced to 15; compare property scan bytes,
+  composition median and full SRS duration instead. Acceptance: exact semantic
+  output and PDF parity, lower property scan bytes and composition median,
+  full SRS median at most 5% slower, bounded backing/metadata and zero credits
+  after cleanup. If performance fails, retain evidence and report failure.
+- Proof budget: targeted RED/GREEN index tests; affected existing task/model18/19
+  tests on Linux with isolated DB; actual bounded allocation/fallback exercise;
+  one fresh whole-source review; three paired composition/full-SRS measurements;
+  UAT/SB1 regression and all-page strict/text/images/links/render parity. Do not
+  expand to Stage3 subtree reuse or rerun finished measurements for a better score.
+- Document gate: update this existing canonical plan only. No new Work registry,
+  map promotion, product guide or global documentation sync.
+
+Execution start: Stage2 began without an acceptance result; final results follow. Stage1 branches retained;
+fresh branches `codex/field-index-stage2-20261019` (Service) and
+`codex/field-index-stage2-record-20261019` (PC) reuse their isolated worktrees.
+
+
+### Stage2 final results — PASS, retained isolated candidate
+
+Service commit: `619d522e77a6a53cc1594de355b238012002b234`, branch
+`codex/field-index-stage2-20261019`; PC record branch
+`codex/field-index-stage2-record-20261019`. Both extend the retained Stage1
+branches. Candidate implementation, compiled hashes and tests were frozen before
+the paired measurements; the terminal receipt checks that exact identity again.
+
+Implementation adds reader-local numeric field-position tables, bounded parent
+credits, child delegation and close diagnostics. It retains duplicate keys in
+source order, uses pinned slots during iteration, evicts only unpinned LRU slots,
+and uses the original scanner when full, oversized or disabled. Keys and values
+are not retained decoded. Existing intake JSON64MiB / normalized256MiB bounds
+fit uint32 offsets; no payload/resource policy was enlarged. No Core/public API,
+database schema, font, template, mock, checksum bypass or normalization-receipt
+shortcut was added.
+
+Verification and coverage:
+
+- Initial four feature tests failed against Stage1 as expected (no index or
+  index credits). A later held-iterator test exposed resumption after the last
+  yield returning done after reader close; a post-yield check fixed it RED to
+  GREEN. The exploratory Linux run122/123 is retained, not counted as passing.
+- Final Linux affected suite: **124/124 index ON and124/124 index OFF**, zero
+  skipped. Includes real DB/HTTP/render-child, model18/19, task recovery,
+  authentication, normalization, image/task adapters and cleanup. Targeted index
+  cases cover duplicate/order/missing fields, Unicode and256-field boundary,
+  oversized fallback, pinned-slot exhaustion, eviction, file/attempt isolation,
+  close, abort and cancellation while a build waits for actual file IO.
+- Additional normalizer conformance:12 model18/19 cases,24 off/on executions,
+  exact normalized output/errors equal. Required missing fields stay
+  MISSING_REQUIRED, duplicate keys stay INVALID_DATA, wrong scalars stay
+  TYPE_MISMATCH; model18 unknown-variable tolerance and model19 strict rejection
+  remain different as designed. The first supplemental fixture used a binding
+  invalid for model18; changed only that evidence fixture to static text, then
+  reran this probe. No candidate or timing was changed/rerun for that correction.
+- Actual five-reader allocation: four tasks allocate256KiB each, exactly1MiB
+  aggregate index backing; fifth task falls back. Eviction occurs, existing4MiB
+  raw-window ceiling holds, all credits/backing return to zero after close.
+- One fresh whole-source review:0 Critical /0 Important /0 Minor. No source
+  repair was needed after review. Final: Ruling: performance, Linux compatibility
+  and PDF parity declined by the source reviewer are parent-owned prerequisites,
+  discharged by the evidence here. Existing schema/protocol and recovery paths
+  remain unchanged; this is not a production deployment or every historically
+  persisted-task configuration test. Cost if misread: unsupported deployment
+  assurance; no such assurance or acceptance waiver is made.
+- All **8 PDFs /660 pages** strictly parsed, all pages rendered with zero
+  Poppler diagnostics. Every page's text and rendered pixels match the reviewed
+  Stage6 reference; image bytes/alpha/order and link targets/geometry also match.
+  SRS6x98 pages, UAT70 pages, SB.1 two pages. Manual views of SRS10, UAT59 and
+  SB.1 page1 confirm the rendered comparison. Existing UAT70 vs original72-page
+  and other inherited layout/source differences remain; this is regression
+  parity, not a new source-exactness claim.
+- Eight tasks succeeded; physical task files, reserved/used quota and child PIDs
+  are zero after cleanup, with task events/usage retained. The test DB was
+  restored to its initially stopped state. No user DB/data was edited.
+
+Three alternating same-candidate pairs, raw-window cache ON in both arms,
+2CPU/1GiB hard envelope, separate DB:
+
+| Metric | Index OFF | Index ON |
+| --- | ---: | ---: |
+| Composition seconds, runs1/2/3 |2.374361 /2.712083 /2.434647 |1.532787 /1.552926 /1.562982 |
+| Composition median |2.434647s |1.552926s (36.22% lower) |
+| Property scan bytes, median |10,972,492 |5,048,379 (53.99% lower) |
+| Actual reader calls / returned bytes |15 /234,318 |15 /234,318 |
+| SRS request-to-PDF seconds, runs1/2/3 |54.424184 /64.966153 /44.634693 |41.229506 /53.123089 /54.268046 |
+| SRS total median |54.424184s |53.123089s (2.39% lower) |
+
+All declared gates pass. Total times vary materially: composition benefit and
+scan-count reduction are clear, but no large or causal end-to-end speedup is
+claimed. Reader scan bytes count repeated parser work, not disk IO; Stage1 has
+already reduced actual reads, which remain unchanged. UAT116.951588s and
+SB.1 3.956562s are single correctness runs, not paired speedup evidence.
+Largest whole-cgroup kernel peak across full runs:292.449219MiB. Index backing
+is separate from bounded JS metadata; total process RAM is not claimed to equal
+the backing budget. Phase timings include identical observer hooks and are
+nested, not additive; composition pairs use no hooks. Physical disk peak was
+not sampled; final physical/quota cleanup was audited.
+
+Retained evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-19/field-index-stage2`.
+Read `receipt.json`, `measurements.json`, `runtime-identity.json`,
+`resource-matrix.json`, `model-parity.json`, `linux-tasks-final-on.json`,
+`linux-tasks-final-off.json`, `review-receipt.json`,
+`pdf-verification.json`, `cleanup-audit.json`, and per-run PDFs/traces.
+Documentation authority checks:22/22. Terminal receipt verifies clean candidate
+checkouts, unchanged primary heads/release/tags, allowed eight-file Service
+manifest, exact compiled/source identities and stopped owned test services.
+
+Intentionally not changed: primary branches, release/tag/push/install, Core
+archive, FlowDocMake, production task storage/TTL/history, record/subtree reuse,
+template-access compilation, normalization trust shortcuts. Source experiment
+keeps baseline package0.4.8; no artifact is published under that number. Delivery
+version and package pins remain a later promotion prerequisite. Retain both
+unmerged candidate worktrees and Stage1 branch pointers. Stage2 ends here.
