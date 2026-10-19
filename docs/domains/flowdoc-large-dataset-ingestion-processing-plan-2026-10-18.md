@@ -5,8 +5,8 @@
 Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
-Active role: Documentation Synthesizer / Lane Reconciliation Reviewer for the
-2026-10-19 main integration and bounded optimization draft below.
+Active role: Planning Partner / Documentation Synthesizer for the composition
+read-optimization Stage0 contract below; main integration is retained history.
 Work/Phase/Checklist execution IDs: not applicable (single-room owner request).
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
@@ -14,8 +14,9 @@ Stages1–6 and the phase-measurement follow-up are complete within the candidat
 boundaries and evidence recorded below: Core0.4.7, Service0.4.8, FlowDocMake0.2.6.
 The owner authorized main integration and clean merged-lane cleanup on 2026-10-19.
 The final integration ledger records its actual outcome separately from the
-historical isolated-stage ledgers. Optimization remains a draft only. No installed
-configuration, release, tag or deployment changes are authorized in this round.
+historical isolated-stage ledgers. Read-optimization Stage0 is specified below;
+its runtime stages remain unstarted. No installed configuration, release, tag or
+deployment changes are authorized in this round.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
 one dataset intake-to-output plan. The completed historical image and group-label
@@ -1751,11 +1752,12 @@ protected refs. Test services stopped;private test artifacts retained. No new
 Work/map/generated projection. Documentation authority checks22PASS and final
 diff whitespace check PASS. Main/release/install remain untouched.
 
-### Composition read optimization — draft, 2026-10-19
+### Composition read optimization — plan, 2026-10-19
 
-Authority: the owner's requested next-work draft only. Service owns file-backed
-readers; Core owns validation/composition and template access. Main integration
-does not authorize these optimizations. Keep this in the existing plan, with no
+Authority: Stage0 is specified in the contract below; runtime steps remain
+proposed, not implemented or authorized. Service owns file-backed readers;
+Core owns validation/composition and template access. Main integration
+does not authorize runtime optimization. Keep this in the existing plan, with no
 additional AI-required guide or execution registry.
 
 Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/srs-compose-profile/receipt.json`
@@ -1785,14 +1787,15 @@ Proposed sequence; each step needs later bounded implementation authorization:
 
 | Step | Change and owner | Required checks |
 | --- | --- | --- |
-| 0 | Core + Service freeze semantics, counters and budgets | Hash inputs/template/packages; positive/rejected fixtures; define cache byte/entry limits, eviction, task lifetime and cancellation |
+| 0 (specified below) | Core + Service freeze semantics, counters and budgets | Hash inputs/template/packages; positive/rejected fixtures; define cache byte/entry limits, eviction, task lifetime and cancellation |
 | 1 | Service shared bounded read windows per sealed immutable input | Fewer reads/bytes; UTF-8, escape, token and EOF across windows; concurrent cursors, abort/close/recovery; RAM under large inputs/concurrent tasks |
 | 2 | Service bounded object-field-to-offset index | Preserve duplicate/unknown/missing-key and scalar rules; eviction/oversized-object fallback; model18/19 and Section/task isolation |
 | 3 | Core + Service bounded per-record/subtree reuse | Source IDs/order, repeated rows, clone isolation; oversized-record fallback; release state after record use; generator/error/cancellation parity |
 | 4 | Core compile template access once per pinned template | Fingerprint/model/binding-sensitive invalidation; preserve conditions/empty branches and required validation; no eager loading of all records |
 | 5 (deferred) | Reuse verified-normalization receipt under a closed trust contract | Bind input hash, template fingerprint, schema, normalizer/validation versions and limits; tamper/stale/recovery checks; unknown provenance performs full validation |
 
-Start with steps0–1 and measure before authorizing the next step. No17s promise
+Stage0 is closed below; start Stage1 only after owner authorization and measure
+before authorizing the next step. No17s promise
 or fixed improvement claim. Retain admission, validation, size, ownership,
 warnings, cancellation and expiry controls. Bound caches per task and across
 simultaneous work; eviction or oversized inputs use the correct file-reader
@@ -1864,3 +1867,190 @@ this integration does not accept or discard those separate historical lanes.
 Result: completed task work is on the local main branches, with task lanes cleared.
 Optimization implementation, release preparation, GitHub publication and
 installation remain future separately authorized work.
+
+### Read-optimization Stage0 — closed contract, 2026-10-19
+
+Owner request: close RAM, buffer lifetime, cancellation, uncached fallback and
+measurement rules; no runtime edits. Scope: this existing canonical plan only,
+routine risk, inline planning/documentation; execution IDs N/A. Product owner:
+Service for the reader/cache and cross-process grants; Core's TaskValue contract
+and validation/composition semantics stay unchanged in Stage1. No additional
+guide, registry, cache DB table, public API field or product version is introduced.
+This closes optimization Stage0 specification, not the original intake Stage0,
+and does not authorize runtime Stage1 or certify future performance.
+
+**Source baseline and existing behavior.** Core `fb567f4`0.4.7, Service
+`8253f65`0.4.8, plugin0.2.6; vendor SHA remains the integration pin above.
+Service `src/tasks/json-reader.ts` currently gives each cursor its own16KiB
+window; kind/property/scalar traversals reread ranges. `normalize.ts` checks the
+received payload checksum before opening its reader and closes it in finally;
+`render-child.ts` checks the normalized checksum, opens another reader and keeps
+it until its final cleanup. Core revalidates normalized input before binding;
+none of those validation passes or checksum checks may be removed in Stage1.
+The existing reader's small/scalar allocations are distinct from reusable raw
+windows. Field indexes, decoded-record reuse, template access compilation and
+trusted-receipt reuse remain later stages, not implicit parts of the cache.
+
+**RAM contract (initial fixed implementation bounds;1MiB=1,048,576bytes).**
+
+| Resource | Bound and accounting |
+| --- | --- |
+| Shared window |16KiB raw bytes, aligned to a16KiB file offset; final block may be shorter; no JSON objects/strings retained in cache |
+| Optional cache per task |1MiB maximum =64 windows across all its open readers/files and parent/child holders; not1MiB per cursor or per process |
+| Optional cache per Service instance |4MiB maximum =256 windows across that Service parent and all owned renderer children; do not infer this from maxTasks or multiply it by process count |
+| In-flight cache fills | Count reserved full backing capacity before allocation; retained, filling, pinned and retired-but-still-borrowed windows all consume the same cap; no uncharged replacement copy |
+| Direct-read scratch | Reuse one16KiB scratch window per open reader, serialize its uncached operations; at most4 open readers per task/16 per instance, hence64KiB/task and256KiB/instance outside the optional-cache cap |
+| Bookkeeping | At most64 cache entries/task,256/instance,4 readers/task,16/instance and one filling/direct IO operation per reader; numeric handle/offset keys, no stored payload values or unbounded wait queue |
+
+Thus cache backing plus reader scratch is at most1,114,112bytes/task and
+4,456,448bytes/instance. This bounds cache/window-scratch backing, not all buffers
+or V8/native RSS. Existing bounded scalar transfer buffers (reader maximum393,218
+bytes per scalar), decoded values, image/font/PDF memory, OS file cache and DB RAM
+are separate and must remain visible in full-group measurements. Keep existing
+scalar/record/depth/work limits. Do not turn the64MiB received JSON or256MiB
+normalized limit into a RAM allowance. Do not keep private cursor windows on top
+of the shared cache except the charged direct-read scratch above.
+
+Service parent owns atomic optional-cache grants, divided into16KiB credits,
+including credits delegated to children. Grant state is ephemeral, scoped to
+one Service instance; no DB/storage quota is consumed. A child cannot grant itself
+a fresh independent budget. If a grant is unavailable, use uncached reads rather
+than wait for cache capacity or reject a valid task. Reader-count admission is
+separate: excess open requests wait in the existing bounded operation flow,
+respecting abort/deadline; no unbounded queue or new public error is introduced.
+The current call sites open one reader per phase; any future extra-reader caller
+must use this admission. One instance's cap is not a cluster-wide guarantee;
+multiple instances need separate explicit deployment sizing before expansion.
+Existing standalone/default openTaskJson calls without a trusted Service grant
+use uncached mode; they cannot mint their own1MiB allowance. Stage1 changes only
+the task reader path, not legacy draft preview transport or image reuse rules.
+
+**Identity, sharing and eviction.** Cache only sealed files under the current
+task lease after existing checksum/integrity verification. Identity is task and
+lease/attempt + immutable file identity/size/digest + reader generation + aligned
+offset, never pathname, assetKey or taskId alone. Cursors share bytes only within
+that verified file/session; their positions and parser states remain independent.
+No sharing between tasks, file revisions or retries. Raw windows may service
+different Sections in the same file; assetKey resolution remains Section-local
+and never becomes a cross-Section lookup through this cache.
+No checksum pass per lookup; ownership of sealed bytes is a prerequisite.
+Unexpected descriptor identity/size change is an integrity failure, not permission
+to reuse old windows. A detected mutation/short-read/read failure follows the
+existing failure path, never returns cached data as a successful substitute.
+
+Allocate lazily on a miss; coalesce same-window fills only if cancellation and
+ownership remain correct. Use least-recently-used eviction among unborrowed,
+completed windows; a borrower pins its backing storage until its operation ends.
+If every window is pinned, read directly. Do not retain arbitrary subarray views
+that pin evicted backing storage outside accounting, and do not expose mutable
+cache buffers through TaskValue. A short OS read must be completed or rejected
+according to actual EOF/expected range; do not mark a partially filled window
+complete or zero-fill missing input. UTF-8/escapes/tokens may span windows.
+
+**Lifetime and cancellation.** No startup prefetch or durable cache. Raw payload
+and normalized-file sessions are separate. Close the raw session after
+normalization; close/release the normalized reader immediately after the last
+composition TaskValue read, before image/font/layout/PDF work. If later code
+actually needs a value, it must extend the declared session lifetime and prove
+the bound; stale handles cannot silently reopen a file. Close is idempotent and
+returns that session's grants once after active IO/borrowers settle. Drop all
+strong references and report zero held credits; this does not promise immediate
+RSS reduction or force a GC. No retention until task expiry just to reuse a cache.
+
+On disconnect, expiry, worker stop or explicit abort: stop scheduling reads and
+fills, reject waiting operations with the original abort reason, check abort
+before cache hits and after awaited IO, never publish a late fill or advance a
+consumer after cancellation, then close in finally. Await an already submitted
+file read safely; do not claim Node file IO is instantly interruptible. Retain
+the existing owned-child stop/kill escalation (`stopMs=5000` trial policy), and
+reclaim delegated credits only after confirmed child-group exit. Parent-side
+normalization uses its existing cancellation/deadline lifecycle; the child5s
+kill rule is not falsely extended to an in-process read. On crash/recovery,
+start with empty sessions; no persistent grants can be mistaken for live cache.
+Original files, task history,3h expires_at and temporary/PDF cleanup retain the
+existing task contract, independent of cache lifetime.
+
+**Fallback.** `cache disabled`, no grant, eviction, oversized file/working set or
+all slots pinned means read uncached through the same parser and limits. A file
+larger than1MiB is not rejected or loaded whole. Release optional windows before
+switching a session to uncached mode; cancellation is still checked on every
+path. Cache allocation failure may disable caching only if direct scratch is
+available and the process remains healthy; never swallow OOM, integrity,
+malformed JSON, permission/IO, validation or abort errors as a cache miss.
+Do not rerun the task or side effects automatically on an arbitrary exception.
+The same candidate must support an internal cache-off test mode using this raw
+file path; this is not a public API option. No fallback to whole-file JSON.parse.
+
+**Measurement and acceptance for Stage1.** Use the frozen SRS fixture cited above
+(`srs-compose-profile/fixture.json`):234,318 normalized bytes,13 assets,372 input
+image placements, template/normalized/oracle hashes preserved there. Baseline
+Core/Service/package hashes and exact candidate hashes must be recorded. Cache
+off/on must use identical inputs, template, packages except the intended reader
+change,2CPU/1GiB limits, same host/runtime/config; PostgreSQL remains separate.
+Use3 paired off/on runs (alternate order), report every run plus medians/range;
+do not combine historical65.019/48.658s as a comparative baseline or claim cold
+OS-cache measurements without controlling that cache. Timing runs use bounded
+aggregate counters, with observer configuration identical for each pair.
+
+Count actual FileHandle.read calls and returned logical bytes, hits/misses/fills,
+evictions/bypasses and peak/current cache/scratch credits across parent/children.
+Do not count logical reads as physical disk IO. Measure open/root scan,
+normalization, normalized validation, binding/composition, full request-to-client
+PDF and post-send cleanup separately; IO waits are nested, not additional time.
+Record whole-group sampled RAM and kernel peak, actual disk/quota, sampling gaps,
+OOM/stop events and child/descriptor/credit cleanup. Composition-only RAM is not
+full-Service RAM. Cache/window-scratch counters must respect the caps even if all
+four admitted tasks and parent/children overlap; test exhausted grants explicitly.
+
+Stage1 improvement gate on the fitting SRS composition fixture: median actual
+read calls and returned logical bytes each at most25% of cache-off (at least75%
+reduction), and median uninstrumented composition time lower than cache-off.
+For the same3 paired full SRS task runs, cache-on median request-to-client time
+must not regress more than5%. These are acceptance targets to test, not measured
+results or a17s promise. If noise obscures timing or a target fails, report
+inconclusive/failed improvement and revise the plan; do not silently lower the
+gate or keep rerunning for a favorable sample. Budget:3 pairs per composition
+and full-SRS comparison, one bounded correctness/concurrency/fault matrix and
+one UAT/SB.1 regression each; extra runs need an identified failed/stale condition.
+
+Mandatory correctness matrix: cache off/on document nodes/sourceMap and metadata
+equal the same oracle; original success/rejection codes, findings order/counts
+and limits unchanged. Include16KiB boundary UTF-8/escapes/keys/numbers, partial
+reads/EOF, duplicate and unknown keys, array/scalar/depth limits, empty/large
+records, model18/19, clone and Section isolation, eviction/thrashing, grant
+exhaustion, concurrent cursors/tasks, abort during hit/miss/IO, double-close,
+descriptor failure and child crash. Fully test no grants/leaks after every exit.
+Do not treat invalid input acceptance as a performance improvement.
+
+Compare SRS98/UAT70/SB.1two-page PDFs against unchanged controls: data/text, image
+placements, warnings, TOC/links/page fields and every page visually. Use strict
+parse/render checks; any inherited image-resampling difference must be declared
+and bounded, not hidden by a blanket pixel-parity claim. Keep existing memory
+pause/stop limits (trial768/896MiB for the owned render group), timeouts, disk
+reservations and the1GiB test envelope. This does not claim all-instance RSS is
+already guarded by those child-group thresholds. Performance cannot waive data,
+security, lifecycle, PDF or memory acceptance.
+
+**Implementation boundary and next handoff.** Stage1 is Service-owned:
+`src/tasks/json-reader.ts` plus a focused cache/grant helper if needed;
+`normalize.ts`, `render.ts`, `render-child.ts` for grant/lifetime wiring and their
+affected tests. Test reader/scratch bounds and cache-off first, then shared
+windows, then parent/child ownership, then measurement/PDF acceptance. Preserve
+Core TaskValue API and validation; do not add field indexes, decoded-record
+caches, PDF writer batching, migrations, public capability or API changes here.
+Service-local typed options carry the internal cache mode/grant, retaining the
+existing default-call compatibility; exact helper signatures belong to Stage1
+implementation planning. Policy values above are fixed internal Stage1 bounds,
+not additions to the existing persisted task-v1-trial-1 policy or frozen records.
+If safe cross-process grant ownership cannot be implemented within this boundary,
+stop for a contract amendment before runtime work expands.
+
+Stage0 closure scope: specified contract and source traceability, arithmetic,
+documentation-authority checks and final diff review only. Cache behavior,
+cancellation/fault/resource/performance and PDF acceptance above remain future
+Stage1 obligations, not tests passed by this documentation change.
+Closure checks:22/22 documentation-authority cases PASS; cache/scratch arithmetic
+and frozen fixture counts PASS; diff whitespace PASS. Only this plan changed;
+Core/Service heads and clean states match the baseline above. No runtime test,
+benchmark, PDF regeneration, dependency/product-version change, map promotion,
+release/tag/push or installation was performed for optimization Stage0.
