@@ -1141,6 +1141,61 @@ required; broad large-JSON support must not be claimed from image-heavy tests.
 
 ## Proof, documentation and stopping boundary
 
+### Stage4 preflight — contract dependency confirmed, implementation not started
+
+Owner request: start Service integration, including task/job, reservations,
+feedback/PDF, disconnect, expiry and cleanup; no main integration, release or
+installation. Active role: Cross-Repo Boundary Reviewer (discovery before an
+owner/contract scope change), execution IDs not applicable. Existing single plan
+remains authority. This preflight does not reopen or revise Stage3 acceptance.
+
+Read-only discovery confirmed the dependency flagged at Stage3 closeout:
+`normalizeTaskInput` produces `flowdoc-task-input/1` and typed task-image markers.
+`composeDocument` accepts only legacy PreparedInput schema1/2; passing the new
+normalized representation returns `INVALID_DATA` at `prepared`. Feeding its values
+through `prepareGeneration` instead returns `TYPE_MISMATCH` on an image marker.
+Existing composition expands synchronous in-memory PreparedData. Service's legacy
+renderer also serializes the full document and collects PDF stdout into one buffer;
+that renderer cannot be reused as the task large-data path.
+
+Reproduction: tiny existing Area18 fixture with one image, using built Core0.4.6
+at `35e65dd6918b66141df09701e2acd7bb3a855bdd`. Receipt:
+`C:/Users/nekot/Documents/Codex/2026-10-19/task-stage4-preflight/core-bridge-probe.json`.
+Normalization succeeds; both direct composition and legacy preparation reject as
+above. Replacing the marker with a UUID in this tiny in-memory fixture succeeds,
+confirming the boundary rather than proving a production adapter. This shortcut
+does not cover unavailable images, a whole large dataset, replays or record bounds.
+
+No runtime, migration, package pin, task data, installed system or product branch
+changed during preflight. Core and Service isolated candidates remain clean at
+`35e65dd` and `32a25fc`. This record is on PC branch
+`codex/task-stage4-preflight-20261019`, based on `4edee14`.
+
+Proposed scope clarification for owner approval before implementation:
+
+1. Stage4A, Core-owned prerequisite: specify and implement a bounded composition
+   entrypoint consuming the normalized typed reader. Traverse declared records
+   without materializing the complete source/prepared payload; preserve global/
+   Section/band values, stable expansion identities/order, Area/Format/repeat and
+   row-group semantics, unavailable-image frames and existing errors. Retain the
+   shared document expansion budget and streamed PDF path. Choose reader/replay or
+   spool details only after examining Core binding consumers; do not copy Core
+   validators/binders into Service. Proof: normalization-to-composition-to-PDF,
+   available/unavailable images, both models, arrays/global reuse, two Section
+   clones, fixed, links/TOC/page fields, work limits and legacy parity.
+2. Stage4B, Service integration from the original phase row: consume the verified
+   Core package; connect permanent task and child job pins, shared admission,
+   quota-aware serial preparation/output, bounded feedback and one final PDF part.
+   Verify disconnect/expiry/lease/crash races, safe actual worker stop, terminal
+   facts, originals retained to original expiry, scratch/failed-send PDF removal,
+   cleanup retry and exact accounting. Keep public FlowDocMake wiring for Stage5.
+
+This is a proposal, not accepted new Core implementation scope. The current plan
+explicitly says to surface a new Core reader/spool before Stage4 implementation.
+Whole-file parse/UUID rewrite and Service imports of Core private paths are not
+acceptable fallbacks. Once the dependency scope is agreed, update this same plan
+and execute it in isolated candidates; retain the no-main/release/install boundary.
+
 ### Stage3 execution ledger — 2026-10-19
 
 Owner authorization: implement Core image/PDF path only; no main integration,
