@@ -6,14 +6,14 @@ Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
 Active role: Product Implementation Agent / Cross-Repo Boundary Reviewer for
-the isolated Stage1–2 ledgers below. Work/Phase/Checklist execution IDs: not applicable.
+the isolated Stage1–3 ledgers below. Work/Phase/Checklist execution IDs: not applicable.
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
-Stage1–2 are complete only in their isolated scopes below; stages3–6 remain
+Stage1–3 are complete only in their isolated scopes below; stages4–6 remain
 unstarted. Stage0 closure alone is not implementation authorization, measured
 capacity, installed capability or a release claim.
 Stage0 changed no product code/data/configuration; Stage1–2 change isolated
-Core/Service candidates only. No installed configuration, release, tag or deployment changes.
+Core/Service candidates only; Stage3 changes Core only. No installed configuration, release, tag or deployment changes.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
 one dataset intake-to-output plan. The completed historical image and group-label
@@ -1122,7 +1122,7 @@ that a complete real UAT task can render yet. No source/schema/map promotion,
 main merge, push, release/tag or installation. Next is separately authorized Stage3.
 
 Stage0 specification and isolated Stage1–2 candidates are complete;
-stages3–6 are not started.
+Stage3 is complete in its isolated Core scope; stages4–6 are not started.
 Runtime authorization remains separate. Each stage stops at its verified checkpoint.
 
 | Stage | Owner and output | Required proof |
@@ -1130,7 +1130,7 @@ Runtime authorization remains separate. Each stage stops at its verified checkpo
 | 0: contract specified 2026-10-19 | Project Control: v1 API/JSON/binary binding, identity, events, reservation and trial profile above | Documentation examples, arithmetic, transition/exception coverage and legacy boundary checked; runtime/capacity proof remains in stages 1–6 |
 | 1: dataset intake/storage — isolated candidate complete | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Evidence and unverified external cases are listed in the Stage1 ledger above; receipt is not runnable proof |
 | 2: bounded validation and normalization — isolated candidate complete | Core typed reader; Service file/image adapters and Section asset resolution | Stage2 ledger above connects cases, limits, commits and verification; public task processing remains later scope |
-| 3: Core incremental image/PDF path | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | More than 20 unique images, repeated header and distinct sizes, JPEG/alpha PNG, bounded slow sink, links/TOC/page numbers, immutable snapshots, offset correctness and PDF syntax; no full-output buffer |
+| 3: Core incremental image/PDF path — isolated candidate complete | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | Stage3 ledger below: 820 Core tests; packed Linux consumer; 25 distinct source images in model18/19; 100-image retained-buffer proof; 74 PDFs /316 rendered pages and legacy comparison |
 | 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
 | 5: FlowDocMake/legacy integration | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
@@ -1140,6 +1140,119 @@ across the complete negotiated path. For rollout, small-request compatibility is
 required; broad large-JSON support must not be claimed from image-heavy tests.
 
 ## Proof, documentation and stopping boundary
+
+### Stage3 execution ledger — 2026-10-19
+
+Owner authorization: implement Core image/PDF path only; no main integration,
+release, push or installation. Product Implementation Agent, Core owner;
+Work/Phase/Checklist IDs not applicable (single room). Existing isolated Core
+worktree `flowdoc-core-worktrees/task-normalization-stage2` now uses branch
+`codex/task-pdf-stage3-20261019`, base `e2935eb34634607eb9c38b72e5bcdfaa6ba8b4a3`.
+PC record branch `codex/task-stage3-record-20261019`, base `f28bd992a005fc41be5c5033193957cbdce35e0e`.
+Service remains unchanged at Stage2; no public capability activated.
+
+Scope: bounded prepared-image descriptors/providers, sequential verified stream
+embedding, backpressured PDF object output and a separate engine method returning
+only bytes/hash/page metadata. Legacy byte-return limits remain unchanged.
+Proof budget: RED/GREEN resource/writer/engine tests, affected legacy tests, one
+packed Linux consumer with real JPEG/transparent PNG-derived streams, syntax and
+every-page visual checks, one independent final review and bounded fixes.
+Document budget: this existing plan ledger and Core's code-adjacent README only.
+Evidence target: `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage3`.
+Risk: partial output must never become success, mutable resource/sink state across
+awaits, image retention, image lengths/hashes, alpha/resource dictionaries and xref.
+Whole Service process-group RAM and source/UAT acceptance remain Stage6 proof.
+
+Pre-flight: Stage2 normalized task-image markers are not legacy prepared snapshots.
+Stage3 consumes a validated bounded ResolvedDocument plus pinned derivative
+descriptors; Service owns decoding/derivative storage and task composition in
+Stage4. Core never opens client paths/URLs or introduces another image decoder.
+Prepared JPEG or zlib RGB/alpha bytes are verified through the provider; PNG
+decoding stays with the existing Service image preparer. Cost if this interface is
+wrong: Stage4 must revise its adapter before activation, never silently fall back
+to retained buffers. Existing font/TOC/link layout algorithms remain shared.
+
+Tasks: (1) pinned descriptors/stream verification; (2) lazy shared PDF object
+assembly; (3) metadata-only engine API, snapshot/stop/output bounds; (4) package,
+legacy and PDF acceptance; (5) review, evidence and candidate commits.
+
+Tasks1–3 implemented: versioned metadata-only provider, frozen descriptor/callback
+snapshots, exact content length/SHA verification, JPEG framing and streaming RGB/
+alpha inflate validation, lazy shared PDF object planner, page-local resources,
+64 KiB awaited output writes and final xref/hash receipt. Public engine
+`generatePdfTo` preserves legacy `generatePdf` limits and layout semantics;
+failure closes the active resource/session and calls the owned output abort.
+Core development version0.4.6; Service remains0.4.5. Host build and all820 tests
+pass after the review fixes below; completed packed/native/PDF proof is below.
+
+Independent reviewer checked `e2935eb..4edaf1a`: zero Critical, two Important,
+zero Minor. Both Important findings reproduced RED and fixed GREEN in one pass:
+provider mutation during inflate (RGB and alpha) now copies at most64 KiB before
+hash/await; image placement limit now stops layout before retaining placement10,001
+across page bands, body and table cells, before subset/output. Writer retains its
+guard. `review-red.log` has all three failing regressions; `review-green.log`
+has820/820 passing (82 files). No re-review or extra implementation lane.
+
+Review exclusions accepted within Stage3 scope: source decoding/orientation/colour
+and JPEG entropy validation remain Service preparer duties; reservations/task
+composition/adapter deadlines/forced stop remain Stage4; structured spooling and
+whole-group RAM/source UAT remain Stage6; installation/release is forbidden here.
+Private writer draw/fonts are owned by the public engine, not a public mutable
+writer contract. These are boundaries, not proof waivers: Stage3 still requires
+packed Linux output and every-page rendering, and later activation must verify
+all deferred consumer responsibilities before bypassing any legacy guard.
+
+Native prerequisite interruption: Docker initially failed on a stale Secrets
+Engine socket; normal force-stop and detached start restored the daemon.
+An attempted bounded stale-socket removal was rejected automatically and did not
+run; no alternate deletion was used. No factory reset or data/configuration edits.
+Tasks4–5 complete. Core candidate terminal commit
+`35e65dd6918b66141df09701e2acd7bb3a855bdd` (initial implementation `4edaf1a`,
+one review fix commit). Service is unchanged at
+`32a25fc42f62a12736337c0c5d68dd3bb323d6d3`. Main and release refs remain unchanged.
+
+Final verification (all PASS, no skipped Core cases):
+
+- Host TypeScript build and820/820 Core tests; same820 tests run inside the
+  Linux/amd64 package build. Native session checks passed16 exact one-shot cases,
+  malformed frames and EOF. Final diff/whitespace checked before proof/commit.
+- Actual packed Core0.4.6 consumer, network disabled and no mounts; checksum
+  `6c1b3586a3836e4850180801577c9936c33aa2f68d5f7cdec6a792db12b2566e`.
+  All legacy installed-consumer checks plus new stream/PDF and buffer checks pass.
+- 25 different source-image hashes (13 JPEG,12 PNG). PNG RGB and alpha derivatives
+  match actual decoded original pixels. Each model18/19 PDF has5 pages,25 distinct
+  images,12 soft masks and30 placements including repeated header and a smaller
+  second placement. Provider open/close74/74, peak active1. Sink writes awaited;
+  input/descriptor/callback and byte-mutation cases, failure/abort/output limit,
+  exact stream lengths/hash, xref offsets and page-local resources checked.
+- Core retained-buffer trial10→100→10 images: 100-image PDF78,698,334 bytes/15 pages;
+  peak live ArrayBuffers after explicit GC3,691,518 bytes (16 MiB test ceiling).
+  Core sampled RSS for that run75,014,144 bytes. This is a **GC-assisted Core buffer
+  retention test**, not production peak RSS, native preparation or the1 GiB Service
+  group guarantee. Stress PDFs were streamed, independently hashed and removed.
+- All74 package PDFs parsed strictly and rendered with Poppler,316 current pages,
+  zero syntax/render warnings/errors. Legacy72 PDFs:51 byte-identical,21 with all
+  page rasters pixel-identical to the Stage2 package. All10 new pages visually
+  inspected; both models' rasters match. Checked every source placement, alpha
+  centres, all13 internal link annotations (6 TOC titles +6 number links +1 jump),
+  matching title/number destinations, external URI and all current/total footers.
+  PDF content-order text extraction differs from visual footer order; spatial
+  extraction correctly checks the fixed page fields. No runtime change for this.
+- PC documentation authority checks22/22 pass from the candidate cwd, using the
+  existing matching dependency installation through an ignored local junction.
+  Earlier wrong-cwd/missing-dependency attempts are environment errors, not PASS.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage3/receipt.json`,
+`review-receipt.json`, `fixture-verification.json`, `pdf-verification.json`, logs
+and page renders. Package/consumer receipt and PDFs remain in Core candidate
+`artifacts/1792373977045`. Source tests and consumer scripts are committed;
+this ledger is not a substitute for that evidence. No product map promotion.
+Temporary consumer container was removed by the package check; its task-owned
+image is cleaned after receipts. Candidate worktrees/branches and artifacts are
+retained because they are unmerged. No global Docker prune or user-file cleanup.
+Stop at Stage3. Next authorized stage would be Service adapter/job/output
+integration using this exact packed candidate, keeping the old guards until the
+complete negotiated path passes. No main integration, release, push or installation.
 
 Reuse the UAT originals, request mapping and failure receipt; create isolated
 runtime/fixtures only when implementation or measurement is authorized. Future
