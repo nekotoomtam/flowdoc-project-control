@@ -1165,8 +1165,8 @@ Whole Service process-group RAM and source/UAT acceptance remain Stage6 proof.
 
 Pre-flight: Stage2 normalized task-image markers are not legacy prepared snapshots.
 Stage3 consumes a validated bounded ResolvedDocument plus pinned derivative
-descriptors; Service owns decoding/derivative storage and task composition in
-Stage4. Core never opens client paths/URLs or introduces another image decoder.
+descriptors; Service owns decoding/derivative storage and orchestrates Core
+composition in Stage4. Core never opens client paths/URLs or adds an image decoder.
 Prepared JPEG or zlib RGB/alpha bytes are verified through the provider; PNG
 decoding stays with the existing Service image preparer. Cost if this interface is
 wrong: Stage4 must revise its adapter before activation, never silently fall back
@@ -1195,8 +1195,12 @@ has820/820 passing (82 files). No re-review or extra implementation lane.
 
 Review exclusions accepted within Stage3 scope: source decoding/orientation/colour
 and JPEG entropy validation remain Service preparer duties; reservations/task
-composition/adapter deadlines/forced stop remain Stage4; structured spooling and
-whole-group RAM/source UAT remain Stage6; installation/release is forbidden here.
+composition orchestration/adapter deadlines/forced stop remain Stage4; whole-group
+RAM/source UAT proof remains Stage6. Structured spooling is not implemented or
+authorized by this image/PDF acceptance: if the normalization-to-composition bridge
+requires a new Core reader/spool, surface that scope before Stage4 implementation;
+never silently materialize the complete normalized input as a fallback.
+Installation/release is forbidden here.
 Private writer draw/fonts are owned by the public engine, not a public mutable
 writer contract. These are boundaries, not proof waivers: Stage3 still requires
 packed Linux output and every-page rendering, and later activation must verify
