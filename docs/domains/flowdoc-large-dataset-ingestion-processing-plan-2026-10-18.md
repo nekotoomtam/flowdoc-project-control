@@ -1687,3 +1687,64 @@ above. No new Work/map/generated projection; only this existing ledger updated.
 All owned test services stopped after verification. Images/networks/private test
 config and unmerged candidates retained; no workaround of prior cleanup rejection.
 Main/release/tags,installed configuration and original drafts remain unchanged.
+
+### Stage6 follow-up — phase timing/RAM instrumentation, 2026-10-19
+
+Separate explicit owner authorization: measure layout,image preparation,font
+embedding,PDF writing,sending and cleanup; rerun unchanged full UAT/SRS/SB.1.
+Single-room measurement scope,execution IDs not applicable. Existing Stage6 PASS
+is retained. Record branch `codex/task-stage6-profile-20261019` from `0a4459d`.
+Ruling: use opt-in exact-hash ESM probes in the isolated test runtime instead of
+adding a production API/package feature — this answers the measurement request
+without changing candidate bytes or performance behavior. Cost:these probes are
+candidate-specific test tooling,not an installed/general telemetry feature.
+Evidence directory: `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage6-profile`.
+Independent50ms cgroup sampler continues through send/cleanup; span edges also
+sample memory. Font subsetting,PDF font mapping and actual six-object-per-font
+embedding are distinct; embedding is nested in total PDF writing,not additive.
+No optimization,main integration,release/tag/push or installation authorized.
+Budget:bounded probe tests,three document runs,all170-page before/after parity,
+physical/quota cleanup audit and one fresh read-only review. Seven probe tests
+PASS. Initial run exposed overlapping cleanup callbacks continuing after the
+database cleanup marker; its traces and failing coverage check are retained.
+One test-tooling fix pass adds active-callback waiting,case tags and recorder
+cost accounting (RED/GREEN retained); final three-document rerun is under
+`task-stage6-profile/retry`. No product repair or performance change was made.
+
+Final instrumented wall times (seconds),UAT70/SRS98/SB.1two pages respectively:
+image preparation29.969/65.063/0.313;layout7.185/10.208/0.300;
+font subsetting1.187/0.736/0.479;PDF font mapping plus font-object embedding
+0.677/0.859/0.383;writer excluding those nested font intervals
+19.963/57.908/0.701;send0.260/0.129/0.073;task-file/quota cleanup interval union
+15.293/32.584/0.516. Inclusive writer20.640/58.767/1.083 must not be added to
+the nested embedding times. Renderer session/font-temp disposal remains in
+residual render time;layout includes TOC/page fields,destinations and links.
+Full phase measurements,sample coverage and observed RAM are in
+`retry/phase-report.json` and `retry/phase-metrics.csv`.
+
+Times include synchronous recording and other observer costs; recorder work is
+measured separately,not subtracted or claimed as full observer overhead. Short
+font spans are particularly sensitive. RAM is sampled absolute container-group
+usage (including test client,observer and cache),not allocation by phase or an
+additive measure;PostgreSQL is separate. Target50ms sampling has actual gap
+statistics and edge snapshots. Final lifetime kernel peak295.227MiB under the
+1GiB/2CPU test limit is a selected-workload observation,not production capacity
+or an improvement claim against earlier runs. All four loaded probe PIDs finish
+with zero observer faults and zero active spans;every callback end is covered.
+
+Fresh read-only review Important findings addressed by recorder-cost disclosure
+and final parent/child fault coverage;the callback-window gap was found by the
+parent and fixed in the same single pass. No re-review. Manual span status does
+not certify failed-stage classification;only these successful runs are claimed.
+Final PDF parity,cleanup and protected-ref checks are parent-owned. The final
+verifier initially used an incorrect baseline path after copying into retry;
+only that tooling path was corrected,no document rerun or product edit needed.
+
+Final evidence PASS:identical input hashes and all170 pages match the
+unchanged Stage6 reviewed baseline in pixels,text,image/alpha draws and link
+geometry/targets,with strict parsing and zero Poppler diagnostics. Three final
+tasks retain history with zero physical task files/quota and no child/writer
+PIDs. Receipt and manifests bind the unchanged product heads,packages,tags and
+protected refs. Test services stopped;private test artifacts retained. No new
+Work/map/generated projection. Documentation authority checks22PASS and final
+diff whitespace check PASS. Main/release/install remain untouched.
