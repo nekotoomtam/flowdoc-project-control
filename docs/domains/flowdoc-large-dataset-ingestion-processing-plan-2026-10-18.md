@@ -5,15 +5,17 @@
 Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
-Active role: Product Implementation Agent / Cross-Repo Boundary Reviewer for
-the isolated Stage1–3 ledgers below. Work/Phase/Checklist execution IDs: not applicable.
+Active role: Documentation Synthesizer / Lane Reconciliation Reviewer for the
+2026-10-19 main integration and bounded optimization draft below.
+Work/Phase/Checklist execution IDs: not applicable (single-room owner request).
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
-Stages1–5 are complete only within the isolated candidate boundaries and evidence
-recorded in the execution ledgers below. Stage6 remains unstarted. Stage0 closure alone is not implementation authorization, measured
-capacity, installed capability or a release claim.
-Stage0 changed no product code/data/configuration; Stage1–2 change isolated
-Core/Service candidates only; Stage3 changes Core only. No installed configuration, release, tag or deployment changes.
+Stages1–6 and the phase-measurement follow-up are complete within the candidate
+boundaries and evidence recorded below: Core0.4.7, Service0.4.8, FlowDocMake0.2.6.
+The owner authorized main integration and clean merged-lane cleanup on 2026-10-19.
+The final integration ledger records its actual outcome separately from the
+historical isolated-stage ledgers. Optimization remains a draft only. No installed
+configuration, release, tag or deployment changes are authorized in this round.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
 one dataset intake-to-output plan. The completed historical image and group-label
@@ -1748,3 +1750,60 @@ PIDs. Receipt and manifests bind the unchanged product heads,packages,tags and
 protected refs. Test services stopped;private test artifacts retained. No new
 Work/map/generated projection. Documentation authority checks22PASS and final
 diff whitespace check PASS. Main/release/install remain untouched.
+
+### Composition read optimization — draft, 2026-10-19
+
+Authority: the owner's requested next-work draft only. Service owns file-backed
+readers; Core owns validation/composition and template access. Main integration
+does not authorize these optimizations. Keep this in the existing plan, with no
+additional AI-required guide or execution registry.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/srs-compose-profile/receipt.json`
+and its hash-bound fixture, control, profile, metrics and boundary audit. The
+unchanged inline-key SRS fixture has13 assets,372 input image placements and
+234,318 normalized bytes. Instrumented composition took48.658s: normalized
+validation35.847s (73.67%), expansion11.488s (23.61%); synchronous generator steps
+within expansion took0.249s. File reads returned920,403,283 logical bytes across
+118,043 calls. These include repeated ranges/page-cache reads, not physical disk
+traffic or920MB held simultaneously in RAM. Read waits and operation counters
+are nested within stage times and must not be added together.
+
+One uninstrumented control took65.019s versus48.658s instrumented: cache/order/
+host variability prevents treating this difference as speedup or observer cost.
+Composition-only sampled peaks98.24/94.45MiB do not represent full-Service RAM.
+Both composed outputs match all oracle nodes and metadata byte-for-byte. The
+strict all-ref audit failed because Core/Service remote-tracking refs moved;
+the qualified receipt separately verifies unchanged candidate heads, local
+branches, tags, working trees and packages. Actor was not established.
+
+Observed mechanism: repeated field lookup scans properties from the beginning;
+separate kind/scalar/property readers create fresh16KiB cursors and reread ranges.
+Validation and later binding revisit values. Creating nodes is not the measured
+dominant cost.
+
+Proposed sequence; each step needs later bounded implementation authorization:
+
+| Step | Change and owner | Required checks |
+| --- | --- | --- |
+| 0 | Core + Service freeze semantics, counters and budgets | Hash inputs/template/packages; positive/rejected fixtures; define cache byte/entry limits, eviction, task lifetime and cancellation |
+| 1 | Service shared bounded read windows per sealed immutable input | Fewer reads/bytes; UTF-8, escape, token and EOF across windows; concurrent cursors, abort/close/recovery; RAM under large inputs/concurrent tasks |
+| 2 | Service bounded object-field-to-offset index | Preserve duplicate/unknown/missing-key and scalar rules; eviction/oversized-object fallback; model18/19 and Section/task isolation |
+| 3 | Core + Service bounded per-record/subtree reuse | Source IDs/order, repeated rows, clone isolation; oversized-record fallback; release state after record use; generator/error/cancellation parity |
+| 4 | Core compile template access once per pinned template | Fingerprint/model/binding-sensitive invalidation; preserve conditions/empty branches and required validation; no eager loading of all records |
+| 5 (deferred) | Reuse verified-normalization receipt under a closed trust contract | Bind input hash, template fingerprint, schema, normalizer/validation versions and limits; tamper/stale/recovery checks; unknown provenance performs full validation |
+
+Start with steps0–1 and measure before authorizing the next step. No17s promise
+or fixed improvement claim. Retain admission, validation, size, ownership,
+warnings, cancellation and expiry controls. Bound caches per task and across
+simultaneous work; eviction or oversized inputs use the correct file-reader
+fallback. Do not load the whole request, remove validation or add an unbounded
+global cache to obtain faster results.
+
+Future acceptance: unchanged business data, document/source-map semantics,
+rejected-input behavior, findings and lifecycle; named/anonymous images,
+model18/19, clone and empty/large records. Compare UAT70/SRS98/SB.1two pages in
+text, image placements, links/TOC/page numbers and every-page visual output.
+Repeat uninstrumented control/candidate runs with identical CPU/RAM/inputs;
+report read counts/bytes, validation/composition and full-task time, group RAM,
+disk reservations and cleanup. Reuse evidence only where identity/impact allow.
+PDF writer/IPC batching remains a separate deferred workstream.
