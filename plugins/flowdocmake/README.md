@@ -8,12 +8,12 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.5** targets **Service/Core 0.4.4 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
+Candidate **0.2.6** targets **Service0.4.8 / Core0.4.7 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
-and `manage_document_task` plus the three font tools and two opt-in height tools (23 tools total; including create_draft_section/import_draft_sections). There is no publish tool.
+and `manage_document_task` plus the three font tools and two opt-in height tools (25 tools total; including create_draft_section/import_draft_sections). There is no publish tool.
 
 The exact new Core artifact and `formatSizing.version:2` are required; v1 or
 unknown capabilities fail preflight. Fixed caps the current page remainder,
@@ -45,7 +45,7 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, a matching Service 0.4.4 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.4.8 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This candidate package is for that local
 deployment, not a remote or public plugin distribution.
@@ -94,3 +94,25 @@ their dimensions compared with direct-Core rendering. This package preserves
 uploaded original bytes but does not promise pixel-identical output between
 those two paths. Model persistence and complete visual fidelity require actual
 per-document review, not merely a successful preflight.
+
+## Streamed document tasks
+
+The two opt-in tools are `generate_document_task` and `inspect_document_task`.
+Set taskCredentialFile in this candidate's local config to a private text file
+containing `TASK_TOKEN=<explicit-task-credential>`. It is separate from authoring
+configuration; absence never falls back to the authoring token. No installation
+or current user config changes are performed by candidate verification.
+
+Generation takes docKey, absolute payloadPath/outputPath and optional images array
+of `{pointer,path,type?}`. The payload keeps Section assets/assetKey; file pointers
+name image source objects in the original JSON. Both payload and images are read
+incrementally. Exact old/new task capability and package identities are required
+before upload. Existing authoring/preview calls keep their original contracts.
+This export tool uses an already authorized registered template; it does not publish
+or convert an unpublished draft. Draft preview remains the bounded legacy path.
+
+Feedback becomes MCP progress notifications when requested and a bounded warning
+summary in the result. A PDF is published to a new local path only after complete
+framing, length and hash checks. The result says response-complete, while the final
+server receipt remains unconfirmed until an optional exact-task lookup. Local save
+failure cancels reading; do not automatically retry a generation call.

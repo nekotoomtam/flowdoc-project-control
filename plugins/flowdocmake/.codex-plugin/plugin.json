@@ -1,7 +1,7 @@
 {
   "name": "flowdocmake",
-  "version": "0.2.5",
-  "description": "Create reviewable FlowDoc model18/19 PDFs with pinned Core/Service 0.4.4, scoped contents, Format sizing v2 and draft-only tools.",
+  "version": "0.2.6",
+  "description": "Draft authoring and streamed document tasks with pinned Service 0.4.8 and Core 0.4.7; no publication.",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

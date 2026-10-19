@@ -9,8 +9,8 @@ Active role: Product Implementation Agent / Cross-Repo Boundary Reviewer for
 the isolated Stage1–3 ledgers below. Work/Phase/Checklist execution IDs: not applicable.
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
-Stage1–3 are complete only in their isolated scopes below; stages4–6 remain
-unstarted. Stage0 closure alone is not implementation authorization, measured
+Stages1–5 are complete only within the isolated candidate boundaries and evidence
+recorded in the execution ledgers below. Stage6 remains unstarted. Stage0 closure alone is not implementation authorization, measured
 capacity, installed capability or a release claim.
 Stage0 changed no product code/data/configuration; Stage1–2 change isolated
 Core/Service candidates only; Stage3 changes Core only. No installed configuration, release, tag or deployment changes.
@@ -1131,8 +1131,8 @@ Runtime authorization remains separate. Each stage stops at its verified checkpo
 | 1: dataset intake/storage — isolated candidate complete | Service: reserve/create task atomically, stream unknown-size dataset with counted incremental reservation; seal and recovery | Evidence and unverified external cases are listed in the Stage1 ledger above; receipt is not runnable proof |
 | 2: bounded validation and normalization — isolated candidate complete | Core typed reader; Service file/image adapters and Section asset resolution | Stage2 ledger above connects cases, limits, commits and verification; public task processing remains later scope |
 | 3: Core incremental image/PDF path — isolated candidate complete | Core: metadata-only image layout, pinned resource provider, sequential embedding and incremental output | Stage3 ledger below: 820 Core tests; packed Linux consumer; 25 distinct source images in model18/19; 100-image retained-buffer proof; 74 PDFs /316 rendered pages and legacy comparison |
-| 4: Service processing integration | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
-| 5: FlowDocMake/legacy integration | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
+| 4: Service processing integration — isolated candidate complete | Service: parent task/job projection, feedback/PDF stream, confirmed-disconnect stop and per-file retention | Packed Core, bounded progress/response errors; disconnect during receive/queue/process/send versus after complete send, bounded stop/escalation, no stale success, no false free permits; scratch/PDF deletion versus originals retained to fixed expiry, cleanup retries/quota reconciliation, restart/deadline races and permanent history; no whole-PDF buffer |
+| 5: FlowDocMake/legacy integration — isolated candidate complete | FlowDocMake and Service: single-API new generation or exact-task lookup, incremental feedback/PDF parsing, Section assets and lasting records | Real proxy/client stream visibility, request-upload timing, split chunks, save/hash, partial feedback, no taskId creates new work, taskId never duplicates/resumes/downloads, legacy/mixed compatibility; no mandatory polling, opening call or error-level selector |
 | 6: resource and full-document acceptance | Service/Core with isolated fixtures and original UAT inputs | Grow unique-image count with fixed image size; separately grow one image and structured records; large alpha images, repeated assets, slow output and repeated jobs. Record total peak RAM/disk/time and cleanup against Stage 0 thresholds. Then verify all UAT placements, headers/Accept marks and every output page; regress SRS and SB.1 |
 
 Do not remove the existing count protections until their replacement is active
@@ -1485,3 +1485,128 @@ prove an unimplemented design. Stage1 implementation proof is recorded in its
 execution ledger above. No product map, registered Work acceptance, Core package
 pin or mandatory AI entrypoint change. Stop at the authorized stage checkpoint;
 no merge, release or installation.
+
+### Stage5 execution ledger — 2026-10-19
+
+Owner authorized API/FlowDocMake integration only, no main/release/push/install.
+Single-room Product Implementation Agent; Work/Phase/Checklist IDs not applicable.
+Owner repositories: Service HTTP/runtime, Project Control packaged FlowDocMake.
+Existing isolated checkouts now use Service codex/task-api-stage5-20261019
+(basebd90a0c), PC codex/task-stage5-record-20261019 (basea480d18).
+Corefb567f4/artifacte79726b50f8aa2d8436d003aaf0727f87ed86b8e615ee8dc0a59b041c2dc2d5a
+is reused unchanged. Candidate versions: Service0.4.8, Core0.4.7, FlowDocMake0.2.6.
+
+Scope/acceptance: explicit credential ownership; one multipart generation/JSON
+lookup route; actual Node finish/close and bounded writes; complete-receipt timing;
+public safe versioned events, diagnostics and exact-task lookup; streamed local
+payload/image upload and PDF length/hash/framing parser; stdio/proxy/model18/19
+and old authoring compatibility. No large unpublished-draft preview adapter or
+publication is added: new task tools operate authorized registered templates;
+existing bounded draft tools remain unchanged. Stage6 retains full UAT/RAM proof.
+Proof budget: targeted RED/GREEN wire/client/HTTP cases, isolated Linux/PostgreSQL
+runtime and actual stdio/streaming proxy, affected suites and vendor/build checks,
+every new accepted PDF page, one fresh whole-change reviewer and one fix pass.
+Document budget: this ledger, code-adjacent Service README/usage, existing plugin
+README and version header; no extra AI-required guide, Work registry or map.
+
+Preflight: Stage4 normalized-file/TaskResponse seam is reused; HTTP must bind
+response finish/close rather than completed request close, keep payload raw-streamed
+and propagate disconnect through normalization. Earlier Stage4 feedback was internal;
+Stage5 replaces its public serialization without copying Core binding/validation.
+Model decision: current inline host model for execution, gpt-6-astra medium for one
+fresh read-only review (explicit executing-plans skill requirement). No registered
+separate WORK dispatch or historical execution context reopened.
+
+Findings so far: request boundary with32 random bytes encoded hex plus prefix was
+71 characters, violating RFC2046's70 limit; binary upload exposed EPIPE. Reproduced
+RED with actual producer, fixed GREEN using32-byte base64url (50 chars,256 bits).
+Creator lookup previously required taskRead even for its own record; real HTTP/MCP
+with taskRead=false reproduced FORBIDDEN, fixed to require extra permission only
+for another principal of the same owner. Another-owner tasks remain404.
+Fixed warnings beyond the100-detail sample undercounted omissions:101 real fixed
+instances reproduced100, fixed by retaining aggregate separately and paginating
+bounded safe details. Observed test-harness native shutdown double-stop was a
+fixture error; the fixture now releases each owned processor once.
+
+Evidence target: C:/Users/nekot/Documents/Codex/2026-10-19/task-stage5.
+Verification in progress; no Stage5 PASS or shared map promotion yet.
+
+Stage5 closeout: Service terminal8253f65, development0.4.8; unchanged Core0.4.7
+fb567f4/archivee79726b50f8aa2d8436d003aaf0727f87ed86b8e615ee8dc0a59b041c2dc2d5a;
+FlowDocMake0.2.6. PC terminal is recorded in the external receipt, avoiding a
+self-referential commit. Both candidate branches remain unmerged; Core candidate
+and all six protected development/main/release refs remain unchanged.
+
+One fresh-context review found0 Critical/4 Important/3 Minor. All four Important
+findings fixed in one pass, with actual RED then GREEN and final regression proof:
+(1) authenticate lookup before bounded16KiB reception,15s total/60s idle maximum;
+(2) replace default fetch transport on task operations with bounded native HTTP:
+31min response-header,60s idle,3h total; scaled slow upload and deadline proof;
+(3) propagate MCP cancellation and enforce15s whole lookup including response body,
+verified against an actually trickling canceled stdio lookup; (4) offset job-warning
+cursors after the actual durable finding maximum, share the configured detail cap
+across normalization/preparation, retain exact totals when details are capped.
+Historical sequence10001 plus a fixed warning now paginate without loss. No re-review.
+
+Final: minor (deferred): public lookup error.stage still reports terminal status
+rather than the operation that failed; failure outcome/reason remains available.
+Final: minor (deferred): durable task/artifact eventSeq fields remain null; response
+seq and permanent task history remain distinct but lack the wire-to-event link.
+Final: minor (deferred): skill header still says draft-only despite new explicitly
+registered-template export tools; tool descriptions and package README identify them.
+These are retained review findings, not silently marked fixed or release accepted.
+
+Final: Ruling: registered-template task export plus unchanged bounded draft preview
+satisfies this public Doc-Key integration; no unpublished-draft task adapter or
+publication was authorized. Cost: larger unpublished draft preview remains unavailable.
+Final: Ruling: native long-upload deadlines are verified with controlled time scales,
+not a30min production browser/proxy soak. Cost: deployment-specific timeouts and
+proxy behavior still need later operational verification.
+Final review set-aside rulings: parent owns completed full-suite/PDF verification;
+Stage6 owns original full UAT/SRS/SB.1 and sustained RAM/performance; production
+browser/proxy interoperability beyond the isolated harness is unverified; installation,
+release/promotion and live permissions are outside authorization; unchanged Core and
+prior internals reuse their exact pinned evidence plus affected regression tests;
+an exhaustive security/race campaign is not claimed. Cost of these boundaries:
+this candidate is not production, deployment, full-workload or exhaustive-audit proof.
+
+Final regression:436 Service cases covered,431 passed/0 unresolved failures/5 optional
+external cases explicitly unrun. Raw full run had430 PASS/1 fixture failure/5 skipped:
+only Pridi6 files had been included while the supplied-folder case requires29 TTFs.
+Restored the two original supplied families and reran both full-folder/profile
+consumers:26 PASS/1 same optional skip. Production source, compiled code, packages,
+policy/config and existing Pridi bytes unchanged. Other fixture consumers read the
+identical Pridi file; unaffected full-run results are reused by impact, not rerun
+for ceremony. Raw failed report retained; `service-final.json` explicitly reconciles
+results rather than altering it. All105 cases across eight task test files PASS
+(includes11 image-index cases outside the prior77-case Stage4 selection);17 new
+Stage5 cases PASS. Builds/vendor integrity/whitespace checks PASS.
+
+FlowDocMake candidate suite:36 PASS/0 FAIL/4 optional installed-fixture cases unrun;
+includes actual native stdio capability/credential gates, model18/19 stream, progress,
+proxy7-byte chunking, cancellation, binary save and hash proof. Old auth/reader/guide/
+font-height/group-label/authoring workflow checks pass on the isolated configured
+runtime, not the user's installed connection. Actual preflight ready:true,25 tools,
+Service0.4.8/Core0.4.7 exact vendor bytes and Docker image identity inspected.
+PC documentation authority22/22 PASS; final prose scope/diff reviewed before commit.
+
+PDF proof:9 files/11 pages strict pypdf + all-page Poppler, zero warnings/errors.
+Eight previous pages pixel-identical to Stage4 and reuse its visual review; three
+new pages individually inspected. Native model18 and Service-entrypoint text each
+appear once; tool PDF preserves all four labels, three placements, two image
+resources/two alpha masks, with one intentionally missing image diagnosed partial.
+Whole original UAT/resource acceptance remains Stage6. No source fidelity promotion.
+
+Evidence directory C:/Users/nekot/Documents/Codex/2026-10-19/task-stage5 contains
+`receipt.json`, `service-final.json`, raw full/affected-run reports, RED/GREEN logs,
+`review-receipt.json`, `coverage.json`, `pdf-verification.json`, PDFs/renders,
+preflight/build/authority logs and protected-ref/Git manifests. Five Service and
+four plugin optional external tests are listed as unrun, not PASS. Existing plan
+only updated; no generated map, Work registry or shared product-truth promotion.
+
+Closeout: all owned test containers and the reused isolated PostgreSQL are stopped.
+Test images/networks/private generated config remain; no deletion workaround was
+attempted after the previously recorded automatic cleanup rejection. Candidate
+branches/worktrees are deliberately retained because unmerged. Existing installed
+configuration, user drafts, main, release and tags are unchanged. Stop at Stage5;
+next planned work is Stage6 only after separate owner authorization.

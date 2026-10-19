@@ -1,3 +1,4 @@
+import {registerTaskTools} from './task-tools.mjs';
 import {registerFontHeightTools} from './font-height-tools.mjs';
 import {readFileSync} from 'node:fs';
 import {homedir} from 'node:os';
@@ -52,6 +53,7 @@ serveStdio(()=>{
   return fetch(url,init);
  }});
  registerFontHeightTools(server,{z,config,token});
+ registerTaskTools(server,{z,config,authoringToken:token});
  server.registerTool('manage_document_task',{
   description:'Persist per-part unfinished authoring/review work separately from immutable preview runs. init from completed source inventory and coverage; read on resumption; update one part with expectedRevision; review binds coverage to a succeeded preview checkpoint and the real PDF. Only review can mark pass/complete. Does not mutate drafts or certify visual truth. A changed PDF requires fresh comparison. Use a thread Goal only when authorized by the user; this tool does not schedule work.',
   inputSchema:z.object({action:z.enum(['init','read','update','review']),taskPath:z.string().min(1),timeLimitMinutes:z.number().int().min(1).max(120).optional(),expectedRevision:z.number().int().min(0).optional(),inventoryPath:z.string().optional(),coveragePath:z.string().optional(),checkpointPath:z.string().optional(),partId:z.string().optional(),status:z.enum(['pending','authoring','needs-repair','needs-review']).optional(),note:z.string().optional()}).strict(),
