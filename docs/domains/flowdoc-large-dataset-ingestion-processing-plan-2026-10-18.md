@@ -1141,7 +1141,166 @@ required; broad large-JSON support must not be claimed from image-heavy tests.
 
 ## Proof, documentation and stopping boundary
 
-### Stage4 preflight — contract dependency confirmed, implementation not started
+### Stage4 execution — 4A Core bridge and 4B Service integration authorized
+
+Owner approved both4A and4B after the preflight below, with no main merge,
+release/push/install. Product Implementation Agent; execution IDs not applicable.
+Core branch `codex/task-processing-stage4-20261019` base35e65dd; Service branch
+same name base32a25fc; PC `codex/task-stage4-record-20261019` basef78d86b.
+Reuse the existing isolated worktrees. Document budget: this ledger and necessary
+repo-owned README/usage changes. Proof budget: TDD per changed boundary, Core
+package consumer, isolated DB/container Service regressions and lifecycle tests,
+one independent final whole-change review with one bounded fix pass.
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage4`.
+
+Pre-flight interfaces: normalized typed handles -> Core bounded composition ->
+ResolvedDocument -> prepared stream provider -> streamed PDF receipt -> Service
+owned output and terminal delivery. Legacy prepared schemas/byte API stay separate.
+Core owns bind/expand/validate semantics; Service owns task identity, durable pins,
+shared worker admission, file accounting, image preparation and response lifecycle.
+Ruling: preserve one bounded resolved graph (50,000 identities) while traversing
+source collections lazily/replayably; never hold full original plus PreparedInput.
+This is bounded composition, not layout spooling. Cost if wrong: stop at the
+composition/work boundary rather than weakening image/data completeness.
+
+Tasks: A1 typed record/scalar reader and Core composition bridge preserving IDs,
+groups, Areas, bands and omissions; A2 limits/legacy/package/PDF integration;
+B1 forward task/job pins and shared worker lifecycle; B2 quota-aware serial
+derivatives/output and bounded child transport; B3 feedback/delivery/disconnect/
+expiry/recovery/cleanup; B4 isolated integration/legacy proof, final review and
+commits. Tests/results/rulings are appended here as each boundary is verified.
+
+A1/A2 implementation checkpoint: Core29fd2af (base35e65dd), development0.4.7.
+Host/native832 tests and actual Linux package consumer PASS. Package SHA256
+`dd965695587389cc204d3e5c6f8fb993663c08b45e137daae8bcd24283e91295`.
+All74 pre-existing Stage3 PDFs are byte-identical; three new task composition
+consumer aliases match legacy graph/output. Final whole-change review remains.
+
+B2 Ruling: one owned Linux process group composes bounded typed handles, decodes
+one source at a time and streams derivatives/PDF through acknowledged64KiB IPC;
+parent reserves before each write and owns publication/accounting. Core native
+font writes receive an exclusive conservative scratch window, inherited Linux
+RLIMIT_FSIZE and fixed-count source/subset/request algorithm; reconcile scratch
+before output and after actual group stop. No unaccounted legacy preparer/stdout
+buffer fallback. Cost if wrong: fail closed with retained reservation until
+actual stop/cleanup, never claim free capacity. Windows task child is unavailable
+in this candidate; supported deployed runtime and acceptance use Linux/amd64.
+
+B1/B3 Ruling: integrate the task hook inside the existing session-held serial
+processor60430404, version task descriptors separately from legacy PreparedInput,
+and use the normalized file digest as the font input pin. Admission style checks
+defer file IO to the reserved child; exact assets and actual glyphs remain Core
+render checks before any PDF part. Public endpoint/capability stays Stage5.
+Cost if wrong: reject task, preserve source until original expiry; no retry job.
+
+Integration correction: the real file-backed TaskValue has prototype methods.
+A1's spread projection dropped them. Reproduced by an additional Core test RED,
+fixed using explicit delegation GREEN. Corefb567f4,833/833 host/native tests;
+actual package consumer PASS. This supersedes the initial package pin above:
+SHA256 `e79726b50f8aa2d8436d003aaf0727f87ed86b8e615ee8dc0a59b041c2dc2d5a`,
+artifact `flowdoc-core/artifacts/1792376778859/flowdoc-core-0.4.7.tgz` in the isolated
+candidate. Service's manifest/lock use this exact file; same-version npm cache
+initially retained the old integrity, corrected from the actual packed bytes and
+verified with a clean install/vendor check. No installed package was modified.
+
+B1–B3 implementation checkpoint: forward024 task descriptors and pins, shared
+processor hook, child IPC derivative/output stores, response coordinator,
+terminal usage, safe cancellation, DB deadlines, sender slots, actual group-stop
+recovery, PID start identity and deletion retry. Public API and FlowDocMake remain
+unwired. Initial25 lifecycle tests PASS on isolated PostgreSQL/Linux under1GiB,
+including24 mixed JPEG/alpha PNG sources and retained retired-library fonts.
+A final explicit-key/anonymous/omission case and joint regression run remain.
+This is candidate progress, not Stage4 acceptance or deployment readiness.
+
+B4 Ruling: initialize the public schema of the isolated verification DB before
+legacy version-render tests, as the standard harness does; use30s test-runner
+bound for the10,000-record asynchronous disk-reader case. Its default5s expired
+under the full container suite; this is not a production processing deadline or
+performance claim. Keep all semantic/count/record limits and runtime deadlines.
+Initial suite also exposed stale migration expectation lists (now include024)
+and stale candidate README package locators (now0.4.7). These are corrected and
+rerun rather than recorded as PASS. A briefly overlapping verification container
+was stopped; advisory-lock suites run serially, not in parallel schemas.
+Cost if wrong: no performance certification; Stage6 still measures full workload.
+
+B4 pre-review verification: Service36a1ca9,413 passed/0 failed/5 skipped
+(418 total), with all26 new processing cases and all76 task receive/normalize/
+reader/processing cases passing. Core833 tests and real package consumer remain
+unchanged PASS. PC authority22/22 PASS. Final package PDF proof:74 prior PDFs
+byte-identical;8 new PDFs/15 pages strict parse/render/visual PASS. Regenerated
+Service PDFs with random resource/font identities were compared on every page:
+all pixels equal. Records: `service-verified.json`, `task-scope-coverage.json`,
+`pdf-verification.json`, `pdf-rerun-parity.json` under the Stage4 evidence folder.
+
+One fresh-context whole-change review completed (Core35e65dd..fb567f4,
+Service32a25fc..36a1ca9): zero Critical, one Important, zero Minor. Important:
+preparation failure of a shared asset lost exact affected counts, Section/input
+locators and generation completeness after cleanup. Reproduced RED with a real
+PNG readable by metadata but invalid at full decode, shared by two equal frames
+and a third smaller frame. One bounded fix pass now aggregates per variant and
+Section, persists the input source pointer/full count/bounded node sample, and
+commits diagnostics before suppressing equivalent Core warnings. Separate
+immutable generation observations and terminal usage preserve partial status
+without rewriting normalization. Targeted regression GREEN; final whole suite
+runs on a fresh isolated DB with the revised never-deployed024 candidate.
+No edits to previously applied released migration bytes.
+
+Final Ruling: generation image counts explicitly use `expanded-image-nodes`,
+before physical page-band repetition; normalization retains input-slot counts.
+This keeps each phase's unit explicit and records all three affected frames in
+the reproducer (two findings). Physical repeated page-placement measurement stays
+Core layout/Stage6 scope, not an inferred billing metric. Cost if wrong: these
+counters cannot be used as physical-image billing quantities without later proof.
+
+Review boundaries retained: Stage5 owns HTTP/FlowDocMake response integration;
+Stage6 owns original full workload and sustained RAM/performance. Windows task
+rendering fails closed; abandoned/old jobs are not resumed. No rolling-install,
+release/main/push/install certification. Parent owns every-page PDF verification.
+Five optional tests remain unrun, not PASS: three installed font-height delivery
+checks, native FlowDocMake stdio/HTTP round trip and the supplied seven-family
+import/profile fixture. Existing available Pridi and library/retired regression
+coverage did run. These do not certify the later external integration phases.
+
+Stage4A/4B complete within the isolated candidate boundary. Core terminalfb567f4;
+Service terminalbd90a0c (implementation36a1ca9 plus one Important fix). Both
+Core/Service development0.4.7, exact Core archive SHA recorded above. No main,
+release/tag, push, install or public capability activation. Candidate branches
+and worktrees are unmerged and deliberately retained.
+
+Final proof: Core833/833 plus actual packed Linux consumer PASS; Service414
+passed/0 failed/5 explicitly unrun optional external cases (419 total). All77
+receive/reader/normalization/processing cases PASS, including27 processing cases.
+Important shared-image finding fixed RED to GREEN and full suite green in one
+fix pass; no second reviewer.27th case preserves three omitted image frames,
+two variant findings, exact Section/input locators, independent normalization
+and immutable generation observations, partial usage and zero duplicate engine
+image warnings. Builds/vendor integrity/whitespace checks PASS. PC authority22
+checks passed before final closeout; final record check is run before commit.
+
+PDF acceptance:9 new PDFs/16 pages strictly parsed, rendered without warnings
+and visually reviewed. All24 JPEG/transparent PNG source images,12 masks and
+24 row labels verified; explicit assets reuse while identical anonymous images
+remain separate. Regenerated prior candidate pages are pixel-identical.74 prior
+Core PDFs remain byte-identical to Stage3 and reuse that every-page proof.
+This is bounded regression evidence, not full original UAT/production RAM proof.
+
+Evidence directory `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage4`:
+`receipt.json`, `review-receipt.json`, `task-scope-coverage.json`,
+`service-final.json`, `optional-test-gaps.json`, `pdf-verification.json`,
+`pdf-rerun-parity.json`, PDFs/renders, build/package/RED-GREEN logs and unchanged
+protected-ref receipt. Source tests/consumer scripts and commits are the durable
+implementation evidence; this ledger does not promote product maps.
+
+Cleanup limitation: automatic approval rejected the combined test-container/
+network/image/private-environment-file deletion command with only `blocked by
+policy`; it never executed. No alternate deletion attempted. A narrower
+reversible action successfully stopped the exact owned isolated PostgreSQL
+container. Test resources and private generated environment files remain for
+later authorized cleanup; no user/live data or unrelated resources were touched.
+Next planned work is Stage5 API/FlowDocMake integration, then Stage6 full data
+and resource acceptance. Do not install or merge as part of this closeout.
+
+### Stage4 preflight — retained discovery, superseded by authorization above
 
 Owner request: start Service integration, including task/job, reservations,
 feedback/PDF, disconnect, expiry and cleanup; no main integration, release or
