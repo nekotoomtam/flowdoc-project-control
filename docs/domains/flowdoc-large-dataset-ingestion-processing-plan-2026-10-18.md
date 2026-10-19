@@ -5,8 +5,8 @@
 Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
-Active role: Planning Partner / Documentation Synthesizer for the composition
-read-optimization Stage0 contract below; main integration is retained history.
+Active role: Product Implementation Agent / Evidence Reviewer for the isolated
+read-optimization Stage1 candidate below; main integration is retained history.
 Work/Phase/Checklist execution IDs: not applicable (single-room owner request).
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
@@ -15,7 +15,8 @@ boundaries and evidence recorded below: Core0.4.7, Service0.4.8, FlowDocMake0.2.
 The owner authorized main integration and clean merged-lane cleanup on 2026-10-19.
 The final integration ledger records its actual outcome separately from the
 historical isolated-stage ledgers. Read-optimization Stage0 is specified below;
-its runtime stages remain unstarted. No installed configuration, release, tag or
+Stage1 has an isolated verified candidate; later runtime stages remain unstarted.
+No installed configuration, release, tag or
 deployment changes are authorized in this round.
 
 This replaces the narrow increase-the-image-count proposal from this chat with
@@ -1754,8 +1755,9 @@ diff whitespace check PASS. Main/release/install remain untouched.
 
 ### Composition read optimization — plan, 2026-10-19
 
-Authority: Stage0 is specified in the contract below; runtime steps remain
-proposed, not implemented or authorized. Service owns file-backed readers;
+Authority: Stage0 is specified below and the owner separately authorized the
+isolated Stage1 candidate recorded at the end; later steps remain proposed.
+Service owns file-backed readers;
 Core owns validation/composition and template access. Main integration
 does not authorize runtime optimization. Keep this in the existing plan, with no
 additional AI-required guide or execution registry.
@@ -2054,3 +2056,137 @@ and frozen fixture counts PASS; diff whitespace PASS. Only this plan changed;
 Core/Service heads and clean states match the baseline above. No runtime test,
 benchmark, PDF regeneration, dependency/product-version change, map promotion,
 release/tag/push or installation was performed for optimization Stage0.
+
+### Read-optimization Stage1 execution ledger — 2026-10-19
+
+Owner authorized Service shared read windows, bounded RAM/cancellation/fallback,
+paired cache-off/on measurement and all-page PDF checks. No integration/release/
+installation. Single-room Product Implementation Agent then Evidence Reviewer;
+IDs N/A. Service lane `codex/read-cache-stage1-20261019` from8253f65 at
+`C:/Users/nekot/Documents/GitHub/flowdoc-service-worktrees/read-cache-stage1`;
+PC managed lane `C:/Users/nekot/.codex/worktrees/read-cache-stage1/flowdoc-project-control`
+fromf47366d. Existing main branches, Core/package and plugin remain protected.
+Scope: Stage0's reader/helper/normalize/render/child wiring and affected tests;
+no indexes, decoded-record cache, Core changes, policy/DB/API expansion.
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/read-cache-stage1`.
+Proof/document budget follows Stage0; one whole-branch fresh review and one fix
+pass if needed. Current host model retained for inline execution; no separate
+registered execution or synthetic room/Work records.
+
+Baseline build and two existing reader cases PASS. Six new feature cases first
+failed because createReadBudget did not exist; RED retained. Initial test command
+ran before dependency installation completed and had a missing build-tool binding;
+that result is tooling failure, not the feature RED. After installation, the real
+six-case RED was obtained before implementing the helper. Initial build exposed
+an exactOptionalPropertyTypes typing error; fixed. The large-file case initially
+timed out because uncached per-byte reads unnecessarily entered the IO queue;
+added a safe direct-scratch hit path (invalidated before an asynchronous fill).
+No test timeout or fixture size was relaxed. Current reader matrix12 cases PASS.
+
+Ruling: reserve optional credits atomically in the parent and delegate a fixed
+ceiling to the child, rather than synchronize every byte read over IPC — fewer
+control operations while the reserved ceiling covers filling/pinned buffers.
+Release normal child grants only after its reader-close acknowledgement, and
+crash-path grants only after confirmed process-group stop. Cost: reserved cache
+capacity can exceed actual allocated windows and reduce another task's cache;
+that task uses the specified uncached fallback.
+Ruling: cache-off retains only the one declared16KiB reader scratch and the same
+parser. It is the same candidate's uncached control, not a claim to reproduce
+every historical private-cursor allocation/timing. Existing standalone calls
+remain uncached. Benchmarks compare this exact off/on pair, not historical runs.
+
+Initial checkpoint: Stage1 in progress, with no acceptance or map promotion.
+
+Final Stage1 result: PASS within the frozen Stage0 scope, retained on isolated
+branches; no main integration, release or installation. Service implementation
+adds read-cache budget/window helpers and changes only the task reader,
+normalization, renderer parent/child and affected tests. Core package/API,
+template bindings, image preparation, PDF writer, task schema/policy, public
+transport and installed plugin are unchanged. Stage1 is not permission for
+Stage2 indexes or any later optimization.
+
+The parent atomically reserves credits before allocation and delegates a fixed
+ceiling through the existing private renderer init message. Reader-close returns
+normal child credits; confirmed group exit returns crash-path credits. Reader
+windows are lazy LRU buffers, with cursor offsets only and one serialized scratch
+window. Normalized readers close before image/font/layout/PDF work. Abort
+checks cover cache hits, pending and queued IO; close is idempotent, waits for
+active IO and clears strong references/credits. Default/no-grant calls are
+uncached. Raw/scalar limits and both validation passes remain intact.
+
+Final build PASS. Linux task suite115/115 PASS, zero skipped; source-equivalent
+reader suite then14/14 PASS, including two additional queued-miss/cross-file/
+revision cases (12 overlap the115,117 unique affected cases total). Existing
+real timeout/memory-stop/recovery cases now also assert zero global reader/cache/
+scratch permits after processor shutdown. This is scoped task evidence, not a
+new full-Service suite claim. One fresh whole-source review:0 Critical,0 Important,
+0 Minor; reviewer-owned12-case run PASS. Its non-blocking queued-miss coverage
+observation was addressed with a real second queued miss, not a renamed test.
+No runtime repairs followed the review; no re-review. Parent owns remaining proof.
+
+Actual resource matrix: four simultaneous readers allocate1MiB of cache each,
+fifth gets no optional cache and succeeds through scratch; all process oversized
+working sets correctly. Peak optional grants4MiB, five scratch windows80KiB;
+all readers close with0 cache/scratch/readers/waiters. Separate admission case
+reaches16 scratch permits (256KiB) and cancellation frees blocked requests.
+These byte/credit bounds are not RSS bounds. All full runs used2CPU/1GiB;
+maximum container kernel lifetime peak296.27MiB, DB separate, no OOM events.
+
+Three paired fitting-SRS composition runs, without load hooks:
+
+| Metric | Cache off median | Cache on median | Change |
+| --- | --- | --- | --- |
+| Composition |4.595s |2.479s |46.1% lower |
+| FileHandle.read calls |1,168 |15 |98.7% fewer |
+| Logical bytes returned |18,449,992 |234,318 |98.7% fewer |
+| Full SRS request-to-client PDF |54.630s |49.992s |8.5% lower |
+
+Composition off runs4.595/4.157/5.270s; on2.479/2.455/2.783s. Full SRS off
+52.874/54.630/56.705s; on49.992/48.385/53.620s, alternating paired order.
+All six composed documents match the frozen complete node/sourceMap/metadata
+oracle. The targets of75% fewer calls/bytes, lower composition median and no
+more than5% full-task median regression all pass. Off already shares the one
+declared16KiB scratch: do not attribute the entire historical48–65s to2.48s
+difference solely to optional1MiB caching. Full runs include identical coarse
+phase observer work per pair; IO waits and nested phases are not additive.
+
+UAT70 and SB.1two-page single unpaired runs took130.782s and5.190s through client
+receipt; they prove correctness here, not a speedup. UAT image preparation54.058s
+and PDF writing23.434s remain outside this optimization. Do not compare its one
+observation to earlier runs as a causal regression/improvement result.
+
+All8 PDFs/660 output pages (six SRS98 + UAT70 + SB.1two) pass strict parsing,
+all-page Poppler with zero diagnostics, exact page text and pixel parity against
+the reviewed Stage6 baseline, image bytes/alpha/draw order and link geometry/
+destinations. All output pages were rendered; exact parity reuses previous visual
+acceptance for every page. Parent also inspected SRS10,UAT59,SB.1one directly.
+Original source/layout limitations remain inherited; source-exact reconstruction
+is not newly claimed. Named SRS uses the retained13-asset inline-key mock; both
+modes use that same data, not the earlier372-anonymous-image transport.
+
+Measurement tooling corrections, retained rather than hidden: the copied report
+expected four loaded PIDs for a prior three-document run; each current one-document
+run has two. One on1 periodic sample was lost when a font subprocess exited
+between enumeration/read (`ESRCH`). The original failed analysis/raw sample stay
+retained; corrected analysis exposes that missing sample and valid-sample gap,
+while the independent kernel lifetime peak remains available. Later samplers
+tolerate that expected vanished PID. Both modes within each pair use the same
+sampler version. No completed composition/PDF run was repeated to select a better
+result. A local observer-string escaping error was caught before document work.
+
+Final DB/physical audit: all8 tasks succeeded, no child PIDs, no owned task files,
+held/used storage and queue permits0; permanent events/usage remain. Client PDFs
+remain separately in evidence. Physical disk peak was not sampled in this round;
+final file/quota cleanup was checked. All owned test services are stopped and the
+reused test DB container restored to its prior stopped state. Cloned test DB and
+evidence retained. No user data or installed state changed.
+
+Durable evidence: `scope.json`, build/RED/GREEN logs, `runtime-identity.json`,
+`linux-tasks-final.json`, `linux-extra.json`, `resource-matrix.json`, composition
+reports, `measurements.json`, all raw traces/sampling gaps, `pdf-verification.json`,
+`cleanup-audit.json`, `review-receipt.json`, container manifest and final receipt
+under the evidence directory above. Documentation checks/final commits are bound
+by the final receipt. No Work/map/generated projection promotion. Baseline package
+number0.4.8 stays unchanged during this isolated source experiment; its terminal
+commit distinguishes the candidate. Delivery version/pins must be settled before
+any later promotion/install; no baseline-numbered artifact is published here.
