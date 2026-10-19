@@ -1610,3 +1610,80 @@ attempted after the previously recorded automatic cleanup rejection. Candidate
 branches/worktrees are deliberately retained because unmerged. Existing installed
 configuration, user drafts, main, release and tags are unchanged. Stop at Stage5;
 next planned work is Stage6 only after separate owner authorization.
+
+### Stage6 execution ledger — 2026-10-19
+
+Owner authorized isolated full UAT/resource/PDF verification and old SRS/SB.1
+regression. Role: Evidence Reviewer; single room, execution IDs not applicable.
+Core `fb567f4`, Service `8253f65`, FlowDocMake/PC input `21bceb6` remain the
+Stage5 candidate. Record branch `codex/task-stage6-evidence-20261019`; no main
+integration, release/tag/push, installation or runtime repair authorized.
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-19/task-stage6`.
+
+Ruling: verify the retained source-derived full input, not regenerate business
+data — it preserves 60 requirements,64 figures,75 original images and60 Accept
+crops. Existing extraction/layout differences must remain visible; source-exact
+or production capacity claims require separate proof. Only transport image
+references change; source hashes and business-value round trips are checked.
+
+Proof budget: full UAT twice (first measurement collector failed after successful
+PDF), SRS98/SB.1 once, then12 bounded resource cases:24/64/128 unique images,
+1/8MP single images,32MP alpha source,three128-placement reuse jobs,100/1000
+records and throttled output. Service, owned children and test client share a
+1GiB cgroup/2CPU allocation; PostgreSQL is separate. Report sampled per-case RAM
+and kernel lifetime peak distinctly; cleanup timing/physical bytes/quota release
+need post-completion evidence. No threshold or arbitrary-load certification.
+
+Harness corrections: absolute package import, reservation/file column names and
+synthetic fixture syntax/module resolution corrected only in evidence scripts.
+First UAT PDF/log retained; its discarded resource samples are not PASS evidence.
+Tar restoration wrote resources but could not restore Windows root metadata;
+font/source hashes and runtime readiness provide the applicable content check.
+
+Final: PASS bounded Stage6 workload, not release/install or maximum capacity.
+UAT70pages/106.614s, SRS98pages/259.322s, SB.1two pages/4.340s, measured through
+client receipt/lookup; cleanup is additional:8.194s/22.111s/0.287s respectively.
+Exact shared documents-container kernel peak395,100,160bytes (376.8MiB), below
+enforced1GiB; sampled per-case peaks379,133,952/374,714,368/248,893,440bytes.
+Largest sampled task-file footprint10,958,241bytes; sampling250ms does not prove
+the exact instantaneous disk peak. Conservative reservation is a separate metric.
+Post-run audit:all16 tasks succeeded,physical task files0bytes/0files,held/used
+quota0,cleanup done and permanent events/usage retained. No OOM events observed.
+
+UAT all60 requirement IDs occur once in source order;64 figure entries/135source
+images match output evidence:258 actual draws=189 input locations+69 headers,
+zero image/Format omissions. Independent image signatures match all135 sources;
+all60 descriptions and60 remarks match exact logical cell text after whitespace/
+NFC. Raw geometric extraction still differs:five repeated Features List headers
+and reordered Thai glyphs; REQ0384 whole-page search interleaves columns across
+pages59–60. Raw failures retained; new cell proof resolves data-loss suspicion,
+not source typography/spelling/layout fidelity. All432 UAT/SRS link labels and
+page-number links match their destination pages. Page fields and headers checked.
+
+All170 primary pages strict-parsed/rendered without Poppler diagnostics. UAT70
+pages inspected and repeat-run pixel-identical; SRS97pages and SB.1page2 reuse
+exact pixel-identical prior reviewed baseline. Changed SRS page10 icons and SB.1
+page1 Garuda inspected:only image sampling differs,all100 old-document page texts
+identical. All97 synthetic pages rendered/checked for exact ordered labels,
+image counts/reuse/alpha and inspected via nine sheets. Twelve resource cases
+PASS; synthetic container lifetime peak198,696,960bytes. Three reuse jobs retain
+one image resource for128 placements and return file/quota usage to zero each time.
+
+Final fresh read-only review:four Important evidence gaps resolved by physical/
+quota audit,precise kernel-vs-sample reporting,logical-cell text reconciliation,
+and completed document/matrix checks. Minor claim gaps resolved with both PDF
+hashes,image identity support and label-to-destination checks. No runtime fixes
+or re-review. Ruling:reuse retained source extraction/Accept crops rather than
+independently reconstruct crop coordinates; cost:source extraction correctness
+is inherited,not recertified. Ruling:measure selected real workload plus bounded
+matrix,not1GB-request/max-pool or sustained production SLA; cost:upper-capacity
+and deployment claims remain unavailable. Prior Stage5 runtime/threshold/fault
+evidence reused unchanged; parent owns every-page visual acceptance.
+
+Durable evidence:source-audit.json,pdf-verification.json,uat-visual-review.json,
+image-review.json,link-review.json,matrix-verification.json,cleanup-audit.json,
+receipt.json,review-receipt.json and Git/container manifests under the directory
+above. No new Work/map/generated projection; only this existing ledger updated.
+All owned test services stopped after verification. Images/networks/private test
+config and unmerged candidates retained; no workaround of prior cleanup rejection.
+Main/release/tags,installed configuration and original drafts remain unchanged.
