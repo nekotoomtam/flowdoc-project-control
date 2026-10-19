@@ -1807,3 +1807,60 @@ Repeat uninstrumented control/candidate runs with identical CPU/RAM/inputs;
 report read counts/bytes, validation/composition and full-task time, group RAM,
 disk reservations and cleanup. Reuse evidence only where identity/impact allow.
 PDF writer/IPC batching remains a separate deferred workstream.
+
+### Main integration and cleanup — 2026-10-19
+
+Owner authorized drafting the optimization direction, integrating completed work
+and clearing unused merged branches/worktrees. Single-room documentation and
+integration; execution IDs N/A. This supersedes only the earlier instruction to
+keep these task candidates unmerged. No release/tag/push/install is performed.
+
+Fast-forward integration, with no conflicts or runtime edits:
+
+| Repository | Retained main branch | Integrated candidate |
+| --- | --- | --- |
+| Core | `codex/template-binding` | `fb567f45c81f2e8a2c96eaf7631dceedcb828232`, version0.4.7 |
+| Service | `codex/template-registry` | `8253f6522355af0add053885eb170ef3b7c128ea`, version0.4.8 |
+| Project Control / FlowDocMake | `main` | `d3a5577fdbeef885b479a54c3edca5e396ec6c22`, plugin0.2.6 plus this plan's optimization draft |
+
+All three main trees matched their candidate trees immediately after integration.
+Service vendor checksum remains
+`e79726b50f8aa2d8436d003aaf0727f87ed86b8e615ee8dc0a59b041c2dc2d5a`,
+bound to the Core commit above; FlowDocMake compatibility pins match both versions
+and this checksum. Release branches and all tags are preserved byte-for-byte.
+The existing versions already identify this completed work; documentation/merge
+alone does not create another version.
+
+Fresh checks: Core and Service builds, whitespace review, documentation authority
+22/22 and FlowDocMake task stream/capability8/8 (zero skips), including the latter
+on integrated PC main. Unchanged fast-forward proof reuse follows workflow policy:
+Core Stage4 has833 passing cases and the isolated Linux packed consumer; Service
+Stage5 reconciled431 passing cases with5 optional external cases unrun; plugin
+Stage5 has36 passing cases with4 optional installed-fixture cases unrun. Stage6
+provides all170 primary-page checks plus the bounded matrix; the phase-measurement
+follow-up has170-page parity. These are the exact tested runtime trees/packages,
+not a new full-suite/PDF rerun or an installed-connection claim. Optional gaps and
+prior source/layout/operational limitations remain recorded above.
+
+Cleanup removed all15 local task branches (Core3,Service4,PC8) after ancestry and
+clean-state checks, and all three task worktrees. The managed PC worktree was
+archived through Codex; the two manual Git worktrees were removed without force.
+Before removal,1,225 ignored evidence/build/fixture files (49,691,294bytes) were
+copied outside worktrees and checked against their SHA256 hashes. Reproducible
+node_modules were excluded. The historical Core sourceArtifact path in Service's
+vendor provenance remains historical; its identical source tarball is retained
+under `task-main-integration/preserved/core/artifacts/1792376778859/` as well as
+the tracked Service vendor package. No evidence path is silently reassigned.
+
+Evidence root: `C:/Users/nekot/Documents/Codex/2026-10-19/task-main-integration`:
+`before.json`, `integration.json`, `cleanup.json`, final receipt and preserved
+file/hash inventory. Existing experiments/PDFs outside worktrees remain intact.
+No data records, maps or generated projections changed. Legacy Editor/vNext
+branches and worktrees remain: current snapshot includes held/unresolved Editor
+work, older lanes lack current-round cleanup acceptance, and legacy repositories
+have local changes. Merge reachability alone cannot establish they are unused;
+this integration does not accept or discard those separate historical lanes.
+
+Result: completed task work is on the local main branches, with task lanes cleared.
+Optimization implementation, release preparation, GitHub publication and
+installation remain future separately authorized work.
