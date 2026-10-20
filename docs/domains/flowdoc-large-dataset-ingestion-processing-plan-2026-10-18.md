@@ -6,7 +6,7 @@ Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
 Active role: Product Implementation Agent / Evidence Reviewer for the isolated
-read-optimization Stage1 candidate below; main integration is retained history.
+read-optimization Stage3 candidate below; main integration is retained history.
 Work/Phase/Checklist execution IDs: not applicable (single-room owner request).
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
@@ -15,7 +15,7 @@ boundaries and evidence recorded below: Core0.4.7, Service0.4.8, FlowDocMake0.2.
 The owner authorized main integration and clean merged-lane cleanup on 2026-10-19.
 The final integration ledger records its actual outcome separately from the
 historical isolated-stage ledgers. Read-optimization Stage0 is specified below;
-Stage1 has an isolated verified candidate; later runtime stages remain unstarted.
+Stages1–3 have isolated verified candidates below; later optimization stages remain proposed.
 No installed configuration, release, tag or
 deployment changes are authorized in this round.
 
@@ -1755,8 +1755,8 @@ diff whitespace check PASS. Main/release/install remain untouched.
 
 ### Composition read optimization — plan, 2026-10-19
 
-Authority: Stage0 is specified below and the owner separately authorized the
-isolated Stage1 candidate recorded at the end; later steps remain proposed.
+Authority: the owner separately authorized read-optimization Stages0–3; their
+isolated verified candidates are recorded below. Stages4–5 remain proposed.
 Service owns file-backed readers;
 Core owns validation/composition and template access. Main integration
 does not authorize runtime optimization. Keep this in the existing plan, with no
@@ -1785,14 +1785,14 @@ separate kind/scalar/property readers create fresh16KiB cursors and reread range
 Validation and later binding revisit values. Creating nodes is not the measured
 dominant cost.
 
-Proposed sequence; each step needs later bounded implementation authorization:
+Sequence: Stages0–3 were separately authorized; later steps need bounded authorization:
 
 | Step | Change and owner | Required checks |
 | --- | --- | --- |
-| 0 (specified below) | Core + Service freeze semantics, counters and budgets | Hash inputs/template/packages; positive/rejected fixtures; define cache byte/entry limits, eviction, task lifetime and cancellation |
-| 1 | Service shared bounded read windows per sealed immutable input | Fewer reads/bytes; UTF-8, escape, token and EOF across windows; concurrent cursors, abort/close/recovery; RAM under large inputs/concurrent tasks |
-| 2 | Service bounded object-field-to-offset index | Preserve duplicate/unknown/missing-key and scalar rules; eviction/oversized-object fallback; model18/19 and Section/task isolation |
-| 3 | Core + Service bounded per-record/subtree reuse | Source IDs/order, repeated rows, clone isolation; oversized-record fallback; release state after record use; generator/error/cancellation parity |
+| 0 (closed below) | Core + Service freeze semantics, counters and budgets | Hash inputs/template/packages; positive/rejected fixtures; define cache byte/entry limits, eviction, task lifetime and cancellation |
+| 1 (isolated candidate complete) | Service shared bounded read windows per sealed immutable input | Fewer reads/bytes; UTF-8, escape, token and EOF across windows; concurrent cursors, abort/close/recovery; RAM under large inputs/concurrent tasks |
+| 2 (isolated candidate complete) | Service bounded object-field-to-offset index | Preserve duplicate/unknown/missing-key and scalar rules; eviction/oversized-object fallback; model18/19 and Section/task isolation |
+| 3 (isolated candidate complete) | Core + Service bounded per-record/subtree reuse | Source IDs/order, repeated rows, clone isolation; oversized-record fallback; release state after record use; generator/error/cancellation parity |
 | 4 | Core compile template access once per pinned template | Fingerprint/model/binding-sensitive invalidation; preserve conditions/empty branches and required validation; no eager loading of all records |
 | 5 (deferred) | Reuse verified-normalization receipt under a closed trust contract | Bind input hash, template fingerprint, schema, normalizer/validation versions and limits; tamper/stale/recovery checks; unknown provenance performs full validation |
 
@@ -2332,3 +2332,171 @@ template-access compilation, normalization trust shortcuts. Source experiment
 keeps baseline package0.4.8; no artifact is published under that number. Delivery
 version and package pins remain a later promotion prerequisite. Retain both
 unmerged candidate worktrees and Stage1 branch pointers. Stage2 ends here.
+
+## Read-optimization Stage3 — bounded record byte reuse, 2026-10-20
+
+Authority Boundary: Project Control owns this scope/acceptance ledger; Core owns
+TaskValue lifetime requests and composition, Service owns sealed-file byte views.
+Explicit owner authorization: implement Stage3, measure and inspect every PDF
+page; no main integration, release/tag/push or installation. Inline implementation;
+execution IDs N/A. Risk routine; affected owners Core and Service. Bases: Core
+fb567f4, Service619d522, PCd6ac4a6. Use isolated candidate branches, retaining
+Stage1/2 pointers. Core requires a new owner worktree because the native worktree
+tool targets the current PC repository; manual owner worktree is the fallback.
+
+- Ruling: retain raw bytes, not a decoded record graph. Optional TaskValue
+  retainRecord() returns {value,release}; absent capability preserves old traversal.
+  Core scopes each data/record use in try/finally, including suspended generator
+  records, errors and cancellation. Views retain absolute source offsets and fall
+  back after lease release; no source-ID/business-key deduplication.
+- Ruling: maximum64KiB/retained subtree,256KiB/task and1MiB/Service backing, at
+  most8 simultaneous leases/task (32 fully credited instance leases). Parent
+  grants/delegates these credits with the existing reader lifecycle. Count before
+  allocation; close/abort clears views; release is idempotent. Nested subtrees may
+  borrow an active containing view without another allocation. Oversized input,
+  no credits or lease-count exhaustion uses the original reader, preserving the
+  existing256KiB record validation limit. Cost if wrong: bounded additional
+  backing/metadata without useful speedup; no increased input limits.
+- Service reuses its existing scanner against a bounded byte view, preserving
+  duplicate keys/order/limits and IO/abort errors. No JSON.parse of containers,
+  no whole-array decoding, validation or checksum bypass, image changes, shared
+  cache across files/tasks/attempts, template compilation or trusted receipts.
+- Private packed Core candidate stays baseline0.4.7 but has an unmistakable
+  stage3 filename and new checksum/source commit; only the isolated Service
+  dependency/lock/vendor manifest consumes it. No release artifact is published
+  under the baseline number. Future promotion must settle versions/pins.
+- Checks: RED/GREEN owner tests, Core task/schema/binding consumers, packed Linux
+  Service suite on/off, raw budget allocation/fallback/drain, model18/19,
+  duplicate/missing/order/IDs/repeated rows/clones/empty/oversized records and
+  error/cancellation release. One fresh whole-source review. Same-candidate
+  three alternating pairs with raw cache/index ON in both, only record reuse
+  toggled; frozen inputs and package,2CPU/1GiB, DB separate. Gates: exact whole
+  composition output, lower composition median, full-SRS median no more than5%
+  slower, backing/lease caps and zero credits after cleanup. Report all raw runs;
+  no rerunning completed measurements for a better score. If speed fails, report
+  the failed gate rather than widening scope.
+- PDF budget: six paired98-page SRS outputs, one70-page UAT and one2-page SB.1;
+  all660 pages strict/text/images/alpha/order/links/render comparison to reviewed
+  reference, manual representatives. Physical files/quota/history cleanup audit.
+  No need to repeat unaffected native PDF-engine tests unless changed paths or
+  failures justify it. Existing UAT/source layout differences remain inherited.
+- Markdown gate: extend this existing canonical plan only; owner implementation
+  and durable tests/JSON receipts supply proof. No new Work/guide/map promotion.
+
+Execution start: contract closed for the explicit bounded implementation; no
+Stage3 acceptance result at kickoff; final results follow. Model choice uses this inline host; one fresh
+reviewer follows executing-plans. Stage3 ends at isolated verified commits.
+
+
+### Stage3 read-reuse final results — PASS, isolated only
+
+Source commits: Core `87f50e47c4c418b1452d041c01ae06588748a641`, Service `36b4baec9db1fbd339f39c5ef68629718132dae8`.
+Both use `codex/record-reuse-stage3-20261020`; PC record branch is
+`codex/record-reuse-stage3-record-20261020`. Source/compiled/package identity
+was frozen before all paired measurements and verified again by the final
+receipt. Stage1/2 branch pointers and unmerged worktrees are retained.
+
+Behavior: optional `TaskValue.retainRecord()` scopes bounded raw-byte views.
+Core uses try/finally around data and suspended collection records; Service
+returns valid file-offset handles after release. No decoded whole records or
+arrays, validation removal, cross-task cache, source/business-key deduplication,
+image change or template compilation. Full validation still finishes before
+composition: reuse is within an active subtree/record, not retention of every
+record across both whole validation passes.
+
+Evidence coverage:
+
+- Core two new lease tests failed against baseline, then passed with the
+  implementation. Final **190/190** affected data/binding/composition/package
+  cases passed, zero skipped; Core build passed. Includes repeated identical
+  rows, two cloned Sections, exact document IDs/sourceMap/order, older readers
+  without the capability and cancellation/error while a binding iterator holds
+  its record. Service **25/25** reader cases passed, including four new record
+  cases, plus the real Linux consumer below.
+- Packed Linux integration initially passed127/128. The remaining FlowDocMake
+  stdio case correctly rejected the new archive checksum with
+  TASK_CAPABILITY_UNSUPPORTED. Ruling: use an **external test-only** FlowDocMake
+  mirror with only compatibility checksum/snapshot updated. Preserve the strict
+  guard; installed and tracked plugin remain unchanged. Cost: this does not
+  establish installed-plugin compatibility; actual promotion must assign delivery
+  versions and repin the real plugin before use.
+- All14 API cases reran and passed with that mirror. The114 unaffected cases
+  from the unchanged candidate/package were reused; `linux-on-accepted.json`
+  explicitly links both original reports and the reuse reason. This establishes
+  **128 unique ON cases**. The complete **128/128 OFF** suite then passed, zero
+  skipped. No failed check was relabelled PASS; the original127/128 report stays.
+  Source-commit stamping changed provenance metadata only, not archive bytes,
+  version/SHA capability checks or execution behavior, before timing freeze.
+- Actual backing matrix: four tasks retain4x64KiB each, exactly256KiB/task and
+  **1MiB/Service**; fifth task falls back. Reader tests also exercise8-lease count
+  exhaustion, byte exhaustion, records above64KiB, nested borrowing, duplicate
+  keys/order/Unicode, independent files/tasks, double release and abort/close.
+  Pending-prefetch cancellation keeps parent credits until IO drains; IO errors
+  remain errors. All backing and credits return to zero.
+- Twelve model18/19 normalizer cases /24 record-off/on executions preserve exact
+  output and errors: required missing, duplicate, unknown and wrong-type fields,
+  missing Sections, model18 tolerance vs model19 strictness. Existing image,
+  ownership, task/recovery and limit checks remain in the Linux suite.
+- Private packed Core filename:
+  `flowdoc-core-0.4.7-read-reuse-stage3.tgz`, SHA256
+  `9a5068c80a7b332155aa454f4d72240012c25b44a08d0a446b3a995d7a39bf2e`.
+  Actual unpacked archive matches compiled Core. Every pre-existing non-task
+  package file, including native binaries, fonts and resource manifests, is
+  byte-identical to baseline; only task bridge JS/types and the new helper differ.
+  The Service manifest names the exact final Core commit, not its base.
+- One fresh whole-source review:0 actionable findings. Final Ruling: its excluded
+  runtime/performance/PDF proof, final provenance and independent resource archive
+  comparison are parent-owned prerequisites, all discharged here. Cost if omitted
+  would be unsupported acceptance; no production/deployment assurance is inferred.
+- All **8 PDFs /660 pages** strictly parsed and individually rendered with zero
+  Poppler diagnostics. Text, encoded image bytes/alpha/order, link geometry and
+  destinations, and rendered pixels match the reviewed reference on every page.
+  Six SRS98-page outputs, UAT70 and SB.1 two pages. Manual views: SRS10, UAT59,
+  SB.1 page1. Identical reference-PDF facts are reused only while their SHA stays
+  identical; no candidate page check/render is skipped. Existing UAT70 vs original
+  72-page and other inherited source/layout differences remain unchanged.
+- All8 tasks succeeded, cleanup done, zero physical task files/reserved or used
+  quota/child PIDs. Events and usage/history remain. Test DB restored stopped.
+  Docker Desktop was initially off and was started for isolated tests; no user
+  runtime container or DB was started/edited. Final receipt records restoration.
+
+Measurements: same candidate, raw-window cache and field index ON in both arms,
+only record reuse toggled; three alternating pairs,2CPU/1GiB, DB separate:
+
+| Metric | Record OFF | Record ON |
+| --- | ---: | ---: |
+| Composition seconds, runs1/2/3 |1.983203 /1.784224 /1.593427 |1.642291 /1.363113 /1.992656 |
+| Composition median |1.784224s |1.642291s (7.95% lower) |
+| SRS request-to-PDF seconds, runs1/2/3 |76.667297 /81.232030 /83.190463 |80.111923 /84.680720 /79.471725 |
+| SRS total median |81.232030s |80.111923s (1.38% lower) |
+| Actual reader calls / returned bytes |15 /234,318 |15 /234,318 |
+| Property scan bytes |5,048,379 |5,048,379 |
+
+All declared gates pass; benefit is modest and timings overlap materially, so
+these medians do not prove a large or universal causal speedup. Compare within
+this round, not directly against yesterday's absolute times. Source read/scan
+counts remain unchanged; ON serves2,765,372 byte/text requests from record views,
+copies677,487 raw bytes across1,238 successful leases and peaks at54,690 retained
+bytes in composition. These are internal byte requests, not millions of disk IOs.
+All leases are zero after use/reader close. Maximum full-group kernel peak:
+**292.03125MiB**. Backing budgets exclude bounded JS metadata; total RAM is measured
+separately. UAT129.277487s / SB.1 7.197867s are single correctness runs, not speedup
+claims. Full phase timings include equal observer hooks and are nested, not
+additive; composition pairs have no hooks. Physical disk peak was not sampled;
+final physical cleanup and quota were audited. No completed measurement reran.
+
+Evidence root: `C:/Users/nekot/Documents/Codex/2026-10-20/record-reuse-stage3`.
+Read `receipt.json`, `measurements.json`, `runtime-identity.json`,
+`core-tests.json`, `linux-on-accepted.json`, `linux-tasks-final-on.json`,
+`linux-tasks-api-pin.json`, `linux-tasks-final-off.json`,
+`resource-matrix.json`, `model-parity.json`, `package-proof.json`,
+`test-plugin-pin.json`, `review-receipt.json`, `pdf-verification.json`,
+`cleanup-audit.json`, and per-run PDFs/traces. Documentation authority22/22.
+
+Intentionally retained: baseline package numbers Core0.4.7 / Service0.4.8 in this
+private source experiment, distinguished by checksum, filename and source commit.
+No artifact is published under those baseline numbers. Delivery version changes,
+actual FlowDocMake repinning, integration/release/install, template-access
+compilation and trusted-normalization receipt reuse are later work. No main,
+release/tag/push/install, schema/TTL/data-policy change or map promotion occurred.
+Stage3 ends at the clean isolated commits; Stages4–5 are not started.
