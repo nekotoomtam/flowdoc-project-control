@@ -2714,3 +2714,109 @@ parity. Benefit is unmeasured until that candidate exists. Table pagination,
 line-break algorithms, font shaping and cache enlargement remain unchanged.
 Document budget remains this existing plan only; full external evidence,
 294 rendered pages and hashes stay in the evidence root.
+
+### Persistent segmenter — design baseline for review, 2026-10-20
+
+The owner agrees to the proposed per-generation process reuse after reviewing
+its lifecycle, memory and compatibility effects. This section makes that
+direction concrete before implementation; it is not a measured improvement or
+authorization to promote the candidate. Architectural scope: internal native
+protocol and Core lifecycle, with Service as the packaged consumer. Active role:
+Planning Partner / Documentation Synthesizer; inline execution IDs N/A, routine
+risk. The generated October4 frontend snapshot is unrelated; the explicit
+request, retained candidate identities and this plan govern this scope.
+Only this existing Project Control document changes in this step. Runtime,
+packages, customer API, DB, installed tools, main, release and tags stay intact.
+
+#### Ownership and unchanged behavior
+
+- Core owns one lazily started segmenter process per generate operation, never
+  a global pool or a process shared between jobs. ICU object/data load once in
+  that process. Keep icu_segmenter2.2.0, icu_segmenter_data2.2.0 and existing
+  segmentation options.
+- Keep text normalization, shaping, table/page layout, cache sizes and image
+  handling unchanged. Byte offsets convert through the existing Unicode map.
+  Exact break results, not merely visually similar wrapping, are the oracle.
+- Reuse the existing lifecycle location in createPdfEngine. After contents and
+  page fields finish, dispose the cache and close native text sessions before
+  font subsetting/PDF writing; finally remains an idempotent safety net.
+
+#### Internal wire and admission contract
+
+- Retain the one-shot `<text>` CLI and its successful output fields. Add
+  `--serve` with a bounded initial JSON-line hello declaring protocol
+  `flowdoc-segmenter-session/1`, source and ICU/data revisions; hello limit1KiB.
+- Requests use a four-byte unsigned big-endian length followed by UTF8 JSON
+  `{id,text}`. IDs are positive safe integers increasing within the session.
+  Each response is one UTF8 JSON line echoing id and the existing text/revision/
+  length/scalar-count/breakByteOffsets fields. Maximum request payload:16MiB
+  excluding the four-byte length header. Maximum response line:16MiB including
+  its newline. Empty/malformed Unicode input is rejected before submission.
+- One request is in flight. FIFO admission retains at most8 requests including
+  the active one, and at most32MiB of retained request text measured as UTF16
+  bytes; encoded request and response buffers are separately bounded16MiB each.
+  These are accounting bounds, not a promise of exact process RSS: JSON objects,
+  copies, ICU, allocator overhead and existing caches also require measurement.
+  Reject over-budget work explicitly; never drop a request or enqueue without
+  bounds. Frame limits may reject very large input and must have boundary tests.
+- Respect stdin backpressure. Accept fragmented framing and response chunks;
+  reject extra responses, malformed UTF8/JSON, incorrect IDs/text/revisions or
+  lengths, and invalid/non-monotonic offsets outside Unicode boundaries.
+  Successful offsets include start0/end-byte-length and equal the one-shot
+  oracle. A repeated string still requires its own matching request ID.
+
+#### Failure, cancellation and compatibility
+
+- Startup and admitted requests each have a30s deadline; request time includes
+  queue waiting. Timeout, pipe failure, crash or protocol violation fails the
+  session and rejects active/queued work. Do not retry silently or switch
+  algorithms/transport halfway through a job. Do not log document text.
+- Pass the generation AbortSignal to session ownership; cancellation must
+  interrupt a pending native roundtrip, reject waiters and stop the owned child.
+  Remove listeners/timers and release buffers on success, abort and failure.
+  Close is idempotent: stop admissions, terminate, escalate to forced kill after
+  1s, and report cleanup failure if close is unconfirmed after a further2s.
+  Preserve the original generation error alongside any cleanup error.
+- Service's existing worker/process-group cancellation remains the outer guard.
+  Test abrupt worker termination separately from cooperative Core cancellation;
+  no orphan child or later successful response may survive either path.
+- The rebuilt helper keeps one-shot compatibility for existing probes/tools.
+  New Core preflight must additionally validate the serving protocol and close
+  its probe child. An old helper with new Core fails preflight explicitly;
+  no capability guessing from ICU revision alone. Rollback uses the previous
+  complete pinned package, not binary replacement inside an old archive.
+- Build the Linux/amd64 helper with the locked dependencies; update resource
+  hashes and test the actual packed Core archive in Service. No build/download
+  during install or rendering. Keep FlowDocMake checksum validation enabled;
+  any future repin is a delivery change requiring its normal verification.
+
+#### Review and implementation sequence
+
+This is the written design for owner review. Subsequent detailed implementation
+planning starts from this baseline after review; it must retain these four
+bounded checkpoints rather than changing all layers without intermediate proof:
+
+1. Native serving protocol: exact one-shot parity for Thai/English, combining
+   marks, emoji, newlines, escapes, repeated/large input and framing boundaries;
+   retain CLI behavior and verify locked build/resource identity.
+2. Core session/lifecycle: FIFO isolation, backpressure, budgets, invalid output,
+   timeout/crash, concurrent generations, cancellation and early/idempotent
+   close. Prove no retained waiters/buffers/processes on every terminal path.
+3. Packed consumer: native/old-new compatibility matrix, actual archive hashes,
+   Service task/job cancellation/expiry and quota/file cleanup. Existing API/DB
+   contracts stay unchanged; test-only modes must not bypass package integrity.
+4. End-to-end evidence: frozen SRS/UAT/ศบ.1 input identities; exact text, pixels,
+   images, links, contents and page fields on every PDF page. Predeclare3 paired
+   uninstrumented SRS control/candidate runs with alternating order,2CPU/1GiB,
+   same fonts/package environment. Compare median layout and full-job time,
+   plus kernel peak and per-phase RAM; diagnose separately from timed runs.
+   Target at least10% lower median SRS layout time, lower median full-job time,
+   no OOM and full-job peak below1GiB. If unmet, report the performance gate
+   failed without score-driven reruns; correctness alone is not speedup proof.
+
+Proof reuse: the294-page diagnosis remains an unchanged baseline, not evidence
+for new runtime behavior. New PDFs and lifecycle proof are mandatory after the
+change. RAM reduction and removal of the entire25.96s are not promised.
+Document budget: this plan only; external test artifacts retain detailed proof.
+No Stage5 reader work, main integration, cleanup of unmerged lanes, release,
+push or installation. Prior Stage4 performance failure remains historical fact.
