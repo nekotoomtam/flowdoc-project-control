@@ -3,7 +3,8 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. หน้านี้เป็นทางเข้าสั้นสำหรับเลือกช่วงอ่านของ
-คู่มือ authoring 0.2.1; ไม่เพิ่ม schema, runtime capability หรือสิทธิ์เผยแพร่.
+คู่มือสำหรับ FlowDocMake 0.2.8; เลขนี้เป็นรุ่นแพ็กเกจ FlowDocMake ไม่ใช่รุ่น Core/Service.
+หน้านี้ไม่เพิ่ม schema, runtime capability หรือสิทธิ์เผยแพร่.
 รายละเอียดผลลัพธ์อยู่ในคู่มือหลัก เปิดเฉพาะเมื่อมีคำถามเรื่องขอบเขต.
 
 ## เริ่มด้วยเป้าหมาย

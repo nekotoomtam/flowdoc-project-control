@@ -1,7 +1,7 @@
 {
   "packageVersion": "0.2.8",
   "guideRelease": "0.4.4",
-  "sourceCommit": "cd0e7f0f0111d2a000983eced7c9065e6474f5cd",
+  "sourceCommit": "1361221fc52c1fed2d9ce6d94910e9e5e4050524",
   "files": {
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/legacy-conversion.json": "b7b643910595e1fcec926c55a8db333e3ecddbee99b2d369e4bcf56f5583dac7",
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/operations.json": "5a9412d28d1a1f79cdc6f9b1a113f16743a67600871e58a368279ada5648a39b",
@@ -21,7 +21,7 @@
     "skills/flowdocmake/references/docs/developer/authoring/reference-mapping.md": "f40540d03e7734f479e43c78062aa7b8b377239c2e41133d12415ab99035e72d",
     "skills/flowdocmake/references/docs/developer/authoring/structure-and-data.md": "3afd2d4ce2a837627917ec6140480414ca47cb04b6ef4d3f32c06cf0e89a2fc1",
     "skills/flowdocmake/references/docs/developer/authoring/verification.md": "2ad68885fb14662a7efca7804a57120f7f9c1f00794be708bb8f610ada0c159f",
-    "skills/flowdocmake/references/docs/developer/authoring/workflow-start.md": "915dea594c526da1e323eb257ccd9c454aec84d2b2cd7b4d634f968c32d4a69a",
+    "skills/flowdocmake/references/docs/developer/authoring/workflow-start.md": "e25199065e55dfa2e6489f32e4f2f2dbd7d0df967b549de901be45b062e18e32",
     "skills/flowdocmake/references/docs/examples/ai-template-authoring/grouped-request.json": "2a80177cdc1919ded0350afc9ab17871b47824bd748b432e8dc55e592943736a",
     "skills/flowdocmake/references/docs/examples/ai-template-authoring/grouped-template.json": "efc223b409829832c6731a8b008cdea74b10cb661c233035e013fabc33efb929",
     "skills/flowdocmake/references/docs/examples/ai-template-authoring/reference-request.json": "ffd9fef7d917806a0a1a9a311acfaa28300b61e9372a42d84f78c34edb909fb8",
