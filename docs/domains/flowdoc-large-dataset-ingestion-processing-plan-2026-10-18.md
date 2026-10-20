@@ -2651,3 +2651,66 @@ This diagnosis makes no new source-layout-fidelity or full-task timing claim.
 Only this existing Project Control record changes; product branches/worktrees,
 installed tools and data stay intact. Source, counters and CPU samples justify
 this recommendation; improvement from any proposed change is still unmeasured.
+
+
+### Layout diagnosis after field-access analysis — 2026-10-20
+
+Owner authorized continuing read-only layout diagnosis. Core owns layout, text
+runtime and native tools; Service supplies the pinned packaged consumer/task
+workflow; this existing Project Control plan records findings. Routine discovery,
+inline IDs N/A, ordinary reasoning, no delegation. No runtime/package/main/
+release/tag/install or Stage5 changes; Stage4 performance acceptance stays failed.
+
+Evidence root: C:/Users/nekot/Documents/Codex/2026-10-20/layout-profile.
+Exact Core/Service/fixture identities are pinned in identity.json and loader
+source hashes. Proof budget: one full SRS control, one layout-only Node CPU
+profile, one separately instrumented counter run, each2CPU/1GiB, fresh isolated
+DB layout_profile. No score-driven repeat or algorithm change. All3 PDFs have
+98 pages; all294 pages match reviewed baseline in strict parse, text, pixels,
+image bytes/alpha/order and link targets/geometry, with zero Poppler diagnostics.
+Three succeeded tasks retain history/usage and return physical task files, child
+PIDs, queue slots and storage reservations to zero. Documentation guard22/22
+and the final scoped audit close this record; no product map promotion.
+
+Control/full-task/layout seconds:71.953294/36.155347; CPU-profiled
+80.616883/43.968374; counters63.066032/30.568324. These are three diagnostic
+runs with observer/order/host variation, not optimization or speedup evidence.
+Maximum full-job kernel peak370.574MiB
+under1GiB; counter metadata794186 accounted bytes, zero dropped measurements.
+
+The counters' non-overlapping renderer wall-time categories show:
+
+- Segmenter process roundtrip:2215 calls,25.963627s (84.94% of layout).
+- Native shape roundtrip:12976 calls,3.307003s (10.82%).
+- Shape decoding:12976 calls,0.302183s.
+- Table geometry:1051 calls,0.010780s (0.035%).
+Inclusive table-flow22.992997s and measure-text30.437134s include nested text
+work and must not be added to these categories.477 table-page loop iterations
+are not477 failed placement attempts. Source-key repetition is confined to
+TOC virtual entries that reuse one node ID with different titles; nodeId/width
+keys do not prove duplicate content measurements or pagination rework.
+
+Node layout CPU samples show native spawn38.72%, idle48.42%; the profile does
+not measure segmenter/shaper child CPU. Segmenter roundtrip includes process
+creation, ICU initialization, actual segmentation, pipes and result decoding;
+this investigation cannot claim all25.96s is removable startup cost. Other
+without-URL frames stay unattributed. Counter spans close with zero nesting
+faults and exclusive categories reconcile to the root layout interval.
+
+Actual packed textRuntime.js invokes execFile for each break-cache miss. The
+shaper already retains NativeShapeSession per font. Supporting tracked Rust
+source has a one-shot ICU segmenter and shaper --serve mode; no rebuild or
+new native capability is claimed. Text cache misses:break2215/shape12976; hits
+break708/shape4135;14020 combined-cache evictions do not independently justify
+more RAM or a cache-policy change.
+
+Recommendation: separately design one persistent ICU segmenter session per
+generation, keeping the same ICU/data versions and segmentation results.
+Define bounded UTF8 framing, order, limits, malformed/mismatched responses,
+timeout, cancellation and close/crash behavior plus old one-shot compatibility
+before implementing. Test exact Thai/English/combining-mark/emoji/newline break
+offsets, large/repeated inputs, per-job isolation, memory and every-page PDF
+parity. Benefit is unmeasured until that candidate exists. Table pagination,
+line-break algorithms, font shaping and cache enlargement remain unchanged.
+Document budget remains this existing plan only; full external evidence,
+294 rendered pages and hashes stay in the evidence root.
