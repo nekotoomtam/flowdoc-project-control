@@ -12,8 +12,8 @@ work under the owner's explicit request on 2026-10-20; execution, Work, Phase,
 and Checklist IDs are not applicable. Risk: routine. Document budget: this one
 file. No closed execution context is reopened.
 
-Status: Stage 0 contract closed; Stage 1 verified on isolated candidate branches
-on 2026-10-20 under the owner's subsequent implementation request. Stages 2–4
+Status: Stage 0 contract closed; Stages 1–2 verified on isolated candidate branches
+on 2026-10-20 under the owner's subsequent implementation requests. Stages 3–4
 remain pending. Numeric resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -187,8 +187,8 @@ working; disabling API readiness would invalidate the proof.
 
 ## Staged development and future checks
 
-Stage 0 is closed as a documented contract. Stage 1 results are recorded below;
-Stages 2–4 checks remain future acceptance.
+Stage 0 is closed as a documented contract. Stages 1–2 results are recorded below;
+Stages 3–4 checks remain future acceptance.
 Implementation must remain isolated until separate integration approval.
 
 | Stage | Deliverable / likely owner paths | Required future acceptance |
@@ -550,9 +550,60 @@ volume: cgroup peak 302.98 MiB, zero OOM events; sampled held storage peaks at
 578,813,952 bytes. Successful tasks return storage and intake grants to zero
 and retain exactly one usage record each. This is not a nine-heavy-job benchmark.
 
-Still required before enabling two workers: Stage 2 worker/sender credits,
+At the Stage 1 checkpoint, still required before enabling two workers were
+Stage 2 worker/sender credits,
 atomic workspace admission with storage waiting, actual overlap and legacy
 worker exclusivity; Stage 3 combined pressure/reaping hardening; Stage 4 the
 3-UAT/6-SRS comparison. Stage 1 still advertises and runs one PDF processor.
 Primary branches, release refs/tags, installed runtime and production data are
 unchanged. Candidate worktrees are retained for the next authorized stage.
+
+## Stage 2 isolated result — 2026-10-20
+
+Service candidate `codex/task-queue-stage2`, commit `98c4f75`, starts from the
+verified Stage 1 commit `af9b8b7`. The existing isolated Service/control worktrees
+are reused on new branches, preserving Stage 1 refs. Inline implementation and
+verification use the owner's continuation approval; execution IDs remain N/A.
+Core/package pins, SQL schema, installed runtime and primary/release refs are
+unchanged. This record does not promote product/map truth or authorize integration.
+
+- The sole processor leader launches at most two task workers without awaiting
+  the first. A worker credit and quota-locked workspace reservation precede its
+  unique FIFO claim. RAM/storage shortage holds the head; impossible per-task
+  workspace size fails before launching. Legacy FIFO turns drain task workers
+  and run alone under the same credit guard.
+- Worker credit lasts through group exit and scratch cleanup; sender credit is
+  separate. A completed worker waiting for a sender has status `sending` and
+  null `send_started_at`; the send deadline starts only after a sender grant.
+  Default local pause gates yield to an actual global worker grant. Explicit
+  smaller local test limits remain active; capability now advertises two workers.
+- Cancellation, leader loss, forced worker death, stable-container restart,
+  original-source retention, expiry and cleanup are covered. Recoverable foreign
+  group quarantine holds both scheduler lanes and resumes after safe cleanup.
+  Unconfirmed termination retains credit/scratch and disables readiness. Legacy
+  descendants, including adopted zombies, must disappear before releasing credit.
+  Missing startup metrics keep standalone legacy mode until restart; metric
+  recovery cannot activate a guard around uncredited fallback work.
+
+Evidence root: `C:/Users/nekot/Documents/Codex/2026-10-20/task-queue-stage2`;
+`receipt.json` maps checks to files. Build and 157 tests across 17 files pass
+without skips. One read-only whole-candidate review found three important issues;
+one RED/GREEN correction pass resolved them. Additional legacy render checks
+required preparing the isolated public-schema fixture; no candidate repair was
+used to hide that missing prerequisite.
+
+Final UAT/SRS replay uses fresh isolated DB/volume and the unchanged 2 CPU /
+1 GiB profile, with two real process groups overlapping: peak 471.11 MiB, zero
+OOM, sampled held bytes 578,813,952. All 168 final pages match the reviewed
+baseline in text, pixels, images/alpha/order and links; 20 fixture PDFs (22 pages)
+also parse/render completely. A coordinator SIGKILL proof with two live groups
+recovers without replay, retains all 204 complete source parts, records one
+usage per task and clears bytes/reservations after isolated TTL ageing.
+
+Retained risk for Stage 3: a replay overlapping another test workload failed
+closed as `UNAVAILABLE` during metric freshness loss, without OOM. The isolated
+final replay passed unchanged thresholds; its maximum observed event-loop lag
+was 472.91 ms and memory-read latency 475 ms, close to the 500-ms bound. This is
+not a general capacity/reliability guarantee. Broader pressure/timing hardening
+and the Stage 4 nine-heavy comparison remain pending; do not silently relax the
+guard to obtain a pass. Failed attempts remain in the evidence root.
