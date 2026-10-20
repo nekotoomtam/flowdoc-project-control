@@ -16,8 +16,8 @@ Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
 on 2026-10-20 under the owner's subsequent implementation and verification
 requests. Development integration and clean merged-lane cleanup were subsequently
 approved and completed; the subsequent authorized Git release is recorded below.
-The subsequent authorized installation is verified except for native chat
-discovery after an app reload, as recorded below. Numeric
+The subsequent authorized installation and native chat discovery are verified,
+as recorded below. Numeric
 resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -969,3 +969,17 @@ Evidence, PDFs and the explicit pending item are retained at
 `C:/Users/nekot/Documents/Codex/2026-10-20/install-049-028/receipt.json`.
 No product source, release/tag or user-template publication was changed by this
 installation. Execution/Phase/Checklist IDs are N/A for this bounded inline work.
+
+## Native chat verification complete — 2026-10-20
+
+After the owner reopened the whole app, this chat exposed all 25 plugin tools.
+The first native context/contract calls found Service unreachable because Docker
+was stopped. Starting Docker and the existing original DB/API containers restored
+the endpoint; no further Codex shutdown, reinstall or draft mutation was needed.
+Native `mcp__flowdocmake__get_flowdocmake_context` now returns `ready:true`,
+package0.2.8, Service0.4.9, Core0.4.7 and the exact delivered Core SHA256/image ID.
+Native `get_authoring_contract` succeeds with queue-v1, maxOutstanding10 and
+maxProcessing2. The installation's final pending item is complete.
+Raw native tool evidence is retained in `native-chat-proof.json` alongside the
+installation receipt above; earlier failures and pending checkpoints remain
+historical observations. Prior queue/PDF checks are reused unchanged, not rerun.
