@@ -12,9 +12,10 @@ work under the owner's explicit request on 2026-10-20; execution, Work, Phase,
 and Checklist IDs are not applicable. Risk: routine. Document budget: this one
 file. No closed execution context is reopened.
 
-Status: owner-approved design direction and staged plan, recorded before
-development. Stage 0 resource thresholds and implementation details remain to
-be closed. This document is not implementation Evidence, a benchmark result,
+Status: Stage 0 contract closed on 2026-10-20 under the owner's documentation-only
+request. Stages 1–4 remain unimplemented and untested. Numeric resource values
+below are trial policy decisions, not measured capacity guarantees.
+This document is not implementation Evidence, a benchmark result,
 deployment approval, or product/map truth. It does not authorize runtime edits,
 tests, integration, release, or installation.
 
@@ -73,9 +74,10 @@ base and candidate dependency before development.
 | Feedback, PDF response, interruption and three-hour source retention | Preserve existing semantics; no new download archive or automatic retry promise |
 
 Source locators: Service `src/tasks/policy.ts`, `repository.ts`, `intake.ts`,
-`processing.ts`, `render.ts`, `quota.ts`, `workspace.ts`, and
-`src/jobs/processor.ts`. Recheck them at Stage 0 rather than treating this
-snapshot as permanently current.
+`processing.ts`, `render.ts`, `quota.ts`, `workspace.ts`,
+`src/jobs/processor.ts`, `src/http/documents.ts`, and `src/db/connection.ts`;
+FlowDocMake `plugins/flowdocmake/scripts/task-client.mjs`. These were read again
+for Stage 0; they remain inspection snapshots, not permanently current truth.
 
 ## Receive, queue, and worker contract
 
@@ -105,8 +107,8 @@ snapshot as permanently current.
    turn an interrupted connection into detached processing or automatic replay.
 7. Age remains three hours from task creation, including receive-slot waiting
    and queue waiting. Never reset expiry when work advances. Define receive
-   wait/active receive/normalization timeout boundaries at Stage 0 so admission
-   leases cannot silently expire while a legitimate request waits.
+   wait/active receive/normalization timeout boundaries using the closed timer
+   table below so admission leases cannot silently expire during legitimate waits.
 8. Preserve source retention until the original expiry after failure, deletion
    after successful delivery, and retained task/usage history. Restart recovery
    closes interrupted work safely; it does not automatically resume that task.
@@ -144,9 +146,9 @@ working; disabling API readiness would invalidate the proof.
   headroom is insufficient, keep the task queued and report the reason; do not
   start it and rely on OOM. Resource waiting must be cancellable and expiry-aware.
   Do not pause both workers in a state where neither can release memory.
-- Stage 0 must close the numeric headroom/reservation model, global high-water
-  actions, memory sample source/interval, and response to unavailable metrics.
-  Existing quota/path/checksum guards must remain active. Never force cache
+- The Stage 0 profile below closes the headroom/reservation model, high-water
+  actions, memory sampling, and response to unavailable metrics. Existing
+  quota/path/checksum guards must remain active. Never force cache
   dropping or close unrelated applications to improve a result.
 - If the 1 GiB profile cannot sustain two active workers, report the constraint
   and propose a separately approved RAM profile. The ceiling remains two;
@@ -184,16 +186,16 @@ working; disabling API readiness would invalidate the proof.
 
 ## Staged development and future checks
 
-All stages below are pending. Checks describe future acceptance, not tests run
-while writing this document. Implementation must remain isolated until separate
-integration approval.
+Stage 0 is closed as a documented contract only. Stages 1–4 are pending. Checks
+describe future acceptance, not tests run while writing this document.
+Implementation must remain isolated until separate integration approval.
 
 | Stage | Deliverable / likely owner paths | Required future acceptance |
 | --- | --- | --- |
-| 0 — close contract | Project Control definition; inspect Service policy/intake/processor/transport and exact base | Close counting, atomic ownership, FIFO, receive/normalization slots and timers, global RAM thresholds, insufficient-space behavior, feedback, and proof-only scheduler hold; decide whether a migration is actually necessary |
-| 1 — admission and receiving | Service `tasks/policy.ts`, `repository.ts`, `intake.ts`, HTTP/feedback boundary as impacted | One owner can admit nine; concurrent requests cannot oversubscribe; receiver saturation waits with bounded buffers; auth, storage exhaustion, disconnect while waiting/receiving, lease and expiry retain correct behavior |
-| 2 — two-worker scheduler | Service `jobs/processor.ts`, `tasks/processing.ts`, render/process lifecycle as needed | Two workers truly overlap and never exceed two; FIFO eligible claims are unique; one failure/cancel cannot affect another; leader loss, restart, reaping, legacy jobs and sender-slot overlap do not leak or double-start work |
-| 3 — global resources and consumer impact | Service memory/storage guards and cleanup; FlowDocMake only where affected | Enforce whole-container RAM/headroom, disk reservations and deletion with two workers plus receive/send overlap; no deadlock on pressure; retained source and usage history remain correct; existing client feedback/PDF contract works |
+| 0 — close contract (documented) | This file, including the closed contract below | Read-only source reconciliation and manual document review; no runtime proof claimed |
+| 1 — admission and receiving | Service policy/repository/intake/HTTP and shared resource-grant foundation; FlowDocMake duplex client and capability consumer | One owner can admit nine; counts cannot oversubscribe; receiver saturation waits with bounded buffers and global intake credits; early feedback must not truncate uploads; old clients retain their existing mode; auth, storage exhaustion, disconnect, lease and expiry remain correct |
+| 2 — two-worker scheduler | Service `jobs/processor.ts`, `tasks/processing.ts`, render/process lifecycle and shared grants | Attach both worker grants to the global memory/storage guard before enabling concurrency two; workers truly overlap and never exceed two; FIFO claims are unique; failures/cancel, leader loss, restart, reaping, legacy jobs and send overlap do not leak or double-start work |
+| 3 — resource hardening and consumer impact | Service global guards/cleanup; FlowDocMake integration | Complete pressure, metric-failure and cleanup checks with two workers plus receive/send overlap; no deadlock; retained source and usage history remain correct; client feedback/PDF contract works. This hardens the existing grant foundation rather than introducing memory control after two workers have already been enabled |
 | 4 — mixed workload proof | Isolated real API + PostgreSQL + named volume, frozen UAT/SRS mocks and candidate | Run nine admitted tasks per comparison arm, all queued before release; compare concurrency one versus two under the same profile; verify output, resources, cancellation and cleanup; report limitations before any integration/release/install |
 
 ## Proof workload and measurement plan
@@ -217,7 +219,7 @@ integration approval.
   disk peaks. Retain raw samples and distinguish sampled peaks from kernel
   memory high-water marks. Do not present per-job container RAM as worker RSS.
 - Record memory before the workload, during all nine tasks, after final cleanup,
-  and through a proposed 30-second idle window. Separately state any additional
+  and through a 30-second idle window. Separately state any additional
   settling observations. Do not infer an unbounded leak from reclaimable cache
   alone or claim indefinite stability from nine jobs.
 - Verify every resulting page against its reviewed reference: strict PDF parse,
@@ -230,7 +232,262 @@ integration approval.
   pressure-induced waiting, timeouts, failures, and unmet prerequisites plainly.
   A two-worker arm must show overlapping real worker execution to establish it.
 
-## Existing verification inputs and remaining decisions
+## Stage 0 closed contract — 2026-10-20
+
+### Execution boundary and persistence
+
+Future isolated implementation starts from Service buffer candidate
+`b0994e753c7699c34b483ac4467faf5ab954d69a`; primary branches remain untouched.
+This chooses the input dependency, not integration approval. Pin Core archive
+`flowdoc-core-0.4.7-release.tgz`, SHA-256
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`.
+Re-resolve changed inputs before execution; do not silently switch candidates.
+
+Keep existing task/job identities, status enums, pins, events, files, reservations,
+and usage records. No migration is planned: versioned `resource_policy` JSON and
+existing events can record the new limits/waits. If implementation demonstrates
+a missing durable invariant, return that finding before adding a migration.
+Use a distinct internal policy version `task-v1-queue-2worker-trial-1`; existing
+task policy snapshots are immutable and do not inherit new numeric values.
+
+One Service coordinator remains the sole processor leader for one database and
+task root. Its two workers are child process groups, not competing Service
+instances. Claims, ownership and resource grants are atomic; no duplicate
+generation or stale worker may publish after losing its lease. Every new task
+phase records the existing process-start identity as well as PID/host so PID
+reuse cannot make a dead owner appear alive. Keep stable hostname/root ownership
+for this trial; cross-host failover remains excluded.
+
+FIFO for receive/normalization slots is `(tasks.created_at, tasks.id)`. A slot
+is held from body consumption through normalization completion, at most two
+combined intake pipelines; a blocked normalization retains its slot. Ready
+document FIFO is `(generation_jobs.created_at, generation_jobs.id)`, meaning
+readiness order, not a promise to delay ready work behind an incomplete upload.
+Do not skip a ready FIFO head only to favor a smaller task when RAM/storage is
+insufficient; retain its explicit resource wait until capacity, cancel or expiry.
+
+The two-worker ceiling covers all document workers. Existing legacy job handling
+remains serial and exclusive with task workers: at a legacy FIFO turn, drain
+already running task workers, run that legacy job alone, then resume task
+scheduling. Legacy work counts in the global outstanding ceiling and resource
+checks; it must not bypass the two-worker guard or start a third renderer.
+
+### Admission, API and feedback
+
+Keep `POST /documents`, `doc-key` in the header, multipart JSON/images, existing
+Section-local asset scope, and the `task-v1` multipart response envelope. New
+queued/full-duplex behavior is explicit opt-in with one `task-mode: queue-v1`
+header. Duplicate/unknown mode values are `INVALID_REQUEST`; an unsupported
+mode must fail before task creation, never silently downgrade.
+
+Advertise `queue-v1`, early-response/continued-upload support and numeric limits
+through an additive Service capability. A new FlowDocMake client checks that
+capability before selecting queue mode. Missing capability means this nine-task
+flow is unavailable; never claim older installed versions support it.
+
+In queue mode, after authorization/template lookup and atomic initial reservation,
+open the response with a `task` event containing `taskId`, original timestamps,
+template pin and `status: awaiting_input`. This acknowledges task admission,
+not complete receipt or storage of the body. Emit wait/phase feedback while the
+request remains attached. Only after complete receipt and normalization is it
+acknowledged as `queued` for document processing. No body buffering before the
+receive grant is permitted.
+
+Waiting application metadata is capped at 64 KiB per task; transport-layer
+request/response application buffers together are capped at 1 MiB per admitted
+connection, with at most one pending feedback write and one replaceable heartbeat
+value. Existing 32-KiB event and 64-KiB write limits still apply. Kernel socket
+buffers and parsers also count in actual cgroup charge; this application cap is
+not a bound on total connection memory. A bound violation is `LIMIT_EXCEEDED`,
+not permission to start draining the entire body into RAM.
+
+An updated client must continue streaming the entire request after a successful
+early response, while reading feedback concurrently. Only terminal rejection,
+cancellation or connection loss stops upload. The current `taskRequest` loop
+breaks on any response and therefore must change before queue mode is enabled.
+Bound both directions, serialize each response's writes, coalesce heartbeat
+updates instead of accumulating an event backlog, and preserve final PDF length,
+hash and exclusive local publication checks. Without a successful duplex proof,
+nine-task admission is not ready for acceptance.
+
+Requests without `task-mode` retain response-after-receipt behavior; a busy
+receiver may still reject this old mode before task creation. Do not send early
+success to an old client. Old mode shares the new outstanding, storage and
+processor ceilings but is not advertised as supporting nine waiting uploads.
+JSON task lookup remains unchanged. Reverse proxies must permit request and
+response streaming without full-body buffering; this is a deployment prerequisite,
+not permission to modify production proxy settings in this round.
+
+Use existing status enums. Optional feedback `detail.waitReason` is one of
+`receive_slot`, `memory`, `processing_slot`, `storage`, `legacy_turn`, or
+`send_slot`. Waiting input is `awaiting_input`, active normalization is
+`validating`, ready worker waits are `queued`. A completed worker awaiting a
+sender is `sending` with `waitReason: send_slot`; start the actual send timer and
+`send_started_at` only when a sender is acquired. Worker counters must follow
+process-group lifetime, not infer activity from a status label.
+
+Send state changes promptly and heartbeat at most every 10 seconds while waiting,
+receiving or normalizing; retain processing feedback at most once per second.
+No exact queue-position, completion percentage or ETA promise. Once the binary
+PDF part begins, do not interleave JSON. Capacity rejection before admission is
+`QUEUE_FULL` or `STORAGE_CAPACITY`, no new task; errors after admission use that
+task's terminal feedback/history. A failed response does not prove the client
+received its `taskId` and does not introduce automatic deduplication.
+
+### Slot ownership and time limits
+
+| Limit | Closed value / rule |
+| --- | --- |
+| Global outstanding / task ceiling / per-owner trial ceiling | 10 / 10 / 10; global includes legacy outstanding jobs; task jobs counted once |
+| Intake pipelines / document workers / senders | 2 / 2 / 2, independently granted and released |
+| Admitted task-request connections | At most 10, further reduced by shared outstanding consumption; no unbounded extra waiter list |
+| Absolute lifetime | 3 hours from DB-created `created_at`; never extended by progress, retries or changing slots |
+| Receive-slot or queued/resource/sender-slot waiting | Until original expiry, disconnect or explicit cancellation; no separate short queue timeout |
+| Active receive | At most 30 minutes from intake grant, also bounded by original expiry |
+| Client input idle | 60 seconds while the server is actively willing to read; server-induced backpressure/resource wait does not count as client idleness; on resumption a fresh idle interval starts, but active receive and absolute deadlines do not reset |
+| Normalization | 15 minutes from normalization start, including resource pauses, bounded by original expiry |
+| Document processing | 90 minutes from actual worker claim, including resource pauses, bounded by original expiry |
+| PDF transmission | 30 minutes from actual sender grant, bounded by original expiry; sender-slot waiting is separate |
+| One blocked response write | 60 seconds, then treat as connection loss; heartbeat is not an extension of this stalled-write limit |
+| Ownership lease / renewal | 30 seconds / at most every 10 seconds in every admitted live phase, including slot waits; renewal never extends absolute expiry |
+| Cleanup sweep / stop grace | Existing 10-second sweep / 5-second graceful worker stop, then kill only that owned process group and reap |
+
+Each stage deadline is the earlier of its stage limit and original expiry. If
+expiry and a stage timeout coincide, report `TASK_EXPIRED`; otherwise use
+`TASK_TIMEOUT`. Service-wide leader loss or invalid lease stops owned work as
+`WORKER_INTERRUPTED`. Keep the existing safe connection-loss behavior, closed
+source retention and cleanup/history rules. A dead process is not kept alive by
+renewing its task from an unrelated request.
+
+Waiting timers and heartbeats must work before body receipt. Keep the native
+client's three-hour request cap and 60-second socket idle guard with concurrent
+feedback; do not solve waiting by removing all timeouts. Proxy/client request
+duration must allow the original task lifetime, with streaming heartbeats and
+the separate final-write guard. Clients may still cancel sooner.
+
+Keep a global pool of at most **8 PostgreSQL connections** for this trial (current
+code has 5): one is held by the leader, up to seven handle short operations.
+Preserve 5-second acquisition/lock bounds and 15-second query/statement bounds.
+No request holds a DB connection or transaction while parked on a slot, doing
+CPU work, streaming the body/PDF, or awaiting the client. Cap queued-status reads
+at one per second per task, rather than nine independent 20-ms polling loops;
+lease/feedback work can share a read. This is a planned pool/polling change,
+not a current runtime assertion.
+
+### Closed trial RAM profile
+
+All values here are Service-cgroup policy credits, not measured RSS guarantees.
+The profile is 2 CPU / **1,024 MiB** hard container RAM; no swap allowance beyond
+that limit. Do not apply these absolute thresholds unchanged to a smaller limit.
+
+| Budget or guard | Closed value |
+| --- | ---: |
+| Coordinator/metadata/base credit | 128 MiB |
+| Intake plus normalization credit | 64 MiB per held pipeline, at most 2 |
+| Document-worker credit | 320 MiB per live process group, at most 2 |
+| Sender credit | 8 MiB per active sender, at most 2 |
+| New active-stage launch ceiling | 768 MiB |
+| Stop admitting new active stages on high water | 832 MiB actual cgroup charge |
+| Resume after pressure | At most 704 MiB for 10 consecutive 100-ms samples |
+| Emergency pressure | At least 896 MiB for 3 consecutive 100-ms samples |
+
+Under one atomic coordinator grant, let `credits` include base and all current
+stage grants, and let `delta` be the requested new stage credit. Grant only if
+`max(memory.current, credits) + delta <= 768 MiB`, the stage-count ceiling allows
+it, and no pressure/metric/stop latch is active. Count an atomic intake-to-ready
+or worker-to-sender transition by releasing the old stage only after it actually
+ends. Idle admitted tasks hold bounded metadata, not an intake or worker credit.
+For example two workers alone use 128 + 320 + 320 = 768 MiB credits; intake or
+send overlap may therefore delay the second worker. This is intentional and must
+appear in wait measurements, not be hidden as a two-worker pass.
+
+Sample Linux cgroup-v2 `memory.current`, effective `memory.max`, `memory.stat`
+and OOM events every 100 ms; measure `memory.peak` separately. Use a sample no
+older than 500 ms for a grant, and validate the actual hard limit at startup.
+Count file cache and kernel charge in the guard; anonymous/file breakdown is for
+diagnosis, not permission to subtract cache from the limit. DB/host memory is
+reported separately. If required metrics are missing at startup, queue-mode
+generation is unavailable. On a read failure stop new grants immediately; if
+metrics stay unavailable for 500 ms, safely cancel affected active pipelines as
+`UNAVAILABLE`, rather than substitute guessed process RSS.
+
+At high water keep already active work progressing, withhold new grants and
+record memory waits; do not freeze both workers. Resume only after hysteresis.
+At emergency pressure, stop the newest active document worker as `RESOURCE_LIMIT`
+using its original processing time/id order; if no worker exists, stop the newest
+active intake pipeline. Stop one victim at a time and reassess only after it has
+exited/reaped. If pressure persists, continue with the next newest active pipeline.
+No new work may start during this sequence. If only sending remains, cancel the
+newest sender and remove its undelivered PDF safely. Resource cancellation still
+retains eligible originals until expiry and records one terminal usage history.
+
+The credit scheme and headroom are conservative trial decisions; they cannot
+prove OOM prevention before validation. Unexpected fast allocations and cache
+charging remain future proof risks. Large retained cache can also conservatively
+block a grant even if Linux could reclaim it; report that resource wait and its
+expiry instead of subtracting cache or claiming progress. Keep existing
+reader/cache/index/reuse and 64-KiB IPC/output-buffer bounds unchanged and within
+these credits. Do not give
+every queued task its own read grant. Connect existing per-worker pause/stop
+checks to this global guard in Stage 2, before enabling two workers; Stage 3
+hardens the pressure/failure paths. Two workers must not deadlock at isolated
+pause gates or exceed the container together. If the profile cannot demonstrate
+two real workers, report that result and return for a resource-policy decision;
+do not silently tune thresholds, raise RAM, or force cache dropping.
+
+### Closed storage and request bounds
+
+Keep the existing pool at **1,500,000,000 bytes**, actual free-space floor
+**268,435,456 bytes**, per-task bound **1,000,000,000 bytes**, initial reservation
+**8,388,608 bytes**, and reservation growth **8,388,608 bytes**. Ten initial task
+reservations consume 80 MiB (nine consume 72 MiB); this is not a reservation for
+their unknown complete bodies. Keep existing per-request 512 MiB, JSON 64 MiB,
+image 50 MiB, normalized 256 MiB, PDF 256 MiB and 1,001-part limits.
+
+Under the existing shared admission transaction/lock, let `delta` be the new
+initial reservation or positive growth not yet included in held values. Enforce
+both `held task reservations + legacy reserved/output bytes + delta <= poolBytes`
+and `unused task reservations + unused legacy reservations + delta <= actual
+free bytes - freeFloorBytes`. Apply delta once; do not double-count task used
+bytes. Reject before creating a task if its initial reservation cannot fit.
+On body/normalization growth failure,
+terminate that task with `STORAGE_CAPACITY`, preserving only eligible complete
+source parts. Do not consume more bytes without a reservation.
+
+Move the current render workspace pre-reservation out of every queued request's
+`execute` path: reserve it only at worker admission, atomically with the worker
+grant and memory credit. Use the existing pinned-font workspace bound plus
+64 MiB headroom over current task used bytes; also enforce the per-task bound.
+If that known minimum can never fit this task's limit, fail `LIMIT_EXCEEDED`;
+if it cannot currently fit the shared pool/free disk, stay queued with `storage`
+wait reason until release, cancel or original expiry. Unknown derivative/PDF
+growth later uses normal guarded reservations; inability to grow terminates that
+task safely, not an unbounded retry. This prevents nine idle queue entries each
+reserving an active renderer's workspace.
+
+Account for both workers, all admitted sources/normalized files, sends, legacy
+consumers and retained failed inputs. After terminal status, cleanup failures
+retain storage accounting even if the outstanding slot is free. On successful
+deletion reconcile actual bytes before releasing storage; never release worker,
+intake or sender credits before their owned activity stops.
+
+### Closure and future proof boundary
+
+Stage 0 checks performed: read-only source reconciliation and manual consistency
+review of counts, timers, feedback, resource formulas, ownership and future
+acceptance. No runtime, client, capability, SQL schema, Docker configuration,
+test fixture, installed package, or production data changed; no tests ran.
+
+Stage 0 has no unresolved policy choice for this bounded trial. Production
+fairness, proxy deployment, multi-instance recovery and larger RAM/storage
+profiles remain explicitly deferred. The exact new configuration/capability
+field placement is code-local implementation detail; the limits and semantics
+above may not be silently weakened. Future evidence must demonstrate nine tasks
+really queued, two process groups overlapping, no truncation after early
+feedback, bounded resources and correct expiry/cancellation/cleanup. Failure
+returns to the responsible stage; it is not retroactive closure evidence.
+
+## Existing verification inputs
 
 The local named-volume verification receipt is at:
 `C:/Users/nekot/Documents/Codex/2026-10-20/uat-volume-verification/receipt.json`.
@@ -238,9 +495,6 @@ Its measurements and all-page checks cover serial UAT on the frozen buffer
 candidate, interruption/restart, source retention, expiry simulation, and
 cleanup. They are reusable inputs, not two-worker or nine-task Evidence.
 
-Before runtime work, close Stage 0 and the exact Git base, resource thresholds,
-receive-wait timeout semantics, DB/pool connection budget, interaction with
-legacy jobs/sends, and whether fairness beyond one owner's trial is needed.
 Default scope excludes a queue broker, multi-instance failover, new public batch
 API, automatic retries, billing changes, new document capabilities, release,
 and production installation. Add none merely to satisfy the trial.
