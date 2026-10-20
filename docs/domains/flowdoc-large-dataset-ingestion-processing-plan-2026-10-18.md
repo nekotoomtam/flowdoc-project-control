@@ -6,7 +6,7 @@ Owner: FlowDoc Project Control. Product owners: Service for intake, storage,
 admission and job lifecycle; Core for validation, composition, layout and PDF
 writing; FlowDocMake for authoring transport and result presentation.
 Active role: Product Implementation Agent / Evidence Reviewer for the isolated
-read-optimization Stage3 candidate below; main integration is retained history.
+read-optimization Stage4 candidate below; main integration is retained history.
 Work/Phase/Checklist execution IDs: not applicable (single-room owner request).
 Stage 0 specification completed 2026-10-19 under the owner's request to close the
 contract; the concrete contract below is the development baseline for review.
@@ -15,7 +15,7 @@ boundaries and evidence recorded below: Core0.4.7, Service0.4.8, FlowDocMake0.2.
 The owner authorized main integration and clean merged-lane cleanup on 2026-10-19.
 The final integration ledger records its actual outcome separately from the
 historical isolated-stage ledgers. Read-optimization Stage0 is specified below;
-Stages1–3 have isolated verified candidates below; later optimization stages remain proposed.
+Stages1–3 have isolated verified candidates below; Stage4 results are recorded below; Stage5 remains deferred.
 No installed configuration, release, tag or
 deployment changes are authorized in this round.
 
@@ -1755,8 +1755,8 @@ diff whitespace check PASS. Main/release/install remain untouched.
 
 ### Composition read optimization — plan, 2026-10-19
 
-Authority: the owner separately authorized read-optimization Stages0–3; their
-isolated verified candidates are recorded below. Stages4–5 remain proposed.
+Authority: the owner separately authorized read-optimization Stages0–4; their
+isolated candidate results are recorded below. Stage5 remains deferred.
 Service owns file-backed readers;
 Core owns validation/composition and template access. Main integration
 does not authorize runtime optimization. Keep this in the existing plan, with no
@@ -1785,7 +1785,7 @@ separate kind/scalar/property readers create fresh16KiB cursors and reread range
 Validation and later binding revisit values. Creating nodes is not the measured
 dominant cost.
 
-Sequence: Stages0–3 were separately authorized; later steps need bounded authorization:
+Sequence: Stages0–4 were separately authorized; Stage5 needs bounded authorization:
 
 | Step | Change and owner | Required checks |
 | --- | --- | --- |
@@ -1793,7 +1793,7 @@ Sequence: Stages0–3 were separately authorized; later steps need bounded autho
 | 1 (isolated candidate complete) | Service shared bounded read windows per sealed immutable input | Fewer reads/bytes; UTF-8, escape, token and EOF across windows; concurrent cursors, abort/close/recovery; RAM under large inputs/concurrent tasks |
 | 2 (isolated candidate complete) | Service bounded object-field-to-offset index | Preserve duplicate/unknown/missing-key and scalar rules; eviction/oversized-object fallback; model18/19 and Section/task isolation |
 | 3 (isolated candidate complete) | Core + Service bounded per-record/subtree reuse | Source IDs/order, repeated rows, clone isolation; oversized-record fallback; release state after record use; generator/error/cancellation parity |
-| 4 | Core compile template access once per pinned template | Fingerprint/model/binding-sensitive invalidation; preserve conditions/empty branches and required validation; no eager loading of all records |
+| 4 (functional proof complete; performance gate failed) | Core compile template access once per pinned template | Fingerprint/model/binding-sensitive invalidation; preserve conditions/empty branches and required validation; no eager loading of all records |
 | 5 (deferred) | Reuse verified-normalization receipt under a closed trust contract | Bind input hash, template fingerprint, schema, normalizer/validation versions and limits; tamper/stale/recovery checks; unknown provenance performs full validation |
 
 Stage0 is closed below; start Stage1 only after owner authorization and measure
@@ -2500,3 +2500,104 @@ actual FlowDocMake repinning, integration/release/install, template-access
 compilation and trusted-normalization receipt reuse are later work. No main,
 release/tag/push/install, schema/TTL/data-policy change or map promotion occurred.
 Stage3 ends at the clean isolated commits; Stages4–5 are not started.
+
+
+### Read-optimization Stage4 — operation-local template access, 2026-10-20
+
+Owner authorized Stage4 implementation and verification, keeping all work isolated.
+Core owns schema field entries, binding references, repeat lookup maps and the
+shared Area index; Service only consumes the actual packed candidate. Project
+Control owns this existing plan. Inline implementation, routine risk; execution
+IDs N/A. No main/release/tag/push/install, schema/API persistence change or Stage5
+validation-trust shortcut. Stage3 bases: Core87f50e4, Service36b4bae, PC8646f20.
+
+Ruling: one access owner per normalize/compose call, rather than a process cache —
+validated definitions are deeply frozen; new fingerprints/models/bindings/clones
+get fresh owners without stale cross-call reuse. Cost: compilation repeats for
+separate calls; accepted to bound lifetime and avoid invalidation ambiguity.
+Schema/repeat/binding plans are lazy, with at most2,048 retained plans and1MiB
+accounted metadata per operation. This accounting is not an exact V8 heap bound;
+measure process/cgroup RAM too. Existing template/Area-index memory remains.
+Budget exhaustion or explicit templateAccess:false builds the same transient
+access plan; both full validation walks, limits, conditions/empty branches and
+record release remain. No task values, decoded records or IO handles are cached.
+All paths release plans on completion/error/abort; compile does not enumerate
+business records. One final fresh source review; no per-task reviewer loop.
+
+Acceptance: focused RED/GREEN, Core affected suites/build, actual packed Linux
+Service consumers, fingerprint/changed binding/model18/19/clone/empty parity;
+three alternating off/on pairs on the same package with previous optimizations
+on in both modes (2CPU/1GiB), full SRS median no >5% regression, lower composition
+median; UAT/SRS/SB.1 all660 pages against reviewed oracle, task/quota/file cleanup.
+Measurements are one fixed batch, never repeated for a better score. Full-job
+off/on is test-only source-hash-bound compose option injection; Service's intake
+normalization uses the default in both modes. No installed plugin change.
+
+Evidence: C:/Users/nekot/Documents/Codex/2026-10-20/template-access-stage4.
+Status: functionality verified below; performance acceptance failed, candidate retained for review.
+
+
+Stage4 verification result: RISK — performance gate not met; no promotion.
+
+Core source commit: 96befec347b1977ae5e57a173edb30f0f2ebaf6d. Service consumes the actual
+flowdoc-core-0.4.7-template-access-stage4.tgz, SHA256
+ef855ab550d9951ab2f9e9901881df2b98bcd4750a9a11c7216e7f7816c45395. Its manifest pins that exact source commit;
+package version remains private baseline0.4.7 (Service0.4.8), not a published
+release. Unpacked archive JS/types match compiled Core; native/font/license
+resources remain byte-identical to reviewed baseline. Service source is unchanged.
+An external test-only FlowDocMake mirror pins this checksum with its strict guard
+retained. Tracked and installed plugin are unchanged; future promotion requires
+version assignment and real compatibility repin.
+
+RED: new access-plan test failed because taskAccess did not exist. GREEN: all
+200 affected Core cases pass, including template-access/uncached parity, stale
+fingerprint, changed clone, empty Area, model18/19, required fields, source IDs,
+repeated rows, abort/error release and metadata fallback. Core/Service builds pass.
+Linux actual-package consumer:128/128, zero skipped. Model parity12 cases/24
+normalization executions preserve output/errors for missing/duplicate/unknown/
+wrong-type fields and missing Sections. Fresh whole-source reviewer found no
+Critical/Important/Minor issues. Review set aside runtime/archive/performance/PDF/
+cleanup evidence for parent verification; those prerequisites are discharged here.
+Release/install/Stage5 remain out of scope, not waived checks. No deferred minors.
+
+Fixed paired batch (no score-driven repeat),2CPU/1GiB, DB separate; previous
+reader/index/record optimizations ON in both modes. Composition seconds OFF
+1.308855, 1.266374, 1.321945, ON
+1.506122, 1.252033, 1.313040. Medians
+1.308855 → 1.313040s
+(-0.32% reduction). Full SRS98 medians
+73.247851 → 70.711741s
+(3.46% reduction). Performance gate
+FAIL: lower composition median plus no >5% full-SRS regression.
+Small differences and run variance do not establish a universal causal speedup.
+Read counters are logical requests, not physical IO; template metadata reuse
+does not promise fewer file reads. Full-job modes use the same phase hooks;
+composition has no timing hooks. Full phase times overlap and are not additive.
+
+Maximum full-job kernel cgroup peak: 301.438MiB.
+Accounting ceiling1MiB/2,048 plans bounds retained template metadata accounting,
+not exact V8 heap; per-operation caches hold no task data. Existing reader/index/
+record grants remain bounded and return to zero before later PDF work.
+UAT/SB.1 are unpaired correctness runs, not speed comparisons.
+
+All8 PDFs/660 pages passed strict parse, zero Poppler diagnostics and all-page
+exact text/pixel/image-byte/alpha/order/link-geometry/target parity to the reviewed
+Stage6 baseline. SRS98, UAT70 and SB.1two preserve their existing source/layout
+limitations; this verifies regression parity, not new source fidelity. Saved PDFs,
+rendered pages, hashes and complete phase/cgroup logs remain in the evidence root.
+Manual representative visual review is separately recorded there.
+Eight succeeded tasks retain event/usage history; owned task files, child PIDs
+and disk reservations are zero after cleanup. Physical disk peak was not sampled.
+Documentation authority22/22 and final diff checks cover the single-plan change.
+All candidate branches remain isolated and retained; no merged-lane cleanup, main
+integration, release/tag/push/install or Stage5 work is performed.
+
+Ruling: the inherited SRS manifest payloadHash names a pre-variant payload;
+keep that historical field intact and bind comparisons to input-proof.json's
+actual SHA256 instead. All Stage4 fixture files match Stage3 and all per-run
+copies; composition template/normalized/oracle hashes match their frozen
+fixture receipt. Actual SRS payload SHA256 is
+8ee4f598e6ab0a394d454bee2505db117086224704159e8ad17c3bbc2536e3df.
+No input mutation or replacement measurement was used. Cost if this identity
+reconciliation were wrong: unsupported performance comparison; byte equality
+and complete PDF oracle checks independently cover this prerequisite.
