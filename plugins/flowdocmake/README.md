@@ -108,6 +108,11 @@ of `{pointer,path,type?}`. The payload keeps Section assets/assetKey; file point
 name image source objects in the original JSON. Both payload and images are read
 incrementally. Exact old/new task capability and package identities are required
 before upload. Existing authoring/preview calls keep their original contracts.
+
+The development client opts into `queue-v1` when the authenticated Service
+advertises that capability. It uploads the whole body while reading early feedback;
+Services without that capability retain the existing task path. This source update
+does not reissue the tagged plugin or change its installed copy.
 This export tool uses an already authorized registered template; it does not publish
 or convert an unpublished draft. Draft preview remains the bounded legacy path.
 
