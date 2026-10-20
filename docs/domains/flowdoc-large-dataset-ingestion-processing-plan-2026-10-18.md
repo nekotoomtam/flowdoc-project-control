@@ -2988,3 +2988,49 @@ RISK receipt remains immutable historical evidence; this result closes that
 specific reaping prerequisite for the candidate's supported init-enabled launch.
 Existing installed containers remain unchanged and are not claimed repaired.
 No main integration, release/tag/push or installation is authorized or performed.
+
+### Owner-authorized development integration and cleanup, 2026-10-20
+
+PASS for local development integration. The owner now authorizes integration and
+cleanup, while release/push/installation remain excluded. Core5fc454c is on
+codex/template-binding; Service33d4bd7 is on codex/template-registry; Project
+Control main contains the94138e1 record chain plus this closeout. Names stay as
+previously agreed. All accumulated read-cache, field-index, record-reuse, prepared
+template-access and persistent-segmenter/reaper commits are retained by ancestry.
+Initial merges were unchanged fast-forwards with identical Git trees and no
+conflicts. Phase/Checklist/execution IDs remain not applicable to this inline work.
+
+Fresh primary Core/Service builds pass. The Core runtime/build payload matches the
+reviewed archive; the Windows checkout's font-license file differs only by CRLF
+versus LF. The Service development dependency matches all172 archived payload
+files and SHA256938c8627ec86c03d040dffc7fc8892b7a146182f4f4ed25f99b5cf099b62fe1a.
+One Service compiled SQL-template file also differs only in line endings, so the
+complete128 affected Service cases were freshly rerun against primary dist in a
+dedicated Linux test DB:128 pass,0 skip. Core130-case and660-page PDF evidence is
+reused for unchanged source, compiled/runtime bytes and validated package context;
+no new rendering algorithm or performance claim is introduced.
+
+The fresh primary supervision check exposed an ESRCH /proc read race in the test
+itself: a process can disappear between opening and reading its stat file. The
+owner lane fixed only that checker to accept ESRCH alongside ENOENT; all other
+errors and zombie states still fail. Commit33d4bd7 was checked and fast-forwarded;
+the primary check then passes3 normal and3 forced-worker cases with0 zombies.
+Prior real API cancellation/expiry proof remains valid; no runtime change was
+needed for the checker repair. The historical Stage4 performance gate failure
+and original-source fidelity differences remain historical, not relabeled PASS.
+
+After acceptance,3 clean merged worktrees and12 local temporary branches were
+removed; Project Control's managed worktree was archived recoverably. No remote
+branch was deleted. Core/Service build outputs and native resources needed for
+reproduction were copied and hash-checked outside the lanes before removal;
+dependency and Rust target caches were classified as reproducible. Core's shared
+node_modules junction was unlinked without deleting primary dependencies.
+Current canonical locator is this plan in the primary Project Control checkout.
+Evidence and preserved outputs: C:/Users/nekot/Documents/Codex/2026-10-20/segmenter-main-integration,
+receipt.json,primary-build-identity.json,service-tests.json,reaping-after-merge.json,
+cleanup-preflight.json,removed-branches.json and preserved-outputs.json. Earlier
+external evidence remains at its immutable locators. This closeout uses only the
+existing shared plan; no maps, registries or generated projections are promoted.
+Release branches/tags and installed systems remain unchanged. Temporary test
+container/DB were stopped/removed as appropriate; Docker returns to its prior
+stopped state, with final checks recorded in the receipt.
