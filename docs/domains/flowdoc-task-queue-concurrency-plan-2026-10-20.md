@@ -196,8 +196,57 @@ Implementation must remain isolated until separate integration approval.
 | 0 — close contract (documented) | This file, including the closed contract below | Read-only source reconciliation and manual document review; no runtime proof claimed |
 | 1 — admission and receiving | Service policy/repository/intake/HTTP and shared resource-grant foundation; FlowDocMake duplex client and capability consumer | One owner can admit nine; counts cannot oversubscribe; receiver saturation waits with bounded buffers and global intake credits; early feedback must not truncate uploads; old clients retain their existing mode; auth, storage exhaustion, disconnect, lease and expiry remain correct |
 | 2 — two-worker scheduler | Service `jobs/processor.ts`, `tasks/processing.ts`, render/process lifecycle and shared grants | Attach both worker grants to the global memory/storage guard before enabling concurrency two; workers truly overlap and never exceed two; FIFO claims are unique; failures/cancel, leader loss, restart, reaping, legacy jobs and send overlap do not leak or double-start work |
-| 3 — resource hardening and consumer impact | Service global guards/cleanup; FlowDocMake integration | Complete pressure, metric-failure and cleanup checks with two workers plus receive/send overlap; no deadlock; retained source and usage history remain correct; client feedback/PDF contract works. This hardens the existing grant foundation rather than introducing memory control after two workers have already been enabled |
+| 3 — resource hardening and consumer impact | Service global guards/cleanup; FlowDocMake integration | Complete pressure, metric-failure and cleanup checks with two workers plus receive/send overlap; diagnose and reduce metric freshness delays using the bounded sequence below; no deadlock; retained source and usage history remain correct; client feedback/PDF contract works. This hardens the existing grant foundation rather than introducing memory control after two workers have already been enabled |
 | 4 — mixed workload proof | Isolated real API + PostgreSQL + named volume, frozen UAT/SRS mocks and candidate | Run nine admitted tasks per comparison arm, all queued before release; compare concurrency one versus two under the same profile; verify output, resources, cancellation and cleanup; report limitations before any integration/release/install |
+
+### Stage 3 metric freshness follow-up — owner decision 2026-10-20
+
+Include the Stage 2 `UNAVAILABLE` timing risk in Stage 3; this addition is a
+plan update only, not authorization to start runtime development or tests.
+Preserve the Stage 2 acceptance record and failed-attempt evidence. The failed
+attempt did not record enough per-read timing to establish whether file reads,
+event-loop delay or shared-host contention caused the freshness loss. Lack of
+fresh metrics is distinct from measured memory exhaustion.
+
+Proceed in this order when Stage 3 implementation is authorized:
+
+1. Add bounded diagnostics for scheduled versus actual sampling time, read
+   start/completion or timeout, last successful sample age, event-loop delay,
+   and active pipeline phase. Record metric failure reason separately from
+   high/emergency memory pressure. Do not retain request bodies or unbounded
+   sample arrays; monitoring overhead stays within the existing RAM credits.
+2. Use those measurements to identify long uninterrupted receiving or
+   normalization work. Where demonstrated, divide that work into bounded
+   chunks and yield so sampling, cancellation, leases and feedback can run.
+   Preserve validation order, checksums, backpressure and bounded buffering;
+   do not load a whole queued input or add parallel intake to make it faster.
+3. Only if timing remains inadequate, evaluate a separate monitoring process.
+   It must read the same Service cgroup, timestamp fresh completed readings,
+   bound IPC and account for its RAM/process lifetime. Lost/stale readings,
+   monitor exit and cleanup still fail closed. Process separation does not
+   guarantee timely CPU scheduling; an architectural change returns for an
+   explicit scope decision before implementation.
+
+Keep the 100-ms sampling target, 500-ms freshness/read-failure bounds, memory
+credits and pressure thresholds unchanged. Stop new grants when metrics are
+unavailable and safely stop affected active pipelines at the agreed bound;
+never relabel stale values as fresh or replace cgroup charge with guessed RSS.
+Any threshold change requires a separate supported policy decision, not tuning
+until a proof passes.
+
+Future acceptance: compare the unchanged Stage 2 candidate with the Stage 3
+candidate using frozen UAT/SRS inputs on the same 2 CPU / 1 GiB profile, both
+isolated and under a bounded, recorded shared-host load. Cover two real workers
+plus intake/send overlap, deliberate metric failure/staleness and cancellation.
+Report sample-age/read-time/event-loop distributions and maxima, `UNAVAILABLE`
+counts with reasons, monitoring overhead, RAM/storage peaks and stage/total
+times. Distinguish delays waiting to run from time awaiting a read callback;
+neither proves physical I/O latency alone. All-page PDF parity, feedback,
+leases, source retention, one usage record per task and cleanup must remain
+correct. Require no unexplained freshness-related stops in the agreed normal
+workload, and verify safe stopping under injected loss; retained timing risks
+or inability to meet the existing bound must be reported before Stage 4 rather
+than hidden by looser limits. Stage 4 retains the full nine-heavy-job comparison.
 
 ## Proof workload and measurement plan
 
