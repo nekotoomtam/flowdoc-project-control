@@ -3132,3 +3132,37 @@ cache permission error was resolved by a private /tmp cache, without changing
 host caches or product source. All attempted outputs remain outside source repos.
 No installed config/cache/database was changed. Remaining gate: documentation
 checks, exact frozen delivery/snapshot/tag ancestry and remote atomic read-back.
+
+Git release result: PASS, published and read back from GitHub. Core v0.4.7
+snapshot ad91e1888835c0ebc31d03c0ef9593d0bd735233 from development8f8a739;
+Service v0.4.8 snapshot3c949397ddd0f158c67f2b5297f207bd1b6db63e from ef26740;
+FlowDocMake flowdocmake-v0.2.7 snapshot ead84931de43b0d5dffee55804151d6b3cb8dfff
+from Project Control7138d29. Each snapshot tree equals its named frozen source;
+each has the previous release as its sole parent. Core/Service chains contain
+11 annotated-tagged commits each, component chain2; every earlier tag object and
+peeled target remains unchanged. No development history enters release ancestry.
+All3 default/source branches were included with their release/tag in per-repo
+atomic pushes, then remote tips and annotated/peeled targets were read back.
+This final shared-status-only commit follows on PCmain; the component source/tag
+remains7138d29/ead8493 and is never moved to accommodate a later status note.
+
+Final delivery core SHA25613673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad;
+plugin ZIP SHA2565075e3e409465e8ab22c2e75c8602cddf47d056123fd9fdb588c828928c5addb.
+Plugin ZIP49 files match the actually tested working package byte-for-byte;
+committed content is equivalent under Git newline rules and all30 hash-pinned
+reference files remain exact. The initial Git-archive ZIP's checkout newline
+conversion was detected; that attempt is retained under pre-final-docs and is
+not shipped. The final ZIP uses tested bytes and is independently checked.
+Source/tree/version/hash and test proofs are frozen in delivery/delivery.json,
+frozen-sources.json,prepared.json,published.json and receipt.json in the existing
+release-047-048 evidence directory. Backup bundles and old artifacts are retained.
+
+Required repo-local manuals and image defaults match the pair and migrations
+through024; optional tasks require explicit trusted credentials and init. Final
+tests:40 plugin,14 Service/API,6 supervision,22 documentation, all0 skips; runtime
+and previously reviewed PDF proofs are reused only under the171-file byte proof.
+Isolated test containers were stopped/removed, DB stopped and Docker restored.
+No production deployment, installed plugin/config/data change, registry package
+or image publication, or GitHub Release page was performed. No new worktree or
+temporary Git branch remains. Next discussion is pdf-write diagnosis; no writer
+implementation or performance tuning was included in this release.
