@@ -12,9 +12,10 @@ work under the owner's explicit request on 2026-10-20; execution, Work, Phase,
 and Checklist IDs are not applicable. Risk: routine. Document budget: this one
 file. No closed execution context is reopened.
 
-Status: Stage 0 contract closed on 2026-10-20 under the owner's documentation-only
-request. Stages 1–4 remain unimplemented and untested. Numeric resource values
-below are trial policy decisions, not measured capacity guarantees.
+Status: Stage 0 contract closed; Stage 1 verified on isolated candidate branches
+on 2026-10-20 under the owner's subsequent implementation request. Stages 2–4
+remain pending. Numeric resource values below are trial policy decisions, not
+measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
 deployment approval, or product/map truth. It does not authorize runtime edits,
 tests, integration, release, or installation.
@@ -186,8 +187,8 @@ working; disabling API readiness would invalidate the proof.
 
 ## Staged development and future checks
 
-Stage 0 is closed as a documented contract only. Stages 1–4 are pending. Checks
-describe future acceptance, not tests run while writing this document.
+Stage 0 is closed as a documented contract. Stage 1 results are recorded below;
+Stages 2–4 checks remain future acceptance.
 Implementation must remain isolated until separate integration approval.
 
 | Stage | Deliverable / likely owner paths | Required future acceptance |
@@ -498,3 +499,60 @@ cleanup. They are reusable inputs, not two-worker or nine-task Evidence.
 Default scope excludes a queue broker, multi-instance failover, new public batch
 API, automatic retries, billing changes, new document capabilities, release,
 and production installation. Add none merely to satisfy the trial.
+
+## Stage 1 isolated result — 2026-10-20
+
+Scope: inline Service implementation and FlowDocMake consumer changes under the
+owner's explicit Stage 1 request. Execution/Work/Phase/Checklist IDs remain not
+applicable; no closed registered round was resumed. The existing file is the
+only canonical document changed; no system/document map truth is promoted.
+
+Service candidate: `codex/task-queue-stage1`, commit `af9b8b7`, based on the
+retained, unmerged output-buffer candidate `b0994e7`. The matching Project
+Control branch contains the duplex consumer changes and this record. Core
+package remains 0.4.7 with SHA-256
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`.
+Package versions are unchanged experimental candidates, not a new release.
+
+- Atomic admission accepts ten queue-mode tasks from one owner, rejects the
+  eleventh without an extra row, and reserves initial/growth bytes under the
+  existing shared quota lock. Nine real HTTP uploads reach persisted queued
+  state before the proof-only scheduler hold is released.
+- Two shared intake grants cover receiving through normalization. Waiting
+  bodies remain unread; waiting feedback, cancellation, lease renewal and the
+  original absolute expiry are preserved. Additive `queue-v1` capability and
+  header negotiation allow early feedback without stopping the upload. An
+  unmodified old client retains response-after-upload behavior.
+- Startup without the queue metrics profile retains standalone legacy mode.
+  Once shared intake has been enabled, transient metric loss fails closed for
+  both client modes; recovery cannot bypass the two-grant ceiling. Native
+  cgroup samples include current/max/stat/events/peak. Independent renewal
+  remains active through slow PDF transmission without extra queued-status reads.
+- One read-only whole-candidate review found two important issues: delivery lease
+  renewal and a transient-health legacy bypass. Both were reproduced before
+  correction and covered by the final passing regression. The populated old
+  schema migration fixture also passes without rewriting history or originals.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-20/task-queue-stage1`.
+`receipt.json` maps acceptance to logs/artifacts; failed exploratory attempts
+remain recorded rather than counted as passing checks. Final Service build and
+131 tests pass with no skips. Relevant plugin checks pass nine tests in total;
+two unchanged container-tamper preflight checks were not rerun and are not PASS.
+
+Final representative UAT/SRS input hashes match all 190/14 original stored parts
+respectively. Both receive feedback before upload completion, then produce
+70/98-page PDFs. All 168 final pages match the reviewed baseline in pixels,
+text, image bytes/alpha/order and link geometry/targets. An additional 19 fixture
+PDFs (21 pages) pass strict parsing, text and all-page rendering checks.
+The representative run uses 2 CPU / 1 GiB, no extra swap, and an isolated named
+volume: cgroup peak 302.98 MiB, zero OOM events; sampled held storage peaks at
+578,813,952 bytes. Successful tasks return storage and intake grants to zero
+and retain exactly one usage record each. This is not a nine-heavy-job benchmark.
+
+Still required before enabling two workers: Stage 2 worker/sender credits,
+atomic workspace admission with storage waiting, actual overlap and legacy
+worker exclusivity; Stage 3 combined pressure/reaping hardening; Stage 4 the
+3-UAT/6-SRS comparison. Stage 1 still advertises and runs one PDF processor.
+Primary branches, release refs/tags, installed runtime and production data are
+unchanged. Candidate worktrees are retained for the next authorized stage.

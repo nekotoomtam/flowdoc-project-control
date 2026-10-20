@@ -3,20 +3,20 @@ import {request as httpRequest} from 'node:http';import {request as httpsRequest
 const fail=(code='TASK_STREAM_INVALID',taskId=null)=>Object.assign(Error(code),{code,taskId});
 const integer=n=>Number.isSafeInteger(n)&&n>=0;
 /** Native request with explicit long-upload header budget; no implicit fetch/Undici 300s cap. */
-export function taskRequest(url,{method='POST',headers={},body,signal,timing={}}={}){
+export function taskRequest(url,{method='POST',headers={},body,signal,timing={},continueUpload=false}={}){
  const {headersMs=31*60*1000,idleMs=60000,totalMs=3*60*60*1000}=timing;
  const target=new URL(url);if(!['http:','https:'].includes(target.protocol))throw fail('TASK_REQUEST_INVALID');
  return new Promise((resolve,reject)=>{
-  let responded=false,headerTimer,totalTimer;
+  let responded=false,stopUpload=false,headerTimer,totalTimer;
   const timeout=()=>req.destroy(fail('TASK_REQUEST_TIMEOUT'));
   const clear=()=>{clearTimeout(headerTimer);clearTimeout(totalTimer);};
   const req=(target.protocol==='https:'?httpsRequest:httpRequest)(target,{method,headers,signal},res=>{
-   responded=true;clearTimeout(headerTimer);res.once('end',clear);res.once('close',clear);res.on('error',()=>{});
+   responded=true;stopUpload=!continueUpload||res.statusCode<200||res.statusCode>=300;clearTimeout(headerTimer);res.once('end',clear);res.once('close',clear);res.on('error',()=>{});
    resolve({ok:res.statusCode>=200&&res.statusCode<300,status:res.statusCode,headers:{get:name=>{const v=res.headers[name.toLowerCase()];return Array.isArray(v)?v.join(','):v??null;}},body:res});
   });
   req.on('error',e=>{clear();if(!responded)reject(e);});req.setTimeout(idleMs,timeout);
   headerTimer=setTimeout(timeout,headersMs);totalTimer=setTimeout(timeout,totalMs);headerTimer.unref?.();totalTimer.unref?.();
-  void(async()=>{try{const source=typeof body==='string'||Buffer.isBuffer(body)?[Buffer.from(body)]:body??[];for await(const raw of source){if(responded)break;const bytes=Buffer.from(raw);for(let at=0;at<bytes.length;at+=65536){if(responded)break;await new Promise((done,failed)=>req.write(bytes.subarray(at,at+65536),e=>e?failed(e):done()));}}if(!req.writableEnded)req.end();}catch(e){if(!responded)req.destroy(e);}})();
+  void(async()=>{try{const source=typeof body==='string'||Buffer.isBuffer(body)?[Buffer.from(body)]:body??[];for await(const raw of source){if(stopUpload)break;const bytes=Buffer.from(raw);for(let at=0;at<bytes.length;at+=65536){if(stopUpload)break;await new Promise((done,failed)=>req.write(bytes.subarray(at,at+65536),e=>e?failed(e):done()));}}if(!req.writableEnded)req.end();}catch(e){req.destroy(e);}})();
  });
 }
 /** Exact-length multipart reader; only headers/events and one <=64KiB binary slice retained. */
@@ -53,7 +53,8 @@ export async function consumeTaskResponse(source,contentType,{outputPath,onFeedb
   return {ok:true,taskId,path:outputPath,bytes:artifact.bytes,sha256:artifact.sha256,pageCount:artifact.pageCount,completeness:artifact.completeness,delivery:'response-complete',serverReceipt:'not-confirmed'};
  }catch(e){if(e.taskId==null)e.taskId=taskId;throw e;}finally{await file?.close().catch(()=>{});if(temp)await unlink(temp).catch(()=>{});await iterator.return?.();}
 }
-export async function generateDocumentTask({baseUrl,token,docKey,payloadPath,images=[],outputPath,onFeedback,signal,fetch:request=taskRequest}){
+export async function generateDocumentTask({baseUrl,token,docKey,payloadPath,images=[],outputPath,onFeedback,signal,queueMode=false,queueCapability,fetch:request=taskRequest}){
+ if(queueMode&&(queueCapability?.mode!=='queue-v1'||queueCapability.earlyResponse!==true||queueCapability.continuedUpload!==true))throw fail('TASK_CAPABILITY_UNSUPPORTED');
  if(!isAbsolute(payloadPath)||!isAbsolute(outputPath)||typeof docKey!=='string'||!docKey||/[\r\n,]/.test(docKey)||images.length>1000)throw fail('TASK_INPUT_INVALID');
  const payload=await stat(payloadPath);if(!payload.isFile()||payload.size>64*1048576)throw fail('TASK_INPUT_LIMIT');
  const names=new Set();for(const image of images){if(!isAbsolute(image.path)||typeof image.pointer!=='string'||!image.pointer.startsWith('/')||/[\x00-\x1f\x7f]/.test(image.pointer)||Buffer.byteLength(image.pointer)>2048||names.has(image.pointer))throw fail('TASK_INPUT_INVALID');names.add(image.pointer);}
@@ -62,7 +63,7 @@ export async function generateDocumentTask({baseUrl,token,docKey,payloadPath,ima
   const quote=item.pointer.replaceAll('\\','\\\\').replaceAll('"','\\"');yield Buffer.from('--'+boundary+'\r\nContent-Disposition: form-data; name="'+quote+'"\r\nContent-Type: '+(item.type??(/\.png$/i.test(item.path)?'image/png':'image/jpeg'))+'\r\n\r\n');
   for await(const b of createReadStream(item.path,{highWaterMark:65536,...(signal?{signal}:{})})){bytes+=b.length;if(bytes>512*1048576)throw fail('TASK_INPUT_LIMIT');yield b;}yield Buffer.from('\r\n');}yield Buffer.from('--'+boundary+'--\r\n');}
  const stop=new AbortController(),operation=AbortSignal.any([stop.signal,...(signal?[signal]:[])]);
- try{const response=await request(new URL('/documents',baseUrl),{method:'POST',headers:{authorization:'Bearer '+token,'doc-key':docKey,'content-type':'multipart/form-data; boundary='+boundary,accept:'multipart/mixed'},body:body(),duplex:'half',redirect:'error',signal:operation});
+ try{const response=await request(new URL('/documents',baseUrl),{method:'POST',headers:{authorization:'Bearer '+token,'doc-key':docKey,'content-type':'multipart/form-data; boundary='+boundary,accept:'multipart/mixed',...(queueMode?{'task-mode':'queue-v1'}:{})},body:body(),continueUpload:queueMode,duplex:queueMode?'full':'half',redirect:'error',signal:operation});
  if(!response.ok){let size=0,chunks=[];for await(const b of response.body){size+=b.length;if(size>32768)throw fail();chunks.push(b);}let result;try{result=JSON.parse(Buffer.concat(chunks).toString());}catch{throw fail('TASK_REQUEST_FAILED');}throw fail(result.error?.code??'TASK_REQUEST_FAILED',result.taskId);}
  return await consumeTaskResponse(response.body,response.headers.get('content-type'),{outputPath,onFeedback,signal:operation});
  }finally{stop.abort();}
