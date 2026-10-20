@@ -2820,3 +2820,101 @@ change. RAM reduction and removal of the entire25.96s are not promised.
 Document budget: this plan only; external test artifacts retain detailed proof.
 No Stage5 reader work, main integration, cleanup of unmerged lanes, release,
 push or installation. Prior Stage4 performance failure remains historical fact.
+
+#### Owner-authorized experiment execution — 2026-10-20
+
+Owner explicitly approved implementation and complete cutting/PDF/time/RAM/
+cancellation checks after reviewing the compact summary. Execute inline using
+the retained isolated Core/Service worktrees on codex/segmenter-session-20261020;
+bases96befec347b1977ae5e57a173edb30f0f2ebaf6d and
+aed03952aaf91d967f4ae4b555bae3ff8f13c1d7. Product Implementation Agent, routine
+risk; no registered execution IDs or separate WORK room. Ordinary reasoning is
+the owner's chosen default; one fresh final review follows executing-plans.
+Allowed: Core native segmenter/Cargo lock, runtime session/probe/engine wiring,
+resource manifest/binary, affected tests; Service package/lock/vendor pin only;
+this existing plan for decisions/results. Other product behavior is forbidden.
+Evidence/ledger root: C:/Users/nekot/Documents/Codex/2026-10-20/segmenter-session.
+
+Implementation steps (TDD, then each checkpoint's checks and scoped commit):
+
+1. Add tests/nativeSegmenter.test.ts: real helper framing/Unicode/CLI/old-new
+   parity tests must fail without --serve. Implement native/src/bin/
+   flowdoc-icu4x-line-segmenter.rs with strict framed JSON {id,text}, locked JSON
+   dependency and bounded response encoding; build Linux/amd64 and resource
+   hashes. Expected: serving and one-shot parity, invalid-frame rejection.
+2. Add tests/runtime/nativeSegmenterSession.test.ts and engine lifecycle tests;
+   first fail for missing session/abort/early-close. Implement dedicated
+   src/runtime/nativeSegmenterSession.ts (request(text):Promise<number[]>,
+   close():Promise<void>), wire createTextRuntime(resources,signal?), probeRuntime
+   and createPdfEngine. Test real subprocess fixtures for FIFO, limits, malformed
+   responses, deadlines, abort, close escalation and generation isolation.
+   Expected: affected runtime/resources/PDF tests and build pass; no leaked child.
+3. Pack the actual Core artifact, update Service's isolated vendor pin/lock;
+   test native compatibility and Service task/job cancellation/cleanup against
+   that archive. No runtime Service logic or installed plugin edits. Expected:
+   archive/resource/SRI checks and affected Linux consumer tests pass.
+4. Run the design's3 paired SRS trials plus UAT/ศบ.1 regressions and every-page
+   oracle checks. Measure whole-cgroup RAM including native children, phase
+   times, cancellation and cleanup. Freeze inputs and report failed gates
+   honestly. Review the complete diff once with a fresh reviewer; fix important
+   findings with regression tests. Preserve candidate and evidence without
+   integration/release/install. Stop when acceptance coverage passes.
+
+Preflight: native protocol feeds the session and serving probe; session offsets
+feed the unchanged TextRuntime.breaks contract; engine owns AbortSignal/close;
+the packed archive feeds Service. These interfaces match the reviewed design.
+Detailed operational logs stay outside the AI-required document set.
+
+
+### Persistent segmenter experiment result — 2026-10-20
+
+Result: RISK_PROCESS_SUPERVISION_REQUIRED. The experiment and its planned checks
+are complete; default-environment lifecycle acceptance is not passed. Core
+5fc454c7360b4837b363669ebc09eac67364a81b and Service8f63178 remain isolated.
+Core build/130 affected Linux cases pass with0 skips; Service build and128 unique
+affected cases pass (114 unaffected non-API cases reused plus14 API rerun cases).
+The initial127/128 failure came from overwriting exports in the test-only plugin
+repin; preserving the module body and replacing only its checksum fixed that
+harness error. Product runtime/archive did not change during the recheck.
+Fresh whole-source review found no Critical/Important/Minor source issues;
+parent-owned PDF, performance and lifecycle evidence are separately recorded.
+
+Evidence: C:/Users/nekot/Documents/Codex/2026-10-20/segmenter-session,
+identity.json,package-proof.json,core-linux.json,service-tests.json,
+api-recheck.json,measurements.json,pdf-verification.json,review.json and receipt.
+Three fixed alternating SRS pairs,2CPU/1GiB, identical coarse hooks and sampler:
+median layout35.885081 ->3.774245s (-89.48%); client time69.882487 ->34.691961s
+(-50.36%). SRS kernel peaks: old max278.043MiB, new max281.531MiB;
+all candidate workloads max287.301MiB. DB and host Docker VM are separate.
+No fine profiler/counters or score-driven repeats. RAM reduction is not claimed.
+Each new SRS layout sampled exactly one persistent segmenter PID.
+
+Eight PDFs/660 pages (six98-page SRS trials, UAT70 and SB1 two) pass strict parse,
+zero-diagnostic Poppler rendering and exact text/pixels/images/alpha/order/link
+targets/geometry against the reviewed prior output. Four representative pages
+were also manually inspected. This does not improve original-source fidelity;
+the inherited UAT70-vs-source72 distinction and prior layout differences remain.
+The real old/new Core-helper matrix passes; new Core rejects the old helper.
+
+Cooperative real-native abort and actual HTTP disconnect pass; source retention
+keeps the original3-hour expiry, with no unsent PDF. The isolated expiry-clock
+simulation then clears task files/quota and retains history. Twelve task records
+(eight successful, four interrupted probes) retain history with no active child
+or owned task files/reservations after cleanup. One failed-assertion test copy
+tree was separately inventoried/hashed and removed; frozen inputs stay intact.
+
+Outstanding prerequisite: SIGKILL of a worker in a Node-as-PID1 container leaves
+the stopped native child as state Z,PPID1. It performs no live native work, but
+its process record remains until reaped/container exit; do not relabel this PASS.
+The same abrupt-worker test with Docker --init leaves no child and passes.
+The installed container's Init setting was read-only inspected as null; it was
+not changed. Follow-up belongs to Service process supervision/deployment
+configuration and its hard-kill check, outside this round's package-only Service
+scope. No installation/configuration fix or qualified owner acceptance is implied.
+
+Only this existing plan records shared status; no maps/registries are promoted.
+Prior Stage4 performance failure stays historical. Main/release/tags, installed
+plugin and deployment remain unchanged. Candidate branches/worktrees are retained;
+owned test services/files are cleaned and Docker Desktop restored to its initial
+stopped state as confirmed by the terminal receipt. Next: close the Service
+process-reaping prerequisite before any integration readiness claim.
