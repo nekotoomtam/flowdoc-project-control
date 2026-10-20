@@ -1,3 +1,4 @@
+import {registerTaskTools} from './task-tools.mjs';
 import {registerFontHeightTools} from './font-height-tools.mjs';
 import {readFileSync} from 'node:fs';
 import {homedir} from 'node:os';
@@ -6,7 +7,7 @@ import {pathToFileURL,fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
-import {assess} from './compatibility.mjs';
+import {assess,usesGroupLabels,checkGroupLabelCapability} from './compatibility.mjs';
 import {runCandidatePlan} from './candidate-workflow.mjs';
 import {documentTask,classifyFailure} from './document-task.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
@@ -37,12 +38,22 @@ async function preflight(){
    runtime={...versions,port,imageId:inspect.Image,identitySource:'local Docker container inspection, not HTTP contract'};
   }catch{}
   try{run(config.python,['-c','from pypdf import PdfReader; from PIL import Image']);run('pdftoppm',['-v']);pdf=true;}catch{}
-  return {...assess({contract,runtime,pdf,expectedPort:new URL(config.url).port}),packageVersion,documentation:manifest,runtime,contract:{sectionInstances:contract?.sectionInstances,nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
+  return {...assess({contract,runtime,pdf,expectedPort:new URL(config.url).port}),packageVersion,documentation:manifest,runtime,contract:{groupLabelSpans:contract?.groupLabelSpans,formatSizing:contract?.formatSizing,sectionInstances:contract?.sectionInstances,nodeModelVersions:contract?.nodeModelVersions,draftDefinitionVersion:contract?.draftDefinitionVersion,publicationEnabled:contract?.publicationEnabled},guide:resolve(root,'skills/flowdocmake/references/docs/developer/authoring/README.md'),workflow:resolve(root,'skills/flowdocmake/references/docs/domains/flowdoc-ai-template-authoring-guide.md')};
  } catch{return {ready:false,code:'LOCAL_CONFIGURATION_OR_GUIDE_ERROR'};}
 }
 serveStdio(()=>{
- const server=createAuthoringTools({baseUrl:config.url,token,previewDirectory:config.previewDirectory});
+ const server=createAuthoringTools({baseUrl:config.url,token,previewDirectory:config.previewDirectory,fetch:async(url,init)=>{
+  const definition=init?.body&&JSON.parse(init.body).definition;
+  if(usesGroupLabels(definition)){
+   const r=await fetch(new URL('/authoring/contract',config.url),{headers:{authorization:'Bearer '+token},redirect:'error',signal:AbortSignal.timeout(10000)});
+   if(!r.ok)return Response.json({ok:false,code:r.status===401||r.status===403?'AUTHORIZATION_FAILED':'SERVICE_ERROR',warnings:[]},{status:r.status});
+   const result=checkGroupLabelCapability(definition,(await r.json()).value);
+   if(!result.ok)return Response.json(result,{status:422});
+  }
+  return fetch(url,init);
+ }});
  registerFontHeightTools(server,{z,config,token});
+ registerTaskTools(server,{z,config,authoringToken:token});
  server.registerTool('manage_document_task',{
   description:'Persist per-part unfinished authoring/review work separately from immutable preview runs. init from completed source inventory and coverage; read on resumption; update one part with expectedRevision; review binds coverage to a succeeded preview checkpoint and the real PDF. Only review can mark pass/complete. Does not mutate drafts or certify visual truth. A changed PDF requires fresh comparison. Use a thread Goal only when authorized by the user; this tool does not schedule work.',
   inputSchema:z.object({action:z.enum(['init','read','update','review']),taskPath:z.string().min(1),timeLimitMinutes:z.number().int().min(1).max(120).optional(),expectedRevision:z.number().int().min(0).optional(),inventoryPath:z.string().optional(),coveragePath:z.string().optional(),checkpointPath:z.string().optional(),partId:z.string().optional(),status:z.enum(['pending','authoring','needs-repair','needs-review']).optional(),note:z.string().optional()}).strict(),

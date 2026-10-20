@@ -8,17 +8,25 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.4** targets **Service/Core 0.4.3 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
+Package **0.2.7** targets **Service0.4.8 / Core0.4.7 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
 `get_flowdocmake_context`, `upload_preview_image_file`, `run_candidate_preview`
-and `manage_document_task` plus the three font tools and two opt-in height tools (23 tools total; including create_draft_section/import_draft_sections). There is no publish tool.
+and `manage_document_task` plus the three font tools and two opt-in height tools (25 tools total; including create_draft_section/import_draft_sections). There is no publish tool.
 
 The exact new Core artifact and `formatSizing.version:2` are required; v1 or
 unknown capabilities fail preflight. Fixed caps the current page remainder,
 reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
+
+Delivery: Core source `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, artifact SHA-256
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`. Service0.4.8 and this plugin pin that exact
+artifact. Earlier candidate archives/packages remain immutable. Context returns
+`groupLabelSpans` v1.
+Definitions using groupLabel require its exact model/schema/suffix contract;
+validate/save and candidate runs reject unsupported engines without stripping
+fields. Existing definitions keep their path. See the existing repetition chapter.
 
 Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,
@@ -37,7 +45,7 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, a matching Service 0.4.3 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.4.8 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This candidate package is for that local
 deployment, not a remote or public plugin distribution.
@@ -86,3 +94,25 @@ their dimensions compared with direct-Core rendering. This package preserves
 uploaded original bytes but does not promise pixel-identical output between
 those two paths. Model persistence and complete visual fidelity require actual
 per-document review, not merely a successful preflight.
+
+## Streamed document tasks
+
+The two opt-in tools are `generate_document_task` and `inspect_document_task`.
+Set taskCredentialFile in this candidate's local config to a private text file
+containing `TASK_TOKEN=<explicit-task-credential>`. It is separate from authoring
+configuration; absence never falls back to the authoring token. No installation
+or current user config changes are performed by candidate verification.
+
+Generation takes docKey, absolute payloadPath/outputPath and optional images array
+of `{pointer,path,type?}`. The payload keeps Section assets/assetKey; file pointers
+name image source objects in the original JSON. Both payload and images are read
+incrementally. Exact old/new task capability and package identities are required
+before upload. Existing authoring/preview calls keep their original contracts.
+This export tool uses an already authorized registered template; it does not publish
+or convert an unpublished draft. Draft preview remains the bounded legacy path.
+
+Feedback becomes MCP progress notifications when requested and a bounded warning
+summary in the result. A PDF is published to a new local path only after complete
+framing, length and hash checks. The result says response-complete, while the final
+server receipt remains unconfirmed until an optional exact-task lookup. Local save
+failure cancels reading; do not automatically retry a generation call.

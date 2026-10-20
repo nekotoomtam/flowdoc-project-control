@@ -7,7 +7,8 @@ Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format
 Candidate v1 and correction v2 stages0–4 are complete within the recorded scope.
 Maximum-height v2 is integrated into the existing primary development branches;
 read the final integration section for checks, retained evidence and cleanup.
-Release and installation remain pending separate owner authorization.
+Core/Service0.4.3 and FlowDocMake0.2.4 are released on the recorded snapshot
+branches/tags; installation remains pending separate owner authorization.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding
@@ -2774,3 +2775,324 @@ Service/plugin checks, source-to-package identity and guide snapshot. Existing
 106page evidence may be reused only after proving executable/resource identity.
 Unknowns: stale guide wording and deployment versions must be resolved; optional
 font fixtures remain unverified. Release/install authority remains absent.
+
+#### ผลเตรียมชุดผู้สมัคร — ยังไม่ออก release
+
+Prepared Core0.4.3 source `559b126`, Service0.4.3 source `92e7ff1`, and
+FlowDocMake0.2.4 source PC`9af5575`; plugin guide snapshot source `7bdddd9`.
+These are local development candidates, not tagged releases or installed builds.
+Runtime source, SQL, native tools and font binaries are unchanged from integrated
+dev.2. Updated Core README/template-guide, Service README/usage, explicit image
+defaults in Compose/.env.example, plugin manifest/README/skill and exact pins.
+Distinguished text-block `props.heightMode:fixed` overflow errors from Format
+maximum-height omission; corrected model18 example scope, helper availability
+and upgrade instructions through migration021. No new startup guide was added.
+
+Final Core tarball `flowdoc-core-0.4.3.tgz` SHA256:
+`64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+Service package/lock/vendor manifest and FlowDocMake compatibility pin agree.
+Old dev.2 archives remain unchanged. Compared all154packed files: changes are
+package.json version, README, OFL.txt line endings and its resource-manifest hash.
+License text normalizes identically; executable/font bytes are identical.
+All66matching native consumer PDFs are byte-identical to dev.2; this supports
+reuse of the prior106page review within its original scope and limitations,
+not a new source-fidelity or new seven-family intake claim.
+
+Checks: Linux Core700PASS and22consumer families PASS; Service build and full
+Linux/PostgreSQL318PASS/0FAIL/6optional fixture skips; host4PASS/3fixture skips;
+FlowDocMake23PASS/0FAIL/4optional legacy fixture skips; focused compatibility/
+snapshot7PASS. Actual candidate stdio preflight ready:true,23tools, exact image/
+versions/hash; all30guide hashes pass. Runtime-only Service image independently
+loads resources and generates a native one-page fixture PDF with networknone,
+no source mounts. This is runtime smoke proof, not a new visual-review claim.
+Project Control data/diff checks pass. Remote default branches confirmed by
+GitHub symbolic HEAD; existing release histories each retain9annotated versions.
+
+Verification incidents retained: first full suite ran before migrating its new
+base database (317PASS/1STORAGE_FAILED); migrated only that isolated database and
+reran unchanged candidate to318PASS/0FAIL. Initial preflight was invoked before
+its configuration existed; final preflight after prerequisites passed. The
+runtime image intentionally omits build-only verifyVendor.mjs; replaced that
+invalid checker invocation with in-container archive hashing and public Core
+native rendering, without adding build scripts to the runtime image.
+
+Delivery and evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-17/format-release-preparation/`.
+`delivery/delivery.json` binds source commits, versions, archive hashes and image
+IDs; delivery contains Core tarball, Core/Service source ZIPs, plugin ZIP including
+marketplace wiring and the five existing manuals/rules. No credentials, DB dumps,
+private source-document PDFs or installed configuration were added to delivery.
+Core consumer artifacts remain in primary Core `artifacts/1792242597324/`.
+Logs, package-comparison.json, service-result.json, context.json, runtime-check.json
+and final-check.json preserve scoped results. The temporary candidate API is
+stopped/removed after checks; isolated test DB and test images remain as evidence.
+
+Remaining before release: owner authorization, freeze exact final source trees,
+construct single-parent snapshots, verify tree equality, annotated version tags
+and atomic push with remote confirmation. None was performed here. Six Service
+and four plugin legacy fixture cases remain unverified in this round; their names
+are retained in service-result.json/plugin-tests.log, with earlier font-height
+evidence under the existing font-height plan. Do not report them as fresh PASS
+or waive a mandatory prerequisite if later release scope requires those cases.
+Existing SRS/SB1 source-fidelity differences remain deferred as above. Live-data
+backup/upgrade/restore and fresh installed-chat checks belong to separately
+authorized installation, not this preparation. No release/tag/remote refs,
+installed runtime/plugin/configuration or user DB/drafts changed.
+
+#### ปิดข้อทดสอบที่ข้ามก่อน release — 2026-10-17
+
+Owner authorized completing the six Service and four FlowDocMake fixture cases,
+with cause classification and no release/install. Single-room inline verification
+with bounded test maintenance; execution IDs N/A, routine risk. PC owns this
+status and two plugin test assertions; Service owns its unchanged integration
+tests. Existing record is canonical; no new mandatory reading or guide snapshot.
+
+All10previously skipped cases now PASS. Service's targeted proposal/supplied-font
+and delivery-guard files:26PASS/0FAIL/0SKIP, including all6identified skipped
+names. The earlier318passing Service cases are reused for the unchanged candidate;
+this is not one fresh324test invocation. FlowDocMake's complete suite now runs
+27PASS/0FAIL/0SKIP, including all4previously disabled cases. Core/Service0.4.3,
+FlowDocMake0.2.4, Core checksum and delivered plugin bytes remain unchanged.
+
+Evidence coverage: real seven-family input includes TH Sarabun New custom and
+six supplied Google families; measured non-identity Sarabun/Pridi size adjustment;
+native stdio proposal/confirmation through authenticated Service/PostgreSQL;
+two unrelated-port guard rejections before admin mutations; real inspected binding
+accepted without repeating intake. Plugin checks use a new cloned draft whose
+font release was retired only in an isolated restored database, with readiness
+still ready. A deliberately corrupted archive fails preflight and is restored;
+final native preflight is ready with the original checksum. Both launcher/checker
+use the selected configuration even with an empty simulated home directory.
+
+Cause classification:
+- Environment: explicit HEIGHT_DELIVERY_CONFIG, FONT_FIXTURE_DIR,
+  HEIGHT_SUPPLIED_DIR, FLOWDOCMAKE_PLUGIN_ROOT, FONT_TEST_CONTAINER and FONT_PROOF_DIR
+  were absent. Original supplied files and retained review state were available.
+  Two test APIs initially competed for the same database worker lock; reran one
+  at a time. A host-only attempt to read Docker-internal DB DNS was corrected to
+  a read-only database inspection through Docker. These are test setup issues.
+- Test harness: two assertions hardcoded plugin0.2.1. With the complete fixture,
+  unmodified tests give2PASS/2version failures; amended only those assertions to
+  require the exact selected plugin manifest version, then all27PASS. No checksum,
+  authentication, ownership or compatibility condition was weakened.
+- Reporting: the previous external report filtered status `pending`, while Vitest
+  used `skipped`, so its name list was empty despite the recorded6skip count.
+  New readiness.json recovers all6names from the original JSON and maps each to
+  a fresh passing assertion. The original report/logs remain historical.
+- Product runtime: no defect found in these10cases and no runtime/SQL/package
+  repair needed. Existing unrelated source-fidelity limitations remain unchanged.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-remaining-tests/`:
+readiness.json, service-fonts.log, service-guards-final.json, plugin-red-complete-
+fixture.log, plugin-green.log, font-tools-proof.json and final-preflight.json.
+Earlier setup failures remain in separate logs. Private dump/config/credentials
+stay outside delivery. Original source environment's font release remains active;
+retirement affected only its restored test copy. Temporary APIs are stopped and
+removed after checks; isolated DB/staging evidence is retained. No user drafts,
+installed environment or original font library were mutated.
+
+This supplement closes the six/four fixture prerequisites listed in the previous
+delivery record; immutable delivery archives are not replaced. Remaining steps
+are owner-authorized snapshot/tree/parent checks, annotated tags and atomic push,
+then separately authorized installation/live-data/installed-chat verification.
+No release/tag/remote refs or installation were changed in this round.
+
+#### ออกรุ่น Core/Service0.4.3 และ FlowDocMake0.2.4 — 2026-10-17
+
+Owner explicitly authorized Git release snapshots, annotated tags, exact-tree
+checks and GitHub push, excluding installation. Single-room inline; execution
+IDs N/A, routine risk; roles Evidence Reviewer / Project Control Steward.
+Existing readiness and all10fixture-case proof remain valid: no candidate product,
+dependency, configuration or artifact changes. No new mandatory documentation.
+
+| Component | Frozen development source | Release snapshot / annotated tag |
+| --- | --- | --- |
+| Core0.4.3 | `559b126c51073c31a2d42b3963d5d95a9b87757f` | `5c34f8496b698e06dc90be9e98ddf0fd756f067d` / `v0.4.3` |
+| Service0.4.3 | `92e7ff1cc902eddc6a53a1222abd7550cdeb89e5` | `be90f69774342c010e635d52ff48ad6e64cb2640` / `v0.4.3` |
+| FlowDocMake0.2.4 | PC`732a2bffdb17e5c0ee5e6e20e4974b81cd86fe13` | `a1cfbedd85544c33649319bed749ff50d3009ea7` / `flowdocmake-v0.2.4` |
+
+Core/Service `release` each gains exactly one snapshot, whose only parent is its
+previous0.4.0 snapshot; each full ancestry now has10commits with annotated tags
+on GitHub. Old tags are unchanged. Each snapshot tree equals its frozen source
+tree exactly. Development branches retain their full histories and were pushed
+alongside the corresponding snapshot/tag in one atomic push per repository.
+
+FlowDocMake is a component inside Project Control, not a standalone repository
+or Project Control workspace version. Its first release uses the separate
+`release/flowdocmake` branch and namespaced annotated `flowdocmake-v0.2.4` tag,
+with its own root snapshot. Full repository tree equals frozen PCsource732a2bf;
+component version is read from `plugins/flowdocmake/.codex-plugin/plugin.json`.
+This does not label the independent PCpackage as version0.2.4. Later status-only
+updates on PCmain do not rewrite that frozen source, snapshot or plugin guide.
+
+Verified GitHub symbolic default HEAD before publication, clean working trees,
+development ancestry, exact versions/Core checksum,9delivery archive/manual
+hashes, prior readiness and all10supplemental tests. Verified all3Git bundles
+before ref changes, then all3atomic dry-runs. Actual atomic pushes succeeded;
+read back remote development heads, snapshot heads, annotated tag objects and
+peeled targets; all equal their prepared identities. Core archive remains SHA256
+`64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-release-043/`:
+before.json, verified pre-change Git bundles, prepared.json, per-repository
+dry-run/push logs, release-result.json and final-check.json. Existing immutable
+delivery and remaining-test supplements retain their original hashes/locators.
+No installation/deployment, user-data changes, package/image publication or
+GitHub Release-page creation was performed. Next is separately authorized
+backup/install/live-data/installed-chat verification against this exact release.
+
+#### ติดตั้งและตรวจข้อมูลจริง — 2026-10-17 (รอเปิด Codex ใหม่)
+
+Owner authorized backup and installation of Core/Service0.4.3 and FlowDocMake0.2.4,
+including original-document and native-chat checks. Single-room inline operator /
+Evidence Reviewer / Project Control Steward; execution IDs N/A. This existing
+canonical status is updated without changing product contracts or release refs.
+
+Before installation, backed up the quiescent live PostgreSQL database, staging,
+output, local configuration, launcher and previous plugin cache;58files have
+recorded hashes. Restored the actual backup into an isolated database/storage,
+applied migrations019–021, verified replay applied nothing, and regenerated both
+original PDFs successfully before changing the live API. Backup contains private
+credentials and is retained locally outside delivery.
+
+Live endpoint remains `http://127.0.0.1:3018`, using the original database and
+volumes. API now runs `flowdoc-service:0.4.3`, image
+`sha256:04b95ce9eb94d5ebb10e6a53b8b4352b164edf1e2436e0331139ab5bcec24190`.
+Core checksum is still `64dae8f530b8b02be1a36c6cf15172635a7752c4d70ec1edacad8593269805b2`.
+Installed plugin0.2.4 through the supported local marketplace installation;
+all47installed files match the released component source and its30guide snapshot
+hashes pass. Local configuration and the existing MCP launcher now select0.2.4.
+
+Actual live original drafts remain model18: SRS revision1 and ศบ.1 revision3,
+with unchanged definitions and fingerprints. Regenerated SRS98pages and ศบ.1
+2pages through the installed plugin. All100pages match previous output in
+rendered pixels at1100px, extracted text and normalized PDF links; reviewed all
+10contact sheets. The restored rehearsal also passed the same100page comparison.
+This proves installation regression coverage, not new source-fidelity acceptance:
+existing SRS missing-input/layout differences and ศบ.1 font/line differences
+remain. SRS retains4low-resolution image warnings; ศบ.1 has none.
+
+Live authorization checks return401without credentials,403for author credentials
+on the admin route, and200for administrator credentials. Restarted only the live
+API with no queued/running jobs; readiness recovered and both draft definitions,
+font catalog and saved PDF hashes persisted unchanged. Removed only this round's
+temporary rehearsal API; retained restored database/storage and backups.
+
+Native chat can call the new Service contract (models18/19, Format sizingv2), but
+this already-running chat still exposes15old tools. A fresh installed-plugin
+client is ready with23tools and exact0.2.4/Core–Service0.4.3 identity. This is not
+yet proof of the complete new native-chat catalog. Owner explicitly chose to
+close/reopen Codex themselves; no app or other-chat process was stopped.
+Installation remains **pending native-chat reload verification**, not complete.
+After reopening, discover and call `get_flowdocmake_context` through this chat,
+confirm ready/version/checksum and the23tool catalog, then close this checkpoint.
+
+Evidence: `C:/Users/nekot/Documents/Codex/2026-10-17/format-install-043/`:
+`installation-checkpoint.json`, `backup-manifest.json`, `restore-proof.json`,
+`installed.json`, `live-pdf-review.json`, `live-permissions.json`,
+`persistence-proof.json`, `post-restart-context.json`, and `native-chat-contract.json`.
+Live PDFs are `live/srs.pdf` and `live/sb1.pdf`. No draft publication, original
+template migration, release/tag rewriting or package/image registry publication.
+
+#### ยืนยัน native chat หลังเปิด Codex ใหม่ — 2026-10-18
+
+Owner returned after restarting Codex and authorized continuing the outstanding
+connection checks. Native `mcp__flowdocmake` now exposes all23tools. Initial
+preflight returned SERVICE_UNREACHABLE because both existing live containers
+were stopped (exit255); started the original database, confirmed readiness, then
+started the original API. No container recreation, configuration/data repair or
+application restart was needed. The exit code alone does not establish why the
+containers had stopped; startup policy/root-cause investigation is outside this
+bounded connection acceptance.
+
+Actual native-chat `get_flowdocmake_context` now returns ready:true,
+packageVersion0.2.4, Service/Core0.4.3, exact released Core checksum and image
+identity. Native contract confirms models18/19 and Format sizingv2. Native reads
+of both original drafts confirm the same revisions1/3, fingerprints and ready
+font status. Native `save_preview_pdf` downloads both persisted PDFs; SHA256s
+match the previously reviewed98+2page outputs exactly, so that unchanged whole-
+document review is reused rather than rendering the same bytes again.
+
+Evidence: `format-install-043/native-chat-final.json` and updated
+`installation-checkpoint.json` at the external installation evidence directory
+above. The latter now reports PASS_INSTALLATION_AND_NATIVE_CHAT with no pending
+check. This closes the installation/native-chat acceptance; existing source-
+fidelity differences and4SRS image warnings remain unchanged. No user draft,
+font default, release/tag or remote ref was changed in this follow-up.
+
+#### ศบ.1 สำเนา Section–Area / Format fixed — 2026-10-18
+
+Owner authorized a separate copy, original preservation, fixed/overflow warning
+checks and both-page comparison. Single-room inline template authoring / Evidence
+Reviewer; execution IDs N/A. Scope is the saved template and original sample,
+not product runtime changes or renewed source-PDF reconstruction. Created fresh
+conversion identity because model18 cannot change models in place; source
+`af9015b7-df78-4af7-9444-15bd56a05f11` revision3 remains byte-structure/fingerprint
+unchanged. New unpublished draft `68277691-1427-4b28-88af-535601ee18f1`, docKey
+`sb1-section-area-fixed-20261018`, revision1 has one model19 Section, two root
+Areas and declaration/cargo Formats fixed720/700pt, with an explicit page break.
+Styles, schema2 font tuples, original input and native fragments are preserved;
+Section bindings inside Formats become local. Continuation footer stays on page2.
+
+Normal input: succeeded2pages, no warnings, all extracted text and horizontal
+text coordinates equal baseline. Overflow cargo30rows: four fit, table closes
+at616.11pt, remaining input retained; FORMAT_CONTENT_OMITTED identifies cargo,
+entry0 and pending item4. Long owner160lines: protected source row cannot fit,
+so it and following declaration content are not painted; one declaration omission
+warning, rather than silently deleting input. Each test remains2pages, other
+page pixels stay unchanged, and cargo footer coordinates remain fixed. Warnings
+match status and saved-PDF receipts. All6output pages and2baseline pages viewed.
+
+Visual comparison is **not identical**: fixed table stroke allowance adds.25pt
+before/after each table and insets border edges. Measured vertical text shift is
+.25–10.75pt on page1 and0–1.75pt on page2; footer coordinates do not shift. This
+is traced to existing Core documentFlow.ts fixed-table handling, not font/data
+changes. No compensation hacks or runtime edits were made. Functional acceptance
+passes with this disclosed visual difference; owner has not accepted exact-layout
+fidelity. Existing source-form font/line differences also remain out of scope.
+
+Evidence/output: `C:/Users/nekot/Documents/Codex/2026-10-18/sb1-format-fixed/`:
+`results.json`, `conversion.json`, `pdf-review.json`, source/target final reads,
+complete preview input/status/PDF receipts and rendered pages. `normal.pdf` is
+the normal-data deliverable; `cargo-overflow-fresh.pdf` and
+`declaration-overflow-fresh.pdf` are explicitly incomplete overflow demonstrations.
+Only this new draft was saved; no publication, deployment, release or font change.
+
+Owner follow-up on2026-10-18 authorized natural wrapping of the declaration
+starting “ข้าพเจ้า ( นาม )”. Same candidate is now revision3: combined f73/f80
+into one paragraph, replaced its explicit line breaks with spaces, removed the
+extra wrapper table and allowed that paragraph's row to split at whole lines.
+Text values and owner binding remain intact. Aligned the paragraph with the
+existing continuation text's left inset; first-line indentation is no longer
+separately imposed. The initial revision2 repair showed that the earlier720pt
+cap omitted the last signature-date row with a realistic long owner name.
+Expanded declaration maximum to805pt within the805.8898pt printable page1;
+cargo stays fixed700pt and the explicit break keeps cargo on page2. Final
+normal and long-name previews both succeed in2pages without warnings, with all
+normalized text preserved and page2 pixel-identical to revision1. Viewed all4
+pages. Original model18 draft stays revision3 with its original fingerprint.
+Earlier revision1/2 artifacts remain historical rather than overwritten.
+Current evidence/PDFs: `sb1-format-fixed/flow-text/` under the same external
+workspace, especially `results.json`, `review.json`, `normal-expanded.pdf` and
+`long-name-expanded.pdf`. This supersedes the candidate's earlier720pt cap only;
+no runtime, source draft or publication changes.
+
+Further owner-authorized whole-form line-break inspection on2026-10-18 saved
+the same candidate at revision4. Inspected both Format fragments, footer and
+sample input. Removed17unnecessary template word-wrap breaks: one inside the
+Thai title phrase and16inside table-header phrases. Retained meaningful
+Thai/English boundaries, the statute-reference line, copy-choice separation and
+signature/label blocks. Cleaned6embedded sample newlines across packages,
+consignee and consignor into spaces, recording before/after values. This changes
+the supplied sample only; it does not strip future caller-provided newlines or
+change Service/Core behavior. Original source/request files remain retained.
+
+Normal and extended cargo-field previews both succeed in2pages without warnings;
+all normalized text is preserved (with the explicit extended-field substitutions),
+page bounds pass and page2footer coordinates remain unchanged. Viewed all4output
+pages. Natural header wrapping and cargo row height now follow their text rather
+than old line segmentation. Original model18 draft remains revision3 with its
+original fingerprint. Existing fixed805/700pt limits and publication state are
+unchanged. Current evidence and PDFs are in `sb1-format-fixed/flow-all/` under
+the external2026-10-18 workspace: `changes.json`, `definition.json`, `request.json`,
+`results.json`, `review.json`, `normal.pdf`, `long-fields.pdf` and full receipts.
