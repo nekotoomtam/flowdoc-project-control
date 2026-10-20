@@ -2934,3 +2934,57 @@ and executable-state identity. The earlier b35c9f8 artifact is retained as
 artifacts/flowdoc-core-0.4.7-windows-previous.tgz for its immutable job pins.
 The process-supervision prerequisite remains RISK; this packaging repair does
 not authorize integration, release or installation of the running system.
+
+### Owner-authorized Service process-reaping follow-up
+
+Inline implementation, routine risk; execution IDs not applicable. Owner is
+flowdoc-service (Product Implementation Agent); this existing plan remains the
+only shared status record. Base Service dec44a4, Core5fc454c unchanged. Reuse the
+existing isolated lanes. Allowed scope: Service container supervision, its narrow
+checks and local operation guidance; this plan and external evidence ledger.
+No main integration, release/tag/push, installed configuration or Core behavior
+changes. Ordinary owner-selected reasoning; one fresh final source review.
+
+Use Docker's reaping init through Compose for api/registry/verification; direct
+Docker task launches require --init. Do not introduce another custom reaper or
+change task retention/accounting semantics. Proof budget: reproduce the missing
+configuration and actual native orphan failure, then real native normal/forced
+worker-stop regressions on resolved candidate Compose plus actual HTTP disconnect
+and worker-SIGKILL task runs in a fresh isolated DB. Check no live or zombie child,
+retained complete sources at unchanged expiry, no unsent PDF, released execution
+slot, and expiry cleanup with history retained. Check build and affected tests.
+Reuse prior130 Core/128 Service and660-page PDF evidence only where unchanged
+payload/config dependencies permit; no new performance claim or redundant PDF
+benchmark. Evidence: C:/Users/nekot/Documents/Codex/2026-10-20/service-reaping.
+Markdown gate: repository-owned setup belongs in Service README/usage; shared
+result belongs here. No new guide, Work/registry or map promotion is needed.
+
+Follow-up result: PASS for the bounded supervision prerequisite. Service candidate
+c704043 enables Compose init for api/registry/verification and documents --init
+for direct Docker task launches. No custom reaper, renderer, DB migration or task
+retention change. The regression check first failed on missing configuration and
+reproduced an unreaped native child without init; resolved candidate configuration
+then passes three normal and three forced-worker native cases, with no zombie.
+Real SRS/API disconnect and SIGKILL probes pass, with all container /proc zombies
+absent, including shaping descendants. Both modes keep only complete originals
+at the unchanged3-hour expiry, remove unsent output, release execution slots and
+clear bytes/reservations after the isolated expiry-clock simulation while keeping
+history. Two earlier native-only probes also pass; four new task histories are
+retained in the isolated clone (16 existing cloned records plus4 new records).
+
+Candidate runtime/verification Docker builds and41 affected task-processing/API
+tests pass with0 skips. One initial harness run collided with the concurrent API
+probe's database-wide processor advisory lock (schema isolation does not isolate
+that lock); its failure report is retained. A dedicated test database fixes the
+harness isolation, without changing product code. Fresh whole-follow-up source
+review reports no Critical/Important/Minor findings. Parent verifies lifecycle
+and packaging; reviewer does not independently rerun Docker/API or judge release.
+All172 Core package files, native755 modes and real engine probes pass in the
+built Linux images; final runtime rebuild retains byte-identical Service dist,
+lockfile and vendor payload. Prior660-page proof is reused, not rerun, and no new
+performance or original-source fidelity claim is made. Detailed evidence and
+cleanup/protected-ref results are in service-reaping/receipt.json. The earlier
+RISK receipt remains immutable historical evidence; this result closes that
+specific reaping prerequisite for the candidate's supported init-enabled launch.
+Existing installed containers remain unchanged and are not claimed repaired.
+No main integration, release/tag/push or installation is authorized or performed.
