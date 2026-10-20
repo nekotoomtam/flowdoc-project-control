@@ -2918,3 +2918,19 @@ plugin and deployment remain unchanged. Candidate branches/worktrees are retaine
 owned test services/files are cleaned and Docker Desktop restored to its initial
 stopped state as confirmed by the terminal receipt. Next: close the Service
 process-reaping prerequisite before any integration readiness claim.
+
+
+Packaging correction before experiment handoff: the first Windows-packed archive
+had644 native file modes, masked by executable Windows bind mounts. An actual
+Linux extraction test reproduced the failure; Linux repacking restores755.
+Service's current isolated pin is dec44a4fe65796edd8f849dac3fc0dd611d2d40d,
+archive SHA256938c8627ec86c03d040dffc7fc8892b7a146182f4f4ed25f99b5cf099b62fe1a.
+All172 packaged payload files are byte-identical, including resources and runtime;
+only archive metadata/pins change. Fresh offline npm installation with scripts
+disabled, real resource/engine probes under UID10001 and14/14 affected API cases
+pass on a normal Linux filesystem. Prior114 non-API cases, source checks, fixed
+SRS comparisons and660-page PDF proof remain reusable under that exact payload
+and executable-state identity. The earlier b35c9f8 artifact is retained as
+artifacts/flowdoc-core-0.4.7-windows-previous.tgz for its immutable job pins.
+The process-supervision prerequisite remains RISK; this packaging repair does
+not authorize integration, release or installation of the running system.
