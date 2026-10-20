@@ -15,8 +15,8 @@ FlowDocMake เป็น consumer ที่ต้องรับชนิดไ�
 
 **Tech Stack:** TypeScript/Node.js, Core document composition, Service/Fastify,
 PostgreSQL, multipart task transport และ DOCX/OOXML. Stage 0 เลือก
-`docx@9.13.0` เป็น research-selected candidate สำหรับ bounded proof ถัดไป;
-ยังไม่ติดตั้ง ทดสอบ หรือรับรองความครอบคลุมของ dependency ในระบบจริง.
+`docx@9.13.0` เป็น candidate ที่ทดลองในพื้นที่แยกแล้ว;
+ยังไม่ติดตั้งหรือรับรองความครอบคลุมของ dependency ในระบบจริง.
 
 **Spec:** ข้อกำหนดเจ้าของและสัญญาในเอกสารนี้ โดยเฉพาะ
 [Agreed design](#agreed-design) และ [API contract](#api-contract).
@@ -29,21 +29,26 @@ Owner: FlowDoc Project Control สำหรับข้อตกลงและ�
 HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเรียกใช้.
 
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
-2026-10-20 เริ่มจากบันทึกแผน และต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ.
-สถานะ: **source/docs discovery complete; implementation-entry prerequisites open**.
-ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results).
+2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
+และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
+สถานะ: **prototype checkpoint complete with limitations; product integration not started**.
+ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
+ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแผนห้องเดียวนี้.
 ไม่เปิด execution context ที่ปิดแล้วกลับมา.
 
 Work Size: medium สำหรับการวางแผน; implementation แบ่งตาม stages ด้านล่าง.
 Risk Tier: routine สำหรับเอกสารนี้; product stages มีความเสี่ยงเรื่องความครบถ้วน
 และ compatibility ซึ่งต้องตรวจตามขอบเขต ไม่ใช่เหตุให้ประกาศ critical โดยอัตโนมัติ.
-Work authority รอบนี้: source/docs discovery และบันทึกผลในแผน Project Control;
-ไม่ทดลอง library หรือสร้าง DOCX candidate.
+Work authority รอบปัจจุบัน: disposable prototype/discovery และบันทึกผลในแผนนี้;
+ไม่ใช่ product implementation หรือการรับรอง feature ทั้งระบบ.
 
-Allowed mutation: เอกสารนี้เท่านั้น. ไม่แก้ Core, Service, plugin runtime,
-installed package, configuration, DB, Docker, template หรือเอกสารผู้ใช้.
-ไม่สร้าง release/tag/push/install และไม่เปลี่ยน system/DOCUMENT_MAP.
+Allowed mutation: เอกสารนี้และ experiment root ที่ระบุในผลทดลองเท่านั้น.
+อนุญาต dependency เฉพาะพื้นที่แยกและ Word review/export ของไฟล์ทดลอง;
+ใช้ installed image แบบ read-only ใน disposable container เพื่อสร้าง Core PDF อ้างอิง.
+ไม่แก้ Core, Service, plugin runtime, installed production package/configuration,
+DB, template หรือเอกสารผู้ใช้. ไม่สร้าง release/tag/push/production install
+และไม่เปลี่ยน system/DOCUMENT_MAP.
 เอกสารนี้เป็นแผน ไม่ใช่ implementation Evidence หรือคำรับรอง DOCX readiness.
 
 ## Agreed design
@@ -396,6 +401,10 @@ Product feature stages ทั้งหมดยังไม่รัน; ไม�
 
 ## Stage 0 discovery results
 
+ส่วนนี้เก็บ checkpoint ของ source/docs discovery ก่อนอนุญาตทดลอง;
+ข้อจำกัดและคำว่า "ยังไม่รัน" ในส่วนนี้เป็นสถานะ ณ checkpoint นั้น.
+ผลรอบทดลองที่ตามมาอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
+
 Observation date: 2026-10-20. ผู้ใช้อนุญาตให้สำรวจและสรุปก่อนแก้ระบบจริง.
 Core/Service heads ยังตรง baseline ด้านบนและ working trees สะอาดระหว่างสำรวจ.
 Project Control เริ่มที่ planning commit `e646f2b`.
@@ -626,3 +635,120 @@ Verification ของเอกสารผลสำรวจ: `git diff --check
 11 groups / 26 files ผ่าน. Source inspection รวม font headers/metadata
 เป็น read-only; Core และ Service ไม่มี tracked/untracked changes.
 ไม่มี runtime/library/rendering test จึงไม่อ้าง DOCX/PDF regression PASS.
+
+## Prototype checkpoint
+
+Owner authorization: ทดลอง six blocker cases B1–B6 ด้วย `docx@9.13.0`
+ในพื้นที่แยก ตรวจใน Microsoft Word และสรุปก่อนเอาเข้าระบบจริง.
+Checkpoint date: 2026-10-20. **ทดลองและตรวจครบตาม bounded sample;
+ยังไม่ผ่าน feature acceptance ทั้งระบบและไม่เริ่ม product integration**.
+
+Experiment root:
+`C:/Users/nekot/Documents/Codex/2026-10-20/docx-prototype-9130`.
+พื้นที่นี้แยกจาก product checkout; การเขียนผลทดลองจำกัดอยู่ใน root นี้.
+Work Size medium / Risk routine; role Planning Partner + Evidence Reviewer.
+Work/Phase/Checklist/execution IDs N/A ตาม single-room rules.
+Proof Budget: 9 original DOCX, B3 diagnostic derivatives ที่เก็บแยก,
+9 Word-exported PDF / 16 pages และ Core reference PDF / 1 page;
+package/resource checks และ bounded pack/cancel probes. ตรวจภาพครบทั้ง 17 หน้า.
+Document Budget: อัปเดตแผนเดิมนี้หนึ่งไฟล์; ไม่สร้าง Work/report/map records ใหม่.
+
+Environment: Node `24.19.0`, local `docx` exact `9.13.0`, released Core `0.4.7`,
+Windows Word file/product version `16.0.20430.20182`.
+Package lock อยู่เฉพาะ experiment root; ไม่รัน install scripts.
+Core tarball SHA256 `13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`.
+PDF reference รันจาก installed image identity
+`sha256:9d76527509c0bed79350dc823e34d7e5fa1ab7ea4176e95277bb57af5a06b723`
+ใน disposable container, network none / 256 MiB / 1 CPU / read-only inputs.
+ไม่เรียก generation API หรือ DB; container ถูกลบหลังจบ.
+
+### Evidence boundary and replay locators
+
+Paths ต่อไปนี้ relative ต่อ experiment root. นี่เป็น local experimental evidence,
+ไม่ใช่ registered production Evidence และไม่ใช่ source of product truth:
+
+| Locator | สิ่งที่ตรวจย้อนกลับได้ |
+| --- | --- |
+| `evidence/generation.json`, `inputs/` | source descriptors, expected tokens, original output hashes และ exact shared Core resolved document |
+| `outputs/`, `outputs/diagnostics/` | 9 original DOCX, Core reference PDF และ B3 candidates ที่ไม่เขียนทับต้นฉบับ |
+| `word/` | Word-exported PDFs และ B3 Word-saved DOCX หลังอัปเดตสารบัญ |
+| `renders/`, `evidence/word-render-manifest.json` | PDF source hashes และ full-page PNGs ที่ตรวจทุกหน้า |
+| `evidence/independent-package-audit.json` | ZIP/XML integrity, content/order, decoded font hashes และ original image bytes |
+| `evidence/independent-word-text-audit.json`, `evidence/independent-visual-review.json` | extraction เทียบ source และผลตรวจภาพ; extraction ไม่ใช้แทน visual completeness |
+| `evidence/b3-word-audit.json`, `evidence/word-font-subset-audit.json`, `evidence/word-image-audit.json` | fields/links, actual font subset metadata และ image placement/alpha |
+| `evidence/b6-*-receipt.json`, `logs/b6-*.jsonl` | pack lifecycle, memory observations, failed attempt และ corrected cancellation |
+| `evidence/prototype-review.json`, `evidence/artifact-manifest.json` | root review observations, coverage gaps และ file hashes ของ review package |
+
+B0 ใช้ actual public Core validate → prepare → compose จาก exact
+`fixtures/table/{template,short}.json`; resolved JSON เดียวกันป้อน Core PDF
+และ disposable DOCX subset mapper. B1–B5 เป็น source-backed experimental
+recipes ที่แปลงเป็น native Word constructs โดยตรง; **ไม่ใช่ full Core writer**.
+ไม่ได้ replay starter groups ทั้ง 11 groups / 26 files ผ่าน writer ครบทุก feature.
+การที่ Word เปิด recipes ได้จึงไม่พิสูจน์ mapping ของทั้ง node models 18/19.
+
+### Six blocker results
+
+| Case | ผลใน Word / probe | ผลต่อการตัดสินใจ |
+| --- | --- | --- |
+| B1 group label continuation | Native vertical merge 2 หน้า: member tokens ทั้ง 75 อยู่ครบครั้งเดียวตามลำดับ, header columns ซ้ำ, same-name groups แยกกันและ empty group อยู่ครบ; แต่ label ของ G0 บนหน้าต่อว่าง. One-table-per-group ซ้ำหัวกลุ่มได้ แต่ย้าย label ไปเป็นหัวตารางและยังไม่มี continuation-only `(ต่อ)` | **FAIL exact continuation semantics**; มีทางเลือกที่รักษาเนื้อหา แต่ต้องตกลงรูปแบบก่อนใช้. ไม่ duplicate สมาชิกเพื่อแก้ label |
+| B2 bands/body budget | 3 หน้า: first-header เฉพาะหน้าแรก, continuation-footer เฉพาะหน้าต่อ; protected row 6 บรรทัดย้ายไปหน้าที่ 2 ทั้งแถว; section ถัดไปไม่ inherit bands. ไม่เห็น overlap/clip ในตัวอย่าง | **PASS bounded recipe**; ยังไม่พิสูจน์ general first/continuation body-budget solver หรือ arbitrary columns/bands จาก Core |
+| B3 numbering / scope / links | Corrected candidate 4 หน้า: cover ซ่อน fields, PAGE เป็น hidden/1/5/6, raw NUMPAGES 4, counted total 3; หลัง Word update TOC มีเฉพาะ 3 scoped headings รวม heading ใน table ด้วยเลข 5/5/6. PDF links 5 จุด resolve ถูก; native Word jump ไป body-two และกลับ table target ถูก | **PASS bounded Word behavior / RISK cached fields**; สูตรนี้หัก cover ที่กำหนดไว้ 1 physical page เท่านั้น. Arbitrary excluded/blank pages และ general counted-total policy ยัง UNKNOWN |
+| B4 fixed-frame completeness | exact 60-pt row เห็นเพียง tokens 01–03, tokens 04–18 ถูกตัด แม้ XML และ PDF extraction ยังพบทั้ง 18. แบบ at-least height เห็นครบทั้ง 18 และ sentinel ไม่ทับกัน | **FAIL exact fixed height + complete content**; auto-height เป็น explicit adaptation ที่เปลี่ยน sizing contract. Preflight reject ใน prototype เป็น conservative check ของ recipe ไม่ใช่ proof ของ Core overflow detector |
+| B5 fonts / images | normal Thai marks ครบ, bundled regular/bold/italic/boldItalic และ exact 500/600 + old/current release เป็น distinct embedded faces จริงตาม PDF font metadata. DOCX font payloads ถอดแล้วตรง source hashes; PNG alpha เห็น checkerboard, JPEG 3:2 อยู่กลาง frame พร้อมช่องบน/ล่างประมาณ 32 px | **PASS bounded visual/resource identity**; tight 8-pt diagnostic lines overlap. ยังไม่พิสูจน์ generic font fallback, corrupt/missing-resource failure, atomic private snapshot หรือ normalizer omission guards |
+| B6 pack / memory / cancel | 9-doc generation child exit 0/reaped, sampled working set 92 MiB. Small 400-paragraph probe self-reported RSS สูงสุดที่ log 64.46 MiB, output 26,733 bytes. Corrected IPC cancellation หยุด owned child ที่ ZIP start, reaped และไม่มี final/partial artifact | **PASS process-boundary cancel / UNKNOWN capacity**; ไม่ใช่ in-process AbortSignal, peak-memory ceiling, concurrency หรือ 2-worker / 1-GiB acceptance |
+
+B0 เพิ่มหลักฐาน shared-input path: ข้อความและ topology ตารางอยู่ครบ แต่ Word
+row height ประมาณ 20.53 pt เทียบ Core 28 pt เพราะ subset mapper ยังไม่ map
+cell padding/row sizing ครบ. จึงไม่อ้าง near-PDF geometry acceptance จาก B0.
+
+### Failed attempts and Word update limits
+
+- Original B3 เปิดใน Word ไม่ผ่านเพราะ prototype ใช้
+  `ImportedXmlComponent.fromXmlString()` แล้วเกิด invalid `<undefined>` wrappers
+  ใน footer3/footer4. XML parsing เพียงอย่างเดียวตรวจไม่เจอ schema defect นี้.
+  เก็บ original ไม่เปลี่ยน; minimal derivative แก้เฉพาะ wrappers สอง footer parts.
+  Corrected source ใช้ public component constructors และสร้าง footer XML ตรง
+  minimal derivative. Word เปิด corrected-source candidate ได้; ไม่ใช่ข้อสรุปว่า
+  Word ไม่รองรับสูตรหรือว่า production writer ถูกแก้แล้ว.
+- B3 เปิดโดยตอบ No ต่อ update prompt เพื่อดู initial TOC: entries ยังไม่มีเลขหน้า.
+  ใช้ Ctrl+A → F9 → Update entire table; ได้ 5/5/6 แล้ว Save As เป็นสำเนาใหม่
+  และ export PDF ด้วย Word. Word PDF แสดง fields ถูก แต่ Word-saved DOCX ยังมี
+  `REFRESH` caches ของ PAGE/NUMPAGES ในบาง footers; complex formula cache เป็น 3.
+  ห้ามสัญญาว่าผู้รับทุก viewer เห็นค่าถูกก่อน refresh หรืออ้าง cached PDF page count.
+- Word save ขยาย B3 จาก 193,799 เป็น 1,809,394 bytes และเพิ่ม style/default font
+  embeddings; PDF ยังใช้ Sarabun. ไม่ใช้ Word-saved bytes แทน generator output
+  โดยไม่เปิดเผย และไม่กำหนดให้ export server ต้องมี Word.
+- Initial B6 cancellation แบบ polling ช้าเกินไป: child exit 0 และมี final ZIP.
+  Receipt แม้เขียนเหตุผล cancel ก็ยัง **FAIL**. Corrected IPC attempt แยก receipt:
+  child SIGTERM/reaped, จบที่ ZIP start, ไม่มี ZIP end/output, 352.16 ms รวม;
+  self-reported RSS ล่าสุด 108.12 MiB. ค่านี้ไม่ใช่ peak working set.
+- Host safety floor 1,536 MiB และ child cap 384 MiB ใช้เฉพาะ bounded experiment;
+  ไม่ใช่ production limits ที่ freeze แล้ว. ไม่ปิดโปรแกรมหรือเอกสารที่ไม่เกี่ยวข้อง.
+- `render_docx.py` ผ่าน LibreOffice ไม่สร้าง PDF และจบด้วย render/profile-lock error;
+  ไม่ใช้เป็น PASS. Primary visual evidence มาจาก Word export แล้ว render ด้วย Poppler.
+  ไม่มีการทดสอบ LibreOffice/Google Docs/viewer อื่นผ่านรอบนี้.
+
+### Decision and remaining entry prerequisites
+
+คง `docx@9.13.0` เป็น implementation candidate ได้จาก primitive/resource behavior
+ที่เห็นจริง; **ยังไม่เปิด product integration**. สิ่งที่ต้องตกลง/ทำก่อน dependent stage:
+
+1. เลือก semantics ของ group label ต่อหน้า: รักษาด้านข้างแบบเดิมยังไม่ผ่าน;
+   repeated group header เปลี่ยนหน้าตาและไม่มี suffix เฉพาะหน้าต่อ.
+2. จำกัดหรือพิสูจน์ counted-total policy ที่กว้างกว่าสูตร one-page excluded cover;
+   ระบุ field-refresh requirement และ initial-view behavior ให้ชัด.
+3. ยืนยัน fail-closed สำหรับ fixed content ที่ตรวจความครบไม่ได้;
+   auto-height ต้องเป็น adaptation ที่ตกลง ไม่ใช่ implicit fallback.
+4. ทำ writer/provider จาก actual ResolvedDocument พร้อมครบถ้วน/identity/negative
+   checks และ freeze resource bounds/interfaces จากหลักฐานที่เหมาะกับ runtime.
+
+Stage 0 semantic/interface prerequisites ที่ยังไม่ผ่านคง checkbox เปิด;
+Stages 1–5, API/header/default-PDF regression, DB migration, queue/consumer
+และ production capacity ยังไม่รัน. ข้อตกลง `Output-Format` omitted → PDF เดิมคงอยู่.
+ไม่มีการเปลี่ยน system map, DOCUMENT_MAP หรือ promoted production Evidence.
+
+Closeout: checkpoint **PASS as an experiment with explicit FAIL/RISK/UNKNOWN results**.
+Core/Service source heads และ clean status ไม่เปลี่ยน; original 9 DOCX hashes คงเดิม.
+ปิดเฉพาะหน้าต่างต้นแบบหลังเก็บหลักฐาน และคงเอกสาร Word ของผู้ใช้ที่เปิดอยู่ก่อน.
+Verification ของแผน: diff/whitespace, local links/anchors และ `npm run check:data`.
+ไม่มี canonical data เปลี่ยนจึงไม่ regenerate projections; ไม่อ้าง product test PASS.
