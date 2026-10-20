@@ -31,9 +31,10 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **prototype checkpoint complete with limitations; product integration not started**.
+สถานะ: **bounded prototype complete with limitations; actual 98-page SRS trial fails Word/layout acceptance; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
+ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
 Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแผนห้องเดียวนี้.
 ไม่เปิด execution context ที่ปิดแล้วกลับมา.
 
@@ -752,3 +753,118 @@ Core/Service source heads และ clean status ไม่เปลี่ยน;
 ปิดเฉพาะหน้าต่างต้นแบบหลังเก็บหลักฐาน และคงเอกสาร Word ของผู้ใช้ที่เปิดอยู่ก่อน.
 Verification ของแผน: diff/whitespace, local links/anchors และ `npm run check:data`.
 ไม่มี canonical data เปลี่ยนจึงไม่ regenerate projections; ไม่อ้าง product test PASS.
+
+## Existing SRS checkpoint
+
+Owner authorization: ทดสอบกับโครง SRS ที่มีอยู่ในระบบประมาณ 98 หน้า;
+เจ้าของยืนยันว่าไม่สร้างโครงใหม่. Checkpoint date: 2026-10-21.
+**ผล: shared-input composition และ static DOCX coverage ผ่าน;
+Word/layout acceptance FAIL จึงยังไม่เริ่ม product integration.**
+
+Experiment root:
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130`.
+Role: Planning Partner / Evidence Reviewer. Work Size medium / Risk routine;
+Work/Phase/Checklist/execution IDs N/A สำหรับ single-room disposable experiment.
+Allowed mutation: experiment root และแผนเดิมนี้หนึ่งไฟล์.
+ไม่แก้ template/draft, product source, DB, API, installed runtime หรือ maps.
+Proof Budget: exact existing SRS input freeze, public Core composition,
+paired Core PDF เทียบครบ 98 หน้า, two DOCX candidates และ actual Word attempts;
+หยุดหลัง Word ไม่ตอบสนองซ้ำ ไม่ขยายเป็น unbounded repair/integration.
+
+### Exact existing source and shared path
+
+- Live draft `008980f5-dd0d-4f7d-86be-2fc3f300e08d`, docKey
+  `ttt-spaceship-srs-native-full-011-20261015`, name
+  `SpaceShip SRS complete source trial (explicit Areas)`;
+  revision 1, model 18, 7 sections. Fingerprint
+  `ffcde8736980748a950fb56c2c786b66ef0f52d482ac383a7e31a91ef0a62f02`.
+- เลือก original input เฉพาะ preview identity/revision/fingerprint ที่ตรงกันจาก
+  installed 0.4.9/0.2.8 backup; ไม่ใช้ capacity-030 หรือ derived two-section queue fixture.
+  Canonical original-request serialization SHA256
+  `b8ea15e30f0c90d53f81b74c8250b8f3a89d55ad0dc336c24f32c22cfa049aa0`;
+  ค่านี้ไม่ใช่ raw backup-file hash. สำเนาสำหรับ offline composition เอาออกเฉพาะ
+  transport `uploadId`; business data/sections/resource IDs คงเดิม.
+- Existing reference PDF: 98 pages / 2,559,955 bytes, SHA256
+  `cd2fde00ea5273c889498eb490ff2e1fa945f7e4fbdc74cd65f25bbb9643ebf1`.
+  ตรึง raw PNG ต้นทางครบ 13 resources พร้อม source paths และ hashes.
+- ใช้ released Core 0.4.7 public `validateTemplate` → `prepareGeneration` →
+  `composeDocument` เหมือน Service; ทุก stage OK, warnings ว่าง.
+  Exact ResolvedDocument raw-file SHA256
+  `920976069d27da172193fb253e1c3b313299327a6f7994755fb2b927bfdfa301`
+  เป็น input ร่วมของ PDF และ disposable DOCX adapter.
+- ใช้ installed Service image เดิมและ `prepareImage` helper สร้าง 13 prepared
+  variants ในพื้นที่แยก; ไม่เรียก DB-owned preparation helper หรือ HTTP generation.
+  มี `IMAGE_LOW_RESOLUTION` 4 รายการ; ไม่ข้ามรูปและไม่แสดงว่า warnings นี้หายไป.
+  DOCX embeds exact prepared PNG bytes; paired PDF ใช้ RGB/alpha จาก bytes ชุดเดียวกัน.
+- Existing SRS นี้ระบุ `continue` ทุก section และ cover `visibility: hide`;
+  จึงนับหน้าปกรวมด้วย. ไม่ใช้สูตร `NUMPAGES - 1` หรือ restart body จาก B3.
+
+### Results and acceptance coverage
+
+| Criterion | Evidence / result | Boundary |
+| --- | --- | --- |
+| Existing SRS identity and no template rebuild | `evidence/source-freeze.json`, `compose-result.json`, `input-immutability.json`; frozen 19 files unchanged and live revision/fingerprint checked again | ไม่ได้เปลี่ยน draft หรือสร้าง SRS ใหม่ |
+| Paired PDF from exact resolved/resource set | `outputs/srs-paired-core.pdf`, SHA256 `e368da46a89ca81b07931a30366a0210fbc6e4cd4a7c771969fbaf12df13cfb2`; `evidence/paired-core-alpha-retained-comparison.json` | 98/98 pages: decoded content/resources, text, geometry, link targets/coordinates และ 80-dpi pixels ตรง reference; ไม่ใช่ DOCX visual proof |
+| Native DOCX content/order | `evidence/audit-mapping-v2.json`, `docx-inline-v2-package-audit.json` | 1,814 nonempty body paragraphs ตรง source ทุกข้อความและลำดับ; 198 heading texts/levels/order และ native TOC entries ครบ; เป็น XML/package proof |
+| Tables and pictures | Same static audits plus `docx-generation.json` | 200 tables / 933 rows / 1,932 cells / 197 column spans; body images 371 placements, 13 exact prepared media; section order 7 และ internal link targets 198 resolve. ยังไม่พิสูจน์ว่า Word แสดงครบโดยไม่มี overlap/clip |
+| Actual Word opening / stable layout / export | Two actual Word attempts on `16.0.20430.20182`, `evidence/srs-review.json` | เปิดผ่าน field/TOC prompts และเห็นหน้าปก แต่ค้างระหว่าง Save As DOCX รอบแรกและ PDF export รอบสอง; ไม่มี completed Word PDF หรือ Word-saved DOCX ที่ใช้ตรวจทุกหน้าได้: **FAIL** |
+| Near-PDF appearance, Thai shaping, table continuation, TOC/page fields after refresh | No completed Word rendering | **UNVERIFIED**, ไม่ใช้ static content checks หรือ PDF parity มาแทน |
+| Production/API behavior | No product mutation/tests in this checkpoint | `Output-Format` omitted → PDF ยังเป็นข้อตกลง; ไม่ใช่ tested API implementation |
+
+### Two candidates and observed limits
+
+1. V1 `outputs/diagnostics/srs-floating-v1.docx` (same bytes also in
+   `outputs/srs.docx`): 1,080,150 bytes, SHA256
+   `a00a41fd3c3deb17255a1ff40bede02b46a2453955fc384a73aa13114156da2a`.
+   ใช้ native floating body images และ page-relative floating band canvases.
+   Word เปิดและเริ่ม update entire TOC ได้; Save As ค้างต่อเนื่องหลายนาที,
+   observed process working set 564 MiB. `word/srs-refreshed-v1.docx` เป็น 0 bytes
+   จึงเป็น failed output ไม่ใช่ deliverable. เจ้าของช่วยปิดเฉพาะหน้าต่างทดลอง.
+2. V2 `outputs/srs-inline-v2.docx`: 1,078,500 bytes, SHA256
+   `e91797dec4fafc29d8ac90fc53d5ada58acc640c093d1d3bf322b25bb5f77223`.
+   เปลี่ยน body images เป็น inline พร้อม minimum line height เพื่อทดสอบสมมติฐาน
+   เรื่อง image anchors; source contain ratio คงเดิม แต่ Word baseline อาจเพิ่ม
+   frame/row height. PAGE/NUMPAGES result runs แก้ให้ระบุ Sarabun 9pt ชัดเจนทั้ง
+   font slots และ complex-script size; static audit ยืนยันครบ 36 fields.
+   Band canvases ยังเป็น floating tables. Word เปิดได้ แต่ PDF export ค้างซ้ำ
+   เกินสองนาทีและไม่มี PDF สำเร็จ. เจ้าของช่วยปิดรอบสอง;
+   **ยังไม่พิสูจน์ root cause และห้ามสรุปว่า inline images แก้ Word hang ได้**.
+
+การแปลงนี้รองรับ actual node/property set ของ SRS นี้ ไม่ใช่ full generic writer.
+Table group keep-start ใช้ Word paragraph keep rules ซึ่งไม่ใช่ Core measured
+fragment algorithm. Fixed blocks ที่พบเป็นเพียง empty cover spacers สองจุด;
+ไม่มี nonempty fixed-frame, row spans, per-fragment group labels หรือ selective
+excluded-page policy ใน SRS นี้ จึงไม่เพิ่ม coverage ของช่องว่างเหล่านั้น.
+Band sizing วัดจาก source recipe และยังไม่ใช่ arbitrary Word-wrap solver.
+Unknown types/properties/resources ที่ตัวทดลองตรวจพบต้อง fail แทนการข้าม.
+
+Failed-attempt provenance คงไว้ใน receipts/logs: package metadata import ครั้งแรก
+ชน package exports; subsequent diagnostic output rename ชนไฟล์ที่ Word ยังล็อก.
+แก้เฉพาะ disposable scripts/output naming. Initial paired PDF elided fully opaque
+alpha planes จึงต่างเพียง image-edge raster pixels; independent audit ยืนยัน alpha
+ทั้งหมดเป็น 255 แล้ว rerender โดยคง SMask ได้ exact all-page parity ตามตาราง.
+ไม่ได้แก้ต้นทางเพื่อให้ comparison ผ่าน.
+
+Generation child เป็น owned process, 512-MiB sampled working-set cap,
+1,536-MiB host floor / 90-second deadline; successful V2 generation exit 0/reaped,
+sampled working set 323 MiB, pack ประมาณ 671 ms. เป็นหนึ่งการสังเกตของ full SRS;
+ไม่ใช่ production capacity, Word memory bound, concurrency หรือ peak-memory proof.
+Disposable containers network none / 1 CPU; image prep cap 256 MiB,
+paired PDF cap 768 MiB; ลบ containers หลังจบ.
+
+### Checkpoint decision
+
+**FAIL Word/layout acceptance; input reuse and static mapping PASS within this SRS.**
+ไม่ควร promote DOCX เหล่านี้เป็นเอกสารพร้อมส่งหรือเอา writer เข้าระบบจริง.
+Next recommended work คือ bounded Word-layout diagnosis โดยแยก band canvases,
+TOC refresh และ table pagination ทีละปัจจัย พร้อม reproducer และเกณฑ์หยุด;
+ยังไม่ถือว่าส่วนใดเป็นสาเหตุจนมีผลทดลองแยกยืนยัน.
+เมื่อ Word จัดหน้า/export สำเร็จ จึงตรวจภาพทุกหน้าและเทียบ source ก่อนตัดสิน
+near-PDF acceptance. ไม่เพิ่มหลักฐานซ้ำของ PDF/input ที่ผ่านและไม่เปลี่ยน SRS structure.
+
+Core/Service working trees clean และ source heads คงเดิม:
+`8f8a739aea5597b6d8c9932c790f9bd716e8ebc7` /
+`ca66f605b02a41d1bc3b05894fbc75f5224d4900`.
+ไม่มี production Evidence/map updates. ตรวจแผนด้วย diff/whitespace,
+local links/anchors และ `npm run check:data`; canonical data ไม่เปลี่ยน
+จึงไม่ regenerate projections. เก็บ two candidates เป็น diagnostics เท่านั้น.
