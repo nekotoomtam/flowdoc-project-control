@@ -12,9 +12,10 @@ work under the owner's explicit request on 2026-10-20; execution, Work, Phase,
 and Checklist IDs are not applicable. Risk: routine. Document budget: this one
 file. No closed execution context is reopened.
 
-Status: Stage 0 contract closed; Stages 1–3 verified on isolated candidate branches
-on 2026-10-20 under the owner's subsequent implementation requests. Stage 4
-remains pending. Numeric resource values below are trial policy decisions, not
+Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
+on 2026-10-20 under the owner's subsequent implementation and verification
+requests. Integration, release and installation remain unapproved. Numeric
+resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
 deployment approval, or product/map truth. It does not authorize runtime edits,
@@ -187,8 +188,8 @@ working; disabling API readiness would invalidate the proof.
 
 ## Staged development and future checks
 
-Stage 0 is closed as a documented contract. Stages 1–3 results are recorded below;
-Stage 4 checks remain future acceptance.
+Stage 0 is closed as a documented contract. Stages 1–4 results are recorded below.
+The acceptance column records each stage's requirements, not new execution authority.
 Implementation must remain isolated until separate integration approval.
 
 | Stage | Deliverable / likely owner paths | Required future acceptance |
@@ -725,3 +726,95 @@ freshness bound still causes a safe stop. These results do not guarantee
 production capacity or all possible shared-host loads. Stage 4 still owns the
 full nine-heavy-job, one-versus-two-worker comparison. No integration, release,
 push or installation is authorized by this result.
+
+## Stage 4 isolated mixed-workload result — 2026-10-20
+
+Verification-only continuation uses unchanged Service `9b4ab6e` with Core
+0.4.7 and the same pinned archive. No Service, Core, plugin, schema, runtime
+configuration, primary branch or release ref changed. Project Control owns this
+result on `codex/task-queue-stage4`; execution IDs are N/A inline. Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-20/task-queue-stage4`.
+
+Each comparison arm submits nine separate HTTP requests through the native
+FlowDocMake client: three full UAT and six existing SRS inputs. All nine receive,
+normalize and reach persisted queue state before any worker starts. All original
+parts are hash-checked against frozen source and stored bytes (190 per UAT,
+14 per SRS). Actual payload/template/image-list hashes match verified Stage 3;
+the older manifest's stale SRS payload hash is preserved as provenance while
+`frozenHashes` records the actual unchanged bytes. No mock or asset representation
+is changed between arms.
+
+Both arms use the same candidate, harness hash, 2 CPU / 1 GiB / no-extra-swap
+profile, 1,500,000,000-byte pool, probes and independent empty named volumes /
+cloned test databases. The single-worker arm adds only an external launch gate
+around `runNext`; production capability stays two and all worker RAM credits
+remain unchanged. Actual one/two-worker maxima are verified. Raw process census
+contains 866 two-live-worker samples in the parallel arm and also confirms
+simultaneous native Python descendants belonging to two worker parents.
+
+| Measured value | One worker | Two workers |
+| --- | ---: | ---: |
+| First submission to final received PDF, seconds | 135.56 | 85.72 |
+| Submission to final cleanup, seconds | 136.65 | 86.76 |
+| Submission to all nine queued, seconds | 33.25 | 20.47 |
+| Intentional all-queued verification hold, seconds | 2.23 | 1.34 |
+| Release to final received PDF, seconds | 100.08 | 63.90 |
+| Kernel cgroup peak RAM, MiB | 385.57 | 574.73 |
+| Maximum sampled physical task-file bytes, MiB | 31.78 | 43.14 |
+| Maximum sampled held reservation, MiB | 584 | 952 |
+| Mean RAM during the final 30-second idle window, MiB | 162.48 | 141.33 |
+
+The observed total-time reduction is 36.77% (1.58 times throughput for this
+workload). One run per arm is not a performance distribution or a guarantee
+about cold/cache-equivalent conditions. Order was failed harness preflight,
+single-worker, then two-worker; no forced cache drop occurred. Preparation and
+hold differences above are included in totals; post-release timing is reported
+separately. Per-task/stage timings, CPU throttling, anonymous/file/kernel memory,
+RSS/process census, disk and resource samples are retained in `measurements.json`
+and raw traces. Service cgroup includes the coordinator, local clients and probes;
+PostgreSQL and host/VM memory are excluded. Used bytes are within held reservations,
+not an additional amount. Sampled physical peaks are not exact disk high-water marks.
+
+Both arms complete nine tasks / 798 pages, one usage record per task, with intact
+pins, checksums and feedback. No OOM, metric read failures or freshness stops occur.
+After cleanup, task files and used/held reservations are zero; no worker or zombie
+survives the final census. Transient zombies were sampled during normal reaping,
+so this is not a claim that none ever existed. Idle RAM is observed for 30 seconds,
+not proof of indefinite leak freedom or return to initial allocator state.
+
+A separate three-full-input cancellation proof stops one queued and one active
+task through client disconnect while its peer finishes a 98-page SRS PDF. Both
+stopped tasks retain complete original-source records at their original expiry,
+record one terminal usage each, and clear files/reservations after explicitly
+isolated fixture TTL ageing. Existing Stage 3 backpressured-send/disconnect and
+unsent-PDF deletion evidence remains reusable: no product code changed and all
+172 externally recompiled files match executed `dist` byte-for-byte. The previous
+190 tests are reused, not represented as rerun in Stage 4.
+
+All 19 produced PDFs / 1,694 pages (1,596 comparison pages plus 98 cancellation
+survivor pages) pass strict parse, every-page rendering without diagnostics,
+text, image bytes/alpha/order, internal-link targets/geometry and exact pixel
+comparison to the reviewed Stage 6 baseline. Representative 168-page contact
+sheets from both arms were inspected. This proves regression parity, not new
+fidelity to the original source documents.
+
+Observation: one completed SRS PDF waits 10.679 seconds for its 8-MiB sender
+credit while two worker credits fill the 768-MiB launch ceiling. All 101 observed
+wait snapshots show two workers, zero senders and actual RAM at most 520.80 MiB;
+this is conservative credit waiting, not high-water pressure, deadlock or a
+failed delivery. Keep the agreed policy unchanged; no optimization is authorized.
+
+The first nine-task attempt stopped before processing because the harness
+incorrectly demanded first feedback before every fast upload completed. The
+corrected harness records actual timing instead; queued source integrity remains
+mandatory. That attempt is retained as failed proof, with source retention and
+fixture expiry cleanup verified. A cleanup-helper assertion initially included
+16 cloned historical terminal rows; it was scoped to the nine current-owner rows
+before ageing. Neither failure required a product repair.
+
+One independent read-only audit found the harness credible and no runtime defect;
+its sole pending prerequisite was the then-running full PDF check. The executor
+resolved it against the final 19-file / 1,694-page PASS receipt. Six stopped proof
+containers and four physically checked empty volumes are removed; test databases,
+output PDFs, evidence and unmerged candidate worktrees are retained. Docker is
+restored to its initial stopped state. Maps and installed systems remain unchanged.
