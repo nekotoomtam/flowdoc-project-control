@@ -3034,3 +3034,51 @@ existing shared plan; no maps, registries or generated projections are promoted.
 Release branches/tags and installed systems remain unchanged. Temporary test
 container/DB were stopped/removed as appropriate; Docker returns to its prior
 stopped state, with final checks recorded in the receipt.
+
+### Owner-requested five-run SRS measurements, 2026-10-20
+
+Verification-only inline run, execution IDs not applicable; no product change,
+release/push/install. Source Core5fc454c, Service33d4bd7, same frozen SRS98-page
+input,13 uploaded image files and377 expanded image-node placements. Five
+sequential fresh init-enabled containers,2CPU/1GiB each; PostgreSQL separate.
+All5 trials retained, no discarded warmup or score-driven reruns. Coarse hooks
+record timing/RAM/CPU; periodic sampling adds cgroup IO, logical task-file size
+and isolated DB reservations. This observer is more extensive than the earlier
+comparison, so these are internally comparable current instrumented timings,
+not a claimed speedup against the older observer. No profiler/algorithm tuning.
+
+PASS: client-to-complete-PDF seconds38.678768,35.928058,34.655361,45.391311,
+32.815895; arithmetic mean37.493878,median35.928058,min32.815895,max45.391311,
+sample SD4.903211. Through cleanup mean39.749695s. Mean phase times: receive1.802,
+normalize1.951800,compose1.595725,image prepare3.596141,font load0.154670,
+engine setup0.083711,font snapshot0.094725,layout4.677855,font subset0.973422,
+PDF write20.858725 (font map/embed nested0.671814; other writing20.186912),
+send0.174458,cleanup2.220684. Normalized validation/binding are nested in compose;
+font embedding is nested in PDF write. Do not add nested rows twice.
+
+Kernel lifetime peak RAM per run373.335938,282.632813,260,277.054688,281.300781MiB;
+mean294.864844,median281.300781,max373.335938. Sampled resident/cgroup mean224.686546MiB.
+The first run also shows91.492188MiB file cache; it remains included. RAM covers
+API/client/worker/native/observer and file cache, excludes DB/host Docker VM.
+Process RSS sums may double-count shared pages. Mean sampled-window CPU24.775535
+CPU-seconds,31.220428% of the2CPU quota; CPU seconds are not wall seconds.
+Task logical-file peak observed mean6.835159MiB,charged peak6.835848MiB,
+reserved peak200MiB; PDF2559799bytes each,request3234529bytes each. Cgroup device
+IO mean read3.388281MiB/write0 does not cover all cached/Windows bind traffic;
+zero device writes does not mean no PDF/file writes. The sampler targets50ms,
+but largest observed gap570.261474ms; per-phase peaks/file sizes are observed
+samples, while whole-container RAM peak comes from the kernel. Raw null short
+phase disk/IO values are unavailable, never zero-filled.
+
+All490 output pages pass strict parsing, zero-diagnostic Poppler rendering and
+exact reference text/pixels/image-alpha-order/link-target/geometry checks.
+All5 tasks complete with0 omissions/OOM, exactly1 serving segmenter PID during
+layout,0 residual task bytes/reservations/children and retained usage history.
+All reader buffers/indexes/record leases and task credits return to0. Five owned
+containers removed; test DB stopped and Docker restored to its initial stopped
+state. Product sources/branches/tags remain unchanged; only this existing plan
+receives the benchmark note. Evidence: C:/Users/nekot/Documents/Codex/2026-10-20/srs-five-runs,
+measurements.json,all-metrics.csv,runs.csv,pdf-verification.json,cleanup-audit.json
+and receipt.json. CSV includes all available phase,CPU/RAM/IO/storage/reader
+counters with mean/min/max/median/sample SD and coverage count. Earlier source
+fidelity limitations remain; reference parity is not a new original-source claim.
