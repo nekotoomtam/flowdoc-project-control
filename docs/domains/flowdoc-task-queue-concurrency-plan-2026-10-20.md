@@ -14,7 +14,8 @@ file. No closed execution context is reopened.
 
 Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
 on 2026-10-20 under the owner's subsequent implementation and verification
-requests. Integration, release and installation remain unapproved. Numeric
+requests. Development integration and clean merged-lane cleanup were subsequently
+approved and completed; release and installation remain unapproved. Numeric
 resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -818,3 +819,32 @@ resolved it against the final 19-file / 1,694-page PASS receipt. Six stopped pro
 containers and four physically checked empty volumes are removed; test databases,
 output PDFs, evidence and unmerged candidate worktrees are retained. Docker is
 restored to its initial stopped state. Maps and installed systems remain unchanged.
+
+## Development integration closeout
+
+Under the owner's subsequent merge and cleanup approval, Service candidate
+`9b4ab6e` was fast-forwarded into `codex/template-registry` and Project Control
+candidate `67d4604` into `main`. Core `codex/template-binding` stays unchanged.
+Subsequent Service README/usage and plugin README edits clarify development
+queue opt-in only; runtime, dependencies, packages, versions and configuration
+are unchanged.
+
+Fresh primary-checkout verification passes Service build, all 14 plugin tests
+without skips, Project Control `check:data`, and whitespace checks. Service's
+190-test / 22-file result and Stage 4's 19-PDF / 1,694-page proof are reused,
+not rerun: tested source and dependencies are unchanged. Of 172 freshly compiled
+files, 171 match the Stage 4 build exactly; `templates/registry.js` differs only
+by one CRLF/LF sequence, with equal normalized content and parsed JavaScript
+tokens/literal values. No output was rewritten to conceal this difference.
+
+Three clean integrated worktrees and eight merged local branches were removed
+with ordinary non-forced Git operations after ancestry and path checks. Primary
+and release branches, tags and full integrated history remain. PDFs and proof
+files stay outside removed worktrees; `cleanup.json` maps historical worktree
+paths to their retained commits and primary repositories.
+
+Integration evidence and final receipt are retained at
+`C:/Users/nekot/Documents/Codex/2026-10-20/task-queue-integration/receipt.json`.
+Docker and installed systems remain unchanged. No release, tag, push or
+installation was performed. This closeout records development integration;
+it does not promote a system map or authorize deployment.
