@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **actual SRS Word diagnosis paused by owner; band-related failures isolated, corrective candidates not yet tested; product integration not started**.
+สถานะ: **owner manual Word export of full SRS succeeded; all 99 pages reviewed with table-header and pagination findings; automated diagnosis remains paused; corrective candidates not Word-tested; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -931,3 +931,62 @@ validated PDF/file write time ในผลด้านบน. ไม่ใช้
 ไม่สรุปว่าตัวแก้ได้ผลก่อนวัดจริง ไม่เริ่ม production integration.
 การไม่ตอบสนองชั่วคราวอย่างเดียวไม่เพียงพอให้สรุปว่าค้างไม่จบ: D00/D01
 กลับมาส่งออกสำเร็จ จึงใช้ explicit error/ครบกรอบเวลา/validated output แยกผล.
+
+## Owner manual Word export checkpoint
+
+วันที่ 2026-10-21 เจ้าของเปิด `outputs/srs-inline-v2.docx` แล้วช่วยแปลงเป็น
+`outputs/srs-inline-v2.pdf` ด้วย Word สำเร็จ. ตรวจไฟล์ที่มีอยู่แบบ read-only;
+ไม่ได้เริ่ม Word automation หรือ corrective-candidate experiments กลับมา.
+Role: Evidence Reviewer / Documentation Synthesizer; single-room IDs N/A.
+เอกสารแผนนี้ยังเป็น Project Control canonical checkpoint ไม่ใช่ production Evidence.
+
+DOCX ที่เจ้าของเปิดยังมี SHA256 เดิม
+`e91797dec4fafc29d8ac90fc53d5ada58acc640c093d1d3bf322b25bb5f77223`
+/ 1,078,500 bytes. อ่าน hash ด้วย Python ได้ขณะ Word เปิดอยู่; PowerShell
+`Get-FileHash` ครั้งแรกถูก file sharing lock ปฏิเสธ จึงไม่ใช้เป็นผล corruption.
+PDF ใหม่มี 99 pages / 1,005,937 bytes, SHA256
+`c461b314bb449da1f86fdfd2a9ba8c4d38daae498ac70a354dcd4dc8bbdea29c`;
+metadata ระบุ Microsoft Word for Microsoft 365, creation time
+2026-10-21 01:20:37 +07:00. ไม่ได้จับเวลาหรือสังเกตขั้นตอน manual export โดยตรง.
+
+ผลนี้ยืนยันว่า full SRS V2 ส่งออกผ่าน Word ได้ในการใช้งานของเจ้าของ.
+เก็บ prior explicit header error และ bounded footer/V2 timeouts ตามเดิม;
+ไม่ขยายเป็นข้อสรุปว่าไฟล์เต็มส่งออกไม่ได้เสมอ หรือ bands เป็นสาเหตุแน่นอน.
+ความต่างระหว่าง manual session กับ automation ยัง unknown; การวินิจฉัยที่พักไว้
+และ corrective candidates ยังไม่มีผลใหม่จาก Word.
+
+| Read-only check | Result and limit |
+| --- | --- |
+| File and visual coverage | PDF เปิดอ่านได้ครบ 99 pages; render 96 dpi แล้ว review ทุกหน้า แบ่งช่วง 1–33 / 34–66 / 67–99 และ zoom จุดสงสัย. ไม่พบ visible clipping, body/header/footer overlap, blank-page anomaly หรือ obvious broken glyph ในการตรวจนี้; ไม่ใช่ per-glyph หรือ pixel-parity proof |
+| Body text against D01 | หลังตัด exact source-defined band prefixes ข้อความ normalized ของ 93 non-TOC pages ตรง D01 ทุกหน้า. TOC pages 4–9 ต่างที่ leader dots และบาง Thai extraction. Strict source-string probes ยังเหลือ 134 absent candidates เทียบ D01 139; newly absent 0. เก็บผลไว้ ไม่แสดงเป็น strict text PASS. Explicitly lossy Thai/source corroboration พบ absent 0/1,160 distinct non-contents strings; ไม่พิสูจน์ ordered instances/multiplicity หรือความถูกต้องของทุก glyph |
+| Images | 469 painted occurrences = 371 body placements + 98 identical header banners บน pages 2–99. Body images ตรง D01 ทุก page/order/dimensions/decoded-image hash/soft-mask hash; 12 distinct body variants. เป็น image data/sequence proof ร่วมกับ visual review ไม่ใช่ complete source-layout parity |
+| TOC and page fields | Internal links resolve 198/198; printed page numbers ตรง link destinations 198/198 และ destinations ตรง D01. Source headings พบที่ปลายทาง 198/198 ด้วย explicitly lossy Thai normalization. Pypdf TOC labels ตรง strict 194/198 และ lossy 198/198. Page fields เป็น 2/99 ถึง 99/99; cover ไม่มีเลขแสดง ตาม source policy |
+
+พบ mapping defect ที่ต้องเก็บไว้ก่อน near-PDF acceptance:
+Word pages 18–26 ใช้ repeated meeting-table header ของ “ครั้งที่ 1” ข้ามไปยัง
+การประชุมครั้งถัด ๆ ไป. ตัวอย่าง Word page 18 ขึ้น header ครั้งที่ 1 ก่อนเนื้อหา
+ครั้งที่ 2/3 ขณะที่ Core reference page 18 ใช้ header ครั้งที่ 2; Word page 19
+ยังขึ้นครั้งที่ 1 ขณะที่ Core reference page 19 ใช้ครั้งที่ 3.
+Frozen DOCX มี meeting tables แยกกัน 15 ตารางพร้อม first-row repeat flags
+และ title ของแต่ละครั้ง; source เดิมข้ามครั้งที่ 11 อยู่แล้ว จึงไม่รายงานเป็น
+เนื้อหาที่ DOCX ทำหาย. มี adjacent-table runs 3 ชุด / 26 pairs รวม approval,
+legend และ meetings; Word table coalescence เป็น supporting hypothesis
+ที่ยังไม่ได้พิสูจน์ด้วย corrective experiment.
+
+Pagination polish ที่มองเห็น: หัวข้อแยกจากตาราง/เนื้อหาไปหน้าถัดไปที่ท้าย
+pages 28, 33, 35–44, 74 และ 83. Icon-only continuation rows ที่ pages
+46, 49, 50, 54, 55, 59, 64, 80 และ 89. ไม่พบว่าข้อมูลตรงจุดเหล่านี้หาย;
+ยังไม่ได้จัดประเภททุกกรณีว่าเป็น regression จาก Core หรือความต่างที่เจ้าของยอมรับ.
+99 pages เทียบ Core 98 pages ไม่ใช่ failure เพียงเพราะจำนวนหน้าต่างกัน.
+
+Locators ใต้ experiment root เดิม: `user-pdf-review/review.json`,
+`user-pdf-review/renders/`, `user-pdf-review/sheets/`,
+`user-pdf-review/visual-b/review-pages-34-66.json` และ
+`user-pdf-review/semantic-agent/` สำหรับ text/image/TOC และ
+`table-adjacency-and-meeting-headers.json`.
+
+Checkpoint: **PASS owner manual full-SRS Word export; near-PDF acceptance
+ยังมี wrong repeated-table-header defect และ pagination findings; ไม่ใช่
+production readiness.** ไม่ลดเนื้อหา/รูป ไม่แก้ source template, Core, Service,
+API, DB หรือ installed runtime และไม่ทดสอบ corrective candidates เพิ่มในรอบนี้.
+การแก้ prototype หรือเริ่มระบบจริงต้องยึด scope ที่เจ้าของอนุญาตต่อไป.
