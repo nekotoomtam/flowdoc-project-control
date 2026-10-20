@@ -4,8 +4,11 @@
 
 Owner: FlowDoc Project Control. Scope: reference-reconstruction workflow in
 flowdocmake; this record does not add Core schema or certify visual fidelity.
-Source coverage was introduced in package 0.1.2; goal/stage routing is clarified
-in 0.1.7. Service/Core 0.3.0 and the draft-only tool contract are unchanged.
+Current package: FlowDocMake 0.2.8 with Service 0.4.9 / Core 0.4.7;
+use the live preflight described in [draft selection](draft-selection.md).
+History: source coverage was introduced in package 0.1.2; goal/stage routing
+was clarified in 0.1.7. Those changes left the then-current Service/Core 0.3.0
+and draft-only tool contract unchanged; that is not the current runtime pin.
 
 ## Extract source data before designing a template
 

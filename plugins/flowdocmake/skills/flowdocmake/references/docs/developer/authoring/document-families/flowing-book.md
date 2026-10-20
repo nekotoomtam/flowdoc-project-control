@@ -2,7 +2,7 @@
 
 ## Authority Boundary
 
-Project Control เป็นเจ้าของแนวทางเลือกใช้สำหรับ candidate ตาม
+Project Control เป็นเจ้าของแนวทางเลือกใช้สำหรับชุดปัจจุบันตาม
 [baseline](../README.md). เป็นหมวดการถอดแบบ ไม่ใช่ schema ใหม่หรือการรับรอง
 renderer ทุกกรณี. ไม่เปลี่ยน runtime, draft, ข้อมูลต้นทาง หรือสิทธิ์ publish.
 

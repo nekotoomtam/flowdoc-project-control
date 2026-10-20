@@ -1,6 +1,6 @@
 # Layout, ภาพ, ตาราง, หัวท้าย และเลขหน้า
 
-Authority Boundary: Project Control reference สำหรับ Area18 ตาม [baseline](README.md).
+Authority Boundary: Project Control reference สำหรับ Area18 และ Section19 ตาม [baseline](README.md).
 ค่าต่อไปนี้แยกค่าเริ่มต้นของ runtime ออกจากคำแนะนำในการออกแบบ.
 
 ## 1. หน่วย กระดาษ และพื้นที่
@@ -176,7 +176,7 @@ Page-break ต้องมาจากความหมาย เช่นเ�
 หัวตารางซ้ำไหม, บทขึ้นหน้าใหม่ตามกฎไหม, เลขหน้าตรงสารบัญ/ลิงก์ไหม.
 ระบุความต่างที่ตั้งใจและข้อจำกัดแยกกัน. Renderสำเร็จไม่ได้แปลว่ารูปแบบผ่าน.
 
-## Format sizing v2 (development candidate)
+## Format sizing v2 (FlowDocMake 0.2.8)
 
 Use `areaFormats[id].sizing`, never Area props or invocation data: omitted retains
 legacy auto; `{mode:"auto"}` opts in; `{mode:"fixed",height:{value:100,unit:"pt"}}`
@@ -191,7 +191,7 @@ auto can omit an image too tall for a fresh page, while legacy auto keeps its
 existing failure. No automatic text/image shrink.
 
 Require `formatSizing.version:2` and `diagnosticsVersion:1` in the live contract.
-Version1 uses the prior whole-frame gate and is incompatible with this candidate.
+Version1 uses the prior whole-frame gate and is incompatible with FlowDocMake 0.2.8.
 Partial success carries `FORMAT_CONTENT_OMITTED`, `FORMAT_FRAME_NOT_SHOWN` or
 `FORMAT_IMAGE_NOT_SHOWN`, with Section/Area/Format and original entry index.
 These are rendering warnings, not removed input: request/draft arrays remain
