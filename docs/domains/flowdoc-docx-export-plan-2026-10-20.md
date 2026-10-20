@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **bounded prototype complete with limitations; actual 98-page SRS trial fails Word/layout acceptance; product integration not started**.
+สถานะ: **actual SRS Word diagnosis paused by owner; band-related failures isolated, corrective candidates not yet tested; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -868,3 +868,66 @@ Core/Service working trees clean และ source heads คงเดิม:
 ไม่มี production Evidence/map updates. ตรวจแผนด้วย diff/whitespace,
 local links/anchors และ `npm run check:data`; canonical data ไม่เปลี่ยน
 จึงไม่ regenerate projections. เก็บ two candidates เป็น diagnostics เท่านั้น.
+
+## Word diagnosis pause checkpoint
+
+วันที่ 2026-10-21 เจ้าของอนุญาตให้แยกหัวหน้า ท้ายหน้า สารบัญ และการแบ่งตาราง
+โดยใช้ SRS เดิมในพื้นที่ทดลองเท่านั้น แล้วสั่ง **หยุดการทดลองไว้ก่อน** ระหว่าง
+กรณี `d-footer-only`. สถานะปัจจุบันคือ owner-paused; ไม่ใช่ completed/cancelled
+และไม่เปิด registered execution เก่ากลับมา. IDs N/A ตาม single-room scope.
+Owner/role/boundary เดิมคงอยู่; หลักฐานรอบนี้อยู่ใน experiment root เดิมใต้
+`diagnosis/`. ไม่มี product/template/DB/API/runtime mutation.
+
+การแยกปัจจัยใช้ ZIP derivatives ของ exact V2 SHA256 `e91797dec4fafc29d8ac90fc53d5ada58acc640c093d1d3bf322b25bb5f77223`.
+ตรวจอิสระว่าคง body XML, margins, source text, 200 tables / 933 rows / 1,932 cells,
+371 body images, media bytes, headings/bookmarks และ 7 sections ตามที่แต่ละ
+factor ประกาศ. การปิด band stories เป็น diagnostic omission ที่ตั้งใจไว้;
+ไม่ใช่เอกสารพร้อมส่ง. Proof scope คือ diagnosis เท่านั้น ไม่ใช่ production fix.
+
+| Actual Word case | ผลที่วัดได้ | ความหมายที่ยืนยันได้ |
+| --- | --- | --- |
+| D00: ไม่มี band stories และล็อก outer TOC | PDF 99 pages / 923,215 bytes; write end 13,406 ms หลังคลิก export | เป็น positive control; outer lock ยังเหลือ 198 nested PAGEREF fields จึงไม่ใช่ fully static TOC |
+| D01: ไม่มี band stories, native TOC active และ update entire table | PDF 99 pages / 969,611 bytes; write end 13,285 ms หลังคลิก export | การอัปเดตสารบัญและ original body-table pagination ทำงานได้ในกรณีนี้; นอก TOC pages 4–9 ข้อความ/geometry/image counts ตรง D00 ครบ 93 pages |
+| Header only: คืนเฉพาะหัวหน้า, body/TOC เดิม | Word แจ้งทันทีว่า “การส่งออกล้มเหลว ไม่สามารถเตรียมเอกสารดังกล่าวเพื่อส่งออกได้”; ไม่มี completed PDF | Header mapping family ทำให้เกิด explicit export error ในการทดลองนี้; ยังไม่ยืนยันว่า nested image anchor หรือ floating canvas เป็นกลไกที่ผิด |
+| Footer only: คืนเฉพาะท้ายหน้า, body/TOC เดิม | ไม่มี completed PDF ภายใน 300 seconds; Word ไม่ตอบสนอง, Escape request timeout; เจ้าของสั่งหยุด | เป็น bounded timeout ไม่ใช่ proof ของ infinite loop; ยังไม่ได้ทดสอบ footer-flow correction ใน Word |
+
+D00 image audit: 371 placements ตรง asset identity/order/counts และ contained
+dimensions; decoded RGB ของ 12 body variants ตรง prepared bytes.
+แถวยาว REQ0041 (source lower bound 1,470.32 pt, allowBreak=true) แบ่งข้าม
+Word pages 50–53 ได้ โดยตรวจภาพครบทั้ง 4 fragments เห็นท้ายข้อความ/icon และ
+REQ0042 ถัดไป ไม่พบ clipping/overlap ที่จุดนี้. ไม่ได้ตรวจภาพทุกหน้าของเอกสาร.
+Thai SARA AM บางตำแหน่งแสดงถูกในภาพแต่ PDF extraction ทำเครื่องหมายหาย;
+เก็บ strict mismatches และแยก lossy text corroboration ไว้ ไม่เรียกเป็น glyph PASS.
+
+ข้อสังเกตทางเทคนิค: V2 มี floating band canvases 36 ตัว และ header picture
+anchors 18 ตัว; header-only จึงยังมีวัตถุลอยซ้อนกัน. Microsoft ระบุว่า floating
+tables ใน footer สามารถมีผลต่อการแบ่ง body-table rows ได้
+([OOXML reference](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.donotbreakconstrainedforcedtable?view=openxml-3.0.1)).
+นี่เป็น supporting hypothesis ไม่ใช่คำยืนยันสาเหตุภายใน Word.
+ไม่พบ obvious malformed ZIP/relationships/IDs หรือ table-grid defect จาก
+targeted structural screen; ไม่อ้างว่า full XSD validation ผ่าน.
+
+เตรียม single-factor corrections ไว้แล้ว แต่ **ยังไม่เปิดใน Word**:
+`d-header-only-inline.docx`, `d-full-header-inline.docx` เปลี่ยนเฉพาะ
+18 header pictures จาก anchor เป็น inline; และ `d-footer-only-flow.docx`,
+`d-full-inline-header-flow-footer.docx` เอาออกเฉพาะ outer footer `tblpPr` 18 จุด
+จากฐานที่ระบุ. ตรวจอิสระว่าการเปลี่ยนตรง factor และส่วนอื่นไม่เปลี่ยน;
+inline baseline/centering และ native footer-flow position เป็น geometry deviations
+ที่ยังต้องตรวจ. `d10-all-bands-locked-toc.docx` และ `d-footer-flow.docx`
+ที่เตรียมไว้ก็ยังไม่ได้รัน Word เช่นกัน. ไม่เปลี่ยน candidate ที่เคยวัดแล้ว.
+
+Locators: `diagnosis/evidence/variant-manifest.json`, `independent-variant-audit.json`,
+`header-inline-manifest.json`, `footer-flow-manifest.json`, `independent-*-audit.json`,
+`d00-completion.json`, `d01-completion.json`, `d-header-word-error.json`,
+`d-footer-completion.json` และ `checkpoint-paused.json`.
+D00 completion monitor ที่เรียกย้อนหลังครั้งแรกตรวจ deadline ก่อน existing file
+จึงให้ผลผิด; เก็บเป็น `d00-monitor-late-call-error.json` แล้วแก้ monitor และใช้
+validated PDF/file write time ในผลด้านบน. ไม่ใช้ false timeout นั้นเป็น Word result.
+
+จุดกลับมาต่อ: ตรวจว่า task-owned Word `d-footer-only` ปิดแล้วก่อนเริ่มใหม่;
+ขณะหยุดยังไม่มีหลักฐาน cleanup และไม่สั่ง UI เพิ่มหลังเจ้าของสั่งหยุด.
+จากนั้นใช้ Word process ใหม่ ทดสอบ header-inline / footer-flow ทีละปัจจัย
+แล้วจึงยืนยัน combined candidate หากทั้งคู่ผ่าน. รักษา source เดิมและผลก่อนหน้า;
+ไม่สรุปว่าตัวแก้ได้ผลก่อนวัดจริง ไม่เริ่ม production integration.
+การไม่ตอบสนองชั่วคราวอย่างเดียวไม่เพียงพอให้สรุปว่าค้างไม่จบ: D00/D01
+กลับมาส่งออกสำเร็จ จึงใช้ explicit error/ครบกรอบเวลา/validated output แยกผล.
