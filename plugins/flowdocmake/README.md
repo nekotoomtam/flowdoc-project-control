@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Candidate **0.2.6** targets **Service0.4.8 / Core0.4.7 / models18,19 Stage3**; untagged and not installed. Format sizing v2 is optional per definition; inspect
+Package **0.2.7** targets **Service0.4.8 / Core0.4.7 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
@@ -20,10 +20,10 @@ unknown capabilities fail preflight. Fixed caps the current page remainder,
 reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
-Group-label candidate: Core commit `e1a6517`, artifact SHA-256
-`dc65df98e1a605236e0c2e4f13dc1595b1b9924709ceed9ab276ee0a6006a529`.
-Prepared development versions are 0.4.4/0.2.5; this source
-candidate differs from installed 0.2.4. Context returns `groupLabelSpans` v1.
+Delivery: Core source `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, artifact SHA-256
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`. Service0.4.8 and this plugin pin that exact
+artifact. Earlier candidate archives/packages remain immutable. Context returns
+`groupLabelSpans` v1.
 Definitions using groupLabel require its exact model/schema/suffix contract;
 validate/save and candidate runs reject unsupported engines without stripping
 fields. Existing definitions keep their path. See the existing repetition chapter.

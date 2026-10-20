@@ -1,7 +1,7 @@
 {
-  "packageVersion": "0.2.6",
+  "packageVersion": "0.2.7",
   "guideRelease": "0.4.4",
-  "sourceCommit": "62d801be3e77f7a06fa490c9f219d59d6fbb0f75",
+  "sourceCommit": "52a0b2bc7208bbdaca8c0534fe47fa1e12d97829",
   "files": {
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/legacy-conversion.json": "b7b643910595e1fcec926c55a8db333e3ecddbee99b2d369e4bcf56f5583dac7",
     "skills/flowdocmake/references/docs/examples/section-area-contract-20261017/operations.json": "5a9412d28d1a1f79cdc6f9b1a113f16743a67600871e58a368279ada5648a39b",

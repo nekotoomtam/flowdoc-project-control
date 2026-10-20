@@ -3082,3 +3082,53 @@ measurements.json,all-metrics.csv,runs.csv,pdf-verification.json,cleanup-audit.j
 and receipt.json. CSV includes all available phase,CPU/RAM/IO/storage/reader
 counters with mean/min/max/median/sample SD and coverage count. Earlier source
 fidelity limitations remain; reference parity is not a new original-source claim.
+
+### Owner-authorized Git release preparation, 2026-10-20
+
+Owner now authorizes the release-rule sequence: documentation/package/consumer
+checks, then one snapshot commit per component with annotated tag and atomic GitHub
+push. No installation, image/npm publication or GitHub Release-page creation.
+pdf-write investigation is deferred until after this Git release. Inline IDs N/A;
+owners are Core/Service and Project Control for the component and this shared plan.
+Size bounded cross-repository delivery, routine risk. Versions Core0.4.7,
+Service0.4.8, FlowDocMake0.2.7. The plugin gets a fresh version and exact new archive
+pin instead of reusing cached0.2.6. Retain every earlier candidate artifact;
+the new Core0.4.7-release archive must not overwrite the old0.4.7.tgz or experiment.
+
+Live GitHub default refs and release tips are checked; all3 repositories have
+verified pre-change Git bundles. Allowed changes are the4 required repo-local
+manuals, Service image defaults and package/lock/vendor metadata, plugin exact
+pin/version/snapshot and affected tests, and this existing shared record. No PDF
+writer algorithm, font/image/native bytes or other product behavior changes.
+Proof budget: exact package diff/resource/native-mode and real Linux install,
+Core source/runtime proof reuse where byte-identical, real Service/API and stdio
+consumer against the final package/plugin, plugin snapshot/compatibility checks,
+init supervision check, and documentation checks. Reuse the reviewed660+490-page
+PDF outcomes only after proving unchanged renderer/resource bytes. Preserve every
+old tag; require exact candidate/snapshot tree equality, sole previous-release
+parent, fully annotated-tagged ancestry and remote read-back. Evidence and scoped
+ledger: C:/Users/nekot/Documents/Codex/2026-10-20/release-047-048.
+
+Release readiness: PASS before snapshot creation. Core source8f8a739 updates only
+README/template guide relative to5fc454c; Service sourceef26740 updates operation
+guidance/image defaults and final vendor/lock pin relative to33d4bd7. Final Core
+archive SHA25613673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad,
+vendor file flowdoc-core-0.4.7-release.tgz. All172 packaged files checked: README
+alone changes,171 runtime/resource/package files remain byte-identical, native
+helpers755. Actual Linux npm-ci installation under UID10001 and resource/engine
+probes pass. No PDF-writer, shape/segment/font/image or retention algorithm change.
+Existing Core130, integrated Service128,1150 reviewed reference-parity PDF pages
+and cancellation/expiry evidence remain reusable under that exact runtime identity.
+
+Final-package Service API/real-entrypoint/stdio-proxy cases14/14 pass. Final plugin
+0.2.7 tests40/40 pass with0 skips, including selected-config launch, strict new
+checksum, tampered archive rejection and a real staged/reviewed/activated font
+saved into a draft then retired. The first fixture-less run's5 skips are retained
+and were closed with this isolated fixture, not counted as passing results.
+Final init supervision passes3 normal+3 worker-SIGKILL cases,0 zombies. The DB
+network is internal, so the owned context API additionally uses built-in bridge
+for its loopback test port; unrelated networks were not pruned. A temporary npm
+cache permission error was resolved by a private /tmp cache, without changing
+host caches or product source. All attempted outputs remain outside source repos.
+No installed config/cache/database was changed. Remaining gate: documentation
+checks, exact frozen delivery/snapshot/tag ancestry and remote atomic read-back.
