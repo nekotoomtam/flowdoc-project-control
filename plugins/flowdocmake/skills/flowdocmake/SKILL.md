@@ -7,9 +7,9 @@ description: Use when the user asks for flowdocmake, PDF source-data extraction 
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Package 0.2.7 routes draft-only tools;
+Owner: FlowDoc Project Control. Package 0.2.8 routes draft-only tools;
 it changes no Core/Service behavior or publication permission. Target versions:
-Service0.4.8 / Core0.4.7, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
+Service0.4.9 / Core0.4.7, nodeModelVersions18/19 (Section19 Stage3; scoped TOCs enabled), schemaVersion 1/2, definition.version 1.
 Draft revision is a separate value.
 
 ## Read only the current stage

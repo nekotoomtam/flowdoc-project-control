@@ -848,3 +848,47 @@ Integration evidence and final receipt are retained at
 Docker and installed systems remain unchanged. No release, tag, push or
 installation was performed. This closeout records development integration;
 it does not promote a system map or authorize deployment.
+
+## Release preparation — 2026-10-20
+
+The owner authorized documentation/package preparation only. The next delivery
+candidate is Service **0.4.9**, unchanged Core **0.4.7**, and FlowDocMake **0.2.8**.
+Previously tagged 0.4.8/0.2.7 packages and all release refs remain immutable.
+Service package/lock, Compose image defaults, `.env.example`, README/usage and
+vendor delivery metadata now name this pair. The plugin manifest, exact Service
+compatibility pin, entry skill, README and generated documentation snapshot agree.
+Core archive SHA256 stays
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`;
+its source remains `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`.
+
+The Service guide removes the obsolete claim that `/documents` is unavailable
+and gives the separate operator override for the checked 1-GiB / 2-CPU queue
+profile, credentials and retained task storage. Base Compose still does not
+enable task credentials or impose that queue memory limit. No new SQL migration
+is introduced after 024. The 1.5-GB trial pool and its reservation limits remain;
+10-GB capacity is deferred, not claimed as verified.
+
+Fresh checks pass Service build, 22 plugin compatibility/stdio/stream/snapshot
+tests with no skips, Project Control data and whitespace checks. All 30 copied
+guide files match their committed canonical inputs; `guideRelease:0.4.4` remains
+the independent guide baseline, not the Service package version. Core tarball
+SHA256, lockfile SHA512 and source provenance agree. GitHub default branches and
+existing release/tag tips were read back without changing remote refs.
+
+The integrated Service runtime source and Core package are unchanged by this
+preparation, so the 190-test Service result and Stage 4's 19 PDFs / 1,694 pages
+remain reusable under the recorded identity checks; they were not rerun here.
+The new exact client pin rejects Service 0.4.8 and unknown/newer versions.
+Release preparation evidence and frozen delivery files live at
+`C:/Users/nekot/Documents/Codex/2026-10-20/queue-release-readiness/`.
+
+Remaining authorized-step boundary: after owner approval, recheck remote/base
+identity, form the single-parent Service snapshot/tag `v0.4.9` and plugin component
+snapshot/tag `flowdocmake-v0.2.8`, prove exact tree equality and tagged ancestry,
+then atomically push the required refs per repository and read them back. Core
+needs no new version or snapshot. These release actions are not performed here.
+An image build, backup, real installation and live-chat/real-data post-install
+checks are separate future work; no 0.4.9 running-image identity is claimed.
+No Core/Service runtime source, actual local config, DB, installed plugin or Docker state was
+changed by this preparation. Execution/Phase/Checklist IDs remain N/A for this
+bounded inline preparation; no system map is promoted.

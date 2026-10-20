@@ -8,7 +8,7 @@ The current implementation record is
 `docs/domains/flowdoc-template-authoring-tools-plan.md` in Project Control.
 Copied references are generated, immutable inputs, not separately maintained truth.
 
-Package **0.2.7** targets **Service0.4.8 / Core0.4.7 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
+Package **0.2.8** targets **Service0.4.9 / Core0.4.7 / models18,19 Stage3**; release identity requires its annotated component tag; installation is separate. Format sizing v2 is optional per definition; inspect
 FORMAT_* warnings in status and saved-PDF responses and report partial output. Invoke
 `$flowdocmake` (the plugin-qualified skill may appear as
 `flowdocmake:flowdocmake`). It includes 12 existing authoring tools plus
@@ -21,7 +21,7 @@ reserving that effective height; only zero space skips the whole frame.
 Diagnostic envelopes remain version1. See the existing layout chapter as needed.
 
 Delivery: Core source `8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, artifact SHA-256
-`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`. Service0.4.8 and this plugin pin that exact
+`13673f22cca9667e88125dd4631b0b398c912b8e96c6734a2932b5ff27f3a8ad`. Service0.4.9 and this plugin pin that exact
 artifact. Earlier candidate archives/packages remain immutable. Context returns
 `groupLabelSpans` v1.
 Definitions using groupLabel require its exact model/schema/suffix contract;
@@ -45,7 +45,7 @@ continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
-Requires Node, a matching Service 0.4.8 checkout with built `dist` and dependencies,
+Requires Node, a matching Service 0.4.9 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
 `pdftoppm`, and Python with pypdf/Pillow. This candidate package is for that local
 deployment, not a remote or public plugin distribution.
