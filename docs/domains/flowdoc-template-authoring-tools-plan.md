@@ -2,7 +2,11 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Status: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See the current release acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake packaging through 0.1.2 and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
+Owner: FlowDoc Project Control. Historical baseline: authoring tools included in Core/Service release 0.3.0 (Area18 only), verified 2026-10-15. See that release's acceptance in [Area transition](flowdoc-area-document-transition-2026-10-14.md). Local flowdocmake packaging through 0.1.2 and source-coverage trials are recorded below; candidate-specific entries are bounded evidence, not model-equivalence or pixel-fidelity claims.
+Current package guidance is FlowDocMake0.2.8 / Service0.4.9 / Core0.4.7,
+models18/19; see the [authoring baseline](../developer/authoring/README.md).
+Dated entries below retain their original versions and outcomes; they are not
+instructions to reinstall an older package or reopen a completed round.
 Owner requested planning on2026-10-14 for create/update/validate/preview tools;
 publication requires explicit owner confirmation. Service owns implementation;
 Core public APIs remain validation/layout authority. No release-readiness claim.

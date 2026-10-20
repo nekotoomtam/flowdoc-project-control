@@ -1,5 +1,11 @@
 # Area-based document structure transition
 
+Current package guidance: FlowDocMake0.2.8 / Service0.4.9 / Core0.4.7;
+see the [authoring baseline](../developer/authoring/README.md).
+This document preserves earlier design and execution checkpoints. Their version,
+authorization and pending-installation statements apply to those checkpoints,
+not a new instruction to resume work or change the installed system.
+
 Current reading route for Format sizing work: read only `Format auto/fixed —
 นิยาม กติกา และแผนพัฒนา (2026-10-17)` at the end first. It supersedes the
 Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format sizing v2` and
@@ -7,8 +13,9 @@ Area-sizing proposal. Read the current `สัญญาช่วง 0 — Format
 Candidate v1 and correction v2 stages0–4 are complete within the recorded scope.
 Maximum-height v2 is integrated into the existing primary development branches;
 read the final integration section for checks, retained evidence and cleanup.
-Core/Service0.4.3 and FlowDocMake0.2.4 are released on the recorded snapshot
-branches/tags; installation remains pending separate owner authorization.
+Historical release milestone: Core/Service0.4.3 and FlowDocMake0.2.4 were released
+on the recorded snapshot branches/tags; installation was pending separate owner
+authorization at that checkpoint, not at the current0.2.8 baseline.
 Area remains the ordered list receiver.
 For the completed Section–Area foundation, start with `สัญญาช่วง 0 — Section
 instance และ Area — 2026-10-17` at the end, then the immediately preceding

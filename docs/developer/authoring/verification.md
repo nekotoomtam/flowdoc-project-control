@@ -7,7 +7,20 @@ Owner: Project Control; documentation synthesis ตามคำขอผู้�
 recordแผนเดิม. ไม่เปลี่ยนCore/Service/runtime/ข้อมูลผู้ใช้; ไม่มีpublish.
 Execution IDsไม่เกี่ยวข้องกับงานinlineนี้. ไม่ปรับDOCUMENT_MAPหรืออ้างglobal readiness.
 
-## 1. Implementation baseline
+## รุ่นอ้างอิงปัจจุบันสำหรับ FlowDocMake 0.2.8
+
+FlowDocMake `0.2.8` ตรึง Service `0.4.9` / Core `0.4.7`,
+`nodeModelVersions:[18,19]`, `schemaVersions:[1,2]` และ definition.version1.
+ตัวตนแพ็กเกจและข้อกำหนด preflight ดู [README](README.md) และ draft selection;
+ผลตรวจส่งมอบ/ติดตั้งเดิมอยู่ใน Project Control ที่
+`docs/domains/flowdoc-task-queue-concurrency-plan-2026-10-20.md`
+หัวข้อ Release/Installation/Native chat verification (ไม่ได้รวมใน snapshot คู่มือ).
+การแก้คู่มือครั้งนี้ตรวจความสอดคล้องเอกสาร ไม่ได้รันผลทดสอบหรือ PDF ด้านล่างใหม่.
+
+## 1. Implementation baseline เดิม — 0.3.0 (ประวัติ)
+
+ข้อกำหนด versions:[18] และจำนวนผลตรวจต่อไปนี้ใช้เฉพาะรอบเดิม ไม่ใช่เพดาน
+หรือผลตรวจของชุด0.2.8. เก็บไว้เพื่อย้อนกลับที่มา ไม่ใช้แทน live contract ปัจจุบัน.
 
 - Core `0.3.0`, release `6d2a9b7`, verified source `f21ab6a`; Service `0.3.0`, release `0c57eec`, source `57d9fd2`.
 - Core artifact SHA256 `d2f2d23ea42072f0f5fe1f702445c4384c686a371ea76fbcc7b96c5a77594380`; Service pins this exact archive.
@@ -18,7 +31,7 @@ Execution IDsไม่เกี่ยวข้องกับงานinlineน�
 - Durable local evidence: `flowdoc-core/artifacts/release030/worktree-evidence/1792046442725`, `flowdoc-service/artifacts/release030/worktree-evidence/release030-tests-final.json`, and `flowdoc-service/artifacts/release030/area98/parity.json`.
 - Prior candidate area.5 baseline is historical. This cutover makes no new RAM/capacity claim and does not publish user templates.
 
-## 2. Source index
+## 2. Source index ของการตรวจเดิม
 
 Pathsเป็นrepository-relativeภายในownerที่ระบุ ไม่ใช่คำสั่งให้แก้ไฟล์นั้น.
 
@@ -40,7 +53,7 @@ Pathsเป็นrepository-relativeภายในownerที่ระบุ �
 Type declarationsเป็นcatalogเบื้องต้น; validatorของตำแหน่งและruntime defaults
 เป็นผู้ตัดสิน. ห้ามเอาชนิดรุ่นเก่ามาประกาศว่าทำได้ในArea18.
 
-## 3. Proof ที่รันในรอบนี้
+## 3. Proof ที่รันในรอบเอกสารเดิม — 2026-10-14
 
 | Check | Result / ขอบเขต |
 | --- | --- |
@@ -59,7 +72,7 @@ Reproduceด้วย [commands](examples.md); ผลPDF/draw/imageของร�
 ไฟล์JSONและcheck scriptsที่version-controlไว้เป็นหลักฐานรันซ้ำได้.
 ภาพsolidในfixtureมีไว้ตรวจขอบ/ratio ไม่ได้ทดสอบความคมชัดโลโก้ทุกประเภท.
 
-## 4. สิ่งที่ยังไม่อ้างว่าได้พิสูจน์
+## 4. ขอบเขตที่รอบเอกสารเดิมไม่ได้พิสูจน์
 
 - ไม่ใช่การรับรองSRS98หน้าหรือPDFของห้องSol/Terra; ไม่แก้draftเหล่านั้น.
 - property catalogตรวจsource/validator แต่ไม่ได้renderทุกcombinationของmerged cells,

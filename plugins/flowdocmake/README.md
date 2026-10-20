@@ -32,7 +32,12 @@ Choose the requested endpoint before authoring: checked source data, reusable
 structure with a sample, or full reconstruction. Extract source data separately,
 then map observed layouts, design native structures and derive request data.
 Use only stages needed for that endpoint and continue between them without
-inventing approval stops. Package 0.1.7 changes guidance only; helper gates,
+inventing approval stops.
+
+## Historical package notes
+
+The following notes describe earlier releases, not the current installation pins.
+Package 0.1.7 changed guidance only; helper gates,
 deadlines and Service/Core contracts are unchanged.
 Package 0.2.0 adds active-font catalog, draft readiness and retained cloning; it keeps stage-based reading and classifies fixed-form limitations,
 fallbacks and unfinished repairs in existing references; no extra startup reading.
@@ -40,14 +45,14 @@ fallbacks and unfinished repairs in existing references; no extra startup readin
 
 Package 0.2.1 pins the Core 0.4.0 delivery artifact with updated package documentation
 (SHA-256 `6e8b71976de35456eed8cdb88a3c42305947e20e900944e3108cb0cc5c36d7e8`).
-Use the matched Service 0.4.0 image containing that exact artifact; package 0.2.0
+That release used the matched Service 0.4.0 image containing that exact artifact; package 0.2.0
 continues to identify the prior artifact and is not silently overwritten.
 
 ## Local installation
 
 Requires Node, a matching Service 0.4.9 checkout with built `dist` and dependencies,
 the authenticated local Service container on its configured loopback port, Docker CLI, Poppler
-`pdftoppm`, and Python with pypdf/Pillow. This candidate package is for that local
+`pdftoppm`, and Python with pypdf/Pillow. This package is for that local
 deployment, not a remote or public plugin distribution.
 
 1. Build the documentation snapshot from committed canonical inputs with
@@ -71,7 +76,8 @@ deployment, not a remote or public plugin distribution.
 The context tool uses read-only Docker inspection to associate the loopback port
 with its running image ID and Service/Core package versions. HTTP font capability and the pinned Core artifact must match; Docker inspection
 supplies the runtime identity; remote runtime identity remains unsupported.
-It does not change or reissue the released 0.3.0 packages.
+Historical 0.3.0 packages remain unchanged. `snapshot.json.guideRelease:0.4.4`
+is the independent documentation baseline, not the current Service/Core or plugin version.
 
 ## Verification and limits
 
@@ -98,10 +104,10 @@ per-document review, not merely a successful preflight.
 ## Streamed document tasks
 
 The two opt-in tools are `generate_document_task` and `inspect_document_task`.
-Set taskCredentialFile in this candidate's local config to a private text file
+Set taskCredentialFile in the local config to a private text file
 containing `TASK_TOKEN=<explicit-task-credential>`. It is separate from authoring
 configuration; absence never falls back to the authoring token. No installation
-or current user config changes are performed by candidate verification.
+or current user config changes are performed by verification.
 
 Generation takes docKey, absolute payloadPath/outputPath and optional images array
 of `{pointer,path,type?}`. The payload keeps Section assets/assetKey; file pointers
@@ -109,10 +115,11 @@ name image source objects in the original JSON. Both payload and images are read
 incrementally. Exact old/new task capability and package identities are required
 before upload. Existing authoring/preview calls keep their original contracts.
 
-The development client opts into `queue-v1` when the authenticated Service
+The FlowDocMake 0.2.8 client opts into `queue-v1` when the authenticated Service
 advertises that capability. It uploads the whole body while reading early feedback;
-Services without that capability retain the existing task path. This source update
-does not reissue the tagged plugin or change its installed copy.
+Services without that capability retain the existing task path, subject to the
+same exact package/runtime preflight. Documentation-only edits do not reissue
+the tagged plugin or change its installed copy.
 This export tool uses an already authorized registered template; it does not publish
 or convert an unpublished draft. Draft preview remains the bounded legacy path.
 

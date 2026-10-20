@@ -1,6 +1,7 @@
 # Node และ Inline Reference
 
-Authority Boundary: Project Control reference ของ candidate Area18.
+Authority Boundary: Project Control reference ของ Area18 และ Section19 Stage3
+ตาม [baseline ปัจจุบัน](README.md); ข้อยกเว้นของแต่ละ model ระบุแยกด้านล่าง.
 อ่าน [โครงสร้าง](structure-and-data.md) และ [baseline](README.md) ประกอบ.
 ทุก node มี id/type Required; property ที่ไม่อยู่ในรายการไม่ใช่ช่อง CSS อิสระ.
 
@@ -151,7 +152,7 @@ Frame กว้างเกินพื้นที่ cell/band เป็น la
   วางก่อนหัวบทใน Format หรือเลือก new-page Format ใน request.
 - area: `{id,type:"area",props:{areaId}}`; ไม่มี width/height หรือ data ใน node.
 - table-of-contents: `{id,type:"table-of-contents",props:{textStyleId}}`;
-  candidate19ช่วง3เพิ่ม required `props.scope:{kind:"section"|"document"}`;
+  Section19 Stage3 ต้องมี `props.scope:{kind:"section"|"document"}`;
   kind section อ้าง Section เจ้าของ ไม่รับ Section ID ใน scope. Model18ใช้รูปเดิม.
   ไม่รับ items/pageNumbers/title/maxLevel. ชื่อ “สารบัญ” เป็น text-block แยก.
   ดู [สารบัญ](contents-and-repetition.md) เรื่องระดับและลิงก์.

@@ -4,19 +4,21 @@
 
 เจ้าของเอกสาร: FlowDoc Project Control; บทบาท Documentation Synthesizer.
 ขอบเขต: เอกสารอ้างอิงสำหรับผู้เขียน Template และผู้เรียก authoring API ของ
-Area18 candidate รุ่น 0.4.0 ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
+FlowDocMake 0.2.8 กับ Service 0.4.9 / Core 0.4.7 ไม่ใช่การรับรองความพร้อมของ FlowDoc ทุกระบบ.
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ storage/transport.
 งานนี้เป็น single-room ตามคำขอผู้ใช้; execution/Phase/Checklist IDs ไม่เกี่ยวข้อง.
 ไม่เปลี่ยน runtime, template ของผู้ใช้, ข้อมูลต้นทาง หรือ publish.
 
-Baseline: `nodeModelVersion:18`, `schemaVersion:1/2`, Service ที่ใช้
-`@flowdoc/core@0.4.0` และ Service candidate `0.4.0`; ต้องผ่าน preflight ของ package/runtime จริง.
-อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md) ก่อนนำไปใช้กับรุ่นอื่น.
+Baseline ปัจจุบัน: `nodeModelVersion:18/19`, `schemaVersion:1/2`,
+FlowDocMake `0.2.8`, Service `0.4.9` และ `@flowdoc/core@0.4.7`;
+ต้องผ่าน preflight ของ package/runtime จริง. ตัวอย่าง Area18 เดิมยังเป็น model18
+ไม่ใช่ตัวอย่าง Section19. อ่าน [แหล่งอ้างอิงและผลตรวจ](verification.md)
+โดยแยกผลตรวจในอดีตออกจากรุ่นปัจจุบัน.
 
-Candidate Service/Core `0.4.2-dev.3` เพิ่ม Section19 ช่วง3 คู่กับ18:
+Section19 Stage3 รองรับคู่กับ18ในชุดปัจจุบัน (เริ่มใน candidate `0.4.2-dev.3`):
 อ่านข้อยกเว้นสั้นที่ต้น [โครงสร้าง/ข้อมูล](structure-and-data.md) และ
 [API](api.md) เฉพาะเมื่อ contract ประกาศ `sectionInstances.stage:3`, `scopedToc:true`.
-TOC ของ19ต้องระบุ scope;18คงเดิม. ไม่เปลี่ยน baseline ที่ติดตั้ง.
+TOC ของ19ต้องระบุ scope;18คงเดิม. การแก้คู่มือไม่เปลี่ยนรุ่นที่ติดตั้ง.
 
 ## อ่านจากตรงไหน
 
@@ -60,7 +62,7 @@ TOC ของ19ต้องระบุ scope;18คงเดิม. ไม่เ
   ไฟล์ตัวอย่างเต็มใน examples เป็น definition/request ที่ตรวจได้.
 - ใช้ JSON object/array จริง ไม่ส่ง JSON ทั้งก้อนเป็น string ในช่อง `definition`.
 - ฟิลด์นอกสัญญามักถูกปฏิเสธ; field ข้อมูลที่ไม่ประกาศอาจเป็น warning และถูกละเลย.
-- TypeScript union มีชนิดของรุ่นเก่ารวมอยู่ด้วย ต้องยึดข้อจำกัด Area18 และ validator
+- TypeScript union มีชนิดของรุ่นเก่ารวมอยู่ด้วย ต้องยึดข้อจำกัดของ model18/19 ที่เลือกและ validator
   ตามตำแหน่ง ไม่คัด property จาก resolved document กลับมาเป็น template.
 - Validate โครง ≠ compose ข้อมูล ≠ จัดหน้า PDF ≠ ตรงต้นแบบ.
   ต้องผ่านแต่ละชั้นที่เกี่ยวข้อง; ไม่มี warning ไม่ใช่หลักฐานว่าไม่ตกเนื้อหา.

@@ -1,6 +1,7 @@
 # โครงสร้าง Template และตัวแปร
 
-Candidate Section19 (`0.4.2-dev.3`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
+Section19 Stage3 ใน FlowDocMake 0.2.8 / Service 0.4.9 / Core 0.4.7
+(เริ่มใน candidate `0.4.2-dev.3`): ใช้ `sections[]` พร้อม UUID `id`, `label`,
 `nameBase`; ไม่มี Section.key/formats. Request ส่ง `sections:[{id,data,header?,footer?}]`
 ครบทุก saved ID และพิมพ์ตาม definition order. เปลี่ยนชื่อ/ลำดับคง ID;
 clone/import/แยกสำเนาสร้างใหม่ก่อนบันทึก ไม่ต่อโครงใน generation request.
@@ -25,7 +26,7 @@ Section19 Stage3 เฉพาะส่วนเพิ่มเติมด้า
 | Field | ชนิด / Required | ความหมายและผลเมื่อละ |
 | --- | --- | --- |
 | schemaVersion | integer `1` หรือ `2`, Required | 1 ใช้ Sarabun เดิม; 2 ใช้คลังฟอนต์ตาม [TextStyle](layout.md#2-textstyle-และความสูงข้อความ) |
-| nodeModelVersion | integer `18`, Required | authoring service รอบนี้รับ Area18 เท่านั้น |
+| nodeModelVersion | integer `18`, Required สำหรับตัวอย่าง model18 ในตารางนี้ | Service ปัจจุบันรับ18และ19; รูปแบบ Section19 อยู่ต้นบท ห้ามผสมโครงสองรุ่น |
 | templateId | string, Required | ใช้ ID ที่ create คืนมา ห้ามสร้างเองสำหรับ save |
 | docKey | string, Required | key ที่สร้างไว้ ต้องตรงกับ request และ identity |
 | version | positive integer, Required | authoring draft ต้องเป็น `1`; ไม่ใช่ revision |

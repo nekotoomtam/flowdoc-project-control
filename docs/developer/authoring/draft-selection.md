@@ -2,8 +2,8 @@
 
 ## Authority Boundary
 
-Owner: FlowDoc Project Control. Scope: flowdocmake 0.2.1 client workflow over
-Service/Core 0.4.0 draft-only tools. No new Core schema, permission grant or
+Owner: FlowDoc Project Control. Scope: FlowDocMake 0.2.8 client workflow over
+Service 0.4.9 / Core 0.4.7 draft-only tools. No new Core schema, permission grant or
 publication path. The user's task determines allowed mutations.
 
 ## Authoring preflight

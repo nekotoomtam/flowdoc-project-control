@@ -3,10 +3,10 @@
 ## Authority Boundary
 
 Owner: FlowDoc Project Control. คู่มือนี้เป็นสัญญาการทำงานและคำอธิบายสำหรับ
-ผู้สร้างโครง อิง Area `nodeModelVersion:18`, Core และ Service
-candidate `0.4.0` ตาม package preflight ที่ตรวจจริง
-ไม่ใช่คำรับรองว่ารุ่น release รองรับ Area18 แล้ว ไม่ใช่การอนุญาตให้ publish
-หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้งานได้บน local release ที่ตรวจแล้ว
+ผู้สร้างโครง ใช้กับ FlowDocMake `0.2.8`, Service `0.4.9` / Core `0.4.7`
+รองรับ `nodeModelVersion:18/19`, `schemaVersion:1/2` ตาม package preflight ที่ตรวจจริง.
+ตัวอย่าง Area18 เดิมยังคงรูปแบบ model18; Section19 ใช้สัญญาใน Developer Documentation.
+ไม่ใช่การอนุญาตให้ publish หรือแก้ฐานข้อมูล เครื่องมือในบท 9 ใช้กับชุด local ที่ตรงรุ่น
 แต่แต่ละห้องต้องตรวจการเชื่อมต่อจริงก่อนเริ่ม ไม่ถือว่าทุก host มีเครื่องมือพร้อม
 สถานะการย้ายรุ่นอยู่ใน [transition record](flowdoc-area-document-transition-2026-10-14.md)
 Core เป็นเจ้าของ schema/validation/layout; Service เป็นเจ้าของ draft/publication/API
@@ -373,18 +373,20 @@ members[] อยู่ในกลุ่ม, name สมาชิกอ่าน
 ไม่ใช้คำว่า PASS แทนขั้นที่ยังไม่รัน การรับรอง publish แยกจากการจบงาน draft
 ไม่แก้ไฟล์โค้ด/validator เพื่อให้โครงที่ผิดของตนผ่าน
 
-## 9. ช่องทางสร้างโครงผ่าน tool (candidate Area18)
+## 9. ช่องทางสร้างโครงผ่าน tool (FlowDocMake 0.2.8)
 
 แผนและหลักฐานอยู่ใน [Template authoring tools plan](flowdoc-template-authoring-tools-plan.md)
-วิธีตั้งค่าท้องถิ่นอยู่ใน README ของ Service Area18 ชุดนี้ยังไม่ใช่ release
-local MCP ใช้ชื่อ server `flowdoc_authoring`; host อาจเติม prefix เป็น
-`mcp__flowdoc_authoring__` ให้ค้นชื่อที่มีชื่อ server หรือชื่อ tool แล้วเรียก
-get_authoring_contract จริงเพื่อยืนยันการเชื่อมต่อ การไม่มี resource listing
+วิธีตั้งค่าท้องถิ่นอยู่ใน README ของแพ็กเกจ FlowDocMake และ Service ที่ตรงรุ่น.
+local MCP ปัจจุบันใช้ชื่อ server `flowdocmake`; host อาจเติม prefix เป็น
+`mcp__flowdocmake__` และบาง host ยังแสดงชื่อเดิม `mcp__flowdoc_authoring__`.
+ค้นจากชื่อ tool จริงแล้วเรียก `get_flowdocmake_context` ให้ได้ `ready:true`
+และ `get_authoring_contract` เพื่อยืนยันการเชื่อมต่อ การไม่มี resource listing
 ไม่ใช่หลักฐานว่าไม่มี tool หากเรียกไม่ได้ให้รายงาน error ที่พบจริง
 
 ลำดับที่ต้องใช้:
 
-1. เรียก get_authoring_contract เพื่ออ่านตัวอย่างและข้อจำกัดที่ตรงกับ Service
+1. เรียก get_flowdocmake_context ให้ได้ ready:true แล้วเรียก get_authoring_contract
+   เพื่ออ่านตัวอย่างและข้อจำกัดที่ตรงกับ Service ตาม preflight ใน Developer Documentation
 2. สำหรับโครงใหม่ เรียก create_template_draft ด้วย name, docKey, idempotencyKey ก่อน
    จะได้ templateId จาก server, revision0 และ definition=null ยัง preview ไม่ได้
    ถ้าผู้ใช้ให้ templateId เดิมมา ให้ get_template_draft และแก้ตัวเดิม ไม่สร้างซ้ำ
@@ -405,6 +407,9 @@ get_authoring_contract จริงเพื่อยืนยันการเ
    get_preview_pdf และ MCP resource ยังใช้ได้กับ client ที่จัดการ binary โดยตรง
    ตรวจตามเกณฑ์บท 8 แก้ draft แล้ว preview ใหม่จนงานในขอบเขตครบ
    ส่งไฟล์และผลตรวจให้เจ้าของ โดยรอการยืนยันเฉพาะขั้น publish
+
+ตารางนี้เป็นเครื่องมือพื้นฐานของวงจร draft ไม่ใช่รายการครบทั้ง25เครื่องมือของ0.2.8;
+เครื่องมือ clone/Section/ฟอนต์และงานส่งออกอยู่ในบทอ้างอิงและ README ของแพ็กเกจ.
 
 | Tool | รับ | คืน / ผลข้างเคียง |
 | --- | --- | --- |
@@ -458,7 +463,7 @@ capability ที่ tool ยืนยัน หากมี templateId แล�
 ไม่ใช่ผลส่งมอบทดแทน PDF เว้นแต่ผู้ใช้เปลี่ยนขอบเขต ส่ง PDF และผลตรวจเมื่อครบ
 โดยคงเป็น draft และ **ห้าม publish จนกว่าผู้ใช้จะยืนยัน**
 
-## แหล่งอ้างอิงและขอบเขตการตรวจ
+## แหล่งอ้างอิงและขอบเขตการตรวจเดิม (ประวัติ)
 
 สัญญาที่อ่าน: Core src/template/types.ts, sectionOwnership.ts, validateGraph.ts,
 src/data/prepareSections.ts, prepareAreas.ts, src/composition/resolvedDocument.ts;
@@ -470,4 +475,6 @@ Service src/http/server.ts, src/templates/current.ts, publish.ts และตั
 ตรวจซ้ำด้วย `node tools/check-ai-authoring-examples.mjs <absolute-core-dist-index.js>`
 จาก Project Control สคริปต์ตรวจตัวอย่างทั้งสองชุด รวมข้อมูลไทยยาว/เพิ่มรายการ,
 กลุ่มว่าง, Area ว่าง, Format ผิด และ Area ที่ required หาย ไม่เชื่อม DB หรือ publish
-ใช้ Core package รุ่นที่คู่มือระบุ; อย่าใช้ผลจาก package คนละรุ่นรับรองตัวอย่างนี้
+ข้อความข้างต้นเป็นผลตรวจเดิมของแพ็กเกจ area.4 ไม่ใช่การทดสอบใหม่บน0.4.7.
+ใช้ [baseline ปัจจุบันและประวัติผลตรวจ](../developer/authoring/verification.md)
+เพื่อเลือก package และหลักฐาน; อย่าใช้ผลจาก package คนละรุ่นรับรองตัวอย่างนี้
