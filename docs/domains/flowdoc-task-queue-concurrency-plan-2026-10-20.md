@@ -16,7 +16,8 @@ Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
 on 2026-10-20 under the owner's subsequent implementation and verification
 requests. Development integration and clean merged-lane cleanup were subsequently
 approved and completed; the subsequent authorized Git release is recorded below.
-Installation remains unapproved. Numeric
+The subsequent authorized installation is verified except for native chat
+discovery after an app reload, as recorded below. Numeric
 resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -917,3 +918,54 @@ are retained at `C:/Users/nekot/Documents/Codex/2026-10-20/release-049-028/`.
 No GitHub Release page, package/image registry publication, installation, actual
 configuration, DB or Docker state change was performed. The existing 1.5-GB trial
 scope and separately authorized installation checks remain applicable.
+
+## Installation checkpoint — 2026-10-20
+
+The owner authorized installation with backup and queue/document/chat checks.
+The previous actual instance was Service/Core 0.4.3; its configured launcher
+still selected plugin 0.2.4 while the plugin manager listed 0.2.6. The installed
+set is now Service **0.4.9**, Core **0.4.7**, FlowDocMake **0.2.8**, on the original
+loopback endpoint `http://127.0.0.1:3018`. The running image ID is
+`sha256:9d76527509c0bed79350dc823e34d7e5fa1ab7ea4176e95277bb57af5a06b723`.
+The image was built from the frozen released source archive; installed plugin
+bytes match its frozen ZIP. Core archive identity remains unchanged from delivery.
+
+Before changing the actual instance, a quiescent custom DB dump, both storage
+volumes, configuration/credentials and old plugin copies were backed up with
+hashes in an access-restricted local folder. Restore into an isolated DB and
+file volume preserved all four drafts; migrations 022–024 and idempotent replay
+passed there before the actual upgrade. Actual migration/replay, image identity,
+1-GiB / 2-CPU / child-reaping-init settings, restart persistence and permission
+checks pass. Four original definitions, revisions and fingerprints, the font
+library/defaults and the zero published-template count remain unchanged.
+
+Nine real streamed requests using the installed image in the isolated restored
+DB produce UAT3/SRS6 PDFs, 798 pages, with two overlapping processing intervals.
+All nine tasks were admitted before the first finished; normal scheduling overlaps
+intake and processing, so this installation run does not claim all nine were
+normalized before the first completion. Durable task/usage/hash receipts match;
+success files and reservations reach zero after asynchronous cleanup. A separate
+processing disconnect stops safely, retains received originals to their original
+three-hour expiry and leaves no partial PDF. No native child or zombie remains.
+Temporary test containers, volumes and their network were removed; user data and
+the verified backup remain. The observed test-cgroup peak is about 545.8 MiB,
+not a general capacity or performance guarantee.
+
+Four unchanged actual drafts produce 115 pages. Those plus the nine queued PDFs
+total 13 PDFs / 913 pages, all rendered and compared with prior reviewed output:
+pixels, text, drawn image bytes/alpha/order, page sizes and link targets/geometry
+match, with no new rendering diagnostics. The image checker follows actual `Do`
+paint operations; unused resource-dictionary entries are not drawn images.
+Existing `IMAGE_LOW_RESOLUTION` warnings remain: four for SRS and ten for the
+UAT representative; both ศบ.1 variants have none. No source assets were enhanced.
+This proves regression parity, not new source-document fidelity.
+
+Fresh independent MCP startup reports `ready:true`, plugin0.2.8, Service0.4.9,
+Core0.4.7 and 25 tools. The active chat still exposes no FlowDoc tool, so native
+chat discovery is **not yet verified**. The owner previously chose to reopen Codex
+manually; no app-wide restart was performed. After reopening, call the native
+context/contract tools in this chat before marking this remaining item complete.
+Evidence, PDFs and the explicit pending item are retained at
+`C:/Users/nekot/Documents/Codex/2026-10-20/install-049-028/receipt.json`.
+No product source, release/tag or user-template publication was changed by this
+installation. Execution/Phase/Checklist IDs are N/A for this bounded inline work.
