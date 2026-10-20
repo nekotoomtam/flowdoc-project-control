@@ -15,7 +15,8 @@ file. No closed execution context is reopened.
 Status: Stage 0 contract closed; Stages 1–4 verified on isolated candidates
 on 2026-10-20 under the owner's subsequent implementation and verification
 requests. Development integration and clean merged-lane cleanup were subsequently
-approved and completed; release and installation remain unapproved. Numeric
+approved and completed; the subsequent authorized Git release is recorded below.
+Installation remains unapproved. Numeric
 resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
@@ -892,3 +893,27 @@ checks are separate future work; no 0.4.9 running-image identity is claimed.
 No Core/Service runtime source, actual local config, DB, installed plugin or Docker state was
 changed by this preparation. Execution/Phase/Checklist IDs remain N/A for this
 bounded inline preparation; no system map is promoted.
+
+## Git release result — 2026-10-20
+
+The owner subsequently authorized Git snapshots, annotated tags and GitHub pushes
+only. Service `release` / `v0.4.9` is snapshot
+`ca66f605b02a41d1bc3b05894fbc75f5224d4900`, from verified development source
+`32d78570b5c2dc8940efd3452bf5d4dffc55c081`; its only parent is release 0.4.8.
+FlowDocMake `release/flowdocmake` / `flowdocmake-v0.2.8` is snapshot
+`85f7ea7e0c116f73ab1bd41a3dd12ab9834c168f`, from frozen Project Control source
+`53677e28eac141e4bde440c0e11da96d4ad0a85e`; its only parent is component 0.2.7.
+Each snapshot's complete tree equals its frozen source tree. All 12 Service
+release ancestors and all 3 plugin component ancestors have their own annotated
+version tags, including remote peeled targets. Old tags were not moved.
+
+Default development branches, release branches and new tags were pushed atomically
+per repository and read back from GitHub. Development histories remain complete;
+this subsequent closeout changes only this record, not the frozen candidate.
+Core 0.4.7 source, artifact, local/remote branches and tags remain unchanged.
+The delivery hashes and passing readiness evidence above are reused without a
+repack or runtime change. Verified pre-release Git bundles and publication proof
+are retained at `C:/Users/nekot/Documents/Codex/2026-10-20/release-049-028/`.
+No GitHub Release page, package/image registry publication, installation, actual
+configuration, DB or Docker state change was performed. The existing 1.5-GB trial
+scope and separately authorized installation checks remain applicable.
