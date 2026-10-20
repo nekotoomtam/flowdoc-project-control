@@ -12,9 +12,9 @@ work under the owner's explicit request on 2026-10-20; execution, Work, Phase,
 and Checklist IDs are not applicable. Risk: routine. Document budget: this one
 file. No closed execution context is reopened.
 
-Status: Stage 0 contract closed; Stages 1–2 verified on isolated candidate branches
-on 2026-10-20 under the owner's subsequent implementation requests. Stages 3–4
-remain pending. Numeric resource values below are trial policy decisions, not
+Status: Stage 0 contract closed; Stages 1–3 verified on isolated candidate branches
+on 2026-10-20 under the owner's subsequent implementation requests. Stage 4
+remains pending. Numeric resource values below are trial policy decisions, not
 measured capacity guarantees.
 This document is not implementation Evidence, a benchmark result,
 deployment approval, or product/map truth. It does not authorize runtime edits,
@@ -187,8 +187,8 @@ working; disabling API readiness would invalidate the proof.
 
 ## Staged development and future checks
 
-Stage 0 is closed as a documented contract. Stages 1–2 results are recorded below;
-Stages 3–4 checks remain future acceptance.
+Stage 0 is closed as a documented contract. Stages 1–3 results are recorded below;
+Stage 4 checks remain future acceptance.
 Implementation must remain isolated until separate integration approval.
 
 | Stage | Deliverable / likely owner paths | Required future acceptance |
@@ -656,3 +656,72 @@ was 472.91 ms and memory-read latency 475 ms, close to the 500-ms bound. This is
 not a general capacity/reliability guarantee. Broader pressure/timing hardening
 and the Stage 4 nine-heavy comparison remain pending; do not silently relax the
 guard to obtain a pass. Failed attempts remain in the evidence root.
+
+## Stage 3 isolated result — 2026-10-20
+
+Owner-authorized inline implementation uses the retained isolated Service and
+control worktrees on `codex/task-queue-stage3`, starting at Service `98c4f75`
+and control `a805a35`. Service candidate `9b4ab6e` changes the JSON reader,
+memory guard and direct processing transport, with regression tests. Core,
+package pins, schema, primary/release refs and installed runtime are unchanged.
+Execution IDs remain N/A; only this existing shared plan is updated.
+
+The cached/retained-record reproduction showed that fulfilled-Promise byte
+scans could starve a cancellation timer. The reader now cooperatively yields
+after an 8-ms work slice, checking time every 1,024 byte operations, without
+retaining another input copy. Abort/close returns reader grants. The resource
+guard records fixed-size read-time, scheduled-start-delay and sample-age
+histograms plus failure reasons. Monotonic freshness checks run even while a
+read is pending; a later successful read cannot erase an already missed
+deadline, and one hung underlying read cannot accumulate overlapping retries.
+The sampling/freshness, pressure, credit and storage limits remain unchanged.
+
+Injected metric loss also exposed a direct-transport failure-feedback path
+blocked by its own generation abort. Terminal feedback now follows client
+connection cancellation independently, with the original bounded write timeout.
+Both direct transport and actual HTTP/FlowDocMake receive the terminal reason;
+confirmed disconnect still cancels work and removes unsent output.
+
+Evidence root: `C:/Users/nekot/Documents/Codex/2026-10-20/task-queue-stage3`.
+Build and the affected integration suite pass 190 tests across 22 files with
+no skips. Coverage includes two-worker pressure/metric loss, receive/send waits,
+cancellation, actual process reaping, leader loss/recovery, retained originals,
+expiry, cleanup, old clients, model 18/19 and streamed feedback/PDF delivery.
+
+Frozen UAT/SRS run once per cell on the same 2 CPU / 1 GiB Service profile;
+shared-load cells add an isolated two-thread CPU workload capped at 2 CPU /
+256 MiB. The Stage 2 baseline has timing instrumentation only; behavior remains
+unchanged. PostgreSQL and the competing container are outside Service RAM.
+
+| Observed value | Baseline isolated | Candidate isolated | Baseline shared load | Candidate shared load |
+| --- | ---: | ---: | ---: | ---: |
+| Maximum scheduled-start delay, ms | 448.74 | 28.05 | 423.95 | 10.52 |
+| Maximum prior-success age at read start, ms | 546.00 | 126.88 | 521.00 | 108.65 |
+| Peak Service cgroup RAM, MiB | 580.44 | 467.61 | 480.26 | 458.62 |
+| Harness wall time, seconds | 30.39 | 26.19 | 24.11 | 22.54 |
+
+Age is since the previous completed aggregate read, sampled at the next read
+start; it is not continuous maximum staleness or the acquisition time of every
+cgroup file. Read elapsed time includes callback scheduling, not just physical
+I/O. These single runs and their order/cache conditions do not establish a
+performance distribution. All four cells completed with two actual worker
+groups, zero OOM and zero metric read errors; the candidate also recorded zero
+stale stops. The original contended failure was not reproduced by this bounded
+CPU load; deterministic tests instead prove the starvation, stale-reset and
+overlapping-hung-read defects and their corrections. No separate monitor
+process or threshold relaxation was needed for the measured workload.
+
+All eight representative PDFs (672 pages) match the reviewed Stage 6 baseline
+in text, pixels, image bytes/alpha/order and link targets/geometry. Every page
+parses and renders without diagnostics; the candidate 168-page contact sheet
+was inspected. Another 20 fixture PDFs (22 pages) parse/render completely.
+Representative normal-HTTP PDF proof precedes the direct-terminal-transport
+correction; that supplied-wire path is unchanged, and the final integration
+suite rechecks the corrected transport. This is regression parity, not a new
+source-document fidelity claim.
+
+Remaining boundary: an actual host/event-loop stall exceeding the unchanged
+freshness bound still causes a safe stop. These results do not guarantee
+production capacity or all possible shared-host loads. Stage 4 still owns the
+full nine-heavy-job, one-versus-two-worker comparison. No integration, release,
+push or installation is authorized by this result.
