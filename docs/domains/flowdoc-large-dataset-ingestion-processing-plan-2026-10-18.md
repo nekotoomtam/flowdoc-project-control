@@ -2601,3 +2601,53 @@ fixture receipt. Actual SRS payload SHA256 is
 No input mutation or replacement measurement was used. Cost if this identity
 reconciliation were wrong: unsupported performance comparison; byte equality
 and complete PDF oracle checks independently cover this prerequisite.
+
+
+### Field-access diagnosis after Stage4 — 2026-10-20
+
+Owner authorized continuing the bounded read-only measurement before selecting
+a change. Discovery only, routine risk, inline IDs N/A; Core/Service own readers
+and composition; this existing plan records findings. Runtime, package pins,
+main/release/tag/install and Stage4's failed performance gate remain unchanged.
+Ordinary reasoning sufficed; no escalation/delegation or new execution records.
+
+Evidence: C:/Users/nekot/Documents/Codex/2026-10-20/field-access-profile,
+identity.json,9 run results,3 CPU profiles,analysis.json and terminal receipt.
+Three control/CPU-profile pairs plus one API-count pass,2CPU/1GiB, network none.
+Two justified counters-only follow-ups separated lookup from required enumeration,
+then cross-pass from within-pass rebuilding; neither repeats timing for a score.
+Every composed document equals the same frozen whole-document oracle, all reader
+grants return to zero, and actual Stage4 archive/source/input hashes are checked.
+Raw counters remain identical across the detailed probes. Source hashes gate
+external loader instrumentation; no candidate file is edited by profiling.
+
+Uninstrumented control times: 1.323187, 1.281332, 1.281830s;
+median1.281830s. Observer runs are diagnostic only and are not
+new speedup evidence.15 reads return234318 logical bytes.
+Lookups10721, key visits21212, average1.979 keys per lookup.
+Validation collect/write each perform3571 lookups/7055 key visits; binding
+3577/7099, envelope2/3. Mandatory non-lookup enumeration remains separate.
+Index builds5400, evictions5336, but only8 builds repeat the same object within
+the same collect/write/binding pass. Most rebuilding crosses the3 passes; this
+does not support a cache-thrashing or active-record-pinning fix by itself.
+
+CPU sampled self-time across3 profiles: Service31.71%, Core19.93%, GC11.22%,
+VM/unknown32.40%, Node internals4.74%. The Service string-scanner frame is16.15%
+of samples. Samples include profiler overhead; async attribution is incomplete.
+Do not assign unknown/GC samples to promises, JSON.parse or any one component.
+
+Recommendation revised from aggregate counters: pause extra cache/lifetime
+changes. Existing Stage4 full-job evidence shows composition1.29–1.40s, layout
+35.27–40.11s, PDF writing18.37–19.89s. To improve total SRS time, next inspect
+layout first and PDF writing separately. If reader speed remains the chosen
+goal, consider bounded synchronous scanning inside the already retained raw
+record buffer; measure with escape/UTF8/duplicate/limit/abort/fallback parity.
+Direct-name lookup remains a secondary proposal requiring a Core–Service
+contract change. Neither proposal nor Stage5 is implemented or authorized here.
+
+No PDF rerun: exact runtime/package/input identity and whole-document oracle
+proof permit reuse of Stage4's660-page PDF evidence for unchanged behavior.
+This diagnosis makes no new source-layout-fidelity or full-task timing claim.
+Only this existing Project Control record changes; product branches/worktrees,
+installed tools and data stay intact. Source, counters and CPU samples justify
+this recommendation; improvement from any proposed change is still unmeasured.
