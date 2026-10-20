@@ -983,3 +983,19 @@ maxProcessing2. The installation's final pending item is complete.
 Raw native tool evidence is retained in `native-chat-proof.json` alongside the
 installation receipt above; earlier failures and pending checkpoints remain
 historical observations. Prior queue/PDF checks are reused unchanged, not rerun.
+
+## คู่มือ FlowDocMake — พักการออกรุ่นตามคำสั่งเจ้าของ 2026-10-20
+
+ปรับคู่มือต้นทางและสำเนาเอกสารใน development ให้ตรงกับ FlowDocMake0.2.8 /
+Service0.4.9 / Core0.4.7 แล้ว โดยแยกคำแนะนำปัจจุบันจากประวัติรุ่นและผลตรวจเดิม.
+Commits: `1361221`, `5e598d3`, `501c944`, `50d2278`.
+ผลตรวจเอกสาร: รุ่นและลิงก์ที่เพิ่มสอดคล้อง, ประวัติผลตรวจยังอยู่,
+สำเนาและ checksum ครบ30ไฟล์ตรงต้นทาง, check:data และ diff whitespace ผ่าน.
+ไม่มีการแก้ runtime หรือรันทดสอบ PDF ใหม่ในงานคู่มือนี้.
+
+สำเนาคู่มือในแพ็กเกจ0.2.8ที่ติดตั้งยังเป็น snapshot เดิม ไม่ได้อัปเดตตาม development.
+ข้อเสนอออกรุ่นแก้คู่มืออย่างเดียว (เช่น0.2.9) **พักไว้**: เจ้าของสั่งให้ mark
+ใน Project Control เท่านั้น ยังไม่เตรียมออกรุ่น ไม่สร้าง release/tag ไม่ push
+และไม่ติดตั้งหรือรีสตาร์ตแอป. กลับมาทำเมื่อเจ้าของสั่งอัปเดตปลั๊กอินในรอบใหม่;
+Core/Service คงรุ่นเดิม. ผลตรวจการติดตั้ง0.2.8ที่ปิดแล้วด้านบนยังคงสถานะเดิม
+ไม่เปิดงานติดตั้งเก่ากลับมาเป็น pending.
