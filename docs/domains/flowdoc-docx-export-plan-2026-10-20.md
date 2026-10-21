@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V8 full SRS reviewed on all 100 pages; meeting-header numbers and reported heading/icon grouping cases corrected; repeated requirement-column headers and other layout differences remain; PDF reference frozen; product integration not started**.
+สถานะ: **V9 one-property trial restores requirement-column headers on all 55 requirement pages; 100-page comparison completed with V8 reporting correction; ordinary layout differences remain; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1835,3 +1835,130 @@ Locators ใต้ `tuning-v8/`: `discovery/{meeting,grouping}.json`,
 `qa/reviews/pages-076-end.json`,
 `qa/reviews/reference-001-025-completion.json`. Original source, V7 and V8
 candidate hashes ตรวจซ้ำหลัง QA; checks เขียนเฉพาะ outputs ใหม่ใน lane.
+
+## V9 repeated requirement-header trial
+
+### Scope and corrected discovery
+
+คำขอเจ้าของ 2026-10-21 อนุญาตหาสาเหตุและจูนหัวคอลัมน์ตารางที่ไม่แสดงซ้ำ
+ใน SRS เดิม พื้นที่ทดลองเดิม แล้วเทียบ PDF อีกครั้ง. Frozen base คือ V8
+`srs-grouped-v8.docx/pdf`; source/resolved/Core PDF และ product/runtime
+ทั้งหมดไม่เปลี่ยน. Owner/roles และ single-room unregistered mode ตาม V8;
+execution IDs N/A. Work Size small / Risk routine; current host/session model,
+ไม่มี override หรือ separate WORK. ขั้นแรก read-only discovery ก่อน candidate
+implementation แล้ว verification แยกที่ไม่แก้ candidate.
+
+Document Budget: แผนนี้ไฟล์เดียว; raw diagnostics/scripts/artifacts อยู่ใต้
+`tuning-v9/`. Proof Budget: minimal full-SRS candidate จากการวินิจฉัย,
+package containment/inverse check, manual Word PDF export และ all-page
+comparison; หาก single-property experiment ยืนยันสาเหตุแต่ทำ icon แยก
+อนุญาตหนึ่ง bounded paragraph-boundary fallback พร้อมบันทึกเหตุผลก่อนสร้าง.
+ไม่ทดลอง header flags, row heights, fonts หรือ whole-row non-splitting
+หลายปัจจัยพร้อมกัน. Acceptance: หัวคอลัมน์แสดงในทุก requirement table page,
+รวมช่วงกลาง REQ0041; icon/heading/meeting fixes ของ V8 ยังคงได้ผล;
+เนื้อหา/รูป/fields/geometry คงเดิมตามขอบเขตที่ระบุ และไม่มี visible clipping,
+overlap, missing ending. ยังยอมให้ line/page breaks ต่างจาก Core.
+
+**Correction to V8 reporting:** retained V8 review เคยระบุ pages 52, 56,
+57, 60, 61, 64, 65, 67, 72, 73, 75 ว่าขาดหัว และยก V7 52/57 ว่าเป็น
+ปัญหาเดิม. ตรวจ current PDFs ทั้งหมดใหม่ด้วย source-bounded header geometry
+และภาพ full-page/pixel corroboration พบว่า **V8 ขาดจริงเฉพาะ 52**:
+54/55 requirement pages มีหัว; V7 มีครบ 55/55 และ Core ครบ 54/54.
+รายงาน V8 ที่กว้างกว่านี้และการจัดเป็น pre-existing general behavior ผิด.
+เก็บ original reports ไว้พร้อม correction นี้ ไม่ย้อนแก้ให้เหมือนตรวจถูกตั้งแต่แรก.
+ไม่มีเหตุสรุปว่าเป็น generic Word bug จากรายงานเดิม.
+
+Source/header checks: requirement tables 26 ชุดมี `repeatHeaderRows=true`,
+header count 1 และ row0 `tblHeader` enabled ถูกต้อง; ไม่มี manual page break,
+floating/nested table, vertical merge หรือ oversized header. จุดจริงคือ
+table177 / row2 / cell1 / global paragraph1395, REQ0041: 2,012 chars,
+73 text segments และ 72 line breaks ภายใน paragraph เดียว. Exact line
+397 twips ทำให้ minimum text height 1,449.05 pt เทียบ body 689.7 pt.
+V8 paragraph นี้ `keepNext=true` ต่อ icon; V7 เดิม false. V8 row คร่อม 51–53
+และหัวหายช่วงกลาง 52. Hypothesis: oversized keep-with-next group ทำให้ Word
+เลือก pagination path ที่ไม่ repeat header. ยังต้องยืนยัน causal effect ใน Word.
+
+Minimal trial จะคืน `keepNext=false` เฉพาะ paragraph นี้ก่อน โดยไม่แก้ header
+flag/row/table หรือโครงสร้าง. หากหัวและ icon อยู่ถูกที่ทั้งคู่ ไม่ต้องเปลี่ยน
+paragraph structure. หากจำเป็น fallback จะแบ่งเฉพาะข้อความนี้ตาม existing
+semantic boundaries เป็น native paragraphs และผูกเฉพาะท้ายข้อความกับ icon.
+ไม่ใช้ `cantSplit` กับแถวยาวเกินหน้า: Microsoft
+[implementation note](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-oi29500/a55188f7-2443-4c17-ba5a-75999085bab4)
+ระบุข้อจำกัดการแสดง overflowing row ซึ่งไม่เหมาะเป็นทางแก้กรณีนี้.
+
+Discovery locators: `tuning-v9/discovery/{header-source,pdf-header-map}.json`,
+source-bounded scanner `tuning-v9/scripts/scan_requirement_headers.py` และ
+fresh corroboration renders ที่ไม่ทับ V7/V8. Header ROI ของ V7 52 / V8 53/56
+มี gray fill 38,609 pixels; V8 52 มี 0. Fresh images ตรง retained PNG bytes;
+ไม่มี render-cache inconsistency. สถานะเริ่มต้น: one-property trial pending;
+ผลทดลองและการรับผลอยู่ด้านล่าง.
+
+### V9 single-property candidate and preservation
+
+สร้าง `outputs/srs-header-repeat-v9.docx`, 1,084,112 bytes, SHA256
+`a23be445751f2fdf593f9fc37a966da898a98c9318e4abb8459a77876afe4743`.
+คืน `keepNext=false` เฉพาะ paragraph1395 ของ REQ0041; ไม่แก้ paragraph
+boundaries, line breaks, header flags, row/table properties หรือ fonts.
+Raw XML เพิ่ม 14 bytes จาก explicit false. การผูกข้อความกับ icon อีก 362 จุด
+และ heading/meeting changes ของ V8 คงเดิมทั้งหมด.
+
+Independent saved-package check ผ่าน 9,787 assertions. เลือก target จาก
+REQ0041 first-cell identity แยกจาก builder manifest; inverse one property
+คืน entire V8 canonical XML ได้. อีก 124 ZIP payloads และ compressed records
+ตรง V8 ทุก byte; raw splice inverse คืน source XML ทุก byte. โครงสร้างเดิม
+2,775 paragraphs / 4,609 runs / 200 tables / 933 rows / 1,932 cells /
+371 drawings / 198 hyperlinks / 922 breaks / 7 sections / 396 bookmarks /
+199 main field instructions คงเดิม. Ordered text, all run/CS formatting,
+fields, media และ story parts ไม่เปลี่ยน.
+
+### V9 rendered acceptance and comparison
+
+เจ้าของแปลงผ่าน Word for Microsoft 365 เป็น
+`outputs/srs-header-repeat-v9.pdf`, 100 pages / 1,014,742 bytes, SHA256
+`30f5e154bfec2c698fc2fc55f839b3ecef7203cee8bb39bb76d1bbab2e92abbd`.
+จำนวนหน้าเท่า V8; Core reference ยัง 98 หน้า. ไม่สร้าง fallback candidate
+เพราะ single-property trial ผ่านทั้ง header และ icon behavior.
+
+| Criterion | Evidence and result |
+| --- | --- |
+| Repeat requirement-column headers | Source-bounded geometry scan พบครบ 55/55 pages 46–100, ไม่มี missing page; gray header bands ใน rendered PNG corroborate ทุกหน้านี้ |
+| Actual defect at 52 | V8 header ROI gray pixels 0 → V9 38,609; crop/full-page inspection ยืนยัน Req no./Features List/Remark อยู่เหนือ continuation text และไม่ทับกัน |
+| REQ0041 content/icon | ยังคร่อม 51–53; ท้ายข้อความและ blue icon อยู่ร่วมกันบน 53. ไม่ต้องเพิ่ม paragraph หรือบังคับ row ให้อยู่หน้าเดียว |
+| Other V8 fixes | Meeting numbers/headings/known icon cases คงผลเดิม; changed-page review ไม่พบ visible glyph boxes, clipping, overlap หรือ icon-only ending ที่เกิดใหม่ |
+| Body images | 371 ordered decoded placements/soft masks คง identity/order; 24 placements เปลี่ยนตำแหน่งเฉพาะ 53–55 เมื่อข้อความ reflow |
+| TOC/page fields/banner | 198/198 links resolve, printed pages และ source labels corroborate; cover ซ่อนเลข, pages 2–100 เป็น Page p of 100 และ 99 banners ถูก policy |
+
+เปรียบเทียบ rendered raster ทั้ง 100 หน้า: 87 หน้าเหมือน V8 ทุก pixel.
+ใช้ V8 visual evidence ของหน้าที่ไม่เปลี่ยนซ้ำได้ตาม workflow evidence reuse;
+ไม่อ้างว่าเปิดใหม่ครบ 100 หน้า. ตรวจ full V9/V8 ทุก 13 หน้าที่ภาพต่าง และ
+Core counterparts สำหรับช่วงที่เปลี่ยน. Changed pages คือ 52–55 และ
+60/61/64/68/69/72/77/79/86. สี่หน้าแรกมี header/row reflow; อีกเก้าหน้ามี
+ความต่างแคบใน feature text: character sequences/font names/sizes/Y positions
+ตรง V8 และ Latin-word X positions ต่างสูงสุด 0.0312 pt
+(ประมาณ 0.052 pixel ที่ 120 dpi, 26–102 changed pixels ต่อหน้า).
+ไม่พบ visible regression ในการตรวจภาพคู่. Raw pypdf page text ตรง V8
+96/100 หน้า; ต่างเฉพาะ 52–55. เป็น corroboration ไม่ใช่ every-glyph proof.
+Header acceptance ใช้ geometry + rendered pixel/visual evidence ใหม่แทน
+classification ผิดในรายงาน V8 ไม่ใช้ evidence reuse เพื่อคงข้ออ้างผิดนั้น.
+
+### V9 decision and limits
+
+**Decision: PASS for this bounded repeated-header correction.** เปลี่ยน property
+เดียวแล้วหัวหน้า 52 กลับมา ขณะที่ text/icon relation ยังถูกต้อง จึงยืนยัน trigger
+เชิงทดลองจาก oversized keep-with-next group ที่ V8 เพิ่ม; ไม่สรุป internal
+Word algorithm หรือ universal limit. ไม่ต้องเปลี่ยน PDF หรือ source structure.
+
+V9 เป็น specific frozen-SRS prototype; ยังไม่ใช่ generic oversized-paragraph
+policy หรือ product implementation. General wrapping/row height/border/TOC
+appearance และความต่าง 100 vs Core 98 หน้ายังมีตามผลก่อนหน้า; full layout
+fidelity/product readiness ยัง NOT ACCEPTED. ไม่มี Word performance benchmark
+หรือข้อสรุปสาเหตุการประมวลผลช้าจากผลรอบนี้. หยุด candidate/review cycles
+หลัง acceptance; งานถัดไปจึงค่อยจูน spacing/typography ตาม scope ใหม่.
+
+Locators ใต้ `tuning-v9/`: `generation.json`,
+`scripts/{build_header_trial,check_package,scan_requirement_headers}.py`,
+`preflight/independent-package-check.json`,
+`word-review/{header-geometry,comparison,render-diff,root-observations,root-review}.json`,
+`qa/candidate/manifest.json`, `qa/details/` สำหรับ header corroboration และ
+`qa/reviews/{changed-pages,tiny-diff-pages}.json`. Verification เขียนเฉพาะ
+fresh QA outputs; source/V8/V9 hashes ตรวจซ้ำหลัง review.
