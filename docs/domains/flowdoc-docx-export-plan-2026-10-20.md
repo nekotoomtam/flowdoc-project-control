@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is consolidation of R1–R6 into mapping rules and a proposed isolated converter-change plan for review. This is planning only: no further probes or writer implementation, SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is M1 isolated implementation of border-area and wholly empty-header rules, with small two-font tests and owner-assisted Word conversion. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R1–R6 consolidated into the proposed mapping rules and M1 isolated implementation plan below. Border-area and wholly empty-header adaptations have bounded evidence; a general text-baseline correction remains unproven. No correction is implemented by this planning checkpoint. U5 overall acceptance remains open; SRS/product integration remain stopped**.
+สถานะ: **M1 isolated candidate implements bounded border-area and wholly empty-header rules;130 automated tests/type-check and four public-path package checks pass. Owner Word exports and visual/layout comparison remain pending. A general text-baseline correction remains unproven. U5/M1 layout acceptance remains open; SRS/product integration remain stopped**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -44,13 +44,14 @@ Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแ�
 Work Size: medium สำหรับการวางแผน; implementation แบ่งตาม stages ด้านล่าง.
 Risk Tier: routine สำหรับเอกสารนี้; product stages มีความเสี่ยงเรื่องความครบถ้วน
 และ compatibility ซึ่งต้องตรวจตามขอบเขต ไม่ใช่เหตุให้ประกาศ critical โดยอัตโนมัติ.
-Work authority รอบปัจจุบัน: planning/documentation only และบันทึกผลในแผนนี้;
+Work authority รอบปัจจุบัน: isolated M1 implementation และบันทึกผลในแผนนี้;
 ไม่ใช่ product implementation หรือการรับรอง feature ทั้งระบบ.
 
-Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้เท่านั้น; experiment roots เป็น read-only.
+Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้และ `unified-docx-writer-m1/` เท่านั้น;
+experiment roots ก่อนหน้าเป็น read-only.
 ขอบเขตทดลองที่เคยอนุญาตในรอบก่อน: dependency เฉพาะพื้นที่แยกและ Word review/export;
 ใช้ installed image แบบ read-only ใน disposable container เพื่อสร้าง Core PDF อ้างอิง.
-รอบวางแผนนี้ไม่เปิดการทดลองหรือการติดตั้งเพิ่ม.
+รอบ M1 นี้ไม่อนุญาตการติดตั้งเพิ่ม; ใช้ dependency ที่ตรึงไว้ผ่าน read-only junction.
 ไม่แก้ Core, Service, plugin runtime, installed production package/configuration,
 DB, template หรือเอกสารผู้ใช้. ไม่สร้าง release/tag/push/production install
 และไม่เปลี่ยน system/DOCUMENT_MAP.
@@ -5063,3 +5064,113 @@ Planning verification: Project Control `check:data` exits0; all seven existing
 local fragments resolve; final diff/whitespace review covers this plan only.
 No converter files or experiment outputs changed and no historical runtime
 test result is presented as rerun. No data/projection regeneration is needed.
+
+## M1 isolated implementation and Word handoff checkpoint
+
+**2026-10-21 — PASS_AUTOMATED_PACKAGE_WORD_PENDING.** Owner authorized M1
+implementation in the isolated area and small two-font documents, including
+asking for Word exports when ready. This checkpoint is not completed visual
+acceptance. Core owns eventual writer semantics; Project Control owns status.
+Single-room Product Implementation Agent / Evidence Reviewer / Documentation
+Synthesizer; medium size, routine risk; Work/Phase/Checklist/execution IDs N/A.
+The existing M1 scope and four-Word-export proof budget apply. Shared document
+budget remains this plan; no new Work/map/data/projection record is created.
+
+Candidate root:
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-m1/`.
+Verified all91 frozen H3 manifest entries before copying49 required files;
+reused the pinned dependency junction read-only. Runtime is bundled Node24.19.0;
+no dependency installation/lock/font/resource change. Inline implementation
+uses the current host session without claiming a model switch. One read-only
+final review used gpt-6-astra/medium as explicitly required by executing-plans;
+no implementer subagent or separate execution room was opened.
+
+### Implemented behavior and evidence
+
+- `src/geometry-policy.ts` owns bounded native-space decisions. An entire
+  unmerged plain content-height grid is adapted only when all original source
+  vertical padding values are exactly4pt (including omitted4pt defaults and
+  equivalent mm) and their native values are80twips. Native vertical margins
+  become75twips; left/right margins, fixed SINGLE size4 borders and source stay
+  unchanged. Other tables retain native behavior and a located reason.
+- `src/tables.ts` carries the decisions used by serialization through body/
+  section results into `src/writer.ts` adaptations. Receipts retain original
+  source points, source twips and actual native margins, with
+  `baselinePolicy:'native-at-least-unmatched'` and matching unverified. Existing
+  merging, continuation, repeated-header, split/keep and separator behavior
+  remains covered. No text/font/leading displacement was added.
+- `src/sections.ts` zeros header distance only when both effective first/default
+  headers are absent after mode/cover/blank resolution. Explicit first/default
+  header references remain. Source body top, footer and H3 visible-header
+  policy/capacity guards remain. Mixed visibility retains its old distance
+  with reason. Section/adaptation receipts expose actual native distance;
+  source offsets and estimated capacities remain separate and unverified.
+
+Tests observed RED before implementing each policy/integration, then GREEN.
+One Important final-review finding showed that source3.98/4.01/4.02pt could round
+to80twips and incorrectly qualify. Added failing integration regressions,
+then required original resolved points as well as native twips and checked
+whole-grid fallback. Added original point values to receipts. Equivalent-mm
+and omitted-default cases pass. This corrects a boundary defect, not an
+expansion of the accepted geometry envelope. No Minor findings were deferred.
+
+Final fresh suite: **130/130 PASS, zero failures/skips**, explicit test list in
+`package.json`, using bundled Node with `--import tsx --test`; TypeScript
+`node node_modules/typescript/bin/tsc --noEmit` exits0. Logs and RED/GREEN proof
+are in `evidence/`. Tests do not prove Word pagination or visual parity.
+
+Four documents are generated directly with `generateDocxTo`; no package XML
+post-patching. All XML/relationships parse; receipt distances/margins match
+serialized XML; new-matrix body text matches source; frozen H1/H2 footer XML
+is unchanged. All91 H3 entries and15 immutable copied resource/vendor/lock/
+configuration inputs were rechecked unchanged. These checks cover packages,
+not a rendered document. No SRS or original PDF was regenerated.
+
+### Files ready for owner Word conversion
+
+All paths are under the candidate root's `outputs/`:
+
+| DOCX | Purpose | Word action |
+| --- | --- | --- |
+| `01-border-flow-two-fonts.docx` | Eight sections: original R2 table shapes for both fonts, natural/authored wrapping, flowing tables with emphasis/repeated headers and image-table fallback. Ten tables total; eight adapted. | Save as same-name PDF. |
+| `02-empty-header-matrix.docx` | Six sections: cover, visible-all, none after visible, first-only, continuation-only and blank; visible/mixed sections deliberately flow across pages. | Save as same-name PDF. |
+| `03-h1-regression.docx` | Exact frozen H1 small source; four sections. | Update whole TOC and fields, then same-name PDF. |
+| `04-h2-regression.docx` | Exact frozen H2 small source; three sections with multiline/image/columns headers and automatic flow. | Save as same-name PDF. |
+
+The generator initially encountered existing conservative group/cover fit
+guards on verbose new test labels/bodies. Shortened only the new fixture labels
+and cover body; no fit guard or reference changed. Pre-review generated files
+were superseded before human handoff and retained under `evidence/pre-review/`.
+The final dispatch manifest identifies the four current hashes; do not export
+the archived candidates. Generic skill task-parser/Git-branch scripts were not
+used for this external snapshot: task evidence lives in `evidence/ledger.json`.
+Keep artifacts for pending Word inspection rather than deleting them at finish.
+
+Evidence: `evidence/{base,ledger,dispatched,package-check,final-review,results,
+checkpoint}.json`, `full-tests-final.log`, `type-check.log`, task RED/GREEN logs,
+sources and `qa/{generate-m1.mjs,check-m1-package.py}`. Frozen current checkpoint
+contains93 files; SHA256:
+`1f88d97b28bbc8d303cb74a739abf80321fe43b369df64d6d4fec8c33abb5677`.
+
+### Pending acceptance and stop
+
+Await owner exports in the same output folder. Then inspect every page and
+compare row/baseline/border-centre/outer-edge/after-table landmarks, content,
+wrapping, repeated headers, headings/icons and inheritance/flow against the
+frozen references. R2 matched table comparisons are relative geometry because
+the new matrix changes surrounding titles/positions. New flowing/header
+matrices are regression inputs without a corresponding full Core reference;
+do not claim full pixel parity for them. H1/H2 retain exact source references.
+
+Word repair prompts, ink clipping, overlap, page boundaries, accumulated drift
+and visual parity remain unverified; `wordVerified` stays false. General font
+support/baseline matching is outside this checkpoint. R5's−0.05pt remains an
+explicit bounded residual. No universal0.12pt tolerance/compensation is added.
+No re-review dispatch is required after the covered RED→GREEN boundary fix.
+SRS, original PDF/source/runtime, Core/Service/plugin product repositories,
+API/default format, release/install remain untouched. Stop at Word handoff;
+do not promote M1/U5 acceptance before receiving and examining the exports.
+
+Project Control handoff checks: `check:data` exits0; seven local fragments
+resolve; final diff/whitespace review is restricted to this existing plan.
+No canonical data/projection generation or product map update is required.
