@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V11 semantic-grouping SRS and six-page paired baseline probe prepared; independent saved-package checks pass; owner Word export/rendered acceptance pending; V9 remains the accepted bounded-fix baseline; PDF reference frozen; product integration not started**.
+สถานะ: **V11 Word review complete: semantic grouping passes on the 99-page SRS; cell-padding calibration improves measured baselines with size-dependent residuals, so universal baseline correction remains unaccepted; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2212,3 +2212,78 @@ Original verifier reports เก็บไว้พร้อม semantic correcti
 Additional locators: `baseline/{generation-r1.json,scripts/repair_probe_order.py}`,
 `verification/baseline-probe-package-sequence.json` สำหรับ pre-repair failures
 และ `preflight/root-review.json` สำหรับ input/font/Core hashes และ pending criteria.
+
+### V11 owner Word results and acceptance
+
+เจ้าของแปลงทั้งสองชุดผ่าน Word for Microsoft 365 แล้ว. ใช้ full SRS
+`outputs/srs-semantic-grouping-v11.pdf`, 99 pages / 1,014,548 bytes, SHA256
+`f6bd6bdbcf6227a10c95cae7b9eb9bbc9bd8b8274a285ac24f24d2476aa44f11`
+และ final probe `outputs/srs-cell-baseline-probes-v11-r1.pdf`, 6 pages /
+85,110 bytes, SHA256
+`3b7121b1449d626b37bbab0385661647f75ebd9e0a447c1fb563966fea99d638`.
+DOCX ยังตรง hashes ก่อนส่ง Word; ไม่มี candidate repair ระหว่าง verification.
+
+**Grouping: PASS for this bounded structural policy.** Locate target relations
+ได้ครบ32/32ตาม source/base/candidate โดยแยกการหา text แบบ lossy ออกจาก
+package/visual proof. ทั้ง32มี heading chain, complete short description,
+paired table header และ first body line อยู่หน้าเดียวกัน. อีก31จุดตรง V10ROW
+geometry เดิม; จุด15.4เปลี่ยนจาก heading44/description44–45/table45 เป็น
+ทั้งหัวข้อ คำอธิบาย2บรรทัด และตารางทั้งชุดอยู่45. Core เก็บหน่วยนี้บน44;
+ไม่ได้อ้าง physical page parity. Source บางกลุ่มเองแยกหน้าเดิมอยู่แล้ว จึง
+บันทึก source relations ไม่ใช้ชื่อหัวข้อเป็นตัวบังคับเลขหน้าหรือผลลัพธ์.
+
+Rendered RGB ทั้ง99หน้าเทียบ V10ROW:95หน้าเหมือนทุก pixel รวม bands;
+reuse full-page QA ของ V10ROW เฉพาะ95หน้านี้. เปิด full candidate ใหม่ครบ
+4หน้าที่ต่างคือ8/44/45/46 พร้อม source/base counterparts และ32target pairs.
+หน้า8เปลี่ยน TOC15.4 printed page44→45 ถูกต้อง;44เหลือพื้นที่ท้ายหลัง15.3
+ตามการย้ายหน่วย;45ไม่มี orphan description;46รับ item2ของREQ0004เพิ่มจาก
+45 แล้วตามด้วย item3+icon. REQ0004ยัง split45–46เหมือนเดิมแต่ fragment
+boundary ต่างหนึ่งบรรทัด ไม่พบ visible clipping/overlap/glyph boxes หรือ
+icon-only ending ใหม่. ไม่อ้างว่าเปิด candidate ใหม่ทุก99หน้า.
+
+Functional checks PASS:198/198 TOC links resolve/printed page match และ
+source labels corroborate ที่ link/target ผ่าน declared lossy normalization;
+coverซ่อนเลข,98 non-cover page fields/banners ถูก policy;371 ordered body
+image data/soft masks ตรง frozen WordV3. Requirement headers geometry และ
+actual pixels ครบ55pages45–99/76bands. Meeting headers24occurrences คงเลข
+source1–10,12–16. REQ0041 text2012codepoints corroborate across50–52ภายใต้
+lossy normalization, final text+iconอยู่52;50–53ตรง V10ROW ทุก pixel.
+ไม่มี raw Unicode/every-glyph claim หรือเอา unknown anchors มาเรียก content loss.
+
+**Baseline probe: PASS empirical origin-shift calibration; uniform Core parity
+NOT ACCEPTED.** ตรวจ6full pages144dpiและ6detail crops288dpi. เปรียบเทียบ
+32controlled cases/4table pairs พร้อม native SRS rows: row-border height delta
+ทุกคู่0.000pt, text baselines ขึ้น1.20หรือ1.32pt, pitch deltaสูงสุด0.12pt
+ภายใน declared export precision. Font identity/face, paired text/CS/emphasis
+และ images คงเดิม; Word subset font sizes ที่วัด11.04/12.96pt. ไม่พบ Thai
+upper/lower marks clipping, overlap หรือ icon หาย. Native icons ยังคง100×16pt
+และขยับขึ้น1.25pt โดย decoded resource ตรงกันทั้งสองชุด.
+
+| Probe stratum | First-line residual after redistribution | Final-line residual | Boundary |
+| --- | ---: | ---: | --- |
+| 11pt / line397, 18 controlled cases | +0.00199…+0.142005pt | +0.00199…+0.182005pt | เทียบ nominal Core formula; Thai regular3line เป็น worst case ไม่เฉลี่ยซ่อน |
+| 13pt / line480, 14 controlled cases | +0.56599…+0.596pt | +0.56599…+0.596pt | controlled style, ยังไม่ตรง Core model; แยกจาก11pt |
+| Native REQ0001/0002/0005 Latin R labels | +0.00115 / +0.12115 / +0.12115pt | single line | เทียบ actual Core baseline17.51884pt ที่วัดไว้ |
+
+บาง11pt residualและทุก13pt residualยังเกิน0.12pt; เก็บ individual findings
+ใน `nominalAlignmentResidualsOutsideTolerance` ไม่ตีเป็น exact alignment PASS.
+Probe พิสูจน์ว่าการกระจาย padding เปลี่ยน origin โดยไม่เปลี่ยนความสูงแถวใน
+ชุดนี้ แต่ไม่ได้ระบุ internal Word metric algorithm หรือให้ universal shift.
+Core nominal formula อาจต้องขยาย ascent/descent เมื่อ shaped ink เกิน face
+metrics; Thai PDF extraction จัด combining marks ใหม่ได้ จึงใช้ paired paint
+order และภาพแยกจาก normalization. ไม่อ้าง font subset bytes เท่าต้นฉบับ.
+
+Decision: ใช้ V11 grouping เป็น latest bounded-fix experimental baseline ต่อ
+จาก V9/V10ROW ได้ในขอบเขตที่ตรวจ. ยังไม่รับ full document fidelity/product
+readiness. Baseline redistribution ยังอยู่เฉพาะ short probe ไม่ใส่ full SRS.
+งานถัดไปควรแยก calibration ตาม font size/line style และผล multiline ก่อน
+ขยาย; ไม่ลด line397, ไม่บังคับ98หน้า และไม่ปรับ PDF/source/runtime.
+หยุดรอบทดลองตาม Proof Budget หลังบันทึกผลจริง; ไม่สร้าง candidate เพิ่ม.
+
+Word locators ใต้ `tuning-v11/`: `grouping/qa/candidate/manifest.json`,
+`grouping/word-review/{render-diff,target-relations-inventory}.json`,
+`grouping/qa/reviews/{target-and-pages-044-045,root-changed-pages}.json`,
+`baseline/word-review/baseline-word-review.json`, `baseline/qa/candidate/`,
+`word-review/functional/{functional-review,comparison,header-geometry,header-pixel-corroboration,source-target-observations}.json`
+และ `word-review/root-review.json` สำหรับ acceptance coverage/input hashes.
+Pre-export reports คงสถานะเดิม ไม่แก้ย้อนหลังให้ดูเหมือนตรวจ Word แล้ว.
