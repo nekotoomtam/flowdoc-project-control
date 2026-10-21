@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V4 native Word control matches Core Thai line breaks; boundary-hint candidate fails visible glyph checks; cover-border contribution to row height confirmed narrowly; PDF reference frozen; product integration not started**.
+สถานะ: **V5 isolates a first-run complex-script formatting effect; full SRS confirms the target Thai line breaks; whole-document tuning incomplete; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1255,3 +1255,136 @@ Checkpoint นี้ปิดเฉพาะสามการทดลองท
 wrap-hint candidate ล้มเหลวด้าน visible glyphs และ cover-border height
 hypothesis มีผลวัดสนับสนุน. ยังไม่เลือกแนวทางแก้ Thai wrap เข้า writer จริง;
 ต้องแยกปัจจัย native/generated ที่ต่างกันในพื้นที่ทดลองรอบถัดไป.
+
+## V5 language font and paragraph isolation
+
+เจ้าของอนุญาตวันที่ 2026-10-21 ให้ทดลองภาษา ฟอนต์ และโครงสร้างย่อหน้า
+ทีละปัจจัยต่อด้วย SRS เดิม. เป็น new bounded inline experimental scope;
+ไม่เปิด registered execution หรือย้อนแก้ acceptance ของ V4. Owner/roles
+ตาม checkpoint เดิม; execution IDs N/A. Allowed: `tuning-v5/`, fresh SRS
+experimental outputs และแผนนี้. PDF reference, frozen V3/V4 artifacts,
+source template/data และ product/dependency/runtime/OS settings อยู่นอก mutation.
+
+Proof budget: focused intro baseline + five one-factor variants, Word export
+หนึ่งรอบต่อไฟล์, package invariants และ rendered comparison. Focused baseline
+ต้อง reproduce first intro chunk 5 lines ก่อนใช้สรุปผล. หากได้ผลที่ชัดเจนจึง
+ยืนยันปัจจัยนั้นกับ full SRS ได้อีกหนึ่ง candidate; ไม่รวมหลายปัจจัยโดยไม่มี
+ผลแยก และไม่เพิ่ม invisible characters. Document budget: update แผนเดิม;
+scripts/JSON/QA images เก็บใต้ experiment root. Candidate generation กับ
+read-only verification แยกขั้น; ไม่แก้ candidate ระหว่างตรวจ.
+
+Fixture ใช้ exact intro heading และ whole paragraph เดิมทั้งสาม text chunks,
+run formatting และ double-BR boundaries ไม่ใช้ native control มาแทน source.
+คง section geometry ของ SRS บทนำ; ตัด body ส่วนอื่นและ header/footer references
+เฉพาะ common fixture ที่ใช้ร่วมกันทุก probe จึงไม่ใช่ full-SRS acceptance.
+ห้าปัจจัยที่ทดสอบ: `applyBreakingRules`, `useFELayout`, first Thai run `w:cs`,
+Sarabun `w:sig` จาก actual embedded font และ paragraph boundaries.
+ผล Word อยู่ใน checkpoint ด้านล่าง; การต่างจาก native Word เพียงอย่างเดียว
+ไม่ใช่หลักฐานสาเหตุ.
+
+### V5 focused Word results
+
+สร้าง baseline และห้า variants ใน `tuning-v5/probes/` แล้วเจ้าของช่วยแปลง
+ครบหก PDF รวม baseline. ทุกไฟล์หนึ่งหน้า. Baseline SHA256
+`e4e43271ce053cca95e14c023f7a44cba527143e88bea8a0ed12165b40b2e771`
+reproduce original first-chunk break ends 50, 145, 210, 300, 391 ได้จริง.
+Independent package check 50 checks ผ่าน: baseline retained subtrees ตรง source,
+อีก 124 ZIP payloads ตรง V3, แต่ละ variant เปลี่ยนเฉพาะหนึ่งปัจจัย และ exact
+ordered text/fonts คงเดิม. Paragraph split เก็บ 2 BR เดิม + 2 P boundaries
+แทน 4 BR จึงคง logical newlines และ run formatting ไม่เปลี่ยนช่องว่างในข้อความ.
+
+| Probe | Sole difference from focused baseline | First chunk in Word |
+| --- | --- | --- |
+| 00 baseline | Common extracted fixture only | 5 lines; reproduces V3 |
+| 01 apply-breaking-rules | Add one compatibility flag | 5 lines; unchanged |
+| 02 use-fe-layout | Add one compatibility flag | 5 lines; unchanged |
+| 03 complex-script | Add `w:cs` to first 391-character Thai text run | 4 lines; ends 103, 210, 312, 391 match Core/native control |
+| 04 font-signature | Correct Sarabun `w:sig` from embedded font OS/2 | 5 lines; unchanged |
+| 05 paragraph-split | Replace the two double-BR logical boundaries with paragraphs while retaining newline count | 5 lines; unchanged |
+
+Root inspected all six full-page renders: ไม่มี visible glyph boxes/clipping
+ในจุดที่ตรวจ. Pixels ของ 01/02/04/05 ตรง baseline ทั้งหน้า; เฉพาะ 03 ต่าง.
+ทุก PDF ฝัง Sarabun-Regular/Sarabun-Bold และ painted sizes 11.04/12.96 pt
+ตรงกัน; ไม่ใช่การใช้ฟอนต์คนละ family หรือย่อขนาดเพื่อให้บรรทัดผ่าน.
+Source-to-PDF break alignment ยังเป็น explicitly lossy Thai normalization;
+exact source text preservation พิสูจน์จาก DOCX แยกกัน ไม่เรียก raw PDF text PASS.
+
+**PASS bounded single-factor effect:** `w:cs` ทำให้ Word ใช้ complex-script
+formatting กับ run นี้และได้จุดตัดคำตามเป้าหมาย โดยไม่เพิ่ม U+200B/forced BR,
+ไม่เปลี่ยน text/font/paragraph structure. ผลนี้แยกปัจจัยที่มีผลกับข้อความ
+ตัวอย่างได้ ไม่อธิบาย internal Word mechanism ทุกขั้นหรือรับรองทั้ง writer.
+การเปลี่ยนภาษา compatibility flags, font signature หรือ paragraph split
+เพียงอย่างเดียวไม่แก้ตัวอย่างนี้ใน export รอบที่ตรวจ.
+
+### Separate font metadata finding
+
+อ่าน actual OS/2 ของ embedded Sarabun ทั้ง regular/bold/italic/boldItalic
+แล้วได้ six signature fields ตรงกัน: USB `21000007,00000001,00000000,00000000`,
+CSB `20010193,00000000`. Declared values ใน V3 กลับเป็น USB
+`E0002AFF,C000247B,00000009,00000000`, CSB `000001FF,00000000`;
+ขาด Thai Unicode bit 24 และ code-page 874 bit 16. ตาม
+[OpenType OS/2](https://learn.microsoft.com/en-us/typography/opentype/spec/os2)
+และ [OOXML font signature](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.fontsignature?view=openxml-3.0.1)
+ข้อมูลนี้ควรมาจากฟอนต์จริง.
+
+Trace ต้นทางพบ pinned experimental `docx@9.13.0` ใน
+`docx-prototype-9130/node_modules/docx/dist/index.cjs` function `createEmbeddedFont`
+lines 12629–12638 hardcode ค่าเดิม; prototype caller `scripts/generate-srs.mjs:26`
+ส่ง Sarabun ผ่าน font embedding path นี้. ยังไม่แก้ vendor, package หรือระบบจริง.
+Native control เดิมก็เก็บ signature ผิดนี้ไว้ แต่ตัดเป็น 4 lines ได้; probe 04
+แก้ signature อย่างเดียวก็ไม่เปลี่ยน wrap. จึงเป็น metadata defect ที่แยกไว้
+ไม่ใช่ demonstrated standalone cause ของ line-breaking failure นี้.
+
+### Full SRS one-run confirmation
+
+หลัง focused result ผ่าน สร้าง `outputs/srs-cs-confirm-v5.docx`,
+1,078,009 bytes, SHA256
+`621e4cbefde1614276cdff244bb8f15fa7a96b070921bd034dfdb955ba92eb24`.
+เพิ่ม `<w:cs/>` 7 bytes ที่ first intro run เดิมเพียงจุดเดียวใน frozen V3 เต็ม;
+ไม่ใส่ให้ Thai runs อื่น ไม่รวม V4 height change หรือ font-signature correction.
+ลบ recorded insertion คืน entire raw document.xml เดิมได้ตรง byte-for-byte.
+Independent check 24 checks ผ่าน: อีก 124 ZIP payloads/compressed records,
+text order, 200 tables / 933 rows / 1,932 cells / 371 drawings / 198 hyperlinks /
+922 BR / 2,761 paragraphs / 7 sections / 396 bookmarks ตรง baseline.
+เจ้าของช่วยแปลง full Word PDF แล้ว: 99 pages / 1,013,098 bytes, SHA256
+`3543ead63755ba3e0b01da9af8b688dccba48e6bd128719648c0ab28ccb292cf`.
+DOCX ยังตรง hash ที่ตรึงไว้. Page 11 first chunk มี 4 lines และ source break ends
+103, 210, 312, 391 ตรง focused probe/Core/native control. Root ตรวจ full pages
+11–16 และ intro detail: ไม่พบ visible glyph boxes/clipping ในภาพที่ตรวจ.
+**PASS full-SRS confirmation of the one-run effect**; ไม่อ้างว่าแก้ Thai wrap
+ทุกส่วนของ SRS หรือรับรองทุก glyph ทุกหน้าแล้ว.
+
+All-page checks: 469 painted images = 371 body placements + 98 header banners;
+body image decoded data/soft masks/order/page/bounding boxes ตรง V3 ทั้งหมด.
+Media boxes ตรง, TOC links resolve และ printed page ตรงปลายทาง 198/198,
+page-field policy cover hidden แล้ว pages 2–99 ถูกต้อง. Destination coordinates
+11 จุดเปลี่ยนเฉพาะ XYZ-Y +19–27 pt ตาม reflow; target physical pages,
+link rectangles และ names ตรงทั้ง 198 links. ไม่รายงานว่า TOC geometry identical.
+
+Raw pypdf text ตรง V3 83/99 pages; pages 11–26 ต่างกันและมี text reflow.
+Per-page whitespace/lossy Thai checks ก็ไม่ตรงทั้งหมด; ไม่ยกระดับเป็น strict
+PDF text-preservation PASS จาก DOCX package preservation. รอบนี้ render/review
+เฉพาะ pages 11–16; changed pages 17–26 ไม่ได้ทำ visual review ใหม่.
+Known repeated-meeting-header defect เดิมยังไม่แก้และต้องแยกจาก text reflow.
+Bounded reconciliation หลังตัด exact source-defined bands: normalized body
+streams มี 96,454 characters และ character counts ตรง แต่ ordered stream
+ยังต่าง. First difference คือ repeated meeting-1 header แทรกระหว่าง participant
+rows 2/3 ใน V3 เทียบ rows 3/4 ใน candidate. เป็น supporting explanation ของ
+ความต่างลำดับจุดหนึ่ง ไม่ใช่ proof ว่าทุกความต่างหรือทุก glyph ถูกต้องแล้ว.
+เก็บข้อจำกัดนี้ไว้โดยไม่เพิ่ม corrective candidate นอก proof budget.
+
+Checkpoint: จบ five-factor isolation และ one-run full SRS confirmation ตาม
+scope. ขั้นถัดไปต้องวาง mapping สำหรับ Thai/mixed-script runs พร้อมรักษา
+bold/italic/complex-script style inheritance ก่อนขยายทั่ว SRS; การใส่ `w:cs`
+ให้ทุก run โดยไม่ตรวจ `bCs/iCs/szCs` ไม่อยู่ในผลพิสูจน์นี้. Font-signature defect
+เป็นอีกเรื่องที่ต้องจัดการตามขอบเขตของ writer ไม่รวมแก้เงียบใน candidate นี้.
+ไม่แก้ PDF, source template/data, installed dependencies หรือระบบจริง.
+
+Locators ใต้ `tuning-v5/`: `probe-manifest.json`,
+`research/settings-research.json`, `audit/independent-package-audit.json`,
+`word-review/{comparison,root-review}.json`, `full-srs/generation.json` และ
+`scripts/{v5_probe_suite,analyze_word_probes,full_srs_cs_confirmation}.py`.
+Full Word evidence อยู่ที่ `full-srs/word-review/comparison.json` และ renders
+ในโฟลเดอร์เดียวกัน; initial observation และ root visual acceptance แยกกัน.
+Supplement: `toc-reflow-summary.json`, `text-stream-reconciliation.json`
+และ `root-review.json` ในโฟลเดอร์ full Word evidence เดียวกัน.
