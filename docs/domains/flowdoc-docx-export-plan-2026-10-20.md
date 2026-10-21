@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V13 full-SRS candidate generated and saved-package verified for26eligible tables using V12 calibration; owner Word export and pagination/header/group/icon acceptance pending; PDF reference frozen; product integration not started**.
+สถานะ: **V13 full-SRS Word trial complete: functional/pagination/grouping checks pass, but uniform cell-origin shift rejected for actual Core text/icon alignment regressions; retain V11 as bounded experimental baseline; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2616,3 +2616,109 @@ update the entire TOC if Word asks. Next review uses the prepared32groups,
 26requirement-table continuation rules,15meeting tables,198TOC entries,
 371images, known long-row/icon endings and all-page QA. Actual page/header
 counts are measured from V13, not copied as required numbers from V11.
+
+### V13 owner Word results and candidate decision
+
+เจ้าของส่ง Word for Microsoft365 export แล้ว: `outputs/srs-cell-origin-v13.pdf`,
+99pages /1,013,849bytes, SHA256
+`a8d4ca5c440fa920106949236703478b312af3224fbdaed3df04a0587d47d3c0`.
+Candidate DOCX ยังตรง pre-export hash; frozen22input/candidate paths คงเดิม.
+Verification ไม่แก้ DOCX/PDF, source, prior evidence หรือ product files.
+
+**Trial complete; reject V13 uniform cell-origin shift as the replacement for
+V11.** โครงสร้างและการแบ่งหน้าคงเดิม แต่ actual Core alignment ของข้อความ
+บางส่วนและไอคอนแย่ลง. เก็บ V13 เป็น experiment/evidence; คง
+`srs-semantic-grouping-v11.docx` เป็น bounded experimental baseline ซึ่งยัง
+ไม่ใช่ product-ready DOCX หรือคำรับรองว่าเหมือน Core ทุกจุด.
+
+Functional review R1 PASS171checks/zero failures:198TOC links resolve พร้อม
+printed labels/destinations,98visible page fieldsและ98header bannersตรง policy.
+Actual requirement continuation coverage คือ55pages /76header bands; geometry
+และ fill/ink pixelsครบ.15source meeting tablesมี24header occurrences พร้อม
+เลข1–10,12–16ตาม source; ไม่เติมเลข11ที่ source ไม่มี. Ordered371body images
+ตรง V11ทั้ง decoded image/softmask identity; ตำแหน่งแนวตั้งเป็นปัจจัยทดลอง.
+All99pages encoded glyph paints/font programs/ToUnicode/sizes/advances/Xและ
+linear text stateตรง V11โดยแยกY;6,979relative `TD` operandsตรงกันทั้งหมด.
+ไม่ใช้ lossy Thai normalization อ้าง raw Unicode/every-glyph source equality.
+
+Geometry covers363logical body rowsใน26tables:361REQ labelsและ2blank-label
+source notes (`ขอเพิ่มสีเขียว`, `มีเรื่องของ template`), ไม่ใช่363REQ IDs.
+Wordยัง99pagesเท่า V11 เทียบ Core98;30logical split rowsและ394physical data
+fragmentsเหมือนเดิม. All99gray-border arraysตรงภายใน declared0.01pt precision;
+333whole Word rowsมีheight delta0.000pt. Feature line-pitch deltaสูงสุด0.12pt.
+Height errorต่อ Coreของ305rowsที่wholeทั้งสามไฟล์ยัง−19.8…+0.25ptจาก retained
+wrapping/layout differences; ผลนี้ไม่รับรอง Core row-height parity ทั้งเอกสาร.
+
+Grouping PASS32/32heading-description-table relations;31groupsมีgeometry
+ตรง V11.16.14ยังอยู่ครบpage67แต่first body lineเลื่อนตามปัจจัยทดลอง;
+15.4ยังอยู่ครบpage45. Source correspondence64checksครอบคลุมheader+first
+body prefixของ32groupsภายใต้ declared normalization. REQ0004ครบpages45–46
+และจบtext+icon46; REQ0041ครบ2,012source codepointsภายใต้ normalization
+pages50–52และจบ `dates to tasks*` +icon52ก่อนREQ0042page53. Package-level
+exact inverseและ unchanged source text/keep guardsรองรับความครบถ้วนแยกต่างหาก.
+
+### V13 actual Core alignment limits
+
+วัดแต่ละตำแหน่งเทียบ row topของตัวเองจาก actual Core/V11/V13 PDF จึงไม่ใช้
+physical page indexหรือ absolute page Yเป็นเป้าเดียวกัน. Strict comparison
+เลือก173whole rowsที่ feature textครบและอยู่บรรทัดเดียวเหมือนกันทั้งสามไฟล์;
+ไม่ปน changed wrapping/split context. All363first-line comparisonsเก็บเป็น
+observationเท่านั้น. Base-letter matricesภายในแต่ละบรรทัดมีspread0.000pt;
+แยก combining-mark offsetsออกจากbaseline.
+
+| Actual Core target | Result after V13 shift | Decision boundary |
+| --- | --- | --- |
+| Latin R labels,361rows | Improved361;360within±0.12pt;new error−0.122841…+0.031159pt | REQ0035page49ยัง−0.122841pt;คง marginal outlier ไม่ขยาย toleranceเงียบๆ |
+| Strict same-line feature text,173rows | Improved141,worsened32;81within±0.12pt;new error−1.456341…+0.581159pt | Uniform shiftไม่ทำให้ทุกข้อความใกล้ Coreขึ้น |
+| Matched icon tops in strict173rows | Worsened173/173;new error−1.490841…−1.300841pt;0within±0.12pt | เดิม168/173within±0.12pt;การยกทั้งเซลล์ทำให้ไอคอนสูงเกินเป้า |
+
+Native REQ0001แสดงความต่างชัด: Core R baseline17.518841ptจากrow top แต่
+mixed feature baseline18.244841pt; Wordทั้งสองroleเดิม18.84→17.52pt.
+Rดีขึ้นแต่feature error+0.595159→−0.724841pt. Icon100×16ptเดิมerror−0.030841
+กลายเป็น−1.380841pt โดย image identityและtext/icon relationshipยังครบ.
+Worst strict feature REQ0064: error−0.136341→−1.456341pt, Corepage54/Word55.
+Three-way native288dpi detail reviewยืนยันภาพตำแหน่งต่างนี้; crop boundaries
+จงใจตัดเนื้อหาข้างเคียง ไม่ใช่ clipping ของเอกสาร.
+
+สรุปได้ว่า whole-cell margin redistributionย้ายlabel/text/iconพร้อมกัน
+ทั้งที่ actual Core target originsต่างกัน. ยังไม่พิสูจน์ internal Word
+font-metricหรือshaped-ink cause; ไม่อ้างว่าสาเหตุเป็นWordbug. V12ยังผ่านเฉพาะ
+nominal traced-formula/two-pair short-fixture boundตามที่บันทึกไว้เดิม;
+V13 actual mixed-text/icon evidenceขัดขวางการขยายเป็นfull-document policy.
+
+### V13 coverage and closure
+
+Rasterized99pages at120dpi. Pages1–44ตรง V11แบบexactRGBจึงใช้prior full-page
+QAแบบtransitiveภายในidentity boundary. Changed55pages45–99เปิดตรวจภาพเต็ม
+ใหม่ครบ:root45–60/91–99(25pages),functional helper61–75(15),grouping helper
+76–90(15). ไม่มีหน้าขาด/ซ้ำในcoverage; ไม่พบnew clipping,overlap,glyph boxes,
+missing repeated headers,heading orphanหรือicon-only ending. Visual integrity
+PASSนี้ไม่เปลี่ยน actual Core vertical-alignment FAILให้เป็นPASS.
+
+Final root report `tuning-v13/word-review/root-review-r1.json`:63verification
+checks PASS/zero failures,99-page coverage complete; status
+`TRIAL_COMPLETE_CANDIDATE_REJECTED_ALIGNMENT_REGRESSIONS`, SHA256
+`00de4821d27a8877b3282dca05a0cacae77e5516a995661fd930ab2ffb207153`.
+Candidate criteriaแยก functional/pagination PASSจาก alignment-regression FAIL.
+Supporting evidence under `tuning-v13/`: `word-review/functional/functional-review-r1.json`,
+`word-review/functional/text-state-review.json`, `word-review/grouping/{grouping-review,table-start-source-correspondence}.json`,
+`word-review/geometry/{geometry-review,actual-core-role-comparison}.json`,
+`word-review/render-diff.json`, `qa/candidate/manifest.json`,
+`qa/reviews/{root-visual-review,root-core-native-detail}.json`และhelper visual
+reports061–075/076–090. Root report binds supporting report and frozen-input hashes.
+
+Retain verifier history: original functional/glyph reports failed a short-probe
+assumption that relative text operations were absent; independent text-state
+review proves operand identity and freshfunctional R1supersedes that method
+limitation. Initial root aggregation compared locator+hash dictionariesกับ
+hash-only dictionaries; retained `word-review/root-review.json` records those
+two schema-assumption failures, R1 compares explicit SHA256maps and passes.
+ไม่มีcandidate repair. Pre-export/pending manifestsคงสถานะประวัติ; finalroot
+reportเป็นcoverage/decision aggregation, ไม่เขียนทับ checkpoint เดิม.
+
+Project Control closure checks for this prose-only update: `check:data`, local
+anchors and `git diff --check`; no generated projection or map promotion.
+Stop after the authorized one candidate/export. Next recommended workคือ
+bounded discoveryเพื่อแยกlabel/feature-text/image origin policiesโดยใช้actual
+Core renderingก่อนสร้างcandidateถัดไป; ยังไม่เริ่มรอบใหม่หรือไปข้อ3–4.
+PDF reference, resolved structure/data/assetsและระบบจริงคงเดิม.
