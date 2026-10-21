@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is U4 in isolation only. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is U5 with a licensed second font family and small isolated paired documents. Return the comparison before another step. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1–U4 isolated mapping/native writer checked; both U3 metadata gaps closed. Public experimental generateDocxTo available with explicit refusal limits; Word/full-profile acceptance pending. U5–U6 unstarted; no Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
+สถานะ: **U1–U4 isolated writer checked; U5 small paired comparison reviewed with gaps, not accepted. Sarabun and licensed Bai Jamjuree four faces each verified in DOCX and actual Word PDF; 3 shared-source cases and all22 output pages reviewed. Table extent, band reservation, image placement, Word PDF text extraction and boundary-group coverage need resolution before acceptance. U6 unstarted; no new SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3102,12 +3102,12 @@ fields/writer/index, `tests/{sections-fields,writer}.test.ts`; consumes U1–U3.
 evidence/qa and only repairs in U1–U4 owner modules. Consumes unified writer;
 produces coverage results, not a generic support declaration from one sample.
 
-- [ ] Freeze three independent source cases: typography with Thai/Latin/mixed
+- [x] Freeze three independent source cases: typography with Thai/Latin/mixed
   text/two resource-distinct supported font families/four emphasis states;
   tables with short groups/oversized content/images/header continuation;
   sections with geometry/band modes/numbering/scoped navigation. Reuse structure
   and resources for the existing PDF path and unified DOCX. No SRS/REQ titles.
-- [ ] When separately authorized, generate new comparison artifacts without
+- [x] When separately authorized, generate new comparison artifacts without
   altering the PDF implementation/reference. Owner Word export remains the
   established review route; no automatic Word conversion or retries. Record
   actual Word/font environment and refresh fields before navigation acceptance.
@@ -3690,3 +3690,123 @@ record changed, so no projection regeneration is needed. No Word/PDF rendering/e
 SRS trial, real API/default-format/storage/runtime/package change or integration
 occurred. Absent `Output-Format` remains the future Service PDF-default requirement.
 **Stop after U4; U5 has not started.** Owner review is the return point.
+
+
+## U5 small paired comparison checkpoint
+
+**2026-10-21 — REVIEWED_WITH_GAPS_NOT_ACCEPTED.** This later owner-authorized
+checkpoint supersedes the U4 stop point only for the bounded U5 activity below.
+U4 remains package-only historical evidence. Return these findings before any
+further repair/experiment or U6. No generic DOCX support declaration follows.
+
+### Scope, resources and repeatability
+
+Single-room execution IDs remain N/A. Governing request: prepare a licensed
+second family, run small independent documents from the same source/resources,
+and summarize before proceeding. Roles: isolated implementation, Evidence
+Reviewer and Documentation Synthesizer; Work Size medium, Risk routine. Allowed:
+existing external experiment resources/fixtures/QA/evidence and this canonical
+plan. No `src/` writer, package/lockfile, product, source PDF reference, SRS,
+API/default-format, DB, system map or DOCUMENT_MAP change occurred. No new Work,
+Phase, Checklist or registered Evidence record was created.
+
+Root remains `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/`;
+all following experimental paths are under `unified-docx-writer/`.
+
+Second family is **Bai Jamjuree**, static Regular/Bold/Italic/BoldItalic,
+400/700 normal/italic, from google/fonts commit
+`c936464ebf3a837c3f9e4164f81a707bf9231dcb`.
+[Upstream license](https://github.com/google/fonts/blob/c936464ebf3a837c3f9e4164f81a707bf9231dcb/ofl/baijamjuree/OFL.txt)
+is OFL-1.1 and permits embedding subject to its terms. Unmodified font bytes,
+OFL copyright/license and METADATA are preserved in `resources/fonts/BaiJamjuree/`;
+URLs/hashes are in `evidence/u5-font-provenance.json`. No global fonts were
+installed. All8 concrete faces across Sarabun/Bai Jamjuree pass the local font
+parser, embedding flags and the actual Thai/Latin test sample glyph coverage.
+
+Shared source JSON is `u5/sources/{01-typography,02-tables-groups,
+03-sections-navigation}.json`; resource identities are `u5/resources.json`.
+DOCX uses the existing public `generateDocxTo`; PDF uses the existing public
+Core0.4.7 engine in the installed `flowdoc-service:0.4.9` image
+`sha256:9d76527509c0bed79350dc823e34d7e5fa1ab7ea4176e95277bb57af5a06b723`,
+network disabled and no runtime installation. Only resource adapters differ;
+source hashes and concrete font/image/license identities are shared.
+
+The owner manually exported all3 DOCX files in Word. Original exported PDFs
+remain alongside `u5/docx/`; hash-identical review copies are in `u5/word-pdf/`.
+Core comparison PDFs are separate in `u5/core-pdf/`. PDF producer metadata confirms
+Microsoft Word for Microsoft365. Read-only local Office registry reports
+O365HomePremRetail, installed16.0.20430.20182 x64; that is an installed-build
+observation, not independent attestation of the exact running build. Document and
+section TOCs contain refreshed labels and correct actual PDF destinations.
+
+`u5/evidence/paired-run-lock.json` freezes31 source/resource/artifact identities.
+Preparation and generators refuse a locked run; inventory/measurement check the
+lock before pairing. This binds the observed outputs, not a cryptographic Word
+export attestation. No source/output regeneration occurred after the Word exports.
+
+### Actual comparison and limitations
+
+All11 Core pages and11 Word pages were rendered and visually reviewed. Page
+counts match: typography2/2, tables3/3, sections6/6. Counts alone are not acceptance.
+
+| Area | Verified observation | Remaining difference or coverage limit |
+| --- | --- | --- |
+| Fonts/emphasis | Two families, four emphasis states visibly preserved;16 Word typography font subsets match all nontrivial glyph outlines of the8 frozen faces. Times New Roman only supplies whitespace. | This proves the observed subset faces; it is not universal shaping/font coverage. |
+| Source text | Every source body text block survives in DOCX XML ignoring whitespace; no visible clipping/loss found on reviewed pages. | Both PDF extractors read source `น้ำ` as `น้า` in the Word export, although enlarged page rendering shows the marks. Word PDF Unicode/search/copy fidelity remains an open issue; DOCX XML preservation does not waive it. Thai extraction order and repeated headers also cause raw whole-block search flags. |
+| Body flow | Authored breaks and blank line retained; first regular baseline is4.352pt lower in Word for Sarabun and4.651pt for Bai Jamjuree. | Wrapping differs at14pt. Measured11pt line1-to-line2 pitch is19.84pt Core/19.92pt Word. PDF-reported Word sizes include11.04/14.04pt versus authored/Core11/14pt. No font-name correction factors applied. |
+| Tables | All33 logical rows including header present; Code/Description genuinely repeats on all3 pages; Long01–48, END LONG, final row and ending icon survive. | R01 baseline121.565pt Core/126.62pt Word. R01→R02 extent27.84/28.32pt; the0.48pt difference accumulates. First break followsR25 Core/R24 Word. Long-row page3 startsLong30 Core/Long29 Word. Final-row baseline510.685/536.35pt. |
+| Required grouping | Heading/description/header and authored long-text tail/icon stay together in these outputs. | Short prefix/member rows12/13 are away from a boundary in both outputs; boundary-sensitive row-group keeping is **UNVERIFIED**. No all-group support claim. |
+| Images | All8 actual PDF image occurrences recover identical29×34 RGBA pixels to the original PNG;24pt visible height retained. | Typography page1 visible x is37.764706pt Core/36pt Word despite the source frame; internal centering differs. Actual table-ending image top is464.64/486.70pt. Word image/frame geometry needs a general adapter investigation. |
+| Sections/bands | Cover,2 portrait pages,2 landscape pages and intentional blank page; first/continuation visibility correct. | Maximum native section reservation remains when that page suppresses its header. Portrait continuation body baseline51.623736/75.72pt, delta24.096264; landscape first body50.045/76.46pt, delta26.415. This is the U4 disclosed reservation policy now observed, not a PDF defect or accepted fidelity waiver. |
+| Numbering/navigation | Excluded cover; labels1,2,7,8; counted hidden blank; total5. Document TOC1/7 and local TOC1; reference reaches physicalpage4; external URI correct. | Native Word TOC adds dotted leaders and different spacing. Footer baselines differ about2.83pt. No promise beyond these refreshed outputs. |
+
+Mapping causes are different mechanisms, not SRS-specific cases: Core uses
+measured glyph extents for baseline/line geometry; DOCX delegates its minimum line
+and paragraph metrics to Word. Actual native table row extent differs; the contribution from borders versus
+other Word paragraph metrics has not been isolated. The two renderers account
+for band capacity differently. Original pixels survive but native inline image placement differs.
+The exact measured results are the evidence; these explanations do not authorize
+PDF changes, arbitrary padding/row-height offsets or per-font compensation.
+
+Preparation also exposed a profile-contract gap: body `textAlign` is accepted by
+the isolated DOCX guard but rejected by Core outside cells/bands; row-group source
+provenance must carry group identity on every descendant for Core. Current shared
+fixtures were corrected consistently for both paths. The guard was not changed;
+Core-validator equivalence remains unproven. Longer natural heading/description
+and cover samples also hit the conservative no-wrap/group envelope. Short supported
+fixtures retain the required relations; they do not erase the refusal limitation.
+Preparatory error logs/snapshots are diagnostic history, not accepted paired runs.
+
+### Evidence, checks and return
+
+Durable experimental evidence: `u5/evidence/comparison-results.json`,
+`measurements.json`, `pdf-inventory-summary.json`, per-case page inventories,
+`word-font-outline-check.json`, `pdf-image-check.json`, `font-check.json`,
+`independent-package-check.json`, `docx-probes.json`, `core-probes.json`,
+`word-inputs.json`, `review-resolution.json` and `paired-run-lock.json`.
+All full-page PNGs/contact sheets are under `u5/rendered/{core,word}/`.
+Preparation/generation/independent-review helpers are `qa/*u5*`.
+
+Checks:106/106 existing tests PASS; type-check PASS; all3 independent package
+checks PASS with8 original embedded faces each, image identity, relationships,
+bookmarks/fields and positive expected-band text/field assertions. Prior U4's52
+hashed files remain unchanged. One fresh read-only review identified stale-run
+mixing, missing positive band assertions and missing boundary-group coverage;
+the first two are closed for the frozen checkpoint and the third remains open.
+Regeneration refusal was actually exercised without changing the frozen outputs.
+Project Control check:data, local fragment links and diff/whitespace checks pass;
+only this existing canonical plan changed, so no projection regeneration is needed.
+
+`u5/evidence/checkpoint.json` hashes109 experimental files;
+SHA256 `c7e40969530ed32d36d2607f31f7f9b9292dbe782855303303da0d4630c848b6`.
+It records a **reviewed checkpoint with gaps**, not U5 acceptance. U5's acceptance
+checkboxes remain open where coverage/resource/search fidelity or owner decisions
+are unresolved. U6 and SRS regression remain unstarted.
+
+Return proposal: first reconcile the shared supported-profile guard and exercise
+short-group behavior at a boundary, then decide general DOCX mapping repairs for
+row/border extent, band reservation and image frame placement. Keep Word PDF
+Unicode extraction separate from DOCX source preservation. Do not resume
+SRS tuning, modify the reference PDF, integrate the writer or advance U6 as part
+of this checkpoint. Absent `Output-Format` remains the future Service PDF-default
+requirement; no real API behavior changed.
