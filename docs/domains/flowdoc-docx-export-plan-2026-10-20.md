@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V3 Word verification confirms table-position improvement; Thai wrap unchanged; DOCX tuning remains incomplete; PDF reference frozen; earlier automated hang diagnosis remains paused; product integration not started**.
+สถานะ: **V4 native Word control matches Core Thai line breaks; boundary-hint candidate fails visible glyph checks; cover-border contribution to row height confirmed narrowly; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1107,3 +1107,151 @@ Locators ใต้ `tuning-v3/word-review/`: `review.json`, `renders/`,
 `comparisons/compare-*.jpg`, `geometry-agent/geometry-review.json` และ
 `content-agent/comparison.json`. สถานะนี้แก้ pending เฉพาะการตรวจ V3;
 ไม่ได้ promote generic DOCX readiness หรือปิดงานจูนทั้งหมด.
+
+## V4 Thai wrapping and table-height experiments
+
+เจ้าของอนุญาตวันที่ 2026-10-21 ให้ตรวจ native Word paragraph ก่อน แล้วแยก
+ทดลอง Thai word boundaries และความสูงแถวด้วย SRS เดิมในพื้นที่ทดลอง.
+เป็น bounded inline discovery/prototype ต่อจาก checkpoint เดิม; owner Project
+Control สำหรับบันทึกนี้, Core สำหรับ future writer semantics; role Evidence
+Reviewer / Planning Partner / Documentation Synthesizer; execution IDs N/A.
+Allowed: `tuning-v4/`, fresh experimental DOCX และแผนนี้. ไม่แก้ reference PDF,
+frozen resolved input, template/data, Core/Service/API/plugin/DB/runtime.
+Proof budget: native paragraph control หนึ่งชุดพร้อม font-confound correction,
+full-SRS wrap-only และ height-only อย่างละหนึ่งไฟล์, package checks และ
+targeted Word PDF review พร้อม preservation checks. Document budget: แผนเดิม
+หนึ่งไฟล์; JSON/scripts/images ใต้ experiment root เป็น supporting diagnostics.
+ไม่รวมสอง changes เป็น candidate ใหม่ และไม่เริ่มระบบจริง.
+
+### Native Word paragraph control
+
+พิมพ์ first intro paragraph จาก source ลง blank Word โดยตรง: 391 characters,
+SHA256 `78a39a63bc3ba663ea8e0030d3929f73658b5e0ec7dae19c7ebb75bd7da11a89`,
+ไม่มี forced break หรือ U+200B; A4, margins 567 twips, Sarabun 11 pt,
+exact line 397 twips, after 0 และ snap-to-grid off. Word แจ้งว่า Sarabun ไม่ได้
+ติดตั้งในเครื่อง และแทน Thai run เป็น Angsana New ในการพิมพ์ครั้งแรก;
+ไม่ใช้ผลนั้นเปรียบเทียบกับ SRS ที่ฝังฟอนต์.
+
+แก้เฉพาะ control โดยนำ embedded Sarabun variants/font keys เดิมจาก V3
+มาใส่ใน font carrier แล้วเปิดใหม่และเลือก Sarabun ให้ Thai run ผ่าน Word.
+ขั้น font-carrier ไม่แตะ native document/styles/settings/text; เป็น control
+ที่เขียนด้วย Word และควบคุมฟอนต์ ไม่ใช่ pristine untouched Word package.
+ไม่ได้ติดตั้งฟอนต์หรือเปลี่ยน OS configuration. หลัง Word บันทึกตรวจ source
+text ยังตรงทั้ง 391 characters และ Sarabun outlines/metrics/shaping tables
+12 SFNT tables ตรง V3 byte-for-byte; ต่างเฉพาะ head/name หลัง Word save.
+PDF font name ภายในเป็น Sarabun-Regular ทั้งคู่; export ระบุ 11.04 pt เท่ากัน.
+
+| First intro source break ends, exclusive UTF-16 offsets | Result |
+| --- | --- |
+| Core reference | 103, 210, 312, 391: 4 lines |
+| V3 generated DOCX in Word | 50, 145, 210, 300, 391: 5 lines |
+| Native Word control with same Sarabun | 103, 210, 312, 391: 4 lines |
+
+Break offsets ผูก PDF extraction กลับไปยัง exact source ด้วย normalization
+เพื่อการวัด ไม่ใช่ raw PDF text/source equality. Control เป็น standalone paragraph;
+ข้อความเดียวกันใน V3 เป็นช่วงแรกของ paragraph ยาวที่มี BR คั่นส่วนถัดไป.
+Paragraph structure และ font-table metadata จึงเป็นปัจจัยต่างที่ต้องเก็บร่วมกับ
+run/settings differences ไม่สรุปว่ามีเพียง flags ที่เป็นไปได้.
+
+ตรวจ rendered paragraph แล้วไม่พบ missing-glyph boxes/visible clipping.
+ผลนี้ยืนยันว่า Word session นี้ตัดย่อหน้าเดิมใกล้ Core ได้โดยไม่ต้องแทรก
+จุดตัดคำในข้อความ; ยังไม่ชี้ว่า property ใดเป็นสาเหตุ. Native run มี `w:cs`
+ขณะที่ V3 document/styles ไม่มี explicit `w:cs`; compatibility settings,
+grid และ defaults ก็ยังต่างกัน. `w:cs` เลือก complex-script formatting;
+`useFELayout` เกี่ยวกับ complex-script layout ตาม
+[Microsoft reference](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.compatibility.usefareastlayout?view=openxml-3.0.1).
+ยังไม่เพิ่ม flags เหล่านี้ใน SRS หรืออ้างว่าเป็น root cause โดยไม่มี isolated test.
+
+Native control final DOCX ใต้ `tuning-v4/native-control/` มี SHA256
+`d47d80f8357254a5c8adb7db26f20c9406c38f53b874ee63388871f101dec7c4`;
+one-page Word PDF SHA256
+`7f7d83bd2954c71b4a40a61eba38b8782587d06276427dcc6f0656d94543fccd`.
+Locators: `native-control/native-word-comparison.json`, font-carrier receipt,
+`native-paragraph-detail.png` และ `after-word-identities.json` ใต้ `tuning-v4/`.
+
+### Wrap-only candidate
+
+ใช้ exact Core native binary จาก commit
+`8f8a739aea5597b6d8c9932c790f9bd716e8ebc7`, ICU4X 2.2.0,
+`LineSegmenter::new_auto(Default::default()).segment_str` ผ่าน Ubuntu WSL.
+Binary SHA256 `55347fc74ffe268bc37eecd71ae09f5dd9e4993e53a52615b00120eb98e59bb9`;
+ไม่ใช้ word segmenter ตัวอื่นแทน และไม่ build/install/start Docker.
+Manifest ผูกตำแหน่ง OOXML กับ exact text/hash และ source candidates;
+repeated source strings ที่คลุมเครือ 402 จุดถูกระบุ ไม่อ้าง unique source mapping.
+
+`outputs/srs-wrap-v4.docx`, SHA256
+`1a9e08de7ee4b806e675c0fbc3baca70bf9772973eecd38ea5e831a24b8cf0c9`:
+เพิ่มเฉพาะ U+200B 6,034 จุดใน 1,206 text nodes ตาม internal Thai boundaries
+จาก Core. Exclude fields/TOC/textboxes/deleted content. ไม่เพิ่ม forced breaks,
+ไม่เปลี่ยน font/style/table/band/margin. การลบเฉพาะ inserted bytes ที่บันทึก
+ใน receipt คืน raw XML เดิมได้ตรง byte-for-byte; actual text ใน DOCX มี
+invisible characters เพิ่ม จึงไม่เรียกว่า raw text unchanged และยังต้องตรวจ
+search/copy/caret effects ก่อนพิจารณาใช้วิธีนี้.
+
+เจ้าของแปลงเป็น Word PDF แล้ว: 100 pages / 1,212,164 bytes, SHA256
+`4574f434281cbeb8cf0c993ddb90c4abf4b2fafb4eca2dd5b0e9633ebf6cf4fb`.
+**FAIL visible Thai glyphs:** first intro paragraph และ heading มี missing-glyph
+boxes จำนวนมากใน rendered PDF. ย่อหน้าแรกยังเป็น 5 lines; ไม่ถือว่า wrap
+ผ่านจากจำนวนหน้า/ตัวอักษรใน package. นี่เป็นผลเสียของ candidate/export รอบนี้;
+ยังไม่พิสูจน์ว่า Word ไม่รองรับ U+200B โดยทั่วไปหรือแยก font/shaping mechanism ได้.
+เก็บ failed artifact ตามเดิม ไม่ใช้เป็น production candidate และไม่แก้ PDF.
+ตรวจภาพ pages 10, 11 และ 27 พบอาการเดียวกัน. Body images คง 371 placements
+ครบ decoded data และลำดับ; painted total 470 = 371 body + 99 header banners.
+TOC links resolve และ printed page ตรง destinations 198/198; cover ซ่อนเลข
+และ pages 2–100 แสดง physical page ถูกต้อง. Text/glyph preservation **FAIL**;
+ไม่เพิ่ม strict source probes เพื่อทำให้ผลที่เห็นล้มเหลวดูเป็น PASS.
+Locators: `wrap/{manifest,core-boundaries,generation,green-candidate}.json`,
+`audit/independent-package-audit.json`, `word-review/wrap/comparison.json`
+และ `word-review/wrap/intro-detail.png`.
+
+### Height-only candidate
+
+`outputs/srs-height-v4.docx`, SHA256
+`bafe549ac45b2ac57df8eccd47dbd0cb65237c964456b1c53c3f37b9489bf33a`:
+เปลี่ยนเฉพาะ border value `single` เป็น `nil` 42 attributes ในตาราง metadata
+บนปก 3 rows / 9 cells: 6 table edges และ 36 cell edges. Source ใช้ vertical
+padding 0, line 17 pt และ white borders. คง text/fonts/widths/padding/spacing
+เดิมทั้งหมด; ไม่ใช้ exact row height และไม่ลบ authored white borders ทั่ว SRS.
+เจ้าของแปลงเป็น `outputs/srs-height-v4.pdf`, 99 pages / 1,002,897 bytes, SHA256
+`c8111bf66deccf28bfa014f975ae5da8abce9e2220e9a2414a9dcedcfb196563`.
+
+| Cover measurement, pt | Core | V3 | Height V4 |
+| --- | ---: | ---: | ---: |
+| Version left | 191.532205 | 191.81 | 191.57 |
+| Value 3.0 left | 308.125984 | 308.69 | 308.21 |
+| Version text top | 444.650000 | 446.391280 | 445.911280 |
+| Author text top | 461.650000 | 463.911280 | 462.831280 |
+| Updated text top | 478.595000 | 481.431280 | 479.871280 |
+| Successive text-top advances | 17.000 / 16.945 | 17.52 / 17.52 | 16.92 / 17.04 |
+
+**PASS narrow cover-border contribution hypothesis:** เปลี่ยน border อย่างเดียว
+ทำให้ row text advances ลด 0.48–0.60 pt และตำแหน่งชิด Core ขึ้น. Text-top
+advances รวม glyph/export quantization จึงไม่ประกาศ exact row height 17.04
+ทุกแถว. Later cover content ขยับขึ้นสูงสุด 2.04 pt; ยังมี residual vertical offset
+และ glyph metrics difference. ไม่หัก line height 0.5 pt ทั้งเอกสาร และไม่ขยาย
+ผลนี้เป็นคำสั่งลบ authored white borders ทั่ว SRS.
+
+Preservation เทียบ V3: raw pypdf text ตรง 99/99 pages, media boxes ตรงทุกหน้า,
+469 painted images คง decoded data/soft mask/page/order, TOC destinations
+และ rectangles ตรง 198/198, cover hidden และ page fields 2–99 ถูกต้อง.
+Body geometry 12 pages ยังมี Latin horizontal deltas สูงสุด 0.09624 pt;
+body Y และ font sizes ตรงเดิม จึงไม่อ้าง all-body geometry identical.
+Visual review เฉพาะ cover, intro crop page 11 และ feature tables page 27:
+ไม่พบ glyph boxes/obvious clipping ในจุดที่ตรวจ; intro ยัง 5 lines เท่า V3.
+ไม่ใช่ all-99-page visual หรือ strict source-glyph acceptance.
+Locator: `word-review/height/height-review.json` และภาพในโฟลเดอร์เดียวกัน.
+
+Static regression checks FAIL บน V3 แล้ว PASS บน candidate ที่ถูกชนิด;
+independent audit ยืนยันแต่ละไฟล์เปลี่ยนเฉพาะ `word/document.xml`, อีก 124 ZIP
+payloads และ compressed records ตรง V3. คง 200 tables / 933 rows / 1,932 cells /
+371 body drawings / 198 hyperlinks. Frozen resolved/reference/V3 PDF และ V3
+DOCX hashes ยังคงเดิมหลัง owner export. Package PASS ไม่ทดแทน Word appearance.
+
+ทิศทางถัดไปจาก native control คือแยก native run/compatibility/font metadata
+และ paragraph structure ทีละปัจจัยก่อนเพิ่ม invisible characters ทั่วเอกสาร. ยังไม่สรุปว่าต้อง
+เปลี่ยน PDF. Wrong repeated meeting header และ pagination polish เป็น known
+findings เดิมที่อยู่นอกสอง candidate นี้; ไม่ promote DOCX readiness.
+Checkpoint นี้ปิดเฉพาะสามการทดลองที่อนุญาต: native Word control ผ่าน,
+wrap-hint candidate ล้มเหลวด้าน visible glyphs และ cover-border height
+hypothesis มีผลวัดสนับสนุน. ยังไม่เลือกแนวทางแก้ Thai wrap เข้า writer จริง;
+ต้องแยกปัจจัย native/generated ที่ต่างกันในพื้นที่ทดลองรอบถัดไป.
