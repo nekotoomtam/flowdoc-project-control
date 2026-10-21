@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V6 bounded mixed-script and emphasis comparison passes with explicit formatting preservation; whole-document mapping and tuning incomplete; PDF reference frozen; product integration not started**.
+สถานะ: **V7 full SRS experiment reviewed on all pages; intro wrapping matches reference; table and pagination findings remain; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1545,3 +1545,149 @@ package/research records retain their original pre-export status. Reproduction
 helpers are `scripts/build_mixed_emphasis.py`, `scripts/observe_word.py` and
 `word-review/measure_emphasis.py`. These are disposable experiment helpers,
 not installed writer or product tests.
+
+## V7 full SRS formatting-preserving CS comparison
+
+เจ้าของอนุญาตวันที่ 2026-10-21 ให้ใช้ complex script พร้อมรักษารูปแบบเดิม
+กับ SRS เต็มในพื้นที่ทดลอง แล้วตรวจการตัดบรรทัด ตาราง และการแบ่งหน้าเทียบ
+PDF เดิมก่อน. เป็น bounded inline experimental scope ใหม่; ไม่เปลี่ยน
+acceptance ของ V5/V6 หรือเปิด registered execution. Roles: Planning Partner /
+Evidence Reviewer / Documentation Synthesizer; Work/Phase/Checklist IDs N/A.
+Owner: Project Control สำหรับบันทึกนี้; disposable writer experiment สำหรับ
+Core owner. Product repositories ไม่ใช่ mutation target ของรอบนี้.
+
+Allowed: new `tuning-v7/`, fresh `outputs/srs-cs-preserved-v7.docx` และ owner
+Word PDF ชื่อเดียวกัน, section นี้และ current status. Frozen V3/V5/V6 artifacts,
+PDF reference, source template/data, dependency/runtime/OS settings และ maps
+คงเดิม. ใช้ isolated experiment root เดิมและ clean separable PC checkout.
+Work Size medium; Risk Tier routine. Model decision: retain current host model
+สำหรับ bounded same-chat continuation; ไม่ dispatch registered product WORK.
+
+Acceptance: preflight ทุก active story part; apply CS เฉพาะ text runs ที่มีไทย
+โดยรักษา effective font/emphasis/size และ explicit off, ไม่เปลี่ยน text/runs/
+tables/images/fields/section/page-break policies. Unsupported font slots หรือ
+style semantics ต้องเป็น finding ไม่ใช่ silent fallback. ตรวจ package invariants
+ก่อน Word export; หลัง export เทียบ intro line breaks, semantic content order,
+tables/table splits, images/TOC/page fields และ whole-document pagination กับ
+98-page Core PDF โดยใช้ V3 Word PDF เป็น regression context. Review output
+ทุกหน้า พร้อม source-aligned comparison; ความต่างที่ยอมรับและ gaps ต้องแยก
+จาก missing content หรือ source/structure defects.
+
+Proof budget: full-SRS candidate หนึ่งไฟล์และ owner Word export หนึ่งรอบ;
+focused package checks และ one all-page comparison/review cycle. Render QA
+candidate ทุกหน้าและ source pages ที่ใช้เทียบ; parallel read-only reviewers
+อาจแบ่งช่วงหน้าได้ แต่ไม่สร้าง corrective candidate เพิ่มในรอบนี้. ไม่ตั้ง
+สมมติฐานว่า page numbers ต้องเท่ากัน และไม่ใช้ lossy Thai normalization แทน
+strict text/glyph proof. Document budget: update แผนนี้; scripts/JSON/PNG อยู่
+ใน experiment root. Generation และ verification แยกขั้น; checks ไม่แก้ candidate.
+
+Current status: **COMPLETED WITH LAYOUT FINDINGS**. Full candidate และ Word
+comparison เสร็จแล้วตามผลด้านล่าง; ไม่รับรอง whole-document layout fidelity.
+General writer readiness และ other-font coverage ยัง deferred. ไม่มี corrective
+candidate เพิ่มใน scope นี้ และไม่มีการเปลี่ยน PDF หรือระบบจริง.
+
+### V7 full candidate and preservation checks
+
+Preflight ตรวจ 45 active story parts: main document, 21 headers, 21 footers,
+footnotes และ endnotes. พบ Thai-containing text runs 1,420 จุดทั้งหมดใน
+`word/document.xml`: 1,405 จุดมี direct formatting; อีก 15 จุดเป็น cached
+TOC hyperlink labels ที่ไม่มี `rPr`. ตรวจ chain จริงของ TOC1/2/3 → Normal
+ที่ไม่มี run properties → docDefaults แล้วได้ normal, non-italic, 11 pt และ
+Sarabun ทุก font slot ตรงกัน. ไม่สร้าง general style resolver หรือข้ามจุดนี้
+โดยไม่แจ้ง. ไม่มี Thai target ใน story อื่น ไม่มี unsupported target, font-slot
+mismatch, target character style, revision หรือ existing CS/RTL selector.
+
+สร้าง `outputs/srs-cs-preserved-v7.docx`, 1,083,034 bytes, SHA256
+`e5ba0793924984d52c9ded04c7b82e57b4a6f21d75ec17384e182ffa92045a73`.
+เปลี่ยนเฉพาะ CS run properties ของทั้ง 1,420 จุด: เลือก CS พร้อม explicit
+`bCs/iCs` true/false และ size ที่รักษาค่าเดิม; TOC 15 จุดเพิ่ม `rPr` เฉพาะ
+CS values จาก known chain. ไม่เปลี่ยน ordinary inherited formatting, text,
+run boundaries, section geometry หรือ page-break policies. XML เพิ่ม 72,615
+bytes; inverse เฉพาะ allowed changes คืน entire raw source XML ได้ตรงทุก byte.
+
+Independent saved-package check ผ่าน 33,835 assertions: อีก 124 ZIP payloads
+และ compressed local records ตรง frozen V3 ทุก byte. Exact ordered text,
+fields และโครงสร้างคงเดิม: 2,761 paragraphs / 4,609 runs / 200 tables /
+933 rows / 1,932 cells / 371 drawings / 198 hyperlinks / 922 breaks /
+7 sections / 396 bookmarks. Main complex fields 199 และ footer simple fields
+36 คงเดิม. Styles/settings/fonts/media ไม่เปลี่ยน. นี่คือ DOCX package proof;
+ไม่ใช้แทน rendered PDF content หรือ layout acceptance.
+
+เจ้าของแปลงผ่าน Microsoft Word for Microsoft 365 เป็น
+`outputs/srs-cs-preserved-v7.pdf`, 99 pages / 1,015,353 bytes, SHA256
+`57af67fa9dc998fd9a7ad0719bfe32d9f701ab16c181dcdd87120d366c269d9f`.
+Frozen Core PDF มี 98 หน้า; frozen Word V3 มี 99 หน้าเช่นกัน. Refresh ของ
+TOC อาจสร้าง cached run properties ใหม่ใน Word จึงตรวจผล PDF จริง ไม่อ้าง
+ว่า selector บน cache ต้องคงอยู่หลัง refresh. Original DOCX hash ไม่เปลี่ยน.
+
+### V7 all-page reference comparison
+
+Render ที่ 120 dpi และตรวจ full page ทุกหน้า: candidate 1–99 และ Core 1–98.
+แบ่งช่วง reviewer เป็น 1–25 / 26–50 / 51–75 / 76–99 พร้อม source-aligned
+comparison; manually align หน้าไม่มี unique anchors และ long-row continuations.
+ไม่มี source page หรือ candidate page ที่หลุดจาก visual coverage. ไม่พบ visible
+glyph boxes, clipping, overlap, blank pages หรือ incomplete ending ในรอบนี้;
+ไม่อ้างว่าตรวจ raw Unicode หรือทุก glyph program ตรงกันแล้ว.
+
+| Area | Observed result | Acceptance boundary |
+| --- | --- | --- |
+| Intro Thai/mixed wrapping | ทั้งสาม chunks มี break ends ตรง Core ตาม V6: 103/210/312/391; 96/202/304/312; 114/219/315/330 | PASS จุดที่วัด; ไม่ใช่ universal line-break parity |
+| Other wrapping | ตัวอย่างนิยาม SRS หน้า 13 และ requirements หลายจุดยังตัดต่างจาก Core | Readable; บันทึก exact examples ไม่เปลี่ยน PDF ให้ตาม Word |
+| DOCX structure/content | Exact source package invariants ผ่าน | ไม่เท่ากับ strict rendered PDF text preservation |
+| Body images | 371 placements มี decoded identity/soft mask/order ตรง Word V3 | PASS identity/order; 78 placements ขยับตาม reflow บน pages 53–61 |
+| TOC | 198/198 resolve, printed page ตรง destination และ source label corroborates ที่ link/target | PASS functional; 16 destination/geometry differences ตาม reflow, ไม่อ้าง identical geometry |
+| Header/page fields | 98 banners; cover ไม่แสดงเลข แล้ว pages 2–99 แสดง Page p of 99 ถูกต้อง | PASS policy; ไม่ต้องบังคับ page count เท่ากับ Core |
+| Whole pagination | Word 99 เทียบ Core 98; offset เปลี่ยนตามช่วง ไม่ใช่ +1 คงที่ | เป็น recorded difference; fidelity ยังมี findings ด้านการจับกลุ่มตาราง |
+
+Semantic alignment ใช้ 463 eligible unique paragraph anchors; candidate map
+ได้ 429 จุด. จาก source 933 rows ยังมี 532 rows ที่ไม่มี unique text anchor
+เช่น short/repeated/image-only cells; ใช้ manual source comparison ช่วย แต่ไม่
+ประกาศ automated cell-by-cell equality. Raw pypdf page text ตรง V3 เพียง
+48/99 หน้า. Lossy Thai normalization ใช้จัดตำแหน่งเท่านั้น ไม่ใช่ raw text/glyph
+proof หรือหลักฐานว่าจุดที่ map ไม่ได้เป็น missing content.
+
+### V7 remaining table and pagination findings
+
+1. **Persistent wrong meeting header:** Word V3 และ V7 แสดงหัวประชุมครั้งที่ 1
+   บน pages 17–26 ขณะที่ Core แสดงครั้งที่ 1 เฉพาะ 17 แล้วใช้เลขของการประชุม
+   ที่กำลังต่อหน้า. ตัวอย่าง V7 page 18 เป็นเนื้อหาครั้งที่ 2 แต่หัวซ้ำเป็น 1;
+   page 26 ต่อครั้งที่ 15 ก็ยังหัว 1. ไม่ถือเป็นปัญหาตัดคำที่ CS แก้แล้ว.
+2. **Persistent heading/table separation:** เช่น V7 pages 28, 33, 35–44,
+   74 และ 83 มีหัวข้อหรือคำอธิบายอยู่ท้ายหน้าแต่ตารางเริ่มหน้าถัดไป.
+   ตรวจ V3 supporting evidence แล้วพบปัญหาเดิมในตัวอย่างที่รายงาน;
+   ไม่ยกทั้งหมดเป็น regression จาก CS.
+3. **Persistent detached icons/text:** เช่น REQ0003/0026/0034 ที่ pages
+   46/49/50 และ REQ0270, REQ0293, REQ0331 ในช่วงท้าย. V3 visual comparison
+   ยืนยัน representative cases เดิม; บาง continuation เหลือเฉพาะ blue icon
+   หรือ `-Image` บนหน้าใหม่ ทำให้ความสัมพันธ์กับข้อความอ่านยากขึ้น.
+4. **New reflow instance:** REQ0074 text อยู่ท้าย V7 page 55 แต่ blue icon
+   อยู่ลำพังต้น 56. Core page 55 และ Word V3 page 56 เก็บ text+icon ร่วมกัน.
+   จึงเป็นจุดแบ่งใหม่จากรอบนี้ แม้ general row/image splitting policy มีปัญหา
+   เดิมอยู่แล้ว (เช่น V3 page 55 มี icon continuation ของ REQ0063).
+   ไม่อ้างว่ารอบนี้ปราศจาก layout regression ทุกจุด.
+5. **Other splits with unresolved regression status:** icons ของ REQ0113/
+   REQ0133 แยกบน V7 pages 61/64 ต่างจาก Core; ไม่ได้ตรวจ V3 counterpart
+   สองจุดนี้แยกอีก จึงรายงานเป็น confirmed Core difference และ unknown ว่า
+   เป็นจุดใหม่หรือเดิม ไม่เพิ่ม proof นอก budget เพื่อบังคับ classification.
+6. **Residual spacing/wrap/TOC appearance:** overview 7.5 ลงท้ายด้วยคำ
+   `รายงาน เป็นต้น` บน V7 page 15 แทน Core 14; scope 10.4.1 เลื่อนไป 17.
+   ตารางนิยาม/Element มี vertical drift และบางข้อความตัดบรรทัดต่าง.
+   TOC มี dotted leaders และเลขหน้าที่ดูต่าง: วัด page-4 digits พบ AngsanaNew
+   11.04 pt ในทั้ง V3/V7 เทียบ Core font label FlowDocSubset-0 ที่ 11 pt.
+   เป็น face difference ที่มีอยู่เดิม ไม่ใช่หลักฐานว่ารอบนี้ลดขนาดเลขหน้า.
+
+**Decision:** completed the authorized full-SRS comparison with findings;
+ไม่รับรอง layout fidelity หรือ product readiness. เก็บ CS พร้อม formatting
+preservation เป็นแนวทางของ prototype ต่อได้ แต่ต้องจูน meeting-header semantics,
+การจับหัวข้อกับตาราง และ row/text/icon page grouping ก่อนนำเข้าระบบจริง.
+ยังไม่จำเป็นต้องแก้ PDF จากผลนี้ และไม่เปลี่ยน PDF/source/runtime จริง.
+ไม่มี corrective candidate หรือ product repair ใน checkpoint นี้.
+
+Locators ใต้ `tuning-v7/`: `generation.json`, `package-check.json`,
+`preflight/{full-srs-mapping-preflight,target-plan,saved-package-check}.json`,
+`comparison/{design.json,compare_v7.py}`, `word-review/comparison.json`,
+`word-review/root-observations.json`, `word-review/root-review.json`,
+`qa/reviews/pages-{001-025,026-050,051-075,076-099}.json` และ full-page renders
+ใน `qa/{reference,candidate}/`. Root summary ตรวจ union ของ visual coverage
+และ immutable input/candidate hashes อีกครั้ง; observation records ที่เขียนก่อน
+Word export คงสถานะ pre-export เดิม ไม่ย้อนแก้ให้ดูเหมือนผ่าน Word มาก่อน.
