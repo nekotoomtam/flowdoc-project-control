@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **owner manual Word export of full SRS succeeded; all 99 pages reviewed with table-header and pagination findings; automated diagnosis remains paused; corrective candidates not Word-tested; product integration not started**.
+สถานะ: **DOCX-first alignment/wrap tuning active in the isolated SRS prototype; V3 package checks pass, Word render pending; PDF reference frozen; earlier automated hang diagnosis remains paused; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -990,3 +990,73 @@ Checkpoint: **PASS owner manual full-SRS Word export; near-PDF acceptance
 production readiness.** ไม่ลดเนื้อหา/รูป ไม่แก้ source template, Core, Service,
 API, DB หรือ installed runtime และไม่ทดสอบ corrective candidates เพิ่มในรอบนี้.
 การแก้ prototype หรือเริ่มระบบจริงต้องยึด scope ที่เจ้าของอนุญาตต่อไป.
+
+## DOCX-first alignment and wrap tuning
+
+เจ้าของยืนยันวันที่ 2026-10-21 ให้ใช้ PDF ปัจจุบันเป็น reference แล้วแก้ DOCX
+ก่อน โดยเน้นแนวชิดซ้าย/ขวา ตำแหน่งตาราง ระยะ และ wrap. พิจารณาจูน PDF
+ร่วมกันเฉพาะเมื่อมีหลักฐานว่าติดข้อจำกัดจริงของ DOCX/Word; รอบนี้ไม่แก้ PDF.
+ความหน่วงที่พบตอน Word แปลง PDF แยกเป็น observation ของขั้นตอนตรวจ:
+ยังไม่ตัดสินว่าเป็น product DOCX stability failure หรือบั๊กของ Core/Service.
+ผู้ใช้แจ้งว่า manual export ก็หน่วงเกือบค้าง จึงไม่อธิบายด้วย automation เพียงอย่างเดียว.
+หากต้องใช้ manual conversion ให้บอกเจ้าของตรง ๆ พร้อมไฟล์ที่พร้อมตรวจ.
+
+Scope: bounded inline prototype tuning; owner Project Control สำหรับ checkpoint,
+Core สำหรับ future writer semantics; role Planning Partner / Evidence Reviewer;
+Work/Phase/Checklist/execution IDs N/A. ใช้ experiment root เดิม ไม่เปิด registered
+execution หรือ product lane. Allowed: `tuning-v3/`, fresh experimental DOCX,
+เอกสารแผนนี้. Frozen inputs/PDFs/V2, product repositories/API/template/DB/runtime
+อยู่นอก mutation scope. Proof budget: one full-SRS V3 candidate, package preservation
+checks, independent package audit และ Word re-export เมื่อเจ้าของช่วยแปลง;
+ไม่เริ่มชุด header/footer/performance experiments เก่ากลับมา.
+
+Read-only spot comparison pages 2, 3, 10, 11 และ 27 อยู่ใน
+`user-pdf-review/alignment-wrap/`. ตัวอย่าง first intro paragraph หน้า 11:
+Core 4 lines, Word 5 lines ทั้งที่ขอบซ้าย 28.35 / 28.32 pt ใกล้กัน.
+First source text run มี 391 characters, ordinary spaces 9 จุด ไม่มี internal
+line break/ZWSP/joiner; Word line 1/2 ตรง space-delimited chunks.
+พบ `w:lang val=th-TH` จริง จึงแก้ข้อสงสัยก่อนหน้าว่า language ถูก ignore:
+ช่องที่ยังขาดคือ complex-script language (`w:bidi`). การเพิ่มช่องนี้ยังเป็น
+hypothesis ต่อ Thai wrap ไม่ใช่ผล Word ที่ยืนยันแล้ว.
+
+Table mapper เพิ่ม `tblInd` เท่ากับ source first-cell padding ทั้งที่ padding
+อยู่ใน `tcMar` แล้ว. ตัวอย่าง cover: Version x ของ Core 191.532 pt เทียบ
+Word 320.95 pt; offset 129.418 pt สอดคล้อง explicit indent 129.15 pt.
+Page 27 เมื่อเทียบ vertical-border centers แบบเดียวกัน offset +5.25 pt
+สอดคล้อง indent 5 pt. Center-to-center table width จริง 538.5 / 538.56002 pt;
+ไม่ใช้ความต่าง 0.42 pt จากการเทียบ horizontal stroke/rectangle คนละรูปแบบ
+เป็นเหตุเพิ่มความกว้างตาราง. ยังต้องวัด candidate ใน Word ก่อนปรับเศษระยะ.
+
+V3 `outputs/srs-tuned-v3.docx`, 1,078,002 bytes, SHA256
+`cf656c2b6fb6998b633dd02d6b79d571b69a5dcc65d7042769798bd70f622526`:
+
+1. Body table indents เป็น 0 ตาม flow origin ทั้ง 200 tables;
+   เปลี่ยนจริง 189 จุด อีก 11 จุดเดิมเป็น 0. คง widths/grids/padding/borders เดิม.
+2. เพิ่ม `w:bidi=th-TH` ใน existing Thai language elements 6,010 จุด;
+   API equivalent คือ `language:{value:'th-TH',bidirectional:'th-TH'}` ใน
+   `docx@9.13.0`. ไม่ใช่ RTL direction และไม่เพิ่ม CJK rules/forced line breaks.
+
+สร้างเป็น lossless ZIP derivative ของ frozen V2 เพื่อให้วัดเฉพาะ mapping changes;
+receipt ระบุ source adapter fixes สำหรับการนำไปใช้กับ writer ภายหลัง.
+ไม่เปลี่ยนข้อความ ลำดับ run/breaks รูป ฟอนต์ styles เดิม (นอก language metadata),
+TOC/bookmarks/fields, sections/margins, table rows/cells หรือ asset bytes.
+Static regression check FAIL บน V2 แล้ว PASS บน V3; canonical XML comparison
+อนุญาตเฉพาะสอง changes ข้างต้น. Body counts คง 200 tables / 933 rows /
+1,932 cells; nonchanged ZIP members คง byte-identical.
+
+Wrong meeting-header repetition ยังไม่แก้ใน V3 นี้. ตรวจเพิ่มพบ adjacent body
+tables 26 boundaries; Microsoft OOXML ระบุว่าตารางติดกันที่ใช้ style เดียวกัน
+และไม่มี paragraph คั่นถือเป็น table เดียว
+([Table reference](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.table?view=openxml-2.20.0)).
+ทางแก้ถัดไปคือ empty structural separator ระหว่าง logical tables โดยต้องตรวจ
+pagination ใหม่. Approval/legend `tblHeader val=off` คือ disabled;
+15 meeting tables เท่านั้นที่เปิด repeat first row ในกลุ่มนี้. ไม่ใช้แค่ tag presence นับ enabled.
+
+Locators: `tuning-v3/scripts/make_candidate.py`, `check_candidate.py`,
+`tuning-v3/evidence/{red-baseline,green-candidate,generation}.json`,
+`tuning-v3/table-diagnosis/` และ `tuning-v3/wrap-diagnosis/`.
+Packaged `render_docx.py` ลองแล้วไม่มี `soffice.exe` บน PATH;
+เก็บ log ใน `tuning-v3/evidence/packaged-render.log`. ไม่ติดตั้ง renderer เพิ่ม.
+ขอเจ้าของเปิด V3 ใน Word และบันทึก `srs-tuned-v3.pdf` ในโฟลเดอร์เดียวกันแล้ว.
+**Word alignment/wrap verification pending**; ไม่ส่งเป็น final-ready DOCX และ
+ไม่ claim ว่า wrap ดีขึ้นจาก package PASS เพียงอย่างเดียว.
