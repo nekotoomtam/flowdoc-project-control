@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V9 one-property trial restores requirement-column headers on all 55 requirement pages; 100-page comparison completed with V8 reporting correction; ordinary layout differences remain; PDF reference frozen; product integration not started**.
+สถานะ: **V10 separate-factor comparison complete: retain V9 line spacing; row-padding compensation improves measured geometry but introduces a grouping regression, so V10 is not accepted as a whole-document replacement; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1962,3 +1962,139 @@ Locators ใต้ `tuning-v9/`: `generation.json`,
 `qa/candidate/manifest.json`, `qa/details/` สำหรับ header corroboration และ
 `qa/reviews/{changed-pages,tiny-diff-pages}.json`. Verification เขียนเฉพาะ
 fresh QA outputs; source/V8/V9 hashes ตรวจซ้ำหลัง review.
+
+## V10 separate line-spacing and row-height trials
+
+คำขอเจ้าของ 2026-10-21 อนุญาตวัดและจูนระยะบรรทัดกับความสูงแถวทีละปัจจัย
+ใน SRS เดิม แล้วเทียบ PDF. ทั้งสอง branches ใช้ frozen V9 DOCX/PDF เป็น
+baseline เดียวกัน; ไม่สร้าง combined candidate หรือแก้ PDF/reference/data/product.
+Owner/roles/single-room unregistered mode ตาม V9; execution IDs N/A.
+Work Size medium / Risk routine. Work authority: read-only measurement ก่อน
+bounded prototype implementation แล้ว verification ที่ไม่แก้ candidate.
+ใช้ current host/session model ไม่มี override หรือ separate WORK.
+
+Document Budget: แผนนี้ไฟล์เดียว; scripts/measurements อยู่ `tuning-v10/`.
+Proof Budget: สอง independent full-SRS candidates (line-only / row-only),
+package containment/inverse checks, manual Word export อย่างละรอบ, source-
+aligned spacing metrics และ full-output QA พร้อม evidence reuse เฉพาะภาพ
+ที่ตรง baseline. เก็บ/ปฏิเสธแต่ละ factor จากผลจริง ไม่จำเป็นต้องรับทั้งสอง.
+ไม่ปรับจนได้ 98 หน้า ไม่รวมผลก่อนรู้ผลของแต่ละตัว ไม่แก้ font size/width/
+CS formatting หรือ grouping fixes ของ V8/V9.
+
+Discovery ระบุ body lineHeightPt 19.84; nearest integer twip คือ397=19.85 pt
+ซึ่งใกล้ค่าที่ source กำหนดแล้ว. LINE branch จึงเป็น calibration control ลด
+เพียงหนึ่ง twip 397→396=19.80 pt ใน1,574 nonempty direct-text paragraphs
+(1,530 table +44 body), ไม่มี pStyle/drawing/instrText; ไม่แก้368 empty
+paragraphs ที่อาจกำหนด minimum row content. Prediction: อาจไม่ดีขึ้นและ
+ควรคง397 หาก measured pitch/visual fidelity แย่ลง.
+
+ROW branch: V9 ไม่มี `trHeight` ทั้ง933rows. แถวสั้นหลาย families สูงกว่า
+Coreราว0.44–0.60 pt จาก natural content/padding/border budget; ไม่สามารถ
+ลดด้วย minimum row height ที่ต่ำกว่าความสูงธรรมชาติ. ทดลองลด explicit
+cell top/bottom padding อย่างละ5twips=0.25pt ใน1,830cells/887rows/183tables
+ที่มี four visible `single` borders size4, color666666/000000 และ padding
+มากกว่า5twips. รวม revision/meeting/emptyfeature/requirement families;
+ไม่รวม white/decorative cover/approval/legend/definition tables. คง line
+properties และ borders เดิม; rows auto-expand ได้ ไม่ใช้ exact height/cantSplit.
+
+Acceptance: วัด line pitch และ row-border height ของ source-matched content
+แยกจาก glyph ink height; ระบุ factor ที่ใกล้ Coreขึ้น/แย่ลงและข้อจำกัดให้ชัด.
+Ordered content/run properties/fields/images/source structure คงเดิม;
+header/heading/icon fixes ยังคงได้ผล และไม่มี visible clipping/overlap/
+missing ending. Page/line breaks เปลี่ยนได้. Unknowns: Word quantization,
+glyph centering, long-row reflow และ inline-image baseline growth อาจทำให้
+row/pitch ไม่ตรงทุก family; ห้ามอ้าง universal geometry หรือ product readiness.
+
+### V10 saved candidates and preservation
+
+เจ้าของส่งออกผ่าน Word for Microsoft 365 ครบทั้งสองไฟล์แล้ว. แต่ละไฟล์แยก
+จาก V9 โดยตรง ไม่ได้นำ LINE และ ROW มารวมกัน.
+
+| Factor | DOCX / bytes | Word PDF / bytes / pages |
+| --- | --- | --- |
+| LINE | `outputs/srs-line-spacing-v10.docx` / 1,084,593 | `outputs/srs-line-spacing-v10.pdf` / 1,017,453 / 100 |
+| ROW | `outputs/srs-row-height-v10.docx` / 1,084,286 | `outputs/srs-row-height-v10.pdf` / 1,014,540 / 99 |
+
+SHA256 ของ LINE DOCX/PDF ตามลำดับ:
+`2fa77bf326af5e6dc91da31af2f977a1af7f4d550d23e53677ca4b2d531d1215` /
+`ab8f32d9698cf252486d780db5393ae7e7e143161c18a996d9170771b35b881e`.
+SHA256 ของ ROW DOCX/PDF:
+`4f4f899d2721775438728924d3a10ad166bf19445b8beb26b4332a29fb329057` /
+`6c9ed7824972ee5a71878c63854e73f8c9ae6926639c60db9013a02fde665fd4`.
+Baseline V9 ยัง 100 หน้า และ Core reference ยัง 98 หน้า; จำนวนหน้าอย่างเดียว
+ไม่ใช่เกณฑ์รับ factor.
+
+Independent package checks ผ่าน LINE 13,717 / ROW 20,563 assertions.
+LINE เปลี่ยนเฉพาะ 1,574 line attributes; ROW เปลี่ยนเฉพาะ 3,660 padding
+attributes ใน 1,830 cells. กลับค่าปัจจัยที่เปลี่ยนแล้วคืน V9 canonical XML
+ได้ทั้งเอกสาร; raw splice inverse คืน source XML ทุก byte. อีก 124 ZIP
+payloads/ compressed records ตรง V9 ทุก byte. โครงสร้างเดิม 2,775 paragraphs /
+4,609 runs / 200 tables / 933 rows / 1,932 cells / 371 drawings คงเดิม
+พร้อม ordered text, CS/font/emphasis, fields และ relationships. V9 paragraph1395
+ยัง `keepNext=false`; grouping properties จุดอื่นทั้งหมดไม่เปลี่ยน.
+
+### V10 measurements and rendered comparison
+
+| Criterion | LINE result | ROW result |
+| --- | --- | --- |
+| Matched line pitch | คลาดกว่า V9: ผลรวม absolute mean-pitch error ของ Customer/Company สองกลุ่ม 0.009 → 0.087 pt | line policy ไม่เปลี่ยนทั้งเอกสาร; measured mean pitch ต่าง V9 ไม่เกิน 0.004 pt ในสามกลุ่ม เป็น export/position phase ไม่ใช่ line-setting change |
+| Whole-row border height | 27 common rows: mean error 0.457 pt / max 0.56 pt เทียบ V9 0.514 / 0.64 pt | mean error 0.022 pt / max 0.12 pt; ดีขึ้นใน revision, meeting, empty-feature, requirement header และ short/multiline requirement samples |
+| Requirement headers | geometry + rendered gray-band corroboration ครบ 55 pages 46–100 | ครบ 55 pages 45–99 |
+| Functional fields/images | TOC 198/198 resolve และ printed page/labels corroborate; page fields/banner ถูก policy; body images 371 ordered decoded identities/soft masks คงเดิม | ผ่านเกณฑ์เดียวกัน โดย footer เป็น Page p of 99 |
+| Visual content safety | ไม่พบ visible clipping, overlap, glyph boxes หรือ missing ending ใน full-page review | ไม่พบปัญหาดังกล่าว แต่มี grouping regression ตามรายละเอียดด้านล่าง |
+
+Row metrics ใช้ source-matched content และ border centers ไม่ใช่ glyph ink
+height หรือ same-index page assumption. Samples เป็น 27 whole rows ร่วมกัน
+จาก revision 4 / meeting1 16 / empty-feature 2 / requirement 4 / header 1.
+REQ0004 ถูกตัดออกจาก aggregates ของทุก branch เพราะ ROW split 45→46;
+ห้ามใช้ความสูง fragment แรกแทน whole logical row. `row-height-v2.json`
+แก้ aggregate ของรายงานแรกและเก็บรายงานเดิมไว้. Line metrics ใช้กลุ่มเดียวกัน
+ทั้งสองฝั่ง; Development list ของ LINE คร่อม 51→52 จึงไม่รวม full-span
+aggregate ของทั้ง LINE/V9. ใช้ `line-pitch-final.json` แทน aggregate แรก.
+ตัวเลขนี้เป็น sample evidence ไม่ใช่การวัดครบทุก paragraph/row.
+Row-border height ที่ใกล้กันไม่ได้แปลว่า text baseline ตรงกัน: Latin R ของ
+REQ labels สี่แถวที่วัดใน ROW ยังต่ำกว่า Core เฉลี่ย 1.321 pt เทียบ V9
+1.591 pt. จึงยังไม่รับรอง vertical text alignment หรือทุก glyph metric.
+
+ตรวจ full candidate pages ใหม่ครบ LINE 1–100 และ ROW 1–99 ที่ 120 dpi;
+ใช้คู่ Core/V9 ตาม source content สำหรับจุดเปลี่ยน. ไม่อ้างว่าเปิด Core ใหม่
+ครบ 98 หน้า: reuse frozen source QA เดิมร่วมกับ new paired views/metrics.
+Raster comparison พบ LINE ตรง V9 ทั้งหน้า 8 หน้า; ROW ตรงเพียง cover.
+ส่วน body-only ที่ตรงไม่นับเป็น whole-page equality เพราะ footer/reflow ต่าง.
+Repeated meeting numbers คงถูกต้อง รวม source ที่ไม่มี meeting11.
+REQ0041 และ known icon endings ยังคงมีข้อความท้ายอยู่กับ icon; long rows
+ข้ามหน้าได้และ repeat headers ไม่หาย. Short-row pagination ยังมี tradeoffs:
+LINE แยก REQ0043/0055/0116 เพิ่ม; ROW แยก REQ0004/0209 แต่เก็บ REQ0190/0270/
+0293/0331 ไว้ทั้งแถวได้ในจุดที่ตรวจ. ไม่ถือทุก row split เป็น content loss.
+
+**พบ regression ที่ ROW 44→45:** หัวข้อ `15.4 Element SRS` และคำอธิบาย
+บรรทัดแรกอยู่ท้าย 44; คำอธิบายที่เหลือกับตารางอยู่ 45. Core 44 และ V9 45
+เก็บหน่วยนี้ครบหน้าเดียว. เนื้อหายังครบและไม่ใช่ title-only orphan แต่
+heading-description-table relationship แย่ลงจาก V9. Lower padding ทำให้
+cumulative pagination เปิดเผยว่าการผูกข้าม multi-line description ยังไม่ครบ;
+source inspection ยืนยัน description ยัง `keepNext=true` แต่ `keepLines=false`
+เหมือน V9 จึงไม่ได้ป้องกันการแยกภายในย่อหน้า. ไม่อ้างว่า grouping properties
+ถูกเปลี่ยน. ไม่มีรอบแก้ grouping เพิ่มใน V10.
+
+### V10 decision and evidence boundary
+
+**PASS for bounded measurement/comparison; LINE rejected; ROW geometry
+improvement confirmed, whole-document replacement NOT ACCEPTED.** คง line397
+ของ V9; เก็บ ROW compensation เป็นผลทดลองสำหรับพัฒนาต่อเมื่อแก้และยืนยัน
+grouping regression แล้ว. V9 ยังเป็น baseline ล่าสุดที่รับ bounded fixes ก่อนหน้า;
+ไม่ได้อ้างว่า V9 หรือ V10 พร้อมเข้าระบบจริง. ไม่รวมสอง factors ไม่ปรับ PDF
+ต้นแบบ ไม่แก้ source data/template หรือ product runtime. หยุดสอง candidate
+cycles ตาม Proof Budget หลังบันทึกผลและข้อจำกัด.
+
+Locators ใต้ `tuning-v10/`: `scripts/{build_factors,check_factors,compare_line_pitch}.py`,
+`discovery/{line-spacing,row-height}.json`, `discovery/measure_row_height.py`,
+`row/scripts/measure_rendered_rows.py`, `{line,row}/generation.json`,
+`{line,row}/preflight/independent-package-check.json`,
+`{line,row}/word-review/{comparison,header-geometry,line-pitch-final}.json`,
+`row/word-review/row-height-v2.json`, `{line,row}/qa/candidate/manifest.json`,
+`qa/{render-diff,header-pixel-corroboration,15.4-source-properties}.json`, `qa/reviews/` และ
+`word-review/root-review.json`. Original intermediate reports คงไว้พร้อม
+superseding observations; verification เขียน fresh QA outputs และตรวจ hashes
+หลัง review. Source anchors ที่หาไม่ได้ 550/933 LINE และ 549/933 ROW เป็น
+ข้อจำกัดของ unique-text mapping ไม่ใช่หลักฐานว่า content หาย. ไม่มี claim
+every-glyph equality, complete border/TOC appearance parity หรือ Word speed.
