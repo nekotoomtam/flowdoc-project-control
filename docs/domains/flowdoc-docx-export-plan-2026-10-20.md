@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V10 separate-factor comparison complete: retain V9 line spacing; row-padding compensation improves measured geometry but introduces a grouping regression, so V10 is not accepted as a whole-document replacement; PDF reference frozen; product integration not started**.
+สถานะ: **V11 semantic-grouping SRS and six-page paired baseline probe prepared; independent saved-package checks pass; owner Word export/rendered acceptance pending; V9 remains the accepted bounded-fix baseline; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2098,3 +2098,117 @@ superseding observations; verification เขียน fresh QA outputs แล�
 หลัง review. Source anchors ที่หาไม่ได้ 550/933 LINE และ 549/933 ROW เป็น
 ข้อจำกัดของ unique-text mapping ไม่ใช่หลักฐานว่า content หาย. ไม่มี claim
 every-glyph equality, complete border/TOC appearance parity หรือ Word speed.
+
+## V11 cell baseline and semantic grouping investigation
+
+เจ้าของอนุญาตเริ่มสองก้อนแรกหลังทบทวนความต่าง: แยก row extent ออกจาก
+text baseline และรักษา heading–short description–table เป็นหน่วยตามโครงสร้าง.
+เป็น bounded disposable prototype ในห้องเดิม ไม่ใช่ product implementation.
+Owner/roles: Project Control Planning Partner / Evidence Reviewer /
+Documentation Synthesizer; future writer owner คือ Core แต่ไม่แก้ Core รอบนี้.
+Work Size medium / Risk routine; execution/Phase/Checklist IDs N/A.
+ใช้ current host/session model ไม่มี override; helpers อยู่ภายในงานห้องเดียว.
+
+Allowed mutation: แผนนี้, `tuning-v11/` และ candidate outputs ใหม่ใต้ experiment
+root เดิม. ห้ามเปลี่ยน source/resolved/reference/V9/V10, production dependencies,
+PDF behavior, runtime, maps หรือ published state. Document Budget: แผนเดิมไฟล์เดียว.
+Work authority เริ่ม discovery แยกสองสาเหตุ ก่อน bounded candidate creation และ
+verification ที่ไม่เปลี่ยน candidate. Current Truth Snapshot อ่านใหม่จาก validated
+canonical model แล้ว; DOCX ใช้ explicit request และแผนนี้เป็น inline authority.
+
+Proof Budget: ไม่เกินหนึ่ง full-SRS grouping candidate จาก frozen V10 ROW
+และหนึ่ง short baseline probe document จาก SRS เดิม, Word export อย่างละรอบ.
+Grouping เลือกตาม heading/paragraph/table properties และ estimated height guard;
+ไม่เลือกด้วยชื่อ SRS, เลขหัวข้อ/REQ หรือ global paragraph index. ต้องมี positive
+และ negative controls สำหรับ long text/oversized group. Baseline ต้อง trace
+font/line placement ก่อนเลือกปัจจัย; ไม่ยกข้อความทั้งหมดด้วยค่าแก้เฉลี่ย 1.32 pt
+และไม่ลด line397 ที่ V10 ปฏิเสธ. หากยังแยกสาเหตุไม่ได้ ให้เก็บเป็น unknown
+แทนการสร้าง full-SRS baseline correction ที่ไม่มีหลักฐาน.
+
+Acceptance: ตรวจ selector และ mutation containment, ordered content/formatting/
+fields/images คงเดิมใน full candidate, ไม่ทำให้ oversized REQ0041 chain กลับมา;
+หลัง Word export ตรวจ 15.4 และ counterparts, all repeated requirement headers,
+known icon endings และ full output coverage ตาม reuse boundary. Short baseline
+probe ต้องวัดกรอบแถว/line pitch/text baseline แยกกัน พร้อมข้อความไทย/อังกฤษ
+และรูปแบบที่มีใน SRS. Package PASS ไม่ใช่ rendered acceptance. Word rendering
+ยังใช้เจ้าของช่วย export ตามทางที่ตกลงไว้ ไม่รัน conversion อัตโนมัติซ้ำ.
+
+### V11 discovery and prepared Word checkpoint
+
+Baseline trace จาก frozen Core package พบการคำนวณ
+`A+(max(lineHeight,A+D)-A-D)/2` โดยเริ่ม A/D จาก face ascender/descender
+แล้วขยายตาม shaped ink. Sarabun ทั้งสี่ faces มี hhea/Typo1068/-232 ที่ UPM1000.
+Body11pt / source line19.84pt / source top padding3pt ให้ baseline17.518pt,
+ตรง Core label ที่วัด17.51884pt. DOCX mapper ส่ง font/line/padding แต่ไม่มี
+การคำนวณ baseline นี้; Word เป็นผู้เลือกตำแหน่งภายในบรรทัด. จึงยืนยันความต่าง
+ของ baseline policy ที่ boundary ได้ แต่ยังไม่ระบุ internal Word font metrics.
+ไม่สรุปว่า OS2Win metrics เป็นสาเหตุจากการเห็นค่าใน font table เพียงอย่างเดียว.
+
+Short probe ใช้หนึ่ง DOCX วาง control3หน้าและ adjusted3หน้า. เปลี่ยนเฉพาะ
+cell top/bottom55/55→30/80twips: ย้าย origin ขึ้น1.25pt โดยคง nominal sum
+110twips. มี32 controlled cases ต่อชุด: single/multiline, Latin/Thai/mixed,
+regular/bold/italic/boldItalic, 11pt line397 และ controlled13pt line480;
+มี natural SRS header+REQ0001/0002/0005 และ icons แยกไว้. Font13/emphasis
+บางกรณีเป็น labelled controls ไม่ใช่ claim ว่าพบทุกกรณีตามธรรมชาติใน SRS.
+Core nominal13pt baseline20.434pt ยังต้องแยกวัดจาก11pt หลัง export.
+การคงผลรวม padding ไม่รับรอง rendered row height: ต้องตรวจ border extent,
+line pitch, base-letter baseline และ ink clipping แยกกันหลัง Word.
+
+Grouping selector พบ32 plain direct-body descriptions ระหว่าง protected
+heading chain กับ table โดยไม่ใช้ข้อความหัวข้อ/เลขREQ/source node ID/index
+เป็นเกณฑ์. Source correspondence ของ32จุดตรง resolved sequence ตามลำดับ;
+index/node IDs เป็น locator/annotation ภายหลังเท่านั้น. มี nominal multiline
+ปัจจุบันหนึ่งจุดคือ15.4; อีก31จุดเป็น counterparts ที่เลือกด้วยกฎเดียวกัน.
+Guard ใช้ frozen Sarabun advance estimates +25% reserve +หนึ่งบรรทัดต่อ
+paragraph; description group ไม่เกิน¼ body และ heading+description+leading
+table group ไม่เกิน½ body. เป็น conservative heuristic ไม่ใช่ formal Word
+fit bound. ไม่รองรับ unresolved fonts/complex content; table-cell paragraphs
+ถูก exclude จึงไม่แตะ oversized REQ0041. Meaningful RED จาก frozenROW
+ยืนยัน15.4ยังไม่ protected;16 structural/source controls PASS รวม renamed
+labels, long/broken/field/drawing/list/section/nested-table/oversized groups.
+
+สร้าง full trial `outputs/srs-semantic-grouping-v11.docx`, 1,084,318 bytes,
+SHA256 `39a7de89643f901c40a995364b5e8848af73c19b8152035e9178f9ad10d5e0ff`.
+เปลี่ยน32 `keepLines=false→true` ตาม selector เท่านั้น; existing keepNext,
+V10ROW padding/line/font/fields/media และ V9 oversized-cell correction คงเดิม.
+Short trial `outputs/srs-cell-baseline-probes-v11.docx`, 974,943 bytes,
+SHA256 `851e448458769c4cfa04fd79d83cad862c8dd6c01abde1ccb33d90e19740bdf5`.
+6 planned pages; ไม่มี active band references/TOC ใน probe. สอง candidate
+เป็นคนละการทดลอง ไม่เพิ่ม baseline redistribution ลง full SRS.
+
+Locators ใต้ `tuning-v11/`: `discovery/cell-baseline.json`,
+`grouping/{structural_selector,build_candidate,test_structural_selector}.py`,
+`grouping/{discovery,baseline-red,selector-controls-final,generation}.json`,
+`baseline/scripts/build_probe.py`, `baseline/generation.json` และ
+`verification/` สำหรับ independent saved-package checks. Word-rendered
+acceptance ยัง PENDING; ห้ามใช้ package/static checks ประกาศ15.4หายหรือ
+baselineใกล้ขึ้นแล้ว. Source/Core reference/V9/V10 และ production คงเดิม.
+
+Independent review พบ initial probe มีลำดับ CT_PPr ของ diagnostic captions
+ผิดห้าจุด (`pageBreakBefore` มาก่อน `keepNext`). เก็บไฟล์/รายงาน FAIL เดิมไว้
+และแก้โดย authoring owner ก่อนส่ง Word เป็น
+`outputs/srs-cell-baseline-probes-v11-r1.docx`, 974,938 bytes, SHA256
+`26407a9ac3677b695db8991ad7442aa42937aabc7a407d191365e9eacb70841b`.
+**ให้ใช้ r1 เท่านั้นสำหรับ owner export.** Repair ย้าย child order เฉพาะป้าย
+ห้าจุด; measurement tables และทุก run ตรง original canonical XML. อีก124
+ZIP payloads คงเดิม. ไม่ใช่ baseline factor ใหม่หรือ Word export cycle เพิ่ม.
+Reference สำหรับ child sequence:
+[python-docx schema excerpt](https://github.com/python-openxml/python-docx/blob/master/docs/dev/analysis/features/text/paragraph-format.rst#schema-excerpt).
+
+Saved-package checks: `verification/grouped-package.json` PASS4,996 assertions;
+`verification/baseline-probe-package-r1.json` PASS300 assertions. Grouping มี
+exact raw/canonical XML inverse และอีก124 payload/compressed records ตรง ROW;
+ordered text/runs/CS/fonts/fields/images คงเดิม. Probe มี4table pairs: undo
+padding/caption/start-marker differences แล้วตรงกัน รวม natural excerpts
+ที่ normalize เฉพาะ unique nonvisual drawing IDs; image data/size/order คงเดิม.
+มี6unique icon appearances, one section, six logical page blocks/five later
+page starts, ไม่มี active header/footer references หรือ unsafe row/keep chain.
+Unused source story relationships42รายการยัง valid และคงเดิม; ไม่ตีความว่า
+มี active band จาก relationship presence. `cantSplit=off` ไม่ใช่ enabled.
+Original verifier reports เก็บไว้พร้อม semantic correction สองข้อนี้.
+
+ยังไม่ตรวจภาพ DOCX ผ่าน Word ใน checkpoint นี้. ต้องรับ PDF ของ full SRS
+และ r1 probe ก่อนวัด/ตรวจจริง; ไม่แสดง static checks เป็นผล layout PASS.
+Additional locators: `baseline/{generation-r1.json,scripts/repair_probe_order.py}`,
+`verification/baseline-probe-package-sequence.json` สำหรับ pre-repair failures
+และ `preflight/root-review.json` สำหรับ input/font/Core hashes และ pending criteria.
