@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R2 isolated border-area mapping probes preserving all borders, including multiline tables and a second font family, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R3 isolated discovery of remaining table text-origin differences using the same two fonts and small documents, then reporting causes before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R2 bounded border-area hypothesis improves row extent for both Sarabun and Bai Jamjuree across single-line, authored multiline and natural-wrap probes; all12 Core/Word pages reviewed. Text origin and cross-renderer wrapping remain different. No writer change or generic mapping acceptance; R1/H3 durable artifacts preserved. U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
+สถานะ: **R3 bounded text-origin discovery identifies different surplus-leading allocation as dominant cause: Core baseline moves0.5pt per added line-height pt; actual Word AtLeast tables move about1pt. Both fonts follow the same measured model, while paragraph/table context residual and short-line ink expansion remain unresolved limits. No correction adopted; prior durable artifacts preserved. U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4362,3 +4362,120 @@ change needs its own explicit bounds and checks for border geometry, text
 origin and wrapping independently. No font-specific offset, SRS trial, original
 PDF modification, product/API/default-format change, install or release occurred.
 Stop at this report; U5 full acceptance remains open.
+
+## R3 isolated text-origin cause discovery checkpoint
+
+**2026-10-21 — PASS_BOUNDED_CAUSE_DISCOVERY_WITH_CONTEXT_RESIDUAL; NO_WRITER_CHANGE.**
+Owner authorized diagnosing the remaining2.7–3.1pt row-text offset using small
+documents and the same two fonts, then reporting causes before converter changes.
+Core owns eventual text mapping; Project Control owns shared status. One-room
+discovery/Evidence Reviewer/Documentation Synthesizer; medium size, routine risk;
+execution/Phase/Checklist IDs N/A. Proof budget: one six-page Word export,
+unchanged Core generation, source/shape/formula inspection, all-page geometry and
+visual review, one independent review. Document budget: this existing plan and
+local machine-readable evidence. No production implementation is authorized.
+
+### Probe and source path
+
+Workspace: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/text-origin-r3/`.
+Six panels combine regular Sarabun/Bai Jamjuree11pt with source line heights
+14.5,19.84,24pt. Each section begins with three authored outside-table lines
+O01–O03 at source body top36pt, followed by two simple two-row tables. Each row
+has a Latin R01/R02 marker and three authored mixed Thai/English content lines.
+Both tables retain original border/font/text/column/source-padding semantics;
+the diagnostic DOCX uses R2's75twip native vertical margins in both. Table A
+retains AtLeast; table B changes only lineRule to Exact. Core retains original
+content-flow semantics for both tables, including ink-height expansion.
+
+Unchanged public `generateDocxTo` generates `outputs/control.docx`; diagnostic
+`outputs/text-origin-r3-factors.docx` changes only allowed margins and B lineRule.
+Reversing those attributes restores the complete control document XML; other
+package parts, all borders, font resources and text remain unchanged. No writer
+source, dependency or prior artifact is modified. The owner exported its matching
+PDF in Word; both Word and newly generated Core PDFs have six pages.
+
+Read-only installed Core inspection locates the baseline path in
+`dist/runtime/textRuntime.js:25–42`, `dist/layout/measureText.js:34–35` and
+`dist/pdf/primitives.js:202`. The runtime starts from font ascent/descent and
+expands them for shaped glyph ink; layout sets effective line height to the
+larger of requested height and shaped ascent+descent. Baseline offset is
+`A + (effectiveL - A - D)/2`. Painting uses that offset. A separate diagnostic
+call into the installed internal text runtime records actual shaping metrics;
+this is evidence inspection, not a new supported public API dependency.
+
+For the Latin markers at11pt, actual shape A/D are11.748/2.552pt for Sarabun and
+11.000/2.750pt for Bai Jamjuree. Reading immutable TTF tables confirms hhea/typo
+1068/−232 and1000/−250 respectively at1000 units/em. Formula predictions match
+actual Core marker baselines within0.002pt for all six panels.
+
+### Actual measurements and cause
+
+Mean Word AtLeast marker-baseline offset minus Core offset, measured from each
+row's top border centre; line heights are source values:
+
+| Source line height, pt | Sarabun gap, pt | Bai Jamjuree gap, pt |
+| --- | --- | --- |
+|14.50|0.112|0.345|
+|19.84|2.842|3.075|
+|24.00|4.902|5.135|
+
+Increasing line height by9.5pt moves the Core marker down4.75pt and the actual
+Word AtLeast marker down9.54pt for both fonts. The Word table result fits the
+empirical model `sourcePadding + L - D` within0.112pt for every measured row;
+Core uses `sourcePadding + A + (L-A-D)/2` for these markers. This supports different
+allocation of surplus line space as the dominant cause of the earlier offset:
+Core splits it above/below the natural font box, while observed Word AtLeast
+behavior places approximately the surplus above the baseline. The Word formula
+is an empirical fit to this probe, not a claim to have verified Word internals
+or a complete standard. Twip/PDF quantization residuals are not causally isolated.
+
+The difference grows with line height and changes with actual font metrics.
+It is not a universal fixed2.7–3.1pt shift and is not explained by the retained
+border thickness alone. No font-name or document-specific offset is justified.
+
+Exact changes the baseline but does not match Core consistently: its mean gaps
+are−0.248/1.282/2.622pt for Sarabun and0.225/1.755/3.095pt for Bai Jamjuree across
+the three line heights. Replacing AtLeast with Exact is not accepted as a fix.
+Outside-table lines show the same approximate slope difference, but carry an
+additional0.88–1.00pt context residual compared with the table content origin.
+That residual's cause remains unresolved; it is not absorbed into a correction
+or attributed conclusively to paragraph settings/font metrics.
+
+At source14.5pt, shaped Thai ink exceeds the requested line budget in Core;
+the three-line right cells expand. Core row heights52.697pt Sarabun and52.246pt
+Bai Jamjuree differ from Word's roughly51.48pt rows. This is a separate ink-fit
+limit exposed by the stress panel, not proof that shrinking line height safely
+fixes alignment. No fixed row height or clipping-based correction is adopted.
+
+### Coverage, limits and stop
+
+All12 complete Core/Word pages were rendered110dpi and reviewed, with Word's
+14.5pt Sarabun page additionally inspected at full render size. Each PDF retains
+all18 outside markers and24 table row markers. No obvious clipped marks or
+overlap was seen in this limited sample; this is not general clipping acceptance.
+The measurement uses actual Latin marker matrices and separately measured border
+centres, avoiding PDF Thai shaping/Unicode text-extraction ambiguity.
+
+Local evidence: `evidence/{package-check,control-receipt,core-probes,
+core-shape-metrics,pdf-geometry,measurements,final-review,results,checkpoint}.json`,
+source/control/candidate/Core/Word artifacts and `rendered/{core,word}/` PNGs;
+reproduction scripts are H3 `qa/text-origin-r3-*`. Source and candidate identities
+match their generation/package receipts. Frozen H3/R2 and prior durable probe
+files remain unchanged; the already classified historical R1 Word owner lock is
+excluded without rewriting its manifest. Existing112 H3 tests/type-check remain
+historical proof for unchanged writer inputs; no new test execution is claimed.
+
+A fresh independent read-only review verified91 H3 and38 R2 frozen files,
+package entry equality/factor reversal, all marker formula matches, measured
+Word fit and12 contact-sheet pages; no important issue found. It explicitly
+retains the empirical/inferred Word-model boundary and unresolved context term.
+Project Control check:data, seven local fragments and final diff/whitespace
+checks pass. No canonical data/projection record changes are needed.
+
+The next design question is how to express a common line-box/baseline/ink-fit
+contract without changing row extent or hiding glyph overflow. No mapping fix
+is selected by this cause report. Generic fonts, emphasis, merged tables,
+pagination and the paragraph/table context residual remain outside acceptance.
+No SRS trial, existing PDF source/reference/implementation, writer source,
+product/API/default format, dependency, resource, map, install or release change
+occurred. Stop before converter changes; U5 overall acceptance remains open.
