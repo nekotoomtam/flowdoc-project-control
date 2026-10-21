@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is the isolated U5 header-space feasibility probe. Return findings before another step; no SRS, PDF reference or runtime repair is authorized. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is H2 isolated complex-header/automatic-flow feasibility after H1. Return findings before writer changes; no SRS, PDF reference or runtime repair is authorized. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1–U4 isolated writer checked; U5 paired comparison remains reviewed with gaps, not accepted. The later H1 probe verifies that source positive top margins recover about21.4pt on hidden-header pages for simple headers; remaining baseline differences and broader coverage are unresolved. No writer repair integrated. Two licensed font families/eight faces and prior3 shared-source cases remain frozen. Table extent, complex band behavior, image placement, Word PDF text extraction and boundary-group coverage remain open. U6 unstarted; no new SRS trial, PDF reference change or product integration. SRS tuning remains paused**.
+สถานะ: **U5 remains reviewed with gaps, not accepted. H1/H2 Word probes support source positive top margins plus authored gap for observed paragraph, PNG and weighted-column headers with natural body/table pagination. H2 recovers66–68pt on hidden-header pages; baseline differences and a one-row table-break difference remain. No writer repair integrated. Frozen two-family resources and U1–U4/U5/H1 evidence remain unchanged. Width-induced header wrapping, broader geometry, row extent, image placement, Word PDF Unicode and boundary-group coverage remain open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3923,3 +3923,110 @@ authorized adapter change must revise receipt/body-capacity checks as well as
 margins, and verify complex headers and automatic flow before broadening support.
 Do not choose between probes solely by smallest baseline error or insert per-font
 point offsets. Stop here; no SRS, PDF reference change, runtime integration or U6.
+
+
+## H2 complex headers and automatic-flow checkpoint
+
+**2026-10-21 — FEASIBILITY_SUPPORTED_OBSERVED_COMPLEX_HEADERS_AND_AUTOMATIC_FLOW_NOT_INTEGRATED.**
+Owner authorized small isolated multiline/image/table-header and automatic-flow
+experiments, followed by a summary before writer integration. This later scope
+extends H1's proof only as stated; U5 is not accepted and U6/SRS remain unstarted.
+Single-room IDs N/A; roles Evidence Reviewer/Documentation Synthesizer; routine
+risk. Allowed: new experiment scripts/artifacts and this existing canonical plan.
+No writer source, dependency/lockfile, product, original PDF reference, source SRS,
+DB, system/DOCUMENT_MAP or real API/default-format behavior changed.
+
+### Shared source, controls and containment
+
+Root: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer/header-space-h2/`.
+`sources/complex-auto-flow.json`, SHA256
+`204a50cc6a311a2c11ed0f59dbbcff1a2d4b525273e5cdeaf07e4146ac0a10f7`,
+contains three authored semantic sections with two inter-section boundaries and
+**zero authored body page breaks**:
+
+- Three authored header paragraphs, first-page-only;48 unique M body paragraphs.
+- Original PNG in a42pt frame then caption, continuation-only;48 unique I paragraphs.
+- Two equal weighted header columns, two paragraphs per column, all-pages; body
+  table with41 logical rows including a repeated heading and40 unique T data rows.
+
+The source header gap is6pt throughout. Header source columns become a native
+borderless DOCX layout table; this does not establish arbitrary semantic table
+nodes in page bands. Multiple authored lines are distinct from width-induced
+header wrapping, which remains untested. Body paragraphs fit their line widths;
+automatic page flow is exercised without a width-wrapping claim.
+
+`docx/00-reserved-control.docx` comes from the unchanged public experimental
+writer. `docx/01-auto-top-source-gap.docx` changes only three positive top margins
+to720twips/36pt, and after-spacing to120twips/6pt in the four visible header parts.
+All body content, fonts, images, footer settings, styles and native section
+structure remain identical. Disposable package edits isolate this mechanism;
+they are not a writer implementation or a new runtime dependency.
+
+`core-pdf/reference.pdf` is a new comparison artifact from unchanged public
+Core0.4.7 using the same JSON and concrete resources in the existing service0.4.9
+image, network disabled and no runtime installation. Original U5/H1 PDF references
+remain untouched. The owner manually exported both DOCX files through Word;
+Microsoft365 producer metadata is present. Originals remain beside DOCX, with
+identical review copies in `word-pdf/`. `evidence/dispatched.json` freezes source,
+resource manifest, Core reference and both DOCX hashes before Word review.
+
+### Actual results
+
+All three outputs have6 pages; all18 pages were rendered and visually reviewed.
+Each contains all136 body markers exactly once (48M+48I+40T), correct header
+visibility and all header lines. PNG RGBA pixels match the original resource in
+all outputs. No overlap/clipping observed; candidate header-to-body ink gaps are
+positive, minimum14.76pt. Ink-box gaps are not the authored6pt layout gap.
+
+| Observed page | Core body baseline | Old Word control | Candidate | Candidate minus Core |
+| --- | ---: | ---: | ---: | ---: |
+| 1 multiline header visible | 116.038pt | 120.50pt | 118.82pt | +2.782pt |
+| 2 multiline header hidden | 50.518pt | 120.50pt | 54.24pt | +3.722pt |
+| 3 image header hidden | 50.518pt | 122.66pt | 54.24pt | +3.722pt |
+| 4 image header visible | 118.358pt | 122.66pt | 121.10pt | +2.742pt |
+| 5–6 header layout table visible | 128.038pt | 133.94pt | 132.86pt | +4.822pt |
+
+Hidden pages recover66.26pt and68.42pt relative to the old maximum-reservation
+control. Automatic paragraph pagination is M01–35/M36–48 in all outputs. Image
+section control breaks I01–35/I36–48; candidate becomes I01–38/I39–48, matching
+Core. This is actual automatic-flow evidence beyond H1's authored page breaks.
+
+The body table still breaks T01–25/T26–40 in Core versus T01–24/T25–40 in both
+Word variants. Its heading genuinely repeats on the second table page in every
+output. Actual T01→T02 baseline pitch remains27.84pt Core and28.32pt Word, with
+candidate identical to control. Header correction does not resolve this separate
+row-extent difference; no row-height/font/padding offsets were applied.
+
+### Limits, evidence and return
+
+Evidence supports the header direction for the observed authored multiline, PNG
+and weighted-column families with natural paragraph/table page flow. It does not
+certify width-induced header wrapping, arbitrary header tables, unequal first/
+default heights, all fonts/orientations/sizes, or exact baseline equivalence.
+The residual2.742–4.822pt active-header and3.722pt hidden-header differences remain
+real; this probe does not isolate their full cause. Existing image-frame placement,
+Word PDF Unicode extraction and bounded group acceptance are not repaired here.
+
+Durable evidence: `evidence/{manifest,control-receipt,core-probes,package-check,
+dispatched,measurements,acceptance-checks,results,final-review,checkpoint}.json`;
+all page PNGs/contact sheets in `rendered/`. Helpers in the parent workspace:
+`qa/header-space-h2-{prepare.mjs,core.mjs,variant.py,review.py}`.
+Package checks parse41 XML parts per candidate/control, validate internal resource
+relationships, three sections, zero authored page breaks and41 body table rows.
+One fresh independent review rechecked exact attribute containment, actual PDF
+markers/header columns/visibility/positive gaps/image pixels, and prior frozen
+U4(52), U5(109), H1(50), paired lock(31) hashes. No blocking finding for the
+qualified feasibility conclusion; no additional experiment or repair started.
+Existing106 tests remain unchanged-writer evidence, not a newly run layout test.
+
+Checkpoint hashes55 experiment/helper files;
+SHA256 `42c3847b5ed76237e458fe39b867aa26262e1ab15dae61e8233306bf6976b96d`.
+Project Control check:data, local fragment links and final diff/whitespace checks
+pass; only this canonical plan changed, so no data/projection update is needed.
+
+Return recommendation: evidence now supports considering a bounded isolated
+adapter change for the observed profile, including source gap, receipts and body-
+capacity/validation policy together. Broader cases must stay conditional or be
+refused until verified. Do not promote this package probe to generic support,
+change source/PDF geometry, tune document/font-specific offsets or integrate it
+without the next owner-authorized scope. Stop here before writer/SRS/product/U6.
