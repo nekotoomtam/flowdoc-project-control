@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V11 Word review complete: semantic grouping passes on the 99-page SRS; cell-padding calibration improves measured baselines with size-dependent residuals, so universal baseline correction remains unaccepted; PDF reference frozen; product integration not started**.
+สถานะ: **V12 six-page font and line probe generated and saved-package verified; owner Word export and actual row-height/baseline review pending; V11 bounded grouping acceptance retained; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2287,3 +2287,140 @@ Word locators ใต้ `tuning-v11/`: `grouping/qa/candidate/manifest.json`,
 `word-review/functional/{functional-review,comparison,header-geometry,header-pixel-corroboration,source-target-observations}.json`
 และ `word-review/root-review.json` สำหรับ acceptance coverage/input hashes.
 Pre-export reports คงสถานะเดิม ไม่แก้ย้อนหลังให้ดูเหมือนตรวจ Word แล้ว.
+
+## V12 font size and line spacing calibration
+
+Owner request: แยกจูนตำแหน่งข้อความตามขนาดฟอนต์กับระยะบรรทัด โดยคง
+ความสูงแถว ใช้ SRS เดิมในพื้นที่ทดลอง แล้วเทียบ PDF อีกครั้ง. ไม่แก้ PDF
+ต้นแบบ ข้อมูลต้นฉบับ หรือระบบจริง. ใช้ latest bounded-fix full SRS
+`outputs/srs-semantic-grouping-v11.docx` เป็น immutable excerpt source;
+ไม่ใส่ redistribution ลง full SRS ก่อนพิสูจน์ short probe.
+
+Authority/owner: bounded explicit request + แผนเดิมนี้; Planning Partner /
+Evidence Reviewer / Documentation Synthesizer. Project Control owns this
+record; future product writer owner remains Core without product edits here.
+Execution/Phase/Checklist IDs N/A for this single-room continuation. Work Size
+medium, Risk Tier routine. Model decision: retain current host/session model
+for bounded inline discovery/prototype and inherited helper review; no new
+registered PLAN/WORK room or model override.
+
+Markdown gate: update this existing canonical plan only; do not create a second
+shared plan/report, change maps, or promote prototype findings into runtime truth.
+Allowed mutations: this plan, new `tuning-v12/` diagnostics/scripts, and one new
+`outputs/srs-font-line-calibration-v12.docx`. Forbidden: source/Core reference,
+prior candidates/evidence, production repositories/packages/configuration, DB,
+template, global guidance, releases/tags/push/install. Existing experiment is
+already isolated; helper discovery and verification do not repair the candidate.
+
+### V12 diagnosis and bounded design
+
+V11 observed only11pt/397 and13pt/480, so font size and line spacing were
+confounded. V12 uses a crossed2×2 matrix with all other fixture properties
+held constant, followed by paired padding hypotheses for the two measured
+strata only. Font size/line changes occur between discovery strata; within
+each adjusted A/B pair only top/bottom padding distribution changes.
+
+| Planned page | Font size | Exact line twips | Top/bottom twips | Purpose |
+| --- | ---: | ---: | --- | --- |
+| 1 | 11pt | 397 | 55/55 | Control; native header+REQ0001 excerpt appended |
+| 2 | 11pt | 480 | 55/55 | Crossed line-only control |
+| 3 | 13pt | 397 | 55/55 | Crossed size-only control |
+| 4 | 13pt | 480 | 55/55 | Control |
+| 5 | 11pt | 397 | 28/82 | Pair with1, nominal origin up1.35pt |
+| 6 | 13pt | 480 | 19/91 | Pair with4, nominal origin up1.80pt |
+
+Every measured cell keeps total vertical padding110twips and top alignment;
+no exact/minimum row-height override, font shrink, line-height reduction,
+run baseline/superscript shift, or page-count forcing. Word must still confirm
+actual row heights; a constant padding sum alone is not rendered proof.
+Crossed11/480 and13/397 controls receive no guessed correction.
+
+Each controlled page contains15cases: Latin/Thai/mixed×four faces as12single
+lines, plus explicit3-line Thai regular, mixed italic and mixed boldItalic.
+These retain V11's Thai worst final residual and mixed-italic final minimum.
+Text comes verbatim from frozen SRS; emphasis/13pt overlays are labelled
+controls rather than natural-SRS coverage. Native table174 rows0/1 only
+(header+REQ0001) repeat on1/5, preserving sibling cells, source text/run/image
+properties and icon size; only nonvisual drawing IDs are made globally unique.
+The four-native-row V11 excerpt would exceed the six-page budget, so no new
+V12 REQ0002/0005 coverage is claimed. Estimated1/5content614.34pt leaves
+75.38pt within689.72pt body; actual fit remains pending Word.
+
+Grounding uses every measured V11 line rather than only a mean.11/397 control
+residual range1.272…1.442pt has continuous minimax shift1.357pt; choose27twips
+(1.35pt), not an asserted universal correction.13/480 range1.76599…1.796pt
+has midpoint1.780995pt; choose36twips(1.80pt). Word export previously moved
+a nominal1.25pt by1.20/1.32pt, so predicted ideal residuals are not PASS.
+Keep source19.84pt versus DOCX397twips=19.85pt distinct; use traced nominal
+Core font/line-box formula and existing actual native baseline where available,
+without changing/re-rendering the Core PDF or claiming Word internal metrics.
+
+Proof Budget: one six-page probe/one manual owner Word export, saved-package
+verification before export, per-line/per-row paired measurements and all-six-page
+visual QA after export. Compare the four controls to distinguish size/line
+effects; retain every residual outside0.12pt rather than average it away.
+Require no new wrapping/clipping, font/CS/emphasis/image changes, row-border
+height delta<=0.12pt (target0), and pitch delta<=0.12pt within each paired
+comparison. Actual page count/content presence must match the fixture.
+No full-SRS correction is accepted from this short fixture; any later expansion
+must select by effective properties/family, include all affected sibling cells,
+and recheck SRS pagination/tables against frozen PDF. Never select by document
+title, requirement ID, physical page number or a special global paragraph index.
+
+Document Budget: this plan only; machine-readable discovery, builder,
+generation, preflight and independent verification live under `tuning-v12/`.
+Unknowns: actual Word quantization/pagination and crossed-pair effects are
+blocking for calibration acceptance; exact internal Word metric algorithm is
+deferred. Product/API implementation remains outside this experiment.
+
+Discovery locator: `tuning-v12/discovery/calibration-design.json`.
+Status at planning checkpoint: **prepared design; no V12 Word acceptance**.
+
+### V12 generated probe and pre-export checks
+
+Actual main-story inventory is `tuning-v12/discovery/style-inventory.json`,
+matched to frozen source nodes and direct/effective OOXML rather than available
+style definitions.200tables/933rows/1,932cells contain2,305paragraphs:
+1,566text,371image-only and368empty. Natural text pairs are11/397=1,530,
+11/340=9,11/400=18,11/500=2,18/520=3 and9/340=4paragraphs;13/480 is absent
+from natural cells. All2,383text runs explicitly specify both sizes and four
+Sarabun font slots. Regular/nonitalic is natural in these cells; source style
+name `bold` itself specifies normal weight, so probe emphasis remains a control.
+This is not proof of Word fallback/shaping or a reason to change source styles.
+
+The gray-border55/55vertical and85/85horizontal margin family spans26tables /
+1,167cells:802text-bearing (363also contain images) plus365empty siblings.
+A future row-level change must account for siblings, mixed-pair front matter,
+image-only `atLeast` paragraphs and available top-padding budget. A successful
+font/line pair alone does not authorize every cell/margin family.
+
+Generated `outputs/srs-font-line-calibration-v12.docx`,974,868bytes, SHA256
+`e05a31e00b91d2fab56c2e922211420a663d427497aa4b3e33f41c2574abf32b`.
+Builder `tuning-v12/scripts/build_probe.py`; generation metadata records all
+page cases, nominal model, pair shifts and boundaries. Eight tables comprise
+90controlled rows and four native row appearances; total102cells and two
+unique source icon appearances. Six pages are planned, not yet confirmed.
+
+Independent saved-package report
+`tuning-v12/verification/saved-package-cross-factor.json`: PASS2,129assertions,
+zero failures. Actual four-way control XML differs only in declared font size
+and line spacing; paired1/5 and4/6 tables invert exactly after restoring margins
+and normalizing only declared captions/start flags/nonvisual drawing IDs.
+All124other ZIP payloads and compressed bytes match V11; native rows, image
+resources/dimensions/order, paragraph/run/CS/emphasis properties and section
+geometry are preserved. CT_PPr/CT_RPr ordering passes, including captions;
+there are no active band/TOC references, exact row-height overrides or run
+baseline shifts. Dormant source story relationships remain valid.
+
+Root preflight is `tuning-v12/preflight/root-review.json`, covering frozen
+source/reference/font/Core-trace hashes, final candidate/generation, discovery,
+verification, plan scope and local anchors. Project Control validation is
+`check:data` plus plan-link/whitespace review; this is prose-only and does not
+regenerate projections. Only this existing plan is committed in Project Control.
+
+**Checkpoint: ready for owner Word export; layout acceptance PENDING.**
+Save `srs-font-line-calibration-v12.pdf` beside the new DOCX. No TOC update is
+needed in this focused fixture. After export, inspect every page and measure
+every paired row/line, including native icon placement, before claiming constant
+rendered heights or improved Core alignment. No full-SRS redistribution,
+reference PDF edit or production change has occurred.
