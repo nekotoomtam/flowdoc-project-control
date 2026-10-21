@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is H3 bounded header-space integration in a new isolated writer copy, capacity/receipt corrections and small-document Word regression. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R1 isolated small-document discovery of table row extent, varying horizontal borders and paragraph spacing separately, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **H3 bounded header-space mapping implemented in a new isolated writer copy;112 tests/type-check and actual H1/H2 Word regression pass. All12 new Word pages match prior reviewed probes at90dpi and exact character geometry/navigation. Native margins and conservative page-type capacity receipts are separate; unverified shapes retain explicit legacy fallback. U5 full acceptance remains open for wrapping/broader geometry, row extent, image placement, Word PDF Unicode and boundary-group coverage. All prior frozen evidence preserved; U6/SRS/product integration remain unstarted**.
+สถานะ: **R1 bounded row-extent discovery completed: horizontal-border accounting dominates the observed extra pitch; paragraph Exact changes text origin but not row pitch. All10 Core/Word pages reviewed and prior frozen files preserved. No writer correction made. H3 bounded header mapping remains unchanged; U5 overall acceptance and broader geometry remain open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4151,3 +4151,102 @@ geometry coverage, Word PDF Unicode, image-frame placement and required-group
 boundary proof remain outside acceptance. No row-height/padding/font compensation
 was added. Stop at this bounded writer checkpoint; no further trial, SRS, product
 installation/integration or U6 work is included.
+
+## R1 isolated row-height cause discovery checkpoint
+
+**2026-10-21 — PASS_BOUNDED_CAUSE_DISCOVERY_NO_WRITER_CHANGE.**
+Owner authorized isolating horizontal borders and paragraph spacing in small
+documents, then reporting before modifying the writer. Execution IDs N/A;
+single-room discovery/Evidence Reviewer/Documentation Synthesizer, medium size,
+routine risk. Canonical status belongs here; experimental evidence stays under
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/row-height-r1/`.
+No new Work/Phase/Checklist/Evidence registry or map record is created.
+
+### Controlled experiment and actual Word evidence
+
+One shared source `sources/panels.json` contains five sections, each with12 rows
+and two columns. Text, regular Sarabun11pt, source line-height19.84pt,4pt cell
+padding, widths and vertical borders remain fixed. There are no merged cells,
+headers, fields, images or forced row heights. Public unchanged writer generation
+produces `outputs/00-unmodified-control.docx`; a diagnostic copy
+`outputs/row-height-r1-factors.docx` changes only the listed attributes in
+`word/document.xml`. Reverting those attributes reproduces control XML exactly;
+all other ZIP parts are identical. This package intervention is discovery, not
+an implemented writer policy or a fidelity candidate.
+
+Core0.4.7 generates a new five-page `outputs/core-reference.pdf` from the unchanged
+source/resources in the existing network-disabled Docker image. All five Core
+panels intentionally retain baseline semantics: their labels name DOCX factors,
+not changes to Core. No existing PDF reference or PDF implementation is modified.
+The owner exported `row-height-r1-factors.pdf` in Word. Source, control, candidate
+and Core PDF hashes still match their pre-export dispatch identities.
+
+All five Word and five Core pages were rendered at120dpi and visually reviewed;
+the Exact-line page was also inspected at full render size. All12 row markers
+per page are present in order, with no visible overlap or clipped text in this
+probe. Measurements use actual PDF character baselines, all11 row-to-row
+intervals and separately extracted horizontal border geometry.
+
+| DOCX-only factor | Word pitch range, pt | Mean pitch, pt | Change from Word baseline, pt |
+| --- | --- | --- | --- |
+| Baseline: horizontal borders0.5pt, atLeast19.85pt, after0 |28.32–28.46|28.35727|0|
+| Horizontal borders nil; vertical borders retained |27.84–27.96|27.85545|−0.50182|
+| Horizontal borders1pt; vertical borders unchanged |28.80–28.94|28.85909|+0.50182|
+| Exact19.85pt instead of atLeast; all else unchanged |28.32–28.46|28.35727|0|
+| Paragraph after1pt instead of0; all else unchanged |29.28–29.42|29.36091|+1.00364|
+
+Core baseline pitch is27.84pt at every interval, consistent with19.84+4+4.
+Baseline Word–Core mean difference is0.51727pt; no-horizontal-border residual is
+0.01545pt. The earlier0.48pt description is not an exact universal per-row delta.
+Actual Word horizontal border thickness measures0.48pt for nominal0.5pt and
+0.96pt for nominal1pt; interval variation remains visible in the evidence.
+First-to-last baseline spans are311.93pt baseline,306.41pt no-horizontal-border,
+317.45pt thick-border,311.93pt Exact and322.97pt after-spacing; these are11
+interval spans, not complete outer table heights.
+
+### Cause, limits and next decision
+
+Horizontal-border accounting is the dominant observed contributor for this
+fixture: removing borders reduces mean pitch by about0.502pt and doubling them
+adds the same amount. Read-only inspection of installed Core
+`dist/layout/cellTableFlow.js:79–84` shows row geometry sums measured content and
+padding without a border term; its painting path emits edges separately. Native
+Word table borders therefore do not share the same effective row-box behavior.
+This is a mapping mismatch supported by controlled intervention, not a claim
+that Word is defective or a reason to alter PDF geometry.
+
+Exact line spacing leaves row pitch unchanged and shifts the first text baseline
+up1.44pt; it is not a row-height fix. Existing paragraph after-spacing is already0;
+adding1pt predictably adds about1pt per row. Removing required borders, shrinking
+font/padding, forcing row heights or adding font/document-specific offsets is
+not accepted as a correction. A future mapping design should explicitly define
+the content/padding/border box contract and preserve visible border semantics,
+then prove any DOCX adaptation independently before integration.
+
+Only regular Sarabun11pt, single-line unmerged tables are measured here. Other
+fonts/languages, multiline content, merged cells, repeated headers and pagination
+are not newly accepted. The small periodic interval variation/residual is not
+causally isolated; do not attribute it conclusively to rounding or extrapolate a
+fixed0.48pt deduction. Broader support requires structural tests, not SRS patches.
+
+### Evidence coverage and preservation
+
+Evidence: `evidence/{manifest,package-check,dispatched,measurements,results,
+final-review,checkpoint}.json`; `rendered/{core,word}/` full-page/contact PNGs;
+source and all three dispatched output artifacts; scripts
+`qa/row-height-r1-{prepare,core}.mjs` and
+`qa/row-height-r1-{variant,review,finalize}.py` in the H3 workspace.
+Package purity, all55 Word intervals, all55 Core intervals,10-page visual review,
+actual border drawing geometry and an independent read-only review cover the
+bounded discovery criteria. Independent review re-extracted baselines and
+verified factor reversal plus all91 H3 and four dispatched hashes; no blocker
+or important finding. Original stage status labels remain immutable history;
+the final result/review record carries this checkpoint's completion.
+
+All91 H3 checkpoint files and original U4(52), U5(109), H1(50), H2(55) files
+retain their hashes. H3's112/112 tests/type-check are reused only as historical
+proof for byte-identical writer inputs, not reported as a new test execution.
+Project Control check:data, seven local fragments and final diff/whitespace
+checks pass. No data/projection, writer source, dependency, SRS, PDF reference,
+product runtime/API/default format, release or system map changed. U5 full
+acceptance remains open. Stop here before writer changes or further trials.
