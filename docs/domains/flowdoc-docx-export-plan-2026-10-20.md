@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R1 isolated small-document discovery of table row extent, varying horizontal borders and paragraph spacing separately, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R2 isolated border-area mapping probes preserving all borders, including multiline tables and a second font family, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R1 bounded row-extent discovery completed: horizontal-border accounting dominates the observed extra pitch; paragraph Exact changes text origin but not row pitch. All10 Core/Word pages reviewed and prior frozen files preserved. No writer correction made. H3 bounded header mapping remains unchanged; U5 overall acceptance and broader geometry remain open. U6/SRS/product integration remain unstarted**.
+สถานะ: **R2 bounded border-area hypothesis improves row extent for both Sarabun and Bai Jamjuree across single-line, authored multiline and natural-wrap probes; all12 Core/Word pages reviewed. Text origin and cross-renderer wrapping remain different. No writer change or generic mapping acceptance; R1/H3 durable artifacts preserved. U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4250,3 +4250,115 @@ Project Control check:data, seven local fragments and final diff/whitespace
 checks pass. No data/projection, writer source, dependency, SRS, PDF reference,
 product runtime/API/default format, release or system map changed. U5 full
 acceptance remains open. Stop here before writer changes or further trials.
+
+## R2 isolated border-area mapping probe checkpoint
+
+**2026-10-21 — PASS_BOUNDED_ROW_EXTENT_PROBE_WITH_LIMITS; NO_WRITER_CHANGE.**
+Owner authorized preserving original borders while trying a border-area mapping
+on multiline tables and another font family, then reporting before converter
+changes. Scope is disposable discovery in the existing isolated H3 workspace;
+Core owns eventual document mapping, Project Control owns this shared status.
+Role: Evidence Reviewer / Documentation Synthesizer. Medium size, routine risk;
+execution/Phase/Checklist IDs N/A for single-room work. Proof budget: one six-page
+paired Word export, corresponding unchanged Core source, package purity,
+all-page visual/geometry review and one bounded independent review. Document
+budget: this existing plan plus machine-readable local evidence; no new registry
+or map. No production implementation or further SRS trial is authorized.
+
+### Hypothesis and factor boundary
+
+Workspace: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/border-space-r2/`.
+The proposed interpretation measures source vertical padding from the border
+centre; Word's native inner margin is provisionally mapped as source padding
+minus half of that horizontal stroke. For nominal0.5pt borders and source4pt,
+native top/bottom margins become3.75pt (80→75twips). This derives from declared
+border width, not an empirical0.48pt/font/document offset. The source remains
+4pt; this is an unaccepted box-model hypothesis whose effective geometry must
+be measured. It does not overturn R1's rejection of arbitrary padding reduction.
+
+`qa/border-space-r2-prepare.mjs` uses unchanged public `generateDocxTo` to build
+the control. Six sections pair tables A(original) and B(mapped), each with three
+rows. Sarabun and Bai Jamjuree regular11pt each cover single-line, authored
+three-line and natural-wrap mixed Thai/English text. Both families reuse the
+already approved hashed font/OFL resources; no install or font substitution is
+introduced by the probe. Columns70/280pt, line-height19.84pt, source padding4pt,
+and every border/style/text relationship remain fixed.
+
+`qa/border-space-r2-variant.py` changes only top/bottom `tcMar` values in B tables;
+reversing exactly those values restores the original document XML. All other ZIP
+parts and all border XML are unchanged; no forced row height or Exact-line rule.
+The diagnostic mapper refuses negative margins or a half-stroke that cannot be
+represented exactly in twips. Mixed/merged edges and broader border sizes are
+not tested or accepted. No reusable writer source is edited.
+
+### Actual Word and Core comparison
+
+Unchanged Core0.4.7 in the existing offline Docker image generates a new six-page
+`outputs/core-reference.pdf` from the same source/font identities. Core retains
+original geometry in both A/B tables; B's label describes the DOCX intervention,
+not a Core source change. The owner exported `outputs/border-space-r2-pairs.pdf`;
+metadata identifies Microsoft Word for Microsoft365. Both PDFs have six pages.
+All12 pages were rendered110dpi and visually inspected, with Word's final page
+also inspected at full render size. All36 row markers per PDF remain present;
+no visible overlap or clipped content was found in this probe.
+
+Mean row-to-row ASCII marker baseline pitch, pt; both font families yield these
+same displayed values (two measured intervals per table):
+
+| Case | Core | Word A | Word B | A−Core | B−Core |
+| --- | --- | --- | --- | --- | --- |
+| Single line |27.840|28.320|27.840|+0.480|0.000|
+| Authored three lines |67.520|68.040|67.570|+0.520|+0.050|
+| Natural wrapping, four lines |87.360|87.915|87.370|+0.555|+0.010|
+
+Separately measured border-centre row heights retain residual variation:
+mapped single-line27.84/27.84/27.87pt, authored67.56/67.56/67.58pt and
+natural87.50/87.36/87.39pt, compared with Core27.84/67.52/87.36pt respectively.
+Thus the near-zero mean pitch is not proof of exact equality for every row or
+outer table extent. The largest measured mapped row-height residual is0.14pt.
+
+Word A/B right-cell line strings match for all18 row pairs: the intervention
+does not change wrapping in this sample. Core and Word retain three authored
+lines and four natural lines. Sarabun natural-wrap word boundaries visibly
+differ: Core puts English at the start of line3; Word keeps it at the end of
+line2. Bai Jamjuree's visible line boundaries appear the same in this probe;
+raw inequality does not establish a wrap mismatch. Extracted Thai strings contain
+shaping/Unicode artifacts, so raw cross-PDF equality is not a wrap/content oracle.
+Package text invariance and visual evidence are retained separately.
+
+Text origin is still different: the mapped ASCII row-marker baseline remains
+below Core by per-table means of2.72–2.76pt for Sarabun and2.96–3.00pt for
+Bai Jamjuree, measured from each top border centre; individual rows reach
+2.84/3.08pt respectively. Improved row extent does not accept vertical text
+alignment. No per-font correction is inferred, and no font-metric cause is
+claimed proven. Automatic pagination, merged cells, repeated headers, mixed
+borders and small-padding behavior are outside this six-panel experiment.
+
+### Evidence and stopping point
+
+Local `evidence/{package-check,control-receipt,core-probes,dispatched,pdf-geometry,
+measurements,final-review,results,checkpoint}.json`, source `sources/panels.json`,
+control/candidate DOCX, Core/Word PDFs and `rendered/{core,word}/` retain the
+probe. Reproduction scripts are H3 `qa/border-space-r2-*`; writer source,
+dependencies, original source and previous PDF references remain unchanged.
+
+All91 H3 and original U4(52), U5(109), H1(50), H2(55) frozen files retain hashes.
+R1's34 durable checkpoint files also retain hashes. Its historical checkpoint
+accidentally included a transient Word `~$` owner lock which has since disappeared;
+the missing lock is explicitly excluded/classified in R2 preservation evidence,
+and the historical manifest is preserved rather than silently rewritten.
+No claim is made that this transient lock remains byte-identical.
+
+A fresh read-only reviewer independently verified72 margin-only XML edits,
+reversal, frozen/dispatch/PDF hashes, numerical results and all12 contact-sheet
+pages. Review found no blocker; it corrected the interpretation of Bai Jamjuree
+raw PDF text inequality and distinguished mean marker offsets from individual
+row maxima. Project Control check:data, seven local fragments and final
+diff/whitespace checks pass. No canonical data/projection changes are needed.
+
+The result supports continued consideration of a shared border-box mapping,
+not generic acceptance or incorporation into the converter. Any later writer
+change needs its own explicit bounds and checks for border geometry, text
+origin and wrapping independently. No font-specific offset, SRS trial, original
+PDF modification, product/API/default-format change, install or release occurred.
+Stop at this report; U5 full acceptance remains open.
