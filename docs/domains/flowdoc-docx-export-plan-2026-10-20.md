@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is U2 in isolation only. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is U3 in isolation only. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1 mapping and bounded U2 native text/image components checked; U3–U6 unstarted. Small independent package probe only; no public serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
+สถานะ: **U1–U3 bounded mapping/native components checked; two U3 metadata minors deferred and full profile acceptance pending. U4–U6 unstarted. Small independent package probes only; no public serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3075,14 +3075,14 @@ and verified resource contracts; produces `Preflight`/`ExportIntent` above.
 **U3 — Table topology and bounded reading groups.** Files: tables and group
 derivation in intent, `tests/tables-groups.test.ts`; consumes U1/U2.
 
-- [ ] Add failing spans/header boundaries, adjacent-table separation, empty
+- [x] Add failing spans/header boundaries, adjacent-table separation, empty
   cells, source padding, repeat headers, allowBreak/rowGroups, short heading
   groups and oversized paragraph/row with trailing-image cases.
-- [ ] Implement source-driven tables and bounded group/tail mapping using
+- [x] Implement source-driven tables and bounded group/tail mapping using
   structural/authored boundaries. Keep text split offsets/anchors stable;
   never bind an entire oversized paragraph to its following image. Refuse
   groupLabel or unsafe mandatory groups, rather than weaken preservation.
-- [ ] Verify text/image identity, topology and keep-chain bounds, plus renamed
+- [x] Verify text/image identity, topology and keep-chain bounds, plus renamed
   content/IDs and reordered counterpart cases proving no fixture selector.
   Save a checkpoint after checks; actual split/header/endings await U5.
 
@@ -3392,3 +3392,135 @@ change, DB/template mutation, release or push occurred.
 
 **Stop after U2.** U3 has not started. Owner review is the return point; do not
 advance to full SRS or integration from this component checkpoint.
+
+
+## U3 table and reading-group checkpoint — 2026-10-21
+
+### Authority and implementation boundary
+
+Owner explicitly authorized U3 only: tables and heading/text/image grouping,
+small independent fixtures, existing isolated workspace, return before U4.
+Prior U1/U2 checkpoints remain immutable historical inputs; no registered
+execution is resumed. Roles: isolated implementation / Evidence Reviewer /
+Documentation Synthesizer; Work Size medium / Risk routine / execution IDs N/A.
+Current session inline model; one fresh read-only final reviewer under the
+selected execution skill. Validated Current Truth Snapshot was rebuilt read-only;
+its unrelated frontend roadmap grants no product authority here.
+
+Markdown pre-action gate: update this existing Project Control canonical plan
+only; no product Markdown, new Work/Phase/Checklist/Evidence/map records or
+projection change. Allowed code writes remain in `unified-docx-writer` beneath
+the experiment root above. No Git initialization, dependency/lockfile change,
+product source/configuration/data/template/DB mutation, release or push.
+
+**PASS for bounded table/group native components and package structure, with
+two declared minor metadata gaps; no rendered/full-profile acceptance.** New
+`src/groups.ts` derives a frozen reading plan from the genuine immutable central
+intent; `src/tables.ts` builds native tables/body-flow components. `src/text.ts`
+adds authored-line fragments, bounded keep settings and source heading outline
+levels. The existing public index still exports no complete writer. Only
+`src/text.ts` and `package.json` changed among the hashed U2 checkpoint files.
+
+Tables preserve source order/grid and cumulative widths, horizontal spans,
+vertical restart/continuation cells without duplicate source text, authored or
+default4pt padding, fills,0.5pt borders, header-repeat flags and row allowBreak.
+No exact row height, font shrinking or padding compensation is introduced.
+Native empty/continuation cells receive a structural1pt paragraph; independent
+adjacent tables receive a reported1pt separator paragraph, with no source text
+invented. Their actual Word/border/paragraph footprint remains unverified.
+
+### Bounded grouping and refusal rules
+
+Heading recognition uses existing `props.toc.level`, never title text, a style
+name, SRS identity or output coordinates. A heading and at most one following
+description can keep with a bounded first table row. Source outline metadata
+is emitted; bookmarks/links/references/page fields remain located refusals
+pending U4. The U3 body-flow harness refuses multiple sections instead of
+flattening their semantics; U4 still owns real section serialization.
+
+Same-container text followed by an image creates a bounded tail relation.
+Long text remains splittable; only the final tail at an existing normalized
+authored LF may become a separate kept paragraph. The removed LF is recorded
+as a logical separator, and intersected nonzero inline/link ranges retain
+original, source and local positions. Original source text/offsets/anchors stay
+in the immutable central intent. No physical PDF breaks or new authoring fields
+are injected. A long unbroken tail without a suitable authored boundary fails
+with `DOCX_REQUIRED_RELATION_UNSUPPORTED` and source location.
+
+Eligibility uses the concrete face's maximum advance/bounding-box and vertical
+metrics, actual font size, source content width and section body height. This
+is a restrictive **provisional candidate envelope**, not a universal shaping or
+Word-fit theorem: combined kept candidates must fit within the lesser of120pt
+and one third of section body height. Row starts allow at most two prefix rows
+plus the first member. Fixed spacer heights participate; unsafe required groups
+fail rather than force oversized keeps. Any vertical merge intersecting a
+required row-start window, including an origin in an earlier row, is refused.
+Repeated fragment labels and malformed/overlapping/noncontiguous groups are
+refused. Real Word grouping and repeated-header behavior still require U5.
+
+### Verification and final review
+
+- Tests were written RED before implementation; four self-review cases also
+  failed before correction. Final suite **71/71 PASS**:51 prior U1/U2 cases
+  plus20 U3 cases. Type checking passed.
+- Cases cover source padding/fills/borders, empty cells, horizontal/vertical
+  merges, invalid/cross-header spans, header/split markup, adjacent tables,
+  oversized ungrouped text, safe/unsafe trailing images, authored tail ranges,
+  heading/description/table starts and group prefixes. Renamed IDs and reversed
+  node-object order produce equivalent behavior without fixture selectors.
+- Fresh final review found two Important defects: explicit paragraph false
+  overrode row keepStart in fully populated prefix cells; incoming vertical
+  merges escaped group-window accounting. Both were reproduced by new failing
+  tests, fixed in one correction pass, and the whole71-case suite passed.
+  No second review was substituted for regression proof.
+- Small independent package probe: three tables,12 physical cells including one
+  vertical continuation, two native table separators, heading/description and
+  an authored long-text/tail/image case. Separate Python/lxml inspection checks
+  every physical cell against source grid/span/padding/fill, logical text/tail
+  separator, all relevant prefix paragraphs, header/split flags and original
+  PNG bytes/relationships. All XML parts parse. Structural check PASS.
+- All22 frozen inputs and29 mapping-audit source/evidence files retain hashes;
+  old U1/U2 receipts/probes and resource identities remain unchanged.
+
+Paths beneath the isolated workspace: `src/{groups,tables}.ts`,
+`tests/tables-groups.test.ts`, `fixtures/u3-fixtures.ts`,
+`fixtures/u3-tables-groups.json`, `qa/generate-u3-probe.mjs`,
+`qa/check-u3-package.py`, `qa/u3-tables-groups-unverified.docx`,
+`evidence/u3-final-review-red.txt`, `evidence/u3-final-green.txt`,
+`evidence/u3-type-check.txt`, `evidence/u3-independent-package-check.json`,
+`evidence/u3-probe-receipt.json`, `evidence/u3-final-review.json` and
+`evidence/u3-checkpoint.json`. The checkpoint hashes37 files;
+SHA256 `6849c7121c60bc4f9d8b1bb1c13a53524ad24cbf664cce5a51788b007c180489`.
+The DOCX is an internal unverified package probe, not accepted output.
+
+### Deferred minors and return point
+
+Two reviewer-reproduced **minor** metadata issues are deliberately visible:
+
+1. Table ID `__proto__` is not an own serializable key in the plain-object
+   `keptRows` dictionary. Current in-memory construction works, but its JSON
+   receipt may omit that special ID. Use a prototype-safe dictionary before
+   arbitrary-ID receipt completeness or full profile acceptance is claimed.
+2. Zero-width page-field spans are omitted from fragment span descriptors.
+   Original intent retains them and U2/U3 refuse field serialization, so no
+   current emitted DOCX field-loss claim is made. U4 must define point-boundary
+   ownership and preserve descriptors before enabling navigation/fields.
+
+These are deferred obligations, not passing checks. The final review skill's
+one correction pass fixes Important findings; minor details are recorded for
+owner review. U3's checked task boxes certify only the bounded behavior above,
+not zero-width field/anchor serialization or special-ID receipt completeness.
+No other minor finding or declined judgment is hidden.
+
+Rulings: retain pinned local dependencies and hash-based external isolation;
+keep the conservative grouping envelope provisional; allow U3 source outline
+mapping but defer navigation; stop at component/package proof. If these calls
+prove unsuitable in Word or another supported resource, revise the adapter
+within the future stage instead of compensating source/PDF geometry. No universal
+font, page-fit, capacity, actual header-repeat or image-ending claim is made.
+
+Project Control impact is this existing plan only: check:data, all7 local
+fragment links, final diff/scope and whitespace checks passed. No canonical
+data record changed; projection regeneration is unnecessary. No Word/PDF run,
+SRS trial, PDF reference edit, real API/writer/embedding/sink/cancel/budget work
+or product integration occurred. **Stop after U3; U4 has not started.**
