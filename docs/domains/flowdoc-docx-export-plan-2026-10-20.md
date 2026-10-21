@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V12 Word review complete: both corrected font/line pairs meet the declared nominal baseline tolerance with unchanged row heights; crossed controls separate observed line effects from Core font-dependent targets; full-SRS calibration unaccepted; PDF reference frozen; product integration not started**.
+สถานะ: **V13 full-SRS candidate generated and saved-package verified for26eligible tables using V12 calibration; owner Word export and pagination/header/group/icon acceptance pending; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2495,3 +2495,124 @@ Next recommended work คือ bounded full-SRS trial ของ natural11/397 g
 55/55-margin family พร้อม sibling-cell/row guards แล้วตรวจ pagination,
 table splits/repeated headers, heading groups และ icons. ยังไม่สร้าง candidate
 รอบถัดไป, ไม่จูนทุกfamily, ไม่แก้ PDF/source/runtime และไม่รับ product readiness.
+
+## V13 full SRS eligible-family trial
+
+Owner authorizes one full-SRS experiment before proceeding to later difference
+categories: use accepted values only in eligible tables, then compare pagination,
+repeated column headers, headings and icons against frozen PDF. Same isolated
+experiment, no reference PDF/source/runtime change. Existing V11 full candidate
+remains immutable input; V12 two-pair findings are bounded calibration evidence,
+not an already accepted full-document policy.
+
+Authority: explicit request + this existing canonical plan. Roles Planning
+Partner / Evidence Reviewer / Documentation Synthesizer; Project Control owns
+this record, future product writer owner remains Core with no product edits.
+Execution/Phase/Checklist IDs N/A in this unregistered single-room continuation.
+Work Size medium / Risk Tier routine. Model decision: retain current session
+model for inline authoring and inherited read-only discovery/final verification
+helpers, no new PLAN/WORK room or model override. Current Truth Snapshot was
+rebuilt read-only; unrelated roadmap state does not override this explicit task.
+
+Markdown gate: update this Project Control canonical plan only. Document Budget
+one existing plan; machine-readable selection/generation/verification/acceptance
+targets under `tuning-v13/`. Allowed mutations: this plan, new `tuning-v13/`
+files and one `outputs/srs-cell-origin-v13.docx`. Preserve all prior evidence,
+DOCX/PDF outputs and source inputs. Forbidden: Core/reference PDF, resolved
+data/assets/template, product repositories/dependencies/configuration/DB,
+maps/global guidance/releases/tags/push/install. Experiment isolation already
+exists; no new checkout or destructive cleanup.
+
+### V13 scope and acceptance
+
+Source `outputs/srs-semantic-grouping-v11.docx`, SHA256
+`39a7de89643f901c40a995364b5e8848af73c19b8152035e9178f9ad10d5e0ff`.
+Retain V11 heading/short-description/table grouping and all V9 icon/oversized
+paragraph safeguards. Use accepted27twip upward redistribution for natural
+Sarabun11pt/exact397 only; no13/480 overlay or guessed crossed-pair correction.
+
+Select by table/row/cell properties, never SRS title, requirement ID, heading
+name, paragraph index or physical page. Expected family:26whole tables /
+389logical rows /1,167cells, fixed three-column10770twip grid, gray666666
+0.5pt borders, top alignment, explicit55/55vertical and85/85horizontal margins.
+All sibling cells must satisfy guards; preserve original text/empty/image
+paragraph policies, widths, row splitting, header flags and keep properties.
+Only `tcMar/top@w:w`55→28 and `tcMar/bottom@w:w`55→82 change; total110twips
+and minimum top padding>=20twips remain. Other style/margin families stay intact.
+Source paragraph/run/CS/font/line/field/image properties and all non-document
+ZIP resources must match baseline exactly after inverse margin restoration.
+
+Proof Budget: one full-SRS candidate/one manual owner Word export; before export
+run structural positive/negative selector controls, exact raw/canonical XML
+inverse, independent saved-package preservation checks and frozen-input guards.
+Static package PASS does not certify rendered row-height/pagination parity.
+After Word export compare source-matched rows/line origins and full output:
+TOC links/printed page labels, page fields/bands, repeated header continuation,
+32heading-description-table relations including15.4, known REQ0004/REQ0041
+splits and text/icon endings, plus all371ordered body image identities.
+
+Baseline Word99pages versus Core98 is retained as an observation, not a target.
+Recompute header/page coverage from actual continuations; do not hard-code V11
+55requirement pages/76bands or24meeting-header occurrences as fixed V13counts.
+Inspect every new output page, reusing prior full-page QA only where new raster
+comparison proves identical pixels. No averaging away content/relationship
+loss, clipping, changed row height, hidden header or icon-only ending.
+
+Unknowns blocking acceptance: full-document row/fragment/pagination response to
+padding redistribution and any text-position quantization near the V12.12pt
+boundary. Exact Word internal font metrics remain deferred; scope does not
+include changing PDF line placement to chase parity. Stop after the declared
+single candidate/export review, preserving any regression as a result rather
+than silently authoring extra revisions or promoting product readiness.
+
+### V13 generated candidate and owner Word checkpoint
+
+Generated `outputs/srs-cell-origin-v13.docx`,1,084,303bytes, SHA256
+`ed65d2e0c551af6e2bdf7af45a7123c4c81caf62bf147b31f06b728264f7e262`.
+Only2,334equal-length margin-attribute replacements in `word/document.xml`;
+raw inverse restores every source byte and canonical inverse matches as well.
+All174unselected tables remain unchanged. Main-story counts remain2,775p /
+4,609r /200tables /933rows /1,932cells /371drawings /198hyperlinks /922breaks /
+7sections /396bookmarks /199field-instruction nodes. No drawing ID reassignment,
+line/font/CS/emphasis/keep/header/field/section/asset change.
+
+Independent source discovery identifies26tables /389rows (26header,363body).
+Cell counts are439text only +363text with image +365empty =1,167; image-only
+cells0. Paragraph counts are802text +363image only +365empty =1,530. Image
+paragraphs retain0.5pt marks and `atLeast320`; all empty siblings retain11/397.
+These are separate cell/paragraph counts, not interchangeable layout units.
+Selected2,012-codepoint oversized text retains72breaks, `keepNext=false` and
+`keepLines=false`; no oversized chain is reintroduced.
+
+Root selector controls PASS19 including renamed-content independence and
+one-sibling font/CS-size/line/margin/border/alignment/span/image-spacing mismatch,
+enabled non-splitting, row-height, merge and nesting exclusions. Initial test
+records remain: unimplemented guard RED; next detached synthetic-table fixture
+failed direct-body eligibility. Corrected fixture restores body context and
+passes before candidate authoring; final report `verification/selector-controls-r1.json`.
+
+Independent saved-package verification PASS4,955assertions/zero failures:
+membership matches source family, all row siblings receive28/82, total110,
+raw/canonical XML inverse is exact, and all124other ZIP payloads/compressed
+local records remain identical. Ordered text/runs/paragraph/row/section
+properties, images, fields, header flags and oversized keep guards are frozen.
+This is package acceptance only; actual Word row heights/continuations remain
+unverified. No extra candidate or automatic Word conversion was started.
+
+Locators under `tuning-v13/`: `scripts/{select_family,check_selector,build_full_srs}.py`,
+`generation.json`, `discovery/{eligible-family-final,acceptance-targets}.json`,
+`verification/{selector-controls-r1,saved-package}.json` and
+`preflight/root-review.json`. Independent discovery/hash agrees with root
+selection; root preflight PASS40checks covers22frozen input/candidate hashes,
+calibration/source/candidate freeze and pending
+acceptance. Reuse V11 baseline/Core QA only within declared identity/content
+boundaries after actual V13 comparison. Pre-export checks for this prose-only
+Project Control update: `check:data`, local anchors and `git diff --check`;
+no generated projection changes or product/map promotion.
+
+**Ready for one owner Word export; V13 rendered acceptance PENDING.**
+Open the new DOCX and save `srs-cell-origin-v13.pdf` in the same output folder;
+update the entire TOC if Word asks. Next review uses the prepared32groups,
+26requirement-table continuation rules,15meeting tables,198TOC entries,
+371images, known long-row/icon endings and all-page QA. Actual page/header
+counts are measured from V13, not copied as required numbers from V11.
