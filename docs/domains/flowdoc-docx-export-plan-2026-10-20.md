@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is H2 isolated complex-header/automatic-flow feasibility after H1. Return findings before writer changes; no SRS, PDF reference or runtime repair is authorized. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is H3 bounded header-space integration in a new isolated writer copy, capacity/receipt corrections and small-document Word regression. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U5 remains reviewed with gaps, not accepted. H1/H2 Word probes support source positive top margins plus authored gap for observed paragraph, PNG and weighted-column headers with natural body/table pagination. H2 recovers66–68pt on hidden-header pages; baseline differences and a one-row table-break difference remain. No writer repair integrated. Frozen two-family resources and U1–U4/U5/H1 evidence remain unchanged. Width-induced header wrapping, broader geometry, row extent, image placement, Word PDF Unicode and boundary-group coverage remain open. U6/SRS/product integration remain unstarted**.
+สถานะ: **H3 bounded header-space mapping implemented in a new isolated writer copy;112 tests/type-check and actual H1/H2 Word regression pass. All12 new Word pages match prior reviewed probes at90dpi and exact character geometry/navigation. Native margins and conservative page-type capacity receipts are separate; unverified shapes retain explicit legacy fallback. U5 full acceptance remains open for wrapping/broader geometry, row extent, image placement, Word PDF Unicode and boundary-group coverage. All prior frozen evidence preserved; U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4030,3 +4030,124 @@ capacity/validation policy together. Broader cases must stay conditional or be
 refused until verified. Do not promote this package probe to generic support,
 change source/PDF geometry, tune document/font-specific offsets or integrate it
 without the next owner-authorized scope. Stop here before writer/SRS/product/U6.
+
+
+## H3 bounded isolated writer integration checkpoint
+
+**2026-10-21 — PASS_ISOLATED_BOUNDED_HEADER_MAPPING_AND_WORD_REGRESSION.**
+Owner authorized integrating the observed header-space mapping in the experimental
+writer, revising capacity checks/receipts and repeating small Word documents,
+then returning before further scope. This does not accept all of U5 or authorize
+SRS, U6, PDF reference or product integration. Execution IDs N/A; one-room isolated
+implementation/Evidence Reviewer/Documentation Synthesizer, medium size/routine
+risk. Only the new isolated copy and this existing canonical plan changed.
+
+### Isolation and selected mapping
+
+New sibling workspace:
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/`.
+The original `unified-docx-writer/` and its frozen U4(52), U5(109), H1(50), H2(55)
+files retain all hashes. Source/tests/fixtures/fonts/vendor/configuration were
+copied before editing. `node_modules` is a junction to unchanged pinned parent
+dependencies, with no install/update. Dependency lock and all resource bytes stay
+identical; package.json changes only the local test command to include H3 tests.
+No product repository, DB, source template/PDF, real API/default format, release,
+system map or DOCUMENT_MAP change occurred.
+
+`src/header-space.ts` selects a structural envelope, without document titles or
+font-name offsets:1–3 plain authored text paragraphs; one PNG frame no greater
+than42pt followed by caption; or two equal weighted columns with two plain text
+paragraphs each. Existing concrete-font/no-wrap/fit validation still runs. Fields,
+links, embedded authored LF/CR/tab, fixed text, rules, explicit placement and
+other graphs do not enter the new policy. Unselected otherwise-supported shapes
+retain maximum reservation with a located fallback reason; existing unsafe-fit
+refusals remain. This is a bounded structural policy, not a full font/geometry
+acceptance matrix or permission to silently drop unsupported relationships.
+
+For selected headers, `src/sections.ts` keeps the source positive top margin and
+native header distance. `src/bands.ts` maps the source gap into the final header
+paragraph's after-spacing, including the terminal structural paragraph of the
+native layout table. Small internal after-spacing options in `src/text.ts` and
+`src/tables.ts` default to0 for existing consumers. No output-package patch is
+used by the generator. Footer construction, source gap and maximum reservation
+remain unchanged.
+
+### Capacity and receipt contract
+
+Serialization and conservative checks are now distinguished:
+
+- `nativeMarginTwips` records the margins actually serialized. The existing
+  `reservedMarginTwips` field remains an alias for these native margin values.
+- `estimatedMaximumMarginTwips` records the conservative source/band envelope.
+  `capacityByPageType.first/continuation` records estimated top/bottom/body height
+  and header visibility. Visible selected headers use the conservative band
+  envelope for checking; hidden pages use source top. Unselected headers retain
+  the same maximum estimate on both page types.
+- `bodyHeightPt` is the minimum of both estimates, explicitly identified by
+  `bodyHeightBasis: minimum-estimated-page-type`. Intrinsic line/fixed-spacer/
+  image checks use that minimum; restoring a smaller native top does not bypass
+  the guard. Maximum estimated reservation growth still cannot exceed40% of
+  original body height. No speculative extra capacity is accepted.
+- Per-band `spacePolicy` distinguishes native-visible-header, maximum-reservation
+  and none, with source gap/shape/fallback reason. Whole-section
+  `maximumBandReservation:false` signals selected dynamic header policy; footer
+  still explicitly reports its own maximum-reservation policy. Writer adaptations
+  disclose dynamic selection and legacy fallback. Estimates remain marked as
+  estimates; receipt `wordVerified:false` and native-footprint verification flags
+  remain false. Actual Word review is separate evidence, not a global receipt claim.
+
+A regression also fixes the new capacity visibility flag when source mode is all
+but no header band exists: it reports false. This receipt-only fix was made after
+dispatch; fresh final-code generation into memory confirms H1/H2 persisted section
+and adaptation receipts exactly match dispatched receipts. User outputs were not
+replaced or sent for an unnecessary second conversion.
+
+### Tests and actual Word regression
+
+TDD evidence: initial H3 focused run had4 intended failures/1 retained guard pass;
+then the missing-band receipt regression was observed failing before its fix.
+Final **112/112 tests PASS**, type-check PASS. Existing106 regression cases remain
+passing. Tests cover positive native margins/source gaps for H1/H2, per-page
+conservative capacities, unverified-shape fallback, unsafe spacer abort/no publish,
+unchanged footer policy and absence visibility. A fresh static review found no
+blocker and rechecked the receipt-only fix; it did not claim to rerun Word/tests.
+
+`qa/generate-h3.mjs` uses only public `generateDocxTo` and the copied shared sources/
+resources to create `outputs/01-h1-integrated.docx` and `02-h2-integrated.docx`.
+H1/H2 source SHA256 values remain respectively
+`e80f81677bf224af8bc885ca9cf0c92456a2734fbbced8798dfffc7db4aa1b42` and
+`204a50cc6a311a2c11ed0f59dbbcff1a2d4b525273e5cdeaf07e4146ac0a10f7`.
+Original Core comparison PDFs are reused by their unchanged identities.
+
+The owner manually exported both new DOCX files in Word, refreshing H1 TOCs.
+Both new PDFs have6 pages. Every one of12 new full-page RGB rasters is exactly
+identical at90dpi to the corresponding already-reviewed H1/H2 candidate raster.
+Actual PDF character text, matrices, font sizes and boxes also match exactly;
+link destination pages and external URI match. Thus review reuses exact pixel
+coverage from the previously reviewed bounded probes, rather than asserting a fresh broader
+visual acceptance. Source DOCX hashes remain identical to dispatch.
+
+Package checks parse49/41 XML parts, check relationships/margins/conservative
+receipts, and compare full document/header XML to the Word-tested probes. Only
+balanced generated bookmark/TOC/drawing counters and external relationship IDs
+with the same URI are normalized for that comparison. No layout/content mismatch
+is hidden by package-date/font-key differences.
+
+### Durable evidence, limitations and stop
+
+Evidence under the H3 workspace: `evidence/{baseline,scope-check,dispatched,
+independent-package-check,word-review,word-geometry-check,word-navigation-check,
+final-receipt-consistency,final-review,results,checkpoint}.json`, red/final test
+logs, type-check log, `implementation.diff`, per-document writer receipts and
+full-page/contact PNGs in `evidence/rendered/`. Checkpoint hashes91 files;
+SHA256 `8e3bdf7b6cc4e4b65ece00ed8822fd2405123aae3fe849229b47cb0cf9488148`.
+Project Control check:data, local fragments and final diff/whitespace checks pass;
+no canonical data record or projection changed.
+
+H1/H2 measured differences are retained exactly, including H2's one-row table
+break difference and residual baseline offsets. Header width-induced wrapping,
+arbitrary semantic header tables, unequal first/default heights, broader font/
+geometry coverage, Word PDF Unicode, image-frame placement and required-group
+boundary proof remain outside acceptance. No row-height/padding/font compensation
+was added. Stop at this bounded writer checkpoint; no further trial, SRS, product
+installation/integration or U6 work is included.
