@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **DOCX-first alignment/wrap tuning active in the isolated SRS prototype; V3 package checks pass, Word render pending; PDF reference frozen; earlier automated hang diagnosis remains paused; product integration not started**.
+สถานะ: **V3 Word verification confirms table-position improvement; Thai wrap unchanged; DOCX tuning remains incomplete; PDF reference frozen; earlier automated hang diagnosis remains paused; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1060,3 +1060,50 @@ Packaged `render_docx.py` ลองแล้วไม่มี `soffice.exe` บ
 ขอเจ้าของเปิด V3 ใน Word และบันทึก `srs-tuned-v3.pdf` ในโฟลเดอร์เดียวกันแล้ว.
 **Word alignment/wrap verification pending**; ไม่ส่งเป็น final-ready DOCX และ
 ไม่ claim ว่า wrap ดีขึ้นจาก package PASS เพียงอย่างเดียว.
+
+### V3 owner Word verification result
+
+เจ้าของช่วยแปลง V3 แล้ววันที่ 2026-10-21. `outputs/srs-tuned-v3.pdf`
+มี 99 pages / 1,001,269 bytes, SHA256
+`118ffee934290fd96e7e6ad600bdd05fd4a771037b2522d38ef8847b9d599dfb`;
+Word metadata creation time 08:31:12 +07:00. V3 DOCX ยังตรง hash เดิม
+`cf656c2b6fb6998b633dd02d6b79d571b69a5dcc65d7042769798bd70f622526`.
+ตรวจแบบ read-only; ไม่มี Word automation หรือ candidate repair ระหว่าง verification.
+
+| Targeted measurement, pt | Core PDF | Word V2 | Word V3 | Result |
+| --- | ---: | ---: | ---: | --- |
+| Cover Version left | 191.532205 | 320.950000 | 191.810000 | Large offset removed; residual +0.277795 |
+| Cover value 3.0 left | 308.125984 | 437.860000 | 308.690000 | Large offset removed; residual +0.564016 |
+| Page 3 left/right border centers | 28.350000 / 566.925591 | 32.880000 / 571.439990 | 28.560000 / 567.239990 | Residual +0.210000 / +0.314399 |
+| Page 27 left/right border centers | 28.350000 / 566.850000 | 33.600000 / 572.160020 | 28.560000 / 567.239990 | Residual +0.210000 / +0.389990 |
+| Page 11 first intro paragraph | 4 lines | 5 lines | 5 lines | V3 line texts and coordinates exact V2; language hypothesis did not improve wrap |
+
+เทียบ vertical-border centers ชนิดเดียวกัน: V3 page 27 center span 538.679990 pt
+เทียบ Core 538.500000 pt; ยังต่าง +0.179990 pt แม้ declared grids/widths ไม่เปลี่ยน.
+ไม่เพิ่ม arbitrary width correction. Page 3 cell left insets คงประมาณ 4.32 pt
+เทียบ Core 4.25 pt; page 27 Features List center offset ภายใน cell +0.024805 pt.
+ตำแหน่งชิดซ้าย/กลางในตัวอย่างดีขึ้นพร้อม padding เดิม; ไม่มี right-aligned paragraph
+ในตารางที่สุ่มวัด จึงไม่ขยายเป็น right-alignment PASS ทั้งระบบ.
+ความต่างแนวตั้งยังอยู่: cover Version ต่ำกว่า Core +1.741280 pt, page 3 table
+bottom 231.500000 เทียบ Core 229.150841 pt; page 27 row heights ประมาณ
+28.32 เทียบ Core 27.84 pt. ขนาด glyph ที่ PDF ระบุ Word 11.04 เทียบ Core 11 pt.
+
+All-page data check เทียบ V2: raw pypdf text ตรง 99/99 pages, media boxes ตรง
+99/99, painted image identities/order ตรงทุกหน้า 469 occurrences = 371 body
++ 98 header. TOC links resolve และ printed page ตรง destination 198/198;
+rectangles/destinations ตรง V2. Page fields แสดงครบ 98 non-cover pages.
+ผลเหล่านี้เป็น preservation checks เทียบ V2 ไม่ใช่ strict source/glyph parity.
+Render V3 ครบ 99 pages ที่ 96 dpi; visual comparison รอบนี้ตรวจเฉพาะ pages
+1, 2, 3, 10, 11 และ 27 ไม่อ้าง full all-page visual acceptance รอบใหม่.
+
+**PARTIAL: table-position hypothesis supported; complex-script language alone
+does not fix Thai wrap.** Page 10 legend wrap ก็ยังตรง V2. ไม่มีหลักฐานว่าถึง
+ข้อจำกัดจริงที่จำเป็นต้องแก้ PDF แล้ว. Next diagnosis ควรแยก Thai word-boundary
+behavior และแนวตั้ง/line metrics ฝั่ง DOCX; ไม่เดา RTL/CJK flags หรือเติม forced
+line breaks เพื่อให้ภาพตัวอย่างดูผ่าน. Wrong repeated meeting header ยังเป็น
+known defect ตาม scope เดิม. ไม่สร้าง V4 หรือแก้ PDF/product ใน verification รอบนี้.
+
+Locators ใต้ `tuning-v3/word-review/`: `review.json`, `renders/`,
+`comparisons/compare-*.jpg`, `geometry-agent/geometry-review.json` และ
+`content-agent/comparison.json`. สถานะนี้แก้ pending เฉพาะการตรวจ V3;
+ไม่ได้ promote generic DOCX readiness หรือปิดงานจูนทั้งหมด.
