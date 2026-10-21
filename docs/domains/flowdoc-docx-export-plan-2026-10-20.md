@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R6 isolated discovery of the remaining0.12pt baseline-gap component using the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is consolidation of R1–R6 into mapping rules and a proposed isolated converter-change plan for review. This is planning only: no further probes or writer implementation, SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R6 identifies the remainingR5 component in raw PDF operands and confirms0/.12pt coordinate-step response in the observed Word pipeline: source.05/.10pt shifts move Core exactly but Word points remain still or move.12pt in both fonts. This is bounded quantization evidence, not a fixed correction, universal tolerance or identification of Word's internal rounding stage. No writer correction adopted; U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
+สถานะ: **R1–R6 consolidated into the proposed mapping rules and M1 isolated implementation plan below. Border-area and wholly empty-header adaptations have bounded evidence; a general text-baseline correction remains unproven. No correction is implemented by this planning checkpoint. U5 overall acceptance remains open; SRS/product integration remain stopped**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -44,12 +44,13 @@ Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแ�
 Work Size: medium สำหรับการวางแผน; implementation แบ่งตาม stages ด้านล่าง.
 Risk Tier: routine สำหรับเอกสารนี้; product stages มีความเสี่ยงเรื่องความครบถ้วน
 และ compatibility ซึ่งต้องตรวจตามขอบเขต ไม่ใช่เหตุให้ประกาศ critical โดยอัตโนมัติ.
-Work authority รอบปัจจุบัน: disposable prototype/discovery และบันทึกผลในแผนนี้;
+Work authority รอบปัจจุบัน: planning/documentation only และบันทึกผลในแผนนี้;
 ไม่ใช่ product implementation หรือการรับรอง feature ทั้งระบบ.
 
-Allowed mutation: เอกสารนี้และ experiment root ที่ระบุในผลทดลองเท่านั้น.
-อนุญาต dependency เฉพาะพื้นที่แยกและ Word review/export ของไฟล์ทดลอง;
+Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้เท่านั้น; experiment roots เป็น read-only.
+ขอบเขตทดลองที่เคยอนุญาตในรอบก่อน: dependency เฉพาะพื้นที่แยกและ Word review/export;
 ใช้ installed image แบบ read-only ใน disposable container เพื่อสร้าง Core PDF อ้างอิง.
+รอบวางแผนนี้ไม่เปิดการทดลองหรือการติดตั้งเพิ่ม.
 ไม่แก้ Core, Service, plugin runtime, installed production package/configuration,
 DB, template หรือเอกสารผู้ใช้. ไม่สร้าง release/tag/push/production install
 และไม่เปลี่ยน system/DOCUMENT_MAP.
@@ -4810,3 +4811,255 @@ projection/map promotion, writer source, PDF reference/source/implementation,
 SRS, product/API/default-format, font/dependency/resource, install or release
 change occurred. Stop at this cause report; no fixed correction or converter
 integration is selected, and U5 overall acceptance remains open.
+
+## Consolidated geometry mapping rules and M1 isolated change plan
+
+**2026-10-21 — PLAN_READY_FOR_OWNER_REVIEW; NO_IMPLEMENTATION.** This section
+consolidates the preceding R1–R6 evidence; it supersedes no historical result.
+The owner requested rules and a plan before changing the converter. Project
+Control owns this plan; Core owns eventual semantics/writer implementation.
+Role: Planning Partner / Documentation Synthesizer; medium size, routine risk;
+Work/Phase/Checklist/execution IDs N/A for this single-room planning checkpoint.
+No new runtime, source contract, supported-font claim or production acceptance
+is established here. Service/API and absent `Output-Format` → PDF stay unchanged.
+
+### Evidence to decision
+
+| Concern | Established observation | Proposed decision and limit |
+| --- | --- | --- |
+| Border area, R1/R2 | Horizontal strokes contribute to native Word row extent. With source padding4pt and nominal0.5pt strokes, native3.75pt vertical margins reduce row-pitch differences to0/0.05/0.01pt across the three bounded shapes/two fonts; individual row residual reaches0.14pt. | Adapt the coordinate convention, preserving the stroke and source padding. Accept only after direct writer/Word verification; this is not a universal exact-height result. |
+| Text origin, R3 | Core centers shaped metrics within effective leading; changing leading moves its baseline differently from the observed Word AtLeast behavior. A fixed3pt shift and Exact spacing do not generalize. | Preserve native text flow for now. Describe the unresolved baseline policy; require a separate feasibility decision before any displacement. |
+| Empty header, R4 | A serialized empty1pt header at the body boundary shifts content approximately1pt; setting only its distance to0 removes that bounded cause. | Set header distance0 only when both effective first/default headers are empty; retain explicit empty references to prevent inheritance. Mixed visible/hidden headers retain H3 policy. |
+| Following text, R5 | Measuring from a border centre conflates half its thickness with spacing. Outer-edge normalization leaves−0.05pt in the bounded sample. | Compare explicit coordinate landmarks; do not turn a QA normalization into a paragraph-spacing correction. |
+| Small residuals, R6 | Raw coordinates show0/0.12pt step responses to0.05/0.10pt source shifts in both fonts; R5's old0.12pt component decomposes into footprint and stroke movement. | Record local quantization separately from systematic drift. No fixed0.12pt compensation, universal tolerance, device-resolution claim or attribution to a particular internal Word stage. |
+
+Evidence locators remain the R1–R6 checkpoint sections and their existing local
+manifests. These are disposable package probes, not fixes already present in
+the writer. In particular, R1's missing transient Word owner lock is excluded
+from durable coverage without rewriting its historical manifest. This planning
+turn reuses those findings; it does not rerun or re-certify their artifacts.
+
+### Proposed shared coordinate contract
+
+1. Keep `ResolvedDocument`, resource identities and source lengths immutable.
+   The two outputs consume the same values; only the DOCX-native representation
+   changes. Store source points separately from rounded native twips. Preserve
+   the existing20twips/pt and eighth-point border representation and disclose
+   their conversion errors. Do not change PDF measurements to fit Word.
+2. Name distinct landmarks: content line box, glyph baseline/ink bounds, source
+   padding measured from the border centre, border centre, outer stroke edge,
+   native inner cell margin and following paragraph start. The border-centre
+   convention is the proposed DOCX adaptation contract inferred from R2, not a
+   newly verified product-wide source specification. The PDF stays the reference.
+3. For an eligible table, derive each vertical native margin as source vertical
+   padding minus half the corresponding horizontal stroke. For the proven
+   shape,4pt −0.5pt/2 =3.75pt =75twips. Keep left/right padding and all border
+   appearance unchanged. Eligibility is structural, never a font-name or SRS
+   identifier branch: full unmerged grid, plain text, uniform SINGLE0.5pt
+   borders, source4pt vertical padding, exact native representation and
+   nonnegative derived margins. Two fonts provide bounded validation, not
+   acceptance of arbitrary fonts. Existing writer borders are fixed size4;
+   adding authored border width/style to the public source is out of scope.
+4. Ineligible tables retain existing supported native behavior and a reason in
+   the receipt. Do not silently clamp a negative margin, round an unsupported
+   half-stroke into an accepted match, drop borders, change fonts, shrink text
+   or force a source-independent row height. Existing capability errors still
+   apply where safe serialization is unavailable. Merges and continuation
+   cells must not become newly rejected merely because this adaptation skips them.
+5. Header absence is semantic and section/page-type specific. Apply zero
+   distance only when both effective first/default headers are empty after
+   cover/blank/mode resolution. A shared section header distance cannot be
+   zeroed just because one page type hides its header. Keep visible-header
+   source gap, H3 reservation/capacity guards, explicit inheritance barriers,
+   body top margin and all footer behavior. Mixed cases get a fallback reason.
+6. Separate actual serialized distances from estimated body capacity and source
+   offsets in receipts. Never mark `wordVerified:true` from generation, unit
+   tests or estimated fit. Report an empty-header footprint as unresolved when
+   a mixed case keeps its old native distance; do not describe it as zero cost.
+
+### Text baseline policy and unresolved boundary
+
+For the actual shaped run/line, Core uses ascent A, descent D and
+`effectiveL = max(requestedL, A + D)`, with baseline origin
+`A + (effectiveL - A - D)/2` before cell padding. Glyph ink can expand the
+metrics. Font hhea values alone are insufficient. R3's Word approximation
+`padding + L - D` is empirical, not a proven Word algorithm.
+
+The first implementation must retain AtLeast, complex-script font selection,
+bold/italic true **and false**, source line breaks and current overflow guards.
+Its receipt describes `native-at-least-unmatched` with baseline matching
+unverified. It must not pretend that `src/font-envelope.ts` supplies shaped
+ascent/descent: that module currently returns conservative maxWidth/maxHeight.
+No new shaping dependency, Core hook, negative padding, run position, forced
+Exact spacing or global/font-specific offset is selected by this plan.
+
+A later baseline feasibility stage must first show a native method preserving
+ink, row extent, wrapping and mixed emphasis across two fonts. If it cannot,
+retain correct native flow and report the difference. This unknown blocks a
+general baseline-match claim; it does not block testing the two independent
+border/header corrections. No feasibility probe is dispatched by this plan.
+
+### M1 scope, interfaces and sequence after authorization
+
+Proposed new root:
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-m1/`.
+All relative paths in the following tasks resolve inside that root, not in a
+product repository. Frozen input is sibling `unified-docx-writer-h3/`, including
+its91-file checkpoint; H3 checkpoint SHA256 is
+`8e3bdf7b6cc4e4b65ece00ed8822fd2405123aae3fe849229b47cb0cf9488148`.
+Keep H3 and R1–R6 untouched. No installation, dependency/lock/font changes,
+release, API integration or canonical map/data promotion.
+
+**M1.0 — establish the isolated candidate.** Verify the proposed target is
+unused and the frozen source identities match. Copy source/tests/fixtures,
+resources/vendor and configuration/lock needed by public generation; exclude
+old outputs, Word lock files and probe folders. Reuse the existing dependency
+junction read-only. Record copied-file hashes and actual runtime/resource
+identities in `evidence/base.json`. Stop on a mismatch rather than repairing
+the frozen input. Room arrangement is independent of this filesystem isolation.
+Future WORK records its own model/host availability decision when authorized;
+this plan does not assert a model switch or create a separate execution room.
+
+**M1.1 — define one native-space policy.** Add `src/geometry-policy.ts` with
+the following internal interfaces; no change to the public source schema:
+
+```ts
+type TableSpaceInput = {
+  unmergedPlainGrid: boolean;
+  uniformSingleHalfPointBorder: boolean;
+  sourceTopTwips: number;
+  sourceBottomTwips: number;
+};
+type TableSpaceDecision = {
+  policy: 'border-centre-inset' | 'retain-native';
+  nativeTopTwips: number;
+  nativeBottomTwips: number;
+  reason: string;
+};
+function deriveTableSpace(input: TableSpaceInput): TableSpaceDecision;
+type HeaderSpaceInput = {
+  effectiveFirstEmpty: boolean;
+  effectiveDefaultEmpty: boolean;
+  previousDistanceTwips: number;
+};
+type HeaderSpaceDecision = {
+  policy: 'empty-header-zero' | 'retain-h3';
+  nativeDistanceTwips: number;
+  reason: string;
+};
+function deriveHeaderSpace(input: HeaderSpaceInput): HeaderSpaceDecision;
+```
+
+Add `tests/geometry-policy.test.ts` to the explicit `package.json` test list.
+First demonstrate the new tests fail for the missing policy. Assert eligible
+80/80twips maps75/75, source input unchanged; nonmatching padding/borders or
+merged/nonplain grids return original margins plus reason. Assert both empty
+returns0, all other emptiness combinations retain their supplied distance.
+The bounded inputs intentionally prevent general half-stroke arithmetic from
+silently extending support. Implement only these decisions, then run the
+targeted tests to PASS.
+
+**M1.2 — integrate border space and auditable receipts.** In `src/tables.ts`,
+derive eligibility from the actual table/cell structure and call M1.1 for the
+whole eligible table; never adapt only some cells of an otherwise ineligible
+grid. Preserve borders, widths, header rows, split/keep rules and structural
+paragraphs. Retain source `paddingTwips` in `ExportIntent`; native margins are
+a writer decision. Extend `src/writer.ts` adaptations with
+`kind:'table-space-policy'`, table node/scope, policy/reason, source/native
+vertical margins and `baselinePolicy:'native-at-least-unmatched'`. Compute the
+decision once and carry the same decision through serialization and receipt;
+do not recompute a separately guessed receipt after packing. Thread that typed
+result through `buildBodyFlow`/`buildSections` as needed, preserving callers.
+
+Add assertions to `tests/tables-groups.test.ts` and `tests/writer.test.ts`:
+generated XML has75 margins and unchanged size4 borders for eligible tables;
+ineligible/merged/continuation cases preserve their old XML behavior; source
+digest/data remain unchanged; receipt matches serialized margins and records
+fallbacks. Consecutive-table separators remain explicit, not silently removed.
+Run targeted tests before moving on.
+
+**M1.3 — integrate wholly empty headers.** In `src/sections.ts`, apply M1.1
+after effective header modes are resolved, preserving explicit first/default
+parts/references. Add actual native header distance and the decision/reason to
+the existing section receipt; `src/writer.ts` emits the matching adaptation.
+Keep `sourceMarginTwips`, `nativeMarginTwips`, capacity estimates and existing
+compatibility aliases consistent; do not add a fictitious capacity gain.
+Extend `tests/header-space.test.ts`, `tests/sections-fields.test.ts` and
+`tests/writer.test.ts`: both empty → native distance0/body top unchanged;
+first-hidden/default-visible and the reverse → retain H3; no prior-section
+header leaks through; cover/blank modes resolved first; footer XML/receipts
+unchanged. Existing visible multiline/image/table header policies remain intact.
+
+**M1.4 — public-path verification and stop.** Generate directly through
+`generateDocxTo` without post-pack XML patches. Keep evidence in new-root
+`evidence/`, `outputs/` and `rendered/`. Use at most four small Word exports:
+two-font border/text matrix, header absence/inheritance matrix, and the existing
+H1/H2 small-document regression inputs generated by the changed writer. Reuse
+frozen source fixtures and PDF references; do not regenerate original PDFs.
+Ask the owner to convert these DOCX files only when they are ready and paths
+are concrete. One repair/recheck is budgeted for an actual failure; unresolved
+behavior returns a bounded report, not automatic expansion or SRS testing.
+
+Compare all pages and each table: row extent, first/last baseline, wrapping,
+border centre/outer edge and following-paragraph origin separately. Include
+natural multiline Thai/English and emphasis, table page boundaries/repeated
+headers, headings/icons and mixed/visible/empty headers. Use at least one
+auto-flowing small table sample; do not infer page-break safety from one-row
+tables. Confirm content/resource identities, no repair prompt, clipping,
+overlap, missing headers/content or new unexpected page breaks. Compare
+eligibility/fallback paths, not just corrected examples or average heights.
+
+Run the expanded explicit test list via `node --import tsx --test` using the
+files in `package.json` (including `tests/geometry-policy.test.ts`), and
+`node node_modules/typescript/bin/tsc --noEmit`; both must exit0. Historical
+112 H3 tests are the starting regression set, not a promised new test count.
+Record commands/runtime, actual counts and every skipped check. Package tests
+must assert unchanged source/font identities and exact policy/receipt/XML
+agreement. Visual verification is separate from successful serialization.
+
+### Acceptance, review focus and return boundary
+
+Proposed M1 acceptance: all old/new automated checks pass; eligible generated
+XML and receipts agree with the two rules; ineligible behavior is retained with
+reasons; small Word outputs preserve content/flow and reproduce the bounded
+R2/R4 improvements without an unexplained systematic regression. Compare row
+residuals to the matched frozen samples, including R2's0.14pt individual maximum;
+that observation is not a universal tolerance. Record quantization by landmark
+and accumulated drift. Do not accept clipping, changed wrap/page boundaries
+or accumulating error merely because a mean difference is small. R5's−0.05pt
+and unmatched baselines remain explicit limitations. Any acceptance threshold
+beyond this matched comparison needs owner review; none is silently granted.
+
+Review Focus (each assigned above):
+
+- Tiny/zero or other padding and unsupported stroke shapes: M1.1 retain-native
+  assertions plus M1.2 receipt/XML checks; never negative/clamped adaptation.
+- Merged/continuation cells and repeated headers: M1.2 regression tests and
+  M1.4 flowing-table comparison; no partial-grid adaptation.
+- Mixed first/default visibility and inheritance across cover/blank sections:
+  M1.3 section tests and M1.4 header matrix.
+- Thai combining ink, mixed language and explicit emphasis-off: M1.4 two-font
+  matrix plus retained text tests; no font substitution/Exact workaround.
+- Nonaccumulating coordinate steps versus cumulative flow/page changes:
+  M1.4 per-landmark/raw-coordinate comparison, all-page review and drift report.
+
+Planning self-review completed: all three requested subjects have rules and
+owning tasks; baseline displacement is deliberately unproven/deferred rather
+than disguised as implementation. Interfaces above share consistent names;
+five likely missed input classes have explicit tests/checkpoints. Scope is two
+bounded adaptations and their receipts, not a general layout-engine rewrite.
+Future baseline feasibility requires its own reviewed proposal after M1 results.
+
+Current-turn proof/document budget: update this existing canonical plan only,
+self-review, Project Control `check:data`, local fragments and final diff/
+whitespace inspection; no runtime/projection generation or historical tests
+rerun. Commit only after these checks pass. Recommended execution method after
+owner review is inline in this chat with the isolated M1 filesystem copy,
+because the policy/receipt/header changes share interfaces. This recommendation
+does not authorize implementation or a separate room. Return the plan for
+review now; SRS, PDF reference and product changes remain prohibited.
+
+Planning verification: Project Control `check:data` exits0; all seven existing
+local fragments resolve; final diff/whitespace review covers this plan only.
+No converter files or experiment outputs changed and no historical runtime
+test result is presented as rerun. No data/projection regeneration is needed.
