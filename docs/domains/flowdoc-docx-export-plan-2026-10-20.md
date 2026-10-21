@@ -21,6 +21,9 @@ PostgreSQL, multipart task transport และ DOCX/OOXML. Stage 0 เลือ�
 **Spec:** ข้อกำหนดเจ้าของและสัญญาในเอกสารนี้ โดยเฉพาะ
 [Agreed design](#agreed-design) และ [API contract](#api-contract).
 รวม design และ staged plan ไว้ไฟล์เดียวตาม Document Budget.
+แผนรวมตัวทดลองรอบปัจจุบันคือ
+[Unified DOCX mapping contract and consolidation plan](#unified-docx-mapping-contract-and-consolidation-plan);
+เป็น proposed contract/profile รอ review ไม่ใช่ implementation หรือการรับรองผล.
 
 ## Authority Boundary
 
@@ -31,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **Owner paused SRS tuning; shared-model → PDF/DOCX source mapping discovery complete, with confirmed semantic/prototype coverage gaps and proposed generic remedies awaiting review; V13 shift remains rejected and V11 retained only as bounded experimental baseline; no new candidate/rendering or product integration**.
+สถานะ: **Central mapping contract, DOCX support profile and single-writer consolidation plan drafted for owner review; SRS tuning paused; V13 shift rejected and V11 retained only as bounded experimental baseline; no implementation, new rendering or product integration authorized by this planning request**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2864,3 +2867,305 @@ correction direction and unsupported boundaries are recorded for owner review.
 Documentation checks: `check:data`, local anchors, scope/diff/whitespace review.
 No projection regeneration is needed for this prose-only change. SRS tuning
 remains paused; no follow-up experiment starts under this discovery authority.
+
+## Unified DOCX mapping contract and consolidation plan
+
+Owner request: กำหนดกติกา mapping กลางและขอบเขต DOCX ให้ชัด พร้อมแผนรวมเป็น
+ตัวแปลงเดียวก่อน; ยังไม่ทดลอง SRS หรือแก้ PDF ต้นแบบ/ระบบจริง. **Status:
+DESIGN_AND_PLAN_FOR_REVIEW; no implementation or new rendering.** MUST below
+defines the proposed acceptance target, not a claim of present support. This
+section governs the next isolated-writer proposal; it does not supersede the
+product ownership/API/transport constraints in Stages0–5 or historical evidence.
+
+Authority/Markdown gate: existing Project Control canonical plan only; role
+Planning Partner / Documentation Synthesizer, future Core writer owner.
+Work/Phase/Checklist/execution IDs N/A for single-room planning. Work Size
+medium / Risk routine. Current session model retained for this inline design;
+no registered execution or model change. Validated Current Truth Snapshot was
+rebuilt read-only with the same canonical digest recorded above. New execution
+will choose its model/base/isolation under the workflow policy, not inherit
+an earlier PLAN or experimental acceptance.
+
+Document Budget one existing plan. Allowed mutation this turn: this Markdown
+only. Proof Budget: reuse the hash-verified mapping audit and22frozen inputs,
+design self-review/cross-reference coverage, `check:data`, anchors/scope/diff
+checks. No new source/report/candidate, dependency install, Word/PDF execution,
+product/configuration/data/DB/map/global-guidance edit, commit outside Project
+Control, release or push. Stop with the reviewable design and staged plan.
+
+### Design choice and fidelity contract
+
+Choose a **native Word flow writer from shared semantic input**. Alternative
+PDF-coordinate reconstruction would couple DOCX to final PDF pagination and
+require position-based text/frame placement. Maintaining Word templates
+separately would duplicate structure and styles. These alternatives add final-
+layout coupling or duplicated authoring beyond the chosen flow; neither is selected.
+
+Preserve logical content/order, table topology, links, concrete font/style,
+authored lengths/alignment, image frames and reading relationships. Word owns
+shaping, natural line wrapping, line origins and pagination. Different line/
+page breaks are allowed; clipping, missing content, changed image identity,
+wrong emphasis, hidden repeated headers, incorrect navigation or arbitrary
+font/padding compensation are not. Pixel-identical baselines, exact PDF page
+counts and one offset valid for all fonts are not acceptance promises.
+
+Derived values remain output-specific and carry source locators. PDF receives
+the original `ResolvedDocument` through its existing route unchanged. A pure
+derived export-intent view describes the semantics the DOCX adapter must
+preserve; it is not a new authored template, replacement public schema, shared
+final coordinate tree, or a prerequisite refactor of the PDF renderer.
+
+```text
+existing composition -> ResolvedDocument + verified resource snapshot
+                          |-> existing PDF route (unchanged)
+                          |-> support preflight -> derived ExportIntent
+                              -> one native DOCX writer -> staged DOCX + receipt
+```
+
+The future isolated implementation takes one public entry, proposed
+`generateDocxTo(document, resources, sink, options)`; all helper modules are
+internal. It reads source input and creates a new package directly. It never
+reads V2/V3/V7/V8/V9/V10/V11/V13 output files to construct the new document,
+patches a serialized old package, or selects behavior by SRS/REQ/title/node
+identity/paragraph index/page. Source IDs remain traceability locators only.
+
+### Central mapping rules: docx-native-flow/1
+
+| Rule | Proposed normative behavior | Difference handling / proof |
+| --- | --- | --- |
+| C1 Input and normalization | Validate the complete reachable body/band graph and selected profile before output. Derive from an immutable snapshot. Normalize CRLF/CR to LF and tabs to single display spaces as the inspected PDF text path does; retain explicit authored breaks and all other characters | Never inject PDF physical line breaks, recompose from an SRS-specific source or mutate the caller. Normalization has before/after source offsets for links |
+| C2 Effective style | Resolve actual style properties, not names such as `bold`. Legacy font aliases and library release/weight/style resolve to concrete verified faces/resources. Preserve size, weight and italic in ordinary/CS formatting and generated/inherited Word styles | No forced Sarabun/th-TH default for unrelated input. Source face missing, unresolved or glyph coverage missing is fatal; no silent fallback or font shrinking |
+| C3 Script and language | Classify supported Unicode text without cutting grapheme clusters. Use appropriate Word font slots and preserve the same effective face/emphasis across mixed runs. Language tags come from explicit writer context when supplied; otherwise do not invent a document-wide locale. Script selection is not RTL direction | Profile initially targets Thai, Latin and their mixtures, including numbers/punctuation. CS mapping for Thai/mixed text must be proved independently of pure Latin; no unconditional forced-CS rule for every script |
+| C4 Lines and fixed frames | Interpret `lineHeightPt` as minimum safe text line height, matching inspected PDF behavior. Default Word text spacing is `atLeast` at the converted value; before/after0 unless another actual source property supplies spacing. Do not encode a target glyph baseline by moving the cell | This selects semantic behavior, not a claim that atLeast solves baseline parity. Empty fixed spacers may use exact authored height. Nonempty fixed text/format frames are outside profile1 until a no-loss fit mapping is accepted |
+| C5 Units and grid | Convert scalar point/mm lengths once to nearest integer twip, recording any quantization. For columns, round cumulative boundaries and derive adjacent widths so total equals rounded source total. Keep positive usable widths and separate table origin from cell margins | Scalar position error <=0.025pt; a derived column width may differ <=0.05pt. No5/27twip or font-specific correction. Font sizes must be representable in half-points; otherwise profile1 fails explicitly rather than rounding/shrinking silently |
+| C6 Cells and borders | Preserve authored/default4pt padding and logical spans, fills, widths and0.5pt table borders. Keep row heights content-driven. Account for mandatory empty/terminal Word paragraphs and border footprint as adapter structure, without adding source text | Word paragraph overhead is not permission to change padding. No exact row heights or font shrinking to force content to fit. Validate merge/header boundaries before serialization |
+| C7 Images | Preserve verified image identity/alpha, authored frame size and left/center/right frame alignment; contain pixels within that frame. Treat block images as independent flow units even if implemented using a native inline drawing paragraph | Map and report the paragraph mark/line footprint separately. Choose one documented block-image wrapper in taskU2; reject its adoption if it needs cell-wide compensation or separates a required tail/image group |
+| C8 Reading groups | Preserve rowGroups.keepStart, header counts, row break preferences and explicit/source-derived heading/description/table and same-cell trailing-image relations. Derive relations by structure, never text identity. Default to short keeps; a long paragraph/row may split | Never attach an entire oversized text paragraph to its image or force all rows not to split. A trailing-image relation may bind only a bounded final tail at existing authored boundaries. If no safe mapping exists, return a located unsupported result; do not silently waive the relationship |
+| C9 Sections and bands | Derive A4 portrait/landscape, margins, section order, cover/blank roles, band placement/modes and numbering from source. Keep independent adjacent tables separate with explicit structural separation where Word requires it | Wrapped/weighted bands need their own measured acceptance; maximum band footprint reserved by Word is a reported adaptation, not hidden margin drift. Different first/continuation body capacity is an explicit profile limitation |
+| C10 Fields and links | Generate bookmarks, internal/external links, scoped/document TOC and native page fields from source relationships. Page numbers refer to the DOCX after Word pagination/field refresh; retain source section numbering/visibility policies | No copied PDF page labels or unverified REFRESH placeholders in accepted output. Numbering modes and refreshed TOC/destinations require actual Word proof |
+| C11 Unsupported and findings | Classify every reachable feature as supported, supported-conditionally or unsupported before successful output. Findings contain code, source node/style/section/resource path, reason and required capability | Unsupported content, missing resources, invalid topology, unrepresentable required geometry or uncertified required grouping are fatal. Publish no successful/partial DOCX on fatal; warnings are reserved for quantified allowed adaptations |
+| C12 Output and resources | Verify resource hashes/licenses, bounds, package relationships and output SHA256/media type. Use existing runtime floor `node >=24.15.0 <25` and pinned `docx@9.13.0` in isolation. No runtime downloads/installations | Buffer/ZIP memory and cancellation must be measured; a sink API is not evidence of bounded streaming. Stage output and discard/abort on failure; do not expose an incomplete package |
+
+These rules do not introduce authoring-schema language, direction or grouping
+fields. Any need for new shared metadata becomes a separate contract proposal;
+the implementation cannot silently add it to `ResolvedDocument` or the PDF
+path. Normalized offset mappings and layout-only paragraph segmentation must
+preserve links/anchors and exact normalized logical text, including empty lines.
+
+### Support profile and refusal boundary
+
+Here **Required** means needed before the isolated writer can be called
+profile1-complete. **Conditional** means explicit preconditions plus applicable
+tests; it is not blanket support. **Deferred** means a located fatal result if
+requested, never dropping it. Every row is **PLANNED / NOT IMPLEMENTED** now.
+
+| Capability | Profile1 target | Boundary |
+| --- | --- | --- |
+| Shared schema | Required: valid schema1/2 and nodeModel18/19 combinations under Core validation | Complete reachable-graph preflight, not only a fixture inventory; unselected library fonts fail |
+| Text/styles | Required: Thai/Latin/mixed, four ordinary emphasis combinations, explicit breaks, content-height text, empty fixed spacers, horizontal alignment | Font faces and glyphs must resolve; no promise of arbitrary script/direction or fractional half-point size |
+| Fonts | Required: legacy face aliases and concrete library release/weight/style; at least two resource-distinct families in acceptance | Family names are data, not a hardcoded whitelist. Coverage/license/embedding identity and actual Word face use must pass. Embedding prohibited or not effective requires a separately agreed environment contract; no silent substitution |
+| Other scripts | Deferred: RTL/bidirectional layout, CJK layout/locale-specific behavior and other unverified script profiles | Detect and report unsupported script/direction before success. Unsupported is not a claim that Word itself cannot render it |
+| Images and rules | Required: block images with contain/alpha/frame alignment, horizontal line node, missing-resource refusal | No full-page raster replacement of native text/tables; supported image resources obey existing preparation policy |
+| Tables | Required: logical rows/cells, widths/padding/fills/borders, valid colSpan/rowSpan, repeat header rows, allowBreak, independent adjacent tables | Conditional: native merge continuation and repeated-header interaction must pass Word cases; invalid/cross-header spans rejected. Nested tables are outside the inspected Core cell-content contract |
+| Groups and long content | Required: short heading/description/table groups, row-group starts, explicit-break multiline text, oversized rows and trailing text/image endings | Conditional: bounded tail grouping without an oversized keep chain. Per-fragment groupLabel re-emission is deferred; nonempty groupLabel metadata is fatal in profile1 |
+| Sections/numbering | Required: A4 portrait/landscape, continued/restarted numbering, hidden numbering, body/cover/blank section roles and explicit page-break nodes | Empty sections/blank pages and numbering resets must be exercised; no filename/page-index recipes |
+| Bands | Required: absent/none/all/first/continuation bands, weighted columns and explicit placement, line/image/compact-page-field content | Conditional: automatic wrapping, fixed/min/max sizing and maximum-footprint reservation are supported only within a tested source/Word fit envelope; outside it fails instead of clipping |
+| Navigation | Required: anchors/bookmarks, source links/references/URLs, document/scoped TOC and page fields | Scope and refresh must work after actual DOCX pagination; field-update requirement is visible in the receipt, not treated as verification |
+| Format sizing | Conditional: auto formatInstances whose semantics can be retained without omission/truncation | Nonempty fixed format budgets and nonempty fixed text frames with verticalAlign are deferred; no silently ignored formatInstances or conversion to auto |
+| Engine safety | Required: immutable input/resource snapshot, cancellation, output/placement/node budgets, cleanup, deterministic semantic receipt | Visual Office-version differences and ZIP byte nondeterminism are recorded; no reproducible-package claim without proof |
+| External surfaces | Deferred: DOCX import/round-trip, LibreOffice/Google Docs equivalence, Word server automation, UI, production API/storage/queue | Existing `Output-Format` absent→PDF contract remains the future Service requirement; this plan does not implement it |
+
+Required features are incremental task deliverables. Until every applicable
+Required row passes, a partially implemented writer is labelled incomplete and
+must fail on features beyond its actually verified capabilities. A support
+matrix entry cannot become PASS from package generation or a unit test alone
+when the row also requires Word-rendered evidence.
+
+### Consolidation structure and interfaces
+
+Future isolated target directory (not created this turn):
+`C:\Users\nekot\Documents\Codex\2026-10-21\docx-srs-9130\unified-docx-writer`.
+New local files only; existing candidates/source/reference and frozen package
+remain immutable. Do not add product-repository files during these tasks.
+Checkpoint future isolated sources/receipts by hash. Git integration is not
+assumed for this external experiment directory; do not initialize or attach a
+repository merely to satisfy a generic commit step. Project Control record
+updates retain their own checked-commit requirement.
+
+| Proposed files relative to that target | Responsibility |
+| --- | --- |
+| `package.json`, local lockfile, `tsconfig.json` | Isolated runner/type checking and exact dependency/resource identities; no product package changes |
+| `src/types.ts`, `src/profile.ts` | Internal readonly contracts, capability/refusal classification, source-located findings and immutable snapshot |
+| `src/intent.ts`, `src/fonts.ts`, `src/units.ts` | Effective styles/resources, grapheme/script-safe text and logical relationships, normalization offsets and deterministic units |
+| `src/text.ts`, `src/images.ts`, `src/tables.ts` | Native paragraphs/image block wrapper/table topology; same normalized intent and no old-package patches |
+| `src/sections.ts`, `src/bands.ts`, `src/fields.ts` | Source-driven section geometry, numbering/bands, bookmarks/links/TOC/fields |
+| `src/writer.ts`, `src/index.ts` | Single orchestration/serialization entry, staging, cancellation/budgets and receipt |
+| `tests/{profile,intent,text-images,tables-groups,sections-fields,writer}.test.ts` | Positive/negative behavior assertions owned by corresponding task |
+| `fixtures/`, `evidence/`, `qa/` | Small source-defined cases, frozen receipts and later rendering coverage; no alternate authored Word templates |
+
+Proposed internal names/signatures to keep task boundaries consistent:
+
+```typescript
+preflightDocx(document: Readonly<ResolvedDocument>, resources: ResourceSnapshot,
+  profile: DocxProfile): Result<Preflight>;
+deriveExportIntent(preflight: Preflight): Result<ExportIntent>;
+writeDocx(intent: ExportIntent, sink: DocxSink,
+  options: WriteOptions): Promise<Result<DocxReceipt>>;
+generateDocxTo(document: Readonly<ResolvedDocument>, resources: ResourceSnapshot,
+  sink: DocxSink, options: WriteOptions): Promise<Result<DocxReceipt>>;
+```
+
+`DocxProfile` identifies `docx-native-flow/1` plus actually enabled capabilities;
+`ResourceSnapshot` contains verified immutable font/image bytes and identities,
+font licenses and optional explicit language context. `Preflight` binds that
+snapshot, the source graph and findings. `ExportIntent` is readonly normalized
+flow/style/frame/group data with source/offset locators and resource references,
+not copied final PDF geometry. `DocxSink` supports write/abort; `WriteOptions`
+contains profile, signal and explicit budgets. `DocxReceipt` contains media type,
+bytes/SHA256, input/resource identities, profile/capabilities, quantified
+adaptations, field-refresh state and evidence references. `Result` uses Core's
+success/failure shape; no new public Core API is introduced in isolation.
+Private findings distinguish `DOCX_CAPABILITY_UNSUPPORTED`,
+`DOCX_GEOMETRY_UNREPRESENTABLE`, `DOCX_REQUIRED_RELATION_UNSUPPORTED`,
+`DOCX_RESOURCE_INVALID`, `DOCX_OUTPUT_BUDGET_EXCEEDED`, `DOCX_CANCELLED` and
+`DOCX_SERIALIZATION_FAILED`; reuse existing font identity/glyph failure codes
+where they apply. Quantization, native band footprint and pending field refresh
+are separate adaptation records, never success aliases for a fatal finding.
+
+### Tasks for a separately authorized isolated implementation
+
+All tasks below are pending. No task, including fixture construction or Word
+export, starts from approval to write this plan. Task steps use the earliest
+incomplete prerequisite; do not import the old tuning patches as the writer.
+
+**U1 — Profile, resources and normalized intent.** Files: local runner/configuration,
+types/profile/intent/fonts/units plus `tests/{profile,intent}.test.ts`. Consumes frozen public model
+and verified resource contracts; produces `Preflight`/`ExportIntent` above.
+
+- [ ] Establish the isolated package/lockfile with audited local Core0.4.7
+  resource identity, `docx@9.13.0`, `tsx@4.23.12`, `typescript@7.0.2` and the
+  declared Node floor. The latter two pins reuse inspected Project Control
+  tool versions, not a latest-version claim. Define `type-check` as
+  `tsc --noEmit` and use the named Node test commands below. Inventory a second
+  licensed font family from authorized resources; if unavailable, return a
+  located resource prerequisite before U5, without downloading or substituting.
+- [ ] Add failing cases for both schema variants, legacy/library face identity,
+  missing glyph/face/resource, unsupported script/size/fixed content, unknown
+  reachable property, CRLF/tab normalization with links, inherited emphasis,
+  source mutation during async work and cumulative-grid rounding.
+- [ ] Implement preflight and derivation; no output side effects on failure.
+  Verify every unsupported case has source location and every supported node
+  retains normalized logical order/identity. Save a checkpoint after focused checks.
+
+**U2 — Text and block-image contract.** Files: text/images plus
+`tests/text-images.test.ts`; consumes U1 intent and produces native paragraphs.
+
+- [ ] Add failing Thai/Latin/mixed, regular/bold/italic/boldItalic, multiple
+  supported families/sizes, explicit/empty lines, aligned text and frame/alpha
+  image cases. Assert C2–C7 without V11/V13 offsets or inherited-style loss.
+- [ ] Implement minimum-line mapping and one image-block wrapper; state its
+  mandatory paragraph footprint in the receipt. If markup cannot represent a
+  required relation safely, fail that capability and return a design issue.
+- [ ] Run focused semantic/OOXML checks. Later taskU5 must confirm Word line
+  origins/image footprint; unit/package PASS is not visual acceptance.
+
+**U3 — Table topology and bounded reading groups.** Files: tables and group
+derivation in intent, `tests/tables-groups.test.ts`; consumes U1/U2.
+
+- [ ] Add failing spans/header boundaries, adjacent-table separation, empty
+  cells, source padding, repeat headers, allowBreak/rowGroups, short heading
+  groups and oversized paragraph/row with trailing-image cases.
+- [ ] Implement source-driven tables and bounded group/tail mapping using
+  structural/authored boundaries. Keep text split offsets/anchors stable;
+  never bind an entire oversized paragraph to its following image. Refuse
+  groupLabel or unsafe mandatory groups, rather than weaken preservation.
+- [ ] Verify text/image identity, topology and keep-chain bounds, plus renamed
+  content/IDs and reordered counterpart cases proving no fixture selector.
+  Save a checkpoint after checks; actual split/header/endings await U5.
+
+**U4 — Sections, bands, fields and single writer entry.** Files: sections/bands/
+fields/writer/index, `tests/{sections-fields,writer}.test.ts`; consumes U1–U3.
+
+- [ ] Add failing portrait/landscape, continued/restarted/hidden numbering,
+  cover/blank/page-break, first/continuation/absent bands, scoped TOC/links and
+  unsupported fit/format cases. Assert staged output aborts on fatal/cancel,
+  resource mutation or budget exhaustion and exposes no successful partial file.
+- [ ] Implement `generateDocxTo` using the one intent path and public entry;
+  account for empty paragraphs/section boundary requirements and field refresh.
+  Verify package/resource relationships, receipt hash/media type and no imports
+  of prior raw XML patch helpers. Save a checkpoint after focused checks.
+
+**U5 — Small cross-document acceptance before SRS.** Files: small fixtures,
+evidence/qa and only repairs in U1–U4 owner modules. Consumes unified writer;
+produces coverage results, not a generic support declaration from one sample.
+
+- [ ] Freeze three independent source cases: typography with Thai/Latin/mixed
+  text/two resource-distinct supported font families/four emphasis states;
+  tables with short groups/oversized content/images/header continuation;
+  sections with geometry/band modes/numbering/scoped navigation. Reuse structure
+  and resources for the existing PDF path and unified DOCX. No SRS/REQ titles.
+- [ ] When separately authorized, generate new comparison artifacts without
+  altering the PDF implementation/reference. Owner Word export remains the
+  established review route; no automatic Word conversion or retries. Record
+  actual Word/font environment and refresh fields before navigation acceptance.
+- [ ] Inspect every output page or prove exact pixel reuse from reviewed input.
+  Check source/normalized text, emphasis/faces, image identity/frame, logical
+  rows/groups, real repeated headers and long endings. Measure row extent,
+  line pitch, base-letter origin and image footprint independently against
+  actual paired outputs; no nominal-formula-only or average-only acceptance.
+- [ ] Review each capability and all differences. Visible clipping/loss, unsafe
+  keeps, wrong emphasis/resources/navigation or padding compensation fails.
+  Different wrapping/pages or native baseline positions may remain only as
+  disclosed fidelity limitations accepted by the owner; no invented universal
+  point tolerance and no silent downgrade of required semantic relationships.
+
+**U6 — Consolidation decision and return checkpoint.** Consumes U5 evidence;
+changes only necessary isolated modules and this existing canonical record.
+
+- [ ] Reconcile required/conditional/deferred matrix against actual evidence;
+  unfinished rows stay unverified, not PASS. Reuse evidence only for unchanged
+  code/resources/environment. Stop if required support cannot be implemented
+  safely and return the specific contract/capability issue before extra cycles.
+- [ ] Preserve old scripts/candidates as historical evidence; mark their roles,
+  do not delete them or use them in the new runtime. Confirm the new entry
+  regenerates outputs solely from shared source/resources, with no SRS files
+  or output-package dependency and no source/PDF change.
+- [ ] Return the concrete isolated result for review. Full-SRS regression needs
+  a later explicit request; product Core/Service/consumer integration remains a
+  separate future scope under Stages1–5, including PDF regression/default API
+  checks. Passing U6 does not start those stages.
+
+Future isolated task commands (after its local runner exists):
+`node --import tsx --test tests/profile.test.ts tests/intent.test.ts` for U1;
+use the owning named test file(s) for U2–U4, and all six named files before U5.
+Expected meaningful failures precede implementation, then the same cases PASS.
+The runner/dependencies must resolve from pinned isolated resources; no install
+or package/lockfile mutation is authorized this turn. Product commands, exact
+checkout/base and integration tests are resolved only in their future scope.
+Run isolated `npm run type-check` with each owning task and before U5; passing
+transpiled runtime tests does not substitute for interface/type consistency.
+
+### Review focus, acceptance and current handoff
+
+Five failure families have explicit owners above: (1) missing/replaced font or
+unsupported script and inherited emphasis — U1/U2; (2) CR/tab/line splitting
+that changes text/link offsets — U1/U3/U4; (3) oversized keeps, header loss or
+trailing icon orphan — U3/U5; (4) section/band/field refresh changing body flow
+or numbering — U4/U5; (5) partial output/resource mutation/cancel or hidden
+capacity assumptions — U1/U4. These checks close the design review focus,
+not a claim that tests have been written or run.
+
+Self-review maps C1–C3/C5 to U1; C4/C7 to U2; C6/C8 to U3; C9–C12 to U4;
+rendered requirements across all rules to U5 and capability/no-patch decision
+to U6. Interfaces use the same names throughout. Required/conditional/deferred
+is a support target, while actual statuses remain unimplemented/unverified.
+The new plan selects a semantic/native-flow boundary, not acceptance of the
+unverified atLeast/image wrapper/Word baseline behavior. Prior results remain
+historical evidence, with V13 rejection unchanged and SRS tuning still paused.
+
+Current-turn acceptance is the written mapping rules/profile, isolated module
+and task plan, refusal/fidelity boundaries and proof coverage for owner review.
+Checks are Project Control `check:data`, local anchors and scope/diff/whitespace,
+plus unchanged audit/frozen-input verification. No product tests or Word trials
+are claimed. Completion of this planning request does not authorize U1–U6;
+reviewable design is the return point, with no implementation method dispatched.
