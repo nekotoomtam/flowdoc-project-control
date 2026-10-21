@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R3 isolated discovery of remaining table text-origin differences using the same two fonts and small documents, then reporting causes before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R4 isolated discovery of the0.9–1pt paragraph/cell context residual with identical texts, the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R3 bounded text-origin discovery identifies different surplus-leading allocation as dominant cause: Core baseline moves0.5pt per added line-height pt; actual Word AtLeast tables move about1pt. Both fonts follow the same measured model, while paragraph/table context residual and short-line ink expansion remain unresolved limits. No correction adopted; prior durable artifacts preserved. U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
+สถานะ: **R4 confirms empty1pt native headers placed at source body top cause the main paragraph/cell context residual. Moving only empty-header distance clears the intrusion:90 Word markers shift up0.96–1.08pt and first-line residual falls within0.08pt for both fonts/three line heights. This is diagnostic package evidence only; no writer correction adopted. R3 surplus-leading remains separate. U5 overall acceptance remains open; U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4479,3 +4479,126 @@ pagination and the paragraph/table context residual remain outside acceptance.
 No SRS trial, existing PDF source/reference/implementation, writer source,
 product/API/default format, dependency, resource, map, install or release change
 occurred. Stop before converter changes; U5 overall acceptance remains open.
+
+## R4 isolated paragraph-cell residual cause checkpoint
+
+**2026-10-21 — PASS_EMPTY_HEADER_INTRUSION_CAUSE_CONFIRMED; NO_WRITER_CHANGE.**
+Owner authorized isolating R3's0.9–1pt paragraph/cell context residual using
+small documents and the same two fonts, then reporting before converter changes.
+Core owns eventual section/text mapping; Project Control owns this result.
+Single-room discovery/Evidence Reviewer/Documentation Synthesizer, medium size,
+routine risk; execution/Phase/Checklist IDs N/A. Document budget remains this
+existing plan plus local machine-readable evidence. No product integration.
+
+### Identical-text context probe
+
+Workspace: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/paragraph-cell-r4/`.
+Six sections use regular11pt Sarabun/Bai Jamjuree and source line heights
+14.5/19.84/24pt. Identical paragraphs occur before, inside and after a single
+three-row table: Latin single line, mixed Thai/English single line and three
+authored mixed lines. No preceding label changes the first paragraph's origin;
+the section label follows all measured content. Cell margins retain R2's75twip
+diagnostic mapping; all borders, fonts, AtLeast settings and source padding4pt
+remain fixed. Only diagnostic cell margins differ from unchanged writer output;
+reversing them restores the full control XML, with all other ZIP parts unchanged.
+
+The first six-page Word export reproduces the first-line outside/cell residual:
+1.00/0.88/0.88pt respectively across the three line heights, identical in both
+font families. The table's top border also begins about1.21–1.32pt below the
+nominal preceding five-line budget. Comparing identical text removes the former
+Latin-marker versus mixed-text confound; same-row English and Latin matrices in
+the prior R3 output also share the same baseline.
+
+### Source cause and one-factor confirmation
+
+Read-only inspection locates the source in unchanged experimental writer code:
+
+- `src/sections.ts:8` initializes native header distance to source top margin,
+ 36pt here, even when the authored header mode is none.
+- `src/sections.ts:11–13` still creates empty first/default header parts.
+- `src/tables.ts:4` makes each empty structural paragraph exactly1pt high.
+
+The12 empty header parts in this six-section DOCX contain no authored text,
+image or table, but their1pt paragraphs start at the body top36pt. They therefore
+extend into the body region. This is a concrete no-header serialization/footprint
+issue in the experimental writer, not a generic font offset or a Word defect.
+
+The first context probe exposed this candidate cause, justifying one additional
+six-page Word export to confirm it. `qa/paragraph-cell-r4-header-zero.py` creates
+`outputs/paragraph-cell-r4-header-zero.docx` from the unchanged first candidate.
+It changes exactly six `pgMar/@header` values720→0twips. Body top remains720;
+all12 empty header payloads, body XML/text/font/paragraph/table/border settings,
+relationships and other package parts remain unchanged. Reversing the six
+attributes restores the complete original XML. No source/writer repair occurs.
+
+The owner exported both candidates in Word. All90 marker baselines in the
+second PDF move upward0.96–1.08pt; all24 table-border centres also move upward
+by that range. This controlled movement confirms the empty-header intrusion as
+the main cause of the earlier context residual.
+
+| Source line height, pt | First-line residual before, pt | After header-distance intervention, pt |
+| --- | --- | --- |
+|14.50|1.00|+0.04|
+|19.84|0.88|−0.08|
+|24.00|0.88|+0.04|
+
+Values are identical for both fonts and compare the first outside baseline from
+source page top with the first cell baseline from its actual top border minus
+source padding. Across all five matched lines, per-panel mean residuals become
+0.028/−0.066/−0.032pt. These are specific first-line/mean measures, not a claim
+that every coordinate is within0.08pt. After intervention, table top minus the
+nominal preceding five-line budget becomes0.24/0.25/0.26pt; the border origin and
+paragraph flow origin must remain explicitly distinguished.
+
+### What the result changes and leaves open
+
+R3's0.9–1pt residual was largely an absolute body-start displacement measured
+against a cell-relative origin. Its historical report remains unchanged; this
+checkpoint resolves that stated unknown. R3's separate surplus-leading allocation
+finding remains supported by cell-relative measurements and is not removed by
+moving the whole body. No extra paragraph/cell font correction is justified.
+
+Raw after-table offsets still differ0.16–0.28pt when measured against the bottom
+border centre. Their size is compatible with an origin/footprint question, but
+this experiment does not prove a half-stroke explanation. Small row-height and
+coordinate variations remain visible; no particular rounding mechanism is
+asserted. These residuals are not the confirmed1pt empty-header cause.
+
+An eventual policy must ensure semantically absent headers do not consume body
+space and that footprint/capacity reporting agrees. Setting header distance0 is
+only a diagnostic for sections where both first/default headers are empty. It
+must not be applied blindly to visible headers or mixed first/continuation modes
+sharing section geometry. Footer/bottom-page intrusion and automatic continuation
+pagination are untested; no generic header policy or writer fix is accepted here.
+
+### Evidence coverage and preservation
+
+All18 complete pages (Core6, original Word6, header-distance Word6) were rendered
+110dpi and visually reviewed through complete-page contact sheets. All90 markers
+per PDF/270 total remain in order; content and borders remain visible without
+observed overlap/clipping in this sample. Both DOCX identities and source/Core
+identities match frozen dispatch/package receipts. No existing PDF is regenerated.
+
+Local evidence: `evidence/{package-check,control-receipt,core-probes,dispatched,
+header-zero-dispatched,pdf-geometry,measurements,final-review,results,checkpoint}.json`,
+source/control/two candidate DOCX, Core/two Word PDFs and complete-page PNGs in
+`rendered/{core,word,word-zero}/`; scripts are H3 `qa/paragraph-cell-r4-*`.
+Initial proof budget was one context export; the one extra export directly
+tested the newly found collision. Stop after this confirmation, without broader
+Word settings, fonts or SRS trials.
+
+A fresh read-only reviewer independently verified both package factor reversals,
+all dispatch identities and identical context texts, freshly extracted baselines
+from all18 PDF pages, recomputed the context/intervention values and inspected
+all18 contact-sheet pages. No important finding; stated residuals/acceptance
+limits remain. Project Control check:data, seven local fragments and final
+diff/whitespace checks pass.
+
+All frozen H3(91), R2(38), R3(37), R1 durable(34) and original U4(52), U5(109),
+H1(50), H2(55) files retain hashes. The already classified historical R1 transient
+Word owner lock remains excluded without rewriting its manifest. Prior112 H3
+tests/type-check remain historical proof for byte-identical writer inputs; no
+rerun is represented as new execution. No canonical data/projection/map record
+is promoted. No writer source, PDF reference/source/implementation, SRS,
+product/API/default format, dependency, resource, install or release changed.
+Stop at this cause report before converter changes; U5 overall acceptance is open.
