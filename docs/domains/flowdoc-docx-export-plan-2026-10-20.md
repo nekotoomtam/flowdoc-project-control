@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> This planning request does not start implementation or a registered execution round.
+> Execute only the stage subsequently authorized by the owner; latest authorization is U1 in isolation only. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -23,7 +23,7 @@ PostgreSQL, multipart task transport และ DOCX/OOXML. Stage 0 เลือ�
 รวม design และ staged plan ไว้ไฟล์เดียวตาม Document Budget.
 แผนรวมตัวทดลองรอบปัจจุบันคือ
 [Unified DOCX mapping contract and consolidation plan](#unified-docx-mapping-contract-and-consolidation-plan);
-เป็น proposed contract/profile รอ review ไม่ใช่ implementation หรือการรับรองผล.
+เป็น contract/profile เป้าหมาย; U1 มี isolated mapping checkpoint แล้วตามท้ายเอกสาร แต่ยังไม่รับรอง writer หรือผลใน Word.
 
 ## Authority Boundary
 
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **Central mapping contract, DOCX support profile and single-writer consolidation plan drafted for owner review; SRS tuning paused; V13 shift rejected and V11 retained only as bounded experimental baseline; no implementation, new rendering or product integration authorized by this planning request**.
+สถานะ: **U1 isolated preflight/resource snapshot/ExportIntent implemented and checked; U2–U6 unstarted. No serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3042,18 +3042,18 @@ incomplete prerequisite; do not import the old tuning patches as the writer.
 types/profile/intent/fonts/units plus `tests/{profile,intent}.test.ts`. Consumes frozen public model
 and verified resource contracts; produces `Preflight`/`ExportIntent` above.
 
-- [ ] Establish the isolated package/lockfile with audited local Core0.4.7
+- [x] Establish the isolated package/lockfile with audited local Core0.4.7
   resource identity, `docx@9.13.0`, `tsx@4.23.12`, `typescript@7.0.2` and the
   declared Node floor. The latter two pins reuse inspected Project Control
   tool versions, not a latest-version claim. Define `type-check` as
   `tsc --noEmit` and use the named Node test commands below. Inventory a second
   licensed font family from authorized resources; if unavailable, return a
   located resource prerequisite before U5, without downloading or substituting.
-- [ ] Add failing cases for both schema variants, legacy/library face identity,
+- [x] Add failing cases for both schema variants, legacy/library face identity,
   missing glyph/face/resource, unsupported script/size/fixed content, unknown
   reachable property, CRLF/tab normalization with links, inherited emphasis,
   source mutation during async work and cumulative-grid rounding.
-- [ ] Implement preflight and derivation; no output side effects on failure.
+- [x] Implement preflight and derivation; no output side effects on failure.
   Verify every unsupported case has source location and every supported node
   retains normalized logical order/identity. Save a checkpoint after focused checks.
 
@@ -3169,3 +3169,123 @@ Checks are Project Control `check:data`, local anchors and scope/diff/whitespace
 plus unchanged audit/frozen-input verification. No product tests or Word trials
 are claimed. Completion of this planning request does not authorize U1–U6;
 reviewable design is the return point, with no implementation method dispatched.
+
+
+## U1 isolated mapping checkpoint — 2026-10-21
+
+### Authority and acceptance boundary
+
+Owner subsequently authorized the first step only: inspect data/fonts/resources
+and implement the shared mapping layer in the existing isolated experiment,
+then return results before proceeding. This authorization supersedes the earlier
+planning-only restriction for U1 only; it does not authorize U2–U6, SRS trials,
+PDF reference/runtime changes or product integration. The older planning and
+SRS findings above remain historical, not reopened execution.
+
+Active roles: Planning Partner / isolated implementation / Evidence Reviewer /
+Documentation Synthesizer. Work Size medium; Risk Tier routine; execution IDs
+N/A for this single-room bounded request. Project Control owns this status;
+future product writer ownership remains Core. Markdown pre-action gate:
+update this existing canonical plan only, preserve historical evidence, create
+no product Markdown or new Work/Phase/Checklist/Evidence/map records.
+
+Allowed writes: this plan and
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer`.
+The latter is an isolated private package, not a product checkout or release.
+It has no Git initialization; durable source/resource hashes form its checkpoint.
+No separate WORK room/return route is opened. One read-only fresh subagent
+review was used as required by the selected inline execution skill.
+
+### Implemented and checked
+
+**PASS within U1's intent-only boundary.** The public isolated entry exports
+`preflightDocx`, `deriveExportIntent`, profile and unit helpers. It exposes no
+`generateDocxTo` or serializer. A genuine preflight owns defensive copies of
+source/resource bytes; intent retains normalized logical text and source offset
+mapping, inline/link identity, concrete effective font/style, source document,
+section provenance, table grid/padding and resource identities. Caller mutation
+cannot alter the captured candidate. No content-dependent baseline correction,
+SRS selector, font shrinking or padding compensation was introduced.
+
+The local profile checks schema1/2 and node model18/19 fixtures; authored section
+membership, reachable graph/unknown fields, fonts/glyphs, image frames (including
+cell width), source geometry and selected unsupported capabilities. It quantizes
+minimum line spacing and cumulative column boundaries for later native output.
+These are intent decisions, not evidence that Word uses the same line origins.
+
+Pinned isolated dependencies: audited local Core0.4.7 archive, docx9.13.0,
+tsx4.23.12, TypeScript7.0.2, @types/node24.10.0 and pngjs7.0.0. The latter is a
+bounded addition for actual PNG decoding and CRC verification. Runtime tests and
+type checking used Node24.15.0; package engine is >=24.15.0 <25. Dependencies
+were installed only in the isolated package with install scripts disabled.
+
+Resources: four Sarabun faces and OFL bytes match frozen copies. All13 prepared
+PNG resource variants decode and match manifest byte hashes, dimensions and
+byte counts. Resource-only inventory did not map or render the SRS document.
+No second licensed family was found in the authorized resource inventory;
+this is a located **U5 resource prerequisite**, not permission to substitute or
+download a font, and multi-family acceptance remains unverified.
+
+Validation tests were written to fail first. Initial24 cases, five self-review
+cases and three fresh-review cases now total **32 PASS / 0 FAIL**. The fresh
+review reproduced: a legacy alias pointing to the wrong emphasis face, source
+provenance pointing to another existing section, and TrueType resources missing
+outline tables. Fixes bind legacy selection to concrete weight/style, require
+complete matching authored member provenance, and require static outline tables
+with bounded glyph locations. The same regression cases pass after correction.
+`npm run type-check` also passes. These checks include no renderer or Word call.
+
+### Contract findings and explicit limits
+
+The pinned Core package has no public `validateResolvedDocument` export. The
+isolated runtime therefore uses a strict local supported-profile guard, with
+no deep import of the private validator and no PDF render merely to validate.
+Source inspection found public resolved-section typings permit `content` and
+optional modes, while the inspected pinned runtime validator requires
+`authored`/`blank`, explicit header/footer modes, and complete authored member
+provenance matching section membership. Positive synthetic fixtures were
+corrected accordingly. Private validator bytes match the frozen installed
+package. **Full Core-validator equivalence is not established**; the mismatch
+must be revisited when choosing the future product boundary. It does not prove
+an old SRS output invalid, and no historical SRS artifact was re-evaluated here.
+
+Enabled resource/text scope is intentionally bounded: prepared PNG, standalone
+static TrueType with Unicode cmap4/12, and Thai/Latin/Common/Inherited script
+text with explicit unsupported-script refusal. JPEG, variable fonts and other
+font containers are not implemented. The font parser checks metadata, embedding
+flags, Unicode coverage and outline extents; it is not a complete font sanitizer
+or proof of actual shaping/embedding in Word. License permission is an explicit
+caller-supplied resource contract backed by captured license bytes/hash.
+
+U1 does not prove native paragraph/image/table layout, repeated headers, scoped
+field behavior, pagination, line origins, actual font embedding, output budgets
+or transactional serialization. Those remain U2–U5 obligations. No DOCX/PDF was
+created, no Word automation/export was attempted, and no SRS trial, PDF reference,
+production dependency/configuration/data/template or product source was changed.
+
+### Durable checkpoint and return point
+
+Isolated evidence paths under the workspace above:
+
+- `evidence/u1-checkpoint.json` — source/test/package-lock/resource hashes,
+  review dispositions, validation boundary and unchanged-input receipt;
+  SHA256 `ab1cb77d5d05b5a04094e095c5c26893d6772e0f8cf4d898d824ee3aeb981997`.
+- `evidence/u1-example-intent.json` — independent tiny authored fixture intent;
+  contains no SRS input and is not an output document.
+- `evidence/u1-resource-inventory.json` — four concrete faces and13 decoded PNGs.
+- `evidence/u1-red.txt`, `u1-review-red.txt`, `u1-final-review-red.txt` and
+  their green receipts — failing-before-fix history; final result is
+  `evidence/u1-final-green.txt` (32/32) and `evidence/u1-type-check.txt`.
+
+All22 frozen inputs and29 mapping-audit source/evidence files retain their
+recorded hashes; the mapping-audit receipt hash is unchanged. The isolated
+checkpoint includes all51 comparisons and a reproducible recording script.
+Project Control impact is this plan only: check:data passed; all7 local fragment
+links resolve; final diff/scope review and whitespace checks passed. No projection
+regeneration is needed because no canonical data record changed. Product tests and full
+Project Control system checks are outside this documentation-only impact.
+
+**Return point: U1 finished with disclosed limits; stop before U2.** Next planned
+step remains native text/image mapping from this intent, after owner review.
+Full SRS regression and production/API integration remain separately authorized
+future work; absent `Output-Format` must continue to mean PDF in that future API.
