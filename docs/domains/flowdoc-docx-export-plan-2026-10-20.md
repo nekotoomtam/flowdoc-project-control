@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R5 isolated discovery of the0.16–0.28pt after-table residual with the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R6 isolated discovery of the remaining0.12pt baseline-gap component using the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R5 controlled bottom-border probe supports outer-stroke footprint versus border-centre origin as the main after-table residual. Nominal0.5/1pt borders yield0.19/0.43pt centre-based gaps in both fonts; accounting for their actual half-strokes leaves−0.05pt. No generic tolerance or writer correction adopted. R3 leading and R4 empty-header findings remain separate bounded evidence; U5 overall acceptance is open. U6/SRS/product integration remain unstarted**.
+สถานะ: **R6 identifies the remainingR5 component in raw PDF operands and confirms0/.12pt coordinate-step response in the observed Word pipeline: source.05/.10pt shifts move Core exactly but Word points remain still or move.12pt in both fonts. This is bounded quantization evidence, not a fixed correction, universal tolerance or identification of Word's internal rounding stage. No writer correction adopted; U5 overall acceptance remains open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4711,3 +4711,102 @@ check remain historical unchanged-input proof, not rerun. No canonical data/map
 promotion, writer source, PDF reference/source/implementation, SRS, product/API/
 default format, font/dependency, install or release change occurred. Stop at
 this cause report before converter changes; U5 overall acceptance remains open.
+
+## R6 isolated coordinate-step cause checkpoint
+
+**2026-10-21 — PASS_BOUNDED_WORD_COORDINATE_STEP_RESPONSE; NO_WRITER_CHANGE.**
+Owner authorized isolating R5's remaining0.12pt component using small documents
+and the same two fonts, then reporting before converter changes. Core owns
+eventual geometry mapping; Project Control owns this status. Single-room
+discovery/Evidence Reviewer/Documentation Synthesizer, medium size, routine risk;
+execution/Phase/Checklist IDs N/A. Proof budget: read-only R5 raw-PDF audit, one
+six-page Word phase export, matching Core controls, package reversal, all-page
+review and one independent review. Document budget: this existing plan plus
+local machine-readable evidence. No production implementation is authorized.
+
+### Raw audit localizes the old component
+
+Workspace: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/coordinate-r6/`.
+R5 PDFs and their manifests remain unchanged. Decimal analysis of their actual
+`re` and `Tm` operands, independently matched to PDF character matrices, gives
+the same decomposition for Sarabun and Bai Jamjuree:
+
+- nominal0.5pt bottom: outer PDF Y582.94; thickness0.48001; inner Y583.42001;
+- nominal1pt bottom: outer PDF Y582.34; thickness0.96002; inner Y583.30002;
+- after-table baseline moves downward0.60pt, exactly as the outer edge does;
+- inner edge movement0.11999 + stroke increase0.48001 =0.60000pt, balance0.
+
+The outer-edge-to-following-baseline gap remains unchanged within each font.
+Thus the old0.12pt component belongs to the table's inner edge/footprint movement,
+not an unexplained extra paragraph gap or a raster-measurement artifact. This
+arithmetic localizes the component; by itself it does not prove a rounding rule.
+
+### Controlled phase and width probe
+
+Six sections combine regular11pt Sarabun/Bai Jamjuree with authored top-margin
+shifts0/0.05/0.10pt (720/721/722twips). Each section contains eight one-row,
+three-line tables with a following paragraph, using DOCX bottom sizes3–10 in
+eighth-points (0.375–1.25pt). Source line-height stays19.84pt/native397twips;
+other borders, font/text/spacing and widths are fixed. All diagnostic tables
+share R2 native75twip vertical margins and R4 empty-header distance0.
+
+`qa/coordinate-r6-prepare.mjs` uses unchanged public writer generation. The
+diagnostic package changes only shared margins/header distances and selected
+bottom sizes; reversing them restores the full control XML. No source/candidate
+runtime is edited. Top-margin phases are authored source data and apply to both
+outputs. Core0.4.7 retains baseline0.5pt borders/source4pt padding in all tables;
+its PDF is not a corresponding border-width-factor output. Source and output
+identities are pinned before the owner exports the candidate in Word.
+
+Both PDFs have six pages/48 tables/192 markers. Word PDF text matrices were
+matched directly to actual serialized `Tm` operands for every marker. Therefore
+the following response is present in vector/text coordinates, independent of
+the110dpi visual review. Each font produces the same counts:
+
+| Source top shift | Core32 marker shifts | Word32 marker shifts | Word24 sampled border-coordinate shifts |
+| --- | --- | --- | --- |
+|0.05pt|all0.05pt|20 unchanged;12 move0.12pt|14 unchanged;10 move0.12pt|
+|0.10pt|all0.10pt|8 unchanged;24 move0.12pt|2 unchanged;22 move0.12pt|
+
+All24 corresponding Core border coordinates also move exactly by the authored
+phase. This controlled non-continuous response supports coordinate quantization
+in the observed Word layout/export pipeline: a small authored movement may
+leave an output point stationary or move it by0.12pt. It explains why a0.12pt
+component can appear when adjacent border widths/positions cross a step; it is
+not a universal per-row spacing term to subtract.
+
+The evidence does not distinguish which internal Word layout or PDF-serialization
+stage performs this rounding. No printer/device setting, universal600dpi rule,
+all-version behavior or generic0.12pt tolerance is accepted. R5's−0.05pt residual
+is not separately eliminated. R2 border-area, R3 leading and R4 empty-header
+findings remain distinct; their broader acceptance is not promoted by this test.
+
+### Coverage, preservation and stop
+
+All12 complete Core/Word pages were rendered110dpi and visually reviewed through
+complete-page contact sheets; Word's final page was additionally inspected at
+full render size. All48 tables and192 markers per PDF/384 total remain present;
+no clipping, overlap or unexpected pages were observed in this bounded sample.
+No SRS, emphasis, merged cells, automatic page boundaries or arbitrary fonts are
+newly accepted.
+
+Local evidence: `evidence/{package-check,control-receipt,core-probes,dispatched,
+r5-raw-audit,pdf-geometry,measurements,final-review,results,checkpoint}.json`,
+source/control/candidate/Core/Word artifacts and `rendered/{core,word}/` PNGs;
+reproduction scripts are H3 `qa/coordinate-r6-*`. No prior PDF is regenerated.
+
+A fresh read-only reviewer verified dispatch hashes, ZIP isolation/full factor
+reversal, source phases/native margins, settings/font resources, all384 raw
+marker positions, phase histograms, exact R5 operator decomposition and all12
+contact-sheet pages. No blocking finding; the layout-versus-export stage limit
+remains explicit. Project Control check:data, seven local fragments and final
+diff/whitespace checks pass. No canonical data/projection changes are needed.
+
+Frozen H3(91), R5(37), R4(49), R3(37), R2(38), R1 durable(34), U4(52), U5(109),
+H1(50), H2(55) files retain hashes. The historical R1 transient Word owner lock
+remains explicitly excluded without rewriting its manifest. Prior112 H3 tests/
+type-check remain historical unchanged-input proof, not rerun. No canonical data/
+projection/map promotion, writer source, PDF reference/source/implementation,
+SRS, product/API/default-format, font/dependency/resource, install or release
+change occurred. Stop at this cause report; no fixed correction or converter
+integration is selected, and U5 overall acceptance remains open.
