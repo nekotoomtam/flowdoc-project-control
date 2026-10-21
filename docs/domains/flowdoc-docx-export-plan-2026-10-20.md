@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V13 full-SRS Word trial complete: functional/pagination/grouping checks pass, but uniform cell-origin shift rejected for actual Core text/icon alignment regressions; retain V11 as bounded experimental baseline; PDF reference frozen; product integration not started**.
+สถานะ: **Owner paused SRS tuning; shared-model → PDF/DOCX source mapping discovery complete, with confirmed semantic/prototype coverage gaps and proposed generic remedies awaiting review; V13 shift remains rejected and V11 retained only as bounded experimental baseline; no new candidate/rendering or product integration**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2722,3 +2722,145 @@ Stop after the authorized one candidate/export. Next recommended workคือ
 bounded discoveryเพื่อแยกlabel/feature-text/image origin policiesโดยใช้actual
 Core renderingก่อนสร้างcandidateถัดไป; ยังไม่เริ่มรอบใหม่หรือไปข้อ3–4.
 PDF reference, resolved structure/data/assetsและระบบจริงคงเดิม.
+
+## Shared mapping discovery — SRS tuning paused
+
+Owner request: พักการจูน SRS ตรวจ mapping จากโครงสร้างกลางไป PDF/DOCX
+แล้วสรุปสาเหตุและแนวทางที่ใช้ได้หลายเอกสารก่อนทดลองต่อ. This is a new bounded
+read-only discovery scope in the same unregistered conversation; it does not
+reopen V13 candidate authoring or rewrite its acceptance. Work/Phase/Checklist/
+execution IDs N/A. Roles Evidence Reviewer / Planning Partner / Documentation
+Synthesizer; Project Control owns this record, future Core writer owns product
+implementation. Work Size medium / Risk routine; current session model for
+inline inspection, no separate WORK or model override.
+
+The validated Current Truth Snapshot was rebuilt read-only from canonical
+sources, digest `e9bacb313ae72de8f57dee468e4723f051a28572561b27b373d00764085e2300`.
+Its unrelated frontend roadmap does not replace this explicit request. Markdown
+gate: classify this update as Project Control canonical, retain one existing
+plan; no new Work/Phase/Evidence record or map promotion. Machine evidence under
+`mapping-audit/` prevents promoting nominal calibration or SRS-only assumptions
+as general writer semantics; prior rendered reports do not inventory this
+cross-path contract, so they are immutable supporting inputs rather than a
+substitute for this discovery.
+
+Allowed writes: this plan and new `mapping-audit/{inspect_mapping.py,mapping-review.json}`
+inside the existing isolated experiment. No new DOCX/PDF, Word interaction,
+renderer execution, source/template/resolved-data modification, PDF reference
+edit, product/dependency/configuration/DB change, global guidance, release or
+push. Proof Budget: one source/OOXML mapping inspection, saved-package inventory,
+source/evidence hashes and22frozen input checks before/after; then documentation
+validation. Stop after findings/recommendations; no automatic V14 or new probe.
+
+### Inspected routes and identity
+
+Shared input is frozen `inputs/resolved.json`, schema1/nodeModel18, SHA256
+`920976069d27da172193fb253e1c3b313299327a6f7994755fb2b927bfdfa301`.
+Inspected PDF implementation is the experiment's installed Core0.4.7 package
+under `docx-prototype-9130/node_modules/@flowdoc/core/dist/`, not an assertion
+about every current Core checkout. The existing paired-PDF receipt binds that
+same resolved hash and98pages; no PDF was generated or newly reviewed here.
+
+PDF route: `createPdfEngine` → `documentFlow` / `measureCellContent` /
+`measureText` → concrete font selection + native segmentation/shaping → measured
+line/frame/row/page geometry → glyph/image coordinates in PDF writer.
+
+DOCX route: `scripts/generate-srs.mjs` with `tables.mjs` / `bands.mjs` consumes
+the same resolved structure, emits Word paragraphs/tables/fields with
+`docx@9.13.0`, then Word performs text shaping/wrapping/layout. Current reviewed
+V11 is not a direct fresh output of that generator: V2 → V3 indent/language →
+V7 CS/emphasis → V8 relationships/separators → V9 oversized keep → V10ROW
+padding → V11 description keep. V13 is a rejected derivative of V11. These
+postprocessors remain frozen experimental evidence, not the implementation
+contract for a reusable writer.
+
+### Confirmed mapping differences
+
+| Topic | PDF interpretation | Current DOCX prototype | General implication |
+| --- | --- | --- | --- |
+| Line height and baseline | `H=max(requested,A+D)`; baseline `A+(H-A-D)/2`; A/D expand to actual positioned glyph ink | Text uses rounded `lineHeightPt` with `lineRule=exact`; Word chooses baseline | Source height acts as a safe minimum in PDF, but is encoded as fixed spacing in Word; equal numbers do not preserve the same typography policy |
+| Font and script | Concrete legacy face or library release/weight/style; missing face/glyph fails explicitly | Four Sarabun faces/all font slots, hardcoded th-TH; rejects other legacy families/library styles; V7 applies forced CS to Thai-containing runs only | Other-font/language support is an unimplemented prototype scope, not evidence of a DOCX limitation; effective style/script policy needs a general mapping |
+| Wrapping and normalization | Native break opportunities + shaped ink width + grapheme fallback; CRLF/CR normalize to LF and tabs to display spaces | LF becomes explicit Word breaks; Word owns remaining wrapping, with no equivalent explicit CR/tab normalization in this generator | Keep authored breaks and define normalization; do not bake PDF physical wrapping into reusable content |
+| Block images | Independent authored frame contributes exact frame height; contain pixels centered inside frame | Body image becomes inline drawing in its own paragraph with minimum line height and0.5pt paragraph mark; optional source image alignment rejected | Word inline/paragraph metrics are an extra layout budget; image framing needs its own adapter rather than cell-wide compensation |
+| Cell geometry | Padding defaults4pt; row height comes from child line/frame stack plus padding; borders drawn0.5pt at resolved coordinates | Initial80twip default agrees, but V10ROW subtracts5twips from both margins in1,830cells; V13 redistributes27twips in1,167cells | Authored padding and renderer overhead have become mixed in experiments; prior compensation must not become the shared style definition |
+| Horizontal alignment | Cell alignment uses actual occupied ink width and negative-ink correction; image frame alignment supported | Word paragraph alignment and fixed grid; V3 corrects table indent to0; image align is outside current allowlist | Table origin, cell padding, text alignment and frame alignment are separate concerns; indent fix does not prove universal text-edge parity |
+| Grouping and pagination | Measured row fragments, group prefix/first-member capacity and keepStart relaxation | Native tblHeader/cantSplit plus keepNext/keepLines approximations and bounded inferred heading/icon relationships | Same logical relationships need format-specific mapping with oversized relaxation; never a per-REQ or per-title offset rule |
+| Sections and bands | Text-runtime measurement and actual first/continuation band footprint per page | One-line/explicit-break estimates, floating band tables, maximum footprint reserved in section margins; A4portrait/continued numbering guard | Wrapped bands, arbitrary numbering and other page geometries are not established by this SRS recipe |
+| General model coverage | Types include library fonts, page-break, content/fixed text height, verticalAlign, image.align, TOC scope and formatInstances | Several are explicitly rejected; heightMode checks `auto` although model enum is `content`; formatInstances is not interpreted | Establish a capability matrix and fail on unsupported input; missing mappings are not evidence that the source cannot represent the case |
+| Units and generated fields | Point floats and measured coordinates; page/TOC values filled after layout | Integer twips, half-point run size inputs and native Word fields requiring refresh | Quantization and each format's own numbering are expected adaptations; one rounded length differs by at most0.025pt, not an explanation for the1.3pt icon shift |
+
+Source detail: Core A/D can change with actual content even if total line height
+does not grow. Therefore font size/line height alone cannot establish one
+baseline target for Latin and mixed text. This confirms the PDF-side rule; it
+does not establish which internal Word metric causes its observed origins.
+Likewise Word's inline object participates in line layout according to
+[Microsoft Inline documentation](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.drawing.wordprocessing.inline?view=openxml-3.0.1),
+and exact/atLeast spacing and font-slot semantics are documented in
+[line spacing](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.spacingbetweenlines.line?view=openxml-3.0.1)
+and [run fonts](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.runfonts?view=openxml-3.0.1).
+These references support the format semantics, not a newly verified fix.
+
+Saved-package corroboration: V11/V13 both2,775paragraphs /4,609runs /
+200tables /933rows /1,932cells /371inline body drawings /7sections; no explicit
+row-height nodes. Both have1,942paragraphs at exact397twips,195at exact480 and
+363image paragraphs at atLeast320. V11 has1,183cells at55/55twips; V13 changes
+1,167of them to28/82, leaving16unchanged. The source requirement family has
+3pt/3pt padding (=60/60twips), so even V11's55/55 is retained experimental
+compensation, not a value to copy back into source or a future general writer.
+There are1,420forced-CS main-story run properties and all200table indents are0.
+Fixture has no formatInstances/page-break nodes and only Sarabun styles;
+absence is not acceptance coverage for those general capabilities.
+
+### Cause boundary and proposed general correction
+
+Confirmed: common structure/data is preserved, but the two paths do not share
+final line boxes, baselines or pagination. Prototype mapping changes the
+meaning of minimum line spacing and block-image framing, adds inferred Word
+grouping, and accumulates spacing compensation. Existing V13 actual-rendered
+evidence confirms that translating a whole cell moves already-close images
+along with text having different Core targets. This is enough to reject that
+abstraction; it is not proof of an internal Word/docx-library defect.
+
+Recommended design direction, **not implemented or rendered-accepted**:
+
+1. Resolve an effective style/capability layer from the existing shared input:
+   concrete font face identity/weight/style, normalization, minimum line height,
+   block-image frame, authored padding and genuine grouping. PDF behavior stays
+   frozen. Derive existing intent where possible; any new language/direction/
+   fallback or relationship metadata needs a separately reviewed contract.
+2. Map that intent into native Word behavior per element/property, without
+   R/REQ/title/page/fixture-index rules or magic offsets per font. Preserve
+   source spacing; account for Word border/paragraph/image overhead separately.
+   `atLeast` is a candidate for minimum spacing, **not** a proven one-property
+   fix for Core baselines. Font-metric reading alone cannot guarantee parity.
+3. Before a replacement writer, validate actual Core/Word outputs on a small
+   same-input set across more than one supported font and Thai/Latin/mixed text
+   with block images. Measure line box, baseline, image frame and row extent
+   separately; accept individual failures, not nominal-formula averages.
+4. Only after a policy is supported, consolidate accepted mappings into one
+   isolated writer with explicit unsupported handling. Use full SRS later as
+   regression coverage. Do not chase another SRS-specific correction first.
+
+Still unresolved before implementation: effective minimum-line/baseline policy,
+acceptable native Word fidelity difference, concrete font/script disposition
+and supported generic feature scope. Exact internal Word metrics, arbitrary
+scripts/fonts, wrapped bands and pixel/page parity remain unverified. This
+inspection does not diagnose Word conversion performance. V12's bounded
+nominal calibration and V13's rejection retain their original evidence meaning.
+
+### Discovery evidence and stopping point
+
+`mapping-audit/mapping-review.json`: status
+`DISCOVERY_COMPLETE_IMPLEMENTATION_AND_NEW_RENDERING_NOT_STARTED`, SHA256
+`f08f707d7429fdf80809b7bb3ff3eae48d1e47291d2bff8eafa06f7925a1c0b3`.
+Ten mapping topics have exact source locators;29source/evidence files are
+hash-bound before/after;22prior frozen inputs remain identical. Read-only
+inspection covers two saved DOCX packages and the existing same-input PDF
+receipt. No new DOCX/PDF, Word interaction, candidate repair or runtime change.
+All reported new verification is source/package inspection, not rendered proof.
+
+Acceptance: mapping differences, confirmed causes versus unknowns, reusable
+correction direction and unsupported boundaries are recorded for owner review.
+Documentation checks: `check:data`, local anchors, scope/diff/whitespace review.
+No projection regeneration is needed for this prose-only change. SRS tuning
+remains paused; no follow-up experiment starts under this discovery authority.
