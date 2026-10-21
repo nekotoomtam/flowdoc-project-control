@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is U5 with a licensed second font family and small isolated paired documents. Return the comparison before another step. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is the isolated U5 header-space feasibility probe. Return findings before another step; no SRS, PDF reference or runtime repair is authorized. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1–U4 isolated writer checked; U5 small paired comparison reviewed with gaps, not accepted. Sarabun and licensed Bai Jamjuree four faces each verified in DOCX and actual Word PDF; 3 shared-source cases and all22 output pages reviewed. Table extent, band reservation, image placement, Word PDF text extraction and boundary-group coverage need resolution before acceptance. U6 unstarted; no new SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
+สถานะ: **U1–U4 isolated writer checked; U5 paired comparison remains reviewed with gaps, not accepted. The later H1 probe verifies that source positive top margins recover about21.4pt on hidden-header pages for simple headers; remaining baseline differences and broader coverage are unresolved. No writer repair integrated. Two licensed font families/eight faces and prior3 shared-source cases remain frozen. Table extent, complex band behavior, image placement, Word PDF text extraction and boundary-group coverage remain open. U6 unstarted; no new SRS trial, PDF reference change or product integration. SRS tuning remains paused**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3810,3 +3810,116 @@ Unicode extraction separate from DOCX source preservation. Do not resume
 SRS tuning, modify the reference PDF, integrate the writer or advance U6 as part
 of this checkpoint. Absent `Output-Format` remains the future Service PDF-default
 requirement; no real API behavior changed.
+
+
+## H1 header-space feasibility checkpoint
+
+**2026-10-21 — FEASIBILITY_SUPPORTED_SIMPLE_HEADERS_WORD_VERIFIED_NOT_INTEGRATED.**
+Owner authorized one isolated header-space probe using a small document, then a
+summary before proceeding. This supersedes the preceding stop point only for
+this probe. U5 acceptance remains open; U6/SRS/runtime work remains unauthorized.
+
+Scope: single-room discovery experiment, execution IDs N/A, roles Evidence
+Reviewer/Documentation Synthesizer, routine risk, one existing canonical record.
+Experiment-only scripts and artifacts are under the existing isolated writer
+workspace; no writer source/dependency, original source, original reference PDF,
+Core/Service/plugin, system map or real API/default-format change was made.
+
+### Question, controlled variables and actual Word export
+
+Can native Word keep the source positive top margin and expand around visible
+headers, so hidden-header pages reclaim space without synthetic per-page sections?
+Microsoft's [PageMargin documentation](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.pagemargin?view=openxml-3.0.1)
+identifies margins as section properties. Actual dynamic behavior below is
+measured in Word, not inferred
+from that API documentation alone.
+
+Root: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer/header-space-h1/`.
+Reuse the exact frozen U5 six-page sections/navigation source and Core PDF,
+original DOCX and owner-exported Word PDF. No new source structure or PDF render
+implementation. SHA-verified copies are `source.json`, `core-pdf/reference.pdf`
+and `control/00-reserved.docx` / `control/00-reserved-word.pdf`.
+
+Two disposable DOCX probes are `docx/01-auto-top.docx` and
+`docx/02-auto-top-source-gap.docx`:
+
+- 01 changes exactly the two header-bearing sections' positive `w:pgMar/@top`
+  from1168twips/58.4pt to the source720twips/36pt. Header distance36pt stays the
+  same. Footer reservation and all other package parts remain unchanged.
+- 02 differs from01 only by mapping the source2pt header gap to40twips
+  after-spacing on the last paragraph of the two visible header parts.
+  No font-dependent compensation, negative margin or section splitting.
+
+`qa/header-space-h1.py` proves the exact allowed XML-attribute differences and
+refuses overwriting an existing experiment. These are disposable package edits
+for causal isolation, not a new public writer path or raw-patch runtime dependency.
+The owner manually exported both candidates to Word PDF and refreshed TOCs;
+original exports remain alongside DOCX and identical review copies in `word-pdf/`.
+Microsoft365 producer metadata is consistent with the preceding observed setup.
+
+### Measured result and remaining differences
+
+Both candidates retain6 pages. All12 candidate pages were rendered and visually
+reviewed;6 Core and6 control Word pages reuse previously reviewed exact PDF bytes.
+Actual base-letter baselines, measured downward from page top:
+
+| Page and header mode | Core PDF | Old Word control | 01 auto top | 02 auto top + source gap |
+| --- | ---: | ---: | ---: | ---: |
+| 3 portrait continuation, header hidden | 51.6235pt | 75.72pt | 54.24pt | 54.24pt |
+| 4 landscape first page, header hidden | 50.045pt | 76.46pt | 55.08pt | 55.08pt |
+| 5 landscape continuation, header visible | 73.4635pt | 75.74pt | 73.10pt | 75.14pt |
+
+Hidden pages recover21.48pt and21.38pt relative to old Word, with residual
+Core differences reduced from24.0965→2.6165pt and26.415→5.035pt. This supports
+removing unconditional maximum top reservation for these simple headers. It does
+not isolate or eliminate the remaining baseline/structural-paragraph differences.
+
+Visible header baseline53.28pt stays unchanged. No header/body overlap observed.
+Actual header-ink to next-text-ink gaps differ from the authored layout gap:
+page2 Core10.84pt/control12.36pt/01=9.84pt/02=11.76pt;
+page5 Core11.9455pt/control11.42pt/01=8.78pt/02=10.82pt.
+Adding2pt source gap changes observed Word placement by about2pt; matching
+ink-box distances is not a universal source-gap acceptance rule.
+
+Page2's first TOC baseline is73.639pt Core/76.68pt control/74.16pt 01/76.08pt 02.
+The introduction below the native TOCs still differs from Core by23.997pt in01
+and26.037pt in02 (control26.517pt). TOC spacing is an existing separate contributor;
+this header probe does not isolate that residual's entire cause. Do not label it
+as an uncorrected26pt hidden-header reservation or silently compensate the body.
+
+Across all candidate pages, extracted page text equals the Word control ignoring
+whitespace; this preserves the prior Word PDF Unicode limitations rather than
+fixing them. Header visibility, footer text and geometry, labels1/2/7/8 and total5,
+link destination pages and URI, orientations and blank page stay unchanged.
+Both actual candidate PDF image occurrences retain the original29×34 RGBA bytes.
+
+### Limits, proof and return point
+
+This proves feasibility for the observed short single-paragraph header with
+explicit authored page breaks. It does **not** prove wrapped/multiline headers,
+logo/table/rule headers, unequal first/default heights, dense automatic text/table
+flow, recovered page capacity, or general writer readiness. Footer reservation,
+row extent, image-frame offset, TOC formatting and Word PDF Unicode extraction
+remain outside this probe. No follow-on repair or experiment started.
+
+Evidence beneath this root: `evidence/{manifest,package-check,measurements,
+comparison-checks,results,final-review,checkpoint}.json`, plus all page PNGs and
+contact sheets in `rendered/`. Helpers outside the root are
+`qa/header-space-h1.py` and `qa/header-space-h1-review.py`.
+Independent review confirms exact attribute containment, unchanged U5 lock31 /
+checkpoint109 and U4 checkpoint52, and qualified conclusions. No unexpected
+package mutation or frozen-input drift found. Existing106-test results are reused
+only as unchanged-writer evidence; they were not rerun or claimed as a new Word
+layout test. XML/relationship and actual Word/PDF checks are the pertinent proof.
+
+Checkpoint hashes50 experiment files;
+SHA256 `c57ff870979212252a3d9c3b68bd2176b726a957a91307a33b50e068fcb9cb36`.
+Project Control impact remains this plan only; check:data, local fragment links
+and final diff/whitespace checks pass. No canonical data/projection update needed.
+
+Recommendation returned for owner review: positive source margins plus explicit
+source header gap are a viable candidate mapping for this bounded family. A later
+authorized adapter change must revise receipt/body-capacity checks as well as
+margins, and verify complex headers and automatic flow before broadening support.
+Do not choose between probes solely by smallest baseline error or insert per-font
+point offsets. Stop here; no SRS, PDF reference change, runtime integration or U6.
