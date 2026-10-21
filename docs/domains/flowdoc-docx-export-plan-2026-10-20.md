@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V5 isolates a first-run complex-script formatting effect; full SRS confirms the target Thai line breaks; whole-document tuning incomplete; PDF reference frozen; product integration not started**.
+สถานะ: **V6 bounded mixed-script and emphasis comparison passes with explicit formatting preservation; whole-document mapping and tuning incomplete; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1388,3 +1388,160 @@ Full Word evidence อยู่ที่ `full-srs/word-review/comparison.json` 
 ในโฟลเดอร์เดียวกัน; initial observation และ root visual acceptance แยกกัน.
 Supplement: `toc-reflow-summary.json`, `text-stream-reconciliation.json`
 และ `root-review.json` ในโฟลเดอร์ full Word evidence เดียวกัน.
+
+## V6 mixed script and emphasis scope
+
+เจ้าของอนุญาตวันที่ 2026-10-21 ให้ตรวจข้อความไทยปนอังกฤษ ตัวหนาและตัวเอียง
+ด้วย SRS เดิมในพื้นที่ทดลอง แล้วสรุปก่อนขยายทั้งเอกสาร. เป็น bounded inline
+discovery ใหม่; ไม่เปิด registered execution หรือเปลี่ยน acceptance ของ V5.
+Owner: Project Control สำหรับแผนนี้; experiment writer เป็น disposable input
+สำหรับ Core owner เท่านั้น. Roles: Planning Partner / Evidence Reviewer /
+Documentation Synthesizer; Work/Phase/Checklist/execution IDs N/A.
+
+Allowed: new `tuning-v6/` artifacts, section นี้ และ current status ของแผน. Frozen V3/V5 candidates,
+PDF reference, source template/data, product repositories, installed dependencies,
+runtime/OS settings และ maps อยู่นอก mutation. ใช้ isolated experiment root
+เดิม; small separable plan update ใช้ Project Control checkout ที่สะอาด.
+Model decision: retain current host model for this bounded diagnostic continuation;
+ไม่ dispatch registered product WORK หรือเปลี่ยน model setting.
+
+Acceptance: inventory actual script/emphasis coverage และ effective formatting;
+สร้าง common fixture จากข้อความ/ย่อหน้า SRS เดิม; แยก baseline, `w:cs` only
+และ `w:cs` พร้อม explicit complex-script formatting ที่รักษารูปแบบเดิม;
+ตรวจ exact text/package invariants แล้วเปรียบเทียบ Word fonts, line breaks,
+ขนาด และ glyphs. หาก source ไม่มี italic/boldItalic ต้องระบุ coverage gap
+และแยก controlled formatting overlays จาก actual SRS cases อย่างชัดเจน.
+ไม่ถือ XML-only checks เป็น Word rendering PASS.
+
+Proof budget: source inventory หนึ่งชุด, comparison DOCX ไม่เกินสามไฟล์
+ไฟล์ละไม่เกินหกหน้า, Word export หนึ่งรอบต่อไฟล์ และ review ทุกหน้าของ
+compact fixture. อนุญาต focused read-only check/research สำหรับ script-slot
+และ style-inheritance failure; ไม่สร้าง full-SRS candidate หรือขยาย mapping
+ทั่วเอกสารในรอบนี้. Candidate generation กับ verification แยกขั้น.
+Document budget: update section เดิมนี้; machine-readable observations/scripts/
+QA images อยู่ใต้ `tuning-v6/`; ไม่มีรายงานหรือ Work records เพิ่ม.
+
+Current status: **PASS bounded V6 comparison**, with the scope and limitations
+below. Mixed-script/emphasis behavior is demonstrated for this compact fixture;
+general mapping and full-SRS pagination remain unverified. Absence of actual
+italic source remains an explicit coverage limitation.
+
+### V6 source coverage and common fixture
+
+Frozen V3/source identities remain those in V5. Inventory of active text-bearing
+main-document runs found regular and bold Thai/Latin/mixed text, but no natural
+italic, boldItalic or inline emphasis transitions. Unused italic style definitions
+are not coverage. The source style named `bold` has `fontWeight: normal`;
+this checkpoint does not rename or repair existing source styles.
+
+Natural specimens: original mixed heading paragraph 297 and full introduction
+paragraph 298, plus definition table 16 rows 0–7. Paragraph indices are zero-based
+`//w:p` indices in the frozen `word/document.xml`. In the common baseline, the
+first two retain exact qualified XML structure/properties/text; table properties
+and the eight selected rows are also source-identical. Existing section geometry/fonts/settings are
+retained, with header/footer references removed from the common extracted section.
+
+Three comparison files share five diagnostic pages:
+
+| Page | Coverage | Provenance limit |
+| --- | --- | --- |
+| A / 1 | Natural mixed bold heading and three intro chunks | Exact existing source paragraphs |
+| B / 2 | Natural Latin, Thai and mixed text in definition table | Eight existing rows; not the complete source table |
+| C / 3 | Regular / bold / italic / boldItalic | Controlled paired standard/CS formatting on the existing 312-character mixed intro chunk |
+| D / 4 | Inherited boldItalic with direct regular / bold / italic / boldItalic overrides | Controlled character style; CS off flags deliberately absent in baseline |
+| E / 5 | Inline regular → bold → italic → boldItalic transitions | Controlled common segmentation of the same exact source text; no candidate-specific splitting |
+
+The natural paragraphs keep their original run boundaries. Controlled page E
+introduces the same four run boundaries in every candidate to exercise a missing
+source case; this is not evidence that arbitrary script-boundary splitting is
+layout-equivalent or needed by the writer.
+
+Files under `tuning-v6/probes/`: `00-baseline.docx`, `01-cs-only.docx`, and
+`02-cs-preserve-emphasis.docx`. The latter SHA256 is
+`a5ccf65f334ea309f3de4915633ae0dded7121b2e751d77158dbe216eff35415`.
+All three contain 125 ZIP payloads; 123 remain byte-identical to frozen V3.
+Only common document/style fixture parts differ from V3. Between candidates,
+exact text, paragraph/table/run boundaries, font resources and all non-target
+properties remain identical. Pure Latin control runs remain unchanged.
+Independent saved-package check passed 331 focused assertions; candidate hashes
+and frozen inputs remain unchanged after Word export and verification.
+
+### V6 Word comparison results
+
+The owner exported all three PDFs through Word: five pages each. Root rendered
+and reviewed all 15 complete pages. No visible clipping, overlap or box/replacement
+glyphs was found in these specimens; the deliberately failing emphasis control
+is recorded separately below and is not a deliverable-ready candidate.
+
+Both CS variants add `w:cs` to 24 Thai-containing text runs, including whole
+mixed runs; they do not force RTL. The synchronized variant additionally writes
+explicit `bCs/iCs` true **and false**, with `szCs` matching the original intended
+size. Every target has direct `b/i/sz` and all font slots resolve to Sarabun.
+This known-fixture rule is not a general style-inheritance or font resolver.
+
+| Check | Baseline | CS only | CS with formatting preservation |
+| --- | --- | --- | --- |
+| Natural intro wrapping | Reproduces V5 differences | All three chunks match Core reference endpoints | Same match |
+| Natural mixed bold heading | Bold retained | Bold retained | Bold retained |
+| Paired direct four-style controls | All requested faces retained | All retained | All retained |
+| Inherited-on/direct-off controls | All requested faces retained | Regular, bold and italic incorrectly become boldItalic | All requested faces retained |
+| Inline transitions | Measured segments retained | Retained | Retained |
+
+Source-relative intro break ends, after the same explicitly lossy PDF alignment
+used in V5:
+
+| Chunk | Baseline ends | Both CS variants and Core PDF ends |
+| --- | --- | --- |
+| First Thai chunk | 50, 145, 210, 300, 391 | 103, 210, 312, 391 |
+| First mixed chunk | 96, 202, 246, 312 | 96, 202, 304, 312 |
+| Second mixed chunk | 73, 176, 272, 330 | 114, 219, 315, 330 |
+
+The table excerpt also retains its normalized text sequence; its Kick-Off row
+wraps differently when CS is selected. This does not certify table wrapping
+against every source PDF row. Natural heading PDF size stays 12.96 pt and
+controlled text paints at 11.04 pt across variants; DOCX intended sizes remain
+13/11 pt. Font stream metadata (name tables, OS/2 weight/style, head style and
+italic angle) supports Sarabun regular/bold/italic/boldItalic selection, rather
+than relying only on Word's temporary PDF font labels. Full outline identity
+and fallback behavior outside these specimens were not checked.
+
+CS-only and synchronized rendered pixels are identical on pages 1, 2, 3 and 5;
+only page 4 differs. On page 4 the CS-only candidate paints every controlled
+body row as boldItalic, including the three rows requesting another style.
+Both Thai and Latin show the same failure. Explicit off values in the
+synchronized candidate restore the requested four styles. This proves a
+controlled inheritance risk; it does **not** demonstrate an emphasis defect
+in the natural SRS, whose existing standard/CS effective values already agree.
+Page E's regular segment contains only Thai, so Latin regular at that particular
+transition is absent coverage; regular Latin is covered on pages C/D.
+
+### V6 decision and limits
+
+**PASS bounded mixed-script/emphasis experiment:** retain the CS selector
+together with the original effective emphasis/size/font policy as the next
+experimental mapping candidate. Selecting CS alone is insufficient for a writer
+that must preserve inherited formatting. Resolve effective values before mapping;
+do not equate a missing property with an explicit false or introduce RTL as a
+substitute. Research of pinned `docx@9.13.0` also found that explicitly passing
+false to its CS emphasis options can omit the XML element; inspect emitted XML
+or use a verified emission path when an inherited true must be overridden.
+See [CS formatting](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.complexscript?view=openxml-3.0.1)
+and [CS italic inheritance](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.italiccomplexscript?view=openxml-3.0.1).
+
+No global/full-SRS candidate is created in V6. General paragraph/character/table/
+numbering inheritance, differing font slots, fallback, arbitrary run splitting,
+whole-document reflow/pagination and strict raw Thai PDF text/glyph fidelity
+remain outside this acceptance. The font-signature defect, repeated meeting
+header and line/row-height work remain separate existing findings. No PDF
+reference, source template/data, product repository, dependency/runtime/OS setting
+or map is changed. Stop after this comparison and summarize before expanding.
+
+Locators under `tuning-v6/`: `inventory/srs-style-inventory.json`,
+`research/mapping-rules.json`, `probe-manifest.json`, `package-check.json`,
+`inventory/saved-package-check.json`, `word-review/comparison.json`,
+`word-review/emphasis-observations.json` and `word-review/root-review.json`.
+The last separates root visual acceptance from raw observations; initial
+package/research records retain their original pre-export status. Reproduction
+helpers are `scripts/build_mixed_emphasis.py`, `scripts/observe_word.py` and
+`word-review/measure_emphasis.py`. These are disposable experiment helpers,
+not installed writer or product tests.
