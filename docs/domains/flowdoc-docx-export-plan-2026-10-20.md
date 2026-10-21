@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V12 six-page font and line probe generated and saved-package verified; owner Word export and actual row-height/baseline review pending; V11 bounded grouping acceptance retained; PDF reference frozen; product integration not started**.
+สถานะ: **V12 Word review complete: both corrected font/line pairs meet the declared nominal baseline tolerance with unchanged row heights; crossed controls separate observed line effects from Core font-dependent targets; full-SRS calibration unaccepted; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -2424,3 +2424,74 @@ needed in this focused fixture. After export, inspect every page and measure
 every paired row/line, including native icon placement, before claiming constant
 rendered heights or improved Core alignment. No full-SRS redistribution,
 reference PDF edit or production change has occurred.
+
+### V12 owner Word results and acceptance
+
+เจ้าของแปลงผ่าน Word for Microsoft365 แล้ว: `outputs/srs-font-line-calibration-v12.pdf`,
+6pages /85,349bytes, SHA256
+`a4d346ef5bb7fbd98c9fb11f25a621c1829bbd15c40e924a6a769ab0becf38e9`.
+DOCX ยังตรง hash ก่อนส่ง; frozen20source/reference/font/Core-trace/candidate
+inputs คงเดิม. Verification ไม่แก้ candidate หรือสร้าง full-SRS derivative.
+
+**PASS bounded two-pair origin calibration; not full-SRS acceptance.**
+วัด30paired cases/42lines และ native header+REQ0001. Row-border height delta
+ทุกคู่0.000pt; paired line-pitch delta สูงสุด0.12pt. ไม่พบ measurement failures
+หรือ adjusted-line residual เกิน±0.12pt. ใช้ทุก first/intermediate/final line
+และ base-letter PDF text matrices; combining-mark offsets ไม่ถูกเอามาปน
+baseline. ในแต่ละ line ทุก base-letter matrix origin ตรงกัน(spread0.000pt).
+
+| Corrected pair | Requested upward shift | Measured text shift | All-line nominal Core residual | Row-height delta |
+| --- | ---: | --- | --- | ---: |
+| 11pt /397,15cases /21lines | 1.35pt | 1.32หรือ1.44pt | −0.11801…+0.08199pt | 0.000pt |
+| 13pt /480,15cases /21lines | 1.80pt | 1.80pt | −0.03401…−0.004pt | 0.000pt |
+
+ค่าคลาดเคลื่อนนี้เทียบ **nominal traced Core formula** สำหรับ controls,
+ไม่ใช่ newly rendered Core PDF ทุก style. Native REQ0001 Latin R เทียบ
+prior actual Core baseline17.51884pt ได้ error+0.00115pt. Native icon ยังคง
+100×16pt, decoded RGBตรง sourcePNG และเลื่อนขึ้น1.35pt โดยกรอบแถวคงเดิม.
+Source reference PDF/hash และ Core baseline evidence เดิมใช้ซ้ำแบบ immutable.
+
+**Crossed finding:** ขนาดจริงใน PDF เป็น11.04ptบน1/2/5 และ12.96ptบน3/4/6,
+จึงไม่ได้เกิดจาก fixture เผลอใช้ font size เดียว. ที่ exact line เดียวกัน
+เปลี่ยน11→13แล้ว actual Word base-letter origin เปลี่ยน0.000ptครบ21samples
+ทั้ง397และ480; observed font/line interaction0.000pt. เปลี่ยน397→480แล้ว
+first baseline เลื่อน3.24…3.39ptเท่ากันทั้งสองขนาด. Nominal Core target
+เพิ่ม0.836ptเมื่อเพิ่มขนาด และ first-line targetเพิ่ม2.08ptเมื่อเพิ่ม line.
+จึงต้องแยก actual Word response ออกจากส่วนต่างระหว่างสอง layout models;
+V11 diagonal residual ไม่พิสูจน์ว่า font size เป็นเหตุให้ Word origin เปลี่ยน.
+ไม่อ้าง internal metric algorithm ของ Word. Crossed11/480และ13/397ยังไม่ได้
+จูน/รับรอง: unadjusted residual2.60199…2.632และ0.40599…0.606ptตามลำดับ.
+
+เทียบเฉพาะ matched V11 cases:11pt worst absolute residualลด0.182005→0.11801pt,
+แต่4/21individual linesคลาดมากขึ้นเล็กน้อย,15ลด,2เท่าเดิม.13pt matched15lines
+ดีขึ้นทั้งหมดและ worstลด0.596→0.034pt. ไม่กล่าวว่าทุกบรรทัดดีขึ้นจากV11;
+11pt mixed boldItalic first-line−0.11801ptอยู่ใกล้ขอบ0.12pt ต้องคงข้อจำกัด
+เรื่อง export quantization/ตำแหน่งบรรทัด ไม่ยกระดับเป็น universal padding rule.
+
+Functional review PASS432assertions/zero failures:90controlled casesและ126
+logical linesตรง source ภายใต้ declared NFKD+whitespace normalization.
+Paired encoded glyph/TJ-advance streams และทุก char font/size/advance/X/
+linear transform/color ตรงกันโดยยกเว้นYที่เป็นปัจจัยทดลอง. Embedded SFNT
+PostScript identities ครบสี่Sarabun facesตรง emphasis; native image source
+pixels/ขนาด/ลำดับครบ. ไม่อ้าง raw Unicode/every-glyph equality จาก normalization.
+
+Root เปิดภาพ full-page144dpiครบ6หน้า และ detail288dpiสี่ภาพของ1/4/5/6;
+ทุกกรณีอยู่ครบ ไม่เกิด overflow, visible Thai upper/lower-mark clipping,
+overlap, glyph boxes, new wrapping หรือ icon-only ending. ตำแหน่งกรอบแถว
+ตรงก่อน–หลังและ native text/iconอยู่ด้วยกัน. ภาพเต็มครอบคลุมส่วนที่ detail
+crop จงใจตัดออก; ไม่ใช้ crop boundary เป็นข้อสรุปเรื่อง text clipping.
+
+Acceptance coverage/input freeze: `tuning-v12/word-review/root-review.json`
+PASS43root checks. Supporting locators:
+`word-review/measurements/{word-measurements,measurement-summary}.json`,
+`word-review/functional/functional-review.json`, `qa/candidate/manifest.json`
+และ `qa/reviews/root-visual-review.json` ภายใต้ `tuning-v12/`.
+Pre-export reports คงสถานะเดิมเพื่อรักษาประวัติ. Project Control checks:
+`check:data`, local anchors and `git diff --check`; prose-only, no projection change.
+
+Decision: ยอมรับเฉพาะ measured two-pair calibration ใน short fixture นี้.
+หยุดตาม Proof Budget หลัง owner export/measurement/visual QA ครบ.
+Next recommended work คือ bounded full-SRS trial ของ natural11/397 gray-border
+55/55-margin family พร้อม sibling-cell/row guards แล้วตรวจ pagination,
+table splits/repeated headers, heading groups และ icons. ยังไม่สร้าง candidate
+รอบถัดไป, ไม่จูนทุกfamily, ไม่แก้ PDF/source/runtime และไม่รับ product readiness.
