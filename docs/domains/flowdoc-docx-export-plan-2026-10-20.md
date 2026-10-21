@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **M1 isolated candidate implements bounded border-area and wholly empty-header rules;130 automated tests/type-check and four public-path package checks pass. Owner Word exports and visual/layout comparison remain pending. A general text-baseline correction remains unproven. U5/M1 layout acceptance remains open; SRS/product integration remain stopped**.
+สถานะ: **M1 now has bounded Word evidence for the two implemented rules:31 pages reviewed, smaller row-pitch differences, empty-header recovery and preserved sample flow. General baseline matching, exact wrapping and full layout parity remain open; no new tolerance is accepted. Prior130 automated tests/type-check remain valid against the unchanged candidate. SRS/product integration remain stopped**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -44,11 +44,11 @@ Work/Phase/Checklist/execution IDs: N/A สำหรับการวางแ�
 Work Size: medium สำหรับการวางแผน; implementation แบ่งตาม stages ด้านล่าง.
 Risk Tier: routine สำหรับเอกสารนี้; product stages มีความเสี่ยงเรื่องความครบถ้วน
 และ compatibility ซึ่งต้องตรวจตามขอบเขต ไม่ใช่เหตุให้ประกาศ critical โดยอัตโนมัติ.
-Work authority รอบปัจจุบัน: isolated M1 implementation และบันทึกผลในแผนนี้;
+Work authority รอบปัจจุบัน: verification of frozen M1 outputs และบันทึกผลในแผนนี้;
 ไม่ใช่ product implementation หรือการรับรอง feature ทั้งระบบ.
 
-Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้และ `unified-docx-writer-m1/` เท่านั้น;
-experiment roots ก่อนหน้าเป็น read-only.
+Allowed mutation รอบปัจจุบัน: เอกสารแผนนี้และ M1 verification outputs ใหม่
+(`word-review/`, review script/render log) เท่านั้น; ตัวแปลงและหลักฐานที่ตรึงไว้เป็น read-only.
 ขอบเขตทดลองที่เคยอนุญาตในรอบก่อน: dependency เฉพาะพื้นที่แยกและ Word review/export;
 ใช้ installed image แบบ read-only ใน disposable container เพื่อสร้าง Core PDF อ้างอิง.
 รอบ M1 นี้ไม่อนุญาตการติดตั้งเพิ่ม; ใช้ dependency ที่ตรึงไว้ผ่าน read-only junction.
@@ -5174,3 +5174,132 @@ do not promote M1/U5 acceptance before receiving and examining the exports.
 Project Control handoff checks: `check:data` exits0; seven local fragments
 resolve; final diff/whitespace review is restricted to this existing plan.
 No canonical data/projection generation or product map update is required.
+
+## M1 bounded Word geometry and flow verification
+
+**2026-10-21 — PASS_BOUNDED_WORD_GEOMETRY_AND_FLOW_FULL_PARITY_OPEN.** Owner
+returned all four requested Word PDFs. This is verification of the frozen M1
+candidate, not a converter-repair stage or generic DOCX acceptance. Role:
+Evidence Reviewer / Documentation Synthesizer; Core owns eventual implementation,
+Project Control owns this bounded status. Single room, medium size, routine
+risk; Work/Phase/Checklist/execution IDs N/A. No new experiment/Word export was
+requested. Proof budget: the four returned files, their frozen references,
+all-page renders, geometry/flow checks and this existing canonical plan.
+
+Current root remains
+`C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-m1/`.
+Reports/images are new verification outputs under `word-review/`, with the
+read-only review script `qa/review-m1-word.py` and `evidence/word-render.log`.
+No candidate source, fixture, prior report, PDF reference or product file was
+modified. All93 M1 checkpoint entries,91 H3 entries and38 R2 reference entries
+were rechecked unchanged. R2 manifest paths are relative to H3, not its nested
+R2 folder. Prior130/130 tests/type-check are reused against those unchanged
+inputs; no repeated product test suite or package regeneration was needed.
+
+### Received files and visual coverage
+
+| Returned PDF in `outputs/` | Pages | SHA256 |
+| --- | --- | --- |
+| `01-border-flow-two-fonts.pdf` |10| `d93ee632a0e3ec272fd3b2adc4a6d49eb000a484e008d7c199eff80bf77d5d15` |
+| `02-empty-header-matrix.pdf` |9| `afa1c06a6cc7cc2087fc4e981784490b89b23044bd23d204cc367fc9a2304cf6` |
+| `03-h1-regression.pdf` |6| `9b5fce515b3e7e0153b16028a6bba50293fe55840ab1f3fff9d456ed06b0d07f` |
+| `04-h2-regression.pdf` |6| `8626ab52c4d4230abffdf77bee38074de5324437dccc054f009c92c8e0b4418c` |
+
+PDF metadata identifies Microsoft Word for Microsoft365; it does not identify
+the exact build. All31 complete pages were rendered120dpi and inspected through
+11 complete-page contact sheets. Four candidate pages were additionally viewed
+at full render size: Sarabun natural wrapping, Bai Jamjuree emphasis/continuation,
+first-only visible header and H2 repeated-header table. Core R2 natural-wrap
+reference pages3/6 were also viewed directly. No clipping, overlap or missing
+glyph was observed in these bounded samples. The owner reported completion
+without reporting repair; absence of a repair prompt was not independently
+instrumented and is not newly certified.
+
+### Border-area rule and remaining text differences
+
+For each font, three matched tables preserve the original R2 B-table text,
+widths, source4pt padding and nominal0.5pt borders. Compare relative row/baseline
+geometry because surrounding titles/positions differ from R2. Native generation
+now applies the mapping directly; these files were not patched after packing.
+
+| Shape, both fonts | Core mean baseline pitch pt | M1 mean pitch pt | Difference pt |
+| --- | --- | --- | --- |
+| Single line |27.84|27.85|+0.01|
+| Authored three lines |67.52|67.57|+0.05|
+| Natural four lines |87.36|87.43|+0.07|
+
+Individual row-height differences range from approximately0 to+0.15pt. The new
+maximum0.15pt is explicitly above the old observed0.14pt maximum; neither number
+is a universal tolerance. In the natural-wrap case, first-marker-normalized
+movement versus the old mapped Word probe is exactly0/0/+0.12pt for both fonts.
+The prior intervals87.38/87.36 become87.38/87.48, explaining the0.06pt increase
+in the mean of two intervals. This is consistent with the bounded R6 coordinate
+step response; it does not establish a universal rounding stage or license a
+fixed compensation/threshold expansion. All18 measured markers independently
+match raw PDF `Tm` operands.
+
+All18 right-cell line groups (one per source row) remain identical to the prior R2 mapped Word
+sample. This proves no new wrapping change in those comparisons, not equality
+to Core: Sarabun still breaks the English words differently from Core within
+its four-line sample. Bai Jamjuree's visible boundaries match this sample.
+Raw Thai extraction contains shaping/Unicode ordering differences; those are
+not silently classified as content loss or normalized into exact-match proof.
+
+The marker baseline remains lower than Core by **2.722–3.075pt**. No general
+baseline adaptation was implemented; AtLeast/complex-script/emphasis behavior
+is retained. Row-extent improvement must not be reported as baseline parity.
+R5's−0.05pt residual also remains outside this correction's claims.
+
+### Empty headers and automatic flow
+
+- H1 remains six pages. Pages2–6 are pixel-identical to frozen H3 at120dpi;
+  only cover-page content moves upward1.08pt, consistent with removing its
+  empty-header footprint. All per-page extracted line strings remain identical.
+  Five PDF links and the external URI remain. Source `startAt:7` intentionally
+  yields the retained7/8 labels; it is not a new physical-page numbering defect.
+- The nine-page header matrix shows its three header lines on pages2/3/5/8
+  only, exactly matching effective all/first/continuation modes. The following
+  wholly empty section does not inherit the prior visible header. Cover and
+  wholly empty Sarabun sections share baseline53.28pt. Mixed hidden headers
+  deliberately retain H3 distance; a matched Sarabun mixed-hidden page starts
+  at54.24pt, retaining approximately0.96pt footprint. That case is disclosed,
+  not described as recovered space. The last blank page is explicitly authored.
+- Each new two-font flowing table preserves F01–F18 once, split10/8 across two
+  pages; its header repeats once on each page. Bold/italic/regular examples and
+  both following text/icon pairs remain visibly intact. These are regression
+  samples without full corresponding Core PDFs, not proof of generic flow parity.
+- H2 remains six pages; pages1–4 are pixel-identical to H3. Its columns-header
+  table keeps the same T01–T24 / T25–T40 page ranges and repeated headings.
+  Mean pitch changes28.3546→27.8537pt and28.3553→27.8513pt on the two pages,
+  removing approximately0.50pt per row. Later baselines rise progressively by
+  up to12.24/8.28pt as expected from the smaller row extents; this is intended
+  cumulative correction, not unexplained drift. Header/footer content and
+  per-page line strings remain. H1's final blank page is also explicitly authored.
+
+### Evidence and return boundary
+
+New evidence is `word-review/{pdf-geometry,measurements,flow-and-raw-checks,
+residual-analysis,preservation,results,checkpoint}.json`, all rendered pages,
+and reproduction scripts. Its checkpoint contains69 files including the four
+returned PDFs; SHA256:
+`7e842316140fa4d6110c14e683204e5242336437e7811fa2f90beccf8def8ede`.
+The original93-file candidate checkpoint remains immutable and separate.
+
+The two implemented mapping rules now have bounded Word geometry/flow evidence.
+Full M1/U5 layout parity, arbitrary fonts/languages, general text-origin matching,
+mixed-header space recovery and any broader tolerance remain unaccepted/open.
+No new universal threshold is adopted to label0.15pt an exact match. Stop and
+return this result before another experiment; recommend a separately bounded
+baseline/leading feasibility decision next. No automatic SRS, PDF reference/
+runtime, product repository, API/default-format, dependency, install or release
+change is authorized or performed. No map/data/projection promotion is needed.
+
+Coverage limit: this batch does not provide a newly matched Core following-
+paragraph landmark after a table. The preserved table separator/icon cases
+and R5 evidence do not establish generic after-table paragraph parity; that
+claim remains open rather than prompting another unrequested probe.
+
+Project Control verification: `check:data` exits0, all seven local fragments
+resolve, final diff/whitespace inspection passes, and both M1 manifests
+(93 candidate /69 Word-review entries) pass identity checks. Only this existing
+canonical plan changes in Git; no projection generation is required.
