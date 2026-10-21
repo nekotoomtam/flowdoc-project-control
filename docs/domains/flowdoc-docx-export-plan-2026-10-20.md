@@ -31,7 +31,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **V7 full SRS experiment reviewed on all pages; intro wrapping matches reference; table and pagination findings remain; PDF reference frozen; product integration not started**.
+สถานะ: **V8 full SRS reviewed on all 100 pages; meeting-header numbers and reported heading/icon grouping cases corrected; repeated requirement-column headers and other layout differences remain; PDF reference frozen; product integration not started**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -1691,3 +1691,147 @@ Locators ใต้ `tuning-v7/`: `generation.json`, `package-check.json`,
 ใน `qa/{reference,candidate}/`. Root summary ตรวจ union ของ visual coverage
 และ immutable input/candidate hashes อีกครั้ง; observation records ที่เขียนก่อน
 Word export คงสถานะ pre-export เดิม ไม่ย้อนแก้ให้ดูเหมือนผ่าน Word มาก่อน.
+
+## V8 meeting headers and content grouping trial
+
+### Bounded scope and acceptance
+
+คำขอเจ้าของ 2026-10-21 อนุญาตแก้เฉพาะ candidate ทดลองจาก V7 ให้หัวตาราง
+ประชุมใช้เลขของครั้งที่กำลังต่อหน้า หัวข้อ/คำอธิบายอยู่กับต้นตาราง และไอคอน
+อยู่กับข้อความที่สัมพันธ์กัน. ใช้ SRS/source เดิมใน experiment root เดิม;
+PDF ต้นแบบ, resolved data, V7 และ product/runtime ทั้งหมด frozen.
+นี่เป็น scope ใหม่ต่อจากผล V7 ที่คงประวัติไว้ ไม่ย้อนเปลี่ยน acceptance เดิม.
+
+Owner: Project Control สำหรับแผน; prototype writer ใน experiment root
+สำหรับ candidate. Role: Planning Partner / Evidence Reviewer /
+Documentation Synthesizer. Single-room, unregistered; execution IDs N/A.
+Work Size: small; Risk Tier: routine. Work authority: bounded prototype
+implementation หลัง read-only discovery แล้ว verification ที่ไม่แก้ candidate.
+Model decision: ใช้ host/session model ปัจจุบันกับ bounded inline task;
+ไม่มี separate WORK หรือ model override. Helpers แยก read-only discovery
+และ verification ไม่รับ ownership ของ product lane.
+
+Document Budget: อัปเดตแผนนี้ไฟล์เดียว. Proof Budget: หนึ่ง full-SRS candidate,
+source mapping, package/inverse preservation checks, หนึ่ง manual Word export
+และ all-page review เทียบ frozen Core PDF พร้อม targeted comparison V7.
+หากยังมี finding ให้บันทึกก่อนเริ่ม candidate/review cycle เพิ่ม.
+ข้อเท็จจริงจาก V7 ที่ยังไม่เปลี่ยนใช้ผลเดิม ไม่ทดสอบ controls V5/V6 ซ้ำ.
+
+Acceptance: หัวประชุมไม่ซ้ำผิดเลข; representative headings/descriptions
+และไอคอนที่แยกเดิมอยู่กับ content ที่เกี่ยวข้อง; long rows ยังแบ่งหน้าได้;
+text/runs/fields/images/section geometry/CS formatting และ package parts
+นอกขอบเขตคงเดิม. ตรวจ all-page output ว่าไม่มี visible clipping, overlap,
+glyph boxes หรือ missing ending พร้อม functional TOC/page fields หลัง reflow.
+Page count/line breaks อาจต่างจาก Core ตามข้อตกลง; ไม่ปรับ typography,
+TOC appearance, general row heights, PDF หรือ production เพื่อบังคับจำนวนหน้า.
+ความเสี่ยงคือ grouping อาจเปลี่ยน pagination หรือถูก Word ตีความต่างจาก XML;
+static checks จึงไม่แทน Word rendering. สถานะเริ่มต้น: discovery in progress;
+ผลสิ้นสุดและข้อจำกัดอยู่ด้านล่าง.
+
+### V8 source diagnosis and candidate
+
+Read-only discovery แก้ความเข้าใจเรื่องสาเหตุให้แม่นขึ้น: V7 มีตารางประชุม
+แยกอยู่แล้ว 15 ตาราง (source indexes 19–33), ครั้งที่ 1–10 และ 12–16.
+แต่ละตารางมีหัวแถวแรกและเลขของตัวเองถูกต้อง; ไม่มีครั้งที่ 11 ใน source.
+ทุกตารางมี `tblPr/tblGrid` ตรงกันและวางเป็น adjacent `w:tbl` ไม่มี paragraph
+คั่น 14 จุด. ไม่ใช่ source รวมทุกครั้งเป็นตารางเดียวหรือข้อมูลหัวผิดเลข.
+ข้อสันนิษฐานคือ Word รวมตารางที่ติดกันและใช้หัวแรก; V8 ยืนยันเชิงผลลัพธ์ว่า
+เพิ่มตัวคั่นแล้วหัวต่อหน้าถูกเลข ไม่อ้างว่า trace internal Word implementation.
+
+สร้าง `outputs/srs-grouped-v8.docx`, 1,084,106 bytes, SHA256
+`972b987f758df41d8c2dbf1970cc2faa89b2c85d8fd031634c6ee33784727bbb`.
+เปลี่ยนเฉพาะ main document part จาก frozen V7:
+
+- เพิ่ม empty paragraph 14 จุดระหว่างตารางประชุมเดิม; before/after 0,
+  exact line 1 twip, paragraph-mark size 1 pt และ keep-with-next.
+  ไม่มี visible blank separator line ใน Word output; ไม่ split/rewrite ตาราง
+  หรือแก้ `tblHeader`, row/cell properties.
+- จับ 172 heading/table chains รวม 221 paragraphs (189 headings + 32
+  descriptions) ด้วย `keepNext`; เพิ่ม `keepLines` เฉพาะ headings.
+  ไม่มี chain ข้าม section/page break หรือเข้า TOC/list/hyperlink.
+- จับ 363 text/icon pairs (361 requirement rows + 2 unnumbered note rows)
+  ด้วย `keepNext` บน text paragraph ก่อน icon; คง `keepLines=false`
+  เพื่อให้ข้อความยาวแบ่งหน้าได้. ไม่เปลี่ยน 8 legend images ที่ไม่มี text
+  ก่อนหน้าใน cell; ไม่ใช้ blanket `cantSplit` หรือจับทั้งตารางไว้หน้าเดียว.
+
+การเลือก targets อิง source paragraph/table/row/cell identity ไม่อิงเลขหน้า
+หลัง render. [Microsoft KeepNext semantics](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.keepnext?view=openxml-3.0.1)
+รองรับการให้บางส่วนของย่อหน้าอยู่หน้าเดียวกับย่อหน้าถัดไปและยังแบ่งกลุ่มที่ยาว
+เกินหน้าได้; จึงยังต้องดู Word จริง. ตารางประชุมคงกติกา
+[repeat-header ของแถวแรก](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.tableheader?view=openxml-3.0.1)
+เดิม ไม่สร้างข้อความหัวต่อหน้าขึ้นเอง.
+
+Builder raw inverse คืน source XML ทุก byte ได้; independent saved-package
+check ผ่าน 19,818 assertions และ derive targets จาก topology แยกจาก manifest.
+มีเพียง 584 paragraph-property targets และ 14 separators; raw XML ลด 8,428
+bytes จากการเขียน true แบบ empty element. อีก 124 ZIP payloads และ compressed
+local records ตรง V7 ทุก byte. ลบเฉพาะ separators และย้อน target properties
+แล้วได้ entire V7 canonical XML เดิม. คง ordered text, 4,609 runs/CS formatting,
+200 tables/933 rows/1,932 cells/371 drawings/198 hyperlinks/922 breaks/
+7 sections/396 bookmarks/199 main field instructions. Paragraphs เพิ่ม
+2,761 → 2,775 เท่านั้น; styles/settings/fonts/media/header/footer ไม่เปลี่ยน.
+ขนาด serialized XML นี้ไม่ใช่ผลวัด RAM หรือ Word performance.
+
+### V8 Word rendering and comparison results
+
+เจ้าของแปลงด้วย Word for Microsoft 365 เป็น `outputs/srs-grouped-v8.pdf`,
+100 pages / 1,017,481 bytes, SHA256
+`2d129ea6348ef047216bb917a55977b3e11a124f59f046b6336c9572d11d53ab`.
+Word V7 มี 99 หน้า; frozen Core PDF มี 98 หน้า. Render 120 dpi และเปิด
+full-page candidate 1–100 / Core 1–98 ครบทุกหน้า พร้อม V7 supporting pages
+สำหรับจุดเดิม. ไม่พบ visible glyph boxes, clipping, overlap, blank pages หรือ
+incomplete ending ในรอบนี้; ไม่ใช้แทน raw Unicode/every-glyph/every-cell proof.
+
+| Authorized target | Observed result | Boundary |
+| --- | --- | --- |
+| Meeting header numbers | Pages 18–26 ใช้ 2/3/5/7/8/10/12/14/15 ตามการประชุมที่ต่อหน้า; ครั้ง 16 เริ่มต่อบน 26 ถูกต้อง | แก้การซ้ำเลข 1 แล้ว; meeting 2 ย้ายไปเริ่ม 18 และ meeting 7 ยังแบ่ง 20–21 |
+| Heading + description + table | จุดที่รายงานเดิมอยู่ด้วยกัน: 4.4 ที่ 29; 7.5 ที่ 34; 9.6 ที่ 36; 9.14 ที่ 37; 10.6 ที่ 38; 11/11.1 ที่ 39; 11.9 ที่ 40; 11.17 ที่ 41; 12.4 ที่ 42; 13.5 ที่ 43; 14/14.1 ที่ 44; 15.3 ที่ 45; 16.19 ที่ 76; 16.24 ที่ 85 | ไม่พบ orphan headings ใน all-page review; ไม่บังคับ table/whole-row ให้อยู่หน้าเดียว |
+| Nine previously reported icon cases | REQ0003/0026/0034/0074/0113/0133/0270 อยู่กับข้อความที่ 46/49/50/56/61/64/81; REQ0293 รายการ Subject/Description/Image + icon อยู่ 84; REQ0331 สองบรรทัดท้าย + icon อยู่ 90 | สองกรณีท้ายยังมีส่วนต้น row อยู่หน้าก่อน; ไม่มี icon-only continuation ในจุดเหล่านี้ |
+| Images | 371 ordered decoded body placements/soft masks ตรง V3/V7/V8 | PASS identity/order; ตำแหน่งเปลี่ยนตาม reflow ไม่ใช่ equal geometry |
+| TOC and page policy | 198/198 links resolve และ printed page ตรง destination; cover ซ่อนเลข, pages 2–100 แสดง Page p of 100; 99 banners ถูก policy | Functional PASS; รูปแบบ TOC/font face ยังต่างจาก Core |
+| Intro CS wrapping | Relevant frontmatter/intro body pixels pages 1–4 และ 10–16 ตรง V7 (ยกเว้น footer/page total) | ใช้ V7 wrap findings เดิมต่อได้; ไม่อ้าง wrap parity ทั้งเอกสาร |
+
+Automated suffix indicators สำหรับ 363 text/icon pairs: V7 มี 324 unique
+suffixes อยู่หน้าเดียวกับ icon, 8 อยู่ต่างหน้า, 6 short/19 repeated/6 unresolved.
+V8 มี 324 same-page, 0 different-page indicators, 6 short/19 repeated และ
+14 unresolved. บาง suffix ยาวคร่อมหน้าเมื่อ reflow; จำนวน unknown ที่เพิ่ม
+ไม่ใช่หลักฐานว่าเนื้อหาหาย และ 0 indicators ไม่ใช่ automatic all-pass.
+ใช้ all-page visual review และ source-specific known cases ประกอบ.
+Generic paragraph/row anchors ยังไม่ครอบคลุมทุก cell: รอบนี้ 549/933 rows
+ไม่มี unique candidate text anchor; ไม่ประกาศ automated cell equality.
+
+### V8 remaining limits and checkpoint decision
+
+- **Requirement-column header repetition ยังมีปัญหา:** บาง continuation pages
+  ไม่แสดง `Req no. / Features List / Remark` ซ้ำ เช่น V8 52, 56, 57,
+  60, 61, 64, 65, 67, 72, 73, 75. ยืนยัน general behavior เดิมใน V7
+  52/57; V8 56 เป็น reflow instance ใหม่ (REQ0065 ขึ้นหน้าใหม่หลังตาราง
+  16.5 เริ่มที่ 55). ไม่ปะปนกับ meeting-number defect ที่แก้แล้ว และไม่อ้าง
+  ว่าไม่มี layout regression instance ใดเลย.
+- Long rows ยังแบ่งต่างจาก Core เช่น REQ0019: V8 48–49 เทียบ Core 47;
+  REQ0241: V8 76–77 เทียบ Core 75. การจับ icon รักษาท้ายข้อความร่วมกัน
+  ไม่ใช่การรับรอง whole-row non-splitting หรือ identical pagination.
+- General line/row height, บาง gray-header border edges, ordinary wrapping,
+  overview 7.5 ที่ต่อ 14–15, outline 10.4 ที่ต่อ 16–17 และ TOC dotted
+  leaders/number face ยังต่าง. ไม่ tune นอกสามเป้าหมายเพื่อบังคับ 98 หน้า.
+  Core เองมี icon-only continuations บางจุด เช่น REQ0280/0290/0357/0362;
+  semantic grouping ที่ดีขึ้นจึงไม่เท่ากับ copy ทุก page break จาก Core.
+- Discovery `grouping.json` บาง `requirementIds` ได้จาก concatenated row text
+  จึงอาจติดเลขต้น content. ตัวเลือก paragraph targets ไม่กระทบ; observation
+  helper ใช้ exact first-cell REQ label แทน และเก็บ discovery เดิมไว้ไม่ย้อนแก้.
+
+**Decision:** COMPLETED WITH REMAINING LAYOUT FINDINGS สำหรับ bounded V8
+trial. ยืนยันผลแก้สามเป้าหมายตามตัวอย่างเดิมและ all-page inspection แล้ว;
+full layout fidelity/product readiness ยัง NOT ACCEPTED. คง candidate และ
+ข้อจำกัดไว้ให้เจ้าของประเมิน. งานถัดไปที่เหมาะคือแยกจูน repeated requirement
+column headers ก่อน general spacing/typography; ไม่แก้ PDF หรือระบบจริง.
+ไม่มี candidate/review cycle เพิ่มหลังจุดตรวจนี้.
+
+Locators ใต้ `tuning-v8/`: `discovery/{meeting,grouping}.json`,
+`generation.json`, `scripts/{build_grouping_trial,check_package,observe_grouping}.py`,
+`preflight/independent-package-check.json`,
+`word-review/{comparison,grouping-observations,root-review}.json`,
+`qa/candidate/manifest.json`, `qa/reviews/pages-{001-025,026-050,051-075}.json`,
+`qa/reviews/pages-076-end.json`,
+`qa/reviews/reference-001-025-completion.json`. Original source, V7 and V8
+candidate hashes ตรวจซ้ำหลัง QA; checks เขียนเฉพาะ outputs ใหม่ใน lane.
