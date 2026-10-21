@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is U1 in isolation only. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is U2 in isolation only. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1 isolated preflight/resource snapshot/ExportIntent implemented and checked; U2–U6 unstarted. No serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
+สถานะ: **U1 mapping and bounded U2 native text/image components checked; U3–U6 unstarted. Small independent package probe only; no public serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3060,13 +3060,16 @@ and verified resource contracts; produces `Preflight`/`ExportIntent` above.
 **U2 — Text and block-image contract.** Files: text/images plus
 `tests/text-images.test.ts`; consumes U1 intent and produces native paragraphs.
 
-- [ ] Add failing Thai/Latin/mixed, regular/bold/italic/boldItalic, multiple
-  supported families/sizes, explicit/empty lines, aligned text and frame/alpha
-  image cases. Assert C2–C7 without V11/V13 offsets or inherited-style loss.
-- [ ] Implement minimum-line mapping and one image-block wrapper; state its
-  mandatory paragraph footprint in the receipt. If markup cannot represent a
-  required relation safely, fail that capability and return a design issue.
-- [ ] Run focused semantic/OOXML checks. Later taskU5 must confirm Word line
+- [x] Add failing Thai/Latin/mixed, regular/bold/italic/boldItalic, available
+  concrete faces/sizes, explicit/empty lines, aligned text and frame/alpha image
+  cases. Assert C2–C7 without V11/V13 offsets or inherited-style loss. The second
+  resource-distinct family branch remains unverified: carry the U1 resource
+  prerequisite to U5; this check does not certify multi-family support.
+- [x] Implement minimum-line mapping and one image-block wrapper; state its
+  structural paragraph footprint/settings in the receipt. Adoption is conditional
+  on U5 Word checks; the measured footprint is not yet known. U3 still owns
+  required tail/group relationships, with no whole-paragraph keep workaround.
+- [x] Run focused semantic/OOXML checks. Later taskU5 must confirm Word line
   origins/image footprint; unit/package PASS is not visual acceptance.
 
 **U3 — Table topology and bounded reading groups.** Files: tables and group
@@ -3289,3 +3292,103 @@ Project Control system checks are outside this documentation-only impact.
 step remains native text/image mapping from this intent, after owner review.
 Full SRS regression and production/API integration remain separately authorized
 future work; absent `Output-Format` must continue to mean PDF in that future API.
+
+
+## U2 native text and image checkpoint — 2026-10-21
+
+Owner authorized U2 only using small independent fixtures in the existing
+isolated workspace, returning before the next step. U1's stop remains historical;
+this request opens no registered execution or production scope. Roles: isolated
+implementation / Evidence Reviewer / Documentation Synthesizer; Work Size medium,
+Risk routine, execution IDs N/A. Current session inline model, no product lane.
+The validated Current Truth Snapshot was rebuilt read-only before implementation;
+its unrelated frontend roadmap does not authorize this export experiment.
+
+Markdown gate: Project Control canonical update to this existing plan only.
+Allowed code writes remain inside `unified-docx-writer` under the experiment root
+recorded above; no product Markdown or new Work/Phase/Checklist/Evidence/map
+records. Preserve all historical receipts and the U1 checkpoint unchanged.
+
+**PASS for bounded native component and OOXML checks; visual acceptance pending.**
+`src/text.ts` and `src/images.ts` consume genuine immutable U1 intent.
+`src/profile.ts` adds private intent-to-snapshot binding and defensive resource
+access; public `src/index.ts` still exposes no writer. Only the two existing U1
+files `src/profile.ts` and `package.json` changed; U1 source/test/resource/lockfile
+hash comparisons otherwise match. The test script now includes the U2 cases.
+No dependency/lockfile installation or upgrade was needed.
+
+Text mapping preserves normalized logical text, explicit/empty lines, source
+alignment, half-point size, concrete face and ordinary/CS emphasis. Native run
+and paragraph-mark formatting is explicit, including false bold/italic against
+hostile inherited defaults. Thai segments alone receive forced `w:cs`; Latin
+and neutral segments retain the same font slots without unconditional CS.
+Explicit language context is retained; no document-wide Thai locale is invented.
+Content paragraphs use minimum `atLeast` spacing, before/after0. Empty fixed
+spacers use the authored exact height. Navigation/fields are refused with a
+source path pending U4 instead of being stripped.
+
+Image wrapper: one native inline-drawing paragraph per block, with the original
+PNG bytes/alpha, authored frame quantized once to twips/EMU, centered contained
+picture geometry, and source left/center/right frame alignment. It is built
+before serialization using public `Run`, `BuilderElement` and `Media.addImage`
+APIs; no existing DOCX, serialized XML patch or historical tuning helper is read.
+The wrapper has before/after0, a1pt paragraph mark and minimum line equal to the
+frame height. These are adapter settings, not measured Word line/descent space.
+The receipt exposes frame/picture geometry and `wordFootprintVerified:false`.
+It introduces no cell-padding shift, raised image run or keep-chain compensation.
+Actual Word interpretation of the separate frame/picture extents and offsets,
+and whether the wrapper is acceptable, remain U5 obligations before adoption.
+
+### Evidence and review
+
+- Meaningful U2 RED preceded implementation; full isolated suite now **51/51
+  PASS**, comprising32 U1 and19 U2 cases. `npm run type-check` PASS.
+- A10-paragraph independent fixture includes four emphasis combinations,
+ 11/12/13/15pt sizes, Thai/Latin/mixed text, explicit/empty lines, an empty fixed
+  spacer and three differently aligned PNG frames. It uses no SRS source graph.
+- Its small package probe passes a separate Python/lxml inspection: all XML
+  parts parse, exact normalized logical text and10 paragraphs retained, three
+  drawings, valid media relationships, original PNG byte hashes retained.
+  This is structural verification, not a rendered Word result.
+- One fresh read-only reviewer independently ran51 tests and type checking;
+  no Important/Critical defect or U2 repair was requested. No deferred minors.
+- All22 frozen inputs and29 mapping-audit source/evidence files retain hashes.
+
+Durable paths beneath the isolated workspace:
+`fixtures/u2-text-images.json`, `qa/generate-u2-probe.mjs`,
+`qa/u2-text-images-unverified.docx`, `tests/text-images.test.ts`,
+`evidence/u2-red.txt`, `evidence/u2-green-r1.txt`,
+`evidence/u2-independent-package-check.json`, `evidence/u2-probe-receipt.json`,
+`evidence/u2-final-review.json` and `evidence/u2-checkpoint.json`.
+The checkpoint hashes source/tests/fixture/package files and records limits;
+SHA256 `dbba7813cc740100704cf1fd684058cca03cebe369ad131d723d08aaa8a4caaa`.
+The DOCX is an internal unverified package probe, not a delivered/accepted writer
+output. The test harness's minimal section is not U4 section implementation.
+
+### Decisions, limitations and stopping point
+
+Rulings for this bounded stage: retain the explicitly pinned local docx9.13.0
+and isolated hash-checkpoint workflow; do not replace them with generic artifact
+runtime/cleanup rules. Keep Word/rendered acceptance in U5 and serialize only
+small component probes through the test harness. Wrong calls would require
+adapter revision in this workspace; package PASS cannot authorize integration.
+No public serializer, font embedding, sink/cancel/output-budget contract or
+complete DOCX profile is claimed.
+
+Only licensed Sarabun resources were available. The second resource-distinct
+family branch remains a U5 prerequisite; multiple-family acceptance is not PASS.
+Native extensions and image-footprint behavior need the later Word check.
+U4's consolidated receipt must also report source/converted geometry and allowed
+quantization adaptations; U2 currently exposes converted settings and retains
+original source lengths in the intent. U3 owns table/group/tail preservation;
+U4 owns navigation/sections/resources/serialization, and U5 owns actual layout.
+These are deferred stage obligations, not waived requirements.
+
+Project Control impact is this plan only. Scope/diff/whitespace and all7 local
+fragment links passed; check:data passed. No canonical data record changed,
+so projection regeneration is not needed. No SRS document trial,
+Word export, PDF reference/render/implementation edit, product source or package
+change, DB/template mutation, release or push occurred.
+
+**Stop after U2.** U3 has not started. Owner review is the return point; do not
+advance to full SRS or integration from this component checkpoint.
