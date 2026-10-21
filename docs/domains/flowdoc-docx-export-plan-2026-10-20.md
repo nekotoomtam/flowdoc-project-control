@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is R4 isolated discovery of the0.9–1pt paragraph/cell context residual with identical texts, the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is R5 isolated discovery of the0.16–0.28pt after-table residual with the same two fonts and small documents, then reporting before writer changes. No SRS, PDF reference or product-runtime changes. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **R4 confirms empty1pt native headers placed at source body top cause the main paragraph/cell context residual. Moving only empty-header distance clears the intrusion:90 Word markers shift up0.96–1.08pt and first-line residual falls within0.08pt for both fonts/three line heights. This is diagnostic package evidence only; no writer correction adopted. R3 surplus-leading remains separate. U5 overall acceptance remains open; U6/SRS/product integration remain unstarted**.
+สถานะ: **R5 controlled bottom-border probe supports outer-stroke footprint versus border-centre origin as the main after-table residual. Nominal0.5/1pt borders yield0.19/0.43pt centre-based gaps in both fonts; accounting for their actual half-strokes leaves−0.05pt. No generic tolerance or writer correction adopted. R3 leading and R4 empty-header findings remain separate bounded evidence; U5 overall acceptance is open. U6/SRS/product integration remain unstarted**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -4602,3 +4602,112 @@ rerun is represented as new execution. No canonical data/projection/map record
 is promoted. No writer source, PDF reference/source/implementation, SRS,
 product/API/default format, dependency, resource, install or release changed.
 Stop at this cause report before converter changes; U5 overall acceptance is open.
+
+## R5 isolated after-table residual cause checkpoint
+
+**2026-10-21 — PASS_BOUNDED_BOTTOM_BORDER_FOOTPRINT_CAUSE; NO_WRITER_CHANGE.**
+Owner authorized isolating R4's0.16–0.28pt after-table residual using small
+documents and the same two fonts, then reporting before converter changes.
+Core owns eventual geometry mapping; Project Control owns this status. One-room
+discovery/Evidence Reviewer/Documentation Synthesizer, medium size, routine risk;
+execution/Phase/Checklist IDs N/A. Proof budget: one six-page Word export,
+corresponding unchanged Core generation, package factor reversal, all-page
+geometry/visual review and one independent review. Document budget: existing
+plan plus local machine-readable evidence. No product integration.
+
+### Bottom-border-only experiment
+
+Workspace: `C:/Users/nekot/Documents/Codex/2026-10-21/docx-srs-9130/unified-docx-writer-h3/after-table-r5/`.
+Six sections combine regular11pt Sarabun/Bai Jamjuree with three DOCX bottom
+border variants: nil, nominal0.5pt and nominal1pt. All use source line-height
+19.84pt/native397twips, the same three-row single-column table and identical
+Latin/mixed/three-line paragraphs before/in/after it. Source vertical padding
+remains4pt; all diagnostic DOCX panels share native75twip vertical margins and
+R4's empty-header distance0. Other border edges, text, font, AtLeast line rule,
+paragraph before/after spacing0 and reading relationships stay fixed.
+
+Public unchanged writer generation creates the control. Diagnostic package edits
+change only the shared vertical margins/empty-header distances and listed bottom
+border values; complete reversal restores control document XML. All other ZIP
+parts remain identical. Nil/thick borders are causal interventions, not proposed
+changes to required document borders. No reusable writer source is edited.
+
+All Core panels intentionally retain original0.5pt borders/source4pt padding and
+no authored header. Newly generated `outputs/core-reference.pdf` is a baseline,
+not the corresponding nil/thick factor output. The owner exported
+`outputs/after-table-r5-factors.docx` to the matching PDF in Word; both PDFs have
+six pages and retain pinned source/candidate/Core identities.
+
+### Measurements and origin distinction
+
+Both fonts produce the same measured values. The first comparison uses actual
+last-cell R05 to after-table R01 character baselines and needs no invented
+border centre for the nil case:
+
+| DOCX bottom | Baseline gap, pt | Gap−19.85pt line−3.75pt native bottom margin |
+| --- | --- | --- |
+|nil|23.55|−0.05|
+|0.5pt|24.03|+0.43|
+|1pt|24.63|+1.03|
+
+This controlled sequence supports a bottom-border footprint contribution. It is
+not exact full-stroke accounting:0.5→1pt increases the baseline gap0.60pt while
+actual painted thickness increases0.48pt, leaving0.12pt unexplained in that
+comparison. No Word rounding/grid mechanism is claimed proven.
+
+The metric that produced R4's residual was measured from the bottom border's
+centre. For the two present-border cases:
+
+| Nominal bottom | Actual PDF stroke, pt | Centre-based after/cell residual, pt | Residual measured from outer ink edge, pt |
+| --- | --- | --- | --- |
+|0.5pt|0.48|0.19|−0.05|
+|1pt|0.96|0.43|−0.05|
+
+The centre-based residual increases0.24pt, exactly half the measured0.48pt stroke
+increase. Changing the measurement origin from stroke centre to its lower outer
+ink edge subtracts0.24/0.48pt respectively; both residuals become−0.05pt. The
+same result holds using either first-cell or last-cell first-line local offset.
+The nil case has no painted horizontal bottom centre; its centre metric is
+explicitly null. Only the baseline-to-baseline comparison is used there.
+
+This confirms outer-stroke footprint versus centre-origin interpretation as the
+dominant cause of the earlier small residual for this shape. It does not prove
+all residuals vanish or justify inserting negative paragraph spacing. Installed
+Core `dist/layout/cellTableFlow.js` computes row heights from measured content
+and padding, strokes edges separately and advances the flow by consumed geometry.
+All six baseline Core panels show zero centre-based reduced after-table gap.
+The layout/measurement contract must distinguish content/padding geometry,
+stroke centre, outer ink edge and the following paragraph origin.
+
+### Coverage, limitations and stop
+
+All12 complete Core/Word pages were rendered110dpi and reviewed through complete
+page contact sheets. Each PDF retains90 markers in order,180 total; intended
+borders and text remain visible without observed overlap/clipping. Package text
+invariance and Latin marker matrices avoid Thai PDF extraction ambiguity.
+
+Local evidence: `evidence/{package-check,control-receipt,core-probes,dispatched,
+pdf-geometry,measurements,final-review,results,checkpoint}.json`, source/control/
+candidate/Core/Word artifacts, `rendered/{core,word}/` PNGs and H3
+`qa/after-table-r5-*` reproduction scripts. Original PDFs are not regenerated.
+
+A fresh read-only reviewer verified source/DOCX/Core hashes, ZIP isolation/full
+factor reversal, shared settings/fonts, independent extraction from all12 PDF
+pages and all12 contact-sheet pages. No important issue; the0.12pt baseline-gap
+nuance remains explicit. Project Control check:data, seven local fragments and
+final diff/whitespace checks pass. No canonical data/projection change is needed.
+
+This is a single unmerged three-row shape, two regular fonts at11pt and one
+line height, without page boundaries. No merged/mixed border style, repeated
+header, pagination, footer or generic tolerance is accepted. The−0.05pt residual
+and baseline comparison's0.12pt difference remain observed but unexplained.
+R2 row extent, R3 leading and R4 empty-header findings remain separate; no
+font-name/document offset, border removal or writer repair is selected here.
+
+All frozen H3(91), R4(49), R3(37), R2(38), R1 durable(34), U4(52), U5(109),
+H1(50), H2(55) files retain hashes; the historical R1 transient Word lock remains
+classified/excluded without rewriting its manifest. Existing112 H3 tests/type-
+check remain historical unchanged-input proof, not rerun. No canonical data/map
+promotion, writer source, PDF reference/source/implementation, SRS, product/API/
+default format, font/dependency, install or release change occurred. Stop at
+this cause report before converter changes; U5 overall acceptance remains open.
