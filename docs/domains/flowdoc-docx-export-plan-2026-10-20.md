@@ -3,7 +3,7 @@
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
-> Execute only the stage subsequently authorized by the owner; latest authorization is U3 in isolation only. No registered execution round or product integration is opened.
+> Execute only the stage subsequently authorized by the owner; latest authorization is U4 in isolation only. No registered execution round or product integration is opened.
 
 **Goal:** ใช้โครงสร้างเอกสารและข้อมูลชุดเดียวกันสร้าง PDF หรือ DOCX;
 `Output-Format` ที่ไม่ส่งมาต้องให้ PDF ตามเดิม.
@@ -34,7 +34,7 @@ HTTP/task/storage และ `plugins/flowdocmake` สำหรับตัวเ
 Role: Planning Partner / Documentation Synthesizer. คำขอเจ้าของวันที่
 2026-10-20 เริ่มจากบันทึกแผน ต่อมาอนุญาต Stage 0 สำรวจ mapping/เลือกเครื่องมือ
 และ bounded prototype ด้วย `docx@9.13.0` ในพื้นที่แยก พร้อมตรวจใน Word.
-สถานะ: **U1–U3 bounded mapping/native components checked; two U3 metadata minors deferred and full profile acceptance pending. U4–U6 unstarted. Small independent package probes only; no public serializer, Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
+สถานะ: **U1–U4 isolated mapping/native writer checked; both U3 metadata gaps closed. Public experimental generateDocxTo available with explicit refusal limits; Word/full-profile acceptance pending. U5–U6 unstarted; no Word/SRS trial, PDF reference change or product integration. SRS tuning remains paused; V13 shift rejected and V11 retained only as bounded experimental baseline**.
 ผลสำรวจอยู่ใน [Stage 0 discovery results](#stage-0-discovery-results);
 ผลทดลองอยู่ใน [Prototype checkpoint](#prototype-checkpoint).
 ผลทดสอบ SRS เดิมอยู่ใน [Existing SRS checkpoint](#existing-srs-checkpoint).
@@ -3089,11 +3089,11 @@ derivation in intent, `tests/tables-groups.test.ts`; consumes U1/U2.
 **U4 — Sections, bands, fields and single writer entry.** Files: sections/bands/
 fields/writer/index, `tests/{sections-fields,writer}.test.ts`; consumes U1–U3.
 
-- [ ] Add failing portrait/landscape, continued/restarted/hidden numbering,
+- [x] Add failing portrait/landscape, continued/restarted/hidden numbering,
   cover/blank/page-break, first/continuation/absent bands, scoped TOC/links and
   unsupported fit/format cases. Assert staged output aborts on fatal/cancel,
   resource mutation or budget exhaustion and exposes no successful partial file.
-- [ ] Implement `generateDocxTo` using the one intent path and public entry;
+- [x] Implement `generateDocxTo` using the one intent path and public entry;
   account for empty paragraphs/section boundary requirements and field refresh.
   Verify package/resource relationships, receipt hash/media type and no imports
   of prior raw XML patch helpers. Save a checkpoint after focused checks.
@@ -3524,3 +3524,169 @@ fragment links, final diff/scope and whitespace checks passed. No canonical
 data record changed; projection regeneration is unnecessary. No Word/PDF run,
 SRS trial, PDF reference edit, real API/writer/embedding/sink/cancel/budget work
 or product integration occurred. **Stop after U3; U4 has not started.**
+
+
+## U4 unified writer checkpoint — 2026-10-21
+
+### Authority and bounded result
+
+Owner authorized U4 only, explicitly including the two U3 metadata fixes:
+headers/footers, TOC, page fields, one writer entry, small independent fixtures,
+then return before U5. No SRS/Word/PDF reference or product changes. Prior
+checkpoints remain historical; no closed execution context is resumed.
+
+Roles: isolated implementation / Evidence Reviewer / Documentation Synthesizer;
+Work Size medium, Risk routine, execution IDs N/A for this single-room scope.
+Current session inline model and existing external isolation retained. Validated
+Current Truth Snapshot was rebuilt read-only; its unrelated roadmap authorizes
+no export/product mutation. One fresh read-only final reviewer was used under
+the selected execution skill, with regression-based corrections by the owner.
+
+Markdown gate: this existing Project Control canonical plan only. Code writes
+remain beneath the recorded `unified-docx-writer` directory. No Work/Phase/
+Checklist/Evidence/map records, product Markdown, installed dependency changes,
+Git initialization, release, push or global guidance change. Package lock,
+resource/vendor copies and prior receipts remain unchanged.
+
+**PASS for isolated unified writer, semantic tests and package structure only.**
+The experimental public `generateDocxTo(document, resources, sink, options)` now
+runs the single genuine preflight/immutable intent/native-adapter route. Internal
+`writeDocx` is not an additional public index entry. No old candidate DOCX,
+serialized XML patch helper, SRS selector or PDF coordinates are runtime inputs.
+New modules: `fields.ts`, `font-envelope.ts`, `bands.ts`, `sections.ts`,
+`writer.ts`; existing adapters and metadata helpers were updated narrowly.
+
+### Implemented native mapping
+
+- Sections: A4 portrait/landscape dimensions and authored margins, continued/
+  restarted/hidden numbering, cover/blank roles, native page breaks, explicit
+  empty-section paragraphs and body/table/text/image adapters. Exact landscape
+  dimensions are checked, accounting for docx's constructor orientation swap.
+- Bands: explicit default/first references for both header and footer in every
+  section prevent inheritance from leaking. All/first/continuation/none modes
+  map independently. Cover/blank bands are suppressed by source role. Weighted
+  columns use borderless native tables with source weights/gaps; explicit page
+  placement, image frames and horizontal rules use the same verified resources.
+- Navigation: hashed legal bookmark names retain source identity; native external
+  hyperlinks and internal references retain labels/style. Document TOC and
+  section TOC use native fields, source outline levels and section-range bookmarks.
+  TOC styles derive from the selected source style, including ordinary/CS emphasis.
+- Page fields: compact band PAGE/NUMPAGES fields remain native. Hidden numbering
+  suppresses the complete number block while preserving its reserved layout.
+  Leading excluded cover/blank sections restart the first included native page
+  label correctly; total uses a nested native NUMPAGES subtraction formula.
+- Fonts/resources: full verified TrueType faces are embedded through docx's four
+  native face slots. Each package's four obfuscated embedded files were independently
+  decoded and matched to original byte hashes. This proves package identity,
+  not Word's actual face selection. Missing generated digits, TOC heading text or
+  leader glyphs are fatal against their effective concrete style face.
+- Metadata: prototype-safe `keptRows` retains special table IDs as own serialized
+  keys; zero-width spans have explicit terminal/empty fragment ownership and
+  original/local ranges. Both U3 carryovers are now **CLOSED by tests**, without
+  rewriting their historical review. Auto-format provenance is retained in the
+  receipt; roots must belong in ordered sequence to their owning section.
+
+Native section-boundary/section-scope/empty-cell/table-separator and image-mark
+paragraph footprints remain structural adaptations. The four-section probe has
+three native section-boundary paragraphs; scoped TOC adds two1pt marker paragraphs
+per section. These are recorded evidence, not a promise of identical PDF capacity.
+
+### Staging, limits and receipts
+
+`DocxSink.write` stages privately; `commit(receipt, signal)` is the publication
+point and must be atomic and honor cancellation; `abort` discards staged bytes.
+The writer validates the candidate and complete ZIP before staging, checks
+cancellation at async boundaries, then stages and commits. Failures/cancellation
+abort; cleanup failures are explicit issues. Tests show no published partial file
+with a conforming sink. A caller-provided sink that violates this contract is not
+made safe by the writer. ZIP compression itself is not preempted.
+
+Source/resources and write controls are captured before async work. Caller mutation
+cannot replace captured content/font bytes or loosen output budgets. Defaults are
+32MiB serialized bytes,50000 expanded XML elements and10000 package drawing
+references; callers may lower them. Actual produced XML/relationships/drawings are
+inspected before commit. These are package bounds, not paginated Word placement,
+streaming or peak-RAM guarantees; complete ZIP creation/inspection remains buffered.
+
+Receipt includes output media type/bytes/SHA256, input/resource identities,
+sections/bookmarks/numbering/auto formats and `fieldRefresh:required`,
+`wordVerified:false`, `buffered:true`. Unit adaptations report actual cumulative
+column widths, derived weighted-band grids and minimum-line rounding, alongside
+scalar conversions and maximum band reservations. Scalar rounding is not falsely
+reported as the applied width of each cumulative-grid column.
+
+### Verification and correction evidence
+
+**106/106 tests PASS**:71 prior U1–U3 plus35 U4 cases; type checking PASS.
+RED cases preceded implementation. Focus includes both metadata fixes, native
+section geometry/modes/numbering/navigation, fixed-fit refusals, package/font
+relationships, cancellation, source/resource/control mutation, real XML/drawing/
+byte budget exhaustion, sink failure and cleanup failure. Auto-format ownership
+and actual unit-adaptation records are also covered.
+
+Fresh review reproduced two Important defects: generated page digits escaped font
+coverage checks, and fixed empty cover spacers escaped the one-page envelope.
+Both now have failing-before-fix regression proof and pass. The same correction
+pass also protects generated TOC text, derives field-digit width from source/
+restart bounds, counts authored cover heights, refuses intrinsic line/image
+frames larger than the reserved body, and refuses a required authored-heading
+split that would duplicate/truncate native TOC entries. Exact landscape geometry,
+async budget capture and receipt/auto-format consistency have their own RED→GREEN
+cases. No deferred minor finding remains from this review.
+
+Three small source-only smoke packages use the same public entry: existing U2
+`fixtures/u2-text-images.json`, existing U3 `fixtures/u3-tables-groups.json`, and
+new `fixtures/u4-sections-fields.json`. This is U4 integration smoke proof, not
+U5 paired PDF/Word acceptance. Independent Python/lxml inspection passes all XML
+parts, internal relationships, exact source section dimensions/margins, band-mode
+references, native field balance, scoped bookmark destinations, unique drawing
+IDs, original PNG identity and four decoded font hashes per package. The new
+fixture has four sections, both TOC scopes, links, weighted/header-image/rule
+content, first/continuation bands, leading cover exclusion, restart, blank section
+and a page break. No precomputed PDF page labels are used.
+
+Durable paths beneath the isolated workspace:
+`tests/{sections-fields,writer}.test.ts`, `tests/u4-helpers.ts`,
+`fixtures/u4-sections-fields.json`, `qa/generate-u4-probes.mjs`,
+`qa/check-u4-packages.py`, `qa/u4-*-unverified.docx`,
+`evidence/u4-final-tests.txt`, `evidence/u4-final-type-check.txt`,
+`evidence/u4-independent-package-check.json`, `evidence/u4-probes.json`,
+`evidence/u4-*-receipt.json`, `evidence/u4-final-review.json` and
+`evidence/u4-checkpoint.json`. The checkpoint hashes52 files;
+SHA256 `850a74a42325f24695bd4d9708bbc8755af681c09fe6a74dcb6b23bdafb00261`.
+All22 frozen inputs and29 mapping-audit source/evidence files retain their hashes;
+local resource/vendor copies and lockfile also retain identity.
+
+### Refusal boundaries and return point
+
+U4 does not enable every planned profile row. Explicit located refusals remain:
+noncompact/body fixed-width page-field slots; fixed/min/max band fit without
+accepted Word proof; wrapped band/cover content outside the provisional concrete-
+font envelope; interleaved/multipage exclusions; nonempty fixed text/format budgets;
+unsafe required groups and split authored headings; multiple distinct TOC styles;
+font weights outside the four native400/700 normal/italic slots or incompatible
+releases for one family. These are candidate-profile limits, not claims that
+Word itself lacks those features. Leading excluded cover/blank one-page behavior,
+source-derived field digit bounds and band footprint estimates remain conditional
+on actual Word verification.
+
+Band reservation uses the maximum estimated footprint on every section page and
+is disclosed even when first/continuation modes show different content. Word must
+still confirm field refresh, actual numbering/TOC destinations, font use, wrapping,
+header repeats, table/group/image endings and page capacity. Fonts remain the
+licensed Sarabun family only; a second resource-distinct family remains a U5
+prerequisite. Full Core-validator equivalence, actual memory capacity and byte-
+reproducible packages remain unproven. No claim of generic DOCX readiness follows.
+
+Rulings: retain pinned local dependencies and external hash checkpoints; use a
+buffered staged writer with an explicit sink contract; require Word field refresh;
+refuse unproved fit/numbering mappings instead of silent loss. If actual Word
+behavior differs, repair the DOCX adapter under the next authorized stage rather
+than alter source/PDF geometry or waive preservation requirements.
+
+Project Control impact is this existing plan only: check:data, all7 local
+fragment links, final diff/scope and whitespace checks passed. No canonical data
+record changed, so no projection regeneration is needed. No Word/PDF rendering/export,
+SRS trial, real API/default-format/storage/runtime/package change or integration
+occurred. Absent `Output-Format` remains the future Service PDF-default requirement.
+**Stop after U4; U5 has not started.** Owner review is the return point.
