@@ -11721,3 +11721,177 @@ authorized checkpoint is complete; stop here. No full suite, original I6 case,
 Plan2, pagination B2, product change, integration, release or push. Only this
 existing Project Control document changes; `tools/check.ts` and `git diff --check`
 pass. F2/I6 and broader DOCX/PDF parity are not promoted from readiness evidence.
+
+### I6 Plan2 proposal: bounded test-process lifetime 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner requests a plan to close the remaining
+I6 blocker after the successful readiness A–B–B–A. This checkpoint authorizes
+source/evidence inspection and planning documentation only. No tool/product
+implementation, Docker, generation, fixture execution, full suite, pagination
+B2 or integration is performed. F2/I6 remain NOT ACCEPTED.
+
+Goal: test a narrowly changed harness lifetime under the unchanged1GiB boundary,
+then require complete task-api and resource-wait coverage before calling the
+blocker closed. Project Control owns the plan; Service owns later test-only work.
+Role Planning Partner/Evidence Reviewer, single-room IDs N/A, proposed medium
+Work Size/routine Risk Tier. Document Budget this existing document only.
+Current host model/capability prepares the proposal; execution resolves its own
+model decision. No synthetic Work, Phase, map or product Markdown is created.
+
+Spec/input authorities: the preceding A–B–B–A result and its frozen manifests;
+the seventeen-case F2 follow-up result at the earlier section of this document;
+the frozen F2 candidate task-api/lifecycle/database helpers and queue-resources
+source. Existing F2 runtime and all old failures are immutable reference inputs.
+Future execution uses an isolated worktree materializing the exact frozen dirty
+F2 candidate, preserving the old lane rather than resetting or editing it.
+
+#### What the evidence supports
+
+The old complete task-api run is8 PASS/6 FAIL. Five failed in-process cases have
+healthy worker0 samples above the448MiB necessary ceiling for admitting a new
+320MiB worker under the unchanged768MiB formula. The native case has correlated
+external readings and queued work; it must not acquire invented internal samples.
+Latest readiness evidence finds an A-minus-B loaded difference73.4–77.1MiB,
+but its topology/cache/history differ from the old full-file execution. Do not
+subtract that number from historical failures or promise that it is recoverable.
+The retained source still creates the in-process Service inside a Vitest worker;
+the old fourteen cases share module/process lifetime and one isolated schema.
+
+Recommended candidate: end the entire owned Vitest invocation/worker tree after
+each case, then start the next case serially. Retain the same fourteen case
+bodies, assertions, order, deadlines and shared database/template/task history.
+This tests cross-case process/module retention; each case still pays its own
+Vitest overhead. No test/application work is moved outside the measured group.
+This is a hypothesis to verify, not a proven explanation of all six failures.
+
+All case computation, payload/image construction, in-process Service, native
+Service, MCP/client/proxy processes and rendering children remain inside the
+same exact1GiB/no-swap/2CPU target. Only the already-separated observer, PG and
+orchestration stay outside. Preserve admission max(current,credits)+cost<=768,
+worker cost320, other credits/slots/FIFO, freshness/pressure/recovery and all
+timeouts. No larger limit, cache subtraction, forced GC, heap flags, host cache
+flush, VM restart, package upgrade or skipped assertion.
+
+#### P2.0 — lock equivalence and implement only the test boundary, if authorized
+
+First make a fourteen-case source map: stable IDs/titles, original body and
+assertions, fixture/payload construction, deadlines, schema/template evolution,
+white-box checks, native/MCP children and cleanup ownership. Resolve path/import
+layout before editing. The original source and imports must remain a separately
+hash-verifiable comparison; do not silently compare against an altered reference.
+
+Proposed allowed product-repository paths are tests/task-api.test.mjs,
+tests/task-api.cases.mjs, tests/task-api.worker.test.mjs,
+tests/helpers/taskApiRunDatabase.mjs and tests/helpers/taskTestLifecycle.mjs only.
+Keep the widely shared tests/isolatedDatabase.mjs unchanged; the new task-api
+adapter owns explicit attach/close behavior for this run. External controller,
+observer/config/proof files have their own new isolated root. Reuse F2 cleanup
+and the accepted observer/source guard; change the lifecycle helper only where
+this new lifetime requires it. No src, dist, vendor, runtime scripts, package/lock,
+Core, fonts or PDF baseline edits.
+
+One controller owns the disposable database/schema for an entire ordered run.
+Migrations and initial template registration occur once, not per case. Workers
+attach only to that owned schema; closing a worker pool must not drop it.
+Original setup/teardown per case, completed rows, template versions and finding
+history are retained. Final schema deletion occurs after the whole run and
+evidence checks. A reused user database or a fresh schema per case is forbidden.
+Original payload/oracle behavior must be preserved, including random-image
+construction semantics; equivalent assertions alone are insufficient if their
+input or hooks change meaning.
+
+The worker controller must identify real target PIDs/start identities, not treat
+the host Docker client PID as the test process. Every case is durably charged
+before launch; preserve failure/cleanup errors and join all owned processes
+before continuing. No retries, parallel cases, reordered selection or synthetic
+aggregate PASS. A missing/duplicate/unexecuted case remains visible.
+
+Propose six fixed offline scenarios, at most two rounds/twelve executions:
+complete ordered case registry; foreign schema ownership refusal; shared-state
+retention across two synthetic workers; timeout cleanup with error retention;
+missing/duplicate case refusal; failed-case accounting without automatic retry.
+Reuse unchanged existing helper proof instead of replaying old suites. If the
+source map cannot preserve these contracts within test-only scope, stop before
+live execution and report the specific unresolved boundary.
+
+#### P2.1 — controlled original-prefix comparison
+
+Use one disposable1GiB target across the experiment with the accepted current
+observer and pinned runtime. Freeze both reference/candidate test-input manifests
+before cache work. Prepare three separate owned databases for reference prefix,
+candidate prefix and later complete candidate run; preserve state within each.
+Establish the same input-read condition with the accepted reader. Two bounded
+cache-verification phases cover initial preparation and the clean transition
+from reference to candidate. No hidden warm-up, build or readiness pilot.
+
+Run original cases1–4 once in their original shared-process topology, then the
+same prefix once with the candidate per-case process lifetime: eight executions.
+Expected historical admission refusal in the reference is retained as failure
+evidence; proceed only after a verified clean owned boundary. Any unexpected
+policy/source/OOM/cleanup blocker stops the experiment. Candidate failure stops
+before expanding to fourteen; never compensate by extending a deadline.
+
+At each same-case/same-phase boundary record target total/anon/file/kernel,
+actual PIDs, existing queue health/credits/workers/admission reason and outcome.
+Use existing1Hz observer and existing F2 diagnostics, not new runtime telemetry.
+File charge includes generated/retained test data: the readiness8MiB file guard
+must not be applied indiscriminately across different payloads or fourteen cases.
+Apply prior comparability limits only to equivalent input/idle boundaries and
+explain generated-file deltas. Archive required proof and remove only the
+completed arm's owned temporary data after assertions/closed handles; no cleanup
+of another case's still-required files or blanket cache eviction. If a matched
+boundary is confounded, retain that limitation rather than attribute its delta
+to process lifetime. A reference prefix that passes does not prove the old
+failure reproduced; keep causality UNKNOWN without manufacturing another run.
+
+#### P2.2 — mandatory bounded acceptance, conditional on candidate prefix PASS
+
+Run all fourteen original task-api cases once, serially in the original order,
+on one new shared database with the declared candidate lifetime. This is a
+proposed explicit harness-boundary change: it is not the old single-invocation
+gate unchanged. Owner acceptance must include the equivalence map and preserved
+case/DB/timeout/assertion contracts. Fourteen isolated databases, fourteen
+independent selected passes, or the prefix alone cannot satisfy this criterion.
+Missing coverage or any failed candidate case stops with incomplete/failed
+acceptance; no retest inside this allocation.
+
+Only after14/14 PASS and clean process/session/advisory-lock boundaries, run the
+same three resource-wait cases once; require3/3 PASS with real memory policy
+unchanged. The intentionally waiting cases must still wait rather than have
+their guards bypassed. This is bounded file/subset verification, not full suite.
+Even success does not authorize changing CI/full-suite entrypoints or merging.
+
+#### Proposed budget, completion and return
+
+| Allocation | Maximum live scenario/case executions |
+| --- | ---: |
+| Preparation, including observer and initial inventory | 1 |
+| Two cache verifications | 2 |
+| Original prefix1–4 and candidate prefix1–4 | 8 |
+| Complete candidate task-api | 14 |
+| Resource-wait subset after acceptance prerequisites | 3 |
+| Total ceiling | 28 |
+
+The total is28:25 functional cases plus3 preparation/cache scenarios. Offline
+tests are separately capped at12 executions. Count every started scenario,
+including setup failure; never refund or reuse old live budgets. Record original
+within-case generation/request counts from the source map; no extra diagnostic
+generation. Propose20 active live minutes and10MiB retained diagnostic proof.
+No new Word export/reviewed baseline page; ordinary test artifacts have new
+owned paths and cannot overwrite reference PDFs. Preserve B1+C and every old
+source/evidence manifest before/after. Stop at the first invalid mandatory
+control, unexplained source drift, OOM, orphan/lock, candidate failure or budget
+limit. Partial/filtered/unexecuted checks are not PASS.
+
+Blocker closure requires accepted test-boundary equivalence, actual14/14 plus
+3/3, valid1GiB/admission evidence, clean lifecycle and full preserved inputs.
+Report per-case results and what changed in measured retention; do not claim
+causal memory savings if the reference did not reproduce or controls differ.
+Stop at this checkpoint. Full suite and overall I6 acceptance remain later
+separately authorized work; no automatic product repair, pagination B2,
+integration, release or push follows.
+
+Current planning changes only this existing canonical document. No code, fixture,
+Docker, generation or functional test is run. The two current A–B–B–A manifests
+and prior F2 follow-up manifest are checked read-only. Project Control
+tools/check.ts and git diff --check pass; none is a new I6 execution.
