@@ -11895,3 +11895,127 @@ Current planning changes only this existing canonical document. No code, fixture
 Docker, generation or functional test is run. The two current A–B–B–A manifests
 and prior F2 follow-up manifest are checked read-only. Project Control
 tools/check.ts and git diff --check pass; none is a new I6 execution.
+
+### I6 P2.0 test-boundary candidate and offline result 2026-10-22
+
+**OFFLINE PASS / LIVE EQUIVALENCE NOT VERIFIED.** The owner authorized P2.0
+only: a separate worktree, the original fourteen-case lock, test-only changes
+and six offline scenarios in at most two rounds. This checkpoint does not
+accept F2/I6, demonstrate memory savings or authorize P2.1/P2.2, Docker,
+generation, full suite, pagination B2 or integration.
+
+Owner Service; role test-only implementation/Evidence Reviewer; bounded inline
+execution, IDs N/A, medium Work Size/routine Risk Tier. Current host-provided
+model/capability is used without override. The executing-plans skill requires
+one fresh static review; that reviewer reads source only and runs no candidate,
+test, import, database or Docker operation. Document Budget remains this existing
+Project Control document. No Work, Phase, map, package or shared-truth record is
+created. The generated Current Truth Snapshot is consulted for routing only;
+this explicit request and the preceding proposal govern this narrow checkpoint.
+
+#### Isolated inputs and exact change boundary
+
+New Service worktree:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-p2-0/service-worktree`,
+branch `codex/i6-p2-test-lifetime`, base
+`8690193b73b14554c63a9aebe5c888edcf780946`. The native worktree tool targets the
+chat's Project Control repository, so a Service-owned Git worktree is created
+directly instead. All358 tracked/nonignored untracked inputs are copied and
+hash-compared with frozen F2 before editing. The old worktree is not reset,
+edited or cleaned. Its Git status and inputs are verified unchanged afterward.
+
+Exactly three candidate files differ from those frozen inputs:
+
+- `tests/task-api.test.mjs`: retain the ordinary entrypoint; register all14 by
+  default or one explicit case in owned-run mode. Partial mode configuration
+  fails. A Linux worker records its own PID/start/cgroup/PID namespace to a new
+  identity file; no host Docker client PID is substituted.
+- `tests/task-api.cases.mjs`: shared registration with stable I6-01–I6-14 IDs.
+  The original imports, fourteen callbacks, three hook callbacks, fixture and
+  payload declarations, order and explicit deadlines are separately locked.
+  An injected owned database changes initialization/close ownership only.
+- `tests/helpers/taskApiRunDatabase.mjs`: controller creates one private schema
+  and an ownership marker; workers verify ownership, initialize once under a
+  session lock and close only their pools. Final schema deletion requires saved
+  evidence and a clean boundary, then rechecks ownership. Foreign ownership
+  closes the controller's own connection without deleting the schema.
+
+No additional discoverable worker `.test` file is introduced. The shared
+`tests/isolatedDatabase.mjs`, F2 lifecycle helper, CI/full-suite entrypoint,
+runtime source, dist, scripts, packages/locks, vendor, fonts and Core are
+unchanged. Inherited dirty README/usage/DOCX/helper/fixture files in the new
+worktree are exact frozen F2 inputs, not changes made by P2.0.
+
+The external controller is a serial, injected-executor state machine. It
+persists a charge before each attempted launch, rejects missing/duplicate or
+reordered cases, stops after failure, retains nested error/cause details, and
+requires cleanup plus independently verified PID/process/session/lock boundary
+before another case. Aggregate PASS requires all14. Source-omitted deadlines
+remain null; effective historical15s comes from the frozen F2 follow-up
+launcher's `--testTimeout15000`, rather than an invented source override.
+
+The actual Docker executor/config binding to the preserved observer, source
+guard and cache controls is **not implemented or accepted by this offline
+checkpoint**. It remains an explicit prerequisite in preparation for any later
+authorized P2.1 run. Offline tests exercise injected execution and boundary
+contracts; they do not prove real process joining or PostgreSQL behavior.
+
+#### Offline evidence and budget
+
+External proof root: `C:/Users/nekot/Documents/Codex/2026-10-22/i6-p2-0`.
+`original-task-api.mjs` preserves original bytes; `source-lock.json` contains
+the raw source map and callback/import/declaration hashes.
+`equivalence-map.json` records each case's fixtures, database/history/oracle,
+native/MCP/cleanup boundaries and deadline provenance. Static callsite counts
+are labelled as such, not represented as runtime request totals.
+
+| Fixed offline scenario | Final result |
+| --- | --- |
+| Complete ordered registry, original source/hash/deadline preservation | PASS |
+| Foreign schema ownership refusal without destructive cleanup | PASS |
+| Shared state across two synthetic workers, initialization once | PASS |
+| Timeout and cleanup failure, including nested errors and cause | PASS |
+| Missing/duplicate cases and reordered selection refused | PASS |
+| Failed case charged before execution, no automatic retry | PASS |
+
+Round1 runs all6 against explicit unimplemented seams and records6 expected
+RED failures. Round2 runs the same6 scenario names against the implementation:
+6/6 PASS. Exactly12 named offline executions, two rounds; no third round or old
+suite replay. Registration-only VM checks inspect actual default14 and selected
+case registration without calling any original hook/body or loading the heavy
+Service imports. Fake pools perform no network/database work. Offline process
+and network guards record zero forbidden operations.
+
+Fresh static review finds no Critical issue and one Important issue: nested
+AggregateError/cause details could be lost from durable state. The fix and its
+assertions are included before final GREEN. Review also prompts an explicit
+versus effective deadline label and closing the controller pool on foreign
+ownership refusal. `static-review.json` retains the findings and disposition.
+
+`offline-ledger.json`, `offline-1.json`, `offline-2.json`, `result.json` and
+`manifest.json` retain the accounting, results, exact candidate delta and hashes.
+Proof payload is194,958 bytes under the1MiB local retained-proof limit. Final
+manifest SHA256:
+`90294806c1f567e2ada2f8f2b39ee97fd7105c78c259599210e67d5fd94ee210`.
+
+Preservation rechecks408 existing files, all358 frozen F2 inputs, the clean
+B1+C Core worktree, primary Service and the chained prior evidence manifests,
+including the latest actual A–B–B–A proof/postrun. Original PDF baseline is
+unchanged. Exact1GiB/no-swap/2CPU and768/320 admission policy remain unchanged
+prerequisites; no target is launched or measured here. Zero Docker/ABBA/Service
+or database executions, document generations, full-suite runs or integrations.
+
+#### Stop and remaining acceptance
+
+P2.0's bounded offline checkpoint is complete; stop. The isolated Service
+candidate remains uncommitted: its owner guide requires real database/container
+checks before commit, and those checks are explicitly outside this checkpoint.
+Retain the dirty candidate and frozen-input manifest without promotion or merge.
+Project Control's documentation/schema check and whitespace check pass; these
+do not substitute for Service runtime acceptance.
+
+Actual configuration/executor binding, target identity and schema/session/lock
+checks, original-prefix comparison, candidate14/14 and resource-wait3/3 remain
+unexecuted. There is no new finding that closes an old I6 failure or establishes
+causal memory savings. No P2.1/P2.2, full suite, B2, product repair, release,
+integration or push follows automatically.
