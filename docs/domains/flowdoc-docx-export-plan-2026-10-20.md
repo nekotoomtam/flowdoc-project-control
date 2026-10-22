@@ -26,6 +26,8 @@ The subsequently authorized [17-case unchanged-candidate verification](#i6-f2-se
 completed: complete task-api8/14 pass,6 fail; resource-wait3/3 pass. Its end
 boundaries are clean, while memory admission blocks generation in observed
 failure windows. F2/I6 remain NOT ACCEPTED; no further code change or F3 run.
+The owner subsequently requested the [harness and cache attribution proposal](#i6-harness-and-cache-memory-attribution-plan-2026-10-22).
+It is planning only; its proposed measurement budget is not execution permission.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9022,3 +9024,164 @@ fails and F2/I6 are not accepted. Next work, if separately authorized, should
 plan a controlled attribution of harness/module/cache memory around the now
 observed admission wait; there is no automatic code repair, repeat run, F3,
 B2 or integration from this result. **Report and stop at17.**
+
+### I6 harness and cache memory attribution plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner requests a plan to distinguish test-harness
+memory from cache while keeping the exact1GiB rule, B1+C and original PDF
+baselines. Current authorization covers this plan and its documentation checks
+only. No new Service run, diagnostic container, source repair, full suite, B2
+or integration is authorized. F2/I6 remain NOT ACCEPTED.
+
+Project Control owns this shared plan; Service owns any later test-boundary
+change. Role: Planning Partner / Evidence Reviewer / Documentation Synthesizer.
+Work/Phase/Checklist/execution IDs: N/A, single-room planning continuation.
+Work Size: small; Risk Tier: routine. Document Budget: this existing document
+only; no new Work, Evidence registration, map, product Markdown or package change.
+The current model prepares the bounded proposal; a later execution must resolve
+its own model decision under the current policy rather than inherit this one.
+
+#### Question, frozen inputs and accounting
+
+The17-case receipt above is the starting evidence, not a passing gate. In its
+failed MCP/direct-generation window, current memory was513–523MiB, including
+approximately345–355MiB anonymous and143MiB file charge. The existing admission
+formula refuses a new320MiB worker above448MiB when credits are128MiB. These
+figures explain sampled refusal; they do not assign all anonymous memory to
+Vitest, all file memory to build residue, or all failures to the same cause.
+
+Reuse the unchanged F2 worktree/base, original checks image, original Core A
+archive, fonts and fixture bytes identified in the preceding result. B1+C stays
+frozen separately at `b79f426649e65eadb3fb29e410250395a6d65faa`; do not substitute
+it into the diagnostic Service image. Hash the complete candidate inputs and
+retained evidence before/after. Preserve the uncommitted F2 lane and all prior
+failures; do not reset it to manufacture a clean baseline.
+
+Every measured Service cgroup retains `memory.max=1073741824`, no swap,2 CPUs,
+the unchanged768MiB admission formula/320MiB worker credits, health/freshness,
+pressure and recovery rules. Keep deadlines, payload, output validation and
+serial order unchanged. PostgreSQL and the read-only observer remain outside
+that cgroup in every arm. Record their placement and memory separately; moving
+work outside the measured group is a topology experiment, not reduced total RAM.
+
+No larger memory limit, cache subtraction in admission, forced GC, new heap
+flags, host cache flush, Docker/VM restart, unrelated-process termination or
+production/storage modification. A fresh container is not proof of cold cache.
+
+#### M0: inventory and feasibility before a live budget is requested
+
+Read the frozen17-case phase markers, memory samples, process tree and original
+test/controller sources. Produce an attribution table from existing evidence:
+before imports/build, application ready, preceding cases complete, generation
+requested, admission wait, cleanup and final boundary. Mark missing readings
+UNKNOWN rather than interpolate a brief worker that was not observed.
+
+Separate three accounting views:
+
+- cgroup total and `memory.stat` anonymous/file/kernel components explain the
+  quantity the queue actually gates; retain component residuals and timestamps;
+- per-PID role, RSS and PSS where available locate resident processes/shared
+  mappings; never add these values to cgroup total or sum RSS as private RAM;
+- optional per-process Node heap/external/array-buffer readings describe only
+  those processes and overlap other views. Existing readings are preferred;
+  any later external preload must have its overhead and PID recorded.
+
+Vitest and the in-process Service share a process, so OS process metrics cannot
+divide their heaps. Record module retention as a hypothesis, not a measured
+Vitest-only allocation. File charge is not automatically disposable memory or
+proven reclaimable headroom. Lifetime cgroup peak includes setup/build and must
+not be reported as the renderer's isolated peak.
+
+Before execution, prepare one reviewed external observer/controller in a new
+proof location, leaving the candidate read-only. Reuse the existing controller
+and its original partial-field assertions where possible. Review exact payload,
+request path and cleanup against the original direct-generation phase; do not
+silently replace assertions with whole-object equality or extend deadlines.
+If reproducing the required boundary needs a test-source edit, return a bounded
+test-only proposal first; this plan does not authorize that edit.
+
+#### Proposed live experiment: at most12 scenario executions
+
+This is a proposed ceiling, not permission to spend it now. Count every started
+scenario, including failures/setup failures; no hidden retries or nested tests.
+There are at most10 functional case/request executions plus2 cache probes.
+
+| Step | Proposed allocation | Controlled comparison and stopping rule |
+| --- | ---: | --- |
+| M1 cache feasibility | 2 non-generation probes | In disposable groups with the frozen input inventory, observe initial file charge and the change after a designated reader accesses those same bytes. Record reader placement, read order, files and charge before/after; no document request. |
+| M2 same-harness comparison | 8 cases | Two serial runs of original task-api cases1–4, preserving their order/shared database within each run. The only intended difference is the validated cache-preparation condition from M1. Each run uses its own isolated database and unchanged Vitest/application topology. |
+| M3 external-controller comparison | 2 direct-generation requests | Two repetitions of the MCP case's direct-generation payload against the frozen Service entrypoint, with the controller outside its1GiB group. Retain the original response/content assertions, limits and cleanup. Compare measured memory/admission at the matching generation boundary. |
+
+M1 does not promise charge transfer or a cold/warm pair. Cached shared file pages
+may already be charged elsewhere. Record source/artifact identities, global
+read history known to the experiment, preparation/build placement and measured
+charge. Choose the two conditions only if M1 demonstrates a useful file-charge
+contrast without changing application input bytes or retaining another workload.
+Otherwise stop: cache attribution is UNKNOWN, and M2 must not be relabelled as
+a controlled cache test. Do not compensate with global cache eviction.
+
+For M2, build/preparation must finish before the measured request in both arms;
+verify identical compiled/runtime bytes and no preparation child remains.
+Use the same observer and sampling settings. Compare application/process
+anonymous memory as well as file charge: if the intended cache contrast also
+changes retained application state substantially, report a confounded result.
+Two arms are a bounded diagnostic comparison, not a statistically established
+effect. Do not repeatedly rebuild until the preferred outcome appears.
+
+The cases1–4 prefix is chosen because the first long admission wait in the
+complete-file evidence occurs in case4 before the MCP generation call. If that
+prefix does not reproduce an admission wait, retain the negative result and
+stop causal extrapolation to the complete14-case file. Do not add the remaining
+ten cases, reorder cases or run the suite to chase reproduction within this plan.
+
+M3 deliberately changes the execution boundary: standalone Service replaces
+Service inside Vitest. It can test whether that topology admits the same direct
+request at1GiB; it cannot by itself measure an exact Vitest-only cost, preserve
+prior-case retention, or prove streaming-MCP compatibility. Compare it only
+when file charge and setup are sufficiently comparable to interpret; otherwise
+label its result standalone capacity evidence with unresolved confounders.
+If exact same-process heap separation remains necessary, propose a later
+test-harness isolation change rather than infer a subtraction from two totals.
+
+Keep external samples at the existing1Hz during long waits and reuse existing
+internal phase/admission snapshots. Capture request/cleanup boundaries without
+introducing a high-frequency observer inside the constrained group. A sampling
+gap remains a gap. Native channel events must not be described as internal
+memory snapshots when they contain no such fields.
+
+#### Result and stop criteria
+
+Return one table per arm containing input hashes, PID/role placement, preparation
+condition, phase-aligned total/anonymous/file/kernel memory, available process
+metrics, queue health/credits/workers/admission reason, request outcome, elapsed
+time and cleanup state. Report observer/controller memory separately. Show
+ranges and overlap; do not invent a precise harness/cache percentage.
+
+Classify each claim independently as supported, suggestive or UNKNOWN:
+
+1. Is the original admission refusal reproduced under the same1GiB policy?
+2. With harness topology fixed, does an observed file-charge difference explain
+   crossing the existing admission boundary, or are other terms confounded?
+3. Does the separate-controller topology change measured headroom/admission for
+   the same direct payload, and which differences prevent Vitest-only attribution?
+4. Are all owned children, database sessions and advisory locks gone after each
+   run, with candidate and retained evidence hashes unchanged?
+
+Stop immediately on source/input drift, policy mismatch, orphan/lock, OOM,
+observer-induced disruption or exhausted budget. An invalid cache control or
+failed reproduction is a useful bounded finding; it does not justify more runs.
+Proposed additional ceilings:20 minutes active checks and10MiB new diagnostic
+output, with bounded lifecycle cleanup retained. No Word export or manually
+reviewed page is allocated; cumulative162 pages/21 exports stays unchanged.
+Ordinary future test output is isolated from the original PDF baselines.
+
+Completion of attribution requires an honest control/coverage assessment, not
+all cases passing. Any recommendation to isolate the harness, relocate build
+work or investigate another term returns as a proposal. A memory-policy change,
+test repair, complete-file acceptance, F3/full suite, B2 and integration each
+remain outside this plan. This planning checkpoint launches no experiment.
+
+Planning verification: Project Control `tools/check.ts` and `git diff --check`
+pass. Read-only hash checks preserve408 prior source/evidence files and all358
+candidate inputs; F2 HEAD/status are unchanged and B1+C remains clean at its
+frozen commit. This checkpoint changes only this Project Control plan.
