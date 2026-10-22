@@ -54,6 +54,11 @@ passes all16 cases on the second of at most3 passes (32 named executions total),
 with zero real Docker/subprocess calls in the fixture suite. Historical failed
 preparation remains charged1; a fresh live7-scenario comparison is still
 unauthorized. F2/I6 remain NOT ACCEPTED and B1+C/PDF baselines are preserved.
+The owner next authorized a fresh7-scenario live comparison using those repaired
+helpers. Its [observer-placement preparation stop](#i6-repaired-comparison-observer-preparation-stop-2026-10-22)
+consumes1/7 and stops before cache reading or any A/B arm: observer database-PID
+membership verification fails. Owned resources are removed, no retry occurs,
+and cache matching/memory attribution remain UNKNOWN. F2/I6 are NOT ACCEPTED.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10212,3 +10217,91 @@ release or push. No Word export or reviewed page budget was spent.
 Repository impact is limited to this existing canonical plan/result document;
 no runtime, product map or generated record changes. Documentation verification:
 Project Control `tools/check.ts` and `git diff --check` pass.
+
+### I6 repaired comparison observer preparation stop 2026-10-22
+
+**STOP_PREPARATION_OBSERVER_PLACEMENT_UNKNOWN / comparison UNKNOWN.** The owner
+explicitly authorized a fresh seven-scenario A–B–B–A readiness comparison with
+the repaired external helpers, exact1GiB, unchanged B1+C and original PDFs,
+and first-invalid-control stop. This round stops in preparation at1/7 after
+43.468 seconds; no cache reader, cache-verification scenario, readiness arm,
+original Service case or document request starts. F2/I6 remain NOT ACCEPTED.
+The prior offline16/16 repair acceptance remains limited to its fixtures.
+
+Role: Evidence Reviewer / Documentation Synthesizer; authority: discovery with
+no candidate mutation. Project Control owns this result; Service owns the
+preserved candidate. Work/Phase/Checklist IDs are N/A for this single-room
+scope. Work Size small, Risk Tier routine. The current host model/capability
+availability is used inline without override or separate dispatch. Proof cap
+is fresh7 scenarios,600 active seconds and10MiB new output. Document Budget is
+this existing canonical result document only; no new Work/map or product file.
+
+New isolated external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-harness-service-memory-repaired`.
+All17 helper files were copied byte-for-byte from the accepted repair manifest
+`984444160531d3b9b640e08c89019b6449dc5b7710e8b90fa05867c82faded60`;
+no implementation or fixture change was made. The live source manifest binds16
+helpers (the standalone offline suite runner is not used by the live runner).
+`prelaunch.json` records the current authority and complete copied source set.
+
+The fixed ledger reserves and confirms preparation STARTED/used1 before the
+first Docker inspection. Network metadata preflight now succeeds, auditing
+host/host and none/null exclusions. Intended network/container names were
+absent before ownership was claimed. The target is created with inspected
+Memory=MemorySwap=1,073,741,824 bytes,2 CPUs, init and read-only rootfs;
+no cgroup sample was obtained, so a measured no-swap claim is not made.
+Both Linux reader/control guard files pass in counted preparation. Four empty
+private databases are provisioned/migrated and each prepared boundary records
+zero sessions, advisory locks, tasks and jobs. These are preparation steps,
+not four readiness arms or additional uncounted scenarios.
+
+The separate observer exits1 with OOMKilled=false before writing its ready
+marker. Retained `proof/observer.log` identifies `observer.py:7`:
+`PROBE_DB_HOST_PID` is absent from the database `cgroup.procs` values read by
+the observer. The orchestrator then reaches its20-second missing-ready-marker
+stop. The raw receipt status is `STOP_FINALIZATION_UNKNOWN`, retaining the
+nonzero observer-exit error; this is not a successful finalization receipt.
+A host PID versus observer-visible PID namespace mismatch is a hypothesis,
+not confirmed mechanism: raw membership and namespace values were not retained
+before cleanup. No live repair, diagnostic pilot or retry follows this failure.
+
+The ledger remains preparation STOP,used1/cap7. Cache windows, A1/B1/B2/A2
+arms, target/process samples and document requests are all zero. Cache is
+**NOT ESTABLISHED**, rather than a measured unstable plateau. There is no
+expanded runtime inventory/content digest, pair delta, Service/runner RSS/PSS
+or observer/database overhead measurement from which to infer attribution.
+The previously stable cache-only topology cannot substitute for these missing
+controls. No memory policy/admission change or Service failure is established.
+
+All three owned containers and the owned network were removed. A bounded
+read-only status check confirms no owned container and the exact network ID
+absent. This cleanup verification does not launch another workload or consume
+another phase. The observer error remains visible even though resources are
+absent; cleanup success does not convert the comparison to PASS.
+
+Saved as-run proof: `proof/manifest.json`, SHA-256
+`2200fbf0586f37a6c6e37aa8acf6e807cb5df6d921462d124eb6fd1d84c4944b`.
+It binds13 evidence files and16 helpers. Supplemental saved-proof/cleanup
+verification: `postrun/manifest.json`, SHA-256
+`55a0825a5a574145b4e4ca2ef34a0f8f0005d4d57aaacda5b366b8958fe9cf21`.
+It binds two supplemental records, the prelaunch digest and as-run manifest.
+Proof/scratch/supplemental output totals24,313 bytes, below10MiB. No raw
+receipt, ledger, failed trace or earlier proof is rewritten.
+
+Saved-proof checks confirm both preservation receipts agree:408 prior
+source/evidence files,358 F2 inputs, old28-file proof/runner and18-file cache
+proof with6 helpers remain intact. All5 original failed-round records and13
+helpers, and the offline repair proof/source, are hash-verified unchanged.
+B1+C stays clean at `b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service
+status is unchanged and original PDF baselines remain preserved. No product
+source/test/configuration, package/image contents, full suite, B2 pagination
+rule or integration is changed. No Word export or reviewed page is allocated.
+
+The earlier failed preparation remains charged1 independently; this fresh
+failed preparation charges another1 (two started preparations across the two
+live rounds). No refund, resume or automatic use of the unused6 occurs.
+Recommended next work is an offline proposal to diagnose observer PID/cgroup
+membership and add relevant fixture coverage before any repair or new live
+attempt. This result grants no further execution. Repository impact is only
+this current result update; Project Control `tools/check.ts` and
+`git diff --check` pass.
