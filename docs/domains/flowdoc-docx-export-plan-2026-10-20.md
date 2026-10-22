@@ -7443,3 +7443,75 @@ Stop เมื่อได้คำตอบที่แยกปัจจัย
 ทำให้เหมือนขึ้นไม่ได้อย่างปลอดภัย. ผลที่ยอมรับได้ของการทดลองรวมถึง
 **ไม่เลือกเปลี่ยนโค้ด**. Product source, PDF behavior และ I6 status ยังไม่เปลี่ยน
 จากการบันทึกแผนนี้.
+
+### E0 baseline capture 2026-10-22
+
+Status: **baseline captured and repeatable; coverage-qualified, E1 on hold**.
+E0 checkbox above remains open for its coverage gaps; this is not full experiment
+acceptance. Owner request authorizes baseline preparation and reporting only.
+Active role: Planning Partner / Evidence Reviewer; Core owns runtime behavior,
+Project Control owns this status. Single-room execution IDs are not applicable.
+No product source, pagination rule, PDF renderer, dependency, Service, DB, or
+installed plugin changed. No E1 probe, integration, release, install, or push.
+
+Evidence root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e0/baseline-01/`.
+Reuse `manifest.json`, `results.json`, `generation-results.json`,
+`installed-package-files.json`, `inspection.json`, `source-intervals.json`, and
+`word-results.json`; frozen templates/requests/prepared inputs/ResolvedDocuments,
+three `*-A.pdf` references, three `*-A.docx` files, Word review copies/PDFs and
+all rendered pages are in that root. This external artifact-only lane replaces
+the proposed future Core artifact directory: no product edits require a new
+checkout. It uses an immutable offline installed consumer rather than rebuilding
+or installing anything in a primary checkout.
+
+Pinned Core source HEAD: `e53e4a284d5eb2596b531b55a12a83ab74ba8528` (clean).
+Installed Core 0.4.7 archive SHA-256:
+`067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+All 208 installed package files match that retained archive. Manifest also pins
+container ID, native/runtime files, four Sarabun faces/licenses and synthetic
+image bytes. Public validate/prepare/compose APIs feed the same frozen resolved
+object to the unchanged PDF and DOCX branches. Each successful reference PDF
+was retained from its first generation and not overwritten. P/T engine receipts
+were not checkpointed before later fixture validation interrupted the harness;
+their retained output hashes were recovered from bytes, not regenerated.
+The four old I6 PDF references still match their retained receipt hashes.
+
+| Packet | Frozen PDF pages | Word pages | Recorded baseline difference |
+| --- | ---: | ---: | --- |
+| P | 6 | 11 | Leading/repeated/trailing breaks add displacement; below/at/above boundary spacer cases differ too. PDF content pages 1,2,3,4,6 versus Word 3,5,7,9,11. |
+| T | 5 | 7 | Table PDF2 versus Word3; wide body PDF3 versus Word5, with header-only Word4. Cover remains page1 and two intentional blank Sections remain two pages. |
+| W | 9 | 9 | First authored-LF paragraph splits 1/4 lines in PDF versus 0/5 in Word; last splits 4/1 versus 3/2; cell splits 1/4 versus 0/5. Protected controls remain page9. |
+
+Word executable version `16.0.20430.20182`; COM Version `16.0`, Build
+`16.0.20430`. `word-export.ps1` records printer/options and exact export steps:
+private hidden instance, read-only review copies, document fields/TOC update,
+repagination, print-quality all-page PDF export, close without saving. No fields
+were present. Original and review DOCX bytes remain identical. W repeat has
+identical extracted text/geometry and all nine rendered-page PNG hashes; PDF
+bytes differ, so byte identity is not claimed for Word exports.
+
+All **56 rendered pages** were visually reviewed, including blank pages and W
+repeat. No body clipping or overlap observed; source-to-body OOXML ordered text
+and authored LF events match all three graphs. QA initially omitted resolved
+`line-break` inline events; fixing that reader, without changing source or DOCX,
+resolved its false mismatch. Source interval evidence records physical pages
+separately from displacement. Natural Thai wrap extraction cannot yet establish
+exact source end offsets; that case remains **INCONCLUSIVE for widow attribution**.
+
+Coverage limitations remain explicit: P lacks an isolated ordinary no-break
+Section; T uses supported model18 because model19 forbids the cover role;
+numbering restart is structural without a visible field; rowSpan and an actually
+repeated header across a page boundary are not exercised; natural wrap covers
+mixed Thai/Latin but not separate Thai-only/Latin-only or mixed emphasis in one
+paragraph. Four separate font-face blocks are controls, not that missing case.
+Fixture authoring errors (unsupported cover/model placement and missing heading
+anchor) were corrected before final freeze, without product changes. These gaps
+must not be silently treated as tested or generalized to model19 cover support.
+
+Budget decision: E0 used 4 Word exports and 56/60 rendered pages. At baseline
+sizes, just B1(P/T) and C(W) would bring the total to **83 pages**, before B2/D or
+I6 regression. **Stop before E1**: first revise the proof budget and missing
+control coverage, or agree separately versioned smaller complete packets;
+preserve this frozen baseline and never replace its PDF references. No candidate
+effect is measured yet, and the existing I6 complete-suite blocker stays open.
