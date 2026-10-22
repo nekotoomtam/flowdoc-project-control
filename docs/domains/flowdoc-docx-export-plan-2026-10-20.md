@@ -40,6 +40,11 @@ passes the bounded CACHE-CONDITION-STABLE criterion at5/5 executions. This is
 not a harness/Service comparison or F2/I6 acceptance; M2/M3 were not started.
 The owner's next request is the [controlled harness/Service comparison proposal](#i6-controlled-harness-service-memory-comparison-plan-2026-10-22).
 It is a readiness-only diagnostic plan, not permission for another run or repair.
+The owner subsequently authorized the seven-scenario comparison. Its
+[preparation result](#i6-harness-service-comparison-preparation-stop-2026-10-22)
+stops on an external network-metadata parser error before any live cache or
+readiness arm. Charge the failed preparation as1/7; no retry occurred.
+The previous cache-only PASS remains limited to its recorded topology.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9812,3 +9817,118 @@ Documentation verification: Project Control `tools/check.ts` and
 `git diff --check` pass. Only this Project Control plan changes; all seven
 proposed scenarios and any external fixture/tooling implementation remain
 unexecuted in this planning turn.
+
+### I6 harness Service comparison preparation stop 2026-10-22
+
+**STOP_PREPARATION_TOOL_ERROR / comparison UNKNOWN.** The owner authorized the
+readiness-only A–B–B–A proposal up to7 scenarios, exact1GiB, preserving B1+C and
+the original PDF baseline and stopping when controls cannot be established.
+External helper implementation completed, but its preparation preflight failed
+before creating a network/container/database or starting a cache/readiness
+scenario. No A/B memory result exists. This is not a failed cache measurement
+or a Service readiness failure; neither was exercised. F2/I6 remain NOT ACCEPTED.
+
+Role: Evidence Reviewer / Documentation Synthesizer; Service owns the preserved
+candidate, Project Control owns the checkpoint. Work/Phase/Checklist/execution
+IDs: N/A, single-room work in the retained isolated lane. The current host
+model performed bounded inline tooling/discovery without a model override;
+availability basis is the current host capability contract. One fresh static
+helper review and confirmation of its fixes occurred under executing-plans;
+no product WORK room or old execution registry was reopened.
+
+#### External tooling and actual failure
+
+External directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-harness-service-memory`.
+New source is only its `run.py` and `tools/` reader, observer, control guards,
+shared lifecycle, A/B wrappers, external single-case configuration and frozen
+fixtures. The native child environment is explicitly fixed for both arms,
+excluding Vitest-injected values; no task-creation method is called. Product
+source/tests/configuration, installed packages, image layers and prior helper
+directories are unchanged.
+
+Three local synthetic control-guard checks passed, including the distinction
+between idle tolerance and anonymous-memory differences during loaded phases.
+Python syntax, JavaScript syntax and fixture credential shape checks passed.
+The copied reader guards and Linux fixture/Service lifecycle were NOT RUN in
+the target environment. Static review identified seven issues in child
+environment, readiness deadline, mapping events, process-exit races, arm
+watchdog, finalization and network ownership; all were corrected and statically
+confirmed before the preparation attempt. That review is not a claim of live
+acceptance or exhaustive tooling correctness.
+
+At external `run.py:106`, the subnet-inventory expression iterates
+`n['IPAM'].get('Config',[])`. Docker's built-in `host` and `none` networks have
+the `Config` key with value `null`, so `dict.get` returns `None` rather than its
+default empty list. Iteration raises `'NoneType' object is not iterable`.
+Read-only post-stop inspection confirmed precisely those two normal records
+(drivers `host` and `null`). No network collision,1GiB mismatch, cache drift,
+OOM or candidate defect is established by this preparation-tool error.
+
+The helper stopped before its preparation reservation and before the first
+infrastructure mutation. No helper repair, retry, extra preparation, cache
+verification, native Service launch or original test run followed. This was an
+avoidable external-tool parser defect, retained as a failed attempt rather
+than silently fixed/rerun. Execution elapsed approximately15.1 seconds.
+
+#### Raw evidence and conservative budget reconciliation
+
+The as-run `proof/manifest.json` SHA256 is
+`77a19554f1f35bb826fbcaec5f4e7b3802409d6c099bd0c64feb6a580d1e2bc9`.
+It binds the raw receipt/ledger and13 external helper/review files. The raw
+ledger records0 because its reservation was incorrectly placed after the
+metadata preflight. Preserve that ledger and source rather than rewriting the
+failure as a successfully reserved/executed cache case.
+
+Under the owner's rule that failed setup counts, the authoritative accounting
+for this checkpoint is **1 charged preparation attempt / cap7; zero live cache
+scenarios, zero readiness arms and zero generation requests**. Six unspent
+units are not permission to retry or compress the planned seven-scenario
+sequence. `postrun/budget-reconciliation.json` explicitly connects this charge
+to the raw0 ledger and its hash. The too-late reservation is a second external
+accounting defect, not an excuse to treat the failed setup as free.
+
+The supplemental `postrun/manifest.json` SHA256 is
+`df43b304b0a54283e6f1f5adabf02ccd1eef17374fc7065e0e070e8c6a7f7a56`.
+It binds the original as-run manifest and three read-only diagnosis/accounting/
+verification records. No post-stop cache or readiness experiment was used to
+diagnose the normal null metadata. Both failed raw evidence and the explicit
+accounting correction remain retrievable.
+
+#### Preservation, coverage and return boundary
+
+Before/after preservation and saved-file checks confirm408 prior source/
+evidence files,358 F2 inputs, the earlier28-file proof/runner, the stable-cache
+18-file proof and its six bound helper/review records unchanged. B1+C remains
+clean at `b79f426649e65eadb3fb29e410250395a6d65faa`, primary Service status is
+unchanged and the uncommitted F2 lane is retained. The original PDF baselines
+and all earlier failed/qualified results remain intact. No document output,
+Word export or review page was produced; cumulative162 pages/21 exports is
+unchanged. The as-run13 helper hashes match after stopping.
+
+No owned container/network/database was created and none remains; no unrelated
+resource was removed. Read-only inspection confirms the proposed network name
+is absent. The intended1GiB settings remain in the frozen invocation, but this
+round supplies no live1GiB/cgroup or cache validation. Preparation controls,
+pair comparisons, Service/runner attribution and workload acceptance are NOT
+RUN/UNKNOWN, not PASS. The old bounded CACHE-CONDITION-STABLE result is not
+invalidated or promoted into a new application comparison by this failure.
+
+Next recommended proposal: correct only the external metadata parser so the
+known built-in non-subnet networks can have null config, while malformed/
+unknown bridge or custom-network subnet data remains a stop. Add bounded
+synthetic cases for those normal null values, valid/invalid CIDRs and existing
+network ownership; reserve/count preparation before its first Docker preflight
+so any future setup failure is recorded. Do not apply that repair or launch a
+new attempt from this checkpoint. A fresh execution/budget decision is needed
+before a complete seven-scenario sequence; do not bypass a cache-verification
+step to fit the remaining six units.
+
+Report the preparation-tool failure and stop. No product repair, document
+generation, full suite, B2, product merge or acceptance promotion occurred.
+
+Checkpoint verification: Project Control `tools/check.ts` and
+`git diff --check` pass. Independent read-only verification confirms all five
+as-run/supplemental records,13 unchanged helper files, conservative1/7 accounting
+and all preservation locators above. Only this shared document changes in a
+repository; external evidence/tooling is retained separately.
