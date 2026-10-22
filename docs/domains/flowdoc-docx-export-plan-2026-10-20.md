@@ -89,6 +89,12 @@ The owner next requests the [saved-evidence cross-view counter binding proposal]
 This is planning only: no validator/observer change, fixture run, Docker or
 new capture/comparison. The original UNKNOWN receipt is retained; proposed
 object/route adjudication does not confer observer or live-sampling acceptance.
+The owner subsequently authorized the new offline verifier and twelve cases.
+The [saved-evidence verifier result](#i6-saved-evidence-cross-view-verifier-result-2026-10-22)
+passes12/12 on pass2/2 (24 named executions total). Both retained target/DB
+pairs support bounded captured object/counter-route binding under the new
+profile. The original as-run UNKNOWN and observer/liveReady=false remain;
+no source/runtime repair, Docker or further live work follows.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -11217,3 +11223,122 @@ prior source/evidence files,358 F2 inputs,28-file earlier proof/runner,
 Original PDF baseline evidence remains preserved. No Docker/status command,
 fixture case, proposed directory or code change is made. Only this existing
 Project Control plan changes; `tools/check.ts` and `git diff --check` pass.
+
+### I6 saved evidence cross view verifier result 2026-10-22
+
+**PASS for the bounded offline verifier and derived saved-evidence decisions.**
+The owner authorized X0–X3 implementation from the old capture and twelve
+cases within two passes, followed by this checkpoint. All12 expected outcomes
+pass on pass2/2,24 named executions total. Both actual retained role pairs
+support CAPTURED_GROUP_OBJECT_MATCH and CAPTURED_COUNTER_ROUTE_SUPPORTED within
+the new saved-observation profile. This is not a running observer acceptance
+or continuous sampling result. The original as-run capture UNKNOWN, old
+counterBindings=false and every original ledger remain unchanged. F2/I6 are
+NOT ACCEPTED; harness/Service memory attribution remains UNKNOWN.
+
+Authority: single-room external-tool implementation and Evidence review;
+Project Control owns this result, Service owns the untouched candidate.
+Execution IDs N/A; Work Size small, Risk Tier routine. Current host model/
+capability used inline without override. Proof Budget2 complete passes,
+24 named executions,300 active-check seconds,2MiB proof. Document Budget this
+existing canonical result only; no new Work, Phase, map or shared report.
+No observer/product/old-validator modification, Docker/status command, live
+procfs/cgroup, capture, A–B–B–A/full suite, B2 or integration is performed.
+Exact1GiB/no swap, B1+C and original PDFs are preserved.
+
+New external root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-counter-crossview-offline`.
+New files are `crossview_binding.py`, `saved_input_loader.py`, twelve-case
+tests and bounded runner. Twenty-one byte-identical input copies retain the
+as-run capture/manifest, prelaunch, accepted helper bytes and image-source
+receipt/manifest; they are hashed, never executed. Twelve fixed case specs
+include two retained-pair checks and ten explicitly labelled synthetic faults.
+The old receipt_binding.py and both prior offline tool suites remain intact.
+
+The loader verifies the frozen capture manifest
+`9372a5e3e1ca6013ec1110e5441bc3a5429c1ca75ca657cb46effc43cf7ecf12`,
+raw-file/source/prelaunch/image hashes and sealed retained payload identity.
+The new pure verifier independently parses raw shell frames, status/stat,
+namespace labels and full mountinfo. It composes exact-ID invocation and
+before/after lifetime anchors, local memberships, filesystem/device/fsid/inode,
+selected-leaf effective mounts, counter-read success and1GiB/OOM checks.
+It does not take the prior binder's booleans as proof, force namespaces equal,
+use inode alone or use changing counter-value equality to establish identity.
+
+| Offline proof | Result |
+| --- | --- |
+| Pass1 retained strict-policy RED adapter | 12 executed,0 pass,12 fail,0 error |
+| Pass2 new profile | 12 executed,12 pass,0 fail,0 error |
+| Charged proof budget | 2/2 passes,24/24 named executions |
+| Active fixture checks | 0.485 seconds /300 seconds |
+| Saved proof | 95,178 bytes /2MiB;20 files including manifest |
+| Entire new root including input/source copies | 387,177 bytes |
+| Forbidden real process/procfs/cgroup attempts in suite | 0 |
+| New live attempts / observer/product changes | 0/0 |
+
+X01/X02 adjudicate the hash-bound saved target/database pairs within the named
+case count; no uncounted retained-pair replay follows. Both find matched
+objects and supported recorded counter routes. Target object is device0:23,
+inode429; database is device0:23,inode497; both have recorded
+fsid87fb5972662524a3, corroborated by independent role/mount/provenance anchors.
+Different cgroup namespace labels are retained. The database PID view remains
+NAMESPACE_NOT_COMPARABLE: its observer-side zero PID entries are not transformed
+into host/database PID membership. Exact target1073741824/0 and2 CPUs are
+rechecked from captured metadata/raw counters, not a fresh live measurement.
+
+X03's labelled namespace variant also supports the bounded route. X04–X06
+reject device/inode/fsid conflicts; X08 rejects an ID substring path; X10
+rejects restart metadata. X07/X09/X11 return UNKNOWN for missing mountinfo,
+a selected-leaf overmount or a recorded read error. X12 rejects mixed-session
+provenance. Overall:3 route-supported cases (two retained,one synthetic),
+5 BINDING_MISMATCH,3 UNKNOWN and1 PROVENANCE_REJECTED. Passing refusal tests
+mean the verifier stops correctly, not that faulty inputs become acceptable.
+
+The new profile supports only the observed flat Docker/private-local-root
+layout with complete canonical mount/object context. Object and counter-route
+decisions are separate: the leaf-overmount fault retains a directory match
+but refuses its route. All outcomes retain observerVerified=false and
+liveReady=false. Results cover the original18.375-second sequential capture,
+not atomic/continuous directory or mount identity, counter-leaf stat identity,
+new-host/session persistent IDs, or present runtime state after cleanup.
+If a claim needs those missing facts, the saved proof cannot supply them.
+
+RED is an adapter of the old strict rejection and missing proposed result
+contract, not twelve new product failures. RED source/tests/results remain
+preserved. Static review identified mixed-up capture/source hash labels and
+missing shared own-group OOM prerequisites; both were corrected before GREEN,
+with existing provenance assertions corrected/strengthened, not relaxed.
+The same reviewer confirmed resolution without import, test/verifier execution,
+Docker, edits or live access. No additional cases or old8/16-case suite reruns.
+
+Derived outcomes are retained separately in `proof/captured-adjudication.json`
+from the already-counted GREEN diagnoses. They do not rewrite the original
+UNKNOWN receipt or success flags. New proof manifest SHA-256:
+`95caedcfcc5d56bd78b06d83b238948ad489f41acb623c03061606e0bf3b7aa7`.
+It binds4 helpers,12 case specs,21 frozen inputs and19 proof files, including
+RED/GREEN logs, per-case decisions, ledger, input/case manifests, review,
+rulings, derived adjudication and preservation. Principal source hashes:
+
+| Helper | SHA-256 |
+| --- | --- |
+| crossview_binding.py | `129aa5e3fbf823bd7a0880575faea539b9972ffde6cabfde5f5895135c67df77` |
+| saved_input_loader.py | `690797fe93ffd21c18044a14a514db003f21a9907d3777e3be084952ac94c971` |
+| test_crossview.py | `b591f6f4d644b1550c3a70e3fed27118b447fe7b6d66133e4cce2b58a9a4dbbf` |
+| offline_checks.py | `2da95925d16e42c3778cf368d395eb0ec00a827adab38e9d5313a8288ded8119` |
+
+Before/after preservation agrees: current capture raw/supplemental manifests,
+all original capture helpers/fixtures/offline proof, earlier16-case diagnosis
+and five older manifest/helper chains remain unchanged. This includes408
+prior source/evidence files,358 F2 inputs,28-file earlier proof/runner and18-file
+cache proof with6 helpers. Original observer bytes are unchanged; B1+C remains
+clean at `b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service status and
+PDF baseline evidence remain unchanged. No Word export/reviewed page allocated.
+All three historical live attempts stay charged, with no new live budget used.
+
+The authorized offline checkpoint is complete and its two-pass budget exhausted.
+Next work is review/scoping of any observer/validator integration of this profile,
+followed only if authorized by P3's live sampling prerequisites. No old guard is
+silently removed, no namespace/privilege/memory change is made, and captured
+route support does not authorize Docker, another capture, A–B–B–A, full suite,
+B2 or merge/release/push. Only this existing Project Control result document
+changes; `tools/check.ts` and `git diff --check` pass. No runtime/package/map edit.
