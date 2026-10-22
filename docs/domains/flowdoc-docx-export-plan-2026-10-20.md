@@ -6,9 +6,12 @@ authorized E1 [B1 on P/T/Q](#e1-b1-ptq-result-2026-10-22) and
 worktrees. The subsequently authorized [D B1+C on all five packets](#e2-d-b1c-ptqwr-result-2026-10-22)
 is also complete in a third isolated worktree: all32 combined pages match the
 respective independent B1/C results in pixels and character/image geometry.
-Retain B1+C as the preferred experimental candidate within this bounded scope.
-B2, I6 regression, main integration, release and push remain unauthorized. Full
-parity and integration/I6 dispositions remain unchanged. Older
+The subsequently authorized [four-case I6 regression](#e2-preferred-b1c-four-case-i6-regression-2026-10-22)
+is complete for bounded content/pagination verification, with a recorded0.48pt
+TOC numeral alignment difference and provenance/Word-procedure qualifications.
+Retain B1+C as the preferred experimental candidate with those limitations.
+B2, main integration, release and push remain unauthorized. Full parity and
+integration/I6 NOT ACCEPTED dispositions remain unchanged. Older
 I-stage status/authority paragraphs below are historical, not current permission.
 
 > For agentic workers: execute only the authorized stage. Use
@@ -8141,3 +8144,133 @@ contract exclusions. This matrix does not prove every possible break/widow
 interaction in other documents. Preferred-candidate I6 regression, the existing
 I6 complete-suite blocker, SRS/full-suite verification and integration/release
 acceptance are still unexecuted. **Report and stop before B2 or main integration.**
+
+### E2 preferred B1C four case I6 regression 2026-10-22
+
+**Authorized four-case regression complete. PASS for bounded content/pagination
+and exercised structural controls, with recorded TOC alignment and provenance
+qualifications. Effect here: UNCHANGED pagination/content versus original I6
+Word. This is not pixel equivalence, a full I6 PASS, or main integration approval.**
+The owner authorized the retained B1+C candidate against the original four small
+I6 cases with original PDF references and the planned regression budget only.
+B2, Service/full-suite/SRS/performance retries, product repair and main merge
+remain outside this verification.
+
+Owner Core for the frozen package; active role Evidence Reviewer; Project Control
+owns this existing canonical prose. Work Size medium, Risk Tier routine.
+Execution/Phase/Checklist IDs N/A for single-room verification. No new Work,
+registry, map or product Markdown; no product code, configuration, dependencies
+or candidate files changed. This does not reopen the old I6 execution authority.
+
+Candidate remains clean at `b79f426649e65eadb3fb29e410250395a6d65faa`, branch
+`codex/docx-pagination-b1c-e2`, in the retained D worktree. Reused exact package
+SHA-256 `bc9e038fdc54b3b24c9e087d401640a5f710c4ccd78fa8c9364b8df10eef7125`
+and image `sha256:4c6d16c21cb4984e50b98ef3879a6f8f116fb9f10dc7d75e8d37c52e18c19f09`.
+No rebuild or new implementation branch was needed. Fresh generation verifies
+all208 installed package files against the retained D archive receipt. Its
+79-test/build and exact runtime-union proof are reused for unchanged content and
+environment, not represented as a new unit/full-suite run.
+
+External verification evidence:
+`C:/Users/nekot/Documents/Codex/2026-10-22/docx-pagination-e2-i6-regression/`.
+Use `brief.json`, `input-manifest.json`, `preword-results.json`, per-case receipts,
+`ooxml-proof.json`, `inspection.json`, `page-hashes.json`,
+`geometry-differences.json`, `word-results.json`, `results.json`, final
+`manifest.json`, original-derived inputs/resources and all nine new page PNGs.
+All writes are outside the candidate; original I6/E0/B1/C/D evidence is read-only.
+
+| Original selected I6 case | Original PDF | Original Word | B1+C Word | Regression observations |
+| --- | ---: | ---: | ---: | --- |
+| 01 Core navigation | 5 | 5 | 5 | All text, six whole-document and three per-Section TOC entries, targets3/8,12 links and footer sequence1,2,3,7,8 retained. |
+| 02 Core table flow | 2 | 2 | 2 | All24 rows exactly once,14/10 split, repeated header and four Sarabun faces retained. |
+| 03 Service typography/images | 1 | 1 | 1 | Mixed Thai/English authored multiline text, four Bai Jamjuree faces, JPEG and alpha PNG retained. |
+| 04 Service merged table | 1 | 1 | 1 | Cell text, horizontal/vertical merges and table structure retained. |
+
+All nine new Word pages and nine original PDF pages were inspected individually;
+reference review reused existing1500px renders without regenerating PDFs. All
+page text and raw ordered character sequences exactly match the original I6 Word
+PDFs, preserving Thai marks, source spaces and existing field-result text. Source
+LF and business structure are additionally protected by exact body/Section XML
+comparison after the explicitly verified metadata/policy exceptions below.
+There is no new blank/displacement, missing content/image or table-fragment
+regression. No new clipping or overlap observed; the existing tight Thai
+bolditalic-descender/image spacing remains, not relabelled a definitive
+no-clipping or pixel-parity result.
+
+**Recorded appearance difference:** six of nine new PNG hashes equal the original
+Word PNGs. Navigation pages1/2/4 differ only around the12 TOC target numerals and
+their trailing extraction spaces. Numerals move **0.48pt left**; their y position,
+text, page assignments and link targets do not change. Trailing-space geometry
+also changes; all other characters and all image geometry match. Example first
+TOC numeral x0: original PDF531.982677pt, old Word532.06pt, new Word531.58pt.
+This is a recorded small horizontal difference, not an improvement or a claim
+that every visual metric is unchanged. Cause remains **INCONCLUSIVE**: the
+owner-returned original Word build/options were not captured. The new export
+uses the same pinned16.0.20430.20182/options/procedure as E0/D. No additional
+original-package Word export was authorized or spent to isolate that cause.
+
+All12 PDF link destinations and destination coordinates match original Word,
+pointing to physical pages3/5 while displaying logical3/8. The empty header remains
+empty. The complete24-row split and repeated header are checked from raw
+character-stream lines, avoiding geometric extraction reordering of Thai marks.
+No Unicode normalization, mark deletion or whitespace collapse creates a PASS.
+
+Original source/resource recovery is explicit. The two Core cases reuse their
+retained template/request files and reproduce the exact original PDF hashes;
+comparison bytes are discarded, not saved as new references or rendered again.
+The two Service cases reuse the original selected
+`isolated/task-docx-api` template/business inputs, not a newer Service fixture or
+HTTP/DB run. Add the existing template docKey required by the Core API; normalize
+two upload descriptors to explicit local image IDs. Every text/style/layout value
+is unchanged. Original post-render Service graphs and random derivative UUIDs
+were not retained, so exact recovery of those identifiers is not claimed.
+
+Typography uses exact encoded JPEG/RGB/alpha image streams retained inside its
+original paired PDF, without reprocessing/re-encoding source images. The resulting
+DOCX media bytes equal the original I6 DOCX media. Original library font resource
+IDs are recovered from PDF subset unique names, and all four full Bai Jamjuree
+fonts match the old I6 font manifest hashes. The original OFL text is reused.
+Original database asset IDs are not claimed; local adapters use face IDs as
+locators. These are transparent resource-identity substitutions, not new business
+fixtures. The Service PDFs remain original hash-verified references; no new
+Service PDF or claim of exact random-ID/HTTP reproduction is made. Unchanged D
+PDF implementation/resource proof remains reusable.
+
+Before Word, strict XML proof permits only5/74/4/2 eligible widow-false additions
+for navigation/table/typography/merged respectively. Original source page breaks
+remain3/0/0/0; none is redundant in these inputs, and their XML locations remain
+unchanged. All other body/Section properties, full deobfuscated fonts, media,
+bands, table rules, fields, ZIP/XML/relationship targets and package parts match
+the original I6 DOCX. Timestamps and random font keys are separately verified.
+Automatic `_Toc` names vary with the writer's global counter: the checker maps
+unique names by unchanged bookmark location and consistently maps every related
+hyperlink/PAGEREF, then requires exact whole XML. It does not remove links,
+bookmarks, content, breaks or Section carriers to manufacture equality. Numeric
+user bookmark IDs are matched by stable names; user bookmark names stay intact.
+Read-only Word copies close without saving and retain their source hashes.
+
+Verification preparation corrections affected readers/adapters only: normalize
+Core image fields as UUID strings rather than upload objects; correct a relative
+Path-dot preflight reader; compare automatic TOC identities consistently; and
+read exact raw Thai header lines instead of geometrically reordered text.
+Original sources were checked during preparation and installed package identity
+before any generation; the corrected D preservation reader confirms all retained
+hashes. No production or original-evidence repair occurred. The observed0.48pt
+TOC difference is retained without extra export, cosmetic tuning or hidden retry.
+
+Budget: **four Word exports, nine new Word pages plus nine reference-review pages
+=18 of22 allowed review pages**, four nominal pages unused, no contingency.
+Cumulative experiment review is**162 pages and21 Word exports**, below240.
+The original references were not regenerated. All29 source/font/reference receipt
+files,96 D artifacts, prior98 E0/57 B1/45 C artifacts and all related manifests
+remain unchanged. Primary Core, D worktree and prior worktrees remain clean;
+pre-existing Service edits retain their original status. The final manifest
+freezes72 external regression artifacts. No product commit or merge was made.
+
+Recommendation: retain B1+C as the preferred **experimental** candidate with the
+recorded TOC/provenance qualifications. This four-case check supplies no new
+pagination improvement and does not erase prior P/Q or PDF/native geometry,
+TOC-dot and spacing differences. The old I6 complete Service-suite prerequisite
+remains OPEN and I6 remains **NOT ACCEPTED**; these small-case results do not waive
+it. Full pixel parity, the0.48pt cause, wider documents and production readiness
+are not proven. **Report and stop before B2 or main integration.**
