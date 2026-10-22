@@ -79,6 +79,12 @@ passes8/8 on pass2/2 (16 named executions total), with no Docker/procfs/cgroup
 access in the suite and no live capture. Observer/product bytes and old proofs
 remain unchanged. Dormant runtime paths and unsupported cross-view binding
 remain unverified; no live capture or A/B retry is authorized by that result.
+The owner subsequently authorized one capture-only attempt up to120 seconds.
+The [live identity capture result](#i6-one-shot-identity-capture-result-2026-10-22)
+charges1/1 and stops UNKNOWN after18.375 seconds: all three local receipts are
+retained, while cross-cgroup-namespace counter binding is unsupported. Cleanup
+is clean; no retry, observer repair or A–B–B–A follows. The original baselines
+and all previous proofs remain unchanged; F2/I6 are NOT ACCEPTED.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10923,3 +10929,109 @@ relax identity proof or continue to A–B–B–A. Observer repair/acceptance, p
 changes, full suite, B2, merge/release/push remain outside this checkpoint.
 Repository impact is only this existing Project Control result document;
 `tools/check.ts` and `git diff --check` pass. No runtime/package/map changes.
+
+### I6 one shot identity capture result 2026-10-22
+
+**STOP_IDENTITY_BINDING_UNKNOWN.** The owner authorized exactly one capture-only
+attempt within120 seconds, retaining exact1GiB, B1+C and original PDFs, and
+stopping if evidence was insufficient. The attempt finishes in18.375 seconds
+with raw status UNKNOWN and a cap1/used1 STOP ledger. All three role-local
+readers exit0 and retain raw identity/cgroup/mount/counter observations.
+The current strict binder cannot certify the counter paths across different
+cgroup namespaces, so capture does not establish observer acceptance. No code
+repair, retry, Service/document workload, cache/A–B–B–A, full suite, B2 or
+integration is performed. F2/I6 remain NOT ACCEPTED; memory attribution UNKNOWN.
+
+Authority: single-room discovery; Evidence Reviewer / Documentation Synthesizer.
+Project Control owns this checkpoint; Service owns the unchanged candidate.
+Work/Phase/Checklist IDs N/A, Work Size small, Risk Tier routine. Current host
+model/capability used inline without override or product dispatch. Proof cap1
+live capture,120 active seconds and2MiB output; Document Budget this existing
+canonical result only. No new Work/map/shared report. Both prior live failed
+preparations remain charged1 each; this distinct capture adds1, making three
+charged live attempts across those rounds, with no reset/refund/resume.
+
+Execution uses the immutable eight helpers from the accepted offline manifest
+`8746db0df258fec4d9fd657e5a267ca8d0deb4e01ff480a3a642cd46d34126c6`
+in `C:/Users/nekot/Documents/Codex/2026-10-22/i6-observer-identity-capture`.
+`live-prelaunch.json` freezes the current owner authority, helper hashes,
+budget and preservation state. The ledger is confirmed before the first
+Docker command. No implementation/fixture change or additional test pass is
+made. The shared reader, dormant adapter and shell transport now have this
+one observed runtime execution; that does not establish general runtime
+compatibility or expand the earlier eight-case fault coverage.
+
+Before/after exact-ID inspection is identical, with no observed restart.
+All three raw readers have exitCode0, no reader/counter errors and stable
+captured process identities. Target/observer share the observed PID namespace;
+observer-visible target init identity/membership matches the target receipt.
+Target's inspected Memory=MemorySwap=1073741824 and2 CPUs agree with its
+local memory.max=1073741824 and memory.swap.max=0; the observer's own group
+has the same measured limits. Database limits are independently recorded as
+max/max outside the target; its footprint is not subtracted from target charge.
+All captured own-group OOM/oom_kill counts are0. These are bounded sequential
+identity observations, not five1Hz observer acceptance samples or a matched
+memory comparison.
+
+| Role | Docker host PID | Local/shared PID namespace | Cgroup namespace | Local group view |
+| --- | --- | --- | --- | --- |
+| Target | 1000 | pid:[4026532422] | cgroup:[4026532423] | / |
+| Database | 1059 | pid:[4026532498] | cgroup:[4026532499] | / |
+| Observer | 1149 | pid:[4026532422] | cgroup:[4026531835] | /docker/25d199f033fcaad1e4a34c50a20967b87e4c2f0f02830c20722d3782a3687aec |
+
+Each local membership check is true in its reader's declared view. The target
+and database init PID is1 locally; observer's role-local reader PID is40 in
+the shared target PID view. The observer's candidate database membership read
+contains nine0 entries, not host PID1059 or the database-local PID1. This new
+capture supports H-PID's non-comparable-view explanation for this topology;
+it does not retrospectively prove the historical failed run's mechanism.
+H-LIFETIME has no observed restart/start-identity drift in this new bounded
+capture, but is not historically excluded.
+
+The target and database local paths appear as / in their private cgroup
+namespaces; observer paths include full Docker IDs in the host cgroup view.
+The observed cgroup2 mount metadata is device0:23, root /, mount /sys/fs/cgroup.
+Local and observer-view object observations match device/fsid/inode per role:
+target inode429, database497, observer565, fsid87fb5972662524a3. These raw
+matches are retained as evidence, not elevated into an unreviewed cross-view
+proof rule. Different cgroup namespace identifiers remain outside the accepted
+strict same-view profile. Both counterBindings are false with exact reasons
+`target unsupported cross-view counter binding` and
+`database unsupported cross-view counter binding`. A wrong path is not proved;
+accepted cross-view path identity remains unresolved. The old scalar observer
+success flag is not set; observerVerified/liveReady remain false.
+
+Raw files are under `live-proof/`: three role receipts, before/after inspections,
+ledger, pre-cleanup diagnosis and final result. Manifest SHA-256:
+`9372a5e3e1ca6013ec1110e5441bc3a5429c1ca75ca657cb46effc43cf7ecf12`.
+It binds eight as-run files and all8 unchanged helper hashes, with prelaunch
+and offline-source manifest digests. Saved-proof diagnosis and verification
+are separately bound by `live-postrun/manifest.json`, SHA-256
+`48a29a132b8455462e0253dc38942f32417657437737f3e4a0a3bc9a02be6255`.
+New capture/prelaunch/supplemental/scratch output totals215,497 bytes, below2MiB.
+No raw observation, ledger, old helper or historical result is overwritten.
+
+Owned cleanup confirms no remaining capture containers and the labelled owned
+network removed/absent, with no cleanup errors. The saved receipt/source path
+shows label-confirmed exact-ID cleanup. Verification uses saved files only,
+with no additional Docker status/capture or fixture run after the attempt.
+Readiness, cache stability and admission are not inferred from successful
+reader exit or clean resource removal.
+
+Before/after preservation matches:408 prior source/evidence files,358 F2 inputs,
+28-file earlier proof/runner and18-file cache proof with6 helpers remain intact.
+Accepted eight-case tooling/fixtures/proof, earlier16-case diagnosis proof,
+all five older manifest chains and original observer bytes are unchanged.
+B1+C stays clean at `b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service
+status and original PDF baseline evidence remain unchanged. No Word export,
+reviewed page, Service request or document task is allocated.
+
+The authorized one-shot capture is consumed and stopped. Recommended next
+work is a proposal for a supported cross-view counter identity contract using
+these saved raw bindings, before any validator/observer repair or additional
+live capture/comparison. Do not relax the namespace check merely because
+object tuples match. Observer acceptance still needs the P3 contract and
+real sampling evidence; it is not granted by collecting these receipts.
+No further live budget, A–B–B–A, full suite, B2, product change or merge is
+authorized by this result. Only this existing Project Control document changes;
+`tools/check.ts` and `git diff --check` pass, with no runtime/package/map edit.
