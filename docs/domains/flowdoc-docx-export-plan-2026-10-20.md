@@ -11624,3 +11624,100 @@ offline checkpoint is complete and its two-round budget exhausted. No new live
 authorization is inferred. No Plan2, pagination B2, full suite, integration,
 release or push. Only this existing Project Control document changes;
 `tools/check.ts` and `git diff --check` pass. No product/map truth is promoted.
+
+### I6 native config and controlled A–B–B–A result 2026-10-22
+
+**PASS for actual native config loading and the bounded readiness comparison.**
+The owner authorizes use of the repaired source guard and a fresh seven-scenario
+round with exact1GiB and stop-on-blocker. Preparation, both cache verifications,
+A1, B1, B2 repetition arm and A2 all PASS:7/7 charged,162.016 seconds within
+600 seconds. A1 and A2 each load the explicit native config and execute exactly
+one readiness fixture,1 PASS/0 FAIL/0 pending. This closes the current config
+startup blocker and completes this Plan1 comparison. It does not accept F2/I6
+original cases or the full suite, perform Plan2, or change pagination rule B2.
+
+Authority: single-room Evidence Reviewer/Documentation Synthesizer; Service owns
+the unchanged candidate, Project Control owns this checkpoint. Execution IDs N/A,
+small/routine; current host model/capability without override. The explicit
+current request supersedes the frozen offline-only prelaunch scope for this new
+live round. Document Budget this existing document only. No new Work, Phase,
+registry, map or product report. All older charged ledgers remain unchanged.
+
+The exact accepted runner/helpers in
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-config-source-offline` are reused
+without source changes or old offline-suite replay. Fresh outputs are isolated
+in live-proof/live-scratch, separate from immutable offline proof. A new
+live-authorization.json binds the current request,7-phase order, unchanged
+1GiB/no-swap/2CPU limits,60-second arm watchdog and10MiB output budget.
+Actual config loading is established inside the charged A1/A2 invocations,
+not by an extra pilot. The source guard's source-only runtimeReady=false
+decisions remain intact; actual execution has separate current evidence.
+
+Current package bytes match the audited eight-file Vitest4.1.9/Vite8.3.3 profile,
+and all three source stages PASS. Current observer role/object binding and five
+actual preparation samples PASS before cache work. Across136 retained samples
+over135.153 seconds, descriptor/round identities remain valid, exact target
+memory.max1073741824 and memory.swap.max0 hold, and target/observer/database
+OOM counters remain zero. Configured target and observer limits remain
+memory1073741824/memorySwap1073741824/nanoCpus2000000000. Database memory stays
+outside the measured target; no cross-namespace database host-PID claim is made.
+
+The initial cache inventory and two repeated verification windows PASS. Global
+idle spreads are file6.28125,anon0,kernel0.54296875,total7.7109375MiB, below the
+unchanged8/4/4/12MiB limits. Matched-phase file spreads across all four arms are
+runner-only1.6171875,service-ready0.05859375,runner-after0MiB, below8MiB. Loaded
+anon/total differences are measured effects, not subjected to idle limits.
+Four independent empty databases have zero task/job/session/advisory-lock counts
+at their checked boundaries. All four native Service environment digests match;
+no environment is inherited from the harness. No document/task is submitted.
+
+Phase totals below are medians of five1Hz samples in MiB, including charged
+cache/kernel memory. Paired deltas preserve A1–B1 and A2–B2 rather than combining
+them into a universal Vitest cost.
+
+| Phase | A1 minus B1 | A2 minus B2 |
+| --- | ---: | ---: |
+| Runner only | 77.0390625 | 80.52734375 |
+| Service ready | 73.40625 | 77.140625 |
+| Runner after owned Service stop | 66.53125 | 70.16796875 |
+
+Service-ready target medians are A1=414.140625,B1=340.734375,B2=339.359375,
+A2=416.5MiB. The loaded A-minus-B difference is mostly anon70.14453125/
+73.40625MiB plus kernel3.35546875/3.43359375MiB; paired file differences are
+-0.05859375/0MiB. Within each arm, Service-ready minus runner-only totals are
+A1=50.9296875,B1=54.5625,B2=52.8359375,A2=49.44921875MiB. These are controlled
+readiness-phase cgroup differences, not heap-only attribution or a prediction
+of document-generation/full-suite memory.
+
+Per-PID RSS/PSS evidence is saved separately. Native Service loaded RSS medians
+are102.28125–102.96484375MiB and PSS_Anon46.328125–47.06640625MiB across arms.
+Selected worker/runner PID memory is not all Vitest parent/worker overhead;
+RSS/PSS must not be summed into cgroup total, and shared-file PSS can differ
+across launch modes. The whole target's largest observed memory.current is
+418.625MiB; retained memory.peak reaches420.8828125MiB. Neither supports a
+capacity guarantee for other workloads. Separate observer current ranges
+18.984375–19.80859375MiB and database210.6484375–216.18359375MiB are outside
+the target and are not subtracted from its charge.
+
+Cleanup PASS: sampler exits0/error null, token-owned containers and internal
+network are removed, no owned containers remain, and no cleanup/preservation
+error or final container OOM. Before/after preservation agrees for408 prior
+files,358 F2 candidate inputs, clean B1+C, unchanged primary Service/PDF,
+earlier probe/cache evidence and sixteen pinned manifest/helper/input chains.
+The unchanged offline manifest, all27 helper entries,11 inputs and17 proof
+files are also reverified from saved files. No Word export or page budget is used.
+
+| Current evidence | SHA-256 |
+| --- | --- |
+| live-authorization.json | `1b5ae8f802a9aee144e722afc6f0226a9af732456d94cd2941fafe4f3d958a59` |
+| As-run live-proof/manifest.json | `e09442fbe0a94d764af474f589b0b8303a31f35c1de557c2e707e6deac5e7d7b` |
+| Derived live-postrun/manifest.json | `fd50dce23b500e91c68ff7ad28d945e44c804514892b7561df96e7049139d51b` |
+
+As-run evidence binds79 proof files and24 helper entries;80 proof files including
+manifest plus scratch use2,856,525 bytes within10MiB. The derived result uses
+saved windows, phase markers, per-PID samples and Vitest reports without another
+runtime or guard invocation. No code/source repair or retry is needed. The
+authorized checkpoint is complete; stop here. No full suite, original I6 case,
+Plan2, pagination B2, product change, integration, release or push. Only this
+existing Project Control document changes; `tools/check.ts` and `git diff --check`
+pass. F2/I6 and broader DOCX/PDF parity are not promoted from readiness evidence.
