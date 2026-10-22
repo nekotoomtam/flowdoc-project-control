@@ -17,6 +17,8 @@ The subsequent [I6 full-suite diagnosis and closure proposal](#i6-full-suite-blo
 led to authorized [F0–F1 targeted diagnosis](#i6-f0-f1-targeted-diagnosis-result-2026-10-22):
 F0 passed; F1 stopped after17 cases because a live child and processor lock
 persisted after task-api. F2 repairs and F3 full-suite execution have not begun.
+The requested [F2 cleanup and memory investigation plan](#i6-f2-cleanup-and-memory-headroom-plan-2026-10-22)
+is now proposed; only planning is authorized at this checkpoint.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -8560,3 +8562,184 @@ policy. A lifecycle repair would not by itself establish that memory admission
 or MCP behavior is correct. F2, another targeted invocation, the remaining three
 cases and F3 have not started. **Report the causes and stop; no code change,
 full-suite run, B2 or integration.**
+
+### I6 F2 cleanup and memory headroom plan 2026-10-22
+
+**PROPOSED ONLY; no implementation or new Service test invocation.** The owner
+requested an F2 plan after F0–F1, preserving B1+C and original PDFs, without
+full-suite execution, B2 or integration. This plan separates a Service test-owned
+cleanup repair from discovery of memory headroom. It does not authorize a runtime
+resource-policy change. Owner: Service; roles: Planning Partner / Evidence
+Reviewer, with Documentation Synthesizer for this existing canonical PC plan.
+Work Size: medium; Risk Tier: routine; execution IDs N/A for single-room work.
+No separate WORK room is proposed. Future execution needs owner authorization;
+keep implementation and subsequent unchanged-candidate verification distinct.
+
+**Goal:** a timed-out test must cancel its owned operations and finish bounded
+cleanup before another case starts; separately explain the observed admission
+wait using measured coordinator state and memory attribution. I6 remains NOT
+ACCEPTED even if F2 succeeds. The preceding F1 manifest/results remain immutable
+input, including its17 executed cases and3 unexecuted cases.
+
+#### F2 scope, alternatives and preparation
+
+Recommended approach: use Vitest4.1.9's existing test-context `signal` (the installed
+runner aborts it on timeout) and `onTestFinished` for independently registered,
+idempotent cleanup. Pass the signal into existing cancellable APIs instead of
+relying on reaching the end of an awaited test body. A process-only kill wrapper
+would miss in-process HTTP/MCP waits; a larger timeout would defer the leak.
+Container teardown remains emergency containment, never proof that test cleanup
+succeeded. Do not add a dependency or change the test runner version.
+
+Future allowed Service paths:
+
+| Path | Responsibility |
+| --- | --- |
+| `tests/task-api.test.mjs` | Register cleanup before acquiring resources, wire cancellation to current requests/clients/children, retain all existing assertions. |
+| `tests/helpers/taskTestLifecycle.mjs` (new) | Test-owned abort, resource registration and bounded idempotent disposal. |
+| `tests/task-test-lifecycle.test.mjs` (new) | Four focused lifecycle regressions, including controlled child runner fixtures. |
+| `tests/fixtures/task-test-lifecycle/` (new, at most4 small `.mjs` fixtures) | Exercise actual runner timeout/exit behavior without adding document fixtures. |
+
+Opt-in memory probes/controllers are temporary files in a new external proof
+directory, mounted read-only into disposable checks, with output written only to
+that directory. Narrow test-only observation wiring may be added in the already
+allowed task-api file, disabled unless its proof option is explicitly supplied.
+No product source, existing fixture, package/lock/vendor pin, migration, plugin,
+production configuration, Core or PDF/DOCX renderer changes are in scope.
+
+Create a separate Service worktree at original I6 base
+`8690193b73b14554c63a9aebe5c888edcf780946`, using a `codex/` branch. Copy only the
+six retained pending I6 files from their frozen receipt, preserving their hashes;
+do not stash/reset/commit the primary Service checkout's existing edits. Freeze
+the resulting starting input manifest. Retain original Core archive SHA256
+`067b7678c410e7413968159f7495fb3b0e6f3909f9c14d51eae20f7e5b7f4c3e`.
+Use the same Linux/amd64, Node/dependency pins,2 CPUs, exact1GiB/no swap,
+init, plugin roots and read-only fonts as F0. Each diagnostic scenario starts
+with disposable storage and an unheld processor lock; the14-case task-api check
+shares one database and runs serially so cross-case leaks remain observable.
+Build outputs go to scratch; capture source identity before and after checks.
+
+#### F2-A — test lifecycle repair and its proof
+
+- [ ] Define one test lifetime interface: `createTaskTestLifecycle({signal})`
+  returns `{signal, own(dispose), dispose()}`. `own` registers a disposer as soon
+  as a resource is acquired, before the next asynchronous operation; `dispose`
+  returns one shared completion promise on repeated calls. Resource closures
+  capture the actual acquired instance, not a mutable variable reused by the
+  next case. Registration after cancellation must dispose immediately.
+- [ ] Cover four cases with small real-process/runner regressions: timeout
+  during a pending native HTTP operation; timeout during a pending MCP operation;
+  a child that already exited plus repeated disposal; and a child that ignores
+  SIGTERM and requires escalation. Controlled children may acquire the real
+  test-database advisory key to prove release. Keep those fixtures distinct from
+  the mandatory happy-path document tests. Demonstrate the leak against existing
+  wiring before the repair; an import error is not a valid failing reproduction.
+  Expected failures in nested runner fixtures are asserted by outer tests and
+  reported explicitly, never applied to the existing task-api cases.
+- [ ] Register an explicit `onTestFinished` disposer before connecting MCP or
+  spawning native Service. Combine the runner signal with a local lifetime
+  controller. Wire current HTTP fetch/body consumption and Node requests, direct
+  `generateDocumentTask`/`inspectDocumentTask`, and SDK connect/call requests using
+  their existing cancellation interfaces. Preserve the deliberately canceled
+  lookup's own controller while also honoring the enclosing lifetime. Check
+  cancellation between sequential operations to prevent late work after timeout.
+- [ ] Abort owned I/O first, clear owned timers, then close client/transport and
+  proxy sockets without allowing one failed disposer to skip the others. Observe
+  every in-flight rejection. Await settlement within the cleanup budget; if an
+  operation cannot settle, fail the boundary and stop successors rather than
+  detach it or call it cleaned. Retain the initiating failure and cleanup errors.
+- [ ] For native children, install close/error listeners at spawn; check both
+  `exitCode` and `signalCode` before waiting, never `child.killed` alone. On Linux
+  use an owned detached process group and recorded start identity; terminate only
+  that group, with SIGTERM grace at most3s, then SIGKILL and bounded close/reap
+  wait at most2s. For SDK-managed stdio use its owned transport/process lifecycle;
+  do not signal the runner's shared process group. If the pinned SDK cannot
+  expose sufficient ownership/termination control, stop with that finding before
+  expanding to plugin/SDK code. Do not search for or kill arbitrary matching PIDs.
+- [ ] Close the test's app/manager/processor/intake and await owned sessions after
+  aborting requests. Budget total cleanup at most8s, with an explicit test-only
+  finish-hook ceiling10s; a cleanup overrun is FAIL. Keep the existing30s/60s case
+  deadlines and15s default. Verify no live owned descendant, processor advisory
+  lock or owned session persists **before** test database/container teardown and
+  before starting a successor; never force-release another session's lock.
+
+Acceptance A: controlled timeout remains a visible failure in its nested fixture,
+but its outer regression proves owned I/O stopped, children reaped and lock/session
+released. Already-exited/repeated cleanup succeeds without hanging; forced
+termination is recorded. Original task-api assertions are unchanged. Happy-path
+generation can still fail for an unresolved admission wait; report cleanup and
+generation outcomes separately, never promote that partial result to task-api PASS.
+
+#### F2-B — discover memory headroom without changing admission
+
+- [ ] Add bounded observation of the existing `flowdoc.task.queue.memory`
+  diagnostics channel and `intake.queueSnapshot()` in test-owned code. The channel
+  provides counts/timing/failure, not the exact memory reading; use the snapshot
+  for sampled `memoryBytes`, credits, health, pressure and timing. In native
+  Service, a read-only preload may subscribe to existing events; external cgroup
+  values remain external samples, not an invented internal snapshot. Record phase
+  markers before/after readiness, direct generation, MCP connect/call/lookup and
+  cleanup to identify the last completed stage without changing plugin code.
+- [ ] Capture at most1Hz: cgroup current/peak/stat/events/pressure and CPU throttle;
+  per-process PID/start/parent plus RSS/PSS from `smaps_rollup` where available;
+  owned sockets and PG client ports/session/lock identity. Separate anonymous,
+  file-cache and kernel categories. PSS is approximate and must not be added to
+  total cgroup memory as if independent. Buffer diagnostics and flush bounded
+  records; no synchronous heavy logging in the scheduling callback or secrets.
+- [ ] Run at most three new comparable scenarios: the unchanged real-PDF task-api
+  case under Vitest with observation; the same definition, payload, package,
+  fonts, HTTP contract and substantive output checks through a direct Service
+  process with the controller outside the1GiB cgroup; and that same Vitest case
+  with only start/end passive counters to assess observer overhead. Hash semantic
+  inputs and hold CPU/build/cache preparation and resource settings constant;
+  record any unavoidable topology difference. The direct scenario is capacity
+  diagnosis, not a substitute for a mandatory Vitest PASS. Avoid full-document
+  exports, cache dropping and global host tuning.
+- [ ] Classify the result: correlate internal admission/health data, task state
+  and stage timing. A worker requires `max(currentMiB,credits)+320 <= 768`; keep
+  current, credit and freshness constraints separate. If only the test topology
+  consumes headroom, propose a later harness arrangement with the original gate
+  retained. If ordinary Service operation also stalls, or the result points to
+  accounting/freshness policy, return evidence for a new Service runtime scope.
+  If observer-off changes the outcome or samples cannot distinguish causes,
+  report INCONCLUSIVE and propose the next single-variable probe; do not retry
+  until green. Never subtract file cache from production admission, increase RAM,
+  lower worker credits or relax the queue guard under this F2 scope.
+
+Acceptance B is an evidence-backed attribution or an explicit remaining unknown
+with the exact missing observation; an unexplained lower memory number is not a
+fix. Direct generation passing or cleanup passing alone does not close I6.
+
+#### Proposed proof budget, checkpoint and stop rules
+
+New proposed cap: **36 case/scenario executions**, inclusive of nested fixtures:
+four lifecycle regressions before/after at most8 outer executions plus at most8
+nested fixture executions;3 memory scenarios; one14-case task-api invocation;
+and the3 previously unexecuted resource-wait cases, only after clean boundaries.
+This is a new F2 budget proposal, not reuse of the earlier20-case authorization.
+Count every executed nested case; no parameter expansion, hidden replay or
+contingency. If implementing the regressions requires more cases, return the
+revised budget before execution. Reuse retained CLI3/3 unless relevant changes
+invalidate it. Failed intended-red fixtures are retained in disposable isolated
+contexts; repaired-green acceptance must pass before teardown removes anything.
+
+Maximum20 minutes aggregate check time and10MiB proof output, zero new Word
+exports/reference PDF regeneration/document-review pages. Normal tiny test
+artifacts go only to new proof output. Preserve current162 pages/21 exports.
+Stop dependent checks on any unexpected live child/lock, mutation or budget
+overrun. Resource-wait cases are deferred, not skipped/PASS, if their clean
+prerequisite is absent. Do not automatically run F3 even if all F2 checks pass.
+
+Report separately: lifecycle repair result; memory attribution/confidence;
+mandatory task-api result; remaining resource-wait result or reason unexecuted;
+source/package identity and B1+C/reference preservation. Commit a future narrow
+test-only candidate only after affected acceptance checks pass; otherwise retain
+its isolated failing state without integration. Final F2 completion needs the
+cleanup criteria and adequate memory evidence; an inconclusive probe is a partial
+checkpoint with the gap visible. I6 remains OPEN until its separate full-suite
+gate is authorized, run and accepted.
+
+This planning turn changes only this existing canonical plan. No source/test
+instrumentation, worktree creation, container launch, Service test run or new PDF
+generation was performed. B1+C, all baseline/evidence files, production behavior,
+B2 and main integration remain outside its mutation scope.
