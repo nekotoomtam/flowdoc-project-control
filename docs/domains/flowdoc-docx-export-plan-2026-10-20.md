@@ -59,6 +59,10 @@ helpers. Its [observer-placement preparation stop](#i6-repaired-comparison-obser
 consumes1/7 and stops before cache reading or any A/B arm: observer database-PID
 membership verification fails. Owned resources are removed, no retry occurs,
 and cache matching/memory attribution remain UNKNOWN. F2/I6 are NOT ACCEPTED.
+The owner now requests the [offline observer PID/cgroup diagnosis proposal](#i6-offline-observer-pid-cgroup-diagnosis-plan-2026-10-22).
+This authorizes saved-source/evidence review and planning only, with no helper
+repair, fixture execution, Docker call or additional comparison. Historical
+charges and the failed observer receipt remain intact.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10305,3 +10309,179 @@ membership and add relevant fixture coverage before any repair or new live
 attempt. This result grants no further execution. Repository impact is only
 this current result update; Project Control `tools/check.ts` and
 `git diff --check` pass.
+
+### I6 offline observer PID cgroup diagnosis plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The latest owner request permits a plan for offline
+PID/cgroup investigation and synthetic cases only. This turn reads retained
+sources/evidence and authoritative Linux documentation; it does not change
+helpers, create/run fixtures, invoke Docker (including inspect/status), inspect
+live Linux procfs/cgroups, or start cache/A–B–B–A work. Exact1GiB, B1+C, original
+PDFs and all prior evidence remain fixed. F2/I6 remain NOT ACCEPTED; memory
+attribution remains UNKNOWN. This is not permission to remove the placement
+check or resume the stopped live round.
+
+Owner: Project Control for the shared plan, Service for the preserved candidate.
+Role: Planning Partner / Evidence Reviewer / Documentation Synthesizer.
+Work/Phase/Checklist execution IDs: N/A, single-room planning. Work Size small;
+Risk Tier routine. Document Budget: this existing canonical plan only, no new
+Work/map/report. Any later execution resolves its own current host/model
+availability; no product dispatch, architecture change or model override is
+implied. Acceptance here is an evidence-backed diagnosis plan with explicit
+unknowns, named fixture expectations, scope and proof ceilings.
+
+#### O0: separate saved facts, missing evidence and hypotheses
+
+Retained failure: `i6-harness-service-memory-repaired/proof/observer.log` stops
+at observer.py:7, comparing the Docker inspect host PID to the database
+`cgroup.procs` list. The observer is launched with the target's PID namespace
+(`--pid=container:...`) and the host cgroup namespace (`--cgroupns=host`), but
+those settings do not make its PID view the host PID view. Its database path
+is inferred by replacing the target container ID in the target path. These
+are two assumptions to examine independently: comparable PID numbering and
+correct database cgroup location. Neither assumption was proved by a retained
+ready marker or raw namespace/membership snapshot.
+
+The earlier working cache-only observer uses the same target PID placement
+but does not perform the added database-PID membership assertion. Its PASS
+therefore does not validate this new cross-container check. The latest trace
+establishes a failed comparison, not whether the database was in the wrong
+group, had exited, or was invisible through the observer's PID namespace.
+No old snapshot may be reconstructed from invented PID values.
+
+Primary semantic references, consulted for this proposal:
+[Linux PID namespaces](https://www.man7.org/linux/man-pages/man7/pid_namespaces.7.html)
+defines process visibility and namespace-dependent PID numbers;
+[proc_pid_status](https://www.man7.org/linux/man-pages/man5/proc_pid_status.5.html)
+defines NSpid ordering relative to the procfs mount's PID namespace;
+[Linux cgroup v2](https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html)
+defines membership files, possible repeated/recycled PIDs and namespace-relative
+cgroup paths. These explain why separate PID and cgroup identity evidence is
+needed; they do not supply the missing facts from this Docker run.
+
+Hypothesis H-PID: the observer cannot compare the database host PID in its
+current PID view. Alternative H-PATH: the inferred database path is wrong or
+uses a different cgroup/mount view. Alternative H-LIFETIME: identity changed,
+process exited or the snapshot crossed a restart. Classify each as supported,
+contradicted or unresolved from saved inputs. H-PID is plausible from the
+source topology; the exact as-run mechanism stays unresolved offline because
+no raw namespace/membership capture survived. Do not promise an offline test
+will prove the historical runtime condition.
+
+#### O1: proposed pure diagnosis boundary, not an observer repair
+
+If separately authorized, use a fresh external directory such as
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-observer-placement-offline`.
+Proposed files: `placement_diagnosis.py` for pure parsing/identity decisions,
+`test_placement_diagnosis.py` with sixteen named cases, immutable JSON/text
+fixtures and `offline_checks.py` for bounded execution and saved results.
+Do not import the old observer: it performs procfs reads at module load.
+Keep its source as an immutable fixture/reference, not executable test setup.
+No edits to run.py, observer.py, accepted network/budget helpers, old evidence,
+Service/Core/tests/config, image/package contents or installed dependencies.
+
+Proposed interface: `diagnose_placement(snapshot)` accepts supplied text/JSON
+only and returns a typed result with source provenance, per-role identity
+checks, reasons and missing evidence. Proposed statuses are
+CONSISTENT_SNAPSHOT, NAMESPACE_NOT_COMPARABLE, IDENTITY_MISMATCH and
+SNAPSHOT_INCOMPLETE. They describe offline inputs, never live readiness.
+Even CONSISTENT_SNAPSHOT cannot write observer-ready.json, launch an adapter,
+set the old databasePidMembershipVerified flag, or authorize cache/A/B.
+
+Snapshot contract separates Docker/container IDs and host PIDs from each
+reader's PID and cgroup namespace IDs, procfs mount view, cgroup2 mount/root,
+raw `/proc/.../cgroup`, status/NSpid and stat start-time fields, and membership
+read results/errors with capture order. Use role-labelled origin, schema
+version and content digests; fabricated fixtures must say synthetic. Missing
+values from the failed run remain missing. Never infer host PID from the
+first/last NSpid value without establishing the mount/namespace relationship.
+Same numeric PID across two namespaces is not an identity match.
+
+A positive synthetic identity result needs compatible views or an explicit,
+uniquely established namespace mapping, stable process start identity and
+matching full container/cgroup identity. Parse cgroup v2 paths and mount roots;
+reject ambiguous hierarchy or path resolution. Do not use unrestricted string
+replacement, container-ID substring matches, a directory's existence or any
+nonempty membership list as proof. Unreadable data, process races, stale
+bindings and unsupported views produce an explicit stop/unknown result.
+Keep target, observer and database distinct; target memory.max must equal
+1073741824 and memory.swap.max must equal0 in a complete synthetic snapshot.
+
+The future evidence specification may describe a role-local database snapshot
+bound to an exact container ID and stable before/after inspect identity, but
+this proposal does not collect it or accept it as a replacement live guard.
+If the current observer cannot observe the sibling database PID, report that
+limitation. Any choice to change namespace placement, introduce another live
+collector or change the database membership proof needs a subsequent scoped
+proposal after these findings. No privileged observer, host-PID switch, new
+mount, cgroup migration/write or weakened guard is selected here.
+
+#### O2: sixteen deterministic offline cases, pending authorization
+
+Each row is one named case with one fixed fixture/fault; no hidden parameterized
+cases or live setup. “Expected stop” means the diagnosis test passes by refusing
+unsupported evidence, not by making the experiment proceed.
+
+| ID | Fixed synthetic condition | Required diagnosis |
+| --- | --- | --- |
+| O01 | Complete same-PID-view snapshot, correct three groups and target limits | CONSISTENT_SNAPSHOT; exact role membership and evidence retained |
+| O02 | Observer shares target PID namespace; database is in a sibling namespace with no comparable PID | NAMESPACE_NOT_COMPARABLE; no wrong-group conclusion from invisibility |
+| O03 | Explicit verified ancestor/descendant PID mapping, stable identity and compatible procfs origin | CONSISTENT_SNAPSHOT using the evidenced mapping, without assuming host equals innermost PID |
+| O04 | Procfs PID-view origin missing while NSpid values are present | SNAPSHOT_INCOMPLETE; no guessed first/last-column mapping |
+| O05 | Malformed nonnumeric NSpid field | SNAPSHOT_INCOMPLETE with typed field error |
+| O06 | Same numeric PID in two explicitly unrelated namespaces | NAMESPACE_NOT_COMPARABLE; no false identity match |
+| O07 | Database cgroup identifies a different full container ID | IDENTITY_MISMATCH; substring similarity cannot pass |
+| O08 | Snapshot binding uses an obsolete database inspect identity after restart | IDENTITY_MISMATCH; stale receipt cannot certify new process |
+| O09 | Ambiguous/missing cgroup2 mount-root mapping | SNAPSHOT_INCOMPLETE; no assumed global-root path |
+| O10 | Database path inferred by replacement disagrees with explicit role-bound path | IDENTITY_MISMATCH; never auto-select a replacement path |
+| O11 | Target memory.max differs from1073741824 in otherwise complete snapshot | IDENTITY_MISMATCH with limit violation; no relaxation |
+| O12 | Observer and target resolve to the same memory cgroup | IDENTITY_MISMATCH; observer overhead must remain separate |
+| O13 | Injected process disappearance between membership and identity read | SNAPSHOT_INCOMPLETE; no retry or silent success |
+| O14 | Same PID now has a different stat start-time during capture | IDENTITY_MISMATCH; reject PID reuse |
+| O15 | Injected PermissionError reading membership | SNAPSHOT_INCOMPLETE; retain operation/error instead of treating as empty |
+| O16 | Injected diagnostic-receipt write fails on the non-comparable-view path | Stop remains stop, zero ready-marker/adapter calls; output failure explicit, no fallback success |
+
+Proposed implementation sequence after separate authorization: preserve sources
+and fixtures; record the old comparison behavior on the synthetic sibling-view
+case without running/importing observer.py; then add the pure diagnostic unit
+and check all sixteen cases. Keep the initial failing/incorrect classification
+and its source snapshot. The old raw AssertionError is a reproduced behavior,
+not a diagnosed live cause. Include per-case expected/actual status and evidence
+coverage; positive fixtures cannot certify unseen kernels, drivers or mounts.
+
+Proposed Proof Budget: at most3 complete sixteen-case passes,48 named executions,
+5 minutes active checks and2MiB new proof. Reserve each pass before collection;
+collection failure consumes a pass. Stop once all16 expected outcomes pass;
+a third pass requires a demonstrated failing repair, not reassurance. Forbid
+subprocess APIs, os.system and real /proc or /sys/fs/cgroup access throughout
+fixtures; use injected text/read/write/error adapters and isolated temporary
+outputs only. No Docker/Service/network/database, Linux namespace creation,
+live collector or extra network/budget regression suite is needed. This turn
+allocates no executed fixture pass and creates no proposed external directory.
+
+#### O3: checkpoint and any future live boundary
+
+Offline checkpoint, if authorized later: all sixteen named outcomes, bounded
+ledger, source/fixture hashes, initial regression, retained diagnostics/errors,
+zero external/procfs operations and unchanged older manifests. Report explicitly
+whether the available evidence identifies a source assumption only or confirms
+a real runtime mechanism. Return remaining unknowns and the smallest proposed
+next measurement/repair; do not claim the observer is fixed or live-ready.
+
+Any later observer repair needs explicit authorization, a fresh isolated helper
+copy and review of readiness/ownership/error persistence before execution. Any
+later live comparison needs separate authorization and its own budget, including
+preparation and both cache checks. Preserve the two historical charged
+preparations; do not resume either failed ledger, refund counts or treat the
+remaining6 as automatic permission. Keep1GiB/no swap/2 CPUs, cache limits,
+shared lifecycle, deadlines, no-generation boundary and first-invalid-control
+stop. F2/I6 acceptance, full suite, B2 and integration remain out of scope.
+
+Planning preservation checks reverify all15 latest as-run/supplemental records,
+16 live-bound helpers and prelaunch digest, accepted offline-repair source and
+proof, original failed-round manifests,408 prior source/evidence files,358 F2
+inputs, earlier28-file proof/runner and18-file cache proof with6 helpers. B1+C
+is clean and primary Service status unchanged; PDF baselines remain preserved.
+No Docker command, fixture case or additional live scenario is executed.
+Only this existing Project Control document changes. Documentation verification:
+`tools/check.ts` and `git diff --check` pass.
