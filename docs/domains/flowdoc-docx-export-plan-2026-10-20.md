@@ -1,5 +1,11 @@
 # FlowDoc DOCX Export Implementation Plan
 
+Current discussion route (2026-10-22): the owner's latest request is the
+[pagination-rules experiment plan](#pagination-rules-parity-experiment-plan),
+planning only. It does not authorize product edits or experiments. The latest
+integration and I6 dispositions below remain unchanged; older stage permissions
+are historical and are not authorization for this proposed work.
+
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
 > `superpowers:subagent-driven-development` when that execution method is selected.
@@ -7219,3 +7225,221 @@ Project Control's managed lane is archived through the native worktree tool.
 Primary development/release branches, tags, unrelated work, Docker evidence
 images and original Word/PDF artifacts are retained. No SRS98, I7, release,
 installation, remote push or remote branch deletion is authorized by this closure.
+
+## Pagination rules parity experiment plan
+
+Date: 2026-10-22. Status: **PLAN ONLY — NOT EXECUTED**.
+
+> For agentic workers: execute only a subsequently authorized experiment stage.
+> This planning request authorizes the Project Control prose below, not Core
+> patches, fixture generation, package builds, exports or Word automation.
+> Use the workflow-economy policy for future execution; no closed I0–I6 context
+> is reopened. The generic planning-skill product-repo output path does not apply.
+
+**Goal:** ทดสอบว่าการแปลง explicit page breaks และการระบุ widow/orphan policy
+ของ DOCX ทำให้ขอบเขตหน้าใกล้ PDF เดิมขึ้นหรือไม่ โดยรักษาเนื้อหาและโครงสร้างครบ.
+
+**Architecture:** ตรึง template/request, ResolvedDocument, fonts/assets และ PDF
+reference ก่อนทดลอง. เปลี่ยนเฉพาะ DOCX writer ทีละปัจจัย; Word ยังเป็นผู้จัดบรรทัด
+และแบ่งหน้าจริง. ไม่อ่าน PDF coordinates/page cuts กลับไปสร้าง DOCX และไม่เพิ่ม
+ตัวเลือกใน public API หรือ authored schema เพื่อเปิดโหมดทดลอง.
+
+**Tech Stack:** Core TypeScript, pinned docx9.13.0/JSZip, existing PDF engine,
+Microsoft Word on Windows และการตรวจ OOXML/ข้อความ/ภาพทุกหน้าของเอกสารสั้น.
+
+**Spec:** Agreed design, Global Constraints และ docx-native-flow/1 ในเอกสารนี้;
+กฎ page-break ของ Section–Area และ workflow-economy policy ยังคงใช้.
+Reference สำหรับค่าเริ่มต้น Word คือ
+[OOXML widowControl](https://learn.microsoft.com/en-us/dotnet/api/documentformat.openxml.wordprocessing.widowcontrol?view=openxml-3.0.1).
+การแยก policy ออกจาก measured lines ดู
+[React-pdf splitText](https://github.com/diegomura/react-pdf/blob/f765c957902eb1f0d15b1571d6f61e5818e8bc50/packages/layout/src/text/splitText.ts);
+reference เป็นแนวทางออกแบบ probe ไม่ใช่ผลพิสูจน์ Word parity.
+
+### Authority, scope and preconditions
+
+- Writing classification: Project Control canonical plan; owner Project Control,
+  role Planning Partner/Documentation Synthesizer. Single-room execution IDs,
+  Phase/Checklist IDs: N/A. Work Size small for this plan, routine risk.
+- Document Budget: เพิ่มในเอกสารเดิมนี้เท่านั้น. ไม่มี Work/registry/map/Evidence
+  record ใหม่เพื่อวางแผน. แผนไม่เปลี่ยน I6 NOT ACCEPTED หรืออนุญาต SRS98/I7.
+- Inspected source: Core `e53e4a284d5eb2596b531b55a12a83ab74ba8528`,
+  Service `8690193b73b14554c63a9aebe5c888edcf780946`. ก่อนทดลองต้องตรวจ base,
+  dependencies และ unrelated changes อีกครั้ง; ถ้าเปลี่ยนให้ทบทวนผลกระทบก่อน.
+- Future code owner: Core. ใช้ isolated candidate เมื่อได้รับอนุญาต;
+  ไม่แก้ primary checkout, Service/plugin/cache/config/DB, PDF source, package
+  dependencies, font resources หรือ templates/data เดิมของผู้ใช้.
+- ปัจจุบัน `src/layout/documentFlow.ts` รวม pending breaks และละ break ที่ต้นหน้า;
+  `src/docx/sections.ts` เขียน break แต่ละตัวเป็น paragraph. `src/docx/text.ts`
+  ยังไม่ระบุ widowControl. นี่เป็น source findings ไม่ใช่ผลทดลองใน Word.
+- Native widowControl ที่ไม่ระบุสืบทอดจาก style; เมื่อไม่มีที่ใดระบุ OOXML ใช้
+  การป้องกันบรรทัดเดียวโดดหน้า. ตรวจ settings/styles/paragraph ของ baseline
+  จริงก่อนทดลอง ไม่อนุมานจาก constructor อย่างเดียว.
+- Word build, font identities/embedding, page setup, field-refresh และ PDF-export
+  procedure ต้องบันทึกก่อน freeze. ไม่ถือว่า producer ชื่อ Microsoft365 ระบุ build
+  ครบแล้ว และไม่กำหนดให้ Service/server ต้องมี Word.
+- Unknowns: native breaks หน้า table/ขอบหน้าพอดี และผล widow ใน cell เป็นคำถาม
+  ของการทดลอง. วิธีทำให้ Word ตรงทุกฟอนต์/ทุก layout และ SRS เป็น deferred.
+
+### Global constraints and review focus
+
+- ใช้ source graph เดียวกัน; logical text, authored newlines, spans, relationships,
+  table topology, images, numbering และ intentional blank sections ต้องคงเดิม.
+- ไม่เพิ่ม forced line breaks/U+200B เพื่อเลียนแบบ physical wrapping ของ PDF.
+  ไม่ย่อฟอนต์ เปลี่ยน leading/margins/padding ขยับ baseline หรือแก้ PDF ให้ผ่าน.
+- ไม่ปิด keepNext/keepLines ของกลุ่มที่ตั้งใจไว้ และไม่ผ่อน allowBreak/repeated
+  headers/merged-cell หรือ unsupported-content policy เพื่อให้จำนวนหน้าตรง.
+- แยก authored blank section/cover ออกจากหน้าว่างที่เกิดจาก redundant break.
+  Empty TextBlock, authored empty line และ fixed spacer ยังใช้พื้นที่จริง;
+  ห้ามถือว่าเป็น non-rendering เพียงเพราะไม่มีตัวอักษรที่มองเห็น.
+- ใช้ scalar source IDs/offsets เป็น locators ไม่ใช้ชื่อเอกสาร/node ID เลือก behavior.
+  งบ runtime/output/cancellation เดิมคงไว้; ไม่มี download/install ตอน export.
+- Review Focus: table ตามหลัง break; break ที่ section edge/หน้าเต็ม; blank/cover
+  ที่ตั้งใจไว้; authored LF เทียบกับ natural wrap; protected keep chains/cell split.
+  แต่ละข้อมี probe/เกณฑ์ด้านล่าง ไม่ขยายการทดลองไปปรับ renderer เรื่องอื่น.
+
+### Controlled variants and proposed file boundary
+
+| Variant | ความต่างจาก A ที่อนุญาต | คำถาม |
+| --- | --- | --- |
+| A baseline | Core ปัจจุบัน ไม่มี patch | ความต่างเดิมอยู่ตรงไหนและเกิดซ้ำได้หรือไม่ |
+| B1 break-only | รวม leading/consecutive/trailing break requests ภายใน Section เมื่อพิสูจน์จาก source ว่า redundant; คงวิธี emit break เดิมสำหรับ boundary ที่เหลือ | หน้าว่าง/ขอบเขตที่ผิดลดลงจากการรวมคำขอหรือไม่ |
+| B2 native-boundary probe | จาก B1 เปลี่ยนเฉพาะ boundary ก่อน ordinary TextBlock เป็น native pageBreakBefore บน paragraph ถัดไป; table ใช้ B1 เดิม | การลด break paragraph ช่วยและไม่สร้างหน้าว่างเมื่อ Word ขึ้นหน้าเองแล้วหรือไม่ |
+| C widow-only | จาก A ระบุ widowControl:false เฉพาะ ordinary body/cell paragraphs ที่ไม่ได้เป็น protected group; explicit breaks และ keep flags คงเดิม | Default widow เป็นเหตุของการเลื่อนบรรทัด/หน้าหรือไม่ |
+| D combined | รวม break variant ที่ผ่านกับ C เท่านั้น | มี interaction หรือ regression เมื่อใช้ร่วมกันหรือไม่ |
+
+B2 เป็น optional probe หลัง B1; ไม่สรุปผล paragraph เป็นผลของ table.
+ถ้า B2 ไม่ดีกว่า B1 ให้คง B1. ถ้า C ไม่ดีกว่า A ให้คง widow policy เดิม.
+D ทำเมื่อทั้งสองปัจจัยมีผลที่เข้าใจและไม่ถดถอย; อาจเลือกเพียงปัจจัยเดียวหรือไม่เลือกเลย.
+C จำกัด scope `nodes`, whole unsplit text fragment, ไม่มี TOC/page fields และ
+ไม่มี effective keepNext/keepLines; ไม่เปลี่ยน band/TOC/generated image paragraphs
+หรือ fragments ของ protected reading group. ตรวจ eligibility ก่อน emit flags.
+แต่ละ variant มาจาก base เดียวกับ scoped patch manifest ที่บันทึกไว้ ไม่ใช้ public
+feature flag, environment fallback หรือแก้ OOXML ใน package เก่าหลัง serialize.
+
+Future allowed Core targets, only after stage authorization:
+
+| Path | Responsibility |
+| --- | --- |
+| `src/docx/sections.ts` | break emission; ห้ามเปลี่ยน section geometry/numbering/bands |
+| `src/docx/tables.ts` | body-flow pending break และส่ง context ว่า paragraph เป็น ordinary/protected; ห้ามเปลี่ยน grid/padding/allowBreak |
+| `src/docx/text.ts` | optional internal pageBreakBefore/widowControl emission; คง text/style/run/keep semantics |
+| `tests/docx/paginationRules.test.ts` (new) | source immutability, OOXML policy, break normalization และ protected controls |
+| `tests/fixtures/docx-pagination-rules/` (new) | public synthetic definitions/requests/expected logical boundaries เท่านั้น |
+| `scripts/probeDocxPagination.mjs` (new) | เรียก public Core APIs, freeze inputs และเขียน experiment artifacts; ไม่เป็น runtime dependency |
+
+ไม่มี planned change ใน `src/layout/`, `src/pdf/`, `native/`, composition/binding,
+Service หรือ schema. ถ้าต้องแก้ส่วนเหล่านี้เพื่อให้ probe ผ่าน ให้คืนผลพร้อมเหตุผล
+และหยุดรับขอบเขตใหม่ก่อน ไม่ซ่อมขยายเอง.
+
+### Probe packets
+
+ใช้เอกสารสั้นสาม packets; scenario markers เป็นข้อความสังเคราะห์ใน source
+เดียวกันทุก variant. เลือก font จาก resource bytes เดิมที่ตรวจได้ ไม่ใช้ fallback.
+
+| Packet | กรณีที่ต้องครอบคลุม | สิ่งที่ต้องดู |
+| --- | --- | --- |
+| P — paragraph boundaries | ไม่มี break เป็น control; leading break; A→BR→BR→B; trailing break; เนื้อหาก่อน boundary ต่ำกว่า/พอดี/เกินพื้นที่ PDF เล็กน้อย | A/B อยู่ครบหนึ่งครั้ง, boundary ตามคำขอ, ไม่มีหน้าว่างเพิ่ม; บันทึก Word edge จริงแยกจาก PDF |
+| T — table/section controls | BR ก่อน table; table→BR ท้าย Section; trailing+leading BR รอบ Section transition; next section เปลี่ยน orientation/numbering/bands; authored blank/cover และ consecutive blanks | ไม่เพิ่ม paragraph แล้วดัน table/terminal mark ไปอีกหน้า; รักษาหัวตาราง spans และ intentional blanks |
+| W — widow isolation | ย่อหน้า3–5บรรทัดที่เหลือหนึ่งบรรทัดต้น/ท้ายหน้า; body และ cell ของแถว allowBreak=true; authored-LF และ natural-wrap แยกกัน; heading/table และ tail/image เป็น protected controls | เปรียบเทียบ line-to-page assignment โดยไม่เปลี่ยน wrap/text/font/keeps; ตารางไม่ถูกบังคับรวมทั้งก้อน |
+
+ใช้ Thai/Latin/mixed ใน packets โดยมีหนึ่ง mixed-emphasis control; ไม่เปิด full
+font×layout Cartesian matrix. Existing PDF tests ที่เป็น source expectations:
+`tests/composition/areaDocument.test.ts` (leading/repeated/trailing breaks,
+empty TOC และ breaks-only EMPTY_CONTENT), `tests/layout/pageSections.test.ts`
+(exact fill/section transition), `tests/layout/coverPages.test.ts` (intentional blanks).
+อ่านและ reuse ที่ตรงขอบเขต ไม่แก้ expected PDF เพื่อรองรับ candidate.
+
+Breaks-only input ต้องยังปฏิเสธ EMPTY_CONTENT ก่อน export. Empty scoped TOC
+และ empty ordinary Section เป็น diagnostic controls: field refresh/serialization
+อาจมีพฤติกรรมเดิมต่างจาก PDF. บันทึกเป็น pre-existing gap ถ้าเกี่ยวข้อง;
+ห้ามลบ bookmarks/TOC/Sections เพื่อทำให้คะแนนดีขึ้น. หาก gap ทำให้แยกผล break
+ไม่ได้ ให้กรณีนั้นเป็น INCONCLUSIVE และคืนข้อเสนอแยก ไม่ขยาย scope แอบแก้.
+
+Source-only normalizer ไม่รู้ตำแหน่งหน้าจริงใน Word. PDF y-position หรือการวัด
+ข้อความของ Core ใช้ระบุกรณีทดสอบได้ แต่ใช้ตัดสินใจ suppress break ของ DOCX ไม่ได้.
+Retained boundary ต้องใช้ native semantics และพิสูจน์ใน Word ตามชนิด next node.
+
+### Experiment stages, artifacts and checks
+
+- [ ] **E0 — freeze baseline.** เมื่อได้รับอนุญาต ให้สร้างสาม packets กับ public
+  validate/prepare/compose APIs; freeze template/request/ResolvedDocument และ
+  font/image/package hashes. สร้าง PDF reference ด้วย renderer เดิมครั้งเดียว
+  และ DOCX A. Word export A ด้วย build/ขั้นตอนเดียวกัน ตรวจทุกหน้าให้ baseline
+  เกิดซ้ำได้โดย repeat A ของ W หนึ่งครั้งก่อนแก้ candidate. เลือก source-supported
+  controls ก่อน freeze; baseline ที่ error/ไม่ exercise treatment ยังไม่เป็นผลลบ
+  ของ candidate. เก็บ hashes ของ PDF references เดิมและใหม่ ตรวจคงเดิมหลังจบรอบ;
+  candidate diff ต้องไม่มี PDF/layout/native changes. Existing I6 artifacts เป็น immutable regression
+  inputs ไม่เขียนทับ ไม่เรียกเป็น baseline ของ synthetic source คนละชุด.
+- [ ] **E1 — independent probes.** เพิ่ม targeted checks ก่อน patch ใน candidate;
+  B1 ใช้ P/T, B2 ใช้ P เพิ่มหนึ่ง packet และตรวจว่า table fallback OOXML คง B1,
+  C ใช้ W พร้อม protected controls. Check OOXML และ input hashes
+  ก่อนเปิด Word. Native flags ต่างได้เฉพาะที่ variant ระบุ; styles/font/spacing/
+  geometry/relationships ต้องคงเดิม. ไม่เชื่อ unit test แทน Word pagination.
+- [ ] **E2 — decision and interaction.** ประเมินแต่ละ variant ตามกฎด้านล่าง;
+  ทำ D เฉพาะเมื่อมีเหตุจากผล E1 และตรวจครบ P/T/W เดิมทั้งสาม packets เพื่อไม่ให้
+  interaction ที่ไม่อยู่ใน subset หลุดการตรวจ. ไม่สร้าง source ชุดใหม่ให้ D.
+  เทียบ preferred candidate กับ four retained small I6 cases โดยคง PDF เดิม;
+  baseline discrepancies ที่บันทึกแล้วต้องไม่ถูกซ่อนหรือใช้ยกเว้น regression ใหม่.
+- [ ] **E3 — report and stop.** ลงผลใน section นี้พร้อม evidence locators,
+  rejected variants, known gaps และ recommendation. ไม่ integrate/release/
+  install/push และไม่เปิด SRS98 จากผลทดลองนี้. I6 complete-suite blocker คงเดิม.
+
+Proof Budget: first comparison มี A/B1 ของ P/T และ A/C ของ W =6 Word DOCX inputs;
+B2 เพิ่มได้หนึ่ง packet, D สาม packets และ baseline repeat หนึ่งครั้ง
+รวมไม่เกิน11 inputs ก่อน regression. ไม่รัน Cartesian product ทุก variant×packet.
+เป้าหมายรวมไม่เกิน60 rendered pages ในช่วงนี้; กำหนด packet sizes จาก A ก่อน freeze.
+ถ้าผลจริงเกินงบให้บันทึกและหยุดปรับแผน ไม่ตัดหน้าที่ไม่ผ่านออกจากการตรวจ.
+Preferred-candidate regression ใช้ I6 เดิม4cases/9reference pagesอีกหนึ่งรอบ;
+ไม่มีการทดสอบ performance หรือ full Service suite สำหรับ experiment นี้.
+
+Artifacts ใน future isolated Core `artifacts/docx-pagination-rules-20261022/<run-id>/`:
+`manifest.json` (base/patch/package/input/resource/Word identities), frozen inputs,
+PDF reference, variant DOCX, Word-exported PDFs, rendered pages และ `results.json`.
+บันทึก variant และ source locators ในผล ไม่ encode ปลายทางตามชื่อเอกสาร.
+ห้ามแก้ต้นฉบับ DOCX หลัง Word refresh; ใช้สำเนาสำหรับ review และเก็บ hash ก่อน/หลัง.
+
+Future automated checks: targeted DOCX paginationRules tests ร่วมกับ
+`tests/docx/geometry.test.ts`, `tests/docx/port.test.ts`,
+`tests/docx/capabilities.test.ts`; build/type check ตาม Core contract.
+ก่อนอ้าง packaged behavior ต้องตรวจ installed Linux/amd64 consumer ของ exact
+candidate archive โดย reuse inputs เดิมและคู่ PDF/DOCX. Passing focused checks
+ไม่แทน mandatory gates ของการ integrate/release ซึ่งยังไม่อยู่ในคำขอนี้.
+
+### Measurement and decision rules
+
+1. **Validity** = PASS / FAIL / INCONCLUSIVE แยกจาก **Effect** = IMPROVED /
+   UNCHANGED / REGRESSED / TRADEOFF / INCONCLUSIVE. ไม่มีคะแนนเฉลี่ยถ่วงน้ำหนัก
+   หรือเปอร์เซ็นต์ที่กลบ content/structure regression.
+2. Mandatory invariants: source hashes คงเดิม; exact ordered normalized logical
+   text และ authored newline events จาก OOXML/source map; newline ที่แทนด้วย
+   paragraph boundary ต้องนับตาม source relation ไม่ใช่นับเฉพาะ w:br;
+   ไม่มีข้อความ/ภาพหายหรือซ้ำ;
+   table cells/spans/repeated headers/allowBreak และ protected relationships
+   คงเดิม; ไม่มี clipping/overlap; intentional blanks, Section geometry,
+   logical numbering/TOC/link destinations ถูกต้องตาม DOCX ของตัวเอง.
+3. รายงาน unintended blank pages และ explicit-boundary violations แยกกัน.
+   Match pages ด้วย source intervals `(sectionId,nodeId,sourceStart,sourceEnd)`;
+   หัวตารางซ้ำเป็น decoration ที่คาดได้ ไม่ถือเป็น business-text duplication.
+   แยก physical-page displacement จาก boundary mismatch เพื่อไม่ให้หน้าว่าง
+   หนึ่งหน้าถูกนับเป็นข้อผิดพลาดข้อความทุกชิ้นที่ตามมา.
+4. เก็บ physical line-wrap signatures เป็น source end offsets แยกจาก authored LF
+   และเก็บ page-cut offsets ของแต่ละ block/cell. ถ้าจับคู่ไทยจาก PDF extraction
+   ไม่ชัด ให้ตรวจภาพกับ source map; ห้ามลบวรรณยุกต์/ยุบช่องว่างเพื่อสร้าง PASS.
+5. Widow attribution ใช้เฉพาะกรณีที่ A/C และ PDF มี line-wrap signature เดียวกัน
+   และต่างกันที่ page assignment. ถ้า wrapping ต่างอยู่แล้ว ให้บันทึกเป็น
+   INCONCLUSIVE สำหรับ widow ไม่แก้ leading/font/text เพื่อบังคับให้ทดลองได้.
+6. **IMPROVED** ต้องมี predeclared boundary error อย่างน้อยหนึ่งจุดลดลงจาก A,
+   ไม่มี boundary/blank/table-fragment regression ในกรณี eligible อื่น และ
+   mandatory invariants ผ่านทั้งหมด. **UNCHANGED** ไม่เป็นเหตุให้เพิ่ม patch.
+   มีข้อดีและข้อเสียคนละกรณี = **TRADEOFF**, ยังไม่เลือกใช้. Content/relationship
+   regression = **FAIL/REGRESSED**; Word proof ที่ขาด = **INCONCLUSIVE**, ไม่ใช่ PASS.
+   Scoped target PASS ต้องแก้ครบทุก target ที่ประกาศก่อนเห็น candidate และไม่มี
+   regression; IMPROVED บางจุดยังไม่เท่ากับปิด target ทั้งชุดหรือรับรอง I6.
+7. จำนวนหน้ารวมใช้รายงานประกอบ ไม่เป็นเกณฑ์ชนะ. เปรียบเทียบตำแหน่งเนื้อหาก่อน/
+   หลัง boundary และ whitespace ที่เพิ่มจาก wrapper ด้วย แต่ไม่ตีความ word-box
+   yMin เป็น glyph baseline หรืออ้าง pixel equivalence จาก extraction.
+
+Stop เมื่อได้คำตอบที่แยกปัจจัยได้ หรือพบว่า native Word semantics ใน scope นี้
+ทำให้เหมือนขึ้นไม่ได้อย่างปลอดภัย. ผลที่ยอมรับได้ของการทดลองรวมถึง
+**ไม่เลือกเปลี่ยนโค้ด**. Product source, PDF behavior และ I6 status ยังไม่เปลี่ยน
+จากการบันทึกแผนนี้.
