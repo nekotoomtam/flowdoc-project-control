@@ -20,7 +20,12 @@ persisted after task-api. F3 full-suite execution remains unauthorized.
 The requested [F2 cleanup and memory investigation plan](#i6-f2-cleanup-and-memory-headroom-plan-2026-10-22)
 was subsequently authorized and reached a [partial F2 checkpoint](#i6-f2-partial-result-2026-10-22)
 at its36-execution cap. Targeted cleanup and four critical API cases pass;
-complete-file/resource coverage and memory attribution remain open. F3 has not begun.
+that checkpoint left complete-file/resource coverage and memory attribution open.
+F3 has not begun.
+The subsequently authorized [17-case unchanged-candidate verification](#i6-f2-seventeen-case-followup-result-2026-10-22)
+completed: complete task-api8/14 pass,6 fail; resource-wait3/3 pass. Its end
+boundaries are clean, while memory admission blocks generation in observed
+failure windows. F2/I6 remain NOT ACCEPTED; no further code change or F3 run.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -8885,3 +8890,135 @@ That is a proposed17 additional executions if separately authorized, alongside
 a separately bounded memory probe design before claiming the original root cause.
 Do not spend them now. F3/full-suite acceptance is a separate future prerequisite,
 even if those checks pass. **Stop at36; report partial results and gaps.**
+
+### I6 F2 seventeen case followup result 2026-10-22
+
+**FAIL complete task-api gate / PASS bounded resource-wait subset; F2 and I6
+NOT ACCEPTED.** The owner authorized17 additional case executions against the
+same F2 worktree: one complete serial14-case task-api invocation, followed by
+the3 resource-wait cases only after a clean boundary. No code change, retry,
+full-suite run, B2 or integration was authorized or performed. Role: Evidence
+Reviewer / Documentation Synthesizer; Service owns the candidate, Project
+Control owns this verification checkpoint. Work/Phase/Checklist/execution IDs
+remain N/A for this single-room verification continuation.
+
+Candidate remains the uncommitted `codex/i6-f2-cleanup` worktree at
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f2/service-worktree`, base
+`8690193b73b14554c63a9aebe5c888edcf780946`. Its complete tracked/untracked input
+manifest, HEAD and dirty status match before/after; all five F2 source hashes
+match the preceding frozen candidate. No source, fixture, package, configuration
+or production input was repaired to obtain a passing result.
+
+Evidence directory:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-f2-followup17/proof`.
+Manifest SHA256:
+`dbe26698b1816988dde72c25c2db64a28c6c07ee1eb76c4a24ba2bcc5eb7c972`;
+25 frozen files,2535406 bytes before the manifest. `receipt.json`, `ledger.json`,
+both structured reports/logs, test-owned memory snapshots/phase markers,
+external process/cgroup/PG samples, the read-only live task-state capture and
+`analysis-summary.json` support the findings. No prior evidence file was overwritten.
+
+#### Environment and exact result
+
+The original Linux/amd64 I6 checks image remains
+`sha256:d32cd52be9cce3eff30296fd31304b6d606ba8c73a915ed1b1667fcc6b0ce0f0`.
+The tests were mounted read-only from the same worktree; only the new proof host
+mount was writable. A new isolated PostgreSQL container/database/network and
+temporary storage were used, with no host ports or user-data mutation. Settings
+remain2 CPUs, init enabled, exact1GiB memory/no swap, reviewed read-only fonts,
+original Core archive/plugins, default checker15s and unchanged explicit case
+deadlines. Vendor verification, scratch build and migrations passed before tests.
+
+| Invocation | Executed | Passed | Failed | Filtered |
+| --- | ---: | ---: | ---: | ---: |
+| Complete `tests/task-api.test.mjs`, no name filter, serial/shared database | 14 | 8 | 6 | 0 |
+| Processing resource-wait plus scheduler storage/memory-wait subset | 3 | 3 | 0 | 39 |
+
+Exactly17/17 executions, verified independently from report assertion statuses;
+there were no nested tests or retries in this follow-up. The39 filtered cases in
+the two resource files were not executed and are not optional skips/PASS.
+Recorded invocation time was approximately181s; output is below10MiB. This closes
+the earlier missing-execution gap with actual failing/passing evidence, not with
+acceptance or an aggregate of the earlier four selected passes.
+
+The six failures are retained with their original assertions/deadlines:
+
+| Case | Result |
+| --- | --- |
+| Actual streaming-proxy/MCP compatibility | 60s timeout. Last generation marker is `direct-generate`; `mcp-generate` is never reached. |
+| Confirmed processing-disconnect cleanup | After approximately10.9s, no processing task ID was observed (`undefined` assertion). |
+| Actual native Service entrypoint | 30s timeout, after readiness and the `native-generate` marker. |
+| Backpressured PDF receiver disconnect | After approximately22.1s, the expected PDF-cut flag remains false. |
+| Preparation-finding/paginated-warning sequences | Default15s timeout. |
+| Shared normalization/preparation finding-detail cap | 30s timeout. |
+
+The fixed-omission case immediately following the failed native case passes.
+There is no `Processor already active` error. After the complete14-case run,
+before the resource subset, and after that subset, saved boundaries show no live
+owned Node, PG session or advisory lock. The subset therefore ran after a clean
+boundary without repairing/resetting the candidate. This supports the bounded
+cleanup result; it does not turn the six generation/assertion failures into PASS.
+
+#### Admission evidence and its limits
+
+This run supplies internal sampled memory/health data that the earlier F1
+investigation lacked. For five failed in-process cases, periodic snapshots show
+`healthy=true`, `workers=0`, `creditsMiB=128`, `waiters=0`, `pressure=false` and
+`lastFailure=null`. All the listed samples exceed the necessary current-memory
+ceiling for admitting a new320MiB worker under the existing768MiB formula:
+
+| Failed case | Healthy worker0 samples over admission ceiling | Sampled current MiB |
+| --- | ---: | ---: |
+| Streaming-proxy/MCP case | 59 | 513.20–523.41 |
+| Processing-disconnect case | 10 | 485.67–486.44 |
+| Backpressured receiver case | 22 | 459.12–471.90 |
+| Finding-sequence case | 15 | 471.39–472.83 |
+| Finding-cap case | 29 | 474.38–479.78 |
+
+At these readings, `max(currentMiB,credits)+320 > 768` is a sufficient reason
+for worker admission to refuse; no slot/FIFO/pressure/read failure is needed to
+explain refusal in those snapshots. This is a confirmed mechanism in this run,
+not a conjecture based only on external memory or the old1.5GiB mismatch.
+The MCP case is waiting in direct generation **before** invoking the MCP
+generation tool; do not label this proof of an MCP transport defect.
+
+For native Service,30 existing-channel samples show worker0 with external current
+approximately507–547MiB; phase markers show readiness completed and generation
+started. These remain external readings correlated with the native publisher,
+not an invented native internal snapshot. A live read-only task-state capture
+also shows a queued task/job with no child. No OOM is recorded.
+
+The passing fixed-omission case has a worker1 sample at approximately472MiB:
+the448MiB condition is for **admitting a new worker**, not a requirement that an
+already-running worker always remain below that level. This distinction remains
+part of interpretation; no guard, credit or timeout was changed.
+
+Memory attribution is still incomplete. For example, the failed MCP window has
+approximately345–355MiB anonymous memory and143MiB file charge, plus kernel memory.
+The source of retained allocations/cache charges and the reproducible split
+between test harness and ordinary Service load have not been causally isolated.
+The new data strengthens the admission diagnosis without proving a safe resource
+policy change, a production-only capacity result or a complete explanation of
+all historical failures. The three resource-wait passes likewise do not rule
+out earlier intermittent scheduler-reservation observations in a complete suite.
+
+#### Preservation and stop
+
+The original runtime source/scripts/vendor/package/configuration hashes match
+the retained image after checks. Before/after preservation verifies B1+C clean
+at `b79f426649e65eadb3fb29e410250395a6d65faa`, all96 D artifacts,72 regression
+artifacts,29 original source/font/reference files,20 F1 and165 F2 evidence files.
+Primary Service status and the complete candidate input manifest are unchanged.
+The candidate remains dirty/uncommitted/unmerged; no product commit was made.
+
+Original PDF baselines were not regenerated or modified. Ordinary new test PDF
+outputs stay in the new proof directory. No Word export or document-review page
+was spent; cumulative162 pages/21 exports is unchanged. After recording clean
+boundaries, only this follow-up's two containers and network were removed.
+The worktree and all old/new evidence remain.
+
+The requested17-case verification is complete, but the complete task-api gate
+fails and F2/I6 are not accepted. Next work, if separately authorized, should
+plan a controlled attribution of harness/module/cache memory around the now
+observed admission wait; there is no automatic code repair, repeat run, F3,
+B2 or integration from this result. **Report and stop at17.**
