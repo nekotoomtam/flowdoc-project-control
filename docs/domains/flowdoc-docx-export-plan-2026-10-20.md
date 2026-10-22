@@ -48,6 +48,12 @@ The previous cache-only PASS remains limited to its recorded topology.
 The owner next requested the [network-parser and budget-repair proposal](#i6-network-parser-and-budget-repair-plan-2026-10-22).
 It specifies offline fixture checks and a separate fresh live budget; no repair
 or further experiment is authorized by this planning checkpoint.
+The owner subsequently authorized only that external repair and its offline
+fixtures. The [offline repair result](#i6-network-parser-and-budget-offline-repair-result-2026-10-22)
+passes all16 cases on the second of at most3 passes (32 named executions total),
+with zero real Docker/subprocess calls in the fixture suite. Historical failed
+preparation remains charged1; a fresh live7-scenario comparison is still
+unauthorized. F2/I6 remain NOT ACCEPTED and B1+C/PDF baselines are preserved.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -10109,3 +10115,100 @@ status. This turn changes only this shared plan; no proposed test is executed.
 Documentation verification: Project Control `tools/check.ts` and
 `git diff --check` pass. The only repository change is this bounded proposal;
 no helper source, fixture, old receipt/ledger or runtime input changes.
+
+### I6 network parser and budget offline repair result 2026-10-22
+
+Disposition: **PASS for the external offline repair only.** The owner's latest
+instruction authorized network parsing, preparation accounting and the sixteen
+synthetic cases, with at most3 complete passes. No Docker command, live cache
+probe, A–B–B–A arm, document request or product change was authorized or executed.
+F2/I6 remain NOT ACCEPTED; harness/Service memory attribution remains UNKNOWN.
+
+Authority: single-room inline external proof-tool implementation and Evidence
+review; Project Control owns this checkpoint, Service owns the untouched
+candidate. Work/Phase/Checklist execution IDs are not applicable. Scope is small,
+routine and bounded by N0–N4 above; no separate product dispatch or new Work
+record is opened. Existing recorded evidence and owner constraints are reused.
+
+New external tooling and proof root:
+`C:/Users/nekot/Documents/Codex/2026-10-22/i6-harness-network-repair`.
+The failed original `i6-harness-service-memory` directory remains immutable.
+Only `run.py` differs among the13 copied original helper files; the other12
+copies are byte-identical. New files are `tools/network_preflight.py`,
+`tools/proof_budget.py`, `tools/test_network_budget.py` and `offline_checks.py`.
+The old copied `tools/helper-review.json` is historical; the current repair
+review is separately retained as `proof/review.json`.
+
+The parser accepts explicit null Config only for the exact host/host and
+none/null built-in pairs and records the exclusion. It rejects malformed or
+unknown subnet metadata, existing intended names and same-family overlap;
+canonical IPv4/IPv6 parsing preserves deduplicated subnets and owner context.
+No parser failure grants network ownership or selects another subnet.
+
+The new accounting unit persists and confirms preparation STARTED/used1 before
+the first Docker adapter call. It uses a same-directory temporary file,
+flush/fsync and atomic replacement, with readback confirmation; this does not
+claim platform power-loss durability. Unconfirmed reservation stops explicitly,
+preserves the last valid ledger and invokes zero Docker callbacks. Duplicate,
+exhausted or resumed budgets cannot reset the fixed seven-phase sequence.
+Status/finalization never adds another preparation charge. The static review
+found a finalization census that could still call Docker after a failed
+reservation; it was gated by established infrastructure ownership, and N16 was
+strengthened through `main()` with failed replacement and zero adapter calls.
+The same reviewer confirmed that finding resolved without executing code.
+
+| Offline proof | Result |
+| --- | --- |
+| Pass1, retained RED snapshot | 16 executed:2 pass,8 fail,6 error |
+| Pass2, repaired helpers | 16 executed:16 pass,0 fail,0 error |
+| Budget used | 2/3 complete passes;32/48 named case executions |
+| Active fixture-check time | 1.156 seconds /300 seconds |
+| Saved proof | 68,795 bytes /2MiB;15 files including manifest |
+| Real subprocess attempts within fixture suite | 0; subprocess APIs and os.system forbidden |
+| Actual Docker/live scenarios/document requests | 0/0/0 |
+
+Pass1 reproduced the old null-reader crash and late preparation charge with
+baseline adapters and the unchanged old orchestrator. Its other missing guard
+assertions are not fourteen separate product failures. The RED source/test
+snapshot and initial results are retained. N16's later integration assertion
+strengthened the same named case; no hidden parameterized or extra live cases
+were run. Pass2 covers all N01–N16 from the approved table: narrow null
+exemptions, malformed metadata, dual-family parsing, overlap/name ownership,
+uncertain creation cleanup, first-inspection charge, exact seven phases,
+exhaustion/reuse rejection and unconfirmed persistence. Testing stopped after
+all16 passed; the third pass was not spent.
+
+Durable proof is `proof/manifest.json`, SHA-256:
+`984444160531d3b9b640e08c89019b6449dc5b7710e8b90fa05867c82faded60`.
+It binds17 helper files and14 evidence files, including per-case pass logs,
+offline ledger, retained RED sources, preservation receipts, result and review.
+Changed/new helper SHA-256 values:
+
+| Helper | SHA-256 |
+| --- | --- |
+| run.py | `9e1ed7cfbce0ef70c26926d4913b1472f4b8fee19163e556fefa625e64e1eb40` |
+| tools/network_preflight.py | `d0e05c6ecd505ebbdeeaf0db467bff3685cd1c738848dab443e61866b563b3c7` |
+| tools/proof_budget.py | `d797cd260419a61759477840683851115eef08587391a53f963d042448f1d840` |
+| tools/test_network_budget.py | `00284b76fb65ce208a036d4952b9f142e08e4d6177936477edfbe5c34c1f894a` |
+| offline_checks.py | `cf2db3eac990b97499e23244a8ec080e450b481a571bcd95737d98886afca89f` |
+
+Final read-only preservation checks match the initial receipt:408 prior
+source/evidence files,358 F2 candidate inputs, earlier28-file proof/runner,
+18-file stable-cache proof with6 helpers, and all5 failed-round raw/supplemental
+records with13 helpers remain unchanged. B1+C remains clean at
+`b79f426649e65eadb3fb29e410250395a6d65faa`; primary Service status is unchanged.
+Original PDF baselines remain within the preserved evidence chain. The copied
+1GiB/no-swap/2-CPU arguments, observer/reader, cache tolerances and deadlines
+remain unchanged; no live cgroup or cache-state confirmation is claimed.
+
+The historical failed preparation is still charged1/7 by its supplemental
+reconciliation; its raw0 ledger is not rewritten or refunded. Any subsequent
+live comparison needs separate owner authorization for a fresh7-scenario budget
+and a new reviewed inventory incorporating these helper bytes. Revalidate cache
+in that future round; no old cache plateau is inherited. This checkpoint does
+not authorize Docker, A–B–B–A, full suite, product repair, B2, integration,
+release or push. No Word export or reviewed page budget was spent.
+
+Repository impact is limited to this existing canonical plan/result document;
+no runtime, product map or generated record changes. Documentation verification:
+Project Control `tools/check.ts` and `git diff --check` pass.
