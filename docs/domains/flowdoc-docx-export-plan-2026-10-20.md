@@ -7515,3 +7515,140 @@ I6 regression. **Stop before E1**: first revise the proof budget and missing
 control coverage, or agree separately versioned smaller complete packets;
 preserve this frozen baseline and never replace its PDF references. No candidate
 effect is measured yet, and the existing I6 complete-suite blocker stays open.
+
+### Proposed E0 coverage completion and revised proof budget 2026-10-22
+
+**PROPOSAL ONLY — NOT EXECUTED.** This owner request authorizes this plan
+addendum only. It does not authorize supplemental generation, Word automation,
+E1, candidate patches, or a budget spend. Earlier stage descriptions and the
+60-page/11-export estimate remain historical planning context; the replacement
+budget below becomes operational only under a subsequent authorized stage.
+Owner: Project Control; role Planning Partner / Documentation Synthesizer.
+Work Size small, Risk Tier routine for this documentation-only task. Execution,
+Phase and Checklist IDs: N/A. Document Budget: this existing document only;
+no new Work, registry, map, or Evidence record. Runtime owner remains Core.
+Acceptance for this proposal: every recorded gap has a test or an explicit
+contract-bound exclusion, the variant matrix has a cumulative budget, and the
+old baseline remains immutable. No product acceptance or I6 status changes.
+
+#### Preserve and extend the reference set
+
+Keep `baseline-01/` entirely immutable, including inputs, manifests, results,
+PDFs, DOCX files and scripts; do not regenerate or relabel P/T/W. Future additions
+go into sibling `supplement-01/` under the existing evidence root's parent.
+Its manifest references the original manifest SHA-256
+`ca401ace5e6b4d38fb51397e170d67ba8dfce21db8989076ab38c221ec360fc3`
+and names each reused original packet. Verify all 37 frozen file hashes and four
+retained I6 reference hashes before and after any authorized execution.
+
+Use the same immutable Core archive, fonts/native tools, Word executable build
+and recorded export procedure as E0. Drift requires a compatibility ruling before
+combining evidence, not a silent baseline replacement. Produce new reference
+PDFs only for the new sources, once per successfully admitted source; retain
+their first successful bytes. Log invalid fixture attempts separately before
+freeze. No source, font, geometry or text changes after a packet is frozen.
+
+#### Two supplemental packets and contract rulings
+
+| Packet/control | Future source and check | Page planning envelope PDF / Word |
+| --- | --- | ---: |
+| Q — missing P/T controls, model19 | An isolated ordinary Section without explicit breaks; a two-page table with repeated header, stable cell IDs, colSpan and a bounded rowSpan; two short Sections exposing current-page fields across continue/restart7 and portrait/landscape/band transition. | at most5 /7 |
+| R — missing W language controls, model19 | One Thai-only naturally wrapping body paragraph near a first-line boundary, and one Latin-only naturally wrapping paragraph in an allowBreak cell near a last-line boundary. Use3–5 physical lines when naturally admitted, plus short stable source markers. Reuse W's mixed-language authored-LF, natural-body and protected controls. | at most5 /7 |
+
+For Q, put the merged row group wholly on one page and put a later ordinary-row
+boundary across pages. This checks rowSpan preservation and actual repeated
+headers without claiming support for a vertical merge split across a page.
+Record row/cell/span identities, header occurrences and page-source intervals.
+The no-break control must keep its source interval on one page and introduce no
+blank page in its own Section; unrelated later displacement is a separate metric.
+Visible compact page-field output must show the declared restart7 and continuation
+sequence after the same field refresh. Do not infer numbering from section XML
+alone or substitute a literal digit for a field.
+
+Include empty ordinary Section and empty scoped TOC diagnostics within Q's
+envelope, retaining their bookmarks/Sections. Existing differences are recorded,
+not fixed; if they obscure treatment attribution, isolate that case as
+INCONCLUSIVE. A breaks-only request is a separate zero-export negative check:
+EMPTY_CONTENT and no published bytes. Admission checks must finish before freeze.
+
+For R, choose text and boundary placement from declared synthetic source inputs
+before examining candidate output. Preserve all Thai marks, spaces and authored
+LF events. Do not insert artificial line breaks or retune text/geometry until
+Word matches PDF. If a natural paragraph does not yield the intended line count
+or boundary, record it as non-exercising; return the fixture-design issue before
+freezing it as evidence for that treatment. Do not count it as a candidate failure.
+
+Two apparent gaps are **contract-bound exclusions**, not fixture tasks:
+
+- Model19 forbids an authored `role`, including cover
+  (`src/template/pageSections.ts`). Keep T's model18 cover/intentional blanks
+  as compatibility controls; no model19 cover or schema-extension claim.
+- `TextInline` has no per-run font/emphasis property; `textStyleId` belongs to
+  the whole TextBlock (`src/composition/resolvedDocument.ts`). Mixed bold/italic
+  inside one paragraph is unsupported in this contract. Correct the earlier
+  mixed-emphasis requirement to a deferred contract extension. Retain W's four
+  separate font-face blocks as the supported control; do not call them inline
+  emphasis coverage or modify schema/writer to manufacture that case.
+
+#### Close E0 before any treatment
+
+- [ ] Capture Q/R through public validate/prepare/compose and the unchanged
+  PDF/DOCX engines; checkpoint receipts per packet immediately. Freeze source,
+  prepared/resolved graph, source map, package/resources and outputs in the new
+  manifest. Original baseline files must remain byte-identical.
+- [ ] Export Q/R A in the pinned Word procedure; repeat R A once because the
+  new natural/cell probes were absent from the original repeat. Compare text,
+  geometry and rendered-page hashes; Word PDF byte identity is not required.
+- [ ] Inspect every new PDF/Word/repeat page. Verify exact logical text/LF,
+  visible numbering, actual header repetition, topology/spans and protected
+  relationships. Assign a source end offset to each natural physical line;
+  preserve extraction order versus logical order as separate evidence. Use
+  image/source-map review for ambiguous Thai glyph order; never drop marks or
+  collapse spaces to obtain a match. If exact offsets remain unresolved, report
+  that natural case INCONCLUSIVE for widow attribution.
+- [ ] Return an E0 completion report first. Covered controls must exercise their
+  stated boundary, and all exclusions/inconclusive cases remain visible. Do not
+  silently mark the full E0 target PASS if a required control is unexercised.
+  Any narrower acceptance needs an explicit scope decision. E1 requires its own
+  authorization even if the supplemental baseline passes.
+
+#### Cumulative budget and the minimal variant matrix
+
+The recommendation is **150 pages through supplemental E0 and independent E1**,
+with a conditional **240-page cumulative ceiling** if optional B2/D and preferred
+candidate regression are later chosen. These are proposed ceilings, not results
+or authorization. The 240 includes the 150; neither resets the spent56 pages.
+Counts below budget new/reviewed physical pages once, plus required repeat review;
+unchanged hash-verified reference pages may be reused without rendering again.
+
+| Stage | Incremental page estimate/envelope | Cumulative before contingency | Word exports, cumulative |
+| --- | ---: | ---: | ---: |
+| E0 already retained | 56 actual | 56 | 4 actual |
+| Supplemental A: Q PDF5+Word7, R PDF5+Word7, R Word repeat7 | 31 | 87 | 7 |
+| Independent E1: B1 on P/T/Q (11+7+7), C on W/R (9+7) | 41 | 128 | 12 |
+| Optional B2 on P/Q only; verify unchanged table fallback on Q | 18 | 146 | 14 |
+| Conditional D on all P/T/W/Q/R, only after independent benefit | 41 | 187 | 19 |
+| Preferred-candidate I6 regression:9 retained reference pages reviewed plus up to13 candidate Word pages | 22 | 209 | 23 |
+
+The first ceiling leaves22 contingency pages (150−128). The complete optional
+path leaves31 (240−209). Contingency is shared, not added anew per stage, and
+does not grant extra Word attempts: through independent E1 the limit is12 total
+Word exports; optional path19 before I6,23 including its four inputs. No Cartesian
+variant-by-packet matrix. R does not need a B1 export and Q does not need a C
+export; D must cover all five packets if both factors are combined.
+
+Actual candidate pagination may grow: estimates use A sizes, not promised maxima.
+Before starting each export reserve room for its A-sized estimate plus remaining
+contingency. If a packet exceeds its envelope, Word repeat fails, or actual output
+would exceed the cumulative ceiling, retain the entire output and stop before
+another export; report the overrun and replan. Never omit a failed or blank page
+from accounting/review. No automatic retries or post-freeze fixture shrinking.
+Do not spend optional B2/D/regression allowances after a clear rejection or
+UNCHANGED result merely to fill the budget.
+
+Future preferred-package PDF reproduction, if required by the existing packed
+consumer check, uses temporary comparison output and must match the frozen
+reference hash; it never overwrites a reference. Identical bytes reuse reviewed
+pages; a hash difference blocks acceptance and requires a new scope decision.
+No performance run, full Service suite, SRS98, integration or release is included.
+The next proposed action is supplemental E0 only, followed by its report and stop.
