@@ -38,6 +38,8 @@ The owner subsequently authorized the revised reader and five cache-only
 scenarios. The [persistent-group cache result](#i6-candidate-reader-and-persistent-cache-result-2026-10-22)
 passes the bounded CACHE-CONDITION-STABLE criterion at5/5 executions. This is
 not a harness/Service comparison or F2/I6 acceptance; M2/M3 were not started.
+The owner's next request is the [controlled harness/Service comparison proposal](#i6-controlled-harness-service-memory-comparison-plan-2026-10-22).
+It is a readiness-only diagnostic plan, not permission for another run or repair.
 
 > For agentic workers: execute only the authorized stage. Use
 > `superpowers:executing-plans` for inline implementation, or
@@ -9609,3 +9611,204 @@ full suite, product-code repair, B2 and product integration remain unperformed.
 Project Control documentation checks: `tools/check.ts` and `git diff --check`
 pass. The only repository change is this bounded plan/result update; no product
 commit, map promotion or runtime installation was made.
+
+### I6 controlled harness Service memory comparison plan 2026-10-22
+
+**PROPOSED / NOT EXECUTED.** The owner requests a plan to compare test-harness
+and Service memory under a controlled cache condition, keeping exact1GiB,
+B1+C and original PDF baselines. This turn permits source/evidence inspection
+and this document only. No helper or product code is changed and no diagnostic
+workload/container/probe is launched; only documentation/preservation checks
+run. B2/integration remain unauthorized.
+F2/I6 remain NOT ACCEPTED. This is a new bounded diagnostic proposal, not an
+automatic resumption of the historical M2/M3 generation experiments.
+
+Owner: Project Control for the shared proposal; Service for any later test/
+runtime change. Role: Planning Partner / Evidence Reviewer / Documentation
+Synthesizer. Work/Phase/Checklist/execution IDs: N/A, single-room planning.
+Work Size: small; Risk Tier: routine. Document Budget: this existing plan only,
+no new Work, map or registry. A later execution resolves its own host/model
+decision rather than inheriting PLAN's choice.
+
+#### H0: answer a narrower question with matched application work
+
+Compare the same frozen `dist/server.js` native entrypoint in two launch
+topologies, while both remain charged to the same1GiB target group:
+
+| Arm | Target-group process topology | Fixed application work |
+| --- | --- | --- |
+| A: Vitest harness | Pinned Vitest4.1.9 runner/test worker, shared diagnostic module/client dependencies, native Service child | Start Service, observe HTTP readiness and fixed idle plateaus, stop Service |
+| B: plain Node | Plain Node runner, the same shared diagnostic module/client dependencies, the same native Service child | Exactly the same lifecycle and plateaus |
+
+Both launchers call one shared external scenario module with identical inputs,
+imports, child arguments, environment, readiness requests, timing and cleanup.
+Keep their controller/client and all Service children inside the target1GiB;
+only the identical read-only observer/orchestrator and isolated PostgreSQL live
+outside it, with their memory reported separately. Do not move the B client or
+preparation memory outside the limit to improve its apparent headroom.
+
+Choose this controlled readiness experiment first because the original
+task-api file loads Service inside its test worker; its native case also starts
+and stops an in-process Service before spawning the native entrypoint. An A/B
+subtraction using that case versus an arbitrary direct controller changes
+retained imports/lifecycle as well as Vitest. The old F2 direct controller also
+uses different credentials and more assertions than the native case. Neither
+is an interchangeable comparison arm without qualification.
+
+The new A fixture is external diagnostic code, not a repaired or replayed
+original task-api case. It does not recreate the full14-case retention history,
+the MCP/proxy path or the in-process Service topology. Its result can estimate
+the runner/topology difference for this shared lifecycle, and locate native
+Service versus parent processes; it cannot assign an exact Vitest-only heap
+or explain all six original failures. No generation request is included in
+this first comparison. Application load/admission needs a later proposal.
+
+#### H1: freeze inputs and revalidate cache in the new round
+
+If separately authorized, use new external tools/fixtures/proof directories
+under `C:/Users/nekot/Documents/Codex/2026-10-22/i6-harness-service-memory`.
+Proposed files: one shared lifecycle module, thin A/B launchers, an external
+single-case Vitest configuration, a read-only observer, an inventory reader and
+a bounded orchestrator/ledger. Do not edit existing product tests/configuration,
+old helper directories, image layers or any original baseline.
+
+Freeze the retained image/Core A package, F2 test/source state, font bytes,
+Node/runtime versions and the known native-entrypoint environment contract.
+Use the same credential meaning, connection settings, storage policy and
+PYTHON_EXECUTABLE in both arms; private path/schema/port differences must be
+listed and limited to owned temporary resources. No heap/GC/timeout tuning,
+queue-policy substitution or dependency installation is allowed. No template
+or data variation is needed for an empty-job readiness observation.
+
+Expand the reviewed frozen inventory before preparation to include both arms'
+tools/fixtures, required test helpers, examples and runtime inputs, in addition
+to the corrected `/candidate` and Service/font roots. Both plugin entries and
+all transitive symlink targets must meet the existing required-root/escape
+checks. Do not assert that the old5452-file digest covers these additions.
+Keep proof/output/scratch paths outside the immutable inventory. Missing built
+artifacts require a stop/proposal, not an unbudgeted build or live repair.
+
+Use one new persistent target group for the complete round, exact1GiB/no swap,
+2 CPUs and fixed mounts/idle init topology. The preceding stable target was
+removed; neither its group nor its202.02MiB reading can be inherited. A new
+cache value is acceptable if the new condition is measured and repeatable.
+The shared database is disposable and isolated from user data, outside the
+target group with no host port. Give each arm an equivalent empty schema and
+the same readiness prerequisites. Before/after arms require clean owned session/
+lock boundaries; active Service connections during measurement are expected.
+Stop on an unexpected job. Database setup uses the same helper/placement in both
+arms and is complete
+before measuring the runner; include its file activity in preparation history.
+
+Preparation reads the full expanded inventory twice inside the target, exits
+the reader and collects five subsequent1Hz idle samples. Then perform two
+cache-only verification repetitions in that same surviving group. Use the same
+guarded reader and immutable file identities; no new inode copies, cache
+eviction, global flush, memory.reclaim or external warmer. Verify the observer's
+separate cgroup and record its overhead. Linux helper guards belong to counted
+preparation, not additional hidden scenarios.
+
+Across these three idle cache windows, retain the established spread limits:
+file8MiB, anonymous4MiB, kernel4MiB, total12MiB, identical inputs/idle process
+topology and no OOM. Any failure stops before A/B. Two new verification repeats
+are a bounded revalidation for this comparison, not another claim of stability
+across arbitrary fresh containers or hosts.
+
+#### H2: two paired comparisons, A–B–B–A, with phase gates
+
+After H1 passes, execute exactly one diagnostic A or B case per arm in the
+fixed A1–B1–B2–A2 order. This gives paired differences A1-minus-B1 and
+A2-minus-B2 while reversing order; two pairs are a diagnostic check, not
+statistical confidence. Do not retry, reorder, extend to the old task-api file
+or choose the most favorable pair.
+
+The A configuration contains exactly one external readiness case, no discovery
+of the original tests, serial file execution and the same pinned runner mode.
+Its reviewed include/root/invocation must make a full-suite run impossible by
+construction. B uses plain Node on the same lifecycle module. Both have a
+new diagnostic-case30s deadline; no original case/deadline is edited. A common
+outer scenario60s watchdog includes setup and final boundary checks, not extra
+application retries. Stop if the agreed plateaus cannot fit their deadlines.
+
+The shared module emits timestamps and gates these phases for both arms:
+
+1. Common module/client dependencies loaded, Service not yet started: collect
+   five1Hz runner-only samples.
+2. Spawn identical native Service child, wait at most6s for the same `/health`
+   readiness condition, then collect five1Hz Service-ready idle samples.
+3. Stop the owned Service within5s, verify no child remains, then collect
+   five1Hz runner-after-Service samples before the runner exits.
+4. After runner exit, collect five1Hz init-only samples, check owned DB sessions/
+   locks/jobs and release only that arm's temporary resources.
+
+The observer reads existing process/cgroup data and phase markers; do not add
+per-process memory collectors inside the target. A successful `/health` poll
+proves only that observed readiness condition, not an invented healthy native
+queue snapshot or available worker credit. No document task is submitted.
+
+Before/after each arm, the init-only window must remain within the H1 idle
+spread limits. Across matched loaded phases, require file-charge spread at
+most8MiB with unchanged inventory. Record mapped application inputs outside
+the declared root set as a coverage gap and stop rather than silently rewarm
+or expand the inventory. Record operating-system mappings separately: the
+bounded inventory does not certify every OS access; that remains an attribution
+qualification even if measured file matching passes. Residual file/output changes stay
+charged to the target; do not delete caches/artifacts to restore a good reading.
+
+Anonymous/kernel/total changes while A/B are loaded are measured outcomes;
+do not apply the idle4/4/12MiB limits to them, since that would reject the effect
+being measured. A larger native-Service footprint, readiness/pressure difference
+or order effect qualifies interpretation and may prevent runner attribution.
+If cache matching fails, retain observations as confounded and stop, not PASS.
+
+#### Accounting, proposed budget and result boundary
+
+Report phase-aligned target current/anonymous/file/kernel ranges, PID/parent/
+script roles, Service-child RSS/PSS and parent/runner RSS/PSS, plus separate
+observer/database overhead. PSS is a proportional process view; it is not
+added to cgroup totals, and RSS sums are not private allocation. Show residuals
+and missing readings instead of forcing the process and cgroup views to agree.
+Keep all actual cache charge in the1GiB admission accounting.
+
+Calculate each pair's total/anonymous difference at matched phases and show
+both individual pairs, their ranges and any disagreement. Differences similar
+to within-window variation or reversing between pairs remain inconclusive.
+Compare the native
+Service PID's own readings across A/B before attributing a group delta to the
+runner. Name any supported delta a difference between these launch topologies,
+including their runner/client retention and process costs. Do not label it a
+universal Vitest tax, heap attribution, production saving or an original-case
+fix. Repeatable HTTP readiness without a task does not establish worker admission.
+
+Proposed new ceiling:7 scenarios total, comprising preparation1, cache-only
+verification2 and readiness arms4; at most10 minutes active execution and10MiB
+new output. Count every started scenario/setup failure, including failed
+readiness; no uncounted pilot, native-case run or nested application test. This
+includes two new diagnostic Vitest cases and two plain-Node lifecycle runs,
+but zero original Service cases and zero generation requests. There is no
+carry-over from the exhausted5-run cache budget or the earlier2/12 stop.
+
+Stop at the first input/policy/cache drift, unknown ownership, missing phase,
+unexpected child/job, lock/session leak, OOM, observer disruption or budget
+limit. Return the exact ledger, manifest/root/input hashes, phase gates, both
+pair comparisons, native-Service versus runner process evidence, limitations
+and cleanup/preservation result. Clean up only owned temporary resources;
+never reset the dirty F2 lane or alter unrelated containers/applications.
+
+Completion is a controlled comparison with explicit coverage, not a requirement
+that A use more memory or that a worker fit. The report may support, fail to
+support or leave UNKNOWN the runner/topology hypothesis. No product fix,
+memory-policy relaxation, exact harness/cache percentage, F2/I6 acceptance,
+MCP/generation claim, full suite, B2 or integration follows automatically.
+Preserve clean B1+C, the original PDF baselines and all older failed/qualified
+evidence. No Word export or reviewed page is allocated.
+
+This planning turn verifies the existing18-file cache proof and six bound
+helper/review files unchanged, together with408 prior source/evidence files,
+358 F2 inputs, the earlier28-file proof/runner, clean B1+C and unchanged primary
+Service status. No new helper or experiment was created by this proposal.
+
+Documentation verification: Project Control `tools/check.ts` and
+`git diff --check` pass. Only this Project Control plan changes; all seven
+proposed scenarios and any external fixture/tooling implementation remain
+unexecuted in this planning turn.
